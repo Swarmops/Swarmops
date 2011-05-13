@@ -1,0 +1,470 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="PirateWeb-v4.master.cs"
+    Inherits="pirateweb_v4" %>
+
+<%@ Register Src="Controls/v3/LanguageSelector.ascx" TagName="LanguageSelector" TagPrefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>
+        <asp:Literal runat="server" Text="PirateWeb - Pirate Party Administration" meta:resourcekey="PageTitle"></asp:Literal>
+    </title>
+    <link href="/Style/PirateWeb-v4.css" rel="stylesheet" type="text/css" />
+    <link href="/jQuery/css/ppse-theme/jquery-ui-1.8.custom.css" rel="stylesheet" type="text/css" />
+    <link href="/jQuery/css/ppse-theme/jquery-ui-1.8.patch.css" rel="stylesheet" type="text/css" />
+
+    <script src="/jQuery/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+
+    <script src="/jQuery/js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(window).ready(function() {
+            //make sure menu is shown if top menu 
+            if (window == top) {
+                $('#masterMenu').css('visibility', '').css('display', '');
+                $('#DivInnerContent').css('position', '').css('top', '').css('left', '');
+            }
+            else { //else hide it and adjust
+                $('#masterMenu').css('visibility', 'visible').css('display', 'none');
+                $('#DivInnerContent').css('position', 'absolute').css('top', '-64px').css('left', '0px');
+                // -64px compensates for #DivContent being absolute 64px
+            }
+        });
+    </script>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body style="z-index: -3; margin-right: 3px;">
+    <form id="form1" runat="server" defaultbutton="LinkButtonEmpty">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="True" OnAsyncPostBackError="ScriptManager1_AsyncPostBackError">
+    </asp:ScriptManager>
+    <div>
+        <div id="masterMenu" style="visibility: hidden;">
+            <div id="HeaderBar">
+                <asp:ImageMap ID="ImageMap1" runat="server" ImageUrl="/Images/Public/v4/PirateWeb-v4-header.png"
+                    HotSpotMode="Navigate" meta:resourcekey="ImageMap1Resource1" CssClass="onTopOfTheWold">
+                    <asp:CircleHotSpot NavigateUrl="/Default.aspx" Radius="40" X="30" Y="30" meta:resourcekey="CircleHotSpotResource1"
+                        HotSpotMode="Navigate" AlternateText="Home" />
+                </asp:ImageMap>
+            </div>
+            <div id="DivMainMenuBar">
+                <div id="DivMainMenu">
+                    <telerik:RadMenu ID="MainMenu" runat="server" Font-Bold="True" BackColor="#66008C"
+                        meta:resourcekey="MainMenuResource1" Style="z-index: 2900">
+                        <Items>
+                            <telerik:RadMenuItem runat="server" Text="My Profile" Permission="CanSeeSelf" meta:resourcekey="RadMenuItemResource68">
+                                <Items>
+                                    <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/v3/Account/BasicDetails.aspx"
+                                        Text="Basic data" meta:resourcekey="RadMenuItemResource64">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/v3/Account/MembershipSettings.aspx"
+                                        Text="Change password" meta:resourcekey="RadMenuItemResource65">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/v3/Account/Memberships.aspx"
+                                        Text="My Memberships" meta:resourcekey="RadMenuItemResource11" >
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/v3/GeographyOfficers.aspx"
+                                        Text="Officers to contact" meta:resourcekey="RadMenuItemResource66">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/v3/Account/SubscriptionSettings.aspx"
+                                        Text="Subscriptions" meta:resourcekey="RadMenuItemResource67">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/PersonXMPPID.aspx"
+                                        Text="Create XMPP chat ID" meta:resourcekey="RadMenuItemResource98" >
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem Text="People" Permission="CanSeePeople" AccessKey="P" ClickedImageUrl=""
+                                ExpandedImageUrl="" ImageUrl="" meta:resourcekey="RadMenuItemResource18">
+                                <Items>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/vcard_add.png" Text="Add Member"
+                                        Permission="CanSeePeople" AccessKey="M" meta:resourcekey="RadMenuItemResource1"
+                                        NavigateUrl="~/Pages/v4/v3/Members/Add.aspx">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/vcard_add.png" Text="Recruitment Page"
+                                        NavigateUrl="~/Pages/Public/SE/NewMember/New.aspx?repeat=yes" Target="_blank"
+                                        meta:resourcekey="RadMenuItemResource78">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/vcard_find.png" Text="Find/List Members"
+                                        Permission="CanSeePeople" AccessKey="F" meta:resourcekey="RadMenuItemResource3"
+                                        NavigateUrl="~/Pages/v4/v3/MembersFramed/SearchFrame.aspx">
+                                    </telerik:RadMenuItem>
+
+                                    <telerik:RadMenuItem IsSeparator="True" 
+                                        meta:resourcekey="RadMenuItemResource14" />
+                                    
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/group_key.png" NavigateUrl="Pages/v4/Pirates/ListKeyPeople.aspx"
+                                        Text="List Key People" meta:resourcekey="RadMenuItemResource7">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/group_key.png" NavigateUrl="Pages/v4/v3/GeographyOfficers.aspx?GeographyId=30"
+                                        Text="Simple List Key People " meta:resourcekey="RadMenuItemResource70">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/user_star.png" NavigateUrl="Pages/v4/Pirates/ListVolunteers.aspx"
+                                        Permission="CanSetUpAutomail" Text="List Volunteers" AccessKey="V" meta:resourcekey="RadMenuItemResource8">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource9">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/bell_add.png"
+                                        Text="Add Activist" meta:resourcekey="RadMenuItemResource10">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource11">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/television_add.png"
+                                        Text="Add Subscriber" meta:resourcekey="RadMenuItemResource12">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/television_find.png"
+                                        Text="Find Subscriber" meta:resourcekey="RadMenuItemResource13">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource14">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/user_add.png"
+                                        Text="Add Person" meta:resourcekey="RadMenuItemResource15">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/group.png" Text="List People"
+                                        meta:resourcekey="RadMenuItemResource16">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/user_find.png"
+                                        Text="Find Person" meta:resourcekey="RadMenuItemResource17">
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem Text="Activism" AccessKey="A" Permission="CanSeeSelf"
+                                meta:resourcekey="MainMenu_Activism">
+                                <Items>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Fugue/icons-shadowless/pwcustom/smiley-grin--plus.png" Text="Log Activism"
+                                        Permission="CanSeeSelf" NavigateUrl="~/Pages/v4/Activism/LogActivism.aspx"
+                                        AccessKey="A" meta:resourcekey="MainMenu_v4_Activism_LogActivism">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Fugue/icons-shadowless/balloon--plus.png" Text="Create Conference"
+                                        Permission="CanSeeSelf" NavigateUrl="~/Pages/v4/Activism/CreateParley.aspx"
+                                        AccessKey="C" meta:resourcekey="MainMenu_v4__Activism_CreateParley">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Fugue/icons-shadowless/balloons.png" Text="Manage Conferences"
+                                        Permission="CanSeeSelf" NavigateUrl="~/Pages/v4/Activism/ManageParleys.aspx"
+                                        AccessKey="M" meta:resourcekey="MainMenu_v4__Activism_ManageParleys">
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem Text="Communications" AccessKey="C" Permission="CanSendLocalMail"
+                                meta:resourcekey="RadMenuItemResource32">
+                                <Items>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/email_open.png" Text="Send Geo-based Mail"
+                                        Permission="CanSendLocalMail" NavigateUrl="~/Pages/v4/v3/Communications/SendLocalMail.aspx"
+                                        AccessKey="M" meta:resourcekey="RadMenuItemResource19">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/email_open_image.png"
+                                        Text="Send Newsletter" meta:resourcekey="RadMenuItemResource20">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/email_edit.png" Text="Edit Automails"
+                                        Permission="CanSendLocalMail" NavigateUrl="~/Pages/v4/v3/Communications/AutoMails.aspx"
+                                        meta:resourcekey="RadMenuItemResource21">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource22" />
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Fugue/icons-shadowless/inbox-document-text.png"
+                                        Text="Received Paper Letter" Permission="CanUploadReceivedDocuments" NavigateUrl="Pages/v4/Communications/ReceivedPaperLetter.aspx"
+                                        meta:resourcekey="RadMenuItemResource79" />
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Fugue/icons-shadowless/inbox.png"
+                                        Text="Paper Letter Inbox" Permission="CanSeeSelf" NavigateUrl="Pages/v4/Communications/PaperLetterInbox.aspx"
+                                        meta:resourcekey="RadMenuItemResource80" />
+                                        
+                                    <telerik:RadMenuItem IsSeparator="True" 
+                                        meta:resourcekey="RadMenuItemResource24" />
+
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Fugue/icons-shadowless/mobile-phone.png" Text="SMS Inbox"
+                                        Permission="CanEditPeople" meta:resourcekey="RadMenuItemResource27">
+                                        <Items>
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Flags/se.png" Text="Sweden"
+                                                Permission="CanEditPeople" meta:resourcekey="MainMenu_v4_Countries_Sweden"
+                                                NavigateUrl="~/Pages/v4/Communications/SmsInboxSweden.aspx"/>
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                       
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource24" />
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/bell.png" NavigateUrl="~/Pages/v4/Communications/AlertActivists.aspx"
+                                        Text="Alert Activists" Permission="CanSendLocalMail" AccessKey="A" meta:resourcekey="RadMenuItemResource23">
+                                    </telerik:RadMenuItem>
+                                    
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource24" />
+                                    <telerik:RadMenuItem Enabled="true" ImageUrl="~/Images/Public/Silk/newspaper_add.png"
+                                        Text="Send Press Release" Permission="CanHandlePress" meta:resourcekey="RadMenuItemResource25">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource27">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="true" ImageUrl="~/Images/Public/Silk/camera_add.png"
+                                        Text="Add Reporter" Permission="CanHandlePress" meta:resourcekey="RadMenuItemResource28">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="true" ImageUrl="~/Images/Public/Silk/camera_find.png"
+                                        Text="Find Reporter" Permission="CanHandlePress" meta:resourcekey="RadMenuItemResource29">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/cameras.png" NavigateUrl="/Pages/v4/Communications/ListReporters.aspx"
+                                        Text="List Reporters" Permission="CanHandlePress" Enabled="true" meta:resourcekey="RadMenuItemResource30">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="true" ImageUrl="~/Images/Public/Silk/camera_link.png"
+                                        Text="List Press Categories" Permission="CanHandlePress" meta:resourcekey="RadMenuItemResource31">
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem AccessKey="O" Text="Financial" meta:resourcekey="RadMenuItemResource52">
+                                <Items>
+                                    <telerik:RadMenuItem runat="server" Text="Request money" Permission="CanSeeSelf"
+                                        ImageUrl="~/Images/Public/Silk/coins_add.png" meta:resourcekey="MainMenu_v4_Financial_RequestMoney">
+                                        <Items>
+                                            <telerik:RadMenuItem runat="server" Text="Reimbursement for Expense" Permission="CanSeeSelf"
+                                                ImageUrl="~/Images/Public/Silk/coins_add.png" meta:resourcekey="MainMenu_v4_Financial_RequestMoney_ReimbursementForExpense"
+                                                NavigateUrl="~/Pages/v4/Financial/ClaimExpense.aspx" />
+                                            <telerik:RadMenuItem runat="server" Text="Cash Advance for Event" Permission="CanSeeSelf"
+                                                ImageUrl="~/Images/Public/Silk/coins_add.png" meta:resourcekey="MainMenu_v4_Financial_RequestMoney_CashAdvanceForEvent"
+                                                NavigateUrl="~/Pages/v4/Financial/RequestAdvance.aspx" />
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/coins.png" Text="Expense Claims & Cash Requests"
+                                        meta:resourcekey="RadMenuItemResource84">
+                                        <Items>
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/coins.png" Text="List Claims & Requests"
+                                                Permission="CanSeeSelf" NavigateUrl="~/Pages/v4/Financial/ViewExpenseClaims.aspx"
+                                                meta:resourcekey="RadMenuItemResource81" />
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/coins.png" Text="Attest Claims & Requests"
+                                                Permission="CanSeeSelf" NavigateUrl="~/Pages/v4/Financial/AttestCosts.aspx" meta:resourcekey="RadMenuItemResource82" />
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/coins.png" Text="Validate Documentation"
+                                                Permission="CanDoEconomyTransactions" NavigateUrl="~/Pages/v4/Financial/ValidateExpenseDocumentation.aspx"
+                                                meta:resourcekey="RadMenuItemResource83" />
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/table_multiple.png" Text="Inbound Invoices"
+                                        meta:resourcekey="RadMenuItemResource88">
+                                        <Items>
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/table_add.png" Text="Received Invoice"
+                                                Permission="CanUploadReceivedDocuments" NavigateUrl="~/Pages/v4/Financial/CreateInboundInvoice.aspx"
+                                                meta:resourcekey="RadMenuItemResource85" />
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/table.png" Text="Attest Invoices"
+                                                Permission="CanSeeSelf" NavigateUrl="~/Pages/v4/Financial/AttestCosts.aspx" meta:resourcekey="RadMenuItemResource86" />
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/table_multiple.png" Text="List Inbound Invoices"
+                                                Permission="CanSeeEconomyTransactions" 
+                                                NavigateUrl="~/Pages/v4/Financial/ViewInboundInvoices.aspx" meta:resourcekey="RadMenuItemResource35"
+                                                />
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/table_multiple.png" 
+                                        Text="Outbound Invoices" meta:resourcekey="RadMenuItemResource100">
+                                        <Items>
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/table_add.png" Text="Create Outbound Invoice"
+                                                Permission="CanDoEconomyTransactions" 
+                                                NavigateUrl="~/Pages/v4/Financial/CreateOutboundInvoice.aspx" 
+                                                meta:resourcekey="RadMenuItemResource99" />
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/table_multiple.png" Text="List Outbound Invoices"
+                                                Permission="CanSeeEconomyTransactions" NavigateUrl="~/Pages/v4/Financial/ViewOutboundInvoices.aspx"
+                                                meta:resourcekey="MainMenu_v4_Financial_OutboundInvoices_ListOutboundInvoices" />
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/money_euro.png" Text="Employee Payroll"
+                                        Permission="CanSeeEconomyTransactions" meta:resourcekey="RadMenuItemResource91">
+                                        <Items>
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/money_euro.png" Text="View/Edit Payroll"
+                                                Permission="CanManagePayroll" NavigateUrl="~/Pages/v4/Financial/ViewPayroll.aspx"
+                                                meta:resourcekey="RadMenuItemResource89" />
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/money_euro.png" Text="Attest Salaries"
+                                                Permission="CanSeeSelf" NavigateUrl="~/Pages/v4/Financial/AttestCosts.aspx" meta:resourcekey="RadMenuItemResource90" />
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/money_delete.png" Text="Salary Tax Data (monthly)"
+                                                Permission="CanManagePayroll" NavigateUrl="~/Pages/v4/Financial/ViewSalariesTaxMonthly.aspx"
+                                                meta:resourcekey="MainMenu_v4_Financial_ViewSalaryTaxDataMonthly" />
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/money_delete.png" Text="Salary Tax Data (yearly)"
+                                                Permission="CanManagePayroll" NavigateUrl="~/Pages/v4/Financial/ViewSalariesTaxYearly.aspx"
+                                                meta:resourcekey="MainMenu_v4_Financial_ViewSalaryTaxDataYearly" />
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" 
+                                        meta:resourcekey="RadMenuItemResource38" />
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/money.png" Permission="CanPayOutMoney"
+                                        Text="Pay Out Money" meta:resourcekey="MainMenu_v4_Financial_PayOutMoney" NavigateUrl="~/Pages/v4/Financial/PreparePayouts.aspx">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Fugue/icons-shadowless/pwcustom/money-red.png" Permission="CanPayOutMoney"
+                                        Text="Review & Invoice Advance Debts" meta:resourcekey="MainMenu_v4_Financial_InvoiceAdvanceDebts" NavigateUrl="~/Pages/v4/Financial/InvoiceAdvanceDebts.aspx" />
+                                    <telerik:RadMenuItem IsSeparator="True" 
+                                        meta:resourcekey="RadMenuItemResource41" />
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/book_magnify.png" Text="Auditing"
+                                        Permission="CanSeeEconomyTransactions" meta:resourcekey="MainMenu_v4_Financial_Auditing">
+                                        <Items>
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/book_key.png" Text="General Ledger"
+                                                Permission="CanSeeEconomyDetails" NavigateUrl="~/Pages/v4/Financial/AuditGeneralLedger.aspx"
+                                                meta:resourcekey="MainMenu_v4_Financial_Auditing_GeneralLedger" />
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/book_magnify.png" Text="Asset Reductions"
+                                                Permission="CanSeeEconomyDetails" NavigateUrl="~/Pages/v4/Financial/AuditGeneralLedger.aspx?Preset=AssetCredits"
+                                                meta:resourcekey="MainMenu_v4_Financial_Auditing_AssetDecreases" />
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" 
+                                        meta:resourcekey="RadMenuItemResource101" />
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/book.png" NavigateUrl="/Pages/v4/Financial/ViewBookkeeping.aspx"
+                                        Text="View/Edit Bookkeeping" Permission="CanSeeEconomyDetails" meta:resourcekey="RadMenuItemResource46">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/book_add.png" NavigateUrl="/Pages/v4/Financial/ImportBankTransactions.aspx"
+                                        Text="Import Transactions from Bank" Permission="CanDoEconomyTransactions" AccessKey="I"
+                                        meta:resourcekey="MainMenu_v4_Financial_ImportBankTransactions">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/book_add.png" NavigateUrl="/Pages/v4/Financial/ImportPayments.aspx"
+                                        Text="Import Payments" Permission="CanDoEconomyTransactions" AccessKey="P"
+                                        meta:resourcekey="MainMenu_v4_Financial_ImportPayments">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/book_add.png" NavigateUrl="/Pages/v4/Financial/UploadFinancialData.aspx"
+                                        Text="Upload Data File" Permission="CanDoEconomyTransactions" AccessKey="U"
+                                        meta:resourcekey="MainMenu_v4_Financial_UploadDataFile">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/book_error.png" NavigateUrl="/Pages/v4/Financial/FixIncompleteTransactions.aspx"
+                                        Text="Fix Incomplete Transactions" Permission="CanDoEconomyTransactions" AccessKey="F"
+                                        meta:resourcekey="RadMenuItemResource48">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource49">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/chart_bar.png" NavigateUrl="/Pages/v4/Financial/ViewBalanceSheet.aspx"
+                                        Text="View Balance Sheet" Permission="CanSeeSelf" meta:resourcekey="RadMenuItemResource94">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/chart_bar.png" NavigateUrl="/Pages/v4/Financial/ViewResultSheet.aspx"
+                                        Text="View Result Sheet" Permission="CanSeeSelf" meta:resourcekey="RadMenuItemResource95">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/chart_bar.png" NavigateUrl="/Pages/v4/Financial/ViewBudget.aspx"
+                                        Text="View Budget and Actuals" AccessKey="B" meta:resourcekey="RadMenuItemResource50">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/chart_bar_edit.png" Text="Edit Budget"
+                                        Permission="CanDoBudget" meta:resourcekey="RadMenuItemResource51">
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem Text="Elections" AccessKey="E" meta:resourcekey="RadMenuItemResource61"
+                                Visible="False">
+                                <Items>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/chart_pie_add.png"
+                                        Text="Register New Election" AccessKey="N" meta:resourcekey="RadMenuItemResource53">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource54">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/building.png"
+                                        Text="Voting Locations" AccessKey="N" meta:resourcekey="RadMenuItemResource55">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/ballot_yellow.png"
+                                        Text="National Ballots" AccessKey="N" meta:resourcekey="RadMenuItemResource56">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/ballot_blue.png"
+                                        Text="Regional Ballots" AccessKey="N" meta:resourcekey="RadMenuItemResource57">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/ballot_white.png"
+                                        Text="Local Ballots" AccessKey="N" meta:resourcekey="RadMenuItemResource58">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/flag_red.png"
+                                        Text="Tasks Per CityName" AccessKey="W" meta:resourcekey="RadMenuItemResource59">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/ruby.png" Text="Etc"
+                                        AccessKey="P" meta:resourcekey="RadMenuItemResource60">
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem Text="Administration" AccessKey="A" meta:resourcekey="RadMenuItemResource63">
+                                <Items>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/chart_organisation.png"
+                                        Text="Valsedeladministration" Permission="CanSeeSelf" AccessKey="O"  
+                                        Target="_blank" NavigateUrl="/ValsedelAdmin/default.aspx" 
+                                        meta:resourcekey="RadMenuItemResource45">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource35"
+                                        Enabled="False">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/chart_organisation_add.png"
+                                        Text="Edit Organisations" Permission="CanEditOrg" meta:resourcekey="RadMenuItemResource33"
+                                        NavigateUrl="Pages/v4/admin/EditOrg.aspx">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/chart_organisation.png"
+                                        Text="List Organizations" Permission="CanEditOrg" AccessKey="O" meta:resourcekey="RadMenuItemResource34">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource35"
+                                        Enabled="False">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/world.png" Text="Geography Tree"
+                                        AccessKey="G" Permission="CanEditGeography" meta:resourcekey="RadMenuItemResource36">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/world_edit.png"
+                                        Text="List Countries" Permission="CanEditGeography" meta:resourcekey="RadMenuItemResource37">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource38"
+                                        Enabled="False">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/chart_pie.png" Text="Internal Polls"
+                                        Permission="CanSeeSelf" meta:resourcekey="Admin_InternalPolls">
+                                        <Items>
+                                            <telerik:RadMenuItem ImageUrl="~/Images/Public/Silk/chart_pie.png" NavigateUrl="Pages/v4/Admin/PlaceInternalVote.aspx"
+                                                Text="Place Vote" Permission="CanSeeSelf" meta:resourcekey="Admin_InternalPolls_PlaceVote" />
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Enabled="false" ImageUrl="~/Images/Public/Silk/chart_pie.png"
+                                        Text="View Poll Results" Permission="CanSeePoll" meta:resourcekey="RadMenuItemResource40">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem IsSeparator="True" meta:resourcekey="RadMenuItemResource41"
+                                        Enabled="False">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem runat="server" Text="System Admin" Permission="CanSeeSysadminMenu"
+                                        meta:resourcekey="RadMenuItemResource76">
+                                        <Items>
+                                            <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/admin/MailServerAccounts.aspx"
+                                                Text="Edit mail accounts" Permission="CanEditMailDB" 
+                                                meta:resourcekey="RadMenuItemResource102">
+                                            </telerik:RadMenuItem>
+                                            <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/admin/EditPermsGrid.aspx"
+                                                Text="Edit permission setup" Permission="CanEditPermissions" meta:resourcekey="RadMenuItemResource73">
+                                            </telerik:RadMenuItem>
+                                            <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/admin/mailQ.aspx" Text="Mail queue"
+                                                meta:resourcekey="RadMenuItemResource74">
+                                            </telerik:RadMenuItem>
+                                            <telerik:RadMenuItem runat="server" NavigateUrl="~/Pages/v4/admin/Exceptions.aspx"
+                                                Text="Bot Exceptions" Permission="CanEditPermissions" meta:resourcekey="RadMenuItemResource75">
+                                            </telerik:RadMenuItem>
+                                            <telerik:RadMenuItem runat="server" Permission="CanSetUpAutomail" NavigateUrl="~/Pages/v4/admin/EditMailTemplate.aspx"
+                                                Text="Mail template admin" meta:resourcekey="RadMenuItemResource96">
+                                            </telerik:RadMenuItem>
+                                            <telerik:RadMenuItem runat="server" Permission="CanSeeSysadminMenu" NavigateUrl="~/Pages/v4/Admin/ImportTaxLevels.aspx"
+                                                Text="Import Income Tax Levels" meta:resourcekey="RadMenuItemResource97" />
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem runat="server" IsSeparator="True" Text="i10" meta:resourcekey="RadMenuItemResource77">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Text="Check mail address" Permission="CanValidateActivistEmail(1)"
+                                        NavigateUrl="~/Pages/v4/CheckActivism.aspx" meta:resourcekey="RadMenuItemResource72">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Text="Order Freight Documents" Permission="CanSeePeople" NavigateUrl="~/Pages/v4/DHL.aspx"
+                                        meta:resourcekey="RadMenuItemResource71">
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenuItem>
+                        </Items>
+                    </telerik:RadMenu>
+                </div>
+                <div style="position: relative; height: 23px; vertical-align: middle; z-index: 12000;
+                    display: inline; float: right; top: 1px; margin-right: 0px;">
+                    <table>
+                        <tr>
+                            <td>
+                                <%-- LinkButtonEmpty is there to catch enter key so they don't get caught by the language button. --%>
+                                <asp:LinkButton TabIndex="1" ID="LinkButtonEmpty" runat="server" Text=" " meta:resourcekey="LinkButtonEmptyResource1"
+                                    OnClientClick="return false;"></asp:LinkButton>
+                                <span style="color: #6788BE;">[<asp:HyperLink ID="linkLogout" runat="server" NavigateUrl="~/Pages/Security/Logout.aspx"
+                                    Style="color: #6788BE" meta:resourcekey="linkLogoutResource1" Text="Logga ut"></asp:HyperLink>]&nbsp;&nbsp;</span>
+                            </td>
+                            <td>
+                                <uc1:LanguageSelector ID="LanguageSelector1" runat="server" ShowLanguages="sv,en,fi" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="DivContent">
+            <div id="DivInnerContent">
+                <asp:Panel ID="AccessDeniedPanel" Visible="False" runat="server" CssClass="bodyContent"
+                    meta:resourcekey="AccessDeniedPanelResource1">
+                    <asp:Literal ID="LabelAccessDenied" runat="server" meta:resourcekey="LabelAccessDeniedResource1"
+                        Text="&lt;br /&gt;&lt;br /&gt;&nbsp;&nbsp;&nbsp;&nbsp;You do not have access to this page."></asp:Literal><br />
+                    <asp:Label ID="LabelFailedPermission" runat="server" meta:resourcekey="LabelFailedPermissionResource1"></asp:Label>
+                </asp:Panel>
+                <asp:ContentPlaceHolder ID="BodyContent" runat="server" />
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

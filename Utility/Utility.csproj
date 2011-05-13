@@ -1,0 +1,148 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C540570C-20E0-4979-84EB-8833810DDDF6}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>Activizr.Utility</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Activizr.Utility</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>../Site/bin/</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>False</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <OutputType>Library</OutputType>
+    <AssemblyName>PirateWeb.Utility</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>../Site/bin/</OutputPath>
+    <DebugType>none</DebugType>
+    <DebugSymbols>False</DebugSymbols>
+    <Optimize>True</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <OutputType>Library</OutputType>
+    <AssemblyName>PirateWeb.Utility</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="MySql.Data, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="NRss, Version=0.1.2.0, Culture=neutral, PublicKeyToken=cedc5ae3a1d6b736, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Libraries\NRss.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BotCode\ActivityMailer.cs" />
+    <Compile Include="BotCode\App_LocalResources\EventProcessor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventProcessor.resx</DependentUpon>
+    </Compile>
+    <Compile Include="BotCode\App_LocalResources\EventProcessor.fi-FI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventProcessor.fi-FI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="BotCode\App_LocalResources\EventProcessor.sv-SE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventProcessor.sv-SE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="BotCode\BallotComposer.cs" />
+    <Compile Include="BotCode\BlogTop50Scraper.cs" />
+    <Compile Include="BotCode\BlogWatcher.cs" />
+    <Compile Include="BotCode\BotLog.cs" />
+    <Compile Include="BotCode\EventProcessor.cs" />
+    <Compile Include="BotCode\HeartBeater.cs" />
+    <Compile Include="BotCode\InternalPollMaintenance.cs" />
+    <Compile Include="BotCode\InternalPollRandomizer.cs" />
+    <Compile Include="BotCode\MailProcessor.cs" />
+    <Compile Include="BotCode\MailResolver.cs" />
+    <Compile Include="BotCode\Mappery.cs" />
+    <Compile Include="BotCode\MediaWatcher.cs" />
+    <Compile Include="BotCode\NewsletterChecker.cs" />
+    <Compile Include="BotCode\PressReleaseChecker.cs" />
+    <Compile Include="BotCode\RosterHousekeeping.cs" />
+    <Compile Include="BotCode\SalaryProcessor.cs" />
+    <Compile Include="BotCode\SchulzeProcessor.cs" />
+    <Compile Include="BotCode\TurnaroundTracker.cs" />
+    <Compile Include="BotCode\UpdateStatsCache.cs" />
+    <Compile Include="ExceptionMail.cs" />
+    <Compile Include="Financial\PaymentGroupMapper.cs" />
+    <Compile Include="Financial\PaysonImporter.cs" />
+    <Compile Include="Financial\PaypalImporter.cs" />
+    <Compile Include="Mail\MailTransmitter.cs" />
+    <Compile Include="Mail\Newsletter.cs" />
+    <Compile Include="Mail\NewsletterTransmitter.cs" />
+    <Compile Include="Mail\NewsletterTransmitter3.cs" />
+    <Compile Include="Mail\PressReleaseTransmitter.cs" />
+    <Compile Include="Migrations\PeopleOptionalData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\ActiveDirectoryCode.cs" />
+    <Compile Include="Server\ExchangeCode.cs" />
+    <Compile Include="Special\Sweden\SupportMailReview.cs" />
+    <Compile Include="Special\Sweden\SwedishForumMemberCheck.cs" />
+    <Compile Include="Special\UrlTranslator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Basic\Basic.csproj">
+      <Project>{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}</Project>
+      <Name>Basic</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{13E59551-34AC-43DC-9A03-EF5E4721DC61}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BotCode\App_LocalResources\EventProcessor.sv-SE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EventProcessor.sv-SE.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BotCode\App_LocalResources\EventProcessor.fi-FI.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EventProcessor.fi-FI.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BotCode\App_LocalResources\EventProcessor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EventProcessor.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Rss\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

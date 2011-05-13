@@ -1,0 +1,177 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>Activizr.Basic</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Activizr.Basic</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>../Site/bin/</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>False</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <OutputType>Library</OutputType>
+    <AssemblyName>PirateWeb.Basic</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>../Site/bin/</OutputPath>
+    <DebugType>none</DebugType>
+    <DebugSymbols>False</DebugSymbols>
+    <Optimize>True</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <OutputType>Library</OutputType>
+    <AssemblyName>PirateWeb.Basic</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\CommunicationType.cs" />
+    <Compile Include="Enums\ExternalActivityType.cs" />
+    <Compile Include="Types\BasicBallot.cs" />
+    <Compile Include="Types\BasicCommunicationTurnaround.cs" />
+    <Compile Include="Types\BasicElection.cs" />
+    <Compile Include="Types\BasicExceptionLog.cs" />
+    <Compile Include="Types\BasicExternalActivity.cs" />
+    <Compile Include="Types\BasicFinancialValidation.cs" />
+    <Compile Include="Types\Governance\BasicMeeting.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Diagnostics\Logging.cs" />
+    <Compile Include="Enums\AddressValidationResult.cs" />
+    <Compile Include="Enums\DocumentType.cs" />
+    <Compile Include="Enums\ExternalIdentityType.cs" />
+    <Compile Include="Enums\FinancialAccountType.cs" />
+    <Compile Include="Enums\FinancialDependencyType.cs" />
+    <Compile Include="Enums\FinancialValidationType.cs" />
+    <Compile Include="Enums\GeographyLevel.cs" />
+    <Compile Include="Enums\InvalidMembershipType.cs" />
+    <Compile Include="Enums\MailAuthorType.cs" />
+    <Compile Include="Enums\MembershipPaymentStatus.cs" />
+    <Compile Include="Enums\ObjectOptionalDataType.cs" />
+    <Compile Include="Enums\PermissionEnum.cs" />
+    <Compile Include="Enums\PoliticalAffiliation.cs" />
+    <Compile Include="Interfaces\IEmailPerson.cs" />
+    <Compile Include="Interfaces\IHasIdentities.cs" />
+    <Compile Include="Strings.cs" />
+    <Compile Include="Types\BasicAddressValidationRun.cs" />
+    <Compile Include="Types\Security\BasicAuthority.cs" />
+    <Compile Include="Types\Communications\BasicAutoMail.cs" />
+    <Compile Include="Types\BasicChurnDataPoint.cs" />
+    <Compile Include="Types\BasicCity.cs" />
+    <Compile Include="Types\BasicCountry.cs" />
+    <Compile Include="Types\BasicDocument.cs" />
+    <Compile Include="Types\BasicExpenseClaim.cs" />
+    <Compile Include="Types\BasicExternalCredential.cs" />
+    <Compile Include="Types\BasicExternalIdentity.cs" />
+    <Compile Include="Types\BasicFinancialAccount.cs" />
+    <Compile Include="Types\BasicFinancialAccountRow.cs" />
+    <Compile Include="Types\BasicFinancialDependency.cs" />
+    <Compile Include="Types\BasicFinancialTransaction.cs" />
+    <Compile Include="Types\BasicFinancialTransactionRow.cs" />
+    <Compile Include="Types\BasicInboundInvoice.cs" />
+    <Compile Include="Types\BasicInternalPoll.cs" />
+    <Compile Include="Types\BasicInternalPollCandidate.cs" />
+    <Compile Include="Types\BasicInternalPollVote.cs" />
+    <Compile Include="Types\BasicInternalPollVoteDetail.cs" />
+    <Compile Include="Types\BasicMailTemplate.cs" />
+    <Compile Include="Types\BasicMediaCategory.cs" />
+    <Compile Include="Types\BasicMediaEntry.cs" />
+    <Compile Include="Types\BasicMediaKeyword.cs" />
+    <Compile Include="Types\BasicMedium.cs" />
+    <Compile Include="Types\BasicMembershipPaymentStatus.cs" />
+    <Compile Include="Types\Governance\BasicMotion.cs" />
+    <Compile Include="Types\Governance\BasicMotionAmendment.cs" />
+    <Compile Include="Types\BasicNewsletter.cs" />
+    <Compile Include="Types\BasicNewsletterTemplate.cs" />
+    <Compile Include="Types\BasicObjectOptionalData.cs" />
+    <Compile Include="Types\BasicOutboundInvoice.cs" />
+    <Compile Include="Types\BasicOutboundInvoiceItem.cs" />
+    <Compile Include="Types\BasicOutboundMail.cs" />
+    <Compile Include="Types\BasicOutboundMailRecipient.cs" />
+    <Compile Include="Types\BasicPaperLetter.cs" />
+    <Compile Include="Types\BasicParley.cs" />
+    <Compile Include="Types\BasicParleyAttendee.cs" />
+    <Compile Include="Types\BasicParleyOption.cs" />
+    <Compile Include="Types\BasicPayment.cs" />
+    <Compile Include="Types\BasicPaymentCode.cs" />
+    <Compile Include="Enums\AutoMailType.cs" />
+    <Compile Include="Enums\ExpenseEventType.cs" />
+    <Compile Include="Enums\PaymentCodeIssueType.cs" />
+    <Compile Include="Enums\PersonGender.cs" />
+    <Compile Include="Enums\PersonOptionalDataKey.cs" />
+    <Compile Include="Enums\RoleTypeClass.cs" />
+    <Compile Include="Types\BasicPaymentGroup.cs" />
+    <Compile Include="Types\BasicPaymentInformation.cs" />
+    <Compile Include="Types\BasicPayrollAdjustment.cs" />
+    <Compile Include="Types\BasicPWEvent.cs" />
+    <Compile Include="Enums\EventTypeSource.cs" />
+    <Compile Include="Interfaces\IHandleProvider.cs" />
+    <Compile Include="Interfaces\IHasIdentity.cs" />
+    <Compile Include="Types\BasicNewsletterFeed.cs" />
+    <Compile Include="Types\BasicGeography.cs" />
+    <Compile Include="Types\BasicPayout.cs" />
+    <Compile Include="Types\BasicPayrollItem.cs" />
+    <Compile Include="Types\BasicPermission.cs" />
+    <Compile Include="Types\BasicPerson.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Types\BasicMembership.cs" />
+    <Compile Include="Types\BasicOrganization.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Types\BasicPWLog.cs" />
+    <Compile Include="Types\BasicRefund.cs" />
+    <Compile Include="Types\BasicReporter.cs" />
+    <Compile Include="Types\BasicPersonRole.cs" />
+    <Compile Include="Types\BasicSalary.cs" />
+    <Compile Include="Types\BasicSupplier.cs" />
+    <Compile Include="Types\BasicUptakeGeography.cs" />
+    <Compile Include="Types\BasicVolunteer.cs" />
+    <Compile Include="Types\BasicVolunteerRole.cs" />
+    <Compile Include="Types\BasicGeographyDesignation.cs" />
+    <Compile Include="Types\BasicCurrency.cs" />
+    <Compile Include="Types\GeographyWithPeople.cs" />
+    <Compile Include="Types\BasicInternalPollVoter.cs" />
+    <Compile Include="Types\XmlSerializableDictionary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataSets\" />
+    <Folder Include="Statistics\DataPoints\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ButtonAbortResource1.Text" xml:space="preserve">
+    <value>Peruuta</value>
+  </data>
+  <data name="FinishButtonResource1.Text" xml:space="preserve">
+    <value>Valmis!</value>
+  </data>
+  <data name="Label1Resource1.Text" xml:space="preserve">
+    <value>Anna sijainti</value>
+  </data>
+  <data name="LabelBecomeMemberResource1.Text" xml:space="preserve">
+    <value>Liity Piraattipuolueen tai Piraattinuorten jäseneksi</value>
+  </data>
+  <data name="LabelBirthdateErrorResource1.Text" xml:space="preserve">
+    <value>Virheellinen päivämäärä</value>
+  </data>
+  <data name="LabelEmailErrorResource1.Text" xml:space="preserve">
+    <value>Kirjoita sähköpostiosoitteesi</value>
+  </data>
+  <data name="LabelGenderErrorResource1.Text" xml:space="preserve">
+    <value>Valitse itsellesi mieluisin sukupuoli</value>
+  </data>
+  <data name="LabelKommunErrorResource1.Text" xml:space="preserve">
+    <value>Valitse kunta</value>
+  </data>
+  <data name="LabelKommunResource1.Text" xml:space="preserve">
+    <value>Kunta</value>
+  </data>
+  <data name="LabelMemberOfOrganizationsResource1.Text" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="LabelNameErrorResource1.Text" xml:space="preserve">
+    <value>Kirjoita nimesi</value>
+  </data>
+  <data name="LabelOrganizationErrorResource1.Text" xml:space="preserve">
+    <value>Valitse järjestö.</value>
+  </data>
+  <data name="LabelOrganizationResource1.Text" xml:space="preserve">
+    <value>orgnamn</value>
+  </data>
+  <data name="LabelPasswordErrorLengthResource1.Text" xml:space="preserve">
+    <value>Vähintään viisi merkkiä.</value>
+  </data>
+  <data name="LabelPasswordErrorResource1.Text" xml:space="preserve">
+    <value>Salasanat eivät täsmää</value>
+  </data>
+  <data name="LabelPasswordErrorResource2.Text" xml:space="preserve">
+    <value>Kirjoita salasana</value>
+  </data>
+  <data name="LabelPasswordErrorSameResource1.Text" xml:space="preserve">
+    <value>Salasanojen täytyy olla samat</value>
+  </data>
+  <data name="LabelPhoneErrorResource1.Text" xml:space="preserve">
+    <value>Kirjoita puhelinnumerosi</value>
+  </data>
+  <data name="LabelPostalErrorResource2.Text" xml:space="preserve">
+    <value>Kirjoita postinumerosi ja kotipaikkasi.</value>
+  </data>
+  <data name="LabelPostalErrorUnknownResource1.Text" xml:space="preserve">
+    <value>Tuntematon postinumero</value>
+  </data>
+  <data name="LabelSmsMessageTextResource1.Text" xml:space="preserve">
+    <value>PP JÄSEN</value>
+  </data>
+  <data name="LabelStartRegisterResource1.Text" xml:space="preserve">
+    <value>Jatka rekisteröitymistä klikkaamalla &lt;br  /&gt;'Jatka &gt;&gt;'</value>
+  </data>
+  <data name="LabelStreetErrorResource1.Text" xml:space="preserve">
+    <value>Kirjoita katuosoitteesi</value>
+  </data>
+  <data name="LinkLosenordResource1.Text" xml:space="preserve">
+    <value>hae uusi salasana </value>
+  </data>
+  <data name="ListItemResource1.Text" xml:space="preserve">
+    <value>tammikuu</value>
+  </data>
+  <data name="ListItemResource1.Value" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ListItemResource10.Text" xml:space="preserve">
+    <value>lokakuu</value>
+  </data>
+  <data name="ListItemResource10.Value" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="ListItemResource11.Text" xml:space="preserve">
+    <value>marraskuu</value>
+  </data>
+  <data name="ListItemResource11.Value" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="ListItemResource12.Text" xml:space="preserve">
+    <value>joulukuu</value>
+  </data>
+  <data name="ListItemResource12.Value" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="ListItemResource13.Text" xml:space="preserve">
+    <value>Valitse yksi...</value>
+  </data>
+  <data name="ListItemResource14.Text" xml:space="preserve">
+    <value>Mies</value>
+  </data>
+  <data name="ListItemResource15.Text" xml:space="preserve">
+    <value>Nainen</value>
+  </data>
+  <data name="ListItemResource2.Text" xml:space="preserve">
+    <value>helmikuu</value>
+  </data>
+  <data name="ListItemResource2.Value" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ListItemResource3.Text" xml:space="preserve">
+    <value>maaliskuu</value>
+  </data>
+  <data name="ListItemResource3.Value" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ListItemResource4.Text" xml:space="preserve">
+    <value>huhtikuu</value>
+  </data>
+  <data name="ListItemResource4.Value" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ListItemResource5.Text" xml:space="preserve">
+    <value>toukokuu</value>
+  </data>
+  <data name="ListItemResource5.Value" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ListItemResource6.Text" xml:space="preserve">
+    <value>kesäkuu</value>
+  </data>
+  <data name="ListItemResource6.Value" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="ListItemResource7.Text" xml:space="preserve">
+    <value>heinäkuu</value>
+  </data>
+  <data name="ListItemResource7.Value" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="ListItemResource8.Text" xml:space="preserve">
+    <value>elokuu</value>
+  </data>
+  <data name="ListItemResource8.Value" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="ListItemResource9.Text" xml:space="preserve">
+    <value>syyskuu</value>
+  </data>
+  <data name="ListItemResource9.Value" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="Literal10Resource1.Text" xml:space="preserve">
+    <value>Sähköposti</value>
+  </data>
+  <data name="Literal11Resource1.Text" xml:space="preserve">
+    <value>Syntymäaika</value>
+  </data>
+  <data name="Literal12Resource1.Text" xml:space="preserve">
+    <value>Sukupuoli</value>
+  </data>
+  <data name="Literal13Resource1.Text" xml:space="preserve">
+    <value>Salasanan antaminen</value>
+  </data>
+  <data name="Literal14Resource1.Text" xml:space="preserve">
+    <value> &lt;b&gt;Kirjoita salasana&lt;/b&gt;, jolla voit jatkossa kirjautua jäsenrekisteriin</value>
+  </data>
+  <data name="Literal15Resource1.Text" xml:space="preserve">
+    <value>esimerkiksi tilataksesi uutiskirjeen tai päivittääksesi tietojasi.</value>
+  </data>
+  <data name="Literal16Resource1.Text" xml:space="preserve">
+    <value>Valitse salasana</value>
+  </data>
+  <data name="Literal17Resource1.Text" xml:space="preserve">
+    <value>Kirjoita salasana uudestaan</value>
+  </data>
+  <data name="Literal18Resource1.Text" xml:space="preserve">
+    <value>Lopuksi valitse &lt;b&gt;kuinka aktiivinen&lt;/b&gt; haluaisit olla piraattiliikkeessä?</value>
+  </data>
+  <data name="Literal19Resource1.Text" xml:space="preserve">
+    <value>Saat jäsenkirjeen ja paikallistoiminnan tärkeitä viestejä, mutta et viestejä ajankohtaisen toiminnan järjestämisestä.</value>
+  </data>
+  <data name="Literal20Resource1.Text" xml:space="preserve">
+    <value>Saat viestejä ajankohtaisen toiminnan järjestämisestä (kuten vaalityöstä) ja viestejä, joissa pyydetään vapaaehtoisia auttamaan toiminnan järjestämisessä. Valitse tämä, jos haluat olla aktiivijäsen. Voit vaihtaa tilaa myös jälkikäteen.</value>
+  </data>
+  <data name="Literal21Resource1.Text" xml:space="preserve">
+    <value>Jos haluat esimerkiksi puolueen paikallistoimintaa vastuullesi, olet tervetullut vapaaehtoiseksi.</value>
+  </data>
+  <data name="Literal22Resource1.Text" xml:space="preserve">
+    <value>Tervetuloa jäseneksi!</value>
+  </data>
+  <data name="Literal23Resource1.Text" xml:space="preserve">
+    <value>Olet jättänyt jäsenhakemuksesi seuraaviin yhdistyksiin</value>
+  </data>
+  <data name="Literal24Resource1.Text" xml:space="preserve">
+    <value>Uudet jäsenet hyväksytään noin kahden viikon välein. Jäseneksi hyväksymisestä ilmoitetaan sähköpostitse. Odottaessasi sinua saattaa kiinnostaa</value>
+  </data>
+  <data name="Literal25Resource1.Text" xml:space="preserve">
+    <value>Jos et saa jäsenyyden vahvistusviestiä muutaman viikon kuluessa, se on luultavasti jäänyt yliaggressiivisen roskapostisuodattimen uhriksi! Tarkista roskapostisuodattimesi tai ota yhteyttä jäsenpalveluumme osoitteella info@piraattipuolue.fi</value>
+  </data>
+  <data name="Literal26Resource1.Text" xml:space="preserve">
+    <value>Kirjoita tietosi</value>
+  </data>
+  <data name="Literal27Resource1.Text" xml:space="preserve">
+    <value>Jos olet jo jäsen, </value>
+  </data>
+  <data name="Literal28Resource1.Text" xml:space="preserve">
+    <value>salasanan palauttamista</value>
+  </data>
+  <data name="Literal29Resource1.Text" xml:space="preserve">
+    <value>uudelleen rekisteröitymisen sijaan.</value>
+  </data>
+  <data name="Literal2Resource1.Text" xml:space="preserve">
+    <value>Tervetuloa jäseneksi!</value>
+  </data>
+  <data name="Literal30Resource1.Text" xml:space="preserve">
+    <value>Jäsenrekisterin rekisteriseloste.</value>
+  </data>
+  <data name="Literal31Resource1.Text" xml:space="preserve">
+    <value>
+                            Jäsenrekisterin rekisteriseloste.</value>
+  </data>
+  <data name="Literal32Resource1.Text" xml:space="preserve">
+    <value>
+                            till nummer &lt;b __designer:mapid="130"&gt;72550&lt;/b&gt;. Fem kronor dras p&amp;aring; din telefonr&amp;auml;kning, och
+                            du kommer att f&amp;aring; en &lt;b __designer:mapid="131"&gt;kvittokod&lt;/b&gt;. Skriv in den nedan.&lt;/p&gt;
+                    &lt;p __designer:mapid="132"&gt;
+                        (Om du bor utanf&amp;ouml;r Sverige, eller har vissa sorters kontantkort, s&amp;aring; kan
+                        det h&amp;auml;r vara sv&amp;aring;rt. &lt;a 
+                            href="http://www2.piratpartiet.se/medlemsavgift" __designer:mapid="133"&gt;Klicka
+                            i s&amp;aring; fall h&amp;auml;r&lt;/a&gt; f&amp;ouml;r andra s&amp;auml;tt att betala och bli medlem
+                        manuellt.)&lt;/p&gt;
+                    &lt;br __designer:mapid="134" /&gt;
+                    &lt;b __designer:mapid="135"&gt;Kvittokod f&amp;ouml;r medlemsavgiften:&lt;/b&gt;</value>
+  </data>
+  <data name="Literal33Resource1.Text" xml:space="preserve">
+    <value>Kysymme jäsentietokantaamme varten joitakin henkilötietoja. Näitä tietoja voivat käsitellä puolueen ja sen paikallisjärjestöjen hallitukset. Tiedot ovat näkyvillä myös joillekin järjestelmäylläpitäjille, joista osa saattaa olla aktiiveja jonkin muun maan piraattipuolueessa. Emme koskaan jaa tietojasi ulkopuolisille. Jos eroat puolueesta tai nuorisojärjestöstä, kaikki yksilöivät henkilötiedot poistetaan järjestelmästämme.</value>
+  </data>
+  <data name="Literal34Resource1.Text" xml:space="preserve">
+    <value>Maksaaksesi jäsenmaksun, lähteä tekstiviesti</value>
+  </data>
+  <data name="Literal3Resource1.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Tervetuloa liittymään Piraattipuolueen tai Piraattinuorten jäseneksi. Jäsenyys on ilmaista, mutta lahjoitukset ovat toivottavia.</value>
+  </data>
+  <data name="Literal4Resource1.Text" xml:space="preserve">
+    <value>Haluan liittyä seuraaviin yhdistyksiin:</value>
+  </data>
+  <data name="Literal5Resource1.Text" xml:space="preserve">
+    <value>Koko nimi (myös kaikki etunimet)</value>
+  </data>
+  <data name="Literal6Resource1.Text" xml:space="preserve">
+    <value>Katuosoite</value>
+  </data>
+  <data name="Literal7Resource1.Text" xml:space="preserve">
+    <value>Postinumero, kotipaikka</value>
+  </data>
+  <data name="Literal8Resource1.Text" xml:space="preserve">
+    <value>Maa</value>
+  </data>
+  <data name="Literal9Resource1.Text" xml:space="preserve">
+    <value>Puhelinnumero</value>
+  </data>
+  <data name="RadioActivityActivistResource1.Text" xml:space="preserve">
+    <value>Aktiivi</value>
+  </data>
+  <data name="RadioActivityOfficerResource1.Text" xml:space="preserve">
+    <value>Luottamustoimellinen</value>
+  </data>
+  <data name="RadioActivityPassiveResource1.Text" xml:space="preserve">
+    <value>Passiivinen</value>
+  </data>
+  <data name="RadioPartyResource1.Text" xml:space="preserve">
+    <value>Puolueen piiriyhdistykseen, jos sellainen on</value>
+  </data>
+  <data name="RadioYouthLeagueOnlyResource1.Text" xml:space="preserve">
+    <value>Piraattinuoriin (alle 29-vuotiaille)</value>
+  </data>
+  <data name="RadioYouthLeagueResource1.Text" xml:space="preserve">
+    <value>Piraattipuolueeseen</value>
+  </data>
+  <data name="RepeatLinkResource2.Text" xml:space="preserve">
+    <value>Palaa jäsenhakemussivulle</value>
+  </data>
+  <data name="StartNextButtonResource1.Text" xml:space="preserve">
+    <value>Jatka &gt;&gt;</value>
+  </data>
+  <data name="StepNextButtonResource1.Text" xml:space="preserve">
+    <value>Jatka &gt;&gt;</value>
+  </data>
+  <data name="StepPreviousButtonResource1.Text" xml:space="preserve">
+    <value>&lt;&lt; Takaisin</value>
+  </data>
+  <data name="WizardResource1.CancelButtonText" xml:space="preserve">
+    <value>Peruuta</value>
+  </data>
+  <data name="WizardResource1.FinishCompleteButtonText" xml:space="preserve">
+    <value>Valmis!</value>
+  </data>
+  <data name="WizardResource1.FinishPreviousButtonText" xml:space="preserve">
+    <value>Näkymätön</value>
+  </data>
+  <data name="WizardResource1.SkipLinkText" xml:space="preserve">
+    <value>Ohita navigointilinkit.</value>
+  </data>
+  <data name="WizardResource1.StartNextButtonText" xml:space="preserve">
+    <value>Jatka &gt;&gt;</value>
+  </data>
+  <data name="WizardResource1.StepNextButtonText" xml:space="preserve">
+    <value>Jatka &gt;&gt;</value>
+  </data>
+  <data name="WizardResource1.StepPreviousButtonText" xml:space="preserve">
+    <value>&lt;&lt; Takaisin</value>
+  </data>
+  <data name="WizardStepResource1.Title" xml:space="preserve">
+    <value>WizardStep0</value>
+  </data>
+</root>

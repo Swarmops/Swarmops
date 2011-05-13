@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="PirateWeb-v4-menuless.master.cs"
+    Inherits="PirateWeb_v4_menuless" %>
+
+<%@ Register TagPrefix="telerik" Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" %>
+<%@ Register Src="Controls/v3/LanguageSelector.ascx" TagName="LanguageSelector" TagPrefix="uc1" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>
+        <asp:Literal ID="Literal1" runat="server" Text="PirateWeb - Pirate Party Administration" meta:resourcekey="PageTitle"></asp:Literal>
+    </title>
+    <link href="/Style/PirateWeb-v4.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+
+        <script type="text/javascript">
+            function Masterpage_RadAjaxManager_OnRequestStart(sender, eventArgs) {
+                if (typeof (RadAjaxManager_RequestStart) == "function")
+                    window.RadAjaxManager_RequestStart(sender, eventArgs)
+            }
+            function Masterpage_RadAjaxManager_OnResponseEnd(sender, eventArgs) {
+                if (typeof (RadAjaxManager_ResponseEnd) == "function")
+                    window.RadAjaxManager_ResponseEnd(sender, eventArgs)
+            }
+        </script>
+
+</head>
+<body style="z-index: -3;">
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>   
+    <div>
+        <div id="HeaderBar">
+            <img src="/Images/Public/v4/PirateWeb-v4-header.png" alt="PirateWeb logo" />
+        </div>
+        <div id="DivMainMenuBar">
+            <span style="position:relative;height:25px; vertical-align:middle; z-index: 12000; float: right;">
+                <uc1:LanguageSelector ID="LanguageSelector1" runat="server" ShowLanguages="sv,en" />
+            </span>
+        </div>
+        <div id="DivContent">
+            <asp:ContentPlaceHolder ID="BodyContent" runat="server" />
+        </div>
+    </div>
+    </form>
+</body>
+</html>

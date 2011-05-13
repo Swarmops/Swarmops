@@ -1,0 +1,9 @@
+COPYRIGHT LICENSE: NO COPYRIGHT CLAIMED
+
+All code in this solution and its subprojects are IN THE PUBLIC DOMAIN, unless specificially marked otherwise (when it comes from a different package or commercial source).
+
+Where the concept "public domain" does not exist, the copyright license Creative Commons Zero (CC0) is used as a declararation of Public Domain.
+
+This means that anybody may use this code for absolutely anything. The copyright monopoly does not affect it at all.
+
+Anybody submitting new code to the project agrees to put their additions in the same public domain.

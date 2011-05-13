@@ -1,0 +1,92 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>PirateWeb.Basic</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PirateWeb.Basic</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>../Site/bin/</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>False</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <OutputType>Library</OutputType>
+    <AssemblyName>PirateWeb.BasicTypes</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>../Site/bin/</OutputPath>
+    <DebugType>none</DebugType>
+    <DebugSymbols>False</DebugSymbols>
+    <Optimize>True</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <OutputType>Library</OutputType>
+    <AssemblyName>PirateWeb.BasicTypes</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Types\BasicAuthority.cs" />
+    <Compile Include="Types\BasicAutoMail.cs" />
+    <Compile Include="Types\BasicChurnDataPoint.cs" />
+    <Compile Include="Types\BasicCountry.cs" />
+    <Compile Include="Types\BasicExpense.cs" />
+    <Compile Include="Types\BasicExternalCredential.cs" />
+    <Compile Include="Types\BasicNewsletter.cs" />
+    <Compile Include="Types\BasicNewsletterTemplate.cs" />
+    <Compile Include="Types\BasicOutboundMail.cs" />
+    <Compile Include="Types\BasicOutboundMailRecipient.cs" />
+    <Compile Include="Types\BasicPaymentCode.cs" />
+    <Compile Include="Enums\AutoMailType.cs" />
+    <Compile Include="Enums\ExpenseEventType.cs" />
+    <Compile Include="Enums\PaymentCodeIssueType.cs" />
+    <Compile Include="Enums\PersonGender.cs" />
+    <Compile Include="Enums\PersonOptionalDataKey.cs" />
+    <Compile Include="Enums\RoleTypesClasses.cs" />
+    <Compile Include="Types\BasicEvent.cs" />
+    <Compile Include="Enums\EventTypesSources.cs" />
+    <Compile Include="Interfaces\IHandleProvider.cs" />
+    <Compile Include="Interfaces\IHasIdentity.cs" />
+    <Compile Include="Types\BasicNewsletterFeed.cs" />
+    <Compile Include="Types\BasicGeography.cs" />
+    <Compile Include="Types\BasicPerson.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Types\BasicMembership.cs" />
+    <Compile Include="Types\BasicOrganization.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Types\BasicRole.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataSets\" />
+    <Folder Include="Statistics\DataPoints\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

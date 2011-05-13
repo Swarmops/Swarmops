@@ -1,0 +1,10 @@
+/*
+* jQuery UI CSS Framework
+* Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
+* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
+*/
+
+
+/* a bit smaller tabs */
+.ui-tabs .ui-tabs-nav li a { float: left; padding: .3em 1em; text-decoration: none; font-size:0.9em; }
+

@@ -1,0 +1,659 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcceptsMembersCheckBoxResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AcceptsMembersCheckBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AcceptsMembersCheckBoxResource2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AcceptsMembersCheckBoxResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AcceptsMembersCheckBoxResource3.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AcceptsMembersCheckBoxResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AutoAssignNewMembersCheckBoxResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AutoAssignNewMembersCheckBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AutoAssignNewMembersCheckBoxResource2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AutoAssignNewMembersCheckBoxResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AutoAssignNewMembersCheckBoxResource3.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AutoAssignNewMembersCheckBoxResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource1.HeaderText" xml:space="preserve">
+    <value>OrgId</value>
+  </data>
+  <data name="BoundFieldResource2.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource2.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource2.HeaderText" xml:space="preserve">
+    <value>GeoId</value>
+  </data>
+  <data name="BoundFieldResource3.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource3.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource3.HeaderText" xml:space="preserve">
+    <value>Geografiskt område</value>
+  </data>
+  <data name="BoundFieldResource4.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource4.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource4.HeaderText" xml:space="preserve">
+    <value>OrgId</value>
+  </data>
+  <data name="BoundFieldResource5.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource5.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource5.HeaderText" xml:space="preserve">
+    <value>GeoId</value>
+  </data>
+  <data name="BoundFieldResource6.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource6.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource6.HeaderText" xml:space="preserve">
+    <value>GeoName</value>
+  </data>
+  <data name="BoundFieldResource7.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource7.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource7.HeaderText" xml:space="preserve">
+    <value>OrgName</value>
+  </data>
+  <data name="Button1Resource1.Text" xml:space="preserve">
+    <value>Kopiera till ny</value>
+  </data>
+  <data name="Button1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Button3Resource1.Text" xml:space="preserve">
+    <value>Redigera</value>
+  </data>
+  <data name="Button3Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Button4Resource1.Text" xml:space="preserve">
+    <value>Lägg till ny</value>
+  </data>
+  <data name="Button4Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ButtonDeleteResource1.Text" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="ButtonDeleteResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ConfimDeleteUptakeJS" xml:space="preserve">
+    <value>return confirm('Vill du verkligen ta bort "{0}" som upptagningsområde för "{1}" ?');</value>
+  </data>
+  <data name="DirectionsResource1.Text" xml:space="preserve">
+    <value>Om du vill lägga till en ny organisation, välj dess överliggande org, och tryck sedan "Lägg till" i nästa bild.</value>
+  </data>
+  <data name="DomainTextBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DomainTextBoxResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DomainTextBoxResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormView1Resource1.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormView1Resource1.EmptyDataText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormView1Resource1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormView1Resource1.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormView1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GridView1Resource1.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GridView1Resource1.EmptyDataText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GridView1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IdentityTextBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IdentityTextBoxResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IdentityTextBoxResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InsertButtonResource1.Text" xml:space="preserve">
+    <value>Lägg till</value>
+  </data>
+  <data name="InsertButtonResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InsertCancelButtonResource1.Text" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="InsertCancelButtonResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Label3Resource1.Text" xml:space="preserve">
+    <value>Upptagningsområden</value>
+  </data>
+  <data name="Label3Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Label3Resource2.Text" xml:space="preserve">
+    <value>Upptagningsområden</value>
+  </data>
+  <data name="Label3Resource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Label3Resource3.Text" xml:space="preserve">
+    <value>Upptagningsområden</value>
+  </data>
+  <data name="Label3Resource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelModeCopyingResource1.Text" xml:space="preserve">
+    <value>Lägger till ny från kopia:</value>
+  </data>
+  <data name="LabelModeCopyingResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelModeEditingResource1.Text" xml:space="preserve">
+    <value>Redigerar post:</value>
+  </data>
+  <data name="LabelModeEditingResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelModeInsertingResource1.Text" xml:space="preserve">
+    <value>Lägger till ny post:</value>
+  </data>
+  <data name="LabelModeInsertingResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LiteralResource1.Text" xml:space="preserve">
+    <value>DatabasID</value>
+  </data>
+  <data name="LiteralResource10.Text" xml:space="preserve">
+    <value>Auto-tilldela medlemmar</value>
+  </data>
+  <data name="LiteralResource11.Text" xml:space="preserve">
+    <value>DatabasID</value>
+  </data>
+  <data name="LiteralResource12.Text" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="LiteralResource13.Text" xml:space="preserve">
+    <value>Kortnamn</value>
+  </data>
+  <data name="LiteralResource14.Text" xml:space="preserve">
+    <value>Engelskt namn</value>
+  </data>
+  <data name="LiteralResource15.Text" xml:space="preserve">
+    <value>Närmast överliggande org.</value>
+  </data>
+  <data name="LiteralResource16.Text" xml:space="preserve">
+    <value>Huvudupptagningsområde</value>
+  </data>
+  <data name="LiteralResource17.Text" xml:space="preserve">
+    <value>Domän (DNS)</value>
+  </data>
+  <data name="LiteralResource18.Text" xml:space="preserve">
+    <value>Mail Prefix</value>
+  </data>
+  <data name="LiteralResource19.Text" xml:space="preserve">
+    <value>Tar emot medlemmar</value>
+  </data>
+  <data name="LiteralResource2.Text" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="LiteralResource20.Text" xml:space="preserve">
+    <value>Auto-tilldela medlemmar</value>
+  </data>
+  <data name="LiteralResource21.Text" xml:space="preserve">
+    <value>DatabasID</value>
+  </data>
+  <data name="LiteralResource22.Text" xml:space="preserve">
+    <value>Kortnamn</value>
+  </data>
+  <data name="LiteralResource23.Text" xml:space="preserve">
+    <value>Engelskt namn</value>
+  </data>
+  <data name="LiteralResource24.Text" xml:space="preserve">
+    <value>Närmast överliggande org.</value>
+  </data>
+  <data name="LiteralResource25.Text" xml:space="preserve">
+    <value>Huvudupptagningsområde</value>
+  </data>
+  <data name="LiteralResource26.Text" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="LiteralResource27.Text" xml:space="preserve">
+    <value>Domän (DNS)</value>
+  </data>
+  <data name="LiteralResource28.Text" xml:space="preserve">
+    <value>Mail Prefix</value>
+  </data>
+  <data name="LiteralResource29.Text" xml:space="preserve">
+    <value>Tar emot medlemmar</value>
+  </data>
+  <data name="LiteralResource3.Text" xml:space="preserve">
+    <value>Kortnamn</value>
+  </data>
+  <data name="LiteralResource30.Text" xml:space="preserve">
+    <value>Auto-tilldela medlemmar</value>
+  </data>
+  <data name="LiteralResource4.Text" xml:space="preserve">
+    <value>Engelskt namn</value>
+  </data>
+  <data name="LiteralResource5.Text" xml:space="preserve">
+    <value>Närmast överliggande org.</value>
+  </data>
+  <data name="LiteralResource6.Text" xml:space="preserve">
+    <value>Huvudupptagningsområde</value>
+  </data>
+  <data name="LiteralResource7.Text" xml:space="preserve">
+    <value>Domän (DNS)</value>
+  </data>
+  <data name="LiteralResource8.Text" xml:space="preserve">
+    <value>Mail Prefix</value>
+  </data>
+  <data name="LiteralResource9.Text" xml:space="preserve">
+    <value>Tar emot medlemmar</value>
+  </data>
+  <data name="lnkDeleteResource1.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="lnkDeleteResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MailPrefixTextBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MailPrefixTextBoxResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MailPrefixTextBoxResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameInternationalTextBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameInternationalTextBoxResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameInternationalTextBoxResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameShortTextBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameShortTextBoxResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameShortTextBoxResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameTextBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameTextBoxResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NameTextBoxResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoAccessOrg" xml:space="preserve">
+    <value>Detta är inte en organsisation du har rätt att redigera.</value>
+  </data>
+  <data name="OnlySysAdm" xml:space="preserve">
+    <value>Bara tillgänglig för SystemAdmin role</value>
+  </data>
+  <data name="PageResource1.Title" xml:space="preserve">
+    <value>PirateWeb - Pirate Party Administration</value>
+  </data>
+  <data name="Panel1Resource2.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Panel1Resource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PanelEditUptakeResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PanelEditUptakeResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PanelEditUptakeResource2.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PanelEditUptakeResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PanelUptakeResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PanelUptakeResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ParentIdentityTextBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PrimaryGeographyTextBoxResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadAjaxLoadingPanel1Resource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadAjaxLoadingPanel1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadAjaxManager1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadFormDecorator1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadMultiPage1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadPageView1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadPageView2Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadPageView3Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource1.DisabledImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource1.HoveredImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource1.ImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource1.NavigateUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource1.SelectedImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource1.Text" xml:space="preserve">
+    <value>Organisation och Placering</value>
+  </data>
+  <data name="RadTabResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource1.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource2.DisabledImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource2.HoveredImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource2.ImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource2.NavigateUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource2.SelectedImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource2.Text" xml:space="preserve">
+    <value>Roller i denna organisation</value>
+  </data>
+  <data name="RadTabResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource2.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource3.DisabledImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource3.HoveredImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource3.ImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource3.NavigateUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource3.SelectedImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource3.Text" xml:space="preserve">
+    <value>Roller i underliggande organisationer</value>
+  </data>
+  <data name="RadTabResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabResource3.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabStrip1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TemplateFieldResource1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TemplateFieldResource1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TemplateFieldResource1.HeaderText" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="TemplateFieldResource2.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TemplateFieldResource2.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TemplateFieldResource2.HeaderText" xml:space="preserve">
+    <value>Antra intressenter</value>
+  </data>
+  <data name="TextBox1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBox2Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UpdateButtonResource1.Text" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+  <data name="UpdateButtonResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UpdateCancelButtonResource1.Text" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="UpdateCancelButtonResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UptakeExplResource1.Text" xml:space="preserve">
+    <value>Gröna noder = Tillhör denna organisation
+&lt;br  /&gt; 
+Grå noder = Tillhör någon annan organisation, peka på den för att se vilken.
+&lt;br/&gt;
+Grå med gröna kanter = Tillhör denna OCH en annan organisation
+&lt;br  /&gt;
+Ändra genom att kryssa för/av noder.</value>
+  </data>
+  <data name="UptakeExplResource2.Text" xml:space="preserve">
+    <value>Grå noder = Tillhör någon annan organisation, peka på den för att se vilken.
+&lt;br/&gt;
+Ändra genom att kryssa för/av noder.</value>
+  </data>
+</root>
