@@ -1,0 +1,361 @@
+﻿body 
+{
+    margin: 0;
+    font: 9pt Tahoma;
+    color: #404040;
+}
+
+.bodyContent
+{
+    position:relative;
+    padding-left:20px;
+    padding-right:10px;
+}
+
+a
+{
+	color: #66008C;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #55007A;
+	text-decoration: underline;
+}
+
+/* ---- HEADER AND MENU ---- */
+.onTopOfTheWold
+{
+    z-index:999999 !important;
+}
+
+div#HeaderBar
+{
+    position: absolute;
+    left: -2px;
+    top: 0px;
+    margin-top: 0px;
+    margin-left: -4px;
+    margin-bottom: 0px;
+    height: 64px;
+    width: 100%;
+    background-image: url('/Images/Public/v4/PirateWeb-v4-header-background.png');
+    background-repeat: repeat-x;
+}
+
+div#DivMainMenuBar
+{
+    position: absolute;
+    left: -3px;
+    top: 19px;
+    height: 40px;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 9990;
+}
+
+div#DivMainMenu
+{
+    position: absolute;
+    left: 200px;
+    top: 0px;
+    z-index: 9999;
+    display: inline;
+}
+
+div#DivContent
+{
+    position: absolute;
+    left: -5px;
+    top: 64px;
+    width: 100%;
+    z-index: 1;
+}
+
+div#DivPageTitle
+{
+	padding-bottom: 6px;
+	display:inline;
+}
+
+#CellPageTitleIcon
+{
+	background-color: #F8E7FF;
+	background-image: url('/Images/Public/v4/PageTitle-v4-Left.png');
+	background-position: left center;
+	background-repeat: no-repeat;
+	height: 22px;
+}
+
+#CellPageTitle
+{
+	background-color: #F8E7FF;
+	color: #66008C;
+	height: 22px;
+	font: 18px Tahoma;
+	font-weight: bold;
+	margin-left: 6px;
+}
+
+#CellPageTitleDescription
+{
+	background-image: url('/Images/Public/v4/PageTitle-v4-Right.png');
+	background-position: left center;
+	background-repeat: no-repeat;
+	height: 22px;
+	font: 12px Tahoma;
+	color: #404040;
+	padding-left: 20px;
+}
+
+.PageTitleIcon
+{
+	padding: 3px;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	padding-right: 12px;
+}
+
+
+/* ---- PERMANENT ELEMENTS ---- */
+
+.DivMainContent
+{
+	padding: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #F8E7FF;
+    margin-top:7px;
+    margin-left:9px;
+    margin-bottom:7px;
+    margin-right:3px;
+}
+
+.DivGroupBox
+{
+	border: 2px solid #66008C;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	position: relative;
+	z-index: 1;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.DivGroupBoxTitle
+{
+	font-size: 140%;
+	font-weight: bold;
+	float: left;
+	position: relative;
+	top: -20px; /* adjust upward to overlap group box */
+	background-color: #F8E7FF;
+	color: #66008C;
+	padding: 2px;
+	margin-left: 20px;
+	z-index: 2;
+}
+
+.DivGroupBoxContents
+{
+	clear: left;
+	position: relative;
+	top: -12px;
+	line-height: 30px;
+    left: 0px;
+}
+
+.DivGroupBoxContentsNormal
+{
+	clear: left;
+	position: relative;
+	top: -12px;
+    left: 0px;
+}
+
+.DivGroupBoxContents select
+{
+	width: 160px;
+}
+
+.Continuous
+{
+	line-height: 120%;
+}
+
+/* ---- VARIOUS ELEMENTS - LAB ---- */
+
+
+.FullWidth
+{
+	width: 100%;
+}
+
+
+.SelectionLineFocused
+{
+	padding-left: 6px;
+	background-color: #DEBCEB;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	color: #66008C;
+}
+
+.SelectionLineUnfocused
+{
+	padding-left: 6px;
+	background-color: #F8E7FF;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	color: #404040;
+}
+
+.CellGeographySelector
+{
+	padding-left:6px;
+	padding-right:6px;
+	padding-bottom:2px;
+	padding-top:2px;
+	background-color:#F8E7FF;
+}
+
+
+.CellFacts
+{
+	padding-top:6px;
+	padding-right:6px;
+	padding-bottom:2px;
+	background-color:#F8E7FF;
+}
+
+
+.WhiteBackground
+{
+	background-color: white;
+}
+
+.TextImportant
+{
+	color: black;
+}
+
+
+/* ---- OVERRIDES FROM Default THEME ---- */
+
+/* -- GRID -- */
+
+.RadGrid_Default .rgRow a, .RadGrid_Default .rgAltRow a, .RadGrid_Default .rgEditRow a, .RadGrid_Default .rgFooter a, .RadGrid_Default .rgEditForm a
+{
+	color: #66008C !important;
+	text-decoration: underline !important;
+}
+
+.RadGrid_Default .rgRow a:hover, .RadGrid_Default .rgAltRow a:hover
+{
+	color: #55007A !important;
+	text-decoration: underline;
+}
+
+
+.RadGrid_Default .rgSelectedRow a, .RadGrid_Default .rgSelectedRow a:hover
+{
+	color: #dcd8e0 !important;
+}
+
+
+
+/* ---- OVERRIDES FROM Web20 THEME ---- */
+
+
+.GridRow_Web20 a, .GridAltRow_Web20 a, .GridEditRow_Web20 a
+{
+	color: #66008C !important;
+	text-decoration: underline !important;
+}
+
+.GridRow_Web20 a:hover, .GridAltRow_Web20 a:hover, .GridEditRow_Web20 a:hover
+{
+	color: #55007A !important;
+	text-decoration: underline;
+}
+
+.RadMenu_Web20 
+{
+	font-size:10pt !important;
+	background: url('/Images/Public/v4/PirateWeb-v4-menu-background.png') !important;
+	border-left: solid 1px #A261B5 !important;
+}
+
+.RadMenu_Web20 .rmLink
+{
+	font-size:10pt !important;
+	border-left: solid 1px #dac2e3 !important;
+	border-right: solid 1px #a261b5 !important;
+}
+
+
+.RadMenu_Web20 .rmLink:hover,
+.RadMenu_Web20 .rmFocused,
+.RadMenu_Web20 .rmExpanded
+{
+	font-size:10pt !important;
+	color: #660058 !important;
+	background: transparent url('/Images/Public/v4/PirateWeb-v4-menu-background-selected.png') no-repeat center !important;
+}
+
+
+.RadMenu_Web20 .rmGroup
+{
+	border: solid 1px #a867be !important;
+}
+
+
+.RadMenu_Web20 .rmGroup .rmLink
+{
+	border-bottom: solid 1px #f1f0f3 !important;
+}
+
+
+.RadMenu_Web20 .rmGroup .rmLink:hover,
+.RadMenu_Web20 .rmGroup .rmFocused,
+.RadMenu_Web20 .rmGroup .rmExpanded
+{
+	background: #f8e7ff !important;
+	border-bottom: solid 1px #dcd8e0 !important;
+}
+
+
+.RadMenu_Web20 .rmLeftArrow,
+.RadMenu_Web20 .rmRightArrow,
+.RadMenu_Web20 .rmTopArrow,
+.RadMenu_Web20 .rmBottomArrow,
+.RadMenu_Web20 .rmLeftArrowDisabled,
+.RadMenu_Web20 .rmRightArrowDisabled,
+.RadMenu_Web20 .rmTopArrowDisabled,
+.RadMenu_Web20 .rmBottomArrowDisabled
+{
+	background: #f8e7ff url(WebResource.axd?d=wWPkEh_4Jcvgypbih1F13AkdIfqqFGybsTKyu1vepXm2vtnqm_v9_-3gEfbEKis3KfwkYPCatasVsHyxtR-h4g2&t=633566031468981668) center center no-repeat !important;
+	color:#f8e7ff !important;
+}
+
+
+.RadMenu_Web20 .rmVertical .rmSeparator
+{
+	background: #a867be !important;
+}
+
+
+.Heading2
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: bolder;
+}
+
+

@@ -1,0 +1,274 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{13E59551-34AC-43DC-9A03-EF5E4721DC61}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>Activizr.Logic</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Activizr.Logic</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>../Site/bin/</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>False</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <OutputType>Library</OutputType>
+    <AssemblyName>PirateWeb.Logic</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>../Site/bin/</OutputPath>
+    <DebugType>none</DebugType>
+    <DebugSymbols>False</DebugSymbols>
+    <Optimize>True</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <OutputType>Library</OutputType>
+    <AssemblyName>PirateWeb.Logic</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.3.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Starksoft.Cryptography.OpenPGP, Version=1.0.140.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Libraries\Starksoft.Cryptography.OpenPGP.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ValsedlarDataset, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Site-Data\Bin\ValsedlarDataset.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Cache\MailTemplateCache.cs" />
+    <Compile Include="Cache\GeographyCache.cs" />
+    <Compile Include="Cache\OrganizationCache.cs" />
+    <Compile Include="Communications\AutoMail.cs" />
+    <Compile Include="Communications\CommunicationTurnaround.cs" />
+    <Compile Include="Communications\CommunicationTurnarounds.cs" />
+    <Compile Include="Communications\MailTemplate.cs" />
+    <Compile Include="Communications\NewsletterFeed.cs" />
+    <Compile Include="Communications\NewsletterFeeds.cs" />
+    <Compile Include="Communications\OutboundMail.cs" />
+    <Compile Include="Communications\OutboundMailRecipient.cs" />
+    <Compile Include="Communications\OutboundMailRecipients.cs" />
+    <Compile Include="Communications\OutboundMails.cs" />
+    <Compile Include="Communications\PaperLetter.cs" />
+    <Compile Include="Communications\PaperLetters.cs" />
+    <Compile Include="Communications\PhoneMessageReceiver.cs" />
+    <Compile Include="Communications\TypedMailTemplate.cs" />
+    <Compile Include="DataObjects\GeographyWithPeopleDataObject.cs" />
+    <Compile Include="DataObjects\OrganizationDataObject.cs" />
+    <Compile Include="Governance\Ballot.cs" />
+    <Compile Include="Governance\Ballots.cs" />
+    <Compile Include="Governance\Election.cs" />
+    <Compile Include="Financial\Currency.cs" />
+    <Compile Include="Financial\ExpenseClaims.cs" />
+    <Compile Include="Financial\FinancialAccountRows.cs" />
+    <Compile Include="Financial\FinancialAccounts.cs" />
+    <Compile Include="Financial\FinancialTransactionRows.cs" />
+    <Compile Include="Financial\FinancialTransactions.cs" />
+    <Compile Include="Communications\PhoneMessageTransmitter.cs" />
+    <Compile Include="DataObjects\ExpensesDataObject.cs" />
+    <Compile Include="DataObjects\MembershipsDataObject.cs" />
+    <Compile Include="DataObjects\PeopleDataObject.cs" />
+    <Compile Include="DataObjects\RolesDataObject.cs" />
+    <Compile Include="Financial\FinancialValidation.cs" />
+    <Compile Include="Financial\FinancialValidations.cs" />
+    <Compile Include="Financial\IAttestable.cs" />
+    <Compile Include="Financial\InboundInvoice.cs" />
+    <Compile Include="Financial\InboundInvoices.cs" />
+    <Compile Include="Financial\IValidatable.cs" />
+    <Compile Include="Financial\OrganizationFinancialAccounts.cs" />
+    <Compile Include="Financial\OutboundInvoice.cs" />
+    <Compile Include="Financial\OutboundInvoiceItem.cs" />
+    <Compile Include="Financial\OutboundInvoiceItems.cs" />
+    <Compile Include="Financial\OutboundInvoices.cs" />
+    <Compile Include="Financial\Payment.cs" />
+    <Compile Include="Financial\PaymentGroup.cs" />
+    <Compile Include="Financial\PaymentGroups.cs" />
+    <Compile Include="Financial\PaymentInformation.cs" />
+    <Compile Include="Financial\Payments.cs" />
+    <Compile Include="Financial\Payout.cs" />
+    <Compile Include="Financial\Payouts.cs" />
+    <Compile Include="Financial\Payroll.cs" />
+    <Compile Include="Financial\PayrollAdjustment.cs" />
+    <Compile Include="Financial\PayrollAdjustments.cs" />
+    <Compile Include="Financial\PayrollItem.cs" />
+    <Compile Include="Financial\Refund.cs" />
+    <Compile Include="Financial\Salaries.cs" />
+    <Compile Include="Financial\Salary.cs" />
+    <Compile Include="Financial\TaxLevels.cs" />
+    <Compile Include="Interfaces\TreeNode.cs" />
+    <Compile Include="Financial\ExpenseClaim.cs" />
+    <Compile Include="Financial\FinancialAccount.cs" />
+    <Compile Include="Financial\FinancialAccountRow.cs" />
+    <Compile Include="Financial\FinancialTransaction.cs" />
+    <Compile Include="Financial\FinancialTransactionRow.cs" />
+    <Compile Include="Media\MediaCategories.cs" />
+    <Compile Include="Media\MediaCategory.cs" />
+    <Compile Include="Media\MediaEntries.cs" />
+    <Compile Include="Media\MediaEntry.cs" />
+    <Compile Include="Media\Reporter.cs" />
+    <Compile Include="Media\Reporters.cs" />
+    <Compile Include="Pirates\Activists.cs" />
+    <Compile Include="Pirates\AuditedPerson.cs" />
+    <Compile Include="Pirates\ChurnData.cs" />
+    <Compile Include="Pirates\ChurnDataPoint.cs" />
+    <Compile Include="Pirates\ExternalActivities.cs" />
+    <Compile Include="Pirates\ExternalActivity.cs" />
+    <Compile Include="Pirates\ExternalIdentity.cs" />
+    <Compile Include="Governance\MeetingElection.cs" />
+    <Compile Include="Governance\MeetingElectionCandidate.cs" />
+    <Compile Include="Governance\MeetingElectionCandidates.cs" />
+    <Compile Include="Governance\MeetingElections.cs" />
+    <Compile Include="Governance\MeetingElectionVote.cs" />
+    <Compile Include="Governance\MeetingElectionVoter.cs" />
+    <Compile Include="Governance\MeetingElectionVoters.cs" />
+    <Compile Include="Governance\MeetingElectionVotes.cs" />
+    <Compile Include="Pirates\Membership.cs" />
+    <Compile Include="Pirates\MembershipEvent.cs" />
+    <Compile Include="Pirates\MembershipEvents.cs" />
+    <Compile Include="Pirates\Memberships.cs" />
+    <Compile Include="Pirates\OfficerChain.cs" />
+    <Compile Include="Pirates\Parley.cs" />
+    <Compile Include="Pirates\ParleyAttendee.cs" />
+    <Compile Include="Pirates\ParleyAttendees.cs" />
+    <Compile Include="Pirates\ParleyOption.cs" />
+    <Compile Include="Pirates\ParleyOptions.cs" />
+    <Compile Include="Pirates\Parleys.cs" />
+    <Compile Include="Pirates\PaymentCode.cs" />
+    <Compile Include="Pirates\People.cs" />
+    <Compile Include="Pirates\Person.cs" />
+    <Compile Include="Pirates\PersonRole.cs" />
+    <Compile Include="Pirates\RoleLookup.cs" />
+    <Compile Include="Pirates\Roles.cs" />
+    <Compile Include="Pirates\Volunteer.cs" />
+    <Compile Include="Pirates\VolunteerRole.cs" />
+    <Compile Include="Pirates\VolunteerRoles.cs" />
+    <Compile Include="Pirates\Volunteers.cs" />
+    <Compile Include="Security\App_LocalResources\Authentication.Designer.cs">
+      <DependentUpon>Authentication.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Security\App_LocalResources\Authentication.sv-SE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Authentication.sv-SE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\PgpKey.cs" />
+    <Compile Include="Special\Sweden\SupportCase.cs" />
+    <Compile Include="Special\Sweden\SupportCaseDelta.cs" />
+    <Compile Include="Special\Sweden\SupportDatabase.cs" />
+    <Compile Include="Special\Sweden\SupportEmail.cs" />
+    <Compile Include="Governance\Meeting.cs" />
+    <Compile Include="Governance\Motion.cs" />
+    <Compile Include="Governance\MotionAmendment.cs" />
+    <Compile Include="Governance\MotionAmendments.cs" />
+    <Compile Include="Governance\Motions.cs" />
+    <Compile Include="Structure\OrganizationParameters.cs" />
+    <Compile Include="Structure\UptakeGeography.cs" />
+    <Compile Include="Support\ActivistEvents.cs" />
+    <Compile Include="Support\Imagery.cs" />
+    <Compile Include="Support\ObjectOptionalData.cs" />
+    <Compile Include="Support\PluralBase.cs" />
+    <Compile Include="Security\ActivityEnum.cs" />
+    <Compile Include="Security\Authentication.cs" />
+    <Compile Include="Security\Authority.cs" />
+    <Compile Include="Security\Authorization.cs" />
+    <Compile Include="Security\InternalLoginTicket.cs" />
+    <Compile Include="Security\MD5.cs" />
+    <Compile Include="Security\PermissionSet.cs" />
+    <Compile Include="Security\SHA1.cs" />
+    <Compile Include="Special\Mail\MailServerDatabase.cs" />
+    <Compile Include="Special\Sweden\GeographyBallotCoverageData.cs" />
+    <Compile Include="Special\Sweden\SwedishForumDatabase.cs" />
+    <Compile Include="Special\Sweden\SwedishForumHandleProvider.cs" />
+    <Compile Include="Structure\Cities.cs" />
+    <Compile Include="Structure\City.cs" />
+    <Compile Include="Structure\GeographyWithPeople.cs" />
+    <Compile Include="Structure\Countries.cs" />
+    <Compile Include="Structure\Country.cs" />
+    <Compile Include="Structure\Geographies.cs" />
+    <Compile Include="Structure\Geography.cs" />
+    <Compile Include="Structure\GeographyBar.cs" />
+    <Compile Include="Structure\GeographyDataPoint.cs" />
+    <Compile Include="Structure\GeographyStatistics.cs" />
+    <Compile Include="Structure\GeographyStatisticsOverTime.cs" />
+    <Compile Include="Structure\Organization.cs" />
+    <Compile Include="Structure\Organizations.cs" />
+    <Compile Include="Support\CheckDigit.cs" />
+    <Compile Include="Support\Document.cs" />
+    <Compile Include="Support\Documents.cs" />
+    <Compile Include="Support\PWEvents.cs" />
+    <Compile Include="Support\Formatting.cs" />
+    <Compile Include="Support\LogicServices.cs" />
+    <Compile Include="Support\Optimizations.cs" />
+    <Compile Include="Support\Persistence.cs" />
+    <Compile Include="Support\PWLog.cs" />
+    <Compile Include="Support\PirateWebDebug.cs" />
+    <Compile Include="Support\QuotedPrintable.cs" />
+    <Compile Include="Support\SingularFactory.cs" />
+    <Compile Include="Support\TemporaryIdentity.cs" />
+    <Compile Include="Support\UrlTranslations.cs" />
+    <Compile Include="Tasks\TaskAdvanceDebt.cs" />
+    <Compile Include="Tasks\TaskAttestationLate.cs" />
+    <Compile Include="Tasks\TaskPayout.cs" />
+    <Compile Include="Tasks\TaskBase.cs" />
+    <Compile Include="Tasks\TaskReceiptValidation.cs" />
+    <Compile Include="Tasks\TaskExpenseClaim.cs" />
+    <Compile Include="Tasks\TaskGroup.cs" />
+    <Compile Include="Tasks\TaskInboundInvoice.cs" />
+    <Compile Include="Tasks\Tasks.cs" />
+    <Compile Include="Tasks\TaskSalary.cs" />
+    <Compile Include="Tasks\TaskVolunteer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Basic\Basic.csproj">
+      <Project>{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}</Project>
+      <Name>Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Security\App_LocalResources\Authentication.fi-FI.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\App_LocalResources\Authentication.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Authentication.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\App_LocalResources\Authentication.sv-SE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Authentication.sv-SE.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>
