@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle ("PirateWeb Utility Classes")]
+[assembly: AssemblyTitle ("Activizr Utility Classes")]
 [assembly: AssemblyDescription ("")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("Disorganized")]
 [assembly: AssemblyProduct ("Utility")]
-[assembly: AssemblyCopyright ("Copyright © Disorganized 2006")]
+[assembly: AssemblyCopyright ("Public Domain or Creative Commons Zero, whichever is less restrictive")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 

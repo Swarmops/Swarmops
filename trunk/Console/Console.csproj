@@ -28,7 +28,7 @@
     <WarningLevel>4</WarningLevel>
     <ErrorReport>prompt</ErrorReport>
     <OutputType>Exe</OutputType>
-    <AssemblyName>PirateWeb.Console</AssemblyName>
+    <AssemblyName>Activizr.Console</AssemblyName>
     <ApplicationIcon>./App.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -42,7 +42,7 @@
     <WarningLevel>4</WarningLevel>
     <ErrorReport>prompt</ErrorReport>
     <OutputType>Exe</OutputType>
-    <AssemblyName>PirateWeb.Console</AssemblyName>
+    <AssemblyName>Activizr.Console</AssemblyName>
     <ApplicationIcon>./App.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>

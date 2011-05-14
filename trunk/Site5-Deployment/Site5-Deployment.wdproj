@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{99E3CFDC-CF5D-46F5-92F5-9F707E71589C}</ProjectGuid>
     <SourceWebPhysicalPath>..\Site5</SourceWebPhysicalPath>
-    <SourceWebProject>{A5BC62D1-61A6-4555-B88D-6E7F1D81D8DC}|C:\Lab\PirateWeb\30\Site5</SourceWebProject>
+    <SourceWebProject>{A5BC62D1-61A6-4555-B88D-6E7F1D81D8DC}|C:\Lab\Activizr\Site5</SourceWebProject>
     <SourceWebVirtualPath>/Site5</SourceWebVirtualPath>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <SccProjectName>Svn</SccProjectName>
