@@ -2,5 +2,6 @@
 #
 
 xbuild /logger:/opt/ccnet/Rodemeyer.MsBuildToCCnet.dll
-cp msbuild-output.xml ../artifact
+cp msbuild-output.xml ../artifact/msbuild-results.xml
+
 
