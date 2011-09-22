@@ -50,6 +50,7 @@ namespace Activizr.Pages.Security
                 catch (Exception exception)
                 {
                     System.Diagnostics.Debug.WriteLine(exception.ToString());
+                    this.LabelLoginFailed.Text = exception.ToString();
                     this.LabelLoginFailed.Visible = true;
                     this.TextLogin.Focus();
                 }
