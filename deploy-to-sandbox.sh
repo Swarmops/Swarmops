@@ -10,3 +10,4 @@ rm -rf /var/www/pirate.activizr.com/*
 cp -Rv Site5/* /var/www/pirate.activizr.com/
 chown -R www-data:www-data /var/www/pirate.activizr.com/*
 
+find /var/www/pirate.activizr.com -type d -name .svn -exec rm -rf {} \;
