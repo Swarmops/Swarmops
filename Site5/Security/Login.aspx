@@ -16,7 +16,7 @@
     <div class="center640px">
         <div style="height:100px">&nbsp;</div>
         <form id="form1" runat="server">
-            
+            <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
 	        <script type="text/javascript">
 		        //Put your JavaScript code here.
