@@ -16,36 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site", "Site\", "{D665AEB2-C94A-47D3-8376-AE65325E2E34}"
-	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "Svn"
-		SccAuxPath = "Svn"
-		SccLocalPath = "Svn"
-		SccProvider = "SubversionScc"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}|Activizr.Basic.dll;{BA24FAF7-D518-49E8-952A-45595682877E}|Activizr.Interface.dll;{C540570C-20E0-4979-84EB-8833810DDDF6}|Activizr.Utility.dll;{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}|Activizr.Database.dll;{13E59551-34AC-43DC-9A03-EF5E4721DC61}|Activizr.Logic.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/Site"
-		Debug.AspNetCompiler.PhysicalPath = "Site\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Site\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/Site"
-		Release.AspNetCompiler.PhysicalPath = "Site\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Site\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "3843"
-		VWDVirtualPath = "/"
-		StartServerOnDebug = "false"
-	EndProjectSection
-	ProjectSection(ProjectDependencies) = postProject
-		{13E59551-34AC-43DC-9A03-EF5E4721DC61} = {13E59551-34AC-43DC-9A03-EF5E4721DC61}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basic", "Basic\Basic.csproj", "{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{B7C7320D-A721-4EA8-83E9-1B09AAFF20E9}"
@@ -199,21 +169,6 @@ Global
 		{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Autobuild|.NET.ActiveCfg = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Autobuild|Any CPU.ActiveCfg = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Autobuild|Any CPU.Build.0 = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Autobuild|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Autobuild|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Release|.NET.ActiveCfg = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D665AEB2-C94A-47D3-8376-AE65325E2E34}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}.Autobuild|.NET.ActiveCfg = Release|Any CPU
 		{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}.Autobuild|Any CPU.ActiveCfg = Release|Any CPU
 		{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}.Autobuild|Any CPU.Build.0 = Release|Any CPU
