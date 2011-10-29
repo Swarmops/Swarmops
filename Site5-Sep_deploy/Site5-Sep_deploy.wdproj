@@ -10,7 +10,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.30319</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9C320C69-BE0A-47F6-A364-B9CD54C960F4}</ProjectGuid>
+    <ProjectGuid>{2E611B5E-861B-4A0E-80FB-E63FBF88CC5D}</ProjectGuid>
     <SourceWebPhysicalPath>..\Site5-Sep</SourceWebPhysicalPath>
     <SourceWebProject>{DAEDFA45-785C-4BC4-9330-87BE68FAE1E5}|C:\Lab\Activizr\Site5-Sep</SourceWebProject>
     <SourceWebVirtualPath>/Site5-Sep</SourceWebVirtualPath>
@@ -28,7 +28,9 @@
     <OutputPath>.\Release</OutputPath>
     <EnableUpdateable>true</EnableUpdateable>
     <UseMerge>true</UseMerge>
-    <SingleAssemblyName>Site5-Sep_deploy</SingleAssemblyName>
+    <SingleAssemblyName>Activizr.Site</SingleAssemblyName>
+    <DeleteAppCodeCompiledFiles>true</DeleteAppCodeCompiledFiles>
+    <DeleteAppDataFolder>true</DeleteAppDataFolder>
   </PropertyGroup>
   <ItemGroup>
   </ItemGroup>
