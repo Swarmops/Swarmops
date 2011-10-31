@@ -29,7 +29,7 @@
     <EnableUpdateable>true</EnableUpdateable>
     <UseMerge>true</UseMerge>
     <SingleAssemblyName>Activizr.Site</SingleAssemblyName>
-    <DeleteAppCodeCompiledFiles>true</DeleteAppCodeCompiledFiles>
+    <DeleteAppCodeCompiledFiles>false</DeleteAppCodeCompiledFiles>
     <DeleteAppDataFolder>true</DeleteAppDataFolder>
   </PropertyGroup>
   <ItemGroup>
