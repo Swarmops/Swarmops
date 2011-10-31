@@ -218,7 +218,6 @@ Global
 		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Autobuild|Any CPU.ActiveCfg = Debug|Any CPU
 		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Autobuild|Any CPU.Build.0 = Debug|Any CPU
 		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Autobuild|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Autobuild|Mixed Platforms.Build.0 = Debug|Any CPU
 		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Debug|Any CPU.Build.0 = Debug|Any CPU
