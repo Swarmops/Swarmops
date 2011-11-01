@@ -13,6 +13,7 @@
        Database operational: org#1 is <asp:Label runat="server" ID="LabelOrgOne" /><br/>
        Translations operational #1: <asp:Label runat="server" Text="<%$ Resources:Menu5,Menu5_Administration %>" ID="Nonsense"/><br/>
        Translations operational #2: <asp:Label runat="server" ID="LabelTranslation2" />
+       Foo
     </div>
     </form>
 </body>
