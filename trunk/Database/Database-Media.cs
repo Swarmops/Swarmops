@@ -43,22 +43,22 @@ namespace Activizr.Database
         public BasicMediaEntry[] GetBlogEntriesForKeyword (string keyword, DateTime minAge) // NOT ok
         {
             throw new NotImplementedException("Not yet migrated to MySQL: GetBlogEntriesForKeyword");
-
+            /*
             return
                 ExecuteMediaDbQuery("SELECT * FROM MediaEntryView WHERE MediaKeyword='" + keyword.Replace("'", "''") +
                                     "' AND MediaEntryDateTime > '" + minAge.ToString("yyyy-MM-dd HH:mm:ss") +
-                                    "' AND IsBlog %ISTRUE% ORDER BY MediaEntryDateTime DESC");
+                                    "' AND IsBlog %ISTRUE% ORDER BY MediaEntryDateTime DESC");*/
         }
 
         public BasicMediaEntry[] GetOldMediaEntriesForKeyword (string keyword, DateTime minAge) // NOT ok
         {
             throw new NotImplementedException("Not yet migrated to MySQL: GetOldMediaEntriesForKeyword");
 
-
+            /*
             return
                 ExecuteMediaDbQuery("SELECT * FROM MediaEntryView WHERE MediaKeyword='" + keyword.Replace("'", "''") +
                                     "' AND MediaEntryDateTime > '" + minAge.ToString("yyyy-MM-dd HH:mm:ss") +
-                                    "' AND IsBlog %ISFALSE% ORDER BY MediaEntryDateTime DESC");
+                                    "' AND IsBlog %ISFALSE% ORDER BY MediaEntryDateTime DESC");*/
         }
 
         private BasicMediaEntry[] ExecuteMediaDbQuery (string commandString)
@@ -390,7 +390,7 @@ namespace Activizr.Database
                         string mediaName = reader.GetString(1);
                         PoliticalAffiliation politicalAffiliation = PoliticalAffiliation.Unknown;
 
-                        result.Add(new BasicMedium(mediaId, mediaName, PoliticalAffiliation.Unknown));
+                        result.Add(new BasicMedium(mediaId, mediaName, politicalAffiliation));
                     }
 
                     return result.ToArray();

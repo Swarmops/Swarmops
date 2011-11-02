@@ -303,7 +303,7 @@ namespace Activizr.Database
         public void SetGeographyName (int geographyId, string name)
         {
             throw new NotImplementedException("Renaming geographies is not migrated to MySQL");
-
+            /*
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
@@ -315,13 +315,13 @@ namespace Activizr.Database
                 AddParameterWithName(command, "name", name);
 
                 command.ExecuteNonQuery();
-            }
+            }*/
         }
 
         public Dictionary<int, int> GetGeographyVoterCounts ()
         {
             throw new NotImplementedException("Not Migrated to MySQL");
-
+            /*
             Dictionary<int, int> result = new Dictionary<int, int>();
 
             using (DbConnection connection = GetMySqlDbConnection())
@@ -342,14 +342,14 @@ namespace Activizr.Database
 
                     return result;
                 }
-            }
+            }*/
         }
 
         public void CreateGeographyOfficialDesignation (int geographyId, GeographyLevel level, int countryId,
                                                         string designation)
         {
             throw new NotImplementedException("Not Migrated to MySQL");
-
+            /*
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
@@ -363,7 +363,7 @@ namespace Activizr.Database
                 AddParameterWithName(command, "designation", designation);
 
                 command.ExecuteNonQuery();
-            }
+            }*/
         }
 
         public int GetGeographyIdFromOfficialDesignation (int countryId, GeographyLevel level, string designation)

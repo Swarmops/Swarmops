@@ -129,7 +129,7 @@ namespace Activizr.Database
         public int CreateCountry (string name, string code)
         {
             throw new NotImplementedException("Creating a country is not implemented at the moment. (It is not a common event.)");
-
+            /*
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
@@ -141,7 +141,7 @@ namespace Activizr.Database
                 AddParameterWithName(command, "code", code);
 
                 return Convert.ToInt32(command.ExecuteScalar());
-            }
+            }*/
         }
     }
 }

@@ -78,27 +78,27 @@ namespace Activizr.Database
 
                 if (value is Type)
                 {
-                    if (value == typeof(int))
+                    if ((Type) value == typeof(int))
                     {
                         parameterType = SqlDbType.Int;
                     }
-                    else if (value == typeof(DateTime))
+                    else if ((Type)value == typeof(DateTime))
                     {
                         parameterType = SqlDbType.DateTime;
                     }
-                    else if (value == typeof(bool))
+                    else if ((Type)value == typeof(bool))
                     {
                         parameterType = SqlDbType.Bit;
                     }
-                    else if (value == typeof(double) || value == typeof(float))
+                    else if ((Type)value == typeof(double) || (Type)value == typeof(float))
                     {
                         parameterType = SqlDbType.Float;
                     }
-                    else if (value == typeof(decimal))
+                    else if ((Type)value == typeof(decimal))
                     {
                         parameterType = SqlDbType.Money;
                     }
-                    else if (!(value == typeof(string)))
+                    else if (!((Type)value == typeof(string)))
                     {
                         throw new Exception("Unhandled parameter type in AddParameterWithName: " + value.GetType().Name);
                     }
