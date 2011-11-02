@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Admin_InternalPolls.Text" xml:space="preserve">
+    <value>Internal Polls</value>
+  </data>
+  <data name="Admin_InternalPolls_PlaceVote.Text" xml:space="preserve">
+    <value>Place Vote</value>
+  </data>
+  <data name="LabelAccessDeniedResource1.Text" xml:space="preserve">
+    <value>&lt;br /&gt;&lt;br /&gt;    You do not have access to this page.</value>
+  </data>
+  <data name="linkLogoutResource1.Text" xml:space="preserve">
+    <value>Logga ut</value>
+  </data>
+  <data name="MainMenu_Activism.AccessKey" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="MainMenu_Activism.Text" xml:space="preserve">
+    <value>Activism</value>
+  </data>
+  <data name="MainMenu_v4__Activism_CreateParley.AccessKey" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="MainMenu_v4__Activism_CreateParley.Text" xml:space="preserve">
+    <value>Create Conference</value>
+  </data>
+  <data name="MainMenu_v4__Activism_ManageParleys.AccessKey" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="MainMenu_v4__Activism_ManageParleys.Text" xml:space="preserve">
+    <value>Manage Conferences</value>
+  </data>
+  <data name="MainMenu_v4_Activism_LogActivism.AccessKey" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="MainMenu_v4_Activism_LogActivism.Text" xml:space="preserve">
+    <value>Log Activism</value>
+  </data>
+  <data name="MainMenu_v4_Countries_Sweden.Text" xml:space="preserve">
+    <value>Sweden</value>
+  </data>
+  <data name="MainMenu_v4_Financial_Auditing.Text" xml:space="preserve">
+    <value>Auditing</value>
+  </data>
+  <data name="MainMenu_v4_Financial_Auditing_AssetDecreases.Text" xml:space="preserve">
+    <value>Asset Reductions</value>
+  </data>
+  <data name="MainMenu_v4_Financial_Auditing_GeneralLedger.Text" xml:space="preserve">
+    <value>General Ledger</value>
+  </data>
+  <data name="MainMenu_v4_Financial_ImportBankTransactions.AccessKey" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="MainMenu_v4_Financial_ImportBankTransactions.Text" xml:space="preserve">
+    <value>Import Transactions from Bank</value>
+  </data>
+  <data name="MainMenu_v4_Financial_ImportPayments.AccessKey" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="MainMenu_v4_Financial_ImportPayments.Text" xml:space="preserve">
+    <value>Import Payments</value>
+  </data>
+  <data name="MainMenu_v4_Financial_InvoiceAdvanceDebts.Text" xml:space="preserve">
+    <value>Review &amp; Invoice Advance Debts</value>
+  </data>
+  <data name="MainMenu_v4_Financial_OutboundInvoices_ListOutboundInvoices.Text" xml:space="preserve">
+    <value>List Outbound Invoices</value>
+  </data>
+  <data name="MainMenu_v4_Financial_PayOutMoney.Text" xml:space="preserve">
+    <value>Pay Out Money</value>
+  </data>
+  <data name="MainMenu_v4_Financial_RequestMoney.Text" xml:space="preserve">
+    <value>Request money</value>
+  </data>
+  <data name="MainMenu_v4_Financial_RequestMoney_CashAdvanceForEvent.Text" xml:space="preserve">
+    <value>Cash Advance for Event</value>
+  </data>
+  <data name="MainMenu_v4_Financial_RequestMoney_ReimbursementForExpense.Text" xml:space="preserve">
+    <value>Reimbursement for Expense</value>
+  </data>
+  <data name="MainMenu_v4_Financial_ViewSalaryTaxDataMonthly.Text" xml:space="preserve">
+    <value>Salary Tax Data (monthly)</value>
+  </data>
+  <data name="PageTitle.Text" xml:space="preserve">
+    <value>PirateWeb - Pirate Party Administration</value>
+  </data>
+  <data name="RadMenuItemResource1.AccessKey" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="RadMenuItemResource1.Text" xml:space="preserve">
+    <value>Add Member</value>
+  </data>
+  <data name="RadMenuItemResource10.Text" xml:space="preserve">
+    <value>Add Activist</value>
+  </data>
+  <data name="RadMenuItemResource100.Text" xml:space="preserve">
+    <value>Outbound Invoices</value>
+  </data>
+  <data name="RadMenuItemResource102.Text" xml:space="preserve">
+    <value>Edit mail accounts</value>
+  </data>
+  <data name="RadMenuItemResource11.Text" xml:space="preserve">
+    <value>My Memberships</value>
+  </data>
+  <data name="RadMenuItemResource12.Text" xml:space="preserve">
+    <value>Add Subscriber</value>
+  </data>
+  <data name="RadMenuItemResource13.Text" xml:space="preserve">
+    <value>Find Subscriber</value>
+  </data>
+  <data name="RadMenuItemResource15.Text" xml:space="preserve">
+    <value>Add Person</value>
+  </data>
+  <data name="RadMenuItemResource16.Text" xml:space="preserve">
+    <value>List People</value>
+  </data>
+  <data name="RadMenuItemResource17.Text" xml:space="preserve">
+    <value>Find Person</value>
+  </data>
+  <data name="RadMenuItemResource18.AccessKey" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="RadMenuItemResource18.Text" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="RadMenuItemResource19.AccessKey" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="RadMenuItemResource19.Text" xml:space="preserve">
+    <value>Send Geo-based Mail</value>
+  </data>
+  <data name="RadMenuItemResource2.AccessKey" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="RadMenuItemResource2.Text" xml:space="preserve">
+    <value>List Members</value>
+  </data>
+  <data name="RadMenuItemResource20.Text" xml:space="preserve">
+    <value>Send Newsletter</value>
+  </data>
+  <data name="RadMenuItemResource21.Text" xml:space="preserve">
+    <value>Edit Automails</value>
+  </data>
+  <data name="RadMenuItemResource23.AccessKey" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="RadMenuItemResource23.Text" xml:space="preserve">
+    <value>Alert Activists</value>
+  </data>
+  <data name="RadMenuItemResource25.Text" xml:space="preserve">
+    <value>Send Press Release</value>
+  </data>
+  <data name="RadMenuItemResource26.Text" xml:space="preserve">
+    <value>Edit Press Templates</value>
+  </data>
+  <data name="RadMenuItemResource28.Text" xml:space="preserve">
+    <value>Add Reporter</value>
+  </data>
+  <data name="RadMenuItemResource29.Text" xml:space="preserve">
+    <value>Find Reporter</value>
+  </data>
+  <data name="RadMenuItemResource3.AccessKey" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="RadMenuItemResource3.Text" xml:space="preserve">
+    <value>Find/List Members</value>
+  </data>
+  <data name="RadMenuItemResource30.Text" xml:space="preserve">
+    <value>List Reporters</value>
+  </data>
+  <data name="RadMenuItemResource31.Text" xml:space="preserve">
+    <value>List Press Categories</value>
+  </data>
+  <data name="RadMenuItemResource32.AccessKey" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="RadMenuItemResource32.Text" xml:space="preserve">
+    <value>Communications</value>
+  </data>
+  <data name="RadMenuItemResource33.Text" xml:space="preserve">
+    <value>Edit Organisations</value>
+  </data>
+  <data name="RadMenuItemResource34.AccessKey" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="RadMenuItemResource34.Text" xml:space="preserve">
+    <value>List Organizations</value>
+  </data>
+  <data name="RadMenuItemResource36.AccessKey" xml:space="preserve">
+    <value>G</value>
+  </data>
+  <data name="RadMenuItemResource36.Text" xml:space="preserve">
+    <value>Geography Tree</value>
+  </data>
+  <data name="RadMenuItemResource37.Text" xml:space="preserve">
+    <value>List Countries</value>
+  </data>
+  <data name="RadMenuItemResource39.Text" xml:space="preserve">
+    <value>Create Internal Poll</value>
+  </data>
+  <data name="RadMenuItemResource4.Text" xml:space="preserve">
+    <value>Invalid Members</value>
+  </data>
+  <data name="RadMenuItemResource40.Text" xml:space="preserve">
+    <value>View Poll Results</value>
+  </data>
+  <data name="RadMenuItemResource42.Text" xml:space="preserve">
+    <value>Create Expense Claim</value>
+  </data>
+  <data name="RadMenuItemResource43.Text" xml:space="preserve">
+    <value>List Expense Claims</value>
+  </data>
+  <data name="RadMenuItemResource44.Text" xml:space="preserve">
+    <value>Pay Expense Claims</value>
+  </data>
+  <data name="RadMenuItemResource45.AccessKey" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="RadMenuItemResource45.Text" xml:space="preserve">
+    <value>Valsedeladministration</value>
+  </data>
+  <data name="RadMenuItemResource46.Text" xml:space="preserve">
+    <value>View/Edit Bookkeeping</value>
+  </data>
+  <data name="RadMenuItemResource47.AccessKey" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="RadMenuItemResource47.Text" xml:space="preserve">
+    <value>Import Transactions from Bank</value>
+  </data>
+  <data name="RadMenuItemResource48.AccessKey" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="RadMenuItemResource48.Text" xml:space="preserve">
+    <value>Fix Incomplete Transactions</value>
+  </data>
+  <data name="RadMenuItemResource5.Text" xml:space="preserve">
+    <value>Expired Members</value>
+  </data>
+  <data name="RadMenuItemResource50.AccessKey" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="RadMenuItemResource50.Text" xml:space="preserve">
+    <value>View Budget and Actuals</value>
+  </data>
+  <data name="RadMenuItemResource51.Text" xml:space="preserve">
+    <value>Edit Budget</value>
+  </data>
+  <data name="RadMenuItemResource52.AccessKey" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="RadMenuItemResource52.Text" xml:space="preserve">
+    <value>Financial</value>
+  </data>
+  <data name="RadMenuItemResource53.AccessKey" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="RadMenuItemResource53.Text" xml:space="preserve">
+    <value>Register New Election</value>
+  </data>
+  <data name="RadMenuItemResource55.AccessKey" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="RadMenuItemResource55.Text" xml:space="preserve">
+    <value>Voting Locations</value>
+  </data>
+  <data name="RadMenuItemResource56.AccessKey" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="RadMenuItemResource56.Text" xml:space="preserve">
+    <value>National Ballots</value>
+  </data>
+  <data name="RadMenuItemResource57.AccessKey" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="RadMenuItemResource57.Text" xml:space="preserve">
+    <value>Regional Ballots</value>
+  </data>
+  <data name="RadMenuItemResource58.AccessKey" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="RadMenuItemResource58.Text" xml:space="preserve">
+    <value>Local Ballots</value>
+  </data>
+  <data name="RadMenuItemResource59.AccessKey" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="RadMenuItemResource59.Text" xml:space="preserve">
+    <value>Tasks Per CityName</value>
+  </data>
+  <data name="RadMenuItemResource60.AccessKey" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="RadMenuItemResource60.Text" xml:space="preserve">
+    <value>Etc</value>
+  </data>
+  <data name="RadMenuItemResource61.AccessKey" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="RadMenuItemResource61.Text" xml:space="preserve">
+    <value>Elections</value>
+  </data>
+  <data name="RadMenuItemResource62.Text" xml:space="preserve">
+    <value>To Be Determined</value>
+  </data>
+  <data name="RadMenuItemResource63.AccessKey" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="RadMenuItemResource63.Text" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="RadMenuItemResource64.Text" xml:space="preserve">
+    <value>Basic data</value>
+  </data>
+  <data name="RadMenuItemResource65.Text" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="RadMenuItemResource66.Text" xml:space="preserve">
+    <value>Officers to contact</value>
+  </data>
+  <data name="RadMenuItemResource67.Text" xml:space="preserve">
+    <value>Subscriptions</value>
+  </data>
+  <data name="RadMenuItemResource68.Text" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="RadMenuItemResource69.Text" xml:space="preserve">
+    <value>Request reimbursement</value>
+  </data>
+  <data name="RadMenuItemResource7.Text" xml:space="preserve">
+    <value>List Key People</value>
+  </data>
+  <data name="RadMenuItemResource70.Text" xml:space="preserve">
+    <value>Simple List Key People </value>
+  </data>
+  <data name="RadMenuItemResource71.Text" xml:space="preserve">
+    <value>Order Freight Documents</value>
+  </data>
+  <data name="RadMenuItemResource72.Text" xml:space="preserve">
+    <value>Check mail address</value>
+  </data>
+  <data name="RadMenuItemResource73.Text" xml:space="preserve">
+    <value>Edit permission setup</value>
+  </data>
+  <data name="RadMenuItemResource74.Text" xml:space="preserve">
+    <value>Mail queue</value>
+  </data>
+  <data name="RadMenuItemResource75.Text" xml:space="preserve">
+    <value>Bot Exceptions</value>
+  </data>
+  <data name="RadMenuItemResource76.Text" xml:space="preserve">
+    <value>System Admin</value>
+  </data>
+  <data name="RadMenuItemResource77.Text" xml:space="preserve">
+    <value>i10</value>
+  </data>
+  <data name="RadMenuItemResource78.Text" xml:space="preserve">
+    <value>Recruitment Page</value>
+  </data>
+  <data name="RadMenuItemResource79.Text" xml:space="preserve">
+    <value>Received Paper Letter</value>
+  </data>
+  <data name="RadMenuItemResource8.AccessKey" xml:space="preserve">
+    <value>V</value>
+  </data>
+  <data name="RadMenuItemResource8.Text" xml:space="preserve">
+    <value>List Volunteers</value>
+  </data>
+  <data name="RadMenuItemResource80.Text" xml:space="preserve">
+    <value>Paper Letter Inbox</value>
+  </data>
+  <data name="RadMenuItemResource81.Text" xml:space="preserve">
+    <value>List Claims &amp; Requests</value>
+  </data>
+  <data name="RadMenuItemResource82.Text" xml:space="preserve">
+    <value>Attest Claims &amp; Requests</value>
+  </data>
+  <data name="RadMenuItemResource83.Text" xml:space="preserve">
+    <value>Validate Documentation</value>
+  </data>
+  <data name="RadMenuItemResource84.Text" xml:space="preserve">
+    <value>Expense Claims &amp; Cash Requests</value>
+  </data>
+  <data name="RadMenuItemResource85.Text" xml:space="preserve">
+    <value>Received Invoice</value>
+  </data>
+  <data name="RadMenuItemResource86.Text" xml:space="preserve">
+    <value>Attest Invoices</value>
+  </data>
+  <data name="RadMenuItemResource87.Text" xml:space="preserve">
+    <value>List Outbound Invoices</value>
+  </data>
+  <data name="RadMenuItemResource88.Text" xml:space="preserve">
+    <value>Inbound Invoices</value>
+  </data>
+  <data name="RadMenuItemResource89.Text" xml:space="preserve">
+    <value>View/Edit Payroll</value>
+  </data>
+  <data name="RadMenuItemResource90.Text" xml:space="preserve">
+    <value>Attest Salaries</value>
+  </data>
+  <data name="RadMenuItemResource91.Text" xml:space="preserve">
+    <value>Employee Payroll</value>
+  </data>
+  <data name="RadMenuItemResource94.Text" xml:space="preserve">
+    <value>View Balance Sheet</value>
+  </data>
+  <data name="RadMenuItemResource95.Text" xml:space="preserve">
+    <value>View Result Sheet</value>
+  </data>
+  <data name="RadMenuItemResource96.Text" xml:space="preserve">
+    <value>Mail template admin</value>
+  </data>
+  <data name="RadMenuItemResource97.Text" xml:space="preserve">
+    <value>Import Income Tax Levels</value>
+  </data>
+  <data name="RadMenuItemResource98.Text" xml:space="preserve">
+    <value>Create XMPP chat ID</value>
+  </data>
+  <data name="RadMenuItemResource99.Text" xml:space="preserve">
+    <value>Create Outbound Invoice</value>
+  </data>
+</root>

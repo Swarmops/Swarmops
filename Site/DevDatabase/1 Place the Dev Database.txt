@@ -1,5 +1,0 @@
-Put the Dev Database in this directory,
-but do NOT check it in to source control.
-
-It contains sensitive information, and besides,
-it is large and will bloat the repository.

@@ -175,11 +175,11 @@ namespace Activizr.Logic.Pirates
         public void Deattest(Person deattester)
         {
             throw new NotImplementedException();
-
+            /*
             base.Attested = false;
             PirateDb.GetDatabase().CreateFinancialValidation(FinancialValidationType.Deattestation,
                                                              FinancialDependencyType.Parley, this.Identity,
-                                                             DateTime.Now, deattester.Identity, (double)(this.GuaranteeDecimal+this.BudgetDecimal));
+                                                             DateTime.Now, deattester.Identity, (double)(this.GuaranteeDecimal+this.BudgetDecimal));*/
 
             // TODO: Remove budget, remove financial account, set unattested
 
