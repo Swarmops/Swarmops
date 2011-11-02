@@ -92,7 +92,7 @@ namespace Activizr.Logic.Financial
         public Salaries DependentSalariesNet;
         public Salaries DependentSalariesTax;
 
-        public new decimal Amount
+        public decimal Amount
         {
             set
             {
