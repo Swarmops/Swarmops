@@ -28,7 +28,7 @@
     <OutputPath>.\Release</OutputPath>
     <EnableUpdateable>true</EnableUpdateable>
     <UseMerge>true</UseMerge>
-    <SingleAssemblyName>Activizr-Site</SingleAssemblyName>
+    <SingleAssemblyName>Activizr.Site</SingleAssemblyName>
     <DeleteAppCodeCompiledFiles>true</DeleteAppCodeCompiledFiles>
     <DeleteAppDataFolder>true</DeleteAppDataFolder>
   </PropertyGroup>

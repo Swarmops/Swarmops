@@ -1,0 +1,878 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NRss</name>
+    </assembly>
+    <members>
+        <member name="T:NRss.RssChannelImageElementReader">
+            <summary>
+            Summary description for RssChannelImageElementReader.
+            </summary>
+        </member>
+        <member name="T:NRss.ElementReader">
+            <summary>
+            <para>Abstract class for reading of RSS elements. 
+            Every class which reads a RSS elements inherits from ElementReader.</para>
+            </summary>
+        </member>
+        <member name="M:NRss.ElementReader.NextContent">
+            <summary>
+            Advances the XML reader to the next content.
+            </summary>
+        </member>
+        <member name="M:NRss.ElementReader.SkipContent">
+            <summary>
+            Skips the XML reader over the current node and its children.
+            </summary>
+        </member>
+        <member name="M:NRss.ElementReader.ReadTextElement">
+            <summary>
+            Reads the contents of an element assumed that the element contains only text.
+            </summary>
+            <returns>The element text.</returns>
+        </member>
+        <member name="M:NRss.ElementReader.RequireNotEmptyElement">
+            <summary>
+            Ensures the current element is not empty, so we know that we can expect a XmlNodeType.EndElement.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelItemElementReader">
+            <summary>
+            Summary description for RssChannelItemElementReader.
+            </summary>
+        </member>
+        <member name="T:NRss.RssReaderOptions">
+            <summary>
+            Options for the RSS reader. These options can be specified when creating a new reader.
+            You can combine more options with the OR operator. 
+            </summary>
+            <seealso cref="T:NRss.RssReader"/>
+        </member>
+        <member name="F:NRss.RssReaderOptions.None">
+            <summary>
+            No options (the reader has normal behavior).
+            </summary>
+        </member>
+        <member name="F:NRss.RssReaderOptions.IgnoreMissingElements">
+            <summary>
+            When this option is set, the reader will ignore missing elements that are required by the
+            RSS specification (e.g a missing channel title).
+            </summary>
+        </member>
+        <member name="F:NRss.RssReaderOptions.IgnoreAlienElements">
+            <summary>
+            When this options is set, the reader will ignore "alien" elements, that is elements in an empty namespace
+            that are not expected in the context (like an item element as a child of the rss element), or are not
+            defined by the RSS specification. Unrecognized elements in a non-empty namespace are always ignored.
+            </summary>
+        </member>
+        <member name="F:NRss.RssReaderOptions.NoCheckLinks">
+            <summary>
+            When this options is set, the reader will not check that the links begin with http:// or ftp://
+            (as required by the RSS 0.91 specification).
+            </summary>
+        </member>
+        <member name="T:NRss.RssReader">
+            <summary>
+            This is the main class for reading RSS feeds.
+            </summary>
+            <remarks>Use the <see cref="M:NRss.RssReader.Read"/> method to read a RSS feed.</remarks>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes the RSS reader with a non-resolving XmlTextReader for the specified stream and no options.
+            </summary>
+            <param name="stream">A stream to read from.</param>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.IO.Stream,NRss.RssReaderOptions)">
+            <summary>
+            Initializes the RSS reader with a non-resolving XmlTextReader for the specified stream and the specified options.
+            </summary>
+            <param name="stream">A stream to read from.</param>
+            <param name="options">The RssReaderOptions to initialize the reader with.</param>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.IO.Stream,NRss.RssReaderOptions,System.Boolean)">
+            <summary>
+            Initializes the RSS reader with a resolving or non-resolving XmlTextReader (depending on the resolve parameter) for the specified stream and the specified options.
+            </summary>
+            <param name="stream">A stream to read from.</param>
+            <param name="options">The RssReaderOptions to initialize the reader with.</param>
+            <param name="resolve">Specifies whether to resolve external resources referenced from the RSS file.</param>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.String)">
+            <summary>
+            Initializes the RSS reader with a non-resolving XmlTextReader for the specified file and no options.
+            </summary>
+            <param name="url">An RSS file or URL to read from.</param>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.String,NRss.RssReaderOptions)">
+            <summary>
+            Initializes the RSS reader with a non-resolving XmlTextReader for the specified file and the specified options.
+            </summary>
+            <param name="url">An RSS file or URL to read from.</param>
+            <param name="options">The RssReaderOptions to initialize the reader with.</param>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.String,NRss.RssReaderOptions,System.Boolean)">
+            <summary>
+            Initializes the RSS reader with a resolving or non-resolving XmlTextReader (depending on the resolve parameter) for the specified file and the specified options.
+            </summary>
+            <param name="url">An RSS file to read from.</param>
+            <param name="options">The RssReaderOptions to initialize the reader with.</param>
+            <param name="resolve">Specifies whether to resolve external resources referenced from the RSS file.</param>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.Xml.XmlTextReader)">
+            <summary>
+            Initializes the RSS reader with the specified XmlTextReader and no options.
+            </summary>
+            <param name="reader">The XmlTextReader to read from.</param>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.Xml.XmlTextReader,NRss.RssReaderOptions)">
+            <summary>
+            Initializes the RSS reader with the specified XmlTextReader and options.
+            </summary>
+            <param name="reader">The XmlTextReader to read from.</param>
+            <param name="options">The RssReaderOptions to initialize the reader with.</param>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.Xml.XmlValidatingReader)">
+            <summary>
+            Initializes the RSS reader with the specified XmlValidatingReader and no options.
+            </summary>
+            <param name="reader">The XmlTextReader to read from.</param>
+        </member>
+        <member name="M:NRss.RssReader.#ctor(System.Xml.XmlValidatingReader,NRss.RssReaderOptions)">
+            <summary>
+            Initializes the RSS reader with the specified XmlValidatingReader and options.
+            </summary>
+            <param name="reader">The XmlValidatingReader to read from.</param>
+            <param name="options">The RssReaderOptions to initialize the reader with.</param>
+        </member>
+        <member name="M:NRss.RssReader.Read">
+            <summary>
+            Call this method to parse the RSS file. This method returns a <see cref="T:NRss.Rss"/> object which represents the feed.
+            </summary>
+            <returns>The parsed RSS feed as a <see cref="T:NRss.Rss"/> object.</returns>
+        </member>
+        <member name="M:NRss.RssReader.Close">
+            <summary>
+            Closes the RSS reader and the underlying XML reader.
+            </summary>
+        </member>
+        <member name="P:NRss.RssReader.XmlReader">
+            <summary>
+            Gets the XML reader that the RSS reader is using.
+            </summary>
+        </member>
+        <member name="P:NRss.RssReader.IgnoreMissingElements">
+            <summary>
+            Indicates whether the reader should ignore missing elements. This property is true iff the
+            reading was instantiated with the <see cref="F:NRss.RssReaderOptions.IgnoreMissingElements"/> option.
+            </summary>
+        </member>
+        <member name="P:NRss.RssReader.IgnoreAlienElements">
+            <summary>
+            Indicates whether the reader should ignore "alien" elements. This property is true iff the
+            reading was instantiated with the <see cref="F:NRss.RssReaderOptions.IgnoreAlienElements"/> option.
+            </summary>
+        </member>
+        <member name="P:NRss.RssReader.NoCheckLinks">
+            <summary>
+            Indicates whether the reader should check that links begin with http:// or ftp://. This property is true iff the
+            reading was instantiated with the <see cref="F:NRss.RssReaderOptions.NoCheckLinks"/> option.
+            </summary>
+        </member>
+        <member name="T:NRss.RssElementReader">
+            <summary>
+            Summary description for RssElementReader.
+            </summary>
+        </member>
+        <member name="M:NRss.RssElementReader.CheckLink(System.String)">
+            <summary>
+            Checks that the link matches the RSS 0.91 specification (has the accepted schemes).
+            </summary>
+            <param name="link">The link to check.</param>
+            <exception cref="T:NRss.RssException">Thrown if the link does not match the specification.</exception>
+        </member>
+        <member name="M:NRss.RssElementReader.CheckLinkHttp(System.String)">
+            <summary>
+            Checks that the link begins has a http:// scheme.
+            </summary>
+            <param name="link">The link to check.</param>
+            <exception cref="T:NRss.RssException">Thrown if the link does not begin with http://.</exception>
+        </member>
+        <member name="M:NRss.RssElementReader.ConvertRssDateTime(System.String)">
+            <summary>
+            Converts a RSS date/time to a .NET DateTime.
+            </summary>
+            <param name="rssDateTime">The RSS date/time to convert.</param>
+            <returns>The parsed date as a DateTime in Universal Time.</returns>
+            <exception cref="T:NRss.RssException">Thrown if the date/time is not a valid RSS 822 date/time.</exception>
+        </member>
+        <member name="M:NRss.RssElementReader.ConvertRssInt(System.String)">
+            <summary>
+            Converts a string to an integer.
+            </summary>
+            <param name="rssInt">The string to convert.</param>
+            <returns>The converted integer.</returns>
+        </member>
+        <member name="M:NRss.RssElementReader.ConvertRssBool(System.String)">
+            <summary>
+            Converts a string to a boolean value.
+            </summary>
+            <param name="rssBool"></param>
+            <returns>The converted boolean.</returns>
+        </member>
+        <member name="M:NRss.RssElementReader.CheckTcpPort(System.Int32)">
+            <summary>
+            Checks that the passed value is a valid TCP port value (a number from 1 to 65535).
+            </summary>
+            <param name="port">The value to check</param>
+            <exception cref="T:NRss.RssException">Thrown if the value is not a valid TCP port.</exception>
+        </member>
+        <member name="M:NRss.RssElementReader.CheckCloudProtocol(System.String)">
+            <summary>
+            Checks that the passed value is a valid cloud protocol. The method is case-sensitive.
+            </summary>
+            <param name="protocol">The value to check.</param>
+            <exception cref="T:NRss.RssException">Thrown if the value is not a valid cloud protocol.</exception>
+        </member>
+        <member name="M:NRss.RssElementReader.ConvertRssVersion(System.String)">
+            <summary>
+            Converts a RSS text version to a RssVersion enumeration member.
+            </summary>
+            <param name="textVersion">The version to convert, such as "0.91".</param>
+            <returns>The converted version.</returns>
+        </member>
+        <member name="M:NRss.RssElementReader.ReadCategory">
+            <summary>
+            Reads a &lt;category&gt; element.
+            </summary>
+            <returns>The read element as a <see cref="T:NRss.RssCategory"/>.</returns>
+        </member>
+        <member name="T:NRss.RssException">
+            <summary>
+            Returns information about the an exception thrown by the RSS reader.
+            </summary>
+        </member>
+        <member name="M:NRss.RssException.#ctor(System.String)">
+            <summary>
+            Creates the exception.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="T:NRss.RssMessages">
+            <summary>
+            Messages displayed by the RSS reader, including errors.
+            </summary>
+        </member>
+        <member name="T:NRss.RssElements">
+            <summary>
+            RSS element names.
+            </summary>
+        </member>
+        <member name="T:NRss.RssAttrs">
+            <summary>
+            RSS attribute names.
+            </summary>
+        </member>
+        <member name="T:NRss.RssLinkScheme">
+            <summary>
+            Schemes for the RSS item element.
+            </summary>
+        </member>
+        <member name="T:NRss.RssTextVersion">
+            <summary>
+            RSS version numbers as text
+            </summary>
+        </member>
+        <member name="T:NRss.RssDateParserException">
+            <summary>
+            This exception is thrown if the date/time parsed by the <see cref="T:NRss.RssDateParser"/> was not valid.
+            </summary>
+        </member>
+        <member name="M:NRss.RssDateParserException.#ctor">
+            <summary>
+            Initializes a new instance.
+            </summary>
+        </member>
+        <member name="M:NRss.RssDateParserException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance.
+            </summary>
+            <param name="innerException">The exception that caused this exception.</param>
+        </member>
+        <member name="T:NRss.RssDateParser">
+            <summary>
+            Parses a date/time expression according to RFC 822, section 5. This is the date format used by RSS.
+            </summary>
+        </member>
+        <member name="M:NRss.RssDateParser.Parse(System.String)">
+            <summary>
+            Parses a date/time RFC 822 expression.
+            </summary>
+            <param name="date">The string to parse.</param>
+            <returns>The parsed date/time converted to Universal Time.</returns>
+        </member>
+        <member name="T:NRss.RssChannelTextInputElementReader">
+            <summary>
+            Summary description for RssChannelTextInputElementReader.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelSkipDaysElementReader">
+            <summary>
+            Summary description for RssChannelSkipDaysElementReader.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelSkipHoursElementReader">
+            <summary>
+            Summary description for RssChannelSkipHoursElementReader.
+            </summary>
+        </member>
+        <member name="T:NRss.RssVersion">
+            <summary>
+            RSS version numbers.
+            </summary>
+        </member>
+        <member name="F:NRss.RssVersion.Unknown">
+            <summary>
+            Version number is not known.
+            </summary>
+        </member>
+        <member name="F:NRss.RssVersion.Rss091">
+            <summary>
+            RSS version 0.91
+            </summary>
+        </member>
+        <member name="F:NRss.RssVersion.Rss092">
+            <summary>
+            RSS version 0.92
+            </summary>
+        </member>
+        <member name="F:NRss.RssVersion.Rss093">
+            <summary>
+            RSS version 0.93
+            </summary>
+        </member>
+        <member name="F:NRss.RssVersion.Rss20">
+            <summary>
+            RSS version 2.0
+            </summary>
+        </member>
+        <member name="T:NRss.Rss">
+            <summary>
+            Represents a RSS feed.
+            </summary>
+            <remarks>The feed properties map to the child elements of a RSS elements. 
+            For example, the RSS feed has a &lt;channel&gt; element, so the Rss class 
+            has a <see cref="P:NRss.Rss.Channel"/> property and so on.
+            The property for any missing child element will have a null value. 
+            For each property with a value type,
+            such as <see cref="P:NRss.RssChannel.PubDate"/> property of RssChannel, 
+            there will also be a PropertyNameNotPresent to indicate a null value
+            (such as <see cref="P:NRss.RssChannel.PubDateNotPresent"/> in this case).</remarks>
+        </member>
+        <member name="P:NRss.Rss.Version">
+            <summary>
+            Gets or sets the version of this feed.
+            </summary>
+        </member>
+        <member name="P:NRss.Rss.Channel">
+            <summary>
+            Gets or sets the channel of this feed.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannel">
+            <summary>
+            Represents a RSS channel.
+            </summary>
+        </member>
+        <member name="M:NRss.RssChannel.#ctor">
+            <summary>
+            Initializes the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Title">
+            <summary>
+            Gets or sets the channel title.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Link">
+            <summary>
+            Gets or sets the channel link.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Description">
+            <summary>
+            Gets or sets the channel description.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Language">
+            <summary>
+            Gets or sets the channel language.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Copyright">
+            <summary>
+            Gets or sets the channel copyright string.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.ManagingEditor">
+            <summary>
+            Gets or sets the managing editor of the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.WebMaster">
+            <summary>
+            Gets or sets the webmaster or technical contact for the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Rating">
+            <summary>
+            Gets or sets the PICS rating of the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Docs">
+            <summary>
+            Gets or sets the URL to the RSS documentation.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.PubDate">
+            <summary>
+            Gets or sets the channel content publication date/time.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.PubDateNotPresent">
+            <summary>
+            Gets or sets a value indicating whether the <see cref="P:NRss.RssChannel.PubDate"/> property has been read. A true value indicates a missing &lt;pubDate&gt; element in the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.LastBuildDate">
+            <summary>
+            Gets or sets the date/time of the last change of the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.LastBuildDateNotPresent">
+            <summary>
+            Gets a value indicating whether the <see cref="P:NRss.RssChannel.LastBuildDate"/> property has been read. A true value indicates a missing &lt;lastBuildDate&gt; element in the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Image">
+            <summary>
+            Gets or sets the image information of the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.TextInput">
+            <summary>
+            Gets or sets the contents of the &lt;textInput&gt; element of the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.SkipDays">
+            <summary>
+            Gets or sets the days when the channel should not be read.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.SkipHours">
+            <summary>
+            Gets or sets the hours when the channel should not be read.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Items">
+            <summary>
+            Gets or sets the items contained in the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Cloud">
+            <summary>
+            Gets or sets data aboud a rssCloud interface.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Categories">
+            <summary>
+            Gets or sets the collection of categories this channel belongs to.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Generator">
+            <summary>
+            Gets or sets a string indicating the program used to generated the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.Ttl">
+            <summary>
+            Gets a sets a number of minutes that indicated how long a channel can be cached before refreshing from the source.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannel.TtlNotPresent">
+            <summary>
+            Gets or sets a value indicating whether <see cref="P:NRss.RssChannel.Ttl"/> was read from the feed. A true value indicates a missing &lt;ttl&gt; element in the channel.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelItem">
+            <summary>
+            Represents a RSS item.
+            </summary>
+        </member>
+        <member name="M:NRss.RssChannelItem.#ctor">
+            <summary>
+            Initializes a new instance.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.Title">
+            <summary>
+            Gets the item title.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.Link">
+            <summary>
+            Gets the item link.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.Description">
+            <summary>
+            Gets the item description.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.Source">
+            <summary>
+            Gets or sets the source of the item.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.Enclosures">
+            <summary>
+            Gets or sets the enclosure of the item.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.Categories">
+            <summary>
+            Gets or sets the category of the item.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.PubDate">
+            <summary>
+            Gets or sets the date when the item will become available.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.PubDateNotPresent">
+            <summary>
+            Gets or sets a value indicating if <see cref="P:NRss.RssChannelItem.PubDate"/> exists (has been read).
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.ExpirationDate">
+            <summary>
+            Gets or sets the date when the item will no longer be available.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.ExpirationDateNotPresent">
+            <summary>
+            Gets or sets a value indicating if <see cref="P:NRss.RssChannelItem.ExpirationDate"/> exists (has been read).
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.Author">
+            <summary>
+            Gets or sets the e-mail address of the author of the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.Comments">
+            <summary>
+            Gets or sets an URL page for comments relating to the item.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItem.Guid">
+            <summary>
+            Gets or sets a <see cref="P:NRss.RssChannelItem.Guid"/> value, which encapsulates a string that uniquely identifies the item.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelItemCollection">
+            <summary>
+            Represents a collection of channel items.
+            </summary>
+        </member>
+        <member name="M:NRss.RssChannelItemCollection.Add(NRss.RssChannelItem)">
+            <summary>
+            Adds a new item to the collection. The item cannot be null.
+            </summary>
+            <param name="item">The item to be added.</param>
+        </member>
+        <member name="M:NRss.RssChannelItemCollection.Remove(NRss.RssChannelItem)">
+            <summary>
+            Removes an item from the collection, if it exists in it.
+            </summary>
+            <param name="item">The item to be removed.</param>
+        </member>
+        <member name="P:NRss.RssChannelItemCollection.Item(System.Int32)">
+            <summary>
+            Gets or sets the item at a position in the collection.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelImage">
+            <summary>
+            Represents the image for the channel.
+            </summary>
+        </member>
+        <member name="M:NRss.RssChannelImage.#ctor">
+            <summary>
+            Initializes a new instance.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelImage.Url">
+            <summary>
+            Gets or sets the image URL.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelImage.Title">
+            <summary>
+            Gets or sets the image description.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelImage.Link">
+            <summary>
+            Gets or sets the address of the channel.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelImage.Width">
+            <summary>
+            Gets or sets the image width.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelImage.WidthNotPresent">
+            <summary>
+            Gets or sets a value indicating whether the <see cref="P:NRss.RssChannelImage.Width"/> property has been read. A true value indicates a missing &lt;width&gt; element.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelImage.Height">
+            <summary>
+            Gets or sets the image height.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelImage.HeightNotPresent">
+            <summary>
+            Gets or sets a value indicating whether the <see cref="P:NRss.RssChannelImage.Height"/> property has been read. A true value indicates a missing &lt;height&gt; element.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelImage.Description">
+            <summary>
+            Gets or sets the a more detailed image description.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelTextInput">
+            <summary>
+            Represents a channel &lt;textInput&gt; element. 
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelTextInput.Title">
+            <summary>
+            Gets or sets the label of the submit button.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelTextInput.Description">
+            <summary>
+            Gets or sets a description of the text area.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelTextInput.Name">
+            <summary>
+            Gets or sets the name of the text area.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelTextInput.Link">
+            <summary>
+            Gets or sets the URL of the page that processes the request.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelSkipDays">
+            <summary>
+            Represents a collection of days when the channel should not be read.
+            </summary>
+        </member>
+        <member name="M:NRss.RssChannelSkipDays.#ctor">
+            <summary>
+            Initializes a new instance.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelSkipDays.Item(System.DayOfWeek)">
+            <summary>
+            Gets or sets whether a day should be skipped.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelSkipDays.Count">
+            <summary>
+            Gets the number of days that should be skipped.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelSkipHours">
+            <summary>
+            Represents a collection of hours when the channel should not be read.
+            </summary>
+        </member>
+        <member name="M:NRss.RssChannelSkipHours.#ctor">
+            <summary>
+            Initializes a new instance.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelSkipHours.Item(System.Int32)">
+            <summary>
+            Gets or sets whether the hour should be skipped.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelSkipHours.Count">
+            <summary>
+            Gets the number of days that should be skipped.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelItemSource">
+            <summary>
+            Represents the source of a channel item.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItemSource.Url">
+            <summary>
+            Gets or sets the url of the source.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItemSource.Name">
+            <summary>
+            Gets or sets the name of the source.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelItemEnclosure">
+            <summary>
+            Represents an enclosure of a channel item.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItemEnclosure.Url">
+            <summary>
+            Gets or sets the url of the enclosure.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItemEnclosure.Type">
+            <summary>
+            Gets or sets the MIME type of the enclosure.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItemEnclosure.Length">
+            <summary>
+            Gets or sets the length of the enclosure in bytes.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelItemEnclosureCollection">
+            <summary>
+            Represents a collection of item enclosures.
+            </summary>
+        </member>
+        <member name="M:NRss.RssChannelItemEnclosureCollection.Add(NRss.RssChannelItemEnclosure)">
+            <summary>
+            Adds a new item to the collection. The item cannot be null.
+            </summary>
+            <param name="item">The item to be added.</param>
+        </member>
+        <member name="M:NRss.RssChannelItemEnclosureCollection.Remove(NRss.RssChannelItemEnclosure)">
+            <summary>
+            Removes an item from the collection, if it exists in it.
+            </summary>
+            <param name="item">The item to be removed.</param>
+        </member>
+        <member name="P:NRss.RssChannelItemEnclosureCollection.Item(System.Int32)">
+            <summary>
+            Gets or sets the item at a position in the collection.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelCloud">
+            <summary>
+            Represents data of a web service that provides notifications of channel updates.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelCloud.Domain">
+            <summary>
+            Gets or sets the domain of the cloud.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelCloud.Path">
+            <summary>
+            Gets or sets the path to the cloud responder.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelCloud.RegisterProcedure">
+            <summary>
+            Gets or sets the name of the procedure to call to request notification.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelCloud.Protocol">
+            <summary>
+            Gets or sets the protocol used to call the cloud.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelCloud.Port">
+            <summary>
+            Gets the TCP port the cloud is running on.
+            </summary>
+        </member>
+        <member name="T:NRss.RssCategory">
+            <summary>
+            Represents the category of the item or channel in a categorization taxonomy.
+            </summary>
+        </member>
+        <member name="P:NRss.RssCategory.Domain">
+            <summary>
+            Gets or sets the domain, which identifies the categorization taxonomy.
+            </summary>
+        </member>
+        <member name="P:NRss.RssCategory.Name">
+            <summary>
+            Gets or sets the location in the indicated taxonomy.
+            </summary>
+        </member>
+        <member name="T:NRss.RssCategoryCollection">
+            <summary>
+            Represents a collection of item enclosures.
+            </summary>
+        </member>
+        <member name="M:NRss.RssCategoryCollection.Add(NRss.RssCategory)">
+            <summary>
+            Adds a new item to the collection. The item cannot be null.
+            </summary>
+            <param name="item">The item to be added.</param>
+        </member>
+        <member name="M:NRss.RssCategoryCollection.Remove(NRss.RssCategory)">
+            <summary>
+            Removes an item from the collection, if it exists in it.
+            </summary>
+            <param name="item">The item to be removed.</param>
+        </member>
+        <member name="P:NRss.RssCategoryCollection.Item(System.Int32)">
+            <summary>
+            Gets or sets the item at a position in the collection.
+            </summary>
+        </member>
+        <member name="T:NRss.RssChannelItemGuid">
+            <summary>
+            Represents a string that uniquely identifies the item and whether this string is a URL.
+            </summary>
+        </member>
+        <member name="M:NRss.RssChannelItemGuid.#ctor">
+            <summary>
+            Initializes a new instance.
+            </summary>
+        </member>
+        <member name="M:NRss.RssChannelItemGuid.ToString">
+            <summary>
+            Converts this instance to a string.
+            </summary>
+            <returns>The unique string encapsulated in this instance.</returns>
+        </member>
+        <member name="P:NRss.RssChannelItemGuid.Value">
+            <summary>
+            Gets or sets the unique string.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItemGuid.IsPermaLink">
+            <summary>
+            Gets or sets a boolean value indicating whether <see cref="P:NRss.RssChannelItemGuid.Value"/> is a URL.
+            </summary>
+        </member>
+        <member name="P:NRss.RssChannelItemGuid.IsPermaLinkNotPresent">
+            <summary>
+            Gets or sets a value indicating whether <see cref="P:NRss.RssChannelItemGuid.IsPermaLink"/> was read from the 
+            source feed. A true value indicates a missing isPermaLink attribute, 
+            in which case <see cref="P:NRss.RssChannelItemGuid.IsPermaLink"/> will have its default value true.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -200,7 +200,7 @@ namespace Activizr.Logic.Communications
                 catch (Exception)
                 {
                     //didnt't work, throw the original error
-                    //throw new Exception("Failed to deserialize placeholders:",ex);                
+                    throw new Exception("Failed to deserialize placeholders:", ex);                
                 }
             }
         }

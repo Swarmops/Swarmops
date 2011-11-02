@@ -75,7 +75,7 @@ namespace Activizr.Logic.Special.Sweden
                         {
                             result.Add(ReadFullSupportCaseFromReader(reader));
                         }
-                        catch (System.Data.SqlTypes.SqlNullValueException e)
+                        catch (System.Data.SqlTypes.SqlNullValueException)
                         {
                             Console.WriteLine("Exception on bug {0}", reader.GetInt32(0));
                         }
@@ -480,27 +480,13 @@ namespace Activizr.Logic.Special.Sweden
                                             {
                                                 try
                                                 {
-                                                    if (true)
-                                                    {
-
-                                                        person.SendPhoneMessage("Piratpartiet: den mailadress vi har till dig (" +
-                                                                                person.Email +
-                                                                                ") studsar. Kontakta medlemsservice@piratpartiet.se med ny adress.");
-                                                        CloseWithComment(@case.Identity,
-                                                                         "Successfully notified the member at phone# " + person.Phone +
-                                                                         ", " + person.Name + " (#" + person.Identity.ToString() +
-                                                                         "), about the bounced email using an SMS message. Case closed.");
-                                                    }
-                                                    else
-                                                    {
-                                                        /*  -- TEMPORARY DURING ELECTION RUSH 2010: we mark unreachable and don't SMS notify   */
-                                                        CloseWithComment(@case.Identity,
-                                                            "The member at phone# " + person.Phone +
-                                                            ", " + person.Name + " (#" + person.Identity.ToString() +
-                                                            ") could be uniquely identified, but SMS notifications are currently off. The person has been marked unreachable for later notification. Case closed.");
-
-                                                        person.MailUnreachable = true;
-                                                    }
+                                                    person.SendPhoneMessage("Piratpartiet: den mailadress vi har till dig (" +
+                                                                            person.Email +
+                                                                            ") studsar. Kontakta medlemsservice@piratpartiet.se med ny adress.");
+                                                    CloseWithComment(@case.Identity,
+                                                                        "Successfully notified the member at phone# " + person.Phone +
+                                                                        ", " + person.Name + " (#" + person.Identity.ToString() +
+                                                                        "), about the bounced email using an SMS message. Case closed.");
 
                                                 }
                                                 catch (Exception)

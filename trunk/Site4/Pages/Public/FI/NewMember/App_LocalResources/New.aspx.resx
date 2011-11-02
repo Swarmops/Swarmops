@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ButtonAbortResource1.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="FinishButtonResource1.Text" xml:space="preserve">
+    <value>Done!</value>
+  </data>
+  <data name="Label1Resource1.Text" xml:space="preserve">
+    <value>Enter Place</value>
+  </data>
+  <data name="LabelBecomeMemberResource1.Text" xml:space="preserve">
+    <value>Become a member of the Pirate Party &lt;br/&gt;or Pirate Youth</value>
+  </data>
+  <data name="LabelBirthdateErrorResource1.Text" xml:space="preserve">
+    <value>Bad date</value>
+  </data>
+  <data name="LabelEmailErrorResource1.Text" xml:space="preserve">
+    <value>Enter email</value>
+  </data>
+  <data name="LabelGenderErrorResource1.Text" xml:space="preserve">
+    <value>Choose one</value>
+  </data>
+  <data name="LabelKommunErrorResource1.Text" xml:space="preserve">
+    <value>Choose Municipality</value>
+  </data>
+  <data name="LabelKommunResource1.Text" xml:space="preserve">
+    <value>Municipality</value>
+  </data>
+  <data name="LabelMemberOfOrganizationsResource1.Text" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="LabelNameErrorResource1.Text" xml:space="preserve">
+    <value>Enter Name</value>
+  </data>
+  <data name="LabelOrganizationErrorResource1.Text" xml:space="preserve">
+    <value>You must choose an organisation.</value>
+  </data>
+  <data name="LabelOrganizationResource1.Text" xml:space="preserve">
+    <value>orgnamn</value>
+  </data>
+  <data name="LabelPasswordErrorLengthResource1.Text" xml:space="preserve">
+    <value>At least 5 charaters</value>
+  </data>
+  <data name="LabelPasswordErrorResource1.Text" xml:space="preserve">
+    <value>Both must be the same</value>
+  </data>
+  <data name="LabelPasswordErrorResource2.Text" xml:space="preserve">
+    <value>Enter Password</value>
+  </data>
+  <data name="LabelPasswordErrorSameResource1.Text" xml:space="preserve">
+    <value>Both must be the same</value>
+  </data>
+  <data name="LabelPhoneErrorResource1.Text" xml:space="preserve">
+    <value>Enter Phone</value>
+  </data>
+  <data name="LabelPostalErrorResource2.Text" xml:space="preserve">
+    <value>Enter Postal code</value>
+  </data>
+  <data name="LabelPostalErrorUnknownResource1.Text" xml:space="preserve">
+    <value>Unknown postal code</value>
+  </data>
+  <data name="LabelSmsMessageTextResource1.Text" xml:space="preserve">
+    <value>PP MEDLEM</value>
+  </data>
+  <data name="LabelStartRegisterResource1.Text" xml:space="preserve">
+    <value>Start member registration by &lt;br  /&gt;pressing 'Continue &gt;&gt;'</value>
+  </data>
+  <data name="LabelStreetErrorResource1.Text" xml:space="preserve">
+    <value>Enter Street</value>
+  </data>
+  <data name="LinkLosenordResource1.Text" xml:space="preserve">
+    <value>Reset password...</value>
+  </data>
+  <data name="ListItemResource1.Text" xml:space="preserve">
+    <value>januari</value>
+  </data>
+  <data name="ListItemResource1.Value" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ListItemResource10.Text" xml:space="preserve">
+    <value>october</value>
+  </data>
+  <data name="ListItemResource10.Value" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="ListItemResource11.Text" xml:space="preserve">
+    <value>november</value>
+  </data>
+  <data name="ListItemResource11.Value" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="ListItemResource12.Text" xml:space="preserve">
+    <value>december</value>
+  </data>
+  <data name="ListItemResource12.Value" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="ListItemResource13.Text" xml:space="preserve">
+    <value>Choose one...</value>
+  </data>
+  <data name="ListItemResource14.Text" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="ListItemResource15.Text" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="ListItemResource2.Text" xml:space="preserve">
+    <value>february</value>
+  </data>
+  <data name="ListItemResource2.Value" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ListItemResource3.Text" xml:space="preserve">
+    <value>march</value>
+  </data>
+  <data name="ListItemResource3.Value" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ListItemResource4.Text" xml:space="preserve">
+    <value>april</value>
+  </data>
+  <data name="ListItemResource4.Value" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ListItemResource5.Text" xml:space="preserve">
+    <value>may</value>
+  </data>
+  <data name="ListItemResource5.Value" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ListItemResource6.Text" xml:space="preserve">
+    <value>june</value>
+  </data>
+  <data name="ListItemResource6.Value" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="ListItemResource7.Text" xml:space="preserve">
+    <value>july</value>
+  </data>
+  <data name="ListItemResource7.Value" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="ListItemResource8.Text" xml:space="preserve">
+    <value>august</value>
+  </data>
+  <data name="ListItemResource8.Value" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="ListItemResource9.Text" xml:space="preserve">
+    <value>september</value>
+  </data>
+  <data name="ListItemResource9.Value" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="Literal10Resource1.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Literal11Resource1.Text" xml:space="preserve">
+    <value>Birth date</value>
+  </data>
+  <data name="Literal12Resource1.Text" xml:space="preserve">
+    <value>I am...</value>
+  </data>
+  <data name="Literal13Resource1.Text" xml:space="preserve">
+    <value>Nearly done...</value>
+  </data>
+  <data name="Literal14Resource1.Text" xml:space="preserve">
+    <value> &lt;b&gt;Choose a password&lt;/b&gt; you want to use when logging in to the member handling system</value>
+  </data>
+  <data name="Literal15Resource1.Text" xml:space="preserve">
+    <value>For example to subscribe to newsletters or updating your data.</value>
+  </data>
+  <data name="Literal16Resource1.Text" xml:space="preserve">
+    <value>Choose a password</value>
+  </data>
+  <data name="Literal17Resource1.Text" xml:space="preserve">
+    <value>Enter once more</value>
+  </data>
+  <data name="Literal18Resource1.Text" xml:space="preserve">
+    <value>Finally, &lt;b&gt;how active&lt;/b&gt; would you like to be in the pirate movement?</value>
+  </data>
+  <data name="Literal19Resource1.Text" xml:space="preserve">
+    <value>You will get newsletters, local mailings and invitations for meetings, but not information about immediate actions etc.</value>
+  </data>
+  <data name="Literal20Resource1.Text" xml:space="preserve">
+    <value>When the party performs immediate actions and election campaining, you will be informed via mail or SMS. Choose this if you want to be an active member of the party.</value>
+  </data>
+  <data name="Literal21Resource1.Text" xml:space="preserve">
+    <value>If you want to take responsibility for the party activities within your municipality, or even be a leader of it, you are moste welcome to volounteer.</value>
+  </data>
+  <data name="Literal22Resource1.Text" xml:space="preserve">
+    <value>Welcome as a member!</value>
+  </data>
+  <data name="Literal23Resource1.Text" xml:space="preserve">
+    <value>You are now a member of:</value>
+  </data>
+  <data name="Literal24Resource1.Text" xml:space="preserve">
+    <value>You will shortly reciev an email with more information.  While you wait,you might be iterested in visiting:</value>
+  </data>
+  <data name="Literal25Resource1.Text" xml:space="preserve">
+    <value>If you haven't recieved the confimation mail within a few hours, it might have been the victim of overaggressive spam-protection. If so, please contact our member service department at email xxxxxxxxx@xxxxxx.xx</value>
+  </data>
+  <data name="Literal26Resource1.Text" xml:space="preserve">
+    <value>Please enter your &lt;strong&gt;personal data&lt;/strong&gt; for</value>
+  </data>
+  <data name="Literal27Resource1.Text" xml:space="preserve">
+    <value>If you are a member already, byt have forgotten the password, please try:</value>
+  </data>
+  <data name="Literal28Resource1.Text" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="Literal29Resource1.Text" xml:space="preserve">
+    <value>Instead of re-registering.</value>
+  </data>
+  <data name="Literal2Resource1.Text" xml:space="preserve">
+    <value>Welcome as a member!</value>
+  </data>
+  <data name="Literal30Resource1.Text" xml:space="preserve">
+    <value>Info about how your personal data is handled.</value>
+  </data>
+  <data name="Literal31Resource1.Text" xml:space="preserve">
+    <value>
+                            Information regarding personal data</value>
+  </data>
+  <data name="Literal32Resource1.Text" xml:space="preserve">
+    <value>(Obsolete info about paying fee by SMS)</value>
+  </data>
+  <data name="Literal33Resource1.Text" xml:space="preserve">
+    <value>We will ask for some personal information for our membership database. This info and other you might submit later, is handled by the party officials in the area where you live. They can also be seen by the system administrators, some wich might be active in the pirate parties in other countries. We never, ever share personal information with any third parties. When you leave the party or the Young Pirate, and makes a request for it, any identifying information will be erased (only statistical data like postal code and birth year will be saved).</value>
+  </data>
+  <data name="Literal34Resource1.Text" xml:space="preserve">
+    <value>To pay your membership fee, send SMS message</value>
+  </data>
+  <data name="Literal3Resource1.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Welmome to become a member of the Pirate Party or Pirate Youth&lt;/strong&gt;&lt;br&gt; Membership is free, but we encourage volontary donations..More on this later..</value>
+  </data>
+  <data name="Literal4Resource1.Text" xml:space="preserve">
+    <value>Before starting, wich organisation would you like to join?</value>
+  </data>
+  <data name="Literal5Resource1.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Literal6Resource1.Text" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="Literal7Resource1.Text" xml:space="preserve">
+    <value>Postal code, city</value>
+  </data>
+  <data name="Literal8Resource1.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Literal9Resource1.Text" xml:space="preserve">
+    <value>(Mobile)Phone</value>
+  </data>
+  <data name="PageResource1.Title" xml:space="preserve">
+    <value>PirateWeb - Welcome to the Pirate Party and Pirate Youth!</value>
+  </data>
+  <data name="PageResource2.Title" xml:space="preserve">
+    <value>&lt;asp:Literal ID="Literal1" runat="server"&gt;PirateWeb - Welcome to the Pirate Party and Pirate Youth!&lt;/asp:Literal&gt;</value>
+  </data>
+  <data name="RadioActivityActivistResource1.Text" xml:space="preserve">
+    <value>Activst</value>
+  </data>
+  <data name="RadioActivityOfficerResource1.Text" xml:space="preserve">
+    <value>Official</value>
+  </data>
+  <data name="RadioActivityPassiveResource1.Text" xml:space="preserve">
+    <value>Passive</value>
+  </data>
+  <data name="RadioPartyResource1.Text" xml:space="preserve">
+    <value>My local party organisation, where such exists.</value>
+  </data>
+  <data name="RadioYouthLeagueOnlyResource1.Text" xml:space="preserve">
+    <value>I would like to join Pirate Youth (only), no fees.</value>
+  </data>
+  <data name="RadioYouthLeagueResource1.Text" xml:space="preserve">
+    <value>Pirate Party</value>
+  </data>
+  <data name="RepeatLinkResource2.Text" xml:space="preserve">
+    <value>Register additional member</value>
+  </data>
+  <data name="StartNextButtonResource1.Text" xml:space="preserve">
+    <value>Continue &gt;&gt;</value>
+  </data>
+  <data name="StepNextButtonResource1.Text" xml:space="preserve">
+    <value>Continue &gt;&gt;</value>
+  </data>
+  <data name="StepPreviousButtonResource1.Text" xml:space="preserve">
+    <value>&lt;&lt; Back</value>
+  </data>
+  <data name="WizardResource1.CancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="WizardResource1.FinishCompleteButtonText" xml:space="preserve">
+    <value>Done!</value>
+  </data>
+  <data name="WizardResource1.FinishPreviousButtonText" xml:space="preserve">
+    <value>Invisible</value>
+  </data>
+  <data name="WizardResource1.SkipLinkText" xml:space="preserve">
+    <value>Skip Navigation Links.</value>
+  </data>
+  <data name="WizardResource1.StartNextButtonText" xml:space="preserve">
+    <value>Continue &gt;&gt;</value>
+  </data>
+  <data name="WizardResource1.StepNextButtonText" xml:space="preserve">
+    <value>Continue &gt;&gt;</value>
+  </data>
+  <data name="WizardResource1.StepPreviousButtonText" xml:space="preserve">
+    <value>&lt;&lt; Back</value>
+  </data>
+  <data name="WizardStepResource1.Title" xml:space="preserve">
+    <value>WizardStep0</value>
+  </data>
+</root>
