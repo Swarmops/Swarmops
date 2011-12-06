@@ -17,52 +17,47 @@ namespace Activizr.Database
         public static PirateDb GetDatabase()
         {
             // First, check if a previous invocation has put anything in the cashe.
-            string ConnectionString = CachedConnectionString;
-            string ProviderName = CachedProviderName;
+            string connectionString = CachedConnectionString;
 
-            // During a cacheless invokation, the app/web config has priority.
-            if (ConnectionString == null && ConfigurationManager.ConnectionStrings["PirateWeb"] != null)
+            // During a cacheless invocation, the app/web config has priority.
+            if (connectionString == null && ConfigurationManager.ConnectionStrings["Activizr"] != null)
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["PirateWeb"].ConnectionString;
-                ProviderName = ConfigurationManager.ConnectionStrings["PirateWeb"].ProviderName;
+                connectionString = ConfigurationManager.ConnectionStrings["Activizr"].ConnectionString;
 
                 Logging.LogInformation(LogSource.PirateDb,
-                                       "PirateDb initialized from Config ConnectionString: [" + ConnectionString +
-                                       "] / [" + ProviderName + "]");
+                                       "PirateDb initialized from Config ConnectionString: [" + connectionString +
+                                       "]");
             }
 
             // If the app/web config is empty, check the database config file on disk
-            if (ConnectionString == null)
+            if (connectionString == null)
             {
                 try
                 {
-                    if (Path.DirectorySeparatorChar == '/')
+                    if (Path.DirectorySeparatorChar == '/' && HttpContext.Current == null)
                     {
-                        // We are running under mono
+                        // We are running under mono in a backend environment
 
                         using (StreamReader reader = new StreamReader(MonoConfigFile))
                         {
-                            ConnectionString = reader.ReadLine();
-                            ProviderName = reader.ReadLine();
+                            connectionString = reader.ReadLine();
 
                             Logging.LogInformation(LogSource.PirateDb,
-                                                   "PirateDb initialized for Linux: [" + ConnectionString + "] / [" +
-                                                   ProviderName + "]");
+                                                   "PirateDb initialized for Linux: [" + connectionString + "]");
                         }
                     }
                     else if (HttpContext.Current != null)
                     {
-                        // We are running a web application
+                        // We are running a web application, under Mono (production) or Windows (development)
                         using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(WebConfigFile))
                             )
                         {
-                            ConnectionString = reader.ReadLine();
-                            ProviderName = reader.ReadLine();
+                            connectionString = reader.ReadLine();
 
                             Logging.LogInformation(LogSource.PirateDb,
-                                                   "PirateDb initialized for web: [" + ConnectionString + "] / [" +
-                                                   ProviderName + "]");
+                                                   "PirateDb initialized for web: [" + connectionString + "]");
                         }
+
                     }
                     else
                     {
@@ -70,12 +65,11 @@ namespace Activizr.Database
                         // If so, the current working directory is "PirateWeb/30/Console/bin".
                         using (StreamReader reader = new StreamReader(AppConfigFile))
                         {
-                            ConnectionString = reader.ReadLine();
-                            ProviderName = reader.ReadLine();
+                            connectionString = reader.ReadLine();
 
                             Logging.LogInformation(LogSource.PirateDb,
-                                                   "PirateDb initialized for application: [" + ConnectionString +
-                                                   "] / [" + ProviderName + "]");
+                                                   "PirateDb initialized for application: [" + connectionString +
+                                                   "]");
                         }
                     }
                 }
@@ -86,42 +80,118 @@ namespace Activizr.Database
                 }
 
                 // To simplify future checks
-                if (ConnectionString != null && ConnectionString.Length == 0)
+                if (connectionString != null && connectionString.Length == 0)
                 {
-                    ConnectionString = null;
-                }
-
-                // For backwards compability with one line MS Sql database config file
-                // To be removed when Rick feels like it.
-                if (ConnectionString != null && (ProviderName == null || ProviderName.Length == 0))
-                {
-                    ProviderName = "System.Data.SqlClient";
+                    connectionString = null;
                 }
             }
 
-            // If we still have nothing, use the hardcodedd default
-            if (ConnectionString == null)
+            // If we still have nothing, and we're running from web, then assume we have a dev environment and use the hostname as db, user, and pass.
+            if (connectionString == null)
             {
-                string DataSource = DefaultAppDataSource;
                 if (HttpContext.Current != null)
                 {
-                    DataSource = HttpContext.Current.Server.MapPath(DefaultWebDataSource);
+                    string hostName = HttpContext.Current.Request.Url.Host;
+
+                    connectionString = "server=peregrine;database=" + hostName + ";user=" + hostName + ";pass=" + hostName;  // TODO: Replace "peregrine" with "localhost"
                 }
-                ConnectionString = DefaultConnectionString.Replace("%DataSource%", DataSource);
-                ProviderName = DefaultProviderName;
+                else
+                {
+                    throw new InvalidOperationException("No database connection string found -- write a connect string on one line into a file named database.config; see connectionstrings.com for examples");  // TODO: Replace with custom exception to present config screen
+                }
             }
 
             // Now write the correct data to the cache, for faster lookup next time.
             if (CachedConnectionString == null)
             {
-                CachedConnectionString = ConnectionString;
-                CachedProviderName = ProviderName;
+                CachedConnectionString = connectionString;
             }
 
-            return new PirateDb(DbProviderFactories.GetFactory(ProviderName), ConnectionString);
+            return new PirateDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
         }
 
-        public PirateDb (DbProviderFactory ProviderFactory, string ConnectionString)
+        public static PirateDb GetDatabaseAsAdmin()
+        {
+            string connectionString = string.Empty;
+
+            try
+            {
+                if (Path.DirectorySeparatorChar == '/' && HttpContext.Current == null)
+                {
+                    // We are running under mono in a backend environment
+
+                    using (StreamReader reader = new StreamReader(MonoConfigFile.Replace(".config", "-admin.config")))
+                    {
+                        connectionString = reader.ReadLine();
+
+                        Logging.LogInformation(LogSource.PirateDb,
+                                                "PirateDb initialized for Linux Backend: [" + connectionString + "]");
+                    }
+                }
+                else if (HttpContext.Current != null)
+                {
+                    // We are running a web application, under Mono (production) or Windows (development)
+                    using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(WebConfigFile.Replace(".config", "-admin.config")))
+                        )
+                    {
+                        connectionString = reader.ReadLine();
+
+                        Logging.LogInformation(LogSource.PirateDb,
+                                                "PirateDb initialized for web: [" + connectionString + "]");
+                    }
+
+                }
+                else
+                {
+                    // We are running an application, presumably directly from Visual Studio.
+                    // If so, the current working directory is "PirateWeb/30/Console/bin".
+                    using (StreamReader reader = new StreamReader(AppConfigFile.Replace(".config", "-admin.config")))
+                    {
+                        connectionString = reader.ReadLine();
+
+                        Logging.LogInformation(LogSource.PirateDb,
+                                                "PirateDb initialized for application: [" + connectionString +
+                                                "]");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Logging.LogWarning(LogSource.PirateDb, "Unable to read Database.Config - defaulting");
+                // Ignore if we can't read the Database.config
+            }
+
+            // To simplify future checks
+            if (connectionString != null && connectionString.Length == 0)
+            {
+                connectionString = null;
+            }
+
+            // If we still have nothing, and we're running from web, then assume we have a dev environment and use the hostname as db, user, and pass.
+            if (String.IsNullOrEmpty(connectionString))
+            {
+                else if (HttpContext.Current != null)
+                {
+                    string hostName = HttpContext.Current.Request.Url.Host;
+
+                    connectionString = "server=peregrine;database=" + hostName + ";user=" + hostName + "-admin;pass=" + hostName +"-admin";  // TODO: Replace "peregrine" with "localhost"
+                }
+                else
+                {
+                    throw new InvalidOperationException("No database-as-admin connection string found -- write a connect string into the \"ActivizrAdminConnect\" environment var, or on one line into a file named database-admin.config; see connectionstrings.com for examples");  // TODO: Replace with custom exception to present config screen
+                }
+            }
+
+            // Now write the correct data to the cache, for faster lookup next time.
+            if (CachedConnectionString == null)
+            {
+                CachedConnectionString = connectionString;
+            }
+
+            return new PirateDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
+        }
+
+        public PirateDb(DbProviderFactory ProviderFactory, string ConnectionString)
         {
             this.ProviderFactory = ProviderFactory;
             this.ConnectionString = ConnectionString;
@@ -135,18 +205,10 @@ namespace Activizr.Database
         private const string AppConfigFile = @"database.config";
         private const string WebConfigFile = @"~/database.config";
         private const string MonoConfigFile = @"./database.config";
-
-        // The default values used by GetDatabase()
-        private const string DefaultAppDataSource = @"..\..\Site\DevDataBase\PirateWeb-DevDatabase.mdb";
-        private const string DefaultWebDataSource = @"~/DevDatabase/PirateWeb-DevDatabase.mdb";
-
-        private const string DefaultConnectionString =
-            "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=%DataSource%;User Id=admin;Password=;";
-
-        private const string DefaultProviderName = "System.Data.OleDb";
+        
+        private const string DefaultProviderName = "MySql.Data.SqlClient";
 
         // The cached values used by GetDatabase()
         private static string CachedConnectionString = null;
-        private static string CachedProviderName = null;
     }
 }
