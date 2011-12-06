@@ -170,7 +170,7 @@ namespace Activizr.Database
             // If we still have nothing, and we're running from web, then assume we have a dev environment and use the hostname as db, user, and pass.
             if (String.IsNullOrEmpty(connectionString))
             {
-                else if (HttpContext.Current != null)
+                if (HttpContext.Current != null)
                 {
                     string hostName = HttpContext.Current.Request.Url.Host;
 
