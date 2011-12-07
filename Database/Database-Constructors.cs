@@ -182,7 +182,7 @@ namespace Activizr.Database
                 }
             }
 
-            // Now write the correct data to the cache, for faster lookup next time.
+            // Now write the correct data to the cache, for faster lookup next time
             if (CachedConnectionString == null)
             {
                 CachedConnectionString = connectionString;
