@@ -22,9 +22,13 @@
  </ProjectOptions>
  <Targets>
   <AssemblyReferenceDirectories>
-   <Directory>$(ProjectDir)/Site5-Deployment/Release/bin/</Directory>
    <Directory>$(ProjectDir)/Utility/obj/Release/</Directory>
   </AssemblyReferenceDirectories>
+  <Target Name="$(ProjectDir)/Site5-Deployment/Release/bin/Activizr.Basic.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/Site5-Deployment/Release/bin/Activizr.Database.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/Site5-Deployment/Release/bin/Activizr.Interface.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/Site5-Deployment/Release/bin/Activizr.Logic.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/Site5-Deployment/Release/bin/Activizr.Site.dll" Analyze="True" AnalyzeAllChildren="True" />
  </Targets>
  <Rules>
   <RuleFiles>
