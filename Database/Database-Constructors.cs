@@ -219,7 +219,7 @@ namespace Activizr.Database
         private const string WebConfigFile = @"~/database.config";
         private const string MonoConfigFile = @"./database.config";
         
-        private const string DefaultProviderName = "MySql.Data.SqlClient";
+        private const string DefaultProviderName = "MySql.Data.MySqlClient";
 
         // The cached values used by GetDatabase()
         private static string _cachedConnectionString = null;
