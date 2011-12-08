@@ -107,7 +107,15 @@ namespace Activizr.Database
                 CachedConnectionString = connectionString;
             }
 
-            return new PirateDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
+            try
+            {
+                PirateDb db = new PirateDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(
+                    "Unable to initalize PirateDb using connection string \"" + connectionString + "\"", e);
+            }
         }
 
         public static PirateDb GetDatabaseAsAdmin()
