@@ -94,7 +94,7 @@ namespace Activizr.Database
                 {
                     string hostName = HttpContext.Current.Request.Url.Host;
 
-                    connectionString = "server=peregrine;database=" + hostName + ";user=" + hostName + ";pass=" + hostName;  // TODO: Replace "peregrine" with "localhost"
+                    connectionString = "server=peregrine;database=" + hostName + ";user=" + hostName + ";password=" + hostName;  // TODO: Replace "peregrine" with "localhost"
                 }
                 else
                 {
@@ -187,7 +187,7 @@ namespace Activizr.Database
                 {
                     string hostName = HttpContext.Current.Request.Url.Host;
 
-                    connectionString = "server=peregrine;database=" + hostName + ";user=" + hostName + "-admin;pass=" + hostName +"-admin";  // TODO: Replace "peregrine" with "localhost"
+                    connectionString = "server=peregrine;database=" + hostName + ";user=" + hostName + "-admin;password=" + hostName +"-admin";  // TODO: Replace "peregrine" with "localhost"
                 }
                 else
                 {
