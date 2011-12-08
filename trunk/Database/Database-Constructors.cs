@@ -6,6 +6,7 @@ using System.Configuration;
 using System.IO;
 using System.Web;
 using Activizr.Basic.Diagnostics;
+using MySql.Data;
 
 namespace Activizr.Database
 {
@@ -17,7 +18,7 @@ namespace Activizr.Database
         public static PirateDb GetDatabase()
         {
             // First, check if a previous invocation has put anything in the cashe.
-            string connectionString = CachedConnectionString;
+            string connectionString = _cachedConnectionString;
 
             // During a cacheless invocation, the app/web config has priority.
             if (connectionString == null && ConfigurationManager.ConnectionStrings["Activizr"] != null)
@@ -102,9 +103,9 @@ namespace Activizr.Database
             }
 
             // Now write the correct data to the cache, for faster lookup next time.
-            if (CachedConnectionString == null)
+            if (_cachedConnectionString == null)
             {
-                CachedConnectionString = connectionString;
+                _cachedConnectionString = connectionString;
             }
 
             PirateDb db = null;
@@ -195,9 +196,9 @@ namespace Activizr.Database
             }
 
             // Now write the correct data to the cache, for faster lookup next time
-            if (CachedConnectionString == null)
+            if (_cachedConnectionString == null)
             {
-                CachedConnectionString = connectionString;
+                _cachedConnectionString = connectionString;
             }
 
             return new PirateDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
@@ -221,6 +222,6 @@ namespace Activizr.Database
         private const string DefaultProviderName = "MySql.Data.SqlClient";
 
         // The cached values used by GetDatabase()
-        private static string CachedConnectionString = null;
+        private static string _cachedConnectionString = null;
     }
 }
