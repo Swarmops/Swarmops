@@ -72,20 +72,6 @@
         
         // This part really should have been in Application_Start, but it doesn't fire for some reason
 
-        // Read build number, or set to "Private" if none
-
-        try
-        {
-            using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/BuildIdentity.txt")))
-            {
-                HttpContext.Current.Application["BuildIdentity"] = "Build " + reader.ReadLine();
-            }
-        }
-        catch (Exception)
-        {
-            HttpContext.Current.Application["BuildIdentity"] = "Private Build";
-        }
-
     }
 
     private void Session_End (object sender, EventArgs e)
