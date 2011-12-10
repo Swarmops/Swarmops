@@ -14,7 +14,7 @@
     <SourceWebPhysicalPath>..\Site5</SourceWebPhysicalPath>
     <SourceWebProject>{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}|C:\Lab\Activizr\Site5</SourceWebProject>
     <SourceWebVirtualPath>/Site5</SourceWebVirtualPath>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
