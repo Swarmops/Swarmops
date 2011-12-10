@@ -30,88 +30,88 @@ namespace Activizr.Logic.Support
 
                 // ------------ COMMUNICATION CLASSES ------------
 
-                case "PirateWeb.Basic.Types.BasicCommunicationTurnaround":
+                case "Activizr.Basic.Types.BasicCommunicationTurnaround":
                     return CommunicationTurnaround.FromBasic((BasicCommunicationTurnaround)basic);
 
 
                 // ----------- FINANCIAL CLASSES ----------
 
-                case "PirateWeb.Basic.Types.BasicExpenseClaim":
+                case "Activizr.Basic.Types.BasicExpenseClaim":
                     return ExpenseClaim.FromBasic((BasicExpenseClaim) basic);
 
-                case "PirateWeb.Basic.Types.BasicInboundInvoice":
+                case "Activizr.Basic.Types.BasicInboundInvoice":
                     return InboundInvoice.FromBasic((BasicInboundInvoice) basic);
 
-                case "PirateWeb.Basic.Types.BasicFinancialAccount":
+                case "Activizr.Basic.Types.BasicFinancialAccount":
                     return FinancialAccount.FromBasic((BasicFinancialAccount)basic);
 
-                case "PirateWeb.Basic.Types.BasicFinancialTransaction":
+                case "Activizr.Basic.Types.BasicFinancialTransaction":
                     return FinancialTransaction.FromBasic((BasicFinancialTransaction)basic);
 
-                case "PirateWeb.Basic.Types.BasicFinancialValidation":
+                case "Activizr.Basic.Types.BasicFinancialValidation":
                     return FinancialValidation.FromBasic((BasicFinancialValidation)basic);
 
-                case "PirateWeb.Basic.Types.BasicOutboundInvoice":
+                case "Activizr.Basic.Types.BasicOutboundInvoice":
                     return OutboundInvoice.FromBasic((BasicOutboundInvoice)basic);
 
-                case "PirateWeb.Basic.Types.BasicOutboundInvoiceItem":
+                case "Activizr.Basic.Types.BasicOutboundInvoiceItem":
                     return OutboundInvoiceItem.FromBasic((BasicOutboundInvoiceItem)basic);
 
-                case "PirateWeb.Basic.Types.BasicPayment":
+                case "Activizr.Basic.Types.BasicPayment":
                     return Payment.FromBasic((BasicPayment)basic);
 
-                case "PirateWeb.Basic.Types.BasicPaymentGroup":
+                case "Activizr.Basic.Types.BasicPaymentGroup":
                     return PaymentGroup.FromBasic((BasicPaymentGroup)basic);
 
-                case "PirateWeb.Basic.Types.BasicPayout":
+                case "Activizr.Basic.Types.BasicPayout":
                     return Payout.FromBasic((BasicPayout)basic);
 
-                case "PirateWeb.Basic.Types.BasicPayrollAdjustment":
+                case "Activizr.Basic.Types.BasicPayrollAdjustment":
                     return PayrollAdjustment.FromBasic((BasicPayrollAdjustment) basic);
 
-                case "PirateWeb.Basic.Types.BasicPayrollItem":
+                case "Activizr.Basic.Types.BasicPayrollItem":
                     return PayrollItem.FromBasic((BasicPayrollItem)basic);
 
-                case "PirateWeb.Basic.Types.BasicSalary":
+                case "Activizr.Basic.Types.BasicSalary":
                     return Salary.FromBasic((BasicSalary) basic);
 
 
                 // ------------ GOVERNANCE CLASSES ------------
 
-                case "PirateWeb.Basic.Types.BasicBallot":
+                case "Activizr.Basic.Types.BasicBallot":
                     return Ballot.FromBasic((BasicBallot)basic);
 
-                case "PirateWeb.Basic.Types.BasicMeetingElectionCandidate":
+                case "Activizr.Basic.Types.BasicMeetingElectionCandidate":
                     return MeetingElectionCandidate.FromBasic((BasicInternalPollCandidate)basic);
 
-                case "PirateWeb.Basic.Types.BasicMeetingElection":
+                case "Activizr.Basic.Types.BasicMeetingElection":
                     return MeetingElection.FromBasic((BasicInternalPoll)basic);
 
-                case "PirateWeb.Basic.Types.BasicMeetingElectionVote":
+                case "Activizr.Basic.Types.BasicMeetingElectionVote":
                     return MeetingElectionVote.FromBasic((BasicInternalPollVote)basic);
 
-                    case "PirateWeb.Basic.Types.Governance.BasicMotion":
+                    case "Activizr.Basic.Types.Governance.BasicMotion":
                     return Motion.FromBasic((BasicMotion)basic);
 
-                case "PirateWeb.Basic.Types.Governance.BasicMotionAmendment":
+                case "Activizr.Basic.Types.Governance.BasicMotionAmendment":
                     return MotionAmendment.FromBasic((BasicMotionAmendment)basic);
 
 
                 // ------------ PIRATE CLASSES ------------
 
-                case "PirateWeb.Basic.Types.BasicExternalActivity":
+                case "Activizr.Basic.Types.BasicExternalActivity":
                     return ExternalActivity.FromBasic((BasicExternalActivity) basic);
 
-                case "PirateWeb.Basic.Types.BasicParley":
+                case "Activizr.Basic.Types.BasicParley":
                     return Parley.FromBasic((BasicParley)basic);
 
-                case "PirateWeb.Basic.Types.BasicParleyAttendee":
+                case "Activizr.Basic.Types.BasicParleyAttendee":
                     return ParleyAttendee.FromBasic((BasicParleyAttendee)basic);
 
-                case "PirateWeb.Basic.Types.BasicParleyOption":
+                case "Activizr.Basic.Types.BasicParleyOption":
                     return ParleyOption.FromBasic((BasicParleyOption)basic);
 
-                case "PirateWeb.Basic.Types.BasicPerson":
+                case "Activizr.Basic.Types.BasicPerson":
                     return Person.FromBasic((BasicPerson)basic);
 
                 // ------------------ FAIL ----------------
