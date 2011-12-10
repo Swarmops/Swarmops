@@ -1,6 +1,7 @@
 <%@ Application Language="C#" %>
 <%@ Import Namespace="System.Globalization" %>
 <%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="System.IO" %>
 <%@ Import Namespace="System.Security.Principal" %>
 <%@ Import Namespace="System.Threading" %>
 <%@ Import Namespace="Activizr.Logic" %>
@@ -15,6 +16,20 @@
         HttpContext.Current.Application["Cultures"] = new string[] { "sv-SE", "en-US", "de-DE", "de-AT", "fi-FI" };
 
         HttpContext.Current.Application["UserRoleCache"] = new Dictionary<int, string[]>();
+        
+        // Read build number, or set to "Private" if none
+
+        try
+        {
+            using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/BuildIdentity.txt")))
+            {
+                HttpContext.Current.Application["BuildIdentity"] = "Build " + reader.ReadLine();
+            }
+        }
+        catch (Exception)
+        {
+            HttpContext.Current.Application["BuildIdentity"] = "Private Build";
+        }
     }
 
     private void Application_End (object sender, EventArgs e)

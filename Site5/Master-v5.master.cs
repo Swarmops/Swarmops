@@ -140,7 +140,14 @@ namespace Activizr
                     continue;
                 }
 
-                item.Text = GetGlobalResourceObject("Menu5", resourceKey).ToString();
+                if (item.Text == "Build# Auto")
+                {
+                    item.Text = (string) HttpContext.Current.Application["BuildIdentity"];
+                }
+                else
+                {
+                    item.Text = GetGlobalResourceObject("Menu5", resourceKey).ToString();
+                }
 
                 bool enabled = topLevel;
 

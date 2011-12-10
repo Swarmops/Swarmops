@@ -8,7 +8,7 @@
 <head id="Head1" runat="server">
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
     <!-- jQuery -->
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" ></script>
@@ -165,6 +165,8 @@
                         <telerik:RadMenuItem runat="server" Text="XYZ Organization Clusters" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration_OrganizationClusters" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Manage Geography" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration_GeographyTree" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Access Control Lists" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration_AccessControlLists" />
+                        <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="4" />
+                        <telerik:RadMenuItem runat="server" Text="Build# Auto" Permission="All" UserLevel="4" NotaBene="This is a special case -- the build number is dynamically inserted for text" /> 
                     </Items>
                 </telerik:RadMenuItem>
             </Items>
