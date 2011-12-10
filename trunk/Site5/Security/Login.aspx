@@ -9,7 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
 	<telerik:RadStyleSheetManager id="RadStyleSheetManager" runat="server" />
-    <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
+    <link href="../Style/style-v5.css" rel="stylesheet" type="text/css" />
     <title>Activizr Beta - Login</title>
 </head>
 <body class="loginpage">
