@@ -24,18 +24,18 @@ namespace Activizr
 
             // Read build number if not loaded, or set to "Private" if none
 
-            if (HttpContext.Current.Application["BuildIdentity"] == null)
+            if (_buildIdentity == null)
             {
                 try
                 {
                     using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/BuildIdentity.txt")))
                     {
-                        HttpContext.Current.Application["BuildIdentity"] = "Build " + reader.ReadLine();
+                        _buildIdentity = "Build " + reader.ReadLine();
                     }
                 }
                 catch (Exception)
                 {
-                    HttpContext.Current.Application["BuildIdentity"] = "Private Build";
+                    _buildIdentity = "Private Build";
                 }
             }
 
@@ -104,6 +104,7 @@ namespace Activizr
 
         private Person _viewingPerson;
         private Authority _authority;
+        private static string _buildIdentity;
 
 
         private void Localize()
@@ -160,7 +161,7 @@ namespace Activizr
 
                 if (item.Text == "Build# Auto")
                 {
-                    item.Text = (string) HttpContext.Current.Application["BuildIdentity"];
+                    item.Text = _buildIdentity;
                 }
                 else
                 {
