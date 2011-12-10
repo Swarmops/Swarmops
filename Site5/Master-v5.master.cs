@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Threading;
 using System.Web;
 using System.Web.UI;
@@ -20,6 +21,23 @@ namespace Activizr
             // Event subscriptions
 
             this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
+
+            // Read build number if not loaded, or set to "Private" if none
+
+            if (HttpContext.Current.Application["BuildIdentity"] == null)
+            {
+                try
+                {
+                    using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/BuildIdentity.txt")))
+                    {
+                        HttpContext.Current.Application["BuildIdentity"] = "Build " + reader.ReadLine();
+                    }
+                }
+                catch (Exception)
+                {
+                    HttpContext.Current.Application["BuildIdentity"] = "Private Build";
+                }
+            }
 
             // Titles etc
 
