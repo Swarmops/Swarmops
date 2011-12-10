@@ -5,18 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 	<title></title>
-	<telerik:RadStyleSheetManager id="RadStyleSheetManager1" runat="server" />
 </head>
 <body>
     <form id="form1" runat="server">
 	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
-	<script type="text/javascript">
-		//Put your JavaScript code here.
-    </script>
-	<telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
-	</telerik:RadAjaxManager>
 	<div>
-
+      Testing.
 	</div>
 	</form>
 </body>
