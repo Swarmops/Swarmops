@@ -1,20 +1,45 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Default" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Default page for Activizr v5 - to be built painfully and slowly</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-       IT WORKS!<br/>
-       Database operational: org#1 is <asp:Label runat="server" ID="LabelOrgOne" /><br/>
-       Translations operational #1: <asp:Label runat="server" Text="<%$ Resources:Menu5,Menu5_Administration %>" ID="Nonsense"/><br/>
-       Translations operational #2: <asp:Label runat="server" ID="LabelTranslation2" />
-       Forcing build, again
+<asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    <asp:Label ID="LabelDashboardTemporaryContent" runat="server" /> <a href="/Pages/v5/Governance/Vote.aspx"><asp:Label ID="LabelGoThere2" runat="server" /></a>
+</asp:Content>
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
+
+    <h2 class="blue"><asp:Label ID="LabelSidebarInfo" runat="server" /><span class="arrow"></span></h2>
+    
+    <div class="box">
+        <div class="content">
+        <asp:Label ID="LabelDashboardInfo" runat="server" /> <a href="/Pages/v5/Governance/Vote.aspx"><asp:Label ID="LabelGoThere" runat="server" /></a>
+        </div>
     </div>
-    </form>
-</body>
-</html>
+    
+    <h2 class="blue"><asp:Label ID="LabelSidebarActions" runat="server" /><span class="arrow"></span></h2>
+    
+    <div class="box">
+        <div class="content">
+            <div class="link-row-encaps" onclick="document.location='/Pages/v5/Governance/Vote.aspx';" >
+                <div class="link-row-icon" style="background-image:url('/Images/PageIcons/iconshock-vote-16px.png')"></div>
+                <asp:Label ID="LabelActionVote" runat="server" />
+            </div>
+            <div class="link-row-encaps" onclick="document.location='/Pages/v5/Governance/ListMotions.aspx';" >
+                <div class="link-row-icon" style="background-image:url('/Images/PageIcons/iconshock-motions-16px.png')"></div>
+                <asp:Label ID="LabelActionListMotions" runat="server" />
+            </div>
+        </div>
+    </div>
+    
+    <h2 class="orange"><asp:Label ID="LabelSidebarTodo" runat="server" /><span class="arrow"></span></h2>
+    
+    <div class="box">
+        <div class="content">
+            <asp:Label ID="LabelActionItemsHere" runat="server" />
+        </div>
+    </div>
+        
+</asp:Content>
+
