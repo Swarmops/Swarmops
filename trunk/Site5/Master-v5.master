@@ -166,7 +166,7 @@
                         <telerik:RadMenuItem runat="server" Text="XYZ Manage Geography" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration_GeographyTree" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Access Control Lists" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration_AccessControlLists" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="4" />
-                        <telerik:RadMenuItem runat="server" Text="Build# Auto" Permission="All" UserLevel="4" GlobalResourceKey="None" NotaBene="This is a special case -- the build number is dynamically inserted for text" /> 
+                        <telerik:RadMenuItem runat="server" Dynamic="true" Template="Build#" Permission="All" UserLevel="4" NotaBene="This is a special case -- the build number is dynamically inserted for text" /> 
                     </Items>
                 </telerik:RadMenuItem>
             </Items>
