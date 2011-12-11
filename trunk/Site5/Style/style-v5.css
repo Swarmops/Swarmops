@@ -204,12 +204,25 @@ div.currentuserinfo
 
 
 .RadTreeList_WebBlue .rtlHeader {
-	background: #5277cc 0 -2300px repeat-x url('/Style/Images/activizr-webblue-objects.png') !important;
+	background: #476EC7 0 -2300px repeat-x url(none) !important;
 }
 
 
 .RadTreeList_WebBlue .rtlA {
 	background-color: #F5F7FF !important;
+}
+
+.RadTreeList_WebBlue .rtlTable {
+	font: 12px/16px Ubuntu,sans-serif !important;
+}
+
+
+.RadTreeList .rtlHeader th {
+	font-weight: 500 !important;
+}
+
+.RadTreeList {
+	border-radius: 2px;
 }
 
 /* BARS AND BOXEN */
