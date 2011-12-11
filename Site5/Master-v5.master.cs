@@ -134,6 +134,7 @@ namespace Activizr
                 string authorization = item.Attributes["Permission"];
                 string resourceKey = item.Attributes["GlobalResourceKey"];
                 string url = item.NavigateUrl;
+                string dynamic = item.Attributes["Dynamic"];
 
                 item.Visible = itemUserLevel <= 4;
 
@@ -142,9 +143,9 @@ namespace Activizr
                     continue;
                 }
 
-                if (item.Text == "Build# Auto")
+                if (dynamic == "true")
                 {
-                    item.Text = GetBuildIdentity();
+                    item.Text = GetBuildIdentity(); // only dynamically constructed atm -- if more, switch on "template" field
                 }
                 else
                 {
