@@ -266,6 +266,12 @@ div.currentuserinfo
 }
 
 
+.marginless
+{
+	margin: -5px -8px -5px -10px;	
+}
+
+
 .contentright
 {
 	float:right;
