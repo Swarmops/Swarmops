@@ -4,31 +4,33 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <telerik:RadTreeList ID="GridMotions" runat="server" Width="100%" DataKeyNames="Identity" ParentDataKeyNames="ParentIdentity" AutoGenerateColumns="false" Skin="WebBlue" OnItemCreated="GridMotions_ItemCreated" OnNeedDataSource="GridMotions_NeedDataSource">
-        <Columns>
-            <telerik:TreeListBoundColumn HeaderText="#" DataField="Designation" UniqueName="ListMotions_Grid_Designation" HeaderStyle-Width="50px" ItemStyle-Width="50px" />
-            <telerik:TreeListTemplateColumn HeaderText="Title" UniqueName="ListMotions_Grid_Title" ItemStyle-Width="300px" HeaderStyle-Width="300px">
-                <ItemTemplate>
-                    <asp:Literal ID="LiteralTitle" runat="server" />
-                </ItemTemplate>
-            </telerik:TreeListTemplateColumn>
-            <telerik:TreeListTemplateColumn HeaderText="Amendments" UniqueName="ListMotions_Grid_Amendments" ItemStyle-Width="75px" HeaderStyle-Width="75px">
-                <ItemTemplate>
-                    <asp:Literal ID="LiteralAmendments" runat="server" />
-                </ItemTemplate>
-            </telerik:TreeListTemplateColumn>
-            <telerik:TreeListTemplateColumn HeaderText="Amended" UniqueName="ListMotions_Grid_Amended" ItemStyle-Width="60px" HeaderStyle-Width="60px">
-                <ItemTemplate>
-                    &ndash;
-                </ItemTemplate>
-            </telerik:TreeListTemplateColumn>
-            <telerik:TreeListTemplateColumn HeaderText="Carried" UniqueName="ListMotions_Grid_Carried" ItemStyle-Width="60px" HeaderStyle-Width="60px">
-                <ItemTemplate>
-                    &ndash;
-                </ItemTemplate>
-            </telerik:TreeListTemplateColumn>
-        </Columns>
-    </telerik:RadTreeList>
+    <div class="marginless">
+        <telerik:RadTreeList ID="GridMotions" runat="server" Width="100%" DataKeyNames="Identity" ParentDataKeyNames="ParentIdentity" AutoGenerateColumns="false" Skin="WebBlue" OnItemCreated="GridMotions_ItemCreated" OnNeedDataSource="GridMotions_NeedDataSource">
+            <Columns>
+                <telerik:TreeListBoundColumn HeaderText="#" DataField="Designation" UniqueName="ListMotions_Grid_Designation" HeaderStyle-Width="50px" ItemStyle-Width="50px" />
+                <telerik:TreeListTemplateColumn HeaderText="Title" UniqueName="ListMotions_Grid_Title" ItemStyle-Width="300px" HeaderStyle-Width="300px">
+                    <ItemTemplate>
+                        <asp:Literal ID="LiteralTitle" runat="server" />
+                    </ItemTemplate>
+                </telerik:TreeListTemplateColumn>
+                <telerik:TreeListTemplateColumn HeaderText="Amendments" UniqueName="ListMotions_Grid_Amendments" ItemStyle-Width="75px" HeaderStyle-Width="75px">
+                    <ItemTemplate>
+                        <asp:Literal ID="LiteralAmendments" runat="server" />
+                    </ItemTemplate>
+                </telerik:TreeListTemplateColumn>
+                <telerik:TreeListTemplateColumn HeaderText="Amended" UniqueName="ListMotions_Grid_Amended" ItemStyle-Width="60px" HeaderStyle-Width="60px">
+                    <ItemTemplate>
+                        &ndash;
+                    </ItemTemplate>
+                </telerik:TreeListTemplateColumn>
+                <telerik:TreeListTemplateColumn HeaderText="Carried" UniqueName="ListMotions_Grid_Carried" ItemStyle-Width="60px" HeaderStyle-Width="60px">
+                    <ItemTemplate>
+                        &ndash;
+                    </ItemTemplate>
+                </telerik:TreeListTemplateColumn>
+            </Columns>
+        </telerik:RadTreeList>
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
