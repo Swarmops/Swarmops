@@ -22,23 +22,6 @@ namespace Activizr
 
             this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
 
-            // Read build number if not loaded, or set to "Private" if none
-
-            if (_buildIdentity == null)
-            {
-                try
-                {
-                    using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/BuildIdentity.txt")))
-                    {
-                        _buildIdentity = "Build " + reader.ReadLine();
-                    }
-                }
-                catch (Exception)
-                {
-                    _buildIdentity = "Private Build";
-                }
-            }
-
             // Titles etc
 
             this.IconPage.ImageUrl = "/Images/PageIcons/" + this.CurrentPageIcon + "-40px.png";
@@ -161,7 +144,7 @@ namespace Activizr
 
                 if (item.Text == "Build# Auto")
                 {
-                    item.Text = _buildIdentity;
+                    item.Text = GetBuildIdentity();
                 }
                 else
                 {
@@ -184,6 +167,28 @@ namespace Activizr
             }
 
             return anyItemEnabled;
+        }
+
+        private string GetBuildIdentity()
+        {
+            // Read build number if not loaded, or set to "Private" if none
+
+            if (_buildIdentity == null)
+            {
+                try
+                {
+                    using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/BuildIdentity.txt")))
+                    {
+                        _buildIdentity = "Build " + reader.ReadLine();
+                    }
+                }
+                catch (Exception)
+                {
+                    _buildIdentity = "Private Build";
+                }
+            }
+
+            return _buildIdentity;
         }
 
 
