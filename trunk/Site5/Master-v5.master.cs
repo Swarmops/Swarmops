@@ -305,8 +305,10 @@ namespace Activizr
                 "        jipt.set_project_identifier('activizr');\r\n" +
                 "        jipt.set_show_translations(true);\r\n" +
                 "        jipt.set_marker('border');\r\n" +
-                "        jipt.set_target_language('" + Thread.CurrentThread.CurrentCulture.ToString() + "');\r\n" +
-                "        jipt.start_translation();\r\n" +
+                "        jipt.set_target_language('" + Thread.CurrentThread.CurrentCulture.ToString().Substring(0,2) + "');\r\n" +
+                "        jipt.login('activizr_translator', 'anonymous', function() {\r\n" +
+                "          jipt.start_translation();\r\n" +
+                "        });\r\n" +
                 "    });\r\n" +
                 "</script>\r\n" +
                 "<!-- Crowdin JIPT End -->\r\n";
