@@ -22,7 +22,7 @@ public partial class Default : PageV5Base
         this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
         this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
 
-        this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Actions_Placeholder;
+        this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
         this.LabelGoThere.Text = Resources.Pages.Global.Global_GoThere;
         this.LabelDashboardTemporaryContent.Text = Resources.Pages.Global.Dashboard_Main_Temporary;
         this.LabelDashboardInfo.Text = Resources.Pages.Global.Dashboard_Info_Temporary;

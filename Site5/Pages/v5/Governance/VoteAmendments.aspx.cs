@@ -70,7 +70,7 @@ namespace Activizr.Pages.Governance
         private void Localize()
         {
             this.LabelActionListMotions.Text = Resources.Pages.Governance.ListMotions_PageTitle;
-            this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Actions_Placeholder;
+            this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
             this.LabelAmendmentsForMeeting.Text = _meeting.Name;
             this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
             this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;

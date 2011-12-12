@@ -117,60 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CurrentUserInfo_Logout" xml:space="preserve">
-    <value>Logout</value>
-    <comment>Causes signoff and de-authentication</comment>
+  <data name="UploadBankFiles_Info" xml:space="preserve">
+    <value>Here, you can upload files from your bank or payment provider into your organization's bookkeeping. Examples include account history and payments received.</value>
+    <comment>Displayed in sidebar on page.</comment>
   </data>
-  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
-    <value>Preferences</value>
-    <comment>Tooltip on hover over wrench icon</comment>
+  <data name="UploadBankFiles_Instructions" xml:space="preserve">
+    <value>Bank Download Instructions</value>
+    <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
-  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
-    <value>Select Language</value>
-    <comment>Shown as header of language list pop-up</comment>
+  <data name="UploadBankFiles_PageTitle" xml:space="preserve">
+    <value>Upload Bank Files</value>
+    <comment>Displayed above main content.</comment>
   </data>
-  <data name="Dashboard_Info_Temporary" xml:space="preserve">
-    <value>This is a default page. The only item available is motion registration for meetings.</value>
-    <comment>Temporary</comment>
+  <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
+    <value>Select Bookkeeping Account</value>
+    <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
   </data>
-  <data name="Dashboard_Main_Temporary" xml:space="preserve">
-    <value>This is the default page (the dashboard). In time, this will become a really neat page with numbers and graphics and stuff. For now, go to the meeting pages instead.</value>
-    <comment>Temporary display while there is no dashboard.</comment>
-  </data>
-  <data name="Dashboard_PageTitle" xml:space="preserve">
-    <value>Dashboard</value>
-    <comment>Title of default page</comment>
-  </data>
-  <data name="Global_Change" xml:space="preserve">
-    <value>Change?</value>
-    <comment>Link after describing what the user is looking at, allowing a change.</comment>
-  </data>
-  <data name="Global_GoThere" xml:space="preserve">
-    <value>Go there...</value>
-    <comment>Link after describing something.</comment>
-  </data>
-  <data name="Sidebar_Actions" xml:space="preserve">
-    <value>Actions</value>
-    <comment>List of shortcuts to likely actions</comment>
-  </data>
-  <data name="Sidebar_Actions_None" xml:space="preserve">
-    <value>No suggested actions at this point.</value>
-    <comment>No shortcuts from this page right now.</comment>
-  </data>
-  <data name="Sidebar_Information" xml:space="preserve">
-    <value>Info</value>
-    <comment>Information about current page</comment>
-  </data>
-  <data name="Sidebar_Todo" xml:space="preserve">
-    <value>To do</value>
-    <comment>List of todo items</comment>
-  </data>
-  <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>No urgent action items right now.</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
-  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
-    <value>Action items will go here.</value>
-    <comment>Placeholder for future action items. Temporary.</comment>
+  <data name="UploadBankFiles_SelectBankFileType" xml:space="preserve">
+    <value>Select Bank File Type For Upload</value>
+    <comment>Header above several bank logos, prompting a selection of bank.</comment>
   </data>
 </root>
