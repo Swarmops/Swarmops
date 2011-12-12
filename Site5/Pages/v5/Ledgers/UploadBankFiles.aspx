@@ -16,6 +16,8 @@ input.FileTypeImage
 input.FileTypeImageSelected
 {
     box-shadow: 0px 0px 4px 4px #FFBC37;
+    -moz-box-shadow: 0px 0px 4px 4px #FFBC37;
+    -webkit-box-shadow: 0px 0px 4px 4px #FFBC37;
     border: 1px solid #C78B15 !important;
 }
 
