@@ -116,7 +116,7 @@
                         <telerik:RadMenuItem runat="server" Text="XYZ Set Budget" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_SetBudgets" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Import Bank Data" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_ImportBankData" />
-                        <telerik:RadMenuItem runat="server" Text="XYZ Upload Bank Files" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_UploadBankFiles" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ Upload Bank Files" NavigateUrl="~/Pages/v5/Ledgers/UploadBankFiles.aspx" ImageUrl="~/Images/PageIcons/iconshock-bank-16px.png" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_UploadBankFiles" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Debug Bookkeeping" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_DebugBookkeeping" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />

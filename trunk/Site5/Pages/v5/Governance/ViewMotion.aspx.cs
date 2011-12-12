@@ -41,7 +41,7 @@ namespace Activizr.Pages.Governance
             this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
             this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
             this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
-            this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Actions_Placeholder;
+            this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
 
 
             // Fill in fields
