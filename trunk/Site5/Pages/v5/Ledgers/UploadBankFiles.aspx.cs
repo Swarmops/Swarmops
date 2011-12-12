@@ -25,5 +25,10 @@ namespace Activizr.Site.Pages.Ledgers
 
             this.LabelSelectBankUploadFilter.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
         }
+
+        protected void ButtonSebAccountFile_Click(object sender, ImageClickEventArgs e)
+        {
+            this.ButtonSebAccountFile.CssClass = "FileTypeImage FileTypeImageSelected";
+        }
     }
 }
