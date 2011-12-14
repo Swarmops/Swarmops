@@ -19,6 +19,8 @@ namespace Activizr.Site.Pages.Ledgers
             this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
             this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
             this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
+            this.LabelDownloadInstructions.Text = Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions;
+            this.LabelClickImage.Text = Resources.Pages.Global.Global_ClickImageToEnlarge;
 
             this.LabelUploadBankFilesInfo.Text = Resources.Pages.Ledgers.UploadBankFiles_Info;
             this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
@@ -29,6 +31,18 @@ namespace Activizr.Site.Pages.Ledgers
         protected void ButtonSebAccountFile_Click(object sender, ImageClickEventArgs e)
         {
             this.ButtonSebAccountFile.CssClass = "FileTypeImage FileTypeImageSelected";
+            this.ButtonSebPaymentFile.CssClass = "FileTypeImage UnselectedType";
+
+            this.LiteralDownloadInstructions.Text =
+            this.LiteralDownloadInstructionsModal.Text = 
+                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructionsSebAccountFile;
+            this.ImageDownloadInstructions.ImageUrl = "~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png";
+            this.ImageDownloadInstructionsFull.ImageUrl = "~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-full.png";
+
+            ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "FadeDownload2", "$(\"#DivInstructions\").fadeTo('slow',1.0);", true);
+            ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "FadeDownload", "$(\".UnselectedType\").fadeTo('fast',0.2);", true);
+            ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "ShowInstructions", "$(\"#DivInstructions\").css('display','inline');", true);
+
         }
     }
 }

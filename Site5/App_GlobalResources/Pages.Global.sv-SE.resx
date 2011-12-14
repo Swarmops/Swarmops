@@ -145,6 +145,10 @@
     <value>Byta?</value>
     <comment>Link after describing what the user is looking at, allowing a change.</comment>
   </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Klicka på bilden för att förstora.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
   <data name="Global_GoThere" xml:space="preserve">
     <value>Ta mig dit...</value>
     <comment>Link after describing something.</comment>
@@ -154,12 +158,8 @@
     <comment>List of shortcuts to likely actions</comment>
   </data>
   <data name="Sidebar_Actions_None" xml:space="preserve">
-    <value>Inget behöver omedelbar uppmärksamhet.</value>
-    <comment>Indicator that nothing needs immediate attention</comment>
-  </data>
-  <data name="Sidebar_Actions_Placeholder" xml:space="preserve">
-    <value>Här kommer saker som behöver uppmärksamhet.</value>
-    <comment>Placeholder for future action items. Temporary.</comment>
+    <value>Inga förslag på åtgärder för stunden.</value>
+    <comment>No shortcuts from this page right now.</comment>
   </data>
   <data name="Sidebar_Information" xml:space="preserve">
     <value>Info</value>
@@ -168,5 +168,13 @@
   <data name="Sidebar_Todo" xml:space="preserve">
     <value>Att göra</value>
     <comment>List of todo items</comment>
+  </data>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>Inget behöver omedelbar uppmärksamhet.</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>Här kommer saker som behöver uppmärksamhet.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
   </data>
 </root>
