@@ -145,6 +145,10 @@
     <value>Change?</value>
     <comment>Link after describing what the user is looking at, allowing a change.</comment>
   </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Click image to enlarge.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
   <data name="Global_GoThere" xml:space="preserve">
     <value>Go there...</value>
     <comment>Link after describing something.</comment>

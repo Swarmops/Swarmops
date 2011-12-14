@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="UploadBankFiles.aspx.cs" Inherits="Activizr.Site.Pages.Ledgers.UploadBankFiles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
+<script type="text/javascript" src="/Scripts/jquery.leanModal.min.js"></script>
 <style type="text/css">
 input.FileTypeImage
 {
@@ -26,7 +27,47 @@ div.BankUploadInstructionsImage
 	float:right;
 }
 
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+#ModalDownloadInstructions
+{
+	display:none;
+	background:white;
+	width:720px;
+    position: fixed;
+    z-index: 11000;
+    left: 50%;
+    margin-left: -360px;
+    top: 160px;
+    opacity: 1;
+    padding: 10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7);
+    -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
+}
+
+
+
 </style>
+
+<script type="text/javascript">
+    $(function() {
+        $('a[rel*=leanModal]').leanModal();
+    });
+</script>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
@@ -36,6 +77,16 @@ div.BankUploadInstructionsImage
             <asp:ImageButton OnClick="ButtonSebAccountFile_Click" CssClass="FileTypeImage" ID="ButtonSebAccountFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-kontoutdrag.png"/>
             <asp:ImageButton CssClass="FileTypeImage" ID="ButtonSebPaymentFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-bankgirofil.png"/>
             <div style="clear:both;margin-bottom:10px"></div>
+            <div style="opacity:0;display:none" id="DivInstructions">
+            <h2><asp:Label ID="LabelDownloadInstructions" Text="XYZ Bank Download Instructions" runat="server" /></h2>
+            <a rel="leanModal" name="ModalDownloadInstructions" id="go" href="#ModalDownloadInstructions"><asp:Image ID="ImageDownloadInstructions" ImageUrl="~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png" ImageAlign="Right" runat="server" /></a>
+            <p><asp:Literal ID="LiteralDownloadInstructions"  runat="server" Text="Fooo!!!" /></p><p><asp:Label ID="LabelClickImage" runat="server" /></p>
+            <div style="clear:both"></div>
+            </div>
+            <div id="ModalDownloadInstructions">
+                <asp:Image runat="server" ID="ImageDownloadInstructionsFull" /><br/><br/>
+                <asp:Literal ID="LiteralDownloadInstructionsModal" runat="server" />
+            </div>
             <asp:Label ID="LabelSelectToContinue" Text="Select to continue." runat="server" />
         </ContentTemplate>
         <Triggers>
