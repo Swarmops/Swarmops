@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="UploadBankFiles.aspx.cs" Inherits="Activizr.Site.Pages.Ledgers.UploadBankFiles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-<script src="/Scripts/jquery.leanModal.min.js" type="text/javascript"></script>
+
 <style type="text/css">
 input.FileTypeImage
 {
@@ -74,15 +74,12 @@ div.BankUploadInstructionsImage
     -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7);
     -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
 }
-
-
-
 </style>
 
 <script type="text/javascript">
-    $(function() {
-        $('a[rel*=leanModal]').leanModal();
-    });
+    if (!(jQuery().leanModal)) {
+        alert('LeanModal plug-in has not been successfully loaded!');
+    }
 </script>
 
 </asp:Content>
@@ -112,8 +109,15 @@ div.BankUploadInstructionsImage
     <div style="clear:both"></div>
     </div>
     <div id="ModalDownloadInstructions">
-        <asp:Image runat="server" ID="ImageDownloadInstructionsFull" /><br/><br/>
-        <asp:Literal ID="LiteralDownloadInstructionsModal" runat="server" />
+        <asp:UpdatePanel ID="PanelInstructions" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <span style="text-align:center"><asp:Image runat="server" ID="ImageDownloadInstructionsFull" /></span><br /><br /><hr /><br />
+                <asp:Literal ID="LiteralDownloadInstructionsModal" runat="server" />
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostbackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
     </div>
 </asp:Content>
 

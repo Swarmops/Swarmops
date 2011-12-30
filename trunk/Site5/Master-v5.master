@@ -1,17 +1,17 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Master-v5.master.cs" Inherits="Activizr.MasterV5" %>
 <%@ Register Src="~/Controls/v5/Base/LanguageSelector.ascx" TagName="LanguageSelector" TagPrefix="act5" %>
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
+<head runat="server">
+    <!-- jQuery and plugins -->
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
-    <!-- jQuery -->
-    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
     <!-- page title -->
 	<title>Activizr - Pirate Edition</title>
 	<!-- telerik style sheet manager, followed by style sheet -->
@@ -19,19 +19,18 @@
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
     <!-- additional scripts etc from individual pages -->
     <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
-    <asp:Literal ID="LiteralCrowdinScript" runat="server" />
+    <asp:Literal ID="LiteralCrowdinScript" runat="server" Text="" />
+
+    <!-- initialize all modal popups -->
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $("a[rel*=leanModal]").leanModal();
+        });
+    </script>
 </head>
 <body>
     <form id="form2" runat="server">
-	<telerik:RadScriptManager ID="RadScriptManager1" runat="server">
-		<Scripts>
-			<%--Needed for JavaScript IntelliSense in VS2010--%>
-			<%--For VS2008 replace RadScriptManager with ScriptManager--%>
-			<asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js" />
-			<asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js" />
-			<asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
-		</Scripts>
-	</telerik:RadScriptManager>
+	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
 	<script type="text/javascript">
 		//Put your JavaScript code here.
     </script>
