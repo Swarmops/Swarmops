@@ -5,6 +5,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Activizr.Basic.Enums;
 using Activizr.Logic.Financial;
+using Telerik.Web.UI;
+using Telerik.Web.UI.Upload;
 
 
 // ReSharper disable CheckNamespace
@@ -28,6 +30,17 @@ namespace Activizr.Site.Pages.Ledgers
             this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
 
             this.LabelSelectBankUploadFilter.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
+
+            if (!IsPostBack)
+            {
+                //Do not display SelectedFilesCount progress indicator.
+                this.ProgressIndicator.ProgressIndicators &= ~ProgressIndicators.SelectedFilesCount;
+                RadProgressContext progress = RadProgressContext.Current;
+                //Prevent the secondary progress from appearing when the file is uploaded (FileCount etc.)
+                progress["SecondaryTotal"] = "0";
+                progress["SecondaryValue"] = "0";
+                progress["SecondaryPercent"] = "0";
+            }
         }
 
         protected void ButtonSebAccountFile_Click(object sender, ImageClickEventArgs e)
@@ -89,6 +102,47 @@ namespace Activizr.Site.Pages.Ledgers
         
 
             }
+        }
+
+        protected void Submit_Click(object sender, EventArgs e)
+        {
+            foreach (string fileInputID in Request.Files)
+            {
+                this.PanelProgress.Visible = true;
+
+                UploadedFile file = UploadedFile.FromHttpPostedFile(Request.Files[fileInputID]);
+                if (file.ContentLength > 0)
+                {
+                    // TODO: PROCESS
+                    // file.SaveAs("c:\\temp\\" + file.GetName());
+                }
+
+                    
+            }
+
+            RadProgressContext progress = RadProgressContext.Current;
+            progress.Speed = "N/A";
+
+            const int total = 100;
+
+            for (int i = 0; i < total; i++)
+            {
+                progress["SecondaryTotal"] = total.ToString();
+                progress["SecondaryValue"] = i.ToString();
+                progress["SecondaryPercent"] = i.ToString();
+                progress["CurrentOperationText"] = "File is being processed...";
+
+                if (!Response.IsClientConnected)
+                {
+                    //Cancel button was clicked or the browser was closed, so stop processing
+                    break;
+                }
+
+                //Stall the current thread for 0.1 seconds
+                System.Threading.Thread.Sleep(100);
+            }
+
+
         }
     }
 }

@@ -103,6 +103,15 @@ div.BankUploadInstructionsImage
         </Triggers>
     </asp:UpdatePanel>
 
+    <asp:UpdatePanel ID="PanelProgress" runat="server" Visible="false">
+        <ContentTemplate>
+            <br/><h2><asp:Label ID="LabelProcessing" runat="server" Text="Processing Uploaded File..." /></h2>
+
+        </ContentTemplate>
+    <Triggers>
+    </Triggers>
+    </asp:UpdatePanel>
+
     <div style="opacity:0;display:none;padding-top:20px" id="DivInstructions">
         <asp:UpdatePanel ID="PanelInstructions" UpdateMode="Conditional" runat="server">
             <ContentTemplate>
@@ -118,7 +127,11 @@ div.BankUploadInstructionsImage
             </Triggers>
         </asp:UpdatePanel>
 
-        <telerik:RadAsyncUpload ID="Upload" runat="server" />
+        <!--<input type="file" id="file1" runat="server" name="file1" />--><br />
+        <asp:Button ID="Upload" OnClick="Submit_Click" Text="Upload" runat="server" />
+
+        <telerik:RadProgressManager ID="RadProgressManager1" runat="server" />
+        <telerik:RadProgressArea ID="ProgressIndicator" runat="server" ProgressIndicators="TotalProgressPercent" />
 
     </div>
     <div id="ModalDownloadInstructions">
