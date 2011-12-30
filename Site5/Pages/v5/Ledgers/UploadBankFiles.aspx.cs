@@ -46,6 +46,15 @@ namespace Activizr.Site.Pages.Ledgers
             this.ButtonSebAccountFile.Enabled = false;
             this.ButtonSebPaymentFile.Enabled = false;
 
+            this.ImageDownloadInstructions.ImageUrl = "~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png";
+
+            this.ImageDownloadInstructionsFull.ImageUrl =
+                "~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-full.png";
+
+            this.LiteralDownloadInstructions.Text =
+                this.LiteralDownloadInstructionsModal.Text =
+                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructionsSebAccountFile;
+
         }
 
         private void PopulateAccountDropDown()
@@ -65,7 +74,7 @@ namespace Activizr.Site.Pages.Ledgers
 
         protected void DropAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.LiteralSelectAccountDivStyle.Text = @"style=""opacity=1;display:inline""";
+            this.LiteralSelectAccountDivStyle.Text = @"style=""opacity:1;display:inline""";
 
             if (this.DropAccounts.SelectedIndex > -2)
             {
@@ -73,14 +82,6 @@ namespace Activizr.Site.Pages.Ledgers
                                                         "$(\"#DivInstructions\").fadeTo('slow',1.0);", true);
                 ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "ShowInstructions",
                                                         "$(\"#DivInstructions\").css('display','inline');", true);
-
-                this.LiteralDownloadInstructions.Text =
-                    this.LiteralDownloadInstructionsModal.Text =
-                    Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructionsSebAccountFile;
-
-                this.ImageDownloadInstructions.ImageUrl = "~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png";
-                this.ImageDownloadInstructionsFull.ImageUrl =
-                    "~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-full.png";
             }
         }
     }
