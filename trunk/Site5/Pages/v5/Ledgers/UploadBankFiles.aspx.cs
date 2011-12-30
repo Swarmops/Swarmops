@@ -82,6 +82,12 @@ namespace Activizr.Site.Pages.Ledgers
                                                         "$(\"#DivInstructions\").fadeTo('slow',1.0);", true);
                 ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "ShowInstructions",
                                                         "$(\"#DivInstructions\").css('display','inline');", true);
+                ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "ReiterateModality",
+                                                        "$(function () { $(\"a[rel*=leanModal]\").leanModal();});", true);
+
+
+        
+
             }
         }
     }

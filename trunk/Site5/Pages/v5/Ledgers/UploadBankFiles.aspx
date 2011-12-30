@@ -46,7 +46,7 @@ div.BankUploadInstructionsImage
 
 #lean_overlay {
     position: fixed;
-    z-index:100;
+    z-index:10000;
     top: 0px;
     left: 0px;
     height:100%;
@@ -87,13 +87,14 @@ div.BankUploadInstructionsImage
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <asp:UpdatePanel ID="Panel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <h2><asp:Label ID="LabelSelectBankUploadFilter" Text="Select File Type To Upload" runat="server"/></h2>
+            <h2><asp:Label ID="LabelSelectBankUploadFilter" Text="Select Bank And Bookkeeping" runat="server"/></h2>
+            <h3><asp:Label ID="LabelBank" Text="Bank" runat="server" /></h3>
             <asp:ImageButton OnClick="ButtonSebAccountFile_Click" CssClass="FileTypeImage" ID="ButtonSebAccountFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-kontoutdrag.png"/>
             <asp:ImageButton CssClass="FileTypeImage" ID="ButtonSebPaymentFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-bankgirofil.png"/>
             <asp:HiddenField ID="HiddenFileType" runat="server"/>
             <div style="clear:both;margin-bottom:10px"></div>
             <div id="DivSelectAccount" <asp:Literal ID="LiteralSelectAccountDivStyle" runat="server" Text="style='opacity:0;display:none;'" />>
-            <h3><asp:Label ID="LabelSelectAccount" runat="server" Text="XYZ" /></h3>
+            <h3><asp:Label ID="LabelSelectAccount" runat="server" Text="Bookkeeping Account" /></h3>
             <asp:DropDownList runat="server" ID="DropAccounts" OnSelectedIndexChanged="DropAccounts_SelectedIndexChanged" AutoPostBack="true"/>
             </div>
         </ContentTemplate>
@@ -102,15 +103,28 @@ div.BankUploadInstructionsImage
         </Triggers>
     </asp:UpdatePanel>
 
-    <div style="opacity:0;display:none" id="DivInstructions">
-    <h2><asp:Label ID="LabelDownloadInstructions" Text="XYZ Bank Download Instructions" runat="server" /></h2>
-    <a rel="leanModal" name="ModalDownloadInstructions" id="go" href="#ModalDownloadInstructions">Foo<asp:Image ID="ImageDownloadInstructions" ImageUrl="~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png" ImageAlign="Right" runat="server" /></a>
-    <p><asp:Literal ID="LiteralDownloadInstructions"  runat="server" Text="Fooo!!!" /><asp:Literal ID="LiteralLastAccountRecord" runat="server" /></p><p><asp:Label ID="LabelClickImage" runat="server" /></p>
-    <div style="clear:both"></div>
+    <div style="opacity:0;display:none;padding-top:20px" id="DivInstructions">
+        <asp:UpdatePanel ID="PanelInstructions" UpdateMode="Conditional" runat="server">
+            <ContentTemplate>
+                <br/><h2><asp:Label ID="LabelUploadH2Header" Text="Upload Bank File" runat="server" /></h2>
+                <a rel="leanModal" name="ModalDownloadInstructions" id="go" href="#ModalDownloadInstructions"><asp:Image ID="ImageDownloadInstructions" ImageUrl="~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png" ImageAlign="Right" runat="server" /></a>
+                <h3><asp:Label ID="LabelDownloadInstructions" Text="Download File From Bank" runat="server" /></h3>
+                <p><asp:Literal ID="LiteralDownloadInstructions"  runat="server" Text="Fooo!!!" /><asp:Literal ID="LiteralLastAccountRecord" runat="server" /></p><p><asp:Label ID="LabelClickImage" runat="server" /></p>
+                <div style="clear:both"></div>
+                <h3><asp:Label ID="LabelUploadH3Header" Text="Upload File To Activizr" runat="server" /></h3>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+
+        <telerik:RadAsyncUpload ID="Upload" runat="server" />
+
     </div>
     <div id="ModalDownloadInstructions">
-        <asp:UpdatePanel ID="PanelInstructions" runat="server" UpdateMode="Conditional">
+        <asp:UpdatePanel ID="PanelModalInstructions" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
+                <h2><asp:Label ID="LabelModalInstructionHeader" Text="Bank Screenshot" runat="server" /></h2>
                 <span style="text-align:center"><asp:Image runat="server" ID="ImageDownloadInstructionsFull" /></span><br /><br /><hr /><br />
                 <asp:Literal ID="LiteralDownloadInstructionsModal" runat="server" />
             </ContentTemplate>
@@ -119,6 +133,8 @@ div.BankUploadInstructionsImage
             </Triggers>
         </asp:UpdatePanel>
     </div>
+
+    <br/>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
