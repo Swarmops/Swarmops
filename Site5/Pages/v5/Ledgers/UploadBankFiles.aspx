@@ -127,11 +127,36 @@ div.BankUploadInstructionsImage
             </Triggers>
         </asp:UpdatePanel>
 
-        <!--<input type="file" id="file1" runat="server" name="file1" />--><br />
+        <input type="file" id="file1" runat="server" name="file1" /><br />
         <asp:Button ID="Upload" OnClick="Submit_Click" Text="Upload" runat="server" />
 
         <telerik:RadProgressManager ID="RadProgressManager1" runat="server" />
-        <telerik:RadProgressArea ID="ProgressIndicator" runat="server" ProgressIndicators="TotalProgressPercent" />
+        <telerik:RadProgressArea ID="ProgressIndicator" runat="server" ProgressIndicators="TotalProgressPercent">
+            <ProgressTemplate>
+                <ul class="ruProgress">
+                    <li>
+                        <h6>TotalProgressBar:</h6>
+                        <div class="customProgressBar" style="position: relative; height: 168px; width: 168px;">
+                            <div id="SecondaryProgressBarInnerDiv" runat="server" style="background-color: Blue;
+                                height: 0%; width: 168px; vertical-align: bottom; position: absolute; top: 0;
+                                left: 0; z-index: 900;">
+                                <!-- / -->
+                            </div>
+                        </div>
+                    </li>
+                    <li><strong>TotalProgress:</strong> <span runat="server" id="PrimaryValue"></span></li>
+                    <li><strong>TotalProgressPercent:</strong> <span runat="server" id="PrimaryPercent"></span></li>
+                    <li><strong>FilesCount:</strong> <span runat="server" id="SecondaryValue"></span></li>
+                    <li><strong>FilesCountPercent:</strong> <span runat="server" id="SecondaryPercent"></span></li>
+                    <li><strong>RequestSize:</strong> <span runat="server" id="PrimaryTotal"></span></li>
+                    <li><strong>SelectedFilesCount:</strong> <span runat="server" id="SecondaryTotal"></span></li>
+                    <li><strong>CurrentFileName:</strong> <span runat="server" id="CurrentOperation"></span></li>
+                    <li><strong>TimeElapsed:</strong> <span runat="server" id="TimeElapsed"></span></li>
+                    <li><strong>TimeEstimated:</strong> <span runat="server" id="TimeEstimated"></span></li>
+                    <li><strong>TransferSpeed:</strong> <span runat="server" id="Speed"></span></li>
+                </ul>
+            </ProgressTemplate>
+        </telerik:RadProgressArea>
 
     </div>
     <div id="ModalDownloadInstructions">
