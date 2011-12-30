@@ -5,18 +5,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
     <!-- jQuery and plugins -->
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
+
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
+
     <!-- page title -->
 	<title>Activizr - Pirate Edition</title>
+
 	<!-- telerik style sheet manager, followed by style sheet -->
 	<telerik:RadStyleSheetManager id="RadStyleSheetManager" runat="server" />
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
+
     <!-- additional scripts etc from individual pages -->
     <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
     <asp:Literal ID="LiteralCrowdinScript" runat="server" Text="" />
@@ -29,7 +34,7 @@
     </script>
 </head>
 <body>
-    <form id="form2" runat="server">
+    <form id="form1" runat="server">
 	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
 	<script type="text/javascript">
 		//Put your JavaScript code here.
@@ -40,6 +45,8 @@
 	<telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="WebBlue">
 	</telerik:RadSkinManager>
 	
+    <!-- Main menu, dynamically constructed -->
+
 	<div class="center980px">
 	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /> <asp:LinkButton ID="LinkTranslate" Visible="false" Text="Translate Into" OnClick="LinkTranslate_Click" runat="server" /></div>
         <div class="logoimage"><a href="/"><img style="border:none" src="/Style/Images/activizr-v5-pirateedition-logo.png" alt="Activizr Logo" /></a></div>
