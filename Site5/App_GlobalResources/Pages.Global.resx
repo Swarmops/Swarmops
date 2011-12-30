@@ -149,6 +149,10 @@
     <value>Click image to enlarge.</value>
     <comment>Displayed where thumbnails can be enlarged modally.</comment>
   </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>-- Select bookkeeping account --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
   <data name="Global_GoThere" xml:space="preserve">
     <value>Go there...</value>
     <comment>Link after describing something.</comment>
