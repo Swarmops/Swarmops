@@ -42,6 +42,7 @@ namespace Activizr.Basic.Enums
         CanUploadReceivedDocuments,
         CanEditMailDB,
         CanValidatePolls,
-        CanSeeExpiredDuringGracePeriod
+        CanSeeExpiredDuringGracePeriod,
+        CanMonitorMemberships
     }
 }

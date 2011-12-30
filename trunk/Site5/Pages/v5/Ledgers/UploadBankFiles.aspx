@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="UploadBankFiles.aspx.cs" Inherits="Activizr.Site.Pages.Ledgers.UploadBankFiles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-<script type="text/javascript" src="/Scripts/jquery.leanModal.min.js"></script>
+<script src="/Scripts/jquery.leanModal.min.js" type="text/javascript"></script>
 <style type="text/css">
 input.FileTypeImage
 {
@@ -20,6 +20,23 @@ input.FileTypeImageSelected
     -moz-box-shadow: 0px 0px 4px 4px #FFBC37;
     -webkit-box-shadow: 0px 0px 4px 4px #FFBC37;
     border: 1px solid #C78B15 !important;
+}
+
+input.UnselectedType
+{
+	opacity:0.2;
+}
+
+div.Invisible
+{
+	display:none;
+	opacity:0;
+}
+
+div.Visible
+{
+	dispay:inline;
+	opacity:1;
 }
 
 div.BankUploadInstructionsImage
@@ -76,23 +93,28 @@ div.BankUploadInstructionsImage
             <h2><asp:Label ID="LabelSelectBankUploadFilter" Text="Select File Type To Upload" runat="server"/></h2>
             <asp:ImageButton OnClick="ButtonSebAccountFile_Click" CssClass="FileTypeImage" ID="ButtonSebAccountFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-kontoutdrag.png"/>
             <asp:ImageButton CssClass="FileTypeImage" ID="ButtonSebPaymentFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-bankgirofil.png"/>
+            <asp:HiddenField ID="HiddenFileType" runat="server"/>
             <div style="clear:both;margin-bottom:10px"></div>
-            <div style="opacity:0;display:none" id="DivInstructions">
-            <h2><asp:Label ID="LabelDownloadInstructions" Text="XYZ Bank Download Instructions" runat="server" /></h2>
-            <a rel="leanModal" name="ModalDownloadInstructions" id="go" href="#ModalDownloadInstructions"><asp:Image ID="ImageDownloadInstructions" ImageUrl="~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png" ImageAlign="Right" runat="server" /></a>
-            <p><asp:Literal ID="LiteralDownloadInstructions"  runat="server" Text="Fooo!!!" /></p><p><asp:Label ID="LabelClickImage" runat="server" /></p>
-            <div style="clear:both"></div>
+            <div id="DivSelectAccount" <asp:Literal ID="LiteralSelectAccountDivStyle" runat="server" Text="style='opacity:0;display:none;'" />>
+            <h3><asp:Label ID="LabelSelectAccount" runat="server" Text="XYZ" /></h3>
+            <asp:DropDownList runat="server" ID="DropAccounts" OnSelectedIndexChanged="DropAccounts_SelectedIndexChanged" AutoPostBack="true"/>
             </div>
-            <div id="ModalDownloadInstructions">
-                <asp:Image runat="server" ID="ImageDownloadInstructionsFull" /><br/><br/>
-                <asp:Literal ID="LiteralDownloadInstructionsModal" runat="server" />
-            </div>
-            <asp:Label ID="LabelSelectToContinue" Text="Select to continue." runat="server" />
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
+
+    <div style="opacity:0;display:none" id="DivInstructions">
+    <h2><asp:Label ID="LabelDownloadInstructions" Text="XYZ Bank Download Instructions" runat="server" /></h2>
+    <a rel="leanModal" name="ModalDownloadInstructions" id="go" href="#ModalDownloadInstructions">Foo<asp:Image ID="ImageDownloadInstructions" ImageUrl="~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png" ImageAlign="Right" runat="server" /></a>
+    <p><asp:Literal ID="LiteralDownloadInstructions"  runat="server" Text="Fooo!!!" /><asp:Literal ID="LiteralLastAccountRecord" runat="server" /></p><p><asp:Label ID="LabelClickImage" runat="server" /></p>
+    <div style="clear:both"></div>
+    </div>
+    <div id="ModalDownloadInstructions">
+        <asp:Image runat="server" ID="ImageDownloadInstructionsFull" /><br/><br/>
+        <asp:Literal ID="LiteralDownloadInstructionsModal" runat="server" />
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
