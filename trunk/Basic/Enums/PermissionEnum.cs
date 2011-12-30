@@ -43,6 +43,7 @@ namespace Activizr.Basic.Enums
         CanEditMailDB,
         CanValidatePolls,
         CanSeeExpiredDuringGracePeriod,
-        CanMonitorMemberships
+        CanMonitorMemberships,
+        CanMonitorRoleAssignments
     }
 }
