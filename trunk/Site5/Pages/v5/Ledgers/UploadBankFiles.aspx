@@ -107,8 +107,7 @@ div.BankUploadInstructionsImage
         function onBeginUpload() {
             $("#DivUploadProgress").css("display", "inline");
             $("#DivUploadProgress").fadeTo('slow', 1.0);
-            $("#DivInstructions").animate({ height: 'toggle' }, 1000);
-            $("#DivInstructions").fadeTo('slow', 0.0);
+            $("#DivInstructions").animate({ height: 'toggle', opacity: 0.0 }, 1000);
             $("#<%= this.DropAccounts.ClientID %>").attr('disabled', 'disabled');
            
         }
