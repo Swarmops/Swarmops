@@ -125,12 +125,14 @@ namespace Activizr.Site.Pages.Ledgers
 
             for (int i = 0; i < total; i++)
             {
-                progress["PrimaryPercent"] = i.ToString() + "%";
+                progress["PrimaryPercent"] = i.ToString();
+                progress["PrimaryTotal"] = total.ToString();
+                progress["PrimaryValue"] = i.ToString();
 
                 progress["SecondaryTotal"] = total.ToString();
                 progress["SecondaryValue"] = i.ToString();
                 progress["SecondaryPercent"] = i.ToString();
-                progress["PrimaryProgressBarInnerDiv"] = i.ToString();
+                progress["PrimaryProgressBar"] = i.ToString();
                 progress["CurrentOperationText"] = "File is being processed...";
 
                 if (!Response.IsClientConnected)
