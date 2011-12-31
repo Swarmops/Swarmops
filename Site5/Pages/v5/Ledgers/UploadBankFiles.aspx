@@ -89,7 +89,7 @@ div.BankUploadInstructionsImage
     <script type="text/javascript">
         var uploadInProgress = 0;
 
-        function onClientProgressBarUpdating(progressArea, args) {
+        function onClientProgressUpdating(progressArea, args) {
             alert("foo!");
             //alert(JSON.stringify(args._progressData));
             //alert(args._progrssData.PrimaryPercent);
@@ -160,7 +160,7 @@ div.BankUploadInstructionsImage
 
         <div style="display:inline"><!-- placeholders for Telerik to feel important -->
         <telerik:RadProgressManager ID="RadProgressManager1" runat="server" />
-        <telerik:RadProgressArea ID="ProgressIndicator" runat="server" OnClientProgressBarUpdating="onClientProgressBarUpdating">
+        <telerik:RadProgressArea ID="ProgressIndicator" runat="server" OnClientProgressUpdating="onClientProgressUpdating">
             <ProgressTemplate>
                 <ul class="ruProgress">
                     <li>
