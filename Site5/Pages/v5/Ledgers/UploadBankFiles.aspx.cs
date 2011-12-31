@@ -48,10 +48,10 @@ namespace Activizr.Site.Pages.Ledgers
             this.ButtonSebAccountFile.CssClass = "FileTypeImage FileTypeImageSelected";
             this.ButtonSebPaymentFile.CssClass = "FileTypeImage UnselectedType";
 
-            ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "FadeType", "$(\".UnselectedType\").fadeTo('fast',0.2);", true);
-            ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "FadeAccount1",
+            ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeType", "$(\".UnselectedType\").fadeTo('fast',0.2);", true);
+            ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeAccount1",
                                                     "$(\"#DivSelectAccount\").fadeTo('slow', 1.0);", true);
-            ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "FadeAccount2",
+            ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeAccount2",
                                                        "$(\"#DivSelectAccount\").css('display','inline');", true);
 
             PopulateAccountDropDown();
@@ -91,11 +91,11 @@ namespace Activizr.Site.Pages.Ledgers
 
             if (this.DropAccounts.SelectedIndex > -2)
             {
-                ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "FadeDownload2",
+                ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeDownload2",
                                                         "$(\"#DivInstructions\").fadeTo('slow',1.0);", true);
-                ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "ShowInstructions",
+                ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "ShowInstructions",
                                                         "$(\"#DivInstructions\").css('display','inline');", true);
-                ScriptManager.RegisterClientScriptBlock(this.Panel1, this.Panel1.GetType(), "ReiterateModality",
+                ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "ReiterateModality",
                                                         "$(function () { $(\"a[rel*=leanModal]\").leanModal();});", true);
 
 
@@ -108,8 +108,6 @@ namespace Activizr.Site.Pages.Ledgers
         {
             foreach (string fileInputID in Request.Files)
             {
-                this.PanelProgress.Visible = true;
-
                 UploadedFile file = UploadedFile.FromHttpPostedFile(Request.Files[fileInputID]);
                 if (file.ContentLength > 0)
                 {
@@ -127,9 +125,12 @@ namespace Activizr.Site.Pages.Ledgers
 
             for (int i = 0; i < total; i++)
             {
+                progress["PrimaryPercent"] = i.ToString() + "%";
+
                 progress["SecondaryTotal"] = total.ToString();
                 progress["SecondaryValue"] = i.ToString();
                 progress["SecondaryPercent"] = i.ToString();
+                progress["PrimaryProgressBarInnerDiv"] = i.ToString();
                 progress["CurrentOperationText"] = "File is being processed...";
 
                 if (!Response.IsClientConnected)
@@ -142,6 +143,8 @@ namespace Activizr.Site.Pages.Ledgers
                 System.Threading.Thread.Sleep(100);
             }
 
+            this.PanelFileTypeAccount.Visible = false;
+            this.PanelResults.Visible = true;
 
         }
     }

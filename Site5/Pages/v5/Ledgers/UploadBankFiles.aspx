@@ -85,7 +85,37 @@ div.BankUploadInstructionsImage
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <asp:UpdatePanel ID="Panel1" runat="server" UpdateMode="Conditional">
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+        var uploadInProgress = 0;
+
+        function onClientProgressBarUpdating(progressArea, args) {
+            //alert(JSON.stringify(args._progressData));
+            //alert(args._progrssData.PrimaryPercent);
+            $("#ProgressBar").css('width', args._progressData.PrimaryPercent);
+            progressArea.updateVerticalProgressBar(args.get_progressBarElement(), args.get_progressValue());
+
+            if (uploadInProgress == 0) {
+                uploadInProgress = 1;
+                $("#DivUploadProgress").css("display", "inline");
+                $("#DivUploadProgress").fadeTo('slow', 1.0);
+                $("#DivInstructions").animate({ height: 'toggle' }, 1000);
+                $("#DivInstructions").fadeTo('fast', 0.0);
+                $("#<%= this.DropAccounts.ClientID %>").attr('disabled', 'disabled');
+            }
+
+            args.set_cancel(true);
+            
+        }
+
+
+
+    //]]>
+    </script>
+
+    <asp:UpdatePanel ID="PanelFileTypeAccount" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <h2><asp:Label ID="LabelSelectBankUploadFilter" Text="Select Bank And Bookkeeping" runat="server"/></h2>
             <h3><asp:Label ID="LabelBank" Text="Bank" runat="server" /></h3>
@@ -103,14 +133,17 @@ div.BankUploadInstructionsImage
         </Triggers>
     </asp:UpdatePanel>
 
-    <asp:UpdatePanel ID="PanelProgress" runat="server" Visible="false">
-        <ContentTemplate>
-            <br/><h2><asp:Label ID="LabelProcessing" runat="server" Text="Processing Uploaded File..." /></h2>
+    <asp:Panel ID="PanelResults" Visible="false" runat="server">
+        <h2><asp:Label ID="LabelProcessingResults" Text="Imported a Bank File" runat="server" /></h2>
+        <p>Todo...</p>
+    </asp:Panel>
 
-        </ContentTemplate>
-    <Triggers>
-    </Triggers>
-    </asp:UpdatePanel>
+    <div style="opacity:0;display:none" id="DivUploadProgress">
+        <br/><h2><asp:Label ID="LabelProcessing" runat="server" Text="Processing Uploaded File..." /></h2>
+        <div style="width:100%;border:1px solid #E0E0E0;border-radius:5px;box-shadow:1px 1px 3px 3px #888">
+        <div id="ProgressBar" style="width:100%;margin:3px;border:1px solid #88F;border-radius:2px;height:2px;background-color:#CCF"></div>
+        </div>
+    </div>
 
     <div style="opacity:0;display:none;padding-top:20px" id="DivInstructions">
         <asp:UpdatePanel ID="PanelInstructions" UpdateMode="Conditional" runat="server">
@@ -130,15 +163,15 @@ div.BankUploadInstructionsImage
         <input type="file" id="file1" runat="server" name="file1" /><br />
         <asp:Button ID="Upload" OnClick="Submit_Click" Text="Upload" runat="server" />
 
+        <div style="display:none"><!-- placeholders for Telerik to feel important -->
         <telerik:RadProgressManager ID="RadProgressManager1" runat="server" />
-        <telerik:RadProgressArea ID="ProgressIndicator" runat="server" ProgressIndicators="TotalProgressPercent">
+        <telerik:RadProgressArea ID="ProgressIndicator" runat="server" OnClientProgressBarUpdating="onClientProgressBarUpdating">
             <ProgressTemplate>
                 <ul class="ruProgress">
                     <li>
-                        <h6>TotalProgressBar:</h6>
                         <div class="customProgressBar" style="position: relative; height: 168px; width: 168px;">
-                            <div id="SecondaryProgressBarInnerDiv" runat="server" style="background-color: Blue;
-                                height: 0%; width: 168px; vertical-align: bottom; position: absolute; top: 0;
+                            <div id="PrimaryProgressBarInnerDiv" runat="server" style="background-color: Blue;
+                                height: 0%; width: 200px; vertical-align: bottom; position: absolute; top: 0;
                                 left: 0; z-index: 900;">
                                 <!-- / -->
                             </div>
@@ -157,6 +190,7 @@ div.BankUploadInstructionsImage
                 </ul>
             </ProgressTemplate>
         </telerik:RadProgressArea>
+        </div>
 
     </div>
     <div id="ModalDownloadInstructions">
