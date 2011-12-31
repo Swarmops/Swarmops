@@ -106,7 +106,7 @@ div.BankUploadInstructionsImage
                 $("#<%= this.DropAccounts.ClientID %>").attr('disabled', 'disabled');
             }
 
-            args.set_cancel(true);
+            // args.set_cancel(true);
             
         }
 
@@ -163,7 +163,7 @@ div.BankUploadInstructionsImage
         <input type="file" id="file1" runat="server" name="file1" /><br />
         <asp:Button ID="Upload" OnClick="Submit_Click" Text="Upload" runat="server" />
 
-        <div style="display:none"><!-- placeholders for Telerik to feel important -->
+        <div style="display:inline"><!-- placeholders for Telerik to feel important -->
         <telerik:RadProgressManager ID="RadProgressManager1" runat="server" />
         <telerik:RadProgressArea ID="ProgressIndicator" runat="server" OnClientProgressBarUpdating="onClientProgressBarUpdating">
             <ProgressTemplate>
