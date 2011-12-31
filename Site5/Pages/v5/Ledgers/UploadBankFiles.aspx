@@ -87,11 +87,10 @@ div.BankUploadInstructionsImage
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
 
     <script type="text/javascript">
-    //<![CDATA[
-
         var uploadInProgress = 0;
 
         function onClientProgressBarUpdating(progressArea, args) {
+            alert("foo!");
             //alert(JSON.stringify(args._progressData));
             //alert(args._progrssData.PrimaryPercent);
             $("#ProgressBar").css('width', args._progressData.PrimaryPercent);
@@ -109,10 +108,6 @@ div.BankUploadInstructionsImage
             // args.set_cancel(true);
             
         }
-
-
-
-    //]]>
     </script>
 
     <asp:UpdatePanel ID="PanelFileTypeAccount" runat="server" UpdateMode="Conditional">
