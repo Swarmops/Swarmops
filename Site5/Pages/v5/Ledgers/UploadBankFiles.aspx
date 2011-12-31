@@ -90,7 +90,6 @@ div.BankUploadInstructionsImage
         var uploadInProgress = 0;
 
         function onClientProgressUpdating(progressArea, args) {
-            alert("foo!");
             //alert(JSON.stringify(args._progressData));
             //alert(args._progrssData.PrimaryPercent);
             $("#ProgressBar").css('width', args._progressData.PrimaryPercent);
@@ -98,15 +97,20 @@ div.BankUploadInstructionsImage
 
             if (uploadInProgress == 0) {
                 uploadInProgress = 1;
-                $("#DivUploadProgress").css("display", "inline");
-                $("#DivUploadProgress").fadeTo('slow', 1.0);
-                $("#DivInstructions").animate({ height: 'toggle' }, 1000);
-                $("#DivInstructions").fadeTo('fast', 0.0);
-                $("#<%= this.DropAccounts.ClientID %>").attr('disabled', 'disabled');
+                onBeginUpload();
             }
 
             // args.set_cancel(true);
-            
+
+        }
+        
+        function onBeginUpload() {
+            $("#DivUploadProgress").css("display", "inline");
+            $("#DivUploadProgress").fadeTo('slow', 1.0);
+            $("#DivInstructions").animate({ height: 'toggle' }, 1000);
+            $("#DivInstructions").fadeTo('slow', 0.0);
+            $("#<%= this.DropAccounts.ClientID %>").attr('disabled', 'disabled');
+           
         }
     </script>
 
@@ -135,9 +139,6 @@ div.BankUploadInstructionsImage
 
     <div style="opacity:0;display:none" id="DivUploadProgress">
         <br/><h2><asp:Label ID="LabelProcessing" runat="server" Text="Processing Uploaded File..." /></h2>
-        <div style="width:100%;border:1px solid #E0E0E0;border-radius:5px;box-shadow:1px 1px 3px 3px #888">
-        <div id="ProgressBar" style="width:100%;margin:3px;border:1px solid #88F;border-radius:2px;height:2px;background-color:#CCF"></div>
-        </div>
     </div>
 
     <div style="opacity:0;display:none;padding-top:20px" id="DivInstructions">
@@ -155,39 +156,18 @@ div.BankUploadInstructionsImage
             </Triggers>
         </asp:UpdatePanel>
 
-        <input type="file" id="file1" runat="server" name="file1" /><br />
-        <asp:Button ID="Upload" OnClick="Submit_Click" Text="Upload" runat="server" />
-
-        <div style="display:inline"><!-- placeholders for Telerik to feel important -->
-        <telerik:RadProgressManager ID="RadProgressManager1" runat="server" />
-        <telerik:RadProgressArea ID="ProgressIndicator" runat="server" OnClientProgressUpdating="onClientProgressUpdating">
-            <ProgressTemplate>
-                <ul class="ruProgress">
-                    <li>
-                        <div class="customProgressBar" style="position: relative; height: 168px; width: 168px;">
-                            <div id="PrimaryProgressBarInnerDiv" runat="server" style="background-color: Blue;
-                                height: 0%; width: 200px; vertical-align: bottom; position: absolute; top: 0;
-                                left: 0; z-index: 900;">
-                                <!-- / -->
-                            </div>
-                        </div>
-                    </li>
-                    <li><strong>TotalProgress:</strong> <span runat="server" id="PrimaryValue"></span></li>
-                    <li><strong>TotalProgressPercent:</strong> <span runat="server" id="PrimaryPercent"></span></li>
-                    <li><strong>FilesCount:</strong> <span runat="server" id="SecondaryValue"></span></li>
-                    <li><strong>FilesCountPercent:</strong> <span runat="server" id="SecondaryPercent"></span></li>
-                    <li><strong>RequestSize:</strong> <span runat="server" id="PrimaryTotal"></span></li>
-                    <li><strong>SelectedFilesCount:</strong> <span runat="server" id="SecondaryTotal"></span></li>
-                    <li><strong>CurrentFileName:</strong> <span runat="server" id="CurrentOperation"></span></li>
-                    <li><strong>TimeElapsed:</strong> <span runat="server" id="TimeElapsed"></span></li>
-                    <li><strong>TimeEstimated:</strong> <span runat="server" id="TimeEstimated"></span></li>
-                    <li><strong>TransferSpeed:</strong> <span runat="server" id="Speed"></span></li>
-                </ul>
-            </ProgressTemplate>
-        </telerik:RadProgressArea>
-        </div>
-
+        <input type="file" id="file1" runat="server" name="file1" /> <asp:Button ID="Upload" OnClick="Submit_Click" Text="Upload" OnClientClick="onBeginUpload();" runat="server" />
     </div>
+
+    <telerik:RadProgressManager ID="RadProgressManager1" runat="server" />
+    <telerik:RadProgressArea ID="ProgressIndicator" runat="server" Width="100%" ProgressIndicators="TotalProgressBar">
+        <ProgressTemplate>
+            <div style="width:100%;border:1px solid #E0E0E0;border-radius:5px;box-shadow:1px 1px 3px 3px #888">
+                <div id="PrimaryProgressBarInnerDiv" runat="server" style="width:1%;margin:3px;border:1px solid #88F;border-radius:2px;height:2px;background-color:#CCF"></div>
+            </div>
+        </ProgressTemplate>
+    </telerik:RadProgressArea>
+
     <div id="ModalDownloadInstructions">
         <asp:UpdatePanel ID="PanelModalInstructions" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
