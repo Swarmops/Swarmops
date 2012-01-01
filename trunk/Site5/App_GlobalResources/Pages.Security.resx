@@ -127,6 +127,6 @@
     <value>Access Denied</value>
   </data>
   <data name="AccessDenied_Rant" xml:space="preserve">
-    <value>&lt;p&gt;The Activizr security framework has denied you access to the page you were trying to go to. This usually means that its functions were above the access levels granted to you for the currently selected organization ({0}). This has not been logged nor reported anywhere.&lt;/p&gt;&lt;p&gt;There are several reasons why this may have happened:&lt;/p&gt;</value>
+    <value>&lt;p&gt;The Activizr security framework has denied you access to the page you were trying to go to. This usually means that its functions were above the access levels granted to you for the currently selected organization (&lt;em&gt;{0}&lt;/em&gt;). This has not been logged nor reported anywhere.&lt;/p&gt;&lt;p&gt;There are several reasons why this may have happened:&lt;/p&gt;</value>
   </data>
 </root>

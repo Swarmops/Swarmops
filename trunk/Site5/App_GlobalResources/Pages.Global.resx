@@ -157,6 +157,18 @@
     <value>Go there...</value>
     <comment>Link after describing something.</comment>
   </data>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Upload File</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
+  </data>
+  <data name="Global_UploadFileToActivizr" xml:space="preserve">
+    <value>Upload File To Activizr</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Please select a file to upload.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  </data>
   <data name="Sidebar_Actions" xml:space="preserve">
     <value>Actions</value>
     <comment>List of shortcuts to likely actions</comment>

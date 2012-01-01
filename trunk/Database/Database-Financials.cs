@@ -292,9 +292,8 @@ namespace Activizr.Database
             return GetFinancialAccountRows(new int[] {financialAccountId}, startDateTime, endDateTime);
         }
 
-
-        public BasicFinancialAccountRow[] GetFinancialAccountRows (int[] financialAccountIds, DateTime startDateTime,
-                                                                   DateTime endDateTime)
+        public BasicFinancialAccountRow[] GetFinancialAccountRows(int[] financialAccountIds, DateTime startDateTime,
+                                                           DateTime endDateTime)
         {
             var result = new List<BasicFinancialAccountRow>();
 
@@ -308,6 +307,38 @@ namespace Activizr.Database
                         JoinIds(financialAccountIds) + ") AND DateTime >= '" +
                         startDateTime.ToString("yyyy-MM-dd HH:mm:ss") +
                         "' AND DateTime < '" + endDateTime.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY DateTime,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime;",
+                        connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadFinancialAccountRowFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+
+
+        public BasicFinancialAccountRow[] GetLastFinancialAccountRows (int financialAccountId, int rowCount)
+        {
+            return GetLastFinancialAccountRows(new int[] {financialAccountId}, rowCount);
+        }
+
+        public BasicFinancialAccountRow[] GetLastFinancialAccountRows (int[] financialAccountIds, int rowCount)
+        {
+            var result = new List<BasicFinancialAccountRow>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
+                        JoinIds(financialAccountIds) + ") ORDER BY DateTime DESC,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime LIMIT " + rowCount.ToString() + ";",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())

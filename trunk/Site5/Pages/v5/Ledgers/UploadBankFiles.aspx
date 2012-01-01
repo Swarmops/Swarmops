@@ -116,8 +116,8 @@ div.BankUploadInstructionsImage
 
     <asp:UpdatePanel ID="PanelFileTypeAccount" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <h2><asp:Label ID="LabelSelectBankUploadFilter" Text="Select Bank And Bookkeeping LOC" runat="server"/></h2>
-            <h3><asp:Label ID="LabelBank" Text="Bank LOC" runat="server" /></h3>
+            <h2><asp:Label ID="LabelSelectBankAndAccount" Text="Select Bank And Bookkeeping LOC" runat="server"/></h2>
+            <h3><asp:Label ID="LabelSelectFileType" Text="Bank LOC" runat="server" /></h3>
             <asp:ImageButton OnClick="ButtonSebAccountFile_Click" CssClass="FileTypeImage" ID="ButtonSebAccountFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-kontoutdrag.png"/>
             <asp:ImageButton CssClass="FileTypeImage" ID="ButtonSebPaymentFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-bankgirofil.png"/>
             <asp:HiddenField ID="HiddenFileType" runat="server"/>
@@ -153,6 +153,7 @@ div.BankUploadInstructionsImage
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
+                <asp:AsyncPostbackTrigger ControlID="DropAccounts" EventName="SelectedIndexChanged" />
             </Triggers>
         </asp:UpdatePanel>
 

@@ -41,6 +41,12 @@ namespace Activizr.Logic.Financial
             return PirateDb.GetDatabase().GetFinancialAccountBalanceDeltaCents(Identity, start, end);
         }
 
+        public FinancialAccountRows GetLastRows(int rowCount)
+        {
+            BasicFinancialAccountRow[] basicRows = PirateDb.GetDatabase().GetLastFinancialAccountRows(Identity, rowCount);
+            return FinancialAccountRows.FromArray(basicRows);
+        }
+
         public FinancialAccountRows GetRows(DateTime start, DateTime end)
         {
             BasicFinancialAccountRow[] basicRows = PirateDb.GetDatabase().GetFinancialAccountRows(Identity, start, end);

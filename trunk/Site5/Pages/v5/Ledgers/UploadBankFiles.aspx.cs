@@ -31,7 +31,12 @@ namespace Activizr.Site.Pages.Ledgers
             this.LabelUploadBankFilesInfo.Text = Resources.Pages.Ledgers.UploadBankFiles_Info;
             this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
 
-            this.LabelSelectBankUploadFilter.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
+            this.LabelSelectBankAndAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankAndAccount;
+            this.LabelSelectFileType.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
+            this.LabelSelectAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectAccount;
+            this.LabelUploadH2Header.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
+            this.LabelUploadH3Header.Text = Resources.Pages.Global.Global_UploadFileToActivizr;
+            this.Upload.Text = Resources.Pages.Global.Global_UploadFile;
 
             if (!IsPostBack)
             {
@@ -68,7 +73,7 @@ namespace Activizr.Site.Pages.Ledgers
 
             this.LiteralDownloadInstructions.Text =
                 this.LiteralDownloadInstructionsModal.Text =
-                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructionsSebAccountFile;
+                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_SebAccountFile;
 
         }
 
@@ -91,7 +96,7 @@ namespace Activizr.Site.Pages.Ledgers
         {
             this.LiteralSelectAccountDivStyle.Text = @"style=""opacity:1;display:inline""";
 
-            if (this.DropAccounts.SelectedIndex > -2)
+            if (this.DropAccounts.SelectedIndex > 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeDownload2",
                                                         "$(\"#DivInstructions\").fadeTo('slow',1.0);", true);
@@ -101,8 +106,17 @@ namespace Activizr.Site.Pages.Ledgers
                                                         "$(function () { $(\"a[rel*=leanModal]\").leanModal();});", true);
 
 
-        
+                FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue));
 
+                FinancialAccountRows rows = account.GetLastRows(1);
+                DateTime lastTransactionDateTime = new DateTime(1801, 1, 1);
+
+                if (rows != null && rows.Count > 0)
+                {
+                    lastTransactionDateTime = rows[0].RowDateTime;
+                }
+
+                this.LiteralLastAccountRecord.Text = String.Format(Resources.Pages.Ledgers.UploadBankFiles_DownloadDataSince, lastTransactionDateTime, lastTransactionDateTime.AddDays(-5));
             }
         }
 
@@ -115,6 +129,7 @@ namespace Activizr.Site.Pages.Ledgers
                 UploadedFile file = UploadedFile.FromHttpPostedFile(Request.Files[fileInputID]);
                 if (file.ContentLength > 0)
                 {
+
                     // TODO: PROCESS
                     // file.SaveAs("c:\\temp\\" + file.GetName());
                     RadProgressContext progress = RadProgressContext.Current;
@@ -155,13 +170,13 @@ namespace Activizr.Site.Pages.Ledgers
             {
                 // If no file was uploaded, re-show the instructions div
 
-                this.LabelNoFileUploaded.Text = "Please upload a file LOC";
-                this.LiteralDivInstructionsStyle.Text = "style='display:inline'";
+                this.LabelNoFileUploaded.Text = Resources.Pages.Global.Global_Upload_ErrorSelectFile;
+                this.LiteralDivInstructionsStyle.Text = @"style='display:inline'";
             }
             else
             {
                 this.LabelNoFileUploaded.Text = string.Empty;
-                this.LiteralDivInstructionsStyle.Text = "style='display:none'";
+                this.LiteralDivInstructionsStyle.Text = @"style='display:none'";
             }
         }
     }

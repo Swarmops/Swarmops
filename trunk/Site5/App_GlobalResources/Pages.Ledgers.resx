@@ -117,14 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UploadBankFiles_DownloadAtLeastSince" xml:space="preserve">
-    <value>You should include all records from at least &lt;strong&gt;{0:yyyy-MMM-dd}.&lt;/strong&gt;</value>
+  <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
+    <value>&lt;/p&gt;&lt;p&gt;(The most recent data in Activizr is from {0:yyyy-MMM-dd}. You should download bank data from at least &lt;strong&gt;{1:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
+    <comment>Displayed to help user determine scope of bank download</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince_Paypal" xml:space="preserve">
+    <value>&lt;/p&gt;&lt;p&gt;(Paypal will tell you the time of the last transaction download. Download all transactions from that point in time, adding some three days of overlap.)</value>
+    <comment>Displayed instead of date of last transaction in the case of Paypal.</comment>
   </data>
   <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
     <value>Bank Download Instructions</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
-  <data name="UploadBankFiles_DownloadInstructionsSebAccountFile" xml:space="preserve">
+  <data name="UploadBankFiles_DownloadInstructions_SebAccountFile" xml:space="preserve">
     <value>Open SEB's internet bank. Go to &lt;strong&gt;your account&lt;/strong&gt;, and enter the date span you wish to download in the search box. Press &lt;strong&gt;filter&lt;/strong&gt;. After that, click the link to &lt;strong&gt;save the account history&lt;/strong&gt;. A popup will appear. Choose &lt;strong&gt;csv&lt;/strong&gt; and &lt;strong&gt;tab separated&lt;/strong&gt;, then &lt;strong&gt;save&lt;/strong&gt;. The downloaded file will be named &lt;em&gt;kontohandelser.csv&lt;/em&gt;.</value>
     <comment>Only translate to languages where SEB is active.</comment>
   </data>
@@ -140,8 +145,15 @@
     <value>Select Bookkeeping Account</value>
     <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
   </data>
+  <data name="UploadBankFiles_SelectBankAndAccount" xml:space="preserve">
+    <value>Select File Type And Account For Upload</value>
+  </data>
   <data name="UploadBankFiles_SelectBankFileType" xml:space="preserve">
-    <value>Select Bank File Type For Upload</value>
+    <value>Select Bank File Type</value>
     <comment>Header above several bank logos, prompting a selection of bank.</comment>
+  </data>
+  <data name="UploadBankFiles_UploadBankFile" xml:space="preserve">
+    <value>Upload Bank File</value>
+    <comment>Displayed as header above download instructions / upload form</comment>
   </data>
 </root>
