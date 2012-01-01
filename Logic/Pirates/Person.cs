@@ -1009,5 +1009,36 @@ namespace Activizr.Logic.Pirates
         {
             return GetAvatarLink(pixelSize).Replace("http://www", "https://secure");
         }
+
+        public bool HasAccess (Access access)
+        {
+            if (access == null)
+            {
+                return true;
+            }
+
+            bool result = false;
+
+            // TODO: Build access control list from org chart, compare against required access
+
+            // For now, return true if Anna, Janne, or Rick. Bad hack, bad, really bad.
+
+            if (this.Identity == 2)
+            {
+                return true;
+            }
+
+            if (this.Identity == 11443)
+            {
+                return true;
+            }
+
+            if (this.Identity == 378)
+            {
+                return true;
+            }
+
+            return result;
+        }
     }
 }

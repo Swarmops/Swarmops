@@ -17,6 +17,7 @@ using Activizr.Logic.Structure;
 public class PageV5Base : System.Web.UI.Page
 {
     public PermissionSet pagePermissionDefault = new PermissionSet(Permission.CanSeeSelf); //Use from menu;
+    public Access PageAccessRequired = null; // v5 mechanism
 
     public Person _currentUser = null;
     public Authority _authority = null;
@@ -109,9 +110,19 @@ public class PageV5Base : System.Web.UI.Page
 
         Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
-
-
  	    base.OnPreInit(e);
+    }
+
+    protected override void  OnPreRender(EventArgs e)
+    {
+        // Check security of page against users's credentials
+
+        if (!_currentUser.HasAccess (this.PageAccessRequired))
+        {
+            Response.Redirect("/Pages/v5/Security/AccessDenied.aspx");
+        }
+
+ 	    base.OnPreRender(e);
     }
 }
 
