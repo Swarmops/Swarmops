@@ -1023,7 +1023,7 @@ namespace Activizr.Logic.Pirates
 
             // For now, return true if Anna, Janne, or Rick. Bad hack, bad, really bad.
 
-            if (this.Identity == 2)
+            if (this.Identity == 1)
             {
                 return true;
             }
