@@ -116,14 +116,14 @@ div.BankUploadInstructionsImage
 
     <asp:UpdatePanel ID="PanelFileTypeAccount" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <h2><asp:Label ID="LabelSelectBankUploadFilter" Text="Select Bank And Bookkeeping" runat="server"/></h2>
-            <h3><asp:Label ID="LabelBank" Text="Bank" runat="server" /></h3>
+            <h2><asp:Label ID="LabelSelectBankUploadFilter" Text="Select Bank And Bookkeeping LOC" runat="server"/></h2>
+            <h3><asp:Label ID="LabelBank" Text="Bank LOC" runat="server" /></h3>
             <asp:ImageButton OnClick="ButtonSebAccountFile_Click" CssClass="FileTypeImage" ID="ButtonSebAccountFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-kontoutdrag.png"/>
             <asp:ImageButton CssClass="FileTypeImage" ID="ButtonSebPaymentFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-bankgirofil.png"/>
             <asp:HiddenField ID="HiddenFileType" runat="server"/>
             <div style="clear:both;margin-bottom:10px"></div>
-            <div id="DivSelectAccount" <asp:Literal ID="LiteralSelectAccountDivStyle" runat="server" Text="style='opacity:0;display:none;'" />>
-            <h3><asp:Label ID="LabelSelectAccount" runat="server" Text="Bookkeeping Account" /></h3>
+            <div id="DivSelectAccount" <asp:Literal ID="LiteralSelectAccountDivStyle" runat="server" Text="style='opacity:0;display:none'" />>
+            <h3><asp:Label ID="LabelSelectAccount" runat="server" Text="Bookkeeping Account LOC" /></h3>
             <asp:DropDownList runat="server" ID="DropAccounts" OnSelectedIndexChanged="DropAccounts_SelectedIndexChanged" AutoPostBack="true"/>
             </div>
         </ContentTemplate>
@@ -133,30 +133,30 @@ div.BankUploadInstructionsImage
     </asp:UpdatePanel>
 
     <asp:Panel ID="PanelResults" Visible="false" runat="server">
-        <h2><asp:Label ID="LabelProcessingResults" Text="Imported a Bank File" runat="server" /></h2>
+        <h2><asp:Label ID="LabelProcessingResults" Text="Imported a Bank File LOC" runat="server" /></h2>
         <p>Todo...</p>
     </asp:Panel>
 
     <div style="opacity:0;display:none" id="DivUploadProgress">
-        <br/><h2><asp:Label ID="LabelProcessing" runat="server" Text="Processing Uploaded File..." /></h2>
+        <br/><br/><h2><asp:Label ID="LabelProcessing" runat="server" Text="Processing Uploaded File... LOC" /></h2>
     </div>
 
-    <div style="opacity:0;display:none;padding-top:20px" id="DivInstructions">
+    <div id="DivInstructions" <asp:Literal ID="LiteralDivInstructionsStyle" runat="server" Text="style='display:none'" />>
         <asp:UpdatePanel ID="PanelInstructions" UpdateMode="Conditional" runat="server">
             <ContentTemplate>
-                <br/><h2><asp:Label ID="LabelUploadH2Header" Text="Upload Bank File" runat="server" /></h2>
-                <a rel="leanModal" name="ModalDownloadInstructions" id="go" href="#ModalDownloadInstructions"><asp:Image ID="ImageDownloadInstructions" ImageUrl="~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png" ImageAlign="Right" runat="server" /></a>
-                <h3><asp:Label ID="LabelDownloadInstructions" Text="Download File From Bank" runat="server" /></h3>
-                <p><asp:Literal ID="LiteralDownloadInstructions"  runat="server" Text="Fooo!!!" /><asp:Literal ID="LiteralLastAccountRecord" runat="server" /></p><p><asp:Label ID="LabelClickImage" runat="server" /></p>
+                <br/><br/><h2><asp:Label ID="LabelUploadH2Header" Text="Upload Bank File LOC" runat="server" /></h2>
+                <div style="float:right;padding-left:10px;text-align:center"><a rel="leanModal" name="ModalDownloadInstructions" id="go" href="#ModalDownloadInstructions"><asp:Image ID="ImageDownloadInstructions" ImageUrl="~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png" ImageAlign="Right" runat="server" /></a><small><br style="padding-bottom:2px"/><em><asp:Label ID="LabelClickImage" runat="server" /></em></small></div>
+                <h3><asp:Label ID="LabelDownloadInstructions" Text="Download File From Bank LOC" runat="server" /></h3>
+                <p><asp:Literal ID="LiteralDownloadInstructions"  runat="server" Text="LOC" /><asp:Literal ID="LiteralLastAccountRecord" runat="server" /></p>
                 <div style="clear:both"></div>
-                <h3><asp:Label ID="LabelUploadH3Header" Text="Upload File To Activizr" runat="server" /></h3>
+                <h3><asp:Label ID="LabelUploadH3Header" Text="Upload File To Activizr LOC" runat="server" /></h3>
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
             </Triggers>
         </asp:UpdatePanel>
 
-        <input type="file" id="file1" runat="server" name="file1" /> <asp:Button ID="Upload" OnClick="Submit_Click" Text="Upload" OnClientClick="onBeginUpload();" runat="server" />
+        <input type="file" id="FileSelector" runat="server" name="file1" /> <asp:Button ID="Upload" OnClick="Submit_Click" Text="Upload LOC" OnClientClick="onBeginUpload();" runat="server" ValidationGroup="Upload" /> <asp:Label ID="LabelNoFileUploaded" Text="" runat="server" />
     </div>
 
     <telerik:RadProgressManager ID="RadProgressManager1" runat="server" />

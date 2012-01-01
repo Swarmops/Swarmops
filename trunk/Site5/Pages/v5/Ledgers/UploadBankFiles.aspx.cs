@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Activizr.Basic.Enums;
 using Activizr.Logic.Financial;
+using Activizr.Logic.Security;
 using Telerik.Web.UI;
 using Telerik.Web.UI.Upload;
 
@@ -19,6 +20,7 @@ namespace Activizr.Site.Pages.Ledgers
         {
             this.PageTitle = Resources.Pages.Ledgers.UploadBankFiles_PageTitle;
             this.PageIcon = "iconshock-bank";
+            this.PageAccessRequired = new Access(_currentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
             this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
             this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
@@ -106,6 +108,8 @@ namespace Activizr.Site.Pages.Ledgers
 
         protected void Submit_Click(object sender, EventArgs e)
         {
+            bool fileWasUploaded = false;
+
             foreach (string fileInputID in Request.Files)
             {
                 UploadedFile file = UploadedFile.FromHttpPostedFile(Request.Files[fileInputID]);
@@ -113,41 +117,52 @@ namespace Activizr.Site.Pages.Ledgers
                 {
                     // TODO: PROCESS
                     // file.SaveAs("c:\\temp\\" + file.GetName());
+                    RadProgressContext progress = RadProgressContext.Current;
+                    progress.Speed = "N/A";
+
+                    const int total = 100;
+
+                    for (int i = 0; i < total; i++)
+                    {
+                        progress["PrimaryPercent"] = i.ToString();
+                        progress["PrimaryTotal"] = total.ToString();
+                        progress["PrimaryValue"] = i.ToString();
+
+                        progress["SecondaryTotal"] = total.ToString();
+                        progress["SecondaryValue"] = i.ToString();
+                        progress["SecondaryPercent"] = i.ToString();
+                        progress["PrimaryProgressBar"] = i.ToString();
+                        progress["CurrentOperationText"] = "File is being processed...";
+
+                        if (!Response.IsClientConnected)
+                        {
+                            //Cancel button was clicked or the browser was closed, so stop processing
+                            break;
+                        }
+
+                        //Stall the current thread for 0.1 seconds
+                        System.Threading.Thread.Sleep(100);
+                    }
+
+                    this.PanelFileTypeAccount.Visible = false;
+                    this.PanelResults.Visible = true;
+                    fileWasUploaded = true;
                 }
 
-                    
             }
 
-            RadProgressContext progress = RadProgressContext.Current;
-            progress.Speed = "N/A";
-
-            const int total = 100;
-
-            for (int i = 0; i < total; i++)
+            if (!fileWasUploaded)
             {
-                progress["PrimaryPercent"] = i.ToString();
-                progress["PrimaryTotal"] = total.ToString();
-                progress["PrimaryValue"] = i.ToString();
+                // If no file was uploaded, re-show the instructions div
 
-                progress["SecondaryTotal"] = total.ToString();
-                progress["SecondaryValue"] = i.ToString();
-                progress["SecondaryPercent"] = i.ToString();
-                progress["PrimaryProgressBar"] = i.ToString();
-                progress["CurrentOperationText"] = "File is being processed...";
-
-                if (!Response.IsClientConnected)
-                {
-                    //Cancel button was clicked or the browser was closed, so stop processing
-                    break;
-                }
-
-                //Stall the current thread for 0.1 seconds
-                System.Threading.Thread.Sleep(100);
+                this.LabelNoFileUploaded.Text = "Please upload a file LOC";
+                this.LiteralDivInstructionsStyle.Text = "style='display:inline'";
             }
-
-            this.PanelFileTypeAccount.Visible = false;
-            this.PanelResults.Visible = true;
-
+            else
+            {
+                this.LabelNoFileUploaded.Text = string.Empty;
+                this.LiteralDivInstructionsStyle.Text = "style='display:none'";
+            }
         }
     }
 }
