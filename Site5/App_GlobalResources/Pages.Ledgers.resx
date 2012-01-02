@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="UploadBankFiles_BankScreenshot" xml:space="preserve">
+    <value>Bank Screenshot</value>
+    <comment>Displayed as header above modally zoomed screenshot</comment>
+  </data>
   <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
     <value>&lt;/p&gt;&lt;p&gt;(The most recent data in Activizr in &lt;em&gt;{0}&lt;/em&gt; is from {1:yyyy-MMM-dd}. You should download bank data from at least &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
     <comment>Displayed to help user determine scope of bank download</comment>
@@ -130,8 +134,28 @@
     <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
   <data name="UploadBankFiles_DownloadInstructions_SebAccountFile" xml:space="preserve">
-    <value>Open SEB's internet bank. Go to &lt;strong&gt;your account&lt;/strong&gt;, and enter the date span you wish to download in the search box. Press &lt;strong&gt;filter&lt;/strong&gt;. After that, click the link to &lt;strong&gt;save the account history&lt;/strong&gt;. A popup will appear. Choose &lt;strong&gt;csv&lt;/strong&gt; and &lt;strong&gt;tab separated&lt;/strong&gt;, then &lt;strong&gt;save&lt;/strong&gt;. The downloaded file will be named &lt;em&gt;kontohandelser.csv&lt;/em&gt;.</value>
+    <value>Open SEB's internet bank. Go to &lt;strong&gt;your account&lt;/strong&gt;, and enter the date span you wish to download in the search box. Press &lt;strong&gt;filter&lt;/strong&gt;. After that, click the link to &lt;strong&gt;save the account history&lt;/strong&gt;. A popup will appear. Choose &lt;strong&gt;csv&lt;/strong&gt; and &lt;strong&gt;tab separated&lt;/strong&gt;, then &lt;strong&gt;save&lt;/strong&gt;. The downloaded file will be named &lt;em&gt;Kontohändelser.csv&lt;/em&gt;.</value>
     <comment>Only translate to languages where SEB is active.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
+    <value>&lt;p&gt;The file contained {0:N0} transactions. &lt;strong&gt;{1:N0} transactions&lt;/strong&gt; have been successfully imported into the &lt;em&gt;{2}&lt;/em&gt; bookkeeping account. ({3:N0} transactions were duplicates.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;However, the bank balance does not match the records in Activizr.&lt;/strong&gt; This is usually due to missing transactions. Please upload a transaction list with a larger time span to make sure that Activizr sees all transactions.&lt;/p&gt;&lt;p&gt;Activizr's bookkeeping account is currently &lt;strong&gt;not in sync&lt;/strong&gt; with that of the bank.&lt;/p&gt;</value>
+  </data>
+  <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
+    <value>&lt;h3&gt;The bank file could not be imported.&lt;/h3&gt;&lt;p&gt;This has one of three reasons: you missed some detail in the download instructions, the bank has changed its format, or you accidentally uploaded the wrong file entirely (like a photo from your last party instead of the transactions list). No transactions were imported at all. &lt;strong&gt;Please retry.&lt;/strong&gt;</value>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
+    <value>File Successfully Imported</value>
+    <comment>Displayed as header after successful processing</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader_ErrorBalance" xml:space="preserve">
+    <value>File Imported, But Data Out Of Sync</value>
+  </data>
+  <data name="UploadBankFiles_ImportError" xml:space="preserve">
+    <value>Error on importing file</value>
+    <comment>Displayed as header on import failure</comment>
+  </data>
+  <data name="UploadBankFiles_ImportResults" xml:space="preserve">
+    <value>&lt;p&gt;The file contained {0:N0} transactions. &lt;strong&gt;{1:N0} transactions&lt;/strong&gt; have been successfully imported into the &lt;em&gt;{2}&lt;/em&gt; bookkeeping account. ({3:N0} transactions were duplicates.)&lt;/p&gt;&lt;p&gt;After import, the account balance in Activizr matches that of the bank.&lt;/p&gt;</value>
   </data>
   <data name="UploadBankFiles_Info" xml:space="preserve">
     <value>Here, you can upload files from your bank or payment provider into your organization's bookkeeping. Examples include account history and payments received.</value>
@@ -151,6 +175,10 @@
   <data name="UploadBankFiles_SelectBankFileType" xml:space="preserve">
     <value>Select Bank File Type</value>
     <comment>Header above several bank logos, prompting a selection of bank.</comment>
+  </data>
+  <data name="UploadBankFiles_UploadAnother" xml:space="preserve">
+    <value>Upload another bank file?</value>
+    <comment>Displayed as link</comment>
   </data>
   <data name="UploadBankFiles_UploadBankFile" xml:space="preserve">
     <value>Upload Bank File</value>

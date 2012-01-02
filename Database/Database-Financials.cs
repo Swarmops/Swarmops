@@ -192,7 +192,8 @@ namespace Activizr.Database
             }
         }
 
-        public double GetFinancialAccountBalanceTotal (int financialAccountId)
+        [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
+        public double GetFinancialAccountBalanceTotal(int financialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -215,7 +216,30 @@ namespace Activizr.Database
             }
         }
 
-        public Int64 GetFinancialAccountBalanceDeltaCents (int financialAccountId, DateTime startDate, DateTime endDate)
+        public Int64 GetFinancialAccountBalanceTotalCents(int financialAccountId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT Sum(AmountCents) FROM FinancialTransactionRows WHERE FinancialAccountId=" +
+                        financialAccountId + ";", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt64(0);
+                    }
+
+                    throw new ArgumentException("Unknown Account Id");
+                }
+            }
+        }
+
+        public Int64 GetFinancialAccountBalanceDeltaCents(int financialAccountId, DateTime startDate, DateTime endDate)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -281,6 +305,7 @@ namespace Activizr.Database
             }
         }
 
+        [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
         public decimal GetFinancialAccountBalanceDelta(int financialAccountId, DateTime startDate, DateTime endDate)
         {
             return GetFinancialAccountBalanceDeltaCents(financialAccountId, startDate, endDate)/100.0m;

@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Activizr.Basic.Enums;
 using Activizr.Logic.Financial;
+using Activizr.Logic.Pirates;
 using Activizr.Logic.Security;
+using Activizr.Logic.Structure;
 using Telerik.Web.UI;
 using Telerik.Web.UI.Upload;
 
@@ -22,22 +28,29 @@ namespace Activizr.Site.Pages.Ledgers
             this.PageIcon = "iconshock-bank";
             this.PageAccessRequired = new Access(_currentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
-            this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
-            this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
-            this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
-            this.LabelDownloadInstructions.Text = Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions;
-            this.LabelClickImage.Text = Resources.Pages.Global.Global_ClickImageToEnlarge;
+            if (!IsPostBack)
+            {
+                // Localize
 
-            this.LabelUploadBankFilesInfo.Text = Resources.Pages.Ledgers.UploadBankFiles_Info;
-            this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
+                this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
+                this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
+                this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
+                this.LabelDownloadInstructions.Text = Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions;
+                this.LabelClickImage.Text = Resources.Pages.Global.Global_ClickImageToEnlarge;
 
-            this.LabelSelectBankAndAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankAndAccount;
-            this.LabelSelectFileType.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
-            this.LabelSelectAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectAccount;
-            this.LabelUploadH2Header.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
-            this.LabelUploadH3Header.Text = Resources.Pages.Global.Global_UploadFileToActivizr;
-            this.Upload.Text = Resources.Pages.Global.Global_UploadFile;
-            this.LabelProcessing.Text = Resources.Pages.Global.Global_ProcessingFile;
+                this.LabelUploadBankFilesInfo.Text = Resources.Pages.Ledgers.UploadBankFiles_Info;
+                this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
+
+                this.LabelSelectBankAndAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankAndAccount;
+                this.LabelSelectFileType.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
+                this.LabelSelectAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectAccount;
+                this.LabelUploadH2Header.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
+                this.LabelUploadH3Header.Text = Resources.Pages.Global.Global_UploadFileToActivizr;
+                this.Upload.Text = Resources.Pages.Global.Global_UploadFile;
+                this.LabelProcessing.Text = Resources.Pages.Global.Global_ProcessingFile;
+                this.LinkUploadAnother.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadAnother;
+                this.LabelModalInstructionHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_BankScreenshot;
+            }
 
             if (!IsPostBack)
             {
@@ -133,36 +146,61 @@ namespace Activizr.Site.Pages.Ledgers
 
                     // TODO: PROCESS
                     // file.SaveAs("c:\\temp\\" + file.GetName());
-                    RadProgressContext progress = RadProgressContext.Current;
-                    progress.Speed = "N/A";
-
-                    const int total = 100;
-
-                    for (int i = 0; i < total; i++)
-                    {
-                        progress["PrimaryPercent"] = i.ToString();
-                        progress["PrimaryTotal"] = total.ToString();
-                        progress["PrimaryValue"] = i.ToString();
-
-                        progress["SecondaryTotal"] = total.ToString();
-                        progress["SecondaryValue"] = i.ToString();
-                        progress["SecondaryPercent"] = i.ToString();
-                        progress["PrimaryProgressBar"] = i.ToString();
-                        progress["CurrentOperationText"] = "File is being processed...";
-
-                        if (!Response.IsClientConnected)
-                        {
-                            //Cancel button was clicked or the browser was closed, so stop processing
-                            break;
-                        }
-
-                        //Stall the current thread for 0.1 seconds
-                        System.Threading.Thread.Sleep(100);
-                    }
 
                     this.PanelFileTypeAccount.Visible = false;
                     this.PanelResults.Visible = true;
                     fileWasUploaded = true;
+
+                    // Interpret and then import the data
+
+                    ImportedBankData bankData = null;
+
+                    try
+                    {
+                        // Set initial progress to light up progress box.
+
+                        UpdateImportProgressBar(1);
+
+                        // Assume SEB. Later, parameterize to filters.
+
+                        bankData = ImportSebText(file.InputStream);
+                        this.LabelProcessing.Text = bankData.Rows.Count.ToString();
+                        ImportResults results = ProcessImportedData(bankData);
+
+                        if (results.AccountBalanceMatchesBank)
+                        {
+                            this.LiteralImportResults.Text =
+                                String.Format(Resources.Pages.Ledgers.UploadBankFiles_ImportResults,
+                                              results.DuplicateTransactions + results.TransactionsImported,
+                                              results.TransactionsImported,
+                                              FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue))
+                                                  .Name,
+                                              results.DuplicateTransactions);
+                            this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_FileImportedHeader;
+                        }
+                        else
+                        {
+                            this.LiteralImportResults.Text =
+                                String.Format(Resources.Pages.Ledgers.UploadBankFiles_ErrorBalance,
+                                              results.DuplicateTransactions + results.TransactionsImported,
+                                              results.TransactionsImported,
+                                              FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue))
+                                                  .Name,
+                                              results.DuplicateTransactions);
+                            this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_FileImportedHeader_ErrorBalance;
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        this.LiteralDownloadInstructionsModal.Text = exception.ToString(); // For debug purposes -- will not be shown to user
+                        this.PanelErrorImage.Visible = true;
+                        this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_ImportError;
+                        this.LiteralImportResults.Text = Resources.Pages.Ledgers.UploadBankFiles_ErrorInterpretation;
+                    }
+
+                    // Import the data to database
+
+
                 }
 
             }
@@ -179,6 +217,308 @@ namespace Activizr.Site.Pages.Ledgers
                 this.LabelNoFileUploaded.Text = string.Empty;
                 this.LiteralDivInstructionsStyle.Text = @"style='display:none'";
             }
+        }
+
+
+        protected class ImportResults
+        {
+            public int TransactionsImported;
+            public int DuplicateTransactions;
+            public bool AccountBalanceMatchesBank;
+        }
+
+
+        protected ImportResults ProcessImportedData(ImportedBankData import)
+        {
+            FinancialAccount assetAccount = FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue));
+            FinancialAccount autoDepositAccount = _currentOrganization.FinancialAccounts.IncomeDonations;
+            int autoDepositLimit = 1000; // TODO: _currentOrganization.Parameters.AutoDonationLimit;
+
+            ImportResults result = new ImportResults();
+            int count = 0;
+            int progressUpdateInterval = import.Rows.Count/40;
+
+            if (progressUpdateInterval > 100)
+            {
+                progressUpdateInterval = 100;
+            }
+
+            foreach (ImportedBankRow row in import.Rows)
+            {
+                // Update progress.
+
+                count++;
+                if (progressUpdateInterval < 2 || count % progressUpdateInterval == 0)
+                {
+                    int percent = (count*99)/import.Rows.Count;
+                    UpdateImportProgressBar(percent);
+                }
+
+                // Each row is at least a stub, probably more.
+
+                string importKey = row.SuppliedTransactionId;
+
+                // If importKey is empty, construct a hash from the data fields.
+
+                if (string.IsNullOrEmpty(importKey))
+                {
+                    string commentKey = row.Comment;
+                    if (row.DateTime.Year >= 2012)
+                    {
+                        commentKey = commentKey.ToLowerInvariant();
+                    }
+
+                    string hashKey = row.HashBase + commentKey + (row.AmountCentsNet / 100.0).ToString(CultureInfo.InvariantCulture) + row.CurrentBalance.ToString(CultureInfo.InvariantCulture) +
+                                     row.DateTime.ToString("yyyy-MM-dd-hh-mm-ss");
+
+                    importKey = SHA1.Hash(hashKey).Replace(" ", "");
+                }
+
+                if (importKey.Length > 30)
+                {
+                    importKey = importKey.Substring(0, 30);
+                }
+
+                Int64 amountCents = row.AmountCentsNet;
+
+                if (amountCents == 0)
+                {
+                    amountCents = row.AmountCentsGross;
+                }
+
+                FinancialTransaction transaction = FinancialTransaction.ImportWithStub(_currentOrganization.Identity, row.DateTime,
+                                                                                       assetAccount.Identity, amountCents,
+                                                                                       row.Comment, importKey,
+                                                                                       _currentUser.Identity);
+
+                if (transaction != null)
+                {
+                    // The transaction was created. Examine if the autobook criteria are true.
+
+                    result.TransactionsImported++;
+
+                    FinancialAccounts accounts = FinancialAccounts.FromBankTransactionTag(row.Comment);
+
+                    if (accounts.Count == 1)
+                    {
+                        // This is a labelled local donation.
+
+                        Geography geography = accounts[0].AssignedGeography;
+                        FinancialAccount localAccount = accounts[0];
+
+                        transaction.AddRow(_currentOrganization.FinancialAccounts.IncomeDonations, -amountCents, _currentUser);
+                        transaction.AddRow(_currentOrganization.FinancialAccounts.CostsLocalDonationTransfers,
+                                           amountCents, _currentUser);
+                        transaction.AddRow(localAccount, -amountCents, _currentUser);
+
+                        Activizr.Logic.Support.PWEvents.CreateEvent(EventSource.PirateWeb, EventType.LocalDonationReceived,
+                                                                     _currentUser.Identity, _currentOrganization.Identity,
+                                                                     geography.Identity, 0,
+                                                                     transaction.Identity, localAccount.Identity.ToString());
+                    }
+                    else if (row.Comment.ToLowerInvariant().StartsWith("bg 451-0061 "))   // TODO: Organization.Parameters.FinancialTrackedTransactionPrefix
+                    {
+                        // Check for previously imported payment group
+
+                        PaymentGroup group = PaymentGroup.FromTag(_currentOrganization,
+                                                                  "SEBGM" + DateTime.Today.Year.ToString() +   // TODO: Get tagging from org
+                                                                  row.Comment.Substring(11));
+
+                        if (group != null)
+                        {
+                            // There was a previously imported and not yet closed payment group matching this transaction
+                            // Close the payment group and match the transaction against accounts receivable
+
+                            transaction.Dependency = group;
+                            group.Open = false;
+                            transaction.AddRow(_currentOrganization.FinancialAccounts.AssetsOutboundInvoices, -amountCents, _currentUser);
+                        }
+                    }
+                    else if (amountCents < 0)
+                    {
+                        // Autowithdrawal mechanisms removed, condition kept because of downstream else-if conditions
+                    }
+                    else if (amountCents > 0)
+                    {
+                        if (row.Fee < 0)
+                        {
+                            // This is always an autodeposit, if there is a fee (which is never > 0.0)
+
+                            transaction.AddRow(_currentOrganization.FinancialAccounts.CostsBankFees, -row.Fee, _currentUser);
+                            transaction.AddRow(autoDepositAccount, -row.AmountCentsGross, _currentUser);
+                        }
+                        else if (amountCents < autoDepositLimit * 100)
+                        {
+                            // Book against autoDeposit account.
+
+                            transaction.AddRow(autoDepositAccount, -amountCents, _currentUser);
+                        }
+                    }
+                }
+                else
+                {
+                    // Transaction was not imported; assume duplicate
+
+                    result.DuplicateTransactions++;
+                }
+            }
+
+            // Import complete. Return true if the bookkeeping account matches the bank data.
+
+            Int64 databaseAccountBalanceCents = assetAccount.BalanceTotalCents;
+
+            if (databaseAccountBalanceCents == import.CurrentBalanceCents)
+            {
+                Payouts.AutomatchAgainstUnbalancedTransactions(_currentOrganization);
+                result.AccountBalanceMatchesBank = true;
+            }
+            else
+            {
+                result.AccountBalanceMatchesBank = false;
+            }
+
+            return result;
+        }
+
+
+        protected void UpdateImportProgressBar (int percentDone)
+        {
+            RadProgressContext progress = RadProgressContext.Current;
+            progress["PrimaryPercent"] = percentDone.ToString();
+
+            System.Threading.Thread.Sleep(100);
+        }
+
+
+
+
+        // These Functions Copied From PWv4 -- may need adaptation and/or modernization
+
+
+        protected ImportedBankData ImportSebText(Stream fileStream)
+        {
+            TextReader reader = new StreamReader(fileStream, Encoding.GetEncoding(1252));
+            string contents = reader.ReadToEnd();
+
+            string[] lines = contents.Split('\n');
+
+            if (lines[0].Trim() != "Bokföringsdatum\tValutadatum\tVerifikationsnummer\tText/mottagare\tBelopp\tSaldo")
+            {
+                throw new ArgumentException("Unable to parse");
+            }
+
+            List<ImportedBankRow> rows = new List<ImportedBankRow>();
+            ImportedBankData result = new ImportedBankData();
+
+            string[] firstLineParts = lines[1].Split('\t');
+
+            string stringBalance = firstLineParts[5].Trim().Replace(",", "");
+            result.CurrentBalanceCents = Int64.Parse(stringBalance, CultureInfo.InvariantCulture);
+            result.CurrentBalance = result.CurrentBalanceCents/100.0;
+
+            int rowCount = lines.Length;
+
+            for (int lineIndex = 1; lineIndex < rowCount; lineIndex++) // Skip first row on purpose - is header row
+            {
+                string[] lineParts = lines[lineIndex].Split('\t');
+
+                if (lineParts.Length < 2)
+                {
+                    // Assume empty line, probably last line; do not process
+                    continue;
+                }
+
+                string amountString = lineParts[4].Replace(".", "").Replace(",", "");
+
+                ImportedBankRow row = new ImportedBankRow();
+                row.DateTime = DateTime.Parse(lineParts[0]);
+                row.Comment = lineParts[3].Replace("  ", " ").Trim();
+                row.CurrentBalanceCents = Int64.Parse(lineParts[5].Trim().Replace(",", ""), CultureInfo.InvariantCulture);
+                row.CurrentBalance = row.CurrentBalanceCents/100.0;
+                row.AmountCentsNet = Int64.Parse(amountString);
+                row.HashBase = lineParts[2];
+
+                rows.Add(row);
+            }
+
+            result.Rows = rows;
+            return result;
+        }
+
+
+        protected ImportedBankData ImportPaypal(string contents)
+        {
+            string[] lines = contents.Split('\n');
+            ImportedBankData result = new ImportedBankData();
+            List<ImportedBankRow> rows = new List<ImportedBankRow>();
+
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split('\t');
+
+                if (parts.Length < 30)
+                {
+                    continue;
+                }
+
+                if (StripQuotes(parts[6]) != "SEK")
+                {
+                    continue; // HACK: Need to fix currency support at some time
+                }
+
+                // Get current balance from the first line in the file
+
+                if (result.CurrentBalance == 0.0)
+                {
+                    result.CurrentBalance = Double.Parse(StripQuotes(parts[34]), CultureInfo.InvariantCulture);
+                }
+
+                ImportedBankRow row = new ImportedBankRow();
+
+                row.SuppliedTransactionId = StripQuotes(parts[12]);
+                row.Comment = StripQuotes(parts[4]);
+                row.DateTime = DateTime.Parse(StripQuotes(parts[0]) + " " + StripQuotes(parts[1]), CultureInfo.InvariantCulture);
+                row.AmountCentsGross = Int64.Parse(StripQuotes(parts[7]).Replace(".", ""));
+                row.Fee = Double.Parse(StripQuotes(parts[8]), CultureInfo.InvariantCulture);
+                row.AmountCentsNet = Int64.Parse(StripQuotes(parts[9]).Replace(".", ""));
+
+                rows.Add(row);
+            }
+
+            result.Rows = rows;
+            return result;
+        }
+
+
+
+        protected string StripHtml(string input)
+        {
+            // Doesn't really strip HTML -- what it does is strip a link markup (<a...> and </a>)
+
+            if (input.ToLower().EndsWith("</a>"))
+            {
+                input = input.Substring(0, input.Length - 4);
+
+                int indexOfLastGT = input.LastIndexOf('>');
+                input = input.Substring(indexOfLastGT + 1);
+            }
+
+            return input;
+        }
+
+        protected string StripQuotes(string input)
+        {
+            if (input.StartsWith("\""))
+            {
+                input = input.Substring(1);
+            }
+
+            if (input.EndsWith("\""))
+            {
+                input = input.Substring(0, input.Length - 1);
+            }
+
+            return input;
         }
     }
 }
