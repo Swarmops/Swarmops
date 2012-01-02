@@ -123,7 +123,7 @@ div.BankUploadInstructionsImage
             <asp:HiddenField ID="HiddenFileType" runat="server"/>
             <div style="clear:both;margin-bottom:10px"></div>
             <div id="DivSelectAccount" <asp:Literal ID="LiteralSelectAccountDivStyle" runat="server" Text="style='opacity:0;display:none'" />>
-            <h3><asp:Label ID="LabelSelectAccount" runat="server" Text="Bookkeeping Account LOC" /></h3>
+            <h3 style="padding-top:8px"><asp:Label ID="LabelSelectAccount" runat="server" Text="Bookkeeping Account LOC" /></h3>
             <asp:DropDownList runat="server" ID="DropAccounts" OnSelectedIndexChanged="DropAccounts_SelectedIndexChanged" AutoPostBack="true"/>
             </div>
         </ContentTemplate>
@@ -138,13 +138,13 @@ div.BankUploadInstructionsImage
     </asp:Panel>
 
     <div style="opacity:0;display:none" id="DivUploadProgress">
-        <br/><br/><h2><asp:Label ID="LabelProcessing" runat="server" Text="Processing Uploaded File... LOC" /></h2>
+        <br/><h2><asp:Label ID="LabelProcessing" runat="server" Text="Processing Uploaded File... LOC" /></h2>
     </div>
 
     <div id="DivInstructions" <asp:Literal ID="LiteralDivInstructionsStyle" runat="server" Text="style='display:none'" />>
         <asp:UpdatePanel ID="PanelInstructions" UpdateMode="Conditional" runat="server">
             <ContentTemplate>
-                <br/><br/><h2><asp:Label ID="LabelUploadH2Header" Text="Upload Bank File LOC" runat="server" /></h2>
+                <br/><h2><asp:Label ID="LabelUploadH2Header" Text="Upload Bank File LOC" runat="server" /></h2>
                 <div style="float:right;padding-left:10px;text-align:center"><a rel="leanModal" name="ModalDownloadInstructions" id="go" href="#ModalDownloadInstructions"><asp:Image ID="ImageDownloadInstructions" ImageUrl="~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png" ImageAlign="Right" runat="server" /></a><small><br style="padding-bottom:2px"/><em><asp:Label ID="LabelClickImage" runat="server" /></em></small></div>
                 <h3><asp:Label ID="LabelDownloadInstructions" Text="Download File From Bank LOC" runat="server" /></h3>
                 <p><asp:Literal ID="LiteralDownloadInstructions"  runat="server" Text="LOC" /><asp:Literal ID="LiteralLastAccountRecord" runat="server" /></p>
