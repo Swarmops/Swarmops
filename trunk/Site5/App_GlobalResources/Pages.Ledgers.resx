@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
-    <value>&lt;/p&gt;&lt;p&gt;(The most recent data in Activizr is from {0:yyyy-MMM-dd}. You should download bank data from at least &lt;strong&gt;{1:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
+    <value>&lt;/p&gt;&lt;p&gt;(The most recent data in Activizr in &lt;em&gt;{0}&lt;/em&gt; is from {1:yyyy-MMM-dd}. You should download bank data from at least &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
     <comment>Displayed to help user determine scope of bank download</comment>
   </data>
   <data name="UploadBankFiles_DownloadDataSince_Paypal" xml:space="preserve">

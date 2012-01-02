@@ -157,6 +157,10 @@
     <value>Go there...</value>
     <comment>Link after describing something.</comment>
   </data>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Processing File...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
+  </data>
   <data name="Global_UploadFile" xml:space="preserve">
     <value>Upload File</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>

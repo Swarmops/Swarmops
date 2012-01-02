@@ -37,6 +37,7 @@ namespace Activizr.Site.Pages.Ledgers
             this.LabelUploadH2Header.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
             this.LabelUploadH3Header.Text = Resources.Pages.Global.Global_UploadFileToActivizr;
             this.Upload.Text = Resources.Pages.Global.Global_UploadFile;
+            this.LabelProcessing.Text = Resources.Pages.Global.Global_ProcessingFile;
 
             if (!IsPostBack)
             {
@@ -116,7 +117,7 @@ namespace Activizr.Site.Pages.Ledgers
                     lastTransactionDateTime = rows[0].RowDateTime;
                 }
 
-                this.LiteralLastAccountRecord.Text = String.Format(Resources.Pages.Ledgers.UploadBankFiles_DownloadDataSince, lastTransactionDateTime, lastTransactionDateTime.AddDays(-5));
+                this.LiteralLastAccountRecord.Text = String.Format(Resources.Pages.Ledgers.UploadBankFiles_DownloadDataSince, Server.HtmlEncode(account.Name), lastTransactionDateTime, lastTransactionDateTime.AddDays(-5));
             }
         }
 
