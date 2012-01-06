@@ -50,6 +50,11 @@ namespace Activizr.Site.Pages.Ledgers
                 this.LabelProcessing.Text = Resources.Pages.Global.Global_ProcessingFile;
                 this.LinkUploadAnother.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadAnother;
                 this.LabelModalInstructionHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_BankScreenshot;
+
+                // Populate the asset account dropdown, if needed for file type
+
+                PopulateAccountDropDown();
+
             }
 
             if (!IsPostBack)
@@ -66,19 +71,11 @@ namespace Activizr.Site.Pages.Ledgers
 
         protected void ButtonSebAccountFile_Click(object sender, ImageClickEventArgs e)
         {
+            OnSelectedFileType();
+
+            this.HiddenFileType.Value = "SebAccount";
+
             this.ButtonSebAccountFile.CssClass = "FileTypeImage FileTypeImageSelected";
-            this.ButtonSebPaymentFile.CssClass = "FileTypeImage UnselectedType";
-
-            ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeType", "$(\".UnselectedType\").fadeTo('fast',0.2);", true);
-            ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeAccount1",
-                                                    "$(\"#DivSelectAccount\").fadeTo('slow', 1.0);", true);
-            ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeAccount2",
-                                                       "$(\"#DivSelectAccount\").css('display','inline');", true);
-
-            PopulateAccountDropDown();
-
-            this.ButtonSebAccountFile.Enabled = false;
-            this.ButtonSebPaymentFile.Enabled = false;
 
             this.ImageDownloadInstructions.ImageUrl = "~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png";
 
@@ -90,6 +87,43 @@ namespace Activizr.Site.Pages.Ledgers
                 Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_SebAccountFile;
 
         }
+
+
+        protected void ButtonPaypalFile_Click(object sender, ImageClickEventArgs e)
+        {
+            OnSelectedFileType();
+
+            this.HiddenFileType.Value = "PayPal";
+
+            this.ButtonPaypalFile.CssClass = "FileTypeImage FileTypeImageSelected";
+
+            this.ImageDownloadInstructions.ImageUrl = "~/Images/Ledgers/uploadbankfiles-paypal-small.png";
+
+            this.ImageDownloadInstructionsFull.ImageUrl =
+                "~/Images/Ledgers/uploadbankfiles-paypal-full.png";
+
+            this.LiteralDownloadInstructions.Text =
+                this.LiteralDownloadInstructionsModal.Text =
+                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_PaypalFile;
+
+            this.LiteralLastAccountRecord.Visible = false;
+        }
+
+
+        private void OnSelectedFileType()
+        {
+            this.ButtonPaypalFile.CssClass = 
+            this.ButtonSebAccountFile.CssClass = "FileTypeImage UnselectedType";
+
+            ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeType", "$(\".UnselectedType\").fadeTo('fast',0.2);", true);
+            ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeAccount1",
+                                                    "$(\"#DivSelectAccount\").fadeTo('slow', 1.0);", true);
+            ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeAccount2",
+                                                       "$(\"#DivSelectAccount\").css('display','inline');", true);
+
+            this.LiteralLastAccountRecord.Visible = true;
+        }
+ 
 
         private void PopulateAccountDropDown()
         {
@@ -161,9 +195,18 @@ namespace Activizr.Site.Pages.Ledgers
 
                         UpdateImportProgressBar(1);
 
-                        // Assume SEB. Later, parameterize to filters.
+                        switch(this.HiddenFileType.Value)
+                        {
+                            case "SebAccount":
+                                bankData = ImportSebText(file.InputStream);
+                                break;
+                            case "PayPal":
+                                bankData = ImportPaypal(file.InputStream);
+                                break;
+                            default:
+                                throw new InvalidOperationException("File type value not set to a valid filter name");
+                        }
 
-                        bankData = ImportSebText(file.InputStream);
                         this.LabelProcessing.Text = bankData.Rows.Count.ToString();
                         ImportResults results = ProcessImportedData(bankData);
 
@@ -268,7 +311,7 @@ namespace Activizr.Site.Pages.Ledgers
                         commentKey = commentKey.ToLowerInvariant();
                     }
 
-                    string hashKey = row.HashBase + commentKey + (row.AmountCentsNet / 100.0).ToString(CultureInfo.InvariantCulture) + row.CurrentBalance.ToString(CultureInfo.InvariantCulture) +
+                    string hashKey = row.HashBase + commentKey + (row.AmountCentsNet / 100.0).ToString(CultureInfo.InvariantCulture) + (row.CurrentBalanceCents / 100.0).ToString(CultureInfo.InvariantCulture) +
                                      row.DateTime.ToString("yyyy-MM-dd-hh-mm-ss");
 
                     importKey = SHA1.Hash(hashKey).Replace(" ", "");
@@ -340,11 +383,11 @@ namespace Activizr.Site.Pages.Ledgers
                     }
                     else if (amountCents > 0)
                     {
-                        if (row.Fee < 0)
+                        if (row.FeeCents < 0)
                         {
                             // This is always an autodeposit, if there is a fee (which is never > 0.0)
 
-                            transaction.AddRow(_currentOrganization.FinancialAccounts.CostsBankFees, -row.Fee, _currentUser);
+                            transaction.AddRow(_currentOrganization.FinancialAccounts.CostsBankFees, -row.FeeCents, _currentUser);
                             transaction.AddRow(autoDepositAccount, -row.AmountCentsGross, _currentUser);
                         }
                         else if (amountCents < autoDepositLimit * 100)
@@ -367,7 +410,14 @@ namespace Activizr.Site.Pages.Ledgers
 
             Int64 databaseAccountBalanceCents = assetAccount.BalanceTotalCents;
 
-            if (databaseAccountBalanceCents == import.CurrentBalanceCents)
+            // Subtract any transactions made after the most recent imported transaction.
+            // This is necessary in case of Paypal and others which continuously feed the
+            // bookkeeping account with new transactions; it will already have fed transactions
+            // beyond the end-of-file.
+
+            Int64 beyondEofCents = assetAccount.GetDeltaCents(import.LatestTransaction.AddSeconds(1), DateTime.Now.AddDays(2)); // Caution: the "AddSeconds(1)" is not foolproof, there may be other new txs on the same second.
+
+            if (databaseAccountBalanceCents - beyondEofCents == import.CurrentBalanceCents)
             {
                 Payouts.AutomatchAgainstUnbalancedTransactions(_currentOrganization);
                 result.AccountBalanceMatchesBank = true;
@@ -397,8 +447,11 @@ namespace Activizr.Site.Pages.Ledgers
 
         protected ImportedBankData ImportSebText(Stream fileStream)
         {
-            TextReader reader = new StreamReader(fileStream, Encoding.GetEncoding(1252));
-            string contents = reader.ReadToEnd();
+            string contents = string.Empty;
+            using (TextReader reader = new StreamReader(fileStream, Encoding.GetEncoding(1252)))
+            {
+                contents = reader.ReadToEnd();
+            }
 
             string[] lines = contents.Split('\n');
 
@@ -434,7 +487,6 @@ namespace Activizr.Site.Pages.Ledgers
                 row.DateTime = DateTime.Parse(lineParts[0]);
                 row.Comment = lineParts[3].Replace("  ", " ").Trim();
                 row.CurrentBalanceCents = Int64.Parse(lineParts[5].Trim().Replace(",", ""), CultureInfo.InvariantCulture);
-                row.CurrentBalance = row.CurrentBalanceCents/100.0;
                 row.AmountCentsNet = Int64.Parse(amountString);
                 row.HashBase = lineParts[2];
 
@@ -446,9 +498,21 @@ namespace Activizr.Site.Pages.Ledgers
         }
 
 
-        protected ImportedBankData ImportPaypal(string contents)
+        protected ImportedBankData ImportPaypal(Stream fileStream)
         {
+            string contents = string.Empty;
+            using (TextReader reader = new StreamReader(fileStream, Encoding.GetEncoding(1252)))
+            {
+                contents = reader.ReadToEnd();
+            }
+
             string[] lines = contents.Split('\n');
+            if (lines[0].Trim() != "Date\t Time\t Time Zone\t Name\t Type\t Status\t Currency\t Gross\t Fee\t Net\t From Email Address\t To Email Address\t Transaction ID\t Counterparty Status\t Address Status\t Item Title\t Item ID\t Shipping and Handling Amount\t Insurance Amount\t Sales Tax\t Option 1 Name\t Option 1 Value\t Option 2 Name\t Option 2 Value\t Auction Site\t Buyer ID\t Item URL\t Closing Date\t Escrow Id\t Invoice Id\t Reference Txn ID\t Invoice Number\t Custom Number\t Receipt ID\t Balance\t Address Line 1\t Address Line 2/District/Neighborhood\t Town/City\t State/Province/Region/County/Territory/Prefecture/Republic\t Zip/Postal Code\t Country\t Contact Phone Number")
+            //                       0      1      2           3      4      5        6          7       8     9     10                   11                 12               13                    14               15           16        17                             18                 19          20              21               22              23               24             25         26         27             28          29           30                 31               32              33           34        35               36                                     37          38                                                           39                          40
+            {
+                throw new ArgumentException("Unable to parse");
+            }
+
             ImportedBankData result = new ImportedBankData();
             List<ImportedBankRow> rows = new List<ImportedBankRow>();
 
@@ -468,9 +532,9 @@ namespace Activizr.Site.Pages.Ledgers
 
                 // Get current balance from the first line in the file
 
-                if (result.CurrentBalance == 0.0)
+                if (result.CurrentBalanceCents == 0)
                 {
-                    result.CurrentBalance = Double.Parse(StripQuotes(parts[34]), CultureInfo.InvariantCulture);
+                    result.CurrentBalanceCents = Int64.Parse(StripQuotes(parts[34].Replace(".","").Replace(",","")), CultureInfo.InvariantCulture);
                 }
 
                 ImportedBankRow row = new ImportedBankRow();
@@ -478,11 +542,32 @@ namespace Activizr.Site.Pages.Ledgers
                 row.SuppliedTransactionId = StripQuotes(parts[12]);
                 row.Comment = StripQuotes(parts[4]);
                 row.DateTime = DateTime.Parse(StripQuotes(parts[0]) + " " + StripQuotes(parts[1]), CultureInfo.InvariantCulture);
-                row.AmountCentsGross = Int64.Parse(StripQuotes(parts[7]).Replace(".", ""));
-                row.Fee = Double.Parse(StripQuotes(parts[8]), CultureInfo.InvariantCulture);
-                row.AmountCentsNet = Int64.Parse(StripQuotes(parts[9]).Replace(".", ""));
+                row.AmountCentsGross = Int64.Parse(StripQuotes(parts[7]).Replace(".", "").Replace(",", ""));
+                row.FeeCents = Int64.Parse(StripQuotes(parts[8]).Replace(".", "").Replace(",", ""), CultureInfo.InvariantCulture);
+                row.AmountCentsNet = Int64.Parse(StripQuotes(parts[9]).Replace(".", "").Replace(",", ""));
+
+                // Adjust for timezone -- necessary for Paypal and other int'l services
+
+                string timeZoneString = StripQuotes(parts[2]);
+
+                if (timeZoneString != "PST" && timeZoneString != "PDT")  // this is cheating slightly as DSTs do not coincide
+                {
+                    throw new ArgumentException("Paypal import files should have time zone PST");
+                }
+
+                row.DateTime = row.DateTime.AddHours(8).ToLocalTime();
 
                 rows.Add(row);
+
+                if (row.DateTime < result.EarliestTransaction)
+                {
+                    result.EarliestTransaction = row.DateTime;
+                }
+
+                if (row.DateTime > result.LatestTransaction)
+                {
+                    result.LatestTransaction = row.DateTime;
+                }
             }
 
             result.Rows = rows;
@@ -520,5 +605,6 @@ namespace Activizr.Site.Pages.Ledgers
 
             return input;
         }
+
     }
 }
