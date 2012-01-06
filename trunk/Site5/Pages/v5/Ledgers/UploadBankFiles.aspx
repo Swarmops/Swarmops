@@ -5,10 +5,10 @@
 <style type="text/css">
 input.FileTypeImage
 {
-	width:160px;
-	height:70px;
+	width:90px;
+	height:45px;
 	border: 1px solid #1C397E !important;
-	margin-right:11px;
+	margin-right:20px;
 	margin-top:7px;
 	margin-bottom:6px;
 	float:left;
@@ -16,9 +16,9 @@ input.FileTypeImage
 
 input.FileTypeImageSelected
 {
-    box-shadow: 0px 0px 4px 4px #FFBC37;
-    -moz-box-shadow: 0px 0px 4px 4px #FFBC37;
-    -webkit-box-shadow: 0px 0px 4px 4px #FFBC37;
+    box-shadow: 0px 0px 2px 2px #FFBC37;
+    -moz-box-shadow: 0px 0px 2px 2px #FFBC37;
+    -webkit-box-shadow: 0px 0px 2px 2px #FFBC37;
     border: 1px solid #C78B15 !important;
 }
 
@@ -119,7 +119,7 @@ div.BankUploadInstructionsImage
             <h2><asp:Label ID="LabelSelectBankAndAccount" Text="Select Bank And Bookkeeping LOC" runat="server"/></h2>
             <h3><asp:Label ID="LabelSelectFileType" Text="Bank LOC" runat="server" /></h3>
             <asp:ImageButton OnClick="ButtonSebAccountFile_Click" CssClass="FileTypeImage" ID="ButtonSebAccountFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-kontoutdrag.png"/>
-            <asp:ImageButton CssClass="FileTypeImage" ID="ButtonSebPaymentFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-bankgirofil.png"/>
+            <asp:ImageButton OnClick="ButtonPaypalFile_Click" CssClass="FileTypeImage" ID="ButtonPaypalFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-paypal.png"/>
             <asp:HiddenField ID="HiddenFileType" runat="server"/>
             <div style="clear:both;margin-bottom:10px"></div>
             <div id="DivSelectAccount" <asp:Literal ID="LiteralSelectAccountDivStyle" runat="server" Text="style='opacity:0;display:none'" />>
@@ -129,6 +129,7 @@ div.BankUploadInstructionsImage
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="ButtonPaypalFile" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
 
@@ -158,6 +159,7 @@ div.BankUploadInstructionsImage
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
                 <asp:AsyncPostbackTrigger ControlID="DropAccounts" EventName="SelectedIndexChanged" />
+                <asp:AsyncPostBackTrigger ControlID="ButtonPaypalFile" EventName="Click" />
             </Triggers>
         </asp:UpdatePanel>
 
@@ -182,6 +184,7 @@ div.BankUploadInstructionsImage
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostbackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="ButtonPaypalFile" EventName="Click" />
             </Triggers>
         </asp:UpdatePanel>
     </div>
