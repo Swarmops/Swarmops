@@ -110,10 +110,32 @@ namespace Activizr.Site.Pages.Ledgers
         }
 
 
+        protected void ButtonPaysonFile_Click(object sender, ImageClickEventArgs e)
+        {
+            OnSelectedFileType();
+
+            this.HiddenFileType.Value = "Payson";
+
+            this.ButtonPaysonFile.CssClass = "FileTypeImage FileTypeImageSelected";
+
+            this.ImageDownloadInstructions.ImageUrl = "~/Images/Ledgers/uploadbankfiles-payson-small.png";
+
+            this.ImageDownloadInstructionsFull.ImageUrl =
+                "~/Images/Ledgers/uploadbankfiles-payson-full.png";
+
+            this.LiteralDownloadInstructions.Text =
+                this.LiteralDownloadInstructionsModal.Text =
+                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_PaysonFile;
+
+            this.LiteralLastAccountRecord.Visible = true;
+        }
+
+
         private void OnSelectedFileType()
         {
             this.ButtonPaypalFile.CssClass = 
-            this.ButtonSebAccountFile.CssClass = "FileTypeImage UnselectedType";
+            this.ButtonSebAccountFile.CssClass = 
+            this.ButtonPaysonFile.CssClass = "FileTypeImage UnselectedType";
 
             ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeType", "$(\".UnselectedType\").fadeTo('fast',0.2);", true);
             ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeAccount1",
@@ -203,6 +225,9 @@ namespace Activizr.Site.Pages.Ledgers
                             case "PayPal":
                                 bankData = ImportPaypal(file.InputStream);
                                 break;
+                            case "Payson":
+                                bankData = ImportPayson(file.InputStream);
+                                break;
                             default:
                                 throw new InvalidOperationException("File type value not set to a valid filter name");
                         }
@@ -265,6 +290,14 @@ namespace Activizr.Site.Pages.Ledgers
 
         protected class ImportResults
         {
+            public ImportResults()
+            {
+                this.EarliestTransaction = DateTime.MaxValue;
+                this.LatestTransaction = DateTime.MinValue;
+            }
+
+            public DateTime EarliestTransaction;
+            public DateTime LatestTransaction;
             public int TransactionsImported;
             public int DuplicateTransactions;
             public bool AccountBalanceMatchesBank;
@@ -296,6 +329,19 @@ namespace Activizr.Site.Pages.Ledgers
                     int percent = (count*99)/import.Rows.Count;
                     UpdateImportProgressBar(percent);
                 }
+
+                // Update high- and low-water marks.
+
+                if (row.DateTime < result.EarliestTransaction)
+                {
+                    result.EarliestTransaction = row.DateTime;
+                }
+
+                if (row.DateTime > result.LatestTransaction)
+                {
+                    result.LatestTransaction = row.DateTime;
+                }
+
 
                 // Each row is at least a stub, probably more.
 
@@ -415,7 +461,7 @@ namespace Activizr.Site.Pages.Ledgers
             // bookkeeping account with new transactions; it will already have fed transactions
             // beyond the end-of-file.
 
-            Int64 beyondEofCents = assetAccount.GetDeltaCents(import.LatestTransaction.AddSeconds(1), DateTime.Now.AddDays(2)); // Caution: the "AddSeconds(1)" is not foolproof, there may be other new txs on the same second.
+            Int64 beyondEofCents = assetAccount.GetDeltaCents(result.LatestTransaction.AddSeconds(1), DateTime.Now.AddDays(2)); // Caution: the "AddSeconds(1)" is not foolproof, there may be other new txs on the same second.
 
             if (databaseAccountBalanceCents - beyondEofCents == import.CurrentBalanceCents)
             {
@@ -558,16 +604,70 @@ namespace Activizr.Site.Pages.Ledgers
                 row.DateTime = row.DateTime.AddHours(8).ToLocalTime();
 
                 rows.Add(row);
+            }
 
-                if (row.DateTime < result.EarliestTransaction)
+            result.Rows = rows;
+            return result;
+        }
+
+
+        protected ImportedBankData ImportPayson (Stream fileStream)
+        {
+            string contents = string.Empty;
+            using (TextReader reader = new StreamReader(fileStream, Encoding.GetEncoding(1252)))
+            {
+                contents = reader.ReadToEnd();
+            }
+
+            string regexPattern = @"<tr>\s+<td>\s*(?<datetime>[0-9]{4}-[0-9]{2}-[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2})\s*</td><td>(?<comment1>[^<]*)</td><td>[^>]*</td><td>(?<txid>[0-9]+)</td>\s*<td>(?<from>[^<]+)</td>\s*<td>(?<to>[^<]+)</td><td class=\""tal\"">(?<gross>[\-0-9,]+)</td><td class=\""tal\"">(?<fee>[\-0-9,]+)</td><td class=\""tal\"">(?<vat>[\-0-9,]+)</td><td class=\""tal\"">(?<net>[\-0-9,]+)</td><td class=\""tal\"">(?<balance>[\-0-9,]+)</td><td>(?<currency>[^<]+)</td><td>(?<reference>[^<]+)</td><td[^>]+?>(?<comment2>[^<]+)</td>";
+
+            Regex regex = new Regex(regexPattern, RegexOptions.Singleline);
+            Match match = regex.Match(contents);
+
+            ImportedBankData result = new ImportedBankData();
+            List<ImportedBankRow> rows = new List<ImportedBankRow>();
+
+            while (match.Success)
+            {
+                if (match.Groups["currency"].Value != "SEK")
                 {
-                    result.EarliestTransaction = row.DateTime;
+                    continue; // HACK: Need to fix currency support at some time
                 }
 
-                if (row.DateTime > result.LatestTransaction)
+                // Get current balance from the first line in the file
+
+                if (result.CurrentBalanceCents == 0)
                 {
-                    result.LatestTransaction = row.DateTime;
+                    result.CurrentBalanceCents = Int64.Parse(match.Groups["balance"].Value.Replace(",", "")) / 100;
                 }
+
+                ImportedBankRow row = new ImportedBankRow();
+
+                string comment = HttpUtility.HtmlDecode(match.Groups["comment2"].Value.Trim());
+                if (String.IsNullOrEmpty(comment))
+                {
+                    comment = match.Groups["comment1"].Value.Trim();
+                }
+
+                row.SuppliedTransactionId = "Payson-" + match.Groups["txid"].Value;
+                row.Comment = comment;
+                row.DateTime = DateTime.Parse(match.Groups["datetime"].Value, CultureInfo.InvariantCulture);
+                row.AmountCentsGross = Int64.Parse(match.Groups["gross"].Value.Replace(".", "").Replace(",", "")) / 100;
+                row.FeeCents = Int64.Parse(match.Groups["fee"].Value.Replace(".", "").Replace(",", "")) / 100;
+                row.AmountCentsNet = Int64.Parse(match.Groups["net"].Value.Replace(".", "").Replace(",", "")) / 100;
+
+                if (row.DateTime < new DateTime(2010,4,1))
+                {
+                    // This is for historical reasons of how Payson transactions were originally handled.
+                    // TODO: Re-handle by not touching closed books instead.
+
+                    match = match.NextMatch();
+                    continue;
+                }
+
+                rows.Add(row);
+
+                match = match.NextMatch();
             }
 
             result.Rows = rows;

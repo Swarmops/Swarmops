@@ -5,16 +5,8 @@ namespace Activizr.Logic.Financial
 {
     public class ImportedBankData
     {
-        public ImportedBankData()
-        {
-            this.EarliestTransaction = DateTime.MaxValue;
-            this.LatestTransaction = DateTime.MinValue;
-        }
-
         public double CurrentBalance;
         public Int64 CurrentBalanceCents;
-        public DateTime EarliestTransaction;
-        public DateTime LatestTransaction;
         public List<ImportedBankRow> Rows;
     }
 
