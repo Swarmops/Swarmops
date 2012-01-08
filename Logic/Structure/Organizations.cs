@@ -259,6 +259,21 @@ namespace Activizr.Logic.Structure
 
         #region Properties and Get Methods
 
+        /// <summary>
+        /// Gets all economy-enabled organizations.
+        /// </summary>
+        public static Organizations EconomyEnabled
+        {
+            get 
+            { 
+                // TODO
+
+                Organizations result = new Organizations();
+                result.Add(Organization.PPSE);
+                return result;
+            }
+        }
+
         public int[] Identities
         {
             get { return LogicServices.ObjectsToIdentifiers(ToArray()); }

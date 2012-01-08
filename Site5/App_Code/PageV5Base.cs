@@ -124,6 +124,37 @@ public class PageV5Base : System.Web.UI.Page
 
  	    base.OnPreRender(e);
     }
+
+    protected string LocalizeCount (string resourceString, int count)
+    {
+        return LocalizeCount(resourceString, count, false);
+    }
+
+    protected string LocalizeCount (string resourceString, int count, bool capitalize)
+    {
+        string result;
+        string[] parts = resourceString.Split('|');
+
+        switch (count)
+        {
+            case 0:
+                result = parts[0];
+                break;
+            case 1:
+                result = parts[1];
+                break;
+            default:
+                result = String.Format(parts[2], count);
+                break;
+        }
+
+        if (capitalize)
+        {
+            result = Char.ToUpperInvariant(result[0]) + result.Substring(1);
+        }
+
+        return result;
+    }
 }
 
 

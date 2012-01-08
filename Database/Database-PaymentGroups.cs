@@ -48,7 +48,7 @@ namespace Activizr.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + paymentGroupFieldSequence +
-                    "WHERE OrganizationId=" + organizationId.ToString() + " AND Tag='" + tag.Replace("'", "''") + "' AND Open=1",
+                    "WHERE OrganizationId=" + organizationId.ToString() + " AND Tag='" + tag.Replace("'", "''") + "'",
                                  connection);
 
                 using (DbDataReader reader = command.ExecuteReader())

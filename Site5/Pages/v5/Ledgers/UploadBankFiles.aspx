@@ -118,18 +118,20 @@ div.BankUploadInstructionsImage
         <ContentTemplate>
             <h2><asp:Label ID="LabelSelectBankAndAccount" Text="Select Bank And Bookkeeping LOC" runat="server"/></h2>
             <h3><asp:Label ID="LabelSelectFileType" Text="Bank LOC" runat="server" /></h3>
-            <asp:ImageButton OnClick="ButtonSebAccountFile_Click" CssClass="FileTypeImage" ID="ButtonSebAccountFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb-kontoutdrag.png"/>
+            <asp:ImageButton OnClick="ButtonBankgiroSEFile_Click" CssClass="FileTypeImage" ID="ButtonBankgiroSEFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-bankgirose.png"/>
             <asp:ImageButton OnClick="ButtonPaypalFile_Click" CssClass="FileTypeImage" ID="ButtonPaypalFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-paypal.png"/>
             <asp:ImageButton OnClick="ButtonPaysonFile_Click" CssClass="FileTypeImage" ID="ButtonPaysonFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-payson.png"/>
+            <asp:ImageButton OnClick="ButtonSebAccountFile_Click" CssClass="FileTypeImage" ID="ButtonSebFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb.png"/>
             <asp:HiddenField ID="HiddenFileType" runat="server"/>
             <div style="clear:both;margin-bottom:10px"></div>
             <div id="DivSelectAccount" <asp:Literal ID="LiteralSelectAccountDivStyle" runat="server" Text="style='opacity:0;display:none'" />>
-            <h3 style="padding-top:8px"><asp:Label ID="LabelSelectAccount" runat="server" Text="Bookkeeping Account LOC" /></h3>
-            <asp:DropDownList runat="server" ID="DropAccounts" OnSelectedIndexChanged="DropAccounts_SelectedIndexChanged" AutoPostBack="true"/>
+                <h3 style="padding-top:8px"><asp:Label ID="LabelSelectAccount" runat="server" Text="Bookkeeping Account LOC" /></h3>
+                <asp:DropDownList runat="server" ID="DropAccounts" OnSelectedIndexChanged="DropAccounts_SelectedIndexChanged" AutoPostBack="true"/>
             </div>
         </ContentTemplate>
         <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="ButtonSebFile" EventName="Click" />
+            <asp:AsyncPostbackTrigger ControlID="ButtonBankgiroSEFile" EventName="Click" />
             <asp:AsyncPostBackTrigger ControlID="ButtonPaypalFile" EventName="Click" />
             <asp:AsyncPostBackTrigger ControlID="ButtonPaysonFile" EventName="Click" />
         </Triggers>
@@ -159,7 +161,8 @@ div.BankUploadInstructionsImage
                 <h3><asp:Label ID="LabelUploadH3Header" Text="Upload File To Activizr LOC" runat="server" /></h3>
             </ContentTemplate>
             <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="ButtonSebFile" EventName="Click" />
+                <asp:AsyncPostbackTrigger ControlID="ButtonBankgiroSEFile" EventName="Click" />
                 <asp:AsyncPostbackTrigger ControlID="DropAccounts" EventName="SelectedIndexChanged" />
                 <asp:AsyncPostBackTrigger ControlID="ButtonPaypalFile" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="ButtonPaysonFile" EventName="Click" />
@@ -186,7 +189,8 @@ div.BankUploadInstructionsImage
                 <asp:Literal ID="LiteralDownloadInstructionsModal" runat="server" />
             </ContentTemplate>
             <Triggers>
-                <asp:AsyncPostbackTrigger ControlID="ButtonSebAccountFile" EventName="Click" />
+                <asp:AsyncPostbackTrigger ControlID="ButtonSebFile" EventName="Click" />
+                <asp:AsyncPostbackTrigger ControlID="ButtonBankgiroSEFile" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="ButtonPaypalFile" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="ButtonPaysonFile" EventName="Click" />
             </Triggers>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Activizr.Basic.Enums;
+using Activizr.Basic.Types;
 using Activizr.Logic.Financial;
 using Activizr.Logic.Pirates;
 using Activizr.Logic.Security;
@@ -73,9 +74,9 @@ namespace Activizr.Site.Pages.Ledgers
         {
             OnSelectedFileType();
 
-            this.HiddenFileType.Value = "SebAccount";
+            this.HiddenFileType.Value = "Seb";
 
-            this.ButtonSebAccountFile.CssClass = "FileTypeImage FileTypeImageSelected";
+            this.ButtonSebFile.CssClass = "FileTypeImage FileTypeImageSelected";
 
             this.ImageDownloadInstructions.ImageUrl = "~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png";
 
@@ -86,6 +87,27 @@ namespace Activizr.Site.Pages.Ledgers
                 this.LiteralDownloadInstructionsModal.Text =
                 Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_SebAccountFile;
 
+        }
+
+
+        protected void ButtonBankgiroSEFile_Click(object sender, ImageClickEventArgs e)
+        {
+            OnSelectedFileType();
+
+            this.HiddenFileType.Value = "BankgiroSE";
+
+            this.ButtonBankgiroSEFile.CssClass = "FileTypeImage FileTypeImageSelected";
+
+            this.ImageDownloadInstructions.ImageUrl = "~/Images/Ledgers/uploadbankfiles-bankgirose-small.png";
+
+            this.ImageDownloadInstructionsFull.ImageUrl =
+                "~/Images/Ledgers/uploadbankfiles-bankgirose-full.png";
+
+            this.LiteralDownloadInstructions.Text =
+                this.LiteralDownloadInstructionsModal.Text =
+                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_BankgiroSEFile;
+
+            this.LiteralLastAccountRecord.Visible = false;
         }
 
 
@@ -134,7 +156,8 @@ namespace Activizr.Site.Pages.Ledgers
         private void OnSelectedFileType()
         {
             this.ButtonPaypalFile.CssClass = 
-            this.ButtonSebAccountFile.CssClass = 
+            this.ButtonSebFile.CssClass = 
+            this.ButtonBankgiroSEFile.CssClass =
             this.ButtonPaysonFile.CssClass = "FileTypeImage UnselectedType";
 
             ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeType", "$(\".UnselectedType\").fadeTo('fast',0.2);", true);
@@ -219,7 +242,7 @@ namespace Activizr.Site.Pages.Ledgers
 
                         switch(this.HiddenFileType.Value)
                         {
-                            case "SebAccount":
+                            case "Seb":
                                 bankData = ImportSebText(file.InputStream);
                                 break;
                             case "PayPal":
@@ -228,6 +251,10 @@ namespace Activizr.Site.Pages.Ledgers
                             case "Payson":
                                 bankData = ImportPayson(file.InputStream);
                                 break;
+                            case "BankgiroSE": // Payment file, not transaction file
+                                ImportedPaymentData paymentData = ImportBankgiroSE(file.InputStream);
+                                PresentPaymentFileResults(paymentData);
+                                return; // Exit function here -- shortcut for when there's payment data and no transaction data
                             default:
                                 throw new InvalidOperationException("File type value not set to a valid filter name");
                         }
@@ -265,10 +292,6 @@ namespace Activizr.Site.Pages.Ledgers
                         this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_ImportError;
                         this.LiteralImportResults.Text = Resources.Pages.Ledgers.UploadBankFiles_ErrorInterpretation;
                     }
-
-                    // Import the data to database
-
-
                 }
 
             }
@@ -285,6 +308,42 @@ namespace Activizr.Site.Pages.Ledgers
                 this.LabelNoFileUploaded.Text = string.Empty;
                 this.LiteralDivInstructionsStyle.Text = @"style='display:none'";
             }
+        }
+
+
+        private void PresentPaymentFileResults (ImportedPaymentData data)
+        {
+            string literalResult = String.Format(Resources.Pages.Ledgers.UploadBankFiles_PaymentSummary1,
+                   LocalizeCount(Resources.Pages.Ledgers.UploadBankFiles_PaymentCount, data.DuplicatePaymentCount + data.PaymentCount)) + " ";
+
+            if (data.PaymentCount == 0 && data.DuplicatePaymentCount > 0)
+            {
+                literalResult += Resources.Pages.Ledgers.UploadBankFiles_PaymentAllDuplicates;
+            }
+            else if (data.PaymentCount > 0)
+            {
+                literalResult += String.Format(Resources.Pages.Ledgers.UploadBankFiles_PaymentSummary2,
+                                               data.Currency.Code,
+                                               data.PaymentCentsTotal/100.0,
+                                               LocalizeCount(Resources.Pages.Ledgers.UploadBankFiles_PaymentCount,
+                                                             data.PaymentCount),
+                                               LocalizeCount(Resources.Pages.Ledgers.UploadBankFiles_PaymentGroupCount,
+                                                             data.PaymentGroupCount));
+
+                if (data.DuplicatePaymentCount > 0)
+                {
+                    literalResult += " " +
+                                     String.Format(Resources.Pages.Ledgers.UploadBankFiles_PaymentSummaryDuplicates,
+                                                   LocalizeCount(Resources.Pages.Ledgers.UploadBankFiles_PaymentCount,
+                                                                 data.DuplicatePaymentCount),
+                                                   LocalizeCount(
+                                                       Resources.Pages.Ledgers.UploadBankFiles_PaymentGroupCount,
+                                                       data.DuplicatePaymentGroupCount));
+                }
+            }
+
+            this.LiteralImportResults.Text = @"<p>" + literalResult + @"</p>";
+            this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_PaymentFileUploadedHeader;
         }
 
 
@@ -410,10 +469,10 @@ namespace Activizr.Site.Pages.Ledgers
                         // Check for previously imported payment group
 
                         PaymentGroup group = PaymentGroup.FromTag(_currentOrganization,
-                                                                  "SEBGM" + DateTime.Today.Year.ToString() +   // TODO: Get tagging from org
+                                                                  "SEBGM" + DateTime.Today.Year.ToString() +   // TODO: Get tags from org
                                                                   row.Comment.Substring(11));
 
-                        if (group != null)
+                        if (group != null && group.Open)
                         {
                             // There was a previously imported and not yet closed payment group matching this transaction
                             // Close the payment group and match the transaction against accounts receivable
@@ -487,8 +546,245 @@ namespace Activizr.Site.Pages.Ledgers
 
 
 
+        protected class ImportedPaymentData
+        {
+            public int PaymentGroupCount;
+            public int PaymentCount;
+            public int DuplicatePaymentCount;
+            public int DuplicatePaymentGroupCount;
+            public Int64 PaymentCentsTotal;
+            public Currency Currency;
+        }
+
+
+
 
         // These Functions Copied From PWv4 -- may need adaptation and/or modernization
+
+
+        protected class InMemoryPayment
+        {
+            public InMemoryPayment()
+            {
+                this.Information = new List<InMemoryPaymentInformation>();
+            }
+
+            public Int64 AmountCents;
+            public string Reference;
+            public bool HasImage;
+            public string FromAccount;
+            public string Key;
+            public List<InMemoryPaymentInformation> Information;
+        }
+
+        protected class InMemoryPaymentInformation
+        {
+            public InMemoryPaymentInformation(PaymentInformationType type, string data)
+            {
+                this.Type = type;
+                this.Data = data;
+            }
+
+            public PaymentInformationType Type;
+            public string Data;
+        }
+
+
+        protected ImportedPaymentData ImportBankgiroSE(Stream fileStream)
+        {
+            string contents = string.Empty;
+            using (TextReader reader = new StreamReader(fileStream, Encoding.GetEncoding(1252)))
+            {
+                contents = reader.ReadToEnd();
+            }
+
+            string[] lines = contents.Split('\n');
+
+            DateTime timestamp = DateTime.MinValue;
+            int bgMaxVersion = 0;
+
+            ImportedPaymentData result = new ImportedPaymentData();
+            Currency currency = null;
+            List<InMemoryPayment> curPayments = null;
+            InMemoryPayment curPayment = null;
+            Int64 curPaymentGroupAmountCents = 0;
+
+            foreach (string line in lines)
+            {
+                if (line.Length < 2)
+                {
+                    continue; // CR/LF split causes every other line to be empty
+                }
+
+                switch (line.Substring(0, 2))
+                {
+                    case "01": // BGMAX intro
+                        string bgmaxmarker = line.Substring(2, 20).Trim();
+                        if (bgmaxmarker != "BGMAX")
+                        {
+                            throw new Exception("bad format -- not bgmax");
+                        }
+                        bgMaxVersion = Int32.Parse(line.Substring(22, 2));
+                        timestamp = DateTime.ParseExact(line.Substring(24, 20), "yyyyMMddHHmmssffffff",
+                                                        CultureInfo.InvariantCulture);
+                        break;
+                    case "05": // Begin payment group
+                        if (bgMaxVersion < 1)
+                        {
+                            throw new InvalidOperationException("BGMax record must precede first payment group");
+                        }
+                        curPayments = new List<InMemoryPayment>();
+                        currency = Currency.FromCode(line.Substring(22, 3));
+                        result.Currency = currency;
+                        curPaymentGroupAmountCents = 0;
+                        break;
+                    case "20": // Begin payment
+                        if (curPayments == null)
+                        {
+                            throw new InvalidOperationException("Payment group start must precede first payment");
+                        }
+
+                        // If we have a previous payment in this group, add it to list
+
+                        if (curPayment != null)
+                        {
+                            curPayments.Add(curPayment);
+                        }
+
+                        curPayment = new InMemoryPayment();
+
+                        curPayment.FromAccount = line.Substring(2, 10);
+                        curPayment.Reference = line.Substring(12, 25).Trim(); // left space padded in BgMax format
+                        curPayment.AmountCents = Int64.Parse(line.Substring(37, 18), CultureInfo.InvariantCulture);
+                        curPayment.Key = "SEBGM" + DateTime.Today.Year.ToString() + line.Substring(57, 12);
+                        curPayment.HasImage = (line[69] == '1' ? true : false);
+
+                        // TODO: Check if existed already -- must do -- IMPORTANT (same todo as below)
+
+                        curPaymentGroupAmountCents += curPayment.AmountCents;
+                        break;
+                    case "25": // Payment info: Freeform
+                        if (curPayment == null)
+                        {
+                            throw new InvalidOperationException("Payment start must precede payment information");
+                        }
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.Freeform, line.Substring(2, 50).Trim()));
+                        break;
+                    case "26": // Payment info: Name
+                        if (curPayment == null)
+                        {
+                            throw new InvalidOperationException("Payment start must precede payment information");
+                        }
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.Name, line.Substring(2, 35).Trim()));
+                        break;
+                    case "27": // Payment info: Street, postal code
+                        if (curPayment == null)
+                        {
+                            throw new InvalidOperationException("Payment start must precede payment information");
+                        }
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.Street, line.Substring(2, 35).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.PostalCode, line.Substring(37, 9).Replace(" ", ""))); // also removes inspace
+                        break;
+                    case "28": // Payment info: City, Country
+                        if (curPayment == null)
+                        {
+                            throw new InvalidOperationException("Payment start must precede payment information");
+                        }
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.City, line.Substring(2, 35).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.Country, line.Substring(37, 35).Trim()));
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.CountryCode, line.Substring(72, 2).Trim()));
+                        break;
+                    case "29": // Payment info: Organization or personal ID number
+                        if (curPayment == null)
+                        {
+                            throw new InvalidOperationException("Payment start must precede payment information");
+                        }
+                        curPayment.Information.Add(new InMemoryPaymentInformation(PaymentInformationType.OrgNumber, line.Substring(2, 12).Trim()));
+                        break;
+                    case "15": // End payment group
+                        if (curPayments == null)
+                        {
+                            throw new InvalidOperationException("Payment group start must precede payment group end");
+                        }
+
+                        // Add currently building payment to group before committing
+
+                        curPayments.Add(curPayment);
+
+                        // This is where we finally get a unique identifier that allows us to dupecheck.
+
+                        string tag = timestamp.Year.ToString() + line.Substring(45, 5);
+
+                        if (timestamp.Year >= 2012)
+                        {
+                            tag = "SEBGM" + tag; // a flag date where we add a tag for SE Bankgiro Max format, enabling other formats in other namespaces
+                        }
+
+                        // Dupe check
+
+                        PaymentGroup dupe = PaymentGroup.FromTag(_currentOrganization, tag);
+
+                        if (dupe == null)
+                        {
+                            // Commit all recorded payments
+
+                            PaymentGroup newGroup = PaymentGroup.Create(_currentOrganization, timestamp, currency, _currentUser);
+                            result.PaymentGroupCount++;
+
+                            Int64 reportedAmountCents = Int64.Parse(line.Substring(50, 18), CultureInfo.InvariantCulture); // may differ because of duplicates
+                            newGroup.AmountCents = curPaymentGroupAmountCents;
+                            result.PaymentCentsTotal += curPaymentGroupAmountCents;
+
+                            foreach (InMemoryPayment payment in curPayments)
+                            {
+                                // TODO: DUPECHECK PAYMENT KEY AS WELL (same todo as above)
+
+                                Payment newPayment = newGroup.CreatePayment(payment.AmountCents/100.0, payment.Reference,
+                                                                         payment.FromAccount, payment.Key,
+                                                                         payment.HasImage);
+
+                                foreach (InMemoryPaymentInformation paymentInfo in payment.Information)
+                                {
+                                    newPayment.AddInformation(paymentInfo.Type, paymentInfo.Data);
+                                }
+                                result.PaymentCount++;
+                            }
+
+                            newGroup.Tag = tag;
+                            newGroup.Open = true; // flags payment group as ready
+
+                            newGroup.MapTransaction();
+                        }
+                        else
+                        {
+                            // This was a duplicate
+
+                            result.DuplicatePaymentGroupCount++;
+                            result.DuplicatePaymentCount += curPayments.Count;
+                        }
+
+                        curPayment = null;
+                        curPayments = null;
+
+                        break;
+                    case "70": // BGMAX termination
+                        break; // don't care
+                    default:
+                        break; // don't care about other fields
+                }
+            }
+
+            if (timestamp.Year < 1900)
+            {
+                // The file contained no instructions at all
+
+                throw new ArgumentException("This was not a BGMAX-SE file");
+            }
+
+            return result;
+        }
+
+
 
 
         protected ImportedBankData ImportSebText(Stream fileStream)
