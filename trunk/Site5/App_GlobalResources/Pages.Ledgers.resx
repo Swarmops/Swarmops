@@ -133,6 +133,9 @@
     <value>Bank Download Instructions</value>
     <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
+  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
+    <value>Different banks have different means of obtaining the BGMAX format file. On SEB, you go to &lt;strong&gt;Payments&lt;/strong&gt; and &lt;strong&gt;File communications&lt;/strong&gt; to see a list of files to retrieve. Other banks will vary. In any case, upload them here.</value>
+  </data>
   <data name="UploadBankFiles_DownloadInstructions_PaypalFile" xml:space="preserve">
     <value>Log on to PayPal. Go to &lt;strong&gt;Your Account&lt;/strong&gt;, and under the &lt;strong&gt;History&lt;/strong&gt; menu, select &lt;strong&gt;Download History&lt;/strong&gt;. Select &lt;strong&gt;Custom Date Range&lt;/strong&gt;, enter the range since last download (as indicated) plus some overlap, and most importantly, select &lt;strong&gt;Tab Delimited - All Activity&lt;/strong&gt;. Click &lt;strong&gt;Download&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Some time will pass before you get a mail from PayPal saying that the file is ready for download. It will be named &lt;em&gt;download.txt&lt;/em&gt;. Upload this file.</value>
   </data>
@@ -173,6 +176,30 @@
   <data name="UploadBankFiles_PageTitle" xml:space="preserve">
     <value>Upload Bank Files</value>
     <comment>Displayed above main content.</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentAllDuplicates" xml:space="preserve">
+    <value>However, they were all duplicates of payment information that was previously uploaded. No new payment information has been imported to Activizr.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentCount" xml:space="preserve">
+    <value>no payments|one payment|{0} payments</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentFileUploadedHeader" xml:space="preserve">
+    <value>Payment File Uploaded</value>
+  </data>
+  <data name="UploadBankFiles_PaymentGroupCount" xml:space="preserve">
+    <value>no payment groups|one payment group|{0} payment groups</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary1" xml:space="preserve">
+    <value>The payment file contained {0}.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary2" xml:space="preserve">
+    <value>&lt;strong&gt;{0} {1:N2}&lt;/strong&gt; in payments were imported, distributed over {2} across {3}.</value>
+    <comment>like EUR 2,102.00 in 3 payments across 2 groups </comment>
+  </data>
+  <data name="UploadBankFiles_PaymentSummaryDuplicates" xml:space="preserve">
+    <value>There was also some duplicate information ({0} across {1}).</value>
   </data>
   <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
     <value>Select Bookkeeping Account</value>

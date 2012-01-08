@@ -197,6 +197,28 @@ namespace Activizr.Database
             }
         }
 
+        [Obsolete ("This should never be called, ever: it ruins trackability.")]
+        public void DeletePayment(int paymentId)
+        {
+            // This function is necessary since the Swedish bank system only allows for a dupe check AFTER all payments
+            // have been communicated, so they are created as data is received. If the data was a dupe, it is therefore
+            // deleted after the dupecheck triggers.
+
+            // That code was later re-written to do in-memory dupechecking. This delete function should never be called.
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("DeletePayment", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "paymentId", paymentId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
 
         #endregion
 

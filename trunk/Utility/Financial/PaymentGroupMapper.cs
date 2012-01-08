@@ -10,8 +10,7 @@ namespace Activizr.Utility.Financial
     {
         public static void Run()
         {
-            Organizations economyEnabledOrgs = new Organizations();
-            economyEnabledOrgs.Add(Organization.PPSE);
+            Organizations economyEnabledOrgs = Organizations.EconomyEnabled;
 
             foreach (Organization organization in economyEnabledOrgs)
             {
