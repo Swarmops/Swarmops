@@ -29,6 +29,7 @@ namespace Activizr.Logic.Financial
             organizationAccounts[OrganizationFinancialAccountType.AssetsOutboundInvoices] = 28;
             organizationAccounts[OrganizationFinancialAccountType.DebtsCapital] = 96;
             organizationAccounts[OrganizationFinancialAccountType.AssetsPaypal] = 2;
+            organizationAccounts[OrganizationFinancialAccountType.CostsYearResult] = 97;
         }
 
         public OrganizationFinancialAccounts (int organizationId)
@@ -120,6 +121,15 @@ namespace Activizr.Logic.Financial
                         organizationAccounts[OrganizationFinancialAccountType.CostsLocalDonationTransfers]); }
         }
 
+        public FinancialAccount CostsYearResult
+        {
+            get
+            {
+                return
+                    FinancialAccount.FromIdentity(organizationAccounts[OrganizationFinancialAccountType.CostsYearResult]);
+            }
+        }
+
         public FinancialAccounts CostsConferences
         {
             get
@@ -153,6 +163,7 @@ namespace Activizr.Logic.Financial
         CostsInfrastructure,
         CostsLocalDonationTransfers,
         CostsAllocatedFunds,
-        CostsConferences   // multi-account type
+        CostsConferences,
+        CostsYearResult // multi-account type
     }
 }
