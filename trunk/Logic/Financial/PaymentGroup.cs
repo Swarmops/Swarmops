@@ -92,6 +92,7 @@ namespace Activizr.Logic.Financial
         }
 
 
+
         public bool MapTransaction()
         {
             // This function attempts to find a transaction that matches the payment group, a transaction that is currently unbalanced.
@@ -99,18 +100,56 @@ namespace Activizr.Logic.Financial
 
             FinancialTransactions transactions = FinancialTransactions.GetUnbalanced(this.Organization);
 
-            string lookfor = "bg 451-0061 " + this.Tag.Substring(7);  // TODO: Set string and tag start to org dependent
+            return this.MapTransaction(transactions);
+        }
+
+
+        public bool MapTransaction(FinancialTransactions transactions)
+        {
+            int namespaceLength = 4; // typically, transactions are tagged to be unique per year, so the year is added to tag to make unique
+
+            switch (Char.ToLowerInvariant(this.Tag[5]))
+            {
+                case 'm':
+                    namespaceLength = 6; // unique per year and month
+                    break;
+                case 'd':
+                    namespaceLength = 8; // unique per year, month, day
+                    break;
+                default:
+                    // do nothing -- assume year, namespace length 4 as declared on init
+                    break;
+            }
+
+            string lookfor = this.Tag.Substring(5 + namespaceLength).ToLowerInvariant().Trim();
+            int year = Int32.Parse(this.Tag.Substring(5, 4));
             
+            if (Char.IsDigit(this.Tag[0]))
+            {
+                lookfor = this.Tag.Substring(namespaceLength); // temp - remove after PPSE books closed for 2011
+                year = Int32.Parse(this.Tag.Substring(0, 4));
+            }
+
             foreach (FinancialTransaction transaction in transactions)
             {
-                if (transaction.Description.ToLower() == lookfor && transaction.Rows.AmountCentsTotal == this.AmountCents)
+                if (transaction.Description.Length >= this.Organization.IncomingPaymentTag.Length + lookfor.Length &&
+                    transaction.Description.ToLowerInvariant().StartsWith(this.Organization.IncomingPaymentTag) &&
+                    transaction.Description.Trim().ToLowerInvariant().EndsWith(lookfor))
                 {
-                    // match!
-                    
-                    transaction.AddRow(Organization.FinancialAccounts.AssetsOutboundInvoices, -AmountCents, null);
-                    transaction.Dependency = this;
-                    this.Open = false;
-                    return true;
+                    if (transaction.Rows.AmountCentsTotal == this.AmountCents)
+                    {
+                        if (transaction.DateTime.Year == year)
+                        {
+                            // TODO: Prep for matching month/date too, when those namespaces appear
+
+                            // match!
+
+                            transaction.AddRow(Organization.FinancialAccounts.AssetsOutboundInvoices, -AmountCents, null);
+                            transaction.Dependency = this;
+                            this.Open = false;
+                            return true;
+                        }
+                    }
                 }
             }
 

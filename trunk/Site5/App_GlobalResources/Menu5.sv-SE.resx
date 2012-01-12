@@ -240,14 +240,14 @@
   <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
     <value>Kontoplan</value>
   </data>
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
+    <value>Granska Huvudbok</value>
+  </data>
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Balansräkning</value>
   </data>
-  <data name="Menu5_Ledgers_DebugBookkeeping" xml:space="preserve">
-    <value>Felsök Bokföring</value>
-  </data>
-  <data name="Menu5_Ledgers_GeneralLedger" xml:space="preserve">
-    <value>Huvudbok</value>
+  <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
+    <value>Felsök Bokföring/Reskontra</value>
   </data>
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importera Bankdata</value>

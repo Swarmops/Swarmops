@@ -675,5 +675,10 @@ namespace Activizr.Logic.Structure
         }
 
 
+        public string IncomingPaymentTag
+        {
+            get { return "bg 451-0061 "; }  // TODO: Per organization, of course
+        }
+
     }
 }

@@ -240,14 +240,14 @@
   <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
     <value>Account Plan</value>
   </data>
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
+    <value>Audit Ledgers</value>
+  </data>
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Balance Sheet</value>
   </data>
-  <data name="Menu5_Ledgers_DebugBookkeeping" xml:space="preserve">
-    <value>Debug Bookkeeping</value>
-  </data>
-  <data name="Menu5_Ledgers_GeneralLedger" xml:space="preserve">
-    <value>General Ledger</value>
+  <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
+    <value>Debug Ledger, Accounts</value>
   </data>
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Import Bank Data</value>
