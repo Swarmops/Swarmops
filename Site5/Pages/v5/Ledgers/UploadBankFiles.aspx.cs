@@ -464,13 +464,13 @@ namespace Activizr.Site.Pages.Ledgers
                                                                      geography.Identity, 0,
                                                                      transaction.Identity, localAccount.Identity.ToString());
                     }
-                    else if (row.Comment.ToLowerInvariant().StartsWith("bg 451-0061 "))   // TODO: Organization.Parameters.FinancialTrackedTransactionPrefix
+                    else if (row.Comment.ToLowerInvariant().StartsWith(_currentOrganization.IncomingPaymentTag))
                     {
                         // Check for previously imported payment group
 
                         PaymentGroup group = PaymentGroup.FromTag(_currentOrganization,
                                                                   "SEBGM" + DateTime.Today.Year.ToString() +   // TODO: Get tags from org
-                                                                  row.Comment.Substring(11));
+                                                                  row.Comment.Substring(_currentOrganization.IncomingPaymentTag.Length).Trim());
 
                         if (group != null && group.Open)
                         {

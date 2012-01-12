@@ -117,14 +117,13 @@
                         <telerik:RadMenuItem runat="server" Text="XYZ Balance Sheet" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_BalanceSheet" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Result Sheet" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_ResultSheet" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                        <telerik:RadMenuItem runat="server" Text="XYZ General Ledger" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_GeneralLedger" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ Audit Ledgers" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_AuditLedgers" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Account Plan" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_AccountPlan" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Set Budget" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_SetBudgets" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                        <telerik:RadMenuItem runat="server" Text="XYZ Import Bank Data" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_ImportBankData" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Upload Bank Files" NavigateUrl="~/Pages/v5/Ledgers/UploadBankFiles.aspx" ImageUrl="~/Images/PageIcons/iconshock-bank-16px.png" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_UploadBankFiles" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                        <telerik:RadMenuItem runat="server" Text="XYZ Debug Bookkeeping" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_DebugBookkeeping" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ Debug Ledgers" NavigateUrl="~/Pages/v5/Ledgers/DebugLedgers.aspx" ImageUrl="~/Images/PageIcons/iconshock-tester-16px.png" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_DebugLedgers" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Payroll" Permission="Payroll:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_Payroll" />
                     </Items>
