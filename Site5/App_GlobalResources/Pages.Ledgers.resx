@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SetRootBudgets_PageTitle" xml:space="preserve">
+    <value>Set Root Level Budgets</value>
+    <comment>Displayed above main content</comment>
+  </data>
   <data name="UploadBankFiles_BankScreenshot" xml:space="preserve">
     <value>Bank Screenshot</value>
     <comment>Displayed as header above modally zoomed screenshot</comment>
