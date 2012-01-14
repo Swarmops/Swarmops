@@ -38,6 +38,11 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
             this.RepeaterAccountBudgets.DataSource = accounts;
             this.RepeaterAccountBudgets.DataBind();
+
+            this.RepeaterAccountActuals.DataSource = accounts;
+            this.RepeaterAccountActuals.DataBind();
+
+            UpdateYearlyResult(accounts);
         }
         else
         {
@@ -45,6 +50,26 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         }
 
         this.DropYears.Style[HtmlTextWriterStyle.FontWeight] = "bold";
+        this.ButtonSetBudgets.Style[HtmlTextWriterStyle.MarginTop] = "4px";
+        this.ButtonSetBudgets.Style[HtmlTextWriterStyle.MarginBottom] = "5px";
+    }
+
+    protected void UpdateYearlyResult(FinancialAccounts rootAccounts)
+    {
+        Int64 budgetSum = 0;
+        Int64 actualSum = 0;
+
+        foreach (FinancialAccount account in rootAccounts)
+        {
+            budgetSum += account.GetTree().GetBudgetSumCents(_year)/100;
+            actualSum -= account.GetTree().GetDeltaCents(new DateTime(_year,1,1), new DateTime(_year+1, 1, 1))/100;  // negative: results accounts are sign reversed
+        }
+
+        this.TextYearlyResult.Text = String.Format("{0:N0}", budgetSum);
+        this.TextYearlyResult.Style[HtmlTextWriterStyle.Width] = "80px";
+        this.TextYearlyResult.Style[HtmlTextWriterStyle.TextAlign] = "right";
+
+        this.LabelYearlyResultActuals.Text = String.Format("{0:N0}", actualSum);
     }
 
     private int _year;
@@ -81,9 +106,9 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         FinancialAccount account = (FinancialAccount)item.DataItem;
 
-        TextBox textBudget = (TextBox) e.Item.FindControl("TextBudget");
+        TextBox textBudget = (TextBox) e.Item.FindControl("TextBudget"); 
 
-        textBudget.Text = String.Format("{0:N0}", account.GetBudgetCents(_year)/100);
+        textBudget.Text = String.Format("{0:N0}", account.GetTree().GetBudgetSumCents(_year)/100);
         textBudget.Style[HtmlTextWriterStyle.TextAlign] = "right";
         textBudget.Style[HtmlTextWriterStyle.Width] = "80px";
 
@@ -138,14 +163,20 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
     {
         FinancialAccounts accounts = GetRootLevelResultAccounts();
 
+        UpdateYearlyResult(accounts);
+
         this.RepeaterAccountBudgets.DataSource = accounts;
         this.RepeaterAccountBudgets.DataBind();
+
+        this.RepeaterAccountActuals.DataSource = accounts;
+        this.RepeaterAccountActuals.DataBind();
 
         this.RebindTooltips();
     }
 
     private FinancialAccounts GetRootLevelResultAccounts()
     {
+        FinancialAccount yearlyResult = _currentOrganization.FinancialAccounts.CostsYearlyResult;
         FinancialAccounts allAccounts = FinancialAccounts.ForOrganization(_currentOrganization, FinancialAccountType.Result);
 
         // Select root accounts
@@ -154,7 +185,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         foreach (FinancialAccount account in allAccounts)
         {
-            if (account.ParentFinancialAccountId == 0)
+            if (account.ParentFinancialAccountId == 0 && account.Identity != yearlyResult.Identity)
             {
                 accounts.Add(account);
             }
@@ -178,5 +209,29 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             personDetail.Person = account.Owner;
             personDetail.Account = account;
         }
+    }
+
+    protected void RepeaterAccountActuals_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        RepeaterItem item = e.Item;
+
+        if (item.DataItem == null)
+        {
+            return;
+        }
+
+        FinancialAccount account = (FinancialAccount)item.DataItem;
+
+        Label labelActuals = (Label) e.Item.FindControl("LabelAccountActuals");
+
+        Int64 actuals = account.GetTree().GetDeltaCents(new DateTime(_year, 1, 1), new DateTime(_year + 1, 1, 1))/
+                             100;
+
+        labelActuals.Text = String.Format("{0:N0}", -actuals);  // negative as results accounts are sign reversed
+    }
+
+    protected void ButtonSetBudgets_Click(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
     }
 }
