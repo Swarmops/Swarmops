@@ -30,7 +30,7 @@ namespace Activizr.Controls.Base
 
         protected void LinkEnglish_Click(object sender, EventArgs e)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-GB");
             FireLanguageChanged();
         }
 

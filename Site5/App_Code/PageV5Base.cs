@@ -63,9 +63,9 @@ public class PageV5Base : System.Web.UI.Page
     {
         // Localization
 
-        // Set default culture (English, United States)
+        // Set default culture (English, United States, but that doesn't work so fake it to GB)
 
-        string preferredCulture = "en-US";
+        string preferredCulture = "en-GB";
 
         // -----------  SET CULTURE ------------
 
@@ -79,7 +79,7 @@ public class PageV5Base : System.Web.UI.Page
         else
         {
             // No, determine from browser
-            string browserPreference = "en-US";
+            string browserPreference = "en-GB";
             if (Request.UserLanguages != null && Request.UserLanguages.Length > 0)
             {
                 browserPreference = Request.UserLanguages[0];

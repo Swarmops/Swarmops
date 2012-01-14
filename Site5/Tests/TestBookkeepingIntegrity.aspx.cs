@@ -38,7 +38,7 @@ public partial class Tests_TestBookkeepingIntegrity : PageV5Base
                                                                              FinancialAccountType.Result);
 
         FinancialAccount ownCapital = _currentOrganization.FinancialAccounts.DebtsCapital;
-        FinancialAccount resultAsNoted = _currentOrganization.FinancialAccounts.CostsYearResult;
+        FinancialAccount resultAsNoted = _currentOrganization.FinancialAccounts.CostsYearlyResult;
 
         FinancialAccounts balancesWithoutCapital =
             FinancialAccounts.ForOrganization(_currentOrganization, FinancialAccountType.Balance);
@@ -46,7 +46,7 @@ public partial class Tests_TestBookkeepingIntegrity : PageV5Base
 
         FinancialAccounts resultAccountsWithoutNotedResult = FinancialAccounts.ForOrganization(_currentOrganization,
                                                                              FinancialAccountType.Result);
-        resultAccountsWithoutNotedResult.Remove(_currentOrganization.FinancialAccounts.CostsYearResult);
+        resultAccountsWithoutNotedResult.Remove(_currentOrganization.FinancialAccounts.CostsYearlyResult);
 
         Currency currency = _currentOrganization.DefaultCountry.Currency;
 

@@ -80,14 +80,21 @@ namespace Activizr.Logic.Financial
             return FinancialAccountRows.FromArray(basicRows);
         }
 
-
-        public double GetBudgetSum (int year)
+        [Obsolete("This function uses double-point variables for money. Use GetBudgetSumCents instead.")]
+        public double GetBudgetSum(int year)
         {
             return PirateDb.GetDatabase().GetFinancialAccountsBudget(this.Identities, year);
         }
 
 
-        public Int64 GetDeltaCents (DateTime start, DateTime end)
+        public Int64 GetBudgetSumCents(int year)
+        {
+            // TODO: Add support in database
+            return (Int64) (PirateDb.GetDatabase().GetFinancialAccountsBudget(this.Identities, year) * 100);
+        }
+
+
+        public Int64 GetDeltaCents(DateTime start, DateTime end)
         {
             return PirateDb.GetDatabase().GetFinancialAccountBalanceDeltaCents(this.Identities, start, end);
         }

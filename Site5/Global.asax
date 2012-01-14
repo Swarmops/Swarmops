@@ -13,7 +13,7 @@
         // Code that runs on application startup
 
         // Set supported cultures
-        HttpContext.Current.Application["Cultures"] = new string[] { "sv-SE", "en-US", "de-DE", "de-AT", "fi-FI" };
+        HttpContext.Current.Application["Cultures"] = new string[] { "sv-SE", "en-GB", "de-DE", "de-AT", "fi-FI" };
 
         HttpContext.Current.Application["UserRoleCache"] = new Dictionary<int, string[]>();
     }

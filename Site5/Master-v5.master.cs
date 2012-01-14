@@ -95,9 +95,23 @@ namespace Activizr
             string cultureString = Thread.CurrentThread.CurrentCulture.ToString();
             string cultureStringLower = cultureString.ToLowerInvariant();
 
+            if (cultureStringLower == "en-us")
+            {
+                // doesn't work with tooltip styling for some completely inexplicable reason, use en-gb
+
+                cultureString = "en-GB";
+                cultureStringLower = "en-gb";
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureString);
+
+                HttpCookie cookieCulture = new HttpCookie("PreferredCulture");
+                cookieCulture.Value = cultureString;
+                cookieCulture.Expires = DateTime.Now.AddDays(365);
+                Response.Cookies.Add(cookieCulture);
+            }
+
             string flagName = "uk";
 
-            if (cultureStringLower != "en-us" && cultureString.Length > 3)
+            if (cultureStringLower != "en-gb" && cultureString.Length > 3)
             {
                 flagName = cultureStringLower.Substring(3);
             }
@@ -107,7 +121,7 @@ namespace Activizr
             this.LinkLogout.Text = Resources.Pages.Global.CurrentUserInfo_Logout;
             this.LabelPreferences.Text = Resources.Pages.Global.CurrentUserInfo_Preferences;
 
-            if (cultureStringLower != "en-us" && cultureStringLower != "sv-se" && cultureString.Trim().Length > 0)
+            if (cultureStringLower != "en-gb" && cultureStringLower != "sv-se" && cultureString.Trim().Length > 0)
             {
                 this.LinkTranslate.Visible = true;
             }
