@@ -5,7 +5,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Activizr.Basic.Enums;
 using Activizr.Logic.Financial;
+using Activizr.Logic.Pirates;
 using Activizr.Logic.Security;
+using Telerik.Web.UI;
 
 public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 {
@@ -86,16 +88,50 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         textBudget.Style[HtmlTextWriterStyle.Width] = "80px";
 
         Label labelOwnerName = (Label) e.Item.FindControl("LabelBudgetOwner");
-        if (account.Owner == null)
+        Person accountOwner = account.Owner;
+        if (accountOwner == null)
         {
             labelOwnerName.Text = "None [LOC]";
         }
         else
         {
-            labelOwnerName.Text = account.Owner.Formal;
+            labelOwnerName.Text = accountOwner.Formal;
         }
 
+        RadToolTip toolTip = (RadToolTip)e.Item.FindControl("ToolTip");
 
+        Controls_v5_PersonDetailPopup personDetail = (Controls_v5_PersonDetailPopup)toolTip.FindControl("PersonDetail");
+        personDetail.PersonChanged += new EventHandler(PersonDetail_PersonChanged);
+
+        if (!Page.IsPostBack && _authority != null)
+        {
+            personDetail.Person = accountOwner;
+            personDetail.Account = account;
+        }
+
+        HiddenField hiddenAccountId = (HiddenField) e.Item.FindControl("HiddenAccountId");
+        hiddenAccountId.Value = account.Identity.ToString();
+
+        // this.TooltipManager.TargetControls.Add(labelBudgetOwner.ClientID, line.AccountIdentity.ToString(), true);
+    }
+
+    void PersonDetail_PersonChanged(object sender, EventArgs e)
+    {
+        // Here, an owner has changed. We need to re-bind the owners column.
+
+        /*
+        FinancialAccounts accounts = _account.Children;
+        AccountBudgetLines childData = new AccountBudgetLines();
+
+        foreach (FinancialAccount account in accounts)
+        {
+            childData.Add(new AccountBudgetLine(account, _year));
+        }
+
+        this.RepeaterBudgetOwners.DataSource = childData;
+        this.RepeaterBudgetOwners.DataBind();
+
+        RebindTooltips();*/
     }
 
     protected void DropYears_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,6 +140,8 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         this.RepeaterAccountBudgets.DataSource = accounts;
         this.RepeaterAccountBudgets.DataBind();
+
+        this.RebindTooltips();
     }
 
     private FinancialAccounts GetRootLevelResultAccounts()
@@ -123,5 +161,22 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         }
 
         return accounts;
+    }
+
+
+    protected void RebindTooltips()
+    {
+        foreach (RepeaterItem repeaterItem in this.RepeaterAccountBudgets.Items)
+        {
+            HiddenField hiddenAccountId = (HiddenField)repeaterItem.FindControl("HiddenAccountId");
+            FinancialAccount child = FinancialAccount.FromIdentity(Int32.Parse(hiddenAccountId.Value));
+            RadToolTip toolTip = (RadToolTip)repeaterItem.FindControl("ToolTip");
+
+            Controls_v5_PersonDetailPopup personDetail = (Controls_v5_PersonDetailPopup)toolTip.FindControl("PersonDetail");
+
+            FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(hiddenAccountId.Value));
+            personDetail.Person = account.Owner;
+            personDetail.Account = account;
+        }
     }
 }
