@@ -18,7 +18,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         if (!Page.IsPostBack)
         {
-            FinancialAccounts accounts = GetRootLevelAccounts();
+            FinancialAccounts accounts = GetRootLevelResultAccounts();
 
             int currentYear = DateTime.Today.Year;
             _year = currentYear;
@@ -83,19 +83,30 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         textBudget.Text = String.Format("{0:N0}", account.GetBudgetCents(_year)/100);
         textBudget.Style[HtmlTextWriterStyle.TextAlign] = "right";
-        textBudget.Style[HtmlTextWriterStyle.Width] = "150px";
+        textBudget.Style[HtmlTextWriterStyle.Width] = "80px";
+
+        Label labelOwnerName = (Label) e.Item.FindControl("LabelBudgetOwner");
+        if (account.Owner == null)
+        {
+            labelOwnerName.Text = "None [LOC]";
+        }
+        else
+        {
+            labelOwnerName.Text = account.Owner.Formal;
+        }
+
 
     }
 
     protected void DropYears_SelectedIndexChanged(object sender, EventArgs e)
     {
-        FinancialAccounts accounts = GetRootLevelAccounts();
+        FinancialAccounts accounts = GetRootLevelResultAccounts();
 
         this.RepeaterAccountBudgets.DataSource = accounts;
         this.RepeaterAccountBudgets.DataBind();
     }
 
-    private FinancialAccounts GetRootLevelAccounts()
+    private FinancialAccounts GetRootLevelResultAccounts()
     {
         FinancialAccounts allAccounts = FinancialAccounts.ForOrganization(_currentOrganization, FinancialAccountType.Result);
 

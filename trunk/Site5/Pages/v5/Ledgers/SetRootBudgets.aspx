@@ -1,18 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="SetRootBudgets.aspx.cs" Inherits="Pages_v5_Ledgers_SetRootBudgets" %>
+<%@ Register src="~/Controls/v5/Pirates/PersonDetailPopup.ascx" tagName="PersonDetailPopup" tagPrefix="act5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
 
-<h2><asp:Label ID="LabelRootBudgetHeader" Text="Root Budgets For Org [LOC]" runat="server" /></h2>
+<h2><asp:Label ID="LabelRootBudgetHeader" Text="Root Budgets For Org [LOC]" runat="server" /><div style="float:right"><asp:DropDownList ID="DropYears" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropYears_SelectedIndexChanged" /></div></h2>
 
 <div class="entrylabels" style="margin-right:30px;width:200px">
-    <strong><asp:Label ID="LabelYear" Text="Year [LOC]" runat="server" /></strong><br/>
+    <strong><asp:Label ID="LabelAccountHeader" Text="Account [LOC]" runat="server" /></strong><br/>
     <asp:Repeater ID="RepeaterAccountNames" runat="server" OnItemDataBound="RepeaterAccountNames_ItemDataBound" ><ItemTemplate><asp:Label ID="LabelAccountName" runat="server" Text="Unset Account Name" /> <em>(<asp:Label ID="LabelAccountType" runat="server" Text="Type [LOC]" />)</em><br /></ItemTemplate></asp:Repeater>
 </div>
 <div class="entryfields">
-    <strong><asp:DropDownList ID="DropYears" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropYears_SelectedIndexChanged" /></strong>&nbsp;<br/>
-    <asp:Repeater ID="RepeaterAccountBudgets" OnItemDataBound="RepeaterAccountBudgets_ItemDataBound" runat="server"><ItemTemplate><asp:TextBox ID="TextBudget" runat="server" Text="Not set" />&nbsp;<br/></ItemTemplate></asp:Repeater>
+    <strong>Budget, Owner [LOC]</strong><br/>
+    <asp:Repeater ID="RepeaterAccountBudgets" OnItemDataBound="RepeaterAccountBudgets_ItemDataBound" runat="server"><ItemTemplate><asp:TextBox ID="TextBudget" runat="server" Text="Not set" />&nbsp;<span style="border-bottom: dashed 1px #808080;cursor:pointer"><asp:Label ID="LabelBudgetOwner" runat="server" /></span><asp:HiddenField ID="HiddenAccountId" runat="server" /><telerik:RadToolTip ID="ToolTip" runat="server"  AnimationDuration="150" AutoCloseDelay="200000" ShowDelay="0"
+            EnableShadow="true" HideDelay="1" Width="288px" Height="96px" HideEvent="ManualClose" OffsetX="30" OffsetY="0"
+            RelativeTo="Element" Animation="Slide" Position="TopCenter" ShowCallout="true" TargetControlID="LabelBudgetOwner" RenderInPageRoot="true" ShowEvent="OnClick"
+            Skin="Telerik"><act5:PersonDetailPopup runat="server" ID="PersonDetail" /></telerik:RadToolTip><br/></ItemTemplate></asp:Repeater>
 </div>
 
 <div style="clear:both"></div>
