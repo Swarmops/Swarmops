@@ -30,7 +30,6 @@ public partial class Controls_v5_PersonDetailPopup : ControlV5Base
 
 
     private Person _person;
-    private Authority _authority;
 
 
     public Person Person
@@ -67,15 +66,7 @@ public partial class Controls_v5_PersonDetailPopup : ControlV5Base
 
         }
     }
-    /*
-    public Authority Authority
-    {
-        set
-        {
-            _authority = value;
-            this.PersonNewOwner.Authority = value;
-        }
-    }*/
+
 
 
     public FinancialAccount Account
