@@ -16,7 +16,7 @@
 </div>
 
 <div class="entryfields">
-    <strong>Budget, Owner [LOC]</strong><br/>
+    <strong><asp:Label ID="LabelBudgetOwnerHeader" runat="server" Text="Budget, Owner [LOC]" /></strong><br/>
     <asp:Repeater ID="RepeaterAccountBudgets" OnItemDataBound="RepeaterAccountBudgets_ItemDataBound" runat="server"><ItemTemplate><asp:HiddenField runat="server" ID="HiddenAccountId" /><asp:HiddenField runat="server" ID="HiddenCurrentBudget" /><asp:TextBox ID="TextBudget" runat="server" Text="Not set" />&nbsp;&nbsp;<span style="border-bottom: dashed 1px #808080;cursor:pointer"><asp:Label ID="LabelBudgetOwner" runat="server" /></span><telerik:RadToolTip ID="ToolTip" runat="server"  AnimationDuration="150" AutoCloseDelay="200000" ShowDelay="0"
             EnableShadow="true" HideDelay="1" Width="288px" Height="96px" HideEvent="ManualClose" OffsetX="30" OffsetY="0"
             RelativeTo="Element" Animation="Slide" Position="TopCenter" ShowCallout="true" TargetControlID="LabelBudgetOwner" RenderInPageRoot="true" ShowEvent="OnClick"

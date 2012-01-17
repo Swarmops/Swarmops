@@ -141,6 +141,27 @@
     <value>Dashboard</value>
     <comment>Title of default page</comment>
   </data>
+  <data name="Financial_Actuals" xml:space="preserve">
+    <value>Actuals</value>
+  </data>
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
+    <value>Actuals (prel)</value>
+  </data>
+  <data name="Financial_ActualsToDate" xml:space="preserve">
+    <value>Actuals YTD</value>
+  </data>
+  <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
+    <value>Bookkeeping Account</value>
+  </data>
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Financial_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>Yearly result</value>
+  </data>
   <data name="Global_Cancel" xml:space="preserve">
     <value>Cancel</value>
     <comment>Displayed as cancellation link on changing something</comment>
@@ -164,6 +185,13 @@
   <data name="Global_GoThere" xml:space="preserve">
     <value>Go there...</value>
     <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>Nobody</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>Owner</value>
   </data>
   <data name="Global_ProcessingFile" xml:space="preserve">
     <value>Processing File...</value>
