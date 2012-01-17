@@ -13,7 +13,7 @@ namespace Activizr.Controls.Base
         {
             // Localize
 
-            this.LabelSelectLanguage.Text = Resources.Pages.Global.CurrentUserInfo_SelectLanguage.ToUpperInvariant();
+            this.LabelSelectLanguage.Text = Resources.Global.CurrentUserInfo_SelectLanguage.ToUpperInvariant();
         }
 
         protected void LinkDanish_Click(object sender, EventArgs e)

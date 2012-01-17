@@ -38,10 +38,10 @@ namespace Activizr.Pages.Governance
             this.LabelMotionTextLabel.Text = Resources.Pages.Governance.ViewMotion_Text;
             this.LabelViewingMotionInfo.Text = Resources.Pages.Governance.ViewMotion_ViewingMotionInfo;
 
-            this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
-            this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
-            this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
-            this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
+            this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
+            this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
+            this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
+            this.LabelActionItemsHere.Text = Resources.Global.Sidebar_Todo_Placeholder;
 
 
             // Fill in fields

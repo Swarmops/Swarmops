@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -7,13 +8,30 @@ using Activizr.Basic.Enums;
 using Activizr.Logic.Financial;
 using Activizr.Logic.Pirates;
 using Activizr.Logic.Security;
+using Activizr.Logic.Structure;
 using Telerik.Web.UI;
 
 public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 {
+    protected void Page_Init (object sender, EventArgs e)
+    {
+        if (Page.IsPostBack)
+        {
+            // Create controls, for amounts to be set in Page_Load. This is necessary for events to fire.
+            // We don't know the year setting here yet.
+
+            FinancialAccounts accounts = GetRootLevelResultAccounts();
+
+            this.RepeaterAccountBudgets.DataSource = accounts;
+            this.RepeaterAccountBudgets.DataBind();
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         this.PageAccessRequired = new Access(_currentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+
+        this.HiddenInitOrganizationId.Value = _currentOrganization.Identity.ToString();
 
         this.PageIcon = "iconshock-moneybag";
         this.PageTitle = Resources.Pages.Ledgers.SetRootBudgets_PageTitle;
@@ -29,7 +47,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             {
                 this.DropYears.Items.Add(new ListItem(currentYear.ToString()));
                 currentYear--;
-            } while (accounts[0].GetBudgetCents(currentYear) > 0);
+            } while (accounts[0].GetTree().GetBudgetSumCents(currentYear) > 0);
 
             this.DropYears.SelectedIndex = 0;
 
@@ -52,6 +70,9 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         this.DropYears.Style[HtmlTextWriterStyle.FontWeight] = "bold";
         this.ButtonSetBudgets.Style[HtmlTextWriterStyle.MarginTop] = "4px";
         this.ButtonSetBudgets.Style[HtmlTextWriterStyle.MarginBottom] = "5px";
+        this.ButtonSetBudgets.Style[HtmlTextWriterStyle.Padding] = "1px";
+
+        RebindTooltips();
     }
 
     protected void UpdateYearlyResult(FinancialAccounts rootAccounts)
@@ -62,7 +83,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         foreach (FinancialAccount account in rootAccounts)
         {
             budgetSum += account.GetTree().GetBudgetSumCents(_year)/100;
-            actualSum -= account.GetTree().GetDeltaCents(new DateTime(_year,1,1), new DateTime(_year+1, 1, 1))/100;  // negative: results accounts are sign reversed
+            actualSum -= (account.GetTree().GetDeltaCents(new DateTime(_year,1,1), new DateTime(_year+1, 1, 1))+50)/100;  // negative: results accounts are sign reversed
         }
 
         this.TextYearlyResult.Text = String.Format("{0:N0}", budgetSum);
@@ -106,11 +127,14 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         FinancialAccount account = (FinancialAccount)item.DataItem;
 
-        TextBox textBudget = (TextBox) e.Item.FindControl("TextBudget"); 
+        TextBox textBudget = (TextBox) e.Item.FindControl("TextBudget");
 
-        textBudget.Text = String.Format("{0:N0}", account.GetTree().GetBudgetSumCents(_year)/100);
-        textBudget.Style[HtmlTextWriterStyle.TextAlign] = "right";
-        textBudget.Style[HtmlTextWriterStyle.Width] = "80px";
+        if (_year > 0) // called from after viewstate parsed
+        {
+            textBudget.Text = String.Format("{0:N0}", account.GetTree().GetBudgetSumCents(_year)/100);
+            textBudget.Style[HtmlTextWriterStyle.TextAlign] = "right";
+            textBudget.Style[HtmlTextWriterStyle.Width] = "80px";
+        }
 
         Label labelOwnerName = (Label) e.Item.FindControl("LabelBudgetOwner");
         Person accountOwner = account.Owner;
@@ -126,12 +150,12 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         RadToolTip toolTip = (RadToolTip)e.Item.FindControl("ToolTip");
 
         Controls_v5_PersonDetailPopup personDetail = (Controls_v5_PersonDetailPopup)toolTip.FindControl("PersonDetail");
-        personDetail.PersonChanged += new EventHandler(PersonDetail_PersonChanged);
+        personDetail.PersonChanged += new PersonChangedEventHandler(PersonDetail_PersonChanged);
 
         if (!Page.IsPostBack && _authority != null)
         {
             personDetail.Person = accountOwner;
-            personDetail.Account = account;
+            personDetail.Cookie = account;
         }
 
         HiddenField hiddenAccountId = (HiddenField) e.Item.FindControl("HiddenAccountId");
@@ -140,23 +164,22 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         // this.TooltipManager.TargetControls.Add(labelBudgetOwner.ClientID, line.AccountIdentity.ToString(), true);
     }
 
-    void PersonDetail_PersonChanged(object sender, EventArgs e)
+
+    void PersonDetail_PersonChanged(object sender, PersonChangedEventArgs e)
     {
         // Here, an owner has changed. We need to re-bind the owners column.
 
-        /*
-        FinancialAccounts accounts = _account.Children;
-        AccountBudgetLines childData = new AccountBudgetLines();
+        // TODO: This resets the budget amounts to the values in the database, which is not really what we want.
 
-        foreach (FinancialAccount account in accounts)
-        {
-            childData.Add(new AccountBudgetLine(account, _year));
-        }
+        FinancialAccount account = (FinancialAccount) e.Cookie;
+        account.Owner = e.NewPerson;
 
-        this.RepeaterBudgetOwners.DataSource = childData;
-        this.RepeaterBudgetOwners.DataBind();
+        FinancialAccounts accounts = GetRootLevelResultAccounts();
 
-        RebindTooltips();*/
+        this.RepeaterAccountBudgets.DataSource = accounts;
+        this.RepeaterAccountBudgets.DataBind();
+
+        RebindTooltips();
     }
 
     protected void DropYears_SelectedIndexChanged(object sender, EventArgs e)
@@ -176,8 +199,18 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
     private FinancialAccounts GetRootLevelResultAccounts()
     {
-        FinancialAccount yearlyResult = _currentOrganization.FinancialAccounts.CostsYearlyResult;
-        FinancialAccounts allAccounts = FinancialAccounts.ForOrganization(_currentOrganization, FinancialAccountType.Result);
+        Organization org = _currentOrganization;
+
+        if (org == null && Page.IsPostBack)
+        {
+            // If we're being called from Page_Init to create controls just to catch events, then _currentOrganization won't be set.
+            // We need to create it temporarily from a hidden field:
+
+            org = Organization.FromIdentity(Int32.Parse(Request["ctl00$PlaceHolderMain$HiddenInitOrganizationId"]));
+        }
+
+        FinancialAccount yearlyResult = org.FinancialAccounts.CostsYearlyResult;
+        FinancialAccounts allAccounts = FinancialAccounts.ForOrganization(org, FinancialAccountType.Result);
 
         // Select root accounts
 
@@ -207,7 +240,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
             FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(hiddenAccountId.Value));
             personDetail.Person = account.Owner;
-            personDetail.Account = account;
+            personDetail.Cookie = child;
         }
     }
 
@@ -224,14 +257,44 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         Label labelActuals = (Label) e.Item.FindControl("LabelAccountActuals");
 
-        Int64 actuals = account.GetTree().GetDeltaCents(new DateTime(_year, 1, 1), new DateTime(_year + 1, 1, 1))/
+        Int64 actuals = (account.GetTree().GetDeltaCents(new DateTime(_year, 1, 1), new DateTime(_year + 1, 1, 1))+50)/
                              100;
 
         labelActuals.Text = String.Format("{0:N0}", -actuals);  // negative as results accounts are sign reversed
     }
 
+
     protected void ButtonSetBudgets_Click(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        foreach (RepeaterItem repeaterItem in this.RepeaterAccountBudgets.Items)
+        {
+            HiddenField hiddenAccountId = (HiddenField) repeaterItem.FindControl("HiddenAccountId");
+            TextBox textBudget = (TextBox) repeaterItem.FindControl("TextBudget");
+            FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(hiddenAccountId.Value));
+
+            // TODO: Possible race condition here, fix with HiddenField
+
+            Int64 newBudgetAmount = Int64.Parse(textBudget.Text.Replace(",","").Replace(" ",""), Thread.CurrentThread.CurrentCulture);  // TODO: May throw -- catch and send error message
+
+            Int64 currentBudgetAmount = account.GetTree().GetBudgetSumCents(_year)/100;
+
+            // Set the new amount to the difference between the single budget of this account and the intended amount
+
+            if (newBudgetAmount != currentBudgetAmount)
+            {
+                account.SetBudgetCents(_year,
+                                       account.GetBudgetCents(_year) + (newBudgetAmount - currentBudgetAmount)*100);
+            }
+        }
+
+        // After updating budgets, rebind repeater
+
+        FinancialAccounts accounts = GetRootLevelResultAccounts();
+
+        UpdateYearlyResult(accounts);
+
+        this.RepeaterAccountBudgets.DataSource = accounts;
+        this.RepeaterAccountBudgets.DataBind();
+
     }
 }
