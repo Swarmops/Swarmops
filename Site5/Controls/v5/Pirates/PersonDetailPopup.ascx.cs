@@ -13,6 +13,10 @@ using Activizr.Logic.Pirates;
 using Activizr.Logic.Security;
 using Telerik.Web.UI;
 
+
+public delegate void PersonChangedEventHandler(object sender, PersonChangedEventArgs e);
+
+
 public partial class Controls_v5_PersonDetailPopup : ControlV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -25,12 +29,22 @@ public partial class Controls_v5_PersonDetailPopup : ControlV5Base
         }
 
         this.LabelPersonName.Style[HtmlTextWriterStyle.FontSize] = "20px";
-        this.PersonNewOwner.Width = 167;
+        this.PersonNew.Width = 157;
+
+        this.ButtonSetNew.Visible = this.Changeable;
+
+        // Localize
+
+        this.ButtonSetNew.Text = Resources.Controls.Pirates.PersonDetailPopup_ChangePerson;
+        this.LabelWriteLabel.Text = Resources.Controls.Pirates.PersonDetailPopup_ChangeTo;
+        this.ButtonConfirmPerson.Text = Resources.Global.Global_Confirm;
+        this.ButtonCancel.Text = Resources.Global.Global_Cancel;
     }
 
 
     private Person _person;
 
+    public object Cookie { get; set; }
 
     public Person Person
     {
@@ -38,7 +52,7 @@ public partial class Controls_v5_PersonDetailPopup : ControlV5Base
         {
             if (_person == null)
             {
-                return this.PersonNewOwner.SelectedPerson;    
+                return this.PersonNew.SelectedPerson;    
             }
 
             return _person;
@@ -68,23 +82,14 @@ public partial class Controls_v5_PersonDetailPopup : ControlV5Base
     }
 
 
-
-    public FinancialAccount Account
-    {
-        set
-        {
-            _account = value;
-        }
-    }
+    public bool Changeable { get; set; }
 
 
-    private FinancialAccount _account;
-
-    protected void ButtonSetNewOwner_Click(object sender, EventArgs e)
+    protected void ButtonSetNew_Click(object sender, EventArgs e)
     {
         this.PanelRead.Visible = false;
         this.PanelWrite.Visible = true;
-        this.PersonNewOwner.Focus();
+        this.PersonNew.Focus();
     }
 
     public void Reset()
@@ -92,7 +97,7 @@ public partial class Controls_v5_PersonDetailPopup : ControlV5Base
         this.PanelWrite.Visible = false;
         this.PanelRead.Visible = true;
         this.ButtonConfirmPerson.Visible = false;
-        this.PersonNewOwner.SelectedPerson = null;
+        this.PersonNew.SelectedPerson = null;
 
         if (ViewState[this.ClientID + "_PersonId"] == null)
         {
@@ -105,25 +110,26 @@ public partial class Controls_v5_PersonDetailPopup : ControlV5Base
     }
 
 
-    protected void PersonNewOwner_SelectedPersonChanged(object sender, EventArgs e)
+    protected void PersonNew_SelectedPersonChanged(object sender, EventArgs e)
     {
-        this.ImageAvatar.ImageUrl = this.PersonNewOwner.SelectedPerson.GetSecureAvatarLink(96);
+        this.ImageAvatar.ImageUrl = this.PersonNew.SelectedPerson.GetSecureAvatarLink(96);
         this.ButtonConfirmPerson.Visible = true;
     }
 
     protected void ButtonConfirmPerson_Click(object sender, EventArgs e)
     {
-        if (this._account == null)
-        {
-            throw new InvalidOperationException("Can't set owner for null account");
-        }
+        this._person = this.PersonNew.SelectedPerson;
 
-        this._account.Owner = this.PersonNewOwner.SelectedPerson;
-        this._person = this.PersonNewOwner.SelectedPerson;
+        IOwnerSettable settableInterface = this.Cookie as IOwnerSettable;
+
+        if (settableInterface != null)
+        {
+            settableInterface.SetOwner(this._person);
+        }
 
         if (PersonChanged != null)
         {
-            PersonChanged(this, new EventArgs());
+            PersonChanged(this, new PersonChangedEventArgs(this.PersonNew.SelectedPerson, this.Cookie));
         }
 
         this.LabelPersonName.Text = _person.Name;
@@ -136,6 +142,21 @@ public partial class Controls_v5_PersonDetailPopup : ControlV5Base
         Reset();
     }
 
-    public event EventHandler PersonChanged; 
+    public event PersonChangedEventHandler PersonChanged; 
 
 }
+
+
+public class PersonChangedEventArgs: EventArgs
+{
+    public PersonChangedEventArgs(Person newPerson, object cookie)
+    {
+        this.NewPerson = newPerson;
+        this.Cookie = cookie;
+    }
+
+    public readonly Person NewPerson;
+    public readonly object Cookie;
+}
+
+

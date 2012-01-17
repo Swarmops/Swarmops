@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Financial\ImportedBankData.cs" />
+    <Compile Include="Pirates\Interfaces.cs" />
     <Compile Include="Security\Accesses.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Cache\MailTemplateCache.cs" />

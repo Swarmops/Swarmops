@@ -36,10 +36,10 @@ namespace Activizr.Pages.Governance
             this.LabelText.Text = Resources.Pages.Governance.AddMotion_Text;
             this.LabelDecisions.Text = Resources.Pages.Governance.AddMotion_Decisions;
 
-            this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
-            this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
-            this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
-            this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
+            this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
+            this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
+            this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
+            this.LabelActionItemsHere.Text = Resources.Global.Sidebar_Todo_Placeholder;
 
             this.ButtonAddMotion.Text = Resources.Pages.Governance.AddMotion_SubmitMotion;
 

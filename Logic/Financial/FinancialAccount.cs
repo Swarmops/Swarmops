@@ -9,7 +9,7 @@ using Activizr.Basic.Enums;
 
 namespace Activizr.Logic.Financial
 {
-    public class FinancialAccount : BasicFinancialAccount, ITreeNode
+    public class FinancialAccount : BasicFinancialAccount, ITreeNode, IOwnerSettable
     {
         private FinancialAccount (BasicFinancialAccount basic)
             : base(basic)
@@ -80,6 +80,11 @@ namespace Activizr.Logic.Financial
         public void SetBudget(int year, double amount)
         {
             PirateDb.GetDatabase().SetFinancialAccountBudget(this.Identity, year, amount);
+        }
+
+        public void SetBudgetCents (int year, Int64 amount)
+        {
+            PirateDb.GetDatabase().SetFinancialAccountBudget(this.Identity, year, amount / 100.0);  // TODO: Change db structure to use cents
         }
 
         public void SetBudgetMontly (int year, int month, Int64 amountCents)
@@ -201,6 +206,15 @@ namespace Activizr.Logic.Financial
         }
 
         private ObjectOptionalData _optionalData;
+
+        #endregion
+
+        #region IOwnerSettable members
+
+        public void SetOwner(Person newOwner)
+        {
+            this.Owner = newOwner;
+        }
 
         #endregion
     }

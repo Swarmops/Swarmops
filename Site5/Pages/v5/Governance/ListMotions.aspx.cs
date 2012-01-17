@@ -49,14 +49,14 @@ namespace Activizr.Pages.Governance
 
         private void Localize()
         {
-            this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
-            this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
-            this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
-            this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
+            this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
+            this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
+            this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
+            this.LabelActionItemsHere.Text = Resources.Global.Sidebar_Todo_Placeholder;
 
             this.LabelSidebarLookingAt.Text = Resources.Pages.Governance.ListMotions_Sidebar_Info;
             this.LabelMeetingName.Text = _meeting.Name;
-            this.LabelChangeMeeting.Text = Resources.Pages.Global.Global_Change;
+            this.LabelChangeMeeting.Text = Resources.Global.Global_Change;
 
             LocalizeGrid();
         }

@@ -118,8 +118,8 @@ namespace Activizr
 
             this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + ".png";
 
-            this.LinkLogout.Text = Resources.Pages.Global.CurrentUserInfo_Logout;
-            this.LabelPreferences.Text = Resources.Pages.Global.CurrentUserInfo_Preferences;
+            this.LinkLogout.Text = Resources.Global.CurrentUserInfo_Logout;
+            this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
 
             if (cultureStringLower != "en-gb" && cultureStringLower != "sv-se" && cultureString.Trim().Length > 0)
             {

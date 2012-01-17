@@ -70,11 +70,11 @@ namespace Activizr.Pages.Governance
         private void Localize()
         {
             this.LabelActionListMotions.Text = Resources.Pages.Governance.ListMotions_PageTitle;
-            this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
+            this.LabelActionItemsHere.Text = Resources.Global.Sidebar_Todo_Placeholder;
             this.LabelAmendmentsForMeeting.Text = _meeting.Name;
-            this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
-            this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
-            this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
+            this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
+            this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
+            this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
             this.ButtonSaveVote.Text = Resources.Pages.Governance.VoteAmendments_SaveVote_Temp;
 
             this.LabelInfo.Text = Resources.Pages.Governance.VoteAmendments_Info;

@@ -33,22 +33,22 @@ namespace Activizr.Site.Pages.Ledgers
             {
                 // Localize
 
-                this.LabelSidebarInfo.Text = Resources.Pages.Global.Sidebar_Information;
-                this.LabelSidebarActions.Text = Resources.Pages.Global.Sidebar_Actions;
-                this.LabelSidebarTodo.Text = Resources.Pages.Global.Sidebar_Todo;
+                this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
+                this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
+                this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
                 this.LabelDownloadInstructions.Text = Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions;
-                this.LabelClickImage.Text = Resources.Pages.Global.Global_ClickImageToEnlarge;
+                this.LabelClickImage.Text = Resources.Global.Global_ClickImageToEnlarge;
 
                 this.LabelUploadBankFilesInfo.Text = Resources.Pages.Ledgers.UploadBankFiles_Info;
-                this.LabelActionItemsHere.Text = Resources.Pages.Global.Sidebar_Todo_Placeholder;
+                this.LabelActionItemsHere.Text = Resources.Global.Sidebar_Todo_Placeholder;
 
                 this.LabelSelectBankAndAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankAndAccount;
                 this.LabelSelectFileType.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
                 this.LabelSelectAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectAccount;
                 this.LabelUploadH2Header.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
-                this.LabelUploadH3Header.Text = Resources.Pages.Global.Global_UploadFileToActivizr;
-                this.Upload.Text = Resources.Pages.Global.Global_UploadFile;
-                this.LabelProcessing.Text = Resources.Pages.Global.Global_ProcessingFile;
+                this.LabelUploadH3Header.Text = Resources.Global.Global_UploadFileToActivizr;
+                this.Upload.Text = Resources.Global.Global_UploadFile;
+                this.LabelProcessing.Text = Resources.Global.Global_ProcessingFile;
                 this.LinkUploadAnother.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadAnother;
                 this.LabelModalInstructionHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_BankScreenshot;
 
@@ -176,7 +176,7 @@ namespace Activizr.Site.Pages.Ledgers
                                                                            FinancialAccountType.Asset);
 
             this.DropAccounts.Items.Clear();
-            this.DropAccounts.Items.Add(Resources.Pages.Global.Global_DropInits_SelectFinancialAccount);
+            this.DropAccounts.Items.Add(Resources.Global.Global_DropInits_SelectFinancialAccount);
 
             foreach (FinancialAccount account in accounts)
             {
@@ -300,7 +300,7 @@ namespace Activizr.Site.Pages.Ledgers
             {
                 // If no file was uploaded, re-show the instructions div
 
-                this.LabelNoFileUploaded.Text = Resources.Pages.Global.Global_Upload_ErrorSelectFile;
+                this.LabelNoFileUploaded.Text = Resources.Global.Global_Upload_ErrorSelectFile;
                 this.LiteralDivInstructionsStyle.Text = @"style='display:inline'";
             }
             else
