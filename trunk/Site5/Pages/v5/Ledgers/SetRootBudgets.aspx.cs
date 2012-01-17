@@ -61,6 +61,19 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             this.RepeaterAccountActuals.DataBind();
 
             UpdateYearlyResult(accounts);
+
+            this.LabelRootBudgetHeader.Text = String.Format(Resources.Pages.Ledgers.SetRootBudgets_PageHeader, _currentOrganization.Name);
+            this.LabelAccountHeader.Text = Resources.Global.Financial_BookkeepingAccountShort;
+            this.LabelYearlyResultLabel.Text = Resources.Global.Financial_YearlyResult;
+            this.ButtonSetBudgets.Text = Resources.Pages.Ledgers.SetRootBudgets_SetNewBudgets;
+            this.LabelBudgetOwnerHeader.Text = Resources.Pages.Ledgers.SetRootBudgets_BudgetOwnerHeader;
+
+            this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
+            this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
+            this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
+            this.LabelDashboardInfo.Text = Resources.Pages.Ledgers.SetRootBudgets_Info;
+
+            LocalizeActualsHeader();
         }
         else
         {
@@ -73,6 +86,22 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         this.ButtonSetBudgets.Style[HtmlTextWriterStyle.Padding] = "1px";
 
         RebindTooltips();
+    }
+
+    private void LocalizeActualsHeader()
+    {
+        if (_currentOrganization.Parameters.FiscalBooksClosedUntilYear >= _year)
+        {
+            this.LabelActualsHeader.Text = Resources.Global.Financial_Actuals;
+        }
+        else if (_year == DateTime.Today.Year)
+        {
+            this.LabelActualsHeader.Text = Resources.Global.Financial_ActualsToDate;
+        }
+        else
+        {
+            this.LabelActualsHeader.Text = Resources.Global.Financial_ActualsPreliminary;
+        }
     }
 
     protected void UpdateYearlyResult(FinancialAccounts rootAccounts)
@@ -140,7 +169,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         Person accountOwner = account.Owner;
         if (accountOwner == null)
         {
-            labelOwnerName.Text = "None [LOC]";
+            labelOwnerName.Text = Resources.Global.Global_NoOwner;
         }
         else
         {
@@ -193,6 +222,8 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         this.RepeaterAccountActuals.DataSource = accounts;
         this.RepeaterAccountActuals.DataBind();
+
+        LocalizeActualsHeader();
 
         this.RebindTooltips();
     }

@@ -117,9 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
+    <value>Budget, Owner</value>
+    <comment>Displayed above editables</comment>
+  </data>
+  <data name="SetRootBudgets_Info" xml:space="preserve">
+    <value>This is where the root budgets are set for each budget year. After these are set, each budget owner suballocates funds within their respective budget trees.</value>
+  </data>
+  <data name="SetRootBudgets_PageHeader" xml:space="preserve">
+    <value>Root Budgets For {0}</value>
+    <comment>The {0} is replaced with the organization's name.</comment>
+  </data>
   <data name="SetRootBudgets_PageTitle" xml:space="preserve">
     <value>Set Root Level Budgets</value>
     <comment>Displayed above main content</comment>
+  </data>
+  <data name="SetRootBudgets_SetNewBudgets" xml:space="preserve">
+    <value>Set New Budgets</value>
+    <comment>Text on submit button</comment>
   </data>
   <data name="UploadBankFiles_BankScreenshot" xml:space="preserve">
     <value>Bank Screenshot</value>
