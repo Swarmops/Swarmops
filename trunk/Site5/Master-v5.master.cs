@@ -58,6 +58,7 @@ namespace Activizr
 
             _viewingPerson = Person.FromIdentity(currentUserId);
             _authority = _viewingPerson.GetAuthority();
+            _organization = Organization.FromIdentity(currentOrganizationId);
 
             RadMenu mainMenu = FindControl("MainMenu") as RadMenu;
 
@@ -86,6 +87,7 @@ namespace Activizr
         }
 
         private Person _viewingPerson;
+        private Organization _organization;
         private Authority _authority;
         private static string _buildIdentity;
 
@@ -150,7 +152,8 @@ namespace Activizr
                 string url = item.NavigateUrl;
                 string dynamic = item.Attributes["Dynamic"];
 
-                item.Visible = itemUserLevel <= 4;
+                item.Visible = itemUserLevel <= 4;   // TODO: Replace with user's actual level
+                bool enabled = topLevel;
 
                 if (item.IsSeparator)
                 {
@@ -159,14 +162,33 @@ namespace Activizr
 
                 if (dynamic == "true")
                 {
-                    item.Text = GetBuildIdentity(); // only dynamically constructed atm -- if more, switch on "template" field
+                    switch (item.Attributes["Template"])
+                    {
+                        case "Build#":
+                            item.Text = GetBuildIdentity(); // only dynamically constructed atm -- if more, switch on "template" field
+                            break;
+                        case "CloseLedgers":
+                            int year = DateTime.Today.Year;
+
+                            if (_organization.Parameters.EconomyEnabled && _organization.Parameters.FiscalBooksClosedUntilYear < year - 1)
+                            {
+                                item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CloseBooks, year);
+                            }
+                            else
+                            {
+                                enabled = false;  // maybe even invisible?
+                                url = string.Empty;
+                                item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CannotCloseBooks, year);
+                            }
+                            break;
+                        default:
+                            throw new InvalidOperationException("No case for dynamic menu item" + item.Attributes["Template"]);
+                    }
                 }
                 else
                 {
                     item.Text = GetGlobalResourceObject("Menu5", resourceKey).ToString();
                 }
-
-                bool enabled = topLevel;
 
                 if (item.Visible)
                 {
