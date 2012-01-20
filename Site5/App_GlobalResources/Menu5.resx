@@ -246,6 +246,12 @@
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Balance Sheet</value>
   </data>
+  <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
+    <value>Can't Close Ledgers For {0}</value>
+  </data>
+  <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
+    <value>Close Ledgers For {0}</value>
+  </data>
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>Debug Ledger, Accounts</value>
   </data>
