@@ -76,8 +76,8 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
                                                                                           closingYear.ToString() + " " +
                                                                                           account.Name);
 
-                    transactionNewYear.AddRow(account, (double) -carryOverCents, null);
-                    transactionNewYear.AddRow(tempAccount, (double) carryOverCents, null);
+                    transactionNewYear.AddRow(account, -carryOverCents, null);
+                    transactionNewYear.AddRow(tempAccount, carryOverCents, null);
                 }
             }
         }
