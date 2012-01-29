@@ -169,16 +169,17 @@ namespace Activizr
                             break;
                         case "CloseLedgers":
                             int year = DateTime.Today.Year;
+                            int booksClosedUntil = _organization.Parameters.FiscalBooksClosedUntilYear;
 
-                            if (_organization.Parameters.EconomyEnabled && _organization.Parameters.FiscalBooksClosedUntilYear < year - 1)
+                            if (_organization.Parameters.EconomyEnabled && booksClosedUntil < year - 1)
                             {
-                                item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CloseBooks, year);
+                                item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CloseBooks, booksClosedUntil + 1);
                             }
                             else
                             {
                                 enabled = false;  // maybe even invisible?
                                 url = string.Empty;
-                                item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CannotCloseBooks, year);
+                                item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CannotCloseBooks, booksClosedUntil + 1);
                             }
                             break;
                         default:
