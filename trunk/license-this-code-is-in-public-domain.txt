@@ -6,7 +6,7 @@ Where the concept "public domain" does not exist, the copyright license Creative
 
 This means that anybody may use this code for absolutely anything. The copyright monopoly does not affect it at all.
 
-Anybody submitting new code or imagery to the project agrees to put their additions in the public domain.
+Anybody submitting new code, imagery, or other components to the project agrees to put their additions in the public domain. If you're adding a third party component, do flag it as external.
 
 
 IMPORTANT EXCEPTIONS are all images and the Telerik packages found in the Bin folder of the site project. These may not be used in a deployment of this code unless a license is purchased. Work is ongoing to replace these commercial packages with entirely monopoly-free alternatives.
