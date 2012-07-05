@@ -11,6 +11,6 @@ Anybody submitting new code, imagery, or other components to the project agrees 
 
 IMPORTANT EXCEPTIONS are all images and the Telerik packages found in the Bin folder of the site project. These may not be used in a deployment of this code unless a license is purchased. Work is ongoing to replace these commercial packages with entirely monopoly-free alternatives.
 
-The Telerik package, in particular, is locked to this application. It may be distributed only in this context.
+The Telerik.Web.UI.dll package, in particular, is locked to this application. It may be distributed only in this context.
 
 
