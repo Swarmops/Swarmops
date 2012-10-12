@@ -61,6 +61,10 @@ public class PageV5Base : System.Web.UI.Page
 
     protected override void OnPreInit(EventArgs e)
     {
+        // Unlock Telerik
+
+        this.Application["Telerik.Web.UI.Key"] = "Activizr";
+
         // Localization
 
         // Set default culture (English, United States, but that doesn't work so fake it to GB)

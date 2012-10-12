@@ -40,11 +40,19 @@ namespace Activizr.Database
                     {
                         string objectOptionalDataTypeString = reader.GetString(2);
                         string data = reader.GetString(3);
-                        ObjectOptionalDataType objectOptionalDataType =
-                            (ObjectOptionalDataType)
-                            Enum.Parse(typeof(ObjectOptionalDataType), objectOptionalDataTypeString);
 
-                        initialData[objectOptionalDataType] = data;
+                        try 
+                        {
+                            ObjectOptionalDataType objectOptionalDataType =
+                                (ObjectOptionalDataType)
+                                Enum.Parse(typeof(ObjectOptionalDataType), objectOptionalDataTypeString);
+
+                            initialData[objectOptionalDataType] = data;
+                        }
+                        catch (Exception)
+                        {
+                            // Ignore unknown enums at this point - too many disconnects between v4 and v5  -Rick
+                        }
                     }
 
                     return new BasicObjectOptionalData(objectType, objectId, initialData);
