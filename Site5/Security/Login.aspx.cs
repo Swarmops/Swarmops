@@ -14,6 +14,10 @@ namespace Activizr.Pages.Security
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Unlock Telerik
+
+            this.Application["Telerik.Web.UI.Key"] = "Activizr";
+
             this.LabelLoginFailed.Visible = false;
             this.TextLogin.Focus();
 
