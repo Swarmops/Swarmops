@@ -25,11 +25,19 @@ namespace Activizr.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(new BasicPermission(
-                                        (RoleType)(Enum.Parse(typeof(RoleType), reader.GetString(0), true)),
-                                        (Permission)(Enum.Parse(typeof(Permission), reader.GetString(1), true))
-                                        )
-                                    );
+                        try
+                        {
+                            result.Add(new BasicPermission(
+                                            (RoleType)(Enum.Parse(typeof(RoleType), reader.GetString(0), true)),
+                                            (Permission)(Enum.Parse(typeof(Permission), reader.GetString(1), true))
+                                            )
+                                        );
+                        }
+                        catch (ArgumentException)
+                        {
+                            // Ignore if the enums are not found. v4/v5 conflict.
+                            // TODO: alert about this.
+                        }
                     }
                 }
             }
