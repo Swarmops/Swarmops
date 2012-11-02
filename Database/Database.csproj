@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
     <Compile Include="Database-Currencies.cs" />
     <Compile Include="Database-Meetings.cs" />
     <Compile Include="Database-CommunicationTurnarounds.cs" />
@@ -115,10 +116,19 @@
     <Compile Include="Database-Volunteers.cs" />
     <Compile Include="Database-Permissions.cs" />
     <Compile Include="Database-InternalPollVotes.cs" />
+    <Compile Include="DatabaseConnect.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>DatabaseConnect.settings</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Database-Constructors.cs" />
     <Compile Include="Database-Newsletters.cs" />
     <None Include="app.config" />
+    <None Include="DatabaseConnect.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>DatabaseConnect.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Basic\Basic.csproj">
