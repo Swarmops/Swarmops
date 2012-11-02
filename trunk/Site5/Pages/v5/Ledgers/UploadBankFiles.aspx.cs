@@ -849,8 +849,9 @@ namespace Activizr.Site.Pages.Ledgers
             }
 
             string[] lines = contents.Split('\n');
-            if (lines[0].Trim() != "Date\t Time\t Time Zone\t Name\t Type\t Status\t Currency\t Gross\t Fee\t Net\t From Email Address\t To Email Address\t Transaction ID\t Counterparty Status\t Address Status\t Item Title\t Item ID\t Shipping and Handling Amount\t Insurance Amount\t Sales Tax\t Option 1 Name\t Option 1 Value\t Option 2 Name\t Option 2 Value\t Auction Site\t Buyer ID\t Item URL\t Closing Date\t Escrow Id\t Invoice Id\t Reference Txn ID\t Invoice Number\t Custom Number\t Receipt ID\t Balance\t Address Line 1\t Address Line 2/District/Neighborhood\t Town/City\t State/Province/Region/County/Territory/Prefecture/Republic\t Zip/Postal Code\t Country\t Contact Phone Number")
-            //                       0      1      2           3      4      5        6          7       8     9     10                   11                 12               13                    14               15           16        17                             18                 19          20              21               22              23               24             25         26         27             28          29           30                 31               32              33           34        35               36                                     37          38                                                           39                          40
+            string formatVerifier = lines[0].Trim();
+            if (formatVerifier != "Date\t Time\t Time Zone\t Name\t Type\t Status\t Currency\t Gross\t Fee\t Net\t From Email Address\t To Email Address\t Transaction ID\t Counterparty Status\t Address Status\t Item Title\t Item ID\t Shipping and Handling Amount\t Insurance Amount\t Sales Tax\t Option 1 Name\t Option 1 Value\t Option 2 Name\t Option 2 Value\t Auction Site\t Buyer ID\t Item URL\t Closing Date\t Escrow Id\t Invoice Id\t Reference Txn ID\t Invoice Number\t Custom Number\t Receipt ID\t Balance\t Address Line 1\t Address Line 2/District/Neighborhood\t Town/City\t State/Province/Region/County/Territory/Prefecture/Republic\t Zip/Postal Code\t Country\t Contact Phone Number")
+            //                     0      1      2           3      4      5        6          7       8     9     10                   11                 12               13                    14               15           16        17                             18                 19          20              21               22              23               24             25         26         27             28          29           30                 31               32              33           34        35               36                                     37          38                                                           39                          40
             {
                 throw new ArgumentException("Unable to parse");
             }
@@ -876,7 +877,7 @@ namespace Activizr.Site.Pages.Ledgers
 
                 if (result.CurrentBalanceCents == 0)
                 {
-                    result.CurrentBalanceCents = Int64.Parse(StripQuotes(parts[34].Replace(".","").Replace(",","")), CultureInfo.InvariantCulture);
+                    result.CurrentBalanceCents = Int64.Parse(StripQuotes(parts[34].Replace(".", "").Replace(",", "").Replace(" ", "")), CultureInfo.InvariantCulture);
                 }
 
                 ImportedBankRow row = new ImportedBankRow();
@@ -884,20 +885,29 @@ namespace Activizr.Site.Pages.Ledgers
                 row.SuppliedTransactionId = StripQuotes(parts[12]);
                 row.Comment = StripQuotes(parts[4]);
                 row.DateTime = DateTime.Parse(StripQuotes(parts[0]) + " " + StripQuotes(parts[1]), CultureInfo.InvariantCulture);
-                row.AmountCentsGross = Int64.Parse(StripQuotes(parts[7]).Replace(".", "").Replace(",", ""));
-                row.FeeCents = Int64.Parse(StripQuotes(parts[8]).Replace(".", "").Replace(",", ""), CultureInfo.InvariantCulture);
-                row.AmountCentsNet = Int64.Parse(StripQuotes(parts[9]).Replace(".", "").Replace(",", ""));
+                row.AmountCentsGross = Int64.Parse(StripQuotes(parts[7]).Replace(".", "").Replace(",", "").Replace(" ", ""));
+                row.FeeCents = Int64.Parse(StripQuotes(parts[8]).Replace(".", "").Replace(",", "").Replace(" ", ""), CultureInfo.InvariantCulture);
+                row.AmountCentsNet = Int64.Parse(StripQuotes(parts[9]).Replace(".", "").Replace(",", "").Replace(" ", ""));
 
                 // Adjust for timezone -- necessary for Paypal and other int'l services
 
                 string timeZoneString = StripQuotes(parts[2]);
 
-                if (timeZoneString != "PST" && timeZoneString != "PDT")  // this is cheating slightly as DSTs do not coincide
+                if (timeZoneString.Length < 3+1+2+1+2)
                 {
-                    throw new ArgumentException("Paypal import files should have time zone PST");
+                    throw new ArgumentException("Paypal import files should have time zones on format \"GMT+hh:mm\"");
                 }
 
-                row.DateTime = row.DateTime.AddHours(8).ToLocalTime();
+                if (!timeZoneString.StartsWith("GMT") && !timeZoneString.StartsWith("UTC"))
+                {
+                    throw new ArgumentException("Paypal import files should have time zones on format \"GMT+hh:mm\"");
+                }
+
+                int timeSign = (timeZoneString[3] == '-' ? -1 : 1);
+                int hourDiff = int.Parse(timeZoneString.Substring(4, 2)) * timeSign;
+                int minuteDiff = int.Parse(timeZoneString.Substring(7, 2))*timeSign;
+
+                row.DateTime = row.DateTime.AddHours(-hourDiff).AddMinutes(-minuteDiff).ToLocalTime();
 
                 rows.Add(row);
             }
