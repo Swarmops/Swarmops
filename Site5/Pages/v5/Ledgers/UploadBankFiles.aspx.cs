@@ -893,19 +893,14 @@ namespace Activizr.Site.Pages.Ledgers
 
                 string timeZoneString = StripQuotes(parts[2]);
 
-                if (timeZoneString.Length < 3+1+2+1+2)
-                {
-                    throw new ArgumentException("Paypal import files should have time zones on format \"GMT+hh:mm\"");
-                }
-
-                if (!timeZoneString.StartsWith("GMT") && !timeZoneString.StartsWith("UTC"))
+                if (timeZoneString.Length < 3+1+2+1+2 || (!timeZoneString.StartsWith("GMT") && !timeZoneString.StartsWith("UTC")))
                 {
                     throw new ArgumentException("Paypal import files should have time zones on format \"GMT+hh:mm\"");
                 }
 
                 int timeSign = (timeZoneString[3] == '-' ? -1 : 1);
                 int hourDiff = int.Parse(timeZoneString.Substring(4, 2)) * timeSign;
-                int minuteDiff = int.Parse(timeZoneString.Substring(7, 2))*timeSign;
+                int minuteDiff = int.Parse(timeZoneString.Substring(7, 2)) * timeSign;
 
                 row.DateTime = row.DateTime.AddHours(-hourDiff).AddMinutes(-minuteDiff).ToLocalTime();
 
