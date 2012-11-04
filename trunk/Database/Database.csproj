@@ -104,6 +104,7 @@
     <Compile Include="Database-PayrollAdjustments.cs" />
     <Compile Include="Database-People.cs" />
     <Compile Include="Database-PirateWebLog.cs" />
+    <Compile Include="Database-PostalCodes.cs" />
     <Compile Include="Database-PostalCodesCities.cs" />
     <Compile Include="Database-Refunds.cs" />
     <Compile Include="Database-Reporters.cs" />

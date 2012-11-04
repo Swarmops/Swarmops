@@ -61,6 +61,7 @@
     <Compile Include="Types\BasicExceptionLog.cs" />
     <Compile Include="Types\BasicExternalActivity.cs" />
     <Compile Include="Types\BasicFinancialValidation.cs" />
+    <Compile Include="Types\BasicPostalCode.cs" />
     <Compile Include="Types\Governance\BasicMeeting.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Diagnostics\Logging.cs" />
