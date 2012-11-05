@@ -20,7 +20,7 @@ namespace Activizr.Database
         {
             int countryId = reader.GetInt32(0);
             string name = reader.GetString(1);
-            string code = reader.GetString(2);
+            string code = reader.GetString(2).ToUpperInvariant();
             string culture = reader.GetString(3);
             int geographyId = reader.GetInt32(4);
 
@@ -39,7 +39,7 @@ namespace Activizr.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + countryFieldSequence + " WHERE Code='" + countryCode.Replace("'", "''") + "'",
+                    GetDbCommand("SELECT " + countryFieldSequence + " WHERE Code='" + countryCode.ToUpperInvariant().Replace("'", "''") + "'",
                                  connection);
 
                 using (DbDataReader reader = command.ExecuteReader())

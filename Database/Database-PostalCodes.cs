@@ -14,7 +14,7 @@ namespace Activizr.Database
         #region Field reading code
 
         private const string postalCodeFieldSequence =
-            " PostalCodes.PostalCode,Cities.CityName,Countries.CountryCode " +
+            " PostalCodes.PostalCode,Cities.CityName,Countries.Code AS CountryCode " +
             " FROM PostalCodes " +
             " JOIN Cities ON (PostalCodes.CityId=Cities.CityId) " +
             " JOIN Countries ON (PostalCodes.CountryId=Countries.CountryId) ";
@@ -42,7 +42,7 @@ namespace Activizr.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + postalCodeFieldSequence + "WHERE Countries.CountryCode='" + countryCode.Replace("'", "''") + "';", connection);
+                        "SELECT" + postalCodeFieldSequence + "WHERE Countries.Code='" + countryCode.Replace("'", "''") + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
