@@ -138,7 +138,7 @@ namespace Activizr.Database
         }
 
 
-        public BasicCity GetCityByName (string cityName, int countryId)
+        public BasicCity GetCityByName(string cityName, int countryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -158,8 +158,29 @@ namespace Activizr.Database
                 }
             }
         }
-        
-        public BasicCity[] GetCitiesByName (string cityName, int countryId)
+
+        public BasicCity GetCityByName(string cityName, string countryCode)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace("'", "''") + "' AND CountryCode='" + countryCode.ToUpperInvariant().Replace("'", "''") + "'",
+                                                 connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return ReadCityFromDataReader(reader);
+                    }
+
+                    throw new ArgumentException("No such CityName: " + cityName);
+                }
+            }
+        }
+
+        public BasicCity[] GetCitiesByName(string cityName, int countryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -180,6 +201,31 @@ namespace Activizr.Database
                         return resList.ToArray();
                     }
                     throw new ArgumentException("No such CityName: " + cityName);
+                }
+            }
+        }
+
+        public BasicCity[] GetCitiesByCountry(string countryCode)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CountryCode='" + countryCode.ToUpperInvariant().Replace("'", "''") + "'",
+                                                 connection);
+                List<BasicCity> result = new List<BasicCity>();
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result.Add(ReadCityFromDataReader(reader));
+                        while (reader.Read())
+                        {
+                            result.Add(ReadCityFromDataReader(reader));
+                        }
+                        return result.ToArray();
+                    }
+                    throw new ArgumentException("Cities not in place yet for country: " + countryCode);
                 }
             }
         }
