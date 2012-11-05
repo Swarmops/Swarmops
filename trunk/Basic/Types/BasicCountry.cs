@@ -11,21 +11,21 @@ namespace Activizr.Basic.Types
     {
         public BasicCountry (int countryId, string name, string code)
         {
-            this.countryId = countryId;
-            this.name = name;
-            this.code = code;
+            this.CountryId = countryId;
+            this.Name = name;
+            this.Code = code;
         }
 
         public BasicCountry (int countryId, string name, string code, string defaultCulture)
             : this(countryId, name, code)
         {
-            this.culture = defaultCulture;
+            this.Culture = defaultCulture;
         }
 
-        public BasicCountry (int countryId, string name, string code, string defaultCulture, int geoId)
+        public BasicCountry (int countryId, string name, string code, string defaultCulture, int geographyId)
             : this(countryId, name, code, defaultCulture)
         {
-            this.geographyId = geoId;
+            this.GeographyId = geographyId;
         }
 
         public BasicCountry (BasicCountry original)
@@ -39,32 +39,11 @@ namespace Activizr.Basic.Types
             // this does not initialize the Basic Country, but exists to enable serialization.
         }
 
-        public int CountryId
-        {
-            get { return countryId; }
-        }
-
-        public string Name
-        {
-            get { return this.name; }
-        }
-
-        public string Code
-        {
-            get { return this.code; }
-        }
-
-        public string Culture
-        {
-            get { return this.culture; }
-        }
-
-        public int GeographyId
-        {
-            get { return this.geographyId; }
-        }
-
-
+        public int CountryId { get; private set; }
+        public string Name { get; protected set; }
+        public string Code { get; protected set; }
+        public string Culture { get; protected set; }
+        public int GeographyId { get; protected set; }
         public int PostalCodeLength
         {
             get
@@ -84,12 +63,6 @@ namespace Activizr.Basic.Types
             }
         }
 
-
-        private int countryId;
-        private string name;
-        private string code;
-        private string culture;
-        private int geographyId;
 
         public int CurrencyId
         {
