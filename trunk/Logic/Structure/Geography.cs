@@ -113,11 +113,13 @@ namespace Activizr.Logic.Structure
             get { return Children.Identities; }
         }
 
+        [NonSerialized]  // interface cannot be serialized
         public ITreeNodeObject ParentObject
         {
             get { return this.Parent; }
         }
 
+        [NonSerialized]  // interface cannot be serialized
         public List<ITreeNodeObject> ChildObjects
         {
             get
