@@ -4,8 +4,6 @@ using System;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
-using Activizr.Basic.Types;
-using Activizr.Database;
 using Activizr.Logic.Structure;
 
 [WebService(Namespace = "http://activizr.com/")]
@@ -38,6 +36,21 @@ public class GetGeographyData  : System.Web.Services.WebService {
     }
     
     [WebMethod]
+    public Geographies GetGeographiesFromRoot (int rootId)
+    {
+        return Geography.FromIdentity(rootId).GetTree();
+    }
+    
+    [WebMethod]
+    public Geographies GetGeographiesForCountry (string countryCode)
+    {
+        Country country = Country.FromCode(countryCode);
+        return GetGeographiesFromRoot(country.GeographyId);
+    }
+    
+    /*
+    
+        [WebMethod]
     public BasicGeography[] GetGeographiesFromRoot (int rootId)
     {
         return PirateDb.GetDatabase().GetGeographyTree(rootId);
@@ -49,5 +62,6 @@ public class GetGeographyData  : System.Web.Services.WebService {
         Country country = Country.FromCode(countryCode);
         return PirateDb.GetDatabase().GetGeographyTree(country.GeographyId);
     }
-    
+
+     */
 }

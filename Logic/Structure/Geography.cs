@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Serialization;
 using Activizr.Logic.Cache;
 using Activizr.Logic.Interfaces;
 using Activizr.Basic.Enums;
@@ -113,11 +114,15 @@ namespace Activizr.Logic.Structure
             get { return Children.Identities; }
         }
 
+        [XmlIgnore]  // interface cannot be serialized
+        [SoapIgnore] 
         public ITreeNodeObject ParentObject
         {
             get { return this.Parent; }
         }
 
+        [XmlIgnore] // interface cannot be serialized
+        [SoapIgnore]    
         public List<ITreeNodeObject> ChildObjects
         {
             get
