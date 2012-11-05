@@ -207,11 +207,13 @@ namespace Activizr.Database
 
         public BasicCity[] GetCitiesByCountry(string countryCode)
         {
+            BasicCountry country = GetCountry(countryCode);
+
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CountryCode='" + countryCode.ToUpperInvariant().Replace("'", "''") + "'",
+                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CountryId=" + country.CountryId.ToString(),
                                                  connection);
                 List<BasicCity> result = new List<BasicCity>();
                 using (DbDataReader reader = command.ExecuteReader())
