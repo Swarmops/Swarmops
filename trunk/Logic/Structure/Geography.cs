@@ -104,11 +104,6 @@ namespace Activizr.Logic.Structure
             get { return ParentGeographyId; }
         }
 
-        public new string Name
-        {
-            get { return base.Name; }
-        }
-
         public int[] ChildrenIdentities
         {
             get { return Children.Identities; }
