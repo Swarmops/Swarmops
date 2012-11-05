@@ -30,24 +30,24 @@ namespace Activizr.Basic.Types
         }
 
         /// <summary>
-        /// The database node id.
+        /// The database id of this geography.
         /// </summary>
-        public readonly int GeographyId;
+        public int GeographyId { get; private set; }
 
         /// <summary>
-        /// The database node id of the parent node.
+        /// The database id of the parent geography, for linking in a tree structure.
         /// </summary>
-        public readonly int ParentGeographyId;
+        public int ParentGeographyId { get; protected set; }
 
         /// <summary>
         /// The friendly name of the node (city, county, region, etc).
         /// </summary>
-        public readonly string Name;
+        public string Name { get; protected set; }
 
         /// <summary>
         /// The generation of this node. Used in tree-style listings.
         /// </summary>
-        public readonly int Generation;
+        public int Generation { get; protected set; }
 
         #region IHasIdentity Members
 

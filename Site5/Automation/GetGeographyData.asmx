@@ -35,4 +35,15 @@ public class GetGeographyData  : System.Web.Services.WebService {
         return PostalCodes.ForCountry(countryCode);
     }
     
+    public Geographies GetGeographiesFromRoot (int rootId)
+    {
+        return Geography.FromIdentity(rootId).GetTree();
+    }
+    
+    public Geographies GetGeographiesForCountry (string countryCode)
+    {
+        Country country = Country.FromCode(countryCode);
+        return GetGeographiesFromRoot(country.GeographyId);
+    }
+    
 }
