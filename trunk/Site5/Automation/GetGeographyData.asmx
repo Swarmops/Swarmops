@@ -36,32 +36,15 @@ public class GetGeographyData  : System.Web.Services.WebService {
     }
     
     [WebMethod]
-    public Geographies GetGeographiesFromRoot (int rootId)
+    public Geography GetGeography (int nodeId)
     {
-        return Geography.FromIdentity(rootId).GetTree();
+        return Geography.FromIdentity(nodeId);
     }
     
     [WebMethod]
-    public Geographies GetGeographiesForCountry (string countryCode)
+    public Geography GetGeographyForCountry (string countryCode)
     {
-        Country country = Country.FromCode(countryCode);
-        return GetGeographiesFromRoot(country.GeographyId);
+        return Country.FromCode(countryCode).Geography;
     }
     
-    /*
-    
-        [WebMethod]
-    public BasicGeography[] GetGeographiesFromRoot (int rootId)
-    {
-        return PirateDb.GetDatabase().GetGeographyTree(rootId);
-    }
-    
-    [WebMethod]
-    public BasicGeography[] GetGeographiesForCountry (string countryCode)
-    {
-        Country country = Country.FromCode(countryCode);
-        return PirateDb.GetDatabase().GetGeographyTree(country.GeographyId);
-    }
-
-     */
 }
