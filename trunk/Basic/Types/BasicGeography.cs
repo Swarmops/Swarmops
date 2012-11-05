@@ -29,6 +29,12 @@ namespace Activizr.Basic.Types
         {
         }
 
+        [Obsolete("Do not use this ctor. It is provided to enable serializability.", true)]
+        public BasicGeography()
+        {
+            // provided for serializability - does not initialize fields
+        }
+
         /// <summary>
         /// The database id of this geography.
         /// </summary>
