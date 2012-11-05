@@ -12,6 +12,13 @@ namespace Activizr.Logic.Structure
         {
         }
 
+        // public ctor needed for serialization
+        [Obsolete ("Do not call this function directly. It is intended only for use in serialization.", true)]
+        public City(): base (0, string.Empty, 0, 0)
+        {
+            // this instance is NOT initalized, and intended to be used only in serialization.
+        }
+
 
         public Geography Geography
         {
