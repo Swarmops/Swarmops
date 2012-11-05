@@ -27,30 +27,11 @@ namespace Activizr.Basic.Types
             // this ctor should never be called from code
         }
 
-        private int cityId;
-        private string name;
-        private int countryId;
-        private int geographyId;
+        public int CityId { get; private set; }
+        public string Name { get; protected set; }
+        public int CountryId { get; protected set; }
+        public int GeographyId { get; protected set; }
 
-        public int CityId
-        {
-            get { return this.cityId; }
-        }
-
-        public string Name
-        {
-            get { return this.name; }
-        }
-
-        public int CountryId
-        {
-            get { return this.countryId; }
-        }
-
-        public int GeographyId
-        {
-            get { return this.geographyId; }
-        }
 
         #region IHasIdentity Members
 
