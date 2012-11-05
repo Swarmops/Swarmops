@@ -10,14 +10,14 @@ namespace Activizr.Basic.Types
     {
         public BasicCity (int cityId, string name, int countryId, int geographyId)
         {
-            this.cityId = cityId;
-            this.name = name;
-            this.countryId = countryId;
-            this.geographyId = geographyId;
+            this.CityId = cityId;
+            this.Name = name;
+            this.CountryId = countryId;
+            this.GeographyId = geographyId;
         }
 
         public BasicCity (BasicCity original)
-            : this(original.cityId, original.name, original.countryId, original.geographyId)
+            : this(original.CityId, original.Name, original.CountryId, original.GeographyId)
         {
         }
 
@@ -37,7 +37,7 @@ namespace Activizr.Basic.Types
 
         public int Identity
         {
-            get { return this.cityId; }
+            get { return this.CityId; }
         }
 
         #endregion
