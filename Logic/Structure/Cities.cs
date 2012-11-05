@@ -40,5 +40,9 @@ namespace Activizr.Logic.Structure
             return FromArray(PirateDb.GetDatabase().GetCitiesByName(cityName, countryId));
         }
 
+        public static Cities ForCountry (string countryCode)
+        {
+            return FromArray(PirateDb.GetDatabase().GetCitiesByCountry (countryCode));
+        }
     }
 }

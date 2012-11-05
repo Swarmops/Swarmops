@@ -34,7 +34,7 @@ namespace Activizr.Database
 
         #region Record reading - SELECT statements
 
-        public BasicPostalCode[] GetPostalCodes(string countryCode)
+        public BasicPostalCode[] GetPostalCodesForCountry (string countryCode)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {

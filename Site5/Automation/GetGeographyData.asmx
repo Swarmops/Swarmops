@@ -23,6 +23,16 @@ public class GetGeographyData  : System.Web.Services.WebService {
         return Countries.GetInUse();
     }
     
+    [WebMethod]
+    public Cities GetCitiesForCountry (string countryCode)
+    {
+        return Cities.ForCountry(countryCode);
+    }
     
+    [WebMethod]
+    public PostalCodes GetPostalCodesForCountry (string countryCode)
+    {
+        return PostalCodes.ForCountry(countryCode);
+    }
     
 }

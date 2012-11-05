@@ -196,6 +196,8 @@
     <Compile Include="Governance\MotionAmendments.cs" />
     <Compile Include="Governance\Motions.cs" />
     <Compile Include="Structure\OrganizationParameters.cs" />
+    <Compile Include="Structure\PostalCode.cs" />
+    <Compile Include="Structure\PostalCodes.cs" />
     <Compile Include="Structure\UptakeGeography.cs" />
     <Compile Include="Support\ActivistEvents.cs" />
     <Compile Include="Support\Imagery.cs" />
