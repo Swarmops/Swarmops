@@ -19,6 +19,12 @@ namespace Activizr.Basic.Types
         {
         }
 
+        [Obsolete ("Do not call this ctor directly. It exists to enable serialization.", true)]
+        public BasicPostalCode()
+        {
+            // this should never be called from code
+        }
+
         public string PostalCode { get; private set; }  // any whitespace removed
         public string CityName { get; protected set; }
         public string CountryCode { get; protected set; }

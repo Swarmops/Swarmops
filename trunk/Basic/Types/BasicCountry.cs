@@ -33,6 +33,12 @@ namespace Activizr.Basic.Types
         {
         }
 
+        [Obsolete ("Do not call this function directly. It exists to enable serialization.", true)]
+        public BasicCountry()
+        {
+            // this does not initialize the Basic Country, but exists to enable serialization.
+        }
+
         public int CountryId
         {
             get { return countryId; }
