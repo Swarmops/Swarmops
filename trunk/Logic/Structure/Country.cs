@@ -13,6 +13,12 @@ namespace Activizr.Logic.Structure
         {
         }
 
+        [Obsolete ("Do not call this function directly. It is only intended for use in serialization.", true)]
+        public Country(): base (0, string.Empty, string.Empty)
+        {
+            // this ctor does NOT initialize the instance, but is provided to allow for serialization
+        }
+
         public static Country FromBasic (BasicCountry basic)
         {
             return new Country(basic);
