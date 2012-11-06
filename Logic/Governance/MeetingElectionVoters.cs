@@ -25,11 +25,11 @@ namespace Activizr.Logic.Governance
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabase().GetInternalPollVoters(poll));
+                return FromArray(PirateDb.GetDatabaseForReading().GetInternalPollVoters(poll));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabase().GetInternalPollVoters(poll, DatabaseCondition.OpenTrue));
+                return FromArray(PirateDb.GetDatabaseForReading().GetInternalPollVoters(poll, DatabaseCondition.OpenTrue));
             }
         }
 
@@ -40,7 +40,7 @@ namespace Activizr.Logic.Governance
 
         static public MeetingElectionVoters ForPollClosed (MeetingElection poll)
         {
-            return FromArray(PirateDb.GetDatabase().GetInternalPollVoters(poll, DatabaseCondition.OpenFalse));
+            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPollVoters(poll, DatabaseCondition.OpenFalse));
         }
 
     }

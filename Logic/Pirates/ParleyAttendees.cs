@@ -11,7 +11,7 @@ namespace Activizr.Logic.Pirates
     {
         public static ParleyAttendees ForParley (Parley parley)
         {
-            return FromArray(PirateDb.GetDatabase().GetParleyAttendees(parley));
+            return FromArray(PirateDb.GetDatabaseForReading().GetParleyAttendees(parley));
         }
     }
 }

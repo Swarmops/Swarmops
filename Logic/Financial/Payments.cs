@@ -11,7 +11,7 @@ namespace Activizr.Logic.Financial
     {
         public static Payments ForPaymentGroup (PaymentGroup group)
         {
-            return FromArray(PirateDb.GetDatabase().GetPayments(group));
+            return FromArray(PirateDb.GetDatabaseForReading().GetPayments(group));
         }
     }
 }

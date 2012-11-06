@@ -12,12 +12,12 @@ namespace Activizr.Logic.Pirates
     {
         public static ExternalActivities ForOrganization (Organization organization)
         {
-            return FromArray(PirateDb.GetDatabase().GetExternalActivities(organization));
+            return FromArray(PirateDb.GetDatabaseForReading().GetExternalActivities(organization));
         }
 
         public static ExternalActivities ForOrganization (Organization organization, SortOrder sort, int count)
         {
-            return FromArray(PirateDb.GetDatabase().GetExternalActivitiesSorted(sort.ToString(), count, organization));
+            return FromArray(PirateDb.GetDatabaseForReading().GetExternalActivitiesSorted(sort.ToString(), count, organization));
         }
 
         public enum SortOrder

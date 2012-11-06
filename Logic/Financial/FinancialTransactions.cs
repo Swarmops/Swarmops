@@ -18,16 +18,16 @@ namespace Activizr.Logic.Financial
 
         public static FinancialTransactions GetUnbalanced (Organization organization)
         {
-            return FromArray(PirateDb.GetDatabase().GetUnbalancedFinancialTransactions(organization.Identity));
+            return FromArray(PirateDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions(organization.Identity));
         }
 
 
         public static FinancialTransactions GetIncomplete(int organizationId)
         {
             FinancialTransactions unbalanced =
-                FromArray(PirateDb.GetDatabase().GetUnbalancedFinancialTransactions(organizationId));
+                FromArray(PirateDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions(organizationId));
             FinancialTransactions undocumented =
-                FromArray(PirateDb.GetDatabase().GetUndocumentedFinancialTransactions(organizationId));
+                FromArray(PirateDb.GetDatabaseForReading().GetUndocumentedFinancialTransactions(organizationId));
 
             FinancialTransactions allIncomplete = LogicalOr(unbalanced, undocumented);
 
@@ -50,7 +50,7 @@ namespace Activizr.Logic.Financial
         public static FinancialTransactions ForDependentObject (IHasIdentity foreignObject)
         {
             return
-                FromArray(PirateDb.GetDatabase().GetDependentFinancialTransactions(GetDependencyType(foreignObject),
+                FromArray(PirateDb.GetDatabaseForReading().GetDependentFinancialTransactions(GetDependencyType(foreignObject),
                                                                                    foreignObject.Identity));
         }
 

@@ -20,7 +20,7 @@ namespace Activizr.Logic.Governance
 
         public static Meeting FromIdentity (int meetingId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetMeeting(meetingId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetMeeting(meetingId));
         }
     }
 }

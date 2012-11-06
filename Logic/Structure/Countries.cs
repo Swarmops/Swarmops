@@ -9,12 +9,12 @@ namespace Activizr.Logic.Structure
     {
         public static Countries GetAll ()
         {
-            return FromArray(PirateDb.GetDatabase().GetAllCountries());
+            return FromArray(PirateDb.GetDatabaseForReading().GetAllCountries());
         }
 
         public static Countries GetInUse ()
         {
-            return FromArray(PirateDb.GetDatabase().GetCountriesInUse());
+            return FromArray(PirateDb.GetDatabaseForReading().GetCountriesInUse());
         }
 
         public static Countries FromArray (BasicCountry[] basicArray)

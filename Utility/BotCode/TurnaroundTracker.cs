@@ -100,7 +100,7 @@ namespace Activizr.Utility.BotCode
                         dateTimeClosed = turnaround.DateTimeOpened;
                     }
 
-                    PirateDb.GetDatabase().SetCommunicationTurnaroundClosed(Organization.PPSEid, 1, turnaround.CommunicationId, (DateTime) dateTimeClosed, 0);
+                    PirateDb.GetDatabaseForWriting().SetCommunicationTurnaroundClosed(Organization.PPSEid, 1, turnaround.CommunicationId, (DateTime) dateTimeClosed, 0);
                 }
             }
         }

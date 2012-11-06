@@ -53,7 +53,7 @@ namespace Activizr.Logic.Pirates
 
             foreach (Organization org in orgLine)
             {
-                BasicPersonRole[] upwardPersonRoles = PirateDb.GetDatabase().GetRolesForOrganizationGeographies(org.Identity,
+                BasicPersonRole[] upwardPersonRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeographies(org.Identity,
                                                                                                     nodeIds);
 
                 foreach (BasicPersonRole role in upwardPersonRoles)
@@ -102,7 +102,7 @@ namespace Activizr.Logic.Pirates
 
             foreach (Organization org in orgTree)
             {
-                BasicPersonRole[] downwardPersonRoles = PirateDb.GetDatabase().GetRolesForOrganizationGeographies(org.Identity,
+                BasicPersonRole[] downwardPersonRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeographies(org.Identity,
                                                                                                       nodeIds);
 
                 foreach (BasicPersonRole role in downwardPersonRoles)
@@ -144,7 +144,7 @@ namespace Activizr.Logic.Pirates
                 nodeIds = new int[0];
             }
 
-            return PirateDb.GetDatabase().GetRolesForOrganizationsGeographies(orgIds, nodeIds);;
+            return PirateDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(orgIds, nodeIds);;
         }
 
 
@@ -156,7 +156,7 @@ namespace Activizr.Logic.Pirates
 
         public static Roles FromOrganization (int organizationId)
         {
-            BasicPersonRole[] basicPersonRoles = PirateDb.GetDatabase().GetRolesForOrganization (organizationId);
+            BasicPersonRole[] basicPersonRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganization (organizationId);
 
             return FromArray(basicPersonRoles);
         }
@@ -168,7 +168,7 @@ namespace Activizr.Logic.Pirates
 
         public static Person GetLocalLead(int organizationId, int geographyId)
         {
-            BasicPersonRole[] personRoles = PirateDb.GetDatabase().GetRolesForOrganizationGeography(organizationId, geographyId);
+            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId);
 
             foreach (BasicPersonRole role in personRoles)
             {
@@ -183,7 +183,7 @@ namespace Activizr.Logic.Pirates
 
         public static Person GetChairman (Organization organization)
         {
-            BasicPersonRole[] personRoles = PirateDb.GetDatabase().GetRolesForOrganization(organization.Identity);
+            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganization(organization.Identity);
 
             foreach (BasicPersonRole role in personRoles)
             {
@@ -203,7 +203,7 @@ namespace Activizr.Logic.Pirates
 
         public static People GetLocalDeputies(int organizationId, int geographyId)
         {
-            BasicPersonRole[] personRoles = PirateDb.GetDatabase().GetRolesForOrganizationGeography(organizationId, geographyId);
+            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId);
             People result = new People();
 
             foreach (BasicPersonRole role in personRoles)
@@ -224,7 +224,7 @@ namespace Activizr.Logic.Pirates
 
             // Expensive op:
             BasicPersonRole[] basicPersonRoles =
-                PirateDb.GetDatabase().GetRolesForOrganizationsGeographies(organization.GetTree().Identities,
+                PirateDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(organization.GetTree().Identities,
                                                                            geography.GetTree().Identities);
 
             var lookup = new Dictionary<int, bool>();
@@ -248,7 +248,7 @@ namespace Activizr.Logic.Pirates
 
         public static Roles GetAll()
         {
-            return FromArray(PirateDb.GetDatabase().GetRoles());
+            return FromArray(PirateDb.GetDatabaseForReading().GetRoles());
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Activizr.Logic.Financial
             DependentSalariesNet = new Salaries();
             DependentSalariesTax = new Salaries();
 
-            BasicFinancialDependency[] dependencies = PirateDb.GetDatabase().GetPayoutDependencies(this.Identity);
+            BasicFinancialDependency[] dependencies = PirateDb.GetDatabaseForReading().GetPayoutDependencies(this.Identity);
 
             foreach (BasicFinancialDependency dependency in dependencies)
             {
@@ -81,7 +81,7 @@ namespace Activizr.Logic.Financial
 
         public static Payout FromIdentity (int payoutId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetPayout(payoutId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetPayout(payoutId));
         }
 
 
@@ -98,7 +98,7 @@ namespace Activizr.Logic.Financial
             {
                 if (this.Identity != 0)
                 {
-                    PirateDb.GetDatabase().SetPayoutAmount(this.Identity, (Int64)(value * 100));
+                    PirateDb.GetDatabaseForWriting().SetPayoutAmount(this.Identity, (Int64)(value * 100));
                 }
                 base.AmountCents = (Int64)value * 100;
             }
@@ -114,7 +114,7 @@ namespace Activizr.Logic.Financial
             {
                 if (this.Identity != 0)
                 {
-                    PirateDb.GetDatabase().SetPayoutAmount(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetPayoutAmount(this.Identity, value);
                 }
                 base.AmountCents = value;
             }
@@ -130,7 +130,7 @@ namespace Activizr.Logic.Financial
             {
                 if (this.Identity != 0)
                 {
-                    PirateDb.GetDatabase().SetPayoutReference(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetPayoutReference(this.Identity, value);
                 }
                 base.Reference = value;
             }
@@ -149,7 +149,7 @@ namespace Activizr.Logic.Financial
             }
             set
             {
-                PirateDb.GetDatabase().SetPayoutOpen(this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetPayoutOpen(this.Identity, value);
                 base.Open = value;
             }
         }
@@ -211,13 +211,13 @@ namespace Activizr.Logic.Financial
                     referenceString = "Expense Claims " + Formatting.GenerateRangeString(identityList);
                 }
 
-                int payoutId = PirateDb.GetDatabase().CreatePayout(organizationId, bank, account,
+                int payoutId = PirateDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
                                                                    referenceString, amountCents, DateTime.Today.AddDays(1),
                                                                    creator.Identity);
 
                 foreach (int claimId in identityList)
                 {
-                    PirateDb.GetDatabase().CreatePayoutDependency(payoutId, FinancialDependencyType.ExpenseClaim,
+                    PirateDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.ExpenseClaim,
                                                                   claimId);
                 }
 
@@ -236,12 +236,12 @@ namespace Activizr.Logic.Financial
                     expectedPayment = DateTime.Today;
                 }
 
-                int payoutId = PirateDb.GetDatabase().CreatePayout(invoice.OrganizationId, string.Empty, invoice.PayToAccount,
+                int payoutId = PirateDb.GetDatabaseForWriting().CreatePayout(invoice.OrganizationId, string.Empty, invoice.PayToAccount,
                                                                    invoice.Ocr.Length > 0 ? "OCR " + invoice.Ocr : "Ref# " + invoice.InvoiceReference,
                                                                    invoice.AmountCents, expectedPayment,
                                                                    creator.Identity);
 
-                PirateDb.GetDatabase().CreatePayoutDependency(payoutId, FinancialDependencyType.InboundInvoice,
+                PirateDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.InboundInvoice,
                                                               invoice.Identity);
 
                 invoice.Open = false;
@@ -254,12 +254,12 @@ namespace Activizr.Logic.Financial
 
                 Salary salary = Salary.FromIdentity(Int32.Parse(components[0].Substring(1)));
 
-                int payoutId = PirateDb.GetDatabase().CreatePayout(salary.PayrollItem.OrganizationId, salary.PayrollItem.Person.BankName, salary.PayrollItem.Person.BankAccount,
+                int payoutId = PirateDb.GetDatabaseForWriting().CreatePayout(salary.PayrollItem.OrganizationId, salary.PayrollItem.Person.BankName, salary.PayrollItem.Person.BankAccount,
                                                                    "Salary " + salary.PayoutDate.ToString("yyyy-MMM"),
                                                                    salary.NetSalaryCents, salary.PayoutDate,
                                                                    creator.Identity);
 
-                PirateDb.GetDatabase().CreatePayoutDependency(payoutId, FinancialDependencyType.Salary,
+                PirateDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.Salary,
                                                               salary.Identity);
 
                 salary.NetPaid = true;
@@ -305,12 +305,12 @@ namespace Activizr.Logic.Financial
                     referenceString = "Tax for salaries " + Formatting.GenerateRangeString(identityList);
                 }
 
-                int payoutId = PirateDb.GetDatabase().CreatePayout(organization.Identity, "The Tax Man", organization.Parameters.TaxAccount, organization.Parameters.TaxOcr,
+                int payoutId = PirateDb.GetDatabaseForWriting().CreatePayout(organization.Identity, "The Tax Man", organization.Parameters.TaxAccount, organization.Parameters.TaxOcr,
                                                                    amountCents, payDay, creator.Identity);
 
                 foreach (int salaryId in identityList)
                 {
-                    PirateDb.GetDatabase().CreatePayoutDependency(payoutId, FinancialDependencyType.Salary,
+                    PirateDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.Salary,
                                                                   salaryId);
                 }
 
@@ -457,7 +457,7 @@ namespace Activizr.Logic.Financial
 
         public void MigrateDependenciesTo (Payout migrationTarget)
         {
-            PirateDb.GetDatabase().MovePayoutDependencies(this.Identity, migrationTarget.Identity);
+            PirateDb.GetDatabaseForWriting().MovePayoutDependencies(this.Identity, migrationTarget.Identity);
             migrationTarget.RecalculateAmount();
             this.RecalculateAmount();
         }
@@ -502,7 +502,7 @@ namespace Activizr.Logic.Financial
                 salary.TaxPaid = false;
             }
 
-            PirateDb.GetDatabase().ClearPayoutDependencies(this.Identity);
+            PirateDb.GetDatabaseForWriting().ClearPayoutDependencies(this.Identity);
             RecalculateAmount();
             this.Open = false;
         }

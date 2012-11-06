@@ -320,7 +320,7 @@ namespace Activizr.Backend
 
             foreach (BasicAutoMail autoMail in allAutoMails)
             {
-                int id = PirateDb.GetDatabase().SetAutoMail(autoMail);
+                int id = PirateDb.GetDatabaseForWriting().SetAutoMail(autoMail);
 
                 Organization org = null;
 
@@ -556,7 +556,7 @@ namespace Activizr.Backend
             Console.Write("Member count PPSE, Memberships method... ");
             Console.WriteLine(Organization.PPSE.GetMemberships().Count);
             Console.Write("Member count PPSE, direct person count... ");
-            Console.WriteLine(PirateDb.GetDatabase().GetMembersForOrganizations(new int[] {1}).Length);
+            Console.WriteLine(PirateDb.GetDatabaseForReading().GetMembersForOrganizations(new int[] {1}).Length);
 
             Console.Write("Newsletter recipient count... ");
             Console.WriteLine(People.FromNewsletterFeed(NewsletterFeed.TypeID.ChairmanBlog).Count);
@@ -566,7 +566,7 @@ namespace Activizr.Backend
             Console.Write("Membership count UPSE, count method... ");
             Console.WriteLine(Organization.FromIdentity(Organization.UPSEid).GetTree().GetMembershipCount());
             Console.Write("Member count UPSE, direct person count... ");
-            Console.WriteLine(PirateDb.GetDatabase().GetMembersForOrganizations(Organization.FromIdentity(Organization.UPSEid).GetTree().Identities).Length);
+            Console.WriteLine(PirateDb.GetDatabaseForReading().GetMembersForOrganizations(Organization.FromIdentity(Organization.UPSEid).GetTree().Identities).Length);
 
             Console.Write("Members expiring in next ten days...");
 

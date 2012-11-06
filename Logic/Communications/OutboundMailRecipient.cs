@@ -112,12 +112,12 @@ namespace Activizr.Logic.Communications
 
         public static void Create (int outboundMailId, int personId, bool asOfficer, int personType)
         {
-            PirateDb.GetDatabase().CreateOutboundMailRecipient(outboundMailId, personId, asOfficer, personType);
+            PirateDb.GetDatabaseForWriting().CreateOutboundMailRecipient(outboundMailId, personId, asOfficer, personType);
         }
 
         public void Delete ()
         {
-            PirateDb.GetDatabase().DeleteOutboundMailRecipient(Identity);
+            PirateDb.GetDatabaseForWriting().DeleteOutboundMailRecipient(Identity);
         }
     }
 }

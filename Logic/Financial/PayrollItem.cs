@@ -22,7 +22,7 @@ namespace Activizr.Logic.Financial
 
         public static PayrollItem FromIdentity (int payrollItemId)
         {
-            return FromBasic (PirateDb.GetDatabase().GetPayrollItem(payrollItemId));
+            return FromBasic (PirateDb.GetDatabaseForReading().GetPayrollItem(payrollItemId));
         }
 
 

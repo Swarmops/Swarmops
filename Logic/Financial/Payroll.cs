@@ -29,7 +29,7 @@ namespace Activizr.Logic.Financial
         /// <returns>The payroll.</returns>
         public static Payroll ForOrganization (Organization organization, bool includeClosed)
         {
-            return FromArray(PirateDb.GetDatabase().GetPayroll(organization, 
+            return FromArray(PirateDb.GetDatabaseForReading().GetPayroll(organization, 
                 includeClosed? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
 
@@ -51,7 +51,7 @@ namespace Activizr.Logic.Financial
         /// <returns>The payroll.</returns>
         public static Payroll GetAll(bool includeClosed)
         {
-            return FromArray(PirateDb.GetDatabase().GetPayroll(includeClosed? DatabaseCondition.None : DatabaseCondition.OpenTrue));
+            return FromArray(PirateDb.GetDatabaseForReading().GetPayroll(includeClosed? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
     }
 }

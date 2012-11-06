@@ -16,7 +16,7 @@ namespace Activizr.Logic.Financial
             FinancialAccount budget, string supplier, string payToAccount, string ocr, 
             string invoiceReference, Person creatingPerson)
         {
-            InboundInvoice newInvoice = FromIdentity(PirateDb.GetDatabase().
+            InboundInvoice newInvoice = FromIdentity(PirateDb.GetDatabaseForWriting().
                 CreateInboundInvoice(organization.Identity, dueDate, budget.Identity,
                     supplier, payToAccount, ocr,
                     invoiceReference, amountCents, creatingPerson.Identity));
@@ -49,7 +49,7 @@ namespace Activizr.Logic.Financial
 
         public static InboundInvoice FromIdentity (int inboundInvoiceId)
         {
-            return new InboundInvoice(PirateDb.GetDatabase().GetInboundInvoice(inboundInvoiceId));
+            return new InboundInvoice(PirateDb.GetDatabaseForReading().GetInboundInvoice(inboundInvoiceId));
         }
 
         public FinancialAccount Budget
@@ -80,7 +80,7 @@ namespace Activizr.Logic.Financial
             {
                 if (base.Open != value)
                 {
-                    PirateDb.GetDatabase().SetInboundInvoiceOpen(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetInboundInvoiceOpen(this.Identity, value);
                     base.Open = value;
                 }
             }
@@ -108,7 +108,7 @@ namespace Activizr.Logic.Financial
             {
                 if (value != base.DueDate)
                 {
-                    PirateDb.GetDatabase().SetInboundInvoiceDueDate(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetInboundInvoiceDueDate(this.Identity, value);
                     base.DueDate = value;
                 }
             }
@@ -139,7 +139,7 @@ namespace Activizr.Logic.Financial
         public void SetBudget (FinancialAccount budget, Person settingPerson)
         {
             base.BudgetId = budget.Identity;
-            PirateDb.GetDatabase().SetInboundInvoiceBudget(this.Identity, budget.Identity);
+            PirateDb.GetDatabaseForWriting().SetInboundInvoiceBudget(this.Identity, budget.Identity);
             UpdateTransaction(settingPerson);
         }
 
@@ -147,7 +147,7 @@ namespace Activizr.Logic.Financial
         public void SetAmountCents (Int64 amountCents, Person settingPerson)
         {
             base.AmountCents = amountCents;
-            PirateDb.GetDatabase().SetInboundInvoiceAmount(this.Identity, amountCents);
+            PirateDb.GetDatabaseForWriting().SetInboundInvoiceAmount(this.Identity, amountCents);
             UpdateTransaction(settingPerson);
         }
 
@@ -181,8 +181,8 @@ namespace Activizr.Logic.Financial
 
         public void Attest(Person attester)
         {
-            PirateDb.GetDatabase().SetInboundInvoiceAttested(this.Identity, true);
-            PirateDb.GetDatabase().CreateFinancialValidation(FinancialValidationType.Attestation,
+            PirateDb.GetDatabaseForWriting().SetInboundInvoiceAttested(this.Identity, true);
+            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
                                                              FinancialDependencyType.InboundInvoice, this.Identity,
                                                              DateTime.Now, attester.Identity, (double) this.Amount);
             base.Attested = true;
@@ -190,8 +190,8 @@ namespace Activizr.Logic.Financial
 
         public void Deattest(Person deattester)
         {
-            PirateDb.GetDatabase().SetInboundInvoiceAttested(this.Identity, false);
-            PirateDb.GetDatabase().CreateFinancialValidation(FinancialValidationType.Deattestation,
+            PirateDb.GetDatabaseForWriting().SetInboundInvoiceAttested(this.Identity, false);
+            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
                                                              FinancialDependencyType.InboundInvoice, this.Identity,
                                                              DateTime.Now, deattester.Identity, (double) this.Amount);
             base.Attested = false;

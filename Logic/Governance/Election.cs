@@ -45,13 +45,13 @@ namespace Activizr.Logic.Governance
         public People GetDocumentedCandidates (Organization organization)
         {
             return
-                People.FromIdentities(PirateDb.GetDatabase().GetDocumentedCandidates(this.Identity,
+                People.FromIdentities(PirateDb.GetDatabaseForReading().GetDocumentedCandidates(this.Identity,
                                                                                      organization.Identity));
         }
 
         public void SetCandidateDocumented (Organization organization, Person candidate)
         {
-            PirateDb.GetDatabase().SetCandidateDocumentationReceived(this.Identity, organization.Identity, candidate.Identity);
+            PirateDb.GetDatabaseForWriting().SetCandidateDocumentationReceived(this.Identity, organization.Identity, candidate.Identity);
         }
 
         public static Election September2010 { get { return FromIdentity(3); } }

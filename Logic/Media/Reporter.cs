@@ -15,11 +15,11 @@ namespace Activizr.Logic.Media
 
         public static Reporter Create (string name, string email, string[] categories)
         {
-            Reporter reporter = FromIdentity(PirateDb.GetDatabase().CreateReporter(name, email));
+            Reporter reporter = FromIdentity(PirateDb.GetDatabaseForWriting().CreateReporter(name, email));
 
             foreach (string category in categories)
             {
-                PirateDb.GetDatabase().CreateReporterMediaCategory(reporter.Identity, category);
+                PirateDb.GetDatabaseForWriting().CreateReporterMediaCategory(reporter.Identity, category);
             }
 
             return reporter;
@@ -28,7 +28,7 @@ namespace Activizr.Logic.Media
 
         public void Delete()
         {
-            PirateDb.GetDatabase().DeleteReporter(this.Identity);
+            PirateDb.GetDatabaseForWriting().DeleteReporter(this.Identity);
 
             // After this operation, the object is no longer valid.
         }
@@ -40,7 +40,7 @@ namespace Activizr.Logic.Media
             {
                 if (MediaCategoryIds == null)
                 {
-                    MediaCategoryIds = PirateDb.GetDatabase().GetReporterMediaCategories (Identity);
+                    MediaCategoryIds = PirateDb.GetDatabaseForReading().GetReporterMediaCategories (Identity);
                 }
 
                 if (this.mediaCategories == null)
@@ -67,7 +67,7 @@ namespace Activizr.Logic.Media
 
         public static Reporter FromIdentity (int identity)
         {
-            return Reporter.FromBasic(PirateDb.GetDatabase().GetReporter(identity));
+            return Reporter.FromBasic(PirateDb.GetDatabaseForReading().GetReporter(identity));
         }
 
         #region IComparable Members

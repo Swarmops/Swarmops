@@ -27,12 +27,12 @@ namespace Activizr.Logic.Media
 
         public static MediaCategories FromIdentities (int[] identities)
         {
-            return FromArray (PirateDb.GetDatabase().GetMediaCategories (identities));
+            return FromArray (PirateDb.GetDatabaseForReading().GetMediaCategories (identities));
         }
 
         public static MediaCategories GetAll()
         {
-            return FromArray(PirateDb.GetDatabase().GetMediaCategories());
+            return FromArray(PirateDb.GetDatabaseForReading().GetMediaCategories());
         }
     }
 }

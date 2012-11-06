@@ -24,14 +24,14 @@ namespace Activizr.Logic.Communications
         public static PaperLetter Create(int creatingPersonId, int organizationId, string fromName,
             string[] replyAddressLines, DateTime receivedDate, int toPersonId, RoleType toPersonInRole, bool personal)
         {
-            return FromIdentity(PirateDb.GetDatabase().
+            return FromIdentity(PirateDb.GetDatabaseForWriting().
                 CreatePaperLetter(organizationId, fromName, String.Join("|", replyAddressLines),
                                   receivedDate, toPersonId, toPersonInRole, personal, creatingPersonId));
         }
 
         public static PaperLetter FromIdentity (int paperLetterId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetPaperLetter(paperLetterId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetPaperLetter(paperLetterId));
         }
 
         public static PaperLetter FromBasic (BasicPaperLetter basic)

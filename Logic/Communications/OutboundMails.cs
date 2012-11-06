@@ -23,7 +23,7 @@ namespace Activizr.Logic.Communications
 
         public static OutboundMails GetTopUnprocessed (int count)
         {
-            BasicOutboundMail[] basicMails = PirateDb.GetDatabase().GetTopUnprocessedOutboundMail (count);
+            BasicOutboundMail[] basicMails = PirateDb.GetDatabaseForReading().GetTopUnprocessedOutboundMail (count);
 
             return FromArray (basicMails);
         }

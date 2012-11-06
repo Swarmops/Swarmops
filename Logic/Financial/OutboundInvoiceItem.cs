@@ -20,7 +20,7 @@ namespace Activizr.Logic.Financial
 
         public static OutboundInvoiceItem FromIdentity (int outboundInvoiceItemId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetOutboundInvoiceItem(outboundInvoiceItemId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetOutboundInvoiceItem(outboundInvoiceItemId));
         }
 
         public decimal Amount

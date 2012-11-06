@@ -19,7 +19,7 @@ namespace Activizr.Logic.Financial
 
         public static void Create (FinancialValidationType validationType, IHasIdentity foreignObject, Person actingPerson, double amount)
         {
-            PirateDb.GetDatabase().CreateFinancialValidation(validationType, GetDependencyType(foreignObject), foreignObject.Identity,
+            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(validationType, GetDependencyType(foreignObject), foreignObject.Identity,
                 DateTime.Now, actingPerson.Identity, amount);
         }
 
@@ -45,7 +45,7 @@ namespace Activizr.Logic.Financial
         public static FinancialValidations ForObject (IHasIdentity financialDependency)
         {
             return
-                FromArray(PirateDb.GetDatabase().GetFinancialValidations(GetDependencyType(financialDependency),
+                FromArray(PirateDb.GetDatabaseForReading().GetFinancialValidations(GetDependencyType(financialDependency),
                                                                          financialDependency.Identity));
         }
     }

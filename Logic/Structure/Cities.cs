@@ -32,17 +32,17 @@ namespace Activizr.Logic.Structure
 
         public static Cities FromPostalCode (string postalCode, int countryId)
         {
-            return FromArray(PirateDb.GetDatabase().GetCitiesByCountryAndPostalCode(countryId, postalCode));
+            return FromArray(PirateDb.GetDatabaseForReading().GetCitiesByCountryAndPostalCode(countryId, postalCode));
         }
         
         public static Cities FromName (string cityName, int countryId)
         {
-            return FromArray(PirateDb.GetDatabase().GetCitiesByName(cityName, countryId));
+            return FromArray(PirateDb.GetDatabaseForReading().GetCitiesByName(cityName, countryId));
         }
 
         public static Cities ForCountry (string countryCode)
         {
-            return FromArray(PirateDb.GetDatabase().GetCitiesByCountry (countryCode));
+            return FromArray(PirateDb.GetDatabaseForReading().GetCitiesByCountry (countryCode));
         }
     }
 }

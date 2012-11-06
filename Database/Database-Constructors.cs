@@ -15,6 +15,23 @@ namespace Activizr.Database
     /// </summary>
     public partial class PirateDb
     {
+        public static PirateDb GetDatabaseForReading()
+        {
+            return new PirateDb(DatabaseConnect.Default.Read);
+        }
+
+        public static PirateDb GetDatabaseForWriting()
+        {
+            return new PirateDb(DatabaseConnect.Default.Write);
+        }
+
+        public static PirateDb GetDatabaseForAdmin()
+        {
+            return new PirateDb(DatabaseConnect.Default.Admin);
+        }
+
+
+        [Obsolete ("Do not use. Use PirateDb.GetDatabaseForReading(), ...ForWriting() or ...ForAdmin().", true)]
         public static PirateDb GetDatabase()
         {
             // First, check if a previous invocation has put anything in the cashe.
@@ -123,6 +140,7 @@ namespace Activizr.Database
             return db;
         }
 
+        [Obsolete ("Do not use. Use GetDatabaseForAdmin().", true)]
         public static PirateDb GetDatabaseAsAdmin()
         {
             string connectionString = string.Empty;
@@ -204,10 +222,16 @@ namespace Activizr.Database
             return new PirateDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
         }
 
+        [Obsolete ("Do not use. Hardwireto MySQL.")]
         public PirateDb(DbProviderFactory ProviderFactory, string ConnectionString)
         {
             this.ProviderFactory = ProviderFactory;
             this.ConnectionString = ConnectionString;
+        }
+
+        public PirateDb(string connectionString)
+        {
+            this.ConnectionString = connectionString;
         }
 
         // The instance connection details.

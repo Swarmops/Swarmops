@@ -31,32 +31,32 @@ namespace Activizr.Logic.Media
 
         public static string[] GetBlogKeywords()
         {
-            return PirateDb.GetDatabase().GetBlogKeywords();
+            return PirateDb.GetDatabaseForReading().GetBlogKeywords();
         }
 
         public static string[] GetOldMediaKeywords()
         {
-            return PirateDb.GetDatabase().GetOldMediaKeywords();
+            return PirateDb.GetDatabaseForReading().GetOldMediaKeywords();
         }
 
         public static MediaEntries FromBlogKeyword (string keyword, DateTime minimumAge)
         {
-            return FromArray (PirateDb.GetDatabase().GetBlogEntriesForKeyword (keyword, minimumAge));
+            return FromArray (PirateDb.GetDatabaseForReading().GetBlogEntriesForKeyword (keyword, minimumAge));
         }
 
         public static MediaEntries FromOldMediaKeyword (string keyword, DateTime minimumAge)
         {
-            return FromArray (PirateDb.GetDatabase().GetOldMediaEntriesForKeyword (keyword, minimumAge));
+            return FromArray (PirateDb.GetDatabaseForReading().GetOldMediaEntriesForKeyword (keyword, minimumAge));
         }
 
         public static Dictionary<int, bool> GetMediaTypeTable()
         {
-            return PirateDb.GetDatabase().GetMediaTypeTable();
+            return PirateDb.GetDatabaseForReading().GetMediaTypeTable();
         }
 
         public static Dictionary<int, string> GetMediaKeywordTable()
         {
-            return PirateDb.GetDatabase().GetMediaKeywordTable();
+            return PirateDb.GetDatabaseForReading().GetMediaKeywordTable();
         }
 
         public static MediaEntries FromKeywordsSimplified (string[] keywords)
@@ -65,15 +65,15 @@ namespace Activizr.Logic.Media
 
             foreach (string keyword in keywords)
             {
-                keywordIds.Add (PirateDb.GetDatabase().GetMediaKeywordId (keyword));
+                keywordIds.Add (PirateDb.GetDatabaseForReading().GetMediaKeywordId (keyword));
             }
 
-            return FromArray (PirateDb.GetDatabase().GetMediaEntriesForKeywordIdsSimplified (keywordIds.ToArray()));
+            return FromArray (PirateDb.GetDatabaseForReading().GetMediaEntriesForKeywordIdsSimplified (keywordIds.ToArray()));
         }
 
         public static int GetKeywordId (string keyword)
         {
-            return PirateDb.GetDatabase().GetMediaKeywordId (keyword);
+            return PirateDb.GetDatabaseForReading().GetMediaKeywordId (keyword);
         }
     }
 }

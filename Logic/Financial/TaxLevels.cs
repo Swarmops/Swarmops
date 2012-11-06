@@ -16,7 +16,7 @@ namespace Activizr.Logic.Financial
                 return 0.0;  // no tax
             }
 
-            double taxLevel = PirateDb.GetDatabase().GetTaxLevel(country.Identity, taxLevelIdentifier,
+            double taxLevel = PirateDb.GetDatabaseForReading().GetTaxLevel(country.Identity, taxLevelIdentifier,
                                                       (int) Math.Floor(grossSalary));
 
             if (taxLevel < 1.0)
@@ -39,7 +39,7 @@ namespace Activizr.Logic.Financial
 
             // Clear existing tables for countryId
 
-            PirateDb.GetDatabase().DeleteTaxLevels(country.Identity);
+            PirateDb.GetDatabaseForWriting().DeleteTaxLevels(country.Identity);
 
             string[] lines = data.Split('\n');   // if \r\n is used, the \r will be harmlessly at the end of lines
 
@@ -70,7 +70,7 @@ namespace Activizr.Logic.Financial
                         tax = tax / 100.0;
                     }
 
-                    PirateDb.GetDatabase().CreateTaxLevel(country.Identity, taxLevelId, lowerBracket, tax);
+                    PirateDb.GetDatabaseForWriting().CreateTaxLevel(country.Identity, taxLevelId, lowerBracket, tax);
                 }
             }
 

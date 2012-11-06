@@ -11,7 +11,7 @@ namespace Activizr.Logic.Financial
     {
         public static OutboundInvoiceItems ForInvoice (OutboundInvoice invoice)
         {
-            return FromArray(PirateDb.GetDatabase().GetOutboundInvoiceItems(invoice));
+            return FromArray(PirateDb.GetDatabaseForReading().GetOutboundInvoiceItems(invoice));
         }
     }
 }

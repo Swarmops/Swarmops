@@ -14,38 +14,38 @@ namespace Activizr.Logic.Support
             //TODO: organizationId comes in hardcoded as 1 from a lot of places, should probably be changed based on affected person
             // to the party for that country if not swedish.
 
-            return PirateDb.GetDatabase().CreateEvent(eventSource, eventType, actingPersonId, organizationId,
+            return PirateDb.GetDatabaseForWriting().CreateEvent(eventSource, eventType, actingPersonId, organizationId,
                                                        geographyId, affectedPersonId, parameterInt, parameterText);
         }
 
         public static BasicPWEvent[] GetTopUnprocessedEvents ()
         {
-            return PirateDb.GetDatabase().GetTopUnprocessedEvents();
+            return PirateDb.GetDatabaseForReading().GetTopUnprocessedEvents();
         }
 
         public static BasicPWEvent[] ForPerson (int personId)
         {
-            return PirateDb.GetDatabase().GetEventsForPerson(personId);
+            return PirateDb.GetDatabaseForReading().GetEventsForPerson(personId);
         }
 
         public static Dictionary<int, List<BasicPWEvent>> ForPersons (int[] personIds)
         {
-            return PirateDb.GetDatabase().GetEventsForPersons(personIds, new EventType[] { });
+            return PirateDb.GetDatabaseForReading().GetEventsForPersons(personIds, new EventType[] { });
         }
 
         public static Dictionary<int, List<BasicPWEvent>> ForPersons (int[] personIds, EventType[] eventTypes)
         {
-            return PirateDb.GetDatabase().GetEventsForPersons(personIds, eventTypes);
+            return PirateDb.GetDatabaseForReading().GetEventsForPersons(personIds, eventTypes);
         }
 
         public static BasicPWEvent[] ByType (EventType eventType)
         {
-            return PirateDb.GetDatabase().GetEventsOfType(eventType);
+            return PirateDb.GetDatabaseForReading().GetEventsOfType(eventType);
         }
 
         public static void SetEventProcessed (int eventId)
         {
-            PirateDb.GetDatabase().SetEventProcessed(eventId);
+            PirateDb.GetDatabaseForWriting().SetEventProcessed(eventId);
         }
     }
 }

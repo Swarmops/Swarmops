@@ -40,7 +40,7 @@ namespace Activizr.Logic.Pirates
         public static RoleLookup FromOrganization (int organizationId)
         {
             Roles roles =
-                Roles.FromArray(PirateDb.GetDatabase().GetRolesForOrganization(organizationId));
+                Roles.FromArray(PirateDb.GetDatabaseForReading().GetRolesForOrganization(organizationId));
 
             return new RoleLookup(roles);
         }
@@ -48,7 +48,7 @@ namespace Activizr.Logic.Pirates
         public static RoleLookup FromGeographyAndOrganization (int geographyId, int organizationId)
         {
             Roles roles =
-                Roles.FromArray(PirateDb.GetDatabase().GetRolesForOrganizationGeography(organizationId, geographyId));
+                Roles.FromArray(PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId));
 
             return new RoleLookup(roles);
         }

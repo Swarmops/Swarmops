@@ -22,13 +22,13 @@ namespace Activizr.Logic.Pirates
 
         public static ExternalActivity FromIdentity (int externalActivityId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetExternalActivity(externalActivityId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetExternalActivity(externalActivityId));
         }
 
         public static ExternalActivity Create (Organization organization, Geography geograpy, ExternalActivityType type, DateTime date, string description, Person createdByPerson)
         {
             return
-                FromIdentity(PirateDb.GetDatabase().CreateExternalActivity(organization.Identity, geograpy.Identity,
+                FromIdentity(PirateDb.GetDatabaseForWriting().CreateExternalActivity(organization.Identity, geograpy.Identity,
                                                                            date, type, description,
                                                                            createdByPerson.Identity));
         }

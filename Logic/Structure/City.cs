@@ -32,12 +32,12 @@ namespace Activizr.Logic.Structure
 
         public static City FromName (string cityName, int countryId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetCityByName(cityName, countryId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetCityByName(cityName, countryId));
         }
         
         public static City FromName (string cityName, string countryCode)
         {
-            return FromBasic(PirateDb.GetDatabase().GetCityByName(cityName, countryCode));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetCityByName(cityName, countryCode));
         }
     }
 }

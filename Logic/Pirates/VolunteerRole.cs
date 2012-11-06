@@ -23,7 +23,7 @@ namespace Activizr.Logic.Pirates
 
         public static VolunteerRole FromIdentity (int identity)
         {
-            return FromBasic(PirateDb.GetDatabase().GetVolunteerRole(identity));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetVolunteerRole(identity));
         }
 
         public void Close (bool wasAssigned)

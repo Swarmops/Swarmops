@@ -60,7 +60,7 @@ namespace Activizr.Logic.Pirates
                     {
                         ChurnData.LogRetention(this.PersonId, this.OrganizationId, base.Expires);
                     }
-                    PirateDb.GetDatabase().SetMembershipExpires(Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetMembershipExpires(Identity, value);
                     base.Expires = value;
                 }
             }
@@ -68,7 +68,7 @@ namespace Activizr.Logic.Pirates
 
         public void SetPaymentStatus (MembershipPaymentStatus status, DateTime dateTime)
         {
-            PirateDb.GetDatabase().SetMembershipPaymentStatus(Identity, status, dateTime);
+            PirateDb.GetDatabaseForWriting().SetMembershipPaymentStatus(Identity, status, dateTime);
             LoadPaymentStatus();
             paymentStatus.Status = status;
             paymentStatus.StatusDateTime = dateTime;
@@ -78,7 +78,7 @@ namespace Activizr.Logic.Pirates
         {
             if (paymentStatus == null)
             {
-                paymentStatus = PirateDb.GetDatabase().GetMembershipPaymentStatus(this.Identity);
+                paymentStatus = PirateDb.GetDatabaseForReading().GetMembershipPaymentStatus(this.Identity);
             }
         }
 
@@ -87,7 +87,7 @@ namespace Activizr.Logic.Pirates
         public static void LoadPaymentStatuses (Memberships mss)
         {
             Dictionary<int, BasicMembershipPaymentStatus> statuses =
-                PirateDb.GetDatabase().GetMembershipPaymentStatuses(mss.Identities);
+                PirateDb.GetDatabaseForReading().GetMembershipPaymentStatuses(mss.Identities);
             foreach (Membership ms in mss)
             {
                 if (ms.paymentStatus == null && statuses.ContainsKey(ms.Identity))
@@ -139,17 +139,17 @@ namespace Activizr.Logic.Pirates
 
         public static Membership FromIdentity (int membershipId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetMembership(membershipId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetMembership(membershipId));
         }
 
         public static Membership FromPersonAndOrganization (int personId, int organizationId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetActiveMembership(personId, organizationId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetActiveMembership(personId, organizationId));
         }
 
         public static Membership Create (int personId, int organizationId, DateTime expires)
         {
-            int membershipId = PirateDb.GetDatabase().CreateMembership(personId, organizationId, expires);
+            int membershipId = PirateDb.GetDatabaseForWriting().CreateMembership(personId, organizationId, expires);
 
             return FromIdentity(membershipId);
         }
@@ -163,7 +163,7 @@ namespace Activizr.Logic.Pirates
                                          DateTime expires)
         {
             return
-                FromIdentity(PirateDb.GetDatabase().ImportMembership(person.Identity, organization.Identity, memberSince,
+                FromIdentity(PirateDb.GetDatabaseForWriting().ImportMembership(person.Identity, organization.Identity, memberSince,
                                                                      expires));
         }
 
@@ -244,7 +244,7 @@ namespace Activizr.Logic.Pirates
                 {
                     ChurnData.LogChurn(this.PersonId, this.OrganizationId);
                 }
-                PirateDb.GetDatabase().TerminateMembership(Identity);
+                PirateDb.GetDatabaseForWriting().TerminateMembership(Identity);
                 base.Active = false;
                 base.DateTerminated = DateTime.Now;
 

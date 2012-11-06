@@ -17,7 +17,7 @@ namespace Activizr.Logic.Financial
 
         public static PaymentGroup FromIdentity (int paymentGroupId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetPaymentGroup(paymentGroupId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetPaymentGroup(paymentGroupId));
         }
 
         public static PaymentGroup FromBasic (BasicPaymentGroup basic)
@@ -28,14 +28,14 @@ namespace Activizr.Logic.Financial
         public static PaymentGroup Create (Organization organization, DateTime timestamp, Currency currency, Person createdByPerson)
         {
             return
-                FromIdentity(PirateDb.GetDatabase().CreatePaymentGroup(organization.Identity, timestamp,
+                FromIdentity(PirateDb.GetDatabaseForWriting().CreatePaymentGroup(organization.Identity, timestamp,
                                                                        currency.Identity,
                                                                        System.DateTime.Now, createdByPerson.Identity));
         }
 
         public static PaymentGroup FromTag (Organization organization, string tag)
         {
-            BasicPaymentGroup basicGroup = PirateDb.GetDatabase().GetPaymentGroupByTag(organization.Identity, tag);
+            BasicPaymentGroup basicGroup = PirateDb.GetDatabaseForReading().GetPaymentGroupByTag(organization.Identity, tag);
 
             if (basicGroup == null)
             {
@@ -56,7 +56,7 @@ namespace Activizr.Logic.Financial
             set 
             { 
                 base.Tag = value;
-                PirateDb.GetDatabase().SetPaymentGroupTag(this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetPaymentGroupTag(this.Identity, value);
             }
         }
 
@@ -66,7 +66,7 @@ namespace Activizr.Logic.Financial
             set 
             {
                 base.AmountCents = value;
-                PirateDb.GetDatabase().SetPaymentGroupAmount(this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetPaymentGroupAmount(this.Identity, value);
             }
         }
 
@@ -81,7 +81,7 @@ namespace Activizr.Logic.Financial
             set 
             { 
                 base.Open = value;
-                PirateDb.GetDatabase().SetPaymentGroupOpen(this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetPaymentGroupOpen(this.Identity, value);
             }
         }
 

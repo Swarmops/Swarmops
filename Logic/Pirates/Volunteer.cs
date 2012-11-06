@@ -24,7 +24,7 @@ namespace Activizr.Logic.Pirates
 
         public static Volunteer FromIdentity (int volunteerId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetVolunteer(volunteerId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetVolunteer(volunteerId));
         }
 
         public static Volunteer FromBasic (BasicVolunteer basic)
@@ -39,7 +39,7 @@ namespace Activizr.Logic.Pirates
 
         public static Volunteer Create (int personId, int ownerPersonId)
         {
-            return FromIdentity(PirateDb.GetDatabase().CreateVolunteer(personId, ownerPersonId));
+            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateVolunteer(personId, ownerPersonId));
         }
 
         #endregion
@@ -67,7 +67,7 @@ namespace Activizr.Logic.Pirates
             set
             {
                 this.ownerPerson = value;
-                PirateDb.GetDatabase().SetVolunteerOwnerPersonId(Identity, value.Identity);
+                PirateDb.GetDatabaseForWriting().SetVolunteerOwnerPersonId(Identity, value.Identity);
             }
         }
 
@@ -120,7 +120,7 @@ namespace Activizr.Logic.Pirates
 
         public VolunteerRoles Roles
         {
-            get { return VolunteerRoles.FromArray(PirateDb.GetDatabase().GetVolunteerRolesByVolunteer(Identity)); }
+            get { return VolunteerRoles.FromArray(PirateDb.GetDatabaseForReading().GetVolunteerRolesByVolunteer(Identity)); }
         }
 
         public void AddRole (Organization organization, Geography geography, RoleType roleType)
@@ -130,12 +130,12 @@ namespace Activizr.Logic.Pirates
 
         public void AddRole (int organizationId, int geographyId, RoleType roleType)
         {
-            PirateDb.GetDatabase().CreateVolunteerRole(Identity, organizationId, geographyId, roleType);
+            PirateDb.GetDatabaseForWriting().CreateVolunteerRole(Identity, organizationId, geographyId, roleType);
         }
 
         public void Close (string comments)
         {
-            PirateDb.GetDatabase().CloseVolunteer(Identity, comments);
+            PirateDb.GetDatabaseForWriting().CloseVolunteer(Identity, comments);
         }
 
         private void PopulateCache ()

@@ -19,11 +19,11 @@ namespace Activizr.Logic.Pirates
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabase().GetParleys(organization));
+                return FromArray(PirateDb.GetDatabaseForReading().GetParleys(organization));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabase().GetParleys(organization, DatabaseCondition.OpenTrue));
+                return FromArray(PirateDb.GetDatabaseForReading().GetParleys(organization, DatabaseCondition.OpenTrue));
             }
         }
 
@@ -36,11 +36,11 @@ namespace Activizr.Logic.Pirates
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabase().GetParleys(person));
+                return FromArray(PirateDb.GetDatabaseForReading().GetParleys(person));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabase().GetParleys(person, DatabaseCondition.OpenTrue));
+                return FromArray(PirateDb.GetDatabaseForReading().GetParleys(person, DatabaseCondition.OpenTrue));
             }
         }
     }

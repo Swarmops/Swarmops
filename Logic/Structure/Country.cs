@@ -28,12 +28,12 @@ namespace Activizr.Logic.Structure
 
         public static Country FromIdentity (int identity)
         {
-            return FromBasic(PirateDb.GetDatabase().GetCountry(identity));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetCountry(identity));
         }
 
         public static Country FromCode (string countryCode)
         {
-            return FromBasic(PirateDb.GetDatabase().GetCountry(countryCode));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetCountry(countryCode));
         }
 
         public Geography Geography

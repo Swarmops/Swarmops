@@ -14,7 +14,7 @@ namespace Activizr.Logic.DataObjects
 #endif
         public static Membership[] Select (int personId)
         {
-            return Memberships.FromArray (PirateDb.GetDatabase().GetMemberships (Person.FromIdentity(personId))).ToArray();
+            return Memberships.FromArray(PirateDb.GetDatabaseForReading().GetMemberships(Person.FromIdentity(personId))).ToArray();
         }
 
 #if !__MonoCS__

@@ -17,7 +17,7 @@ namespace Activizr.Logic.Financial
 
         static public Salaries ForOrganization(Organization organization, bool includeClosed)
         {
-            return FromArray (PirateDb.GetDatabase().GetSalaries(organization, 
+            return FromArray (PirateDb.GetDatabaseForWriting().GetSalaries(organization, 
                 includeClosed? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
 

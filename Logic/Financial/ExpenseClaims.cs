@@ -64,19 +64,19 @@ namespace Activizr.Logic.Financial
         public static ExpenseClaims FromClaimingPersonAndOrganization (Person person, Organization organization)
         {
             return
-                FromArray(PirateDb.GetDatabase().GetExpenseClaimsByClaimerAndOrganization(person.Identity,
+                FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaimsByClaimerAndOrganization(person.Identity,
                                                                                           organization.Identity));
         }
 
 
         public static ExpenseClaims FromClaimingPerson (Person person)
         {
-            return FromArray(PirateDb.GetDatabase().GetExpenseClaimsByClaimer(person.Identity));
+            return FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaimsByClaimer(person.Identity));
         }
 
         public static ExpenseClaims FromOrganization (Organization org)
         {
-            return FromArray(PirateDb.GetDatabase().GetExpenseClaimsByOrganization(org.Identity));
+            return FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaimsByOrganization(org.Identity));
         }
 
 
@@ -89,11 +89,11 @@ namespace Activizr.Logic.Financial
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabase().GetExpenseClaims(org));
+                return FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaims(org));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabase().GetExpenseClaims(org, DatabaseCondition.OpenTrue));
+                return FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaims(org, DatabaseCondition.OpenTrue));
             }
         }
 

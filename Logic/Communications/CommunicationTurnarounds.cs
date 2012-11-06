@@ -19,12 +19,12 @@ namespace Activizr.Logic.Communications
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabase().GetCommunicationTurnarounds(organization));
+                return FromArray(PirateDb.GetDatabaseForReading().GetCommunicationTurnarounds(organization));
             }
             else
             {
                 return
-                    FromArray(PirateDb.GetDatabase().GetCommunicationTurnarounds(organization,
+                    FromArray(PirateDb.GetDatabaseForReading().GetCommunicationTurnarounds(organization,
                                                                                  DatabaseCondition.OpenTrue));
             }
         }

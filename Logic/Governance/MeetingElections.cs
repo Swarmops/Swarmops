@@ -12,17 +12,17 @@ namespace Activizr.Logic.Governance
     {
         public static MeetingElections ForOrganization (Organization organization)
         {
-            return FromArray(PirateDb.GetDatabase().GetInternalPolls(organization));
+            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPolls(organization));
         }
 
         public static MeetingElections ForOrganizations (Organizations organizations)
         {
-            return FromArray(PirateDb.GetDatabase().GetInternalPolls(organizations));
+            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPolls(organizations));
         }
 
         public static MeetingElections GetAll()
         {
-            return FromArray(PirateDb.GetDatabase().GetInternalPolls());
+            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPolls());
         }
     }
 }

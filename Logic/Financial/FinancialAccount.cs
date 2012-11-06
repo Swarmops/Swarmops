@@ -19,17 +19,17 @@ namespace Activizr.Logic.Financial
         [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
         public double BalanceTotal
         {
-            get { return PirateDb.GetDatabase().GetFinancialAccountBalanceTotal(Identity); }
+            get { return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceTotal(Identity); }
         }
 
         public Int64 BalanceTotalCents
         {
-            get { return PirateDb.GetDatabase().GetFinancialAccountBalanceTotalCents(Identity); }
+            get { return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceTotalCents(Identity); }
         }
 
         public static FinancialAccount FromIdentity (int identity)
         {
-            return FromBasic(PirateDb.GetDatabase().GetFinancialAccount(identity));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetFinancialAccount(identity));
         }
 
         public static FinancialAccount FromBasic (BasicFinancialAccount basic)
@@ -40,30 +40,30 @@ namespace Activizr.Logic.Financial
         [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
         public decimal GetDelta(DateTime start, DateTime end)
         {
-            return PirateDb.GetDatabase().GetFinancialAccountBalanceDelta(Identity, start, end);
+            return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceDelta(Identity, start, end);
         }
 
         public Int64 GetDeltaCents(DateTime start, DateTime end)
         {
-            return PirateDb.GetDatabase().GetFinancialAccountBalanceDeltaCents(Identity, start, end);
+            return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceDeltaCents(Identity, start, end);
         }
 
         public FinancialAccountRows GetLastRows(int rowCount)
         {
-            BasicFinancialAccountRow[] basicRows = PirateDb.GetDatabase().GetLastFinancialAccountRows(Identity, rowCount);
+            BasicFinancialAccountRow[] basicRows = PirateDb.GetDatabaseForReading().GetLastFinancialAccountRows(Identity, rowCount);
             return FinancialAccountRows.FromArray(basicRows);
         }
 
         public FinancialAccountRows GetRows(DateTime start, DateTime end)
         {
-            BasicFinancialAccountRow[] basicRows = PirateDb.GetDatabase().GetFinancialAccountRows(Identity, start, end);
+            BasicFinancialAccountRow[] basicRows = PirateDb.GetDatabaseForReading().GetFinancialAccountRows(Identity, start, end);
             return FinancialAccountRows.FromArray(basicRows);
         }
 
         [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
         public double GetBudget(int year)
         {
-            return PirateDb.GetDatabase().GetFinancialAccountBudget(this.Identity, year);
+            return PirateDb.GetDatabaseForReading().GetFinancialAccountBudget(this.Identity, year);
         }
 
         public Int64 GetBudgetCents (int year)
@@ -73,28 +73,28 @@ namespace Activizr.Logic.Financial
 
         public Int64[] GetBudgetMonthly (int year)
         {
-            return PirateDb.GetDatabase().GetFinancialAccountBudgetMonthly(this.Identity, year);
+            return PirateDb.GetDatabaseForReading().GetFinancialAccountBudgetMonthly(this.Identity, year);
         }
 
         [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
         public void SetBudget(int year, double amount)
         {
-            PirateDb.GetDatabase().SetFinancialAccountBudget(this.Identity, year, amount);
+            PirateDb.GetDatabaseForWriting().SetFinancialAccountBudget(this.Identity, year, amount);
         }
 
         public void SetBudgetCents (int year, Int64 amount)
         {
-            PirateDb.GetDatabase().SetFinancialAccountBudget(this.Identity, year, amount / 100.0);  // TODO: Change db structure to use cents
+            PirateDb.GetDatabaseForWriting().SetFinancialAccountBudget(this.Identity, year, amount / 100.0);  // TODO: Change db structure to use cents
         }
 
         public void SetBudgetMontly (int year, int month, Int64 amountCents)
         {
-            PirateDb.GetDatabase().SetFinancialAccountBudgetMonthly(this.Identity, year, month, amountCents);
+            PirateDb.GetDatabaseForWriting().SetFinancialAccountBudgetMonthly(this.Identity, year, month, amountCents);
         }
 
         public static FinancialAccount Create (int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
         {
-            int accountId = PirateDb.GetDatabase().CreateFinancialAccount(pOrganizationId, pName, pAccountType, pParentFinancialAccountId);
+            int accountId = PirateDb.GetDatabaseForWriting().CreateFinancialAccount(pOrganizationId, pName, pAccountType, pParentFinancialAccountId);
             return FromIdentity(accountId);
         }
 
@@ -119,14 +119,14 @@ namespace Activizr.Logic.Financial
             }
             set
             {
-                PirateDb.GetDatabase().SetFinancialAccountOwner(this.Identity, value.Identity);
+                PirateDb.GetDatabaseForWriting().SetFinancialAccountOwner(this.Identity, value.Identity);
             }
         }
 
 
         public FinancialAccounts Children
         {
-            get { return FinancialAccounts.FromArray(PirateDb.GetDatabase().GetFinancialAccountChildren(this.Identity)); }
+            get { return FinancialAccounts.FromArray(PirateDb.GetDatabaseForReading().GetFinancialAccountChildren(this.Identity)); }
         }
 
         public FinancialAccounts GetTree ()

@@ -11,17 +11,17 @@ namespace Activizr.Logic.Support
     {
         public static Dictionary<int, bool> GetPeopleWhoDeclineLocalMail (int[] personIds)
         {
-            return PirateDb.GetDatabase().GetPeopleWhoDeclineLocalMail (personIds);
+            return PirateDb.GetDatabaseForReading().GetPeopleWhoDeclineLocalMail (personIds);
         }
 
         public static Dictionary<int, int> GetGeographyVoterCounts()
         {
-            return PirateDb.GetDatabase().GetGeographyVoterCounts();
+            return PirateDb.GetDatabaseForReading().GetGeographyVoterCounts();
         }
 
         public static Dictionary<int,int> GetInternalPollVoteCountsPerGeography(int pollId)
         {
-            return PirateDb.GetDatabase().GetInternalPollVoteCountsPerGeography(pollId);
+            return PirateDb.GetDatabaseForReading().GetInternalPollVoteCountsPerGeography(pollId);
         }
     }
 }

@@ -24,17 +24,17 @@ namespace Activizr.Logic.Pirates
 
         public static ParleyAttendee FromIdentity (int parleyAttendeeId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetParleyAttendee(parleyAttendeeId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetParleyAttendee(parleyAttendeeId));
         }
 
         public static ParleyAttendee Create (Parley parley, Person person, bool asGuest)
         {
-            return FromIdentity(PirateDb.GetDatabase().CreateParleyAttendee(parley.Identity, person.Identity, asGuest));
+            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateParleyAttendee(parley.Identity, person.Identity, asGuest));
         }
 
         public void AddOption (ParleyOption option)
         {
-            PirateDb.GetDatabase().AddParleyAttendeeOption(this.Identity, option.Identity);            
+            PirateDb.GetDatabaseForWriting().AddParleyAttendeeOption(this.Identity, option.Identity);            
         }
 
         public ParleyOptions Options
@@ -54,7 +54,7 @@ namespace Activizr.Logic.Pirates
             {
                 if (value != base.Active)
                 {
-                    PirateDb.GetDatabase().SetParleyAttendeeActive(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetParleyAttendeeActive(this.Identity, value);
                     base.Active = value;
                 }
             }
@@ -120,7 +120,7 @@ namespace Activizr.Logic.Pirates
             base.Invoiced = true;
             base.OutboundInvoiceId = invoice.Identity;
 
-            PirateDb.GetDatabase().SetParleyAttendeeInvoiced(this.Identity, invoice.Identity);
+            PirateDb.GetDatabaseForWriting().SetParleyAttendeeInvoiced(this.Identity, invoice.Identity);
         }
     }
 }

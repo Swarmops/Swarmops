@@ -36,7 +36,7 @@ namespace Activizr.Logic.Structure
         public static Geographies FromIdentities (int[] geoIds)
         {
             return FromArray(GeographyCache.GetGeographies(geoIds));
-            //           return FromArray(PirateDb.GetDatabase().GetGeographies(geoIds));
+            //           return FromArray(PirateDb.GetDatabaseForReading().GetGeographies(geoIds));
         }
 
 
@@ -47,7 +47,7 @@ namespace Activizr.Logic.Structure
 
         public static Geographies FromLevel (int countryId, GeographyLevel level)
         {
-            return FromIdentities(PirateDb.GetDatabase().GetGeographyIdsFromLevel(countryId, level));
+            return FromIdentities(PirateDb.GetDatabaseForReading().GetGeographyIdsFromLevel(countryId, level));
         }
 
         #endregion

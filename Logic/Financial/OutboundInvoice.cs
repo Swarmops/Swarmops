@@ -25,7 +25,7 @@ namespace Activizr.Logic.Financial
 
         public static OutboundInvoice FromIdentity (int outboundInvoiceId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetOutboundInvoice(outboundInvoiceId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetOutboundInvoice(outboundInvoiceId));
         }
 
         public static OutboundInvoice FromReference (string reference)
@@ -50,7 +50,7 @@ namespace Activizr.Logic.Financial
 
         public static OutboundInvoice Create (Organization organization, Person createdByPerson, DateTime dueDate, FinancialAccount budget, string customerName, string invoiceAddressMail, string invoiceAddressPaper, Currency currency, bool domestic, string theirReference)
         {
-            OutboundInvoice invoice = FromIdentity (PirateDb.GetDatabase().CreateOutboundInvoice(organization.Identity, createdByPerson != null? createdByPerson.Identity : 0, dueDate,
+            OutboundInvoice invoice = FromIdentity (PirateDb.GetDatabaseForWriting().CreateOutboundInvoice(organization.Identity, createdByPerson != null? createdByPerson.Identity : 0, dueDate,
                                                          budget.Identity, customerName, invoiceAddressPaper,
                                                          invoiceAddressMail, currency.Identity, string.Empty, domestic, Authentication.CreateRandomPassword(6), theirReference));
 
@@ -74,7 +74,7 @@ namespace Activizr.Logic.Financial
 
         public void AddItem(string description, double amount)
         {
-            PirateDb.GetDatabase().CreateOutboundInvoiceItem(this.Identity, description, amount);
+            PirateDb.GetDatabaseForWriting().CreateOutboundInvoiceItem(this.Identity, description, amount);
         }
 
 
@@ -82,7 +82,7 @@ namespace Activizr.Logic.Financial
         {
             // NOTE: MUST NOT ADD FINANCIAL TRANSACTION LINES HERE; SURCHARGES ARE ADDED AS LINE ITEMS ON PAYMENT
 
-            PirateDb.GetDatabase().CreateOutboundInvoiceItem(this.Identity, description, amountCents);
+            PirateDb.GetDatabaseForWriting().CreateOutboundInvoiceItem(this.Identity, description, amountCents);
         }
 
 
@@ -147,7 +147,7 @@ namespace Activizr.Logic.Financial
                 {
                     if (value == true)
                     {
-                        PirateDb.GetDatabase().SetOutboundInvoiceSent(this.Identity, true);
+                        PirateDb.GetDatabaseForWriting().SetOutboundInvoiceSent(this.Identity, true);
                         base.Sent = true;
                     }
                     else
@@ -165,7 +165,7 @@ namespace Activizr.Logic.Financial
             {
                 if (value != base.Open)
                 {
-                    PirateDb.GetDatabase().SetOutboundInvoiceOpen(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetOutboundInvoiceOpen(this.Identity, value);
                     base.Open = value;
                 }
             }
@@ -204,7 +204,7 @@ namespace Activizr.Logic.Financial
             }
             set
             {
-                PirateDb.GetDatabase().SetOutboundInvoiceReference(this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetOutboundInvoiceReference(this.Identity, value);
                 base.Reference = value;
             }
         }
