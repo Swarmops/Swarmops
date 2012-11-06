@@ -760,7 +760,7 @@ namespace Activizr.Utility.BotCode
                  + fromOrgReport + "\r\n"
                  + toOrgReport;
 
-            BasicPersonRole[] UPSecretary = PirateDb.GetDatabase().GetPeopleWithRoleType(RoleType.OrganizationSecretary,
+            BasicPersonRole[] UPSecretary = PirateDb.GetDatabaseForReading().GetPeopleWithRoleType(RoleType.OrganizationSecretary,
                                                                                         new int[] { Organization.UPSEid },
                                                                                         new int[] { });
             if (UPSecretary.Length > 0)

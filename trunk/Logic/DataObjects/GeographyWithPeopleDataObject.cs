@@ -33,7 +33,7 @@ namespace Activizr.Logic.DataObjects
                 row.SecondsContent = "";
                 row.OrgId = orgId;
                 Geographies gTree = geo.GetTree();
-                int[] members = Activizr.Database.PirateDb.GetDatabase().GetMembersForOrganizationsAndGeographies(orgs.Identities, gTree.Identities);
+                int[] members = Activizr.Database.PirateDb.GetDatabaseForReading().GetMembersForOrganizationsAndGeographies(orgs.Identities, gTree.Identities);
 
 
             }
