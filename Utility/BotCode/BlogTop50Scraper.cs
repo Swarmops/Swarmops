@@ -49,7 +49,7 @@ namespace Activizr.Utility.BotCode
                 match = match.NextMatch();
             }
 
-            PirateDb.GetDatabase().StoreBlogTopList(DateTime.Today, rankingList.ToArray());
+            PirateDb.GetDatabaseForWriting().StoreBlogTopList(DateTime.Today, rankingList.ToArray());
         }
     }
 }
