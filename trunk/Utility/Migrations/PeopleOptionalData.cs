@@ -13,7 +13,7 @@ namespace Activizr.Utility.Migrations
     {
         public static void Migrate()
         {
-            PirateDb db = PirateDb.GetDatabase();
+            PirateDb db = PirateDb.GetDatabaseForAdmin();
 
             using (DbConnection connection = db.GetSqlServerDbConnection())
             {
