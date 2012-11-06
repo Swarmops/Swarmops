@@ -15,7 +15,7 @@ namespace Activizr.Logic.Support
 
         static public TemporaryIdentity GetNew()
         {
-            return new TemporaryIdentity (PirateDb.GetDatabase().GetTemporaryIdentity());
+            return new TemporaryIdentity (PirateDb.GetDatabaseForWriting().GetTemporaryIdentity());  // This is actually an Insert, not a Select
         }
 
         private int temporaryId;

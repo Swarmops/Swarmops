@@ -19,7 +19,7 @@ namespace Activizr.Logic.Pirates
 
         public static PersonRole Create (int personId, RoleType roleType, int organizationId, int nodeId)
         {
-            return FromIdentity(PirateDb.GetDatabase().CreateRole(personId, roleType, organizationId, nodeId));
+            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateRole(personId, roleType, organizationId, nodeId));
         }
 
         public static PersonRole FromBasic (BasicPersonRole basic)
@@ -29,7 +29,7 @@ namespace Activizr.Logic.Pirates
 
         public static PersonRole FromIdentity (int roleId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetRole(roleId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetRole(roleId));
         }
 
         #endregion
@@ -53,7 +53,7 @@ namespace Activizr.Logic.Pirates
 
         public void Delete()
         {
-            PirateDb.GetDatabase().DeleteRole(Identity);
+            PirateDb.GetDatabaseForWriting().DeleteRole(Identity);
 
             // After this call, the role will be invalid.
         }

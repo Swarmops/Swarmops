@@ -20,7 +20,7 @@ namespace Activizr.Logic.Media
         public static bool CreateFromKeyword (string keyword, string mediaName, bool isBlog, string url, string title,
                                               DateTime dateTime)
         {
-            int id = PirateDb.GetDatabase().CreateMediaEntryFromKeyword (keyword, mediaName, isBlog, url, title,
+            int id = PirateDb.GetDatabaseForWriting().CreateMediaEntryFromKeyword (keyword, mediaName, isBlog, url, title,
                                                                          dateTime);
 
             if (id != 0)

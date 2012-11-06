@@ -46,8 +46,6 @@ namespace Activizr.Logic.Security
         /// <exception cref="UnauthorizedAccessException">This function will throw an UnauthorizedAccessException if the user cannot be authenticated using the supplied credentials.</exception>
         public static Person Authenticate (string loginToken, string password)
         {
-            PirateDb database = PirateDb.GetDatabase();
-
             // Get the list of people that match the login token.
 
             People candidatePeople = GetPeopleByLoginToken(loginToken);
@@ -199,7 +197,7 @@ namespace Activizr.Logic.Security
         {
             People result = new People();
 
-            PirateDb database = PirateDb.GetDatabase();
+            PirateDb database = PirateDb.GetDatabaseForReading();
 
             // First, is the login token numeric? If so, add it as is and is a valid person.
 
@@ -254,14 +252,13 @@ namespace Activizr.Logic.Security
 
         public static Person RequestNewPasswordProcess (string eMail, string URL)
         {
-            PirateDb database = PirateDb.GetDatabase();
             int personID = 0;
             int.TryParse(eMail, out personID);
             Person authenticatedUser = null;
             People candidatePeople = null;
             if (personID == 0)
             {
-                BasicPerson[] people = database.GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
+                BasicPerson[] people = PirateDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
                 candidatePeople = People.FromArray(people);
 
                 // if multiple people share same e-mail, suppose the last one registered is the one to change.
@@ -435,7 +432,6 @@ namespace Activizr.Logic.Security
 
         public static Person RequestActivistSignoffProcess (string eMail, string URL)
         {
-            PirateDb database = PirateDb.GetDatabase();
             int personID = 0;
             int.TryParse(eMail, out personID);
             Person authenticatedUser = null;
@@ -443,7 +439,7 @@ namespace Activizr.Logic.Security
             bool personIsActivist = false;
             if (personID == 0)
             {
-                BasicPerson[] people = database.GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
+                BasicPerson[] people = PirateDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
                 candidatePeople = People.FromArray(people);
 
                 // if multiple people share same e-mail, suppose the last one registered is the one to change.

@@ -11,7 +11,7 @@ namespace Activizr.Logic.Media
 
         public static MediaCategory FromName (string name)
         {
-            return new MediaCategory (PirateDb.GetDatabase().GetMediaCategoryByName (name));
+            return new MediaCategory(PirateDb.GetDatabaseForReading().GetMediaCategoryByName(name));
         }
 
         public static MediaCategory FromBasic (BasicMediaCategory basic)

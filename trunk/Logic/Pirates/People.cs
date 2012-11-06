@@ -42,7 +42,7 @@ namespace Activizr.Logic.Pirates
                     lookup[key] = true;
                 }
 
-                BasicPerson[] basicArray = PirateDb.GetDatabase().GetAllPeople();
+                BasicPerson[] basicArray = PirateDb.GetDatabaseForReading().GetAllPeople();
                 var result = new People();
 
                 for (int index = 0; index < basicArray.Length; index++)
@@ -57,13 +57,13 @@ namespace Activizr.Logic.Pirates
             }
             else
             {
-                return People.FromArray(PirateDb.GetDatabase().GetPeople(personIds));
+                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeople(personIds));
             }
         }
 
         public static People GetAll ()
         {
-            return People.FromArray(PirateDb.GetDatabase().GetAllPeople());
+            return People.FromArray(PirateDb.GetDatabaseForReading().GetAllPeople());
         }
 
         public static People FromNamePattern (string namePattern)
@@ -85,7 +85,7 @@ namespace Activizr.Logic.Pirates
                     namePattern = "%" + namePattern;
                 }
 
-                return People.FromArray(PirateDb.GetDatabase().GetPeopleFromNamePattern(namePattern));
+                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromNamePattern(namePattern));
             }
 
             return null; // If no valid search string was supplied
@@ -93,7 +93,7 @@ namespace Activizr.Logic.Pirates
 
         public static People FromBirtDatePattern (DateTime fromdate, DateTime todate)
         {
-            return People.FromArray(PirateDb.GetDatabase().GetPeopleFromBirthdate(fromdate, todate));
+            return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromBirthdate(fromdate, todate));
         }
 
         public static People FromEmailPattern (string emailPattern)
@@ -105,7 +105,7 @@ namespace Activizr.Logic.Pirates
             {
                 emailPattern = "%" + emailPattern + "%";
 
-                return People.FromArray(PirateDb.GetDatabase().GetPeopleFromEmailPattern(emailPattern));
+                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromEmailPattern(emailPattern));
             }
 
             return null; // If no valid search string was supplied
@@ -120,7 +120,7 @@ namespace Activizr.Logic.Pirates
             {
                 cityPattern = "%" + cityPattern + "%";
 
-                return People.FromArray(PirateDb.GetDatabase().GetPeopleFromCityPattern(cityPattern));
+                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromCityPattern(cityPattern));
             }
 
             return null; // If no valid search string was supplied
@@ -135,7 +135,7 @@ namespace Activizr.Logic.Pirates
             {
                 pcPattern = pcPattern + "%";
 
-                return People.FromArray(PirateDb.GetDatabase().GetPeopleFromPostalCodePattern(pcPattern));
+                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromPostalCodePattern(pcPattern));
             }
 
             return null; // If no valid search string was supplied
@@ -147,7 +147,7 @@ namespace Activizr.Logic.Pirates
             if (pcodes.Length > 0)
             {
 
-                return People.FromArray(PirateDb.GetDatabase().GetPeopleFromPostalCodes(pcodes));
+                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromPostalCodes(pcodes));
             }
 
             return null; // If no valid search string was supplied
@@ -157,7 +157,7 @@ namespace Activizr.Logic.Pirates
         {
             if (email.Length > 0)
             {
-                return People.FromArray(PirateDb.GetDatabase().GetPeopleFromEmail(email));
+                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromEmail(email));
             }
 
             return null; // If no valid search string was supplied
@@ -275,7 +275,7 @@ namespace Activizr.Logic.Pirates
 
             // First, get list of people in the geography, then filter on memberships
 
-            BasicPerson[] people = PirateDb.GetDatabase().GetPeopleInGeographies(geoTree.Identities);
+            BasicPerson[] people = PirateDb.GetDatabaseForReading().GetPeopleInGeographies(geoTree.Identities);
 
             // Filter on memberships
 
@@ -297,7 +297,7 @@ namespace Activizr.Logic.Pirates
             // Get the list of all memberships
 
             Dictionary<int, List<BasicMembership>> memberships =
-                PirateDb.GetDatabase().GetMembershipsForPeople(LogicServices.ObjectsToIdentifiers(people));
+                PirateDb.GetDatabaseForReading().GetMembershipsForPeople(LogicServices.ObjectsToIdentifiers(people));
 
             var result = new People();
 
@@ -331,7 +331,7 @@ namespace Activizr.Logic.Pirates
 
             // First, get list of people in the geography, then filter on memberships
 
-            BasicPerson[] people = PirateDb.GetDatabase().GetPeopleInGeographies(geoTree.Identities);
+            BasicPerson[] people = PirateDb.GetDatabaseForReading().GetPeopleInGeographies(geoTree.Identities);
 
             var result = new People();
 
@@ -383,17 +383,17 @@ namespace Activizr.Logic.Pirates
 
         public static People FromOptionalData (ObjectOptionalDataType dataType, string data)
         {
-            return People.FromIdentities(PirateDb.GetDatabase().GetObjectsByOptionalData(ObjectType.Person, dataType, data));
+            return People.FromIdentities(PirateDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, dataType, data));
         }
 
         public static People FromPhoneNumber (int countryId, string phoneNumber)
         {
-            return People.FromArray(PirateDb.GetDatabase().GetPeopleFromPhoneNumber(countryId, phoneNumber));
+            return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromPhoneNumber(countryId, phoneNumber));
         }
 
         public static People FromPhoneNumber (string countryCode, string phoneNumber)
         {
-            return People.FromArray(PirateDb.GetDatabase().GetPeopleFromPhoneNumber(countryCode, phoneNumber));
+            return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromPhoneNumber(countryCode, phoneNumber));
         }
 
         public People GetVisiblePeopleByAuthority (Authority authority)
@@ -467,7 +467,7 @@ namespace Activizr.Logic.Pirates
 
         public static People FromNewsletterFeed (int feedId)
         {
-            int[] subscriberIds = PirateDb.GetDatabase().GetSubscribersForNewsletterFeed(2);
+            int[] subscriberIds = PirateDb.GetDatabaseForReading().GetSubscribersForNewsletterFeed(2);
 
             return FromIdentities(subscriberIds);
         }
@@ -487,7 +487,7 @@ namespace Activizr.Logic.Pirates
 
         public static Dictionary<int, int> GetPeopleGeographies ()
         {
-            return PirateDb.GetDatabase().GetPeopleGeographies();
+            return PirateDb.GetDatabaseForReading().GetPeopleGeographies();
         }
 
         public static People FromIdentities (int[] personIds, bool preserveOrder)

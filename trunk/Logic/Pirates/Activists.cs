@@ -46,13 +46,13 @@ namespace Activizr.Logic.Pirates
         {
             Geographies geographies = geography.GetTree();
 
-            return PirateDb.GetDatabase().GetActivistCountForGeographies(geographies.Identities);
+            return PirateDb.GetDatabaseForReading().GetActivistCountForGeographies(geographies.Identities);
         }
 
         public static Activists FromGeography (Geography geography)
         {
             Geographies geographies = geography.GetTree();
-            return new Activists(PirateDb.GetDatabase().GetActivistPersonIds(geographies.Identities));
+            return new Activists(PirateDb.GetDatabaseForReading().GetActivistPersonIds(geographies.Identities));
         }
 
         public void SendPhoneMessage (string message)

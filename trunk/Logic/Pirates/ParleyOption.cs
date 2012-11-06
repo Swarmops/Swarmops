@@ -20,12 +20,12 @@ namespace Activizr.Logic.Pirates
 
         public static ParleyOption FromIdentity (int parleyOptionId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetParleyOption(parleyOptionId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetParleyOption(parleyOptionId));
         }
 
         public static ParleyOption Create (Parley parley, string description, Int64 amountCents)
         {
-            return FromIdentity(PirateDb.GetDatabase().CreateParleyOption(parley.Identity, description, amountCents));
+            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateParleyOption(parley.Identity, description, amountCents));
         }
 
         public decimal AmountDecimal

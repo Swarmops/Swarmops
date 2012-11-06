@@ -24,7 +24,7 @@ namespace Activizr.Logic.Governance
         public static MeetingElection Create (Person creator, Organization org, Geography geo, string name, InternalPollResultsType resultsType, int maxVoteLength, DateTime runningOpens, DateTime runningCloses, DateTime votingOpens, DateTime votingCloses)
         {
             return
-                FromIdentity(PirateDb.GetDatabase().CreateInternalPoll(org.Identity, geo.Identity, name, maxVoteLength,
+                FromIdentity(PirateDb.GetDatabaseForWriting().CreateInternalPoll(org.Identity, geo.Identity, name, maxVoteLength,
                                                                        resultsType, creator.Identity, runningOpens,
                                                                        runningCloses, votingOpens, votingCloses));
         }
@@ -32,7 +32,7 @@ namespace Activizr.Logic.Governance
 
         public static MeetingElection FromIdentity (int internalPollId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetInternalPoll(internalPollId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetInternalPoll(internalPollId));
         }
 
         
@@ -63,12 +63,12 @@ namespace Activizr.Logic.Governance
 
         public void AddVoter (Person person)
         {
-            PirateDb.GetDatabase().CreateInternalPollVoter(this.Identity, person.Identity);
+            PirateDb.GetDatabaseForWriting().CreateInternalPollVoter(this.Identity, person.Identity);
         }
 
         public MeetingElectionVote CreateVote(Person person, string ipAddress)
         {
-            if (PirateDb.GetDatabase().GetInternalPollVoterStatus(this.Identity, person.Identity) != InternalPollVoterStatus.CanVote)
+            if (PirateDb.GetDatabaseForReading().GetInternalPollVoterStatus(this.Identity, person.Identity) != InternalPollVoterStatus.CanVote)
             {
                 throw new InvalidOperationException("Voter status is not open");
             }
@@ -87,18 +87,18 @@ namespace Activizr.Logic.Governance
                 voteGeography = person.Geography;
             }
 
-            PirateDb.GetDatabase().CloseInternalPollVoter(this.Identity, person.Identity, ipAddress);
+            PirateDb.GetDatabaseForWriting().CloseInternalPollVoter(this.Identity, person.Identity, ipAddress);
             return MeetingElectionVote.Create(this, voteGeography);
         }
 
         public InternalPollVoterStatus GetVoterStatus (Person person)
         {
-            return PirateDb.GetDatabase().GetInternalPollVoterStatus(this.Identity, person.Identity);
+            return PirateDb.GetDatabaseForReading().GetInternalPollVoterStatus(this.Identity, person.Identity);
         }
 
         public Dictionary<int,int> GetCandidatePersonMap()
         {
-            return PirateDb.GetDatabase().GetCandidateIdPersonIdMap(this.Identity);
+            return PirateDb.GetDatabaseForReading().GetCandidateIdPersonIdMap(this.Identity);
         }
 
         public MeetingElectionVoters GetClosedVoters()
@@ -118,7 +118,7 @@ namespace Activizr.Logic.Governance
             {
                 if (value != base.VotingOpen)
                 {
-                    PirateDb.GetDatabase().SetInternalPollVotingOpen(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetInternalPollVotingOpen(this.Identity, value);
                     base.VotingOpen = value;
                 }
             }
@@ -131,7 +131,7 @@ namespace Activizr.Logic.Governance
             {
                 if (value != base.RunningOpen)
                 {
-                    PirateDb.GetDatabase().SetInternalPollRunningOpen(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetInternalPollRunningOpen(this.Identity, value);
                     base.RunningOpen = value;
                 }
             }

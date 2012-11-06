@@ -15,7 +15,7 @@ namespace Activizr.Logic.Support
         {
             Documents newInstance =
                 FromArray(
-                    PirateDb.GetDatabase().GetDocumentsForForeignObject(
+                    PirateDb.GetDatabaseForReading().GetDocumentsForForeignObject(
                         Document.GetDocumentTypeForObject(identifiableObject), identifiableObject.Identity));
 
             newInstance.sourceObject = identifiableObject;

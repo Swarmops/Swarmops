@@ -26,7 +26,7 @@ namespace Activizr.Logic.Cache
             {
                 if (loadCache || lastRefresh.AddMinutes(cacheLifeSpanMinutes) < DateTime.Now)
                 {
-                    __geographyCache = PirateDb.GetDatabase().GetHashedGeographies();
+                    __geographyCache = PirateDb.GetDatabaseForReading().GetHashedGeographies();
                     lastRefresh = DateTime.Now;
                     loadCache = false;
                 }
@@ -241,8 +241,8 @@ namespace Activizr.Logic.Cache
 
         static public void SetGeographyName (int geographyId, string name)
         {
-            PirateDb.GetDatabase().SetGeographyName(geographyId, name);
-            BasicGeography geo = PirateDb.GetDatabase().GetGeography(geographyId);
+            PirateDb.GetDatabaseForWriting().SetGeographyName(geographyId, name);
+            BasicGeography geo = PirateDb.GetDatabaseForReading().GetGeography(geographyId);
             Dictionary<int, List<BasicGeography>> hashedGeographies = GetHashedGeographies();
             hashedGeographies[geographyId][0] = geo;
         }
@@ -251,12 +251,12 @@ namespace Activizr.Logic.Cache
          * Might be handled....
                 public GeographyLevel[] GetGeographyLevelsAtGeographyId (int geographyId)
                 {
-                    return PirateDb.GetDatabase().GetGeographyLevelsAtGeographyId(geographyId);
+                    return PirateDb.GetDatabaseForReading().GetGeographyLevelsAtGeographyId(geographyId);
                 }
 
                 public int[] GetGeographyIdsFromLevel (int countryId, GeographyLevel level)
                 {
-                    return PirateDb.GetDatabase().GetGeographyIdsFromLevel(countryId, level);
+                    return PirateDb.GetDatabaseForReading().GetGeographyIdsFromLevel(countryId, level);
                 }
         ************************/
 

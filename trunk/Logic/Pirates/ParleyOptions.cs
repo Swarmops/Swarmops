@@ -18,17 +18,17 @@ namespace Activizr.Logic.Pirates
         {
             if (includeInactive)
             {
-                return FromArray(PirateDb.GetDatabase().GetParleyOptions(parley));
+                return FromArray(PirateDb.GetDatabaseForReading().GetParleyOptions(parley));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabase().GetParleyOptions(parley, DatabaseCondition.ActiveTrue));
+                return FromArray(PirateDb.GetDatabaseForReading().GetParleyOptions(parley, DatabaseCondition.ActiveTrue));
             }
         }
 
         public static ParleyOptions ForParleyAttendee (ParleyAttendee attendee)
         {
-            int[] parleyOptionIds = PirateDb.GetDatabase().GetParleyAttendeeOptions(attendee.Identity);
+            int[] parleyOptionIds = PirateDb.GetDatabaseForReading().GetParleyAttendeeOptions(attendee.Identity);
 
             return FromIdentities(parleyOptionIds);
         }

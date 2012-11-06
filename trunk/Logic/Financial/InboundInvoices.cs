@@ -28,7 +28,7 @@ namespace Activizr.Logic.Financial
         /// <returns>The list of inbound invoices.</returns>
         public static InboundInvoices ForOrganization (Organization organization, bool includeClosed)
         {
-            return FromArray (PirateDb.GetDatabase().GetInboundInvoices(organization,
+            return FromArray (PirateDb.GetDatabaseForReading().GetInboundInvoices(organization,
                                                              includeClosed
                                                                  ? DatabaseCondition.None
                                                                  : DatabaseCondition.OpenTrue));

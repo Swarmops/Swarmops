@@ -23,7 +23,7 @@ namespace Activizr.Logic.Governance
         {
             if (!cache.ContainsKey(internalPollCandidateId))
             {
-                cache [internalPollCandidateId] = FromBasic(PirateDb.GetDatabase().GetInternalPollCandidate(internalPollCandidateId));
+                cache [internalPollCandidateId] = FromBasic(PirateDb.GetDatabaseForReading().GetInternalPollCandidate(internalPollCandidateId));
             }
 
             return cache[internalPollCandidateId];
@@ -32,7 +32,7 @@ namespace Activizr.Logic.Governance
         public static MeetingElectionCandidate FromPersonAndPoll (Person person, MeetingElection poll)
         {
             MeetingElectionCandidates candidates =
-                MeetingElectionCandidates.FromArray(PirateDb.GetDatabase().GetInternalPollCandidates(person, poll));
+                MeetingElectionCandidates.FromArray(PirateDb.GetDatabaseForReading().GetInternalPollCandidates(person, poll));
 
             if (candidates.Count == 0)
             {
@@ -51,7 +51,7 @@ namespace Activizr.Logic.Governance
 
         public static MeetingElectionCandidate Create (MeetingElection poll, Person person, string candidacyStatement)
         {
-            return FromIdentity (PirateDb.GetDatabase().CreateInternalPollCandidate(poll.Identity, person.Identity, candidacyStatement));
+            return FromIdentity (PirateDb.GetDatabaseForWriting().CreateInternalPollCandidate(poll.Identity, person.Identity, candidacyStatement));
         }
 
         private static Dictionary<int, MeetingElectionCandidate> cache;
@@ -121,12 +121,12 @@ namespace Activizr.Logic.Governance
 
         public void SetSortOrder(string sortOrder)
         {
-            PirateDb.GetDatabase().SetInternalPollCandidateSortOrder(this.Identity, sortOrder);
+            PirateDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder(this.Identity, sortOrder);
         }
 
         public void RandomizeSortOrder()
         {
-            PirateDb.GetDatabase().SetInternalPollCandidateSortOrder(this.Identity, System.Guid.NewGuid().ToString());
+            PirateDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder(this.Identity, System.Guid.NewGuid().ToString());
         }
 
         public new string CandidacyStatement
@@ -137,7 +137,7 @@ namespace Activizr.Logic.Governance
             {
                 base.CandidacyStatement = value;
                 cache[this.Identity] = this;  // Replace cache instance
-                PirateDb.GetDatabase().SetInternalPollCandidateStatement(this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetInternalPollCandidateStatement(this.Identity, value);
             }
         }
     }

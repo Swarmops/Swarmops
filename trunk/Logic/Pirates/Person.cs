@@ -56,20 +56,20 @@ namespace Activizr.Logic.Pirates
 
         public bool IsActivist
         {
-            get { return PirateDb.GetDatabase().GetActivistStatus(Identity); }
+            get { return PirateDb.GetDatabaseForReading().GetActivistStatus(Identity); }
         }
 
         public new virtual string Name
         {
             get { return base.Name.Replace("|", " "); }
-            set { PirateDb.GetDatabase().SetPersonName(Identity, value); }
+            set { PirateDb.GetDatabaseForWriting().SetPersonName(Identity, value); }
         }
 
 
         public new virtual string Street
         {
             get { return base.Street; }
-            set { PirateDb.GetDatabase().SetPersonStreet(Identity, value); }
+            set { PirateDb.GetDatabaseForWriting().SetPersonStreet(Identity, value); }
         }
 
 
@@ -78,7 +78,7 @@ namespace Activizr.Logic.Pirates
             get { return base.PostalCode; }
             set
             {
-                PirateDb.GetDatabase().SetPersonPostalCode(Identity, value);
+                PirateDb.GetDatabaseForWriting().SetPersonPostalCode(Identity, value);
                 base.PostalCode = value;
                 ResolveGeography();
             }
@@ -90,7 +90,7 @@ namespace Activizr.Logic.Pirates
             get { return base.CityName; }
             set
             {
-                PirateDb.GetDatabase().SetPersonCity(Identity, value);
+                PirateDb.GetDatabaseForWriting().SetPersonCity(Identity, value);
                 base.CityName = value;
                 ResolveGeography();
             }
@@ -102,7 +102,7 @@ namespace Activizr.Logic.Pirates
             get { return Country.FromIdentity(base.CountryId); }
             set
             {
-                PirateDb.GetDatabase().SetPersonCountry(Identity, value.Identity);
+                PirateDb.GetDatabaseForWriting().SetPersonCountry(Identity, value.Identity);
                 base.CountryId = value.Identity;
                 ResolveGeography();
             }
@@ -147,14 +147,14 @@ namespace Activizr.Logic.Pirates
             {
                 if (GeographyId == 0)
                 {
-                    PirateDb.GetDatabase().SetPersonGeography (this.Identity, ResolveGeography());
+                    PirateDb.GetDatabaseForWriting().SetPersonGeography (this.Identity, ResolveGeography());
                 }
 
                 return Geography.FromIdentity(GeographyId);
             }
             set
             {
-                PirateDb.GetDatabase().SetPersonGeography(Identity, value.Identity);
+                PirateDb.GetDatabaseForWriting().SetPersonGeography(Identity, value.Identity);
                 base.GeographyId = value.Identity;
             }
         }
@@ -165,7 +165,7 @@ namespace Activizr.Logic.Pirates
             {
                 if (base.GeographyId == 0)
                 {
-                    PirateDb.GetDatabase().SetPersonGeography(this.Identity, ResolveGeography());
+                    PirateDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, ResolveGeography());
                 }
 
                 return base.GeographyId;
@@ -176,27 +176,27 @@ namespace Activizr.Logic.Pirates
         public new virtual string Email
         {
             get { return base.Email; }
-            set { PirateDb.GetDatabase().SetPersonEmail(Identity, value); }
+            set { PirateDb.GetDatabaseForWriting().SetPersonEmail(Identity, value); }
         }
 
 
         public new virtual string Phone
         {
             get { return base.Phone; }
-            set { PirateDb.GetDatabase().SetPersonPhone(Identity, value); }
+            set { PirateDb.GetDatabaseForWriting().SetPersonPhone(Identity, value); }
         }
 
 
         public new virtual DateTime Birthdate
         {
             get { return base.Birthdate; }
-            set { PirateDb.GetDatabase().SetPersonBirthdate(Identity, value); }
+            set { PirateDb.GetDatabaseForWriting().SetPersonBirthdate(Identity, value); }
         }
 
         public new virtual PersonGender Gender
         {
             get { return base.Gender; }
-            set { PirateDb.GetDatabase().SetPersonGender(Identity, value); }
+            set { PirateDb.GetDatabaseForWriting().SetPersonGender(Identity, value); }
         }
 
 
@@ -362,7 +362,7 @@ namespace Activizr.Logic.Pirates
 
         public static Person FromIdentity (int personId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetPerson(personId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetPerson(personId));
         }
 
         public Authority GetAuthority ()
@@ -377,12 +377,12 @@ namespace Activizr.Logic.Pirates
                 return GetMemberships();
             }
 
-            return Memberships.FromArray(PirateDb.GetDatabase().GetMemberships(this));
+            return Memberships.FromArray(PirateDb.GetDatabaseForReading().GetMemberships(this));
         }
 
         public Memberships GetMemberships ()
         {
-            return Memberships.FromArray(PirateDb.GetDatabase().GetMemberships(this, DatabaseCondition.ActiveTrue));
+            return Memberships.FromArray(PirateDb.GetDatabaseForReading().GetMemberships(this, DatabaseCondition.ActiveTrue));
         }
 
 
@@ -494,7 +494,7 @@ namespace Activizr.Logic.Pirates
                                      string postal, string city, string countryCode, DateTime dateOfBirth,
                                      PersonGender gender)
         {
-            BasicCountry country = PirateDb.GetDatabase().GetCountry(countryCode);
+            BasicCountry country = PirateDb.GetDatabaseForReading().GetCountry(countryCode);
 
             // Clean data
 
@@ -508,7 +508,7 @@ namespace Activizr.Logic.Pirates
             phone = LogicServices.CleanNumber(phone);
             postal = postal.Replace(" ", "").Trim();
 
-            int personId = PirateDb.GetDatabase().CreatePerson(name, email, phone, street, postal, city,
+            int personId = PirateDb.GetDatabaseForWriting().CreatePerson(name, email, phone, street, postal, city,
                                                                country.Identity, dateOfBirth, gender);
 
 
@@ -547,7 +547,7 @@ namespace Activizr.Logic.Pirates
         {
             if (null == this.subscriptions)
             {
-                this.subscriptions = PirateDb.GetDatabase().GetNewsletterFeedsForSubscriber(PersonId);
+                this.subscriptions = PirateDb.GetDatabaseForReading().GetNewsletterFeedsForSubscriber(PersonId);
             }
 
             if (this.subscriptions.ContainsKey(newsletterFeedId))
@@ -586,14 +586,14 @@ namespace Activizr.Logic.Pirates
             bool? subscription = HasExplicitSubscription(newsletterFeedId);
             if (subscription != null && subscription != subscribe)
             {
-                PirateDb.GetDatabase().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
+                PirateDb.GetDatabaseForWriting().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
             }
             else
             {
                 NewsletterFeed feed = NewsletterFeed.FromIdentity(newsletterFeedId);
                 if (subscribe != feed.DefaultSubscribed)
                 {
-                    PirateDb.GetDatabase().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
+                    PirateDb.GetDatabaseForWriting().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
                 }
             }
             this.subscriptions[newsletterFeedId] = subscribe;
@@ -602,7 +602,7 @@ namespace Activizr.Logic.Pirates
 
         public void DeleteSubscriptionData ()
         {
-            PirateDb.GetDatabase().DeletePersonNewsletterSubscriptions(Identity);
+            PirateDb.GetDatabaseForWriting().DeletePersonNewsletterSubscriptions(Identity);
         }
 
 
@@ -627,7 +627,7 @@ namespace Activizr.Logic.Pirates
         public virtual void SetPassword (string newPassword)
         {
             string hash = Authentication.GeneratePasswordHash(Identity, newPassword);
-            PirateDb.GetDatabase().SetPersonPasswordHash(Identity, hash);
+            PirateDb.GetDatabaseForWriting().SetPersonPasswordHash(Identity, hash);
             base.PasswordHash = hash;
         }
 
@@ -637,7 +637,7 @@ namespace Activizr.Logic.Pirates
             get { return base.PasswordHash; }
             set
             {
-                PirateDb.GetDatabase().SetPersonPasswordHash(Identity, value);
+                PirateDb.GetDatabaseForWriting().SetPersonPasswordHash(Identity, value);
                 base.PasswordHash = value;
             }
         }
@@ -651,13 +651,13 @@ namespace Activizr.Logic.Pirates
 
         private void SendNotice (string subject, string body, int organizationId, bool asOfficer)
         {
-            int mailId = PirateDb.GetDatabase().CreateOutboundMail(
+            int mailId = PirateDb.GetDatabaseForWriting().CreateOutboundMail(
                 asOfficer ? MailAuthorType.PirateWeb : MailAuthorType.Service, 0, subject,
                 body, OutboundMail.PriorityNormal, 0, GeographyId, organizationId, DateTime.Now);
-            PirateDb.GetDatabase().CreateOutboundMailRecipient(mailId, Identity, asOfficer, (int)OutboundMailRecipient.RecipientType.Person);
-            PirateDb.GetDatabase().SetOutboundMailRecipientCount(mailId, 1);
-            PirateDb.GetDatabase().SetOutboundMailResolved(mailId);
-            PirateDb.GetDatabase().SetOutboundMailReadyForPickup(mailId);
+            PirateDb.GetDatabaseForWriting().CreateOutboundMailRecipient(mailId, Identity, asOfficer, (int)OutboundMailRecipient.RecipientType.Person);
+            PirateDb.GetDatabaseForWriting().SetOutboundMailRecipientCount(mailId, 1);
+            PirateDb.GetDatabaseForWriting().SetOutboundMailResolved(mailId);
+            PirateDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup(mailId);
         }
 
         public void SendNotice (string subject, string body, int organizationId)
@@ -697,12 +697,12 @@ namespace Activizr.Logic.Pirates
 
         public void CreateActivist (bool isPublic, bool isConfirmed)
         {
-            PirateDb.GetDatabase().CreateActivist(Identity, isPublic, isConfirmed);
+            PirateDb.GetDatabaseForWriting().CreateActivist(Identity, isPublic, isConfirmed);
         }
 
         public void TerminateActivist ()
         {
-            PirateDb.GetDatabase().TerminateActivist(Identity);
+            PirateDb.GetDatabaseForWriting().TerminateActivist(Identity);
         }
 
         public PersonRole AddRole (RoleType roleType, Organization organization, Geography geography)

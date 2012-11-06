@@ -26,12 +26,12 @@ namespace Activizr.Logic.Financial
 
         public static Payment FromIdentity (int paymentId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetPayment(paymentId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetPayment(paymentId));
         }
 
         public static Payment ForOutboundInvoice (OutboundInvoice invoice)
         {
-            BasicPayment[] array = PirateDb.GetDatabase().GetPayments(invoice);
+            BasicPayment[] array = PirateDb.GetDatabaseForReading().GetPayments(invoice);
 
             if (array.Length == 0)
             {
@@ -61,7 +61,7 @@ namespace Activizr.Logic.Financial
             PWEvents.CreateEvent(EventSource.PirateWeb, EventType.OutboundInvoicePaid, 0, group.Organization.Identity,
                                  Geography.RootIdentity, 0, invoice.Identity, string.Empty);
 
-            return FromIdentity (PirateDb.GetDatabase().CreatePayment(group.Identity, amount, reference, fromAccount, key, hasImage,
+            return FromIdentity (PirateDb.GetDatabaseForWriting().CreatePayment(group.Identity, amount, reference, fromAccount, key, hasImage,
                                                  invoice.Identity));
         }
 
@@ -74,7 +74,7 @@ namespace Activizr.Logic.Financial
             invoice.SetPaid();
 
             PaymentGroup group = PaymentGroup.Create(organization, dateTime, currency, createdByPerson);
-            Payment newPayment = FromIdentity(PirateDb.GetDatabase().CreatePayment(group.Identity, amountCents, string.Empty, string.Empty, string.Empty, false,
+            Payment newPayment = FromIdentity(PirateDb.GetDatabaseForWriting().CreatePayment(group.Identity, amountCents, string.Empty, string.Empty, string.Empty, false,
                                                  invoice.Identity));
             group.AmountCents = amountCents;
 
@@ -155,7 +155,7 @@ namespace Activizr.Logic.Financial
         {
             if (!string.IsNullOrEmpty(data))
             {
-                PirateDb.GetDatabase().CreatePaymentInformation(this.Identity, type, data);
+                PirateDb.GetDatabaseForWriting().CreatePaymentInformation(this.Identity, type, data);
             }
         }
 

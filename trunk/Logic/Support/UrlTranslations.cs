@@ -6,7 +6,7 @@ namespace Activizr.Logic.Support
     {
         public static bool Create (string url)
         {
-            int id = PirateDb.GetDatabase().CreateUrlTranslation(url);
+            int id = PirateDb.GetDatabaseForWriting().CreateUrlTranslation(url);
 
             if (id > 0)
             {
@@ -20,12 +20,12 @@ namespace Activizr.Logic.Support
 
         public static void Set (string originalUrl, string translatedUrl)
         {
-            PirateDb.GetDatabase().SetUrlTranslation(originalUrl, translatedUrl);
+            PirateDb.GetDatabaseForWriting().SetUrlTranslation(originalUrl, translatedUrl);
         }
 
         public static string[] GetUntranslated (int maxCount)
         {
-            return PirateDb.GetDatabase().GetUntranslatedUrls(maxCount);
+            return PirateDb.GetDatabaseForReading().GetUntranslatedUrls(maxCount);
         }
     }
 }

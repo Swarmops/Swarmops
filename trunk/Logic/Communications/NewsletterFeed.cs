@@ -28,7 +28,7 @@ namespace Activizr.Logic.Communications
 
         public static NewsletterFeed FromIdentity (int identity)
         {
-            return FromBasic(PirateDb.GetDatabase().GetNewsletterFeed((int)identity));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetNewsletterFeed((int)identity));
         }
 
         public static NewsletterFeed FromBasic (BasicNewsletterFeed basic)

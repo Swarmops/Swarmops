@@ -22,29 +22,29 @@ namespace Activizr.Logic.Governance
 
         public static Ballot FromIdentity (int ballotId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetBallot(ballotId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetBallot(ballotId));
         }
 
         public static Ballot Create (Election election, Organization organization, Geography geography, string name, int ballotCount, string deliveryAddress)
         {
-            return FromIdentity(PirateDb.GetDatabase().CreateBallot(election.Identity, name, organization.Identity, geography.Identity, ballotCount, deliveryAddress));
+            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateBallot(election.Identity, name, organization.Identity, geography.Identity, ballotCount, deliveryAddress));
         }
 
         public void AddCandidate (Person person)
         {
-            PirateDb.GetDatabase().CreateBallotCandidate(this.Identity, person.Identity);
+            PirateDb.GetDatabaseForWriting().CreateBallotCandidate(this.Identity, person.Identity);
         }
 
         public void ClearCandidates()
         {
-            PirateDb.GetDatabase().ClearBallotCandidates(this.Identity);
+            PirateDb.GetDatabaseForWriting().ClearBallotCandidates(this.Identity);
         }
 
         public People Candidates
         {
             get
             {
-                return People.FromIdentities(PirateDb.GetDatabase().GetBallotCandidates(this.Identity), true);
+                return People.FromIdentities(PirateDb.GetDatabaseForReading().GetBallotCandidates(this.Identity), true);
             }
         }
 
@@ -59,7 +59,7 @@ namespace Activizr.Logic.Governance
             { 
                 if (value != base.Count) {
                     base.Count = value;
-                    PirateDb.GetDatabase().SetBallotCount(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetBallotCount(this.Identity, value);
                 }
             }
             get { return base.Count; }
@@ -72,7 +72,7 @@ namespace Activizr.Logic.Governance
                 if (value != base.DeliveryAddress)
                 {
                     base.DeliveryAddress = value;
-                    PirateDb.GetDatabase().SetBallotDeliveryAddress(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetBallotDeliveryAddress(this.Identity, value);
                 }
             }
             get { return base.DeliveryAddress; }

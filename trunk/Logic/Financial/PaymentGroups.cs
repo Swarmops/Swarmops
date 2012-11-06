@@ -19,11 +19,11 @@ namespace Activizr.Logic.Financial
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabase().GetPaymentGroups(organization));
+                return FromArray(PirateDb.GetDatabaseForReading().GetPaymentGroups(organization));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabase().GetPaymentGroups(organization, DatabaseCondition.OpenTrue));
+                return FromArray(PirateDb.GetDatabaseForReading().GetPaymentGroups(organization, DatabaseCondition.OpenTrue));
             }
         }
     }

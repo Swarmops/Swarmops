@@ -24,7 +24,7 @@ namespace Activizr.Logic.Financial
 
         public static Refund FromIdentity (int refundId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetRefund(refundId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetRefund(refundId));
         }
 
         public static Refund Create (Payment payment, Person creatingPerson)
@@ -39,7 +39,7 @@ namespace Activizr.Logic.Financial
                 throw new ArgumentException("Refund amount cannot exceed payment amount");
             }
 
-            Refund refund = FromIdentity(PirateDb.GetDatabase().CreateRefund(payment.Identity, creatingPerson.Identity, amountCents));
+            Refund refund = FromIdentity(PirateDb.GetDatabaseForWriting().CreateRefund(payment.Identity, creatingPerson.Identity, amountCents));
 
             PWEvents.CreateEvent(EventSource.PirateWeb, EventType.RefundCreated, 0, refund.Payment.OutboundInvoice.Organization.Identity,
                      Geography.RootIdentity, 0, refund.Identity, string.Empty);

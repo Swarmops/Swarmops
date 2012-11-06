@@ -10,9 +10,9 @@ namespace Activizr.Logic.Support
 
         public string this [string key]
         {
-            get { return PirateDb.GetDatabase().GetKeyValue (key); }
+            get { return PirateDb.GetDatabaseForReading().GetKeyValue (key); }
 
-            set { PirateDb.GetDatabase().SetKeyValue (key, value); }
+            set { PirateDb.GetDatabaseForWriting().SetKeyValue (key, value); }
         }
 
         public static Persistence Key
@@ -23,7 +23,7 @@ namespace Activizr.Logic.Support
         /* -- Obsolete, used only once in migration MSSQL => MySQL
         public static Dictionary<string,string> All
         {
-            get { return PirateDb.GetDatabase().GetOldKeyValues(); }  // Migration-only function -- returns all key/value pairs
+            get { return PirateDb.GetDatabaseForReading().GetOldKeyValues(); }  // Migration-only function -- returns all key/value pairs
         }*/
     }
 }

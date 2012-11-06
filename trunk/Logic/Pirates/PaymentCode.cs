@@ -35,7 +35,7 @@ namespace Activizr.Logic.Pirates
 
         public static PaymentCode FromCode (string paymentCode)
         {
-            return FromBasic(PirateDb.GetDatabase().GetPaymentCode(paymentCode));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetPaymentCode(paymentCode));
         }
 
 
@@ -49,9 +49,9 @@ namespace Activizr.Logic.Pirates
 
                 try
                 {
-                    int codeId = PirateDb.GetDatabase().CreatePaymentCode(randomCode, phoneNumber, personId);
+                    int codeId = PirateDb.GetDatabaseForWriting().CreatePaymentCode(randomCode, phoneNumber, personId);
                     success = true;
-                    return FromBasic(PirateDb.GetDatabase().GetPaymentCode(randomCode));
+                    return FromBasic(PirateDb.GetDatabaseForReading().GetPaymentCode(randomCode));
                 }
                 catch (Exception)
                 {
@@ -72,7 +72,7 @@ namespace Activizr.Logic.Pirates
 
         public void Claim (int claimingPersonId)
         {
-            PirateDb.GetDatabase().ClaimPaymentCode(Identity, claimingPersonId);
+            PirateDb.GetDatabaseForWriting().ClaimPaymentCode(Identity, claimingPersonId);
         }
 
         private static string CreateRandomCode (int length)

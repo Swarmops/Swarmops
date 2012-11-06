@@ -26,26 +26,26 @@ namespace Activizr.Logic.Financial
 
         public static FinancialTransaction FromIdentity (int financialTransactionId)
         {
-            return FromBasic (PirateDb.GetDatabase().GetFinancialTransaction (financialTransactionId));
+            return FromBasic (PirateDb.GetDatabaseForReading().GetFinancialTransaction (financialTransactionId));
         }
 
         public static FinancialTransaction FromDependency (IHasIdentity dependency)
         {
-            return FromBasic(PirateDb.GetDatabase().GetFinancialTransactionFromDependency(dependency));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetFinancialTransactionFromDependency(dependency));
         }
 
 
         public static FinancialTransaction FromImportKey (Organization organization, string importKey)
         {
             return
-                FromBasic(PirateDb.GetDatabase().GetFinancialTransactionFromImportKey(organization.Identity, importKey));
+                FromBasic(PirateDb.GetDatabaseForReading().GetFinancialTransactionFromImportKey(organization.Identity, importKey));
         }
 
 
         public static FinancialTransaction ImportWithStub (int organizationId, DateTime dateTime, int financialAccountId,
                                                            Int64 amountCents, string description, string importHash, int personId)
         {
-            int transactionId = PirateDb.GetDatabase().CreateFinancialTransactionStub (organizationId, dateTime,
+            int transactionId = PirateDb.GetDatabaseForWriting().CreateFinancialTransactionStub (organizationId, dateTime,
                                                                                        financialAccountId, amountCents,
                                                                                        description, importHash, personId);
 
@@ -60,7 +60,7 @@ namespace Activizr.Logic.Financial
 
         public static FinancialTransaction Create (int organizationId, DateTime dateTime, string description)
         {
-            int transactionId = PirateDb.GetDatabase().CreateFinancialTransaction (organizationId, dateTime, description);
+            int transactionId = PirateDb.GetDatabaseForWriting().CreateFinancialTransaction (organizationId, dateTime, description);
             return FromIdentity (transactionId);
         }
 
@@ -70,7 +70,7 @@ namespace Activizr.Logic.Financial
         {
             get
             {
-                return FinancialTransactionRows.FromArray (PirateDb.GetDatabase().GetFinancialTransactionRows (Identity));
+                return FinancialTransactionRows.FromArray (PirateDb.GetDatabaseForReading().GetFinancialTransactionRows (Identity));
             }
         }
 
@@ -88,7 +88,7 @@ namespace Activizr.Logic.Financial
             set 
             { 
                 base.Description = value;
-                PirateDb.GetDatabase().SetFinancialTransactionDescription (this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetFinancialTransactionDescription (this.Identity, value);
             }
         }
 
@@ -129,7 +129,7 @@ namespace Activizr.Logic.Financial
                 return;
             }
 
-            PirateDb.GetDatabase().CreateFinancialTransactionRow(Identity, financialAccountId, amountCents, personId);
+            PirateDb.GetDatabaseForWriting().CreateFinancialTransactionRow(Identity, financialAccountId, amountCents, personId);
         }
 
         private FinancialTransaction ContinuedTransaction
@@ -167,7 +167,7 @@ namespace Activizr.Logic.Financial
         {
             set
             {
-                PirateDb.GetDatabase().SetFinancialTransactionDependency(
+                PirateDb.GetDatabaseForWriting().SetFinancialTransactionDependency(
                     this.Identity, GetFinancialDependencyType(value), value.Identity);
             }
             get
@@ -179,7 +179,7 @@ namespace Activizr.Logic.Financial
                 FinancialDependencyType dependencyType;
                 int foreignId;
 
-                PirateDb.GetDatabase().GetFinancialTransactionDependency(this.Identity, out dependencyType,
+                PirateDb.GetDatabaseForReading().GetFinancialTransactionDependency(this.Identity, out dependencyType,
                                                                          out foreignId);
 
                 if (foreignId == 0)

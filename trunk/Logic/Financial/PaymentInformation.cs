@@ -37,7 +37,7 @@ namespace Activizr.Logic.Financial
         
         public static PaymentInformationList ForPayment (Payment payment)
         {
-            BasicPaymentInformation[] basicInfoList = PirateDb.GetDatabase().GetPaymentInformation(payment.Identity);
+            BasicPaymentInformation[] basicInfoList = PirateDb.GetDatabaseForReading().GetPaymentInformation(payment.Identity);
 
             return FromArray(basicInfoList);
         }

@@ -40,7 +40,7 @@ namespace Activizr.Logic.Structure
         {
 
             return FromBasic(OrganizationCache.GetOrganization(identity));
-            //return FromBasic(PirateDb.GetDatabase().GetOrganization(identity));
+            //return FromBasic(PirateDb.GetDatabaseForReading().GetOrganization(identity));
         }
 
         public static Organization FromBasic (BasicOrganization basic)
@@ -107,13 +107,13 @@ namespace Activizr.Logic.Structure
         {
             return Organizations.FromArray(OrganizationCache.GetOrganizationLine(Identity));
 
-            //return Organizations.FromArray(PirateDb.GetDatabase().GetOrganizationLine(Identity));
+            //return Organizations.FromArray(PirateDb.GetDatabaseForReading().GetOrganizationLine(Identity));
         }
 
         public Organizations GetTree ()
         {
             return Organizations.FromArray(OrganizationCache.GetOrganizationTree(Identity));
-            //return Organizations.FromArray(PirateDb.GetDatabase().GetOrganizationTree(Identity));
+            //return Organizations.FromArray(PirateDb.GetDatabaseForReading().GetOrganizationTree(Identity));
         }
 
         public int GetMemberCount ()
@@ -123,7 +123,7 @@ namespace Activizr.Logic.Structure
 
         public NewsletterFeeds GetNewsletterFeeds ()
         {
-            return NewsletterFeeds.FromArray(PirateDb.GetDatabase().GetNewsletterFeedsForOrganization(Identity));
+            return NewsletterFeeds.FromArray(PirateDb.GetDatabaseForReading().GetNewsletterFeedsForOrganization(Identity));
         }
 
 
@@ -262,7 +262,7 @@ namespace Activizr.Logic.Structure
                 if (this.uptakeGeographies == null)
                 {
                     this.uptakeGeographies =
-                        Geographies.FromIdentities(PirateDb.GetDatabase().GetOrganizationUptakeGeographyIds(Identity));
+                        Geographies.FromIdentities(PirateDb.GetDatabaseForReading().GetOrganizationUptakeGeographyIds(Identity));
                 }
 
                 return this.uptakeGeographies.AsReadOnly();
@@ -271,7 +271,7 @@ namespace Activizr.Logic.Structure
 
         public UptakeGeography[] GetUptakeGeographies (bool others)
         {
-            BasicUptakeGeography[] basics = PirateDb.GetDatabase().GetOrganizationUptakeGeographies(Identity, others);
+            BasicUptakeGeography[] basics = PirateDb.GetDatabaseForReading().GetOrganizationUptakeGeographies(Identity, others);
             List<UptakeGeography> retVal = new List<UptakeGeography>();
             foreach (BasicUptakeGeography b in basics)
             {
@@ -579,7 +579,7 @@ namespace Activizr.Logic.Structure
         {
             Organizations line = GetLine();
             BasicPersonRole[] treasurers
-                = PirateDb.GetDatabase().GetPeopleWithRoleType(RoleType.OrganizationTreasurer, line.Identities, new int[] { });
+                = PirateDb.GetDatabaseForReading().GetPeopleWithRoleType(RoleType.OrganizationTreasurer, line.Identities, new int[] { });
 
             if (treasurers.Length == 0)
                 throw new Exception("No Treasurer Found");

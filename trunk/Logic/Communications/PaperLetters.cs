@@ -33,7 +33,7 @@ namespace Activizr.Logic.Communications
 
         public static PaperLetters ForOrganization (int organizationId)
         {
-            return FromArray(PirateDb.GetDatabase().GetPaperLettersForOrganization(organizationId));
+            return FromArray(PirateDb.GetDatabaseForReading().GetPaperLettersForOrganization(organizationId));
         }
 
         public static PaperLetters ForPerson (Person person)
@@ -43,7 +43,7 @@ namespace Activizr.Logic.Communications
 
         public static PaperLetters ForPerson (int personId)
         {
-            return FromArray(PirateDb.GetDatabase().GetPaperLettersForPerson(personId));
+            return FromArray(PirateDb.GetDatabaseForReading().GetPaperLettersForPerson(personId));
         }
     }
 }

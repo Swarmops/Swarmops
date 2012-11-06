@@ -24,7 +24,7 @@ namespace Activizr.Logic.Financial
 
         static public Salary FromIdentity (int salaryId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetSalary(salaryId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetSalary(salaryId));
         }
 
         static public Salary Create (int payrollItemId, DateTime payoutDate)
@@ -135,7 +135,7 @@ namespace Activizr.Logic.Financial
         static private Salary Create (PayrollItem payrollItem, DateTime payoutDate, Int64 netSalaryCents, Int64 subtractiveTaxCents, Int64 additiveTaxCents)
         {
             return
-                FromIdentity(PirateDb.GetDatabase().CreateSalary(payrollItem.Identity, payoutDate, payrollItem.BaseSalaryCents, netSalaryCents,
+                FromIdentity(PirateDb.GetDatabaseForWriting().CreateSalary(payrollItem.Identity, payoutDate, payrollItem.BaseSalaryCents, netSalaryCents,
                                                                  subtractiveTaxCents, additiveTaxCents));
         }
 
@@ -185,7 +185,7 @@ namespace Activizr.Logic.Financial
             {
                 if (value != base.NetSalaryCents)
                 {
-                    PirateDb.GetDatabase().SetSalaryNetSalary(this.Identity, value);
+                    PirateDb.GetDatabaseForWriting().SetSalaryNetSalary(this.Identity, value);
                     base.NetSalaryCents = value;
                 }
             }
@@ -239,7 +239,7 @@ namespace Activizr.Logic.Financial
             get { return base.NetPaid; }
             set
             {
-                PirateDb.GetDatabase().SetSalaryNetPaid(this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetSalaryNetPaid(this.Identity, value);
                 base.NetPaid = value;
                 base.Open = !(base.NetPaid && base.TaxPaid);
             }
@@ -250,7 +250,7 @@ namespace Activizr.Logic.Financial
             get { return base.TaxPaid; }
             set
             {
-                PirateDb.GetDatabase().SetSalaryTaxPaid(this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetSalaryTaxPaid(this.Identity, value);
                 base.NetPaid = value;
                 base.Open = !(base.NetPaid && base.TaxPaid);
             }
@@ -287,9 +287,9 @@ namespace Activizr.Logic.Financial
 
         public void Attest(Person attester)
         {
-            PirateDb.GetDatabase().CreateFinancialValidation(FinancialValidationType.Attestation,
+            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
                 FinancialDependencyType.Salary, this.Identity, DateTime.Now, attester.Identity, this.NetSalaryCents / 100.0);
-            PirateDb.GetDatabase().SetSalaryAttested(this.Identity, true);
+            PirateDb.GetDatabaseForWriting().SetSalaryAttested(this.Identity, true);
         }
 
         public void Deattest(Person deattester)

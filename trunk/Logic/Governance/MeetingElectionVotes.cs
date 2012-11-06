@@ -11,7 +11,7 @@ namespace Activizr.Logic.Governance
     {
         static public MeetingElectionVotes ForInternalPoll (MeetingElection poll)
         {
-            return FromArray(PirateDb.GetDatabase().GetInternalPollVotes(poll));
+            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPollVotes(poll));
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Activizr.Logic.Support
 
         public static Document FromIdentity (int documentId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetDocument(documentId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetDocument(documentId));
         }
 
         public static Document FromBasic (BasicDocument basicDocument)
@@ -31,7 +31,7 @@ namespace Activizr.Logic.Support
         public static Document Create (string serverFileName, string clientFileName, Int64 fileSize, 
             string description, IHasIdentity identifiableObject, Person uploader)
         {
-            int newDocumentId = PirateDb.GetDatabase().
+            int newDocumentId = PirateDb.GetDatabaseForWriting().
                 CreateDocument(serverFileName, clientFileName, fileSize, description, GetDocumentTypeForObject(identifiableObject), identifiableObject.Identity, uploader.Identity);
 
             return FromIdentity(newDocumentId);
@@ -78,14 +78,14 @@ namespace Activizr.Logic.Support
             get { return base.ServerFileName; }
             set
             {
-                PirateDb.GetDatabase().SetDocumentServerFileName(this.Identity, value);
+                PirateDb.GetDatabaseForWriting().SetDocumentServerFileName(this.Identity, value);
                 base.ServerFileName = value;
             }
         }
 
         public void SetForeignObject (IHasIdentity foreignObject)
         {
-            PirateDb.GetDatabase().SetDocumentForeignObject(this.Identity, GetDocumentTypeForObject(foreignObject), foreignObject.Identity);
+            PirateDb.GetDatabaseForWriting().SetDocumentForeignObject(this.Identity, GetDocumentTypeForObject(foreignObject), foreignObject.Identity);
         }
 
 

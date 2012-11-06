@@ -23,7 +23,7 @@ namespace Activizr.Logic.Communications
             set
             {
                 base.Body = value;
-                PirateDb.GetDatabase().SetAutoMail (this); // saves changes
+                PirateDb.GetDatabaseForWriting().SetAutoMail (this); // saves changes
             }
         }
 
@@ -36,7 +36,7 @@ namespace Activizr.Logic.Communications
 
         public static AutoMail FromTypeOrganizationAndGeography (AutoMailType type, Organization org, Geography geo)
         {
-            BasicAutoMail basic = PirateDb.GetDatabase().GetAutoMail (type, org.Identity, geo.Identity);
+            BasicAutoMail basic = PirateDb.GetDatabaseForReading().GetAutoMail (type, org.Identity, geo.Identity);
 
             if (basic == null)
             {
@@ -55,7 +55,7 @@ namespace Activizr.Logic.Communications
         public static AutoMail Create (AutoMailType type, Organization org, Geography geo,
                                        Person author, string title, string body)
         {
-            PirateDb.GetDatabase().SetAutoMail (type, org.Identity, geo.Identity,
+            PirateDb.GetDatabaseForWriting().SetAutoMail (type, org.Identity, geo.Identity,
                                                 author == null ? 0 : author.Identity, title, body);
             return FromTypeOrganizationAndGeography (type, org, geo);
         }
@@ -67,7 +67,7 @@ namespace Activizr.Logic.Communications
 
         public static BasicAutoMail[] GetAllForMigration()
         {
-            return PirateDb.GetDatabase().GetAllAutoMailsForMigration();
+            return PirateDb.GetDatabaseForReading().GetAllAutoMailsForMigration();
         }
     }
 }

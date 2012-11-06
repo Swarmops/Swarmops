@@ -53,28 +53,28 @@ namespace Activizr.Logic.Pirates
         /// <param name="organizationId">The organization churned from.</param>
         public static void LogChurn (int personId, int organizationId)
         {
-            PirateDb.GetDatabase().LogChurnData (personId, organizationId, true, DateTime.Now);
+            PirateDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, true, DateTime.Now);
         }
 
         public static void LogRetention (int personId, int organizationId, DateTime expiry)
         {
-            PirateDb.GetDatabase().LogChurnData (personId, organizationId, false, expiry);
+            PirateDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, false, expiry);
         }
 
         public static void LogRetention (int personId, int organizationId, DateTime expiry, DateTime decisionDateTime)
         {
-            PirateDb.GetDatabase().LogChurnData (personId, organizationId, false, expiry, decisionDateTime);
+            PirateDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, false, expiry, decisionDateTime);
         }
 
 
         public static ChurnData ForOrganization (Organization organization)
         {
-            return FromArray (PirateDb.GetDatabase().GetChurnData (organization));
+            return FromArray (PirateDb.GetDatabaseForReading().GetChurnData (organization));
         }
 
         public static ChurnData ForPerson (Person person)
         {
-            return FromArray (PirateDb.GetDatabase().GetChurnData (person));
+            return FromArray (PirateDb.GetDatabaseForReading().GetChurnData (person));
         }
 
 
@@ -85,7 +85,7 @@ namespace Activizr.Logic.Pirates
 
         public static ChurnData GetByDate (Organization organization, DateTime dateLower, DateTime dateUpper)
         {
-            return FromArray (PirateDb.GetDatabase().GetChurnDataForOrganization (organization, dateLower, dateUpper));
+            return FromArray (PirateDb.GetDatabaseForReading().GetChurnDataForOrganization (organization, dateLower, dateUpper));
         }
 
 

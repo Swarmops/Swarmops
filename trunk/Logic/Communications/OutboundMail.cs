@@ -58,7 +58,7 @@ namespace Activizr.Logic.Communications
         /// <returns>An OutboundMail from the database</returns>
         public static OutboundMail FromIdentity (int outboundMailId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetOutboundMail(outboundMailId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetOutboundMail(outboundMailId));
         }
 
 
@@ -75,7 +75,7 @@ namespace Activizr.Logic.Communications
                                            Organization organization, Geography geography, DateTime releaseDateTime)
         {
             return
-                FromIdentity(PirateDb.GetDatabase().CreateOutboundMail(MailAuthorType.Person, author.Identity, title,
+                FromIdentity(PirateDb.GetDatabaseForWriting().CreateOutboundMail(MailAuthorType.Person, author.Identity, title,
                                                                          body, mailPriority, mailType,
                                                                          geography.Identity, organization.Identity,
                                                                          releaseDateTime));
@@ -115,7 +115,7 @@ namespace Activizr.Logic.Communications
                                            int organizationId, int geographyId, DateTime releaseDateTime)
         {
 
-            int mailID = PirateDb.GetDatabase().CreateOutboundMail(authorType, 0, title,
+            int mailID = PirateDb.GetDatabaseForWriting().CreateOutboundMail(authorType, 0, title,
                                            body, mailPriority, mailType, geographyId,
                                            organizationId, releaseDateTime);
 
@@ -130,7 +130,7 @@ namespace Activizr.Logic.Communications
         {
             List<OutboundMail> retList = new List<OutboundMail>();
             BasicOutboundMail[] mails
-                    = PirateDb.GetDatabase().GetDuplicateOutboundMail(this.AuthorType, AuthorPersonId, Title,
+                    = PirateDb.GetDatabaseForReading().GetDuplicateOutboundMail(this.AuthorType, AuthorPersonId, Title,
                              Body, MailPriority, MailType, GeographyId, OrganizationId, afterTime, recipientId);
             foreach (BasicOutboundMail mail in mails)
             {
@@ -142,7 +142,7 @@ namespace Activizr.Logic.Communications
 
         public static OutboundMail GetFirstUnresolved ()
         {
-            BasicOutboundMail[] mails = PirateDb.GetDatabase().GetTopUnresolvedOutboundMail(1);
+            BasicOutboundMail[] mails = PirateDb.GetDatabaseForReading().GetTopUnresolvedOutboundMail(1);
 
             if (mails.Length > 0)
             {
@@ -154,7 +154,7 @@ namespace Activizr.Logic.Communications
 
         public static OutboundMail GetFirstUnprocessed ()
         {
-            BasicOutboundMail[] mails = PirateDb.GetDatabase().GetTopUnprocessedOutboundMail(1);
+            BasicOutboundMail[] mails = PirateDb.GetDatabaseForReading().GetTopUnprocessedOutboundMail(1);
 
             if (mails.Length > 0)
             {
@@ -173,7 +173,7 @@ namespace Activizr.Logic.Communications
             get { return base.StartProcessDateTime; }
             set
             {
-                PirateDb.GetDatabase().SetOutboundMailStartProcess(Identity);
+                PirateDb.GetDatabaseForWriting().SetOutboundMailStartProcess(Identity);
                 base.StartProcessDateTime = DateTime.Now;
             }
         }
@@ -238,7 +238,7 @@ namespace Activizr.Logic.Communications
         {
             return
                 OutboundMailRecipients.FromArray(
-                    PirateDb.GetDatabase().GetTopOutboundMailRecipients(Identity, batchSize), this);
+                    PirateDb.GetDatabaseForReading().GetTopOutboundMailRecipients(Identity, batchSize), this);
         }
 
         public void AddRecipient (Person person, bool asOfficer)
@@ -269,12 +269,12 @@ namespace Activizr.Logic.Communications
 
         public void AddRecipient (int personId, bool asOfficer)
         {
-            PirateDb.GetDatabase().CreateOutboundMailRecipient(Identity, personId, asOfficer, (int)OutboundMailRecipient.RecipientType.Person);
+            PirateDb.GetDatabaseForWriting().CreateOutboundMailRecipient(Identity, personId, asOfficer, (int)OutboundMailRecipient.RecipientType.Person);
         }
 
         private void AddReporterRecipient (int identity)
         {
-            PirateDb.GetDatabase().CreateOutboundMailRecipient(Identity, identity, false, (int)OutboundMailRecipient.RecipientType.Reporter);
+            PirateDb.GetDatabaseForWriting().CreateOutboundMailRecipient(Identity, identity, false, (int)OutboundMailRecipient.RecipientType.Reporter);
         }
         #endregion
 
@@ -282,37 +282,37 @@ namespace Activizr.Logic.Communications
 
         public void SetReadyForPickup ()
         {
-            PirateDb.GetDatabase().SetOutboundMailReadyForPickup(Identity);
+            PirateDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup(Identity);
             base.ReadyForPickup = true;
         }
 
         public void SetResolved ()
         {
-            PirateDb.GetDatabase().SetOutboundMailResolved(Identity);
+            PirateDb.GetDatabaseForWriting().SetOutboundMailResolved(Identity);
             base.Resolved = true;
         }
 
         public void SetProcessed ()
         {
-            PirateDb.GetDatabase().SetOutboundMailProcessed(Identity);
+            PirateDb.GetDatabaseForWriting().SetOutboundMailProcessed(Identity);
             base.Processed = true;
         }
 
         public void SetRecipientCount (int recipientCount)
         {
-            PirateDb.GetDatabase().SetOutboundMailRecipientCount(Identity, recipientCount);
+            PirateDb.GetDatabaseForWriting().SetOutboundMailRecipientCount(Identity, recipientCount);
             base.RecipientCount = recipientCount;
         }
 
         public void IncrementSuccesses ()
         {
-            PirateDb.GetDatabase().IncrementOutboundMailSuccesses(Identity);
+            PirateDb.GetDatabaseForWriting().IncrementOutboundMailSuccesses(Identity);
             base.RecipientsSuccess++;
         }
 
         public void IncrementFailures ()
         {
-            PirateDb.GetDatabase().IncrementOutboundMailFailures(Identity);
+            PirateDb.GetDatabaseForWriting().IncrementOutboundMailFailures(Identity);
             base.RecipientsFail++;
         }
 

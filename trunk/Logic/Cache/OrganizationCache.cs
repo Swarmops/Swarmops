@@ -27,7 +27,7 @@ namespace Activizr.Logic.Cache
                 {
                     if (needsReload)
                     {
-                        __organizationCache = PirateDb.GetDatabase().GetHashedOrganizations();
+                        __organizationCache = PirateDb.GetDatabaseForReading().GetHashedOrganizations();
                         __cachedUptakeGeographies = null;
                         lastRefresh = DateTime.Now;
                         needsReload = false;
@@ -72,7 +72,7 @@ namespace Activizr.Logic.Cache
                                                 bool AutoAssignNewMembers, int DefaultCountryId)
         {
 
-            int Identity = PirateDb.GetDatabase().CreateOrganization(ParentOrganizationId,
+            int Identity = PirateDb.GetDatabaseForWriting().CreateOrganization(ParentOrganizationId,
                                      NameInternational,
                                      Name,
                                      NameShort,
@@ -90,7 +90,7 @@ namespace Activizr.Logic.Cache
             string NameShort, string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers,
             bool AutoAssignNewMembers, int DefaultCountryId, int OrganizationId)
         {
-            PirateDb.GetDatabase().UpdateOrganization(ParentOrganizationId, NameInternational, Name, NameShort, Domain,
+            PirateDb.GetDatabaseForWriting().UpdateOrganization(ParentOrganizationId, NameInternational, Name, NameShort, Domain,
                 MailPrefix, AnchorGeographyId, AcceptsMembers, AutoAssignNewMembers, DefaultCountryId,
                 OrganizationId);
 
@@ -106,7 +106,7 @@ namespace Activizr.Logic.Cache
             // Let this be for the moment, new and old parents need to be loaded as well. Better right now to reload the whole cache.
             //lock (loadCacheLock)
             //{
-            //    __organizationCache[objectId][0] = Organization.FromBasic(PirateDb.GetDatabase().GetOrganization(objectId));
+            //    __organizationCache[objectId][0] = Organization.FromBasic(PirateDb.GetDatabaseForReading().GetOrganization(objectId));
             //}
 
         }
@@ -268,7 +268,7 @@ namespace Activizr.Logic.Cache
 
         internal static void DeleteOrganization (int p)
         {
-            PirateDb.GetDatabase().DeleteOrganization(p);
+            PirateDb.GetDatabaseForWriting().DeleteOrganization(p);
             needsReload = true;
         }
 
@@ -289,7 +289,7 @@ namespace Activizr.Logic.Cache
 
                 if (__cachedUptakeGeographies == null)
                 {
-                    __cachedUptakeGeographies = PirateDb.GetDatabase().GetAllOrganizationUptakeGeographyIds();
+                    __cachedUptakeGeographies = PirateDb.GetDatabaseForReading().GetAllOrganizationUptakeGeographyIds();
                 }
             }
             return __cachedUptakeGeographies;
@@ -362,7 +362,7 @@ namespace Activizr.Logic.Cache
 
         internal static void AddOrgUptakeGeography (int p, int geoId)
         {
-            PirateDb.GetDatabase().AddOrgUptakeGeography(p, geoId);
+            PirateDb.GetDatabaseForWriting().AddOrgUptakeGeography(p, geoId);
             lock (loadCacheLock)
             {
                 __cachedUptakeGeographies = null;
@@ -372,7 +372,7 @@ namespace Activizr.Logic.Cache
 
         internal static void DeleteOrgUptakeGeography (int p, int geoId)
         {
-            PirateDb.GetDatabase().DeleteOrgUptakeGeography(p, geoId);
+            PirateDb.GetDatabaseForWriting().DeleteOrgUptakeGeography(p, geoId);
             lock (loadCacheLock)
             {
                 __cachedUptakeGeographies = null;

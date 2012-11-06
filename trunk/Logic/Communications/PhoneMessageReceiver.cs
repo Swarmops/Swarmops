@@ -405,7 +405,7 @@ namespace Activizr.Logic.Communications
             {
                 for (int i = 0; i < phoneNumbers.Length; i++)
                 {
-                    BasicPerson[] people = PirateDb.GetDatabase().GetPeopleFromPhoneNumber("SE", phoneNumbers[i]);
+                    BasicPerson[] people = PirateDb.GetDatabaseForReading().GetPeopleFromPhoneNumber("SE", phoneNumbers[i]);
                     foreach (BasicPerson bp in people)
                     {
                         //Only add if not seen.

@@ -519,7 +519,7 @@ namespace Activizr.Logic.Communications
 
         public static MailTemplate FromIdentity (int templateId)
         {
-            BasicMailTemplate basic = PirateDb.GetDatabase().GetMailTemplateById(templateId);
+            BasicMailTemplate basic = PirateDb.GetDatabaseForReading().GetMailTemplateById(templateId);
             return FromBasic(basic);
         }
 
@@ -531,7 +531,7 @@ namespace Activizr.Logic.Communications
 
         public static List<MailTemplate> GetAll ()
         {
-            BasicMailTemplate[] basic = PirateDb.GetDatabase().GetAllMailTemplates();
+            BasicMailTemplate[] basic = PirateDb.GetDatabaseForReading().GetAllMailTemplates();
             List<MailTemplate> resultlist = new List<MailTemplate>();
             foreach (BasicMailTemplate bt in basic)
             {
@@ -550,7 +550,7 @@ namespace Activizr.Logic.Communications
                                     int organizationId,
                                     string templateBody)
         {
-            int retId = PirateDb.GetDatabase().SetMailTemplate(0,
+            int retId = PirateDb.GetDatabaseForWriting().SetMailTemplate(0,
                                                     templateName,
                                                     languageCode,
                                                     countryCode,
@@ -564,7 +564,7 @@ namespace Activizr.Logic.Communications
         public void Update ()
         {
             TemplateBody = TemplateBody; //to make sure the HTMlDoc is taken into account
-            PirateDb.GetDatabase().SetMailTemplate(this); // saves changes
+            PirateDb.GetDatabaseForWriting().SetMailTemplate(this); // saves changes
             MailTemplateCache.loadCache = true;
         } 
 

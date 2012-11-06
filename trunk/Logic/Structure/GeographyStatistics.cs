@@ -21,7 +21,7 @@ namespace Activizr.Logic.Structure
 
         public static GeographyStatistics GeneratePresent (int[] memberCountForOrganizations)
         {
-            Dictionary<int, int> voterCounts = PirateDb.GetDatabase().GetGeographyVoterCounts();
+            Dictionary<int, int> voterCounts = PirateDb.GetDatabaseForReading().GetGeographyVoterCounts();
             var result = new GeographyStatistics();
 
             // Step 1 - tally the leaf nodes

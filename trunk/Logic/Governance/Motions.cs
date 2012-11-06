@@ -11,7 +11,7 @@ namespace Activizr.Logic.Governance
     {
         static public Motions ForMeeting (Meeting meeting)
         {
-            return Motions.FromArray(PirateDb.GetDatabase().GetMotions(meeting));
+            return Motions.FromArray(PirateDb.GetDatabaseForReading().GetMotions(meeting));
         }
     }
 }

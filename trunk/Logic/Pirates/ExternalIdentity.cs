@@ -96,22 +96,22 @@ namespace Activizr.Logic.Pirates
 
         public static ExternalIdentity FromIdentity (int externalIdentityId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetExternalIdentity(externalIdentityId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetExternalIdentity(externalIdentityId));
         }
 
         public static ExternalIdentity FromUserIdAndType (string userid, ExternalIdentityType type)
         {
-            return FromBasic(PirateDb.GetDatabase().GetExternalIdentityFromUserIdAndType(userid, type));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetExternalIdentityFromUserIdAndType(userid, type));
         }
 
         public static ExternalIdentity FromPersonIdAndType (int persId, ExternalIdentityType type)
         {
-            return FromBasic(PirateDb.GetDatabase().GetExternalIdentityFromPersonIdAndType(persId, type));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetExternalIdentityFromPersonIdAndType(persId, type));
         }
 
         public static List<ExternalIdentity> ExternalItentitiesForPerson (int persId)
         {
-            List<BasicExternalIdentity> templist = PirateDb.GetDatabase().GetExternalIdentities(persId);
+            List<BasicExternalIdentity> templist = PirateDb.GetDatabaseForReading().GetExternalIdentities(persId);
 
             List<ExternalIdentity> retlist = new List<ExternalIdentity>();
 
@@ -131,7 +131,7 @@ namespace Activizr.Logic.Pirates
                                         int AttachedToPerson,
                                         ExternalIdentityType TypeOfAccount)
         {
-            return FromBasic(PirateDb.GetDatabase().SetExternalIdentity(
+            return FromBasic(PirateDb.GetDatabaseForWriting().SetExternalIdentity(
                 this.Identity, TypeOfAccount, ExternalSystem,
                 UserID, Password, AttachedToPerson));
 
@@ -146,7 +146,7 @@ namespace Activizr.Logic.Pirates
         {
             try
             {
-                return FromBasic(PirateDb.GetDatabase().SetExternalIdentity(
+                return FromBasic(PirateDb.GetDatabaseForWriting().SetExternalIdentity(
                     0, TypeOfAccount, ExternalSystem,
                     UserID, Password, AttachedToPerson));
             }

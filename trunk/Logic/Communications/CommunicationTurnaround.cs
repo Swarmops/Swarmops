@@ -23,13 +23,13 @@ namespace Activizr.Logic.Communications
         public static CommunicationTurnaround FromIdentity (Organization organization, int communicationTypeId, int communicationId)
         {
             return
-                FromBasic(PirateDb.GetDatabase().GetCommunicationTurnaround(organization.Identity, communicationTypeId,
+                FromBasic(PirateDb.GetDatabaseForReading().GetCommunicationTurnaround(organization.Identity, communicationTypeId,
                                                                             communicationId));
         }
 
         public static CommunicationTurnaround Create (Organization organization, int communicationId, DateTime dateTimeOpened)
         {
-            PirateDb.GetDatabase().CreateCommunicationTurnaround(organization.Identity, 1, communicationId, dateTimeOpened);
+            PirateDb.GetDatabaseForWriting().CreateCommunicationTurnaround(organization.Identity, 1, communicationId, dateTimeOpened);
             return FromIdentity(organization, 1, communicationId);
         }
 
@@ -52,7 +52,7 @@ namespace Activizr.Logic.Communications
                 personId = person.Identity;
             }
 
-            PirateDb.GetDatabase().SetCommunicationTurnaroundResponded(this.OrganizationId, this.CommunicationTypeId, this.CommunicationId, dateTime, personId);
+            PirateDb.GetDatabaseForWriting().SetCommunicationTurnaroundResponded(this.OrganizationId, this.CommunicationTypeId, this.CommunicationId, dateTime, personId);
 
             base.Responded = true;
         }
@@ -71,7 +71,7 @@ namespace Activizr.Logic.Communications
                 personId = person.Identity;
             }
 
-            PirateDb.GetDatabase().SetCommunicationTurnaroundClosed(this.OrganizationId, this.CommunicationTypeId, this.CommunicationId, dateTime, personId);
+            PirateDb.GetDatabaseForWriting().SetCommunicationTurnaroundClosed(this.OrganizationId, this.CommunicationTypeId, this.CommunicationId, dateTime, personId);
 
             base.Open = false;
         }

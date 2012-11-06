@@ -11,12 +11,12 @@ namespace Activizr.Logic.Governance
     {
         static public MotionAmendments ForMotion (Motion motion)
         {
-            return MotionAmendments.FromArray(PirateDb.GetDatabase().GetMotionAmendments(motion));
+            return MotionAmendments.FromArray(PirateDb.GetDatabaseForReading().GetMotionAmendments(motion));
         }
 
         static public MotionAmendments ForMeeting (Meeting meeting)
         {
-            return FromArray(PirateDb.GetDatabase().GetMotionAmendmentsForMeeting(meeting.Identity));
+            return FromArray(PirateDb.GetDatabaseForReading().GetMotionAmendmentsForMeeting(meeting.Identity));
         }
     }
 }

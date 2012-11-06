@@ -46,7 +46,7 @@ namespace Activizr.Logic.Financial
 
         public static FinancialTransactionRow FromIdentity (int identity)
         {
-            return FromBasic (PirateDb.GetDatabase().GetFinancialTransactionRow (identity));
+            return FromBasic (PirateDb.GetDatabaseForReading().GetFinancialTransactionRow (identity));
         }
 
         public string AccountName

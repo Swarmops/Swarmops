@@ -22,35 +22,35 @@ namespace Activizr.Logic.Governance
 
         static public MeetingElectionVote FromIdentity (int internalPollVoteId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetInternalPollVote(internalPollVoteId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetInternalPollVote(internalPollVoteId));
         }
 
         static public MeetingElectionVote FromVerificationCode (string verificationCode)
         {
-            return FromBasic(PirateDb.GetDatabase().GetInternalPollVote(verificationCode));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetInternalPollVote(verificationCode));
         }
 
         static public MeetingElectionVote Create (MeetingElection poll, Geography voteGeography)
         {
             return
-                FromIdentity(PirateDb.GetDatabase().CreateInternalPollVote(poll.Identity, voteGeography.Identity,
+                FromIdentity(PirateDb.GetDatabaseForWriting().CreateInternalPollVote(poll.Identity, voteGeography.Identity,
                                                                            Authentication.
                                                                                CreateRandomPassword(12)));
         }
 
         public void AddDetail (int position, MeetingElectionCandidate candidate)
         {
-            PirateDb.GetDatabase().CreateInternalPollVoteDetail(this.Identity, candidate.Identity, position);            
+            PirateDb.GetDatabaseForWriting().CreateInternalPollVoteDetail(this.Identity, candidate.Identity, position);            
         }
 
         public void Clear()
         {
-            PirateDb.GetDatabase().ClearInternalPollVote(this.Identity);
+            PirateDb.GetDatabaseForWriting().ClearInternalPollVote(this.Identity);
         }
 
         public int[] SelectedCandidateIdsInOrder
         {
-            get { return PirateDb.GetDatabase().GetInternalPollVoteDetails(this.Identity); }
+            get { return PirateDb.GetDatabaseForReading().GetInternalPollVoteDetails(this.Identity); }
         }
 
         /*

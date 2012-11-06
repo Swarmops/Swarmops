@@ -287,12 +287,12 @@ namespace Activizr.Logic.Structure
 
         public int GetMemberCount ()
         {
-            return PirateDb.GetDatabase().GetMemberCountForOrganizations(Identities);
+            return PirateDb.GetDatabaseForReading().GetMemberCountForOrganizations(Identities);
         }
 
         public int GetMemberCountForGeographies (Geographies geographies)
         {
-            return PirateDb.GetDatabase().GetMemberCountForOrganizationsAndGeographies(Identities,
+            return PirateDb.GetDatabaseForReading().GetMemberCountForOrganizationsAndGeographies(Identities,
                                                                                        geographies.Identities);
         }
 
@@ -300,7 +300,7 @@ namespace Activizr.Logic.Structure
         {
             var result = new Dictionary<int, bool>();
 
-            BasicPersonRole[] personRoles = PirateDb.GetDatabase().GetRolesForOrganizationsGeographies(Identities,
+            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(Identities,
                                                                                            geographies.Identities);
 
             foreach (BasicPersonRole role in personRoles)
@@ -316,7 +316,7 @@ namespace Activizr.Logic.Structure
         {
             var result = new Dictionary<int, bool>();
 
-            BasicPersonRole[] personRoles = PirateDb.GetDatabase().GetRolesForOrganizationsGeographies(Identities,
+            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(Identities,
                                                                                            geographies.Identities);
 
             foreach (BasicPersonRole role in personRoles)

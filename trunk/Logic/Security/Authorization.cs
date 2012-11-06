@@ -127,7 +127,7 @@ namespace Activizr.Logic.Security
                     Dictionary<Permission, List<RoleType>> tempDict
                         = new Dictionary<Permission, List<RoleType>>();
                     _PermissonsPerRoleTypeDict = new Dictionary<RoleType, Dictionary<Permission, bool>>();
-                    BasicPermission[] allPermissions = PirateDb.GetDatabase().GetPermissionsTable();
+                    BasicPermission[] allPermissions = PirateDb.GetDatabaseForReading().GetPermissionsTable();
                     foreach (BasicPermission bp in allPermissions)
                     {
                         RoleType role = bp.RoleType;
@@ -166,7 +166,7 @@ namespace Activizr.Logic.Security
 
         public static Authority GetPersonAuthority (int personId)
         {
-            return Authority.FromBasic(PirateDb.GetDatabase().GetPersonAuthority(Person.FromIdentity(personId)));
+            return Authority.FromBasic(PirateDb.GetDatabaseForReading().GetPersonAuthority(Person.FromIdentity(personId)));
         }
 
 
@@ -441,13 +441,13 @@ namespace Activizr.Logic.Security
                 return people;
             }
 
-            PirateDb database = PirateDb.GetDatabase();
+            PirateDb databaseRead = PirateDb.GetDatabaseForReading();
 
             if (gracePeriod == -1)
                 gracePeriod = Membership.GracePeriod;
 
-            Dictionary<int, List<BasicMembership>> membershipTable = database.GetMembershipsForPeople(people.Identities, gracePeriod);
-            Dictionary<int, int> geographyTable = database.GetPeopleGeographies(people.Identities);
+            Dictionary<int, List<BasicMembership>> membershipTable = databaseRead.GetMembershipsForPeople(people.Identities, gracePeriod);
+            Dictionary<int, int> geographyTable = databaseRead.GetPeopleGeographies(people.Identities);
 
             var clearedPeople = new Dictionary<int, Person>();
 
@@ -570,7 +570,7 @@ namespace Activizr.Logic.Security
 
             // Get ALL unlisted people from database. They're not that many. Build a hashtable with them.
 
-            int[] anonymousPersonIds = PirateDb.GetDatabase().GetObjectsByOptionalData(ObjectType.Person, ObjectOptionalDataType.Anonymous, "1");
+            int[] anonymousPersonIds = PirateDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, ObjectOptionalDataType.Anonymous, "1");
 
             foreach (int anonymousPersonId in anonymousPersonIds)
             {
@@ -736,7 +736,7 @@ namespace Activizr.Logic.Security
                 line.Add(Organization.FromIdentity(p));
 
             BasicPersonRole[] basPersons
-                = PirateDb.GetDatabase().GetPeopleWithRoleType(roleType, line.Identities, new int[] { });
+                = PirateDb.GetDatabaseForReading().GetPeopleWithRoleType(roleType, line.Identities, new int[] { });
 
             List<int> retList = new List<int>();
 

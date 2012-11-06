@@ -21,13 +21,13 @@ namespace Activizr.Logic.Governance
 
         public static Motion FromIdentity (int motionId)
         {
-            return FromBasic(PirateDb.GetDatabase().GetMotion(motionId));
+            return FromBasic(PirateDb.GetDatabaseForReading().GetMotion(motionId));
         }
 
         public static Motion Create (Meeting meeting, Person submittingPerson, Person creatingPerson, string title, string text, string decisionPoints)
         {
             return
-                Motion.FromIdentity(PirateDb.GetDatabase().CreateMotion(meeting.Identity, submittingPerson.Identity, creatingPerson.Identity, title, text, decisionPoints));
+                Motion.FromIdentity(PirateDb.GetDatabaseForWriting().CreateMotion(meeting.Identity, submittingPerson.Identity, creatingPerson.Identity, title, text, decisionPoints));
         }
 
         public MotionAmendments Amendments

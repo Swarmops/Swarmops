@@ -14,7 +14,7 @@ namespace Activizr.Logic.Pirates
     {
         public static Volunteers GetOpen()
         {
-            return FromArray(PirateDb.GetDatabase().GetOpenVolunteers());
+            return FromArray(PirateDb.GetDatabaseForReading().GetOpenVolunteers());
         }
 
         public static Volunteers FromArray (BasicVolunteer[] basicArray)
