@@ -19,9 +19,9 @@ namespace Activizr.Utility
         {
             try
             {
-                PirateDb.GetDatabase().CreateExceptionLogEntry(DateTime.Now, "ExceptionMail", e);
+                PirateDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.Now, "ExceptionMail", e);
             }
-            catch 
+            catch
             {
             }
 
