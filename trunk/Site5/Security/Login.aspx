@@ -13,7 +13,7 @@
     <link href="../Style/style-v5.css" rel="stylesheet" type="text/css" />
     <title>Activizr Beta - Login</title>
 </head>
-<!-- Test string: "<%= PirateDb.Configuration.TestString() %>" -->
+
 <body class="loginpage">
     <div class="center640px">
         <div style="height:100px">&nbsp;</div>
