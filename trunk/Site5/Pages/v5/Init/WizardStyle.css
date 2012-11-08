@@ -13,8 +13,8 @@
   padding:0;
   border: 0px solid #CCC;
   overflow:visible;
-  float:left;
-  width:980px;/* */
+  /* float:left;
+  width:980px; */
 }
 .swMain .stepContainer {
   display:block;
