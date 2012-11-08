@@ -25,6 +25,11 @@ namespace Activizr.Database
 
                 return true;
             }
+
+            public static string TestString()
+            {
+                return DatabaseConnect.Default.Admin;
+            }
         }
     }
 }

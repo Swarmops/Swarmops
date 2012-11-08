@@ -34,15 +34,14 @@
   margin: 0;
   padding:5px;    
   border: 1px solid #CCC; 
-  font: normal 12px Verdana, Arial, Helvetica, sans-serif; 
+  font: normal 12px Ubuntu, sans-serif; 
   color:#5A5655;   
   background-color:#F8F8F8;  
   height:300px;
   text-align:left;
   overflow:auto;    
   z-index:88; 
-  -webkit-border-radius: 5px;
-  -moz-border-radius  : 5px;
+  border-radius: 5px;
   width:720px;
   clear:both;
 }
@@ -62,9 +61,7 @@
   text-align:left;
   overflow:auto;    
   z-index:88; 
-  -webkit-border-radius: 5px;
-  -moz-border-radius  : 5px;
-
+  border-radius: 5px;
 }
 
 .swMain .stepContainer .StepTitle {
@@ -73,14 +70,13 @@
   margin:0;   
   border:1px solid #E0E0E0;
   padding:5px;   
-  font: bold 16px Verdana, Arial, Helvetica, sans-serif; 
+  font: bold 16px Ubuntu, sans-serif; 
   color:#5A5655;   
   background-color:#E0E0E0;
   clear:both;
   text-align:left; 
   z-index:88;
-  -webkit-border-radius: 5px;
-  -moz-border-radius  : 5px;    
+  border-radius: 5px;
 }
 .swMain ul.anchor {
   position: relative;
@@ -110,12 +106,11 @@
   float:left;
   margin:0;
   padding:3px;
-  height:70px;
-  width:230px;
+  height:55px;
+  width:180px;
   text-decoration: none;
   outline-style:none;
-  -moz-border-radius  : 5px;
-  -webkit-border-radius: 5px;
+  border-radius: 5px;
   z-index:99;
 }
 .swMain ul.anchor li a .stepNumber{
@@ -125,7 +120,7 @@
   text-align: center;
   padding:5px;
   padding-top:0;
-  font: bold 45px Verdana, Arial, Helvetica, sans-serif;
+  font: 300 45px Ubuntu, sans-serif;
 }
 .swMain ul.anchor li a .stepDesc{
   position:relative;
@@ -134,23 +129,32 @@
   text-align: left;
   padding:5px;
   width:70%;
-  font: bold 20px Verdana, Arial, Helvetica, sans-serif;
+  font: bold 20px Ubuntu, sans-serif;
 }
 .swMain ul.anchor li a .stepDesc small{
-  font: normal 12px Verdana, Arial, Helvetica, sans-serif;
+  font: normal 12px Ubuntu, sans-serif;
 }
 .swMain ul.anchor li a.selected{
   color:#F8F8F8;
   background: #EA8511;  /* EA8511 */
   border: 1px solid #EA8511;
   cursor:text;
-  -moz-box-shadow: 1px 5px 10px #888;
-  -webkit-box-shadow: 1px 5px 10px #888;
-  box-shadow: 1px 5px 10px #888;
+	box-shadow: 2px 2px 4px #7F5500;
+  
+	background-color: #FFBC37;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC145', endColorstr='#F0AB22');  /* MSIE */
+	background: -moz-linear-gradient(top, #FFC145, #F0AB22);  /* Mozilla */
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22)); /* Chrome, Safari */
+	text-shadow: #C78B15 0px 0px 3px, #C78B15 0px 0px 3px;
+	
+	border-color: #C78B15;
+	position: relative;
+	top: -1px;
+	left: -1px;
 }
 .swMain ul.anchor li a.selected:hover {
   color:#F8F8F8;  
-  background: #EA8511;  
+  /* background: #EA8511;  */
 }
 
 .swMain ul.anchor li a.done { 
@@ -159,11 +163,18 @@
   background: #8CC63F;  
   border: 1px solid #8CC63F;   
   z-index:99;
+	background-color: #A2BEFF;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B0C8FF', endColorstr='#86A6F0');  /* MSIE */
+	background: -moz-linear-gradient(top, #B0C8FF, #86A6F0);  /* Mozilla */
+	background: -webkit-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0)); /* Chrome, Safari */
+	text-shadow: #476EC7 0px 0px 3px, #476EC7 0px 0px 3px;
+	
+	border-color: #476EC7;
 }
 .swMain ul.anchor li a.done:hover {
-  color:#5A5655;  
-  background: #8CC63F; 
-  border: 1px solid #5A5655;   
+  /* background: #8CC63F; */
+	text-shadow: #1C397E 0px 0px 3px, #1C397E 0px 0px 3px;
+  border: 1px solid #1C397E;   
 }
 .swMain ul.anchor li a.disabled {
   color:#CCCCCC;  
@@ -192,14 +203,13 @@
   padding:5px;
   text-decoration: none;
   text-align: center;
-  font: bold 13px Verdana, Arial, Helvetica, sans-serif;
+  font: bold 13px Ubuntu, sans-serif;
   width:100px;
   color:#FFF;
   outline-style:none;
   background-color:   #5A5655;
   border: 1px solid #5A5655;
-  -moz-border-radius  : 5px; 
-  -webkit-border-radius: 5px;    
+  border-radius: 5px;    
 }
 .swMain .buttonDisabled {
   color:#F8F8F8  !important;
@@ -214,14 +224,13 @@
   padding:5px;
   text-decoration: none;
   text-align: center;
-  font: bold 13px Verdana, Arial, Helvetica, sans-serif;
+  font: bold 13px Ubuntu, sans-serif;
   width:100px;
   color:#FFF;
   outline-style:none;
   background-color:   #5A5655;
   border: 1px solid #5A5655;
-  -moz-border-radius  : 5px; 
-  -webkit-border-radius: 5px;    
+  border-radius: 5px;    
 }
 .swMain .buttonFinish {
   display:block;
@@ -230,14 +239,13 @@
   padding:5px;
   text-decoration: none;
   text-align: center;
-  font: bold 13px Verdana, Arial, Helvetica, sans-serif;
+  font: bold 13px Ubuntu, sans-serif;
   width:100px;
   color:#FFF;
   outline-style:none;
   background-color:   #5A5655;
   border: 1px solid #5A5655;
-  -moz-border-radius  : 5px; 
-  -webkit-border-radius: 5px;    
+  border-radius: 5px;    
 }
 
 /* Form Styles */
@@ -245,7 +253,7 @@
 .txtBox {
   border:1px solid #CCCCCC;
   color:#5A5655;
-  font:13px Verdana,Arial,Helvetica,sans-serif;
+  font:13px Ubuntu,sans-serif;
   padding:2px;
   width:430px;
 }
@@ -260,11 +268,10 @@
   margin: 2px 0 0 2px;
   padding:8px 10px 8px 40px;
   border: 1px solid #FFD700; 
-  font: bold 13px Verdana, Arial, Helvetica, sans-serif; 
+  font: bold 13px Ubuntu, sans-serif; 
   color:#5A5655;       
   background: #FFF url(../images/loader.gif) no-repeat 5px;  
-  -moz-border-radius  : 5px;
-  -webkit-border-radius: 5px;
+  border-radius: 5px;
   z-index:998;
 }
 .swMain .msgBox {
@@ -275,7 +282,7 @@
   padding:5px;
   border: 1px solid #FFD700; 
   background-color: #FFFFDD;  
-  font: normal 12px Verdana, Arial, Helvetica, sans-serif; 
+  font: normal 12px Ubuntu, sans-serif; 
   color:#5A5655;         
   -moz-border-radius  : 5px;
   -webkit-border-radius: 5px;
@@ -283,7 +290,7 @@
   min-width:200px;  
 }
 .swMain .msgBox .content {
-  font: normal 12px Verdana,Arial,Helvetica,sans-serif;
+  font: normal 12px Ubuntu,sans-serif;
   padding: 0px;
   float:left;
 }
