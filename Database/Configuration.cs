@@ -5,23 +5,26 @@ using System.Text;
 
 namespace Activizr.Database
 {
-    public class Configuration
+    public partial class PirateDb
     {
-        public bool IsConfigured()
+        public class Configuration
         {
-            return String.IsNullOrEmpty(DatabaseConnect.Default.Admin);
-        }
+            public static bool IsConfigured()
+            {
+                return String.IsNullOrEmpty(DatabaseConnect.Default.Admin);
+            }
 
-        public bool SetConfiguration (string readConnect, string writeConnect, string adminConnect)
-        {
-            DatabaseConnect.Default["Read"] = readConnect;
-            DatabaseConnect.Default["Write"] = writeConnect;
-            DatabaseConnect.Default["Admin"] = adminConnect;
-            DatabaseConnect.Default.Save();
+            public static bool SetConfiguration(string readConnect, string writeConnect, string adminConnect)
+            {
+                DatabaseConnect.Default["Read"] = readConnect;
+                DatabaseConnect.Default["Write"] = writeConnect;
+                DatabaseConnect.Default["Admin"] = adminConnect;
+                DatabaseConnect.Default.Save();
 
-            // TODO: Test a connect string to see if we can read, and return true only on success
+                // TODO: Test a connect string to see if we can read, and return true only on success
 
-            return true;
+                return true;
+            }
         }
     }
 }
