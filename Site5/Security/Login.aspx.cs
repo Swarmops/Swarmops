@@ -20,6 +20,7 @@ namespace Activizr.Pages.Security
             if (!PirateDb.Configuration.IsConfigured())
             {
                 Response.Redirect("/Pages/v5/Init/", true);
+                return;
             }
 
             // Unlock Telerik
@@ -33,7 +34,7 @@ namespace Activizr.Pages.Security
 
             if (!Request.IsSecureConnection)
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://localhost:"))
+                if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://localhost:") && Request.Url.ToString().StartsWith("http://activizr-"))
                 {
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
                 }
