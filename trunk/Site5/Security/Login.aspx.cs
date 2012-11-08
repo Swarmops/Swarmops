@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Activizr.Basic.Types;
+using Activizr.Database;
 using Activizr.Logic.Pirates;
 
 namespace Activizr.Pages.Security
@@ -14,6 +15,13 @@ namespace Activizr.Pages.Security
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Check if this is the first run ever. If so, redirect to Init.
+
+            if (!PirateDb.Configuration.IsConfigured())
+            {
+                Response.Redirect("/Pages/v5/Init/", true);
+            }
+
             // Unlock Telerik
 
             this.Application["Telerik.Web.UI.Key"] = "Activizr";

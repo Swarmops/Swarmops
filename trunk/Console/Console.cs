@@ -1740,7 +1740,7 @@ namespace Activizr
                     int geoId = Int32.Parse(parts[0]);
                     string designation = parts[1].Trim();
 
-                    PirateDb.GetDatabase().CreateGeographyOfficialDesignation(geoId, GeographyLevel.Municipality, 1, designation);
+                    PirateDb.GetDatabaseForWriting().CreateGeographyOfficialDesignation(geoId, GeographyLevel.Municipality, 1, designation);
                     line = reader.ReadLine();
                 }
             }
