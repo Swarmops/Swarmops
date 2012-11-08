@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" EnableViewState="true" Inherits="Activizr.Pages.Security.Login" %>
+<%@ Import Namespace="Activizr.Database" %>
 <%@ Import Namespace="Telerik.Web.UI" %>
 <%@ Register TagPrefix="telerik" Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" %>
 
@@ -12,6 +13,7 @@
     <link href="../Style/style-v5.css" rel="stylesheet" type="text/css" />
     <title>Activizr Beta - Login</title>
 </head>
+<!-- Test string: "<%= PirateDb.Configuration.TestString() %>" -->
 <body class="loginpage">
     <div class="center640px">
         <div style="height:100px">&nbsp;</div>
