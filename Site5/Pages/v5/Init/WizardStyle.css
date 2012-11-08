@@ -42,7 +42,7 @@
   overflow:auto;    
   z-index:88; 
   border-radius: 5px;
-  width:720px;
+  width:470px;
   clear:both;
 }
 
@@ -129,10 +129,10 @@
   text-align: left;
   padding:5px;
   width:70%;
-  font: bold 20px Ubuntu, sans-serif;
+  font: bold 15px Ubuntu, sans-serif;
 }
 .swMain ul.anchor li a .stepDesc small{
-  font: normal 12px Ubuntu, sans-serif;
+  font: normal 10px Ubuntu, sans-serif;
 }
 .swMain ul.anchor li a.selected{
   color:#F8F8F8;

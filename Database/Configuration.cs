@@ -11,7 +11,9 @@ namespace Activizr.Database
         {
             public static bool IsConfigured()
             {
-                return String.IsNullOrEmpty(DatabaseConnect.Default.Admin);
+                string testString = DatabaseConnect.Default.Admin;
+
+                return !String.IsNullOrEmpty(DatabaseConnect.Default.Admin);
             }
 
             public static bool SetConfiguration(string readConnect, string writeConnect, string adminConnect)
@@ -26,10 +28,6 @@ namespace Activizr.Database
                 return true;
             }
 
-            public static string TestString()
-            {
-                return DatabaseConnect.Default.Admin;
-            }
         }
     }
 }
