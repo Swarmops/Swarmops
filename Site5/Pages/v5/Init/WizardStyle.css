@@ -28,22 +28,24 @@
 }
 
 .swMain .stepContainer div.content {
-  display:block;
-  position: absolute;  
   float:left;
   margin: 0;
-  padding:5px;    
+  padding:5px;
+	padding-left: 15px;
+  text-align:left;
+  overflow:auto;    
+  z-index:88; 
+  clear:both;
+  display:block;
+	height: 300px;
+  /*position: absolute;  
+  border-radius: 5px;
+  width:470px;
   border: 1px solid #CCC; 
   font: normal 12px Ubuntu, sans-serif; 
   color:#5A5655;   
   background-color:#F8F8F8;  
-  height:300px;
-  text-align:left;
-  overflow:auto;    
-  z-index:88; 
-  border-radius: 5px;
-  width:470px;
-  clear:both;
+  height:300px;*/
 }
 
 .swMain div.actionBar {
@@ -132,10 +134,11 @@
   font: bold 15px Ubuntu, sans-serif;
 }
 .swMain ul.anchor li a .stepDesc small{
-  font: normal 10px Ubuntu, sans-serif;
+  font: normal 11px Ubuntu, sans-serif;
+	line-height: 12px;
 }
 .swMain ul.anchor li a.selected{
-  color:#F8F8F8;
+  color:#7F5500;
   background: #EA8511;  /* EA8511 */
   border: 1px solid #EA8511;
   cursor:text;
@@ -145,7 +148,7 @@
 	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC145', endColorstr='#F0AB22');  /* MSIE */
 	background: -moz-linear-gradient(top, #FFC145, #F0AB22);  /* Mozilla */
 	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22)); /* Chrome, Safari */
-	text-shadow: #C78B15 0px 0px 3px, #C78B15 0px 0px 3px;
+	text-shadow: #FFEDC8 0px 0px 3px, #FFEDC8 0px 0px 3px;
 	
 	border-color: #C78B15;
 	position: relative;
@@ -153,7 +156,7 @@
 	left: -1px;
 }
 .swMain ul.anchor li a.selected:hover {
-  color:#F8F8F8;  
+  /* color:#F8F8F8;  */
   /* background: #EA8511;  */
 }
 

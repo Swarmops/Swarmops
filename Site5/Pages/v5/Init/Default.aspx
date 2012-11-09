@@ -194,58 +194,48 @@
   				        <li><a href="#step-1">
                         <label class="stepNumber">1</label>
                         <span class="stepDesc">
-                           Step 1<br />
-                           <small>Step 1 description</small>
-                        </span>
+                           Security Check<br />
+                           <small>Are you the admin of this server?</small>
+                        </span>                   
                     </a></li>
   				        <li><a href="#step-2">
                         <label class="stepNumber">2</label>
                         <span class="stepDesc">
-                           Step 2<br />
-                           <small>Step 2 description having some more text</small>
+                           Database<br />
+                           <small>Supply database credentials and connect</small>
                         </span>
                     </a></li>
   				        <li><a href="#step-3">
                         <label class="stepNumber">3</label>
                         <span class="stepDesc">
-                           Step 3<br />
-                           <small>Step 3 description</small>
+                           User Data<br />
+                           <small>Let's create the first user</small>
                         </span>                   
                      </a></li>
   				        <li><a href="#step-4">
                         <label class="stepNumber">4</label>
                         <span class="stepDesc">
-                           Step 4<br />
-                           <small>Step 4 description</small>
+                           Complete<br />
+                           <small>All done. Let's login!</small>
                         </span>                   
                     </a></li>
   			        </ul>
   			        <div id="step-1">	
-                        <h2 class="StepTitle">Step 1 Content</h2>
-                        <ul type="disk">
-  				                <li>List 1</li>
-  				                <li>List 2</li>
-                        </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>          			
+                        <h2>Welcome to Activizr</h2>
+                        <p>Congratulations! Since you're reading this, you have successfully installed the Activizr packages and set up an Apache virtual server using mod_mono with Mono&nbsp;2.</p>
+
+                        <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Activizr installation. To do that, answer these simple questions:</p>
+                        
+                        <div class="entrylabels" style="width:250px">
+                            What is this server's /etc/hostname?<br />
+  			                What is this server's internal IP?<br />
+                            What is your favorite color?
+                        </div>
+                        <div class="entryfields">
+                            <asp:TextBox CssClass="textinput" ID="TextServerName" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextServerAddress" runat="server" />&nbsp;<br />
+                            <asp:DropDownList runat="server" ID="DropFavoriteColor" runat="server" />&nbsp;<br />
+                        </div>
                     </div>
   			        <div id="step-2">
                         <h2 class="StepTitle">Step 2 Content</h2>	
@@ -301,6 +291,29 @@
                         </p>               				          
                     </div>
   			        <div id="step-4">
+                        <h2 class="StepTitle">Step 4 Content</h2>	
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>                			
+                    </div>
+  			        <div id="step-5">
                         <h2 class="StepTitle">Step 4 Content</h2>	
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 

@@ -25,6 +25,8 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         this.MainMenu.Style[HtmlTextWriterStyle.Top] = "7px";
         this.MainMenu.Style[HtmlTextWriterStyle.Left] = "20px";
 
+        this.DropFavoriteColor.Style[HtmlTextWriterStyle.Width] = "155px";
+
         this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
 
         Localize();
@@ -114,6 +116,10 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         this.LabelSidebarTodoHeader.Text = Resources.Global.Sidebar_Todo;
         this.LabelSidebarTodoConnectDatabase.Text = Resources.Pages.Init.Init_SidebarTodo_CompleteSetup;
 
+        this.DropFavoriteColor.Items.Clear();
+        this.DropFavoriteColor.Items.Add(" -- Select one --");
+        this.DropFavoriteColor.Items.Add("Blue!");
+        this.DropFavoriteColor.Items.Add("No, wait, yellow!");
 
         SetupMenuItems();
 
