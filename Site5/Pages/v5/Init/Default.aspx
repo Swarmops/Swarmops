@@ -33,13 +33,70 @@
 </head>
 <body>
     <form id="form2" runat="server">
-	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
+	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" EnablePageMethods="True" />
 	<script type="text/javascript">
-   
+
 
 	    $(document).ready(function () {
 	        // Initialize Smart Wizard	
-	        $('#wizard').smartWizard({ transitionEffect: 'fade' });
+	        $('#wizard').smartWizard({ transitionEffect: 'fade', onLeaveStep: leaveAStepCallback });
+
+	        function leaveAStepCallback(obj) {
+	            var step_num = obj.attr('rel');
+	            return validateStep(step_num);
+	        }
+
+	        function validateStep(stepNumber) {
+	            var isValid = true;
+	            if (stepNumber == 1) 
+	            {
+	                // Validate Hostname
+	                var hostName = $('#<%=this.TextServerName.ClientID %>').val();
+	                if (hostName && hostName.length > 0) {
+	                    $.ajax({
+	                        type: "POST",
+	                        url: "Default.aspx/VerifyHostName",
+	                        data: "{'input': '" + hostName + "'}",  // TODO: potential input vulnerability - strip single quotes from input
+	                        contentType: "application/json; charset=utf-8",
+	                        dataType: "json",
+	                        success: function (msg) {
+	                            if (msg.d != "true") {
+	                                isValid = false;
+	                            }
+	                        }
+	                    });
+	                } else {
+	                    isValid = false; // hostName is null or empty
+	                }
+
+                    var hostAddress = $('#<%=this.TextServerAddress.ClientID %>').val();
+	                if (hostAddress && hostAddress.length > 0) {
+	                    $.ajax({
+	                        type: "POST",
+	                        url: "Default.aspx/VerifyHostAddress",
+	                        data: "{'input': '" + hostAddress + "'}",  // TODO: potential input vulnerability - strip single quotes from input
+	                        contentType: "application/json; charset=utf-8",
+	                        dataType: "json",
+	                        success: function (msg) {
+	                            if (msg.d != "true") {
+	                                isValid = false;
+	                            }
+	                        }
+	                    });
+	                } else {
+	                    isValid = false; // hostAddress is null or empty
+	                }
+
+	                if (!isValid) {
+	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right bottom').css('background-repeat', 'no-repeat');
+	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right bottom').css('background-repeat', 'no-repeat');
+	                } else {
+	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "none");
+	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "none");
+	                }
+	            }
+	            return isValid;
+	        }
 	    });
 
 	</script>
@@ -224,7 +281,7 @@
                         <h2>Welcome to Activizr</h2>
                         <p>Congratulations! Since you're reading this, you have successfully installed the Activizr packages and set up an Apache virtual server using mod_mono with Mono&nbsp;2.</p>
 
-                        <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Activizr installation. To do that, answer these simple questions:</p>
+  			            <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Activizr installation. To do that, answer these simple questions:</p> <asp:Label runat="server" ID="LabelTest" />
                         
                         <div class="entrylabels" style="width:250px">
                             What is this server's /etc/hostname?<br />
@@ -234,45 +291,42 @@
                         <div class="entryfields">
                             <asp:TextBox CssClass="textinput" ID="TextServerName" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextServerAddress" runat="server" />&nbsp;<br />
-                            <asp:DropDownList runat="server" ID="DropFavoriteColor" runat="server" />&nbsp;<br />
+                            <asp:DropDownList ID="DropFavoriteColor" runat="server" />&nbsp;<br />
                         </div>
                     </div>
   			        <div id="step-2">
-                        <h2 class="StepTitle">Step 2 Content</h2>	
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p> 
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>            
+                        <h2>Connect to database</h2>	
+                        <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. We <strong>very strongly</strong> recommend having three separate accounts - one for reading (needs SELECT only), one for writing (needs EXECUTE only), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
+
+                        <div class="entrylabels" style="width:120px">
+                            &nbsp;<br/>
+                            Database<br />
+  			                Server<br />
+                            User<br/>
+                            Password
+                        </div>
+                        <div class="entryfields" style="width:80px">
+                            <strong>Read access</strong><br/>
+                            <asp:TextBox CssClass="textinput" ID="TextCredentialsReadDatabase" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadServer" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadUser" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadPassword" runat="server" />&nbsp;<br />
+                        </div>
+                        <div class="entryfields" style="width:80px;margin-left:10px">
+                            <strong>Write access</strong><br/>
+                            <asp:TextBox CssClass="textinput" ID="TextCredentialsWriteDatabase" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteServer" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteUser" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsWritePassword" runat="server" />&nbsp;<br />
+                        </div>
+                        <div class="entryfields" style="width:80px;margin-left:10px">
+                            <strong>Admin access</strong><br/>
+                            <asp:TextBox CssClass="textinput" ID="TextCredentialsAdminDatabase" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminServer" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" runat="server" />&nbsp;<br />
+                        </div>
+
                     </div>                      
   			        <div id="step-3">
                         <h2 class="StepTitle">Step 3 Content</h2>	

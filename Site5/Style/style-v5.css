@@ -22,7 +22,7 @@ html, body, form, h1, h2, h3, h4, p, input, div, span, ol, ul, li
 
 /* BASE FONT */
 
-html, body, input 
+html, body, input, select 
 {
 	font-family: Ubuntu, Liberation Sans, Arial, Helvetica, Sans-Serif;
 	font-size: 12px;
