@@ -20,12 +20,19 @@ html, body, form, h1, h2, h3, h4, p, input, div, span, ol, ul, li
 }
 
 
+/* BASE FONT */
+
+html, body, input 
+{
+	font-family: Ubuntu, Liberation Sans, Arial, Helvetica, Sans-Serif;
+	font-size: 12px;
+}
+
+
 /* BASE */
 
 html, body
 {
-	font-family: Ubuntu, Liberation Sans, Arial, Helvetica, Sans-Serif;
-	font-size: 12px;
 	background-color: #E4ECFF;
 	background-image: url('/Style/Images/background-shader.png');
 	background-repeat: repeat-x;
