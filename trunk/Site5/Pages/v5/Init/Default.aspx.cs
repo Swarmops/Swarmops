@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
@@ -24,6 +25,21 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         this.MainMenu.Style[HtmlTextWriterStyle.Position] = "relative";
         this.MainMenu.Style[HtmlTextWriterStyle.Top] = "7px";
         this.MainMenu.Style[HtmlTextWriterStyle.Left] = "20px";
+
+        this.TextCredentialsReadDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
+        this.TextCredentialsReadServer.Style[HtmlTextWriterStyle.Width] = "70px";
+        this.TextCredentialsReadUser.Style[HtmlTextWriterStyle.Width] = "70px";
+        this.TextCredentialsReadPassword.Style[HtmlTextWriterStyle.Width] = "70px";
+
+        this.TextCredentialsWriteDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
+        this.TextCredentialsWriteServer.Style[HtmlTextWriterStyle.Width] = "70px";
+        this.TextCredentialsWriteUser.Style[HtmlTextWriterStyle.Width] = "70px";
+        this.TextCredentialsWritePassword.Style[HtmlTextWriterStyle.Width] = "70px";
+
+        this.TextCredentialsAdminDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
+        this.TextCredentialsAdminServer.Style[HtmlTextWriterStyle.Width] = "70px";
+        this.TextCredentialsAdminUser.Style[HtmlTextWriterStyle.Width] = "70px";
+        this.TextCredentialsAdminPassword.Style[HtmlTextWriterStyle.Width] = "70px";
 
         this.DropFavoriteColor.Style[HtmlTextWriterStyle.Width] = "155px";
 
@@ -226,4 +242,27 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         return _buildIdentity;
     }
 
+    [WebMethod]
+    public static bool VerifyHostName(string input)
+    {
+        // validate against /etc/hostname
+        
+        if (input == "/etc/hostname")
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    [WebMethod]
+    public static bool VerifyIPAddress (string input)
+    {
+        if (input == "127.0.0.1")
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
