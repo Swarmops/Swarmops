@@ -47,53 +47,43 @@
 	        }
 
 	        function validateStep(stepNumber) {
-	            var isValid = true;
-	            if (stepNumber == 1) 
-	            {
-	                // Validate Hostname
+	            var isValid = false;
+
+	            if (stepNumber == 1) {
+	                // Validate Hostname, Host Address
 	                var hostName = $('#<%=this.TextServerName.ClientID %>').val();
-	                if (hostName && hostName.length > 0) {
+	                var hostAddress = $('#<%=this.TextServerAddress.ClientID %>').val();
+
+	                if (hostName && hostName.length > 0 && hostAddress && hostAddress.length > 0) {
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "Default.aspx/VerifyHostName",
-	                        data: "{'input': '" + hostName + "'}",  // TODO: potential input vulnerability - strip single quotes from input
+	                        url: "Default.aspx/VerifyHostNameAndAddress",
+	                        data: "{'name': '" + hostName + "', 'address': '" + hostAddress + "'}",  // TODO: potential input vulnerability - strip single quotes from input
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
+	                        async: false,  // blocks until function returns - race conditions otherwise
 	                        success: function (msg) {
-	                            if (msg.d != "true") {
-	                                isValid = false;
+	                            if (msg.d == true) {
+	                                isValid = true;
 	                            }
 	                        }
 	                    });
-	                } else {
-	                    isValid = false; // hostName is null or empty
 	                }
 
-                    var hostAddress = $('#<%=this.TextServerAddress.ClientID %>').val();
-	                if (hostAddress && hostAddress.length > 0) {
-	                    $.ajax({
-	                        type: "POST",
-	                        url: "Default.aspx/VerifyHostAddress",
-	                        data: "{'input': '" + hostAddress + "'}",  // TODO: potential input vulnerability - strip single quotes from input
-	                        contentType: "application/json; charset=utf-8",
-	                        dataType: "json",
-	                        success: function (msg) {
-	                            if (msg.d != "true") {
-	                                isValid = false;
-	                            }
-	                        }
-	                    });
-	                } else {
-	                    isValid = false; // hostAddress is null or empty
-	                }
 
 	                if (!isValid) {
-	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right bottom').css('background-repeat', 'no-repeat');
-	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right bottom').css('background-repeat', 'no-repeat');
+	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
 	                } else {
-	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "none");
-	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "none");
+	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "none").disabled = true;
+	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "none").disabled = true;
 	                }
+	            }
+	            else if (stepNumber == 2) {
+	                // Press invisible button to have server initialize database accounts
+	                
+
+
 	            }
 	            return isValid;
 	        }
@@ -326,7 +316,7 @@
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" runat="server" />&nbsp;<br />
                         </div>
-
+                        <div style="display:none"><asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button"/></div>
                     </div>                      
   			        <div id="step-3">
                         <h2 class="StepTitle">Step 3 Content</h2>	
