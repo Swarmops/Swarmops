@@ -256,7 +256,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static bool VerifyIPAddress (string input)
+    public static bool VerifyHostAddress (string input)
     {
         if (input == "127.0.0.1")
         {
@@ -264,5 +264,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         }
 
         return false;
+    }
+
+    [WebMethod]
+    public static bool VerifyHostNameAndAddress (string name, string address)
+    {
+        return VerifyHostName(name) && VerifyHostAddress(address);
     }
 }
