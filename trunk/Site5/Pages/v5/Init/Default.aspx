@@ -33,7 +33,7 @@
 </head>
 <body>
     <form id="form2" runat="server">
-	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" EnablePageMethods="True" />
+	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
 	<script type="text/javascript">
 
 
@@ -75,14 +75,33 @@
 	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
 	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
 	                } else {
-	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "none").disabled = true;
-	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "none").disabled = true;
+	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "none");
+	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "none");
 	                }
 	            }
 	            else if (stepNumber == 2) {
-	                // Press invisible button to have server initialize database accounts
-	                
+	                isValid = true; // assume true, make false as we go
 
+	                var textBoxes = ["<%=this.TextCredentialsReadDatabase.ClientID %>", "<%=this.TextCredentialsReadServer.ClientID %>", "<%=this.TextCredentialsReadUser.ClientID %>", "<%=this.TextCredentialsReadPassword.ClientID %>",
+	                    "<%=this.TextCredentialsWriteDatabase.ClientID %>", "<%=this.TextCredentialsWriteServer.ClientID %>", "<%=this.TextCredentialsWriteUser.ClientID %>", "<%=this.TextCredentialsWritePassword.ClientID %>",
+	                    "<%=this.TextCredentialsAdminDatabase.ClientID %>", "<%=this.TextCredentialsAdminServer.ClientID %>", "<%=this.TextCredentialsAdminUser.ClientID %>", "<%=this.TextCredentialsAdminPassword.ClientID %>"];
+
+	                for (var loop = 0; loop < textBoxes.length; loop++) {
+	                    var fieldContents = $('#' + textBoxes[loop]).val();
+
+	                    if (fieldContents && fieldContents.length > 0) {
+	                        $('#' + textBoxes[loop]).css('background-image', "none");
+	                    } else {
+	                        $('#' + textBoxes[loop]).css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                        isValid = false;
+	                    }
+	                }
+
+
+	                if (isValid) {
+	                    $('#<%=this.ButtonInitDatabase.ClientID %>').click();
+	                }
+	                // TODO: If isValid, press invisible button that starts import
 
 	            }
 	            return isValid;
@@ -316,7 +335,7 @@
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" runat="server" />&nbsp;<br />
                         </div>
-                        <div style="display:none"><asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button"/></div>
+                        <div style="display:none"><asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button" OnClick="ButtonInitDatabase_Click"/></div>
                     </div>                      
   			        <div id="step-3">
                         <h2 class="StepTitle">Step 3 Content</h2>	

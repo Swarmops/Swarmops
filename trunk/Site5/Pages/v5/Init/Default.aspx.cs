@@ -77,6 +77,10 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                 preferredCulture = browserPreference;
             }
 
+            if (preferredCulture == "en-US")
+            {
+                preferredCulture = "en-GB"; // Hack because of malfunctioning Telerik popup
+            }
 
             /*
             string[] languages = (string[])Application["Cultures"];
@@ -240,6 +244,31 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         }
 
         return _buildIdentity;
+    }
+
+    protected void ButtonInitDatabase_Click (object sender, EventArgs args)
+    {
+        // Initialize database. For now, fake it.
+
+        for (int loop = 0; loop < 100; loop++)
+        {
+            Thread.Sleep(1000);
+            Session["PercentInitComplete"] = loop;
+        }
+    }
+
+    [WebMethod(true)]  // "true" causes session to be loaded
+    public static int GetInitProgress()
+    {
+        try
+        {
+            return (int) HttpContext.Current.Session["PercentInitComplete"];
+        }
+        catch (Exception)
+        {
+            return 0; // session variable not set yet, so parsing error of a null object
+        }
+
     }
 
     [WebMethod]
