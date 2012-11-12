@@ -10,6 +10,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 
+using Activizr.Database;
+
 public partial class Pages_v5_Init_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -248,6 +250,19 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
     protected void ButtonInitDatabase_Click (object sender, EventArgs args)
     {
+        // Store database credentials
+
+        string readConnect = this.TextCredentialsReadDatabase.Text + "|" + this.TextCredentialsReadServer.Text + "|" +
+                             this.TextCredentialsReadUser.Text + "|" + this.TextCredentialsReadPassword.Text;
+
+        string writeConnect = this.TextCredentialsWriteDatabase.Text + "|" + this.TextCredentialsWriteServer.Text + "|" +
+                              this.TextCredentialsWriteUser.Text + "|" + this.TextCredentialsWritePassword.Text;
+
+        string adminConnect = this.TextCredentialsAdminDatabase.Text + "|" + this.TextCredentialsAdminServer.Text + "|" +
+                              this.TextCredentialsAdminUser.Text + "|" + this.TextCredentialsAdminPassword.Text;
+
+        PirateDb.Configuration.SetConfiguration(readConnect, writeConnect, adminConnect);
+
         // Initialize database. For now, fake it.
 
         for (int loop = 0; loop < 100; loop++)
