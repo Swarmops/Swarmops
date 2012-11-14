@@ -96,8 +96,6 @@
 	                            } else {
 	                                // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
 
-	                                alert('setting first timeout function');
-
 	                                setTimeout('recheckConfigurationWritability();', 5000); // 5s until first re-check
 	                            }
 	                        }
@@ -137,8 +135,6 @@
 
 	    function recheckConfigurationWritability() {
 
-	        alert('In timeout function');
-
 	        $.ajax({
 	            type: "POST",
 	            url: "Default.aspx/IsConfigurationFileWritable",
@@ -148,8 +144,6 @@
 	            async: false,  // blocks until function returns - race conditions otherwise
 	            success: function (msg) {
 	                if (msg.d == true) {
-
-	                    alert('yes, writable');
 
 	                    // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
 	                    $('#DivDatabaseUnwritable').slideUp('fast').fadeOut('fast');

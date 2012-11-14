@@ -294,9 +294,21 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     [WebMethod]
     public static bool VerifyHostName(string input)
     {
+        if (System.Diagnostics.Debugger.IsAttached)
+        {
+            return true; // Cannot read "/etc/hostname" in Windows environment
+        }
+
         // validate against /etc/hostname
-        
-        if (input == "/etc/hostname")
+
+        string realHostName;
+
+        using (TextReader reader = new StreamReader("/etc/hostname"))  // This will throw in a Windows dev environment
+        {
+            realHostName = reader.ReadLine();
+        }
+
+        if (String.Compare(input, realHostName, true, CultureInfo.InvariantCulture) == 0) // case-insensitive compare
         {
             return true;
         }
@@ -304,10 +316,12 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         return false;
     }
 
-    [WebMethod]
+    [WebMethod(true)]
     public static bool VerifyHostAddress (string input)
     {
-        if (input == "127.0.0.1")
+        string localAddress = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
+
+        if (input == localAddress)
         {
             return true;
         }
@@ -315,7 +329,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         return false;
     }
 
-    [WebMethod]
+    [WebMethod(true)]
     public static bool VerifyHostNameAndAddress (string name, string address)
     {
         return VerifyHostName(name) && VerifyHostAddress(address);
