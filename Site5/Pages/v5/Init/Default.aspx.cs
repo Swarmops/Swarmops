@@ -252,16 +252,21 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     {
         // Store database credentials
 
-        string readConnect = this.TextCredentialsReadDatabase.Text + "|" + this.TextCredentialsReadServer.Text + "|" +
-                             this.TextCredentialsReadUser.Text + "|" + this.TextCredentialsReadPassword.Text;
-
-        string writeConnect = this.TextCredentialsWriteDatabase.Text + "|" + this.TextCredentialsWriteServer.Text + "|" +
-                              this.TextCredentialsWriteUser.Text + "|" + this.TextCredentialsWritePassword.Text;
-
-        string adminConnect = this.TextCredentialsAdminDatabase.Text + "|" + this.TextCredentialsAdminServer.Text + "|" +
-                              this.TextCredentialsAdminUser.Text + "|" + this.TextCredentialsAdminPassword.Text;
-
-        PirateDb.Configuration.SetConfiguration(readConnect, writeConnect, adminConnect);
+        PirateDb.Configuration.Set(
+            new PirateDb.Configuration(
+                new PirateDb.Credentials(
+                    this.TextCredentialsReadDatabase.Text,
+                    new PirateDb.ServerSet(this.TextCredentialsReadServer.Text),
+                    this.TextCredentialsReadUser.Text,
+                    this.TextCredentialsReadPassword.Text),
+                new PirateDb.Credentials(this.TextCredentialsWriteDatabase.Text,
+                    new PirateDb.ServerSet(this.TextCredentialsWriteServer.Text),
+                    this.TextCredentialsWriteUser.Text,
+                    this.TextCredentialsWritePassword.Text),
+                new PirateDb.Credentials(this.TextCredentialsAdminDatabase.Text,
+                    new PirateDb.ServerSet(this.TextCredentialsAdminServer.Text),
+                    this.TextCredentialsAdminUser.Text,
+                    this.TextCredentialsAdminPassword.Text)));
 
         // Initialize database. For now, fake it.
 
