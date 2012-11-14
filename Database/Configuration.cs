@@ -46,6 +46,24 @@ namespace Activizr.Database
 
             private static Configuration _configuration;
 
+            public static bool TestConfigurationWritable()
+            {
+                try
+                {
+                    using (FileStream stream = new FileStream(GetConfigurationFileName(), FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+                    {
+                        // do nothing                                                       
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return false;
+                }
+
+                return true;
+            }
+
             public static void Load()
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
