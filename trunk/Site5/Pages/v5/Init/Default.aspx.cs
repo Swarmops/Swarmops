@@ -320,4 +320,10 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     {
         return VerifyHostName(name) && VerifyHostAddress(address);
     }
+
+    [WebMethod(true)]
+    public static bool IsConfigurationFileWritable()
+    {
+        return PirateDb.Configuration.TestConfigurationWritable();
+    }
 }

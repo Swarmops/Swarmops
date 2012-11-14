@@ -53,17 +53,17 @@
   position: relative; 
   clear:right;
   margin:             3px 0 0 0;   
-  border:             1px solid #CCC;
+  /*border:             1px solid #CCC;*/
   padding:            0;    
   color:              #5A5655;   
-  background-color:   #F8F8F8;
+  /*background-color:   #F8F8F8;*/
   height:40px;
 /*  width:730px; 
   float:right; */  
   text-align:left;
   overflow:auto;    
   z-index:88; 
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 
 .swMain .stepContainer .StepTitle {

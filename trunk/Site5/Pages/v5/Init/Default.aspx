@@ -8,6 +8,7 @@
 
     <!-- jQuery and plugins -->
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.smartWizard-2.0.min.js"></script>
 
@@ -78,6 +79,29 @@
 	                    $('#<%=this.TextServerName.ClientID %>').css('background-image', "none");
 	                    $('#<%=this.TextServerAddress.ClientID %>').css('background-image', "none");
 	                }
+
+	                if (isValid) { // Validate writability of config file
+	                    $.ajax({
+	                        type: "POST",
+	                        url: "Default.aspx/IsConfigurationFileWritable",
+	                        data: "{}",
+	                        contentType: "application/json; charset=utf-8",
+	                        dataType: "json",
+	                        async: false,  // blocks until function returns - race conditions otherwise
+	                        success: function (msg) {
+	                            if (msg.d == true) {
+	                                // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
+	                                $('#DivDatabaseUnwritable').css('display', 'none');
+	                                $('#DivDatabaseWritable').css('display', 'inline');
+	                            } else {
+	                                // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
+
+	                                setTimeout('recheckConfigurationWritability();', 5000); // 5s until first re-check
+	                            }
+	                        }
+	                    });
+	                }
+
 	            }
 	            else if (stepNumber == 2) {
 	                isValid = true; // assume true, make false as we go
@@ -105,6 +129,28 @@
 
 	            }
 	            return isValid;
+	        }
+
+	        function recheckConfigurationWritability() {
+	            $.ajax({
+	                type: "POST",
+	                url: "Default.aspx/IsConfigurationFileWritable",
+	                data: "{}",
+	                contentType: "application/json; charset=utf-8",
+	                dataType: "json",
+	                async: false,  // blocks until function returns - race conditions otherwise
+	                success: function (msg) {
+	                    if (msg.d == true) {
+	                        // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
+	                        $('#DivDatabaseUnwritable').slideUp('fast').fadeOut('fast');
+	                        $('#DivDatabaseWritable').fadeIn('fast');
+	                    } else {
+	                        // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
+
+	                        setTimeout('recheckConfigurationWritability();', 2000); // 5s until first re-check
+	                    }
+	                }
+	            });
 	        }
 	    });
 
@@ -304,7 +350,14 @@
                         </div>
                     </div>
   			        <div id="step-2">
-                        <h2>Connect to database</h2>	
+  			            <div id="DivDatabaseUnwritable">
+  			            <h2>Fix File Permissions</h2>
+                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="FailWriteConfig" runat="server" ImageAlign="Left" /><p>Before we can proceed, you need to make the configuration file writable. Please open a shell to the Activizr server and execute the following commands:</p>
+                        <p><strong>cd /opt/activizr/frontend<br/>sudo chown www-data:www-data database.config<br/>sudo chmod o+w database.config</strong></p>
+                        <p>The installation will continue when it detects that these steps have been done.</p>
+  			            </div>
+                        <div id="DivDatabaseWritable" style="display:none">
+                            <h2>Connect to database</h2>	
                         <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. We <strong>very strongly</strong> recommend having three separate accounts - one for reading (needs SELECT only), one for writing (needs EXECUTE only), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
 
                         <div class="entrylabels" style="width:120px">
@@ -336,6 +389,7 @@
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" runat="server" />&nbsp;<br />
                         </div>
                         <div style="display:none"><asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button" OnClick="ButtonInitDatabase_Click"/></div>
+                        </div>
                     </div>                      
   			        <div id="step-3">
                         <h2 class="StepTitle">Step 3 Content</h2>	
