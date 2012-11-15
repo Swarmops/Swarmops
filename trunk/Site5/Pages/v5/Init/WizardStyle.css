@@ -97,10 +97,11 @@
   padding: 0; 
   padding-top:3px;
   padding-bottom: 3px;
-  border: 0px solid #E0E0E0;      
-  float: left;
-  clear:both;
+  border: 0px solid #E0E0E0;
+	float: left;
+	clear: both;
 }
+
 /* Anchor Element Style */
 .swMain ul.anchor li a {
   display:block;

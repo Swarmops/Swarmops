@@ -125,9 +125,13 @@
 
 
 	                if (isValid) {
+
+	                    alert('initing progressbar and data init');
+
 	                    $('#DivProgressDatabase').progressbar({ value: 0, max: 100 });
 	                    setTimeout('updateInitProgressBar();', 1000);
 	                    $('#<%=this.ButtonInitDatabase.ClientID %>').click();
+	                    beginInitDatabase();
 	                }
 
 	            }
@@ -162,6 +166,8 @@
 
 	    function updateInitProgressBar() {
 
+	        alert('updateInitProgressBar');
+
 	        $.ajax({
 	            type: "POST",
 	            url: "Default.aspx/GetInitProgress",
@@ -180,12 +186,28 @@
 	                } else {
 	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking every two seconds.
 
+	                    alert('updating progressbar - ' + msg.d);
+
 	                    $('#DivProgressDatabase').progressbar("value", msg.d);
 	                    setTimeout('updateInitProgressBar();', 2000);
 	                }
 	            }
 	        });
 	    }
+	    
+        function beginInitDatabase() {
+            $.ajax({
+                type: "POST",
+                url: "Default.aspx/InitDatabase",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function () {
+                    alert('InitDatabase returned');
+                }
+           
+            });
+        }
 
 
 	</script>

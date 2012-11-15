@@ -269,12 +269,22 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                     this.TextCredentialsAdminPassword.Text)));
     }
 
+    [WebMethod(true)]
+    public static void InitDatabase()
+    {
+        for (int loop = 0; loop <= 100; loop++)
+        {
+            HttpContext.Current.Session["PercentInitComplete"] = loop;
+            System.Threading.Thread.Sleep(1000);
+        }
+    }
+
     [WebMethod(true)]  // "true" causes session to be loaded
     public static int GetInitProgress()
     {
         try
         {
-            int progress = (int)new Random().Next(100); // (int) HttpContext.Current.Session["PercentInitComplete"];
+            int progress = (int) HttpContext.Current.Session["PercentInitComplete"];
 
             return progress;
         }
