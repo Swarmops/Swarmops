@@ -148,6 +148,7 @@
 	                    // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
 	                    $('#DivDatabaseUnwritable').css('display', 'none');
 	                    $('#DivDatabaseWritable').fadeIn('slow');
+	                    $('#<%=this.TextCredentialsReadDatabase.ClientID %>').focus();
 	                } else {
 	                    // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
 
