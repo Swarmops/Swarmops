@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Services;
+using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
@@ -269,30 +270,51 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                     this.TextCredentialsAdminPassword.Text)));
     }
 
-    [WebMethod(true)]
+    [WebMethod]
     public static void InitDatabase()
     {
+        // Start an async thread that does all the work, then return
+
+        HttpSessionState currentSessionObject = HttpContext.Current.Session;
+
+        Thread initThread = new Thread(() => InitDatabaseThread(currentSessionObject) );
+        initThread.Start();
+    }
+
+
+    public static void InitDatabaseThread (object sessionObject)
+    {
+        System.Web.SessionState.HttpSessionState session = (HttpSessionState) sessionObject;
+
         for (int loop = 0; loop <= 100; loop++)
         {
-            HttpContext.Current.Session["PercentInitComplete"] = loop;
-            System.Threading.Thread.Sleep(1000);
+            // Use session variable AND a static variable to store this
+
+            session["PercentInitComplete"] = loop;
+            _initProgress = loop;
+            System.Threading.Thread.Sleep(100);
         }
     }
 
-    [WebMethod(true)]  // "true" causes session to be loaded
+    private static int _initProgress = 0;
+
+
+    [WebMethod]
     public static int GetInitProgress()
     {
+        HttpSessionState state = HttpContext.Current.Session;
+        object progressObject = state["PercentInitComplete"];
+
         try
         {
-            int progress = (int) HttpContext.Current.Session["PercentInitComplete"];
+            int progress = (int)HttpContext.Current.Session["PercentInitComplete"];
 
             return progress;
         }
         catch (Exception)
         {
-            return 0; // session variable not set yet, so parsing error of a null object
+            return _initProgress;
         }
-
     }
 
     [WebMethod]
