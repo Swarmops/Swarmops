@@ -394,7 +394,7 @@
   			        <div id="step-2">
   			            <div id="DivDatabaseUnwritable">
   			            <h2>Fix File Permissions</h2>
-                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="FailWriteConfig" runat="server" ImageAlign="Left" /><p>Before we can proceed, you need to make the configuration file writable. Please open a shell to the Activizr server and execute the following commands:</p>
+                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="FailWriteConfig" runat="server" ImageAlign="Left" /><p>The bad news is that we can't write to the configuration file. This is fairly normal for a new installation. The good news is that you can fix that, so we can continue installing. Please open a shell to the Activizr server and execute the following commands:</p>
                         <p><strong>cd /opt/activizr/frontend<br/>sudo chown www-data:www-data database.config<br/>sudo chmod o+w database.config</strong></p>
                         <p>The installation will continue when it detects that these steps have been done.</p>
   			            </div>
@@ -478,13 +478,13 @@
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="ButtonInitDatabase" EventName="Click"/>
                         </Triggers>
                         </asp:UpdatePanel>
-                        </p>                			
+                                       			
                     </div>
       		    </div>
 
