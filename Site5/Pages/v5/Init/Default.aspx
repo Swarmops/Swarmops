@@ -43,8 +43,8 @@
 	        $('#wizard').smartWizard({ transitionEffect: 'fade', onLeaveStep: leaveAStepCallback });
 
 	        function leaveAStepCallback(obj) {
-	            var step_num = obj.attr('rel');
-	            return validateStep(step_num);
+	            var stepNum = obj.attr('rel');
+	            return validateStep(stepNum);
 	        }
 
 	        function validateStep(stepNumber) {
