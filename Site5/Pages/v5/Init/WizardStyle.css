@@ -314,3 +314,7 @@
   color: #EA8511;
   border: 1px solid #EA8511;  
 }
+
+.ui-progressbar-value {
+	background-image: url('/Images/Abstract/activizr-progressbar-animation.gif');
+}
