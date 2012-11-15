@@ -317,4 +317,17 @@
 
 .ui-progressbar-value {
 	background-image: url('/Images/Abstract/activizr-progressbar-animation.gif');
+	height: 13px;
+	border-radius: 3px;
+	box-shadow: 1px 0px 5px 0px #7F5500;
+}
+
+
+.ui-progressbar {
+	height: 13px;
+	width: 100%;
+	border: solid 1px #C78B15;
+	border-radius: 3px;
+	box-shadow: inset 0px 1px 10px 0px #C78B15;
+	margin-bottom: 8px;
 }
