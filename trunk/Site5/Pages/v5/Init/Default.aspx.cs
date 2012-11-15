@@ -267,14 +267,6 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                     new PirateDb.ServerSet(this.TextCredentialsAdminServer.Text),
                     this.TextCredentialsAdminUser.Text,
                     this.TextCredentialsAdminPassword.Text)));
-
-        // Initialize database. For now, fake it.
-
-        for (int loop = 0; loop < 100; loop++)
-        {
-            Thread.Sleep(1000);
-            Session["PercentInitComplete"] = loop;
-        }
     }
 
     [WebMethod(true)]  // "true" causes session to be loaded
@@ -282,7 +274,9 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     {
         try
         {
-            return (int) HttpContext.Current.Session["PercentInitComplete"];
+            int progress = (int)new Random().Next(100); // (int) HttpContext.Current.Session["PercentInitComplete"];
+
+            return progress;
         }
         catch (Exception)
         {

@@ -93,6 +93,7 @@
 	                                // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
 	                                $('#DivDatabaseUnwritable').css('display', 'none');
 	                                $('#DivDatabaseWritable').css('display', 'inline');
+	                                $('#<%=this.TextCredentialsReadDatabase.ClientID %>').focus();
 	                            } else {
 	                                // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
 
@@ -123,9 +124,10 @@
 
 
 	                if (isValid) {
+	                    $('#DivProgressDatabase').progressbar({ value: 0, max: 100 });
+	                    setTimeout('updateInitProgressBar();', 1000);
 	                    $('#<%=this.ButtonInitDatabase.ClientID %>').click();
 	                }
-	                // TODO: If isValid, press invisible button that starts import
 
 	            }
 	            return isValid;
@@ -157,6 +159,34 @@
 	            }
 	        });
 	    }
+
+	    function updateInitProgressBar() {
+
+	        $.ajax({
+	            type: "POST",
+	            url: "Default.aspx/GetInitProgress",
+	            data: "{}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                if (msg.d > 99) {
+
+	                    alert('closing progressbar - ' + msg.d);
+
+	                    // We're done. Undisplay the progress bar, show the next step
+	                    $('#DivInitializingDatabase').css('display', 'none');
+	                    $('#DivCreateFirstUser').fadeIn('slow');
+	                    // $('#<%=this.TextCredentialsReadDatabase.ClientID %>').focus();
+	                } else {
+	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking every two seconds.
+
+	                    $('#DivProgressDatabase').progressbar("value", msg.d);
+	                    setTimeout('updateInitProgressBar();', 2000);
+	                }
+	            }
+	        });
+	    }
+
 
 	</script>
 	<telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
@@ -396,7 +426,13 @@
                         </div>
                     </div>                      
   			        <div id="step-3">
-                        <h2 class="StepTitle">Step 3 Content</h2>	
+  			            <div id="DivInitializingDatabase">
+  			                <h2>Initializing database</h2>
+                            <div id="DivProgressDatabase"></div>
+                            <p>Please wait while the database is being initialized with schemas and geographic data from the Activizr servers.</p>
+  			            </div>
+                        <div id="DivCreateFirstUser" style="display:none">
+                        <h2>Step 3 Content</h2>	
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -409,10 +445,13 @@
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>               				          
+                        </p>
+                        </div>            				          
                     </div>
-  			        <div id="step-4">
-                        <h2 class="StepTitle">Step 4 Content</h2>	
+  			        <div id="step-4" style="display:none">
+  			            <asp:UpdatePanel runat="server" ID="UpdateFinished" UpdateMode="Conditional">
+  			                <ContentTemplate>
+                        <h2>All done - ready to login</h2>	
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -432,29 +471,11 @@
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>                			
-                    </div>
-  			        <div id="step-5">
-                        <h2 class="StepTitle">Step 4 Content</h2>	
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="ButtonInitDatabase" EventName="Click"/>
+                        </Triggers>
+                        </asp:UpdatePanel>
                         </p>                			
                     </div>
       		    </div>
