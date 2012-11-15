@@ -146,12 +146,12 @@
 	                if (msg.d == true) {
 
 	                    // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
-	                    $('#DivDatabaseUnwritable').slideUp('fast').fadeOut('fast');
-	                    $('#DivDatabaseWritable').fadeIn('fast');
+	                    $('#DivDatabaseUnwritable').css('display', 'none');
+	                    $('#DivDatabaseWritable').fadeIn('slow');
 	                } else {
 	                    // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
 
-	                    setTimeout('recheckConfigurationWritability();', 2000); 
+	                    setTimeout('recheckConfigurationWritability();', 2000);
 	                }
 	            }
 	        });
