@@ -90,12 +90,17 @@
 	                        async: false,  // blocks until function returns - race conditions otherwise
 	                        success: function (msg) {
 	                            if (msg.d == true) {
+
+	                                alert('Yes, writable');
+
 	                                // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
 	                                $('#DivDatabaseUnwritable').css('display', 'none');
 	                                $('#DivDatabaseWritable').css('display', 'inline');
 	                                $('#<%=this.TextCredentialsReadDatabase.ClientID %>').focus();
 	                            } else {
 	                                // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
+
+	                                alert('No, not writable - rechecking');
 
 	                                setTimeout('recheckConfigurationWritability();', 5000); // 5s until first re-check
 	                            }
@@ -143,9 +148,10 @@
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
-	            async: false,  // blocks until function returns - race conditions otherwise
 	            success: function (msg) {
 	                if (msg.d == true) {
+
+	                    alert('Yes, writable - rechecking');
 
 	                    // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
 	                    $('#DivDatabaseUnwritable').css('display', 'none');
@@ -153,6 +159,8 @@
 	                    $('#<%=this.TextCredentialsReadDatabase.ClientID %>').focus();
 	                } else {
 	                    // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
+
+	                    alert('No, not writable - rechecking');
 
 	                    setTimeout('recheckConfigurationWritability();', 2000);
 	                }
