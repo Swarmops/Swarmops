@@ -44,5 +44,10 @@ namespace Activizr.Logic.Structure
         {
             return FromBasic(PirateDb.GetDatabaseForReading().GetCityByName(cityName, countryCode));
         }
+
+        public static City Create (string cityName, int countryId, int geographyId)
+        {
+            return City.FromIdentity(PirateDb.GetDatabaseForWriting().CreateCity(cityName, countryId, geographyId));
+        }
     }
 }
