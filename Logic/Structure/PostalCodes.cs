@@ -24,7 +24,12 @@ namespace Activizr.Logic.Structure
 
         public static PostalCodes ForCountry (string countryCode)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetPostalCodesForCountry (countryCode));
+            return ForCountry(Country.FromCode(countryCode).Identity);
+        }
+
+        public static PostalCodes ForCountry (int countryId)
+        {
+            return FromArray(PirateDb.GetDatabaseForReading().GetPostalCodesForCountry(countryId));
         }
     }
 }

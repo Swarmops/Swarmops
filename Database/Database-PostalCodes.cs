@@ -14,18 +14,16 @@ namespace Activizr.Database
         #region Field reading code
 
         private const string postalCodeFieldSequence =
-            " PostalCodes.PostalCode,Cities.CityName,Countries.Code AS CountryCode " +
-            " FROM PostalCodes " +
-            " JOIN Cities ON (PostalCodes.CityId=Cities.CityId) " +
-            " JOIN Countries ON (PostalCodes.CountryId=Countries.CountryId) ";
+            " PostalCodeId,PostalCode,CityId,CountryId ";
 
         private BasicPostalCode ReadPostalCodeFromDataReader(DbDataReader reader)
         {
-            string postalCode = reader.GetString(0);
-            string cityName = reader.GetString(1);
-            string countryCode = reader.GetString(2);
+            int postalCodeId = reader.GetInt32(0);
+            string postalCode = reader.GetString(1);
+            int cityId = reader.GetInt32(2);
+            int countryId = reader.GetInt32(3);
 
-            return new BasicPostalCode(postalCode, cityName, countryCode);
+            return new BasicPostalCode(postalCodeId, postalCode, cityId, countryId);
         }
 
         #endregion
@@ -34,7 +32,7 @@ namespace Activizr.Database
 
         #region Record reading - SELECT statements
 
-        public BasicPostalCode[] GetPostalCodesForCountry (string countryCode)
+        public BasicPostalCode[] GetPostalCodesForCountry (int countryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -42,7 +40,7 @@ namespace Activizr.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + postalCodeFieldSequence + "WHERE Countries.Code='" + countryCode.Replace("'", "''") + "';", connection);
+                        "SELECT" + postalCodeFieldSequence + "WHERE CountryId=" + countryId.ToString() + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

@@ -16,7 +16,7 @@ namespace Activizr.Logic.Structure
         }
 
         [Obsolete ("Do not call this constructor directly. It is intended only for serialization.", true)]
-        public PostalCode(): base (string.Empty, string.Empty, string.Empty)
+        public PostalCode(): base (0, string.Empty, 0, 0)
         {
             // this ctor does NOT initialize the instance. It is provided to allow for serialization.
         }
@@ -28,12 +28,17 @@ namespace Activizr.Logic.Structure
 
         public Country Country
         {
-            get { return Country.FromCode(this.CountryCode); }
+            get { return Country.FromIdentity (this.CountryId); }
         }
 
         public City City
         {
-            get { return City.FromName(this.CityName, this.CountryCode); }
+            get { return City.FromIdentity(this.CityId); }
+        }
+
+        public string CityName
+        {
+            get { return this.City.Name; }
         }
 
     }
