@@ -14,7 +14,7 @@ namespace Activizr.Database
         #region Field reading code
 
         private const string postalCodeFieldSequence =
-            " PostalCodeId,PostalCode,CityId,CountryId ";
+            " PostalCodeId,PostalCode,CityId,CountryId FROM PostalCodes ";
 
         private BasicPostalCode ReadPostalCodeFromDataReader(DbDataReader reader)
         {
