@@ -19,6 +19,11 @@ namespace Activizr.Logic.Structure
             // this instance is NOT initalized, and intended to be used only in serialization.
         }
 
+        public static City FromIdentity (int cityId)
+        {
+            return FromBasic(PirateDb.GetDatabaseForReading().GetCity(cityId));
+        }
+
 
         public Geography Geography
         {

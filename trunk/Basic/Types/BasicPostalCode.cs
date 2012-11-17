@@ -7,15 +7,16 @@ namespace Activizr.Basic.Types
     [Serializable]
     public class BasicPostalCode
     {
-        public BasicPostalCode(string postalCode, string cityName, string countryCode)
+        public BasicPostalCode(int postalCodeId, string postalCode, int cityId, int countryId)
         {
+            this.PostalCodeId = postalCodeId;
             this.PostalCode = postalCode.Replace(" ", "");
-            this.CityName = cityName;
-            this.CountryCode = countryCode;
+            this.CityId = cityId;
+            this.CountryId = countryId;
         }
 
         public BasicPostalCode(BasicPostalCode original)
-            : this(original.PostalCode, original.CityName, original.CountryCode)
+            : this(original.PostalCodeId, original.PostalCode, original.CityId, original.CountryId)
         {
         }
 
@@ -25,8 +26,9 @@ namespace Activizr.Basic.Types
             // this should never be called from code
         }
 
+        public int PostalCodeId { get; private set; }
         public string PostalCode { get; private set; }  // any whitespace removed
-        public string CityName { get; protected set; }
-        public string CountryCode { get; protected set; }
+        public int CityId { get; protected set; }
+        public int CountryId { get; protected set; }
     }
 }

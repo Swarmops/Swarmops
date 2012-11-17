@@ -305,6 +305,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         Dictionary<int, int> geographyIdTranslation = new Dictionary<int, int>();
         Dictionary<int, int> cityIdTranslation = new Dictionary<int, int>();
         Dictionary<string, int> countryIdTranslation = new Dictionary<string, int>();
+        Dictionary<int, bool> cityIdsUsedLookup = new Dictionary<int, bool>();
 
         // Initialize the root geography (which becomes #1 if everything works)
 
@@ -360,10 +361,29 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             int countryRootGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography(geography.Name, rootGeographyId);
             geographyIdTranslation[geography.GeographyId] = countryRootGeographyId;
+            PirateDb.GetDatabaseForWriting().SetCountryGeographyId(countryIdTranslation[countryCode],
+                                                                   countryRootGeographyId);
 
             InitDatabaseThreadCreateGeographyChildren(geography.Children, countryRootGeographyId, ref geographyIdTranslation);
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/3);
+
+            // Get the postal codes and cities
+
+            Activizr.Site.Automation.City[] cities = geoDataFetcher.GetCitiesForCountry(countryCode);
+
+            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/2);
+
+            Activizr.Site.Automation.PostalCode[] postalCodes = geoDataFetcher.GetPostalCodesForCountry(countryCode);
+
+            // Find which cities are actually used
+
+            foreach (Activizr.Site.Automation.PostalCode postalCode in postalCodes)
+            {
+                // cityIdsUsedLookup[postalCode.CityName] = 
+            }
+
+            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry*2/3);
 
             countryCount++;
         }
