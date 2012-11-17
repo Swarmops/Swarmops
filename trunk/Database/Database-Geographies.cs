@@ -465,5 +465,23 @@ namespace Activizr.Database
 
             return result.ToArray();
         }
+
+        public int CreateGeography (string name, int parentGeographyId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("CreateGeography", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "name", name);
+                AddParameterWithName(command, "parentGeographyId", parentGeographyId);
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+
     }
 }

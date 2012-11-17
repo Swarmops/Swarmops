@@ -9,9 +9,12 @@ using System.Web.Services;
 using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Activizr.Basic.Types;
+using Activizr.Site.Automation;
 using Telerik.Web.UI;
 
 using Activizr.Database;
+using Country = Activizr.Logic.Structure.Country;
 
 public partial class Pages_v5_Init_Default : System.Web.UI.Page
 {
@@ -277,24 +280,110 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         HttpSessionState currentSessionObject = HttpContext.Current.Session;
 
-        Thread initThread = new Thread(() => InitDatabaseThread(currentSessionObject) );
+        Thread initThread = new Thread(InitDatabaseThread);
         initThread.Start();
     }
 
 
-    public static void InitDatabaseThread (object sessionObject)
+    /// <summary>
+    /// This function copies the schemas and geography data off an existing Activizr installation. Runs in its own thread.
+    /// </summary>
+    public static void InitDatabaseThread()
     {
-        System.Web.SessionState.HttpSessionState session = (HttpSessionState) sessionObject;
+        // Ignore the session object, that method of sharing data didn't work, but a static variable did.
 
-        for (int loop = 0; loop <= 100; loop++)
+        _initProgress = 1;
+
+        // Get the schema and initialize the database structures. Requires ADMIN access to database.
+
+        Activizr.Logic.Support.DatabaseMaintenance.FirstInitialization();
+
+        _initProgress = 5;
+
+        // Create translation lists
+
+        Dictionary<int, int> geographyIdTranslation = new Dictionary<int, int>();
+        Dictionary<int, int> cityIdTranslation = new Dictionary<int, int>();
+        Dictionary<string, int> countryIdTranslation = new Dictionary<string, int>();
+
+        // Initialize the root geography (which becomes #1 if everything works)
+
+        int rootGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography("World", 0);
+
+        // Get the list of countries
+
+        Activizr.Site.Automation.GetGeographyData geoDataFetcher = new GetGeographyData();
+
+        Activizr.Site.Automation.Country[] countries = geoDataFetcher.GetCountries();
+
+        _initProgress = 7;
+
+        // Create all countries in our own database
+
+        foreach (Activizr.Site.Automation.Country country in countries)
         {
-            // Use session variable AND a static variable to store this
+            countryIdTranslation[country.Code] = PirateDb.GetDatabaseForWriting().CreateCountry(country.Name,
+                                                                                                country.Code,
+                                                                                                country.Culture,
+                                                                                                rootGeographyId, 5,
+                                                                                                string.Empty);
+        }
 
-            session["PercentInitComplete"] = loop;
-            _initProgress = loop;
-            System.Threading.Thread.Sleep(100);
+        _initProgress = 10;
+
+        // Construct list of countries that have geographic data
+
+        List<string> initializableCountries = new List<string>();
+
+        foreach (Activizr.Site.Automation.Country country in countries)
+        {
+            if (country.GeographyId != 1)
+            {
+                initializableCountries.Add(country.Code);
+            }
+        }
+
+        float initStepPerCountry = 90f/initializableCountries.Count;
+        int countryCount = 0;
+
+        // For each country...
+
+        foreach (string countryCode in initializableCountries)
+        {
+            // Get the geography layout
+
+            Activizr.Site.Automation.Geography geography = geoDataFetcher.GetGeographyForCountry(countryCode);
+
+            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/6);
+
+            // Create the country's root geography
+
+            int countryRootGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography(geography.Name, rootGeographyId);
+            geographyIdTranslation[geography.GeographyId] = countryRootGeographyId;
+
+            InitDatabaseThreadCreateGeographyChildren(geography.Children, countryRootGeographyId, ref geographyIdTranslation);
+
+            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/3);
+
+            countryCount++;
+        }
+
+        _initProgress = 100;
+
+        Thread.Sleep(1000); // give some time for static var to stick and web interface to react before killing thread
+    }
+
+    private static void InitDatabaseThreadCreateGeographyChildren (Activizr.Site.Automation.Geography[] children, int parentGeographyId, ref Dictionary<int,int> geographyIdTranslation)
+    {
+        foreach (Activizr.Site.Automation.Geography geography in children)
+        {
+            int newGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography(geography.Name, parentGeographyId);
+            geographyIdTranslation[geography.GeographyId] = newGeographyId;
+
+            InitDatabaseThreadCreateGeographyChildren(geography.Children, newGeographyId, ref geographyIdTranslation);
         }
     }
+
 
     private static int _initProgress = 0;
 

@@ -126,10 +126,8 @@ namespace Activizr.Database
 
 
 
-        public int CreateCountry (string name, string code)
+        public int CreateCountry (string name, string code, string culture, int geographyId, int postalCodeLength, string collation)
         {
-            throw new NotImplementedException("Creating a country is not implemented at the moment. (It is not a common event.)");
-            /*
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
@@ -139,9 +137,31 @@ namespace Activizr.Database
 
                 AddParameterWithName(command, "name", name);
                 AddParameterWithName(command, "code", code);
+                AddParameterWithName(command, "culture", culture);
+                AddParameterWithName(command, "geographyId", geographyId);
+                AddParameterWithName(command, "postalCodeLength", postalCodeLength);
+                AddParameterWithName(command, "collation", collation);
 
                 return Convert.ToInt32(command.ExecuteScalar());
-            }*/
+            }
         }
+
+        public int SetCountryGeographyId (int countryId, int geographyId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetCountryGeographyId", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "countryId", countryId);
+                AddParameterWithName(command, "geographyId", geographyId);
+                
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+
     }
 }

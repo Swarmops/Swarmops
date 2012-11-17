@@ -10,6 +10,9 @@ namespace Activizr.Database
 {
     public partial class PirateDb
     {
+        // This class is in horrible need of serious refactoring. For its simplicity in task, it's a horrible bowl of spaghetti.
+
+
         [Serializable]
         public class Configuration
         {
@@ -37,12 +40,23 @@ namespace Activizr.Database
 
                 string testString = _configuration.Admin.Username;
 
-                return !String.IsNullOrEmpty(DatabaseConnect.Default.Admin);
+                return !String.IsNullOrEmpty(testString);
             }
 
             public Credentials Read { get; set; }
             public Credentials Write { get; set; }
             public Credentials Admin { get; set; }
+
+
+            public Configuration Get()
+            {
+                if (_configuration == null)
+                {
+                    Load();
+                }
+
+                return _configuration;
+            }
 
             private static Configuration _configuration;
 

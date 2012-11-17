@@ -442,7 +442,7 @@
   			            <div id="DivInitializingDatabase">
   			                <h2>Initializing database</h2>
                             <div id="DivProgressDatabase"></div>
-                            <p>Please wait while the database is being initialized with schemas and geographic data from the Activizr servers.</p>
+                            <p>Please wait while the database is being initialized with schemas and geographic data from the Activizr servers. This is going to take a significant amount of time; we're loading tons of geodata onto your new server.</p>
   			            </div>
                         <div id="DivCreateFirstUser" style="display:none">
                         <h2>Step 3 Content</h2>	
