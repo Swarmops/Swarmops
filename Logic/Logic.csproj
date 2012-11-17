@@ -200,6 +200,7 @@
     <Compile Include="Structure\PostalCodes.cs" />
     <Compile Include="Structure\UptakeGeography.cs" />
     <Compile Include="Support\ActivistEvents.cs" />
+    <Compile Include="Support\DatabaseMaintenance.cs" />
     <Compile Include="Support\Imagery.cs" />
     <Compile Include="Support\ObjectOptionalData.cs" />
     <Compile Include="Support\PluralBase.cs" />

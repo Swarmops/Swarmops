@@ -17,17 +17,23 @@ namespace Activizr.Database
     {
         public static PirateDb GetDatabaseForReading()
         {
-            return new PirateDb(DatabaseConnect.Default.Read);
+            return new PirateDb(ConstructConnectString(new Configuration().Get().Read));
         }
 
         public static PirateDb GetDatabaseForWriting()
         {
-            return new PirateDb(DatabaseConnect.Default.Write);
+            return new PirateDb(ConstructConnectString(new Configuration().Get().Write));
         }
 
         public static PirateDb GetDatabaseForAdmin()
         {
-            return new PirateDb(DatabaseConnect.Default.Admin);
+            return new PirateDb(ConstructConnectString(new Configuration().Get().Admin));
+        }
+
+        private static string ConstructConnectString (Credentials credentials)
+        {
+            return "server=" + credentials.ServerSet.ServerPriorities[0].Split(';')[0] + ";database=" + credentials.Database + 
+                ";user=" + credentials.Username + ";password=" + credentials.Password;
         }
 
 
