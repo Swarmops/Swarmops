@@ -380,6 +380,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             catch (SoapHeaderException)
             {
                 // This is typically a country that isn't populated with cities yet. Ignore.
+                countryCount++;
                 continue;
             }
 
