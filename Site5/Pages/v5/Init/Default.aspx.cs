@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Services;
+using System.Web.Services.Protocols;
 using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -370,7 +371,18 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             // Get the postal codes and cities
 
-            Activizr.Site.Automation.City[] cities = geoDataFetcher.GetCitiesForCountry(countryCode);
+            Activizr.Site.Automation.City[] cities = null;
+
+            try
+            {
+                cities = geoDataFetcher.GetCitiesForCountry(countryCode);
+            }
+            catch (SoapHeaderException)
+            {
+                // This is typically a country that isn't populated with cities yet. Ignore.
+                continue;
+            }
+
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/2);
 
@@ -380,12 +392,39 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             foreach (Activizr.Site.Automation.PostalCode postalCode in postalCodes)
             {
-                // cityIdsUsedLookup[postalCode.CityName] = 
+                cityIdsUsedLookup[postalCode.CityId] = true;
             }
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry*2/3);
 
+            // Insert cities
+
+            int newCountryId = countryIdTranslation[countryCode];
+
+            foreach (Activizr.Site.Automation.City city in cities)
+            {
+                if (cityIdsUsedLookup[city.CityId])
+                {
+                    int newGeographyId = geographyIdTranslation[city.GeographyId];
+                    int newCityId = PirateDb.GetDatabaseForWriting().CreateCity(city.Name, newCountryId,
+                                                                                newGeographyId);
+                    cityIdTranslation[city.CityId] = newCityId;
+                }
+            }
+
+            // Insert postal codes
+
+            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry*5/6);
+
+            foreach (Activizr.Site.Automation.PostalCode postalCode in postalCodes)
+            {
+                int newCityId = cityIdTranslation[postalCode.CityId];
+                PirateDb.GetDatabaseForWriting().CreatePostalCode(postalCode.PostalCode, newCityId, newCountryId);
+            }
+
             countryCount++;
+
+            _initProgress = 10 + (int) (countryCount*initStepPerCountry);
         }
 
         _initProgress = 100;

@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
 using Activizr.Basic.Types;
@@ -231,6 +232,43 @@ namespace Activizr.Database
                 }
             }
         }
+
+        public int CreateCity(string cityName, int countryId, int geographyId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("CreateCity", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "cityName", cityName);
+                AddParameterWithName(command, "countryId", countryId);
+                AddParameterWithName(command, "geographyId", geographyId);
+                AddParameterWithName(command, "comment", string.Empty);
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+
+        public int CreatePostalCode(string postalCode, int cityId, int countryId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("CreatePostalCode", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "postalCode", postalCode);
+                AddParameterWithName(command, "cityId", cityId);
+                AddParameterWithName(command, "countryId", countryId);
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
 
     }
 }

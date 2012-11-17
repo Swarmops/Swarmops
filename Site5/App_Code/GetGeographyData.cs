@@ -23,295 +23,422 @@ using System.Xml.Serialization;
 namespace Activizr.Site.Automation
 {
 
-
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="GetGeographyDataSoap", Namespace="http://activizr.com/")]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BasicGeography))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BasicPostalCode))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BasicCity))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BasicCountry))]
-    public partial class GetGeographyData : System.Web.Services.Protocols.SoapHttpClientProtocol {
-    
+    [System.Web.Services.WebServiceBindingAttribute(Name = "GetGeographyDataSoap", Namespace = "http://activizr.com/")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof (BasicGeography))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof (BasicPostalCode))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof (BasicCity))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof (BasicCountry))]
+    public partial class GetGeographyData : System.Web.Services.Protocols.SoapHttpClientProtocol
+    {
+
         private System.Threading.SendOrPostCallback GetCountriesOperationCompleted;
-    
+
         private System.Threading.SendOrPostCallback GetCountriesInUseOperationCompleted;
-    
+
         private System.Threading.SendOrPostCallback GetCitiesForCountryOperationCompleted;
-    
+
         private System.Threading.SendOrPostCallback GetPostalCodesForCountryOperationCompleted;
-    
+
         private System.Threading.SendOrPostCallback GetGeographyOperationCompleted;
-    
+
         private System.Threading.SendOrPostCallback GetGeographyForCountryOperationCompleted;
-    
+
         /// <remarks/>
-        public GetGeographyData() {
+        public GetGeographyData()
+        {
             this.Url = "http://pirate.activizr.com/Automation/GetGeographyData.asmx";
         }
-    
+
         /// <remarks/>
         public event GetCountriesCompletedEventHandler GetCountriesCompleted;
-    
+
         /// <remarks/>
         public event GetCountriesInUseCompletedEventHandler GetCountriesInUseCompleted;
-    
+
         /// <remarks/>
         public event GetCitiesForCountryCompletedEventHandler GetCitiesForCountryCompleted;
-    
+
         /// <remarks/>
         public event GetPostalCodesForCountryCompletedEventHandler GetPostalCodesForCountryCompleted;
-    
+
         /// <remarks/>
         public event GetGeographyCompletedEventHandler GetGeographyCompleted;
-    
+
         /// <remarks/>
         public event GetGeographyForCountryCompletedEventHandler GetGeographyForCountryCompleted;
-    
+
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetCountries", RequestNamespace="http://activizr.com/", ResponseNamespace="http://activizr.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Country[] GetCountries() {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetCountries",
+            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+            Use = System.Web.Services.Description.SoapBindingUse.Literal,
+            ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Country[] GetCountries()
+        {
             object[] results = this.Invoke("GetCountries", new object[0]);
-            return ((Country[])(results[0]));
+            return ((Country[]) (results[0]));
         }
-    
+
         /// <remarks/>
-        public System.IAsyncResult BeginGetCountries(System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginGetCountries(System.AsyncCallback callback, object asyncState)
+        {
             return this.BeginInvoke("GetCountries", new object[0], callback, asyncState);
         }
-    
+
         /// <remarks/>
-        public Country[] EndGetCountries(System.IAsyncResult asyncResult) {
+        public Country[] EndGetCountries(System.IAsyncResult asyncResult)
+        {
             object[] results = this.EndInvoke(asyncResult);
-            return ((Country[])(results[0]));
+            return ((Country[]) (results[0]));
         }
-    
+
         /// <remarks/>
-        public void GetCountriesAsync() {
+        public void GetCountriesAsync()
+        {
             this.GetCountriesAsync(null);
         }
-    
+
         /// <remarks/>
-        public void GetCountriesAsync(object userState) {
-            if ((this.GetCountriesOperationCompleted == null)) {
-                this.GetCountriesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCountriesOperationCompleted);
+        public void GetCountriesAsync(object userState)
+        {
+            if ((this.GetCountriesOperationCompleted == null))
+            {
+                this.GetCountriesOperationCompleted =
+                    new System.Threading.SendOrPostCallback(this.OnGetCountriesOperationCompleted);
             }
             this.InvokeAsync("GetCountries", new object[0], this.GetCountriesOperationCompleted, userState);
         }
-    
-        private void OnGetCountriesOperationCompleted(object arg) {
-            if ((this.GetCountriesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetCountriesCompleted(this, new GetCountriesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+
+        private void OnGetCountriesOperationCompleted(object arg)
+        {
+            if ((this.GetCountriesCompleted != null))
+            {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs =
+                    ((System.Web.Services.Protocols.InvokeCompletedEventArgs) (arg));
+                this.GetCountriesCompleted(this,
+                                           new GetCountriesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error,
+                                                                              invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
-    
+
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetCountriesInUse", RequestNamespace="http://activizr.com/", ResponseNamespace="http://activizr.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Country[] GetCountriesInUse() {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetCountriesInUse",
+            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+            Use = System.Web.Services.Description.SoapBindingUse.Literal,
+            ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Country[] GetCountriesInUse()
+        {
             object[] results = this.Invoke("GetCountriesInUse", new object[0]);
-            return ((Country[])(results[0]));
+            return ((Country[]) (results[0]));
         }
-    
+
         /// <remarks/>
-        public System.IAsyncResult BeginGetCountriesInUse(System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginGetCountriesInUse(System.AsyncCallback callback, object asyncState)
+        {
             return this.BeginInvoke("GetCountriesInUse", new object[0], callback, asyncState);
         }
-    
+
         /// <remarks/>
-        public Country[] EndGetCountriesInUse(System.IAsyncResult asyncResult) {
+        public Country[] EndGetCountriesInUse(System.IAsyncResult asyncResult)
+        {
             object[] results = this.EndInvoke(asyncResult);
-            return ((Country[])(results[0]));
+            return ((Country[]) (results[0]));
         }
-    
+
         /// <remarks/>
-        public void GetCountriesInUseAsync() {
+        public void GetCountriesInUseAsync()
+        {
             this.GetCountriesInUseAsync(null);
         }
-    
+
         /// <remarks/>
-        public void GetCountriesInUseAsync(object userState) {
-            if ((this.GetCountriesInUseOperationCompleted == null)) {
-                this.GetCountriesInUseOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCountriesInUseOperationCompleted);
+        public void GetCountriesInUseAsync(object userState)
+        {
+            if ((this.GetCountriesInUseOperationCompleted == null))
+            {
+                this.GetCountriesInUseOperationCompleted =
+                    new System.Threading.SendOrPostCallback(this.OnGetCountriesInUseOperationCompleted);
             }
             this.InvokeAsync("GetCountriesInUse", new object[0], this.GetCountriesInUseOperationCompleted, userState);
         }
-    
-        private void OnGetCountriesInUseOperationCompleted(object arg) {
-            if ((this.GetCountriesInUseCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetCountriesInUseCompleted(this, new GetCountriesInUseCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+
+        private void OnGetCountriesInUseOperationCompleted(object arg)
+        {
+            if ((this.GetCountriesInUseCompleted != null))
+            {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs =
+                    ((System.Web.Services.Protocols.InvokeCompletedEventArgs) (arg));
+                this.GetCountriesInUseCompleted(this,
+                                                new GetCountriesInUseCompletedEventArgs(invokeArgs.Results,
+                                                                                        invokeArgs.Error,
+                                                                                        invokeArgs.Cancelled,
+                                                                                        invokeArgs.UserState));
             }
         }
-    
+
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetCitiesForCountry", RequestNamespace="http://activizr.com/", ResponseNamespace="http://activizr.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public City[] GetCitiesForCountry(string countryCode) {
-            object[] results = this.Invoke("GetCitiesForCountry", new object[] {
-                        countryCode});
-            return ((City[])(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetCitiesForCountry",
+            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+            Use = System.Web.Services.Description.SoapBindingUse.Literal,
+            ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public City[] GetCitiesForCountry(string countryCode)
+        {
+            object[] results = this.Invoke("GetCitiesForCountry", new object[]
+                                                                      {
+                                                                          countryCode
+                                                                      });
+            return ((City[]) (results[0]));
         }
-    
+
         /// <remarks/>
-        public System.IAsyncResult BeginGetCitiesForCountry(string countryCode, System.AsyncCallback callback, object asyncState) {
-            return this.BeginInvoke("GetCitiesForCountry", new object[] {
-                        countryCode}, callback, asyncState);
+        public System.IAsyncResult BeginGetCitiesForCountry(string countryCode, System.AsyncCallback callback,
+                                                            object asyncState)
+        {
+            return this.BeginInvoke("GetCitiesForCountry", new object[]
+                                                               {
+                                                                   countryCode
+                                                               }, callback, asyncState);
         }
-    
+
         /// <remarks/>
-        public City[] EndGetCitiesForCountry(System.IAsyncResult asyncResult) {
+        public City[] EndGetCitiesForCountry(System.IAsyncResult asyncResult)
+        {
             object[] results = this.EndInvoke(asyncResult);
-            return ((City[])(results[0]));
+            return ((City[]) (results[0]));
         }
-    
+
         /// <remarks/>
-        public void GetCitiesForCountryAsync(string countryCode) {
+        public void GetCitiesForCountryAsync(string countryCode)
+        {
             this.GetCitiesForCountryAsync(countryCode, null);
         }
-    
+
         /// <remarks/>
-        public void GetCitiesForCountryAsync(string countryCode, object userState) {
-            if ((this.GetCitiesForCountryOperationCompleted == null)) {
-                this.GetCitiesForCountryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCitiesForCountryOperationCompleted);
+        public void GetCitiesForCountryAsync(string countryCode, object userState)
+        {
+            if ((this.GetCitiesForCountryOperationCompleted == null))
+            {
+                this.GetCitiesForCountryOperationCompleted =
+                    new System.Threading.SendOrPostCallback(this.OnGetCitiesForCountryOperationCompleted);
             }
-            this.InvokeAsync("GetCitiesForCountry", new object[] {
-                        countryCode}, this.GetCitiesForCountryOperationCompleted, userState);
+            this.InvokeAsync("GetCitiesForCountry", new object[]
+                                                        {
+                                                            countryCode
+                                                        }, this.GetCitiesForCountryOperationCompleted, userState);
         }
-    
-        private void OnGetCitiesForCountryOperationCompleted(object arg) {
-            if ((this.GetCitiesForCountryCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetCitiesForCountryCompleted(this, new GetCitiesForCountryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+
+        private void OnGetCitiesForCountryOperationCompleted(object arg)
+        {
+            if ((this.GetCitiesForCountryCompleted != null))
+            {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs =
+                    ((System.Web.Services.Protocols.InvokeCompletedEventArgs) (arg));
+                this.GetCitiesForCountryCompleted(this,
+                                                  new GetCitiesForCountryCompletedEventArgs(invokeArgs.Results,
+                                                                                            invokeArgs.Error,
+                                                                                            invokeArgs.Cancelled,
+                                                                                            invokeArgs.UserState));
             }
         }
-    
+
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetPostalCodesForCountry", RequestNamespace="http://activizr.com/", ResponseNamespace="http://activizr.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public PostalCode[] GetPostalCodesForCountry(string countryCode) {
-            object[] results = this.Invoke("GetPostalCodesForCountry", new object[] {
-                        countryCode});
-            return ((PostalCode[])(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetPostalCodesForCountry",
+            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+            Use = System.Web.Services.Description.SoapBindingUse.Literal,
+            ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public PostalCode[] GetPostalCodesForCountry(string countryCode)
+        {
+            object[] results = this.Invoke("GetPostalCodesForCountry", new object[]
+                                                                           {
+                                                                               countryCode
+                                                                           });
+            return ((PostalCode[]) (results[0]));
         }
-    
+
         /// <remarks/>
-        public System.IAsyncResult BeginGetPostalCodesForCountry(string countryCode, System.AsyncCallback callback, object asyncState) {
-            return this.BeginInvoke("GetPostalCodesForCountry", new object[] {
-                        countryCode}, callback, asyncState);
+        public System.IAsyncResult BeginGetPostalCodesForCountry(string countryCode, System.AsyncCallback callback,
+                                                                 object asyncState)
+        {
+            return this.BeginInvoke("GetPostalCodesForCountry", new object[]
+                                                                    {
+                                                                        countryCode
+                                                                    }, callback, asyncState);
         }
-    
+
         /// <remarks/>
-        public PostalCode[] EndGetPostalCodesForCountry(System.IAsyncResult asyncResult) {
+        public PostalCode[] EndGetPostalCodesForCountry(System.IAsyncResult asyncResult)
+        {
             object[] results = this.EndInvoke(asyncResult);
-            return ((PostalCode[])(results[0]));
+            return ((PostalCode[]) (results[0]));
         }
-    
+
         /// <remarks/>
-        public void GetPostalCodesForCountryAsync(string countryCode) {
+        public void GetPostalCodesForCountryAsync(string countryCode)
+        {
             this.GetPostalCodesForCountryAsync(countryCode, null);
         }
-    
+
         /// <remarks/>
-        public void GetPostalCodesForCountryAsync(string countryCode, object userState) {
-            if ((this.GetPostalCodesForCountryOperationCompleted == null)) {
-                this.GetPostalCodesForCountryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPostalCodesForCountryOperationCompleted);
+        public void GetPostalCodesForCountryAsync(string countryCode, object userState)
+        {
+            if ((this.GetPostalCodesForCountryOperationCompleted == null))
+            {
+                this.GetPostalCodesForCountryOperationCompleted =
+                    new System.Threading.SendOrPostCallback(this.OnGetPostalCodesForCountryOperationCompleted);
             }
-            this.InvokeAsync("GetPostalCodesForCountry", new object[] {
-                        countryCode}, this.GetPostalCodesForCountryOperationCompleted, userState);
+            this.InvokeAsync("GetPostalCodesForCountry", new object[]
+                                                             {
+                                                                 countryCode
+                                                             }, this.GetPostalCodesForCountryOperationCompleted,
+                             userState);
         }
-    
-        private void OnGetPostalCodesForCountryOperationCompleted(object arg) {
-            if ((this.GetPostalCodesForCountryCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetPostalCodesForCountryCompleted(this, new GetPostalCodesForCountryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+
+        private void OnGetPostalCodesForCountryOperationCompleted(object arg)
+        {
+            if ((this.GetPostalCodesForCountryCompleted != null))
+            {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs =
+                    ((System.Web.Services.Protocols.InvokeCompletedEventArgs) (arg));
+                this.GetPostalCodesForCountryCompleted(this,
+                                                       new GetPostalCodesForCountryCompletedEventArgs(
+                                                           invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled,
+                                                           invokeArgs.UserState));
             }
         }
-    
+
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetGeography", RequestNamespace="http://activizr.com/", ResponseNamespace="http://activizr.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Geography GetGeography(int nodeId) {
-            object[] results = this.Invoke("GetGeography", new object[] {
-                        nodeId});
-            return ((Geography)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetGeography",
+            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+            Use = System.Web.Services.Description.SoapBindingUse.Literal,
+            ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Geography GetGeography(int nodeId)
+        {
+            object[] results = this.Invoke("GetGeography", new object[]
+                                                               {
+                                                                   nodeId
+                                                               });
+            return ((Geography) (results[0]));
         }
-    
+
         /// <remarks/>
-        public System.IAsyncResult BeginGetGeography(int nodeId, System.AsyncCallback callback, object asyncState) {
-            return this.BeginInvoke("GetGeography", new object[] {
-                        nodeId}, callback, asyncState);
+        public System.IAsyncResult BeginGetGeography(int nodeId, System.AsyncCallback callback, object asyncState)
+        {
+            return this.BeginInvoke("GetGeography", new object[]
+                                                        {
+                                                            nodeId
+                                                        }, callback, asyncState);
         }
-    
+
         /// <remarks/>
-        public Geography EndGetGeography(System.IAsyncResult asyncResult) {
+        public Geography EndGetGeography(System.IAsyncResult asyncResult)
+        {
             object[] results = this.EndInvoke(asyncResult);
-            return ((Geography)(results[0]));
+            return ((Geography) (results[0]));
         }
-    
+
         /// <remarks/>
-        public void GetGeographyAsync(int nodeId) {
+        public void GetGeographyAsync(int nodeId)
+        {
             this.GetGeographyAsync(nodeId, null);
         }
-    
+
         /// <remarks/>
-        public void GetGeographyAsync(int nodeId, object userState) {
-            if ((this.GetGeographyOperationCompleted == null)) {
-                this.GetGeographyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetGeographyOperationCompleted);
+        public void GetGeographyAsync(int nodeId, object userState)
+        {
+            if ((this.GetGeographyOperationCompleted == null))
+            {
+                this.GetGeographyOperationCompleted =
+                    new System.Threading.SendOrPostCallback(this.OnGetGeographyOperationCompleted);
             }
-            this.InvokeAsync("GetGeography", new object[] {
-                        nodeId}, this.GetGeographyOperationCompleted, userState);
+            this.InvokeAsync("GetGeography", new object[]
+                                                 {
+                                                     nodeId
+                                                 }, this.GetGeographyOperationCompleted, userState);
         }
-    
-        private void OnGetGeographyOperationCompleted(object arg) {
-            if ((this.GetGeographyCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetGeographyCompleted(this, new GetGeographyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+
+        private void OnGetGeographyOperationCompleted(object arg)
+        {
+            if ((this.GetGeographyCompleted != null))
+            {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs =
+                    ((System.Web.Services.Protocols.InvokeCompletedEventArgs) (arg));
+                this.GetGeographyCompleted(this,
+                                           new GetGeographyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error,
+                                                                              invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
-    
+
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetGeographyForCountry", RequestNamespace="http://activizr.com/", ResponseNamespace="http://activizr.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Geography GetGeographyForCountry(string countryCode) {
-            object[] results = this.Invoke("GetGeographyForCountry", new object[] {
-                        countryCode});
-            return ((Geography)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetGeographyForCountry",
+            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+            Use = System.Web.Services.Description.SoapBindingUse.Literal,
+            ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Geography GetGeographyForCountry(string countryCode)
+        {
+            object[] results = this.Invoke("GetGeographyForCountry", new object[]
+                                                                         {
+                                                                             countryCode
+                                                                         });
+            return ((Geography) (results[0]));
         }
-    
+
         /// <remarks/>
-        public System.IAsyncResult BeginGetGeographyForCountry(string countryCode, System.AsyncCallback callback, object asyncState) {
-            return this.BeginInvoke("GetGeographyForCountry", new object[] {
-                        countryCode}, callback, asyncState);
+        public System.IAsyncResult BeginGetGeographyForCountry(string countryCode, System.AsyncCallback callback,
+                                                               object asyncState)
+        {
+            return this.BeginInvoke("GetGeographyForCountry", new object[]
+                                                                  {
+                                                                      countryCode
+                                                                  }, callback, asyncState);
         }
-    
+
         /// <remarks/>
-        public Geography EndGetGeographyForCountry(System.IAsyncResult asyncResult) {
+        public Geography EndGetGeographyForCountry(System.IAsyncResult asyncResult)
+        {
             object[] results = this.EndInvoke(asyncResult);
-            return ((Geography)(results[0]));
+            return ((Geography) (results[0]));
         }
-    
+
         /// <remarks/>
-        public void GetGeographyForCountryAsync(string countryCode) {
+        public void GetGeographyForCountryAsync(string countryCode)
+        {
             this.GetGeographyForCountryAsync(countryCode, null);
         }
-    
+
         /// <remarks/>
-        public void GetGeographyForCountryAsync(string countryCode, object userState) {
-            if ((this.GetGeographyForCountryOperationCompleted == null)) {
-                this.GetGeographyForCountryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetGeographyForCountryOperationCompleted);
+        public void GetGeographyForCountryAsync(string countryCode, object userState)
+        {
+            if ((this.GetGeographyForCountryOperationCompleted == null))
+            {
+                this.GetGeographyForCountryOperationCompleted =
+                    new System.Threading.SendOrPostCallback(this.OnGetGeographyForCountryOperationCompleted);
             }
-            this.InvokeAsync("GetGeographyForCountry", new object[] {
-                        countryCode}, this.GetGeographyForCountryOperationCompleted, userState);
+            this.InvokeAsync("GetGeographyForCountry", new object[]
+                                                           {
+                                                               countryCode
+                                                           }, this.GetGeographyForCountryOperationCompleted, userState);
         }
-    
-        private void OnGetGeographyForCountryOperationCompleted(object arg) {
-            if ((this.GetGeographyForCountryCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetGeographyForCountryCompleted(this, new GetGeographyForCountryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+
+        private void OnGetGeographyForCountryOperationCompleted(object arg)
+        {
+            if ((this.GetGeographyForCountryCompleted != null))
+            {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs =
+                    ((System.Web.Services.Protocols.InvokeCompletedEventArgs) (arg));
+                this.GetGeographyForCountryCompleted(this,
+                                                     new GetGeographyForCountryCompletedEventArgs(invokeArgs.Results,
+                                                                                                  invokeArgs.Error,
+                                                                                                  invokeArgs.Cancelled,
+                                                                                                  invokeArgs.UserState));
             }
         }
-    
+
         /// <remarks/>
-        public new void CancelAsync(object userState) {
+        public new void CancelAsync(object userState)
+        {
             base.CancelAsync(userState);
         }
     }
@@ -321,135 +448,111 @@ namespace Activizr.Site.Automation
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://activizr.com/")]
-    public partial class Country : BasicCountry {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    public partial class Country : BasicCountry
+    {
     }
 
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Country))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof (Country))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://activizr.com/")]
-    public partial class BasicCountry {
-    
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    public partial class BasicCountry
+    {
+
         private int countryIdField;
-    
+
         private string nameField;
-    
+
         private string codeField;
-    
+
         private string cultureField;
-    
+
         private int geographyIdField;
-    
+
         /// <remarks/>
-        public int CountryId {
-            get {
-                return this.countryIdField;
-            }
-            set {
-                this.countryIdField = value;
-            }
+        public int CountryId
+        {
+            get { return this.countryIdField; }
+            set { this.countryIdField = value; }
         }
-    
+
         /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
+        public string Name
+        {
+            get { return this.nameField; }
+            set { this.nameField = value; }
         }
-    
+
         /// <remarks/>
-        public string Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-            }
+        public string Code
+        {
+            get { return this.codeField; }
+            set { this.codeField = value; }
         }
-    
+
         /// <remarks/>
-        public string Culture {
-            get {
-                return this.cultureField;
-            }
-            set {
-                this.cultureField = value;
-            }
+        public string Culture
+        {
+            get { return this.cultureField; }
+            set { this.cultureField = value; }
         }
-    
+
         /// <remarks/>
-        public int GeographyId {
-            get {
-                return this.geographyIdField;
-            }
-            set {
-                this.geographyIdField = value;
-            }
+        public int GeographyId
+        {
+            get { return this.geographyIdField; }
+            set { this.geographyIdField = value; }
         }
     }
 
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Geography))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof (Geography))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://activizr.com/")]
-    public partial class BasicGeography {
-    
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    public partial class BasicGeography
+    {
+
         private int geographyIdField;
-    
+
         private int parentGeographyIdField;
-    
+
         private string nameField;
-    
+
         private int generationField;
-    
+
         /// <remarks/>
-        public int GeographyId {
-            get {
-                return this.geographyIdField;
-            }
-            set {
-                this.geographyIdField = value;
-            }
+        public int GeographyId
+        {
+            get { return this.geographyIdField; }
+            set { this.geographyIdField = value; }
         }
-    
+
         /// <remarks/>
-        public int ParentGeographyId {
-            get {
-                return this.parentGeographyIdField;
-            }
-            set {
-                this.parentGeographyIdField = value;
-            }
+        public int ParentGeographyId
+        {
+            get { return this.parentGeographyIdField; }
+            set { this.parentGeographyIdField = value; }
         }
-    
+
         /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
+        public string Name
+        {
+            get { return this.nameField; }
+            set { this.nameField = value; }
         }
-    
+
         /// <remarks/>
-        public int Generation {
-            get {
-                return this.generationField;
-            }
-            set {
-                this.generationField = value;
-            }
+        public int Generation
+        {
+            get { return this.generationField; }
+            set { this.generationField = value; }
         }
     }
 
@@ -458,132 +561,64 @@ namespace Activizr.Site.Automation
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://activizr.com/")]
-    public partial class Geography : BasicGeography {
-    
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    public partial class Geography : BasicGeography
+    {
+
         private Geography[] childrenField;
-    
+
         /// <remarks/>
-        public Geography[] Children {
-            get {
-                return this.childrenField;
-            }
-            set {
-                this.childrenField = value;
-            }
+        public Geography[] Children
+        {
+            get { return this.childrenField; }
+            set { this.childrenField = value; }
         }
     }
 
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostalCode))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof (PostalCode))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://activizr.com/")]
-    public partial class BasicPostalCode {
-    
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    public partial class BasicPostalCode
+    {
+
+        private int postalCodeIdField;
+
         private string postalCodeField;
-    
-        private string cityNameField;
-    
-        private string countryCodeField;
-    
-        /// <remarks/>
-        public string PostalCode {
-            get {
-                return this.postalCodeField;
-            }
-            set {
-                this.postalCodeField = value;
-            }
-        }
-    
-        /// <remarks/>
-        public string CityName {
-            get {
-                return this.cityNameField;
-            }
-            set {
-                this.cityNameField = value;
-            }
-        }
-    
-        /// <remarks/>
-        public string CountryCode {
-            get {
-                return this.countryCodeField;
-            }
-            set {
-                this.countryCodeField = value;
-            }
-        }
-    }
 
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://activizr.com/")]
-    public partial class PostalCode : BasicPostalCode {
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(City))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://activizr.com/")]
-    public partial class BasicCity {
-    
         private int cityIdField;
-    
-        private string nameField;
-    
+
         private int countryIdField;
-    
-        private int geographyIdField;
-    
+
         /// <remarks/>
-        public int CityId {
-            get {
-                return this.cityIdField;
-            }
-            set {
-                this.cityIdField = value;
-            }
+        public int PostalCodeId
+        {
+            get { return this.postalCodeIdField; }
+            set { this.postalCodeIdField = value; }
         }
-    
+
         /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
+        public string PostalCode
+        {
+            get { return this.postalCodeField; }
+            set { this.postalCodeField = value; }
         }
-    
+
         /// <remarks/>
-        public int CountryId {
-            get {
-                return this.countryIdField;
-            }
-            set {
-                this.countryIdField = value;
-            }
+        public int CityId
+        {
+            get { return this.cityIdField; }
+            set { this.cityIdField = value; }
         }
-    
+
         /// <remarks/>
-        public int GeographyId {
-            get {
-                return this.geographyIdField;
-            }
-            set {
-                this.geographyIdField = value;
-            }
+        public int CountryId
+        {
+            get { return this.countryIdField; }
+            set { this.countryIdField = value; }
         }
     }
 
@@ -592,8 +627,66 @@ namespace Activizr.Site.Automation
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://activizr.com/")]
-    public partial class City : BasicCity {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    public partial class PostalCode : BasicPostalCode
+    {
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof (City))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    public partial class BasicCity
+    {
+
+        private int cityIdField;
+
+        private string nameField;
+
+        private int countryIdField;
+
+        private int geographyIdField;
+
+        /// <remarks/>
+        public int CityId
+        {
+            get { return this.cityIdField; }
+            set { this.cityIdField = value; }
+        }
+
+        /// <remarks/>
+        public string Name
+        {
+            get { return this.nameField; }
+            set { this.nameField = value; }
+        }
+
+        /// <remarks/>
+        public int CountryId
+        {
+            get { return this.countryIdField; }
+            set { this.countryIdField = value; }
+        }
+
+        /// <remarks/>
+        public int GeographyId
+        {
+            get { return this.geographyIdField; }
+            set { this.geographyIdField = value; }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    public partial class City : BasicCity
+    {
     }
 
     /// <remarks/>
@@ -604,20 +697,25 @@ namespace Activizr.Site.Automation
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetCountriesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
+    public partial class GetCountriesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+    {
+
         private object[] results;
-    
-        internal GetCountriesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
+
+        internal GetCountriesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled,
+                                                object userState) :
+                                                    base(exception, cancelled, userState)
+        {
             this.results = results;
         }
-    
+
         /// <remarks/>
-        public Country[] Result {
-            get {
+        public Country[] Result
+        {
+            get
+            {
                 this.RaiseExceptionIfNecessary();
-                return ((Country[])(this.results[0]));
+                return ((Country[]) (this.results[0]));
             }
         }
     }
@@ -630,72 +728,89 @@ namespace Activizr.Site.Automation
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetCountriesInUseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
+    public partial class GetCountriesInUseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+    {
+
         private object[] results;
-    
-        internal GetCountriesInUseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
+
+        internal GetCountriesInUseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled,
+                                                     object userState) :
+                                                         base(exception, cancelled, userState)
+        {
             this.results = results;
         }
-    
+
         /// <remarks/>
-        public Country[] Result {
-            get {
+        public Country[] Result
+        {
+            get
+            {
                 this.RaiseExceptionIfNecessary();
-                return ((Country[])(this.results[0]));
+                return ((Country[]) (this.results[0]));
             }
         }
     }
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    public delegate void GetCitiesForCountryCompletedEventHandler(object sender, GetCitiesForCountryCompletedEventArgs e);
+    public delegate void GetCitiesForCountryCompletedEventHandler(object sender, GetCitiesForCountryCompletedEventArgs e
+        );
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetCitiesForCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
+    public partial class GetCitiesForCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+    {
+
         private object[] results;
-    
-        internal GetCitiesForCountryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
+
+        internal GetCitiesForCountryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled,
+                                                       object userState) :
+                                                           base(exception, cancelled, userState)
+        {
             this.results = results;
         }
-    
+
         /// <remarks/>
-        public City[] Result {
-            get {
+        public City[] Result
+        {
+            get
+            {
                 this.RaiseExceptionIfNecessary();
-                return ((City[])(this.results[0]));
+                return ((City[]) (this.results[0]));
             }
         }
     }
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    public delegate void GetPostalCodesForCountryCompletedEventHandler(object sender, GetPostalCodesForCountryCompletedEventArgs e);
+    public delegate void GetPostalCodesForCountryCompletedEventHandler(
+        object sender, GetPostalCodesForCountryCompletedEventArgs e);
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetPostalCodesForCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
+    public partial class GetPostalCodesForCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+    {
+
         private object[] results;
-    
-        internal GetPostalCodesForCountryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
+
+        internal GetPostalCodesForCountryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled,
+                                                            object userState) :
+                                                                base(exception, cancelled, userState)
+        {
             this.results = results;
         }
-    
+
         /// <remarks/>
-        public PostalCode[] Result {
-            get {
+        public PostalCode[] Result
+        {
+            get
+            {
                 this.RaiseExceptionIfNecessary();
-                return ((PostalCode[])(this.results[0]));
+                return ((PostalCode[]) (this.results[0]));
             }
         }
     }
@@ -708,47 +823,59 @@ namespace Activizr.Site.Automation
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetGeographyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
+    public partial class GetGeographyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+    {
+
         private object[] results;
-    
-        internal GetGeographyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
+
+        internal GetGeographyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled,
+                                                object userState) :
+                                                    base(exception, cancelled, userState)
+        {
             this.results = results;
         }
-    
+
         /// <remarks/>
-        public Geography Result {
-            get {
+        public Geography Result
+        {
+            get
+            {
                 this.RaiseExceptionIfNecessary();
-                return ((Geography)(this.results[0]));
+                return ((Geography) (this.results[0]));
             }
         }
     }
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    public delegate void GetGeographyForCountryCompletedEventHandler(object sender, GetGeographyForCountryCompletedEventArgs e);
+    public delegate void GetGeographyForCountryCompletedEventHandler(
+        object sender, GetGeographyForCountryCompletedEventArgs e);
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetGeographyForCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-    
+    public partial class GetGeographyForCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+    {
+
         private object[] results;
-    
-        internal GetGeographyForCountryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
+
+        internal GetGeographyForCountryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled,
+                                                          object userState) :
+                                                              base(exception, cancelled, userState)
+        {
             this.results = results;
         }
-    
+
         /// <remarks/>
-        public Geography Result {
-            get {
+        public Geography Result
+        {
+            get
+            {
                 this.RaiseExceptionIfNecessary();
-                return ((Geography)(this.results[0]));
+                return ((Geography) (this.results[0]));
             }
         }
     }
+
 }
