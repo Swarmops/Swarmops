@@ -266,6 +266,7 @@ namespace Activizr.Logic.Cache
             }
         }
 
+        [Obsolete ("Never use this function. Mark the org as unused, deleted. Records are needed for historic reasons.", true)]
         internal static void DeleteOrganization (int p)
         {
             PirateDb.GetDatabaseForWriting().DeleteOrganization(p);

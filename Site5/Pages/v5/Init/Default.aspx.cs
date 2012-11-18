@@ -477,6 +477,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             _initProgress = 10 + (int) (countryCount*initStepPerCountry);
         }
 
+        // Create the sandbox
+
+        Activizr.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "activizr.com", "Act", rootGeographyId, true,
+                                                     true, 0);
+
         _initProgress = 100;
         _initMessage = "Complete.";
 

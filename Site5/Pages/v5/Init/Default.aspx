@@ -49,6 +49,9 @@
 
 	        function validateStep(stepNumber) {
 	            var isValid = false;
+	            var textBoxes;
+	            var loop;
+	            var fieldContents;
 
 	            if (stepNumber == 1) {
 	                // Validate Hostname, Host Address
@@ -108,12 +111,12 @@
 	            else if (stepNumber == 2) {
 	                isValid = true; // assume true, make false as we go
 
-	                var textBoxes = ["<%=this.TextCredentialsReadDatabase.ClientID %>", "<%=this.TextCredentialsReadServer.ClientID %>", "<%=this.TextCredentialsReadUser.ClientID %>", "<%=this.TextCredentialsReadPassword.ClientID %>",
+	                textBoxes = ["<%=this.TextCredentialsReadDatabase.ClientID %>", "<%=this.TextCredentialsReadServer.ClientID %>", "<%=this.TextCredentialsReadUser.ClientID %>", "<%=this.TextCredentialsReadPassword.ClientID %>",
 	                    "<%=this.TextCredentialsWriteDatabase.ClientID %>", "<%=this.TextCredentialsWriteServer.ClientID %>", "<%=this.TextCredentialsWriteUser.ClientID %>", "<%=this.TextCredentialsWritePassword.ClientID %>",
 	                    "<%=this.TextCredentialsAdminDatabase.ClientID %>", "<%=this.TextCredentialsAdminServer.ClientID %>", "<%=this.TextCredentialsAdminUser.ClientID %>", "<%=this.TextCredentialsAdminPassword.ClientID %>"];
 
-	                for (var loop = 0; loop < textBoxes.length; loop++) {
-	                    var fieldContents = $('#' + textBoxes[loop]).val();
+	                for (loop = 0; loop < textBoxes.length; loop++) {
+	                    fieldContents = $('#' + textBoxes[loop]).val();
 
 	                    if (fieldContents && fieldContents.length > 0) {
 	                        $('#' + textBoxes[loop]).css('background-image', "none");
@@ -134,6 +137,58 @@
 	                }
 
 	            }
+	            else if (stepNumber == 3) {
+	                isValid = true; // assume true, make false as we go
+
+	                // Check that all four boxes are filled in, and that Password1 and Password2 equal each other.
+
+	                textBoxes = ["<%=this.TextFirstUserName.ClientID %>", "<%=this.TextFirstUserMail.ClientID %>", "<%=this.TextFirstUserPassword1.ClientID %>", "<%=this.TextFirstUserPassword2.ClientID %>"];
+
+	                for (loop = 0; loop < textBoxes.length; loop++) {
+	                    fieldContents = $('#' + textBoxes[loop]).val();
+
+	                    if (fieldContents && fieldContents.length > 0) {
+	                        $('#' + textBoxes[loop]).css('background-image', "none");
+	                    } else {
+	                        $('#' + textBoxes[loop]).css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                        isValid = false;
+	                    }
+	                }
+
+	                // As we exit the zero-length check, fieldContents contains Password2.Text, so we can compare it to Password1.Text right away.
+
+	                if (isValid) {
+	                    if (fieldContents != $('#<%=this.TextFirstUserPassword1.ClientID %>').val()) {
+	                        $('#<%=this.TextFirstUserPassword1.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                        $('#<%=this.TextFirstUserPassword2.ClientID %>').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                        isValid = false;
+	                    }
+	                }
+
+	                // If all is valid, create the first user.
+	                // TODO: this WILL fuck up when somebody enters O'Hara as name, or anything else containing a single quote. Protect against that.
+	                // TODO: make this throw server-side if there is already a Person.FromIdentity(1).
+
+	                if (isValid) {
+	                    $.ajax({
+	                        type: "POST",
+	                        url: "Default.aspx/CreateFirstUser",
+	                        data: "{'name': '" + $('#<%=this.TextFirstUserName.ClientID %>').val() + "', 'mail': '" + $('#<%=this.TextFirstUserMail.ClientID %>').val() + "', 'address': '" + $('#<%=this.TextFirstUserPassword1.ClientID %>').val() + "'}",  // TODO: injection vulnerability - strip single quotes from input
+	                        contentType: "application/json; charset=utf-8",
+	                        dataType: "json",
+	                        success: function (msg) {
+	                            // Don't care
+	                        }
+	                    });
+	                }
+	            }
+	            else if (stepNumber == 4) {
+	                // If we get here, we're always good
+
+	                isValid = true;
+	                // TODO: Click the magic button that logs the first user in
+	            }
+
 	            return isValid;
 	        }
 
@@ -181,8 +236,16 @@
 	                } else {
 	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
 
-	                    $('#DivProgressDatabase').progressbar("value", msg.d);
-	                    setTimeout('updateInitProgressBar();', 1500);
+	                    if (msg.d == 1) {
+	                        $('#DivProgressDatabase').progressbar("value", msg.d);
+	                    } else {
+	                        $("#DivProgressDatabase .ui-progressbar-value").animate(
+                            {
+                                width: msg.d + "%"
+                            }, { queue: false });
+	                    }
+
+	                    setTimeout('updateInitProgressBar();', 1000);
 	                }
 	            }
 	        });
@@ -205,7 +268,7 @@
 	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
 
 	                    $('#SpanInitProgressMessage').text(msg.d);
-	                    setTimeout('updateInitProgressMessage();', 2000);
+	                    setTimeout('updateInitProgressMessage();', 500);
 	                }
 	            }
 	        });
@@ -467,24 +530,29 @@
   			            <div id="DivInitializingDatabase">
   			                <h2>Initializing database</h2>
                             <div id="DivProgressDatabase"></div>
-                            <p>Please wait while the database is being initialized with schemas and geographic data from the Activizr servers. This is going to take a significant amount of time; we're loading tons of geodata onto your new server.</p>
+                            <p>Please wait while the database is being initialized with schemas and geographic data from the Activizr servers. This is going to take a <strong>significant</strong> amount of time; we're loading tons of geodata onto your new server.</p>
                             <p><span id="SpanInitProgressMessage">Initializing...</span></p>
   			            </div>
                         <div id="DivCreateFirstUser" style="display:none">
-                        <h2>Step 3 Content</h2>	
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                        <h2>Creating the first user</h2>	
+                        <p>Your new Activizr server has been loaded with the geographic layout of the countries we're active in, and the first organization - the <em>Sandbox</em> - has been created. We are now going to create your user account, which will become the systems administrator account of this Activizr installation.</p>
+                        
+                        <p>(You can add other users to the Systems Administrator role later.)</p>
+
+                        <div class="entrylabels">
+                            Your name<br />
+  			                Your email<br />
+                            Your password<br/>
+                            Repeat password
+                        </div>
+                        <div class="entryfields">
+                            <asp:TextBox CssClass="textinput" ID="TextFirstUserName" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextFirstUserMail" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword1" TextMode="Password" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword2" TextMode="Password" runat="server" />&nbsp;<br />
+                        </div>
+
+                        
                         </div>            				          
                     </div>
   			        <div id="step-4" style="display:none">
