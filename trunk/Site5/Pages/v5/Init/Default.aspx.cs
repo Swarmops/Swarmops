@@ -454,7 +454,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             _initMessage = string.Format("Setting up {0:N0} cities for {1}...", cities.Length, countryCode);
 
-            string sql = "INSERT INTO Cities (CityName, GeographyId, CountryId, Comment) VALUES ";
+            StringBuilder sqlCityBuild = new StringBuilder("INSERT INTO Cities (CityName, GeographyId, CountryId, Comment) VALUES ", 65536);
             bool insertComma = false;
 
             foreach (Activizr.Site.Automation.City city in cities)
@@ -470,18 +470,20 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
                     if (insertComma)
                     {
-                        sql += ",";
+                        sqlCityBuild.Append(",");
                     }
 
-                    sql += "('" + city.Name.Replace("'", "\'") + "'," + newGeographyId.ToString() + "," +
-                           newCountryId.ToString() + ",'')";
+                    sqlCityBuild.Append("('" + city.Name.Replace("'", "\'") + "'," + newGeographyId.ToString() + "," +
+                        newCountryId.ToString() + ",'')");
                     insertComma = true;
 
                     cityIdTranslation[city.CityId] = ++cityIdHighwater;  // Note that we assume the assigned ID here.
                 }
             }
 
-            PirateDb.GetDatabaseForAdmin().ExecuteAdminCommand(sql + ";"); // Inserts all cities in one bulk op, to save roundtrips
+            sqlCityBuild.Append(";");
+
+            PirateDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCityBuild.ToString()); // Inserts all cities in one bulk op, to save roundtrips
 
             // Insert postal codes
 
