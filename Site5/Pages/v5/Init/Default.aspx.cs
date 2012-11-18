@@ -390,7 +390,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             {
                 cities = geoDataFetcher.GetCitiesForCountry(countryCode);
             }
-            catch (SoapHeaderException)
+            catch (Exception)  // This is a SoapHeaderException in VS debugging, but SOMETHING ELSE! in Mono runtime, so make it generic
             {
                 // This is typically a country that isn't populated with cities yet. Ignore.
                 countryCount++;
