@@ -295,6 +295,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         _initProgress = 1;
         _initMessage = "Loading schema from Activizr servers; creating tables and procs...";
+        Thread.Sleep(100);
 
         // Get the schema and initialize the database structures. Requires ADMIN access to database.
 
@@ -302,6 +303,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         _initProgress = 5;
         _initMessage = "Getting list of countries from Activizr servers...";
+        Thread.Sleep(100);
 
         // Create translation lists
 
@@ -322,6 +324,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         _initProgress = 7;
         _initMessage = "Creating all countries on local server...";
+        Thread.Sleep(100);
 
         // Create all countries in our own database
 
@@ -358,11 +361,13 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             // Get the geography layout
 
             _initMessage = "Retrieving geography for " + countryCode + "...";
+            Thread.Sleep(100);
 
             Activizr.Site.Automation.Geography geography = geoDataFetcher.GetGeographyForCountry(countryCode);
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/6);
             _initMessage = "Setting up geography for " + countryCode + "...";
+            Thread.Sleep(100);
 
             // Create the country's root geography
 
@@ -375,6 +380,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/3);
             _initMessage = "Retrieving cities for " + countryCode + "...";
+            Thread.Sleep(100);
 
             // Get the postal codes and cities
 
@@ -394,6 +400,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/2);
             _initMessage = "Retrieving postal codes for " + countryCode + "...";
+            Thread.Sleep(100);
 
             Activizr.Site.Automation.PostalCode[] postalCodes = geoDataFetcher.GetPostalCodesForCountry(countryCode);
 
@@ -426,10 +433,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                     cityIdTranslation[city.CityId] = newCityId;
                 }
 
-                if (cityCount % 100 == 0)
+                if (cityCount % 25 == 0)
                 {
                     _initMessage = String.Format("Setting up cities for {0} ({1}/{2})...", countryCode, cityCount,
                                                  cities.Count());
+                    Thread.Sleep(100);
                 }
 
                 cityCount++;
@@ -454,10 +462,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                 int newCityId = cityIdTranslation[postalCode.CityId];
                 PirateDb.GetDatabaseForWriting().CreatePostalCode(postalCode.PostalCode, newCityId, newCountryId);
 
-                if (postalCodeCount % 100 == 0)
+                if (postalCodeCount % 25 == 0)
                 {
                     _initMessage = String.Format("Setting up postal codes for {0} ({1}/{2})...", countryCode, postalCodeCount,
                                                  postalCodes.Count());
+                    Thread.Sleep(100);
                 }
 
                 postalCodeCount++;
