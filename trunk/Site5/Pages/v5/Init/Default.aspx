@@ -40,12 +40,16 @@
 
 	    $(document).ready(function () {
 	        // Initialize Smart Wizard	
-	        $('#wizard').smartWizard({ transitionEffect: 'fade', onLeaveStep: leaveAStepCallback });
+	        $('#wizard').smartWizard({ transitionEffect: 'fade', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback });
 
 	        function leaveAStepCallback(obj) {
 	            var stepNum = obj.attr('rel');
 	            return validateStep(stepNum);
 	        }
+
+            function onFinishCallback(obj) {
+                $('#<%=this.ButtonLogin.ClientID %>').click();
+            }
 
 	        function validateStep(stepNumber) {
 	            var isValid = false;
@@ -62,7 +66,7 @@
 	                    $.ajax({
 	                        type: "POST",
 	                        url: "Default.aspx/VerifyHostNameAndAddress",
-	                        data: "{'name': '" + hostName + "', 'address': '" + hostAddress + "'}",  // TODO: injection vulnerability - strip single quotes from input
+	                        data: "{'name': '" + escape(hostName) + "', 'address': '" + escape(hostAddress) + "'}", 
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
 	                        async: false,  // blocks until function returns - race conditions otherwise
@@ -166,14 +170,12 @@
 	                }
 
 	                // If all is valid, create the first user.
-	                // TODO: this WILL fuck up when somebody enters O'Hara as name, or anything else containing a single quote. Protect against that.
-	                // TODO: make this throw server-side if there is already a Person.FromIdentity(1).
 
 	                if (isValid) {
 	                    $.ajax({
 	                        type: "POST",
 	                        url: "Default.aspx/CreateFirstUser",
-	                        data: "{'name': '" + $('#<%=this.TextFirstUserName.ClientID %>').val() + "', 'mail': '" + $('#<%=this.TextFirstUserMail.ClientID %>').val() + "', 'address': '" + $('#<%=this.TextFirstUserPassword1.ClientID %>').val() + "'}",  // TODO: injection vulnerability - strip single quotes from input
+	                        data: "{'name': '" + escape($('#<%=this.TextFirstUserName.ClientID %>').val()) + "', 'mail': '" + escape($('#<%=this.TextFirstUserMail.ClientID %>').val()) + "', 'password': '" + escape($('#<%=this.TextFirstUserPassword1.ClientID %>').val()) + "'}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
 	                        success: function (msg) {
@@ -186,7 +188,6 @@
 	                // If we get here, we're always good
 
 	                isValid = true;
-	                // TODO: Click the magic button that logs the first user in
 	            }
 
 	            return isValid;
@@ -534,50 +535,31 @@
                             <p><span id="SpanInitProgressMessage">Initializing...</span></p>
   			            </div>
                         <div id="DivCreateFirstUser" style="display:none">
-                        <h2>Creating the first user</h2>	
-                        <p>Your new Activizr server has been loaded with the geographic layout of the countries we're active in, and the first organization - the <em>Sandbox</em> - has been created. We are now going to create your user account, which will become the systems administrator account of this Activizr installation.</p>
+                            <h2>Creating the first user</h2>	
+                            <p>Your new Activizr server has been loaded with the geographic layout of the countries we're active in, and the first organization - the <em>Sandbox</em> - has been created. We are now going to create your user account, which will become the systems administrator account of this Activizr installation.</p>
                         
-                        <p>(You can add other users to the Systems Administrator role later.)</p>
+                            <p>(You can add other people to the <em>System Administrator</em> role later.)</p>
 
-                        <div class="entrylabels">
-                            Your name<br />
-  			                Your email<br />
-                            Your password<br/>
-                            Repeat password
-                        </div>
-                        <div class="entryfields">
-                            <asp:TextBox CssClass="textinput" ID="TextFirstUserName" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextFirstUserMail" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword1" TextMode="Password" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword2" TextMode="Password" runat="server" />&nbsp;<br />
-                        </div>
-
-                        
+                            <div class="entrylabels" style="width:250px">
+                                Your full name<br />
+  			                    Your email<br />
+                                Your password<br/>
+                                Repeat password
+                            </div>
+                            <div class="entryfields">
+                                <asp:TextBox CssClass="textinput" ID="TextFirstUserName" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextFirstUserMail" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword1" TextMode="Password" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword2" TextMode="Password" runat="server" />&nbsp;<br />
+                            </div>
                         </div>            				          
                     </div>
   			        <div id="step-4" style="display:none">
   			            <asp:UpdatePanel runat="server" ID="UpdateFinished" UpdateMode="Conditional">
   			                <ContentTemplate>
                         <h2>All done - ready to login</h2>	
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Your Activizr installation is ready! Press Finish to log in as your new user and start using it.</p>
+                        <div style="display:none"><asp:Button runat="server" ID="ButtonLogin" OnClick="ButtonLogin_Click" Text="This button is invisible."/></div>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="ButtonInitDatabase" EventName="Click"/>

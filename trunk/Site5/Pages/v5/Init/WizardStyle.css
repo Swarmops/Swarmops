@@ -215,12 +215,7 @@
   border: 1px solid #5A5655;
   border-radius: 5px;    
 }
-.swMain .buttonDisabled {
-  color:#F8F8F8  !important;
-  background-color: #CCCCCC !important;
-  border: 1px solid #CCCCCC  !important;
-  cursor:text;    
-}
+
 .swMain .buttonPrevious {
   display:block;
   float:right;
@@ -251,6 +246,83 @@
   border: 1px solid #5A5655;
   border-radius: 5px;    
 }
+
+.swMain .buttonPrevious {
+	position: relative;
+	color: white;
+	background: #8CC63F;
+	border: 1px solid #8CC63F;
+	z-index: 99;
+	box-shadow: 1px 1px 4px #476EC7;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B0C8FF', endColorstr='#86A6F0');
+	background: -moz-linear-gradient(top, #B0C8FF, #86A6F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0));
+	text-shadow: #476EC7 0px 0px 3px, #476EC7 0px 0px 3px;
+	border-color: #476EC7;
+	position: relative;
+	top: -1px;
+	left: -1px;
+}
+
+.swMain .buttonNext, .swMain .buttonFinish {
+	color: #7F5500;
+	background: #EA8511;
+	border: 1px solid #EA8511;
+	box-shadow: 1px 1px 4px #7F5500;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC145', endColorstr='#F0AB22');
+	background: -moz-linear-gradient(top, #FFC145, #F0AB22);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22));
+	text-shadow: #FFEDC8 0px 0px 3px, #FFEDC8 0px 0px 3px;
+	border-color: #C78B15;
+	position: relative;
+	top: -1px;
+	left: -1px;
+}
+
+
+.swMain .buttonPrevious:hover
+{
+	top: -2px;
+	left: -2px;
+	box-shadow: 2px 2px 4px #476EC7;
+}
+
+.swMain .buttonPrevious:active
+{
+	top: 0px;
+	left: 0px;
+	box-shadow: 0px 0px 4px #476EC7;
+}
+
+.swMain .buttonNext:hover, .swMain .buttonFinish:hover 
+{
+	top: -2px;
+	left: -2px;
+	box-shadow: 2px 2px 4px #7F5500;
+}
+
+.swMain .buttonNext:active, .swMain .buttonFinish:active 
+{
+	top: 0px;
+	left: 0px;
+	box-shadow: 0px 0px 4px #7F5500;
+}
+
+
+.swMain .buttonDisabled {
+  color:#F8F8F8  !important;
+  background-color: #CCCCCC !important;
+  border: 1px solid #CCCCCC  !important;
+  background: -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#CCCCCC', endColorstr='#BBBBBB') !important;
+  background: -moz-linear-gradient(top, #CCCCCC, #BBBBBB) !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#BBBBBB)) !important;
+  cursor:text;
+  top: 0px !important;
+  left: 0px !important;
+  box-shadow: none !important;
+	text-shadow: none !important;
+}
+
 
 /* Form Styles */
 
