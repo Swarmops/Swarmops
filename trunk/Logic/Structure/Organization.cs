@@ -622,20 +622,21 @@ namespace Activizr.Logic.Structure
         }
 
 
-        internal static int Create (int ParentOrganizationId, string NameInternational, string Name, string NameShort, string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers, bool AutoAssignNewMembers, int DefaultCountryId)
+        public static Organization Create (int parentOrganizationId, string nameInternational, string name, string nameShort, string domain, string mailPrefix, int anchorGeographyId, bool acceptsMembers, bool autoAssignNewMembers, int defaultCountryId)
         {
-            return OrganizationCache.CreateOrganization(ParentOrganizationId,
-                                     NameInternational,
-                                     Name,
-                                     NameShort,
-                                     Domain,
-                                     MailPrefix,
-                                     AnchorGeographyId,
-                                     AcceptsMembers,
-                                     AutoAssignNewMembers,
-                                     DefaultCountryId);
+            return FromIdentity(OrganizationCache.CreateOrganization(parentOrganizationId,
+                                     nameInternational,
+                                     name,
+                                     nameShort,
+                                     domain,
+                                     mailPrefix,
+                                     anchorGeographyId,
+                                     acceptsMembers,
+                                     autoAssignNewMembers,
+                                     defaultCountryId));
         }
 
+        [Obsolete("Never use this function. Mark the organization as unused. Records are needed for history.", true)]
         public void Delete ()
         {
             string problems = "";

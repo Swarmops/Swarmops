@@ -351,7 +351,7 @@ namespace Activizr.Logic.DataObjects
             }
             org.Identity = Organization.Create(org.ParentOrganizationId, org.NameInternational,
                 org.Name, org.NameShort, org.Domain, org.MailPrefix, org.AnchorGeographyId, org.AcceptsMembers,
-                org.AutoAssignNewMembers, org.DefaultCountryId);
+                org.AutoAssignNewMembers, org.DefaultCountryId).Identity;
             // Return true if precisely one row was inserted, otherwise false
             return org.Identity;
         }
