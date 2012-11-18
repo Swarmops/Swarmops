@@ -494,7 +494,7 @@
   			            </div>
                         <div id="DivDatabaseWritable" style="display:none">
                             <h2>Connect to database</h2>	
-                        <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. We <strong>very strongly</strong> recommend having three separate accounts - one for reading (needs SELECT only), one for writing (needs EXECUTE only), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
+                        <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. We <strong>very strongly</strong> recommend having three separate accounts - one for reading (needs SELECT only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
 
                         <div class="entrylabels" style="width:120px">
                             &nbsp;<br/>

@@ -19,7 +19,7 @@ namespace Activizr.Logic.Pirates
 
         public static PersonRole Create (int personId, RoleType roleType, int organizationId, int nodeId)
         {
-            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateRole(personId, roleType, organizationId, nodeId));
+            return FromIdentityAggressive(PirateDb.GetDatabaseForWriting().CreateRole(personId, roleType, organizationId, nodeId));
         }
 
         public static PersonRole FromBasic (BasicPersonRole basic)
@@ -27,9 +27,14 @@ namespace Activizr.Logic.Pirates
             return new PersonRole(basic);
         }
 
-        public static PersonRole FromIdentity (int roleId)
+        public static PersonRole FromIdentity(int roleId)
         {
             return FromBasic(PirateDb.GetDatabaseForReading().GetRole(roleId));
+        }
+
+        public static PersonRole FromIdentityAggressive(int roleId)
+        {
+            return FromBasic(PirateDb.GetDatabaseForWriting().GetRole(roleId)); // Note "for writing". Intentional. Queries master db and bypasses replication lag to avoid race conditions.
         }
 
         #endregion

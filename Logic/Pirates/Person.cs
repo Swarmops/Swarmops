@@ -368,12 +368,17 @@ namespace Activizr.Logic.Pirates
 
         #endregion
 
-        public static Person FromIdentity (int personId)
+        public static Person FromIdentity(int personId)
         {
             return FromBasic(PirateDb.GetDatabaseForReading().GetPerson(personId));
         }
 
-        public Authority GetAuthority ()
+        public static Person FromIdentityAggressive(int personId)
+        {
+            return FromBasic(PirateDb.GetDatabaseForWriting().GetPerson(personId)); // Note "for writing". Intentional. Queries master db and bypasses replication lag.
+        }
+
+        public Authority GetAuthority()
         {
             return Authorization.GetPersonAuthority(Identity);
         }
@@ -527,7 +532,7 @@ namespace Activizr.Logic.Pirates
 
             // Resolve the geography
 
-            Person newPerson = Person.FromIdentity(personId);
+            Person newPerson = Person.FromIdentityAggressive(personId); // aggressive bypasses replication lag, avoids race condition
             newPerson.ResolveGeography();
 
             // Generate the salted password hash and set it

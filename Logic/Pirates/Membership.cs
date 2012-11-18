@@ -137,12 +137,17 @@ namespace Activizr.Logic.Pirates
             return new Membership(basic);
         }
 
-        public static Membership FromIdentity (int membershipId)
+        public static Membership FromIdentity(int membershipId)
         {
             return FromBasic(PirateDb.GetDatabaseForReading().GetMembership(membershipId));
         }
 
-        public static Membership FromPersonAndOrganization (int personId, int organizationId)
+        public static Membership FromIdentityAggressive(int membershipId)
+        {
+            return FromBasic(PirateDb.GetDatabaseForWriting().GetMembership(membershipId));
+        }
+
+        public static Membership FromPersonAndOrganization(int personId, int organizationId)
         {
             return FromBasic(PirateDb.GetDatabaseForReading().GetActiveMembership(personId, organizationId));
         }
@@ -151,7 +156,7 @@ namespace Activizr.Logic.Pirates
         {
             int membershipId = PirateDb.GetDatabaseForWriting().CreateMembership(personId, organizationId, expires);
 
-            return FromIdentity(membershipId);
+            return FromIdentityAggressive(membershipId);
         }
 
         public static Membership Create (Person person, Organization organization, DateTime expires)

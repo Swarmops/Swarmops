@@ -36,14 +36,19 @@ namespace Activizr.Logic.Structure
         {
         }
 
-        public static Organization FromIdentity (int identity)
+        public static Organization FromIdentity(int identity)
         {
 
             return FromBasic(OrganizationCache.GetOrganization(identity));
             //return FromBasic(PirateDb.GetDatabaseForReading().GetOrganization(identity));
         }
 
-        public static Organization FromBasic (BasicOrganization basic)
+        public static Organization FromIdentityAggressive(int identity)
+        {
+            return FromBasic(PirateDb.GetDatabaseForWriting().GetOrganization(identity)); // Note "for writing". Intentional. Queries master db; bypasses replication lag.
+        }
+
+        public static Organization FromBasic(BasicOrganization basic)
         {
             return new Organization(basic);
         }
@@ -624,7 +629,7 @@ namespace Activizr.Logic.Structure
 
         public static Organization Create (int parentOrganizationId, string nameInternational, string name, string nameShort, string domain, string mailPrefix, int anchorGeographyId, bool acceptsMembers, bool autoAssignNewMembers, int defaultCountryId)
         {
-            return FromIdentity(OrganizationCache.CreateOrganization(parentOrganizationId,
+            return FromIdentityAggressive(OrganizationCache.CreateOrganization(parentOrganizationId,
                                      nameInternational,
                                      name,
                                      nameShort,
