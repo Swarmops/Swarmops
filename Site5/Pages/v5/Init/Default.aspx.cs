@@ -294,12 +294,14 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         // Ignore the session object, that method of sharing data didn't work, but a static variable did.
 
         _initProgress = 1;
+        _initMessage = "Loading schema from Activizr servers; creating tables and procs...";
 
         // Get the schema and initialize the database structures. Requires ADMIN access to database.
 
         Activizr.Logic.Support.DatabaseMaintenance.FirstInitialization();
 
         _initProgress = 5;
+        _initMessage = "Getting list of countries from Activizr servers...";
 
         // Create translation lists
 
@@ -319,6 +321,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         Activizr.Site.Automation.Country[] countries = geoDataFetcher.GetCountries();
 
         _initProgress = 7;
+        _initMessage = "Creating all countries on local server...";
 
         // Create all countries in our own database
 
@@ -354,9 +357,12 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         {
             // Get the geography layout
 
+            _initMessage = "Retrieving geography for " + countryCode + "...";
+
             Activizr.Site.Automation.Geography geography = geoDataFetcher.GetGeographyForCountry(countryCode);
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/6);
+            _initMessage = "Setting up geography for " + countryCode + "...";
 
             // Create the country's root geography
 
@@ -368,6 +374,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             InitDatabaseThreadCreateGeographyChildren(geography.Children, countryRootGeographyId, ref geographyIdTranslation);
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/3);
+            _initMessage = "Retrieving cities for " + countryCode + "...";
 
             // Get the postal codes and cities
 
@@ -386,6 +393,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/2);
+            _initMessage = "Retrieving postal codes for " + countryCode + "...";
 
             Activizr.Site.Automation.PostalCode[] postalCodes = geoDataFetcher.GetPostalCodesForCountry(countryCode);
 
@@ -401,9 +409,15 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             // Insert cities
 
             int newCountryId = countryIdTranslation[countryCode];
+            int cityCount = 0;
 
             foreach (Activizr.Site.Automation.City city in cities)
             {
+                if (!geographyIdTranslation.ContainsKey(city.GeographyId))
+                {
+                    cityIdsUsedLookup[city.CityId] = false; // force non-use of invalid city
+                }
+
                 if (cityIdsUsedLookup[city.CityId])
                 {
                     int newGeographyId = geographyIdTranslation[city.GeographyId];
@@ -411,16 +425,42 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                                                                                 newGeographyId);
                     cityIdTranslation[city.CityId] = newCityId;
                 }
+
+                if (cityCount % 100 == 0)
+                {
+                    _initMessage = String.Format("Setting up cities for {0} ({1}/{2})...", countryCode, cityCount,
+                                                 cities.Count());
+                }
+
+                cityCount++;
+
             }
 
             // Insert postal codes
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry*5/6);
+            int postalCodeCount = 0;
 
             foreach (Activizr.Site.Automation.PostalCode postalCode in postalCodes)
             {
+                if (cityIdsUsedLookup[postalCode.CityId] == false)
+                {
+                    // Remnants of invalid pointers
+
+                    postalCodeCount++;
+                    continue;
+                }
+
                 int newCityId = cityIdTranslation[postalCode.CityId];
                 PirateDb.GetDatabaseForWriting().CreatePostalCode(postalCode.PostalCode, newCityId, newCountryId);
+
+                if (postalCodeCount % 100 == 0)
+                {
+                    _initMessage = String.Format("Setting up postal codes for {0} ({1}/{2})...", countryCode, postalCodeCount,
+                                                 postalCodes.Count());
+                }
+
+                postalCodeCount++;
             }
 
             countryCount++;
@@ -429,6 +469,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         }
 
         _initProgress = 100;
+        _initMessage = "Complete.";
 
         Thread.Sleep(1000); // give some time for static var to stick and web interface to react before killing thread
     }
@@ -446,6 +487,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
 
     private static int _initProgress = 0;
+    private static string _initMessage = "Initializing...";
 
 
     [WebMethod]
@@ -464,6 +506,12 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         {
             return _initProgress;
         }
+    }
+
+    [WebMethod]
+    public static string GetInitProgressMessage()
+    {
+        return _initMessage;
     }
 
     [WebMethod]
