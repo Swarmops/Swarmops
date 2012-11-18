@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Web;
+using System.Web.Security;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Activizr.Basic.Enums;
 using Activizr.Basic.Types;
 using Activizr.Site.Automation;
 using Telerik.Web.UI;
@@ -112,7 +115,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
- 	    base.OnPreInit(e);
+        base.OnPreInit(e);
     }
 
     public event EventHandler LanguageChanged;
@@ -197,14 +200,16 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                 switch (item.Attributes["Template"])
                 {
                     case "Build#":
-                        item.Text = GetBuildIdentity(); // only dynamically constructed atm -- if more, switch on "template" field
+                        item.Text = GetBuildIdentity();
+                            // only dynamically constructed atm -- if more, switch on "template" field
                         break;
                     case "CloseLedgers":
                         int year = DateTime.Today.Year;
-                        item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CloseBooks, year - 1);  // Modified
+                        item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CloseBooks, year - 1); // Modified
                         break;
                     default:
-                        throw new InvalidOperationException("No case for dynamic menu item" + item.Attributes["Template"]);
+                        throw new InvalidOperationException("No case for dynamic menu item" +
+                                                            item.Attributes["Template"]);
                 }
             }
             else
@@ -218,7 +223,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                 enabled |= !String.IsNullOrEmpty(url);
             }
 
-            item.Enabled = topLevel;  // Modified
+            item.Enabled = topLevel; // Modified
             if (enabled)
             {
                 anyItemEnabled = true;
@@ -253,8 +258,15 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         return _buildIdentity;
     }
 
-    protected void ButtonInitDatabase_Click (object sender, EventArgs args)
+    protected void ButtonInitDatabase_Click(object sender, EventArgs args)
     {
+        // Check the host names and addresses again as a security measure - after all, we can be called from outside our intended script
+
+        if (!(VerifyHostName(this.TextServerName.Text) && VerifyHostAddress(this.TextServerAddress.Text)))
+        {
+            return; // Probable hack attempt - fail silently
+        }
+
         // Store database credentials
 
         PirateDb.Configuration.Set(
@@ -265,21 +277,39 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                     this.TextCredentialsReadUser.Text,
                     this.TextCredentialsReadPassword.Text),
                 new PirateDb.Credentials(this.TextCredentialsWriteDatabase.Text,
-                    new PirateDb.ServerSet(this.TextCredentialsWriteServer.Text),
-                    this.TextCredentialsWriteUser.Text,
-                    this.TextCredentialsWritePassword.Text),
+                                         new PirateDb.ServerSet(this.TextCredentialsWriteServer.Text),
+                                         this.TextCredentialsWriteUser.Text,
+                                         this.TextCredentialsWritePassword.Text),
                 new PirateDb.Credentials(this.TextCredentialsAdminDatabase.Text,
-                    new PirateDb.ServerSet(this.TextCredentialsAdminServer.Text),
-                    this.TextCredentialsAdminUser.Text,
-                    this.TextCredentialsAdminPassword.Text)));
+                                         new PirateDb.ServerSet(this.TextCredentialsAdminServer.Text),
+                                         this.TextCredentialsAdminUser.Text,
+                                         this.TextCredentialsAdminPassword.Text)));
     }
 
     [WebMethod]
     public static void InitDatabase()
     {
-        // Start an async thread that does all the work, then return
+        // Make sure we're uninitialized
 
-        HttpSessionState currentSessionObject = HttpContext.Current.Session;
+        bool organizationOneExists = false;
+        Activizr.Logic.Structure.Organization organizationOne = null;
+
+        try
+        {
+            organizationOne = Activizr.Logic.Structure.Organization.FromIdentity(1);
+            organizationOneExists = true;
+        }
+        catch (Exception)
+        {
+            // We expect this to throw
+        }
+
+        if (organizationOneExists || organizationOne != null)
+        {
+            throw new InvalidOperationException("Cannot re-initialize database");
+        }
+
+        // Start an async thread that does all the work, then return
 
         Thread initThread = new Thread(InitDatabaseThread);
         initThread.Start();
@@ -371,12 +401,14 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             // Create the country's root geography
 
-            int countryRootGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography(geography.Name, rootGeographyId);
+            int countryRootGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography(geography.Name,
+                                                                                          rootGeographyId);
             geographyIdTranslation[geography.GeographyId] = countryRootGeographyId;
             PirateDb.GetDatabaseForWriting().SetCountryGeographyId(countryIdTranslation[countryCode],
                                                                    countryRootGeographyId);
 
-            InitDatabaseThreadCreateGeographyChildren(geography.Children, countryRootGeographyId, ref geographyIdTranslation);
+            InitDatabaseThreadCreateGeographyChildren(geography.Children, countryRootGeographyId,
+                                                      ref geographyIdTranslation);
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/3);
             _initMessage = "Retrieving cities for " + countryCode + "...";
@@ -390,7 +422,8 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             {
                 cities = geoDataFetcher.GetCitiesForCountry(countryCode);
             }
-            catch (Exception)  // This is a SoapHeaderException in VS debugging, but SOMETHING ELSE! in Mono runtime, so make it generic
+            catch (Exception)
+                // This is a SoapHeaderException in VS debugging, but SOMETHING ELSE! in Mono runtime, so make it generic
             {
                 // This is typically a country that isn't populated with cities yet. Ignore.
                 countryCount++;
@@ -416,7 +449,13 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             // Insert cities
 
             int newCountryId = countryIdTranslation[countryCode];
-            int cityCount = 0;
+
+            int cityIdHighwater = PirateDb.GetDatabaseForAdmin().ExecuteAdminCommandScalar("SELECT Max(CityId) FROM Cities;");
+
+            _initMessage = string.Format("Setting up {0:N0} cities for {1}...", cities.Length, countryCode);
+
+            string sql = "INSERT INTO Cities (CityName, GeographyId, CountryId, Comment) VALUES ";
+            bool insertComma = false;
 
             foreach (Activizr.Site.Automation.City city in cities)
             {
@@ -428,26 +467,29 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                 if (cityIdsUsedLookup[city.CityId])
                 {
                     int newGeographyId = geographyIdTranslation[city.GeographyId];
-                    int newCityId = PirateDb.GetDatabaseForWriting().CreateCity(city.Name, newCountryId,
-                                                                                newGeographyId);
-                    cityIdTranslation[city.CityId] = newCityId;
+
+                    if (insertComma)
+                    {
+                        sql += ",";
+                    }
+
+                    sql += "('" + city.Name.Replace("'", "\'") + "'," + newGeographyId.ToString() + "," +
+                           newCountryId.ToString() + ",'')";
+                    insertComma = true;
+
+                    cityIdTranslation[city.CityId] = ++cityIdHighwater;  // Note that we assume the assigned ID here.
                 }
-
-                if (cityCount % 25 == 0)
-                {
-                    _initMessage = String.Format("Setting up cities for {0} ({1}/{2})...", countryCode, cityCount,
-                                                 cities.Count());
-                    Thread.Sleep(100);
-                }
-
-                cityCount++;
-
             }
+
+            PirateDb.GetDatabaseForAdmin().ExecuteAdminCommand(sql + ";"); // Inserts all cities in one bulk op, to save roundtrips
 
             // Insert postal codes
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry*5/6);
-            int postalCodeCount = 0;
+            _initMessage = string.Format("Setting up {0:N0} postal codes for {1}...", postalCodes.Length, countryCode);
+
+            StringBuilder sqlBuild = new StringBuilder("INSERT INTO PostalCodes (PostalCode, CityId, CountryId) VALUES ", 65536);
+            insertComma = false;
 
             foreach (Activizr.Site.Automation.PostalCode postalCode in postalCodes)
             {
@@ -455,22 +497,24 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                 {
                     // Remnants of invalid pointers
 
-                    postalCodeCount++;
                     continue;
                 }
 
                 int newCityId = cityIdTranslation[postalCode.CityId];
-                PirateDb.GetDatabaseForWriting().CreatePostalCode(postalCode.PostalCode, newCityId, newCountryId);
 
-                if (postalCodeCount % 25 == 0)
+                if (insertComma)
                 {
-                    _initMessage = String.Format("Setting up postal codes for {0} ({1}/{2})...", countryCode, postalCodeCount,
-                                                 postalCodes.Count());
-                    Thread.Sleep(100);
+                    sqlBuild.Append(",");
                 }
 
-                postalCodeCount++;
+                sqlBuild.Append("('" + postalCode.PostalCode.Replace("'", "\'") + "'," + newCityId.ToString() + "," +
+                       newCountryId.ToString() + ")");
+                insertComma = true;
             }
+
+            sqlBuild.Append(";");
+
+            PirateDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlBuild.ToString()); // Inserts all postal codes in one bulk op, to save roundtrips
 
             countryCount++;
 
@@ -479,7 +523,8 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         // Create the sandbox
 
-        Activizr.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "activizr.com", "Act", rootGeographyId, true,
+        Activizr.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "activizr.com", "Act",
+                                                     rootGeographyId, true,
                                                      true, 0);
 
         _initProgress = 100;
@@ -488,7 +533,9 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         Thread.Sleep(1000); // give some time for static var to stick and web interface to react before killing thread
     }
 
-    private static void InitDatabaseThreadCreateGeographyChildren (Activizr.Site.Automation.Geography[] children, int parentGeographyId, ref Dictionary<int,int> geographyIdTranslation)
+    private static void InitDatabaseThreadCreateGeographyChildren(Activizr.Site.Automation.Geography[] children,
+                                                                  int parentGeographyId,
+                                                                  ref Dictionary<int, int> geographyIdTranslation)
     {
         foreach (Activizr.Site.Automation.Geography geography in children)
         {
@@ -512,7 +559,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         try
         {
-            int progress = (int)HttpContext.Current.Session["PercentInitComplete"];
+            int progress = (int) HttpContext.Current.Session["PercentInitComplete"];
 
             return progress;
         }
@@ -540,7 +587,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         string realHostName;
 
-        using (TextReader reader = new StreamReader("/etc/hostname"))  // This will throw in a Windows dev environment
+        using (TextReader reader = new StreamReader("/etc/hostname")) // This will throw in a Windows dev environment
         {
             realHostName = reader.ReadLine();
         }
@@ -554,7 +601,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     }
 
     [WebMethod(true)]
-    public static bool VerifyHostAddress (string input)
+    public static bool VerifyHostAddress(string input)
     {
         string localAddress = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
 
@@ -567,14 +614,80 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     }
 
     [WebMethod(true)]
-    public static bool VerifyHostNameAndAddress (string name, string address)
+    public static bool VerifyHostNameAndAddress(string name, string address)
     {
-        return VerifyHostName(name) && VerifyHostAddress(address);
+        return VerifyHostName(HttpUtility.UrlDecode(name)) && VerifyHostAddress(HttpUtility.UrlDecode(address));
     }
 
     [WebMethod(true)]
     public static bool IsConfigurationFileWritable()
     {
         return PirateDb.Configuration.TestConfigurationWritable();
+    }
+
+    [WebMethod]
+    public static void CreateFirstUser(string name, string mail, string password)
+    {
+        // Make sure that no first person exists already, as a security measure
+
+        Activizr.Logic.Pirates.Person personOne = null;
+        bool personOneExists = false;
+
+        try
+        {
+            personOne = Activizr.Logic.Pirates.Person.FromIdentity(1);
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                if (personOne.CityName != "Duckville" || personOne.Email != "noreply@example.com")
+                    // these values are returned in debug environments when no person is found
+                {
+                    personOneExists = true;
+                }
+                else
+                {
+                    personOne = null;
+                }
+            }
+            else
+            {
+                personOneExists = true;
+            }
+        }
+        catch (Exception)
+        {
+            // We expect this to throw.
+        }
+
+        if (personOneExists || personOne != null)
+        {
+            throw new InvalidOperationException("Cannot run initialization processes again when initialized.");
+        }
+
+        Activizr.Logic.Pirates.Person newPerson = Activizr.Logic.Pirates.Person.Create(HttpUtility.UrlDecode(name), HttpUtility.UrlDecode(mail),
+                                             HttpUtility.UrlDecode(password), string.Empty, string.Empty, string.Empty,
+                                             string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
+
+        newPerson.AddMembership(1, DateTime.MaxValue); // Add membership in Sandbox
+        newPerson.AddRole(RoleType.SystemAdmin, 0, 0); // Add role System Admin
+    }
+
+
+
+    protected void ButtonLogin_Click(object sender, EventArgs args)
+    {
+        // Check the host names and addresses again as a security measure - after all, we can be called from outside our intended script
+
+        if (!(VerifyHostName(this.TextServerName.Text) && VerifyHostAddress(this.TextServerAddress.Text)))
+        {
+            return; // Probable hack attempt - fail silently
+        }
+
+        Activizr.Logic.Pirates.Person expectedPersonOne = Activizr.Logic.Security.Authentication.Authenticate("1", this.TextFirstUserPassword1.Text);
+
+        if (expectedPersonOne != null)
+        {
+            FormsAuthentication.RedirectFromLoginPage("1,1", true);
+            Response.Redirect("/", true);
+        }
     }
 }

@@ -111,6 +111,13 @@ namespace Activizr.Logic.Pirates
 
         protected int ResolveGeography ()
         {
+            if (base.CountryId == 0)
+            {
+                base.GeographyId = 1;
+                PirateDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, 1);
+                return 1; // root geography, if no country set
+            }
+
             Structure.Cities cities = Cities.FromPostalCode(this.PostalCode, base.CountryId);
             City city = null;
 
@@ -137,6 +144,7 @@ namespace Activizr.Logic.Pirates
             }
 
             base.GeographyId = city.GeographyId;
+            PirateDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, base.GeographyId);
             return city.GeographyId;
         }
 
@@ -147,7 +155,7 @@ namespace Activizr.Logic.Pirates
             {
                 if (GeographyId == 0)
                 {
-                    PirateDb.GetDatabaseForWriting().SetPersonGeography (this.Identity, ResolveGeography());
+                    ResolveGeography();
                 }
 
                 return Geography.FromIdentity(GeographyId);
@@ -165,7 +173,7 @@ namespace Activizr.Logic.Pirates
             {
                 if (base.GeographyId == 0)
                 {
-                    PirateDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, ResolveGeography());
+                    ResolveGeography();
                 }
 
                 return base.GeographyId;
@@ -494,7 +502,12 @@ namespace Activizr.Logic.Pirates
                                      string postal, string city, string countryCode, DateTime dateOfBirth,
                                      PersonGender gender)
         {
-            BasicCountry country = PirateDb.GetDatabaseForReading().GetCountry(countryCode);
+            BasicCountry country = null;
+
+            if (countryCode.Length > 0)
+            {
+                country = PirateDb.GetDatabaseForReading().GetCountry(countryCode);
+            }
 
             // Clean data
 
@@ -509,7 +522,7 @@ namespace Activizr.Logic.Pirates
             postal = postal.Replace(" ", "").Trim();
 
             int personId = PirateDb.GetDatabaseForWriting().CreatePerson(name, email, phone, street, postal, city,
-                                                               country.Identity, dateOfBirth, gender);
+                country == null? 0: country.Identity, dateOfBirth, gender);
 
 
             // Resolve the geography
