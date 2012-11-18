@@ -128,6 +128,7 @@
 
 	                    $('#DivProgressDatabase').progressbar({ value: 0, max: 100 });
 	                    setTimeout('updateInitProgressBar();', 1000);
+	                    setTimeout('updateInitProgressMessage();', 1500);
 	                    $('#<%=this.ButtonInitDatabase.ClientID %>').click();
 	                    beginInitDatabase();
 	                }
@@ -181,13 +182,37 @@
 	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
 
 	                    $('#DivProgressDatabase').progressbar("value", msg.d);
-	                    setTimeout('updateInitProgressBar();', 0);
+	                    setTimeout('updateInitProgressBar();', 1500);
 	                }
 	            }
 	        });
 	    }
 	    
-        function beginInitDatabase() {
+	    function updateInitProgressMessage() {
+
+	        $.ajax({
+	            type: "POST",
+	            url: "Default.aspx/GetInitProgressMessage",
+	            data: "{}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                if (msg.d == 'Complete.') {
+	                    
+                        // We're done. Do nothing, the progress bar updater will do this step.
+
+	                } else {
+	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
+
+	                    $('#SpanInitProgressMessage').text(msg.d);
+	                    setTimeout('updateInitProgressMessage();', 2000);
+	                }
+	            }
+	        });
+	    }
+	    
+
+	    function beginInitDatabase() {
             $.ajax({
                 type: "POST",
                 url: "Default.aspx/InitDatabase",
@@ -443,6 +468,7 @@
   			                <h2>Initializing database</h2>
                             <div id="DivProgressDatabase"></div>
                             <p>Please wait while the database is being initialized with schemas and geographic data from the Activizr servers. This is going to take a significant amount of time; we're loading tons of geodata onto your new server.</p>
+                            <p><span id="SpanInitProgressMessage">Initializing...</span></p>
   			            </div>
                         <div id="DivCreateFirstUser" style="display:none">
                         <h2>Step 3 Content</h2>	
