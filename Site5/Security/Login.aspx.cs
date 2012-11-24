@@ -63,14 +63,15 @@ namespace Activizr.Pages.Security
                 }
                 catch (Exception exception)
                 {
+                    StreamWriter temp = new StreamWriter("/tmp/actdebug2.txt");
+                    temp.WriteLine(exception.ToString());
+                    temp.Close();
+
                     System.Diagnostics.Debug.WriteLine(exception.ToString());
                     this.LabelLoginFailed.Text = exception.ToString();
                     this.LabelLoginFailed.Visible = true;
                     this.TextLogin.Focus();
 
-                    StreamWriter temp = new StreamWriter("/tmp/actdebug.txt");
-                    temp.WriteLine(exception.ToString());
-                    temp.Close();
                 }
             }
         }
