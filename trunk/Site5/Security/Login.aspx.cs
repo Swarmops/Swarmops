@@ -35,7 +35,7 @@ namespace Activizr.Pages.Security
 
             if (!Request.IsSecureConnection)
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://localhost:") && Request.Url.ToString().StartsWith("http://activizr-"))
+                if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://localhost:") && Request.Url.ToString().StartsWith("http://activizr-") && Request.Url.ToString().StartsWith("http://live.activizr.com"))
                 {
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
                 }
