@@ -55,6 +55,8 @@ namespace Activizr.Backend
             }
         }
 
+        /* -- commented out - this is 1) fixed and 2) calls obsolete double-precision financial code. 
+
         public static void DebugExpensesAgain()
         {
             ExpenseClaims claims = ExpenseClaims.ForOrganization(Organization.PPSE);
@@ -111,7 +113,7 @@ namespace Activizr.Backend
             }
 
 
-            /*
+            
             foreach (ExpenseClaim claim in claims)
             {
                 Console.WriteLine("#{0,-5} {1,-30} {2,8:N2} {3}", claim.Identity, claim.Description, claim.Amount, claim.AmountCents);
@@ -132,8 +134,8 @@ namespace Activizr.Backend
                     Console.WriteLine(" - {1,-30} {2,8:N2} {3}", row.Identity, row.AccountName, row.Amount,
                                       row.AmountCents);
                 }
-            }*/
-        }
+            }
+        } */
 
         public static void SmsMembersOnElectionDay2010()
         {
@@ -360,6 +362,7 @@ namespace Activizr.Backend
 
         public static void CloseBooksForYear (int year)
         {
+            /*
             FinancialAccounts accounts = FinancialAccounts.ForOrganization(Organization.PPSE);
             decimal balanceDelta = 0.0m;
             decimal resultsDelta = 0.0m;
@@ -402,7 +405,7 @@ namespace Activizr.Backend
                 Console.WriteLine("balanceDelta > 0.0: {0}", balanceDelta > 0.0m);
                 Console.WriteLine("balanceDelta == -resultsDelta: {0}", balanceDelta == -resultsDelta);
                 Console.WriteLine("{0} {1}", balanceDelta, resultsDelta);
-            }
+            }*/
 
         }
 
@@ -423,6 +426,9 @@ namespace Activizr.Backend
 
         public static bool EconomyHasMismatches (DateTime untilDate)
         {
+            return false;
+
+            /*
             FinancialAccounts accounts = FinancialAccounts.ForOrganization(Organization.PPSE);
             decimal balanceDelta = 0.0m;
             decimal resultsDelta = 0.0m;
@@ -468,11 +474,12 @@ namespace Activizr.Backend
                 Console.WriteLine("balanceDelta == -resultsDelta: {0}", balanceDelta == -resultsDelta);
                 Console.WriteLine("{0} {1}", balanceDelta, resultsDelta);
             }
-
+            */
         }
 
         public static void CarryOver2010LocalBudgets()
         {
+            /*
             FinancialAccount rootAccount = FinancialAccount.FromIdentity(29);
             FinancialAccount tempAccount = FinancialAccount.FromIdentity(98);
 
@@ -502,7 +509,7 @@ namespace Activizr.Backend
 
                 transaction2011.AddRow(account, (double) -carryOver, null);
                 transaction2011.AddRow(tempAccount, (double) carryOver, null);
-            }
+            }*/
         }
         
 

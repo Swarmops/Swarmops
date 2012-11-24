@@ -1,3 +1,4 @@
+using System;
 using Activizr.Basic.Types;
 using Activizr.Database;
 
@@ -54,6 +55,7 @@ namespace Activizr.Logic.Financial
             get { return Account.Name; }   
         }
 
+        [Obsolete ("Do not use. Use Int64 AmountCents.", true)]
         public decimal Amount
         {
             get { return AmountCents/100.0m; }

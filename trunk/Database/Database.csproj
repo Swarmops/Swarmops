@@ -89,6 +89,7 @@
     <Compile Include="Database-Motions.cs" />
     <Compile Include="Database-Optimizations.cs" />
     <Compile Include="Database-OptionalData.cs" />
+    <Compile Include="Database-OrganizationFinancialAccounts.cs" />
     <Compile Include="Database-Organizations.cs" />
     <Compile Include="Database-OutboundInvoices.cs" />
     <Compile Include="Database-OutboundMailRecipients.cs" />

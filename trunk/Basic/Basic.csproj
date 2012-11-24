@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Enums\CommunicationType.cs" />
     <Compile Include="Enums\ExternalActivityType.cs" />
+    <Compile Include="Enums\OrganizationFinancialAccountType.cs" />
     <Compile Include="Types\BasicBallot.cs" />
     <Compile Include="Types\BasicCommunicationTurnaround.cs" />
     <Compile Include="Types\BasicElection.cs" />

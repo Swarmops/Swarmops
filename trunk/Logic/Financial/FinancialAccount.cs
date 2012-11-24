@@ -16,7 +16,7 @@ namespace Activizr.Logic.Financial
         {
         }
 
-        [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
+        [Obsolete("This method uses floating point for financials. Deprecated. Do not use; use BalanceTotalCents instead.", true)]
         public double BalanceTotal
         {
             get { return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceTotal(Identity); }
@@ -27,17 +27,22 @@ namespace Activizr.Logic.Financial
             get { return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceTotalCents(Identity); }
         }
 
-        public static FinancialAccount FromIdentity (int identity)
+        public static FinancialAccount FromIdentity(int identity)
         {
             return FromBasic(PirateDb.GetDatabaseForReading().GetFinancialAccount(identity));
         }
 
-        public static FinancialAccount FromBasic (BasicFinancialAccount basic)
+        public static FinancialAccount FromIdentityAggressive(int identity)
+        {
+            return FromBasic(PirateDb.GetDatabaseForWriting().GetFinancialAccount(identity));  // Note "for writing". Intentional; this bypasses the replication lag from master to slave.
+        }
+
+        public static FinancialAccount FromBasic(BasicFinancialAccount basic)
         {
             return new FinancialAccount(basic);
         }
 
-        [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
+        [Obsolete("This method uses floating point for financials. Deprecated. Do not use; use GetDeltaCents instead.", true)]
         public decimal GetDelta(DateTime start, DateTime end)
         {
             return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceDelta(Identity, start, end);
@@ -60,7 +65,7 @@ namespace Activizr.Logic.Financial
             return FinancialAccountRows.FromArray(basicRows);
         }
 
-        [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
+        [Obsolete("This method uses floating point for financials. Deprecated. Do not use; use GetBudgetCents instead.")]
         public double GetBudget(int year)
         {
             return PirateDb.GetDatabaseForReading().GetFinancialAccountBudget(this.Identity, year);
@@ -92,10 +97,10 @@ namespace Activizr.Logic.Financial
             PirateDb.GetDatabaseForWriting().SetFinancialAccountBudgetMonthly(this.Identity, year, month, amountCents);
         }
 
-        public static FinancialAccount Create (int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
+        public static FinancialAccount Create (int organizationId, string name, FinancialAccountType accountType, int parentFinancialAccountId)
         {
-            int accountId = PirateDb.GetDatabaseForWriting().CreateFinancialAccount(pOrganizationId, pName, pAccountType, pParentFinancialAccountId);
-            return FromIdentity(accountId);
+            int accountId = PirateDb.GetDatabaseForWriting().CreateFinancialAccount(organizationId, name, accountType, parentFinancialAccountId);
+            return FromIdentityAggressive(accountId);
         }
 
         public Organization Organization
@@ -137,6 +142,20 @@ namespace Activizr.Logic.Financial
         public FinancialAccount Parent
         {
             get { return FromIdentity(this.ParentFinancialAccountId); }
+        }
+
+
+        public bool IsConferenceParent
+        {
+            get
+            {
+                return
+                    this.OptionalData.GetOptionalDataBool(ObjectOptionalDataType.FinancialAccountEnabledForConferences);
+            }
+            set
+            {
+                this.OptionalData.SetOptionalDataBool(ObjectOptionalDataType.FinancialAccountEnabledForConferences, value);
+            }
         }
 
 

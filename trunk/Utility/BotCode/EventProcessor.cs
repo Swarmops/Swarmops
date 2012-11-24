@@ -1729,13 +1729,13 @@ namespace Activizr.Utility.BotCode
             CultureInfo culture = new CultureInfo(organization.DefaultCountry.Culture);
 
             DateTime today = DateTime.Today;
-            decimal amount = transaction.Rows[0].Amount;  // just pick any transaction row, it'll have the amount
-            double budget = -(account.GetBudget(DateTime.Today.Year));
-            decimal curBalance = account.GetDelta(new DateTime(today.Year, 1, 1), new DateTime(today.Year, 12, 31));
+            Int64 amount = transaction.Rows[0].AmountCents;  // just pick any transaction row, it'll have the amount
+            Int64 budget = -(account.GetBudgetCents(DateTime.Today.Year));
+            Int64 curBalance = account.GetDeltaCents(new DateTime(today.Year, 1, 1), new DateTime(today.Year, 12, 31));
 
-            decimal fundsAvailable = (decimal) budget - curBalance;
+            Int64 fundsAvailable = budget - curBalance;
 
-            if (amount < 0.0m)
+            if (amount < 0)
             {
                 amount = -amount;  // though possibly in the negative so let's make sure it's positive
             }
@@ -1748,7 +1748,7 @@ namespace Activizr.Utility.BotCode
             body += amount.ToString("N2", culture) + " received on " +
                     transaction.DateTime.ToString("yyyy-MMM-dd") + ".\r\n\r\n";
 
-            body += "Total funds available in the local budget: " + fundsAvailable.ToString("N2", culture) + ".\r\n";
+            body += "Total funds available in the local budget: " + (fundsAvailable/100.0).ToString("N2", culture) + ".\r\n";
 
             // Determine who to send to (local leads and vices, plus Rick for debugging)
 
@@ -2064,8 +2064,8 @@ namespace Activizr.Utility.BotCode
             // Charge budget
 
             FinancialTransaction newTransaction = FinancialTransaction.Create(Organization.PPSEid, DateTime.Now, "Activist SMS transmission");
-            newTransaction.AddRow(budget, cost, sender);
-            newTransaction.AddRow(Organization.PPSE.FinancialAccounts.CostsInfrastructure, -cost, sender);
+            newTransaction.AddRow(budget, (Int64) (cost*100), sender);
+            newTransaction.AddRow(Organization.PPSE.FinancialAccounts.CostsInfrastructure, (Int64) (-cost * 100), sender);
 
         }
 

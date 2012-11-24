@@ -7,6 +7,7 @@ namespace Activizr.Logic.Financial
 {
     public class FinancialTransactionRows : List<FinancialTransactionRow>
     {
+        [Obsolete("Do not use. Use AmountCentsTotal.", true)]
         public decimal AmountTotal
         {
             get
@@ -35,6 +36,7 @@ namespace Activizr.Logic.Financial
             }
         }
 
+        [Obsolete("Do not use. Use Int64 BalanceCentsDelta.", true)]
         public decimal BalanceDelta
         {
             get

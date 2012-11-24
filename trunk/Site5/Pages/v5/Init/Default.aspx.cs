@@ -527,7 +527,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         Activizr.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "activizr.com", "Act",
                                                      rootGeographyId, true,
-                                                     true, 0);
+                                                     true, 0).EnableEconomy();
 
         _initProgress = 100;
         _initMessage = "Complete.";

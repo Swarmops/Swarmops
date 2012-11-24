@@ -92,6 +92,7 @@ namespace Activizr.Logic.Financial
             }
         }
 
+        [Obsolete("Do not use double-precision methods. They leak cents. Use AddRow (FinancialAccount, Int64, Person).", true)]
         public void AddRow (FinancialAccount account, double amount, Person person)
         {
             AddRow (account, (Int64) (amount * 100), person);

@@ -146,6 +146,85 @@ namespace Activizr.Logic.Structure
             }
         }
 
+        public bool IsEconomyEnabled
+        {
+            get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled); }
+            set { OptionalData.SetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled, value);}
+        }
+
+        public void EnableEconomy()
+        {
+            if (IsEconomyEnabled)
+            {
+                throw new InvalidOperationException("Economy data already enabled");
+            }
+
+            // First, set hardwired accounts
+
+
+            // TODO: Set names according to org default culture
+
+            FinancialAccounts[OrganizationFinancialAccountType.AssetsBankAccountMain] =
+                FinancialAccount.Create(this.Identity, "Bank Account", FinancialAccountType.Asset, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.AssetsOutboundInvoices] =
+                FinancialAccount.Create(this.Identity, "Outbound Invoices", FinancialAccountType.Asset, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.AssetsOutstandingCashAdvances] =
+                FinancialAccount.Create(this.Identity, "Cash Advances", FinancialAccountType.Asset, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.AssetsPaypal] =
+                FinancialAccount.Create(this.Identity, "Paypal Account", FinancialAccountType.Asset, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.AssetsVat] =
+                FinancialAccount.Create(this.Identity, "Inbound Value Added Tax", FinancialAccountType.Asset, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] =
+                FinancialAccount.Create(this.Identity, "Allocated funds", FinancialAccountType.Cost, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.CostsBankFees] =
+                FinancialAccount.Create(this.Identity, "Bank Fees", FinancialAccountType.Cost, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.CostsInfrastructure] =
+                FinancialAccount.Create(this.Identity, "ICT and Infrastructure", FinancialAccountType.Cost, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.CostsLocalDonationTransfers] =
+                FinancialAccount.Create(this.Identity, "Local donations (virtual balancing)", FinancialAccountType.Cost, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.CostsYearlyResult] =
+                FinancialAccount.Create(this.Identity, "Yearly result", FinancialAccountType.Cost, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.DebtsCapital] =
+                FinancialAccount.Create(this.Identity, "Own Capital", FinancialAccountType.Debt, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.DebtsExpenseClaims] =
+                FinancialAccount.Create(this.Identity, "Expense Claims", FinancialAccountType.Debt, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.DebtsInboundInvoices] =
+                FinancialAccount.Create(this.Identity, "Inbound Invoices", FinancialAccountType.Debt, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.DebtsOther] =
+                FinancialAccount.Create(this.Identity, "General Debt", FinancialAccountType.Debt, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.DebtsSalary] =
+                FinancialAccount.Create(this.Identity, "Salaries Due", FinancialAccountType.Debt, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.DebtsTax] =
+                FinancialAccount.Create(this.Identity, "Taxes Due", FinancialAccountType.Debt, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.DebtsVat] =
+                FinancialAccount.Create(this.Identity, "Outbound Value Added Tax", FinancialAccountType.Debt, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.IncomeGeneral] =
+                FinancialAccount.Create(this.Identity, "Income", FinancialAccountType.Income, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.IncomeDonations] =
+                FinancialAccount.Create(this.Identity, "Donations", FinancialAccountType.Income, FinancialAccounts.IncomeGeneral.Identity);
+            FinancialAccounts[OrganizationFinancialAccountType.IncomeSales] =
+                FinancialAccount.Create(this.Identity, "Sales", FinancialAccountType.Income, FinancialAccounts.IncomeGeneral.Identity);
+
+            // Then, create various cost accounts that are probably needed, or that could be used as a starting point
+
+            FinancialAccount.Create(this.Identity, "Offices", FinancialAccountType.Cost, 0);
+            FinancialAccount.Create(this.Identity, "Unforeseen", FinancialAccountType.Cost, 0);
+            FinancialAccount.Create(this.Identity, "Staff", FinancialAccountType.Cost, 0);
+            FinancialAccount.Create(this.Identity, "Marketing and Campaigns", FinancialAccountType.Cost, 0);
+            FinancialAccount.Create(this.Identity, "Research and Development", FinancialAccountType.Cost, 0);
+
+            // Finally, create the first conference parent
+
+            FinancialAccount conferenceBase = FinancialAccount.Create(this.Identity, "Conferences",
+                                                                      FinancialAccountType.Cost, 0);
+            conferenceBase.IsConferenceParent = true;
+
+            // Finally, flag the org as enabled
+
+            this.OptionalData.SetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled, true);
+        }
+
+
         #endregion
 
         #region Public properties
