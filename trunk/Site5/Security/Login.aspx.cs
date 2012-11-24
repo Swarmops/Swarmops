@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Web;
 using System.Web.Security;
@@ -66,6 +67,10 @@ namespace Activizr.Pages.Security
                     this.LabelLoginFailed.Text = exception.ToString();
                     this.LabelLoginFailed.Visible = true;
                     this.TextLogin.Focus();
+
+                    StreamWriter temp = new StreamWriter("/tmp/actdebug.txt");
+                    temp.WriteLine(exception.ToString());
+                    temp.Close();
                 }
             }
         }
