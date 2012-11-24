@@ -264,7 +264,7 @@ namespace Activizr.Logic.Financial
 
                 foreach (FinancialTransaction possiblyCompetingTransaction in transactions)
                 {
-                    if (possiblyCompetingTransaction.Rows.AmountTotal == transaction.Rows.AmountTotal &&
+                    if (possiblyCompetingTransaction.Rows.AmountCentsTotal == transaction.Rows.AmountCentsTotal &&
                         possiblyCompetingTransaction.DateTime >= timeLow &&
                         possiblyCompetingTransaction.DateTime <= timeHigh &&
                         possiblyCompetingTransaction.Identity != transaction.Identity)

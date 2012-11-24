@@ -159,6 +159,10 @@ namespace Activizr.Basic.Enums
         /// OCR sequence on tax payments (to the tax account) for an organization
         /// </summary>
         OrgTaxOcr,
+        /// <summary>
+        /// True if the organization declares inbound/outbound Value Added Tax
+        /// </summary>
+        OrgValueAddedTaxEnabled,
         OrgFinancialMailName,
         OrgFinancialMailAddress,
         /// <summary>
@@ -172,7 +176,19 @@ namespace Activizr.Basic.Enums
         /// <summary>
         /// If invoice is to a person id, this is the person id
         /// </summary>
-        OutboundInvoiceToPersonId
+        OutboundInvoiceToPersonId,
+        /// <summary>
+        /// If "1", this financial account may be charged for conferences
+        /// </summary>
+        FinancialAccountEnabledForConferences,
+        /// <summary>
+        /// If "1", this financial account may be charged with expenses
+        /// </summary>
+        FinancialAccountEnabledForExpensing,
+        /// <summary>
+        /// If "1", this financial account may be charged with invoices
+        /// </summary>
+        FinancialAccountEnabledForInvoicing
 
     }
 

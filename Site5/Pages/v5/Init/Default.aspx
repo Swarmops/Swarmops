@@ -31,6 +31,14 @@
             $("a[rel*=leanModal]").leanModal();
         });
     </script>
+    
+    <!-- hide "previous" button -->
+    
+    <style type="text/css">
+	    .swMain .buttonPrevious
+	    { display: none; }
+    </style>
+
 </head>
 <body>
     <form id="form2" runat="server">
@@ -40,7 +48,12 @@
 
 	    $(document).ready(function () {
 	        // Initialize Smart Wizard	
-	        $('#wizard').smartWizard({ transitionEffect: 'fade', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback });
+	        $('#wizard').smartWizard({
+	            transitionEffect: 'fade',
+	            keyNavigation: false,
+	            onLeaveStep: leaveAStepCallback, 
+	            onFinish: onFinishCallback
+	        });
 
 	        function leaveAStepCallback(obj) {
 	            var stepNum = obj.attr('rel');
