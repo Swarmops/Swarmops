@@ -197,12 +197,18 @@ namespace Activizr.Logic.Structure
                 FinancialAccount.Create(this.Identity, "Taxes Due", FinancialAccountType.Debt, 0);
             FinancialAccounts[OrganizationFinancialAccountType.DebtsVat] =
                 FinancialAccount.Create(this.Identity, "Outbound Value Added Tax", FinancialAccountType.Debt, 0);
-            FinancialAccounts[OrganizationFinancialAccountType.IncomeGeneral] =
+
+            FinancialAccount incomeGeneral =
                 FinancialAccount.Create(this.Identity, "Income", FinancialAccountType.Income, 0);
+
+            // We need to store this in code because of database lag replication issues when creating children - 
+            // we can't use assume that it's available for reading yet.
+
+            FinancialAccounts[OrganizationFinancialAccountType.IncomeGeneral] = incomeGeneral;
             FinancialAccounts[OrganizationFinancialAccountType.IncomeDonations] =
-                FinancialAccount.Create(this.Identity, "Donations", FinancialAccountType.Income, FinancialAccounts.IncomeGeneral.Identity);
+                FinancialAccount.Create(this.Identity, "Donations", FinancialAccountType.Income, incomeGeneral.Identity);
             FinancialAccounts[OrganizationFinancialAccountType.IncomeSales] =
-                FinancialAccount.Create(this.Identity, "Sales", FinancialAccountType.Income, FinancialAccounts.IncomeGeneral.Identity);
+                FinancialAccount.Create(this.Identity, "Sales", FinancialAccountType.Income, incomeGeneral.Identity);
 
             // Then, create various cost accounts that are probably needed, or that could be used as a starting point
 

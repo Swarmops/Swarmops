@@ -529,7 +529,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                                                      rootGeographyId, true,
                                                      true, 0).EnableEconomy();
 
-        // Create the 
+        // TEMP - delete this later
 
         Activizr.Logic.Structure.Organization.Create(0, "Europirate Academy", "Europirate Academy", "Pirate Academy", "pirateacademy.eu", "Academy",
                                                      rootGeographyId, true,
