@@ -32,7 +32,7 @@ namespace Activizr
 
             if (!Request.IsSecureConnection)
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://localhost:"))
+                if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://live.activizr.com") && !Request.Url.ToString().StartsWith("http://localhost:"))
                 {
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
                 }
