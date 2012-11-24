@@ -529,6 +529,12 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                                                      rootGeographyId, true,
                                                      true, 0).EnableEconomy();
 
+        // Create the 
+
+        Activizr.Logic.Structure.Organization.Create(0, "Europirate Academy", "Europirate Academy", "Pirate Academy", "pirateacademy.eu", "Academy",
+                                                     rootGeographyId, true,
+                                                     true, 0).EnableEconomy();
+
         _initProgress = 100;
         _initMessage = "Complete.";
 
@@ -670,6 +676,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                                              string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
         newPerson.AddMembership(1, DateTime.MaxValue); // Add membership in Sandbox
+        newPerson.AddMembership(2, DateTime.MaxValue); // Add membership in EuroPA
         newPerson.AddRole(RoleType.SystemAdmin, 0, 0); // Add role System Admin
     }
 
