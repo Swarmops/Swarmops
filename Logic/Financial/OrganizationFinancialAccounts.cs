@@ -14,6 +14,7 @@ namespace Activizr.Logic.Financial
     {
         public static void PrimePiratpartietSE()  // One-off. Once this has been run once, delete it.
         {
+            /* -- this was a one-time one-off
             if (PirateDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(1, OrganizationFinancialAccountType.AssetsBankAccountMain) != 0)
             {
                 return;
@@ -53,6 +54,7 @@ namespace Activizr.Logic.Financial
             FinancialAccount.FromIdentity(27).IsConferenceParent = true;
 
             Organization.PPSE.IsEconomyEnabled = true; // Kill this function in base, too
+             */
         }
 
         public OrganizationFinancialAccounts (int organizationId)
