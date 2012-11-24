@@ -28,9 +28,5 @@ public partial class Default : PageV5Base
         this.LabelDashboardTemporaryContent.Text = Resources.Global.Dashboard_Main_Temporary;
         this.LabelDashboardInfo.Text = Resources.Global.Dashboard_Info_Temporary;
         this.LabelGoThere2.Text = Resources.Global.Global_GoThere;
-
-        // THIS IS A ONE-OFF, DELETE:
-
-        OrganizationFinancialAccounts.PrimePiratpartietSE();
     }
 }

@@ -149,7 +149,6 @@ namespace Activizr.Logic.Structure
         public bool IsEconomyEnabled
         {
             get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled); }
-            set { OptionalData.SetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled, value);}
         }
 
         public void EnableEconomy()
