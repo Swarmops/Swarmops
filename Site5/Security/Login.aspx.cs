@@ -24,6 +24,13 @@ namespace Activizr.Pages.Security
                 return;
             }
 
+            using (StreamWriter temp = new StreamWriter("/tmp/actdebug2.txt", true))
+            {
+                temp.WriteLine(DateTime.Now.ToShortTimeString() + "In Page_Load of Login.aspx.cs - username is " + this.TextLogin.Text + ", pwd is " +
+                               this.TextPassword.Text);
+            }
+
+
             // Unlock Telerik
 
             this.Application["Telerik.Web.UI.Key"] = "Activizr";
@@ -37,15 +44,34 @@ namespace Activizr.Pages.Security
             {
                 if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://localhost:") && Request.Url.ToString().StartsWith("http://activizr-") && Request.Url.ToString().StartsWith("http://live.activizr.com"))
                 {
+                    using (StreamWriter temp = new StreamWriter("/tmp/actdebug2a.txt", true))
+                    {
+                        temp.WriteLine(DateTime.Now.ToShortTimeString() + "Login Page_Load - redirecting to SSL");
+                    }
+
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
                 }
             }
+
+            using (StreamWriter temp = new StreamWriter("/tmp/actdebug2a.txt", true))
+            {
+                temp.WriteLine(DateTime.Now.ToShortTimeString() + "Exiting page_load");
+            }
+
+
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
         {
             string loginToken = this.TextLogin.Text;
             string password = this.TextPassword.Text;
+
+            using (StreamWriter temp = new StreamWriter("/tmp/actdebug2a.txt", true))
+            {
+                temp.WriteLine(DateTime.Now.ToShortTimeString() + "In button_login_click - login is " + this.TextLogin.Text);
+            }
+
+
 
             if (!string.IsNullOrEmpty(loginToken.Trim()) && !string.IsNullOrEmpty(password.Trim()))
             {
@@ -60,6 +86,11 @@ namespace Activizr.Pages.Security
                     // TODO: Determine logged-on organization; possibly ask for clarification
 
                     FormsAuthentication.RedirectFromLoginPage(authenticatedPerson.PersonId.ToString() + ",1", true);
+
+                    using (StreamWriter temp = new StreamWriter("/tmp/actdebug2a.txt", true))
+                    {
+                        temp.WriteLine(DateTime.Now.ToShortTimeString() + "Button_login_click - RedirectFromLoginPage succeeded");
+                    }
                 }
                 catch (Exception exception)
                 {

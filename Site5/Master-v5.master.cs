@@ -18,6 +18,13 @@ namespace Activizr
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // DEbug
+
+            using (StreamWriter temp = new StreamWriter("/tmp/actdebug2a.txt", true))
+            {
+                temp.WriteLine(DateTime.Now.ToShortTimeString() + "Master page Page_Load");
+            }
+
             // Event subscriptions
 
             this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
@@ -34,6 +41,11 @@ namespace Activizr
             {
                 if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://live.activizr.com") && !Request.Url.ToString().StartsWith("http://localhost:"))
                 {
+                    using (StreamWriter temp = new StreamWriter("/tmp/actdebug2a.txt", true))
+                    {
+                        temp.WriteLine(DateTime.Now.ToShortTimeString() + "Master_Page enforcing SSL, redirecting");
+                    }
+
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
                 }
             }
@@ -84,6 +96,12 @@ namespace Activizr
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
+
+            using (StreamWriter temp = new StreamWriter("/tmp/actdebug2a.txt", true))
+            {
+                temp.WriteLine(DateTime.Now.ToShortTimeString() + "Master Page exiting Page_Load - Viewing person is " + _viewingPerson.Name );
+            }
+
         }
 
         private Person _viewingPerson;
