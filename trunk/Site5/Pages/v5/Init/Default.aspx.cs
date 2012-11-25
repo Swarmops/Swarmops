@@ -695,10 +695,6 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         if (expectedPersonOne != null)
         {
-            StreamWriter temp = new StreamWriter("/tmp/actdebug1.txt");
-            temp.WriteLine("Authentication was successful in ButtonLogin_Click");
-            temp.Close();
-
             FormsAuthentication.RedirectFromLoginPage("1,1", true);
             Response.Redirect("/", true);
         }
