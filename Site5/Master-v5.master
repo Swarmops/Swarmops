@@ -7,8 +7,9 @@
 <head runat="server">
 
     <!-- jQuery and plugins -->
-    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.min.js" ></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
@@ -18,9 +19,10 @@
     <!-- page title -->
 	<title>Activizr - Pirate Edition</title>
 
-	<!-- telerik style sheet manager, followed by style sheet -->
+	<!-- telerik style sheet manager, followed by style sheet, followed by script style sheets -->
 	<telerik:RadStyleSheetManager id="RadStyleSheetManager" runat="server" />
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/jquery.qtip.css" rel="stylesheet" type="text/css" />
 
     <!-- additional scripts etc from individual pages -->
     <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
@@ -28,10 +30,28 @@
 
     <!-- initialize all modal popups -->
     <script language="javascript" type="text/javascript">
-        $(function () {
+        $(document).ready(function () {
             $("a[rel*=leanModal]").leanModal();
         });
     </script>
+    
+    <!-- initialize tooltips -->
+    
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $('.hasTooltip').qtip({
+                content: {
+                    attr: 'title',
+                    title: function(api) {
+			            // Retrieve content from custom attribute of the $('.selector') elements.
+			            return $(this).attr('rel');
+		            },
+                    style: 'ui-tooltip-rounded'
+                }
+            });
+        });
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -48,7 +68,7 @@
     <!-- Main menu, dynamically constructed -->
 
 	<div class="center980px">
-	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /> <asp:LinkButton ID="LinkTranslate" Visible="false" Text="Translate Into" OnClick="LinkTranslate_Click" runat="server" /></div>
+	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><a href="#" class="hasTooltip" rel="Logged into Sandbox" title="Click here to switch to another organization."><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /> <asp:LinkButton ID="LinkTranslate" Visible="false" Text="Translate Into" OnClick="LinkTranslate_Click" runat="server" /></div>
         <div class="logoimage"><a href="/"><img style="border:none" src="/Style/Images/activizr-v5-pirateedition-logo.png" alt="Activizr Logo" /></a></div>
         <div class="break"></div>
         <div class="topmenu">
@@ -194,6 +214,10 @@
         </div>
         
 	</div>
+    
+    <!-- Organization changer -->
+    
+
 
     <!-- language selector popup -->
     
