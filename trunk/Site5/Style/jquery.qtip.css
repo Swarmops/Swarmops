@@ -94,16 +94,18 @@
 
 /* Default tooltip style */
 .qtip-default{
-	border-width: 1px;
+	border-width: 2px;
 	border-style: solid;
-	border-color: #F1D031;
+	border-color: #FFD580;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px 0px #7F5500;
 
-	background-color: #FFFFA3;
-	color: #555;
+	background-color: #FFF4E4;
+	color: #7F5500;
 }
 
 	.qtip-default .qtip-titlebar{
-		background-color: #FFEF93;
+		background-color: #FFEDC8;
 	}
 
 	.qtip-default .qtip-icon{
