@@ -9,7 +9,7 @@
     <!-- jQuery and plugins -->
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.js" ></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
@@ -61,9 +61,9 @@
 	                classes: 'qtip-light qtip-rounded qtip-modal',
 	                tip: false
 	            }
-	        })
-            .removeData('qtip')  // This last part makes it possible to have a modal on-click box AND a tooltip.
-            .qtip({
+	        });
+            $('#LinkChangeOrganizations').removeData('qtip');  // This last part makes it possible to have a modal on-click box AND a tooltip.
+            $('#LinkChangeOrganizations').qtip({
                 content: {
                     attr: 'title',
                     title: function (api) {
