@@ -28,85 +28,57 @@
     <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
     <asp:Literal ID="LiteralCrowdinScript" runat="server" Text="" />
 
-    <!-- initialize all modal popups -->
+    <!-- initialize all jQuery stuff -->
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
             $('#LinkChangeOrganizations').qtip(
 	        {
-		    id: 'TooltipModalOrganizationChanger', // Since we're only creating one modal, give it an ID so we can style it
-		    content: {
-			    text: $('#DivModalOrganizationChanger'),
-			    title: {
-				    text: 'craigsworks :: Login',
-				    button: true
-			    }
-		    },
-		    position: {
-			    my: 'center', // ...at the center of the viewport
-			    at: 'center',
-			    target: $(window)
-		    },
-		    show: {
-			    event: 'click', // Show it on click...
-			    ready: false, // Show it immediately on page load.. force them to login!
-			    modal: {
-				    on: true,
- 
-				    // Don't let users exit the modal in any way
-				    blur: true, escape: true
-			    }
-		    },
-		    hide: false,
-		    style: {
-			    classes: 'qtip-light qtip-rounded qtip-modal',
-			    tip: false
-		    },
-		    events: {
-			    render: function(event, api) {
-				    // Capture the form submission
-				    $('form', this).bind('submit', function(event) {
-					    // Grab and store input elements
-					    var inputs = $(':input', this);
- 
-					    // Common ajax error handler
-					    function errorHandler(jqXHR, message) {
-						    // Set the error and show/hide it
-						    $('.error', api.elements.tooltip).html(message || '').toggle(!!message);
-					    }
- 
-					    // Setup AJAX request
-					    $.ajax({
-						    url: 'login/',
-						    data: $(this).serialize(),
-						    type: 'post',
-						    dataType: 'json',
-						    success: function(data, status, jqXHR) {
-							    // On success, show message and refresh after 2 seconds
-							    if(data.status === 'success'){
-								    api.set('content.text', data.message + ' Redirecting...');
-								    setTimeout(function(){ window.location.reload() }, 2000);
-							    }
- 
-							    // Call error handler on error status too.
-							    else { errorHandler(jqXHR, data.message); }
-						    },
-						    error: errorHandler,
- 
-						    // Disable/Enable input elements
-						    beforeSend: function() { inputs.attr('disabled', 'disabled'); },
-						    complete: function() { inputs.removeAttr('disabled'); inputs[0].focus(); }
-					    });
- 
-					    // Prevent normal form submission
-					    event.preventDefault();
-				    });
-			    }
-		    }
+	            id: 'TooltipModalOrganizationChanger', // Since we're only creating one modal, give it an ID so we can style it
+	            content: {
+	                text: $('#DivModalOrganizationChanger'),
+	                title: {
+	                    text: 'craigsworks :: Login',
+	                    button: true
+	                }
+	            },
+	            position: {
+	                my: 'center', // ...at the center of the viewport
+	                at: 'center',
+	                target: $(window)
+	            },
+	            show: {
+	                event: 'click', // Show it on click...
+	                ready: false, // Show it immediately on page load.. force them to login!
+	                modal: {
+	                    on: true,
+
+	                    // Don't let users exit the modal in any way
+	                    blur: true, escape: true
+	                }
+	            },
+	            hide: false,
+	            style: {
+	                classes: 'qtip-light qtip-rounded qtip-modal',
+	                tip: false
+	            }
+	        })
+            .removeData('qtip')  // This last part makes it possible to have a modal on-click box AND a tooltip.
+            .qtip({
+                content: {
+                    attr: 'title',
+                    title: function (api) {
+                        // Retrieve content from custom attribute of the elements.
+                        return $(this).attr('rel');
+                    },
+                    style: {
+                        classes: 'ui-tooltip-blue ui-tooltip-shadow'
+                    }
+                }
+            });
+
+            $("a[rel*=leanModal]").leanModal();
+
         });
-
-        $("a[rel*=leanModal]").leanModal();
-
-    });
         	
     </script>
     
