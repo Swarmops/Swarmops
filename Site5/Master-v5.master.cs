@@ -87,7 +87,7 @@ namespace Activizr
 
             SetupDropboxes();
 
-            this.ButtonSwitchOrganizations.Attributes.Add("onclick", "alert ('Foo!'); $('" + this.TextSwitchToOrganizationId.ClientID + "').val($('" + this.DropSwitchOrganizations.ClientID + "').val()); $('" + this.ButtonActuatorSwitchOrganizations.ClientID + "').click();");
+            this.ButtonSwitchOrganizations.Attributes.Add("onclick", "$('#" + this.TextSwitchToOrganizationId.ClientID + "').val($('#" + this.DropSwitchOrganizations.ClientID + "').val()); $('#" + this.ButtonActuatorSwitchOrganizations.ClientID + "').click();");
         }
 
         private void SetupDropboxes()
