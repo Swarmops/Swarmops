@@ -257,16 +257,6 @@
         
 	</div>
     
-    <!-- Organization changer -->
-    
-    <div id="DivModalOrganizationChanger" style="display:none">
-        You are currently logged into <strong>Sandbox</strong>. Would you like to switch to another organization?<br/><br/>
-        
-        <asp:DropDownList ID="DropSwitchOrganizations" runat="server"/><br/><br/>   <!-- TODO: Make this a tree dropdown -->
-        
-        <asp:Button runat="server" ID="ButtonSwitchOrganizations" Text="Switch" CssClass="buttonAccentColor" OnClick="ButtonSwitchOrganizations_Click"/>
-    </div>
-
     <!-- language selector popup -->
     
     <telerik:RadToolTip ID="ToolTip" runat="server"  AnimationDuration="150" AutoCloseDelay="200000" ShowDelay="0"
@@ -275,8 +265,22 @@
             Skin="Telerik" >
         <act5:LanguageSelector ID="LanguageSelector" runat="server" />
     </telerik:RadToolTip>
+
+    <!-- Organization changer -->
+    
+    <div id="DivModalOrganizationChanger" style="display:none">
+        You are currently logged into <strong>Sandbox</strong>. Would you like to switch to another organization?<br/><br/>
+        
+        <asp:DropDownList ID="DropSwitchOrganizations" runat="server"/><br/><br/>   <!-- TODO: Make this a tree dropdown -->
+
+        <!-- this is displayed out-of-form, so we must trigger an in-form button -->        
+        <asp:Button runat="server" ID="ButtonSwitchOrganizations" Text="Switch" CssClass="buttonAccentColor"/>
+    </div>
+
+        <div style="display:none"><asp:TextBox runat="server" ID="TextSwitchToOrganizationId" /><asp:Button runat="server" ID="ButtonActuatorSwitchOrganizations" OnClick="ButtonSwitchOrganizations_Click"/></div>
 	
 	</form>
+    
 </body>
 </html>
 

@@ -86,6 +86,8 @@ namespace Activizr
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
 
             SetupDropboxes();
+
+            this.ButtonSwitchOrganizations.Attributes.Add("onclick", "alert ('Foo!'); $('" + this.TextSwitchToOrganizationId.ClientID + "').val($('" + this.DropSwitchOrganizations.ClientID + "').val()); $('" + this.ButtonActuatorSwitchOrganizations.ClientID + "').click();");
         }
 
         private void SetupDropboxes()
@@ -373,7 +375,7 @@ namespace Activizr
         protected void ButtonSwitchOrganizations_Click(object sender, EventArgs e)
         {
             int currentUserId = _viewingPerson.Identity;
-            int desiredOrganizationId = Int32.Parse(this.DropSwitchOrganizations.SelectedValue);
+            int desiredOrganizationId = Int32.Parse(this.TextSwitchToOrganizationId.Text);
 
             if (desiredOrganizationId != 0)
             {
