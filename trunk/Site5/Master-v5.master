@@ -7,7 +7,7 @@
 <head runat="server">
 
     <!-- jQuery and plugins -->
-    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.js" ></script>
 
@@ -37,7 +37,7 @@
 	            content: {
 	                text: $('#DivModalOrganizationChanger'),
 	                title: {
-	                    text: 'craigsworks :: Login',
+	                    text: 'Switch Organizations',
 	                    button: true
 	                }
 	            },
@@ -62,19 +62,6 @@
 	                tip: false
 	            }
 	        });
-            $('#LinkChangeOrganizations').removeData('qtip');  // This last part makes it possible to have a modal on-click box AND a tooltip.
-            $('#LinkChangeOrganizations').qtip({
-                content: {
-                    attr: 'title',
-                    title: function (api) {
-                        // Retrieve content from custom attribute of the elements.
-                        return $(this).attr('rel');
-                    },
-                    style: {
-                        classes: 'ui-tooltip-blue ui-tooltip-shadow'
-                    }
-                }
-            });
 
             $("a[rel*=leanModal]").leanModal();
 
@@ -117,7 +104,13 @@
     <!-- Main menu, dynamically constructed -->
 
 	<div class="center980px">
-	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><a href="#" id="LinkChangeOrganizations" class="hasTooltip" rel="Logged into Sandbox" title="Click here to switch to another organization."><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /> <asp:LinkButton ID="LinkTranslate" Visible="false" Text="Translate Into" OnClick="LinkTranslate_Click" runat="server" /></div>
+	    <div class="currentuserinfo">
+	        <div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div>
+            <div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><span class="hasTooltip" rel="Logged into Sandbox" title="Click here to switch to another organization."><a href="#" id="LinkChangeOrganizations"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a></span> |&nbsp;</div>
+            <div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> | </div>
+            <div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div>
+            <asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /> <asp:LinkButton ID="LinkTranslate" Visible="false" Text="Translate Into" OnClick="LinkTranslate_Click" runat="server" />
+	    </div>
         <div class="logoimage"><a href="/"><img style="border:none" src="/Style/Images/activizr-v5-pirateedition-logo.png" alt="Activizr Logo" /></a></div>
         <div class="break"></div>
         <div class="topmenu">
@@ -267,11 +260,11 @@
     <!-- Organization changer -->
     
     <div id="DivModalOrganizationChanger" style="display:none">
-        You are currently logged into Sandbox. Would you like to switch to another organization?
+        You are currently logged into <strong>Sandbox</strong>. Would you like to switch to another organization?<br/><br/>
         
-        <asp:DropDownList ID="DropSwitchOrganizations" runat="server"/>   <!-- TODO: Make this a tree dropdown -->
+        <asp:DropDownList ID="DropSwitchOrganizations" runat="server"/><br/><br/>   <!-- TODO: Make this a tree dropdown -->
         
-        <asp:Button runat="server" ID="ButtonSwitchOrganization" Text="Soemthing" CssClass="buttonOrange"/>
+        <asp:Button runat="server" ID="ButtonSwitchOrganizations" Text="Switch" CssClass="buttonAccentColor" OnClick="ButtonSwitchOrganizations_Click"/>
     </div>
 
     <!-- language selector popup -->

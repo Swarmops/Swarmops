@@ -394,6 +394,52 @@ span.loginalphabetasign
 	background-image: url('/Security/Images/iconshock-foreign-key-16px-hot-offset.png');
 }
 
+.buttonAccentColor {
+	display:block;
+	float:right;
+	margin:5px 3px 8px 3px;
+	padding:5px;
+	text-decoration: none;
+	text-align: center;
+	font: bold 13px Ubuntu, sans-serif;
+	width:100px;
+	outline-style:none;
+	border-radius: 5px;    
+	color: #7F5500;
+	background: #EA8511;
+	border: 1px solid #EA8511;
+	box-shadow: 1px 1px 4px #7F5500;
+	background: -moz-linear-gradient(top, #FFC145, #F0AB22);
+	background: -webkit-linear-gradient(top, #FFC145, #F0AB22);
+	background: linear-gradient(top, #FFC145, #F0AB22);
+	text-shadow: #FFEDC8 0px 0px 3px, #FFEDC8 0px 0px 3px;
+	border-color: #C78B15;
+	position: relative;
+	top: -1px;
+	left: -1px;
+	cursor: pointer;
+}
+
+.buttonAccentColor:hover, .buttonAccentColor:active {
+	text-shadow: #FFF4E4 0px 0px 5px, #FFF4E4 0px 0px 5px, #FFF4E4 0px 0px 5px;
+
+}
+
+
+.buttonAccentColor:hover {
+	top: -2px;
+	left: -2px;
+	box-shadow: 2px 2px 4px #7F5500;
+}
+
+
+.buttonAccentColor:active {
+	top: 0px;
+	left: 0px;
+	box-shadow: 0px 0px 4px #7F5500;
+}
+
+
 .button-orange
 {
 	-webkit-box-shadow: 0 1px 3px #C78B15;
