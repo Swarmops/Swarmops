@@ -179,7 +179,11 @@
     <comment>Displayed as confirmation link on changing something</comment>
   </data>
   <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
-    <value>-- Select bookkeeping account --</value>
+    <value>-- Select Budget/Account --</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>-- Select Organization --</value>
     <comment>Initializer in dropdown box.</comment>
   </data>
   <data name="Global_GoThere" xml:space="preserve">

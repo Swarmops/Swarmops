@@ -85,6 +85,21 @@ namespace Activizr
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
 
+            SetupDropboxes();
+        }
+
+        private void SetupDropboxes()
+        {
+            this.DropSwitchOrganizations.Items.Clear();
+
+            this.DropSwitchOrganizations.Items.Add(new ListItem(Resources.Global.Global_DropInits_SelectOrganization, "0"));
+
+            Organizations organizations = Organizations.GetAll();
+
+            foreach (Organization organization in organizations)
+            {
+                this.DropSwitchOrganizations.Items.Add(new ListItem(organization.Name, organization.Identity.ToString(CultureInfo.InvariantCulture)));
+            }
         }
 
         private Person _viewingPerson;
@@ -353,6 +368,18 @@ namespace Activizr
 
             this.LiteralCrowdinScript.Text = crowdinCode;
             // Page.ClientScript.RegisterStartupScript(this.GetType(), "crowdin", crowdinCode, false);
+        }
+
+        protected void ButtonSwitchOrganizations_Click(object sender, EventArgs e)
+        {
+            int currentUserId = _viewingPerson.Identity;
+            int desiredOrganizationId = Int32.Parse(this.DropSwitchOrganizations.SelectedValue);
+
+            if (desiredOrganizationId != 0)
+            {
+                FormsAuthentication.RedirectFromLoginPage(string.Format(CultureInfo.InvariantCulture, "{0},{1}", currentUserId, desiredOrganizationId), true);
+                Response.Redirect("/");
+            }
         }
     }
 }
