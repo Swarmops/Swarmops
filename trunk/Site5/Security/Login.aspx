@@ -33,18 +33,18 @@
                         <div style="width:64px;height:64px;float:left"><img src="/Security/Images/iconshock-fingerprint-scanner-unlock-64px.png" alt="unlock icon" /></div><h1>ACTIVIZR<span class="loginalphabetasign">&beta;</span> LOGIN</h1>
                         <div class="box">
                             <div class="content">
-                                <div class="entryLabels">
+                                <div class="entryLabelsAdmin">
                                     Login:<br />
                                     Password:<br />
                                 </div>
-                                <div class="entryFields">
+                                <div class="entryFieldsAdmin">
                                     <asp:TextBox ID="TextLogin" runat="server" CssClass="textinput" />&nbsp;<br />
                                     <asp:TextBox ID="TextPassword" runat="server" CssClass="textinput" TextMode="Password" />&nbsp;<br />
                                     <div class="button-orange-encaps" style="float:right; margin-top:5px; margin-right:2px;margin-bottom:3px;">
                                         <asp:Button ID="ButtonLogin" runat="server" 
                                             Text="Login" onclick="ButtonLogin_Click" CssClass="button button-orange" /></div><br clear="all" />
                                 </div>
-                                <div class="entryvalidation">
+                                <div class="entryValidationAdmin">
                                     <asp:RequiredFieldValidator ID="ValidatorRequired_Login" Text="Please enter a valid login." runat="server" Display="Dynamic" EnableClientScript="false" ControlToValidate="TextLogin" CssClass="" />&nbsp;<asp:Label ID="LabelLoginFailed" runat="server" Visible="false" Text="Login failed, please retry." /><br />
                                     <asp:RequiredFieldValidator ID="ValidatorRequired_Password" Text="Please enter your password." runat="server" Display="Dynamic" EnableClientScript="false" ControlToValidate="TextPassword" CssClass="" />&nbsp;<br />
                                 </div>
