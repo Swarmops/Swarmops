@@ -48,13 +48,13 @@ namespace Activizr.Pages.Governance
 
             if (!Page.IsPostBack)
             {
-                this.PersonSubmitter.SelectedPerson = _currentUser;
+                this.PersonSubmitter.SelectedPerson = CurrentUser;
 
                 // HACK: Hardcode the presidency of this meeting
 
                 bool isPresidency = false;
 
-                switch (_currentUser.Identity)
+                switch (CurrentUser.Identity)
                 {
                     case 1681: // Nils Agnesson
                     case 15719: // Andreas Bjärnemalm
@@ -101,7 +101,7 @@ namespace Activizr.Pages.Governance
 
             MotionAmendment newAmendment = MotionAmendment.Create(_motion, this.TextTitle.Text, this.TextAmendmentText.Text,
                                                                   this.TextDecisionPoint.Text,
-                                                                  this.PersonSubmitter.SelectedPerson, _currentUser);
+                                                                  this.PersonSubmitter.SelectedPerson, this.CurrentUser);
 
             this.LabelAmendmentSaved.Text = String.Format(Resources.Pages.Governance.AddMotionAmendment_AmendmentSubmittedAs,
                                                        _motion.SequenceNumber, (char) ((int)('A') + newAmendment.SequenceNumber - 1));

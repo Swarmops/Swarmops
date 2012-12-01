@@ -22,11 +22,29 @@ namespace Activizr
 
             this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
 
-            // Titles etc
+            // Security stuff
+            // Current authentication
+
+            string identity = HttpContext.Current.User.Identity.Name;
+            string[] identityTokens = identity.Split(',');
+
+            string userIdentityString = identityTokens[0];
+            string organizationIdentityString = identityTokens[1];
+
+            int currentUserId = Convert.ToInt32(userIdentityString);
+            int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
+
+            _currentUser = Person.FromIdentity(currentUserId);
+            _authority = _currentUser.GetAuthority();
+            _currentOrganization = Organization.FromIdentity(currentOrganizationId);
+
+            // Titles and other page elements
 
             this.IconPage.ImageUrl = "/Images/PageIcons/" + this.CurrentPageIcon + "-40px.png";
             this.LabelPageTitle.Text = this.CurrentPageTitle;
             this.Page.Title = "Activizr - " + this.CurrentPageTitle;
+
+            this.LiteralSidebarInfo.Text = this.CurrentPageInfoBoxLiteral;
 
             // Check for SSL and force it
 
@@ -40,25 +58,12 @@ namespace Activizr
 
             Localize();
 
-            // Current authentication
+            this.LabelCurrentUserName.Text = _currentUser.Name;
+            this.LabelCurrentOrganizationName.Text = _currentOrganization.Name;
 
-            string identity = HttpContext.Current.User.Identity.Name;
-            string[] identityTokens = identity.Split(',');
-
-            string userIdentityString = identityTokens[0];
-            string organizationIdentityString = identityTokens[1];
-
-            int currentUserId = Convert.ToInt32(userIdentityString);
-            int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-            this.LabelCurrentUserName.Text = Person.FromIdentity(currentUserId).Name;
-            this.LabelCurrentOrganizationName.Text = Organization.FromIdentity(currentOrganizationId).Name;
-
-            // Security stuff
-
-            _viewingPerson = Person.FromIdentity(currentUserId);
-            _authority = _viewingPerson.GetAuthority();
-            _organization = Organization.FromIdentity(currentOrganizationId);
+            this.LabelActionPlaceholder1.Text = "Action shortcut 1 (TODO)";
+            this.LabelActionPlaceholder2.Text = "Action shortcut 2 (TODO)";
+            this.LabelActionItemsHere.Text = "Action items here (TODO)";
 
             RadMenu mainMenu = FindControl("MainMenu") as RadMenu;
 
@@ -104,14 +109,14 @@ namespace Activizr
             }
         }
 
-        private Person _viewingPerson;
-        private Organization _organization;
-        private Authority _authority;
         private static string _buildIdentity;
-
 
         private void Localize()
         {
+            this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
+            this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
+            this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
+
             string cultureString = Thread.CurrentThread.CurrentCulture.ToString();
             string cultureStringLower = cultureString.ToLowerInvariant();
 
@@ -187,9 +192,9 @@ namespace Activizr
                             break;
                         case "CloseLedgers":
                             int year = DateTime.Today.Year;
-                            int booksClosedUntil = _organization.Parameters.FiscalBooksClosedUntilYear;
+                            int booksClosedUntil = _currentOrganization.Parameters.FiscalBooksClosedUntilYear;
 
-                            if (_organization.Parameters.EconomyEnabled && booksClosedUntil < year - 1)
+                            if (_currentOrganization.Parameters.EconomyEnabled && booksClosedUntil < year - 1)
                             {
                                 item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CloseBooks, booksClosedUntil + 1);
                             }
@@ -341,7 +346,7 @@ namespace Activizr
         {
             // Received event from control - refire
 
-            _viewingPerson.PreferredCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+            _currentUser.PreferredCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
             this.LiteralCrowdinScript.Text = string.Empty;
 
             if (LanguageChanged != null)
@@ -374,7 +379,7 @@ namespace Activizr
 
         protected void ButtonSwitchOrganizations_Click(object sender, EventArgs e)
         {
-            int currentUserId = _viewingPerson.Identity;
+            int currentUserId = _currentUser.Identity;
             int desiredOrganizationId = Int32.Parse(this.TextSwitchToOrganizationId.Text);
 
             if (desiredOrganizationId != 0)
@@ -383,5 +388,6 @@ namespace Activizr
                 Response.Redirect("/");
             }
         }
+
     }
 }

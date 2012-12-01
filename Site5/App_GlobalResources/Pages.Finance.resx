@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="RequestCashAdvance_Info" xml:space="preserve">
-    <value>If you are about to make a purchase on behalf of the organization, but need the money in advance rather than claiming them back afterwards, you can request a cash advance for a specific purpose here.</value>
+    <value>If you are about to make a purchase on behalf of the organization, but need the money in advance rather than claiming them back afterwards, you can request a cash advance for a specific purpose.</value>
   </data>
   <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
     <value>Request Cash Advance</value>

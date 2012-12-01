@@ -85,7 +85,7 @@ namespace Activizr.Pages.Governance
             this.DropRecommendations.Items.Clear();
             this.DropRecommendations.Items.Add(new ListItem(Resources.Pages.Governance.VoteAmendments_SelectRecommendation, "0"));
             this.DropRecommendations.Items.Add(new ListItem(Resources.Pages.Governance.VoteAmendments_BoardRecommendation, "-1"));
-            this.DropRecommendations.Items.Add(new ListItem("DinLista - " + _currentUser.Canonical, "3"));
+            this.DropRecommendations.Items.Add(new ListItem("DinLista - " + CurrentUser.Canonical, "3"));
             this.DropRecommendations.Items.Add(new ListItem("TestList - Rick Falkvinge (#1)", "1"));
         }
 

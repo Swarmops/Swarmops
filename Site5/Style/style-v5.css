@@ -397,7 +397,7 @@ span.loginalphabetasign
 .buttonAccentColor {
 	display:block;
 	float:right;
-	margin:5px 3px 8px 3px;
+	margin:15px 3px 8px 3px;
 	padding:5px;
 	text-decoration: none;
 	text-align: center;
@@ -490,7 +490,7 @@ span.loginalphabetasign
 
 /* ENTRY FIELDS */
 
-.entrylabels
+.entryLabels
 {
 	margin-top: 10px;
 	line-height: 30px;
@@ -498,7 +498,7 @@ span.loginalphabetasign
 	width: 100px;
 }
 
-.entryfields
+.entryFields
 {
 	background: #A2BEFF;
 	-moz-border-radius: 2px;

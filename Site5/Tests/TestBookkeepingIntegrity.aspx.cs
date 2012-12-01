@@ -22,7 +22,7 @@ public partial class Tests_TestBookkeepingIntegrity : PageV5Base
             this.DropYear.Items.Add(new ListItem("2011", "2011"));
         }
 
-        this.LabelThisOrganization.Text = _currentOrganization.Name;
+        this.LabelThisOrganization.Text = this.CurrentOrganization.Name;
     }
 
     protected void DropYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -31,24 +31,24 @@ public partial class Tests_TestBookkeepingIntegrity : PageV5Base
 
         if (year < 2000) return;
 
-        FinancialAccounts balanceAccounts = FinancialAccounts.ForOrganization(_currentOrganization,
+        FinancialAccounts balanceAccounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
                                                                               FinancialAccountType.Balance);
 
-        FinancialAccounts resultAccounts = FinancialAccounts.ForOrganization(_currentOrganization,
+        FinancialAccounts resultAccounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
                                                                              FinancialAccountType.Result);
 
-        FinancialAccount ownCapital = _currentOrganization.FinancialAccounts.DebtsCapital;
-        FinancialAccount resultAsNoted = _currentOrganization.FinancialAccounts.CostsYearlyResult;
+        FinancialAccount ownCapital = this.CurrentOrganization.FinancialAccounts.DebtsCapital;
+        FinancialAccount resultAsNoted = this.CurrentOrganization.FinancialAccounts.CostsYearlyResult;
 
         FinancialAccounts balancesWithoutCapital =
-            FinancialAccounts.ForOrganization(_currentOrganization, FinancialAccountType.Balance);
+            FinancialAccounts.ForOrganization(this.CurrentOrganization, FinancialAccountType.Balance);
         balancesWithoutCapital.Remove(ownCapital);
 
-        FinancialAccounts resultAccountsWithoutNotedResult = FinancialAccounts.ForOrganization(_currentOrganization,
+        FinancialAccounts resultAccountsWithoutNotedResult = FinancialAccounts.ForOrganization(this.CurrentOrganization,
                                                                              FinancialAccountType.Result);
-        resultAccountsWithoutNotedResult.Remove(_currentOrganization.FinancialAccounts.CostsYearlyResult);
+        resultAccountsWithoutNotedResult.Remove(this.CurrentOrganization.FinancialAccounts.CostsYearlyResult);
 
-        Currency currency = _currentOrganization.DefaultCountry.Currency;
+        Currency currency = this.CurrentOrganization.DefaultCountry.Currency;
 
         this.LabelResultsAll.Text = String.Format("{0} {1:N2}", currency.Code,
                                                   resultAccounts.GetDeltaCents(new DateTime(year, 1, 1),

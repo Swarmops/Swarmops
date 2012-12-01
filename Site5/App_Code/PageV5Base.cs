@@ -19,10 +19,6 @@ public class PageV5Base : System.Web.UI.Page
     public PermissionSet pagePermissionDefault = new PermissionSet(Permission.CanSeeSelf); //Use from menu;
     public Access PageAccessRequired = null; // v5 mechanism
 
-    public Person _currentUser = null;
-    public Authority _authority = null;
-    public Organization _currentOrganization = null;
-
     /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
     protected override void OnInitComplete(System.EventArgs e)
     {
@@ -39,9 +35,6 @@ public class PageV5Base : System.Web.UI.Page
 
         currentUserId = Convert.ToInt32(userIdentityString);
         currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-        _currentUser = Person.FromIdentity(currentUserId);
-        _currentOrganization = Organization.FromIdentity(currentOrganizationId);
-        _authority = _currentUser.GetAuthority();
     }
 
     protected new MasterV5Base Master
@@ -57,6 +50,27 @@ public class PageV5Base : System.Web.UI.Page
     {
         get { return this.Master.CurrentPageIcon; }
         set { this.Master.CurrentPageIcon = value; }
+    }
+
+    protected string InfoBoxLiteral
+    {
+        get { return this.Master.CurrentPageInfoBoxLiteral; }
+        set { this.Master.CurrentPageInfoBoxLiteral = value; }
+    }
+
+    protected Person CurrentUser
+    {
+        get { return this.Master.CurrentUser; }
+    }
+
+    protected Organization CurrentOrganization
+    {
+        get { return this.Master.CurrentOrganization; }
+    }
+
+    protected Authority CurrentAuthority
+    {
+        get { return this.Master.CurrentAuthority; }
     }
 
     protected override void OnPreInit(EventArgs e)
@@ -121,7 +135,7 @@ public class PageV5Base : System.Web.UI.Page
     {
         // Check security of page against users's credentials
 
-        if (!_currentUser.HasAccess (this.PageAccessRequired))
+        if (!CurrentUser.HasAccess (this.PageAccessRequired))
         {
             Response.Redirect("/Pages/v5/Security/AccessDenied.aspx");
         }

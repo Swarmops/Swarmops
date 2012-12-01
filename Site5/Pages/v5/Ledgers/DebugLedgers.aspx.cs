@@ -10,7 +10,7 @@ public partial class Pages_v5_Ledgers_DebugLedgers : PageV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.PageAccessRequired = new Access(_currentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+        this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
         this.PageTitle = "Debug Ledgers";
         this.PageIcon = "iconshock-tester";
@@ -21,8 +21,8 @@ public partial class Pages_v5_Ledgers_DebugLedgers : PageV5Base
 
         // Iterate over all open payment groups and try to map them to unbalanced transactions
 
-        FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced(_currentOrganization); // TODO: this fn should move to Organization
-        PaymentGroups openGroups = PaymentGroups.ForOrganization(_currentOrganization, false);
+        FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced(this.CurrentOrganization); // TODO: this fn should move to Organization
+        PaymentGroups openGroups = PaymentGroups.ForOrganization(this.CurrentOrganization, false);
 
         foreach (PaymentGroup openGroup in openGroups)
         {
