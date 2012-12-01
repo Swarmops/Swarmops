@@ -521,7 +521,7 @@ span.loginalphabetasign
 	padding: 0px 10px 0px 15px;
 }
 
-.entryFields input .buttonAccentColor:not, .entryFields textarea 
+.entryFields input, .entryFields textarea 
 {
 	width: 300px;	
 }
