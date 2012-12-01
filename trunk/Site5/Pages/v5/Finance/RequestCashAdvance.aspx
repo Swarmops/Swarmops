@@ -8,7 +8,7 @@
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
-        <asp:TextBox runat="server" ID="Budget" />&nbsp;<br/>
+        <asp:DropDownList runat="server" ID="DropBudgets"/>&nbsp;<br/>
         &nbsp;<br/><!-- placeholder for label-side H2 -->
         <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
