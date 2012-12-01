@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="entryFields">
-        <asp:TextBox runat="server" ID="TextAmount" />&nbsp;<br/>
+        <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="Budget" />&nbsp;<br/>
         &nbsp;<br/><!-- placeholder for label-side H2 -->
