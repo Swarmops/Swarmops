@@ -521,6 +521,11 @@ span.loginalphabetasign
 	padding: 0px 10px 0px 15px;
 }
 
+.entryFields input .buttonAccentColor:not, .entryFields textarea 
+{
+	width: 300px;	
+}
+
 .entryFields input:focus, .entryFields textarea:focus, .entryFields select:focus 
 {
 	background: #F0F6FF;
