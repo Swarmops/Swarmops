@@ -9,7 +9,7 @@
         <asp:TextBox runat="server" ID="TextAmount" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="Budget" />&nbsp;<br/>
-        <h3>&nbsp;</h3><!-- placeholder -->
+        &nbsp;<br/><!-- placeholder for label-side H2 -->
         <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/>
@@ -19,7 +19,7 @@
         Amount (SEK)<br/>
         Purpose<br/>
         Budget<br/>
-        <h3>Your bank details</h3>
+        <h2>Your bank details</h2>
         Bank<br/>
         Clearing#<br/>
         Account#

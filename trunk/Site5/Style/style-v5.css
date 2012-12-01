@@ -497,16 +497,16 @@ span.loginalphabetasign
 	background: -webkit-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0));
 	background: -moz-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0));
 	border-radius: 6px;
-	line-height: 30px;
+	line-height: 40px;
 	float:right;
-	padding-top: 5px;
+	padding-top: 10px;
 	padding-bottom: 5px;
 	padding-left: 10px;
-	padding-right: 10px;
+	padding-right: 8px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	font-size: 140%;
-	width: 50%;
+	width: 333px;
 	
 	-webkit-box-shadow: 0 1px 3px 1px #1C397E;
 	-moz-box-shadow: 0 1px 3px 1px #1C397E;
@@ -521,7 +521,7 @@ span.loginalphabetasign
 	padding: 0px 10px 0px 15px;
 }
 
-.entryFields input:not(.buttonAccentColor), .entryFields textarea 
+.entryFields input:not(.buttonAccentColor), .entryFields textarea, .entryFields select
 {
 	width: 300px;	
 }
@@ -535,7 +535,10 @@ span.loginalphabetasign
 
 .entryLabels 
 {
-	font-size: 140%;	
+	font-size: 140%;
+	line-height: 40px;
+	padding-top: 12px;
+	padding-left: 15px;
 }
 
 
