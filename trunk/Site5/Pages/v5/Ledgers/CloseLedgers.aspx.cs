@@ -12,14 +12,14 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.PageAccessRequired = new Access(_currentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+        this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
         this.PageTitle = "Close Ledgers";
         this.PageIcon = "iconshock-calculator-lock";
 
         // Check if on a closable year
 
-        if (_currentOrganization.Parameters.EconomyEnabled == false || _currentOrganization.Parameters.FiscalBooksClosedUntilYear == DateTime.Today.Year - 1)
+        if (this.CurrentOrganization.Parameters.EconomyEnabled == false || this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear == DateTime.Today.Year - 1)
         {
             this.PanelCannotClose.Visible = true;
             this.PanelSuccess.Visible = false;
@@ -29,7 +29,7 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // Check if all transactions are balanced, so we can close
 
-        FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced(_currentOrganization); // TODO: this fn should move to Organization
+        FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced(this.CurrentOrganization); // TODO: this fn should move to Organization
 
         if (unbalancedTransactions.Count > 0)
         {
@@ -40,11 +40,11 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // Start actually closing the ledgers
 
-        int closingYear = _currentOrganization.Parameters.FiscalBooksClosedUntilYear + 1;
+        int closingYear = this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear + 1;
 
         // First, roll over virtual balances.
 
-        if (true) // if _currentOrganization.Parameters.VirtualBankingEnabled
+        if (true) // if this.CurrentOrganization.Parameters.VirtualBankingEnabled
         {
             FinancialAccount rootAccount = FinancialAccount.FromIdentity(29);  // HACK: Hardcoded account; should be _organization.FinancialAccount.CostsVirtualBankingRoot
             FinancialAccount tempAccount = FinancialAccount.FromIdentity(98);  // HACK: Hardcoded account; should be _organization.FinancialAccount.AssetsVirtualRollover
@@ -84,7 +84,7 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // Then, actually close the ledgers.
 
-        FinancialAccounts accounts = FinancialAccounts.ForOrganization(_currentOrganization);
+        FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization);
         Int64 balanceDeltaCents = 0;
         Int64 resultsDeltaCents = 0;
 
@@ -106,9 +106,9 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         if (balanceDeltaCents == -resultsDeltaCents && closingYear < DateTime.Today.Year)
         {
-            FinancialTransaction resultTransaction = FinancialTransaction.Create(_currentOrganization.Identity, new DateTime(closingYear, 12, 31, 23, 59, 00), "Årets resultat " + closingYear.ToString());  // TODO: Localize string
-            resultTransaction.AddRow(_currentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, null);
-            resultTransaction.AddRow(_currentOrganization.FinancialAccounts.DebtsCapital, -balanceDeltaCents, null);
+            FinancialTransaction resultTransaction = FinancialTransaction.Create(this.CurrentOrganization.Identity, new DateTime(closingYear, 12, 31, 23, 59, 00), "Årets resultat " + closingYear.ToString());  // TODO: Localize string
+            resultTransaction.AddRow(this.CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, null);
+            resultTransaction.AddRow(this.CurrentOrganization.FinancialAccounts.DebtsCapital, -balanceDeltaCents, null);
 
             // Ledgers are now at zero-sum for the year's result accounts and from the start up until end-of-closing-year for the balance accounts.
 

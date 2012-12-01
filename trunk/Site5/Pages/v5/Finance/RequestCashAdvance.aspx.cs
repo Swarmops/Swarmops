@@ -11,5 +11,6 @@ public partial class Pages_v5_Finance_RequestCashAdvance : PageV5Base
     {
         this.PageTitle = Resources.Pages.Finance.RequestCashAdvance_PageTitle;
         this.PageIcon = "iconshock-walletmoney";
+        this.InfoBoxLiteral = Resources.Pages.Finance.RequestCashAdvance_Info;
     }
 }

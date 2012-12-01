@@ -29,9 +29,9 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.PageAccessRequired = new Access(_currentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+        this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
-        this.HiddenInitOrganizationId.Value = _currentOrganization.Identity.ToString();
+        this.HiddenInitOrganizationId.Value = this.CurrentOrganization.Identity.ToString();
 
         this.PageIcon = "iconshock-moneybag";
         this.PageTitle = Resources.Pages.Ledgers.SetRootBudgets_PageTitle;
@@ -62,7 +62,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
             UpdateYearlyResult(accounts);
 
-            this.LabelRootBudgetHeader.Text = String.Format(Resources.Pages.Ledgers.SetRootBudgets_PageHeader, _currentOrganization.Name);
+            this.LabelRootBudgetHeader.Text = String.Format(Resources.Pages.Ledgers.SetRootBudgets_PageHeader, this.CurrentOrganization.Name);
             this.LabelAccountHeader.Text = Resources.Global.Financial_BookkeepingAccountShort;
             this.LabelYearlyResultLabel.Text = Resources.Global.Financial_YearlyResult;
             this.ButtonSetBudgets.Text = Resources.Pages.Ledgers.SetRootBudgets_SetNewBudgets;
@@ -90,7 +90,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
     private void LocalizeActualsHeader()
     {
-        if (_currentOrganization.Parameters.FiscalBooksClosedUntilYear >= _year)
+        if (this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >= _year)
         {
             this.LabelActualsHeader.Text = Resources.Global.Financial_Actuals;
         }
@@ -181,7 +181,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         Controls_v5_PersonDetailPopup personDetail = (Controls_v5_PersonDetailPopup)toolTip.FindControl("PersonDetail");
         personDetail.PersonChanged += new PersonChangedEventHandler(PersonDetail_PersonChanged);
 
-        if (!Page.IsPostBack && _authority != null)
+        if (!Page.IsPostBack && this.CurrentAuthority != null)
         {
             personDetail.Person = accountOwner;
             personDetail.Cookie = account;
@@ -230,11 +230,11 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
     private FinancialAccounts GetRootLevelResultAccounts()
     {
-        Organization org = _currentOrganization;
+        Organization org = this.CurrentOrganization;
 
         if (org == null && Page.IsPostBack)
         {
-            // If we're being called from Page_Init to create controls just to catch events, then _currentOrganization won't be set.
+            // If we're being called from Page_Init to create controls just to catch events, then this.CurrentOrganization won't be set.
             // We need to create it temporarily from a hidden field:
 
             org = Organization.FromIdentity(Int32.Parse(Request["ctl00$PlaceHolderMain$HiddenInitOrganizationId"]));

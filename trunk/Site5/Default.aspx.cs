@@ -16,17 +16,12 @@ public partial class Default : PageV5Base
         this.PageTitle = Resources.Global.Dashboard_PageTitle;
         this.PageIcon = "iconshock-steering-wheel";
 
+        /*
         this.LabelActionListMotions.Text = Resources.Pages.Governance.ListMotions_PageTitle;
-        this.LabelActionVote.Text = Resources.Pages.Governance.Vote_PageTitle;
+        this.LabelActionVote.Text = Resources.Pages.Governance.Vote_PageTitle;*/
 
-        this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
-        this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
-        this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
-
-        this.LabelActionItemsHere.Text = Resources.Global.Sidebar_Todo_Placeholder;
-        this.LabelGoThere.Text = Resources.Global.Global_GoThere;
         this.LabelDashboardTemporaryContent.Text = Resources.Global.Dashboard_Main_Temporary;
-        this.LabelDashboardInfo.Text = Resources.Global.Dashboard_Info_Temporary;
+        this.InfoBoxLiteral = Resources.Global.Dashboard_Info_Temporary;
         this.LabelGoThere2.Text = Resources.Global.Global_GoThere;
     }
 }

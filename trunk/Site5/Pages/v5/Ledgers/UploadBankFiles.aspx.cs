@@ -27,20 +27,16 @@ namespace Activizr.Site.Pages.Ledgers
         {
             this.PageTitle = Resources.Pages.Ledgers.UploadBankFiles_PageTitle;
             this.PageIcon = "iconshock-bank";
-            this.PageAccessRequired = new Access(_currentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
             if (!IsPostBack)
             {
                 // Localize
 
-                this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
-                this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
-                this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
                 this.LabelDownloadInstructions.Text = Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions;
                 this.LabelClickImage.Text = Resources.Global.Global_ClickImageToEnlarge;
 
-                this.LabelUploadBankFilesInfo.Text = Resources.Pages.Ledgers.UploadBankFiles_Info;
-                this.LabelActionItemsHere.Text = Resources.Global.Sidebar_Todo_Placeholder;
+                this.InfoBoxLiteral = Resources.Pages.Ledgers.UploadBankFiles_Info;
 
                 this.LabelSelectBankAndAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankAndAccount;
                 this.LabelSelectFileType.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
@@ -172,7 +168,7 @@ namespace Activizr.Site.Pages.Ledgers
 
         private void PopulateAccountDropDown()
         {
-            FinancialAccounts accounts = FinancialAccounts.ForOrganization(_currentOrganization,
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
                                                                            FinancialAccountType.Asset);
 
             this.DropAccounts.Items.Clear();
@@ -366,8 +362,8 @@ namespace Activizr.Site.Pages.Ledgers
         protected ImportResults ProcessImportedData(ImportedBankData import)
         {
             FinancialAccount assetAccount = FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue));
-            FinancialAccount autoDepositAccount = _currentOrganization.FinancialAccounts.IncomeDonations;
-            int autoDepositLimit = 1000; // TODO: _currentOrganization.Parameters.AutoDonationLimit;
+            FinancialAccount autoDepositAccount = this.CurrentOrganization.FinancialAccounts.IncomeDonations;
+            int autoDepositLimit = 1000; // TODO: this.CurrentOrganization.Parameters.AutoDonationLimit;
 
             ImportResults result = new ImportResults();
             int count = 0;
@@ -434,10 +430,10 @@ namespace Activizr.Site.Pages.Ledgers
                     amountCents = row.AmountCentsGross;
                 }
 
-                FinancialTransaction transaction = FinancialTransaction.ImportWithStub(_currentOrganization.Identity, row.DateTime,
+                FinancialTransaction transaction = FinancialTransaction.ImportWithStub(this.CurrentOrganization.Identity, row.DateTime,
                                                                                        assetAccount.Identity, amountCents,
                                                                                        row.Comment, importKey,
-                                                                                       _currentUser.Identity);
+                                                                                       this.CurrentUser.Identity);
 
                 if (transaction != null)
                 {
@@ -454,23 +450,23 @@ namespace Activizr.Site.Pages.Ledgers
                         Geography geography = accounts[0].AssignedGeography;
                         FinancialAccount localAccount = accounts[0];
 
-                        transaction.AddRow(_currentOrganization.FinancialAccounts.IncomeDonations, -amountCents, _currentUser);
-                        transaction.AddRow(_currentOrganization.FinancialAccounts.CostsLocalDonationTransfers,
-                                           amountCents, _currentUser);
-                        transaction.AddRow(localAccount, -amountCents, _currentUser);
+                        transaction.AddRow(this.CurrentOrganization.FinancialAccounts.IncomeDonations, -amountCents, this.CurrentUser);
+                        transaction.AddRow(this.CurrentOrganization.FinancialAccounts.CostsLocalDonationTransfers,
+                                           amountCents, this.CurrentUser);
+                        transaction.AddRow(localAccount, -amountCents, this.CurrentUser);
 
                         Activizr.Logic.Support.PWEvents.CreateEvent(EventSource.PirateWeb, EventType.LocalDonationReceived,
-                                                                     _currentUser.Identity, _currentOrganization.Identity,
+                                                                     this.CurrentUser.Identity, this.CurrentOrganization.Identity,
                                                                      geography.Identity, 0,
                                                                      transaction.Identity, localAccount.Identity.ToString());
                     }
-                    else if (row.Comment.ToLowerInvariant().StartsWith(_currentOrganization.IncomingPaymentTag))
+                    else if (row.Comment.ToLowerInvariant().StartsWith(this.CurrentOrganization.IncomingPaymentTag))
                     {
                         // Check for previously imported payment group
 
-                        PaymentGroup group = PaymentGroup.FromTag(_currentOrganization,
+                        PaymentGroup group = PaymentGroup.FromTag(this.CurrentOrganization,
                                                                   "SEBGM" + DateTime.Today.Year.ToString() +   // TODO: Get tags from org
-                                                                  row.Comment.Substring(_currentOrganization.IncomingPaymentTag.Length).Trim());
+                                                                  row.Comment.Substring(this.CurrentOrganization.IncomingPaymentTag.Length).Trim());
 
                         if (group != null && group.Open)
                         {
@@ -479,7 +475,7 @@ namespace Activizr.Site.Pages.Ledgers
 
                             transaction.Dependency = group;
                             group.Open = false;
-                            transaction.AddRow(_currentOrganization.FinancialAccounts.AssetsOutboundInvoices, -amountCents, _currentUser);
+                            transaction.AddRow(this.CurrentOrganization.FinancialAccounts.AssetsOutboundInvoices, -amountCents, this.CurrentUser);
                         }
                     }
                     else if (amountCents < 0)
@@ -492,14 +488,14 @@ namespace Activizr.Site.Pages.Ledgers
                         {
                             // This is always an autodeposit, if there is a fee (which is never > 0.0)
 
-                            transaction.AddRow(_currentOrganization.FinancialAccounts.CostsBankFees, -row.FeeCents, _currentUser);
-                            transaction.AddRow(autoDepositAccount, -row.AmountCentsGross, _currentUser);
+                            transaction.AddRow(this.CurrentOrganization.FinancialAccounts.CostsBankFees, -row.FeeCents, this.CurrentUser);
+                            transaction.AddRow(autoDepositAccount, -row.AmountCentsGross, this.CurrentUser);
                         }
                         else if (amountCents < autoDepositLimit * 100)
                         {
                             // Book against autoDeposit account.
 
-                            transaction.AddRow(autoDepositAccount, -amountCents, _currentUser);
+                            transaction.AddRow(autoDepositAccount, -amountCents, this.CurrentUser);
                         }
                     }
                 }
@@ -524,7 +520,7 @@ namespace Activizr.Site.Pages.Ledgers
 
             if (databaseAccountBalanceCents - beyondEofCents == import.CurrentBalanceCents)
             {
-                Payouts.AutomatchAgainstUnbalancedTransactions(_currentOrganization);
+                Payouts.AutomatchAgainstUnbalancedTransactions(this.CurrentOrganization);
                 result.AccountBalanceMatchesBank = true;
             }
             else
@@ -722,13 +718,13 @@ namespace Activizr.Site.Pages.Ledgers
 
                         // Dupe check
 
-                        PaymentGroup dupe = PaymentGroup.FromTag(_currentOrganization, tag);
+                        PaymentGroup dupe = PaymentGroup.FromTag(this.CurrentOrganization, tag);
 
                         if (dupe == null)
                         {
                             // Commit all recorded payments
 
-                            PaymentGroup newGroup = PaymentGroup.Create(_currentOrganization, timestamp, currency, _currentUser);
+                            PaymentGroup newGroup = PaymentGroup.Create(this.CurrentOrganization, timestamp, currency, this.CurrentUser);
                             result.PaymentGroupCount++;
 
                             Int64 reportedAmountCents = Int64.Parse(line.Substring(50, 18), CultureInfo.InvariantCulture); // may differ because of duplicates

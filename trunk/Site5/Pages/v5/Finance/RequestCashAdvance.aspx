@@ -5,42 +5,27 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    <div class="entryLabels">
+        Amount (SEK)<br/>
+        Purpose<br/>
+        Budget<br/>
+    </div>
+    <div class="entryFields">
+        <asp:TextBox runat="server" ID="TextAmount" />&nbsp;<br/>
+        <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
+        <asp:TextBox runat="server" ID="Budget" />&nbsp;<br/>
+        <asp:Button runat="server" CssClass="buttonAccentColor" Text="Request"/>
+    </div>
+    <div class="entryvalidation">
+        For example, <strong>1000</strong>.<br/>
+        Describe briefly. For example, "Bus tickets to rally."<br/>
+        Where this money will come from.<br/>
+    </div>
+    <div style="clear:both"></div>
 </asp:Content>
 
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
-
-    <h2 class="blue"><asp:Label ID="LabelSidebarInfo" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-        <asp:Label ID="LabelDashboardInfo" runat="server" /> <a href="/Pages/v5/Governance/Vote.aspx"><asp:Label ID="LabelGoThere" runat="server" /></a>
-        </div>
-    </div>
-    
-    <h2 class="blue"><asp:Label ID="LabelSidebarActions" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-            <div class="link-row-encaps" onclick="document.location='/Pages/v5/Governance/Vote.aspx';" >
-                <div class="link-row-icon" style="background-image:url('/Images/PageIcons/iconshock-vote-16px.png')"></div>
-                <asp:Label ID="LabelActionVote" runat="server" />
-            </div>
-            <div class="link-row-encaps" onclick="document.location='/Pages/v5/Governance/ListMotions.aspx';" >
-                <div class="link-row-icon" style="background-image:url('/Images/PageIcons/iconshock-motions-16px.png')"></div>
-                <asp:Label ID="LabelActionListMotions" runat="server" />
-            </div>
-        </div>
-    </div>
-    
-    <h2 class="orange"><asp:Label ID="LabelSidebarTodo" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-            <asp:Label ID="LabelActionItemsHere" runat="server" />
-        </div>
-    </div>
-        
 </asp:Content>
 

@@ -33,11 +33,11 @@
                         <div style="width:64px;height:64px;float:left"><img src="/Security/Images/iconshock-fingerprint-scanner-unlock-64px.png" alt="unlock icon" /></div><h1>ACTIVIZR<span class="loginalphabetasign">&beta;</span> LOGIN</h1>
                         <div class="box">
                             <div class="content">
-                                <div class="entrylabels">
+                                <div class="entryLabels">
                                     Login:<br />
                                     Password:<br />
                                 </div>
-                                <div class="entryfields">
+                                <div class="entryFields">
                                     <asp:TextBox ID="TextLogin" runat="server" CssClass="textinput" />&nbsp;<br />
                                     <asp:TextBox ID="TextPassword" runat="server" CssClass="textinput" TextMode="Password" />&nbsp;<br />
                                     <div class="button-orange-encaps" style="float:right; margin-top:5px; margin-right:2px;margin-bottom:3px;">

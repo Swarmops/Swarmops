@@ -14,6 +14,6 @@ public partial class Security_AccessDenied : PageV5Base
         this.LabelAccessDeniedHeader.Text = Resources.Pages.Security.AccessDenied_Header;
         this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
         this.LabelAccessDeniedInfo.Text = Resources.Pages.Security.AccessDenied_Info;
-        this.LiteralAccessDeniedRant.Text = String.Format(Resources.Pages.Security.AccessDenied_Rant, _currentOrganization.Name);
+        this.LiteralAccessDeniedRant.Text = String.Format(Resources.Pages.Security.AccessDenied_Rant, this.CurrentOrganization.Name);
     }
 }

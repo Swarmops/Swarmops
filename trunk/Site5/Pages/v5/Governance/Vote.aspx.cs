@@ -24,7 +24,7 @@ namespace Activizr.Pages.Governance
             this.LabelActionItemsHere.Text = Resources.Global.Sidebar_Todo_Placeholder;
 
             this.LabelActionListMotions.Text = Resources.Pages.Governance.ListMotions_PageTitle;
-            this.LabelVotingInfo.Text = String.Format(Resources.Pages.Governance.Vote_Info, _currentOrganization.Name);
+            this.LabelVotingInfo.Text = String.Format(Resources.Pages.Governance.Vote_Info, CurrentOrganization.Name);
 
             this.LabelPointsOfOrderHeader.Text = Resources.Pages.Governance.Vote_PointsOfOrder;
             this.LabelPointsOfOrderTemp.Text = Resources.Pages.Governance.Vote_PointsOfOrderTemp;

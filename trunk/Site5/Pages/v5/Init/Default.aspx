@@ -487,12 +487,12 @@
 
   			            <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Activizr installation. To do that, answer these simple questions:</p> <asp:Label runat="server" ID="LabelTest" />
                         
-                        <div class="entrylabels" style="width:250px">
+                        <div class="entryLabels" style="width:250px">
                             What is this server's /etc/hostname?<br />
   			                What is this server's internal IP?<br />
                             What is your favorite color?
                         </div>
-                        <div class="entryfields">
+                        <div class="entryFields">
                             <asp:TextBox CssClass="textinput" ID="TextServerName" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextServerAddress" runat="server" />&nbsp;<br />
                             <asp:DropDownList ID="DropFavoriteColor" runat="server" />&nbsp;<br />
@@ -509,28 +509,28 @@
                             <h2>Connect to database</h2>	
                         <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. We <strong>very strongly</strong> recommend having three separate accounts - one for reading (needs SELECT only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
 
-                        <div class="entrylabels" style="width:120px">
+                        <div class="entryLabels" style="width:120px">
                             &nbsp;<br/>
                             Database<br />
   			                Server<br />
                             User<br/>
                             Password
                         </div>
-                        <div class="entryfields" style="width:80px">
+                        <div class="entryFields" style="width:80px">
                             <strong>Read access</strong><br/>
                             <asp:TextBox CssClass="textinput" ID="TextCredentialsReadDatabase" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadServer" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadUser" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadPassword" runat="server" />&nbsp;<br />
                         </div>
-                        <div class="entryfields" style="width:80px;margin-left:10px">
+                        <div class="entryFields" style="width:80px;margin-left:10px">
                             <strong>Write access</strong><br/>
                             <asp:TextBox CssClass="textinput" ID="TextCredentialsWriteDatabase" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteServer" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteUser" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsWritePassword" runat="server" />&nbsp;<br />
                         </div>
-                        <div class="entryfields" style="width:80px;margin-left:10px">
+                        <div class="entryFields" style="width:80px;margin-left:10px">
                             <strong>Admin access</strong><br/>
                             <asp:TextBox CssClass="textinput" ID="TextCredentialsAdminDatabase" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminServer" runat="server" />&nbsp;<br />
@@ -553,13 +553,13 @@
                         
                             <p>(You can add other people to the <em>System Administrator</em> role later.)</p>
 
-                            <div class="entrylabels" style="width:250px">
+                            <div class="entryLabels" style="width:250px">
                                 Your full name<br />
   			                    Your email<br />
                                 Your password<br/>
                                 Repeat password
                             </div>
-                            <div class="entryfields">
+                            <div class="entryFields">
                                 <asp:TextBox CssClass="textinput" ID="TextFirstUserName" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextFirstUserMail" runat="server" />&nbsp;<br />
                                 <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword1" TextMode="Password" runat="server" />&nbsp;<br />
