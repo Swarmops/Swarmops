@@ -427,7 +427,7 @@ span.loginalphabetasign
 }
 
 
-.buttonAccentColor:hover {
+.buttonAccentColor:hover, .buttonAccentColor:focus {
 	top: -2px;
 	left: -2px;
 	box-shadow: 2px 2px 4px #7F5500;
@@ -526,7 +526,7 @@ span.loginalphabetasign
 	width: 300px;	
 }
 
-.entryFields input:focus, .entryFields textarea:focus, .entryFields select:focus 
+.entryFields input:not(.buttonAccentColor):focus, .entryFields textarea:focus, .entryFields select:focus 
 {
 	background: #F0F6FF;
 	box-shadow: 0px 0px 4px 2px #1C397E inset;
@@ -539,6 +539,24 @@ span.loginalphabetasign
 	line-height: 40px;
 	padding-top: 12px;
 	padding-left: 15px;
+	font-weight: 300;
+}
+
+.content .entryLabels h2 
+{
+	font-size: 130%;
+	letter-spacing: 0px;
+	padding-bottom: 0px;
+	padding-top: 7px;
+	margin-bottom: 0px;
+	border: none;
+	font-weight: 400;
+	color: #476EC7;
+	line-height: 33px;	
+}
+
+.alignRight {
+	text-align: right;
 }
 
 

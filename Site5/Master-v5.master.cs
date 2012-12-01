@@ -16,12 +16,8 @@ namespace Activizr
 {
     public partial class MasterV5 : MasterV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init (object sender, EventArgs e)
         {
-            // Event subscriptions
-
-            this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
-
             // Security stuff
             // Current authentication
 
@@ -37,6 +33,13 @@ namespace Activizr
             _currentUser = Person.FromIdentity(currentUserId);
             _authority = _currentUser.GetAuthority();
             _currentOrganization = Organization.FromIdentity(currentOrganizationId);
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // Event subscriptions
+
+            this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
 
             // Titles and other page elements
 
@@ -329,10 +332,6 @@ namespace Activizr
             }
         }
 
-
-        protected void Page_Init(object sender, EventArgs e)
-        {
-        }
 
         protected void LinkLogout_Click(object sender, EventArgs e)
         {
