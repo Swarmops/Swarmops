@@ -402,6 +402,7 @@ span.loginalphabetasign
 	text-decoration: none;
 	text-align: center;
 	font: bold 13px Ubuntu, sans-serif;
+	font-size: 100% !important;
 	width:100px;
 	outline-style:none;
 	border-radius: 5px;    
@@ -490,7 +491,50 @@ span.loginalphabetasign
 
 /* ENTRY FIELDS */
 
-.entryLabels
+.entryFields
+{
+	background: #A2BEFF;
+	background: -webkit-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0));
+	background: -moz-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0));
+	border-radius: 6px;
+	line-height: 30px;
+	float:right;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 140%;
+	width: 50%;
+	
+	-webkit-box-shadow: 0 1px 3px 1px #1C397E;
+	-moz-box-shadow: 0 1px 3px 1px #1C397E;
+	box-shadow: 0 1px 3px 1px #1C397E;
+}
+
+
+.entryFields input, .entryFields textarea, .entryFields select 
+{
+	font-size: 140%;
+	border-radius: 15px;
+	padding: 0px 10px 0px 15px;
+}
+
+.entryFields input:focus, .entryFields textarea:focus, .entryFields select:focus 
+{
+	background: #F0F6FF;
+	box-shadow: 0px 0px 4px 2px #1C397E inset;
+}
+
+
+.entryLabels 
+{
+	font-size: 140%;	
+}
+
+
+.entryLabelsAdmin
 {
 	margin-top: 10px;
 	line-height: 30px;
@@ -498,7 +542,7 @@ span.loginalphabetasign
 	width: 100px;
 }
 
-.entryFields
+.entryFieldsAdmin
 {
 	background: #A2BEFF;
 	-moz-border-radius: 2px;
@@ -518,7 +562,7 @@ span.loginalphabetasign
 	box-shadow: 0 1px 3px 1px #1C397E;
 }
 
-.entryvalidation
+.entryValidationAdmin
 {
 	margin-top:10px;
 	margin-left:15px;

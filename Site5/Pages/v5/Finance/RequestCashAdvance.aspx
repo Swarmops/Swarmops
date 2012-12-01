@@ -5,21 +5,24 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <div class="entryLabels">
-        Amount (SEK)<br/>
-        Purpose<br/>
-        Budget<br/>
-    </div>
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="Budget" />&nbsp;<br/>
-        <asp:Button runat="server" CssClass="buttonAccentColor" Text="Request"/>
+        <h3>&nbsp;</h3><!-- placeholder -->
+        <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
+        <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
+        <asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/>
+        <asp:Button ID="Button1" runat="server" CssClass="buttonAccentColor" Text="Request"/>
     </div>
-    <div class="entryvalidation">
-        For example, <strong>1000</strong>.<br/>
-        Describe briefly. For example, "Bus tickets to rally."<br/>
-        Where this money will come from.<br/>
+    <div class="entryLabels">
+        Amount (SEK)<br/>
+        Purpose<br/>
+        Budget<br/>
+        <h3>Your bank details</h3>
+        Bank<br/>
+        Clearing#<br/>
+        Account#
     </div>
     <div style="clear:both"></div>
 </asp:Content>

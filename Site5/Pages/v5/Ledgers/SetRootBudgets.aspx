@@ -9,13 +9,13 @@
 
 <h2><asp:Label ID="LabelRootBudgetHeader" Text="Root Budgets For Org [LOC]" runat="server" /><div style="float:right"><asp:DropDownList ID="DropYears" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropYears_SelectedIndexChanged" /></div></h2>
 
-<div class="entryLabels" style="margin-right:30px;width:200px">
+<div class="entryLabelsAdmin" style="margin-right:30px;width:200px">
     <strong><asp:Label ID="LabelAccountHeader" Text="Account [LOC]" runat="server" /></strong><br/>
     <asp:Repeater ID="RepeaterAccountNames" runat="server" OnItemDataBound="RepeaterAccountNames_ItemDataBound" ><ItemTemplate><asp:Label ID="LabelAccountName" runat="server" Text="Unset Account Name" /> <em>(<asp:Label ID="LabelAccountType" runat="server" Text="Type [LOC]" />)</em><br /></ItemTemplate></asp:Repeater>
     <em><asp:Label ID="LabelYearlyResultLabel" runat="server" Text="Yearly Result [LOC]" /></em>
 </div>
 
-<div class="entryFields">
+<div class="entryFieldsAdmin">
     <strong><asp:Label ID="LabelBudgetOwnerHeader" runat="server" Text="Budget, Owner [LOC]" /></strong><br/>
     <asp:Repeater ID="RepeaterAccountBudgets" OnItemDataBound="RepeaterAccountBudgets_ItemDataBound" runat="server"><ItemTemplate><asp:HiddenField runat="server" ID="HiddenAccountId" /><asp:HiddenField runat="server" ID="HiddenCurrentBudget" /><asp:TextBox ID="TextBudget" runat="server" Text="Not set" />&nbsp;&nbsp;<span style="border-bottom: dashed 1px #808080;cursor:pointer"><asp:Label ID="LabelBudgetOwner" runat="server" /></span><telerik:RadToolTip ID="ToolTip" runat="server"  AnimationDuration="150" AutoCloseDelay="200000" ShowDelay="0"
             EnableShadow="true" HideDelay="1" Width="288px" Height="96px" HideEvent="ManualClose" OffsetX="30" OffsetY="0"
@@ -25,7 +25,7 @@
     <asp:Button ID="ButtonSetBudgets" Text="Set New Budgets [LOC]" OnClick="ButtonSetBudgets_Click" runat="server" />&nbsp;
 </div>
 
-<div class="entryLabels" style="margin-left:20px;width:100px;text-align:right">
+<div class="entryLabelsAdmin" style="margin-left:20px;width:100px;text-align:right">
 <strong><asp:Label ID="LabelActualsHeader" Text="Actuals [LOC]" runat="server" /></strong><br/>
 <asp:Repeater ID="RepeaterAccountActuals" runat="server" OnItemDataBound="RepeaterAccountActuals_ItemDataBound"><ItemTemplate><asp:Label ID="LabelAccountActuals" Text="Unset actuals" runat="server" /><br/></ItemTemplate></asp:Repeater>
     <asp:Label ID="LabelYearlyResultActuals" runat="server" Text="Yearly Result [LOC]" /><br/>

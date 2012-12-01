@@ -12,13 +12,13 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-<div class="entryLabels" style="width:150px">
+<div class="entryLabelsAdmin" style="width:150px">
     <asp:Label ID="LabelTitle" runat="server" /><br />
     <asp:Label ID="LabelSubmitter" runat="server" /><br />
     <div style="height:214px"><asp:Label ID="LabelText" runat="server" /></div>
     <asp:Label ID="LabelDecisions" runat="server" />
 </div>
-<div class="entryFields">
+<div class="entryFieldsAdmin">
     <div style="height:30px; margin-top:4px"><asp:TextBox CssClass="textinput" ID="TextTitle" runat="server" /></div>
     <div style="height:30px"><act5:ComboPerson ID="PersonSubmitter" runat="server" /></div>
     <asp:TextBox CssClass="textinput" TextMode="MultiLine" Rows="10" ID="TextMotionText" runat="server" />&nbsp;<br />
@@ -29,7 +29,7 @@
     </div>
     <div id="MotionSubmittedMessage"><asp:Label ID="LabelMotionSaved" runat="server" Text="" /></div>
 </div>
-<div class="entryvalidation">
+<div class="entryValidationAdmin">
     <asp:RequiredFieldValidator ID="ValidatorMotionTitleRequired" runat="server" Display="Dynamic" Text="Motion title required." ControlToValidate="TextTitle" EnableClientScript="false" />&nbsp;<br />
     <asp:CustomValidator ID="ValidatorSubmitterRequired" runat="server" Display="Dynamic" Text="Submitter required." OnServerValidate="ValidatorSubmitterRequired_Validate" />&nbsp;<br />
     <div style="height:214px"><asp:RequiredFieldValidator ID="ValidatorMotionTextRequired" runat="server" Display="Dynamic" Text="Motion text required." ControlToValidate="TextMotionText" EnableClientScript="false" /></div>
