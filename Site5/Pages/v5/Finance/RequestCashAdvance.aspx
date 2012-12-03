@@ -1,14 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="RequestCashAdvance.aspx.cs" Inherits="Pages_v5_Finance_RequestCashAdvance" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-</asp:Content>
+    <script src="http://hostedscripts.falkvinge.net/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css"></asp:Content>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
-        <asp:DropDownList runat="server" ID="DropBudgets"/>&nbsp;<br/>
+        <select class="easyui-combotree" url="Json-ExpensableBudgetsTree.aspx" name="DropBudgets" style="width:300px"></select>&nbsp;<br/>
         &nbsp;<br/><!-- placeholder for label-side H2 -->
         <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
