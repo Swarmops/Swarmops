@@ -1,0 +1,43 @@
+﻿/* COMBO BOX */
+
+.combo{
+	display:inline-block;
+	white-space:nowrap;
+	font-size:12px;
+	margin:0;
+	padding:0;
+	border:1px solid #A4BED4;
+	background:transparent;
+}
+.combo-text{
+	_font-size:12px;
+	_border:0px;
+	_line-height:20px;
+	_height:20px;
+	_padding:0px;
+	_height:18px;
+	_line-height:18px;
+}
+.combo-arrow{
+	background:#FFFFFF url('//hostedscripts.falkvinge.net/easyui/themes/default/images/combo_arrow.gif') no-repeat 3px 4px;
+	width:18px;
+	height:20px;
+	overflow:hidden;
+	display:inline-block;
+	vertical-align:top;
+	position: relative;
+	top: 6px;
+	left: 2px;
+	border-radius: 5px;
+	cursor:pointer;
+	opacity:0.4;
+	filter:alpha(opacity=40);
+}
+.combo-arrow-hover{
+	opacity:0.7;
+	filter:alpha(opacity=70);
+}
+.combo-panel{
+	background:#fff;
+	overflow:auto;
+}
