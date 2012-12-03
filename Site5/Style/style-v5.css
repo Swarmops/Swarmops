@@ -401,8 +401,8 @@ span.loginalphabetasign
 	padding:5px;
 	text-decoration: none;
 	text-align: center;
-	font: bold 14px Ubuntu, sans-serif;
-	font-size: 100% !important;
+	font: bold 18px Ubuntu, sans-serif;
+	font-size: 18px !important;
 	width:100px;
 	outline-style:none;
 	border-radius: 5px;    
@@ -511,7 +511,7 @@ span.loginalphabetasign
 	margin-top: 5px;
 	margin-bottom: 5px;
 	font-size: 24px;
-	width: 333px;
+	width: 335px;
 	
 	-webkit-box-shadow: 0 1px 3px 1px #1C397E;
 	-moz-box-shadow: 0 1px 3px 1px #1C397E;
@@ -523,11 +523,12 @@ span.loginalphabetasign
 {
 	border-radius: 15px;
 	padding: 0px 10px 0px 15px;
+	font-size: 24px;
 }
 
 .entryFields input:not(.buttonAccentColor), .entryFields textarea
 {
-	width: 300px;	
+	width: 300px;
 }
 
 .entryFields select {
