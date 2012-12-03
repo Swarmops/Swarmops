@@ -5,10 +5,27 @@
 	<link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/icon.css">    <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/tree.css"/>	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">    <script type="text/javascript">
         $(document).ready(function () {
             $('#DropBudgets').combotree({
-                required: true,
                 animate: true
             });  // Is this init call even necessary?
+
+            $('input.combo-text').click(function () {
+                $('span.combo-arrow').click();
+            });
+
+            alertify.success('test');
         });
+
+
+        function validateFields() {
+            var isValid = true;
+            
+            if ($('#DropBudgets').combotree('tree').tree('getSelected') == null) {
+                isValid = false;
+                alertify.error('test');
+            }
+
+            return isValid;
+        }
 
     </script></asp:Content>
 
@@ -22,7 +39,7 @@
         <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/>
-        <asp:Button ID="Button1" runat="server" CssClass="buttonAccentColor" Text="Request"/>
+        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor" OnClientClick="return validateFields();" Text="Request"/>
     </div>
     <div class="entryLabels">
         Amount (SEK)<br/>
