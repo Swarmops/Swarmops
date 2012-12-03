@@ -38,6 +38,25 @@
 	filter:alpha(opacity=70);
 }
 .combo-panel{
-	background:#fff;
+	background: transparent;
 	overflow:auto;
+}
+
+
+/* TREE */
+
+.tree
+{
+	font-size: 14px;
+	margin: 0px 0px 0px 5px;
+	padding: 8px 0px;
+	list-style-type: none;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0px 1px 4px 1px #1C397E inset;
+}
+
+.tree-node-hover{
+	background: #E4ECFF;
+	box-shadow: 0px 0px 4px 1px #C8D9FF inset;
 }
