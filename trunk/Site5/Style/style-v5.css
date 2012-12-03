@@ -431,6 +431,11 @@ span.loginalphabetasign
 	top: -2px;
 	left: -2px;
 	box-shadow: 2px 2px 4px #7F5500;
+	background: #FFC34D;
+	background: -moz-linear-gradient(top, #FFD580, #FFC34D);
+	background: -webkit-linear-gradient(top, #FFD580, #FFC34D);
+	background: linear-gradient(top, #FFD580, #FFC34D);
+
 }
 
 
@@ -521,9 +526,14 @@ span.loginalphabetasign
 	padding: 0px 10px 0px 15px;
 }
 
-.entryFields input:not(.buttonAccentColor), .entryFields textarea, .entryFields select
+.entryFields input:not(.buttonAccentColor), .entryFields textarea
 {
 	width: 300px;	
+}
+
+.entryFields select {
+	width: 330px;
+	background: white;
 }
 
 .entryFields input:not(.buttonAccentColor):focus, .entryFields textarea:focus, .entryFields select:focus 
