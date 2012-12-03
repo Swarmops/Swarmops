@@ -401,7 +401,7 @@ span.loginalphabetasign
 	padding:5px;
 	text-decoration: none;
 	text-align: center;
-	font: bold 13px Ubuntu, sans-serif;
+	font: bold 14px Ubuntu, sans-serif;
 	font-size: 100% !important;
 	width:100px;
 	outline-style:none;
@@ -510,7 +510,7 @@ span.loginalphabetasign
 	padding-right: 8px;
 	margin-top: 5px;
 	margin-bottom: 5px;
-	font-size: 140%;
+	font-size: 24px;
 	width: 333px;
 	
 	-webkit-box-shadow: 0 1px 3px 1px #1C397E;
@@ -521,7 +521,6 @@ span.loginalphabetasign
 
 .entryFields input, .entryFields textarea, .entryFields select 
 {
-	font-size: 140%;
 	border-radius: 15px;
 	padding: 0px 10px 0px 15px;
 }
@@ -545,7 +544,7 @@ span.loginalphabetasign
 
 .entryLabels 
 {
-	font-size: 140%;
+	font-size: 18px;
 	line-height: 40px;
 	padding-top: 12px;
 	padding-left: 15px;

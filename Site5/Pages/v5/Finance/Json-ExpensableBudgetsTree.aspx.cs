@@ -48,7 +48,16 @@ public partial class Pages_v5_Finance_Json_ExpensableBudgetsTree : System.Web.UI
 
         Response.ContentType = "application/json";
 
-        Response.Output.WriteLine(RecurseTreeMap (treeMap, 0));
+        int renderRootNodeId = 0;
+
+        if (treeMap[0].Count == 1)
+        {
+            // assume there's a master root like "Costs"; bypass it
+
+            renderRootNodeId = treeMap[0][0].Identity;
+        }
+
+        Response.Output.WriteLine(RecurseTreeMap (treeMap, renderRootNodeId));
 
         Response.End();
     }
