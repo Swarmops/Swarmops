@@ -73,7 +73,7 @@ public partial class Pages_v5_Finance_Json_ExpensableBudgetsTree : System.Web.UI
 
             if (treeMap.ContainsKey(account.Identity))
             {
-                element += ",\"children\":" + RecurseTreeMap(treeMap, account.Identity);
+                element += ",\"status\":\"closed\",\"children\":" + RecurseTreeMap(treeMap, account.Identity);
             }
 
             elements.Add("{" + element + "}");

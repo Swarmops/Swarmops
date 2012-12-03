@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script src="http://hostedscripts.falkvinge.net/easyui/jquery.easyui.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">	<link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/easyui/themes/icon.css">    <script type="text/javascript">
+	<link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/icon.css">    <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/tree.css"/>	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">    <script type="text/javascript">
         $(document).ready(function () {
             $('#DropBudgets').combotree({
                 required: true,
@@ -17,7 +17,7 @@
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
-        <select class="easyui-combotree" url="Json-ExpensableBudgetsTree.aspx" name="DropBudgets" id="DropBudgets" style="width:300px"></select>&nbsp;<br/>
+        <select class="easyui-combotree" url="Json-ExpensableBudgetsTree.aspx" name="DropBudgets" id="DropBudgets" animate="true" style="width:300px"></select>&nbsp;<br/>
         &nbsp;<br/><!-- placeholder for label-side H2 -->
         <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
