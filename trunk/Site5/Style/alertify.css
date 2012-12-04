@@ -57,7 +57,7 @@
 			-webkit-box-sizing: border-box;
 			   -moz-box-sizing: border-box;
 			        box-sizing: border-box;
-			font-size: 100%;
+			font-size: 18px;
 		}
 		.alertify-buttons {
 		}
@@ -82,11 +82,12 @@
 }
 
 /**
- * Default Look and Feel
+ * Default Look and Feel - modified for Activizr
  */
 .alertify,
 .alertify-log {
-	font-family: sans-serif;
+	font-family: Ubuntu, sans-serif;
+	font-size: 15px;
 }
 .alertify {
 	background: #FFF;
@@ -143,13 +144,27 @@
 	padding: 15px;
 	border-radius: 4px;
 	color: #FFF;
-	text-shadow: -1px -1px 0 rgba(0,0,0,.5);
+	text-shadow: 0px 0px  rgba(0,0,0,.5);
 }
 	.alertify-log-error {
-		background: #FE1A00;
-		background: rgba(254,26,0,.9);
+		background-color: #FF8080;
+		background: hsla(0,89%,78%,.9);
+		border: 2px solid #FE1A00;
+		box-shadow: 0px 0px 1px 1px #D83526 inset, 0px 2px 3px 1px #400000;
+		font-weight: 400;
+		color: #A00000;
 	}
 	.alertify-log-success {
 		background: #5CB811;
 		background: rgba(92,184,17,.9);
+	}
+	
+	
+	
+	p.alertify-message {
+		margin-bottom: 18px;
+	}
+	
+	a#aResetFocus {
+		display: none;
 	}

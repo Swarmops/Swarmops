@@ -11,20 +11,50 @@
             $('input.combo-text').click(function () {
                 $('span.combo-arrow').click();
             });
-
-            alertify.success('test');
         });
 
 
         function validateFields() {
             var isValid = true;
             
+            isValid = validateTextField('#<%=this.TextAccount.ClientID %>', "Please state your bank account number.") && isValid;
+            isValid = validateTextField('#<%=this.TextClearing.ClientID %>', "Please enter your bank's clearing number.") && isValid;
+            isValid = validateTextField('#<%=this.TextBank.ClientID %>', "Please enter your bank's name.") && isValid;
+
             if ($('#DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
-                alertify.error('test');
+                alertify.error("Please select a budget.");
             }
 
+            isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "Please state the purpose of the cash advance.") && isValid;
+
+            $.ajax({
+                type: "POST",
+                url: "/Automation/FieldValidation.asmx/IsAmountValid",
+                data: "{'amount': '" + escape($('#<%=this.TextAmount.ClientID %>').val()) + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,  // blocks until function returns - race conditions otherwise
+                success: function (msg) {
+                    if (msg.d != true) {
+                        isValid = false;
+                        alertify.error("Please enter the amount of money (in SEK) that you'd like to advance.");
+                        $('#<%=this.TextAmount.ClientID %>').focus();
+                    }
+                }
+            });
+
             return isValid;
+        }
+        
+        function validateTextField (fieldId, message) {
+            if ($(fieldId).val().length == 0) {
+                alertify.error(message);
+                $(fieldId).focus();
+                return false;
+            }
+
+            return true;
         }
 
     </script></asp:Content>
