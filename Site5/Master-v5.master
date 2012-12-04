@@ -10,7 +10,6 @@
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/alertify.js" ></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
@@ -317,7 +316,11 @@
         <div style="display:none"><asp:TextBox runat="server" ID="TextSwitchToOrganizationId" /><asp:Button runat="server" ID="ButtonActuatorSwitchOrganizations" OnClick="ButtonSwitchOrganizations_Click"/></div>
 	
 	</form>
+
+    <!-- some javascript in footer -->
     
+    <script language="javascript" type="text/javascript" src="/Scripts/alertify.min.js" ></script>
+   
 </body>
 </html>
 

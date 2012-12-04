@@ -880,9 +880,13 @@ div.RadToolTip table.rtWrapper td.rtWrapperContent
 
 /* COLOR SCHEME
 
-   #A2BEFF #476EC7 #1C397E #C8D9FF #E4ECFF    -- blue (hue 240)
-   #FFBC37 #C78B15 #7F5500 #FFD580 #FFEDC8    -- orange (hue 60)
+   #A2BEFF #476EC7 #1C397E #C8D9FF #E4ECFF    -- blue (hue 222)
+   #FFBC37 #C78B15 #7F5500 #FFD580 #FFEDC8    -- orange (hue 40)
   
     base    dark    xdark   light   xlight
+
+   S36L100 S64-L78 S78-L49 S22B100 S11L100    -- blue (hue 222)
+   S78L100 S89-L78 S100L50 S50L100 S22L100    -- orange (hue 40)
+
 */
 
