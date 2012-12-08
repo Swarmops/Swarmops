@@ -117,10 +117,62 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>Advance amount (in {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>Account Number</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>Clearing Number</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>Your Bank Details</value>
+  </data>
   <data name="RequestCashAdvance_Info" xml:space="preserve">
     <value>If you are about to make a purchase on behalf of the organization, but need the money in advance rather than claiming them back afterwards, you can request a cash advance for a specific purpose.</value>
   </data>
   <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
     <value>Request Cash Advance</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>Purpose</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
+    <value>A cash advance has been requested for &lt;strong&gt;{0}&lt;/strong&gt; for the purpose of {1}. The requested amount is {2} {3:N2}. Note that this is a &lt;strong&gt;loan&lt;/strong&gt; from the organization until receipts have been presented.</value>
+    <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">
+    <value>This needs to be attested by the budget owner and will then proceed to payout.</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>As this is your own budget, this has been automatically attested and has proceeded to payout.</value>
+    <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
+    <value>Please enter the amount of money (in {0}) that you'd like to advance.</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Please enter your bank account number.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankClearing" xml:space="preserve">
+    <value>Please enter your bank's clearing number.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Please enter your bank's name.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Please select a budget to charge.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Please state the purpose of the cash advance.</value>
   </data>
 </root>

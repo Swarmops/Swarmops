@@ -151,7 +151,37 @@ namespace Activizr.Logic.Structure
             get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled); }
         }
 
-        public void EnableEconomy()
+        public Currency Currency
+        {
+            get
+            {
+                if (!IsEconomyEnabled)
+                {
+                    throw new InvalidOperationException("Cannot request currency; organization is not economy-enabled");
+                }
+
+                string currencyCode = OptionalData.GetOptionalDataString(ObjectOptionalDataType.OrgCurrency);
+
+                if (string.IsNullOrEmpty(currencyCode))
+                {
+                    if (this.Identity == 1 && (this.Name.StartsWith("Piratpartiet") || this.Name.StartsWith("Sandbox")))
+                    {
+                        // This is a one-off to fix the v4 installation. Currency is SEK.
+                        OptionalData.SetOptionalDataString(ObjectOptionalDataType.OrgCurrency, "SEK");
+                        currencyCode = "SEK";
+                    }
+                    if (this.Identity == 2 && (this.Name.StartsWith("European")))
+                    {
+                        OptionalData.SetOptionalDataString(ObjectOptionalDataType.OrgCurrency, "SEK");
+                        currencyCode = "SEK";
+                    }
+                }
+
+                return Currency.FromCode(currencyCode);
+            }
+        }
+
+        public void EnableEconomy(Currency currency)
         {
             if (IsEconomyEnabled)
             {
@@ -223,6 +253,10 @@ namespace Activizr.Logic.Structure
             FinancialAccount conferenceBase = FinancialAccount.Create(this.Identity, "Conferences",
                                                                       FinancialAccountType.Cost, 0);
             conferenceBase.IsConferenceParent = true;
+
+            // Set the currency
+
+            OptionalData.SetOptionalDataString(ObjectOptionalDataType.OrgCurrency, currency.Code);
 
             // Finally, flag the org as enabled
 

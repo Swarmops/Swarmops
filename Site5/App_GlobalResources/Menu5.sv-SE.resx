@@ -255,7 +255,7 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Lönelista</value>
   </data>
-  <data name="Menu5_Ledgers_ResultSheet" xml:space="preserve">
+  <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Resulträkning</value>
   </data>
   <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">

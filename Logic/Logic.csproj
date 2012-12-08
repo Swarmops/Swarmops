@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Financial\CashAdvance.cs" />
     <Compile Include="Financial\ImportedBankData.cs" />
     <Compile Include="Pirates\Interfaces.cs" />
     <Compile Include="Security\Accesses.cs" />
