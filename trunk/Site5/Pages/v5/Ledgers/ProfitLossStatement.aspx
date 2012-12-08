@@ -5,12 +5,33 @@
 	<link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/tree.css"/>
     <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/datagrid.css"/>
+	<script type="text/javascript">
 
+	    $(document).ready(function () {
+
+	        $('#tableProfitLoss').treegrid(
+	            {
+	                onBeforeExpand: function (foo) {
+	                    $('span.profitlossdata-collapsed-' + foo.id).fadeOut('fast', function () {
+	                        $('span.profitlossdata-expanded-' + foo.id).fadeIn('slow');
+	                    });
+	                },
+	                
+	                onBeforeCollapse: function (foo) {
+	                    $('span.profitlossdata-expanded-' + foo.id).fadeOut('fast', function() {
+	                        $('span.profitlossdata-collapsed-' + foo.id).fadeIn('slow');
+	                    });
+	                }
+	            });
+
+	    });
+
+	</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div style="float:right"><asp:DropDownList runat="server" ID="DropYears"/></div>
     <h2>P&L for Piratpartiet For Year</h2>
-    <table id="test" title="" class="easyui-treegrid" style="width:680px;height:600px"  
+    <table id="tableProfitLoss" title="" class="easyui-treegrid" style="width:680px;height:600px"  
         url="Json-ProfitLossData.aspx"
         rownumbers="false"
         animate="true"
