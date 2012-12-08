@@ -261,8 +261,8 @@
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Payroll</value>
   </data>
-  <data name="Menu5_Ledgers_ResultSheet" xml:space="preserve">
-    <value>Result Sheet</value>
+  <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
+    <value>Profit &amp; Loss Statement</value>
   </data>
   <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
     <value>Set Budget Amounts</value>

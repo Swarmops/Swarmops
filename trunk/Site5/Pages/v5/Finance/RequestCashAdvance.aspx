@@ -2,7 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script src="https://hostedscripts.falkvinge.net/easyui/jquery.easyui.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/icon.css">    <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/tree.css"/>	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">    <script type="text/javascript">
+	<link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/tree.css"/>
+	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
+    <script type="text/javascript">
         $(document).ready(function () {
             $('#DropBudgets').combotree({
                 animate: true
@@ -11,22 +14,27 @@
             $('input.combo-text').click(function () {
                 $('span.combo-arrow').click();
             });
+            
+            $('input.combo-text').focus(function () {
+                $('span.combo-arrow').click();
+            });
+
         });
 
 
         function validateFields() {
             var isValid = true;
             
-            isValid = validateTextField('#<%=this.TextAccount.ClientID %>', "Please state your bank account number.") && isValid;
-            isValid = validateTextField('#<%=this.TextClearing.ClientID %>', "Please enter your bank's clearing number.") && isValid;
-            isValid = validateTextField('#<%=this.TextBank.ClientID %>', "Please enter your bank's name.") && isValid;
+            isValid = validateTextField('#<%=this.TextAccount.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorBankAccount" />") && isValid;
+            isValid = validateTextField('#<%=this.TextClearing.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorBankClearing" />") && isValid;
+            isValid = validateTextField('#<%=this.TextBank.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorBankName" />") && isValid;
 
             if ($('#DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
-                alertify.error("Please select a budget.");
+                alertify.error("<asp:Literal runat="server" ID="LiteralErrorBudget" />");
             }
 
-            isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "Please state the purpose of the cash advance.") && isValid;
+            isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorPurpose" />") && isValid;
 
             $.ajax({
                 type: "POST",
@@ -38,7 +46,7 @@
                 success: function (msg) {
                     if (msg.d != true) {
                         isValid = false;
-                        alertify.error("Please enter the amount of money (in SEK) that you'd like to advance.");
+                        alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
                         $('#<%=this.TextAmount.ClientID %>').focus();
                     }
                 }
@@ -57,7 +65,8 @@
             return true;
         }
 
-    </script></asp:Content>
+    </script>
+</asp:Content>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
@@ -69,16 +78,16 @@
         <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/>
-        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor" OnClientClick="return validateFields();" Text="Request"/>
+        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
     </div>
     <div class="entryLabels">
-        Amount (SEK)<br/>
-        Purpose<br/>
-        Budget<br/>
-        <h2>Your bank details</h2>
-        Bank<br/>
-        Clearing#<br/>
-        Account#
+        <asp:Label runat="server" ID="LabelAmount" /><br/>
+        <asp:Label runat="server" ID="LabelPurpose" /><br/>
+        <asp:Label runat="server" ID="LabelBudget" /><br/>
+        <h2><asp:Label runat="server" ID="LabelHeaderBankDetails" /></h2>
+        <asp:Label runat="server" ID="LabelBankName" /><br/>
+        <asp:Label runat="server" ID="LabelBankClearing" /><br/>
+        <asp:Label runat="server" ID="LabelBankAccount" />
     </div>
     <div style="clear:both"></div>
 </asp:Content>

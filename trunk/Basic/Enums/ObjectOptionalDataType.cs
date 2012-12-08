@@ -188,7 +188,15 @@ namespace Activizr.Basic.Enums
         /// <summary>
         /// If "1", this financial account may be charged with invoices
         /// </summary>
-        FinancialAccountEnabledForInvoicing
+        FinancialAccountEnabledForInvoicing,
+        /// <summary>
+        /// Organization's operations currency, stored as currency code
+        /// </summary>
+        OrgCurrency,
+        /// <summary>
+        /// First bookkeeping year of org in Activizr (can set inbound balances for this year only)
+        /// </summary>
+        OrgFirstBookkeepingYear
 
     }
 

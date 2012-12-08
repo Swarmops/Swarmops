@@ -96,6 +96,21 @@ namespace Activizr
             SetupDropboxes();
 
             this.ButtonSwitchOrganizations.Attributes.Add("onclick", "$('#" + this.TextSwitchToOrganizationId.ClientID + "').val($('#" + this.DropSwitchOrganizations.ClientID + "').val()); $('#" + this.ButtonActuatorSwitchOrganizations.ClientID + "').click();");
+
+            // Check for message to display
+
+            HttpCookie dashMessage = Request.Cookies["DashboardMessage"];
+
+            if (dashMessage != null && dashMessage.Value.Length > 0)
+            {
+                this.LiteralDocumentReadyHook.Text = string.Format("alertify.alert(unescape('{0}'.replace(/\\+/g, '%20')));", dashMessage.Value);
+                Response.SetCookie(new HttpCookie("DashboardMessage", string.Empty));
+                Response.Cookies ["DashboardMessage"].Expires = DateTime.Now.AddYears(-10);
+            }
+            else
+            {
+                this.LiteralDocumentReadyHook.Text = string.Empty;
+            }
         }
 
         private void SetupDropboxes()

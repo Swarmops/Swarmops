@@ -57,6 +57,7 @@
     <Compile Include="Enums\ExternalActivityType.cs" />
     <Compile Include="Enums\OrganizationFinancialAccountType.cs" />
     <Compile Include="Types\BasicBallot.cs" />
+    <Compile Include="Types\Financial\BasicCashAdvance.cs" />
     <Compile Include="Types\BasicCommunicationTurnaround.cs" />
     <Compile Include="Types\BasicElection.cs" />
     <Compile Include="Types\BasicExceptionLog.cs" />

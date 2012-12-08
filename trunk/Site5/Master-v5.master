@@ -66,6 +66,8 @@
 
             $("a[rel*=leanModal]").leanModal();
 
+            <asp:Literal runat="server" ID="LiteralDocumentReadyHook" />
+
         });
         	
     </script>
@@ -178,7 +180,7 @@
                 <telerik:RadMenuItem runat="server" Text="XYZ Ledgers" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers">
                     <Items>
                         <telerik:RadMenuItem runat="server" Text="XYZ Balance Sheet" Permission="All" UserLevel="3" ImageUrl="~/Images/PageIcons/iconshock-treasure-16px.png" GlobalResourceKey="Menu5_Ledgers_BalanceSheet" />
-                        <telerik:RadMenuItem runat="server" Text="XYZ Result Sheet" Permission="All" UserLevel="3" ImageUrl="~/Images/PageIcons/iconshock-abacus-16px.png" GlobalResourceKey="Menu5_Ledgers_ResultSheet" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ P&L Statement" Permission="All" UserLevel="3" NavigateUrl="~/Pages/v5/Ledgers/ProfitLossStatement.aspx" ImageUrl="~/Images/PageIcons/iconshock-abacus-16px.png" GlobalResourceKey="Menu5_Ledgers_ProfitLossStatement" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Audit Ledgers" ImageUrl="~/Images/PageIcons/iconshock-ledger-inspect-16px.png" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_AuditLedgers" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Account Plan" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_AccountPlan" />
