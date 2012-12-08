@@ -38,7 +38,7 @@
         idField="id" treeField="name">
     <thead>  
         <tr>  
-            <th field="name" width="195">Account</th>  
+            <th field="name" width="178">Account</th>  
             <th field="lastYear" width="80" align="right">Last Year</th>  
             <th field="q1" width="80" align="right">Q1</th>
             <th field="q2" width="80" align="right">Q2</th>

@@ -9,6 +9,7 @@ using Activizr.Logic.Financial;
 using Activizr.Logic.Pirates;
 using Activizr.Logic.Security;
 using Activizr.Logic.Structure;
+using System.Globalization;
 
 public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
 {
@@ -28,6 +29,29 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
         Person currentUser = Person.FromIdentity(currentUserId);
         Authority authority = currentUser.GetAuthority();
         Organization currentOrganization = Organization.FromIdentity(currentOrganizationId);
+
+        // Get culture
+
+        string cultureString = "en-US";
+        HttpCookie cookie = Request.Cookies["PreferredCulture"];
+
+        if (cookie != null)
+        {
+            cultureString = cookie.Value;
+        }
+
+        _renderCulture = new CultureInfo(cultureString);
+
+        // Get current year
+
+        _year = DateTime.Today.Year;
+
+        string yearParameter = Request.QueryString["Year"];
+
+        if (!string.IsNullOrEmpty(yearParameter))
+        {
+            _year = Int32.Parse(yearParameter); // will throw if non-numeric - don't matter for app
+        }
 
         // Get accounts
 
@@ -70,6 +94,8 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
     }
 
 
+    private CultureInfo _renderCulture;
+
     private string RecurseTreeMap (Dictionary<int, List<FinancialAccount>> treeMap, int renderNodeId)
     {
         List<string> elements = new List<string>();
@@ -99,14 +125,14 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
             }
             else
             {
-                element += string.Format(",\"lastYear\":\"{0:N0}\"", (double)singleLookups[0][account.Identity] / -100.0);
+                element += string.Format(_renderCulture, ",\"lastYear\":\"{0:N0}\"", (double)singleLookups[0][account.Identity] / -100.0);
 
                 for (int quarter = 1; quarter <= 4; quarter++)
                 {
-                    element += string.Format(",\"q{0}\":\"{1:N0}\"", quarter, singleLookups[quarter][account.Identity]);
+                    element += string.Format(_renderCulture, ",\"q{0}\":\"{1:N0}\"", quarter, singleLookups[quarter][account.Identity] / -100.0);
                 }
 
-                element += string.Format(",\"ytd\":\"{0:N0}\"", (double)singleLookups[5][account.Identity] / -100.0);
+                element += string.Format(_renderCulture, ",\"ytd\":\"{0:N0}\"", (double)singleLookups[5][account.Identity] / -100.0);
             }
 
             elements.Add("{" + element + "}");
@@ -120,9 +146,9 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
     {
         if (treeValue != 0 && singleValue == 0)
         {
-            return string.Format("\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>\"", accountId, treeValue / -100.00);
+            return string.Format(_renderCulture, "\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>\"", accountId, treeValue / -100.00);
         }
-        return string.Format("\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>\"", accountId, treeValue / -100.0, singleValue / -100.0);
+        return string.Format(_renderCulture, "\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>\"", accountId, treeValue / -100.0, singleValue / -100.0);
     }
 
 
