@@ -82,19 +82,47 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
             if (treeMap.ContainsKey(account.Identity))
             {
 
-                element += string.Format(",\"lastYear\":\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N2}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N2}</span>\"", account.Identity, treeLookups[0][account.Identity] / -100.0, singleLookups[0][account.Identity] / -100.0);
+                element += ",\"lastYear\":" +
+                           JsonDualString(account.Identity, treeLookups[0][account.Identity], singleLookups[0][account.Identity]);
+
+                for (int quarter = 1; quarter <= 4; quarter++)
+                {
+                    element += string.Format(",\"q{0}\":", quarter) +
+                               JsonDualString(account.Identity, treeLookups[quarter][account.Identity], singleLookups[quarter][account.Identity]);
+                }
+
+                element += ",\"ytd\":" +
+                   JsonDualString(account.Identity, treeLookups[5][account.Identity], singleLookups[5][account.Identity]);
+
 
                 element += ",\"state\":\"closed\",\"children\":" + RecurseTreeMap(treeMap, account.Identity);
             }
             else
             {
-                element += string.Format(",\"lastYear\":\"{0:N2}\"", (double) singleLookups[0][account.Identity] / -100.0);
+                element += string.Format(",\"lastYear\":\"{0:N0}\"", (double)singleLookups[0][account.Identity] / -100.0);
+
+                for (int quarter = 1; quarter <= 4; quarter++)
+                {
+                    element += string.Format(",\"q{0}\":\"{1:N0}\"", quarter, singleLookups[quarter][account.Identity]);
+                }
+
+                element += string.Format(",\"ytd\":\"{0:N0}\"", (double)singleLookups[5][account.Identity] / -100.0);
             }
 
             elements.Add("{" + element + "}");
         }
 
         return "[" + String.Join(",", elements.ToArray()) + "]";
+    }
+
+
+    private string JsonDualString (int accountId, Int64 treeValue, Int64 singleValue)
+    {
+        if (treeValue != 0 && singleValue == 0)
+        {
+            return string.Format("\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>\"", accountId, treeValue / -100.00);
+        }
+        return string.Format("\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>\"", accountId, treeValue / -100.0, singleValue / -100.0);
     }
 
 
