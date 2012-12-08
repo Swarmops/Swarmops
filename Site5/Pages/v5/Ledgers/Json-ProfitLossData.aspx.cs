@@ -79,15 +79,16 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
             string element = string.Format("\"id\":{0},\"name\":\"{1}\"", account.Identity,
                                             account.Name.Replace("\"", "'"));
 
-            element += string.Format(",\"lastYear\":\"{0:N2} ({1:N2})\"", singleLookups[0][account.Identity],
-                                     treeLookups[0][account.Identity]);
-
-            element += string.Format(",\"ytd\":\"{0:N2} ({1:N2})\"", singleLookups[5][account.Identity],
-                                     treeLookups[5][account.Identity]);
-
             if (treeMap.ContainsKey(account.Identity))
             {
+
+                element += string.Format(",\"lastYear\":\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N2}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N2}</span>\"", account.Identity, treeLookups[0][account.Identity] / -100.0, singleLookups[0][account.Identity] / -100.0);
+
                 element += ",\"state\":\"closed\",\"children\":" + RecurseTreeMap(treeMap, account.Identity);
+            }
+            else
+            {
+                element += string.Format(",\"lastYear\":\"{0:N2}\"", (double) singleLookups[0][account.Identity] / -100.0);
             }
 
             elements.Add("{" + element + "}");
