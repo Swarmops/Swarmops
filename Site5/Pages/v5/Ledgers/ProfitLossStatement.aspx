@@ -35,10 +35,10 @@
 	            var selectedYear = $('#<%=DropYears.ClientID %>').val();
 
 	            $('#tableProfitLoss').treegrid({ url: 'Json-ProfitLossData.aspx?Year=' + selectedYear });
-	            $('#tableProfitLoss').treegid('reload');
-	            $('#imageLoadIndicator').show();
-
+        	    $('#imageLoadIndicator').show();
 	            $('div.datagrid').css('opacity', 0.5);
+
+	            $('#tableProfitLoss').treegid('reload');
 	        });
 
 
