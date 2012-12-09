@@ -21,6 +21,13 @@
 	                $('span.profitlossdata-expanded-' + foo.id).fadeOut('fast', function () {
 	                    $('span.profitlossdata-collapsed-' + foo.id).fadeIn('slow');
 	                });
+	            },
+
+	            onLoadSuccess: function () {
+	                $('div.datagrid').css('opacity', 1);
+	                $('#imageLoadIndicator').hide();
+	                
+                    // TODO: header processing
 	            }
 	        });
 
@@ -29,14 +36,29 @@
 
 	            $('#tableProfitLoss').treegrid({ url: 'Json-ProfitLossData.aspx?Year=' + selectedYear });
 	            $('#tableProfitLoss').treegid('reload');
+	            $('#imageLoadIndicator').show();
+
+	            $('div.datagrid').css('opacity', 0.5);
 	        });
 
+
+	        $('div.datagrid').css('opacity', 0.5);
 	    });
 
+	    var currentYear = <%=DateTime.Today.Year %>;
+
 	</script>
+    <style>
+	    .content h2 select {
+		    font-size: 16px;
+            font-weight: bold;
+            color: #1C397E;
+            letter-spacing: 1px;
+	    }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2>P&L for Piratpartiet For Year <asp:DropDownList runat="server" ID="DropYears"/></h2>
+    <h2>P&L for Piratpartiet For Year <asp:DropDownList runat="server" ID="DropYears"/>&nbsp;<img src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
     <table id="tableProfitLoss" title="" class="easyui-treegrid" style="width:680px;height:600px"  
         url="Json-ProfitLossData.aspx"
         rownumbers="false"
