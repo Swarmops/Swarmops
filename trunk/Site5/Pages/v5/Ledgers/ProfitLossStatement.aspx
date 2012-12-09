@@ -31,20 +31,20 @@
 	                
                     if (selectedYear == currentYear) 
                     {
-                        alert("selectedyear == currentyear");
                         $('span.previousYearsHeader').hide();
                         $('span.currentYearHeader').show();
                     }
                     else
                     {
-                        alert("selectedyear is not currentyear");
-
                         $('#previousLastYear').text(selectedYear - 1);
                         $('#previousQ1').text(selectedYear + "-" + $('#currentQ1').text());
                         $('#previousQ2').text(selectedYear + "-" + $('#currentQ2').text());
                         $('#previousQ3').text(selectedYear + "-" + $('#currentQ3').text());
                         $('#previousQ4').text(selectedYear + "-" + $('#currentQ4').text());
                         $('#previousYtd').text(selectedYear);
+
+                        $('span.currentYearHeader').hide();
+                        $('span.previousYearsHeader').show();
                     }
 	            }
 	        });
