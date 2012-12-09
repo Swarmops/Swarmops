@@ -24,10 +24,11 @@
 	            }
 	        });
 
-	        $('#<%=DropYears.ClientID %>').change(function() {
+	        $('#<%=DropYears.ClientID %>').change(function () {
 	            var selectedYear = $('#<%=DropYears.ClientID %>').val();
-	            
-                alert (selectedYear);
+
+	            $('#tableProfitLoss').treegrid({ url: 'Json-ProfitLossData.aspx?Year=' + selectedYear });
+	            $('#tableProfitLoss').treegid('reload');
 	        });
 
 	    });
