@@ -57,6 +57,21 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
 
         FinancialAccounts accounts = FinancialAccounts.ForOrganization(currentOrganization, FinancialAccountType.Result);
 
+        // Remove unwanted accounts
+
+        FinancialAccount resultsAccount = currentOrganization.FinancialAccounts.CostsYearlyResult;
+
+        foreach (FinancialAccount account in accounts)
+        {
+            // For now, just remove the "results" account. TODO: Remove inactive accounts, too.
+
+            if (account.Identity == resultsAccount.Identity)
+            {
+                accounts.Remove(account);
+                break;
+            }
+        }
+
         // Build tree (there should be a template for this)
 
         Dictionary<int, List<FinancialAccount>> treeMap = new Dictionary<int, List<FinancialAccount>>();

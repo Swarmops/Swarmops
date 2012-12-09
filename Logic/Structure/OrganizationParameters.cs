@@ -33,6 +33,16 @@ namespace Activizr.Logic.Structure
         }
 
 
+        public int FirstFiscalYear
+        {
+            get 
+            { 
+                int year = data.GetOptionalDataInt(ObjectOptionalDataType.OrgFirstFiscalYear);
+                return year;
+            }
+        }
+
+
         public int FiscalBooksClosedUntilYear
         {
             get

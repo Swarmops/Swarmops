@@ -11,6 +11,12 @@ public partial class Pages_v5_Finance_RequestCashAdvance : PageV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!this.CurrentOrganization.IsEconomyEnabled)
+        {
+            Response.Redirect("/Pages/v5/Finance/EconomyNotEnabled.aspx", true);
+            return;
+        }
+
         this.PageTitle = Resources.Pages.Finance.RequestCashAdvance_PageTitle;
         this.PageIcon = "iconshock-walletmoney";
         this.InfoBoxLiteral = Resources.Pages.Finance.RequestCashAdvance_Info;
