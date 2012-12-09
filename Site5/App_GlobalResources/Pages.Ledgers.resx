@@ -117,11 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ProfitLossStatement_AccountName" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="ProfitLossStatement_ContentHeader" xml:space="preserve">
+    <value>P&amp;L for {0} for</value>
+    <comment>The {0} is the organization name. The year number follows this string.</comment>
+  </data>
   <data name="ProfitLossStatement_Info" xml:space="preserve">
     <value>The P&amp;L is an overview of income and expenditures, and are grouped by budgets or cost/income type. The sum of all income and expenditure is the yearly result. You may also want to look at the &lt;a href="BalanceSheet.aspx"&gt;balance sheet&lt;/a&gt; which is the overview of assets and debts.</value>
   </data>
+  <data name="ProfitLossStatement_LastYear" xml:space="preserve">
+    <value>Last Year</value>
+  </data>
   <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
     <value>Profit &amp; Loss Statement</value>
+  </data>
+  <data name="ProfitLossStatement_Q1" xml:space="preserve">
+    <value>Q1</value>
+  </data>
+  <data name="ProfitLossStatement_Q2" xml:space="preserve">
+    <value>Q2</value>
+  </data>
+  <data name="ProfitLossStatement_Q3" xml:space="preserve">
+    <value>Q3</value>
+  </data>
+  <data name="ProfitLossStatement_Q4" xml:space="preserve">
+    <value>Q4</value>
+  </data>
+  <data name="ProfitLossStatement_Ytd" xml:space="preserve">
+    <value>YTD</value>
+    <comment>Year To Date</comment>
   </data>
   <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
     <value>Budget, Owner</value>
