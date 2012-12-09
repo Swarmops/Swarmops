@@ -196,7 +196,7 @@ namespace Activizr.Basic.Enums
         /// <summary>
         /// First bookkeeping year of org in Activizr (can set inbound balances for this year only)
         /// </summary>
-        OrgFirstBookkeepingYear
+        OrgFirstFiscalYear
 
     }
 

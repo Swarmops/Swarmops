@@ -151,6 +151,40 @@ namespace Activizr.Logic.Structure
             get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled); }
         }
 
+        public int FirstFiscalYear
+        {
+            get
+            {
+                if (!IsEconomyEnabled)
+                {
+                    throw new InvalidOperationException("Cannot request first fiscal year; organization is not economy-enabled");
+                }
+
+                int year = Parameters.FirstFiscalYear;
+
+                if (year < 2000)
+                {
+                    if (this.Identity == 1 && this.Name.StartsWith("Piratpartiet"))
+                    {
+                        OptionalData.SetOptionalDataInt(ObjectOptionalDataType.OrgFirstFiscalYear, 2009);
+                        year = 2009;
+                    }
+                    else if (this.Identity == 2 && this.Name.StartsWith("Europirate Acad"))
+                    {
+                        OptionalData.SetOptionalDataInt(ObjectOptionalDataType.OrgFirstFiscalYear, 2012);
+                        year = 2012;
+                    }
+                    else if (this.Identity == 1 && this.Name.StartsWith("Sandbox"))
+                    {
+                        OptionalData.SetOptionalDataInt(ObjectOptionalDataType.OrgFirstFiscalYear, 2012);
+                        year = 2012;
+                    }
+                }
+
+                return year;
+            }
+        }
+
         public Currency Currency
         {
             get
@@ -209,8 +243,6 @@ namespace Activizr.Logic.Structure
                 FinancialAccount.Create(this.Identity, "Bank Fees", FinancialAccountType.Cost, 0);
             FinancialAccounts[OrganizationFinancialAccountType.CostsInfrastructure] =
                 FinancialAccount.Create(this.Identity, "ICT and Infrastructure", FinancialAccountType.Cost, 0);
-            FinancialAccounts[OrganizationFinancialAccountType.CostsLocalDonationTransfers] =
-                FinancialAccount.Create(this.Identity, "Local donations (virtual balancing)", FinancialAccountType.Cost, 0);
             FinancialAccounts[OrganizationFinancialAccountType.CostsYearlyResult] =
                 FinancialAccount.Create(this.Identity, "Yearly result", FinancialAccountType.Cost, 0);
             FinancialAccounts[OrganizationFinancialAccountType.DebtsCapital] =
@@ -257,6 +289,10 @@ namespace Activizr.Logic.Structure
             // Set the currency
 
             OptionalData.SetOptionalDataString(ObjectOptionalDataType.OrgCurrency, currency.Code);
+
+            // Set current year to first fiscal year
+
+            this.OptionalData.SetOptionalDataInt(ObjectOptionalDataType.OrgFirstFiscalYear, DateTime.Today.Year);
 
             // Finally, flag the org as enabled
 

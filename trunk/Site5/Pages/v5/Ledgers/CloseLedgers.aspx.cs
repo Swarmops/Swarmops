@@ -44,7 +44,7 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // First, roll over virtual balances.
 
-        if (true) // if this.CurrentOrganization.Parameters.VirtualBankingEnabled
+        if (false) // if this.CurrentOrganization.Parameters.VirtualBankingEnabled
         {
             FinancialAccount rootAccount = FinancialAccount.FromIdentity(29);  // HACK: Hardcoded account; should be _organization.FinancialAccount.CostsVirtualBankingRoot
             FinancialAccount tempAccount = FinancialAccount.FromIdentity(98);  // HACK: Hardcoded account; should be _organization.FinancialAccount.AssetsVirtualRollover
