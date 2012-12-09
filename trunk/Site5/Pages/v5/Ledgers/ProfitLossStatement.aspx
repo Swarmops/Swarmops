@@ -26,8 +26,26 @@
 	            onLoadSuccess: function () {
 	                $('div.datagrid').css('opacity', 1);
 	                $('#imageLoadIndicator').hide();
+
+	                var selectedYear = $('#<%=DropYears.ClientID %>').val();
 	                
-                    // TODO: header processing
+                    if (selectedYear == currentYear) 
+                    {
+                        alert("selectedyear == currentyear");
+                        $('span.previousYearsHeader').hide();
+                        $('span.currentYearHeader').show();
+                    }
+                    else
+                    {
+                        alert("selectedyear is not currentyear");
+
+                        $('#previousLastYear').text(selectedYear - 1);
+                        $('#previousQ1').text(selectedYear + "-" + $('#currentQ1').text());
+                        $('#previousQ2').text(selectedYear + "-" + $('#currentQ2').text());
+                        $('#previousQ3').text(selectedYear + "-" + $('#currentQ3').text());
+                        $('#previousQ4').text(selectedYear + "-" + $('#currentQ4').text());
+                        $('#previousYtd').text(selectedYear);
+                    }
 	            }
 	        });
 
@@ -58,7 +76,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2>P&L for Piratpartiet For Year <asp:DropDownList runat="server" ID="DropYears"/>&nbsp;<img src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
+    <h2><asp:Label ID="LabelContentHeader" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/>&nbsp;<img src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
     <table id="tableProfitLoss" title="" class="easyui-treegrid" style="width:680px;height:600px"  
         url="Json-ProfitLossData.aspx"
         rownumbers="false"
@@ -66,13 +84,13 @@
         idField="id" treeField="name">
     <thead>  
         <tr>  
-            <th field="name" width="178">Account</th>  
-            <th field="lastYear" width="80" align="right">Last Year</th>  
-            <th field="q1" width="80" align="right">Q1</th>
-            <th field="q2" width="80" align="right">Q2</th>
-            <th field="q3" width="80" align="right">Q3</th>  
-            <th field="q4" width="80" align="right">Q4</th>
-            <th field="ytd" width="80" align="right">YTD</th>
+            <th field="name" width="178"><asp:Literal ID="LiteralHeaderAccountName" runat="server"/></th>  
+            <th field="lastYear" width="80" align="right"><span class="previousYearsHeader" id="previousLastYear" style="display:none"></span><span class="currentYearHeader"><asp:Literal ID="LiteralHeaderLastYear" runat="server" /></span></th>  
+            <th field="q1" width="80" align="right"><span class="previousYearsHeader" id="previousQ1" style="display:none"></span><span class="currentYearHeader" id="currentQ1"><asp:Literal ID="LiteralHeaderQ1" runat="server" /></span></th>
+            <th field="q2" width="80" align="right"><span class="previousYearsHeader" id="previousQ2" style="display:none"></span><span class="currentYearHeader" id="currentQ2"><asp:Literal ID="LiteralHeaderQ2" runat="server" /></span></th>
+            <th field="q3" width="80" align="right"><span class="previousYearsHeader" id="previousQ3" style="display:none"></span><span class="currentYearHeader" id="currentQ3"><asp:Literal ID="LiteralHeaderQ3" runat="server" /></span></th>  
+            <th field="q4" width="80" align="right"><span class="previousYearsHeader" id="previousQ4" style="display:none"></span><span class="currentYearHeader" id="currentQ4"><asp:Literal ID="LiteralHeaderQ4" runat="server" /></span></th>
+            <th field="ytd" width="80" align="right"><span class="previousYearsHeader" id="previousYtd" style="display:none"></span><span class="currentYearHeader"><asp:Literal ID="LiteralHeaderYtd" runat="server" /></span></th>
         </tr>  
     </thead>  
 </table> 
