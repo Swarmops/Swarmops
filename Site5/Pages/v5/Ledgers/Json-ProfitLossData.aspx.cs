@@ -57,9 +57,26 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
 
         Response.ContentType = "application/json";
 
-        Response.Output.WriteLine(RecurseReport(report.ReportLines));
+        Response.Output.WriteLine("{\"rows\": " + RecurseReport(report.ReportLines) + ", \"footer\": [" + WriteFooter(report.Totals) + "]}");
 
         Response.End();
+    }
+
+
+    private string WriteFooter (YearlyReportNode totals)
+    {
+        string result = string.Format("\"name\":\"{0}\"", Resources.Pages.Ledgers.ProfitLossStatement_Results);
+
+        result += string.Format(_renderCulture, ",\"lastYear\":\"{0:N0}\"", (double)totals.PreviousYear / -100.0);
+
+        for (int quarter = 1; quarter <= 4; quarter++)
+        {
+            result += string.Format(_renderCulture, ",\"q{0}\":\"{1:N0}\"", quarter, totals.Quarters[quarter-1] / -100.0);
+        }
+
+        result += string.Format(_renderCulture, ",\"ytd\":\"{0:N0}\"", (double)totals.ThisYear / -100.0);
+
+        return "{" + result + "}";
     }
 
 

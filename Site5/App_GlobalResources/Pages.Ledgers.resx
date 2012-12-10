@@ -145,6 +145,10 @@
   <data name="ProfitLossStatement_Q4" xml:space="preserve">
     <value>Q4</value>
   </data>
+  <data name="ProfitLossStatement_Results" xml:space="preserve">
+    <value>Results</value>
+    <comment>Footer on P&amp;L statement</comment>
+  </data>
   <data name="ProfitLossStatement_Ytd" xml:space="preserve">
     <value>YTD</value>
     <comment>Year To Date</comment>
