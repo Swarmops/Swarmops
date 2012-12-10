@@ -53,12 +53,34 @@ namespace Activizr.Logic.Financial
             FinancialAccounts orderedList = new FinancialAccounts(); // This list is guaranteed to have parents before children
 
             report.PopulateOrderedList(orderedList, 0);  // recursively add nodes parents-first
-            report.PopulateLookups(orderedList);                  // populate the lookup tables for results per account
+            report.PopulateLookups(orderedList);         // populate the lookup tables for results per account
+            report.PopulateTotals();
 
             report.ReportLines = new List<YearlyReportLine>();
             report.RecurseAddLines(report.ReportLines, 0);
 
             return report;
+        }
+
+
+        private void PopulateTotals()
+        {
+            this.Totals = new YearlyReportNode();
+
+            this.Totals.PreviousYear = PopulateOneTotal(_singleLookups[0]);
+            this.Totals.ThisYear = PopulateOneTotal(_singleLookups[5]);
+
+            for (int quarter = 0; quarter < 4; quarter++)
+            {
+                this.Totals.Quarters[quarter] = PopulateOneTotal(_singleLookups[quarter + 1]);
+            }
+        }
+
+        private Int64 PopulateOneTotal (Dictionary<int, Int64> lookup)
+        {
+            Int64[] allValues = lookup.Values.ToArray();
+
+            return allValues.Sum();
         }
 
 
@@ -194,6 +216,7 @@ namespace Activizr.Logic.Financial
 
 
         public List<YearlyReportLine> ReportLines;
+        public YearlyReportNode Totals;
         public Organization Organization;
         public int Year;
     }

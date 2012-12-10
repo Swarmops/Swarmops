@@ -77,11 +77,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label ID="LabelContentHeader" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/>&nbsp;<img src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
+    <h2><asp:Label ID="LabelContentHeader" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/>&nbsp;<img alt="Loading" src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
     <table id="tableProfitLoss" title="" class="easyui-treegrid" style="width:680px;height:600px"  
         url="Json-ProfitLossData.aspx"
         rownumbers="false"
-        animate="true"
+        animate="true" showFooter="true"
         idField="id" treeField="name">
     <thead>  
         <tr>  
@@ -91,7 +91,7 @@
             <th field="q2" width="80" align="right"><span class="previousYearsHeader" id="previousQ2" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentQ2"><asp:Literal ID="LiteralHeaderQ2" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
             <th field="q3" width="80" align="right"><span class="previousYearsHeader" id="previousQ3" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentQ3"><asp:Literal ID="LiteralHeaderQ3" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
             <th field="q4" width="80" align="right"><span class="previousYearsHeader" id="previousQ4" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentQ4"><asp:Literal ID="LiteralHeaderQ4" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-            <th field="ytd" width="80" align="right"><span class="previousYearsHeader" id="previousYtd" style="display:none"></span><span class="currentYearHeader" style="display:none"><asp:Literal ID="LiteralHeaderYtd" runat="server" /></span></th>
+            <th field="ytd" width="80" align="right"><span class="previousYearsHeader" id="previousYtd" style="display:none"></span><span class="currentYearHeader" style="display:none"><asp:Literal ID="LiteralHeaderYtd" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
         </tr>  
     </thead>  
 </table> 
