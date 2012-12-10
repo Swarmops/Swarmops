@@ -26,6 +26,7 @@
 	            onLoadSuccess: function () {
 	                $('div.datagrid').css('opacity', 1);
 	                $('#imageLoadIndicator').hide();
+	                $('span.loadingHeader').hide();
 
 	                var selectedYear = $('#<%=DropYears.ClientID %>').val();
 	                
@@ -54,13 +55,13 @@
 
 	            $('#tableProfitLoss').treegrid({ url: 'Json-ProfitLossData.aspx?Year=' + selectedYear });
         	    $('#imageLoadIndicator').show();
-	            $('div.datagrid').css('opacity', 0.5);
+	            $('div.datagrid').css('opacity', 0.4);
 
 	            $('#tableProfitLoss').treegid('reload');
 	        });
 
 
-	        $('div.datagrid').css('opacity', 0.5);
+	        $('div.datagrid').css('opacity', 0.4);
 	    });
 
 	    var currentYear = <%=DateTime.Today.Year %>;
@@ -85,12 +86,12 @@
     <thead>  
         <tr>  
             <th field="name" width="178"><asp:Literal ID="LiteralHeaderAccountName" runat="server"/></th>  
-            <th field="lastYear" width="80" align="right"><span class="previousYearsHeader" id="previousLastYear" style="display:none"></span><span class="currentYearHeader"><asp:Literal ID="LiteralHeaderLastYear" runat="server" /></span></th>  
-            <th field="q1" width="80" align="right"><span class="previousYearsHeader" id="previousQ1" style="display:none"></span><span class="currentYearHeader" id="currentQ1"><asp:Literal ID="LiteralHeaderQ1" runat="server" /></span></th>
-            <th field="q2" width="80" align="right"><span class="previousYearsHeader" id="previousQ2" style="display:none"></span><span class="currentYearHeader" id="currentQ2"><asp:Literal ID="LiteralHeaderQ2" runat="server" /></span></th>
-            <th field="q3" width="80" align="right"><span class="previousYearsHeader" id="previousQ3" style="display:none"></span><span class="currentYearHeader" id="currentQ3"><asp:Literal ID="LiteralHeaderQ3" runat="server" /></span></th>  
-            <th field="q4" width="80" align="right"><span class="previousYearsHeader" id="previousQ4" style="display:none"></span><span class="currentYearHeader" id="currentQ4"><asp:Literal ID="LiteralHeaderQ4" runat="server" /></span></th>
-            <th field="ytd" width="80" align="right"><span class="previousYearsHeader" id="previousYtd" style="display:none"></span><span class="currentYearHeader"><asp:Literal ID="LiteralHeaderYtd" runat="server" /></span></th>
+            <th field="lastYear" width="80" align="right"><span class="previousYearsHeader" id="previousLastYear" style="display:none"></span><span class="currentYearHeader" style="display:none"><asp:Literal ID="LiteralHeaderLastYear" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
+            <th field="q1" width="80" align="right"><span class="previousYearsHeader" id="previousQ1" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentQ1"><asp:Literal ID="LiteralHeaderQ1" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+            <th field="q2" width="80" align="right"><span class="previousYearsHeader" id="previousQ2" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentQ2"><asp:Literal ID="LiteralHeaderQ2" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+            <th field="q3" width="80" align="right"><span class="previousYearsHeader" id="previousQ3" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentQ3"><asp:Literal ID="LiteralHeaderQ3" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
+            <th field="q4" width="80" align="right"><span class="previousYearsHeader" id="previousQ4" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentQ4"><asp:Literal ID="LiteralHeaderQ4" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+            <th field="ytd" width="80" align="right"><span class="previousYearsHeader" id="previousYtd" style="display:none"></span><span class="currentYearHeader" style="display:none"><asp:Literal ID="LiteralHeaderYtd" runat="server" /></span></th>
         </tr>  
     </thead>  
 </table> 

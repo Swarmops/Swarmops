@@ -125,7 +125,7 @@
     <comment>The {0} is the organization name. The year number follows this string.</comment>
   </data>
   <data name="ProfitLossStatement_Info" xml:space="preserve">
-    <value>The P&amp;L is an overview of income and expenditures, and are grouped by budgets or cost/income type. The sum of all income and expenditure is the yearly result. You may also want to look at the &lt;a href="BalanceSheet.aspx"&gt;balance sheet&lt;/a&gt; which is the overview of assets and debts.</value>
+    <value>The P&amp;L is an overview of income and expenditures, which are grouped by budgets or cost/income type. The sum of all income and expenditure is the yearly result. You may also want to look at the &lt;a href="BalanceSheet.aspx"&gt;balance sheet&lt;/a&gt; which is the overview of assets and debts.</value>
   </data>
   <data name="ProfitLossStatement_LastYear" xml:space="preserve">
     <value>Last Year</value>
