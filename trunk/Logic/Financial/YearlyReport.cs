@@ -15,6 +15,7 @@ namespace Activizr.Logic.Financial
             YearlyReport report = new YearlyReport();
             report.Organization = organization;
             report.Year = year;
+            report._accountType = accountType;
 
             // Get accounts
 
@@ -61,6 +62,9 @@ namespace Activizr.Logic.Financial
 
             return report;
         }
+
+
+        private FinancialAccountType _accountType;
 
 
         private void PopulateTotals()
@@ -163,7 +167,20 @@ namespace Activizr.Logic.Financial
             {
                 // Find this year's inbound
 
-                _singleLookups[0][account.Identity] = account.GetDeltaCents(new DateTime(this.Year - 1, 1, 1), new DateTime(this.Year, 1, 1));
+                if (_accountType == FinancialAccountType.Result)
+                {
+                    _singleLookups[0][account.Identity] = account.GetDeltaCents(new DateTime(this.Year - 1, 1, 1),
+                                                                                new DateTime(this.Year, 1, 1));
+                }
+                else if (_accountType == FinancialAccountType.Balance)
+                {
+                    _singleLookups[0][account.Identity] = account.GetDeltaCents(new DateTime(1900, 1, 1),
+                                                                                new DateTime(this.Year, 1, 1));
+                }
+                else
+                {
+                    throw new InvalidOperationException("Can only calculate yearly reports for balance or P&L statements");
+                }
 
                 // Find quarter diffs
 
@@ -175,7 +192,20 @@ namespace Activizr.Logic.Financial
 
                 // Find outbound
 
-                _singleLookups[5][account.Identity] = account.GetDeltaCents(new DateTime(this.Year, 1, 1), new DateTime(this.Year + 1, 1, 1));
+                if (_accountType == FinancialAccountType.Result)
+                {
+                    _singleLookups[5][account.Identity] = account.GetDeltaCents(new DateTime(this.Year, 1, 1),
+                                                                                new DateTime(this.Year + 1, 1, 1));
+                }
+                else if (_accountType == FinancialAccountType.Balance)
+                {
+                    _singleLookups[6][account.Identity] = account.GetDeltaCents(new DateTime(1900, 1, 1),
+                                                                                new DateTime(this.Year + 1, 1, 1));
+                }
+                else
+                {
+                    throw new InvalidOperationException("Can only calculate yearly reports for balance or P&L statements");
+                }
 
                 // copy to treeLookups
 
