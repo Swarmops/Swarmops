@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,6 +29,24 @@ public partial class Pages_v5_Finance_Json_ExpensableBudgetsTree : System.Web.UI
         Authority authority = currentUser.GetAuthority();
         Organization currentOrganization = Organization.FromIdentity(currentOrganizationId);
 
+        Response.ContentType = "application/json";
+
+        // Is this stuff in cache already?
+
+        string cacheKey = "ExpensableAccounts-Json-" + currentOrganizationId.ToString((CultureInfo.InvariantCulture));
+
+        string accountsJson =
+            (string) Cache[cacheKey];
+
+        if (accountsJson != null)
+        {
+            Response.Output.WriteLine(accountsJson);
+            Response.End();
+            return;
+        }
+
+        // Not in cache. Construct.
+
         // Get accounts
 
         FinancialAccounts accounts = currentOrganization.FinancialAccounts.ExpensableAccounts;
@@ -46,8 +65,6 @@ public partial class Pages_v5_Finance_Json_ExpensableBudgetsTree : System.Web.UI
             treeMap[account.ParentIdentity].Add(account);
         }
 
-        Response.ContentType = "application/json";
-
         int renderRootNodeId = 0;
 
         if (treeMap[0].Count == 1)
@@ -57,7 +74,10 @@ public partial class Pages_v5_Finance_Json_ExpensableBudgetsTree : System.Web.UI
             renderRootNodeId = treeMap[0][0].Identity;
         }
 
-        Response.Output.WriteLine(RecurseTreeMap (treeMap, renderRootNodeId));
+        accountsJson = RecurseTreeMap (treeMap, renderRootNodeId);
+
+        Cache.Insert(cacheKey, accountsJson, null, DateTime.Now.AddMinutes(5), TimeSpan.Zero); // cache lasts for five minutes, no sliding expiration
+        Response.Output.WriteLine(accountsJson);
 
         Response.End();
     }
