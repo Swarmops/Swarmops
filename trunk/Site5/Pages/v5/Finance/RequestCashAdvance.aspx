@@ -15,10 +15,6 @@
                 $('span.combo-arrow').click();
             });
             
-            $('input.combo-text').focus(function () {
-                $('span.combo-arrow').click();
-            });
-
         });
 
 
