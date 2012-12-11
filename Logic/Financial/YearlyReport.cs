@@ -199,7 +199,7 @@ namespace Activizr.Logic.Financial
                 }
                 else if (_accountType == FinancialAccountType.Balance)
                 {
-                    _singleLookups[6][account.Identity] = account.GetDeltaCents(new DateTime(1900, 1, 1),
+                    _singleLookups[5][account.Identity] = account.GetDeltaCents(new DateTime(1900, 1, 1),
                                                                                 new DateTime(this.Year + 1, 1, 1));
                 }
                 else
