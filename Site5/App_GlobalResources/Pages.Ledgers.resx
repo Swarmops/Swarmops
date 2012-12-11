@@ -117,6 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BalanceSheet_AccountName" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="BalanceSheet_ContentHeader" xml:space="preserve">
+    <value>Balance Sheet for {0},</value>
+    <comment>{0} is the organization name. The year follows immediately.</comment>
+  </data>
+  <data name="BalanceSheet_Current" xml:space="preserve">
+    <value>Current</value>
+  </data>
+  <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
+    <value>BalanceSheet</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="BalanceSheet_EndYear" xml:space="preserve">
+    <value>End-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="BalanceSheet_Info" xml:space="preserve">
+    <value>The Balance Sheet is an overview of assets and debts at a snapshot in time, and is used to see how results affect the overall financial health of the organization. You may also want to look at the &lt;a href="ProfitLossStatement.aspx"&gt;profit-and-loss statement&lt;/a&gt; which is the overview of income and expenditure.</value>
+  </data>
+  <data name="BalanceSheet_PageTitle" xml:space="preserve">
+    <value>Balance Sheet</value>
+  </data>
+  <data name="BalanceSheet_Q1" xml:space="preserve">
+    <value>Change Q1</value>
+  </data>
+  <data name="BalanceSheet_Q2" xml:space="preserve">
+    <value>Change Q2</value>
+  </data>
+  <data name="BalanceSheet_Q3" xml:space="preserve">
+    <value>Change Q3</value>
+  </data>
+  <data name="BalanceSheet_Q4" xml:space="preserve">
+    <value>Change Q4</value>
+  </data>
+  <data name="BalanceSheet_StartYear" xml:space="preserve">
+    <value>Start-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
   <data name="ProfitLossStatement_AccountName" xml:space="preserve">
     <value>Account</value>
   </data>
