@@ -29,6 +29,9 @@
 	                $('span.loadingHeader').hide();
 
 	                var selectedYear = $('#<%=DropYears.ClientID %>').val();
+
+	                $('div#linkDownloadReport').attr("onclick", "document.location='Csv-ProfitLossData.aspx?Year=" + selectedYear + "';");
+	                $('#spanDownloadText').text('<%=Resources.Pages.Ledgers.ProfitLossStatement_DownloadFileName %>' + selectedYear + "-<%=DateTime.Today.ToString("yyyyMMdd") %>.csv");
 	                
                     if (selectedYear == currentYear) 
                     {
@@ -74,6 +77,9 @@
             color: #1C397E;
             letter-spacing: 1px;
 	    }
+	    table.datagrid-ftable {
+		    font-weight: 500;
+	    }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
@@ -99,5 +105,16 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
+    <h2 class="blue"><asp:Label ID="LabelSidebarDownload" Text="Download This" runat="server" /><span class="arrow"></span></h2>
+    
+    <div class="box">
+        <div class="content">
+            <div class="link-row-encaps" id="linkDownloadReport" onclick="document.location='placeholder';" >
+                <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-downarrow-16px.png');background-position:-1px -1px"></div>
+                <span id="spanDownloadText">ProfitLossxxxx-yyyymmdd.csv</span>
+            </div>
+        </div>
+    </div>
+
 </asp:Content>
 
