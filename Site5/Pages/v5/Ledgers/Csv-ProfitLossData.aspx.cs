@@ -76,7 +76,7 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : System.Web.UI.Page
                 _year);
         }
 
-        LocalizeRoot();
+        LocalizeRoot(report.ReportLines);
 
         RecurseCsvReport(report.ReportLines, string.Empty);
 
