@@ -44,6 +44,7 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : System.Web.UI.Page
 
         _renderCulture = new CultureInfo(cultureString);
         Thread.CurrentThread.CurrentCulture = _renderCulture;
+        Thread.CurrentThread.CurrentUICulture = _renderCulture;
 
         // Get current year
 
