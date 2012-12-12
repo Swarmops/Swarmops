@@ -53,7 +53,7 @@ public partial class Pages_v5_Ledgers_Csv_BalanceData : System.Web.UI.Page
             _year = Int32.Parse(yearParameter); // will throw if non-numeric - don't matter for app
         }
 
-        YearlyReport report = YearlyReport.Create(currentOrganization, _year, FinancialAccountType.Result);
+        YearlyReport report = YearlyReport.Create(currentOrganization, _year, FinancialAccountType.Balance);
 
         Response.ClearContent();
         Response.ClearHeaders();
