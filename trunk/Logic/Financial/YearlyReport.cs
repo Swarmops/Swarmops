@@ -37,6 +37,17 @@ namespace Activizr.Logic.Financial
                 }
             }
 
+            // Aggregate accounts, if appropriate
+
+            int rootLevelAccounts = accounts.Count(account => account.ParentFinancialAccountId == 0);
+
+            if (rootLevelAccounts > 3)
+            {
+                // regroup list
+
+                report.AggregateAccounts();
+            }
+
             // Build tree (there should be a template for this)
 
             report._treeMap = new Dictionary<int, List<FinancialAccount>>();
@@ -51,13 +62,6 @@ namespace Activizr.Logic.Financial
                 report._treeMap[account.ParentIdentity].Add(account);
             }
 
-
-            if (report._treeMap[0].Count > 3)
-            {
-                // regroup list
-
-                report.AggregateAccounts();
-            }
 
             FinancialAccounts orderedList = new FinancialAccounts(); // This list is guaranteed to have parents before children
 
