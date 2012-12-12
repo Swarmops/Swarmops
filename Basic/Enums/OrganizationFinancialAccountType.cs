@@ -32,6 +32,10 @@ namespace Activizr.Basic.Enums
         /// </summary>
         AssetsVat,
         /// <summary>
+        /// If virtual banking is enabled, this is where the virtual assets go
+        /// </summary>
+        AssetsVirtualBanking,
+        /// <summary>
         /// Any expense claims on the organization that have not been paid back
         /// </summary>
         DebtsExpenseClaims,
@@ -48,23 +52,23 @@ namespace Activizr.Basic.Enums
         /// </summary>
         DebtsTax,
         /// <summary>
-        /// Own capital - asset balancing yearly result, accumulating year after year
+        /// Equity - the difference between debt and assets
         /// </summary>
-        DebtsCapital,
+        DebtsEquity,
         /// <summary>
         /// Undeclared Value Added Tax (outbound) before putting it on tax balance
         /// </summary>
         DebtsVat,
         /// <summary>
+        /// If virtual banking is enabled, this is the central debt to local assets
+        /// </summary>
+        DebtsVirtualBanking,
+        /// <summary>
         /// Other debts in general
         /// </summary>
         DebtsOther,
         /// <summary>
-        /// Main income account
-        /// </summary>
-        IncomeGeneral,
-        /// <summary>
-        /// Income specifically from sales - default outbound invoices to this acct
+        /// Income from sales - default outbound invoices to this acct
         /// </summary>
         IncomeSales,
         /// <summary>
@@ -88,7 +92,7 @@ namespace Activizr.Basic.Enums
         /// </summary>
         CostsAllocatedFunds,
         /// <summary>
-        /// When closing books, this is the yearly result (balanced against DebtsCapital)
+        /// When closing books, this is the yearly result (balanced against DebtsEquity)
         /// </summary>
         CostsYearlyResult // multi-account type
     };

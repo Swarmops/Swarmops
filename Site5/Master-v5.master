@@ -307,7 +307,7 @@
     <!-- Organization changer -->
     
     <div id="DivModalOrganizationChanger" style="display:none">
-        You are currently logged into <strong>Sandbox</strong>. Would you like to switch to another organization?<br/><br/>
+        <asp:Literal ID="LiteralCurrentlyLoggedIntoSwitch" runat="server" /><br/><br/>
         
         <asp:DropDownList ID="DropSwitchOrganizations" runat="server"/><br/><br/>   <!-- TODO: Make this a tree dropdown -->
 

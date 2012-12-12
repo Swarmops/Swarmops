@@ -43,7 +43,7 @@ namespace Activizr.Logic.Financial
             organizationAccounts[OrganizationFinancialAccountType.DebtsInboundInvoices] = FinancialAccount.FromIdentity(25); //
             organizationAccounts[OrganizationFinancialAccountType.DebtsOther] = FinancialAccount.FromIdentity(25); //
             organizationAccounts[OrganizationFinancialAccountType.AssetsOutboundInvoices] = FinancialAccount.FromIdentity(28); // 
-            organizationAccounts[OrganizationFinancialAccountType.DebtsCapital] = FinancialAccount.FromIdentity(96); //
+            organizationAccounts[OrganizationFinancialAccountType.DebtsEquity] = FinancialAccount.FromIdentity(96); //
             organizationAccounts[OrganizationFinancialAccountType.AssetsPaypal] = FinancialAccount.FromIdentity(2); //
             organizationAccounts[OrganizationFinancialAccountType.CostsYearlyResult] = FinancialAccount.FromIdentity(97); //
             organizationAccounts[OrganizationFinancialAccountType.AssetsOutstandingCashAdvances] = FinancialAccount.FromIdentity(156); //
@@ -137,9 +137,9 @@ namespace Activizr.Logic.Financial
             get { return this[OrganizationFinancialAccountType.CostsYearlyResult]; }
         }
 
-        public FinancialAccount DebtsCapital
+        public FinancialAccount DebtsEquity
         {
-            get { return this[OrganizationFinancialAccountType.DebtsCapital]; }
+            get { return this[OrganizationFinancialAccountType.DebtsEquity]; }
         }
 
         public FinancialAccount DebtsExpenseClaims
@@ -170,11 +170,6 @@ namespace Activizr.Logic.Financial
         public FinancialAccount DebtsOther
         {
             get { return this[OrganizationFinancialAccountType.DebtsSalary]; }
-        }
-
-        public FinancialAccount IncomeGeneral
-        {
-            get { return this[OrganizationFinancialAccountType.IncomeGeneral]; }
         }
 
         public FinancialAccount IncomeDonations

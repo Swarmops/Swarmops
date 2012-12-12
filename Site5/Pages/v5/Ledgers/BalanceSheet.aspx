@@ -30,7 +30,7 @@
 
 	                var selectedYear = $('#<%=DropYears.ClientID %>').val();
 
-	                $('div#linkDownloadReport').attr("onclick", "document.location='Csv-ProfitLossData.aspx?Year=" + selectedYear + "';");
+	                $('div#linkDownloadReport').attr("onclick", "document.location='Csv-BalanceData.aspx?Year=" + selectedYear + "';");
 	                $('#spanDownloadText').text('<%=Resources.Pages.Ledgers.BalanceSheet_DownloadFileName %>' + selectedYear + "-<%=DateTime.Today.ToString("yyyyMMdd") %>.csv");
                     $('#headerStartYear').text('<%=Resources.Pages.Ledgers.BalanceSheet_StartYear %>'.replace('XXXX',selectedYear));
               
@@ -107,7 +107,7 @@
         <div class="content">
             <div class="link-row-encaps" id="linkDownloadReport" onclick="document.location='placeholder';" >
                 <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-downarrow-16px.png');background-position:-1px -1px"></div>
-                <span id="spanDownloadText">BalanceSheetxxxx-yyyymmdd.csv</span>
+                <span id="spanDownloadText">Balancexxxx-yyyymmdd.csv</span>
             </div>
         </div>
     </div>
