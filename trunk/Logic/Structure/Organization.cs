@@ -245,8 +245,8 @@ namespace Activizr.Logic.Structure
                 FinancialAccount.Create(this.Identity, "ICT and Infrastructure", FinancialAccountType.Cost, 0);
             FinancialAccounts[OrganizationFinancialAccountType.CostsYearlyResult] =
                 FinancialAccount.Create(this.Identity, "Yearly result", FinancialAccountType.Cost, 0);
-            FinancialAccounts[OrganizationFinancialAccountType.DebtsCapital] =
-                FinancialAccount.Create(this.Identity, "Own Capital", FinancialAccountType.Debt, 0);
+            FinancialAccounts[OrganizationFinancialAccountType.DebtsEquity] =
+                FinancialAccount.Create(this.Identity, "Equity", FinancialAccountType.Debt, 0);
             FinancialAccounts[OrganizationFinancialAccountType.DebtsExpenseClaims] =
                 FinancialAccount.Create(this.Identity, "Expense Claims", FinancialAccountType.Debt, 0);
             FinancialAccounts[OrganizationFinancialAccountType.DebtsInboundInvoices] =
@@ -260,17 +260,10 @@ namespace Activizr.Logic.Structure
             FinancialAccounts[OrganizationFinancialAccountType.DebtsVat] =
                 FinancialAccount.Create(this.Identity, "Outbound Value Added Tax", FinancialAccountType.Debt, 0);
 
-            FinancialAccount incomeGeneral =
-                FinancialAccount.Create(this.Identity, "Income", FinancialAccountType.Income, 0);
-
-            // We need to store this in code because of database lag replication issues when creating children - 
-            // we can't use assume that it's available for reading yet.
-
-            FinancialAccounts[OrganizationFinancialAccountType.IncomeGeneral] = incomeGeneral;
             FinancialAccounts[OrganizationFinancialAccountType.IncomeDonations] =
-                FinancialAccount.Create(this.Identity, "Donations", FinancialAccountType.Income, incomeGeneral.Identity);
+                FinancialAccount.Create(this.Identity, "Donations", FinancialAccountType.Income, 0);
             FinancialAccounts[OrganizationFinancialAccountType.IncomeSales] =
-                FinancialAccount.Create(this.Identity, "Sales", FinancialAccountType.Income, incomeGeneral.Identity);
+                FinancialAccount.Create(this.Identity, "Sales", FinancialAccountType.Income, 0);
 
             // Then, create various cost accounts that are probably needed, or that could be used as a starting point
 
@@ -632,7 +625,6 @@ namespace Activizr.Logic.Structure
 
         #region class globals
 
-        public static readonly int SandboxIdentity = 3;
         public static readonly int RootIdentity = 5;
         public static readonly int PPSEid = 1;
         public static readonly int UPSEid = 2;
@@ -645,6 +637,23 @@ namespace Activizr.Logic.Structure
         public static Organization Sandbox
         {
             get { return FromIdentity(SandboxIdentity); }
+        }
+
+        public static int SandboxIdentity
+        {
+            get
+            {
+                if (Organization.FromIdentity(1).Name.StartsWith("Sandbox"))
+                {
+                    return 1;
+                }
+                else if (Organization.FromIdentity(3).Name.StartsWith("Sandbox"))
+                {
+                    return 3;
+                }
+
+                throw new InvalidOperationException("Cannot locate Sandbox organization's identity");
+            }
         }
 
         public static Organization Root

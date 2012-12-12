@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -252,138 +252,5 @@
   <data name="ViewMotion_ViewingMotionInfo" xml:space="preserve">
     <value>Du läser en motion till mötet</value>
     <comment>In sidebar info box. Meeting name follows in bold.</comment>
-  </data>
-  <data name="VoteAmendments_BoardRecommendation" xml:space="preserve">
-    <value>Styrelsens rekommendation</value>
-    <comment>First item in dropdown box</comment>
-  </data>
-  <data name="VoteAmendments_Grid_Abstain" xml:space="preserve">
-    <value>Avst.</value>
-  </data>
-  <data name="VoteAmendments_Grid_Board" xml:space="preserve">
-    <value>Styrelsen</value>
-    <comment>Row header</comment>
-  </data>
-  <data name="VoteAmendments_Grid_Change" xml:space="preserve">
-    <value>Ändring</value>
-    <comment>Row header</comment>
-  </data>
-  <data name="VoteAmendments_Grid_Decision" xml:space="preserve">
-    <value>Att-satser</value>
-    <comment>Row header</comment>
-  </data>
-  <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="VoteAmendments_Grid_No" xml:space="preserve">
-    <value>Nej</value>
-  </data>
-  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
-    <value>Motivering</value>
-    <comment>Row header</comment>
-  </data>
-  <data name="VoteAmendments_Grid_Recommend" xml:space="preserve">
-    <value>Rek.</value>
-  </data>
-  <data name="VoteAmendments_Grid_Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="VoteAmendments_Grid_TitleText" xml:space="preserve">
-    <value>Text / Titel</value>
-  </data>
-  <data name="VoteAmendments_Grid_Yes" xml:space="preserve">
-    <value>Ja</value>
-  </data>
-  <data name="VoteAmendments_Header" xml:space="preserve">
-    <value>Ändringsförslag för {0}</value>
-    <comment>In content box header. The meeting name goes in {0}.</comment>
-  </data>
-  <data name="VoteAmendments_Info" xml:space="preserve">
-    <value>Rösta på föreslagna ändringar till motioner. I nästa steg röstar vi om de resulterande motionerna, med de ändringar införda som röstats igenom. Alla ändringsförslag är listade under respektive motion, och alla detaljer finns infällda under motionernas och ändringsförslagens rubriker. Du kan välja en röstningsrekommendation om du vill.</value>
-  </data>
-  <data name="VoteAmendments_PageTitle" xml:space="preserve">
-    <value>Rösta på Ändringsförslag</value>
-  </data>
-  <data name="VoteAmendments_Recommend_Abstain" xml:space="preserve">
-    <value>---</value>
-  </data>
-  <data name="VoteAmendments_Recommend_No" xml:space="preserve">
-    <value>NEJ</value>
-  </data>
-  <data name="VoteAmendments_Recommend_Yes" xml:space="preserve">
-    <value>JA</value>
-  </data>
-  <data name="VoteAmendments_SelectRecommendation" xml:space="preserve">
-    <value>Välj rekommendation...</value>
-    <comment>Default in dropdown box</comment>
-  </data>
-  <data name="Vote_CreateVotingList" xml:space="preserve">
-    <value>Skapa voteringslista?</value>
-    <comment>This becomes a link which folds out to a popup asking "for motions or amendments".</comment>
-  </data>
-  <data name="Vote_CreateVotingList_Amendments" xml:space="preserve">
-    <value>Skapa voteringslista för ändringsförslag</value>
-    <comment>In pop-up after clicking "create voting list"</comment>
-  </data>
-  <data name="Vote_CreateVotingList_Elections" xml:space="preserve">
-    <value>Skapa röstlista för personval</value>
-    <comment>In pop-up after clicking "create voting list"</comment>
-  </data>
-  <data name="Vote_CreateVotingList_Motions" xml:space="preserve">
-    <value>Skapa voteringslista för motioner</value>
-    <comment>In pop-up after clicking "create voting list"</comment>
-  </data>
-  <data name="Vote_Info" xml:space="preserve">
-    <value>Ibland håller den här organisationen, {0}, möten. Under dessa möten sker omröstningar. Här listas allt som du kan rösta i. Du kan också skapa röstlistor som andra kan följa när de röstar.</value>
-    <comment>The {0} is the organization name.</comment>
-  </data>
-  <data name="Vote_MeetingElections" xml:space="preserve">
-    <value>Personval</value>
-  </data>
-  <data name="Vote_Motions" xml:space="preserve">
-    <value>Sakfrågor</value>
-  </data>
-  <data name="Vote_MotionVotingMotionAmendments" xml:space="preserve">
-    <value>Ändringsförslag</value>
-  </data>
-  <data name="Vote_MotionVotingMotions" xml:space="preserve">
-    <value>Motioner</value>
-  </data>
-  <data name="Vote_NotOpenedYet" xml:space="preserve">
-    <value>Ej öppnad</value>
-    <comment>Keep very short.</comment>
-  </data>
-  <data name="Vote_OpensOnDate" xml:space="preserve">
-    <value>Öppnar {0:yyyy-MMM-dd}.</value>
-    <comment>Note the embedded date format. Localize to national standard.</comment>
-  </data>
-  <data name="Vote_PageTitle" xml:space="preserve">
-    <value>Rösta</value>
-  </data>
-  <data name="Vote_PointsOfOrder" xml:space="preserve">
-    <value>Ordningsfrågor</value>
-  </data>
-  <data name="Vote_PointsOfOrderTemp" xml:space="preserve">
-    <value>Inga ordningsfrågor just nu.</value>
-  </data>
-  <data name="Vote_VoteHere" xml:space="preserve">
-    <value>Rösta här</value>
-    <comment>Link to voting page</comment>
-  </data>
-  <data name="Vote_VoteOnAmendments" xml:space="preserve">
-    <value>Rösta om {0:N0} ändringsförslag:</value>
-    <comment>The {0} is the amendment count.</comment>
-  </data>
-  <data name="Vote_VoteOnMotions" xml:space="preserve">
-    <value>Rösta om {0:N0} motioner:</value>
-    <comment>The {0} is the motion count.</comment>
-  </data>
-  <data name="VoteAmendments_SaveVote" xml:space="preserve">
-    <value>Klar, jag röstar så här</value>
-    <comment>Button at end of page</comment>
-  </data>
-  <data name="VoteAmendments_SaveVote_Temp" xml:space="preserve">
-    <value>Kan Inte Rösta - Testmöte</value>
-    <comment>For Tests Only</comment>
   </data>
 </root>

@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,110 +118,110 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CurrentUserInfo_Logout" xml:space="preserve">
-    <value>Logout</value>
+    <value>Logga ut</value>
     <comment>Causes signoff and de-authentication</comment>
   </data>
   <data name="CurrentUserInfo_Preferences" xml:space="preserve">
-    <value>Preferences</value>
+    <value>Inställningar</value>
     <comment>Tooltip on hover over wrench icon</comment>
   </data>
   <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
-    <value>Select Language</value>
+    <value>Välj Språk</value>
     <comment>Shown as header of language list pop-up</comment>
   </data>
   <data name="Dashboard_Info_Temporary" xml:space="preserve">
-    <value>This is a default page. The only item available is motion registration for meetings.</value>
+    <value>Det här är en startsida. Det enda som är tillgängligt är motionslistan för möten.</value>
     <comment>Temporary</comment>
   </data>
   <data name="Dashboard_Main_Temporary" xml:space="preserve">
-    <value>This is the default page (the dashboard). In time, this will become a really neat page with numbers and graphics and stuff. For now, go to the meeting pages instead.</value>
+    <value>Det här är startsidan. Så småningom kommer den här att bli jätteniftig med siffror och grafik och blingbling. Men just nu är bara mötesfunktionerna klara. Gå dit i stället.</value>
     <comment>Temporary display while there is no dashboard.</comment>
   </data>
   <data name="Dashboard_PageTitle" xml:space="preserve">
-    <value>Dashboard</value>
+    <value>Startsida</value>
     <comment>Title of default page</comment>
   </data>
   <data name="Financial_Actuals" xml:space="preserve">
-    <value>Actuals</value>
+    <value>Utfall</value>
   </data>
   <data name="Financial_ActualsPreliminary" xml:space="preserve">
-    <value>Actuals (prel)</value>
+    <value>Utfall (prel)</value>
   </data>
   <data name="Financial_ActualsToDate" xml:space="preserve">
-    <value>Actuals YTD</value>
+    <value>Utfall hittills</value>
   </data>
   <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
-    <value>Bookkeeping Account</value>
+    <value>Bokföringskonto</value>
   </data>
   <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
-    <value>Account</value>
+    <value>Konto</value>
   </data>
   <data name="Financial_Budget" xml:space="preserve">
     <value>Budget</value>
   </data>
   <data name="Financial_YearlyResult" xml:space="preserve">
-    <value>Yearly result</value>
+    <value>Årligt resultat</value>
   </data>
   <data name="Global_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Avbryt</value>
     <comment>Displayed as cancellation link on changing something</comment>
   </data>
   <data name="Global_Change" xml:space="preserve">
-    <value>Change?</value>
+    <value>Byta?</value>
     <comment>Link after describing what the user is looking at, allowing a change.</comment>
   </data>
   <data name="Global_ClickImageToEnlarge" xml:space="preserve">
-    <value>Click image to enlarge.</value>
+    <value>Klicka bilden för att förstora.</value>
     <comment>Displayed where thumbnails can be enlarged modally.</comment>
   </data>
   <data name="Global_Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Bekräfta</value>
     <comment>Displayed as confirmation link on changing something</comment>
   </data>
   <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
-    <value>-- Select Budget/Account --</value>
+    <value>-- Välj budget/konto --</value>
     <comment>Initializer in dropdown box.</comment>
   </data>
   <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
-    <value>-- Select Organization --</value>
+    <value>-- Välj organisation --</value>
     <comment>Initializer in dropdown box.</comment>
   </data>
   <data name="Global_GoThere" xml:space="preserve">
-    <value>Go there...</value>
+    <value>Ta mig dit...</value>
     <comment>Link after describing something.</comment>
   </data>
   <data name="Global_NoOwner" xml:space="preserve">
-    <value>Nobody</value>
+    <value>Ingen</value>
     <comment>Displayed when an account/position etc is vacant</comment>
   </data>
   <data name="Global_Owner" xml:space="preserve">
-    <value>Owner</value>
+    <value>Ägare</value>
   </data>
   <data name="Global_ProcessingFile" xml:space="preserve">
-    <value>Processing File...</value>
+    <value>Bearbetar fil...</value>
     <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
   <data name="Global_UploadFile" xml:space="preserve">
-    <value>Upload File</value>
+    <value>Ladda Upp Fil</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
   <data name="Global_UploadFileToActivizr" xml:space="preserve">
-    <value>Upload File To Activizr</value>
+    <value>Ladda Upp Fil Till Activizr</value>
     <comment>Used as header above upload sections.</comment>
   </data>
   <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
-    <value>Please select a file to upload.</value>
+    <value>Välj fil att ladda upp.</value>
     <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
   <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
-    <value>You are currently logged into &lt;strong&gt;{0}&lt;/strong&gt;. Would you like to switch to another organization?</value>
+    <value>Du är inloggad i &lt;strong&gt;{0}&lt;/strong&gt;. Vill du växla till en annan organisation?</value>
   </data>
   <data name="Sidebar_Actions" xml:space="preserve">
-    <value>Actions</value>
+    <value>Genvägar</value>
     <comment>List of shortcuts to likely actions</comment>
   </data>
   <data name="Sidebar_Actions_None" xml:space="preserve">
-    <value>No suggested actions at this point.</value>
+    <value>Inga föreslagna åtgärder just nu.</value>
     <comment>No shortcuts from this page right now.</comment>
   </data>
   <data name="Sidebar_Information" xml:space="preserve">
@@ -229,15 +229,15 @@
     <comment>Information about current page</comment>
   </data>
   <data name="Sidebar_Todo" xml:space="preserve">
-    <value>To do</value>
+    <value>Att göra</value>
     <comment>List of todo items</comment>
   </data>
   <data name="Sidebar_Todo_None" xml:space="preserve">
-    <value>No urgent action items right now.</value>
+    <value>Inget brådskar just nu.</value>
     <comment>Indicator that nothing needs immediate attention</comment>
   </data>
   <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
-    <value>Action items will go here.</value>
+    <value>Saker att göra kommer att finnas här.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
   </data>
 </root>

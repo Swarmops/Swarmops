@@ -37,7 +37,7 @@ public partial class Tests_TestBookkeepingIntegrity : PageV5Base
         FinancialAccounts resultAccounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
                                                                              FinancialAccountType.Result);
 
-        FinancialAccount ownCapital = this.CurrentOrganization.FinancialAccounts.DebtsCapital;
+        FinancialAccount ownCapital = this.CurrentOrganization.FinancialAccounts.DebtsEquity;
         FinancialAccount resultAsNoted = this.CurrentOrganization.FinancialAccounts.CostsYearlyResult;
 
         FinancialAccounts balancesWithoutCapital =

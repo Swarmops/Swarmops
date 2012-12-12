@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Activizr.Basic.Enums;
+using Activizr.Basic.Types;
 using Activizr.Logic.Structure;
 
 namespace Activizr.Logic.Financial
@@ -51,6 +52,13 @@ namespace Activizr.Logic.Financial
             }
 
 
+            if (report._treeMap[0].Count > 3)
+            {
+                // regroup list
+
+                report.AggregateAccounts();
+            }
+
             FinancialAccounts orderedList = new FinancialAccounts(); // This list is guaranteed to have parents before children
 
             report.PopulateOrderedList(orderedList, 0);  // recursively add nodes parents-first
@@ -65,6 +73,60 @@ namespace Activizr.Logic.Financial
 
 
         private FinancialAccountType _accountType;
+
+
+        private void AggregateAccounts()
+        {
+            const int assetIdentity = 1000000001;
+            const int debtIdentity = 1000000002;
+            const int incomeIdentity = 1000000003;
+            const int costIdentity = 1000000004;
+
+            Dictionary<FinancialAccountType, int> remapLookup = new Dictionary<FinancialAccountType, int>();
+
+            remapLookup[FinancialAccountType.Asset] = assetIdentity;
+            remapLookup[FinancialAccountType.Debt] = debtIdentity;
+            remapLookup[FinancialAccountType.Income] = incomeIdentity;
+            remapLookup[FinancialAccountType.Cost] = costIdentity;
+
+            List<FinancialAccount> newRootLevel = new List<FinancialAccount>();
+
+            int equityIdentity = _treeMap[0][0].Organization.FinancialAccounts.DebtsEquity.Identity;
+
+            if (_accountType == FinancialAccountType.Balance)
+            {
+                newRootLevel.Add(FinancialAccount.FromBasic(new BasicFinancialAccount(assetIdentity, "%ASSET_ACCOUNTGROUP%", FinancialAccountType.Asset, 0, 0, 0)));
+                newRootLevel.Add(FinancialAccount.FromBasic(new BasicFinancialAccount(debtIdentity, "%DEBT_ACCOUNTGROUP%", FinancialAccountType.Debt, 0, 0, 0)));
+            }
+            else if (_accountType == FinancialAccountType.Result)
+            {
+                newRootLevel.Add(FinancialAccount.FromBasic(new BasicFinancialAccount(incomeIdentity, "%INCOME_ACCOUNTGROUP%", FinancialAccountType.Income, 0, 0, 0)));
+                newRootLevel.Add(FinancialAccount.FromBasic(new BasicFinancialAccount(costIdentity, "%COST_ACCOUNTGROUP%", FinancialAccountType.Cost, 0, 0, 0)));
+            }
+            else
+            {
+                throw new InvalidOperationException("AccountType other than Balance or Result passed to YearlyReport.AggregateAccounts()");
+            }
+
+            foreach (FinancialAccount account in _treeMap[0])
+            {
+                if (account.Identity == equityIdentity)
+                {
+                    newRootLevel.Add(account);
+                }
+                else
+                {
+                    if (!_treeMap.ContainsKey(remapLookup[account.AccountType]))
+                    {
+                        _treeMap[remapLookup[account.AccountType]] = new List<FinancialAccount>();
+                    }
+
+                    _treeMap[remapLookup[account.AccountType]].Add(account);
+                }
+            }
+
+            _treeMap[0] = newRootLevel;
+        }
 
 
         private void PopulateTotals()

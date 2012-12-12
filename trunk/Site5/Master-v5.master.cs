@@ -118,12 +118,13 @@ namespace Activizr
             this.DropSwitchOrganizations.Items.Clear();
 
             this.DropSwitchOrganizations.Items.Add(new ListItem(Resources.Global.Global_DropInits_SelectOrganization, "0"));
+            this.DropSwitchOrganizations.Items.Add(new ListItem("Sandbox", Organization.SandboxIdentity.ToString()));
 
-            Organizations organizations = Organizations.GetAll();
+            Memberships memberships = _currentUser.GetMemberships();
 
-            foreach (Organization organization in organizations)
+            foreach (Activizr.Logic.Pirates.Membership membership in memberships)
             {
-                this.DropSwitchOrganizations.Items.Add(new ListItem(organization.Name, organization.Identity.ToString(CultureInfo.InvariantCulture)));
+                this.DropSwitchOrganizations.Items.Add(new ListItem(membership.Organization.Name, membership.OrganizationId.ToString(CultureInfo.InvariantCulture)));
             }
         }
 
@@ -163,6 +164,7 @@ namespace Activizr
 
             this.LinkLogout.Text = Resources.Global.CurrentUserInfo_Logout;
             this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
+            this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
 
             if (cultureStringLower != "en-gb" && cultureStringLower != "sv-se" && cultureString.Trim().Length > 0)
             {
@@ -398,8 +400,23 @@ namespace Activizr
 
             if (desiredOrganizationId != 0)
             {
-                FormsAuthentication.RedirectFromLoginPage(string.Format(CultureInfo.InvariantCulture, "{0},{1}", currentUserId, desiredOrganizationId), true);
-                Response.Redirect("/");
+                bool foundMembership = false;
+                Memberships currentUserMemberships = _currentUser.GetMemberships();
+                foreach (Activizr.Logic.Pirates.Membership membership in currentUserMemberships)
+                {
+                    if (membership.OrganizationId == desiredOrganizationId)
+                    {
+                        foundMembership = true;
+                    }
+                }
+
+                if (foundMembership)
+                {
+                    FormsAuthentication.RedirectFromLoginPage(
+                        string.Format(CultureInfo.InvariantCulture, "{0},{1}", currentUserId, desiredOrganizationId),
+                        true);
+                    Response.Redirect("/");
+                }
             }
         }
 

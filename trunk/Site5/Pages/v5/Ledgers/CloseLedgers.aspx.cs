@@ -108,7 +108,7 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
         {
             FinancialTransaction resultTransaction = FinancialTransaction.Create(this.CurrentOrganization.Identity, new DateTime(closingYear, 12, 31, 23, 59, 00), "Årets resultat " + closingYear.ToString());  // TODO: Localize string
             resultTransaction.AddRow(this.CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, null);
-            resultTransaction.AddRow(this.CurrentOrganization.FinancialAccounts.DebtsCapital, -balanceDeltaCents, null);
+            resultTransaction.AddRow(this.CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents, null);
 
             // Ledgers are now at zero-sum for the year's result accounts and from the start up until end-of-closing-year for the balance accounts.
 

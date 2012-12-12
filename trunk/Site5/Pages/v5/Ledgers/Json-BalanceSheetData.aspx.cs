@@ -54,6 +54,7 @@ public partial class Pages_v5_Ledgers_Json_BalanceSheetData : System.Web.UI.Page
         }
 
         YearlyReport report = YearlyReport.Create(currentOrganization, _year, FinancialAccountType.Balance);
+        LocalizeRoot(report.ReportLines);
 
         Response.ContentType = "application/json";
 
@@ -61,6 +62,27 @@ public partial class Pages_v5_Ledgers_Json_BalanceSheetData : System.Web.UI.Page
 
         Response.End();
     }
+
+
+
+    private void LocalizeRoot(List<YearlyReportLine> lines)
+    {
+        Dictionary<string, string> localizeMap = new Dictionary<string, string>();
+
+        localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Assets;
+        localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Debt;
+        localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Income;
+        localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Costs;
+
+        foreach (YearlyReportLine line in lines)
+        {
+            if (localizeMap.ContainsKey(line.AccountName))
+            {
+                line.AccountName = localizeMap[line.AccountName];
+            }
+        }
+    }
+
 
 
     private int _year = 2012;
