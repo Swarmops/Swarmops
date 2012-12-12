@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -42,6 +43,7 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : System.Web.UI.Page
         }
 
         _renderCulture = new CultureInfo(cultureString);
+        Thread.CurrentThread.CurrentCulture = _renderCulture;
 
         // Get current year
 
@@ -74,10 +76,33 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : System.Web.UI.Page
                 _year);
         }
 
+        LocalizeRoot();
+
         RecurseCsvReport(report.ReportLines, string.Empty);
 
         Response.End();
     }
+
+
+    private void LocalizeRoot(List<YearlyReportLine> lines)
+    {
+        Dictionary<string, string> localizeMap = new Dictionary<string, string>();
+
+        localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Assets;
+        localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Debt;
+        localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Income;
+        localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Costs;
+
+        foreach (YearlyReportLine line in lines)
+        {
+            if (localizeMap.ContainsKey(line.AccountName))
+            {
+                line.AccountName = localizeMap[line.AccountName];
+            }
+        }
+    }
+
+
 
     private int _year = 2012;
     private CultureInfo _renderCulture;
