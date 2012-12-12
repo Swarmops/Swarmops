@@ -45,7 +45,7 @@ namespace Activizr.Logic.Financial
             {
                 // regroup list
 
-                report.AggregateAccounts();
+                report.AggregateAccounts(organization);
             }
 
             // Build tree (there should be a template for this)
@@ -79,7 +79,7 @@ namespace Activizr.Logic.Financial
         private FinancialAccountType _accountType;
 
 
-        private void AggregateAccounts()
+        private void AggregateAccounts(Organization organization)
         {
             const int assetIdentity = 1000000001;
             const int debtIdentity = 1000000002;
@@ -95,7 +95,7 @@ namespace Activizr.Logic.Financial
 
             List<FinancialAccount> newRootLevel = new List<FinancialAccount>();
 
-            int equityIdentity = _treeMap[0][0].Organization.FinancialAccounts.DebtsEquity.Identity;
+            int equityIdentity = organization.FinancialAccounts.DebtsEquity.Identity;
 
             if (_accountType == FinancialAccountType.Balance)
             {
