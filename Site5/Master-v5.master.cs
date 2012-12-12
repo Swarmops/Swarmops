@@ -117,14 +117,21 @@ namespace Activizr
         {
             this.DropSwitchOrganizations.Items.Clear();
 
+            int sandboxId = Organization.SandboxIdentity;
+
             this.DropSwitchOrganizations.Items.Add(new ListItem(Resources.Global.Global_DropInits_SelectOrganization, "0"));
-            this.DropSwitchOrganizations.Items.Add(new ListItem("Sandbox", Organization.SandboxIdentity.ToString()));
+            this.DropSwitchOrganizations.Items.Add(new ListItem("Sandbox", sandboxId.ToString()));
 
             Memberships memberships = _currentUser.GetMemberships();
 
             foreach (Activizr.Logic.Pirates.Membership membership in memberships)
             {
-                this.DropSwitchOrganizations.Items.Add(new ListItem(membership.Organization.Name, membership.OrganizationId.ToString(CultureInfo.InvariantCulture)));
+                if (membership.OrganizationId != sandboxId) // sandbox is already added
+                {
+                    this.DropSwitchOrganizations.Items.Add(new ListItem(membership.Organization.Name,
+                                                                        membership.OrganizationId.ToString(
+                                                                            CultureInfo.InvariantCulture)));
+                }
             }
         }
 
