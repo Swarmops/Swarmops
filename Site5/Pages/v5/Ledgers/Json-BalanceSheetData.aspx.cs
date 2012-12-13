@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -41,6 +42,8 @@ public partial class Pages_v5_Ledgers_Json_BalanceSheetData : System.Web.UI.Page
         }
 
         _renderCulture = new CultureInfo(cultureString);
+        Thread.CurrentThread.CurrentCulture = _renderCulture;
+        Thread.CurrentThread.CurrentUICulture = _renderCulture;
 
         // Get current year
 

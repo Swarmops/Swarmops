@@ -37,17 +37,6 @@ namespace Activizr.Logic.Financial
                 }
             }
 
-            // Aggregate accounts, if appropriate
-
-            int rootLevelAccounts = accounts.Count(account => account.ParentFinancialAccountId == 0);
-
-            if (rootLevelAccounts > 3)
-            {
-                // regroup list
-
-                report.AggregateAccounts(organization);
-            }
-
             // Build tree (there should be a template for this)
 
             report._treeMap = new Dictionary<int, List<FinancialAccount>>();
@@ -72,6 +61,15 @@ namespace Activizr.Logic.Financial
             report.ReportLines = new List<YearlyReportLine>();
             report.RecurseAddLines(report.ReportLines, 0);
 
+            // Aggregate accounts, if appropriate
+
+            if (report._treeMap[0].Count > 3)
+            {
+                // regroup list
+
+                report.AggregateAccounts();
+            }
+
             return report;
         }
 
@@ -79,57 +77,76 @@ namespace Activizr.Logic.Financial
         private FinancialAccountType _accountType;
 
 
-        private void AggregateAccounts(Organization organization)
+        private void AggregateAccounts()
         {
             const int assetIdentity = 1000000001;
             const int debtIdentity = 1000000002;
             const int incomeIdentity = 1000000003;
             const int costIdentity = 1000000004;
 
-            Dictionary<FinancialAccountType, int> remapLookup = new Dictionary<FinancialAccountType, int>();
+            Dictionary<FinancialAccountType, YearlyReportLine> remapLookup = new Dictionary<FinancialAccountType, YearlyReportLine>();
 
-            remapLookup[FinancialAccountType.Asset] = assetIdentity;
-            remapLookup[FinancialAccountType.Debt] = debtIdentity;
-            remapLookup[FinancialAccountType.Income] = incomeIdentity;
-            remapLookup[FinancialAccountType.Cost] = costIdentity;
+            List<YearlyReportLine> newRootLevel = new List<YearlyReportLine>();
 
-            List<FinancialAccount> newRootLevel = new List<FinancialAccount>();
-
-            int equityIdentity = organization.FinancialAccounts.DebtsEquity.Identity;
+            int equityIdentity = _treeMap[0][0].Organization.FinancialAccounts.DebtsEquity.Identity;
 
             if (_accountType == FinancialAccountType.Balance)
             {
-                newRootLevel.Add(FinancialAccount.FromBasic(new BasicFinancialAccount(assetIdentity, "%ASSET_ACCOUNTGROUP%", FinancialAccountType.Asset, 0, 0, 0)));
-                newRootLevel.Add(FinancialAccount.FromBasic(new BasicFinancialAccount(debtIdentity, "%DEBT_ACCOUNTGROUP%", FinancialAccountType.Debt, 0, 0, 0)));
+                YearlyReportLine assetLine = new YearlyReportLine
+                                                 {AccountId = assetIdentity, AccountName = "%ASSET_ACCOUNTGROUP%"};
+                YearlyReportLine debtLine = new YearlyReportLine
+                                                 {AccountId = debtIdentity, AccountName = "%DEBT_ACCOUNTGROUP%"};
+                remapLookup[FinancialAccountType.Asset] = assetLine;
+                remapLookup[FinancialAccountType.Debt] = debtLine;
+
+                newRootLevel.Add(assetLine);
+                newRootLevel.Add(debtLine);
             }
             else if (_accountType == FinancialAccountType.Result)
             {
-                newRootLevel.Add(FinancialAccount.FromBasic(new BasicFinancialAccount(incomeIdentity, "%INCOME_ACCOUNTGROUP%", FinancialAccountType.Income, 0, 0, 0)));
-                newRootLevel.Add(FinancialAccount.FromBasic(new BasicFinancialAccount(costIdentity, "%COST_ACCOUNTGROUP%", FinancialAccountType.Cost, 0, 0, 0)));
+                YearlyReportLine incomeLine = new YearlyReportLine
+                                                 {AccountId = incomeIdentity, AccountName = "%INCOME_ACCOUNTGROUP%"};
+                YearlyReportLine costLine = new YearlyReportLine
+                                                 {AccountId = costIdentity, AccountName = "%COST_ACCOUNTGROUP%"};
+                remapLookup[FinancialAccountType.Income] = incomeLine;
+                remapLookup[FinancialAccountType.Cost] = costLine;
+
+                newRootLevel.Add(incomeLine);
+                newRootLevel.Add(costLine);
             }
             else
             {
                 throw new InvalidOperationException("AccountType other than Balance or Result passed to YearlyReport.AggregateAccounts()");
             }
 
-            foreach (FinancialAccount account in _treeMap[0])
+            foreach (YearlyReportLine reportLine in ReportLines)
             {
-                if (account.Identity == equityIdentity)
+                if (reportLine.AccountId == equityIdentity)
                 {
-                    newRootLevel.Add(account);
+                    newRootLevel.Add(reportLine);
                 }
                 else
                 {
-                    if (!_treeMap.ContainsKey(remapLookup[account.AccountType]))
+                    YearlyReportLine aggregateLine = remapLookup[reportLine.AccountType];
+                    if (aggregateLine.Children == null)
                     {
-                        _treeMap[remapLookup[account.AccountType]] = new List<FinancialAccount>();
+                        aggregateLine.Children = new List<YearlyReportLine>();
                     }
 
-                    _treeMap[remapLookup[account.AccountType]].Add(account);
+                    aggregateLine.Children.Add(reportLine);
+
+                    aggregateLine.AccountTreeValues.PreviousYear += reportLine.AccountTreeValues.PreviousYear;
+                    for (int quarter = 0; quarter < 4; quarter++)
+                    {
+                        aggregateLine.AccountTreeValues.Quarters[quarter] +=
+                            reportLine.AccountTreeValues.Quarters[quarter];
+                    }
+
+                    aggregateLine.AccountTreeValues.ThisYear += reportLine.AccountTreeValues.ThisYear;
                 }
             }
 
-            _treeMap[0] = newRootLevel;
+            this.ReportLines = newRootLevel;
         }
 
 
@@ -161,6 +178,7 @@ namespace Activizr.Logic.Financial
                 YearlyReportLine newLine = new YearlyReportLine();
                 newLine.AccountId = account.Identity;
                 newLine.AccountName = account.Name;
+                newLine.AccountType = account.AccountType;
                 newLine.AccountValues = CreateYearlyReportNode(account.Identity, _singleLookups);
                 newLine.AccountTreeValues = CreateYearlyReportNode(account.Identity, _treeLookups);
 
@@ -324,10 +342,13 @@ namespace Activizr.Logic.Financial
         public YearlyReportLine()
         {
             Children = new List<YearlyReportLine>();
+            AccountValues = new YearlyReportNode();
+            AccountTreeValues = new YearlyReportNode();
         }
 
         public int AccountId;
         public string AccountName;
+        public FinancialAccountType AccountType;
         public YearlyReportNode AccountValues;
         public YearlyReportNode AccountTreeValues;
 
