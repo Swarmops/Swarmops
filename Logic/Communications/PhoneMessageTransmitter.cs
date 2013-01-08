@@ -4,12 +4,12 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using Activizr.Logic.Support;
-using Activizr.Basic.Types;
-using Activizr.Database;
 using System.Security.Cryptography.X509Certificates;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Communications
+namespace Swarmops.Logic.Communications
 {
     public class PhoneMessageTransmitter
     {

@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Text;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Security;
-using Activizr.Logic.Special.Mail;
-using Activizr.Logic.Special.Sweden;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Logic.Tasks;
-using Activizr;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Interfaces;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Logic.Tasks;
+using Swarmops;
 using System.Text.RegularExpressions;
-using Activizr.Database.Attributes;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Database.Attributes;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Special.Mail;
+using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     [Serializable]
     [DbRecordType("Person")]
@@ -970,7 +970,7 @@ namespace Activizr.Logic.Pirates
 
         public Tasks.Tasks Tasks
         {
-            get { return Activizr.Logic.Tasks.Tasks.ForPerson(this); }
+            get { return Logic.Tasks.Tasks.ForPerson(this); }
         }
 
         public string Formal

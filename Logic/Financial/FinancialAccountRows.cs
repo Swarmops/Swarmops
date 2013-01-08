@@ -1,8 +1,7 @@
 using System.Collections.Generic;
+using Swarmops.Basic.Types;
 
-using Activizr.Basic.Types;
-
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     public class FinancialAccountRows : List<FinancialAccountRow>
     {

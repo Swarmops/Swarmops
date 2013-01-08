@@ -1,6 +1,6 @@
-using Activizr.Basic.Types;
+using Swarmops.Basic.Types;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class ChurnDataPoint : BasicChurnDataPoint
     {

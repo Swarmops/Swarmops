@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net.Mail;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Basic.Types;
-using Activizr.Basic.Enums;
-using Activizr.Database;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Communications
+namespace Swarmops.Logic.Communications
 {
     class PhoneMessage
     {

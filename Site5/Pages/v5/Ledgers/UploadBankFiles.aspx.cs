@@ -7,18 +7,19 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Telerik.Web.UI;
 using Telerik.Web.UI.Upload;
 
 
 // ReSharper disable CheckNamespace
-namespace Activizr.Site.Pages.Ledgers
+namespace Swarmops.Site.Pages.Ledgers
 // ReSharper restore CheckNamespace
 {
     public partial class UploadBankFiles : PageV5Base
@@ -455,7 +456,7 @@ namespace Activizr.Site.Pages.Ledgers
                                            amountCents, this.CurrentUser);
                         transaction.AddRow(localAccount, -amountCents, this.CurrentUser);
 
-                        Activizr.Logic.Support.PWEvents.CreateEvent(EventSource.PirateWeb, EventType.LocalDonationReceived,
+                        PWEvents.CreateEvent(EventSource.PirateWeb, EventType.LocalDonationReceived,
                                                                      this.CurrentUser.Identity, this.CurrentOrganization.Identity,
                                                                      geography.Identity, 0,
                                                                      transaction.Identity, localAccount.Identity.ToString());

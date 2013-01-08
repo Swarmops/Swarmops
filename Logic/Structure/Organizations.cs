@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Activizr.Logic.Cache;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Support;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Cache;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     public class Organizations : List<Organization>
     {

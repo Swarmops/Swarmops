@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Pirates;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Types;
+using Swarmops.Logic.Pirates;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     public class FinancialValidation: BasicFinancialValidation
     {

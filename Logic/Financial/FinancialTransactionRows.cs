@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     public class FinancialTransactionRows : List<FinancialTransactionRow>
     {

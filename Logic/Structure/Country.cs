@@ -1,9 +1,9 @@
 using System;
-using Activizr.Logic.Financial;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Financial;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     [Serializable]
     public class Country : BasicCountry

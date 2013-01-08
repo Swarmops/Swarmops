@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using Activizr.Logic.Cache;
-using Activizr.Logic.Support;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
 using System;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Cache;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     public class Geographies : List<Geography>
     {

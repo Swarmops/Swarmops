@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Logic;
-using Activizr.Basic.Enums;
-namespace Activizr.Logic.Pirates
+using Swarmops.Logic;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
+
+namespace Swarmops.Logic.Pirates
 {
     public class AuditedPerson 
     {

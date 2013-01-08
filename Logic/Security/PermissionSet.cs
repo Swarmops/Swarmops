@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 using System.Text.RegularExpressions;
-using Activizr.Basic.Enums;
+using Swarmops.Basic.Enums;
 
-namespace Activizr.Logic.Security
+namespace Swarmops.Logic.Security
 {
     public class PermissionSet
     {

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
 using Starksoft.Cryptography.OpenPGP;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Security
+namespace Swarmops.Logic.Security
 {
     public class PgpKey
     {

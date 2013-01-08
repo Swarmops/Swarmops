@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Activizr.Basic.Enums
+namespace Swarmops.Basic.Enums
 {
     public enum PaymentCodeIssueType
     {

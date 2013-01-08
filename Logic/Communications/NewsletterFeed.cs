@@ -1,8 +1,8 @@
-using Activizr.Basic.Types;
-using Activizr.Database;
 using System;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Communications
+namespace Swarmops.Logic.Communications
 {
     public class NewsletterFeed : BasicNewsletterFeed
     {

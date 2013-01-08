@@ -4,10 +4,10 @@ using System.Globalization;
 using System.Threading;
 using System.Web;
 using System.Web.UI;
-using Activizr.Logic.Security;
-using Activizr.Logic.Pirates;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Structure;
 
 /// <summary>
 /// Summary description for PageV5Base

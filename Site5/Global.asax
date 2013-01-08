@@ -4,7 +4,7 @@
 <%@ Import Namespace="System.IO" %>
 <%@ Import Namespace="System.Security.Principal" %>
 <%@ Import Namespace="System.Threading" %>
-<%@ Import Namespace="Activizr.Logic" %>
+<%@ Import Namespace="Swarmops.Logic" %>
 
 <script RunAt="server">
 

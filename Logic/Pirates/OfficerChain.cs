@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Structure;
-using Activizr.Basic;
+using Swarmops.Basic;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class OfficerChain: People
     {

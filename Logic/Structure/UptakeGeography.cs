@@ -1,18 +1,17 @@
 using System;
 using System.Globalization;
-
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Interfaces;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Cache;
-using Activizr.Basic.Enums;
+using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Interfaces;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Cache;
+using Swarmops.Basic.Enums;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using Swarmops.Basic.Types;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     public class UptakeGeography : BasicUptakeGeography
     {

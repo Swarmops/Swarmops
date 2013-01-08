@@ -1,8 +1,7 @@
 using System;
+using Swarmops.Basic.Enums;
 
-using Activizr.Basic.Enums;
-
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     [Serializable]
     public class MembershipEvent

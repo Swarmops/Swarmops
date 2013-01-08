@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Activizr.Logic.Structure;
-using Activizr.Basic.Enums;
-using Activizr.Database;
+using Swarmops.Basic.Enums;
+using Swarmops.Database;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class RoleLookup
     {

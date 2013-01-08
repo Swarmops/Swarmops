@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     internal class GeographyStatisticsOverTime : List<GeographyStatistics>
     {

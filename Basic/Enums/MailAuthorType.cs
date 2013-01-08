@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace Activizr.Basic.Enums
+namespace Swarmops.Basic.Enums
 {
     public enum MailAuthorType
     {

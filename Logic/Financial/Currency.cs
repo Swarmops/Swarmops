@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Types;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     public class Currency: BasicCurrency
     {

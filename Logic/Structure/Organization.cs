@@ -1,20 +1,20 @@
 using System;
 using System.Globalization;
-using Activizr.Logic.Cache;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Interfaces;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Support;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Basic.Enums;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Text;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Cache;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Interfaces;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     public class Organization : BasicOrganization, ITreeNode, IComparable, ITreeNodeObject
     {

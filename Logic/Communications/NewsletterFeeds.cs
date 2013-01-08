@@ -1,8 +1,7 @@
 using System.Collections.Generic;
+using Swarmops.Basic.Types;
 
-using Activizr.Basic.Types;
-
-namespace Activizr.Logic.Communications
+namespace Swarmops.Logic.Communications
 {
     public class NewsletterFeeds : List<NewsletterFeed>
     {
