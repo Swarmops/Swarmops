@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using MySql.Data.MySqlClient;
 using Swarmops.Logic.Support;
 

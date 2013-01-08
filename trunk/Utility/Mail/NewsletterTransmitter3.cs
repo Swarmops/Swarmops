@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using Swarmops.Basic.Types;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Basic;
 using Swarmops.Logic.Support;
 

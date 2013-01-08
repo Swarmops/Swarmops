@@ -3,7 +3,7 @@ using System;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Security

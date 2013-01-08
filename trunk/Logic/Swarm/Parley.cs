@@ -8,7 +8,7 @@ using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class Parley: BasicParley, IAttestable
     {

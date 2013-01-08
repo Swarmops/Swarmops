@@ -4,7 +4,7 @@ using System.Text;
 using Swarmops.Basic;
 using Swarmops.Logic.Structure;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class OfficerChain: People
     {

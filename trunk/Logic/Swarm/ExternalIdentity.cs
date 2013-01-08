@@ -5,7 +5,7 @@ using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class ExternalIdentity : BasicExternalIdentity
     {

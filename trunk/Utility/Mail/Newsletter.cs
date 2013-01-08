@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.Mail
 {

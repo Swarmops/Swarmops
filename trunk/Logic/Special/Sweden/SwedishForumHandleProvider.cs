@@ -1,5 +1,5 @@
 using System;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Exceptions;

@@ -5,7 +5,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class ChurnData : List<ChurnDataPoint>
     {

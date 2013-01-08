@@ -5,7 +5,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Support;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class ParleyOptions: PluralBase<ParleyOptions,ParleyOption,BasicParleyOption>
     {

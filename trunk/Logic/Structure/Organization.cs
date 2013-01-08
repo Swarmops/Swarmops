@@ -11,7 +11,7 @@ using Swarmops.Logic.Cache;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Interfaces;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Structure

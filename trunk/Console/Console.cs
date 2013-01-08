@@ -11,7 +11,7 @@ using System.Web.Mail;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Utility;
 using Swarmops.Utility.Server;

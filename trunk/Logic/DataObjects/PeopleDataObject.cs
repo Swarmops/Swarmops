@@ -1,5 +1,5 @@
 using System.ComponentModel;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using System;
 using System.Collections.Generic;
 

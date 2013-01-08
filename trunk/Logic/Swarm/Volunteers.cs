@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     [Serializable]
     public class Volunteers : List<Volunteer>

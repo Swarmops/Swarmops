@@ -5,7 +5,7 @@ using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Structure;

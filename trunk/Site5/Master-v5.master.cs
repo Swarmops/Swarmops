@@ -7,11 +7,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Telerik.Web.UI;
-using Membership = Swarmops.Logic.Pirates.Membership;
+using Membership = Swarmops.Logic.Swarm.Membership;
 
 namespace Swarmops
 {

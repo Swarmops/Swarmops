@@ -4,7 +4,7 @@ using System.Text;
 using Swarmops.Logic.Support;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Communications

@@ -3,7 +3,7 @@ using Swarmops.Basic.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class RoleLookup
     {

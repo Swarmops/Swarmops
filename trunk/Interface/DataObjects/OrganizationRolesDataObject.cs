@@ -5,7 +5,7 @@ using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Interface.Collections;
 using Swarmops.Interface.Objects;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Basic.Types;
 

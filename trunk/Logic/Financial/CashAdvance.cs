@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Financial

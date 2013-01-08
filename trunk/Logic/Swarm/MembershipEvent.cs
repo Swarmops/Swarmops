@@ -1,7 +1,7 @@
 using System;
 using Swarmops.Basic.Enums;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     [Serializable]
     public class MembershipEvent

@@ -632,12 +632,12 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     {
         // Make sure that no first person exists already, as a security measure
 
-        Swarmops.Logic.Pirates.Person personOne = null;
+        Swarmops.Logic.Swarm.Person personOne = null;
         bool personOneExists = false;
 
         try
         {
-            personOne = Swarmops.Logic.Pirates.Person.FromIdentity(1);
+            personOne = Swarmops.Logic.Swarm.Person.FromIdentity(1);
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 if (personOne.CityName != "Duckville" || personOne.Email != "noreply@example.com")
@@ -665,7 +665,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             throw new InvalidOperationException("Cannot run initialization processes again when initialized.");
         }
 
-        Swarmops.Logic.Pirates.Person newPerson = Swarmops.Logic.Pirates.Person.Create(HttpUtility.UrlDecode(name), HttpUtility.UrlDecode(mail),
+        Swarmops.Logic.Swarm.Person newPerson = Swarmops.Logic.Swarm.Person.Create(HttpUtility.UrlDecode(name), HttpUtility.UrlDecode(mail),
                                              HttpUtility.UrlDecode(password), string.Empty, string.Empty, string.Empty,
                                              string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
@@ -684,7 +684,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             return; // Probable hack attempt - fail silently
         }
 
-        Swarmops.Logic.Pirates.Person expectedPersonOne = Swarmops.Logic.Security.Authentication.Authenticate("1", this.TextFirstUserPassword1.Text);
+        Swarmops.Logic.Swarm.Person expectedPersonOne = Swarmops.Logic.Security.Authentication.Authenticate("1", this.TextFirstUserPassword1.Text);
 
         if (expectedPersonOne != null)
         {

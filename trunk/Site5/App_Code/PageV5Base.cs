@@ -5,7 +5,7 @@ using System.Threading;
 using System.Web;
 using System.Web.UI;
 using Swarmops.Logic.Security;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Structure;
 

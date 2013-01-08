@@ -8,7 +8,7 @@ using System.Net.Mime;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Diagnostics;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using System.Threading;
 using Swarmops.Basic;
 using Swarmops.Logic.Media;
