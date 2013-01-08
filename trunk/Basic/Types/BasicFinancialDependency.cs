@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Enums;
+using Swarmops.Basic.Enums;
 
-namespace Activizr.Basic.Types
+namespace Swarmops.Basic.Types
 {
     /// <summary>
     /// This class encapsulates what a financial transaction was constructed from.

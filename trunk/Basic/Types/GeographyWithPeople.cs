@@ -1,10 +1,10 @@
 using System;
 
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
 using System.Collections.Generic;
 
-namespace Activizr.Basic.Types
+namespace Swarmops.Basic.Types
 {
     [Serializable]
     public class BasicGeographyWithPeople 
