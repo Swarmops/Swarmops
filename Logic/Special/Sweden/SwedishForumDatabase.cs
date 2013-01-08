@@ -8,14 +8,14 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Support;
-using Activizr.Basic.Diagnostics;
-using Activizr.Basic.Enums;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic.Enums;
 using MySql.Data.MySqlClient;
 using System.Net;
+using Swarmops.Basic.Diagnostics;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Special.Sweden
+namespace Swarmops.Logic.Special.Sweden
 {
 
     public interface IForumDatabase

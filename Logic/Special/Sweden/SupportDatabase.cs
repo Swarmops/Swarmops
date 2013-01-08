@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Support;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Pirates;
 using MySql.Data.MySqlClient;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Special.Sweden
+namespace Swarmops.Logic.Special.Sweden
 {
     public class SupportDatabase
     {

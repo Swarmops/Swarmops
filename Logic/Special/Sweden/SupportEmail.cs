@@ -1,4 +1,4 @@
-namespace Activizr.Logic.Special.Sweden
+namespace Swarmops.Logic.Special.Sweden
 {
     public class SupportEmail
     {

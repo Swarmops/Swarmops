@@ -1,7 +1,7 @@
 using System;
-using Activizr.Basic.Interfaces;
+using Swarmops.Basic.Interfaces;
 
-namespace Activizr.Logic.Special.Sweden
+namespace Swarmops.Logic.Special.Sweden
 {
     public class SupportCaseDelta: IHasIdentity
     {
