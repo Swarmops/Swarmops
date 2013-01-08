@@ -1,11 +1,11 @@
 using System;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Exceptions;
-using Activizr.Basic.Interfaces;
+using Swarmops.Basic.Exceptions;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Basic.Enums;
 
 
-namespace Activizr.Basic.Interfaces
+namespace Swarmops.Basic.Interfaces
 {
     public interface IHandleProvider
     {
@@ -17,7 +17,7 @@ namespace Activizr.Basic.Interfaces
     }
 }
 
-namespace Activizr.Basic.Enums
+namespace Swarmops.Basic.Enums
 {
     public enum HandleErrorType
     {
@@ -28,7 +28,7 @@ namespace Activizr.Basic.Enums
     }
 }
 
-namespace Activizr.Basic.Exceptions
+namespace Swarmops.Basic.Exceptions
 {
     public class HandleException : Exception
     {

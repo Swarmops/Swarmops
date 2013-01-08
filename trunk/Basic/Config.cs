@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Activizr.Basic
+namespace Swarmops.Basic
 {
     public class Config
     {
