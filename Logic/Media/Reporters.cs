@@ -1,9 +1,8 @@
 using System.Collections.Generic;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-using Activizr.Basic.Types;
-using Activizr.Database;
-
-namespace Activizr.Logic.Media
+namespace Swarmops.Logic.Media
 {
     public class Reporters : List<Reporter>
     {

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Activizr.Logic.Support;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Media
+namespace Swarmops.Logic.Media
 {
     public class MediaCategories : List<MediaCategory>
     {

@@ -1,7 +1,7 @@
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Media
+namespace Swarmops.Logic.Media
 {
     public class MediaCategory : BasicMediaCategory
     {
