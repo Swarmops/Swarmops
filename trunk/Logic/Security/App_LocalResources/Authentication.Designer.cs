@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Activizr.Logic.Security.App_LocalResources {
+namespace Swarmops.Logic.Security.App_LocalResources {
     using System;
     
     
