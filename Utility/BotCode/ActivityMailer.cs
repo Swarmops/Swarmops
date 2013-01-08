@@ -4,11 +4,11 @@ using System.Configuration;
 using System.Net.Mail;
 using System.Text;
 using System.Web;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class ActivityMailer
     {

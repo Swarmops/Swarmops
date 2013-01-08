@@ -4,7 +4,7 @@ using System;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Structure;
 
 [WebService(Namespace = "http://activizr.com/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]

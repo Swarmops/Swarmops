@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Special.Sweden;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class UpdateStatsCache
     {

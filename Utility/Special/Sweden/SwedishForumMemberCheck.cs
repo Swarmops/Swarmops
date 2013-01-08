@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Utility.BotCode;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Special.Sweden;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Special.Sweden;
+using Swarmops.Utility.BotCode;
 
-namespace Activizr.Utility.Special.Sweden
+namespace Swarmops.Utility.Special.Sweden
 {
     public class SwedishForumMemberCheck
     {

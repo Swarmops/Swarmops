@@ -8,14 +8,14 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-using Activizr.Basic.Types;
-using Activizr.Interface;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Types;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
+using Swarmops.Interface;
 using Telerik.Web.UI;
 
-namespace Activizr.Controls.Pirates
+namespace Swarmops.Controls.Pirates
 {
 
     public partial class ComboPerson : ControlV5Base

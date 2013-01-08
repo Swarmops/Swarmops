@@ -3,7 +3,7 @@ using System.DirectoryServices;
 
 //using CDOEXM;
 
-namespace Activizr.Utility.Server
+namespace Swarmops.Utility.Server
 {
     /// <summary>
     /// Summary description for ExchangeCode.

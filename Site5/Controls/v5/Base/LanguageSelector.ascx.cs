@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Activizr.Controls.Base
+namespace Swarmops.Controls.Base
 {
 
     public partial class LanguageSelector : System.Web.UI.UserControl

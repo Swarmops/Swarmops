@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Database;
-using Activizr.Logic.Pirates;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Pirates;
+using Swarmops.Database;
 
-namespace Activizr.Utility.Migrations
+namespace Swarmops.Utility.Migrations
 {
     public class PeopleOptionalData
     {

@@ -4,10 +4,10 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Net;
-using Activizr.Database;
-using Activizr.Logic;
+using Swarmops.Logic;
+using Swarmops.Database;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class BlogTop50Scraper
     {

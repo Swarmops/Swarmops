@@ -2,18 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Media;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Support;
-using Activizr.Utility.Mail;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Pirates;
+using Swarmops.Utility.Mail;
 
 using NRss;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Media;
+using Swarmops.Logic.Support;
 
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class PressReleaseChecker
     {

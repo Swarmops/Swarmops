@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Net;
 
-namespace Activizr.Utility.Special
+namespace Swarmops.Utility.Special
 {
     public class UrlTranslator
     {

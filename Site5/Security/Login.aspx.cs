@@ -6,11 +6,11 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Logic.Pirates;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Pages.Security
+namespace Swarmops.Pages.Security
 {
     public partial class Login : System.Web.UI.Page
     {
@@ -51,7 +51,7 @@ namespace Activizr.Pages.Security
             {
                 try
                 {
-                    BasicPerson authenticatedPerson = Activizr.Logic.Security.Authentication.Authenticate(loginToken, password);
+                    BasicPerson authenticatedPerson = Swarmops.Logic.Security.Authentication.Authenticate(loginToken, password);
                     Person p = Person.FromIdentity(authenticatedPerson.PersonId);
 
                     if (p.PreferredCulture != Thread.CurrentThread.CurrentCulture.Name)

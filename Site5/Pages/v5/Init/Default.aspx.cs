@@ -12,13 +12,13 @@ using System.Web.Services.Protocols;
 using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Site.Automation;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Site.Automation;
 using Telerik.Web.UI;
 
-using Activizr.Database;
-using Country = Activizr.Logic.Structure.Country;
+using Swarmops.Database;
+using Country = Swarmops.Logic.Structure.Country;
 
 public partial class Pages_v5_Init_Default : System.Web.UI.Page
 {
@@ -292,11 +292,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         // Make sure we're uninitialized
 
         bool organizationOneExists = false;
-        Activizr.Logic.Structure.Organization organizationOne = null;
+        Swarmops.Logic.Structure.Organization organizationOne = null;
 
         try
         {
-            organizationOne = Activizr.Logic.Structure.Organization.FromIdentity(1);
+            organizationOne = Swarmops.Logic.Structure.Organization.FromIdentity(1);
             organizationOneExists = true;
         }
         catch (Exception)
@@ -329,7 +329,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         // Get the schema and initialize the database structures. Requires ADMIN access to database.
 
-        Activizr.Logic.Support.DatabaseMaintenance.FirstInitialization();
+        Swarmops.Logic.Support.DatabaseMaintenance.FirstInitialization();
 
         _initProgress = 5;
         _initMessage = "Getting list of countries from Activizr servers...";
@@ -348,9 +348,9 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         // Get the list of countries
 
-        Activizr.Site.Automation.GetGeographyData geoDataFetcher = new GetGeographyData();
+        Swarmops.Site.Automation.GetGeographyData geoDataFetcher = new GetGeographyData();
 
-        Activizr.Site.Automation.Country[] countries = geoDataFetcher.GetCountries();
+        Swarmops.Site.Automation.Country[] countries = geoDataFetcher.GetCountries();
 
         _initProgress = 7;
         _initMessage = "Creating all countries on local server...";
@@ -358,7 +358,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         // Create all countries in our own database
 
-        foreach (Activizr.Site.Automation.Country country in countries)
+        foreach (Swarmops.Site.Automation.Country country in countries)
         {
             countryIdTranslation[country.Code] = PirateDb.GetDatabaseForWriting().CreateCountry(country.Name,
                                                                                                 country.Code,
@@ -373,7 +373,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         List<string> initializableCountries = new List<string>();
 
-        foreach (Activizr.Site.Automation.Country country in countries)
+        foreach (Swarmops.Site.Automation.Country country in countries)
         {
             if (country.GeographyId != 1)
             {
@@ -393,7 +393,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             _initMessage = "Retrieving geography for " + countryCode + "...";
             Thread.Sleep(100);
 
-            Activizr.Site.Automation.Geography geography = geoDataFetcher.GetGeographyForCountry(countryCode);
+            Swarmops.Site.Automation.Geography geography = geoDataFetcher.GetGeographyForCountry(countryCode);
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/6);
             _initMessage = "Setting up geography for " + countryCode + "...";
@@ -416,7 +416,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             // Get the postal codes and cities
 
-            Activizr.Site.Automation.City[] cities = null;
+            Swarmops.Site.Automation.City[] cities = null;
 
             try
             {
@@ -435,11 +435,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             _initMessage = "Retrieving postal codes for " + countryCode + "...";
             Thread.Sleep(100);
 
-            Activizr.Site.Automation.PostalCode[] postalCodes = geoDataFetcher.GetPostalCodesForCountry(countryCode);
+            Swarmops.Site.Automation.PostalCode[] postalCodes = geoDataFetcher.GetPostalCodesForCountry(countryCode);
 
             // Find which cities are actually used
 
-            foreach (Activizr.Site.Automation.PostalCode postalCode in postalCodes)
+            foreach (Swarmops.Site.Automation.PostalCode postalCode in postalCodes)
             {
                 cityIdsUsedLookup[postalCode.CityId] = true;
             }
@@ -457,7 +457,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             StringBuilder sqlCityBuild = new StringBuilder("INSERT INTO Cities (CityName, GeographyId, CountryId, Comment) VALUES ", 65536);
             bool insertComma = false;
 
-            foreach (Activizr.Site.Automation.City city in cities)
+            foreach (Swarmops.Site.Automation.City city in cities)
             {
                 if (!geographyIdTranslation.ContainsKey(city.GeographyId))
                 {
@@ -493,7 +493,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             StringBuilder sqlBuild = new StringBuilder("INSERT INTO PostalCodes (PostalCode, CityId, CountryId) VALUES ", 65536);
             insertComma = false;
 
-            foreach (Activizr.Site.Automation.PostalCode postalCode in postalCodes)
+            foreach (Swarmops.Site.Automation.PostalCode postalCode in postalCodes)
             {
                 if (cityIdsUsedLookup[postalCode.CityId] == false)
                 {
@@ -525,9 +525,9 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         // Create the sandbox
 
-        Activizr.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "activizr.com", "Act",
+        Swarmops.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "activizr.com", "Act",
                                                      rootGeographyId, true,
-                                                     true, 0).EnableEconomy(Activizr.Logic.Financial.Currency.FromCode("EUR"));
+                                                     true, 0).EnableEconomy(Swarmops.Logic.Financial.Currency.FromCode("EUR"));
 
         _initProgress = 100;
         _initMessage = "Complete.";
@@ -535,11 +535,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         Thread.Sleep(1000); // give some time for static var to stick and web interface to react before killing thread
     }
 
-    private static void InitDatabaseThreadCreateGeographyChildren(Activizr.Site.Automation.Geography[] children,
+    private static void InitDatabaseThreadCreateGeographyChildren(Swarmops.Site.Automation.Geography[] children,
                                                                   int parentGeographyId,
                                                                   ref Dictionary<int, int> geographyIdTranslation)
     {
-        foreach (Activizr.Site.Automation.Geography geography in children)
+        foreach (Swarmops.Site.Automation.Geography geography in children)
         {
             int newGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography(geography.Name, parentGeographyId);
             geographyIdTranslation[geography.GeographyId] = newGeographyId;
@@ -632,12 +632,12 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     {
         // Make sure that no first person exists already, as a security measure
 
-        Activizr.Logic.Pirates.Person personOne = null;
+        Swarmops.Logic.Pirates.Person personOne = null;
         bool personOneExists = false;
 
         try
         {
-            personOne = Activizr.Logic.Pirates.Person.FromIdentity(1);
+            personOne = Swarmops.Logic.Pirates.Person.FromIdentity(1);
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 if (personOne.CityName != "Duckville" || personOne.Email != "noreply@example.com")
@@ -665,7 +665,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             throw new InvalidOperationException("Cannot run initialization processes again when initialized.");
         }
 
-        Activizr.Logic.Pirates.Person newPerson = Activizr.Logic.Pirates.Person.Create(HttpUtility.UrlDecode(name), HttpUtility.UrlDecode(mail),
+        Swarmops.Logic.Pirates.Person newPerson = Swarmops.Logic.Pirates.Person.Create(HttpUtility.UrlDecode(name), HttpUtility.UrlDecode(mail),
                                              HttpUtility.UrlDecode(password), string.Empty, string.Empty, string.Empty,
                                              string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
@@ -684,7 +684,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             return; // Probable hack attempt - fail silently
         }
 
-        Activizr.Logic.Pirates.Person expectedPersonOne = Activizr.Logic.Security.Authentication.Authenticate("1", this.TextFirstUserPassword1.Text);
+        Swarmops.Logic.Pirates.Person expectedPersonOne = Swarmops.Logic.Security.Authentication.Authenticate("1", this.TextFirstUserPassword1.Text);
 
         if (expectedPersonOne != null)
         {

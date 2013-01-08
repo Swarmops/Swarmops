@@ -2,18 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Utility.Mail;
-using Activizr.Utility.Special.Sweden;
-using Activizr.Logic.Special.Sweden;
-
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Utility.Mail;
+using Swarmops.Utility.Special.Sweden;
 using NRss;
-using Activizr.Logic.Communications;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Support;
 
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class NewsletterChecker
     {

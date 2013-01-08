@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Mail;
 using System.Text;
-using Activizr.Basic;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Governance;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Media;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Special.Sweden;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Utility.BotCode;
-using Activizr.Utility.Mail;
-using Activizr.Utility.Special.Sweden;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
+using Swarmops.Utility.Special.Sweden;
+using Swarmops.Basic;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Governance;
+using Swarmops.Logic.Media;
+using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Support;
+using Swarmops.Utility.BotCode;
+using Swarmops.Utility.Mail;
 
-namespace Activizr.Backend
+namespace Swarmops.Backend
 {
 
     public class OneOffs
@@ -1004,7 +1004,7 @@ namespace Activizr.Backend
                     string password = Logic.Security.Authentication.CreateRandomPassword(16);
                     //MailServerDatabase.SetNewPassword(person.PartyEmail, password);
 
-                    Activizr.Utility.Mail.MailTransmitter mail = new Activizr.Utility.Mail.MailTransmitter
+                    MailTransmitter mail = new MailTransmitter
                         ("Rick Falkvinge (Piratpartiet)", "rick@piratpartiet.se",
                          "TREDJE lösen till din mail - jag klantade mig",
                          "Ok, jag är extremt klantig. Sorry. När det förra brevet gick ut nyss, så glömde jag ta bort koden som satte ett nytt lösen på allas mailkonton. Lösenordet byttes alltså alldeles nyss utan att du fick reda på det.\r\n\r\n" +
@@ -1150,8 +1150,8 @@ namespace Activizr.Backend
                                   "Nu gör vi ett kanonresultat i valet 2009, och ser till att chocka etablissemanget ordentligt!\r\n\r\n" +
                                   "Hälsningar,\r\nRick\r\n\r\n";
 
-                Activizr.Utility.Mail.MailTransmitter mail =
-                    new Activizr.Utility.Mail.MailTransmitter("Rick Falkvinge (Piratpartiet)",
+                MailTransmitter mail =
+                    new MailTransmitter("Rick Falkvinge (Piratpartiet)",
                                                                "rick.falkvinge@piratpartiet.se",
                                                                "Vill du vara aktiv medlem (\"aktivist\")?", mailBody,
                                                                membership.Person);
@@ -1194,9 +1194,9 @@ namespace Activizr.Backend
 
         public static void WriteFirstVolunteersToDb()
         {
-            Activizr.Basic.Types.BasicPWEvent[] events = PWEvents.ByType(EventType.NewVolunteer);
+            BasicPWEvent[] events = PWEvents.ByType(EventType.NewVolunteer);
 
-            foreach (Activizr.Basic.Types.BasicPWEvent newEvent in events)
+            foreach (BasicPWEvent newEvent in events)
             {
                 Geography geography = Geography.FromIdentity(newEvent.GeographyId);
                 string[] parts = newEvent.ParameterText.Split('|');

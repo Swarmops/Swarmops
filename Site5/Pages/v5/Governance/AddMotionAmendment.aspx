@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="AddMotionAmendment.aspx.cs" Inherits="Activizr.Pages.Governance.AddMotionAmendment" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="AddMotionAmendment.aspx.cs" Inherits="Swarmops.Pages.Governance.AddMotionAmendment" %>
 <%@ Register src="~/Controls/v5/Pirates/ComboPerson.ascx" tagname="ComboPerson" tagprefix="act5" %>
 
 

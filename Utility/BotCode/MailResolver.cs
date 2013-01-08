@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Communications;
-using Activizr.Utility.Mail;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
+using Swarmops.Utility.Mail;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class MailResolver
     {

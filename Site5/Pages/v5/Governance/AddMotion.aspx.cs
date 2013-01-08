@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Activizr.Logic.Governance;
-using Activizr.Logic.Pirates;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Governance;
 
-namespace Activizr.Pages.Governance
+namespace Swarmops.Pages.Governance
 {
 
     public partial class AddMotion : PageV5Base

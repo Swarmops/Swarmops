@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using Activizr.Logic.Support;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class HeartBeater
     {

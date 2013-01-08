@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="LanguageSelector.ascx.cs" Inherits="Activizr.Controls.Base.LanguageSelector" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="LanguageSelector.ascx.cs" Inherits="Swarmops.Controls.Base.LanguageSelector" %>
 
 <div style="margin:10px; margin-top:6px">
 

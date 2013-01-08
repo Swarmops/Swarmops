@@ -4,13 +4,13 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Utility.Financial
+namespace Swarmops.Utility.Financial
 {
     public class PaysonImporter
     {

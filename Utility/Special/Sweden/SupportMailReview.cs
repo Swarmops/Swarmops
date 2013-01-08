@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Mail;
 using System.Text;
-using Activizr.Basic;
-using Activizr.Logic.Special.Sweden;
-using Activizr.Logic.Support;
-using Activizr.Utility.Mail;
+using Swarmops.Utility.Mail;
+using Swarmops.Basic;
+using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Utility.Special.Sweden
+namespace Swarmops.Utility.Special.Sweden
 {
     public class SupportMailReview
     {

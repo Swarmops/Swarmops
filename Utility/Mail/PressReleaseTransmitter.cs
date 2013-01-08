@@ -6,12 +6,12 @@ using System.Net.Mime;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using Activizr.Basic;
-using Activizr.Basic.Types;
-using Activizr.Logic.Media;
+using Swarmops.Basic.Types;
+using Swarmops.Basic;
+using Swarmops.Logic.Media;
 
 
-namespace Activizr.Utility.Mail
+namespace Swarmops.Utility.Mail
 {
 
     /// <summary>

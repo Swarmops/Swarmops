@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using System.Net.Mail;
-using Activizr.Basic;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Support;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Utility.Mail
+namespace Swarmops.Utility.Mail
 {
     public class MailTransmitter
     {

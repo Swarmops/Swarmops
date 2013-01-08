@@ -1,7 +1,7 @@
 ﻿using System;
-using Activizr.Basic.Interfaces;
+using Swarmops.Basic.Interfaces;
 
-namespace Activizr.Basic.Types.Financial
+namespace Swarmops.Basic.Types.Financial
 {
     [Serializable]
     public class BasicCashAdvance: IHasIdentity

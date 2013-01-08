@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Governance;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Governance;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class BallotComposer
     {

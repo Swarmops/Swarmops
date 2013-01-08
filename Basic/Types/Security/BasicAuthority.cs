@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Activizr.Basic.Types.Security
+namespace Swarmops.Basic.Types.Security
 {
     /// <summary>
     /// Container of a person's authority within PirateWeb.

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Financial;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Financial;
 
 public partial class Tests_TestBookkeepingIntegrity : PageV5Base
 {

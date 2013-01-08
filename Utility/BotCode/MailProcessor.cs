@@ -5,17 +5,17 @@ using System.IO;
 using System.Text;
 using System.Net.Mail;
 using System.Net.Mime;
-using Activizr.Basic;
-using Activizr.Basic.Enums;
-using Activizr.Utility.Mail;
-using Activizr.Basic.Diagnostics;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Media;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Support;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Diagnostics;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Pirates;
 using System.Threading;
+using Swarmops.Basic;
+using Swarmops.Logic.Media;
+using Swarmops.Logic.Support;
+using Swarmops.Utility.Mail;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class MailProcessor
     {
@@ -62,14 +62,14 @@ namespace Activizr.Utility.BotCode
         }
         #endregion
 
-        static Activizr.Logic.Support.QuotedPrintable qpUTF8 = new Activizr.Logic.Support.QuotedPrintable(Encoding.UTF8);
-        static Activizr.Logic.Support.QuotedPrintable qp8859 = new Activizr.Logic.Support.QuotedPrintable(Encoding.GetEncoding("ISO-8859-1"));
-        static Dictionary<Encoding, Activizr.Logic.Support.QuotedPrintable> QuotedPrintableEncoder = InitQpDictionary();
+        static QuotedPrintable qpUTF8 = new QuotedPrintable(Encoding.UTF8);
+        static QuotedPrintable qp8859 = new QuotedPrintable(Encoding.GetEncoding("ISO-8859-1"));
+        static Dictionary<Encoding, QuotedPrintable> QuotedPrintableEncoder = InitQpDictionary();
 
         #region Static initialisation
-        static private Dictionary<Encoding, Activizr.Logic.Support.QuotedPrintable> InitQpDictionary ()
+        static private Dictionary<Encoding, QuotedPrintable> InitQpDictionary ()
         {
-            Dictionary<Encoding, Activizr.Logic.Support.QuotedPrintable> qp = new Dictionary<Encoding, Activizr.Logic.Support.QuotedPrintable>();
+            Dictionary<Encoding, QuotedPrintable> qp = new Dictionary<Encoding, QuotedPrintable>();
             qp[Encoding.UTF8] = qpUTF8;
             qp[Encoding.GetEncoding("ISO-8859-1")] = qp8859;
             return qp;
@@ -375,7 +375,7 @@ namespace Activizr.Utility.BotCode
                 else
                     currentEncoding = Encoding.UTF8;
 
-                Activizr.Logic.Support.QuotedPrintable qp = QuotedPrintableEncoder[currentEncoding];
+                QuotedPrintable qp = QuotedPrintableEncoder[currentEncoding];
 
 
                 MailMessage message = new MailMessage();
