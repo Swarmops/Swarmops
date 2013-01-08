@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Activizr.Basic.Interfaces
+namespace Swarmops.Basic.Interfaces
 {
     public interface IEmailPerson : IHasIdentity
     {

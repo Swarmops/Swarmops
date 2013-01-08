@@ -1,10 +1,10 @@
 using System;
-using Activizr.Logic.Structure;
-using Activizr.Database;
+using Swarmops.Logic.Structure;
 using System.Collections.Generic;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Cache
+namespace Swarmops.Logic.Cache
 {
     public class OrganizationCache
     {
