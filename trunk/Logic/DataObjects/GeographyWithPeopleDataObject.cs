@@ -1,11 +1,11 @@
 using System.ComponentModel;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Pirates;
 using System;
 using System.Collections.Generic;
-using Activizr.Database;
+using Swarmops.Database;
 
-namespace Activizr.Logic.DataObjects
+namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
     [DataObject(true)]
@@ -33,7 +33,7 @@ namespace Activizr.Logic.DataObjects
                 row.SecondsContent = "";
                 row.OrgId = orgId;
                 Geographies gTree = geo.GetTree();
-                int[] members = Activizr.Database.PirateDb.GetDatabaseForReading().GetMembersForOrganizationsAndGeographies(orgs.Identities, gTree.Identities);
+                int[] members = PirateDb.GetDatabaseForReading().GetMembersForOrganizationsAndGeographies(orgs.Identities, gTree.Identities);
 
 
             }

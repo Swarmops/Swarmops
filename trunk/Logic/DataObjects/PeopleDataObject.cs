@@ -1,9 +1,9 @@
 using System.ComponentModel;
-using Activizr.Logic.Pirates;
+using Swarmops.Logic.Pirates;
 using System;
 using System.Collections.Generic;
 
-namespace Activizr.Logic.DataObjects
+namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
     [DataObject(true)]
