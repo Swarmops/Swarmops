@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Logic.Support;
+using Swarmops.Logic.Support;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Governance
+namespace Swarmops.Logic.Governance
 {
     public class MeetingElectionVoters: List<MeetingElectionVoter>
     {

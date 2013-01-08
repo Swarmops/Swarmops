@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Support;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Governance
+namespace Swarmops.Logic.Governance
 {
     public class MeetingElectionCandidates: PluralBase<MeetingElectionCandidates,MeetingElectionCandidate,BasicInternalPollCandidate>
     {
