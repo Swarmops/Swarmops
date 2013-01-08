@@ -1,11 +1,11 @@
 using System;
 using System.Data.Common;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Enums;
 using System.Collections.Generic;
 using System.Data;
+using Swarmops.Basic.Types;
 
-namespace Activizr.Database
+namespace Swarmops.Database
 {
     public partial class PirateDb
     {

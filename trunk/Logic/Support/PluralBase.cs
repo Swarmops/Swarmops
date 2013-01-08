@@ -1,9 +1,9 @@
 
 
 using System.Collections.Generic;
-using Activizr.Basic.Interfaces;
+using Swarmops.Basic.Interfaces;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class PluralBase<TPlural,TSingular,TBasic>: List<TSingular>, IHasIdentities
         where TPlural: PluralBase<TPlural, TSingular, TBasic>, new()

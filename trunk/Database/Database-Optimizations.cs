@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
 
 
 // This file contains odd functions that are optimizations of very specific cases, that would otherwise
 // require remodeling of the data model and/or very expensive database operations.
 
-namespace Activizr.Database
+namespace Swarmops.Database
 {
     public partial class PirateDb
     {

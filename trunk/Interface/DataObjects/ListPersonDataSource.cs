@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Web;
-using Activizr.Logic.Pirates;
-using Activizr.Basic.Types;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic.Types;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Structure;
 using System.Reflection;
 
 /// <summary>

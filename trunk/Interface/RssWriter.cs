@@ -16,7 +16,7 @@ using System.IO;
 // Validate feeds by URL: http://feedvalidator.org, or http://validator.w3.org/feed
 // Code for RSS writer from http://blogs.msdn.com/jmstall  
 
-namespace Activizr.Interface
+namespace Swarmops.Interface
 {
 
     public class RssWriter

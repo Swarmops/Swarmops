@@ -8,7 +8,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 
-namespace Activizr.Database
+namespace Swarmops.Database
 {
     public partial class PirateDb
     {

@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Interfaces;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class Document: BasicDocument
     {

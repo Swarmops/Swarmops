@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Interface
+namespace Swarmops.Interface
 {
     public class PersonIcon
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Activizr.Basic.Diagnostics
+namespace Swarmops.Basic.Diagnostics
 {
 	public class Logging
 	{

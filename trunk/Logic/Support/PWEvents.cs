@@ -1,9 +1,9 @@
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Enums;
 using System.Collections.Generic;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class PWEvents
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web;
 
-namespace Activizr.Interface.Objects
+namespace Swarmops.Interface.Objects
 {
     public class OrganizationMetadata
     {

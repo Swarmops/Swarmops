@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Basic.Enums;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Basic.Enums;
 
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class ActivistEvents
     {

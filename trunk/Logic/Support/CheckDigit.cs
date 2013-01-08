@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     /// <summary>
     /// This class implements the Verhoeff check digit scheme.

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Activizr.Database.Attributes
+namespace Swarmops.Database.Attributes
 {
     /// <summary>
     /// DbRecordType is used to mark a class what its database record is named

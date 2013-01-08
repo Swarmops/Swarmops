@@ -5,10 +5,10 @@ using System.Data.Common;
 using System.Configuration;
 using System.IO;
 using System.Web;
-using Activizr.Basic.Diagnostics;
 using MySql.Data;
+using Swarmops.Basic.Diagnostics;
 
-namespace Activizr.Database
+namespace Swarmops.Database
 {
     /// <summary>
     /// A generic database handler

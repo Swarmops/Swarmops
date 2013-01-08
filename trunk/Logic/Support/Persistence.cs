@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Activizr.Database;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class Persistence
     {

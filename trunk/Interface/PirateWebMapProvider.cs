@@ -5,7 +5,7 @@ using System.Text;
 using System.Web;
 
 
-namespace Activizr.Interface
+namespace Swarmops.Interface
 {
 	public class PirateWebMapProvider: XmlSiteMapProvider
 	{

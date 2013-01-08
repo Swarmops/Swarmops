@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
 
     /// <summary>

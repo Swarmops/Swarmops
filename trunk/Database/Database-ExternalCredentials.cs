@@ -1,8 +1,8 @@
 using System;
 using System.Data.Common;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Types;
 
-namespace Activizr.Database
+namespace Swarmops.Database
 {
     public partial class PirateDb
     {

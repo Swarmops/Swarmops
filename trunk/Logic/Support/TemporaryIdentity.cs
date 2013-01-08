@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Interfaces;
-using Activizr.Database;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class TemporaryIdentity: IHasIdentity
     {

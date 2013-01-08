@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Swarmops.Basic.Interfaces;
 
-using Activizr.Basic.Interfaces;
-
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     internal class LogicServices
     {
