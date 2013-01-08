@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Support;
 using MySql.Data.MySqlClient;
 
 using System.IO;
 using System.Data.Common;
 
-using Activizr.Logic;
+using Swarmops.Logic;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Special.Mail
+namespace Swarmops.Logic.Special.Mail
 {
     // Have moved this Class from Utility to Logic to avoid circular dependency between assemblies /JL
     public class MailServerDatabase
