@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace Activizr.Logic.Interfaces
+namespace Swarmops.Logic.Interfaces
 {
     internal interface ITreeNode
     {
