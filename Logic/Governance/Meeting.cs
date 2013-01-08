@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Types.Governance;
-using Activizr.Database;
+using Swarmops.Basic.Types.Governance;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Governance
+namespace Swarmops.Logic.Governance
 {
     public class Meeting: BasicMeeting
     {
