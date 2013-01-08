@@ -1,8 +1,8 @@
 using System.ComponentModel;
-using Activizr.Logic.Pirates;
-using Activizr.Database;
+using Swarmops.Logic.Pirates;
+using Swarmops.Database;
 
-namespace Activizr.Logic.DataObjects
+namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
     [DataObject (true)]

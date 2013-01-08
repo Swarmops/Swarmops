@@ -1,13 +1,13 @@
 using System.ComponentModel;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Pirates;
 using System;
 using System.Collections.Generic;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Types;
 using System.Collections.ObjectModel;
 using System.Web;
 
-namespace Activizr.Logic.DataObjects
+namespace Swarmops.Logic.DataObjects
 {
 
 #if !__MonoCS__
@@ -337,7 +337,7 @@ namespace Activizr.Logic.DataObjects
 
 
 #if !__MonoCS__
-        [DataObjectMethodAttribute(DataObjectMethodType.Insert, true)]
+        [DataObjectMethod(DataObjectMethodType.Insert, true)]
 #endif
         public int AddOrganization (Org org)
         {
@@ -357,7 +357,7 @@ namespace Activizr.Logic.DataObjects
         }
 
 #if !__MonoCS__
-        [DataObjectMethodAttribute(DataObjectMethodType.Update, false)]
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
 #endif
         public int AddDuplicateOrganization (Org org)
         {
@@ -367,7 +367,7 @@ namespace Activizr.Logic.DataObjects
         }
 
 #if !__MonoCS__
-        [DataObjectMethodAttribute(DataObjectMethodType.Update, true)]
+        [DataObjectMethod(DataObjectMethodType.Update, true)]
 #endif
         public bool UpdateOrganisation (Org org)
         {
@@ -524,7 +524,7 @@ namespace Activizr.Logic.DataObjects
 
 
 #if !__MonoCS__
-        [DataObjectMethodAttribute(DataObjectMethodType.Delete, false)]
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
 #endif
         public bool DeleteUptake (UptakeGeography ut)
         {
@@ -535,7 +535,7 @@ namespace Activizr.Logic.DataObjects
         }
 
 #if !__MonoCS__
-        [DataObjectMethodAttribute(DataObjectMethodType.Insert, false)]
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
 #endif
         public bool AddUptake (UptakeGeography ut)
         {

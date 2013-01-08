@@ -1,12 +1,12 @@
 using System;
 using System.ComponentModel;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Basic.Types.Security;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Security;
 
-namespace Activizr.Logic.DataObjects
+namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
     [DataObject (true)]

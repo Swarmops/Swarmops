@@ -1,9 +1,9 @@
 using System.ComponentModel;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.DataObjects
+namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
     [DataObject (true)]
