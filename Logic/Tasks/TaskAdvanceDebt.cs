@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Activizr.Logic.Tasks
+namespace Swarmops.Logic.Tasks
 {
     public class TaskAdvanceDebt: TaskBase
     {

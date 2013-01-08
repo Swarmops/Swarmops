@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
-using Activizr.Basic.Enums;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
+using Swarmops.Basic.Enums;
 
-namespace Activizr.Logic.Tasks
+namespace Swarmops.Logic.Tasks
 {
     public class Tasks: List<TaskGroup>
     {
