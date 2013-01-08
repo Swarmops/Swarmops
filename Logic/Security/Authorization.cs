@@ -5,7 +5,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Security

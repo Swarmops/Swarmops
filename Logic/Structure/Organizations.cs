@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Structure

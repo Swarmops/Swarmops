@@ -7,7 +7,7 @@ using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     [Serializable]
     public class MembershipEvents : List<MembershipEvent>

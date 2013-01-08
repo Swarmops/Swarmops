@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 

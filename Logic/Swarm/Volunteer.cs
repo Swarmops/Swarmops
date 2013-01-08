@@ -4,7 +4,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     [Serializable]
     public class Volunteer : BasicVolunteer
@@ -195,7 +195,7 @@ namespace Swarmops.Logic.Pirates
                     volonteerGeography = volonteerGeography.Parent;
                 }
 
-                Person localLead = Pirates.Roles.GetLocalLead(withinOrg, volonteerGeography.Identity);
+                Person localLead = Swarm.Roles.GetLocalLead(withinOrg, volonteerGeography.Identity);
 
                 if (localLead == null && volonteerGeography.Parent != null)
                 {
@@ -206,7 +206,7 @@ namespace Swarmops.Logic.Pirates
                     {
                         volonteerGeography = volonteerGeography.Parent;
                     }
-                    localLead = Pirates.Roles.GetLocalLead(withinOrg, volonteerGeography.Parent.Parent.Identity);
+                    localLead = Swarm.Roles.GetLocalLead(withinOrg, volonteerGeography.Parent.Parent.Identity);
                 }
 
                 //Found anyone? otherwise leave default Owner.

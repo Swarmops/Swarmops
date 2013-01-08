@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;

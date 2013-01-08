@@ -5,7 +5,7 @@ using System.Text;
 using System.Web;
 using System.Xml.Serialization;
 using Swarmops.Database;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Structure
 {

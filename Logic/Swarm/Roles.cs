@@ -6,7 +6,7 @@ using Swarmops.Database;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class Roles : List<PersonRole>
     {

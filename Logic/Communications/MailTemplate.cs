@@ -1,5 +1,5 @@
 using Swarmops.Basic.Enums;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using System.Collections.Generic;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;

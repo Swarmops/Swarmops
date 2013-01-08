@@ -6,7 +6,7 @@ using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class Parleys: PluralBase<Parleys,Parley,BasicParley>
     {

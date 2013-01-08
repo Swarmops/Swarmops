@@ -4,7 +4,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Text;
 using Swarmops.Basic.Enums;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Database;
 
 namespace Swarmops.Utility.Migrations

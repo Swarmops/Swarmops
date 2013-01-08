@@ -1,6 +1,6 @@
 using Swarmops.Basic.Types;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class ChurnDataPoint : BasicChurnDataPoint
     {

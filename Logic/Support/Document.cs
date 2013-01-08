@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;

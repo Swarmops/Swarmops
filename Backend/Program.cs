@@ -10,7 +10,7 @@ using System.Net.Mail;
 using Swarmops.Basic;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using System.Diagnostics;
 using Swarmops.Logic.Special.Sweden;

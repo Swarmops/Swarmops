@@ -3,7 +3,7 @@ using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Media;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Communications
 {

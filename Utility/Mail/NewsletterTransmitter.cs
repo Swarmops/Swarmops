@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 
 using Swarmops.Basic.Types;
-using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Utility.Mail

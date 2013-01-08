@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
 
-namespace Swarmops.Logic.Pirates
+namespace Swarmops.Logic.Swarm
 {
     public class VolunteerRoles : List<VolunteerRole>
     {
