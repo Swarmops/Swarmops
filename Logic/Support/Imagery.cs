@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Text;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class Imagery
     {

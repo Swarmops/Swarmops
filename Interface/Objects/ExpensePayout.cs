@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Interfaces;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Basic.Interfaces;
 
 
-namespace Activizr.Interface.Objects
+namespace Swarmops.Interface.Objects
 {
 	public class ExpensePayout: IHasIdentity
 	{

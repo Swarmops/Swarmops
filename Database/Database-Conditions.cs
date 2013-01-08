@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Activizr.Basic.Interfaces;
-using Activizr.Database.Attributes;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Database.Attributes;
 
-namespace Activizr.Database
+namespace Swarmops.Database
 {
     public partial class PirateDb
     {

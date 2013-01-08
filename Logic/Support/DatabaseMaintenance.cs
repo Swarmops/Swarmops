@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-using Activizr.Database;
-using Activizr.Logic.Pirates;
+using Swarmops.Logic.Pirates;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class DatabaseMaintenance
     {

@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Interfaces;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
 
     [Serializable]

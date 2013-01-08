@@ -1,12 +1,12 @@
 using System;
-using Activizr.Logic.Pirates;
-using Activizr.Database;
+using Swarmops.Logic.Pirates;
 using System.Web;
 using System.Net;
 using System.Collections.Generic;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     // ReSharper disable InconsistentNaming
     public class PWLog 

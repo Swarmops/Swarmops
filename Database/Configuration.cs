@@ -6,7 +6,7 @@ using System.Text;
 using System.Web;
 using System.Xml.Serialization;
 
-namespace Activizr.Database
+namespace Swarmops.Database
 {
     public partial class PirateDb
     {

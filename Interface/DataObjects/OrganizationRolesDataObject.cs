@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Interface.Collections;
-using Activizr.Interface.Objects;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Enums;
+using Swarmops.Interface.Collections;
+using Swarmops.Interface.Objects;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Basic.Types;
 
-namespace Activizr.Interface.DataObjects
+namespace Swarmops.Interface.DataObjects
 {
 #if !__MonoCS__
     [DataObject(true)]

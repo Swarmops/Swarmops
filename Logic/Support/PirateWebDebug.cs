@@ -1,7 +1,7 @@
 using System.IO;
 using System.Web;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class PirateWebDebug
     {

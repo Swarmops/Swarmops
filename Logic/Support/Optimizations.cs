@@ -1,8 +1,7 @@
 using System.Collections.Generic;
+using Swarmops.Database;
 
-using Activizr.Database;
-
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     /// <summary>
     /// This class contains one-off optimizations that don't fit anywhere.

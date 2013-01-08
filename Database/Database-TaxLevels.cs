@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.Common;
 
 
-namespace Activizr.Database
+namespace Swarmops.Database
 {
     public partial class PirateDb
     {

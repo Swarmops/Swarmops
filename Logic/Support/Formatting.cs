@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Security;
-using Activizr.Logic.Support;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 using System.Text.RegularExpressions;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public static class Formatting
     {

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Activizr.Interface.Collections;
-using Activizr.Interface.Objects;
+using Swarmops.Interface.Collections;
+using Swarmops.Interface.Objects;
 
-namespace Activizr.Interface.DataObjects
+namespace Swarmops.Interface.DataObjects
 {
 #if !__MonoCS__
 	[DataObject(true)]

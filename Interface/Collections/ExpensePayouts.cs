@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Interface.Objects;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Interface.Objects;
 
-namespace Activizr.Interface.Collections
+namespace Swarmops.Interface.Collections
 {
 	class ExpensePayouts: List<ExpensePayout>
 	{

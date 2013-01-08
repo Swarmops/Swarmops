@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Governance;
-using Activizr.Logic.Pirates;
-using Activizr.Basic.Interfaces;
-using Activizr.Basic.Types;
-using Activizr.Basic.Types.Governance;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Governance;
+using Swarmops.Logic.Governance;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     /// <summary>
     /// This class supports the PluralBase foundation. Mirroring FromBasic() here is the

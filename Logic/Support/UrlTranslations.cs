@@ -1,6 +1,6 @@
-using Activizr.Database;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Support
+namespace Swarmops.Logic.Support
 {
     public class UrlTranslations
     {

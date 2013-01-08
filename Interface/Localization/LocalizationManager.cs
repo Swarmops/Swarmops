@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Activizr.Interface.Localization
+namespace Swarmops.Interface.Localization
 {
     public class LocalizationManager
     {
