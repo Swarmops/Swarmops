@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace Activizr.Basic.Types
+namespace Swarmops.Basic.Types
 {
     public class BasicPaymentInformation
     {

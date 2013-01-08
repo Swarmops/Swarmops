@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Enums;
+using Swarmops.Basic.Enums;
 
-namespace Activizr.Basic.Enums
+namespace Swarmops.Basic.Enums
 {
     public enum ChurnDataType
     {
@@ -19,7 +19,7 @@ namespace Activizr.Basic.Enums
     }
 }
 
-namespace Activizr.Basic.Types
+namespace Swarmops.Basic.Types
 {
     public class BasicChurnDataPoint
     {
