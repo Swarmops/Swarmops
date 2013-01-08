@@ -1,16 +1,16 @@
-using Activizr.Logic.Cache;
-using Activizr.Logic.Structure;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Logic.Pirates;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Pirates;
 using System.Collections.Generic;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using System;
 using System.Web;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Cache;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Communications
+namespace Swarmops.Logic.Communications
 {
     public class MailTemplate : BasicMailTemplate
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Activizr.Basic.Types;
+using Swarmops.Basic.Types;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     [Serializable]
     public class PostalCode: BasicPostalCode

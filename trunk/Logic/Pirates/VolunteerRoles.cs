@@ -1,8 +1,7 @@
 using System.Collections.Generic;
+using Swarmops.Basic.Types;
 
-using Activizr.Basic.Types;
-
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class VolunteerRoles : List<VolunteerRole>
     {

@@ -1,15 +1,15 @@
 using System;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Logic.Communications;
-using Activizr.Basic.Enums;
+using Swarmops.Logic.Communications;
 using System.Collections.Generic;
 using System.Web;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class Membership : BasicMembership
     {

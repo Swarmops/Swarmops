@@ -1,4 +1,4 @@
-namespace Activizr.Basic
+namespace Swarmops.Basic
 {
 	public enum AddressValidationResult
 	{

@@ -1,22 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Media;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Basic.Enums;
 using System.Globalization;
 using System.Web;
 using System.Reflection;
-using Activizr.Basic.Types;
-using Activizr.Basic.Interfaces;
+using Swarmops.Basic.Types;
 using System.Xml.Serialization;
 using System.IO;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Logic.Media;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Communications
+namespace Swarmops.Logic.Communications
 {
     public class TypedMailTemplate
     {

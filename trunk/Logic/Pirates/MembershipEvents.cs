@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
-
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     [Serializable]
     public class MembershipEvents : List<MembershipEvent>

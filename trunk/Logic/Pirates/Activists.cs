@@ -1,9 +1,9 @@
 using System;
-using Activizr.Logic.Structure;
-using Activizr.Database;
 using System.Collections.Generic;
+using Swarmops.Database;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class Activists
     {

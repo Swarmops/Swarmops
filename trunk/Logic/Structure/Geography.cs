@@ -1,13 +1,13 @@
 using System;
 using System.Xml.Serialization;
-using Activizr.Logic.Cache;
-using Activizr.Logic.Interfaces;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
 using System.Collections.Generic;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Cache;
+using Swarmops.Logic.Interfaces;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     [Serializable]
     public class Geography : BasicGeography, ITreeNode, ITreeNodeObject

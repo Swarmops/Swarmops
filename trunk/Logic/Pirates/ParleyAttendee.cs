@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Support;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Structure;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class ParleyAttendee: BasicParleyAttendee
     {

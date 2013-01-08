@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class People : List<Person>
     {

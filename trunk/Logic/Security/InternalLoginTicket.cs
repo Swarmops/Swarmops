@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Activizr.Logic.Security
+namespace Swarmops.Logic.Security
 {
     public class InternalLoginTicket
     {

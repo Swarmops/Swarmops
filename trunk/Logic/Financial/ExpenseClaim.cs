@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     public class ExpenseClaim : BasicExpenseClaim, IValidatable, IAttestable
     {

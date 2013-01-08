@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Types;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     [Serializable]
     public class YearlyReport

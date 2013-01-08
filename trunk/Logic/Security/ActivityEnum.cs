@@ -1,4 +1,4 @@
-namespace Activizr.Logic.Security
+namespace Swarmops.Logic.Security
 {
     public enum Activity
     {

@@ -1,9 +1,9 @@
 using System;
-using Activizr.Logic.Security;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Security;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class PaymentCode : BasicPaymentCode
     {

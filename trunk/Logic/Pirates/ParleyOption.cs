@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     public class ParleyOption: BasicParleyOption
     {

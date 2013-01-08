@@ -7,12 +7,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Telerik.Web.UI;
+using Membership = Swarmops.Logic.Pirates.Membership;
 
-namespace Activizr
+namespace Swarmops
 {
     public partial class MasterV5 : MasterV5Base
     {
@@ -124,7 +125,7 @@ namespace Activizr
 
             Memberships memberships = _currentUser.GetMemberships();
 
-            foreach (Activizr.Logic.Pirates.Membership membership in memberships)
+            foreach (Membership membership in memberships)
             {
                 if (membership.OrganizationId != sandboxId) // sandbox is already added
                 {
@@ -409,7 +410,7 @@ namespace Activizr
             {
                 bool foundMembership = false;
                 Memberships currentUserMemberships = _currentUser.GetMemberships();
-                foreach (Activizr.Logic.Pirates.Membership membership in currentUserMemberships)
+                foreach (Membership membership in currentUserMemberships)
                 {
                     if (membership.OrganizationId == desiredOrganizationId)
                     {

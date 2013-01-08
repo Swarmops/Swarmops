@@ -1,8 +1,8 @@
 using System;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     public class FinancialTransactionRow : BasicFinancialTransactionRow
     {

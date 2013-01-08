@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     public class ImportedBankData
     {

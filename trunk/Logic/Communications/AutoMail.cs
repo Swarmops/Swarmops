@@ -1,10 +1,10 @@
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types.Communications;
-using Activizr.Database;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types.Communications;
+using Swarmops.Database;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Communications
+namespace Swarmops.Logic.Communications
 {
     public class AutoMail : BasicAutoMail
     {

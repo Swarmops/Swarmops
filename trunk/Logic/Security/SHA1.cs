@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Activizr.Logic.Security
+namespace Swarmops.Logic.Security
 {
     /// <summary>
     /// Summary description for SHA1.

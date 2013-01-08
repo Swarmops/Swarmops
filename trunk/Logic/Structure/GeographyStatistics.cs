@@ -4,10 +4,10 @@ using System.IO;
 using System.Text;
 using System.Web;
 using System.Xml.Serialization;
-using Activizr.Logic.Pirates;
-using Activizr.Database;
+using Swarmops.Database;
+using Swarmops.Logic.Pirates;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     [Serializable]
     public class GeographyStatistics : Dictionary<int, GeographyDataPoint>

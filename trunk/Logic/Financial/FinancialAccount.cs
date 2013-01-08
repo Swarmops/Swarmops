@@ -1,13 +1,13 @@
 using System;
-using Activizr.Logic.Interfaces;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Basic.Enums;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Interfaces;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     public class FinancialAccount : BasicFinancialAccount, ITreeNode, IOwnerSettable
     {

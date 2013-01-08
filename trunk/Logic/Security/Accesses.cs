@@ -1,7 +1,7 @@
-﻿using Activizr.Basic.Enums;
-using Activizr.Logic.Structure;
+﻿using Swarmops.Basic.Enums;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Security
+namespace Swarmops.Logic.Security
 {
     public class Access
     {

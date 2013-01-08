@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Basic.Types;
-using Activizr.Database;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Communications
+namespace Swarmops.Logic.Communications
 {
     public class CommunicationTurnaround: BasicCommunicationTurnaround
     {

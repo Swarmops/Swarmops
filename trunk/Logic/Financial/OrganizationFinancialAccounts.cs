@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Database;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Enums;
+using Swarmops.Database;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     /// <summary>
     /// Accessors for special accounts for a particular organization.

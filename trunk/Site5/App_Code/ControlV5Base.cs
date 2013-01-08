@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Web;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 
 /// <summary>
 /// Summary description for ControlV5Base

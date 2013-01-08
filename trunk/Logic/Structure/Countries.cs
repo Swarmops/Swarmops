@@ -1,9 +1,8 @@
 using System.Collections.Generic;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-using Activizr.Basic.Types;
-using Activizr.Database;
-
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     public class Countries : List<Country>
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     [Serializable]
     public class GeographyDataPoint

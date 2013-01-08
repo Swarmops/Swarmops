@@ -1,11 +1,11 @@
-using Activizr.Logic.Media;
-using Activizr.Logic.Pirates;
-using Activizr.Basic.Types;
-using Activizr.Database;
 using System;
-using Activizr.Basic.Interfaces;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Media;
+using Swarmops.Logic.Pirates;
 
-namespace Activizr.Logic.Communications
+namespace Swarmops.Logic.Communications
 {
     public class OutboundMailRecipient : BasicOutboundMailRecipient
     {

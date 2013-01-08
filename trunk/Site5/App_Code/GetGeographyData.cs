@@ -20,18 +20,18 @@ using System.Xml.Serialization;
 // 
 
 
-namespace Activizr.Site.Automation
+namespace Swarmops.Site.Automation
 {
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name = "GetGeographyDataSoap", Namespace = "http://activizr.com/")]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof (BasicGeography))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof (BasicPostalCode))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof (BasicCity))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof (BasicCountry))]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [WebServiceBinding(Name = "GetGeographyDataSoap", Namespace = "http://activizr.com/")]
+    [XmlInclude(typeof (BasicGeography))]
+    [XmlInclude(typeof (BasicPostalCode))]
+    [XmlInclude(typeof (BasicCity))]
+    [XmlInclude(typeof (BasicCountry))]
     public partial class GetGeographyData : System.Web.Services.Protocols.SoapHttpClientProtocol
     {
 
@@ -72,7 +72,7 @@ namespace Activizr.Site.Automation
         public event GetGeographyForCountryCompletedEventHandler GetGeographyForCountryCompleted;
 
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetCountries",
+        [SoapDocumentMethod("http://activizr.com/GetCountries",
             RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -125,7 +125,7 @@ namespace Activizr.Site.Automation
         }
 
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetCountriesInUse",
+        [SoapDocumentMethod("http://activizr.com/GetCountriesInUse",
             RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -180,7 +180,7 @@ namespace Activizr.Site.Automation
         }
 
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetCitiesForCountry",
+        [SoapDocumentMethod("http://activizr.com/GetCitiesForCountry",
             RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -245,7 +245,7 @@ namespace Activizr.Site.Automation
         }
 
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetPostalCodesForCountry",
+        [SoapDocumentMethod("http://activizr.com/GetPostalCodesForCountry",
             RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -310,7 +310,7 @@ namespace Activizr.Site.Automation
         }
 
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetGeography",
+        [SoapDocumentMethod("http://activizr.com/GetGeography",
             RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -372,7 +372,7 @@ namespace Activizr.Site.Automation
         }
 
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://activizr.com/GetGeographyForCountry",
+        [SoapDocumentMethod("http://activizr.com/GetGeographyForCountry",
             RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -445,21 +445,21 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    [Serializable()]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://activizr.com/")]
     public partial class Country : BasicCountry
     {
     }
 
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof (Country))]
+    [XmlInclude(typeof (Country))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    [Serializable()]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://activizr.com/")]
     public partial class BasicCountry
     {
 
@@ -510,12 +510,12 @@ namespace Activizr.Site.Automation
     }
 
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof (Geography))]
+    [XmlInclude(typeof (Geography))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    [Serializable()]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://activizr.com/")]
     public partial class BasicGeography
     {
 
@@ -558,10 +558,10 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    [Serializable()]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://activizr.com/")]
     public partial class Geography : BasicGeography
     {
 
@@ -576,12 +576,12 @@ namespace Activizr.Site.Automation
     }
 
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof (PostalCode))]
+    [XmlInclude(typeof (PostalCode))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    [Serializable()]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://activizr.com/")]
     public partial class BasicPostalCode
     {
 
@@ -624,21 +624,21 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    [Serializable()]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://activizr.com/")]
     public partial class PostalCode : BasicPostalCode
     {
     }
 
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof (City))]
+    [XmlInclude(typeof (City))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    [Serializable()]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://activizr.com/")]
     public partial class BasicCity
     {
 
@@ -681,10 +681,10 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://activizr.com/")]
+    [Serializable()]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
+    [XmlType(Namespace = "http://activizr.com/")]
     public partial class City : BasicCity
     {
     }
@@ -695,8 +695,8 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
     public partial class GetCountriesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
     {
 
@@ -726,8 +726,8 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
     public partial class GetCountriesInUseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
     {
 
@@ -758,8 +758,8 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
     public partial class GetCitiesForCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
     {
 
@@ -790,8 +790,8 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
     public partial class GetPostalCodesForCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
     {
 
@@ -821,8 +821,8 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
     public partial class GetGeographyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
     {
 
@@ -853,8 +853,8 @@ namespace Activizr.Site.Automation
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [DebuggerStepThrough()]
+    [DesignerCategory("code")]
     public partial class GetGeographyForCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
     {
 

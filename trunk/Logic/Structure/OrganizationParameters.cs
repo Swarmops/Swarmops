@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Support;
-using Activizr.Basic.Enums;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Structure
+namespace Swarmops.Logic.Structure
 {
     public class OrganizationParameters
     {

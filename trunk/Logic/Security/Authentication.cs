@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Support;
-using Activizr;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Logic.Security.App_LocalResources;
-using Activizr.Logic.Structure;
+using Swarmops;
+using Swarmops.Logic.Security.App_LocalResources;
+using Swarmops.Logic.Structure;
 using System.Globalization;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Security
+namespace Swarmops.Logic.Security
 {
     public class Authentication
     {

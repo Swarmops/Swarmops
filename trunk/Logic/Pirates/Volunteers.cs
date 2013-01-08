@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Xml.Serialization;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
 
-using Activizr.Basic.Types;
-using Activizr.Database;
-
-namespace Activizr.Logic.Pirates
+namespace Swarmops.Logic.Pirates
 {
     [Serializable]
     public class Volunteers : List<Volunteer>

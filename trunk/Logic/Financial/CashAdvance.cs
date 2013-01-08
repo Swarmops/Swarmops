@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Activizr.Basic.Types.Financial;
-using Activizr.Database;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
+using Swarmops.Basic.Types.Financial;
+using Swarmops.Database;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Financial
+namespace Swarmops.Logic.Financial
 {
     [Serializable]
     public class CashAdvance: BasicCashAdvance, IAttestable

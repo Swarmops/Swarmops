@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using Activizr.Logic.Cache;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Basic.Types.Security;
-using Activizr.Database;
 using System;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Security;
+using Swarmops.Database;
+using Swarmops.Logic.Cache;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Logic.Security
+namespace Swarmops.Logic.Security
 {
     public class Authorization
     {
