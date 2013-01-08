@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Support;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Logic.Tasks
+namespace Swarmops.Logic.Tasks
 {
     public class TaskGroup
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Financial;
+using Swarmops.Logic.Financial;
 
-namespace Activizr.Logic.Tasks
+namespace Swarmops.Logic.Tasks
 {
     public class TaskReceiptValidation: TaskBase
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Pirates;
+using Swarmops.Logic.Pirates;
 
-namespace Activizr.Logic.Tasks
+namespace Swarmops.Logic.Tasks
 {
     public class TaskVolunteer: TaskBase
     {
