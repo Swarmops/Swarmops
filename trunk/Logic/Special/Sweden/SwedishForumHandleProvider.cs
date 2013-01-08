@@ -1,12 +1,12 @@
 using System;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Exceptions;
-using Activizr.Basic.Interfaces;
-using Activizr.Database;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Exceptions;
+using Swarmops.Basic.Interfaces;
+using Swarmops.Database;
 
-namespace Activizr.Logic.Special.Sweden
+namespace Swarmops.Logic.Special.Sweden
 {
     [Serializable]
     public class SwedishForumHandleProvider : IHandleProvider
