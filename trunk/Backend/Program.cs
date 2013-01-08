@@ -7,21 +7,22 @@ using System.Threading;
 using System.Net;
 using System.Net.Mail;
 
-using Activizr.Basic;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Special.Sweden;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Utility;
-using Activizr.Utility.BotCode;
-using Activizr.Utility.Financial;
-using Activizr.Utility.Mail;
+using Swarmops.Basic;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
 using System.Diagnostics;
-using Activizr.Utility.Special.Sweden;
+using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Support;
+using Swarmops.Utility;
+using Swarmops.Utility.BotCode;
+using Swarmops.Utility.Financial;
+using Swarmops.Utility.Mail;
+using Swarmops.Utility.Special;
+using Swarmops.Utility.Special.Sweden;
 
-namespace Activizr.Backend
+namespace Swarmops.Backend
 {
     internal class Program
     {
@@ -60,7 +61,7 @@ namespace Activizr.Backend
                     OnMidnight();
 
                     Console.Write("\r\nAll tests run. Waiting for mail queue to flush... ");
-                    while (!Activizr.Utility.Mail.MailTransmitter.CanExit)
+                    while (!MailTransmitter.CanExit)
                     {
                         System.Threading.Thread.Sleep(50);
                     }
@@ -110,7 +111,7 @@ namespace Activizr.Backend
 
                     Console.Write("\r\nWaiting for mail queue to flush... ");
 
-                    while (!Activizr.Utility.Mail.MailTransmitter.CanExit)
+                    while (!MailTransmitter.CanExit)
                     {
                         System.Threading.Thread.Sleep(50);
                     }
@@ -154,7 +155,7 @@ namespace Activizr.Backend
 
             BotLog.Write(0, "MainCycle", "BOT STARTING, sending botstart notices");
 
-            Activizr.Utility.Mail.MailTransmitter statusMail = new Activizr.Utility.Mail.MailTransmitter
+            MailTransmitter statusMail = new MailTransmitter
                 ("PirateWeb-L", "noreply@pirateweb.net", "PirateBot-L starting", string.Empty, Person.FromIdentity(1));
             statusMail.Send();
 
@@ -241,13 +242,13 @@ namespace Activizr.Backend
                 ExceptionMail.Send(new Exception("HeartBeater triggered restart of MonoBot. Will commence after 800 seconds."), false);
             }
 
-            statusMail = new Activizr.Utility.Mail.MailTransmitter
+            statusMail = new MailTransmitter
                 ("PirateWeb-L", "noreply@pirateweb.net", "PirateBot-L exiting", string.Empty, Person.FromIdentity(1));
             statusMail.Send();
 
             BotLog.Write(0, "MainCycle", "...done");
 
-            while (!Activizr.Utility.Mail.MailTransmitter.CanExit)
+            while (!MailTransmitter.CanExit)
             {
                 System.Threading.Thread.Sleep(50);
             }
@@ -264,7 +265,7 @@ namespace Activizr.Backend
                 try
                 {
                     TestTrace("Running EventProcessor.Run()...");
-                    Activizr.Utility.BotCode.EventProcessor.Run();
+                    EventProcessor.Run();
                     TestTrace(" done.\r\n");
                 }
                 catch (Exception e)
@@ -403,7 +404,7 @@ namespace Activizr.Backend
                 {
                     TestTrace("Running SupportMailReview.Run()...");
                     BotLog.Write(1, "FiveMinute", "Running support mail review");
-                    Activizr.Utility.Special.Sweden.SupportMailReview.Run();
+                    SupportMailReview.Run();
                     TestTrace(" done.\r\n");
                 }
                 catch (Exception e)
@@ -660,7 +661,7 @@ namespace Activizr.Backend
             try
             {
                 TestTrace("Running SupportMailReview.Run()...");
-                Activizr.Utility.Special.Sweden.SupportMailReview.Run();
+                SupportMailReview.Run();
                 TestTrace(" done.\r\n");
             }
             catch (Exception e)
@@ -714,7 +715,7 @@ namespace Activizr.Backend
             {
                 try
                 {
-                    string newUrl = Activizr.Utility.Special.UrlTranslator.Translate(url);
+                    string newUrl = UrlTranslator.Translate(url);
                     UrlTranslations.Set(url, newUrl);
                 }
                 catch (Exception e)

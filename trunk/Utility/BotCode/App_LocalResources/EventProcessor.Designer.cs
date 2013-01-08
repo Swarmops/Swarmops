@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Activizr.Utility.BotCode.App_LocalResources {
+namespace Swarmops.Utility.BotCode.App_LocalResources {
     using System;
     
     

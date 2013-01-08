@@ -7,11 +7,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
-using Activizr.Basic.Types;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Support;
+using Swarmops.Basic.Types;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Utility.Mail
+namespace Swarmops.Utility.Mail
 {
     public class NewsletterTransmitter2
     {

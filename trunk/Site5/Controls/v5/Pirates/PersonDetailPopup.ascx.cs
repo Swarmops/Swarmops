@@ -8,9 +8,9 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
 using Telerik.Web.UI;
 
 

@@ -8,27 +8,28 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Web;
 using System.Web.Mail;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Utility.BotCode;
-using Activizr.Utility.Mail;
-using Activizr.Utility.Special.Sweden;
-using Activizr.Basic;
-using Activizr.Logic.Governance;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Utility;
-using Activizr.Utility.Server;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Structure;
+using Swarmops.Utility;
+using Swarmops.Utility.Server;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Governance;
+using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Support;
+using Swarmops.Utility.BotCode;
+using Swarmops.Utility.Mail;
+using Swarmops.Utility.Special.Sweden;
 
 /*
 using ceTe.DynamicPDF;
 using ceTe.DynamicPDF.PageElements;
 */
 
-namespace Activizr
+namespace Swarmops
 {
     /// <summary>
     /// This class is solely used for one-off operations, like tests or one-time imports, that run
@@ -768,7 +769,7 @@ namespace Activizr
 
 		private static void ValidatePoll (int pollId, Geography geography, DateTime cutoffMembershipDate)
 		{
-			Dictionary<string, People> result = Activizr.Logic.Special.Sweden.SwedishForumDatabase.GetDatabase().GetPollVotes (pollId);
+			Dictionary<string, People> result = SwedishForumDatabase.GetDatabase().GetPollVotes (pollId);
 
 			foreach (string pollAlternative in result.Keys)
 			{

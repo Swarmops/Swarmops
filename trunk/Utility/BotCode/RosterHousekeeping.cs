@@ -1,19 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Database;
-using Activizr.Utility.Mail;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using System.Diagnostics;
+using Swarmops.Basic;
+using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Support;
+using Swarmops.Utility.Mail;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class RosterHousekeeping
     {

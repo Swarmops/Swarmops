@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Interfaces;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Interfaces;
 
-namespace Activizr.Basic.Types.Communications
+namespace Swarmops.Basic.Types.Communications
 {
     public class BasicAutoMail : IHasIdentity
     {

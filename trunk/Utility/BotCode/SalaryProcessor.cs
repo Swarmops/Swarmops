@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-using Activizr.Basic.Enums;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Support;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class SalaryProcessor
     {

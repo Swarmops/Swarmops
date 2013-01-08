@@ -4,7 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Activizr
+namespace Swarmops
 {
 	public class DotNetChartingCrack
 	{

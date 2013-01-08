@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Structure;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Structure;
 
-namespace Activizr.Utility.Financial
+namespace Swarmops.Utility.Financial
 {
     public class PaymentGroupMapper
     {

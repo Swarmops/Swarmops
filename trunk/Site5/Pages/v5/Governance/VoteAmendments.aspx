@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="VoteAmendments.aspx.cs" Inherits="Activizr.Pages.Governance.VoteAmendments" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="VoteAmendments.aspx.cs" Inherits="Swarmops.Pages.Governance.VoteAmendments" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 </asp:Content>

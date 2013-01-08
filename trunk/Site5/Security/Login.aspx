@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" EnableViewState="true" Inherits="Activizr.Pages.Security.Login" %>
-<%@ Import Namespace="Activizr.Database" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" EnableViewState="true" Inherits="Swarmops.Pages.Security.Login" %>
+<%@ Import Namespace="Swarmops.Database" %>
 <%@ Import Namespace="Telerik.Web.UI" %>
 <%@ Register TagPrefix="telerik" Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" %>
 

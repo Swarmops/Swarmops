@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Mail;
 using System.Text;
-using Activizr.Basic;
-using Activizr.Basic.Enums;
-using Activizr.Basic.Types;
-using Activizr.Utility.Financial;
-using Activizr.Utility.Mail;
-using Activizr.Database;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Governance;
-using Activizr.Logic.Financial;
-using Activizr.Logic.Pirates;
-using Activizr.Logic.Security;
-using Activizr.Logic.Special.Mail;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
+using Swarmops.Basic.Enums;
+using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Pirates;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using System.Threading;
+using Swarmops.Basic;
+using Swarmops.Basic.Types;
+using Swarmops.Logic.Governance;
+using Swarmops.Logic.Special.Mail;
+using Swarmops.Logic.Support;
+using Swarmops.Utility.Financial;
+using Swarmops.Utility.Mail;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class EventProcessor
     {
@@ -1495,8 +1495,8 @@ namespace Activizr.Utility.BotCode
 
                 string password = Formatting.GeneratePassword(16);
 
-                Activizr.Logic.Special.Mail.MailServerDatabase.AddAccount(newAddress, password, 1024);
-                Activizr.Logic.Special.Mail.MailServerDatabase.StartForwarding(oldAddress, newAddress);
+                MailServerDatabase.AddAccount(newAddress, password, 1024);
+                MailServerDatabase.StartForwarding(oldAddress, newAddress);
 
                 newMailPerson.PartyEmail = newAddress;
 

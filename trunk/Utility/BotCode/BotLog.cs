@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class BotLog
     {

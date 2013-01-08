@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic;
-using Activizr.Database;
-using Activizr.Utility.Mail;
-using Activizr.Logic.Pirates;
+using Swarmops.Logic.Pirates;
+using Swarmops.Basic;
+using Swarmops.Database;
+using Swarmops.Utility.Mail;
 
-namespace Activizr.Utility
+namespace Swarmops.Utility
 {
     public class ExceptionMail
     {

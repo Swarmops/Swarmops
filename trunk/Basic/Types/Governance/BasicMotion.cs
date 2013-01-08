@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Basic.Interfaces;
+using Swarmops.Basic.Interfaces;
 
-namespace Activizr.Basic.Types.Governance
+namespace Swarmops.Basic.Types.Governance
 {
     public class BasicMotion: IHasIdentity
     {

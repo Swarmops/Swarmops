@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using Activizr.Logic.Pirates;
+using Swarmops.Logic.Pirates;
 
-namespace Activizr.Utility.Mail
+namespace Swarmops.Utility.Mail
 {
     public class Newsletter
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Logic.Governance;
+using Swarmops.Logic.Governance;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     /// <summary>
     /// This class computes a Condorcet/Single-Transferable-Vote result according to the Schulze Method.

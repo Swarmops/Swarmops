@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-
-using Activizr.Logic.Media;
-
 using NRss;
+using Swarmops.Logic.Media;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class MediaWatcher
     {

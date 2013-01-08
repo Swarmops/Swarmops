@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Activizr.Database;
-using Activizr.Logic.Communications;
-using Activizr.Logic.Special.Sweden;
-using Activizr.Logic.Structure;
-using Activizr.Logic.Support;
-using Activizr.Utility.Special.Sweden;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Structure;
+using Swarmops.Utility.Special.Sweden;
+using Swarmops.Database;
+using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Support;
 
-namespace Activizr.Utility.BotCode
+namespace Swarmops.Utility.BotCode
 {
     public class TurnaroundTracker
     {

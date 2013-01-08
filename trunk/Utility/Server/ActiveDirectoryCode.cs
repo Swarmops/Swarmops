@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace Activizr.Utility.Server
+namespace Swarmops.Utility.Server
 {
     public class ActiveDirectoryCode
     {

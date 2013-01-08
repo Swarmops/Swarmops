@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Activizr.Logic.Governance;
+using Swarmops.Logic.Governance;
 using Telerik.Web.UI;
 
-namespace Activizr.Pages.Governance
+namespace Swarmops.Pages.Governance
 {
     public partial class ListMotions : PageV5Base
     {
@@ -33,7 +33,7 @@ namespace Activizr.Pages.Governance
                 this.GridMotions.DataBind();
             }
 
-            ((Activizr.MasterV5) Master).LanguageChanged += new EventHandler(Master_LanguageChanged);
+            ((Swarmops.MasterV5) Master).LanguageChanged += new EventHandler(Master_LanguageChanged);
 
         }
 
