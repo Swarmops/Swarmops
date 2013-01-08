@@ -67,7 +67,6 @@
     <Compile Include="Financial\CashAdvance.cs" />
     <Compile Include="Financial\ImportedBankData.cs" />
     <Compile Include="Financial\YearlyReport.cs" />
-    <Compile Include="Pirates\Interfaces.cs" />
     <Compile Include="Security\Accesses.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Cache\MailTemplateCache.cs" />
@@ -141,13 +140,6 @@
     <Compile Include="Media\MediaEntry.cs" />
     <Compile Include="Media\Reporter.cs" />
     <Compile Include="Media\Reporters.cs" />
-    <Compile Include="Pirates\Activists.cs" />
-    <Compile Include="Pirates\AuditedPerson.cs" />
-    <Compile Include="Pirates\ChurnData.cs" />
-    <Compile Include="Pirates\ChurnDataPoint.cs" />
-    <Compile Include="Pirates\ExternalActivities.cs" />
-    <Compile Include="Pirates\ExternalActivity.cs" />
-    <Compile Include="Pirates\ExternalIdentity.cs" />
     <Compile Include="Governance\MeetingElection.cs" />
     <Compile Include="Governance\MeetingElectionCandidate.cs" />
     <Compile Include="Governance\MeetingElectionCandidates.cs" />
@@ -156,27 +148,6 @@
     <Compile Include="Governance\MeetingElectionVoter.cs" />
     <Compile Include="Governance\MeetingElectionVoters.cs" />
     <Compile Include="Governance\MeetingElectionVotes.cs" />
-    <Compile Include="Pirates\Membership.cs" />
-    <Compile Include="Pirates\MembershipEvent.cs" />
-    <Compile Include="Pirates\MembershipEvents.cs" />
-    <Compile Include="Pirates\Memberships.cs" />
-    <Compile Include="Pirates\OfficerChain.cs" />
-    <Compile Include="Pirates\Parley.cs" />
-    <Compile Include="Pirates\ParleyAttendee.cs" />
-    <Compile Include="Pirates\ParleyAttendees.cs" />
-    <Compile Include="Pirates\ParleyOption.cs" />
-    <Compile Include="Pirates\ParleyOptions.cs" />
-    <Compile Include="Pirates\Parleys.cs" />
-    <Compile Include="Pirates\PaymentCode.cs" />
-    <Compile Include="Pirates\People.cs" />
-    <Compile Include="Pirates\Person.cs" />
-    <Compile Include="Pirates\PersonRole.cs" />
-    <Compile Include="Pirates\RoleLookup.cs" />
-    <Compile Include="Pirates\Roles.cs" />
-    <Compile Include="Pirates\Volunteer.cs" />
-    <Compile Include="Pirates\VolunteerRole.cs" />
-    <Compile Include="Pirates\VolunteerRoles.cs" />
-    <Compile Include="Pirates\Volunteers.cs" />
     <Compile Include="Security\App_LocalResources\Authentication.Designer.cs">
       <DependentUpon>Authentication.resx</DependentUpon>
       <DesignTime>True</DesignTime>
