@@ -7,11 +7,11 @@
     <ProjectGuid>{CD1B7DBC-19DB-41A8-80CE-986C66225E8B}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <AssemblyName>Activizr.Console</AssemblyName>
+    <AssemblyName>Swarmops.Console</AssemblyName>
     <OutputType>Exe</OutputType>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Activizr.Console</RootNamespace>
+    <RootNamespace>Swarmops.Console</RootNamespace>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
