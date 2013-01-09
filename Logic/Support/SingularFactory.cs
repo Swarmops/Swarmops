@@ -30,88 +30,88 @@ namespace Swarmops.Logic.Support
 
                 // ------------ COMMUNICATION CLASSES ------------
 
-                case "Activizr.Basic.Types.BasicCommunicationTurnaround":
+                case "Swarmops.Basic.Types.BasicCommunicationTurnaround":
                     return CommunicationTurnaround.FromBasic((BasicCommunicationTurnaround)basic);
 
 
                 // ----------- FINANCIAL CLASSES ----------
 
-                case "Activizr.Basic.Types.BasicExpenseClaim":
+                case "Swarmops.Basic.Types.BasicExpenseClaim":
                     return ExpenseClaim.FromBasic((BasicExpenseClaim) basic);
 
-                case "Activizr.Basic.Types.BasicInboundInvoice":
+                case "Swarmops.Basic.Types.BasicInboundInvoice":
                     return InboundInvoice.FromBasic((BasicInboundInvoice) basic);
 
-                case "Activizr.Basic.Types.BasicFinancialAccount":
+                case "Swarmops.Basic.Types.BasicFinancialAccount":
                     return FinancialAccount.FromBasic((BasicFinancialAccount)basic);
 
-                case "Activizr.Basic.Types.BasicFinancialTransaction":
+                case "Swarmops.Basic.Types.BasicFinancialTransaction":
                     return FinancialTransaction.FromBasic((BasicFinancialTransaction)basic);
 
-                case "Activizr.Basic.Types.BasicFinancialValidation":
+                case "Swarmops.Basic.Types.BasicFinancialValidation":
                     return FinancialValidation.FromBasic((BasicFinancialValidation)basic);
 
-                case "Activizr.Basic.Types.BasicOutboundInvoice":
+                case "Swarmops.Basic.Types.BasicOutboundInvoice":
                     return OutboundInvoice.FromBasic((BasicOutboundInvoice)basic);
 
-                case "Activizr.Basic.Types.BasicOutboundInvoiceItem":
+                case "Swarmops.Basic.Types.BasicOutboundInvoiceItem":
                     return OutboundInvoiceItem.FromBasic((BasicOutboundInvoiceItem)basic);
 
-                case "Activizr.Basic.Types.BasicPayment":
+                case "Swarmops.Basic.Types.BasicPayment":
                     return Payment.FromBasic((BasicPayment)basic);
 
-                case "Activizr.Basic.Types.BasicPaymentGroup":
+                case "Swarmops.Basic.Types.BasicPaymentGroup":
                     return PaymentGroup.FromBasic((BasicPaymentGroup)basic);
 
-                case "Activizr.Basic.Types.BasicPayout":
+                case "Swarmops.Basic.Types.BasicPayout":
                     return Payout.FromBasic((BasicPayout)basic);
 
-                case "Activizr.Basic.Types.BasicPayrollAdjustment":
+                case "Swarmops.Basic.Types.BasicPayrollAdjustment":
                     return PayrollAdjustment.FromBasic((BasicPayrollAdjustment) basic);
 
-                case "Activizr.Basic.Types.BasicPayrollItem":
+                case "Swarmops.Basic.Types.BasicPayrollItem":
                     return PayrollItem.FromBasic((BasicPayrollItem)basic);
 
-                case "Activizr.Basic.Types.BasicSalary":
+                case "Swarmops.Basic.Types.BasicSalary":
                     return Salary.FromBasic((BasicSalary) basic);
 
 
                 // ------------ GOVERNANCE CLASSES ------------
 
-                case "Activizr.Basic.Types.BasicBallot":
+                case "Swarmops.Basic.Types.BasicBallot":
                     return Ballot.FromBasic((BasicBallot)basic);
 
-                case "Activizr.Basic.Types.BasicMeetingElectionCandidate":
+                case "Swarmops.Basic.Types.BasicMeetingElectionCandidate":
                     return MeetingElectionCandidate.FromBasic((BasicInternalPollCandidate)basic);
 
-                case "Activizr.Basic.Types.BasicMeetingElection":
+                case "Swarmops.Basic.Types.BasicMeetingElection":
                     return MeetingElection.FromBasic((BasicInternalPoll)basic);
 
-                case "Activizr.Basic.Types.BasicMeetingElectionVote":
+                case "Swarmops.Basic.Types.BasicMeetingElectionVote":
                     return MeetingElectionVote.FromBasic((BasicInternalPollVote)basic);
 
-                    case "Activizr.Basic.Types.Governance.BasicMotion":
+                    case "Swarmops.Basic.Types.Governance.BasicMotion":
                     return Motion.FromBasic((BasicMotion)basic);
 
-                case "Activizr.Basic.Types.Governance.BasicMotionAmendment":
+                case "Swarmops.Basic.Types.Governance.BasicMotionAmendment":
                     return MotionAmendment.FromBasic((BasicMotionAmendment)basic);
 
 
                 // ------------ PIRATE CLASSES ------------
 
-                case "Activizr.Basic.Types.BasicExternalActivity":
+                case "Swarmops.Basic.Types.BasicExternalActivity":
                     return ExternalActivity.FromBasic((BasicExternalActivity) basic);
 
-                case "Activizr.Basic.Types.BasicParley":
+                case "Swarmops.Basic.Types.BasicParley":
                     return Parley.FromBasic((BasicParley)basic);
 
-                case "Activizr.Basic.Types.BasicParleyAttendee":
+                case "Swarmops.Basic.Types.BasicParleyAttendee":
                     return ParleyAttendee.FromBasic((BasicParleyAttendee)basic);
 
-                case "Activizr.Basic.Types.BasicParleyOption":
+                case "Swarmops.Basic.Types.BasicParleyOption":
                     return ParleyOption.FromBasic((BasicParleyOption)basic);
 
-                case "Activizr.Basic.Types.BasicPerson":
+                case "Swarmops.Basic.Types.BasicPerson":
                     return Person.FromBasic((BasicPerson)basic);
 
                 // ------------------ FAIL ----------------
