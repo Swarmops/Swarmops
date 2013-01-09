@@ -7,9 +7,9 @@
     <ProjectGuid>{BA24FAF7-D518-49E8-952A-45595682877E}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <AssemblyName>Activizr.Interface</AssemblyName>
+    <AssemblyName>Swarmops.Interface</AssemblyName>
     <OutputType>Library</OutputType>
-    <RootNamespace>Activizr.Interface</RootNamespace>
+    <RootNamespace>Swarmops.Interface</RootNamespace>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>

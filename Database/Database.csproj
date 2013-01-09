@@ -7,9 +7,9 @@
     <ProjectGuid>{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <AssemblyName>Activizr.Database</AssemblyName>
+    <AssemblyName>Swarmops.Database</AssemblyName>
     <OutputType>Library</OutputType>
-    <RootNamespace>Activizr.Database</RootNamespace>
+    <RootNamespace>Swarmops.Database</RootNamespace>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
