@@ -85,6 +85,7 @@
         url="Json-BalanceSheetData.aspx"
         rownumbers="false"
         animate="true"
+        fit="true"
         idField="id" treeField="name">
     <thead>  
         <tr>  

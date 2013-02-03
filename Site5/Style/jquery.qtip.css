@@ -409,18 +409,16 @@
 }
 
 	.qtip-tipped .qtip-titlebar{
-		border-bottom-width: 0;
+		background-position: 0% 0%;
+    border-bottom-width: 0;
 
 		color: white;
-		background: #3A79B8;
-		background-image: -webkit-gradient(linear, left top, left bottom, from(#3A79B8), to(#2E629D));
-		background-image: -webkit-linear-gradient(top, #3A79B8, #2E629D);
-		background-image: -moz-linear-gradient(top, #3A79B8, #2E629D);
-		background-image: -ms-linear-gradient(top, #3A79B8, #2E629D);
-		background-image: -o-linear-gradient(top, #3A79B8, #2E629D);
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3A79B8,endColorstr=#2E629D);
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#3A79B8,endColorstr=#2E629D)";
-	}
+    background-image: -o-linear-gradient(top, #3A79B8, #2E629D);
+    background-color: #3A79B8;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
 
 	.qtip-tipped .qtip-icon{
 		border: 2px solid #285589;
