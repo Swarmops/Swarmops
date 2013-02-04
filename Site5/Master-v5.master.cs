@@ -56,7 +56,10 @@ namespace Swarmops
             {
                 if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://live.activizr.com") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://cryptdb"))
                 {
-                    Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
+                    // Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
+
+                    // Only force this if set to force it in database
+                    // TODO: Make admin init task
                 }
             }
 
