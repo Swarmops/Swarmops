@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Financial\CashAdvance.cs" />
+    <Compile Include="Financial\CashAdvances.cs" />
     <Compile Include="Financial\ImportedBankData.cs" />
     <Compile Include="Financial\YearlyReport.cs" />
     <Compile Include="Security\Accesses.cs" />

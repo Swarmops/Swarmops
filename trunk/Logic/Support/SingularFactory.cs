@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Swarmops.Basic.Types.Financial;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
@@ -37,7 +38,10 @@ namespace Swarmops.Logic.Support
                 // ----------- FINANCIAL CLASSES ----------
 
                 case "Swarmops.Basic.Types.BasicExpenseClaim":
-                    return ExpenseClaim.FromBasic((BasicExpenseClaim) basic);
+                    return ExpenseClaim.FromBasic((BasicExpenseClaim)basic);
+
+                case "Swarmops.Basic.Types.Financial.BasicCashAdvance":
+                    return CashAdvance.FromBasic((BasicCashAdvance)basic);
 
                 case "Swarmops.Basic.Types.BasicInboundInvoice":
                     return InboundInvoice.FromBasic((BasicInboundInvoice) basic);
@@ -97,7 +101,7 @@ namespace Swarmops.Logic.Support
                     return MotionAmendment.FromBasic((BasicMotionAmendment)basic);
 
 
-                // ------------ PIRATE CLASSES ------------
+                // ------------ PARLEY/ACTIVISM CLASSES ------------
 
                 case "Swarmops.Basic.Types.BasicExternalActivity":
                     return ExternalActivity.FromBasic((BasicExternalActivity) basic);
