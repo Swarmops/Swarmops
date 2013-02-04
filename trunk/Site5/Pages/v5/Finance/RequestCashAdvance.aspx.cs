@@ -13,7 +13,7 @@ public partial class Pages_v5_Finance_RequestCashAdvance : PageV5Base
     {
         if (!this.CurrentOrganization.IsEconomyEnabled)
         {
-            Response.Redirect("/Pages/v5/Finance/EconomyNotEnabled.aspx", true);
+            Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
             return;
         }
 
