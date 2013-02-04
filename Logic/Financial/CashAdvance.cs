@@ -61,5 +61,11 @@ namespace Swarmops.Logic.Financial
         }
 
         #endregion
+
+
+        public FinancialAccount FinancialAccount
+        {
+            get { return FinancialAccount.FromIdentity(this.FinancialAccountId); }
+        }
     }
 }

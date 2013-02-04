@@ -17,7 +17,7 @@ namespace Swarmops.Logic.Financial
 
         static public Salaries ForOrganization(Organization organization, bool includeClosed)
         {
-            return FromArray (PirateDb.GetDatabaseForWriting().GetSalaries(organization, 
+            return FromArray (PirateDb.GetDatabaseForReading().GetSalaries(organization, 
                 includeClosed? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
 

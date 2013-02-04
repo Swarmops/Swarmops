@@ -159,7 +159,7 @@
                         <telerik:RadMenuItem runat="server" Text="XYZ View Liquidity Forecast" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_ViewLiquidityForecast" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Manage Budget" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_ManageBudget" />
-                        <telerik:RadMenuItem runat="server" Text="XYZ Attest Costs" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_AttestCosts" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ Attest Costs" NavigateUrl="~/Pages/v5/Finance/AttestCosts.aspx" ImageUrl="~/Images/PageIcons/iconshock-stamped-paper-16px.png" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_AttestCosts" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Send Invoice" Permission="Economy:Write" UserLevel="2" GlobalResourceKey="Menu5_Financial_SendInvoice" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Received Invoice" Permission="Economy:Write" UserLevel="2" GlobalResourceKey="Menu5_Financial_ReceivedInvoice" />
