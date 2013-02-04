@@ -135,7 +135,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
 
         foreach (CashAdvance advance in advances)
         {
-            _items.Add(new AttestableItem("A" + advance.Identity.ToString(CultureInfo.InvariantCulture), "Beneficiary", advance.AmountCents, advance.FinancialAccount, "Description", "Advance", advance));
+            _items.Add(new AttestableItem("A" + advance.Identity.ToString(CultureInfo.InvariantCulture), advance.Person.Name, advance.AmountCents, advance.FinancialAccount, advance.Description, "AttestCosts_Advance", advance));
         }
     }
 
