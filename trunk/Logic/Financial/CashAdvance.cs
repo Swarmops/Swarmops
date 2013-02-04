@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Financial
         #endregion
 
 
-        public Person Person
+        public Person Person 
         {
             get { return Person.FromIdentity(this.PersonId); }
         }
