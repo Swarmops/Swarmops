@@ -152,14 +152,14 @@
                 <telerik:RadMenuItem runat="server" Text="XYZ Financial" Permission="CanSeeSelf" UserLevel="1" GlobalResourceKey="Menu5_Financial">
                     <Items>
                         <telerik:RadMenuItem runat="server" Text="XYZ Claim Refund For Expense" ImageUrl="~/Images/PageIcons/iconshock-moneyback-16px.png" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_ClaimExpense" />
-                        <telerik:RadMenuItem runat="server" Text="XYZ Request Cash Advance" NavigateUrl="~/Pages/v5/Finance/RequestCashAdvance.aspx" ImageUrl="~/Images/PageIcons/iconshock-walletmoney-16px.png" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_RequestCashAdvance" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ Request Cash Advance" NavigateUrl="~/Pages/v5/Financial/RequestCashAdvance.aspx" ImageUrl="~/Images/PageIcons/iconshock-walletmoney-16px.png" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_RequestCashAdvance" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Create Purchase Order" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_CreatePurchaseOrder" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="1" />
                         <telerik:RadMenuItem runat="server" Text="XYZ View Budget, Actuals" ImageUrl="~/Images/PageIcons/iconshock-scales-16px.png" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_ViewBudgetActuals" />
                         <telerik:RadMenuItem runat="server" Text="XYZ View Liquidity Forecast" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_ViewLiquidityForecast" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Manage Budget" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_ManageBudget" />
-                        <telerik:RadMenuItem runat="server" Text="XYZ Attest Costs" NavigateUrl="~/Pages/v5/Finance/AttestCosts.aspx" ImageUrl="~/Images/PageIcons/iconshock-stamped-paper-16px.png" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_AttestCosts" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ Attest Costs" NavigateUrl="~/Pages/v5/Financial/AttestCosts.aspx" ImageUrl="~/Images/PageIcons/iconshock-stamped-paper-16px.png" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_AttestCosts" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Send Invoice" Permission="Economy:Write" UserLevel="2" GlobalResourceKey="Menu5_Financial_SendInvoice" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Received Invoice" Permission="Economy:Write" UserLevel="2" GlobalResourceKey="Menu5_Financial_ReceivedInvoice" />

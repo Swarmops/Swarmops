@@ -1,1 +1,1 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Json-ExpensableBudgetsTree.aspx.cs" Inherits="Pages_v5_Finance_Json_ExpensableBudgetsTree" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Json-ExpensableBudgetsTree.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Finance.Json_ExpensableBudgetsTree" %>
