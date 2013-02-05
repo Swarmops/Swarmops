@@ -18,8 +18,8 @@
                 <th data-options="field:'description',width:140">Description</th>  
                 <th data-options="field:'budgetName',width:140,sortable:true">Budget</th>
                 <th data-options="field:'amountRequested',width:80,align:'right',sortable:true,order:'asc'">Requested</th>
-                <th data-options="field:'dox',width:40,align:'right'">Docs</th>
-                <th data-options="field:'wontAttest',width:66,align:'center'">Action</th>
+                <th data-options="field:'dox',width:40,align:'center'">Docs</th>
+                <th data-options="field:'actions',width:65,align:'center'">Action</th>
             </tr>  
         </thead>
     </table>  
