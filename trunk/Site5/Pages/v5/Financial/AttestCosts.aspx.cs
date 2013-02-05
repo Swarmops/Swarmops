@@ -6,28 +6,31 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Pages_v5_Finance_AttestCosts : PageV5Base
+namespace Swarmops.Frontend.Pages.v5.Financial
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class AttestCosts : PageV5Base
     {
-        if (!this.CurrentOrganization.IsEconomyEnabled)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
-            return;
+            if (!this.CurrentOrganization.IsEconomyEnabled)
+            {
+                Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
+                return;
+            }
+
+            this.PageIcon = "iconshock-stamped-paper";
+
+            if (!Page.IsPostBack)
+            {
+                Localize();
+            }
         }
 
-        this.PageIcon = "iconshock-stamped-paper";
 
-        if (!Page.IsPostBack)
+        private void Localize()
         {
-            Localize();
+            this.PageTitle = Resources.Pages.Finance.AttestCosts_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages.Finance.AttestCosts_Info;
         }
-    }
-
-
-    private void Localize()
-    {
-        this.PageTitle = Resources.Pages.Finance.AttestCosts_PageTitle;
-        this.InfoBoxLiteral = Resources.Pages.Finance.AttestCosts_Info;
     }
 }
