@@ -159,6 +159,9 @@
   <data name="Financial_Budget" xml:space="preserve">
     <value>Budget</value>
   </data>
+  <data name="Financial_CashAdvance" xml:space="preserve">
+    <value>Advance</value>
+  </data>
   <data name="Financial_YearlyResult" xml:space="preserve">
     <value>Yearly result</value>
   </data>
