@@ -27,7 +27,7 @@ namespace Swarmops.Logic.Communications
                     {
                         lastLoad = DateTime.Now;
                         String serviceName = Persistence.Key["SMSService"];
-                        BasicExternalCredential basicCredential = PirateDb.GetDatabaseForReading().GetExternalCredential(serviceName);
+                        BasicExternalCredential basicCredential = SwarmDb.GetDatabaseForReading().GetExternalCredential(serviceName);
                         Encoding enc = Encoding.GetEncoding(28591); //ISO encoding (latin1)
 
                         credential = new ServiceCredential(basicCredential.Login, basicCredential.Password, basicCredential.ServiceName, enc);

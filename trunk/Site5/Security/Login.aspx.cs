@@ -18,7 +18,7 @@ namespace Swarmops.Pages.Security
         {
             // Check if this is the first run ever. If so, redirect to Init.
 
-            if (!PirateDb.Configuration.IsConfigured())
+            if (!SwarmDb.Configuration.IsConfigured())
             {
                 Response.Redirect("/Pages/v5/Init/", true);
                 return;

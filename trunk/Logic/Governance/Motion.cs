@@ -21,13 +21,13 @@ namespace Swarmops.Logic.Governance
 
         public static Motion FromIdentity (int motionId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetMotion(motionId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetMotion(motionId));
         }
 
         public static Motion Create (Meeting meeting, Person submittingPerson, Person creatingPerson, string title, string text, string decisionPoints)
         {
             return
-                Motion.FromIdentity(PirateDb.GetDatabaseForWriting().CreateMotion(meeting.Identity, submittingPerson.Identity, creatingPerson.Identity, title, text, decisionPoints));
+                Motion.FromIdentity(SwarmDb.GetDatabaseForWriting().CreateMotion(meeting.Identity, submittingPerson.Identity, creatingPerson.Identity, title, text, decisionPoints));
         }
 
         public MotionAmendments Amendments

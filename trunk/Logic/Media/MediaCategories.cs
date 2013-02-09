@@ -27,12 +27,12 @@ namespace Swarmops.Logic.Media
 
         public static MediaCategories FromIdentities (int[] identities)
         {
-            return FromArray (PirateDb.GetDatabaseForReading().GetMediaCategories (identities));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetMediaCategories (identities));
         }
 
         public static MediaCategories GetAll()
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetMediaCategories());
+            return FromArray(SwarmDb.GetDatabaseForReading().GetMediaCategories());
         }
     }
 }

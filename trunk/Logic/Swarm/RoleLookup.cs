@@ -40,7 +40,7 @@ namespace Swarmops.Logic.Swarm
         public static RoleLookup FromOrganization (int organizationId)
         {
             Roles roles =
-                Roles.FromArray(PirateDb.GetDatabaseForReading().GetRolesForOrganization(organizationId));
+                Roles.FromArray(SwarmDb.GetDatabaseForReading().GetRolesForOrganization(organizationId));
 
             return new RoleLookup(roles);
         }
@@ -48,7 +48,7 @@ namespace Swarmops.Logic.Swarm
         public static RoleLookup FromGeographyAndOrganization (int geographyId, int organizationId)
         {
             Roles roles =
-                Roles.FromArray(PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId));
+                Roles.FromArray(SwarmDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId));
 
             return new RoleLookup(roles);
         }

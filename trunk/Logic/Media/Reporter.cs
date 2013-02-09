@@ -14,11 +14,11 @@ namespace Swarmops.Logic.Media
 
         public static Reporter Create (string name, string email, string[] categories)
         {
-            Reporter reporter = FromIdentity(PirateDb.GetDatabaseForWriting().CreateReporter(name, email));
+            Reporter reporter = FromIdentity(SwarmDb.GetDatabaseForWriting().CreateReporter(name, email));
 
             foreach (string category in categories)
             {
-                PirateDb.GetDatabaseForWriting().CreateReporterMediaCategory(reporter.Identity, category);
+                SwarmDb.GetDatabaseForWriting().CreateReporterMediaCategory(reporter.Identity, category);
             }
 
             return reporter;
@@ -27,7 +27,7 @@ namespace Swarmops.Logic.Media
 
         public void Delete()
         {
-            PirateDb.GetDatabaseForWriting().DeleteReporter(this.Identity);
+            SwarmDb.GetDatabaseForWriting().DeleteReporter(this.Identity);
 
             // After this operation, the object is no longer valid.
         }
@@ -39,7 +39,7 @@ namespace Swarmops.Logic.Media
             {
                 if (MediaCategoryIds == null)
                 {
-                    MediaCategoryIds = PirateDb.GetDatabaseForReading().GetReporterMediaCategories (Identity);
+                    MediaCategoryIds = SwarmDb.GetDatabaseForReading().GetReporterMediaCategories (Identity);
                 }
 
                 if (this.mediaCategories == null)
@@ -66,7 +66,7 @@ namespace Swarmops.Logic.Media
 
         public static Reporter FromIdentity (int identity)
         {
-            return Reporter.FromBasic(PirateDb.GetDatabaseForReading().GetReporter(identity));
+            return Reporter.FromBasic(SwarmDb.GetDatabaseForReading().GetReporter(identity));
         }
 
         #region IComparable Members

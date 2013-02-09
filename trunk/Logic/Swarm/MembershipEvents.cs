@@ -24,7 +24,7 @@ namespace Swarmops.Logic.Swarm
 
             // In the person-gathering phase, we use BasicPerson in order to avoid the unneeded translation to Person.
 
-            BasicPerson[] allPeople = PirateDb.GetDatabaseForReading().GetAllPeople();
+            BasicPerson[] allPeople = SwarmDb.GetDatabaseForReading().GetAllPeople();
 
             var geoLookup = new Dictionary<int, int>();
             var genderLookup = new Dictionary<int, PersonGender>();
@@ -39,7 +39,7 @@ namespace Swarmops.Logic.Swarm
 
             // Second phase, load all memberships
 
-            BasicMembership[] allMemberships = PirateDb.GetDatabaseForReading().GetMemberships();
+            BasicMembership[] allMemberships = SwarmDb.GetDatabaseForReading().GetMemberships();
 
             // Third phase - for every membership, generate one or two membership events
 

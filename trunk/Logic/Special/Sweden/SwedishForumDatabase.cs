@@ -119,7 +119,7 @@ namespace Swarmops.Logic.Special.Sweden
                 ProviderName = ConfigurationManager.ConnectionStrings["PirateWeb"].ProviderName;
 
                 Logging.LogInformation(LogSource.PirateDb,
-                                       "PirateDb initialized from Config ConnectionString: [" + ConnectionString +
+                                       "SwarmDb initialized from Config ConnectionString: [" + ConnectionString +
                                        "] / [" + ProviderName + "]");
             }
 
@@ -138,7 +138,7 @@ namespace Swarmops.Logic.Special.Sweden
                             ProviderName = reader.ReadLine();
 
                             Logging.LogInformation(LogSource.PirateDb,
-                                                   "PirateDb initialized for Linux: [" + ConnectionString + "] / [" +
+                                                   "SwarmDb initialized for Linux: [" + ConnectionString + "] / [" +
                                                    ProviderName + "]");
                         }
                     }
@@ -151,7 +151,7 @@ namespace Swarmops.Logic.Special.Sweden
                             ProviderName = reader.ReadLine();
 
                             Logging.LogInformation(LogSource.PirateDb,
-                                                   "PirateDb initialized for web: [" + ConnectionString + "] / [" +
+                                                   "SwarmDb initialized for web: [" + ConnectionString + "] / [" +
                                                    ProviderName + "]");
                         }
                     }
@@ -165,7 +165,7 @@ namespace Swarmops.Logic.Special.Sweden
                             ProviderName = reader.ReadLine();
 
                             Logging.LogInformation(LogSource.PirateDb,
-                                                   "PirateDb initialized for application: [" + ConnectionString +
+                                                   "SwarmDb initialized for application: [" + ConnectionString +
                                                    "] / [" + ProviderName + "]");
                         }
                     }

@@ -56,20 +56,20 @@ namespace Swarmops.Logic.Swarm
 
         public bool IsActivist
         {
-            get { return PirateDb.GetDatabaseForReading().GetActivistStatus(Identity); }
+            get { return SwarmDb.GetDatabaseForReading().GetActivistStatus(Identity); }
         }
 
         public new virtual string Name
         {
             get { return base.Name.Replace("|", " "); }
-            set { PirateDb.GetDatabaseForWriting().SetPersonName(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonName(Identity, value); }
         }
 
 
         public new virtual string Street
         {
             get { return base.Street; }
-            set { PirateDb.GetDatabaseForWriting().SetPersonStreet(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonStreet(Identity, value); }
         }
 
 
@@ -78,7 +78,7 @@ namespace Swarmops.Logic.Swarm
             get { return base.PostalCode; }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetPersonPostalCode(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPersonPostalCode(Identity, value);
                 base.PostalCode = value;
                 ResolveGeography();
             }
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Swarm
             get { return base.CityName; }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetPersonCity(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPersonCity(Identity, value);
                 base.CityName = value;
                 ResolveGeography();
             }
@@ -102,7 +102,7 @@ namespace Swarmops.Logic.Swarm
             get { return Country.FromIdentity(base.CountryId); }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetPersonCountry(Identity, value.Identity);
+                SwarmDb.GetDatabaseForWriting().SetPersonCountry(Identity, value.Identity);
                 base.CountryId = value.Identity;
                 ResolveGeography();
             }
@@ -114,7 +114,7 @@ namespace Swarmops.Logic.Swarm
             if (base.CountryId == 0)
             {
                 base.GeographyId = 1;
-                PirateDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, 1);
+                SwarmDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, 1);
                 return 1; // root geography, if no country set
             }
 
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Swarm
             }
 
             base.GeographyId = city.GeographyId;
-            PirateDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, base.GeographyId);
+            SwarmDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, base.GeographyId);
             return city.GeographyId;
         }
 
@@ -162,7 +162,7 @@ namespace Swarmops.Logic.Swarm
             }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetPersonGeography(Identity, value.Identity);
+                SwarmDb.GetDatabaseForWriting().SetPersonGeography(Identity, value.Identity);
                 base.GeographyId = value.Identity;
             }
         }
@@ -184,27 +184,27 @@ namespace Swarmops.Logic.Swarm
         public new virtual string Email
         {
             get { return base.Email; }
-            set { PirateDb.GetDatabaseForWriting().SetPersonEmail(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonEmail(Identity, value); }
         }
 
 
         public new virtual string Phone
         {
             get { return base.Phone; }
-            set { PirateDb.GetDatabaseForWriting().SetPersonPhone(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonPhone(Identity, value); }
         }
 
 
         public new virtual DateTime Birthdate
         {
             get { return base.Birthdate; }
-            set { PirateDb.GetDatabaseForWriting().SetPersonBirthdate(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonBirthdate(Identity, value); }
         }
 
         public new virtual PersonGender Gender
         {
             get { return base.Gender; }
-            set { PirateDb.GetDatabaseForWriting().SetPersonGender(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonGender(Identity, value); }
         }
 
 
@@ -370,12 +370,12 @@ namespace Swarmops.Logic.Swarm
 
         public static Person FromIdentity(int personId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetPerson(personId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetPerson(personId));
         }
 
         public static Person FromIdentityAggressive(int personId)
         {
-            return FromBasic(PirateDb.GetDatabaseForWriting().GetPerson(personId)); // Note "for writing". Intentional. Queries master db and bypasses replication lag.
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetPerson(personId)); // Note "for writing". Intentional. Queries master db and bypasses replication lag.
         }
 
         public Authority GetAuthority()
@@ -390,12 +390,12 @@ namespace Swarmops.Logic.Swarm
                 return GetMemberships();
             }
 
-            return Memberships.FromArray(PirateDb.GetDatabaseForReading().GetMemberships(this));
+            return Memberships.FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(this));
         }
 
         public Memberships GetMemberships ()
         {
-            return Memberships.FromArray(PirateDb.GetDatabaseForReading().GetMemberships(this, DatabaseCondition.ActiveTrue));
+            return Memberships.FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(this, DatabaseCondition.ActiveTrue));
         }
 
 
@@ -511,7 +511,7 @@ namespace Swarmops.Logic.Swarm
 
             if (countryCode.Length > 0)
             {
-                country = PirateDb.GetDatabaseForReading().GetCountry(countryCode);
+                country = SwarmDb.GetDatabaseForReading().GetCountry(countryCode);
             }
 
             // Clean data
@@ -526,7 +526,7 @@ namespace Swarmops.Logic.Swarm
             phone = LogicServices.CleanNumber(phone);
             postal = postal.Replace(" ", "").Trim();
 
-            int personId = PirateDb.GetDatabaseForWriting().CreatePerson(name, email, phone, street, postal, city,
+            int personId = SwarmDb.GetDatabaseForWriting().CreatePerson(name, email, phone, street, postal, city,
                 country == null? 0: country.Identity, dateOfBirth, gender);
 
 
@@ -565,7 +565,7 @@ namespace Swarmops.Logic.Swarm
         {
             if (null == this.subscriptions)
             {
-                this.subscriptions = PirateDb.GetDatabaseForReading().GetNewsletterFeedsForSubscriber(PersonId);
+                this.subscriptions = SwarmDb.GetDatabaseForReading().GetNewsletterFeedsForSubscriber(PersonId);
             }
 
             if (this.subscriptions.ContainsKey(newsletterFeedId))
@@ -604,14 +604,14 @@ namespace Swarmops.Logic.Swarm
             bool? subscription = HasExplicitSubscription(newsletterFeedId);
             if (subscription != null && subscription != subscribe)
             {
-                PirateDb.GetDatabaseForWriting().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
+                SwarmDb.GetDatabaseForWriting().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
             }
             else
             {
                 NewsletterFeed feed = NewsletterFeed.FromIdentity(newsletterFeedId);
                 if (subscribe != feed.DefaultSubscribed)
                 {
-                    PirateDb.GetDatabaseForWriting().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
+                    SwarmDb.GetDatabaseForWriting().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
                 }
             }
             this.subscriptions[newsletterFeedId] = subscribe;
@@ -620,7 +620,7 @@ namespace Swarmops.Logic.Swarm
 
         public void DeleteSubscriptionData ()
         {
-            PirateDb.GetDatabaseForWriting().DeletePersonNewsletterSubscriptions(Identity);
+            SwarmDb.GetDatabaseForWriting().DeletePersonNewsletterSubscriptions(Identity);
         }
 
 
@@ -633,7 +633,7 @@ namespace Swarmops.Logic.Swarm
             try
             {
                 PhoneMessageTransmitter.Send(Phone, message);
-                // PirateDb.GetDatabase().LogTransmittedPhoneMessage(Identity, Phone, message);
+                // SwarmDb.GetDatabase().LogTransmittedPhoneMessage(Identity, Phone, message);
             }
             catch (Exception ex)
             {
@@ -645,7 +645,7 @@ namespace Swarmops.Logic.Swarm
         public virtual void SetPassword (string newPassword)
         {
             string hash = Authentication.GeneratePasswordHash(Identity, newPassword);
-            PirateDb.GetDatabaseForWriting().SetPersonPasswordHash(Identity, hash);
+            SwarmDb.GetDatabaseForWriting().SetPersonPasswordHash(Identity, hash);
             base.PasswordHash = hash;
         }
 
@@ -655,7 +655,7 @@ namespace Swarmops.Logic.Swarm
             get { return base.PasswordHash; }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetPersonPasswordHash(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPersonPasswordHash(Identity, value);
                 base.PasswordHash = value;
             }
         }
@@ -669,13 +669,13 @@ namespace Swarmops.Logic.Swarm
 
         private void SendNotice (string subject, string body, int organizationId, bool asOfficer)
         {
-            int mailId = PirateDb.GetDatabaseForWriting().CreateOutboundMail(
+            int mailId = SwarmDb.GetDatabaseForWriting().CreateOutboundMail(
                 asOfficer ? MailAuthorType.PirateWeb : MailAuthorType.Service, 0, subject,
                 body, OutboundMail.PriorityNormal, 0, GeographyId, organizationId, DateTime.Now);
-            PirateDb.GetDatabaseForWriting().CreateOutboundMailRecipient(mailId, Identity, asOfficer, (int)OutboundMailRecipient.RecipientType.Person);
-            PirateDb.GetDatabaseForWriting().SetOutboundMailRecipientCount(mailId, 1);
-            PirateDb.GetDatabaseForWriting().SetOutboundMailResolved(mailId);
-            PirateDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup(mailId);
+            SwarmDb.GetDatabaseForWriting().CreateOutboundMailRecipient(mailId, Identity, asOfficer, (int)OutboundMailRecipient.RecipientType.Person);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailRecipientCount(mailId, 1);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailResolved(mailId);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup(mailId);
         }
 
         public void SendNotice (string subject, string body, int organizationId)
@@ -715,12 +715,12 @@ namespace Swarmops.Logic.Swarm
 
         public void CreateActivist (bool isPublic, bool isConfirmed)
         {
-            PirateDb.GetDatabaseForWriting().CreateActivist(Identity, isPublic, isConfirmed);
+            SwarmDb.GetDatabaseForWriting().CreateActivist(Identity, isPublic, isConfirmed);
         }
 
         public void TerminateActivist ()
         {
-            PirateDb.GetDatabaseForWriting().TerminateActivist(Identity);
+            SwarmDb.GetDatabaseForWriting().TerminateActivist(Identity);
         }
 
         public PersonRole AddRole (RoleType roleType, Organization organization, Geography geography)

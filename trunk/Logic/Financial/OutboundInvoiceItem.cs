@@ -20,7 +20,7 @@ namespace Swarmops.Logic.Financial
 
         public static OutboundInvoiceItem FromIdentity (int outboundInvoiceItemId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetOutboundInvoiceItem(outboundInvoiceItemId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetOutboundInvoiceItem(outboundInvoiceItemId));
         }
 
         public decimal Amount

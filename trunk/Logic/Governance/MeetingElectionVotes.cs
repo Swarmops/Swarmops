@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Governance
     {
         static public MeetingElectionVotes ForInternalPoll (MeetingElection poll)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPollVotes(poll));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPollVotes(poll));
         }
     }
 }

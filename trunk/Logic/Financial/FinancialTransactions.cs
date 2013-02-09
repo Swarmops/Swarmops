@@ -18,16 +18,16 @@ namespace Swarmops.Logic.Financial
 
         public static FinancialTransactions GetUnbalanced (Organization organization)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions(organization.Identity));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions(organization.Identity));
         }
 
 
         public static FinancialTransactions GetIncomplete(int organizationId)
         {
             FinancialTransactions unbalanced =
-                FromArray(PirateDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions(organizationId));
+                FromArray(SwarmDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions(organizationId));
             FinancialTransactions undocumented =
-                FromArray(PirateDb.GetDatabaseForReading().GetUndocumentedFinancialTransactions(organizationId));
+                FromArray(SwarmDb.GetDatabaseForReading().GetUndocumentedFinancialTransactions(organizationId));
 
             FinancialTransactions allIncomplete = LogicalOr(unbalanced, undocumented);
 
@@ -50,7 +50,7 @@ namespace Swarmops.Logic.Financial
         public static FinancialTransactions ForDependentObject (IHasIdentity foreignObject)
         {
             return
-                FromArray(PirateDb.GetDatabaseForReading().GetDependentFinancialTransactions(GetDependencyType(foreignObject),
+                FromArray(SwarmDb.GetDatabaseForReading().GetDependentFinancialTransactions(GetDependencyType(foreignObject),
                                                                                    foreignObject.Identity));
         }
 

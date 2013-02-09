@@ -519,7 +519,7 @@ namespace Swarmops.Logic.Communications
 
         public static MailTemplate FromIdentity (int templateId)
         {
-            BasicMailTemplate basic = PirateDb.GetDatabaseForReading().GetMailTemplateById(templateId);
+            BasicMailTemplate basic = SwarmDb.GetDatabaseForReading().GetMailTemplateById(templateId);
             return FromBasic(basic);
         }
 
@@ -531,7 +531,7 @@ namespace Swarmops.Logic.Communications
 
         public static List<MailTemplate> GetAll ()
         {
-            BasicMailTemplate[] basic = PirateDb.GetDatabaseForReading().GetAllMailTemplates();
+            BasicMailTemplate[] basic = SwarmDb.GetDatabaseForReading().GetAllMailTemplates();
             List<MailTemplate> resultlist = new List<MailTemplate>();
             foreach (BasicMailTemplate bt in basic)
             {
@@ -550,7 +550,7 @@ namespace Swarmops.Logic.Communications
                                     int organizationId,
                                     string templateBody)
         {
-            int retId = PirateDb.GetDatabaseForWriting().SetMailTemplate(0,
+            int retId = SwarmDb.GetDatabaseForWriting().SetMailTemplate(0,
                                                     templateName,
                                                     languageCode,
                                                     countryCode,
@@ -564,7 +564,7 @@ namespace Swarmops.Logic.Communications
         public void Update ()
         {
             TemplateBody = TemplateBody; //to make sure the HTMlDoc is taken into account
-            PirateDb.GetDatabaseForWriting().SetMailTemplate(this); // saves changes
+            SwarmDb.GetDatabaseForWriting().SetMailTemplate(this); // saves changes
             MailTemplateCache.loadCache = true;
         } 
 

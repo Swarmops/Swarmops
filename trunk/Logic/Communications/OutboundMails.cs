@@ -22,7 +22,7 @@ namespace Swarmops.Logic.Communications
 
         public static OutboundMails GetTopUnprocessed (int count)
         {
-            BasicOutboundMail[] basicMails = PirateDb.GetDatabaseForReading().GetTopUnprocessedOutboundMail (count);
+            BasicOutboundMail[] basicMails = SwarmDb.GetDatabaseForReading().GetTopUnprocessedOutboundMail (count);
 
             return FromArray (basicMails);
         }

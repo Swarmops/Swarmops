@@ -20,7 +20,7 @@ namespace Swarmops.Logic.Governance
 
         public static Meeting FromIdentity (int meetingId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetMeeting(meetingId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetMeeting(meetingId));
         }
     }
 }

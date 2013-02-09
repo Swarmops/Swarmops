@@ -18,7 +18,7 @@ namespace Swarmops.Logic.Financial
 
         static public CashAdvances ForOrganization(Organization organization, bool includeClosed)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetCashAdvances(organization,
+            return FromArray(SwarmDb.GetDatabaseForReading().GetCashAdvances(organization,
                 includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
 

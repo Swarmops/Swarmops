@@ -16,7 +16,7 @@ namespace Swarmops.Utility.BotCode
             // Every hour of the day, we check that this has been recorded for the day. This is just in case
             // the bot isn't running at midnight, to make sure that we get one entry per day.
 
-            if (PirateDb.GetDatabaseForReading().GetBlogTopList(DateTime.Today) == null)
+            if (SwarmDb.GetDatabaseForReading().GetBlogTopList(DateTime.Today) == null)
             {
                 ScrapeAndStore();
             }
@@ -49,7 +49,7 @@ namespace Swarmops.Utility.BotCode
                 match = match.NextMatch();
             }
 
-            PirateDb.GetDatabaseForWriting().StoreBlogTopList(DateTime.Today, rankingList.ToArray());
+            SwarmDb.GetDatabaseForWriting().StoreBlogTopList(DateTime.Today, rankingList.ToArray());
         }
     }
 }

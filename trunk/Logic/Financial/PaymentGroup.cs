@@ -17,7 +17,7 @@ namespace Swarmops.Logic.Financial
 
         public static PaymentGroup FromIdentity (int paymentGroupId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetPaymentGroup(paymentGroupId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetPaymentGroup(paymentGroupId));
         }
 
         public static PaymentGroup FromBasic (BasicPaymentGroup basic)
@@ -28,14 +28,14 @@ namespace Swarmops.Logic.Financial
         public static PaymentGroup Create (Organization organization, DateTime timestamp, Currency currency, Person createdByPerson)
         {
             return
-                FromIdentity(PirateDb.GetDatabaseForWriting().CreatePaymentGroup(organization.Identity, timestamp,
+                FromIdentity(SwarmDb.GetDatabaseForWriting().CreatePaymentGroup(organization.Identity, timestamp,
                                                                        currency.Identity,
                                                                        System.DateTime.Now, createdByPerson.Identity));
         }
 
         public static PaymentGroup FromTag (Organization organization, string tag)
         {
-            BasicPaymentGroup basicGroup = PirateDb.GetDatabaseForReading().GetPaymentGroupByTag(organization.Identity, tag);
+            BasicPaymentGroup basicGroup = SwarmDb.GetDatabaseForReading().GetPaymentGroupByTag(organization.Identity, tag);
 
             if (basicGroup == null)
             {
@@ -56,7 +56,7 @@ namespace Swarmops.Logic.Financial
             set 
             { 
                 base.Tag = value;
-                PirateDb.GetDatabaseForWriting().SetPaymentGroupTag(this.Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPaymentGroupTag(this.Identity, value);
             }
         }
 
@@ -66,7 +66,7 @@ namespace Swarmops.Logic.Financial
             set 
             {
                 base.AmountCents = value;
-                PirateDb.GetDatabaseForWriting().SetPaymentGroupAmount(this.Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPaymentGroupAmount(this.Identity, value);
             }
         }
 
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Financial
             set 
             { 
                 base.Open = value;
-                PirateDb.GetDatabaseForWriting().SetPaymentGroupOpen(this.Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPaymentGroupOpen(this.Identity, value);
             }
         }
 

@@ -24,7 +24,7 @@ namespace Swarmops.Logic.Governance
         public static MeetingElection Create (Person creator, Organization org, Geography geo, string name, InternalPollResultsType resultsType, int maxVoteLength, DateTime runningOpens, DateTime runningCloses, DateTime votingOpens, DateTime votingCloses)
         {
             return
-                FromIdentity(PirateDb.GetDatabaseForWriting().CreateInternalPoll(org.Identity, geo.Identity, name, maxVoteLength,
+                FromIdentity(SwarmDb.GetDatabaseForWriting().CreateInternalPoll(org.Identity, geo.Identity, name, maxVoteLength,
                                                                        resultsType, creator.Identity, runningOpens,
                                                                        runningCloses, votingOpens, votingCloses));
         }
@@ -32,7 +32,7 @@ namespace Swarmops.Logic.Governance
 
         public static MeetingElection FromIdentity (int internalPollId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetInternalPoll(internalPollId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetInternalPoll(internalPollId));
         }
 
         
@@ -63,12 +63,12 @@ namespace Swarmops.Logic.Governance
 
         public void AddVoter (Person person)
         {
-            PirateDb.GetDatabaseForWriting().CreateInternalPollVoter(this.Identity, person.Identity);
+            SwarmDb.GetDatabaseForWriting().CreateInternalPollVoter(this.Identity, person.Identity);
         }
 
         public MeetingElectionVote CreateVote(Person person, string ipAddress)
         {
-            if (PirateDb.GetDatabaseForReading().GetInternalPollVoterStatus(this.Identity, person.Identity) != InternalPollVoterStatus.CanVote)
+            if (SwarmDb.GetDatabaseForReading().GetInternalPollVoterStatus(this.Identity, person.Identity) != InternalPollVoterStatus.CanVote)
             {
                 throw new InvalidOperationException("Voter status is not open");
             }
@@ -87,18 +87,18 @@ namespace Swarmops.Logic.Governance
                 voteGeography = person.Geography;
             }
 
-            PirateDb.GetDatabaseForWriting().CloseInternalPollVoter(this.Identity, person.Identity, ipAddress);
+            SwarmDb.GetDatabaseForWriting().CloseInternalPollVoter(this.Identity, person.Identity, ipAddress);
             return MeetingElectionVote.Create(this, voteGeography);
         }
 
         public InternalPollVoterStatus GetVoterStatus (Person person)
         {
-            return PirateDb.GetDatabaseForReading().GetInternalPollVoterStatus(this.Identity, person.Identity);
+            return SwarmDb.GetDatabaseForReading().GetInternalPollVoterStatus(this.Identity, person.Identity);
         }
 
         public Dictionary<int,int> GetCandidatePersonMap()
         {
-            return PirateDb.GetDatabaseForReading().GetCandidateIdPersonIdMap(this.Identity);
+            return SwarmDb.GetDatabaseForReading().GetCandidateIdPersonIdMap(this.Identity);
         }
 
         public MeetingElectionVoters GetClosedVoters()
@@ -118,7 +118,7 @@ namespace Swarmops.Logic.Governance
             {
                 if (value != base.VotingOpen)
                 {
-                    PirateDb.GetDatabaseForWriting().SetInternalPollVotingOpen(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetInternalPollVotingOpen(this.Identity, value);
                     base.VotingOpen = value;
                 }
             }
@@ -131,7 +131,7 @@ namespace Swarmops.Logic.Governance
             {
                 if (value != base.RunningOpen)
                 {
-                    PirateDb.GetDatabaseForWriting().SetInternalPollRunningOpen(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetInternalPollRunningOpen(this.Identity, value);
                     base.RunningOpen = value;
                 }
             }

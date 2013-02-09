@@ -30,32 +30,32 @@ namespace Swarmops.Logic.Media
 
         public static string[] GetBlogKeywords()
         {
-            return PirateDb.GetDatabaseForReading().GetBlogKeywords();
+            return SwarmDb.GetDatabaseForReading().GetBlogKeywords();
         }
 
         public static string[] GetOldMediaKeywords()
         {
-            return PirateDb.GetDatabaseForReading().GetOldMediaKeywords();
+            return SwarmDb.GetDatabaseForReading().GetOldMediaKeywords();
         }
 
         public static MediaEntries FromBlogKeyword (string keyword, DateTime minimumAge)
         {
-            return FromArray (PirateDb.GetDatabaseForReading().GetBlogEntriesForKeyword (keyword, minimumAge));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetBlogEntriesForKeyword (keyword, minimumAge));
         }
 
         public static MediaEntries FromOldMediaKeyword (string keyword, DateTime minimumAge)
         {
-            return FromArray (PirateDb.GetDatabaseForReading().GetOldMediaEntriesForKeyword (keyword, minimumAge));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetOldMediaEntriesForKeyword (keyword, minimumAge));
         }
 
         public static Dictionary<int, bool> GetMediaTypeTable()
         {
-            return PirateDb.GetDatabaseForReading().GetMediaTypeTable();
+            return SwarmDb.GetDatabaseForReading().GetMediaTypeTable();
         }
 
         public static Dictionary<int, string> GetMediaKeywordTable()
         {
-            return PirateDb.GetDatabaseForReading().GetMediaKeywordTable();
+            return SwarmDb.GetDatabaseForReading().GetMediaKeywordTable();
         }
 
         public static MediaEntries FromKeywordsSimplified (string[] keywords)
@@ -64,15 +64,15 @@ namespace Swarmops.Logic.Media
 
             foreach (string keyword in keywords)
             {
-                keywordIds.Add (PirateDb.GetDatabaseForReading().GetMediaKeywordId (keyword));
+                keywordIds.Add (SwarmDb.GetDatabaseForReading().GetMediaKeywordId (keyword));
             }
 
-            return FromArray (PirateDb.GetDatabaseForReading().GetMediaEntriesForKeywordIdsSimplified (keywordIds.ToArray()));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetMediaEntriesForKeywordIdsSimplified (keywordIds.ToArray()));
         }
 
         public static int GetKeywordId (string keyword)
         {
-            return PirateDb.GetDatabaseForReading().GetMediaKeywordId (keyword);
+            return SwarmDb.GetDatabaseForReading().GetMediaKeywordId (keyword);
         }
     }
 }

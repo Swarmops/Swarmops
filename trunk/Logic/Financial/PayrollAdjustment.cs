@@ -20,7 +20,7 @@ namespace Swarmops.Logic.Financial
 
         public static PayrollAdjustment FromIdentity (int payrollAdjustmentId)
         {
-            return FromBasic (PirateDb.GetDatabaseForReading().GetPayrollAdjustment(payrollAdjustmentId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetPayrollAdjustment(payrollAdjustmentId));
         }
 
 
@@ -45,7 +45,7 @@ namespace Swarmops.Logic.Financial
                 throw new InvalidOperationException("Payroll adjustment #" + this.Identity.ToString() + " cannot be closed; is already closed");
             }
 
-            PirateDb.GetDatabaseForWriting().ClosePayrollAdjustment(this.Identity, salary.Identity);
+            SwarmDb.GetDatabaseForWriting().ClosePayrollAdjustment(this.Identity, salary.Identity);
             base.Open = false;
             base.SalaryId = salary.Identity;
         }
@@ -53,7 +53,7 @@ namespace Swarmops.Logic.Financial
 
         public static PayrollAdjustment Create (PayrollItem item, PayrollAdjustmentType type, double amount, string description)
         {
-            int id = PirateDb.GetDatabaseForWriting().CreatePayrollAdjustment(item.Identity, type, amount, description);
+            int id = SwarmDb.GetDatabaseForWriting().CreatePayrollAdjustment(item.Identity, type, amount, description);
             return PayrollAdjustment.FromIdentity(id);
         }
 

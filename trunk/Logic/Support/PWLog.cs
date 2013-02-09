@@ -17,7 +17,7 @@ namespace Swarmops.Logic.Support
                                   PWLogAction actionType, string actionDescription, string comment,
                                   string changedField, string valueBefore, string valueAfter)
         {
-            PirateDb.GetDatabaseForWriting().CreatePWLogEntry(dateTimeUtc, actingPersonId, affectedItem.ToString(),
+            SwarmDb.GetDatabaseForWriting().CreatePWLogEntry(dateTimeUtc, actingPersonId, affectedItem.ToString(),
                                                                affectedItemId, actionType.ToString(), actionDescription,
                                                                changedField, valueBefore, valueAfter, comment, GetCurrentIp());
         }
@@ -103,7 +103,7 @@ namespace Swarmops.Logic.Support
 
         public static DateTime CheckLatest (PWLogItem affectedItemType, int affectedItemId, PWLogAction actionType)
         {
-            return PirateDb.GetDatabaseForReading().CheckLogEntry(affectedItemType.ToString(), affectedItemId, actionType.ToString());
+            return SwarmDb.GetDatabaseForReading().CheckLogEntry(affectedItemType.ToString(), affectedItemId, actionType.ToString());
         }
 
         public static BasicPWLog[] GetLatestEvents (PWLogItem affectedItemType, DateTime beforeDate, int[] affectedIds, PWLogAction[] actionTypes)
@@ -113,7 +113,7 @@ namespace Swarmops.Logic.Support
             foreach (var at in actionTypes)
                 actionTypeList.Add(at.ToString());
 
-            return PirateDb.GetDatabaseForReading().GetLatestEvents(affectedItemType.ToString(), beforeDate, affectedIds, actionTypeList.ToArray());
+            return SwarmDb.GetDatabaseForReading().GetLatestEvents(affectedItemType.ToString(), beforeDate, affectedIds, actionTypeList.ToArray());
         }
 
         private static string hostIp = "";//Used in batch programs

@@ -29,7 +29,7 @@ namespace Swarmops.Logic.Structure
 
         public static PostalCodes ForCountry (int countryId)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetPostalCodesForCountry(countryId));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPostalCodesForCountry(countryId));
         }
     }
 }

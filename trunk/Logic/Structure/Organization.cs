@@ -40,12 +40,12 @@ namespace Swarmops.Logic.Structure
         {
 
             return FromBasic(OrganizationCache.GetOrganization(identity));
-            //return FromBasic(PirateDb.GetDatabaseForReading().GetOrganization(identity));
+            //return FromBasic(SwarmDb.GetDatabaseForReading().GetOrganization(identity));
         }
 
         public static Organization FromIdentityAggressive(int identity)
         {
-            return FromBasic(PirateDb.GetDatabaseForWriting().GetOrganization(identity)); // Note "for writing". Intentional. Queries master db; bypasses replication lag.
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetOrganization(identity)); // Note "for writing". Intentional. Queries master db; bypasses replication lag.
         }
 
         public static Organization FromBasic(BasicOrganization basic)
@@ -112,13 +112,13 @@ namespace Swarmops.Logic.Structure
         {
             return Organizations.FromArray(OrganizationCache.GetOrganizationLine(Identity));
 
-            //return Organizations.FromArray(PirateDb.GetDatabaseForReading().GetOrganizationLine(Identity));
+            //return Organizations.FromArray(SwarmDb.GetDatabaseForReading().GetOrganizationLine(Identity));
         }
 
         public Organizations GetTree ()
         {
             return Organizations.FromArray(OrganizationCache.GetOrganizationTree(Identity));
-            //return Organizations.FromArray(PirateDb.GetDatabaseForReading().GetOrganizationTree(Identity));
+            //return Organizations.FromArray(SwarmDb.GetDatabaseForReading().GetOrganizationTree(Identity));
         }
 
         public int GetMemberCount ()
@@ -128,7 +128,7 @@ namespace Swarmops.Logic.Structure
 
         public NewsletterFeeds GetNewsletterFeeds ()
         {
-            return NewsletterFeeds.FromArray(PirateDb.GetDatabaseForReading().GetNewsletterFeedsForOrganization(Identity));
+            return NewsletterFeeds.FromArray(SwarmDb.GetDatabaseForReading().GetNewsletterFeedsForOrganization(Identity));
         }
 
 
@@ -414,7 +414,7 @@ namespace Swarmops.Logic.Structure
                 if (this.uptakeGeographies == null)
                 {
                     this.uptakeGeographies =
-                        Geographies.FromIdentities(PirateDb.GetDatabaseForReading().GetOrganizationUptakeGeographyIds(Identity));
+                        Geographies.FromIdentities(SwarmDb.GetDatabaseForReading().GetOrganizationUptakeGeographyIds(Identity));
                 }
 
                 return this.uptakeGeographies.AsReadOnly();
@@ -423,7 +423,7 @@ namespace Swarmops.Logic.Structure
 
         public UptakeGeography[] GetUptakeGeographies (bool others)
         {
-            BasicUptakeGeography[] basics = PirateDb.GetDatabaseForReading().GetOrganizationUptakeGeographies(Identity, others);
+            BasicUptakeGeography[] basics = SwarmDb.GetDatabaseForReading().GetOrganizationUptakeGeographies(Identity, others);
             List<UptakeGeography> retVal = new List<UptakeGeography>();
             foreach (BasicUptakeGeography b in basics)
             {
@@ -747,7 +747,7 @@ namespace Swarmops.Logic.Structure
         {
             Organizations line = GetLine();
             BasicPersonRole[] treasurers
-                = PirateDb.GetDatabaseForReading().GetPeopleWithRoleType(RoleType.OrganizationTreasurer, line.Identities, new int[] { });
+                = SwarmDb.GetDatabaseForReading().GetPeopleWithRoleType(RoleType.OrganizationTreasurer, line.Identities, new int[] { });
 
             if (treasurers.Length == 0)
                 throw new Exception("No Treasurer Found");

@@ -37,7 +37,7 @@ namespace Swarmops.Logic.Financial
         
         public static PaymentInformationList ForPayment (Payment payment)
         {
-            BasicPaymentInformation[] basicInfoList = PirateDb.GetDatabaseForReading().GetPaymentInformation(payment.Identity);
+            BasicPaymentInformation[] basicInfoList = SwarmDb.GetDatabaseForReading().GetPaymentInformation(payment.Identity);
 
             return FromArray(basicInfoList);
         }

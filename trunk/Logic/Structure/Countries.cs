@@ -8,12 +8,12 @@ namespace Swarmops.Logic.Structure
     {
         public static Countries GetAll ()
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetAllCountries());
+            return FromArray(SwarmDb.GetDatabaseForReading().GetAllCountries());
         }
 
         public static Countries GetInUse ()
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetCountriesInUse());
+            return FromArray(SwarmDb.GetDatabaseForReading().GetCountriesInUse());
         }
 
         public static Countries FromArray (BasicCountry[] basicArray)

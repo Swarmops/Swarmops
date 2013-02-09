@@ -14,38 +14,38 @@ namespace Swarmops.Logic.Support
             //TODO: organizationId comes in hardcoded as 1 from a lot of places, should probably be changed based on affected person
             // to the party for that country if not swedish.
 
-            return PirateDb.GetDatabaseForWriting().CreateEvent(eventSource, eventType, actingPersonId, organizationId,
+            return SwarmDb.GetDatabaseForWriting().CreateEvent(eventSource, eventType, actingPersonId, organizationId,
                                                        geographyId, affectedPersonId, parameterInt, parameterText);
         }
 
         public static BasicPWEvent[] GetTopUnprocessedEvents ()
         {
-            return PirateDb.GetDatabaseForReading().GetTopUnprocessedEvents();
+            return SwarmDb.GetDatabaseForReading().GetTopUnprocessedEvents();
         }
 
         public static BasicPWEvent[] ForPerson (int personId)
         {
-            return PirateDb.GetDatabaseForReading().GetEventsForPerson(personId);
+            return SwarmDb.GetDatabaseForReading().GetEventsForPerson(personId);
         }
 
         public static Dictionary<int, List<BasicPWEvent>> ForPersons (int[] personIds)
         {
-            return PirateDb.GetDatabaseForReading().GetEventsForPersons(personIds, new EventType[] { });
+            return SwarmDb.GetDatabaseForReading().GetEventsForPersons(personIds, new EventType[] { });
         }
 
         public static Dictionary<int, List<BasicPWEvent>> ForPersons (int[] personIds, EventType[] eventTypes)
         {
-            return PirateDb.GetDatabaseForReading().GetEventsForPersons(personIds, eventTypes);
+            return SwarmDb.GetDatabaseForReading().GetEventsForPersons(personIds, eventTypes);
         }
 
         public static BasicPWEvent[] ByType (EventType eventType)
         {
-            return PirateDb.GetDatabaseForReading().GetEventsOfType(eventType);
+            return SwarmDb.GetDatabaseForReading().GetEventsOfType(eventType);
         }
 
         public static void SetEventProcessed (int eventId)
         {
-            PirateDb.GetDatabaseForWriting().SetEventProcessed(eventId);
+            SwarmDb.GetDatabaseForWriting().SetEventProcessed(eventId);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Swarmops.Logic.Swarm
 
         public static Volunteer FromIdentity (int volunteerId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetVolunteer(volunteerId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetVolunteer(volunteerId));
         }
 
         public static Volunteer FromBasic (BasicVolunteer basic)
@@ -39,7 +39,7 @@ namespace Swarmops.Logic.Swarm
 
         public static Volunteer Create (int personId, int ownerPersonId)
         {
-            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateVolunteer(personId, ownerPersonId));
+            return FromIdentity(SwarmDb.GetDatabaseForWriting().CreateVolunteer(personId, ownerPersonId));
         }
 
         #endregion
@@ -67,7 +67,7 @@ namespace Swarmops.Logic.Swarm
             set
             {
                 this.ownerPerson = value;
-                PirateDb.GetDatabaseForWriting().SetVolunteerOwnerPersonId(Identity, value.Identity);
+                SwarmDb.GetDatabaseForWriting().SetVolunteerOwnerPersonId(Identity, value.Identity);
             }
         }
 
@@ -120,7 +120,7 @@ namespace Swarmops.Logic.Swarm
 
         public VolunteerRoles Roles
         {
-            get { return VolunteerRoles.FromArray(PirateDb.GetDatabaseForReading().GetVolunteerRolesByVolunteer(Identity)); }
+            get { return VolunteerRoles.FromArray(SwarmDb.GetDatabaseForReading().GetVolunteerRolesByVolunteer(Identity)); }
         }
 
         public void AddRole (Organization organization, Geography geography, RoleType roleType)
@@ -130,12 +130,12 @@ namespace Swarmops.Logic.Swarm
 
         public void AddRole (int organizationId, int geographyId, RoleType roleType)
         {
-            PirateDb.GetDatabaseForWriting().CreateVolunteerRole(Identity, organizationId, geographyId, roleType);
+            SwarmDb.GetDatabaseForWriting().CreateVolunteerRole(Identity, organizationId, geographyId, roleType);
         }
 
         public void Close (string comments)
         {
-            PirateDb.GetDatabaseForWriting().CloseVolunteer(Identity, comments);
+            SwarmDb.GetDatabaseForWriting().CloseVolunteer(Identity, comments);
         }
 
         private void PopulateCache ()

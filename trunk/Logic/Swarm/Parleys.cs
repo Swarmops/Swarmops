@@ -19,11 +19,11 @@ namespace Swarmops.Logic.Swarm
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetParleys(organization));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetParleys(organization));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetParleys(organization, DatabaseCondition.OpenTrue));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetParleys(organization, DatabaseCondition.OpenTrue));
             }
         }
 
@@ -36,11 +36,11 @@ namespace Swarmops.Logic.Swarm
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetParleys(person));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetParleys(person));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetParleys(person, DatabaseCondition.OpenTrue));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetParleys(person, DatabaseCondition.OpenTrue));
             }
         }
     }

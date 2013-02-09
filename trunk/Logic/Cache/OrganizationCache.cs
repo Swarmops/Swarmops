@@ -27,7 +27,7 @@ namespace Swarmops.Logic.Cache
                 {
                     if (needsReload)
                     {
-                        __organizationCache = PirateDb.GetDatabaseForReading().GetHashedOrganizations();
+                        __organizationCache = SwarmDb.GetDatabaseForReading().GetHashedOrganizations();
                         __cachedUptakeGeographies = null;
                         lastRefresh = DateTime.Now;
                         needsReload = false;
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Cache
                                                 bool AutoAssignNewMembers, int DefaultCountryId)
         {
 
-            int Identity = PirateDb.GetDatabaseForWriting().CreateOrganization(ParentOrganizationId,
+            int Identity = SwarmDb.GetDatabaseForWriting().CreateOrganization(ParentOrganizationId,
                                      NameInternational,
                                      Name,
                                      NameShort,
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Cache
             string NameShort, string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers,
             bool AutoAssignNewMembers, int DefaultCountryId, int OrganizationId)
         {
-            PirateDb.GetDatabaseForWriting().UpdateOrganization(ParentOrganizationId, NameInternational, Name, NameShort, Domain,
+            SwarmDb.GetDatabaseForWriting().UpdateOrganization(ParentOrganizationId, NameInternational, Name, NameShort, Domain,
                 MailPrefix, AnchorGeographyId, AcceptsMembers, AutoAssignNewMembers, DefaultCountryId,
                 OrganizationId);
 
@@ -106,7 +106,7 @@ namespace Swarmops.Logic.Cache
             // Let this be for the moment, new and old parents need to be loaded as well. Better right now to reload the whole cache.
             //lock (loadCacheLock)
             //{
-            //    __organizationCache[objectId][0] = Organization.FromBasic(PirateDb.GetDatabaseForReading().GetOrganization(objectId));
+            //    __organizationCache[objectId][0] = Organization.FromBasic(SwarmDb.GetDatabaseForReading().GetOrganization(objectId));
             //}
 
         }
@@ -269,7 +269,7 @@ namespace Swarmops.Logic.Cache
         [Obsolete ("Never use this function. Mark the org as unused, deleted. Records are needed for historic reasons.", true)]
         internal static void DeleteOrganization (int p)
         {
-            PirateDb.GetDatabaseForWriting().DeleteOrganization(p);
+            SwarmDb.GetDatabaseForWriting().DeleteOrganization(p);
             needsReload = true;
         }
 
@@ -290,7 +290,7 @@ namespace Swarmops.Logic.Cache
 
                 if (__cachedUptakeGeographies == null)
                 {
-                    __cachedUptakeGeographies = PirateDb.GetDatabaseForReading().GetAllOrganizationUptakeGeographyIds();
+                    __cachedUptakeGeographies = SwarmDb.GetDatabaseForReading().GetAllOrganizationUptakeGeographyIds();
                 }
             }
             return __cachedUptakeGeographies;
@@ -363,7 +363,7 @@ namespace Swarmops.Logic.Cache
 
         internal static void AddOrgUptakeGeography (int p, int geoId)
         {
-            PirateDb.GetDatabaseForWriting().AddOrgUptakeGeography(p, geoId);
+            SwarmDb.GetDatabaseForWriting().AddOrgUptakeGeography(p, geoId);
             lock (loadCacheLock)
             {
                 __cachedUptakeGeographies = null;
@@ -373,7 +373,7 @@ namespace Swarmops.Logic.Cache
 
         internal static void DeleteOrgUptakeGeography (int p, int geoId)
         {
-            PirateDb.GetDatabaseForWriting().DeleteOrgUptakeGeography(p, geoId);
+            SwarmDb.GetDatabaseForWriting().DeleteOrgUptakeGeography(p, geoId);
             lock (loadCacheLock)
             {
                 __cachedUptakeGeographies = null;

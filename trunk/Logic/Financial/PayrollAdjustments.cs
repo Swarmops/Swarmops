@@ -11,12 +11,12 @@ namespace Swarmops.Logic.Financial
     {
         static public PayrollAdjustments ForPayrollItem (PayrollItem payrollItem)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetPayrollAdjustments(payrollItem, DatabaseCondition.OpenTrue));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPayrollAdjustments(payrollItem, DatabaseCondition.OpenTrue));
         }
 
         static public PayrollAdjustments ForSalary (Salary salary)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetPayrollAdjustments(salary));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPayrollAdjustments(salary));
         }
     }
 }

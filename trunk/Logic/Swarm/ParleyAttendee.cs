@@ -24,17 +24,17 @@ namespace Swarmops.Logic.Swarm
 
         public static ParleyAttendee FromIdentity (int parleyAttendeeId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetParleyAttendee(parleyAttendeeId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetParleyAttendee(parleyAttendeeId));
         }
 
         public static ParleyAttendee Create (Parley parley, Person person, bool asGuest)
         {
-            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateParleyAttendee(parley.Identity, person.Identity, asGuest));
+            return FromIdentity(SwarmDb.GetDatabaseForWriting().CreateParleyAttendee(parley.Identity, person.Identity, asGuest));
         }
 
         public void AddOption (ParleyOption option)
         {
-            PirateDb.GetDatabaseForWriting().AddParleyAttendeeOption(this.Identity, option.Identity);            
+            SwarmDb.GetDatabaseForWriting().AddParleyAttendeeOption(this.Identity, option.Identity);            
         }
 
         public ParleyOptions Options
@@ -54,7 +54,7 @@ namespace Swarmops.Logic.Swarm
             {
                 if (value != base.Active)
                 {
-                    PirateDb.GetDatabaseForWriting().SetParleyAttendeeActive(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetParleyAttendeeActive(this.Identity, value);
                     base.Active = value;
                 }
             }
@@ -120,7 +120,7 @@ namespace Swarmops.Logic.Swarm
             base.Invoiced = true;
             base.OutboundInvoiceId = invoice.Identity;
 
-            PirateDb.GetDatabaseForWriting().SetParleyAttendeeInvoiced(this.Identity, invoice.Identity);
+            SwarmDb.GetDatabaseForWriting().SetParleyAttendeeInvoiced(this.Identity, invoice.Identity);
         }
     }
 }

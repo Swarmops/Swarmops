@@ -14,7 +14,7 @@ namespace Swarmops.Logic.DataObjects
 #endif
         public static Membership[] Select (int personId)
         {
-            return Memberships.FromArray(PirateDb.GetDatabaseForReading().GetMemberships(Person.FromIdentity(personId))).ToArray();
+            return Memberships.FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(Person.FromIdentity(personId))).ToArray();
         }
 
 #if !__MonoCS__

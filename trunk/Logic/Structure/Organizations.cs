@@ -287,12 +287,12 @@ namespace Swarmops.Logic.Structure
 
         public int GetMemberCount ()
         {
-            return PirateDb.GetDatabaseForReading().GetMemberCountForOrganizations(Identities);
+            return SwarmDb.GetDatabaseForReading().GetMemberCountForOrganizations(Identities);
         }
 
         public int GetMemberCountForGeographies (Geographies geographies)
         {
-            return PirateDb.GetDatabaseForReading().GetMemberCountForOrganizationsAndGeographies(Identities,
+            return SwarmDb.GetDatabaseForReading().GetMemberCountForOrganizationsAndGeographies(Identities,
                                                                                        geographies.Identities);
         }
 
@@ -300,7 +300,7 @@ namespace Swarmops.Logic.Structure
         {
             var result = new Dictionary<int, bool>();
 
-            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(Identities,
+            BasicPersonRole[] personRoles = SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(Identities,
                                                                                            geographies.Identities);
 
             foreach (BasicPersonRole role in personRoles)
@@ -316,7 +316,7 @@ namespace Swarmops.Logic.Structure
         {
             var result = new Dictionary<int, bool>();
 
-            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(Identities,
+            BasicPersonRole[] personRoles = SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(Identities,
                                                                                            geographies.Identities);
 
             foreach (BasicPersonRole role in personRoles)

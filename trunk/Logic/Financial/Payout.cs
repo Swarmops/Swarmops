@@ -44,7 +44,7 @@ namespace Swarmops.Logic.Financial
             DependentSalariesNet = new Salaries();
             DependentSalariesTax = new Salaries();
 
-            BasicFinancialDependency[] dependencies = PirateDb.GetDatabaseForReading().GetPayoutDependencies(this.Identity);
+            BasicFinancialDependency[] dependencies = SwarmDb.GetDatabaseForReading().GetPayoutDependencies(this.Identity);
 
             foreach (BasicFinancialDependency dependency in dependencies)
             {
@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Financial
 
         public static Payout FromIdentity (int payoutId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetPayout(payoutId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetPayout(payoutId));
         }
 
 
@@ -98,7 +98,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (this.Identity != 0)
                 {
-                    PirateDb.GetDatabaseForWriting().SetPayoutAmount(this.Identity, (Int64)(value * 100));
+                    SwarmDb.GetDatabaseForWriting().SetPayoutAmount(this.Identity, (Int64)(value * 100));
                 }
                 base.AmountCents = (Int64)value * 100;
             }
@@ -114,7 +114,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (this.Identity != 0)
                 {
-                    PirateDb.GetDatabaseForWriting().SetPayoutAmount(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetPayoutAmount(this.Identity, value);
                 }
                 base.AmountCents = value;
             }
@@ -130,7 +130,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (this.Identity != 0)
                 {
-                    PirateDb.GetDatabaseForWriting().SetPayoutReference(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetPayoutReference(this.Identity, value);
                 }
                 base.Reference = value;
             }
@@ -149,7 +149,7 @@ namespace Swarmops.Logic.Financial
             }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetPayoutOpen(this.Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPayoutOpen(this.Identity, value);
                 base.Open = value;
             }
         }
@@ -211,13 +211,13 @@ namespace Swarmops.Logic.Financial
                     referenceString = "Expense Claims " + Formatting.GenerateRangeString(identityList);
                 }
 
-                int payoutId = PirateDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
+                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
                                                                    referenceString, amountCents, DateTime.Today.AddDays(1),
                                                                    creator.Identity);
 
                 foreach (int claimId in identityList)
                 {
-                    PirateDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.ExpenseClaim,
+                    SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.ExpenseClaim,
                                                                   claimId);
                 }
 
@@ -236,12 +236,12 @@ namespace Swarmops.Logic.Financial
                     expectedPayment = DateTime.Today;
                 }
 
-                int payoutId = PirateDb.GetDatabaseForWriting().CreatePayout(invoice.OrganizationId, string.Empty, invoice.PayToAccount,
+                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(invoice.OrganizationId, string.Empty, invoice.PayToAccount,
                                                                    invoice.Ocr.Length > 0 ? "OCR " + invoice.Ocr : "Ref# " + invoice.InvoiceReference,
                                                                    invoice.AmountCents, expectedPayment,
                                                                    creator.Identity);
 
-                PirateDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.InboundInvoice,
+                SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.InboundInvoice,
                                                               invoice.Identity);
 
                 invoice.Open = false;
@@ -254,12 +254,12 @@ namespace Swarmops.Logic.Financial
 
                 Salary salary = Salary.FromIdentity(Int32.Parse(components[0].Substring(1)));
 
-                int payoutId = PirateDb.GetDatabaseForWriting().CreatePayout(salary.PayrollItem.OrganizationId, salary.PayrollItem.Person.BankName, salary.PayrollItem.Person.BankAccount,
+                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(salary.PayrollItem.OrganizationId, salary.PayrollItem.Person.BankName, salary.PayrollItem.Person.BankAccount,
                                                                    "Salary " + salary.PayoutDate.ToString("yyyy-MMM"),
                                                                    salary.NetSalaryCents, salary.PayoutDate,
                                                                    creator.Identity);
 
-                PirateDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.Salary,
+                SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.Salary,
                                                               salary.Identity);
 
                 salary.NetPaid = true;
@@ -305,12 +305,12 @@ namespace Swarmops.Logic.Financial
                     referenceString = "Tax for salaries " + Formatting.GenerateRangeString(identityList);
                 }
 
-                int payoutId = PirateDb.GetDatabaseForWriting().CreatePayout(organization.Identity, "The Tax Man", organization.Parameters.TaxAccount, organization.Parameters.TaxOcr,
+                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organization.Identity, "The Tax Man", organization.Parameters.TaxAccount, organization.Parameters.TaxOcr,
                                                                    amountCents, payDay, creator.Identity);
 
                 foreach (int salaryId in identityList)
                 {
-                    PirateDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.Salary,
+                    SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.Salary,
                                                                   salaryId);
                 }
 
@@ -457,7 +457,7 @@ namespace Swarmops.Logic.Financial
 
         public void MigrateDependenciesTo (Payout migrationTarget)
         {
-            PirateDb.GetDatabaseForWriting().MovePayoutDependencies(this.Identity, migrationTarget.Identity);
+            SwarmDb.GetDatabaseForWriting().MovePayoutDependencies(this.Identity, migrationTarget.Identity);
             migrationTarget.RecalculateAmount();
             this.RecalculateAmount();
         }
@@ -502,7 +502,7 @@ namespace Swarmops.Logic.Financial
                 salary.TaxPaid = false;
             }
 
-            PirateDb.GetDatabaseForWriting().ClearPayoutDependencies(this.Identity);
+            SwarmDb.GetDatabaseForWriting().ClearPayoutDependencies(this.Identity);
             RecalculateAmount();
             this.Open = false;
         }

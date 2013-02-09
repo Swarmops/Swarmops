@@ -7,7 +7,7 @@ using Swarmops.Basic.Types;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         /*
         public void LogTransmittedPhoneMessage (int personId, string phoneNumber, string message)

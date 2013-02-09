@@ -37,12 +37,12 @@ namespace Swarmops.Logic.Swarm
 
         public static int GetMemberCountForOrganization (Organization organization)
         {
-            return PirateDb.GetDatabaseForReading().GetMembershipCountForOrganizations(new[] {organization.Identity});
+            return SwarmDb.GetDatabaseForReading().GetMembershipCountForOrganizations(new[] {organization.Identity});
         }
 
         public static int GetMemberCountForOrganizations (int[] organizationIds)
         {
-            return PirateDb.GetDatabaseForReading().GetMembershipCountForOrganizations(organizationIds);
+            return SwarmDb.GetDatabaseForReading().GetMembershipCountForOrganizations(organizationIds);
         }
 
         public static int GetMemberCountForOrganizationSince (Organization org, DateTime sinceDateTime)
@@ -52,7 +52,7 @@ namespace Swarmops.Logic.Swarm
 
         public static int GetMemberCountForOrganizationSince (int orgId, DateTime sinceDateTime)
         {
-            return PirateDb.GetDatabaseForReading().GetMembershipCountForOrganizationsSince(new[] {orgId}, sinceDateTime);
+            return SwarmDb.GetDatabaseForReading().GetMembershipCountForOrganizationsSince(new[] {orgId}, sinceDateTime);
         }
 
         public static int GetMemberCountForOrganizations (Organizations organizations)
@@ -79,12 +79,12 @@ namespace Swarmops.Logic.Swarm
                 return ForOrganization(organization);
             }
 
-            return FromArray(PirateDb.GetDatabaseForReading().GetMemberships(organization));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(organization));
         }
 
         public static Memberships ForOrganization (Organization organization)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetMemberships(organization, DatabaseCondition.ActiveTrue));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(organization, DatabaseCondition.ActiveTrue));
         }
 
         public static Memberships ForOrganizations (Organizations organizations, bool includeTerminated)
@@ -94,12 +94,12 @@ namespace Swarmops.Logic.Swarm
                 return ForOrganizations(organizations);
             }
 
-            return FromArray(PirateDb.GetDatabaseForReading().GetMemberships(organizations));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(organizations));
         }
 
         public static Memberships ForOrganizations (Organizations organizations)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetMemberships(organizations, DatabaseCondition.ActiveTrue));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(organizations, DatabaseCondition.ActiveTrue));
         }
 
         public static Memberships GetExpiring (Organization organization, DateTime dateExpiry)
@@ -110,23 +110,23 @@ namespace Swarmops.Logic.Swarm
         public static Memberships GetExpired (Organization organization)
         {
             return
-                FromArray(PirateDb.GetDatabaseForReading().GetExpiringMemberships(organization, DateTime.MinValue,
+                FromArray(SwarmDb.GetDatabaseForReading().GetExpiringMemberships(organization, DateTime.MinValue,
                                                                         DateTime.Now));
         }
         public static Memberships GetExpired (Organization organization, DateTime lowerBound, DateTime upperBound)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetExpiringMemberships(organization, lowerBound, upperBound, DatabaseCondition.None));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetExpiringMemberships(organization, lowerBound, upperBound, DatabaseCondition.None));
         }
 
         public static Memberships GetExpiring (Organization organization, DateTime lowerBound, DateTime upperBound)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetExpiringMemberships(organization, lowerBound, upperBound));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetExpiringMemberships(organization, lowerBound, upperBound));
         }
 
 
         public static Dictionary<int, List<BasicMembership>> GetMembershipsForPeople (int[] personIds, int gracePeriod)
         {
-            return PirateDb.GetDatabaseForReading().GetMembershipsForPeople(personIds, gracePeriod);
+            return SwarmDb.GetDatabaseForReading().GetMembershipsForPeople(personIds, gracePeriod);
         }
 
     }

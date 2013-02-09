@@ -19,11 +19,11 @@ namespace Swarmops.Logic.Financial
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetOutboundInvoices(organization));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetOutboundInvoices(organization));
             }
             else
             {
-                return FromArray (PirateDb.GetDatabaseForReading().GetOutboundInvoices(organization, DatabaseCondition.OpenTrue));
+                return FromArray (SwarmDb.GetDatabaseForReading().GetOutboundInvoices(organization, DatabaseCondition.OpenTrue));
             }
         }
     }

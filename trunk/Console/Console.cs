@@ -1179,7 +1179,7 @@ namespace Swarmops
 
 		static void PopulateCountries()
 		{
-			PirateDb database = PirateDb.GetDatabase();
+			SwarmDb database = SwarmDb.GetDatabase();
 
 			using (StreamReader reader = new StreamReader("C:\\Countries.txt"))
 			{
@@ -1290,7 +1290,7 @@ namespace Swarmops
 
 		static void SendNewsletter()
 		{
-			PirateDb database = PirateDb.GetDatabase();
+			SwarmDb database = SwarmDb.GetDatabase();
 
 			int[] subscriberIds = database.GetSubscribersForNewsletterFeed(2);
 			People subscribers = People.FromIdentities(subscriberIds);
@@ -1307,7 +1307,7 @@ namespace Swarmops
         static void ImportReporters()
         {
             string fileName = @"C:\Documents and Settings\rick\Desktop\reportrar.txt";
-            PirateDb database = PirateDb.GetDatabase();
+            SwarmDb database = SwarmDb.GetDatabase();
 
             using (StreamReader reader = new StreamReader(fileName, Encoding.Default))
             {
@@ -1741,7 +1741,7 @@ namespace Swarmops
                     int geoId = Int32.Parse(parts[0]);
                     string designation = parts[1].Trim();
 
-                    PirateDb.GetDatabaseForWriting().CreateGeographyOfficialDesignation(geoId, GeographyLevel.Municipality, 1, designation);
+                    SwarmDb.GetDatabaseForWriting().CreateGeographyOfficialDesignation(geoId, GeographyLevel.Municipality, 1, designation);
                     line = reader.ReadLine();
                 }
             }

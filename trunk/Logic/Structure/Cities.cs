@@ -31,17 +31,17 @@ namespace Swarmops.Logic.Structure
 
         public static Cities FromPostalCode (string postalCode, int countryId)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetCitiesByCountryAndPostalCode(countryId, postalCode));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetCitiesByCountryAndPostalCode(countryId, postalCode));
         }
         
         public static Cities FromName (string cityName, int countryId)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetCitiesByName(cityName, countryId));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetCitiesByName(cityName, countryId));
         }
 
         public static Cities ForCountry (string countryCode)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetCitiesByCountry (countryCode));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetCitiesByCountry (countryCode));
         }
     }
 }

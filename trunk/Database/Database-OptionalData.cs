@@ -9,7 +9,7 @@ using Swarmops.Basic.Types;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         private const string objectOptionalDataFieldSequence =
             " ObjectTypes.Name AS ObjectType,ObjectOptionalData.ObjectId,ObjectOptionalDataTypes.Name AS ObjectOptionalDataType,ObjectOptionalData.Data FROM ObjectOptionalData " +

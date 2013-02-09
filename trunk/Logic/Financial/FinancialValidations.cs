@@ -19,7 +19,7 @@ namespace Swarmops.Logic.Financial
 
         public static void Create (FinancialValidationType validationType, IHasIdentity foreignObject, Person actingPerson, double amount)
         {
-            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(validationType, GetDependencyType(foreignObject), foreignObject.Identity,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(validationType, GetDependencyType(foreignObject), foreignObject.Identity,
                 DateTime.Now, actingPerson.Identity, amount);
         }
 
@@ -45,7 +45,7 @@ namespace Swarmops.Logic.Financial
         public static FinancialValidations ForObject (IHasIdentity financialDependency)
         {
             return
-                FromArray(PirateDb.GetDatabaseForReading().GetFinancialValidations(GetDependencyType(financialDependency),
+                FromArray(SwarmDb.GetDatabaseForReading().GetFinancialValidations(GetDependencyType(financialDependency),
                                                                          financialDependency.Identity));
         }
     }

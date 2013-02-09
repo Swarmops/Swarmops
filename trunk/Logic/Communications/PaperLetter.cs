@@ -24,14 +24,14 @@ namespace Swarmops.Logic.Communications
         public static PaperLetter Create(int creatingPersonId, int organizationId, string fromName,
             string[] replyAddressLines, DateTime receivedDate, int toPersonId, RoleType toPersonInRole, bool personal)
         {
-            return FromIdentity(PirateDb.GetDatabaseForWriting().
+            return FromIdentity(SwarmDb.GetDatabaseForWriting().
                 CreatePaperLetter(organizationId, fromName, String.Join("|", replyAddressLines),
                                   receivedDate, toPersonId, toPersonInRole, personal, creatingPersonId));
         }
 
         public static PaperLetter FromIdentity (int paperLetterId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetPaperLetter(paperLetterId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetPaperLetter(paperLetterId));
         }
 
         public static PaperLetter FromBasic (BasicPaperLetter basic)

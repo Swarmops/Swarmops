@@ -8,7 +8,7 @@ using Swarmops.Basic.Types;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         public int CreateMediaEntryFromKeyword (string keyword, string mediaName, bool isBlog, string url, string title,
                                                 DateTime dateTime)

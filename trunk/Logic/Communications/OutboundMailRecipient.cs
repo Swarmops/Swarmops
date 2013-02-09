@@ -112,12 +112,12 @@ namespace Swarmops.Logic.Communications
 
         public static void Create (int outboundMailId, int personId, bool asOfficer, int personType)
         {
-            PirateDb.GetDatabaseForWriting().CreateOutboundMailRecipient(outboundMailId, personId, asOfficer, personType);
+            SwarmDb.GetDatabaseForWriting().CreateOutboundMailRecipient(outboundMailId, personId, asOfficer, personType);
         }
 
         public void Delete ()
         {
-            PirateDb.GetDatabaseForWriting().DeleteOutboundMailRecipient(Identity);
+            SwarmDb.GetDatabaseForWriting().DeleteOutboundMailRecipient(Identity);
         }
     }
 }

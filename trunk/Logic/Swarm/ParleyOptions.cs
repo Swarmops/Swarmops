@@ -18,17 +18,17 @@ namespace Swarmops.Logic.Swarm
         {
             if (includeInactive)
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetParleyOptions(parley));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetParleyOptions(parley));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetParleyOptions(parley, DatabaseCondition.ActiveTrue));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetParleyOptions(parley, DatabaseCondition.ActiveTrue));
             }
         }
 
         public static ParleyOptions ForParleyAttendee (ParleyAttendee attendee)
         {
-            int[] parleyOptionIds = PirateDb.GetDatabaseForReading().GetParleyAttendeeOptions(attendee.Identity);
+            int[] parleyOptionIds = SwarmDb.GetDatabaseForReading().GetParleyAttendeeOptions(attendee.Identity);
 
             return FromIdentities(parleyOptionIds);
         }

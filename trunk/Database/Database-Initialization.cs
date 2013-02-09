@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Swarmops.Database
 {
-    partial class PirateDb
+    partial class SwarmDb
     {
         // These functions are bloody dangerous, mmmkay?
 

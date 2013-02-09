@@ -20,12 +20,12 @@ namespace Swarmops.Logic.Swarm
 
         public static ParleyOption FromIdentity (int parleyOptionId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetParleyOption(parleyOptionId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetParleyOption(parleyOptionId));
         }
 
         public static ParleyOption Create (Parley parley, string description, Int64 amountCents)
         {
-            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateParleyOption(parley.Identity, description, amountCents));
+            return FromIdentity(SwarmDb.GetDatabaseForWriting().CreateParleyOption(parley.Identity, description, amountCents));
         }
 
         public decimal AmountDecimal

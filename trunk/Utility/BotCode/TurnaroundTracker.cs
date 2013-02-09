@@ -100,7 +100,7 @@ namespace Swarmops.Utility.BotCode
                         dateTimeClosed = turnaround.DateTimeOpened;
                     }
 
-                    PirateDb.GetDatabaseForWriting().SetCommunicationTurnaroundClosed(Organization.PPSEid, 1, turnaround.CommunicationId, (DateTime) dateTimeClosed, 0);
+                    SwarmDb.GetDatabaseForWriting().SetCommunicationTurnaroundClosed(Organization.PPSEid, 1, turnaround.CommunicationId, (DateTime) dateTimeClosed, 0);
                 }
             }
         }

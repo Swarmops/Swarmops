@@ -19,12 +19,12 @@ namespace Swarmops.Logic.Communications
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetCommunicationTurnarounds(organization));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetCommunicationTurnarounds(organization));
             }
             else
             {
                 return
-                    FromArray(PirateDb.GetDatabaseForReading().GetCommunicationTurnarounds(organization,
+                    FromArray(SwarmDb.GetDatabaseForReading().GetCommunicationTurnarounds(organization,
                                                                                  DatabaseCondition.OpenTrue));
             }
         }

@@ -21,14 +21,14 @@ namespace Swarmops.Logic.Media
 
         public static Reporters GetAll()
         {
-            BasicReporter[] basicReporters = PirateDb.GetDatabaseForReading().GetReporters();
+            BasicReporter[] basicReporters = SwarmDb.GetDatabaseForReading().GetReporters();
             return FromArray (basicReporters);
         }
 
         public static Reporters FromMediaCategories (MediaCategories categories)
         {
             BasicReporter[] basicReporters =
-                PirateDb.GetDatabaseForReading().GetReportersFromMediaCategories (categories.Identities);
+                SwarmDb.GetDatabaseForReading().GetReportersFromMediaCategories (categories.Identities);
             return FromArray (basicReporters);
         }
     }

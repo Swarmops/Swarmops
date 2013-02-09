@@ -25,11 +25,11 @@ namespace Swarmops.Logic.Governance
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetInternalPollVoters(poll));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPollVoters(poll));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetInternalPollVoters(poll, DatabaseCondition.OpenTrue));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPollVoters(poll, DatabaseCondition.OpenTrue));
             }
         }
 
@@ -40,7 +40,7 @@ namespace Swarmops.Logic.Governance
 
         static public MeetingElectionVoters ForPollClosed (MeetingElection poll)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPollVoters(poll, DatabaseCondition.OpenFalse));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPollVoters(poll, DatabaseCondition.OpenFalse));
         }
 
     }

@@ -28,12 +28,12 @@ namespace Swarmops.Logic.Structure
 
         public static Country FromIdentity (int identity)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetCountry(identity));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetCountry(identity));
         }
 
         public static Country FromCode (string countryCode)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetCountry(countryCode));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetCountry(countryCode));
         }
 
         public Geography Geography

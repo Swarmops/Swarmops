@@ -21,7 +21,7 @@ namespace Swarmops.Logic.Structure
 
         public static City FromIdentity (int cityId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetCity(cityId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetCity(cityId));
         }
 
 
@@ -37,17 +37,17 @@ namespace Swarmops.Logic.Structure
 
         public static City FromName (string cityName, int countryId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetCityByName(cityName, countryId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetCityByName(cityName, countryId));
         }
         
         public static City FromName (string cityName, string countryCode)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetCityByName(cityName, countryCode));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetCityByName(cityName, countryCode));
         }
 
         public static City Create (string cityName, int countryId, int geographyId)
         {
-            return City.FromIdentity(PirateDb.GetDatabaseForWriting().CreateCity(cityName, countryId, geographyId));
+            return City.FromIdentity(SwarmDb.GetDatabaseForWriting().CreateCity(cityName, countryId, geographyId));
         }
     }
 }

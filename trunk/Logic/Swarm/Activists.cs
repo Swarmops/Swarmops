@@ -46,13 +46,13 @@ namespace Swarmops.Logic.Swarm
         {
             Geographies geographies = geography.GetTree();
 
-            return PirateDb.GetDatabaseForReading().GetActivistCountForGeographies(geographies.Identities);
+            return SwarmDb.GetDatabaseForReading().GetActivistCountForGeographies(geographies.Identities);
         }
 
         public static Activists FromGeography (Geography geography)
         {
             Geographies geographies = geography.GetTree();
-            return new Activists(PirateDb.GetDatabaseForReading().GetActivistPersonIds(geographies.Identities));
+            return new Activists(SwarmDb.GetDatabaseForReading().GetActivistPersonIds(geographies.Identities));
         }
 
         public void SendPhoneMessage (string message)

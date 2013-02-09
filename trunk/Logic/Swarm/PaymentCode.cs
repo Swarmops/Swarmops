@@ -35,7 +35,7 @@ namespace Swarmops.Logic.Swarm
 
         public static PaymentCode FromCode (string paymentCode)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetPaymentCode(paymentCode));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetPaymentCode(paymentCode));
         }
 
 
@@ -49,9 +49,9 @@ namespace Swarmops.Logic.Swarm
 
                 try
                 {
-                    int codeId = PirateDb.GetDatabaseForWriting().CreatePaymentCode(randomCode, phoneNumber, personId);
+                    int codeId = SwarmDb.GetDatabaseForWriting().CreatePaymentCode(randomCode, phoneNumber, personId);
                     success = true;
-                    return FromBasic(PirateDb.GetDatabaseForReading().GetPaymentCode(randomCode));
+                    return FromBasic(SwarmDb.GetDatabaseForReading().GetPaymentCode(randomCode));
                 }
                 catch (Exception)
                 {
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Swarm
 
         public void Claim (int claimingPersonId)
         {
-            PirateDb.GetDatabaseForWriting().ClaimPaymentCode(Identity, claimingPersonId);
+            SwarmDb.GetDatabaseForWriting().ClaimPaymentCode(Identity, claimingPersonId);
         }
 
         private static string CreateRandomCode (int length)
