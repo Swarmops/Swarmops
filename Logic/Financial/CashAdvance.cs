@@ -26,18 +26,18 @@ namespace Swarmops.Logic.Financial
 
         public static CashAdvance FromIdentity (int cashAdvanceId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetCashAdvance(cashAdvanceId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetCashAdvance(cashAdvanceId));
         }
 
         public static CashAdvance FromIdentityAggressive (int cashAdvanceId)
         {
-            return FromBasic(PirateDb.GetDatabaseForWriting().GetCashAdvance(cashAdvanceId));
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetCashAdvance(cashAdvanceId));
         }
 
         public static CashAdvance Create(Organization organization, Person forPerson, Person createdByPerson, Int64 amountCents, FinancialAccount budget, string description)
         {
             return
-                FromIdentityAggressive(PirateDb.GetDatabaseForWriting().CreateCashAdvance(forPerson.Identity,
+                FromIdentityAggressive(SwarmDb.GetDatabaseForWriting().CreateCashAdvance(forPerson.Identity,
                                                                                           createdByPerson.Identity,
                                                                                           organization.Identity,
                                                                                           budget.Identity, amountCents,

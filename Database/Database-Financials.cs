@@ -10,7 +10,7 @@ using Swarmops.Basic.Types;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         public int CreateFinancialAccount (int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
         {

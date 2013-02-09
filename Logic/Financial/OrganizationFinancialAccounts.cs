@@ -15,7 +15,7 @@ namespace Swarmops.Logic.Financial
         public static void PrimePiratpartietSE()  // One-off. Once this has been run once, delete it.
         {
             /* -- this was a one-time one-off
-            if (PirateDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(1, OrganizationFinancialAccountType.AssetsBankAccountMain) != 0)
+            if (SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(1, OrganizationFinancialAccountType.AssetsBankAccountMain) != 0)
             {
                 return;
             }
@@ -75,11 +75,11 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                return FinancialAccount.FromIdentity(PirateDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(_organizationId, accountType));
+                return FinancialAccount.FromIdentity(SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(_organizationId, accountType));
             }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetOrganizationFinancialAccountId(_organizationId, accountType,
+                SwarmDb.GetDatabaseForWriting().SetOrganizationFinancialAccountId(_organizationId, accountType,
                                                                                  value.Identity);
             }
         }

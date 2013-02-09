@@ -5,7 +5,7 @@ using System.Data.Common;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
 
 

@@ -19,22 +19,22 @@ namespace Swarmops.Logic.Financial
         [Obsolete("This method uses floating point for financials. Deprecated. Do not use; use BalanceTotalCents instead.", true)]
         public double BalanceTotal
         {
-            get { return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceTotal(Identity); }
+            get { return SwarmDb.GetDatabaseForReading().GetFinancialAccountBalanceTotal(Identity); }
         }
 
         public Int64 BalanceTotalCents
         {
-            get { return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceTotalCents(Identity); }
+            get { return SwarmDb.GetDatabaseForReading().GetFinancialAccountBalanceTotalCents(Identity); }
         }
 
         public static FinancialAccount FromIdentity(int identity)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetFinancialAccount(identity));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialAccount(identity));
         }
 
         public static FinancialAccount FromIdentityAggressive(int identity)
         {
-            return FromBasic(PirateDb.GetDatabaseForWriting().GetFinancialAccount(identity));  // Note "for writing". Intentional; this bypasses the replication lag from master to slave.
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetFinancialAccount(identity));  // Note "for writing". Intentional; this bypasses the replication lag from master to slave.
         }
 
         public static FinancialAccount FromBasic(BasicFinancialAccount basic)
@@ -45,30 +45,30 @@ namespace Swarmops.Logic.Financial
         [Obsolete("This method uses floating point for financials. Deprecated. Do not use; use GetDeltaCents instead.", true)]
         public decimal GetDelta(DateTime start, DateTime end)
         {
-            return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceDelta(Identity, start, end);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountBalanceDelta(Identity, start, end);
         }
 
         public Int64 GetDeltaCents(DateTime start, DateTime end)
         {
-            return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceDeltaCents(Identity, start, end);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountBalanceDeltaCents(Identity, start, end);
         }
 
         public FinancialAccountRows GetLastRows(int rowCount)
         {
-            BasicFinancialAccountRow[] basicRows = PirateDb.GetDatabaseForReading().GetLastFinancialAccountRows(Identity, rowCount);
+            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading().GetLastFinancialAccountRows(Identity, rowCount);
             return FinancialAccountRows.FromArray(basicRows);
         }
 
         public FinancialAccountRows GetRows(DateTime start, DateTime end)
         {
-            BasicFinancialAccountRow[] basicRows = PirateDb.GetDatabaseForReading().GetFinancialAccountRows(Identity, start, end);
+            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading().GetFinancialAccountRows(Identity, start, end);
             return FinancialAccountRows.FromArray(basicRows);
         }
 
         [Obsolete("This method uses floating point for financials. Deprecated. Do not use; use GetBudgetCents instead.")]
         public double GetBudget(int year)
         {
-            return PirateDb.GetDatabaseForReading().GetFinancialAccountBudget(this.Identity, year);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountBudget(this.Identity, year);
         }
 
         public Int64 GetBudgetCents (int year)
@@ -78,28 +78,28 @@ namespace Swarmops.Logic.Financial
 
         public Int64[] GetBudgetMonthly (int year)
         {
-            return PirateDb.GetDatabaseForReading().GetFinancialAccountBudgetMonthly(this.Identity, year);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountBudgetMonthly(this.Identity, year);
         }
 
         [Obsolete("This method uses floating point for financials. Deprecated. Do not use.")]
         public void SetBudget(int year, double amount)
         {
-            PirateDb.GetDatabaseForWriting().SetFinancialAccountBudget(this.Identity, year, amount);
+            SwarmDb.GetDatabaseForWriting().SetFinancialAccountBudget(this.Identity, year, amount);
         }
 
         public void SetBudgetCents (int year, Int64 amount)
         {
-            PirateDb.GetDatabaseForWriting().SetFinancialAccountBudget(this.Identity, year, amount / 100.0);  // TODO: Change db structure to use cents
+            SwarmDb.GetDatabaseForWriting().SetFinancialAccountBudget(this.Identity, year, amount / 100.0);  // TODO: Change db structure to use cents
         }
 
         public void SetBudgetMontly (int year, int month, Int64 amountCents)
         {
-            PirateDb.GetDatabaseForWriting().SetFinancialAccountBudgetMonthly(this.Identity, year, month, amountCents);
+            SwarmDb.GetDatabaseForWriting().SetFinancialAccountBudgetMonthly(this.Identity, year, month, amountCents);
         }
 
         public static FinancialAccount Create (int organizationId, string name, FinancialAccountType accountType, int parentFinancialAccountId)
         {
-            int accountId = PirateDb.GetDatabaseForWriting().CreateFinancialAccount(organizationId, name, accountType, parentFinancialAccountId);
+            int accountId = SwarmDb.GetDatabaseForWriting().CreateFinancialAccount(organizationId, name, accountType, parentFinancialAccountId);
             return FromIdentityAggressive(accountId);
         }
 
@@ -124,14 +124,14 @@ namespace Swarmops.Logic.Financial
             }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetFinancialAccountOwner(this.Identity, value.Identity);
+                SwarmDb.GetDatabaseForWriting().SetFinancialAccountOwner(this.Identity, value.Identity);
             }
         }
 
 
         public FinancialAccounts Children
         {
-            get { return FinancialAccounts.FromArray(PirateDb.GetDatabaseForReading().GetFinancialAccountChildren(this.Identity)); }
+            get { return FinancialAccounts.FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountChildren(this.Identity)); }
         }
 
         public FinancialAccounts GetTree ()

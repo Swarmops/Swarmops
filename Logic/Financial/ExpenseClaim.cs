@@ -28,13 +28,13 @@ namespace Swarmops.Logic.Financial
 
         public static ExpenseClaim FromIdentity (int expenseId)
         {
-            return FromBasic (PirateDb.GetDatabaseForReading().GetExpenseClaim (expenseId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetExpenseClaim (expenseId));
         }
 
         public static ExpenseClaim Create (Person claimer, Organization organization, FinancialAccount budget, 
                                       DateTime expenseDate, string description, Int64 amountCents)
         {
-            ExpenseClaim newClaim = FromIdentity (PirateDb.GetDatabaseForWriting().CreateExpenseClaim (claimer.Identity, organization.Identity,
+            ExpenseClaim newClaim = FromIdentity (SwarmDb.GetDatabaseForWriting().CreateExpenseClaim (claimer.Identity, organization.Identity,
                                                                        budget.Identity, expenseDate, description, amountCents));
             // Create the financial transaction with rows
 
@@ -77,7 +77,7 @@ namespace Swarmops.Logic.Financial
         {
             // OBSOLETE
 
-            // PirateDb.GetDatabaseForWriting().CreateExpenseEvent (Identity, eventType, personId);
+            // SwarmDb.GetDatabaseForWriting().CreateExpenseEvent (Identity, eventType, personId);
 
             // TODO: Repopulate Events property, when created
         }
@@ -147,7 +147,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (base.Attested != value)
                 {
-                    PirateDb.GetDatabaseForWriting().SetExpenseClaimAttested(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested(this.Identity, value);
                     base.Attested = value;
                 }
             }
@@ -163,7 +163,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (base.Validated != value)
                 {
-                    PirateDb.GetDatabaseForWriting().SetExpenseClaimValidated(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated(this.Identity, value);
                     base.Validated = value;
                 }
             }
@@ -177,7 +177,7 @@ namespace Swarmops.Logic.Financial
                 if (base.Open != value)
                 {
                     base.Open = value;
-                    PirateDb.GetDatabaseForWriting().SetExpenseClaimOpen(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimOpen(this.Identity, value);
                 }
             }
 
@@ -191,7 +191,7 @@ namespace Swarmops.Logic.Financial
                 if (base.Claimed != value)
                 {
                     base.Claimed = value;
-                    PirateDb.GetDatabaseForWriting().SetExpenseClaimClaimed(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimClaimed(this.Identity, value);
                     UpdateFinancialTransaction(this.Claimer);
                 }
             }
@@ -206,7 +206,7 @@ namespace Swarmops.Logic.Financial
                 if (base.Repaid != value)
                 {
                     base.Repaid = value;
-                    PirateDb.GetDatabaseForWriting().SetExpenseClaimRepaid(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimRepaid(this.Identity, value);
                 }
             }
 
@@ -220,7 +220,7 @@ namespace Swarmops.Logic.Financial
                 if (base.KeepSeparate != value)
                 {
                     base.KeepSeparate = value;
-                    PirateDb.GetDatabaseForWriting().SetExpenseClaimKeepSeparate(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimKeepSeparate(this.Identity, value);
                 }
             }
 
@@ -234,7 +234,7 @@ namespace Swarmops.Logic.Financial
             }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetExpenseClaimDescription(this.Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetExpenseClaimDescription(this.Identity, value);
                 base.Description = value;
             }
         }
@@ -280,14 +280,14 @@ namespace Swarmops.Logic.Financial
             }
 
             base.AmountCents = amountCents;
-            PirateDb.GetDatabaseForWriting().SetExpenseClaimAmount(this.Identity, amountCents);
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAmount(this.Identity, amountCents);
             UpdateFinancialTransaction(settingPerson);
         }
 
 
         public void SetBudget (FinancialAccount budget, Person settingPerson)
         {
-            PirateDb.GetDatabaseForWriting().SetExpenseClaimBudget (this.Identity, budget.Identity);
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimBudget (this.Identity, budget.Identity);
             base.BudgetId = budget.Identity;
             UpdateFinancialTransaction(settingPerson);
         }
@@ -366,8 +366,8 @@ namespace Swarmops.Logic.Financial
 
         public void Validate(Person validator)
         {
-            PirateDb.GetDatabaseForWriting().SetExpenseClaimValidated(this.Identity, true);
-            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Validation,
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated(this.Identity, true);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Validation,
                                                              FinancialDependencyType.ExpenseClaim, this.Identity,
                                                              DateTime.Now, validator.Identity, (double) this.Amount);
             base.Validated = true;
@@ -375,8 +375,8 @@ namespace Swarmops.Logic.Financial
 
         public void Devalidate (Person devalidator)
         {
-            PirateDb.GetDatabaseForWriting().SetExpenseClaimValidated(this.Identity, false);
-            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Devalidation,
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated(this.Identity, false);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Devalidation,
                                                              FinancialDependencyType.ExpenseClaim, this.Identity,
                                                              DateTime.Now, devalidator.Identity, (double) this.Amount);
             base.Validated = false;
@@ -389,8 +389,8 @@ namespace Swarmops.Logic.Financial
 
         public void Attest(Person attester)
         {
-            PirateDb.GetDatabaseForWriting().SetExpenseClaimAttested(this.Identity, true);
-            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested(this.Identity, true);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
                                                              FinancialDependencyType.ExpenseClaim, this.Identity,
                                                              DateTime.Now, attester.Identity, (double) this.Amount);
             base.Attested = true;
@@ -398,8 +398,8 @@ namespace Swarmops.Logic.Financial
 
         public void Deattest(Person deattester)
         {
-            PirateDb.GetDatabaseForWriting().SetExpenseClaimAttested(this.Identity, false);
-            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested(this.Identity, false);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
                                                              FinancialDependencyType.ExpenseClaim, this.Identity,
                                                              DateTime.Now, deattester.Identity, (double) this.Amount);
             base.Attested = false;

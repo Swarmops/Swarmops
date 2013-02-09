@@ -29,7 +29,7 @@ namespace Swarmops.Logic.Financial
         /// <returns>The payroll.</returns>
         public static Payroll ForOrganization (Organization organization, bool includeClosed)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetPayroll(organization, 
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPayroll(organization, 
                 includeClosed? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
 
@@ -51,7 +51,7 @@ namespace Swarmops.Logic.Financial
         /// <returns>The payroll.</returns>
         public static Payroll GetAll(bool includeClosed)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetPayroll(includeClosed? DatabaseCondition.None : DatabaseCondition.OpenTrue));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPayroll(includeClosed? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
     }
 }

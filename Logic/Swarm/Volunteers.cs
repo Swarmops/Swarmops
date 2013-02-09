@@ -13,7 +13,7 @@ namespace Swarmops.Logic.Swarm
     {
         public static Volunteers GetOpen()
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetOpenVolunteers());
+            return FromArray(SwarmDb.GetDatabaseForReading().GetOpenVolunteers());
         }
 
         public static Volunteers FromArray (BasicVolunteer[] basicArray)

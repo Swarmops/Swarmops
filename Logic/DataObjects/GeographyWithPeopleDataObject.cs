@@ -33,7 +33,7 @@ namespace Swarmops.Logic.DataObjects
                 row.SecondsContent = "";
                 row.OrgId = orgId;
                 Geographies gTree = geo.GetTree();
-                int[] members = PirateDb.GetDatabaseForReading().GetMembersForOrganizationsAndGeographies(orgs.Identities, gTree.Identities);
+                int[] members = SwarmDb.GetDatabaseForReading().GetMembersForOrganizationsAndGeographies(orgs.Identities, gTree.Identities);
 
 
             }

@@ -26,7 +26,7 @@ namespace Swarmops.Logic.Cache
             {
                 if (loadCache || lastRefresh.AddMinutes(cacheLifeSpanMinutes) < DateTime.Now)
                 {
-                    __geographyCache = PirateDb.GetDatabaseForReading().GetHashedGeographies();
+                    __geographyCache = SwarmDb.GetDatabaseForReading().GetHashedGeographies();
                     lastRefresh = DateTime.Now;
                     loadCache = false;
                 }
@@ -241,8 +241,8 @@ namespace Swarmops.Logic.Cache
 
         static public void SetGeographyName (int geographyId, string name)
         {
-            PirateDb.GetDatabaseForWriting().SetGeographyName(geographyId, name);
-            BasicGeography geo = PirateDb.GetDatabaseForReading().GetGeography(geographyId);
+            SwarmDb.GetDatabaseForWriting().SetGeographyName(geographyId, name);
+            BasicGeography geo = SwarmDb.GetDatabaseForReading().GetGeography(geographyId);
             Dictionary<int, List<BasicGeography>> hashedGeographies = GetHashedGeographies();
             hashedGeographies[geographyId][0] = geo;
         }
@@ -251,12 +251,12 @@ namespace Swarmops.Logic.Cache
          * Might be handled....
                 public GeographyLevel[] GetGeographyLevelsAtGeographyId (int geographyId)
                 {
-                    return PirateDb.GetDatabaseForReading().GetGeographyLevelsAtGeographyId(geographyId);
+                    return SwarmDb.GetDatabaseForReading().GetGeographyLevelsAtGeographyId(geographyId);
                 }
 
                 public int[] GetGeographyIdsFromLevel (int countryId, GeographyLevel level)
                 {
-                    return PirateDb.GetDatabaseForReading().GetGeographyIdsFromLevel(countryId, level);
+                    return SwarmDb.GetDatabaseForReading().GetGeographyIdsFromLevel(countryId, level);
                 }
         ************************/
 

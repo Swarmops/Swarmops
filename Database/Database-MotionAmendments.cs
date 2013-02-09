@@ -9,7 +9,7 @@ using Swarmops.Basic.Types.Governance;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         #region Field reading code
 

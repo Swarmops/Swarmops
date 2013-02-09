@@ -19,7 +19,7 @@ namespace Swarmops.Utility
         {
             try
             {
-                PirateDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.Now, "ExceptionMail", e);
+                SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.Now, "ExceptionMail", e);
             }
             catch
             {

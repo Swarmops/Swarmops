@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         // This class is in horrible need of serious refactoring. For its simplicity in task, it's a horrible bowl of spaghetti.
 

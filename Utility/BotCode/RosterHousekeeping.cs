@@ -760,7 +760,7 @@ namespace Swarmops.Utility.BotCode
                  + fromOrgReport + "\r\n"
                  + toOrgReport;
 
-            BasicPersonRole[] UPSecretary = PirateDb.GetDatabaseForReading().GetPeopleWithRoleType(RoleType.OrganizationSecretary,
+            BasicPersonRole[] UPSecretary = SwarmDb.GetDatabaseForReading().GetPeopleWithRoleType(RoleType.OrganizationSecretary,
                                                                                         new int[] { Organization.UPSEid },
                                                                                         new int[] { });
             if (UPSecretary.Length > 0)

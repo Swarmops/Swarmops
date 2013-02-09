@@ -60,7 +60,7 @@ namespace Swarmops.Logic.Swarm
                     {
                         ChurnData.LogRetention(this.PersonId, this.OrganizationId, base.Expires);
                     }
-                    PirateDb.GetDatabaseForWriting().SetMembershipExpires(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetMembershipExpires(Identity, value);
                     base.Expires = value;
                 }
             }
@@ -68,7 +68,7 @@ namespace Swarmops.Logic.Swarm
 
         public void SetPaymentStatus (MembershipPaymentStatus status, DateTime dateTime)
         {
-            PirateDb.GetDatabaseForWriting().SetMembershipPaymentStatus(Identity, status, dateTime);
+            SwarmDb.GetDatabaseForWriting().SetMembershipPaymentStatus(Identity, status, dateTime);
             LoadPaymentStatus();
             paymentStatus.Status = status;
             paymentStatus.StatusDateTime = dateTime;
@@ -78,7 +78,7 @@ namespace Swarmops.Logic.Swarm
         {
             if (paymentStatus == null)
             {
-                paymentStatus = PirateDb.GetDatabaseForReading().GetMembershipPaymentStatus(this.Identity);
+                paymentStatus = SwarmDb.GetDatabaseForReading().GetMembershipPaymentStatus(this.Identity);
             }
         }
 
@@ -87,7 +87,7 @@ namespace Swarmops.Logic.Swarm
         public static void LoadPaymentStatuses (Memberships mss)
         {
             Dictionary<int, BasicMembershipPaymentStatus> statuses =
-                PirateDb.GetDatabaseForReading().GetMembershipPaymentStatuses(mss.Identities);
+                SwarmDb.GetDatabaseForReading().GetMembershipPaymentStatuses(mss.Identities);
             foreach (Membership ms in mss)
             {
                 if (ms.paymentStatus == null && statuses.ContainsKey(ms.Identity))
@@ -139,22 +139,22 @@ namespace Swarmops.Logic.Swarm
 
         public static Membership FromIdentity(int membershipId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetMembership(membershipId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetMembership(membershipId));
         }
 
         public static Membership FromIdentityAggressive(int membershipId)
         {
-            return FromBasic(PirateDb.GetDatabaseForWriting().GetMembership(membershipId));
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetMembership(membershipId));
         }
 
         public static Membership FromPersonAndOrganization(int personId, int organizationId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetActiveMembership(personId, organizationId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetActiveMembership(personId, organizationId));
         }
 
         public static Membership Create (int personId, int organizationId, DateTime expires)
         {
-            int membershipId = PirateDb.GetDatabaseForWriting().CreateMembership(personId, organizationId, expires);
+            int membershipId = SwarmDb.GetDatabaseForWriting().CreateMembership(personId, organizationId, expires);
 
             return FromIdentityAggressive(membershipId);
         }
@@ -168,7 +168,7 @@ namespace Swarmops.Logic.Swarm
                                          DateTime expires)
         {
             return
-                FromIdentity(PirateDb.GetDatabaseForWriting().ImportMembership(person.Identity, organization.Identity, memberSince,
+                FromIdentity(SwarmDb.GetDatabaseForWriting().ImportMembership(person.Identity, organization.Identity, memberSince,
                                                                      expires));
         }
 
@@ -249,7 +249,7 @@ namespace Swarmops.Logic.Swarm
                 {
                     ChurnData.LogChurn(this.PersonId, this.OrganizationId);
                 }
-                PirateDb.GetDatabaseForWriting().TerminateMembership(Identity);
+                SwarmDb.GetDatabaseForWriting().TerminateMembership(Identity);
                 base.Active = false;
                 base.DateTerminated = DateTime.Now;
 

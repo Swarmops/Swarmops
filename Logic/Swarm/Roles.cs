@@ -53,7 +53,7 @@ namespace Swarmops.Logic.Swarm
 
             foreach (Organization org in orgLine)
             {
-                BasicPersonRole[] upwardPersonRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeographies(org.Identity,
+                BasicPersonRole[] upwardPersonRoles = SwarmDb.GetDatabaseForReading().GetRolesForOrganizationGeographies(org.Identity,
                                                                                                     nodeIds);
 
                 foreach (BasicPersonRole role in upwardPersonRoles)
@@ -102,7 +102,7 @@ namespace Swarmops.Logic.Swarm
 
             foreach (Organization org in orgTree)
             {
-                BasicPersonRole[] downwardPersonRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeographies(org.Identity,
+                BasicPersonRole[] downwardPersonRoles = SwarmDb.GetDatabaseForReading().GetRolesForOrganizationGeographies(org.Identity,
                                                                                                       nodeIds);
 
                 foreach (BasicPersonRole role in downwardPersonRoles)
@@ -144,7 +144,7 @@ namespace Swarmops.Logic.Swarm
                 nodeIds = new int[0];
             }
 
-            return PirateDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(orgIds, nodeIds);;
+            return SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(orgIds, nodeIds);;
         }
 
 
@@ -156,7 +156,7 @@ namespace Swarmops.Logic.Swarm
 
         public static Roles FromOrganization (int organizationId)
         {
-            BasicPersonRole[] basicPersonRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganization (organizationId);
+            BasicPersonRole[] basicPersonRoles = SwarmDb.GetDatabaseForReading().GetRolesForOrganization (organizationId);
 
             return FromArray(basicPersonRoles);
         }
@@ -168,7 +168,7 @@ namespace Swarmops.Logic.Swarm
 
         public static Person GetLocalLead(int organizationId, int geographyId)
         {
-            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId);
+            BasicPersonRole[] personRoles = SwarmDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId);
 
             foreach (BasicPersonRole role in personRoles)
             {
@@ -183,7 +183,7 @@ namespace Swarmops.Logic.Swarm
 
         public static Person GetChairman (Organization organization)
         {
-            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganization(organization.Identity);
+            BasicPersonRole[] personRoles = SwarmDb.GetDatabaseForReading().GetRolesForOrganization(organization.Identity);
 
             foreach (BasicPersonRole role in personRoles)
             {
@@ -203,7 +203,7 @@ namespace Swarmops.Logic.Swarm
 
         public static People GetLocalDeputies(int organizationId, int geographyId)
         {
-            BasicPersonRole[] personRoles = PirateDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId);
+            BasicPersonRole[] personRoles = SwarmDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId);
             People result = new People();
 
             foreach (BasicPersonRole role in personRoles)
@@ -224,7 +224,7 @@ namespace Swarmops.Logic.Swarm
 
             // Expensive op:
             BasicPersonRole[] basicPersonRoles =
-                PirateDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(organization.GetTree().Identities,
+                SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(organization.GetTree().Identities,
                                                                            geography.GetTree().Identities);
 
             var lookup = new Dictionary<int, bool>();
@@ -248,7 +248,7 @@ namespace Swarmops.Logic.Swarm
 
         public static Roles GetAll()
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetRoles());
+            return FromArray(SwarmDb.GetDatabaseForReading().GetRoles());
         }
     }
 }

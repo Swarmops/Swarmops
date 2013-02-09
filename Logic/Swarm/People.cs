@@ -42,7 +42,7 @@ namespace Swarmops.Logic.Swarm
                     lookup[key] = true;
                 }
 
-                BasicPerson[] basicArray = PirateDb.GetDatabaseForReading().GetAllPeople();
+                BasicPerson[] basicArray = SwarmDb.GetDatabaseForReading().GetAllPeople();
                 var result = new People();
 
                 for (int index = 0; index < basicArray.Length; index++)
@@ -57,13 +57,13 @@ namespace Swarmops.Logic.Swarm
             }
             else
             {
-                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeople(personIds));
+                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeople(personIds));
             }
         }
 
         public static People GetAll ()
         {
-            return People.FromArray(PirateDb.GetDatabaseForReading().GetAllPeople());
+            return People.FromArray(SwarmDb.GetDatabaseForReading().GetAllPeople());
         }
 
         public static People FromNamePattern (string namePattern)
@@ -85,7 +85,7 @@ namespace Swarmops.Logic.Swarm
                     namePattern = "%" + namePattern;
                 }
 
-                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromNamePattern(namePattern));
+                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromNamePattern(namePattern));
             }
 
             return null; // If no valid search string was supplied
@@ -93,7 +93,7 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromBirtDatePattern (DateTime fromdate, DateTime todate)
         {
-            return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromBirthdate(fromdate, todate));
+            return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromBirthdate(fromdate, todate));
         }
 
         public static People FromEmailPattern (string emailPattern)
@@ -105,7 +105,7 @@ namespace Swarmops.Logic.Swarm
             {
                 emailPattern = "%" + emailPattern + "%";
 
-                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromEmailPattern(emailPattern));
+                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromEmailPattern(emailPattern));
             }
 
             return null; // If no valid search string was supplied
@@ -120,7 +120,7 @@ namespace Swarmops.Logic.Swarm
             {
                 cityPattern = "%" + cityPattern + "%";
 
-                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromCityPattern(cityPattern));
+                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromCityPattern(cityPattern));
             }
 
             return null; // If no valid search string was supplied
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Swarm
             {
                 pcPattern = pcPattern + "%";
 
-                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromPostalCodePattern(pcPattern));
+                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromPostalCodePattern(pcPattern));
             }
 
             return null; // If no valid search string was supplied
@@ -147,7 +147,7 @@ namespace Swarmops.Logic.Swarm
             if (pcodes.Length > 0)
             {
 
-                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromPostalCodes(pcodes));
+                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromPostalCodes(pcodes));
             }
 
             return null; // If no valid search string was supplied
@@ -157,7 +157,7 @@ namespace Swarmops.Logic.Swarm
         {
             if (email.Length > 0)
             {
-                return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromEmail(email));
+                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromEmail(email));
             }
 
             return null; // If no valid search string was supplied
@@ -275,7 +275,7 @@ namespace Swarmops.Logic.Swarm
 
             // First, get list of people in the geography, then filter on memberships
 
-            BasicPerson[] people = PirateDb.GetDatabaseForReading().GetPeopleInGeographies(geoTree.Identities);
+            BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleInGeographies(geoTree.Identities);
 
             // Filter on memberships
 
@@ -297,7 +297,7 @@ namespace Swarmops.Logic.Swarm
             // Get the list of all memberships
 
             Dictionary<int, List<BasicMembership>> memberships =
-                PirateDb.GetDatabaseForReading().GetMembershipsForPeople(LogicServices.ObjectsToIdentifiers(people));
+                SwarmDb.GetDatabaseForReading().GetMembershipsForPeople(LogicServices.ObjectsToIdentifiers(people));
 
             var result = new People();
 
@@ -331,7 +331,7 @@ namespace Swarmops.Logic.Swarm
 
             // First, get list of people in the geography, then filter on memberships
 
-            BasicPerson[] people = PirateDb.GetDatabaseForReading().GetPeopleInGeographies(geoTree.Identities);
+            BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleInGeographies(geoTree.Identities);
 
             var result = new People();
 
@@ -383,17 +383,17 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromOptionalData (ObjectOptionalDataType dataType, string data)
         {
-            return People.FromIdentities(PirateDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, dataType, data));
+            return People.FromIdentities(SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, dataType, data));
         }
 
         public static People FromPhoneNumber (int countryId, string phoneNumber)
         {
-            return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromPhoneNumber(countryId, phoneNumber));
+            return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromPhoneNumber(countryId, phoneNumber));
         }
 
         public static People FromPhoneNumber (string countryCode, string phoneNumber)
         {
-            return People.FromArray(PirateDb.GetDatabaseForReading().GetPeopleFromPhoneNumber(countryCode, phoneNumber));
+            return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromPhoneNumber(countryCode, phoneNumber));
         }
 
         public People GetVisiblePeopleByAuthority (Authority authority)
@@ -467,7 +467,7 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromNewsletterFeed (int feedId)
         {
-            int[] subscriberIds = PirateDb.GetDatabaseForReading().GetSubscribersForNewsletterFeed(2);
+            int[] subscriberIds = SwarmDb.GetDatabaseForReading().GetSubscribersForNewsletterFeed(2);
 
             return FromIdentities(subscriberIds);
         }
@@ -487,7 +487,7 @@ namespace Swarmops.Logic.Swarm
 
         public static Dictionary<int, int> GetPeopleGeographies ()
         {
-            return PirateDb.GetDatabaseForReading().GetPeopleGeographies();
+            return SwarmDb.GetDatabaseForReading().GetPeopleGeographies();
         }
 
         public static People FromIdentities (int[] personIds, bool preserveOrder)

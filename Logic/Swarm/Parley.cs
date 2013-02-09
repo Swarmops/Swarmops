@@ -24,13 +24,13 @@ namespace Swarmops.Logic.Swarm
 
         public static Parley FromIdentity (int parleyId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetParley(parleyId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetParley(parleyId));
         }
 
         public static Parley Create (Organization organization, Person person, FinancialAccount budgetInitial, string name, Geography geography, string description, string informationUrl, DateTime startDate, DateTime endDate, Int64 budgetCents, Int64 guaranteeCents, Int64 attendanceFeeCents)
         {
             Parley newParley = 
-                FromIdentity(PirateDb.GetDatabaseForWriting().CreateParley(organization.Identity, person.Identity,
+                FromIdentity(SwarmDb.GetDatabaseForWriting().CreateParley(organization.Identity, person.Identity,
                                                                  -(budgetInitial.Identity), name, geography.Identity,
                                                                  description, informationUrl, startDate, endDate,
                                                                  budgetCents, guaranteeCents, attendanceFeeCents));
@@ -105,7 +105,7 @@ namespace Swarmops.Logic.Swarm
                 if (base.Open != value)
                 {
                     base.Open = value;
-                    PirateDb.GetDatabaseForWriting().SetParleyOpen(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetParleyOpen(this.Identity, value);
                 }
             }
         }
@@ -133,8 +133,8 @@ namespace Swarmops.Logic.Swarm
             }
 
             base.Attested = true;
-            PirateDb.GetDatabaseForWriting().SetParleyAttested(this.Identity, true);
-            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().SetParleyAttested(this.Identity, true);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
                                                              FinancialDependencyType.Parley, this.Identity,
                                                              DateTime.Now, attester.Identity, (double)(this.GuaranteeDecimal));
 
@@ -156,7 +156,7 @@ namespace Swarmops.Logic.Swarm
                 parentBudget.SetBudget(DateTime.Today.Year,
                                        (double) parentBudget.GetBudget(year) + (double) this.BudgetDecimal);  // cost budgets are negative
 
-                PirateDb.GetDatabaseForWriting().SetParleyBudget(this.Identity, newBudget.Identity);
+                SwarmDb.GetDatabaseForWriting().SetParleyBudget(this.Identity, newBudget.Identity);
             }
 
             // Reserve the guarantee money
@@ -177,7 +177,7 @@ namespace Swarmops.Logic.Swarm
             throw new NotImplementedException();
             /*
             base.Attested = false;
-            PirateDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
                                                              FinancialDependencyType.Parley, this.Identity,
                                                              DateTime.Now, deattester.Identity, (double)(this.GuaranteeDecimal+this.BudgetDecimal));*/
 

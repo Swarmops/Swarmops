@@ -22,13 +22,13 @@ namespace Swarmops.Logic.Swarm
 
         public static ExternalActivity FromIdentity (int externalActivityId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetExternalActivity(externalActivityId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetExternalActivity(externalActivityId));
         }
 
         public static ExternalActivity Create (Organization organization, Geography geograpy, ExternalActivityType type, DateTime date, string description, Person createdByPerson)
         {
             return
-                FromIdentity(PirateDb.GetDatabaseForWriting().CreateExternalActivity(organization.Identity, geograpy.Identity,
+                FromIdentity(SwarmDb.GetDatabaseForWriting().CreateExternalActivity(organization.Identity, geograpy.Identity,
                                                                            date, type, description,
                                                                            createdByPerson.Identity));
         }

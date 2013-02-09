@@ -21,7 +21,7 @@ namespace Swarmops.Logic.Structure
 
         public static GeographyStatistics GeneratePresent (int[] memberCountForOrganizations)
         {
-            Dictionary<int, int> voterCounts = PirateDb.GetDatabaseForReading().GetGeographyVoterCounts();
+            Dictionary<int, int> voterCounts = SwarmDb.GetDatabaseForReading().GetGeographyVoterCounts();
             var result = new GeographyStatistics();
 
             // Step 1 - tally the leaf nodes

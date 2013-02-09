@@ -7,7 +7,7 @@ using Swarmops.Basic.Types.Communications;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         public BasicAutoMail[] GetAllAutoMailsForMigration()
         {

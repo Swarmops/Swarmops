@@ -45,13 +45,13 @@ namespace Swarmops.Logic.Governance
         public People GetDocumentedCandidates (Organization organization)
         {
             return
-                People.FromIdentities(PirateDb.GetDatabaseForReading().GetDocumentedCandidates(this.Identity,
+                People.FromIdentities(SwarmDb.GetDatabaseForReading().GetDocumentedCandidates(this.Identity,
                                                                                      organization.Identity));
         }
 
         public void SetCandidateDocumented (Organization organization, Person candidate)
         {
-            PirateDb.GetDatabaseForWriting().SetCandidateDocumentationReceived(this.Identity, organization.Identity, candidate.Identity);
+            SwarmDb.GetDatabaseForWriting().SetCandidateDocumentationReceived(this.Identity, organization.Identity, candidate.Identity);
         }
 
         public static Election September2010 { get { return FromIdentity(3); } }

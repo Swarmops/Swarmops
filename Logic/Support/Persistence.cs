@@ -10,9 +10,9 @@ namespace Swarmops.Logic.Support
 
         public string this [string key]
         {
-            get { return PirateDb.GetDatabaseForReading().GetKeyValue (key); }
+            get { return SwarmDb.GetDatabaseForReading().GetKeyValue (key); }
 
-            set { PirateDb.GetDatabaseForWriting().SetKeyValue (key, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetKeyValue (key, value); }
         }
 
         public static Persistence Key
@@ -23,7 +23,7 @@ namespace Swarmops.Logic.Support
         /* -- Obsolete, used only once in migration MSSQL => MySQL
         public static Dictionary<string,string> All
         {
-            get { return PirateDb.GetDatabaseForReading().GetOldKeyValues(); }  // Migration-only function -- returns all key/value pairs
+            get { return SwarmDb.GetDatabaseForReading().GetOldKeyValues(); }  // Migration-only function -- returns all key/value pairs
         }*/
     }
 }

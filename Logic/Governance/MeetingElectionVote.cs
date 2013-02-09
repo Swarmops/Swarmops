@@ -22,35 +22,35 @@ namespace Swarmops.Logic.Governance
 
         static public MeetingElectionVote FromIdentity (int internalPollVoteId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetInternalPollVote(internalPollVoteId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetInternalPollVote(internalPollVoteId));
         }
 
         static public MeetingElectionVote FromVerificationCode (string verificationCode)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetInternalPollVote(verificationCode));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetInternalPollVote(verificationCode));
         }
 
         static public MeetingElectionVote Create (MeetingElection poll, Geography voteGeography)
         {
             return
-                FromIdentity(PirateDb.GetDatabaseForWriting().CreateInternalPollVote(poll.Identity, voteGeography.Identity,
+                FromIdentity(SwarmDb.GetDatabaseForWriting().CreateInternalPollVote(poll.Identity, voteGeography.Identity,
                                                                            Authentication.
                                                                                CreateRandomPassword(12)));
         }
 
         public void AddDetail (int position, MeetingElectionCandidate candidate)
         {
-            PirateDb.GetDatabaseForWriting().CreateInternalPollVoteDetail(this.Identity, candidate.Identity, position);            
+            SwarmDb.GetDatabaseForWriting().CreateInternalPollVoteDetail(this.Identity, candidate.Identity, position);            
         }
 
         public void Clear()
         {
-            PirateDb.GetDatabaseForWriting().ClearInternalPollVote(this.Identity);
+            SwarmDb.GetDatabaseForWriting().ClearInternalPollVote(this.Identity);
         }
 
         public int[] SelectedCandidateIdsInOrder
         {
-            get { return PirateDb.GetDatabaseForReading().GetInternalPollVoteDetails(this.Identity); }
+            get { return SwarmDb.GetDatabaseForReading().GetInternalPollVoteDetails(this.Identity); }
         }
 
         /*

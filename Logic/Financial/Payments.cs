@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Financial
     {
         public static Payments ForPaymentGroup (PaymentGroup group)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetPayments(group));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPayments(group));
         }
     }
 }

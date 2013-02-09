@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Swarm
     {
         public static ParleyAttendees ForParley (Parley parley)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetParleyAttendees(parley));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetParleyAttendees(parley));
         }
     }
 }

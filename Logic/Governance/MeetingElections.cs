@@ -12,17 +12,17 @@ namespace Swarmops.Logic.Governance
     {
         public static MeetingElections ForOrganization (Organization organization)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPolls(organization));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPolls(organization));
         }
 
         public static MeetingElections ForOrganizations (Organizations organizations)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPolls(organizations));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPolls(organizations));
         }
 
         public static MeetingElections GetAll()
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetInternalPolls());
+            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPolls());
         }
     }
 }

@@ -127,7 +127,7 @@ namespace Swarmops.Logic.Security
                     Dictionary<Permission, List<RoleType>> tempDict
                         = new Dictionary<Permission, List<RoleType>>();
                     _PermissonsPerRoleTypeDict = new Dictionary<RoleType, Dictionary<Permission, bool>>();
-                    BasicPermission[] allPermissions = PirateDb.GetDatabaseForReading().GetPermissionsTable();
+                    BasicPermission[] allPermissions = SwarmDb.GetDatabaseForReading().GetPermissionsTable();
                     foreach (BasicPermission bp in allPermissions)
                     {
                         RoleType role = bp.RoleType;
@@ -166,7 +166,7 @@ namespace Swarmops.Logic.Security
 
         public static Authority GetPersonAuthority (int personId)
         {
-            return Authority.FromBasic(PirateDb.GetDatabaseForReading().GetPersonAuthority(Person.FromIdentity(personId)));
+            return Authority.FromBasic(SwarmDb.GetDatabaseForReading().GetPersonAuthority(Person.FromIdentity(personId)));
         }
 
 
@@ -441,7 +441,7 @@ namespace Swarmops.Logic.Security
                 return people;
             }
 
-            PirateDb databaseRead = PirateDb.GetDatabaseForReading();
+            SwarmDb databaseRead = SwarmDb.GetDatabaseForReading();
 
             if (gracePeriod == -1)
                 gracePeriod = Membership.GracePeriod;
@@ -570,7 +570,7 @@ namespace Swarmops.Logic.Security
 
             // Get ALL unlisted people from database. They're not that many. Build a hashtable with them.
 
-            int[] anonymousPersonIds = PirateDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, ObjectOptionalDataType.Anonymous, "1");
+            int[] anonymousPersonIds = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, ObjectOptionalDataType.Anonymous, "1");
 
             foreach (int anonymousPersonId in anonymousPersonIds)
             {
@@ -736,7 +736,7 @@ namespace Swarmops.Logic.Security
                 line.Add(Organization.FromIdentity(p));
 
             BasicPersonRole[] basPersons
-                = PirateDb.GetDatabaseForReading().GetPeopleWithRoleType(roleType, line.Identities, new int[] { });
+                = SwarmDb.GetDatabaseForReading().GetPeopleWithRoleType(roleType, line.Identities, new int[] { });
 
             List<int> retList = new List<int>();
 

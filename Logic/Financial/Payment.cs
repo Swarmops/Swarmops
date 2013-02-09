@@ -26,12 +26,12 @@ namespace Swarmops.Logic.Financial
 
         public static Payment FromIdentity (int paymentId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetPayment(paymentId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetPayment(paymentId));
         }
 
         public static Payment ForOutboundInvoice (OutboundInvoice invoice)
         {
-            BasicPayment[] array = PirateDb.GetDatabaseForReading().GetPayments(invoice);
+            BasicPayment[] array = SwarmDb.GetDatabaseForReading().GetPayments(invoice);
 
             if (array.Length == 0)
             {
@@ -61,7 +61,7 @@ namespace Swarmops.Logic.Financial
             PWEvents.CreateEvent(EventSource.PirateWeb, EventType.OutboundInvoicePaid, 0, group.Organization.Identity,
                                  Geography.RootIdentity, 0, invoice.Identity, string.Empty);
 
-            return FromIdentity (PirateDb.GetDatabaseForWriting().CreatePayment(group.Identity, amount, reference, fromAccount, key, hasImage,
+            return FromIdentity (SwarmDb.GetDatabaseForWriting().CreatePayment(group.Identity, amount, reference, fromAccount, key, hasImage,
                                                  invoice.Identity));
         }
 
@@ -74,7 +74,7 @@ namespace Swarmops.Logic.Financial
             invoice.SetPaid();
 
             PaymentGroup group = PaymentGroup.Create(organization, dateTime, currency, createdByPerson);
-            Payment newPayment = FromIdentity(PirateDb.GetDatabaseForWriting().CreatePayment(group.Identity, amountCents, string.Empty, string.Empty, string.Empty, false,
+            Payment newPayment = FromIdentity(SwarmDb.GetDatabaseForWriting().CreatePayment(group.Identity, amountCents, string.Empty, string.Empty, string.Empty, false,
                                                  invoice.Identity));
             group.AmountCents = amountCents;
 
@@ -155,7 +155,7 @@ namespace Swarmops.Logic.Financial
         {
             if (!string.IsNullOrEmpty(data))
             {
-                PirateDb.GetDatabaseForWriting().CreatePaymentInformation(this.Identity, type, data);
+                SwarmDb.GetDatabaseForWriting().CreatePaymentInformation(this.Identity, type, data);
             }
         }
 

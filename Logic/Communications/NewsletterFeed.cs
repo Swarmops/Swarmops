@@ -28,7 +28,7 @@ namespace Swarmops.Logic.Communications
 
         public static NewsletterFeed FromIdentity (int identity)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetNewsletterFeed((int)identity));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetNewsletterFeed((int)identity));
         }
 
         public static NewsletterFeed FromBasic (BasicNewsletterFeed basic)

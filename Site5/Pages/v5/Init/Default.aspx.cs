@@ -269,19 +269,19 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         // Store database credentials
 
-        PirateDb.Configuration.Set(
-            new PirateDb.Configuration(
-                new PirateDb.Credentials(
+        SwarmDb.Configuration.Set(
+            new SwarmDb.Configuration(
+                new SwarmDb.Credentials(
                     this.TextCredentialsReadDatabase.Text,
-                    new PirateDb.ServerSet(this.TextCredentialsReadServer.Text),
+                    new SwarmDb.ServerSet(this.TextCredentialsReadServer.Text),
                     this.TextCredentialsReadUser.Text,
                     this.TextCredentialsReadPassword.Text),
-                new PirateDb.Credentials(this.TextCredentialsWriteDatabase.Text,
-                                         new PirateDb.ServerSet(this.TextCredentialsWriteServer.Text),
+                new SwarmDb.Credentials(this.TextCredentialsWriteDatabase.Text,
+                                         new SwarmDb.ServerSet(this.TextCredentialsWriteServer.Text),
                                          this.TextCredentialsWriteUser.Text,
                                          this.TextCredentialsWritePassword.Text),
-                new PirateDb.Credentials(this.TextCredentialsAdminDatabase.Text,
-                                         new PirateDb.ServerSet(this.TextCredentialsAdminServer.Text),
+                new SwarmDb.Credentials(this.TextCredentialsAdminDatabase.Text,
+                                         new SwarmDb.ServerSet(this.TextCredentialsAdminServer.Text),
                                          this.TextCredentialsAdminUser.Text,
                                          this.TextCredentialsAdminPassword.Text)));
     }
@@ -344,7 +344,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         // Initialize the root geography (which becomes #1 if everything works)
 
-        int rootGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography("World", 0);
+        int rootGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography("World", 0);
 
         // Get the list of countries
 
@@ -360,7 +360,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         foreach (Swarmops.Site.Automation.Country country in countries)
         {
-            countryIdTranslation[country.Code] = PirateDb.GetDatabaseForWriting().CreateCountry(country.Name,
+            countryIdTranslation[country.Code] = SwarmDb.GetDatabaseForWriting().CreateCountry(country.Name,
                                                                                                 country.Code,
                                                                                                 country.Culture,
                                                                                                 rootGeographyId, 5,
@@ -401,10 +401,10 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             // Create the country's root geography
 
-            int countryRootGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography(geography.Name,
+            int countryRootGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography(geography.Name,
                                                                                           rootGeographyId);
             geographyIdTranslation[geography.GeographyId] = countryRootGeographyId;
-            PirateDb.GetDatabaseForWriting().SetCountryGeographyId(countryIdTranslation[countryCode],
+            SwarmDb.GetDatabaseForWriting().SetCountryGeographyId(countryIdTranslation[countryCode],
                                                                    countryRootGeographyId);
 
             InitDatabaseThreadCreateGeographyChildren(geography.Children, countryRootGeographyId,
@@ -450,7 +450,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             int newCountryId = countryIdTranslation[countryCode];
 
-            int cityIdHighwater = PirateDb.GetDatabaseForAdmin().ExecuteAdminCommandScalar("SELECT Max(CityId) FROM Cities;");
+            int cityIdHighwater = SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommandScalar("SELECT Max(CityId) FROM Cities;");
 
             _initMessage = string.Format("Setting up {0:N0} cities for {1}...", cities.Length, countryCode);
 
@@ -483,7 +483,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             sqlCityBuild.Append(";");
 
-            PirateDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCityBuild.ToString()); // Inserts all cities in one bulk op, to save roundtrips
+            SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCityBuild.ToString()); // Inserts all cities in one bulk op, to save roundtrips
 
             // Insert postal codes
 
@@ -516,7 +516,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             sqlBuild.Append(";");
 
-            PirateDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlBuild.ToString()); // Inserts all postal codes in one bulk op, to save roundtrips
+            SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlBuild.ToString()); // Inserts all postal codes in one bulk op, to save roundtrips
 
             countryCount++;
 
@@ -541,7 +541,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     {
         foreach (Swarmops.Site.Automation.Geography geography in children)
         {
-            int newGeographyId = PirateDb.GetDatabaseForWriting().CreateGeography(geography.Name, parentGeographyId);
+            int newGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography(geography.Name, parentGeographyId);
             geographyIdTranslation[geography.GeographyId] = newGeographyId;
 
             InitDatabaseThreadCreateGeographyChildren(geography.Children, newGeographyId, ref geographyIdTranslation);
@@ -624,7 +624,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     [WebMethod(true)]
     public static bool IsConfigurationFileWritable()
     {
-        return PirateDb.Configuration.TestConfigurationWritable();
+        return SwarmDb.Configuration.TestConfigurationWritable();
     }
 
     [WebMethod]

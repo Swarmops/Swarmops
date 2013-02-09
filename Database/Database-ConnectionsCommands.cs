@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         public DbConnection GetSqlServerDbConnection()   // Temporarily public for migratory purposes
         {

@@ -19,7 +19,7 @@ namespace Swarmops.Logic.Swarm
 
         public static PersonRole Create (int personId, RoleType roleType, int organizationId, int nodeId)
         {
-            return FromIdentityAggressive(PirateDb.GetDatabaseForWriting().CreateRole(personId, roleType, organizationId, nodeId));
+            return FromIdentityAggressive(SwarmDb.GetDatabaseForWriting().CreateRole(personId, roleType, organizationId, nodeId));
         }
 
         public static PersonRole FromBasic (BasicPersonRole basic)
@@ -29,12 +29,12 @@ namespace Swarmops.Logic.Swarm
 
         public static PersonRole FromIdentity(int roleId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetRole(roleId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetRole(roleId));
         }
 
         public static PersonRole FromIdentityAggressive(int roleId)
         {
-            return FromBasic(PirateDb.GetDatabaseForWriting().GetRole(roleId)); // Note "for writing". Intentional. Queries master db and bypasses replication lag to avoid race conditions.
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetRole(roleId)); // Note "for writing". Intentional. Queries master db and bypasses replication lag to avoid race conditions.
         }
 
         #endregion
@@ -58,7 +58,7 @@ namespace Swarmops.Logic.Swarm
 
         public void Delete()
         {
-            PirateDb.GetDatabaseForWriting().DeleteRole(Identity);
+            SwarmDb.GetDatabaseForWriting().DeleteRole(Identity);
 
             // After this call, the role will be invalid.
         }

@@ -15,7 +15,7 @@ namespace Swarmops.Logic.Support
         {
             Documents newInstance =
                 FromArray(
-                    PirateDb.GetDatabaseForReading().GetDocumentsForForeignObject(
+                    SwarmDb.GetDatabaseForReading().GetDocumentsForForeignObject(
                         Document.GetDocumentTypeForObject(identifiableObject), identifiableObject.Identity));
 
             newInstance.sourceObject = identifiableObject;

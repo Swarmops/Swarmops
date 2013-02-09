@@ -23,7 +23,7 @@ namespace Swarmops.Logic.Communications
             set
             {
                 base.Body = value;
-                PirateDb.GetDatabaseForWriting().SetAutoMail (this); // saves changes
+                SwarmDb.GetDatabaseForWriting().SetAutoMail (this); // saves changes
             }
         }
 
@@ -36,7 +36,7 @@ namespace Swarmops.Logic.Communications
 
         public static AutoMail FromTypeOrganizationAndGeography (AutoMailType type, Organization org, Geography geo)
         {
-            BasicAutoMail basic = PirateDb.GetDatabaseForReading().GetAutoMail (type, org.Identity, geo.Identity);
+            BasicAutoMail basic = SwarmDb.GetDatabaseForReading().GetAutoMail (type, org.Identity, geo.Identity);
 
             if (basic == null)
             {
@@ -55,7 +55,7 @@ namespace Swarmops.Logic.Communications
         public static AutoMail Create (AutoMailType type, Organization org, Geography geo,
                                        Person author, string title, string body)
         {
-            PirateDb.GetDatabaseForWriting().SetAutoMail (type, org.Identity, geo.Identity,
+            SwarmDb.GetDatabaseForWriting().SetAutoMail (type, org.Identity, geo.Identity,
                                                 author == null ? 0 : author.Identity, title, body);
             return FromTypeOrganizationAndGeography (type, org, geo);
         }
@@ -67,7 +67,7 @@ namespace Swarmops.Logic.Communications
 
         public static BasicAutoMail[] GetAllForMigration()
         {
-            return PirateDb.GetDatabaseForReading().GetAllAutoMailsForMigration();
+            return SwarmDb.GetDatabaseForReading().GetAllAutoMailsForMigration();
         }
     }
 }

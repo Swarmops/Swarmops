@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Financial
     {
         public static OutboundInvoiceItems ForInvoice (OutboundInvoice invoice)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetOutboundInvoiceItems(invoice));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetOutboundInvoiceItems(invoice));
         }
     }
 }

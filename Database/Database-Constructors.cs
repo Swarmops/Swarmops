@@ -13,21 +13,21 @@ namespace Swarmops.Database
     /// <summary>
     /// A generic database handler
     /// </summary>
-    public partial class PirateDb
+    public partial class SwarmDb
     {
-        public static PirateDb GetDatabaseForReading()
+        public static SwarmDb GetDatabaseForReading()
         {
-            return new PirateDb(ConstructConnectString(new Configuration().Get().Read));
+            return new SwarmDb(ConstructConnectString(new Configuration().Get().Read));
         }
 
-        public static PirateDb GetDatabaseForWriting()
+        public static SwarmDb GetDatabaseForWriting()
         {
-            return new PirateDb(ConstructConnectString(new Configuration().Get().Write));
+            return new SwarmDb(ConstructConnectString(new Configuration().Get().Write));
         }
 
-        public static PirateDb GetDatabaseForAdmin()
+        public static SwarmDb GetDatabaseForAdmin()
         {
-            return new PirateDb(ConstructConnectString(new Configuration().Get().Admin));
+            return new SwarmDb(ConstructConnectString(new Configuration().Get().Admin));
         }
 
         private static string ConstructConnectString (Credentials credentials)
@@ -37,8 +37,8 @@ namespace Swarmops.Database
         }
 
 
-        [Obsolete ("Do not use. Use PirateDb.GetDatabaseForReading(), ...ForWriting() or ...ForAdmin().", true)]
-        public static PirateDb GetDatabase()
+        [Obsolete ("Do not use. Use SwarmDb.GetDatabaseForReading(), ...ForWriting() or ...ForAdmin().", true)]
+        public static SwarmDb GetDatabase()
         {
             // First, check if a previous invocation has put anything in the cashe.
             string connectionString = _cachedConnectionString;
@@ -49,7 +49,7 @@ namespace Swarmops.Database
                 connectionString = ConfigurationManager.ConnectionStrings["Activizr"].ConnectionString;
 
                 Logging.LogInformation(LogSource.PirateDb,
-                                       "PirateDb initialized from Config ConnectionString: [" + connectionString +
+                                       "SwarmDb initialized from Config ConnectionString: [" + connectionString +
                                        "]");
             }
 
@@ -67,7 +67,7 @@ namespace Swarmops.Database
                             connectionString = reader.ReadLine();
 
                             Logging.LogInformation(LogSource.PirateDb,
-                                                   "PirateDb initialized for Linux: [" + connectionString + "]");
+                                                   "SwarmDb initialized for Linux: [" + connectionString + "]");
                         }
                     }
                     else if (HttpContext.Current != null)
@@ -79,7 +79,7 @@ namespace Swarmops.Database
                             connectionString = reader.ReadLine();
 
                             Logging.LogInformation(LogSource.PirateDb,
-                                                   "PirateDb initialized for web: [" + connectionString + "]");
+                                                   "SwarmDb initialized for web: [" + connectionString + "]");
                         }
 
                     }
@@ -92,7 +92,7 @@ namespace Swarmops.Database
                             connectionString = reader.ReadLine();
 
                             Logging.LogInformation(LogSource.PirateDb,
-                                                   "PirateDb initialized for application: [" + connectionString +
+                                                   "SwarmDb initialized for application: [" + connectionString +
                                                    "]");
                         }
                     }
@@ -131,23 +131,23 @@ namespace Swarmops.Database
                 _cachedConnectionString = connectionString;
             }
 
-            PirateDb db = null;
+            SwarmDb db = null;
 
             try
             {
-                db = new PirateDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
+                db = new SwarmDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
             }
             catch (Exception e)
             {
                 throw new Exception(
-                    "Unable to initalize PirateDb using connection string \"" + connectionString + "\"", e);    // TODO: REMOVE ON PRODUCTION -- CREDENTIALS LEAKAGE 
+                    "Unable to initalize SwarmDb using connection string \"" + connectionString + "\"", e);    // TODO: REMOVE ON PRODUCTION -- CREDENTIALS LEAKAGE 
             }
 
             return db;
         }
 
         [Obsolete ("Do not use. Use GetDatabaseForAdmin().", true)]
-        public static PirateDb GetDatabaseAsAdmin()
+        public static SwarmDb GetDatabaseAsAdmin()
         {
             string connectionString = string.Empty;
 
@@ -162,7 +162,7 @@ namespace Swarmops.Database
                         connectionString = reader.ReadLine();
 
                         Logging.LogInformation(LogSource.PirateDb,
-                                                "PirateDb initialized for Linux Backend: [" + connectionString + "]");
+                                                "SwarmDb initialized for Linux Backend: [" + connectionString + "]");
                     }
                 }
                 else if (HttpContext.Current != null)
@@ -174,7 +174,7 @@ namespace Swarmops.Database
                         connectionString = reader.ReadLine();
 
                         Logging.LogInformation(LogSource.PirateDb,
-                                                "PirateDb initialized for web: [" + connectionString + "]");
+                                                "SwarmDb initialized for web: [" + connectionString + "]");
                     }
 
                 }
@@ -187,7 +187,7 @@ namespace Swarmops.Database
                         connectionString = reader.ReadLine();
 
                         Logging.LogInformation(LogSource.PirateDb,
-                                                "PirateDb initialized for application: [" + connectionString +
+                                                "SwarmDb initialized for application: [" + connectionString +
                                                 "]");
                     }
                 }
@@ -225,17 +225,17 @@ namespace Swarmops.Database
                 _cachedConnectionString = connectionString;
             }
 
-            return new PirateDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
+            return new SwarmDb(DbProviderFactories.GetFactory(DefaultProviderName), connectionString);
         }
 
         [Obsolete ("Do not use. Hardwireto MySQL.")]
-        public PirateDb(DbProviderFactory ProviderFactory, string ConnectionString)
+        public SwarmDb(DbProviderFactory ProviderFactory, string ConnectionString)
         {
             this.ProviderFactory = ProviderFactory;
             this.ConnectionString = ConnectionString;
         }
 
-        public PirateDb(string connectionString)
+        public SwarmDb(string connectionString)
         {
             this.ConnectionString = connectionString;
         }

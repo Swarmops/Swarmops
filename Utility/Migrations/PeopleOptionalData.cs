@@ -13,7 +13,7 @@ namespace Swarmops.Utility.Migrations
     {
         public static void Migrate()
         {
-            PirateDb db = PirateDb.GetDatabaseForAdmin();
+            SwarmDb db = SwarmDb.GetDatabaseForAdmin();
 
             using (DbConnection connection = db.GetSqlServerDbConnection())
             {

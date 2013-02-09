@@ -8,7 +8,7 @@ using Swarmops.Basic.Types;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         private const string exceptionLogFieldSequence = " ExceptionID, ExceptionDateTime, Source,ExceptionText FROM  ExceptionLog ";
 

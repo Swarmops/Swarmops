@@ -35,7 +35,7 @@ namespace Swarmops.Logic.Structure
         public static Geography FromIdentity (int geographyId)
         {
             return FromBasic(GeographyCache.GetGeography(geographyId));
-            //return FromBasic(PirateDb.GetDatabaseForReading().GetGeography(geographyId));
+            //return FromBasic(SwarmDb.GetDatabaseForReading().GetGeography(geographyId));
         }
 
         public static Geography FromName (string geographyName)
@@ -43,7 +43,7 @@ namespace Swarmops.Logic.Structure
             // TODO: Possible dupes here, need resolution once we see the extent of the problem
 
             return FromBasic(GeographyCache.GetGeographyByName(geographyName));
-            //return FromBasic(PirateDb.GetDatabaseForReading().GetGeographyByName(geographyName));
+            //return FromBasic(SwarmDb.GetDatabaseForReading().GetGeographyByName(geographyName));
         }
 
 
@@ -55,7 +55,7 @@ namespace Swarmops.Logic.Structure
         public static Geography FromOfficialDesignation (int countryId, GeographyLevel level, string designation)
         {
             return
-                FromIdentity(PirateDb.GetDatabaseForReading().GetGeographyIdFromOfficialDesignation(countryId, level,
+                FromIdentity(SwarmDb.GetDatabaseForReading().GetGeographyIdFromOfficialDesignation(countryId, level,
                                                                                           designation));
         }
 
@@ -134,13 +134,13 @@ namespace Swarmops.Logic.Structure
         public Geographies GetTree ()
         {
             return Geographies.FromArray(GeographyCache.GetGeographyTree(Identity));
-            // return Geographies.FromArray(PirateDb.GetDatabaseForReading().GetGeographyTree(Identity));
+            // return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyTree(Identity));
         }
 
         public Geographies GetLine ()
         {
             return Geographies.FromArray(GeographyCache.GetGeographyLine(Identity));
-            //return Geographies.FromArray(PirateDb.GetDatabaseForReading().GetGeographyLine(Identity));
+            //return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyLine(Identity));
         }
 
         public bool Inherits (Geography prospectiveParent)
@@ -168,7 +168,7 @@ namespace Swarmops.Logic.Structure
 
         public bool AtLevel (GeographyLevel level)
         {
-            GeographyLevel[] levels = PirateDb.GetDatabaseForReading().GetGeographyLevelsAtGeographyId(Identity);
+            GeographyLevel[] levels = SwarmDb.GetDatabaseForReading().GetGeographyLevelsAtGeographyId(Identity);
 
             foreach (GeographyLevel potentialMatch in levels)
             {
@@ -183,7 +183,7 @@ namespace Swarmops.Logic.Structure
 
         public BasicGeographyDesignation[] GetGeographyDesignations ()
         {
-            return PirateDb.GetDatabaseForReading().GetGeographyDesignationsForGeographyId(Identity);
+            return SwarmDb.GetDatabaseForReading().GetGeographyDesignationsForGeographyId(Identity);
         }
     }
 }

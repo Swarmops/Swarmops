@@ -13,12 +13,12 @@ namespace Swarmops.Logic.Financial
     {
         public static FinancialAccounts ForOrganization(Organization organization)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetFinancialAccountTreeForOrganization(organization.Identity));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountTreeForOrganization(organization.Identity));
         }
 
         public static FinancialAccounts ForOwner(Person person)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetFinancialAccountsOwnedByPerson(person.Identity));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountsOwnedByPerson(person.Identity));
         }
 
 
@@ -56,7 +56,7 @@ namespace Swarmops.Logic.Financial
 
         public static FinancialAccounts FromBankTransactionTag (string tag)
         {
-            int[] accountIdentities = PirateDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.FinancialAccount,
+            int[] accountIdentities = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.FinancialAccount,
                                                                                       ObjectOptionalDataType.
                                                                                           BankTransactionTag,
                                                                                       tag.ToLower());
@@ -71,32 +71,32 @@ namespace Swarmops.Logic.Financial
                 return new FinancialAccounts();
             }
 
-            return FromArray(PirateDb.GetDatabaseForReading().GetFinancialAccounts(financialAccountIds));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccounts(financialAccountIds));
         }
 
         public FinancialAccountRows GetRows (DateTime start, DateTime end)
         {
-            BasicFinancialAccountRow[] basicRows = PirateDb.GetDatabaseForReading().GetFinancialAccountRows(Identities, start, end);
+            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading().GetFinancialAccountRows(Identities, start, end);
             return FinancialAccountRows.FromArray(basicRows);
         }
 
         [Obsolete("This function uses double-point variables for money. Use GetBudgetSumCents instead.")]
         public double GetBudgetSum(int year)
         {
-            return PirateDb.GetDatabaseForReading().GetFinancialAccountsBudget(this.Identities, year);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget(this.Identities, year);
         }
 
 
         public Int64 GetBudgetSumCents(int year)
         {
             // TODO: Add support in database
-            return (Int64)(PirateDb.GetDatabaseForReading().GetFinancialAccountsBudget(this.Identities, year) * 100);
+            return (Int64)(SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget(this.Identities, year) * 100);
         }
 
 
         public Int64 GetDeltaCents(DateTime start, DateTime end)
         {
-            return PirateDb.GetDatabaseForReading().GetFinancialAccountBalanceDeltaCents(this.Identities, start, end);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountBalanceDeltaCents(this.Identities, start, end);
         }
 
 
@@ -172,7 +172,7 @@ namespace Swarmops.Logic.Financial
 
             Dictionary<int, FinancialAccounts> result = new Dictionary<int, FinancialAccounts>();
 
-            FinancialAccounts allAccounts = FromArray(PirateDb.GetDatabaseForReading().GetFinancialAccountsForOrganization(Organization.PPSEid)); // HACK HACK HACK
+            FinancialAccounts allAccounts = FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountsForOrganization(Organization.PPSEid)); // HACK HACK HACK
 
             // Add the nodes.
 

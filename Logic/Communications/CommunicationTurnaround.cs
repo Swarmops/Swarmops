@@ -23,13 +23,13 @@ namespace Swarmops.Logic.Communications
         public static CommunicationTurnaround FromIdentity (Organization organization, int communicationTypeId, int communicationId)
         {
             return
-                FromBasic(PirateDb.GetDatabaseForReading().GetCommunicationTurnaround(organization.Identity, communicationTypeId,
+                FromBasic(SwarmDb.GetDatabaseForReading().GetCommunicationTurnaround(organization.Identity, communicationTypeId,
                                                                             communicationId));
         }
 
         public static CommunicationTurnaround Create (Organization organization, int communicationId, DateTime dateTimeOpened)
         {
-            PirateDb.GetDatabaseForWriting().CreateCommunicationTurnaround(organization.Identity, 1, communicationId, dateTimeOpened);
+            SwarmDb.GetDatabaseForWriting().CreateCommunicationTurnaround(organization.Identity, 1, communicationId, dateTimeOpened);
             return FromIdentity(organization, 1, communicationId);
         }
 
@@ -52,7 +52,7 @@ namespace Swarmops.Logic.Communications
                 personId = person.Identity;
             }
 
-            PirateDb.GetDatabaseForWriting().SetCommunicationTurnaroundResponded(this.OrganizationId, this.CommunicationTypeId, this.CommunicationId, dateTime, personId);
+            SwarmDb.GetDatabaseForWriting().SetCommunicationTurnaroundResponded(this.OrganizationId, this.CommunicationTypeId, this.CommunicationId, dateTime, personId);
 
             base.Responded = true;
         }
@@ -71,7 +71,7 @@ namespace Swarmops.Logic.Communications
                 personId = person.Identity;
             }
 
-            PirateDb.GetDatabaseForWriting().SetCommunicationTurnaroundClosed(this.OrganizationId, this.CommunicationTypeId, this.CommunicationId, dateTime, personId);
+            SwarmDb.GetDatabaseForWriting().SetCommunicationTurnaroundClosed(this.OrganizationId, this.CommunicationTypeId, this.CommunicationId, dateTime, personId);
 
             base.Open = false;
         }

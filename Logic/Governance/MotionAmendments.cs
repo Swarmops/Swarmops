@@ -11,12 +11,12 @@ namespace Swarmops.Logic.Governance
     {
         static public MotionAmendments ForMotion (Motion motion)
         {
-            return MotionAmendments.FromArray(PirateDb.GetDatabaseForReading().GetMotionAmendments(motion));
+            return MotionAmendments.FromArray(SwarmDb.GetDatabaseForReading().GetMotionAmendments(motion));
         }
 
         static public MotionAmendments ForMeeting (Meeting meeting)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetMotionAmendmentsForMeeting(meeting.Identity));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetMotionAmendmentsForMeeting(meeting.Identity));
         }
     }
 }

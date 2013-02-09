@@ -9,7 +9,7 @@ using Swarmops.Basic.Types;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         public int CreatePaperLetter(int organizationId, string fromName, string replyAddress, DateTime receivedDate, int toPersonId, RoleType toPersonInRole, bool personal, int uploadedByPersonId)
         {

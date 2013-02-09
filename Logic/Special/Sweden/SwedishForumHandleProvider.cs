@@ -41,7 +41,7 @@ namespace Swarmops.Logic.Special.Sweden
                     throw new HandleException(newHandle, HandleErrorType.HandleNotFound);
                 }
 
-                int[] members = PirateDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, ObjectOptionalDataType.ForumAccountId, "" + newHandleAccountId);
+                int[] members = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, ObjectOptionalDataType.ForumAccountId, "" + newHandleAccountId);
                 if (members.Length > 1 || (members.Length == 1 && members[0] != personId))
                 {
                     throw new HandleException(newHandle, HandleErrorType.HandleOccupied);

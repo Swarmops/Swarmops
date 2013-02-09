@@ -10,17 +10,17 @@ namespace Swarmops.Logic.Support
     {
         public static Dictionary<int, bool> GetPeopleWhoDeclineLocalMail (int[] personIds)
         {
-            return PirateDb.GetDatabaseForReading().GetPeopleWhoDeclineLocalMail (personIds);
+            return SwarmDb.GetDatabaseForReading().GetPeopleWhoDeclineLocalMail (personIds);
         }
 
         public static Dictionary<int, int> GetGeographyVoterCounts()
         {
-            return PirateDb.GetDatabaseForReading().GetGeographyVoterCounts();
+            return SwarmDb.GetDatabaseForReading().GetGeographyVoterCounts();
         }
 
         public static Dictionary<int,int> GetInternalPollVoteCountsPerGeography(int pollId)
         {
-            return PirateDb.GetDatabaseForReading().GetInternalPollVoteCountsPerGeography(pollId);
+            return SwarmDb.GetDatabaseForReading().GetInternalPollVoteCountsPerGeography(pollId);
         }
     }
 }

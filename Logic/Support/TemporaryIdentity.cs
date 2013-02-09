@@ -15,7 +15,7 @@ namespace Swarmops.Logic.Support
 
         static public TemporaryIdentity GetNew()
         {
-            return new TemporaryIdentity (PirateDb.GetDatabaseForWriting().GetTemporaryIdentity());  // This is actually an Insert, not a Select
+            return new TemporaryIdentity (SwarmDb.GetDatabaseForWriting().GetTemporaryIdentity());  // This is actually an Insert, not a Select
         }
 
         private int temporaryId;

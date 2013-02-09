@@ -8,7 +8,7 @@ using Swarmops.Basic.Types;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         public BasicExpenseClaim GetExpenseClaim (int expenseClaimId)
         {

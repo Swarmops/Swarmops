@@ -33,7 +33,7 @@ namespace Swarmops.Logic.Communications
 
         public static PaperLetters ForOrganization (int organizationId)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetPaperLettersForOrganization(organizationId));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPaperLettersForOrganization(organizationId));
         }
 
         public static PaperLetters ForPerson (Person person)
@@ -43,7 +43,7 @@ namespace Swarmops.Logic.Communications
 
         public static PaperLetters ForPerson (int personId)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetPaperLettersForPerson(personId));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPaperLettersForPerson(personId));
         }
     }
 }

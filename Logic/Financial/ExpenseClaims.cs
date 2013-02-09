@@ -64,19 +64,19 @@ namespace Swarmops.Logic.Financial
         public static ExpenseClaims FromClaimingPersonAndOrganization (Person person, Organization organization)
         {
             return
-                FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaimsByClaimerAndOrganization(person.Identity,
+                FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaimsByClaimerAndOrganization(person.Identity,
                                                                                           organization.Identity));
         }
 
 
         public static ExpenseClaims FromClaimingPerson (Person person)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaimsByClaimer(person.Identity));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaimsByClaimer(person.Identity));
         }
 
         public static ExpenseClaims FromOrganization (Organization org)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaimsByOrganization(org.Identity));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaimsByOrganization(org.Identity));
         }
 
 
@@ -89,11 +89,11 @@ namespace Swarmops.Logic.Financial
         {
             if (includeClosed)
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaims(org));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaims(org));
             }
             else
             {
-                return FromArray(PirateDb.GetDatabaseForReading().GetExpenseClaims(org, DatabaseCondition.OpenTrue));
+                return FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaims(org, DatabaseCondition.OpenTrue));
             }
         }
 

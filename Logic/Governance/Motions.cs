@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Governance
     {
         static public Motions ForMeeting (Meeting meeting)
         {
-            return Motions.FromArray(PirateDb.GetDatabaseForReading().GetMotions(meeting));
+            return Motions.FromArray(SwarmDb.GetDatabaseForReading().GetMotions(meeting));
         }
     }
 }

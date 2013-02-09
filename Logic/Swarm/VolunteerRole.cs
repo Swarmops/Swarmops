@@ -23,7 +23,7 @@ namespace Swarmops.Logic.Swarm
 
         public static VolunteerRole FromIdentity (int identity)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetVolunteerRole(identity));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetVolunteerRole(identity));
         }
 
         public void Close (bool wasAssigned)

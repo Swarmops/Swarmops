@@ -26,26 +26,26 @@ namespace Swarmops.Logic.Financial
 
         public static FinancialTransaction FromIdentity (int financialTransactionId)
         {
-            return FromBasic (PirateDb.GetDatabaseForReading().GetFinancialTransaction (financialTransactionId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetFinancialTransaction (financialTransactionId));
         }
 
         public static FinancialTransaction FromDependency (IHasIdentity dependency)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetFinancialTransactionFromDependency(dependency));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialTransactionFromDependency(dependency));
         }
 
 
         public static FinancialTransaction FromImportKey (Organization organization, string importKey)
         {
             return
-                FromBasic(PirateDb.GetDatabaseForReading().GetFinancialTransactionFromImportKey(organization.Identity, importKey));
+                FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialTransactionFromImportKey(organization.Identity, importKey));
         }
 
 
         public static FinancialTransaction ImportWithStub (int organizationId, DateTime dateTime, int financialAccountId,
                                                            Int64 amountCents, string description, string importHash, int personId)
         {
-            int transactionId = PirateDb.GetDatabaseForWriting().CreateFinancialTransactionStub (organizationId, dateTime,
+            int transactionId = SwarmDb.GetDatabaseForWriting().CreateFinancialTransactionStub (organizationId, dateTime,
                                                                                        financialAccountId, amountCents,
                                                                                        description, importHash, personId);
 
@@ -60,7 +60,7 @@ namespace Swarmops.Logic.Financial
 
         public static FinancialTransaction Create (int organizationId, DateTime dateTime, string description)
         {
-            int transactionId = PirateDb.GetDatabaseForWriting().CreateFinancialTransaction (organizationId, dateTime, description);
+            int transactionId = SwarmDb.GetDatabaseForWriting().CreateFinancialTransaction (organizationId, dateTime, description);
             return FromIdentity (transactionId);
         }
 
@@ -70,7 +70,7 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                return FinancialTransactionRows.FromArray (PirateDb.GetDatabaseForReading().GetFinancialTransactionRows (Identity));
+                return FinancialTransactionRows.FromArray (SwarmDb.GetDatabaseForReading().GetFinancialTransactionRows (Identity));
             }
         }
 
@@ -88,7 +88,7 @@ namespace Swarmops.Logic.Financial
             set 
             { 
                 base.Description = value;
-                PirateDb.GetDatabaseForWriting().SetFinancialTransactionDescription (this.Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetFinancialTransactionDescription (this.Identity, value);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Swarmops.Logic.Financial
                 return;
             }
 
-            PirateDb.GetDatabaseForWriting().CreateFinancialTransactionRow(Identity, financialAccountId, amountCents, personId);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialTransactionRow(Identity, financialAccountId, amountCents, personId);
         }
 
         private FinancialTransaction ContinuedTransaction
@@ -168,7 +168,7 @@ namespace Swarmops.Logic.Financial
         {
             set
             {
-                PirateDb.GetDatabaseForWriting().SetFinancialTransactionDependency(
+                SwarmDb.GetDatabaseForWriting().SetFinancialTransactionDependency(
                     this.Identity, GetFinancialDependencyType(value), value.Identity);
             }
             get
@@ -180,7 +180,7 @@ namespace Swarmops.Logic.Financial
                 FinancialDependencyType dependencyType;
                 int foreignId;
 
-                PirateDb.GetDatabaseForReading().GetFinancialTransactionDependency(this.Identity, out dependencyType,
+                SwarmDb.GetDatabaseForReading().GetFinancialTransactionDependency(this.Identity, out dependencyType,
                                                                          out foreignId);
 
                 if (foreignId == 0)

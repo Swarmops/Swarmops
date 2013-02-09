@@ -20,7 +20,7 @@ namespace Swarmops.Logic.Support
 
         public static Document FromIdentity (int documentId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetDocument(documentId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetDocument(documentId));
         }
 
         public static Document FromBasic (BasicDocument basicDocument)
@@ -31,7 +31,7 @@ namespace Swarmops.Logic.Support
         public static Document Create (string serverFileName, string clientFileName, Int64 fileSize, 
             string description, IHasIdentity identifiableObject, Person uploader)
         {
-            int newDocumentId = PirateDb.GetDatabaseForWriting().
+            int newDocumentId = SwarmDb.GetDatabaseForWriting().
                 CreateDocument(serverFileName, clientFileName, fileSize, description, GetDocumentTypeForObject(identifiableObject), identifiableObject.Identity, uploader.Identity);
 
             return FromIdentity(newDocumentId);
@@ -78,14 +78,14 @@ namespace Swarmops.Logic.Support
             get { return base.ServerFileName; }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetDocumentServerFileName(this.Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetDocumentServerFileName(this.Identity, value);
                 base.ServerFileName = value;
             }
         }
 
         public void SetForeignObject (IHasIdentity foreignObject)
         {
-            PirateDb.GetDatabaseForWriting().SetDocumentForeignObject(this.Identity, GetDocumentTypeForObject(foreignObject), foreignObject.Identity);
+            SwarmDb.GetDatabaseForWriting().SetDocumentForeignObject(this.Identity, GetDocumentTypeForObject(foreignObject), foreignObject.Identity);
         }
 
 

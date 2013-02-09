@@ -197,7 +197,7 @@ namespace Swarmops.Logic.Security
         {
             People result = new People();
 
-            PirateDb database = PirateDb.GetDatabaseForReading();
+            SwarmDb database = SwarmDb.GetDatabaseForReading();
 
             // First, is the login token numeric? If so, add it as is and is a valid person.
 
@@ -258,7 +258,7 @@ namespace Swarmops.Logic.Security
             People candidatePeople = null;
             if (personID == 0)
             {
-                BasicPerson[] people = PirateDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
+                BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
                 candidatePeople = People.FromArray(people);
 
                 // if multiple people share same e-mail, suppose the last one registered is the one to change.
@@ -439,7 +439,7 @@ namespace Swarmops.Logic.Security
             bool personIsActivist = false;
             if (personID == 0)
             {
-                BasicPerson[] people = PirateDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
+                BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
                 candidatePeople = People.FromArray(people);
 
                 // if multiple people share same e-mail, suppose the last one registered is the one to change.

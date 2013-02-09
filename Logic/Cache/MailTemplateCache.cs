@@ -32,7 +32,7 @@ namespace Swarmops.Logic.Cache
 
                 if (!__MailTemplateCache.ContainsKey(templateName))
                 {
-                    BasicMailTemplate[] basicTemplates = PirateDb.GetDatabaseForReading().GetMailTemplatesByName(templateName);
+                    BasicMailTemplate[] basicTemplates = SwarmDb.GetDatabaseForReading().GetMailTemplatesByName(templateName);
                     List<BasicMailTemplate> tmplList = new List<BasicMailTemplate>(basicTemplates);
                     __MailTemplateCache[templateName] = tmplList;
 

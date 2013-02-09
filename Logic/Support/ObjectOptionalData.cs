@@ -28,7 +28,7 @@ namespace Swarmops.Logic.Support
 
         public static ObjectOptionalData ForObject (IHasIdentity identifiableObject)
         {
-            ObjectOptionalData thisObject = FromBasic(PirateDb.GetDatabaseForReading().GetObjectOptionalData((IHasIdentity)identifiableObject));
+            ObjectOptionalData thisObject = FromBasic(SwarmDb.GetDatabaseForReading().GetObjectOptionalData((IHasIdentity)identifiableObject));
             thisObject.forObject = identifiableObject;
             return thisObject;
         }
@@ -58,7 +58,7 @@ namespace Swarmops.Logic.Support
             }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetObjectOptionalData((IHasIdentity)forObject, dataType, value);
+                SwarmDb.GetDatabaseForWriting().SetObjectOptionalData((IHasIdentity)forObject, dataType, value);
                 this.OptionalData[dataType] = value;
             }
         }
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Support
 
         public void SetOptionalData (ObjectOptionalDataType dataType, string data)
         {
-            PirateDb.GetDatabaseForWriting().SetObjectOptionalData((IHasIdentity)forObject, dataType, data);
+            SwarmDb.GetDatabaseForWriting().SetObjectOptionalData((IHasIdentity)forObject, dataType, data);
 
             if (data == null && this.OptionalData.ContainsKey(dataType))
                 this.OptionalData.Remove(dataType);

@@ -12,12 +12,12 @@ namespace Swarmops.Logic.Swarm
     {
         public static ExternalActivities ForOrganization (Organization organization)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetExternalActivities(organization));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetExternalActivities(organization));
         }
 
         public static ExternalActivities ForOrganization (Organization organization, SortOrder sort, int count)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetExternalActivitiesSorted(sort.ToString(), count, organization));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetExternalActivitiesSorted(sort.ToString(), count, organization));
         }
 
         public enum SortOrder

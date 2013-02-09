@@ -45,7 +45,7 @@ namespace Swarmops.Logic.Support
 
             foreach (string sqlCommand in sqlCommands)
             {
-                PirateDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCommand.Trim());
+                SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCommand.Trim());
             }
         }
     }

@@ -53,28 +53,28 @@ namespace Swarmops.Logic.Swarm
         /// <param name="organizationId">The organization churned from.</param>
         public static void LogChurn (int personId, int organizationId)
         {
-            PirateDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, true, DateTime.Now);
+            SwarmDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, true, DateTime.Now);
         }
 
         public static void LogRetention (int personId, int organizationId, DateTime expiry)
         {
-            PirateDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, false, expiry);
+            SwarmDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, false, expiry);
         }
 
         public static void LogRetention (int personId, int organizationId, DateTime expiry, DateTime decisionDateTime)
         {
-            PirateDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, false, expiry, decisionDateTime);
+            SwarmDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, false, expiry, decisionDateTime);
         }
 
 
         public static ChurnData ForOrganization (Organization organization)
         {
-            return FromArray (PirateDb.GetDatabaseForReading().GetChurnData (organization));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetChurnData (organization));
         }
 
         public static ChurnData ForPerson (Person person)
         {
-            return FromArray (PirateDb.GetDatabaseForReading().GetChurnData (person));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetChurnData (person));
         }
 
 
@@ -85,7 +85,7 @@ namespace Swarmops.Logic.Swarm
 
         public static ChurnData GetByDate (Organization organization, DateTime dateLower, DateTime dateUpper)
         {
-            return FromArray (PirateDb.GetDatabaseForReading().GetChurnDataForOrganization (organization, dateLower, dateUpper));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetChurnDataForOrganization (organization, dateLower, dateUpper));
         }
 
 

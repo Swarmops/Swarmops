@@ -7,7 +7,7 @@ using Swarmops.Basic.Types;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         private const string readFieldsSQL =
             @" ExternalIdentityIdentity, ExternalIdentityTypeName, ExternalSystem, UserID, `Password`, AttachedToPerson

@@ -6,7 +6,7 @@ using Swarmops.Database.Attributes;
 
 namespace Swarmops.Database
 {
-    public partial class PirateDb
+    public partial class SwarmDb
     {
         /// <summary>
         /// Constructs a WHERE clause for a table.

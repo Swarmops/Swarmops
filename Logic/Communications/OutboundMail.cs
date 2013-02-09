@@ -58,7 +58,7 @@ namespace Swarmops.Logic.Communications
         /// <returns>An OutboundMail from the database</returns>
         public static OutboundMail FromIdentity (int outboundMailId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetOutboundMail(outboundMailId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetOutboundMail(outboundMailId));
         }
 
 
@@ -75,7 +75,7 @@ namespace Swarmops.Logic.Communications
                                            Organization organization, Geography geography, DateTime releaseDateTime)
         {
             return
-                FromIdentity(PirateDb.GetDatabaseForWriting().CreateOutboundMail(MailAuthorType.Person, author.Identity, title,
+                FromIdentity(SwarmDb.GetDatabaseForWriting().CreateOutboundMail(MailAuthorType.Person, author.Identity, title,
                                                                          body, mailPriority, mailType,
                                                                          geography.Identity, organization.Identity,
                                                                          releaseDateTime));
@@ -115,7 +115,7 @@ namespace Swarmops.Logic.Communications
                                            int organizationId, int geographyId, DateTime releaseDateTime)
         {
 
-            int mailID = PirateDb.GetDatabaseForWriting().CreateOutboundMail(authorType, 0, title,
+            int mailID = SwarmDb.GetDatabaseForWriting().CreateOutboundMail(authorType, 0, title,
                                            body, mailPriority, mailType, geographyId,
                                            organizationId, releaseDateTime);
 
@@ -130,7 +130,7 @@ namespace Swarmops.Logic.Communications
         {
             List<OutboundMail> retList = new List<OutboundMail>();
             BasicOutboundMail[] mails
-                    = PirateDb.GetDatabaseForReading().GetDuplicateOutboundMail(this.AuthorType, AuthorPersonId, Title,
+                    = SwarmDb.GetDatabaseForReading().GetDuplicateOutboundMail(this.AuthorType, AuthorPersonId, Title,
                              Body, MailPriority, MailType, GeographyId, OrganizationId, afterTime, recipientId);
             foreach (BasicOutboundMail mail in mails)
             {
@@ -142,7 +142,7 @@ namespace Swarmops.Logic.Communications
 
         public static OutboundMail GetFirstUnresolved ()
         {
-            BasicOutboundMail[] mails = PirateDb.GetDatabaseForReading().GetTopUnresolvedOutboundMail(1);
+            BasicOutboundMail[] mails = SwarmDb.GetDatabaseForReading().GetTopUnresolvedOutboundMail(1);
 
             if (mails.Length > 0)
             {
@@ -154,7 +154,7 @@ namespace Swarmops.Logic.Communications
 
         public static OutboundMail GetFirstUnprocessed ()
         {
-            BasicOutboundMail[] mails = PirateDb.GetDatabaseForReading().GetTopUnprocessedOutboundMail(1);
+            BasicOutboundMail[] mails = SwarmDb.GetDatabaseForReading().GetTopUnprocessedOutboundMail(1);
 
             if (mails.Length > 0)
             {
@@ -173,7 +173,7 @@ namespace Swarmops.Logic.Communications
             get { return base.StartProcessDateTime; }
             set
             {
-                PirateDb.GetDatabaseForWriting().SetOutboundMailStartProcess(Identity);
+                SwarmDb.GetDatabaseForWriting().SetOutboundMailStartProcess(Identity);
                 base.StartProcessDateTime = DateTime.Now;
             }
         }
@@ -238,7 +238,7 @@ namespace Swarmops.Logic.Communications
         {
             return
                 OutboundMailRecipients.FromArray(
-                    PirateDb.GetDatabaseForReading().GetTopOutboundMailRecipients(Identity, batchSize), this);
+                    SwarmDb.GetDatabaseForReading().GetTopOutboundMailRecipients(Identity, batchSize), this);
         }
 
         public void AddRecipient (Person person, bool asOfficer)
@@ -269,12 +269,12 @@ namespace Swarmops.Logic.Communications
 
         public void AddRecipient (int personId, bool asOfficer)
         {
-            PirateDb.GetDatabaseForWriting().CreateOutboundMailRecipient(Identity, personId, asOfficer, (int)OutboundMailRecipient.RecipientType.Person);
+            SwarmDb.GetDatabaseForWriting().CreateOutboundMailRecipient(Identity, personId, asOfficer, (int)OutboundMailRecipient.RecipientType.Person);
         }
 
         private void AddReporterRecipient (int identity)
         {
-            PirateDb.GetDatabaseForWriting().CreateOutboundMailRecipient(Identity, identity, false, (int)OutboundMailRecipient.RecipientType.Reporter);
+            SwarmDb.GetDatabaseForWriting().CreateOutboundMailRecipient(Identity, identity, false, (int)OutboundMailRecipient.RecipientType.Reporter);
         }
         #endregion
 
@@ -282,37 +282,37 @@ namespace Swarmops.Logic.Communications
 
         public void SetReadyForPickup ()
         {
-            PirateDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup(Identity);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup(Identity);
             base.ReadyForPickup = true;
         }
 
         public void SetResolved ()
         {
-            PirateDb.GetDatabaseForWriting().SetOutboundMailResolved(Identity);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailResolved(Identity);
             base.Resolved = true;
         }
 
         public void SetProcessed ()
         {
-            PirateDb.GetDatabaseForWriting().SetOutboundMailProcessed(Identity);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailProcessed(Identity);
             base.Processed = true;
         }
 
         public void SetRecipientCount (int recipientCount)
         {
-            PirateDb.GetDatabaseForWriting().SetOutboundMailRecipientCount(Identity, recipientCount);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailRecipientCount(Identity, recipientCount);
             base.RecipientCount = recipientCount;
         }
 
         public void IncrementSuccesses ()
         {
-            PirateDb.GetDatabaseForWriting().IncrementOutboundMailSuccesses(Identity);
+            SwarmDb.GetDatabaseForWriting().IncrementOutboundMailSuccesses(Identity);
             base.RecipientsSuccess++;
         }
 
         public void IncrementFailures ()
         {
-            PirateDb.GetDatabaseForWriting().IncrementOutboundMailFailures(Identity);
+            SwarmDb.GetDatabaseForWriting().IncrementOutboundMailFailures(Identity);
             base.RecipientsFail++;
         }
 

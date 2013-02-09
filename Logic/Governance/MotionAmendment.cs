@@ -22,12 +22,12 @@ namespace Swarmops.Logic.Governance
 
         public static MotionAmendment FromIdentity (int motionAmendmentId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetMotionAmendment(motionAmendmentId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetMotionAmendment(motionAmendmentId));
         }
 
         public static MotionAmendment Create (Motion motion, string title, string text, string decisionPoint, Person submittingPerson, Person creatingPerson)
         {
-            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateMotionAmendment (motion.Identity, submittingPerson.Identity, creatingPerson.Identity, title, text, decisionPoint));
+            return FromIdentity(SwarmDb.GetDatabaseForWriting().CreateMotionAmendment (motion.Identity, submittingPerson.Identity, creatingPerson.Identity, title, text, decisionPoint));
         }
 
         public Motion Motion

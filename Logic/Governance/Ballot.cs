@@ -22,29 +22,29 @@ namespace Swarmops.Logic.Governance
 
         public static Ballot FromIdentity (int ballotId)
         {
-            return FromBasic(PirateDb.GetDatabaseForReading().GetBallot(ballotId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetBallot(ballotId));
         }
 
         public static Ballot Create (Election election, Organization organization, Geography geography, string name, int ballotCount, string deliveryAddress)
         {
-            return FromIdentity(PirateDb.GetDatabaseForWriting().CreateBallot(election.Identity, name, organization.Identity, geography.Identity, ballotCount, deliveryAddress));
+            return FromIdentity(SwarmDb.GetDatabaseForWriting().CreateBallot(election.Identity, name, organization.Identity, geography.Identity, ballotCount, deliveryAddress));
         }
 
         public void AddCandidate (Person person)
         {
-            PirateDb.GetDatabaseForWriting().CreateBallotCandidate(this.Identity, person.Identity);
+            SwarmDb.GetDatabaseForWriting().CreateBallotCandidate(this.Identity, person.Identity);
         }
 
         public void ClearCandidates()
         {
-            PirateDb.GetDatabaseForWriting().ClearBallotCandidates(this.Identity);
+            SwarmDb.GetDatabaseForWriting().ClearBallotCandidates(this.Identity);
         }
 
         public People Candidates
         {
             get
             {
-                return People.FromIdentities(PirateDb.GetDatabaseForReading().GetBallotCandidates(this.Identity), true);
+                return People.FromIdentities(SwarmDb.GetDatabaseForReading().GetBallotCandidates(this.Identity), true);
             }
         }
 
@@ -59,7 +59,7 @@ namespace Swarmops.Logic.Governance
             { 
                 if (value != base.Count) {
                     base.Count = value;
-                    PirateDb.GetDatabaseForWriting().SetBallotCount(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetBallotCount(this.Identity, value);
                 }
             }
             get { return base.Count; }
@@ -72,7 +72,7 @@ namespace Swarmops.Logic.Governance
                 if (value != base.DeliveryAddress)
                 {
                     base.DeliveryAddress = value;
-                    PirateDb.GetDatabaseForWriting().SetBallotDeliveryAddress(this.Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetBallotDeliveryAddress(this.Identity, value);
                 }
             }
             get { return base.DeliveryAddress; }

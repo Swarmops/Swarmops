@@ -15,12 +15,12 @@ namespace Swarmops.Logic.Governance
 
         public static Ballots ForElection (Election election)
         {
-            return FromArray(PirateDb.GetDatabaseForReading().GetBallots(election, Organization.PPSE)); // HACK HACK HACK -- PPSE hardcoded
+            return FromArray(SwarmDb.GetDatabaseForReading().GetBallots(election, Organization.PPSE)); // HACK HACK HACK -- PPSE hardcoded
         }
 
         public static Dictionary<int,int> GetBallotsForPerson (Person person)
         {
-            return PirateDb.GetDatabaseForReading().GetBallotsForPerson(person.Identity);
+            return SwarmDb.GetDatabaseForReading().GetBallotsForPerson(person.Identity);
         }
     }
 }
