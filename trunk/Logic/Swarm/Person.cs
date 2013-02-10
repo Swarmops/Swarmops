@@ -1028,6 +1028,11 @@ namespace Swarmops.Logic.Swarm
             return GetAvatarLink(pixelSize).Replace("http://www", "https://secure");
         }
 
+        public static int NobodyId
+        {
+            get { return 0; }
+        }
+
         public bool HasAccess (Access access)
         {
             if (access == null)

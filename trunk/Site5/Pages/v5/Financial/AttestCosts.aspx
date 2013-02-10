@@ -14,11 +14,11 @@
 
         preload([
             '/Images/Abstract/ajaxloader-medium.gif',
-            '/Images/Icons/iconshock-redcross-16px.png',
-            '/Images/Icons/iconshock-redcross-16px-desat.png',
+            '/Images/Icons/iconshock-balloon-yes-16px-hot.png',
+            '/Images/Icons/iconshock-balloon-no-16px-hot.png',
             '/Images/Icons/iconshock-greentick-16px.png',
-            '/Images/Icons/iconshock-greentick-16px-desat.png',
-            '/Images/Icons/iconshock-glass-16px-hot.png'
+            '/Images/Icons/iconshock-redcross-16px.png',
+            '/Images/Icons/undo-16px.png'
         ]);
 
         $(document).ready(function () {
@@ -60,14 +60,21 @@
                                 $(this).attr("rel", "loading");
                                 $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
                                 $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
-                                $(this).fadeOut(2000, function () {
-                                    $(this).css("display", "none");
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
-                                    $(this).attr("rel", "active");
-                                    $("#IconApproved" + $(this).attr("baseid")).fadeIn(100);
-                                    alertify.success("Foo approved.");
+                                var thisIcon = this;
+                                $.ajax({
+                                    type: "POST",
+                                    url: "AttestCosts.aspx/Attest",
+                                    data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (msg) {
+                                        $(thisIcon).css("display", "none");
+                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                        $(thisIcon).attr("rel", "active");
+                                        $("#IconApproved" + $(thisIcon).attr("baseid")).fadeIn(100);
+                                        alertify.success(unescape(msg.d));
+                                    }
                                 });
-
                             }
                         });
 
@@ -75,14 +82,22 @@
                             if ($(this).attr("rel") != "loading") {
                                 $(this).attr("rel", "loading");
                                 $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
-                                $(this).fadeOut(2000, function () {
-                                    $(this).css("display", "none");
-                                    $(this).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
-                                    $(this).attr("rel", "");
-                                    $("#IconApproval" + $(this).attr("baseid")).fadeIn(100);
-                                    $("#" + $(this).attr("rel"), "");
-                                    alertify.log("Foo de-attested.");
-                                    $("#IconDenial" + $(this).attr("baseid")).fadeTo(100, 1).css("cursor", "pointer");
+                                var thisIcon = this;
+                                $.ajax({
+                                    type: "POST",
+                                    url: "AttestCosts.aspx/Deattest",
+                                    data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (msg) {
+                                        $(thisIcon).css("display", "none");
+                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
+                                        $(thisIcon).attr("rel", "");
+                                        $("#IconApproval" + $(thisIcon).attr("baseid")).fadeIn(100);
+                                        $("#" + $(thisIcon).attr("rel"), "");
+                                        alertify.log(unescape(msg.d).replace('+', ' '));
+                                        $("#IconDenial" + $(thisIcon).attr("baseid")).fadeTo(100, 1).css("cursor", "pointer");
+                                    }
                                 });
 
                             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 using Swarmops.Logic.Swarm;
@@ -52,12 +53,16 @@ namespace Swarmops.Logic.Financial
 
         public void Attest(Person attester)
         {
-            throw new NotImplementedException();
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+                FinancialDependencyType.CashAdvance, this.Identity, DateTime.Now, attester.Identity, this.AmountCents / 100.0);
+            SwarmDb.GetDatabaseForWriting().SetCashAdvanceAttested(this.Identity, true, attester.Identity);
         }
 
         public void Deattest(Person deattester)
         {
-            throw new NotImplementedException();
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
+                FinancialDependencyType.CashAdvance, this.Identity, DateTime.Now, deattester.Identity, this.AmountCents / 100.0);
+            SwarmDb.GetDatabaseForWriting().SetCashAdvanceAttested(this.Identity, false, Person.NobodyId);
         }
 
         #endregion

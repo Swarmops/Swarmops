@@ -37,6 +37,10 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// A conference or similar event (called 'parley' in lingo)
         /// </summary>
-        Parley
+        Parley,
+        /// <summary>
+        /// A cash advance (prior payment, rather than doing an expense claim post purchase)
+        /// </summary>
+        CashAdvance
     }
 }
