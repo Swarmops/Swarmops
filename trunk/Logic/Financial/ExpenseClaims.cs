@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Swarm;
@@ -10,7 +11,7 @@ namespace Swarmops.Logic.Financial
 {
     public class ExpenseClaims : PluralBase<ExpenseClaims,ExpenseClaim,BasicExpenseClaim>
     {
-        public ExpenseClaims AllOpen
+        public ExpenseClaims WhereOpen
         {
             get
             {
@@ -27,7 +28,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public ExpenseClaims AllApproved
+        public ExpenseClaims WhereApproved
         {
             get
             {
@@ -44,7 +45,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public ExpenseClaims AllUnapproved
+        public ExpenseClaims WhereUnapproved
         {
             get
             {
@@ -60,6 +61,20 @@ namespace Swarmops.Logic.Financial
                 return result;
             }
         }
+
+
+        public ExpenseClaims WhereUnattested
+        {
+            get
+            {
+                ExpenseClaims result = new ExpenseClaims();
+                result.AddRange(this.Where(expenseClaim => expenseClaim.Attested == false));
+
+                return result;
+            }
+        }
+
+
 
         public static ExpenseClaims FromClaimingPersonAndOrganization (Person person, Organization organization)
         {

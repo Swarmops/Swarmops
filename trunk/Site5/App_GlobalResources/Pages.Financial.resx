@@ -117,11 +117,78 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
+    <value>Cash Advance #{0} for {1} has been attested for {3:N2}.</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
+    <value>Cash Advance #{0} for {1} was UN-attested.  It will not be paid out unless attested again.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
+    <value>Expense Claim #{0} from {1} for {2} {3:N2} has been attested.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Expense Claim #{0} from {1} was DE-attested. It will not be paid out unless attested again.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Action</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Beneficiary</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Docs</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Item</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Requested</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
+    <value>Costs waiting for your attestation</value>
+  </data>
   <data name="AttestCosts_Info" xml:space="preserve">
     <value>This is where you attest costs that other people are requesting from your budgets. Nothing is paid before you have attested it.</value>
   </data>
+  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
+    <value>Invoice #{0} from {1} for {2} {3:N2} has been attested.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
+    <value>Invoice #{0} from {1} was UN-attested.  It will not be paid unless attested again.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>Attest Costs</value>
+  </data>
+  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
+    <value>Conference #{0}, arranged by {1}, has been attested for {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
+    <value>Conference #{0} by {1} was UN-attested.  It will not be greenlighted unless attested again.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>Salary #{0} for {1} was attested for {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
+    <value>Salary #{0} for {1} was DE-attested. It will not be paid out unless attested again.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>Advance amount (in {0})</value>
