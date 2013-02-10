@@ -34,13 +34,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages.Finance.AttestCosts_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Finance.AttestCosts_Info;
+            this.PageTitle = Resources.Pages.Financial.AttestCosts_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages.Financial.AttestCosts_Info;
         }
 
         [WebMethod]
         public static string Attest (string identifier)
         {
+            identifier = HttpUtility.UrlDecode(identifier);
+
             string identity = HttpContext.Current.User.Identity.Name;
             string[] identityTokens = identity.Split(',');
 
@@ -66,7 +68,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (advance.FinancialAccount.OwnerPersonId != currentUserId)
+                    if (advance.FinancialAccount.OwnerPersonId != currentUserId && advance.FinancialAccount.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -76,12 +78,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     break;
             }
 
-            return result;
+            return HttpUtility.UrlEncode(result);
         }
 
         [WebMethod]
         public static string Deattest(string identifier)
         {
+            identifier = HttpUtility.UrlDecode(identifier);
+
             string identity = HttpContext.Current.User.Identity.Name;
             string[] identityTokens = identity.Split(',');
 
@@ -107,17 +111,17 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (advance.FinancialAccount.OwnerPersonId != currentUserId)
+                    if (advance.FinancialAccount.OwnerPersonId != currentUserId && advance.FinancialAccount.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
 
-                    result = "XYZ Cash Advance";
+                    result = "XYZ Cash Advance for " + beneficiary;
                     advance.Deattest(currentUser);
                     break;
             }
 
-            return result;
+            return HttpUtility.UrlEncode(result).Replace("+", "%20");
         }
     }
 }
