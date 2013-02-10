@@ -23,7 +23,7 @@ namespace Swarmops.Logic.DataObjects
 #endif
         public static ExpenseClaim[] SelectOpenByClaimer (int personId)
         {
-            return ExpenseClaims.FromClaimingPerson (Person.FromIdentity(personId)).AllOpen.ToArray();
+            return ExpenseClaims.FromClaimingPerson (Person.FromIdentity(personId)).WhereOpen.ToArray();
         }
 
 #if !__MonoCS__
@@ -55,7 +55,7 @@ namespace Swarmops.Logic.DataObjects
 #endif
         public static ExpenseClaim[] SelectUnapprovedByOrganization (int organizationId)
         {
-            return ExpenseClaims.FromOrganization (Organization.FromIdentity(organizationId)).AllUnapproved.ToArray();
+            return ExpenseClaims.FromOrganization (Organization.FromIdentity(organizationId)).WhereUnapproved.ToArray();
         }
 
 
