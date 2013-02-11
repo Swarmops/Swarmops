@@ -59,6 +59,9 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
     {
         StringBuilder result = new StringBuilder(16384);
 
+        string hasDoxString =
+            "<img src=\\\"/Images/Icons/iconshock-glass-16px.png\\\" onmouseover=\\\"this.src='/Images/Icons/iconshock-glass-16px-hot.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-glass-16px.png';\\\" onclick=\\\"alert('foo');\\\" style=\\\"cursor:pointer\\\" />";
+
         result.Append("{\"rows\":[");
 
         foreach (AttestableItem item in _items)
@@ -66,7 +69,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
             result.Append("{");
             result.AppendFormat(
                 "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
-                "\"dox\":\"<img src=\\\"/Images/Icons/iconshock-glass-16px.png\\\" onmouseover=\\\"this.src='/Images/Icons/iconshock-glass-16px-hot.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-glass-16px.png';\\\" onclick=\\\"alert('foo');\\\" style=\\\"cursor:pointer\\\" />\"," +
+                "\"dox\":\"" + (item.HasDox? hasDoxString: "&nbsp;") + "\"," +
                 "\"actions\":\"<span style=\\\"position:relative;top:3px\\\">" +
                     "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
                     "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
