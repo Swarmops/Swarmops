@@ -132,32 +132,43 @@ namespace Swarmops.Logic.Swarm
                 return;
             }
 
-            base.Attested = true;
-            SwarmDb.GetDatabaseForWriting().SetParleyAttested(this.Identity, true);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
-                                                             FinancialDependencyType.Parley, this.Identity,
-                                                             DateTime.Now, attester.Identity, (double)(this.GuaranteeDecimal));
-
             // If needed, create new account for parley
 
-            if (base.BudgetId < 0)
+            FinancialAccount ourBudget;
+            FinancialAccount parentBudget;
+            int year = DateTime.Today.Year;
+
+            if (base.BudgetId < 0) // no account created yet
             {
-                FinancialAccount newBudget = FinancialAccount.Create(this.Budget.OrganizationId,
-                                                                     "Conf: " + this.Name,
-                                                                     FinancialAccountType.Cost,
-                                                                     this.BudgetId);
+                ourBudget = FinancialAccount.Create(this.Budget.OrganizationId,
+                                                    "Conf: " + this.Name,
+                                                    FinancialAccountType.Cost,
+                                                    this.BudgetId);
 
-                int year = DateTime.Today.Year;
-                FinancialAccount parentBudget = this.Budget;
+                parentBudget = this.Budget;
 
-                base.BudgetId = newBudget.Identity;
-                newBudget.Owner = this.Person;
-                newBudget.SetBudget(DateTime.Today.Year, (double) -this.BudgetDecimal);
-                parentBudget.SetBudget(DateTime.Today.Year,
-                                       (double) parentBudget.GetBudget(year) + (double) this.BudgetDecimal);  // cost budgets are negative
-
-                SwarmDb.GetDatabaseForWriting().SetParleyBudget(this.Identity, newBudget.Identity);
+                base.BudgetId = ourBudget.Identity;
+                ourBudget.Owner = this.Person;
+                SwarmDb.GetDatabaseForWriting().SetParleyBudget(this.Identity, ourBudget.Identity);
             }
+            else
+            {
+                // The budget has been created already - we should already be initialized. Verify this
+                // by checking that we were already attested once.
+
+                if (!this.AttestedOnce)
+                {
+                    throw new InvalidOperationException(
+                        "Budget exists despite parley not having been attested. This should not be possible.");
+                }
+
+                ourBudget = this.Budget;
+                parentBudget = this.ParentBudget;
+            }
+
+            ourBudget.SetBudgetCents(DateTime.Today.Year, -this.BudgetCents);
+            parentBudget.SetBudgetCents(DateTime.Today.Year,
+                                    parentBudget.GetBudgetCents(year) + this.BudgetCents);  // cost budgets are negative
 
             // Reserve the guarantee money
 
@@ -167,9 +178,19 @@ namespace Swarmops.Logic.Swarm
             guaranteeFundsTx.AddRow(this.Budget, -this.GuaranteeCents, attester);
             guaranteeFundsTx.AddRow(this.Budget.Parent, this.GuaranteeCents, attester);
 
+            // Finally, set as attested
+
             PWEvents.CreateEvent(
                 EventSource.PirateWeb, EventType.ParleyAttested, attester.Identity,
                 this.OrganizationId, 0, 0, this.Identity, string.Empty);
+
+            base.Attested = true;
+            SwarmDb.GetDatabaseForWriting().SetParleyAttested(this.Identity, true);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+                                                             FinancialDependencyType.Parley, this.Identity,
+                                                             DateTime.Now, attester.Identity, (double)(this.GuaranteeDecimal));
+
+
         }
 
         public void Deattest(Person deattester)
@@ -185,6 +206,24 @@ namespace Swarmops.Logic.Swarm
 
             // this.BudgetId = this.Budget.ParentIdentity;
 
+        }
+
+
+        public FinancialAccount ParentBudget
+        {
+            get
+            {
+                // If the financial account for this parley is uninitialized, the BudgetId of base is negative to indicate that.
+
+                if (base.BudgetId < 0)
+                {
+                    return FinancialAccount.FromIdentity(-base.BudgetId);
+                }
+                else
+                {
+                    return Budget.Parent;
+                }
+            }
         }
 
 
@@ -209,9 +248,29 @@ namespace Swarmops.Logic.Swarm
 
             if (this.BudgetId > 0)  // Budget attested and allocated
             {
-                this.Budget.Parent.SetBudget(year,
-                                       (double)this.Budget.Parent.GetBudget(year) - (double)this.BudgetDecimal);  // cost budgets are negative
-                this.Budget.SetBudget(year, 0.0);
+                this.Budget.Parent.SetBudgetCents(year,
+                                       this.Budget.Parent.GetBudgetCents(year) - this.BudgetCents);  // cost budgets are negative
+                this.Budget.SetBudgetCents(year, 0);
+            }
+        }
+
+        private bool AttestedOnce
+        {
+            get
+            {
+                BasicFinancialValidation[] validations =
+                    SwarmDb.GetDatabaseForReading().GetFinancialValidations(FinancialDependencyType.Parley,
+                                                                            this.Identity);
+
+                foreach (BasicFinancialValidation validation in validations)
+                {
+                    if (validation.ValidationType == FinancialValidationType.Attestation)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
             }
         }
     }

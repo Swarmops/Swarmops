@@ -162,6 +162,21 @@
   <data name="Financial_CashAdvance" xml:space="preserve">
     <value>Advance</value>
   </data>
+  <data name="Financial_ExpenseClaim" xml:space="preserve">
+    <value>Expense</value>
+  </data>
+  <data name="Financial_InvoiceInbound" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="Financial_InvoiceOutbound" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="Financial_Parley" xml:space="preserve">
+    <value>Conference</value>
+  </data>
+  <data name="Financial_Salary" xml:space="preserve">
+    <value>Salary</value>
+  </data>
   <data name="Financial_YearlyResult" xml:space="preserve">
     <value>Yearly result</value>
   </data>

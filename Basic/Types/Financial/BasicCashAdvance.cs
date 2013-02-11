@@ -15,7 +15,7 @@ namespace Swarmops.Basic.Types.Financial
             this.PersonId = personId;
             this.CreatedDateTime = createdDateTime;
             this.CreatedByPersonId = createdByPersonId;
-            this.FinancialAccountId = financialAccountId;
+            this.BudgetId = financialAccountId;
             this.AmountCents = amountCents;
             this.Description = description;
             this.Open = open;
@@ -27,7 +27,7 @@ namespace Swarmops.Basic.Types.Financial
 
         public BasicCashAdvance (BasicCashAdvance original):
             this(original.CashAdvanceId, original.OrganizationId, original.PersonId, original.CreatedDateTime, original.CreatedByPersonId,
-            original.FinancialAccountId, original.AmountCents,original.Description, original.Open, original.Attested,
+            original.BudgetId, original.AmountCents,original.Description, original.Open, original.Attested,
             original.PaidOut, original.AttestedByPersonId, original.AttestedDateTime)
         {
             // copy ctor - no action other than copying original object
@@ -44,7 +44,7 @@ namespace Swarmops.Basic.Types.Financial
         public int PersonId { get; protected set; }
         public DateTime CreatedDateTime { get; protected set; }
         public int CreatedByPersonId { get; protected set; }
-        public int FinancialAccountId { get; protected set; }
+        public int BudgetId { get; protected set; }
         public Int64 AmountCents { get; protected set; }
         public string Description { get; protected set; }
         public bool Open { get; protected set; }

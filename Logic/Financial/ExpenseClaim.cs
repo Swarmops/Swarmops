@@ -66,6 +66,7 @@ namespace Swarmops.Logic.Financial
             get { return Person.FromIdentity (base.ClaimingPersonId); }
         }
 
+        [Obsolete("Obsolete", true)]
         public void CreateEvent (ExpenseEventType eventType, Person person)
         {
             // OBSOLETE

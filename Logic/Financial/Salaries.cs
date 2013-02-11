@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
@@ -22,18 +23,38 @@ namespace Swarmops.Logic.Financial
         }
 
 
+
+        public Salaries WhereAttested
+        {
+            get
+            {
+                Salaries result = new Salaries();
+                result.AddRange(this.Where(salary => salary.Attested));
+
+                return result;
+            }
+        }
+
+
+
+        public Salaries WhereUnattested
+        {
+            get
+            {
+                Salaries result = new Salaries();
+                result.AddRange(this.Where(salary => !salary.Attested));
+
+                return result;
+            }
+        }
+
+
+
         public double TotalAmountNet
         {
             get
             {
-                double result = 0.0;
-
-                foreach (Salary salary in this)
-                {
-                    result += salary.NetSalaryCents / 100.0;
-                }
-
-                return result;
+                return this.Sum(salary => salary.NetSalaryCents/100.0);
             }
         }
 
@@ -41,14 +62,7 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                double result = 0.0;
-
-                foreach (Salary salary in this)
-                {
-                    result += salary.TaxTotalCents / 100.0;
-                }
-
-                return result;
+                return this.Sum(salary => salary.TaxTotalCents/100.0);
             }
         }
 
@@ -56,14 +70,7 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                Int64 result = 0;
-
-                foreach (Salary salary in this)
-                {
-                    result += salary.NetSalaryCents;
-                }
-
-                return result;
+                return this.Sum(salary => salary.NetSalaryCents);
             }
         }
 
@@ -71,14 +78,7 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                Int64 result = 0;
-
-                foreach (Salary salary in this)
-                {
-                    result += salary.TaxTotalCents;
-                }
-
-                return result;
+                return this.Sum(salary => salary.TaxTotalCents);
             }
         }
 

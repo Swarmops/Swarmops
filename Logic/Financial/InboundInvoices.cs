@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
@@ -10,6 +11,31 @@ namespace Swarmops.Logic.Financial
 {
     public class InboundInvoices: PluralBase<InboundInvoices,InboundInvoice,BasicInboundInvoice>
     {
+
+        public InboundInvoices WhereAttested
+        {
+            get
+            {
+                InboundInvoices result = new InboundInvoices();
+                result.AddRange(this.Where(invoice => invoice.Attested == true));
+
+                return result;
+            }
+        }
+
+
+        public InboundInvoices WhereUnattested
+        {
+            get
+            {
+                InboundInvoices result = new InboundInvoices();
+                result.AddRange(this.Where(invoice => invoice.Attested == false));
+
+                return result;
+            }
+        }
+
+
         /// <summary>
         /// Gets all open inbound invoices for a particular organization.
         /// </summary>
