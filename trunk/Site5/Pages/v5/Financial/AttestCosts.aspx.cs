@@ -110,7 +110,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (advance.FinancialAccount.OwnerPersonId != currentUserId && advance.FinancialAccount.OwnerPersonId != Person.NobodyId)
+                    if (advance.Budget.OwnerPersonId != currentUserId && advance.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -120,6 +120,78 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     deattestedTemplate = Resources.Pages.Financial.AttestCosts_AdvanceDeattested;
                     beneficiary = advance.Person.Name;
                     amountCents = advance.AmountCents;
+
+                    break;
+                case 'E': // Expense claim
+                    ExpenseClaim expense = ExpenseClaim.FromIdentity(itemId);
+                    if (expense.OrganizationId != currentOrganizationId)
+                    {
+                        throw new InvalidOperationException("Called to attest out-of-org line item");
+                    }
+                    if (expense.Budget.OwnerPersonId != currentUserId && expense.Budget.OwnerPersonId != Person.NobodyId)
+                    {
+                        throw new SecurityAccessDeniedException("Called without attestation privileges");
+                    }
+
+                    attestableItem = expense;
+                    attestedTemplate = Resources.Pages.Financial.AttestCosts_ExpenseAttested;
+                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_ExpenseDeattested;
+                    beneficiary = expense.Claimer.Name;
+                    amountCents = expense.AmountCents;
+
+                    break;
+                case 'I': // Inbound invoice
+                    InboundInvoice invoice = InboundInvoice.FromIdentity(itemId);
+                    if (invoice.OrganizationId != currentOrganizationId)
+                    {
+                        throw new InvalidOperationException("Called to attest out-of-org line item");
+                    }
+                    if (invoice.Budget.OwnerPersonId != currentUserId && invoice.Budget.OwnerPersonId != Person.NobodyId)
+                    {
+                        throw new SecurityAccessDeniedException("Called without attestation privileges");
+                    }
+
+                    attestableItem = invoice;
+                    attestedTemplate = Resources.Pages.Financial.AttestCosts_InvoiceAttested;
+                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_InvoiceDeattested;
+                    beneficiary = invoice.Supplier;
+                    amountCents = invoice.AmountCents;
+
+                    break;
+                case 'S': // Salary payout
+                    Salary salary = Salary.FromIdentity(itemId);
+                    if (salary.PayrollItem.OrganizationId != currentOrganizationId)
+                    {
+                        throw new InvalidOperationException("Called to attest out-of-org line item");
+                    }
+                    if (salary.PayrollItem.Budget.OwnerPersonId != currentUserId && salary.PayrollItem.Budget.OwnerPersonId != Person.NobodyId)
+                    {
+                        throw new SecurityAccessDeniedException("Called without attestation privileges");
+                    }
+
+                    attestableItem = salary;
+                    attestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryAttested;
+                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryDeattested;
+                    beneficiary = salary.PayrollItem.PersonCanonical;
+                    amountCents = salary.GrossSalaryCents;
+
+                    break;
+                case 'P': // Parley, aka Conference
+                    Parley parley = Parley.FromIdentity(itemId);
+                    if (parley.OrganizationId != currentOrganizationId)
+                    {
+                        throw new InvalidOperationException("Called to attest out-of-org line item");
+                    }
+                    if (parley.Budget.OwnerPersonId != currentUserId && parley.Budget.OwnerPersonId != Person.NobodyId)
+                    {
+                        throw new SecurityAccessDeniedException("Called without attestation privileges");
+                    }
+
+                    attestableItem = parley;
+                    attestedTemplate = Resources.Pages.Financial.AttestCosts_ParleyAttested;
+                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_ParleyDeattested;
+                    beneficiary = parley.Person.Name;
+                    amountCents = parley.BudgetCents;
 
                     break;
                 default:

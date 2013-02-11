@@ -16,13 +16,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 var result = new ExpenseClaims();
-                foreach (ExpenseClaim expense in this)
-                {
-                    if (expense.Open)
-                    {
-                        result.Add (expense);
-                    }
-                }
+                result.AddRange(this.Where(expense => expense.Open));
 
                 return result;
             }
@@ -33,13 +27,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 var result = new ExpenseClaims();
-                foreach (ExpenseClaim expense in this)
-                {
-                    if (expense.Approved)
-                    {
-                        result.Add (expense);
-                    }
-                }
+                result.AddRange(this.Where(expense => expense.Approved));
 
                 return result;
             }
@@ -50,13 +38,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 var result = new ExpenseClaims();
-                foreach (ExpenseClaim expense in this)
-                {
-                    if (!expense.Approved)
-                    {
-                        result.Add (expense);
-                    }
-                }
+                result.AddRange(this.Where(expense => !expense.Approved));
 
                 return result;
             }
@@ -68,7 +50,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 ExpenseClaims result = new ExpenseClaims();
-                result.AddRange(this.Where(expenseClaim => expenseClaim.Attested == false));
+                result.AddRange(this.Where(expenseClaim => !expenseClaim.Attested));
 
                 return result;
             }
@@ -118,29 +100,15 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                decimal result = 0.0m;
-
-                foreach (ExpenseClaim claim in this)
-                {
-                    result += claim.Amount;
-                }
-
-                return result;
+                return this.Sum(claim => claim.Amount);
             }
         }
 
         public Int64 TotalAmountCents
         {
-            get 
-            { 
-                Int64 result = 0;
-
-                foreach (ExpenseClaim claim in this)
-                {
-                    result += claim.AmountCents;
-                }
-
-                return result;
+            get
+            {
+                return this.Sum(claim => claim.AmountCents);
             }
         }
     }

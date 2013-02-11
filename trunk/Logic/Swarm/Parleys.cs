@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
+using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
@@ -43,5 +45,20 @@ namespace Swarmops.Logic.Swarm
                 return FromArray(SwarmDb.GetDatabaseForReading().GetParleys(person, DatabaseCondition.OpenTrue));
             }
         }
+
+        public Parleys WhereUnattested
+        {
+            get
+            {
+                Parleys result = new Parleys();
+                result.AddRange(this.Where(parley => !parley.Attested));
+
+                return result;
+            }
+        }
+
+
+
+
     }
 }

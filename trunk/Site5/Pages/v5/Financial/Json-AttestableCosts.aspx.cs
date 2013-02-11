@@ -10,6 +10,7 @@ using Swarmops.Basic.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
@@ -42,6 +43,10 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
         _items = new AttestableItems();
 
         PopulateCashAdvances();
+        PopulateExpenses();
+        PopulateInboundInvoices();
+        PopulateSalaries();
+        PopulateParleys();
 
         // Format as JSON and return
 
@@ -86,7 +91,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
 
     protected class AttestableItem
     {
-        public AttestableItem(string identity, string beneficiary, Int64 amountCents, FinancialAccount account, string description, string identityDisplay, IHasIdentity item)
+        public AttestableItem(string identity, string beneficiary, Int64 amountCents, FinancialAccount account, string description, string identityDisplay, bool hasDox, IHasIdentity item)
         {
             this.IdentityDisplay = identityDisplay;
             this.Identity = identity;
@@ -94,6 +99,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
             this.AmountRequestedCents = amountCents;
             this.Budget = account;
             this.Description = description;
+            this.HasDox = hasDox;
             this.Item = item;
         }
 
@@ -105,6 +111,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
         public string Description { get; private set; }
         public string IdentityDisplay { get; private set; }
         public IHasIdentity Item { get; private set; }
+        public bool HasDox { get; private set; }
     }
 
     protected class AttestableItems : List<AttestableItem>
@@ -141,7 +148,12 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
 
         foreach (CashAdvance advance in advances)
         {
-            _items.Add(new AttestableItem("A" + advance.Identity.ToString(CultureInfo.InvariantCulture), advance.Person.Name, advance.AmountCents, advance.FinancialAccount, advance.Description, "Financial_CashAdvance", advance));
+            if (_attestationRights.ContainsKey(advance.BudgetId) || advance.Budget.OwnerPersonId == Person.NobodyId)
+            {
+                _items.Add(new AttestableItem("A" + advance.Identity.ToString(CultureInfo.InvariantCulture),
+                                              advance.Person.Name, advance.AmountCents, advance.Budget,
+                                              advance.Description, "Financial_CashAdvance", false, advance));
+            }
         }
     }
 
@@ -149,6 +161,62 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
     private void PopulateExpenses()
     {
         ExpenseClaims expenses = ExpenseClaims.ForOrganization(_currentOrganization).WhereUnattested;
+
+        foreach (var expenseClaim in expenses)
+        {
+            if (_attestationRights.ContainsKey(expenseClaim.BudgetId) || expenseClaim.Budget.OwnerPersonId == Person.NobodyId)
+            {
+                Documents dox = expenseClaim.Documents;
+                bool hasDox = (dox.Count > 0 ? true : false);
+
+                _items.Add(new AttestableItem("E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture), expenseClaim.ClaimerCanonical, expenseClaim.AmountCents, expenseClaim.Budget, expenseClaim.Description, "Financial_ExpenseClaim", hasDox, expenseClaim));
+            }
+        }
+    }
+
+
+    private void PopulateInboundInvoices()
+    {
+        InboundInvoices invoices = InboundInvoices.ForOrganization(_currentOrganization).WhereUnattested;
+
+        foreach (InboundInvoice invoice in invoices)
+        {
+            Documents dox = invoice.Documents;
+            bool hasDox = (dox.Count > 0 ? true : false);
+
+            if (_attestationRights.ContainsKey(invoice.BudgetId) || invoice.Budget.OwnerPersonId == Person.NobodyId)
+            {
+                _items.Add(new AttestableItem("I" + invoice.Identity.ToString(CultureInfo.InvariantCulture), invoice.Supplier, invoice.AmountCents, invoice.Budget, invoice.InvoiceReference, "Financial_InvoiceInbound", hasDox, invoice));
+            }
+        }
+    }
+
+
+    private void PopulateSalaries()
+    {
+        Salaries salaries = Salaries.ForOrganization(_currentOrganization).WhereUnattested;
+
+        foreach (Salary salary in salaries)
+        {
+            if (_attestationRights.ContainsKey(salary.PayrollItem.BudgetId) || salary.PayrollItem.Budget.OwnerPersonId == Person.NobodyId)
+            {
+                _items.Add(new AttestableItem("S" + salary.Identity.ToString(CultureInfo.InvariantCulture), salary.PayrollItem.PersonCanonical, salary.CostTotalCents, salary.PayrollItem.Budget, string.Format("Salary for {0:yyyy-MMM}", salary.PayoutDate), "Financial_Salary", false, salary));
+            }
+        }
+    }
+
+
+    private void PopulateParleys()
+    {
+        Parleys parleys = Parleys.ForOrganization(_currentOrganization).WhereUnattested;
+
+        foreach (Parley parley in parleys)
+        {
+            if (_attestationRights.ContainsKey(parley.BudgetId) || parley.Budget.OwnerPersonId == Person.NobodyId)
+            {
+                _items.Add(new AttestableItem("P" + parley.Identity.ToString(CultureInfo.InvariantCulture), parley.Person.Canonical, parley.BudgetCents, parley.ParentBudget, parley.Name, "Financial_Parley", false, parley));
+            }
+        }
     }
 
 }

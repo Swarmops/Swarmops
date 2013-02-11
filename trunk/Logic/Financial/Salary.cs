@@ -294,7 +294,9 @@ namespace Swarmops.Logic.Financial
 
         public void Deattest(Person deattester)
         {
-            throw new NotImplementedException();
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+                FinancialDependencyType.Salary, this.Identity, DateTime.Now, deattester.Identity, this.NetSalaryCents / 100.0);
+            SwarmDb.GetDatabaseForWriting().SetSalaryAttested(this.Identity, false);
         }
 
         #endregion

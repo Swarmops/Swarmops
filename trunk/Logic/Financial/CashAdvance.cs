@@ -73,9 +73,9 @@ namespace Swarmops.Logic.Financial
             get { return Person.FromIdentity(this.PersonId); }
         }
 
-        public FinancialAccount FinancialAccount
+        public FinancialAccount Budget
         {
-            get { return FinancialAccount.FromIdentity(this.FinancialAccountId); }
+            get { return FinancialAccount.FromIdentity(this.BudgetId); }
         }
     }
 }
