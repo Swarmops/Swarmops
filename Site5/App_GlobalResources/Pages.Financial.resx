@@ -190,6 +190,15 @@
     <value>Salary #{0} for {1} was DE-attested. It will not be paid out unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Costs Ready For Payout</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>These are the various forms of costs to the organization that have passed all the hurdles for payout. They are ready to be paid out to the recipient. Here is where you check them off as being paid out (probably while having your bank open in another window).</value>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Pay Out Money</value>
+  </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>Advance amount (in {0})</value>
     <comment>{0} is the currency.</comment>

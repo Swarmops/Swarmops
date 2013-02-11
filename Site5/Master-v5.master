@@ -174,7 +174,7 @@
                                 <telerik:RadMenuItem runat="server" Text="XYZ Outstanding Cash Advances" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Financial_List_OutstandingAdvances" />
                             </Items>
                         </telerik:RadMenuItem>
-                        <telerik:RadMenuItem runat="server" Text="XYZ Pay Out Money" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Financial_PayOutMoney" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ Pay Out Money" NavigateUrl="~/Pages/v5/Financial/PayOutMoney.aspx" ImageUrl="~/Images/PageIcons/iconshock-money-envelope-16px.png" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Financial_PayOutMoney" />
                     </Items>
                 </telerik:RadMenuItem>
                 <telerik:RadMenuItem runat="server" Text="XYZ Ledgers" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers">
