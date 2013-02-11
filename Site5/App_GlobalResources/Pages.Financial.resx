@@ -190,6 +190,32 @@
     <value>Salary #{0} for {1} was DE-attested. It will not be paid out unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>Amount</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
+    <value>Clearing / Account</value>
+    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>Paid</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Recipient</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Reference</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Costs Ready For Payout</value>
   </data>
