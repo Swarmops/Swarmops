@@ -27,7 +27,18 @@ namespace Swarmops.Logic.Financial
             get
             {
                 CashAdvances result = new CashAdvances();
-                result.AddRange(this.Where(cashAdvance => cashAdvance.Attested == false));
+                result.AddRange(this.Where(cashAdvance => !cashAdvance.Attested));
+
+                return result;
+            }
+        }
+
+        public CashAdvances WhereAttested
+        {
+            get
+            {
+                CashAdvances result = new CashAdvances();
+                result.AddRange(this.Where(cashAdvance => cashAdvance.Attested));
 
                 return result;
             }

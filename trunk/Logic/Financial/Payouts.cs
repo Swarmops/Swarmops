@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
@@ -43,6 +44,7 @@ namespace Swarmops.Logic.Financial
             AddUnpaidExpenseClaims(result, organizationId);
             AddUnpaidInboundInvoices(result, organizationId);
             AddUnpaidSalaries(result, organizationId);
+            AddUnpaidCashAdvances(result, organizationId);
 
             return result;
         }
@@ -75,7 +77,7 @@ namespace Swarmops.Logic.Financial
                             // No. Create a new payout for this person.
 
                             BasicPayout basicPayout = new BasicPayout(0, organizationId, claim.Claimer.BankName,
-                                                                      claim.Claimer.BankClearing+" / "+claim.Claimer.BankAccount, string.Empty, 0,
+                                                                      claim.Claimer.BankClearing + " / " + claim.Claimer.BankAccount, string.Empty, 0,
                                                                       DateTime.MinValue, false, DateTime.Now, 0);
                             Payout payout = Payout.FromBasic(basicPayout);
 
@@ -105,12 +107,12 @@ namespace Swarmops.Logic.Financial
 
                 if (claimIds.Count == 1)
                 {
-                    payout.Reference = String.Format("Expense #{0}", claimIds[0]);
+                    payout.Reference = "[Loc]Financial_ExpenseClaimSpecification|" + claimIds[0].ToString(CultureInfo.InvariantCulture);
                 }
                 else
                 {
                     claimIds.Sort();
-                    payout.Reference = String.Format("Expenses {0}", Formatting.GenerateRangeString(claimIds));
+                    payout.Reference = "[Loc]Financial_ExpenseClaimsSpecification|" + Formatting.GenerateRangeString(claimIds);
                 }
 
                 if (newAmountCents > 0)
@@ -119,30 +121,83 @@ namespace Swarmops.Logic.Financial
                 }
             }
 
-            // Lastly, add the keep-separate claims.
+        }
 
-            foreach (ExpenseClaim claim in claims)
+
+
+        private static void AddUnpaidCashAdvances(Payouts payoutList, int organizationId)
+        {
+            CashAdvances advances = CashAdvances.ForOrganization(Organization.FromIdentity(organizationId));
+            advances = advances.WhereAttested;
+
+            Dictionary<int, Payout> payoutLookup = new Dictionary<int, Payout>();
+
+            foreach (CashAdvance advance in advances)
             {
-                if (claim.Open)
-                {
-                    if (claim.Attested && claim.Validated && !claim.Repaid && claim.KeepSeparate)
-                    {
-                        BasicPayout basicPayout = new BasicPayout(0, organizationId, claim.Claimer.BankName,
-                                                                  claim.Claimer.BankClearing + " / " + claim.Claimer.BankAccount, string.Empty, claim.AmountCents,
-                                                                  DateTime.MinValue, false, DateTime.Now, 0);
-                        Payout payout = Payout.FromBasic(basicPayout);
-                        payout.Reference = "Cash Advance #" + claim.Identity;
-                        payout.DependentExpenseClaims.Add(claim);
+                // If ready for payout, add to list.
 
-                        payoutList.Add(payout);
-                    }
+                if (!advance.Open || !advance.Attested || advance.PaidOut)
+                {
+                    throw new InvalidOperationException("Got into loop with closed/unattested/paid-out cash advances - this is not a possible state");
+                }
+
+                if (payoutLookup.ContainsKey(advance.PersonId))
+                {
+                    // Yes. Add claim to list.
+
+                    payoutLookup[advance.PersonId].DependentCashAdvances.Add(advance);
+                }
+                else
+                {
+                    // No. Create a new payout for this person.
+
+                    BasicPayout basicPayout = new BasicPayout(0, organizationId, advance.Person.BankName,
+                                                                advance.Person.BankClearing + " / " + advance.Person.BankAccount, string.Empty, 0,
+                                                                DateTime.MinValue, false, DateTime.Now, 0);
+                    Payout payout = Payout.FromBasic(basicPayout);
+
+                    payout.DependentCashAdvances.Add(advance);
+
+                    payoutLookup[advance.PersonId] = payout;
+                }
+            }
+
+            // We now have the list of payouts and the associated claims, but the amounts aren't set on the
+            // payouts. This will be the next step, as we assemble the list.
+
+            foreach (Payout payout in payoutLookup.Values)
+            {
+                Int64 newAmountCents = 0;
+                List<int> advanceIds = new List<int>();
+
+                foreach (CashAdvance advance in payout.DependentCashAdvances)
+                {
+                    newAmountCents += advance.AmountCents;
+                    advanceIds.Add(advance.Identity);
+                }
+
+                payout.AmountCents = newAmountCents;
+
+                if (advanceIds.Count == 1)
+                {
+                    payout.Reference = "[Loc]Financial_CashAdvanceSpecification|" + advanceIds[0].ToString(CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    advanceIds.Sort();
+                    payout.Reference = "[Loc]Financial_CashAdvancesSpecification|" + Formatting.GenerateRangeString(advanceIds);
+                }
+
+                if (newAmountCents > 0)
+                {
+                    payoutList.Add(payout);
                 }
             }
         }
 
 
 
-        private static void AddUnpaidInboundInvoices (Payouts payoutList, int organizationId)
+        private static void AddUnpaidInboundInvoices(Payouts payoutList, int organizationId)
         {
             InboundInvoices invoices = InboundInvoices.ForOrganization(Organization.PPSE);
 
@@ -183,7 +238,7 @@ namespace Swarmops.Logic.Financial
                     Person employee = payrollItem.Person;
 
                     BasicPayout basicPayout = new BasicPayout(0, organizationId, employee.BankName,
-                                                              employee.BankAccount, "Salary " + salary.PayoutDate.ToString("yyyy-MMM"), 
+                                                              employee.BankAccount, "[Loc]Financial_SalarySpecification|[Date]" + salary.PayoutDate.ToString(CultureInfo.InvariantCulture), 
                                                               salary.NetSalaryCents, salary.PayoutDate, false, DateTime.Now, 0);
                     Payout payout = Payout.FromBasic(basicPayout);
 
@@ -217,16 +272,16 @@ namespace Swarmops.Logic.Financial
 
                 if (identityList.Count == 1)
                 {
-                    referenceString = "Tax for salary #" + identityList[0].ToString();
+                    referenceString = "[Loc]Financial_TaxSpecification|" + identityList[0].ToString();
                 }
                 else
                 {
                     identityList.Sort();
-                    referenceString = "Tax for salaries " + Formatting.GenerateRangeString(identityList);
+                    referenceString = "[Loc]Financial_TaxesSpecification|" + Formatting.GenerateRangeString(identityList);
                 }
 
 
-                BasicPayout basicPayout = new BasicPayout(0, organizationId, "The Tax Man",
+                BasicPayout basicPayout = new BasicPayout(0, organizationId, "[Loc]Financial_TheTaxMan",
                                                           string.Empty, referenceString,
                                                           taxTotalCents, payDay, false, DateTime.Now, 0);
                 Payout payout = Payout.FromBasic(basicPayout);

@@ -41,7 +41,7 @@
                 <th data-options="field:'account',width:160,sortable:true"><asp:Label ID="LabelGridHeaderAccount" runat="server" Text="XYZ Account" /></th>
                 <th data-options="field:'reference',width:80,sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderReference" runat="server" Text="XYZ Reference" /></th>
                 <th data-options="field:'amount',width:40,align:'center'"><asp:Label ID="LabelGridHeaderAmount" runat="server" Text="XYZ Amount" /></th>
-                <th data-options="field:'paid',width:53,align:'center'"><asp:Label ID="LabelGridHeaderPaid" runat="server" Text="XYZPaid" /></th>
+                <th data-options="field:'action',width:53,align:'center'"><asp:Label ID="LabelGridHeaderPaid" runat="server" Text="XYZPaid" /></th>
             </tr>  
         </thead>
     </table>  

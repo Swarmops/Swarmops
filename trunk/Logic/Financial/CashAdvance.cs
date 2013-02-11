@@ -77,5 +77,35 @@ namespace Swarmops.Logic.Financial
         {
             get { return FinancialAccount.FromIdentity(this.BudgetId); }
         }
+
+        public new bool Open
+        {
+            get { return base.Open; }
+            set
+            {
+                if (base.Open == value)
+                {
+                    return;
+                }
+
+                SwarmDb.GetDatabaseForWriting().SetCashAdvanceOpen(this.Identity, value);
+                base.Open = value;
+            }
+        }
+
+        public new bool PaidOut
+        {
+            get { return base.PaidOut; }
+            set
+            {
+                if (base.PaidOut == value)
+                {
+                    return;
+                }
+
+                SwarmDb.GetDatabaseForWriting().SetCashAdvancePaidOut(this.Identity, value);
+                base.PaidOut = value;
+            }
+        }
     }
 }

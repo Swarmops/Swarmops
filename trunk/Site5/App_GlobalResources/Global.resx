@@ -162,8 +162,20 @@
   <data name="Financial_CashAdvance" xml:space="preserve">
     <value>Advance</value>
   </data>
+  <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
+    <value>Cash Advance #{0}</value>
+  </data>
+  <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
+    <value>Cash Advances {0}</value>
+  </data>
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Expense</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
+    <value>Expense  #{0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
+    <value>Expenses {0}</value>
   </data>
   <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>Invoice</value>
@@ -177,8 +189,26 @@
   <data name="Financial_Salary" xml:space="preserve">
     <value>Salary</value>
   </data>
+  <data name="Financial_SalarySpecification" xml:space="preserve">
+    <value>Salary for {0:yyyy-MMM}</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
+    <value>Tax for salaries {0}</value>
+  </data>
+  <data name="Financial_TaxSpecification" xml:space="preserve">
+    <value>Tax for salary #{0}</value>
+  </data>
+  <data name="Financial_TheTaxMan" xml:space="preserve">
+    <value>The Tax Man</value>
+    <comment>Used as recipient for taxes.</comment>
+  </data>
   <data name="Financial_YearlyResult" xml:space="preserve">
     <value>Yearly result</value>
+  </data>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>ASAP</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
   </data>
   <data name="Global_Cancel" xml:space="preserve">
     <value>Cancel</value>

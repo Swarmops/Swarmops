@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
@@ -23,6 +24,8 @@ namespace Swarmops.Logic.Financial
 
         public static Payout Create (Payout payout)
         {
+            throw new NotImplementedException(); // Seems not to be needed
+
             // This is quite unique in PW4 -- this is the only class which is pre-constructed and
             // can take an instance of its own kind as parameter in creation
 
@@ -43,6 +46,7 @@ namespace Swarmops.Logic.Financial
             DependentInvoices = new InboundInvoices();
             DependentSalariesNet = new Salaries();
             DependentSalariesTax = new Salaries();
+            DependentCashAdvances = new CashAdvances();
 
             BasicFinancialDependency[] dependencies = SwarmDb.GetDatabaseForReading().GetPayoutDependencies(this.Identity);
 
@@ -68,6 +72,10 @@ namespace Swarmops.Logic.Financial
                         }
                         break;
 
+                    case FinancialDependencyType.CashAdvance:
+                        DependentCashAdvances.Add(CashAdvance.FromIdentity(dependency.ForeignId));
+                        break;
+
                     default:
                         throw new NotImplementedException("Unknown financial dependency type in Payout.LoadDependencies(): " + dependency.ToString());
                 }
@@ -91,6 +99,7 @@ namespace Swarmops.Logic.Financial
         public ExpenseClaims DependentExpenseClaims;
         public Salaries DependentSalariesNet;
         public Salaries DependentSalariesTax;
+        public CashAdvances DependentCashAdvances;
 
         public decimal Amount
         {
@@ -168,7 +177,60 @@ namespace Swarmops.Logic.Financial
 
                 return null;
             }
+            if (components [0][0] == 'A')
+            {
+                // Cash advance(s). This could be joined with expense claims but isn't as of now.
 
+                string bank = string.Empty;
+                string account = string.Empty;
+                List<int> identityList = new List<int>();
+                Int64 amountCents = 0;
+                int organizationId = 0;
+
+                foreach (string component in components)
+                {
+                    int advanceId = Int32.Parse(component.Substring(1));
+                    CashAdvance advance = CashAdvance.FromIdentity(advanceId);
+                    identityList.Add(advanceId);
+
+                    if (bank.Length < 1)
+                    {
+                        Person asker = advance.Person;
+                        bank = asker.BankName;
+                        account = asker.BankAccount;
+                        organizationId = advance.OrganizationId;
+                    }
+
+                    amountCents += advance.AmountCents;
+
+                    advance.PaidOut = true;
+                    advance.Open = false;
+                }
+
+                string referenceString = string.Empty;
+
+                if (identityList.Count == 1)
+                {
+                    referenceString = "Cash Advance #" + identityList[0].ToString(CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    identityList.Sort();
+                    referenceString = "Cash Advances " + Formatting.GenerateRangeString(identityList);
+                }
+
+                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
+                                                                   referenceString, amountCents, DateTime.Today.AddDays(1),
+                                                                   creator.Identity);
+
+                foreach (int advanceId in identityList)
+                {
+                    SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.CashAdvance,
+                                                                  advanceId);
+                }
+
+                return FromIdentity(payoutId);
+            }
             if (components [0][0] == 'C')
             {
                 // Expense claims.
@@ -334,25 +396,35 @@ namespace Swarmops.Logic.Financial
                 }
 
                 string result = string.Empty;
+
+                // ReSharper disable LoopCanBeConvertedToQuery
+
                 foreach (InboundInvoice invoice in DependentInvoices)
                 {
-                    result += "|I" + invoice.Identity.ToString();
+                    result += "|I" + invoice.Identity.ToString(CultureInfo.InvariantCulture);
                 }
 
                 foreach (ExpenseClaim claim in DependentExpenseClaims)
                 {
-                    result += "|C" + claim.Identity.ToString();
+                    result += "|C" + claim.Identity.ToString(CultureInfo.InvariantCulture);
+                }
+
+                foreach (CashAdvance advance in DependentCashAdvances)
+                {
+                    result += "|A" + advance.Identity.ToString(CultureInfo.InvariantCulture);
                 }
 
                 foreach (Salary salary in DependentSalariesNet)
                 {
-                    result += "|S" + salary.Identity.ToString();
+                    result += "|S" + salary.Identity.ToString(CultureInfo.InvariantCulture);
                 }
 
                 foreach (Salary salary in DependentSalariesTax)
                 {
-                    result += "|T" + salary.Identity.ToString();
+                    result += "|T" + salary.Identity.ToString(CultureInfo.InvariantCulture);
                 }
+
+                // ReSharper restore LoopCanBeConvertedToQuery
 
                 if (result.Length > 0)
                 {
@@ -381,6 +453,10 @@ namespace Swarmops.Logic.Financial
                 else if (this.DependentExpenseClaims.Count > 0)
                 {
                     return this.DependentExpenseClaims[0].ClaimerCanonical;
+                }
+                else if (this.DependentCashAdvances.Count > 0)
+                {
+                    return this.DependentCashAdvances[0].Person.Canonical;
                 }
                 else if (this.DependentSalariesNet.Count > 0)
                 {
@@ -481,10 +557,23 @@ namespace Swarmops.Logic.Financial
 
         public void UndoPayout()
         {
+            // This only works on still-open payouts
+
+            if (!this.Open)
+            {
+                throw new InvalidOperationException("Payout is already closed - cannot undo");
+            }
+
             foreach (ExpenseClaim claim in this.DependentExpenseClaims)
             {
                 claim.Repaid = false;
                 claim.Open = true;
+            }
+
+            foreach (CashAdvance advance in this.DependentCashAdvances)
+            {
+                advance.PaidOut = false;
+                advance.Open = true;
             }
 
             foreach (InboundInvoice invoice in this.DependentInvoices)
