@@ -225,6 +225,16 @@
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Pay Out Money</value>
   </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>Cannot undo payout #{0}: it has already settled or closed.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Payout #{0} to {1} was created.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Payout #{0} was undone and everything restored.</value>
+  </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>Advance amount (in {0})</value>
     <comment>{0} is the currency.</comment>

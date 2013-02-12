@@ -168,6 +168,7 @@ namespace Swarmops.Logic.Financial
         public static Payout CreateFromProtoIdentity (Person creator, string protoIdentity)
         {
             string[] components = protoIdentity.Split('|');
+            int payoutId = 0;
 
             // The components can EITHER be a series of expense claims OR a single invoice.
 
@@ -219,7 +220,7 @@ namespace Swarmops.Logic.Financial
                     referenceString = "Cash Advances " + Formatting.GenerateRangeString(identityList);
                 }
 
-                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
+                payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
                                                                    referenceString, amountCents, DateTime.Today.AddDays(1),
                                                                    creator.Identity);
 
@@ -228,10 +229,8 @@ namespace Swarmops.Logic.Financial
                     SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.CashAdvance,
                                                                   advanceId);
                 }
-
-                return FromIdentity(payoutId);
             }
-            if (components [0][0] == 'C')
+            else if (components [0][0] == 'C')
             {
                 // Expense claims.
 
@@ -265,7 +264,7 @@ namespace Swarmops.Logic.Financial
 
                 if (identityList.Count == 1)
                 {
-                    referenceString = "Expense Claim #" + identityList[0].ToString();
+                    referenceString = "Expense Claim #" + identityList[0].ToString(CultureInfo.InvariantCulture);
                 }
                 else
                 {
@@ -273,7 +272,7 @@ namespace Swarmops.Logic.Financial
                     referenceString = "Expense Claims " + Formatting.GenerateRangeString(identityList);
                 }
 
-                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
+                payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
                                                                    referenceString, amountCents, DateTime.Today.AddDays(1),
                                                                    creator.Identity);
 
@@ -282,8 +281,6 @@ namespace Swarmops.Logic.Financial
                     SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.ExpenseClaim,
                                                                   claimId);
                 }
-
-                return FromIdentity(payoutId);
             }
             else if (components[0][0] == 'I')
             {
@@ -298,7 +295,7 @@ namespace Swarmops.Logic.Financial
                     expectedPayment = DateTime.Today;
                 }
 
-                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(invoice.OrganizationId, string.Empty, invoice.PayToAccount,
+                payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(invoice.OrganizationId, string.Empty, invoice.PayToAccount,
                                                                    invoice.Ocr.Length > 0 ? "OCR " + invoice.Ocr : "Ref# " + invoice.InvoiceReference,
                                                                    invoice.AmountCents, expectedPayment,
                                                                    creator.Identity);
@@ -307,8 +304,6 @@ namespace Swarmops.Logic.Financial
                                                               invoice.Identity);
 
                 invoice.Open = false;
-
-                return FromIdentity(payoutId);
             }
             else if (components [0][0] == 'S')
             {
@@ -316,7 +311,7 @@ namespace Swarmops.Logic.Financial
 
                 Salary salary = Salary.FromIdentity(Int32.Parse(components[0].Substring(1)));
 
-                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(salary.PayrollItem.OrganizationId, salary.PayrollItem.Person.BankName, salary.PayrollItem.Person.BankAccount,
+                payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(salary.PayrollItem.OrganizationId, salary.PayrollItem.Person.BankName, salary.PayrollItem.Person.BankAccount,
                                                                    "Salary " + salary.PayoutDate.ToString("yyyy-MMM"),
                                                                    salary.NetSalaryCents, salary.PayoutDate,
                                                                    creator.Identity);
@@ -325,8 +320,6 @@ namespace Swarmops.Logic.Financial
                                                               salary.Identity);
 
                 salary.NetPaid = true;
-
-                return FromIdentity(payoutId);
             }
             else if (components [0][0] == 'T')
             {
@@ -367,7 +360,7 @@ namespace Swarmops.Logic.Financial
                     referenceString = "Tax for salaries " + Formatting.GenerateRangeString(identityList);
                 }
 
-                int payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organization.Identity, "The Tax Man", organization.Parameters.TaxAccount, organization.Parameters.TaxOcr,
+                payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organization.Identity, "The Tax Man", organization.Parameters.TaxAccount, organization.Parameters.TaxOcr,
                                                                    amountCents, payDay, creator.Identity);
 
                 foreach (int salaryId in identityList)
@@ -375,13 +368,13 @@ namespace Swarmops.Logic.Financial
                     SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.Salary,
                                                                   salaryId);
                 }
-
-                return FromIdentity(payoutId);
             }
             else
             {
                 throw new NotImplementedException(); 
             }
+
+            return FromIdentity(payoutId);
         }
 
 

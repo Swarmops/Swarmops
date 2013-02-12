@@ -10,10 +10,11 @@ using Swarmops.Basic.Enums;
 using Swarmops.Logic.Structure;
 
 /// <summary>
-/// Base class to use for all data generators (JSON, etc). It supplies identification and localization.
+/// Summary description for PageV5Base
+/// Base class to use for all pages that uses the Activizr-v5 master page
 /// </summary>
 
-public class PageV5Base : System.Web.UI.Page
+public class DataV5Base : System.Web.UI.Page
 {
     public PermissionSet pagePermissionDefault = new PermissionSet(Permission.CanSeeSelf); //Use from menu;
     public Access PageAccessRequired = null; // v5 mechanism
@@ -22,50 +23,23 @@ public class PageV5Base : System.Web.UI.Page
     protected override void OnInitComplete(System.EventArgs e)
     {
         base.OnInitComplete(e);
+
+        string identity = HttpContext.Current.User.Identity.Name;
+        string[] identityTokens = identity.Split(',');
+
+        string userIdentityString = identityTokens[0];
+        string organizationIdentityString = identityTokens[1];
+
+        this.CurrentUser = Person.FromIdentity(Int32.Parse(userIdentityString));
+        this.CurrentOrganization = Organization.FromIdentity(Int32.Parse(organizationIdentityString));
     }
 
-    protected new MasterV5Base Master
-    { get { return (MasterV5Base)base.Master; } }
+    protected Person CurrentUser { get; private set; }
+    protected Organization CurrentOrganization { get; private set; }
 
-    protected string PageTitle
-    {
-        get { return this.Master.CurrentPageTitle; }
-        set { this.Master.CurrentPageTitle = value; }
-    }
-
-    protected string PageIcon
-    {
-        get { return this.Master.CurrentPageIcon; }
-        set { this.Master.CurrentPageIcon = value; }
-    }
-
-    protected string InfoBoxLiteral
-    {
-        get { return this.Master.CurrentPageInfoBoxLiteral; }
-        set { this.Master.CurrentPageInfoBoxLiteral = value; }
-    }
-
-    protected Person CurrentUser
-    {
-        get { return this.Master.CurrentUser; }
-    }
-
-    protected Organization CurrentOrganization
-    {
-        get { return this.Master.CurrentOrganization; }
-    }
-
-    protected Authority CurrentAuthority
-    {
-        get { return this.Master.CurrentAuthority; }
-    }
 
     protected override void OnPreInit(EventArgs e)
     {
-        // Unlock Telerik (kick out at first opportunity...)
-
-        this.Application["Telerik.Web.UI.Key"] = "Activizr";
-
         // Localization
 
         // Set default culture (English, United States, but that doesn't work so fake it to GB)
@@ -162,45 +136,44 @@ public class PageV5Base : System.Web.UI.Page
     }
 
 
-    protected static AuthenticationData GetAuthenticationDataAndCulture()
+    protected string TryLocalize(string input)
     {
-        // This function is called from static page methods in AJAX calls to get
-        // the current set of authentication data. Static page methods cannot access
-        // the instance data of PageV5Base.
-
-        AuthenticationData result = new AuthenticationData();
-
-        // Find various credentials
-
-        string identity = HttpContext.Current.User.Identity.Name;
-        string[] identityTokens = identity.Split(',');
-
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
-
-        int currentUserId = Convert.ToInt32(userIdentityString);
-        int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-        result.CurrentUser = Person.FromIdentity(currentUserId);
-        result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
-
-        string userCultureString = result.CurrentUser.PreferredCulture;
-
-        if (!string.IsNullOrEmpty(userCultureString))
+        if (!input.StartsWith("[Loc]"))
         {
-            CultureInfo userCulture = new CultureInfo(userCultureString); // may throw on invalid database data
-            Thread.CurrentThread.CurrentCulture = userCulture;
-            Thread.CurrentThread.CurrentUICulture = userCulture;
+            return input;
         }
 
-        return result;
+        string[] inputParts = input.Split('|');
+
+        string resourceKey = inputParts[0].Substring(5);
+        object translatedResource = GetGlobalResourceObject("Global", resourceKey);
+
+        if (translatedResource == null)
+        {
+            throw new NotImplementedException("Unimplemented localization resource key: \"" + resourceKey + "\"");
+        }
+
+        if (inputParts.Length == 1)
+        {
+            return translatedResource.ToString();
+        }
+        else
+        {
+            object argument = null;
+
+            if (inputParts[1].StartsWith("[Date]"))
+            {
+                argument = DateTime.Parse(inputParts[1].Substring(6), CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                argument = inputParts[1];
+            }
+
+            return String.Format(translatedResource.ToString(), argument);
+        }
     }
+
 }
 
 
-
-public class AuthenticationData
-{
-    public Person CurrentUser;
-    public Organization CurrentOrganization;
-}

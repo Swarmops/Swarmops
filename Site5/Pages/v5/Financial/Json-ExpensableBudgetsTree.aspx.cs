@@ -12,31 +12,16 @@ using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Pages.v5.Financial
 {
-    public partial class Json_ExpensableBudgetsTree : System.Web.UI.Page
+    public partial class Json_ExpensableBudgetsTree : DataV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Current authentication
-
-            string identity = HttpContext.Current.User.Identity.Name;
-            string[] identityTokens = identity.Split(',');
-
-            string userIdentityString = identityTokens[0];
-            string organizationIdentityString = identityTokens[1];
-
-            int currentUserId = Convert.ToInt32(userIdentityString);
-            int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-            Person currentUser = Person.FromIdentity(currentUserId);
-            Authority authority = currentUser.GetAuthority();
-            Organization currentOrganization = Organization.FromIdentity(currentOrganizationId);
-
             Response.ContentType = "application/json";
 
             // Is this stuff in cache already?
 
             string cacheKey = "ExpensableAccounts-Json-" +
-                              currentOrganizationId.ToString((CultureInfo.InvariantCulture));
+                              this.CurrentOrganization.Identity.ToString((CultureInfo.InvariantCulture));
 
             string accountsJson =
                 (string) Cache[cacheKey];
@@ -52,7 +37,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Get accounts
 
-            FinancialAccounts accounts = currentOrganization.FinancialAccounts.ExpensableAccounts;
+            FinancialAccounts accounts = this.CurrentOrganization.FinancialAccounts.ExpensableAccounts;
 
             // Build tree (there should be a template for this)
 
