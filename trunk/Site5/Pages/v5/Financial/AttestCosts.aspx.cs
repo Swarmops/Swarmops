@@ -76,19 +76,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private static string HandleAttestationDeattestation (string identifier, AttestationMode mode)
         {
-            // Find various credentials
-
-            string identity = HttpContext.Current.User.Identity.Name;
-            string[] identityTokens = identity.Split(',');
-
-            string userIdentityString = identityTokens[0];
-            string organizationIdentityString = identityTokens[1];
-
-            int currentUserId = Convert.ToInt32(userIdentityString);
-            int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-            Person currentUser = Person.FromIdentity(currentUserId);
-            Organization currentOrganization = Organization.FromIdentity(currentOrganizationId);
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             IAttestable attestableItem = null;
             string attestedTemplate = string.Empty;
@@ -106,11 +94,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 case 'A': // Case advance
                     CashAdvance advance = CashAdvance.FromIdentity(itemId);
-                    if (advance.OrganizationId != currentOrganizationId)
+                    if (advance.OrganizationId != authData.CurrentOrganization.Identity)
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (advance.Budget.OwnerPersonId != currentUserId && advance.Budget.OwnerPersonId != Person.NobodyId)
+                    if (advance.Budget.OwnerPersonId != authData.CurrentUser.Identity && advance.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -124,11 +112,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     break;
                 case 'E': // Expense claim
                     ExpenseClaim expense = ExpenseClaim.FromIdentity(itemId);
-                    if (expense.OrganizationId != currentOrganizationId)
+                    if (expense.OrganizationId != authData.CurrentOrganization.Identity)
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (expense.Budget.OwnerPersonId != currentUserId && expense.Budget.OwnerPersonId != Person.NobodyId)
+                    if (expense.Budget.OwnerPersonId != authData.CurrentUser.Identity && expense.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -142,11 +130,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     break;
                 case 'I': // Inbound invoice
                     InboundInvoice invoice = InboundInvoice.FromIdentity(itemId);
-                    if (invoice.OrganizationId != currentOrganizationId)
+                    if (invoice.OrganizationId != authData.CurrentOrganization.Identity)
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (invoice.Budget.OwnerPersonId != currentUserId && invoice.Budget.OwnerPersonId != Person.NobodyId)
+                    if (invoice.Budget.OwnerPersonId != authData.CurrentUser.Identity && invoice.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -160,11 +148,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     break;
                 case 'S': // Salary payout
                     Salary salary = Salary.FromIdentity(itemId);
-                    if (salary.PayrollItem.OrganizationId != currentOrganizationId)
+                    if (salary.PayrollItem.OrganizationId != authData.CurrentOrganization.Identity)
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (salary.PayrollItem.Budget.OwnerPersonId != currentUserId && salary.PayrollItem.Budget.OwnerPersonId != Person.NobodyId)
+                    if (salary.PayrollItem.Budget.OwnerPersonId != authData.CurrentUser.Identity && salary.PayrollItem.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -178,11 +166,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     break;
                 case 'P': // Parley, aka Conference
                     Parley parley = Parley.FromIdentity(itemId);
-                    if (parley.OrganizationId != currentOrganizationId)
+                    if (parley.OrganizationId != authData.CurrentOrganization.Identity)
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (parley.Budget.OwnerPersonId != currentUserId && parley.Budget.OwnerPersonId != Person.NobodyId)
+                    if (parley.Budget.OwnerPersonId != authData.CurrentUser.Identity && parley.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -202,14 +190,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (mode == AttestationMode.Attestation)
             {
-                attestableItem.Attest(currentUser);
-                result = string.Format(attestedTemplate, itemId, beneficiary, currentOrganization.Currency.Code,
+                attestableItem.Attest(authData.CurrentUser);
+                result = string.Format(attestedTemplate, itemId, beneficiary, authData.CurrentOrganization.Currency.Code,
                                        amountCents/100.0);
             }
             else if (mode == AttestationMode.Deattestation)
             {
-                attestableItem.Deattest(currentUser);
-                result = string.Format(deattestedTemplate, itemId, beneficiary, currentOrganization.Currency.Code,
+                attestableItem.Deattest(authData.CurrentUser);
+                result = string.Format(deattestedTemplate, itemId, beneficiary, authData.CurrentOrganization.Currency.Code,
                                        amountCents / 100.0);
             }
             else

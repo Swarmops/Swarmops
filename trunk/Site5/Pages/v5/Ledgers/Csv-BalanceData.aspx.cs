@@ -12,39 +12,10 @@ using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 
-public partial class Pages_v5_Ledgers_Csv_BalanceData : System.Web.UI.Page
+public partial class Pages_v5_Ledgers_Csv_BalanceData : DataV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Current authentication
-
-        string identity = HttpContext.Current.User.Identity.Name;
-        string[] identityTokens = identity.Split(',');
-
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
-
-        int currentUserId = Convert.ToInt32(userIdentityString);
-        int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-        Person currentUser = Person.FromIdentity(currentUserId);
-        Authority authority = currentUser.GetAuthority();
-        Organization currentOrganization = Organization.FromIdentity(currentOrganizationId);
-
-        // Get culture
-
-        string cultureString = "en-US";
-        HttpCookie cookie = Request.Cookies["PreferredCulture"];
-
-        if (cookie != null)
-        {
-            cultureString = cookie.Value;
-        }
-
-        _renderCulture = new CultureInfo(cultureString);
-        Thread.CurrentThread.CurrentCulture = _renderCulture;
-        Thread.CurrentThread.CurrentUICulture = _renderCulture;
-
         // Get current year
 
         _year = DateTime.Today.Year;
@@ -56,7 +27,7 @@ public partial class Pages_v5_Ledgers_Csv_BalanceData : System.Web.UI.Page
             _year = Int32.Parse(yearParameter); // will throw if non-numeric - don't matter for app
         }
 
-        YearlyReport report = YearlyReport.Create(currentOrganization, _year, FinancialAccountType.Balance);
+        YearlyReport report = YearlyReport.Create(this.CurrentOrganization, _year, FinancialAccountType.Balance);
 
         Response.ClearContent();
         Response.ClearHeaders();

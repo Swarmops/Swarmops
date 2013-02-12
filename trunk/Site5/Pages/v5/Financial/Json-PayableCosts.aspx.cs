@@ -15,39 +15,21 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.Financial
 {
-    public partial class JsonPayableCosts : System.Web.UI.Page
+    public partial class JsonPayableCosts : DataV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Current authentication
+            // Access required is change access to financials
 
-            string identity = HttpContext.Current.User.Identity.Name;
-            string[] identityTokens = identity.Split(',');
-
-            string userIdentityString = identityTokens[0];
-            string organizationIdentityString = identityTokens[1];
-
-            int currentUserId = Convert.ToInt32(userIdentityString);
-            int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-            _currentUser = Person.FromIdentity(currentUserId);
-            Authority authority = _currentUser.GetAuthority();
-            _currentOrganization = Organization.FromIdentity(currentOrganizationId);
-
-            Response.ContentType = "application/json";
-
-            // Assert economic access
-
-
-
-            // TODO: Set language for localization
+            this.PageAccessRequired = new Access(AccessAspect.Financials, AccessType.Write);
 
             // Get all payable items
 
-            Payouts payouts = Payouts.Construct(_currentOrganization);
+            Payouts payouts = Payouts.Construct(this.CurrentOrganization);
 
             // Format as JSON and return
 
+            Response.ContentType = "application/json";
             string json = FormatAsJson(payouts);
             Response.Output.WriteLine(json);
             Response.End();
@@ -75,7 +57,7 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"account\":\"{4}\"," +
                     "\"reference\":\"{5}\"," +
                     "\"amount\":\"{6:N2}\"," +
-                    "\"action\":\"<span style=\\\"position:relative;top:3px\\\">" +
+                    "\"action\":\"" +
                     "<img id=\\\"IconApproval{0}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
                     "<img id=\\\"IconApproved{0}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />\"",
                     payout.ProtoIdentity,
@@ -94,43 +76,6 @@ namespace Swarmops.Frontend.Pages.Financial
 
             return result.ToString();
         }
-
-        private string TryLocalize(string input)
-        {
-            if (!input.StartsWith("[Loc]"))
-            {
-                return input;
-            }
-
-            string[] inputParts = input.Split('|');
-
-            string resourceKey = inputParts[0].Substring(5);
-            string translatedResource = GetGlobalResourceObject("Global", resourceKey).ToString();
-
-            if (inputParts.Length == 1)
-            {
-                return translatedResource;
-            }
-            else
-            {
-                object argument = null;
-
-                if (inputParts[1].StartsWith("[Date]"))
-                {
-                    argument = DateTime.Parse(inputParts[1].Substring(6), CultureInfo.InvariantCulture);
-                }
-                else
-                {
-                    argument = inputParts[1];
-                }
-
-                return String.Format(translatedResource, argument);
-            }
-        }
-
-        private Dictionary<int, bool> _attestationRights;
-        private Person _currentUser;
-        private Organization _currentOrganization;
 
     }
 

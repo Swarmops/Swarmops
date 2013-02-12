@@ -13,33 +13,13 @@ using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
-public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
+public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Current authentication
-
-        string identity = HttpContext.Current.User.Identity.Name;
-        string[] identityTokens = identity.Split(',');
-
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
-
-        int currentUserId = Convert.ToInt32(userIdentityString);
-        int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-        _currentUser = Person.FromIdentity(currentUserId);
-        Authority authority = _currentUser.GetAuthority();
-        _currentOrganization = Organization.FromIdentity(currentOrganizationId);
-
-        Response.ContentType = "application/json";
-
-        _attestationRights = GetAttestationRights();
-
-        // TODO: Set language for localization
-
         // Get all attestable items
 
+        _attestationRights = GetAttestationRights();
         _items = new AttestableItems();
 
         PopulateCashAdvances();
@@ -50,6 +30,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
 
         // Format as JSON and return
 
+        Response.ContentType = "application/json";
         string json = FormatAsJson();
         Response.Output.WriteLine(json);
         Response.End();
@@ -75,7 +56,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
                     "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
                     "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
                     "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
-                 GetGlobalResourceObject("Global", item.IdentityDisplay).ToString(), item.Beneficiary, item.Description, item.BudgetName,
+                 GetGlobalResourceObject("Global", item.IdentityDisplay).ToString(), item.Beneficiary, TryLocalize(item.Description), item.BudgetName,
                 item.AmountRequestedCents/100.0, item.Identity);
             result.Append("},");
         }
@@ -88,8 +69,6 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
     }
 
     private Dictionary<int, bool> _attestationRights;
-    private Person _currentUser;
-    private Organization _currentOrganization;
     private AttestableItems _items;
 
     protected class AttestableItem
@@ -131,11 +110,11 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
         // checks the owner.
 
         Dictionary<int, bool> result = new Dictionary<int, bool>();
-        FinancialAccounts accounts = FinancialAccounts.ForOrganization(_currentOrganization);
+        FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization);
 
         foreach (FinancialAccount account in accounts)
         {
-            if (account.OwnerPersonId == _currentUser.Identity)
+            if (account.OwnerPersonId == this.CurrentUser.Identity)
             {
                 result[account.Identity] = true;
             }
@@ -147,7 +126,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
 
     private void PopulateCashAdvances()
     {
-        CashAdvances advances = CashAdvances.ForOrganization(_currentOrganization).WhereUnattested;
+        CashAdvances advances = CashAdvances.ForOrganization(this.CurrentOrganization).WhereUnattested;
 
         foreach (CashAdvance advance in advances)
         {
@@ -163,7 +142,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
 
     private void PopulateExpenses()
     {
-        ExpenseClaims expenses = ExpenseClaims.ForOrganization(_currentOrganization).WhereUnattested;
+        ExpenseClaims expenses = ExpenseClaims.ForOrganization(this.CurrentOrganization).WhereUnattested;
 
         foreach (var expenseClaim in expenses)
         {
@@ -180,7 +159,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
 
     private void PopulateInboundInvoices()
     {
-        InboundInvoices invoices = InboundInvoices.ForOrganization(_currentOrganization).WhereUnattested;
+        InboundInvoices invoices = InboundInvoices.ForOrganization(this.CurrentOrganization).WhereUnattested;
 
         foreach (InboundInvoice invoice in invoices)
         {
@@ -197,13 +176,13 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
 
     private void PopulateSalaries()
     {
-        Salaries salaries = Salaries.ForOrganization(_currentOrganization).WhereUnattested;
+        Salaries salaries = Salaries.ForOrganization(this.CurrentOrganization).WhereUnattested;
 
         foreach (Salary salary in salaries)
         {
             if (_attestationRights.ContainsKey(salary.PayrollItem.BudgetId) || salary.PayrollItem.Budget.OwnerPersonId == Person.NobodyId)
             {
-                _items.Add(new AttestableItem("S" + salary.Identity.ToString(CultureInfo.InvariantCulture), salary.PayrollItem.PersonCanonical, salary.CostTotalCents, salary.PayrollItem.Budget, string.Format("Salary for {0:yyyy-MMM}", salary.PayoutDate), "Financial_Salary", false, salary));
+                _items.Add(new AttestableItem("S" + salary.Identity.ToString(CultureInfo.InvariantCulture), salary.PayrollItem.PersonCanonical, salary.CostTotalCents, salary.PayrollItem.Budget, "[Loc]Financial_SalarySpecification|[Date]" + salary.PayoutDate.ToString(CultureInfo.InvariantCulture), "Financial_Salary", false, salary));
             }
         }
     }
@@ -211,7 +190,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : System.Web.UI.Page
 
     private void PopulateParleys()
     {
-        Parleys parleys = Parleys.ForOrganization(_currentOrganization).WhereUnattested;
+        Parleys parleys = Parleys.ForOrganization(this.CurrentOrganization).WhereUnattested;
 
         foreach (Parley parley in parleys)
         {
