@@ -117,6 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
+    <value>Kontantförskott #{0} till {1} har attesterats till beloppet {3:N2}.</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
+    <value>Kontantförskott #{0} till {1} har AV-attesterats. Det kommer inte att betalas ut om det inte attesteras igen.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
+    <value>Utläggsanspråk #{0} från {1} för {2} {3:N2} har attesterats.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>Utläggsanspråk #{0} från {1} har AV-attesterats. Det kommer inte att betalas ut förrän det attesterats igen.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>Attest</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>Mottagare</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>Beskrivning</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>Dok</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>Kostnadstyp</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>Begärt</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
+    <value>Kostnader som väntar på attest</value>
+  </data>
+  <data name="AttestCosts_Info" xml:space="preserve">
+    <value>Här attesterar du belopp som andra personer vill ha från dina budgetar. Inget betalas ut före det attesterats.</value>
+  </data>
+  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
+    <value>Faktura #{0} från {1} på {2} {3:N2} attesterades.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
+    <value>Faktura #{0} från {1} har AV-attesterats. Den kommer inte att betalas förrän den attesterats igen.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_PageTitle" xml:space="preserve">
+    <value>Attestera kostnader</value>
+  </data>
+  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
+    <value>Konferens #{0} som arrangeras av {1} har attesterats för {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
+    <value>Konferens #{0} av {1} har AV-attesterats. Den kommer inte att få garantimedel förrän den attesteras igen.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>Lön #{0} till {1} attesterades till en totalkostnad av {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
+    <value>Lön #{0} till {1} har AV-attesterats. Lönen kommer inte att betalas ut om den inte attesteras igen.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>Belopp</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
+    <value>Clearing / Konto</value>
+    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
+    <value>Förfallodatum</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>Betald</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>Mottagare</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>Referens</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>Kostnader redo för utbetalning</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>Dessa är de kostnader organisationen har och som har godkänts i alla steg för utbetalning. Här bockar du av dem som utbetalda (förmodligen medan du har din bank öppen i ett fönster bredvid och betalar dem).</value>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Betala ut pengar</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>Kan inte ångra utbetalning #{0}: den är stängd eller har redan gått till betalning.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Utbetalning #{0} till {1} skapades.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Utbetalning #{0} ångrades och allt återställdes.</value>
+  </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>Förskottsbelopp (i {0})</value>
     <comment>{0} is the currency.</comment>
@@ -172,7 +290,5 @@
   <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
     <value>Välj en budget att belasta.</value>
   </data>
-  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
-    <value>Vänligen ange syftet med förskottet.</value>
-  </data>
+  
 </root>
