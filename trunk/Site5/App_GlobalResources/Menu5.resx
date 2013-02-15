@@ -270,6 +270,9 @@
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Upload Bank Files</value>
   </data>
+  <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
+    <value>View Outstanding Accounts</value>
+  </data>
   <data name="Menu5_Organization" xml:space="preserve">
     <value>Organization</value>
   </data>

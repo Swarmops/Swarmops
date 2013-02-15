@@ -288,4 +288,28 @@
     <value>Action items will go here.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
   </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Advances</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Cash Advances</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>Expense Claims</value>
+  </data>
+  <data name="Financial_InbondInvoices" xml:space="preserve">
+    <value>Invoices</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Inbound Invoices</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Invoices</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Outbound Invoices</value>
+  </data>
 </root>
