@@ -188,6 +188,7 @@
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Upload Bank Files" NavigateUrl="~/Pages/v5/Ledgers/UploadBankFiles.aspx" ImageUrl="~/Images/PageIcons/iconshock-bank-16px.png" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_UploadBankFiles" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ View Outstanding Accounts" NavigateUrl="~/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx" ImageUrl="~/Images/PageIcons/iconshock-cabinet-16px.png" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_ViewOutstandingAccounts" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Debug Ledgers" NavigateUrl="~/Pages/v5/Ledgers/DebugLedgers.aspx" ImageUrl="~/Images/PageIcons/iconshock-tester-16px.png" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_DebugLedgers" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Close Ledgers" NavigateUrl="~/Pages/v5/Ledgers/CloseLedgers.aspx" Template="CloseLedgers" Dynamic="true" ImageUrl="~/Images/PageIcons/iconshock-ledger-lock-16px.png" Permission="EconomyDetail:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_CloseLedgers" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />

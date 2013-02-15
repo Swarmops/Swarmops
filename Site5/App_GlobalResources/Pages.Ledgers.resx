@@ -331,4 +331,10 @@
     <value>Upload Bank File</value>
     <comment>Displayed as header above download instructions / upload form</comment>
   </data>
+  <data name="ViewOutstandingAccounts_Info" xml:space="preserve">
+    <value>This page lets you verify the outstanding accounts (expenses, invoices, cash advances, etc.) at the current point in time or at the time of closing of any previous ledger.</value>
+  </data>
+  <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
+    <value>View Outstanding Accounts</value>
+  </data>
 </root>
