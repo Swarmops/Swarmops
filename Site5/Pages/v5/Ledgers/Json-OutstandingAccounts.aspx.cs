@@ -86,7 +86,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 result.Append("},");
                 centsTotal += account.AmountCents;
             }
-
+            
             if (outstandingAccounts.Count > 0)
             {
                 result.Remove(result.Length - 1, 1); // remove last comma
