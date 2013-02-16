@@ -6,6 +6,47 @@
     <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/tree.css"/>
     <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/datagrid.css"/>
     
+    	<script type="text/javascript">
+
+	    $(document).ready(function () {
+
+	        $('#gridOutstandingAccounts').datagrid(
+	        {
+	            onLoadSuccess: function () {
+	                $('div.datagrid').css('opacity', 1);
+	                $('#imageLoadIndicator').hide();
+	                $('span.loadingHeader').hide();
+
+	                alert($('#gridOutstandingAccounts').datagrid('getRows').length);
+
+	                var rowCount = $('#gridOutstandingAccounts').datagrid('getRows').length;
+	                if (rowCount > 0) 
+	                {
+	                    $('#gridOutstandingAccounts').dataGrid('mergeCells', {index: rowCount, field:'id', colspan: 5});
+	                    alert('bar');
+	                }
+	            }
+	        });
+
+	        $('#<%=DropYears.ClientID %>').change(function () {
+	            var selectedYear = $('#<%=DropYears.ClientID %>').val();
+
+	            $('#tableProfitLoss').treegrid({ url: 'Json-BalanceSheetData.aspx?Year=' + selectedYear });
+        	    $('#imageLoadIndicator').show();
+	            $('div.datagrid').css('opacity', 0.4);
+
+	            $('#tableProfitLoss').treegid('reload');
+	        });
+
+
+	        $('div.datagrid').css('opacity', 0.4);
+	    });
+
+	    var currentYear = <%=DateTime.Today.Year %>;
+
+	</script>
+
+
     <style type="text/css">
         .datagrid-row-selected,.datagrid-row-over{
             background:transparent;
@@ -21,12 +62,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="ViewOutstandingAccountsHeader" Text="XYZ View Outstanding" />&nbsp;<asp:DropDownList runat="server" ID="DropAccounts"/>&nbsp;<asp:DropDownList runat="server" ID="DropYears"/>&nbsp;<img alt="Loading" src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
 
-    <table id="GridOutstandingAccounts" class="easyui-datagrid" style="width:680px;height:500px"
+    <table id="gridOutstandingAccounts" class="easyui-datagrid" style="width:680px;height:500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-OutstandingAccounts.aspx'"
         idField="itemId">
         <thead>  
             <tr>  
-                <th data-options="field:'id',width:40"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID"/></th>  
+                <th data-options="field:'id',width:40"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
                 <th data-options="field:'created',width:90,sortable:true"><asp:Label ID="LabelGridHeaderCreated" runat="server" Text="XYZ Created" /></th>
                 <th data-options="field:'expected',width:90"><asp:Label ID="LabelGridHeaderBank" runat="server" Text="XYZ Due" /></th>  
                 <th data-options="field:'recipient',width:140,sortable:true"><asp:Label ID="LabelGridHeaderAccount" runat="server" Text="XYZ Person / Organization" /></th>
