@@ -12,38 +12,13 @@ using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 
-public partial class Pages_v5_Ledgers_Json_BalanceSheetData : System.Web.UI.Page
+public partial class Pages_v5_Ledgers_Json_BalanceSheetData : DataV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Current authentication
+        // Get auth data
 
-        string identity = HttpContext.Current.User.Identity.Name;
-        string[] identityTokens = identity.Split(',');
-
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
-
-        int currentUserId = Convert.ToInt32(userIdentityString);
-        int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-        Person currentUser = Person.FromIdentity(currentUserId);
-        Authority authority = currentUser.GetAuthority();
-        Organization currentOrganization = Organization.FromIdentity(currentOrganizationId);
-
-        // Get culture
-
-        string cultureString = "en-US";
-        HttpCookie cookie = Request.Cookies["PreferredCulture"];
-
-        if (cookie != null)
-        {
-            cultureString = cookie.Value;
-        }
-
-        _renderCulture = new CultureInfo(cultureString);
-        Thread.CurrentThread.CurrentCulture = _renderCulture;
-        Thread.CurrentThread.CurrentUICulture = _renderCulture;
+        _authenticationData = GetAuthenticationDataAndCulture();
 
         // Get current year
 
@@ -56,7 +31,7 @@ public partial class Pages_v5_Ledgers_Json_BalanceSheetData : System.Web.UI.Page
             _year = Int32.Parse(yearParameter); // will throw if non-numeric - don't matter for app
         }
 
-        YearlyReport report = YearlyReport.Create(currentOrganization, _year, FinancialAccountType.Balance);
+        YearlyReport report = YearlyReport.Create(_authenticationData.CurrentOrganization, _year, FinancialAccountType.Balance);
         LocalizeRoot(report.ReportLines);
 
         Response.ContentType = "application/json";
@@ -66,6 +41,7 @@ public partial class Pages_v5_Ledgers_Json_BalanceSheetData : System.Web.UI.Page
         Response.End();
     }
 
+    private AuthenticationData _authenticationData;
 
 
     private void LocalizeRoot(List<YearlyReportLine> lines)

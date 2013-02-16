@@ -312,4 +312,10 @@
   <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
     <value>Outbound Invoices</value>
   </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>Not Applicable</value>
+  </data>
 </root>

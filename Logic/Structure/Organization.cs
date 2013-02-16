@@ -849,5 +849,13 @@ namespace Swarmops.Logic.Structure
             get { return "bg 451-0061 "; }  // TODO: Per organization, of course
         }
 
+        public DateTime GetEndOfFiscalYear (int year)
+        {
+            // Returns the last millisecond of the fiscal year. For now, this is limited to calendar years; the function
+            // is placed here for future flexibility.
+
+            return new DateTime(year, 12, 31, 23, 59, 59, 999);
+        }
+
     }
 }

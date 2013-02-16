@@ -40,7 +40,7 @@ namespace Swarmops.Frontend.Pages.Financial
             StringBuilder result = new StringBuilder(16384);
 
             string hasDoxString =
-                "<img src=\\\"/Images/Icons/iconshock-glass-16px.png\\\" onmouseover=\\\"this.src='/Images/Icons/iconshock-glass-16px-hot.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-glass-16px.png';\\\" onclick=\\\"alert('foo');\\\" style=\\\"cursor:pointer\\\" />";
+                "<img src=\\\"/Images/PageIcons/iconshock-battery-drill-16px.png\\\" onmouseover=\\\"this.src='/Images/PageIcons/iconshock-battery-drill-16px.png';\\\" onmouseout=\\\"this.src='/Images/PageIcons/iconshock-battery-drill-16px.png';\\\" onclick=\\\"alert('Under construction');\\\" style=\\\"cursor:pointer\\\" />";
 
             result.Append("{\"rows\":[");
 
