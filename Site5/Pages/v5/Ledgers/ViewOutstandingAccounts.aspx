@@ -55,6 +55,10 @@
             color: #1C397E;
             letter-spacing: 1px;
         }
+   	    table.datagrid-ftable {
+		    font-weight: 500;
+	    }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">

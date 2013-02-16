@@ -92,10 +92,23 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 result.Remove(result.Length - 1, 1); // remove last comma
             }
 
-            result.Append("],\"footer\":[{");
+            result.Append("],\"footer\":[");
 
-            result.AppendFormat("\"id\":\"{0}\",\"amount\":\"{2:N2}\"",
+            result.Append("{");
+
+            result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{2:N2}\"",
                                 "Total", balanceExpectedCents, centsTotal/100.0);
+
+            result.Append("},{");
+
+            result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{2:N2}\"",
+                                "Expected", balanceExpectedCents, centsTotal / 100.0);
+
+            result.Append("},{");
+
+            result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{2:N2}\"",
+                                "Difference", balanceExpectedCents, 0.0);
+
 
             result.Append("}]}"); // on separate line to suppress warning
 
