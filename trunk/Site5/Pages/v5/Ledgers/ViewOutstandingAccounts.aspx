@@ -1,10 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="ViewOutstandingAccounts.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.ViewOutstandingAccounts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
+    <script src="https://hostedscripts.falkvinge.net/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/tree.css"/>
+    <link rel="stylesheet" type="text/css" href="https://hostedscripts.falkvinge.net/easyui/themes/default/datagrid.css"/>
     
     <style type="text/css">
         .datagrid-row-selected,.datagrid-row-over{
             background:transparent;
+	    }
+	    .content h2 select {
+		    font-size: 16px;
+            font-weight: bold;
+            color: #1C397E;
+            letter-spacing: 1px;
         }
     </style>
 </asp:Content>
@@ -12,7 +22,7 @@
     <h2><asp:Label runat="server" ID="ViewOutstandingAccountsHeader" Text="XYZ View Outstanding" />&nbsp;<asp:DropDownList runat="server" ID="DropAccounts"/>&nbsp;<asp:DropDownList runat="server" ID="DropYears"/>&nbsp;<img alt="Loading" src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
 
     <table id="GridOutstandingAccounts" class="easyui-datagrid" style="width:680px;height:500px"
-        data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-OpenAccounts.aspx'"
+        data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-OutstandingAccounts.aspx'"
         idField="itemId">
         <thead>  
             <tr>  
