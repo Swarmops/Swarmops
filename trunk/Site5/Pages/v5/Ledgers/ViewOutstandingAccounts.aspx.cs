@@ -26,7 +26,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (!Page.IsPostBack)
                 {
-                    int year = DateTime.Today.Year;
+                    int year = DateTime.Today.Year-1;
                     int firstFiscalYear = CurrentOrganization.FirstFiscalYear;
 
                     this.DropYears.Items.Add(new ListItem("XYZ Today", "Now"));
