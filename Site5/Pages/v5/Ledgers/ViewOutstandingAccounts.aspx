@@ -17,12 +17,10 @@
 	                $('#imageLoadIndicator').hide();
 	                $('span.loadingHeader').hide();
 
-	                alert($('#gridOutstandingAccounts').datagrid('getRows').length);
-
 	                var rowCount = $('#gridOutstandingAccounts').datagrid('getRows').length;
 	                if (rowCount > 0) 
 	                {
-	                    $('#gridOutstandingAccounts').dataGrid('mergeCells', {index: rowCount, field:'id', colspan: 5});
+	                    //$('#gridOutstandingAccounts').dataGrid('mergeCells', {index: rowCount, field:'id', colspan: 5});
 	                    alert('bar');
 	                }
 	            }
