@@ -174,6 +174,41 @@ public class DataV5Base : System.Web.UI.Page
         }
     }
 
-}
 
+    protected static AuthenticationData GetAuthenticationDataAndCulture()
+    {
+        // This function is called from static page methods in AJAX calls to get
+        // the current set of authentication data. Static page methods cannot access
+        // the instance data of PageV5Base.
+
+        AuthenticationData result = new AuthenticationData();
+
+        // Find various credentials
+
+        string identity = HttpContext.Current.User.Identity.Name;
+        string[] identityTokens = identity.Split(',');
+
+        string userIdentityString = identityTokens[0];
+        string organizationIdentityString = identityTokens[1];
+
+        int currentUserId = Convert.ToInt32(userIdentityString);
+        int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
+
+        result.CurrentUser = Person.FromIdentity(currentUserId);
+        result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
+
+        string userCultureString = result.CurrentUser.PreferredCulture;
+
+        if (!string.IsNullOrEmpty(userCultureString))
+        {
+            CultureInfo userCulture = new CultureInfo(userCultureString); // may throw on invalid database data
+            Thread.CurrentThread.CurrentCulture = userCulture;
+            Thread.CurrentThread.CurrentUICulture = userCulture;
+        }
+
+        return result;
+    }
+
+
+}
 
