@@ -21,7 +21,7 @@
 	                if (rowCount > 0) 
 	                {
 	                    //$('#gridOutstandingAccounts').dataGrid('mergeCells', {index: rowCount, field:'id', colspan: 5});
-	                    alert('bar');
+	                    // Footer cells could not be merged in datagrid :(
 	                }
 	            }
 	        });
