@@ -43,7 +43,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             else
             {
-                // TODO
+                // This is a very expensive op. We need to load all expense claims and process them in logic, looking at their
+                // payouts and end financial transactions, as the traceability was built to be efficient backwards (tracing money
+                // paid out to its documentation), rather than forwards.
+
+
                 claims = new ExpenseClaims();
                 payouts = new Payouts();
                 balanceAmountCents = balanceAccount.GetDeltaCents(DateTime.MinValue, targetDateTime);
@@ -53,13 +57,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             OutstandingAccounts outstandingAccounts = new OutstandingAccounts();
             foreach (ExpenseClaim claim in claims)
             {
-                outstandingAccounts.Add((OutstandingAccount) claim);
+                outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim, DateTime.MinValue));
             }
             foreach (Payout payout in payouts)
             {
                 foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
                 {
-                    outstandingAccounts.Add((OutstandingAccount)claim);
+                    outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim, payout.ExpectedTransactionDate));
                 }
             }
 
@@ -146,7 +150,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public DateTime CreatedDateTime { get; set; }
             public DateTime ExpectedClosed { get; set; }
 
-            public static explicit operator OutstandingAccount(ExpenseClaim claim)
+            public static OutstandingAccount FromExpenseClaim (ExpenseClaim claim, DateTime dateTimeExpectedClosed)
             {
                 OutstandingAccount result = new OutstandingAccount
                 {
@@ -155,7 +159,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     Identity = claim.Identity,
                     Recipient = claim.ClaimerCanonical,
                     CreatedDateTime = claim.CreatedDateTime,
-                    ExpectedClosed = DateTime.MinValue
+                    ExpectedClosed = dateTimeExpectedClosed
                 };
 
                 return result;
