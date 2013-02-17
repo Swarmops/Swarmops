@@ -87,7 +87,7 @@
     <table id="tableProfitLoss" title="" class="easyui-treegrid" style="width:680px;height:600px"
         url="Json-ProfitLossData.aspx"
         rownumbers="false"
-        animate="true" showFooter="true"
+        animate="true" showFooter="true" fitColumns="true"
         idField="id" treeField="name">
     <thead>  
         <tr>  
