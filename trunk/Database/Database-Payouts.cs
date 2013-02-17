@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using System.Text;
 using Swarmops.Basic.Enums;
+using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
 
 namespace Swarmops.Database
@@ -83,7 +85,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicFinancialDependency[] GetPayoutDependencies (int payoutId)
+        public BasicFinancialDependency[] GetPayoutDependencies(int payoutId)
         {
             List<BasicFinancialDependency> result = new List<BasicFinancialDependency>();
 
@@ -106,6 +108,34 @@ namespace Swarmops.Database
             }
 
             return result.ToArray();
+        }
+
+
+        public int GetPayoutIdFromDependency(IHasIdentity foreignObject)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand("SELECT" + payoutDependencyFieldSequence +
+                    "WHERE PayoutDependencies.ForeignId=" + foreignObject.Identity.ToString(CultureInfo.InvariantCulture) + 
+                    " AND FinancialDependencyTypes.Name='" + GetForeignTypeString(foreignObject) + "'" + 
+                    " AND " + payoutDependencyTableJoin,
+                                 connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt32(0);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
 

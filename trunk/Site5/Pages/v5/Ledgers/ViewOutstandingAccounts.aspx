@@ -29,11 +29,16 @@
 	        $('#<%=DropYears.ClientID %>').change(function () {
 	            var selectedYear = $('#<%=DropYears.ClientID %>').val();
 
-	            $('#tableProfitLoss').treegrid({ url: 'Json-BalanceSheetData.aspx?Year=' + selectedYear });
+                if (selectedYear == 'Now') {
+    	            $('#gridOutstandingAccounts').datagrid({ url: 'Json-OutstandingAccounts.aspx' });
+                } else {
+    	            $('#gridOutstandingAccounts').datagrid({ url: 'Json-OutstandingAccounts.aspx?Year=' + selectedYear });
+                }
+
         	    $('#imageLoadIndicator').show();
 	            $('div.datagrid').css('opacity', 0.4);
 
-	            $('#tableProfitLoss').treegid('reload');
+	            $('#gridOutstandingAccounts').datagrid('reload');
 	        });
 
 

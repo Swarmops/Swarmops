@@ -518,6 +518,12 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public FinancialTransaction FinancialTransaction
+        {
+            get { return FinancialTransaction.FromDependency(this); }
+        }
+
+
         public void ReloadDependencies()
         {
             LoadDependencies();

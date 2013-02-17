@@ -22,7 +22,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             DateTime targetDateTime = DateTime.Today.AddDays(1);
             bool renderPresentTime = true;
             FinancialAccount balanceAccount = null;
-            Int64 balanceAmountCents;
+            Int64 ledgerExpectedCents;
 
             if (Request.QueryString ["Year"] != null)
             {
@@ -33,13 +33,25 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             // Assume claims
             balanceAccount = _authenticationData.CurrentOrganization.FinancialAccounts.DebtsExpenseClaims;
 
-            ExpenseClaims claims = null;
-            Payouts payouts = null;
+            OutstandingAccounts outstandingAccounts = new OutstandingAccounts();
+
             if (renderPresentTime)
             {
-                claims = ExpenseClaims.ForOrganization(_authenticationData.CurrentOrganization);
-                payouts = Payouts.ForOrganization(_authenticationData.CurrentOrganization);
-                balanceAmountCents = balanceAccount.GetDeltaCents(DateTime.MinValue, DateTime.MaxValue); // get ALL transactions
+                ExpenseClaims claims = ExpenseClaims.ForOrganization(_authenticationData.CurrentOrganization);
+                Payouts payouts = Payouts.ForOrganization(_authenticationData.CurrentOrganization);
+                ledgerExpectedCents = balanceAccount.GetDeltaCents(DateTime.MinValue, DateTime.MaxValue); // get ALL transactions
+
+                foreach (ExpenseClaim claim in claims)
+                {
+                    outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim, DateTime.MinValue));
+                }
+                foreach (Payout payout in payouts)
+                {
+                    foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
+                    {
+                        outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim, payout.ExpectedTransactionDate));
+                    }
+                }
             }
             else
             {
@@ -47,29 +59,96 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 // payouts and end financial transactions, as the traceability was built to be efficient backwards (tracing money
                 // paid out to its documentation), rather than forwards.
 
+                // A possible optimization could be to load the payouts into a hash table initially instead of looking them up
+                // with two dbroundtrips per expense claim. It should be more efficient to have three dbroundtrips to load expenses,
+                // payouts, and the relevant transactions, then stuff it all into hash tables keyed by identity and process it
+                // in-memory.
 
-                claims = new ExpenseClaims();
-                payouts = new Payouts();
-                balanceAmountCents = balanceAccount.GetDeltaCents(DateTime.MinValue, targetDateTime);
-            }
+                // A future optimization involves adding "ClosedDateTime" to ExpenseClaims and Payouts at the database level.
 
+                // Load all (ALL) expense claims for org
 
-            OutstandingAccounts outstandingAccounts = new OutstandingAccounts();
-            foreach (ExpenseClaim claim in claims)
-            {
-                outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim, DateTime.MinValue));
-            }
-            foreach (Payout payout in payouts)
-            {
-                foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
+                ExpenseClaims allClaims = ExpenseClaims.ForOrganization(_authenticationData.CurrentOrganization, true); // includes closed
+
+                // For each claim, determine whether it was open or not at targetDateTime
+
+                foreach (ExpenseClaim claim in allClaims)
                 {
-                    outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim, payout.ExpectedTransactionDate));
+                    // if it wasn't opened until after target datetime, discard
+
+                    if (claim.CreatedDateTime > targetDateTime)
+                    {
+                        continue;
+                    }
+
+                    // At this point, we have the full set of expense claims opened before targetDateTime. We want the
+                    // set of claims that were still open - as determined by the ledger account Expense Claims - on targetDateTime.
+                    //
+                    // For the expense claims that are still open, this is trivially true.
+                    //
+                    // However, for others, we need to look at the corresponding Payout and its FinancialTransaction to determine
+                    // whetherthe transaction's date is on the other side of targetDateTime.
+
+                    bool includeThisClaim = false;
+                    DateTime dateTimeClosed = DateTime.MinValue;
+
+                    if (claim.Open)
+                    {
+                        includeThisClaim = true;
+                    }
+                    else
+                    {
+                        // claim is closed. This is where we need to look first at payout then at financial transaction.
+
+                        Payout payout = claim.Payout;
+
+                        if (payout == null)
+                        {
+                            continue; // some legacy from when Swarmops was primitive - earliest claims don't have payouts
+                        }
+
+                        if (payout.Open)
+                        {
+                            // Transaction is not yet closed. Include this claim, set closed to expected-closed.
+                            includeThisClaim = true;
+                            dateTimeClosed = payout.ExpectedTransactionDate;
+                        }
+                        else
+                        {
+                            FinancialTransaction transaction = payout.FinancialTransaction;
+
+                            if (transaction == null)
+                            {
+                                throw new InvalidOperationException("This should not happen (transaction not found on closed payout)");
+                            }
+
+                            if (transaction.DateTime > targetDateTime)
+                            {
+                                // yes, the claim was opened before targetDateTime and closed after it. This should be included.
+                                includeThisClaim = true;
+                                dateTimeClosed = transaction.DateTime;
+                            }
+                        }
+                    }
+
+                    if (includeThisClaim)
+                    {
+                        outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim, dateTimeClosed));
+                    }
                 }
+
+
+
+                // Finally, get the ledger balance on the targeted DateTime.
+
+                ledgerExpectedCents = balanceAccount.GetDeltaCents(DateTime.MinValue, targetDateTime);
             }
+
+
 
 
             Response.ContentType = "application/json";
-            Response.Output.WriteLine (FormatJson(outstandingAccounts, balanceAmountCents));
+            Response.Output.WriteLine (FormatJson(outstandingAccounts, ledgerExpectedCents));
             Response.End();
         }
 
