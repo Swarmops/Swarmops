@@ -29,7 +29,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     int year = DateTime.Today.Year-1;
                     int firstFiscalYear = CurrentOrganization.FirstFiscalYear;
 
-                    this.DropYears.Items.Add(new ListItem("XYZ Today", "Now"));
+                    this.DropYears.Items.Add(new ListItem(Resources.Global.Global_AsOfNow, "Now"));
 
                     while (year >= firstFiscalYear)
                     {
@@ -49,6 +49,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             this.PageTitle = Resources.Pages.Ledgers.ViewOutstandingAccounts_PageTitle;
             this.InfoBoxLiteral = Resources.Pages.Ledgers.ViewOutstandingAccounts_Info;
+
+            this.LabelViewOutstandingAccountsHeader.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_Header;
+            this.LabelGridHeaderAction.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderAction;
+            this.LabelGridHeaderAmount.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderAmount;
+            this.LabelGridHeaderCreatedDate.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderOpenedDate;
+            this.LabelGridHeaderDescription.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderDescription;
+            this.LabelGridHeaderExpectedCloseDate.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderExpectedCloseDate;
+            this.LabelGridHeaderId.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderId;
+            this.LabelGridHeaderRecipient.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderRecipient;
         }
     }
 }

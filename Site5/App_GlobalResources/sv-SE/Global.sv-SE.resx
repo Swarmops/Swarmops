@@ -279,4 +279,40 @@
     <value>Saker att göra kommer att finnas här.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
   </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Förskott</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>Kontantförskott</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>Utlägg</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>Utläggsanspråk</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>Fakturor</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Inkommande fakturor</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>Fakturor</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Utgående fakturor</value>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>Inte tillämplig</value>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>Just nu</value>
+  </data>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Idag</value>
+  </data>
 </root>
