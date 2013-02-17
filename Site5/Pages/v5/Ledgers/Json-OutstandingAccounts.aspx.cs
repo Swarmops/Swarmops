@@ -34,15 +34,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             balanceAccount = _authenticationData.CurrentOrganization.FinancialAccounts.DebtsExpenseClaims;
 
             ExpenseClaims claims = null;
+            Payouts payouts = null;
             if (renderPresentTime)
             {
                 claims = ExpenseClaims.ForOrganization(_authenticationData.CurrentOrganization);
+                payouts = Payouts.ForOrganization(_authenticationData.CurrentOrganization);
                 balanceAmountCents = balanceAccount.GetDeltaCents(DateTime.MinValue, DateTime.MaxValue); // get ALL transactions
             }
             else
             {
                 // TODO
                 claims = new ExpenseClaims();
+                payouts = new Payouts();
                 balanceAmountCents = balanceAccount.GetDeltaCents(DateTime.MinValue, targetDateTime);
             }
 
@@ -51,6 +54,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             foreach (ExpenseClaim claim in claims)
             {
                 outstandingAccounts.Add((OutstandingAccount) claim);
+            }
+            foreach (Payout payout in payouts)
+            {
+                foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
+                {
+                    outstandingAccounts.Add((OutstandingAccount)claim);
+                }
             }
 
 
@@ -101,13 +111,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             result.Append("},{");
 
-            result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{2:N2}\"",
-                                "Expected", balanceExpectedCents, centsTotal / 100.0);
+            result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
+                                "Expected", balanceExpectedCents / 100.0);
 
             result.Append("},{");
 
-            result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{2:N2}\"",
-                                "Difference", balanceExpectedCents, 0.0);
+            result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
+                                "Difference", (centsTotal - balanceExpectedCents) / 100.0);
 
 
             result.Append("}]}"); // on separate line to suppress warning
