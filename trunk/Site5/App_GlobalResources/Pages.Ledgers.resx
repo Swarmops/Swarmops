@@ -331,10 +331,47 @@
     <value>Upload Bank File</value>
     <comment>Displayed as header above download instructions / upload form</comment>
   </data>
+  <data name="ViewOutstandingAccounts_FooterDifference" xml:space="preserve">
+    <value>Difference</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterLedgerBalance" xml:space="preserve">
+    <value>Ledger Balance</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAction" xml:space="preserve">
+    <value>Action</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderExpectedCloseDate" xml:space="preserve">
+    <value>Exp Close</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderId" xml:space="preserve">
+    <value>ID#</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderOpenedDate" xml:space="preserve">
+    <value>Opened Date</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
+    <value>Recipient</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Header" xml:space="preserve">
+    <value>List Unsettled</value>
+  </data>
   <data name="ViewOutstandingAccounts_Info" xml:space="preserve">
-    <value>This page lets you verify the outstanding accounts (expenses, invoices, cash advances, etc.) at the current point in time or at the time of closing of any previous ledger.</value>
+    <value>This page lets you verify the outstanding and unsettled accounts (expenses, invoices, cash advances, etc.) at the current point in time or at the time of closing of any previous ledger.</value>
   </data>
   <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
-    <value>View Outstanding Accounts</value>
+    <value>List Unsettled Accounts</value>
   </data>
 </root>

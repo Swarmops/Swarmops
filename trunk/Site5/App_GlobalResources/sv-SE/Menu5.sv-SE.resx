@@ -270,6 +270,9 @@
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Ladda Upp Bankfiler</value>
   </data>
+  <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
+    <value>Lista öppen reskontra</value>
+  </data>
   <data name="Menu5_Organization" xml:space="preserve">
     <value>Organisation</value>
   </data>

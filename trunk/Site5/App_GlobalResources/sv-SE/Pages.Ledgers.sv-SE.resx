@@ -256,4 +256,47 @@
   
   
   
+  <data name="ViewOutstandingAccounts_FooterDifference" xml:space="preserve">
+    <value>Skillnad</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterLedgerBalance" xml:space="preserve">
+    <value>Böckernas balans</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterTotal" xml:space="preserve">
+    <value>Summa</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAction" xml:space="preserve">
+    <value>Agera</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
+    <value>Belopp</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
+    <value>Beskrivning</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderExpectedCloseDate" xml:space="preserve">
+    <value>Stängs prel</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderId" xml:space="preserve">
+    <value>Nr</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderOpenedDate" xml:space="preserve">
+    <value>Öppnad</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
+    <value>Mottagare</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Header" xml:space="preserve">
+    <value>Lista öppna</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Info" xml:space="preserve">
+    <value>Denna sida visar utestående och öppen reskontra (utläggsanspråk, fakturor, kontantförskott etc), både i realtid och vid alla tidigare bokslutstillfällen.</value>
+  </data>
+  <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
+    <value>Lista öppen reskontra</value>
+  </data>
 </root>

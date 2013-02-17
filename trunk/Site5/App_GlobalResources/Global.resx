@@ -300,7 +300,7 @@
   <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
     <value>Expense Claims</value>
   </data>
-  <data name="Financial_InbondInvoices" xml:space="preserve">
+  <data name="Financial_InboundInvoices" xml:space="preserve">
     <value>Invoices</value>
   </data>
   <data name="Financial_InboundInvoicesLong" xml:space="preserve">
@@ -317,5 +317,11 @@
   </data>
   <data name="Global_NALong" xml:space="preserve">
     <value>Not Applicable</value>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>As Of Now</value>
+  </data>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Today</value>
   </data>
 </root>
