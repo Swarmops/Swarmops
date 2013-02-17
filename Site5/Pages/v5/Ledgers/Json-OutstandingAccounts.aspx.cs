@@ -112,12 +112,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.Append("},{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
-                                "Expected", balanceExpectedCents / 100.0);
+                                "Expected", -balanceExpectedCents / 100.0);  // Expenses is a debt account, so reverse sign
 
             result.Append("},{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
-                                "Difference", (centsTotal - balanceExpectedCents) / 100.0);
+                                "Difference", (centsTotal + balanceExpectedCents) / 100.0);
 
 
             result.Append("}]}"); // on separate line to suppress warning
