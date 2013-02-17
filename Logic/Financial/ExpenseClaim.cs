@@ -363,6 +363,28 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public Payout Payout
+        {
+            get
+            {
+                if (this.Open)
+                {
+                    return null; // or throw?
+                }
+
+                int payoutId =
+                    SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(this);
+
+                if (payoutId == 0)
+                {
+                    return null; // or throw? When expense claim system was being phased in, payouts did not exist
+                }
+
+                return Payout.FromIdentity(payoutId);
+            }
+        }
+
+
         #region IValidatable Members
 
         public void Validate(Person validator)
