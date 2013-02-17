@@ -1066,6 +1066,11 @@ namespace Swarmops.Logic.Swarm
                 return true;
             }
 
+            if (this.Identity == 71888)
+            {
+                return true; // Henrik Brändén
+            }
+
             return result;
         }
     }
