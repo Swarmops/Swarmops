@@ -196,7 +196,15 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// First bookkeeping year of org in Activizr (can set inbound balances for this year only)
         /// </summary>
-        OrgFirstFiscalYear
+        OrgFirstFiscalYear,
+        /// <summary>
+        /// Temporary mechanism for the Swarmops Red release: a coarse access list (read/write access)
+        /// </summary>
+        OrgTemporaryAccessListWrite,
+        /// <summary>
+        /// Temporary mechanism for the Swarmops Red release: a coarse access list (read-only access)
+        /// </summary>
+        OrgTemporaryAccessListRead
 
     }
 

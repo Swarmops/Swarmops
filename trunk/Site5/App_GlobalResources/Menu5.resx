@@ -234,6 +234,9 @@
   <data name="Menu5_Governance_Vote" xml:space="preserve">
     <value>Vote</value>
   </data>
+  <data name="Menu5_Hacks_TemporaryAccessControl" xml:space="preserve">
+    <value>Set Admin Access (Temporary Page)</value>
+  </data>
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Ledgers</value>
   </data>
