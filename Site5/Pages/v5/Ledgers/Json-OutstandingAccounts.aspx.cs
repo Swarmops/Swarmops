@@ -15,7 +15,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageAccessRequired = new Access(AccessAspect.Financials, AccessType.Read);
+            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Financials, AccessType.Read);
             _authenticationData = GetAuthenticationDataAndCulture();
 
             OutstandingAccountType accountType = OutstandingAccountType.Expenses;
