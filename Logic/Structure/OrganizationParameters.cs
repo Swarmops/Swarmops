@@ -106,6 +106,44 @@ namespace Swarmops.Logic.Structure
             }
         }
 
+        public string TemporaryAccessListRead
+        {
+            get
+            {
+                string accessList = data.GetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListRead);
+
+                if (string.IsNullOrEmpty(accessList))
+                {
+                    accessList = string.Empty;
+                }
+
+                return accessList;
+            }
+            set
+            {
+                data.SetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListRead, value);
+            }
+        }
+
+        public string TemporaryAccessListWrite
+        {
+            get
+            {
+                string accessList = data.GetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListWrite);
+
+                if (string.IsNullOrEmpty(accessList))
+                {
+                    accessList = "1"; // Priming new organizations with the sysadmin account
+                }
+
+                return accessList;
+            }
+            set
+            {
+                data.SetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListWrite, value);
+            }
+        }
+
         private ObjectOptionalData data;
         private Organization organization;
     }

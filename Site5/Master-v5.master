@@ -230,6 +230,10 @@
                                 <telerik:RadMenuItem runat="server" Text="XYZ Press Releases" Permission="PressReleases:Write" UserLevel="3" GlobalResourceKey="Menu5_Organization_Feeds_PressReleases" />
                             </Items>
                         </telerik:RadMenuItem>
+
+                        <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
+                        <telerik:RadMenuItem runat="server" Text="Temporary Access Control" NavigateUrl="~/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx" ImageUrl="~/Images/PageIcons/iconshock-battery-drill-16px.png" Permission="EconomyDetail:Write" UserLevel="3" GlobalResourceKey="Menu5_Hacks_TemporaryAccessControl" />
+
                     </Items>
                 </telerik:RadMenuItem>
                 <telerik:RadMenuItem runat="server" Text="XYZ Admin" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration">
