@@ -1040,38 +1040,34 @@ namespace Swarmops.Logic.Swarm
                 return true;
             }
 
-            bool result = false;
+            // TEMPORARY access control lists
 
             // TODO: Build access control list from org chart, compare against required access
 
-            // For now, return true if Anna, Janne, or Rick. Bad hack, bad, really bad.
+            string ids = string.Empty;
 
-            if (this.Identity == 1)
+            if (access.Type == AccessType.Write)
             {
-                return true;
+                ids = access.Organization.Parameters.TemporaryAccessListWrite;
+            }
+            else if (access.Type == AccessType.Read)
+            {
+                ids = access.Organization.Parameters.TemporaryAccessListWrite + " " + access.Organization.Parameters.TemporaryAccessListRead; // Write access implies read access
             }
 
-            if (this.Identity == 11443)
+
+            List<string> resultingPeople = new List<string>();
+            string[] idStrings = ids.Trim().Replace("  ", " ").Split(' ');
+
+            foreach (string idString in idStrings)
             {
-                return true;
+                if (Int32.Parse(idString) == this.Identity)
+                {
+                    return true;
+                }
             }
 
-            if (this.Identity == 378)
-            {
-                return true;
-            }
-
-            if (this.Identity == 15719)
-            {
-                return true;
-            }
-
-            if (this.Identity == 71888)
-            {
-                return true; // Henrik Brändén
-            }
-
-            return result;
+            return false;
         }
     }
 }

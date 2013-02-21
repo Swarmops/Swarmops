@@ -21,7 +21,7 @@ namespace Swarmops.Frontend.Pages.Financial
         {
             // Access required is change access to financials
 
-            this.PageAccessRequired = new Access(AccessAspect.Financials, AccessType.Write);
+            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Financials, AccessType.Write);
 
             // Get all payable items
 
