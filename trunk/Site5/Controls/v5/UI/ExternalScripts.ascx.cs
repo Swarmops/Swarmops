@@ -28,6 +28,10 @@ namespace Swarmops.Frontend.Controls.v5.UI
                                         "/easyui/themes/icon.css\" />";
                 this.LiteralReference3.Text = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + externalScriptUrl +
                                         "/easyui/themes/default/" + this.Control + ".css\" />";
+                this.LiteralReference4.Text = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + externalScriptUrl +
+                                        "/easyui/themes/default/datagrid.css\" />";
+                this.LiteralReference5.Text = "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + externalScriptUrl +
+                                        "/easyui/themes/default/tree.css\" />";
             }
         }
 
