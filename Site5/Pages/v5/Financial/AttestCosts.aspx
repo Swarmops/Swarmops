@@ -2,7 +2,7 @@
 <%@ Register src="~/Controls/v5/UI/ExternalScripts.ascx" tagname="ExternalScripts" tagprefix="Swarmops5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-    <Swarmops5:ExternalScripts Package="easyui" Control="datagrid" runat="server" />
+    <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="datagrid" runat="server" />
     
     <script type="text/javascript">
         function preload(arrayOfImages) {
