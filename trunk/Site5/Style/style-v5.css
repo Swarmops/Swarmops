@@ -555,6 +555,8 @@ span.loginalphabetasign
 	padding-top: 16px;
 	padding-left: 15px;
 	font-weight: 300;
+	white-space: nowrap;
+	overflow-x: hidden;
 }
 
 .content .entryLabels h2 
@@ -581,6 +583,8 @@ span.loginalphabetasign
 	line-height: 30px;
 	float: left;
 	width: 100px;
+	white-space: nowrap;
+	overflow-x: hidden;
 }
 
 .entryFieldsAdmin
