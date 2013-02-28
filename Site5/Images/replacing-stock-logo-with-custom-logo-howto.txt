@@ -1,0 +1,14 @@
+﻿REPLACING STOCK SWARMOPS LOGO WITH CUSTOM LOGO
+
+In this folder, you will see a file named "Logo-Stock.png". That is the
+logo displayed at the top left of every Swarmops page. Changing this
+file directly has no persistent effect, as it will be replaced on every
+minor update (usually weekly).
+
+If you wish another image to be displayed, place a file named
+"Logo-Custom.png" in this folder, and it will be used instead.
+
+You can make it taller than the Logo-Stock image, in case you want
+a specific element of your logo to partially cover the menu for
+graphic effect. The logo image is above the menu background, but
+below the menu text.
