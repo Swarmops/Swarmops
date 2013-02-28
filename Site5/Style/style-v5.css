@@ -133,6 +133,11 @@ div.currentuserinfo
 }
 
 
+img 
+{
+    border: none;  /* override the blue-border-on-link behavior */
+}
+
 
 .searchbox
 {

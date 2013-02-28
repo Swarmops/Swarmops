@@ -114,7 +114,7 @@
             <div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div>
             <asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /> <asp:LinkButton ID="LinkTranslate" Visible="false" Text="Translate Into" OnClick="LinkTranslate_Click" runat="server" />
 	    </div>
-        <div class="logoimage"><a href="/"><img style="border:none" src="/Images/Logo-Custom.png" alt="System Logo" /></a></div>
+        <div class="logoimage"><a href="/"><asp:Image runat="server" ID="ImageLogo" AlternateText="Swarmops Logo"/></a></div>
         <div class="break"></div>
         <div class="topmenu">
             <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>

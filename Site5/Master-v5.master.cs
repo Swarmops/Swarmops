@@ -46,9 +46,17 @@ namespace Swarmops
 
             this.IconPage.ImageUrl = "/Images/PageIcons/" + this.CurrentPageIcon + "-40px.png";
             this.LabelPageTitle.Text = this.CurrentPageTitle;
-            this.Page.Title = "Activizr - " + this.CurrentPageTitle;
+            this.Page.Title = "Swarmops - " + this.CurrentPageTitle;
 
             this.LiteralSidebarInfo.Text = this.CurrentPageInfoBoxLiteral;
+
+            // Set logo image. If custom image is installed, use it instead.
+
+            this.ImageLogo.ImageUrl = "~/Images/Logo-Stock.png";
+            if (File.Exists(Server.MapPath("~/Images/Logo-Custom.png")))
+            {
+                this.ImageLogo.ImageUrl = "~/Images/Logo-Custom.png";
+            }
 
             // Check for SSL and force it
 
