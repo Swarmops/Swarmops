@@ -8,7 +8,7 @@
     <p>This system, <em>Swarmops,</em> is under heavy (re)construction. It has been the admin mainstay of the Swedish Pirate Party for six years, and is being generalized to encompass any organization.</p>
     <p>What you see here is the new interface being rewritten on top of the already-running engine. It runs on Debian/Ubuntu servers for frontend and backend.</p>
     <p>This notice will be replaced with a proper Dashboard when all the basic functions are in place. You can see functions appear as they are implemented in the menu.</p>
-    <p>A rough roadmap says that basic financials are implemented first, then member registry functions, then communications, then responsibilities, then governance. For more on the specific roadmap, go to the <a href="http://scrum.pirateadacemy.eu/">SCRUM planning</a> for Swarmops.</p>
+    <p>A rough roadmap says that basic financials are implemented first, then member registry functions, then communications, then responsibilities, then governance. For more on the specific roadmap, go to the <a href="http://scrum.pirateacademy.eu/">SCRUM planning</a> for Swarmops.</p>
 </asp:Content>
 
 
