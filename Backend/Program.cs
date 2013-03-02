@@ -26,6 +26,9 @@ namespace Swarmops.Backend
 {
     internal class Program
     {
+        private const string swarmopsExitFlagFile = "./swarmops-backend-exit.flag";
+        private const string heartbeatFile = "/var/run/swarmops-backend/heartbeat.txt";
+
         private static void Main (string[] args)
         {
             testMode = false;
@@ -39,9 +42,9 @@ namespace Swarmops.Backend
             if (args.Length > 0)
             {
                 if (args[0].ToLower() == "test")
-                {
+                {/*
                     BotLog.Write(0, "MainCycle", "Running self-tests");
-                    HeartBeater.Instance.Beat("/var/run/piratebot/heartbeat.txt");  // Otherwise Heartbeater.Beat() will fail in various places
+                    HeartBeater.Instance.Beat(heartbeatFile);  // Otherwise Heartbeater.Beat() will fail in various places
 
                     testMode = true;
                     Console.WriteLine("Testing All Maintenance Processes (except membership-changing ones).");
@@ -59,7 +62,7 @@ namespace Swarmops.Backend
                     OnNoon();
                     Console.WriteLine("\r\nMidnight:");
                     OnMidnight();
-
+                    */
                     Console.Write("\r\nAll tests run. Waiting for mail queue to flush... ");
                     while (!MailTransmitter.CanExit)
                     {
@@ -73,7 +76,7 @@ namespace Swarmops.Backend
 
                 if (args[0].ToLower() == "console")
                 {
-                    Console.WriteLine("\r\nRunning PirateBot-Mono in CONSOLE mode.\r\n");
+                    Console.WriteLine("\r\nRunning Swarmops-Backend in CONSOLE mode.\r\n");
 
                     // -------------------------------------------------------------------------------------
                     // -------------------------------------------------------------------------------------
@@ -81,34 +84,7 @@ namespace Swarmops.Backend
 
                     // -----------------------    INSERT ANY ONE-OFF ACTIONS HERE  -------------------------
 
-                    Console.WriteLine("Calling closure of 2010 books.");
-
-                    OneOffs.CloseBooksForYear(2010);
-
-                    /*
-                    PWEvents.CreateEvent(EventSource.PirateBot, EventType.ParleyCancelled, 1, 1, 1, 1, 1, string.Empty);
-                    PWEvents.CreateEvent(EventSource.PirateBot, EventType.ParleyCancelled, 1, 1, 1, 1, 4, string.Empty);
-                    PWEvents.CreateEvent(EventSource.PirateBot, EventType.ParleyCancelled, 1, 1, 1, 1, 5, string.Empty);*/
-
-                    // PirateWeb.Utility.BotCode.ActivityMailer.Run();
-
-                    // PirateWeb.Utility.BotCode.RosterHousekeeping.RemindExpiriesMail();
-
-                    // OneOffs.FixOutboundInvoices();
-
-                    // OneOffs.SmsMembersOnElectionDay2010();
-
-                    // OneOffs.RepairFinancials();
-
-                    // Console.WriteLine("Entering RemindExpiriesMail()");
-                    // PirateWeb.Utility.BotCode.RosterHousekeeping.RemindExpiriesMail();
-
-                    // OneOffs.CarryOver2010LocalBudgets();
-
-                    // -------------------------------------------------------------------------------------
-                    // -------------------------------------------------------------------------------------
-                    // -------------------------------------------------------------------------------------
-
+                    
                     Console.Write("\r\nWaiting for mail queue to flush... ");
 
                     while (!MailTransmitter.CanExit)
@@ -123,7 +99,7 @@ namespace Swarmops.Backend
 
                 if (args[0].ToLower() == "rsm")
                 {
-                    Console.WriteLine("räksmörgås RÄKSMÖRGÅS");
+                    Console.WriteLine("Testing character encoding: räksmörgås RÄKSMÖRGÅS");
                     return;
                 }
             }
@@ -141,28 +117,16 @@ namespace Swarmops.Backend
             smtpClient.Credentials = null; // mono bug
             smtpClient.Send (message);*/
 
-            Console.WriteLine(" * PirateBot-Lamp starting");
+            Console.WriteLine(" * Swarmops Backend starting");
 
-            HeartBeater.Instance.Beat("/var/run/piratebot/heartbeat.txt");
+            HeartBeater.Instance.Beat(heartbeatFile);
 
-            if (File.Exists("./piratebotexit.flag"))
+            if (File.Exists(swarmopsExitFlagFile))
             {
-                File.Delete("./piratebotexit.flag");
+                File.Delete(swarmopsExitFlagFile);
             }
 
-            //to debug automatic restart: (Hang here)
-            if (File.Exists("./lock_the_shit")) { while (true) Thread.Sleep(1000); }
-
-            BotLog.Write(0, "MainCycle", "BOT STARTING, sending botstart notices");
-
-            MailTransmitter statusMail = new MailTransmitter
-                ("PirateWeb-L", "noreply@pirateweb.net", "PirateBot-L starting", string.Empty, Person.FromIdentity(1));
-            statusMail.Send();
-
-            Person.FromIdentity(1).SendOfficerNotice("PirateBot-L active & operational",
-                                                     "PirateBot Lamp - all systems are operational", 1);
-
-            BotLog.Write(0, "MainCycle", "...done");
+            BotLog.Write(0, "MainCycle", "Backend STARTING");
 
             DateTime cycleStartTime = DateTime.Now;
 
@@ -171,7 +135,7 @@ namespace Swarmops.Backend
             int lastHour = cycleStartTime.Hour;
 
 
-            while (!File.Exists("./piratebotexit.flag"))
+            while (!File.Exists(swarmopsExitFlagFile))
             {
                 BotLog.Write(0, "MainCycle", "Cycle Start");
 
@@ -215,9 +179,11 @@ namespace Swarmops.Backend
 
                 catch (Exception e)
                 {
-                    //Note each "OnEvery..." catches its own errors and sends Exception mail now.
-                    //so that failure in one should not stop the others from running.
-                    ExceptionMail.Send(new Exception("Failed in bot main loop", e), true);
+                    // Note each "OnEvery..." catches its own errors and sends Exception mails,
+                    // so that failure in one should not stop the others from running. This particular
+                    // code should never run.
+
+                    ExceptionMail.Send(new Exception("Failed in swarmops-backend main loop", e), true);
                 }
 
                 lastSecond = cycleStartTime.Second;
@@ -226,25 +192,21 @@ namespace Swarmops.Backend
 
                 // Wait for a maximum of ten seconds
 
-                while (DateTime.Now < cycleStartTime.AddSeconds(10) && !File.Exists("./piratebotexit.flag"))
+                while (DateTime.Now < cycleStartTime.AddSeconds(10) && !File.Exists(swarmopsExitFlagFile))
                 {
                     Thread.Sleep(200);
                 }
             }
 
-            Console.WriteLine(" * PirateBot-Lamp stopping");
-            BotLog.Write(0, "MainCycle", "BOT EXITING, sending bot-termination notices");
+            Console.WriteLine(" * Swarmops Backend stopping");
+            BotLog.Write(0, "MainCycle", "BACKEND EXITING, sending backend-termination notices");
 
             if (HeartBeater.Instance.WasKilled)
             {
-                File.Delete("./piratebotexit.flag");
-                // removed unconditional delete, cron jobb that restarts bot uses it to know that it is intentionally down.
-                ExceptionMail.Send(new Exception("HeartBeater triggered restart of MonoBot. Will commence after 800 seconds."), false);
+                File.Delete(swarmopsExitFlagFile);
+                // removed unconditional delete, cron job that restarts bot uses it to know that it is intentionally down.
+                ExceptionMail.Send(new Exception("HeartBeater triggered restart of Swarmops Backend. Will commence after 800 seconds."), false);
             }
-
-            statusMail = new MailTransmitter
-                ("PirateWeb-L", "noreply@pirateweb.net", "PirateBot-L exiting", string.Empty, Person.FromIdentity(1));
-            statusMail.Send();
 
             BotLog.Write(0, "MainCycle", "...done");
 
@@ -264,9 +226,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running EventProcessor.Run()...");
+                    /*TestTrace("Running EventProcessor.Run()...");
                     EventProcessor.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -275,9 +237,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running MailResolver.Run()...");
+                    /*TestTrace("Running MailResolver.Run()...");
                     MailResolver.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -286,9 +248,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running MailProcessor.Run()...");
+                    /*TestTrace("Running MailProcessor.Run()...");
                     MailProcessor.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -326,10 +288,10 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    BotLog.Write(1, "FiveMinute", "Starting press release checker");
+                    /*BotLog.Write(1, "FiveMinute", "Starting press release checker");
                     TestTrace("Running PressReleaseChecker.Run()...");
                     PressReleaseChecker.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -338,10 +300,10 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    BotLog.Write(1, "FiveMinute", "Starting newsletter checker");
+                    /*BotLog.Write(1, "FiveMinute", "Starting newsletter checker");
                     TestTrace("Running NewsletterChecker.Run()...");
                     NewsletterChecker.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -350,10 +312,10 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    BotLog.Write(1, "FiveMinute", "Starting turnaround tracker");
+                    /*BotLog.Write(1, "FiveMinute", "Starting turnaround tracker");
                     TestTrace("Running TurnaroundTracker.Run()...");
                     TurnaroundTracker.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -378,10 +340,10 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    BotLog.Write(1, "FiveMinute", "Closing delay warnings");
+                    /*BotLog.Write(1, "FiveMinute", "Closing delay warnings");
                     TestTrace("Running SupportDatabase.CloseDelayWarnings()...");
                     SupportDatabase.CloseDelayWarnings();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -390,10 +352,10 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running SupportDatabase.NotifyBouncingEmails()...");
+                    /*TestTrace("Running SupportDatabase.NotifyBouncingEmails()...");
                     BotLog.Write(1, "FiveMinute", "Notifying bouncing emails");
                     SupportDatabase.NotifyBouncingEmails();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -402,10 +364,10 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running SupportMailReview.Run()...");
+                    /*TestTrace("Running SupportMailReview.Run()...");
                     BotLog.Write(1, "FiveMinute", "Running support mail review");
                     SupportMailReview.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -432,9 +394,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running BlogWatcher.Run()...");
+                    /*TestTrace("Running BlogWatcher.Run()...");
                     BlogWatcher.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -443,9 +405,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running MediaWatcher.Run()...");
+                    /*TestTrace("Running MediaWatcher.Run()...");
                     MediaWatcher.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -454,9 +416,9 @@ namespace Swarmops.Backend
                 
                 try
                 {
-                    TestTrace("Running PaymentGroupMapper.Run()...");
+                    /*TestTrace("Running PaymentGroupMapper.Run()...");
                     PaymentGroupMapper.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -465,9 +427,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running BlogTop50Scraper.Run()...");
+                    /*TestTrace("Running BlogTop50Scraper.Run()...");
                     BlogTop50Scraper.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -476,9 +438,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running Mappery.CreatePiratpartietOrganizationStrengthCircuitMap()...");
+                    /*TestTrace("Running Mappery.CreatePiratpartietOrganizationStrengthCircuitMap()...");
                     Mappery.CreatePiratpartietOrganizationStrengthCircuitMap();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -487,24 +449,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running Mappery.CreatePiratpartietOrganizationStrengthCityMap()...");
+                    /*TestTrace("Running Mappery.CreatePiratpartietOrganizationStrengthCityMap()...");
                     Mappery.CreatePiratpartietOrganizationStrengthCityMap();
-                    TestTrace(" done.\r\n");
-                }
-                catch (Exception e)
-                {
-                    TraceAndReport(e);
-                }
-
-                try
-                {
-                    //run once a month at the 25:th at 5 o'clock in the morning
-                    if (startTime.Day == 25 && startTime.Hour == 5 && startTime.Minute < 50)
-                    {
-                        TestTrace("Running RosterHousekeeping.RemindChangeOrg()...");
-                        RosterHousekeeping.RemindChangeOrg();
-                        TestTrace(" done.\r\n");
-                    }
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -529,9 +476,9 @@ namespace Swarmops.Backend
                 {
                     if (!testMode)
                     {
-                        TestTrace("Running RosterHousekeeping.ChurnExpiredMembers()...");
+                        /*TestTrace("Running RosterHousekeeping.ChurnExpiredMembers()...");
                         RosterHousekeeping.ChurnExpiredMembers();
-                        TestTrace(" done.\r\n");
+                        TestTrace(" done.\r\n");*/
                     }
                 }
                 catch (Exception e)
@@ -541,9 +488,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running InternalPollMaintenance.Run()...");
+                    /*TestTrace("Running InternalPollMaintenance.Run()...");
                     InternalPollMaintenance.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -552,9 +499,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running SwedishForumMemberCheck.Run()...");
+                    /*TestTrace("Running SwedishForumMemberCheck.Run()...");
                     SwedishForumMemberCheck.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -563,9 +510,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running SalaryProcessor.Run()...");
+                    /*TestTrace("Running SalaryProcessor.Run()...");
                     SalaryProcessor.Run();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -574,9 +521,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running TurnaroundTracker.Housekeeping()...");
+                    /*TestTrace("Running TurnaroundTracker.Housekeeping()...");
                     TurnaroundTracker.Housekeeping();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -585,9 +532,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running Mappery.CreateUngPiratUptakeMap()...");
+                    /*TestTrace("Running Mappery.CreateUngPiratUptakeMap()...");
                     Mappery.CreateUngPiratUptakeMap();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -596,9 +543,9 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    TestTrace("Running RosterHousekeeping.TimeoutVolunteers()...");
+                    /*TestTrace("Running RosterHousekeeping.TimeoutVolunteers()...");
                     RosterHousekeeping.TimeoutVolunteers();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
                 catch (Exception e)
                 {
@@ -622,9 +569,9 @@ namespace Swarmops.Backend
             {
                 if (!testMode)
                 {
-                    TestTrace("Running RosterHousekeeping.RemindAllExpiries()...");
+                    /*TestTrace("Running RosterHousekeeping.RemindAllExpiries()...");
                     RosterHousekeeping.RemindAllExpiries();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
             }
             catch (Exception e)
@@ -636,9 +583,9 @@ namespace Swarmops.Backend
             {
                 if (!testMode)
                 {
-                    TestTrace("Running SupportDatabase.NotifyBouncingEmails()...");
+                    /*TestTrace("Running SupportDatabase.NotifyBouncingEmails()...");
                     SupportDatabase.NotifyBouncingEmails();
-                    TestTrace(" done.\r\n");
+                    TestTrace(" done.\r\n");*/
                 }
 
             }
@@ -649,9 +596,9 @@ namespace Swarmops.Backend
 
             try
             {
-                TestTrace("Running SupportDatabase.CloseDelayWarnings()...");
+                /*TestTrace("Running SupportDatabase.CloseDelayWarnings()...");
                 SupportDatabase.CloseDelayWarnings();
-                TestTrace(" done.\r\n");
+                TestTrace(" done.\r\n");*/
             }
             catch (Exception e)
             {
@@ -660,9 +607,9 @@ namespace Swarmops.Backend
 
             try
             {
-                TestTrace("Running SupportMailReview.Run()...");
+                /*TestTrace("Running SupportMailReview.Run()...");
                 SupportMailReview.Run();
-                TestTrace(" done.\r\n");
+                TestTrace(" done.\r\n");*/
             }
             catch (Exception e)
             {
@@ -706,24 +653,6 @@ namespace Swarmops.Backend
             }
         }
 
-
-        private static void TranslateUrls ()
-        {
-            string[] untranslatedUrls = UrlTranslations.GetUntranslated(20);
-
-            foreach (string url in untranslatedUrls)
-            {
-                try
-                {
-                    string newUrl = UrlTranslator.Translate(url);
-                    UrlTranslations.Set(url, newUrl);
-                }
-                catch (Exception e)
-                {
-                    ExceptionMail.Send(new Exception("Tried to translate URL " + url, e));
-                }
-            }
-        }
 
         private static bool testMode;
     }
