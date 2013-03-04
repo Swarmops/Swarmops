@@ -31,7 +31,19 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced(this.CurrentOrganization); // TODO: this fn should move to Organization
 
-        if (unbalancedTransactions.Count > 0)
+        int closingYear = this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear + 1;
+
+        bool hasOpenTxForClosingYear = false;
+
+        foreach (FinancialTransaction unbalancedTransaction in unbalancedTransactions)
+        {
+            if (unbalancedTransaction.DateTime.Year <= closingYear)
+            {
+                hasOpenTxForClosingYear = true;
+            }
+        }
+
+        if (hasOpenTxForClosingYear)
         {
             this.PanelCannotClose.Visible = true;
             this.PanelSuccess.Visible = false;
@@ -40,7 +52,6 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // Start actually closing the ledgers
 
-        int closingYear = this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear + 1;
 
         // First, roll over virtual balances.
 
