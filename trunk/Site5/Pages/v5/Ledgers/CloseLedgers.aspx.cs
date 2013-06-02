@@ -36,7 +36,7 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
         bool hasOpenTxForClosingYear = false;
 
         foreach (FinancialTransaction unbalancedTransaction in unbalancedTransactions)
-        {
+        { 
             if (unbalancedTransaction.DateTime.Year <= closingYear)
             {
                 hasOpenTxForClosingYear = true;
