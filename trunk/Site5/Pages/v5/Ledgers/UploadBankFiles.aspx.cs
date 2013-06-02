@@ -861,7 +861,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 string[] parts = line.Split('\t');
 
                 if (parts.Length < 30)
-                {
+                { 
                     continue;
                 }
 
