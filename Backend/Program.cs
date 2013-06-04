@@ -22,18 +22,24 @@ using Swarmops.Utility.Mail;
 using Swarmops.Utility.Special;
 using Swarmops.Utility.Special.Sweden;
 
+using Mono.Unix;
+using Mono.Unix.Native;
+
+
 namespace Swarmops.Backend
 {
     internal class Program
     {
-        private const string swarmopsExitFlagFile = "./swarmops-backend-exit.flag";
         private const string heartbeatFile = "/var/run/swarmops-backend/heartbeat.txt";
 
         private static void Main (string[] args)
         {
             testMode = false;
 
-
+            UnixSignal[] killSignals = new UnixSignal[]{
+                new UnixSignal (Signum.SIGINT),
+                new UnixSignal (Signum.SIGTERM),
+            };
 
             BotLog.Write(0, "MainCycle", string.Empty);
             BotLog.Write(0, "MainCycle", "-----------------------------------------------");
@@ -121,11 +127,6 @@ namespace Swarmops.Backend
 
             HeartBeater.Instance.Beat(heartbeatFile);
 
-            if (File.Exists(swarmopsExitFlagFile))
-            {
-                File.Delete(swarmopsExitFlagFile);
-            }
-
             BotLog.Write(0, "MainCycle", "Backend STARTING");
 
             DateTime cycleStartTime = DateTime.Now;
@@ -134,8 +135,9 @@ namespace Swarmops.Backend
             int lastMinute = cycleStartTime.Minute;
             int lastHour = cycleStartTime.Hour;
 
+            bool exitFlag = false;
 
-            while (!File.Exists(swarmopsExitFlagFile))
+            while (!exitFlag)  // exit is handled by signals handling at end of loop
             {
                 BotLog.Write(0, "MainCycle", "Cycle Start");
 
@@ -192,9 +194,15 @@ namespace Swarmops.Backend
 
                 // Wait for a maximum of ten seconds
 
-                while (DateTime.Now < cycleStartTime.AddSeconds(10) && !File.Exists(swarmopsExitFlagFile))
+                while (DateTime.Now < cycleStartTime.AddSeconds(10) && !exitFlag)
                 {
-                    Thread.Sleep(200);
+                    // block until a SIGINT or SIGTERM signal is generated, or one second has passed.
+                    int signalIndex = UnixSignal.WaitAny(killSignals, 1000);
+
+                    if (signalIndex < 1000)
+                    {
+                        exitFlag = true;
+                    }
                 }
             }
 
@@ -203,7 +211,6 @@ namespace Swarmops.Backend
 
             if (HeartBeater.Instance.WasKilled)
             {
-                File.Delete(swarmopsExitFlagFile);
                 // removed unconditional delete, cron job that restarts bot uses it to know that it is intentionally down.
                 ExceptionMail.Send(new Exception("HeartBeater triggered restart of Swarmops Backend. Will commence after 800 seconds."), false);
             }
