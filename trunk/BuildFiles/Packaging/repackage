@@ -49,13 +49,13 @@ cd debian
 echo "Removing previous package files..."
 rm -rf opt/swarmops/*
 
+if [ -d etc ]; then
+  rm -rf etc
+fi
+
 echo "Copying payload files into repo..."
 mkdir -p opt/swarmops/$TARGETDIR
 cp -R $SOURCEDIR/* opt/swarmops/$TARGETDIR/.
-
-if [ -d etc ]
-  rm -rf etc
-fi
 
 if [ -d $SOURCEDIR/etcinitd ]; then
   echo "Adding /etc/init.d files..."
