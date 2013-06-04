@@ -49,9 +49,20 @@ cd debian
 echo "Removing previous package files..."
 rm -rf opt/swarmops/*
 
-echo "Copying new files into repo..."
+echo "Copying payload files into repo..."
 mkdir -p opt/swarmops/$TARGETDIR
 cp -R $SOURCEDIR/* opt/swarmops/$TARGETDIR/.
+
+if [ -d etc ]
+  rm -rf etc
+fi
+
+if [ -d $SOURCEDIR/etcinitd ]; then
+  echo "Adding /etc/init.d files..."
+  mkdir etc
+  mkdir etc/init.d
+  cp $SOURCEDIR/etcinitd/* etc/init.d/.
+fi
 
 echo "Copying template files into repo..."
 if [ "$INCLUDEDB" == "yes" ]; then
@@ -88,7 +99,7 @@ echo "Creating MD5 checksum file..."
 
 echo "Creating package 'swarmops-$PACKAGENAME-latest.deb'..."
 cd ..
-if [ -a swarmops-$PACKAGENAME-latest.deb ]; then
+if [ -e swarmops-$PACKAGENAME-latest.deb ]; then
   rm swarmops-$PACKAGENAME-latest.deb
 fi
 fakeroot dpkg-deb --build debian
@@ -99,8 +110,8 @@ echo "Updating repositories..."
 scripts/update-repos swarmops-$PACKAGENAME-latest.deb
 
 #echo "Notifying developers that new build has deployed for test..."
-#echo "Swarmops frontend STABLE build $(cat debian-stable/opt/swarmops/frontend/BuildIdentity.txt | tr -d ' \r') has been deployed as daily build." > deploymsg.txt
+#echo "Swarmops $PACKAGENAME build $(cat debian-stable/opt/swarmops/frontend/BuildIdentity.txt | tr -d ' \r') has been deployed as daily build." > deploymsg.txt
 #echo "Test it at http://dev.swarmops.com/ as usual." >> deploymsg.txt
-#mail -s "Swarmops frontend STABLE $(cat debian-stable/opt/swarmops/frontend/BuildIdentity.txt)deployed as daily" "swarmops-builds@falkvinge.net" < deploymsg.txt
+#mail -s "Swarmops $PACKAGENAME $(cat debian-stable/opt/swarmops/frontend/BuildIdentity.txt)deployed as daily" "swarmops-builds@falkvinge.net" < deploymsg.txt
 rm deploymsg.txt
 
