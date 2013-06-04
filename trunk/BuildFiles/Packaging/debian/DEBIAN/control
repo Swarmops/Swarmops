@@ -1,5 +1,5 @@
 Package: swarmops-frontend-internal
-Version: 5.0.56.381
+Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
 Depends: apache2 (>= 2.2.20), mono-apache-server2 (>= 2.10-1), libapache2-mod-mono (>= 2.10-1)
