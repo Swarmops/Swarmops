@@ -75,16 +75,17 @@ if [ -e "../templates/prerm-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE prerm script..."
   cp ../templates/prerm-$PACKAGE.template DEBIAN/prerm
 else
-  if [ -e "DEBIAN/prerm" ]
+  if [ -e "DEBIAN/prerm" ]; then
     echo "Deleting old prerm script..."
     rm DEBIAN/prerm
   fi
 fi
+
 if [ -e "../templates/postinst-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE postinst script..."
   cp ../templates/postinst-$PACKAGE.template DEBIAN/postinst
 else
-  if [ -e "DEBIAN/postinst" ]
+  if [ -e "DEBIAN/postinst" ]; then
     echo "Deleting old postinst script..."
     rm DEBIAN/postinst
   fi
