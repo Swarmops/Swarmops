@@ -1,3 +1,4 @@
+d9167370ebe709728c04d665dffe1dc4  opt/.svn/entries
 860ea3b7e98d3acf91cfd182c031a446  opt/swarmops/frontend/Style/v5-easyui-elements.css
 b147fe38ee2c149ac020a7d05b13ac2c  opt/swarmops/frontend/Style/jquery.qtip.css
 ed50d41b9f105ed52c3a3e9d4426fc4c  opt/swarmops/frontend/Style/alertify.css
@@ -16,7 +17,7 @@ bf0f6c9157f04f08ca104cd7e95e6d60  opt/swarmops/frontend/Style/Images/activizr-we
 aab8b6adf04b933dead7a38b2db8f83f  opt/swarmops/frontend/bin/MightyLittleGeodesy.dll
 5ab1220d084ed8761ed86c14f177d802  opt/swarmops/frontend/bin/Activizr.Basic.dll
 5c3da6d0212c506221bd704e30962359  opt/swarmops/frontend/bin/Activizr.Logic.dll
-5f2b5918913e791808c5aea206cb9fec  opt/swarmops/frontend/bin/Activizr.Site.dll
+f93001ee80f1cc8c1b2f8cfd405212de  opt/swarmops/frontend/bin/Activizr.Site.dll
 d49b3d183a32d2a48626d6648f9fb16e  opt/swarmops/frontend/bin/App_global.asax.compiled
 2893d1c317e665475ed98ea918884812  opt/swarmops/frontend/bin/Telerik.Web.UI.xml
 2ffb0d36e621bfabf3382afb8ac5e2b7  opt/swarmops/frontend/bin/HtmlAgilityPack.dll
@@ -24,7 +25,7 @@ d9bfbe6da479c0feed2a73c08cfeead5  opt/swarmops/frontend/bin/fi-FI/Activizr.Logic
 f53d634c7f8cc48c56d038c265eb1740  opt/swarmops/frontend/bin/Activizr.Interface.dll
 345e0ddbb5e41bb97ceca2ee0b3b56bd  opt/swarmops/frontend/bin/Activizr.Database.dll
 50745af4e1fa7da1fd7293eac689de49  opt/swarmops/frontend/bin/sv-SE/Activizr.Logic.resources.dll
-178a3fe638c71f0e07f01f7a8954772b  opt/swarmops/frontend/bin/sv-SE/Activizr.Site.resources.dll
+e0c20a12a9144d7ba2fe69e775d0fcff  opt/swarmops/frontend/bin/sv-SE/Activizr.Site.resources.dll
 77263bd86a1df3af346e1360a36a7b6c  opt/swarmops/frontend/bin/App_GlobalResources.compiled
 053a3687c6305fd84861f513656963e9  opt/swarmops/frontend/bin/Starksoft.Cryptography.OpenPGP.xml
 67e66daf1f30c76b667bba4539078ed4  opt/swarmops/frontend/vwd.webinfo
@@ -401,7 +402,7 @@ acba9c908c29db8aa890b6a20265ac22  opt/swarmops/frontend/Images/Flags/gn.png
 8efc55a14b900c47f4b920c4510f192f  opt/swarmops/frontend/Images/Flags/cx.png
 12da850e724de5ff779572bbdb8ded71  opt/swarmops/frontend/Images/Flags/gh.png
 d744f3150e2c35c2422eba0abae4940a  opt/swarmops/frontend/machineKey.config
-7fb1b37d7f87f5028c3b6f138514e472  opt/swarmops/frontend/BuildIdentity.txt
+f84766410b8a6402fb66dd5222c85fc8  opt/swarmops/frontend/BuildIdentity.txt
 0c5c0dc42ebda9b6c321becc9920770d  opt/swarmops/frontend/Default.aspx
 7e16ea742e76a4a23a8ff15e51711538  opt/swarmops/frontend/Master-v5.master
 61cc6d060aeeb9ceee6e93638700b38f  opt/swarmops/frontend/PrecompiledApp.config
@@ -455,3 +456,5 @@ b198b9262f90a310327276ddc66fbfd1  opt/swarmops/frontend/Pages/v5/Financial/Json-
 dc96fae8f13bf3e4a24e267a818708d5  opt/swarmops/frontend/Pages/v5/Init/WizardStyle.css
 20a08d70c1a23d36289ca6f2f3853f30  opt/swarmops/frontend/Pages/v5/Init/web.config
 49513a53fe85d4b5d643f42e3a8cf71c  opt/swarmops/frontend/Pages/v5/Init/Default.aspx
+168dc4dd2d5b2b36d8d6d398e2b124a3  opt/swarmops/.svn/entries
+71b08f2b5cc9bc2d4534832af8c8bce6  .svn/entries
