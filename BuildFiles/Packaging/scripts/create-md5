@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Deleting temporary files
+for file in `find . -name "*~"`
+do
+        rm $file
+done
+
+# Calculating new checksums
+md5sum `find . -type f` > DEBIAN/md5sums
+
+# Deleting strings with DEBIAN substring
+sed -e '/DEBIAN/d' -e 's/\.\///g' DEBIAN/md5sums > temp
+cp temp DEBIAN/md5sums
+rm temp
+

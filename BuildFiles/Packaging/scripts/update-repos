@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd /home/prod/Smallwebs/Activizr-repo/
+reprepro includedeb squeeze $1
+mv $1 archive/.
+cd /home/packager/packaging/
