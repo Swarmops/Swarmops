@@ -200,7 +200,7 @@ namespace Swarmops.Backend
                     {
                         exitFlag = true;
                         Console.WriteLine("Caught signal " + killSignals[signalIndex].Signum.ToString() + ", exiting");
-                        BotLog.Write(0, "MainCycle", "EXIT SIGNAL (" + killSignals[signalIndex].Signum.ToString() + ", terminating backend");
+                        BotLog.Write(0, "MainCycle", "EXIT SIGNAL (" + killSignals[signalIndex].Signum.ToString() + "), terminating backend");
                     }
                 }
             }
