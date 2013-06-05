@@ -1,2 +1,2 @@
-/opt/swarmops/frontend/database.config
+/etc/swarmops/database.config
 /opt/swarmops/frontend/machineKey.config
