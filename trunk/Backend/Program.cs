@@ -199,6 +199,8 @@ namespace Swarmops.Backend
                     if (signalIndex < 1000)
                     {
                         exitFlag = true;
+                        Console.WriteLine("Caught signal " + killSignals[signalIndex].Signum.ToString() + ", exiting");
+                        BotLog.Write(0, "MainCycle", "EXIT SIGNAL (" + killSignals[signalIndex].Signum.ToString() + ", terminating backend");
                     }
                 }
             }
@@ -214,11 +216,12 @@ namespace Swarmops.Backend
             }*/
 
             BotLog.Write(0, "MainCycle", "...done");
-
+            
+            /*
             while (!MailTransmitter.CanExit)
             {
                 System.Threading.Thread.Sleep(50);
-            }
+            }*/
 
             Thread.Sleep(2000);
         }
