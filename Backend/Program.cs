@@ -125,8 +125,6 @@ namespace Swarmops.Backend
 
             Console.WriteLine(" * Swarmops Backend starting");
 
-            HeartBeater.Instance.Beat(heartbeatFile);
-
             BotLog.Write(0, "MainCycle", "Backend STARTING");
 
             DateTime cycleStartTime = DateTime.Now;
@@ -145,7 +143,6 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    HeartBeater.Instance.Beat();
                     OnEveryTenSeconds();
 
                     if (cycleStartTime.Second < lastSecond)
@@ -209,11 +206,12 @@ namespace Swarmops.Backend
             Console.WriteLine(" * Swarmops Backend stopping");
             BotLog.Write(0, "MainCycle", "BACKEND EXITING, sending backend-termination notices");
 
+            /*
             if (HeartBeater.Instance.WasKilled)
             {
                 // removed unconditional delete, cron job that restarts bot uses it to know that it is intentionally down.
                 ExceptionMail.Send(new Exception("HeartBeater triggered restart of Swarmops Backend. Will commence after 800 seconds."), false);
-            }
+            }*/
 
             BotLog.Write(0, "MainCycle", "...done");
 
