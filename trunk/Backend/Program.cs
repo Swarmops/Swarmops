@@ -73,7 +73,8 @@ namespace Swarmops.Backend
 
                     Console.WriteLine("Testing database access...");
 
-                    SwarmDb.GetDatabaseForReading().GetPerson(1);
+                    Console.WriteLine(SwarmDb.GetDatabaseForReading().GetPerson(1).Name);
+                    Console.WriteLine(SwarmDb.GetDatabaseForReading().GetPerson(1).PasswordHash);
 
                     Console.Write("\r\nAll tests run. Waiting for mail queue to flush... ");
                     while (!MailTransmitter.CanExit)
