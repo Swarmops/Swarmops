@@ -9,6 +9,7 @@ using System.Net.Mail;
 
 using Swarmops.Basic;
 using Swarmops.Basic.Enums;
+using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
@@ -69,6 +70,11 @@ namespace Swarmops.Backend
                     Console.WriteLine("\r\nMidnight:");
                     OnMidnight();
                     */
+
+                    Console.WriteLine("Testing database access...");
+
+                    SwarmDb.GetDatabaseForReading().GetPerson(1);
+
                     Console.Write("\r\nAll tests run. Waiting for mail queue to flush... ");
                     while (!MailTransmitter.CanExit)
                     {
