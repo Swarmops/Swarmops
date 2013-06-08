@@ -116,8 +116,6 @@ namespace Swarmops.Database
                 {
                     // Production process - just use the simple filename
 
-                    Console.WriteLine("Returning /etc/swarmops/database.config");
-
                     return "/etc/swarmops/database.config";
                 }
             }

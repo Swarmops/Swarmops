@@ -17,8 +17,6 @@ namespace Swarmops.Database
     {
         public static SwarmDb GetDatabaseForReading()
         {
-            Console.WriteLine("In GetDatabaseForReading()");
-
             return new SwarmDb(ConstructConnectString(new Configuration().Get().Read));
         }
 
