@@ -60,6 +60,8 @@ namespace Swarmops.Database
                 {
                     if (Path.DirectorySeparatorChar == '/' && HttpContext.Current == null)
                     {
+                        Console.WriteLine("Attempting to initialize using MonoConfigFile, which is " + MonoConfigFile);
+
                         // We are running under mono in a backend environment
 
                         using (StreamReader reader = new StreamReader(MonoConfigFile))
