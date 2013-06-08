@@ -247,7 +247,7 @@ namespace Swarmops.Database
         // config file used by GetDatabase()
         private const string AppConfigFile = @"database.config";
         private const string WebConfigFile = @"~/database.config";
-        private const string MonoConfigFile = @"./database.config";
+        private const string MonoConfigFile = @"/etc/swarmops/database.config";
         
         private const string DefaultProviderName = "MySql.Data.MySqlClient";
 
