@@ -103,20 +103,22 @@ namespace Swarmops.Database
 
             public static string GetConfigurationFileName()
             {
-                // If we're running in a HTTP context, use the Mono path mapper, as we're in an Apache process.
+                // If we're running in a HTTP context on Windows, use the path mapper, as we're in a web process.
                 // Otherwise, use a relative path from the binary.
 
-                if (HttpContext.Current != null)
+                if (HttpContext.Current != null && Path.DirectorySeparatorChar != '/')
                 {
-                    // Apache process, so use MapPath
+                    // Web process, so use MapPath
 
                     return HttpContext.Current.Server.MapPath("~/database.config");
                 }
                 else
                 {
-                    // Backend process - just use the simple filename (and copy frontend's config to backend's on daemon start).
+                    // Production process - just use the simple filename
 
-                    return "database.config";
+                    Console.WriteLine("Returning /etc/swarmops/database.config");
+
+                    return "/etc/swarmops/database.config";
                 }
             }
         }
