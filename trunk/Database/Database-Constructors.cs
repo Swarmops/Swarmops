@@ -40,12 +40,16 @@ namespace Swarmops.Database
         [Obsolete ("Do not use. Use SwarmDb.GetDatabaseForReading(), ...ForWriting() or ...ForAdmin().", true)]
         public static SwarmDb GetDatabase()
         {
+            Console.WriteLine("Entering GetDatabase()");
+
             // First, check if a previous invocation has put anything in the cashe.
             string connectionString = _cachedConnectionString;
 
             // During a cacheless invocation, the app/web config has priority.
             if (connectionString == null && ConfigurationManager.ConnectionStrings["Activizr"] != null)
             {
+                Console.WriteLine("Initing from ConfigManager");
+
                 connectionString = ConfigurationManager.ConnectionStrings["Activizr"].ConnectionString;
 
                 Logging.LogInformation(LogSource.PirateDb,
@@ -56,6 +60,8 @@ namespace Swarmops.Database
             // If the app/web config is empty, check the database config file on disk
             if (connectionString == null)
             {
+                Console.WriteLine("Point 2");
+
                 try
                 {
                     if (Path.DirectorySeparatorChar == '/' && HttpContext.Current == null)
@@ -74,6 +80,8 @@ namespace Swarmops.Database
                     }
                     else if (HttpContext.Current != null)
                     {
+                        Console.WriteLine("Point 3");
+
                         // We are running a web application, under Mono (production) or Windows (development)
                         using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(WebConfigFile))
                             )
@@ -87,6 +95,8 @@ namespace Swarmops.Database
                     }
                     else
                     {
+                        Console.WriteLine("Point 4");
+
                         // We are running an application, presumably directly from Visual Studio.
                         // If so, the current working directory is "PirateWeb/30/Console/bin".
                         using (StreamReader reader = new StreamReader(AppConfigFile))
@@ -115,6 +125,8 @@ namespace Swarmops.Database
             // If we still have nothing, and we're running from web, then assume we have a dev environment and use the hostname as db, user, and pass.
             if (connectionString == null)
             {
+                Console.WriteLine("Point 5");
+
                 if (HttpContext.Current != null)
                 {
                     string hostName = HttpContext.Current.Request.Url.Host;
