@@ -21,7 +21,7 @@ namespace Swarmops.Database
             "RecipientCount,RecipientsSuccess,RecipientsFail " +                              // 15-17
             "FROM OutboundComms ";
 
-        private static BasicOutboundComm ReadOutboundCommFromDataReader(IDataRecord reader)
+        private BasicOutboundComm ReadOutboundCommFromDataReader(IDataRecord reader) // Not static -- accesses cache, requiring connection strings
         {
             int outboundCommId = reader.GetInt32(0);
             int senderPersonId = reader.GetInt32(1);
@@ -47,8 +47,8 @@ namespace Swarmops.Database
 
             // TODO: resolve resolverClass, transmitterClass
 
-            string resolverClass = null;
-            string transmitterClass = null;
+            string resolverClass = GetCachedResolverClassName(resolverClassId);
+            string transmitterClass = GetCachedTransmitterClassName(transmitterClassId);
 
             return new BasicOutboundComm
                 (outboundCommId, senderPersonId, fromPersonId, organizationId, createdDateTime,
@@ -114,6 +114,86 @@ namespace Swarmops.Database
                 }
             }
         }
+
+
+        #endregion
+
+
+        #region Database optimizations
+
+        private static Dictionary<int, string> _resolverClassCache;
+        private static Dictionary<int, string> _transmitterClassCache; 
+
+        protected string GetCachedResolverClassName (int resolverClassId)
+        {
+            if (_resolverClassCache == null)
+            {
+                _resolverClassCache = new Dictionary<int, string>();
+                _resolverClassCache[0] = null; // special case for resolvers
+            }
+
+            if (_resolverClassCache.ContainsKey(resolverClassId))
+            {
+                return _resolverClassCache[resolverClassId];
+            }
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand("SELECT Name FROM ResolverClasses WHERE ResolverClassId=" + resolverClassId.ToString(),
+                                 connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        _resolverClassCache[resolverClassId] = reader.GetString(0);
+                        return _resolverClassCache[resolverClassId];
+                    }
+
+                    throw new ArgumentException("No such ResolverClassId:" + resolverClassId.ToString());
+                }
+            }
+
+        }
+
+        protected string GetCachedTransmitterClassName(int transmitterClassId)
+        {
+            if (_transmitterClassCache == null)
+            {
+                _transmitterClassCache = new Dictionary<int, string>();
+            }
+
+            if (_transmitterClassCache.ContainsKey(transmitterClassId))
+            {
+                return _transmitterClassCache[transmitterClassId];
+            }
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand("SELECT Name FROM TransmitterClasses WHERE TransmitterClassId=" + transmitterClassId.ToString(),
+                                 connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        _transmitterClassCache[transmitterClassId] = reader.GetString(0);
+                        return _transmitterClassCache[transmitterClassId];
+                    }
+
+                    throw new ArgumentException("No such TransmitterClassId:" + transmitterClassId.ToString());
+                }
+            }
+
+        }
+
+
 
 
         #endregion
