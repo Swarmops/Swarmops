@@ -9,11 +9,12 @@ namespace Swarmops.Basic.Types.Communications
 {
     public class BasicOutboundComm: IHasIdentity
     {
-        public BasicOutboundComm (int outboundCommId, int senderPersonId, int organizationId, DateTime createdDateTime, string resolverClass, string recipientDataXml, bool resolved, DateTime resolvedDateTime, OutboundCommPriority priority, string transmitterClass, string payloadXml,
+        public BasicOutboundComm (int outboundCommId, int senderPersonId, int fromPersonId, int organizationId, DateTime createdDateTime, string resolverClass, string recipientDataXml, bool resolved, DateTime resolvedDateTime, OutboundCommPriority priority, string transmitterClass, string payloadXml,
             bool open, DateTime startTransmitDateTime, DateTime closedDateTime, int recipientCount, int recipientsSuccess, int recipientsFail)
         {
             this.OutboundCommId = outboundCommId;
-            this.SenderPersonId = senderPersonId; // should we include a "fromPersonId" in basedata too, when deputies are sending on behalf of avatars?
+            this.SenderPersonId = senderPersonId;
+            this.FromPersonId = fromPersonId;
             this.OrganizationId = organizationId;
             this.CreatedDateTime = createdDateTime;
             this.ResolverClass = resolverClass;
@@ -33,7 +34,7 @@ namespace Swarmops.Basic.Types.Communications
 
 
         public BasicOutboundComm (BasicOutboundComm original) :
-            this (original.OutboundCommId, original.SenderPersonId, original.OrganizationId, original.CreatedDateTime, original.ResolverClass, original.RecipientDataXml, original.Resolved, original.ResolvedDateTime, original.Priority, original.TransmitterClass, original.PayloadXml,
+            this (original.OutboundCommId, original.SenderPersonId, original.FromPersonId, original.OrganizationId, original.CreatedDateTime, original.ResolverClass, original.RecipientDataXml, original.Resolved, original.ResolvedDateTime, original.Priority, original.TransmitterClass, original.PayloadXml,
             original.Open, original.StartTransmitDateTime, original.ClosedDateTime, original.RecipientCount, original.RecipientsSuccess, original.RecipeintsFail)
         {
             // copy ctor    
@@ -43,6 +44,7 @@ namespace Swarmops.Basic.Types.Communications
 
         public int OutboundCommId { get; private set; }
         public int SenderPersonId { get; private set; }
+        public int FromPersonId { get; private set; }
         public int OrganizationId { get; private set; }
         public DateTime CreatedDateTime { get; private set; }
         public string ResolverClass { get; private set; }
