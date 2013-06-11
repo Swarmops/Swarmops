@@ -51,15 +51,10 @@ namespace Swarmops
             // PWEvents.CreateEvent(EventSource.PirateBot, EventType.ParleyCancelled, 1, 1, 1, 1, 4, string.Empty);
             // PWEvents.CreateEvent(EventSource.PirateBot, EventType.ParleyCancelled, 1, 1, 1, 1, 5, string.Empty);
 
-            Utility.BotCode.EventProcessor.Run();
+            // Utility.BotCode.EventProcessor.Run();
 
 			Console.WriteLine(string.Empty);
 			Console.Write("Waiting for mail queue to flush... ");
-
-			while (!MailTransmitter.CanExit)
-			{
-				System.Threading.Thread.Sleep(50);
-			}
 
 			Console.WriteLine("done. Press Enter.");
 

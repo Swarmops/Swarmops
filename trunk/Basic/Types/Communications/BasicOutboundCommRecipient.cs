@@ -18,6 +18,12 @@ namespace Swarmops.Basic.Types.Communications
             this.FailReason = failReason;
         }
 
+        public BasicOutboundCommRecipient (BasicOutboundCommRecipient original):
+            this (original.OutboundCommRecipientId, original.OutboundCommId, original.PersonId, original.Open, original.Success, original.FailReason)
+        {
+            // copy ctor
+        }
+
         public int OutboundCommRecipientId { get; private set; }
         public int OutboundCommId { get; private set; }
         public int PersonId { get; private set; }
