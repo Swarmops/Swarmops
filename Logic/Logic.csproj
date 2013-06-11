@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communications\OutboundComm.cs" />
+    <Compile Include="Communications\OutboundCommRecipient.cs" />
+    <Compile Include="Communications\OutboundCommRecipients.cs" />
+    <Compile Include="Communications\OutboundComms.cs" />
+    <Compile Include="Communications\Transmission\NotificationPayload.cs" />
+    <Compile Include="Communications\Transmission\PayloadBase.cs" />
     <Compile Include="Financial\CashAdvance.cs" />
     <Compile Include="Financial\CashAdvances.cs" />
     <Compile Include="Financial\ImportedBankData.cs" />
@@ -216,6 +222,16 @@
     <Compile Include="Support\SingularFactory.cs" />
     <Compile Include="Support\TemporaryIdentity.cs" />
     <Compile Include="Support\UrlTranslations.cs" />
+    <Compile Include="Swarmops.Logic.Localizations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Swarmops.Logic.Localizations.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SwarmopsLogicLoc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SwarmopsLogicLoc.resx</DependentUpon>
+    </Compile>
     <Compile Include="Swarm\Activists.cs" />
     <Compile Include="Swarm\AuditedPerson.cs" />
     <Compile Include="Swarm\ChurnData.cs" />
@@ -280,6 +296,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Authentication.sv-SE.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Swarmops.Logic.Localizations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Swarmops.Logic.Localizations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwarmopsLogicLoc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SwarmopsLogicLoc.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
