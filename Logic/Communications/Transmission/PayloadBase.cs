@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace Swarmops.Logic.Communications.Transmission
 {
     [Serializable]
-    public class PayloadBase<T>
+    public class PayloadBase<T>: IPayload
     {
         public string ToXml()
         {

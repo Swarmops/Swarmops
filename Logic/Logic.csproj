@@ -64,10 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communications\ICommsRenderer.cs" />
+    <Compile Include="Communications\ICommsResolver.cs" />
+    <Compile Include="Communications\ICommsTransmitter.cs" />
     <Compile Include="Communications\OutboundComm.cs" />
     <Compile Include="Communications\OutboundCommRecipient.cs" />
     <Compile Include="Communications\OutboundCommRecipients.cs" />
     <Compile Include="Communications\OutboundComms.cs" />
+    <Compile Include="Communications\OutboundCommTransmitException.cs" />
+    <Compile Include="Communications\Transmission\IPayload.cs" />
+    <Compile Include="Communications\Transmission\MailMetaPayload.cs" />
     <Compile Include="Communications\Transmission\NotificationPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadBase.cs" />
     <Compile Include="Financial\CashAdvance.cs" />
