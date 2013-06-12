@@ -95,6 +95,7 @@
     <Compile Include="BotCode\SchulzeProcessor.cs" />
     <Compile Include="BotCode\TurnaroundTracker.cs" />
     <Compile Include="BotCode\UpdateStatsCache.cs" />
+    <Compile Include="Communications\CommsTransmitterMail.cs" />
     <Compile Include="ExceptionMail.cs" />
     <Compile Include="Financial\PaymentGroupMapper.cs" />
     <Compile Include="Financial\PaysonImporter.cs" />
@@ -145,7 +146,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Communications\" />
     <Folder Include="Rss\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
