@@ -25,6 +25,8 @@ namespace Swarmops.Logic.Communications
         SenderName,
         SenderMail,
         Subject,
-        Body
+        BodyText,
+        BodyHtml,
+        BodyImages
     }
 }

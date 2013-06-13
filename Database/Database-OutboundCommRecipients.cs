@@ -141,7 +141,7 @@ namespace Swarmops.Database
         #region Creation and manipulation -- stored procedures
 
 
-        public int CreateOutboundCommRecipient(int senderPersonId, int fromPersonId, int organizationId, string resolverClass, string recipientDataXml, string transmitterClass, string payloadXml, OutboundCommPriority priority)
+        public int CreateOutboundCommRecipient(int outboundCommId, int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -150,8 +150,8 @@ namespace Swarmops.Database
                 DbCommand command = GetDbCommand("CreateOutboundCommRecipient", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundCommId", senderPersonId);
-                AddParameterWithName(command, "personId", fromPersonId);
+                AddParameterWithName(command, "outboundCommId", outboundCommId);
+                AddParameterWithName(command, "personId", personId);
 
                 return Convert.ToInt32(command.ExecuteScalar());
             }
