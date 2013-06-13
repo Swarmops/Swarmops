@@ -4,11 +4,12 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Globalization;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Communications.Transmission
 {
     [Serializable]
-    public class NotificationPayload: PayloadBase<NotificationPayload>
+    public class NotificationPayload: PayloadBase<NotificationPayload>, ICommsRenderer
     {
         public NotificationPayload()
         {
@@ -45,5 +46,31 @@ namespace Swarmops.Logic.Communications.Transmission
 
             return resourceManager.GetString(this.BodyResource);
         }
+
+        #region Implementation of ICommsRenderer
+
+        public RenderedComms RenderComm(OutboundComm comm, Person person)
+        {
+            RenderedComms result = new RenderedComms();
+
+            result[CommsRenderPart.Subject] = GetSubject();
+            result[CommsRenderPart.BodyText] = GetBody();
+            result[CommsRenderPart.SenderName] = "Swarmops Administrative";
+            result[CommsRenderPart.SenderMail] = "admin@swarmops.com";
+
+            return result;
+        }
+
+        #endregion
     }
+
+// ReSharper disable InconsistentNaming
+
+    public enum NotificationResource
+    {
+        Unknown = 0,
+        System_Startup
+    }
+
+// ReSharper restore InconsistentNaming
 }
