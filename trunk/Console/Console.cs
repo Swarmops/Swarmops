@@ -10,6 +10,8 @@ using System.Web;
 using System.Web.Mail;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
@@ -52,6 +54,8 @@ namespace Swarmops
             // PWEvents.CreateEvent(EventSource.PirateBot, EventType.ParleyCancelled, 1, 1, 1, 1, 5, string.Empty);
 
             // Utility.BotCode.EventProcessor.Run();
+
+            OutboundComm.CreateNotification(null, NotificationResource.System_Startup);
 
 			Console.WriteLine(string.Empty);
 			Console.Write("Waiting for mail queue to flush... ");
@@ -1174,6 +1178,7 @@ namespace Swarmops
 
 		static void PopulateCountries()
 		{
+            /*
 			SwarmDb database = SwarmDb.GetDatabase();
 
 			using (StreamReader reader = new StreamReader("C:\\Countries.txt"))
@@ -1190,7 +1195,7 @@ namespace Swarmops
 
 					line = reader.ReadLine();
 				}
-			}
+			}*/
 		}
 
 		static void InviteManyNodesToUP(int[] nodeIds, int organizationId)
@@ -1285,6 +1290,7 @@ namespace Swarmops
 
 		static void SendNewsletter()
 		{
+            /*
 			SwarmDb database = SwarmDb.GetDatabase();
 
 			int[] subscriberIds = database.GetSubscribersForNewsletterFeed(2);
@@ -1296,11 +1302,11 @@ namespace Swarmops
 				@"H:\Data\Piratpartiet\MailTemplates\PP-Newsletter\Template.txt",
 				subscribers).
 					Send();
-            return;
+            return;*/
         }
 
         static void ImportReporters()
-        {
+        {/*
             string fileName = @"C:\Documents and Settings\rick\Desktop\reportrar.txt";
             SwarmDb database = SwarmDb.GetDatabase();
 
@@ -1330,7 +1336,7 @@ namespace Swarmops
                     }
                 }
             }
-
+            */
         }
 
         /*

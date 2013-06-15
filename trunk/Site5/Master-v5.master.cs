@@ -12,6 +12,8 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Telerik.Web.UI;
 using Membership = Swarmops.Logic.Swarm.Membership;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 
 namespace Swarmops
 {
@@ -34,6 +36,9 @@ namespace Swarmops
             _currentUser = Person.FromIdentity(currentUserId);
             _authority = _currentUser.GetAuthority();
             _currentOrganization = Organization.FromIdentity(currentOrganizationId);
+
+            OutboundComm.CreateNotification(null, NotificationResource.System_Startup);
+
         }
 
         protected void Page_Load(object sender, EventArgs e)

@@ -29,7 +29,7 @@
     <WarningLevel>4</WarningLevel>
     <ErrorReport>prompt</ErrorReport>
     <OutputType>Library</OutputType>
-    <AssemblyName>Activizr.Logic</AssemblyName>
+    <AssemblyName>Swarmops.Logic</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>../Site/bin/</OutputPath>
@@ -42,7 +42,7 @@
     <WarningLevel>4</WarningLevel>
     <ErrorReport>prompt</ErrorReport>
     <OutputType>Library</OutputType>
-    <AssemblyName>Activizr.Logic</AssemblyName>
+    <AssemblyName>Swarmops.Logic</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">

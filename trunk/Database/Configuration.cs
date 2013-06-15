@@ -82,7 +82,9 @@ namespace Swarmops.Database
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
 
-                using (FileStream readFileStream = new FileStream(GetConfigurationFileName(), FileMode.Open, FileAccess.Read, FileShare.Read))
+                string configFileName = GetConfigurationFileName();
+
+                using (FileStream readFileStream = new FileStream(configFileName, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
 
                     _configuration = (Configuration) serializer.Deserialize(readFileStream);
@@ -103,20 +105,30 @@ namespace Swarmops.Database
 
             public static string GetConfigurationFileName()
             {
-                // If we're running in a HTTP context on Windows, use the path mapper, as we're in a web process.
-                // Otherwise, use a relative path from the binary.
+                // Four possibilities here. Debug environment on Windows (dev), Console environment on Windows (dev),
+                // Console/daemon production environment and web production environment.
 
-                if (HttpContext.Current != null && Path.DirectorySeparatorChar != '/')
-                {
-                    // Web process, so use MapPath
+                // In both production environments, we should use /etc/swarmops/database.config.
+                // In dev Web, we should use ~/database.config.
+                // In dev console, we should use database.config.
 
-                    return HttpContext.Current.Server.MapPath("~/database.config");
-                }
-                else
+                if (Path.DirectorySeparatorChar == '/')
                 {
                     // Production process - just use the simple filename
 
                     return "/etc/swarmops/database.config";
+                }
+                else if (HttpContext.Current != null)
+                {
+                    // Dev web process
+
+                    return HttpContext.Current.Server.MapPath ("~/database.config");
+                }
+                else
+                {
+                    // Dev console process
+
+                    return "database.config"; // Each dev needs to set the working directory to the Console directory when debugging
                 }
             }
         }
