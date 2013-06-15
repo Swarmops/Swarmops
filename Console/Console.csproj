@@ -31,7 +31,7 @@
     <WarningLevel>4</WarningLevel>
     <ErrorReport>prompt</ErrorReport>
     <OutputType>Exe</OutputType>
-    <AssemblyName>Activizr.Console</AssemblyName>
+    <AssemblyName>Swarmops.Console</AssemblyName>
     <ApplicationIcon>./App.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -45,8 +45,11 @@
     <WarningLevel>4</WarningLevel>
     <ErrorReport>prompt</ErrorReport>
     <OutputType>Exe</OutputType>
-    <AssemblyName>Activizr.Console</AssemblyName>
+    <AssemblyName>Swarmops.Console</AssemblyName>
     <ApplicationIcon>./App.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Swarmops.BotConsole</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

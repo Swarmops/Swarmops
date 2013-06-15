@@ -29,7 +29,7 @@
     <WarningLevel>4</WarningLevel>
     <ErrorReport>prompt</ErrorReport>
     <OutputType>Library</OutputType>
-    <AssemblyName>Activizr.Interface</AssemblyName>
+    <AssemblyName>Swarmops.Interface</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>../Site/bin/</OutputPath>
@@ -42,7 +42,7 @@
     <WarningLevel>4</WarningLevel>
     <ErrorReport>prompt</ErrorReport>
     <OutputType>Library</OutputType>
-    <AssemblyName>Activizr.Interface</AssemblyName>
+    <AssemblyName>Swarmops.Interface</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

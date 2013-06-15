@@ -380,7 +380,7 @@
                     <telerik:RadMenuItem runat="server" Text="XYZ Ledgers" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers">
                         <Items>
                             <telerik:RadMenuItem runat="server" Text="XYZ Balance Sheet" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_BalanceSheet" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Result Sheet" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_ResultSheet" />
+                            <telerik:RadMenuItem runat="server" Text="XYZ Result Sheet" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_ProfitLossStatement" />
                             <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
                             <telerik:RadMenuItem runat="server" Text="XYZ Audit Ledgers" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_AuditLedgers" />
                             <telerik:RadMenuItem runat="server" Text="XYZ Account Plan" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_AccountPlan" />
