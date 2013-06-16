@@ -61,7 +61,7 @@ namespace Swarmops.Logic {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Swarmops Backend version [VERSION] on host [HOSTNAME] has successfully started and connected to database and notification frameworks..
+        ///   Looks up a localized string similar to Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks..
         /// </summary>
         internal static string Notifications_System_Startup_Body {
             get {

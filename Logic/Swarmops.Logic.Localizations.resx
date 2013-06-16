@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Notifications_System_Startup_Body" xml:space="preserve">
-    <value>Swarmops Backend version [VERSION] on host [HOSTNAME] has successfully started and connected to database and notification frameworks.</value>
+    <value>Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks.</value>
   </data>
   <data name="Notifications_System_Startup_Subject" xml:space="preserve">
     <value>Swarmops Backend operational</value>

@@ -39,9 +39,8 @@ namespace Swarmops.Logic.Communications.Transmission
                                                                                    System.Reflection.Assembly.
                                                                                        GetExecutingAssembly());
             // TODO: Pick culture
-            // TODO: Expand macros
             
-            return resourceManager.GetString(this.SubjectResource);
+            return ExpandMacros(resourceManager.GetString(this.SubjectResource));
         }
 
         public string GetBody()
@@ -50,9 +49,15 @@ namespace Swarmops.Logic.Communications.Transmission
                                                                                    System.Reflection.Assembly.
                                                                                        GetExecutingAssembly());
             // TODO: Pick culture
-            // TODO: Expand macros
 
-            return resourceManager.GetString(this.BodyResource);
+            return ExpandMacros(resourceManager.GetString(this.BodyResource));
+        }
+
+        public string ExpandMacros (string input)
+        {
+            // TODO: Replace all, of course
+
+            return input.Replace("[HostName]", System.Net.Dns.GetHostName());
         }
 
         #region Implementation of ICommsRenderer
