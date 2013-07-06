@@ -481,7 +481,7 @@ namespace Swarmops.Logic.Special.Sweden
                                                 try
                                                 {
                                                     person.SendPhoneMessage("Piratpartiet: den mailadress vi har till dig (" +
-                                                                            person.Email +
+                                                                            person.Mail +
                                                                             ") studsar. Kontakta medlemsservice@piratpartiet.se med ny adress.");
                                                     CloseWithComment(@case.Identity,
                                                                         "Successfully notified the member at phone# " + person.Phone +

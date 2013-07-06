@@ -641,18 +641,18 @@ namespace Swarmops.Logic.Security
                     uniqueTablePhone[p.Phone].Add(p);
                 }
 
-                if (uniqueTableEmail.ContainsKey(p.Email))
+                if (uniqueTableEmail.ContainsKey(p.Mail))
                 {
-                    foreach (var sameperson in uniqueTableEmail[p.Email])
+                    foreach (var sameperson in uniqueTableEmail[p.Mail])
                     {
                         MatchPerson(result, p, sameperson);
                     }
-                    uniqueTableEmail[p.Email].Add(p);
+                    uniqueTableEmail[p.Mail].Add(p);
                 }
                 else
                 {
-                    uniqueTableEmail[p.Email] = new List<Person>();
-                    uniqueTableEmail[p.Email].Add(p);
+                    uniqueTableEmail[p.Mail] = new List<Person>();
+                    uniqueTableEmail[p.Mail].Add(p);
                 }
             }
 
@@ -666,7 +666,7 @@ namespace Swarmops.Logic.Security
                 ++matches;
             if (p.Phone.Trim() == sameperson.Phone.Trim())
                 ++matches;
-            if (p.Email.Trim().ToLower() == sameperson.Email.Trim().ToLower())
+            if (p.Mail.Trim().ToLower() == sameperson.Email.Trim().ToLower())
                 ++matches;
             if (matches > 1)
             {

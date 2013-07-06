@@ -196,7 +196,7 @@ namespace Swarmops.Utility.BotCode
                             int recipientCount = 0;
                             foreach (Person recipient in recipients)
                             {
-                                if (!Formatting.ValidateEmailFormat(recipient.Email)
+                                if (!Formatting.ValidateEmailFormat(recipient.Mail)
                                     || recipient.MailUnreachable
                                     || recipient.NeverMail)
                                 {

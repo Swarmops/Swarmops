@@ -212,7 +212,7 @@ namespace Swarmops.Utility.BotCode
                     foreach (int key in officerLookup.Keys)
                     {
                         Person recipient = Person.FromIdentity(key);
-                        if (!Formatting.ValidateEmailFormat(recipient.Email))
+                        if (!Formatting.ValidateEmailFormat(recipient.Mail))
                         {
                             continue;
                         }

@@ -125,7 +125,7 @@ namespace Swarmops.Utility.BotCode
                         Console.Write(".");
                         PWLog.Write(PWLogItem.Person, membership.PersonId,
                                         PWLogAction.MembershipRenewReminder,
-                                        "Mail was sent to " + membership.Person.Email +
+                                        "Mail was sent to " + membership.Person.Mail +
                                         " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);
 
                         Console.Write(".");
@@ -141,7 +141,7 @@ namespace Swarmops.Utility.BotCode
                     }
                     catch (Exception x)
                     {
-                        string logText = "FAILED sending mail to " + membership.Person.Email +
+                        string logText = "FAILED sending mail to " + membership.Person.Mail +
                                         " for reminder of pending renewal in " + membership.Organization.Name + ".";
                         failedReminders.Add(membership.Person.Canonical);
                         PWLog.Write(PWLogItem.Person, membership.PersonId,
@@ -314,7 +314,7 @@ namespace Swarmops.Utility.BotCode
                         SendReminderMail(membership);
                         PWLog.Write(PWLogItem.Person, membership.PersonId,
                                         PWLogAction.MembershipRenewReminder,
-                                        "Mail was sent to " + membership.Person.Email +
+                                        "Mail was sent to " + membership.Person.Mail +
                                         " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);
                     }
                     catch (Exception ex)
@@ -687,7 +687,7 @@ namespace Swarmops.Utility.BotCode
                             ++sentCounter;
                             PWLog.Write(PWLogItem.Person, membership.PersonId,
                                             PWLogAction.MembershipRenewReminder,
-                                            "Mail was sent to " + membership.Person.Email +
+                                            "Mail was sent to " + membership.Person.Mail +
                                                 " for recommendation of organisation change in " + membership.Organization.Name + ".",
                                             membership.Organization.Identity.ToString() + "/" + expectedLowOrg.Identity.ToString());
                         }
@@ -695,7 +695,7 @@ namespace Swarmops.Utility.BotCode
                     catch (Exception x)
                     {
                         ++failCounter;
-                        string logText = "FAILED sending mail to " + membership.Person.Email +
+                        string logText = "FAILED sending mail to " + membership.Person.Mail +
                                         " for recommendation of organisation change in " + membership.Organization.Name + ".";
                         PWLog.Write(PWLogItem.Person, membership.PersonId,
                                         PWLogAction.MembershipRenewReminder,
