@@ -181,7 +181,7 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        public new virtual string Email
+        public new virtual string Mail
         {
             get { return base.Email; }
             set { SwarmDb.GetDatabaseForWriting().SetPersonEmail(Identity, value); }
@@ -1006,11 +1006,11 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        protected string EmailMD5
+        protected string MailMD5
         {
             get
             {
-                string email = this.Email.Trim().ToLowerInvariant();
+                string email = this.Mail.Trim().ToLowerInvariant();
 
                 string md5 = MD5.Hash(email);
 
@@ -1020,7 +1020,7 @@ namespace Swarmops.Logic.Swarm
 
         public string GetAvatarLink (int pixelSize)
         {
-            return string.Format("http://www.gravatar.com/avatar/{0}.jpg?s={1}&d=mm", this.EmailMD5, pixelSize);
+            return string.Format("http://www.gravatar.com/avatar/{0}.jpg?s={1}&d=mm", this.MailMD5, pixelSize);
         }
 
         public string GetSecureAvatarLink (int pixelSize)

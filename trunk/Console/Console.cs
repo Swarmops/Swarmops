@@ -368,7 +368,7 @@ namespace Swarmops
 
                         writer.WriteLine("{0},{1} (#{2}),{3},{4} ({5} år),{6},{7},'{8}'",
                             org.Name, membership.Person.Name, membership.Person.Identity, membership.Person.IsMale ? "Man" : "Kvinna",
-                            membership.Person.Birthdate.ToString("yyyy-MM-dd"), age, age > 6 && age < 26? "Ja":"Nej", membership.Person.Email, membership.Person.Phone);
+                            membership.Person.Birthdate.ToString("yyyy-MM-dd"), age, age > 6 && age < 26? "Ja":"Nej", membership.Person.Mail, membership.Person.Phone);
                     }
                 }
             }
@@ -620,11 +620,11 @@ namespace Swarmops
 
                         // THERE ARE ACTIVE MEMBERSHIPS
 
-                        string baseComparison = people[0].Email.ToLower() + people[0].Street.ToLower() + people [0].Phone;
+                        string baseComparison = people[0].Mail.ToLower() + people[0].Street.ToLower() + people [0].Phone;
 
                         for (int index = 1; index < people.Count; index++)
                         {
-                            string comparison = people[index].Email.ToLower() + people[index].Street.ToLower() + people[index].Phone;
+                            string comparison = people[index].Mail.ToLower() + people[index].Street.ToLower() + people[index].Phone;
 
 
                         }
