@@ -89,13 +89,13 @@ namespace Swarmops.Utility.Mail
                     }
                     else
                     {
-                        if (!Formatting.ValidateEmailFormat(recipient.Email.Trim()))
+                        if (!Formatting.ValidateEmailFormat(recipient.Mail.Trim()))
                         {
                             continue;
                         }
 
                         message = new MailMessage(new MailAddress(fromAddress, qpUTF8.EncodeMailHeaderString(fromName), Encoding.UTF8),
-                                                  new MailAddress(recipient.Email, qpUTF8.EncodeMailHeaderString(recipient.Name), Encoding.UTF8));
+                                                  new MailAddress(recipient.Mail, qpUTF8.EncodeMailHeaderString(recipient.Name), Encoding.UTF8));
                     }
 
                     if (message == null)

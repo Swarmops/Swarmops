@@ -29,7 +29,7 @@ namespace Swarmops.Utility.Communications
             // This is a rather simple mail (no images or stuff like that)
 
             mail.From = new MailAddress(comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderMail], Encoding.UTF8);
-            mail.To.Add(new MailAddress(person.Email, person.Name));
+            mail.To.Add(new MailAddress(person.Mail, person.Name));
 
             mail.Subject = comm[CommRenderPart.Subject];
             mail.Body = comm[CommRenderPart.Subject];
@@ -44,7 +44,7 @@ namespace Swarmops.Utility.Communications
             }
             catch (Exception e)
             {
-                throw new OutboundCommTransmitException("Cannot send mail to " + person.Email, e);  
+                throw new OutboundCommTransmitException("Cannot send mail to " + person.Mail, e);  
             }
         }
 

@@ -640,7 +640,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             personOne = Swarmops.Logic.Swarm.Person.FromIdentity(1);
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                if (personOne.CityName != "Duckville" || personOne.Email != "noreply@example.com")
+                if (personOne.CityName != "Duckville" || personOne.Mail != "noreply@example.com")
                     // these values are returned in debug environments when no person is found
                 {
                     personOneExists = true;
