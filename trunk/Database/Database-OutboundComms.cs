@@ -214,14 +214,30 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "senderPersonId", senderPersonId);
                 AddParameterWithName(command, "fromPersonId", fromPersonId);
                 AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "resolverClass", String.IsNullOrEmpty(resolverClass)? "0": resolverClass);  // Will be turned into ID by stored procedure
-                AddParameterWithName(command, "recipientDataXml", String.IsNullOrEmpty(recipientDataXml)? string.Empty: recipientDataXml);
+                AddParameterWithName(command, "resolverClass", String.IsNullOrEmpty(resolverClass) ? "0" : resolverClass);  // Will be turned into ID by stored procedure
+                AddParameterWithName(command, "recipientDataXml", String.IsNullOrEmpty(recipientDataXml) ? string.Empty : recipientDataXml);
                 AddParameterWithName(command, "transmitterClass", transmitterClass); // Will be turned into ID by stored procedure
                 AddParameterWithName(command, "payloadXml", payloadXml);
-                AddParameterWithName(command, "priority", (int) priority);  // convert enum to integerized priority; convert back on field read
+                AddParameterWithName(command, "priority", (int)priority);  // convert enum to integerized priority; convert back on field read
                 AddParameterWithName(command, "createdDateTime", DateTime.UtcNow);
 
                 return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+        public void SetOutboundCommResolved(int outboundCommId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetOutboundCommResolved", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "outboundCommId", outboundCommId);
+                AddParameterWithName(command, "dateTime", DateTime.UtcNow);
+
+                command.ExecuteNonQuery();
             }
         }
 

@@ -95,6 +95,23 @@ namespace Swarmops.Logic.Communications
         // public static OutboundComm CreateNotification (FinancialAccount budget, string notificationResource)
 
 
+        public new bool Resolved
+        {
+            get { return base.Resolved; }
+            set
+            {
+                if (!base.Resolved && value == true)
+                {
+                    SwarmDb.GetDatabaseForWriting().SetOutboundCommResolved(this.Identity);
+                    base.Resolved = true;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Can only set OutboundComms.Resolved from false to true");
+                }
+            }
+        }
+
 
         public void AddRecipient (Person person)
         {
