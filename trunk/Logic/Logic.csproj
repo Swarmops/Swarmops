@@ -225,6 +225,7 @@
     <Compile Include="Support\PWLog.cs" />
     <Compile Include="Support\PirateWebDebug.cs" />
     <Compile Include="Support\QuotedPrintable.cs" />
+    <Compile Include="Support\SerializableDictionary.cs" />
     <Compile Include="Support\SingularFactory.cs" />
     <Compile Include="Support\TemporaryIdentity.cs" />
     <Compile Include="Support\UrlTranslations.cs" />
