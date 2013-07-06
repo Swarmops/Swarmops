@@ -78,6 +78,10 @@ namespace Swarmops.Backend
                     Console.WriteLine(SwarmDb.GetDatabaseForReading().GetPerson(1).Name);
                     Console.WriteLine(SwarmDb.GetDatabaseForReading().GetPerson(1).PasswordHash);
 
+                    Console.WriteLine("Creating OutboundComm...");
+
+                    OutboundComm.CreateNotification(null, NotificationResource.System_Startup);
+
                     Console.Write("\r\nAll tests run. Waiting for mail queue to flush... ");
                     while (!MailTransmitter.CanExit)
                     {
