@@ -79,7 +79,7 @@ namespace Swarmops.Logic.Communications
 
             OutboundComm comm = OutboundComm.Create(null, null, organization, CommResolverClass.Unknown, null,
                                                     CommTransmitterClass.CommsTransmitterMail,
-                                                    new NotificationPayload(notificationResourceString).ToXml(),
+                                                    new PayloadEnvelope(new NotificationPayload(notificationResourceString)).ToXml(),
                                                     OutboundCommPriority.Low);
 
             foreach (Person person in recipients)
