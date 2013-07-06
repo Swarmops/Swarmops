@@ -8,6 +8,11 @@ namespace Swarmops.Logic.Communications.Transmission
     [Serializable]
     public class PayloadEnvelope: PayloadBase<PayloadEnvelope>
     {
+        public PayloadEnvelope()
+        {
+            // default public ctor for serializability
+        }
+
         public PayloadEnvelope(IPayload payload)
         {
             PayloadClass = payload.GetType().ToString();
