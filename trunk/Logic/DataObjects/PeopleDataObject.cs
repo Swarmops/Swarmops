@@ -118,7 +118,7 @@ namespace Swarmops.Logic.DataObjects
         // Added for more sorting opportunities
         public static Comparison<Person> EmailComparison = delegate(Person p1, Person p2)
         {
-            int cmpRes = p1.Email.CompareTo(p2.Email);
+            int cmpRes = p1.Mail.CompareTo(p2.Mail);
             if (cmpRes == 0)
                 cmpRes = p1.Name.CompareTo(p2.Name);
             return cmpRes;
