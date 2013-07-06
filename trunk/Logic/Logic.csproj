@@ -73,7 +73,7 @@
     <Compile Include="Communications\OutboundComms.cs" />
     <Compile Include="Communications\OutboundCommTransmitException.cs" />
     <Compile Include="Communications\Transmission\IPayload.cs" />
-    <Compile Include="Communications\Transmission\MailMetaPayload.cs" />
+    <Compile Include="Communications\Transmission\PayloadEnvelope.cs" />
     <Compile Include="Communications\Transmission\NotificationPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadBase.cs" />
     <Compile Include="Financial\CashAdvance.cs" />
