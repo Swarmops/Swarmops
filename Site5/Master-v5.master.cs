@@ -37,8 +37,6 @@ namespace Swarmops
             _authority = _currentUser.GetAuthority();
             _currentOrganization = Organization.FromIdentity(currentOrganizationId);
 
-            OutboundComm.CreateNotification(null, NotificationResource.System_Startup);
-
         }
 
         protected void Page_Load(object sender, EventArgs e)

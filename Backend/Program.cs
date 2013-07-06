@@ -10,6 +10,8 @@ using System.Net.Mail;
 using Swarmops.Basic;
 using Swarmops.Basic.Enums;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
@@ -133,6 +135,9 @@ namespace Swarmops.Backend
             Console.WriteLine(" * Swarmops Backend starting");
 
             BotLog.Write(0, "MainCycle", "Backend STARTING");
+
+            OutboundComm.CreateNotification(null, NotificationResource.System_Startup);
+
 
             DateTime cycleStartTime = DateTime.Now;
 
