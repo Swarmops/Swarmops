@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Communications
@@ -13,6 +14,6 @@ namespace Swarmops.Logic.Communications
         /// </summary>
         /// <param name="comm">The piece of communications to send.</param>
         /// <param name="person">The person to send to.</param>
-        void Transmit(OutboundComm comm, Person person);
+        void Transmit(PayloadEnvelope envelope, Person person);
     }
 }

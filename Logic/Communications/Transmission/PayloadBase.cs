@@ -21,7 +21,7 @@ namespace Swarmops.Logic.Communications.Transmission
             return Encoding.Default.GetString(xmlBytes);
         }
 
-        static T FromXml (string xml)
+        public static T FromXml (string xml)
         {
             var serializer = new XmlSerializer(typeof(T));
 

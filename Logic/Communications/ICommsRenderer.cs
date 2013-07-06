@@ -11,15 +11,15 @@ namespace Swarmops.Logic.Communications
     /// </summary>
     public interface ICommsRenderer
     {
-        RenderedComms RenderComm(OutboundComm comm, Person person);
+        RenderedComm RenderComm(Person person);
     }
 
-    public class RenderedComms: Dictionary<CommsRenderPart,string>
+    public class RenderedComm: Dictionary<CommRenderPart,string>
     {
         // typeset for readability
     }
 
-    public enum CommsRenderPart
+    public enum CommRenderPart
     {
         Unknown = 0,
         SenderName,
