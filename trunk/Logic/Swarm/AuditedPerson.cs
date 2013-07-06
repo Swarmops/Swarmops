@@ -117,11 +117,11 @@ namespace Swarmops.Logic.Swarm
 
         public virtual string Email
         {
-            get { return person.Email; }
+            get { return person.Mail; }
             set
             {
                 AuditField("Email", Email, value);
-                person.Email = value;
+                person.Mail = value;
             }
         }
 

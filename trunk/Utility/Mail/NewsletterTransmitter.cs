@@ -244,7 +244,7 @@ namespace Swarmops.Utility.Mail
                     continue;
                 }
 
-                if (person.Email.Length < 2)
+                if (person.Mail.Length < 2)
                 {
                     Console.WriteLine("NO EMAIL");
                     continue;
@@ -258,13 +258,13 @@ namespace Swarmops.Utility.Mail
 
                 MailMessage message = new MailMessage(
                     new MailAddress("rick.falkvinge@piratpartiet.se", "Rick Falkvinge (Piratpartiet)"),
-                    new MailAddress(person.Email, person.Name));
+                    new MailAddress(person.Mail, person.Name));
 
                 message.Subject = "Piratpartiet: " + title;
 
                 message.AlternateViews.Add(htmlView);
 
-                string personEmail = person.Email.Trim().ToLower();
+                string personEmail = person.Mail.Trim().ToLower();
 
                 string identifier = String.Format("{0:X4}", person.Identity);
                 char[] array = identifier.ToCharArray();
