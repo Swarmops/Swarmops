@@ -62,14 +62,14 @@ namespace Swarmops.Logic.Communications.Transmission
 
         #region Implementation of ICommsRenderer
 
-        public RenderedComms RenderComm(OutboundComm comm, Person person)
+        public RenderedComm RenderComm(Person person)
         {
-            RenderedComms result = new RenderedComms();
+            RenderedComm result = new RenderedComm();
 
-            result[CommsRenderPart.Subject] = GetSubject();
-            result[CommsRenderPart.BodyText] = GetBody();
-            result[CommsRenderPart.SenderName] = "Swarmops Administrative";
-            result[CommsRenderPart.SenderMail] = "admin@swarmops.com";
+            result[CommRenderPart.Subject] = GetSubject();
+            result[CommRenderPart.BodyText] = GetBody();
+            result[CommRenderPart.SenderName] = "Swarmops Administrative";
+            result[CommRenderPart.SenderMail] = "admin@swarmops.com";
 
             return result;
         }
