@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Swarm
             }
 
             OutboundInvoice invoice = OutboundInvoice.Create(this.Parley.Organization, this.Parley.Person, invoiceDue,
-                                                             this.Parley.Budget, this.Person.Name, this.Person.Email,
+                                                             this.Parley.Budget, this.Person.Name, this.Person.Mail,
                                                              string.Empty,
                                                              this.Parley.Organization.DefaultCountry.Currency, true,
                                                              string.Empty);

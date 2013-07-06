@@ -868,7 +868,7 @@ namespace Swarmops.Logic.Communications
             else if (personObject is Person)
             {
                 Person person = (Person)personObject;
-                this.ReporterEmail = person.Email;
+                this.ReporterEmail = person.Mail;
                 this.ReporterName = person.Name;
                 this.ReporterCategories = "Piratpartiet/Funktionär";
             }
@@ -936,7 +936,7 @@ namespace Swarmops.Logic.Communications
             this.MemberNumber = person.PersonId.ToString();
             this.Name = person.Name;
             this.NameUrl = HttpUtility.UrlEncode(person.Name);
-            this.EmailBase64Url = HttpUtility.UrlEncode(Convert.ToBase64String(Encoding.UTF8.GetBytes(person.Email)));
+            this.EmailBase64Url = HttpUtility.UrlEncode(Convert.ToBase64String(Encoding.UTF8.GetBytes(person.Mail)));
             this.PhoneBase64Url = HttpUtility.UrlEncode(Convert.ToBase64String(Encoding.UTF8.GetBytes(person.Phone)));
         }
     }

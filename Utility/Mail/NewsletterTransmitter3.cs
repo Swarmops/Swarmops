@@ -175,7 +175,7 @@ namespace Swarmops.Utility.Mail
             {
                 //Console.Write (recipient.Name + "(#" + recipient.Identity.ToString() + ")... ");
 
-                if (recipient.Email.Length < 2)
+                if (recipient.Mail.Length < 2)
                 {
                     //Console.WriteLine("canceled.");
                     continue; // no email on file
@@ -194,7 +194,7 @@ namespace Swarmops.Utility.Mail
 
                     MailMessage message = new MailMessage(
                         new MailAddress(newsletter.SenderAddress, qp8859.EncodeMailHeaderString(newsletter.SenderName), Encoding.GetEncoding("ISO-8859-1")),
-                        new MailAddress(recipient.Email, qp8859.EncodeMailHeaderString(recipient.Name), Encoding.GetEncoding("ISO-8859-1")));
+                        new MailAddress(recipient.Mail, qp8859.EncodeMailHeaderString(recipient.Name), Encoding.GetEncoding("ISO-8859-1")));
 
                     message.Subject = "Piratpartiet: Nyhetsbrev " + DateTime.Today.ToString("yyyy-MM-dd"); // HACK
 
@@ -213,7 +213,7 @@ namespace Swarmops.Utility.Mail
                     attachment.ContentDisposition.Inline = true;
                     message.Attachments.Add(attachment);*/
 
-                    string personEmail = recipient.Email.Trim().ToLower();
+                    string personEmail = recipient.Mail.Trim().ToLower();
 
                     string identifier = " [PP" + recipient.HexIdentifier() + "]";
 
@@ -252,7 +252,7 @@ namespace Swarmops.Utility.Mail
                     ExceptionMail.Send(
                         new Exception(
                             "Error sending mail to " + recipient.Name + " (#" + recipient.Identity.ToString() + ") <" +
-                            recipient.Email + ">:", e));
+                            recipient.Mail + ">:", e));
                 }
             }
         }
