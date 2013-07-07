@@ -49,6 +49,10 @@
       <Project>{13E59551-34AC-43DC-9A03-EF5E4721DC61}</Project>
       <Name>Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{C540570C-20E0-4979-84EB-8833810DDDF6}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WebDeployment\v10.0\Microsoft.WebDeployment.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

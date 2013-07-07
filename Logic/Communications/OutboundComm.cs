@@ -123,6 +123,11 @@ namespace Swarmops.Logic.Communications
             SwarmDb.GetDatabaseForWriting().CreateOutboundCommRecipient(this.Identity, person.Identity);
         }
 
+        public OutboundCommRecipients Recipients
+        {
+            get { return OutboundCommRecipients.ForOutboundComm(this); }
+        }
+
     }
 
     public enum CommResolverClass

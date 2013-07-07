@@ -18,7 +18,7 @@ namespace Swarmops.Logic.Communications.Transmission
             serializer.Serialize(stream, this);
 
             byte[] xmlBytes = stream.GetBuffer();
-            return Encoding.Default.GetString(xmlBytes);
+            return Encoding.UTF8.GetString(xmlBytes);
         }
 
         public static T FromXml (string xml)
@@ -26,7 +26,7 @@ namespace Swarmops.Logic.Communications.Transmission
             var serializer = new XmlSerializer(typeof(T));
 
             var stream = new MemoryStream();
-            byte[] xmlBytes = Encoding.Default.GetBytes(xml);
+            byte[] xmlBytes = Encoding.UTF8.GetBytes(xml);
             stream.Write(xmlBytes, 0, xmlBytes.Length);
 
             stream.Position = 0;

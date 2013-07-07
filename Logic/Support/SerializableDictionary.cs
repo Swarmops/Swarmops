@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 namespace Swarmops.Logic.Support
 {
 
-    // Code from Paul Welter's Weblog at http://weblogs.asp.net/pwelter34/archive/2006/05/03/444961.aspx -- assumed by style, writing and tone to be in public domain
+    // Code from Paul Welter's Weblog at http://weblogs.asp.net/pwelter34/archive/2006/05/03/444961.aspx -- assumed by style, writing and tone of Q&A to be in public domain
 
     [XmlRoot("dictionary")]
     public class SerializableDictionary<TKey, TValue>

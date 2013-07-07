@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Swarmops.Basic.Types.Communications;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
@@ -33,6 +34,12 @@ namespace Swarmops.Logic.Support
 
                 case "Swarmops.Basic.Types.BasicCommunicationTurnaround":
                     return CommunicationTurnaround.FromBasic((BasicCommunicationTurnaround)basic);
+
+                case "Swarmops.Basic.Types.Communications.BasicOutboundComm":
+                    return OutboundComm.FromBasic((BasicOutboundComm)basic);
+
+                case "Swarmops.Basic.Types.Communications.BasicOutboundCommRecipient":
+                    return OutboundCommRecipient.FromBasic((BasicOutboundCommRecipient)basic);
 
 
                 // ----------- FINANCIAL CLASSES ----------
