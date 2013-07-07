@@ -271,6 +271,8 @@ namespace Swarmops.Backend
             {
                 BotLog.Write(0, "MainCycle", "Ten-second entry");
 
+                CommsTransmitter.Run();
+
                 try
                 {
                     /*TestTrace("Running EventProcessor.Run()...");

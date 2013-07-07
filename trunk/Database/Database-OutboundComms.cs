@@ -241,6 +241,38 @@ namespace Swarmops.Database
             }
         }
 
+        public void SetOutboundCommTransmissionStart(int outboundCommId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetOutboundCommTransmissionStart", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "outboundCommId", outboundCommId);
+                AddParameterWithName(command, "dateTime", DateTime.UtcNow);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetOutboundCommClosed(int outboundCommId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetOutboundCommClosed", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "outboundCommId", outboundCommId);
+                AddParameterWithName(command, "dateTime", DateTime.UtcNow);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         #endregion
 
 

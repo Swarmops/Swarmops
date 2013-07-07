@@ -157,6 +157,40 @@ namespace Swarmops.Database
             }
         }
 
+        public void SetOutboundCommRecipientClosed (int outboundCommRecipientId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetOutboundCommRecipientClosed", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "outboundCommRecipientId", outboundCommRecipientId);
+                AddParameterWithName(command, "dateTime", DateTime.UtcNow);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public int SetOutboundCommRecipientFailed(int outboundCommRecipientId, string failReason)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetOutboundCommRecipientFailed", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "outboundCommId", outboundCommRecipientId);
+                AddParameterWithName(command, "dateTime", DateTime.UtcNow);
+                AddParameterWithName(command, "failReason", failReason);
+
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
         #endregion
 
 
