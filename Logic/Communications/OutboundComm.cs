@@ -128,6 +128,28 @@ namespace Swarmops.Logic.Communications
             get { return OutboundCommRecipients.ForOutboundComm(this); }
         }
 
+        public new bool Open
+        {
+            get { return base.Open; }
+            set
+            {
+                if (base.Open && value == false)
+                {
+                    SwarmDb.GetDatabaseForWriting().SetOutboundCommClosed(this.Identity);
+                    base.Open = false;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Can only change OutboundComms.Open from true to false");
+                }
+            }
+        }
+
+        public void StartTransmission()
+        {
+            SwarmDb.GetDatabaseForWriting().SetOutboundCommTransmissionStart(this.Identity);
+        }
+
     }
 
     public enum CommResolverClass
