@@ -28,11 +28,11 @@ namespace Swarmops.Utility.Communications
 
             // This is a rather simple mail (no images or stuff like that)
 
-            mail.From = new MailAddress(comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderMail], Encoding.UTF8);
+            mail.From = new MailAddress(comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderName], Encoding.UTF8);
             mail.To.Add(new MailAddress(person.Mail, person.Name));
 
             mail.Subject = comm[CommRenderPart.Subject];
-            mail.Body = comm[CommRenderPart.Subject];
+            mail.Body = comm[CommRenderPart.BodyText];
             mail.SubjectEncoding = Encoding.UTF8;
             mail.BodyEncoding = Encoding.UTF8;
             
