@@ -72,6 +72,11 @@
     <Compile Include="Communications\OutboundCommRecipients.cs" />
     <Compile Include="Communications\OutboundComms.cs" />
     <Compile Include="Communications\OutboundCommTransmitException.cs" />
+    <Compile Include="Communications\Transmission\App_LocalResources\NotificationPayload.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotificationPayload.resx</DependentUpon>
+    </Compile>
     <Compile Include="Communications\Transmission\IPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadEnvelope.cs" />
     <Compile Include="Communications\Transmission\NotificationPayload.cs" />
@@ -229,11 +234,6 @@
     <Compile Include="Support\SingularFactory.cs" />
     <Compile Include="Support\TemporaryIdentity.cs" />
     <Compile Include="Support\UrlTranslations.cs" />
-    <Compile Include="Swarmops.Logic.Localizations.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Swarmops.Logic.Localizations.resx</DependentUpon>
-    </Compile>
     <Compile Include="Swarm\Activists.cs" />
     <Compile Include="Swarm\AuditedPerson.cs" />
     <Compile Include="Swarm\ChurnData.cs" />
@@ -286,6 +286,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Communications\Transmission\App_LocalResources\NotificationPayload.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotificationPayload.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Security\App_LocalResources\Authentication.fi-FI.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -298,10 +302,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Authentication.sv-SE.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Swarmops.Logic.Localizations.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Swarmops.Logic.Localizations.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />

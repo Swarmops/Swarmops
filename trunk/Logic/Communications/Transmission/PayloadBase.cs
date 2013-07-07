@@ -23,6 +23,13 @@ namespace Swarmops.Logic.Communications.Transmission
 
         public static T FromXml (string xml)
         {
+            // Compensate for Mono bugs
+
+            if (xml.StartsWith("?"))
+            {
+                xml = xml.Substring(1);
+            }
+
             var serializer = new XmlSerializer(typeof(T));
 
             var stream = new MemoryStream();

@@ -24,8 +24,8 @@ namespace Swarmops.Logic.Communications.Transmission
 
         public NotificationPayload (string notificationResource, NotificationStrings strings)
         {
-            this.SubjectResource = "Notifications_" + notificationResource + "_Subject";
-            this.BodyResource = "Notifications_" + notificationResource + "_Body";
+            this.SubjectResource = notificationResource + "_Subject";
+            this.BodyResource = notificationResource + "_Body";
             this.Strings = strings;
         }
 
@@ -35,22 +35,16 @@ namespace Swarmops.Logic.Communications.Transmission
 
         public string GetSubject()
         {
-            ResourceManager resourceManager = new System.Resources.ResourceManager("Swarmops.Logic.Localizations",
-                                                                                   System.Reflection.Assembly.
-                                                                                       GetExecutingAssembly());
             // TODO: Pick culture
             
-            return ExpandMacros(resourceManager.GetString(this.SubjectResource));
+            return ExpandMacros(App_LocalResources.NotificationPayload.ResourceManager.GetString(this.SubjectResource));
         }
 
         public string GetBody()
         {
-            ResourceManager resourceManager = new System.Resources.ResourceManager("Swarmops.Logic.Localizations",
-                                                                                   System.Reflection.Assembly.
-                                                                                       GetExecutingAssembly());
             // TODO: Pick culture
 
-            return ExpandMacros(resourceManager.GetString(this.BodyResource));
+            return ExpandMacros(App_LocalResources.NotificationPayload.ResourceManager.GetString(this.BodyResource));
         }
 
         public string ExpandMacros (string input)
