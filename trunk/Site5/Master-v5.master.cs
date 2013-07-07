@@ -36,7 +36,6 @@ namespace Swarmops
             _currentUser = Person.FromIdentity(currentUserId);
             _authority = _currentUser.GetAuthority();
             _currentOrganization = Organization.FromIdentity(currentOrganizationId);
-
         }
 
         protected void Page_Load(object sender, EventArgs e)

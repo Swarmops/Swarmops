@@ -82,6 +82,29 @@ namespace Swarmops.Backend
 
                     OutboundComm.CreateNotification(null, NotificationResource.System_Startup);
 
+                    Console.WriteLine("Transmitting...");
+
+                    OutboundComms comms = OutboundComms.GetOpen();
+
+                    foreach (OutboundComm comm in comms)
+                    {
+                        if (comm.TransmitterClass != "Swarmops.Utility.Communications.CommsTransmitterMail")
+                        {
+                            throw new NotImplementedException();
+                        }
+
+                        ICommsTransmitter transmitter = new Swarmops.Utility.Communications.CommsTransmitterMail();
+
+                        OutboundCommRecipients recipients = comm.Recipients;
+                        PayloadEnvelope envelope = PayloadEnvelope.FromXml(comm.PayloadXml);
+
+                        foreach (OutboundCommRecipient recipient in recipients)
+                        {
+                            transmitter.Transmit(envelope, recipient.Person);
+                        }
+                    }
+
+
                     Console.Write("\r\nAll tests run. Waiting for mail queue to flush... ");
                     while (!MailTransmitter.CanExit)
                     {
