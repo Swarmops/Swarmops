@@ -23,12 +23,15 @@ namespace Swarmops.Logic.Communications.Transmission
 
         public static T FromXml (string xml)
         {
-            // Compensate for Mono bugs
+            // Compensate for stupid Mono encoding bugs
 
             if (xml.StartsWith("?"))
             {
                 xml = xml.Substring(1);
             }
+
+            xml = xml.Replace("&#x0;", "");
+            xml = xml.Replace("\x00", "");
 
             var serializer = new XmlSerializer(typeof(T));
 
