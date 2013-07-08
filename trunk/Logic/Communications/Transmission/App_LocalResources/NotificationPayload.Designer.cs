@@ -62,6 +62,26 @@ namespace Swarmops.Logic.Communications.Transmission.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unhandled exception was thrown in Swarmops:
+        ///
+        ///[EmbeddedPreformattedText].
+        /// </summary>
+        internal static string System_Exception_Body {
+            get {
+                return ResourceManager.GetString("System_Exception_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops EXCEPTION!.
+        /// </summary>
+        internal static string System_Exception_Subject {
+            get {
+                return ResourceManager.GetString("System_Exception_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks..
         /// </summary>
         internal static string System_Startup_Body {
