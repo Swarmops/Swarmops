@@ -76,7 +76,8 @@ namespace Swarmops.Logic.Communications.Transmission
     public enum NotificationResource
     {
         Unknown = 0,
-        System_Startup
+        System_Startup,
+        System_Exception
     }
 
 // ReSharper restore InconsistentNaming
@@ -92,7 +93,7 @@ namespace Swarmops.Logic.Communications.Transmission
         DateTimeExpiry,
         BudgetName,
         BudgetAmountFloat,
-        EmbeddedPreformattedList,
+        EmbeddedPreformattedText,
         HostName,
         SwarmopsVersion
     }
