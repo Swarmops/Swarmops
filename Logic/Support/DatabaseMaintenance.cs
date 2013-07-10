@@ -38,7 +38,7 @@ namespace Swarmops.Logic.Support
 
             using (WebClient client = new WebClient())
             {
-                sql = client.DownloadString("http://packages.activizr.com/schemas/initialize.sql");  // Hardcoded as security measure - don't want to pass arbitrary sql in from web layer
+                sql = client.DownloadString("http://packages.swarmops.com/schemas/initialize.sql");  // Hardcoded as security measure - don't want to pass arbitrary sql in from web layer
             }
 
             string[] sqlCommands = sql.Split('#');  // in the file, the commands are split by a single # sign. (Semicolons are an integral part of storedprocs, so they can't be used.)

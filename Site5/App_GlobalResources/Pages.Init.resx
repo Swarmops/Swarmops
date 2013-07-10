@@ -121,7 +121,7 @@
     <value>No other actions are available until setup is completed.</value>
   </data>
   <data name="Init_SidebarInfo_Welcome" xml:space="preserve">
-    <value>Welcome to Activizr! This is what the interface looks like, but it's not active yet - first, we'll go through some steps to set up your installation. You'll be up and running shortly.</value>
+    <value>Welcome to Swarmops! This is what the interface looks like, but it's not active yet - first, we'll go through some steps to set up your installation. You'll be up and running shortly.</value>
     <comment>Info box on database setup screen</comment>
   </data>
   <data name="Init_SidebarTodo_CompleteSetup" xml:space="preserve">

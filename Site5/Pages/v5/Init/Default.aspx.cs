@@ -19,6 +19,7 @@ using Telerik.Web.UI;
 
 using Swarmops.Database;
 using Country = Swarmops.Logic.Structure.Country;
+using Swarmops.Logic.Financial;
 
 public partial class Pages_v5_Init_Default : System.Web.UI.Page
 {
@@ -264,7 +265,10 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         if (!(VerifyHostName(this.TextServerName.Text) && VerifyHostAddress(this.TextServerAddress.Text)))
         {
-            return; // Probable hack attempt - fail silently
+            if (!System.Diagnostics.Debugger.IsAttached)
+            {
+                return; // Probable hack attempt - fail silently
+            }
         }
 
         // Store database credentials
@@ -286,7 +290,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                                          this.TextCredentialsAdminPassword.Text)));
     }
 
-    [WebMethod]
+    [WebMethod(true)]
     public static void InitDatabase()
     {
         // Make sure we're uninitialized
@@ -317,14 +321,14 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
 
     /// <summary>
-    /// This function copies the schemas and geography data off an existing Activizr installation. Runs in its own thread.
+    /// This function copies the schemas and geography data off an existing Swarmops installation. Runs in its own thread.
     /// </summary>
     public static void InitDatabaseThread()
     {
         // Ignore the session object, that method of sharing data didn't work, but a static variable did.
 
         _initProgress = 1;
-        _initMessage = "Loading schema from Activizr servers; creating tables and procs...";
+        _initMessage = "Loading schema from Swarmops servers; creating tables and procs...";
         Thread.Sleep(100);
 
         // Get the schema and initialize the database structures. Requires ADMIN access to database.
@@ -332,7 +336,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         Swarmops.Logic.Support.DatabaseMaintenance.FirstInitialization();
 
         _initProgress = 5;
-        _initMessage = "Getting list of countries from Activizr servers...";
+        _initMessage = "Getting list of countries from Swarmops servers...";
         Thread.Sleep(100);
 
         // Create translation lists
@@ -523,9 +527,21 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             _initProgress = 10 + (int) (countryCount*initStepPerCountry);
         }
 
+        // Create initial currencies (European)
+
+        Currency.Create("EUR", "Euros", "€");
+        Currency.Create("USD", "US Dollars", "$");
+        Currency.Create("CAD", "Canadian Dollars", "CA$");
+        Currency.Create("SEK", "Swedish Krona", string.Empty);
+        Currency.Create("NOK", "Norwegian Krona", string.Empty);
+        Currency.Create("DKK", "Danisk Krona", string.Empty);
+        Currency.Create("ISK", "Icelandic Krona", string.Empty);
+        Currency.Create("CHF", "Swiss Franc", string.Empty);
+        Currency.Create("GBP", "Pounds Sterling", "£");
+
         // Create the sandbox
 
-        Swarmops.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "activizr.com", "Act",
+        Swarmops.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "swarmops.com", "Ops",
                                                      rootGeographyId, true,
                                                      true, 0).EnableEconomy(Swarmops.Logic.Financial.Currency.FromCode("EUR"));
 
@@ -618,6 +634,13 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     [WebMethod(true)]
     public static bool VerifyHostNameAndAddress(string name, string address)
     {
+        if (Path.DirectorySeparatorChar == '\\')
+        {
+            // Running in development mode on Windows, so accept any response
+
+            return true;
+        }
+
         return VerifyHostName(HttpUtility.UrlDecode(name)) && VerifyHostAddress(HttpUtility.UrlDecode(address));
     }
 
@@ -627,7 +650,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         return SwarmDb.Configuration.TestConfigurationWritable();
     }
 
-    [WebMethod]
+    [WebMethod(true)]
     public static void CreateFirstUser(string name, string mail, string password)
     {
         // Make sure that no first person exists already, as a security measure

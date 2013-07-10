@@ -95,7 +95,8 @@ namespace Swarmops.Database
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
 
-                using (TextWriter writeFileStream = new StreamWriter(GetConfigurationFileName()))
+                string fileName = GetConfigurationFileName();
+                using (TextWriter writeFileStream = new StreamWriter(fileName))
                 {
                     serializer.Serialize(writeFileStream, configuration);
                 }
@@ -118,14 +119,16 @@ namespace Swarmops.Database
 
                     return "/etc/swarmops/database.config";
                 }
-                else if (HttpContext.Current != null)
+                else if (System.Diagnostics.Debugger.IsAttached)
                 {
-                    // Dev web process
+                    // Dev web process. This will throw if we're not in a HttpContext and trying to debug something else.
 
                     return HttpContext.Current.Server.MapPath ("~/database.config");
                 }
                 else
                 {
+                    throw new NotImplementedException("Invalid state");
+
                     // Dev console process
 
                     return "database.config"; // Each dev needs to set the working directory to the Console directory when debugging

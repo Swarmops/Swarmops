@@ -18,7 +18,7 @@
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
 
     <!-- page title -->
-	<title>Activizr - Initialize Installation</title>
+	<title>Swarmops - Initialize Installation</title>
 
 	<!-- telerik style sheet manager, followed by style sheet -->
 	<telerik:RadStyleSheetManager id="RadStyleSheetManager" runat="server" />
@@ -47,11 +47,24 @@
 
 
 	    $(document).ready(function () {
+
+	        $('#<%=this.TextCredentialsReadDatabase.ClientID %>').focusout(function () {
+	            var dbValue = $('#<%=this.TextCredentialsReadDatabase.ClientID %>').val();
+	            $('#<%=this.TextCredentialsWriteDatabase.ClientID %>').val(dbValue);
+	            $('#<%=this.TextCredentialsAdminDatabase.ClientID %>').val(dbValue);
+	        });
+
+	        $('#<%=this.TextCredentialsReadServer.ClientID %>').focusout(function () {
+	            var serverValue = $('#<%=this.TextCredentialsReadServer.ClientID %>').val();
+	            $('#<%=this.TextCredentialsWriteServer.ClientID %>').val(serverValue);
+	            $('#<%=this.TextCredentialsAdminServer.ClientID %>').val(serverValue);
+	        });
+
 	        // Initialize Smart Wizard	
 	        $('#wizard').smartWizard({
 	            transitionEffect: 'fade',
 	            keyNavigation: false,
-	            onLeaveStep: leaveAStepCallback, 
+	            onLeaveStep: leaveAStepCallback,
 	            onFinish: onFinishCallback
 	        });
 
@@ -60,9 +73,9 @@
 	            return validateStep(stepNum);
 	        }
 
-            function onFinishCallback(obj) {
-                $('#<%=this.ButtonLogin.ClientID %>').click();
-            }
+	        function onFinishCallback(obj) {
+	            $('#<%=this.ButtonLogin.ClientID %>').click();
+	        }
 
 	        function validateStep(stepNumber) {
 	            var isValid = false;
@@ -79,7 +92,7 @@
 	                    $.ajax({
 	                        type: "POST",
 	                        url: "Default.aspx/VerifyHostNameAndAddress",
-	                        data: "{'name': '" + escape(hostName) + "', 'address': '" + escape(hostAddress) + "'}", 
+	                        data: "{'name': '" + escape(hostName) + "', 'address': '" + escape(hostAddress) + "'}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
 	                        async: false,  // blocks until function returns - race conditions otherwise
@@ -155,6 +168,9 @@
 
 	            }
 	            else if (stepNumber == 3) {
+	                isValid = false; // always disallow button press on populate step
+	            }
+	            else if (stepNumber == 4) {
 	                isValid = true; // assume true, make false as we go
 
 	                // Check that all four boxes are filled in, and that Password1 and Password2 equal each other.
@@ -197,7 +213,7 @@
 	                    });
 	                }
 	            }
-	            else if (stepNumber == 4) {
+	            else if (stepNumber == 5) {
 	                // If we get here, we're always good
 
 	                isValid = true;
@@ -274,14 +290,16 @@
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
+	                $('#SpanInitProgressMessage').text(msg.d);
+	                
 	                if (msg.d == 'Complete.') {
-	                    
+
                         // We're done. Do nothing, the progress bar updater will do this step.
+	                    $('#wizard').smartWizard("goToStep", 4);
 
 	                } else {
-	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
 
-	                    $('#SpanInitProgressMessage').text(msg.d);
+	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
 	                    setTimeout('updateInitProgressMessage();', 500);
 	                }
 	            }
@@ -314,7 +332,7 @@
 
 	<div class="center980px">
 	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /></div>
-        <div class="logoimage"><a href="/"><img style="border:none" src="/Style/Images/activizr-v5-pirateedition-logo.png" alt="Activizr Logo" /></a></div>
+        <div class="logoimage"><a href="/"><img style="border:none" src="/Style/Images/activizr-v5-pirateedition-logo.png" alt="Swarmops Logo" /></a></div>
         <div class="break"></div>
         <div class="topmenu">
             <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>
@@ -469,12 +487,19 @@
   				        <li><a href="#step-3">
                         <label class="stepNumber">3</label>
                         <span class="stepDesc">
-                           User Data<br />
-                           <small>Let's create the first user</small>
+                           Populate<br />
+                           <small>Wait while bootstrap data is loaded</small>
                         </span>                   
                      </a></li>
   				        <li><a href="#step-4">
                         <label class="stepNumber">4</label>
+                        <span class="stepDesc">
+                           User Data<br />
+                           <small>Let's create the first user</small>
+                        </span>                   
+                     </a></li>
+  				        <li><a href="#step-5">
+                        <label class="stepNumber">5</label>
                         <span class="stepDesc">
                            Complete<br />
                            <small>All done. Let's login!</small>
@@ -482,10 +507,10 @@
                     </a></li>
   			        </ul>
   			        <div id="step-1">	
-                        <h2>Welcome to Activizr</h2>
-                        <p>Congratulations! Since you're reading this, you have successfully installed the Activizr packages and set up an Apache virtual server using mod_mono with Mono&nbsp;2.</p>
+                        <h2>Welcome to Swarmops</h2>
+                        <p>Congratulations! Since you're reading this, you have successfully installed the Swarmops packages and set up an Apache virtual server using mod_mono.</p>
 
-  			            <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Activizr installation. To do that, answer these simple questions:</p> <asp:Label runat="server" ID="LabelTest" />
+  			            <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Swarmops installation. To do that, answer these simple questions:</p> <asp:Label runat="server" ID="LabelTest" />
                         
                         <div class="entryLabelsAdmin" style="width:250px">
                             What is this server's /etc/hostname?<br />
@@ -501,9 +526,9 @@
   			        <div id="step-2">
   			            <div id="DivDatabaseUnwritable">
   			            <h2>Fix File Permissions</h2>
-                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="FailWriteConfig" runat="server" ImageAlign="Left" /><p>The bad news is that we can't write to the configuration file. This is fairly normal for a new installation. The good news is that you can fix that, so we can continue installing. Please open a shell to the Activizr server and execute the following commands:</p>
-                        <p><strong>cd /opt/activizr/frontend<br/>sudo chown www-data:www-data database.config<br/>sudo chmod o+w database.config</strong></p>
-                        <p>The installation will continue when it detects that these steps have been done.</p>
+                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="FailWriteConfig" runat="server" ImageAlign="Left" /><p>The bad news is that we can't write to the configuration file. This is fairly normal for a new installation. The good news is that you can fix that, so we can continue installing. Please open a shell to the Swarmops server and execute the following commands:</p>
+                        <p><strong>cd /etc/swarmops<br/>sudo chown www-data:www-data database.config<br/>sudo chmod o+w database.config</strong></p>
+                        <p>The installation will continue when it detects that these steps have been taken.</p>
   			            </div>
                         <div id="DivDatabaseWritable" style="display:none">
                             <h2>Connect to database</h2>	
@@ -521,57 +546,55 @@
                             <asp:TextBox CssClass="textinput" ID="TextCredentialsReadDatabase" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadServer" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadUser" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadPassword" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadPassword" TextMode="Password" runat="server" />&nbsp;<br />
                         </div>
                         <div class="entryFieldsAdmin" style="width:80px;margin-left:10px">
                             <strong>Write access</strong><br/>
                             <asp:TextBox CssClass="textinput" ID="TextCredentialsWriteDatabase" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteServer" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteUser" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsWritePassword" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsWritePassword" TextMode="Password" runat="server" />&nbsp;<br />
                         </div>
                         <div class="entryFieldsAdmin" style="width:80px;margin-left:10px">
                             <strong>Admin access</strong><br/>
                             <asp:TextBox CssClass="textinput" ID="TextCredentialsAdminDatabase" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminServer" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" TextMode="Password" runat="server" />&nbsp;<br />
                         </div>
                         <div style="display:none"><asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button" OnClick="ButtonInitDatabase_Click"/></div>
                         </div>
                     </div>                      
   			        <div id="step-3">
-  			            <div id="DivInitializingDatabase">
-  			                <h2>Initializing database</h2>
-                            <div id="DivProgressDatabase"></div>
-                            <p>Please wait while the database is being initialized with schemas and geographic data from the Activizr servers. This is going to take a <strong>significant</strong> amount of time; we're loading tons of geodata onto your new server.</p>
-                            <p><span id="SpanInitProgressMessage">Initializing...</span></p>
-  			            </div>
-                        <div id="DivCreateFirstUser" style="display:none">
-                            <h2>Creating the first user</h2>	
-                            <p>Your new Activizr server has been loaded with the geographic layout of the countries we're active in, and the first organization - the <em>Sandbox</em> - has been created. We are now going to create your user account, which will become the systems administrator account of this Activizr installation.</p>
-                        
-                            <p>(You can add other people to the <em>System Administrator</em> role later.)</p>
-
-                            <div class="entryLabelsAdmin" style="width:250px">
-                                Your full name<br />
-  			                    Your email<br />
-                                Your password<br/>
-                                Repeat password
-                            </div>
-                            <div class="entryFieldsAdmin">
-                                <asp:TextBox CssClass="textinput" ID="TextFirstUserName" runat="server" />&nbsp;<br />
-                                <asp:TextBox CssClass="textinput"  ID="TextFirstUserMail" runat="server" />&nbsp;<br />
-                                <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword1" TextMode="Password" runat="server" />&nbsp;<br />
-                                <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword2" TextMode="Password" runat="server" />&nbsp;<br />
-                            </div>
-                        </div>            				          
+  			            <h2>Initializing database</h2>
+                        <div id="DivProgressDatabase"></div>
+                        <p>Please wait while the database is being initialized with schemas and geographic data from the Swarmops servers. This is going to take a <strong>significant</strong> amount of time; we're loading tons of geodata onto your new server.</p>
+                        <p><span id="SpanInitProgressMessage">Initializing...</span></p>
                     </div>
-  			        <div id="step-4" style="display:none">
+                    <div id="step-4">
+                        <h2>Creating the first user</h2>	
+                        <p>Your new Swarmops server has been loaded with the geographic layout of the countries we're active in, and the first organization - the <em>Sandbox</em> - has been created. We are now going to create your user account, which will become the systems administrator account of this Swarmops installation.</p>
+                        
+                        <p>(You can add other people to the <em>System Administrator</em> role later.)</p>
+
+                        <div class="entryLabelsAdmin" style="width:250px">
+                            Your full name<br />
+  			                Your email<br />
+                            Your password<br/>
+                            Repeat password
+                        </div>
+                        <div class="entryFieldsAdmin">
+                            <asp:TextBox CssClass="textinput" ID="TextFirstUserName" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextFirstUserMail" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword1" TextMode="Password" runat="server" />&nbsp;<br />
+                            <asp:TextBox CssClass="textinput"  ID="TextFirstUserPassword2" TextMode="Password" runat="server" />&nbsp;<br />
+                        </div>
+                    </div>
+  			        <div id="step-5" style="display:none">
   			            <asp:UpdatePanel runat="server" ID="UpdateFinished" UpdateMode="Conditional">
   			                <ContentTemplate>
                         <h2>All done - ready to login</h2>	
-                        <p>Your Activizr installation is ready! Press Finish to log in as your new user and start using it.</p>
+                        <p>Your Swarmops installation is ready! Press Finish to log in as your new user and start using it.</p>
                         <div style="display:none"><asp:Button runat="server" ID="ButtonLogin" OnClick="ButtonLogin_Click" Text="This button is invisible."/></div>
                         </ContentTemplate>
                         <Triggers>
