@@ -105,7 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="etcinitd\swarmops-backend" />
+    <None Include="etcinitd\etcinitd-swarmops-backend" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -50,7 +50,7 @@ namespace Swarmops.Site.Automation
         /// <remarks/>
         public GetGeographyData()
         {
-            this.Url = "http://pirate.activizr.com/Automation/GetGeographyData.asmx";
+            this.Url = "https://pirate.activizr.com/Automation/GetGeographyData.asmx";
         }
 
         /// <remarks/>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Swarmops.Basic.Types;
+using Swarmops.Database;
 
 namespace Swarmops.Logic.Financial
 {
@@ -17,26 +18,27 @@ namespace Swarmops.Logic.Financial
             return new Currency(basic);
         }
 
-        public static Currency FromIdentity (int currencyId)
+        public static Currency FromIdentity(int currencyId)
         {
-            if (currencyId == 1)
-            {
-                return FromBasic(new BasicCurrency(1, "SEK", "Swedish Krona", "SEK"));
-            }
-
-            throw new NotImplementedException("Currency.FromIdentity");
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetCurrency(currencyId));
         }
 
-        public static Currency FromCode (string code)
+        public static Currency FromIdentityAggressive(int currencyId)
+        {
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetCurrency(currencyId));  // "For writing" is intentional - replication timing issue
+        }
+
+        public static Currency FromCode(string code)
         {
             code = code.ToUpperInvariant();
 
-            if (code == "SEK")
-            {
-                return FromIdentity(1);
-            }
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetCurrency(code));
+        }
 
-            throw new NotImplementedException("Currency.FromIdentity");
+        public static Currency Create (string code, string name, string sign)
+        {
+            return FromIdentityAggressive(
+                SwarmDb.GetDatabaseForWriting().CreateCurrency(code, name, sign));
         }
     }
 }
