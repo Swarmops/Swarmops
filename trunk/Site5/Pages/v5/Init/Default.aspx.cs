@@ -538,6 +538,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         Currency.Create("ISK", "Icelandic Krona", string.Empty);
         Currency.Create("CHF", "Swiss Franc", string.Empty);
         Currency.Create("GBP", "Pounds Sterling", "£");
+        Currency.Create("BTC", "Bitcoin", "฿");
 
         // Create the sandbox
 
@@ -704,7 +705,10 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         if (!(VerifyHostName(this.TextServerName.Text) && VerifyHostAddress(this.TextServerAddress.Text)))
         {
-            return; // Probable hack attempt - fail silently
+            if (!System.Diagnostics.Debugger.IsAttached)
+            {
+                return; // Probable hack attempt - fail silently
+            }
         }
 
         Swarmops.Logic.Swarm.Person expectedPersonOne = Swarmops.Logic.Security.Authentication.Authenticate("1", this.TextFirstUserPassword1.Text);

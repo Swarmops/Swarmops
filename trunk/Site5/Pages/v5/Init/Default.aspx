@@ -45,6 +45,7 @@
 	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
 	<script type="text/javascript">
 
+	    var databaseInitComplete = false;
 
 	    $(document).ready(function () {
 
@@ -168,7 +169,11 @@
 
 	            }
 	            else if (stepNumber == 3) {
-	                isValid = false; // always disallow button press on populate step
+	                isValid = databaseInitComplete;
+	                
+                    if (isValid) {
+                        $('#<%=this.TextFirstUserName.ClientID %>').focus();
+                    }
 	            }
 	            else if (stepNumber == 4) {
 	                isValid = true; // assume true, make false as we go
@@ -238,7 +243,7 @@
 	                    // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
 	                    $('#DivDatabaseUnwritable').css('display', 'none');
 	                    $('#DivDatabaseWritable').fadeIn('slow');
-	                    $('#<%=this.TextCredentialsReadDatabase.ClientID %>').focus();
+	                    setTimeout('$("#<%=this.TextCredentialsReadDatabase.ClientID %>").focus();', 250);
 	                } else {
 	                    // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
 
@@ -258,11 +263,12 @@
 	            dataType: "json",
 	            success: function (msg) {
 	                if (msg.d > 99) {
-
-	                    // We're done. Undisplay the progress bar, show the next step
-	                    $('#DivInitializingDatabase').css('display', 'none');
-	                    $('#DivCreateFirstUser').fadeIn('slow');
-	                    // $('#<%=this.TextCredentialsReadDatabase.ClientID %>').focus();
+	                    $("#DivProgressDatabase .ui-progressbar-value").animate(
+                            {
+                                width: "100%"
+                            }, { queue: false });
+	                    databaseInitComplete = true;
+	                    $(".buttonNext").click();
 	                } else {
 	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
 
@@ -291,11 +297,10 @@
 	            dataType: "json",
 	            success: function (msg) {
 	                $('#SpanInitProgressMessage').text(msg.d);
-	                
+
 	                if (msg.d == 'Complete.') {
 
-                        // We're done. Do nothing, the progress bar updater will do this step.
-	                    $('#wizard').smartWizard("goToStep", 4);
+	                    // We're done. Do nothing, the progress bar updater will do this step.
 
 	                } else {
 
