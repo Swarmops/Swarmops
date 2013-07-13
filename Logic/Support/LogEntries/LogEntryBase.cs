@@ -4,12 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-using Swarmops.Logic.Support;
 
-namespace Swarmops.Logic.Communications.Transmission
+namespace Swarmops.Logic.Support.Log
 {
     [Serializable]
-    public class PayloadBase<T>: IXmlPayload
+    public class LogEntryBase<T>: IXmlPayload
     {
         public string ToXml()
         {
