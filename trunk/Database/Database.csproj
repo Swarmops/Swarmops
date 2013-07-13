@@ -116,6 +116,7 @@
     <Compile Include="Database-Roles.cs" />
     <Compile Include="Database-OutboundPhoneMessages.cs" />
     <Compile Include="Database-Salaries.cs" />
+    <Compile Include="Database-SwarmopsLog.cs" />
     <Compile Include="Database-TaxLevels.cs" />
     <Compile Include="Database-TemporaryIdentities.cs" />
     <Compile Include="Database-UrlTranslations.cs" />

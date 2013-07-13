@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Swarmops.Logic.Communications.Transmission
+namespace Swarmops.Logic.Support
 {
-    public interface IPayload
+    class SwarmopsLog
     {
-        string ToXml();
     }
 }

@@ -58,6 +58,7 @@
     <Compile Include="Enums\OrganizationFinancialAccountType.cs" />
     <Compile Include="Enums\OutboundCommPriority.cs" />
     <Compile Include="Types\BasicBallot.cs" />
+    <Compile Include="Types\BasicSwarmopsLogEntry.cs" />
     <Compile Include="Types\Communications\BasicOutboundComm.cs" />
     <Compile Include="Types\Communications\BasicOutboundCommRecipient.cs" />
     <Compile Include="Types\Financial\BasicCashAdvance.cs" />

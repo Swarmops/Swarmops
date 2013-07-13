@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Communications.Transmission
 {
@@ -13,7 +14,7 @@ namespace Swarmops.Logic.Communications.Transmission
             // default public ctor for serializability
         }
 
-        public PayloadEnvelope(IPayload payload)
+        public PayloadEnvelope(IXmlPayload payload)
         {
             PayloadClass = payload.GetType().ToString();
             PayloadXml = payload.ToXml();
