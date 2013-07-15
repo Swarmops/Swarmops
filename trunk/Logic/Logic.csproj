@@ -193,6 +193,9 @@
     <Compile Include="Support\DatabaseMaintenance.cs" />
     <Compile Include="Support\Imagery.cs" />
     <Compile Include="Support\IXmlPayload.cs" />
+    <Compile Include="Support\LogEntries\CashAdvanceAttestedLogEntry.cs" />
+    <Compile Include="Support\LogEntries\CashAdvanceRequestedLogEntry.cs" />
+    <Compile Include="Support\LogEntries\FinancialActionBase.cs" />
     <Compile Include="Support\LogEntries\LogEntryBase.cs" />
     <Compile Include="Support\ObjectOptionalData.cs" />
     <Compile Include="Support\PluralBase.cs" />
@@ -234,6 +237,7 @@
     <Compile Include="Support\SerializableDictionary.cs" />
     <Compile Include="Support\SingularFactory.cs" />
     <Compile Include="Support\SwarmopsLog.cs" />
+    <Compile Include="Support\SwarmopsLogEntry.cs" />
     <Compile Include="Support\TemporaryIdentity.cs" />
     <Compile Include="Support\UrlTranslations.cs" />
     <Compile Include="Swarm\Activists.cs" />

@@ -109,7 +109,7 @@ namespace Swarmops.Database
             }
         }
 
-        public void CreateSwarmopsLogEntryAffectedObject (int swarmopsLogEntryId, string affectedObjectType, string affectedObjectId)
+        public void CreateSwarmopsLogEntryAffectedObject (int swarmopsLogEntryId, string affectedObjectType, int affectedObjectId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
