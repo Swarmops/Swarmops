@@ -86,6 +86,8 @@ namespace Swarmops.Backend
 
                     OutboundComms comms = OutboundComms.GetOpen();
 
+                    Console.WriteLine("{0} open items in outbound comms.", comms.Count);
+
                     foreach (OutboundComm comm in comms)
                     {
                         if (comm.TransmitterClass != "Swarmops.Utility.Communications.CommsTransmitterMail")
