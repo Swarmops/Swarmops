@@ -6,33 +6,29 @@ if [ "$1" == "frontend" ]; then
   SOURCEDIR=/home/packager/lastbuild/frontend
   TARGETDIR=frontend
   PACKAGE=frontend
-  INCLUDEDB=no
-  COPYFILES=yes
+  INCLUDEDB=yes
 elif [ "$1" == "backend" ]; then
   echo "Packaging backend..."
   SOURCEDIR=/home/packager/lastbuild/backend
   TARGETDIR=backend
   PACKAGE=backend
-  INCLUDEDB=no
-  COPYFILES=yes
+  INCLUDEDB=yes
 elif [ "$1" == "extscripts" ]; then
   echo "Packaging external scripts..."
   SOURCEDIR=/home/prod/Smallwebs/HostedScripts
   TARGETDIR=frontend/Scripts/ExternalScripts
   PACKAGE=external-scripts
-  COPYFILES=yes
-elif [ "$1" == "common" ]; then
-  echo "Packaging common (the config file)..."
-  COPYFILES=no
-  INCLUDEDB=yes
-  PACKAGE=common
 else
   echo "Syntax:"
-  echo "repackage {frontend|backend|extscripts|common} [stable]"
+  echo "repackage {frontend|backend|extscripts} [stable]"
   echo
   echo "If 'stable' is not given, -internal will be added to the package name."
   exit 1;
 fi
+
+BUILDIDFILE=if not exist etcinitd\. mkdir etcinitd
+copy ..\..\etcinitd\swarmops-backend etcinitd
+
 
 if [ "$2" == "stable" ]; then
   CONTROLSUFFIX=-stable
@@ -46,10 +42,6 @@ else
 fi
 
 PACKAGENAME=$PACKAGE$CONTROLSUFFIX
-BUILDIDSOURCE="BuildIdentity.txt"
-
-cp ../lastbuild/frontend/BuildIdentity.txt ./BuildIdentity.txt
-cp ../lastbuild/frontend/BuildIdentity.txt ../lastbuild/backend/.
 
 # Delete flag that indicates a new drop is available
 #rm /home/packaging/lastbuild/BuildDropped.txt
@@ -65,23 +57,20 @@ if [ -d etc ]; then
   rm -rf etc
 fi
 
-if [ "$COPYFILES" == "yes" ]; then
-  echo "Copying payload files into repo..."
-  mkdir -p opt/swarmops/$TARGETDIR
-  cp -R $SOURCEDIR/* opt/swarmops/$TARGETDIR/.
+echo "Copying payload files into repo..."
+mkdir -p opt/swarmops/$TARGETDIR
+cp -R $SOURCEDIR/* opt/swarmops/$TARGETDIR/.
 
-  if [ -d $SOURCEDIR/etcinitd ]; then
-    echo "Adding /etc/init.d files..."
-    mkdir etc
-    mkdir etc/init.d
-    cp $SOURCEDIR/etcinitd/* etc/init.d/.
-  fi
+if [ -d $SOURCEDIR/etcinitd ]; then
+  echo "Adding /etc/init.d files..."
+  mkdir etc
+  mkdir etc/init.d
+  cp $SOURCEDIR/etcinitd/* etc/init.d/.
 fi
 
 echo "Copying template files into repo..."
 if [ "$INCLUDEDB" == "yes" ]; then
-  mkdir -p etc/swarmops
-  cp ../templates/database.config.template etc/swarmops/database.config
+  cp ../templates/database.config.template opt/swarmops/$TARGETDIR/database.config
 fi
 cp ../templates/control-$PACKAGENAME.template DEBIAN/control
 cp ../templates/conffiles-$PACKAGE.template DEBIAN/conffiles
@@ -89,7 +78,6 @@ cp ../templates/conffiles-$PACKAGE.template DEBIAN/conffiles
 if [ -e "../templates/prerm-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE prerm script..."
   cp ../templates/prerm-$PACKAGE.template DEBIAN/prerm
-  chmod +x DEBIAN/prerm
 else
   if [ -e "DEBIAN/prerm" ]; then
     echo "Deleting old prerm script..."
@@ -100,7 +88,6 @@ fi
 if [ -e "../templates/postinst-$PACKAGE.template" ]; then
   echo "Adding $PACKAGE postinst script..."
   cp ../templates/postinst-$PACKAGE.template DEBIAN/postinst
-  chmod +x DEBIAN/postinst
 else
   if [ -e "DEBIAN/postinst" ]; then
     echo "Deleting old postinst script..."
@@ -108,8 +95,8 @@ else
   fi
 fi
 
-echo "Setting build number ($(cat ../$BUILDIDSOURCE | tr -d ' \r'))..."
-sed -i "s/--BuildNumber--/$(cat ../$BUILDIDSOURCE | tr -d ' \r')/" DEBIAN/control
+echo "Setting build number ($(cat ../../lastbuild/frontend/BuildIdentity.txt | tr -d ' \r'))..."
+sed -i "s/--BuildNumber--/$(cat ../../lastbuild/frontend/BuildIdentity.txt | tr -d ' \r')/" DEBIAN/control
 
 # Calculating new checksums
 echo "Creating MD5 checksum file..."
@@ -128,9 +115,8 @@ echo "Updating repositories..."
 scripts/update-repos swarmops-$PACKAGENAME-latest.deb
 
 echo "Notifying developers that new build has deployed for test..."
-echo "Swarmops $PACKAGENAME build $(cat $BUILDIDSOURCE | tr -d ' \r') has been deployed as daily build." > deploymsg.txt
+echo "Swarmops $PACKAGENAME build $(cat debian-stable/opt/swarmops/frontend/BuildIdentity.txt | tr -d ' \r') has been deployed as daily build." > deploymsg.txt
 echo "Test it at http://dev.swarmops.com/ as usual." >> deploymsg.txt
-mail -s "Swarmops $PACKAGENAME $(cat $BUILDIDSOURCE) deployed as daily" "swarmops-builds@falkvinge.net" < deploymsg.txt
+mail -s "Swarmops $PACKAGENAME $(cat debian-stable/opt/swarmops/frontend/BuildIdentity.txt)deployed as daily" "swarmops-builds@falkvinge.net" < deploymsg.txt
 
-rm deploymsg.txt
-rm $BUILDIDSOURCE
+

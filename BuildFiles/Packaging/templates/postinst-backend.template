@@ -1,0 +1,5 @@
+#! /bin/bash
+
+#todo: register
+echo "Swarmops post-installation script running"
+/etc/init.d/swarmops-backend start
