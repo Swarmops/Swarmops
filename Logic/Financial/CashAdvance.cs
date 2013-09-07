@@ -5,6 +5,8 @@ using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 
@@ -37,12 +39,15 @@ namespace Swarmops.Logic.Financial
 
         public static CashAdvance Create(Organization organization, Person forPerson, Person createdByPerson, Int64 amountCents, FinancialAccount budget, string description)
         {
-            return
-                FromIdentityAggressive(SwarmDb.GetDatabaseForWriting().CreateCashAdvance(forPerson.Identity,
+            CashAdvance newAdvance = FromIdentityAggressive(SwarmDb.GetDatabaseForWriting().CreateCashAdvance(forPerson.Identity,
                                                                                           createdByPerson.Identity,
                                                                                           organization.Identity,
                                                                                           budget.Identity, amountCents,
                                                                                           description));
+
+            OutboundComm.CreateNotificationForAttest(budget, forPerson, (double) amountCents/100.0, description, NotificationResource.CashAdvance_Requested); // Slightly misplaced logic, but failsafer here
+
+            return newAdvance;
         }
 
         #endregion

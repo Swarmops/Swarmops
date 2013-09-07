@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types.Communications;
 using Swarmops.Database;
 using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
@@ -92,8 +94,35 @@ namespace Swarmops.Logic.Communications
             return comm;
         }
 
-        // public static OutboundComm CreateNotification (FinancialAccount budget, string notificationResource)
 
+        public static OutboundComm CreateNotificationForAttest (FinancialAccount budget, Person concernedPerson, double amountRequested, string purpose, NotificationResource notification)
+        {
+            NotificationPayload payload = new NotificationPayload(notification.ToString());
+            payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.Code;
+            payload.Strings[NotificationString.OrganizationName] = budget.Organization.Name;
+            payload.Strings[NotificationString.BudgetAmountFloat] = amountRequested.ToString(CultureInfo.InvariantCulture);
+            payload.Strings[NotificationString.RequestReason] = purpose;
+            payload.Strings[NotificationString.BudgetName] = budget.Name;
+
+            OutboundComm comm = OutboundComm.Create(null, null, budget.Organization, CommResolverClass.Unknown, null,
+                                                    CommTransmitterClass.CommsTransmitterMail,
+                                                    new PayloadEnvelope(payload).ToXml(),
+                                                    OutboundCommPriority.Low);
+
+            if (budget.OwnerPersonId == 0)
+            {
+                comm.AddRecipient(Person.FromIdentity(1)); // Add admin - not good, should be org admins // HACK // TODO
+            }
+            else
+            {
+                comm.AddRecipient(budget.Owner);
+            }
+
+            comm.Resolved = true;
+
+            return comm;
+
+        }
 
         public new bool Resolved
         {

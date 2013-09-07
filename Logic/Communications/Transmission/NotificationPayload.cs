@@ -51,7 +51,18 @@ namespace Swarmops.Logic.Communications.Transmission
         {
             // TODO: Replace all, of course
 
-            return input.Replace("[HostName]", System.Net.Dns.GetHostName());
+            input = input.Replace("[HostName]", System.Net.Dns.GetHostName());
+
+            // Loop through supplied strings and replace them in the resource. Not very efficient but who cares
+
+            foreach (NotificationString notificationString in Strings.Keys)
+            {
+                // TODO: Check if string ends in Float, and if so, parse and culturize it
+
+                input = input.Replace("[" + notificationString + "]", Strings[notificationString]);
+            }
+
+            return input;
         }
 
         #region Implementation of ICommsRenderer
@@ -77,7 +88,9 @@ namespace Swarmops.Logic.Communications.Transmission
     {
         Unknown = 0,
         System_Startup,
-        System_Exception
+        System_Exception,
+        CashAdvance_Requested,
+        CashAdvance_Attested
     }
 
 // ReSharper restore InconsistentNaming
@@ -93,7 +106,9 @@ namespace Swarmops.Logic.Communications.Transmission
         DateTimeExpiry,
         BudgetName,
         BudgetAmountFloat,
+        CurrencyCode,
         EmbeddedPreformattedText,
+        RequestReason,
         HostName,
         SwarmopsVersion
     }
