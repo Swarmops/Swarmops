@@ -7,7 +7,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Basic.Enums;
 
-namespace Swarmops.Logic.Tasks
+namespace Swarmops.Logic.DashboardTasks
 {
     public class Tasks: List<TaskGroup>
     {

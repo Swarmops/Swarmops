@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Text;
-using Swarmops.Logic.Tasks;
+using Swarmops.Logic.DashboardTasks;
 using Swarmops;
 using System.Text.RegularExpressions;
 using Swarmops.Basic.Enums;
@@ -968,9 +968,9 @@ namespace Swarmops.Logic.Swarm
             set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BlogUrl, value); }
         }
 
-        public Tasks.Tasks Tasks
+        public DashboardTasks.Tasks Tasks
         {
-            get { return Logic.Tasks.Tasks.ForPerson(this); }
+            get { return Logic.DashboardTasks.Tasks.ForPerson(this); }
         }
 
         public string Formal

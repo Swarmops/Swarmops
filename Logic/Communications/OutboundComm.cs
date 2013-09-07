@@ -103,6 +103,7 @@ namespace Swarmops.Logic.Communications
             payload.Strings[NotificationString.BudgetAmountFloat] = amountRequested.ToString(CultureInfo.InvariantCulture);
             payload.Strings[NotificationString.RequestReason] = purpose;
             payload.Strings[NotificationString.BudgetName] = budget.Name;
+            payload.Strings[NotificationString.ConcernedPersonName] = concernedPerson.Canonical;
 
             OutboundComm comm = OutboundComm.Create(null, null, budget.Organization, CommResolverClass.Unknown, null,
                                                     CommTransmitterClass.CommsTransmitterMail,

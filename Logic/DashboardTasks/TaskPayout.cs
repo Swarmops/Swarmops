@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Swarmops.Logic.Financial;
 
-namespace Swarmops.Logic.Tasks
+namespace Swarmops.Logic.DashboardTasks
 {
     public class TaskPayout: TaskBase
     {

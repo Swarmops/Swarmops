@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Swarmops.Logic.Tasks
+namespace Swarmops.Logic.DashboardTasks
 {
     public class TaskBase
     {

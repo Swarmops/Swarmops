@@ -269,17 +269,17 @@
     <Compile Include="Swarm\VolunteerRole.cs" />
     <Compile Include="Swarm\VolunteerRoles.cs" />
     <Compile Include="Swarm\Volunteers.cs" />
-    <Compile Include="Tasks\TaskAdvanceDebt.cs" />
-    <Compile Include="Tasks\TaskAttestationLate.cs" />
-    <Compile Include="Tasks\TaskPayout.cs" />
-    <Compile Include="Tasks\TaskBase.cs" />
-    <Compile Include="Tasks\TaskReceiptValidation.cs" />
-    <Compile Include="Tasks\TaskExpenseClaim.cs" />
-    <Compile Include="Tasks\TaskGroup.cs" />
-    <Compile Include="Tasks\TaskInboundInvoice.cs" />
-    <Compile Include="Tasks\Tasks.cs" />
-    <Compile Include="Tasks\TaskSalary.cs" />
-    <Compile Include="Tasks\TaskVolunteer.cs" />
+    <Compile Include="DashboardTasks\TaskAdvanceDebt.cs" />
+    <Compile Include="DashboardTasks\TaskAttestationLate.cs" />
+    <Compile Include="DashboardTasks\TaskPayout.cs" />
+    <Compile Include="DashboardTasks\TaskBase.cs" />
+    <Compile Include="DashboardTasks\TaskReceiptValidation.cs" />
+    <Compile Include="DashboardTasks\TaskExpenseClaim.cs" />
+    <Compile Include="DashboardTasks\TaskGroup.cs" />
+    <Compile Include="DashboardTasks\TaskInboundInvoice.cs" />
+    <Compile Include="DashboardTasks\Tasks.cs" />
+    <Compile Include="DashboardTasks\TaskSalary.cs" />
+    <Compile Include="DashboardTasks\TaskVolunteer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Basic\Basic.csproj">
