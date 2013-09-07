@@ -41,7 +41,7 @@ namespace Swarmops.Logic.Financial
         {
             CashAdvance newAdvance = FromIdentityAggressive(SwarmDb.GetDatabaseForWriting().CreateCashAdvance(forPerson.Identity,
                                                                                           createdByPerson.Identity,
-                                                                                           organization.Identity,
+                                                                                          organization.Identity,
                                                                                           budget.Identity, amountCents,
                                                                                           description));
 
