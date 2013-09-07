@@ -1,0 +1,5 @@
+#! /bin/bash
+
+#todo: unregister
+/etc/init.d/swarmops-backend stop
+

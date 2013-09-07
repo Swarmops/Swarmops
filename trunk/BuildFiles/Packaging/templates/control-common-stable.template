@@ -1,0 +1,11 @@
+Package: swarmops-common
+Version: --BuildNumber--
+Architecture: all
+Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
+Depends:
+Conflicts: swarmops-common-internal
+Homepage: http://swarmops.com/
+Description: Swarmops Backend
+ Swarmops is a swarm activist administration system.
+ This package contains the common components between
+ front-end and back-end.
