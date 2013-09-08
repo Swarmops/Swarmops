@@ -73,11 +73,11 @@ namespace Swarmops.Logic.Swarm
                 
                 if (expenseClaimIds.Count > 1)
                 {
-                    todo.Description = String.Format(App_LocalResources.DashboardTodos.Attest_ExpenseClaim_Many, Formatting.GenerateRangeString(expenseClaimIds));
+                    todo.Description = String.Format(App_GlobalResources.Logic_Swarm_DashboardTodos.Attest_ExpenseClaim_Many, Formatting.GenerateRangeString(expenseClaimIds));
                 }
                 else
                 {
-                    todo.Description = String.Format(App_LocalResources.DashboardTodos.Attest_ExpenseClaim_One, expenseClaimIds[0]);
+                    todo.Description = String.Format(App_GlobalResources.Logic_Swarm_DashboardTodos.Attest_ExpenseClaim_One, expenseClaimIds[0]);
                 }
 
                 todo.Icon = "/Images/PageIcons/iconshock-stamped-paper-16px.png";
@@ -130,11 +130,11 @@ namespace Swarmops.Logic.Swarm
 
                 if (cashAdvanceIds.Count > 1)
                 {
-                    todo.Description = String.Format(App_LocalResources.DashboardTodos.Attest_CashAdvance_Many, Formatting.GenerateRangeString(cashAdvanceIds));
+                    todo.Description = String.Format(App_GlobalResources.Logic_Swarm_DashboardTodos.Attest_CashAdvance_Many, Formatting.GenerateRangeString(cashAdvanceIds));
                 }
                 else
                 {
-                    todo.Description = String.Format(App_LocalResources.DashboardTodos.Attest_CashAdvance_One, cashAdvanceIds[0]);
+                    todo.Description = String.Format(App_GlobalResources.Logic_Swarm_DashboardTodos.Attest_CashAdvance_One, cashAdvanceIds[0]);
                 }
 
                 todo.Icon = "/Images/PageIcons/iconshock-stamped-paper-16px.png";
@@ -189,18 +189,18 @@ namespace Swarmops.Logic.Swarm
             if (payoutCount > 0)
             {
                 todoNormal.Description = payoutCount > 1
-                                             ? String.Format(App_LocalResources.DashboardTodos.Payout_Many,
+                                             ? String.Format(App_GlobalResources.Logic_Swarm_DashboardTodos.Payout_Many,
                                                              payoutCount)
-                                             : App_LocalResources.DashboardTodos.Payout_One;
+                                             : App_GlobalResources.Logic_Swarm_DashboardTodos.Payout_One;
                 this.Add(todoNormal);
             }
 
             if (overduePayoutCount > 0)
             {
                 todoOverdue.Description = overduePayoutCount > 1
-                                             ? String.Format(App_LocalResources.DashboardTodos.Payout_Overdue_Many,
+                                             ? String.Format(App_GlobalResources.Logic_Swarm_DashboardTodos.Payout_Overdue_Many,
                                                              payoutCount)
-                                             : App_LocalResources.DashboardTodos.Payout_Overdue_One;
+                                             : App_GlobalResources.Logic_Swarm_DashboardTodos.Payout_Overdue_One;
                 todoOverdue.Urgency = TodoUrgency.Red;
                 this.Add(todoOverdue);
             }
@@ -208,9 +208,9 @@ namespace Swarmops.Logic.Swarm
             if (urgentPayoutCount > 0)
             {
                 todoUrgent.Description = overduePayoutCount > 1
-                                             ? String.Format(App_LocalResources.DashboardTodos.Payout_Urgent_Many,
+                                             ? String.Format(App_GlobalResources.Logic_Swarm_DashboardTodos.Payout_Urgent_Many,
                                                              payoutCount)
-                                             : App_LocalResources.DashboardTodos.Payout_Urgent_One;
+                                             : App_GlobalResources.Logic_Swarm_DashboardTodos.Payout_Urgent_One;
                 todoUrgent.Urgency = TodoUrgency.Yellow;
                 this.Add(todoUrgent);
             }

@@ -61,7 +61,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test.
+        ///   Looks up a localized string similar to Test String.
         /// </summary>
         internal static string TestString {
             get {

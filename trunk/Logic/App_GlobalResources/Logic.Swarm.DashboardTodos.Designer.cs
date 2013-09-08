@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Swarmops.Logic.Swarm.App_LocalResources {
+namespace Swarmops.Logic.App_GlobalResources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Swarmops.Logic.Swarm.App_LocalResources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Swarmops.Logic.Swarm.App_LocalResources.Logic.Swarm.DashboardTodos", typeof(Logic_Swarm_DashboardTodos).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Swarmops.Logic.App_GlobalResources.Logic.Swarm.DashboardTodos", typeof(Logic_Swarm_DashboardTodos).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
