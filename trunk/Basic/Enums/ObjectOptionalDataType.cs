@@ -194,7 +194,7 @@ namespace Swarmops.Basic.Enums
         /// </summary>
         OrgCurrency,
         /// <summary>
-        /// First bookkeeping year of org in Activizr (can set inbound balances for this year only)
+        /// First bookkeeping year of org in Swarmops (can set inbound balances for this year only)
         /// </summary>
         OrgFirstFiscalYear,
         /// <summary>

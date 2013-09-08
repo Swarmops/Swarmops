@@ -148,6 +148,11 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public FinancialAccount Budget // needed for IAttestable
+        { 
+            get { return this.PayrollItem.Budget; }
+        }
+
 
         public PayrollAdjustments Adjustments
         {

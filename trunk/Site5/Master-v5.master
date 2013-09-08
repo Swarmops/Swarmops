@@ -17,7 +17,7 @@
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
 
     <!-- page title -->
-	<title>Activizr - Pirate Edition</title>
+	<title>Swarmops</title>
 
 	<!-- telerik style sheet manager, followed by style sheet, followed by script style sheets -->
 	<telerik:RadStyleSheetManager id="RadStyleSheetManager" runat="server" />
@@ -293,7 +293,13 @@
     
             <div class="box">
                 <div class="content">
-                    <asp:Label ID="LabelActionItemsHere" runat="server" />
+                    <asp:Repeater runat="server" ID="RepeaterTodoItems"><ItemTemplate>
+                    <div class="link-row-encaps" onclick="document.location='<%# DataBinder.Eval(Container.DataItem, "Url") %>';" >
+                        <div class="link-row-icon" style="background-image:url('<%# DataBinder.Eval(Container.DataItem, "Icon") %>')"></div>
+                        <asp:Label ID="Label1" Text='<%# DataBinder.Eval(Container.DataItem, "Description") %>' runat="server" />
+                    </div>
+                    </ItemTemplate></asp:Repeater>
+                    <asp:Label ID="LabelNoTodoItems" runat="server" Visible="False" />
                 </div>
             </div>
         </div>

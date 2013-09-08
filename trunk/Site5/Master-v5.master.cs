@@ -80,7 +80,17 @@ namespace Swarmops
 
             this.LabelActionPlaceholder1.Text = "Action shortcut 1 (TODO)";
             this.LabelActionPlaceholder2.Text = "Action shortcut 2 (TODO)";
-            this.LabelActionItemsHere.Text = "Action items here (TODO)";
+            this.LabelNoTodoItems.Text = "No Action Items (LOC)";
+
+            // Set up todo items
+
+            DashboardTodos todos = DashboardTodos.ForPerson(_currentUser, _currentOrganization);
+
+            this.RepeaterTodoItems.DataSource = todos;
+            this.RepeaterTodoItems.DataBind();
+            this.LabelNoTodoItems.Visible = (todos.Count == 0);
+
+            // Set up main menu
 
             RadMenu mainMenu = FindControl("MainMenu") as RadMenu;
 

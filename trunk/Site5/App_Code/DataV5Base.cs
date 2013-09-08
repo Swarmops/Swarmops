@@ -11,7 +11,7 @@ using Swarmops.Logic.Structure;
 
 /// <summary>
 /// Summary description for PageV5Base
-/// Base class to use for all pages that uses the Activizr-v5 master page
+/// Base class to use for all pages that uses the Swarmops-v5 master page
 /// </summary>
 
 public class DataV5Base : System.Web.UI.Page
