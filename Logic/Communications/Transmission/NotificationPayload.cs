@@ -37,14 +37,14 @@ namespace Swarmops.Logic.Communications.Transmission
         {
             // TODO: Pick culture
             
-            return ExpandMacros(App_LocalResources.NotificationPayload.ResourceManager.GetString(this.SubjectResource));
+            return ExpandMacros(App_GlobalResources.Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString(this.SubjectResource));
         }
 
         public string GetBody()
         {
             // TODO: Pick culture
 
-            return ExpandMacros(App_LocalResources.NotificationPayload.ResourceManager.GetString(this.BodyResource));
+            return ExpandMacros(App_GlobalResources.Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString(this.BodyResource));
         }
 
         public string ExpandMacros (string input)
