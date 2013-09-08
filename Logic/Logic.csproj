@@ -241,9 +241,16 @@
     <Compile Include="Support\TemporaryIdentity.cs" />
     <Compile Include="Support\UrlTranslations.cs" />
     <Compile Include="Swarm\Activists.cs" />
+    <Compile Include="Swarm\App_LocalResources\DashboardTodos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DashboardTodos.resx</DependentUpon>
+    </Compile>
     <Compile Include="Swarm\AuditedPerson.cs" />
     <Compile Include="Swarm\ChurnData.cs" />
     <Compile Include="Swarm\ChurnDataPoint.cs" />
+    <Compile Include="Swarm\DashboardTodo.cs" />
+    <Compile Include="Swarm\DashboardTodos.cs" />
     <Compile Include="Swarm\ExternalActivities.cs" />
     <Compile Include="Swarm\ExternalActivity.cs" />
     <Compile Include="Swarm\ExternalIdentity.cs" />
@@ -308,6 +315,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Authentication.sv-SE.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Swarm\App_LocalResources\DashboardTodos.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DashboardTodos.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
