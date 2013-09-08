@@ -64,6 +64,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Logic.Swarm.DashboardTodos.Designer.cs">
+      <DependentUpon>Logic.Swarm.DashboardTodos.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Logic.Test.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Test.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Logic.Communications.Transmission.NotificationPayload.Designer.cs">
+      <DependentUpon>Logic.Communications.Transmission.NotificationPayload.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Communications\ICommsRenderer.cs" />
     <Compile Include="Communications\ICommsResolver.cs" />
     <Compile Include="Communications\ICommsTransmitter.cs" />
@@ -241,10 +256,10 @@
     <Compile Include="Support\TemporaryIdentity.cs" />
     <Compile Include="Support\UrlTranslations.cs" />
     <Compile Include="Swarm\Activists.cs" />
-    <Compile Include="Swarm\App_LocalResources\DashboardTodos.Designer.cs">
+    <Compile Include="Swarm\App_LocalResources\Logic.Swarm.DashboardTodos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DashboardTodos.resx</DependentUpon>
+      <DependentUpon>Logic.Swarm.DashboardTodos.resx</DependentUpon>
     </Compile>
     <Compile Include="Swarm\AuditedPerson.cs" />
     <Compile Include="Swarm\ChurnData.cs" />
@@ -299,6 +314,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\Logic.Swarm.DashboardTodos.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Swarm.DashboardTodos.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Logic.Test.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Test.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Logic.Communications.Transmission.NotificationPayload.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Communications.Transmission.NotificationPayload.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Communications\Transmission\App_LocalResources\NotificationPayload.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>NotificationPayload.Designer.cs</LastGenOutput>
@@ -316,9 +343,9 @@
       <LastGenOutput>Authentication.sv-SE.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Swarm\App_LocalResources\DashboardTodos.resx">
+    <EmbeddedResource Include="Swarm\App_LocalResources\Logic.Swarm.DashboardTodos.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DashboardTodos.Designer.cs</LastGenOutput>
+      <LastGenOutput>Logic.Swarm.DashboardTodos.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />

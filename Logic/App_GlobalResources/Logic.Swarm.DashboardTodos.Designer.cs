@@ -22,14 +22,14 @@ namespace Swarmops.Logic.Swarm.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DashboardTodos {
+    internal class Logic_Swarm_DashboardTodos {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DashboardTodos() {
+        internal Logic_Swarm_DashboardTodos() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Swarmops.Logic.Swarm.App_LocalResources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Swarmops.Logic.Swarm.App_LocalResources.DashboardTodos", typeof(DashboardTodos).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Swarmops.Logic.Swarm.App_LocalResources.Logic.Swarm.DashboardTodos", typeof(Logic_Swarm_DashboardTodos).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

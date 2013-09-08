@@ -151,7 +151,6 @@ namespace Swarmops.Logic.Swarm
                 return; // do not add this if can't pay out
             }
 
-
             DashboardTodo todoNormal = new DashboardTodo();
             DashboardTodo todoUrgent = new DashboardTodo();
             DashboardTodo todoOverdue = new DashboardTodo();
