@@ -265,6 +265,17 @@ namespace Swarmops.Logic.Structure
             FinancialAccounts[OrganizationFinancialAccountType.IncomeSales] =
                 FinancialAccount.Create(this.Identity, "Sales", FinancialAccountType.Income, 0);
 
+            // 2-dimension base accounts
+
+            FinancialAccount incomeUnspecified = FinancialAccount.Create(this.Identity, "Unspecified Income", FinancialAccountType.Income, 0);
+            incomeUnspecified.Dimension = 2;
+            FinancialAccounts[OrganizationFinancialAccountType.IncomeTypeUnspecified] = incomeUnspecified;
+
+            FinancialAccount costUnspecified = FinancialAccount.Create(this.Identity, "Unspecified Cost", FinancialAccountType.Cost, 0);
+            costUnspecified.Dimension = 2;
+            FinancialAccounts[OrganizationFinancialAccountType.CostTypeUnspecified] = costUnspecified;
+
+
             // Then, create various cost accounts that are probably needed, or that could be used as a starting point
 
             FinancialAccount.Create(this.Identity, "Offices", FinancialAccountType.Cost, 0);

@@ -68,6 +68,7 @@
     <Compile Include="Types\BasicExternalActivity.cs" />
     <Compile Include="Types\BasicFinancialValidation.cs" />
     <Compile Include="Types\BasicPostalCode.cs" />
+    <Compile Include="Types\Financial\BasicFinancialAccount.cs" />
     <Compile Include="Types\Governance\BasicMeeting.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Diagnostics\Logging.cs" />
@@ -97,7 +98,6 @@
     <Compile Include="Types\BasicExpenseClaim.cs" />
     <Compile Include="Types\BasicExternalCredential.cs" />
     <Compile Include="Types\BasicExternalIdentity.cs" />
-    <Compile Include="Types\BasicFinancialAccount.cs" />
     <Compile Include="Types\BasicFinancialAccountRow.cs" />
     <Compile Include="Types\BasicFinancialDependency.cs" />
     <Compile Include="Types\BasicFinancialTransaction.cs" />

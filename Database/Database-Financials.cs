@@ -5,6 +5,7 @@ using System.Data.Common;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Financial;
 
 // This is the first part of Database to fully use MySql.
 
@@ -12,7 +13,12 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public int CreateFinancialAccount (int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
+        private const string financialAccountFieldSequence =
+            " FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId," +  // 0-4
+            " OwnerPersonId,Dimension,Open,OpenedYear,ClosedYear " +  // 5-9
+            " FROM FinancialAccounts ";
+
+        public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -31,7 +37,26 @@ namespace Swarmops.Database
         }
 
 
-        public BasicFinancialAccount GetFinancialAccount (int financialAccountId)
+        public void SetFinancialAccountDimension(int financialAccountId, int dimension)
+        {
+            // This is only intended to be used when creating the account, and never used once in use.
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountDimension", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "dimension", dimension);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+        public BasicFinancialAccount GetFinancialAccount(int financialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -39,7 +64,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId,OwnerPersonId From FinancialAccounts WHERE FinancialAccountId=" +
+                        "SELECT " + financialAccountFieldSequence + " WHERE FinancialAccountId=" +
                         financialAccountId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -68,7 +93,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId,OwnerPersonId From FinancialAccounts WHERE OrganizationId=" +
+                        "SELECT " + financialAccountFieldSequence + " WHERE OrganizationId=" +
                         organizationId + " ORDER BY AccountType, Name;", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -93,7 +118,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId,OwnerPersonId From FinancialAccounts WHERE OwnerPersonId=" +
+                        "SELECT " + financialAccountFieldSequence + " WHERE OwnerPersonId=" +
                         ownerPersonId + " ORDER BY Name;", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -118,7 +143,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId,OwnerPersonId From FinancialAccounts WHERE FinancialAccountId IN (" +
+                        "SELECT " + financialAccountFieldSequence + " WHERE FinancialAccountId IN (" +
                         JoinIds(financialAccountIds) + ") ORDER BY AccountType, Name;", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -679,8 +704,12 @@ namespace Swarmops.Database
             var accountType = (FinancialAccountType) reader.GetInt32(3);
             int parentFinancialAccountId = reader.GetInt32(4);
             int ownerPersonId = reader.GetInt32(5);
+            int dimension = reader.GetInt32(6);
+            bool open = reader.GetBoolean(7);
+            int openedYear = reader.GetInt32(8);
+            int closedYear = reader.GetInt32(9);
 
-            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId, ownerPersonId);
+            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId, ownerPersonId, dimension, open, openedYear, closedYear);
         }
 
         private BasicFinancialAccountRow ReadFinancialAccountRowFromDataReader (DbDataReader reader)
@@ -957,7 +986,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId,OwnerPersonId FROM FinancialAccounts WHERE ParentFinancialAccountId = " + parentFinancialAccountId.ToString() +
+                        "SELECT " + financialAccountFieldSequence + " WHERE ParentFinancialAccountId = " + parentFinancialAccountId.ToString() +
                         " ORDER BY \"Name\"", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())

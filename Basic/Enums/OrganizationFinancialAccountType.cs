@@ -94,6 +94,14 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// When closing books, this is the yearly result (balanced against DebtsEquity)
         /// </summary>
-        CostsYearlyResult // multi-account type
+        CostsYearlyResult, // multi-account type
+        /// <summary>
+        /// Dimension 2 - default income account
+        /// </summary>
+        IncomeTypeUnspecified,
+        /// <summary>
+        /// Dimensione 2 - default cost account
+        /// </summary>
+        CostTypeUnspecified
     };
 }

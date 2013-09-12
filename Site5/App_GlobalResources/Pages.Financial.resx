@@ -190,6 +190,44 @@
     <value>Salary #{0} for {1} was DE-attested. It will not be paid out unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>Expense claim amount (in {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Account Number</value>
+  </data>
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>Clearing Number</value>
+  </data>
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Cost Type</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Your Bank Details</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptFiles" xml:space="preserve">
+    <value>Upload Receipt Image Files</value>
+  </data>
+  <data name="FileExpenseClaim_Info" xml:space="preserve">
+    <value>If you have made a purchase on behalf of the organization using your private funds, you will likely want reimbursement for that by filing an &lt;em&gt;expense claim&lt;/em&gt;. You do that here by uploading the receipts and selecting the budget they should be charged to. If you have previously received a cash advance for this purchase, this is where you clear the organization's loan to you by submitting receipts.</value>
+  </data>
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>Request Money Back For Expense</value>
+  </data>
+  <data name="FileExpenseClaim_RecieptFiles" xml:space="preserve">
+    <value>Receipt Files:</value>
+  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Amount</value>
     <comment>Amount to be paid out</comment>

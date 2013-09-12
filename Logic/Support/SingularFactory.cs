@@ -53,7 +53,7 @@ namespace Swarmops.Logic.Support
                 case "Swarmops.Basic.Types.BasicInboundInvoice":
                     return InboundInvoice.FromBasic((BasicInboundInvoice) basic);
 
-                case "Swarmops.Basic.Types.BasicFinancialAccount":
+                case "Swarmops.Basic.Types.Financial.BasicFinancialAccount":
                     return FinancialAccount.FromBasic((BasicFinancialAccount)basic);
 
                 case "Swarmops.Basic.Types.BasicFinancialTransaction":
