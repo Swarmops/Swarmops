@@ -7,7 +7,7 @@
 <head runat="server">
 
     <!-- jQuery and plugins -->
-    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js" ></script>
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.js" ></script>
 
@@ -151,7 +151,7 @@
                 </telerik:RadMenuItem>
                 <telerik:RadMenuItem runat="server" Text="XYZ Financial" Permission="CanSeeSelf" UserLevel="1" GlobalResourceKey="Menu5_Financial">
                     <Items>
-                        <telerik:RadMenuItem runat="server" Text="XYZ Claim Refund For Expense" ImageUrl="~/Images/PageIcons/iconshock-moneyback-16px.png" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_ClaimExpense" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ Claim Refund For Expense" NavigateUrl="~/Pages/v5/Financial/FileExpenseClaim.aspx" ImageUrl="~/Images/PageIcons/iconshock-moneyback-16px.png" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_ClaimExpense" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Request Cash Advance" NavigateUrl="~/Pages/v5/Financial/RequestCashAdvance.aspx" ImageUrl="~/Images/PageIcons/iconshock-walletmoney-16px.png" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_RequestCashAdvance" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Create Purchase Order" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_CreatePurchaseOrder" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="1" />

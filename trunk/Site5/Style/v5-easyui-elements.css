@@ -21,7 +21,7 @@
 .combo-arrow{
 	background:#FFFFFF url('//hostedscripts.falkvinge.net/easyui/themes/default/images/combo_arrow.gif') no-repeat 3px 4px;
 	width:18px;
-	height:20px;
+	height:20px !important;
 	overflow:hidden;
 	display:inline-block;
 	vertical-align:top;

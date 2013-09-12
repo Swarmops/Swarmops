@@ -182,6 +182,17 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.IncomeSales]; }
         }
 
+        public FinancialAccount IncomeTypeUnspecified
+        {
+            // dimension 2
+            get { return this[OrganizationFinancialAccountType.IncomeTypeUnspecified]; }
+        }
+
+        public FinancialAccount CostTypeUnspecified
+        {
+            // dimension 2
+            get { return this[OrganizationFinancialAccountType.CostTypeUnspecified]; }
+        }
 
         public FinancialAccounts CostsConferences
         {

@@ -1,6 +1,7 @@
 using System;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 using Swarmops.Logic.Interfaces;
 using Swarmops.Logic.Swarm;
@@ -109,6 +110,19 @@ namespace Swarmops.Logic.Financial
             {
                 return Organization.FromIdentity(this.OrganizationId);  // TODO: Cache
             }
+        }
+
+        public int Dimension
+        {
+            get { return base.Dimension; }
+            set 
+            { 
+                if (base.Dimension != value)
+                    {
+                        SwarmDb.GetDatabaseForWriting().SetFinancialAccountDimension(this.Identity, value);
+                        base.Dimension = value;
+                    }
+                }
         }
 
         public Person Owner
