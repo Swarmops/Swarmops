@@ -36,6 +36,7 @@
                 url: url,
                 dataType: 'json',
                 done: function (e, data) {
+                    $('#DivProgressUpload').progressbar({ value: 100 });
                     $('#DivProgressUpload').fadeOut();
                     /*
                     $.each(data.result.files, function (index, file) {
