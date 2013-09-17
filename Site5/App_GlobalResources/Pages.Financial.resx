@@ -216,8 +216,8 @@
   <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
     <value>Your Bank Details</value>
   </data>
-  <data name="FileExpenseClaim_HeaderReceiptFiles" xml:space="preserve">
-    <value>Upload Receipt Image Files</value>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>Receipt Images</value>
   </data>
   <data name="FileExpenseClaim_Info" xml:space="preserve">
     <value>If you have made a purchase on behalf of the organization using your private funds, you will likely want reimbursement for that by filing an &lt;em&gt;expense claim&lt;/em&gt;. You do that here by uploading the receipts and selecting the budget they should be charged to. If you have previously received a cash advance for this purchase, this is where you clear the organization's loan to you by submitting receipts.</value>
@@ -225,8 +225,8 @@
   <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
     <value>Request Money Back For Expense</value>
   </data>
-  <data name="FileExpenseClaim_RecieptFiles" xml:space="preserve">
-    <value>Receipt Files:</value>
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>Upload Receipt Images:</value>
   </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Amount</value>

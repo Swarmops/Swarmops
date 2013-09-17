@@ -775,6 +775,33 @@ div#page-icon-encaps
 }
 
 
+/* PROGRESS BARS*/
+
+.ui-progressbar-value, .progressbar-value {
+	background-image: url('/Images/Abstract/swarmops-progressbar-animation.gif');
+	height: 13px !important;
+	border-radius: 3px;
+	box-shadow: 1px 0px 5px 0px #7F5500;
+}
+
+
+.ui-progressbar, .progressbar {
+	height: 13px !important;
+	width: 100% !important;
+	border: solid 1px #C78B15;
+	border-radius: 3px;
+	box-shadow: inset 0px 1px 10px 0px #C78B15;
+	margin-bottom: 8px;
+	background-color: #EEE;
+}
+
+.progressbar-text {
+	display: none;
+}
+
+
+
+
 /* OTHER ELEMENTS */
 
 a
