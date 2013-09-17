@@ -44,10 +44,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                                                   CurrentOrganization.Currency.Code);
             this.LabelPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_Description;
             this.LabelBudget.Text = Resources.Pages.Financial.FileExpenseClaim_Budget;
+            this.LabelCostType.Text = Resources.Pages.Financial.FileExpenseClaim_CostType;
             this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderBankDetails;
             this.LabelBankName.Text = Resources.Pages.Financial.FileExpenseClaim_BankName;
             this.LabelBankClearing.Text = Resources.Pages.Financial.FileExpenseClaim_BankClearing;
             this.LabelBankAccount.Text = Resources.Pages.Financial.FileExpenseClaim_BankAccount;
+            this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderReceiptImages;
+            this.LabelImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_UploadRecieptImages;
 
             this.LiteralErrorAmount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Amount;
             this.LiteralErrorPurpose.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Purpose;
