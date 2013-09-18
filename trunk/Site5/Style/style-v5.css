@@ -11,12 +11,16 @@
 
 
 
-/* CLEAR MARGINS */
+/* CLEAR MARGINS AND MORE */
 
 html, body, form, h1, h2, h3, h4, p, input, div, span, ol, ul, li
 {
 	margin: 0;
 	padding: 0;
+}
+
+:focus {
+	outline: none;  /* clear Chromium's outline */
 }
 
 
