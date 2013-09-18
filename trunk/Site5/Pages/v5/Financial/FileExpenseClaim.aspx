@@ -30,10 +30,8 @@
             });
 
 
-            // Change this to the location of your server-side upload handler:
-            var url = '/Automation/UploadFileHandler.ashx';
             $('#ButtonUploadHidden').fileupload({
-                url: url,
+                url: '/Automation/UploadFileHandler.ashx',
                 dataType: 'json',
                 done: function (e, data) {
                     $('#DivProgressUpload').progressbar({ value: 100 });
@@ -41,10 +39,6 @@
                     $.each(data.files, function(index, file) {
                         $('#DivUploadCount').append('<img src="/Images/Icons/iconshock-invoice-greentick-32px.png" />');
                     });
-                    /*
-                    $.each(data.result.files, function (index, file) {
-                        $('<p/>').text(file.name).appendTo('#files');
-                    });*/
                 },
                 progressall: function (e, data) {
                     var progress = parseInt(data.loaded / data.total * 100, 10);
