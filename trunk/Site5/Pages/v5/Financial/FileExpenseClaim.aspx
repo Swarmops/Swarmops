@@ -37,7 +37,7 @@
                     $('#DivProgressUpload').progressbar({ value: 100 });
                     $('#DivProgressUpload').fadeOut('400', function () { $('#DivUploadCount').fadeIn(); });
                     $.each(data.files, function(index, file) {
-                        $('#DivUploadCount').append('<img src="/Images/Icons/iconshock-invoice-greentick-32px.png" />');
+                        $('#DivUploadCount').append("<img src='/Images/Icons/iconshock-invoice-greentick-32px.png' />");
                     });
                 },
                 progressall: function (e, data) {
