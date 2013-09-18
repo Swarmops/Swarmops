@@ -10,6 +10,9 @@
 	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
 
     <script type="text/javascript">
+
+        var imageSuccess = "<img src='/Images/Icons/iconshock-invoice-greentick-32px.png' />"; // needs to be separate var rather than inline because of mono-server optimization bug
+
         $(document).ready(function () {
             $('#DropBudgets').combotree({
                 animate: true,
@@ -35,7 +38,7 @@
                 dataType: 'json',
                 done: function (e, data) {
                     $.each(data.files, function(index, file) {
-                        $('#DivUploadCount').append("<img src='/Images/Icons/iconshock-invoice-greentick-32px.png' />");
+                        $('#DivUploadCount').append(imageSuccess);
                     });
                     $('#DivProgressUpload').progressbar({ value: 100 });
                     $('#DivProgressUpload').fadeOut('400', function () { $('#DivUploadCount').fadeIn(); });
@@ -43,9 +46,9 @@
                 progressall: function (e, data) {
                     var progress = parseInt(data.loaded / data.total * 100, 10);
                     $("#DivProgressUpload .progressbar-value").animate(
-                    {
-                        width: progress + "%"
-                    }, { queue: false });
+                        {
+                            width: progress + "%"
+                        }, { queue: false });
                 },
                 add: function (e, data) {
                     $('#DivUploadCount').css('display', 'none');
