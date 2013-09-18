@@ -13,10 +13,12 @@
 
         // The below weird construct circumvents a mono-server optimization bug that kills the string
 
-        var imageSuccess1 = "\x3Cimg src='";
-        var imageSuccess2 = "/Images/Icons/iconshock-invoice-greentick-32px.png";
-        var imageSuccess3 = "' /\x3E"; // needs to be separate var rather than inline because of mono-server optimization bug
-        var imageSuccess = imageSuccess1 + imageSuccess2 + imageSuccess3;
+        var imageFileStart = "\x3Cimg src='";
+        var imageFileSuccess = "/Images/Icons/iconshock-invoice-greentick-32px.png";
+        var imageFileFail = "/Images/Icons/iconshock-invoice-redcross-32px.png";
+        var imageFileEnd = "' /\x3E"; // needs to be separate var rather than inline because of mono-server optimization bug
+        var imageUploadSuccess = imageFileStart + imageFileSuccess + imageFileEnd;
+        var imageUploadFail = imageFileStart + imageFileFail + imageFileEnd;
 
         $(document).ready(function () {
             $('#DropBudgets').combotree({
@@ -42,8 +44,14 @@
                 url: '/Automation/UploadFileHandler.ashx',
                 dataType: 'json',
                 done: function (e, data) {
-                    $.each(data.files, function(index, file) {
-                        $('#DivUploadCount').append(imageSuccess);
+                    $.each(data.result, function(index, file) {
+                        if (file.error == null || file.error.length < 1) {
+                            $('#DivUploadCount').append(imageUploadSuccess);
+                        } else {
+                            $('#DivUploadCount').append(imageUploadFail); // Assume ERR_NOT_IMAGE
+                            alertify.error('File "' + file.name + '" could not be uploaded. Is it really an image?');
+                        }
+
                     });
                     $('#DivProgressUpload').progressbar({ value: 100 });
                     $('#DivProgressUpload').fadeOut('400', function () { $('#DivUploadCount').fadeIn(); });
@@ -57,6 +65,7 @@
                 },
                 add: function (e, data) {
                     $('#DivUploadCount').css('display', 'none');
+                    $('#DivProgressUpload').progressbar({ value: 0 });  // reset in case of previous uploads on this page
                     $('#DivProgressUpload').fadeIn();
                     data.submit();
                 }
@@ -133,7 +142,7 @@
         
         <!-- file upload begins here -->
         
-        <div style="height:36px;float:left"><input id="ButtonUploadVisible" type="button" style="width:36px !important; background-image:url('/Images/Icons/iconshock-diskette-upload-32px.png');background-repeat:no-repeat; background-position:top left"/><input id="ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="DivUploadCount" style="display:none;overflow:hidden"></div><div id="DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&nbsp;<br/>
+        <div style="height:36px;float:left"><input id="ButtonUploadVisible" type="button" style="width:36px !important; background-image:url('/Images/Icons/iconshock-diskette-upload-32px.png');background-repeat:no-repeat; background-position:top left"/><input id="ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="DivUploadCount" style="display:none;overflow:hidden;height:64px"></div><div id="DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&nbsp;<br/>
 
         <!-- file upload ends -->
 
