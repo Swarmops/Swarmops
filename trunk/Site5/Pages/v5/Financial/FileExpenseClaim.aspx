@@ -35,7 +35,7 @@
                 dataType: 'json',
                 done: function (e, data) {
                     $.each(data.files, function(index, file) {
-                        $('#DivUploadCount').append("foo!");
+                        $('#DivUploadCount').append("<img src='/Images/Icons/iconshock-invoice-greentick-32px.png' />");
                     });
                     $('#DivProgressUpload').progressbar({ value: 100 });
                     $('#DivProgressUpload').fadeOut('400', function () { $('#DivUploadCount').fadeIn(); });
