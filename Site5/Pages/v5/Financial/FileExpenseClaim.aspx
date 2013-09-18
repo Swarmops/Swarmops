@@ -37,7 +37,10 @@
                 dataType: 'json',
                 done: function (e, data) {
                     $('#DivProgressUpload').progressbar({ value: 100 });
-                    $('#DivProgressUpload').fadeOut();
+                    $('#DivProgressUpload').fadeOut('400', function () { $('#DivUploadCount').fadeIn(); });
+                    $.each(data.files, function(index, file) {
+                        $('#DivUploadCount').append('<img src="/Images/Icons/iconshock-invoice-greentick-32px.png" />');
+                    });
                     /*
                     $.each(data.result.files, function (index, file) {
                         $('<p/>').text(file.name).appendTo('#files');
@@ -51,6 +54,7 @@
                     }, { queue: false });
                 },
                 add: function (e, data) {
+                    $('#DivUploadCount').css('display', 'none');
                     $('#DivProgressUpload').fadeIn();
                     data.submit();
                 }
@@ -127,7 +131,7 @@
         
         <!-- file upload begins here -->
         
-        <div style="height:36px;float:left"><input id="ButtonUploadVisible" type="button" style="width:36px !important; background-image:url('/Images/Icons/iconshock-diskette-upload-32px.png');background-repeat:no-repeat; background-position:top left"/><input id="ButtonUploadHidden" type="file" name="files[]" multiple style="display:none"></div><div style="height:36px;width:270px;margin-right:10px;float:right;margin-top:8px;border:none"><div id="DivProgressUpload" style="width:100%;display:none"></div></div>&nbsp;<br/>
+        <div style="height:36px;float:left"><input id="ButtonUploadVisible" type="button" style="width:36px !important; background-image:url('/Images/Icons/iconshock-diskette-upload-32px.png');background-repeat:no-repeat; background-position:top left"/><input id="ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="DivUploadCount" style="display:none;overflow:hidden"></div><div id="DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&nbsp;<br/>
 
         <!-- file upload ends -->
 
