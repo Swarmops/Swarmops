@@ -1,7 +1,9 @@
 ﻿<%@ WebHandler Language="C#" Class="Swarmops.Frontend.Automation.FileTransferHandler" %>
 
+using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -113,9 +115,44 @@ namespace Swarmops.Frontend.Automation {
 		private void UploadWholeFile (HttpContext context, List<FilesStatus> statuses) {
 			for (int i = 0; i < context.Request.Files.Count; i++) {
 				var file = context.Request.Files[i];
-				file.SaveAs(StorageRoot + Path.GetFileName(file.FileName));
+                string fullName = Path.GetFileName(file.FileName);
 
-				string fullName = Path.GetFileName(file.FileName);
+                // Store in MemoryStream in order to try to load as an image
+
+                /*                
+			    MemoryStream ms = new MemoryStream();
+                byte[] fileData = new byte[file.ContentLength];
+
+			    file.InputStream.Read(fileData, 0, file.ContentLength);
+                ms.Write(fileData, 0, file.ContentLength);
+			    ms.Position = 0;*/
+                
+                // Try to load as image. If fails, not an acceptable file
+
+			    try
+			    {
+                    Image image = Image.FromStream(file.InputStream);
+                }
+			    catch (Exception)
+			    {
+			        FilesStatus errorStatus = new FilesStatus(fullName, file.ContentLength);
+			        errorStatus.error = "ERR_NOT_IMAGE";
+			        errorStatus.url = string.Empty;
+			        errorStatus.delete_url = string.Empty;
+			        errorStatus.thumbnail_url = string.Empty;
+                    
+                    statuses.Add(errorStatus);
+                    // -1 for length means the file was NOT saved, and that it could not be parsed as image.
+			        return;
+			    }
+                
+                // TODO: Store to file name dependent on GUID
+                
+                // TODO: Store new image in db
+
+			    file.InputStream.Position = 0;
+				file.SaveAs(StorageRoot + Path.GetFileName(file.FileName));
+                
 				statuses.Add(new FilesStatus(fullName, file.ContentLength));
 			}
 		}
@@ -193,9 +230,9 @@ namespace Swarmops.Frontend.Automation {
             type = "image/png";
             size = fileLength;
             progress = "1.0";
-            url = HandlerPath + "FileTransferHandler.ashx?f=" + fileName;
+            url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
             thumbnail_url = HandlerPath + "Thumbnail.ashx?f=" + fileName;
-            delete_url = HandlerPath + "FileTransferHandler.ashx?f=" + fileName;
+            delete_url = HandlerPath + "UploadFileHandler.ashx?f=" + fileName;
             delete_type = "DELETE";
         }
     }
