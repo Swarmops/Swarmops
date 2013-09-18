@@ -13,9 +13,9 @@
 
         // The below weird construct circumvents a mono-server optimization bug that kills the string
 
-        var imageSuccess1 = "<img src='";
+        var imageSuccess1 = "\x3Cimg src='";
         var imageSuccess2 = "/Images/Icons/iconshock-invoice-greentick-32px.png";
-        var imageSuccess3 = "' />"; // needs to be separate var rather than inline because of mono-server optimization bug
+        var imageSuccess3 = "' /\x3E"; // needs to be separate var rather than inline because of mono-server optimization bug
         var imageSuccess = imageSuccess1 + imageSuccess2 + imageSuccess3;
 
         $(document).ready(function () {
