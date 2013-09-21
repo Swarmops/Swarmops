@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
+using Swarmops.Controls.Swarm;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
@@ -178,7 +179,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         RadToolTip toolTip = (RadToolTip)e.Item.FindControl("ToolTip");
 
-        Controls_v5_PersonDetailPopup personDetail = (Controls_v5_PersonDetailPopup)toolTip.FindControl("PersonDetail");
+        Swarmops.Controls.Swarm.PersonDetailPopup personDetail = (PersonDetailPopup)toolTip.FindControl("PersonDetail");
         personDetail.PersonChanged += new PersonChangedEventHandler(PersonDetail_PersonChanged);
 
         if (!Page.IsPostBack && this.CurrentAuthority != null)
@@ -267,7 +268,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             FinancialAccount child = FinancialAccount.FromIdentity(Int32.Parse(hiddenAccountId.Value));
             RadToolTip toolTip = (RadToolTip)repeaterItem.FindControl("ToolTip");
 
-            Controls_v5_PersonDetailPopup personDetail = (Controls_v5_PersonDetailPopup)toolTip.FindControl("PersonDetail");
+            PersonDetailPopup personDetail = (PersonDetailPopup)toolTip.FindControl("PersonDetail");
 
             FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(hiddenAccountId.Value));
             personDetail.Person = account.Owner;
