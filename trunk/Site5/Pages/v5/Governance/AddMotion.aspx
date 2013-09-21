@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="AddMotion.aspx.cs" Inherits="Swarmops.Pages.Governance.AddMotion" %>
 
-<%@ Register src="~/Controls/v5/Pirates/ComboPerson.ascx" tagname="ComboPerson" tagprefix="act5" %>
+<%@ Register src="~/Controls/v5/Swarm/ComboPerson.ascx" tagname="ComboPerson" tagprefix="act5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 <script type="text/javascript">

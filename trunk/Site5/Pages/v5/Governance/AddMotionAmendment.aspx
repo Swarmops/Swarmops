@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="AddMotionAmendment.aspx.cs" Inherits="Swarmops.Pages.Governance.AddMotionAmendment" %>
-<%@ Register src="~/Controls/v5/Pirates/ComboPerson.ascx" tagname="ComboPerson" tagprefix="act5" %>
+<%@ Register src="~/Controls/v5/Swarm/ComboPerson.ascx" tagname="ComboPerson" tagprefix="act5" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="SetRootBudgets.aspx.cs" Inherits="Pages_v5_Ledgers_SetRootBudgets" %>
-<%@ Register src="~/Controls/v5/Pirates/PersonDetailPopup.ascx" tagName="PersonDetailPopup" tagPrefix="act5" %>
+<%@ Register src="~/Controls/v5/Swarm/PersonDetailPopup.ascx" tagName="PersonDetailPopup" tagPrefix="act5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 </asp:Content>
