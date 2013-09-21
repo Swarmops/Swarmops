@@ -15,7 +15,7 @@ using Swarmops.Logic.Structure;
 using Swarmops.Interface;
 using Telerik.Web.UI;
 
-namespace Swarmops.Controls.Pirates
+namespace Swarmops.Controls.Swarm
 {
 
     public partial class ComboPerson : ControlV5Base

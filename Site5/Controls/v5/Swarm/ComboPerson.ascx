@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ComboPerson.ascx.cs" Inherits="Swarmops.Controls.Pirates.ComboPerson" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ComboPerson.ascx.cs" Inherits="Swarmops.Controls.Swarm.ComboPerson" %>
 
 <telerik:RadComboBox runat="server" ID="ComboControl" Width="200px"  Skin="WebBlue"
    EnableLoadOnDemand="True" ShowMoreResultsBox="true"
