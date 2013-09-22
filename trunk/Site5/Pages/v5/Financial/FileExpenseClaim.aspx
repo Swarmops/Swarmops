@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="FileExpenseClaim.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Financial.FileExpenseClaim" %>
 <%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ExternalScripts" Src="~/Controls/v5/UI/ExternalScripts.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="tree" runat="server" />
@@ -13,19 +14,12 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#DropBudgets').combotree({
-                animate: true,
-                height: 30
-            });  // Is this init call even necessary?
-
+ 
             $('#DropCostTypes').combotree({
                 animate: true,
                 height: 30
             });
 
-            $('#SpanBudgets span.combo input.combo-text').click(function () {
-                $('#SpanBudgets span.combo span span.combo-arrow').click();
-            });
             
             $('#SpanCostTypes span.combo input.combo-text').click(function () {
                 $('#SpanCostTypes span.combo span span.combo-arrow').click();
@@ -45,7 +39,7 @@
             isValid = validateTextField('#<%=this.TextClearing.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorBankClearing" />") && isValid;
             isValid = validateTextField('#<%=this.TextBank.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorBankName" />") && isValid;
 
-            if ($('#DropBudgets').combotree('tree').tree('getSelected') == null) {
+            if ($('#<%=this.ComboBudgets.ClientID %>_DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
                 alertify.error("<asp:Literal runat="server" ID="LiteralErrorBudget" />");
             }
@@ -89,13 +83,13 @@
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
-        <span id="SpanBudgets"><select class="easyui-combotree" url="Json-ExpensableBudgetsTree.aspx" name="DropBudgets" id="DropBudgets" animate="true" style="width:300px"></select></span>&nbsp;<br/>
+        <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />&nbsp;<br/>
         <span id="SpanCostTypes"><select class="easyui-combotree" url="Json-CostTypesTree.aspx" name="DropCostTypes" id="DropCostTypes" animate="true" style="width:300px"></select></span>&nbsp;<br/>
         &nbsp;<br/><!-- placeholder for label-side H2 -->
         
         <!-- file upload begins here -->
         
-        <Swarmops5:FileUpload ID="FileUpload" runat="server" />
+        <Swarmops5:FileUpload ID="FileUpload" runat="server" Filter="ImagesOnly" />
 
         <!-- file upload ends -->
 

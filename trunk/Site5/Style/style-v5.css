@@ -622,6 +622,10 @@ span.loginalphabetasign
 }
 
 
+input.entryError {
+    outline: red ridge 4px;   
+}
+
 /* DISPLAY FIELDS */
 
 .displaylabel
@@ -900,6 +904,21 @@ hr
 }
 
 
+input.ButtonSwarmopsUpload {
+    width:36px !important; 
+    background-image:url('/Images/Icons/iconshock-diskette-upload-32px.png');
+    background-repeat:no-repeat;
+    background-position: top left;
+    background-color: #ddd;
+}
+
+input.ButtonSwarmopsUpload:hover {
+    background-color: #f8f8f8;
+}
+
+input.ButtonSwarmopsUpload:active {
+    background-position: 2px 2px;
+}
 
 /* TELERIK STYLE OVERRIDES */
 

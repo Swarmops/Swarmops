@@ -13,7 +13,7 @@
     $(document).ready(function() {
 
         $('#ButtonUploadHidden').fileupload({
-            url: '/Automation/UploadFileHandler.ashx',
+            url: '/Automation/UploadFileHandler.ashx?Guid=<%= Guid.ToString() %>',
             dataType: 'json',
             done: function(e, data) {
                 $.each(data.result, function(index, file) {
@@ -55,5 +55,5 @@
 
 </script>
 
-<div style="height:36px;float:left"><input id="ButtonUploadVisible" type="button" style="width:36px !important; background-image:url('/Images/Icons/iconshock-diskette-upload-32px.png');background-repeat:no-repeat; background-position:top left"/><input id="ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="DivUploadCount" style="display:none;overflow:hidden;height:64px"></div><div id="DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&nbsp;<br/>
+<div style="height:36px;float:left"><input id="ButtonUploadVisible" class="ButtonSwarmopsUpload" type="button" /><input id="ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="DivUploadCount" style="display:none;overflow:hidden;height:64px"></div><div id="DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&nbsp;<br/>
 
