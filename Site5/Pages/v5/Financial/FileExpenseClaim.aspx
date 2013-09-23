@@ -41,6 +41,7 @@
 
             if ($('#<%=this.ComboBudgets.ClientID %>_DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
+                $('#<%=this.ComboBudgets.ClientID %>_DropBudgets').addClass("entryError");
                 alertify.error("<asp:Literal runat="server" ID="LiteralErrorBudget" />");
             }
 
@@ -56,6 +57,7 @@
                 success: function (msg) {
                     if (msg.d != true) {
                         isValid = false;
+                        $('#TextAmount').addClass("entryError");
                         alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
                         $('#<%=this.TextAmount.ClientID %>').focus();
                     }
@@ -68,6 +70,7 @@
         function validateTextField (fieldId, message) {
             if ($(fieldId).val().length == 0) {
                 alertify.error(message);
+                $(fieldId).addClass("entryError");
                 $(fieldId).focus();
                 return false;
             }
