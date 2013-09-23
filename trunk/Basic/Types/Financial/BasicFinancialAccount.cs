@@ -7,7 +7,7 @@ namespace Swarmops.Basic.Types.Financial
     {
         public BasicFinancialAccount (int financialAccountId, string name, FinancialAccountType accountType,
                                       int organizationId, int parentFinancialAccountId, int ownerPersonId,
-                                      int dimension, bool open, int openedYear, int closedYear)
+                                      int dimension, bool open, int openedYear, int closedYear, bool expensable)
         {
             this.FinancialAccountId = financialAccountId;
             this.Name = name;
@@ -19,10 +19,11 @@ namespace Swarmops.Basic.Types.Financial
             this.Open = open;
             this.OpenedYear = openedYear;
             this.ClosedYear = closedYear;
+            this.Expensable = expensable;
         }
 
         public BasicFinancialAccount (BasicFinancialAccount original) :
-            this(original.Identity, original.Name, original.AccountType, original.OrganizationId, original.ParentFinancialAccountId, original.OwnerPersonId, original.Dimension, original.Open, original.OpenedYear, original.ClosedYear)
+            this(original.Identity, original.Name, original.AccountType, original.OrganizationId, original.ParentFinancialAccountId, original.OwnerPersonId, original.Dimension, original.Open, original.OpenedYear, original.ClosedYear, original.Expensable)
         {
             // Empty copy constructor
         }
@@ -38,6 +39,7 @@ namespace Swarmops.Basic.Types.Financial
         public bool Open { get; protected set; }
         public int OpenedYear { get; protected set; }
         public int ClosedYear { get; protected set; }
+        public bool Expensable { get; protected set; }
 
         #region IHasIdentity Members
 
