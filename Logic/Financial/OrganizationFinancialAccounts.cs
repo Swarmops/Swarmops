@@ -218,7 +218,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public FinancialAccounts ExpensableAccounts
+        public FinancialAccounts ExpensableBudgets
         {
             // TODO: This needs to return a tree, not a flat list.
 
@@ -234,7 +234,7 @@ namespace Swarmops.Logic.Financial
 
                 foreach (FinancialAccount account in costAccounts)
                 {
-                    if (account.Identity != yearlyResultId)
+                    if (account.Identity != yearlyResultId && account.Dimension == 1 && account.Expensable)
                     {
                         result.Add(account);
                     }
