@@ -16,7 +16,7 @@ namespace Swarmops.Database
         private const string financialAccountFieldSequence =
             " FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId," +  // 0-4
             " OwnerPersonId,Dimension,Open,OpenedYear,ClosedYear, " +  // 5-9
-            " Expensable " // 10
+            " Expensable " + // 10
             " FROM FinancialAccounts ";
 
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
