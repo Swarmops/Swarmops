@@ -201,9 +201,9 @@ namespace Swarmops.Frontend.Automation
                                     utcNow.Month.ToString ("00") + Path.DirectorySeparatorChar +
                                     utcNow.Day.ToString ("00");
 
-                if (!Directory.Exists (fileFolder))
+                if (!Directory.Exists (StorageRoot + fileFolder))
                 {
-                    Directory.CreateDirectory (fileFolder);
+                    Directory.CreateDirectory (StorageRoot + fileFolder);
                 }
 
                 int fileCounter = 0;
