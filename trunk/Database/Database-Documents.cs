@@ -36,7 +36,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicDocument[] GetDocumentsForForeignObject (DocumentType documentType, int foreignId)
+        public BasicDocument[] GetDocumentsForForeignObject(DocumentType documentType, int foreignId)
         {
             List<BasicDocument> result = new List<BasicDocument>();
 
@@ -50,6 +50,33 @@ namespace Swarmops.Database
                         "WHERE Documents.DocumentTypeId=DocumentTypes.DocumentTypeId AND " +
                         "Documents.ForeignId = " + foreignId + " AND " +
                         "DocumentTypes.Name = '" + documentType.ToString() + "';", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadDocumentFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+
+
+        public BasicDocument[] GetDocumentsRecentByDescription(string description)
+        {
+            List<BasicDocument> result = new List<BasicDocument>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
+                        "WHERE Documents.Description = '" + description.Replace ("'", "''") + " AND " +
+                        "Documents.UploadedDateTime > '" + DateTime.UtcNow.AddDays(-1).ToString("yyyy-MM-dd HH:mm") + "'", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -102,7 +129,7 @@ namespace Swarmops.Database
                 command.Parameters.Add(new MySqlParameter("foreignId", foreignId));
                 command.Parameters.Add(new MySqlParameter("fileSize", fileSize));
                 command.Parameters.Add(new MySqlParameter("uploadedByPersonId", uploadedByPersonId));
-                command.Parameters.Add(new MySqlParameter("uploadedDateTime", DateTime.Now));
+                command.Parameters.Add(new MySqlParameter("uploadedDateTime", DateTime.UtcNow));
 
                 /*
                 AddParameterWithName(command, "serverFileName", serverFileName);

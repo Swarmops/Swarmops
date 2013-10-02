@@ -32,13 +32,13 @@ namespace Swarmops.Logic.Financial
         }
 
         public static ExpenseClaim Create (Person claimer, Organization organization, FinancialAccount budget, 
-                                      DateTime expenseDate, string description, Int64 amountCents)
+                                      FinancialAccount costType, DateTime expenseDate, string description, Int64 amountCents)
         {
             ExpenseClaim newClaim = FromIdentity (SwarmDb.GetDatabaseForWriting().CreateExpenseClaim (claimer.Identity, organization.Identity,
                                                                        budget.Identity, expenseDate, description, amountCents));
             // Create the financial transaction with rows
 
-            string transactionDescription = "Expense #" + newClaim.Identity + ": " + description;
+            string transactionDescription = "Expense #" + newClaim.Identity + ": " + description;  // TODO: Localize
 
             if (transactionDescription.Length > 64)
             {
@@ -51,6 +51,7 @@ namespace Swarmops.Logic.Financial
 
             transaction.AddRow(organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
             transaction.AddRow(budget, amountCents, claimer);
+            transaction.AddRow(costType, amountCents, claimer); // dimension 2
 
             // Make the transaction dependent on the expense claim
 

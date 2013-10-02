@@ -177,6 +177,11 @@ public class DataV5Base : System.Web.UI.Page
 
     protected static AuthenticationData GetAuthenticationDataAndCulture()
     {
+        return GetAuthenticationDataAndCulture(HttpContext.Current);
+    }
+
+    protected static AuthenticationData GetAuthenticationDataAndCulture(HttpContext suppliedContext)
+    {
         // This function is called from static page methods in AJAX calls to get
         // the current set of authentication data. Static page methods cannot access
         // the instance data of PageV5Base.
@@ -185,7 +190,7 @@ public class DataV5Base : System.Web.UI.Page
 
         // Find various credentials
 
-        string identity = HttpContext.Current.User.Identity.Name;
+        string identity = suppliedContext.User.Identity.Name;
         string[] identityTokens = identity.Split(',');
 
         string userIdentityString = identityTokens[0];

@@ -243,5 +243,54 @@ namespace Swarmops.Logic.Financial
                 return result;
             }
         }
+
+
+        public FinancialAccounts ExpensableCostTypes
+        {
+            // TODO: This needs to return a tree, not a flat list.
+
+            get
+            {
+                FinancialAccounts result = new FinancialAccounts();
+
+                int yearlyResultId = this.CostsYearlyResult.Identity;
+
+                FinancialAccounts costAccounts =
+                    FinancialAccounts.ForOrganization(Organization.FromIdentity(_organizationId),
+                                                      FinancialAccountType.Cost);
+
+                foreach (FinancialAccount account in costAccounts)
+                {
+                    if (account.Identity != yearlyResultId && account.Dimension == 2 && account.Expensable)
+                    {
+                        result.Add(account);
+                    }
+                }
+
+                if (result.Count == 0)
+                {
+                    // Cost types have not been primed; add default account to organization and return it.
+
+                    FinancialAccount defaultCostTypeAccount = FinancialAccount.Create(this._organizationId,
+                                                                                      "Unspecified Costs",
+                                                                                      FinancialAccountType.Cost, 0);
+                    defaultCostTypeAccount.Dimension = 2;
+
+                    this[OrganizationFinancialAccountType.CostTypeUnspecified] = defaultCostTypeAccount;
+
+                    FinancialAccount defaultIncomeTypeAccount = FinancialAccount.Create(this._organizationId,
+                                                                                        "Unspecified Income",
+                                                                                        FinancialAccountType.Income, 0);
+                    defaultIncomeTypeAccount.Dimension = 2;
+
+                    result.Add(defaultCostTypeAccount);
+
+                    this[OrganizationFinancialAccountType.IncomeTypeUnspecified] = defaultIncomeTypeAccount;
+                }
+
+                return result;
+            }
+        }
+
     }
 }
