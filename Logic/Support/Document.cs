@@ -32,14 +32,20 @@ namespace Swarmops.Logic.Support
             string description, IHasIdentity identifiableObject, Person uploader)
         {
             int newDocumentId = SwarmDb.GetDatabaseForWriting().
-                CreateDocument(serverFileName, clientFileName, fileSize, description, GetDocumentTypeForObject(identifiableObject), identifiableObject.Identity, uploader.Identity);
+                CreateDocument(serverFileName, clientFileName, fileSize, description, GetDocumentTypeForObject(identifiableObject), identifiableObject == null? 0: identifiableObject.Identity, uploader.Identity);
 
             return FromIdentity(newDocumentId);
         }
 
         public static DocumentType GetDocumentTypeForObject (IHasIdentity foreignObject)
         {
-            if (foreignObject is Person)
+            if (foreignObject == null)
+            {
+                // docs uploaded; foreign object not yet constructed
+
+                return DocumentType.Unknown;
+            }
+            else if (foreignObject is Person)
             {
                 return DocumentType.PersonPhoto;
             }
