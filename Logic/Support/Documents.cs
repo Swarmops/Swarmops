@@ -59,6 +59,12 @@ namespace Swarmops.Logic.Support
         }
 
 
+        public static Documents RecentFromGuid (Guid guid)
+        {
+            return FromArray (SwarmDb.GetDatabaseForReading().GetDocumentsRecentByDescription (guid.ToString()));
+        }
+
+
         public void SetForeignObjectForAll (IHasIdentity foreignObject)
         {
             foreach (Document doc in this)

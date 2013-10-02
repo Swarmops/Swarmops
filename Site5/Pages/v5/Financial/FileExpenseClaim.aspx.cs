@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Financial
 {
@@ -64,6 +65,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         protected void ButtonRequest_Click(object sender, EventArgs e)
         {
             // The data has been validated client-side already. We'll throw unfriendly exceptions if invalid data is passed here.
+            // People who choose to disable JavaScript and then submit bad input almost deserve to be hurt.
 
             double amount = Double.Parse(this.TextAmount.Text, NumberStyles.Number);
                 // parses in current culture - intentional
@@ -72,6 +74,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             string description = this.TextPurpose.Text;
 
             FinancialAccount budget = FinancialAccount.FromIdentity(Int32.Parse(this.Request.Form["DropBudgets"]));
+            FinancialAccount costType =
+                FinancialAccount.FromIdentity (Int32.Parse ((this.Request.Form["DropCostTypes"])));
 
             // sanity check
 
@@ -80,19 +84,31 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException("Budget-organization mismatch; won't file cash advance");
             }
 
+            if (costType.Organization.Identity != CurrentOrganization.Identity)
+            {
+                throw new InvalidOperationException("CostType-organization mismatch; won't file cash advance");
+            }
+
             // Store bank details for current user
 
             CurrentUser.BankName = this.TextBank.Text;
             CurrentUser.BankClearing = this.TextClearing.Text;
             CurrentUser.BankAccount = this.TextAccount.Text;
 
-            // Create cash advance
+            // Get documents; check that documents have been uploaded
 
-            CashAdvance cashAdvance = CashAdvance.Create(CurrentOrganization, CurrentUser, CurrentUser, amountCents,
-                                                         budget,
-                                                         description);
+            Documents documents = Documents.RecentFromGuid (this.FileUpload.Guid);
 
-            // Create success message
+            if (documents.Count == 0)
+            {
+                throw new InvalidOperationException("No documents uploaded");
+            }
+
+            ExpenseClaim claim = ExpenseClaim.Create (this.CurrentUser, this.CurrentOrganization, budget, costType,
+                                                      DateTime.UtcNow, description, amountCents);
+
+            documents.SetForeignObjectForAll(claim);
+
             /*
             string successMessage = string.Format(Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartOne,
                                                   HttpUtility.HtmlEncode(CurrentUser.Name),

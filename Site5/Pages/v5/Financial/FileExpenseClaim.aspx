@@ -87,7 +87,7 @@
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
         <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />&nbsp;<br/>
-        <span id="SpanCostTypes"><select class="easyui-combotree" url="Json-CostTypesTree.aspx" name="DropCostTypes" id="DropCostTypes" animate="true" style="width:300px"></select></span>&nbsp;<br/>
+        <span id="SpanCostTypes"><select class="easyui-combotree" url="/Automation/Json-ExpensableCostTypesTree.aspx" name="DropCostTypes" id="DropCostTypes" animate="true" style="width:300px"></select></span>&nbsp;<br/>
         &nbsp;<br/><!-- placeholder for label-side H2 -->
         
         <!-- file upload begins here -->
