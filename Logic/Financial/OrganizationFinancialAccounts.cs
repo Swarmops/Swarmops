@@ -275,17 +275,16 @@ namespace Swarmops.Logic.Financial
                                                                                       "Unspecified Costs",
                                                                                       FinancialAccountType.Cost, 0);
                     defaultCostTypeAccount.Dimension = 2;
-
                     this[OrganizationFinancialAccountType.CostTypeUnspecified] = defaultCostTypeAccount;
 
                     FinancialAccount defaultIncomeTypeAccount = FinancialAccount.Create(this._organizationId,
                                                                                         "Unspecified Income",
                                                                                         FinancialAccountType.Income, 0);
                     defaultIncomeTypeAccount.Dimension = 2;
+                    this[OrganizationFinancialAccountType.IncomeTypeUnspecified] = defaultIncomeTypeAccount;
 
                     result.Add(defaultCostTypeAccount);
 
-                    this[OrganizationFinancialAccountType.IncomeTypeUnspecified] = defaultIncomeTypeAccount;
                 }
 
                 return result;
