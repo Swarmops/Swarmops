@@ -224,7 +224,7 @@ namespace Swarmops.Frontend.Automation
                 file.InputStream.Position = 0;
                 file.SaveAs (StorageRoot + fileFolder + Path.DirectorySeparatorChar + fileName);
 
-                Document.Create (StorageRoot + fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName, file.ContentLength,
+                Document.Create (fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName, file.ContentLength,
                                  guid, null, authData.CurrentUser);
 
                 statuses.Add (new FilesStatus (fullName, file.ContentLength));
