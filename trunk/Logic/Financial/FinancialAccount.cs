@@ -112,7 +112,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public int Dimension
+        new public int Dimension
         {
             get { return base.Dimension; }
             set 
