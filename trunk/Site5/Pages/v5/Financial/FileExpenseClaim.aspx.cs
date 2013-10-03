@@ -109,7 +109,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             documents.SetForeignObjectForAll(claim);
 
-            /*
             string successMessage = string.Format(Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartOne,
                                                   HttpUtility.HtmlEncode(CurrentUser.Name),
                                                   HttpUtility.HtmlEncode(description), CurrentOrganization.Currency.Code,
@@ -125,11 +124,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 successMessage += "<br/><br/>" +
                                   Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartTwoOwnBudget +
                                   "<br/>";
+                claim.Attest (CurrentUser);
                 // TODO: Auto-attest
             }
 
             Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(successMessage)));
-            */
 
             // Redirect to dashboard
 
