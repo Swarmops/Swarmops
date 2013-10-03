@@ -24,12 +24,17 @@ namespace Swarmops.Logic.Financial
             return new FinancialTransaction (basic);
         }
 
-        public static FinancialTransaction FromIdentity (int financialTransactionId)
+        public static FinancialTransaction FromIdentity(int financialTransactionId)
         {
-            return FromBasic (SwarmDb.GetDatabaseForReading().GetFinancialTransaction (financialTransactionId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialTransaction(financialTransactionId));
         }
 
-        public static FinancialTransaction FromDependency (IHasIdentity dependency)
+        public static FinancialTransaction FromIdentityAggressive(int financialTransactionId)
+        {
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetFinancialTransaction(financialTransactionId)); // ForWriting intentional - bypass replication lag
+        }
+
+        public static FinancialTransaction FromDependency(IHasIdentity dependency)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialTransactionFromDependency(dependency));
         }
@@ -54,14 +59,14 @@ namespace Swarmops.Logic.Financial
                 return null; // This was a dupe -- already imported, as determined by ImportHash
             }
 
-            return FromIdentity (transactionId);
+            return FromIdentityAggressive (transactionId);
         }
 
 
         public static FinancialTransaction Create (int organizationId, DateTime dateTime, string description)
         {
             int transactionId = SwarmDb.GetDatabaseForWriting().CreateFinancialTransaction (organizationId, dateTime, description);
-            return FromIdentity (transactionId);
+            return FromIdentityAggressive (transactionId);
         }
 
         #endregion
