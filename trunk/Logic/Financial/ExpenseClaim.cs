@@ -26,15 +26,20 @@ namespace Swarmops.Logic.Financial
             return new ExpenseClaim (basic);
         }
 
-        public static ExpenseClaim FromIdentity (int expenseId)
+        public static ExpenseClaim FromIdentity(int expenseId)
         {
-            return FromBasic (SwarmDb.GetDatabaseForReading().GetExpenseClaim (expenseId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetExpenseClaim(expenseId));
         }
 
-        public static ExpenseClaim Create (Person claimer, Organization organization, FinancialAccount budget, 
+        public static ExpenseClaim FromIdentityAggressive(int expenseId)
+        {
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetExpenseClaim(expenseId));  // ForWriting is intentional - bypass replication lag
+        }
+
+        public static ExpenseClaim Create(Person claimer, Organization organization, FinancialAccount budget, 
                                       FinancialAccount costType, DateTime expenseDate, string description, Int64 amountCents)
         {
-            ExpenseClaim newClaim = FromIdentity (SwarmDb.GetDatabaseForWriting().CreateExpenseClaim (claimer.Identity, organization.Identity,
+            ExpenseClaim newClaim = FromIdentityAggressive (SwarmDb.GetDatabaseForWriting().CreateExpenseClaim (claimer.Identity, organization.Identity,
                                                                        budget.Identity, expenseDate, description, amountCents));
             // Create the financial transaction with rows
 
