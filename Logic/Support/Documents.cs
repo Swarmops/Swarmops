@@ -59,9 +59,9 @@ namespace Swarmops.Logic.Support
         }
 
 
-        public static Documents RecentFromGuid (Guid guid)
+        public static Documents RecentFromDescription (string description)
         {
-            return FromArray (SwarmDb.GetDatabaseForReading().GetDocumentsRecentByDescription (guid.ToString()));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetDocumentsRecentByDescription (description));
         }
 
 

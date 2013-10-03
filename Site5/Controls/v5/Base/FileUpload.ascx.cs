@@ -14,16 +14,21 @@ namespace Swarmops.Controls.Base
         {
             if (!Page.IsPostBack)
             {
-                Guid = Guid.NewGuid();
+                Guid newGuid = Guid.NewGuid();
+                this.HiddenGuid.Value = GuidString = newGuid.ToString();
 
                 if (Filter == UploadFilter.Unknown) // if not set in control
                 {
                     Filter = UploadFilter.NoFilter;
                 }
             }
+            else
+            {
+                GuidString = this.HiddenGuid.Value;
+            }
         }
 
-        public Guid Guid;
+        public string GuidString;
         public UploadFilter Filter;
 
 
