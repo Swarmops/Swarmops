@@ -225,6 +225,16 @@
   <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
     <value>Request Money Back For Expense</value>
   </data>
+  <data name="FileExpenseClaim_SuccessMessagePartOne" xml:space="preserve">
+    <value>An expense claim has been successfully filed for {0} {1:N2} against the budget of {2}. The receipts will need to be validated and the claim will need to be attested by the budget owner.</value>
+    <comment>{0} is the currency, {1} is the amount, and {2} is the budget name.</comment>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwo" xml:space="preserve">
+    <value>As soon as this has happened, the funds will proceed to payout to your indicated account.</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>As this is your own budget, attestation is already complete. Only validation is necessary.</value>
+  </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Upload Receipt Images:</value>
   </data>
