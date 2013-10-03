@@ -97,7 +97,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Get documents; check that documents have been uploaded
 
-            Documents documents = Documents.RecentFromGuid (this.FileUpload.Guid);
+            Documents documents = Documents.RecentFromDescription (this.FileUpload.GuidString);
 
             if (documents.Count == 0)
             {

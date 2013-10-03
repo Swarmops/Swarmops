@@ -13,7 +13,7 @@
     $(document).ready(function() {
 
         $('#ButtonUploadHidden').fileupload({
-            url: '/Automation/UploadFileHandler.ashx?Guid=<%= Guid.ToString() %>',
+            url: '/Automation/UploadFileHandler.ashx?Guid=<%= GuidString %>',
             dataType: 'json',
             done: function(e, data) {
                 $.each(data.result, function(index, file) {
@@ -54,6 +54,7 @@
     });
 
 </script>
+<asp:HiddenField runat="server" ID="HiddenGuid"/>
 
 <div style="height:36px;float:left"><input id="ButtonUploadVisible" class="ButtonSwarmopsUpload" type="button" /><input id="ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="DivUploadCount" style="display:none;overflow:hidden;height:64px"></div><div id="DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&nbsp;<br/>
 
