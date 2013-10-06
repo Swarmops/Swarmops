@@ -123,7 +123,15 @@
 Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Cash Advance Requested</value>
+    <value>[OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
+
+Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>[OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="System_Exception_Body" xml:space="preserve">
     <value>An unhandled exception was thrown in Swarmops:

@@ -112,19 +112,6 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        new public int Dimension
-        {
-            get { return base.Dimension; }
-            set 
-            { 
-                if (base.Dimension != value)
-                    {
-                        SwarmDb.GetDatabaseForWriting().SetFinancialAccountDimension(this.Identity, value);
-                        base.Dimension = value;
-                    }
-                }
-        }
-
         public Person Owner
         {
             get

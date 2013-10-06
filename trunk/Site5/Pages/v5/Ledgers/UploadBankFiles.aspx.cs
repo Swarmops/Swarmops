@@ -43,7 +43,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 this.LabelSelectFileType.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
                 this.LabelSelectAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectAccount;
                 this.LabelUploadH2Header.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
-                this.LabelUploadH3Header.Text = Resources.Global.Global_UploadFileToActivizr;
+                this.LabelUploadH3Header.Text = Resources.Global.Global_UploadFileToSwarmops;
                 this.Upload.Text = Resources.Global.Global_UploadFile;
                 this.LabelProcessing.Text = Resources.Global.Global_ProcessingFile;
                 this.LinkUploadAnother.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadAnother;

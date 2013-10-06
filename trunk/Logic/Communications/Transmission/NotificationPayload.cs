@@ -90,7 +90,11 @@ namespace Swarmops.Logic.Communications.Transmission
         System_Startup,
         System_Exception,
         CashAdvance_Requested,
-        CashAdvance_Attested
+        CashAdvance_Attested,
+        ExpenseClaim_Created,
+        ExpenseClaim_Attested,
+        ExpenseClaim_Validated,
+        Payout_Settled
     }
 
 // ReSharper restore InconsistentNaming

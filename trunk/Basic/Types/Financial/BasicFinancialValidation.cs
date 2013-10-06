@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 
-namespace Swarmops.Basic.Types
+namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialValidation: IHasIdentity
     {

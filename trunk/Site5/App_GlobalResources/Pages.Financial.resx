@@ -312,7 +312,7 @@
     <value>Purpose</value>
   </data>
   <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
-    <value>A cash advance has been requested for &lt;strong&gt;{0}&lt;/strong&gt; for the purpose of {1}. The requested amount is {2} {3:N2}. Note that this is a &lt;strong&gt;loan&lt;/strong&gt; from the organization until receipts have been presented.</value>
+    <value>A cash advance has been requested for &lt;strong&gt;{0}&lt;/strong&gt;. The requested amount is {2} {3:N2}. Note that this is a &lt;strong&gt;loan&lt;/strong&gt; from the organization until receipts have been presented.</value>
     <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
   </data>
   <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">

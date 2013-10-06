@@ -66,7 +66,7 @@
     <Compile Include="Types\BasicElection.cs" />
     <Compile Include="Types\BasicExceptionLog.cs" />
     <Compile Include="Types\BasicExternalActivity.cs" />
-    <Compile Include="Types\BasicFinancialValidation.cs" />
+    <Compile Include="Types\Financial\BasicFinancialValidation.cs" />
     <Compile Include="Types\BasicPostalCode.cs" />
     <Compile Include="Types\Financial\BasicFinancialAccount.cs" />
     <Compile Include="Types\Governance\BasicMeeting.cs" />
@@ -98,10 +98,10 @@
     <Compile Include="Types\BasicExpenseClaim.cs" />
     <Compile Include="Types\BasicExternalCredential.cs" />
     <Compile Include="Types\BasicExternalIdentity.cs" />
-    <Compile Include="Types\BasicFinancialAccountRow.cs" />
-    <Compile Include="Types\BasicFinancialDependency.cs" />
-    <Compile Include="Types\BasicFinancialTransaction.cs" />
-    <Compile Include="Types\BasicFinancialTransactionRow.cs" />
+    <Compile Include="Types\Financial\BasicFinancialAccountRow.cs" />
+    <Compile Include="Types\Financial\BasicFinancialDependency.cs" />
+    <Compile Include="Types\Financial\BasicFinancialTransaction.cs" />
+    <Compile Include="Types\Financial\BasicFinancialTransactionRow.cs" />
     <Compile Include="Types\BasicInboundInvoice.cs" />
     <Compile Include="Types\BasicInternalPoll.cs" />
     <Compile Include="Types\BasicInternalPollCandidate.cs" />

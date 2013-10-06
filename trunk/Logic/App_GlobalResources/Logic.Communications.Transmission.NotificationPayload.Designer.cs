@@ -73,11 +73,31 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Cash Advance Requested.
+        ///   Looks up a localized string similar to [OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string CashAdvance_Requested_Subject {
             get {
                 return ResourceManager.GetString("CashAdvance_Requested_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
+        ///
+        ///Please log on to Swarmops at [SystemUrl] to attest or deny..
+        /// </summary>
+        internal static string ExpenseClaim_Created_Body {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Created_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string ExpenseClaim_Created_Subject {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Created_Subject", resourceCulture);
             }
         }
         

@@ -7,6 +7,7 @@ using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Financial;
 
 namespace Swarmops.Database
 {

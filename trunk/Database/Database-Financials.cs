@@ -15,8 +15,7 @@ namespace Swarmops.Database
     {
         private const string financialAccountFieldSequence =
             " FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId," +  // 0-4
-            " OwnerPersonId,Dimension,Open,OpenedYear,ClosedYear, " +  // 5-9
-            " Expensable " + // 10
+            " OwnerPersonId,Open,OpenedYear,ClosedYear,Expensable " +  // 5-9
             " FROM FinancialAccounts ";
 
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
@@ -34,25 +33,6 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "pParentFinancialAccountId", pParentFinancialAccountId);
 
                 return Convert.ToInt32(command.ExecuteScalar());
-            }
-        }
-
-
-        public void SetFinancialAccountDimension(int financialAccountId, int dimension)
-        {
-            // This is only intended to be used when creating the account, and never used once in use.
-
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
-
-                DbCommand command = GetDbCommand("SetFinancialAccountDimension", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                AddParameterWithName(command, "financialAccountId", financialAccountId);
-                AddParameterWithName(command, "dimension", dimension);
-
-                command.ExecuteNonQuery();
             }
         }
 
@@ -686,7 +666,6 @@ namespace Swarmops.Database
             }
         }
 
-
         private BasicFinancialTransactionRow ReadFinancialTransactionRowFromDataReader(DbDataReader reader)
         {
             int rowId = reader.GetInt32(0);
@@ -707,13 +686,12 @@ namespace Swarmops.Database
             var accountType = (FinancialAccountType) reader.GetInt32(3);
             int parentFinancialAccountId = reader.GetInt32(4);
             int ownerPersonId = reader.GetInt32(5);
-            int dimension = reader.GetInt32(6);
-            bool open = reader.GetBoolean(7);
-            int openedYear = reader.GetInt32(8);
-            int closedYear = reader.GetInt32(9);
-            bool expensable = reader.GetBoolean(10);
+            bool open = reader.GetBoolean(6);
+            int openedYear = reader.GetInt32(7);
+            int closedYear = reader.GetInt32(8);
+            bool expensable = reader.GetBoolean(9);
 
-            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId, ownerPersonId, dimension, open, openedYear, closedYear, expensable);
+            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId, ownerPersonId, open, openedYear, closedYear, expensable);
         }
 
         private BasicFinancialAccountRow ReadFinancialAccountRowFromDataReader (DbDataReader reader)

@@ -72,11 +72,12 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command =
-                    GetDbCommand(
-                        "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
-                        "WHERE Documents.Description = '" + description.Replace ("'", "''") + "' AND " +
-                        "Documents.UploadedDateTime > '" + DateTime.UtcNow.AddDays(-1).ToString("yyyy-MM-dd HH:mm") + "'", connection);
+                string sqlQuery =
+                    "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
+                    "WHERE Documents.Description = '" + description.Replace ("'", "''") + "' AND " +
+                    "Documents.UploadedDateTime > '" + DateTime.UtcNow.AddDays (-1).ToString ("yyyy-MM-dd HH:mm") + "'";
+
+                DbCommand command = GetDbCommand(sqlQuery, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

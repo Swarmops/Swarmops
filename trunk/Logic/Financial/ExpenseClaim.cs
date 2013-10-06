@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -56,11 +58,14 @@ namespace Swarmops.Logic.Financial
 
             transaction.AddRow(organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
             transaction.AddRow(budget, amountCents, claimer);
-            transaction.AddRow(costType, amountCents, claimer); // dimension 2
-
+             
             // Make the transaction dependent on the expense claim
 
             transaction.Dependency = newClaim;
+
+            // Create notification
+
+            OutboundComm.CreateNotificationForAttest(budget, claimer, (double)amountCents / 100.0, description, NotificationResource.ExpenseClaim_Created); // Slightly misplaced logic, but failsafer here
 
             return newClaim;
         }
@@ -363,6 +368,8 @@ namespace Swarmops.Logic.Financial
 
                 nominalTransaction[debtAccountId] = -AmountCents;
                 nominalTransaction[BudgetId] = AmountCents;
+
+                // TODO: Balance cost account, too
             }
 
             this.FinancialTransaction.RecalculateTransaction(nominalTransaction, updatingPerson);

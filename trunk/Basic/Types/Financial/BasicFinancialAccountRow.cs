@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Swarmops.Basic.Types
+namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialAccountRow
     {

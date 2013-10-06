@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Swarmops.Basic.Enums;
 
-namespace Swarmops.Basic.Types
+namespace Swarmops.Basic.Types.Financial
 {
     /// <summary>
     /// This class encapsulates what a financial transaction was constructed from.
