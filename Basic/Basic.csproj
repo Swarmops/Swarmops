@@ -66,6 +66,9 @@
     <Compile Include="Types\BasicElection.cs" />
     <Compile Include="Types\BasicExceptionLog.cs" />
     <Compile Include="Types\BasicExternalActivity.cs" />
+    <Compile Include="Types\Financial\BasicFinancialTransactionTagSet.cs" />
+    <Compile Include="Types\Financial\BasicFinancialTransactionTagSetType.cs" />
+    <Compile Include="Types\Financial\BasicFinancialTransactionTagType.cs" />
     <Compile Include="Types\Financial\BasicFinancialValidation.cs" />
     <Compile Include="Types\BasicPostalCode.cs" />
     <Compile Include="Types\Financial\BasicFinancialAccount.cs" />

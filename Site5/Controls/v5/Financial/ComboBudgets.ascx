@@ -11,6 +11,16 @@
             $('#<%=this.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();
         });
 
+        $('#<%=this.ClientID %>_SpanBudgets span.combo input.combo-text').keydown(function (e) {
+            switch (e.which) {
+                case 40: // down
+                    $('#<%=this.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();
+                    break;
+
+                default: return; // exit this handler for other keys
+            }
+            e.preventDefault(); // prevent the default action (scroll / move caret)
+        });
     });
  </script>
  
