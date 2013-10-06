@@ -253,8 +253,8 @@
     <value>Upload File</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  <data name="Global_UploadFileToActivizr" xml:space="preserve">
-    <value>Upload File To Activizr</value>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Upload File To Swarmops</value>
     <comment>Used as header above upload sections.</comment>
   </data>
   <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
@@ -323,5 +323,17 @@
   </data>
   <data name="Global_Today" xml:space="preserve">
     <value>Today</value>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
+    <value>Cost Type</value>
+    <comment>Second-dimension bookkeeping</comment>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
+    <value>Project</value>
+    <comment>Tagging costs/income to projects</comment>
+  </data>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Related</value>
+    <comment>List of shortcuts to related actions to current one</comment>
   </data>
 </root>

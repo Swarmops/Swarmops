@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
@@ -273,6 +274,9 @@ namespace Swarmops.Logic.Financial
 
         public bool RecalculateTransaction (Dictionary<int, Int64> nominalTransaction, Person loggingPerson)
         {
+            // TODO: Update dimension 2 with dimension 1 P&L accounts as template
+
+
             bool changedTransaction = false;
 
             // We need to create a delta. This is... somewhat complicated.
@@ -334,6 +338,10 @@ namespace Swarmops.Logic.Financial
                     changedTransaction = true;
                 }
             }
+
+            // TODO: Dimension 2
+
+
 
             return changedTransaction;
         }
