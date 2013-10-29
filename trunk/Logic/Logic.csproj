@@ -64,6 +64,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Financial.FinancialTransactionTagSetTypesStock.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Logic.Swarm.DashboardTodos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,6 +97,12 @@
     <Compile Include="Communications\Transmission\PayloadBase.cs" />
     <Compile Include="Financial\CashAdvance.cs" />
     <Compile Include="Financial\CashAdvances.cs" />
+    <Compile Include="Financial\FinancialTransactionTagSet.cs" />
+    <Compile Include="Financial\FinancialTransactionTagSets.cs" />
+    <Compile Include="Financial\FinancialTransactionTagSetType.cs" />
+    <Compile Include="Financial\FinancialTransactionTagSetTypesStock.cs" />
+    <Compile Include="Financial\FinancialTransactionTagType.cs" />
+    <Compile Include="Financial\FinancialTransactionTagTypes.cs" />
     <Compile Include="Financial\ImportedBankData.cs" />
     <Compile Include="Financial\YearlyReport.cs" />
     <Compile Include="Security\Accesses.cs" />
@@ -304,6 +315,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\Logic.Financial.FinancialTransactionTagSetTypesStock.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\Logic.Swarm.DashboardTodos.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Swarm.DashboardTodos.Designer.cs</LastGenOutput>

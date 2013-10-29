@@ -15,16 +15,17 @@
 
         $(document).ready(function () {
  
-            $('#DropCostTypes').combotree({
+            <asp:Repeater ID="RepeaterTagDropScript" runat="server"><ItemTemplate>
+            $('#DropTags<%# Eval("TagSetId") %>').combotree({
                 animate: true,
                 height: 30
             });
 
             
-            $('#SpanCostTypes span.combo input.combo-text').click(function () {
-                $('#SpanCostTypes span.combo span span.combo-arrow').click();
+            $('#SpanDropTags<%# Eval("TagSetId") %> span.combo input.combo-text').click(function () {
+                $('#SpanDropTags<%# Eval("TagSetId") %> span.combo span span.combo-arrow').click();
             });
-
+            </ItemTemplate></asp:Repeater>
 
         });
 
@@ -83,11 +84,13 @@
 
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    <asp:HiddenField ID="TagSetIdentifiers" runat="server"/>
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
         <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />&nbsp;<br/>
-        <span id="SpanCostTypes"><select class="easyui-combotree" url="/Automation/Json-ExpensableCostTypesTree.aspx" name="DropCostTypes" id="DropCostTypes" animate="true" style="width:300px"></select></span>&nbsp;<br/>
+        <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
+
         &nbsp;<br/><!-- placeholder for label-side H2 -->
         
         <!-- file upload begins here -->
@@ -106,7 +109,7 @@
         <asp:Label runat="server" ID="LabelAmount" /><br/>
         <asp:Label runat="server" ID="LabelPurpose" /><br/>
         <asp:Label runat="server" ID="LabelBudget" /><br/>
-        <asp:Label runat="server" ID="LabelCostType" /><br/>
+        <asp:Repeater ID="RepeaterTagLabels" runat="server"><ItemTemplate><%# Eval("TagSetLocalizedName") %><br/></ItemTemplate></asp:Repeater>
         <h2><asp:Label runat="server" ID="LabelHeaderImageFiles" /></h2>
         <asp:Label runat="server" ID="LabelImageFiles" /><br/>
         <h2><asp:Label runat="server" ID="LabelHeaderBankDetails" /></h2>

@@ -16,7 +16,8 @@ namespace Swarmops.Database
 
   
         private const string financialTransactionTagSetFieldSequence =
-            " FinancialTransactionTagSetId,FinancialTransactionTagSetTypeId,OrganizationId,Order,AllowUntagged " +    // 0-4
+            " FinancialTransactionTagSetId,FinancialTransactionTagSetTypeId,OrganizationId,DisplayOrder,AllowUntagged," +    // 0-4
+            "ProfitLossType " +                                                                                       // 5
             "FROM FinancialTransactionTagSets ";
 
         private static BasicFinancialTransactionTagSet ReadFinancialTransactionTagSetFromDataReader(IDataRecord reader)
@@ -26,8 +27,9 @@ namespace Swarmops.Database
             int organizationId = reader.GetInt32 (2);
             int order = reader.GetInt32 (3);
             bool allowUntagged = reader.GetBoolean (4);
+            int profitLossType = reader.GetInt32(5);
 
-            return new BasicFinancialTransactionTagSet(financialTransactionTagSetId, financialTransactionTagSetTypeId, organizationId, order, allowUntagged);
+            return new BasicFinancialTransactionTagSet(financialTransactionTagSetId, financialTransactionTagSetTypeId, organizationId, order, allowUntagged, profitLossType);
         }
 
         #endregion
@@ -43,7 +45,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + financialTransactionTagSetTypeFieldSequence + " WHERE FinancialTransactionTagSetId=" + financialTransactionTagSetId.ToString(CultureInfo.InvariantCulture), connection);
+                    GetDbCommand("SELECT" + financialTransactionTagSetFieldSequence + " WHERE FinancialTransactionTagSetId=" + financialTransactionTagSetId.ToString(CultureInfo.InvariantCulture), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -67,7 +69,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT" + financialTransactionTagSetFieldSequence + ConstructWhereClause ("FinancialTransactionTagSets", conditions) + " ORDER BY Order", connection);
+                DbCommand command = GetDbCommand("SELECT" + financialTransactionTagSetFieldSequence + ConstructWhereClause ("FinancialTransactionTagSets", conditions) + " ORDER BY DisplayOrder", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

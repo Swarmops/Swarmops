@@ -232,17 +232,5 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-
-        public FinancialAccounts ExpensableCostTypes
-        {
-            // TODO: This needs to return a tree, not a flat list.
-
-            get
-            {
-                
-                throw new NotImplementedException();
-            }
-        }
-
     }
 }

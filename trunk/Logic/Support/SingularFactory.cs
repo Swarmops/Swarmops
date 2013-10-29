@@ -86,6 +86,11 @@ namespace Swarmops.Logic.Support
                 case "Swarmops.Basic.Types.BasicSalary":
                     return Salary.FromBasic((BasicSalary) basic);
 
+                case "Swarmops.Basic.Types.Financial.BasicFinancialTransactionTagSet":
+                    return FinancialTransactionTagSet.FromBasic ((BasicFinancialTransactionTagSet) basic);
+
+                case "Swarmops.Basic.Types.Financial.BasicFinancialTransactionTagType":
+                    return FinancialTransactionTagType.FromBasic((BasicFinancialTransactionTagType) basic);
 
                 // ------------ GOVERNANCE CLASSES ------------
 
