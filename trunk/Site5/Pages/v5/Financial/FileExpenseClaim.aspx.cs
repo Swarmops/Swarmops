@@ -17,6 +17,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             string tagSetIdsString = Request.Form["HiddenTagSetIdentifiers"];
             int[] tagSetIds;
 
+            // Find our tag ids, either from previously hidden var or load from org
+
             if (String.IsNullOrEmpty(tagSetIdsString))
             {
                 tagSetIds = FinancialTransactionTagSets.ForOrganization(this.CurrentOrganization).Identities;
@@ -31,6 +33,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     tagSetIds[index] = Int32.Parse(tagSetIdStrings[index]);
                 }
             }
+
+            // Construct data source
 
             List<TagSetDataSourceItem> dataSource = new List<TagSetDataSourceItem>();
 
@@ -47,6 +51,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 dataSource.Add(item);
             }
 
+            // Bind data
+
             this.RepeaterTagLabels.DataSource = dataSource;
             this.RepeaterTagDrop.DataSource = dataSource;
             this.RepeaterTagDropScript.DataSource = dataSource;
@@ -54,6 +60,17 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.RepeaterTagLabels.DataBind();
             this.RepeaterTagDrop.DataBind();
             this.RepeaterTagDropScript.DataBind();
+
+            // Write set list back to hidden variable
+
+            List<string> tagSetIdStringList = new List<string>();
+
+            foreach (int tagSetId in tagSetIds)
+            {
+                tagSetIdStringList.Add(tagSetId.ToString(CultureInfo.InvariantCulture));
+            }
+
+            this.HiddenTagSetIdentifiers.Value = String.Join(",", tagSetIdStringList.ToArray());
         }
 
         protected void Page_Load(object sender, EventArgs e)
