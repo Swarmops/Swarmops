@@ -16,7 +16,7 @@ namespace Swarmops.Database
 
         
         private const string financialTransactionTagTypeFieldSequence =
-            " FinancialTransactionTagTypeId,ParentFinancialTransacationTagTypeId,FinancialTransactionTagSetId,Name,Active," +    // 0-4
+            " FinancialTransactionTagTypeId,ParentFinancialTransactionTagTypeId,FinancialTransactionTagSetId,Name,Active," +    // 0-4
             "OpenedYear,ClosedYear " +                     // 5-6
             "FROM FinancialTransactionTagTypes ";
 
@@ -72,7 +72,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT" + financialTransactionTagSetFieldSequence + ConstructWhereClause("FinancialTransactionTagTypes", conditions), connection);
+                DbCommand command = GetDbCommand("SELECT" + financialTransactionTagTypeFieldSequence + ConstructWhereClause("FinancialTransactionTagTypes", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

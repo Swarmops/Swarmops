@@ -12,6 +12,50 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 {
     public partial class FileExpenseClaim : PageV5Base
     {
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            string tagSetIdsString = Request.Form["HiddenTagSetIdentifiers"];
+            int[] tagSetIds;
+
+            if (String.IsNullOrEmpty(tagSetIdsString))
+            {
+                tagSetIds = FinancialTransactionTagSets.ForOrganization(this.CurrentOrganization).Identities;
+            }
+            else
+            {
+                string[] tagSetIdStrings = tagSetIdsString.Split(',');
+                tagSetIds = new int[tagSetIdStrings.Length];
+
+                for (int index = 0; index < tagSetIdStrings.Length; index++)
+                {
+                    tagSetIds[index] = Int32.Parse(tagSetIdStrings[index]);
+                }
+            }
+
+            List<TagSetDataSourceItem> dataSource = new List<TagSetDataSourceItem>();
+
+            foreach (int tagSetId in tagSetIds)
+            {
+                TagSetDataSourceItem item = new TagSetDataSourceItem()
+                                                {
+                                                    TagSetId = tagSetId,
+                                                    TagSetLocalizedName =
+                                                        FinancialTransactionTagSetType.GetLocalizedName(
+                                                            FinancialTransactionTagSet.FromIdentity(tagSetId).
+                                                                FinancialTransactionTagSetTypeId)
+                                                };
+                dataSource.Add(item);
+            }
+
+            this.RepeaterTagLabels.DataSource = dataSource;
+            this.RepeaterTagDrop.DataSource = dataSource;
+            this.RepeaterTagDropScript.DataSource = dataSource;
+
+            this.RepeaterTagLabels.DataBind();
+            this.RepeaterTagDrop.DataBind();
+            this.RepeaterTagDropScript.DataBind();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.CurrentOrganization.IsEconomyEnabled)
@@ -45,7 +89,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                                                   CurrentOrganization.Currency.Code);
             this.LabelPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_Description;
             this.LabelBudget.Text = Resources.Pages.Financial.FileExpenseClaim_Budget;
-            this.LabelCostType.Text = Resources.Pages.Financial.FileExpenseClaim_CostType;
             this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderBankDetails;
             this.LabelBankName.Text = Resources.Pages.Financial.FileExpenseClaim_BankName;
             this.LabelBankClearing.Text = Resources.Pages.Financial.FileExpenseClaim_BankClearing;
@@ -133,6 +176,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // Redirect to dashboard
 
             Response.Redirect("/", true);
+        }
+
+
+        protected class TagSetDataSourceItem
+        {
+            public int TagSetId { get; set; }
+            public string TagSetLocalizedName { get; set; }
         }
     }
 }
