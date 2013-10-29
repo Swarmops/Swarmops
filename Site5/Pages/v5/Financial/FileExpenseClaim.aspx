@@ -84,7 +84,7 @@
 
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <asp:HiddenField ID="TagSetIdentifiers" runat="server"/>
+    <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
