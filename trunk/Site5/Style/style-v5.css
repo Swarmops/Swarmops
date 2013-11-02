@@ -622,7 +622,7 @@ span.loginalphabetasign
 }
 
 
-input.entryError {
+input.entryError, span.entryError, div.entryError {
     outline: red ridge 4px;   
 }
 
