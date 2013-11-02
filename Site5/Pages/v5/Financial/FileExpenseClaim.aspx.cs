@@ -15,22 +15,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         protected void Page_Init(object sender, EventArgs e)
         {
             string tagSetIdsString = Request.Form["HiddenTagSetIdentifiers"];
-            int[] tagSetIds;
 
             // Find our tag ids, either from previously hidden var or load from org
 
             if (String.IsNullOrEmpty(tagSetIdsString))
             {
-                tagSetIds = FinancialTransactionTagSets.ForOrganization(this.CurrentOrganization).Identities;
+                _tagSetIds = FinancialTransactionTagSets.ForOrganization(this.CurrentOrganization).Identities;
             }
             else
             {
                 string[] tagSetIdStrings = tagSetIdsString.Split(',');
-                tagSetIds = new int[tagSetIdStrings.Length];
+                _tagSetIds = new int[tagSetIdStrings.Length];
 
                 for (int index = 0; index < tagSetIdStrings.Length; index++)
                 {
-                    tagSetIds[index] = Int32.Parse(tagSetIdStrings[index]);
+                    _tagSetIds[index] = Int32.Parse(tagSetIdStrings[index]);
                 }
             }
 
@@ -38,7 +37,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             List<TagSetDataSourceItem> dataSource = new List<TagSetDataSourceItem>();
 
-            foreach (int tagSetId in tagSetIds)
+            foreach (int tagSetId in _tagSetIds)
             {
                 TagSetDataSourceItem item = new TagSetDataSourceItem()
                                                 {
@@ -56,22 +55,26 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.RepeaterTagLabels.DataSource = dataSource;
             this.RepeaterTagDrop.DataSource = dataSource;
             this.RepeaterTagDropScript.DataSource = dataSource;
+            this.RepeaterErrorCheckTags.DataSource = dataSource;
 
             this.RepeaterTagLabels.DataBind();
             this.RepeaterTagDrop.DataBind();
             this.RepeaterTagDropScript.DataBind();
+            this.RepeaterErrorCheckTags.DataBind();
 
             // Write set list back to hidden variable
 
             List<string> tagSetIdStringList = new List<string>();
 
-            foreach (int tagSetId in tagSetIds)
+            foreach (int tagSetId in _tagSetIds)
             {
                 tagSetIdStringList.Add(tagSetId.ToString(CultureInfo.InvariantCulture));
             }
 
             this.HiddenTagSetIdentifiers.Value = String.Join(",", tagSetIdStringList.ToArray());
         }
+
+        private int[] _tagSetIds;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -119,6 +122,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
             this.LiteralErrorBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
             this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
+            
         }
 
 
@@ -141,12 +145,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (budget.Organization.Identity != CurrentOrganization.Identity)
             {
-                throw new InvalidOperationException("Budget-organization mismatch; won't file cash advance");
+                throw new InvalidOperationException("Budget-organization mismatch; won't file expense claim");
             }
 
             if (costType.Organization.Identity != CurrentOrganization.Identity)
             {
-                throw new InvalidOperationException("CostType-organization mismatch; won't file cash advance");
+                throw new InvalidOperationException("CostType-organization mismatch; won't file expense claim");
             }
 
             // Store bank details for current user

@@ -238,6 +238,10 @@
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Upload Receipt Images:</value>
   </data>
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Please select an option as indicated.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Amount</value>
     <comment>Amount to be paid out</comment>

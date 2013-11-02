@@ -42,9 +42,17 @@
 
             if ($('#<%=this.ComboBudgets.ClientID %>_DropBudgets').combotree('tree').tree('getSelected') == null) {
                 isValid = false;
-                $('#<%=this.ComboBudgets.ClientID %>_DropBudgets').addClass("entryError");
+                $('#<%=this.ComboBudgets.ClientID %>_SpanBudgets').addClass("entryError");
                 alertify.error("<asp:Literal runat="server" ID="LiteralErrorBudget" />");
             }
+
+            <asp:Repeater ID="RepeaterErrorCheckTags" runat="server"><ItemTemplate>
+                if ($('#DropTags<%# Eval("TagSetId") %>').combotree('tree').tree('getSelected') == null) {
+                    isValid = false;
+                    $('#SpanDropTags<%# Eval("TagSetId") %>').addClass("entryError");
+                    alertify.error('<%=Resources.Pages.Financial.FileExpenseClaim_ValidationError_MissingTag.Replace("'", "''") %>');
+                }
+            </ItemTemplate></asp:Repeater>
 
             isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorPurpose" />") && isValid;
 
