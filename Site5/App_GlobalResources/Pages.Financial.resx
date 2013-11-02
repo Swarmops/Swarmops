@@ -238,6 +238,12 @@
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Upload Receipt Images:</value>
   </data>
+  <data name="FileExpenseClaim_ValidationErron_Purpose" xml:space="preserve">
+    <value>Please describe what this purchase was.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Please enter the amount of money (in {0}) that you are claiming.</value>
+  </data>
   <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
     <value>Please select an option as indicated.</value>
     <comment>Very general as tags may be many things.</comment>

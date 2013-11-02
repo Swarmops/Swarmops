@@ -14,7 +14,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            string tagSetIdsString = Request.Form["HiddenTagSetIdentifiers"];
+            string tagSetIdsString = Request["ctl00$PlaceHolderMain$HiddenTagSetIdentifiers"];
 
             // Find our tag ids, either from previously hidden var or load from org
 
@@ -116,8 +116,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderReceiptImages;
             this.LabelImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_UploadRecieptImages;
 
-            this.LiteralErrorAmount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Amount;
-            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Purpose;
+            this.LiteralErrorAmount.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount;
+            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationErron_Purpose;
             this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
             this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
             this.LiteralErrorBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
