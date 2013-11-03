@@ -56,7 +56,7 @@ namespace Swarmops.Logic.Support
                 case "Swarmops.Basic.Types.Financial.BasicFinancialAccount":
                     return FinancialAccount.FromBasic((BasicFinancialAccount)basic);
 
-                case "Swarmops.Basic.Types.BasicFinancialTransaction":
+                case "Swarmops.Basic.Types.Financial.BasicFinancialTransaction":
                     return FinancialTransaction.FromBasic((BasicFinancialTransaction)basic);
 
                 case "Swarmops.Basic.Types.BasicFinancialValidation":

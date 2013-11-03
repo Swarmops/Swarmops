@@ -117,12 +117,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_UploadRecieptImages;
 
             this.LiteralErrorAmount.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount;
-            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationErron_Purpose;
+            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose;
             this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
             this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
             this.LiteralErrorBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
             this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
-            
+            this.LiteralErrorDocuments.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents;
+
         }
 
 
@@ -138,19 +139,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             string description = this.TextPurpose.Text;
 
             FinancialAccount budget = FinancialAccount.FromIdentity(Int32.Parse(this.Request.Form["DropBudgets"]));
-            FinancialAccount costType =
-                FinancialAccount.FromIdentity (Int32.Parse ((this.Request.Form["DropCostTypes"])));
 
             // sanity check
 
             if (budget.Organization.Identity != CurrentOrganization.Identity)
             {
                 throw new InvalidOperationException("Budget-organization mismatch; won't file expense claim");
-            }
-
-            if (costType.Organization.Identity != CurrentOrganization.Identity)
-            {
-                throw new InvalidOperationException("CostType-organization mismatch; won't file expense claim");
             }
 
             // Store bank details for current user
@@ -168,15 +162,26 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException("No documents uploaded");
             }
 
-            ExpenseClaim claim = ExpenseClaim.Create (this.CurrentUser, this.CurrentOrganization, budget, costType,
-                                                      DateTime.UtcNow, description, amountCents);
+            ExpenseClaim claim = ExpenseClaim.Create (this.CurrentUser, this.CurrentOrganization, budget, DateTime.UtcNow, description, amountCents);
+
+            foreach (int tagSetId in _tagSetIds)
+            {
+                string selectedTagString =
+                    this.Request.Form["DropTags" + tagSetId.ToString(CultureInfo.InvariantCulture)];
+
+                if (!String.IsNullOrEmpty(selectedTagString))
+                {
+                    int selectedTagType = Int32.Parse(selectedTagString);
+                    claim.FinancialTransaction.CreateTag(FinancialTransactionTagType.FromIdentity(selectedTagType), CurrentUser);
+                }
+            }
 
             documents.SetForeignObjectForAll(claim);
 
             string successMessage = string.Format(Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartOne,
-                                                  HttpUtility.HtmlEncode(CurrentUser.Name),
-                                                  HttpUtility.HtmlEncode(description), CurrentOrganization.Currency.Code,
-                                                  (double) (amountCents/100.0));
+                                                  CurrentOrganization.Currency.Code,
+                                                  (double) (amountCents/100.0),
+                                                  budget.Name);
 
             if (budget.OwnerPersonId != CurrentUser.Identity)
             {
@@ -189,7 +194,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                                   Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartTwoOwnBudget +
                                   "<br/>";
                 claim.Attest (CurrentUser);
-                // TODO: Auto-attest
             }
 
             Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(successMessage)));

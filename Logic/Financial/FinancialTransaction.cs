@@ -272,6 +272,16 @@ namespace Swarmops.Logic.Financial
 
 
 
+        public void CreateTag (FinancialTransactionTagType tagType, Person creatingPerson)
+        {
+            // TODO: Verify that there isn't already a tag in this set in the transaction, and if so, delete it first
+
+            SwarmDb.GetDatabaseForWriting().CreateFinancialTransactionTag(this.Identity, tagType.Identity);
+
+            // TODO: Log that the tag was added (and by whom?)
+        }
+
+
         public bool RecalculateTransaction (Dictionary<int, Int64> nominalTransaction, Person loggingPerson)
         {
             // TODO: Update dimension 2 with dimension 1 P&L accounts as template

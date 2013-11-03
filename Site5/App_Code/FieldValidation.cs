@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Services;
+using Swarmops.Logic.Support;
 
 /// <summary>
 /// Summary description for FieldValidation
@@ -73,5 +74,18 @@ public class FieldValidation : System.Web.Services.WebService {
         }
 
         return false;
+    }
+
+    [WebMethod]
+    public bool AreDocumentsUploaded (string guidString)
+    {
+        Documents documents = Documents.RecentFromDescription(guidString);
+
+        if (documents.Count == 0)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
