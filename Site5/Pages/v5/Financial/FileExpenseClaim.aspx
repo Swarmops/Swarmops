@@ -127,7 +127,7 @@
         <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
         <asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/>
-        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
+        <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
     </div>
     <div class="entryLabels">
         <asp:Label runat="server" ID="LabelAmount" /><br/>

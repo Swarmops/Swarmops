@@ -12,49 +12,49 @@
 
     $(document).ready(function() {
 
-        $('#ButtonUploadHidden').fileupload({
+        $('#<%=this.ClientID %>_ButtonUploadHidden').fileupload({
             url: '/Automation/UploadFileHandler.ashx?Guid=<%= GuidString %>',
             dataType: 'json',
             done: function(e, data) {
                 $.each(data.result, function(index, file) {
                     if (file.error == null || file.error.length < 1) {
-                        $('#DivUploadCount').append(imageUploadSuccess);
+                        $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadSuccess);
                     } else {
-                        $('#DivUploadCount').append(imageUploadFail); // Assume ERR_NOT_IMAGE
+                        $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadFail); // Assume ERR_NOT_IMAGE
                         alertify.error('File "' + file.name + '" could not be uploaded. Is it really an image?');
                     }
 
                 });
-                $('#DivProgressUpload').progressbar({ value: 100 });
-                $('#DivProgressUpload').fadeOut('400', function() { $('#DivUploadCount').fadeIn(); });
+                $('#<%=this.ClientID %>_DivProgressUpload').progressbar({ value: 100 });
+                $('#<%=this.ClientID %>_DivProgressUpload').fadeOut('400', function () { $('#<%=this.ClientID %>_DivUploadCount').fadeIn(); });
             },
             progressall: function(e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
-                $("#DivProgressUpload .progressbar-value").animate(
+                $("#<%=this.ClientID %>_DivProgressUpload .progressbar-value").animate(
                     {
                         width: progress + "%"
                     }, { queue: false });
             },
             add: function(e, data) {
-                $('#DivUploadCount').css('display', 'none');
-                $('#DivProgressUpload').progressbar({ value: 0 }); // reset in case of previous uploads on this page
-                $('#DivProgressUpload').fadeIn();
+                $('#<%=this.ClientID %>_DivUploadCount').css('display', 'none');
+                $('#<%=this.ClientID %>_DivProgressUpload').progressbar({ value: 0 }); // reset in case of previous uploads on this page
+                $('#<%=this.ClientID %>_DivProgressUpload').fadeIn();
                 data.submit();
             }
         });
 
 
-        $('#ButtonUploadVisible').bind("click", function() {
-            $('#ButtonUploadHidden').click();
+        $('#<%=this.ClientID %>_ButtonUploadVisible').bind("click", function () {
+            $('#<%=this.ClientID %>_ButtonUploadHidden').click();
         });
 
 
-        $('#DivProgressUpload').progressbar({ value: 0, max: 100 });
+        $('#<%=this.ClientID %>_DivProgressUpload').progressbar({ value: 0, max: 100 });
 
     });
 
 </script>
 <asp:HiddenField runat="server" ID="HiddenGuid"/>
 
-<div style="height:36px;float:left"><input id="ButtonUploadVisible" class="ButtonSwarmopsUpload" type="button" /><input id="ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="DivUploadCount" style="display:none;overflow:hidden;height:64px"></div><div id="DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&nbsp;<br/>
+<div style="height:36px;float:left"><input id="<%=this.ClientID %>_ButtonUploadVisible" class="ButtonSwarmopsUpload NoInputFocus" type="button" /><input id="<%=this.ClientID %>_ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="<%=this.ClientID %>_DivUploadCount" style="display:none;overflow:hidden;height:64px"></div><div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&nbsp;<br/>
 
