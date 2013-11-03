@@ -545,7 +545,7 @@ span.loginalphabetasign
 	background: white;
 }
 
-.entryFields input:not(.buttonAccentColor):focus, .entryFields textarea:focus, .entryFields select:focus 
+.entryFields input:not(.NoInputFocus):focus, .entryFields textarea:focus, .entryFields select:focus 
 {
 	background: #F0F6FF;
 	box-shadow: 0px 0px 4px 2px #1C397E inset;
@@ -906,7 +906,7 @@ hr
 
 input.ButtonSwarmopsUpload {
     width:36px !important; 
-    background-image:url('/Images/Icons/iconshock-diskette-upload-32px.png');
+    background-image:url('/Images/Icons/iconshock-diskette-upload-32px.png') !important;
     background-repeat:no-repeat;
     background-position: top left;
     background-color: #ddd;
