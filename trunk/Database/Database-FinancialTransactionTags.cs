@@ -68,7 +68,7 @@ namespace Swarmops.Database
             }
         }
 
-        public void DeleteFinancialTransactionTags (int financialTransactionId)
+        public void DeleteFinancialTransactionTags(int financialTransactionId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -78,6 +78,21 @@ namespace Swarmops.Database
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName(command, "financialTransactionId", financialTransactionId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteFinancialTransactionTag(int financialTransactionTagId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("DeleteFinancialTransactionTag", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialTransactionTagId", financialTransactionTagId);
 
                 command.ExecuteNonQuery();
             }

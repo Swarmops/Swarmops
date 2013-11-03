@@ -39,7 +39,7 @@ namespace Swarmops.Logic.Financial
         }
 
         public static ExpenseClaim Create(Person claimer, Organization organization, FinancialAccount budget, 
-                                      FinancialAccount costType, DateTime expenseDate, string description, Int64 amountCents)
+                                      DateTime expenseDate, string description, Int64 amountCents)
         {
             ExpenseClaim newClaim = FromIdentityAggressive (SwarmDb.GetDatabaseForWriting().CreateExpenseClaim (claimer.Identity, organization.Identity,
                                                                        budget.Identity, expenseDate, description, amountCents));

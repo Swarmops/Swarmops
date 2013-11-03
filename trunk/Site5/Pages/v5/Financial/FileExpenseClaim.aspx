@@ -73,6 +73,22 @@
                 }
             });
 
+            $.ajax({
+                type: "POST",
+                url: "/Automation/FieldValidation.asmx/AreDocumentsUploaded",
+                data: "{'guidString': '<%=this.FileUpload.GuidString %>'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,  // blocks until function returns - race conditions otherwise
+                success: function (msg) {
+                    if (msg.d != true) {
+                        isValid = false;
+                        $('#TextAmount').addClass("entryError");
+                        alertify.error("<asp:Literal runat="server" ID="LiteralErrorDocuments" />");
+                    }
+                }
+            });
+
             return isValid;
         }
         
