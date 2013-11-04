@@ -254,7 +254,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 if (_attestationRights.ContainsKey(expenseClaim.BudgetId) || expenseClaim.Budget.OwnerPersonId == Person.NobodyId)
                 {
-                    AddDocuments(expenseClaim.Documents, "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture));
+                    AddDocuments(expenseClaim.Documents, "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture), String.Format("Expense Claim #{0} by {1} - ", expenseClaim.Identity, expenseClaim.ClaimerCanonical) + "Receipt Image {0} of {1}");
                 }
             }
         }
@@ -271,16 +271,19 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 if (_attestationRights.ContainsKey(invoice.BudgetId) || invoice.Budget.OwnerPersonId == Person.NobodyId)
                 {
-                    AddDocuments(invoice.Documents, "I"+ invoice.Identity.ToString(CultureInfo.InvariantCulture));
+                    AddDocuments(invoice.Documents, "I" + invoice.Identity.ToString(CultureInfo.InvariantCulture), String.Format("Invoice #{0} from {1} - ", invoice.Identity, invoice.Supplier) + "Image {0} of {1}");
                 }
             }
         }
 
-        private void AddDocuments (Documents docs, string baseId)
+        private void AddDocuments (Documents docs, string baseId, string titleBase)
         {
+            int countTotal = docs.Count;
+            int count = 0;
+
             foreach (Document document in docs)
             {
-                RepeatedDocument newDoc = new RepeatedDocument {DocId = document.Identity, BaseId = baseId};
+                RepeatedDocument newDoc = new RepeatedDocument {DocId = document.Identity, BaseId = baseId, Title=String.Format(titleBase, ++count, countTotal)};
 
                 _documentList.Add(newDoc);
             }
@@ -290,6 +293,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             public int DocId { get; set; }
             public string BaseId { get; set; }
+            public string Title { get; set; }
         }
     }
 }
