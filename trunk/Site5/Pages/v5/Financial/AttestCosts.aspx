@@ -172,7 +172,7 @@
     
     <asp:Repeater runat="server" ID="RepeaterLightboxItems">
         <ItemTemplate>
-            <a href="/Pages/v5/Support/StreamUpload.aspx?DocId=<%# Eval("DocId") %>" class="FancyBox_Gallery" rel="<%# Eval("BaseId") %>">&nbsp;</a>
+            <a href="/Pages/v5/Support/StreamUpload.aspx?DocId=<%# Eval("DocId") %>" title="<%# Eval("Title") %>" class="FancyBox_Gallery" rel="<%# Eval("BaseId") %>">&nbsp;</a>
         </ItemTemplate>
     </asp:Repeater>
 
