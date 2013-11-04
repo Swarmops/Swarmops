@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Financial
@@ -29,8 +30,43 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 Localize();
             }
+
+            _attestationRights = GetAttestationRights();
+            _documentList = new List<RepeatedDocument>();
+
+            PopulateInboundInvoices();
+            PopulateExpenses();
+
+            this.RepeaterLightboxItems.DataSource = _documentList;
+            this.RepeaterLightboxItems.DataBind();
+
         }
 
+
+        private Dictionary<int, bool> _attestationRights;
+        private List<RepeatedDocument> _documentList; 
+
+
+
+        private Dictionary<int, bool> GetAttestationRights()
+        {
+            // Right now, this function is quite primitive. At some point in the future, it needs to take into
+            // account that a budget may have several attesters. Right now, it just loops over all accounts and
+            // checks the owner.
+
+            Dictionary<int, bool> result = new Dictionary<int, bool>();
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization);
+
+            foreach (FinancialAccount account in accounts)
+            {
+                if (account.OwnerPersonId == this.CurrentUser.Identity)
+                {
+                    result[account.Identity] = true;
+                }
+            }
+
+            return result;
+        }
 
         private void Localize()
         {
@@ -208,5 +244,52 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             return result;
         }
 
+
+
+        private void PopulateExpenses()
+        {
+            ExpenseClaims expenses = ExpenseClaims.ForOrganization(this.CurrentOrganization).WhereUnattested;
+
+            foreach (var expenseClaim in expenses)
+            {
+                if (_attestationRights.ContainsKey(expenseClaim.BudgetId) || expenseClaim.Budget.OwnerPersonId == Person.NobodyId)
+                {
+                    AddDocuments(expenseClaim.Documents, "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture));
+                }
+            }
+        }
+
+
+        private void PopulateInboundInvoices()
+        {
+            InboundInvoices invoices = InboundInvoices.ForOrganization(this.CurrentOrganization).WhereUnattested;
+
+            foreach (InboundInvoice invoice in invoices)
+            {
+                Documents dox = invoice.Documents;
+                bool hasDox = (dox.Count > 0 ? true : false);
+
+                if (_attestationRights.ContainsKey(invoice.BudgetId) || invoice.Budget.OwnerPersonId == Person.NobodyId)
+                {
+                    AddDocuments(invoice.Documents, "I"+ invoice.Identity.ToString(CultureInfo.InvariantCulture));
+                }
+            }
+        }
+
+        private void AddDocuments (Documents docs, string baseId)
+        {
+            foreach (Document document in docs)
+            {
+                RepeatedDocument newDoc = new RepeatedDocument {DocId = document.Identity, BaseId = baseId};
+
+                _documentList.Add(newDoc);
+            }
+        }
+
+        public class RepeatedDocument
+        {
+            public int DocId { get; set; }
+            public string BaseId { get; set; }
+        }
     }
 }

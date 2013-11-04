@@ -3,6 +3,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="datagrid" runat="server" />
+	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
+    <script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
     
     <script type="text/javascript">
         function preload(arrayOfImages) {
@@ -122,7 +125,17 @@
                             alert('Denying attestation is not yet implemented, but you can just leave the unwanted cost here until it is.');
                         });
 
+                        $(".LocalViewDox").click(function () {
+                            $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
+                        });
 
+                        $("a.FancyBox_Gallery").fancybox({
+                            'overlayShow': true,
+                            'transitionIn': 'fade',
+                            'transitionOut': 'fade',
+                            'type': 'image',
+                            'opacity': true
+                        });
                     }
                 }
             );
@@ -152,7 +165,18 @@
                 <th data-options="field:'actions',width:53,align:'center'"><asp:Label ID="LabelGridHeaderAction" runat="server" Text="Axyztion" /></th>
             </tr>  
         </thead>
-    </table>  
+    </table>
+    
+    <div style="display:none">
+    <!-- a href links for FancyBox to trigger on -->
+    
+    <asp:Repeater runat="server" ID="RepeaterLightboxItems">
+        <ItemTemplate>
+            <a href="/Pages/v5/Support/StreamUpload.aspx?DocId=<%# Eval("DocId") %>" class="FancyBox_Gallery" rel="<%# Eval("BaseId") %>">&nbsp;</a>
+        </ItemTemplate>
+    </asp:Repeater>
+
+    </div>  
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
 </asp:Content>
