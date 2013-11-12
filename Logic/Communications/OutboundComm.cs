@@ -95,7 +95,7 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public static OutboundComm CreateNotificationForAttest (FinancialAccount budget, Person concernedPerson, double amountRequested, string purpose, NotificationResource notification)
+        public static OutboundComm CreateNotificationForAttest(FinancialAccount budget, Person concernedPerson, double amountRequested, string purpose, NotificationResource notification)
         {
             NotificationPayload payload = new NotificationPayload(notification.ToString());
             payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.Code;
@@ -118,6 +118,29 @@ namespace Swarmops.Logic.Communications
             {
                 comm.AddRecipient(budget.Owner);
             }
+
+            comm.Resolved = true;
+
+            return comm;
+
+        }
+
+        public static OutboundComm CreateNotificationOfFinancialValidation(FinancialAccount budget, Person concernedPerson, double amountRequested, string purpose, NotificationResource notification)
+        {
+            NotificationPayload payload = new NotificationPayload(notification.ToString());
+            payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.Code;
+            payload.Strings[NotificationString.OrganizationName] = budget.Organization.Name;
+            payload.Strings[NotificationString.BudgetAmountFloat] = amountRequested.ToString(CultureInfo.InvariantCulture);
+            payload.Strings[NotificationString.RequestReason] = purpose;
+            payload.Strings[NotificationString.BudgetName] = budget.Name;
+            payload.Strings[NotificationString.ConcernedPersonName] = concernedPerson.Canonical;
+
+            OutboundComm comm = OutboundComm.Create(null, null, budget.Organization, CommResolverClass.Unknown, null,
+                                                    CommTransmitterClass.CommsTransmitterMail,
+                                                    new PayloadEnvelope(payload).ToXml(),
+                                                    OutboundCommPriority.Low);
+
+            comm.AddRecipient(concernedPerson);
 
             comm.Resolved = true;
 

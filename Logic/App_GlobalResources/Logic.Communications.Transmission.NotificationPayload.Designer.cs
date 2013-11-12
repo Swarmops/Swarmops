@@ -82,6 +82,24 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid..
+        /// </summary>
+        internal static string ExpenseClaim_Attested_Body {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Attested_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string ExpenseClaim_Attested_Subject {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Attested_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
         ///
         ///Please log on to Swarmops at [SystemUrl] to attest or deny..
@@ -98,6 +116,84 @@ namespace Swarmops.Logic.App_GlobalResources {
         internal static string ExpenseClaim_Created_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Created_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your expense claim.
+        ///
+        ///Expect more communication from the budget owner to follow on the matter..
+        /// </summary>
+        internal static string ExpenseClaim_Deattested_Body {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Deattested_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string ExpenseClaim_Deattested_Subject {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Deattested_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. Expect more communications to follow on what you need to do to file a proper expense claim..
+        /// </summary>
+        internal static string ExpenseClaim_Denied_Body {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Denied_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string ExpenseClaim_Denied_Subject {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Denied_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been DE-validated by the financial record keepers of the organization. This usually indicates some sort of problem with the documentation of your expense claim.
+        ///
+        ///Expect more communication to follow on the matter. If you don&apos;t hear from record keepers in short time on this matter, do follow up with them..
+        /// </summary>
+        internal static string ExpenseClaim_Devalidated_Body {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Devalidated_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string ExpenseClaim_Devalidated_Subject {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Devalidated_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been validated by people responsible for keeping the records in order.
+        ///
+        ///The claim will be paid out to you when the amount has also been attested by the budget owner..
+        /// </summary>
+        internal static string ExpenseClaim_Validated_Body {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Validated_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string ExpenseClaim_Validated_Subject {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_Validated_Subject", resourceCulture);
             }
         }
         

@@ -93,7 +93,10 @@ namespace Swarmops.Logic.Communications.Transmission
         CashAdvance_Attested,
         ExpenseClaim_Created,
         ExpenseClaim_Attested,
+        ExpenseClaim_Deattested,
         ExpenseClaim_Validated,
+        ExpenseClaim_Devalidated,
+        ExpenseClaim_Denied,
         Payout_Settled
     }
 
