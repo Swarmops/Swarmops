@@ -430,6 +430,9 @@ namespace Swarmops.Logic.Financial
                                                              FinancialDependencyType.ExpenseClaim, this.Identity,
                                                              DateTime.Now, attester.Identity, (double) this.Amount);
             base.Attested = true;
+
+            OutboundComm.CreateNotificationOfFinancialValidation(this.Budget, this.Claimer, (double)this.AmountCents/100.0, this.Description, NotificationResource.ExpenseClaim_Attested);
+
         }
 
         public void Deattest(Person deattester)
@@ -439,6 +442,8 @@ namespace Swarmops.Logic.Financial
                                                              FinancialDependencyType.ExpenseClaim, this.Identity,
                                                              DateTime.Now, deattester.Identity, (double) this.Amount);
             base.Attested = false;
+
+            OutboundComm.CreateNotificationOfFinancialValidation(this.Budget, this.Claimer, (double)this.AmountCents / 100.0, this.Description, NotificationResource.ExpenseClaim_Deattested);
         }
 
         #endregion

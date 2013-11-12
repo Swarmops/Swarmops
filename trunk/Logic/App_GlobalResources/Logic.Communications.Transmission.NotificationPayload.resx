@@ -121,17 +121,59 @@
     <value>[ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestReason]. This money is part of your budget, [BudgetName].
 
 Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
     <value>[OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>[OrganizationName] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
 
 Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
     <value>[OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your expense claim.
+
+Expect more communication from the budget owner to follow on the matter.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>[OrganizationName] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. Expect more communications to follow on what you need to do to file a proper expense claim.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>[OrganizationName] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been DE-validated by the financial record keepers of the organization. This usually indicates some sort of problem with the documentation of your expense claim.
+
+Expect more communication to follow on the matter. If you don't hear from record keepers in short time on this matter, do follow up with them.</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>[OrganizationName] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been validated by people responsible for keeping the records in order.
+
+The claim will be paid out to you when the amount has also been attested by the budget owner.</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>[OrganizationName] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="System_Exception_Body" xml:space="preserve">
     <value>An unhandled exception was thrown in Swarmops:
