@@ -125,7 +125,7 @@ namespace Swarmops.Logic.Swarm
         }
 
         #region Implementation of IAttestable
-
+         
         public void Attest(Person attester)
         {
             if (this.Attested)
