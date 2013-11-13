@@ -91,12 +91,18 @@ namespace Swarmops.Logic.Communications.Transmission
         System_Exception,
         CashAdvance_Requested,
         CashAdvance_Attested,
+        CashAdvance_Deattested,
+        CashAdvance_Denied,
+        CashAdvance_Adjusted,
+        CashAdvance_Rebudgeted,
         ExpenseClaim_Created,
         ExpenseClaim_Attested,
         ExpenseClaim_Deattested,
         ExpenseClaim_Validated,
         ExpenseClaim_Devalidated,
         ExpenseClaim_Denied,
+        ExpenseClaim_Adjusted,
+        ExpenseClaim_Rebudgeted,
         Payout_Settled
     }
 

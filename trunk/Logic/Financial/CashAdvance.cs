@@ -61,6 +61,8 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
                 FinancialDependencyType.CashAdvance, this.Identity, DateTime.Now, attester.Identity, this.AmountCents / 100.0);
             SwarmDb.GetDatabaseForWriting().SetCashAdvanceAttested(this.Identity, true, attester.Identity);
+
+            OutboundComm.CreateNotificationOfFinancialValidation(this.Budget, this.Person, (double)this.AmountCents / 100.0, this.Description, NotificationResource.CashAdvance_Attested);
         }
 
         public void Deattest(Person deattester)
@@ -68,6 +70,8 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
                 FinancialDependencyType.CashAdvance, this.Identity, DateTime.Now, deattester.Identity, this.AmountCents / 100.0);
             SwarmDb.GetDatabaseForWriting().SetCashAdvanceAttested(this.Identity, false, Person.NobodyId);
+
+            OutboundComm.CreateNotificationOfFinancialValidation(this.Budget, this.Person, (double)this.AmountCents / 100.0, this.Description, NotificationResource.CashAdvance_Deattested);
         }
 
         #endregion

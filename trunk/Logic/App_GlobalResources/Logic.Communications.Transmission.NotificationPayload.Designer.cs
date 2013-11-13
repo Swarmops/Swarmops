@@ -62,6 +62,44 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you..
+        /// </summary>
+        internal static string CashAdvance_Attested_Body {
+            get {
+                return ResourceManager.GetString("CashAdvance_Attested_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Cash Advance Attested: [Currency Code] [BudgetAmountFloat].
+        /// </summary>
+        internal static string CashAdvance_Attested_Subject {
+            get {
+                return ResourceManager.GetString("CashAdvance_Attested_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your request.
+        ///
+        ///Expect more communication from the budget owner to follow on the matter..
+        /// </summary>
+        internal static string CashAdvance_Deattested_Body {
+            get {
+                return ResourceManager.GetString("CashAdvance_Deattested_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Cash Advance DE-attested: [Currency Code] [BudgetAmountFloat].
+        /// </summary>
+        internal static string CashAdvance_Deattested_Subject {
+            get {
+                return ResourceManager.GetString("CashAdvance_Deattested_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestReason]. This money is part of your budget, [BudgetName].
         ///
         ///Please log on to Swarmops at [SystemUrl] to attest or deny..
