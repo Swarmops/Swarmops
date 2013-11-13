@@ -138,7 +138,7 @@ Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
@@ -154,7 +154,7 @@ Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
   </data>
   <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your expense claim.
