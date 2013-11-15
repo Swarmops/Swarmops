@@ -44,5 +44,31 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public CashAdvances WherePaid
+        {
+            get
+            {
+                CashAdvances result = new CashAdvances();
+                result.AddRange(this.Where(cashAdvance => cashAdvance.PaidOut));
+
+                return result;
+            }
+        }
+
+        public CashAdvances WhereUnpaid
+        {
+            get
+            {
+                CashAdvances result = new CashAdvances();
+                result.AddRange(this.Where(cashAdvance => !cashAdvance.PaidOut));
+
+                return result;
+            }
+        }
+
+        public Int64 TotalAmountCents
+        {
+            get { return this.Sum(cashAdvance => cashAdvance.AmountCents); }
+        }
     }
 }

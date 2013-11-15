@@ -89,6 +89,24 @@ namespace Swarmops.Logic.Financial
                 }
             }
 
+            // At this point, all the expense claims have been added - but we need to add the open
+            // cash advances and deduct them.
+
+            CashAdvances cashAdvances = CashAdvances.ForOrganization(Organization.FromIdentity(organizationId));
+            cashAdvances = cashAdvances.WherePaid;
+
+            // At this point, only open and paid cash advances are in the list: they're debts to the org
+
+            foreach (CashAdvance cashAdvance in cashAdvances)
+            {
+                if (payoutLookup.ContainsKey(cashAdvance.PersonId))
+                {
+                    // there's a payout prepared to this person - we need to deduct the cash advance from it.
+
+                    payoutLookup[cashAdvance.PersonId].DependentCashAdvancesPayback.Add(cashAdvance);
+                }
+            }
+
             // We now have the list of payouts and the associated claims, but the amounts aren't set on the
             // payouts. This will be the next step, as we assemble the list.
 
@@ -103,16 +121,25 @@ namespace Swarmops.Logic.Financial
                     claimIds.Add(claim.Identity);
                 }
 
+                foreach (CashAdvance previousAdvance in payout.DependentCashAdvancesPayback)
+                {
+                    newAmountCents -= previousAdvance.AmountCents;
+                }
+
+                string lessAdvancesIndicator = payout.DependentCashAdvancesPayback.Count > 0
+                                                   ? "LessAdvances"
+                                                   : string.Empty;
+
                 payout.AmountCents = newAmountCents;
 
                 if (claimIds.Count == 1)
                 {
-                    payout.Reference = "[Loc]Financial_ExpenseClaimSpecification|" + claimIds[0].ToString(CultureInfo.InvariantCulture);
+                    payout.Reference = "[Loc]Financial_ExpenseClaimSpecification" + lessAdvancesIndicator + "|" + claimIds[0].ToString(CultureInfo.InvariantCulture);
                 }
                 else
                 {
                     claimIds.Sort();
-                    payout.Reference = "[Loc]Financial_ExpenseClaimsSpecification|" + Formatting.GenerateRangeString(claimIds);
+                    payout.Reference = "[Loc]Financial_ExpenseClaimsSpecification" + lessAdvancesIndicator + "|" + Formatting.GenerateRangeString(claimIds);
                 }
 
                 if (newAmountCents > 0)
@@ -129,6 +156,7 @@ namespace Swarmops.Logic.Financial
         {
             CashAdvances advances = CashAdvances.ForOrganization(Organization.FromIdentity(organizationId));
             advances = advances.WhereAttested;
+            advances = advances.WhereUnpaid;
 
             Dictionary<int, Payout> payoutLookup = new Dictionary<int, Payout>();
 
@@ -145,7 +173,7 @@ namespace Swarmops.Logic.Financial
                 {
                     // Yes. Add claim to list.
 
-                    payoutLookup[advance.PersonId].DependentCashAdvances.Add(advance);
+                    payoutLookup[advance.PersonId].DependentCashAdvancesPayout.Add(advance);
                 }
                 else
                 {
@@ -156,7 +184,7 @@ namespace Swarmops.Logic.Financial
                                                                 DateTime.MinValue, false, DateTime.Now, 0);
                     Payout payout = Payout.FromBasic(basicPayout);
 
-                    payout.DependentCashAdvances.Add(advance);
+                    payout.DependentCashAdvancesPayout.Add(advance);
 
                     payoutLookup[advance.PersonId] = payout;
                 }
@@ -170,7 +198,7 @@ namespace Swarmops.Logic.Financial
                 Int64 newAmountCents = 0;
                 List<int> advanceIds = new List<int>();
 
-                foreach (CashAdvance advance in payout.DependentCashAdvances)
+                foreach (CashAdvance advance in payout.DependentCashAdvancesPayout)
                 {
                     newAmountCents += advance.AmountCents;
                     advanceIds.Add(advance.Identity);
