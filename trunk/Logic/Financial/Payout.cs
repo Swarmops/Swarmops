@@ -187,7 +187,7 @@ namespace Swarmops.Logic.Financial
             }
             if (components [0][0] == 'A')
             {
-                // Cash advance(s). This could be joined with expense claims but isn't as of now.
+                // Cash advance(s) to be paid out.
 
                 string bank = string.Empty;
                 string account = string.Empty;
