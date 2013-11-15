@@ -47,7 +47,8 @@ namespace Swarmops.Logic.Financial
             DependentInvoices = new InboundInvoices();
             DependentSalariesNet = new Salaries();
             DependentSalariesTax = new Salaries();
-            DependentCashAdvances = new CashAdvances();
+            DependentCashAdvancesPayout = new CashAdvances();
+            DependentCashAdvancesPayback = new CashAdvances();
 
             BasicFinancialDependency[] dependencies = SwarmDb.GetDatabaseForReading().GetPayoutDependencies(this.Identity);
 
@@ -74,7 +75,11 @@ namespace Swarmops.Logic.Financial
                         break;
 
                     case FinancialDependencyType.CashAdvance:
-                        DependentCashAdvances.Add(CashAdvance.FromIdentity(dependency.ForeignId));
+                        DependentCashAdvancesPayout.Add(CashAdvance.FromIdentity(dependency.ForeignId));
+                        break;
+
+                    case FinancialDependencyType.CashAdvancePayback:
+                        DependentCashAdvancesPayback.Add(CashAdvance.FromIdentity(dependency.ForeignId));
                         break;
 
                     default:
@@ -100,7 +105,8 @@ namespace Swarmops.Logic.Financial
         public ExpenseClaims DependentExpenseClaims;
         public Salaries DependentSalariesNet;
         public Salaries DependentSalariesTax;
-        public CashAdvances DependentCashAdvances;
+        public CashAdvances DependentCashAdvancesPayout;
+        public CashAdvances DependentCashAdvancesPayback;
 
         public decimal Amount
         {
@@ -206,7 +212,7 @@ namespace Swarmops.Logic.Financial
                     amountCents += advance.AmountCents;
 
                     advance.PaidOut = true;
-                    advance.Open = false;
+                    //advance.Open = false;   // isn't this closed only when settling the debt? Serious bug here?
                 }
 
                 string referenceString = string.Empty;
@@ -233,51 +239,64 @@ namespace Swarmops.Logic.Financial
             }
             else if (components [0][0] == 'C')
             {
-                // Expense claims.
+                // Expense claims, possibly followed up by cash advance paybacks
 
                 string bank = string.Empty;
                 string account = string.Empty;
-                List<int> identityList = new List<int>();
+                List<int> claimIdentityList = new List<int>();
+                List<int> advancePaybackIdentityList = new List<int>();
                 Int64 amountCents = 0;
                 int organizationId = 0;
 
                 foreach (string component in components)
                 {
-                    int claimId = Int32.Parse(component.Substring(1));
-                    ExpenseClaim claim = ExpenseClaim.FromIdentity(claimId);
-                    identityList.Add(claimId);
+                    int foreignId = Int32.Parse(component.Substring(1));
 
-                    if (bank.Length < 1)
+                    if (component[0] == 'C')
                     {
-                        Person claimer = claim.Claimer;
-                        bank = claimer.BankName;
-                        account = claimer.BankAccount;
-                        organizationId = claim.OrganizationId;
+                        ExpenseClaim claim = ExpenseClaim.FromIdentity(foreignId);
+                        claimIdentityList.Add(foreignId);
+
+                        if (bank.Length < 1)
+                        {
+                            Person claimer = claim.Claimer;
+                            bank = claimer.BankName;
+                            account = claimer.BankAccount;
+                            organizationId = claim.OrganizationId;
+                        }
+
+                        amountCents += claim.AmountCents;
+
+                        claim.Repaid = true;
+                        claim.Close();
                     }
+                    else if (component[0] == 'a')
+                    {
+                        CashAdvance advancePayback = CashAdvance.FromIdentity(foreignId);
+                        advancePaybackIdentityList.Add(foreignId);
 
-                    amountCents += claim.AmountCents;
-
-                    claim.Repaid = true;
-                    claim.Close();
+                        amountCents -= advancePayback.AmountCents;
+                        advancePayback.Open = false;
+                    }
                 }
 
                 string referenceString = string.Empty;
 
-                if (identityList.Count == 1)
+                if (claimIdentityList.Count == 1)
                 {
-                    referenceString = "Expense Claim #" + identityList[0].ToString(CultureInfo.InvariantCulture);
+                    referenceString = "Expense Claim #" + claimIdentityList[0].ToString(CultureInfo.InvariantCulture);
                 }
                 else
                 {
-                    identityList.Sort();
-                    referenceString = "Expense Claims " + Formatting.GenerateRangeString(identityList);
+                    claimIdentityList.Sort();
+                    referenceString = "Expense Claims " + Formatting.GenerateRangeString(claimIdentityList);
                 }
 
                 payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
                                                                    referenceString, amountCents, DateTime.Today.AddDays(1),
                                                                    creator.Identity);
 
-                foreach (int claimId in identityList)
+                foreach (int claimId in claimIdentityList)
                 {
                     SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.ExpenseClaim,
                                                                   claimId);
@@ -403,7 +422,12 @@ namespace Swarmops.Logic.Financial
                     result += "|C" + claim.Identity.ToString(CultureInfo.InvariantCulture);
                 }
 
-                foreach (CashAdvance advance in DependentCashAdvances)
+                foreach (CashAdvance advancePayback in DependentCashAdvancesPayback)
+                {
+                    result += "|a" + advancePayback.Identity.ToString(CultureInfo.InvariantCulture);
+                }
+
+                foreach (CashAdvance advance in DependentCashAdvancesPayout)
                 {
                     result += "|A" + advance.Identity.ToString(CultureInfo.InvariantCulture);
                 }
@@ -448,9 +472,9 @@ namespace Swarmops.Logic.Financial
                 {
                     return this.DependentExpenseClaims[0].ClaimerCanonical;
                 }
-                else if (this.DependentCashAdvances.Count > 0)
+                else if (this.DependentCashAdvancesPayout.Count > 0)
                 {
-                    return this.DependentCashAdvances[0].Person.Canonical;
+                    return this.DependentCashAdvancesPayout[0].Person.Canonical;
                 }
                 else if (this.DependentSalariesNet.Count > 0)
                 {
@@ -483,6 +507,7 @@ namespace Swarmops.Logic.Financial
             accountDebitLookup[organization.FinancialAccounts.DebtsInboundInvoices.Identity] = 0;
             accountDebitLookup[organization.FinancialAccounts.DebtsSalary.Identity] = 0;
             accountDebitLookup[organization.FinancialAccounts.DebtsTax.Identity] = 0;
+            accountDebitLookup[organization.FinancialAccounts.AssetsOutstandingCashAdvances.Identity] = 0;
 
             if (this.DependentExpenseClaims.Count > 0)
             {
@@ -503,6 +528,16 @@ namespace Swarmops.Logic.Financial
             {
                 accountDebitLookup[organization.FinancialAccounts.DebtsTax.Identity] +=
                     this.DependentSalariesTax.TotalAmountCentsTax;
+            }
+            if (this.DependentCashAdvancesPayout.Count > 0)
+            {
+                accountDebitLookup[organization.FinancialAccounts.AssetsOutstandingCashAdvances.Identity] +=
+                    this.DependentCashAdvancesPayout.TotalAmountCents;
+            }
+            if (this.DependentCashAdvancesPayback.Count > 0)
+            {
+                accountDebitLookup[organization.FinancialAccounts.AssetsOutstandingCashAdvances.Identity] -=  // observe the minus
+                    this.DependentCashAdvancesPayback.TotalAmountCents;
             }
 
             foreach (int financialAccountId in accountDebitLookup.Keys)
@@ -570,7 +605,7 @@ namespace Swarmops.Logic.Financial
                 claim.Open = true;
             }
 
-            foreach (CashAdvance advance in this.DependentCashAdvances)
+            foreach (CashAdvance advance in this.DependentCashAdvancesPayout)
             {
                 advance.PaidOut = false;
                 advance.Open = true;

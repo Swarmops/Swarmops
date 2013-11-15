@@ -368,8 +368,6 @@ namespace Swarmops.Logic.Financial
 
                 nominalTransaction[debtAccountId] = -AmountCents;
                 nominalTransaction[BudgetId] = AmountCents;
-
-                // TODO: Balance cost account, too
             }
 
             this.FinancialTransaction.RecalculateTransaction(nominalTransaction, updatingPerson);

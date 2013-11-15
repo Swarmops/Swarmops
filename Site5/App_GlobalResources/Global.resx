@@ -336,4 +336,16 @@
     <value>Related</value>
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>Expense #{0} (minus advance #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>Expense #{0} (minus advances)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>Expenses {0} (minus advance #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>Expenses {0} (minus advances)</value>
+  </data>
 </root>

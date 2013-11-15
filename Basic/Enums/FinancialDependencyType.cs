@@ -41,6 +41,10 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// A cash advance (prior payment, rather than doing an expense claim post purchase)
         /// </summary>
-        CashAdvance
+        CashAdvance,
+        /// <summary>
+        /// A payback for a previous cash advance
+        /// </summary>
+        CashAdvancePayback
     }
 }
