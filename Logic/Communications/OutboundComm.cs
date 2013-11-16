@@ -131,7 +131,7 @@ namespace Swarmops.Logic.Communications
             payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.Code;
             payload.Strings[NotificationString.OrganizationName] = budget.Organization.Name;
             payload.Strings[NotificationString.BudgetAmountFloat] = amountRequested.ToString(CultureInfo.InvariantCulture);
-            payload.Strings[NotificationString.RequestReason] = purpose;
+            payload.Strings[NotificationString.RequestPurpose] = purpose;
             payload.Strings[NotificationString.BudgetName] = budget.Name;
             payload.Strings[NotificationString.ConcernedPersonName] = concernedPerson.Canonical;
 

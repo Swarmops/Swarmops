@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,89 +118,89 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
-    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you.</value>
+    <value>Ditt önskade kontantförskott för [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har attesterats av budgetens ägare. Kontantförskottet går nu vidare till utbetalning till dig.</value>
   </data>
   <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[OrganizationName] Kontantförskott attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Deattested_Body" xml:space="preserve">
-    <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your request.
+    <value>Ditt önskade kontantförskott hos [Företagsnamn] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har AV-attesterats av budgetägaren. Detta tyder oftast på någon form av problem med din begäran.
 
-Expect more communication from the budget owner to follow on the matter.</value>
+Räkna med att mer kommunikation från budgetägaren följer i ärendet.</value>
   </data>
   <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[OrganizationName] Kontantförskott AV-attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
+    <value>[ConcernedPersonName] har begärt ett kontantförskott på [CurrencyCode] [BudgetAmountFloat] rörande [RequestPurpose]. Dessa pengar är en del av din budget, [BudgetName].
 
-Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
+Vänligen logga på Swarmops på [SystemUrl] för att attestera eller avslå.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>[OrganizationName] Kontantförskott begärt: [CurrencyCode] [BudgetAmountFloat] - Attestering Krävs</value>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
-    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
+    <value>Ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har attesterats av budgetägaren. Det kommer att betalas ut till dig när kvittona granskats för räkenskaperna.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[OrganizationName] Utläggsanspråk attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
+    <value>[ConcernedPersonName] har lagt ett utläggsanspråk i [OrganizationName] mot budgeten [BudgetName] på [CurrencyCode] [BudgetAmountFloat]. Anspråket gäller [RequestPurpose]. Som budgetägare behöver du attestera det här utläggsanspråket.
 
-Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
+Vänligen logga på Swarmops på [SystemUrl] för att attestera eller avslå.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>[OrganizationName] Utläggsanspråk skapat: [CurrencyCode] [BudgetAmountFloat] - Attestering Krävs</value>
   </data>
   <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
-    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your expense claim.
+    <value>Ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har AV-attesterats av budgetägaren. Detta tyder oftast på någon form av problem med ditt utläggsanspråk.
 
-Expect more communication from the budget owner to follow on the matter.</value>
+Räkna med att mer kommunikation från budgetägaren följer i ärendet.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[OrganizationName] Utläggsanspråk AV-attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
-    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. Expect more communications to follow on what you need to do to file a proper expense claim.</value>
+    <value>Ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat] rörande [RequestPurpose] har avslagits.
+
+Räkna med att mer kommunikation följer från budgetägare eller finansansvariga om vad du behöver göra för att lägga ett giltigt utläggsanspråk.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[OrganizationName] Utläggsanspråk AVSLAGET: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
-    <value>The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been DE-validated by the financial record keepers of the organization. This usually indicates some sort of problem with the documentation of your expense claim.
+    <value>Kvittona för ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har AV-validerats av finansansvariga på organisationen. Detta indikerar vanligtvis någon form av problem med dokumentationen av ditt utlägg.
 
-Expect more communication to follow on the matter. If you don't hear from record keepers in short time on this matter, do follow up with them.</value>
+Räkna med att mer kommunikation följer i ärendet från finansansvariga. Om du inte hör från dem inom kort, så följ upp själv.</value>
   </data>
   <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[OrganizationName] Kvitton för utläggsanspråk AV-validerade: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
-    <value>The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been validated by people responsible for keeping the records in order.
+    <value>Kvitton och annan dokumentation för ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har validerats av finansansvariga i organisationen. Belopp och syfte stämmer med dokumentationen du laddat upp.
 
-The claim will be paid out to you when the amount has also been attested by the budget owner.</value>
+Utläggsanspråket kommer att betalas ut till dig när beloppet också är attesterat av budgetägaren.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[OrganizationName] Kvitton för utläggsanspråk validerade: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="System_Exception_Body" xml:space="preserve">
-    <value>An unhandled exception was thrown in Swarmops:
-
-[EmbeddedPreformattedText]</value>
+    <value>En ohanterad exception kastades i Swarmops: [EmbeddedPreformattedText]</value>
   </data>
   <data name="System_Exception_Subject" xml:space="preserve">
     <value>Swarmops EXCEPTION!</value>
   </data>
   <data name="System_Startup_Body" xml:space="preserve">
-    <value>Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks.</value>
+    <value>Swarmops Backend version [SwarmopsVersion], som körs på maskinen [HostName], har startat och har anslutit till databasen och notifieringsmekanismer.</value>
   </data>
   <data name="System_Startup_Subject" xml:space="preserve">
-    <value>Swarmops Backend operational</value>
+    <value>Swarmops Backend i drift</value>
   </data>
 </root>

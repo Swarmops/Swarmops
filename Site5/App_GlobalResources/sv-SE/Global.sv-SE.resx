@@ -247,7 +247,10 @@
     <value>Ladda upp fil</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Ladda upp fil till Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
   <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
     <value>Välj fil att ladda upp.</value>
     <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
@@ -314,5 +317,41 @@
   </data>
   <data name="Global_Today" xml:space="preserve">
     <value>Idag</value>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
+    <value>Kostnadstyp</value>
+    <comment>Second-dimension bookkeeping</comment>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
+    <value>Projekt</value>
+    <comment>Tagging costs/income to projects</comment>
+  </data>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Se även</value>
+    <comment>List of shortcuts to related actions to current one</comment>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>Utlägg #{0} (minus förskott #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>Utlägg #{0} (minus förskott)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>Utlägg #{0} (minus förskott #{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>Utlägg {0} (minus förskott)</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>Utläggsanspråk #{0} av {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>Inkommande faktura #{0} från {1}</value>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>Kvittobild {0} av {1}</value>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>Bild {0} av {1}</value>
   </data>
 </root>

@@ -331,6 +331,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Test.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Communications.Transmission.NotificationPayload.sv-SE.resx" />
+    <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Financial.FinancialTransactionTagSetTypesStock.sv-SE.resx" />
+    <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Swarm.DashboardTodos.sv-SE.resx" />
     <EmbeddedResource Include="Security\App_LocalResources\Authentication.fi-FI.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

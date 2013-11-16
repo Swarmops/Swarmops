@@ -100,7 +100,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestReason]. This money is part of your budget, [BudgetName].
+        ///   Looks up a localized string similar to [ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
         ///
         ///Please log on to Swarmops at [SystemUrl] to attest or deny..
         /// </summary>

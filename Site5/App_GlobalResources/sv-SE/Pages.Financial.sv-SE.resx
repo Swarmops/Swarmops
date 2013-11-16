@@ -190,6 +190,67 @@
     <value>Lön #{0} till {1} har AV-attesterats. Lönen kommer inte att betalas ut om den inte attesteras igen.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>Utläggsanspråksbelopp (i {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Kontonummer</value>
+  </data>
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>Clearingnummer</value>
+  </data>
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Bankens namn</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Kostnadstyp</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Beskrivning</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Dina bankuppgifter</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>Kvittobilder</value>
+  </data>
+  <data name="FileExpenseClaim_Info" xml:space="preserve">
+    <value>Om du har gjort ett inköp för organisationen med dina privata pengar, kommer du antagligen att vilja ha ersättning för det genom att lämna in ett &lt;em&gt;utläggsanspråk&lt;/em&gt;. Det gör du här genom att ladda upp bilder på kvitton och välja vilken budget som ska belastas. Om du tidigare har fått ett kontantförskott för detta inköp, så är det här du betalar tillbaka organisationens lån till dig (kontantförskottet) genom att redovisa kvitton för inköpet.</value>
+  </data>
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>Begär pengar tillbaka för utlägg</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartOne" xml:space="preserve">
+    <value>Ett utläggsanspråk på {0} {1:N2} har lämnats in mot budget {2}. Kvittona kommer nu att valideras av finansansvariga och anspråket att attesteras av budgetägaren.</value>
+    <comment>{0} is the currency, {1} is the amount, and {2} is the budget name.</comment>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwo" xml:space="preserve">
+    <value>Så snart som detta har skett, så kommer pengarna att gå till utbetalning till ditt angivna konto.</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>Eftersom detta är din egen budget, så är attestering redan gjord. Endast validering av kvitton är nödvändigt, och det görs av finansansvariga.</value>
+  </data>
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>Ladda upp kvittobilder:</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Skriv in beloppet (i {0}) som du gör anspråk på.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Documents" xml:space="preserve">
+    <value>Ladda upp en eller flera kvittobilder som dokumenterar utlägget.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Välj ett alternativ som anges.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>Beskriv vad detta inköp var.</value>
+  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Belopp</value>
     <comment>Amount to be paid out</comment>
@@ -264,7 +325,7 @@
     <value>Syfte</value>
   </data>
   <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
-    <value>Ett förskott har begärts för &lt;strong&gt;{0}&lt;/strong&gt; i {1}. Det begärda beloppet är {2} {3:N2}. Observera att detta är ett &lt;strong&gt;lån&lt;/strong&gt; från organisationen till dess kvitton har presenterats som matchar förskottet.</value>
+    <value>Ett kontantförskott har begärts för &lt;strong&gt;{0}&lt;/strong&gt;. Det begärda beloppet är {2} {3:N2}. Observera att detta är ett &lt;strong&gt;lån&lt;/strong&gt; från organisationen tills kvitton har redovisats.</value>
     <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
   </data>
   <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">
@@ -290,5 +351,22 @@
   <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
     <value>Välj en budget att belasta.</value>
   </data>
-  
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Vänligen ange syftet med förskottet.</value>
+  </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>Kvitton som väntar på din validering</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>Det är här du inspekterar och bekräftar giltigheten av kvitton som laddats upp för att dokumentera utläggsanspråk. Kontrollera att beloppet är korrekt och att kvittona verkar vara för vad utläggsanspråket påstår.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Validera kvitton</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
+    <value>Kvittona för utläggsanspråk #{0} på {1} {2:N2} har AV-validerats. Utläggsanspråket kommer inte att gå till utbetalning om de inte valideras på nytt.</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>Kvittona för utläggsanspråk #{0} på {1} {2:N2} har validerats.</value>
+  </data>
 </root>

@@ -207,6 +207,9 @@
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>Skicka Faktura</value>
   </data>
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
+    <value>Validera kvitton</value>
+  </data>
   <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
     <value>Visa Budget och Utfall</value>
   </data>
@@ -234,6 +237,7 @@
   <data name="Menu5_Governance_Vote" xml:space="preserve">
     <value>Rösta</value>
   </data>
+  
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Redovisning</value>
   </data>
