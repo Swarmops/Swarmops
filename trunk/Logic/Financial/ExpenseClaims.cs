@@ -58,7 +58,20 @@ namespace Swarmops.Logic.Financial
 
 
 
-        public static ExpenseClaims FromClaimingPersonAndOrganization (Person person, Organization organization)
+        public ExpenseClaims WhereUnvalidated
+        {
+            get
+            {
+                ExpenseClaims result = new ExpenseClaims();
+                result.AddRange(this.Where(expenseClaim => !expenseClaim.Validated));
+
+                return result;
+            }
+        }
+
+
+
+        public static ExpenseClaims FromClaimingPersonAndOrganization(Person person, Organization organization)
         {
             return
                 FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaimsByClaimerAndOrganization(person.Identity,

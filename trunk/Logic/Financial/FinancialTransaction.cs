@@ -281,6 +281,29 @@ namespace Swarmops.Logic.Financial
             // TODO: Log that the tag was added (and by whom?)
         }
 
+        public FinancialTransactionTagType GetTag (FinancialTransactionTagSet tagSet)
+        {
+            // We're lazy: we're getting ALL tags and picking out the correct one. It's a minimum of overhead given that
+            // there should be at most five records in the most advanced scenarios, and this is cheaper than doing it
+            // database-side.
+
+            // Possible todo: cache tags (it's likely there are several calls in a row).
+
+            FinancialTransactionTagTypes tagTypes = FinancialTransactionTagTypes.ForTransaction(this);
+
+            foreach (FinancialTransactionTagType tagType in tagTypes)
+            {
+                if (tagType.FinancialTransactionTagSetId == tagSet.Identity)
+                {
+                    return tagType;
+                }
+            }
+
+            // None found, so return null
+
+            return null;
+        }
+
 
         public bool RecalculateTransaction (Dictionary<int, Int64> nominalTransaction, Person loggingPerson)
         {

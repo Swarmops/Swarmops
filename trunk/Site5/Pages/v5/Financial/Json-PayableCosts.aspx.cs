@@ -58,15 +58,16 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"reference\":\"{5}\"," +
                     "\"amount\":\"{6:N2}\"," +
                     "\"action\":\"" +
-                    "<img id=\\\"IconApproval{0}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                    "<img id=\\\"IconApproved{0}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />\"",
+                    "<img id=\\\"IconApproval{7}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
+                    "<img id=\\\"IconApproved{7}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />\"",
                     payout.ProtoIdentity,
                     (payout.ExpectedTransactionDate <= today? Resources.Global.Global_ASAP: payout.ExpectedTransactionDate.ToShortDateString()),
                     TryLocalize(payout.Recipient),
                     payout.Bank,
                     payout.Account,
                     TryLocalize(payout.Reference),
-                    payout.AmountCents/100.0);
+                    payout.AmountCents/100.0,
+                    payout.ProtoIdentity.Replace("|", ""));
                 result.Append("},");
             }
 

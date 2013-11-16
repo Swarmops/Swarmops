@@ -58,7 +58,7 @@
                             if ($(this).attr("rel") != "loading") {
                                 $(this).attr("rel", "loading");
                                 $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
-                                $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
+                                $("#IconDenial" + $(this).attr("baseid").replace(/\|/g,'')).fadeTo(1000, 0.01).css("cursor", "default");
                                 var thisIcon = this;
                                 $.ajax({
                                     type: "POST",
@@ -95,7 +95,7 @@
                                             $(thisIcon).css("display", "none");
                                             $(thisIcon).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
                                             $(thisIcon).attr("rel", "");
-                                            $("#IconApproval" + $(thisIcon).attr("baseid")).fadeIn(100);
+                                            $("#IconApproval" + $(thisIcon).attr("baseid").replace(/\|/g, '')).fadeIn(100);
                                             $("#" + $(thisIcon).attr("rel"), "");
                                             alertify.log(unescape(msg.d.DisplayMessage));
                                         } else {

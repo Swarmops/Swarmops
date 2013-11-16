@@ -207,6 +207,9 @@
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>Send Invoice</value>
   </data>
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
+    <value>Validate Receipts</value>
+  </data>
   <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
     <value>View Budget and Actuals</value>
   </data>

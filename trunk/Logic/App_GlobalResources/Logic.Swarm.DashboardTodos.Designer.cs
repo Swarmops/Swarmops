@@ -149,5 +149,23 @@ namespace Swarmops.Logic.App_GlobalResources {
                 return ResourceManager.GetString("Payout_Urgent_One", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validate claims {0}.
+        /// </summary>
+        internal static string Validate_Receipts_Many {
+            get {
+                return ResourceManager.GetString("Validate_Receipts_Many", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validate claim #{0}.
+        /// </summary>
+        internal static string Validate_Receipts_One {
+            get {
+                return ResourceManager.GetString("Validate_Receipts_One", resourceCulture);
+            }
+        }
     }
 }

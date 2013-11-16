@@ -30,7 +30,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT FinancialTransactionTagTypeId WHERE FinancialTransactionId=" + financialTransactionId.ToString(CultureInfo.InvariantCulture), connection);
+                    GetDbCommand("SELECT FinancialTransactionTagTypeId FROM FinancialTransactionTags WHERE FinancialTransactionId=" + financialTransactionId.ToString(CultureInfo.InvariantCulture), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
