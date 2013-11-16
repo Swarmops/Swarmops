@@ -121,7 +121,7 @@ namespace Swarmops.Logic.Communications.Transmission
         BudgetAmountFloat,
         CurrencyCode,
         EmbeddedPreformattedText,
-        RequestReason,
+        RequestPurpose,
         HostName,
         SwarmopsVersion
     }
