@@ -20,12 +20,45 @@ namespace Swarmops.Logic.Swarm
 
             result.AddExpenseClaimAttestations(person, organization);
             result.AddCashAdvanceAttestations(person, organization);
+            result.AddReceiptValidations(person, organization);
             result.AddPayouts(person, organization);
 
             // TODO: Add any hooks
 
             return result;
         }
+
+
+
+        private void AddReceiptValidations(Person person, Organization organization)
+        {
+            if (!person.HasAccess(new Access(organization, AccessAspect.Financials, AccessType.Write)))
+            {
+                return;
+            }
+
+            ExpenseClaims claims = ExpenseClaims.ForOrganization(organization);
+            claims = claims.WhereUnvalidated;
+
+            DashboardTodo todo = new DashboardTodo();
+
+            if (claims.Count > 1)
+            {
+                todo.Description = String.Format(App_GlobalResources.Logic_Swarm_DashboardTodos.Validate_Receipts_Many, Formatting.GenerateRangeString(claims.Identities));
+            }
+            else
+            {
+                todo.Description = String.Format(App_GlobalResources.Logic_Swarm_DashboardTodos.Validate_Receipts_One, claims[0].Identity);
+            }
+
+            todo.Icon = "/Images/PageIcons/iconshock-invoice-greentick-16px.png";
+            todo.Url = "/Pages/v5/Financial/ValidateReceipts.aspx";
+
+            this.Add(todo);
+        }
+
+
+
 
 
         // TODO: Refactor the attest-X functions into one function with minimal differences

@@ -405,6 +405,8 @@ namespace Swarmops.Logic.Financial
                                                              FinancialDependencyType.ExpenseClaim, this.Identity,
                                                              DateTime.Now, validator.Identity, (double) this.Amount);
             base.Validated = true;
+
+            OutboundComm.CreateNotificationOfFinancialValidation(this.Budget, this.Claimer, (double)this.AmountCents / 100.0, this.Description, NotificationResource.ExpenseClaim_Validated);
         }
 
         public void Devalidate (Person devalidator)
@@ -414,6 +416,8 @@ namespace Swarmops.Logic.Financial
                                                              FinancialDependencyType.ExpenseClaim, this.Identity,
                                                              DateTime.Now, devalidator.Identity, (double) this.Amount);
             base.Validated = false;
+
+            OutboundComm.CreateNotificationOfFinancialValidation(this.Budget, this.Claimer, (double)this.AmountCents / 100.0, this.Description, NotificationResource.ExpenseClaim_Devalidated);
         }
 
         #endregion

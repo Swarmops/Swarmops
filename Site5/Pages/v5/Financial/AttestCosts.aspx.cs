@@ -254,7 +254,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 if (_attestationRights.ContainsKey(expenseClaim.BudgetId) || expenseClaim.Budget.OwnerPersonId == Person.NobodyId)
                 {
-                    AddDocuments(expenseClaim.Documents, "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture), String.Format("Expense Claim #{0} by {1} - ", expenseClaim.Identity, expenseClaim.ClaimerCanonical) + "Receipt Image {0} of {1}");
+                    AddDocuments(expenseClaim.Documents, "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture), String.Format(Resources.Global.Financial_ExpenseClaimSpecificationWithClaimer + " - ", expenseClaim.Identity, expenseClaim.ClaimerCanonical) + Resources.Global.Financial_ReceiptSpecification);
                 }
             }
         }
@@ -271,7 +271,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 if (_attestationRights.ContainsKey(invoice.BudgetId) || invoice.Budget.OwnerPersonId == Person.NobodyId)
                 {
-                    AddDocuments(invoice.Documents, "I" + invoice.Identity.ToString(CultureInfo.InvariantCulture), String.Format("Invoice #{0} from {1} - ", invoice.Identity, invoice.Supplier) + "Image {0} of {1}");
+                    AddDocuments(invoice.Documents, "I" + invoice.Identity.ToString(CultureInfo.InvariantCulture), String.Format(Resources.Global.Financial_InboundInvoiceSpecificationWithSender + " - ", invoice.Identity, invoice.Supplier) + Resources.Global.Global_ImageSpecification);
                 }
             }
         }

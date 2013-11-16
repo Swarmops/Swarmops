@@ -348,4 +348,16 @@
   <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
     <value>Expenses {0} (minus advances)</value>
   </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>Expense Claim #{0} by {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>Inbound Invoice #{0} from {1}</value>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>Receipt Image {0} of {1}</value>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>Image {0} of {1}</value>
+  </data>
 </root>

@@ -148,4 +148,10 @@
   <data name="Payout_Urgent_One" xml:space="preserve">
     <value>Settle one urgent payout</value>
   </data>
+  <data name="Validate_Receipts_Many" xml:space="preserve">
+    <value>Validate claims {0}</value>
+  </data>
+  <data name="Validate_Receipts_One" xml:space="preserve">
+    <value>Validate claim #{0}</value>
+  </data>
 </root>

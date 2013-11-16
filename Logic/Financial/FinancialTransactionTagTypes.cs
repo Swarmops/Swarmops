@@ -14,5 +14,22 @@ namespace Swarmops.Logic.Financial
         {
             return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagTypes(set));
         }
+
+        public static FinancialTransactionTagTypes FromIdentities (int[] identities)
+        {
+            return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagTypesByIdentity(identities));
+        }
+
+        public static FinancialTransactionTagTypes ForTransaction (FinancialTransaction transaction)
+        {
+            int[] tagTypeIdentities = SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagTypes(transaction.Identity);
+
+            if (tagTypeIdentities.Length == 0)
+            {
+                return new FinancialTransactionTagTypes(); // none, so return empty set
+            }
+
+            return FromIdentities(tagTypeIdentities);
+        }
     }
 }

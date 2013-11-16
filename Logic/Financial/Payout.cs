@@ -301,6 +301,12 @@ namespace Swarmops.Logic.Financial
                     SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.ExpenseClaim,
                                                                   claimId);
                 }
+
+                foreach (int advancePaybackId in advancePaybackIdentityList)
+                {
+                    SwarmDb.GetDatabaseForWriting().CreatePayoutDependency(payoutId, FinancialDependencyType.CashAdvancePayback,
+                                                                  advancePaybackId);
+                }
             }
             else if (components[0][0] == 'I')
             {

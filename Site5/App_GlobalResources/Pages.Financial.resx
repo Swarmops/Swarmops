@@ -354,4 +354,19 @@
   <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
     <value>Please state the purpose of the cash advance.</value>
   </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>Receipts awaiting your validation</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>This is where you inspect and confirm the validity of receipts that accompany expense claims. Check that the amount is correct and that the receipt appears to be for what it is claimed to be for.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Validate Receipts</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
+    <value>The receipts for Expense Claim #{0} for {1} {2:N2} have been DE-validated. The expense claim will not proceed to payout unless re-validated.</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>The receipts for Expense Claim #{0} for {1} {2:N2} have been validated.</value>
+  </data>
 </root>

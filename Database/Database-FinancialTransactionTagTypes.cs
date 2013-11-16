@@ -87,6 +87,29 @@ namespace Swarmops.Database
         }
 
 
+        public BasicFinancialTransactionTagType[] GetFinancialTransactionTagTypesByIdentity (int[] identities)
+        {
+            List<BasicFinancialTransactionTagType> result = new List<BasicFinancialTransactionTagType>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SELECT" + financialTransactionTagTypeFieldSequence + " WHERE FinancialTransactionTagTypeId IN (" + JoinIds(identities) + ")", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadFinancialTransactionTagTypeFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+
+
         #endregion
 
 
