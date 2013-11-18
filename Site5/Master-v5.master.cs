@@ -90,7 +90,7 @@ namespace Swarmops
             this.RepeaterTodoItems.DataBind();
             this.LabelNoTodoItems.Visible = (todos.Count == 0);
 
-            // Set up main menu
+            // Set up main menu 
 
             RadMenu mainMenu = FindControl("MainMenu") as RadMenu;
 
