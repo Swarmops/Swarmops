@@ -12,8 +12,6 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Telerik.Web.UI;
 using Membership = Swarmops.Logic.Swarm.Membership;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Communications.Transmission;
 
 namespace Swarmops
 {
