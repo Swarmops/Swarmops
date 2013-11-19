@@ -125,6 +125,7 @@ namespace Swarmops.Logic.Communications
 
         }
 
+
         public static OutboundComm CreateNotificationOfFinancialValidation(FinancialAccount budget, Person concernedPerson, double amountRequested, string purpose, NotificationResource notification)
         {
             NotificationPayload payload = new NotificationPayload(notification.ToString());
