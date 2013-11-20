@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.Communications
@@ -12,6 +14,9 @@ namespace Swarmops.Utility.Communications
     public class CommsTransmitterMail: ICommsTransmitter
     {
         // To be implemented
+
+        private static string _smtpServerCache = string.Empty;
+        private static DateTime _cacheReloadTime = DateTime.MaxValue;
 
         public void Transmit(PayloadEnvelope envelope, Person person)
         {
@@ -35,8 +40,25 @@ namespace Swarmops.Utility.Communications
             mail.Body = comm[CommRenderPart.BodyText];
             mail.SubjectEncoding = Encoding.UTF8;
             mail.BodyEncoding = Encoding.UTF8;
-            
-            SmtpClient mailClient = new SmtpClient("192.168.80.204"); // Fix this - for development use only
+
+            string smtpServer = _smtpServerCache;
+
+            DateTime now = DateTime.Now;
+
+            if (now > _cacheReloadTime)
+            {
+                smtpServer = _smtpServerCache = Persistence.Key ["SmtpServer"];
+                _cacheReloadTime = now.AddMinutes(5);
+            }
+
+            if (string.IsNullOrEmpty(smtpServer))
+            {
+                smtpServer = "192.168.80.204"; // For development use only - invalidate cache instead of this, forcing re-reload
+            }
+
+            SmtpClient mailClient = new SmtpClient(smtpServer);
+
+            // TODO: SMTP Server login credentials
 
             try
             {
@@ -44,7 +66,8 @@ namespace Swarmops.Utility.Communications
             }
             catch (Exception e)
             {
-                throw new OutboundCommTransmitException("Cannot send mail to " + person.Mail, e);  
+                _cacheReloadTime = DateTime.MaxValue;
+                throw new OutboundCommTransmitException("Cannot send mail to " + person.Mail, e);
             }
         }
 
