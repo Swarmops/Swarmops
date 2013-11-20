@@ -16,7 +16,7 @@ namespace Swarmops.Utility.Communications
         // To be implemented
 
         private static string _smtpServerCache = string.Empty;
-        private static DateTime _cacheReloadTime = DateTime.MaxValue;
+        private static DateTime _cacheReloadTime = DateTime.MinValue;
 
         public void Transmit(PayloadEnvelope envelope, Person person)
         {
@@ -43,11 +43,15 @@ namespace Swarmops.Utility.Communications
 
             string smtpServer = _smtpServerCache;
 
+            Console.WriteLine("Debug: SmtpServer is '{0}'", smtpServer);
+
             DateTime now = DateTime.Now;
 
             if (now > _cacheReloadTime)
             {
                 smtpServer = _smtpServerCache = Persistence.Key ["SmtpServer"];
+                Console.WriteLine("Debug: SmtpServer reloaded from persistence, is now '{0}'", smtpServer);
+
                 _cacheReloadTime = now.AddMinutes(5);
             }
 
@@ -66,7 +70,7 @@ namespace Swarmops.Utility.Communications
             }
             catch (Exception e)
             {
-                _cacheReloadTime = DateTime.MaxValue;
+                _cacheReloadTime = DateTime.MinValue;
                 throw new OutboundCommTransmitException("Cannot send mail to " + person.Mail, e);
             }
         }
