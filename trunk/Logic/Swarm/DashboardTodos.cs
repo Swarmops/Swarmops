@@ -40,6 +40,12 @@ namespace Swarmops.Logic.Swarm
             ExpenseClaims claims = ExpenseClaims.ForOrganization(organization);
             claims = claims.WhereUnvalidated;
 
+            if (claims.Count == 0)
+            {
+                // nothing to add
+                return;
+            }
+
             DashboardTodo todo = new DashboardTodo();
 
             if (claims.Count > 1)

@@ -19,6 +19,8 @@ public partial class Pages_v5_Ledgers_DebugLedgers : PageV5Base
 
         // TODO: If this O(n^2) matching becomes teh suckage, optimize using hashtables over amounts
 
+        Payouts.AutomatchAgainstUnbalancedTransactions(this.CurrentOrganization);
+
         // Iterate over all open payment groups and try to map them to unbalanced transactions
 
         FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced(this.CurrentOrganization); // TODO: this fn should move to Organization
