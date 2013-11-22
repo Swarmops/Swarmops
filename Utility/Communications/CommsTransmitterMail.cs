@@ -54,6 +54,7 @@ namespace Swarmops.Utility.Communications
             if (string.IsNullOrEmpty(smtpServer))
             {
                 smtpServer = "192.168.80.204"; // For development use only - invalidate cache instead of this, forcing re-reload
+                _cacheReloadTime = DateTime.MinValue;
             }
 
             SmtpClient mailClient = new SmtpClient(smtpServer);
