@@ -533,6 +533,7 @@ span.loginalphabetasign
 	border-radius: 10px;
 	padding: 0px 10px 0px 10px;
 	font-size: 24px;
+	margin-bottom: 3px;
 }
 
 .entryFields input:not(.buttonAccentColor), .entryFields textarea
