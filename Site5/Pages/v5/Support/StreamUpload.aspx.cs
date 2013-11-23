@@ -172,8 +172,17 @@ namespace Swarmops.Pages.v5.Support
                 contentType = MediaTypeNames.Image.Jpeg;
             }
 
+            string legacyMarker = string.Empty;
+
+            if (!File.Exists(StorageRoot + document.ServerFileName))
+            {
+                legacyMarker = "legacy/"; // for some legacy installations, all older files are placed here
+            }
+
+            // TODO: If still doesn't exist, perhaps return a friendly error image instead?
+
             Response.ContentType = contentType + "; filename=" + document.ClientFileName;
-            Response.TransmitFile(StorageRoot + document.ServerFileName);
+            Response.TransmitFile(StorageRoot + legacyMarker + document.ServerFileName);
         }
     }
 }
