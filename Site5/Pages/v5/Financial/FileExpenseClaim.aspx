@@ -110,8 +110,8 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="entryFields">
-        <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" /><br/>
-        <asp:TextBox runat="server" ID="TextPurpose" />&nbsp;<br/>
+        <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&#8203;<br/>
+        <asp:TextBox runat="server" ID="TextPurpose" />&#8203;<br/>
         <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />&nbsp;<br/>
         <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
 
@@ -124,8 +124,8 @@
         <!-- file upload ends -->
 
         &nbsp;<br/><!-- placeholder for label-side H2 -->
-        <asp:TextBox runat="server" ID="TextBank" /><br/>
-        <asp:TextBox runat="server" ID="TextClearing" />&nbsp;<br/>
+        <asp:TextBox runat="server" ID="TextBank" />&#8203;<br/>
+        <asp:TextBox runat="server" ID="TextClearing" />&#8203;<br/>
         <asp:TextBox runat="server" ID="TextAccount" />&nbsp;<br/>
         <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonRequest_Click" Text="Request"/>
     </div>

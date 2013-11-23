@@ -57,8 +57,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="entryFields">
-        <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" /><br/>
-        <asp:TextBox runat="server" ID="TextPurpose" /><br/>
+        <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&#8203;<br/>
+        <asp:TextBox runat="server" ID="TextPurpose" />&#8203;<br/>
         <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />&nbsp;<br/>
         &nbsp;<br/><!-- placeholder for label-side H2 -->
         <asp:TextBox runat="server" ID="TextBank" />&nbsp;<br/>
