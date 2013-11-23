@@ -1,0 +1,5 @@
+#! /bin/bash
+
+echo "Swarmops Frontend post-installation script running"
+#just make sure the upload folder exists
+mkdir -p /opt/swarmops/upload

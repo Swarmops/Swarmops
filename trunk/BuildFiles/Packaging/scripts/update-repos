@@ -2,4 +2,4 @@
 
 cd /home/prod/Smallwebs/Activizr-repo/
 reprepro includedeb squeeze $1
-cd /home/packager/packaging/
+cd /home/packager/swarmops/
