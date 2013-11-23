@@ -2,7 +2,7 @@ Package: swarmops-frontend-internal
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends: swarmops-common-internal, apache2 (>= 2.2.20), mono-apache-server2 (>= 2.10-1), libapache2-mod-mono (>= 2.10-1)
+Depends: swarmops-common-internal, apache2 (>= 2.2.20), mono-apache-server2 (>= 2.10-1), libapache2-mod-mono (>= 2.10-1), libgdiplus (>= 2.10-3)
 Conflicts: swarmops-frontend
 Homepage: http://swarmops.com/
 Description: Swarmops Frontend

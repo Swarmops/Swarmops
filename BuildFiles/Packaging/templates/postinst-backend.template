@@ -1,5 +1,11 @@
 #! /bin/bash
 
-#todo: register
 echo "Swarmops post-installation script running"
+#make sure some directories exist
+mkdir -p /opt/swarmops/upload
+mkdir -p /opt/swarmops/backend/logs
+#todo: check for database upgrade
+#start the daemon
 /etc/init.d/swarmops-backend start
+#register the daemon
+update-rc.d swarmops-backend defaults 90 10

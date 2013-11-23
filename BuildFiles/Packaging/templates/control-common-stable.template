@@ -2,7 +2,6 @@ Package: swarmops-common
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends:
 Conflicts: swarmops-common-internal
 Homepage: http://swarmops.com/
 Description: Swarmops Backend
