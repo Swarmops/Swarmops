@@ -33,9 +33,9 @@ namespace Swarmops.Pages.Security
 
             // Check for SSL
 
-            if (!Request.IsSecureConnection)
+            if (!Request.IsSecureConnection || Request.Url.ToString().StartsWith("http://"))  // Both are necessary, as some reverse proxies will https-ify an original nonsecure connection
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://localhost:") && Request.Url.ToString().StartsWith("http://activizr-") && Request.Url.ToString().StartsWith("http://live.activizr.com"))
+                if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://localhost:") && Request.Url.ToString().StartsWith("http://activizr-"))
                 {
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
                 }
