@@ -45,7 +45,7 @@ namespace Swarmops.Pages.v5.Support
             Document document = Document.FromIdentity(documentId);
 
             //Orgid is needed to safely verify permission
-            int orgId = Organization.PPSEid;
+            int orgId = 0; // initialize to invalid
 
             bool hasPermission = false;
 
@@ -83,6 +83,14 @@ namespace Swarmops.Pages.v5.Support
                         FinancialAccount budget = FinancialAccount.FromIdentity(budgetId);
 
                         if (budget.OwnerPersonId == this.CurrentUser.Identity || budget.OwnerPersonId == 0)
+                        {
+                            hasPermission = true;
+                            break;
+                        }
+
+			// TODO: Security leak - check CurrentOrganization against Document's org
+
+                        if (this.CurrentUser.HasAccess (new Access(CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
                         {
                             hasPermission = true;
                             break;
@@ -180,6 +188,11 @@ namespace Swarmops.Pages.v5.Support
             }
 
             // TODO: If still doesn't exist, perhaps return a friendly error image instead?
+
+            if (!File.Exists(StorageRoot + legacyMarker + document.ServerFileName))
+            {
+                throw new FileNotFoundException(StorageRoot + legacyMarker + document.ServerFileName);
+            }
 
             Response.ContentType = contentType + "; filename=" + document.ClientFileName;
             Response.TransmitFile(StorageRoot + legacyMarker + document.ServerFileName);

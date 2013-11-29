@@ -197,7 +197,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void PopulateExpenses()
         {
-            ExpenseClaims expenses = ExpenseClaims.ForOrganization(this.CurrentOrganization).WhereUnattested;
+            ExpenseClaims expenses = ExpenseClaims.ForOrganization(this.CurrentOrganization).WhereUnvalidated;
 
             foreach (var expenseClaim in expenses)
             {
