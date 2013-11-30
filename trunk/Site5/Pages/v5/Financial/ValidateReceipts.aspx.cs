@@ -85,8 +85,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
             FinancialTransactionTagSets tagSets = FinancialTransactionTagSets.ForOrganization(CurrentOrganization);
+
+            int descriptionWidth = 140 + 160;
+
             if (tagSets.Count > 0)
             {
+                descriptionWidth = 140;
                 int tagWidth = 360/(tagSets.Count + 1);
 
                 //this.LiteralBudgetNameWidth.Text = tagWidth.ToString(CultureInfo.InvariantCulture);
@@ -102,6 +106,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 this.LiteralExtraTags.Text = tagSetHtml.ToString();
             }
+
+            this.LiteralDescriptionThStart.Text=String.Format("<th data-options=\"field:'description',width:{0}\">", descriptionWidth);
         }
 
         private enum AttestationMode

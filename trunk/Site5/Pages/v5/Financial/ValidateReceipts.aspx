@@ -157,8 +157,8 @@
         idField="itemId">
         <thead>  
             <tr>  
-                <th data-options="field:'description',width:140"><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /></th>  
-                <th data-options="field:'budgetName',width:180,sortable:true"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /></th>
+                <asp:Literal runat="server" ID="LiteralDescriptionThStart" /><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /><asp:Literal runat="server" ID="LiteralDescriptionThClose" Text="</th>" />  
+                <th data-options="field:'budgetName',width:{0},sortable:true"><asp:Label ID="LabelGridHeaderBudget" runat="server" Text="XYZ Budget" /></th>
                 <asp:Literal runat="server" ID="LiteralExtraTags" />
                 <th data-options="field:'amountRequested',width:80,align:'right',sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderRequested" runat="server" Text="XYZ Requested" /></th>
                 <th data-options="field:'dox',width:40,align:'center'"><asp:Label ID="LabelGridHeaderDocs" runat="server" Text="Doxyz" /></th>
