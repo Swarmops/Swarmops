@@ -87,11 +87,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             FinancialTransactionTagSets tagSets = FinancialTransactionTagSets.ForOrganization(CurrentOrganization);
 
             int descriptionWidth = 140 + 160;
+            int tagWidth = 180;
 
             if (tagSets.Count > 0)
             {
                 descriptionWidth = 140;
-                int tagWidth = 360/(tagSets.Count + 1);
+                tagWidth = 360/(tagSets.Count + 1);
 
                 //this.LiteralBudgetNameWidth.Text = tagWidth.ToString(CultureInfo.InvariantCulture);
 
@@ -108,6 +109,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             this.LiteralDescriptionThStart.Text=String.Format("<th data-options=\"field:'description',width:{0}\">", descriptionWidth);
+            this.LiteralBudgetThStart.Text = String.Format("<th data-options=\"field:'budgetName',width:{0},sortable:true\">", tagWidth);
         }
 
         private enum AttestationMode
