@@ -64,7 +64,7 @@ namespace Swarmops
 
             if ((!Request.IsSecureConnection) || Request.Url.ToString().StartsWith("http://"))  // Both are necessary, as some reverse proxies will https-ify an original nonsecure connection
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://cryptdb"))
+                if (!Request.Url.ToString().StartsWith("http://dev.activizr.com/") && !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://cryptdb"))
                 {
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
 

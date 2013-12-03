@@ -5,6 +5,7 @@
     <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="datagrid" runat="server" />
 	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
     <script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.snipe.js"></script>
 	<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 
     
