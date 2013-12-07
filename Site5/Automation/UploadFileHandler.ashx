@@ -151,12 +151,22 @@ namespace Swarmops.Frontend.Automation
                 HttpPostedFile file = context.Request.Files[i];
                 string fullName = Path.GetFileName (file.FileName);
 
-                // Store in MemoryStream in order to try to load as an image
-
                 AuthenticationData authData = GetAuthenticationDataAndCulture (context);
 
                 Person uploadingPerson = authData.CurrentUser;
                 Organization currentOrg = authData.CurrentOrganization;
+
+
+                bool convertPdf = false;
+
+                if (file.FileName.ToLower().EndsWith(".pdf"))
+                {
+                    convertPdf = true;
+                }
+                else
+                {
+
+                // If not PDF, try to load as an image
 
                 /*                
 			    MemoryStream ms = new MemoryStream();
@@ -171,9 +181,14 @@ namespace Swarmops.Frontend.Automation
                 try
                 {
                     Image image = Image.FromStream (file.InputStream);
+                    image.Dispose();
                 }
                 catch (Exception)
                 {
+                    // TODO: If general files accepted, then ok, otherwise fuck off
+
+                    // TODO: Accept general files
+
                     var errorStatus = new FilesStatus (fullName, file.ContentLength);
                     errorStatus.error = "ERR_NOT_IMAGE";
                     errorStatus.url = string.Empty;
@@ -183,6 +198,7 @@ namespace Swarmops.Frontend.Automation
                     statuses.Add (errorStatus);
                     // -1 for length means the file was NOT saved, and that it could not be parsed as image.
                     return;
+                }
                 }
 
                 string guid = context.Request.QueryString["Guid"];
@@ -221,11 +237,36 @@ namespace Swarmops.Frontend.Automation
                         "File name determination failed; probable file system permissions error");
                 }
 
-                file.InputStream.Position = 0;
-                file.SaveAs (StorageRoot + fileFolder + Path.DirectorySeparatorChar + fileName);
+                string relativeFileName = fileFolder + Path.DirectorySeparatorChar + fileName;
 
-                Document.Create (fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName, file.ContentLength,
-                                 guid, null, authData.CurrentUser);
+                file.InputStream.Position = 0;
+                file.SaveAs (StorageRoot + relativeFileName);
+
+                if (convertPdf)
+                {
+                    // Convert PDF file into a series of PNG images, one per page
+
+                    int pageCounter = 0;
+
+                    // TODO: ShellExecute ImageMagick Convert
+
+                    string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+
+                    while (File.Exists (StorageRoot + testPageFileName))
+                    {
+		        Document.Create (fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName, file.ContentLength,
+		                         guid, null, authData.CurrentUser);
+
+                        pageCounter++;
+                        testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
+                    }
+                }
+                else
+                {
+		    Document.Create (fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName, file.ContentLength,
+		                     guid, null, authData.CurrentUser);
+
+                }
 
                 statuses.Add (new FilesStatus (fullName, file.ContentLength));
             }
