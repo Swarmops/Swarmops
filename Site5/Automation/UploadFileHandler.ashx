@@ -277,7 +277,7 @@ namespace Swarmops.Frontend.Automation
                     if (process.ExitCode != 0)
                     {
                         var errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
-                        errorStatus.error = "ERR_UNREADABLE_PDF";
+                        errorStatus.error = "ERR_BAD_PDF";
                         errorStatus.url = string.Empty;
                         errorStatus.delete_url = string.Empty;
                         errorStatus.thumbnail_url = string.Empty;
