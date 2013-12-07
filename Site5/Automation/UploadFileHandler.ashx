@@ -265,8 +265,8 @@ namespace Swarmops.Frontend.Automation
                     }
                     else
                     {
-                        process = Process.Start("convert",
-                                                "-alpha off " + StorageRoot + relativeFileName + " " +
+                        process = Process.Start("bash",
+                                                "-c convert -alpha off " + StorageRoot + relativeFileName + " " +
                                                 StorageRoot + relativeFileName +
                                                 "-%04d.png");
                         
