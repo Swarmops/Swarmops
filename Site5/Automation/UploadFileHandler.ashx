@@ -266,9 +266,9 @@ namespace Swarmops.Frontend.Automation
                     else
                     {
                         process = Process.Start("bash",
-                                                "-c \"convert -alpha off " + StorageRoot + relativeFileName + " " +
+                                                "-c \"convert -density 300 -alpha off " + StorageRoot + relativeFileName + " " +
                                                 StorageRoot + relativeFileName +
-                                                "-%04d.png\"");
+                                                "-%04d.png\"");  // Density 300 means 300dpi means production-grade conversion
                         
                     }
                     
