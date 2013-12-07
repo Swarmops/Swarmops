@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -24,13 +25,18 @@ namespace Swarmops.Frontend.Automation
             {
                 if (Debugger.IsAttached)
                 {
-                    return @"C:\Windows\Temp\\Swarmops-Debug\\"; // Windows debugging environment
+                    return @"C:\Windows\Temp\Swarmops-Debug\"; // Windows debugging environment
                 }
                 else
                 {
                     return "/opt/swarmops/upload/"; // production location on Debian installation  TODO: config file
                 }
             }
+        }
+        
+        private bool WeAreInDebugEnvironment
+        {
+            get { return Debugger.IsAttached; }
         }
 
         #region IHttpHandler Members
@@ -166,39 +172,39 @@ namespace Swarmops.Frontend.Automation
                 else
                 {
 
-                // If not PDF, try to load as an image
+                    // If not PDF, try to load as an image
 
-                /*                
-			    MemoryStream ms = new MemoryStream();
-                byte[] fileData = new byte[file.ContentLength];
+                    /*                
+			        MemoryStream ms = new MemoryStream();
+                    byte[] fileData = new byte[file.ContentLength];
 
-			    file.InputStream.Read(fileData, 0, file.ContentLength);
-                ms.Write(fileData, 0, file.ContentLength);
-			    ms.Position = 0;*/
+			        file.InputStream.Read(fileData, 0, file.ContentLength);
+                    ms.Write(fileData, 0, file.ContentLength);
+			        ms.Position = 0;*/
 
-                // Try to load as image. If fails, not an acceptable file
+                    // Try to load as image. If fails, not an acceptable file
 
-                try
-                {
-                    Image image = Image.FromStream (file.InputStream);
-                    image.Dispose();
-                }
-                catch (Exception)
-                {
-                    // TODO: If general files accepted, then ok, otherwise fuck off
+                    try
+                    {
+                        Image image = Image.FromStream (file.InputStream);
+                        image.Dispose();
+                    }
+                    catch (Exception)
+                    {
+                        // TODO: If general files accepted, then ok, otherwise fuck off
 
-                    // TODO: Accept general files
+                        // TODO: Accept general files
 
-                    var errorStatus = new FilesStatus (fullName, file.ContentLength);
-                    errorStatus.error = "ERR_NOT_IMAGE";
-                    errorStatus.url = string.Empty;
-                    errorStatus.delete_url = string.Empty;
-                    errorStatus.thumbnail_url = string.Empty;
+                        var errorStatus = new FilesStatus (fullName, file.ContentLength);
+                        errorStatus.error = "ERR_NOT_IMAGE";
+                        errorStatus.url = string.Empty;
+                        errorStatus.delete_url = string.Empty;
+                        errorStatus.thumbnail_url = string.Empty;
 
-                    statuses.Add (errorStatus);
-                    // -1 for length means the file was NOT saved, and that it could not be parsed as image.
-                    return;
-                }
+                        statuses.Add (errorStatus);
+                        // -1 for length means the file was NOT saved, and that it could not be parsed as image.
+                        return;
+                    }
                 }
 
                 string guid = context.Request.QueryString["Guid"];
@@ -248,14 +254,47 @@ namespace Swarmops.Frontend.Automation
 
                     int pageCounter = 0;
 
-                    // TODO: ShellExecute ImageMagick Convert
+                    Process process = null;
+
+                    if (WeAreInDebugEnvironment)
+                    {
+                        process = Process.Start("cmd.exe",
+                                                "/c convert -alpha off " + StorageRoot + relativeFileName + " " +
+                                                StorageRoot + relativeFileName +
+                                                "-%04d.png");
+                    }
+                    else
+                    {
+                        process = Process.Start("convert",
+                                                "-alpha off " + StorageRoot + relativeFileName + " " +
+                                                StorageRoot + relativeFileName +
+                                                "-%04d.png");
+                        
+                    }
+                    
+                    process.WaitForExit();
+                    
+                    if (process.ExitCode != 0)
+                    {
+                        var errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
+                        errorStatus.error = "ERR_UNREADABLE_PDF";
+                        errorStatus.url = string.Empty;
+                        errorStatus.delete_url = string.Empty;
+                        errorStatus.thumbnail_url = string.Empty;
+
+                        statuses.Add(errorStatus);
+                        // -1 for length means the file was NOT saved, and that it could not be parsed.
+                        return;
+                    }
 
                     string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
 
                     while (File.Exists (StorageRoot + testPageFileName))
                     {
-		        Document.Create (fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName, file.ContentLength,
-		                         guid, null, authData.CurrentUser);
+                        long fileLength = new FileInfo(StorageRoot + testPageFileName).Length;
+                        
+		                Document.Create (testPageFileName, file.FileName + " " + (pageCounter + 1).ToString(CultureInfo.InvariantCulture), fileLength,
+		                                 guid, null, authData.CurrentUser);
 
                         pageCounter++;
                         testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
@@ -263,8 +302,8 @@ namespace Swarmops.Frontend.Automation
                 }
                 else
                 {
-		    Document.Create (fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName, file.ContentLength,
-		                     guid, null, authData.CurrentUser);
+		            Document.Create (fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName, file.ContentLength,
+		                             guid, null, authData.CurrentUser);
 
                 }
 
