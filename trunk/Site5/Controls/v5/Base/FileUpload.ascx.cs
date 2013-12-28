@@ -29,7 +29,7 @@ namespace Swarmops.Controls.Base
         }
 
         public string GuidString;
-        public UploadFilter Filter;
+        public UploadFilter Filter { get; set; }
 
 
         public enum UploadFilter
