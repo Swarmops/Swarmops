@@ -360,4 +360,15 @@
   <data name="Global_ImageSpecification" xml:space="preserve">
     <value>Image {0} of {1}</value>
   </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Due Date</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>English (US)</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
 </root>

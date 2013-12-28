@@ -165,7 +165,7 @@
                         <telerik:RadMenuItem runat="server" Text="XYZ Validate Receipts" NavigateUrl="~/Pages/v5/Financial/ValidateReceipts.aspx" ImageUrl="~/Images/PageIcons/iconshock-invoice-greentick-16px.png" Permission="Economy:Write" UserLevel="2" GlobalResourceKey="Menu5_Financial_ValidateReceipts" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Send Invoice" Permission="Economy:Write" UserLevel="2" GlobalResourceKey="Menu5_Financial_SendInvoice" />
-                        <telerik:RadMenuItem runat="server" Text="XYZ Received Invoice" Permission="Economy:Write" UserLevel="2" GlobalResourceKey="Menu5_Financial_ReceivedInvoice" />
+                        <telerik:RadMenuItem runat="server" Text="XYZ Received Invoice" Permission="Economy:Write" UserLevel="2" NavigateUrl="~/Pages/v5/Financial/CreateInboundInvoice.aspx" ImageUrl="~/Images/PageIcons/iconshock-invoice-16px.png" GlobalResourceKey="Menu5_Financial_ReceivedInvoice" />
                         <telerik:RadMenuItem runat="server" Text="XYZ Gigs Assistant" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Financial_GigsAssistant" />
                         <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
                         <telerik:RadMenuItem runat="server" Text="XYZ List" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Financial_List">
