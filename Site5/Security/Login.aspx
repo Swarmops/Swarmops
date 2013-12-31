@@ -30,7 +30,7 @@
             <div class="loginbox">
                 <div class="content">
                     <div class="content">
-                        <div style="width:64px;height:64px;float:left"><img src="/Security/Images/iconshock-fingerprint-scanner-unlock-64px.png" alt="unlock icon" /></div><h1>ACTIVIZR<span class="loginalphabetasign">&beta;</span> LOGIN</h1>
+                        <div style="width:64px;height:64px;float:left"><img src="/Security/Images/iconshock-fingerprint-scanner-unlock-64px.png" alt="unlock icon" /></div><h1>PIRATEWEB5<span class="loginalphabetasign">&beta;</span> LOGIN</h1>
                         <div class="box">
                             <div class="content">
                                 <div class="entryLabelsAdmin">
