@@ -36,6 +36,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             PopulateInboundInvoices();
             PopulateExpenses();
+            // PopulateSalaries();
 
             this.RepeaterLightboxItems.DataSource = _documentList;
             this.RepeaterLightboxItems.DataBind();
@@ -276,7 +277,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
         }
 
-        private void AddDocuments (Documents docs, string baseId, string titleBase)
+
+        private void AddDocuments(Documents docs, string baseId, string titleBase)
         {
             int countTotal = docs.Count;
             int count = 0;

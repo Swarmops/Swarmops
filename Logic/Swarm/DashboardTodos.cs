@@ -20,6 +20,7 @@ namespace Swarmops.Logic.Swarm
 
             result.AddExpenseClaimAttestations(person, organization);
             result.AddCashAdvanceAttestations(person, organization);
+            //result.AddSalaryAttestations(person, organization);   TODO!
             result.AddReceiptValidations(person, organization);
             result.AddPayouts(person, organization);
 
