@@ -17,7 +17,7 @@ namespace Swarmops.Database
   
         private const string financialTransactionTagSetFieldSequence =
             " FinancialTransactionTagSetId,FinancialTransactionTagSetTypeId,OrganizationId,DisplayOrder,AllowUntagged," +    // 0-4
-            "ProfitLossType " +                                                                                       // 5
+            "VisibilityLevel,ProfitLossType " +                                                                              // 5-6
             "FROM FinancialTransactionTagSets ";
 
         private static BasicFinancialTransactionTagSet ReadFinancialTransactionTagSetFromDataReader(IDataRecord reader)
@@ -27,9 +27,10 @@ namespace Swarmops.Database
             int organizationId = reader.GetInt32 (2);
             int order = reader.GetInt32 (3);
             bool allowUntagged = reader.GetBoolean (4);
-            int profitLossType = reader.GetInt32(5);
+            int visibilityLevel = reader.GetInt32(5);
+            int profitLossType = reader.GetInt32(6);
 
-            return new BasicFinancialTransactionTagSet(financialTransactionTagSetId, financialTransactionTagSetTypeId, organizationId, order, allowUntagged, profitLossType);
+            return new BasicFinancialTransactionTagSet(financialTransactionTagSetId, financialTransactionTagSetTypeId, organizationId, order, allowUntagged, visibilityLevel, profitLossType);
         }
 
         #endregion

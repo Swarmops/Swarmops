@@ -123,7 +123,7 @@
   <data name="IncomeType" xml:space="preserve">
     <value>Income Type</value>
   </data>
-  <data name="Project" xml:space="preserve">
+  <data name="ProjectName" xml:space="preserve">
     <value>Project</value>
   </data>
 </root>
