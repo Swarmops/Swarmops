@@ -48,11 +48,17 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                             FinancialTransactionTagSet.FromIdentity(tagSetId).
                                 FinancialTransactionTagSetTypeId)
                 };
-                dataSourceVisibleTags.Add(item);
 
-                if (!FinancialTransactionTagSet.FromIdentity(tagSetId).AllowUntagged)
+                FinancialTransactionTagSet tagSet = FinancialTransactionTagSet.FromIdentity(tagSetId);
+
+                if (tagSet.VisibilityLevel <= 1)
                 {
-                    dataSourceForcedTags.Add(item);
+                    dataSourceVisibleTags.Add(item);
+
+                    if (!tagSet.AllowUntagged)
+                    {
+                        dataSourceForcedTags.Add(item);
+                    }
                 }
             }
 
