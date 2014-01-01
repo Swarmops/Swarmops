@@ -82,9 +82,9 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to Project.
         /// </summary>
-        internal static string Project {
+        internal static string ProjectName {
             get {
-                return ResourceManager.GetString("Project", resourceCulture);
+                return ResourceManager.GetString("ProjectName", resourceCulture);
             }
         }
     }

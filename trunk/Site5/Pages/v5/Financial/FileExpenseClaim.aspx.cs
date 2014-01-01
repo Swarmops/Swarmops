@@ -35,27 +35,33 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Construct data source
 
-            List<TagSetDataSourceItem> dataSource = new List<TagSetDataSourceItem>();
+            List<TagSetDataSourceItem> dataSourceVisibleTags = new List<TagSetDataSourceItem>();
+            List<TagSetDataSourceItem> dataSourceForcedTags = new List<TagSetDataSourceItem>();
 
             foreach (int tagSetId in _tagSetIds)
             {
                 TagSetDataSourceItem item = new TagSetDataSourceItem()
-                                                {
-                                                    TagSetId = tagSetId,
-                                                    TagSetLocalizedName =
-                                                        FinancialTransactionTagSetType.GetLocalizedName(
-                                                            FinancialTransactionTagSet.FromIdentity(tagSetId).
-                                                                FinancialTransactionTagSetTypeId)
-                                                };
-                dataSource.Add(item);
+                {
+                    TagSetId = tagSetId,
+                    TagSetLocalizedName =
+                        FinancialTransactionTagSetType.GetLocalizedName(
+                            FinancialTransactionTagSet.FromIdentity(tagSetId).
+                                FinancialTransactionTagSetTypeId)
+                };
+                dataSourceVisibleTags.Add(item);
+
+                if (!FinancialTransactionTagSet.FromIdentity(tagSetId).AllowUntagged)
+                {
+                    dataSourceForcedTags.Add(item);
+                }
             }
 
             // Bind data
 
-            this.RepeaterTagLabels.DataSource = dataSource;
-            this.RepeaterTagDrop.DataSource = dataSource;
-            this.RepeaterTagDropScript.DataSource = dataSource;
-            this.RepeaterErrorCheckTags.DataSource = dataSource;
+            this.RepeaterTagLabels.DataSource = dataSourceVisibleTags;
+            this.RepeaterTagDrop.DataSource = dataSourceVisibleTags;
+            this.RepeaterTagDropScript.DataSource = dataSourceVisibleTags;
+            this.RepeaterErrorCheckTags.DataSource = dataSourceForcedTags;
 
             this.RepeaterTagLabels.DataBind();
             this.RepeaterTagDrop.DataBind();
@@ -172,7 +178,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 if (!String.IsNullOrEmpty(selectedTagString))
                 {
                     int selectedTagType = Int32.Parse(selectedTagString);
-                    claim.FinancialTransaction.CreateTag(FinancialTransactionTagType.FromIdentity(selectedTagType), CurrentUser);
+                    if (selectedTagType != 0)
+                    {
+                        claim.FinancialTransaction.CreateTag(FinancialTransactionTagType.FromIdentity(selectedTagType),
+                                                             CurrentUser);
+                    }
                 }
             }
 
