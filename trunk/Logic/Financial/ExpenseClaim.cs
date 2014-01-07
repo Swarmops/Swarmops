@@ -5,6 +5,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -66,6 +67,8 @@ namespace Swarmops.Logic.Financial
             // Create notification
 
             OutboundComm.CreateNotificationForAttest(budget, claimer, (double)amountCents / 100.0, description, NotificationResource.ExpenseClaim_Created); // Slightly misplaced logic, but failsafer here
+            SwarmopsLog.CreateEntry(claimer,
+                                    new ExpenseClaimFiledLogEntry(claimer /*filing person*/, claimer /*beneficiary*/, (double) amountCents/100.0, budget, description));
 
             return newClaim;
         }

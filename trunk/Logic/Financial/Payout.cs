@@ -6,6 +6,7 @@ using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
+using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -200,6 +201,7 @@ namespace Swarmops.Logic.Financial
                     int advanceId = Int32.Parse(component.Substring(1));
                     CashAdvance advance = CashAdvance.FromIdentity(advanceId);
                     identityList.Add(advanceId);
+                    Organization organization = Organization.FromIdentity(organizationId);
 
                     if (bank.Length < 1)
                     {
@@ -207,12 +209,20 @@ namespace Swarmops.Logic.Financial
                         bank = asker.BankName;
                         account = asker.BankAccount;
                         organizationId = advance.OrganizationId;
+
                     }
 
                     amountCents += advance.AmountCents;
 
                     advance.PaidOut = true;
                     //advance.Open = false;   // isn't this closed only when settling the debt? Serious bug here?
+
+                    SwarmopsLogEntry.Create(creator,
+                                            new PayoutCreatedLogEntry(creator, advance.Person, organization,
+                                                                      organization.Currency, (double) amountCents/100.0,
+                                                                      "Cash Advance Paid Out"),
+                                            advance.Person, advance);
+
                 }
 
                 string referenceString = string.Empty;
@@ -241,6 +251,8 @@ namespace Swarmops.Logic.Financial
             {
                 // Expense claims, possibly followed up by cash advance paybacks
 
+                Person beneficiaryPerson = null;
+                Organization organization = null;
                 string bank = string.Empty;
                 string account = string.Empty;
                 List<int> claimIdentityList = new List<int>();
@@ -265,6 +277,8 @@ namespace Swarmops.Logic.Financial
                             organizationId = claim.OrganizationId;
                         }
 
+                        beneficiaryPerson = claim.Claimer;
+                        organization = claim.Organization;
                         amountCents += claim.AmountCents;
 
                         claim.Repaid = true;
@@ -291,6 +305,12 @@ namespace Swarmops.Logic.Financial
                     claimIdentityList.Sort();
                     referenceString = "Expense Claims " + Formatting.GenerateRangeString(claimIdentityList);
                 }
+
+                SwarmopsLogEntry.Create(creator,
+                                        new PayoutCreatedLogEntry(creator, beneficiaryPerson, organization,
+                                                                  organization.Currency, amountCents/100.0,
+                                                                  referenceString),
+                                                                  beneficiaryPerson);
 
                 payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organizationId, bank, account,
                                                                    referenceString, amountCents, DateTime.Today.AddDays(1),
