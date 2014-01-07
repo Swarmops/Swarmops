@@ -67,8 +67,8 @@ namespace Swarmops.Logic.Financial
             // Create notification
 
             OutboundComm.CreateNotificationForAttest(budget, claimer, (double)amountCents / 100.0, description, NotificationResource.ExpenseClaim_Created); // Slightly misplaced logic, but failsafer here
-            SwarmopsLog.CreateEntry(claimer,
-                                    new ExpenseClaimFiledLogEntry(claimer /*filing person*/, claimer /*beneficiary*/, (double) amountCents/100.0, budget, description));
+            SwarmopsLogEntry.Create(claimer,
+                                    new ExpenseClaimFiledLogEntry(claimer /*filing person*/, claimer /*beneficiary*/, (double) amountCents/100.0, budget, description), newClaim);
 
             return newClaim;
         }
