@@ -214,10 +214,11 @@
     <Compile Include="Support\DatabaseMaintenance.cs" />
     <Compile Include="Support\Imagery.cs" />
     <Compile Include="Support\IXmlPayload.cs" />
-    <Compile Include="Support\LogEntries\CashAdvanceAttestedLogEntry.cs" />
     <Compile Include="Support\LogEntries\CashAdvanceRequestedLogEntry.cs" />
+    <Compile Include="Support\LogEntries\ExpenseClaimFiledLogEntry.cs" />
     <Compile Include="Support\LogEntries\FinancialActionBase.cs" />
     <Compile Include="Support\LogEntries\LogEntryBase.cs" />
+    <Compile Include="Support\LogEntries\PayoutCreatedLogEntry.cs" />
     <Compile Include="Support\ObjectOptionalData.cs" />
     <Compile Include="Support\PluralBase.cs" />
     <Compile Include="Security\ActivityEnum.cs" />

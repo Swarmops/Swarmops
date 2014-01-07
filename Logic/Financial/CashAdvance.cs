@@ -7,6 +7,8 @@ using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 
@@ -46,6 +48,9 @@ namespace Swarmops.Logic.Financial
                                                                                           description));
 
             OutboundComm.CreateNotificationForAttest(budget, forPerson, (double) amountCents/100.0, description, NotificationResource.CashAdvance_Requested); // Slightly misplaced logic, but failsafer here
+            SwarmopsLogEntry.Create(forPerson,
+                                    new CashAdvanceRequestedLogEntry(createdByPerson, forPerson, (double) amountCents/100.0, budget, description),
+                                    newAdvance);
 
             return newAdvance;
         }

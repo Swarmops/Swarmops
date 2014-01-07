@@ -32,9 +32,21 @@ namespace Swarmops.Logic.Support
             return FromBasic(SwarmDb.GetDatabaseForWriting().GetSwarmopsLogEntry(swarmopsLogEntryId)); // Writing intentional
         }
 
-        public static SwarmopsLogEntry Create (Person person, IXmlPayload logEntry)
+        public static SwarmopsLogEntry Create (Person person, IXmlPayload logEntry, params object[] affectedObjects)
         {
-            return SwarmopsLog.CreateEntry(person, logEntry);
+            SwarmopsLogEntry entry = SwarmopsLog.CreateEntry(person, logEntry);
+
+            if (person != null)
+            {
+                entry.CreateAffectedObject(person);
+            }
+
+            foreach (IHasIdentity affectedObject in affectedObjects)
+            {
+                entry.CreateAffectedObject(affectedObject);
+            }
+
+            return entry;
         }
 
         public void CreateAffectedObject (IHasIdentity affectedObject)

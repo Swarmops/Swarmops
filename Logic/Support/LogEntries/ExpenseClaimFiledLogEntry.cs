@@ -8,14 +8,14 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Logic.Support.LogEntries
 {
     [Serializable]
-    public class CashAdvanceRequestedLogEntry: FinancialActionBase
+    public class ExpenseClaimFiledLogEntry: FinancialActionBase
     {
-        public CashAdvanceRequestedLogEntry()
+        public ExpenseClaimFiledLogEntry()
         {
             // empty ctor needed for serialize
         }
 
-        public CashAdvanceRequestedLogEntry(Person actingPerson, Person beneficiaryPerson, double amount, FinancialAccount budget, string reason)
+        public ExpenseClaimFiledLogEntry(Person filingPerson, Person beneficiaryPerson, double amount, FinancialAccount budget, string reason)
         {
             this.Amount = amount;
             this.Currency = budget.Organization.Currency.Code;
@@ -26,7 +26,7 @@ namespace Swarmops.Logic.Support.LogEntries
             this.FinancialAccountName = budget.Name; // redundancy in case of future name changes
             this.OwnerPersonId = budget.OwnerPersonId;
             this.OwnerPersonName = budget.Owner.Name;
-            this.ActingPersonId = actingPerson.Identity; // do not save name for data retention reasons
+            this.ActingPersonId = filingPerson.Identity; // do not save name for data retention reasons
             this.BeneficiaryPersonId = beneficiaryPerson.Identity;
         }
     }
