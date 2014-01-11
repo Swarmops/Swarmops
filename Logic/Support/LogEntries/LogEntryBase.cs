@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace Swarmops.Logic.Support.Log
+namespace Swarmops.Logic.Support.LogEntries
 {
     [Serializable]
     public class LogEntryBase<T>: IXmlPayload
     {
-        public string ToXml()
+        public virtual string ToXml()
         {
-            var serializer = new XmlSerializer(typeof(T));
+            var serializer = new XmlSerializer(this.GetType());
 
             var stream = new MemoryStream();
             serializer.Serialize(stream, this);
@@ -21,7 +19,7 @@ namespace Swarmops.Logic.Support.Log
             return Encoding.UTF8.GetString(xmlBytes);
         }
 
-        public static T FromXml (string xml)
+        public static T FromXml (string xml)  // 'T' might not work here, like it didn't in ToXml()
         {
             // Compensate for stupid Mono encoding bugs
 

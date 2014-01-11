@@ -18,12 +18,17 @@ namespace Swarmops.Logic.Support
             
         }
 
-        public static Document FromIdentity (int documentId)
+        public static Document FromIdentity(int documentId)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetDocument(documentId));
         }
 
-        public static Document FromBasic (BasicDocument basicDocument)
+        public static Document FromIdentityAggressive(int documentId)
+        {
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetDocument(documentId)); // "For writing" is intentional - bypasses a race condition in replication
+        }
+
+        public static Document FromBasic(BasicDocument basicDocument)
         {
             return new Document(basicDocument);
         }
@@ -34,7 +39,7 @@ namespace Swarmops.Logic.Support
             int newDocumentId = SwarmDb.GetDatabaseForWriting().
                 CreateDocument(serverFileName, clientFileName, fileSize, description, GetDocumentTypeForObject(identifiableObject), identifiableObject == null? 0: identifiableObject.Identity, uploader.Identity);
 
-            return FromIdentity(newDocumentId);
+            return FromIdentityAggressive(newDocumentId);
         }
 
         public static DocumentType GetDocumentTypeForObject (IHasIdentity foreignObject)

@@ -56,7 +56,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
                     "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
                     "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
                     "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
-                 GetGlobalResourceObject("Global", item.IdentityDisplay).ToString(), item.Beneficiary, TryLocalize(item.Description), item.BudgetName,
+                 JsonSanitize(GetGlobalResourceObject("Global", item.IdentityDisplay).ToString()), JsonSanitize(item.Beneficiary), JsonSanitize(TryLocalize(item.Description)), JsonSanitize(item.BudgetName),
                 item.AmountRequestedCents/100.0, item.Identity);
             result.Append("},");
         }

@@ -15,7 +15,7 @@ namespace Swarmops.Database
 
         private const string swarmopsLogFieldSequence =
             " SwarmopsLogEntryId,DateTime,PersonId,EntryTypeId,EntryXml " + // 0-4
-            "FROM SwarmopsLog";
+            "FROM SwarmopsLog ";
 
         private static BasicSwarmopsLogEntry ReadSwarmopsLogEntryFromDataReader(IDataRecord reader)
         {
@@ -104,6 +104,7 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "personId", personId);
                 AddParameterWithName(command, "entryType", entryType);
                 AddParameterWithName(command, "entryXml", entryXml);
+                AddParameterWithName(command, "dateTime", DateTime.UtcNow);
 
                 return Convert.ToInt32(command.ExecuteScalar());
             }

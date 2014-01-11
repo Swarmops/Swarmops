@@ -173,8 +173,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     account.Identity,
                     account.CreatedDateTime.ToShortDateString(),
                     (account.ExpectedClosed.Year <= 1950 ? Resources.Global.Global_NA : account.ExpectedClosed.ToShortDateString()),
-                    account.Recipient,
-                    account.Description,
+                    JsonSanitize(account.Recipient),
+                    JsonSanitize(account.Description),
                     account.AmountCents / 100.0);
                 result.Append("},");
                 centsTotal += account.AmountCents;

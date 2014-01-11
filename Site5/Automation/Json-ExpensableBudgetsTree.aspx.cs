@@ -78,7 +78,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             foreach (FinancialAccount account in treeMap[node])
             {
                 string element = string.Format("\"id\":{0},\"text\":\"{1}\"", account.Identity,
-                                               account.Name.Replace("\"", "\\\""));
+                                               JsonSanitize(account.Name));
 
                 if (treeMap.ContainsKey(account.Identity))
                 {
