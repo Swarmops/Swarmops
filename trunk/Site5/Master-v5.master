@@ -33,7 +33,7 @@
 
     <!-- initialize all jQuery stuff -->
     <script language="javascript" type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function () {/*
             $('#LinkChangeOrganizations').qtip(
 	        {
 	            id: 'TooltipModalOrganizationChanger', // Since we're only creating one modal, give it an ID so we can style it
@@ -64,7 +64,7 @@
 	                classes: 'qtip-light qtip-rounded qtip-modal',
 	                tip: false
 	            }
-	        });
+	        });*/
 
             $("a[rel*=leanModal]").leanModal();
 
@@ -111,7 +111,7 @@
 	<div class="center980px">
 	    <div class="currentuserinfo">
 	        <div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div>
-	        <div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><span class="hasTooltip" rel="Logged into <%=this.CurrentOrganization.Name %>" title="Click here to switch to another organization."><a href="#" id="LinkChangeOrganizations"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a></span> |&nbsp;</div>
+	        <div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><span class="hasTooltip" rel="Logged into <%=this.CurrentOrganization.Name %>" title="Click here to switch to another organization."><a href="/Pages/v5/Security/ChangeOrganizations.aspx" id="LinkChangeOrganizations"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a></span> |&nbsp;</div>
             <div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> | </div>
             <div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div>
             <asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /> <asp:LinkButton ID="LinkTranslate" Visible="false" Text="Translate Into" OnClick="LinkTranslate_Click" runat="server" />

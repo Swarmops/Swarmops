@@ -69,8 +69,8 @@ public partial class Pages_v5_Finance_Json_ValidatableReceipts : DataV5Base
                     "<img id=\\\"IconApprovedE{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
                     "<img id=\\\"IconDenialE{5}\\\" class=\\\"LocalIconDenial\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
                     "<img id=\\\"IconDeniedE{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"E{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
-                 "olditem", claim.ClaimerCanonical, claim.Description, claim.Budget.Name,
-                claim.AmountCents/100.0, claim.Identity, extraTags.ToString());
+                 "olditem", JsonSanitize(claim.ClaimerCanonical), JsonSanitize(claim.Description), JsonSanitize(claim.Budget.Name),
+                claim.AmountCents/100.0, claim.Identity, JsonSanitize(extraTags.ToString()));
             result.Append("},");
         }
 

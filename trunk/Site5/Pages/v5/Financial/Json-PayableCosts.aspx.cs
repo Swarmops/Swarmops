@@ -62,10 +62,10 @@ namespace Swarmops.Frontend.Pages.Financial
                     "<img id=\\\"IconApproved{7}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />\"",
                     payout.ProtoIdentity,
                     (payout.ExpectedTransactionDate <= today? Resources.Global.Global_ASAP: payout.ExpectedTransactionDate.ToShortDateString()),
-                    TryLocalize(payout.Recipient),
-                    payout.Bank,
-                    payout.Account,
-                    TryLocalize(payout.Reference),
+                    JsonSanitize(TryLocalize(payout.Recipient)),
+                    JsonSanitize(payout.Bank),
+                    JsonSanitize(payout.Account),
+                    JsonSanitize(TryLocalize(payout.Reference)),
                     payout.AmountCents/100.0,
                     payout.ProtoIdentity.Replace("|", ""));
                 result.Append("},");

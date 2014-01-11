@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Swarmops.Logic.Support.Log;
+
 
 namespace Swarmops.Logic.Support.LogEntries
 {

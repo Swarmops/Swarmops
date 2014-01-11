@@ -25,7 +25,7 @@ namespace Swarmops.Logic.Support.LogEntries
             this.FinancialAccountId = budget.Identity;
             this.FinancialAccountName = budget.Name; // redundancy in case of future name changes
             this.OwnerPersonId = budget.OwnerPersonId;
-            this.OwnerPersonName = budget.Owner.Name;
+            this.OwnerPersonName = budget.OwnerPersonId != 0 ? budget.Owner.Name : string.Empty;
             this.ActingPersonId = filingPerson.Identity; // do not save name for data retention reasons
             this.BeneficiaryPersonId = beneficiaryPerson.Identity;
         }

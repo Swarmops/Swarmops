@@ -88,7 +88,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             foreach (FinancialTransactionTagType tagType in treeMap[node])
             {
                 string element = string.Format("\"id\":{0},\"text\":\"{1}\"", tagType.Identity,
-                                               tagType.Name.Replace("\"", "\\\""));
+                                               JsonSanitize(tagType.Name));
 
                 if (treeMap.ContainsKey(tagType.Identity))
                 {

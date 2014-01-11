@@ -11,36 +11,13 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using System.Globalization;
 
-public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
+public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Current authentication
+        // Get auth data
 
-        string identity = HttpContext.Current.User.Identity.Name;
-        string[] identityTokens = identity.Split(',');
-
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
-
-        int currentUserId = Convert.ToInt32(userIdentityString);
-        int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-        Person currentUser = Person.FromIdentity(currentUserId);
-        Authority authority = currentUser.GetAuthority();
-        Organization currentOrganization = Organization.FromIdentity(currentOrganizationId);
-
-        // Get culture
-
-        string cultureString = "en-US";
-        HttpCookie cookie = Request.Cookies["PreferredCulture"];
-
-        if (cookie != null)
-        {
-            cultureString = cookie.Value;
-        }
-
-        _renderCulture = new CultureInfo(cultureString);
+        _authenticationData = GetAuthenticationDataAndCulture();
 
         // Get current year
 
@@ -53,7 +30,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
             _year = Int32.Parse(yearParameter); // will throw if non-numeric - don't matter for app
         }
 
-        YearlyReport report = YearlyReport.Create(currentOrganization, _year, FinancialAccountType.Result);
+        YearlyReport report = YearlyReport.Create(CurrentOrganization, _year, FinancialAccountType.Result);
         LocalizeRoot(report.ReportLines);
 
         Response.ContentType = "application/json";
@@ -62,6 +39,8 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
 
         Response.End();
     }
+
+    private AuthenticationData _authenticationData;
 
 
     private void LocalizeRoot(List<YearlyReportLine> lines)
@@ -110,7 +89,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : System.Web.UI.Page
         foreach (YearlyReportLine line in reportLines)
         {
             string element = string.Format("\"id\":{0},\"name\":\"{1}\"", line.AccountId,
-                                            line.AccountName.Replace("\"", "'"));
+                                            JsonSanitize(line.AccountName));
 
             if (line.Children.Count > 0)
             {

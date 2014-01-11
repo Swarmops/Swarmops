@@ -54,7 +54,7 @@ namespace Swarmops.Logic.Support
             string className = affectedObject.GetType().ToString();
             int dotIndex = className.LastIndexOf('.');
 
-            className = className.Substring(dotIndex); // assumes there's always at least one dot in a class name
+            className = className.Substring(dotIndex + 1); // assumes there's always at least one dot in a class name
             
 
             SwarmDb.GetDatabaseForWriting().CreateSwarmopsLogEntryAffectedObject(this.Identity, className, affectedObject.Identity);

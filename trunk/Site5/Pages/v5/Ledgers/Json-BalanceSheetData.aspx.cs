@@ -76,7 +76,7 @@ public partial class Pages_v5_Ledgers_Json_BalanceSheetData : DataV5Base
         foreach (YearlyReportLine line in reportLines)
         {
             string element = string.Format("\"id\":{0},\"name\":\"{1}\"", line.AccountId,
-                                            line.AccountName.Replace("\"", "'"));
+                                            JsonSanitize(line.AccountName));
 
             if (line.Children.Count > 0)
             {
