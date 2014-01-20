@@ -266,7 +266,7 @@ namespace Swarmops.Logic.Financial
                     Person employee = payrollItem.Person;
 
                     BasicPayout basicPayout = new BasicPayout(0, organizationId, employee.BankName,
-                                                              employee.BankAccount, "[Loc]Financial_SalarySpecification|[Date]" + salary.PayoutDate.ToString(CultureInfo.InvariantCulture), 
+                                                              employee.BankClearing+" / "+employee.BankAccount, "[Loc]Financial_SalarySpecification|[Date]" + salary.PayoutDate.ToString(CultureInfo.InvariantCulture), 
                                                               salary.NetSalaryCents, salary.PayoutDate, false, DateTime.Now, 0);
                     Payout payout = Payout.FromBasic(basicPayout);
 
