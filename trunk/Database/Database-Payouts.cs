@@ -112,7 +112,12 @@ namespace Swarmops.Database
         }
 
 
-        public int GetPayoutIdFromDependency(IHasIdentity foreignObject)
+        public int GetPayoutIdFromDependency(IHasIdentity foreignObject, FinancialDependencyType typeName)
+        {
+            return GetPayoutIdFromDependency(foreignObject.Identity, typeName.ToString());
+        }
+
+        private int GetPayoutIdFromDependency(int foreignObjectId, string financialDependencyTypeName)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -120,8 +125,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + payoutDependencyFieldSequence +
-                    "WHERE PayoutDependencies.ForeignId=" + foreignObject.Identity.ToString(CultureInfo.InvariantCulture) + 
-                    " AND FinancialDependencyTypes.Name='" + GetForeignTypeString(foreignObject) + "'" + 
+                    "WHERE PayoutDependencies.ForeignId=" + foreignObjectId.ToString(CultureInfo.InvariantCulture) +
+                    " AND FinancialDependencyTypes.Name='" + financialDependencyTypeName + "'" + // enum - no sanitation necessary
                     " AND " + payoutDependencyTableJoin,
                                  connection);
 
@@ -137,6 +142,12 @@ namespace Swarmops.Database
                     }
                 }
             }
+        }
+
+
+        public int GetPayoutIdFromDependency(IHasIdentity foreignObject)
+        {
+            return GetPayoutIdFromDependency(foreignObject.Identity, GetForeignTypeString(foreignObject));
         }
 
 
