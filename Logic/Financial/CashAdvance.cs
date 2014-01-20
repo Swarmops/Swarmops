@@ -121,5 +121,48 @@ namespace Swarmops.Logic.Financial
                 base.PaidOut = value;
             }
         }
+
+
+        public Payout PayoutOut
+        {
+            get
+            {
+                if (!this.PaidOut)
+                {
+                    return null; // or throw?
+                }
+
+                int payoutId =
+                    SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(this, FinancialDependencyType.CashAdvance);
+
+                if (payoutId == 0)
+                {
+                    return null; // or throw? When expense claim system was being phased in, payouts did not exist
+                }
+
+                return Payout.FromIdentity(payoutId);
+            }
+        }
+
+        public Payout PayoutBack
+        {
+            get
+            {
+                if (!this.PaidOut)
+                {
+                    return null; // or throw?
+                }
+
+                int payoutId =
+                    SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(this, FinancialDependencyType.CashAdvancePayback);
+
+                if (payoutId == 0)
+                {
+                    return null; // or throw? When expense claim system was being phased in, payouts did not exist
+                }
+
+                return Payout.FromIdentity(payoutId);
+            }
+        }
     }
 }

@@ -18,11 +18,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Financials, AccessType.Read);
             _authenticationData = GetAuthenticationDataAndCulture();
 
-            OutstandingAccountType accountType = OutstandingAccountType.Expenses;
+            OutstandingAccountType accountType = OutstandingAccountType.ExpenseClaims;
             DateTime targetDateTime = DateTime.Today.AddDays(1);
             bool renderPresentTime = true;
             FinancialAccount balanceAccount = null;
             Int64 ledgerExpectedCents;
+            OutstandingAccounts outstandingAccounts = null;
+            bool reverseLedgerSign = false;
 
             if (Request.QueryString ["Year"] != null)
             {
@@ -30,16 +32,58 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 renderPresentTime = false;
             }
 
-            // Assume claims
-            balanceAccount = _authenticationData.CurrentOrganization.FinancialAccounts.DebtsExpenseClaims;
+            if (Request.QueryString ["AccountType"] != null)
+            {
+                accountType = (OutstandingAccountType)Enum.Parse(typeof(OutstandingAccountType), Request.QueryString["AccountType"]); // Will throw on invalid input. Sucks to be hacker-wannabe
+            }
 
+
+            switch (accountType)
+            {
+                case OutstandingAccountType.ExpenseClaims:
+                    balanceAccount = _authenticationData.CurrentOrganization.FinancialAccounts.DebtsExpenseClaims;
+                    outstandingAccounts = GetOutstandingExpenseClaims(renderPresentTime, targetDateTime);
+                    reverseLedgerSign = true; // Expenses is debt and negative in ledger
+                    break;
+
+                case OutstandingAccountType.CashAdvances:
+                    outstandingAccounts = GetOutstandingCashAdvances(renderPresentTime, targetDateTime);
+                    balanceAccount =
+                        _authenticationData.CurrentOrganization.FinancialAccounts.AssetsOutstandingCashAdvances;
+                    break;
+                default:
+                    throw new NotImplementedException("Unimplemented Outstanding Account Type");
+            }
+
+            if (renderPresentTime)
+            {
+                ledgerExpectedCents = balanceAccount.GetDeltaCents(DateTime.MinValue, DateTime.MaxValue); // get ALL transactions
+            }
+            else
+            {
+                ledgerExpectedCents = balanceAccount.GetDeltaCents(DateTime.MinValue, targetDateTime);
+            }
+
+            if (reverseLedgerSign)
+            {
+                ledgerExpectedCents = -ledgerExpectedCents;
+            }
+
+
+            Response.ContentType = "application/json";
+            Response.Output.WriteLine (FormatJson(outstandingAccounts, ledgerExpectedCents));
+            Response.End();
+        }
+
+
+        private OutstandingAccounts GetOutstandingExpenseClaims(bool renderPresentTime, DateTime targetDateTime)
+        {
             OutstandingAccounts outstandingAccounts = new OutstandingAccounts();
 
             if (renderPresentTime)
             {
                 ExpenseClaims claims = ExpenseClaims.ForOrganization(_authenticationData.CurrentOrganization);
                 Payouts payouts = Payouts.ForOrganization(_authenticationData.CurrentOrganization);
-                ledgerExpectedCents = balanceAccount.GetDeltaCents(DateTime.MinValue, DateTime.MaxValue); // get ALL transactions
 
                 foreach (ExpenseClaim claim in claims)
                 {
@@ -49,7 +93,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 {
                     foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
                     {
-                        outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim, payout.ExpectedTransactionDate));
+                        outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim,
+                                                                                    payout.ExpectedTransactionDate));
                     }
                 }
             }
@@ -68,7 +113,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 // Load all (ALL) expense claims for org
 
-                ExpenseClaims allClaims = ExpenseClaims.ForOrganization(_authenticationData.CurrentOrganization, true); // includes closed
+                ExpenseClaims allClaims = ExpenseClaims.ForOrganization(_authenticationData.CurrentOrganization, true);
+                // includes closed
 
                 // For each claim, determine whether it was open or not at targetDateTime
 
@@ -81,7 +127,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         continue;
                     }
 
-                    // At this point, we have the full set of expense claims opened before targetDateTime. We want the
+                    // At this point, we are iterating over full set of expense claims opened before targetDateTime. We want the
                     // set of claims that were still open - as determined by the ledger account Expense Claims - on targetDateTime.
                     //
                     // For the expense claims that are still open, this is trivially true.
@@ -104,7 +150,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         if (payout == null)
                         {
-                            continue; // some legacy from when Swarmops was primitive - earliest claims don't have payouts
+                            // TODO: Find outbound invoice item that depends on this expense claim
+                            continue;
+                            // some legacy from when Swarmops was primitive - earliest claims don't have payouts
                         }
 
                         if (payout.Open)
@@ -119,7 +167,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                             if (transaction == null)
                             {
-                                throw new InvalidOperationException("This should not happen (transaction not found on closed payout)");
+                                throw new InvalidOperationException(
+                                    "This should not happen (transaction not found on closed payout)");
                             }
 
                             if (transaction.DateTime > targetDateTime)
@@ -129,6 +178,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                 dateTimeClosed = transaction.DateTime;
                             }
                         }
+
+                        // TODO: An expense claim can also be closed through an outbound invoice, in case there was a larger cash
+                        // advance that wasn't fully covered, and where the two are added together. Check for this condition as well.
+                        //
+                        // OutboundInvoiceItem should have a dependency on the expense claim if this is the case.
                     }
 
                     if (includeThisClaim)
@@ -136,23 +190,129 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim, dateTimeClosed));
                     }
                 }
-
-
-
-                // Finally, get the ledger balance on the targeted DateTime.
-
-                ledgerExpectedCents = balanceAccount.GetDeltaCents(DateTime.MinValue, targetDateTime);
             }
 
-
-
-
-            Response.ContentType = "application/json";
-            Response.Output.WriteLine (FormatJson(outstandingAccounts, ledgerExpectedCents));
-            Response.End();
+            return outstandingAccounts;
         }
 
-        private string FormatJson (OutstandingAccounts outstandingAccounts, Int64 balanceExpectedCents)
+
+        private OutstandingAccounts GetOutstandingCashAdvances(bool renderPresentTime, DateTime targetDateTime)
+        {
+            OutstandingAccounts outstandingAccounts = new OutstandingAccounts();
+
+            // This is a very expensive op. We need to load ALL the cash advances, and determine the opening date from its associated
+            // payout. Then, we need to determine when it was paid pack through another associated payout (or invoice payment) which 
+            // I don't know how to find at the time of writing this comment, and if the target date is in between those two, then the
+            // cash advance was outstanding on the target date (or is outstanding now)
+
+            // A possible optimization could be to load the payouts into a hash table initially instead of looking them up
+            // with two dbroundtrips per expense claim. It should be more efficient to have three dbroundtrips to load expenses,
+            // payouts, and the relevant transactions, then stuff it all into hash tables keyed by identity and process it
+            // in-memory.
+
+            // A future optimization involves adding "ClosedDateTime" to some tables.
+
+            // Load all (ALL) cash advances for org
+
+            CashAdvances allCashAdvances = CashAdvances.ForOrganization(_authenticationData.CurrentOrganization, true);
+            // includes closed
+
+            // For each advance, determine whether it was open or not at targetDateTime
+
+            foreach (CashAdvance cashAdvance in allCashAdvances)
+            {
+                // if it wasn't opened until after target datetime, discard (optimization)
+
+                if (cashAdvance.CreatedDateTime > targetDateTime)
+                {
+                    continue;
+                }
+
+                // At this point, we are iterating over full set of cash advances opened before targetDateTime, but not necessarily
+                // paid out before targetDateTime. We want the set of advances that had been paid out, and had not been paid back,
+                // as determined by the ledger account Cash Advances - on targetDateTime.
+
+                bool includeThisAdvance = false;
+                DateTime dateTimePaidBack = DateTime.MinValue;
+                DateTime dateTimePaidOut = DateTime.MaxValue;
+
+
+                if (!cashAdvance.PaidOut)
+                {
+                    // This cash advance hasn't entered the ledger yet
+
+                    continue;
+                }
+
+
+                Payout payoutOut = cashAdvance.PayoutOut;
+                Payout payoutBack = cashAdvance.PayoutBack;
+
+                if (payoutOut == null)
+                {
+                    continue;
+                    // This cash advance has not been paid out yet
+                }
+
+                try
+                {
+                    dateTimePaidOut = payoutOut.FinancialTransaction.DateTime;
+                }
+                catch (ArgumentException)
+                {
+                    // It's possible the payout exists, but hasn't found its transaction yet. If so, this will throw
+                    // an ArgumentException here. In either case, it's not in the ledger, so don't include it.
+
+                    continue;
+                }
+
+                if (dateTimePaidOut > targetDateTime)
+                {
+                    // This cash advance falls outside the scope of our window, so ignore
+                    continue;
+                }
+
+                if (payoutBack != null)
+                {
+                    try
+                    {
+                        dateTimePaidBack = payoutBack.FinancialTransaction.DateTime;
+                    }
+                    catch (ArgumentException)
+                    {
+                        // as above
+                        continue;
+                    }
+
+                    if (dateTimePaidBack > targetDateTime)
+                    {
+                        includeThisAdvance = true;
+                    }
+                }
+                else
+                {
+                    // As there is no payback, this advance is paid out and still open.
+
+                    includeThisAdvance = true;
+
+                    // TODO: If there is no payout where the cash advance is deducted, it may be
+                    // invoiced to close it.
+
+                    // TODO: Find OutboundInvoiceItem that depends on this CashAdvance. Look at the invoice date. That's our PaidBack datetime.
+                }
+
+
+                if (includeThisAdvance)
+                {
+                    outstandingAccounts.Add(OutstandingAccount.FromCashAdvance(cashAdvance, dateTimePaidOut));
+                }
+            }
+
+            return outstandingAccounts;
+        }
+
+
+        private string FormatJson(OutstandingAccounts outstandingAccounts, Int64 balanceExpectedCents)
         {
             StringBuilder result = new StringBuilder(16384);
 
@@ -195,12 +355,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.Append("},{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
-                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterLedgerBalance, -balanceExpectedCents / 100.0);  // Expenses is a debt account, so reverse sign
+                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterLedgerBalance, balanceExpectedCents / 100.0);  // Expenses is a debt account, so reverse sign
 
             result.Append("},{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
-                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterDifference, (centsTotal + balanceExpectedCents) / 100.0);
+                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterDifference, (centsTotal - balanceExpectedCents) / 100.0);
 
 
             result.Append("}]}"); // on separate line to suppress warning
@@ -213,10 +373,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private enum OutstandingAccountType
         {
             Unknown = 0,
-            Expenses,
+            ExpenseClaims,
+            CashAdvances,
             InboundInvoices,
-            OutboundInvoices,
-            CashAdvances
+            OutboundInvoices
         }
 
 
@@ -239,6 +399,21 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     Recipient = claim.ClaimerCanonical,
                     CreatedDateTime = claim.CreatedDateTime,
                     ExpectedClosed = dateTimeExpectedClosed
+                };
+
+                return result;
+            }
+
+            public static OutstandingAccount FromCashAdvance (CashAdvance advance, DateTime dateTimePaidOut)
+            {
+                OutstandingAccount result = new OutstandingAccount
+                {
+                    AmountCents = advance.AmountCents,
+                    Description = advance.Description,
+                    Identity = advance.Identity,
+                    Recipient = advance.Person.Canonical,
+                    CreatedDateTime = dateTimePaidOut,
+                    ExpectedClosed = dateTimePaidOut.AddDays(90)
                 };
 
                 return result;

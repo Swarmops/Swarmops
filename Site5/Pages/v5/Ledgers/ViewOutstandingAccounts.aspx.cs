@@ -37,7 +37,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         year--;
                     }
 
-                    this.DropAccounts.Items.Add(new ListItem(Resources.Global.Financial_ExpenseClaimsLong, "Expenses"));
+                    this.DropAccounts.Items.Add(new ListItem(Resources.Global.Financial_ExpenseClaimsLong, "ExpenseClaims"));
+                    this.DropAccounts.Items.Add(new ListItem(Resources.Global.Financial_CashAdvancesLong, "CashAdvances"));
 
                     Localize();
                 }

@@ -25,23 +25,33 @@
 	        });
 
 	        $('#<%=DropYears.ClientID %>').change(function () {
-	            var selectedYear = $('#<%=DropYears.ClientID %>').val();
+	            reloadData();
+	        });
 
-                if (selectedYear == 'Now') {
-    	            $('#gridOutstandingAccounts').datagrid({ url: 'Json-OutstandingAccounts.aspx' });
-                } else {
-    	            $('#gridOutstandingAccounts').datagrid({ url: 'Json-OutstandingAccounts.aspx?Year=' + selectedYear });
-                }
-
-        	    $('#imageLoadIndicator').show();
-	            $('div.datagrid').css('opacity', 0.4);
-
-	            $('#gridOutstandingAccounts').datagrid('reload');
+	        $('#<%=DropAccounts.ClientID %>').change(function () {
+	            reloadData();
 	        });
 
 
 	        $('div.datagrid').css('opacity', 0.4);
 	    });
+	    
+        function reloadData()
+        {
+	        var selectedYear = $('#<%=DropYears.ClientID %>').val();
+            var accountType = $('#<%=DropAccounts.ClientID %>').val();
+
+            if (selectedYear == 'Now') {
+    	        $('#gridOutstandingAccounts').datagrid({ url: 'Json-OutstandingAccounts.aspx?AccountType=' + accountType });
+            } else {
+    	        $('#gridOutstandingAccounts').datagrid({ url: 'Json-OutstandingAccounts.aspx?Year=' + selectedYear + "&AccountType=" + accountType});
+            }
+
+        	$('#imageLoadIndicator').show();
+	        $('div.datagrid').css('opacity', 0.4);
+
+	        $('#gridOutstandingAccounts').datagrid('reload');
+        }
 
 	    var currentYear = <%=DateTime.Today.Year %>;
 
