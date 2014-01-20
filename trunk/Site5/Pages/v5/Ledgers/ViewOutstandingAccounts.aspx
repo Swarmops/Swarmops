@@ -20,6 +20,7 @@
 	                {
 	                    //$('#gridOutstandingAccounts').dataGrid('mergeCells', {index: rowCount, field:'id', colspan: 5});
 	                    // Footer cells could not be merged in datagrid :(
+	                    
 	                }
 	            }
 	        });
