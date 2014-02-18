@@ -95,7 +95,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         // TODO: add write capability
 
                         ownerString =
-                            "<span style=\\\"padding-left:20px;background-repeat:no-repeat;background-image:url('/Images/Icons/iconshock-warning-16x12px.png')\\\">" +
+                            "<span style=\\\"padding-left:20px;background-repeat:no-repeat;background-position:center left;background-image:url('/Images/Icons/iconshock-warning-16x12px.png')\\\">" +
                             JsonSanitize(Server.HtmlEncode(Resources.Global.Global_NoOwner)) + "</span>";
                     }
                 }
