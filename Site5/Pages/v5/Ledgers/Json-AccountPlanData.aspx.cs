@@ -139,7 +139,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (account.AccountType == FinancialAccountType.Cost || account.AccountType == FinancialAccountType.Income)
                 {
-                    _singleBalanceLookup[account.Identity] = account.GetDeltaCents(new DateTime(_year, 1, 1),
+                    _singleBalanceLookup[account.Identity] = -account.GetDeltaCents(new DateTime(_year, 1, 1),
                                                                                 new DateTime(_year + 1, 1, 1));
                     _singleBudgetLookup[account.Identity] = account.GetBudgetCents(_year);
                 }
