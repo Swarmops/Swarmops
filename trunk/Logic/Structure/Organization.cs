@@ -233,8 +233,12 @@ namespace Swarmops.Logic.Structure
                 FinancialAccount.Create(this.Identity, "Outbound Invoices", FinancialAccountType.Asset, 0);
             FinancialAccounts[OrganizationFinancialAccountType.AssetsOutstandingCashAdvances] =
                 FinancialAccount.Create(this.Identity, "Cash Advances", FinancialAccountType.Asset, 0);
-            FinancialAccounts[OrganizationFinancialAccountType.AssetsPaypal] =
-                FinancialAccount.Create(this.Identity, "Paypal Account", FinancialAccountType.Asset, 0);
+            //FinancialAccounts[OrganizationFinancialAccountType.AssetsPaypal] =
+            //    FinancialAccount.Create(this.Identity, "Paypal Account", FinancialAccountType.Asset, 0);
+            //FinancialAccounts[OrganizationFinancialAccountType.AssetsBitcoinHot] =
+            //    FinancialAccount.Create(this.Identity, "Bitcoin Holdings (Hot)", FinancialAccountType.Asset, 0);
+            //FinancialAccounts[OrganizationFinancialAccountType.AssetsBitcoinCold] =
+            //    FinancialAccount.Create(this.Identity, "Bitcoin Cold Storage", FinancialAccountType.Asset, 0);
             FinancialAccounts[OrganizationFinancialAccountType.AssetsVat] =
                 FinancialAccount.Create(this.Identity, "Inbound Value Added Tax", FinancialAccountType.Asset, 0);
             FinancialAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] =

@@ -24,6 +24,14 @@ namespace Swarmops.Basic.Enums
         /// </summary>
         AssetsPaypal,
         /// <summary>
+        /// Assets held in bitcoin (if any), immediately accessible.
+        /// </summary>
+        AssetsBitcoinHot,
+        /// <summary>
+        /// Assets held in bitcoin cold storage (if any).
+        /// </summary>
+        AssetsBitcoinCold,
+        /// <summary>
         /// Any outstanding cash advances that have been paid out and not cleared against receipts or paid back
         /// </summary>
         AssetsOutstandingCashAdvances,
@@ -80,6 +88,10 @@ namespace Swarmops.Basic.Enums
         /// </summary>
         CostsBankFees,
         /// <summary>
+        /// Gains from currency fluctuation (typically bitcoin or altcoins).
+        /// </summary>
+        IncomeCurrencyFluctuations,
+        /// <summary>
         /// IT and such - default SMS charges, etc, here
         /// </summary>
         CostsInfrastructure,
@@ -91,6 +103,10 @@ namespace Swarmops.Basic.Enums
         /// No description
         /// </summary>
         CostsAllocatedFunds,
+        /// <summary>
+        /// Losses from currency fluctuation (typically bitcoin or altcoins).
+        /// </summary>
+        CostsCurrencyFluctuations,
         /// <summary>
         /// When closing books, this is the yearly result (balanced against DebtsEquity)
         /// </summary>

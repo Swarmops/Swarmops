@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -30,7 +32,11 @@ namespace Swarmops.Frontend.Pages.Security
 
         protected void ButtonSwitch_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            int newOrganizationId = Int32.Parse(this.Request.Form["DropOrganizations"]);
+
+            // TODO: Re-authorize user's ability to log onto this org
+
+            FormsAuthentication.RedirectFromLoginPage(this.CurrentUser.Identity.ToString(CultureInfo.InvariantCulture) + "," + newOrganizationId.ToString(CultureInfo.InvariantCulture), true);
         }
     }
 }

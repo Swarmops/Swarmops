@@ -103,7 +103,7 @@ namespace Swarmops.Logic.Financial
 
         public static FinancialAccounts GetTree(FinancialAccount rootAccount)
         {
-            Dictionary<int, FinancialAccounts> nodes = GetHashedAccounts();
+            Dictionary<int, FinancialAccounts> nodes = GetHashedAccounts(rootAccount.Organization);
 
             return GetTree(nodes, rootAccount.Identity, 0);
         }
@@ -161,7 +161,7 @@ namespace Swarmops.Logic.Financial
             return result;
         }
 
-        protected static Dictionary<int, FinancialAccounts> GetHashedAccounts()
+        public static Dictionary<int, FinancialAccounts> GetHashedAccounts(Organization organization)
         {
             // This generates a Dictionary <int,List<FinancialAccount>>.
             // 
@@ -173,7 +173,7 @@ namespace Swarmops.Logic.Financial
 
             Dictionary<int, FinancialAccounts> result = new Dictionary<int, FinancialAccounts>();
 
-            FinancialAccounts allAccounts = FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountsForOrganization(Organization.PPSEid)); // HACK HACK HACK
+            FinancialAccounts allAccounts = FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountsForOrganization(organization.Identity));
 
             // Add the nodes.
 
@@ -187,12 +187,11 @@ namespace Swarmops.Logic.Financial
 
             // Add the children.
 
+            result[0] = new FinancialAccounts(); // for the root-level accounts
+
             foreach (FinancialAccount account in allAccounts)
             {
-                if (account.ParentIdentity != 0)
-                {
-                    result[account.ParentIdentity].Add(account);
-                }
+                result[account.ParentIdentity].Add(account);
             }
 
             return result;
