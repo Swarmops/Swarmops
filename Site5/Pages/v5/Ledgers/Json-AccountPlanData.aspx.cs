@@ -88,7 +88,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 childStrings.Add('{' + String.Format("\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\"", 
                     account.Identity, 
                     Server.HtmlEncode(JsonSanitize(account.Name)), 
-                    account.OwnerPersonId != 0? "<span style=\\\"padding-left:18px;background-repeat:no-repeat;background-image:url('" + account.Owner.GetSecureAvatarLink(16) + "')\\\">" + JsonSanitize(Server.HtmlEncode(account.Owner.Canonical)) + "</span>" : JsonSanitize(Resources.Global.Global_NoOwner),
+                    account.OwnerPersonId != 0? "<span style=\\\"padding-left:20px;background-repeat:no-repeat;background-image:url('" + account.Owner.GetSecureAvatarLink(16) + "')\\\">" + JsonSanitize(Server.HtmlEncode(account.Owner.Canonical)) + "</span>" : JsonSanitize(Resources.Global.Global_NoOwner),
                     _hashedAccounts[account.Identity].Count > 1 ? JsonDualString(account.Identity, _treeBalanceLookup[account.Identity], _singleBalanceLookup[account.Identity]) : (_singleBalanceLookup [account.Identity] / 100.0).ToString("N0"),
                     account.AccountType == FinancialAccountType.Income || account.AccountType == FinancialAccountType.Cost?
                         _hashedAccounts[account.Identity].Count > 1 ? (JsonDualString(account.Identity, _treeBudgetLookup[account.Identity], _singleBudgetLookup[account.Identity])) : 
