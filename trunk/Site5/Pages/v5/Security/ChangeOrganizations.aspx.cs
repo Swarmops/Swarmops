@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.Security
 {
@@ -17,6 +18,8 @@ namespace Swarmops.Frontend.Pages.Security
             {
                 Localize();
             }
+
+            this.PageAccessRequired = new Access(AccessAspect.Bookkeeping, AccessType.Write);  // bogus, but will prevent bad ppl from entering until real security done
 
             this.PageTitle = Resources.Pages.Security.ChangeOrganizations_PageTitle;
             this.PageIcon = "iconshock-organizations";
