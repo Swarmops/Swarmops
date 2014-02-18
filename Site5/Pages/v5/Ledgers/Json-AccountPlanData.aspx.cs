@@ -29,6 +29,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             string response = string.Empty;
 
+            PopulateLookups(FinancialAccounts.ForOrganization(_authenticationData.CurrentOrganization));
             _hashedAccounts = FinancialAccounts.GetHashedAccounts(_authenticationData.CurrentOrganization);
 
             response += GetAccountGroup(FinancialAccountType.Asset, Resources.Pages.Ledgers.BalanceSheet_Assets) + ",";
@@ -84,7 +85,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
 
 
-                childStrings.Add('{' + String.Format("\"id\":\"{0}\",\"accountName\":\"{1}\"", account.Identity, JsonSanitize(account.Name)) + grandChildren + '}');
+                childStrings.Add('{' + String.Format("\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\"", 
+                    account.Identity, 
+                    Server.HtmlEncode(JsonSanitize(account.Name)), 
+                    account.OwnerPersonId != 0? "<span style=\\\"padding-left:18px;background-repeat:no-repeat;background-image:url('" + account.Owner.GetSecureAvatarLink(16) + "')\\\">" + JsonSanitize(Server.HtmlEncode(account.Owner.Canonical)) + "</span>" : JsonSanitize(Resources.Global.Global_NoOwner),
+                    _hashedAccounts[account.Identity].Count > 1 ? JsonDualString(account.Identity, _treeBalanceLookup[account.Identity], _singleBalanceLookup[account.Identity]) : (_singleBalanceLookup [account.Identity] / 100.0).ToString("N0"),
+                    account.AccountType == FinancialAccountType.Income || account.AccountType == FinancialAccountType.Cost?
+                        _hashedAccounts[account.Identity].Count > 1 ? (JsonDualString(account.Identity, _treeBudgetLookup[account.Identity], _singleBudgetLookup[account.Identity])) : 
+                        (_singleBudgetLookup[account.Identity] / 100.0).ToString("N0") :
+                    string.Empty
+                 ) + grandChildren + '}');
             }
 
             return String.Join(",", childStrings.ToArray());
@@ -100,5 +110,95 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             // typedef
         };
+
+        private Dictionary<int, List<FinancialAccount>> _treeMap;
+        private Dictionary<int, Int64> _singleBalanceLookup;
+        private Dictionary<int, Int64> _treeBalanceLookup;
+        private Dictionary<int, Int64> _singleBudgetLookup;
+        private Dictionary<int, Int64> _treeBudgetLookup;
+
+
+        private void PopulateLookups(FinancialAccounts accounts)
+        {
+            _singleBalanceLookup = new Dictionary<int, Int64>();
+            _treeBalanceLookup = new Dictionary<int, Int64>();
+            _singleBudgetLookup = new Dictionary<int, Int64>();
+            _treeBudgetLookup = new Dictionary<int, Int64>();
+
+            // 1) Actually, the accounts are already sorted. Or are supposed to be, anyway,
+            // since FinancialAccounts.ForOrganization gets the _tree_ rather than the flat list.
+
+            // 2) Add all values to the accounts.
+
+            foreach (FinancialAccount account in accounts)
+            {
+                // Get current balances
+
+                // TODO: There must be a more optimized way to do this, like with a database optimization. This
+                // is a HORRIBLY expensive operation, as it performs one complex database query PER ACCOUNT.
+
+                if (account.AccountType == FinancialAccountType.Cost || account.AccountType == FinancialAccountType.Income)
+                {
+                    _singleBalanceLookup[account.Identity] = account.GetDeltaCents(new DateTime(_year, 1, 1),
+                                                                                new DateTime(_year + 1, 1, 1));
+                    _singleBudgetLookup[account.Identity] = account.GetBudgetCents(_year);
+                }
+                else if (account.AccountType == FinancialAccountType.Asset || account.AccountType == FinancialAccountType.Debt)
+                {
+                    _singleBalanceLookup[account.Identity] = account.GetDeltaCents(new DateTime(1900, 1, 1),
+                                                                                new DateTime(_year + 1, 1, 1));
+                    _singleBudgetLookup[account.Identity] = 0; // balance accounts don't have budgets
+                }
+                else
+                {
+                    throw new InvalidOperationException("Account with invalid type encountered - " + account.AccountType.ToString());
+                }
+
+                // copy to treeLookups
+
+                _treeBalanceLookup[account.Identity] = _singleBalanceLookup[account.Identity];
+                _treeBudgetLookup[account.Identity] = _singleBudgetLookup[account.Identity];
+            }
+
+            // 3) Add all children's values to parents
+
+            AddChildrenValuesToParents(_treeBalanceLookup, accounts);
+            AddChildrenValuesToParents(_treeBudgetLookup, accounts);
+
+            // Done.
+        }
+
+
+        private void AddChildrenValuesToParents(Dictionary<int, Int64> lookup, FinancialAccounts accounts)
+        {
+            // Iterate backwards and add any value to its parent's value, as they are sorted in tree order.
+
+            for (int index = accounts.Count - 1; index >= 0; index--)
+            {
+                int parentFinancialAccountId = accounts[index].ParentFinancialAccountId;
+                int accountId = accounts[index].Identity;
+
+                if (parentFinancialAccountId != 0)
+                {
+                    lookup[parentFinancialAccountId] += lookup[accountId];
+                }
+            }
+        }
+
+
+
+        private string JsonDualString(int accountId, Int64 treeValue, Int64 singleValue)
+        {
+            if (treeValue != 0 && singleValue == 0)
+            {
+                return string.Format(_renderCulture,
+                                     "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>",
+                                     accountId, treeValue / 100.00);
+            }
+            return string.Format(_renderCulture,
+                                 "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>",
+                                 accountId, treeValue / 100.0, singleValue / 100.0);
+        }
+
     }
 }

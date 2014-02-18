@@ -1078,12 +1078,12 @@ namespace Swarmops.Database
         }*/
 
 
-        private BasicFinancialAccount[] GetFinancialAccountTree(Dictionary<int, List<BasicFinancialAccount>> FinancialAccounts, int startNodeId,
+        private BasicFinancialAccount[] GetFinancialAccountTree(Dictionary<int, List<BasicFinancialAccount>> financialAccounts, int startNodeId,
                                                    int generation)
         {
             List<BasicFinancialAccount> result = new List<BasicFinancialAccount>();
 
-            List<BasicFinancialAccount> thisList = FinancialAccounts[startNodeId];
+            List<BasicFinancialAccount> thisList = financialAccounts[startNodeId];
 
             foreach (BasicFinancialAccount node in thisList)
             {
@@ -1093,7 +1093,7 @@ namespace Swarmops.Database
 
                     // Add recursively
 
-                    BasicFinancialAccount[] children = GetFinancialAccountTree(FinancialAccounts, node.FinancialAccountId, generation + 1);
+                    BasicFinancialAccount[] children = GetFinancialAccountTree(financialAccounts, node.FinancialAccountId, generation + 1);
 
                     if (children.Length > 0)
                     {
