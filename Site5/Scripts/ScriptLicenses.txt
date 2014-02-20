@@ -1,6 +1,6 @@
 ﻿Some of these scripts are not in the public domain.
 
-jQuery is licensed as MIT (free to use for any purpose). So is FancyBox and Alertify.
+jQuery is licensed as MIT (free to use for any purpose). So is FancyBox, Alertify, and jQuery SwitchButton.
 
 SmartWizard is licensed under Creative Commons Attribution-ShareAlike.
 

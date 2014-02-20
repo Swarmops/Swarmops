@@ -106,8 +106,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     grandChildren = ",\"state\":\"closed\",\"children\":[" + grandChildren + "]";
                 }
 
+                string editString = "<img class=\\\"IconEdit\\\" src=\\\"/Images/Icons/iconshock-wrench-16px.png\\\" />";
 
-                childStrings.Add('{' + String.Format("\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\"", 
+
+                childStrings.Add('{' + String.Format("\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\",\"action\":\"{5}\"", 
                     account.Identity, 
                     Server.HtmlEncode(JsonSanitize(account.Name)), 
                     ownerString,
@@ -115,7 +117,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     account.AccountType == FinancialAccountType.Income || account.AccountType == FinancialAccountType.Cost?
                         _hashedAccounts[account.Identity].Count > 1 ? (JsonDualString(account.Identity, _treeBudgetLookup[account.Identity], _singleBudgetLookup[account.Identity])) : 
                         (_singleBudgetLookup[account.Identity] / 100.0).ToString("N0") :
-                    string.Empty
+                    string.Empty,
+                    editString
                  ) + grandChildren + '}');
             }
 
