@@ -335,6 +335,33 @@ img
 }
 
 
+
+.modalcover {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	z-index: 9001;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.25);
+	
+}
+
+.modal 
+{
+	position: absolute;
+	top: 60px;
+	height: 75%;
+	width: 980px;
+	box-shadow: black 0px 0px 30px 2px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+
+
+
 /* LOGINBOX */
 
 body.loginpage
