@@ -24,7 +24,15 @@
 	            
 	            onLoadSuccess: function () {
 	                $('div.datagrid').css('opacity', 1);
-	                
+
+	                $(".IconEdit").mouseover(function() {
+                        $(this).attr("src", "/Images/Icons/iconshock-wrench-16px-hot.png");
+	                });
+
+	                $(".IconEdit").mouseout(function() {
+                        $(this).attr("src", "/Images/Icons/iconshock-wrench-16px.png");
+	                });
+
 	                $(".IconEdit").click(function() {
 	                    $('#divModalCover').fadeIn();
 	                });
