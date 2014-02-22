@@ -19,7 +19,7 @@ namespace Swarmops.Frontend.Pages.Security
                 Localize();
             }
 
-            this.PageAccessRequired = new Access(AccessAspect.Bookkeeping, AccessType.Write);  // bogus, but will prevent bad ppl from entering until real security done
+            // this.PageAccessRequired = new Access(AccessAspect.Bookkeeping, AccessType.Write);  // bogus, but will prevent bad ppl from entering until real security done
 
             this.PageTitle = Resources.Pages.Security.ChangeOrganizations_PageTitle;
             this.PageIcon = "iconshock-organizations";

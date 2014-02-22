@@ -106,7 +106,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     grandChildren = ",\"state\":\"closed\",\"children\":[" + grandChildren + "]";
                 }
 
-                string editString = "<img class=\\\"IconEdit\\\" src=\\\"/Images/Icons/iconshock-wrench-16px.png\\\" />";
+                string editString = String.Format("<img class=\\\"IconEdit\\\" accountId=\\\"{0}{1}\\\" src=\\\"/Images/Icons/iconshock-wrench-16px.png\\\" />", accountType.ToString().Substring(0,1), account.Identity);
 
 
                 childStrings.Add('{' + String.Format("\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\",\"action\":\"{5}\"", 

@@ -371,4 +371,12 @@
     <value>English (US)</value>
     <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
   </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>No</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Yes</value>
+    <comment>For yes/no options</comment>
+  </data>
 </root>
