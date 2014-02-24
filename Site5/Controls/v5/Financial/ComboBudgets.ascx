@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ComboBudgets.ascx.cs" Inherits="Swarmops.Controls.Financial.BudgetCombo" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ComboBudgets.ascx.cs" Inherits="Swarmops.Controls.Financial.ComboBudgets" %>
 
 <script type="text/javascript">
     $(document).ready(function () {

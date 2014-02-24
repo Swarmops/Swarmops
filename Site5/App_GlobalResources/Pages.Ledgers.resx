@@ -140,7 +140,7 @@
     <value>Current</value>
   </data>
   <data name="BalanceSheet_Debt" xml:space="preserve">
-    <value>Debt</value>
+    <value>Liabilities</value>
   </data>
   <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
     <value>BalanceSheet</value>
@@ -180,7 +180,7 @@
     <comment>The {0} is the organization name. The year number follows this string.</comment>
   </data>
   <data name="ProfitLossStatement_Costs" xml:space="preserve">
-    <value>Costs</value>
+    <value>Expenses</value>
   </data>
   <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
     <value>ProfitLoss</value>

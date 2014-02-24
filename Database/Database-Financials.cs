@@ -15,7 +15,8 @@ namespace Swarmops.Database
     {
         private const string financialAccountFieldSequence =
             " FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId," +  // 0-4
-            " OwnerPersonId,Open,OpenedYear,ClosedYear,Expensable " +  // 5-9
+            " OwnerPersonId,Open,OpenedYear,ClosedYear,Expensable," +  // 5-9
+            " Administrative " + // 10
             " FROM FinancialAccounts ";
 
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
@@ -690,8 +691,9 @@ namespace Swarmops.Database
             int openedYear = reader.GetInt32(7);
             int closedYear = reader.GetInt32(8);
             bool expensable = reader.GetBoolean(9);
+            bool administrative = reader.GetBoolean(10);
 
-            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId, ownerPersonId, open, openedYear, closedYear, expensable);
+            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId, ownerPersonId, open, openedYear, closedYear, expensable, administrative);
         }
 
         private BasicFinancialAccountRow ReadFinancialAccountRowFromDataReader (DbDataReader reader)

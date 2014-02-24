@@ -712,6 +712,22 @@ input.entryError, span.entryError, div.entryError {
 }
 
 
+select.comboperson+span>input {
+	width: 252px !important;
+	padding-left: 34px;
+	/* background: url('http://s.gravatar.com/avatar/15638826ee119289c902c4f85e77a2f0?s=24&r=g'); */
+	background-repeat: no-repeat;
+	background-color: white;
+	background-position: 6px 2px;
+}
+
+
+select.comboperson+span>input:focus
+{
+	background-image: none !important;
+}
+
+
 .button
 {
 	cursor: pointer;
