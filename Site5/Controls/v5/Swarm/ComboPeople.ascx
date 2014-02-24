@@ -4,28 +4,48 @@
     $(document).ready(function () {
         $('#<%=this.ClientID %>_DropPeople').combobox({
             animate: true,
-            height: 30
+            height: 30,
+            loader: autoCompleteLoader,
+            mode: 'remote',
+            valueField: 'id',
+            textField: 'name',
+            formatter: formatItem,
+            
+            onSelect: function (person) {
+                // update avatar when person selected
+                
+                $.ajax({
+                    url: '/Automation/Json-GetPersonAvatar.aspx',
+                    dataType: 'json',
+                    data: {
+                        personId: person.id
+                    },
+                    success: function(data){
+                        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('" + data.avatar24Url + "')");
+                        
+                    },
+                    error: function(){
+                        error.apply(this, arguments);
+                    }
+                });
+            }
         });
 
         <% if (this.Selected != null)
-           { %>
-
-        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background', "url('<%= this.Selected.GetSecureAvatarLink(24) %>')");
+           { %>;
+        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('<%= this.Selected.GetSecureAvatarLink(24) %>')");
         $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').text('<%= this.Selected.Canonical %>');
         
         <% }
            else if (this.NobodySelected)
-           { %>
-
-        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background', "url('/Images/Icons/iconshock-warning-24px.png')");
+           { %>;
+        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('/Images/Icons/iconshock-warning-24px.png')");
         $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').text('<%= Resources.Global.Global_NoOwner %>');
         
-        <% } else { %>
-        
+        <% } else { %>;
         $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background', '');
 
-        <% } %>
-
+        <% } %>;
         $('#<%=this.ClientID %>_SpanPeople span.combo input.combo-text').keydown(function (e) {
             switch (e.which) {
                 case 40: // down
@@ -37,6 +57,35 @@
             e.preventDefault(); // prevent the default action (scroll / move caret)
         });
     });
- </script>
+    
+    var autoCompleteLoader = function(param,success,error){
+        var q = param.q || '';
+        if (q.length <= 3) {
+            return false;
+        }
+        $.ajax({
+            url: '/Automation/Json-SearchPeoplePattern.aspx',
+            dataType: 'json',
+            data: {
+                maxRows: 20,
+                namePattern: q
+            },
+            success: function(data){
+                console.log(data);
+                success(data);
+            },
+            error: function(){
+                error.apply(this, arguments);
+            }
+        });
+        return false;
+    };
+    
+    function formatItem(row)
+    {
+        var s = '<span style="padding-left:20px;margin-left:4px;' + "background-image:url('" + row.avatar16Url + "');" + 'background-position:left center;background-repeat:no-repeat">' + row.name + '</span>';
+        return s;
+    }
+</script>
  
- <span id="<%=this.ClientID %>_SpanPeople"><select class="easyui-combobox comboperson" url="/Automation/Json-ExpensableBudgetsTree.aspx" name="DropPeople" id="<%=this.ClientID %>_DropPeople" animate="true" style="width:300px"></select></span>
+ <span id="<%=this.ClientID %>_SpanPeople"><select class="easyui-combobox comboperson" url="" name="DropPeople" id="<%=this.ClientID %>_DropPeople" animate="true" style="width:300px"></select></span>

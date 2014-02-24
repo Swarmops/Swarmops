@@ -55,7 +55,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 treeMap[account.ParentIdentity].Add(account);
             }
 
-            accountsJson = RecurseTreeMap(treeMap, 0);
+            if (treeMap.ContainsKey(0))
+            {
+                accountsJson = RecurseTreeMap(treeMap, 0);
+            }
 
             accountsJson = "[{\"id\":\"0\",\"text\":\"" +
                            JsonSanitize(Resources.Global.ResourceManager.GetString("Financial_" + accountType.ToString())) +

@@ -91,7 +91,7 @@ namespace Swarmops.Logic.Swarm
             return null; // If no valid search string was supplied
         }
 
-        public static People FromBirtDatePattern (DateTime fromdate, DateTime todate)
+        public static People FromBirthDatePattern (DateTime fromdate, DateTime todate)
         {
             return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromBirthdate(fromdate, todate));
         }

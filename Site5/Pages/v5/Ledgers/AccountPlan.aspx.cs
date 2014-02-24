@@ -24,7 +24,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.PageIcon = "iconshock-openbook";
             this.PageTitle = Resources.Pages.Ledgers.AccountPlan_PageTitle;
             this.InfoBoxLiteral = Resources.Pages.Ledgers.AccountPlan_Info;
-            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read);
+            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
         }
 
 
@@ -52,8 +52,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                                                                         account.AccountType.ToString())
                                            : account.Parent.Name;
             result.Expensable = account.Expensable;
-            result.Administrative = false;
-            result.Open = account.Administrative;
+            result.Administrative = account.Administrative;
+            result.Open = account.Open;
             result.AccountOwnerName = account.OwnerPersonId != 0 ? account.Owner.Name : Resources.Global.Global_NoOwner;
             result.AccountOwnerAvatarUrl = account.OwnerPersonId != 0
                                                ? account.Owner.GetSecureAvatarLink(24)
