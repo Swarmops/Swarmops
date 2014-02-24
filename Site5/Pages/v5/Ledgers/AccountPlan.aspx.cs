@@ -66,7 +66,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             else
             {
-                result.Balance = (accountTree.GetDeltaCents(new DateTime(year, 1, 1), new DateTime(year + 1, 1, 1)) / 100L).ToString("N0");
+                result.Balance = (-accountTree.GetDeltaCents(new DateTime(year, 1, 1), new DateTime(year + 1, 1, 1)) / 100L).ToString("N0");
             }
 
             return result;
