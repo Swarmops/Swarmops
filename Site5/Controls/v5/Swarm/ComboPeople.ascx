@@ -61,7 +61,8 @@
     var autoCompleteLoader = function(param,success,error){
         var q = param.q || '';
         if (q.length < 3) {
-            success (null);
+            success (new Array());
+            return false;
         }
         $.ajax({
             url: '/Automation/Json-SearchPeoplePattern.aspx',
