@@ -10,7 +10,7 @@ using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 
-namespace Swarmops.Frontend.Pages.v5.Financial
+namespace Swarmops.Frontend.Automation
 {
     public partial class Json_ExpensableBudgetsTree : DataV5Base
     {

@@ -69,6 +69,7 @@
                         }
 
 	                    window.scrollTo(0, 0);
+	                    $('body').css('overflow-y', 'hidden');
 	                    $('#divModalCover').fadeIn();
 	                    
                         $.ajax({
@@ -78,8 +79,6 @@
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function (msg) {
-                                console.log(msg.d);
-
                                 $('#CheckAccountActive').switchButton( {checked: msg.d.Open });
                                 $('#CheckAccountExpensable').switchButton( {checked: msg.d.Expensable });
                                 $('#CheckAccountAdministrative').switchButton( {checked: msg.d.Administrative });
@@ -175,7 +174,7 @@
     <div id="divModalCover" class="modalcover">
         <div class="box modal">
             <div class="content">
-                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2>Editing account (Under Construction/Test)</h2>
+                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2>Editing account (Under Construction/Test; Does not save)</h2>
                 <div class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
                     <Swarmops5:ComboBudgets ID="DropParents" runat="server" />&nbsp;<br/>
                     &nbsp;<br/>
