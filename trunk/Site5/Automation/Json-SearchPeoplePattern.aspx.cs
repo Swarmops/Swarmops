@@ -23,6 +23,11 @@ namespace Swarmops.Frontend.Automation
 
             matches = Authorization.FilterPeopleToMatchAuthority(matches, CurrentUser.GetAuthority());
 
+            if (matches == null)
+            {
+                matches = new People();
+            }
+
             if (matches.Count > 10)
             {
                 matches.RemoveRange(10, matches.Count - 10);
