@@ -21,11 +21,11 @@ namespace Swarmops.Frontend.Automation
 
             People matches = People.FromNamePattern(pattern);
 
-            matches = Authorization.FilterPeopleToMatchAuthority(matches, CurrentUser.GetAuthority());
+            matches = matches.GetVisiblePeopleByAuthority(CurrentUser.GetAuthority());
 
-            if (matches.Count > 20)
+            if (matches.Count > 10)
             {
-                matches.RemoveRange(20, matches.Count - 20);
+                matches.RemoveRange(10, matches.Count - 10);
             }
 
             List<string> jsonPeople = new List<string>();

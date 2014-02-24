@@ -20,7 +20,7 @@ namespace Swarmops.Frontend.Automation
 
             People matches = People.FromSingle(Person.FromIdentity(Int32.Parse(personId)));
 
-            matches = Authorization.FilterPeopleToMatchAuthority(matches, CurrentUser.GetAuthority());
+            matches = matches.GetVisiblePeopleByAuthority(CurrentUser.GetAuthority());
 
             if (matches.Count == 1) // still allowed
             {
