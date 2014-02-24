@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="PersonDetailPopup.ascx.cs" Inherits="Swarmops.Controls.Swarm.PersonDetailPopup" %>
-<%@ Register Src="~/Controls/v5/Swarm/ComboPerson.ascx" TagName="ComboPerson" TagPrefix="act5" %>
+<%@ Register Src="~/Controls/v5/Swarm/ComboPersonObsolete.ascx" TagName="ComboPerson" TagPrefix="act5" %>
 
 <asp:UpdatePanel ID="UpdateSetter" runat="server" UpdateMode="Conditional">
 <ContentTemplate>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="AccountPlan.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.AccountPlan" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ExternalScripts" Src="~/Controls/v5/UI/ExternalScripts.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="ComboPeople" Src="~/Controls/v5/Swarm/ComboPeople.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="tree" runat="server" />
@@ -39,22 +40,32 @@
 	                    var accountId = $(this).attr("accountId");
 	                    var accountType = accountId.substring(0,1);  // A, D, I, C
 	                    accountId = accountId.substring(1);
+
+	                    var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
 	                    
                         if (accountType == 'A') {
                             $('#DivEditAssetLabels').show();
                             $('#DivEditAssetControls').show();
                             $('#DivEditProfitLossLabels').hide();
                             $('#DivEditProfitLossControls').hide();
-                        } else if (accountType == 'D') {
+                            accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Asset&ExcludeId=' + accountId);
+                        } else if (accountType == 'D') { // Debt, aka Liability
                             $('#DivEditAssetLabels').hide();
                             $('#DivEditAssetControls').hide();
                             $('#DivEditProfitLossLabels').hide();
                             $('#DivEditProfitLossControls').hide();
+                            accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Debt&ExcludeId=' + accountId);
                         } else {  // P&L account
                             $('#DivEditAssetLabels').hide();
                             $('#DivEditAssetControls').hide();
                             $('#DivEditProfitLossLabels').show();
                             $('#DivEditProfitLossControls').show();
+                            
+                            if (accountType == 'I') {
+                                accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Income&ExcludeId=' + accountId);
+                            } else { // C for Costs aka Expenses
+                              accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Cost&ExcludeId=' + accountId);
+                            }
                         }
 
 	                    window.scrollTo(0, 0);
@@ -74,8 +85,16 @@
                                 $('#CheckAccountAdministrative').switchButton( {checked: msg.d.Administrative });
                                 $('#TextAccountName').val(msg.d.AccountName);
                                 $('#TextAccountBudget').val(msg.d.Budget);
+                                $('#SpanEditBalance').text(msg.d.Balance);
+
+                                //var parentAccountNode = accountTree.tree('find', msg.d.ParentAccountId);
+                                //console.log(parentAccountNode);
+                                //accountTree.combotree('select', parentAccountNode.target);
+                                accountTree.combotree('setText', msg.d.ParentAccountName);
                                 
-                                // TODO: Owner, parent account, automation
+                                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
+                                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', msg.d.AccountOwnerName);
+                                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').val('');
                             }
                         });
 
@@ -83,6 +102,12 @@
 	        
 	            }
 	        });
+
+            $('#<%=this.DropOwner.ClientID %>_SpanPeople span.combo input.combo-text').keydown(function (e) {
+                // Clear the owner avatar on any keypress
+                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-image', "none");
+            });
+
 
 	        $('div.datagrid').css('opacity', 0.4);
 	        
@@ -152,9 +177,9 @@
             <div class="content">
                 <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2>Editing account (Under Construction/Test)</h2>
                 <div class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
-                    <Swarmops5:ComboBudgets ID="DropBudgets" runat="server" />&nbsp;<br/>
+                    <Swarmops5:ComboBudgets ID="DropParents" runat="server" />&nbsp;<br/>
                     &nbsp;<br/>
-                    <div id="DivEditProfitLossControls"><Swarmops5:ComboBudgets ID="DropOwner" runat="server" />&nbsp;<br/>
+                    <div id="DivEditProfitLossControls"><Swarmops5:ComboPeople ID="DropOwner" runat="server" />&nbsp;<br/>
                     <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>
                     &nbsp;<br/>
                     <div class="checkboxSpacer"></div><input type="checkbox" class="EditCheck" id="CheckAccountActive"/>
@@ -168,7 +193,7 @@
                     Parent account or group<br/>
                     <div id="DivEditProfitLossLabels"><h2>Daily operations</h2>
                     Owner<br/>
-                    Budget (balance is SEK foo)<br/>
+                    Budget (balance is SEK <span id="SpanEditBalance">foo</span>)<br/>
                     <h2>Switches</h2>
                     Active<br/>
                     Expensable<br/>

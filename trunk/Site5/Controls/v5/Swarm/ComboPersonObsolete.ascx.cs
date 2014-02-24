@@ -18,7 +18,7 @@ using Telerik.Web.UI;
 namespace Swarmops.Controls.Swarm
 {
 
-    public partial class ComboPerson : ControlV5Base
+    public partial class ComboPersonObsolete : ControlV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {

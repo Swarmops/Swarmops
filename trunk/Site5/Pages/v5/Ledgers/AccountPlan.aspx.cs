@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -39,18 +40,34 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException("A million nopes");
             }
 
+            FinancialAccounts accountTree = account.GetTree();
+            int year = DateTime.Today.Year;
+
             JsonAccountData result = new JsonAccountData();
 
             result.AccountName = account.Name;
             result.ParentAccountId = account.ParentIdentity;
+            result.ParentAccountName = account.ParentFinancialAccountId == 0
+                                           ? Resources.Global.ResourceManager.GetString("Financial_" +
+                                                                                        account.AccountType.ToString())
+                                           : account.Parent.Name;
             result.Expensable = account.Expensable;
             result.Administrative = false;
-            result.Open = account.Open;
+            result.Open = account.Administrative;
             result.AccountOwnerName = account.OwnerPersonId != 0 ? account.Owner.Name : Resources.Global.Global_NoOwner;
             result.AccountOwnerAvatarUrl = account.OwnerPersonId != 0
-                                               ? account.Owner.GetSecureAvatarLink(16)
-                                               : "/Images/Icons/iconshock-warning-16x12px.png";
-            result.Budget = (account.GetTree().GetBudgetSumCents(DateTime.Today.Year)/100L).ToString("N0");
+                                               ? account.Owner.GetSecureAvatarLink(24)
+                                               : "/Images/Icons/iconshock-warning-24px.png";
+            result.Budget = (accountTree.GetBudgetSumCents(year)/100L).ToString("N0");
+
+            if (account.AccountType == FinancialAccountType.Asset || account.AccountType == FinancialAccountType.Debt)
+            {
+                result.Balance = (accountTree.GetDeltaCents(new DateTime(1900, 1, 1), new DateTime(year + 1, 1, 1))/100L).ToString("N0");
+            }
+            else
+            {
+                result.Balance = (accountTree.GetDeltaCents(new DateTime(year, 1, 1), new DateTime(year + 1, 1, 1)) / 100L).ToString("N0");
+            }
 
             return result;
         }
@@ -59,6 +76,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             public string AccountName;
             public int ParentAccountId;
+            public string ParentAccountName;
             public string ClosedYear;
             public bool Administrative;
             public bool Expensable;
@@ -66,6 +84,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public string AccountOwnerName;
             public string Budget;
             public string AccountOwnerAvatarUrl;
+            public string Balance;
         }
 
     }
