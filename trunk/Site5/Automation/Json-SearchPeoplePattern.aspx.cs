@@ -21,7 +21,7 @@ namespace Swarmops.Frontend.Automation
 
             People matches = People.FromNamePattern(pattern);
 
-            matches = matches.GetVisiblePeopleByAuthority(CurrentUser.GetAuthority());
+            matches = Authorization.FilterPeopleToMatchAuthority(matches, CurrentUser.GetAuthority());
 
             if (matches.Count > 10)
             {
