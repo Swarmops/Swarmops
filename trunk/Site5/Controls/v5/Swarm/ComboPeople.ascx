@@ -60,8 +60,8 @@
     
     var autoCompleteLoader = function(param,success,error){
         var q = param.q || '';
-        if (q.length <= 3) {
-            return false;
+        if (q.length < 3) {
+            success (null);
         }
         $.ajax({
             url: '/Automation/Json-SearchPeoplePattern.aspx',
@@ -71,7 +71,6 @@
                 namePattern: q
             },
             success: function(data){
-                console.log(data);
                 success(data);
             },
             error: function(){
