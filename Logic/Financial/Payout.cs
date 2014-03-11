@@ -201,15 +201,14 @@ namespace Swarmops.Logic.Financial
                     int advanceId = Int32.Parse(component.Substring(1));
                     CashAdvance advance = CashAdvance.FromIdentity(advanceId);
                     identityList.Add(advanceId);
-                    Organization organization = Organization.FromIdentity(organizationId);
+                    organizationId = advance.OrganizationId;
+                    Organization organization = Organization.FromIdentity(advance.OrganizationId);
 
                     if (bank.Length < 1)
                     {
                         Person asker = advance.Person;
                         bank = asker.BankName;
                         account = asker.BankAccount;
-                        organizationId = advance.OrganizationId;
-
                     }
 
                     amountCents += advance.AmountCents;
