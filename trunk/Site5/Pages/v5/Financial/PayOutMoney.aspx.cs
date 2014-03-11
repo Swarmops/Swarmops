@@ -7,6 +7,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
+using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -28,6 +29,8 @@ namespace Swarmops.Frontend.Pages.Financial
             {
                 Localize();
             }
+
+           
         }
 
         private void Localize()
