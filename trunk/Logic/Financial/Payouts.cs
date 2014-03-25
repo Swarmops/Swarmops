@@ -373,7 +373,20 @@ namespace Swarmops.Logic.Financial
 
                 foreach (Payout payout in payouts)
                 {
-                    if (payout.ExpectedTransactionDate >= timeLow && payout.ExpectedTransactionDate <= timeHigh && payout.AmountCents == -transaction.Rows.AmountCentsTotal)
+                    // Ugly hack to fix cash advance payouts
+
+                    DateTime payoutLowerTimeLimit = timeLow;
+                    DateTime payoutUpperTimeLimit = timeHigh;
+
+                    if (payout.AmountCents == -transaction.Rows.AmountCentsTotal && (payout.DependentCashAdvancesPayout.Count > 0 || payout.DependentCashAdvancesPayback.Count > 0))
+                    {
+                        // HACK: While PW5 doesn't have a manual-debug interface, special case for cash advances
+
+                        payoutLowerTimeLimit = transaction.DateTime.AddDays(-60);
+                        payoutUpperTimeLimit = transaction.DateTime.AddDays(60);
+                    }
+
+                    if (payout.ExpectedTransactionDate >= payoutLowerTimeLimit && payout.ExpectedTransactionDate <= payoutUpperTimeLimit && payout.AmountCents == -transaction.Rows.AmountCentsTotal)
                     {
                         // Console.WriteLine(" - - payout #{0} matches ({1}, {2:yyyy-MM-dd})", payout.Identity, payout.Recipient, payout.ExpectedTransactionDate);
 
