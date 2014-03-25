@@ -96,7 +96,14 @@ namespace Swarmops.Logic.Financial
 
         public static Payout FromIdentity (int payoutId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetPayout(payoutId));
+            try
+            {
+                return FromBasic(SwarmDb.GetDatabaseForReading().GetPayout(payoutId));
+            }
+            catch (ArgumentException e)
+            {
+                throw new InvalidOperationException(String.Format("Error loading Payout #{0}", payoutId), e);
+            }
         }
 
 
@@ -633,7 +640,7 @@ namespace Swarmops.Logic.Financial
             foreach (CashAdvance advance in this.DependentCashAdvancesPayout)
             {
                 advance.PaidOut = false;
-                advance.Open = true;
+                advance.Open = true;  // BUG: Why is this here? Isn't the cash advance open until repaid?
             }
 
             foreach (InboundInvoice invoice in this.DependentInvoices)
