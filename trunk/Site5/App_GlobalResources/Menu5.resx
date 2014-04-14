@@ -270,6 +270,9 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Profit &amp; Loss Statement</value>
   </data>
+  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
+    <value>Resync Bank Account</value>
+  </data>
   <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
     <value>Set Budget Amounts</value>
   </data>

@@ -97,6 +97,9 @@
     <Compile Include="Communications\Transmission\PayloadBase.cs" />
     <Compile Include="Financial\CashAdvance.cs" />
     <Compile Include="Financial\CashAdvances.cs" />
+    <Compile Include="Financial\ExternalBankData.cs" />
+    <Compile Include="Financial\ExternalBankDataProfile.cs" />
+    <Compile Include="Financial\ExternalBankDataRecord.cs" />
     <Compile Include="Financial\FinancialTransactionTagSet.cs" />
     <Compile Include="Financial\FinancialTransactionTagSets.cs" />
     <Compile Include="Financial\FinancialTransactionTagSetType.cs" />

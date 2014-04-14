@@ -21,6 +21,14 @@ namespace Swarmops.Controls.Base
                 {
                     Filter = UploadFilter.NoFilter;
                 }
+                if (this.DisplayCount == 0) // if not set
+                {
+                    this.DisplayCount = 16;
+                }
+                if (this.ClientUploadCompleteCallback == null)
+                {
+                    this.ClientUploadCompleteCallback = string.Empty;
+                }
             }
             else
             {
@@ -30,6 +38,9 @@ namespace Swarmops.Controls.Base
 
         public string GuidString;
         public UploadFilter Filter { get; set; }
+        public int DisplayCount { get; set; }
+        public bool HideTrigger { get; set; }
+        public string ClientUploadCompleteCallback { get; set; }
 
 
         public enum UploadFilter

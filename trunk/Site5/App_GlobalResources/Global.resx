@@ -391,4 +391,8 @@
   <data name="Financial_Income" xml:space="preserve">
     <value>Revenue</value>
   </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>- - Select one - -</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
 </root>
