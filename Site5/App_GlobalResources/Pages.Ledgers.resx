@@ -218,6 +218,12 @@
     <value>YTD</value>
     <comment>Year To Date</comment>
   </data>
+  <data name="ResyncExternalAccount_Info" xml:space="preserve">
+    <value>If your bookkeeping in Swarmops has gotten out of sync with your bank records for whatever technical or human reason, you can resynchronize them here by uploading a master file that covers the time frame you need to resync.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Warning:&lt;/strong&gt; this is a time-consuming process that may do a &lt;em&gt;lot&lt;/em&gt; of changes to your bookkeeping. Do not use unless you have discovered a mismatch in the records vs. your bank.&lt;br/&gt;&lt;br/&gt;(You will get a chance to review proposed changes before they are committed to your financial records.)</value>
+  </data>
+  <data name="ResyncExternalAccount_PageTitle" xml:space="preserve">
+    <value>Resynchronize Bank Account</value>
+  </data>
   <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
     <value>Budget, Owner</value>
     <comment>Displayed above editables</comment>

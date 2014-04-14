@@ -9,16 +9,24 @@
     var imageFileEnd = "' /\x3E"; // needs to be separate var rather than inline because of mono-server optimization bug
     var imageUploadSuccess = imageFileStart + imageFileSuccess + imageFileEnd;
     var imageUploadFail = imageFileStart + imageFileFail + imageFileEnd;
-
+    
     $(document).ready(function() {
 
         $('#<%=this.ClientID %>_ButtonUploadHidden').fileupload({
-            url: '/Automation/UploadFileHandler.ashx?Guid=<%= GuidString %>',
+            url: '/Automation/UploadFileHandler.ashx?Guid=<%= GuidString %>&Filter=<%=Filter %>',
             dataType: 'json',
             done: function(e, data) {
                 $.each(data.result, function(index, file) {
                     if (file.error == null || file.error.length < 1) {
                         $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadSuccess);
+                        
+                        <% if (this.ClientUploadCompleteCallback.Length > 0)
+                           { %>
+                        
+                        <%= this.ClientUploadCompleteCallback %>();
+                        
+                        <% } %>
+
                     } else {
                         $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadFail); // Assume ERR_NOT_IMAGE
                         alertify.error('File "' + file.name + '" could not be uploaded. Is it really an image?');
@@ -56,5 +64,5 @@
 </script>
 <asp:HiddenField runat="server" ID="HiddenGuid"/>
 
-<div style="height:36px;float:left"><input id="<%=this.ClientID %>_ButtonUploadVisible" class="ButtonSwarmopsUpload NoInputFocus" type="button" /><input id="<%=this.ClientID %>_ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="<%=this.ClientID %>_DivUploadCount" style="display:none;overflow:hidden;height:64px"></div><div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&nbsp;<br/>
+<div style="height:36px;float:left"><input id="<%=this.ClientID %>_ButtonUploadVisible" class="ButtonSwarmopsUpload NoInputFocus" type="button" <%= this.HideTrigger? "style='display:none'" : string.Empty %> /><input id="<%=this.ClientID %>_ButtonUploadHidden" type="file" name="files[]" multiple style="display:none" /></div><div style="height:36px;width:270px;margin-right:10px;float:right;border:none"><div id="<%=this.ClientID %>_DivUploadCount" style='display:none;overflow:hidden;height:'<%=this.DisplayCount < 9? 32: 64%>px'></div><div id="<%=this.ClientID %>_DivProgressUpload" style="width:100%;margin-top:8px;display:none"></div></div>&#8203;<br/>
 

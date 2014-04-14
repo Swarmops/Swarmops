@@ -282,7 +282,7 @@ namespace Swarmops.Site.Pages.Ledgers
                             this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_FileImportedHeader_ErrorBalance;
                         }
                     }
-                    catch (Exception exception)
+                    catch (InvalidOperationException exception)
                     {
                         this.LiteralDownloadInstructionsModal.Text = exception.ToString(); // For debug purposes -- will not be shown to user
                         this.PanelErrorImage.Visible = true;
@@ -883,8 +883,13 @@ namespace Swarmops.Site.Pages.Ledgers
                 row.Comment = StripQuotes(parts[4]);
                 row.DateTime = DateTime.Parse(StripQuotes(parts[0]) + " " + StripQuotes(parts[1]), CultureInfo.InvariantCulture);
                 row.AmountCentsGross = Int64.Parse(StripQuotes(parts[7]).Replace(".", "").Replace(",", "").Replace(" ", ""));
-                row.FeeCents = Int64.Parse(StripQuotes(parts[8]).Replace(".", "").Replace(",", "").Replace(" ", ""), CultureInfo.InvariantCulture);
                 row.AmountCentsNet = Int64.Parse(StripQuotes(parts[9]).Replace(".", "").Replace(",", "").Replace(" ", ""));
+                row.FeeCents = 0;
+                if (parts[8] != "\"...\"")  // used as fee field for payments held/cleared
+                {
+                    row.FeeCents = Int64.Parse(StripQuotes(parts[8]).Replace(".", "").Replace(",", "").Replace(" ", ""), CultureInfo.InvariantCulture);
+                }
+
 
                 // Adjust for timezone -- necessary for Paypal and other int'l services
 

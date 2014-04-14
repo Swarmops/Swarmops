@@ -182,28 +182,34 @@ namespace Swarmops.Frontend.Automation
                     ms.Write(fileData, 0, file.ContentLength);
 			        ms.Position = 0;*/
 
-                    // Try to load as image. If fails, not an acceptable file
+                    string filterType = context.Request.QueryString["Filter"];
 
-                    try
+                    if (filterType != "NoFilter")
                     {
-                        Image image = Image.FromStream (file.InputStream);
-                        image.Dispose();
-                    }
-                    catch (Exception)
-                    {
-                        // TODO: If general files accepted, then ok, otherwise fuck off
 
-                        // TODO: Accept general files
+                        // Try to load as image. If fails, not an acceptable file
 
-                        var errorStatus = new FilesStatus (fullName, file.ContentLength);
-                        errorStatus.error = "ERR_NOT_IMAGE";
-                        errorStatus.url = string.Empty;
-                        errorStatus.delete_url = string.Empty;
-                        errorStatus.thumbnail_url = string.Empty;
+                        try
+                        {
+                            Image image = Image.FromStream(file.InputStream);
+                            image.Dispose();
+                        }
+                        catch (Exception)
+                        {
+                            // TODO: If general files accepted, then ok, otherwise fuck off
 
-                        statuses.Add (errorStatus);
-                        // -1 for length means the file was NOT saved, and that it could not be parsed as image.
-                        return;
+                            // TODO: Accept general files
+
+                            var errorStatus = new FilesStatus(fullName, file.ContentLength);
+                            errorStatus.error = "ERR_NOT_IMAGE";
+                            errorStatus.url = string.Empty;
+                            errorStatus.delete_url = string.Empty;
+                            errorStatus.thumbnail_url = string.Empty;
+
+                            statuses.Add(errorStatus);
+                            // -1 for length means the file was NOT saved, and that it could not be parsed as image.
+                            return;
+                        }
                     }
                 }
 
