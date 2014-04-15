@@ -245,6 +245,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     newMismatch.MasterTransactionCount = masterTransactionCount;
                     newMismatch.SwarmopsDeltaCents = swarmopsDeltaCents;
                     newMismatch.SwarmopsTransactionCount = 0; // TODO
+                    
+                    // Load transactions from both sources
+
+                    // Analyze actions
+
 
                     mismatchList.Add(newMismatch);
                 }
