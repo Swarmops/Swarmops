@@ -111,7 +111,6 @@
                             {
                                 width: "100%"
                             }, { queue: false });
-	                    alert("all done!");
 	                    $(".buttonNext").click();
 	                } else {
 	                    
@@ -184,9 +183,9 @@
     <div id="DivStepProcessing" style="display:none">
     <h2>Step 2/4: Comparing records to master...</h2>
     <div id="DivProgressProcessing" style="width:100%"></div>
-    <ul><li>The first transaction in the master file was on <span id="SpanFirstTx">Foo</span>.</li>
-    <li>The last transaction in master file was on <span id="SpanLastTx">Foo</span>.</li>
-    <li>There are <span id="SpanTxCount">Bar</span> transactions in the master file.</li>
+    <ul style="margin-left:20px"><li>The first transaction in the master file was on <span id="SpanFirstTx">[...]</span>.</li>
+    <li>The last transaction in master file was on <span id="SpanLastTx">[...]</span>.</li>
+    <li>There are <span id="SpanTxCount">[...]</span> transactions in the master file.</li>
     </ul>
     </div>
     

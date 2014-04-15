@@ -214,16 +214,60 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             // From here on out, every new timestamp should have the exact same delta in Swarmops as it has in the master file.
 
-            DateTime lastTimestamp = timeWalker;
+            List<ExternalBankMismatchingDateTime> mismatchList = new List<ExternalBankMismatchingDateTime>();
 
-            timeWalker = externalData.Records[currentRecordIndex].DateTime;
+            while (currentRecordIndex < externalData.Records.Length)
+            {
 
-            long swarmopsDeltaCents = account.GetDeltaCents(lastTimestamp.AddSeconds(1), timeWalker.AddSeconds(1));  // "AddSeconds" because DeltaCents operates on ">= lowbound, < highbound"
-            long masterDeltaCents = externalData.Records[currentRecordIndex].TransactionNetCents;
+                DateTime lastTimestamp = timeWalker;
 
+                timeWalker = externalData.Records[currentRecordIndex].DateTime;
+
+                long swarmopsDeltaCents = account.GetDeltaCents(lastTimestamp.AddSeconds(1), timeWalker.AddSeconds(1));
+                    // "AddSeconds" because DeltaCents operates on ">= lowbound, < highbound"
+                long masterDeltaCents = externalData.Records[currentRecordIndex++].TransactionNetCents;
+                int masterTransactionCount = 1;
+
+                while (currentRecordIndex < externalData.Records.Length &&
+                       externalData.Records[currentRecordIndex].DateTime == timeWalker)
+                {
+                    masterDeltaCents += externalData.Records[currentRecordIndex++].TransactionNetCents;
+                    masterTransactionCount++;
+                }
+
+                if (masterDeltaCents != swarmopsDeltaCents)
+                {
+                    // We have a mismatch. Add it to the list.
+
+                    ExternalBankMismatchingDateTime newMismatch = new ExternalBankMismatchingDateTime();
+                    newMismatch.DateTime = timeWalker;
+                    newMismatch.MasterDeltaCents = masterDeltaCents;
+                    newMismatch.MasterTransactionCount = masterTransactionCount;
+                    newMismatch.SwarmopsDeltaCents = swarmopsDeltaCents;
+                    newMismatch.SwarmopsTransactionCount = 0; // TODO
+
+                    mismatchList.Add(newMismatch);
+                }
+
+                int percentProcessed = (int) (currentRecordIndex*100L/externalData.Records.Length);
+
+                if (percentProcessed > 1)
+                {
+                    _staticDataLookup[guid + "PercentRead"] = percentProcessed; // for the progress bar to update async
+                }
+            }
 
         }
 
         private static Dictionary<string, object> _staticDataLookup;
+    }
+
+    public class ExternalBankMismatchingDateTime
+    {
+        public DateTime DateTime;
+        public int MasterTransactionCount;
+        public long MasterDeltaCents;
+        public int SwarmopsTransactionCount;
+        public long SwarmopsDeltaCents;
     }
 }
