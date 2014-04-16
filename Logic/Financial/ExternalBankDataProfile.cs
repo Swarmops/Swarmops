@@ -31,6 +31,8 @@ namespace Swarmops.Logic.Financial
                 result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Saldo";
                 result.FieldNames[ExternalBankDataFieldName.NotUniqueId] = "Verifikationsnummer";
 
+                result.LatestTransactionLocation = LatestTransactionLocation.Top;
+
                 return result;
             }
 
@@ -51,6 +53,8 @@ namespace Swarmops.Logic.Financial
                 result.FieldNames[ExternalBankDataFieldName.AccountBalance] = "Balance";
                 result.FieldNames[ExternalBankDataFieldName.UniqueId] = "Transaction ID";
 
+                result.LatestTransactionLocation = LatestTransactionLocation.Top;
+
                 return result;
             }
 
@@ -64,6 +68,7 @@ namespace Swarmops.Logic.Financial
         public Country Country { get; set; }
         public string Culture { get; set; }
         public string Currency { get; set; }
+        public LatestTransactionLocation LatestTransactionLocation;
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
     }
@@ -83,5 +88,18 @@ namespace Swarmops.Logic.Financial
         DateTime,
         TimeZone,
         Currency
+    }
+
+    public enum LatestTransactionLocation
+    {
+        Unknown = 0,
+        /// <summary>
+        /// Latest transaction is at the top of the file (the first record, meaning reverse chrono order).
+        /// </summary>
+        Top,
+        /// <summary>
+        /// Latest transaction is at the bottom of the file (last record, chrono order).
+        /// </summary>
+        Bottom
     }
 }

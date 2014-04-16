@@ -15,8 +15,9 @@
 
 	    $(document).ready(function () {
 
-	        $('#tableProfitLoss').treegrid(
+	        $('#tableResyncPreview').treegrid(
 	        {
+	            /*
 	            onBeforeExpand: function (foo) {
 	                $('span.profitlossdata-collapsed-' + foo.id).fadeOut('fast', function () {
 	                    $('span.profitlossdata-expanded-' + foo.id).fadeIn('slow');
@@ -28,7 +29,7 @@
 	                    $('span.profitlossdata-collapsed-' + foo.id).fadeIn('slow');
 	                });
 	            },
-
+                
 	            onLoadSuccess: function () {
 	                $('div.datagrid').css('opacity', 1);
 	                $('#imageLoadIndicator').hide();
@@ -54,7 +55,7 @@
                     }
 	                
                     $('span.commonHeader').show();
-	            }
+	            }*/
 	        });
 
 	        $('#<%=DropAccounts.ClientID %>').change(function () {
@@ -74,8 +75,6 @@
 	            $('#tableProfitLoss').treegid('reload');
 	        });
 
-
-	        $('div.datagrid').css('opacity', 0.4);
 	    });
 
         function uploadCompletedCallback() {
@@ -111,7 +110,10 @@
                             {
                                 width: "100%"
                             }, { queue: false });
-	                    $(".buttonNext").click();
+	                    $("#tableResyncPreview").treegrid(
+	                        {url: 'Json-ResyncPreview.aspx?Guid=<%= this.UploadFile.GuidString %>'});
+	                    $('#DivStepPreview').fadeIn();
+	                    $('#DivStepProcessing').slideUp();
 	                } else {
 	                    
 	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
@@ -189,30 +191,34 @@
     </ul>
     </div>
     
-    <h2>Step 3/4: Comparison results - Resync?</h2>
+    <div id="DivStepPreview" style="display:none">
+        <h2>Step 3/4: Comparison results - Resync?</h2>
     
-    <h2>Step 4/4: Resynchronizing with master...</h2>
+        <table id="tableResyncPreview" title="" class="easyui-treegrid" style="width:680px;height:600px"  
+            url=""
+            rownumbers="false"
+            animate="true"
+            fitColumns="true"
+            idField="id" treeField="rowName">
+            <thead>  
+                <tr>  
+                    <th field="rowName" width="180">Date / Transaction</th>  
+                    <th field="swarmopsData" width="140" align="left">Our Database</th>
+                    <th field="masterData" width="140" align="left">Master File</span></th>
+                    <th field="resyncAction" width="120" align="left">Resync Action</span></th>
+                    <th field="notes" width="100" align="left">Notes</th>  
+                </tr>  
+            </thead>  
+        </table> 
+    </div>
     
-    <h2>Resynchronization complete</h2>
-
-    <table id="tableProfitLoss" title="" class="easyui-treegrid" style="width:680px;height:600px"  
-        url=""
-        rownumbers="false"
-        animate="true"
-        fitColumns="true"
-        idField="id" treeField="name">
-        <thead>  
-            <tr>  
-                <th field="name" width="178"><asp:Literal ID="LiteralHeaderAccountName" runat="server"/></th>  
-                <th field="lastYear" width="80" align="right"><span class="commonHeader" id="headerStartYear" style="display:none"></span><span class="loadingHeader">&mdash;</span></th>  
-                <th field="q1" width="80" align="right"><span class="commonHeader" id="headerQ1" style="display:none"><asp:Literal ID="LiteralHeaderQ1" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-                <th field="q2" width="80" align="right"><span class="commonHeader" id="headerQ2" style="display:none"><asp:Literal ID="LiteralHeaderQ2" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-                <th field="q3" width="80" align="right"><span class="commonHeader" id="headerQ3" style="display:none"><asp:Literal ID="LiteralHeaderQ3" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
-                <th field="q4" width="80" align="right"><span class="commonHeader" id="headerQ4" style="display:none"><asp:Literal ID="LiteralHeaderQ4" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-                <th field="ytd" width="80" align="right"><span class="previousYearsHeader" id="previousYtd" style="display:none"></span><span class="currentYearHeader" style="display:none"><asp:Literal ID="LiteralHeaderYtd" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-            </tr>  
-        </thead>  
-    </table> 
+    <div id="DivStepResynchronizing" style="display:none">
+        <h2>Step 4/4: Resynchronizing with master...</h2>
+    </div>
+    
+    <div id="DivStepComplete" style="display:none">
+        <h2>Resynchronization complete</h2>
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">

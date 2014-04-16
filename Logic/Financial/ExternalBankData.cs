@@ -180,6 +180,19 @@ namespace Swarmops.Logic.Financial
                 recordList.Add(newRecord);
             }
 
+            if (Profile.LatestTransactionLocation == LatestTransactionLocation.Top)
+            {
+                LatestAccountBalanceCents = recordList[0].AccountBalanceCents;
+            }
+            else if (Profile.LatestTransactionLocation == LatestTransactionLocation.Bottom)
+            {
+                LatestAccountBalanceCents = recordList [recordList.Count- 1].AccountBalanceCents;
+            }
+            else
+            {
+                throw new ArgumentException("LatestTransactionLocation is undefined");
+            }
+
             recordList.Sort(new ExternalBankDataRecord());
 
             this.Records = recordList.ToArray();
@@ -187,5 +200,19 @@ namespace Swarmops.Logic.Financial
 
         public ExternalBankDataProfile Profile { get; set; }
         public ExternalBankDataRecord[] Records { get; private set; }
+        public long LatestAccountBalanceCents;
+    }
+
+
+    // Helper datakeeping classes for frontend below
+
+
+    public class ExternalBankMismatchingDateTime
+    {
+        public DateTime DateTime;
+        public int MasterTransactionCount;
+        public long MasterDeltaCents;
+        public int SwarmopsTransactionCount;
+        public long SwarmopsDeltaCents;
     }
 }
