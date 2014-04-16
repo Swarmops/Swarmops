@@ -229,7 +229,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
                     // Interpret and then import the data
 
-                    ImportedBankData bankData = null;
+                    ExternalBankData bankData = new ExternalBankData();
 
                     try
                     {
@@ -240,13 +240,15 @@ namespace Swarmops.Site.Pages.Ledgers
                         switch(this.HiddenFileType.Value)
                         {
                             case "Seb":
-                                bankData = ImportSebText(file.InputStream);
+                                bankData.Profile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId);
+                                bankData.LoadData(new StreamReader(file.InputStream, Encoding.GetEncoding(1252)), this.CurrentOrganization);
                                 break;
                             case "PayPal":
-                                bankData = ImportPaypal(file.InputStream);
+                                throw new NotImplementedException("Todo - fix after Easter");
+                                // bankData = ImportPaypal(file.InputStream);
                                 break;
                             case "Payson":
-                                bankData = ImportPayson(file.InputStream);
+                                throw new NotImplementedException("Won't reimplement");
                                 break;
                             case "BankgiroSE": // Payment file, not transaction file
                                 ImportedPaymentData paymentData = ImportBankgiroSE(file.InputStream);
@@ -256,7 +258,7 @@ namespace Swarmops.Site.Pages.Ledgers
                                 throw new InvalidOperationException("File type value not set to a valid filter name");
                         }
 
-                        this.LabelProcessing.Text = bankData.Rows.Count.ToString();
+                        this.LabelProcessing.Text = bankData.Records.ToString();
                         ImportResults results = ProcessImportedData(bankData);
 
                         if (results.AccountBalanceMatchesBank)
@@ -360,7 +362,7 @@ namespace Swarmops.Site.Pages.Ledgers
         }
 
 
-        protected ImportResults ProcessImportedData(ImportedBankData import)
+        protected ImportResults ProcessImportedData(ExternalBankData import)
         {
             FinancialAccount assetAccount = FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue));
             FinancialAccount autoDepositAccount = this.CurrentOrganization.FinancialAccounts.IncomeDonations;
@@ -368,21 +370,21 @@ namespace Swarmops.Site.Pages.Ledgers
 
             ImportResults result = new ImportResults();
             int count = 0;
-            int progressUpdateInterval = import.Rows.Count/40;
+            int progressUpdateInterval = import.Records.Length/40;
 
             if (progressUpdateInterval > 100)
             {
                 progressUpdateInterval = 100;
             }
 
-            foreach (ImportedBankRow row in import.Rows)
+            foreach (ExternalBankDataRecord row in import.Records)
             {
                 // Update progress.
 
                 count++;
                 if (progressUpdateInterval < 2 || count % progressUpdateInterval == 0)
                 {
-                    int percent = (count*99)/import.Rows.Count;
+                    int percent = (count*99)/import.Records.Length;
                     UpdateImportProgressBar(percent);
                 }
 
@@ -399,41 +401,30 @@ namespace Swarmops.Site.Pages.Ledgers
                 }
 
 
-                // Each row is at least a stub, probably more.
+                string importKey = row.ImportHash;
 
-                string importKey = row.SuppliedTransactionId;
-
-                // If importKey is empty, construct a hash from the data fields.
-
-                if (string.IsNullOrEmpty(importKey))
-                {
-                    string commentKey = row.Comment;
-                    if (row.DateTime.Year >= 2012)
-                    {
-                        commentKey = commentKey.ToLowerInvariant();
-                    }
-
-                    string hashKey = row.HashBase + commentKey + (row.AmountCentsNet / 100.0).ToString(CultureInfo.InvariantCulture) + (row.CurrentBalanceCents / 100.0).ToString(CultureInfo.InvariantCulture) +
-                                     row.DateTime.ToString("yyyy-MM-dd-hh-mm-ss");
-
-                    importKey = SHA1.Hash(hashKey).Replace(" ", "");
-                }
-
-                if (importKey.Length > 30)
-                {
-                    importKey = importKey.Substring(0, 30);
-                }
-
-                Int64 amountCents = row.AmountCentsNet;
+                Int64 amountCents = row.TransactionNetCents;
 
                 if (amountCents == 0)
                 {
-                    amountCents = row.AmountCentsGross;
+                    amountCents = row.TransactionGrossCents;
+                }
+
+                if (this.CurrentOrganization.Identity == 1 && assetAccount.Identity == 1 && this.CurrentOrganization.Name == "Piratpartiet SE")
+                {
+                    // This is an ugly-as-fuck hack that sorts under the category "just bring our pilots the fuck back to operational
+                    // status right fucking now".
+
+                    if (row.DateTime < new DateTime(2014,03,22))
+                    {
+                        result.DuplicateTransactions++;
+                        continue;
+                    }
                 }
 
                 FinancialTransaction transaction = FinancialTransaction.ImportWithStub(this.CurrentOrganization.Identity, row.DateTime,
                                                                                        assetAccount.Identity, amountCents,
-                                                                                       row.Comment, importKey,
+                                                                                       row.Description, importKey,
                                                                                        this.CurrentUser.Identity);
 
                 if (transaction != null)
@@ -442,7 +433,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
                     result.TransactionsImported++;
 
-                    FinancialAccounts accounts = FinancialAccounts.FromBankTransactionTag(row.Comment);
+                    FinancialAccounts accounts = FinancialAccounts.FromBankTransactionTag(row.Description);
 
                     if (accounts.Count == 1)
                     {
@@ -461,13 +452,13 @@ namespace Swarmops.Site.Pages.Ledgers
                                                                      geography.Identity, 0,
                                                                      transaction.Identity, localAccount.Identity.ToString());
                     }
-                    else if (row.Comment.ToLowerInvariant().StartsWith(this.CurrentOrganization.IncomingPaymentTag))
+                    else if (row.Description.ToLowerInvariant().StartsWith(this.CurrentOrganization.IncomingPaymentTag))
                     {
                         // Check for previously imported payment group
 
                         PaymentGroup group = PaymentGroup.FromTag(this.CurrentOrganization,
                                                                   "SEBGM" + DateTime.Today.Year.ToString() +   // TODO: Get tags from org
-                                                                  row.Comment.Substring(this.CurrentOrganization.IncomingPaymentTag.Length).Trim());
+                                                                  row.Description.Substring(this.CurrentOrganization.IncomingPaymentTag.Length).Trim());
 
                         if (group != null && group.Open)
                         {
@@ -490,7 +481,7 @@ namespace Swarmops.Site.Pages.Ledgers
                             // This is always an autodeposit, if there is a fee (which is never > 0.0)
 
                             transaction.AddRow(this.CurrentOrganization.FinancialAccounts.CostsBankFees, -row.FeeCents, this.CurrentUser);
-                            transaction.AddRow(autoDepositAccount, -row.AmountCentsGross, this.CurrentUser);
+                            transaction.AddRow(autoDepositAccount, -row.TransactionGrossCents, this.CurrentUser);
                         }
                         else if (amountCents < autoDepositLimit * 100)
                         {
@@ -519,7 +510,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             Int64 beyondEofCents = assetAccount.GetDeltaCents(result.LatestTransaction.AddSeconds(1), DateTime.Now.AddDays(2)); // Caution: the "AddSeconds(1)" is not foolproof, there may be other new txs on the same second.
 
-            if (databaseAccountBalanceCents - beyondEofCents == import.CurrentBalanceCents)
+            if (databaseAccountBalanceCents - beyondEofCents == import.LatestAccountBalanceCents)
             {
                 Payouts.AutomatchAgainstUnbalancedTransactions(this.CurrentOrganization);
                 result.AccountBalanceMatchesBank = true;

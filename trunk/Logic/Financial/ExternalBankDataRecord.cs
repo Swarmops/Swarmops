@@ -44,11 +44,8 @@ namespace Swarmops.Logic.Financial
                     string commentKey = Description.ToLowerInvariant();
 
                     string hashKey = NotUniqueId + commentKey + (TransactionNetCents / 100.0).ToString(CultureInfo.InvariantCulture) + (AccountBalanceCents / 100.0).ToString(CultureInfo.InvariantCulture) +
-                                     DateTime.ToString("yyyy-MM-dd-00-00-00"); 
+                                     DateTime.ToString("yyyy-MM-dd-HH-mm-ss"); 
                     
-                    // the 00-00-00 used to be hh-mm-ss but is replaced this way for backward hash compatibility
-                    // maybe replace cleanly at a certain year to include seconds in hash or so
-
                     importKey = SHA1.Hash(hashKey).Replace(" ", "");
                 }
 

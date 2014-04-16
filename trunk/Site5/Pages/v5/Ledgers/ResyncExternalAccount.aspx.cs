@@ -80,7 +80,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
 
-        [WebMethod(true)]
+        [WebMethod(EnableSession = true)]
         public static int GetProcessingProgress(string guid)
         {
             // Get data from static variables
@@ -92,7 +92,21 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return 0;
             }
 
-            return (int)_staticDataLookup[key];
+            lock (_staticDataLookup)
+            {
+                int percentReady = (int)_staticDataLookup[key];
+
+                if (percentReady >= 100)
+                {
+                    // copy result from static class-scope variable to session-scope variable
+                    HttpContext.Current.Session["LedgersResync" + guid + "MismatchArray"] =
+                        _staticDataLookup[guid + "MismatchArray"];
+
+                    _staticDataLookup[guid + "MismatchArray"] = null; // clear the static object, which will otherwise live on
+                }
+
+                return percentReady;
+            }
         }
 
         [WebMethod(true)]
@@ -256,23 +270,26 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 int percentProcessed = (int) (currentRecordIndex*100L/externalData.Records.Length);
 
-                if (percentProcessed > 1)
+                lock (_staticDataLookup)
                 {
-                    _staticDataLookup[guid + "PercentRead"] = percentProcessed; // for the progress bar to update async
+                    if (percentProcessed > 1)
+                    {
+                        _staticDataLookup[guid + "PercentRead"] = percentProcessed;
+                            // for the progress bar to update async
+                    }
+
+                    if (percentProcessed > 99)
+                    {
+                        // Placed inside loop to have a contiguous lock block, even though it decreases performance.
+                        // Should normally be placed just outside.
+                        _staticDataLookup[guid + "MismatchArray"] = mismatchList.ToArray();
+                    }
                 }
             }
+
 
         }
 
         private static Dictionary<string, object> _staticDataLookup;
-    }
-
-    public class ExternalBankMismatchingDateTime
-    {
-        public DateTime DateTime;
-        public int MasterTransactionCount;
-        public long MasterDeltaCents;
-        public int SwarmopsTransactionCount;
-        public long SwarmopsDeltaCents;
     }
 }
