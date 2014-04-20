@@ -102,7 +102,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     HttpContext.Current.Session["LedgersResync" + guid + "MismatchArray"] =
                         _staticDataLookup[guid + "MismatchArray"];
 
+                    HttpContext.Current.Session["LedgersResync" + guid + "Profile"] =
+                        _staticDataLookup[guid + "Profile"];
+
                     _staticDataLookup[guid + "MismatchArray"] = null; // clear the static object, which will otherwise live on
+                    _staticDataLookup[guid + "Profile"] = null;
                 }
 
                 return percentReady;
@@ -190,6 +194,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             _staticDataLookup[guid + "LastTx"] = 
                 externalData.Records[externalData.Records.Length - 1].DateTime.ToLongDateString();
             _staticDataLookup[guid + "TxCount"] = externalData.Records.Length.ToString("N0");
+
+            _staticDataLookup[guid + "Profile"] = externalData.Profile;
 
             _staticDataLookup[guid + "PercentRead"] = 1;
 

@@ -21,7 +21,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             string guid = Request.QueryString["Guid"];
 
             ExternalBankMismatchingDateTime[] mismatchArray =
-                (ExternalBankMismatchingDateTime[]) Session["LedgersResync" + guid + "MismatchArray"];
+                (ExternalBankMismatchingDateTime[])Session["LedgersResync" + guid + "MismatchArray"];
+
+            ExternalBankDataProfile profile = 
+                (ExternalBankDataProfile)Session["LedgersResync" + guid + "Profile"];
 
             if (!_authenticationData.CurrentUser.HasAccess(new Access(_authenticationData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
             {
@@ -42,7 +45,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 string childrenString = string.Empty; // Room for next step here
 
                 string rowId = mismatch.DateTime.ToString("yyyyMMddHHmmss");
-                string rowName = mismatch.DateTime.ToString("yyyy-MMM-dd HH:mm:ss");
+                string rowName = mismatch.DateTime.ToString(profile.DateTimeFormatString);
 
                 string swarmopsData = ((double) mismatch.SwarmopsDeltaCents/100.0).ToString("N2") + " " +
                                       currentOrganizationCurrency;
