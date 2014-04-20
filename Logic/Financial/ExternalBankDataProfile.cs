@@ -13,6 +13,27 @@ namespace Swarmops.Logic.Financial
             this.FieldNames = new Dictionary<ExternalBankDataFieldName, string>();
         }
 
+        public string DateTimeFormatString
+        {
+            get
+            {
+                switch (Precision)
+                {
+                    case ExternalBankDateTimePrecision.Day:
+                        return "yyyy-MM-dd";
+                    case ExternalBankDateTimePrecision.Minute:
+                        return "yyyy-MM-dd HH:mm";
+                    case ExternalBankDateTimePrecision.Second:
+                        return "yyyy-MM-dd HH:mm:ss";
+                    case ExternalBankDateTimePrecision.Microsecond:
+                        return "yyyy-MM-dd HH:mm:ss.ffffff";
+                    default:
+                        throw new NotImplementedException("Unknown ExternalDateTimePrecision: " + Precision.ToString());
+                }
+
+            }
+        }
+
         static public ExternalBankDataProfile FromIdentity (int externalBankDataProfileId)
         {
             ExternalBankDataProfile result = new ExternalBankDataProfile();
@@ -32,6 +53,7 @@ namespace Swarmops.Logic.Financial
                 result.FieldNames[ExternalBankDataFieldName.NotUniqueId] = "Verifikationsnummer";
 
                 result.LatestTransactionLocation = LatestTransactionLocation.Top;
+                result.Precision = ExternalBankDateTimePrecision.Day;
 
                 return result;
             }
@@ -54,6 +76,7 @@ namespace Swarmops.Logic.Financial
                 result.FieldNames[ExternalBankDataFieldName.UniqueId] = "Transaction ID";
 
                 result.LatestTransactionLocation = LatestTransactionLocation.Top;
+                result.Precision = ExternalBankDateTimePrecision.Second;
 
                 return result;
             }
@@ -69,6 +92,7 @@ namespace Swarmops.Logic.Financial
         public string Culture { get; set; }
         public string Currency { get; set; }
         public LatestTransactionLocation LatestTransactionLocation;
+        public ExternalBankDateTimePrecision Precision;
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
     }
@@ -101,5 +125,34 @@ namespace Swarmops.Logic.Financial
         /// Latest transaction is at the bottom of the file (last record, chrono order).
         /// </summary>
         Bottom
+    }
+
+    public enum ExternalBankDateTimePrecision
+    {
+        Unknown = 0,
+        /// <summary>
+        /// The external bank has day precision only. Typical for oldbanks.
+        /// </summary>
+        Day,
+        /// <summary>
+        /// The external bank has minute (hour:minute) precision on top of day.
+        /// </summary>
+        Minute,
+        /// <summary>
+        /// The external bank tags transactions with hour, minute, and second.
+        /// </summary>
+        Second,
+        /// <summary>
+        /// The external bank has millisecond-level timestamps for transactions. Not implemented.
+        /// </summary>
+        Millisecond,
+        /// <summary>
+        /// The external bank has microsecond-resolution timestamp for transactions
+        /// </summary>
+        Microsecond,
+        /// <summary>
+        /// The external bank has nanosecond-resolution timestamp for transactions
+        /// </summary>
+        Nanosecond
     }
 }
