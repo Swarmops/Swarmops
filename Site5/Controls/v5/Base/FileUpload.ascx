@@ -20,7 +20,7 @@
                     if (file.error == null || file.error.length < 1) {
                         $('#<%=this.ClientID %>_DivUploadCount').append(imageUploadSuccess);
                         
-                        <% if (this.ClientUploadCompleteCallback.Length > 0)
+                        <% if (!String.IsNullOrEmpty(this.ClientUploadCompleteCallback))
                            { %>
                         
                         <%= this.ClientUploadCompleteCallback %>();
