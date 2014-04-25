@@ -138,7 +138,7 @@ Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>(ACTION ITEM) [OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
@@ -154,7 +154,8 @@ Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>(ACTION ITEM) [OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your expense claim.
@@ -188,6 +189,22 @@ The claim will be paid out to you when the amount has also been attested by the 
   </data>
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[OrganizationName] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
+
+Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>(ACTION ITEM) [OrganizationName] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Receipts have been filed that need validation for their financial processes to continue.
+
+Please log on to Swarmops at [SystemUrl] to confirm or reject them.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>(ACTION ITEM) [OrganizationName] Receipts Filed - Validation Needed</value>
   </data>
   <data name="System_Exception_Body" xml:space="preserve">
     <value>An unhandled exception was thrown in Swarmops:

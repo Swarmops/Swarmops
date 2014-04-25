@@ -4,6 +4,9 @@ using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -13,13 +16,15 @@ namespace Swarmops.Logic.Financial
     public class InboundInvoice: BasicInboundInvoice, IAttestable
     {
         public static InboundInvoice Create (Organization organization, DateTime dueDate, Int64 amountCents,
-            FinancialAccount budget, string supplier, string payToAccount, string ocr, 
+            FinancialAccount budget, string supplier, string description, string payToAccount, string ocr, 
             string invoiceReference, Person creatingPerson)
         {
             InboundInvoice newInvoice = FromIdentity(SwarmDb.GetDatabaseForWriting().
                 CreateInboundInvoice(organization.Identity, dueDate, budget.Identity,
                     supplier, payToAccount, ocr,
                     invoiceReference, amountCents, creatingPerson.Identity));
+
+            newInvoice.Description = description;  // Not in original schema; not cause for schema update
 
             // Create a corresponding financial transaction with rows
 
@@ -33,6 +38,13 @@ namespace Swarmops.Logic.Financial
             // Make the transaction dependent on the inbound invoice
 
             transaction.Dependency = newInvoice;
+
+            // Create notification (slightly misplaced logic, but this is failsafest place)
+
+            OutboundComm.CreateNotificationAttestationNeeded(budget, creatingPerson, supplier, (double)amountCents / 100.0, description, NotificationResource.InboundInvoice_Created); // Slightly misplaced logic, but failsafer here
+            SwarmopsLogEntry.Create(creatingPerson,
+                                    new InboundInvoiceCreatedLogEntry(creatingPerson, supplier, description, (double)amountCents / 100.0, budget), newInvoice);
+
             return newInvoice;
         }
 
@@ -175,6 +187,21 @@ namespace Swarmops.Logic.Financial
             get { return FinancialValidations.ForObject(this); }
         }
 
+
+        public string Description
+        {
+            get
+            {
+                return
+                    ObjectOptionalData.ForObject(this).GetOptionalDataString(
+                        ObjectOptionalDataType.InboundInvoiceDescription);
+            }
+
+            set
+            {
+                ObjectOptionalData.ForObject(this).SetOptionalDataString(ObjectOptionalDataType.InboundInvoiceDescription, value);
+            }
+        }
 
 
         #region IAttestable Members

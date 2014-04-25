@@ -64,9 +64,11 @@ namespace Swarmops.Logic.Financial
 
             transaction.Dependency = newClaim;
 
-            // Create notification
+            // Create notifications
 
-            OutboundComm.CreateNotificationForAttest(budget, claimer, (double)amountCents / 100.0, description, NotificationResource.ExpenseClaim_Created); // Slightly misplaced logic, but failsafer here
+            OutboundComm.CreateNotificationAttestationNeeded(budget, claimer, string.Empty, (double)amountCents / 100.0, description, NotificationResource.ExpenseClaim_Created); // Slightly misplaced logic, but failsafer here
+            OutboundComm.CreateNotificationFinancialValidationNeeded(organization, (double) amountCents/100.0,
+                                                                     NotificationResource.Receipts_Filed);
             SwarmopsLogEntry.Create(claimer,
                                     new ExpenseClaimFiledLogEntry(claimer /*filing person*/, claimer /*beneficiary*/, (double) amountCents/100.0, budget, description), newClaim);
 
