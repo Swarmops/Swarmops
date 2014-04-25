@@ -124,7 +124,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralErrorAmount.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount;  // TODO: Validation errors
             this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose;
             this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
-            this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
+            this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Account;
             this.LiteralErrorDocuments.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents;
 
         }
@@ -185,8 +185,24 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             documents.SetForeignObjectForAll(invoice);
 
-            // TODO: Clear fields, show success message, return to blank fields
+            // Display success message
 
+            this.LiteralSuccess.Text = HttpUtility.UrlEncode(String.Format(Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
+                                                     invoice.Identity)).Replace("+", "%20");
+
+            // Reset all fields for next invoice
+
+            this.FileUpload.Reset();
+            this.TextSupplier.Text = String.Empty;
+            this.TextAccount.Text = String.Empty;
+            this.TextPurpose.Text = String.Empty;
+            this.TextReference.Text = String.Empty;
+            this.TextAmount.Text = 0.ToString("N2");
+            this.TextDueDate.Text = DateTime.Today.AddDays(30).ToShortDateString(); // Use current culture
+
+            // the easyUI combo fields should reset automatically on form submission unless we explicitly reconstruct
+
+            this.TextSupplier.Focus();
         }
 
 

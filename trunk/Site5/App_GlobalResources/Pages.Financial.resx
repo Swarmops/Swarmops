@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>Cash Advance #{0} for {1} has been attested for {3:N2}.</value>
+    <value>Cash Advance #{0:N0} for {1} has been attested for {3:N2}.</value>
     <comment>Status message.</comment>
   </data>
   <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Cash Advance #{0} for {1} was UN-attested.  It will not be paid out unless attested again.</value>
+    <value>Cash Advance #{0:N0} for {1} was UN-attested.  It will not be paid out unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>Expense Claim #{0} from {1} for {2} {3:N2} has been attested.</value>
+    <value>Expense Claim #{0:N0} from {1} for {2} {3:N2} has been attested.</value>
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Expense Claim #{0} from {1} was DE-attested. It will not be paid out unless attested again.</value>
+    <value>Expense Claim #{0:N0} from {1} was DE-attested. It will not be paid out unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
@@ -166,28 +166,28 @@
     <value>This is where you attest costs that other people are requesting from your budgets. Nothing is paid before you have attested it.</value>
   </data>
   <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>Invoice #{0} from {1} for {2} {3:N2} has been attested.</value>
+    <value>Invoice #{0:N0} from {1} for {2} {3:N2} has been attested.</value>
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Invoice #{0} from {1} was UN-attested.  It will not be paid unless attested again.</value>
+    <value>Invoice #{0:N0} from {1} was UN-attested.  It will not be paid unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>Attest Costs</value>
   </data>
   <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>Conference #{0}, arranged by {1}, has been attested for {3:N2}.</value>
+    <value>Conference #{0:N0}, arranged by {1}, has been attested for {3:N2}.</value>
   </data>
   <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>Conference #{0} by {1} was UN-attested.  It will not be greenlighted unless attested again.</value>
+    <value>Conference #{0:N0} by {1} was UN-attested.  It will not be greenlighted unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
-    <value>Salary #{0} for {1} was attested for {3:N2}.</value>
+    <value>Salary #{0:N0} for {1} was attested for {3:N2}.</value>
   </data>
   <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Salary #{0} for {1} was DE-attested. It will not be paid out unless attested again.</value>
+    <value>Salary #{0:N0} for {1} was DE-attested. It will not be paid out unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
@@ -222,12 +222,19 @@
     <value>Manual</value>
     <comment>Other invoices come without automated processing and a manual </comment>
   </data>
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Inbound Invoice #{0:N0} filed.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
   <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
     <value>Account</value>
     <comment>Free text input, intended to convey everything needed to get the money right</comment>
   </data>
   <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
     <value>Upload image file</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
+    <value>Please enter the supplier's bank account or equivalent.</value>
   </data>
   <data name="FileExpenseClaim_Amount" xml:space="preserve">
     <value>Expense claim amount (in {0})</value>
@@ -329,11 +336,11 @@
     <value>Cannot undo payout #{0}: it has already settled or closed.</value>
   </data>
   <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
-    <value>Payout #{0} to {1} was created.</value>
+    <value>Payout #{0:N0} to {1} was created.</value>
     <comment>Written as log message when the user confirms a payout has been made.</comment>
   </data>
   <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
-    <value>Payout #{0} was undone and everything restored.</value>
+    <value>Payout #{0:N0} was undone and everything restored.</value>
   </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>Advance amount (in {0})</value>
@@ -403,9 +410,9 @@
     <value>Validate Receipts</value>
   </data>
   <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>The receipts for Expense Claim #{0} for {1} {2:N2} have been DE-validated. The expense claim will not proceed to payout unless re-validated.</value>
+    <value>The receipts for Expense Claim #{0:N0} for {1} {2:N2} have been DE-validated. The expense claim will not proceed to payout unless re-validated.</value>
   </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
-    <value>The receipts for Expense Claim #{0} for {1} {2:N2} have been validated.</value>
+    <value>The receipts for Expense Claim #{0:N0} for {1} {2:N2} have been validated.</value>
   </data>
 </root>
