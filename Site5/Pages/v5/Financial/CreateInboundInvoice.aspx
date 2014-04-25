@@ -14,7 +14,7 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
- 
+
             <asp:Repeater ID="RepeaterTagDropScript" runat="server"><ItemTemplate>
             $('#DropTags<%# Eval("TagSetId") %>').combotree({
                 animate: true,
@@ -27,6 +27,10 @@
             });
             </ItemTemplate></asp:Repeater>
 
+
+            if (successMessage.length > 0) {
+                alertify.success(successMessage);  // displayed on successful creation of invoice
+            }
         });
 
 
@@ -100,6 +104,9 @@
 
             return true;
         }
+
+
+        var successMessage = unescape('<asp:Literal runat="server" ID="LiteralSuccess" />');
 
     </script>
 </asp:Content>

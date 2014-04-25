@@ -43,6 +43,13 @@ namespace Swarmops.Controls.Base
         public string ClientUploadCompleteCallback { get; set; }
 
 
+        public void Reset()
+        {
+            Guid newGuid = Guid.NewGuid();
+            this.HiddenGuid.Value = GuidString = newGuid.ToString();
+        }
+
+
         public enum UploadFilter
         {
             Unknown = 0,
