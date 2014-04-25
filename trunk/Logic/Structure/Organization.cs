@@ -862,5 +862,27 @@ namespace Swarmops.Logic.Structure
             return new DateTime(year, 12, 31, 23, 59, 59, 999);
         }
 
+
+
+        public People ValidatingPeople
+        {
+            get
+            {
+                People result = new People();
+
+                // HACK: this gets the TEMPORARY list
+
+                string peopleIdstring = Parameters.TemporaryAccessListWrite;
+                string[] peopleIds = peopleIdstring.Split(' ');
+
+                foreach (string peopleId in peopleIds)
+                {
+                    result.Add(Person.FromIdentity(Int32.Parse(peopleId)));
+                }
+
+                return result;
+            }
+        }
+
     }
 }

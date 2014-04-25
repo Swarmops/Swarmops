@@ -47,7 +47,7 @@ namespace Swarmops.Logic.Financial
                                                                                           budget.Identity, amountCents,
                                                                                           description));
 
-            OutboundComm.CreateNotificationForAttest(budget, forPerson, (double) amountCents/100.0, description, NotificationResource.CashAdvance_Requested); // Slightly misplaced logic, but failsafer here
+            OutboundComm.CreateNotificationAttestationNeeded(budget, forPerson, string.Empty, (double) amountCents/100.0, description, NotificationResource.CashAdvance_Requested); // Slightly misplaced logic, but failsafer here
             SwarmopsLogEntry.Create(forPerson,
                                     new CashAdvanceRequestedLogEntry(createdByPerson, forPerson, (double) amountCents/100.0, budget, description),
                                     newAdvance);

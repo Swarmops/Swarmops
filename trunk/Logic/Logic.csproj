@@ -218,6 +218,7 @@
     <Compile Include="Support\Imagery.cs" />
     <Compile Include="Support\IXmlPayload.cs" />
     <Compile Include="Support\LogEntries\CashAdvanceRequestedLogEntry.cs" />
+    <Compile Include="Support\LogEntries\InboundInvoiceCreatedLogEntry.cs" />
     <Compile Include="Support\LogEntries\ExpenseClaimFiledLogEntry.cs" />
     <Compile Include="Support\LogEntries\FinancialActionBase.cs" />
     <Compile Include="Support\LogEntries\LogEntryBase.cs" />

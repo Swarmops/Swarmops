@@ -164,7 +164,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             InboundInvoice invoice = InboundInvoice.Create(CurrentOrganization, dueDate, amountCents, budget,
-                                                           this.TextSupplier.Text, this.TextAccount.Text, string.Empty,
+                                                           this.TextSupplier.Text, this.TextPurpose.Text, this.TextAccount.Text, string.Empty,
                                                            this.TextReference.Text, CurrentUser);
 
             foreach (int tagSetId in _tagSetIds)

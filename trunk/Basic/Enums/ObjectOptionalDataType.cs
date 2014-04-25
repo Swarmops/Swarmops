@@ -7,7 +7,8 @@ namespace Swarmops.Basic.Enums
         Person,
         FinancialAccount,
         Organization,
-        OutboundInvoice
+        OutboundInvoice,
+        InboundInvoice
     }
 
     public enum ObjectOptionalDataType
@@ -204,8 +205,11 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// Temporary mechanism for the Swarmops Red release: a coarse access list (read-only access)
         /// </summary>
-        OrgTemporaryAccessListRead
-
+        OrgTemporaryAccessListRead,
+        /// <summary>
+        /// Free-text description of an inbound invoice (what's it for?)
+        /// </summary>
+        InboundInvoiceDescription
     }
 
 }

@@ -103,7 +103,9 @@ namespace Swarmops.Logic.Communications.Transmission
         ExpenseClaim_Denied,
         ExpenseClaim_Adjusted,
         ExpenseClaim_Rebudgeted,
-        Payout_Settled
+        Payout_Settled,
+        InboundInvoice_Created,
+        Receipts_Filed
     }
 
 // ReSharper restore InconsistentNaming
@@ -123,7 +125,9 @@ namespace Swarmops.Logic.Communications.Transmission
         EmbeddedPreformattedText,
         RequestPurpose,
         HostName,
-        SwarmopsVersion
+        SwarmopsVersion,
+        Supplier,
+        Description
     }
 
     [Serializable]

@@ -95,13 +95,15 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public static OutboundComm CreateNotificationForAttest(FinancialAccount budget, Person concernedPerson, double amountRequested, string purpose, NotificationResource notification)
+        public static OutboundComm CreateNotificationAttestationNeeded(FinancialAccount budget, Person concernedPerson, string supplier, double amountRequested, string purpose, NotificationResource notification)
         {
             NotificationPayload payload = new NotificationPayload(notification.ToString());
             payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.Code;
             payload.Strings[NotificationString.OrganizationName] = budget.Organization.Name;
             payload.Strings[NotificationString.BudgetAmountFloat] = amountRequested.ToString(CultureInfo.InvariantCulture);
             payload.Strings[NotificationString.RequestPurpose] = purpose;
+            payload.Strings[NotificationString.Description] = purpose;
+            payload.Strings[NotificationString.Supplier] = supplier;
             payload.Strings[NotificationString.BudgetName] = budget.Name;
             payload.Strings[NotificationString.ConcernedPersonName] = concernedPerson.Canonical;
 
@@ -117,6 +119,32 @@ namespace Swarmops.Logic.Communications
             else
             {
                 comm.AddRecipient(budget.Owner);
+            }
+
+            comm.Resolved = true;
+
+            return comm;
+
+        }
+
+
+        public static OutboundComm CreateNotificationFinancialValidationNeeded (Organization organization, double amountRequested, NotificationResource notification)
+        {
+            NotificationPayload payload = new NotificationPayload(notification.ToString());
+            payload.Strings[NotificationString.CurrencyCode] = organization.Currency.Code;
+            payload.Strings[NotificationString.OrganizationName] = organization.Name;
+            payload.Strings[NotificationString.BudgetAmountFloat] = amountRequested.ToString(CultureInfo.InvariantCulture);
+
+            OutboundComm comm = OutboundComm.Create(null, null, organization, CommResolverClass.Unknown, null,
+                                                    CommTransmitterClass.CommsTransmitterMail,
+                                                    new PayloadEnvelope(payload).ToXml(),
+                                                    OutboundCommPriority.Low);
+
+            People validators = organization.ValidatingPeople;
+
+            foreach (Person validator in validators)
+            {
+                comm.AddRecipient(validator);
             }
 
             comm.Resolved = true;
