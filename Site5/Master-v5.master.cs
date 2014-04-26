@@ -62,7 +62,7 @@ namespace Swarmops
 
             // Check for SSL and force it
 
-            if ((!Request.IsSecureConnection) || Request.Url.ToString().StartsWith("http://"))  // Both are necessary, as some reverse proxies will https-ify an original nonsecure connection
+            if ((!Request.IsSecureConnection) || Request.Url.ToString().StartsWith("http://"))  // Both are necessary, as some reverse proxies will https-ify an original nonsecure connection. First is state at server, second is state at client
             {
                 if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://swarmops-"))
                 {
