@@ -204,7 +204,7 @@ namespace Swarmops.Logic.Financial
     }
 
 
-    // Helper datakeeping classes for frontend below
+    // Below: Helper classes for the frontend that locates mismatches with the bank master records.
 
 
     public class ExternalBankMismatchingDateTime
@@ -214,5 +214,56 @@ namespace Swarmops.Logic.Financial
         public long MasterDeltaCents;
         public int SwarmopsTransactionCount;
         public long SwarmopsDeltaCents;
+        public ExternalBankMismatchingRecordDescription[] MismatchingRecords;
+    }
+
+    public class ExternalBankMismatchingRecordDescription
+    {
+        public string Description;
+        public long[] MasterCents; // may have multiple txs with this description
+        public long[] SwarmopsCents;  // may have multiple txs with this description
+        public ExternalBankMismatchResyncAction ResyncAction;
+        public object[] TransactionDependencies; // matching the Swarmops array
+    }
+
+    public class ExternalBankMismatchHelper
+    {
+        public ExternalBankMismatchHelper()
+        {
+            Master = new List<ExternalBankMismatchingRecordHelper>();
+            Swarmops = new List<ExternalBankMismatchingRecordHelper>();
+        }
+
+        public List<ExternalBankMismatchingRecordHelper> Master;
+        public List<ExternalBankMismatchingRecordHelper> Swarmops;
+    }
+
+    public class ExternalBankMismatchingRecordHelper
+    {
+        public ExternalBankMismatchingRecordHelper()
+        {
+            Cents = new List<long>();
+            Dependencies = new List<object>();
+        }
+
+        public List<long> Cents;
+        public List<object> Dependencies;
+    }
+
+    public enum ExternalBankMismatchResyncAction
+    {
+        Unknown = 0,
+        /// <summary>
+        /// Zero out and rewrite the Swarmops database transaction
+        /// </summary>
+        RewriteSwarmops,
+        /// <summary>
+        /// Zero out the Swarmops database transaction (it's not in the master)
+        /// </summary>
+        DeleteSwarmops,
+        /// <summary>
+        /// No resync possible - manual action required
+        /// </summary>
+        ManualAction
     }
 }
