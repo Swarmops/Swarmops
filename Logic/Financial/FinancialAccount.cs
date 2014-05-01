@@ -62,7 +62,13 @@ namespace Swarmops.Logic.Financial
 
         public FinancialAccountRows GetRows(DateTime start, DateTime end)
         {
-            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading().GetFinancialAccountRows(Identity, start, end);
+            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading().GetFinancialAccountRows(Identity, start, end, false);
+            return FinancialAccountRows.FromArray(basicRows);
+        }
+
+        public FinancialAccountRows GetRowsFar(DateTime start, DateTime end) // selects lowerbound < x <= upperbound
+        {
+            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading().GetFinancialAccountRows(Identity, start, end, true);
             return FinancialAccountRows.FromArray(basicRows);
         }
 

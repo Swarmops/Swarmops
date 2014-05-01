@@ -395,4 +395,12 @@
     <value>- - Select one - -</value>
     <comment>Shown in dropdowns when selection required</comment>
   </data>
+  <data name="Global_Missing" xml:space="preserve">
+    <value>- missing -</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>- multiple -</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
 </root>

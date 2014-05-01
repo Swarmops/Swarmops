@@ -23,5 +23,10 @@ namespace Swarmops.Logic.Financial
         }
 
         #endregion
+
+        public FinancialTransaction Transaction
+        {
+            get { return FinancialTransaction.FromIdentity(this.FinancialTransactionId); }
+        }
     }
 }

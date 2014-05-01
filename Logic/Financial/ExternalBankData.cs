@@ -219,6 +219,15 @@ namespace Swarmops.Logic.Financial
 
     public class ExternalBankMismatchingRecordDescription
     {
+        public ExternalBankMismatchingRecordDescription()
+        {
+            this.Description = string.Empty;
+            this.MasterCents = new long[0];
+            this.SwarmopsCents = new long[0];
+            this.TransactionDependencies = new object[0];
+            this.ResyncAction = ExternalBankMismatchResyncAction.Unknown;
+        }
+
         public string Description;
         public long[] MasterCents; // may have multiple txs with this description
         public long[] SwarmopsCents;  // may have multiple txs with this description
@@ -226,21 +235,21 @@ namespace Swarmops.Logic.Financial
         public object[] TransactionDependencies; // matching the Swarmops array
     }
 
-    public class ExternalBankMismatchHelper
+    public class ExternalBankMismatchConstruction
     {
-        public ExternalBankMismatchHelper()
+        public ExternalBankMismatchConstruction()
         {
-            Master = new List<ExternalBankMismatchingRecordHelper>();
-            Swarmops = new List<ExternalBankMismatchingRecordHelper>();
+            Master = new Dictionary<string, ExternalBankMismatchingRecordConstruction>();
+            Swarmops = new Dictionary<string, ExternalBankMismatchingRecordConstruction>();
         }
 
-        public List<ExternalBankMismatchingRecordHelper> Master;
-        public List<ExternalBankMismatchingRecordHelper> Swarmops;
+        public Dictionary<string, ExternalBankMismatchingRecordConstruction> Master;
+        public Dictionary<string, ExternalBankMismatchingRecordConstruction> Swarmops;
     }
 
-    public class ExternalBankMismatchingRecordHelper
+    public class ExternalBankMismatchingRecordConstruction
     {
-        public ExternalBankMismatchingRecordHelper()
+        public ExternalBankMismatchingRecordConstruction()
         {
             Cents = new List<long>();
             Dependencies = new List<object>();
@@ -261,6 +270,10 @@ namespace Swarmops.Logic.Financial
         /// Zero out the Swarmops database transaction (it's not in the master)
         /// </summary>
         DeleteSwarmops,
+        /// <summary>
+        /// Create a Swarmops transaction (master exists, not in Swarmops)
+        /// </summary>
+        CreateSwarmops,
         /// <summary>
         /// No resync possible - manual action required
         /// </summary>

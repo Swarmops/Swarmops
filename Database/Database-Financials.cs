@@ -9,6 +9,8 @@ using Swarmops.Basic.Types.Financial;
 
 // This is the first part of Database to fully use MySql.
 
+// TODO: This was written with several classes in one file. Break out to one class per file.
+
 namespace Swarmops.Database
 {
     public partial class SwarmDb
@@ -319,15 +321,26 @@ namespace Swarmops.Database
         }
 
         public BasicFinancialAccountRow[] GetFinancialAccountRows (int financialAccountId, DateTime startDateTime,
-                                                                   DateTime endDateTime)
+                                                                   DateTime endDateTime, bool selectFar)
         {
-            return GetFinancialAccountRows(new int[] {financialAccountId}, startDateTime, endDateTime);
+            return GetFinancialAccountRows(new int[] {financialAccountId}, startDateTime, endDateTime, selectFar);
         }
 
         public BasicFinancialAccountRow[] GetFinancialAccountRows(int[] financialAccountIds, DateTime startDateTime,
-                                                           DateTime endDateTime)
+                                                           DateTime endDateTime, bool selectFar)
         {
             var result = new List<BasicFinancialAccountRow>();
+
+            // initialize to near selector (equal sign by the lower bound
+
+            string selectorLower = ">=";
+            string selectorUpper = "<";
+
+            if (selectFar) // equal sign by the upper bound
+            {
+                selectorLower = ">";
+                selectorUpper = "<=";
+            }
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -336,9 +349,9 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand(
                         "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
-                        JoinIds(financialAccountIds) + ") AND DateTime >= '" +
+                        JoinIds(financialAccountIds) + ") AND DateTime " + selectorLower + " '" +
                         startDateTime.ToString("yyyy-MM-dd HH:mm:ss") +
-                        "' AND DateTime < '" + endDateTime.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY DateTime,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime;",
+                        "' AND DateTime " + selectorUpper + " '" + endDateTime.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY DateTime,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime;",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -443,8 +456,6 @@ namespace Swarmops.Database
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
-
-                // TODO: Must limit this to dimension 1
 
                 string commandString = "select FinancialTransactions.FinancialTransactionId, " +
                                        "FinancialTransactions.OrganizationId, FinancialTransactions.DateTime, " +
