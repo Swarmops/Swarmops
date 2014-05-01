@@ -42,9 +42,21 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (ExternalBankMismatchingDateTime mismatch in mismatchArray)
             {
-                string childrenString = string.Empty; // Room for next step here
-
                 string rowId = mismatch.DateTime.ToString("yyyyMMddHHmmss");
+
+                List<string> childItems = new List<string>();
+
+                foreach (ExternalBankMismatchingRecordDescription mismatchingRecord in mismatch.MismatchingRecords)
+                {
+                    childItems.Add("{\"id\":\"" + rowId + childItems.Count.ToString("##0") + "\",\"rowName\":\"" +
+                              JsonSanitize(mismatchingRecord.Description) + "\",\"swarmopsData\":\"" +
+                              PrintCentsArray(mismatchingRecord.SwarmopsCents) + "\",\"masterData\":\"" +
+                              PrintCentsArray(mismatchingRecord.MasterCents) + "\",\"notes\":\"" +
+                              JsonSanitize("-todo-") + "\"}");
+                }
+
+                string childrenString = String.Join(",", childItems.ToArray());
+
                 string rowName = mismatch.DateTime.ToString(profile.DateTimeFormatString);
 
                 string swarmopsData = ((double) mismatch.SwarmopsDeltaCents/100.0).ToString("N2") + " " +
@@ -66,6 +78,28 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private CultureInfo _renderCulture;
         private AuthenticationData _authenticationData;
         private Dictionary<int, FinancialAccounts> _hashedAccounts; 
+
+
+        private string PrintCents (long cents)
+        {
+            return (((double) cents) / 100.0).ToString("N2"); // TODO: Verify that culture is applied
+        }
+
+        private string PrintCentsArray (long[] cents)
+        {
+            if (cents.Length == 1)
+            {
+                return PrintCents(cents[0]);
+            }
+            else if (cents.Length == 0)
+            {
+                return Resources.Global.Global_Missing;
+            }
+            else
+            {
+                return Resources.Global.Global_Multiple;
+            }
+        }
 
 
         private string GetAccountGroup (FinancialAccountType type, string localizedGroupName)

@@ -247,6 +247,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     // "AddSeconds" because DeltaCents operates on ">= lowbound, < highbound"
                 long masterDeltaCents = externalData.Records[currentRecordIndex++].TransactionNetCents;
                 int masterTransactionCount = 1;
+                int timestampStartIndex = currentRecordIndex;
 
                 while (currentRecordIndex < externalData.Records.Length &&
                        externalData.Records[currentRecordIndex].DateTime == timeWalker)
@@ -266,9 +267,74 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     newMismatch.SwarmopsDeltaCents = swarmopsDeltaCents;
                     newMismatch.SwarmopsTransactionCount = 0; // TODO
                     
-                    // Load transactions from both sources
+                    // Load transactions from both sources. First, create the interim construction object.
 
-                    // Analyze actions
+                    ExternalBankMismatchConstruction mismatchConstruction = new ExternalBankMismatchConstruction();
+
+                    // Load from Master
+
+                    for (int innerRecordIndex = timestampStartIndex; innerRecordIndex < currentRecordIndex; innerRecordIndex++)
+                    {
+                        if (!mismatchConstruction.Master.ContainsKey(externalData.Records[innerRecordIndex].Description))
+                        {
+                            mismatchConstruction.Master[externalData.Records[innerRecordIndex].Description] =
+                                new ExternalBankMismatchingRecordConstruction();
+                        }
+
+                        mismatchConstruction.Master[externalData.Records[innerRecordIndex].Description].Cents.Add(externalData.Records[innerRecordIndex].TransactionNetCents);
+                        mismatchConstruction.Master[externalData.Records[innerRecordIndex].Description].Dependencies.Add(null); // no dependencies on the master side, only on swarmops side
+                    }
+
+                    // Load from Swarmops
+
+                    FinancialAccountRows swarmopsTransactionRows =
+                        account.GetRowsFar(lastTimestamp, timeWalker);  // the "select far" is a boundary < x <= boundary selector. Default is boundary <= x < boundary.
+
+                    foreach (FinancialAccountRow swarmopsTransactionRow in swarmopsTransactionRows)
+                    {
+                        FinancialTransaction swarmopsTransaction = swarmopsTransactionRow.Transaction;
+
+                        if (!mismatchConstruction.Swarmops.ContainsKey(swarmopsTransaction.Description))
+                        {
+                            mismatchConstruction.Swarmops[swarmopsTransaction.Description] =
+                                new ExternalBankMismatchingRecordConstruction();
+                        }
+
+                        mismatchConstruction.Swarmops[swarmopsTransaction.Description].Cents.Add(swarmopsTransactionRow.AmountCents);
+                        mismatchConstruction.Swarmops[swarmopsTransaction.Description].Dependencies.Add(swarmopsTransaction.Dependency);
+                    }
+
+                    // Then, parse the construction object to the presentation object.
+
+                    Dictionary <string,ExternalBankMismatchingRecordDescription> mismatchingRecordList = new Dictionary<string, ExternalBankMismatchingRecordDescription>();
+
+                    foreach (string masterKey in mismatchConstruction.Master.Keys)
+                    {
+                        ExternalBankMismatchingRecordDescription newRecord =
+                            new ExternalBankMismatchingRecordDescription();
+                        newRecord.Description = masterKey;
+                        newRecord.MasterCents = mismatchConstruction.Master[masterKey].Cents.ToArray();
+
+                        mismatchingRecordList[masterKey] = newRecord;
+                    }
+
+                    foreach (string swarmopsKey in mismatchConstruction.Swarmops.Keys)
+                    {
+                        if (!mismatchingRecordList.ContainsKey(swarmopsKey))
+                        {
+                            mismatchingRecordList[swarmopsKey] = new ExternalBankMismatchingRecordDescription();
+                            mismatchingRecordList[swarmopsKey].Description = swarmopsKey;
+                        }
+
+                        mismatchingRecordList[swarmopsKey].SwarmopsCents =
+                            mismatchConstruction.Swarmops[swarmopsKey].Cents.ToArray();
+                        mismatchingRecordList[swarmopsKey].TransactionDependencies =
+                            mismatchConstruction.Swarmops[swarmopsKey].Dependencies.ToArray();
+                    }
+
+                    newMismatch.MismatchingRecords = mismatchingRecordList.Values.ToArray();
+
+                    // TODO: Analyze actions
 
 
                     mismatchList.Add(newMismatch);
