@@ -48,11 +48,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 foreach (ExternalBankMismatchingRecordDescription mismatchingRecord in mismatch.MismatchingRecords)
                 {
-                    childItems.Add("{\"id\":\"" + rowId + childItems.Count.ToString("##0") + "\",\"rowName\":\"" +
-                              JsonSanitize(mismatchingRecord.Description) + "\",\"swarmopsData\":\"" +
-                              PrintCentsArray(mismatchingRecord.SwarmopsCents) + "\",\"masterData\":\"" +
-                              PrintCentsArray(mismatchingRecord.MasterCents) + "\",\"notes\":\"" +
-                              JsonSanitize("-todo-") + "\"}");
+                    for (int masterIndex = 0; masterIndex < mismatchingRecord.MasterCents.Count(); masterIndex++)
+                    {
+                        childItems.Add("{\"id\":\"" + rowId + childItems.Count.ToString("##0") + "\",\"rowName\":\"" +
+                                       JsonSanitize(mismatchingRecord.Description) + "\",\"swarmopsData\":\"" +
+                                       PrintNullableCents(mismatchingRecord.SwarmopsCents[masterIndex]) + "\",\"masterData\":\"" +
+                                       PrintNullableCents(mismatchingRecord.MasterCents[masterIndex]) + "\",\"notes\":\"" +
+                                       JsonSanitize(mismatchingRecord.ResyncActions[masterIndex].ToString()) + "\"}");
+                    }
                 }
 
                 string childrenString = String.Join(",", childItems.ToArray());
@@ -79,6 +82,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private AuthenticationData _authenticationData;
         private Dictionary<int, FinancialAccounts> _hashedAccounts; 
 
+
+        private string PrintNullableCents (long cents)
+        {
+            if (cents == 0)
+            {
+                return Resources.Global.Global_Missing;
+            }
+
+            return (((double)cents) / 100.0).ToString("N2"); // TODO: Verify that culture is applied
+        }
 
         private string PrintCents (long cents)
         {

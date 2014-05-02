@@ -225,13 +225,13 @@ namespace Swarmops.Logic.Financial
             this.MasterCents = new long[0];
             this.SwarmopsCents = new long[0];
             this.TransactionDependencies = new object[0];
-            this.ResyncAction = ExternalBankMismatchResyncAction.Unknown;
+            this.ResyncActions = new ExternalBankMismatchResyncAction[0];
         }
 
         public string Description;
         public long[] MasterCents; // may have multiple txs with this description
         public long[] SwarmopsCents;  // may have multiple txs with this description
-        public ExternalBankMismatchResyncAction ResyncAction;
+        public ExternalBankMismatchResyncAction[] ResyncActions;
         public object[] TransactionDependencies; // matching the Swarmops array
     }
 
@@ -262,6 +262,10 @@ namespace Swarmops.Logic.Financial
     public enum ExternalBankMismatchResyncAction
     {
         Unknown = 0,
+        /// <summary>
+        /// No action necessary
+        /// </summary>
+        NoAction,
         /// <summary>
         /// Zero out and rewrite the Swarmops database transaction
         /// </summary>
