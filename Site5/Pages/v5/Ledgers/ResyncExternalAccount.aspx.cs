@@ -304,16 +304,149 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         mismatchConstruction.Swarmops[swarmopsTransaction.Description].Dependencies.Add(swarmopsTransaction.Dependency);
                     }
 
-                    // Then, parse the construction object to the presentation object.
+                    // Then, parse the intermediate construction object to the presentation-and-action object.
 
                     Dictionary <string,ExternalBankMismatchingRecordDescription> mismatchingRecordList = new Dictionary<string, ExternalBankMismatchingRecordDescription>();
 
                     foreach (string masterKey in mismatchConstruction.Master.Keys)
                     {
+                        Dictionary<int, bool> checkMasterIndex = new Dictionary<int, bool>();
+                        Dictionary<int, bool> checkSwarmopsIndex = new Dictionary<int, bool>();
+
+                        // For each key and entry for each key;
+
+                        // 1) locate an exact corresponding amount in swarmops records and log; failing that,
+                        // 2) if exactly one record left in master and swarmops records, log; failing that,
+                        // 3) log the rest of the master OR rest of swarmops records with no corresponding
+                        //    equivalent with counterpart. (May produce bad results if 2 consistent mismatches
+                        //    for every description.)
+
                         ExternalBankMismatchingRecordDescription newRecord =
                             new ExternalBankMismatchingRecordDescription();
                         newRecord.Description = masterKey;
-                        newRecord.MasterCents = mismatchConstruction.Master[masterKey].Cents.ToArray();
+
+                        List<long> masterCentsList = new List<long>();
+                        List<long> swarmopsCentsList = new List<long>();
+                        List<object> dependenciesList = new List<object>();
+                        List<ExternalBankMismatchResyncAction> actionsList = new List<ExternalBankMismatchResyncAction>();
+
+                        // STEP 1 - locate all identical matches
+
+                        for (int masterIndex = 0; masterIndex < mismatchConstruction.Master[masterKey].Cents.Count; masterIndex++)
+                        {
+                            // no "continue" necessary on first run-through; nothing has been checked off yet
+
+                            long findMasterCents = mismatchConstruction.Master[masterKey].Cents[masterIndex];
+
+                            for (int swarmopsIndex = 0; swarmopsIndex < mismatchConstruction.Swarmops[masterKey].Cents.Count; swarmopsIndex++)
+                            {
+                                if (findMasterCents == mismatchConstruction.Swarmops[masterKey].Cents [swarmopsIndex])
+                                {
+                                    // There is a match as per case 1. Record both, mark both as used, continue.
+
+                                    masterCentsList.Add(findMasterCents);
+                                    swarmopsCentsList.Add(mismatchConstruction.Swarmops[masterKey].Cents[swarmopsIndex]); // should be equal, we're defensive here
+                                    dependenciesList.Add(mismatchConstruction.Swarmops[masterKey].Dependencies[swarmopsIndex]);
+                                    actionsList.Add(ExternalBankMismatchResyncAction.NoAction);
+                                    
+                                    checkMasterIndex[masterIndex] = true;
+                                    checkSwarmopsIndex[swarmopsIndex] = true;
+
+                                    break;
+                                }
+                            }
+                        }
+
+                        // STEP 2 - if exactly one record left on both sides, connect and log as mismatching record
+
+                        // TODO: improve logic to handle same number of records left on both sides
+
+                        if (mismatchConstruction.Master[masterKey].Cents.Count - checkMasterIndex.Keys.Count == 1 &&
+                            mismatchConstruction.Swarmops [masterKey].Cents.Count - checkSwarmopsIndex.Keys.Count == 1)
+                        {
+                            for (int masterIndex = 0; masterIndex < mismatchConstruction.Master[masterKey].Cents.Count; masterIndex++)
+                            {
+                                if (checkMasterIndex.ContainsKey(masterIndex))
+                                {
+                                    continue; // This will fire for all but one indexes
+                                }
+
+                                long findMasterCents = mismatchConstruction.Master[masterKey].Cents[masterIndex];
+
+                                for (int swarmopsIndex = 0; swarmopsIndex < mismatchConstruction.Swarmops[masterKey].Cents.Count; swarmopsIndex++)
+                                {
+                                    if (checkSwarmopsIndex.ContainsKey(swarmopsIndex))
+                                    {
+                                        continue;
+                                    }
+
+                                    masterCentsList.Add(findMasterCents);
+                                    swarmopsCentsList.Add(mismatchConstruction.Swarmops[masterKey].Cents[swarmopsIndex]);
+                                    dependenciesList.Add(mismatchConstruction.Swarmops[masterKey].Dependencies[swarmopsIndex]);
+                                    actionsList.Add(ExternalBankMismatchResyncAction.RewriteSwarmops);
+
+                                    checkMasterIndex[masterIndex] = true;
+                                    checkSwarmopsIndex[swarmopsIndex] = true;
+                                }
+                            }
+                        }
+
+                        // STEP 3 - log remaining records on both sides as missing counterparts. Only one of these should fire.
+
+                        // STEP 3a - log remaining on Master side
+
+                        if (mismatchConstruction.Master[masterKey].Cents.Count > checkMasterIndex.Keys.Count)
+                        {
+                            for (int masterIndex = 0; masterIndex < mismatchConstruction.Master[masterKey].Cents.Count; masterIndex++)
+                            {
+                                if (checkMasterIndex.ContainsKey(masterIndex))
+                                {
+                                    continue;
+                                }
+
+                                masterCentsList.Add(mismatchConstruction.Master[masterKey].Cents[masterIndex]);
+                                swarmopsCentsList.Add(0); // null equivalent; invalid value
+                                dependenciesList.Add(null);
+                                actionsList.Add(ExternalBankMismatchResyncAction.CreateSwarmops);
+
+                                checkMasterIndex[masterIndex] = true;
+                            }
+                        }
+
+                        // STEP 3b - log remaining on Swarmops side
+
+                        if (mismatchConstruction.Swarmops[masterKey].Cents.Count > checkSwarmopsIndex.Keys.Count)
+                        {
+                            for (int swarmopsIndex = 0; swarmopsIndex < mismatchConstruction.Swarmops[masterKey].Cents.Count; swarmopsIndex++)
+                            {
+                                if (checkSwarmopsIndex.ContainsKey(swarmopsIndex))
+                                {
+                                    continue;
+                                }
+
+                                masterCentsList.Add(0); // null equivalent; invalid value
+                                swarmopsCentsList.Add(mismatchConstruction.Swarmops[masterKey].Cents[swarmopsIndex]);
+
+                                if (mismatchConstruction.Swarmops[masterKey].Dependencies[swarmopsIndex] != null)
+                                {
+                                    dependenciesList.Add(
+                                        mismatchConstruction.Swarmops[masterKey].Dependencies[swarmopsIndex]);
+                                    actionsList.Add(ExternalBankMismatchResyncAction.ManualAction); // can't auto
+                                }
+                                else
+                                {
+                                    dependenciesList.Add(null);
+                                    actionsList.Add(ExternalBankMismatchResyncAction.DeleteSwarmops);
+                                }
+
+                                checkMasterIndex[swarmopsIndex] = true;
+                            }
+                        }
+
+                        newRecord.MasterCents = masterCentsList.ToArray();
+                        newRecord.SwarmopsCents = swarmopsCentsList.ToArray();
+                        newRecord.ResyncActions = actionsList.ToArray();
+                        newRecord.TransactionDependencies = dependenciesList.ToArray();
 
                         mismatchingRecordList[masterKey] = newRecord;
                     }
@@ -333,9 +466,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     }
 
                     newMismatch.MismatchingRecords = mismatchingRecordList.Values.ToArray();
-
-                    // TODO: Analyze actions
-
 
                     mismatchList.Add(newMismatch);
                 }
