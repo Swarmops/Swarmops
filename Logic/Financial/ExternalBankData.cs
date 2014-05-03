@@ -161,10 +161,8 @@ namespace Swarmops.Logic.Financial
                 }
 
                 string amountNetString = lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionNet]];
-                double amountNetDouble = Double.Parse(amountNetString, NumberStyles.Currency,
-                                                      new CultureInfo(Profile.Culture));
 
-                newRecord.TransactionNetCents = (long) (amountNetDouble*100.0);
+                newRecord.TransactionNetCents = ParseAmountString(amountNetString);
 
                 // TODO: Net, fee
 
@@ -196,6 +194,69 @@ namespace Swarmops.Logic.Financial
             recordList.Sort(new ExternalBankDataRecord());
 
             this.Records = recordList.ToArray();
+        }
+
+
+        private Int64 ParseAmountString (string input)
+        {
+            // This parser deals with a number of different cases and cultures.
+            // It returns cents.
+
+            // "1"         => 100
+            // "1.00"      => 100
+            // "1,00"      => 100
+            // "100"       => 10,000
+            // "1,000"     => 100,000
+            // "1,000.00"  => 100,000
+            // "1 000,00"  => 100,000
+
+            // Normally, this could be parsed as a double, but your typical Pentium
+            // errors in double handling creates rare mismatches of single cents.
+            // Therefore, must be parsed as an int.
+
+            char testDecimalSeparator = '1'; // dummy non-separator
+
+            if (input.Length > 3)
+            {
+                testDecimalSeparator = input[input.Length - 3];
+            }
+
+            if (testDecimalSeparator != '.' && testDecimalSeparator != ',')
+            {
+                // No known decimal separator where one is expected for monetary amounts, 
+                // so multiply amount by 100 by adding two zeroes to string, as we're supposed
+                // to be returning cents
+
+                bool weirdCaseTriggered = false;
+
+                if (input.Length > 2)
+                {
+                    testDecimalSeparator = input[input.Length - 2];
+
+                    if (testDecimalSeparator == '.' || testDecimalSeparator == ',')
+                    {
+                        // Fucking SEB doesn't even have the manners to only have whole units or cents,
+                        // but can present a half-crown as ",5". Damn them...
+
+                        input += "0";
+                        weirdCaseTriggered = true;
+                    }
+                }
+
+                if (!weirdCaseTriggered)
+                {
+                    input += "00";
+                }
+            }
+
+
+            // remove all known noise from the digit sequence: spaces, thousands accents, commas, periods
+
+            input = input.Replace(" ", "").Replace("'", "").Replace(",", "").Replace(".", "");
+
+            // parse what's remaining as cents in Int64
+
+            return Int64.Parse(input);
         }
 
         public ExternalBankDataProfile Profile { get; set; }

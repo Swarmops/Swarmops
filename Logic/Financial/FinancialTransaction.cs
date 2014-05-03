@@ -88,6 +88,26 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public Int64 this[FinancialAccount account]
+        {
+            get
+            {
+                Int64 result = 0;
+
+                FinancialTransactionRows rows = this.Rows;
+
+                foreach (FinancialTransactionRow row in rows)
+                {
+                    if (row.FinancialAccountId == account.Identity)
+                    {
+                        result += row.AmountCents;
+                    }
+                }
+
+                return result;
+            }
+        }
+
         public new string Description
         {
             get { return base.Description; }
