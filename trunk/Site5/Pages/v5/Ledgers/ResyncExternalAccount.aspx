@@ -203,8 +203,8 @@
             <thead>  
                 <tr>  
                     <th field="rowName" width="180">Date / Transaction</th>  
-                    <th field="swarmopsData" width="140" align="left">Our Database</th>
-                    <th field="masterData" width="140" align="left">Master File</span></th>
+                    <th field="swarmopsData" width="140" align="right">Our Database</th>
+                    <th field="masterData" width="140" align="right">Master File</span></th>
                     <th field="resyncAction" width="120" align="left">Resync Action</span></th>
                     <th field="notes" width="100" align="left">Notes</th>  
                 </tr>  

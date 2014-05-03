@@ -13,7 +13,7 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
-    public class Payout: BasicPayout
+    public class Payout: BasicPayout, ISummable
     {
         #region Creation and Construction
 
@@ -663,5 +663,11 @@ namespace Swarmops.Logic.Financial
             this.Open = false;
         }
 
+        #region Implementation of ISummable
+
+        public long SumCents { get { return this.AmountCents; } }
+        public OrganizationFinancialAccountType CounterAccountType { get { return OrganizationFinancialAccountType.Unknown; } }
+
+        #endregion
     }
 }

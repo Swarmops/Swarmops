@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Swarm;
@@ -8,7 +9,7 @@ using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Financial
 {
-    public class PaymentGroup: BasicPaymentGroup
+    public class PaymentGroup: BasicPaymentGroup, ISummable
     {
         private PaymentGroup(BasicPaymentGroup basic): base (basic)
         {
@@ -179,5 +180,20 @@ namespace Swarmops.Logic.Financial
                 return String.Join(", ", payerList.ToArray());
             }
         }
+
+
+        #region Implementation of ISummable
+
+        public long SumCents 
+        { 
+            get { return this.AmountCents; }
+        }
+
+        public OrganizationFinancialAccountType CounterAccountType
+        {
+            get { return OrganizationFinancialAccountType.AssetsOutboundInvoices; }
+        }
+
+        #endregion
     }
 }

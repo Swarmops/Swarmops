@@ -108,6 +108,10 @@ namespace Swarmops.Basic.Enums
         /// </summary>
         CostsCurrencyFluctuations,
         /// <summary>
+        /// Various bookkeeping errors
+        /// </summary>
+        CostsMiscalculations,
+        /// <summary>
         /// When closing books, this is the yearly result (balanced against DebtsEquity)
         /// </summary>
         CostsYearlyResult, // multi-account type

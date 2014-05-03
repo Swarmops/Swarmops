@@ -75,7 +75,15 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                return FinancialAccount.FromIdentity(SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(_organizationId, accountType));
+                int accountId = SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(_organizationId,
+                                                                                                  accountType);
+
+                if (accountId == 0)
+                {
+                    return null; // not set
+                }
+
+                return FinancialAccount.FromIdentity(accountId);
             }
             set
             {
@@ -180,6 +188,11 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount IncomeSales
         {
             get { return this[OrganizationFinancialAccountType.IncomeSales]; }
+        }
+
+        public FinancialAccount ConstsMiscalculations
+        {
+            get { return this[OrganizationFinancialAccountType.CostsMiscalculations]; }
         }
 
         public FinancialAccounts CostsConferences

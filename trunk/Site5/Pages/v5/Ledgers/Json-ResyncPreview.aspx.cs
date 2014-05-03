@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
+using Swarmops.Basic.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -50,11 +51,25 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 {
                     for (int masterIndex = 0; masterIndex < mismatchingRecord.MasterCents.Count(); masterIndex++)
                     {
+                        string dependencyString = string.Empty;
+                        object dependency = mismatchingRecord.TransactionDependencies[masterIndex];
+
+                        if (dependency != null)
+                        {
+                            dependencyString = dependency.GetType().ToString();
+                            int lastPeriod = dependencyString.LastIndexOf('.');
+                            dependencyString = dependencyString.Substring(lastPeriod + 1);
+
+                            dependencyString += " #" + (dependency as IHasIdentity).Identity.ToString("N0");
+
+                        }
+
                         childItems.Add("{\"id\":\"" + rowId + childItems.Count.ToString("##0") + "\",\"rowName\":\"" +
                                        JsonSanitize(mismatchingRecord.Description) + "\",\"swarmopsData\":\"" +
-                                       PrintNullableCents(mismatchingRecord.SwarmopsCents[masterIndex]) + "\",\"masterData\":\"" +
-                                       PrintNullableCents(mismatchingRecord.MasterCents[masterIndex]) + "\",\"notes\":\"" +
-                                       JsonSanitize(mismatchingRecord.ResyncActions[masterIndex].ToString()) + "\"}");
+                                       PrintNullableCents(currentOrganizationCurrency, mismatchingRecord.SwarmopsCents[masterIndex]) + "\",\"masterData\":\"" +
+                                       PrintNullableCents(currentOrganizationCurrency, mismatchingRecord.MasterCents[masterIndex]) + "\",\"resyncAction\":\"" +
+                                       JsonSanitize(mismatchingRecord.ResyncActions[masterIndex].ToString()) + "\",\"notes\":\"" +
+                                       JsonSanitize(dependencyString) + "\"}");
                     }
                 }
 
@@ -62,11 +77,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 string rowName = mismatch.DateTime.ToString(profile.DateTimeFormatString);
 
-                string swarmopsData = ((double) mismatch.SwarmopsDeltaCents/100.0).ToString("N2") + " " +
-                                      currentOrganizationCurrency;
+                string swarmopsData = currentOrganizationCurrency + " " +
+                                      ((double) mismatch.SwarmopsDeltaCents/100.0).ToString("N2");
 
-                string masterData = ((double)mismatch.MasterDeltaCents / 100.0).ToString("N2") + " " +
-                                      currentOrganizationCurrency;
+                string masterData = currentOrganizationCurrency + " " +
+                                    ((double) mismatch.MasterDeltaCents/100.0).ToString("N2");
 
                 string notes = "Diff: " + ((double)(mismatch.MasterDeltaCents - mismatch.SwarmopsDeltaCents) / 100.0).ToString("N2");
 
@@ -83,14 +98,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private Dictionary<int, FinancialAccounts> _hashedAccounts; 
 
 
-        private string PrintNullableCents (long cents)
+        private string PrintNullableCents (string currency, long cents)
         {
             if (cents == 0)
             {
                 return Resources.Global.Global_Missing;
             }
 
-            return (((double)cents) / 100.0).ToString("N2"); // TODO: Verify that culture is applied
+            return currency + " " + (((double)cents) / 100.0).ToString("N2"); // TODO: Verify that culture is applied
         }
 
         private string PrintCents (long cents)
