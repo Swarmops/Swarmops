@@ -285,7 +285,7 @@ namespace Swarmops.Logic.Financial
             this.Description = string.Empty;
             this.MasterCents = new long[0];
             this.SwarmopsCents = new long[0];
-            this.TransactionDependencies = new object[0];
+            // this.TransactionDependencies = new object[0];
             this.ResyncActions = new ExternalBankMismatchResyncAction[0];
         }
 
@@ -293,7 +293,8 @@ namespace Swarmops.Logic.Financial
         public long[] MasterCents; // may have multiple txs with this description
         public long[] SwarmopsCents;  // may have multiple txs with this description
         public ExternalBankMismatchResyncAction[] ResyncActions;
-        public object[] TransactionDependencies; // matching the Swarmops array
+        // public object[] TransactionDependencies;    // matching the Swarmops array
+        public FinancialTransaction[] Transactions; // matching the Swarmops array
     }
 
     public class ExternalBankMismatchConstruction
@@ -313,11 +314,11 @@ namespace Swarmops.Logic.Financial
         public ExternalBankMismatchingRecordConstruction()
         {
             Cents = new List<long>();
-            Dependencies = new List<object>();
+            this.Transactions = new List<FinancialTransaction>();
         }
 
         public List<long> Cents;
-        public List<object> Dependencies;
+        public List<FinancialTransaction> Transactions;
     }
 
     public enum ExternalBankMismatchResyncAction
