@@ -52,7 +52,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     for (int masterIndex = 0; masterIndex < mismatchingRecord.MasterCents.Count(); masterIndex++)
                     {
                         string dependencyString = string.Empty;
-                        object dependency = mismatchingRecord.TransactionDependencies[masterIndex];
+                        FinancialTransaction transaction = mismatchingRecord.Transactions[masterIndex];
+                        object dependency = null;
+                        
+                        if (transaction != null)
+                        {
+                            dependency = transaction.Dependency;
+                        }
 
                         if (dependency != null)
                         {
