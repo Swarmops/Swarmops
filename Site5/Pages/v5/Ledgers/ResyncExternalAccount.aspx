@@ -85,7 +85,7 @@
 	        $.ajax({
 	            type: "POST",
 	            url: "ResyncExternalAccount.aspx/InitializeProcessing",
-                data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
+                data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
@@ -149,6 +149,42 @@
 	        });
 	    }
 
+        function executeResync() {
+            $('#SpanExecuteAbort').hide();
+            $('#SpanExecuteQuestion').fadeOut();
+            $('#DivStepPreview').slideUp().fadeOut();
+            $('#DivStepResynchronizing').fadeIn();
+
+            // Execute synchronously - shouldn't take more than a few seconds. If necessary, progress bar.
+
+	        $.ajax({
+	            type: "POST",
+	            url: "ResyncExternalAccount.aspx/ExecuteResync",
+                data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
+	            async: false,
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                
+                    $('#SpanRecordsTotal').text(msg.d.RecordsTotal);
+                    $('#SpanRecordsFail').text(msg.d.RecordsFail);
+                    $('#SpanRecordsSuccess').text(msg.d.RecordsSuccess);
+
+	                if (msg.d.RecordsFail > 0) {
+                        $('#DivStepResynchronizing').slideUp().fadeOut();
+                        $('#DivStepSuccessPartial').fadeIn();
+	                } else {
+                        $('#DivStepResynchronizing').slideUp().fadeOut();
+                        $('#DivStepSuccessComplete').fadeIn();
+	                }
+	            }
+	        });
+            
+
+            
+
+        }
+
         var progressReceived = false;
 
 	    var currentYear = <%=DateTime.Today.Year %>;
@@ -192,7 +228,7 @@
     </div>
     
     <div id="DivStepPreview" style="display:none">
-        <h2>Step 3/4: Comparison results - Resync?</h2>
+        <h2>Step 3/4: Comparison results - Resync? <span id="SpanExecuteQuestion"><a href="#" onclick="executeResync(); return false;">EXECUTE</a> | <a id="SpanExecuteAbort" href="/">ABORT</a></span></h2>
     
         <table id="tableResyncPreview" title="" class="easyui-treegrid" style="width:680px;height:600px"  
             url=""
@@ -206,7 +242,6 @@
                     <th field="swarmopsData" width="140" align="right">Our Database</th>
                     <th field="masterData" width="140" align="right">Master File</span></th>
                     <th field="resyncAction" width="120" align="left">Resync Action</span></th>
-                    <th field="notes" width="100" align="left">Notes</th>  
                 </tr>  
             </thead>  
         </table> 
@@ -214,10 +249,18 @@
     
     <div id="DivStepResynchronizing" style="display:none">
         <h2>Step 4/4: Resynchronizing with master...</h2>
+        <p>Processing, please wait...</p>
     </div>
     
-    <div id="DivStepComplete" style="display:none">
+    <div id="DivStepSuccessComplete" style="display:none">
         <h2>Resynchronization complete</h2>
+        <p>All Swarmops records (<span id="SpanRecordsTotal">[...]</span>) have been successfully resynchronized with the master file.</p>
+        <p>You may <a href="/">return to dashboard</a> if you like.</p>
+    </div>
+    <div id="DivStepSuccessPartial" style="display:none">
+        <h2>Resynchronization partially complete</h2>
+        <p>Most Swarmops records (<span id="SpanRecordsSuccess">[...]</span>) have been successfully resynchronized with the master file. <strong>Some (<span id="SpanRecordsFail">[...]</span>) have not.</strong></p>
+        <p>Due to dependencies, manual action is required for the remaining records. Run resynchronization <a href="#" onclick="location.reload();">again</a> to see which records could not be automatically resynchronized.</p>
     </div>
 </asp:Content>
 
