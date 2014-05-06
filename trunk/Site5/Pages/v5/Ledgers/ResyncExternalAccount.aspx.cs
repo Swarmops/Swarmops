@@ -11,7 +11,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Globalization;
 using Swarmops.Basic.Enums;
+using Swarmops.Basic.Interfaces;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
@@ -105,8 +107,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     HttpContext.Current.Session["LedgersResync" + guid + "Profile"] =
                         _staticDataLookup[guid + "Profile"];
 
+                    HttpContext.Current.Session["LedgersResync" + guid + "Account"] =
+                        _staticDataLookup[guid + "Account"];
+
                     _staticDataLookup[guid + "MismatchArray"] = null; // clear the static object, which will otherwise live on
                     _staticDataLookup[guid + "Profile"] = null;
+                    
+                    // TODO: Clear all _staticDataLookup starting with guid (leaks memory slightly)
                 }
 
                 return percentReady;
@@ -139,19 +146,164 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod(true)]
-        public static void InitializeProcessing(string guid)
+        public static void InitializeProcessing(string guid, string accountIdString)
         {
             // Start an async thread that does all the work, then return
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
+            int accountId = Int32.Parse(accountIdString);
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+            if (account.Organization.Identity != authData.CurrentOrganization.Identity ||
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             Thread initThread = new Thread(ProcessUploadThread);
 
             ProcessThreadArguments args = new ProcessThreadArguments
-                                              {Guid = guid, Organization = authData.CurrentOrganization};
+                                              {Guid = guid, Organization = authData.CurrentOrganization, Account = account};
 
             initThread.Start(args);
         }
+
+
+
+        [WebMethod(EnableSession = true)]
+        public static ResyncResults ExecuteResync (string guid)
+        {
+            AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
+
+            if (!authenticationData.CurrentUser.HasAccess(new Access(authenticationData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            ResyncResults results = new ResyncResults();
+
+            ExternalBankMismatchingDateTime[] mismatchArray =
+                (ExternalBankMismatchingDateTime[]) HttpContext.Current.Session["LedgersResync" + guid + "MismatchArray"];
+
+            FinancialAccount account = 
+                (FinancialAccount) HttpContext.Current.Session["LedgersResync" + guid + "Account"];
+
+            long autoDepositDonationCents = 1000 * 100;
+            FinancialAccount autoDonationAccount = account.Organization.FinancialAccounts.IncomeDonations;
+
+            if (authenticationData.CurrentOrganization.Identity != account.OrganizationId)
+            {
+                throw new InvalidOperationException("Mismatching org");
+            }
+
+            foreach (ExternalBankMismatchingDateTime mismatchDateTime in mismatchArray)
+            {
+                foreach (ExternalBankMismatchingRecordDescription mismatchingRecord in mismatchDateTime.MismatchingRecords)
+                {
+                    for (int index = 0; index < mismatchingRecord.MasterCents.Length; index++)
+                    {
+                        results.RecordsTotal++;
+                        long cents = mismatchingRecord.MasterCents[index];
+
+                        bool unhandled = false;
+                        bool handlable = true;
+
+                        FinancialTransaction tx = mismatchingRecord.Transactions[index];
+
+                        if (tx != null && tx.Dependency != null)
+                        {
+                            unhandled = true;
+
+                            IHasIdentity dependency = tx.Dependency as IHasIdentity;
+
+                            if (dependency is PaymentGroup && mismatchingRecord.ResyncActions[index] == ExternalBankMismatchResyncAction.RewriteSwarmops)
+                            {
+                                if (cents == (dependency as PaymentGroup).SumCents)
+                                {
+                                    // Amount checks out with dependency; rewrite requested; this is handlable on auto
+
+                                    Dictionary<int, long> newTx = new Dictionary<int, long>();
+                                    newTx[account.Identity] = cents;
+                                    newTx[account.Organization.FinancialAccounts.AssetsOutboundInvoices.Identity] =
+                                        -cents;
+                                    tx.RecalculateTransaction(newTx, authenticationData.CurrentUser);
+                                    unhandled = false;
+                                }
+                            }
+
+
+                            handlable = false; // need to fix this
+                        }
+
+
+                        if (handlable) switch (mismatchingRecord.ResyncActions[index])
+                        {
+                            case ExternalBankMismatchResyncAction.DeleteSwarmops:
+                                if (tx == null)
+                                {
+                                    throw new InvalidOperationException("Can't have Delete op on a null transaction");
+                                }
+
+                                tx.Description = tx.Description + " (killed/zeroed in resync)";
+                                tx.RecalculateTransaction(new Dictionary<int, long>(), authenticationData.CurrentUser);  // zeroes out
+                                break;
+                            case ExternalBankMismatchResyncAction.RewriteSwarmops:
+                                if (tx == null)
+                                {
+                                    throw new InvalidOperationException("Can't have Rewrite op on a null transaction");
+                                }
+
+                                Dictionary<int, long> newTx = new Dictionary<int, long>();
+                                newTx[account.Identity] = cents;
+                                if (cents > 0 && cents < autoDepositDonationCents)
+                                {
+                                    newTx[autoDonationAccount.Identity] = -cents; // negative; P&L account
+                                }
+                                tx.RecalculateTransaction(newTx, authenticationData.CurrentUser);
+                                break;
+                            case ExternalBankMismatchResyncAction.CreateSwarmops:
+                                if (tx != null)
+                                {
+                                    throw new InvalidOperationException("Transaction seems to already exist");
+                                }
+
+                                tx = FinancialTransaction.Create(account.OwnerPersonId, mismatchDateTime.DateTime,
+                                                                 mismatchingRecord.Description);
+                                tx.AddRow(account, cents, authenticationData.CurrentUser);
+
+                                if (cents > 0 && cents < autoDepositDonationCents)
+                                {
+                                    tx.AddRow(autoDonationAccount, -cents, authenticationData.CurrentUser);
+                                }
+                                break;
+                            case ExternalBankMismatchResyncAction.NoAction:
+                                // no action
+                                break;
+                            default:
+                                // not handled
+                                unhandled = true;
+                                break;
+                        }
+
+                        if (unhandled)
+                        {
+                            results.RecordsFail++;
+                        }
+                        else
+                        {
+                            results.RecordsSuccess++;
+                        }
+                    }
+                }
+            }
+
+            return results;
+        }
+
+
+
+
 
 
         public class ExternalBankDataStatistics
@@ -162,12 +314,19 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
 
+        public class ResyncResults
+        {
+            public int RecordsTotal { get; set; }
+            public int RecordsSuccess { get; set; }
+            public int RecordsFail { get; set; }
+        }
+
         private class ProcessThreadArguments
         {
             public string Guid { get; set; }
             public Organization Organization { get; set; }
+            public FinancialAccount Account { get; set; }
         }
-
 
         private static void ProcessUploadThread(object args)
         {
@@ -182,8 +341,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             Document uploadedDoc = documents[0];
 
+            FinancialAccount account = ((ProcessThreadArguments)args).Account;
+
             ExternalBankData externalData = new ExternalBankData();
-            externalData.Profile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId); // HACK HACK HACK
+            externalData.Profile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId); // TODO: HACK HACK HACK HACK LOAD 
 
             using (StreamReader reader = new StreamReader(StorageRoot + uploadedDoc.ServerFileName, Encoding.GetEncoding(1252)))
             {
@@ -198,10 +359,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             _staticDataLookup[guid + "Profile"] = externalData.Profile;
 
             _staticDataLookup[guid + "PercentRead"] = 1;
-
-            int accountId = 1; // TODO: HACK HACK HACK HACK
-
-            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
             DateTime timeWalker = externalData.Records[0].DateTime;
             int currentRecordIndex = 0;
@@ -313,8 +470,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                 new ExternalBankMismatchingRecordConstruction();
                         }
 
-                        mismatchConstruction.Swarmops[description].Cents.Add(transaction [account]);
-                        mismatchConstruction.Swarmops[description].Transactions.Add(transaction);
+                        long cents = transaction[account];
+
+                        if (cents != 0) // only add nonzero records
+                        {
+                            mismatchConstruction.Swarmops[description].Cents.Add(transaction[account]);
+                            mismatchConstruction.Swarmops[description].Transactions.Add(transaction);
+                        }
                     }
 
                     // Then, parse the intermediate construction object to the presentation-and-action object.
@@ -503,7 +665,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                             mismatchingRecordList[swarmopsKey].MasterCents =
                                 new long[mismatchConstruction.Swarmops[swarmopsKey].Cents.Count]; // inits to zero
 
-                            mismatchingRecordList[swarmopsKey].ResyncActions = new ExternalBankMismatchResyncAction[mismatchConstruction.Swarmops[swarmopsKey].Cents.Count]; // inits to "Unknown", TODO
+                            mismatchingRecordList[swarmopsKey].ResyncActions = new ExternalBankMismatchResyncAction[mismatchConstruction.Swarmops[swarmopsKey].Cents.Count];
+                            for (int index = 0; index < mismatchingRecordList[swarmopsKey].ResyncActions.Length; index++)
+                            {
+                                mismatchingRecordList[swarmopsKey].ResyncActions[index] = ExternalBankMismatchResyncAction.DeleteSwarmops;
+                            }
                         }
                     }
 
@@ -527,6 +693,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         // Placed inside loop to have a contiguous lock block, even though it decreases performance.
                         // Should normally be placed just outside.
                         _staticDataLookup[guid + "MismatchArray"] = mismatchList.ToArray();
+                        _staticDataLookup[guid + "Account"] = account;
                     }
                 }
             }
