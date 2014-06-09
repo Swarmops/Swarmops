@@ -53,6 +53,7 @@ namespace Swarmops.Logic.Financial
                 result.FieldNames[ExternalBankDataFieldName.NotUniqueId] = "Verifikationsnummer";
 
                 result.LatestTransactionLocation = LatestTransactionLocation.Top;
+                result.FeeSignage = FeeSignage.Unknown; // no inline fees
                 result.Precision = ExternalBankDateTimePrecision.Day;
 
                 return result;
@@ -76,6 +77,7 @@ namespace Swarmops.Logic.Financial
                 result.FieldNames[ExternalBankDataFieldName.UniqueId] = "Transaction ID";
 
                 result.LatestTransactionLocation = LatestTransactionLocation.Top;
+                result.FeeSignage = FeeSignage.Negative;
                 result.Precision = ExternalBankDateTimePrecision.Second;
 
                 return result;
@@ -93,6 +95,7 @@ namespace Swarmops.Logic.Financial
         public string Currency { get; set; }
         public LatestTransactionLocation LatestTransactionLocation;
         public ExternalBankDateTimePrecision Precision;
+        public FeeSignage FeeSignage;
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
     }
@@ -154,5 +157,18 @@ namespace Swarmops.Logic.Financial
         /// The external bank has nanosecond-resolution timestamp for transactions
         /// </summary>
         Nanosecond
+    }
+
+    public enum FeeSignage
+    {
+        Unknown = 0,
+        /// <summary>
+        /// The transaction fee is positively listed (as a positive number), so that gross - fee = net.
+        /// </summary>
+        Positive,
+        /// <summary>
+        /// The transaction fee is listed as negative, so that gross + fee = net. Example: Paypal.
+        /// </summary>
+        Negative
     }
 }

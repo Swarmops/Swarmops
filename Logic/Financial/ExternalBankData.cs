@@ -83,7 +83,7 @@ namespace Swarmops.Logic.Financial
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Currency))
                 {
-                    string currency = lineFields[fieldNameLookup[ExternalBankDataFieldName.Currency]];
+                    string currency = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.Currency]]);
 
                     if (currency != organizationCurrencyCode)
                     {
@@ -96,7 +96,7 @@ namespace Swarmops.Logic.Financial
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Description))
                 {
-                    newRecord.Description = lineFields[fieldNameLookup[ExternalBankDataFieldName.Description]];
+                    newRecord.Description = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.Description]]);
                 }
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.AccountBalance))
@@ -104,7 +104,7 @@ namespace Swarmops.Logic.Financial
                     // Dividing up to step-by-step statements instead of one long statement assists debugging
                     // of culture and other error sources
 
-                    string balanceString = lineFields[fieldNameLookup[ExternalBankDataFieldName.AccountBalance]];
+                    string balanceString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.AccountBalance]]);
                     double parsedBalance = Double.Parse(balanceString, NumberStyles.Currency, new CultureInfo(Profile.Culture));
                     newRecord.AccountBalanceCents = (long) Math.Floor(parsedBalance*100.0);
                 }
@@ -118,12 +118,12 @@ namespace Swarmops.Logic.Financial
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Date))
                 {
-                    string dateString = lineFields[fieldNameLookup[ExternalBankDataFieldName.Date]];
+                    string dateString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.Date]]);
                     dateTime = DateTime.Parse(dateString, new CultureInfo(Profile.Culture));
 
                     if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Time))
                     {
-                        string timeString = lineFields[fieldNameLookup[ExternalBankDataFieldName.Time]];
+                        string timeString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.Time]]);
                         TimeSpan timeOfDay = TimeSpan.Parse(timeString);
 
                         dateTime += timeOfDay;
@@ -138,7 +138,7 @@ namespace Swarmops.Logic.Financial
                 }
                 else // no Date field, so by earlier logic, must have a DateTime field
                 {
-                    dateTime = DateTime.Parse(lineFields[fieldNameLookup[ExternalBankDataFieldName.DateTime]], new CultureInfo(Profile.Culture));
+                    dateTime = DateTime.Parse(StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.DateTime]]), new CultureInfo(Profile.Culture));
                 }
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.TimeZone))
@@ -147,8 +147,9 @@ namespace Swarmops.Logic.Financial
 
                     // Throws exception if this doesn't parse, which is what we want
 
-                    TimeSpan timeZone =
-                        TimeSpan.Parse(lineFields[fieldNameLookup[ExternalBankDataFieldName.TimeZone]].Substring(4));
+                    string timeZoneString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TimeZone]]);
+                    timeZoneString = timeZoneString.Substring(timeZoneString.Length - 6);
+                    TimeSpan timeZone = TimeSpan.Parse(timeZoneString);
 
                     dateTime -= timeZone;  // minus, to bring the time to UTC. If time 13:00 is in tz +01:00, the UTC time is 12:00
                 }
@@ -160,19 +161,43 @@ namespace Swarmops.Logic.Financial
                     throw new ArgumentException("There must be a transaction amount field in the bank data profile");
                 }
 
-                string amountNetString = lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionNet]];
+                string amountNetString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionNet]]);
 
                 newRecord.TransactionNetCents = ParseAmountString(amountNetString);
 
-                // TODO: Net, fee
+                if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.TransactionGross))
+                {
+                    string amountGrossString =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionGross]]);
+                    newRecord.TransactionGrossCents = ParseAmountString(amountGrossString);
+
+                    if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.TransactionFee))
+                    {
+                        string amountFeeString =
+                            StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionFee]]);
+                        newRecord.FeeCents = ParseAmountString(amountFeeString);
+
+                        if (Profile.FeeSignage == FeeSignage.Positive)
+                        {
+                            newRecord.FeeCents = -newRecord.FeeCents;
+                        }
+                    }
+                }
+
+                // Check for consistency of gross/net/fee:
+
+                if (newRecord.TransactionNetCents != newRecord.TransactionGrossCents + newRecord.FeeCents)
+                {
+                    throw new InvalidDataException("For a record, the net transaction amount does not match the gross less the fee.");
+                }
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.UniqueId))
                 {
-                    newRecord.UniqueId = lineFields[fieldNameLookup[ExternalBankDataFieldName.UniqueId]];
+                    newRecord.UniqueId = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.UniqueId]]);
                 }
                 else if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.NotUniqueId))
                 {
-                    newRecord.NotUniqueId = lineFields[fieldNameLookup[ExternalBankDataFieldName.NotUniqueId]];
+                    newRecord.NotUniqueId = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.NotUniqueId]]);
                 }
 
                 recordList.Add(newRecord);
@@ -257,6 +282,24 @@ namespace Swarmops.Logic.Financial
             // parse what's remaining as cents in Int64
 
             return Int64.Parse(input);
+        }
+
+        private string StripQuotes(string input)
+        {
+            input = input.Trim();
+
+            if (input.Length > 1)
+            {
+                if (input[0] == '\"')
+                {
+                    if (input.EndsWith("\""))
+                    {
+                        return input.Trim('\"', ' ');
+                    }
+                }
+            }
+
+            return input;
         }
 
         public ExternalBankDataProfile Profile { get; set; }
