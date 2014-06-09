@@ -107,8 +107,7 @@ namespace Swarmops.Logic.Financial
                     string balanceString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.AccountBalance]]);
                     try
                     {
-                        double parsedBalance = Double.Parse(balanceString, NumberStyles.Currency, new CultureInfo(Profile.Culture));
-                        newRecord.AccountBalanceCents = (long)Math.Floor(parsedBalance * 100.0);
+                        newRecord.AccountBalanceCents = ParseAmountString(balanceString);
                     }
                     catch (Exception innerException)
                     {
