@@ -105,8 +105,18 @@ namespace Swarmops.Logic.Financial
                     // of culture and other error sources
 
                     string balanceString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.AccountBalance]]);
-                    double parsedBalance = Double.Parse(balanceString, NumberStyles.Currency, new CultureInfo(Profile.Culture));
-                    newRecord.AccountBalanceCents = (long) Math.Floor(parsedBalance*100.0);
+                    try
+                    {
+                        double parsedBalance = Double.Parse(balanceString, NumberStyles.Currency, new CultureInfo(Profile.Culture));
+                        newRecord.AccountBalanceCents = (long)Math.Floor(parsedBalance * 100.0);
+                    }
+                    catch (Exception innerException)
+                    {
+                        throw new InvalidOperationException("Couldn't parse account balance string - \"" + balanceString + "\"",
+                                                            innerException);
+                        
+                        throw;
+                    }
                 }
 
                 if (!fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Date) && !fieldNameLookup.ContainsKey(ExternalBankDataFieldName.DateTime))
