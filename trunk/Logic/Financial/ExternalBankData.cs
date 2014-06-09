@@ -112,10 +112,8 @@ namespace Swarmops.Logic.Financial
                     }
                     catch (Exception innerException)
                     {
-                        throw new InvalidOperationException("Couldn't parse account balance string - \"" + balanceString + "\"",
+                        throw new FormatException("Couldn't parse account balance string - \"" + balanceString + "\"",
                                                             innerException);
-                        
-                        throw;
                     }
                 }
 
