@@ -59,7 +59,7 @@ namespace Swarmops.Logic.Financial
 
                 if (!fieldNameLookup.ContainsKey(fieldName))   // wasn't found
                 {
-                    throw new ArgumentException("Field key \"" + fieldName + "\" was not supplied or found in data file");
+                    throw new InvalidOperationException("Field key \"" + fieldName + "\" was not supplied or found in data file");
                 }
             }
             
