@@ -244,8 +244,8 @@ namespace Swarmops.Site.Pages.Ledgers
                                 bankData.LoadData(new StreamReader(file.InputStream, Encoding.GetEncoding(1252)), this.CurrentOrganization);
                                 break;
                             case "PayPal":
-                                throw new NotImplementedException("Todo - fix after Easter");
-                                // bankData = ImportPaypal(file.InputStream);
+                                bankData.Profile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.PaypalId);
+                                bankData.LoadData(new StreamReader(file.InputStream, Encoding.GetEncoding(1252)), this.CurrentOrganization);
                                 break;
                             case "Payson":
                                 throw new NotImplementedException("Won't reimplement");
