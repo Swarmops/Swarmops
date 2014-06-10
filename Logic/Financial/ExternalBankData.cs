@@ -149,6 +149,7 @@ namespace Swarmops.Logic.Financial
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.TimeZone))
                 {
+
                     // Valid time zone formats are "XXX+hh:mm". The XXX are ignored.
 
                     // Throws exception if this doesn't parse, which is what we want
