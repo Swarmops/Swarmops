@@ -91,7 +91,6 @@ namespace Swarmops.Logic.Financial
                     }
                 }
 
-
                 ExternalBankDataRecord newRecord = new ExternalBankDataRecord();
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Description))
@@ -159,6 +158,13 @@ namespace Swarmops.Logic.Financial
                     TimeSpan timeZone = TimeSpan.Parse(timeZoneString);
 
                     dateTime -= timeZone;  // minus, to bring the time to UTC. If time 13:00 is in tz +01:00, the UTC time is 12:00
+                }
+
+                // PILOT SPECIAL CASE: if Paypal and PPSE Pilot program, ignore everything before 2014
+
+                if (dateTime.Year < 2014 && organization.Identity == 1 && fieldNameLookup.ContainsKey(ExternalBankDataFieldName.UniqueId) && organization.Name == "Piratpartiet SE")
+                {
+                    continue; // Do not import PayPal records from before 2013
                 }
 
                 newRecord.DateTime = dateTime;
