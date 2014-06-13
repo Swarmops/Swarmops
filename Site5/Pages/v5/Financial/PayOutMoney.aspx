@@ -71,7 +71,7 @@
                                         $(thisIcon).css("display", "none");
                                         $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
                                         $(thisIcon).attr("rel", "active");
-                                        $("#IconApproved" + $(thisIcon).attr("baseid")).fadeIn(100);
+                                        $("#IconApproved" + $(thisIcon).attr("baseid").replace(/\|/g, '')).fadeIn(100);
                                         alertify.success(unescape(msg.d.DisplayMessage));
                                     }
                                 });
@@ -87,7 +87,7 @@
                                 $.ajax({
                                     type: "POST",
                                     url: "PayOutMoney.aspx/UndoPayout",
-                                    data: "{'databaseId': '" + $("#IconApproval" + $(thisIcon).attr("baseid")).attr("databaseid") + "'}",
+                                    data: "{'databaseId': '" + $("#IconApproval" + $(thisIcon).attr("baseid").replace(/\|/g, '')).attr("databaseid") + "'}",
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
                                     success: function (msg) {

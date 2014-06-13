@@ -217,7 +217,7 @@ public class DataV5Base : System.Web.UI.Page
 
     protected static string JsonSanitize (string input)
     {
-        return input.Replace("\"", "\\\"");
+        return input.Replace("\"", "\\\"").Replace("  ", " ").Trim();
     }
 
 }
