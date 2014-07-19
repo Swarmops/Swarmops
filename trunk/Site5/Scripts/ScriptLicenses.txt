@@ -1,7 +1,8 @@
 ﻿Some of these scripts are not in the public domain.
 
-jQuery is licensed as MIT (free to use for any purpose). So is FancyBox, Alertify, and jQuery SwitchButton.
+jQuery is licensed as MIT (free to use for any purpose). So is FancyBox, Alertify, Superfish, and jQuery SwitchButton.
 
 SmartWizard is licensed under Creative Commons Attribution-ShareAlike.
 
 The Crowdin JIPT script is part of the translation package and is proprietary to Crowdin. It is part of development, not part of production.
+
