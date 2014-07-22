@@ -96,15 +96,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
 	<script type="text/javascript">
 		//Put your JavaScript code here.
     </script>
-	<telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
-	</telerik:RadAjaxManager>
- 
-	<telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="WebBlue">
-	</telerik:RadSkinManager>
 	
     <!-- Main menu, dynamically constructed -->
 
@@ -120,7 +114,7 @@
         <div class="break"></div>
         <div class="topmenu">
             <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>
-            <telerik:RadMenu ID="MainMenu" runat="server" BackColor="Transparent" Font-Bold="true">
+            <!--<telerik:RadMenu ID="MainMenu" runat="server" BackColor="Transparent" Font-Bold="true">
             <Items>
                 <telerik:RadMenuItem runat="server" Text="XYZ People" UserLevel="1" Permission="All" GlobalResourceKey="Menu5_People">
                     <Items>
@@ -250,7 +244,7 @@
                     </Items>
                 </telerik:RadMenuItem>
             </Items>
-            </telerik:RadMenu>
+            </telerik:RadMenu>-->
         </div>
         
         <div class="mainbar">
@@ -311,13 +305,14 @@
 	</div>
     
     <!-- language selector popup -->
-    
+
+    <!--
     <telerik:RadToolTip ID="ToolTip" runat="server"  AnimationDuration="150" AutoCloseDelay="200000" ShowDelay="0"
             EnableShadow="true" HideDelay="1" Width="200px" Height="96px" HideEvent="ManualClose" OffsetX="-4" OffsetY="0"
             RelativeTo="Element" Animation="Slide" Position="BottomLeft" ShowCallout="true" TargetControlID="ImageCultureIndicator" RenderInPageRoot="true" ShowEvent="OnClick"
             Skin="Telerik" >
         <act5:LanguageSelector ID="LanguageSelector" runat="server" />
-    </telerik:RadToolTip>
+    </telerik:RadToolTip> -->
 
     <!-- Organization changer -->
     
