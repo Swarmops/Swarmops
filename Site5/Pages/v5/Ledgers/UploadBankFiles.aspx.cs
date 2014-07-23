@@ -4,7 +4,9 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Swarm;
@@ -194,6 +196,14 @@ namespace Swarmops.Site.Pages.Ledgers
             initThread.Start(args);
         }
 
+        private class ProcessThreadArguments
+        {
+            public string Guid { get; set; }
+            public Organization Organization { get; set; }
+            public FinancialAccount Account { get; set; }
+        }
+
+
 
         private static void ProcessUploadThread(object args)
         {
@@ -211,9 +221,9 @@ namespace Swarmops.Site.Pages.Ledgers
             FinancialAccount account = ((ProcessThreadArguments)args).Account;
 
             ExternalBankData externalData = new ExternalBankData();
-            externalData.Profile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId); // TODO: HACK HACK HACK HACK LOAD 
+            externalData.Profile = account.ExternalBankDataProfile;
 
-            using (StreamReader reader = new StreamReader(StorageRoot + uploadedDoc.ServerFileName, Encoding.GetEncoding(1252)))
+            using (StreamReader reader = uploadedDoc.GetReader(1252))
             {
                 externalData.LoadData(reader, ((ProcessThreadArguments) args).Organization);
             }

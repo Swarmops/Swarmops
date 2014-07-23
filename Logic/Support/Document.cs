@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
@@ -133,5 +134,32 @@ namespace Swarmops.Logic.Support
 
             SetForeignObject(new TemporaryIdentity(0));
         }
+
+        protected static string StorageRoot
+        {
+            get
+            {
+                if (Debugger.IsAttached)
+                {
+                    return @"C:\Windows\Temp\\Swarmops-Debug\\"; // Windows debugging environment
+                }
+                else
+                {
+                    return "/opt/swarmops/upload/"; // production location on Debian installation  TODO: config file
+                }
+            }
+        }
+
+        public StreamReader GetReader(Encoding encoding)
+        {
+            return new StreamReader(StorageRoot + this.ServerFileName, encoding);
+        }
+
+        public StreamReader GetReader(int encodingCodePage)
+        {
+            return GetReader(Encoding.GetEncoding(encodingCodePage));
+        }
+
+
     }
 }
