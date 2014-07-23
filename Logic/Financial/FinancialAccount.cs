@@ -165,6 +165,29 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public ExternalBankDataProfile ExternalBankDataProfile
+        {
+            get
+            {
+                // HACK HACK HACK HACK HACK for our pilots; this will be softcoded later TODO
+
+                if (this.OrganizationId != 1 || this.Organization.Name != "Piratpartiet SE")
+                {
+                    return null;
+                }
+
+                switch (this.FinancialAccountId)
+                {
+                    case 1:
+                        return ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId);
+                    case 2:
+                        return ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.PaypalId);
+                    default:
+                        return null;
+                }
+            }
+        }
+
 
         #region ITreeNode Members
 
