@@ -12,7 +12,6 @@ using Swarmops.Controls.Swarm;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
-using Telerik.Web.UI;
 
 
 
@@ -32,7 +31,7 @@ namespace Swarmops.Controls.Swarm
             }
 
             this.LabelPersonName.Style[HtmlTextWriterStyle.FontSize] = "20px";
-            this.PersonNew.Width = 157;
+            // this.PersonNew.Width = 157;
 
             this.ButtonSetNew.Visible = this.Changeable;
 
@@ -55,7 +54,7 @@ namespace Swarmops.Controls.Swarm
             {
                 if (_person == null)
                 {
-                    return this.PersonNew.SelectedPerson;
+                    // return this.PersonNew.SelectedPerson;
                 }
 
                 return _person;
@@ -92,7 +91,7 @@ namespace Swarmops.Controls.Swarm
         {
             this.PanelRead.Visible = false;
             this.PanelWrite.Visible = true;
-            this.PersonNew.Focus();
+            // this.PersonNew.Focus();
         }
 
         public void Reset()
@@ -100,7 +99,7 @@ namespace Swarmops.Controls.Swarm
             this.PanelWrite.Visible = false;
             this.PanelRead.Visible = true;
             this.ButtonConfirmPerson.Visible = false;
-            this.PersonNew.SelectedPerson = null;
+            // this.PersonNew.SelectedPerson = null;
 
             if (ViewState[this.ClientID + "_PersonId"] == null)
             {
@@ -116,13 +115,13 @@ namespace Swarmops.Controls.Swarm
 
         protected void PersonNew_SelectedPersonChanged(object sender, EventArgs e)
         {
-            this.ImageAvatar.ImageUrl = this.PersonNew.SelectedPerson.GetSecureAvatarLink(96);
+            // this.ImageAvatar.ImageUrl = this.PersonNew.SelectedPerson.GetSecureAvatarLink(96);
             this.ButtonConfirmPerson.Visible = true;
         }
 
         protected void ButtonConfirmPerson_Click(object sender, EventArgs e)
         {
-            this._person = this.PersonNew.SelectedPerson;
+            // this._person = this.PersonNew.SelectedPerson;
 
             IOwnerSettable settableInterface = this.Cookie as IOwnerSettable;
 
@@ -133,7 +132,7 @@ namespace Swarmops.Controls.Swarm
 
             if (PersonChanged != null)
             {
-                PersonChanged(this, new PersonChangedEventArgs(this.PersonNew.SelectedPerson, this.Cookie));
+                // PersonChanged(this, new PersonChangedEventArgs(this.PersonNew.SelectedPerson, this.Cookie));
             }
 
             this.LabelPersonName.Text = _person.Name;

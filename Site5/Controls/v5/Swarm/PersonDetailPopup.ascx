@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="PersonDetailPopup.ascx.cs" Inherits="Swarmops.Controls.Swarm.PersonDetailPopup" %>
-<%@ Register Src="~/Controls/v5/Swarm/ComboPersonObsolete.ascx" TagName="ComboPerson" TagPrefix="act5" %>
 
 <asp:UpdatePanel ID="UpdateSetter" runat="server" UpdateMode="Conditional">
 <ContentTemplate>
@@ -11,7 +10,7 @@
 </asp:Panel>
 
 <asp:Panel ID="PanelWrite" runat="server" Visible="false">
-<span style="line-height:150%"><asp:Label ID="LabelWriteLabel" runat="server" Text="Change to:" /><br /><act5:ComboPerson ID="PersonNew" runat="server" OnSelectedPersonChanged="PersonNew_SelectedPersonChanged" /></span><br />
+<span style="line-height:150%"><asp:Label ID="LabelWriteLabel" runat="server" Text="Change to:" /><br /></span><br />
 <div style="float:right"><asp:LinkButton ID="ButtonConfirmPerson" runat="server" Text="Confirm LOC" OnClick="ButtonConfirmPerson_Click" Visible="false" /></div>
 <asp:LinkButton ID="ButtonCancel" runat="server" Text="Cancel LOC" OnClick="ButtonCancel_Click" />
 </asp:Panel>

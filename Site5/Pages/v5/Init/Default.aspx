@@ -20,8 +20,6 @@
     <!-- page title -->
 	<title>Swarmops - Initialize Installation</title>
 
-	<!-- telerik style sheet manager, followed by style sheet -->
-	<telerik:RadStyleSheetManager id="RadStyleSheetManager" runat="server" />
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
     <link href="WizardStyle.css" rel="stylesheet" type="text/css" />
 
@@ -42,7 +40,6 @@
 </head>
 <body>
     <form id="form2" runat="server">
-	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
 	<script type="text/javascript">
 
 	    var databaseInitComplete = false;
@@ -327,11 +324,6 @@
 
 
 	</script>
-	<telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
-	</telerik:RadAjaxManager>
- 
-	<telerik:RadSkinManager ID="RadSkinManager1" Runat="server" Skin="WebBlue">
-	</telerik:RadSkinManager>
 	
     <!-- Main menu, dynamically constructed -->
 
@@ -341,130 +333,6 @@
         <div class="break"></div>
         <div class="topmenu">
             <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>
-            <telerik:RadMenu ID="MainMenu" runat="server" BackColor="Transparent" Font-Bold="true">
-                <Items>
-                    <telerik:RadMenuItem runat="server" Text="XYZ People" UserLevel="1" Permission="All" GlobalResourceKey="Menu5_People">
-                        <Items>
-                            <telerik:RadMenuItem runat="server" Text="XYZ Log Activism" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_People_LogActivism" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Self-Signup Page" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_People_SelfSignup" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Add Member" Permission="Members:Write" UserLevel="2" GlobalResourceKey="Menu5_People_AddMember" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ List Members" Permission="Members:Read" UserLevel="2" GlobalResourceKey="Menu5_People_ListMembers" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Manage Volunteers" Permission="Responsibilities:Write" UserLevel="2" GlobalResourceKey="Menu5_People_ManageVolunteers" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ New conference" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_People_NewConference" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Manage conferences" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_People_ManageConferences" />
-                        </Items>
-                    </telerik:RadMenuItem>
-                    <telerik:RadMenuItem runat="server" Text="XYZ Communications" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Communications">
-                        <Items>
-                            <telerik:RadMenuItem runat="server" Text="XYZ Mass Mailing" Permission="MemberMail:Write,Newsletter:Write" UserLevel="2" GlobalResourceKey="Menu5_Communications_MassMailing" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Edit Automail Text" Permission="MemberMail:Write" UserLevel="2" GlobalResourceKey="Menu5_Communications_EditAutomailText" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Received Paper Letter" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Communications_ReceivedPaperLetter" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Manage Paper Inbox" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Communications_PaperInbox" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Manage Mail Inbox" Permission="SupportMail:Read" UserLevel="2" GlobalResourceKey="Menu5_Communications_MailInbox" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Manage Text Inbox" Permission="SupportText:Read" UserLevel="2" GlobalResourceKey="Menu5_Communications_TextInbox" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Text Activists" Permission="ActivistText:Write" UserLevel="2" GlobalResourceKey="Menu5_Communications_TextActivists" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Manager Reporter List" Permission="ReporterList:Read" UserLevel="2" GlobalResourceKey="Menu5_Communications_ReporterList" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Send Press Release" Permission="PressReleases:Write" UserLevel="2" GlobalResourceKey="Menu5_Communications_SendPressRelease" />
-                        </Items>
-                    </telerik:RadMenuItem>
-                    <telerik:RadMenuItem runat="server" Text="XYZ Financial" Permission="CanSeeSelf" UserLevel="1" GlobalResourceKey="Menu5_Financial">
-                        <Items>
-                            <telerik:RadMenuItem runat="server" Text="XYZ Claim Refund For Expense" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_ClaimExpense" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Request Cash Advance" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_RequestCashAdvance" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Create Purchase Order" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_CreatePurchaseOrder" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="1" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ View Budget, Actuals" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Financial_ViewBudgetActuals" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ View Liquidity Forecast" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_ViewLiquidityForecast" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Manage Budget" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_ManageBudget" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Attest Costs" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Financial_AttestCosts" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="2" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Send Invoice" Permission="Economy:Write" UserLevel="2" GlobalResourceKey="Menu5_Financial_SendInvoice" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Received Invoice" Permission="Economy:Write" UserLevel="2" GlobalResourceKey="Menu5_Financial_ReceivedInvoice" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Gigs Assistant" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Financial_GigsAssistant" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ List" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Financial_List">
-                                <Items>
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Expense Claims & Cash Requests" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Financial_List_ExpenseClaims" />
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Inbound Invoices" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Financial_List_InboundInvoices" />
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Salaries" Permission="Payroll:Read" UserLevel="3" GlobalResourceKey="Menu5_Financial_List_Salaries" />
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Outbound Invoices" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Financial_List_OutboundInvoices" />
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Outstanding Cash Advances" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Financial_List_OutstandingAdvances" />
-                                </Items>
-                            </telerik:RadMenuItem>
-                            <telerik:RadMenuItem runat="server" Text="XYZ Pay Out Money" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Financial_PayOutMoney" />
-                        </Items>
-                    </telerik:RadMenuItem>
-                    <telerik:RadMenuItem runat="server" Text="XYZ Ledgers" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers">
-                        <Items>
-                            <telerik:RadMenuItem runat="server" Text="XYZ Balance Sheet" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_BalanceSheet" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Result Sheet" Permission="All" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_ProfitLossStatement" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Audit Ledgers" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_AuditLedgers" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Account Plan" Permission="Economy:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_AccountPlan" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Set Budget" NavigateUrl="~/Pages/v5/Ledgers/SetRootBudgets.aspx" ImageUrl="~/Images/PageIcons/iconshock-moneybag-16px.png" Permission="Financial:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_SetBudgets" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Upload Bank Files" NavigateUrl="~/Pages/v5/Ledgers/UploadBankFiles.aspx" ImageUrl="~/Images/PageIcons/iconshock-bank-16px.png" Permission="Economy:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_UploadBankFiles" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Debug Ledgers" NavigateUrl="~/Pages/v5/Ledgers/DebugLedgers.aspx" ImageUrl="~/Images/PageIcons/iconshock-tester-16px.png" Permission="EconomyDetail:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_DebugLedgers" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Close Ledgers" NavigateUrl="~/Pages/v5/Ledgers/CloseLedgers.aspx" Template="CloseLedgers" Dynamic="true" ImageUrl="~/Images/PageIcons/iconshock-calculator-lock-16px.png" Permission="EconomyDetail:Write" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_CloseLedgers" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Payroll" Permission="Payroll:Read" UserLevel="3" GlobalResourceKey="Menu5_Ledgers_Payroll" />
-                        </Items>
-                    </telerik:RadMenuItem>
-                    <telerik:RadMenuItem runat="server" Text="XYZ Governance" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Governance">
-                        <Items>
-                            <telerik:RadMenuItem runat="server" Text="XYZ Vote" NavigateUrl="~/Pages/v5/Governance/Vote.aspx" ImageUrl="~/Images/PageIcons/iconshock-vote-16px.png" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Governance_Vote" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Motions" NavigateUrl="~/Pages/v5/Governance/ListMotions.aspx" ImageUrl="~/Images/PageIcons/iconshock-motions-16px.png" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Governance_Motions" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Candidates" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Governance_Candidates" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Create Voting List" Permission="All" UserLevel="2" GlobalResourceKey="Menu5_Governance_CreateVotingList" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Meeting Admin" Permission="Meetings:Read" UserLevel="3" GlobalResourceKey="Menu5_Governance_MeetingAdmin" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Meeting Admin for Board" Permission="MeetingsBoard:Read" UserLevel="3" GlobalResourceKey="Menu5_Governance_MeetingBoardAdmin" />
-                        </Items>
-                    </telerik:RadMenuItem>
-                    <telerik:RadMenuItem runat="server" Text="XYZ Organization" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Organization">
-                        <Items>
-                            <telerik:RadMenuItem runat="server" Text="XYZ Organization Chart" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Organization_OrganizationChart" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Available Responsibilities" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Organization_AvailableResponsibilities" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Member Statistics" Permission="All" UserLevel="1" GlobalResourceKey="Menu5_Organization_MemberStatistics" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Organization Settings" Permission="Organzation:Read" UserLevel="3" GlobalResourceKey="Menu5_Organization_Settings" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Organization Responsibilities" Permission=":Read" UserLevel="3" GlobalResourceKey="Menu5_Organization_Responsibilities" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Suborganization Tree" Permission=":Read" UserLevel="3" GlobalResourceKey="Menu5_Organization_SuborganizationTree" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="3" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Communication Templates" Permission="Communications:Read" UserLevel="3" GlobalResourceKey="Menu5_Organization_CommunicationTemplates" >
-                                <Items>
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Press Release" Permission="Communications:Read" UserLevel="3" GlobalResourceKey="Menu5_Organization_CommunicationTemplates_PressRelease" />
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Mass Mailing" Permission="Communications:Read" UserLevel="3" GlobalResourceKey="Menu5_Organization_CommunicationTemplates_MassMailing" />
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Newsletter" Permission="Communications:Read" UserLevel="3" GlobalResourceKey="Menu5_Organization_CommunicationTemplates_Newsletter" />
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Invoice" Permission="Communications:Read" UserLevel="3" GlobalResourceKey="Menu5_Organization_CommunicationTemplates_Invoice" />
-                                </Items>
-                            </telerik:RadMenuItem>
-                            <telerik:RadMenuItem runat="server" Text="XYZ Communication Feeds" Permission="Communications:Read" UserLevel="3" GlobalResourceKey="Menu5_Organization_Feeds" >
-                                <Items>
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Newsletters" Permission="Newsletters:Write" UserLevel="3" GlobalResourceKey="Menu5_Organization_Feeds_Newsletter" />
-                                    <telerik:RadMenuItem runat="server" Text="XYZ Press Releases" Permission="PressReleases:Write" UserLevel="3" GlobalResourceKey="Menu5_Organization_Feeds_PressReleases" />
-                                </Items>
-                            </telerik:RadMenuItem>
-                        </Items>
-                    </telerik:RadMenuItem>
-                    <telerik:RadMenuItem runat="server" Text="XYZ Admin" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration">
-                        <Items>
-                            <telerik:RadMenuItem runat="server" Text="XYZ Organization Clusters" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration_OrganizationClusters" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Manage Geography" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration_GeographyTree" />
-                            <telerik:RadMenuItem runat="server" Text="XYZ Access Control Lists" Permission="All" UserLevel="4" GlobalResourceKey="Menu5_Administration_AccessControlLists" />
-                            <telerik:RadMenuItem runat="server" IsSeparator="true" UserLevel="4" />
-                            <telerik:RadMenuItem runat="server" Dynamic="true" Template="Build#" Permission="All" UserLevel="4" NotaBene="This is a special case -- the build number is dynamically inserted for text" /> 
-                        </Items>
-                    </telerik:RadMenuItem>
-                </Items>
-            </telerik:RadMenu>
         </div>
         
         <div class="mainbar">
@@ -646,15 +514,6 @@
         
 	</div>
 
-    <!-- language selector popup -->
-    
-    <telerik:RadToolTip ID="ToolTip" runat="server"  AnimationDuration="150" AutoCloseDelay="200000" ShowDelay="0"
-            EnableShadow="true" HideDelay="1" Width="200px" Height="96px" HideEvent="ManualClose" OffsetX="-4" OffsetY="0"
-            RelativeTo="Element" Animation="Slide" Position="BottomLeft" ShowCallout="true" TargetControlID="ImageCultureIndicator" RenderInPageRoot="true" ShowEvent="OnClick"
-            Skin="Telerik" >
-        <act5:LanguageSelector ID="LanguageSelector" runat="server" />
-    </telerik:RadToolTip>
-	
 	</form>
 </body>
 </html>

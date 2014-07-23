@@ -14,8 +14,6 @@ using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
-using Telerik.Web.UI;
-using Telerik.Web.UI.Upload;
 
 
 // ReSharper disable CheckNamespace
@@ -34,20 +32,7 @@ namespace Swarmops.Site.Pages.Ledgers
             {
                 // Localize
 
-                this.LabelDownloadInstructions.Text = Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions;
-                this.LabelClickImage.Text = Resources.Global.Global_ClickImageToEnlarge;
-
                 this.InfoBoxLiteral = Resources.Pages.Ledgers.UploadBankFiles_Info;
-
-                this.LabelSelectBankAndAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankAndAccount;
-                this.LabelSelectFileType.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectBankFileType;
-                this.LabelSelectAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_SelectAccount;
-                this.LabelUploadH2Header.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
-                this.LabelUploadH3Header.Text = Resources.Global.Global_UploadFileToSwarmops;
-                this.Upload.Text = Resources.Global.Global_UploadFile;
-                this.LabelProcessing.Text = Resources.Global.Global_ProcessingFile;
-                this.LinkUploadAnother.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadAnother;
-                this.LabelModalInstructionHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_BankScreenshot;
 
                 // Populate the asset account dropdown, if needed for file type
 
@@ -67,6 +52,7 @@ namespace Swarmops.Site.Pages.Ledgers
             }
         }
 
+        /*
         protected void ButtonSebAccountFile_Click(object sender, ImageClickEventArgs e)
         {
             OnSelectedFileType();
@@ -164,7 +150,7 @@ namespace Swarmops.Site.Pages.Ledgers
                                                        "$(\"#DivSelectAccount\").css('display','inline');", true);
 
             this.LiteralLastAccountRecord.Visible = true;
-        }
+        }*/
  
 
         private void PopulateAccountDropDown()
@@ -177,40 +163,66 @@ namespace Swarmops.Site.Pages.Ledgers
 
             foreach (FinancialAccount account in accounts)
             {
+                // TODO: If connected to a bank asset, ...
+
                 this.DropAccounts.Items.Add(new ListItem(account.Name, account.Identity.ToString()));
             }
 
         }
 
-        protected void DropAccounts_SelectedIndexChanged(object sender, EventArgs e)
+
+        [WebMethod(true)]
+        public static void InitializeProcessing(string guid, string accountIdString)
         {
-            this.LiteralSelectAccountDivStyle.Text = @"style=""opacity:1;display:inline""";
+            // Start an async thread that does all the work, then return
 
-            if (this.DropAccounts.SelectedIndex > 0)
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            int accountId = Int32.Parse(accountIdString);
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+            if (account.Organization.Identity != authData.CurrentOrganization.Identity ||
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write)))
             {
-                ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "FadeDownload2",
-                                                        "$(\"#DivInstructions\").fadeTo('slow',1.0);", true);
-                ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "ShowInstructions",
-                                                        "$(\"#DivInstructions\").css('display','inline');", true);
-                ScriptManager.RegisterClientScriptBlock(this.PanelFileTypeAccount, this.PanelFileTypeAccount.GetType(), "ReiterateModality",
-                                                        "$(function () { $(\"a[rel*=leanModal]\").leanModal();});", true);
-
-
-                FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue));
-
-                FinancialAccountRows rows = account.GetLastRows(1);
-                DateTime lastTransactionDateTime = new DateTime(1801, 1, 1);
-
-                if (rows != null && rows.Count > 0)
-                {
-                    lastTransactionDateTime = rows[0].RowDateTime;
-                }
-
-                this.LiteralLastAccountRecord.Text = String.Format(Resources.Pages.Ledgers.UploadBankFiles_DownloadDataSince, Server.HtmlEncode(account.Name), lastTransactionDateTime, lastTransactionDateTime.AddDays(-5));
+                throw new UnauthorizedAccessException();
             }
+
+            Thread initThread = new Thread(ProcessUploadThread);
+
+            ProcessThreadArguments args = new ProcessThreadArguments { Guid = guid, Organization = authData.CurrentOrganization, Account = account };
+
+            initThread.Start(args);
         }
 
-        protected void Submit_Click(object sender, EventArgs e)
+
+        private static void ProcessUploadThread(object args)
+        {
+            string guid = ((ProcessThreadArguments) args).Guid;
+
+            Documents documents = Documents.RecentFromDescription(guid);
+
+            if (documents.Count != 1)
+            {
+                return; // abort
+            }
+
+            Document uploadedDoc = documents[0];
+
+            FinancialAccount account = ((ProcessThreadArguments)args).Account;
+
+            ExternalBankData externalData = new ExternalBankData();
+            externalData.Profile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId); // TODO: HACK HACK HACK HACK LOAD 
+
+            using (StreamReader reader = new StreamReader(StorageRoot + uploadedDoc.ServerFileName, Encoding.GetEncoding(1252)))
+            {
+                externalData.LoadData(reader, ((ProcessThreadArguments) args).Organization);
+            }
+
+
+
+
+
+        private void Submit_Click(object sender, EventArgs e)
         {
             bool fileWasUploaded = false;
 
@@ -345,8 +357,8 @@ namespace Swarmops.Site.Pages.Ledgers
             this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_PaymentFileUploadedHeader;
         }
 
-
-        protected class ImportResults
+        [Serializable]
+        public class ImportResults
         {
             public ImportResults()
             {

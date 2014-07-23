@@ -15,7 +15,6 @@ using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Site.Automation;
-using Telerik.Web.UI;
 
 using Swarmops.Database;
 using Country = Swarmops.Logic.Structure.Country;
@@ -25,17 +24,9 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Unlock Telerik
-
-        this.Application["Telerik.Web.UI.Key"] = "Activizr";
-
         this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "3px";
         this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
         this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
-
-        this.MainMenu.Style[HtmlTextWriterStyle.Position] = "relative";
-        this.MainMenu.Style[HtmlTextWriterStyle.Top] = "7px";
-        this.MainMenu.Style[HtmlTextWriterStyle.Left] = "20px";
 
         this.TextCredentialsReadDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
         this.TextCredentialsReadServer.Style[HtmlTextWriterStyle.Width] = "70px";
@@ -54,7 +45,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         this.DropFavoriteColor.Style[HtmlTextWriterStyle.Width] = "155px";
 
-        this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
+        // this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
 
         Localize();
     }
@@ -152,7 +143,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         this.DropFavoriteColor.Items.Add("Blue!");
         this.DropFavoriteColor.Items.Add("No, wait, yellow!");
 
-        SetupMenuItems();
+        // SetupMenuItems();
 
         string flagName = "uk";
 
@@ -166,73 +157,6 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + ".png";
     }
 
-
-    // This section is copied from Master-v5.master.cs, except all items are disabled:
-
-    private void SetupMenuItems()
-    {
-        RadMenuItemCollection menuItems = this.MainMenu.Items;
-        SetupMenuItemsRecurse(menuItems, true);
-    }
-
-    private bool SetupMenuItemsRecurse(RadMenuItemCollection menuItems, bool topLevel)
-    {
-        // string thisPageUrl = Request.Url.Segments[Request.Url.Segments.Length - 1].ToLower();
-        bool anyItemEnabled = false;
-
-        foreach (RadMenuItem item in menuItems)
-        {
-            int itemUserLevel = Convert.ToInt32(item.Attributes["UserLevel"]);
-            string authorization = item.Attributes["Permission"];
-            string resourceKey = item.Attributes["GlobalResourceKey"];
-            string url = item.NavigateUrl;
-            string dynamic = item.Attributes["Dynamic"];
-
-            item.Visible = true; // Modified
-            bool enabled = topLevel;
-
-            if (item.IsSeparator)
-            {
-                continue;
-            }
-
-            if (dynamic == "true")
-            {
-                switch (item.Attributes["Template"])
-                {
-                    case "Build#":
-                        item.Text = GetBuildIdentity();
-                            // only dynamically constructed atm -- if more, switch on "template" field
-                        break;
-                    case "CloseLedgers":
-                        int year = DateTime.Today.Year;
-                        item.Text = String.Format(Resources.Menu5.Menu5_Ledgers_CloseBooks, year - 1); // Modified
-                        break;
-                    default:
-                        throw new InvalidOperationException("No case for dynamic menu item" +
-                                                            item.Attributes["Template"]);
-                }
-            }
-            else
-            {
-                item.Text = GetGlobalResourceObject("Menu5", resourceKey).ToString();
-            }
-
-            if (item.Visible)
-            {
-                enabled |= SetupMenuItemsRecurse(item.Items, false);
-                enabled |= !String.IsNullOrEmpty(url);
-            }
-
-            item.Enabled = topLevel; // Modified
-            if (enabled)
-            {
-                anyItemEnabled = true;
-            }
-        }
-
-        return anyItemEnabled;
-    }
 
     private static string _buildIdentity;
 

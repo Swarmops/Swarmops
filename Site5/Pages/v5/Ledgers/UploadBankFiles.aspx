@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="UploadBankFiles.aspx.cs" Inherits="Swarmops.Site.Pages.Ledgers.UploadBankFiles" %>
+<%@ Register src="~/Controls/v5/UI/ExternalScripts.ascx" tagname="ExternalScripts" tagprefix="Swarmops5" %>
+<%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 
@@ -87,114 +89,127 @@ div.BankUploadInstructionsImage
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
 
     <script type="text/javascript">
-        var uploadInProgress = 0;
 
-        function onClientProgressUpdating(progressArea, args) {
-            //alert(JSON.stringify(args._progressData));
-            //alert(args._progrssData.PrimaryPercent);
-            $("#ProgressBar").css('width', args._progressData.PrimaryPercent);
-            progressArea.updateVerticalProgressBar(args.get_progressBarElement(), args.get_progressValue());
+        function uploadCompletedCallback() {
+            $('#DivStepUpload').slideUp().fadeOut();
+            $('#DivStepProcessing').fadeIn();
+            $('#DivProgressProcessing').progressbar({ value: 0, max: 100 });
 
-            if (uploadInProgress == 0) {
-                uploadInProgress = 1;
-                onBeginUpload();
-            }
+            $.ajax({
+                type: "POST",
+                url: "UploadBankAccount.aspx/InitializeProcessing",
+                data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                setTimeout('updateProgressProcessing();', 1000);
+	            }
+	        });
 
-            // args.set_cancel(true);
-
+            // Set timeout to update progress bar
         }
-        
-        function onBeginUpload() {
-            $("#DivUploadProgress").css("display", "inline");
-            $("#DivUploadProgress").fadeTo('slow', 1.0);
-            $("#DivInstructions").css("display", "inline");
-            $("#DivInstructions").animate({ "height": "0", "opacity": "0.0" }, 1000, function () { $("#DivInstructions").css('display', 'none'); });
-            $("#<%= this.DropAccounts.ClientID %>").attr('disabled', 'disabled');
-           
+
+        function updateProgressProcessing() {
+
+            $.ajax({
+                type: "POST",
+                url: "UploadBankFiles.aspx/GetProcessingProgress",
+                data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                if (msg.d > 99) {
+	                    $("#DivProgressProcessing .progressbar-value").animate(
+                            {
+                                width: "100%"
+                            }, { queue: false });
+	                    $("#tableResyncPreview").treegrid(  // <<---- THIS needs to replace
+	                        { url: 'Json-ResyncPreview.aspx?Guid=<%= this.UploadFile.GuidString %>' });
+                        $('#DivStepPreview').fadeIn();
+                        $('#DivStepProcessing').slideUp();
+                    } else {
+
+	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
+
+                        if (msg.d == 1) {
+                            $('#DivProgressProcessing').progressbar({ value: 1 });
+                        } else {
+                            $("#DivProgressProcessing .progressbar-value").animate(
+                            {
+                                width: msg.d + "%"
+                            }, { queue: false });
+                        }
+
+                        if (msg.d > 0 && !progressReceived) {
+                            progressReceived = true;
+                            $.ajax({
+                                type: "POST",
+                                url: "UploadBankFiles.aspx/GetProcessingStatistics",
+                                data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (msg2) {
+                                    $('#SpanFirstTx').text(msg2.d.FirstTransaction);
+                                    $('#SpanLastTx').text(msg2.d.LastTransaction);
+                                    $('#SpanTxCount').text(msg2.d.TransactionCount);
+                                }
+                            });
+                        }
+
+                        setTimeout('updateProgressProcessing();', 1000);
+                    }
+	            }
+	        });
         }
+
+        var progressReceived = false;
+
+        var currentYear = <%=DateTime.Today.Year %>;
+
+
     </script>
 
-    <asp:UpdatePanel ID="PanelFileTypeAccount" runat="server" UpdateMode="Conditional">
-        <ContentTemplate>
-            <h2><asp:Label ID="LabelSelectBankAndAccount" Text="Select Bank And Bookkeeping LOC" runat="server"/></h2>
-            <h3><asp:Label ID="LabelSelectFileType" Text="Bank LOC" runat="server" /></h3>
-            <asp:ImageButton OnClick="ButtonBankgiroSEFile_Click" CssClass="FileTypeImage" ID="ButtonBankgiroSEFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-bankgirose.png"/>
-            <asp:ImageButton OnClick="ButtonPaypalFile_Click" CssClass="FileTypeImage" ID="ButtonPaypalFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-paypal.png"/>
-            <asp:ImageButton OnClick="ButtonPaysonFile_Click" CssClass="FileTypeImage" ID="ButtonPaysonFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-payson.png"/>
-            <asp:ImageButton OnClick="ButtonSebAccountFile_Click" CssClass="FileTypeImage" ID="ButtonSebFile" runat="server" ImageUrl="~/Images/Ledgers/uploadbankfiles-type-seb.png"/>
-            <asp:HiddenField ID="HiddenFileType" runat="server"/>
-            <div style="clear:both;margin-bottom:10px"></div>
-            <div id="DivSelectAccount" <asp:Literal ID="LiteralSelectAccountDivStyle" runat="server" Text="style='opacity:0;display:none'" />>
-                <h3 style="padding-top:8px"><asp:Label ID="LabelSelectAccount" runat="server" Text="Bookkeeping Account LOC" /></h3>
-                <asp:DropDownList runat="server" ID="DropAccounts" OnSelectedIndexChanged="DropAccounts_SelectedIndexChanged" AutoPostBack="true"/>
+    <div id="DivStepUpload">
+        <h2>Step 1/4: Upload Bank File</h2>
+        <div id="DivPrepData">
+        
+            <div class="entryFields">
+                <asp:DropDownList runat="server" ID="DropAccounts"/>&nbsp;
+                <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
+        
+            <div class="entryLabels">
+                Bank account<br/>
+                Upload bank file
             </div>
-        </ContentTemplate>
-        <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="ButtonSebFile" EventName="Click" />
-            <asp:AsyncPostbackTrigger ControlID="ButtonBankgiroSEFile" EventName="Click" />
-            <asp:AsyncPostBackTrigger ControlID="ButtonPaypalFile" EventName="Click" />
-            <asp:AsyncPostBackTrigger ControlID="ButtonPaysonFile" EventName="Click" />
-        </Triggers>
-    </asp:UpdatePanel>
-
-    <asp:Panel ID="PanelResults" Visible="false" runat="server">
-        <h2><asp:Label ID="LabelImportResultsHeader" Text="Imported a Bank File LOC" runat="server" /></h2>
-        <asp:Panel ID="PanelErrorImage" Visible="false" runat="server">
-            <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ImageAlign="Left" runat="server" />
-        </asp:Panel>
-        <asp:Literal ID="LiteralImportResults" Text="Import Results [LOC]" runat="server" />
-        <p><asp:HyperLink runat="server" NavigateUrl="UploadBankFiles.aspx" ID="LinkUploadAnother" Text="Upload Another? [LOC]" />
-    </asp:Panel>
-
-    <div style="opacity:0;display:none" id="DivUploadProgress">
-        <br/><h2><asp:Label ID="LabelProcessing" runat="server" Text="Processing Uploaded File... LOC" /></h2>
+        </div>
+    
+        <br clear="all"/>
+    </div>
+    
+    <div id="DivStepProcessing" style="display:none">
+        <h2>Step 2/4: Processing uploaded file...</h2>
+        <div id="DivProgressProcessing" style="width:100%"></div>
+        <ul style="margin-left:20px"><li>The first transaction in the file was on <span id="SpanFirstTx">[...]</span>.</li>
+        <li>The last transaction in file was on <span id="SpanLastTx">[...]</span>.</li>
+        <li>There are <span id="SpanTxCount">[...]</span> transactions in the file.</li>
+        </ul>
     </div>
 
-    <div id="DivInstructions" <asp:Literal ID="LiteralDivInstructionsStyle" runat="server" Text="style='display:none'" />>
-        <asp:UpdatePanel ID="PanelInstructions" UpdateMode="Conditional" runat="server">
-            <ContentTemplate>
-                <br/><h2><asp:Label ID="LabelUploadH2Header" Text="Upload Bank File LOC" runat="server" /></h2>
-                <div style="float:right;padding-left:10px;text-align:center;padding-top:5px"><a rel="leanModal" name="ModalDownloadInstructions" id="go" href="#ModalDownloadInstructions"><asp:Image ID="ImageDownloadInstructions" ImageUrl="~/Images/Ledgers/uploadbankfiles-seb-kontoutdrag-small.png" ImageAlign="Right" runat="server" /></a><small><br style="padding-bottom:2px"/><em><asp:Label ID="LabelClickImage" runat="server" /></em></small></div>
-                <h3><asp:Label ID="LabelDownloadInstructions" Text="Download File From Bank LOC" runat="server" /></h3>
-                <p><asp:Literal ID="LiteralDownloadInstructions"  runat="server" Text="LOC" /><asp:Literal ID="LiteralLastAccountRecord" runat="server" /></p>
-                <div style="clear:both"></div>
-                <h3><asp:Label ID="LabelUploadH3Header" Text="Upload File To Activizr LOC" runat="server" /></h3>
-            </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="ButtonSebFile" EventName="Click" />
-                <asp:AsyncPostbackTrigger ControlID="ButtonBankgiroSEFile" EventName="Click" />
-                <asp:AsyncPostbackTrigger ControlID="DropAccounts" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="ButtonPaypalFile" EventName="Click" />
-                <asp:AsyncPostBackTrigger ControlID="ButtonPaysonFile" EventName="Click" />
-            </Triggers>
-        </asp:UpdatePanel>
 
-        <input type="file" id="FileSelector" runat="server" name="file1" /> <asp:Button ID="Upload" OnClick="Submit_Click" Text="Upload LOC" OnClientClick="onBeginUpload();" runat="server" ValidationGroup="Upload" /> <asp:Label ID="LabelNoFileUploaded" Text="" runat="server" />
+    <div id="DivStepSuccessComplete" style="display:none">
+        <h2>Resynchronization complete</h2>
+        <p>All Swarmops records (<span id="SpanRecordsTotal">[...]</span>) have been successfully resynchronized with the master file.</p>
+        <p>You may <a href="/">return to dashboard</a> if you like.</p>
     </div>
-
-    <telerik:RadProgressManager ID="RadProgressManager1" runat="server" />
-    <telerik:RadProgressArea ID="ProgressIndicator" runat="server" Width="100%" ProgressIndicators="TotalProgressBar">
-        <ProgressTemplate>
-            <div style="width:100%;border:1px solid #E0E0E0;border-radius:5px;box-shadow:1px 1px 3px 3px #888">
-                <div id="PrimaryProgressBarInnerDiv" runat="server" style="width:1%;margin:3px;border:1px solid #88F;border-radius:2px;height:2px;background-color:#CCF"></div>
-            </div>
-        </ProgressTemplate>
-    </telerik:RadProgressArea>
-
-    <div id="ModalDownloadInstructions">
-        <asp:UpdatePanel ID="PanelModalInstructions" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
-                <h2><asp:Label ID="LabelModalInstructionHeader" Text="Bank Screenshot LOC" runat="server" /></h2>
-                <span style="text-align:center"><asp:Image runat="server" ID="ImageDownloadInstructionsFull" /></span><br /><br /><hr /><br />
-                <asp:Literal ID="LiteralDownloadInstructionsModal" runat="server" />
-            </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostbackTrigger ControlID="ButtonSebFile" EventName="Click" />
-                <asp:AsyncPostbackTrigger ControlID="ButtonBankgiroSEFile" EventName="Click" />
-                <asp:AsyncPostBackTrigger ControlID="ButtonPaypalFile" EventName="Click" />
-                <asp:AsyncPostBackTrigger ControlID="ButtonPaysonFile" EventName="Click" />
-            </Triggers>
-        </asp:UpdatePanel>
+    <div id="DivStepSuccessPartial" style="display:none">
+        <h2>Resynchronization partially complete</h2>
+        <p>Most Swarmops records (<span id="SpanRecordsSuccess">[...]</span>) have been successfully resynchronized with the master file. <strong>Some (<span id="SpanRecordsFail">[...]</span>) have not.</strong></p>
+        <p>Due to dependencies, manual action is required for the remaining records. Run resynchronization <a href="#" onclick="location.reload();">again</a> to see which records could not be automatically resynchronized.</p>
+    </div>
+    <div id="DivStepFailure" style="display:none">
+        <h2>Resynchronization partially complete</h2>
+        <p>Most Swarmops records (<span id="Span1">[...]</span>) have been successfully resynchronized with the master file. <strong>Some (<span id="Span2">[...]</span>) have not.</strong></p>
+        <p>Due to dependencies, manual action is required for the remaining records. Run resynchronization <a href="#" onclick="location.reload();">again</a> to see which records could not be automatically resynchronized.</p>
     </div>
 
     <br/>

@@ -10,7 +10,6 @@ using System.Web.Security;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
-using Telerik.Web.UI;
 using Membership = Swarmops.Logic.Swarm.Membership;
 
 
@@ -42,7 +41,7 @@ namespace Swarmops
         {
             // Event subscriptions
 
-            this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
+            // this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
 
             // Titles and other page elements
 
@@ -92,7 +91,7 @@ namespace Swarmops
 
             // Set up main menu 
 
-            RadMenu mainMenu = FindControl("MainMenu") as RadMenu;
+            // RadMenu mainMenu = FindControl("MainMenu") as RadMenu;
 
             Dictionary<string, bool> enableCache = new Dictionary<string, bool>();
 
@@ -209,10 +208,11 @@ namespace Swarmops
 
         private void SetupMenuItems()
         {
-            RadMenuItemCollection menuItems = this.MainMenu.Items;
-            SetupMenuItemsRecurse(menuItems, true);
+            // RadMenuItemCollection menuItems = this.MainMenu.Items;
+            // SetupMenuItemsRecurse(menuItems, true);
         }
 
+        /*
         private bool SetupMenuItemsRecurse(RadMenuItemCollection menuItems, bool topLevel)
         {
             // string thisPageUrl = Request.Url.Segments[Request.Url.Segments.Length - 1].ToLower();
@@ -279,7 +279,7 @@ namespace Swarmops
             }
 
             return anyItemEnabled;
-        }
+        }*/
 
         private string GetBuildIdentity()
         {
@@ -367,7 +367,7 @@ namespace Swarmops
             
         
 
-
+        /*
         string CollectItemID(IRadMenuItemContainer item)
         {
             if (item.Owner == null)
@@ -378,7 +378,7 @@ namespace Swarmops
             {
                 return CollectItemID(item.Owner) + "_" + ((RadMenuItem)item).ID;
             }
-        }
+        }*/
 
 
         protected void LinkLogout_Click(object sender, EventArgs e)
