@@ -10,7 +10,6 @@ using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
-using Telerik.Web.UI;
 
 public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 {
@@ -177,7 +176,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             labelOwnerName.Text = accountOwner.Formal;
         }
 
-        RadToolTip toolTip = (RadToolTip)e.Item.FindControl("ToolTip");
+        // RadToolTip toolTip = (RadToolTip)e.Item.FindControl("ToolTip");
 
         Swarmops.Controls.Swarm.PersonDetailPopup personDetail = (PersonDetailPopup)toolTip.FindControl("PersonDetail");
         personDetail.PersonChanged += new PersonChangedEventHandler(PersonDetail_PersonChanged);
@@ -259,7 +258,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         return accounts;
     }
 
-
+    /*
     protected void RebindTooltips()
     {
         foreach (RepeaterItem repeaterItem in this.RepeaterAccountBudgets.Items)
@@ -274,7 +273,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             personDetail.Person = account.Owner;
             personDetail.Cookie = child;
         }
-    }
+    }*/
 
     protected void RepeaterAccountActuals_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
