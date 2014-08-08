@@ -56,6 +56,9 @@ namespace Swarmops.Logic.Financial
                 result.FeeSignage = FeeSignage.Unknown; // no inline fees
                 result.Precision = ExternalBankDateTimePrecision.Day;
 
+                result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
+                result.BankDataPaymentsReader = StockBankDataReaders.SEPaymentsBankgiroReader;
+
                 return result;
             }
 
@@ -63,7 +66,7 @@ namespace Swarmops.Logic.Financial
             {
                 result.Name = "Paypal";
                 result.Country = null;
-                result.Culture = "sv-SE"; // what the actual fuck? Paypal's giving me sv-SE culture
+                result.Culture = "sv-SE"; // what the actual fuck? Paypal's giving me sv-SE culture in export file
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Date";
                 result.FieldNames[ExternalBankDataFieldName.Time] = "Time";
@@ -79,6 +82,9 @@ namespace Swarmops.Logic.Financial
                 result.LatestTransactionLocation = LatestTransactionLocation.Top;
                 result.FeeSignage = FeeSignage.Negative;
                 result.Precision = ExternalBankDateTimePrecision.Second;
+
+                result.BankDataAccountReader = StockBankDataReaders.TabSeparatedValuesAccountReader;
+                result.BankDataPaymentsReader = null; // No aggregated payments with Paypal
 
                 return result;
             }
@@ -96,6 +102,8 @@ namespace Swarmops.Logic.Financial
         public LatestTransactionLocation LatestTransactionLocation;
         public ExternalBankDateTimePrecision Precision;
         public FeeSignage FeeSignage;
+        public string BankDataAccountReader { get; set; }
+        public string BankDataPaymentsReader { get; set; }
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
     }

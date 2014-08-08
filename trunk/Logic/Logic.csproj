@@ -95,6 +95,10 @@
     <Compile Include="Communications\Transmission\PayloadEnvelope.cs" />
     <Compile Include="Communications\Transmission\NotificationPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadBase.cs" />
+    <Compile Include="Financial\BankDataReaders\SEPaymentsBankgiroReader.cs" />
+    <Compile Include="Financial\IBankDataAccountReader.cs" />
+    <Compile Include="Financial\IBankDataPaymentsReader.cs" />
+    <Compile Include="Financial\BankDataReaders\TabSeparatedValuesReader.cs" />
     <Compile Include="Financial\CashAdvance.cs" />
     <Compile Include="Financial\CashAdvances.cs" />
     <Compile Include="Financial\ExternalBankData.cs" />
@@ -108,6 +112,7 @@
     <Compile Include="Financial\FinancialTransactionTagTypes.cs" />
     <Compile Include="Financial\ImportedBankData.cs" />
     <Compile Include="Financial\ISummable.cs" />
+    <Compile Include="Financial\StockBankDataReaders.cs" />
     <Compile Include="Financial\YearlyReport.cs" />
     <Compile Include="Security\Accesses.cs" />
     <Compile Include="AssemblyInfo.cs" />
