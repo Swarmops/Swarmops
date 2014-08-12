@@ -181,6 +181,14 @@ namespace Swarmops.Site.Pages.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             int accountId = Int32.Parse(accountIdString);
+            BankFileType fileType = BankFileType.AccountStatement;
+
+            if (accountId < 0)
+            {
+                accountId = -accountId;
+                fileType = BankFileType.PaymentDetails;
+            }
+
             FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
             if (account.Organization.Identity != authData.CurrentOrganization.Identity ||
@@ -191,7 +199,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             Thread initThread = new Thread(ProcessUploadThread);
 
-            ProcessThreadArguments args = new ProcessThreadArguments { Guid = guid, Organization = authData.CurrentOrganization, Account = account };
+            ProcessThreadArguments args = new ProcessThreadArguments { Guid = guid, Organization = authData.CurrentOrganization, Account = account, FileType = fileType };
 
             initThread.Start(args);
         }
@@ -201,13 +209,26 @@ namespace Swarmops.Site.Pages.Ledgers
             public string Guid { get; set; }
             public Organization Organization { get; set; }
             public FinancialAccount Account { get; set; }
+            public BankFileType FileType { get; set; }
         }
 
-
+        private enum BankFileType
+        {
+            Unknown = 0,
+            /// <summary>
+            /// A regular bank statement
+            /// </summary>
+            AccountStatement,
+            /// <summary>
+            /// A payments file with breakdowns of aggregate transactions
+            /// </summary>
+            PaymentDetails
+        }
 
         private static void ProcessUploadThread(object args)
         {
             string guid = ((ProcessThreadArguments) args).Guid;
+            BankFileType fileType = ((ProcessThreadArguments) args).FileType;
 
             Documents documents = Documents.RecentFromDescription(guid);
 
@@ -218,20 +239,30 @@ namespace Swarmops.Site.Pages.Ledgers
 
             Document uploadedDoc = documents[0];
 
-            FinancialAccount account = ((ProcessThreadArguments)args).Account;
+            FinancialAccount account = ((ProcessThreadArguments) args).Account;
 
             ExternalBankData externalData = new ExternalBankData();
             externalData.Profile = account.ExternalBankDataProfile;
 
-            using (StreamReader reader = uploadedDoc.GetReader(1252))
+            if (fileType == BankFileType.AccountStatement)
             {
-                externalData.LoadData(reader, ((ProcessThreadArguments) args).Organization);
+                using (StreamReader reader = uploadedDoc.GetReader(1252))
+                {
+                    externalData.LoadData(reader, ((ProcessThreadArguments) args).Organization);
+                }
             }
+            else if (fileType == BankFileType.PaymentDetails)
+            {
+                // Get reader factory from ExternalBankData
+
+                IBankDataPaymentsReader paymentsReader = externalData.GetPaymentsReader();
+                // then read
+            }
+        }
 
 
 
-
-
+        /*
         private void Submit_Click(object sender, EventArgs e)
         {
             bool fileWasUploaded = false;
@@ -329,7 +360,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 this.LabelNoFileUploaded.Text = string.Empty;
                 this.LiteralDivInstructionsStyle.Text = @"style='display:none'";
             }
-        }
+        }*/
 
 
         private void PresentPaymentFileResults (ImportedPaymentData data)
@@ -796,7 +827,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
 
 
-
+        /*
         protected ImportedBankData ImportSebText(Stream fileStream)
         {
             string contents = string.Empty;
@@ -1020,7 +1051,7 @@ namespace Swarmops.Site.Pages.Ledgers
             }
 
             return input;
-        }
+        }*/
 
     }
 }

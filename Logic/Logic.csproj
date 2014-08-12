@@ -96,7 +96,7 @@
     <Compile Include="Communications\Transmission\NotificationPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadBase.cs" />
     <Compile Include="Financial\BankDataReaders\SEPaymentsBankgiroReader.cs" />
-    <Compile Include="Financial\IBankDataAccountReader.cs" />
+    <Compile Include="Financial\IBankDataAccountStatementReader.cs" />
     <Compile Include="Financial\IBankDataPaymentsReader.cs" />
     <Compile Include="Financial\BankDataReaders\TabSeparatedValuesReader.cs" />
     <Compile Include="Financial\CashAdvance.cs" />

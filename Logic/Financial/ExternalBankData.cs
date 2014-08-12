@@ -33,6 +33,13 @@ namespace Swarmops.Logic.Financial
                 throw new InvalidOperationException("Cannot call LoadData before a profile has been set");
             }
 
+            if (Profile.BankDataAccountReader != StockBankDataReaders.TabSeparatedValuesAccountReader)
+            {
+                throw new NotImplementedException("Only tab separated values are supported at this point");
+            }
+
+            // TODO: Implement bank data reader factory here
+
             string organizationCurrencyCode = organization.Currency.Code;
 
             int crlfIndex = data.IndexOfAny(new char[] {'\n', '\r'});
