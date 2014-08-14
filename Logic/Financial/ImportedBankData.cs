@@ -10,7 +10,6 @@ namespace Swarmops.Logic.Financial
         public List<ImportedBankRow> Rows;
     }
 
-
     public class ImportedBankRow
     {
         public DateTime DateTime;
