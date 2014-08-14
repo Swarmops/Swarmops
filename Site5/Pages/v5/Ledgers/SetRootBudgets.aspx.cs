@@ -85,7 +85,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         this.ButtonSetBudgets.Style[HtmlTextWriterStyle.MarginBottom] = "5px";
         this.ButtonSetBudgets.Style[HtmlTextWriterStyle.Padding] = "1px";
 
-        RebindTooltips();
+        // RebindTooltips();
     }
 
     private void LocalizeActualsHeader()
@@ -178,13 +178,13 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         // RadToolTip toolTip = (RadToolTip)e.Item.FindControl("ToolTip");
 
-        Swarmops.Controls.Swarm.PersonDetailPopup personDetail = (PersonDetailPopup)toolTip.FindControl("PersonDetail");
-        personDetail.PersonChanged += new PersonChangedEventHandler(PersonDetail_PersonChanged);
+        // Swarmops.Controls.Swarm.PersonDetailPopup personDetail = (PersonDetailPopup)toolTip.FindControl("PersonDetail");
+        // personDetail.PersonChanged += new PersonChangedEventHandler(PersonDetail_PersonChanged);
 
         if (!Page.IsPostBack && this.CurrentAuthority != null)
-        {
+        {/*
             personDetail.Person = accountOwner;
-            personDetail.Cookie = account;
+            personDetail.Cookie = account;*/
         }
 
         HiddenField hiddenAccountId = (HiddenField) e.Item.FindControl("HiddenAccountId");
@@ -208,7 +208,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         this.RepeaterAccountBudgets.DataSource = accounts;
         this.RepeaterAccountBudgets.DataBind();
 
-        RebindTooltips();
+        // RebindTooltips();
     }
 
     protected void DropYears_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,7 +225,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         LocalizeActualsHeader();
 
-        this.RebindTooltips();
+        // this.RebindTooltips();
     }
 
     private FinancialAccounts GetRootLevelResultAccounts()

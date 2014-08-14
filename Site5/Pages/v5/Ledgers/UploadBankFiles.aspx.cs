@@ -44,13 +44,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             if (!IsPostBack)
             {
-                //Do not display SelectedFilesCount progress indicator.
-                this.ProgressIndicator.ProgressIndicators &= ~ProgressIndicators.SelectedFilesCount;
-                RadProgressContext progress = RadProgressContext.Current;
-                //Prevent the secondary progress from appearing when the file is uploaded (FileCount etc.)
-                progress["SecondaryTotal"] = "0";
-                progress["SecondaryValue"] = "0";
-                progress["SecondaryPercent"] = "0";
+                // there used to be some Telerik junk here
             }
         }
 
@@ -199,7 +193,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             Thread initThread = new Thread(ProcessUploadThread);
 
-            ProcessThreadArguments args = new ProcessThreadArguments { Guid = guid, Organization = authData.CurrentOrganization, Account = account, FileType = fileType };
+            ProcessThreadArguments args = new ProcessThreadArguments { Guid = guid, Organization = authData.CurrentOrganization, Account = account, CurrentUser = authData.CurrentUser, FileType = fileType };
 
             initThread.Start(args);
         }
@@ -209,6 +203,7 @@ namespace Swarmops.Site.Pages.Ledgers
             public string Guid { get; set; }
             public Organization Organization { get; set; }
             public FinancialAccount Account { get; set; }
+            public Person CurrentUser { get; set; }
             public BankFileType FileType { get; set; }
         }
 
@@ -249,13 +244,16 @@ namespace Swarmops.Site.Pages.Ledgers
                 using (StreamReader reader = uploadedDoc.GetReader(1252))
                 {
                     externalData.LoadData(reader, ((ProcessThreadArguments) args).Organization);
+                    ImportResults results = ProcessImportedData(externalData, (ProcessThreadArguments) args);
                 }
             }
             else if (fileType == BankFileType.PaymentDetails)
             {
                 // Get reader factory from ExternalBankData
+                
+                throw new NotImplementedException("Need to implement new flexible payment reader structure");
 
-                IBankDataPaymentsReader paymentsReader = externalData.GetPaymentsReader();
+                // IBankDataPaymentsReader paymentsReader = externalData.GetPaymentsReader();
                 // then read
             }
         }
@@ -362,7 +360,7 @@ namespace Swarmops.Site.Pages.Ledgers
             }
         }*/
 
-
+        /*
         private void PresentPaymentFileResults (ImportedPaymentData data)
         {
             string literalResult = String.Format(Resources.Pages.Ledgers.UploadBankFiles_PaymentSummary1,
@@ -396,7 +394,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             this.LiteralImportResults.Text = @"<p>" + literalResult + @"</p>";
             this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_PaymentFileUploadedHeader;
-        }
+        }*/
 
         [Serializable]
         public class ImportResults
@@ -415,10 +413,10 @@ namespace Swarmops.Site.Pages.Ledgers
         }
 
 
-        protected ImportResults ProcessImportedData(ExternalBankData import)
+        static private ImportResults ProcessImportedData(ExternalBankData import, ProcessThreadArguments args)
         {
-            FinancialAccount assetAccount = FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue));
-            FinancialAccount autoDepositAccount = this.CurrentOrganization.FinancialAccounts.IncomeDonations;
+            FinancialAccount assetAccount = args.Account;
+            FinancialAccount autoDepositAccount = args.Organization.FinancialAccounts.IncomeDonations;
             int autoDepositLimit = 1000; // TODO: this.CurrentOrganization.Parameters.AutoDonationLimit;
 
             ImportResults result = new ImportResults();
@@ -438,7 +436,9 @@ namespace Swarmops.Site.Pages.Ledgers
                 if (progressUpdateInterval < 2 || count % progressUpdateInterval == 0)
                 {
                     int percent = (count*99)/import.Records.Length;
-                    UpdateImportProgressBar(percent);
+
+                    // TODO: UPDATE PROGRESS BAR VIA NEW MECHANISM
+                    // UpdateImportProgressBar(percent);
                 }
 
                 // Update high- and low-water marks.
@@ -463,8 +463,10 @@ namespace Swarmops.Site.Pages.Ledgers
                     amountCents = row.TransactionGrossCents;
                 }
 
-                if (this.CurrentOrganization.Identity == 1 && assetAccount.Identity == 1 && this.CurrentOrganization.Name == "Piratpartiet SE")
+                if (args.Organization.Identity == 1 && assetAccount.Identity == 1 && args.Organization.Name == "Piratpartiet SE")
                 {
+                    // TODO: Change to "installation id" parameter
+
                     // This is an ugly-as-fuck hack that sorts under the category "just bring our pilots the fuck back to operational
                     // status right fucking now".
 
@@ -475,10 +477,10 @@ namespace Swarmops.Site.Pages.Ledgers
                     }
                 }
 
-                FinancialTransaction transaction = FinancialTransaction.ImportWithStub(this.CurrentOrganization.Identity, row.DateTime,
+                FinancialTransaction transaction = FinancialTransaction.ImportWithStub(args.Organization.Identity, row.DateTime,
                                                                                        assetAccount.Identity, amountCents,
                                                                                        row.Description, importKey,
-                                                                                       this.CurrentUser.Identity);
+                                                                                       args.CurrentUser.Identity);
 
                 if (transaction != null)
                 {
@@ -495,23 +497,26 @@ namespace Swarmops.Site.Pages.Ledgers
                         Geography geography = accounts[0].AssignedGeography;
                         FinancialAccount localAccount = accounts[0];
 
-                        transaction.AddRow(this.CurrentOrganization.FinancialAccounts.IncomeDonations, -amountCents, this.CurrentUser);
-                        transaction.AddRow(this.CurrentOrganization.FinancialAccounts.CostsLocalDonationTransfers,
-                                           amountCents, this.CurrentUser);
-                        transaction.AddRow(localAccount, -amountCents, this.CurrentUser);
+                        transaction.AddRow(args.Organization.FinancialAccounts.IncomeDonations, -amountCents, args.CurrentUser);
+                        transaction.AddRow(args.Organization.FinancialAccounts.CostsLocalDonationTransfers,
+                                           amountCents, args.CurrentUser);
+                        transaction.AddRow(localAccount, -amountCents, args.CurrentUser);
 
                         PWEvents.CreateEvent(EventSource.PirateWeb, EventType.LocalDonationReceived,
-                                                                     this.CurrentUser.Identity, this.CurrentOrganization.Identity,
+                                                                     args.CurrentUser.Identity, args.Organization.Identity,
                                                                      geography.Identity, 0,
                                                                      transaction.Identity, localAccount.Identity.ToString());
                     }
-                    else if (row.Description.ToLowerInvariant().StartsWith(this.CurrentOrganization.IncomingPaymentTag))
+                    else if (row.Description.ToLowerInvariant().StartsWith(args.Organization.IncomingPaymentTag))
                     {
                         // Check for previously imported payment group
 
-                        PaymentGroup group = PaymentGroup.FromTag(this.CurrentOrganization,
+                        // TODO: MAKE FLEXIBLE - CALL PAYMENTREADERINTERFACE!
+                        // HACK HACK HACK HACK
+
+                        PaymentGroup group = PaymentGroup.FromTag(args.Organization,
                                                                   "SEBGM" + DateTime.Today.Year.ToString() +   // TODO: Get tags from org
-                                                                  row.Description.Substring(this.CurrentOrganization.IncomingPaymentTag.Length).Trim());
+                                                                  row.Description.Substring(args.Organization.IncomingPaymentTag.Length).Trim());
 
                         if (group != null && group.Open)
                         {
@@ -520,7 +525,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
                             transaction.Dependency = group;
                             group.Open = false;
-                            transaction.AddRow(this.CurrentOrganization.FinancialAccounts.AssetsOutboundInvoices, -amountCents, this.CurrentUser);
+                            transaction.AddRow(args.Organization.FinancialAccounts.AssetsOutboundInvoices, -amountCents, args.CurrentUser);
                         }
                     }
                     else if (amountCents < 0)
@@ -533,14 +538,14 @@ namespace Swarmops.Site.Pages.Ledgers
                         {
                             // This is always an autodeposit, if there is a fee (which is never > 0.0)
 
-                            transaction.AddRow(this.CurrentOrganization.FinancialAccounts.CostsBankFees, -row.FeeCents, this.CurrentUser);
-                            transaction.AddRow(autoDepositAccount, -row.TransactionGrossCents, this.CurrentUser);
+                            transaction.AddRow(args.Organization.FinancialAccounts.CostsBankFees, -row.FeeCents, args.CurrentUser);
+                            transaction.AddRow(autoDepositAccount, -row.TransactionGrossCents, args.CurrentUser);
                         }
                         else if (amountCents < autoDepositLimit * 100)
                         {
                             // Book against autoDeposit account.
 
-                            transaction.AddRow(autoDepositAccount, -amountCents, this.CurrentUser);
+                            transaction.AddRow(autoDepositAccount, -amountCents, args.CurrentUser);
                         }
                     }
                 }
@@ -565,7 +570,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             if (databaseAccountBalanceCents - beyondEofCents == import.LatestAccountBalanceCents)
             {
-                Payouts.AutomatchAgainstUnbalancedTransactions(this.CurrentOrganization);
+                Payouts.AutomatchAgainstUnbalancedTransactions(args.Organization);
                 result.AccountBalanceMatchesBank = true;
             }
             else
@@ -576,14 +581,14 @@ namespace Swarmops.Site.Pages.Ledgers
             return result;
         }
 
-
+        /*
         protected void UpdateImportProgressBar (int percentDone)
         {
             RadProgressContext progress = RadProgressContext.Current;
             progress["PrimaryPercent"] = percentDone.ToString();
 
             System.Threading.Thread.Sleep(100);
-        }
+        }*/
 
 
 
