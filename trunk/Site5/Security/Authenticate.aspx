@@ -8,7 +8,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-	<telerik:RadScriptManager ID="RadScriptManager1" runat="server" />
 	<div>
       Testing.
 	</div>

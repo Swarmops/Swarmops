@@ -8,7 +8,6 @@ using System.Configuration;
 using System.Web.Security;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using Telerik.Web.UI;
 
 public partial class Security_Authenticate : System.Web.UI.Page 
 {

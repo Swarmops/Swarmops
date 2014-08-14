@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" EnableViewState="true" Inherits="Swarmops.Pages.Security.Login" %>
 <%@ Import Namespace="Swarmops.Database" %>
-<%@ Import Namespace="Telerik.Web.UI" %>
-<%@ Register TagPrefix="telerik" Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,7 +7,6 @@
 <head runat="server">
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
-	<telerik:RadStyleSheetManager id="RadStyleSheetManager" runat="server" />
     <link href="../Style/style-v5.css" rel="stylesheet" type="text/css" />
     <title>Swarmops Alpha - Login</title>
 </head>
@@ -24,9 +21,6 @@
 		        //Put your JavaScript code here.
             </script>
             
-	        <telerik:RadAjaxManager ID="RadAjaxManager" runat="server" />
-	        <telerik:RadSkinManager ID="RadSkinManager" Runat="server" Skin="WebBlue" />
-        
             <div class="loginbox">
                 <div class="content">
                     <div class="content">
