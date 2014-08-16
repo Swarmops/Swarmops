@@ -90,6 +90,19 @@ div.BankUploadInstructionsImage
 
     <script type="text/javascript">
 
+        $(document).ready(function() {
+            $('#<%=DropAccounts.ClientID %>').change(function() {
+                var selectedAccountId = $('#<%=DropAccounts.ClientID %>').val();
+
+                if (selectedAccountId != 0) {
+                    $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeIn();
+                } else {
+                    $('#<%=this.UploadFile.ClientID %>_ButtonUploadVisible').fadeOut();
+                }
+            });
+
+        });
+
         function uploadCompletedCallback() {
             $('#DivStepUpload').slideUp().fadeOut();
             $('#DivStepProcessing').fadeIn();
@@ -162,6 +175,7 @@ div.BankUploadInstructionsImage
 	        });
         }
 
+
         var progressReceived = false;
 
         var currentYear = <%=DateTime.Today.Year %>;
@@ -169,16 +183,22 @@ div.BankUploadInstructionsImage
 
     </script>
 
-    <div id="DivStepUpload">
-        <h2>Step 1/4: Upload Bank File</h2>
+    <div id="DivUploadResults">
+    </div>
+    <div id="DivUploadBankFile">
+        <h2>Upload Bank File</h2>
         <div id="DivPrepData">
         
             <div class="entryFields">
-                <asp:DropDownList runat="server" ID="DropAccounts"/>&nbsp;
-                <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
+                <asp:DropDownList runat="server" ID="DropAccounts"/>
+                Dropdown<br/>
+                Instructions<br/>
+                <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadStartedCallback="uploadStartedCallback" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
         
             <div class="entryLabels">
                 Bank account<br/>
+                File type<br/>
+                Instructions<br/>
                 Upload bank file
             </div>
         </div>

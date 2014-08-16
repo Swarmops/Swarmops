@@ -4,7 +4,9 @@ using System.Globalization;
 using System.Threading;
 using System.Web;
 using System.Web.UI;
+using Swarmops.Database;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Structure;
@@ -194,6 +196,11 @@ public class PageV5Base : System.Web.UI.Page
         }
 
         return result;
+    }
+
+    protected string InstallationId
+    {
+        get { return Persistence.Key["SwarmopsInstallationId"]; }
     }
 }
 

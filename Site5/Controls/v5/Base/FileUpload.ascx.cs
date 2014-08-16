@@ -29,6 +29,10 @@ namespace Swarmops.Controls.Base
                 {
                     this.ClientUploadCompleteCallback = string.Empty;
                 }
+                if (this.ClientUploadStartedCallback == null)
+                {
+                    this.ClientUploadStartedCallback = string.Empty;
+                }
             }
             else
             {
@@ -41,6 +45,7 @@ namespace Swarmops.Controls.Base
         public int DisplayCount { get; set; }
         public bool HideTrigger { get; set; }
         public string ClientUploadCompleteCallback { get; set; }
+        public string ClientUploadStartedCallback { get; set; }
 
 
         public void Reset()

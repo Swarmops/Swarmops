@@ -84,6 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Logic.Test.resx</DependentUpon>
     </Compile>
+    <Compile Include="Cache\GuidCache.cs" />
     <Compile Include="Communications\ICommsRenderer.cs" />
     <Compile Include="Communications\ICommsResolver.cs" />
     <Compile Include="Communications\ICommsTransmitter.cs" />
