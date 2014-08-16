@@ -167,6 +167,12 @@ namespace Swarmops.Backend
 
             OutboundComm.CreateNotification(null, NotificationResource.System_Startup);
 
+            // Check for existence of installation ID. If not, create one. Warning: has privacy implications when communicated.
+
+            if (Persistence.Key["SwarmopsInstallationId"] == string.Empty)
+            {
+                Persistence.Key["SwarmopsInstallationId"] = new Guid().ToString();
+            }
 
             DateTime cycleStartTime = DateTime.Now;
 
