@@ -3,86 +3,19 @@
 <%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
+    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+    <script src="/Scripts/jquery.fileupload/jquery.iframe-transport.js" type="text/javascript" language="javascript"></script>
+    <!-- The basic File Upload plugin -->
+    <script src="/Scripts/jquery.fileupload/jquery.fileupload.js" type="text/javascript" language="javascript"></script>
+	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
 
-<style type="text/css">
-input.FileTypeImage
-{
-	width:90px;
-	height:45px;
-	border: 1px solid #1C397E !important;
-	margin-right:20px;
-	margin-top:7px;
-	margin-bottom:6px;
-	float:left;
-}
 
-input.FileTypeImageSelected
-{
-    box-shadow: 0px 0px 2px 2px #FFBC37;
-    -moz-box-shadow: 0px 0px 2px 2px #FFBC37;
-    -webkit-box-shadow: 0px 0px 2px 2px #FFBC37;
-    border: 1px solid #C78B15 !important;
-}
+    <style type="text/css">
+        
+        /* custom styles were used in Telerik version of page */
+         
+    </style>
 
-input.UnselectedType
-{
-	opacity:0.2;
-}
-
-div.Invisible
-{
-	display:none;
-	opacity:0;
-}
-
-div.Visible
-{
-	dispay:inline;
-	opacity:1;
-}
-
-div.BankUploadInstructionsImage
-{
-	float:right;
-}
-
-#lean_overlay {
-    position: fixed;
-    z-index:10000;
-    top: 0px;
-    left: 0px;
-    height:100%;
-    width:100%;
-    background: #000;
-    display: none;
-}
-
-#ModalDownloadInstructions
-{
-	display:none;
-	background:white;
-	width:720px;
-    position: fixed;
-    z-index: 11000;
-    left: 50%;
-    margin-left: -360px;
-    top: 160px;
-    opacity: 1;
-    padding: 10px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
-    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7);
-    -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
-}
-</style>
-
-<script type="text/javascript">
-    if (!(jQuery().leanModal)) {
-        alert('LeanModal plug-in has not been successfully loaded!');
-    }
-</script>
 
 </asp:Content>
 
@@ -104,29 +37,30 @@ div.BankUploadInstructionsImage
         });
 
         function uploadCompletedCallback() {
-            $('#DivStepUpload').slideUp().fadeOut();
-            $('#DivStepProcessing').fadeIn();
+            $('#DivProcessing').fadeIn();
             $('#DivProgressProcessing').progressbar({ value: 0, max: 100 });
+            $('#DivProgressFake').progressbar({ value: 0, max: 100 });
+            $('#DivProgressFake').progressbar({ value: 100 }); // this guy is swapped in on completion
+            halfway = false;
 
             $.ajax({
                 type: "POST",
-                url: "UploadBankAccount.aspx/InitializeProcessing",
+                url: "UploadBankFiles.aspx/InitializeProcessing",
                 data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
+	                alert('quux');
 	                setTimeout('updateProgressProcessing();', 1000);
 	            }
 	        });
-
-            // Set timeout to update progress bar
         }
 
         function updateProgressProcessing() {
 
             $.ajax({
                 type: "POST",
-                url: "UploadBankFiles.aspx/GetProcessingProgress",
+                url: "/Automation/Json-ByGuid.aspx/GetProgress",
                 data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -136,11 +70,15 @@ div.BankUploadInstructionsImage
                             {
                                 width: "100%"
                             }, { queue: false });
-	                    $("#tableResyncPreview").treegrid(  // <<---- THIS needs to replace
-	                        { url: 'Json-ResyncPreview.aspx?Guid=<%= this.UploadFile.GuidString %>' });
                         $('#DivStepPreview').fadeIn();
                         $('#DivStepProcessing').slideUp();
+                        // Add processing results here
                     } else {
+
+	                    if (msg.d > 50 && !halfway) {
+	                        halfway = true;
+	                        $('#DivUploadBankFile').slideUp().fadeOut();
+                        }
 
 	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
 
@@ -154,17 +92,17 @@ div.BankUploadInstructionsImage
                         }
 
                         if (msg.d > 0 && !progressReceived) {
-                            progressReceived = true;
+                            progressReceived = true; 
                             $.ajax({
                                 type: "POST",
                                 url: "UploadBankFiles.aspx/GetProcessingStatistics",
                                 data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
-                                success: function (msg2) {
+                                success: function (msg2) {/*
                                     $('#SpanFirstTx').text(msg2.d.FirstTransaction);
                                     $('#SpanLastTx').text(msg2.d.LastTransaction);
-                                    $('#SpanTxCount').text(msg2.d.TransactionCount);
+                                    $('#SpanTxCount').text(msg2.d.TransactionCount);*/
                                 }
                             });
                         }
@@ -178,22 +116,34 @@ div.BankUploadInstructionsImage
 
         var progressReceived = false;
 
+        var halfway = false;
+
         var currentYear = <%=DateTime.Today.Year %>;
 
 
     </script>
-
-    <div id="DivUploadResults">
+    
+    <div id="DivProcessingFake" style="display:none">
+        <div id="DivProgressFake" style="width:100%"></div>
     </div>
+
+    <div id="DivUploadResultsGood">
+       
+    </div>
+
+    <div id="DivUploadResultsBad">
+       
+    </div>
+
     <div id="DivUploadBankFile">
         <h2>Upload Bank File</h2>
         <div id="DivPrepData">
         
             <div class="entryFields">
                 <asp:DropDownList runat="server" ID="DropAccounts"/>
-                Dropdown<br/>
-                Instructions<br/>
-                <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadStartedCallback="uploadStartedCallback" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
+                (Account statement)<br/>
+                (Instructions - TODO)<br/>
+                <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
         
             <div class="entryLabels">
                 Bank account<br/>
@@ -206,13 +156,9 @@ div.BankUploadInstructionsImage
         <br clear="all"/>
     </div>
     
-    <div id="DivStepProcessing" style="display:none">
-        <h2>Step 2/4: Processing uploaded file...</h2>
+    <div id="DivProcessing" style="display:none">
+        <h2>Processing File...</h2>
         <div id="DivProgressProcessing" style="width:100%"></div>
-        <ul style="margin-left:20px"><li>The first transaction in the file was on <span id="SpanFirstTx">[...]</span>.</li>
-        <li>The last transaction in file was on <span id="SpanLastTx">[...]</span>.</li>
-        <li>There are <span id="SpanTxCount">[...]</span> transactions in the file.</li>
-        </ul>
     </div>
 
 

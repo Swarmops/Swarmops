@@ -204,6 +204,10 @@ namespace Swarmops.Logic.Financial
                         }
                     }
                 }
+                else
+                {
+                    newRecord.TransactionGrossCents = newRecord.TransactionNetCents; // if no "Gross" field, copy from net
+                }
 
                 // Check for consistency of gross/net/fee:
 

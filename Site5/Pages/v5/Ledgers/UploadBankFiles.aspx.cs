@@ -458,7 +458,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 Int64 amountCents = row.TransactionNetCents;
 
-                if (amountCents == 0)
+                if (amountCents == 0) // defensive programming - these _should_ be duplicated in the interpreter if no "fee" field
                 {
                     amountCents = row.TransactionGrossCents;
                 }
