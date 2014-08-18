@@ -136,7 +136,7 @@
         </div>
         
         <div id="DivUploadResultsQuestionable">
-            
+            <div float="left"><img src="/Images/Icons/iconshock-warning-96px.png" /></div><div id="DivUploadResultsQuestionableText"></div>
         </div>
     </div>
 
