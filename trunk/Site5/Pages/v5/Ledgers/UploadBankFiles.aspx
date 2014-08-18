@@ -3,12 +3,12 @@
 <%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
+    <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="tree" runat="server" />
     <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
     <script src="/Scripts/jquery.fileupload/jquery.iframe-transport.js" type="text/javascript" language="javascript"></script>
     <!-- The basic File Upload plugin -->
     <script src="/Scripts/jquery.fileupload/jquery.fileupload.js" type="text/javascript" language="javascript"></script>
 	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
-
 
     <style type="text/css">
         
@@ -50,7 +50,6 @@
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
-	                alert('quux');
 	                setTimeout('updateProgressProcessing();', 1000);
 	            }
 	        });
@@ -70,10 +69,11 @@
                             {
                                 width: "100%"
                             }, { queue: false });
-                        $('#DivStepPreview').fadeIn();
-                        $('#DivStepProcessing').slideUp();
-                        // Add processing results here
-                    } else {
+	                    $('#DivProcessing').hide();
+                        $('#DivProcessingFake').show();
+	                    
+	                    // Add processing results here
+	                } else {
 
 	                    if (msg.d > 50 && !halfway) {
 	                        halfway = true;
@@ -124,19 +124,24 @@
     </script>
     
     <div id="DivProcessingFake" style="display:none">
+        <h2><asp:Label ID="LabelProcessingComplete" runat="server" /></h2>
         <div id="DivProgressFake" style="width:100%"></div>
-    </div>
 
-    <div id="DivUploadResultsGood">
+        <div id="DivUploadResultsGood">
        
-    </div>
+        </div>
 
-    <div id="DivUploadResultsBad">
-       
+        <div id="DivUploadResultsBad">
+            <div float="left"><img src="/Images/Icons/iconshock-cross-96px.png" /></div><div id="DivUploadResultsBadText"></div>
+        </div>
+        
+        <div id="DivUploadResultsQuestionable">
+            
+        </div>
     </div>
 
     <div id="DivUploadBankFile">
-        <h2>Upload Bank File</h2>
+        <h2><asp:Label runat="server" ID="LabelUploadBankFileHeader" /></h2>
         <div id="DivPrepData">
         
             <div class="entryFields">
@@ -146,10 +151,10 @@
                 <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
         
             <div class="entryLabels">
-                Bank account<br/>
-                File type<br/>
-                Instructions<br/>
-                Upload bank file
+                <asp:Label runat="server" ID="LabelBankAccount" /><br/>
+                <asp:Label runat="server" ID="LabelFileType" /><br/>
+                <asp:Label runat="server" ID="LabelInstructions" /><br/>
+                <asp:Label runat="server" ID="LabelUploadBankFile" />
             </div>
         </div>
     
@@ -157,7 +162,7 @@
     </div>
     
     <div id="DivProcessing" style="display:none">
-        <h2>Processing File...</h2>
+        <h2><asp:Label runat="server" ID="LabelProcessing" /></h2>
         <div id="DivProgressProcessing" style="width:100%"></div>
     </div>
 
