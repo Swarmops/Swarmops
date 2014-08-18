@@ -17,7 +17,7 @@ namespace Swarmops.Frontend.Automation
         }
 
         [WebMethod]
-        int GetProgress(string guid)
+        static public int GetProgress(string guid)
         {
             return (int) GuidCache.Get(guid + "-Progress"); // suffix because guid may refer to other data too
         }

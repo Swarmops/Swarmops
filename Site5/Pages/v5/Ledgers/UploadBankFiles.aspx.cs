@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
@@ -35,11 +36,17 @@ namespace Swarmops.Site.Pages.Ledgers
                 // Localize
 
                 this.InfoBoxLiteral = Resources.Pages.Ledgers.UploadBankFiles_Info;
+                this.LabelBankAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_BankAccount;
+                this.LabelFileType.Text = Resources.Pages.Ledgers.UploadBankFiles_FileType;
+                this.LabelInstructions.Text = Resources.Pages.Ledgers.UploadBankFiles_Instructions;
+                this.LabelProcessing.Text = Resources.Pages.Ledgers.UploadBankFiles_Processing;
+                this.LabelProcessingComplete.Text = Resources.Pages.Ledgers.UploadBankFiles_ProcessingComplete;
+                this.LabelUploadBankFile.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
+                this.LabelUploadBankFileHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
 
                 // Populate the asset account dropdown, if needed for file type
 
                 PopulateAccountDropDown();
-
             }
 
             if (!IsPostBack)
@@ -234,27 +241,34 @@ namespace Swarmops.Site.Pages.Ledgers
 
             Document uploadedDoc = documents[0];
 
-            FinancialAccount account = ((ProcessThreadArguments) args).Account;
-
-            ExternalBankData externalData = new ExternalBankData();
-            externalData.Profile = account.ExternalBankDataProfile;
-
-            if (fileType == BankFileType.AccountStatement)
+            try
             {
-                using (StreamReader reader = uploadedDoc.GetReader(1252))
+                FinancialAccount account = ((ProcessThreadArguments) args).Account;
+
+                ExternalBankData externalData = new ExternalBankData();
+                externalData.Profile = account.ExternalBankDataProfile;
+
+                if (fileType == BankFileType.AccountStatement)
                 {
-                    externalData.LoadData(reader, ((ProcessThreadArguments) args).Organization);
-                    ImportResults results = ProcessImportedData(externalData, (ProcessThreadArguments) args);
+                    using (StreamReader reader = uploadedDoc.GetReader(1252))
+                    {
+                        externalData.LoadData(reader, ((ProcessThreadArguments) args).Organization);
+                        ImportResults results = ProcessImportedData(externalData, (ProcessThreadArguments) args);
+                    }
+                }
+                else if (fileType == BankFileType.PaymentDetails)
+                {
+                    // Get reader factory from ExternalBankData
+
+                    throw new NotImplementedException("Need to implement new flexible payment reader structure");
+
+                    // IBankDataPaymentsReader paymentsReader = externalData.GetPaymentsReader();
+                    // then read
                 }
             }
-            else if (fileType == BankFileType.PaymentDetails)
+            finally
             {
-                // Get reader factory from ExternalBankData
-                
-                throw new NotImplementedException("Need to implement new flexible payment reader structure");
-
-                // IBankDataPaymentsReader paymentsReader = externalData.GetPaymentsReader();
-                // then read
+                uploadedDoc.Delete(); // document no longer needed after processing, no matter the result
             }
         }
 
@@ -413,6 +427,12 @@ namespace Swarmops.Site.Pages.Ledgers
         }
 
 
+        [WebMethod]
+        static public string GetImportResults(string guid)
+        {
+            return string.Empty;
+        }
+
         static private ImportResults ProcessImportedData(ExternalBankData import, ProcessThreadArguments args)
         {
             FinancialAccount assetAccount = args.Account;
@@ -437,8 +457,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 {
                     int percent = (count*99)/import.Records.Length;
 
-                    // TODO: UPDATE PROGRESS BAR VIA NEW MECHANISM
-                    // UpdateImportProgressBar(percent);
+                    GuidCache.Set(args.Guid + "-Progress", percent);
                 }
 
                 // Update high- and low-water marks.
@@ -556,6 +575,8 @@ namespace Swarmops.Site.Pages.Ledgers
                     result.DuplicateTransactions++;
                 }
             }
+
+            GuidCache.Set(args.Guid + "-Progress", 100); // Mark complete
 
             // Import complete. Return true if the bookkeeping account matches the bank data.
 
