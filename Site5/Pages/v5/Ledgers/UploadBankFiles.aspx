@@ -136,7 +136,11 @@
 
                         setTimeout('updateProgressProcessing();', 1000);
                     }
-	            }
+	            },
+                error: function(msg) {
+                    // Retry on call error, too
+                    setTimeout('updateProgressProcessing();', 1000);
+                }
 	        });
         }
 

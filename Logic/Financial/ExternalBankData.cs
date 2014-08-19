@@ -166,6 +166,10 @@ namespace Swarmops.Logic.Financial
                     TimeSpan timeZone = TimeSpan.Parse(timeZoneString);
 
                     dateTime -= timeZone;  // minus, to bring the time to UTC. If time 13:00 is in tz +01:00, the UTC time is 12:00
+
+                    // Then move from UTC to local time, to match various bookkeeping laws. TODO: local time per organization, perhaps?
+
+                    dateTime = dateTime.ToLocalTime();
                 }
 
                 // PILOT SPECIAL CASE: if Paypal and PPSE Pilot program, ignore everything before 2014
