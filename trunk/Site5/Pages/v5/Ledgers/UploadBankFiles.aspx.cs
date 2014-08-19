@@ -267,7 +267,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 case ImportResultsCategory.Questionable:
                     html = String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsQuestionable,
                         resultDetail.TransactionsImported, resultDetail.DuplicateTransactions,
-                        resultDetail.EarliestTransaction, resultDetail.LatestTransaction);
+                        Math.Abs(resultDetail.BalanceMismatchCents / 100.0), resultDetail.CurrencyCode);
                     break;
                 case ImportResultsCategory.Bad:
                     html = Resources.Pages.Ledgers.UploadBankFiles_ResultsBad;
@@ -501,6 +501,8 @@ namespace Swarmops.Site.Pages.Ledgers
             public int TransactionsImported;
             public int DuplicateTransactions;
             public bool AccountBalanceMatchesBank;
+            public long BalanceMismatchCents;
+            public string CurrencyCode;
         }
 
 
@@ -668,12 +670,16 @@ namespace Swarmops.Site.Pages.Ledgers
             {
                 Payouts.AutomatchAgainstUnbalancedTransactions(args.Organization);
                 result.AccountBalanceMatchesBank = true;
+                result.BalanceMismatchCents = 0;
             }
             else
             {
                 result.AccountBalanceMatchesBank = false;
+                result.BalanceMismatchCents = (databaseAccountBalanceCents - beyondEofCents) -
+                                              import.LatestAccountBalanceCents;
             }
 
+            result.CurrencyCode = args.Organization.Currency.Code;
             return result;
         }
 
