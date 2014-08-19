@@ -794,6 +794,26 @@ namespace Swarmops.Logic.Structure
             }
         }
 
+        public FinancialAccounts FinancialAccountsExternal
+        {
+            get
+            {
+                // HACK: MUST FETCH THIS FROM ACTUAL ACCOUNTS
+                // HACK HACK HACK HACK HACK HACK
+
+                if (Organization.FromIdentity(1).Name == "Piratpartiet SE") // also, fetch that from installation id instead
+                {
+                    FinancialAccounts result = new FinancialAccounts();
+                    result.Add(FinancialAccount.FromIdentity(1));
+                    result.Add(FinancialAccount.FromIdentity(2));
+
+                    return result;
+                }
+
+                throw new NotImplementedException();
+            }
+        }
+
 
         public static Organization Create (int parentOrganizationId, string nameInternational, string name, string nameShort, string domain, string mailPrefix, int anchorGeographyId, bool acceptsMembers, bool autoAssignNewMembers, int defaultCountryId)
         {
@@ -851,6 +871,7 @@ namespace Swarmops.Logic.Structure
 
         public string IncomingPaymentTag
         {
+            // HACK: REmove this property altogether - should be per account
             get { return "bg 451-0061 "; }  // TODO: Per organization, of course
         }
 

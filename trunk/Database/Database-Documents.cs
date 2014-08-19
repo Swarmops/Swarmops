@@ -166,7 +166,24 @@ namespace Swarmops.Database
         }
 
 
-        public void SetDocumentForeignObject (int documentId, DocumentType newDocumentType, int newForeignId)
+        public void SetDocumentDescription(int documentId, string newDescription)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetDocumentDescription", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "documentId", documentId);
+                AddParameterWithName(command, "newDescription", newDescription);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+        public void SetDocumentForeignObject(int documentId, DocumentType newDocumentType, int newForeignId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {

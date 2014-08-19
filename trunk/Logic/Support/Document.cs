@@ -134,6 +134,9 @@ namespace Swarmops.Logic.Support
             // Unlink, actually
 
             SetForeignObject(new TemporaryIdentity(0));
+            File.Delete(StorageRoot + ServerFileName);
+            SwarmDb.GetDatabaseForWriting().SetDocumentDescription(this.Identity, "Deleted");
+
         }
 
         protected static string StorageRoot

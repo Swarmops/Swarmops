@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
 using System.Web.Services;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Cache;
@@ -42,6 +43,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 this.LabelProcessing.Text = Resources.Pages.Ledgers.UploadBankFiles_Processing;
                 this.LabelProcessingComplete.Text = Resources.Pages.Ledgers.UploadBankFiles_ProcessingComplete;
                 this.LabelUploadBankFile.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
+                this.LabelUploadMore.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadAnother;
                 this.LabelUploadBankFileHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
 
                 // Populate the asset account dropdown, if needed for file type
@@ -158,17 +160,17 @@ namespace Swarmops.Site.Pages.Ledgers
 
         private void PopulateAccountDropDown()
         {
-            FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
-                                                                           FinancialAccountType.Asset);
+            FinancialAccounts accounts = this.CurrentOrganization.FinancialAccountsExternal;
 
             this.DropAccounts.Items.Clear();
-            this.DropAccounts.Items.Add(Resources.Global.Global_DropInits_SelectFinancialAccount);
+            this.DropAccounts.Items.Add(new ListItem(Resources.Global.Global_DropInits_SelectFinancialAccount, "0"));
 
             foreach (FinancialAccount account in accounts)
             {
-                // TODO: If connected to a bank asset, ...
-
-                this.DropAccounts.Items.Add(new ListItem(account.Name, account.Identity.ToString()));
+                if (account.AccountType == FinancialAccountType.Asset)
+                {
+                    this.DropAccounts.Items.Add(new ListItem(account.Name, account.Identity.ToString()));
+                }
             }
 
         }
@@ -227,12 +229,71 @@ namespace Swarmops.Site.Pages.Ledgers
             PaymentDetails
         }
 
+        [WebMethod]
+        static public string GetAccountUploadInstructions(string guid, string accountIdString)
+        {
+            int accountId = Int32.Parse(accountIdString);
+
+            // HACK HACK RELENTLESS HACK TODO
+
+            switch (accountId)
+            {
+                case 0:
+                    return string.Empty;
+                case 1:
+                    return "(Instruct Stock-SE-SEB)";
+                case 2:
+                    return "(Instruct Stock-Global-Paypal)";
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        [WebMethod]
+        static public ReportedImportResults GetReportedImportResults(string guid)
+        {
+            ReportedImportResults results = new ReportedImportResults();
+            ImportResultsCategory category = (ImportResultsCategory) GuidCache.Get(guid + "-Result");
+            ImportResults resultDetail = (ImportResults) GuidCache.Get(guid + "-ResultDetails");
+            string html = string.Empty;
+
+            switch (category)
+            {
+                case ImportResultsCategory.Good:
+                    html = String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsGood,
+                        resultDetail.TransactionsImported, resultDetail.DuplicateTransactions,
+                        resultDetail.EarliestTransaction, resultDetail.LatestTransaction);
+                    break;
+                case ImportResultsCategory.Questionable:
+                    html = String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsQuestionable,
+                        resultDetail.TransactionsImported, resultDetail.DuplicateTransactions,
+                        resultDetail.EarliestTransaction, resultDetail.LatestTransaction);
+                    break;
+                case ImportResultsCategory.Bad:
+                    html = Resources.Pages.Ledgers.UploadBankFiles_ResultsBad;
+                    break;
+                default:
+                    throw new NotImplementedException("Unhandled ImportResultCategory");
+            }
+
+            results.Html = html;
+            results.Category = category.ToString();
+            return results;
+        }
+
+        public class ReportedImportResults
+        {
+            public string Category { get; set; }
+            public string Html { get; set; }
+        }
+
         private static void ProcessUploadThread(object args)
         {
             string guid = ((ProcessThreadArguments) args).Guid;
             BankFileType fileType = ((ProcessThreadArguments) args).FileType;
 
             Documents documents = Documents.RecentFromDescription(guid);
+            GuidCache.Set(guid + "-Result", ImportResultsCategory.Bad); // default - this is what happens if exception
 
             if (documents.Count != 1)
             {
@@ -253,7 +314,18 @@ namespace Swarmops.Site.Pages.Ledgers
                     using (StreamReader reader = uploadedDoc.GetReader(1252))
                     {
                         externalData.LoadData(reader, ((ProcessThreadArguments) args).Organization);
+                            // catch here and set result to BAD
                         ImportResults results = ProcessImportedData(externalData, (ProcessThreadArguments) args);
+
+                        GuidCache.Set(guid + "-ResultDetails", results);
+                        if (results.AccountBalanceMatchesBank)
+                        {
+                            GuidCache.Set(guid + "-Result", ImportResultsCategory.Good);
+                        }
+                        else
+                        {
+                            GuidCache.Set(guid + "-Result", ImportResultsCategory.Questionable);
+                        }
                     }
                 }
                 else if (fileType == BankFileType.PaymentDetails)
@@ -266,8 +338,13 @@ namespace Swarmops.Site.Pages.Ledgers
                     // then read
                 }
             }
+            catch (Exception e)
+            {
+                GuidCache.Set(guid + "-Exception", e.ToString());
+            }
             finally
             {
+                GuidCache.Set(guid + "-Progress", 100); // only here may the caller fetch the results
                 uploadedDoc.Delete(); // document no longer needed after processing, no matter the result
             }
         }
@@ -576,8 +653,6 @@ namespace Swarmops.Site.Pages.Ledgers
                 }
             }
 
-            GuidCache.Set(args.Guid + "-Progress", 100); // Mark complete
-
             // Import complete. Return true if the bookkeeping account matches the bank data.
 
             Int64 databaseAccountBalanceCents = assetAccount.BalanceTotalCents;
@@ -610,6 +685,15 @@ namespace Swarmops.Site.Pages.Ledgers
 
             System.Threading.Thread.Sleep(100);
         }*/
+
+
+        public enum ImportResultsCategory
+        {
+            Unknown = 0,
+            Good,
+            Questionable,
+            Bad
+        }
 
 
 
