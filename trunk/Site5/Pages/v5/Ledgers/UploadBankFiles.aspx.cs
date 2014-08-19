@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -527,7 +528,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 progressUpdateInterval = 100;
             }
 
-            foreach (ExternalBankDataRecord row in import.Records)
+            foreach (ExternalBankDataRecord row in import.Records)  
             {
                 // Update progress.
 
