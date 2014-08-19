@@ -354,12 +354,12 @@
     <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
   </data>
   <data name="UploadBankFiles_ResultsGood" xml:space="preserve">
-    <value>&lt;p&gt;The file has been &lt;strong&gt;successfully imported.&lt;/strong&gt; {0:N} new transactions imported; {1:N} discarded as duplicates of what was already in Swarmops. The account balance in Swarmops matches that of the bank.&lt;/p&gt;&lt;p&gt;The file contained transactions from {2:yyyy-MMM-dd} to {3:yyyy-MMM-dd}.&lt;/p&gt;</value>
+    <value>&lt;p&gt;The file has been &lt;strong&gt;successfully imported.&lt;/strong&gt; {0:N0} new transactions imported; {1:N0} discarded as duplicates of what was already in Swarmops. The account balance in Swarmops matches that of the bank.&lt;/p&gt;&lt;p&gt;The file contained transactions from {2:yyyy-MMM-dd} to {3:yyyy-MMM-dd}.&lt;/p&gt;</value>
     <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
   </data>
   <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
-    <value>&lt;p&gt;The file was imported, but the &lt;strong&gt;resulting account balance mismatches.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;After importing {0:N} transactions (and discarding {1:N} duplicates), the entire file has been processed. However, the resulting account balance in Swarmops is not the same as that of the bank statement.&lt;/p&gt;
-&lt;p&gt;Please try uploading a fresh account statement. If that still produces a mismatch, you may need to try &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;resynchronizing&lt;/a&gt;the bank account with a comprehensive account statement file.&lt;/p&gt;</value>
+    <value>&lt;p&gt;The file was imported, but the &lt;strong&gt;resulting account balance mismatches.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;After importing {0:N0} transactions (and discarding {1:N0} duplicates), the entire file has been processed. However, the resulting account balance in Swarmops is not the same as that of the bank statement.&lt;/p&gt;
+&lt;p&gt;Please try uploading a fresh account statement. If that still produces a mismatch, you may need to try &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;resynchronizing&lt;/a&gt; the bank account with a comprehensive account statement file.&lt;/p&gt;</value>
     <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded.</comment>
   </data>
   <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
