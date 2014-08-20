@@ -1,59 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfMainMenuItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   
-<!-- This file is maintained by hand. -->    
-  <MainMenuItem>
-    <ResourceKey>People</ResourceKey>
-    <UserLevel>1</UserLevel>
-    <Permissions />
-    <Type>Submenu</Type>
-    <Children>
-      <MainMenuItem>
-        <ResourceKey>Placeholder_Todo</ResourceKey>
+    <!-- This file is maintained by hand. -->    
+  
+    <!-- PEOPLE MENU -->
+    
+    <MainMenuItem>
+        <ResourceKey>People</ResourceKey>
+        <UserLevel>1</UserLevel>
+        <Permissions />
+        <Type>Submenu</Type>
+        <Children>
+          
+            <MainMenuItem>
+                <ResourceKey>Placeholder_Todo</ResourceKey>
+                <UserLevel>1</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+        
+        </Children>
+    </MainMenuItem>
+  
+    <!-- COMMUNICATIONS MENU -->
+    
+    <MainMenuItem>
+        <ResourceKey>Communications</ResourceKey>
+        <UserLevel>1</UserLevel>
+        <Permissions />
+        <Type>Submenu</Type>
+        <Children>
+          
+            <MainMenuItem>
+                <ResourceKey>Placeholder_Todo</ResourceKey>
+                <UserLevel>1</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+        
+        </Children>
+    </MainMenuItem>
+  
+    <!-- FINANCIAL MENU -->  
+    
+    <MainMenuItem>
+        <ResourceKey>Financial</ResourceKey>
+        <UserLevel>1</UserLevel>
+        <Permissions />
+        <Type>Submenu</Type>
+        <Children>
+          
+            <MainMenuItem>
+                <ResourceKey>Financial_ClaimExpense</ResourceKey>
+                <UserLevel>1</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-moneyback</ImageUrl>
+                <NavigateUrl>/Pages/v5/Financial/FileExpenseClaim.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Financial_RequestCashAdvance</ResourceKey>
+                <UserLevel>1</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-walletmoney</ImageUrl>
+                <NavigateUrl>/Pages/v5/Financial/RequestCashAdvance.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <UserLevel>1</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Financial_AttestCosts</ResourceKey>
+                <UserLevel>2</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-stamped-paper</ImageUrl>
+                <NavigateUrl>/Pages/v5/Financial/AttestCosts.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Financial_ValidateReceipts</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-invoice-greentick</ImageUrl>
+                <NavigateUrl>/Pages/v5/Financial/ValidateReceipts.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <UserLevel>3</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Financial_ReceivedInvoice</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-invoice</ImageUrl>
+                <NavigateUrl>/Pages/v5/Financial/CreateInboundInvoice.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <UserLevel>3</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Financial_PayOutMoney</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-money-envelope</ImageUrl>
+                <NavigateUrl>/Pages/v5/Financial/PayOutMoney.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+        
+        </Children>
+    </MainMenuItem>
+
+    <!-- LEDGERS MENU -->  
+    
+    <MainMenuItem>
+        <ResourceKey>Ledgers</ResourceKey>
+        <UserLevel>3</UserLevel>
+        <Permissions />
+        <Type>Submenu</Type>
+        <Children>
+          
+            <MainMenuItem>
+                <ResourceKey>Ledgers_BalanceSheet</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-treasure</ImageUrl>
+                <NavigateUrl>/Pages/v5/Ledgers/BalanceSheet.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Ledgers_ProfitLossStatement</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-abacus</ImageUrl>
+                <NavigateUrl>/Pages/v5/Ledgers/ProfitLossStatement.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <UserLevel>3</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Ledgers_AccountPlan</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-openbook</ImageUrl>
+                <NavigateUrl>/Pages/v5/Ledgers/AccountPlan.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <UserLevel>3</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Ledgers_UploadBankFiles</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-bank</ImageUrl>
+                <NavigateUrl>/Pages/v5/Ledgers/UploadBankFiles.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Ledgers_ResyncExternalAccount</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-bank</ImageUrl>
+                <NavigateUrl>/Pages/v5/Ledgers/ResyncExternalAccount.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <UserLevel>3</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Ledgers_ViewOutstandingAccounts</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-cabinet</ImageUrl>
+                <NavigateUrl>/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+        
+        </Children>
+    </MainMenuItem>
+
+    <!-- TEMP PLACEHOLDER -->
+
+    <MainMenuItem>
+        <ResourceKey>Ugly_Todo</ResourceKey>
         <UserLevel>1</UserLevel>
         <Permissions />
         <ImageUrl />
         <Type>Disabled</Type>
         <Children />
-      </MainMenuItem>
-    </Children>
-  </MainMenuItem>
-  <MainMenuItem>
-    <ResourceKey>Communications</ResourceKey>
-    <UserLevel>1</UserLevel>
-    <Permissions />
-    <Type>Submenu</Type>
-    <Children>
-      <MainMenuItem>
-        <ResourceKey>Placeholder_Todo</ResourceKey>
-        <UserLevel>1</UserLevel>
-        <Permissions />
-        <ImageUrl />
-        <Type>Disabled</Type>
-        <Children />
-      </MainMenuItem>
-    </Children>
-  </MainMenuItem>
-  <MainMenuItem>
-    <ResourceKey>Financial</ResourceKey>
-    <UserLevel>2</UserLevel>
-    <Permissions />
-    <Type>Submenu</Type>
-    <Children>
-      <MainMenuItem>
-        <ResourceKey>Financial_ClaimExpense</ResourceKey>
-        <UserLevel>2</UserLevel>
-        <Permissions />
-        <ImageUrl>iconshock-moneyback</ImageUrl>
-        <NavigateUrl>/Pages/v5/Financial/FileExpenseClaim.aspx</NavigateUrl>
-        <Type>Link</Type>
-        <Children />
-      </MainMenuItem>
-      <MainMenuItem>
-        <UserLevel>0</UserLevel>
-        <Type>Separator</Type>
-        <Children />
-      </MainMenuItem>
-    </Children>
-  </MainMenuItem>
+    </MainMenuItem>
+
 </ArrayOfMainMenuItem>

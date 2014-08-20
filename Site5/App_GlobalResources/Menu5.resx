@@ -354,4 +354,7 @@
   <data name="Menu5_Placeholder_Todo" xml:space="preserve">
     <value>Placeholder (Todo)</value>
   </data>
+  <data name="Menu5_Ugly_Todo" xml:space="preserve">
+    <value>This is a temporary menu. Yes it's ugly now.</value>
+  </data>
 </root>
