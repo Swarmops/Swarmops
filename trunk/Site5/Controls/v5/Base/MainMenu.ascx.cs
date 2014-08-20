@@ -55,7 +55,7 @@ namespace Swarmops.Controls.Base
             switch (menuItem.Type)
             {
                 case MenuItemType.Link:
-                    output.Write("<img src=\"/Images/PageIcons/{0}-16px.png\" /><a href=\"{1}\">{2}</a>",
+                    output.Write("<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-16px.png\" />{2}</a>",
                         menuItem.ImageUrl, menuItem.NavigateUrl, localizedText);
                     break;
                 case MenuItemType.Disabled:
@@ -64,13 +64,13 @@ namespace Swarmops.Controls.Base
                     {
                         imageUrl = "/Images/PageIcons/transparency-16px.png";
                     }
-                    output.Write("<img src=\"{0}\" />{1}", imageUrl, localizedText);
+                    output.Write("<a href='#disabled'><img src=\"{0}\" />{1}</a>", imageUrl, localizedText);
                     break;
                 case MenuItemType.Submenu:
-                    output.Write(localizedText);
+                    output.Write("<a href='#'>" + localizedText + "</a>");
                     break;
                 case MenuItemType.Separator:
-                    output.Write("---");
+                    output.Write("&nbsp;<hr/>");
                     break;
                 default:
                     throw new NotImplementedException();
