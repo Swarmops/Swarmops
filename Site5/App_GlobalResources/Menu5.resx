@@ -351,4 +351,7 @@
   <data name="Menu5_People_SelfSignup" xml:space="preserve">
     <value>Self-Signup Page</value>
   </data>
+  <data name="Menu5_Placeholder_Todo" xml:space="preserve">
+    <value>Placeholder (Todo)</value>
+  </data>
 </root>
