@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Master-v5.master.cs" Inherits="Swarmops.MasterV5" %>
 <%@ Register Src="~/Controls/v5/Base/LanguageSelector.ascx" TagName="LanguageSelector" TagPrefix="act5" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ExternalScripts" Src="~/Controls/v5/UI/ExternalScripts.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="MainMenu" Src="~/Controls/v5/Base/MainMenu.ascx" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,6 +13,7 @@
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/superfish.js" ></script>
     
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
@@ -25,6 +27,7 @@
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
     <link href="/Style/jquery.qtip.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/superfish.css" rel="stylesheet" type="text/css" />
 
     <!-- additional scripts etc from individual pages -->
     <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
@@ -66,6 +69,8 @@
 	        });*/
 
             $("a[rel*=leanModal]").leanModal();
+
+            $("#MainMenuContainer").superfish();
 
             <asp:Literal runat="server" ID="LiteralDocumentReadyHook" />
 
@@ -113,6 +118,7 @@
         <div class="break"></div>
         <div class="topmenu">
             <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>
+            <Swarmops5:MainMenu ID="MainMenu" runat="server" />
         </div>
         
         <div class="mainbar">
