@@ -285,6 +285,10 @@
   <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
     <value>&lt;h3&gt;The bank file could not be imported.&lt;/h3&gt;&lt;p&gt;This has one of three reasons: you missed some detail in the download instructions, the bank has changed its format, or you accidentally uploaded the wrong file entirely (like a photo from your last party instead of the transactions list). No transactions were imported at all. &lt;strong&gt;Please retry.&lt;/strong&gt;</value>
   </data>
+  <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
+    <value>Expected File</value>
+    <comment>The name of the expected file for uploading.</comment>
+  </data>
   <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
     <value>File Successfully Imported</value>
     <comment>Displayed as header after successful processing</comment>
@@ -350,7 +354,7 @@
     <value>Processing Complete</value>
   </data>
   <data name="UploadBankFiles_ResultsBad" xml:space="preserve">
-    <value>&lt;p&gt;&lt;strong&gt;The file could not be read as an input file to this bank.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;There are several reasons this could happen: the file may be bad, the bank may have silently changed its format, or you uploaded the wrong file entirely. Please try again.&lt;/p&gt;</value>
+    <value>&lt;p&gt;&lt;br/&gt;&lt;strong&gt;The file could not be read as an input file to this bank.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;There are several reasons this could happen: the file may be corrupt, the bank may have silently changed its file format, or you uploaded the wrong file entirely. Please try again.&lt;/p&gt;</value>
     <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
   </data>
   <data name="UploadBankFiles_ResultsGood" xml:space="preserve">

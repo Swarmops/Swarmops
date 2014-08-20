@@ -19,6 +19,7 @@ public class PageV5Base : System.Web.UI.Page
 {
     public PermissionSet pagePermissionDefault = new PermissionSet(Permission.CanSeeSelf); //Use from menu;
     public Access PageAccessRequired = null; // v5 mechanism
+    public int DatabaseVersionRequired = 0; // v5 mechanism
 
     /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
     protected override void OnInitComplete(System.EventArgs e)
@@ -64,10 +65,6 @@ public class PageV5Base : System.Web.UI.Page
 
     protected override void OnPreInit(EventArgs e)
     {
-        // Unlock Telerik (kick out at first opportunity...)
-
-        this.Application["Telerik.Web.UI.Key"] = "Activizr";
-
         // Localization
 
         // Set default culture (English, United States, but that doesn't work so fake it to GB)
