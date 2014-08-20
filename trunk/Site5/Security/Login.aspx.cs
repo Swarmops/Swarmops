@@ -24,12 +24,8 @@ namespace Swarmops.Pages.Security
                 return;
             }
 
-            //Person rick = Person.FromIdentity(1);
-            //rick.SetPassword("1");
+            // THE DAMN BITID NEEDS TO GO INTO ANDROID WALLET SO WE CAN STREAMLINE AND REWRITE THIS POS
 
-            // Unlock Telerik
-
-            this.Application["Telerik.Web.UI.Key"] = "Activizr";
 
             this.LabelLoginFailed.Visible = false;
             this.TextLogin.Focus();
