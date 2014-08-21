@@ -171,7 +171,7 @@ namespace Swarmops.Backend
 
             if (Persistence.Key["SwarmopsInstallationId"] == string.Empty)
             {
-                Persistence.Key["SwarmopsInstallationId"] = new Guid().ToString();
+                Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
             }
 
             DateTime cycleStartTime = DateTime.Now;
