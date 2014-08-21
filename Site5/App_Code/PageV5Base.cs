@@ -195,6 +195,10 @@ public class PageV5Base : System.Web.UI.Page
         return result;
     }
 
+    /// <summary>
+    /// This is used to identify special cases for pilot installations. Because of the privacy implications, it
+    /// should not be used at all from general availability onwards, except for those pilot installations.
+    /// </summary>
     protected string InstallationId
     {
         get { return Persistence.Key["SwarmopsInstallationId"]; }

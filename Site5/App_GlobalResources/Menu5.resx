@@ -177,8 +177,11 @@
   <data name="Menu5_Financial_List" xml:space="preserve">
     <value>List</value>
   </data>
+  <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
+    <value>Cash Requests</value>
+  </data>
   <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
-    <value>Expense Claims, Cash Requests</value>
+    <value>Expense Claims</value>
   </data>
   <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
     <value>Inbound Invoices</value>
