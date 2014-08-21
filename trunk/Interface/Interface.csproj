@@ -61,6 +61,7 @@
     <Compile Include="DataObjects\OrganizationRolesDataObject.cs" />
     <Compile Include="Localization\LocalizationManager.cs" />
     <Compile Include="Objects\ExpensePayout.cs" />
+    <Compile Include="Objects\MainMenuItem.cs" />
     <Compile Include="Objects\OrganizationMetadata.cs" />
     <Compile Include="PersonIcon.cs" />
     <Compile Include="PirateWebMapProvider.cs" />
