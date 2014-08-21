@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 using Swarmops.Logic.Security;
 
 
-namespace Swarmops
+namespace Swarmops.Interface.Objects
 {
     /// <summary>
     /// Summary description for MainMenuItem

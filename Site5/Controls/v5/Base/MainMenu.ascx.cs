@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Serialization;
+using Swarmops.Interface.Objects;
 
 // ReSharper disable once CheckNamespace
 namespace Swarmops.Controls.Base
