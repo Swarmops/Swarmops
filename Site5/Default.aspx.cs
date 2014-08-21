@@ -18,7 +18,7 @@ public partial class Default : PageV5Base
 
         /*
         this.LabelActionListMotions.Text = Resources.Pages.Governance.ListMotions_PageTitle;
-        this.LabelActionVote.Text = Resources.Pages.Governance.Vote_PageTitle;*/   // meh
+        this.LabelActionVote.Text = Resources.Pages.Governance.Vote_PageTitle;*/
 
         this.InfoBoxLiteral = "This is a Dashboard placeholder. It will contain a snapshot of the state of things as soon as the basic functions are re-implemented in the new interface.";
     }
