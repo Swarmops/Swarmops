@@ -32,29 +32,35 @@
 }
 
 
-/*** DEMO SKIN ***/
+/*** SWARMOPS SKIN - HEAVILY MODIFIED FROM SUPERFISH DISTRO ***/
+
 .sf-menu {
 	float: left;
-	margin-bottom: 1em;
+	margin-left: 14px;
 }
 .sf-menu ul {
 	box-shadow: 2px 2px 6px rgba(0,0,0,.2);
 	min-width: 12em; /* allow long menu items to determine submenu width */
 	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
 }
+
 .sf-menu a {
-	border-left: 1px solid #fff;
-	border-top: 1px solid #dFeEFF; /* fallback colour must use full shorthand */
-	border-top: 1px solid rgba(255,255,255,.5);
 	padding: .75em 1em;
 	text-decoration: none;
 	zoom: 1; /* IE7 */
 }
 .sf-menu a {
-	color: #13a;
+	color: white;
+    font-size: 120%;
 }
+
+.sf-menu a:hover, .sf-menu li.sfHover > a
+{
+    color: #7F5500;
+}
+
 .sf-menu li {
-	background: #BDD2FF;
+	background: transparent;
 	white-space: nowrap; /* no need for Supersubs plugin */
 	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
 	-webkit-transition: background .2s;
@@ -66,8 +72,21 @@
 .sf-menu ul ul li {
 	background: #9AAEDB;
 }
-.sf-menu li:hover,
-.sf-menu li.sfHover {
+
+.sf-menu li:hover, .sf-menu li.sfHover
+ {
+    /* Same as Sidebar.Orange */
+	background-color: #FFBC37;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC145', endColorstr='#F0AB22');  /* MSIE */
+	background: -moz-linear-gradient(top, #FFC145, #F0AB22);  /* Mozilla */
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22)); /* Chrome, Safari */
+	-webkit-transition: none;
+	transition: none;
+	/* text-shadow: #C78B15 0px 0px 3px, #C78B15 0px 0px 3px; */
+ }
+
+.sf-menu ul li:hover,
+.sf-menu ul li.sfHover {
 	background: #CFDEFF;
 	/* only transition out, not in */
 	-webkit-transition: none;
@@ -75,12 +94,12 @@
 }
 
 /*** arrows (for all except IE7) **/
-.sf-arrows .sf-with-ul {
+.sf-menu ul ul.sf-arrows .sf-with-ul {
 	padding-right: 2.5em;
 	*padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
 }
 /* styling for both css and generated arrows */
-.sf-arrows .sf-with-ul:after {
+ul.sf-menu ul .sf-arrows .sf-with-ul:after {
 	content: '';
 	position: absolute;
 	top: 50%;

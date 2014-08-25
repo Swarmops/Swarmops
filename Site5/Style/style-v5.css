@@ -966,13 +966,6 @@ input.ButtonSwarmopsUpload:active {
     background-position: 2px 2px;
 }
 
-/* TELERIK STYLE OVERRIDES */
-
-div.RadToolTip table.rtWrapper td.rtWrapperContent
-{
-	font-family: Ubuntu !important;
-}
-
 
 
 
