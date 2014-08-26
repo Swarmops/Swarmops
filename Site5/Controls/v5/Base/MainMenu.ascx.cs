@@ -53,6 +53,13 @@ namespace Swarmops.Controls.Base
             }
             localizedText = Server.HtmlEncode(localizedText); // muy importante
 
+            string iconSize = "16px";
+
+            if (File.Exists(Server.MapPath("~/Images/PageIcons/" + menuItem.ImageUrl + "-20px.png")))
+            {
+                iconSize = "20px";
+            }
+
             switch (menuItem.Type)
             {
                 // TODO: More types here, and check with the CSS. Some work to get good looking
@@ -60,14 +67,14 @@ namespace Swarmops.Controls.Base
                     // MEH forcing build
 
                 case MenuItemType.Link:
-                    output.Write("<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-16px.png\"  height=\"20\" width=\"20\"  />{2}</a>",
-                        menuItem.ImageUrl, menuItem.NavigateUrl, localizedText);
+                    output.Write("<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-{3}.png\"  height=\"20\" width=\"20\"  />{2}</a>",
+                        menuItem.ImageUrl, menuItem.NavigateUrl, localizedText, iconSize);
                     break;
                 case MenuItemType.Disabled:
-                    string imageUrl = "/Images/PageIcons/" + menuItem.ImageUrl + "-16px.png";
+                    string imageUrl = "/Images/PageIcons/" + menuItem.ImageUrl + "-" + iconSize + ".png";
                     if (String.IsNullOrEmpty(menuItem.ImageUrl))
                     {
-                        imageUrl = "/Images/PageIcons/transparency-16px.png";
+                        imageUrl = "/Images/PageIcons/transparency-16px.png"; // doesn't matter in slightest if browser resizes to 20px
                     }
                     output.Write("<a href='#disabled'><img src=\"{0}\" height=\"20\" width=\"20\" />{1}</a>", imageUrl, localizedText);
                     break;
