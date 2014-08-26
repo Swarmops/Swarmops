@@ -694,7 +694,7 @@ namespace Swarmops.Utility.BotCode
 
 
 
-
+        [Obsolete ("Use LostMember instead.", true)]
         internal static void ProcessTerminatedMembership (BasicPWEvent newPwEvent)
         {
             //OBSOLETE LostMember is used instead.

@@ -801,7 +801,7 @@ namespace Swarmops.Logic.Structure
                 // HACK: MUST FETCH THIS FROM ACTUAL ACCOUNTS
                 // HACK HACK HACK HACK HACK HACK
 
-                if (Organization.FromIdentity(1).Name == "Piratpartiet SE") // also, fetch that from installation id instead
+                if (PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE) && this.OrganizationId == 1) 
                 {
                     FinancialAccounts result = new FinancialAccounts();
                     result.Add(FinancialAccount.FromIdentity(1));

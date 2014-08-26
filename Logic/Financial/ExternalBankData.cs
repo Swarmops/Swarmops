@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
@@ -174,7 +175,7 @@ namespace Swarmops.Logic.Financial
 
                 // PILOT SPECIAL CASE: if Paypal and PPSE Pilot program, ignore everything before 2014
 
-                if (dateTime.Year < 2014 && organization.Identity == 1 && fieldNameLookup.ContainsKey(ExternalBankDataFieldName.UniqueId) && organization.Name == "Piratpartiet SE")
+                if (dateTime.Year < 2014 && organization.Identity == 1 && fieldNameLookup.ContainsKey(ExternalBankDataFieldName.UniqueId) && PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
                 {
                     continue; // Do not import PayPal records from before 2013
                 }
