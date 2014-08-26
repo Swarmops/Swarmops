@@ -17,9 +17,12 @@
 .sf-menu > li {
 	float: left;
 }
+
 .sf-menu li:hover > ul,
-.sf-menu li.sfHover > ul {
-	display: block;
+.sf-menu li.sfHover > ul
+{
+    display: block;
+    box-shadow: #1C397E 0px 1px 1px 1px, #A2BEFF 0px 1px 5px 1px;
 }
 
 .sf-menu a {
@@ -54,26 +57,56 @@
     font-size: 120%;
 }
 
+.sf-menu ul a
+{
+    padding: 4px 10px 8px 10px;
+}
+
 .sf-menu a:hover, .sf-menu li.sfHover > a
 {
     color: #7F5500;
+}
+
+.sf-menu ul a
+{
+    font-size: 120%;
+    color: #476EC7;
+}
+
+.sf-menu ul a:hover, sf-menu ul li.sfHover > a
+{
+    color: white;
+    text-shadow: #FFEDC8 0 0 2px;
+}
+
+.sf-menu ul li hr
+{
+    position: relative;
+    top: -6px;
+}
+
+.sf-menu ul li img
+{
+    position: relative;
+    top: 4px;
+    left: -4px;
 }
 
 .sf-menu li {
 	background: transparent;
 	white-space: nowrap; /* no need for Supersubs plugin */
 	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
-	-webkit-transition: background .2s;
-	transition: background .2s;
+	/*-webkit-transition: background .2s;
+	transition: background .2s; */
 }
 .sf-menu ul li {
-	background: #AABDE6;
+	background: #E4ECFF;
 }
 .sf-menu ul ul li {
-	background: #9AAEDB;
+	background: #FF00FF;
 }
 
-.sf-menu li:hover, .sf-menu li.sfHover
+.sf-menu li:not(.Separator):hover, .sf-menu li.sfHover
  {
     /* Same as Sidebar.Orange */
 	background-color: #FFBC37;
@@ -81,15 +114,23 @@
 	background: -moz-linear-gradient(top, #FFC145, #F0AB22);  /* Mozilla */
 	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22)); /* Chrome, Safari */
 	-webkit-transition: none;
+	-webkit-transition: none;
 	transition: none;
+	transition: none;
+    box-shadow: #C78B15 0 0px 2px 0px inset;
 	/* text-shadow: #C78B15 0px 0px 3px, #C78B15 0px 0px 3px; */
  }
 
-.sf-menu ul li:hover,
+.sf-menu ul li:not(.Separator):hover,
 .sf-menu ul li.sfHover {
-	background: #CFDEFF;
+	background-color: #FFBC37;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC145', endColorstr='#F0AB22');  /* MSIE */
+	background: -moz-linear-gradient(top, #FFC145, #F0AB22);  /* Mozilla */
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22)); /* Chrome, Safari */
 	/* only transition out, not in */
 	-webkit-transition: none;
+	-webkit-transition: none;
+	transition: none;
 	transition: none;
 }
 
