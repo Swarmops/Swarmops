@@ -66,9 +66,9 @@ namespace Swarmops.Utility.BotCode
                             ProcessTransferredMembership(newEvent);
                             break;
 
-                        case EventType.TerminatedMembership: //Obsolete
-                            ProcessTerminatedMembership(newEvent);
-                            break;
+                        //case EventType.TerminatedMembership: //Obsolete
+                        //   ProcessTerminatedMembership(newEvent);
+                        //   break;
 
                         case EventType.ReceivedMembershipPayment:
                             ProcessReceivedPayment(newEvent);
