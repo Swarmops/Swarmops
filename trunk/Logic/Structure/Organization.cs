@@ -849,7 +849,7 @@ namespace Swarmops.Logic.Structure
             if (problems != "")
                 throw new Exception("Can not delete because:\n\r" + problems);
 
-            OrganizationCache.DeleteOrganization(this.Identity);
+            // OrganizationCache.DeleteOrganization(this.Identity);  -- commented out because OrganizationCache.Delete is also marked obsolete
 
         }
 
