@@ -40,7 +40,7 @@ namespace Swarmops.Controls.Base
 
         private void WriteMenuItem(MainMenuItem menuItem, HtmlTextWriter output)
         {
-            output.Write("<li>");
+            output.Write("<li class=\"{0}\">", menuItem.Type.ToString());
             string localizedText = "RESOURCE NOT FOUND";
 
             if (!String.IsNullOrEmpty(menuItem.ResourceKey))
@@ -60,7 +60,7 @@ namespace Swarmops.Controls.Base
                     // MEH forcing build
 
                 case MenuItemType.Link:
-                    output.Write("<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-16px.png\" />{2}</a>",
+                    output.Write("<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-16px.png\"  height=\"20\" width=\"20\"  />{2}</a>",
                         menuItem.ImageUrl, menuItem.NavigateUrl, localizedText);
                     break;
                 case MenuItemType.Disabled:
@@ -69,7 +69,7 @@ namespace Swarmops.Controls.Base
                     {
                         imageUrl = "/Images/PageIcons/transparency-16px.png";
                     }
-                    output.Write("<a href='#disabled'><img src=\"{0}\" />{1}</a>", imageUrl, localizedText);
+                    output.Write("<a href='#disabled'><img src=\"{0}\" height=\"20\" width=\"20\" />{1}</a>", imageUrl, localizedText);
                     break;
                 case MenuItemType.Submenu:
                     output.Write("<a href='#'>" + localizedText + "</a>");
