@@ -233,6 +233,7 @@
     <Compile Include="Support\LogEntries\LogEntryBase.cs" />
     <Compile Include="Support\LogEntries\PayoutCreatedLogEntry.cs" />
     <Compile Include="Support\ObjectOptionalData.cs" />
+    <Compile Include="Support\PilotInstallationIds.cs" />
     <Compile Include="Support\PluralBase.cs" />
     <Compile Include="Security\ActivityEnum.cs" />
     <Compile Include="Security\Authentication.cs" />
