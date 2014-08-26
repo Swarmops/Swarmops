@@ -562,12 +562,12 @@ namespace Swarmops.Site.Pages.Ledgers
                     amountCents = row.TransactionGrossCents;
                 }
 
-                if (args.Organization.Identity == 1 && assetAccount.Identity == 1 && args.Organization.Name == "Piratpartiet SE")
+                if (args.Organization.Identity == 1 && assetAccount.Identity == 1 && PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE))
                 {
-                    // TODO: Change to "installation id" parameter
-
                     // This is an ugly-as-fuck hack that sorts under the category "just bring our pilots the fuck back to operational
                     // status right fucking now".
+
+                    // This code can and should be safely removed once the pilot's books are closed for 2014, which should be some time mid-2015.
 
                     if (row.DateTime < new DateTime(2014,03,22))
                     {
