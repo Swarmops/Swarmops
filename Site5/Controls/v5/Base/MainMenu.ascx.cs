@@ -53,7 +53,7 @@ namespace Swarmops.Controls.Base
             }
             localizedText = Server.HtmlEncode(localizedText); // muy importante
 
-            string iconSize = "16px";
+            string iconSize = "40px";
 
             if (File.Exists(Server.MapPath("~/Images/PageIcons/" + menuItem.ImageUrl + "-20px.png")))
             {
