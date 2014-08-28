@@ -1,6 +1,6 @@
 #! /bin/bash
 
-echo "Swarmops post-installation script running"
+#echo "Swarmops post-installation script running"
 #make sure some directories exist
 mkdir -p /opt/swarmops/upload
 mkdir -p /opt/swarmops/backend/logs
