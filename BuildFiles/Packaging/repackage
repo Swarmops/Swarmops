@@ -127,6 +127,11 @@ cp swarmops-$PACKAGENAME-latest.deb /home/prod/Smallwebs/Activizr-repo
 echo "Updating repositories..."
 scripts/update-repos swarmops-$PACKAGENAME-latest.deb
 
+if [ "$2" != "stable" ]; then
+  echo "Installing on swarmops-dev for testing..."
+  dpkg -i swarmops-$PACKAGENAME-latest.deb
+fi
+
 echo "Notifying developers that new build has deployed for test..."
 echo "Swarmops $PACKAGENAME build $(cat $BUILDIDSOURCE | tr -d ' \r') has been deployed as daily build." > deploymsg.txt
 echo "Test it at http://dev.swarmops.com/ as usual." >> deploymsg.txt
@@ -134,3 +139,6 @@ mail -s "Swarmops $PACKAGENAME $(cat $BUILDIDSOURCE) deployed as daily" "swarmop
 
 rm deploymsg.txt
 rm $BUILDIDSOURCE
+
+
+
