@@ -3,9 +3,9 @@ Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
 Depends: swarmops-common-internal
-Conflicts: swarmops-backend
+Conflicts: swarmops-backend,swarmops-backend-stable
 Homepage: http://swarmops.com/
-Description: Swarmops Backend
+Description: Swarmops Backend (Internal)
  Swarmops is a swarm activist administration system.
  This package is an internal development build.
 
