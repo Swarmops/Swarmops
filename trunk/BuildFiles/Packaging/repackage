@@ -28,15 +28,18 @@ elif [ "$1" == "common" ]; then
   PACKAGE=common
 else
   echo "Syntax:"
-  echo "repackage {frontend|backend|extscripts|common} [stable]"
+  echo "repackage {frontend|backend|extscripts|common} [sprint|release]"
   echo
-  echo "If 'stable' is not given, -internal will be added to the package name."
+  echo "If 'sprint' or 'release' is not given, -internal will be added to the package name."
   exit 1;
 fi
 
-if [ "$2" == "stable" ]; then
-  CONTROLSUFFIX=-stable
-  echo "Packaging STABLE for external deployment."
+if [ "$2" == "release" ]; then
+  CONTROLSUFFIX=-release
+  echo "Packaging FINISHED RELEASE for super-stable deployments."
+elif [ "$2" == "sprint" ]; then
+  CONTROLSUFFIX=-sprint
+  echo "Packaging END-OF-SPRINT for normal deployments."
 else
   CONTROLSUFFIX=-internal
   if [ "$1" == "extscripts" ]; then
@@ -127,15 +130,15 @@ cp swarmops-$PACKAGENAME-latest.deb /home/prod/Smallwebs/Activizr-repo
 echo "Updating repositories..."
 scripts/update-repos swarmops-$PACKAGENAME-latest.deb
 
-if [ "$2" != "stable" ]; then
-  echo "Installing on swarmops-dev for testing..."
+if [ "$2" == "" ]; then
+  echo "Installing INTERNAL BUILD on swarmops-dev for testing..."
   dpkg -i swarmops-$PACKAGENAME-latest.deb
 fi
 
 echo "Notifying developers that new build has deployed for test..."
 echo "Swarmops $PACKAGENAME build $(cat $BUILDIDSOURCE | tr -d ' \r') has been deployed as daily build." > deploymsg.txt
 echo "Test it at http://dev.swarmops.com/ as usual." >> deploymsg.txt
-mail -s "Swarmops $PACKAGENAME $(cat $BUILDIDSOURCE) deployed as daily" "swarmops-builds@falkvinge.net" < deploymsg.txt
+mail -s "Swarmops $PACKAGENAME $(cat $BUILDIDSOURCE) deployed" "swarmops-builds@falkvinge.net" < deploymsg.txt
 
 rm deploymsg.txt
 rm $BUILDIDSOURCE
