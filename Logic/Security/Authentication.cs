@@ -165,12 +165,12 @@ namespace Swarmops.Logic.Security
 
         internal static string GeneratePasswordHash (int personId, string password)
         {
-            return SHA1.Hash(password + personId + "Pirate");
+            return BCrypt.HashPassword(password + personId.ToString(CultureInfo.InvariantCulture), BCrypt.GenerateSalt(12));
         }
 
 
         /// <summary>
-        /// Generates password hashes for legacy passwords in system.
+        /// Generates password hashes for legacy passwords in system (that are no longer generated).
         /// </summary>
         /// <param name="person">The person to generate a hash for.</param>
         /// <param name="password">The password to hash.</param>
@@ -179,12 +179,17 @@ namespace Swarmops.Logic.Security
         {
             if (person.PersonalNumber.Length > 0)
             {
-                return new[] {MD5.Hash(password + person.PersonalNumber + "Pirate")};
+                return new[]
+                {
+                    SHA1.Hash(password + person.Identity + "Pirate"),
+                    MD5.Hash(password + person.PersonalNumber + "Pirate")
+                };
             }
             else
-            {
-                return new string[0];
-            }
+                return new[]
+                {
+                    SHA1.Hash(password + person.Identity + "Pirate")
+                };
         }
 
 

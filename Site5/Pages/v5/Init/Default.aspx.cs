@@ -14,6 +14,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Logic.Support;
 using Swarmops.Site.Automation;
 
 using Swarmops.Database;
@@ -450,6 +451,10 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry);
         }
+
+        // Set Geography at baseline (TODO: Ask for what baseline we got)
+
+        Persistence.Key["LastGeographyUpdateId"] = "0";
 
         // Create initial currencies (European)
 

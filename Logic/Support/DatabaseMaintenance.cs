@@ -47,6 +47,8 @@ namespace Swarmops.Logic.Support
             {
                 SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCommand.Trim());
             }
+
+            SwarmDb.GetDatabaseForWriting().SetKeyValue("DbVersion", "1"); // We're at baseline
         }
     }
 }
