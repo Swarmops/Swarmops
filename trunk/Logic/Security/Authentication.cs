@@ -165,7 +165,8 @@ namespace Swarmops.Logic.Security
 
         internal static string GeneratePasswordHash (int personId, string password)
         {
-            return BCrypt.HashPassword(password + personId.ToString(CultureInfo.InvariantCulture), BCrypt.GenerateSalt(12));
+            return SHA1.Hash(password + personId + "Pirate");
+            // return BCrypt.HashPassword(password + personId.ToString(CultureInfo.InvariantCulture), BCrypt.GenerateSalt(12));  WTF doesn't work
         }
 
 
