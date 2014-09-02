@@ -6,7 +6,7 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using Swarmops.Logic.Structure;
 
-[WebService(Namespace = "http://activizr.com/")]
+[WebService(Namespace = "http://swarmops.com/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 // [System.Web.Script.Services.ScriptService]
