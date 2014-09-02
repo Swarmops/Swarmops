@@ -208,6 +208,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Authentication.sv-SE.resx</DependentUpon>
     </Compile>
+    <Compile Include="Security\BCrypt.cs" />
     <Compile Include="Security\PgpKey.cs" />
     <Compile Include="Special\Sweden\SupportCase.cs" />
     <Compile Include="Special\Sweden\SupportCaseDelta.cs" />

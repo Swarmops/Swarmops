@@ -70,7 +70,11 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// If virtual banking is enabled, this is the central debt to local assets
         /// </summary>
-        DebtsVirtualBanking,
+        DebtsEarmarkedVirtualBanking,
+        /// <summary>
+        /// Earmarked assets in other ways
+        /// </summary>
+        DebtsEarmarkedOtherAssets,
         /// <summary>
         /// Other debts in general
         /// </summary>

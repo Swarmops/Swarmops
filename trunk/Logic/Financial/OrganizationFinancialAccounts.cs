@@ -175,6 +175,16 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.DebtsVat]; }
         }
 
+        public FinancialAccount DebtsEarmarkedVirtualBanking
+        {
+            get { return this[OrganizationFinancialAccountType.DebtsEarmarkedVirtualBanking]; }
+        }
+
+        public FinancialAccount DebtsEarmarkedOtherAssets
+        {
+            get { return this[OrganizationFinancialAccountType.DebtsEarmarkedOtherAssets]; }
+        }
+
         public FinancialAccount DebtsOther
         {
             get { return this[OrganizationFinancialAccountType.DebtsSalary]; }

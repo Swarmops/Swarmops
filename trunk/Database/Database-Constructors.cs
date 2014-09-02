@@ -37,6 +37,25 @@ namespace Swarmops.Database
         }
 
 
+        public static int DbVersion
+        {
+            get
+            {
+                // TODO: Cache for some ten minutes, perhaps?
+
+                string dbVersionString = GetDatabaseForReading().GetKeyValue("DbVersion");
+
+                if (string.IsNullOrEmpty(dbVersionString))
+                {
+                    GetDatabaseForWriting().SetKeyValue("DbVersion", "1");
+                    return 1;
+                }
+
+                return Int32.Parse(dbVersionString);
+            }
+        }
+
+
         [Obsolete ("Do not use. Use SwarmDb.GetDatabaseForReading(), ...ForWriting() or ...ForAdmin().", true)]
         public static SwarmDb GetDatabase()
         {

@@ -27,7 +27,7 @@ namespace Swarmops.Site.Automation
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.1")]
     [DebuggerStepThrough()]
     [DesignerCategory("code")]
-    [WebServiceBinding(Name = "GetGeographyDataSoap", Namespace = "http://activizr.com/")]
+    [WebServiceBinding(Name = "GetGeographyDataSoap", Namespace = "http://swarmops.com/")]
     [XmlInclude(typeof (BasicGeography))]
     [XmlInclude(typeof (BasicPostalCode))]
     [XmlInclude(typeof (BasicCity))]
@@ -50,7 +50,7 @@ namespace Swarmops.Site.Automation
         /// <remarks/>
         public GetGeographyData()
         {
-            this.Url = "https://pirate.activizr.com/Automation/GetGeographyData.asmx";
+            this.Url = "https://v5.pirateweb.net/Automation/GetGeographyData.asmx";
         }
 
         /// <remarks/>
@@ -72,8 +72,8 @@ namespace Swarmops.Site.Automation
         public event GetGeographyForCountryCompletedEventHandler GetGeographyForCountryCompleted;
 
         /// <remarks/>
-        [SoapDocumentMethod("http://activizr.com/GetCountries",
-            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+        [SoapDocumentMethod("http://swarmops.com/GetCountries",
+            RequestNamespace = "http://swarmops.com/", ResponseNamespace = "http://swarmops.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Country[] GetCountries()
@@ -125,8 +125,8 @@ namespace Swarmops.Site.Automation
         }
 
         /// <remarks/>
-        [SoapDocumentMethod("http://activizr.com/GetCountriesInUse",
-            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+        [SoapDocumentMethod("http://swarmops.com/GetCountriesInUse",
+            RequestNamespace = "http://swarmops.com/", ResponseNamespace = "http://swarmops.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Country[] GetCountriesInUse()
@@ -180,8 +180,8 @@ namespace Swarmops.Site.Automation
         }
 
         /// <remarks/>
-        [SoapDocumentMethod("http://activizr.com/GetCitiesForCountry",
-            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+        [SoapDocumentMethod("http://swarmops.com/GetCitiesForCountry",
+            RequestNamespace = "http://swarmops.com/", ResponseNamespace = "http://swarmops.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public City[] GetCitiesForCountry(string countryCode)
@@ -245,8 +245,8 @@ namespace Swarmops.Site.Automation
         }
 
         /// <remarks/>
-        [SoapDocumentMethod("http://activizr.com/GetPostalCodesForCountry",
-            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+        [SoapDocumentMethod("http://swarmops.com/GetPostalCodesForCountry",
+            RequestNamespace = "http://swarmops.com/", ResponseNamespace = "http://swarmops.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public PostalCode[] GetPostalCodesForCountry(string countryCode)
@@ -310,8 +310,8 @@ namespace Swarmops.Site.Automation
         }
 
         /// <remarks/>
-        [SoapDocumentMethod("http://activizr.com/GetGeography",
-            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+        [SoapDocumentMethod("http://swarmops.com/GetGeography",
+            RequestNamespace = "http://swarmops.com/", ResponseNamespace = "http://swarmops.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Geography GetGeography(int nodeId)
@@ -372,8 +372,8 @@ namespace Swarmops.Site.Automation
         }
 
         /// <remarks/>
-        [SoapDocumentMethod("http://activizr.com/GetGeographyForCountry",
-            RequestNamespace = "http://activizr.com/", ResponseNamespace = "http://activizr.com/",
+        [SoapDocumentMethod("http://swarmops.com/GetGeographyForCountry",
+            RequestNamespace = "http://swarmops.com/", ResponseNamespace = "http://swarmops.com/",
             Use = System.Web.Services.Description.SoapBindingUse.Literal,
             ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Geography GetGeographyForCountry(string countryCode)
@@ -448,7 +448,7 @@ namespace Swarmops.Site.Automation
     [Serializable()]
     [DebuggerStepThrough()]
     [DesignerCategory("code")]
-    [XmlType(Namespace = "http://activizr.com/")]
+    [XmlType(Namespace = "http://swarmops.com/")]
     public partial class Country : BasicCountry
     {
     }
@@ -459,7 +459,7 @@ namespace Swarmops.Site.Automation
     [Serializable()]
     [DebuggerStepThrough()]
     [DesignerCategory("code")]
-    [XmlType(Namespace = "http://activizr.com/")]
+    [XmlType(Namespace = "http://swarmops.com/")]
     public partial class BasicCountry
     {
 
@@ -515,7 +515,7 @@ namespace Swarmops.Site.Automation
     [Serializable()]
     [DebuggerStepThrough()]
     [DesignerCategory("code")]
-    [XmlType(Namespace = "http://activizr.com/")]
+    [XmlType(Namespace = "http://swarmops.com/")]
     public partial class BasicGeography
     {
 
@@ -561,7 +561,7 @@ namespace Swarmops.Site.Automation
     [Serializable()]
     [DebuggerStepThrough()]
     [DesignerCategory("code")]
-    [XmlType(Namespace = "http://activizr.com/")]
+    [XmlType(Namespace = "http://swarmops.com/")]
     public partial class Geography : BasicGeography
     {
 
@@ -581,7 +581,7 @@ namespace Swarmops.Site.Automation
     [Serializable()]
     [DebuggerStepThrough()]
     [DesignerCategory("code")]
-    [XmlType(Namespace = "http://activizr.com/")]
+    [XmlType(Namespace = "http://swarmops.com/")]
     public partial class BasicPostalCode
     {
 
@@ -627,7 +627,7 @@ namespace Swarmops.Site.Automation
     [Serializable()]
     [DebuggerStepThrough()]
     [DesignerCategory("code")]
-    [XmlType(Namespace = "http://activizr.com/")]
+    [XmlType(Namespace = "http://swarmops.com/")]
     public partial class PostalCode : BasicPostalCode
     {
     }
@@ -638,7 +638,7 @@ namespace Swarmops.Site.Automation
     [Serializable()]
     [DebuggerStepThrough()]
     [DesignerCategory("code")]
-    [XmlType(Namespace = "http://activizr.com/")]
+    [XmlType(Namespace = "http://swarmops.com/")]
     public partial class BasicCity
     {
 
@@ -684,7 +684,7 @@ namespace Swarmops.Site.Automation
     [Serializable()]
     [DebuggerStepThrough()]
     [DesignerCategory("code")]
-    [XmlType(Namespace = "http://activizr.com/")]
+    [XmlType(Namespace = "http://swarmops.com/")]
     public partial class City : BasicCity
     {
     }
