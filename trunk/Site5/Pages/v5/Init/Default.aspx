@@ -40,6 +40,7 @@
 </head>
 <body>
     <form id="form2" runat="server">
+        <asp:ScriptManager runat="server" ID="ScriptManagerBlahblah" />
 	<script type="text/javascript">
 
 	    var databaseInitComplete = false;
@@ -329,7 +330,7 @@
 
 	<div class="center980px">
 	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /></div>
-        <div class="logoimage"><a href="/"><img style="border:none" src="/Style/Images/activizr-v5-pirateedition-logo.png" alt="Swarmops Logo" /></a></div>
+        <div class="logoimage"><a href="/"><img style="border:none" src="/Style/Images/Logo-Stock.png" alt="Swarmops Logo" /></a></div>
         <div class="break"></div>
         <div class="topmenu">
             <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>
@@ -405,7 +406,7 @@
   			            </div>
                         <div id="DivDatabaseWritable" style="display:none">
                             <h2>Connect to database</h2>	
-                        <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. We <strong>very strongly</strong> recommend having three separate accounts - one for reading (needs SELECT only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
+                        <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. For security reasons, we <strong>require</strong> having three separate accounts - one for reading (needs SELECT only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
 
                         <div class="entryLabelsAdmin" style="width:120px">
                             &nbsp;<br/>
