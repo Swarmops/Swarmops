@@ -33,8 +33,19 @@
     <!-- hide "previous" button -->
     
     <style type="text/css">
-	    .swMain .buttonPrevious
-	    { display: none; }
+	    .swMain .buttonPrevious 
+        {
+	         display: none;
+	    }
+        .PermissionsErrorCredentials 
+        {
+             font-weight: bold;
+        }
+        .PermissionsErrorResults 
+        {
+            font-size: 200%;
+            text-align: center;
+        }
     </style>
 
 </head>
@@ -225,7 +236,9 @@
 	            return isValid;
 	        }
 
-	    });
+	        updateDatabasePermissionsAnalysis();
+
+	    });  // end of document.ready
 
 	    function recheckConfigurationWritability() {
 
@@ -308,7 +321,35 @@
 	            }
 	        });
 	    }
-	    
+
+
+	    function updateDatabasePermissionsAnalysis() {
+
+	        $.ajax({
+	            type: "POST",
+	            url: "Default.aspx/TestDatabasePermissions",
+	            data: "{}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                if (!msg.d.AllPermissionsOk) {
+	                    updatePermissionsAnalysisDisplay(msg.d);
+	                    setTimeout('updateDatabasePermissionsAnalysis();', 2000);
+	                } else {
+	                    alert('AllPermissionsOk = true');
+                        // TODO: PROCEED
+	                }
+	            }
+	        });
+	    }
+
+	    function updatePermissionsAnalysisDisplay(testResults) {
+	        $('#CellPermissionAdminCredentialCanLogin').text(testResults.AdminCredentialsCanLogin);
+	        $('#CellPermissionAdminCredentialCanSelect').text(testResults.AdminCredentialsCanSelect);
+	        $('#CellPermissionAdminCredentialCanExecute').text(testResults.AdminCredentialsCanExecute);
+	        $('#CellPermissionAdminCredentialCanAdmin').text(testResults.AdminCredentialsCanAdmin);
+        }
+
 
 	    function beginInitDatabase() {
             $.ajax({
@@ -384,7 +425,7 @@
                         <h2>Welcome to Swarmops</h2>
                         <p>Congratulations! Since you're reading this, you have successfully installed the Swarmops packages and set up an Apache virtual server using mod_mono.</p>
 
-  			            <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Swarmops installation. To do that, answer these simple questions:</p> <asp:Label runat="server" ID="LabelTest" />
+  			            <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Swarmops installation. To cross that bridge, answer these three simple questions:</p> <asp:Label runat="server" ID="LabelTest" />
                         
                         <div class="entryLabelsAdmin" style="width:250px">
                             What is this server's /etc/hostname?<br />
@@ -404,7 +445,36 @@
                         <p><strong>cd /etc/swarmops<br/>sudo chown www-data:www-data database.config<br/>sudo chmod o+w database.config</strong></p>
                         <p>The installation will continue when it detects that these steps have been taken.</p>
   			            </div>
-                        <div id="DivDatabaseWritable" style="display:none">
+  			            <div id="DivDatabaseWritable">
+  			            <h2>Fix Database Permissions</h2>
+                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="Image1" runat="server" ImageAlign="Left" /><p>There seems to be an error with the database credentials, or more likely, the permissions for those credentials. <strong>Edit the database permissions until you have green ticks in all boxes below.</strong> (If you made a mistake filling in the database credentials, you can <a href="">return to entering credentials</a>.)</p>
+                        <p>The installation will continue when it detects this has been corrected, and the table below will update continuously as you change database permissions.</p>
+                              <table>
+                                  <thead><tr><th>&nbsp;</th><th>Can login?</th><th>Can SELECT?</th><th>Can EXECUTE?</th><th>Can alter schema?</th></tr></thead>
+                                  <tr>
+                                      <td class="PermissionsErrorCredentials">Read credentials</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanLogin">YES <asp:Image ID="Image4" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanSelect">YES <asp:Image ID="Image5" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanExecute">YES <asp:Image ID="Image6" runat="server" ImageUrl="~/Images/Icons/iconshock-redcross-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanAdmin">YES <asp:Image ID="Image7" runat="server" ImageUrl="~/Images/Icons/iconshock-redcross-16px.png"/></td>
+                                  </tr>
+                                  <tr>
+                                      <td class="PermissionsErrorCredentials">Write credentials</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanLogin">YES <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanSelect">YES <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanExecute">YES <asp:Image ID="Image8" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanAdmin">YES <asp:Image ID="Image9" runat="server" ImageUrl="~/Images/Icons/iconshock-redcross-16px.png"/></td>
+                                  </tr>
+                                  <tr>
+                                      <td class="PermissionsErrorCredentials">Admin credentials</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanLogin">YES <asp:Image ID="Image10" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanSelect">YES <asp:Image ID="Image11" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanExecute">YES <asp:Image ID="Image12" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanAdmin">YES <asp:Image ID="Image13" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                  </tr>
+                              </table>
+  			            </div>
+                        <div id="DivDatabaseWritable2" style="display:none">
                             <h2>Connect to database</h2>	
                         <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. For security reasons, we <strong>require</strong> having three separate accounts - one for reading (needs SELECT only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
 

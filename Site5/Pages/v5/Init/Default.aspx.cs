@@ -615,6 +615,59 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     }
 
     [WebMethod(true)]
+    public static PermissionsAnalysis TestDatabasePermissions()
+    {
+        PermissionsAnalysis result = new PermissionsAnalysis();
+        result.AllPermissionsOk = false;
+        result.ReadCredentialsCanLogin = RandomBool();
+        result.ReadCredentialsCanSelect = RandomBool();
+        result.ReadCredentialsCanExecute = RandomBool();
+        result.ReadCredentialsCanAdmin = RandomBool();
+        result.WriteCredentialsCanLogin = RandomBool();
+        result.WriteCredentialsCanSelect = RandomBool();
+        result.WriteCredentialsCanExecute = RandomBool();
+        result.WriteCredentialsCanAdmin = RandomBool();
+        result.AdminCredentialsCanLogin = RandomBool();
+        result.AdminCredentialsCanSelect = RandomBool();
+        result.AdminCredentialsCanExecute = RandomBool();
+        result.AdminCredentialsCanAdmin = RandomBool();
+
+        return result;
+    }
+
+    private static bool RandomBool()
+    {
+        return (GetRandomNumber(0, 1) == 0);
+    }
+
+    //Function to get random number
+    private static readonly Random GetRandom = new Random();
+    private static readonly object syncLock = new object();
+    private static int GetRandomNumber(int min, int max)
+    {
+        lock(syncLock) { // synchronize
+            return GetRandom.Next(min, max+1);
+        }
+    }
+
+    public class PermissionsAnalysis
+    {
+        public bool AllPermissionsOk { get; set; }
+        public bool ReadCredentialsCanLogin { get; set; }
+        public bool ReadCredentialsCanSelect { get; set; }
+        public bool ReadCredentialsCanExecute { get; set; }
+        public bool ReadCredentialsCanAdmin { get; set; }
+        public bool WriteCredentialsCanLogin { get; set; }
+        public bool WriteCredentialsCanSelect { get; set; }
+        public bool WriteCredentialsCanExecute { get; set; }
+        public bool WriteCredentialsCanAdmin { get; set; }
+        public bool AdminCredentialsCanLogin { get; set; }
+        public bool AdminCredentialsCanSelect { get; set; }
+        public bool AdminCredentialsCanExecute { get; set; }
+        public bool AdminCredentialsCanAdmin { get; set; }
+    }
+
+    [WebMethod(true)]
     public static void CreateFirstUser(string name, string mail, string password)
     {
         // Make sure that no first person exists already, as a security measure
