@@ -79,6 +79,10 @@
 	        });
 
 	        function leaveAStepCallback(obj) {
+	            if (disableNext) {
+	                return false;
+	            }
+
 	            var stepNum = obj.attr('rel');
 	            return validateStep(stepNum);
 	        }
@@ -142,6 +146,7 @@
 	                                // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
 
 	                                setTimeout('recheckConfigurationWritability();', 5000); // 5s until first re-check
+	                                DisableNext();
 	                            }
 	                        }
 	                    });
@@ -165,6 +170,34 @@
 	                        isValid = false;
 	                    }
 	                }
+
+	                // Verify database credentials are good and permissions correct
+
+	                if (isValid) {
+	                    disableNext = true; // block Next during synchro call - it may take a while
+	                    $.ajax({
+	                        type: "POST",
+	                        url: "Default.aspx/TestDatabasePermissions",
+	                        data: "{}",
+	                        contentType: "application/json; charset=utf-8",
+	                        dataType: "json",
+	                        async: false,  // blocks until function returns - race conditions otherwise
+	                        success: function (msg) {
+	                            if (msg.d.AllPermissionsOk != true) {
+
+	                                // We have a permissions problem. Block further progress and display the problem.
+	                                updatePermissionsAnalysisDisplay(msg.d);
+	                                $('#DivDatabaseWritable').fadeOut(400, 'swing', function() { $('#DivDatabasePermissionProblem').fadeIn(200); });
+	                                setTimeout('recheckDatabasePermissionsAnalysis();', 5000); // 5s until first re-check
+	                                DisableNext();
+	                                isValid = false;
+	                            } else {
+	                                // re-enable Next
+	                                disableNext = false;
+	                            }
+	                        }
+	                    });
+                    }
 
 
 	                if (isValid) {
@@ -236,9 +269,26 @@
 	            return isValid;
 	        }
 
-	        updateDatabasePermissionsAnalysis();
-
 	    });  // end of document.ready
+
+	    var disableNext = false;
+	    var stopRechecking = false;
+
+	    function DisableNext() {
+	        $('a.buttonNext').addClass("buttonDisabled");
+	        disableNext = true;
+	    }
+
+	    function EnableNext()
+	    {
+	        $('a.buttonNext').removeClass("buttonDisabled");
+	        disableNext = false;
+	    }
+
+	    function ReturnToCredentials() {
+	        stopRechecking = true;
+	        $('#DivDatabasePermissionProblem').fadeOut(200, 'swing', function () { $('#DivDatabaseWritable').fadeIn(200); EnableNext(); });
+	    }
 
 	    function recheckConfigurationWritability() {
 
@@ -255,6 +305,7 @@
 	                    $('#DivDatabaseUnwritable').css('display', 'none');
 	                    $('#DivDatabaseWritable').fadeIn('slow');
 	                    setTimeout('$("#<%=this.TextCredentialsReadDatabase.ClientID %>").focus();', 250);
+	                    EnableNext();
 	                } else {
 	                    // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
 
@@ -323,7 +374,12 @@
 	    }
 
 
-	    function updateDatabasePermissionsAnalysis() {
+	    function recheckDatabasePermissionsAnalysis() {
+
+	        if (stopRechecking) {
+	            stopRechecking = false;
+	            return;
+	        }
 
 	        $.ajax({
 	            type: "POST",
@@ -334,10 +390,11 @@
 	            success: function (msg) {
 	                if (!msg.d.AllPermissionsOk) {
 	                    updatePermissionsAnalysisDisplay(msg.d);
-	                    setTimeout('updateDatabasePermissionsAnalysis();', 2000);
+	                    setTimeout('recheckDatabasePermissionsAnalysis();', 2000);
 	                } else {
 	                    alert('AllPermissionsOk = true');
-                        // TODO: PROCEED
+	                    EnableNext();
+	                    $('#wizard').smartWizard('goForward'); // triggers a re-check, but doesn't matter, more maintainable this way
 	                }
 	            }
 	        });
@@ -469,9 +526,9 @@
                         <p><strong>cd /etc/swarmops<br/>sudo chown www-data:www-data database.config<br/>sudo chmod o+w database.config</strong></p>
                         <p>The installation will continue when it detects that these steps have been taken.</p>
   			            </div>
-  			            <div id="DivDatabaseWritable">
+  			            <div id="DivDatabasePermissionProblem" style="display:none">
   			            <h2>Fix Database Permissions</h2>
-                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="Image1" runat="server" ImageAlign="Left" /><p>There seems to be an error with the database credentials, or more likely, the permissions for those credentials. <strong>Edit the database permissions until you have green ticks in all boxes below.</strong> (If you made a mistake filling in the database credentials, you can <a href="">return to entering credentials</a>.)</p>
+                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="Image1" runat="server" ImageAlign="Left" /><p>There seems to be an error with the database credentials, or more likely, the permissions for those credentials. <strong>Edit the database permissions until you have green ticks in all boxes below.</strong> (If you made a mistake filling in the database credentials, you can <a href="javascript:ReturnToCredentials();">return to entering credentials</a>.)</p>
                         <p>The installation will continue when it detects this has been corrected, and the table below will update continuously as you change database permissions.</p>
                               <table>
                                   <thead><tr><th>&nbsp;</th><th>Can login?</th><th>Can SELECT?</th><th>Can EXECUTE?</th><th>Can alter schema?</th></tr></thead>
@@ -498,9 +555,9 @@
                                   </tr>
                               </table>
   			            </div>
-                        <div id="DivDatabaseWritable2" style="display:none">
+                        <div id="DivDatabaseWritable" style="display:none">
                             <h2>Connect to database</h2>	
-                        <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. For security reasons, we <strong>require</strong> having three separate accounts - one for reading (needs SELECT only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
+                        <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. For security reasons, we <strong>require</strong> having three separate accounts - one for reading (SELECT permissions only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
 
                         <div class="entryLabelsAdmin" style="width:120px">
                             &nbsp;<br/>
