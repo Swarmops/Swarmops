@@ -494,24 +494,27 @@ namespace Swarmops.Logic.Security
             uint i, n, l = block[offset], r = block[offset + 1];
 
             l ^= this.p[0];
-            for (i = 0; i <= BLOWFISH_NUM_ROUNDS - 2; )
+            unchecked  // Added as per http://bcrypt.codeplex.com/SourceControl/network/forks/mammo/UncheckedFix/changeset/96b7f8314be4 to fix overflow exception
             {
-                // Feistel substitution on left word
-                n = this.s[(l >> 24) & 0xff];
-                n += this.s[0x100 | ((l >> 16) & 0xff)];
-                n ^= this.s[0x200 | ((l >> 8) & 0xff)];
-                n += this.s[0x300 | (l & 0xff)];
-                r ^= n ^ this.p[++i];
+                for (i = 0; i <= BLOWFISH_NUM_ROUNDS - 2;)
+                {
+                    // Feistel substitution on left word
+                    n = this.s[(l >> 24) & 0xff];
+                    n += this.s[0x100 | ((l >> 16) & 0xff)];
+                    n ^= this.s[0x200 | ((l >> 8) & 0xff)];
+                    n += this.s[0x300 | (l & 0xff)];
+                    r ^= n ^ this.p[++i];
 
-                // Feistel substitution on right word
-                n = this.s[(r >> 24) & 0xff];
-                n += this.s[0x100 | ((r >> 16) & 0xff)];
-                n ^= this.s[0x200 | ((r >> 8) & 0xff)];
-                n += this.s[0x300 | (r & 0xff)];
-                l ^= n ^ this.p[++i];
+                    // Feistel substitution on right word
+                    n = this.s[(r >> 24) & 0xff];
+                    n += this.s[0x100 | ((r >> 16) & 0xff)];
+                    n ^= this.s[0x200 | ((r >> 8) & 0xff)];
+                    n += this.s[0x300 | (r & 0xff)];
+                    l ^= n ^ this.p[++i];
+                }
+                block[offset] = r ^ this.p[BLOWFISH_NUM_ROUNDS + 1];
+                block[offset + 1] = l;
             }
-            block[offset] = r ^ this.p[BLOWFISH_NUM_ROUNDS + 1];
-            block[offset + 1] = l;
         }
 
         /// <summary>

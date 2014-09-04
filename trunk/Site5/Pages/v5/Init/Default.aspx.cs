@@ -284,6 +284,8 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         _initProgress = 7;
         _initMessage = "Creating all countries on local server...";
         Thread.Sleep(100);
+        int count = 0;
+        int total = countries.Length;
 
         // Create all countries in our own database
 
@@ -294,6 +296,9 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
                                                                                                 country.Culture,
                                                                                                 rootGeographyId, 5,
                                                                                                 string.Empty);
+
+            count++;
+            _initMessage = String.Format("Creating all countries on local server... ({0}%)", count*100/total);
         }
 
         _initProgress = 10;
@@ -336,8 +341,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             SwarmDb.GetDatabaseForWriting().SetCountryGeographyId(countryIdTranslation[countryCode],
                                                                    countryRootGeographyId);
 
+            count = 0;
+            total = InitDatabaseThreadCountGeographyChildren (geography.Children);
+
             InitDatabaseThreadCreateGeographyChildren(geography.Children, countryRootGeographyId,
-                                                      ref geographyIdTranslation);
+                ref geographyIdTranslation, countryCode, ref count, total);
 
             _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/3);
             _initMessage = "Retrieving cities for " + countryCode + "...";
@@ -456,6 +464,10 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         Persistence.Key["LastGeographyUpdateId"] = "0";
 
+        // Set an installation ID
+
+        Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
+
         // Create initial currencies (European)
 
         Currency.Create("EUR", "Euros", "€");
@@ -463,7 +475,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         Currency.Create("CAD", "Canadian Dollars", "CA$");
         Currency.Create("SEK", "Swedish Krona", string.Empty);
         Currency.Create("NOK", "Norwegian Krona", string.Empty);
-        Currency.Create("DKK", "Danisk Krona", string.Empty);
+        Currency.Create("DKK", "Danish Krona", string.Empty);
         Currency.Create("ISK", "Icelandic Krona", string.Empty);
         Currency.Create("CHF", "Swiss Franc", string.Empty);
         Currency.Create("GBP", "Pounds Sterling", "£");
@@ -481,17 +493,39 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         Thread.Sleep(1000); // give some time for static var to stick and web interface to react before killing thread
     }
 
+    private static int InitDatabaseThreadCountGeographyChildren(Swarmops.Site.Automation.Geography[] children)
+    {
+        int count = 0;
+
+        foreach (Swarmops.Site.Automation.Geography child in children)
+        {
+            count++;
+            count += InitDatabaseThreadCountGeographyChildren(child.Children);
+        }
+
+        return count;
+    }
+
     private static void InitDatabaseThreadCreateGeographyChildren(Swarmops.Site.Automation.Geography[] children,
                                                                   int parentGeographyId,
-                                                                  ref Dictionary<int, int> geographyIdTranslation)
+                                                                  ref Dictionary<int, int> geographyIdTranslation, string countryCode, ref int count, int total)
     {
+        count++;
+
         foreach (Swarmops.Site.Automation.Geography geography in children)
         {
             int newGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography(geography.Name, parentGeographyId);
             geographyIdTranslation[geography.GeographyId] = newGeographyId;
 
-            InitDatabaseThreadCreateGeographyChildren(geography.Children, newGeographyId, ref geographyIdTranslation);
+            InitDatabaseThreadCreateGeographyChildren(geography.Children, newGeographyId, ref geographyIdTranslation, countryCode, ref count, total);
         }
+
+        if (total != 0)
+        {
+            _initMessage = String.Format("Setting up geography for {0}... ({1}%)", countryCode, count*100/total);
+                // shouldn't be here but wtf
+        }
+        Thread.Sleep(50);
     }
 
 

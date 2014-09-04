@@ -539,7 +539,7 @@ namespace Swarmops.Logic.Swarm
 
             if (password.Length > 0)
             {
-                newPerson.PasswordHash = Authentication.GeneratePasswordHash(personId, password);
+                newPerson.PasswordHash = Authentication.GenerateNewPasswordHash(personId, password);
             }
             else
             {
@@ -644,7 +644,7 @@ namespace Swarmops.Logic.Swarm
 
         public virtual void SetPassword (string newPassword)
         {
-            string hash = Authentication.GeneratePasswordHash(Identity, newPassword);
+            string hash = Authentication.GenerateNewPasswordHash(Identity, newPassword);
             SwarmDb.GetDatabaseForWriting().SetPersonPasswordHash(Identity, hash);
             base.PasswordHash = hash;
         }
