@@ -344,11 +344,35 @@
 	    }
 
 	    function updatePermissionsAnalysisDisplay(testResults) {
-	        $('#CellPermissionAdminCredentialCanLogin').text(testResults.AdminCredentialsCanLogin);
-	        $('#CellPermissionAdminCredentialCanSelect').text(testResults.AdminCredentialsCanSelect);
-	        $('#CellPermissionAdminCredentialCanExecute').text(testResults.AdminCredentialsCanExecute);
-	        $('#CellPermissionAdminCredentialCanAdmin').text(testResults.AdminCredentialsCanAdmin);
+	        updateOneDatabasePermissionExpectedSuccess('CellPermissionReadCredentialCanLogin', testResults.ReadCredentialsCanLogin);
+	        updateOneDatabasePermissionExpectedSuccess('CellPermissionReadCredentialCanSelect', testResults.ReadCredentialsCanSelect);
+	        updateOneDatabasePermissionExpectedFailure('CellPermissionReadCredentialCanExecute', testResults.ReadCredentialsCanExecute);
+	        updateOneDatabasePermissionExpectedFailure('CellPermissionReadCredentialCanAdmin', testResults.ReadCredentialsCanAdmin);
+	        updateOneDatabasePermissionExpectedSuccess('CellPermissionWriteCredentialCanLogin', testResults.WriteCredentialsCanLogin);
+	        updateOneDatabasePermissionExpectedSuccess('CellPermissionWriteCredentialCanSelect', testResults.WriteCredentialsCanSelect);
+	        updateOneDatabasePermissionExpectedSuccess('CellPermissionWriteCredentialCanExecute', testResults.WriteCredentialsCanExecute);
+	        updateOneDatabasePermissionExpectedFailure('CellPermissionWriteCredentialCanAdmin', testResults.WriteCredentialsCanAdmin);
+	        updateOneDatabasePermissionExpectedSuccess('CellPermissionAdminCredentialCanLogin', testResults.AdminCredentialsCanLogin);
+	        updateOneDatabasePermissionExpectedSuccess('CellPermissionAdminCredentialCanSelect', testResults.AdminCredentialsCanSelect);
+	        updateOneDatabasePermissionExpectedSuccess('CellPermissionAdminCredentialCanExecute', testResults.AdminCredentialsCanExecute);
+	        updateOneDatabasePermissionExpectedSuccess('CellPermissionAdminCredentialCanAdmin', testResults.AdminCredentialsCanAdmin);
         }
+
+	    function updateOneDatabasePermissionExpectedSuccess(cellName, result) {
+	        if (result) {
+	            $('#' + cellName).html('YES <img src="/Images/Icons/iconshock-greentick-16px.png" />');
+	        } else {
+	            $('#' + cellName).html('NO <img src="/Images/Icons/iconshock-redcross-16px.png" />');
+	        }
+	    }
+
+	    function updateOneDatabasePermissionExpectedFailure(cellName, result) {
+	        if (result) {
+	            $('#' + cellName).html('YES <img src="/Images/Icons/iconshock-redcross-16px.png" />');
+	        } else {
+	            $('#' + cellName).html('NO <img src="/Images/Icons/iconshock-greentick-16px.png" />');
+	        }
+	    }
 
 
 	    function beginInitDatabase() {
@@ -453,24 +477,24 @@
                                   <thead><tr><th>&nbsp;</th><th>Can login?</th><th>Can SELECT?</th><th>Can EXECUTE?</th><th>Can alter schema?</th></tr></thead>
                                   <tr>
                                       <td class="PermissionsErrorCredentials">Read credentials</td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanLogin">YES <asp:Image ID="Image4" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanSelect">YES <asp:Image ID="Image5" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanExecute">YES <asp:Image ID="Image6" runat="server" ImageUrl="~/Images/Icons/iconshock-redcross-16px.png"/></td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanAdmin">YES <asp:Image ID="Image7" runat="server" ImageUrl="~/Images/Icons/iconshock-redcross-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanLogin">&nbsp;</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanSelect">&nbsp;</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanExecute">&nbsp;</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionReadCredentialCanAdmin">&nbsp;</td>
                                   </tr>
                                   <tr>
                                       <td class="PermissionsErrorCredentials">Write credentials</td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanLogin">YES <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanSelect">YES <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanExecute">YES <asp:Image ID="Image8" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanAdmin">YES <asp:Image ID="Image9" runat="server" ImageUrl="~/Images/Icons/iconshock-redcross-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanLogin">&nbsp;</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanSelect">&nbsp;</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanExecute">&nbsp;</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionWriteCredentialCanAdmin">&nbsp;</td>
                                   </tr>
                                   <tr>
                                       <td class="PermissionsErrorCredentials">Admin credentials</td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanLogin">YES <asp:Image ID="Image10" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanSelect">YES <asp:Image ID="Image11" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanExecute">YES <asp:Image ID="Image12" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
-                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanAdmin">YES <asp:Image ID="Image13" runat="server" ImageUrl="~/Images/Icons/iconshock-greentick-16px.png"/></td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanLogin">&nbsp;</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanSelect">&nbsp;</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanExecute">&nbsp;</td>
+                                      <td class="PermissionsErrorResults" id="CellPermissionAdminCredentialCanAdmin">&nbsp;</td>
                                   </tr>
                               </table>
   			            </div>
