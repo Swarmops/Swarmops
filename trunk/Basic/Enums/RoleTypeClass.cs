@@ -114,7 +114,11 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// Role for non officers helping with ballot distribution etc
         /// </summary>
-        LocalElectionSupport = 25
+        LocalElectionSupport = 25,
+        /// <summary>
+        /// Temporary - Jörgen added this; the whole enum is deprecated anyway; added for compatibility with v4
+        /// </summary>
+        OrganizationMailSender
     }
 
 
