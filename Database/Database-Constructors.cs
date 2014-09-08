@@ -30,6 +30,18 @@ namespace Swarmops.Database
             return new SwarmDb(ConstructConnectString(new Configuration().Get().Admin));
         }
 
+        public static SwarmDb GetTestDatabase(Credentials credentials)
+        {
+            // For security reasons, this function is only available BEFORE the database has been initialized.
+
+            if (Configuration.IsConfigured())
+            {
+                throw new UnauthorizedAccessException("Cannot probe arbitrary database credentials once database initialized");
+            }
+
+            return new SwarmDb(ConstructConnectString(credentials));
+        }
+
         private static string ConstructConnectString (Credentials credentials)
         {
             return "server=" + credentials.ServerSet.ServerPriorities[0].Split(';')[0] + ";database=" + credentials.Database + 

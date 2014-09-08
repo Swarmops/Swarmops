@@ -174,7 +174,10 @@
 	                // Verify database credentials are good and permissions correct
 
 	                if (isValid) {
-	                    disableNext = true; // block Next during synchro call - it may take a while
+	                    DisableNext(); // block Next during synchro call - it may take a while
+                                       // also, won't get re-enabled no matter the outcome
+	                    $('#<%=this.ButtonTestCredentials.ClientID %>').click();
+
 	                    $.ajax({
 	                        type: "POST",
 	                        url: "Default.aspx/TestDatabasePermissions",
@@ -189,11 +192,9 @@
 	                                updatePermissionsAnalysisDisplay(msg.d);
 	                                $('#DivDatabaseWritable').fadeOut(400, 'swing', function() { $('#DivDatabasePermissionProblem').fadeIn(200); });
 	                                setTimeout('recheckDatabasePermissionsAnalysis();', 5000); // 5s until first re-check
-	                                DisableNext();
 	                                isValid = false;
 	                            } else {
-	                                // re-enable Next
-	                                disableNext = false;
+	                                // re-enable Next only on exit of step 3
 	                            }
 	                        }
 	                    });
@@ -201,12 +202,12 @@
 
 
 	                if (isValid) {
-
 	                    $('#DivProgressDatabase').progressbar({ value: 0, max: 100 });
 	                    setTimeout('updateInitProgressBar();', 1000);
 	                    setTimeout('updateInitProgressMessage();', 1500);
 	                    $('#<%=this.ButtonInitDatabase.ClientID %>').click();
 	                    beginInitDatabase();
+	                    DisableNext();
 	                }
 
 	            }
@@ -285,10 +286,26 @@
 	        disableNext = false;
 	    }
 
+	    function ClickNext() {
+	        $('a.buttonNext').click();
+	    }
+
+
 	    function ReturnToCredentials() {
 	        stopRechecking = true;
-	        $('#DivDatabasePermissionProblem').fadeOut(200, 'swing', function () { $('#DivDatabaseWritable').fadeIn(200); EnableNext(); });
-	    }
+
+	        $.ajax({
+	            type: "POST",
+	            url: "Default.aspx/ResetTestCredentials",
+	            data: "{}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                $('#DivDatabasePermissionProblem').fadeOut(200, 'swing', function () { $('#DivDatabaseWritable').fadeIn(200); EnableNext(); });
+	            }
+	        });
+        }
+
 
 	    function recheckConfigurationWritability() {
 
@@ -330,7 +347,8 @@
                                 width: "100%"
                             }, { queue: false });
 	                    databaseInitComplete = true;
-	                    $(".buttonNext").click();
+	                    EnableNext();  // re-enable - it has been disabled throughout Init
+	                    ClickNext();
 	                } else {
 	                    // We're not done yet. Keep the progress bar on-screen and keep re-checking.
 
@@ -388,13 +406,12 @@
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
+	                updatePermissionsAnalysisDisplay(msg.d);
 	                if (!msg.d.AllPermissionsOk) {
-	                    updatePermissionsAnalysisDisplay(msg.d);
 	                    setTimeout('recheckDatabasePermissionsAnalysis();', 2000);
 	                } else {
-	                    alert('AllPermissionsOk = true');
 	                    EnableNext();
-	                    $('#wizard').smartWizard('goForward'); // triggers a re-check, but doesn't matter, more maintainable this way
+	                    ClickNext();
 	                }
 	            }
 	        });
@@ -587,7 +604,7 @@
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" TextMode="Password" runat="server" />&nbsp;<br />
                         </div>
-                        <div style="display:none"><asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button" OnClick="ButtonInitDatabase_Click"/></div>
+                        <div style="display:none"><asp:Button runat="server" ID="ButtonTestCredentials" Text="You should not see this button" OnClick="ButtonTestCredentials_Click"/><<asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button" OnClick="ButtonInitDatabase_Click"/></div>
                         </div>
                     </div>                      
   			        <div id="step-3">
@@ -624,6 +641,7 @@
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="ButtonInitDatabase" EventName="Click"/>
+                            <asp:AsyncPostBackTrigger ControlID="ButtonTestCredentials" EventName="Click"/>
                         </Triggers>
                         </asp:UpdatePanel>
                                        			

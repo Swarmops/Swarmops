@@ -196,24 +196,158 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             }
         }
 
+        if (_testReadCredentials == null)
+        {
+            throw new InvalidOperationException("Can't init database before it has been tested - invalid state");
+        }
+
         // Store database credentials
 
         SwarmDb.Configuration.Set(
             new SwarmDb.Configuration(
-                new SwarmDb.Credentials(
+                _testReadCredentials,
+                _testWriteCredentials,
+                _testAdminCredentials));
+    }
+
+    protected void ButtonTestCredentials_Click(object sender, EventArgs args)
+    {
+        // Check the host names and addresses again as a security measure - after all, we can be called from outside our intended script
+
+        if (!(VerifyHostName(this.TextServerName.Text) && VerifyHostAddress(this.TextServerAddress.Text)))
+        {
+            if (!System.Diagnostics.Debugger.IsAttached)
+            {
+                return; // Probable hack attempt - fail silently
+            }
+        }
+
+        _testReadCredentials = new SwarmDb.Credentials(
                     this.TextCredentialsReadDatabase.Text,
                     new SwarmDb.ServerSet(this.TextCredentialsReadServer.Text),
                     this.TextCredentialsReadUser.Text,
-                    this.TextCredentialsReadPassword.Text),
-                new SwarmDb.Credentials(this.TextCredentialsWriteDatabase.Text,
+                    this.TextCredentialsReadPassword.Text);
+        _testWriteCredentials = new SwarmDb.Credentials(this.TextCredentialsWriteDatabase.Text,
                                          new SwarmDb.ServerSet(this.TextCredentialsWriteServer.Text),
                                          this.TextCredentialsWriteUser.Text,
-                                         this.TextCredentialsWritePassword.Text),
-                new SwarmDb.Credentials(this.TextCredentialsAdminDatabase.Text,
+                                         this.TextCredentialsWritePassword.Text);
+        _testAdminCredentials = new SwarmDb.Credentials(this.TextCredentialsAdminDatabase.Text,
                                          new SwarmDb.ServerSet(this.TextCredentialsAdminServer.Text),
                                          this.TextCredentialsAdminUser.Text,
-                                         this.TextCredentialsAdminPassword.Text)));
+                                         this.TextCredentialsAdminPassword.Text);
     }
+
+    private static SwarmDb.Credentials _testReadCredentials;
+    private static SwarmDb.Credentials _testWriteCredentials;
+    private static SwarmDb.Credentials _testAdminCredentials;
+
+
+    [WebMethod(true)]
+    public static void ResetTestCredentials()
+    {
+        _testReadCredentials =
+            _testWriteCredentials =
+                _testAdminCredentials = null;
+    }
+
+
+    [WebMethod(true)]
+    public static PermissionsAnalysis TestDatabasePermissions()
+    {
+        while (_testReadCredentials == null || _testWriteCredentials == null || _testAdminCredentials == null)
+        {
+            Thread.Sleep(100); // A couple of async race conditions happen as this is called, we need to wait for credentials
+        }
+
+        PermissionsAnalysis result = new PermissionsAnalysis();
+
+        // First, test ADMIN
+
+        SwarmDb adminDb = SwarmDb.GetTestDatabase(_testAdminCredentials);
+
+        // Drop table, procedure first just in case there's garbage left behind. Ignore result.
+        adminDb.TestDropTable();
+        adminDb.TestDropProcedure();
+
+        // All these should pass.
+        result.AdminCredentialsCanLogin = adminDb.TestLogin();
+        result.AdminCredentialsCanAdmin = adminDb.TestCreateTable();
+        result.AdminCredentialsCanAdmin &= adminDb.TestDropTable();
+        result.AdminCredentialsCanAdmin &= adminDb.TestCreateTable();
+        result.AdminCredentialsCanAdmin &= adminDb.TestAlterTable();
+        result.AdminCredentialsCanAdmin &= adminDb.TestCreateProcedure();  // AND -- all must succeed
+        result.AdminCredentialsCanAdmin &= adminDb.TestDropProcedure();    // Test DROP before we mess up the state of the table, procedure
+        result.AdminCredentialsCanAdmin &= adminDb.TestCreateProcedure();  // therefore, recreate it after the drop
+
+        if (result.AdminCredentialsCanAdmin) // if we have a created table and procedure, otherwise default fail
+        {
+            result.AdminCredentialsCanExecute = adminDb.TestExecute("Admin Execute");
+            result.AdminCredentialsCanSelect = adminDb.TestSelect();
+        }
+
+        // Within the created table, test WRITE and READ accounts before testing them on excessive rights.
+
+        SwarmDb writeDb = SwarmDb.GetTestDatabase(_testWriteCredentials);
+
+        result.WriteCredentialsCanLogin = writeDb.TestLogin();
+
+        if (result.WriteCredentialsCanLogin && result.AdminCredentialsCanAdmin)
+        {
+            result.WriteCredentialsCanExecute = writeDb.TestExecute("Write Execute");
+            result.WriteCredentialsCanSelect = writeDb.TestSelect();
+        }
+
+        SwarmDb readDb = SwarmDb.GetTestDatabase(_testReadCredentials);
+
+        result.ReadCredentialsCanLogin = readDb.TestLogin();
+
+        if (result.ReadCredentialsCanLogin && result.AdminCredentialsCanAdmin)
+        {
+            result.ReadCredentialsCanExecute = readDb.TestExecute("Read Execute");
+            result.ReadCredentialsCanSelect = readDb.TestSelect();
+        }
+
+        // Finally, test the write and read accounts for admin rights. Note the "OR" here rather than "AND" -
+        // any one of these rights present should return a true, because it's a fail.
+
+        if (result.ReadCredentialsCanLogin)
+        {
+            result.ReadCredentialsCanAdmin = readDb.TestDropProcedure();
+            result.ReadCredentialsCanAdmin |= readDb.TestDropTable();
+            result.ReadCredentialsCanAdmin |= readDb.TestCreateTable();
+            result.ReadCredentialsCanAdmin |= readDb.TestCreateProcedure();
+        }
+
+        if (result.WriteCredentialsCanLogin)
+        {
+            result.WriteCredentialsCanAdmin = writeDb.TestDropProcedure();
+            result.WriteCredentialsCanAdmin |= writeDb.TestDropTable();
+            result.WriteCredentialsCanAdmin |= writeDb.TestCreateTable();
+            result.WriteCredentialsCanAdmin |= writeDb.TestCreateProcedure();
+        }
+
+        // Clean up
+
+        adminDb.TestDropTable(); // ignore result
+        adminDb.TestDropProcedure();
+
+        result.AllPermissionsOk =
+            result.AdminCredentialsCanLogin &&
+            result.AdminCredentialsCanSelect &&
+            result.AdminCredentialsCanExecute &&
+            result.AdminCredentialsCanAdmin &&
+            result.WriteCredentialsCanLogin &&
+            result.WriteCredentialsCanSelect &&
+            result.WriteCredentialsCanExecute &&
+            !result.WriteCredentialsCanAdmin &&  // not this
+            result.ReadCredentialsCanLogin &&
+            result.ReadCredentialsCanSelect &&
+            !result.ReadCredentialsCanExecute && // not this
+            !result.ReadCredentialsCanAdmin;     // not this
+
+        return result;
+    }
+
 
     [WebMethod(true)]
     public static void InitDatabase()
@@ -614,26 +748,6 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         return SwarmDb.Configuration.TestConfigurationWritable();
     }
 
-    [WebMethod(true)]
-    public static PermissionsAnalysis TestDatabasePermissions()
-    {
-        PermissionsAnalysis result = new PermissionsAnalysis();
-        result.AllPermissionsOk = false;
-        result.ReadCredentialsCanLogin = RandomBool();
-        result.ReadCredentialsCanSelect = RandomBool();
-        result.ReadCredentialsCanExecute = RandomBool();
-        result.ReadCredentialsCanAdmin = RandomBool();
-        result.WriteCredentialsCanLogin = RandomBool();
-        result.WriteCredentialsCanSelect = RandomBool();
-        result.WriteCredentialsCanExecute = RandomBool();
-        result.WriteCredentialsCanAdmin = RandomBool();
-        result.AdminCredentialsCanLogin = RandomBool();
-        result.AdminCredentialsCanSelect = RandomBool();
-        result.AdminCredentialsCanExecute = RandomBool();
-        result.AdminCredentialsCanAdmin = RandomBool();
-
-        return result;
-    }
 
     private static bool RandomBool()
     {
