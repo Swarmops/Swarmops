@@ -63,7 +63,7 @@ namespace Swarmops
 
             string cloudFlareVisitorScheme = Request.Headers["CF-Visitor"];
 
-            bool cloudFlareSsl = (cloudFlareVisitorScheme == "\"scheme\":\"https\""? true: false);
+            bool cloudFlareSsl = (cloudFlareVisitorScheme.Contains("\"scheme\":\"https\"") ? true : false);
 
             if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl) // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
