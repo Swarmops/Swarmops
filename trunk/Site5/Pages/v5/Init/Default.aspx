@@ -52,7 +52,7 @@
 <body>
     <form id="form2" runat="server">
         <asp:ScriptManager runat="server" ID="ScriptManagerBlahblah" />
-	<script type="text/javascript">
+	    <script type="text/javascript">
 
 	    var databaseInitComplete = false;
 
@@ -605,8 +605,16 @@
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" TextMode="Password" runat="server" />&nbsp;<br />
                         </div>
                         <div style="display:none">
-                            <asp:Button ID="ButtonInitDatabase" OnClick="ButtonInitDatabase_Click" runat="server" Text="You should not see this button" />
-                            <asp:Button ID="ButtonTestCredentials" OnClick="ButtonTestCredentials_Click" runat="server" Text="You should not see this button" />
+                            <asp:UpdatePanel runat="server" ID="UpdateFinished" UpdateMode="Conditional">
+  			                    <ContentTemplate>
+                                    <asp:Button ID="ButtonInitDatabase" OnClick="ButtonInitDatabase_Click" runat="server" Text="You should not see this button" />
+                                    <asp:Button ID="ButtonTestCredentials" OnClick="ButtonTestCredentials_Click" runat="server" Text="You should not see this button" />
+                                </ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="ButtonInitDatabase" />
+                                    <asp:AsyncPostBackTrigger ControlID="ButtonTestCredentials" />
+                            </Triggers>
+                            </asp:UpdatePanel>
                         </div>
                         </div>
                     </div>                      
@@ -636,18 +644,9 @@
                         </div>
                     </div>
   			        <div id="step-5" style="display:none">
-  			            <asp:UpdatePanel runat="server" ID="UpdateFinished" UpdateMode="Conditional">
-  			                <ContentTemplate>
                         <h2>All done - ready to login</h2>	
                         <p>Your Swarmops installation is ready! Press Finish to log in as your new user and start using it.</p>
                         <div style="display:none"><asp:Button runat="server" ID="ButtonLogin" OnClick="ButtonLogin_Click" Text="This button is invisible."/></div>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="ButtonInitDatabase" EventName="Click" />
-                            <asp:AsyncPostBackTrigger ControlID="ButtonTestCredentials" EventName="Click" />
-                        </Triggers>
-                        </asp:UpdatePanel>
-                                       			
                     </div>
       		    </div>
 
