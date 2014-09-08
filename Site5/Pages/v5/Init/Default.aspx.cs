@@ -184,57 +184,29 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         return _buildIdentity;
     }
 
-    protected void ButtonInitDatabase_Click(object sender, EventArgs args)
+    [WebMethod]
+    static public PermissionsAnalysis FirstCredentialsTest
+        (string readDatabase, string readServer, string readUser, string readPassword,
+        string writeDatabase, string writeServer, string writeUser, string writePassword,
+        string adminDatabase, string adminServer, string adminUser, string adminPassword,
+        string serverName, string ipAddress)
     {
-        // Check the host names and addresses again as a security measure - after all, we can be called from outside our intended script
-
-        if (!(VerifyHostName(this.TextServerName.Text) && VerifyHostAddress(this.TextServerAddress.Text)))
+        if (!(VerifyHostName(serverName) && VerifyHostAddress(ipAddress)))
         {
             if (!System.Diagnostics.Debugger.IsAttached)
             {
-                return; // Probable hack attempt - fail silently
-            }
-        }
-
-        if (_testReadCredentials == null)
-        {
-            throw new InvalidOperationException("Can't init database before it has been tested - invalid state");
-        }
-
-        // Store database credentials
-
-        SwarmDb.Configuration.Set(
-            new SwarmDb.Configuration(
-                _testReadCredentials,
-                _testWriteCredentials,
-                _testAdminCredentials));
-    }
-
-    protected void ButtonTestCredentials_Click(object sender, EventArgs args)
-    {
-        // Check the host names and addresses again as a security measure - after all, we can be called from outside our intended script
-
-        if (!(VerifyHostName(this.TextServerName.Text) && VerifyHostAddress(this.TextServerAddress.Text)))
-        {
-            if (!System.Diagnostics.Debugger.IsAttached)
-            {
-                return; // Probable hack attempt - fail silently
+                return null; // Probable hack attempt - fail silently
             }
         }
 
         _testReadCredentials = new SwarmDb.Credentials(
-                    this.TextCredentialsReadDatabase.Text,
-                    new SwarmDb.ServerSet(this.TextCredentialsReadServer.Text),
-                    this.TextCredentialsReadUser.Text,
-                    this.TextCredentialsReadPassword.Text);
-        _testWriteCredentials = new SwarmDb.Credentials(this.TextCredentialsWriteDatabase.Text,
-                                         new SwarmDb.ServerSet(this.TextCredentialsWriteServer.Text),
-                                         this.TextCredentialsWriteUser.Text,
-                                         this.TextCredentialsWritePassword.Text);
-        _testAdminCredentials = new SwarmDb.Credentials(this.TextCredentialsAdminDatabase.Text,
-                                         new SwarmDb.ServerSet(this.TextCredentialsAdminServer.Text),
-                                         this.TextCredentialsAdminUser.Text,
-                                         this.TextCredentialsAdminPassword.Text);
+                    readDatabase, new SwarmDb.ServerSet(readServer), readUser, readPassword);
+        _testWriteCredentials = new SwarmDb.Credentials(
+                    writeDatabase, new SwarmDb.ServerSet(writeServer), writeUser, writePassword);
+        _testAdminCredentials = new SwarmDb.Credentials(
+                    adminDatabase, new SwarmDb.ServerSet(adminServer), adminUser, adminPassword);
+
+        return RecheckDatabasePermissions();  // Subsequent tests only call this function
     }
 
     private static SwarmDb.Credentials _testReadCredentials;
@@ -252,7 +224,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
 
     [WebMethod(true)]
-    public static PermissionsAnalysis TestDatabasePermissions()
+    public static PermissionsAnalysis RecheckDatabasePermissions()
     {
         while (_testReadCredentials == null || _testWriteCredentials == null || _testAdminCredentials == null)
         {
@@ -371,6 +343,14 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         {
             throw new InvalidOperationException("Cannot re-initialize database");
         }
+
+        // Store database credentials
+
+        SwarmDb.Configuration.Set(
+            new SwarmDb.Configuration(
+                _testReadCredentials,
+                _testWriteCredentials,
+                _testAdminCredentials));
 
         // Start an async thread that does all the work, then return
 
