@@ -96,11 +96,11 @@
 	            var textBoxes;
 	            var loop;
 	            var fieldContents;
+	            var hostName = $('#<%=this.TextServerName.ClientID %>').val();
+	            var hostAddress = $('#<%=this.TextServerAddress.ClientID %>').val();
 
 	            if (stepNumber == 1) {
 	                // Validate Hostname, Host Address
-	                var hostName = $('#<%=this.TextServerName.ClientID %>').val();
-	                var hostAddress = $('#<%=this.TextServerAddress.ClientID %>').val();
 
 	                if (hostName && hostName.length > 0 && hostAddress && hostAddress.length > 0) {
 	                    $.ajax({
@@ -175,13 +175,27 @@
 
 	                if (isValid) {
 	                    DisableNext(); // block Next during synchro call - it may take a while
-                                       // also, won't get re-enabled no matter the outcome
-	                    $('#<%=this.ButtonTestCredentials.ClientID %>').click();
+	                                   // also, won't get re-enabled no matter the outcome
 
+	                    alert('calling now');
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "Default.aspx/TestDatabasePermissions",
-	                        data: "{}",
+	                        url: "Default.aspx/FirstCredentialsTest",
+	                        data: "{" +
+	                            "'readDatabase':'" + $('#<%=this.TextCredentialsReadDatabase.ClientID %>').val() + "',"+
+	                            "'readServer':'" + $('#<%=this.TextCredentialsReadServer.ClientID %>').val() + "',"+
+	                            "'readUser':'" + $('#<%=this.TextCredentialsReadUser.ClientID %>').val() + "',"+
+	                            "'readPassword':'" + $('#<%=this.TextCredentialsReadPassword.ClientID %>').val() + "',"+
+	                            "'writeDatabase':'" + $('#<%=this.TextCredentialsWriteDatabase.ClientID %>').val() + "',"+
+	                            "'writeServer':'" + $('#<%=this.TextCredentialsWriteServer.ClientID %>').val() + "',"+
+	                            "'writeUser':'" + $('#<%=this.TextCredentialsWriteUser.ClientID %>').val() + "',"+
+	                            "'writePassword':'" + $('#<%=this.TextCredentialsWritePassword.ClientID %>').val() + "',"+
+	                            "'adminDatabase':'" + $('#<%=this.TextCredentialsAdminDatabase.ClientID %>').val() + "',"+
+	                            "'adminServer':'" + $('#<%=this.TextCredentialsAdminServer.ClientID %>').val() + "',"+
+	                            "'adminUser':'" + $('#<%=this.TextCredentialsAdminUser.ClientID %>').val() + "',"+
+	                            "'adminPassword':'" + $('#<%=this.TextCredentialsAdminPassword.ClientID %>').val() + "',"+
+	                            "'serverName':'" + hostName + "'," +
+	                            "'ipAddress':'" + hostAddress +"'}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
 	                        async: false,  // blocks until function returns - race conditions otherwise
@@ -205,7 +219,6 @@
 	                    $('#DivProgressDatabase').progressbar({ value: 0, max: 100 });
 	                    setTimeout('updateInitProgressBar();', 1000);
 	                    setTimeout('updateInitProgressMessage();', 1500);
-	                    $('#<%=this.ButtonInitDatabase.ClientID %>').click();
 	                    beginInitDatabase();
 	                    DisableNext();
 	                }
@@ -401,7 +414,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/TestDatabasePermissions",
+	            url: "Default.aspx/RecheckDatabasePermissions",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -574,48 +587,36 @@
   			            </div>
                         <div id="DivDatabaseWritable" style="display:none">
                             <h2>Connect to database</h2>	
-                        <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. For security reasons, we <strong>require</strong> having three separate accounts - one for reading (SELECT permissions only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
+                            <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. For security reasons, we <strong>require</strong> having three separate accounts - one for reading (SELECT permissions only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
 
-                        <div class="entryLabelsAdmin" style="width:120px">
-                            &nbsp;<br/>
-                            Database<br />
-  			                Server<br />
-                            User<br/>
-                            Password
-                        </div>
-                        <div class="entryFieldsAdmin" style="width:80px">
-                            <strong>Read access</strong><br/>
-                            <asp:TextBox CssClass="textinput" ID="TextCredentialsReadDatabase" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadServer" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadUser" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadPassword" TextMode="Password" runat="server" />&nbsp;<br />
-                        </div>
-                        <div class="entryFieldsAdmin" style="width:80px;margin-left:10px">
-                            <strong>Write access</strong><br/>
-                            <asp:TextBox CssClass="textinput" ID="TextCredentialsWriteDatabase" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteServer" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteUser" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsWritePassword" TextMode="Password" runat="server" />&nbsp;<br />
-                        </div>
-                        <div class="entryFieldsAdmin" style="width:80px;margin-left:10px">
-                            <strong>Admin access</strong><br/>
-                            <asp:TextBox CssClass="textinput" ID="TextCredentialsAdminDatabase" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminServer" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" TextMode="Password" runat="server" />&nbsp;<br />
-                        </div>
-                        <div style="display:none">
-                            <asp:UpdatePanel runat="server" ID="UpdateFinished" UpdateMode="Conditional">
-  			                    <ContentTemplate>
-                                    <asp:Button ID="ButtonInitDatabase" OnClick="ButtonInitDatabase_Click" runat="server" Text="You should not see this button" />
-                                    <asp:Button ID="ButtonTestCredentials" OnClick="ButtonTestCredentials_Click" runat="server" Text="You should not see this button" />
-                                </ContentTemplate>
-                                <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID="ButtonInitDatabase" />
-                                    <asp:AsyncPostBackTrigger ControlID="ButtonTestCredentials" />
-                            </Triggers>
-                            </asp:UpdatePanel>
-                        </div>
+                            <div class="entryLabelsAdmin" style="width:120px">
+                                &nbsp;<br/>
+                                Database<br />
+  			                    Server<br />
+                                User<br/>
+                                Password
+                            </div>
+                            <div class="entryFieldsAdmin" style="width:80px">
+                                <strong>Read access</strong><br/>
+                                <asp:TextBox CssClass="textinput" ID="TextCredentialsReadDatabase" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadServer" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadUser" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextCredentialsReadPassword" TextMode="Password" runat="server" />&nbsp;<br />
+                            </div>
+                            <div class="entryFieldsAdmin" style="width:80px;margin-left:10px">
+                                <strong>Write access</strong><br/>
+                                <asp:TextBox CssClass="textinput" ID="TextCredentialsWriteDatabase" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteServer" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextCredentialsWriteUser" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextCredentialsWritePassword" TextMode="Password" runat="server" />&nbsp;<br />
+                            </div>
+                            <div class="entryFieldsAdmin" style="width:80px;margin-left:10px">
+                                <strong>Admin access</strong><br/>
+                                <asp:TextBox CssClass="textinput" ID="TextCredentialsAdminDatabase" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminServer" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" TextMode="Password" runat="server" />&nbsp;<br />
+                            </div>
                         </div>
                     </div>                      
   			        <div id="step-3">
