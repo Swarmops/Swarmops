@@ -370,6 +370,9 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         _initMessage = "Loading schema from Swarmops servers; creating tables and procs...";
         Thread.Sleep(100);
 
+        try
+        {
+
         // Get the schema and initialize the database structures. Requires ADMIN access to database.
 
         Swarmops.Logic.Support.DatabaseMaintenance.FirstInitialization();
@@ -603,6 +606,14 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         _initProgress = 100;
         _initMessage = "Complete.";
+
+        }
+        catch (Exception failedException)
+        {
+            // Use initMessage to push info about what went wrong to the user
+
+            _initMessage = failedException.ToString();
+        }
 
         Thread.Sleep(1000); // give some time for static var to stick and web interface to react before killing thread
     }
