@@ -32,13 +32,14 @@ namespace Swarmops.Pages.Security
 
             // Check for SSL
 
+            /* DISABLE temporarily
             if ((!Request.IsSecureConnection) && Request.Url.ToString().StartsWith("http://"))  // Both are necessary, as some reverse proxies will https-ify an original nonsecure connection
             {
                 if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://swarmops-"))
                 {
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
                 }
-            }
+            } */
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
