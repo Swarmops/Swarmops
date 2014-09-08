@@ -604,7 +604,7 @@
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" TextMode="Password" runat="server" />&nbsp;<br />
                         </div>
-                        <div style="display:none"><asp:Button runat="server" ID="ButtonTestCredentials" Text="You should not see this button" OnClick="ButtonTestCredentials_Click"/><<asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button" OnClick="ButtonInitDatabase_Click"/></div>
+                        <div style="display:none"><asp:Button runat="server" ID="ButtonTestCredentials" Text="You should not see this button" OnClick="ButtonTestCredentials_Click"/><asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button" OnClick="ButtonInitDatabase_Click"/></div>
                         </div>
                     </div>                      
   			        <div id="step-3">
