@@ -494,7 +494,7 @@ namespace Swarmops.Logic.Security
             uint i, n, l = block[offset], r = block[offset + 1];
 
             l ^= this.p[0];
-            unchecked  // Added as per http://bcrypt.codeplex.com/SourceControl/network/forks/mammo/UncheckedFix/changeset/96b7f8314be4 to fix overflow exception
+            unchecked  // Added as per http://bcrypt.codeplex.com/SourceControl/network/forks/mammo/UncheckedFix/changeset/96b7f8314be4 to fix overflow exception.
             {
                 for (i = 0; i <= BLOWFISH_NUM_ROUNDS - 2;)
                 {
