@@ -61,9 +61,14 @@ namespace Swarmops
 
             // Check for SSL and force it
 
-            string cloudFlareVisitorScheme = Request.Headers["CF-Visitor"];
+            // Special case for CloudFlare deployments - there is a case where somebody will get their connections de-SSLed at the server
 
+            string cloudFlareVisitorScheme = Request.Headers["CF-Visitor"];
             bool cloudFlareSsl = (cloudFlareVisitorScheme.Contains("\"scheme\":\"https\"") ? true : false);
+
+            // TODO: Same thing for Pound deployments
+
+            // Rewrite if applicable
 
             if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl) // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
