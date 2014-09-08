@@ -539,8 +539,8 @@
   			        <div id="step-2">
   			            <div id="DivDatabaseUnwritable">
   			            <h2>Fix File Permissions</h2>
-                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="FailWriteConfig" runat="server" ImageAlign="Left" /><p>The bad news is that we can't write to the configuration file. This is fairly normal for a new installation. The good news is that you can fix that, so we can continue installing. Please open a shell to the Swarmops server and execute the following commands:</p>
-                        <p><strong>cd /etc/swarmops<br/>sudo chown www-data:www-data database.config<br/>sudo chmod o+w database.config</strong></p>
+                        <asp:Image ImageUrl="~/Images/Icons/iconshock-cross-96px.png" ID="FailWriteConfig" runat="server" ImageAlign="Left" /><p>The bad news is that we can't write to the configuration file. This is fairly normal for a new installation. The good news is that you can fix that, so we can continue installing. Please open a shell to the Swarmops server and execute the following commands:</p><br/>
+                        <p><strong>cd /etc/swarmops<br/>sudo chown www-data:www-data database.config</strong></p>
                         <p>The installation will continue when it detects that these steps have been taken.</p>
   			            </div>
   			            <div id="DivDatabasePermissionProblem" style="display:none">
@@ -604,7 +604,10 @@
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminUser" runat="server" />&nbsp;<br />
                             <asp:TextBox CssClass="textinput"  ID="TextCredentialsAdminPassword" TextMode="Password" runat="server" />&nbsp;<br />
                         </div>
-                        <div style="display:none"><asp:Button runat="server" ID="ButtonTestCredentials" Text="You should not see this button" OnClick="ButtonTestCredentials_Click"/><asp:Button runat="server" ID="ButtonInitDatabase" Text="You should not see this button" OnClick="ButtonInitDatabase_Click"/></div>
+                        <div style="display:none">
+                            <asp:Button ID="ButtonInitDatabase" OnClick="ButtonInitDatabase_Click" runat="server" Text="You should not see this button" />
+                            <asp:Button ID="ButtonTestCredentials" OnClick="ButtonTestCredentials_Click" runat="server" Text="You should not see this button" />
+                        </div>
                         </div>
                     </div>                      
   			        <div id="step-3">
@@ -640,8 +643,8 @@
                         <div style="display:none"><asp:Button runat="server" ID="ButtonLogin" OnClick="ButtonLogin_Click" Text="This button is invisible."/></div>
                         </ContentTemplate>
                         <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="ButtonInitDatabase" EventName="Click"/>
-                            <asp:AsyncPostBackTrigger ControlID="ButtonTestCredentials" EventName="Click"/>
+                            <asp:AsyncPostBackTrigger ControlID="ButtonInitDatabase" EventName="Click" />
+                            <asp:AsyncPostBackTrigger ControlID="ButtonTestCredentials" EventName="Click" />
                         </Triggers>
                         </asp:UpdatePanel>
                                        			
