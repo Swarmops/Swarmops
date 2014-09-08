@@ -61,7 +61,8 @@ namespace Swarmops
 
             // Check for SSL and force it
 
-            if ((!Request.IsSecureConnection) && Request.Url.ToString().StartsWith("http://"))  // Both are necessary, as some reverse proxies will https-ify an original nonsecure connection. First is state at server, second is state at client
+            /*  DISABLED - WORKS REALLY POORLY WHEN IN COMPLEX DEPLOYMENTS. MUST IMPROVE DETECTION MECHANISM
+            if (Request.Url.ToString().StartsWith("http://")) // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
                 if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://swarmops-"))
                 {
@@ -70,7 +71,7 @@ namespace Swarmops
                     // Only force this if set to force it in database
                     // TODO: Make admin init task
                 }
-            }
+            }*/
 
             Localize();
 
