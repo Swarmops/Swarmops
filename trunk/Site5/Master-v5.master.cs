@@ -61,8 +61,11 @@ namespace Swarmops
 
             // Check for SSL and force it
 
-            /*  DISABLED - WORKS REALLY POORLY WHEN IN COMPLEX DEPLOYMENTS. MUST IMPROVE DETECTION MECHANISM
-            if (Request.Url.ToString().StartsWith("http://")) // only check client-side as many server sites de-SSL the connection before reaching the web server
+            string cloudFlareVisitorScheme = Request.Headers["CF-Visitor"];
+
+            bool cloudFlareSsl = (cloudFlareVisitorScheme == "\"scheme\":\"https\""? true: false);
+
+            if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl) // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
                 if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://swarmops-"))
                 {
@@ -71,7 +74,7 @@ namespace Swarmops
                     // Only force this if set to force it in database
                     // TODO: Make admin init task
                 }
-            }*/
+            }
 
             Localize();
 
