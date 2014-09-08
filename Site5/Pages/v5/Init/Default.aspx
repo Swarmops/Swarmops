@@ -177,7 +177,6 @@
 	                    DisableNext(); // block Next during synchro call - it may take a while
 	                                   // also, won't get re-enabled no matter the outcome
 
-	                    alert('calling now');
 	                    $.ajax({
 	                        type: "POST",
 	                        url: "Default.aspx/FirstCredentialsTest",
