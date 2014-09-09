@@ -19,7 +19,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>../Site/bin/</OutputPath>
+    <OutputPath>Debug/bin/</OutputPath>
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
     <Optimize>False</Optimize>
@@ -33,7 +33,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>../Site/bin/</OutputPath>
+    <OutputPath>Release/bin/</OutputPath>
     <DebugType>none</DebugType>
     <DebugSymbols>False</DebugSymbols>
     <Optimize>True</Optimize>
