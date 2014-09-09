@@ -33,7 +33,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>../Site/bin/</OutputPath>
+    <OutputPath>../Site5/bin/</OutputPath>
     <DebugType>none</DebugType>
     <DebugSymbols>False</DebugSymbols>
     <Optimize>True</Optimize>
