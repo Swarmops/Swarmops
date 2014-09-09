@@ -7,4 +7,5 @@ HATE bureaucracy with all their hearts, so it removes all visibility of it and f
 It manages decentralized authority, volunteers, members, activists, budgets, mass communications,
 expenses, payroll, invoices, and complete financials/bookkeeping.
 
-It runs on Debian Linux servers and is Public Domain (except for external resources, which are noted as such).
+It runs on Debian Linux servers and is in the Public Domain (except for external resources, which are
+noted as such).
