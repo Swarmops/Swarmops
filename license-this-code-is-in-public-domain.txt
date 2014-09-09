@@ -16,4 +16,3 @@ additions in the public domain. If you're adding a third party component, do fla
 IMPORTANT EXCEPTIONS are all images and the external libraries found in the Bin folder of the 
 Site projects, and in External Libraries. Do not commit any new such restricted code without
 prior agreement.
-
