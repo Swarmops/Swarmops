@@ -9,3 +9,4 @@ expenses, payroll, invoices, and complete financials/bookkeeping.
 
 It runs on Debian Linux servers and is in the Public Domain (except for external resources, which are
 noted as such).
+
