@@ -1,4 +1,4 @@
-﻿#! /bin/sh
+﻿#! /bin/bash
 ### BEGIN INIT INFO
 # Provides:          swarmops-backend
 # Required-Start:    $remote_fs $syslog
