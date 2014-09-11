@@ -155,7 +155,7 @@ rm -rf debian
 echo "Notifying developers that new build has deployed for test..."
 echo "Swarmops $PACKAGENAME build $(cat $BUILDIDSOURCE | tr -d ' \r') has been deployed from continuous integration." > deploymsg.txt
 echo "The package is available from repositories now, and can be tested at http://dev.swarmops.com/ as usual." >> deploymsg.txt
-mail -F "Swarmops Builder <builds@swarmops.com>" -s "Swarmops $PACKAGENAME $(cat $BUILDIDSOURCE | tr -d ' \r') deployed" "swarmops-builds@falkvinge.net" < deploymsg.txt
+mail -F "Swarmops Builder <builds@swarmops.com>" -s "Swarmops $PACKAGENAME $(cat $BUILDIDSOURCE | tr -d ' \r') deployed" "swarmops.developers@groups.facebook.com" < deploymsg.txt
 
 rm deploymsg.txt
 rm $BUILDIDSOURCE
