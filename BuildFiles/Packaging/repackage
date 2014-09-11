@@ -56,8 +56,8 @@ fi
 
 PACKAGENAME=$PACKAGE$CONTROLSUFFIX
 
-cp ../lastbuild/frontend/BuildIdentity.txt ./BuildIdentity.txt
-cp ../lastbuild/frontend/CommitIdentity.txt ./CommitIdentity.txt
+cp ../lastbuild/BuildIdentity.txt ./BuildIdentity.txt
+cp ../lastbuild/CommitIdentity.txt ./CommitIdentity.txt
 
 BUILDID=$(cat BuildIdentity.txt | tr -d ' \r')
 COMMITID=$(cat CommitIdentity.txt | tr -d ' \r')
