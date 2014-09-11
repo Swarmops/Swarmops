@@ -89,7 +89,7 @@ if [ "$COPYFILES" == "yes" ]; then
     echo "moving user-configurable files to /etc/swarmops/..."
     mkdir -p etc/swarmops
     mv $DEPLOYDIR/$TARGETDIR/machineKey.config etc/swarmops/.
-    sed -i 's/\"machineKey.config\"/\"\/etc\/swarmops\/machineKey.config\"/g' $DEPLOYDIR/$TARGETDIR/web.config
+    sed -i 's/\"machineKey.config\"/\"..\/..\/..\/..\/etc\/swarmops\/machineKey.config\"/g' $DEPLOYDIR/$TARGETDIR/web.config
   fi
 fi
 
