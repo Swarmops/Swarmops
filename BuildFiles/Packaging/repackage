@@ -86,7 +86,7 @@ if [ "$COPYFILES" == "yes" ]; then
   fi
 
   if [ "$1" == "frontend" ]; then
-    echo "moving user-configurable files to /etc/swarmops/..."
+    echo "Moving user-configurable files to /etc/swarmops/..."
     mkdir -p etc/swarmops
     mv $DEPLOYDIR/$TARGETDIR/machineKey.config etc/swarmops/.
     sed -i 's/\"machineKey.config\"/\"..\/..\/..\/..\/etc\/swarmops\/machineKey.config\"/g' $DEPLOYDIR/$TARGETDIR/web.config
@@ -122,6 +122,10 @@ else
     rm DEBIAN/postinst
   fi
 fi
+
+echo "Converting possible CRLF line endings in scripts to LF-only..."
+dos2unix DEBIAN/*
+dos2unix etc/init.d/*
 
 echo "Setting build number ($(cat ../$BUILDIDSOURCE | tr -d ' \r'))..."
 sed -i "s/--BuildNumber--/$(cat ../$BUILDIDSOURCE | tr -d ' \r')/" DEBIAN/control
