@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#Update all files, including this one. Runpos will remain same in possible new version
+echo "Checking for updates to packaging..."
+svn update
+
+DEPLOYDIR=usr/share/swarmops
+
 # Check parameters
 if [ "$1" == "frontend" ]; then
   echo "Packaging frontend...";
@@ -57,27 +63,33 @@ cp ../lastbuild/frontend/BuildIdentity.txt ../lastbuild/backend/.
 # Delete flag that indicates a new drop is available
 #rm /home/packaging/lastbuild/BuildDropped.txt
 
+# Remove previous package files, if any
+if [ -d debian ]; then
+  rm -rf debian
+fi
+
 # Init build
+mkdir debian
+mkdir debian/DEBIAN
 cd debian
 
-# Delete temporary files
-echo "Removing previous package files..."
-rm -rf opt/swarmops/*
-
-if [ -d etc ]; then
-  rm -rf etc
-fi
 
 if [ "$COPYFILES" == "yes" ]; then
   echo "Copying payload files into repo..."
-  mkdir -p opt/swarmops/$TARGETDIR
-  cp -R $SOURCEDIR/* opt/swarmops/$TARGETDIR/.
+  mkdir -p $DEPLOYDIR/$TARGETDIR
+  cp -R $SOURCEDIR/* $DEPLOYDIR/$TARGETDIR/.
 
   if [ -d $SOURCEDIR/etcinitd ]; then
     echo "Adding /etc/init.d files..."
-    mkdir etc
-    mkdir etc/init.d
+    mkdir -p etc/init.d
     cp $SOURCEDIR/etcinitd/* etc/init.d/.
+  fi
+
+  if [ "$1" == "frontend" ]; then
+    echo "moving user-configurable files to /etc/swarmops/..."
+    mkdir -p etc/swarmops
+    mv $DEPLOYDIR/$TARGETDIR/machineKey.config etc/swarmops/.
+    sed -i 's/\"machineKey.config\"/\"\/etc\/swarmops\/machineKey.config\"/g' $DEPLOYDIR/$TARGETDIR/web.config
   fi
 fi
 
@@ -135,13 +147,15 @@ if [ "$2" == "" ]; then
   dpkg -i swarmops-$PACKAGENAME-latest.deb
 fi
 
+echo "Cleaning up..."
+
+rm swarmops-$PACKAGENAME-latest.deb
+rm -rf debian
+
 echo "Notifying developers that new build has deployed for test..."
-echo "Swarmops $PACKAGENAME build $(cat $BUILDIDSOURCE | tr -d ' \r') has been deployed as daily build." > deploymsg.txt
-echo "Test it at http://dev.swarmops.com/ as usual." >> deploymsg.txt
-mail -s "Swarmops $PACKAGENAME $(cat $BUILDIDSOURCE) deployed" "swarmops-builds@falkvinge.net" < deploymsg.txt
+echo "Swarmops $PACKAGENAME build $(cat $BUILDIDSOURCE | tr -d ' \r') has been deployed from continuous integration." > deploymsg.txt
+echo "The package is available from repositories now, and can be tested at http://dev.swarmops.com/ as usual." >> deploymsg.txt
+mail -F "Swarmops Builder <builds@swarmops.com>" -s "Swarmops $PACKAGENAME $(cat $BUILDIDSOURCE | tr -d ' \r') deployed" "swarmops-builds@falkvinge.net" < deploymsg.txt
 
 rm deploymsg.txt
 rm $BUILDIDSOURCE
-
-
-

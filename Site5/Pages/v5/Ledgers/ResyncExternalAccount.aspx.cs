@@ -32,11 +32,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 if (Debugger.IsAttached)
                 {
-                    return @"C:\Windows\Temp\\Swarmops-Debug\\"; // Windows debugging environment
+                    return @"C:\Windows\Temp\Swarmops-Debug\"; // Windows debugging environment
                 }
                 else
                 {
-                    return "/opt/swarmops/upload/"; // production location on Debian installation  TODO: config file
+                    return "/var/lib/swarmops/upload/"; // production location on Debian installation  TODO: config file
                 }
             }
         }

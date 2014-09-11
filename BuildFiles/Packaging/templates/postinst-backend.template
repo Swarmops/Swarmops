@@ -2,8 +2,7 @@
 
 #echo "Swarmops post-installation script running"
 #make sure some directories exist
-mkdir -p /opt/swarmops/upload
-mkdir -p /opt/swarmops/backend/logs
+mkdir -p /var/lib/swarmops/upload
 #todo: check for database upgrade
 #start the daemon
 /etc/init.d/swarmops-backend start

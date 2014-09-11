@@ -32,7 +32,7 @@ namespace Swarmops.Utility.BotCode
         {
             DateTime now = DateTime.Now;
 
-            string logFileName = "logs" + System.IO.Path.DirectorySeparatorChar + "botlog-" +
+            string logFileName = "/var/log/swarmops/backend-log-" +
                                  now.ToString("yyyy-MM-dd-HH") + ".log";
 
             using (StreamWriter writer = new StreamWriter(logFileName, true, Encoding.GetEncoding(1252)))

@@ -28,11 +28,11 @@ namespace Swarmops.Pages.v5.Support
             {
                 if (Debugger.IsAttached)
                 {
-                    return @"C:\Windows\Temp\\Swarmops-Debug\\"; // Windows debugging environment
+                    return @"C:\Windows\Temp\Swarmops-Debug\"; // Windows debugging environment
                 }
                 else
                 {
-                    return "/opt/swarmops/upload/"; // production location on Debian installation  TODO: config file
+                    return "/var/lib/swarmops/upload/"; // production location on Debian installation  TODO: config file
                 }
             }
         }

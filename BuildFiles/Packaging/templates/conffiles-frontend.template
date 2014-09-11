@@ -1,2 +1,2 @@
-/opt/swarmops/frontend/machineKey.config
-/opt/swarmops/frontend/favicon.ico
+/etc/swarmops/machineKey.config
+/usr/local/share/swarmops/frontend/favicon.ico

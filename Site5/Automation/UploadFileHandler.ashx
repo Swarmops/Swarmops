@@ -29,7 +29,7 @@ namespace Swarmops.Frontend.Automation
                 }
                 else
                 {
-                    return "/opt/swarmops/upload/"; // production location on Debian installation  TODO: config file
+                    return "/var/lib/swarmops/upload/"; // production location on Debian installation
                 }
             }
         }
