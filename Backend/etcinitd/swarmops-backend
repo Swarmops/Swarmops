@@ -6,11 +6,13 @@
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Swarmops backend
-# Description:       Sample description - not sure what to write here
-#                    at this point.
+# Short-Description: Swarmops backend
+# Description:       This file starts and stops the Swarmsops backend. It is installed as part of
+#                    the swarmops-backend package and placed in /etc/init.d for compatibility with
+#                    Debian and Ubuntu servers.
 ### END INIT INFO
 
-# Author: Rick Falkvinge <packager@swarmops.com>
+# Author: Rick Falkvinge <rick.falkvinge@pirateacademy.eu>
 #
 # Please remove the "Author" lines above and replace them
 # with your own name if you copy and modify this script.
@@ -23,7 +25,7 @@ DESC="Swarmops backend daemon"
 NAME=swarmops-back
 BINARY=Swarmops.Backend.exe
 MONO=/usr/bin/mono
-DAEMON=/opt/swarmops/backend
+DAEMON=/usr/share/swarmops/backend
 DAEMON_ARGS="--options args"
 PIDFILE=/var/run/swarmops-backend.pid
 SCRIPTNAME=/etc/init.d/swarmops-backend
