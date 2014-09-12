@@ -7,16 +7,34 @@ svn update
 DEPLOYDIR=usr/share/swarmops
 
 # Check parameters
+
+if [ "$2" == "release" ]; then
+  CONTROLSUFFIX=-release
+  DROPFOLDER=release
+  echo "Packaging FINISHED RELEASE for super-stable deployments."
+elif [ "$2" == "sprint" ]; then
+  CONTROLSUFFIX=-sprint
+  DROPFOLDER=sprint
+  echo "Packaging END-OF-SPRINT for normal deployments."
+else
+  CONTROLSUFFIX=-internal
+  DROPFOLDER=internal
+  if [ "$1" == "extscripts" ]; then
+    echo "Error: Cannot package external scripts for internal build. Use 'stable'."
+    exit 1;
+  fi
+fi
+
 if [ "$1" == "frontend" ]; then
   echo "Packaging frontend...";
-  SOURCEDIR=/home/packager/lastbuild/frontend
+  SOURCEDIR=/home/packager/lastbuild/swarmops/$DROPFOLDER/frontend
   TARGETDIR=frontend
   PACKAGE=frontend
   INCLUDEDB=no
   COPYFILES=yes
 elif [ "$1" == "backend" ]; then
   echo "Packaging backend..."
-  SOURCEDIR=/home/packager/lastbuild/backend
+  SOURCEDIR=/home/packager/lastbuild/swarmops/$DROPFOLDER/backend
   TARGETDIR=backend
   PACKAGE=backend
   INCLUDEDB=no
@@ -40,24 +58,10 @@ else
   exit 1;
 fi
 
-if [ "$2" == "release" ]; then
-  CONTROLSUFFIX=-release
-  echo "Packaging FINISHED RELEASE for super-stable deployments."
-elif [ "$2" == "sprint" ]; then
-  CONTROLSUFFIX=-sprint
-  echo "Packaging END-OF-SPRINT for normal deployments."
-else
-  CONTROLSUFFIX=-internal
-  if [ "$1" == "extscripts" ]; then
-    echo "Error: Cannot package external scripts for internal build. Use 'stable'."
-    exit 1;
-  fi
-fi
-
 PACKAGENAME=$PACKAGE$CONTROLSUFFIX
 
-cp ../lastbuild/BuildIdentity.txt ./BuildIdentity.txt
-cp ../lastbuild/CommitIdentity.txt ./CommitIdentity.txt
+cp ../lastbuild/swarmops/$DROPFOLDER/BuildIdentity.txt ./BuildIdentity.txt
+cp ../lastbuild/swarmops/$DROPFOLDER/CommitIdentity.txt ./CommitIdentity.txt
 
 BUILDID=$(cat BuildIdentity.txt | tr -d ' \r')
 COMMITID=$(cat CommitIdentity.txt | tr -d ' \r')
@@ -167,9 +171,7 @@ rm swarmops-$PACKAGENAME-latest.deb
 rm -rf debian
 
 echo "Notifying developers that new build has deployed for test..."
-echo "Package swarmops-$PACKAGENAME $BUILDID has been deployed from continuous integration." > deploymsg.txt
-echo "" >> deploymsg.txt
-echo "The package is available from repositories now, and can be tested at http://dev.swarmops.com/ as usual." >> deploymsg.txt
+echo "The package is available from repositories now, and can be tested at http://dev.swarmops.com/ as usual." > deploymsg.txt
 
 if [ ! "$2" == "" ]; then
   echo "" >> deploymsg.txt
