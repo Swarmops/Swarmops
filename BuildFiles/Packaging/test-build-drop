@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# This script is intended to be run as a cron job. It looks for the file 
+# /home/packager/lastbuild/swarmops/internal/BuildDropped.txt
+# and if that file exists, it launches an internal build.
+
+if [ ! -e /home/packager/lastbuild/swarmops/internal/BuildDropped.txt ]; then
+  exit 0;
+fi
+
+# When we get here, a build was dropped, so remove the flag and launch an internal build
+
+rm /home/packager/lastbuild/swarmops/internal/BuildDropped.txt
+cd /home/packager/swarmops
+./repackage-build
+
+exit 0;
+

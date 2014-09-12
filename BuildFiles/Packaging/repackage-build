@@ -1,0 +1,53 @@
+#!/bin/bash
+
+#Update all files, including this one. Runpos will remain same in possible new version
+echo "Checking for updates to packaging process..."
+svn update
+
+# Check parameters
+
+if [ "$1" == "release" ]; then
+  DROPFOLDER=release
+  echo "Packaging FINISHED RELEASE for super-stable deployments."
+elif [ "$1" == "sprint" ]; then
+  DROPFOLDER=sprint
+  echo "Packaging END-OF-SPRINT for normal deployments."
+elif [ "$1" == "" ]; then
+  DROPFOLDER=internal
+  echo "Packaging internal test build."
+else
+  echo "Syntax: repackage-build [sprint|release]"
+  echo "(No parameter will trigger a build of the internal branch.)"
+  exit 1;
+fi
+
+BUILDID=$(cat ../lastbuild/swarmops/$DROPFOLDER/BuildIdentity.txt | tr -d ' \r')
+COMMITID=$(cat ../lastbuild/swarmops/$DROPFOLDER/CommitIdentity.txt | tr -d ' \r')
+
+BUILDID=$(echo $BUILDID | cut -c 1-8)$(echo $COMMITID | cut -c 1-7)
+
+echo ""
+echo "Packaging Swarmops, branch '$DROPFOLDER', build $BUILDID."
+echo "----------------------------------------------------------------------"
+echo ""
+
+./repackage-one frontend $1
+./repackage-one backend $1
+./repackage-one common $1
+
+echo "Notifying developers that new build has packaged for test/deployment..."
+
+if [ "$DROPFOLDER" == "internal" ]; then
+  echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at http://dev.swarmops.com/ as usual." > deploymsg.txt
+  echo ""
+  echo "Last Commit: $(cat ../lastbuild/swarmops/internal/CommitMessage.txt)"
+else
+  echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!" > deploymsg.txt
+fi
+
+# TODO: Add build messages to deploy message, at least for internal build
+
+mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops $BUILDID ($DROPFOLDER) packaged." "swarmops.developers@groups.facebook.com" < deploymsg.txt
+
+rm deploymsg.txt
+
