@@ -39,6 +39,8 @@ echo "Notifying developers that new build has packaged for test/deployment..."
 
 if [ "$DROPFOLDER" == "internal" ]; then
   echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at http://dev.swarmops.com/ as usual." > deploymsg.txt
+  echo ""
+  echo "Last Commit: $(cat ../lastbuild/swarmops/internal/CommitMessage.txt)"
 else
   echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!" > deploymsg.txt
 fi
