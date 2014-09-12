@@ -1,9 +1,5 @@
 #!/bin/bash
 
-#Update all files, including this one. Runpos will remain same in possible new version
-echo "Checking for updates to packaging..."
-svn update
-
 DEPLOYDIR=usr/share/swarmops
 
 # Check parameters
@@ -169,18 +165,6 @@ echo "Cleaning up..."
 
 rm swarmops-$PACKAGENAME-latest.deb
 rm -rf debian
-
-echo "Notifying developers that new build has deployed for test..."
-echo "The package is available from repositories now, and can be tested at http://dev.swarmops.com/ as usual." > deploymsg.txt
-
-if [ ! "$2" == "" ]; then
-  echo "" >> deploymsg.txt
-  echo "Note that this is a $2 package." >> deploymsg.txt
-fi
-
-mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops-$PACKAGENAME $BUILDID deployed." "swarmops.developers@groups.facebook.com" < deploymsg.txt
-
-rm deploymsg.txt
 rm BuildIdentity.txt
 rm CommitIdentity.txt
 
