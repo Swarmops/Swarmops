@@ -38,7 +38,7 @@
 
 	                $(".IconEdit").click(function() {
 	                    accountId = $(this).attr("accountId");
-	                    var accountType = accountId.substring(0,1);  // A, D, I, C
+	                    accountType = accountId.substring(0,1);  // A, D, I, C
 	                    accountId = accountId.substring(1);
 
 	                    var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
@@ -117,13 +117,25 @@
 	        
 	        $("#IconCloseEdit").click(function() {
 	            $('#divModalCover').fadeOut();
+
+	            if (accountDirty) {
+	                $('#tableAccountPlan').treegrid('reload');
+	                accountDirty = false;
+	            }
 	        });
 
 	        $('#TextAccountName').blur(function() {
 
-	            var newAccountName = $('#TextAccountName').val();
+	            var newAccountName = $('#TextAccountName').val().trim();
 	            if (modalAccountName == newAccountName) {
 	                return; // nothing changed, nothing to do
+	            }
+
+	            if (newAccountName == "") { // no, we're not changing to an empty name
+	                $('#TextAccountName').css('background-color', '#FFA0A0');
+	                $('#TextAccountName').val(modalAccountName);
+	                $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
+	                return;
 	            }
 
 	            $('#TextAccountName').css('background-color', '#FFFFE0');
@@ -133,14 +145,15 @@
 	                data: "{'accountId': '" + escape(accountId) + "', 'name':'" + escape(newAccountName) + "'}",
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
-	                success: function(msg) {
+	                success: function(msg) { // TODO: This needs three return values - changed, broken and changed, or not changed
 	                    if (msg.d) { // saved
 	                        $('#TextAccountName').css('background-color', '#E0FFE0');
 	                        modalAccountName = $('#TextAccountName').val(); // race condition because async. Matters?
+	                        accountDirty = true;
 	                    } else {
 	                        $('#TextAccountName').css('background-color', '#FFA0A0');
 	                        $('#TextAccountName').val(modalAccountName);
-	                        alertify.error("Cannot change accounts that have transactions in closed books - yet.");
+	                        alertify.error("Cannot change accounts that have transactions in closed ledgers - yet.");  // TODO: Localize
 	                    }
 	                    $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
 	                }
@@ -148,7 +161,36 @@
 	        });
 
 	        $('#TextAccountBudget').blur(function() {
-	            alert('foo');
+	            var newAccountBudget = $('#TextAccountBudget').val();
+	            if (modalAccountBudget == newAccountBudget) {
+	                return; // nothing changed, nothing to do
+	            }
+
+	            if (accountType == 'C' && newAccountBudget[0] != '-') {
+	                alertify.alert("This is an Expenses account. Such accounts normally have a budget in the negative, since they drain assets from the organization. Your proposed budget was changed to negative.");
+                    newAccountBudget = "-" + newAccountBudget;
+	            }
+
+	            $('#TextAccountBudget').css('background-color', '#FFFFE0');
+	            $.ajax({
+	                type: "POST",
+	                url: "AccountPlan.aspx/SetAccountBudget",
+	                data: "{'accountId': '" + escape(accountId) + "', 'budget':'" + escape(newAccountBudget) + "'}",
+	                contentType: "application/json; charset=utf-8",
+	                dataType: "json",
+	                success: function(msg) { // TODO: This needs four return values - changed, broken and changed, invalid, or not changed. Also, formatted number
+	                    if (msg.d.Result == "Invalid" || msg.d.Result == "NoPermission") {
+	                        $('#TextAccountBudget').css('background-color', '#FFA0A0');
+	                        alertify.error("There was an error attempting to set your proposed budget."); // TODO: Localize
+	                    } else {  // msg.d.Result should be Changed here
+	                        $('#TextAccountBudget').css('background-color', '#E0FFE0');
+	                        modalAccountBudget = msg.d.NewData;
+	                        accountDirty = true;
+	                    }
+	                    $('#TextAccountBudget').val(modalAccountBudget);
+	                    $('#TextAccountBudget').animate({ backgroundColor: "#FFFFFF" }, 250);
+	                }
+	            });
 	        });
 
 	        $('.EditCheck').switchButton(
@@ -171,6 +213,8 @@
 	    var modalAccountName = "";
 	    var modalAccountBudget = "";
 	    var accountId = 0;
+	    var accountType = '';
+	    var accountDirty = false;
 
 	</script>
     <style>
