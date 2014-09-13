@@ -72,6 +72,33 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return result;
         }
 
+
+        private static bool PrepareAccountChange(FinancialAccount account, AuthenticationData authData)
+        {
+            // TODO: Check permissions, too (may be read-only)
+
+            if (account.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException("A million nopes");
+            }
+
+            try
+            {
+                if (account.OpenedYear <= authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear)
+                {
+                    // This require breaking the account, which we can't do yet (in this sprint, will come next sprint).
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                // OpenedYear throws because there isn't a transaction. That's fine.
+            }
+
+            return true;
+        }
+
+
         [WebMethod]
         public static bool SetAccountName(int accountId, string name)
         {
@@ -79,12 +106,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
-            if (account.OrganizationId != authData.CurrentOrganization.Identity)
+            if (!PrepareAccountChange(account, authData))
             {
-                throw new UnauthorizedAccessException("A million nopes");
+                return false;
             }
-
-            // TODO - CRITICAL: CHECK ACCOUNTOPENEDYEAR
 
             account.Name = HttpContext.Current.Server.UrlDecode(name);
             return true;

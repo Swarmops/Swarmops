@@ -140,6 +140,7 @@
 	                    } else {
 	                        $('#TextAccountName').css('background-color', '#FFA0A0');
 	                        $('#TextAccountName').val(modalAccountName);
+	                        alertify.error("Cannot change accounts that have transactions in closed books - yet.");
 	                    }
 	                    $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
 	                }

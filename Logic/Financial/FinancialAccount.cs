@@ -201,6 +201,43 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public new int OpenedYear
+        {
+            get
+            {
+                int testYear = base.OpenedYear;
+                if (testYear < 1900) // not initialized
+                {
+                    DateTime firstTransactionDate = DateTime.MinValue;
+                    try
+                    {
+                        firstTransactionDate =
+                            SwarmDb.GetDatabaseForReading().GetFinancialAccountFirstTransactionDate(this.Identity);
+                    }
+                    catch (Exception)
+                    {
+                        // ignore
+                    }
+
+                    if (firstTransactionDate.Year > 1900)
+                    {
+                        SwarmDb.GetDatabaseForWriting().SetFinancialAccountOpenedYear(this.Identity, firstTransactionDate.Year);
+                        base.OpenedYear = firstTransactionDate.Year; // TODO: Adapt for non-calendar fiscal years as future expansion?
+                    }
+                }
+
+                if (base.OpenedYear > 1900)
+                {
+                    return base.OpenedYear;
+                }
+                else
+                {
+                    throw new ArgumentException("FinancialAccount is not opened yet (no transactions)");
+                }
+            }
+        }
+
+
         #region ITreeNode Members
 
 

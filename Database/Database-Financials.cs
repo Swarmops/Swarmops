@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
@@ -662,6 +663,22 @@ namespace Swarmops.Database
         }
 
 
+        public void SetFinancialAccountOpenedYear(int financialAccountId, int openedYear)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountOpenedYear", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "openedYear", openedYear);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         public void SetFinancialAccountOwner(int financialAccountId, int ownerPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -882,6 +899,34 @@ namespace Swarmops.Database
             }
         }
 
+
+
+        public DateTime GetFinancialAccountFirstTransactionDate(int financialAccountId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT FinancialTransactions.DateTime FROM FinancialTransactions,FinancialTransactionRows " +
+                          "WHERE FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId " +
+                          "AND FinancialTransactionRows.FinancialAccountId = " + financialAccountId.ToString(CultureInfo.InvariantCulture) + " " +
+                          "ORDER BY FinancialTransactions.DateTime LIMIT 1;", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetDateTime(0);
+                    }
+                    else
+                    {
+                        throw new Exception("No transactions for this account yet"); // need better type here than "Exception"
+                    };
+                }
+            }
+        }
 
         public BasicFinancialTransaction[] GetDependentFinancialTransactions(FinancialDependencyType dependencyType, int foreignId)
         {
