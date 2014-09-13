@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -58,7 +59,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.AccountOwnerAvatarUrl = account.OwnerPersonId != 0
                                                ? account.Owner.GetSecureAvatarLink(24)
                                                : "/Images/Icons/iconshock-warning-24px.png";
-            result.Budget = (accountTree.GetBudgetSumCents(year)/100L).ToString("N0");
+            result.Budget = (accountTree.GetBudgetSumCents(year)/100L).ToString("N0", CultureInfo.CurrentCulture);
 
             if (account.AccountType == FinancialAccountType.Asset || account.AccountType == FinancialAccountType.Debt)
             {
@@ -73,7 +74,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
 
-        private static bool PrepareAccountChange(FinancialAccount account, AuthenticationData authData)
+        private static bool PrepareAccountChange(FinancialAccount account, AuthenticationData authData, bool checkOpenedYear)
         {
             // TODO: Check permissions, too (may be read-only)
 
@@ -84,7 +85,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             try
             {
-                if (account.OpenedYear <= authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear)
+                if (checkOpenedYear && account.OpenedYear <= authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear)
                 {
                     // This require breaking the account, which we can't do yet (in this sprint, will come next sprint).
                     return false;
@@ -103,16 +104,92 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         public static bool SetAccountName(int accountId, string name)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-
             FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
-            if (!PrepareAccountChange(account, authData))
+            if (!PrepareAccountChange(account, authData, true))
             {
                 return false;
             }
 
             account.Name = HttpContext.Current.Server.UrlDecode(name);
             return true;
+        }
+
+        [WebMethod]
+        public static ChangeAccountDataResult SetAccountBudget(int accountId, string budget)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+            if (!PrepareAccountChange(account, authData, false))
+            {
+                return new ChangeAccountDataResult
+                {
+                    Result = ChangeAccountDataOperationsResult.NoPermission
+                };
+            }
+
+            Int64 newTreeBudget;
+            budget = budget.Replace("%A0", "%20"); // some very weird browser space-to-otherspace translation weirds out number parsing
+            budget = HttpContext.Current.Server.UrlDecode(budget);
+
+            if (budget.Trim().Length > 0 && Int64.TryParse(budget, NumberStyles.Currency, CultureInfo.CurrentCulture, out newTreeBudget))
+            {
+                newTreeBudget *= 100; // convert to cents
+
+                int year = DateTime.Today.Year;
+                FinancialAccounts accountTree = account.GetTree();
+                Int64 currentTreeBudget = accountTree.GetBudgetSumCents(year);
+                Int64 currentSingleBudget = account.GetBudgetCents(year);
+                Int64 suballocatedBudget = currentTreeBudget - currentSingleBudget;
+
+                Int64 newSingleBudget = newTreeBudget - suballocatedBudget;
+
+                account.SetBudgetCents(DateTime.Today.Year, newSingleBudget);
+                return new ChangeAccountDataResult
+                {
+                    Result = ChangeAccountDataOperationsResult.Changed,
+                    NewData = (newTreeBudget/100).ToString("N0", CultureInfo.CurrentCulture)
+                };
+            }
+            else
+            {
+                return new ChangeAccountDataResult
+                {
+                    Result = ChangeAccountDataOperationsResult.Invalid
+                };
+            }
+        }
+
+
+        public class ChangeAccountDataResult
+        {
+            public ChangeAccountDataOperationsResult Result { set; get; }
+            public string NewData { set; get; }
+        }
+
+
+        public enum ChangeAccountDataOperationsResult
+        {
+            Unknown = 0,
+            /// <summary>
+            /// The account data was changed and nothing more.
+            /// </summary>
+            Changed,
+            /// <summary>
+            /// The account has transactions in closed ledgers, so the account was broken in two -
+            /// the closed ledgers were kept, and all open ledgers were moved into a new account
+            /// with the new data.
+            /// </summary>
+            ChangedBroken,
+            /// <summary>
+            /// The user doesn't have write permissions.
+            /// </summary>
+            NoPermission,
+            /// <summary>
+            /// The data submitted was invalid (for example an unparsable number for budget).
+            /// </summary>
+            Invalid
         }
 
         public struct JsonAccountData

@@ -113,10 +113,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     account.Identity, 
                     Server.HtmlEncode(JsonSanitize(account.Name)), 
                     ownerString,
-                    _hashedAccounts[account.Identity].Count > 1 ? JsonDualString(account.Identity, _treeBalanceLookup[account.Identity], _singleBalanceLookup[account.Identity]) : (_singleBalanceLookup [account.Identity] / 100.0).ToString("N0"),
+                    _hashedAccounts[account.Identity].Count > 1 ? JsonDualString(account.Identity, _treeBalanceLookup[account.Identity], _singleBalanceLookup[account.Identity]) : (_singleBalanceLookup [account.Identity] / 100.0).ToString("N0", CultureInfo.CurrentCulture),
                     account.AccountType == FinancialAccountType.Income || account.AccountType == FinancialAccountType.Cost?
                         _hashedAccounts[account.Identity].Count > 1 ? (JsonDualString(account.Identity, _treeBudgetLookup[account.Identity], _singleBudgetLookup[account.Identity])) : 
-                        (_singleBudgetLookup[account.Identity] / 100.0).ToString("N0") :
+                        (_singleBudgetLookup[account.Identity] / 100.0).ToString("N0", CultureInfo.CurrentCulture) :
                     string.Empty,
                     editString
                  ) + grandChildren + '}');
