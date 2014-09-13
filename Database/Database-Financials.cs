@@ -678,6 +678,22 @@ namespace Swarmops.Database
             }
         }
 
+        public void SetFinancialAccountName(int financialAccountId, string name)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountName", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "name", name);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         private BasicFinancialTransactionRow ReadFinancialTransactionRowFromDataReader(DbDataReader reader)
         {
             int rowId = reader.GetInt32(0);

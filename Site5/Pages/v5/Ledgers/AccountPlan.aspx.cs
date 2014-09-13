@@ -72,6 +72,24 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return result;
         }
 
+        [WebMethod]
+        public static bool SetAccountName(int accountId, string name)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+            if (account.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException("A million nopes");
+            }
+
+            // TODO - CRITICAL: CHECK ACCOUNTOPENEDYEAR
+
+            account.Name = HttpContext.Current.Server.UrlDecode(name);
+            return true;
+        }
+
         public struct JsonAccountData
         {
             public string AccountName;

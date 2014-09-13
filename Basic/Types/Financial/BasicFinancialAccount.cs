@@ -30,7 +30,7 @@ namespace Swarmops.Basic.Types.Financial
 
 
         public int FinancialAccountId { get; private set; }
-        public string Name { get; private set; }
+        public string Name { get; protected set; }
         public int OrganizationId { get; private set; }
         public FinancialAccountType AccountType { get; private set; }
         public int OwnerPersonId { get; protected set; }

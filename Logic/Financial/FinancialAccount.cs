@@ -189,6 +189,17 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public string Name
+        {
+            get { return base.Name; }
+            set
+            {
+                // TODO: OPENEDYEAR TEST
+                SwarmDb.GetDatabaseForWriting().SetFinancialAccountName(this.Identity, value);
+                base.Name = value;
+            }
+        }
+
 
         #region ITreeNode Members
 

@@ -37,7 +37,7 @@
 	                });
 
 	                $(".IconEdit").click(function() {
-	                    var accountId = $(this).attr("accountId");
+	                    accountId = $(this).attr("accountId");
 	                    var accountType = accountId.substring(0,1);  // A, D, I, C
 	                    accountId = accountId.substring(1);
 
@@ -64,7 +64,7 @@
                             if (accountType == 'I') {
                                 accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Income&ExcludeId=' + accountId);
                             } else { // C for Costs aka Expenses
-                              accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Cost&ExcludeId=' + accountId);
+                                accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Cost&ExcludeId=' + accountId);
                             }
                         }
 
@@ -82,8 +82,13 @@
                                 $('#CheckAccountActive').switchButton( {checked: msg.d.Open });
                                 $('#CheckAccountExpensable').switchButton( {checked: msg.d.Expensable });
                                 $('#CheckAccountAdministrative').switchButton( {checked: msg.d.Administrative });
+
+                                modalAccountName = msg.d.AccountName;
                                 $('#TextAccountName').val(msg.d.AccountName);
+
+                                modalAccountBudget = msg.d.Budget;
                                 $('#TextAccountBudget').val(msg.d.Budget);
+
                                 $('#SpanEditBalance').text(msg.d.Balance);
 
                                 //var parentAccountNode = accountTree.tree('find', msg.d.ParentAccountId);
@@ -114,6 +119,37 @@
 	            $('#divModalCover').fadeOut();
 	        });
 
+	        $('#TextAccountName').blur(function() {
+
+	            var newAccountName = $('#TextAccountName').val();
+	            if (modalAccountName == newAccountName) {
+	                return; // nothing changed, nothing to do
+	            }
+
+	            $('#TextAccountName').css('background-color', '#FFFFE0');
+	            $.ajax({
+	                type: "POST",
+	                url: "AccountPlan.aspx/SetAccountName",
+	                data: "{'accountId': '" + escape(accountId) + "', 'name':'" + escape(newAccountName) + "'}",
+	                contentType: "application/json; charset=utf-8",
+	                dataType: "json",
+	                success: function(msg) {
+	                    if (msg.d) { // saved
+	                        $('#TextAccountName').css('background-color', '#E0FFE0');
+	                        modalAccountName = $('#TextAccountName').val(); // race condition because async. Matters?
+	                    } else {
+	                        $('#TextAccountName').css('background-color', '#FFA0A0');
+	                        $('#TextAccountName').val(modalAccountName);
+	                    }
+	                    $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
+	                }
+	            });
+	        });
+
+	        $('#TextAccountBudget').blur(function() {
+	            alert('foo');
+	        });
+
 	        $('.EditCheck').switchButton(
 	            {
 	                height:16,
@@ -129,7 +165,11 @@
             $('#divModalCover').fadeIn();
         }
 
-	    var currentYear = <%=DateTime.Today.Year %>;
+        var currentYear = <%=DateTime.Today.Year %>;
+
+	    var modalAccountName = "";
+	    var modalAccountBudget = "";
+	    var accountId = 0;
 
 	</script>
     <style>
@@ -174,7 +214,7 @@
     <div id="divModalCover" class="modalcover">
         <div class="box modal">
             <div class="content">
-                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2>Editing account (Under Construction/Test; Does not save)</h2>
+                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2>Editing account (Under Construction/Test until next sprint)</h2>
                 <div class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
                     <Swarmops5:ComboBudgets ID="DropParents" runat="server" />&nbsp;<br/>
                     &nbsp;<br/>
@@ -192,7 +232,7 @@
                     Parent account or group<br/>
                     <div id="DivEditProfitLossLabels"><h2>Daily operations</h2>
                     Owner<br/>
-                    Budget (balance is SEK <span id="SpanEditBalance">foo</span>)<br/>
+                    Budget (balance is [¤] <span id="SpanEditBalance">foo</span>)<br/>
                     <h2>Switches</h2>
                     Active<br/>
                     Expensable<br/>
