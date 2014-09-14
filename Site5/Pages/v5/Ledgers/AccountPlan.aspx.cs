@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -116,6 +117,23 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
         [WebMethod]
+        public static bool SetAccountOwner(int accountId, int newOwnerId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+            if (!PrepareAccountChange(account, authData, false))
+            {
+                return false;
+            }
+
+            // TODO: Verify that authdata.AuthenticatedPerson can see personId, or this can be exploited to enumerate all people
+
+            account.Owner = Person.FromIdentity(newOwnerId);
+            return true;
+        }
+
+        [WebMethod]
         public static ChangeAccountDataResult SetAccountBudget(int accountId, string budget)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
@@ -175,21 +193,21 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             /// <summary>
             /// The account data was changed and nothing more.
             /// </summary>
-            Changed,
+            Changed = 1,
             /// <summary>
             /// The account has transactions in closed ledgers, so the account was broken in two -
             /// the closed ledgers were kept, and all open ledgers were moved into a new account
             /// with the new data.
             /// </summary>
-            ChangedBroken,
+            ChangedBroken = 2,
             /// <summary>
             /// The user doesn't have write permissions.
             /// </summary>
-            NoPermission,
+            NoPermission = 3,
             /// <summary>
             /// The data submitted was invalid (for example an unparsable number for budget).
             /// </summary>
-            Invalid
+            Invalid = 4
         }
 
         public struct JsonAccountData

@@ -179,7 +179,7 @@
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
 	                success: function(msg) { // TODO: This needs four return values - changed, broken and changed, invalid, or not changed. Also, formatted number
-	                    if (msg.d.Result == "Invalid" || msg.d.Result == "NoPermission") {
+	                    if (msg.d.Result == 3 || msg.d.Result == 4) { // Invalid or NoPermission
 	                        $('#TextAccountBudget').css('background-color', '#FFA0A0');
 	                        alertify.error("There was an error attempting to set your proposed budget."); // TODO: Localize
 	                    } else {  // msg.d.Result should be Changed here
@@ -208,6 +208,29 @@
             $('#divModalCover').fadeIn();
         }
 
+        function onOwnerChange(personId) {
+            $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFFFE0');
+            $.ajax({
+                type: "POST",
+                url: "AccountPlan.aspx/SetAccountOwner",
+                data: "{'accountId':'" + escape(accountId) + "','newOwnerId':'" + escape(personId) + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(msg) {
+                    if (msg.d) { // all went ok
+                        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#E0FFE0');
+                        accountDirty = true;
+                    } else {  
+                        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFA0A0');
+                        // TODO: Reset combo box
+                        alertify.error("There was an error setting the budget owner."); // TODO: Localize
+                    }
+                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').animate({ backgroundColor: "#FFFFFF" }, 250);
+                }
+            });
+        }
+
+
         var currentYear = <%=DateTime.Today.Year %>;
 
 	    var modalAccountName = "";
@@ -215,6 +238,8 @@
 	    var accountId = 0;
 	    var accountType = '';
 	    var accountDirty = false;
+
+
 
 	</script>
     <style>
@@ -263,7 +288,7 @@
                 <div class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
                     <Swarmops5:ComboBudgets ID="DropParents" runat="server" />&nbsp;<br/>
                     &nbsp;<br/>
-                    <div id="DivEditProfitLossControls"><Swarmops5:ComboPeople ID="DropOwner" runat="server" />&nbsp;<br/>
+                    <div id="DivEditProfitLossControls"><Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
                     <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>
                     &nbsp;<br/>
                     <div class="checkboxSpacer"></div><input type="checkbox" class="EditCheck" id="CheckAccountActive"/>

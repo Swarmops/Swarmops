@@ -17,6 +17,8 @@ namespace Swarmops.Controls.Financial
 
         public Person Selected { set; protected get; }
 
+        public string OnClientSelect { set; protected get; }
+
         public bool NobodySelected { set; protected get; }
     }
 }

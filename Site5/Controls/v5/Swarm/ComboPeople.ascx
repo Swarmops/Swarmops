@@ -5,15 +5,16 @@
         $('#<%=this.ClientID %>_DropPeople').combobox({
             animate: true,
             height: 30,
-            loader: autoCompleteLoader,
+            loader: <%=this.ClientID %>_autoCompleteLoader,
             mode: 'remote',
             valueField: 'id',
             textField: 'name',
-            formatter: formatItem,
+            formatter: <%=this.ClientID %>_formatItem,
             
             onSelect: function (person) {
+
                 // update avatar when person selected
-                
+
                 $.ajax({
                     url: '/Automation/Json-GetPersonAvatar.aspx',
                     dataType: 'json',
@@ -28,6 +29,13 @@
                         error.apply(this, arguments);
                     }
                 });
+
+                // call owner, if we have a callback
+
+                <% if (!String.IsNullOrEmpty(this.OnClientSelect)) {
+                    Response.Write (this.OnClientSelect + "(person.id);");
+                }  %>
+
             }
         });
 
@@ -58,7 +66,7 @@
         });
     });
     
-    var autoCompleteLoader = function(param,success,error){
+    var <%=this.ClientID %>_autoCompleteLoader = function(param,success,error){
         var q = param.q || '';
         if (q.length < 3) {
             success (new Array());
@@ -81,7 +89,7 @@
         return false;
     };
     
-    function formatItem(row)
+    function <%=this.ClientID %>_formatItem(row)
     {
         var s = '<span style="padding-left:20px;margin-left:4px;' + "background-image:url('" + row.avatar16Url + "');" + 'background-position:left center;background-repeat:no-repeat">' + row.name + '</span>';
         return s;
