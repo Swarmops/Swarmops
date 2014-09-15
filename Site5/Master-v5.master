@@ -10,7 +10,9 @@
 
     <!-- jQuery and plugins -->
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" ></script>
+
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.ui.widget.min.js" ></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.tmpl.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.color.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.qtip.js" ></script>
@@ -30,6 +32,7 @@
     <link href="/Style/jquery.qtip.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.css" rel="stylesheet" type="text/css" />
     <link href="/Style/superfish.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
 
     <!-- additional scripts etc from individual pages -->
     <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />

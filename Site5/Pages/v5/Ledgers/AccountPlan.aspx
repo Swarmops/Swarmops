@@ -6,6 +6,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="tree" runat="server" />
     <script src="/Scripts/jquery.switchButton.js" language="javascript" type="text/javascript"></script>
+    <link rel="stylesheet" href="/Style/jquery.switchButton.css" type="text/css" />
 
 	<script type="text/javascript">
 
@@ -79,9 +80,10 @@
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function (msg) {
+                                /*
                                 $('#CheckAccountActive').switchButton( {checked: msg.d.Open });
                                 $('#CheckAccountExpensable').switchButton( {checked: msg.d.Expensable });
-                                $('#CheckAccountAdministrative').switchButton( {checked: msg.d.Administrative });
+                                $('#CheckAccountAdministrative').switchButton( {checked: msg.d.Administrative });*/
 
                                 modalAccountName = msg.d.AccountName;
                                 $('#TextAccountName').val(msg.d.AccountName);
@@ -156,6 +158,12 @@
 	                        alertify.error("Cannot change accounts that have transactions in closed ledgers - yet.");  // TODO: Localize
 	                    }
 	                    $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
+	                },
+	                error: function() {
+	                    alertify.error("There was an error calling the server to set the account name. Is the server available?"); // TODO: Localize
+	                    $('#TextAccountName').val(modalAccountName);
+	                    $('#TextAccountName').css('background-color', '#FFA0A0');
+	                    $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
 	                }
 	            });
 	        });
@@ -189,18 +197,21 @@
 	                    }
 	                    $('#TextAccountBudget').val(modalAccountBudget);
 	                    $('#TextAccountBudget').animate({ backgroundColor: "#FFFFFF" }, 250);
+	                },
+	                error: function() {
+	                    alertify.error("There was an error calling the server to set your proposed budget. Is the server available?"); // TODO: Localize
+	                    $('#TextAccountBudget').val(modalAccountBudget);
+	                    $('#TextAccountBudget').css('background-color', '#FFA0A0');
+	                    $('#TextAccountBudget').animate({ backgroundColor: "#FFFFFF" }, 250);
 	                }
 	            });
 	        });
 
-	        $('.EditCheck').switchButton(
-	            {
-	                height:16,
-                    width:30,
-	                button_width:16,
-	                on_label: "<% =Resources.Global.Global_Yes.ToUpperInvariant() %>",
-	                off_label: "<% =Resources.Global.Global_No.ToUpperInvariant() %>"
-	            });
+	        $('.EditCheck').switchbutton(
+	            /*{
+	                checkedLabel: "<% =Resources.Global.Global_On.ToUpperInvariant() %>",
+	                uncheckedLabel: "<% =Resources.Global.Global_Off.ToUpperInvariant() %>"
+	            }*/);
 
 	    });
 
@@ -225,6 +236,12 @@
                         // TODO: Reset combo box
                         alertify.error("There was an error setting the budget owner."); // TODO: Localize
                     }
+                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').animate({ backgroundColor: "#FFFFFF" }, 250);
+                },
+                error: function() {
+                    alertify.error("There was an error making the call to set budget owner. Is the server available?");
+                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFA0A0');
+                    // TODO: Reset combo box
                     $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').animate({ backgroundColor: "#FFFFFF" }, 250);
                 }
             });
@@ -251,7 +268,7 @@
 		    
 	    }
 	    .checkboxSpacer {
-		    float: left;width: 100px;height: 20px;
+		    float: left;width: 1px;height: 2px;
 	    }
     </style>
 
