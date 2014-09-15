@@ -72,18 +72,29 @@
 	                    window.scrollTo(0, 0);
 	                    $('body').css('overflow-y', 'hidden');
 	                    $('#divModalCover').fadeIn();
-	                    
-                        $.ajax({
+
+	                    if (!checkboxesInitialized) {
+                            // This is a weird construct, but comes from the switchbuttons needing to be visible when initialized
+	                        setTimeout(function() {
+	                            $('.EditCheck').switchbutton({
+	                                checkedLabel: '<%=Resources.Global.Global_On.ToUpperInvariant() %>',
+	                                uncheckedLabel: '<%=Resources.Global.Global_Off.ToUpperInvariant() %>'
+	                            });
+	                        }, 1);
+	                        checkboxesInitialized = true;
+	                    }
+
+	                    $.ajax({
                             type: "POST",
                             url: "AccountPlan.aspx/GetAccountData",
                             data: "{'accountId': '" + escape(accountId) + "'}",
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function (msg) {
-                                /*
-                                $('#CheckAccountActive').switchButton( {checked: msg.d.Open });
-                                $('#CheckAccountExpensable').switchButton( {checked: msg.d.Expensable });
-                                $('#CheckAccountAdministrative').switchButton( {checked: msg.d.Administrative });*/
+
+                                $("#CheckAccountActive").prop("checked", msg.d.Open).change();
+                                $("#CheckAccountExpensable").prop("checked", msg.d.Expensable).change();
+                                $("#CheckAccountAdministrative").prop("checked", msg.d.Administrative).change();
 
                                 modalAccountName = msg.d.AccountName;
                                 $('#TextAccountName').val(msg.d.AccountName);
@@ -91,6 +102,7 @@
                                 modalAccountBudget = msg.d.Budget;
                                 $('#TextAccountBudget').val(msg.d.Budget);
 
+                                $('#SpanTextCurrency').text(msg.d.CurrencyCode);
                                 $('#SpanEditBalance').text(msg.d.Balance);
 
                                 //var parentAccountNode = accountTree.tree('find', msg.d.ParentAccountId);
@@ -207,12 +219,6 @@
 	            });
 	        });
 
-	        $('.EditCheck').switchbutton(
-	            /*{
-	                checkedLabel: "<% =Resources.Global.Global_On.ToUpperInvariant() %>",
-	                uncheckedLabel: "<% =Resources.Global.Global_Off.ToUpperInvariant() %>"
-	            }*/);
-
 	    });
 
         function modalShow() {
@@ -256,7 +262,7 @@
 	    var accountType = '';
 	    var accountDirty = false;
 
-
+	    var checkboxesInitialized = false;
 
 	</script>
     <style>
@@ -267,8 +273,8 @@
 		    cursor: pointer;
 		    
 	    }
-	    .checkboxSpacer {
-		    float: left;width: 1px;height: 2px;
+	    .CheckboxContainer {
+		    float: right; padding-top: 4px;padding-right: 8px;
 	    }
     </style>
 
@@ -308,9 +314,9 @@
                     <div id="DivEditProfitLossControls"><Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
                     <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>
                     &nbsp;<br/>
-                    <div class="checkboxSpacer"></div><input type="checkbox" class="EditCheck" id="CheckAccountActive"/>
-                    <div class="checkboxSpacer"></div><input type="checkbox" class="EditCheck" id="CheckAccountExpensable"/>
-                    <div class="checkboxSpacer"></div><input type="checkbox" class="EditCheck" id="CheckAccountAdministrative"/>
+                    <label for="CheckAccountActive">Active</label><div class="CheckboxContainer"><input type="checkbox" class="EditCheck" id="CheckAccountActive"/></div><br/>
+                    <label for="CheckAccountExpensable">Expensable</label><div class="CheckboxContainer"><input type="checkbox" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
+                    <label for="CheckAccountAdministrative">Admin</label><div class="CheckboxContainer"><input type="checkbox" class="EditCheck" id="CheckAccountAdministrative"/></div><br/>
                     &nbsp;<br/></div>
                     <div id="DivEditAssetControls"><asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>&nbsp;<br/>
                     <input type="text" id="TextAutomationPaymentTag" readonly="readonly"/>&nbsp;<br/></div>
@@ -319,11 +325,11 @@
                     Parent account or group<br/>
                     <div id="DivEditProfitLossLabels"><h2>Daily operations</h2>
                     Owner<br/>
-                    Budget (balance is [¤] <span id="SpanEditBalance">foo</span>)<br/>
-                    <h2>Switches</h2>
-                    Active<br/>
-                    Expensable<br/>
-                    Administrative<br/></div>
+                    Budget (balance is <span id="SpanTextCurrency">foo</span> <span id="SpanEditBalance">bar</span>)<br/>
+                    <h2>Configuration</h2>
+                    Is this account open for transactions?<br/>
+                    Can people use this account for expense reports?<br/>
+                    Are transactions here excluded from 2-D reports?<br/></div>
                     <div id="DivEditAssetLabels"><h2>Automation</h2>
                     File upload profile<br/>
                     <span id="SpanUploadParameterName">Upload parameter, if any</span></div>

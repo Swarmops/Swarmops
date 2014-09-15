@@ -70,6 +70,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 result.Balance = (-accountTree.GetDeltaCents(new DateTime(year, 1, 1), new DateTime(year + 1, 1, 1)) / 100L).ToString("N0");
             }
+            result.CurrencyCode = account.Organization.Currency.Code;
 
             return result;
         }
@@ -223,6 +224,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public string Budget;
             public string AccountOwnerAvatarUrl;
             public string Balance;
+            public string CurrencyCode;
         }
 
     }
