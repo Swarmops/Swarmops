@@ -76,10 +76,10 @@
 
                         $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#DDD');
                         $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#DDD');
-	                    $('#TextAccountBudget').val('').css('background-color', '#DDD');
-	                    $('#TextAccountName').val('').css('background-color', '#DDD');
-	                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', '');
-	                    accountTree.combotree('setText', '');
+	                    $('#TextAccountBudget').val('...').css('background-color', '#DDD');
+	                    $('#TextAccountName').val('...').css('background-color', '#DDD');
+	                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', '...');
+	                    accountTree.combotree('setText', '...');
 
 
 	                    window.scrollTo(0, 0);
@@ -91,7 +91,8 @@
 	                    }, 50); // set timeout to after checkboxes initialized, if this is the first show of modal
 
 	                    if (!checkboxesInitialized) {
-                            // This is a weird construct, but comes from the switchbuttons needing to be visible when initialized
+	                        // This is a weird construct, but comes from the switchbuttons needing to be visible when initialized
+                            // TODO: Only do this if we're in a P&L account
 	                        setTimeout(function() {
 	                            $('.EditCheck')
 	                                .switchbutton({
@@ -168,13 +169,13 @@
                                 $('#SpanTextCurrency').text(msg.d.CurrencyCode);
                                 $('#SpanEditBalance').text(msg.d.Balance);
 
-                                parentAccountName = msg.d.ParentAccountName;
-                                if (accountTreeLoaded) {
-                                    accountTree.combotree('setText', parentAccountName);
-                                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
-                                }
+                                alert('foo');
 
-                                
+                                parentAccountName = msg.d.ParentAccountName;
+                                setAccountTreeText(parentAccountName);
+
+                                alert('bar');
+
                                 $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFF');
                                 $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
                                 $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', msg.d.AccountOwnerName);
@@ -320,8 +321,22 @@
         }
 
 
+	    function setAccountTreeText (text) {
+	        var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
+	        var currentText = accountTree.combotree('getText');
+	        if (currentText.length < 3) {
+	            accountTree.combotree('setText', parentAccountName);
+	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
+	        } else {
+	            setTimeout(function() {
+	                setAccountTreeText(text);
+	            }, 2500);
+	        }
+        }
+
+
 	    function onAccountTreeLoaded() {
-	        alert('plong!');
+            // this didn't work much - not called on "reload"
 	        accountTreeLoaded = true;
 	        if (parentAccountName.length > 0) {
 	            $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', parentAccountName);
