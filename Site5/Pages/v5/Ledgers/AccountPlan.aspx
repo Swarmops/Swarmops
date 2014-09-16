@@ -43,6 +43,9 @@
 	                    accountId = accountId.substring(1);
 
 	                    var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
+	                    accountTreeLoaded = false;
+	                    accountTree.combotree('setText', '');
+
 	                    
                         if (accountType == 'A') {
                             $('#DivEditAssetLabels').show();
@@ -69,17 +72,75 @@
                             }
                         }
 
+	                    // Clear out data in modal form, gray out to indicate being loaded
+
+                        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#DDD');
+                        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#DDD');
+	                    $('#TextAccountBudget').val('').css('background-color', '#DDD');
+	                    $('#TextAccountName').val('').css('background-color', '#DDD');
+	                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', '');
+	                    accountTree.combotree('setText', '');
+
+
 	                    window.scrollTo(0, 0);
 	                    $('body').css('overflow-y', 'hidden');
 	                    $('#divModalCover').fadeIn();
 
+	                    setTimeout(function() {
+	                        $('#divModalBox').animate({ "height": ($('#DivModalFields').outerHeight() + $('#HeaderModal').outerHeight()) + 40 + "px" }, 50);
+	                    }, 50); // set timeout to after checkboxes initialized, if this is the first show of modal
+
 	                    if (!checkboxesInitialized) {
                             // This is a weird construct, but comes from the switchbuttons needing to be visible when initialized
 	                        setTimeout(function() {
-	                            $('.EditCheck').switchbutton({
-	                                checkedLabel: '<%=Resources.Global.Global_On.ToUpperInvariant() %>',
-	                                uncheckedLabel: '<%=Resources.Global.Global_Off.ToUpperInvariant() %>'
-	                            });
+	                            $('.EditCheck')
+	                                .switchbutton({
+	                                    checkedLabel: '<%=Resources.Global.Global_On.ToUpperInvariant() %>',
+	                                    uncheckedLabel: '<%=Resources.Global.Global_Off.ToUpperInvariant() %>',
+	                                })
+	                                .change(function() {
+	                                    if (!suppressSwitchChangeAction) {
+	                                        $(this).parent().css('box-shadow', '0 0 1px 0 #FFFFC0');
+	                                        console.log($(this).checked);
+
+	                                        $.ajax({
+	                                            type: "POST",
+	                                            url: "AccountPlan.aspx/SetAccountSwitch",
+	                                            data: "{'accountId': '" + escape(accountId) + "', 'switchName':'" + $(this).attr("rel") + "','switchValue':'" + $(this).checked + "'}",
+	                                            contentType: "application/json; charset=utf-8",
+	                                            dataType: "json",
+	                                            success: $.proxy(function(msg) {
+	                                                if (msg.d) { // saved ok
+	                                                    $(this).parent().css('box-shadow', '0 0 1px 2px rgba(96,255,96,0.5)');
+	                                                    $(this).parent().animate({
+	                                                        boxShadow: '0 0 10px 2px rgba(0,255,0,0)'
+	                                                    }, 250);
+	                                                    accountDirty = true;
+	                                                } else {
+	                                                    suppressSwitchChangeAction = true;
+	                                                    $(this).click();
+	                                                    suppressSwitchChangeAction = false;
+	                                                    $(this).parent().css('box-shadow', '0 0 1px 2px rgba(255,96,96,0.8)');
+	                                                    $(this).parent().animate({
+	                                                        boxShadow: '0 0 15px 3px rgba(0,255,0,0)'
+	                                                    }, 750);
+	                                                    alertify.error("The server refused setting the switch as requested.");  // TODO: Localize
+	                                                }
+	                                                $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
+	                                            }, this),
+	                                            error: $.proxy(function() {
+	                                                alertify.error("There was an error calling the server to set the switch. Is the server reachable?"); // TODO: Localize
+	                                                suppressSwitchChangeAction = true;
+	                                                $(this).click();
+	                                                suppressSwitchChangeAction = false;
+	                                                $(this).parent().css('box-shadow', '0 0 1px 2px rgba(255,96,96,0.8)');
+	                                                $(this).parent().animate({
+	                                                    boxShadow: '0 0 15px 3px rgba(0,255,0,0)'
+	                                                }, 750);
+	                                            }, this)
+	                                        });
+	                                    }
+	                               });
 	                        }, 1);
 	                        checkboxesInitialized = true;
 	                    }
@@ -92,24 +153,29 @@
                             dataType: "json",
                             success: function (msg) {
 
+                                suppressSwitchChangeAction = true;
                                 $("#CheckAccountActive").prop("checked", msg.d.Open).change();
                                 $("#CheckAccountExpensable").prop("checked", msg.d.Expensable).change();
                                 $("#CheckAccountAdministrative").prop("checked", msg.d.Administrative).change();
+                                suppressSwitchChangeAction = false;
 
                                 modalAccountName = msg.d.AccountName;
-                                $('#TextAccountName').val(msg.d.AccountName);
+                                $('#TextAccountName').val(msg.d.AccountName).css('background-color', '#FFF');
 
                                 modalAccountBudget = msg.d.Budget;
-                                $('#TextAccountBudget').val(msg.d.Budget);
+                                $('#TextAccountBudget').val(msg.d.Budget).css('background-color', '#FFF');
 
                                 $('#SpanTextCurrency').text(msg.d.CurrencyCode);
                                 $('#SpanEditBalance').text(msg.d.Balance);
 
-                                //var parentAccountNode = accountTree.tree('find', msg.d.ParentAccountId);
-                                //console.log(parentAccountNode);
-                                //accountTree.combotree('select', parentAccountNode.target);
-                                accountTree.combotree('setText', msg.d.ParentAccountName);
+                                parentAccountName = msg.d.ParentAccountName;
+                                if (accountTreeLoaded) {
+                                    accountTree.combotree('setText', parentAccountName);
+                                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
+                                }
+
                                 
+                                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFF');
                                 $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
                                 $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', msg.d.AccountOwnerName);
                                 $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').val('');
@@ -172,7 +238,7 @@
 	                    $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
 	                },
 	                error: function() {
-	                    alertify.error("There was an error calling the server to set the account name. Is the server available?"); // TODO: Localize
+	                    alertify.error("There was an error calling the server to set the account name. Is the server reachable?"); // TODO: Localize
 	                    $('#TextAccountName').val(modalAccountName);
 	                    $('#TextAccountName').css('background-color', '#FFA0A0');
 	                    $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
@@ -211,7 +277,7 @@
 	                    $('#TextAccountBudget').animate({ backgroundColor: "#FFFFFF" }, 250);
 	                },
 	                error: function() {
-	                    alertify.error("There was an error calling the server to set your proposed budget. Is the server available?"); // TODO: Localize
+	                    alertify.error("There was an error calling the server to set your proposed budget. Is the server reachable?"); // TODO: Localize
 	                    $('#TextAccountBudget').val(modalAccountBudget);
 	                    $('#TextAccountBudget').css('background-color', '#FFA0A0');
 	                    $('#TextAccountBudget').animate({ backgroundColor: "#FFFFFF" }, 250);
@@ -254,6 +320,16 @@
         }
 
 
+	    function onAccountTreeLoaded() {
+	        alert('plong!');
+	        accountTreeLoaded = true;
+	        if (parentAccountName.length > 0) {
+	            $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', parentAccountName);
+	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
+            }
+	    }
+
+
         var currentYear = <%=DateTime.Today.Year %>;
 
 	    var modalAccountName = "";
@@ -263,6 +339,9 @@
 	    var accountDirty = false;
 
 	    var checkboxesInitialized = false;
+	    var suppressSwitchChangeAction = false;
+	    var accountTreeLoaded = false;
+	    var parentAccountName = '';
 
 	</script>
     <style>
@@ -305,18 +384,18 @@
 
 
     <div id="divModalCover" class="modalcover">
-        <div class="box modal">
+        <div id="divModalBox" class="box modal">
             <div class="content">
-                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2>Editing account (Under Construction/Test until next sprint)</h2>
-                <div class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
-                    <Swarmops5:ComboBudgets ID="DropParents" runat="server" />&nbsp;<br/>
+                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2 id="HeaderModal">Editing account (Under Construction/Test until next sprint)</h2>
+                <div id="DivModalFields" class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
+                    <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" />&nbsp;<br/>
                     &nbsp;<br/>
                     <div id="DivEditProfitLossControls"><Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
                     <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>
                     &nbsp;<br/>
-                    <label for="CheckAccountActive">Active</label><div class="CheckboxContainer"><input type="checkbox" class="EditCheck" id="CheckAccountActive"/></div><br/>
-                    <label for="CheckAccountExpensable">Expensable</label><div class="CheckboxContainer"><input type="checkbox" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
-                    <label for="CheckAccountAdministrative">Admin</label><div class="CheckboxContainer"><input type="checkbox" class="EditCheck" id="CheckAccountAdministrative"/></div><br/>
+                    <label for="CheckAccountActive">Active</label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckAccountActive"/></div><br/>
+                    <label for="CheckAccountExpensable">Expensable</label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
+                    <label for="CheckAccountAdministrative">Admin</label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
                     &nbsp;<br/></div>
                     <div id="DivEditAssetControls"><asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>&nbsp;<br/>
                     <input type="text" id="TextAutomationPaymentTag" readonly="readonly"/>&nbsp;<br/></div>

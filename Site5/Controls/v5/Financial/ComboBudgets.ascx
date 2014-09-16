@@ -3,9 +3,13 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#<%=this.ClientID %>_DropBudgets').combotree({
-            animate: true,
-            height: 30
-        });
+                animate: true,
+                height: 30 <%
+                           if (!String.IsNullOrEmpty(this.OnClientLoaded))
+                           {
+                                Response.Write(", onLoadSuccess: " + this.OnClientLoaded + "()");
+                           }%>
+            });
 
         $('#<%=this.ClientID %>_SpanBudgets span.combo input.combo-text').click(function () {
             $('#<%=this.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();

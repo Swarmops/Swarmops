@@ -13,5 +13,7 @@ namespace Swarmops.Controls.Financial
         {
 
         }
+
+        public string OnClientLoaded { get; set; }
     }
 }

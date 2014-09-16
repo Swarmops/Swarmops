@@ -96,4 +96,4 @@
     }
 </script>
  
- <span id="<%=this.ClientID %>_SpanPeople"><select class="easyui-combobox comboperson" url="" name="DropPeople" id="<%=this.ClientID %>_DropPeople" animate="true" style="width:300px"></select></span>
+ <span id="<%=this.ClientID %>_SpanPeople" class="fakePlaceholderText"><select class="easyui-combobox comboperson" url="" name="DropPeople" id="<%=this.ClientID %>_DropPeople" animate="true" style="width:300px"></select></span>

@@ -937,6 +937,21 @@ hr
 
 
 
+.fakePlaceholderText span input.combo-text::webkit-input-placeholder,
+.fakePlaceholderText span input.combo-text::moz-placeholder,
+.fakePlaceholderText span input.combo-text:ms-input-placeholder {
+    color: #000;
+}
+
+.fakePlaceholderText span input.combo-text:focus::webkit-input-placeholder,
+.fakePlaceholderText span input.combo-text:focus::moz-placeholder,
+.fakePlaceholderText span input.combo-text:focus:ms-input-placeholder {
+    color: #FFF;
+}
+
+
+
+
 /* BUTTON ICONS */
 
 #ctl00_PlaceHolderMain_ButtonAddMotion
