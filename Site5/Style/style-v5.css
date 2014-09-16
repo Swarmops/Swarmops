@@ -937,15 +937,31 @@ hr
 
 
 
-.fakePlaceholderText ::webkit-input-placeholder,
-.fakePlaceholderText ::moz-placeholder,
+.fakePlaceholderText ::webkit-input-placeholder {
+    color: #000;
+}
+.fakePlaceholderText span input.combo-text:moz-placeholder {
+    color: #000;
+    opacity: 1;
+}
+.fakePlaceholderText span input.combo-text::moz-placeholder {
+    color: #000;
+    opacity: 1;
+}
 .fakePlaceholderText :ms-input-placeholder {
     color: #000;
 }
 
-.fakePlaceholderText span input.combo-text:focus ::webkit-input-placeholder,
-.fakePlaceholderText span input.combo-text:focus ::moz-placeholder,
-.fakePlaceholderText span input.combo-text:focus :ms-input-placeholder {
+.fakePlaceholderText span input.combo-text:focus::webkit-input-placeholder {
+    color: #FFF;
+}
+.fakePlaceholderText span input.combo-text:focus:moz-placeholder {
+    color: #FFF;
+}
+.fakePlaceholderText span input.combo-text:focus::moz-placeholder {
+    color: #FFF;
+}
+.fakePlaceholderText span input.combo-text:focus:ms-input-placeholder {
     color: #FFF;
 }
 

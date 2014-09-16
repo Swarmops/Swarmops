@@ -168,13 +168,8 @@
 
                                 $('#SpanTextCurrency').text(msg.d.CurrencyCode);
                                 $('#SpanEditBalance').text(msg.d.Balance);
-
-                                alert('foo');
-
                                 parentAccountName = msg.d.ParentAccountName;
                                 setAccountTreeText(parentAccountName);
-
-                                alert('bar');
 
                                 $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFF');
                                 $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
@@ -330,7 +325,7 @@
 	        } else {
 	            setTimeout(function() {
 	                setAccountTreeText(text);
-	            }, 2500);
+	            }, 250);
 	        }
         }
 
