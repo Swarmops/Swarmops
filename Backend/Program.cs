@@ -167,6 +167,10 @@ namespace Swarmops.Backend
 
             OutboundComm.CreateNotification(null, NotificationResource.System_Startup);
 
+            // Checking for schemata upgrade
+
+            DatabaseMaintenance.UpgradeSchemata();
+
             // Check for existence of installation ID. If not, create one. Warning: has privacy implications when communicated.
 
             if (Persistence.Key["SwarmopsInstallationId"] == string.Empty)
