@@ -89,7 +89,7 @@ END
 
 CREATE PROCEDURE `SetFinancialAccountParent`(
   IN financialAccountId INTEGER,
-  IN parentFinancialAccount INTEGER
+  IN parentFinancialAccountId INTEGER
 )
 BEGIN
 
@@ -102,7 +102,7 @@ END
 #
 
 
-CREATE PROCEDURE `MoveTransactionRowRangeToNewFinancialAccount`(
+CREATE PROCEDURE `MoveFinancialTransactionRowRangeToNewAccount`(
   IN oldFinancialAccountId INTEGER,
   IN newFinancialAccountId INTEGER,
   IN startDate DATETIME,
