@@ -100,6 +100,26 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your request for a cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been marked as paid out by the organization&apos;s accountants.
+        ///
+        ///This means you should see the amount on your account shortly..
+        /// </summary>
+        internal static string CashAdvance_PaidOut_Body {
+            get {
+                return ResourceManager.GetString("CashAdvance_PaidOut_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string CashAdvance_PaidOut_Subject {
+            get {
+                return ResourceManager.GetString("CashAdvance_PaidOut_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
         ///
         ///Please log on to Swarmops at [SystemUrl] to attest or deny..
@@ -212,6 +232,26 @@ namespace Swarmops.Logic.App_GlobalResources {
         internal static string ExpenseClaim_Devalidated_Subject {
             get {
                 return ResourceManager.GetString("ExpenseClaim_Devalidated_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been marked as paid out by the organization&apos;s accountants.
+        ///
+        ///This means you should see the amount on your account shortly..
+        /// </summary>
+        internal static string ExpenseClaim_PaidOut_Body {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_PaidOut_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [OrganizationName] Expense Claim Paid: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string ExpenseClaim_PaidOut_Subject {
+            get {
+                return ResourceManager.GetString("ExpenseClaim_PaidOut_Subject", resourceCulture);
             }
         }
         

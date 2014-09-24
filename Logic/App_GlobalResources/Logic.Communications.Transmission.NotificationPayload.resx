@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you.</value>
@@ -130,6 +130,14 @@ Expect more communication from the budget owner to follow on the matter.</value>
   </data>
   <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
     <value>[OrganizationName] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Your request for a cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been marked as paid out by the organization's accountants.
+
+This means you should see the amount on your account shortly.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[OrganizationName] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
@@ -180,6 +188,14 @@ Expect more communication to follow on the matter. If you don't hear from record
   </data>
   <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
     <value>[OrganizationName] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been marked as paid out by the organization's accountants.
+
+This means you should see the amount on your account shortly.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[OrganizationName] Expense Claim Paid: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
     <value>The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been validated by people responsible for keeping the records in order.

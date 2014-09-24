@@ -95,6 +95,7 @@ namespace Swarmops.Logic.Communications.Transmission
         CashAdvance_Denied,
         CashAdvance_Adjusted,
         CashAdvance_Rebudgeted,
+        CashAdvance_PaidOut,
         ExpenseClaim_Created,
         ExpenseClaim_Attested,
         ExpenseClaim_Deattested,
@@ -103,6 +104,7 @@ namespace Swarmops.Logic.Communications.Transmission
         ExpenseClaim_Denied,
         ExpenseClaim_Adjusted,
         ExpenseClaim_Rebudgeted,
+        ExpenseClaim_PaidOut,
         Payout_Settled,
         InboundInvoice_Created,
         Receipts_Filed
