@@ -222,6 +222,14 @@ Please log on to Swarmops at [SystemUrl] to confirm or reject them.</value>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
     <value>(ACTION ITEM) [OrganizationName] Receipts Filed - Validation Needed</value>
   </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Swarmops Backend [SwarmopsVersion] on host [HostName] has successfully upgraded the Swarmops database schema to revision [DbVersion].
+
+This is for information only. You do not need to take action.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Swarmops database upgraded</value>
+  </data>
   <data name="System_Exception_Body" xml:space="preserve">
     <value>An unhandled exception was thrown in Swarmops:
 

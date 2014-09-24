@@ -89,6 +89,7 @@ namespace Swarmops.Logic.Communications.Transmission
         Unknown = 0,
         System_Startup,
         System_Exception,
+        System_DatabaseSchemaUpgraded,
         CashAdvance_Requested,
         CashAdvance_Attested,
         CashAdvance_Deattested,

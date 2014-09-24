@@ -316,6 +316,26 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Swarmops Backend [SwarmopsVersion] on host [HostName] has successfully upgraded the Swarmops database schema to revision [DbVersion].
+        ///
+        ///This is for information only. You do not need to take action..
+        /// </summary>
+        internal static string System_DatabaseSchemaUpgraded_Body {
+            get {
+                return ResourceManager.GetString("System_DatabaseSchemaUpgraded_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops database upgraded.
+        /// </summary>
+        internal static string System_DatabaseSchemaUpgraded_Subject {
+            get {
+                return ResourceManager.GetString("System_DatabaseSchemaUpgraded_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unhandled exception was thrown in Swarmops:
         ///
         ///[EmbeddedPreformattedText].
