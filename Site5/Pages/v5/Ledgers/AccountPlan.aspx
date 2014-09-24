@@ -90,9 +90,9 @@
 	                        $('#divModalBox').animate({ "height": ($('#DivModalFields').outerHeight() + $('#HeaderModal').outerHeight()) + 40 + "px" }, 50);
 	                    }, 50); // set timeout to after checkboxes initialized, if this is the first show of modal
 
-	                    if (!checkboxesInitialized) {
-	                        // This is a weird construct, but comes from the switchbuttons needing to be visible when initialized
-                            // TODO: Only do this if we're in a P&L account
+	                    if (!checkboxesInitialized && (accountType == 'I' || accountType == 'C')) {
+	                        // This is a weird construct, but comes from the switchbuttons needing to be visible when initialized.
+                            // Hence, it can't be done in document.Ready but need to be done on first show.
 	                        setTimeout(function() {
 	                            $('.EditCheck')
 	                                .switchbutton({
