@@ -6,6 +6,8 @@ using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
@@ -229,6 +231,8 @@ namespace Swarmops.Logic.Financial
                                                                       "Cash Advance Paid Out"),
                                             advance.Person, advance);
 
+
+                    OutboundComm.CreateNotificationOfFinancialValidation(advance.Budget, advance.Person, (double)advance.AmountCents / 100.0, advance.Description, NotificationResource.CashAdvance_PaidOut);
                 }
 
                 string referenceString = string.Empty;
@@ -289,6 +293,8 @@ namespace Swarmops.Logic.Financial
 
                         claim.Repaid = true;
                         claim.Close();
+
+                        OutboundComm.CreateNotificationOfFinancialValidation(claim.Budget, claim.Claimer, (double)claim.AmountCents / 100.0, claim.Description, NotificationResource.ExpenseClaim_PaidOut);
                     }
                     else if (component[0] == 'a')
                     {

@@ -158,7 +158,7 @@ scripts/update-repos swarmops-$PACKAGENAME-latest.deb
 
 if [ "$2" == "" ]; then
   echo "Installing INTERNAL BUILD on swarmops-dev for testing..."
-  dpkg -i swarmops-$PACKAGENAME-latest.deb
+  sudo dpkg -i --force-confdef swarmops-$PACKAGENAME-latest.deb
 fi
 
 echo "Cleaning up..."

@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#Update schemata
+cd /home/prod/Smallwebs/Activizr-repo/schemas
+echo "Checking for updates to schema..."
+svn update
+
+cd /home/packager/swarmops
+
 #Update all files, including this one. Runpos will remain same in possible new version
 echo "Checking for updates to packaging process..."
 svn update
@@ -38,9 +45,9 @@ echo ""
 echo "Notifying developers that new build has packaged for test/deployment..."
 
 if [ "$DROPFOLDER" == "internal" ]; then
-  echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at http://dev.swarmops.com/ as usual. Last 3 commits on 'master':" > deploymsg.txt
+  echo "$(cat ../lastbuild/swarmops/internal/CommitMessage.txt)" > deploymsg.txt
   echo "" >> deploymsg.txt
-  echo "$(cat ../lastbuild/swarmops/internal/CommitMessage.txt)" >> deploymsg.txt
+  echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at http://dev.swarmops.com/ as usual. Last 3 commits listed above." >> deploymsg.txt
 else
   echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!" > deploymsg.txt
 fi
