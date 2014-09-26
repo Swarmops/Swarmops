@@ -679,6 +679,134 @@ namespace Swarmops.Database
             }
         }
 
+        public void SetFinancialAccountClosedYear(int financialAccountId, int closedYear)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountClosedYear", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "closedYear", closedYear);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetFinancialAccountParent(int financialAccountId, int parentFinancialAccountId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountParent", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "parentFinancialAccountId", parentFinancialAccountId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetFinancialAccountActive(int financialAccountId, bool active)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountActive", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "active", active);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetFinancialAccountExpensable(int financialAccountId, bool expensable)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountExpensable", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "expensable", expensable);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetFinancialAccountOpen(int financialAccountId, bool open)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountOpen", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "open", open);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetFinancialAccountAdministrative(int financialAccountId, bool administrative)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountOpen", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "administrative", administrative);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetFinancialAccountLinkBackward(int financialAccountId, int linkBackward)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountOwner", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "linkBackward", linkBackward);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void SetFinancialAccountLinkForward(int financialAccountId, int linkForward)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialAccountOwner", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName(command, "linkForward", linkForward);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         public void SetFinancialAccountOwner(int financialAccountId, int ownerPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())

@@ -27,6 +27,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.PageTitle = Resources.Pages.Ledgers.AccountPlan_PageTitle;
             this.InfoBoxLiteral = Resources.Pages.Ledgers.AccountPlan_Info;
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+            this.DbVersionRequired = 2; // Account reparenting
         }
 
 
@@ -118,6 +119,27 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
         [WebMethod]
+        public static bool SetAccountParent (int accountId, int parentAccountId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+            if (!PrepareAccountChange(account, authData, true))
+            {
+                return false;
+            }
+
+            FinancialAccount newParent = FinancialAccount.FromIdentity(parentAccountId);
+            if (newParent.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new ArgumentException("Parent account mismatches with organization identity");
+            }
+
+            account.Parent = newParent;
+            return true;
+        }
+
+        [WebMethod]
         public static bool SetAccountOwner(int accountId, int newOwnerId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
@@ -128,7 +150,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return false;
             }
 
-            // TODO: Verify that authdata.AuthenticatedPerson can see personId, or this can be exploited to enumerate all people
+            // TODO SECURITY: Verify that authdata.AuthenticatedPerson can see personId, or this can be exploited to enumerate all people
 
             account.Owner = Person.FromIdentity(newOwnerId);
             return true;

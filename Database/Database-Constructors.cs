@@ -49,6 +49,9 @@ namespace Swarmops.Database
         }
 
 
+        /// <summary>
+        /// The actual revision of the database (as told by the database).
+        /// </summary>
         public static int DbVersion
         {
             get
@@ -65,6 +68,14 @@ namespace Swarmops.Database
 
                 return Int32.Parse(dbVersionString);
             }
+        }
+
+        /// <summary>
+        /// This is the IN-CODE revision of the database. The version we expect to be running against.
+        /// </summary>
+        public static int DbVersionExpected
+        {
+            get { return 2; }
         }
 
 

@@ -330,8 +330,14 @@
         }
 
 
+	    function onAccountTreeSelect() {
+	        alert('bar');
+	    }
+
+
 	    function onAccountTreeLoaded() {
-            // this didn't work much - not called on "reload"
+	        // this didn't work much - not called on "reload"
+	        alert('foo2');
 	        accountTreeLoaded = true;
 	        if (parentAccountName.length > 0) {
 	            $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', parentAccountName);
@@ -398,7 +404,7 @@
             <div class="content">
                 <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2 id="HeaderModal">Editing account (Under Construction/Test until next sprint)</h2>
                 <div id="DivModalFields" class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
-                    <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" />&nbsp;<br/>
+                    <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" OnClientSelect="onAccountTreeSelect" />&nbsp;<br/>
                     &nbsp;<br/>
                     <div id="DivEditProfitLossControls"><Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
                     <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>

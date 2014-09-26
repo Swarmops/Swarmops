@@ -13,12 +13,5 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
-    <h2 class="blue"><asp:Label ID="LabelSidebarInfo" runat="server" Text="[LOC]" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-        <asp:Label ID="LabelAccessDeniedInfo" runat="server" Text="[LOC]" />
-        </div>
-    </div>
 </asp:Content>
 

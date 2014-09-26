@@ -34,7 +34,7 @@ namespace Swarmops.Basic.Types.Financial
         public int OrganizationId { get; private set; }
         public FinancialAccountType AccountType { get; private set; }
         public int OwnerPersonId { get; protected set; }
-        public int ParentFinancialAccountId { get; private set; }
+        public int ParentFinancialAccountId { get; protected set; }
         public bool Open { get; protected set; }
         public int OpenedYear { get; protected set; }
         public int ClosedYear { get; protected set; }

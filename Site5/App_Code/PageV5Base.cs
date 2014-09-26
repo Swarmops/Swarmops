@@ -126,6 +126,13 @@ public class PageV5Base : System.Web.UI.Page
             Response.Redirect("/Pages/v5/Security/AccessDenied.aspx");
         }
 
+        // Check necessary database revision
+
+        if (this.DbVersionRequired > SwarmDb.DbVersion)
+        {
+            Response.Redirect("/Pages/v5/Security/DatabaseUpgradeRequired.aspx");
+        }
+
  	    base.OnPreRender(e);
     }
 

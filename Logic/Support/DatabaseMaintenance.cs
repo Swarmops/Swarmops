@@ -56,8 +56,8 @@ namespace Swarmops.Logic.Support
 
         static public void UpgradeSchemata()
         {
-            int currentDbVersion = Int32.Parse(SwarmDb.GetDatabaseForReading().GetKeyValue("DbVersion"));
-            int expectedDbVersion = SwarmDb.DbVersion;
+            int currentDbVersion = SwarmDb.DbVersion;
+            int expectedDbVersion = SwarmDb.DbVersionExpected;
             string sql;
             bool upgraded = false;
 

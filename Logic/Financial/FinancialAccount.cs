@@ -148,7 +148,31 @@ namespace Swarmops.Logic.Financial
 
         public FinancialAccount Parent
         {
-            get { return FromIdentity(this.ParentFinancialAccountId); }
+            get
+            {
+                return FromIdentity(this.ParentFinancialAccountId);
+            }
+            set
+            {
+                // We do not change the parent lightly. It cannot be changed if this account has transactions
+                // in closedledger space.
+
+                try
+                {
+                    int yearClosed = this.Organization.Parameters.FiscalBooksClosedUntilYear;
+                    if (this.OpenedYear >= yearClosed)
+                    {
+                        throw new InvalidOperationException("Can't reparent an account with transactions in closedledger space");
+                    }
+                }
+                catch (ArgumentException)
+                {
+                    // This is ok. OpenedYear can throw an ArgumentException if there aren't any transactions yet.
+                }
+
+                base.ParentFinancialAccountId = value.Identity;
+                SwarmDb.GetDatabaseForWriting().SetFinancialAccountParent(this.Identity, value.Identity);
+            }
         }
 
 
@@ -171,7 +195,7 @@ namespace Swarmops.Logic.Financial
             {
                 // HACK HACK HACK HACK HACK for our pilots; this will be softcoded later TODO
 
-                if (this.OrganizationId != 1 || this.Organization.Name != "Piratpartiet SE")
+                if (this.OrganizationId != 1 || !PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE))
                 {
                     return null;
                 }
@@ -194,7 +218,19 @@ namespace Swarmops.Logic.Financial
             get { return base.Name; }
             set
             {
-                // TODO: OPENEDYEAR TEST
+                try
+                {
+                    int yearClosed = this.Organization.Parameters.FiscalBooksClosedUntilYear;
+                    if (this.OpenedYear >= yearClosed)
+                    {
+                        throw new InvalidOperationException("Can't rename an account with transactions in closedledger space");
+                    }
+                }
+                catch (ArgumentException)
+                {
+                    // This is ok and can be thrown if OpenedYear throws because there are no transactions yet.
+                }
+
                 SwarmDb.GetDatabaseForWriting().SetFinancialAccountName(this.Identity, value);
                 base.Name = value;
             }

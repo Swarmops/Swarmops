@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccessDenied_Header" xml:space="preserve">
     <value>Access to this page was denied</value>
@@ -127,7 +127,7 @@
     <value>Access Denied</value>
   </data>
   <data name="AccessDenied_Rant" xml:space="preserve">
-    <value>&lt;p&gt;The Activizr security framework has denied you access to the page you were trying to go to. This usually means that its functions were above the access levels granted to you for the currently selected organization (&lt;em&gt;{0}&lt;/em&gt;). This has not been logged nor reported anywhere.&lt;/p&gt;&lt;p&gt;There are several reasons why this may have happened:&lt;/p&gt;</value>
+    <value>&lt;p&gt;The Swarmops security framework has denied you access to the page you were trying to go to. This usually means that its functions were above the access levels granted to you for the currently selected organization (&lt;em&gt;{0}&lt;/em&gt;). This has not been logged nor reported anywhere.&lt;/p&gt;&lt;p&gt;There are several reasons why this may have happened:&lt;/p&gt;</value>
   </data>
   <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
     <value>Current organization</value>
@@ -143,5 +143,18 @@
   </data>
   <data name="ChangeOrganizations_Switch" xml:space="preserve">
     <value>Switch</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Database Upgrade Pending</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>This page requires an upgraded Swarmops database. </value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>Awaiting Database Upgrade</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;There is a database upgrade pending that prevents your access to this page. &lt;strong&gt;This is a temporary condition&lt;/strong&gt; and the Swarmops servers should already be working on performing the necessary upgrade.&lt;/p&gt;
+&lt;p&gt;Retry loading the page in a few minutes. If the condition persists for more than fifteen minutes, contact your system administrator.&lt;/p&gt;</value>
   </data>
 </root>

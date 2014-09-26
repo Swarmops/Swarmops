@@ -7,8 +7,14 @@
                 height: 30 <%
                            if (!String.IsNullOrEmpty(this.OnClientLoaded))
                            {
-                                Response.Write(", onLoadSuccess: " + this.OnClientLoaded + "()");
-                           }%>
+                                Response.Write(", onLoadSuccess: function() { " + this.OnClientLoaded + "(); }");
+                           }
+                           if (!String.IsNullOrEmpty(this.OnClientSelect))
+                           {
+                               Response.Write(", onSelect: function(account) { " + this.OnClientSelect + "(account.id); }");
+                           }
+                           
+                           %>
             });
 
         $('#<%=this.ClientID %>_SpanBudgets span.combo input.combo-text').click(function () {
