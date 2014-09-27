@@ -28,7 +28,7 @@ namespace Swarmops.Utility
             if (!logOnly)
             {
                 new MailTransmitter(Strings.MailSenderName, Strings.MailSenderAddress,
-                                                           "PirateWeb EXCEPTION!",
+                                                           "Swarmops EXCEPTION!",
                                                            e.ToString(), People.FromIdentities(new int[] { 1 }), false).Send();
             }
         }

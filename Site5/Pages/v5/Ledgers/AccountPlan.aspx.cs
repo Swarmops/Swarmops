@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
@@ -56,6 +57,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                            : account.Parent.Name;
             result.Expensable = account.Expensable;
             result.Administrative = account.Administrative;
+            result.Active = account.Active;
             result.Open = account.Open;
             result.AccountOwnerName = account.OwnerPersonId != 0 ? account.Owner.Name : Resources.Global.Global_NoOwner;
             result.AccountOwnerAvatarUrl = account.OwnerPersonId != 0
@@ -109,12 +111,20 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
+            string newName = HttpContext.Current.Server.UrlDecode(name);
+
+            if (account.Name == newName)
+            {
+                // no change
+                return true;
+            }
+
             if (!PrepareAccountChange(account, authData, true))
             {
                 return false;
             }
 
-            account.Name = HttpContext.Current.Server.UrlDecode(name);
+            account.Name = newName;
             return true;
         }
 
@@ -124,15 +134,25 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
+            if (account.ParentFinancialAccountId == parentAccountId)
+            {
+                // no change
+                return true;
+            }
+
             if (!PrepareAccountChange(account, authData, true))
             {
                 return false;
             }
 
-            FinancialAccount newParent = FinancialAccount.FromIdentity(parentAccountId);
-            if (newParent.OrganizationId != authData.CurrentOrganization.Identity)
+            FinancialAccount newParent = null; // to cover the root account case (reparenting to root)
+            if (parentAccountId != 0)
             {
-                throw new ArgumentException("Parent account mismatches with organization identity");
+                newParent = FinancialAccount.FromIdentity(parentAccountId);
+                if (newParent.OrganizationId != authData.CurrentOrganization.Identity)
+                {
+                    throw new ArgumentException("Parent account mismatches with organization identity");
+                }
             }
 
             account.Parent = newParent;
@@ -202,6 +222,35 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
         }
 
+        [WebMethod]
+        public static bool SetAccountSwitch(int accountId, string switchName, bool switchValue)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+            if (!PrepareAccountChange(account, authData, false))
+            {
+                return false;
+            }
+
+            switch (switchName)
+            {
+                case "Active":
+                    account.Active = switchValue;
+                    break;
+                case "Administrative":
+                    account.Administrative = switchValue;
+                    break;
+                case "Expensable":
+                    account.Expensable = switchValue;
+                    break;
+                default:
+                    throw new NotImplementedException("Unknown switchName parameter");
+            }
+
+            return true;
+        }
+
 
         public class ChangeAccountDataResult
         {
@@ -218,11 +267,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             /// </summary>
             Changed = 1,
             /// <summary>
-            /// The account has transactions in closed ledgers, so the account was broken in two -
+            /// The account has transactions in closed ledgers, so the account was split in two -
             /// the closed ledgers were kept, and all open ledgers were moved into a new account
             /// with the new data.
             /// </summary>
-            ChangedBroken = 2,
+            ChangedWithDiscontinuity = 2,
             /// <summary>
             /// The user doesn't have write permissions.
             /// </summary>
@@ -242,6 +291,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public bool Administrative;
             public bool Expensable;
             public bool Open;
+            public bool Active;
             public string AccountOwnerName;
             public string Budget;
             public string AccountOwnerAvatarUrl;

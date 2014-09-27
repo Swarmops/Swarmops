@@ -170,8 +170,10 @@ namespace Swarmops.Logic.Financial
                     // This is ok. OpenedYear can throw an ArgumentException if there aren't any transactions yet.
                 }
 
-                base.ParentFinancialAccountId = value.Identity;
-                SwarmDb.GetDatabaseForWriting().SetFinancialAccountParent(this.Identity, value.Identity);
+                int newParentId = value != null ? value.Identity : 0;
+
+                base.ParentFinancialAccountId = newParentId;
+                SwarmDb.GetDatabaseForWriting().SetFinancialAccountParent(this.Identity, newParentId);
             }
         }
 
@@ -213,7 +215,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public string Name
+        public new string Name
         {
             get { return base.Name; }
             set
@@ -270,6 +272,53 @@ namespace Swarmops.Logic.Financial
                 {
                     throw new ArgumentException("FinancialAccount is not opened yet (no transactions)");
                 }
+            }
+        }
+
+        public new bool Active
+        {
+            get { return base.Active; }
+            set
+            {
+                if (base.Active == value)
+                {
+                    return;
+                }
+
+                base.Active = value;
+                SwarmDb.GetDatabaseForWriting().SetFinancialAccountActive(this.Identity, value);
+            }
+        }
+
+
+        public new bool Expensable
+        {
+            get { return base.Expensable; }
+            set
+            {
+                if (base.Expensable == value)
+                {
+                    return;
+                }
+
+                base.Expensable = value;
+                SwarmDb.GetDatabaseForWriting().SetFinancialAccountExpensable(this.Identity, value);
+            }
+        }
+
+
+        public new bool Administrative
+        {
+            get { return base.Administrative; }
+            set
+            {
+                if (base.Administrative == value)
+                {
+                    return;
+                }
+
+                base.Administrative = value;
+                SwarmDb.GetDatabaseForWriting().SetFinancialAccountAdministrative(this.Identity, value);
             }
         }
 

@@ -102,12 +102,12 @@
 	                                .change(function() {
 	                                    if (!suppressSwitchChangeAction) {
 	                                        $(this).parent().css('box-shadow', '0 0 1px 0 #FFFFC0');
-	                                        console.log($(this).checked);
+	                                        var callParameters = "{'accountId': '" + escape(accountId) + "', 'switchName':'" + $(this).attr("rel") + "','switchValue':'" + $(this).prop('checked') + "'}";
 
 	                                        $.ajax({
 	                                            type: "POST",
 	                                            url: "AccountPlan.aspx/SetAccountSwitch",
-	                                            data: "{'accountId': '" + escape(accountId) + "', 'switchName':'" + $(this).attr("rel") + "','switchValue':'" + $(this).checked + "'}",
+	                                            data: callParameters,
 	                                            contentType: "application/json; charset=utf-8",
 	                                            dataType: "json",
 	                                            success: $.proxy(function(msg) {
@@ -146,6 +146,15 @@
 	                        checkboxesInitialized = true;
 	                    }
 
+	                    if (!parentDropInitialized) {
+	                        parentDropInitialized = true;
+	                        // Another weird construct for same reason. Show and hide the box once, and it'll init properly next.
+	                        setTimeout(function() {
+	                            $('#<%=this.DropParents.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();
+	                            $('#<%=this.DropParents.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();
+	                        }, 100);
+                        }
+
 	                    $.ajax({
                             type: "POST",
                             url: "AccountPlan.aspx/GetAccountData",
@@ -155,7 +164,7 @@
                             success: function (msg) {
 
                                 suppressSwitchChangeAction = true;
-                                $("#CheckAccountActive").prop("checked", msg.d.Open).change();
+                                $("#CheckAccountActive").prop("checked", msg.d.Active).change();
                                 $("#CheckAccountExpensable").prop("checked", msg.d.Expensable).change();
                                 $("#CheckAccountAdministrative").prop("checked", msg.d.Administrative).change();
                                 suppressSwitchChangeAction = false;
@@ -260,7 +269,7 @@
 	                data: "{'accountId': '" + escape(accountId) + "', 'budget':'" + escape(newAccountBudget) + "'}",
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
-	                success: function(msg) { // TODO: This needs four return values - changed, broken and changed, invalid, or not changed. Also, formatted number
+	                success: function(msg) { 
 	                    if (msg.d.Result == 3 || msg.d.Result == 4) { // Invalid or NoPermission
 	                        $('#TextAccountBudget').css('background-color', '#FFA0A0');
 	                        alertify.error("There was an error attempting to set your proposed budget."); // TODO: Localize
@@ -322,7 +331,7 @@
 	        if (currentText.length < 3) {
 	            accountTree.combotree('setText', parentAccountName);
 	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
-	        } else {
+	        } else if (!accountTreeLoaded) {
 	            setTimeout(function() {
 	                setAccountTreeText(text);
 	            }, 250);
@@ -330,17 +339,45 @@
         }
 
 
-	    function onAccountTreeSelect() {
-	        alert('bar');
-	    }
+	    function onAccountTreeSelect(parentAccountId) {
+	        if (!accountTreeLoaded) {
+	            return;
+	        }
+
+	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFFFE0');
+	        $.ajax({
+	            type: "POST",
+	            url: "AccountPlan.aspx/SetAccountParent",
+	            data: "{'accountId':'" + escape(accountId) + "','parentAccountId':'" + escape(parentAccountId) + "'}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function(msg) {
+	                if (msg.d) { // all went ok
+	                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#E0FFE0');
+                        accountDirty = true;
+                    } else {  
+	                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFA0A0');
+	                    $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', parentAccountName);
+                        alertify.error("Cannot reparent accounts with transactions in closed ledgers - yet."); // TODO: Localize
+                    }
+                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').animate({ backgroundColor: "#FFFFFF" }, 250);
+                },
+                error: function() {
+                    alertify.error("There was an error making the call to set budget parent. Is the server available?");
+                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFA0A0');
+                    $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', parentAccountName);
+                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').animate({ backgroundColor: "#FFFFFF" }, 250);
+                }
+            });
+        }
 
 
 	    function onAccountTreeLoaded() {
-	        // this didn't work much - not called on "reload"
-	        alert('foo2');
+	        var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
+	        // accountTree.combotree('select', 0); // clear any previous selection
 	        accountTreeLoaded = true;
 	        if (parentAccountName.length > 0) {
-	            $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', parentAccountName);
+	            accountTree.combotree('setText', parentAccountName);
 	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
             }
 	    }
@@ -355,6 +392,7 @@
 	    var accountDirty = false;
 
 	    var checkboxesInitialized = false;
+	    var parentDropInitialized = false;
 	    var suppressSwitchChangeAction = false;
 	    var accountTreeLoaded = false;
 	    var parentAccountName = '';
@@ -402,7 +440,7 @@
     <div id="divModalCover" class="modalcover">
         <div id="divModalBox" class="box modal">
             <div class="content">
-                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2 id="HeaderModal">Editing account (Under Construction/Test until next sprint)</h2>
+                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2 id="HeaderModal">Editing account</h2>
                 <div id="DivModalFields" class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
                     <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" OnClientSelect="onAccountTreeSelect" />&nbsp;<br/>
                     &nbsp;<br/>
@@ -413,7 +451,7 @@
                     <label for="CheckAccountExpensable">Expensable</label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
                     <label for="CheckAccountAdministrative">Admin</label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
                     &nbsp;<br/></div>
-                    <div id="DivEditAssetControls"><asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>&nbsp;<br/>
+                    <div id="DivEditAssetControls"><asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
                     <input type="text" id="TextAutomationPaymentTag" readonly="readonly"/>&nbsp;<br/></div>
                 </div>
                 <div class="entryLabels">Account name<br/>

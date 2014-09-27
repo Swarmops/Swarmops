@@ -19,7 +19,7 @@ namespace Swarmops.Database
         private const string financialAccountFieldSequence =
             " FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId," +  // 0-4
             " OwnerPersonId,Open,OpenedYear,ClosedYear,Expensable," +  // 5-9
-            " Administrative " + // 10
+            " Administrative,Active,LinkBackward,LinkForward " + // 10-13
             " FROM FinancialAccounts ";
 
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
@@ -765,7 +765,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetFinancialAccountOpen", connection);
+                DbCommand command = GetDbCommand("SetFinancialAccountAdministrative", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName(command, "financialAccountId", financialAccountId);
@@ -864,8 +864,11 @@ namespace Swarmops.Database
             int closedYear = reader.GetInt32(8);
             bool expensable = reader.GetBoolean(9);
             bool administrative = reader.GetBoolean(10);
+            bool active = reader.GetBoolean(11);
+            int linkBackward = reader.GetInt32(12);
+            int linkForward = reader.GetInt32(13);
 
-            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId, ownerPersonId, open, openedYear, closedYear, expensable, administrative);
+            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId, ownerPersonId, open, openedYear, closedYear, active, expensable, administrative, linkBackward, linkForward);
         }
 
         private BasicFinancialAccountRow ReadFinancialAccountRowFromDataReader (DbDataReader reader)

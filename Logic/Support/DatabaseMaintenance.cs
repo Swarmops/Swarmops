@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using MySql.Data.MySqlClient;
 using Swarmops.Logic.Swarm;
 using Swarmops.Database;
 using System.Globalization;
@@ -76,7 +77,17 @@ namespace Swarmops.Logic.Support
 
                 foreach (string sqlCommand in sqlCommands)
                 {
-                    SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCommand.Trim());
+                    try
+                    {
+                        SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCommand.Trim());
+                    }
+                    catch (MySqlException exception)
+                    {
+                        SwarmDb.GetDatabaseForWriting()
+                            .CreateExceptionLogEntry(DateTime.UtcNow, "DatabaseUpgrade", exception);
+
+                        throw;
+                    }
                 }
 
                 upgraded = true;
