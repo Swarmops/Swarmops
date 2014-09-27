@@ -38,7 +38,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.LiteralHeaderEdit.Text = Resources.Pages.Ledgers.AccountPlan_Header_Edit;
                 this.LiteralHeaderEditingAccount.Text = Resources.Pages.Ledgers.AccountPlan_Edit_Header;
                 this.LiteralHeaderFlags.Text = Resources.Pages.Ledgers.AccountPlan_Header_Flags;
-                this.LiteralHeaderOwner.Text = Resources.Pages.Ledgers.AccountPlan_Header_Owner;
+                this.LiteralHeaderOwner.Text = Resources.Global.Global_Owner;
                 this.LiteralLabelAccountName.Text = Resources.Pages.Ledgers.AccountPlan_Edit_AccountName;
                 this.LiteralLabelActiveLong.Text = Resources.Pages.Ledgers.AccountPlan_Edit_ActiveLong;
                 this.LiteralLabelActiveShort.Text = Resources.Pages.Ledgers.AccountPlan_Edit_ActiveShort;
@@ -52,7 +52,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.LiteralLabelHeaderConfiguration.Text = Resources.Pages.Ledgers.AccountPlan_Edit_HeaderConfiguration;
                 this.LiteralLabelHeaderDailyOperations.Text =
                     Resources.Pages.Ledgers.AccountPlan_Edit_HeaderDailyOperations;
-                this.LiteralLabelOwner.Text = Resources.Pages.Ledgers.AccountPlan_Edit_Owner;
+                this.LiteralLabelOwner.Text = Resources.Global.Global_Owner;
                 this.LiteralLabelParent.Text = Resources.Pages.Ledgers.AccountPlan_Edit_Parent;
 
 

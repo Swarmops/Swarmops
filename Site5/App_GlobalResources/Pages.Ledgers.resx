@@ -473,9 +473,6 @@
     <value>Initial Value</value>
     <comment>For asset and liability accounts - the value going into Swarmops first ledger year</comment>
   </data>
-  <data name="AccountPlan_Edit_Owner" xml:space="preserve">
-    <value>Owner</value>
-  </data>
   <data name="AccountPlan_Edit_Parent" xml:space="preserve">
     <value>Parent account or group</value>
   </data>
@@ -497,8 +494,5 @@
   </data>
   <data name="AccountPlan_Header_Flags" xml:space="preserve">
     <value>Flags</value>
-  </data>
-  <data name="AccountPlan_Header_Owner" xml:space="preserve">
-    <value>Owner</value>
   </data>
 </root>

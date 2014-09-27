@@ -53,6 +53,11 @@ public class ControlV5Base : System.Web.UI.UserControl
                 {
                     buildIdentity = "Build " + reader.ReadLine();
                 }
+
+                using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/SprintName.txt")))
+                {
+                    buildIdentity += " (" + reader.ReadLine() + ")";
+                }
             }
             catch (Exception)
             {

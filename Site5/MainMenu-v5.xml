@@ -225,7 +225,7 @@
         </Children>
     </MainMenuItem>
 
-    <!-- TEMP PLACEHOLDER -->
+    <!-- ADMIN MENU -->
 
     <MainMenuItem>
         <ResourceKey>Administration</ResourceKey>
@@ -235,11 +235,27 @@
         <Type>Submenu</Type>
         <Children>
 
-            <MainMenuItem>
+          <MainMenuItem>
+            <ResourceKey>Administration_CreateOrganization</ResourceKey>
+            <UserLevel>4</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-cabinet</ImageUrl>
+            <NavigateUrl>/Pages/v5/Admin/CreateOrganization.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
+            <UserLevel>1</UserLevel>
+            <Type>Separator</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
                 <ResourceKey />
                 <UserLevel>4</UserLevel>
                 <Permissions />
-                <ImageUrl />
+                <ImageUrl>swarmops-builder</ImageUrl>
                 <NavigateUrl />
                 <Type>BuildNumber</Type>
                 <Children />

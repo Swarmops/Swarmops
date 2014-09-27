@@ -377,6 +377,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         Swarmops.Logic.Support.DatabaseMaintenance.FirstInitialization();
 
+        _initProgress = 6;
+        _initMessage = "Applying all post-baseline database schema upgrades...";
+        Swarmops.Logic.Support.DatabaseMaintenance.UpgradeSchemata();
+        Thread.Sleep(100);
+
         _initProgress = 5;
         _initMessage = "Getting list of countries from Swarmops servers...";
         Thread.Sleep(100);

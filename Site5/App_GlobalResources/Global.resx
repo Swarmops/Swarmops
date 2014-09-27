@@ -411,4 +411,64 @@
     <value>On</value>
     <comment>On (as opposed to Off)</comment>
   </data>
+  <data name="Global_Activists_Generic_Commercial" xml:space="preserve">
+    <value>Customers</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Global_Activists_Generic_Governmental" xml:space="preserve">
+    <value>Citizens</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Global_Activists_Generic_Nonprofit" xml:space="preserve">
+    <value>Activists</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Global_Activist_Female_Commercial" xml:space="preserve">
+    <value>Customer</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Global_Activist_Female_Governmental" xml:space="preserve">
+    <value>Citizen</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Global_Activist_Female_Nonprofit" xml:space="preserve">
+    <value>Activist</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Global_Activist_Generic_Commercial" xml:space="preserve">
+    <value>Customer</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Global_Activist_Generic_Governmental" xml:space="preserve">
+    <value>Citizen</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Global_Activist_Generic_Nonprofit" xml:space="preserve">
+    <value>Activist</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Global_Activist_Male_Commercial" xml:space="preserve">
+    <value>Customer</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Global_Activist_Male_Governmental" xml:space="preserve">
+    <value>Citizen</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Global_Activist_Male_Nonprofit" xml:space="preserve">
+    <value>Activist</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Global_Organization_Commercial" xml:space="preserve">
+    <value>Commercial</value>
+    <comment>A commercial organization (for-profit enterprise)</comment>
+  </data>
+  <data name="Global_Organization_Governmental" xml:space="preserve">
+    <value>Governmental</value>
+    <comment>Organization that's part of government somehow</comment>
+  </data>
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
+    <value>Non-profit</value>
+    <comment>Non-profit (activist, political parties)</comment>
+  </data>
 </root>
