@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -36,5 +38,30 @@ public class ControlV5Base : System.Web.UI.UserControl
         _authority = _currentUser.GetAuthority();
 
         base.OnLoad(e);
+    }
+
+    protected string GetBuildIdentity()
+    {
+        // Read build number if not loaded, or set to "Private" if none
+        string buildIdentity = (string) GuidCache.Get("_buildIdentity");
+
+        if (buildIdentity == null)
+        {
+            try
+            {
+                using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/BuildIdentity.txt")))
+                {
+                    buildIdentity = "Build " + reader.ReadLine();
+                }
+            }
+            catch (Exception)
+            {
+                buildIdentity = "Private Build";
+            }
+
+            GuidCache.Set("_buildIdentity", buildIdentity);
+        }
+
+        return buildIdentity;
     }
 }

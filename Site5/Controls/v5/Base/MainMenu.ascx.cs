@@ -53,6 +53,11 @@ namespace Swarmops.Controls.Base
             }
             localizedText = Server.HtmlEncode(localizedText); // muy importante
 
+            if (menuItem.Type == MenuItemType.BuildNumber)
+            {
+                localizedText = GetBuildIdentity();
+            }
+
             string iconSize = "40px";
 
             if (File.Exists(Server.MapPath("~/Images/PageIcons/" + menuItem.ImageUrl + "-20px.png")))
@@ -71,6 +76,7 @@ namespace Swarmops.Controls.Base
                         menuItem.ImageUrl, menuItem.NavigateUrl, localizedText, iconSize);
                     break;
                 case MenuItemType.Disabled:
+                case MenuItemType.BuildNumber:
                     string imageUrl = "/Images/PageIcons/" + menuItem.ImageUrl + "-" + iconSize + ".png";
                     if (String.IsNullOrEmpty(menuItem.ImageUrl))
                     {

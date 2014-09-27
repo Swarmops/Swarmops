@@ -228,12 +228,24 @@
     <!-- TEMP PLACEHOLDER -->
 
     <MainMenuItem>
-        <ResourceKey>Ugly_Todo</ResourceKey>
-        <UserLevel>1</UserLevel>
+        <ResourceKey>Administration</ResourceKey>
+        <UserLevel>4</UserLevel>
         <Permissions />
         <ImageUrl />
-        <Type>Disabled</Type>
-        <Children />
+        <Type>Submenu</Type>
+        <Children>
+
+            <MainMenuItem>
+                <ResourceKey />
+                <UserLevel>4</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <NavigateUrl />
+                <Type>BuildNumber</Type>
+                <Children />
+            </MainMenuItem>
+        
+        </Children>
     </MainMenuItem>
 
 </ArrayOfMainMenuItem>

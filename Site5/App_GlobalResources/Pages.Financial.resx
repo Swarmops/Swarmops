@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
     <value>Cash Advance #{0:N0} for {1} has been attested for {3:N2}.</value>
@@ -282,7 +282,7 @@
     <value>As this is your own budget, attestation is already complete. Only validation is necessary.</value>
   </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
-    <value>Upload Receipt Images:</value>
+    <value>Upload Receipt Images</value>
   </data>
   <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
     <value>Please enter the amount of money (in {0}) that you are claiming.</value>
