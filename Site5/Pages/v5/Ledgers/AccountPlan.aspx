@@ -107,7 +107,7 @@
 	                                        // If changing Active, set Expensable.Enabled to Active.Checked. If false, set Expensable.Checked to false, too
 
 	                                        if ($(this).attr("rel") == "Active") {
-	                                            if (!$(this).prop('checked')) {
+	                                            if (!$(this).prop('checked') && $("#CheckAccountExpensable").prop("checked")) {
 	                                                $("#CheckAccountExpensable").prop("checked", false).change();
 	                                            }
 	                                        }
@@ -115,7 +115,7 @@
                                             // If changing Expensable to true, make sure that Active is true, too
 
 	                                        if ($(this).attr("rel") == "Expensable") {
-	                                            if ($(this).prop('checked')) {
+	                                            if ($(this).prop('checked') && !$("#CheckAccountActive").prop("checked")) {
 	                                                $("#CheckAccountActive").prop("checked", true).change();
 	                                            }
 	                                        }
