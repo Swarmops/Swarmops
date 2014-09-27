@@ -104,6 +104,22 @@
 	                                        $(this).parent().css('box-shadow', '0 0 1px 0 #FFFFC0');
 	                                        var callParameters = "{'accountId': '" + escape(accountId) + "', 'switchName':'" + $(this).attr("rel") + "','switchValue':'" + $(this).prop('checked') + "'}";
 
+	                                        // If changing Active, set Expensable.Enabled to Active.Checked. If false, set Expensable.Checked to false, too
+
+	                                        if ($(this).attr("rel") == "Active") {
+	                                            if (!$(this).prop('checked')) {
+	                                                $("#CheckAccountExpensable").prop("checked", false).change();
+	                                            }
+	                                        }
+
+                                            // If changing Expensable to true, make sure that Active is true, too
+
+	                                        if ($(this).attr("rel") == "Expensable") {
+	                                            if ($(this).prop('checked')) {
+	                                                $("#CheckAccountActive").prop("checked", true).change();
+	                                            }
+	                                        }
+
 	                                        $.ajax({
 	                                            type: "POST",
 	                                            url: "AccountPlan.aspx/SetAccountSwitch",
@@ -258,7 +274,7 @@
 	            }
 
 	            if (accountType == 'C' && newAccountBudget[0] != '-') {
-	                alertify.alert("This is an Expenses account. Such accounts normally have a budget in the negative, since they drain assets from the organization. Your proposed budget was changed to negative.");
+	                alertify.alert('<asp:Literal ID="LiteralExpensesBudgetsAreNegative" runat="server" />');
                     newAccountBudget = "-" + newAccountBudget;
 	            }
 
@@ -426,12 +442,12 @@
         idField="id" treeField="accountName">
         <thead>  
             <tr>  
-                <th field="accountName" width="240"><asp:Literal ID="LiteralHeaderAccountName" runat="server"/>Account Name</th>  
-                <th field="owner" width="160" align="left">Owner</th>  
-                <th field="balance" width="80" align="right">Balance</th>
-                <th field="budget" width="80" align="right">Budget</th>
-                <th field="class" width="65" align="center">Flags</th>
-                <th field="action" width="40" align="center">Edit</th>  
+                <th field="accountName" width="240"><asp:Literal ID="LiteralHeaderAccountName" runat="server"/></th>  
+                <th field="owner" width="160" align="left"><asp:Literal ID="LiteralHeaderOwner" runat="server"/></th>  
+                <th field="balance" width="80" align="right"><asp:Literal ID="LiteralHeaderBalance" runat="server"/></th>
+                <th field="budget" width="80" align="right"><asp:Literal ID="LiteralHeaderBudget" runat="server"/></th>
+                <th field="class" width="65" align="center"><asp:Literal ID="LiteralHeaderFlags" runat="server"/></th>
+                <th field="action" width="40" align="center"><asp:Literal ID="LiteralHeaderEdit" runat="server"/></th>  
             </tr>  
         </thead>  
     </table>
@@ -440,32 +456,32 @@
     <div id="divModalCover" class="modalcover">
         <div id="divModalBox" class="box modal">
             <div class="content">
-                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2 id="HeaderModal">Editing account</h2>
+                <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2 id="HeaderModal"><asp:Literal ID="LiteralHeaderEditingAccount" runat="server"/></h2>
                 <div id="DivModalFields" class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
                     <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" OnClientSelect="onAccountTreeSelect" />&nbsp;<br/>
                     &nbsp;<br/>
                     <div id="DivEditProfitLossControls"><Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
                     <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>
                     &nbsp;<br/>
-                    <label for="CheckAccountActive">Active</label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckAccountActive"/></div><br/>
-                    <label for="CheckAccountExpensable">Expensable</label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
-                    <label for="CheckAccountAdministrative">Admin</label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
+                    <label for="CheckAccountActive"><asp:Literal ID="LiteralLabelActiveShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckAccountActive"/></div><br/>
+                    <label for="CheckAccountExpensable"><asp:Literal ID="LiteralLabelExpensableShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
+                    <label for="CheckAccountAdministrative"><asp:Literal ID="LiteralLabelAdministrativeShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
                     &nbsp;<br/></div>
                     <div id="DivEditAssetControls"><asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
                     <input type="text" id="TextAutomationPaymentTag" readonly="readonly"/>&nbsp;<br/></div>
                 </div>
-                <div class="entryLabels">Account name<br/>
-                    Parent account or group<br/>
-                    <div id="DivEditProfitLossLabels"><h2>Daily operations</h2>
-                    Owner<br/>
-                    Budget (balance is <span id="SpanTextCurrency">foo</span> <span id="SpanEditBalance">bar</span>)<br/>
-                    <h2>Configuration</h2>
-                    Is this account open for transactions?<br/>
-                    Can people use this account for expense reports?<br/>
-                    Are transactions here excluded from 2-D reports?<br/></div>
-                    <div id="DivEditAssetLabels"><h2>Automation</h2>
-                    File upload profile<br/>
-                    <span id="SpanUploadParameterName">Upload parameter, if any</span></div>
+                <div class="entryLabels"><asp:Literal ID="LiteralLabelAccountName" runat="server"/><br/>
+                    <asp:Literal ID="LiteralLabelParent" runat="server"/><br/>
+                    <div id="DivEditProfitLossLabels"><h2><asp:Literal ID="LiteralLabelHeaderDailyOperations" runat="server"/></h2>
+                    <asp:Literal ID="LiteralLabelOwner" runat="server"/><br/>
+                    <asp:Literal ID="LiteralLabelBudgetBalance" runat="server"/><br/>
+                    <h2><asp:Literal ID="LiteralLabelHeaderConfiguration" runat="server"/></h2>
+                    <asp:Literal ID="LiteralLabelActiveLong" runat="server"/><br/>
+                    <asp:Literal ID="LiteralLabelExpensableLong" runat="server"/><br/>
+                    <asp:Literal ID="LiteralLabelAdministrativeLong" runat="server"/><br/></div>
+                    <div id="DivEditAssetLabels"><h2><asp:Literal ID="LiteralLabelHeaderAutomation" runat="server"/></h2>
+                    <asp:Literal ID="LiteralLabelFileUploadProfile" runat="server"/><br/>
+                    <span id="SpanUploadParameterName">Upload parameter, if any</span></div> 
                 </div>
             </div>
         </div>

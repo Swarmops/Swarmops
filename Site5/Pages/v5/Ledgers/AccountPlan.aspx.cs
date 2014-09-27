@@ -24,9 +24,40 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return;
             }
 
-            this.PageIcon = "iconshock-openbook";
-            this.PageTitle = Resources.Pages.Ledgers.AccountPlan_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Ledgers.AccountPlan_Info;
+            if (!Page.IsPostBack)
+            {
+                // Localize
+
+                this.PageIcon = "iconshock-openbook";
+                this.PageTitle = Resources.Pages.Ledgers.AccountPlan_PageTitle;
+                this.InfoBoxLiteral = Resources.Pages.Ledgers.AccountPlan_Info;
+                this.LiteralExpensesBudgetsAreNegative.Text = Resources.Pages.Ledgers.AccountPlan_ExpensesBudgetsAreNegaive;
+                this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.AccountPlan_Header_AccountName;
+                this.LiteralHeaderBalance.Text = Resources.Pages.Ledgers.AccountPlan_Header_Balance;
+                this.LiteralHeaderBudget.Text = Resources.Pages.Ledgers.AccountPlan_Header_Budget;
+                this.LiteralHeaderEdit.Text = Resources.Pages.Ledgers.AccountPlan_Header_Edit;
+                this.LiteralHeaderEditingAccount.Text = Resources.Pages.Ledgers.AccountPlan_Edit_Header;
+                this.LiteralHeaderFlags.Text = Resources.Pages.Ledgers.AccountPlan_Header_Flags;
+                this.LiteralHeaderOwner.Text = Resources.Pages.Ledgers.AccountPlan_Header_Owner;
+                this.LiteralLabelAccountName.Text = Resources.Pages.Ledgers.AccountPlan_Edit_AccountName;
+                this.LiteralLabelActiveLong.Text = Resources.Pages.Ledgers.AccountPlan_Edit_ActiveLong;
+                this.LiteralLabelActiveShort.Text = Resources.Pages.Ledgers.AccountPlan_Edit_ActiveShort;
+                this.LiteralLabelAdministrativeLong.Text = Resources.Pages.Ledgers.AccountPlan_Edit_AdministrativeLong;
+                this.LiteralLabelAdministrativeShort.Text = Resources.Pages.Ledgers.AccountPlan_Edit_AdministrativeShort;
+                this.LiteralLabelBudgetBalance.Text = Resources.Pages.Ledgers.AccountPlan_Edit_BudgetBalance;
+                this.LiteralLabelExpensableLong.Text = Resources.Pages.Ledgers.AccountPlan_Edit_ExpensableLong;
+                this.LiteralLabelExpensableShort.Text = Resources.Pages.Ledgers.AccountPlan_Edit_ExpensableShort;
+                this.LiteralLabelFileUploadProfile.Text = Resources.Pages.Ledgers.AccountPlan_Edit_FileUploadProfile;
+                this.LiteralLabelHeaderAutomation.Text = Resources.Pages.Ledgers.AccountPlan_Edit_HeaderAutomation;
+                this.LiteralLabelHeaderConfiguration.Text = Resources.Pages.Ledgers.AccountPlan_Edit_HeaderConfiguration;
+                this.LiteralLabelHeaderDailyOperations.Text =
+                    Resources.Pages.Ledgers.AccountPlan_Edit_HeaderDailyOperations;
+                this.LiteralLabelOwner.Text = Resources.Pages.Ledgers.AccountPlan_Edit_Owner;
+                this.LiteralLabelParent.Text = Resources.Pages.Ledgers.AccountPlan_Edit_Parent;
+
+
+
+            }
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
             this.DbVersionRequired = 2; // Account reparenting
         }
@@ -90,7 +121,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             try
             {
-                if (checkOpenedYear && account.OpenedYear <= authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear)
+                int ledgersClosedUntilYear = authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear;
+
+                if (checkOpenedYear && ledgersClosedUntilYear > 0 && account.OpenedYear <= ledgersClosedUntilYear)
                 {
                     // This require breaking the account, which we can't do yet (in this sprint, will come next sprint).
                     return false;

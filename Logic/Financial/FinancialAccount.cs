@@ -160,7 +160,7 @@ namespace Swarmops.Logic.Financial
                 try
                 {
                     int yearClosed = this.Organization.Parameters.FiscalBooksClosedUntilYear;
-                    if (this.OpenedYear >= yearClosed)
+                    if (yearClosed > 0 && this.OpenedYear <= yearClosed)
                     {
                         throw new InvalidOperationException("Can't reparent an account with transactions in closedledger space");
                     }
@@ -223,7 +223,7 @@ namespace Swarmops.Logic.Financial
                 try
                 {
                     int yearClosed = this.Organization.Parameters.FiscalBooksClosedUntilYear;
-                    if (this.OpenedYear >= yearClosed)
+                    if (yearClosed > 0 && this.OpenedYear <= yearClosed)
                     {
                         throw new InvalidOperationException("Can't rename an account with transactions in closedledger space");
                     }
