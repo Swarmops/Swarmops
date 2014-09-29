@@ -112,16 +112,19 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Menu5_Administration" xml:space="preserve">
     <value>Admin</value>
   </data>
   <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
     <value>Tillgångskontrollistor</value>
+  </data>
+  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
+    <value>Skapa organisation</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geografiträd</value>
@@ -177,8 +180,11 @@
   <data name="Menu5_Financial_List" xml:space="preserve">
     <value>Lista</value>
   </data>
+  <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
+    <value>Kontantförskott</value>
+  </data>
   <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
-    <value>Begäran om Återbetalning, Förskott</value>
+    <value>Utläggsanspråk</value>
   </data>
   <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
     <value>Inkommande Fakturor</value>
@@ -268,6 +274,9 @@
   <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Resultaträkning</value>
   </data>
+  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
+    <value>Synka om bankkonto</value>
+  </data>
   <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
     <value>Ange Budgetbelopp</value>
   </data>
@@ -346,4 +355,6 @@
   <data name="Menu5_People_SelfSignup" xml:space="preserve">
     <value>Självregistreringssidan</value>
   </data>
+  
+  
 </root>

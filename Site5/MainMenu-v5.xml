@@ -235,7 +235,7 @@
         <Type>Submenu</Type>
         <Children>
 
-          <MainMenuItem>
+          <!-- MainMenuItem>
             <ResourceKey>Administration_CreateOrganization</ResourceKey>
             <UserLevel>4</UserLevel>
             <Permissions />
@@ -249,7 +249,7 @@
             <UserLevel>1</UserLevel>
             <Type>Separator</Type>
             <Children />
-          </MainMenuItem>
+          </MainMenuItem> -->
 
           <MainMenuItem>
                 <ResourceKey />

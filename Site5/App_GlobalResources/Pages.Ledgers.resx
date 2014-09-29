@@ -254,7 +254,7 @@
     <comment>Displayed as header above modally zoomed screenshot</comment>
   </data>
   <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
-    <value>&lt;/p&gt;&lt;p&gt;(The most recent data in Activizr in &lt;em&gt;{0}&lt;/em&gt; is from {1:yyyy-MMM-dd}. You should download bank data from at least &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
+    <value>&lt;/p&gt;&lt;p&gt;(The most recent data in Swarmops in &lt;em&gt;{0}&lt;/em&gt; is from {1:yyyy-MMM-dd}. You should download bank data from at least &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
     <comment>Displayed to help user determine scope of bank download</comment>
   </data>
   <data name="UploadBankFiles_DownloadDataSince_Paypal" xml:space="preserve">
@@ -279,7 +279,7 @@
     <comment>Only translate to languages where SEB is active.</comment>
   </data>
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
-    <value>&lt;p&gt;The file contained {0:N0} transactions. &lt;strong&gt;{1:N0} transactions&lt;/strong&gt; have been successfully imported into the &lt;em&gt;{2}&lt;/em&gt; bookkeeping account. ({3:N0} transactions were duplicates.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;However, the bank balance does not match the records in Activizr.&lt;/strong&gt; This is usually due to missing transactions. Please upload a transaction list with a larger time span to make sure that Activizr sees all transactions.&lt;/p&gt;&lt;p&gt;Activizr's bookkeeping account is currently &lt;strong&gt;not in sync&lt;/strong&gt; with that of the bank.&lt;/p&gt;</value>
+    <value>&lt;p&gt;The file contained {0:N0} transactions. &lt;strong&gt;{1:N0} transactions&lt;/strong&gt; have been successfully imported into the &lt;em&gt;{2}&lt;/em&gt; bookkeeping account. ({3:N0} transactions were duplicates.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;However, the bank balance does not match the records in Swarmops.&lt;/strong&gt; This is usually due to missing transactions. Please upload a transaction list with a larger time span to make sure that Swarmops sees all transactions.&lt;/p&gt;&lt;p&gt;Swarmops's bookkeeping account is currently &lt;strong&gt;not in sync&lt;/strong&gt; with that of the bank.&lt;/p&gt;</value>
     <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
   </data>
   <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
@@ -306,7 +306,7 @@
     <comment>Displayed as header on import failure</comment>
   </data>
   <data name="UploadBankFiles_ImportResults" xml:space="preserve">
-    <value>&lt;p&gt;The file contained {0:N0} transactions. &lt;strong&gt;{1:N0} transactions&lt;/strong&gt; have been successfully imported into the &lt;em&gt;{2}&lt;/em&gt; bookkeeping account. ({3:N0} transactions were duplicates.)&lt;/p&gt;&lt;p&gt;After import, the account balance in Activizr matches that of the bank.&lt;/p&gt;</value>
+    <value>&lt;p&gt;The file contained {0:N0} transactions. &lt;strong&gt;{1:N0} transactions&lt;/strong&gt; have been successfully imported into the &lt;em&gt;{2}&lt;/em&gt; bookkeeping account. ({3:N0} transactions were duplicates.)&lt;/p&gt;&lt;p&gt;After import, the account balance in Swarmops matches that of the bank.&lt;/p&gt;</value>
     <comment>Displayed on successful import. Assumes plural among all pasted numbers.</comment>
   </data>
   <data name="UploadBankFiles_Info" xml:space="preserve">
@@ -321,7 +321,7 @@
     <comment>Displayed above main content.</comment>
   </data>
   <data name="UploadBankFiles_PaymentAllDuplicates" xml:space="preserve">
-    <value>However, they were all duplicates of payment information that was previously uploaded. No new payment information has been imported to Activizr.</value>
+    <value>However, they were all duplicates of payment information that was previously uploaded. No new payment information has been imported to Swarmops.</value>
   </data>
   <data name="UploadBankFiles_PaymentCount" xml:space="preserve">
     <value>no payments|one payment|{0} payments</value>

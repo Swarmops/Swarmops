@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>Ditt önskade kontantförskott för [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har attesterats av budgetens ägare. Kontantförskottet går nu vidare till utbetalning till dig.</value>
@@ -131,6 +131,14 @@ Räkna med att mer kommunikation från budgetägaren följer i ärendet.</value>
   <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
     <value>[OrganizationName] Kontantförskott AV-attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>Din förfrågan om kontantförskott från [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], gällande [RequestPurpose], har markerats som utbetalt av organisationens ekonomiassistenter.
+
+Det betyder att du borde se beloppet på ditt konto inom kort.</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>[OrganizationName] Kontantförskott utbetalt: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
     <value>[ConcernedPersonName] har begärt ett kontantförskott på [CurrencyCode] [BudgetAmountFloat] rörande [RequestPurpose]. Dessa pengar är en del av din budget, [BudgetName].
 
@@ -138,7 +146,7 @@ Vänligen logga på Swarmops på [SystemUrl] för att attestera eller avslå.</v
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Kontantförskott begärt: [CurrencyCode] [BudgetAmountFloat] - Attestering Krävs</value>
+    <value>(ÅTGÄRD BEHÖVS) [OrganizationName] Kontantförskott begärt: [CurrencyCode] [BudgetAmountFloat] - attestering behövs</value>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
     <value>Ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har attesterats av budgetägaren. Det kommer att betalas ut till dig när kvittona granskats för räkenskaperna.</value>
@@ -154,7 +162,8 @@ Vänligen logga på Swarmops på [SystemUrl] för att attestera eller avslå.</v
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>[OrganizationName] Utläggsanspråk skapat: [CurrencyCode] [BudgetAmountFloat] - Attestering Krävs</value>
+    <value>(ÅTGÄRD BEHÖVS) [OrganizationName] Utläggsanspråk skapat: [CurrencyCode] [BudgetAmountFloat] - attestering behövs</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
     <value>Ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har AV-attesterats av budgetägaren. Detta tyder oftast på någon form av problem med ditt utläggsanspråk.
@@ -182,6 +191,14 @@ Räkna med att mer kommunikation följer i ärendet från finansansvariga. Om du
   <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
     <value>[OrganizationName] Kvitton för utläggsanspråk AV-validerade: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>Ditt utläggsanspråk till [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], gällande [RequestPurpose], har markerats som utbetalt av organisationens ekonomiassistenter.
+
+Det betyder att du borde se beloppet på ditt konto inom kort.</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>[OrganizationName] Utläggsanspråk utbetalt: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
     <value>Kvitton och annan dokumentation för ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har validerats av finansansvariga i organisationen. Belopp och syfte stämmer med dokumentationen du laddat upp.
 
@@ -191,6 +208,24 @@ Utläggsanspråket kommer att betalas ut till dig när beloppet också är attes
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
     <value>[OrganizationName] Kvitton för utläggsanspråk validerade: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>En faktura från [Supplier], gällande [Description], har lagts mot din budget [BudgetName] på beloppet [CurrencyCode] [BudgetAmountFloat]. Du måste attestera fakturan innan den går till betalning.
+
+Logga på Swarmops på [SystemUrl] för att attestera eller avslå.</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>(ÅTGÄRD BEHÖVS) [OrganizationName] Faktura inlagd: [CurrencyCode] [BudgetAmountFloat] - Attest behövs</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Kvitton har lagts in som behöver granskas för att gå vidare till utbetalning.
+
+Logga på Swarmops på [SystemUrl] för att godkänna eller avslå dem.</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>(ÅTGÄRD BEHÖVS) [OrganizationName] Kvitton inlagda - Granskning behövs</value>
+  </data>
+  
+  
   <data name="System_Exception_Body" xml:space="preserve">
     <value>En ohanterad exception kastades i Swarmops: [EmbeddedPreformattedText]</value>
   </data>

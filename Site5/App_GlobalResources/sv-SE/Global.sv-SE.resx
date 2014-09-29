@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CurrentUserInfo_Logout" xml:space="preserve">
     <value>Logga ut</value>
@@ -353,5 +353,116 @@
   </data>
   <data name="Global_ImageSpecification" xml:space="preserve">
     <value>Bild {0} av {1}</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Förfallodatum</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Leverantör</value>
+  </data>
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>Svenska</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>Nej</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Ja</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>Tillgångar</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>Utgifter</value>
+  </data>
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>Skulder</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>Intäkter</value>
+  </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>- - Välj en - -</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_Missing" xml:space="preserve">
+    <value>- saknas -</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>- flera -</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_Off" xml:space="preserve">
+    <value>Av</value>
+    <comment>Off (as opposed to On)</comment>
+  </data>
+  <data name="Global_On" xml:space="preserve">
+    <value>På</value>
+    <comment>On (as opposed to Off)</comment>
+  </data>
+  <data name="Global_Activists_Generic_Commercial" xml:space="preserve">
+    <value>Kunder</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Global_Activists_Generic_Governmental" xml:space="preserve">
+    <value>Medborgare</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Global_Activists_Generic_Nonprofit" xml:space="preserve">
+    <value>Aktivister</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Global_Activist_Female_Commercial" xml:space="preserve">
+    <value>Kund</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Global_Activist_Female_Governmental" xml:space="preserve">
+    <value>Medborgare</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Global_Activist_Female_Nonprofit" xml:space="preserve">
+    <value>Aktivist</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Global_Activist_Generic_Commercial" xml:space="preserve">
+    <value>Kund</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Global_Activist_Generic_Governmental" xml:space="preserve">
+    <value>Medborgare</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Global_Activist_Generic_Nonprofit" xml:space="preserve">
+    <value>Aktivist</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Global_Activist_Male_Commercial" xml:space="preserve">
+    <value>Kund</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Global_Activist_Male_Governmental" xml:space="preserve">
+    <value>Medborgare</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Global_Activist_Male_Nonprofit" xml:space="preserve">
+    <value>Aktivist</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Global_Organization_Commercial" xml:space="preserve">
+    <value>Vinstdrivande</value>
+    <comment>A commercial organization (for-profit enterprise)</comment>
+  </data>
+  <data name="Global_Organization_Governmental" xml:space="preserve">
+    <value>Offentlig</value>
+    <comment>Organization that's part of government somehow</comment>
+  </data>
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
+    <value>Ideell</value>
+    <comment>Non-profit (activist, political parties)</comment>
   </data>
 </root>

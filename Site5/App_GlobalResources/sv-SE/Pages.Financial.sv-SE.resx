@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -112,25 +112,25 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
-    <value>Kontantförskott #{0} till {1} har attesterats till beloppet {3:N2}.</value>
+    <value>Kontantförskott #{0:N0} till {1} har attesterats till beloppet {3:N2}.</value>
     <comment>Status message.</comment>
   </data>
   <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
-    <value>Kontantförskott #{0} till {1} har AV-attesterats. Det kommer inte att betalas ut om det inte attesteras igen.</value>
+    <value>Kontantförskott #{0:N0} till {1} har AV-attesterats. Det kommer inte att betalas ut om det inte attesteras igen.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
-    <value>Utläggsanspråk #{0} från {1} för {2} {3:N2} har attesterats.</value>
+    <value>Utläggsanspråk #{0:N0} från {1} för {2} {3:N2} har attesterats.</value>
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
-    <value>Utläggsanspråk #{0} från {1} har AV-attesterats. Det kommer inte att betalas ut förrän det attesterats igen.</value>
+    <value>Utläggsanspråk #{0:N0} från {1} har AV-attesterats. Det kommer inte att betalas ut förrän det attesterats igen.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
@@ -166,32 +166,78 @@
     <value>Här attesterar du belopp som andra personer vill ha från dina budgetar. Inget betalas ut före det attesterats.</value>
   </data>
   <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
-    <value>Faktura #{0} från {1} på {2} {3:N2} attesterades.</value>
+    <value>Faktura #{0:N0} från {1} på {2} {3:N2} attesterades.</value>
     <comment>{2} is the currency.</comment>
   </data>
   <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
-    <value>Faktura #{0} från {1} har AV-attesterats. Den kommer inte att betalas förrän den attesterats igen.</value>
+    <value>Faktura #{0:N0} från {1} har AV-attesterats. Den kommer inte att betalas förrän den attesterats igen.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>Attestera kostnader</value>
   </data>
   <data name="AttestCosts_ParleyAttested" xml:space="preserve">
-    <value>Konferens #{0} som arrangeras av {1} har attesterats för {3:N2}.</value>
+    <value>Konferens #{0:N0} som arrangeras av {1} har attesterats för {3:N2}.</value>
   </data>
   <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
-    <value>Konferens #{0} av {1} har AV-attesterats. Den kommer inte att få garantimedel förrän den attesteras igen.</value>
+    <value>Konferens #{0:N0} av {1} har AV-attesterats. Den kommer inte att få garantimedel förrän den attesteras igen.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
   <data name="AttestCosts_SalaryAttested" xml:space="preserve">
-    <value>Lön #{0} till {1} attesterades till en totalkostnad av {3:N2}.</value>
+    <value>Löneutbetalning #{0:N0} till {1} attesterades till en totalkostnad av {3:N2}.</value>
   </data>
   <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
-    <value>Lön #{0} till {1} har AV-attesterats. Lönen kommer inte att betalas ut om den inte attesteras igen.</value>
+    <value>Löneutbetalning #{0:N0} till {1} har AV-attesterats. Lönen kommer inte att betalas ut om den inte attesteras igen.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>Fakturabelopp (i {0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Beskrivning</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice_HeaderInvoiceImage" xml:space="preserve">
+    <value>Fakturabild</value>
+  </data>
+  <data name="CreateInboundInvoice_HeaderPaymentDetails" xml:space="preserve">
+    <value>Betalningsdetaljer</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice_Info" xml:space="preserve">
+    <value>Här lägger du in fakturor som din organisation tagit emot ("leverantörsreskontra"). Lägg in leverantörens namn, fakturans belopp, förfallodatum, referensnummer, och ladda upp en bild på fakturan. Välj också en budget. Budgetägaren behöver attestera, som vanligt.</value>
+  </data>
+  <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
+    <value>Mottagit faktura</value>
+  </data>
+  <data name="CreateInboundInvoice_Reference" xml:space="preserve">
+    <value>Fakturareferens</value>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceAutomaticOcr" xml:space="preserve">
+    <value>OCR / automatisk</value>
+    <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceManual" xml:space="preserve">
+    <value>Manuell</value>
+    <comment>Other invoices come without automated processing and a manual </comment>
+  </data>
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>Leverantörsfaktura #{0:N0} inlagd.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
+  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
+    <value>Konto</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
+    <value>Ladda upp bild</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
+    <value>Ange leverantörens bankkonto eller motsvarande.</value>
+  </data>
   <data name="FileExpenseClaim_Amount" xml:space="preserve">
-    <value>Belopp på utläggsanspråk (i {0})</value>
+    <value>Belopp för utläggsanspråk (i {0})</value>
     <comment>{0} is the currency.</comment>
   </data>
   <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
@@ -236,7 +282,7 @@
     <value>Eftersom detta är din egen budget, så är attestering redan gjord. Endast validering av kvitton är nödvändigt, och det görs av finansansvariga.</value>
   </data>
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
-    <value>Ladda upp kvittobilder:</value>
+    <value>Ladda upp kvittobilder</value>
   </data>
   <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
     <value>Skriv in beloppet (i {0}) som du gör anspråk på.</value>
@@ -290,11 +336,11 @@
     <value>Kan inte ångra utbetalning #{0}: den är stängd eller har redan gått till betalning.</value>
   </data>
   <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
-    <value>Utbetalning #{0} till {1} skapades.</value>
+    <value>Utbetalning #{0:N0} till {1} skapades.</value>
     <comment>Written as log message when the user confirms a payout has been made.</comment>
   </data>
   <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
-    <value>Utbetalning #{0} ångrades och allt återställdes.</value>
+    <value>Utbetalning #{0:N0} ångrades och allt återställdes.</value>
   </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>Förskottsbelopp (i {0})</value>
@@ -364,9 +410,9 @@
     <value>Validera kvitton</value>
   </data>
   <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
-    <value>Kvittona för utläggsanspråk #{0} på {1} {2:N2} har AV-validerats. Utläggsanspråket kommer inte att gå till utbetalning om de inte valideras på nytt.</value>
+    <value>Kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har AV-godkänts. Utläggsanspråket kommer inte att gå till utbetalning om de inte granskas och godkänns på nytt.</value>
   </data>
   <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
-    <value>Kvittona för utläggsanspråk #{0} på {1} {2:N2} har validerats.</value>
+    <value>Kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har godkänts.</value>
   </data>
 </root>

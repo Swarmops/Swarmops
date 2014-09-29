@@ -33,6 +33,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         protected void ButtonRequest_Click(object sender, EventArgs e)
         {
+            string successMessage = string.Empty;
+
             // Create org here
 
             Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(successMessage)));
