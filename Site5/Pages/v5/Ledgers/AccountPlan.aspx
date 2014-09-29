@@ -80,7 +80,7 @@
 	                    $('#TextAccountName').val('...').css('background-color', '#DDD');
 	                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', '...');
 	                    accountTree.combotree('setText', '...');
-
+	                    parentAccountName = '';
 
 	                    window.scrollTo(0, 0);
 	                    $('body').css('overflow-y', 'hidden');
