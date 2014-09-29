@@ -96,7 +96,14 @@ namespace Swarmops.Logic.Support
 
             if (upgraded)
             {
-                OutboundComm.CreateNotification(null, NotificationResource.System_DatabaseSchemaUpgraded);
+                try
+                {
+                    OutboundComm.CreateNotification(null, NotificationResource.System_DatabaseSchemaUpgraded);
+                }
+                catch (ArgumentException)
+                {
+                    // this is ok - if we're in the install process, person 1 or other notification targets won't exist yet
+                }
             }
         }
     }
