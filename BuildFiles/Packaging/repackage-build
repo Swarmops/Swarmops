@@ -21,6 +21,7 @@ elif [ "$1" == "sprint" ]; then
   echo "Packaging END-OF-SPRINT for normal deployments."
 elif [ "$1" == "" ]; then
   DROPFOLDER=internal
+  echo "internal" > ../lastbuild/swarmops/internal/SprintName.txt
   echo "Packaging internal test build."
 else
   echo "Syntax: repackage-build [sprint|release]"
@@ -45,16 +46,18 @@ echo ""
 echo "Notifying developers that new build has packaged for test/deployment..."
 
 if [ "$DROPFOLDER" == "internal" ]; then
+  PACKAGELABEL="$DROPFOLDER"
   echo "$(cat ../lastbuild/swarmops/internal/CommitMessage.txt)" > deploymsg.txt
   echo "" >> deploymsg.txt
   echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at http://dev.swarmops.com/ as usual. Last 3 commits listed above." >> deploymsg.txt
 else
+  PACKAGELABEL="$DROPFOLDER $(cat ../lastbuild/swarmops/$DROPFOLDER/SprintName.txt | tr -d '\n')"
   echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!" > deploymsg.txt
 fi
 
 # TODO: Add build messages to deploy message, at least for internal build
 
-mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops $BUILDID ($DROPFOLDER) packaged." "swarmops.developers@groups.facebook.com" < deploymsg.txt
+mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops $BUILDID ($PACKAGELABEL) packaged." "swarmops.developers@groups.facebook.com" < deploymsg.txt
 
 rm deploymsg.txt
 
