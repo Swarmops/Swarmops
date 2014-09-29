@@ -209,7 +209,19 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// Free-text description of an inbound invoice (what's it for?)
         /// </summary>
-        InboundInvoiceDescription
+        InboundInvoiceDescription,
+        /// <summary>
+        /// Geopos - longitude. Float in degrees. Positive is north.
+        /// </summary>
+        Longitude,
+        /// <summary>
+        /// Geopos - latitude. Float in degrees. Positive is east.
+        /// </summary>
+        Latitude,
+        /// <summary>
+        /// A National ID number, if any. Like US SSN.
+        /// </summary>
+        NationalIdNumber
     }
 
 }
