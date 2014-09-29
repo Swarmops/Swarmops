@@ -267,11 +267,33 @@ namespace Swarmops.Logic.Swarm
             set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.CryptoRevocation, value); }
         }
 
+        [Obsolete ("Use NationalIdNumber instead")]
         public virtual string PersonalNumber
         {
             get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.PersonalNumber); }
             set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.PersonalNumber, value); }
         }
+
+        public virtual string NationalIdNumber
+        {
+            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.NationalIdNumber); }
+            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.NationalIdNumber, value); }
+        }
+
+        public virtual string Longitude
+        {
+            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.Longitude); }
+            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.Longitude, value); }
+        }
+
+        public virtual string Latitude
+        {
+            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.Latitude); }
+            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.Latitude, value); }
+        }
+
+
+
 
 
         public virtual bool MailUnreachable
@@ -511,7 +533,7 @@ namespace Swarmops.Logic.Swarm
 
             if (countryCode.Length > 0)
             {
-                country = SwarmDb.GetDatabaseForReading().GetCountry(countryCode);
+                country = Structure.Country.FromCode(countryCode);
             }
 
             // Clean data
