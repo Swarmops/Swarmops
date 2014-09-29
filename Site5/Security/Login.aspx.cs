@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
@@ -24,11 +25,22 @@ namespace Swarmops.Pages.Security
                 return;
             }
 
+            // If this is the Dev Sandbox, autologin
+
+            if (Request.Url.Host == "dev.swarmops.com" &&
+                PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+            {
+                Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode("<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><p><strong>In other words, welcome, and play away!</strong></p>")));
+                FormsAuthentication.RedirectFromLoginPage("1,1", true);
+            }
+
+
             // THE DAMN BITID NEEDS TO GO INTO ANDROID WALLET SO WE CAN STREAMLINE AND REWRITE THIS POS
 
 
             this.LabelLoginFailed.Visible = false;
             this.TextLogin.Focus();
+
 
             // Check for SSL and force it
 
