@@ -86,22 +86,6 @@ END
 #
 
 
-
-CREATE PROCEDURE `SetFinancialAccountParent`(
-  IN financialAccountId INTEGER,
-  IN parentFinancialAccountId INTEGER
-)
-BEGIN
-
-  UPDATE FinancialAccounts SET FinancialAccounts.ParentFinancialAccountId = parentFinancialAccountId
-      WHERE FinancialAccounts.FinancialAccountId=financialAccountId;
-
-END
-
-
-#
-
-
 CREATE PROCEDURE `MoveFinancialTransactionRowRangeToNewAccount`(
   IN oldFinancialAccountId INTEGER,
   IN newFinancialAccountId INTEGER,
