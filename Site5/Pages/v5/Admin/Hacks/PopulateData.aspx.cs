@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
@@ -29,10 +34,34 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
         }
 
 
-        protected void ButtonProcess_Click(object sender, EventArgs e)
+        [WebMethod(true)]
+        public static void InitializeProcessing(string guid)
         {
+            // Start an async thread that does all the work, then return
 
-            string data = this.TextData.Text;
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (!authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Unknown, AccessType.Write)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            Thread initThread = new Thread(ProcessUploadThread);
+            initThread.Start(guid);
+        }
+
+        static private void ProcessUploadThread(object guidObject)
+        {
+            string guid = (string) guidObject;
+            Documents documents = Documents.RecentFromDescription(guid);
+            Document uploadedDoc = documents[0];
+            string data = string.Empty;
+            int count = 0;
+
+            using (StreamReader reader = uploadedDoc.GetReader(1252))
+            {
+                data = reader.ReadToEnd();
+            }
 
             string[] lines = data.Split('\n');
 
@@ -40,6 +69,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
 
             foreach (string lineRaw in lines)
             {
+                count++;
                 string line = lineRaw.Trim();
                 string[] lineParts = line.Split('\t');
 
@@ -47,6 +77,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
                 {
                     continue;
                 }
+
+                int percent = (count * 99) / lines.Length;
+                if (percent == 0)
+                {
+                    percent = 1;
+                }
+                GuidCache.Set(guid + "-Progress", percent);
 
                 string name = lineParts[0] + " " + lineParts[1];
                 PersonGender gender = lineParts[2] == "male" ? PersonGender.Male : PersonGender.Female;
@@ -64,13 +101,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
                 newPerson.AddMembership(1, DateTime.Today.AddDays(random.Next(365)));
             }
 
-
-
-            Response.AppendCookie(new HttpCookie("DashboardMessage", "Data was successfully processed."));
-
-            // Redirect to dashboard
-
-            Response.Redirect("/", true);
+            GuidCache.Set(guid + "-Progress", 100);
         }
 
     }

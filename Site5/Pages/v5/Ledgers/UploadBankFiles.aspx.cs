@@ -21,6 +21,10 @@ using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
 
+// TODO: There are significant remnants in this file from the old Telerik-based upload code. When Account Automation is complete and the user can select a bank profile
+// for an account, uploading payment files as well as bank statements, remove that dead code as its templates won't be needed after that.
+
+
 // ReSharper disable CheckNamespace
 namespace Swarmops.Site.Pages.Ledgers
 // ReSharper restore CheckNamespace
