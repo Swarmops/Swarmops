@@ -48,7 +48,7 @@
                                 width: "100%"
                             }, { queue: false });
                         
-                        this.document.location = '/';
+                        window.location = '/';
 
                     } else {
 

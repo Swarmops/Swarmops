@@ -13,11 +13,12 @@
         <Children>
           
             <MainMenuItem>
-                <ResourceKey>Placeholder_Todo</ResourceKey>
-                <UserLevel>1</UserLevel>
+                <ResourceKey>People_ListFind</ResourceKey>
+                <UserLevel>2</UserLevel>
                 <Permissions />
                 <ImageUrl />
-                <Type>Disabled</Type>
+                <NavigateUrl>/Pages/v5/People/ListFindPeople.aspx</NavigateUrl>
+                <Type>Link</Type>
                 <Children />
             </MainMenuItem>
         
