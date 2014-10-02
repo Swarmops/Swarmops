@@ -11,8 +11,8 @@
                            if (!String.IsNullOrEmpty(this.OnClientLoaded))
                            {
                                 Response.Write(this.OnClientLoaded + "(); ");
-                           }
-                           Response.Write("}");
+                           }%>
+                }<% 
                            if (!String.IsNullOrEmpty(this.OnClientSelect))
                            {
                                Response.Write(", onSelect: function(account) { " + this.OnClientSelect + "(account.id); }");

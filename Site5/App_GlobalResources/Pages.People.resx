@@ -117,10 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FindListPeople_Info" xml:space="preserve">
+  <data name="ListFindPeople_Info" xml:space="preserve">
     <value>Find people in the organization (write more here)</value>
   </data>
-  <data name="FindListPeople_Title" xml:space="preserve">
-    <value>Find, List People</value>
+  <data name="ListFindPeople_MatchingPeopleInX" xml:space="preserve">
+    <value>Matching People in {0}</value>
+    <comment>The {0} parameter is the organization name.</comment>
+  </data>
+  <data name="ListFindPeople_NamePattern" xml:space="preserve">
+    <value>Name Pattern</value>
+  </data>
+  <data name="ListFindPeople_Title" xml:space="preserve">
+    <value>List and Find People</value>
+  </data>
+  <data name="ListFindPeople_TooManyHits" xml:space="preserve">
+    <value>Over 1,000 matches. Please refine search.</value>
   </data>
 </root>

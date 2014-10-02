@@ -36,7 +36,7 @@ namespace Swarmops.Utility.BotCode
                 case (int)TypedMailTemplate.TemplateType.MemberMail: 
                     // All members at this org and geography
 
-                    People people = People.FromOrganizationAndGeography(mail.OrganizationId, mail.GeographyId);
+                    People people = People.FromOrganizationAndGeography(mail.Organization, mail.Geography);
                     downwardCount = people.Count;
                     foreach (Person person in people)
                     {

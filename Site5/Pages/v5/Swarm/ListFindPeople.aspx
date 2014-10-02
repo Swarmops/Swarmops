@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="ListFindPeople.aspx.cs" Inherits="Swarmops.Frontend.Pages.People.ListFindPeople" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="ListFindPeople.aspx.cs" Inherits="Swarmops.Frontend.Pages.Swarm.ListFindPeople" %>
 <%@ Register src="~/Controls/v5/UI/ExternalScripts.ascx" tagname="ExternalScripts" tagprefix="Swarmops5" %>
 <%@ Register src="~/Controls/v5/Base/ComboGeographies.ascx" tagname="ComboGeographies" tagprefix="Swarmops5" %>
 
@@ -25,7 +25,28 @@
         ]);
 
         $(document).ready(function () {
-            $('#TablePayableCosts').datagrid(
+
+            $('#<%=this.TextNamePattern.ClientID%>').on('fieldchange', function () {
+                var newNamePattern = $('#<%=this.TextNamePattern.ClientID%>').val();
+                if (newNamePattern != lastNamePattern && newNamePattern.length >= 3) {
+                    lastNamePattern = newNamePattern;
+                    $('#TableSearchResults').datagrid({ url: 'Json-ListFindPeople.aspx?Pattern=' + escape(newNamePattern) + '&GeographyId=' + selectedGeographyId });
+                }
+            });
+
+            $('#<%=this.TextNamePattern.ClientID%>').on('input', function () {
+                clearTimeout(this.delayer);
+
+                var context = this;
+                this.delayer = setTimeout(function () {
+                    $(context).trigger('fieldchange');
+                }, 1000);
+            });
+
+            var count = 0;
+
+
+            $('#TableSearchResults').datagrid(
                 {
                     onLoadSuccess: function () {
                         $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
@@ -117,6 +138,16 @@
             );
         });
 
+        function onGeographyChange(newGeographyId) {
+            if (newGeographyId != selectedGeographyId) {
+                selectedGeographyId = newGeographyId;
+                $('#TableSearchResults').datagrid({ url: 'Json-ListFindPeople.aspx?Pattern=' + escape(lastNamePattern) + '&GeographyId=' + selectedGeographyId });
+            }
+        }
+
+        var lastNamePattern = '';
+        var selectedGeographyId = 1;
+
     </script>
 
     <style type="text/css">
@@ -126,23 +157,22 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label runat="server" ID="LabelPayOutMoneyHeader" Text="Find / List People XYZ" /></h2>
-    <div class="entryFields">
-        <Swarmops5:ComboGeographies ID="ComboGeographies" runat="server" />&thinsp;<br/>
-        <asp:TextBox runat="server" ID="NamePattern" />
+    <div class="entryFields" style="padding-top:4px">
+        <Swarmops5:ComboGeographies ID="ComboGeographies" runat="server" OnClientSelect="onGeographyChange" />&thinsp;<br/>
+        <asp:TextBox runat="server" ID="TextNamePattern" />
     </div>
-    <div class="entryLabels">
-        Geography<br/>
-        Name pattern<br/>
+    <div class="entryLabels" style="padding-top:10px">
+        <asp:Label ID="LabelGeography" runat="server" /><br/>
+        <asp:Label ID="LabelNamePattern" runat="server" /><br/>
     </div>
-    <h2>Matching people</h2>
-    <table id="TablePayableCosts" class="easyui-datagrid" style="width:680px;height:500px"
-        data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-PayableCosts.aspx'"
+    <h2 style="padding-top:15px"><asp:Label ID="LabelMatchingPeopleInX" runat="server" /></h2>
+    <table id="TableSearchResults" class="easyui-datagrid" style="width:680px;height:500px"
+        data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
         idField="itemId">
-        <thead>  
-            <tr>  
-                <th data-options="field:'due',width:70"><asp:Label ID="LabelGridHeaderDue" runat="server" Text="XYZ Due"/></th>  
-                <th data-options="field:'recipient',width:150,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
+        <thead>
+            <tr>
+                <th data-options="field:'name',width:70"><asp:Label ID="LabelGridHeaderDue" runat="server" Text="XYZ Due"/></th>  
+                <th data-options="field:'geographyName',width:150,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
                 <th data-options="field:'bank',width:70"><asp:Label ID="LabelGridHeaderBank" runat="server" Text="XYZ Bank" /></th>  
                 <th data-options="field:'account',width:120,sortable:true"><asp:Label ID="LabelGridHeaderAccount" runat="server" Text="XYZ Account" /></th>
                 <th data-options="field:'reference',width:140,sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderReference" runat="server" Text="XYZ Reference" /></th>

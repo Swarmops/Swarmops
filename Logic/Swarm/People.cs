@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Enums;
+using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Security;
@@ -68,27 +69,12 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromNamePattern (string namePattern)
         {
-            // Remove any injection codes
-            namePattern = namePattern.Replace("%", String.Empty).Trim();
-
-            while (namePattern.Contains("  "))
+            if (namePattern.Trim().Length < 3)
             {
-                namePattern = namePattern.Replace("  ", " ");
+                return new People();
             }
 
-            if (namePattern.Length > 0)
-            {
-                namePattern = namePattern.Replace(" ", "% ") + "%";
-
-                if (!namePattern.Contains(" "))
-                {
-                    namePattern = "%" + namePattern;
-                }
-
-                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromNamePattern(namePattern));
-            }
-
-            return null; // If no valid search string was supplied
+            return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromNamePattern(namePattern));
         }
 
         public static People FromBirthDatePattern (DateTime fromdate, DateTime todate)
@@ -269,9 +255,34 @@ namespace Swarmops.Logic.Swarm
             return retlist;
         }
 
-        public static People FromOrganizationAndGeography (int organizationId, int geographyId)
+
+        public static People FromOrganizationAndGeographyWithPattern(Organization organization, Geography geography,
+            string pattern)
         {
-            Geographies geoTree = Geography.FromIdentity(geographyId).GetTree();
+            Geographies geoTree = geography.GetTree();
+
+            pattern = pattern.Trim();
+            if (pattern.Length == 0)
+            {
+                return FromOrganizationAndGeography(organization, geography);
+            }
+            else if (pattern.Length < 3)
+            {
+                // too short pattern! Return empty set.
+                return new People();
+            }
+
+            // First, get list of people in the geography, then filter on memberships
+
+            BasicPerson[] candidates = SwarmDb.GetDatabaseForReading().GetPeopleInGeographiesWithPattern(geoTree.Identities, pattern);
+
+            return FilterByMembership(candidates, organization);
+        }
+
+
+        public static People FromOrganizationAndGeography(Organization organization, Geography geography)
+        {
+            Geographies geoTree = geography.GetTree();
 
             // First, get list of people in the geography, then filter on memberships
 
@@ -279,9 +290,16 @@ namespace Swarmops.Logic.Swarm
 
             // Filter on memberships
 
+            return FilterByMembership(people, organization);
+        }
+
+
+        private static People FilterByMembership(BasicPerson[] candidates, Organization organization)
+        {
+           
             // Get the organization tree
 
-            Organizations orgTree = Organization.FromIdentity(organizationId).GetTree();
+            Organizations orgTree = organization.GetTree();
 
             // Build a lookup table of this organization tree. For each person in 'people' 
             // that has at least one membership in an organization in the lookup table,
@@ -297,11 +315,11 @@ namespace Swarmops.Logic.Swarm
             // Get the list of all memberships
 
             Dictionary<int, List<BasicMembership>> memberships =
-                SwarmDb.GetDatabaseForReading().GetMembershipsForPeople(LogicServices.ObjectsToIdentifiers(people));
+                SwarmDb.GetDatabaseForReading().GetMembershipsForPeople(LogicServices.ObjectsToIdentifiers(candidates));
 
             var result = new People();
 
-            foreach (BasicPerson basicPerson in people)
+            foreach (BasicPerson basicPerson in candidates)
             {
                 bool memberOfOrganization = false;
 

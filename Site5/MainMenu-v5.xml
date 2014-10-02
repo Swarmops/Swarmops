@@ -17,7 +17,7 @@
                 <UserLevel>2</UserLevel>
                 <Permissions />
                 <ImageUrl />
-                <NavigateUrl>/Pages/v5/People/ListFindPeople.aspx</NavigateUrl>
+                <NavigateUrl>/Pages/v5/Swarm/ListFindPeople.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>

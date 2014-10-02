@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Security;
 using System.Text;
 
 using MySql.Data;
@@ -226,6 +227,24 @@ namespace Swarmops.Database
         private static string MySqlDate (DateTime d)
         {
             return d.ToString("yyyyMMddHHmmss");
+        }
+
+
+        private string SqlSanitize(string input)
+        {
+            string[] forbiddenArray = {"\\", "--", ";", "/*", "*/", "select ", "drop ", "update ", "delete ", "insert ", "="};
+
+            string output = input.Replace("'", "''"); // the typical case
+            string inputLower = input.ToLowerInvariant();
+            foreach (string forbidden in forbiddenArray)
+            {
+                if (inputLower.Contains(forbidden))
+                {
+                    throw new SecurityException("Attempt at SQL injection: parameter passed to SELECT was '" + input + "'");
+                }
+            }
+
+            return output;
         }
     }
 }

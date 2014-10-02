@@ -64,7 +64,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + personFieldSequence + " WHERE Name like '" + namePattern.Replace("'", "''") + "'",
+                        "SELECT " + personFieldSequence + " WHERE Name like '" + GetSqlPatternFromNamePattern(namePattern).Replace("'", "''") + "'",
                         connection);
                 command.CommandTimeout = 120;
 
@@ -78,6 +78,31 @@ namespace Swarmops.Database
             }
 
             return result.ToArray();
+        }
+
+        private string GetSqlPatternFromNamePattern(string namePattern)
+        {
+            // Remove any injection codes
+            namePattern = SqlSanitize(namePattern).Replace("%", String.Empty).Trim();
+
+            while (namePattern.Contains("  "))
+            {
+                namePattern = namePattern.Replace("  ", " ");
+            }
+
+            if (namePattern.Length > 0)
+            {
+                namePattern = namePattern.Replace(" ", "% ") + "%";
+
+                if (!namePattern.Contains(" "))
+                {
+                    namePattern = "%" + namePattern;
+                }
+
+                return namePattern;
+            }
+
+            return string.Empty; // If no valid search string was supplied
         }
 
         public BasicPerson[] GetPeopleFromBirthdate (DateTime fromdate, DateTime todate)
@@ -405,7 +430,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicPerson[] GetPeopleInGeographies (int[] geographyIds)
+        public BasicPerson[] GetPeopleInGeographies(int[] geographyIds)
         {
             if (geographyIds.Length == 0)
             {
@@ -435,7 +460,45 @@ namespace Swarmops.Database
 
 
 
-        public void SetPersonName (int personId, string name)
+        public BasicPerson[] GetPeopleInGeographiesWithPattern (int[] geographyIds, string pattern)
+        {
+            if (geographyIds.Length == 0)
+            {
+                return new BasicPerson[0];
+            }
+
+            pattern = pattern.Trim();
+
+            if (pattern.Length == 0)
+            {
+                return GetPeopleInGeographies(geographyIds); // no pattern => fall back to just geography
+            }
+
+            string sqlPattern = GetSqlPatternFromNamePattern(pattern);
+            List<BasicPerson> result = new List<BasicPerson>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+                DbCommand command =
+                    GetDbCommand("SELECT " + personFieldSequence + " WHERE GeographyId IN (" + JoinIds(geographyIds) + ") AND (Name like '" + sqlPattern + "' OR Email like '" + sqlPattern + "')",
+                                 connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadPersonFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+
+
+
+        public void SetPersonName(int personId, string name)
         {
             this.SetPersonBasicStringValue(personId, "Name", name);
         }

@@ -392,7 +392,7 @@
     <value>Revenue</value>
   </data>
   <data name="Global_SelectOne" xml:space="preserve">
-    <value>- - Select one - -</value>
+    <value>-- Select one --</value>
     <comment>Shown in dropdowns when selection required</comment>
   </data>
   <data name="Global_Missing" xml:space="preserve">
@@ -470,5 +470,9 @@
   <data name="Global_Organization_Nonprofit" xml:space="preserve">
     <value>Non-profit</value>
     <comment>Non-profit (activist, political parties)</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>Geography</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
   </data>
 </root>

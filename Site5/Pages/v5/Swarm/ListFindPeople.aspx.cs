@@ -11,7 +11,7 @@ using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
-namespace Swarmops.Frontend.Pages.People
+namespace Swarmops.Frontend.Pages.Swarm
 {
     public partial class ListFindPeople : PageV5Base
     {
@@ -29,9 +29,13 @@ namespace Swarmops.Frontend.Pages.People
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages.Financial.PayOutMoney_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Financial.PayOutMoney_Info;
-            this.LabelPayOutMoneyHeader.Text = Resources.Pages.Financial.PayOutMoney_Header;
+            this.PageTitle = Resources.Pages.People.ListFindPeople_Title;
+            this.InfoBoxLiteral = Resources.Pages.People.ListFindPeople_Info;
+            this.LabelGeography.Text = Resources.Global.Global_Geography;
+            this.LabelNamePattern.Text = Resources.Pages.People.ListFindPeople_NamePattern;
+            this.LabelMatchingPeopleInX.Text = String.Format(Resources.Pages.People.ListFindPeople_MatchingPeopleInX,
+                this.CurrentOrganization.Name);
+
             this.LabelGridHeaderAccount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_BankAccount;
             this.LabelGridHeaderAmount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Amount;
             this.LabelGridHeaderBank.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_BankName;

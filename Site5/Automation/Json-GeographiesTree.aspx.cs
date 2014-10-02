@@ -66,7 +66,7 @@ namespace Swarmops.Frontend.Automation
 
             int renderRootNodeId = rootGeography.ParentGeographyId; // This works as rootGeography will be the only present child in the collection; other children won't be there
 
-            accountsJson = RecurseTreeMap(treeMap, renderRootNodeId);
+            accountsJson = RecurseTreeMap(treeMap, renderRootNodeId, true);
 
             Cache.Insert(cacheKey, accountsJson, null, DateTime.Now.AddMinutes(5), TimeSpan.Zero);
                 // cache lasts for five minutes, no sliding expiration
@@ -75,7 +75,7 @@ namespace Swarmops.Frontend.Automation
             Response.End();
         }
 
-        private string RecurseTreeMap(Dictionary<int, List<Geography>> treeMap, int node)
+        private string RecurseTreeMap(Dictionary<int, List<Geography>> treeMap, int node, bool expanded)
         {
             List<string> elements = new List<string>();
 
@@ -86,7 +86,7 @@ namespace Swarmops.Frontend.Automation
 
                 if (treeMap.ContainsKey(geography.Identity))
                 {
-                    element += ",\"state\":\"closed\",\"children\":" + RecurseTreeMap(treeMap, geography.Identity);
+                    element += ",\"state\":\"" + (expanded? "open":"closed") + "\",\"children\":" + RecurseTreeMap(treeMap, geography.Identity, false);
                 }
 
                 elements.Add("{" + element + "}");
