@@ -31,6 +31,10 @@
                 if (newNamePattern != lastNamePattern && newNamePattern.length >= 3) {
                     lastNamePattern = newNamePattern;
                     $('#TableSearchResults').datagrid({ url: 'Json-ListFindPeople.aspx?Pattern=' + escape(newNamePattern) + '&GeographyId=' + selectedGeographyId });
+                } else if (newNamePattern.length < 3 && newNamePattern != lastNamePattern && selectedGeographyId != 1) {
+                    $('#TableSearchResults').datagrid({ url: 'Json-ListFindPeople.aspx?Pattern=&GeographyId=' + selectedGeographyId });
+                } else { // empty pattern and "world"
+                    $('#TableSearchResults').datagrid({ url: '' });
                 }
             });
 
@@ -141,7 +145,11 @@
         function onGeographyChange(newGeographyId) {
             if (newGeographyId != selectedGeographyId) {
                 selectedGeographyId = newGeographyId;
-                $('#TableSearchResults').datagrid({ url: 'Json-ListFindPeople.aspx?Pattern=' + escape(lastNamePattern) + '&GeographyId=' + selectedGeographyId });
+                if (selectedGeographyId != 1 || lastNamePattern.length > 2) { // do not allow carte-blance listing for "world"
+                    $('#TableSearchResults').datagrid({ url: 'Json-ListFindPeople.aspx?Pattern=' + escape(lastNamePattern) + '&GeographyId=' + selectedGeographyId });
+                } else {
+                    $('#TableSearchResults').datagrid({ url: '' });
+                }
             }
         }
 
@@ -171,13 +179,12 @@
         idField="itemId">
         <thead>
             <tr>
-                <th data-options="field:'name',width:70"><asp:Label ID="LabelGridHeaderDue" runat="server" Text="XYZ Due"/></th>  
-                <th data-options="field:'geographyName',width:150,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
-                <th data-options="field:'bank',width:70"><asp:Label ID="LabelGridHeaderBank" runat="server" Text="XYZ Bank" /></th>  
-                <th data-options="field:'account',width:120,sortable:true"><asp:Label ID="LabelGridHeaderAccount" runat="server" Text="XYZ Account" /></th>
-                <th data-options="field:'reference',width:140,sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderReference" runat="server" Text="XYZ Reference" /></th>
-                <th data-options="field:'amount',width:80,align:'right'"><asp:Label ID="LabelGridHeaderAmount" runat="server" Text="XYZ Amount" /></th>
-                <th data-options="field:'action',width:43,align:'center'"><asp:Label ID="LabelGridHeaderPaid" runat="server" Text="XYZPaid" /></th>
+                <th data-options="field:'name',width:210"><asp:Label ID="LabelGridHeaderName" runat="server" Text="XYZ Name"/></th>  
+                <th data-options="field:'geographyName',width:150,sortable:true"><asp:Label ID="LabelGridHeaderGeography" runat="server" Text="XYZ Geography" /></th>
+                <th data-options="field:'mail',width:105,sortable:true"><asp:Label ID="LabelGridHeaderMail" runat="server" Text="XYZ Mail" /></th>  
+                <th data-options="field:'phone',width:100,sortable:true"><asp:Label ID="LabelGridHeaderPhone" runat="server" Text="XYZ Phone" /></th>
+                <th data-options="field:'notes',width:50"><asp:Label ID="LabelGridHeaderNotes" runat="server" Text="XYZ Notes" /></th>
+                <th data-options="field:'actions',width:43,align:'center'"><asp:Label ID="LabelGridHeaderAction" runat="server" Text="XYZ Actions" /></th>
             </tr>  
         </thead>
     </table>  

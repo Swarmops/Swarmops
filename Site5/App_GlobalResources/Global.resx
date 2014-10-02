@@ -475,4 +475,24 @@
     <value>Geography</value>
     <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
   </data>
+  <data name="Global_Action" xml:space="preserve">
+    <value>Action</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>Mail</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>Name</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>Notes</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Phone" xml:space="preserve">
+    <value>Phone</value>
+    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  </data>
 </root>

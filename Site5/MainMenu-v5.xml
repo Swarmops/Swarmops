@@ -16,7 +16,7 @@
                 <ResourceKey>People_ListFind</ResourceKey>
                 <UserLevel>2</UserLevel>
                 <Permissions />
-                <ImageUrl />
+                <ImageUrl>iconshock-group-search</ImageUrl>
                 <NavigateUrl>/Pages/v5/Swarm/ListFindPeople.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />

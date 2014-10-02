@@ -37,7 +37,8 @@ namespace Swarmops.Logic.Security
     {
         Unknown = 0,
         Bookkeeping,
-        Financials
+        Financials,
+        PersonData
     }
 
     public enum AccessType

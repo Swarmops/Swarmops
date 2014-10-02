@@ -17,7 +17,7 @@ namespace Swarmops.Frontend.Pages.Swarm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageIcon = "iconshock-money-envelope";
+            this.PageIcon = "iconshock-group-search";
 
             if (!Page.IsPostBack)
             {
@@ -36,13 +36,12 @@ namespace Swarmops.Frontend.Pages.Swarm
             this.LabelMatchingPeopleInX.Text = String.Format(Resources.Pages.People.ListFindPeople_MatchingPeopleInX,
                 this.CurrentOrganization.Name);
 
-            this.LabelGridHeaderAccount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_BankAccount;
-            this.LabelGridHeaderAmount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Amount;
-            this.LabelGridHeaderBank.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_BankName;
-            this.LabelGridHeaderDue.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_DueDate;
-            this.LabelGridHeaderPaid.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PaidOut;
-            this.LabelGridHeaderRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
-            this.LabelGridHeaderReference.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference;
+            this.LabelGridHeaderAction.Text = Resources.Global.Global_Action;
+            this.LabelGridHeaderGeography.Text = Resources.Global.Global_Geography;
+            this.LabelGridHeaderMail.Text = Resources.Global.Global_Mail;
+            this.LabelGridHeaderName.Text = Resources.Global.Global_Name;
+            this.LabelGridHeaderPhone.Text = Resources.Global.Global_Phone;
+            this.LabelGridHeaderNotes.Text = Resources.Global.Global_Notes;
 
         }
 

@@ -24,6 +24,13 @@ namespace Swarmops.Frontend.Pages.Swarm
             int geographyId = int.Parse(geographyString);
             Geography geography = Geography.FromIdentity(geographyId);
 
+            if (
+                !this.CurrentUser.HasAccess(new Access(this.CurrentOrganization, geography, AccessAspect.PersonData,
+                    AccessType.Read)))
+            {
+                throw new UnauthorizedAccessException("nope");
+            }
+
             People matches = People.FromOrganizationAndGeographyWithPattern(this.CurrentOrganization, geography, pattern);
 
             // matches = Authorization.FilterPeopleToMatchAuthority(matches, CurrentUser.GetAuthority());
@@ -42,11 +49,13 @@ namespace Swarmops.Frontend.Pages.Swarm
 
             foreach (Person person in matches)
             {
-                string onePerson = '{' + String.Format("\"id\":\"{0}\",\"name\":\"{1}\",\"avatar16Url\":\"{2}\",\"geographyName\":\"{3}\"", 
+                string onePerson = '{' + String.Format("\"id\":\"{0}\",\"name\":\"{1}\",\"avatar16Url\":\"{2}\",\"geographyName\":\"{3}\",\"mail\":\"{4}\",\"phone\":\"{5}\"", 
                     person.Identity, 
                     JsonSanitize(person.Canonical), 
                     person.GetSecureAvatarLink(16),
-                    JsonSanitize(person.Geography.Name)) + '}';
+                    JsonSanitize(person.Geography.Name),
+                    JsonSanitize(person.Mail),
+                    JsonSanitize(person.Phone)) + '}';
                 jsonPeople.Add(onePerson);
             }
 
