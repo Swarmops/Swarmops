@@ -33,8 +33,10 @@
                     $('#TableSearchResults').datagrid({ url: 'Json-ListFindPeople.aspx?Pattern=' + escape(newNamePattern) + '&GeographyId=' + selectedGeographyId });
                 } else if (newNamePattern.length < 3 && newNamePattern != lastNamePattern && selectedGeographyId != 1) {
                     $('#TableSearchResults').datagrid({ url: 'Json-ListFindPeople.aspx?Pattern=&GeographyId=' + selectedGeographyId });
+                    lastNamePattern = '';
                 } else { // empty pattern and "world"
-                    $('#TableSearchResults').datagrid({ url: '' });
+                    $('#TableSearchResults').datagrid('loadData', []);
+                    lastNamePattern = '';
                 }
             });
 
@@ -148,13 +150,13 @@
                 if (selectedGeographyId != 1 || lastNamePattern.length > 2) { // do not allow carte-blance listing for "world"
                     $('#TableSearchResults').datagrid({ url: 'Json-ListFindPeople.aspx?Pattern=' + escape(lastNamePattern) + '&GeographyId=' + selectedGeographyId });
                 } else {
-                    $('#TableSearchResults').datagrid({ url: '' });
+                    $('#TableSearchResults').datagrid('loadData', []);
                 }
             }
         }
 
         var lastNamePattern = '';
-        var selectedGeographyId = 1;
+        var selectedGeographyId = 1;  // TODO: SET ROOT GEOGRAPHY BY AUTHORITY/ACCESS
 
     </script>
 
