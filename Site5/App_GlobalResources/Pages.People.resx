@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ListFindPeople_Info" xml:space="preserve">
-    <value>Find people in the organization (write more here)</value>
+    <value>Use this to find people in the organization. You can search by geography and by name pattern ("Jo S" will match Joel Sander).</value>
   </data>
   <data name="ListFindPeople_MatchingPeopleInX" xml:space="preserve">
     <value>Matching People in {0}</value>

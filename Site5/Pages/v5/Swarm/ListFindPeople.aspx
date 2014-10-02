@@ -53,6 +53,9 @@
             $('#TableSearchResults').datagrid(
                 {
                     onLoadSuccess: function () {
+
+                        $("#spanHitCount").text($(this).datagrid('getRows').length);
+
                         $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
                         $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-greentick-16px.png");
                         $(".LocalIconApproved").css("display", "none");
@@ -175,7 +178,7 @@
         <asp:Label ID="LabelGeography" runat="server" /><br/>
         <asp:Label ID="LabelNamePattern" runat="server" /><br/>
     </div>
-    <h2 style="padding-top:15px"><asp:Label ID="LabelMatchingPeopleInX" runat="server" /></h2>
+    <h2 style="padding-top:15px"><asp:Label ID="LabelMatchingPeopleInX" runat="server" /> (<span id="spanHitCount">0</span>)</h2>
     <table id="TableSearchResults" class="easyui-datagrid" style="width:680px;height:500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
         idField="itemId">
