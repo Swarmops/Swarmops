@@ -49,8 +49,6 @@
                 }, 1000);
             });
 
-            var count = 0;
-
 
             $('#TableSearchResults').datagrid(
                 {
@@ -142,6 +140,8 @@
                     }
                 }
             );
+
+            $('#<%=this.TextNamePattern.ClientID%>').focus();
         });
 
         function onGeographyChange(newGeographyId) {
