@@ -63,30 +63,6 @@
         <Children>
           
             <MainMenuItem>
-                <ResourceKey>Communications_SendMassMessage</ResourceKey>
-                <UserLevel>1</UserLevel>
-                <Permissions />
-                <ImageUrl />
-                <Type>Disabled</Type>
-                <Children />
-            </MainMenuItem>
-        
-            <MainMenuItem>
-                <ResourceKey>Communications_MobilizeActivists</ResourceKey>
-                <UserLevel>1</UserLevel>
-                <Permissions />
-                <ImageUrl />
-                <Type>Disabled</Type>
-                <Children />
-            </MainMenuItem>
-
-            <MainMenuItem>
-                <UserLevel>1</UserLevel>
-                <Type>Separator</Type>
-                <Children />
-            </MainMenuItem>
-
-            <MainMenuItem>
                 <ResourceKey>Communications_ReadPaperInbox</ResourceKey>
                 <UserLevel>1</UserLevel>
                 <Permissions />
@@ -97,13 +73,52 @@
           
             <MainMenuItem>
                 <ResourceKey>Communications_ReceivedPaperLetter</ResourceKey>
-                <UserLevel>1</UserLevel>
+                <UserLevel>2</UserLevel>
                 <Permissions />
                 <ImageUrl />
                 <Type>Disabled</Type>
                 <Children />
             </MainMenuItem>
         
+            <MainMenuItem>
+                <UserLevel>2</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <ResourceKey>Communications_SendMassMessage</ResourceKey>
+                <UserLevel>2</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+        
+            <MainMenuItem>
+                <ResourceKey>Communications_MobilizeActivists</ResourceKey>
+                <UserLevel>2</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <UserLevel>2</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <ResourceKey>Communications_SendPressRelease</ResourceKey>
+                <UserLevel>2</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+
         </Children>
     </MainMenuItem>
   
@@ -137,8 +152,17 @@
             </MainMenuItem>
           
             <MainMenuItem>
-                <UserLevel>1</UserLevel>
+                <UserLevel>2</UserLevel>
                 <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <ResourceKey>Financial_ViewBudgetActuals</ResourceKey>
+                <UserLevel>2</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
                 <Children />
             </MainMenuItem>
 
@@ -172,8 +196,16 @@
             </MainMenuItem>
           
             <MainMenuItem>
-                <UserLevel>3</UserLevel>
+                <UserLevel>2</UserLevel>
                 <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Financial_SendInvoice</ResourceKey>
+                <UserLevel>2</UserLevel>
+                <Permissions />
+                <Type>Disabled</Type>
                 <Children />
             </MainMenuItem>
           
@@ -184,6 +216,20 @@
                 <ImageUrl>iconshock-invoice</ImageUrl>
                 <NavigateUrl>/Pages/v5/Financial/CreateInboundInvoice.aspx</NavigateUrl>
                 <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <UserLevel>3</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Financial_Payroll</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <Type>Disabled</Type>
                 <Children />
             </MainMenuItem>
           
@@ -216,7 +262,7 @@
         <Children>
 
             <MainMenuItem>
-                <ResourceKey>Communications_LiquidityForecast</ResourceKey>
+                <ResourceKey>Ledgers_LiquidityForecast</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
                 <ImageUrl />
@@ -225,7 +271,7 @@
             </MainMenuItem>
          
             <MainMenuItem>
-                <ResourceKey>Communications_CashflowAnalysis</ResourceKey>
+                <ResourceKey>Ledgers_CashflowAnalysis</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
                 <ImageUrl />
