@@ -21,6 +21,34 @@
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
+
+            <MainMenuItem>
+                <UserLevel>2</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <ResourceKey>People_SelfSignup</ResourceKey>
+                <UserLevel>2</UserLevel>
+                <Permissions />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <UserLevel>3</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <ResourceKey>People_RolesResponsibilities</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
         
         </Children>
     </MainMenuItem>
@@ -35,7 +63,40 @@
         <Children>
           
             <MainMenuItem>
-                <ResourceKey>Placeholder_Todo</ResourceKey>
+                <ResourceKey>Communications_SendMassMessage</ResourceKey>
+                <UserLevel>1</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+        
+            <MainMenuItem>
+                <ResourceKey>Communications_MobilizeActivists</ResourceKey>
+                <UserLevel>1</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <UserLevel>1</UserLevel>
+                <Type>Separator</Type>
+                <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+                <ResourceKey>Communications_ReadPaperInbox</ResourceKey>
+                <UserLevel>1</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+          
+            <MainMenuItem>
+                <ResourceKey>Communications_ReceivedPaperLetter</ResourceKey>
                 <UserLevel>1</UserLevel>
                 <Permissions />
                 <ImageUrl />
@@ -80,7 +141,16 @@
                 <Type>Separator</Type>
                 <Children />
             </MainMenuItem>
-          
+
+            <MainMenuItem>
+                <ResourceKey>Financial_ManageBudgets</ResourceKey>
+                <UserLevel>2</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+
             <MainMenuItem>
                 <ResourceKey>Financial_AttestCosts</ResourceKey>
                 <UserLevel>2</UserLevel>
@@ -144,7 +214,25 @@
         <Permissions />
         <Type>Submenu</Type>
         <Children>
-          
+
+            <MainMenuItem>
+                <ResourceKey>Communications_LiquidityForecast</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+         
+            <MainMenuItem>
+                <ResourceKey>Communications_CashflowAnalysis</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <Type>Disabled</Type>
+                <Children />
+            </MainMenuItem>
+
             <MainMenuItem>
                 <ResourceKey>Ledgers_BalanceSheet</ResourceKey>
                 <UserLevel>3</UserLevel>
@@ -164,7 +252,7 @@
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
-          
+
             <MainMenuItem>
                 <UserLevel>3</UserLevel>
                 <Type>Separator</Type>
@@ -193,16 +281,6 @@
                 <Permissions />
                 <ImageUrl>iconshock-bank</ImageUrl>
                 <NavigateUrl>/Pages/v5/Ledgers/UploadBankFiles.aspx</NavigateUrl>
-                <Type>Link</Type>
-                <Children />
-            </MainMenuItem>
-          
-            <MainMenuItem>
-                <ResourceKey>Ledgers_ResyncExternalAccount</ResourceKey>
-                <UserLevel>3</UserLevel>
-                <Permissions />
-                <ImageUrl>iconshock-bank</ImageUrl>
-                <NavigateUrl>/Pages/v5/Ledgers/ResyncExternalAccount.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
