@@ -54,7 +54,14 @@
                 {
                     onLoadSuccess: function () {
 
-                        $("#spanHitCount").text($(this).datagrid('getRows').length);
+                        var rowCount = $(this).datagrid('getRows').length;
+                        $("#spanHitCount").text(rowCount);
+                        if (rowCount == 1000) {
+                            alertify.log("<%= Resources.Pages.People.ListFindPeople_TooManyHits %>");
+                        }
+
+                        // Leaving some remnant code from PayOutMoney in here for now, as similar code will be needed
+                        // when actions are enabled on the search results
 
                         $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
                         $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-greentick-16px.png");
@@ -138,6 +145,8 @@
                                 });
 
                             }
+
+                            // end of remnant code from PayOutMoney
                         });
 
                     }
@@ -180,7 +189,7 @@
     </div>
     <h2 style="padding-top:15px"><asp:Label ID="LabelMatchingPeopleInX" runat="server" /> (<span id="spanHitCount">0</span>)</h2>
     <table id="TableSearchResults" class="easyui-datagrid" style="width:680px;height:500px"
-        data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:''"
+        data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,loading:false,selectOnCheck:true,checkOnSelect:true"
         idField="itemId">
         <thead>
             <tr>
