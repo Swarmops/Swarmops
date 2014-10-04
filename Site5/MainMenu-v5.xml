@@ -90,7 +90,7 @@
                 <ResourceKey>Communications_SendMassMessage</ResourceKey>
                 <UserLevel>2</UserLevel>
                 <Permissions />
-                <ImageUrl />
+              <ImageUrl>iconshock-messages</ImageUrl>
                 <NavigateUrl>/Pages/v5/Comms/SendMassMessage.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />

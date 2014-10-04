@@ -10,6 +10,10 @@
 
         $(document).ready(function () {
             // Document.Ready() goes here
+
+            $('#<%=this.DropRecipientClasses.ClientID%>').change (function() {
+                onGeographyChange(selectedGeographyId); // does the same thing anyway
+            })
         });
 
         var selectedReceipientClass = 1;
@@ -26,6 +30,7 @@
                     $('#spanRecipientCount').text(msg.d);
                 }
             });
+            selectedGeographyId = newGeographyId;
         }
 
     </script>

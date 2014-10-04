@@ -137,13 +137,15 @@
     <value>Send a mass message to all</value>
   </data>
   <data name="SendMassMessage_SendMessage" xml:space="preserve">
-    <value>Send Message</value>
+    <value>Send</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
   </data>
   <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
     <value>Your message is now being distributed to recipients. You will be notified when transmission is complete.</value>
   </data>
   <data name="SendMassMessage_TestMessage" xml:space="preserve">
-    <value>Test Message</value>
+    <value>Test</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
   </data>
   <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
     <value>The message has been sent to you, so you can see what it looks like before going live.</value>

@@ -19,7 +19,9 @@ namespace Swarmops.Frontend.Pages.Comms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageIcon = "iconshock-group-search";
+            this.PageIcon = "iconshock-messages";
+            this.PageTitle = Resources.Pages.Comms.SendMassMessage_Title;
+            this.InfoBoxLiteral = Resources.Pages.Comms.SendMassMessage_Info;
 
             if (!Page.IsPostBack)
             {
@@ -32,8 +34,6 @@ namespace Swarmops.Frontend.Pages.Comms
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages.Comms.SendMassMessage_Title;
-            this.InfoBoxLiteral = Resources.Pages.People.ListFindPeople_Info;
             this.LabelGeography.Text = Resources.Pages.Comms.SendMassMessage_Geography;
             this.LabelRecipientType.Text = Resources.Pages.Comms.SendMassMessage_RecipientType;
             this.LabelHeaderMessage.Text = Resources.Pages.Comms.SendMassMessage_HeaderMessage;
