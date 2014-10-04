@@ -80,7 +80,7 @@ namespace Swarmops.Logic.Financial
 
         public Int64 GetBudgetCents (int year)
         {
-            return (Int64) (GetBudget(year)*100);
+            return (Int64) (SwarmDb.GetDatabaseForReading().GetFinancialAccountBudget(this.Identity, year)*100);
         }
 
         public Int64[] GetBudgetMonthly (int year)

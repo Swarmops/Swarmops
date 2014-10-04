@@ -1,7 +1,5 @@
 using System;
 using System.Configuration;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Swarmops.Basic
 {
@@ -11,7 +9,7 @@ namespace Swarmops.Basic
         {
             get
             {
-                string portString = ConfigurationSettings.AppSettings["SmtpPort"];
+                string portString = ConfigurationManager.AppSettings["SmtpPort"];
 
                 if (String.IsNullOrEmpty(portString))
                 {
@@ -26,7 +24,7 @@ namespace Swarmops.Basic
         {
             get
             {
-                string smtpHost = ConfigurationSettings.AppSettings["SmtpHost"];
+                string smtpHost = ConfigurationManager.AppSettings["SmtpHost"];
 
                 if (String.IsNullOrEmpty(smtpHost))
                 {

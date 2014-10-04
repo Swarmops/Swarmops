@@ -1019,7 +1019,11 @@ namespace Swarmops.Logic.Special.Sweden
 
             try
             {
+#pragma warning disable 618
+                // ServicePointManager.CertificatePolicy is obsoleted, but is the only thing that works on both windows and mono.
+                //Needed to avoid errors from homegrown SSL cert.
                 ServicePointManager.CertificatePolicy = new ErrorIgnorerPolicy();
+#pragma warning restore 618
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
                 //string proxy = null;
                 Encoding recieverEncoding = Encoding.GetEncoding("iso-8859-1");

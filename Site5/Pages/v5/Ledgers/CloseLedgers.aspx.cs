@@ -55,43 +55,43 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // First, roll over virtual balances.
 
-        if (false) // if this.CurrentOrganization.Parameters.VirtualBankingEnabled
-        {
-            FinancialAccount rootAccount = FinancialAccount.FromIdentity(29);  // HACK: Hardcoded account; should be _organization.FinancialAccount.CostsVirtualBankingRoot
-            FinancialAccount tempAccount = FinancialAccount.FromIdentity(98);  // HACK: Hardcoded account; should be _organization.FinancialAccount.AssetsVirtualRollover
+        //if (false) // if this.CurrentOrganization.Parameters.VirtualBankingEnabled
+        //{
+        //    FinancialAccount rootAccount = FinancialAccount.FromIdentity(29);  // HACK: Hardcoded account; should be _organization.FinancialAccount.CostsVirtualBankingRoot
+        //    FinancialAccount tempAccount = FinancialAccount.FromIdentity(98);  // HACK: Hardcoded account; should be _organization.FinancialAccount.AssetsVirtualRollover
 
-            FinancialAccounts localAccounts = rootAccount.GetTree();
+        //    FinancialAccounts localAccounts = rootAccount.GetTree();
 
-            foreach (FinancialAccount account in localAccounts)
-            {
-                Int64 currentBalanceCents = account.GetDeltaCents(new DateTime(closingYear, 1, 1), new DateTime(closingYear+1, 1, 1));
-                Int64 budgetCents = -account.GetBudgetCents(closingYear);
-                Int64 carryOverCents = budgetCents - currentBalanceCents;
+        //    foreach (FinancialAccount account in localAccounts)
+        //    {
+        //        Int64 currentBalanceCents = account.GetDeltaCents(new DateTime(closingYear, 1, 1), new DateTime(closingYear+1, 1, 1));
+        //        Int64 budgetCents = -account.GetBudgetCents(closingYear);
+        //        Int64 carryOverCents = budgetCents - currentBalanceCents;
 
-                if (carryOverCents != 0)
-                {
-                    FinancialTransaction transactionOldYear = FinancialTransaction.Create(1,
-                                                                                          new DateTime(closingYear, 12,
-                                                                                                       31, 23, 50,
-                                                                                                       00),
-                                                                                          "Budgetrest " + account.Name);
-                        // HACK: Localize rollover label
+        //        if (carryOverCents != 0)
+        //        {
+        //            FinancialTransaction transactionOldYear = FinancialTransaction.Create(1,
+        //                                                                                  new DateTime(closingYear, 12,
+        //                                                                                               31, 23, 50,
+        //                                                                                               00),
+        //                                                                                  "Budgetrest " + account.Name);
+        //                // HACK: Localize rollover label
 
-                    transactionOldYear.AddRow(account, carryOverCents, null);
-                    transactionOldYear.AddRow(tempAccount, -carryOverCents, null);
+        //            transactionOldYear.AddRow(account, carryOverCents, null);
+        //            transactionOldYear.AddRow(tempAccount, -carryOverCents, null);
 
-                    FinancialTransaction transactionNewYear = FinancialTransaction.Create(1,
-                                                                                          new DateTime(closingYear + 1,
-                                                                                                       1, 1, 0, 10, 0),
-                                                                                          "Budgetrest " +
-                                                                                          closingYear.ToString() + " " +
-                                                                                          account.Name);
+        //            FinancialTransaction transactionNewYear = FinancialTransaction.Create(1,
+        //                                                                                  new DateTime(closingYear + 1,
+        //                                                                                               1, 1, 0, 10, 0),
+        //                                                                                  "Budgetrest " +
+        //                                                                                  closingYear.ToString() + " " +
+        //                                                                                  account.Name);
 
-                    transactionNewYear.AddRow(account, -carryOverCents, null);
-                    transactionNewYear.AddRow(tempAccount, carryOverCents, null);
-                }
-            }
-        }
+        //            transactionNewYear.AddRow(account, -carryOverCents, null);
+        //            transactionNewYear.AddRow(tempAccount, carryOverCents, null);
+        //        }
+        //    }
+        //}
 
         // Then, actually close the ledgers.
 
