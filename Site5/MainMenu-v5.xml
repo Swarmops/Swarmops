@@ -91,7 +91,8 @@
                 <UserLevel>2</UserLevel>
                 <Permissions />
                 <ImageUrl />
-                <Type>Disabled</Type>
+                <NavigateUrl>/Pages/v5/Comms/SendMassMessage.aspx</NavigateUrl>
+                <Type>Link</Type>
                 <Children />
             </MainMenuItem>
         
