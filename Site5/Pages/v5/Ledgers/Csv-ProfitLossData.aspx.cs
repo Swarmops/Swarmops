@@ -77,7 +77,6 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
 
 
     private int _year = 2012;
-    private CultureInfo _renderCulture;
 
     private void RecurseCsvReport (List<YearlyReportLine> reportLines, string accountPrefix)
     {

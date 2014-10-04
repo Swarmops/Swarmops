@@ -390,8 +390,6 @@ namespace Swarmops.Utility.BotCode
 
             // NEW December 2010: Organizations are separated as per common agreement, there are no common reminder mails. Every membership renews on its own.
 
-            int longestAncestry = 0; // "ancestry" as a length means distance to organization tree root
-            int shortestAncestry = 999;
             Organization lowOrg = membership.Organization;
             DateTime currentExpiry = membership.Expires;
             Person person = membership.Person;

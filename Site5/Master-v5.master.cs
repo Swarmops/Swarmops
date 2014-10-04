@@ -175,8 +175,6 @@ namespace Swarmops
             }
         }
 
-        private static string _buildIdentity;
-
         private void Localize()
         {
             this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;

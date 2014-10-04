@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -125,18 +121,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return String.Join(",", childStrings.ToArray());
         }
 
-        private class DisplayedAccount
-        {
-            public string Name;
-            public int Identity;
-        };
-
-        private class DisplayedAccounts : List<DisplayedAccount>
-        {
-            // typedef
-        };
-
-        private Dictionary<int, List<FinancialAccount>> _treeMap;
         private Dictionary<int, Int64> _singleBalanceLookup;
         private Dictionary<int, Int64> _treeBalanceLookup;
         private Dictionary<int, Int64> _singleBudgetLookup;

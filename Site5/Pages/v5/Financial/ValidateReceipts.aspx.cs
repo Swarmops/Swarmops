@@ -48,30 +48,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
-        private Dictionary<int, bool> _attestationRights;
         private List<RepeatedDocument> _documentList; 
-
-
-
-        private Dictionary<int, bool> GetAttestationRights()
-        {
-            // Right now, this function is quite primitive. At some point in the future, it needs to take into
-            // account that a budget may have several attesters. Right now, it just loops over all accounts and
-            // checks the owner.
-
-            Dictionary<int, bool> result = new Dictionary<int, bool>();
-            FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization);
-
-            foreach (FinancialAccount account in accounts)
-            {
-                if (account.OwnerPersonId == this.CurrentUser.Identity)
-                {
-                    result[account.Identity] = true;
-                }
-            }
-
-            return result;
-        }
 
         private void Localize()
         {
@@ -120,7 +97,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         };
 
         [WebMethod]
-        public static string Validate (string identifier)
+        public static new string Validate (string identifier)
         {
             identifier = HttpUtility.UrlDecode(identifier);
 

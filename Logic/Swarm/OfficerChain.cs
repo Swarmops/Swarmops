@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Swarmops.Basic;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Swarm
@@ -31,6 +27,6 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        private int organizationId;
+        private readonly int organizationId;
     }
 }

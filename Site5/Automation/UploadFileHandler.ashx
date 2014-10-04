@@ -41,12 +41,12 @@ namespace Swarmops.Frontend.Automation
 
         #region IHttpHandler Members
 
-        public bool IsReusable
+        public new bool IsReusable
         {
             get { return false; }
         }
 
-        public void ProcessRequest (HttpContext context)
+        public new void ProcessRequest (HttpContext context)
         {
             context.Response.AddHeader ("Pragma", "no-cache");
             context.Response.AddHeader ("Cache-Control", "private, no-cache");

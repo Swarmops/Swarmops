@@ -214,18 +214,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return String.Join(",", childStrings.ToArray());
         }
 
-        private class DisplayedAccount
-        {
-            public string Name;
-            public int Identity;
-        };
-
-        private class DisplayedAccounts : List<DisplayedAccount>
-        {
-            // typedef
-        };
-
-        private Dictionary<int, List<FinancialAccount>> _treeMap;
         private Dictionary<int, Int64> _singleBalanceLookup;
         private Dictionary<int, Int64> _treeBalanceLookup;
         private Dictionary<int, Int64> _singleBudgetLookup;

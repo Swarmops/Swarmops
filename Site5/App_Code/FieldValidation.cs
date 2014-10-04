@@ -57,7 +57,7 @@ public class FieldValidation : System.Web.Services.WebService {
         {
             culture = CultureInfo.CreateSpecificCulture(preferredCulture);
         }
-        catch (Exception exception)
+        catch (Exception)
         {
             culture = CultureInfo.InvariantCulture;
         }
