@@ -10,6 +10,8 @@ using Swarmops.Basic.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.Comms
 {
@@ -37,11 +39,15 @@ namespace Swarmops.Frontend.Pages.Comms
             this.LabelHeaderMessage.Text = Resources.Pages.Comms.SendMassMessage_HeaderMessage;
 
             this.DropRecipientClasses.Items.Clear();
-            this.DropRecipientClasses.Items.Add(new ListItem(Resources.Global.Global_SelectOne));
+            this.DropRecipientClasses.Items.Add(new ListItem(Resources.Global.Global_SelectOne, "0"));
             this.DropRecipientClasses.Items.Add(new ListItem("[Regulars]", "1"));
             this.DropRecipientClasses.Items.Add(new ListItem("[Agents]", "2"));
-            this.DropRecipientClasses.Items.Add(new ListItem("Officers", "3"));
-            this.DropRecipientClasses.Items.Add(new ListItem("Volunteers", "4"));
+            // TODO: Room for dynamic membership types here
+            this.DropRecipientClasses.Items.Add(new ListItem("Officers", "101"));
+            this.DropRecipientClasses.Items.Add(new ListItem("Volunteers", "102"));
+
+            this.ButtonSend.Text = Resources.Pages.Comms.SendMassMessage_SendMessage;
+            this.ButtonTest.Text = Resources.Pages.Comms.SendMassMessage_TestMessage;
         }
 
         public struct ConfirmPayoutResult
@@ -51,65 +57,58 @@ namespace Swarmops.Frontend.Pages.Comms
         };
 
         [WebMethod]
-        public static ConfirmPayoutResult ConfirmPayout (string protoIdentity)
+        public static string GetRecipientCount(int recipientTypeId, int geographyId)
         {
-            protoIdentity = HttpUtility.UrlDecode(protoIdentity);
+            int personCount = 0;
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
+            Geography geography = Geography.FromIdentity(geographyId);
+            Geographies geoTree = geography.GetTree();
+            Organizations orgTree = authData.CurrentOrganization.GetTree();
 
-            if (!authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
+            switch (recipientTypeId)
             {
-                throw new SecurityAccessDeniedException("Insufficient privileges for operation");
+                case 0: // "Select one"
+                    personCount = 0;
+                    break;
+                case 1: // Regulars
+                    personCount = orgTree.GetMemberCountForGeographies(geoTree);
+                    break;
+                case 2: // Agents
+                    personCount = Activists.GetCountForGeography(geography);
+                    break;
+
+                // TODO: Dynamic membership types
+
+                case 101: // Officers
+                    personCount = orgTree.GetRoleHolderCountForGeographies(geoTree);
+                    break;
+                case 102: // Volunteers
+                    personCount = 0;  // TODO
+                    break;
+                default:
+                    throw new NotImplementedException();
+
             }
 
-            ConfirmPayoutResult result = new ConfirmPayoutResult();
+            string result;
+            string[] resources = Resources.Pages.Comms.SendMassMessage_RecipientCount.Split('|');
 
-            Payout payout = Payout.CreateFromProtoIdentity(authData.CurrentUser, protoIdentity);
-            Swarmops.Logic.Support.PWEvents.CreateEvent(EventSource.PirateWeb, EventType.PayoutCreated,
-                                                       authData.CurrentUser.Identity, 1, 1, 0, payout.Identity,
-                                                       protoIdentity);
-
-            // Create result and return it
-
-            result.AssignedId = payout.Identity;
-            result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
-                                                  payout.Recipient);
-
-            result.DisplayMessage = HttpUtility.UrlEncode(result.DisplayMessage).Replace("+", "%20");
-
-            return result;
-        }
-
-        public struct UndoPayoutResult
-        {
-            public bool Success;
-            public string DisplayMessage;
-        }
-
-        [WebMethod]
-        public static UndoPayoutResult UndoPayout (int databaseId)
-        {
-            AuthenticationData authData = GetAuthenticationDataAndCulture();
-            UndoPayoutResult result = new UndoPayoutResult();
-
-            Payout payout = Payout.FromIdentity(databaseId);
-
-            if (!payout.Open)
+            switch (personCount)
             {
-                // this payout has already been settled, or picked up for settling
-
-                result.Success = false;
-                result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
-                                                      databaseId);
-
-                return result;
+                case 0:
+                    result = resources[0];
+                    break;
+                case 1:
+                    result = resources[1];
+                    break;
+                default:
+                    result = String.Format(resources[2], personCount);
+                    break;
             }
 
-            payout.UndoPayout();
-
-            result.DisplayMessage = HttpUtility.UrlEncode(String.Format(Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId)).Replace("+","%20");
-            result.Success = true;
             return result;
+
         }
     }
 

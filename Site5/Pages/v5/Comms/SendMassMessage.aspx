@@ -15,6 +15,19 @@
         var selectedReceipientClass = 1;
         var selectedGeographyId = 1;  // TODO: SET ROOT GEOGRAPHY BY AUTHORITY/ACCESS
 
+        function onGeographyChange(newGeographyId) {
+            $.ajax({
+                type: "POST",
+                url: "SendMassMessage.aspx/GetRecipientCount",
+                data: "{'recipientTypeId': '" + $('#<%=this.DropRecipientClasses.ClientID %>').val() + "', 'geographyId':'" + newGeographyId + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    $('#spanRecipientCount').text(msg.d);
+                }
+            });
+        }
+
     </script>
 
 </asp:Content>
@@ -29,7 +42,8 @@
     </div>
     <h2 style="padding-top:15px"><asp:Label ID="LabelHeaderMessage" runat="server" /> (<span id="spanRecipientCount">0</span>)</h2>
     <asp:TextBox runat="server" TextMode="MultiLine" Rows="10" ID="TextMessage" />
-    <asp:Button runat="server" Text="Foo"/>
+    <asp:Button runat="server" CssClass="buttonAccentColor" Text="Foo" ID="ButtonSend"/><asp:Button runat="server" CssClass="buttonAccentColor" Text="Bar" ID="ButtonTest" />
+    <div style="clear:both"></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
 </asp:Content>
