@@ -131,7 +131,8 @@ namespace Swarmops.Database
 
                     // Dev console process
 
-                    return "database.config"; // Each dev needs to set the working directory to the Console directory when debugging
+                    // Each dev needs to set the working directory to the Console directory when debugging
+                    // return "database.config"; 
                 }
             }
         }

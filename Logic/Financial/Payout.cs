@@ -35,7 +35,7 @@ namespace Swarmops.Logic.Financial
 
             // TODO: Create in database
 
-            return payout;
+            // return payout;
         }
 
         private Payout (BasicPayout basic):
