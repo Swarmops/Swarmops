@@ -33,6 +33,16 @@
             selectedGeographyId = newGeographyId;
         }
 
+        function onClickSend() {
+            alertify.alert("<%= Resources.Pages.Comms.SendMassMessage_SendMessageResult %>");
+            return false;
+        }
+
+        function onClickTest() {
+            alertify.alert("<%= Resources.Pages.Comms.SendMassMessage_TestMessageResult %>");
+            return false;
+        }
+
     </script>
 
 </asp:Content>
@@ -46,8 +56,8 @@
         <asp:Label ID="LabelGeography" runat="server" /><br/>
     </div>
     <h2 style="padding-top:15px"><asp:Label ID="LabelHeaderMessage" runat="server" /> (<span id="spanRecipientCount">0</span>)</h2>
-    <asp:TextBox runat="server" TextMode="MultiLine" Rows="10" ID="TextMessage" />
-    <asp:Button runat="server" CssClass="buttonAccentColor" Text="Foo" ID="ButtonSend"/><asp:Button runat="server" CssClass="buttonAccentColor" Text="Bar" ID="ButtonTest" />
+    <asp:TextBox runat="server" TextMode="MultiLine" Rows="10" ID="TextMessage" Text="This page is a mockup for now; it doesn't actually send anything. What you want to try is to send to the [Regulars] recipients and see how the recipient count changes with choice of geography." />
+    <asp:Button runat="server" CssClass="buttonAccentColor" Text="Foo" OnClientClick="onClickSend(); return false;" ID="ButtonSend" /><asp:Button runat="server" CssClass="buttonAccentColor" OnClientClick="onClickTest(); return false;" Text="Bar" ID="ButtonTest" />
     <div style="clear:both"></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
