@@ -116,21 +116,6 @@
     <Compile Include="Special\UrlTranslator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Basic\Basic.csproj">
-      <Project>{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}</Project>
-      <Name>Basic</Name>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Database\Database.csproj">
-      <Project>{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}</Project>
-      <Name>Database</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logic\Logic.csproj">
-      <Project>{13E59551-34AC-43DC-9A03-EF5E4721DC61}</Project>
-      <Name>Logic</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="BotCode\App_LocalResources\EventProcessor.sv-SE.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EventProcessor.sv-SE.Designer.cs</LastGenOutput>
@@ -149,6 +134,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rss\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Basic\Basic.csproj">
+      <Project>{6608c2e6-f841-4cd1-8ab2-28dc3b1dddd1}</Project>
+      <Name>Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{3a5b5f19-51a5-48ce-a82e-97d5c189e5cb}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{13e59551-34ac-43dc-9a03-ef5e4721dc61}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>
