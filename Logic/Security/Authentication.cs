@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using Swarmops;
-using Swarmops.Logic.Security.App_LocalResources;
-using Swarmops.Logic.Structure;
 using System.Globalization;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
