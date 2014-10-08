@@ -68,8 +68,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         private int _year = 2012;
-        private CultureInfo _renderCulture;
-
 
 
         private string RecurseReport(List<YearlyReportLine> reportLines)
@@ -104,16 +102,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
                 else
                 {
-                    element += string.Format(_renderCulture, ",\"lastYear\":\"{0:N0}\"",
+                    element += string.Format(CultureInfo.CurrentCulture, ",\"lastYear\":\"{0:N0}\"",
                                              (double) line.AccountValues.PreviousYear/100.0);
 
                     for (int quarter = 1; quarter <= 4; quarter++)
                     {
-                        element += string.Format(_renderCulture, ",\"q{0}\":\"{1:N0}\"", quarter,
+                        element += string.Format(CultureInfo.CurrentCulture, ",\"q{0}\":\"{1:N0}\"", quarter,
                                                  line.AccountValues.Quarters[quarter - 1]/100.0);
                     }
 
-                    element += string.Format(_renderCulture, ",\"ytd\":\"{0:N0}\"",
+                    element += string.Format(CultureInfo.CurrentCulture, ",\"ytd\":\"{0:N0}\"",
                                              (double) line.AccountValues.ThisYear/100.0);
                 }
 
@@ -128,11 +126,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             if (treeValue != 0 && singleValue == 0)
             {
-                return string.Format(_renderCulture,
+                return string.Format(CultureInfo.CurrentCulture,
                                      "\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>\"",
                                      accountId, treeValue/100.00);
             }
-            return string.Format(_renderCulture,
+            return string.Format(CultureInfo.CurrentCulture,
                                  "\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>\"",
                                  accountId, treeValue/100.0, singleValue/100.0);
         }

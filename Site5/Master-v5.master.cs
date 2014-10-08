@@ -186,10 +186,8 @@ namespace Swarmops
 
             if (cultureStringLower == "en-us")
             {
-                // doesn't work with tooltip styling for some completely inexplicable reason, use en-gb
-
-                cultureString = "en-GB";
-                cultureStringLower = "en-gb";
+                cultureString = "en-US";
+                cultureStringLower = "en-us";
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureString);
 
                 HttpCookie cookieCulture = new HttpCookie("PreferredCulture");
@@ -200,7 +198,7 @@ namespace Swarmops
 
             string flagName = "uk";
 
-            if (cultureStringLower != "en-gb" && cultureString.Length > 3)
+            if (!cultureStringLower.StartsWith("en") && cultureString.Length > 3)
             {
                 flagName = cultureStringLower.Substring(3);
             }
@@ -211,7 +209,7 @@ namespace Swarmops
             this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
             this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
 
-            if (cultureStringLower != "en-gb" && cultureStringLower != "sv-se" && cultureString.Trim().Length > 0)
+            if (!cultureStringLower.StartsWith("en") && cultureStringLower != "sv-se" && cultureString.Trim().Length > 0)
             {
                 this.LinkTranslate.Visible = true;
             }

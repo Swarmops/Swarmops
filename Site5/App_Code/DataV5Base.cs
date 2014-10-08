@@ -40,54 +40,7 @@ public class DataV5Base : System.Web.UI.Page
 
     protected override void OnPreInit(EventArgs e)
     {
-        // Localization
-
-        // Set default culture (English, United States, but that doesn't work so fake it to GB)
-
-        string preferredCulture = "en-GB";
-
-        // -----------  SET CULTURE ------------
-
-        // Does the user have a culture preference?
-
-        if (Request.Cookies["PreferredCulture"] != null)
-        {
-            // Yes, set it
-            preferredCulture = Request.Cookies["PreferredCulture"].Value;
-        }
-        else
-        {
-            // No, determine from browser
-            string browserPreference = "en-GB";
-            if (Request.UserLanguages != null && Request.UserLanguages.Length > 0)
-            {
-                browserPreference = Request.UserLanguages[0];
-                preferredCulture = browserPreference;
-            }
-
-
-            /*
-            string[] languages = (string[])Application["Cultures"];
-            for (int index = 0; index < languages.Length; index++)
-            {
-                if (languages[index].StartsWith(browserPreference))
-                {
-                    preferredCulture = languages[index];
-                }
-            }*/
-        }
-
-        try
-        {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(preferredCulture);
-        }
-        catch (Exception exception)
-        {
-            throw new Exception("Could not set culture \"" + preferredCulture + "\"", exception);
-            // Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-        }
-
-        Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+        CommonV5Base.CulturePreInit(Request);
 
  	    base.OnPreInit(e);
     }
@@ -202,6 +155,9 @@ public class DataV5Base : System.Web.UI.Page
         result.CurrentUser = Person.FromIdentity(currentUserId);
         result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
 
+        CommonV5Base.CulturePreInit(HttpContext.Current.Request); // OnPreInit() isn't called in the static methods calling this fn
+
+        /*
         string userCultureString = result.CurrentUser.PreferredCulture;
 
         if (!string.IsNullOrEmpty(userCultureString))
@@ -209,7 +165,7 @@ public class DataV5Base : System.Web.UI.Page
             CultureInfo userCulture = new CultureInfo(userCultureString); // may throw on invalid database data
             Thread.CurrentThread.CurrentCulture = userCulture;
             Thread.CurrentThread.CurrentUICulture = userCulture;
-        }
+        }*/
 
         return result;
     }
