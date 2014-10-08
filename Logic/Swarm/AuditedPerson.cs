@@ -200,7 +200,7 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-
+        [Obsolete("Use NationalIdNumber instead")]
         public virtual string PersonalNumber
         {
             get { return person.PersonalNumber; }
