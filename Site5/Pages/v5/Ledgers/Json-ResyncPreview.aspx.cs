@@ -99,10 +99,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
         private int _year = 2012;
-        private CultureInfo _renderCulture;
         private AuthenticationData _authenticationData;
-        private Dictionary<int, FinancialAccounts> _hashedAccounts; 
-
+        // private Dictionary<int, FinancialAccounts> _hashedAccounts; 
 
         private string PrintNullableCents (string currency, long cents)
         {
@@ -135,7 +133,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
         }
 
-
+        /* -- is this even used?
         private string GetAccountGroup (FinancialAccountType type, string localizedGroupName)
         {
             string childrenString = GetAccountsRecurse(type, 0);
@@ -212,7 +210,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             return String.Join(",", childStrings.ToArray());
-        }
+        }*/
 
         private Dictionary<int, Int64> _singleBalanceLookup;
         private Dictionary<int, Int64> _treeBalanceLookup;
@@ -293,11 +291,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             if (treeValue != 0 && singleValue == 0)
             {
-                return string.Format(_renderCulture,
+                return string.Format(CultureInfo.CurrentCulture,
                                      "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>",
                                      accountId, treeValue / 100.00);
             }
-            return string.Format(_renderCulture,
+            return string.Format(CultureInfo.CurrentCulture,
                                  "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>",
                                  accountId, treeValue / 100.0, singleValue / 100.0);
         }

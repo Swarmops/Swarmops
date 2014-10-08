@@ -130,46 +130,8 @@ public class DataV5Base : System.Web.UI.Page
 
     protected static AuthenticationData GetAuthenticationDataAndCulture()
     {
-        return GetAuthenticationDataAndCulture(HttpContext.Current);
+        return CommonV5Base.GetAuthenticationDataAndCulture(HttpContext.Current);
     }
-
-    protected static AuthenticationData GetAuthenticationDataAndCulture(HttpContext suppliedContext)
-    {
-        // This function is called from static page methods in AJAX calls to get
-        // the current set of authentication data. Static page methods cannot access
-        // the instance data of PageV5Base.
-
-        AuthenticationData result = new AuthenticationData();
-
-        // Find various credentials
-
-        string identity = suppliedContext.User.Identity.Name;
-        string[] identityTokens = identity.Split(',');
-
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
-
-        int currentUserId = Convert.ToInt32(userIdentityString);
-        int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-        result.CurrentUser = Person.FromIdentity(currentUserId);
-        result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
-
-        CommonV5Base.CulturePreInit(HttpContext.Current.Request); // OnPreInit() isn't called in the static methods calling this fn
-
-        /*
-        string userCultureString = result.CurrentUser.PreferredCulture;
-
-        if (!string.IsNullOrEmpty(userCultureString))
-        {
-            CultureInfo userCulture = new CultureInfo(userCultureString); // may throw on invalid database data
-            Thread.CurrentThread.CurrentCulture = userCulture;
-            Thread.CurrentThread.CurrentUICulture = userCulture;
-        }*/
-
-        return result;
-    }
-
 
     protected static string JsonSanitize (string input)
     {
