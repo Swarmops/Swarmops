@@ -1,7 +1,7 @@
-using System.ComponentModel;
-using Swarmops.Logic.Swarm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.DataObjects
 {

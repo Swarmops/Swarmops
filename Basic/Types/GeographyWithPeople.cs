@@ -1,9 +1,5 @@
 using System;
 
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Types;
-using System.Collections.Generic;
-
 namespace Swarmops.Basic.Types
 {
     [Serializable]

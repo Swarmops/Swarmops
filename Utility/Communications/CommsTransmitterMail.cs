@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Support;

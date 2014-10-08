@@ -1,15 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Threading;
 using System.Web;
-using System.Web.UI;
+using Swarmops.Basic.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
-using Swarmops.Basic.Enums;
-using Swarmops.Logic.Structure;
 
 /// <summary>
 /// Base class to use for all data generators (JSON, etc). It supplies identification and localization.

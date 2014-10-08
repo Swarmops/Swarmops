@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Swarmops.Logic.Financial;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Structure;
 using Swarmops.Basic.Interfaces;
-
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Interface.Objects
 {

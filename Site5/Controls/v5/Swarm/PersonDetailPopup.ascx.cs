@@ -1,19 +1,6 @@
 using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using Swarmops.Controls.Swarm;
-using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Security;
-
-
 
 namespace Swarmops.Controls.Swarm
 {

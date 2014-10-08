@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Structure;
 using Swarmops.Logic.Governance;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.BotCode
 {

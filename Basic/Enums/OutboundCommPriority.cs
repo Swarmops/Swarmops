@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Swarmops.Basic.Enums
+﻿namespace Swarmops.Basic.Enums
 {
     public enum OutboundCommPriority
     {

@@ -1,10 +1,10 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Security
 {

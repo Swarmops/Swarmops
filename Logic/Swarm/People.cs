@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Enums;
-using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Security;

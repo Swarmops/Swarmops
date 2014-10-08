@@ -1,19 +1,13 @@
 using System;
-using System.Text.RegularExpressions;
-using System.Web;
-using HtmlAgilityPack;
-using System.Resources;
-using System.Reflection;
-using System.Globalization;
-using Swarmops.Logic.Support;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Media;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Communications
 {

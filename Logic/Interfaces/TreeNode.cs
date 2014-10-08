@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 namespace Swarmops.Logic.Interfaces
 {
     internal interface ITreeNode

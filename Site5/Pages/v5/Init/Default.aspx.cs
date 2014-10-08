@@ -2,24 +2,18 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.Services;
-using System.Web.Services.Protocols;
 using System.Web.SessionState;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
-using Swarmops.Basic.Types;
+using Swarmops.Database;
+using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
 using Swarmops.Site.Automation;
-
-using Swarmops.Database;
-using Country = Swarmops.Logic.Structure.Country;
-using Swarmops.Logic.Financial;
 
 public partial class Pages_v5_Init_Default : System.Web.UI.Page
 {

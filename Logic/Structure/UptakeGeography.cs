@@ -1,14 +1,3 @@
-using System;
-using System.Globalization;
-using Swarmops.Database;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Financial;
-using Swarmops.Logic.Interfaces;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Cache;
-using Swarmops.Basic.Enums;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
 using Swarmops.Basic.Types;
 
 namespace Swarmops.Logic.Structure

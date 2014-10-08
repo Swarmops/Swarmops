@@ -1,11 +1,8 @@
-using System.ComponentModel;
-using Swarmops.Logic.Structure;
-using Swarmops.Logic.Swarm;
 using System;
 using System.Collections.Generic;
-using Swarmops.Basic.Types;
-using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Web;
+using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.DataObjects
 {

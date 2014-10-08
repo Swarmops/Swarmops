@@ -1,5 +1,4 @@
-﻿using Swarmops.Basic.Enums;
-using Swarmops.Logic.Structure;
+﻿using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Security
 {

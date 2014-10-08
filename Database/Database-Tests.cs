@@ -2,8 +2,6 @@
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace Swarmops.Database
 {

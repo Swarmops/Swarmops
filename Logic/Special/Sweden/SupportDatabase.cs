@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Swarm;
 using MySql.Data.MySqlClient;
+using Swarmops.Logic.Communications;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Special.Sweden
 {

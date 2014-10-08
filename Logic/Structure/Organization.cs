@@ -1,9 +1,9 @@
 using System;
-using System.Globalization;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
@@ -11,8 +11,8 @@ using Swarmops.Logic.Cache;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Interfaces;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Structure
 {

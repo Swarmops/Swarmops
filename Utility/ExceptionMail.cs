@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Swarmops.Logic.Swarm;
 using Swarmops.Basic;
 using Swarmops.Database;
+using Swarmops.Logic.Swarm;
 using Swarmops.Utility.Mail;
 
 namespace Swarmops.Utility

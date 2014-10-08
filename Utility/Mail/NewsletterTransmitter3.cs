@@ -1,15 +1,12 @@
 using System;
 using System.IO;
-using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Web;
-using Swarmops.Basic.Types;
-using Swarmops.Logic.Swarm;
 using Swarmops.Basic;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.Mail
 {

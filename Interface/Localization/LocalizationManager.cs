@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Swarmops.Interface.Localization
 {
     public class LocalizationManager

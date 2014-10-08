@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Swarmops.Logic.Communications.Transmission;
+﻿using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Communications

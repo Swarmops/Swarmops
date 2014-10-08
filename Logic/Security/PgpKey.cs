@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Starksoft.Cryptography.OpenPGP;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Security
 {

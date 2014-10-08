@@ -1,21 +1,11 @@
 using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Mime;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
-using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Pages.v5.Support

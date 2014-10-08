@@ -1,33 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Text;
 using System.Threading;
-using System.Net;
-using System.Net.Mail;
-
-using Swarmops.Basic;
-using Swarmops.Basic.Enums;
+using Mono.Unix;
+using Mono.Unix.Native;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
-using Swarmops.Logic.Financial;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Structure;
-using System.Diagnostics;
-using Swarmops.Logic.Special.Sweden;
 using Swarmops.Logic.Support;
 using Swarmops.Utility;
 using Swarmops.Utility.BotCode;
-using Swarmops.Utility.Financial;
 using Swarmops.Utility.Mail;
-using Swarmops.Utility.Special;
-using Swarmops.Utility.Special.Sweden;
-
-using Mono.Unix;
-using Mono.Unix.Native;
-
 
 namespace Swarmops.Backend
 {

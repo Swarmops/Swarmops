@@ -2,11 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Net.Mail;
-using System.Text;
 using System.Web;
-using Swarmops.Basic.Enums;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.BotCode
 {

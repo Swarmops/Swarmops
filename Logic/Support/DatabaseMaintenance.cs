@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using MySql.Data.MySqlClient;
-using Swarmops.Logic.Swarm;
-using Swarmops.Database;
 using System.Globalization;
+using System.Net;
+using MySql.Data.MySqlClient;
+using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
 {

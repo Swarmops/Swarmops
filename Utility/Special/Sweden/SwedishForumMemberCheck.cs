@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Swarmops.Basic.Enums;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Structure;
 using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 using Swarmops.Utility.BotCode;
 
 namespace Swarmops.Utility.Special.Sweden

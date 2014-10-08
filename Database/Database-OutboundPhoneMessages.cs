@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-
-using Swarmops.Basic.Types;
-
 namespace Swarmops.Database
 {
     public partial class SwarmDb

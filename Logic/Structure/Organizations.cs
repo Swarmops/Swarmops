@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Structure
 {

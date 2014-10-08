@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Types.Governance;
 using Swarmops.Database;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Governance
 {

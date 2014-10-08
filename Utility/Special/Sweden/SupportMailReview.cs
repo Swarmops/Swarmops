@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Net.Mail;
 using System.Text;
-using Swarmops.Utility.Mail;
 using Swarmops.Basic;
 using Swarmops.Logic.Special.Sweden;
 using Swarmops.Logic.Support;

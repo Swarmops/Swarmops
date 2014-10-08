@@ -4,15 +4,13 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Security;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 using Membership = Swarmops.Logic.Swarm.Membership;
-
-
 
 namespace Swarmops
 {

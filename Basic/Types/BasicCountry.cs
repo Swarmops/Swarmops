@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Swarmops.Basic.Interfaces;
-
 
 namespace Swarmops.Basic.Types
 {

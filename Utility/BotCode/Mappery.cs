@@ -1,14 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Swarmops.Basic.Enums;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
-
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.BotCode
 {

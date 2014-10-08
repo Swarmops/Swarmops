@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 /// <summary>
 /// Summary description for MasterV4Base

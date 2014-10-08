@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Net;
-using Swarmops.Logic;
 using Swarmops.Database;
 
 namespace Swarmops.Utility.BotCode

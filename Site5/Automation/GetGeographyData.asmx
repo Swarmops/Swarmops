@@ -1,9 +1,6 @@
 ﻿<%@ WebService Language="C#" Class="GetGeographyData" %>
 
-using System;
-using System.Web;
 using System.Web.Services;
-using System.Web.Services.Protocols;
 using Swarmops.Logic.Structure;
 
 [WebService(Namespace = "http://swarmops.com/")]
