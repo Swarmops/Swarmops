@@ -127,7 +127,7 @@ namespace Swarmops
             // SetupMenuItemsEnabling(authority, enableCache, menuItems);
             Session["MainMenu-v4_Enabling"] = enableCache;
 
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "3px";
+            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
 
@@ -201,13 +201,13 @@ namespace Swarmops
                 flagName = cultureStringLower.Substring(3);
             }
 
-            this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + ".png";
+            this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + "-24px.png";
 
             this.LinkLogout.Text = Resources.Global.CurrentUserInfo_Logout;
             this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
             this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
 
-            if (!cultureStringLower.StartsWith("en") && cultureStringLower != "sv-se" && cultureString.Trim().Length > 0)
+            if (!cultureStringLower.StartsWith("en") && cultureStringLower != "sv-se" && cultureStringLower != "nl-NL" && cultureString.Trim().Length > 0)
             {
                 this.LinkTranslate.Visible = true;
             }
