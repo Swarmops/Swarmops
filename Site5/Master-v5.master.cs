@@ -133,8 +133,6 @@ namespace Swarmops
 
             SetupDropboxes();
 
-            this.ButtonSwitchOrganizations.Attributes.Add("onclick", "$('#" + this.TextSwitchToOrganizationId.ClientID + "').val($('#" + this.DropSwitchOrganizations.ClientID + "').val()); $('#" + this.ButtonActuatorSwitchOrganizations.ClientID + "').click();");
-
             // Check for message to display
 
             HttpCookie dashMessage = Request.Cookies["DashboardMessage"];
@@ -153,24 +151,6 @@ namespace Swarmops
 
         private void SetupDropboxes()
         {
-            this.DropSwitchOrganizations.Items.Clear();
-
-            int sandboxId = Organization.SandboxIdentity;
-
-            this.DropSwitchOrganizations.Items.Add(new ListItem(Resources.Global.Global_DropInits_SelectOrganization, "0"));
-            this.DropSwitchOrganizations.Items.Add(new ListItem("Sandbox", sandboxId.ToString()));
-
-            Memberships memberships = _currentUser.GetMemberships();
-
-            foreach (Membership membership in memberships)
-            {
-                if (membership.OrganizationId != sandboxId) // sandbox is already added
-                {
-                    this.DropSwitchOrganizations.Items.Add(new ListItem(membership.Organization.Name,
-                                                                        membership.OrganizationId.ToString(
-                                                                            CultureInfo.InvariantCulture)));
-                }
-            }
         }
 
         private void Localize()
@@ -201,20 +181,21 @@ namespace Swarmops
                 flagName = cultureStringLower.Substring(3);
             }
 
+            if (cultureStringLower == "af-za") // "South African Afrikaans", a special placeholder for localization code
+            {
+                flagName = "txl";
+                InitTranslation();
+            }
+            else
+            {
+                this.LiteralCrowdinScript.Text = string.Empty;
+            }
+
             this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + "-24px.png";
 
             this.LinkLogout.Text = Resources.Global.CurrentUserInfo_Logout;
             this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
-            this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
-
-            if (!cultureStringLower.StartsWith("en") && cultureStringLower != "sv-se" && cultureStringLower != "nl-NL" && cultureString.Trim().Length > 0)
-            {
-                this.LinkTranslate.Visible = true;
-            }
-            else
-            {
-                this.LinkTranslate.Visible = false;
-            }
+            // this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
         }
 
         private void SetupMenuItems()
@@ -378,69 +359,21 @@ namespace Swarmops
             FormsAuthentication.RedirectToLoginPage();
         }
 
-        public event EventHandler LanguageChanged;
-
-        private void LanguageSelector_LanguageChanged(object sender, EventArgs e)
-        {
-            // Received event from control - refire
-
-            _currentUser.PreferredCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
-            this.LiteralCrowdinScript.Text = string.Empty;
-
-            if (LanguageChanged != null)
-            {
-                LanguageChanged(this, new EventArgs());
-            }
-        }
-
-        protected void LinkTranslate_Click(object sender, EventArgs e)
+        private void InitTranslation()
         {
             string crowdinCode =
                 "<!-- Crowdin JIPT Begin -->\r\n" +
-                "<script type=\"text/javascript\" src=\"http://jipt.crowdin.net/jipt.js\" jipt=\"api\"></script>\r\n" +
                 "<script type=\"text/javascript\">\r\n" +
-                "    Crowdin.ready(function(jipt) {\r\n" +
-                "        jipt.set_project_identifier('activizr');\r\n" +
-                "        jipt.set_show_translations(true);\r\n" +
-                "        jipt.set_marker('border');\r\n" +
-                "        jipt.set_target_language('" + Thread.CurrentThread.CurrentCulture.ToString().Substring(0,2) + "');\r\n" +
-                "        jipt.login('activizr_translator', 'anonymous', function() {\r\n" +
-                "          jipt.start_translation();\r\n" +
-                "        });\r\n" +
-                "    });\r\n" +
+                "  var _jipt = [];\r\n" +
+                "  _jipt.push(['project', 'activizr']);\r\n" +
                 "</script>\r\n" +
+                "<script type=\"text/javascript\" src=\"//cdn.crowdin.com/jipt/jipt.js\"></script>\r\n" +
                 "<!-- Crowdin JIPT End -->\r\n";
 
             this.LiteralCrowdinScript.Text = crowdinCode;
             // Page.ClientScript.RegisterStartupScript(this.GetType(), "crowdin", crowdinCode, false);
         }
 
-        protected void ButtonSwitchOrganizations_Click(object sender, EventArgs e)
-        {
-            int currentUserId = _currentUser.Identity;
-            int desiredOrganizationId = Int32.Parse(this.TextSwitchToOrganizationId.Text);
-
-            if (desiredOrganizationId != 0)
-            {
-                bool foundMembership = false;
-                Memberships currentUserMemberships = _currentUser.GetMemberships();
-                foreach (Membership membership in currentUserMemberships)
-                {
-                    if (membership.OrganizationId == desiredOrganizationId)
-                    {
-                        foundMembership = true;
-                    }
-                }
-
-                if (foundMembership)
-                {
-                    FormsAuthentication.RedirectFromLoginPage(
-                        string.Format(CultureInfo.InvariantCulture, "{0},{1}", currentUserId, desiredOrganizationId),
-                        true);
-                    Response.Redirect("/");
-                }
-            }
-        }
 
     }
 }

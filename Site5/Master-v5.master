@@ -120,7 +120,7 @@
 	        <div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><span class="hasTooltip" rel="Logged into <%=this.CurrentOrganization.Name %>" title="Click here to switch to another organization."><a href="/Pages/v5/Security/ChangeOrganizations.aspx" id="LinkChangeOrganizations"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a></span> |&nbsp;</div>
             <div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> | </div>
             <div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div>
-            <a href="/Pages/v5/User/SelectLanguage.aspx"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></a> <asp:LinkButton ID="LinkTranslate" Visible="false" Text="Translate Into" OnClick="LinkTranslate_Click" runat="server" />
+            <a href="/Pages/v5/User/SelectLanguage.aspx"><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></a>
 	    </div>
         <div class="logoimage"><a href="/"><asp:Image runat="server" ID="ImageLogo" AlternateText="Swarmops Logo"/></a></div>
         <div class="break"></div>
@@ -185,19 +185,7 @@
         </div>
         
 	</div>
-    
-    <!-- Organization changer -->
-    
-    <div id="DivModalOrganizationChanger" style="display:none">
-        <asp:Literal ID="LiteralCurrentlyLoggedIntoSwitch" runat="server" /><br/><br/>
-        
-        <asp:DropDownList ID="DropSwitchOrganizations" runat="server"/><br/><br/>   <!-- TODO: Make this a tree dropdown -->
-
-        <!-- this is displayed out-of-form, so we must trigger an in-form button -->        
-        <asp:Button runat="server" ID="ButtonSwitchOrganizations" Text="Switch" CssClass="buttonAccentColor"/>
-    </div>
-
-        <div style="display:none"><asp:TextBox runat="server" ID="TextSwitchToOrganizationId" /><asp:Button runat="server" ID="ButtonActuatorSwitchOrganizations" OnClick="ButtonSwitchOrganizations_Click"/></div>
+   
 	
 	</form>
 
