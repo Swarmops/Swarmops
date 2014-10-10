@@ -1,15 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Threading;
 using System.Web;
-using System.Web.UI;
+using Swarmops.Basic.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
-using Swarmops.Basic.Enums;
-using Swarmops.Logic.Structure;
 
 /// <summary>
 /// Base class to use for all data generators (JSON, etc). It supplies identification and localization.
@@ -65,54 +61,7 @@ public class PageV5Base : System.Web.UI.Page
 
     protected override void OnPreInit(EventArgs e)
     {
-        // Localization
-
-        // Set default culture (English, United States)
-
-        string preferredCulture = "en-US";
-
-        // -----------  SET CULTURE ------------
-
-        // Does the user have a culture preference?
-
-        if (Request.Cookies["PreferredCulture"] != null)
-        {
-            // Yes, set it
-            preferredCulture = Request.Cookies["PreferredCulture"].Value;
-        }
-        else
-        {
-            // No, determine from browser
-            string browserPreference = "en-US";
-            if (Request.UserLanguages != null && Request.UserLanguages.Length > 0)
-            {
-                browserPreference = Request.UserLanguages[0];
-                preferredCulture = browserPreference;
-            }
-
-
-            /*
-            string[] languages = (string[])Application["Cultures"];
-            for (int index = 0; index < languages.Length; index++)
-            {
-                if (languages[index].StartsWith(browserPreference))
-                {
-                    preferredCulture = languages[index];
-                }
-            }*/
-        }
-
-        try
-        {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(preferredCulture);
-        }
-        catch (Exception exception)
-        {
-            throw new Exception("Could not set culture \"" + preferredCulture + "\"", exception);
-            // Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-        }
-
-        Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+        CommonV5Base.CulturePreInit(Request);
 
  	    base.OnPreInit(e);
     }
@@ -174,32 +123,7 @@ public class PageV5Base : System.Web.UI.Page
         // the current set of authentication data. Static page methods cannot access
         // the instance data of PageV5Base.
 
-        AuthenticationData result = new AuthenticationData();
-
-        // Find various credentials
-
-        string identity = HttpContext.Current.User.Identity.Name;
-        string[] identityTokens = identity.Split(',');
-
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
-
-        int currentUserId = Convert.ToInt32(userIdentityString);
-        int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-
-        result.CurrentUser = Person.FromIdentity(currentUserId);
-        result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
-
-        string userCultureString = result.CurrentUser.PreferredCulture;
-
-        if (!string.IsNullOrEmpty(userCultureString))
-        {
-            CultureInfo userCulture = new CultureInfo(userCultureString); // may throw on invalid database data
-            Thread.CurrentThread.CurrentCulture = userCulture;
-            Thread.CurrentThread.CurrentUICulture = userCulture;
-        }
-
-        return result;
+        return CommonV5Base.GetAuthenticationDataAndCulture(HttpContext.Current);
     }
 
     /// <summary>

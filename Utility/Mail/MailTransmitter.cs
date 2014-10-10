@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Net;
 using System.Net.Mail;
-using Swarmops.Basic.Enums;
-using Swarmops.Logic.Swarm;
+using System.Text;
 using Swarmops.Basic;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.Mail
 {

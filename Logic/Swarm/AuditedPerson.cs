@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Swarmops.Logic;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -203,7 +200,7 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-
+        [Obsolete("Use NationalIdNumber instead")]
         public virtual string PersonalNumber
         {
             get { return person.PersonalNumber; }

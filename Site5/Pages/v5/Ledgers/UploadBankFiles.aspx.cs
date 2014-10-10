@@ -2,24 +2,18 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Web;
 using System.Web.Services;
-using System.Web.Services.Description;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using Swarmops.Logic.Cache;
-using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
-
+using Swarmops.Logic.Swarm;
 
 // TODO: There are significant remnants in this file from the old Telerik-based upload code. When Account Automation is complete and the user can select a bank profile
 // for an account, uploading payment files as well as bank statements, remove that dead code as its templates won't be needed after that.

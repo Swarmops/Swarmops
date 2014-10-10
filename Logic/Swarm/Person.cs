@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Text;
-using Swarmops.Logic.DashboardTasks;
-using Swarmops;
 using System.Text.RegularExpressions;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
@@ -181,7 +179,7 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        public new virtual string Mail
+        public virtual string Mail
         {
             get { return base.Email; }
             set { SwarmDb.GetDatabaseForWriting().SetPersonEmail(Identity, value); }

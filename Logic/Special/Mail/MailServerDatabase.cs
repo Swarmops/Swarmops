@@ -1,12 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MySql.Data.MySqlClient;
-
-using System.IO;
 using System.Data.Common;
-
-using Swarmops.Logic;
+using MySql.Data.MySqlClient;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Special.Mail

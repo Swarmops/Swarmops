@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Swarmops.Basic;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Swarm
@@ -15,7 +11,7 @@ namespace Swarmops.Logic.Swarm
         }
         
 
-        public static OfficerChain FromOrganizationAndGeography (Organization org, Geography geo)
+        public new static OfficerChain FromOrganizationAndGeography (Organization org, Geography geo)
         {
             int[] concernedPeopleId = Roles.GetAllUpwardRoles(org.Identity, geo.Identity);
             People concernedPeople = People.FromIdentities(concernedPeopleId);
@@ -31,6 +27,6 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        private int organizationId;
+        private readonly int organizationId;
     }
 }

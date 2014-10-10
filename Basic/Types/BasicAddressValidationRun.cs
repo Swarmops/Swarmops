@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
@@ -12,10 +9,8 @@ namespace Swarmops.Basic.Types
             this.validationRunId = validationRunId;
         }
 
-        private int validationRunId;
-        private bool complete;
-        private int addressCount;
-
+        private readonly int validationRunId;
+        
         public int Identity
         {
             get { return this.validationRunId; }

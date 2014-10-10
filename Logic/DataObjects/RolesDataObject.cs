@@ -1,10 +1,10 @@
 using System;
 using System.ComponentModel;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Security;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
+using Swarmops.Logic.Security;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.DataObjects
 {

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Threading;
 using System.Web;
 using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Swarmops.Logic.Support;
-using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
+using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Pages.Security
 {

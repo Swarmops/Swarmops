@@ -1,5 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{13E59551-34AC-43DC-9A03-EF5E4721DC61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{BA24FAF7-D518-49E8-952A-45595682877E}"
@@ -41,6 +43,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site5", "Site5\", "{367F36E
 		{13E59551-34AC-43DC-9A03-EF5E4721DC61} = {13E59551-34AC-43DC-9A03-EF5E4721DC61}
 		{BA24FAF7-D518-49E8-952A-45595682877E} = {BA24FAF7-D518-49E8-952A-45595682877E}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{011D2EFB-77AB-4A13-A753-85C2E56C961D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -172,6 +176,21 @@ Global
 		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{367F36EA-AE1C-4E15-BAF9-BA75B18B3807}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Autobuild|.NET.ActiveCfg = Release|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Autobuild|Any CPU.ActiveCfg = Release|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Autobuild|Any CPU.Build.0 = Release|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Autobuild|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Autobuild|Mixed Platforms.Build.0 = Release|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Release|.NET.ActiveCfg = Release|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{011D2EFB-77AB-4A13-A753-85C2E56C961D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

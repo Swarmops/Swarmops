@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Web;
-using Swarmops.Logic.Swarm;
-using Swarmops.Basic.Types;
-using Swarmops.Basic.Enums;
-using Swarmops.Logic.Structure;
 using System.Reflection;
+using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
+using Swarmops.Logic.Swarm;
 
 /// <summary>
 /// Summary description for ListPersonDataSource

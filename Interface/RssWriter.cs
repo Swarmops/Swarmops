@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml;
-using System.IO;
 
 // Class to write out RSS
 // Expected Usage:

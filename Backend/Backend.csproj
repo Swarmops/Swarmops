@@ -84,7 +84,7 @@
       <Name>Logic</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.csproj">
-      <Project>{C540570C-20E0-4979-84EB-8833810DDDF6}</Project>
+      <Project>{c540570c-20e0-4979-84eb-8833810dddf6}</Project>
       <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>

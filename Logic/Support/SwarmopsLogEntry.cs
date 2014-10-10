@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Swarmops.Basic.Interfaces;
+﻿using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Swarm;

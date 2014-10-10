@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Web;
 using System.Xml.Serialization;
 
@@ -131,7 +129,8 @@ namespace Swarmops.Database
 
                     // Dev console process
 
-                    return "database.config"; // Each dev needs to set the working directory to the Console directory when debugging
+                    // Each dev needs to set the working directory to the Console directory when debugging
+                    // return "database.config"; 
                 }
             }
         }

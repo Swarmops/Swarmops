@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Swarmops.Basic.Types.Financial;
+﻿using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 
 namespace Swarmops.Logic.Financial

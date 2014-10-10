@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 
 // This is the first part of Database to fully use MySql.

@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Globalization;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Security;
-using Swarmops.Logic.Structure;
-using System.Globalization;
 
 public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
 {
@@ -66,21 +59,20 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
     {
         string result = string.Format("\"name\":\"{0}\"", Resources.Pages.Ledgers.ProfitLossStatement_Results);
 
-        result += string.Format(_renderCulture, ",\"lastYear\":\"{0:N0}\"", (double)totals.PreviousYear / -100.0);
+        result += string.Format(CultureInfo.CurrentCulture, ",\"lastYear\":\"{0:N0}\"", (double)totals.PreviousYear / -100.0);
 
         for (int quarter = 1; quarter <= 4; quarter++)
         {
-            result += string.Format(_renderCulture, ",\"q{0}\":\"{1:N0}\"", quarter, totals.Quarters[quarter-1] / -100.0);
+            result += string.Format(CultureInfo.CurrentCulture, ",\"q{0}\":\"{1:N0}\"", quarter, totals.Quarters[quarter-1] / -100.0);
         }
 
-        result += string.Format(_renderCulture, ",\"ytd\":\"{0:N0}\"", (double)totals.ThisYear / -100.0);
+        result += string.Format(CultureInfo.CurrentCulture, ",\"ytd\":\"{0:N0}\"", (double)totals.ThisYear / -100.0);
 
         return "{" + result + "}";
     }
 
 
     private int _year = 2012;
-    private CultureInfo _renderCulture;
 
     private string RecurseReport (List<YearlyReportLine> reportLines)
     {
@@ -111,14 +103,14 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
             }
             else
             {
-                element += string.Format(_renderCulture, ",\"lastYear\":\"{0:N0}\"", (double)line.AccountValues.PreviousYear / -100.0);
+                element += string.Format(CultureInfo.CurrentCulture, ",\"lastYear\":\"{0:N0}\"", (double)line.AccountValues.PreviousYear / -100.0);
 
                 for (int quarter = 1; quarter <= 4; quarter++)
                 {
-                    element += string.Format(_renderCulture, ",\"q{0}\":\"{1:N0}\"", quarter, line.AccountValues.Quarters[quarter-1] / -100.0);
+                    element += string.Format(CultureInfo.CurrentCulture, ",\"q{0}\":\"{1:N0}\"", quarter, line.AccountValues.Quarters[quarter-1] / -100.0);
                 }
 
-                element += string.Format(_renderCulture, ",\"ytd\":\"{0:N0}\"", (double)line.AccountValues.ThisYear / -100.0);
+                element += string.Format(CultureInfo.CurrentCulture, ",\"ytd\":\"{0:N0}\"", (double)line.AccountValues.ThisYear / -100.0);
             }
 
             elements.Add("{" + element + "}");
@@ -132,9 +124,9 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
     {
         if (treeValue != 0 && singleValue == 0)
         {
-            return string.Format(_renderCulture, "\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>\"", accountId, treeValue / -100.00);
+            return string.Format(CultureInfo.CurrentCulture, "\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>\"", accountId, treeValue / -100.00);
         }
-        return string.Format(_renderCulture, "\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>\"", accountId, treeValue / -100.0, singleValue / -100.0);
+        return string.Format(CultureInfo.CurrentCulture, "\"<span class=\\\"profitlossdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"profitlossdata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>\"", accountId, treeValue / -100.0, singleValue / -100.0);
     }
 
 

@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Pages.Security

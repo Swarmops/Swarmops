@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
-using Swarmops.Logic.Support.LogEntries;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {

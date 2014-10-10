@@ -1,8 +1,8 @@
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types.Communications;
 using Swarmops.Database;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Communications
 {

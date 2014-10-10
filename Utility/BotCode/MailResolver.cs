@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 using Swarmops.Utility.Mail;
 
 namespace Swarmops.Utility.BotCode

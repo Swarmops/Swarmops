@@ -1,10 +1,4 @@
 <%@ Application Language="C#" %>
-<%@ Import Namespace="System.Globalization" %>
-<%@ Import Namespace="System.Collections.Generic" %>
-<%@ Import Namespace="System.IO" %>
-<%@ Import Namespace="System.Security.Principal" %>
-<%@ Import Namespace="System.Threading" %>
-<%@ Import Namespace="Swarmops.Logic" %>
 
 
 <script runat="server">

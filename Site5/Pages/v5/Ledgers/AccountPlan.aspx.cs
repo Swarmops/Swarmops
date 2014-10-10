@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
+using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
-using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
@@ -212,47 +208,61 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         [WebMethod]
         public static ChangeAccountDataResult SetAccountBudget(int accountId, string budget)
         {
-            AuthenticationData authData = GetAuthenticationDataAndCulture();
-            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
-
-            if (!PrepareAccountChange(account, authData, false))
+            try
             {
-                return new ChangeAccountDataResult
+                AuthenticationData authData = GetAuthenticationDataAndCulture();
+                FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+
+                if (!PrepareAccountChange(account, authData, false))
                 {
-                    Result = ChangeAccountDataOperationsResult.NoPermission
-                };
+                    return new ChangeAccountDataResult
+                    {
+                        Result = ChangeAccountDataOperationsResult.NoPermission
+                    };
+                }
+
+                Int64 newTreeBudget;
+                budget = budget.Replace("%A0", "%20"); // some very weird browser space-to-otherspace translation weirds out number parsing
+                budget = HttpContext.Current.Server.UrlDecode(budget);
+
+                if (budget.Trim().Length > 0 && Int64.TryParse(budget, NumberStyles.Currency, CultureInfo.CurrentCulture, out newTreeBudget))
+                {
+                    newTreeBudget *= 100; // convert to cents
+
+                    int year = DateTime.Today.Year;
+                    FinancialAccounts accountTree = account.GetTree();
+                    Int64 currentTreeBudget = accountTree.GetBudgetSumCents(year);
+                    Int64 currentSingleBudget = account.GetBudgetCents(year);
+                    Int64 suballocatedBudget = currentTreeBudget - currentSingleBudget;
+
+                    Int64 newSingleBudget = newTreeBudget - suballocatedBudget;
+
+                    account.SetBudgetCents(DateTime.Today.Year, newSingleBudget);
+                    return new ChangeAccountDataResult
+                    {
+                        Result = ChangeAccountDataOperationsResult.Changed,
+                        NewData = (newTreeBudget/100).ToString("N0", CultureInfo.CurrentCulture)
+                    };
+                }
+                else
+                {
+                    return new ChangeAccountDataResult
+                    {
+                        Result = ChangeAccountDataOperationsResult.Invalid
+                    };
+                }
+
+            }
+            catch (Exception weirdException)
+            {
+                // Exceptions are happening here in deployment ONLY. We're logging it to find which one and why.
+                // TODO: This really needs to be in Logic. DO NOT DO NOT DO NOT call Database layer directly from Site layer.
+
+                SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "AccountPlan-SetBudget", weirdException);
+
+                throw;
             }
 
-            Int64 newTreeBudget;
-            budget = budget.Replace("%A0", "%20"); // some very weird browser space-to-otherspace translation weirds out number parsing
-            budget = HttpContext.Current.Server.UrlDecode(budget);
-
-            if (budget.Trim().Length > 0 && Int64.TryParse(budget, NumberStyles.Currency, CultureInfo.CurrentCulture, out newTreeBudget))
-            {
-                newTreeBudget *= 100; // convert to cents
-
-                int year = DateTime.Today.Year;
-                FinancialAccounts accountTree = account.GetTree();
-                Int64 currentTreeBudget = accountTree.GetBudgetSumCents(year);
-                Int64 currentSingleBudget = account.GetBudgetCents(year);
-                Int64 suballocatedBudget = currentTreeBudget - currentSingleBudget;
-
-                Int64 newSingleBudget = newTreeBudget - suballocatedBudget;
-
-                account.SetBudgetCents(DateTime.Today.Year, newSingleBudget);
-                return new ChangeAccountDataResult
-                {
-                    Result = ChangeAccountDataOperationsResult.Changed,
-                    NewData = (newTreeBudget/100).ToString("N0", CultureInfo.CurrentCulture)
-                };
-            }
-            else
-            {
-                return new ChangeAccountDataResult
-                {
-                    Result = ChangeAccountDataOperationsResult.Invalid
-                };
-            }
         }
 
         [WebMethod]

@@ -1,29 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.IO;
-using System.Web;
-using System.Web.Mail;
+using System.Text;
 using Swarmops.Basic.Enums;
-using Swarmops.Basic;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Communications.Transmission;
-using Swarmops.Logic.Financial;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Structure;
-using Swarmops.Utility;
-using Swarmops.Utility.Server;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Governance;
 using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 using Swarmops.Utility.BotCode;
-using Swarmops.Utility.Mail;
 using Swarmops.Utility.Special.Sweden;
 
 /*

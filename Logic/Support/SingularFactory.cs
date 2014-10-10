@@ -1,15 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Swarmops.Basic.Types.Communications;
-using Swarmops.Basic.Types.Financial;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Financial;
-using Swarmops.Logic.Swarm;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Communications;
+using Swarmops.Basic.Types.Financial;
 using Swarmops.Basic.Types.Governance;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Financial;
 using Swarmops.Logic.Governance;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
 {

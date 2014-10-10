@@ -1,17 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Globalization;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Security;
-using Swarmops.Logic.Structure;
-using System.Globalization;
 
 public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
 {
@@ -77,7 +68,6 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
 
 
     private int _year = 2012;
-    private CultureInfo _renderCulture;
 
     private void RecurseCsvReport (List<YearlyReportLine> reportLines, string accountPrefix)
     {

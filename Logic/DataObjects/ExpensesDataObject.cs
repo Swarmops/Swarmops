@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.DataObjects
 {

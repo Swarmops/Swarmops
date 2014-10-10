@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-using System.Data;
-using System.Configuration;
-using System.Web.Security;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 
 public partial class Security_Authenticate : System.Web.UI.Page 
 {

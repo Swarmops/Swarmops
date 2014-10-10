@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Text;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Swarmops.Basic.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
-using Swarmops.Logic.Structure;
-using Swarmops.Logic.Support;
-using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.Financial
 {
@@ -38,9 +28,6 @@ namespace Swarmops.Frontend.Pages.Financial
         private string FormatAsJson(Payouts payouts)
         {
             StringBuilder result = new StringBuilder(16384);
-
-            string hasDoxString =
-                "<img src=\\\"/Images/PageIcons/iconshock-battery-drill-16px.png\\\" onmouseover=\\\"this.src='/Images/PageIcons/iconshock-battery-drill-16px.png';\\\" onmouseout=\\\"this.src='/Images/PageIcons/iconshock-battery-drill-16px.png';\\\" onclick=\\\"alert('Under construction');\\\" style=\\\"cursor:pointer\\\" />";
 
             result.Append("{\"rows\":[");
 

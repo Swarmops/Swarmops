@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using Swarmops.Basic.Enums;
-using Swarmops.Interface.Collections;
-using Swarmops.Interface.Objects;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Structure;
 using Swarmops.Basic.Types;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Interface.DataObjects
 {

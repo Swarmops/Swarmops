@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Swarmops.Logic.Financial.BankDataReaders;
 
 namespace Swarmops.Logic.Financial
 {

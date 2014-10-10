@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Data;
 using System.Data.Common;
 using Swarmops.Basic.Enums;
-using System.Data;
 using Swarmops.Basic.Types;
 
 namespace Swarmops.Database

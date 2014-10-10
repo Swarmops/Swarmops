@@ -41,12 +41,12 @@ namespace Swarmops.Frontend.Automation
 
         #region IHttpHandler Members
 
-        public bool IsReusable
+        public new bool IsReusable
         {
             get { return false; }
         }
 
-        public void ProcessRequest (HttpContext context)
+        public new void ProcessRequest (HttpContext context)
         {
             context.Response.AddHeader ("Pragma", "no-cache");
             context.Response.AddHeader ("Cache-Control", "private, no-cache");
@@ -133,20 +133,20 @@ namespace Swarmops.Frontend.Automation
             throw new NotImplementedException (
                 "We should never get to partial upload. If we do, something is very very unexpected and this needs to be implemented.");
 
-            using (var fs = new FileStream (fullName, FileMode.Append, FileAccess.Write))
-            {
-                var buffer = new byte[1024];
+            //using (var fs = new FileStream(fullName, FileMode.Append, FileAccess.Write))
+            //{
+            //    var buffer = new byte[1024];
 
-                int l = inputStream.Read (buffer, 0, 1024);
-                while (l > 0)
-                {
-                    fs.Write (buffer, 0, l);
-                    l = inputStream.Read (buffer, 0, 1024);
-                }
-                fs.Flush();
-                fs.Close();
-            }
-            statuses.Add (new FilesStatus (new FileInfo (fullName)));
+            //    int l = inputStream.Read(buffer, 0, 1024);
+            //    while (l > 0)
+            //    {
+            //        fs.Write(buffer, 0, l);
+            //        l = inputStream.Read(buffer, 0, 1024);
+            //    }
+            //    fs.Flush();
+            //    fs.Close();
+            //}
+            //statuses.Add(new FilesStatus(new FileInfo(fullName)));
         }
 
         // Upload entire file
@@ -157,7 +157,7 @@ namespace Swarmops.Frontend.Automation
                 HttpPostedFile file = context.Request.Files[i];
                 string fullName = Path.GetFileName (file.FileName);
 
-                AuthenticationData authData = GetAuthenticationDataAndCulture (context);
+                AuthenticationData authData = CommonV5Base.GetAuthenticationDataAndCulture (context);
 
                 Person uploadingPerson = authData.CurrentUser;
                 Organization currentOrg = authData.CurrentOrganization;

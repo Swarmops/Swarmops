@@ -1,10 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Net;
 using NRss;
-
-using Swarmops.Logic.Support;
 using Swarmops.Logic.Media;
 
 namespace Swarmops.Utility.BotCode

@@ -1,6 +1,6 @@
 using System.ComponentModel;
-using Swarmops.Logic.Swarm;
 using Swarmops.Database;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.DataObjects
 {

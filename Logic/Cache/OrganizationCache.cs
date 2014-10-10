@@ -1,8 +1,8 @@
 using System;
-using Swarmops.Logic.Structure;
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
+using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Cache
 {

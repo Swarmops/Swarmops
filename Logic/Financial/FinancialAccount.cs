@@ -1,12 +1,11 @@
 using System;
 using Swarmops.Basic.Enums;
-using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 using Swarmops.Logic.Interfaces;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
@@ -80,7 +79,7 @@ namespace Swarmops.Logic.Financial
 
         public Int64 GetBudgetCents (int year)
         {
-            return (Int64) (GetBudget(year)*100);
+            return (Int64) (SwarmDb.GetDatabaseForReading().GetFinancialAccountBudget(this.Identity, year)*100);
         }
 
         public Int64[] GetBudgetMonthly (int year)

@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Swarmops.Logic.Swarm;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
 {

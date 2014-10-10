@@ -1,11 +1,5 @@
 using System;
 
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Types;
-using Swarmops.Database;
-using Swarmops.Logic.Interfaces;
-using System.Collections.Generic;
-
 namespace Swarmops.Logic.Structure
 {
     [Serializable]

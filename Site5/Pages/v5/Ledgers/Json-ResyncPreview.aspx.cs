@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Logic.Financial;
@@ -99,10 +96,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
         private int _year = 2012;
-        private CultureInfo _renderCulture;
         private AuthenticationData _authenticationData;
-        private Dictionary<int, FinancialAccounts> _hashedAccounts; 
-
+        // private Dictionary<int, FinancialAccounts> _hashedAccounts; 
 
         private string PrintNullableCents (string currency, long cents)
         {
@@ -135,7 +130,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
         }
 
-
+        /* -- is this even used?
         private string GetAccountGroup (FinancialAccountType type, string localizedGroupName)
         {
             string childrenString = GetAccountsRecurse(type, 0);
@@ -212,20 +207,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             return String.Join(",", childStrings.ToArray());
-        }
+        }*/
 
-        private class DisplayedAccount
-        {
-            public string Name;
-            public int Identity;
-        };
-
-        private class DisplayedAccounts : List<DisplayedAccount>
-        {
-            // typedef
-        };
-
-        private Dictionary<int, List<FinancialAccount>> _treeMap;
         private Dictionary<int, Int64> _singleBalanceLookup;
         private Dictionary<int, Int64> _treeBalanceLookup;
         private Dictionary<int, Int64> _singleBudgetLookup;
@@ -305,11 +288,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             if (treeValue != 0 && singleValue == 0)
             {
-                return string.Format(_renderCulture,
+                return string.Format(CultureInfo.CurrentCulture,
                                      "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>",
                                      accountId, treeValue / 100.00);
             }
-            return string.Format(_renderCulture,
+            return string.Format(CultureInfo.CurrentCulture,
                                  "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>",
                                  accountId, treeValue / 100.0, singleValue / 100.0);
         }

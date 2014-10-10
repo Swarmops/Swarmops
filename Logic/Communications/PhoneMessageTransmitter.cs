@@ -1,10 +1,10 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using System.Security.Cryptography.X509Certificates;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Support;
@@ -246,8 +246,10 @@ namespace Swarmops.Logic.Communications
                 // buffer för inläsning
                 var buf = new byte[8092];
 
+#pragma warning disable 618
                 // ServicePointManager.CertificatePolicy is obsoleted, but is the only thing that works on both windows and mono.
                 //Needed to avoid errors from homegrown SSL cert.
+                
                 ICertificatePolicy oldPolicy = ServicePointManager.CertificatePolicy;
                 ServicePointManager.CertificatePolicy = new HTTPSender();
 
@@ -263,6 +265,7 @@ namespace Swarmops.Logic.Communications
                 var response = (HttpWebResponse)request.GetResponse();
                 responseOut = response;
                 ServicePointManager.CertificatePolicy = oldPolicy;
+#pragma warning restore 618
 
                 // läs in dataströmmen via responsmetoden
                 Stream resStream = response.GetResponseStream();

@@ -1,13 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Text;
-using Swarmops.Basic.Enums;
-using Swarmops.Logic.Special.Sweden;
-using Swarmops.Logic.Structure;
-using Swarmops.Logic.Support;
-
 namespace Swarmops.Utility.BotCode
 {
     public class UpdateStatsCache

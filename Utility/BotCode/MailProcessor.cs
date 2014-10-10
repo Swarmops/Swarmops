@@ -2,17 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Text;
 using System.Net.Mail;
 using System.Net.Mime;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Diagnostics;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Swarm;
+using System.Text;
 using System.Threading;
 using Swarmops.Basic;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Communications;
 using Swarmops.Logic.Media;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 using Swarmops.Utility.Mail;
 
 namespace Swarmops.Utility.BotCode

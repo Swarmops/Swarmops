@@ -1,10 +1,10 @@
 using System;
-using Swarmops.Logic.Swarm;
-using Swarmops.Logic.Structure;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Exceptions;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Database;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Special.Sweden
 {

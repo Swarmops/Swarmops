@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Structure;
-using Swarmops.Utility.Special.Sweden;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
 using Swarmops.Logic.Special.Sweden;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Utility.BotCode

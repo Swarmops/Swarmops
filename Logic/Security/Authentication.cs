@@ -1,14 +1,10 @@
 using System;
-using System.Collections.Generic;
-using Swarmops;
-using Swarmops.Logic.Security.App_LocalResources;
-using Swarmops.Logic.Structure;
 using System.Globalization;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Security
 {
@@ -196,6 +192,8 @@ namespace Swarmops.Logic.Security
         /// <returns>A list of previously valid password hashes.</returns>
         private static string[] GenerateLegacyPasswordHashes (Person person, string password)
         {
+// Calling Obsolete Property is valid here since we are generationg legacy hashes.
+#pragma warning disable 618
             if (person.PersonalNumber.Length > 0)
             {
                 return new[]
@@ -209,6 +207,7 @@ namespace Swarmops.Logic.Security
                 {
                     SHA1.Hash(password + person.Identity + "Pirate")
                 };
+#pragma warning restore 618
         }
 
 

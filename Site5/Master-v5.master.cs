@@ -4,15 +4,13 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Security;
-using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 using Membership = Swarmops.Logic.Swarm.Membership;
-
-
 
 namespace Swarmops
 {
@@ -129,7 +127,7 @@ namespace Swarmops
             // SetupMenuItemsEnabling(authority, enableCache, menuItems);
             Session["MainMenu-v4_Enabling"] = enableCache;
 
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "3px";
+            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
 
@@ -175,8 +173,6 @@ namespace Swarmops
             }
         }
 
-        private static string _buildIdentity;
-
         private void Localize()
         {
             this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
@@ -188,10 +184,8 @@ namespace Swarmops
 
             if (cultureStringLower == "en-us")
             {
-                // doesn't work with tooltip styling for some completely inexplicable reason, use en-gb
-
-                cultureString = "en-GB";
-                cultureStringLower = "en-gb";
+                cultureString = "en-US";
+                cultureStringLower = "en-us";
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureString);
 
                 HttpCookie cookieCulture = new HttpCookie("PreferredCulture");
@@ -202,18 +196,18 @@ namespace Swarmops
 
             string flagName = "uk";
 
-            if (cultureStringLower != "en-gb" && cultureString.Length > 3)
+            if (!cultureStringLower.StartsWith("en") && cultureString.Length > 3)
             {
                 flagName = cultureStringLower.Substring(3);
             }
 
-            this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + ".png";
+            this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + "-24px.png";
 
             this.LinkLogout.Text = Resources.Global.CurrentUserInfo_Logout;
             this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
             this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
 
-            if (cultureStringLower != "en-gb" && cultureStringLower != "sv-se" && cultureString.Trim().Length > 0)
+            if (!cultureStringLower.StartsWith("en") && cultureStringLower != "sv-se" && cultureStringLower != "nl-NL" && cultureString.Trim().Length > 0)
             {
                 this.LinkTranslate.Visible = true;
             }

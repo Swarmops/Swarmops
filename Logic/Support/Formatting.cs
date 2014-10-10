@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Swarmops.Logic.Security;
-using Swarmops.Logic.Support;
 using System.Text.RegularExpressions;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Logic.Support
 {
