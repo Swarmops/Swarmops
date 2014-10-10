@@ -347,9 +347,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Test.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\nl\Logic.Communications.Transmission.NotificationPayload.nl.resx" />
-    <EmbeddedResource Include="App_GlobalResources\nl\Logic.Financial.FinancialTransactionTagSetTypesStock.nl.resx" />
-    <EmbeddedResource Include="App_GlobalResources\nl\Logic.Swarm.DashboardTodos.nl.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Communications.Transmission.NotificationPayload.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Financial.FinancialTransactionTagSetTypesStock.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Swarm.DashboardTodos.sv-SE.resx" />

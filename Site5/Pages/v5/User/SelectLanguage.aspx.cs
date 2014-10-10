@@ -54,6 +54,12 @@ namespace Swarmops.Frontend.Pages.v5.User
                 availableLanguages.Add(newLanguage);
             }
 
+            LanguageParameters localizeParams = new LanguageParameters();
+            localizeParams.IconUrl = "/Images/Flags/txl-64px.png";
+            localizeParams.CultureId = "af-ZA";
+            localizeParams.DisplayName = "Translate Swarmops into Your Language";
+            availableLanguages.Add(localizeParams);
+
             this.RepeaterLanguages.DataSource = availableLanguages;
             this.RepeaterLanguages.DataBind();
         }

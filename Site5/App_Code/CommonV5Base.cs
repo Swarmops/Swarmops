@@ -60,7 +60,8 @@ public class CommonV5Base
         }
         catch (Exception exception)
         {
-            throw new Exception("Could not set culture \"" + preferredCulture + "\"", exception);
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            // throw new Exception("Could not set culture \"" + preferredCulture + "\"", exception);
             // Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
         }
 
