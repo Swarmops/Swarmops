@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddMotionAmendment_AmendmentSubmittedAs" xml:space="preserve">
+    <value>crwdns1639962:0{0}crwdnd1639962:0{1}crwdne1639962:0</value>
+    <comment>Keep very short</comment>
+  </data>
+  <data name="AddMotionAmendment_Decision" xml:space="preserve">
+    <value>crwdns1639963:0crwdne1639963:0</value>
+    <comment>Decision to be made, amending the motion</comment>
+  </data>
+  <data name="AddMotionAmendment_PageTitle" xml:space="preserve">
+    <value>crwdns1639964:0crwdne1639964:0</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotionAmendment_SubmitAmendment" xml:space="preserve">
+    <value>crwdns1641015:0crwdne1641015:0</value>
+  </data>
+  <data name="AddMotionAmendment_Submitter" xml:space="preserve">
+    <value>crwdns1639965:0crwdne1639965:0</value>
+  </data>
+  <data name="AddMotionAmendment_SubmittingAmendmentInfo" xml:space="preserve">
+    <value>crwdns1639966:0crwdne1639966:0</value>
+    <comment>In sidebar info box. Motion title follows in bold.</comment>
+  </data>
+  <data name="AddMotionAmendment_Text" xml:space="preserve">
+    <value>crwdns1639967:0crwdne1639967:0</value>
+    <comment>Text of motion amendment (justification and rationale)</comment>
+  </data>
+  <data name="AddMotionAmendment_Title" xml:space="preserve">
+    <value>crwdns1639968:0crwdne1639968:0</value>
+  </data>
+  <data name="AddMotion_Decisions" xml:space="preserve">
+    <value>crwdns1639969:0crwdne1639969:0</value>
+    <comment>Proposed decisions, one per line</comment>
+  </data>
+  <data name="AddMotion_MotionSubmittedAs" xml:space="preserve">
+    <value>crwdns1639970:0{0}crwdne1639970:0</value>
+    <comment>Keep short</comment>
+  </data>
+  <data name="AddMotion_PageTitle" xml:space="preserve">
+    <value>crwdns1639971:0crwdne1639971:0</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotion_SubmitMotion" xml:space="preserve">
+    <value>crwdns1641016:0crwdne1641016:0</value>
+  </data>
+  <data name="AddMotion_Submitter" xml:space="preserve">
+    <value>crwdns1639972:0crwdne1639972:0</value>
+    <comment>Original submitter (not person at keyboard)</comment>
+  </data>
+  <data name="AddMotion_SubmittingMotionInfo" xml:space="preserve">
+    <value>crwdns1639973:0crwdne1639973:0</value>
+    <comment>Meeting name follows in bold.</comment>
+  </data>
+  <data name="AddMotion_Text" xml:space="preserve">
+    <value>crwdns1639974:0crwdne1639974:0</value>
+    <comment>Text of motion</comment>
+  </data>
+  <data name="AddMotion_Title" xml:space="preserve">
+    <value>crwdns1639975:0crwdne1639975:0</value>
+    <comment>Motion title in form</comment>
+  </data>
+  <data name="AddMotion_WrongMeeting" xml:space="preserve">
+    <value>crwdns1639976:0crwdne1639976:0</value>
+    <comment>Link to change meetings</comment>
+  </data>
+  <data name="ListMotions_Grid_Amended" xml:space="preserve">
+    <value>crwdns1641017:0crwdne1641017:0</value>
+  </data>
+  <data name="ListMotions_Grid_Amendments" xml:space="preserve">
+    <value>crwdns1641018:0crwdne1641018:0</value>
+  </data>
+  <data name="ListMotions_Grid_Carried" xml:space="preserve">
+    <value>crwdns1641019:0crwdne1641019:0</value>
+  </data>
+  <data name="ListMotions_Grid_Designation" xml:space="preserve">
+    <value>crwdns1641020:0crwdne1641020:0</value>
+  </data>
+  <data name="ListMotions_Grid_Title" xml:space="preserve">
+    <value>crwdns1641021:0crwdne1641021:0</value>
+  </data>
+  <data name="ListMotions_PageTitle" xml:space="preserve">
+    <value>crwdns1639977:0crwdne1639977:0</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ListMotions_Sidebar_Info" xml:space="preserve">
+    <value>crwdns1641022:0crwdne1641022:0</value>
+  </data>
+  <data name="ListMotions_SubmitAmendment" xml:space="preserve">
+    <value>crwdns1639978:0crwdne1639978:0</value>
+    <comment>Displayed in-grid</comment>
+  </data>
+  <data name="ViewMotion_AddAmendment" xml:space="preserve">
+    <value>crwdns1639979:0crwdne1639979:0</value>
+  </data>
+  <data name="ViewMotion_Amendment" xml:space="preserve">
+    <value>crwdns1641023:0crwdne1641023:0</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountOne" xml:space="preserve">
+    <value>crwdns1639980:0crwdne1639980:0</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountTwoPlus" xml:space="preserve">
+    <value>crwdns1639981:0{0}crwdne1639981:0</value>
+  </data>
+  <data name="ViewMotion_AmendmentCountZero" xml:space="preserve">
+    <value>crwdns1639982:0crwdne1639982:0</value>
+  </data>
+  <data name="ViewMotion_AmendmentProposedChange" xml:space="preserve">
+    <value>crwdns1641024:0crwdne1641024:0</value>
+  </data>
+  <data name="ViewMotion_AmendmentText" xml:space="preserve">
+    <value>crwdns1641025:0crwdne1641025:0</value>
+  </data>
+  <data name="ViewMotion_DecisionPoints" xml:space="preserve">
+    <value>crwdns1639983:0crwdne1639983:0</value>
+  </data>
+  <data name="ViewMotion_Discuss" xml:space="preserve">
+    <value>crwdns1639984:0crwdne1639984:0</value>
+    <comment>Label before link to forum or similar</comment>
+  </data>
+  <data name="ViewMotion_DiscussLink" xml:space="preserve">
+    <value>crwdns1639985:0{0}crwdne1639985:0</value>
+    <comment>Hyperlink text</comment>
+  </data>
+  <data name="ViewMotion_MotionDesignation" xml:space="preserve">
+    <value>crwdns1639986:0{0}crwdne1639986:0</value>
+  </data>
+  <data name="ViewMotion_PageTitle" xml:space="preserve">
+    <value>crwdns1639987:0crwdne1639987:0</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ViewMotion_Text" xml:space="preserve">
+    <value>crwdns1639988:0crwdne1639988:0</value>
+  </data>
+  <data name="ViewMotion_ViewingMotionInfo" xml:space="preserve">
+    <value>crwdns1639989:0crwdne1639989:0</value>
+    <comment>In sidebar info box. Meeting name follows in bold.</comment>
+  </data>
+  <data name="VoteAmendments_BoardRecommendation" xml:space="preserve">
+    <value>crwdns6552390:0crwdne6552390:0</value>
+    <comment>First item in dropdown box</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Abstain" xml:space="preserve">
+    <value>crwdns6552391:0crwdne6552391:0</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Board" xml:space="preserve">
+    <value>crwdns6552392:0crwdne6552392:0</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Change" xml:space="preserve">
+    <value>crwdns6552393:0crwdne6552393:0</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Decision" xml:space="preserve">
+    <value>crwdns6552394:0crwdne6552394:0</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
+    <value>crwdns6552395:0crwdne6552395:0</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_No" xml:space="preserve">
+    <value>crwdns6552396:0crwdne6552396:0</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
+    <value>crwdns6552397:0crwdne6552397:0</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Recommend" xml:space="preserve">
+    <value>crwdns6552398:0crwdne6552398:0</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Text" xml:space="preserve">
+    <value>crwdns6552399:0crwdne6552399:0</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_TitleText" xml:space="preserve">
+    <value>crwdns6552400:0crwdne6552400:0</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_Yes" xml:space="preserve">
+    <value>crwdns6552401:0crwdne6552401:0</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments_Header" xml:space="preserve">
+    <value>crwdns6552402:0{0}crwdne6552402:0</value>
+    <comment>In content box header. The meeting name goes in {0}.</comment>
+  </data>
+  <data name="VoteAmendments_Info" xml:space="preserve">
+    <value>crwdns6552403:0crwdne6552403:0</value>
+  </data>
+  <data name="VoteAmendments_PageTitle" xml:space="preserve">
+    <value>crwdns6552404:0crwdne6552404:0</value>
+    <comment>In page title and header</comment>
+  </data>
+  <data name="VoteAmendments_Recommend_Abstain" xml:space="preserve">
+    <value>crwdns6552405:0crwdne6552405:0</value>
+  </data>
+  <data name="VoteAmendments_Recommend_No" xml:space="preserve">
+    <value>crwdns6552406:0crwdne6552406:0</value>
+  </data>
+  <data name="VoteAmendments_Recommend_Yes" xml:space="preserve">
+    <value>crwdns6552407:0crwdne6552407:0</value>
+  </data>
+  <data name="VoteAmendments_SelectRecommendation" xml:space="preserve">
+    <value>crwdns6552408:0crwdne6552408:0</value>
+    <comment>Default in dropdown box</comment>
+  </data>
+  <data name="Vote_CreateVotingList" xml:space="preserve">
+    <value>crwdns6552409:0crwdne6552409:0</value>
+    <comment>This becomes a link which folds out to a popup asking "for motions or amendments".</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Amendments" xml:space="preserve">
+    <value>crwdns6552410:0crwdne6552410:0</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Elections" xml:space="preserve">
+    <value>crwdns6552411:0crwdne6552411:0</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_CreateVotingList_Motions" xml:space="preserve">
+    <value>crwdns6552412:0crwdne6552412:0</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote_Info" xml:space="preserve">
+    <value>crwdns6552413:0{0}crwdne6552413:0</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Vote_MeetingElections" xml:space="preserve">
+    <value>crwdns6552414:0crwdne6552414:0</value>
+  </data>
+  <data name="Vote_Motions" xml:space="preserve">
+    <value>crwdns6552415:0crwdne6552415:0</value>
+  </data>
+  <data name="Vote_MotionVotingMotionAmendments" xml:space="preserve">
+    <value>crwdns6552416:0crwdne6552416:0</value>
+  </data>
+  <data name="Vote_MotionVotingMotions" xml:space="preserve">
+    <value>crwdns6552417:0crwdne6552417:0</value>
+  </data>
+  <data name="Vote_NotOpenedYet" xml:space="preserve">
+    <value>crwdns6552418:0crwdne6552418:0</value>
+    <comment>Keep very short.</comment>
+  </data>
+  <data name="Vote_OpensOnDate" xml:space="preserve">
+    <value>crwdns6552419:0{0:yyyy-MMM-dd}crwdne6552419:0</value>
+    <comment>Note the embedded date format. Localize to national standard.</comment>
+  </data>
+  <data name="Vote_PageTitle" xml:space="preserve">
+    <value>crwdns6552420:0crwdne6552420:0</value>
+  </data>
+  <data name="Vote_PointsOfOrder" xml:space="preserve">
+    <value>crwdns6552421:0crwdne6552421:0</value>
+  </data>
+  <data name="Vote_PointsOfOrderTemp" xml:space="preserve">
+    <value>crwdns6552422:0crwdne6552422:0</value>
+  </data>
+  <data name="Vote_VoteHere" xml:space="preserve">
+    <value>crwdns6552423:0crwdne6552423:0</value>
+    <comment>Link to voting page</comment>
+  </data>
+  <data name="Vote_VoteOnAmendments" xml:space="preserve">
+    <value>crwdns6552424:0{0:N0}crwdne6552424:0</value>
+    <comment>The {0} is the amendment count.</comment>
+  </data>
+  <data name="Vote_VoteOnMotions" xml:space="preserve">
+    <value>crwdns6552425:0{0:N0}crwdne6552425:0</value>
+    <comment>The {0} is the motion count.</comment>
+  </data>
+  <data name="VoteAmendments_SaveVote" xml:space="preserve">
+    <value>crwdns6552426:0crwdne6552426:0</value>
+    <comment>Button at end of page</comment>
+  </data>
+  <data name="VoteAmendments_SaveVote_Temp" xml:space="preserve">
+    <value>crwdns6552427:0crwdne6552427:0</value>
+    <comment>For Tests Only</comment>
+  </data>
+</root>

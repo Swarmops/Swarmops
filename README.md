@@ -1,7 +1,7 @@
 Swarmops
 ========
 
-**Swarmops is a necessary tool to enable any bitcoin-native and decentralized gamechanger.**
+**Swarmops is a necessary tool to enable any bitcoin-native or decentralized gamechanger.**
 
 Swarmops is an admin system for swarm-type organizations. It's a bureaucracy system for people who thoroghly dislike bureaucracy, so it removes all visibility of it and focuses on the ops aspects. It manages decentralized authority, volunteers, members, activists, budgets, mass communications, expenses, payroll, invoices, and complete financials/bookkeeping.
 
@@ -30,8 +30,8 @@ If you're daring enough to install a pilot of Swarmops, you're most welcome to d
 > `wget http://packages.swarmops.com/swarmops-packages.gpg.key`
 > `apt-key add swarmops-packages.gpg.key`
 
-Then, edit /etc/apt/sources.list to include this line:
-> deb http://packages.swarmops.com/ squeeze contrib
+Then, edit /etc/apt/sources.list to include this line, probably at the bottom:
+> `deb http://packages.swarmops.com/ squeeze contrib`
 
 Then run
 > `apt-get update`
@@ -47,7 +47,7 @@ Once configured and logged in, you may also want to install
 
 > `apt-get install swarmops-frontend-external-scripts`
 
-These are GPLed scripts that cannot be conveyed as part of Swarmops for license reasons, but Swarmops runs better with then installed on the frontend host.
+These are GPLed scripts that cannot be conveyed as part of Swarmops for license reasons, but Swarmops runs better with them installed on the frontend host.
 
 The packages named as listed above (swarmops-frontend) are the sprint packages, released every two weeks. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
 
@@ -57,3 +57,10 @@ Contributing
 No permission necessary, really. Just check in code. The backend is ASP.Net/C# and the frontend (where most of the development happens) is Javascript and jQuery. But if you want to see what's being worked on, feel free to get an account at http://scrum.pirateacademy.eu and join the Swarmops project, and grab tasks from the master list.
 
 There's also a Facebook group named Swarmops Developers which you may want to join. Yes, Facebook is evil, so give me a better alternative. Until there is one, that's where discussions happen.
+
+License
+-------
+
+No, there isn't a "license". This code is completely in the public domain, with the exception of external libraries used. Those are marked as such. In jurisdictions where public domain doesn't exist as a legal concept, the code is under the CC-0 (Creative Commons Zero) license.
+
+That also means that any code _you_ commit to Swarmops, whether by checking in code to this repository or by doing so to forks and then pushing code back here, is irrevocably commited to the public domain.

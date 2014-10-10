@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CurrentUserInfo_Logout" xml:space="preserve">
+    <value>crwdns6498504:0crwdne6498504:0</value>
+    <comment>Causes signoff and de-authentication</comment>
+  </data>
+  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
+    <value>crwdns6498505:0crwdne6498505:0</value>
+    <comment>Tooltip on hover over wrench icon</comment>
+  </data>
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
+    <value>crwdns6498506:0crwdne6498506:0</value>
+    <comment>Shown as header of language list pop-up</comment>
+  </data>
+  <data name="Dashboard_Info_Temporary" xml:space="preserve">
+    <value>crwdns6498507:0crwdne6498507:0</value>
+    <comment>Temporary</comment>
+  </data>
+  <data name="Dashboard_Main_Temporary" xml:space="preserve">
+    <value>crwdns6498508:0crwdne6498508:0</value>
+    <comment>Temporary display while there is no dashboard.</comment>
+  </data>
+  <data name="Dashboard_PageTitle" xml:space="preserve">
+    <value>crwdns6498509:0crwdne6498509:0</value>
+    <comment>Title of default page</comment>
+  </data>
+  <data name="Financial_Actuals" xml:space="preserve">
+    <value>crwdns6498510:0crwdne6498510:0</value>
+  </data>
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
+    <value>crwdns6498511:0crwdne6498511:0</value>
+  </data>
+  <data name="Financial_ActualsToDate" xml:space="preserve">
+    <value>crwdns6498512:0crwdne6498512:0</value>
+  </data>
+  <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
+    <value>crwdns6498513:0crwdne6498513:0</value>
+  </data>
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
+    <value>crwdns6498514:0crwdne6498514:0</value>
+  </data>
+  <data name="Financial_Budget" xml:space="preserve">
+    <value>crwdns6498515:0crwdne6498515:0</value>
+  </data>
+  <data name="Financial_CashAdvance" xml:space="preserve">
+    <value>crwdns6552480:0crwdne6552480:0</value>
+  </data>
+  <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
+    <value>crwdns6552481:0{0}crwdne6552481:0</value>
+  </data>
+  <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
+    <value>crwdns6552482:0{0}crwdne6552482:0</value>
+  </data>
+  <data name="Financial_ExpenseClaim" xml:space="preserve">
+    <value>crwdns6552483:0crwdne6552483:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
+    <value>crwdns6552484:0{0}crwdne6552484:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
+    <value>crwdns6552485:0{0}crwdne6552485:0</value>
+  </data>
+  <data name="Financial_InvoiceInbound" xml:space="preserve">
+    <value>crwdns6552486:0crwdne6552486:0</value>
+  </data>
+  <data name="Financial_InvoiceOutbound" xml:space="preserve">
+    <value>crwdns6552487:0crwdne6552487:0</value>
+  </data>
+  <data name="Financial_Parley" xml:space="preserve">
+    <value>crwdns6552488:0crwdne6552488:0</value>
+  </data>
+  <data name="Financial_Salary" xml:space="preserve">
+    <value>crwdns6552489:0crwdne6552489:0</value>
+  </data>
+  <data name="Financial_SalarySpecification" xml:space="preserve">
+    <value>crwdns6552490:0{0:yyyy-MMM}crwdne6552490:0</value>
+    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
+  </data>
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
+    <value>crwdns6552491:0{0}crwdne6552491:0</value>
+  </data>
+  <data name="Financial_TaxSpecification" xml:space="preserve">
+    <value>crwdns6552492:0{0}crwdne6552492:0</value>
+  </data>
+  <data name="Financial_TheTaxMan" xml:space="preserve">
+    <value>crwdns6552493:0crwdne6552493:0</value>
+    <comment>Used as recipient for taxes.</comment>
+  </data>
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>crwdns6498516:0crwdne6498516:0</value>
+  </data>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>crwdns6552494:0crwdne6552494:0</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>crwdns6498517:0crwdne6498517:0</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
+  <data name="Global_Change" xml:space="preserve">
+    <value>crwdns6498518:0crwdne6498518:0</value>
+    <comment>Link after describing what the user is looking at, allowing a change.</comment>
+  </data>
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>crwdns6498519:0crwdne6498519:0</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>crwdns6498520:0crwdne6498520:0</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
+    <value>crwdns6498521:0crwdne6498521:0</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
+    <value>crwdns6498522:0crwdne6498522:0</value>
+    <comment>Initializer in dropdown box.</comment>
+  </data>
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>crwdns6498523:0crwdne6498523:0</value>
+    <comment>Link after describing something.</comment>
+  </data>
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>crwdns6498524:0crwdne6498524:0</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>crwdns6498525:0crwdne6498525:0</value>
+  </data>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>crwdns6498526:0crwdne6498526:0</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
+  </data>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>crwdns6498527:0crwdne6498527:0</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
+  </data>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>crwdns6553673:0crwdne6553673:0</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>crwdns6498529:0crwdne6498529:0</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  </data>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>crwdns6498819:0{0}crwdne6498819:0</value>
+  </data>
+  <data name="Sidebar_Actions" xml:space="preserve">
+    <value>crwdns6498530:0crwdne6498530:0</value>
+    <comment>List of shortcuts to likely actions</comment>
+  </data>
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>crwdns6498531:0crwdne6498531:0</value>
+    <comment>No shortcuts from this page right now.</comment>
+  </data>
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>crwdns6498532:0crwdne6498532:0</value>
+    <comment>Information about current page</comment>
+  </data>
+  <data name="Sidebar_Todo" xml:space="preserve">
+    <value>crwdns6498533:0crwdne6498533:0</value>
+    <comment>List of todo items</comment>
+  </data>
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>crwdns6498534:0crwdne6498534:0</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>crwdns6498535:0crwdne6498535:0</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>crwdns6553608:0crwdne6553608:0</value>
+  </data>
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
+    <value>crwdns6553609:0crwdne6553609:0</value>
+  </data>
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
+    <value>crwdns6553610:0crwdne6553610:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
+    <value>crwdns6553611:0crwdne6553611:0</value>
+  </data>
+  <data name="Financial_InboundInvoices" xml:space="preserve">
+    <value>crwdns6553633:0crwdne6553633:0</value>
+  </data>
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>crwdns6553613:0crwdne6553613:0</value>
+  </data>
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
+    <value>crwdns6553614:0crwdne6553614:0</value>
+  </data>
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>crwdns6553615:0crwdne6553615:0</value>
+  </data>
+  <data name="Global_NA" xml:space="preserve">
+    <value>crwdns6553616:0crwdne6553616:0</value>
+  </data>
+  <data name="Global_NALong" xml:space="preserve">
+    <value>crwdns6553617:0crwdne6553617:0</value>
+  </data>
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>crwdns6553618:0crwdne6553618:0</value>
+  </data>
+  <data name="Global_Today" xml:space="preserve">
+    <value>crwdns6553619:0crwdne6553619:0</value>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
+    <value>crwdns6553674:0crwdne6553674:0</value>
+    <comment>Second-dimension bookkeeping</comment>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
+    <value>crwdns6553675:0crwdne6553675:0</value>
+    <comment>Tagging costs/income to projects</comment>
+  </data>
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>crwdns6553676:0crwdne6553676:0</value>
+    <comment>List of shortcuts to related actions to current one</comment>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>crwdns6553677:0{0}crwdnd6553677:0{1}crwdne6553677:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>crwdns6553678:0{0}crwdne6553678:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>crwdns6553679:0{0}crwdnd6553679:0{1}crwdne6553679:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>crwdns6553680:0{0}crwdne6553680:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>crwdns6553681:0{0}crwdnd6553681:0{1}crwdne6553681:0</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>crwdns6553682:0{0}crwdnd6553682:0{1}crwdne6553682:0</value>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>crwdns6553683:0{0}crwdnd6553683:0{1}crwdne6553683:0</value>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>crwdns6553684:0{0}crwdnd6553684:0{1}crwdne6553684:0</value>
+  </data>
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>crwdns6553785:0crwdne6553785:0</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>crwdns6553786:0crwdne6553786:0</value>
+  </data>
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>crwdns6553787:0crwdne6553787:0</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>crwdns6553788:0crwdne6553788:0</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>crwdns6553789:0crwdne6553789:0</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>crwdns6553790:0crwdne6553790:0</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>crwdns6553791:0crwdne6553791:0</value>
+  </data>
+  <data name="Financial_Debt" xml:space="preserve">
+    <value>crwdns6553792:0crwdne6553792:0</value>
+  </data>
+  <data name="Financial_Income" xml:space="preserve">
+    <value>crwdns6553793:0crwdne6553793:0</value>
+  </data>
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>crwdns6553832:0crwdne6553832:0</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_Missing" xml:space="preserve">
+    <value>crwdns6553795:0crwdne6553795:0</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>crwdns6553796:0crwdne6553796:0</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_Off" xml:space="preserve">
+    <value>crwdns6553797:0crwdne6553797:0</value>
+    <comment>Off (as opposed to On)</comment>
+  </data>
+  <data name="Global_On" xml:space="preserve">
+    <value>crwdns6553798:0crwdne6553798:0</value>
+    <comment>On (as opposed to Off)</comment>
+  </data>
+  <data name="Global_Activists_Generic_Commercial" xml:space="preserve">
+    <value>crwdns6553799:0crwdne6553799:0</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Global_Activists_Generic_Governmental" xml:space="preserve">
+    <value>crwdns6553800:0crwdne6553800:0</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Global_Activists_Generic_Nonprofit" xml:space="preserve">
+    <value>crwdns6553801:0crwdne6553801:0</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Global_Activist_Female_Commercial" xml:space="preserve">
+    <value>crwdns6553802:0crwdne6553802:0</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Global_Activist_Female_Governmental" xml:space="preserve">
+    <value>crwdns6553803:0crwdne6553803:0</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Global_Activist_Female_Nonprofit" xml:space="preserve">
+    <value>crwdns6553804:0crwdne6553804:0</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Global_Activist_Generic_Commercial" xml:space="preserve">
+    <value>crwdns6553805:0crwdne6553805:0</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Global_Activist_Generic_Governmental" xml:space="preserve">
+    <value>crwdns6553806:0crwdne6553806:0</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Global_Activist_Generic_Nonprofit" xml:space="preserve">
+    <value>crwdns6553807:0crwdne6553807:0</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Global_Activist_Male_Commercial" xml:space="preserve">
+    <value>crwdns6553808:0crwdne6553808:0</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Global_Activist_Male_Governmental" xml:space="preserve">
+    <value>crwdns6553809:0crwdne6553809:0</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Global_Activist_Male_Nonprofit" xml:space="preserve">
+    <value>crwdns6553810:0crwdne6553810:0</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Global_Organization_Commercial" xml:space="preserve">
+    <value>crwdns6553811:0crwdne6553811:0</value>
+    <comment>A commercial organization (for-profit enterprise)</comment>
+  </data>
+  <data name="Global_Organization_Governmental" xml:space="preserve">
+    <value>crwdns6553812:0crwdne6553812:0</value>
+    <comment>Organization that's part of government somehow</comment>
+  </data>
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
+    <value>crwdns6553813:0crwdne6553813:0</value>
+    <comment>Non-profit (activist, political parties)</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>crwdns6553833:0crwdne6553833:0</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Action" xml:space="preserve">
+    <value>crwdns6553834:0crwdne6553834:0</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>crwdns6553835:0crwdne6553835:0</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>crwdns6553836:0crwdne6553836:0</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>crwdns6553837:0crwdne6553837:0</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Phone" xml:space="preserve">
+    <value>crwdns6553838:0crwdne6553838:0</value>
+    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  </data>
+</root>

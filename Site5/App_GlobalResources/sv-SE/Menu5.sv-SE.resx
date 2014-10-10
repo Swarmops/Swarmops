@@ -144,18 +144,17 @@
   <data name="Menu5_Communications_MassMailing" xml:space="preserve">
     <value>Massutskick</value>
   </data>
+  
   <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
     <value>Hantera Pappersinkorg</value>
   </data>
-  <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
-    <value>Mottaget Pappersbrev</value>
-  </data>
+  
+  
   <data name="Menu5_Communications_ReporterList" xml:space="preserve">
     <value>Hantera Reporterlista</value>
   </data>
-  <data name="Menu5_Communications_SendPressRelease" xml:space="preserve">
-    <value>Skicka Pressmeddelande</value>
-  </data>
+  
+  
   <data name="Menu5_Communications_TextActivists" xml:space="preserve">
     <value>SMS:a Aktivister</value>
   </data>
@@ -198,27 +197,22 @@
   <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Löneutbetalningar</value>
   </data>
-  <data name="Menu5_Financial_ManageBudget" xml:space="preserve">
-    <value>Hantera Budget</value>
-  </data>
+  
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Betala ut Pengar</value>
   </data>
+  
   <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
     <value>Mottagit Faktura</value>
   </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Begär Kontantförskott</value>
   </data>
-  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
-    <value>Skicka Faktura</value>
-  </data>
+  
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>Validera kvitton</value>
   </data>
-  <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
-    <value>Visa Budget och Utfall</value>
-  </data>
+  
   <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
     <value>Visa Likviditetsprognos</value>
   </data>
@@ -259,6 +253,7 @@
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>Kan inte stänga böcker för {0}</value>
   </data>
+  
   <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
     <value>Stäng Bokföring För {0}</value>
   </data>
@@ -268,6 +263,7 @@
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importera Bankdata</value>
   </data>
+  
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Lönelista</value>
   </data>
@@ -337,6 +333,7 @@
   <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>Lägg Till Medlem</value>
   </data>
+  
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Lista Medlemmar</value>
   </data>
@@ -352,9 +349,8 @@
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Ny Konferens</value>
   </data>
-  <data name="Menu5_People_SelfSignup" xml:space="preserve">
-    <value>Självregistreringssidan</value>
-  </data>
+  
+  
   
   
 </root>

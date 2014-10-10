@@ -1,0 +1,9 @@
+base_path: /media/rick/Lab/Dev/temp
+
+files:
+  -
+    source: 'Logic/*.resx'
+    translation: '/Logic/%locale%/%file_name%.%locale%.resx'
+  -
+    source: 'Site/*.resx'
+    translation: '/Site/%locale%/%file_name%.%locale%.resx'
