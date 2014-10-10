@@ -145,16 +145,16 @@
     <value>Mass Mailing</value>
   </data>
   <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
-    <value>Mobilize Activists (TODO)</value>
+    <value>Mobilize Activists</value>
   </data>
   <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
     <value>Manage Paper Inbox</value>
   </data>
   <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
-    <value>Read Paper Inbox (TODO)</value>
+    <value>Read Paper Inbox</value>
   </data>
   <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
-    <value>Received Paper Letter (TODO)</value>
+    <value>Received Paper Letter</value>
   </data>
   <data name="Menu5_Communications_ReporterList" xml:space="preserve">
     <value>Manage Reporter List</value>
@@ -163,7 +163,7 @@
     <value>Send Mass Message</value>
   </data>
   <data name="Menu5_Communications_SendPressRelease" xml:space="preserve">
-    <value>Send Press Release (TODO)</value>
+    <value>Send Press Release</value>
   </data>
   <data name="Menu5_Communications_TextActivists" xml:space="preserve">
     <value>Text Activists</value>
@@ -208,13 +208,13 @@
     <value>Salaries</value>
   </data>
   <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
-    <value>Manage My Budgets (TODO)</value>
+    <value>Manage my Budgets</value>
   </data>
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Pay Out Money</value>
   </data>
   <data name="Menu5_Financial_Payroll" xml:space="preserve">
-    <value>Payroll (TODO)</value>
+    <value>Payroll</value>
   </data>
   <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
     <value>Received Invoice</value>
@@ -223,13 +223,13 @@
     <value>Request Cash Advance</value>
   </data>
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
-    <value>Send Invoice (TODO)</value>
+    <value>Send Invoice</value>
   </data>
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>Validate Receipts</value>
   </data>
   <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
-    <value>View Budget and Actuals (TODO)</value>
+    <value>View Budget and Actuals</value>
   </data>
   <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
     <value>View Liquidity Forecast</value>
@@ -274,7 +274,7 @@
     <value>Can't Close Ledgers For {0}</value>
   </data>
   <data name="Menu5_Ledgers_CashflowAnalysis" xml:space="preserve">
-    <value>Cashflow Analysis (TODO)</value>
+    <value>Cashflow Analysis</value>
   </data>
   <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
     <value>Close Ledgers For {0}</value>
@@ -286,7 +286,7 @@
     <value>Import Bank Data</value>
   </data>
   <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
-    <value>Liquidity Forecast (TODO)</value>
+    <value>Liquidity Forecast</value>
   </data>
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Payroll</value>
@@ -376,10 +376,10 @@
     <value>New Conference</value>
   </data>
   <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
-    <value>Roles and Responsibilities (TODO)</value>
+    <value>Roles and Responsibilities</value>
   </data>
   <data name="Menu5_People_SelfSignup" xml:space="preserve">
-    <value>Self-Signup Page (TODO)</value>
+    <value>Self-Signup Page</value>
   </data>
   <data name="Menu5_Placeholder_Todo" xml:space="preserve">
     <value>Placeholder (Todo)</value>
