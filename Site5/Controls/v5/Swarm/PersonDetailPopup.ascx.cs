@@ -24,8 +24,8 @@ namespace Swarmops.Controls.Swarm
 
             // Localize
 
-            this.ButtonSetNew.Text = Resources.Controls.Pirates.PersonDetailPopup_ChangePerson;
-            this.LabelWriteLabel.Text = Resources.Controls.Pirates.PersonDetailPopup_ChangeTo;
+            // this.ButtonSetNew.Text = Resources.Controls.Pirates.PersonDetailPopup_ChangePerson;
+            // this.LabelWriteLabel.Text = Resources.Controls.Pirates.PersonDetailPopup_ChangeTo;
             this.ButtonConfirmPerson.Text = Resources.Global.Global_Confirm;
             this.ButtonCancel.Text = Resources.Global.Global_Cancel;
         }
