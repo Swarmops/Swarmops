@@ -258,6 +258,15 @@
   
   
   
+  <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+    <comment>Column header</comment>
+  </data>
+  
+  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
+    <value>Motivering</value>
+    <comment>Row header</comment>
+  </data>
   
   
   
@@ -275,15 +284,18 @@
   
   
   
+  <data name="Vote_Motions" xml:space="preserve">
+    <value>Motioner</value>
+  </data>
+  
+  <data name="Vote_MotionVotingMotions" xml:space="preserve">
+    <value>Motioner</value>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
+  <data name="Vote_PageTitle" xml:space="preserve">
+    <value>Rösta</value>
+  </data>
   
   
   

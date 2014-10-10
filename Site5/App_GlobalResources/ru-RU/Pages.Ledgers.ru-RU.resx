@@ -202,7 +202,9 @@
   
   
   
-  
+  <data name="UploadBankFiles_Processing" xml:space="preserve">
+    <value>Обработка файла...</value>
+  </data>
   
   
   
@@ -247,6 +249,9 @@
   
   
   
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
   
   
   
@@ -260,8 +265,9 @@
   
   
   
-  
-  
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>Бюджет</value>
+  </data>
   
   
 </root>

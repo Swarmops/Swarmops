@@ -200,9 +200,31 @@
   <data name="ViewMotion_AmendmentProposedChange" xml:space="preserve">
     <value>Предложенное изменение</value>
   </data>
-  
+  <data name="ViewMotion_AmendmentText" xml:space="preserve">
+    <value>Обоснование</value>
+  </data>
   <data name="ViewMotion_DecisionPoints" xml:space="preserve">
     <value>Предлагаемые решения</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
+    <value>#</value>
+    <comment>Column header</comment>
+  </data>
+  
+  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
+    <value>Обоснование</value>
+    <comment>Row header</comment>
   </data>
   
   
@@ -221,26 +243,18 @@
   
   
   
+  <data name="Vote_Motions" xml:space="preserve">
+    <value>Движения</value>
+  </data>
+  
+  <data name="Vote_MotionVotingMotions" xml:space="preserve">
+    <value>Движения</value>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Vote_PageTitle" xml:space="preserve">
+    <value>Голосование</value>
+  </data>
   
   
   

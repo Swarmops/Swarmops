@@ -123,7 +123,9 @@
   
   
   
-  
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Бюджет</value>
+  </data>
   
   <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
     <value>Документация</value>
@@ -156,11 +158,17 @@
   
   
   
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Название банка</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Бюджет</value>
+  </data>
   
   
-  
-  
-  
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Ваши банковские реквизиты</value>
+  </data>
   
   
   
@@ -183,7 +191,9 @@
   
   
   
-  
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>Деньги</value>
+  </data>
   
   
   
@@ -200,7 +210,9 @@
     <value>Ваши банковские реквизиты</value>
   </data>
   
-  
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>Запрос наличными заранее</value>
+  </data>
   <data name="RequestCashAdvance_Purpose" xml:space="preserve">
     <value>Цель</value>
   </data>

@@ -112,106 +112,45 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddMotionAmendment_AmendmentSubmittedAs" xml:space="preserve">
-    <value>Lagret som #{0}-{1}.</value>
-    <comment>Keep very short</comment>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>crwdns6553966:0crwdne6553966:0</value>
   </data>
-  <data name="AddMotionAmendment_Decision" xml:space="preserve">
-    <value>Foreslått avgjørelse</value>
-    <comment>Decision to be made, amending the motion</comment>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>crwdns6553967:0crwdne6553967:0</value>
   </data>
-  
-  
-  
-  
-  <data name="AddMotionAmendment_Text" xml:space="preserve">
-    <value>Årsak</value>
-    <comment>Text of motion amendment (justification and rationale)</comment>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>crwdns6553968:0crwdne6553968:0</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="ViewMotion_AmendmentText" xml:space="preserve">
-    <value>Årsak</value>
+  <data name="SendMassMessage_MockMessageResult" xml:space="preserve">
+    <value>crwdns6553969:0crwdne6553969:0</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
-    <value>Årsak</value>
-    <comment>Row header</comment>
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>crwdns6553970:0{0:N0}crwdne6553970:0</value>
+    <comment>Vertical bar divides none|one|many</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="Vote_Motions" xml:space="preserve">
-    <value>Saker</value>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>crwdns6553971:0crwdne6553971:0</value>
   </data>
-  
-  <data name="Vote_MotionVotingMotions" xml:space="preserve">
-    <value>Saker</value>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>crwdns6553972:0crwdne6553972:0</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
   </data>
-  
-  
-  <data name="Vote_PageTitle" xml:space="preserve">
-    <value>Stem</value>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>crwdns6553973:0crwdne6553973:0</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>crwdns6553974:0crwdne6553974:0</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>crwdns6553975:0crwdne6553975:0</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>crwdns6553976:0crwdne6553976:0</value>
+  </data>
 </root>
