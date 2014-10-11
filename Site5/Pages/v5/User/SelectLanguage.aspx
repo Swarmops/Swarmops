@@ -13,6 +13,26 @@
         $(document).ready(function () {
         });
 
+        function confirmTranslate() {
+
+            /* -- this function doesn't seem to exist?
+            alertify.set({
+                labels: {
+                    ok: "Proceed to Crowdin translation login",
+                    cancel: "Do not proceed"
+                }
+            });*/
+
+            alertify.confirm("Thank you for helping to translate Swarmops.<br/><br/>As the dashboard reloads into on-site translation mode, you will be asked to sign into Crowdin, the swarm-powered translation tool. If you don't have an account at Crowdin, you can create one. Once logged in, you can translate Swarmops on-site into your language.<br/><br/>Click OK to continue logging into Crowdin or creating an account there.", function(response) {
+                if (response) {
+                    // ok
+                    document.location = "/Pages/v5/User/SetCulture.aspx?CultureId=af-ZA";
+                } else {
+                    // cancel - do nothing
+                }
+            });
+        }
+
     </script>
     
     <style type="text/css">
@@ -53,6 +73,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    <div class="divLanguageEncapsulation" onclick="document.location='/Pages/v5/User/SetCulture.aspx?CultureId=en-US';">
+        <div class="divLanguageFlag" style="background-image:url('/Images/Flags/uk-64px.png')" ></div>
+        <div class="spanLanguageNativeName">English (United States / International English)</div>
+    </div>
+    <hr/>
     <asp:Repeater runat="server" ID="RepeaterLanguages">
         <ItemTemplate>
             <div class="divLanguageEncapsulation" onclick="document.location='/Pages/v5/User/SetCulture.aspx?CultureId=<%# Eval("CultureId") %>';">
@@ -61,6 +86,11 @@
             </div>
         </ItemTemplate>
     </asp:Repeater>
+    <hr/>
+    <div class="divLanguageEncapsulation" onclick="confirmTranslate(); return false;">
+        <div class="divLanguageFlag" style="background-image:url('/Images/Flags/txl-64px.png')" ></div>
+        <div class="spanLanguageNativeName">Translate Swarmops into your language</div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
 </asp:Content>

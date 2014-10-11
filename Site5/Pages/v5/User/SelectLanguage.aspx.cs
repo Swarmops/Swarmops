@@ -34,7 +34,9 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"en-US", "sv-SE", "nl-NL"};
+            string[] availableCultures = {"sv-SE", "nl-NL"};
+
+            Array.Sort(availableCultures); // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
 
             List<LanguageParameters> availableLanguages = new List<LanguageParameters>();
             foreach (string cultureId in availableCultures)
@@ -53,12 +55,6 @@ namespace Swarmops.Frontend.Pages.v5.User
                 }
                 availableLanguages.Add(newLanguage);
             }
-
-            LanguageParameters localizeParams = new LanguageParameters();
-            localizeParams.IconUrl = "/Images/Flags/txl-64px.png";
-            localizeParams.CultureId = "af-ZA";
-            localizeParams.DisplayName = "Translate Swarmops into Your Language";
-            availableLanguages.Add(localizeParams);
 
             this.RepeaterLanguages.DataSource = availableLanguages;
             this.RepeaterLanguages.DataBind();
