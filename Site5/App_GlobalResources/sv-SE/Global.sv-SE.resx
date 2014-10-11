@@ -402,54 +402,18 @@
     <value>På</value>
     <comment>On (as opposed to Off)</comment>
   </data>
-  <data name="Global_Activists_Generic_Commercial" xml:space="preserve">
-    <value>Kunder</value>
-    <comment>Gender neutral plural</comment>
-  </data>
-  <data name="Global_Activists_Generic_Governmental" xml:space="preserve">
-    <value>Medborgare</value>
-    <comment>Gender neutral plural</comment>
-  </data>
-  <data name="Global_Activists_Generic_Nonprofit" xml:space="preserve">
-    <value>Aktivister</value>
-    <comment>Gender neutral plural</comment>
-  </data>
-  <data name="Global_Activist_Female_Commercial" xml:space="preserve">
-    <value>Kund</value>
-    <comment>Female singular</comment>
-  </data>
-  <data name="Global_Activist_Female_Governmental" xml:space="preserve">
-    <value>Medborgare</value>
-    <comment>Female singular</comment>
-  </data>
-  <data name="Global_Activist_Female_Nonprofit" xml:space="preserve">
-    <value>Aktivist</value>
-    <comment>Female singular</comment>
-  </data>
-  <data name="Global_Activist_Generic_Commercial" xml:space="preserve">
-    <value>Kund</value>
-    <comment>Gender neutral</comment>
-  </data>
-  <data name="Global_Activist_Generic_Governmental" xml:space="preserve">
-    <value>Medborgare</value>
-    <comment>Gender neutral</comment>
-  </data>
-  <data name="Global_Activist_Generic_Nonprofit" xml:space="preserve">
-    <value>Aktivist</value>
-    <comment>Gender neutral</comment>
-  </data>
-  <data name="Global_Activist_Male_Commercial" xml:space="preserve">
-    <value>Kund</value>
-    <comment>Male singular</comment>
-  </data>
-  <data name="Global_Activist_Male_Governmental" xml:space="preserve">
-    <value>Medborgare</value>
-    <comment>Male singular</comment>
-  </data>
-  <data name="Global_Activist_Male_Nonprofit" xml:space="preserve">
-    <value>Aktivist</value>
-    <comment>Male singular</comment>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="Global_Organization_Commercial" xml:space="preserve">
     <value>Vinstdrivande</value>
     <comment>A commercial organization (for-profit enterprise)</comment>
@@ -462,6 +426,82 @@
     <value>Ideell</value>
     <comment>Non-profit (activist, political parties)</comment>
   </data>
+  
+  <data name="Global_Action" xml:space="preserve">
+    <value>Attest</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

@@ -145,16 +145,16 @@
     <value>crwdns1639811:0crwdne1639811:0</value>
   </data>
   <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
-    <value>crwdns6553839:0crwdne6553839:0</value>
+    <value>crwdns6553954:0crwdne6553954:0</value>
   </data>
   <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
     <value>crwdns1639812:0crwdne1639812:0</value>
   </data>
   <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
-    <value>crwdns6553840:0crwdne6553840:0</value>
+    <value>crwdns6553955:0crwdne6553955:0</value>
   </data>
   <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
-    <value>crwdns6553841:0crwdne6553841:0</value>
+    <value>crwdns6553956:0crwdne6553956:0</value>
   </data>
   <data name="Menu5_Communications_ReporterList" xml:space="preserve">
     <value>crwdns1639814:0crwdne1639814:0</value>
@@ -163,7 +163,7 @@
     <value>crwdns6553842:0crwdne6553842:0</value>
   </data>
   <data name="Menu5_Communications_SendPressRelease" xml:space="preserve">
-    <value>crwdns6553843:0crwdne6553843:0</value>
+    <value>crwdns6553957:0crwdne6553957:0</value>
   </data>
   <data name="Menu5_Communications_TextActivists" xml:space="preserve">
     <value>crwdns1639816:0crwdne1639816:0</value>
@@ -208,13 +208,13 @@
     <value>crwdns1639828:0crwdne1639828:0</value>
   </data>
   <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
-    <value>crwdns6553844:0crwdne6553844:0</value>
+    <value>crwdns6553958:0crwdne6553958:0</value>
   </data>
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>crwdns1639830:0crwdne1639830:0</value>
   </data>
   <data name="Menu5_Financial_Payroll" xml:space="preserve">
-    <value>crwdns6553845:0crwdne6553845:0</value>
+    <value>crwdns6553959:0crwdne6553959:0</value>
   </data>
   <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
     <value>crwdns1639831:0crwdne1639831:0</value>
@@ -223,13 +223,13 @@
     <value>crwdns1639832:0crwdne1639832:0</value>
   </data>
   <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
-    <value>crwdns6553846:0crwdne6553846:0</value>
+    <value>crwdns6553960:0crwdne6553960:0</value>
   </data>
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>crwdns6553685:0crwdne6553685:0</value>
   </data>
   <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
-    <value>crwdns6553847:0crwdne6553847:0</value>
+    <value>crwdns6553961:0crwdne6553961:0</value>
   </data>
   <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
     <value>crwdns1639835:0crwdne1639835:0</value>
@@ -274,7 +274,7 @@
     <value>crwdns6498774:0{0}crwdne6498774:0</value>
   </data>
   <data name="Menu5_Ledgers_CashflowAnalysis" xml:space="preserve">
-    <value>crwdns6553848:0crwdne6553848:0</value>
+    <value>crwdns6553962:0crwdne6553962:0</value>
   </data>
   <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
     <value>crwdns6498775:0{0}crwdne6498775:0</value>
@@ -286,7 +286,7 @@
     <value>crwdns1639848:0crwdne1639848:0</value>
   </data>
   <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
-    <value>crwdns6553849:0crwdne6553849:0</value>
+    <value>crwdns6553963:0crwdne6553963:0</value>
   </data>
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>crwdns1639849:0crwdne1639849:0</value>
@@ -376,10 +376,10 @@
     <value>crwdns1639874:0crwdne1639874:0</value>
   </data>
   <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
-    <value>crwdns6553851:0crwdne6553851:0</value>
+    <value>crwdns6553964:0crwdne6553964:0</value>
   </data>
   <data name="Menu5_People_SelfSignup" xml:space="preserve">
-    <value>crwdns6553852:0crwdne6553852:0</value>
+    <value>crwdns6553965:0crwdne6553965:0</value>
   </data>
   <data name="Menu5_Placeholder_Todo" xml:space="preserve">
     <value>crwdns6553755:0crwdne6553755:0</value>

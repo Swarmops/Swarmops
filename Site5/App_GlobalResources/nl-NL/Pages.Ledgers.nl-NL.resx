@@ -119,7 +119,9 @@
   </resheader>
   
   
-  
+  <data name="AccountPlan_PageTitle" xml:space="preserve">
+    <value>Account Plan</value>
+  </data>
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Account</value>
   </data>
@@ -262,6 +264,9 @@
   
   
   
+  <data name="UploadBankFiles_Processing" xml:space="preserve">
+    <value>Bestand wordt verwerkt...</value>
+  </data>
   
   
   
@@ -288,6 +293,9 @@
   
   
   
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Beheerder</value>
+  </data>
   
   
   
@@ -299,11 +307,13 @@
   
   
   
+  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
+    <value>Rekening</value>
+  </data>
   
-  
-  
-  
-  
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
   
   
 </root>

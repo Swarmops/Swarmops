@@ -211,7 +211,9 @@
   
   
   
-  
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Administration</value>
+  </data>
   
   
   

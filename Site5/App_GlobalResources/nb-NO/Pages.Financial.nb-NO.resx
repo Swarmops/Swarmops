@@ -151,6 +151,10 @@
   
   
   
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>Beskrivelse</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
   
   
   
@@ -163,14 +167,23 @@
   
   
   
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>Kontonummer</value>
+  </data>
   
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>Navn på banken</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Budsjett</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>Beskrivelse</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>Dine bankdetaljer</value>
+  </data>
   
   
   

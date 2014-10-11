@@ -201,7 +201,9 @@
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Betala ut Pengar</value>
   </data>
-  
+  <data name="Menu5_Financial_Payroll" xml:space="preserve">
+    <value>Lönelista</value>
+  </data>
   <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
     <value>Mottagit Faktura</value>
   </data>

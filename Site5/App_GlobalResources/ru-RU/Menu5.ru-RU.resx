@@ -237,7 +237,9 @@
   </data>
   
   
-  
+  <data name="Menu5_Organization_Feeds_PressReleases" xml:space="preserve">
+    <value>Пресс-релизы</value>
+  </data>
   <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
     <value>Статистика Участника</value>
   </data>
