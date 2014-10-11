@@ -58,7 +58,7 @@ public class CommonV5Base
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(preferredCulture);
         }
-        catch (Exception exception)
+        catch (Exception) // if we can't set the culture, what do we do? ("We send the Marines.")
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             // throw new Exception("Could not set culture \"" + preferredCulture + "\"", exception);
