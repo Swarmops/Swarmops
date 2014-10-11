@@ -389,7 +389,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         // Initialize the root geography (which becomes #1 if everything works)
 
-        int rootGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography("World", 0);
+        int rootGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography("[LOC]World", 0);
 
         // Get the list of countries
 

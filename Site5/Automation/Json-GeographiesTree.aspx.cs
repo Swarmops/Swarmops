@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Threading;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Automation
@@ -9,6 +10,8 @@ namespace Swarmops.Frontend.Automation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            GetAuthenticationDataAndCulture();
+
             Response.ContentType = "application/json";
 
             int rootGeographyId = Geography.RootIdentity;
@@ -23,7 +26,7 @@ namespace Swarmops.Frontend.Automation
 
             // Is this stuff in cache already?
 
-            string cacheKey = "Geographies-Json-" + rootGeographyId.ToString(CultureInfo.InvariantCulture);
+            string cacheKey = "Geographies-Json-" + rootGeographyId.ToString(CultureInfo.InvariantCulture) + "-" + Thread.CurrentThread.CurrentCulture.Name;
 
             string accountsJson =
                 (string) Cache[cacheKey];
@@ -75,7 +78,7 @@ namespace Swarmops.Frontend.Automation
             foreach (Geography geography in treeMap[node])
             {
                 string element = string.Format("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
-                                               JsonSanitize(geography.Name));
+                                               JsonSanitize(TestLocalization(geography.Name)));
 
                 if (treeMap.ContainsKey(geography.Identity))
                 {
@@ -87,6 +90,18 @@ namespace Swarmops.Frontend.Automation
 
             return "[" + String.Join(",", elements.ToArray()) + "]";
 
+        }
+
+        private string TestLocalization(string name)
+        {
+            if (name.StartsWith("[LOC]"))
+            {
+                return Resources.GeographyNames.ResourceManager.GetString(name.Substring(5));
+            }
+            else
+            {
+                return name;
+            }
         }
     }
 }

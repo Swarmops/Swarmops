@@ -20,7 +20,12 @@ namespace Swarmops.Controls.Base
             set 
             { 
                 this.RootGeographyId = value.Identity;
-                RootGeographyName = value.Name; 
+                RootGeographyName = value.Name;
+
+                if (value.Name.StartsWith("[LOC]"))
+                {
+                    RootGeographyName = Resources.GeographyNames.ResourceManager.GetString(value.Name.Substring(5));
+                }
             } 
         }
     }
