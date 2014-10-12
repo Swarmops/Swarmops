@@ -127,7 +127,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             Membership.Create(CurrentUser, newOrganization, DateTime.UtcNow.AddYears(2));
 
-            string successMessage = String.Format(Resources.Pages.Admin.CreateOrganization_Success, Resources.Global.ResourceManager.GetString(peopleLabel));
+            string successMessage = String.Format(Resources.Pages.Admin.CreateOrganization_Success, Resources.Global.ResourceManager.GetString("Title_" + peopleLabel + "_Ship"));
 
             // Create org here
 
