@@ -13,20 +13,7 @@
             $('#<%=this.DropCreateChild.ClientID %>').combobox({
                 editable: false,
                 height: 30,
-                width: 300,
-                textField: 'label',
-                valueField: 'id',
-                data: [{
-                    'label': "<%= Resources.Global.Global_SelectOne %>",
-                    'id': '0'
-                }, {
-                    'label': "<%= Resources.Pages.Admin.CreateOrganization_AsRoot%>",
-                    'id': 'Root'
-                }, {
-                    'label': "<%= String.Format(Resources.Pages.Admin.CreateOrganization_ChildOfX, this.CurrentOrganization.Name)%>",
-                    'id': 'Child'
-                }]
-
+                width: 300
             });
 
             $('#<%=this.DropCurrencies.ClientID%>').combobox({

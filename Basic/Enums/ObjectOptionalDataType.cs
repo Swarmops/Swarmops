@@ -221,7 +221,15 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// A National ID number, if any. Like US SSN.
         /// </summary>
-        NationalIdNumber
+        NationalIdNumber,
+        /// <summary>
+        /// What are ordinary people called in this org?
+        /// </summary>
+        OrgRegularLabel,
+        /// <summary>
+        /// What are activists called in this org?
+        /// </summary>
+        OrgActivistLabel
     }
 
 }

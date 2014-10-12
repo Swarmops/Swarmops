@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
 {
@@ -48,6 +50,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.DropCreateChild.Items.Add(new ListItem(Resources.Global.Global_SelectOne, "0"));
 
 
+            this.DropCreateChild.Items.Add(new ListItem(Resources.Pages.Admin.CreateOrganization_AsRoot, "Root"));
+            this.DropCreateChild.Items.Add(new ListItem(String.Format(Resources.Pages.Admin.CreateOrganization_ChildOfX, CurrentOrganization.Name), "Child"));
+
             List<string> localizedPersonLabels = new List<string>();
 
             foreach (string personLabel in _personLabels)
@@ -89,7 +94,40 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         protected void ButtonCreate_Click(object sender, EventArgs e)
         {
-            string successMessage = string.Empty;
+            string activistLabel = this.DropActivistLabel.SelectedValue;
+            string peopleLabel = this.DropPersonLabel.SelectedValue;
+            string asRoot = this.DropCreateChild.SelectedValue;
+            string currencyCode = this.DropCurrencies.SelectedValue;
+            string newOrgName = this.TextOrganizationName.Text;
+
+            if (string.IsNullOrEmpty(newOrgName))
+            {
+                throw new ArgumentException("Organization name can't be empty");
+            }
+
+            if (activistLabel == "0" || peopleLabel == "0" || asRoot == "0" || currencyCode == "0")
+            {
+                throw new ArgumentException("Necessary argument was not supplied (did client-side validation run?)");
+            }
+
+            Currency newOrgCurrency = Currency.FromCode(currencyCode);
+            Organization parent = CurrentOrganization;
+
+            if (asRoot == "Root")
+            {
+                parent = null;
+            }
+
+            Organization newOrganization = Organization.Create(parent == null ? 0 : parent.Identity, newOrgName,
+                newOrgName, newOrgName, string.Empty, newOrgName, 0, true, true, 0);
+            newOrganization.EnableEconomy(newOrgCurrency);
+
+            newOrganization.RegularLabel = peopleLabel;
+            newOrganization.ActivistLabel = activistLabel;
+
+            Membership.Create(CurrentUser, newOrganization, DateTime.UtcNow.AddYears(2));
+
+            string successMessage = String.Format(Resources.Pages.Admin.CreateOrganization_Success, Resources.Global.ResourceManager.GetString(peopleLabel));
 
             // Create org here
 

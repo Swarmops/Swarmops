@@ -905,5 +905,37 @@ namespace Swarmops.Logic.Structure
             }
         }
 
+        public string RegularLabel
+        {
+            get
+            {
+                string optionalData = OptionalData[ObjectOptionalDataType.OrgRegularLabel];
+                if (string.IsNullOrEmpty(optionalData))
+                {
+                    this.RegularLabel = "Member";
+                    return "Member"; // Legacy
+                }
+
+                return optionalData;
+            }
+            set { OptionalData[ObjectOptionalDataType.OrgRegularLabel] = value; }
+        }
+
+        public string ActivistLabel
+        {
+            get
+            {
+                string optionalData = OptionalData[ObjectOptionalDataType.OrgActivistLabel];
+                if (string.IsNullOrEmpty(optionalData))
+                {
+                    this.ActivistLabel = "Activist";
+                    return "Activist";
+                }
+
+                return optionalData;
+            }
+            set { OptionalData[ObjectOptionalDataType.OrgActivistLabel] = value; }
+        }
+
     }
 }
