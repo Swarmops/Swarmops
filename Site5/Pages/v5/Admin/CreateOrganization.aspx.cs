@@ -119,7 +119,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
 
             Organization newOrganization = Organization.Create(parent == null ? 0 : parent.Identity, newOrgName,
-                newOrgName, newOrgName, string.Empty, newOrgName, 0, true, true, 0);
+                newOrgName, newOrgName, string.Empty, newOrgName, Geography.RootIdentity, true, true, 0);
             newOrganization.EnableEconomy(newOrgCurrency);
 
             newOrganization.RegularLabel = peopleLabel;
