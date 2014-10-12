@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Json-AvailableCurrencies.aspx.cs" Inherits="Swarmops.Frontend.Automation.Json_AvailableCurrencies" %>

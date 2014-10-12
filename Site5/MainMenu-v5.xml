@@ -361,11 +361,11 @@
         <Type>Submenu</Type>
         <Children>
 
-          <!-- MainMenuItem>
+          <MainMenuItem>
             <ResourceKey>Administration_CreateOrganization</ResourceKey>
             <UserLevel>4</UserLevel>
             <Permissions />
-            <ImageUrl>iconshock-cabinet</ImageUrl>
+            <ImageUrl>iconshock-organization-add</ImageUrl>
             <NavigateUrl>/Pages/v5/Admin/CreateOrganization.aspx</NavigateUrl>
             <Type>Link</Type>
             <Children />
@@ -375,7 +375,7 @@
             <UserLevel>1</UserLevel>
             <Type>Separator</Type>
             <Children />
-          </MainMenuItem> -->
+          </MainMenuItem>
 
           <MainMenuItem>
                 <ResourceKey />

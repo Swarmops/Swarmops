@@ -677,7 +677,7 @@
     <value>Operatives</value>
   </data>
   <data name="Title_Operative_Ship" xml:space="preserve">
-    <value>NO IDEA SORRY - TODO</value>
+    <value>Operativehood</value>
   </data>
   <data name="Title_Regular_Corps" xml:space="preserve">
     <value>Corps</value>
@@ -695,7 +695,7 @@
     <value>Regulars</value>
   </data>
   <data name="Title_Regular_Ship" xml:space="preserve">
-    <value>I HAVE NO IDEA WHAT THIS SHOULD BE - TODO</value>
+    <value>Regularhood</value>
   </data>
   <data name="Title_Sailor_Corps" xml:space="preserve">
     <value>Crew</value>
@@ -714,5 +714,27 @@
   </data>
   <data name="Title_Sailor_Ship" xml:space="preserve">
     <value>Seamanship</value>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>Create</value>
+    <comment>Like "Create Organization"</comment>
+  </data>
+  <data name="Title_Person_Corps" xml:space="preserve">
+    <value>Forces</value>
+  </data>
+  <data name="Title_Person_Female" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="Title_Person_Generic" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="Title_Person_Male" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="Title_Person_Plural" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="Title_Person_Ship" xml:space="preserve">
+    <value>Personhood</value>
   </data>
 </root>
