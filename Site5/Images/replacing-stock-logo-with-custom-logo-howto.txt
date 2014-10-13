@@ -3,7 +3,7 @@
 In this folder, you will see a file named "Logo-Stock.png". That is the
 logo displayed at the top left of every Swarmops page. Changing this
 file directly has no persistent effect, as it will be replaced on every
-minor update (usually weekly).
+minor update (every two weeks).
 
 If you wish another image to be displayed, place a file named
 "Logo-Custom.png" in this folder, and it will be used instead.
