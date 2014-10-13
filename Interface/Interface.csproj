@@ -80,7 +80,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release C:\Windows\Microsoft.NET\Framework\v4.0.30319\aspnet_compiler.exe -u -v / -p ../../Site5 ../../Site5-Deployment/
+    <PostBuildEvent>if $(ConfigurationName) == Release C:\Windows\Microsoft.NET\Framework\v4.0.30319\aspnet_compiler.exe -u -fixednames -v / -p ../../Site5 ../../Site5-Deployment/
 if $(ConfigurationName) == Release "C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0a\bin\NETFX 4.0 Tools\aspnet_merge.exe" ../../Site5-Deployment -o Swarmops.Site.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>
