@@ -347,23 +347,19 @@
   
   
   
-  <data name="Global_No" xml:space="preserve">
-    <value>Nee</value>
-    <comment>For yes/no options</comment>
-  </data>
   
-  <data name="Financial_Asset" xml:space="preserve">
-    <value>Middelen</value>
-  </data>
-  <data name="Financial_Cost" xml:space="preserve">
-    <value>Kosten</value>
-  </data>
-  <data name="Financial_Debt" xml:space="preserve">
-    <value>Schuld</value>
-  </data>
-  <data name="Financial_Income" xml:space="preserve">
-    <value>Inkomsten</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

@@ -289,24 +289,22 @@
   
   
   
-  <data name="Financial_DueDate" xml:space="preserve">
-    <value>Forfallsdato</value>
-    <comment>For invoices and similar</comment>
-  </data>
   
   
   
   
   
-  <data name="Financial_Cost" xml:space="preserve">
-    <value>Kostnader</value>
-  </data>
-  <data name="Financial_Debt" xml:space="preserve">
-    <value>Gjeld</value>
-  </data>
-  <data name="Financial_Income" xml:space="preserve">
-    <value>Omsetning</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

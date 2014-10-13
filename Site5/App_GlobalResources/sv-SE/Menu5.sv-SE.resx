@@ -136,7 +136,7 @@
     <value>Kommunikation</value>
   </data>
   <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
-    <value>Redigera Automailtext</value>
+    <value>Redigera automatmail</value>
   </data>
   <data name="Menu5_Communications_MailInbox" xml:space="preserve">
     <value>Hantera Mailinkorg</value>
@@ -144,17 +144,27 @@
   <data name="Menu5_Communications_MassMailing" xml:space="preserve">
     <value>Massutskick</value>
   </data>
-  
+  <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
+    <value>Mobilisera aktivister</value>
+  </data>
   <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
-    <value>Hantera Pappersinkorg</value>
+    <value>Läs pappersbrev</value>
   </data>
-  
-  
+  <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
+    <value>Läs pappersbrev</value>
+  </data>
+  <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
+    <value>Mottagit pappersbrev</value>
+  </data>
   <data name="Menu5_Communications_ReporterList" xml:space="preserve">
-    <value>Hantera Reporterlista</value>
+    <value>Journalistsändlista</value>
   </data>
-  
-  
+  <data name="Menu5_Communications_SendMassMessage" xml:space="preserve">
+    <value>Skicka massmeddelande</value>
+  </data>
+  <data name="Menu5_Communications_SendPressRelease" xml:space="preserve">
+    <value>Skicka pressmeddelande</value>
+  </data>
   <data name="Menu5_Communications_TextActivists" xml:space="preserve">
     <value>SMS:a Aktivister</value>
   </data>
@@ -165,13 +175,13 @@
     <value>Ekonomi</value>
   </data>
   <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
-    <value>Attestera Kostnader</value>
+    <value>Attestera kostnader</value>
   </data>
   <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
-    <value>Begär Återbetalning för Utlägg</value>
+    <value>Begär återbetalning för utlägg</value>
   </data>
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
-    <value>Skapa Inköpsorder</value>
+    <value>Skapa inköpsorder</value>
   </data>
   <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Gigassistent</value>
@@ -186,37 +196,43 @@
     <value>Utläggsanspråk</value>
   </data>
   <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
-    <value>Inkommande Fakturor</value>
+    <value>Inkommande fakturor</value>
   </data>
   <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
-    <value>Utgående Fakturor</value>
+    <value>Utgående fakturor</value>
   </data>
   <data name="Menu5_Financial_List_OutstandingAdvances" xml:space="preserve">
-    <value>Utestående Kontantförskott</value>
+    <value>Utestående kontantförskott</value>
   </data>
   <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Löneutbetalningar</value>
   </data>
-  
+  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
+    <value>Mina budgetar</value>
+  </data>
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
-    <value>Betala ut Pengar</value>
+    <value>Betala ut pengar</value>
   </data>
   <data name="Menu5_Financial_Payroll" xml:space="preserve">
     <value>Lönelista</value>
   </data>
   <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
-    <value>Mottagit Faktura</value>
+    <value>Mottagit faktura</value>
   </data>
   <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
-    <value>Begär Kontantförskott</value>
+    <value>Begär kontantförskott</value>
   </data>
-  
+  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
+    <value>Skicka faktura</value>
+  </data>
   <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
-    <value>Validera kvitton</value>
+    <value>Godkänn kvitton</value>
   </data>
-  
+  <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
+    <value>Visa budget och utfall</value>
+  </data>
   <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
-    <value>Visa Likviditetsprognos</value>
+    <value>Visa likviditetsprognos</value>
   </data>
   <data name="Menu5_Governance" xml:space="preserve">
     <value>Styrning</value>
@@ -239,7 +255,9 @@
   <data name="Menu5_Governance_Vote" xml:space="preserve">
     <value>Rösta</value>
   </data>
-  
+  <data name="Menu5_Hacks_TemporaryAccessControl" xml:space="preserve">
+    <value>Sätt administratörsbehörigheter (tillfällig sida)</value>
+  </data>
   <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Redovisning</value>
   </data>
@@ -255,7 +273,9 @@
   <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>Kan inte stänga böcker för {0}</value>
   </data>
-  
+  <data name="Menu5_Ledgers_CashflowAnalysis" xml:space="preserve">
+    <value>Kassaflödesanalys</value>
+  </data>
   <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
     <value>Stäng Bokföring För {0}</value>
   </data>
@@ -265,7 +285,9 @@
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importera Bankdata</value>
   </data>
-  
+  <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
+    <value>Likviditetsprognos</value>
+  </data>
   <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Lönelista</value>
   </data>
@@ -279,7 +301,7 @@
     <value>Ange Budgetbelopp</value>
   </data>
   <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
-    <value>Ladda Upp Bankfiler</value>
+    <value>Ladda upp bankfiler</value>
   </data>
   <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
     <value>Lista öppen reskontra</value>
@@ -335,7 +357,9 @@
   <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>Lägg Till Medlem</value>
   </data>
-  
+  <data name="Menu5_People_ListFind" xml:space="preserve">
+    <value>Sök/Lista folk</value>
+  </data>
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Lista Medlemmar</value>
   </data>
@@ -351,8 +375,12 @@
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Ny Konferens</value>
   </data>
-  
-  
+  <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
+    <value>Roller och ansvarsposter</value>
+  </data>
+  <data name="Menu5_People_SelfSignup" xml:space="preserve">
+    <value>Självregistreringssida</value>
+  </data>
   
   
 </root>

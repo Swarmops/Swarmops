@@ -27,14 +27,14 @@ Installation
 
 If you're daring enough to install a pilot of Swarmops, you're most welcome to do so. Using a fresh Debian or Ubuntu server, everything running as root:
 
-> `wget http://packages.swarmops.com/swarmops-packages.gpg.key`
+> `wget http://packages.swarmops.com/swarmops-packages.gpg.key`  
 > `apt-key add swarmops-packages.gpg.key`
 
 Then, edit /etc/apt/sources.list to include this line, probably at the bottom:
 > `deb http://packages.swarmops.com/ squeeze contrib`
 
 Then run
-> `apt-get update`
+> `apt-get update`  
 > `apt-get install swarmops-frontend`
 
 (the install sometimes hangs on installing a dependent package, apache2-mod-mono. That's not an issue with Swarmops, but still irritating. It manifests as Apache restarting and never restarting. If so, break, fix, and redo until installed.)

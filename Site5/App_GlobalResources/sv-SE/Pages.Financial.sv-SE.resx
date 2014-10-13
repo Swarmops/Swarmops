@@ -152,7 +152,7 @@
     <comment>Button to see underlying documentation. Keep short!</comment>
   </data>
   <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
-    <value>Kostnadstyp</value>
+    <value>Kostnad</value>
     <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
   </data>
   <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
@@ -401,13 +401,13 @@
     <value>Vänligen ange syftet med förskottet.</value>
   </data>
   <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
-    <value>Kvitton som väntar på din validering</value>
+    <value>Kvitton som väntar på godkännande</value>
   </data>
   <data name="ValidateReceipts_Info" xml:space="preserve">
     <value>Det är här du inspekterar och bekräftar giltigheten av kvitton som laddats upp för att dokumentera utläggsanspråk. Kontrollera att beloppet är korrekt och att kvittona verkar vara för vad utläggsanspråket påstår.</value>
   </data>
   <data name="ValidateReceipts_PageTitle" xml:space="preserve">
-    <value>Validera kvitton</value>
+    <value>Godkänn kvitton</value>
   </data>
   <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
     <value>Kvittona för utläggsanspråk #{0:N0} på {1} {2:N2} har AV-godkänts. Utläggsanspråket kommer inte att gå till utbetalning om de inte granskas och godkänns på nytt.</value>

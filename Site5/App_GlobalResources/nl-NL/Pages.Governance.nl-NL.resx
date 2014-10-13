@@ -299,18 +299,12 @@
   
   
   
-  <data name="Vote_Motions" xml:space="preserve">
-    <value>Moties</value>
-  </data>
-  
-  <data name="Vote_MotionVotingMotions" xml:space="preserve">
-    <value>Moties</value>
-  </data>
   
   
-  <data name="Vote_PageTitle" xml:space="preserve">
-    <value>Stemmen</value>
-  </data>
+  
+  
+  
+  
   
   
   

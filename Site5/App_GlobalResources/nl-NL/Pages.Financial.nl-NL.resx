@@ -123,9 +123,6 @@
   
   
   
-  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
-    <value>Budget</value>
-  </data>
   
   
   
@@ -134,9 +131,6 @@
   
   
   
-  <data name="AttestCosts_PageTitle" xml:space="preserve">
-    <value>Attest Kosten</value>
-  </data>
   
   
   
@@ -151,19 +145,12 @@
   
   
   
-  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
-    <value>Rekening</value>
-    <comment>Free text input, intended to convey everything needed to get the money right</comment>
-  </data>
   
   
   
   
   
   
-  <data name="FileExpenseClaim_Budget" xml:space="preserve">
-    <value>Budget</value>
-  </data>
   
   
   
@@ -187,9 +174,6 @@
   
   
   
-  <data name="PayOutMoney_PageTitle" xml:space="preserve">
-    <value>Geld Uitgeven</value>
-  </data>
   
   
   
@@ -197,14 +181,8 @@
   
   
   
-  <data name="RequestCashAdvance_Budget" xml:space="preserve">
-    <value>Budget</value>
-  </data>
   
   
-  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
-    <value>Vraag om Kasvoorschot</value>
-  </data>
   
   
   
@@ -217,9 +195,14 @@
   
   
   
-  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
-    <value>Declaraties valideren</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
   
   
 </root>

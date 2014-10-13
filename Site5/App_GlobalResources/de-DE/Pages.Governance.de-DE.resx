@@ -258,15 +258,6 @@
   
   
   
-  <data name="VoteAmendments_Grid_Designation" xml:space="preserve">
-    <value>#</value>
-    <comment>Column header</comment>
-  </data>
-  
-  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
-    <value>Begründung</value>
-    <comment>Row header</comment>
-  </data>
   
   
   
@@ -289,9 +280,10 @@
   
   
   
-  <data name="Vote_PageTitle" xml:space="preserve">
-    <value>Abstimmen</value>
-  </data>
+  
+  
+  
+  
   
   
   

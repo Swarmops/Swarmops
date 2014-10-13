@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Menu5_Administration" xml:space="preserve">
-    <value>Administration</value>
+    <value>Verwaltung</value>
   </data>
   
   
@@ -178,7 +178,9 @@
     <value>Abstimmen</value>
   </data>
   
-  
+  <data name="Menu5_Ledgers" xml:space="preserve">
+    <value>Bestandsbuch</value>
+  </data>
   
   
   

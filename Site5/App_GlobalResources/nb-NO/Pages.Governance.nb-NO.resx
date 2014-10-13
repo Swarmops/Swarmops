@@ -157,27 +157,6 @@
   
   
   
-  <data name="ViewMotion_AmendmentText" xml:space="preserve">
-    <value>Årsak</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="VoteAmendments_Grid_Rationale" xml:space="preserve">
-    <value>Årsak</value>
-    <comment>Row header</comment>
-  </data>
   
   
   
@@ -195,18 +174,28 @@
   
   
   
-  <data name="Vote_Motions" xml:space="preserve">
-    <value>Saker</value>
-  </data>
-  
-  <data name="Vote_MotionVotingMotions" xml:space="preserve">
-    <value>Saker</value>
-  </data>
   
   
-  <data name="Vote_PageTitle" xml:space="preserve">
-    <value>Stem</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

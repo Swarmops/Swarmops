@@ -120,6 +120,8 @@
   
   
   
-  
+  <data name="ListFindPeople_Title" xml:space="preserve">
+    <value>Menschen listen und finden</value>
+  </data>
   
 </root>

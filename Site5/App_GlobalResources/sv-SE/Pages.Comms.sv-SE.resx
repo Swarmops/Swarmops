@@ -117,15 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>Som är bosatta i</value>
+  </data>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Ditt meddelande</value>
+  </data>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>Skicka ett massmeddelande till en grupp människor i organisationen. Du kan skicka meddelandet via mail (bra för nyhetsbrev och allmän information) eller till deras telefoner (kan uppfattas störande, och kostar även en del).</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>Inga mottagare|en mottagare|{0:N0} mottagare</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>Skicka ett massmeddelande till alla</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Skicka</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>Ditt meddelande distribueras nu till mottagarna. Du meddelas när meddelandet gått iväg till alla.</value>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Testa</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>Meddelandet har skickats till dig, så du kan se hur det ser ut innan det skickas till mottagarna.</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>Skicka massmeddelande</value>
+  </data>
 </root>

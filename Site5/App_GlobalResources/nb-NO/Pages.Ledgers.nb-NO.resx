@@ -203,9 +203,7 @@
   
   
   
-  <data name="UploadBankFiles_Processing" xml:space="preserve">
-    <value>Laster opp...</value>
-  </data>
+  
   
   
   
@@ -226,9 +224,7 @@
     <value>Total</value>
   </data>
   
-  <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
-    <value>Beløp</value>
-  </data>
+  
   <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
     <value>Beskrivelse</value>
   </data>
@@ -254,9 +250,6 @@
   
   
   
-  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
-    <value>Admin</value>
-  </data>
   
   
   
@@ -270,9 +263,8 @@
   
   
   
-  <data name="AccountPlan_Header_Budget" xml:space="preserve">
-    <value>Budsjett</value>
-  </data>
+  
+  
   
   
 </root>

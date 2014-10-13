@@ -160,9 +160,7 @@
     <value>Liste</value>
   </data>
   
-  <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
-    <value>Utgiftsgodtgjørelser</value>
-  </data>
+  
   <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
     <value>Innkommende fakturaer</value>
   </data>

@@ -178,9 +178,7 @@
     <value>Lijst</value>
   </data>
   
-  <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
-    <value>Onkostenvergoedingen</value>
-  </data>
+  
   <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
     <value>Binnenkomende Facturen</value>
   </data>
@@ -197,9 +195,7 @@
   <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Geld Uitgeven</value>
   </data>
-  <data name="Menu5_Financial_Payroll" xml:space="preserve">
-    <value>Salarisadministratie</value>
-  </data>
+  
   <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
     <value>Ontvangen Factuur</value>
   </data>

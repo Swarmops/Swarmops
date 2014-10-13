@@ -117,9 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
+  <data name="Init_SidebarActions_None" xml:space="preserve">
+    <value>Inga andra åtgärder är tillgängliga förrän installationen är klar.</value>
+  </data>
+  <data name="Init_SidebarInfo_Welcome" xml:space="preserve">
+    <value>Välkommen till Swarmops! Det här är hur gränssnittet ser ut, men det är inte aktivt ännu - först ska vi gå igenom några steg för att färdigställa din installation. Du är igång på nolltid.</value>
+    <comment>Info box on database setup screen</comment>
+  </data>
+  <data name="Init_SidebarTodo_CompleteSetup" xml:space="preserve">
+    <value>Färdigställ installationen.</value>
+  </data>
+  <data name="Init_UserInfo_InstallingAdmin" xml:space="preserve">
+    <value>Systemadministratör</value>
+    <comment>Displayed in lieu of logged-in-username</comment>
+  </data>
+  <data name="Init_UserInfo_NoOrgsYet" xml:space="preserve">
+    <value>Inga organisationer ännu</value>
+    <comment>Displayed in lieu of organization name</comment>
+  </data>
 </root>

@@ -117,9 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
+  <data name="ListFindPeople_Info" xml:space="preserve">
+    <value>Används för att hitta personer i organisationen. Du kan söka genom geografi och namnmönster ("Jo S" kommer till exempel att matcha alla som heter Joel Sander).</value>
+  </data>
+  <data name="ListFindPeople_MatchingPeopleInX" xml:space="preserve">
+    <value>Matchande personer i {0}</value>
+    <comment>The {0} parameter is the organization name.</comment>
+  </data>
+  <data name="ListFindPeople_NamePattern" xml:space="preserve">
+    <value>Namn eller -mönster</value>
+  </data>
+  <data name="ListFindPeople_Title" xml:space="preserve">
+    <value>Sök och lista personer</value>
+  </data>
+  <data name="ListFindPeople_TooManyHits" xml:space="preserve">
+    <value>Resultatet innehåller över tusen personer (visar de första tusen). Begränsa sökningen lite?</value>
+  </data>
 </root>

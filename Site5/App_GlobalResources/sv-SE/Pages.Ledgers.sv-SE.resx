@@ -121,7 +121,7 @@
     <value>Skapa nytt toppnivåkonto</value>
   </data>
   <data name="AccountPlan_Info" xml:space="preserve">
-    <value>Detta är en översikt över konton i din bokföring. Du kan göra en del kontounderhåll här, men det mesta av den dagliga verksamheten bör delegeras till budgetägarna.</value>
+    <value>Detta är en översikt över konton i organisationens ekonomi. Du kan göra en del kontounderhåll här, men det mesta av den dagliga verksamheten bör delegeras till budgetägarna.</value>
   </data>
   <data name="AccountPlan_PageTitle" xml:space="preserve">
     <value>Kontoplan</value>
@@ -377,7 +377,7 @@
     <value>Summa</value>
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderAction" xml:space="preserve">
-    <value>Agera</value>
+    <value>Åtgärd</value>
     <comment>keep short</comment>
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">

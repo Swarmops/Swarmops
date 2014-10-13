@@ -677,7 +677,7 @@
     <value>crwdns6553940:0crwdne6553940:0</value>
   </data>
   <data name="Title_Operative_Ship" xml:space="preserve">
-    <value>crwdns6553941:0crwdne6553941:0</value>
+    <value>crwdns6553977:0crwdne6553977:0</value>
   </data>
   <data name="Title_Regular_Corps" xml:space="preserve">
     <value>crwdns6553942:0crwdne6553942:0</value>
@@ -695,7 +695,7 @@
     <value>crwdns6553946:0crwdne6553946:0</value>
   </data>
   <data name="Title_Regular_Ship" xml:space="preserve">
-    <value>crwdns6553947:0crwdne6553947:0</value>
+    <value>crwdns6553978:0crwdne6553978:0</value>
   </data>
   <data name="Title_Sailor_Corps" xml:space="preserve">
     <value>crwdns6553948:0crwdne6553948:0</value>
@@ -714,5 +714,27 @@
   </data>
   <data name="Title_Sailor_Ship" xml:space="preserve">
     <value>crwdns6553953:0crwdne6553953:0</value>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>crwdns6553979:0crwdne6553979:0</value>
+    <comment>Like "Create Organization"</comment>
+  </data>
+  <data name="Title_Person_Corps" xml:space="preserve">
+    <value>crwdns6553980:0crwdne6553980:0</value>
+  </data>
+  <data name="Title_Person_Female" xml:space="preserve">
+    <value>crwdns6553981:0crwdne6553981:0</value>
+  </data>
+  <data name="Title_Person_Generic" xml:space="preserve">
+    <value>crwdns6553982:0crwdne6553982:0</value>
+  </data>
+  <data name="Title_Person_Male" xml:space="preserve">
+    <value>crwdns6553983:0crwdne6553983:0</value>
+  </data>
+  <data name="Title_Person_Plural" xml:space="preserve">
+    <value>crwdns6553984:0crwdne6553984:0</value>
+  </data>
+  <data name="Title_Person_Ship" xml:space="preserve">
+    <value>crwdns6553985:0crwdne6553985:0</value>
   </data>
 </root>
