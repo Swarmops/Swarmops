@@ -641,7 +641,7 @@
     <value>Conscripts</value>
   </data>
   <data name="Title_Conscript_Ship" xml:space="preserve">
-    <value>I HAVE NO IDEA WHAT THIS SHOULD BE - TODO</value>
+    <value>Conscripthood</value>
   </data>
   <data name="Title_Employee_Corps" xml:space="preserve">
     <value>Staff</value>
@@ -681,39 +681,50 @@
   </data>
   <data name="Title_Regular_Corps" xml:space="preserve">
     <value>Corps</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
   <data name="Title_Regular_Female" xml:space="preserve">
     <value>Regular</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
   <data name="Title_Regular_Generic" xml:space="preserve">
     <value>Regular</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
   <data name="Title_Regular_Male" xml:space="preserve">
     <value>Regular</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
   <data name="Title_Regular_Plural" xml:space="preserve">
     <value>Regulars</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
   <data name="Title_Regular_Ship" xml:space="preserve">
     <value>Regularhood</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
   <data name="Title_Sailor_Corps" xml:space="preserve">
     <value>Crew</value>
   </data>
   <data name="Title_Sailor_Female" xml:space="preserve">
     <value>Seaman</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
   <data name="Title_Sailor_Generic" xml:space="preserve">
     <value>Seaman</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
   <data name="Title_Sailor_Male" xml:space="preserve">
     <value>Seaman</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
   <data name="Title_Sailor_Plural" xml:space="preserve">
     <value>Seamen</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
   <data name="Title_Sailor_Ship" xml:space="preserve">
     <value>Seamanship</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
   <data name="Global_Create" xml:space="preserve">
     <value>Create</value>
