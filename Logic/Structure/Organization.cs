@@ -169,7 +169,7 @@ namespace Swarmops.Logic.Structure
                         OptionalData.SetOptionalDataInt(ObjectOptionalDataType.OrgFirstFiscalYear, 2009);
                         year = 2009;
                     }
-                    else if (this.Identity == 2 && this.Name.StartsWith("Europirate Acad"))
+                    else if (this.Identity == 7 && this.Name.StartsWith("Europirate Acad"))
                     {
                         OptionalData.SetOptionalDataInt(ObjectOptionalDataType.OrgFirstFiscalYear, 2012);
                         year = 2012;
@@ -806,6 +806,13 @@ namespace Swarmops.Logic.Structure
                     FinancialAccounts result = new FinancialAccounts();
                     result.Add(FinancialAccount.FromIdentity(1));
                     result.Add(FinancialAccount.FromIdentity(2));
+
+                    return result;
+                }
+                else if (PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) && this.OrganizationId == 7)
+                {
+                    FinancialAccounts result = new FinancialAccounts();
+                    result.Add(FinancialAccount.FromIdentity(29));
 
                     return result;
                 }

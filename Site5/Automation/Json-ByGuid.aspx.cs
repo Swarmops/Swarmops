@@ -14,7 +14,16 @@ namespace Swarmops.Frontend.Automation
         [WebMethod]
         static public int GetProgress(string guid)
         {
-            return (int) GuidCache.Get(guid + "-Progress"); // suffix because guid may refer to other data too
+            object progressObject = GuidCache.Get(guid + "-Progress"); // suffix because guid may refer to other data too
+
+            if (progressObject != null)
+            {
+                return (int) progressObject;
+            }
+
+            // if the progress object doesn't exist, assume it hasn't been initialized yet
+
+            return 0;
         }
     }
 }

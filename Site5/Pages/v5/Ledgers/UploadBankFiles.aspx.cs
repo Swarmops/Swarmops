@@ -240,6 +240,7 @@ namespace Swarmops.Site.Pages.Ledgers
                 case 0:
                     return string.Empty;
                 case 1:
+                case 29:
                     return "(Instruct Stock-SE-SEB)";
                 case 2:
                     return "(Instruct Stock-Global-Paypal)";
