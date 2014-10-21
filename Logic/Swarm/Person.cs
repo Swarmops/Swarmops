@@ -935,6 +935,7 @@ namespace Swarmops.Logic.Swarm
 
         }
 
+        /* --- not used, commented out for usage of hardcoded org ids
         public int NationalPartyOrg (bool onlyIfMember)
         {
             //TODO: Implement a flag in Organization
@@ -966,7 +967,7 @@ namespace Swarmops.Logic.Swarm
             //didn't find any
             return 0;
 
-        }
+        } */
 
         // ReSharper disable InconsistentNaming
         public string TShirtSize
@@ -988,9 +989,9 @@ namespace Swarmops.Logic.Swarm
             set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BlogUrl, value); }
         }
 
-        public DashboardTasks.Tasks Tasks
+        public DashboardTasks.Tasks GetTasksForOrganization(Organization organization)
         {
-            get { return Logic.DashboardTasks.Tasks.ForPerson(this); }
+            return Logic.DashboardTasks.Tasks.ForPersonOrganization(this, organization);
         }
 
         public string Formal

@@ -132,20 +132,6 @@ namespace Swarmops.Logic.Structure
         }
 
 
-        public Organizations GetMasterOrganizations ()
-        {
-            if (Identity == Organization.UPSEid || Inherits(Organization.UPSEid))
-            {
-                // HACK: Hardcoded
-
-                return Organizations.FromSingle(FromIdentity(Organization.PPSEid));
-            }
-            else
-            {
-                return new Organizations();
-            }
-        }
-
         public bool IsEconomyEnabled
         {
             get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled); }
@@ -669,10 +655,6 @@ namespace Swarmops.Logic.Structure
             }
         }
 
-        public static Organization Root
-        {
-            get { return FromIdentity(RootIdentity); }
-        }
 
         [Obsolete ("This should never be used anymore!", true)]
         public static Organization PPSE

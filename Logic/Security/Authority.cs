@@ -271,10 +271,11 @@ namespace Swarmops.Logic.Security
             return Authorization.CheckAuthorization(new PermissionSet(perm), -1, -1, this, Authorization.Flag.AnyGeographyAnyOrganization);
         }
 
+        /* -- unused, apparently
         private bool HasPermission (Permission perm, int organizationId, Authorization.Flag flags)
         {
             return Authorization.CheckAuthorization(new PermissionSet(perm), organizationId, Organization.RootIdentity, this, flags);
-        }
+        } */
 
         public bool HasPermission (Permission perm, int organizationId, int geographyId, Authorization.Flag flags)
         {

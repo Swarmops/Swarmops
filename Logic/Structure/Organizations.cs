@@ -264,12 +264,19 @@ namespace Swarmops.Logic.Structure
         /// </summary>
         public static Organizations EconomyEnabled
         {
-            get 
-            { 
-                // TODO
-
+            get
+            {
                 Organizations result = new Organizations();
-                result.Add(Organization.PPSE);
+                Organizations allOrganizations = GetAll();
+
+                foreach (Organization organization in allOrganizations)
+                {
+                    if (organization.IsEconomyEnabled)
+                    {
+                        result.Add(organization);
+                    }
+                }
+
                 return result;
             }
         }

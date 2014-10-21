@@ -451,9 +451,9 @@ namespace Swarmops.Logic.Security
 
             var clearedPeople = new Dictionary<int, Person>();
 
+            // TODO: Add org admin role, able to see previous members that aren't anonymized yet
 
             // Clear by organization roles 
-            bool CanSeeNonMembers = authority.HasPermission(Permission.CanSeeNonMembers,Organization.PPSEid,-1,Flag.AnyGeographyExactOrganization);
 
             foreach (BasicPersonRole role in authority.OrganizationPersonRoles)
             {
@@ -481,11 +481,11 @@ namespace Swarmops.Logic.Security
                                 }
                             }
                         }
-                    }
+                    } /* -- commented out. This means "does the current authority have Org Admin privileges over Person"?
                     else if (CanSeeNonMembers)
                     { //person isn't member anywhere
                         clearedPeople[person.Identity] = person;
-                    }
+                    }*/
                 }
             }
 

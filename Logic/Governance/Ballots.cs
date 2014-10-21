@@ -11,9 +11,10 @@ namespace Swarmops.Logic.Governance
     {
         // nothing much here
 
-        public static Ballots ForElection (Election election)
+        
+        public static Ballots ForElection (Election election, Organization organization)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetBallots(election, Organization.PPSE)); // HACK HACK HACK -- PPSE hardcoded
+            return FromArray(SwarmDb.GetDatabaseForReading().GetBallots(election, organization));
         }
 
         public static Dictionary<int,int> GetBallotsForPerson (Person person)

@@ -10,23 +10,23 @@ namespace Swarmops.Logic.DashboardTasks
 {
     public class Tasks: List<TaskGroup>
     {
-        static public Tasks ForPerson (Person person)
+        static public Tasks ForPersonOrganization (Person person, Organization organization)
         {
             Tasks tasks = new Tasks();
 
-            tasks.AddVolunteers(person);
-            tasks.AddExpenseClaims(person);
-            tasks.AddSalaries(person);
-            tasks.AddInboundInvoices(person);
-            tasks.AddReceiptValidation(person);
-            tasks.AddAdvanceDebts(person);
-            tasks.AddPayouts(person);
-            tasks.AddAttestationWarnings(person);
+            tasks.AddVolunteers(person, organization);
+            tasks.AddExpenseClaims(person, organization);
+            tasks.AddSalaries(person, organization);
+            tasks.AddInboundInvoices(person, organization);
+            tasks.AddReceiptValidation(person, organization);
+            tasks.AddAdvanceDebts(person, organization);
+            tasks.AddPayouts(person, organization);
+            tasks.AddAttestationWarnings(person, organization);
 
             return tasks;
         }
 
-        private void AddVolunteers (Person person)
+        private void AddVolunteers (Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.Volunteers);
 
@@ -46,13 +46,13 @@ namespace Swarmops.Logic.DashboardTasks
             }
         }
 
-        private void AddExpenseClaims (Person person)
+        private void AddExpenseClaims (Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.AttestExpenseClaims);
 
             // TODO: Loop over roles, get all open claims for roles where person can attest
 
-            ExpenseClaims claims = ExpenseClaims.ForOrganization(Organization.PPSE);
+            ExpenseClaims claims = ExpenseClaims.ForOrganization(organization);
 
             foreach (ExpenseClaim claim in claims)
             {
@@ -75,13 +75,13 @@ namespace Swarmops.Logic.DashboardTasks
             }
         }
 
-        private void AddSalaries (Person person)
+        private void AddSalaries (Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.AttestSalaries);
 
             // TODO: Loop over roles, get all open claims for roles where person can attest
 
-            Salaries salaries = Salaries.ForOrganization(Organization.PPSE);
+            Salaries salaries = Salaries.ForOrganization(organization);
 
             foreach (Salary salary in salaries)
             {
@@ -97,13 +97,13 @@ namespace Swarmops.Logic.DashboardTasks
             }
         }
 
-        private void AddInboundInvoices(Person person)
+        private void AddInboundInvoices(Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.AttestInvoices);
 
             // TODO: Loop over roles, get all open claims for roles where person can attest
 
-            InboundInvoices invoices = InboundInvoices.ForOrganization(Organization.PPSE);
+            InboundInvoices invoices = InboundInvoices.ForOrganization(organization);
 
             foreach (InboundInvoice invoice in invoices)
             {
@@ -119,19 +119,19 @@ namespace Swarmops.Logic.DashboardTasks
             }
         }
 
-        private void AddReceiptValidation(Person person)
+        private void AddReceiptValidation(Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.ValidateExpenseClaims);
 
             // TODO: Loop over roles, get all open claims for roles where person can attest
 
-            if (!person.GetAuthority().HasPermission(Permission.CanDoEconomyTransactions, Organization.PPSEid, Geography.RootIdentity, Authorization.Flag.AnyGeographyExactOrganization))
+            if (!person.GetAuthority().HasPermission(Permission.CanDoEconomyTransactions, organization.Identity, Geography.RootIdentity, Authorization.Flag.AnyGeographyExactOrganization))
             {
                 // no permission, no tasks
                 return;
             }
 
-            ExpenseClaims claims = ExpenseClaims.ForOrganization(Organization.PPSE);
+            ExpenseClaims claims = ExpenseClaims.ForOrganization(organization);
 
             foreach (ExpenseClaim claim in claims)
             {
@@ -148,13 +148,13 @@ namespace Swarmops.Logic.DashboardTasks
         }
 
 
-        private void AddAdvanceDebts (Person person)
+        private void AddAdvanceDebts (Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.DeclareAdvanceDebts);
             
             // TODO: One task group for each organization, actually
 
-            ExpenseClaims claims = ExpenseClaims.FromClaimingPersonAndOrganization(person, Organization.PPSE);
+            ExpenseClaims claims = ExpenseClaims.FromClaimingPersonAndOrganization(person, organization);
 
             decimal debt = 0.0m;
 
@@ -174,18 +174,18 @@ namespace Swarmops.Logic.DashboardTasks
         }
 
 
-        private void AddPayouts (Person person)
+        private void AddPayouts (Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.Payout);
             TaskGroup groupUrgent = new TaskGroup(TaskGroupType.PayoutUrgently);
             TaskGroup groupOverdue = new TaskGroup(TaskGroupType.PayoutOverdue);
 
-            if (!person.GetAuthority().HasPermission(Permission.CanPayOutMoney, Organization.PPSEid, 1, Authorization.Flag.AnyGeographyExactOrganization))
+            if (!person.GetAuthority().HasPermission(Permission.CanPayOutMoney, organization.Identity, 1, Authorization.Flag.AnyGeographyExactOrganization))
             {
                 return;
             }
 
-            Payouts payouts = Payouts.Construct(Organization.PPSE);
+            Payouts payouts = Payouts.Construct(organization);
 
             foreach (Payout payout in payouts)
             {
@@ -221,16 +221,16 @@ namespace Swarmops.Logic.DashboardTasks
         }
 
 
-        private void AddAttestationWarnings (Person person)
+        private void AddAttestationWarnings (Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.AttestationWarning);
 
-            if (!person.GetAuthority().HasPermission(Permission.CanSeeEconomyTransactions, Organization.PPSEid, 1, Authorization.Flag.AnyGeographyExactOrganization))
+            if (!person.GetAuthority().HasPermission(Permission.CanSeeEconomyTransactions, organization.Identity, 1, Authorization.Flag.AnyGeographyExactOrganization))
             {
                 return;
             }
 
-            InboundInvoices invoices = InboundInvoices.ForOrganization(Organization.PPSE);
+            InboundInvoices invoices = InboundInvoices.ForOrganization(organization);
 
             DateTime threshold = DateTime.Today.AddDays(10);
 

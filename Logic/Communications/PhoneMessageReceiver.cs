@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Mail;
 using System.Text;
 using Swarmops.Basic.Enums;
@@ -203,6 +204,10 @@ namespace Swarmops.Logic.Communications
 
         public override bool Handle (PhoneMessage msg)
         {
+            Trace.WriteLine(msg); // use parameter to suppress warning
+
+            /* -- all of the phone message handling need to move to app or plugin
+
             // register new activist
             // check for words: activist <postal code> <e-mail>
             msg.ErrorMessage = "\r\nRequest to register as activist.";
@@ -241,10 +246,10 @@ namespace Swarmops.Logic.Communications
                 // Handle further info in the message 
                 // check for words: activist <postal code> <e-mail>
 
-            }
+            }-- */
             return false;
-
-        }
+            
+        } 
     }
 
     class RenewMembershipHandler : PhoneMessageHandler
@@ -261,8 +266,11 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public override bool Handle (PhoneMessage msg)
+        public override bool Handle(PhoneMessage msg)
         {
+            /* This needs to move to a plugin. */
+
+            /*
             // renew memberships
             // if there is a third parameter it is the person#
             string[] smsParts = msg.Message.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -328,8 +336,13 @@ namespace Swarmops.Logic.Communications
             }
 
 
-            return false;
+            return false; */
 
+
+
+            // use parameters to suppress warnings
+            Trace.WriteLine(msg);
+            return false;
         }
     }
 
