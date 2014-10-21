@@ -40,7 +40,7 @@ namespace Swarmops.Database
 
                         if (taxLevel < 0)
                         {
-                            return -taxLevel/100.0; // -45 means 45% and should be returned as .45
+                            return -taxLevel/10000.0; // -4500 means 45% and should be returned as .45
                         }
 
                         return taxLevel;
@@ -72,13 +72,14 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "taxLevelId", taxLevelId);
                 AddParameterWithName(command, "bracketLow", bracketLow);
                 AddParameterWithName(command, "year", year);
-                AddParameterWithName(command, "tax", tax < 1.0 ? (int)(-tax * 100) : (int)tax);
+                AddParameterWithName(command, "tax", tax < 1.0 ? (int)(-tax * 10000) : (int)tax);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
+        [Obsolete ("We're using a new Year column rather than deleting obsolete tax data", false)]
         public void DeleteTaxLevels (int countryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())

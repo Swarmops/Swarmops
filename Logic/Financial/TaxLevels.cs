@@ -29,13 +29,12 @@ namespace Swarmops.Logic.Financial
             return taxLevel;
         }
 
-        static public void ImportTaxLevels (Country country, string data)
+        static public void ImportTaxLevels (Country country, int year, string data)
         {
-            // Lock out salary processing
-
-            Persistence.Key["TaxDataImporting"] = "1";
-
-            int year = DateTime.Today.Year;
+            if (country.Code != "SE")
+            {
+                throw new NotImplementedException("Can't import this country's tax levels yet");
+            }
 
             string[] lines = data.Split('\n');   // if \r\n is used, the \r will be harmlessly at the end of lines
 
@@ -69,10 +68,6 @@ namespace Swarmops.Logic.Financial
                     SwarmDb.GetDatabaseForWriting().CreateSalaryTaxLevel(country.Identity, taxLevelId, lowerBracket, year, tax);
                 }
             }
-
-            // Re-enable salary processing
-
-            Persistence.Key["TaxDataImporting"] = "0";
         }
     }
 }
