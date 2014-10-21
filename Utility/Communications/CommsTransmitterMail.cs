@@ -30,8 +30,18 @@ namespace Swarmops.Utility.Communications
 
             // This is a rather simple mail (no images or stuff like that)
 
-            mail.From = new MailAddress(comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderName], Encoding.UTF8);
-            mail.To.Add(new MailAddress(person.Mail, person.Name));
+            try
+            {
+                mail.From = new MailAddress(comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderName], Encoding.UTF8);
+                mail.To.Add(new MailAddress(person.Mail, person.Name));
+            }
+            catch (ArgumentException e)
+            {
+                // Address failure -- either sender or recipient
+
+                _cacheReloadTime = DateTime.MinValue;
+                throw new OutboundCommTransmitException("Cannot send mail to " + person.Mail, e);
+            }
 
             mail.Subject = comm[CommRenderPart.Subject];
             mail.Body = comm[CommRenderPart.BodyText];

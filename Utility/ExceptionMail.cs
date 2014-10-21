@@ -17,7 +17,7 @@ namespace Swarmops.Utility
         {
             try
             {
-                SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.Now, "ExceptionMail", e);
+                SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "ExceptionMail", e);
             }
             catch
             {
