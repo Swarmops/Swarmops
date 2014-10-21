@@ -630,13 +630,21 @@ namespace Swarmops.Logic.Structure
 
         #region class globals
 
+        [Obsolete("This should never be used anymore!", true)]
         public static readonly int RootIdentity = 5;
+        [Obsolete("This should never be used anymore!", true)]
         public static readonly int PPSEid = 1;
+        [Obsolete("This should never be used anymore!", true)]
         public static readonly int UPSEid = 2;
+        [Obsolete("This should never be used anymore!", true)]
         public static readonly int PPFIid = 49;
+        [Obsolete("This should never be used anymore!", true)]
         public static readonly int UPFIid = 95;
+        [Obsolete("This should never be used anymore!", true)]
         public static readonly int PPNOid = 48;
+        [Obsolete("This should never be used anymore!", true)]
         public static readonly int PPDKid = 82;
+        [Obsolete("This should never be used anymore!", true)]
         public static readonly int UPDKid = 83;
 
         public static Organization Sandbox
@@ -666,6 +674,7 @@ namespace Swarmops.Logic.Structure
             get { return FromIdentity(RootIdentity); }
         }
 
+        [Obsolete ("This should never be used anymore!", true)]
         public static Organization PPSE
         {
             get { return Organization.FromIdentity(Organization.PPSEid); }
