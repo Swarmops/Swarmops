@@ -14,7 +14,7 @@ namespace Swarmops.Logic.Financial
                 return 0.0;  // no tax
             }
 
-            double taxLevel = SwarmDb.GetDatabaseForReading().GetTaxLevel(country.Identity, taxLevelIdentifier,
+            double taxLevel = SwarmDb.GetDatabaseForReading().GetSalaryTaxLevel(country.Identity, taxLevelIdentifier,
                                                       (int) Math.Floor(grossSalary));
 
             if (taxLevel < 1.0)
@@ -35,9 +35,7 @@ namespace Swarmops.Logic.Financial
 
             Persistence.Key["TaxDataImporting"] = "1";
 
-            // Clear existing tables for countryId
-
-            SwarmDb.GetDatabaseForWriting().DeleteTaxLevels(country.Identity);
+            int year = DateTime.Today.Year;
 
             string[] lines = data.Split('\n');   // if \r\n is used, the \r will be harmlessly at the end of lines
 
@@ -68,7 +66,7 @@ namespace Swarmops.Logic.Financial
                         tax = tax / 100.0;
                     }
 
-                    SwarmDb.GetDatabaseForWriting().CreateTaxLevel(country.Identity, taxLevelId, lowerBracket, tax);
+                    SwarmDb.GetDatabaseForWriting().CreateSalaryTaxLevel(country.Identity, taxLevelId, lowerBracket, year, tax);
                 }
             }
 

@@ -65,7 +65,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Console.cs" />
-    <Compile Include="DotNetChartingCrack.cs" />
     <Content Include="App.ico" />
   </ItemGroup>
   <ItemGroup>
