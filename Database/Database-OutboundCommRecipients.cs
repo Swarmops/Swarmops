@@ -179,7 +179,7 @@ namespace Swarmops.Database
                 DbCommand command = GetDbCommand("SetOutboundCommRecipientFailed", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundCommId", outboundCommRecipientId);
+                AddParameterWithName(command, "outboundCommRecipientId", outboundCommRecipientId);
                 AddParameterWithName(command, "dateTime", DateTime.UtcNow);
                 AddParameterWithName(command, "failReason", failReason);
 

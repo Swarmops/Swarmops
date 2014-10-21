@@ -121,7 +121,7 @@
     <value>Access to this page was denied</value>
   </data>
   <data name="AccessDenied_Info" xml:space="preserve">
-    <value>You tried to access a page you don't have permissions for. See the main pane for some reaons this may have happened.</value>
+    <value>You tried to access a page you don't have permissions for. See the main panel for some reaons this may have happened.</value>
   </data>
   <data name="AccessDenied_PageTitle" xml:space="preserve">
     <value>Access Denied</value>
