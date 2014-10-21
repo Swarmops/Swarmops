@@ -83,7 +83,8 @@ namespace Swarmops.Logic.Support
                         SwarmDb.GetDatabaseForWriting()
                             .CreateExceptionLogEntry(DateTime.UtcNow, "DatabaseUpgrade", exception);
 
-                        throw;
+                        // Continue processing after logging error.
+                        // TODO: Throw and abort? Tricky decision
                     }
                 }
 
