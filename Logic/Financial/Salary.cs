@@ -94,7 +94,7 @@ namespace Swarmops.Logic.Financial
                 rollover1.Close(salary);
 
                 PayrollAdjustment rollover2 = PayrollAdjustment.Create(payrollItem, PayrollAdjustmentType.NetAdjustment,
-                                                                       -payCents, "Deficit rolled over from " +
+                                                                       payCents, "Deficit rolled over from " +
                                                                        payoutDate.ToString("yyyy-MM-dd"));
 
                 // keep rollover2 open, so the deficit from this salary is carried to the next
