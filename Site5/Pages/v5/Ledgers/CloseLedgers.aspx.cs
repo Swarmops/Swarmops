@@ -119,7 +119,7 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
             // Ledgers are now at zero-sum for the year's result accounts and from the start up until end-of-closing-year for the balance accounts.
 
-            Organization.PPSE.Parameters.FiscalBooksClosedUntilYear = closingYear;
+            this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear = closingYear;
         }
         else
         {

@@ -10,8 +10,11 @@ namespace Swarmops.Utility.BotCode
 {
     public class ActivityMailer
     {
+        [Obsolete("Disabled/Deprecated for Swarmops", true)]
         public static void Run()
         {
+            /* Nope. Disable this. 
+
             // PPSE only, for now
 
             ExternalActivities activities = ExternalActivities.ForOrganization(Organization.PPSE);
@@ -90,7 +93,7 @@ namespace Swarmops.Utility.BotCode
                         }
                     }
                 }
-            }
+            } */
 
         }
     }

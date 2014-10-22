@@ -9,8 +9,13 @@ namespace Swarmops.Utility.Special.Sweden
 {
     public class SwedishForumMemberCheck
     {
+        [Obsolete("This kind of specialized code need to move to plugins for Swarmops.", true)]
         public static void Run()
         {
+            throw new NotImplementedException("Deprecated for Swarmops");
+
+            /*
+
             BotLog.Write(1, "SeForumCheck", "Entering");
 
             Memberships memberships = Memberships.ForOrganization(Organization.PPSE);
@@ -96,6 +101,8 @@ namespace Swarmops.Utility.Special.Sweden
                 }
             }
             BotLog.Write(1, "SeForumCheck", "Demotion cycle complete -- exiting");
+             
+            */
         }
     }
 }

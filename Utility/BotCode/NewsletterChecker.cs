@@ -22,16 +22,18 @@ namespace Swarmops.Utility.BotCode
             { }
         }
         static Dictionary<string, DateTime> feedErrorSignaled = new Dictionary<string, DateTime>();
-        public static void Run ()
-        {
+
+        [Obsolete("Too specialized for Swarmops. Plugin or generalize.", true)]
+        public static void Run()
+        {/*
             //TODO: This list should reside in database/by organisation and possibly geography.
 
             CheckOneBlog("http://rickfalkvinge.se/feed", 1);
             CheckOneBlog("http://christianengstrom.wordpress.com/feed", 5);
             CheckOneBlog("http://opassande.se/index.php/feed/", 367);
-            CheckOneBlog("http://www.annatroberg.com/feed/", 11443);
+            CheckOneBlog("http://www.annatroberg.com/feed/", 11443);*/
         }
-
+        /*
         private static void CheckOneBlog (string readerFeedUrl, int personId)
         {
             try
@@ -151,18 +153,7 @@ namespace Swarmops.Utility.BotCode
                                 recipients = People.FromNewsletterFeed(NewsletterFeed.TypeID.ChairmanBlog);
                             }
 
-                            /*                            
-                             *  Disabled sending to activists -- this was done leading up to the election in 2009
-                             */
-                            // Add activists (HACK)
-                            // Should probably be better to select by organization, not geography.
-
-                            /*
-                            People activists = Activists.FromGeography(Country.FromCode("SE").Geography).People;
-
-                            recipients = recipients.LogicalOr(activists);*/
-
-
+                            
                             // OVERRIDE: If this is a TEST newsletter, send ONLY to the originator
 
                             if (testMode)
@@ -245,6 +236,6 @@ namespace Swarmops.Utility.BotCode
                 Replace("&#8217;", "'").
                 Replace("&#8212;", "--").
                 Replace("&#8230;", "...");
-        }
+        }*/
     }
 }

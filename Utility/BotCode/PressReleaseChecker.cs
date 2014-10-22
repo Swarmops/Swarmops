@@ -12,12 +12,17 @@ namespace Swarmops.Utility.BotCode
 {
     public class PressReleaseChecker
     {
+        [Obsolete("Do not call this function until it's been generalized. Don't delete, though - generalize it.", true)]
         public static void Run ()
         {
+            throw new NotImplementedException();
+            
             //TODO: This list should reside in database/by organisation and possibly geography.
 
+            /*
             CheckOneFeed("http://press.piratpartiet.se/feed", "PPSE", Organization.PPSEid);
             CheckOneFeed("http://presscenter.ungpirat.se/feed", "UPSE", Organization.UPSEid);
+             */
 
         }
 

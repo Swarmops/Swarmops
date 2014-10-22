@@ -432,6 +432,13 @@ namespace Swarmops.Logic.Structure
 
             if (others)
             {
+                throw new NotImplementedException("Apollo 13. Contact the devs with the Apollo 13.");
+
+                // When is this code used anyway? One organization setting its geography uptake structure should NEVER interfere with
+                // other organizations' uptake trees ("Organization.RootIdentity"). There is no reason whatsoever to get all
+                // organizations at any time when determining uptake. We set an exception here to catch this logic in action.
+
+                /*
                 Dictionary<int, BasicOrganization> allOrgs = OrganizationCache.GetOrganizationHashtable(Organization.RootIdentity);
                 foreach (BasicOrganization bo in allOrgs.Values)
                 {
@@ -440,7 +447,7 @@ namespace Swarmops.Logic.Structure
                         BasicUptakeGeography myAnchor = new BasicUptakeGeography(bo.Identity, bo.AnchorGeographyId);
                         retVal.Add(UptakeGeography.FromBasic(myAnchor));
                     }
-                }
+                }*/
             }
             else
             {

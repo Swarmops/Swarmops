@@ -1,3 +1,4 @@
+using System;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -20,8 +21,13 @@ namespace Swarmops.Interface
             public string AltText = "";
         }
 
+        [Obsolete ("Person icons are deprecated in Swarmops in favor of individual avatars", true)]
         public static PersonIconSpec ForPerson (Person person, Organizations organizations)
         {
+            throw new NotImplementedException("Person icons are deprecated in Swarmops v5 in favor of gravatars/avatars");
+
+            /*
+
             // HACK: For now, cheat and assume only PPSE roles matter. A future expansion of this is needed.
             // HACK: Rehacked to use another org in case there is one and PPSE is not among selected
             Organization org = null;
@@ -205,7 +211,7 @@ namespace Swarmops.Interface
             {
                 // unhandled role type
                 return new PersonIconSpec("user-silhouette-question.png", "unknown role, " + (person.IsFemale ? "female" : person.IsMale ? "male" : ""));
-            }
-        }
+            } */
+        } 
     }
 }

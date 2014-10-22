@@ -9,8 +9,12 @@ namespace Swarmops.Utility.BotCode
 {
     public class TurnaroundTracker
     {
+        [Obsolete("This is dependent on a specific support system. Should move to plugin.", true)]
         public static void Run()
         {
+            throw new NotImplementedException("Disabled for Swarmops");
+
+            /*
             const string persistenceKey = "PPSE-LastSupportDeltaId";
 
             string lastDeltaIdString = Persistence.Key[persistenceKey];
@@ -80,9 +84,9 @@ namespace Swarmops.Utility.BotCode
                 }
             }
 
-            Persistence.Key[persistenceKey] = lastDeltaId.ToString();
+            Persistence.Key[persistenceKey] = lastDeltaId.ToString();*/
         }
-
+        /*
         public static void Housekeeping()
         {
             CommunicationTurnarounds turnarounds = CommunicationTurnarounds.ForOrganization(Organization.PPSE);
@@ -100,6 +104,6 @@ namespace Swarmops.Utility.BotCode
                     SwarmDb.GetDatabaseForWriting().SetCommunicationTurnaroundClosed(Organization.PPSEid, 1, turnaround.CommunicationId, (DateTime) dateTimeClosed, 0);
                 }
             }
-        }
+        }*/
     }
 }

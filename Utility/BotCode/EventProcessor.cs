@@ -23,8 +23,10 @@ namespace Swarmops.Utility.BotCode
     {
         // This entire class could use a tune-up. More event types will come, too.
 
+        [Obsolete("Deprecated for Swarmops. Way too much hardcoded. Rewrite, generalize, or scrap.", true)]
         public static void Run ()
         {
+            /*
             BasicPWEvent[] events = PWEvents.GetTopUnprocessedEvents();
 
             foreach (BasicPWEvent newEvent in events)
@@ -201,7 +203,7 @@ namespace Swarmops.Utility.BotCode
 
                 }
                 PWEvents.SetEventProcessed(newEvent.EventId);
-            }
+            }*/
         }
 
 
@@ -217,7 +219,7 @@ namespace Swarmops.Utility.BotCode
             }
         }
 
-
+        /*
         internal static void ProcessAddedRole (BasicPWEvent newPwEvent)
         {
             // This function handles the case when a new role has been added to a point in the organization.
@@ -421,17 +423,6 @@ namespace Swarmops.Utility.BotCode
                     "\r\nTo add an automatic welcome mail for your organization and geography, " +
                     "go to PirateWeb, Communications, Triggered Automails, Automail type \"Welcome\".\r\n\r\n";
 
-            // Add some hardcoded things for UP
-
-            /*
-            if (organization.Inherits(2))
-            {
-                int membersTotal = Organization.FromIdentity(2).GetTree().GetMemberCount();
-                int membersHere = organization.GetMemberCount();
-
-                body += "Member count for Ung Pirat SE: " + membersTotal.ToString("#,##0") + "\r\n" +
-                    "Member count for " + organization.Name + ": " + membersHere.ToString("#,##0") + "\r\n";
-            }*/
 
             string orgSubjectLine = string.Empty;
 
@@ -1410,29 +1401,6 @@ namespace Swarmops.Utility.BotCode
                 MailServerDatabase.AddAccount(newAddress, password, 1024);
                 newMailPerson.PartyEmail = newAddress;
 
-                /** -- COMMENTED OUT -- OLD EXCHANGE-FACING CODE -- KEEP AS COMMENT FOR REFERENCE --
-
-				// Create AD account
-
-				ActiveDirectoryCode.AddUser(newMailPerson, organization, password);
-
-				// Add to security group 
-
-				ActiveDirectoryCode.AddUserToPirateSecurityGroup(newMailPerson, organization);
-
-				// Mail enable
-
-				ExchangeCode.CreateMailbox(newMailPerson);
-
-				// Add internal mail addresses
-
-				ActiveDirectoryCode.AddEmailAddress(newMailPerson, adAccountName + "@internal.pirateweb.net", false);
-				ActiveDirectoryCode.AddEmailAddress(newMailPerson, adAccountName + "@pirateweb.net", false);
-
-				// Add primary mail address
-
-				ActiveDirectoryCode.AddEmailAddress(newMailPerson, newAddress, true); -- */
-
 
                 // Send notice to person that the account has been created
 
@@ -1449,7 +1417,7 @@ namespace Swarmops.Utility.BotCode
                     "Försök att börja läsa mail från den adressen så snart som möjligt; i vissa roller kan " +
                     "det hända att du redan står som lokal kontaktperson, när medlemmar letar.\r\n\r\n" +
                     MailConnectionExplanation(newAddress) +
-                    /* Fix for Ticket #50 */
+                    // Fix for Ticket #50 --
                     "Du kan också hitta bra information här: http://forum.piratpartiet.se/Topic131505-56-1.aspx\r\n\r\n" +
                     "Hör av dig om du har några frågor!\r\n" +
                     "Piratpartiet medlemsservice (automatbrev)\r\n";
@@ -1562,12 +1530,6 @@ namespace Swarmops.Utility.BotCode
             {
                 string password = Formatting.GeneratePassword(16);
                 MailServerDatabase.SetNewPassword(mailAddress, password);
-
-                /*  COMMENTED OUT -- AD DEACTIVATED
-
-				// Update AD Account with new password
-
-				ActiveDirectoryCode.SetUserPassword (mailPerson, password); */
 
                 // Send notice to person about the new password
 
@@ -2146,6 +2108,6 @@ namespace Swarmops.Utility.BotCode
             new MailTransmitter(Strings.MailSenderName, Strings.MailSenderAddress,
                                                        "Activism Logged: [" + geo.Name + "]",
                                                        string.Empty, officers, true).Send();
-        }
+        }*/
     }
 }

@@ -177,7 +177,7 @@ namespace Swarmops.Utility.BotCode
             foreach (int personId in recipients)
             {
                 Person.FromIdentity(personId).SendNotice(
-                    subject, body, Organization.PPSEid);
+                    subject, body, poll.OrganizationId);
             }
 
         }

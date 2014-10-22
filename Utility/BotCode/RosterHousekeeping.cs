@@ -7,6 +7,7 @@ using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
+using Swarmops.Logic.DataObjects;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -81,21 +82,28 @@ namespace Swarmops.Utility.BotCode
 
         public static void RemindAllExpiries ()
         {
+            throw new NotImplementedException();
+
+            // needs generalization and localization.
+
+            /*
             RemindExpiriesMail(); // Send on ALL days, but only if DayOfWeek == OrganizationId % 7. This scatters reminder mails.
 
-            //RemindExpiriesSms(DateTime.Now.AddDays(7).Date,
-            //                  "Piratpartiet: Ditt medlemskap går ut om bara ett par dagar. Svara på detta SMS med texten \"PP IGEN\" för att förnya (5 kr).");
+            RemindExpiriesSms(DateTime.Now.AddDays(7).Date,
+                              "Piratpartiet: Ditt medlemskap går ut om bara ett par dagar. Svara på detta SMS med texten \"PP IGEN\" för att förnya (5 kr).");
             RemindExpiriesSms(DateTime.Now.AddDays(1).Date,
-                              "Piratpartiet: Ditt medlemskap går ut vid midnatt ikväll. Svara på detta SMS med texten \"PP IGEN\" för att förnya.");
+                              "Piratpartiet: Ditt medlemskap går ut vid midnatt ikväll. Svara på detta SMS med texten \"PP IGEN\" för att förnya.");*/
         }
 
+
+        [Obsolete("Generalize and localize this function.", true)]
         public static void RemindExpiriesMail ()
         {
             // Get expiring
 
             Console.WriteLine("Inside RemindExpiriesMail()");
 
-            Organizations orgs = Organization.Root.GetTree();
+            Organizations orgs = Organizations.GetAll();
 
             Dictionary<int, bool> personLookup = new Dictionary<int, bool>();
             Dictionary<string, int> dateLookup = new Dictionary<string, int>();
@@ -189,7 +197,8 @@ namespace Swarmops.Utility.BotCode
                 Console.WriteLine("none.");
             }
 
-            Person.FromIdentity(1).SendOfficerNotice("Reminders sent today", notifyBody, 1);
+            /* no. just no. we should do a global search for "FromIdentity(1)"
+            Person.FromIdentity(1).SendOfficerNotice("Reminders sent today", notifyBody, 1);  */
         }
 
 
@@ -197,13 +206,11 @@ namespace Swarmops.Utility.BotCode
 
         public static void ChurnExpiredMembers ()
         {
-            // For the time being, use org 1 as master.
+            Organizations organizations = Organizations.GetAll();
 
-            int[] organizationIds = new int[] { Organization.PPSEid };
-
-            foreach (int organizationId in organizationIds)
+            foreach (Organization organization in organizations)
             {
-                Memberships memberships = Memberships.GetExpired(Organization.FromIdentity(organizationId));
+                Memberships memberships = Memberships.GetExpired(organization);
                 // Mail each expiring member
 
                 foreach (Membership membership in memberships)
@@ -256,7 +263,7 @@ namespace Swarmops.Utility.BotCode
                         string expiredMemberships = "";
                         foreach (Membership personMembership in membershipsToDelete)
                         {
-                            if (personMembership.OrganizationId != organizationId)
+                            if (personMembership.OrganizationId != organization.Identity)
                             {
                                 expiredMemberships += ", " + personMembership.Organization.Name;
                             }
@@ -275,9 +282,9 @@ namespace Swarmops.Utility.BotCode
                                      "&MID=" + membershipsIds;
 
                     expiredmail.pStdRenewLink = stdLink;
-                    expiredmail.pOrgName = Organization.FromIdentity(organizationId).MailPrefixInherited;
+                    expiredmail.pOrgName = organization.MailPrefixInherited;
 
-                    person.SendNotice(expiredmail, organizationId);
+                    person.SendNotice(expiredmail, organization.Identity);
 
                     person.DeleteSubscriptionData();
 
@@ -296,10 +303,10 @@ namespace Swarmops.Utility.BotCode
             }
         }
 
-
+        [Obsolete("Generalize and localize this functionality.", true)]
         internal static void RemindExpiries (DateTime dateExpiry)
         {
-            Organizations orgs = Organization.Root.GetTree();
+            Organizations orgs = Organizations.GetAll();
 
             foreach (Organization org in orgs)
             {
@@ -325,8 +332,13 @@ namespace Swarmops.Utility.BotCode
             }
         }
 
+        [Obsolete("Requires move to plugin or similar, or at least rearch into a hook", true)]
         internal static void RemindExpiriesSms (DateTime dateExpiry, string message)
         {
+            throw new NotImplementedException();
+
+            /*
+
             // For the time being, only remind for org 1.
 
             int[] organizationIds = new int[] { Organization.PPSEid };
@@ -359,7 +371,7 @@ namespace Swarmops.Utility.BotCode
                         }
                     }
                 }
-            }
+            }*/
         }
 
 
@@ -380,8 +392,10 @@ namespace Swarmops.Utility.BotCode
             return result;
         }
 
+        [Obsolete("Generalize and localize this function.", true)]
         public static void SendReminderMail (Membership membership)
         {
+            /*
             // First, determine the organization template to use. Prioritize a long ancestry.
 
             // This is a hack for the Swedish structure.
@@ -465,12 +479,6 @@ namespace Swarmops.Utility.BotCode
 
             remindermail.pTerminateLink = terminateLink;
 
-            //mailBody += "[a href=\"" + stdLink + "\"]" + stdLink + "[/a]\r\n\r\n" +
-            //            "[br]Välkommen att vara med oss i [b]ett år till![/b]\r\n\r\n" +
-            //            "Hälsningar,[br]Medlemsservice\r\n\r\n"; // +
-            /*"PS: [b]Du fick ett likadant mail alldeles nyss. Om du har å, ä eller ö i ditt namn fungerade " +
-                "inte länken i det mailet. Tack till alla som hörde av sig om det; felet är fixat nu och länken ovan ska fungera.[/b]\r\n\r\n";*/
-
             //OutboundMail mail = remindermail.CreateOutboundMail(sender, OutboundMail.PriorityNormal, topOrg, Geography.Root);
             OutboundMail mail = remindermail.CreateFunctionalOutboundMail(MailAuthorType.MemberService, OutboundMail.PriorityNormal, membership.Organization, Geography.Root);
             if (mail.Body.Trim() == "")
@@ -483,7 +491,7 @@ namespace Swarmops.Utility.BotCode
                 mail.SetRecipientCount(2);
                 mail.SetResolved();
                 mail.SetReadyForPickup();
-            }
+            }*/
         }
 
         public static void TimeoutVolunteers ()
@@ -497,12 +505,14 @@ namespace Swarmops.Utility.BotCode
                 {
                     // timed out
 
-                    OfficerChain officers = OfficerChain.FromOrganizationAndGeography(Organization.PPSE,
+                    /* -- wtf, Volunteer doesn't have an Org component? Well, will change anyway with Swarmops role structure
+
+                    OfficerChain officers = OfficerChain.FromOrganizationAndGeography(volunteer.,
                                                                                       volunteer.Geography);
 
                     new MailTransmitter(Strings.MailSenderName, Strings.MailSenderAddress,
                                                                "Volunteer Timed Out: [" + volunteer.Geography.Name + "]",
-                                                               String.Empty, officers, true).Send();
+                                                               String.Empty, officers, true).Send(); */
 
                     volunteer.Close("Timed out");
                 }
@@ -510,334 +520,7 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        /*
-         * Handle UP special: Monthly reminder to members that are in wrong  organisation
-         * (member in an org that no longer accepts members) or member of an org where a "better fit" exists geographically
-         * 
-         */
-        private class ChangeOrgReport
-        {
-            public Organization FromOrg = null;
-            public Organization ToOrg = null;
-        }
-
-        public static void RemindChangeOrg ()
-        {
-            HeartBeater.Instance.Beat();
-
-            // Get expiring
-            DateTime starttime = DateTime.Now;
-            Organizations orgs = Organization.FromIdentity(Organization.UPSEid).GetTree();
-            Dictionary<int, Person> personLookup = new Dictionary<int, Person>();
-            Dictionary<int, Memberships> personMembershipsLookup = new Dictionary<int, Memberships>();
-            Dictionary<int, Organization> orgLookup = new Dictionary<int, Organization>();
-            Dictionary<int, Organization> mostLocalOrganizationCache = new Dictionary<int, Organization>();
-            List<ChangeOrgReport> report = new List<ChangeOrgReport>();
-
-            foreach (Organization org in orgs)
-            {
-                orgLookup[org.OrganizationId] = org;
-            }
-
-            Memberships allMemberships = Memberships.ForOrganizations(orgs);
-            foreach (Membership ms in allMemberships)
-            {
-                //Handle defunct Memberships.ForOrganizations
-                if (orgLookup.ContainsKey(ms.OrganizationId))
-                {
-                    if (!personLookup.ContainsKey(ms.PersonId))
-                    {
-                        personLookup[ms.PersonId] = null;
-                        personMembershipsLookup[ms.PersonId] = new Memberships();
-
-                    }
-                    personMembershipsLookup[ms.PersonId].Add(ms);
-                }
-            }
-            allMemberships = null;
-
-            People peeps = People.FromIdentities((new List<int>(personLookup.Keys)).ToArray());
-            foreach (Person p in peeps)
-            {
-                personLookup[p.PersonId] = p;
-            }
-
-
-            if (Debugger.IsAttached)
-                Console.WriteLine("Found " + personLookup.Count + " people");
-
-            int processedCounter = 0;
-            int sentCounter = 0;
-            int failCounter = 0;
-
-            DateTime lastDisplay = DateTime.Now;
-
-            foreach (Person person in personLookup.Values)
-            {
-                ++processedCounter;
-                if ((processedCounter % 50) == 0)
-                {
-                    HeartBeater.Instance.Beat();
-                    if (Debugger.IsAttached)
-                        Console.WriteLine("Processed " + processedCounter + " t=" + DateTime.Now.Subtract(lastDisplay).TotalSeconds);
-                    lastDisplay = DateTime.Now;
-                }
-
-                int geoid = person.GeographyId;
-
-                //check for error, geography broken.
-                if (person.GeographyId == 0)
-                {
-                    geoid = person.Geography.GeographyId; //Will force resolve Geography
-                    if (geoid != 0)
-                        person.Geography = person.Geography; ; //repair person.
-                }
-
-                if (geoid == 0)
-                    continue; //give up on that...
-
-                Organization expectedLowOrg = null;
-
-                if (mostLocalOrganizationCache.ContainsKey(geoid))
-                {
-                    expectedLowOrg = mostLocalOrganizationCache[geoid];
-                }
-                else
-                {
-                    expectedLowOrg = Organizations.GetMostLocalOrganization(geoid, Organization.UPSEid);
-                    mostLocalOrganizationCache[geoid] = expectedLowOrg;
-                }
-
-                bool found = false;
-                Dictionary<int, Membership> personMS = new Dictionary<int, Membership>();
-
-                foreach (Membership ms in personMembershipsLookup[person.PersonId])
-                {
-                    if (orgLookup.ContainsKey(ms.OrganizationId))
-                    {   //Its an UP org
-                        personMS[ms.OrganizationId] = ms;
-                    }
-                    if (ms.OrganizationId == expectedLowOrg.Identity)
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-
-                if (found == false)
-                {
-                    //OK we didnt find the recommended org. Find out why.
-
-                    // loop thru the persons up orgs to find an inactive
-                    List<Organization> foundInactiveOrg = new List<Organization>();
-                    List<Organization> foundActiveOrg = new List<Organization>();
-                    Membership membership = null;
-                    try
-                    {
-                        Organization org = null;
-
-                        foreach (Membership ms in personMS.Values)
-                        {
-                            org = orgLookup[ms.OrganizationId];
-                            if (org.AcceptsMembers == false)
-                            {
-                                foundInactiveOrg.Add(org);
-                            }
-                            else if (org.AutoAssignNewMembers == true)
-                            {
-                                foundActiveOrg.Add(org);
-                            }
-                        }
-
-                        if (foundInactiveOrg.Count > 0)
-                        {
-                            //inactive
-                            membership = personMS[foundInactiveOrg[0].Identity];
-
-                        }
-                        else if (foundActiveOrg.Count > 0)
-                        {
-                            //change
-                            membership = personMS[foundActiveOrg[0].Identity];
-
-                        }
-                        else
-                        {
-                            //already a member but not of an autoassign org
-                            if (Debugger.IsAttached)
-                                Console.WriteLine("Debug:nochange " + person.Name + ";" + person.Geography.Name + ";" + (org != null ? org.Name : "UnknownOrg") + ";" + expectedLowOrg.Name);
-                            continue;
-                        }
-                        DateTime lastReminder = PWLog.CheckLatest(PWLogItem.Person, membership.PersonId, PWLogAction.MembershipRenewReminder);
-
-                        if (DateTime.Now.Subtract(lastReminder).TotalDays > 25)
-                        {
-                            if (Debugger.IsAttached)
-                            {
-                                Console.Write("Debug:" + person.Name + ";" + person.Geography.Name + ";" + membership.Organization.Name + ";" + expectedLowOrg.Name);
-                                foreach (var o in foundActiveOrg)
-                                    Console.Write(";" + o.Name);
-                                Console.WriteLine("");
-                            }
-
-                            SendChangeOrgMail(person, membership, expectedLowOrg);
-                            report.Add(new ChangeOrgReport { FromOrg = membership.Organization, ToOrg = expectedLowOrg });
-                            ++sentCounter;
-                            PWLog.Write(PWLogItem.Person, membership.PersonId,
-                                            PWLogAction.MembershipRenewReminder,
-                                            "Mail was sent to " + membership.Person.Mail +
-                                                " for recommendation of organisation change in " + membership.Organization.Name + ".",
-                                            membership.Organization.Identity.ToString() + "/" + expectedLowOrg.Identity.ToString());
-                        }
-                    }
-                    catch (Exception x)
-                    {
-                        ++failCounter;
-                        string logText = "FAILED sending mail to " + membership.Person.Mail +
-                                        " for recommendation of organisation change in " + membership.Organization.Name + ".";
-                        PWLog.Write(PWLogItem.Person, membership.PersonId,
-                                        PWLogAction.MembershipRenewReminder,
-                                        logText, string.Empty);
-                        ExceptionMail.Send(new Exception(logText, x));
-                    }
-                }
-            }
-
-            Dictionary<Organization, Dictionary<Organization, int>> fromdict = new Dictionary<Organization, Dictionary<Organization, int>>();
-            StringBuilder fromOrgReport = new StringBuilder();
-            report.ForEach(delegate(ChangeOrgReport r)
-                {
-                    if (!fromdict.ContainsKey(r.FromOrg))
-                        fromdict[r.FromOrg] = new Dictionary<Organization, int>();
-                    if (!fromdict[r.FromOrg].ContainsKey(r.ToOrg))
-                        fromdict[r.FromOrg][r.ToOrg] = 0;
-                    fromdict[r.FromOrg][r.ToOrg]++;
-                });
-            foreach (var fd in fromdict.Keys)
-            {
-                StringBuilder tmp = new StringBuilder();
-                int cnt = 0;
-                foreach (var td in fromdict[fd].Keys)
-                {
-                    tmp.Append(", " + td.Name);
-                    cnt += fromdict[fd][td];
-                }
-                fromOrgReport.Append("\r\nFrån " + fd.Name + " (" + cnt + " st) till " + tmp.ToString().Substring(2));
-            }
-
-            Dictionary<Organization, Dictionary<Organization, int>> todict = new Dictionary<Organization, Dictionary<Organization, int>>();
-            StringBuilder toOrgReport = new StringBuilder();
-            report.ForEach(delegate(ChangeOrgReport r)
-             {
-                 if (!todict.ContainsKey(r.ToOrg))
-                     todict[r.ToOrg] = new Dictionary<Organization, int>();
-                 if (!todict[r.ToOrg].ContainsKey(r.FromOrg))
-                     todict[r.ToOrg][r.FromOrg] = 0;
-                 todict[r.ToOrg][r.FromOrg]++;
-             });
-            foreach (var td in todict.Keys)
-            {
-                StringBuilder tmp = new StringBuilder();
-                int cnt = 0;
-                foreach (var fd in todict[td].Keys)
-                {
-                    tmp.Append(", " + fd.Name);
-                    cnt += todict[td][fd];
-                }
-                toOrgReport.Append("\r\nTill " + td.Name + " (" + cnt + " st) från " + tmp.ToString().Substring(2));
-            }
-
-
-            string reportMessage = string.Format(
-                        "Result from running recommendation to change org mails:\r\n"
-                       + "Time:    {0,10:#0.0} minutes. \r\n"
-                       + "Checked: {1,10:g}\r\n"
-                       + "Sent:    {2,10:g}\r\n"
-                       + "Failed:  {3,10:g}\r\n",
-                    DateTime.Now.Subtract(starttime).TotalMinutes, processedCounter, sentCounter, failCounter)
-                 + fromOrgReport + "\r\n"
-                 + toOrgReport;
-
-            BasicPersonRole[] UPSecretary = SwarmDb.GetDatabaseForReading().GetPeopleWithRoleType(RoleType.OrganizationSecretary,
-                                                                                        new int[] { Organization.UPSEid },
-                                                                                        new int[] { });
-            if (UPSecretary.Length > 0)
-            {
-                Person.FromIdentity(UPSecretary[0].PersonId).SendOfficerNotice("ChangeOrg Mails Job report", reportMessage, Organization.UPSEid);
-            }
-
-            Person.FromIdentity(7838).SendOfficerNotice("ChangeOrgMails run", reportMessage, Organization.UPSEid);//Debug
-        }
-
-        public static void SendChangeOrgMail (Person person, Membership membership, Organization newOrg)
-        {
-            // HACK for UPSE
-            // This is a hack for the Swedish structure.
-
-            ChangeOrgMail changeorgmail = new ChangeOrgMail();
-
-            Organization topOrg = Organization.FromIdentity(Organization.UPSEid);
-            Organization lowOrg = membership.Organization;
-            DateTime currentExpiry = membership.Expires;
-
-
-            DateTime newExpiry = DateTime.Today.AddYears(1);
-
-
-            changeorgmail.pCurrentOrg = lowOrg.Name;
-            changeorgmail.pCurrentGeo = person.Geography.Name;
-            changeorgmail.pNextDate = newExpiry;
-
-            string tokenBase = person.PasswordHash + "-" + membership.Identity.ToString() + "-" + currentExpiry.Year.ToString();
-
-            if (newOrg.AnchorGeographyId == Geography.RootIdentity && newOrg.AutoAssignNewMembers)
-            {//Fallback org
-                changeorgmail.pNoLocalOrg = newOrg.Name;
-                changeorgmail.pChangeOrg = "";
-            }
-            else
-            {
-                changeorgmail.pNoLocalOrg = "";
-                changeorgmail.pChangeOrg = newOrg.Name;
-            }
-
-            if (lowOrg.AcceptsMembers)
-            {
-                changeorgmail.pInactiveOrg = "";
-                changeorgmail.pInactiveEnding = " ";
-            }
-            else
-            {
-                changeorgmail.pInactiveOrg = newOrg.Name;
-            }
-
-
-
-            changeorgmail.pStdRenewLink = "https://pirateweb.net/Pages/Public/SE/People/MemberRenew.aspx?PersonId=" +
-                              person.Identity.ToString() + "&Transfer=" + lowOrg.Identity.ToString() + "," +
-                              newOrg.Identity.ToString() +
-                              "&MembershipId=" + membership.Identity.ToString() +
-                              "&SecHash=" + SHA1.Hash(tokenBase + "-Transfer" + lowOrg.Identity.ToString() + "/" +
-                                                      newOrg.Identity.ToString()).Replace(" ", "").Substring(0, 8);
-
-            OutboundMail mail = changeorgmail.CreateFunctionalOutboundMail(MailAuthorType.MemberService, OutboundMail.PriorityNormal, topOrg, Geography.Root);
-            string test = mail.RenderHtml(person, person.PreferredCulture);
-            test = mail.RenderText(person, person.PreferredCulture);
-
-            if (mail.Body.Trim() == "")
-            {
-                throw new InvalidOperationException("Failed to create a mailBody");
-            }
-            else
-            {
-                //mail.AddRecipient(7838, true);
-                mail.AddRecipient(person.Identity, false);
-                mail.SetRecipientCount(1);
-                mail.SetResolved();
-                mail.SetReadyForPickup();
-            }
-        }
-
+        // Deleted a ton of special cases here, see file history if you need to copy code for reminding people to change org
 
     }
 }

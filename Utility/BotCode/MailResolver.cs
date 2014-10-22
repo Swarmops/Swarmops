@@ -96,14 +96,6 @@ namespace Swarmops.Utility.BotCode
 
             Dictionary<int, bool> decliners = new Dictionary<int, bool>();
 
-            //HACK: invitation to member meeting should be sent out to ALL members for PPSE
-            if (mail.Author.PartyEmail.ToLower() != "motespresidiet@piratpartiet.se"
-                || mail.GeographyId != Geography.RootIdentity
-                || mail.OrganizationId != Organization.PPSEid)
-            {
-                decliners = Optimizations.GetPeopleWhoDeclineLocalMail(personIdList.ToArray());
-            }
-
             int declineCount = decliners.Count;
 
             if (declineCount > 0)

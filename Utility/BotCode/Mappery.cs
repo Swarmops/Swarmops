@@ -13,8 +13,12 @@ namespace Swarmops.Utility.BotCode
 {
     public class Mappery
     {
+        [Obsolete("Too specialized for Swarmops. Plugin or generalize.", true)]
         public static void CreateUngPiratUptakeMap()
         {
+            throw new NotImplementedException();
+
+            /*
             string svg = string.Empty;
             string legendTemplate = string.Empty;
 
@@ -32,7 +36,7 @@ namespace Swarmops.Utility.BotCode
             }
 
             Organizations effectiveOrgs = new Organizations();
-            Organizations possibleOrgs = Organization.FromIdentity(2).GetTree();
+            Organizations possibleOrgs = Organization.FromIdentity(Organization.UPSEid).GetTree();
 
             foreach (Organization org in possibleOrgs)
             {
@@ -99,12 +103,12 @@ namespace Swarmops.Utility.BotCode
 
             MatchEvaluator matchEvaluator = new MatchEvaluator(mappery.UPUptakeLookupReplacer);
 
-            Persistence.Key["OrgUptakeMap-2"] = regex.Replace(svg, matchEvaluator);
+            Persistence.Key["OrgUptakeMap-2"] = regex.Replace(svg, matchEvaluator);*/
         }
 
 
         public Dictionary<int, string> OrgColorLookup; // ugly way to transfer data to delegate
-
+        /*
         public string UPUptakeLookupReplacer (Match match)
         {
             string resultColor = "#000000";
@@ -120,7 +124,7 @@ namespace Swarmops.Utility.BotCode
 
             return match.Groups["start"].Value + resultColor + match.Groups["middle"].Value + id +
                    match.Groups["end"].Value;
-        }
+        }*/
 
 
         public static Color ColorFromAhsb (int a, float h, float s, float b)
@@ -182,7 +186,7 @@ namespace Swarmops.Utility.BotCode
             }
         }
 
-
+        /*
         public static void CreatePiratpartietOrganizationStrengthCircuitMap()
         {
             string svg = string.Empty;
@@ -432,7 +436,6 @@ namespace Swarmops.Utility.BotCode
             {
             }
 
-            /*
             try
             {
                 if (lookup.ContainsKey(id))
@@ -515,13 +518,12 @@ namespace Swarmops.Utility.BotCode
                 // Ignore - color will be black
             }
               
-            */
 
 
             return match.Groups["start"].Value + resultColorString + match.Groups["middle"].Value + id +
                    match.Groups["end"].Value;
         }
 
-        private Dictionary<int, bool> volunteerCache;
+        private Dictionary<int, bool> volunteerCache;*/
     }
 }
