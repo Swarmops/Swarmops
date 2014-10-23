@@ -11,5 +11,15 @@ namespace Swarmops.Controls.Financial
 
         public string OnClientLoaded { get; set; }
         public string OnClientSelect { get; set; }
+
+        public AccountListType ListType { get; set; }
+    }
+
+    public enum AccountListType
+    {
+        Unknown = 0,
+        Expensables,
+        Invoiceables,
+        All
     }
 }

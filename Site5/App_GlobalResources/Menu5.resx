@@ -285,6 +285,9 @@
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Import Bank Data</value>
   </data>
+  <data name="Menu5_Ledgers_InspectLedgers" xml:space="preserve">
+    <value>Inspect Ledgers</value>
+  </data>
   <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
     <value>Liquidity Forecast</value>
   </data>

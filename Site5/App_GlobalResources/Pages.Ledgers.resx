@@ -495,4 +495,15 @@
   <data name="AccountPlan_Header_Flags" xml:space="preserve">
     <value>Flags</value>
   </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>for</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>Inspect</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>Inspect Ledgers</value>
+  </data>
 </root>
