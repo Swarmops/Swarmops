@@ -5,6 +5,7 @@ using Mono.Unix.Native;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
 using Swarmops.Utility;
 using Swarmops.Utility.BotCode;
@@ -609,6 +610,14 @@ namespace Swarmops.Backend
 
             try
             {
+                if (!PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE))
+                {
+                    // PPSE is still running PW4 code for this, so don't run for PPSE
+
+                    Payroll.ProcessMonthly(); // will only actually run on the 1st, but no harm in testing every noon
+                }
+
+
                 if (!testMode)
                 {
                     /*TestTrace("Running RosterHousekeeping.RemindAllExpiries()...");
