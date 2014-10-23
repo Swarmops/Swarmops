@@ -23,12 +23,17 @@ namespace Swarmops.Logic.Financial
             return new Payment(basic);
         }
 
-        public static Payment FromIdentity (int paymentId)
+        public static Payment FromIdentity(int paymentId)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetPayment(paymentId));
         }
 
-        public static Payment ForOutboundInvoice (OutboundInvoice invoice)
+        private static Payment FromIdentityAggressive(int paymentId)
+        {
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetPayment(paymentId));  // "Writing" intentional - avoid race conditions
+        }
+
+        public static Payment ForOutboundInvoice(OutboundInvoice invoice)
         {
             BasicPayment[] array = SwarmDb.GetDatabaseForReading().GetPayments(invoice);
 
@@ -58,9 +63,9 @@ namespace Swarmops.Logic.Financial
             invoice.Open = false;
 
             PWEvents.CreateEvent(EventSource.PirateWeb, EventType.OutboundInvoicePaid, 0, group.Organization.Identity,
-                                 Geography.RootIdentity, 0, invoice.Identity, string.Empty);
+                                 Geography.RootIdentity, 0, invoice.Identity, string.Empty);   // TODO: REMOVE PWLOG FOR SWARMOPS in due time
 
-            return FromIdentity (SwarmDb.GetDatabaseForWriting().CreatePayment(group.Identity, amount, reference, fromAccount, key, hasImage,
+            return FromIdentityAggressive (SwarmDb.GetDatabaseForWriting().CreatePayment(group.Identity, amount, reference, fromAccount, key, hasImage,
                                                  invoice.Identity));
         }
 
@@ -73,7 +78,7 @@ namespace Swarmops.Logic.Financial
             invoice.SetPaid();
 
             PaymentGroup group = PaymentGroup.Create(organization, dateTime, currency, createdByPerson);
-            Payment newPayment = FromIdentity(SwarmDb.GetDatabaseForWriting().CreatePayment(group.Identity, amountCents, string.Empty, string.Empty, string.Empty, false,
+            Payment newPayment = FromIdentityAggressive(SwarmDb.GetDatabaseForWriting().CreatePayment(group.Identity, amountCents, string.Empty, string.Empty, string.Empty, false,
                                                  invoice.Identity));
             group.AmountCents = amountCents;
 
