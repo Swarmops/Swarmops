@@ -54,7 +54,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public decimal BalanceCentsDelta
+        public long BalanceCentsDelta
         {
             get
             {

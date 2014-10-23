@@ -181,6 +181,7 @@ public partial class Pages_Public_Handlers_PaysonIpnListener : System.Web.UI.Pag
                         Payment payment = Payment.CreateSingle(invoice.Organization, DateTime.Now, invoice.Currency,
                                                                expectedNetCents, invoice, null);  // HACK HACK HACK: says we always received the expected amount
                         transaction.Dependency = payment.Group;
+                        payment.Group.Open = false;
                     }
                     else if (fee > 0.0)
                     {

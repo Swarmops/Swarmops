@@ -1,7 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
 
 namespace Swarmops.Logic.Financial
 {
@@ -49,6 +54,42 @@ namespace Swarmops.Logic.Financial
         public static Payroll GetAll(bool includeClosed)
         {
             return FromArray(SwarmDb.GetDatabaseForReading().GetPayroll(includeClosed? DatabaseCondition.None : DatabaseCondition.OpenTrue));
+        }
+
+        /// <summary>
+        /// Processes all payroll for all organizations system-wide. Should run on the 1st of every month.
+        /// </summary>
+        public static void ProcessMonthly()
+        {
+            DateTime today = DateTime.UtcNow;
+
+            string lastRun = Persistence.Key["LastSalaryRun"];
+
+            string expectedLastRun = today.ToString("yyyyMM", CultureInfo.InvariantCulture);
+
+            if (lastRun != null && String.Compare(lastRun, expectedLastRun, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) >= 0)
+            {
+                // nothing to do, return
+
+                return;
+            }
+
+            Persistence.Key["LastSalaryRun"] = expectedLastRun;
+
+            // Process the payroll for all organizations. Assume payday is 25th.
+            // TODO: Different payday per organization?
+
+            Payroll payroll = Payroll.GetAll();
+            DateTime payday = new DateTime(today.Year, today.Month, 25);
+
+            foreach (PayrollItem payrollItem in payroll)
+            {
+                Salary salary = Salary.Create(payrollItem, payday);
+                SwarmopsLog.CreateEntry(payrollItem.Person, new SalaryCreatedLogEntry(salary));
+
+                // TODO: CREATE SALARY SPECIFICATION, SEND TO PERSON
+
+            }
         }
     }
 }

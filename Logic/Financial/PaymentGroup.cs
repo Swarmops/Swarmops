@@ -15,12 +15,17 @@ namespace Swarmops.Logic.Financial
             // empty ctor
         }
 
-        public static PaymentGroup FromIdentity (int paymentGroupId)
+        public static PaymentGroup FromIdentity(int paymentGroupId)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetPaymentGroup(paymentGroupId));
         }
 
-        public static PaymentGroup FromBasic (BasicPaymentGroup basic)
+        private static PaymentGroup FromIdentityAggressive(int paymentGroupId)
+        {
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetPaymentGroup(paymentGroupId)); // "For writing" intentional - solves race conditions on create
+        }
+
+        public static PaymentGroup FromBasic(BasicPaymentGroup basic)
         {
             return new PaymentGroup(basic);
         }
@@ -28,9 +33,9 @@ namespace Swarmops.Logic.Financial
         public static PaymentGroup Create (Organization organization, DateTime timestamp, Currency currency, Person createdByPerson)
         {
             return
-                FromIdentity(SwarmDb.GetDatabaseForWriting().CreatePaymentGroup(organization.Identity, timestamp,
+                FromIdentityAggressive(SwarmDb.GetDatabaseForWriting().CreatePaymentGroup(organization.Identity, timestamp,
                                                                        currency.Identity,
-                                                                       System.DateTime.Now, createdByPerson.Identity));
+                                                                       System.DateTime.Now, createdByPerson == null? 0: createdByPerson.Identity));
         }
 
         public static PaymentGroup FromTag (Organization organization, string tag)
