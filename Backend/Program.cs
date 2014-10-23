@@ -15,7 +15,7 @@ namespace Swarmops.Backend
 {
     internal class Program
     {
-        private const string heartbeatFile = "/var/run/swarmops-backend/heartbeat.txt";
+        private const string heartbeatFile = "/var/run/swarmops/backend/heartbeat.txt";
 
         private static void Main (string[] args)
         {
