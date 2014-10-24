@@ -26,6 +26,12 @@ namespace Swarmops.Logic.Financial
         public static FinancialAccounts ForOrganization (Organization organization, FinancialAccountType accountType)
         {
             FinancialAccounts allAccounts = ForOrganization(organization);
+
+            if (accountType == FinancialAccountType.All)
+            {
+                return allAccounts;
+            }
+
             FinancialAccounts result = new FinancialAccounts();
 
             Dictionary<FinancialAccountType, bool> lookup = new Dictionary<FinancialAccountType, bool>();

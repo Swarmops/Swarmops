@@ -29,6 +29,10 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// Incomes and costs - accounts that are zeroed at year end. Sign reversed.
         /// </summary>
-        Result = 6
+        Result = 6,
+        /// <summary>
+        /// Meta-type which includes all accounts and group labels where applicable
+        /// </summary>
+        All = 7
     }
 }

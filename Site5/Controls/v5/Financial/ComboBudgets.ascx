@@ -34,4 +34,4 @@
     });
  </script>
  
- <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="/Automation/Json-ExpensableBudgetsTree.aspx" name="DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:300px"></select></span>
+ <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:300px"></select></span>
