@@ -42,7 +42,8 @@
 
 
 .content h2 span span.combo span span.combo-arrow{
-	background:#FFFFFF url('//hostedscripts.falkvinge.net/easyui/themes/default/images/combo_arrow.gif') no-repeat 1px -1px;
+    top: 0px !important;
+    left: 0px !important;
 }
 
 
