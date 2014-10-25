@@ -19,7 +19,7 @@
 	_line-height:18px;
 }
 .combo-arrow{
-	background:#FFFFFF url('//hostedscripts.falkvinge.net/easyui/themes/default/images/combo_arrow.gif') no-repeat 3px 4px;
+	background:#FFFFFF url('/Images/Abstract/easyui-elements-downarrow.gif') no-repeat 3px 4px;
 	width:18px;
 	height:20px !important;
 	overflow:hidden;

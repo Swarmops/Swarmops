@@ -4,6 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="tree" runat="server" />
+    <Swarmops5:ExternalScripts ID="ExternalScripts2" Package="easyui" Control="datagrid" runat="server" />
     <link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css" />
 </asp:Content>
 
@@ -11,6 +12,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
     <h2>Inspect <Swarmops5:ComboBudgets ID="DropBudgets" ListType="All" runat="server" /> for <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
+    
+
 
 </asp:Content>
 
