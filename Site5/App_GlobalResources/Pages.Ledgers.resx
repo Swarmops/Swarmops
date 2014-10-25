@@ -506,4 +506,37 @@
   <data name="InspectLedgers_PageTitle" xml:space="preserve">
     <value>Inspect Ledgers</value>
   </data>
+  <data name="InspectLedgers_FlaggingNotAvailable" xml:space="preserve">
+    <value>Flagging a transaction for closer inspection is not yet implemented. It is scheduled for one of the early Swarmops Red sprints, some time late 2005Q1.</value>
+  </data>
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>Inbound Balance</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>No Previous Balance</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>This is the raw underlying Venetian bookkeeping ledgers for the organization's finances. You can study them here in detail for auditing purposes. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;You're currently watching a P&amp;L account, so signs are reversed - income is negative and expenses positive&lt;/strong&gt; due to how Venetian double bookkeeping works.&lt;/span&gt;</value>
+  </data>
+  <data name="InspectLedgers_InspectNotAvailable" xml:space="preserve">
+    <value>Inspecting a single transaction is not yet implemented. It is scheduled for one of the early Swarmops Red sprints, late 2005Q1.</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>Outbound Balance</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>Ending Balance</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>Ending Balance (to date)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>(Please select an account.)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
 </root>

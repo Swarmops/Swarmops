@@ -748,4 +748,40 @@
   <data name="Title_Person_Ship" xml:space="preserve">
     <value>Personhood</value>
   </data>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>Description</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_Q1" xml:space="preserve">
+    <value>Q1</value>
+    <comment>First quarter of the year</comment>
+  </data>
+  <data name="Global_Q2" xml:space="preserve">
+    <value>Q2</value>
+    <comment>Second quarter of the year</comment>
+  </data>
+  <data name="Global_Q3" xml:space="preserve">
+    <value>Q3</value>
+    <comment>Third quarter of the year</comment>
+  </data>
+  <data name="Global_Q4" xml:space="preserve">
+    <value>Q4</value>
+    <comment>Fourth quarter of the year</comment>
+  </data>
+  <data name="Global_Timestamp" xml:space="preserve">
+    <value>Timestamp</value>
+  </data>
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>Balance</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
+  </data>
+  <data name="Ledgers_Credit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="Ledgers_Debit" xml:space="preserve">
+    <value>Debit</value>
+  </data>
 </root>
