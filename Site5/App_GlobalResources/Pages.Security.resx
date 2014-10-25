@@ -133,10 +133,13 @@
     <value>Current organization</value>
   </data>
   <data name="ChangeOrganizations_Info" xml:space="preserve">
-    <value>Do you want to work with another organization in this Swarmops installation which you can access in a member, staff, or activist role? No problem, just select it and switch.</value>
+    <value>You can be taking part in several organizations on this Swarmops installation. Here is where you switch between them.</value>
   </data>
   <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
     <value>New organization</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>You're not part of any other organizations on this Swarmops installation, so you can't switch to something else. Therefore, we're going back to Dashboard instead.</value>
   </data>
   <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
     <value>Change Organizations</value>

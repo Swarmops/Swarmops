@@ -1,39 +1,62 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
-using System.Web.Security;
+using System.ServiceModel.Security;
+using System.Web;
+using System.Web.Services;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Support;
+using Swarmops.Logic.Swarm;
 
-namespace Swarmops.Frontend.Pages.Security
+namespace Swarmops.Frontend.Pages.v5.Security
 {
     public partial class ChangeOrganizations : PageV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                Localize();
-            }
-
-            // this.PageAccessRequired = new Access(AccessAspect.Bookkeeping, AccessType.Write);  // bogus, but will prevent bad ppl from entering until real security done
-
             this.PageTitle = Resources.Pages.Security.ChangeOrganizations_PageTitle;
             this.PageIcon = "iconshock-organizations";
             this.InfoBoxLiteral = Resources.Pages.Security.ChangeOrganizations_Info;
-            this.LabelCurrentOrganizationName.Text = CurrentOrganization.Name;
+            this.LabelNoOrganizations.Text = Resources.Pages.Security.ChangeOrganizations_NothingToChange;
+
+            PopulateRepeater();
         }
 
-        private void Localize()
+        private void PopulateRepeater()
         {
-            this.LabelCurrentOrganization.Text = Resources.Pages.Security.ChangeOrganizations_CurrentOrganization;
-            this.LabelNewOrganization.Text = Resources.Pages.Security.ChangeOrganizations_NewOrganization;
+            Memberships memberships = CurrentUser.GetMemberships();
+
+            List<OrganizationParameters> availableOrganizations = new List<OrganizationParameters>();
+            foreach (Membership membership in memberships)
+            {
+                if (membership.OrganizationId == 1 && !PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE))
+                {
+                    // sandbox. Ignore.
+                    continue;
+                }
+
+                OrganizationParameters newOrganization = new OrganizationParameters();
+                newOrganization.LogoUrl = "/Images/Flags/txl-64px.png";
+                newOrganization.OrganizationId = membership.OrganizationId;
+                newOrganization.OrganizationName = membership.Organization.Name;
+
+                availableOrganizations.Add(newOrganization);
+            }
+
+            this.OrganizationCount = availableOrganizations.Count;
+
+            this.RepeaterOrganizations.DataSource = availableOrganizations;
+            this.RepeaterOrganizations.DataBind();
         }
 
-        protected void ButtonSwitch_Click(object sender, EventArgs e)
+        public int OrganizationCount { get; set; }
+
+        private class OrganizationParameters
         {
-            int newOrganizationId = Int32.Parse(this.Request.Form["DropOrganizations"]);
-
-            // TODO: Re-authorize user's ability to log onto this org
-
-            FormsAuthentication.RedirectFromLoginPage(this.CurrentUser.Identity.ToString(CultureInfo.InvariantCulture) + "," + newOrganizationId.ToString(CultureInfo.InvariantCulture), true);
+            public string LogoUrl { get; set; }
+            public int OrganizationId { get; set; }
+            public string OrganizationName { get; set; }
         }
     }
 }

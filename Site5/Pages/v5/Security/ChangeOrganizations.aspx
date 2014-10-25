@@ -1,36 +1,84 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="ChangeOrganizations.aspx.cs" Inherits="Swarmops.Frontend.Pages.Security.ChangeOrganizations" %>
-<%@ Register TagPrefix="Swarmops5" TagName="ExternalScripts" Src="~/Controls/v5/UI/ExternalScripts.ascx" %>
-<%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="ChangeOrganizations.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Security.ChangeOrganizations" %>
+<%@ Import Namespace="Swarmops.Logic.Support" %>
+<%@ Register src="~/Controls/v5/UI/ExternalScripts.ascx" tagname="ExternalScripts" tagprefix="Swarmops5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-    <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="tree" runat="server" />
+    <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="datagrid" runat="server" />
+	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
+    <script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
     
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#DropOrganizations').combotree({
-                animate: true,
-                height: 30
-            });
+
+        $(document).ready(function() {
+            if (organizationCount == 0) {
+                alertify.alert("<asp:Literal ID="LabelNoOrganizations" runat="server" />", function() {
+                    document.location = "/";
+                });
+            }
         });
-     </script>
 
-	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
+        var organizationCount = <%=this.OrganizationCount %>;
+
+      
+    </script>
+    
+    <style type="text/css">
+        div.divOrganizationEncapsulation {
+            border: solid 1px transparent;
+            padding-top: 1px;                    
+        }
+        div.divOrganizationEncapsulation:hover {
+            border-radius: 4px;
+            -moz-border-radius:4px;
+            border: solid 1px #FFBC37;
+            background: #FFD580;
+            background: -webkit-gradient(linear, left top, left bottom, from(#ffd98c), to(#f0c265));
+            background: -moz-linear-gradient(top,  #ffd98c,  #f0c265);
+            filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd98c', endColorstr='#f0c265');
+            color: #7F5500;
+            cursor: pointer;
+            -webkit-box-shadow: 0 1px 3px #C78B15;
+            -moz-box-shadow: 0 1px 3px #C78B15;
+            box-shadow: 0 1px 3px #C78B15;
+        }
+         
+        div.divOrganizationLogo {
+            float: left;
+            background-position: left;
+            padding-left: 2px;
+            margin-left: 4px;
+            background-repeat: no-repeat;
+            width: 70px;
+            height: 48px;
+        }
+
+        div.spanOrganizationName {
+            padding-top: 10px;
+            font-size: 24px;
+            padding-bottom: 10px;
+        }
+    </style>
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <div class="entryFields">
-    <span style="margin-left:12px"><asp:Label runat="server" ID="LabelCurrentOrganizationName" /></span>&nbsp;<br/>
-        <select class="easyui-combotree" url="Json-AccessibleOrganizationsTree.aspx" name="DropOrganizations" id="DropOrganizations" animate="true" style="width:300px" height="30"></select>
-
-        <asp:Button ID="ButtonSwitch" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClick="ButtonSwitch_Click" Text="Switch"/>
+    <% if (!PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE))  // at the first pilot installation, the first live org was #1 and there was no sandbox
+       { %>
+    <div class="divOrganizationEncapsulation" onclick="document.location='/Pages/v5/Security/SetCurrentOrganization.aspx?OrganizationId=1';">
+        <div class="divOrganizationLogo" style="background-image:url('/Images/Other/clipart-panda-free-sandbox-icon-64px.png')" ></div>
+        <div class="spanOrganizationName">Sandbox</div>
     </div>
-    <div class="entryLabels">
-        <asp:Label runat="server" ID="LabelCurrentOrganization" /><br/>
-        <asp:Label runat="server" ID="LabelNewOrganization" />
-    </div>
-    <div style="clear:both"></div>
+    <hr/>
+    <% } %>
+    <asp:Repeater runat="server" ID="RepeaterOrganizations">
+        <ItemTemplate>
+            <div class="divOrganizationEncapsulation" onclick="document.location='/Pages/v5/Security/SetCurrentOrganization.aspx?OrganizationId=<%# Eval("OrganizationId") %>';">
+                <div class="divOrganizationLogo" style="background-image:url('<%# Eval("LogoUrl")%>')" ></div>
+                <div class="spanOrganizationName"><%# Eval("OrganizationName") %></div>
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
 </asp:Content>
-
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
 </asp:Content>
 
