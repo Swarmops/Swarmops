@@ -34,10 +34,16 @@
 	filter:alpha(opacity=40);
 }
 
+/* overrides when controls are used in page headers as part of a H2 */
+
+.content h2 span span.combo {
+    padding-left: 4px !important;
+}
 
 .content > h2 > span > span.combo > input.combo-text {
     height: 20px !important;
     line-height: 20px !important;
+    border: 0 !important;
 }
 
 
