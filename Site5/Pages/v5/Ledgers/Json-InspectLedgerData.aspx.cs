@@ -167,6 +167,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     runningBalance / 100.0) + "},");
             }
 
+            if (rows.Count == 0)
+            {
+                // If there are no transactions in this time period, say so
+
+                result.Append("{\"description\":\"" +
+                              JsonSanitize(Resources.Pages.Ledgers.InspectLedgers_NoTransactions) + "\"},");
+            }
+
             result.Append("{" +
               String.Format("\"description\":\"{0}\",\"balance\":\"{1:N0}\"", JsonSanitize(endString), runningBalance / 100.0) + "},");
 

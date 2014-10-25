@@ -521,6 +521,9 @@
   <data name="InspectLedgers_InspectNotAvailable" xml:space="preserve">
     <value>Inspecting a single transaction is not yet implemented. It is scheduled for one of the early Swarmops Red sprints, late 2005Q1.</value>
   </data>
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>Account has no transactions in this time period.</value>
+  </data>
   <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
     <value>Outbound Balance</value>
   </data>
