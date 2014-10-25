@@ -63,12 +63,6 @@
         .datagrid-row-selected,.datagrid-row-over{
             background:transparent;
 	    }
-	    .content h2 select {
-		    font-size: 16px;
-            font-weight: bold;
-            color: #1C397E;
-            letter-spacing: 1px;
-        }
    	    table.datagrid-ftable {
 		    font-weight: 500;
 	    }

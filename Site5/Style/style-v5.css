@@ -322,6 +322,25 @@ img
 	margin-bottom: 7px;
 }
 
+.content > h2 > select, .content > h2 > span > span.combo > input.combo-text {
+	font-size: 16px;
+    font-weight: bold;
+    color: #1C397E;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+.content > h2 > span > span.combo {
+    height: 20px !important;
+}
+
+.content > h2 > span > span.combo > input.combo-text {
+    height: 20px !important;
+    line-height: 20px !important;
+}
+
+
 .content h3
 {
 	font-family: Ubuntu, Arial, Sans-Serif;

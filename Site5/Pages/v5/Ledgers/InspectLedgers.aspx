@@ -10,7 +10,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
-    <h2>Inspect <Swarmops5:ComboBudgets ID="DropBudgets" ListType="All" runat="server" /> for <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="Months"/></h2>
+    <h2>Inspect <Swarmops5:ComboBudgets ID="DropBudgets" ListType="All" runat="server" /> for <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
 
 </asp:Content>
 
