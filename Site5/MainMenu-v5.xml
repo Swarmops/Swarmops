@@ -388,6 +388,22 @@
           </MainMenuItem>
 
           <MainMenuItem>
+            <ResourceKey>Hacks_TemporaryAccessControl</ResourceKey>
+            <UserLevel>4</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-battery-drill</ImageUrl>
+            <NavigateUrl>/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
+            <UserLevel>1</UserLevel>
+            <Type>Separator</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
                 <ResourceKey />
                 <UserLevel>4</UserLevel>
                 <Permissions />

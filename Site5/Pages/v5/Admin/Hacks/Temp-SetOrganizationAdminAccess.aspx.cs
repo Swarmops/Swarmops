@@ -13,7 +13,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write); // As good as any access aspect
             this.PageIcon = "iconshock-battery-drill";
             this.InfoBoxLiteral =
-                "This is a <strong>temporary</strong> access mechanism to get Swarmops usage off the ground. Real, fine-grained, responsibility-based access control is scheduled to be implemented by the <em>Swarmops Orange</em> release (Dec 31, 2013).";
+                "This is a <strong>temporary</strong> access mechanism to get Swarmops usage off the ground. Real, fine-grained, responsibility-based access control per organizational role is scheduled to be implemented by the <em>Swarmops Orange</em> release (Jun 30, 2015).";
             this.PageTitle = "Set Admin Access (Temporary)";
 
             if (!Page.IsPostBack)

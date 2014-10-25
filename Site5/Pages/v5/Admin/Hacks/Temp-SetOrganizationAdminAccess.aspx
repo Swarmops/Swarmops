@@ -19,8 +19,8 @@
     <p><strong>People with read-only access:</strong> <asp:Label runat="server" ID="LabelPeopleReadAccessList" /></p>
     
     <br/>
-    <p>List the people IDs, separated by spaces, who should have administrative read-write and read-only privileges, respectively to sensitive functionality (bookkeeping, et cetera).</p>
-    <p><strong>This is a temporary access mechanism</strong> to get Swarmops usage off the ground. Real, fine-grained, responsibility-based access control is scheduled to be implemented by the <em>Swarmops Orange</em> release (Dec 31, 2013).</p>
+    <p>List the people IDs, separated by spaces, who should have administrative read-write and read-only privileges, respectively to sensitive functionality (bookkeeping, et cetera). This applies installation-wide, to all organizations running on this Swarmops.</p>
+    <p><strong>This is a temporary access mechanism</strong> to get Swarmops usage off the ground. Real, fine-grained, responsibility-based access control is scheduled to be implemented by the <em>Swarmops Orange</em> release (Jun 30, 2015).</p>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
