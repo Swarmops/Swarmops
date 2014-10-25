@@ -156,15 +156,20 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 runningBalance += row.AmountCents;
 
+                string actionHtml = String.Format(
+                    "<img src=\"/Images/Icons/iconshock-magnifyingglass-16px.png\" class=\"LocalIconInspect\" baseid=\"\" />&nbsp;<img src=\"/Images/Icons/iconshock-flag-white-16px.png\" class=\"LocalIconFlag\" baseid=\"{0}\" />",
+                    row.FinancialTransactionId.ToString(CultureInfo.InvariantCulture));
+
                 result.Append("{" + String.Format(
                     "\"id\":\"{0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
-                    "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N0}\"",
+                    "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N0}\",\"action\":\"{6}\"",
                     row.FinancialTransactionId,
                     row.TransactionDateTime,
                     JsonSanitize(row.Description),
                     debitString,
                     creditString,
-                    runningBalance / 100.0) + "},");
+                    runningBalance / 100.0,
+                    JsonSanitize(actionHtml)) + "},");
             }
 
             if (rows.Count == 0)

@@ -66,6 +66,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelGridHeaderDeltaPositive.Text = Resources.Global.Ledgers_Debit;
             this.LabelGridHeaderDescription.Text = Resources.Global.Global_Description;
             this.LabelGridHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
+
+            this.LabelFlagNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_FlaggingNotAvailable;
+            this.LabelInspectNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_InspectNotAvailable;
         }
     }
 }

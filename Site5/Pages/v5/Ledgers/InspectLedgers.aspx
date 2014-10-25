@@ -35,6 +35,15 @@
 	                    // Footer cells could not be merged in datagrid :(
 
 	                }
+
+	                // Enable various actions on icon
+
+	                $('img.LocalIconFlag').click(function () {
+	                    onFlagTransaction("Add Tx Id here");
+	                });
+	                $('img.LocalIconInspect').click(function () {
+	                    onInspectTransaction("Add Tx Id here");
+	                });
 	            }
 	        });
 
@@ -69,6 +78,15 @@
 	        $('#gridOutstandingAccounts').datagrid('reload');
         }
 
+        function onInspectTransaction(transactionId) {
+            alertify.log ('<asp:Label ID="LabelInspectNotAvailable" runat="server" />');
+        }
+
+        function onFlagTransaction(transactionId) {
+            alertify.log('<asp:Label ID="LabelFlagNotAvailable" runat="server" />');
+
+        }
+
 	</script>
 
 
@@ -80,6 +98,11 @@
 		    font-weight: 500;
 	    }
 
+        .LocalIconInspect, .LocalIconFlag {
+            cursor:pointer;
+            position: relative;
+            top: 4px;
+        }
     </style>
 
 </asp:Content>
@@ -94,7 +117,7 @@
         idField="id">
         <thead>  
             <tr>  
-                <th data-options="field:'id',width:50"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
+                <th data-options="field:'id',width:50,align:'right'"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
                 <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelGridHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
                 <th data-options="field:'description',width:270"><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /></th>  
                 <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>
