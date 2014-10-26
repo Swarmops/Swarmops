@@ -1,0 +1,31 @@
+[This document is for signing by contributors to Swarmops into the
+file contributors.txt. This is not necessary at the small scale when
+it was implemented, but in case Swarmops grows significantly, it
+will become so.]
+
+I irrevocably dedicate any and all exclusive monopoly rights, such as
+"copyright", in my contributions to Swarmops to the public domain.
+I make this dedication for the benefit of the public at large and to
+the benefit of my heirs and successors, so they may enjoy a freer
+spirit of knowledge, culture, and tools for humanity. I intend this
+dedication to be an overt act of relinquishment in perpetuity of all
+present and future rights to this software under copyright monopoly
+law and other monopoly laws.
+
+To the best of my knowledge and belief, my contributions are either
+originally authored by me, or are derived from prior works which I
+have verified are also in the public domain and are not legally
+subject to claims of exclusive rights by other parties, and I
+affirm and certify at I will not make contributions that are
+encumbered by rights of exclusivity in any form, unless such
+contributions are either:
+
+  1) an External Library, clearly placed in locations for such
+     and added after community consensus;
+  2) JavaScript code under MIT license, which are added in
+     locations for such and where each script is enumerated in the
+     ScriptLicenses file; or
+  3) images where I have an explicit right to redistribute them
+     as part of an application like Swarmops, in which case they
+     are added to the project with a filename that indicates their
+     origin.

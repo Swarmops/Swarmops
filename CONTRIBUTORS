@@ -1,0 +1,23 @@
+These people have worked on Swarmops and signed off on the PDAFFIRM
+document. To add your name to the list, type the following commands
+then commit changes:
+
+echo -e "\n\n[Your Name]" >> CONTRIBUTORS
+date >> CONTRIBUTORS
+gpg --armor --detach-sig PDAFFIRM
+cat PDAFFIRM.asc >> CONTRIBUTORS
+rm PDAFFIRM.asc
+
+
+-- Sign-offs below this line --
+
+
+Rick Falkvinge
+Mon Oct 27 00:16:00 CET 2014
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEABECAAYFAlRNhbQACgkQ7pnTrWI4jx0iTQCfXb6prIrD3/YEnXm2uJBb9nEr
+5SEAn2QpAndUanAWqcbNAOawEq/2oSWX
+=xhoS
+-----END PGP SIGNATURE-----
