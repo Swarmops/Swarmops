@@ -120,12 +120,11 @@
   <data name="AccessDenied_Header" xml:space="preserve">
     <value>Было отказано в доступе к этой странице</value>
   </data>
-  <data name="AccessDenied_Info" xml:space="preserve">
-    <value>Вы пытались получить доступ к странице, к которой у Вас нет разрешения. Причины этого Вы можете найти на главной панеле.</value>
-  </data>
+  
   <data name="AccessDenied_PageTitle" xml:space="preserve">
     <value>Доступ Запрещен</value>
   </data>
+  
   
   
   

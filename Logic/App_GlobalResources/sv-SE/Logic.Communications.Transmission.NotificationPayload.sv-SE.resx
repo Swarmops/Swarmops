@@ -224,8 +224,12 @@ Logga på Swarmops på [SystemUrl] för att godkänna eller avslå dem.</value>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
     <value>(ÅTGÄRD BEHÖVS) [OrganizationName] Kvitton inlagda - Granskning behövs</value>
   </data>
-  
-  
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>Swarmops Backend [SwarmopsVersion] på servern [HostName] har uppgraderat Swarmops' databasschema till version [DbVersion].  Detta är endast för information. Du behöver inte vidta någon åtgärd.</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>Swarmops-databas uppgraderades</value>
+  </data>
   <data name="System_Exception_Body" xml:space="preserve">
     <value>En ohanterad exception kastades i Swarmops: [EmbeddedPreformattedText]</value>
   </data>

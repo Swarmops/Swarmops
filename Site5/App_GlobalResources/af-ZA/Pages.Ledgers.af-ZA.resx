@@ -494,4 +494,51 @@
   <data name="AccountPlan_Header_Flags" xml:space="preserve">
     <value>crwdns6553750:0crwdne6553750:0</value>
   </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>crwdns6554014:0crwdne6554014:0</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>crwdns6554015:0crwdne6554015:0</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>crwdns6554016:0crwdne6554016:0</value>
+  </data>
+  <data name="InspectLedgers_FlaggingNotAvailable" xml:space="preserve">
+    <value>crwdns6554032:0crwdne6554032:0</value>
+  </data>
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>crwdns6554018:0crwdne6554018:0</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>crwdns6554019:0crwdne6554019:0</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>crwdns6554020:0crwdne6554020:0</value>
+  </data>
+  <data name="InspectLedgers_InspectNotAvailable" xml:space="preserve">
+    <value>crwdns6554033:0crwdne6554033:0</value>
+  </data>
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>crwdns6554022:0crwdne6554022:0</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>crwdns6554023:0crwdne6554023:0</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>crwdns6554024:0crwdne6554024:0</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>crwdns6554025:0crwdne6554025:0</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>crwdns6554026:0crwdne6554026:0</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>crwdns6554027:0crwdne6554027:0</value>
+    <comment>Keep VERY short.</comment>
+  </data>
 </root>

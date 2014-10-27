@@ -120,12 +120,11 @@
   <data name="AccessDenied_Header" xml:space="preserve">
     <value>Du har ikke tilgang til denne siden</value>
   </data>
-  <data name="AccessDenied_Info" xml:space="preserve">
-    <value>Du har ikke tilgang til denne siden. Se hovedsiden for noen grunner til hvorfor dette hender. </value>
-  </data>
+  
   <data name="AccessDenied_PageTitle" xml:space="preserve">
     <value>Ingen tilgang</value>
   </data>
+  
   
   
   

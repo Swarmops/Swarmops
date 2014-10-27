@@ -124,6 +124,10 @@
   <data name="Europe" xml:space="preserve">
     <value>Europa</value>
   </data>
+  <data name="Microstates" xml:space="preserve">
+    <value>Mikrostater</value>
+    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  </data>
   <data name="Nordics" xml:space="preserve">
     <value>Norden</value>
     <comment>(Finland Denmark Norway Sweden Iceland)</comment>
