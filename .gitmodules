@@ -1,0 +1,3 @@
+[submodule "External Dependencies/NBitcoin"]
+	path = External Dependencies/NBitcoin
+	url = https://github.com/NicolasDorier/NBitcoin/
