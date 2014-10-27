@@ -1,5 +1,5 @@
 [This document is for signing by contributors to Swarmops into the
-file contributors.txt. This is not necessary at the small scale when
+CONTRIBUTORS file. This is not necessary at the small scale when
 it was implemented, but in case Swarmops grows significantly, it
 will become so.]
 
@@ -21,11 +21,17 @@ encumbered by rights of exclusivity in any form, unless such
 contributions are either:
 
   1) an External Library, clearly placed in locations for such
-     and added after community consensus;
+     and added after community consensus; or
   2) JavaScript code under MIT license, which are added in
      locations for such and where each script is enumerated in the
      ScriptLicenses file; or
-  3) images where I have an explicit right to redistribute them
+  3) code that is freely redistributable without other encumbrance
+     than repeating its status as unencumbered code, such as the
+     BCrypt code or similar code people just shouldn't be
+     re-implementing, in which case the source code needs to
+     indicate its status as foreign but unencumbered code
+     (like by including the MIT license in the source itself); or
+  4) images where I have an explicit right to redistribute them
      as part of an application like Swarmops, in which case they
      are added to the project with a filename that indicates their
      origin.
