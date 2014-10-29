@@ -11,7 +11,17 @@ namespace Swarmops.Logic.Support
         {
             get { return SwarmDb.GetDatabaseForReading().GetKeyValue (key); }
 
-            set { SwarmDb.GetDatabaseForWriting().SetKeyValue (key, value); }
+            set
+            {
+                if (value == null)
+                {
+                    SwarmDb.GetDatabaseForWriting().SetKeyValue(key, "-null-"); // TODO: Delete the key
+                }
+                else
+                {
+                    SwarmDb.GetDatabaseForWriting().SetKeyValue(key, value);
+                }
+            }
         }
 
         public static Persistence Key
