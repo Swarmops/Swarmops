@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Support;
@@ -12,10 +13,14 @@ namespace Swarmops.Security
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Persistence.Key["BitIdTest_Addr"] = Request.Params["addr"];
-            Persistence.Key["BitIdTest_Sign"] = Request.Params["sign"];
-            Persistence.Key["BitIdTest_BitIdUri"] = Request.Params["bitid_uri"];
-            Persistence.Key["BitIdTest_CallbackUri"] = Request.Params["callback_uri"];
+        }
+
+        [WebMethod]
+        public static void Authenticate(string uri, string address, string signature)
+        {
+            Persistence.Key["BitIdTest_Uri"] = uri;
+            Persistence.Key["BitIdTest_Address"] = address;
+            Persistence.Key["BitIdText_Signature"] = signature;
         }
     }
 }
