@@ -186,3 +186,8 @@ FakesAssemblies/
 #OpenOffice lock files
 .~lock.*
 
+#Everything in external Dependencies that are built
+External Dependencies/*
+#Except the batch file to rebuild them
+!External Dependencies/rebuild-all.cmd
+

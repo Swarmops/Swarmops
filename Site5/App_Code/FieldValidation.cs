@@ -19,19 +19,16 @@ public class FieldValidation : System.Web.Services.WebService {
         //InitializeComponent(); 
     }
 
-    [WebMethod]
-    public bool IsAmountValid (string amount)
+
+    private CultureInfo GetUserCulture()
     {
         // Determine correct culture for parsing
-
         CultureInfo culture = null;
 
         // Set default culture (English, United States, but that doesn't work so fake it to GB)
-
-        string preferredCulture = "en-GB";
+        string preferredCulture = "en-US";
 
         // -----------  SET CULTURE ------------
-
         // Does the user have a culture preference?
 
         if (HttpContext.Current.Request.Cookies["PreferredCulture"] != null)
@@ -50,6 +47,8 @@ public class FieldValidation : System.Web.Services.WebService {
             }
         }
 
+        // Actually set the culture
+
         try
         {
             culture = CultureInfo.CreateSpecificCulture(preferredCulture);
@@ -58,6 +57,15 @@ public class FieldValidation : System.Web.Services.WebService {
         {
             culture = CultureInfo.InvariantCulture;
         }
+
+        return culture;
+    }
+
+
+    [WebMethod]
+    public bool IsAmountValid (string amount)
+    {
+        CultureInfo culture = GetUserCulture();
 
         // Try to parse the string we got as a double
 
