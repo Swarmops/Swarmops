@@ -16,7 +16,7 @@ namespace Swarmops.Security
         }
 
         [WebMethod]
-        public static void Authenticate(string uri, string address, string signature)
+        public static void Authenticate(string uri, string signature, string address)
         {
             Persistence.Key["BitIdTest_Uri"] = uri;
             Persistence.Key["BitIdTest_Address"] = address;
