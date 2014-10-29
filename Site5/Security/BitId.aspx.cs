@@ -12,10 +12,10 @@ namespace Swarmops.Security
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Persistence.Key["BitIdTest_Addr"] = Request["addr"];
-            Persistence.Key["BitIdTest_Sign"] = Request["sign"];
-            Persistence.Key["BitIdTest_BitIdUri"] = Request["bitid_uri"];
-            Persistence.Key["BitIdTest_CallbackUri"] = Request["callback_uri"];
+            Persistence.Key["BitIdTest_Addr"] = Request.Params["addr"];
+            Persistence.Key["BitIdTest_Sign"] = Request.Params["sign"];
+            Persistence.Key["BitIdTest_BitIdUri"] = Request.Params["bitid_uri"];
+            Persistence.Key["BitIdTest_CallbackUri"] = Request.Params["callback_uri"];
         }
     }
 }
