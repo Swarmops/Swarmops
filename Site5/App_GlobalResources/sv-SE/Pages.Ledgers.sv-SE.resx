@@ -157,16 +157,16 @@
     <value>Balansräkning</value>
   </data>
   <data name="BalanceSheet_Q1" xml:space="preserve">
-    <value>Ändr Q1</value>
+    <value>Ändr Kv1</value>
   </data>
   <data name="BalanceSheet_Q2" xml:space="preserve">
-    <value>Ändr Q2</value>
+    <value>Ändr Kv2</value>
   </data>
   <data name="BalanceSheet_Q3" xml:space="preserve">
-    <value>Ändr Q3</value>
+    <value>Ändr Kv3</value>
   </data>
   <data name="BalanceSheet_Q4" xml:space="preserve">
-    <value>Ändr Q4</value>
+    <value>Ändr Kv4</value>
   </data>
   <data name="BalanceSheet_StartYear" xml:space="preserve">
     <value>Start-XXXX</value>
@@ -476,5 +476,48 @@
   </data>
   <data name="AccountPlan_Header_Flags" xml:space="preserve">
     <value>Flaggor</value>
+  </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>för</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>Granska</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>Granska bokföring</value>
+  </data>
+  
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>Ingående balans</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>Inget tidigare saldo</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>Detta är den underliggande bokföringens huvudbok för organisationens finanser. Du kan studera bokföringen i detalj, t.ex. för revision. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt; &lt;strong&gt;Du tittar just nu på ett resultat konto, så tecknen är omvända - inkomst är negativ och kostnad positivt&lt;/strong&gt; på grund av hur venetiansk dubbel bokföring fungerar.&lt;/span&gt;</value>
+  </data>
+  
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>Det finns inga transaktioner i det här kontot för den valda tidsperioden.</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>Utgående balans</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>Slutlig balans</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>Slutlig balans (hittills)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>(Välj ett konto.)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
   </data>
 </root>

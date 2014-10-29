@@ -285,6 +285,9 @@
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importera Bankdata</value>
   </data>
+  <data name="Menu5_Ledgers_InspectLedgers" xml:space="preserve">
+    <value>Granska bokföring</value>
+  </data>
   <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
     <value>Likviditetsprognos</value>
   </data>

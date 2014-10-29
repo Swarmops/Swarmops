@@ -285,6 +285,9 @@
   <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>crwdns1639848:0crwdne1639848:0</value>
   </data>
+  <data name="Menu5_Ledgers_InspectLedgers" xml:space="preserve">
+    <value>crwdns6554013:0crwdne6554013:0</value>
+  </data>
   <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
     <value>crwdns6553963:0crwdne6553963:0</value>
   </data>

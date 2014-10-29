@@ -507,7 +507,7 @@
     <value>Inspect Ledgers</value>
   </data>
   <data name="InspectLedgers_FlaggingNotAvailable" xml:space="preserve">
-    <value>Flagging a transaction for closer inspection is not yet implemented. It is scheduled for one of the early Swarmops Red sprints, some time late 2005Q1.</value>
+    <value>Flagging a transaction for closer inspection is not yet implemented. It is scheduled for one of the early Swarmops Red sprints, some time late 2015Q1.</value>
   </data>
   <data name="InspectLedgers_InboundBalance" xml:space="preserve">
     <value>Inbound Balance</value>
@@ -519,7 +519,7 @@
     <value>This is the raw underlying Venetian bookkeeping ledgers for the organization's finances. You can study them here in detail for auditing purposes. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt;You're currently watching a P&amp;L account, so signs are reversed - income is negative and expenses positive&lt;/strong&gt; due to how Venetian double bookkeeping works.&lt;/span&gt;</value>
   </data>
   <data name="InspectLedgers_InspectNotAvailable" xml:space="preserve">
-    <value>Inspecting a single transaction is not yet implemented. It is scheduled for one of the early Swarmops Red sprints, late 2005Q1.</value>
+    <value>Inspecting a single transaction is not yet implemented. It is scheduled for one of the early Swarmops Red sprints, late 2015Q1.</value>
   </data>
   <data name="InspectLedgers_NoTransactions" xml:space="preserve">
     <value>There are no transactions in this account for the selected time period.</value>

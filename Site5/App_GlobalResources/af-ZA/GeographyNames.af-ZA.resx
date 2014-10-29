@@ -124,6 +124,10 @@
   <data name="Europe" xml:space="preserve">
     <value>crwdns6553987:0crwdne6553987:0</value>
   </data>
+  <data name="Microstates" xml:space="preserve">
+    <value>crwdns6554001:0crwdne6554001:0</value>
+    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  </data>
   <data name="Nordics" xml:space="preserve">
     <value>crwdns6553988:0crwdne6553988:0</value>
     <comment>(Finland Denmark Norway Sweden Iceland)</comment>

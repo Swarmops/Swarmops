@@ -1,0 +1,31 @@
+These people have worked on Swarmops and signed off on the PDAFFIRM
+document. To add your name to the list, type the following commands
+then commit changes:
+
+echo -e "\n\n[Your Name] ([Email])" >> CONTRIBUTORS
+date >> CONTRIBUTORS
+gpg --armor --detach-sig PDAFFIRM
+cat PDAFFIRM.asc >> CONTRIBUTORS
+rm PDAFFIRM.asc
+
+People who choose to not sign this and contribute to the project
+still do not hold any claim to exclusive rights over their code; the
+README file clearly states that any pull requests, commits, or
+contributions of any kind are irrevocably committed to the public
+domain. Signing the PDAFFIRM document is therefore more of a strong
+version over and above that statement, rather than a legal minimum
+requirement.
+
+
+-- Sign-offs below this line --
+
+
+Rick Falkvinge (rick.falkvinge@pirateacademy.eu)
+Mon Oct 27 00:16:00 CET 2014
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEABECAAYFAlROAwIACgkQ7pnTrWI4jx0RKwCePNKPlIT26BNise02d7ZewXlZ
+R2MAn2wdLgkV0dnQQOtE9mpPz0PvkTfi
+=Ry/3
+-----END PGP SIGNATURE-----

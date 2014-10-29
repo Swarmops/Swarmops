@@ -15,12 +15,15 @@ svn update
 
 if [ "$1" == "release" ]; then
   DROPFOLDER=release
+  BUILDNUMLEN=6
   echo "Packaging FINISHED RELEASE for super-stable deployments."
 elif [ "$1" == "sprint" ]; then
   DROPFOLDER=sprint
+  BUILDNUMLEN=6
   echo "Packaging END-OF-SPRINT for normal deployments."
 elif [ "$1" == "" ]; then
   DROPFOLDER=internal
+  BUILDNUMLEN=8
   echo "internal" > ../lastbuild/swarmops/internal/frontend/SprintName.txt
   echo "Packaging internal test build."
 else
@@ -32,7 +35,7 @@ fi
 BUILDID=$(cat ../lastbuild/swarmops/$DROPFOLDER/BuildIdentity.txt | tr -d ' \r')
 COMMITID=$(cat ../lastbuild/swarmops/$DROPFOLDER/CommitIdentity.txt | tr -d ' \r')
 
-BUILDID=$(echo $BUILDID | cut -c 1-8)$(echo $COMMITID | cut -c 1-7)
+BUILDID=$(echo $BUILDID | cut -c 1-$BUILDNUMLEN)$(echo $COMMITID | cut -c 1-7)
 
 echo ""
 echo "Packaging Swarmops, branch '$DROPFOLDER', build $BUILDID."

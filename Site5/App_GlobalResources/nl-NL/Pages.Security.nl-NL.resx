@@ -120,12 +120,11 @@
   <data name="AccessDenied_Header" xml:space="preserve">
     <value>Toegang tot deze pagina geweigerd</value>
   </data>
-  <data name="AccessDenied_Info" xml:space="preserve">
-    <value>U heeft geprobeerd toegang te verkrijgen tot een pagina waar u de rechten niet voor heeft. Kijk op de hoofdpagina waarom dit zo is.</value>
-  </data>
+  
   <data name="AccessDenied_PageTitle" xml:space="preserve">
     <value>Toegang geweigerd</value>
   </data>
+  
   
   
   

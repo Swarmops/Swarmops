@@ -123,5 +123,7 @@
   <data name="IncomeType" xml:space="preserve">
     <value>Inkomsttyp</value>
   </data>
-  
+  <data name="ProjectName" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
 </root>

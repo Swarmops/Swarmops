@@ -56,7 +56,7 @@ Contributing
 
 No permission necessary, really. Just check in code. The backend is ASP.Net/C# and the frontend (where most of the development happens) is Javascript and jQuery. But if you want to see what's being worked on, feel free to get an account at http://scrum.pirateacademy.eu and join the Swarmops project, and grab tasks from the master list.
 
-There's also a Facebook group named Swarmops Developers which you may want to join. Yes, Facebook is evil, so give me a better alternative. Until there is one, that's where discussions happen.
+There's also a Facebook group named [Swarmops Developers](https://www.facebook.com/groups/swarmops.developers/) which you may want to join. Yes, Facebook is evil, so give me a better alternative. Until there is one, that's where discussions happen.
 
 License
 -------
