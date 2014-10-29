@@ -5,4 +5,4 @@
 
 # Update the LOC count on every sprint deploy.
 
-find . \( -name '*.cs' -o -name '*.as?x' \) | xargs wc -l > LINESOFCODE
+find . \( -name '*.cs' -o -name '*.as?x' \) | grep -v "External Dep" | xargs wc -l > LINESOFCODE
