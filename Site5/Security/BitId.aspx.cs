@@ -15,8 +15,9 @@ namespace Swarmops.Security
         {
         }
 
+        // ReSharper disable once InconsistentNaming
         [WebMethod]
-        public static void Authenticate(string uri, string signature, string address)
+        public static void callback(string uri, string signature, string address)
         {
             Persistence.Key["BitIdTest_Uri"] = uri;
             Persistence.Key["BitIdTest_Address"] = address;
