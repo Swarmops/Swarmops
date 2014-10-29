@@ -22,13 +22,22 @@ public class DataV5Base : System.Web.UI.Page
         base.OnInitComplete(e);
 
         string identity = HttpContext.Current.User.Identity.Name;
-        string[] identityTokens = identity.Split(',');
 
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
+        if (!string.IsNullOrEmpty(identity))
+        {
+            string[] identityTokens = identity.Split(',');
 
-        this.CurrentUser = Person.FromIdentity(Int32.Parse(userIdentityString));
-        this.CurrentOrganization = Organization.FromIdentity(Int32.Parse(organizationIdentityString));
+            string userIdentityString = identityTokens[0];
+            string organizationIdentityString = identityTokens[1];
+
+            this.CurrentUser = Person.FromIdentity(Int32.Parse(userIdentityString));
+            this.CurrentOrganization = Organization.FromIdentity(Int32.Parse(organizationIdentityString));
+        }
+        else
+        {
+            this.CurrentUser = null; // unauthenticated!
+            this.CurrentOrganization = null; // unauthenticated!
+        }
     }
 
     protected Person CurrentUser { get; private set; }
@@ -46,12 +55,15 @@ public class DataV5Base : System.Web.UI.Page
     {
         // Check security of page against users's credentials
 
-        if (!CurrentUser.HasAccess (this.PageAccessRequired))
+        if (this.PageAccessRequired != null)
         {
-            Response.Redirect("/Pages/v5/Security/AccessDenied.aspx");
+            if (!CurrentUser.HasAccess(this.PageAccessRequired))
+            {
+                Response.Redirect("/Pages/v5/Security/AccessDenied.aspx");
+            }
         }
 
- 	    base.OnPreRender(e);
+        base.OnPreRender(e);
     }
 
     protected string LocalizeCount (string resourceString, int count)

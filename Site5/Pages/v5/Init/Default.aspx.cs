@@ -19,7 +19,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "3px";
+        this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
         this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
         this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
 

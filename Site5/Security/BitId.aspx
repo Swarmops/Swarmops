@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BitId.aspx.cs" Inherits="Swarmops.Security.BitId" %>

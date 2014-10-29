@@ -784,4 +784,10 @@
   <data name="Ledgers_Debit" xml:space="preserve">
     <value>Debit</value>
   </data>
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
 </root>

@@ -160,4 +160,34 @@
     <value>&lt;p&gt;There is a database upgrade pending that prevents your access to this page. &lt;strong&gt;This is a temporary condition&lt;/strong&gt; and the Swarmops servers should already be working on performing the necessary upgrade.&lt;/p&gt;
 &lt;p&gt;Retry loading the page in a few minutes. If the condition persists for more than fifteen minutes, contact your system administrator.&lt;/p&gt;</value>
   </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Enter your code from Google Authenticator.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Login with Blockchain Technology (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Login to Swarmops using your bitid-enabled bitcoin wallet. You do not need any funds in it. If you don't have a bitid-enabled bitcoin wallet, you can log in manually using a legacy username and password. (Your username is your name or email.)</value>
+  </data>
+  <data name="Login_ManualLogin" xml:space="preserve">
+    <value>Manual Login</value>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Pass</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>User</value>
+  </data>
 </root>
