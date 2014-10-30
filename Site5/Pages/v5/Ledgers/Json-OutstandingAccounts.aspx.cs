@@ -346,17 +346,17 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.Append("{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{2:N2}\"",
-                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterTotal, balanceExpectedCents, centsTotal/100.0);
+                                Resources.Pages_Ledgers.ViewOutstandingAccounts_FooterTotal, balanceExpectedCents, centsTotal/100.0);
 
             result.Append("},{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
-                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterLedgerBalance, balanceExpectedCents / 100.0);  // Expenses is a debt account, so reverse sign
+                                Resources.Pages_Ledgers.ViewOutstandingAccounts_FooterLedgerBalance, balanceExpectedCents / 100.0);  // Expenses is a debt account, so reverse sign
 
             result.Append("},{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
-                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterDifference, (centsTotal - balanceExpectedCents) / 100.0);
+                                Resources.Pages_Ledgers.ViewOutstandingAccounts_FooterDifference, (centsTotal - balanceExpectedCents) / 100.0);
 
 
             result.Append("}]}"); // on separate line to suppress warning

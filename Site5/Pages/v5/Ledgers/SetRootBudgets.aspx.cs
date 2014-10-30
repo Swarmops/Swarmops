@@ -32,7 +32,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         this.HiddenInitOrganizationId.Value = this.CurrentOrganization.Identity.ToString();
 
         this.PageIcon = "iconshock-moneybag";
-        this.PageTitle = Resources.Pages.Ledgers.SetRootBudgets_PageTitle;
+        this.PageTitle = Resources.Pages_Ledgers.SetRootBudgets_PageTitle;
 
         if (!Page.IsPostBack)
         {
@@ -60,16 +60,16 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
             UpdateYearlyResult(accounts);
 
-            this.LabelRootBudgetHeader.Text = String.Format(Resources.Pages.Ledgers.SetRootBudgets_PageHeader, this.CurrentOrganization.Name);
+            this.LabelRootBudgetHeader.Text = String.Format(Resources.Pages_Ledgers.SetRootBudgets_PageHeader, this.CurrentOrganization.Name);
             this.LabelAccountHeader.Text = Resources.Global.Financial_BookkeepingAccountShort;
             this.LabelYearlyResultLabel.Text = Resources.Global.Financial_YearlyResult;
-            this.ButtonSetBudgets.Text = Resources.Pages.Ledgers.SetRootBudgets_SetNewBudgets;
-            this.LabelBudgetOwnerHeader.Text = Resources.Pages.Ledgers.SetRootBudgets_BudgetOwnerHeader;
+            this.ButtonSetBudgets.Text = Resources.Pages_Ledgers.SetRootBudgets_SetNewBudgets;
+            this.LabelBudgetOwnerHeader.Text = Resources.Pages_Ledgers.SetRootBudgets_BudgetOwnerHeader;
 
             this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
             this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
             this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
-            this.LabelDashboardInfo.Text = Resources.Pages.Ledgers.SetRootBudgets_Info;
+            this.LabelDashboardInfo.Text = Resources.Pages_Ledgers.SetRootBudgets_Info;
 
             LocalizeActualsHeader();
         }

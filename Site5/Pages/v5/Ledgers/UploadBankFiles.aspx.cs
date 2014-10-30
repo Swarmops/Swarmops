@@ -27,7 +27,7 @@ namespace Swarmops.Site.Pages.Ledgers
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageTitle = Resources.Pages.Ledgers.UploadBankFiles_PageTitle;
+            this.PageTitle = Resources.Pages_Ledgers.UploadBankFiles_PageTitle;
             this.PageIcon = "iconshock-bank";
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
@@ -35,15 +35,15 @@ namespace Swarmops.Site.Pages.Ledgers
             {
                 // Localize
 
-                this.InfoBoxLiteral = Resources.Pages.Ledgers.UploadBankFiles_Info;
-                this.LabelBankAccount.Text = Resources.Pages.Ledgers.UploadBankFiles_BankAccount;
-                this.LabelFileType.Text = Resources.Pages.Ledgers.UploadBankFiles_FileType;
-                this.LabelInstructions.Text = Resources.Pages.Ledgers.UploadBankFiles_Instructions;
-                this.LabelProcessing.Text = Resources.Pages.Ledgers.UploadBankFiles_Processing;
-                this.LabelProcessingComplete.Text = Resources.Pages.Ledgers.UploadBankFiles_ProcessingComplete;
-                this.LabelUploadBankFile.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
-                this.LabelUploadMore.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadAnother;
-                this.LabelUploadBankFileHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_UploadBankFile;
+                this.InfoBoxLiteral = Resources.Pages_Ledgers.UploadBankFiles_Info;
+                this.LabelBankAccount.Text = Resources.Pages_Ledgers.UploadBankFiles_BankAccount;
+                this.LabelFileType.Text = Resources.Pages_Ledgers.UploadBankFiles_FileType;
+                this.LabelInstructions.Text = Resources.Pages_Ledgers.UploadBankFiles_Instructions;
+                this.LabelProcessing.Text = Resources.Pages_Ledgers.UploadBankFiles_Processing;
+                this.LabelProcessingComplete.Text = Resources.Pages_Ledgers.UploadBankFiles_ProcessingComplete;
+                this.LabelUploadBankFile.Text = Resources.Pages_Ledgers.UploadBankFiles_UploadBankFile;
+                this.LabelUploadMore.Text = Resources.Pages_Ledgers.UploadBankFiles_UploadAnother;
+                this.LabelUploadBankFileHeader.Text = Resources.Pages_Ledgers.UploadBankFiles_UploadBankFile;
 
                 // Populate the asset account dropdown, if needed for file type
 
@@ -72,7 +72,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             this.LiteralDownloadInstructions.Text =
                 this.LiteralDownloadInstructionsModal.Text =
-                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_SebAccountFile;
+                Resources.Pages_Ledgers.UploadBankFiles_DownloadInstructions_SebAccountFile;
 
         }
 
@@ -92,7 +92,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             this.LiteralDownloadInstructions.Text =
                 this.LiteralDownloadInstructionsModal.Text =
-                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_BankgiroSEFile;
+                Resources.Pages_Ledgers.UploadBankFiles_DownloadInstructions_BankgiroSEFile;
 
             this.LiteralLastAccountRecord.Visible = false;
         }
@@ -113,7 +113,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             this.LiteralDownloadInstructions.Text =
                 this.LiteralDownloadInstructionsModal.Text =
-                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_PaypalFile;
+                Resources.Pages_Ledgers.UploadBankFiles_DownloadInstructions_PaypalFile;
 
             this.LiteralLastAccountRecord.Visible = false;
         }
@@ -134,7 +134,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             this.LiteralDownloadInstructions.Text =
                 this.LiteralDownloadInstructionsModal.Text =
-                Resources.Pages.Ledgers.UploadBankFiles_DownloadInstructions_PaysonFile;
+                Resources.Pages_Ledgers.UploadBankFiles_DownloadInstructions_PaysonFile;
 
             this.LiteralLastAccountRecord.Visible = true;
         }
@@ -260,17 +260,17 @@ namespace Swarmops.Site.Pages.Ledgers
             switch (category)
             {
                 case ImportResultsCategory.Good:
-                    html = String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsGood,
+                    html = String.Format(Resources.Pages_Ledgers.UploadBankFiles_ResultsGood,
                         resultDetail.TransactionsImported, resultDetail.DuplicateTransactions,
                         resultDetail.EarliestTransaction, resultDetail.LatestTransaction);
                     break;
                 case ImportResultsCategory.Questionable:
-                    html = String.Format(Resources.Pages.Ledgers.UploadBankFiles_ResultsQuestionable,
+                    html = String.Format(Resources.Pages_Ledgers.UploadBankFiles_ResultsQuestionable,
                         resultDetail.TransactionsImported, resultDetail.DuplicateTransactions,
                         Math.Abs(resultDetail.BalanceMismatchCents / 100.0), resultDetail.CurrencyCode);
                     break;
                 case ImportResultsCategory.Bad:
-                    html = Resources.Pages.Ledgers.UploadBankFiles_ResultsBad;
+                    html = Resources.Pages_Ledgers.UploadBankFiles_ResultsBad;
                     break;
                 default:
                     throw new NotImplementedException("Unhandled ImportResultCategory");
@@ -406,32 +406,32 @@ namespace Swarmops.Site.Pages.Ledgers
                         if (results.AccountBalanceMatchesBank)
                         {
                             this.LiteralImportResults.Text =
-                                String.Format(Resources.Pages.Ledgers.UploadBankFiles_ImportResults,
+                                String.Format(Resources.Pages_Ledgers.UploadBankFiles_ImportResults,
                                               results.DuplicateTransactions + results.TransactionsImported,
                                               results.TransactionsImported,
                                               FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue))
                                                   .Name,
                                               results.DuplicateTransactions);
-                            this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_FileImportedHeader;
+                            this.LabelImportResultsHeader.Text = Resources.Pages_Ledgers.UploadBankFiles_FileImportedHeader;
                         }
                         else
                         {
                             this.LiteralImportResults.Text =
-                                String.Format(Resources.Pages.Ledgers.UploadBankFiles_ErrorBalance,
+                                String.Format(Resources.Pages_Ledgers.UploadBankFiles_ErrorBalance,
                                               results.DuplicateTransactions + results.TransactionsImported,
                                               results.TransactionsImported,
                                               FinancialAccount.FromIdentity(Int32.Parse(this.DropAccounts.SelectedValue))
                                                   .Name,
                                               results.DuplicateTransactions);
-                            this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_FileImportedHeader_ErrorBalance;
+                            this.LabelImportResultsHeader.Text = Resources.Pages_Ledgers.UploadBankFiles_FileImportedHeader_ErrorBalance;
                         }
                     }
                     catch (InvalidOperationException exception)
                     {
                         this.LiteralDownloadInstructionsModal.Text = exception.ToString(); // For debug purposes -- will not be shown to user
                         this.PanelErrorImage.Visible = true;
-                        this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_ImportError;
-                        this.LiteralImportResults.Text = Resources.Pages.Ledgers.UploadBankFiles_ErrorInterpretation;
+                        this.LabelImportResultsHeader.Text = Resources.Pages_Ledgers.UploadBankFiles_ImportError;
+                        this.LiteralImportResults.Text = Resources.Pages_Ledgers.UploadBankFiles_ErrorInterpretation;
                     }
                 }
 
@@ -454,37 +454,37 @@ namespace Swarmops.Site.Pages.Ledgers
         /*
         private void PresentPaymentFileResults (ImportedPaymentData data)
         {
-            string literalResult = String.Format(Resources.Pages.Ledgers.UploadBankFiles_PaymentSummary1,
-                   LocalizeCount(Resources.Pages.Ledgers.UploadBankFiles_PaymentCount, data.DuplicatePaymentCount + data.PaymentCount)) + " ";
+            string literalResult = String.Format(Resources.Pages_Ledgers.UploadBankFiles_PaymentSummary1,
+                   LocalizeCount(Resources.Pages_Ledgers.UploadBankFiles_PaymentCount, data.DuplicatePaymentCount + data.PaymentCount)) + " ";
 
             if (data.PaymentCount == 0 && data.DuplicatePaymentCount > 0)
             {
-                literalResult += Resources.Pages.Ledgers.UploadBankFiles_PaymentAllDuplicates;
+                literalResult += Resources.Pages_Ledgers.UploadBankFiles_PaymentAllDuplicates;
             }
             else if (data.PaymentCount > 0)
             {
-                literalResult += String.Format(Resources.Pages.Ledgers.UploadBankFiles_PaymentSummary2,
+                literalResult += String.Format(Resources.Pages_Ledgers.UploadBankFiles_PaymentSummary2,
                                                data.Currency.Code,
                                                data.PaymentCentsTotal/100.0,
-                                               LocalizeCount(Resources.Pages.Ledgers.UploadBankFiles_PaymentCount,
+                                               LocalizeCount(Resources.Pages_Ledgers.UploadBankFiles_PaymentCount,
                                                              data.PaymentCount),
-                                               LocalizeCount(Resources.Pages.Ledgers.UploadBankFiles_PaymentGroupCount,
+                                               LocalizeCount(Resources.Pages_Ledgers.UploadBankFiles_PaymentGroupCount,
                                                              data.PaymentGroupCount));
 
                 if (data.DuplicatePaymentCount > 0)
                 {
                     literalResult += " " +
-                                     String.Format(Resources.Pages.Ledgers.UploadBankFiles_PaymentSummaryDuplicates,
-                                                   LocalizeCount(Resources.Pages.Ledgers.UploadBankFiles_PaymentCount,
+                                     String.Format(Resources.Pages_Ledgers.UploadBankFiles_PaymentSummaryDuplicates,
+                                                   LocalizeCount(Resources.Pages_Ledgers.UploadBankFiles_PaymentCount,
                                                                  data.DuplicatePaymentCount),
                                                    LocalizeCount(
-                                                       Resources.Pages.Ledgers.UploadBankFiles_PaymentGroupCount,
+                                                       Resources.Pages_Ledgers.UploadBankFiles_PaymentGroupCount,
                                                        data.DuplicatePaymentGroupCount));
                 }
             }
 
             this.LiteralImportResults.Text = @"<p>" + literalResult + @"</p>";
-            this.LabelImportResultsHeader.Text = Resources.Pages.Ledgers.UploadBankFiles_PaymentFileUploadedHeader;
+            this.LabelImportResultsHeader.Text = Resources.Pages_Ledgers.UploadBankFiles_PaymentFileUploadedHeader;
         }*/
 
         [Serializable]

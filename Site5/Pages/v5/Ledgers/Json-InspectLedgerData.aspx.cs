@@ -22,7 +22,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             string yearString = Request.QueryString["Year"];
             string monthString = Request.QueryString["Month"];
 
-            string emptyResponse = "[{\"id\":\"-\",\"description\":\"" + JsonSanitize(Resources.Pages.Ledgers.InspectLedgers_PleaseSelectAccount) + "\"}]";
+            string emptyResponse = "[{\"id\":\"-\",\"description\":\"" + JsonSanitize(Resources.Pages_Ledgers.InspectLedgers_PleaseSelectAccount) + "\"}]";
 
             if (string.IsNullOrEmpty(accountIdString) || string.IsNullOrEmpty(yearString) ||
                 string.IsNullOrEmpty(monthString) || accountIdString == "undefined")
@@ -119,22 +119,22 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             StringBuilder result = new StringBuilder(16384);
 
             Int64 runningBalance = 0L;
-            string startString = Resources.Pages.Ledgers.InspectLedgers_InboundBalanceZero;
-            string endString = Resources.Pages.Ledgers.InspectLedgers_OutboundBalanceZero;
+            string startString = Resources.Pages_Ledgers.InspectLedgers_InboundBalanceZero;
+            string endString = Resources.Pages_Ledgers.InspectLedgers_OutboundBalanceZero;
 
             if (!zeroStart)
             {
                 runningBalance = account.GetDeltaCents(dawnOfMankind, periodStart);
-                startString = Resources.Pages.Ledgers.InspectLedgers_InboundBalance;
+                startString = Resources.Pages_Ledgers.InspectLedgers_InboundBalance;
             }
             if (!zeroEnd)
             {
-                endString = Resources.Pages.Ledgers.InspectLedgers_OutboundBalance;
+                endString = Resources.Pages_Ledgers.InspectLedgers_OutboundBalance;
             }
             else if (periodEnd > DateTime.Now)
             {
                 // account is zeroed at end of this period, but we're not yet at end of period, so add a "to date" disclaimer
-                endString = Resources.Pages.Ledgers.InspectLedgers_OutboundBalanceZeroToDate;
+                endString = Resources.Pages_Ledgers.InspectLedgers_OutboundBalanceZeroToDate;
             }
 
             result.Append("{" +
@@ -177,7 +177,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 // If there are no transactions in this time period, say so
 
                 result.Append("{\"description\":\"" +
-                              JsonSanitize(Resources.Pages.Ledgers.InspectLedgers_NoTransactions) + "\"},");
+                              JsonSanitize(Resources.Pages_Ledgers.InspectLedgers_NoTransactions) + "\"},");
             }
 
             result.Append("{" +

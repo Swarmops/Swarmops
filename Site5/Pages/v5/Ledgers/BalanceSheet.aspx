@@ -30,8 +30,8 @@
 	                var selectedYear = $('#<%=DropYears.ClientID %>').val();
 
 	                $('div#linkDownloadReport').attr("onclick", "document.location='Csv-BalanceData.aspx?Year=" + selectedYear + "';");
-	                $('#spanDownloadText').text('<%=Resources.Pages.Ledgers.BalanceSheet_DownloadFileName %>' + selectedYear + "-<%=DateTime.Today.ToString("yyyyMMdd") %>.csv");
-                    $('#headerStartYear').text('<%=Resources.Pages.Ledgers.BalanceSheet_StartYear %>'.replace('XXXX',selectedYear));
+	                $('#spanDownloadText').text('<%=Resources.Pages_Ledgers.BalanceSheet_DownloadFileName %>' + selectedYear + "-<%=DateTime.Today.ToString("yyyyMMdd") %>.csv");
+                    $('#headerStartYear').text('<%=Resources.Pages_Ledgers.BalanceSheet_StartYear %>'.replace('XXXX',selectedYear));
               
                     if (selectedYear == currentYear) 
                     {
@@ -40,7 +40,7 @@
                     }
                     else
                     {
-                        $('#previousYtd').text('<%=Resources.Pages.Ledgers.BalanceSheet_EndYear %>'.replace('XXXX', selectedYear));
+                        $('#previousYtd').text('<%=Resources.Pages_Ledgers.BalanceSheet_EndYear %>'.replace('XXXX', selectedYear));
 
                         $('span.currentYearHeader').hide();
                         $('span.previousYearsHeader').show();

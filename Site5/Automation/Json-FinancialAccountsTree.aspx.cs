@@ -52,26 +52,26 @@ namespace Swarmops.Frontend.Automation
             if (accountType == FinancialAccountType.Asset || accountType == FinancialAccountType.Balance ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup(FinancialAccountType.Asset, Resources.Pages.Ledgers.BalanceSheet_Assets) + ",";
+                response += GetAccountGroup(FinancialAccountType.Asset, Resources.Pages_Ledgers.BalanceSheet_Assets) + ",";
             }
 
             if (accountType == FinancialAccountType.Debt || accountType == FinancialAccountType.Balance ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup(FinancialAccountType.Debt, Resources.Pages.Ledgers.BalanceSheet_Debt) + ",";
+                response += GetAccountGroup(FinancialAccountType.Debt, Resources.Pages_Ledgers.BalanceSheet_Debt) + ",";
             }
 
             if (accountType == FinancialAccountType.Income || accountType == FinancialAccountType.Result ||
                 accountType == FinancialAccountType.All)
             {
                 response +=
-                    GetAccountGroup(FinancialAccountType.Income, Resources.Pages.Ledgers.ProfitLossStatement_Income) + ",";
+                    GetAccountGroup(FinancialAccountType.Income, Resources.Pages_Ledgers.ProfitLossStatement_Income) + ",";
             }
 
             if (accountType == FinancialAccountType.Cost || accountType == FinancialAccountType.Result ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup(FinancialAccountType.Cost, Resources.Pages.Ledgers.ProfitLossStatement_Costs);
+                response += GetAccountGroup(FinancialAccountType.Cost, Resources.Pages_Ledgers.ProfitLossStatement_Costs);
             }
 
             response = response.TrimEnd(','); // removes last comma regardless of where it came from or if it's even there

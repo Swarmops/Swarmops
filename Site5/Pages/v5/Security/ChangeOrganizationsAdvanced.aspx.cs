@@ -15,16 +15,16 @@ namespace Swarmops.Frontend.Pages.Security
 
             // this.PageAccessRequired = new Access(AccessAspect.Bookkeeping, AccessType.Write);  // bogus, but will prevent bad ppl from entering until real security done
 
-            this.PageTitle = Resources.Pages.Security.ChangeOrganizations_PageTitle;
+            this.PageTitle = Resources.Pages_Security.ChangeOrganizations_PageTitle;
             this.PageIcon = "iconshock-organizations";
-            this.InfoBoxLiteral = Resources.Pages.Security.ChangeOrganizations_Info;
+            this.InfoBoxLiteral = Resources.Pages_Security.ChangeOrganizations_Info;
             this.LabelCurrentOrganizationName.Text = CurrentOrganization.Name;
         }
 
         private void Localize()
         {
-            this.LabelCurrentOrganization.Text = Resources.Pages.Security.ChangeOrganizations_CurrentOrganization;
-            this.LabelNewOrganization.Text = Resources.Pages.Security.ChangeOrganizations_NewOrganization;
+            this.LabelCurrentOrganization.Text = Resources.Pages_Security.ChangeOrganizations_CurrentOrganization;
+            this.LabelNewOrganization.Text = Resources.Pages_Security.ChangeOrganizations_NewOrganization;
         }
 
         protected void ButtonSwitch_Click(object sender, EventArgs e)

@@ -21,8 +21,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read);
             this.DbVersionRequired = 0; // base schema is fine
-            this.PageTitle = Resources.Pages.Ledgers.InspectLedgers_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Ledgers.InspectLedgers_Info;
+            this.PageTitle = Resources.Pages_Ledgers.InspectLedgers_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages_Ledgers.InspectLedgers_Info;
             this.PageIcon = "iconshock-ledger-inspect";
 
             if (!Page.IsPostBack)
@@ -57,18 +57,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
         private void Localize()
         {
-            this.LabelHeaderInspect.Text = Resources.Pages.Ledgers.InspectLedgers_Header_Inspect;
-            this.LabelHeaderInspectFor.Text = Resources.Pages.Ledgers.InspectLedgers_Header_For;
+            this.LabelHeaderInspect.Text = Resources.Pages_Ledgers.InspectLedgers_Header_Inspect;
+            this.LabelHeaderInspectFor.Text = Resources.Pages_Ledgers.InspectLedgers_Header_For;
             this.LabelGridHeaderAction.Text = Resources.Global.Global_Action;
             this.LabelGridHeaderBalance.Text = Resources.Global.Ledgers_Balance;
             this.LabelGridHeaderDateTime.Text = Resources.Global.Global_Timestamp;
             this.LabelGridHeaderDeltaNegative.Text = Resources.Global.Ledgers_Credit;
             this.LabelGridHeaderDeltaPositive.Text = Resources.Global.Ledgers_Debit;
             this.LabelGridHeaderDescription.Text = Resources.Global.Global_Description;
-            this.LabelGridHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
+            this.LabelGridHeaderId.Text = Resources.Pages_Ledgers.InspectLedgers_TransactionId;
 
-            this.LabelFlagNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_FlaggingNotAvailable;
-            this.LabelInspectNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_InspectNotAvailable;
+            this.LabelFlagNotAvailable.Text = Resources.Pages_Ledgers.InspectLedgers_FlaggingNotAvailable;
+            this.LabelInspectNotAvailable.Text = Resources.Pages_Ledgers.InspectLedgers_InspectNotAvailable;
         }
     }
 }
