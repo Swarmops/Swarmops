@@ -1,9 +1,9 @@
-Swarmops
+﻿Swarmops
 ========
 
 **Swarmops is a necessary tool to enable any bitcoin-native or decentralized gamechanger.**
 
-Swarmops is an admin system for swarm-type organizations. It's a bureaucracy system for people who thoroghly dislike bureaucracy, so it removes all visibility of it and focuses on the ops aspects. It manages decentralized authority, volunteers, members, activists, budgets, mass communications, expenses, payroll, invoices, and complete financials/bookkeeping.
+Swarmops is an admin system for swarm-type organizations. It's a bureaucracy system for people who thoroughly dislike bureaucracy, so it removes all visibility of it and focuses on the ops aspects. It manages decentralized authority, volunteers, members, activists, budgets, mass communications, expenses, payroll, invoices, and complete financials/bookkeeping.
 
 The goals of _Swarmops_ are three:
 
