@@ -65,7 +65,6 @@ namespace Swarmops.Pages.Security
 
                     ProcessRespondBitId(credentials, Response);
                     Persistence.Key["BitIdTest_SuccessForm"] = DateTime.Now.ToString();
-                    Response.End();
                     return;
                 }
                 else if (Request.ContentType == "application/json")
@@ -204,12 +203,7 @@ namespace Swarmops.Pages.Security
 
                     response.StatusCode = 200;
                     response.ContentType = "application/json";
-                    response.Write(
-                        new JavaScriptSerializer().Serialize(new BitIdResponseSuccess()
-                        {
-                            address = credentials.address,
-                            signature = credentials.signature
-                        }));
+                    response.Write("{\"address\":\"" + credentials.address + "\",\"signature\":\"" + credentials.signature + "\"}");
                     response.End();
 
                     Persistence.Key["BitId_Point4"] = DateTime.Now.ToString();
@@ -228,28 +222,37 @@ namespace Swarmops.Pages.Security
         [WebMethod]
         public static bool TestLogin(string uriEncoded, string nonce)
         {
-            string uri = HttpUtility.UrlDecode(uriEncoded);
-
-            // a little sloppy nonce and uri checking rather than full parsing
-            // TODO: Full parse
-            if (!uri.Contains(nonce) || !uri.Contains(HttpContext.Current.Request.Url.Host))
+            try
             {
-                throw new ArgumentException();
-            }
+                string uri = HttpUtility.UrlDecode(uriEncoded);
 
-            string result = GuidCache.Get(uri + "-LoggedOn") as string;
-            if (string.IsNullOrEmpty(result))
+                // a little sloppy nonce and uri checking rather than full parsing
+                // TODO: Full parse
+                if (!uri.Contains(nonce) || !uri.Contains(HttpContext.Current.Request.Url.Host))
+                {
+                    throw new ArgumentException();
+                }
+
+                string result = GuidCache.Get(uri + "-LoggedOn") as string;
+                if (string.IsNullOrEmpty(result))
+                {
+                    return false;
+                }
+
+                // We have a successful login when we get here
+
+                GuidCache.Delete(uri + "-Logon");
+                GuidCache.Delete(uri + "-LoggedOn");
+
+                FormsAuthentication.RedirectFromLoginPage(result, true); // set auth cookie
+                return true;
+            }
+            catch (Exception e)
             {
-                return false;
+                Persistence.Key["BitId_Test_Exception"] = e.ToString();
+
+                throw;
             }
-
-            // We have a successful login when we get here
-
-            GuidCache.Delete(uri + "-Logon");
-            GuidCache.Delete(uri + "-LoggedOn");
-
-            FormsAuthentication.RedirectFromLoginPage(result, true); // set auth cookie
-            return true;
         }
 
         protected override void OnPreInit(EventArgs e)
