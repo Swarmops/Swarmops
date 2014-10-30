@@ -43,7 +43,6 @@
 	    });  // end of document.ready
 
 	    function recheckLogin() {
-	        alertify.log("Checking");
 	        $.ajax({
 	            type: "POST",
 	            url: "Login.aspx/TestLogin",
@@ -51,18 +50,16 @@
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
-	                alertify.success("Success " + msg.d);
 	                if (msg.d) {
-	                    alert("Successful login! Redirecting...");
-	                    document.location = "/";
+	                    alert("For great justice!!");
+	                    document.location = "/BitId.aspx?Nonce=" + bitIdNonce;
 	                } else {
 	                    setTimeout(function () {
 	                        recheckLogin();
-	                    }, 1000);
+	                    }, 500);
 	                }
 	            },
 	            error: function (msg) {
-	                alertify.error("Error " + msg.d);
                     // we don't want the polling to die just because of a transient error
 	                setTimeout(function () {
 	                    recheckLogin();

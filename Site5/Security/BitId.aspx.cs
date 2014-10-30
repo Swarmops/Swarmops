@@ -18,7 +18,7 @@ namespace Swarmops.Security
         protected void Page_Load(object sender, EventArgs e)
         {
             string nonce = Request.Params["Nonce"];
-            string identity = GuidCache.Get(nonce + "-Identity") as string;
+            string identity = (string) GuidCache.Get(nonce + "-Identity");
 
             if (string.IsNullOrEmpty(identity))
             {
@@ -27,6 +27,7 @@ namespace Swarmops.Security
             else
             {
                 GuidCache.Delete(nonce + "-Identity");
+                Persistence.Key["BitId_AuthComplete"] = DateTime.Now.ToString();
                 FormsAuthentication.RedirectFromLoginPage(identity, true);
             }
         }
