@@ -290,6 +290,23 @@ namespace Swarmops.Logic.Swarm
             set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.Latitude, value); }
         }
 
+        public virtual string BitIdAddress
+        {
+            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.BitIdLoginAddress); }
+            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BitIdLoginAddress, value); }
+        }
+
+        public static Person FromBitIdAddress(string address)
+        {
+            People candidates = People.FromOptionalData(ObjectOptionalDataType.BitIdLoginAddress, address);
+
+            if (candidates.Count == 1)
+            {
+                return candidates[0];
+            }
+
+            throw new ArgumentException("Zero or several candidates");
+        }
 
 
 

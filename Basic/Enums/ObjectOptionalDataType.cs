@@ -229,7 +229,11 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// What are activists called in this org?
         /// </summary>
-        OrgActivistLabel
+        OrgActivistLabel,
+        /// <summary>
+        /// For a person, the BitId address they use to login 
+        /// </summary>
+        BitIdLoginAddress
     }
 
 }

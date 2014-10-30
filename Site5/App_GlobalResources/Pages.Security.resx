@@ -160,6 +160,9 @@
     <value>&lt;p&gt;There is a database upgrade pending that prevents your access to this page. &lt;strong&gt;This is a temporary condition&lt;/strong&gt; and the Swarmops servers should already be working on performing the necessary upgrade.&lt;/p&gt;
 &lt;p&gt;Retry loading the page in a few minutes. If the condition persists for more than fifteen minutes, contact your system administrator.&lt;/p&gt;</value>
   </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt;BitId two-factor authentication is now enabled.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;From now on, you can use your bitcoin wallet to log in (and will &lt;strong&gt;need&lt;/strong&gt; to do so). Thank you for enabling added security.&lt;br/&gt;&lt;br/&gt;Please remember to keep your phone secure with a password, too.</value>
+  </data>
   <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
     <value>2FA</value>
   </data>

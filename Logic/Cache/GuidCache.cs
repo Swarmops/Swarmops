@@ -35,6 +35,14 @@ namespace Swarmops.Logic.Cache
             return _cache[guidString].Object;
         }
 
+        public static void Delete(string guidString)
+        {
+            if (_cache.ContainsKey(guidString))
+            {
+                _cache.Remove(guidString);
+            }
+        }
+
         static private void ConditionalGarbageCollect()
         {
             lock (_cache) // thread safety

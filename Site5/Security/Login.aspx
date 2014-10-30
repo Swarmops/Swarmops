@@ -33,26 +33,56 @@
 
 	    $(document).ready(function () {
 
-            /* document.ready goes here */
+	        /* document.ready goes here */
+
+	        setTimeout(function() {
+	            recheckLogin();
+	        }, 1000);
 
 	    });  // end of document.ready
 
+	    function recheckLogin() {
+	        $.ajax({
+	            type: "POST",
+	            url: "Login.aspx/TestLogin",
+	            data: '{"uriEncoded": "' + bitIdUri + '","nonce": "' + bitIdNonce + '"}',
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                if (msg.d) {
+	                    alert("Successful login! Redirecting...");
+	                    document.location = "/";
+	                } else {
+	                    setTimeout(function () {
+	                        recheckLogin();
+	                    }, 500);
+	                }
+	            },
+	            error: function (msg) {
+                    // we don't want the polling to die just because of a transient error
+	                setTimeout(function () {
+	                    recheckLogin();
+	                }, 1000);
+	            }
 
+	        });
+        }
+
+	    var bitIdUri = '<asp:Literal ID="LiteralUri" runat="server" />';
+	    var bitIdNonce = '<asp:Literal ID="LiteralNonce" runat="server" />';
 
 	</script>
 	
 
-
-
 	
-    <!-- Main menu, dynamically constructed -->
+    <!-- Main menu, emptied out here -->
 
 	<div class="center980px">
 	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div>
         <div class="logoimage"><a href="/"><img style="border:none" src="/Security/Images/Swarmops-Logo.png" alt="Swarmops Logo" /></a></div>
         <div class="break"></div>
         <div class="topmenu">
-            <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>
+            <div class="searchbox"><asp:TextBox ID="SearchBox" ReadOnly="true" runat="server" /></div>
         </div>
         
         <div class="mainbar">
@@ -84,6 +114,18 @@
             <div style="clear:both"></div>
         </div>
     </div>
+    
+    <asp:Panel ID="PanelCheat" runat="server">
+        <h2 class="blue">Dev's Cheat Button<span class="arrow"></span></h2>
+    
+        <div class="box">
+            <div class="content" style="line-height:24px">
+                <p>Since we're running on localhost, on a nonstandard port, with a debugger attached, and under Windows, this is clearly not a production environment. Since it's unlikely that the outside Internet has access to this machine, which means you can't login with BitID, a cheat button has been provided for you.</p><p>Press the button below to log on as Sandbox Administrator.</p>
+                
+                <asp:Button ID="ButtonCheat" runat="server" OnClick="ButtonCheat_Click" Text="Cheat Button" />
+            </div>
+        </div>
+    </asp:Panel>
     
     <h2 class="orange"><asp:Label ID="LabelSidebarHelpHeader" runat="server" /><span class="arrow"></span></h2>
     

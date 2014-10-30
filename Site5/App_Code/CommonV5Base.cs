@@ -79,6 +79,9 @@ public class CommonV5Base
         // Find various credentials
 
         string identity = suppliedContext.User.Identity.Name;
+
+        // TODO: If identity is null or empty, set null user + org
+
         string[] identityTokens = identity.Split(',');
 
         string userIdentityString = identityTokens[0];

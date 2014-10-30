@@ -39,9 +39,18 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 throw new UnauthorizedAccessException();
             }
 
+            string logonFlags = string.Empty;
+            string[] currentIdentityParts = HttpContext.Current.User.Identity.Name.Split(',');
+
+            if (currentIdentityParts.Length > 2)
+            {
+                logonFlags = currentIdentityParts[3];
+            }
+
             FormsAuthentication.RedirectFromLoginPage(
                 CurrentUser.Identity.ToString(CultureInfo.InvariantCulture) + "," +
-                suggestedOrganization.Identity.ToString(CultureInfo.InvariantCulture), true); // we're not using the original input for security reasons
+                suggestedOrganization.Identity.ToString(CultureInfo.InvariantCulture) + ",," +
+                logonFlags, true);
 
         }
     }
