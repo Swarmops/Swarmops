@@ -5,7 +5,7 @@ git submodule update
 git submodule foreach git checkout master
 git submodule foreach git pull
 
-msbuild /p:Configuration=Release /t:Clean;Build NBitcoin\NBitcoin\NBitcoin.csproj > nul
+msbuild /p:Configuration=Release;TargetFrameworkVersion=v4.5 /t:Clean;Build NBitcoin\NBitcoin\NBitcoin.csproj
 
 if exist bin erase /s /q bin > nul
 if not exist bin mkdir bin
