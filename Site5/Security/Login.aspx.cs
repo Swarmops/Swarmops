@@ -222,20 +222,26 @@ namespace Swarmops.Pages.Security
         [WebMethod]
         public static bool TestLogin(string uriEncoded, string nonce)
         {
+            Persistence.Key["BitId_Test_Point0"] = DateTime.Now.ToString();
             try
             {
                 string uri = HttpUtility.UrlDecode(uriEncoded);
+
+                Persistence.Key["BitId_Test_Uri"] = uri;
 
                 // a little sloppy nonce and uri checking rather than full parsing
                 // TODO: Full parse
                 if (!uri.Contains(nonce) || !uri.Contains(HttpContext.Current.Request.Url.Host))
                 {
+                    Persistence.Key["BitId_Test_Fail"] = DateTime.Now.ToString();
                     throw new ArgumentException();
                 }
 
-                string result = GuidCache.Get(uri + "-LoggedOn") as string;
+                Persistence.Key["BitId_Test_Point1"] = DateTime.Now.ToString();
+                string result = (string) GuidCache.Get(uri + "-LoggedOn");
                 if (string.IsNullOrEmpty(result))
                 {
+                    Persistence.Key["BitId_Test_Point1a"] = DateTime.Now.ToString();
                     return false;
                 }
 
