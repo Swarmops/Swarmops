@@ -119,7 +119,7 @@
         <h2 class="blue">Dev's Cheat Button<span class="arrow"></span></h2>
     
         <div class="box">
-            <div class="content" style="line-height:24px">
+            <div class="content" style="line-height:14px">
                 <p>Since we're running on localhost, on a nonstandard port, with a debugger attached, and under Windows, this is clearly not a production environment. Since it's unlikely that the outside Internet has access to this machine, which means you can't login with BitID, a cheat button has been provided for you.</p><p>Press the button below to log on as Sandbox Administrator.</p>
                 
                 <asp:Button ID="ButtonCheat" runat="server" OnClick="ButtonCheat_Click" Text="Cheat Button" />
