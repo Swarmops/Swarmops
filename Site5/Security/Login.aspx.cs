@@ -170,19 +170,27 @@ namespace Swarmops.Pages.Security
             {
                 // woooooo
 
-                if (this.CurrentUser != null)
+                Persistence.Key["BitId_KeyVerified"] = DateTime.Now.ToString();
+
+                try
                 {
-                    if (GuidCache.Get(credentials.uri + "-Intent") as string == "Register")
+                    if (this.CurrentUser != null)
                     {
-                        // set currentUser bitid
+                        if (GuidCache.Get(credentials.uri + "-Intent") as string == "Register")
+                        {
+                            // set currentUser bitid
+                            // Then go do something else, I guess
+                        }
                     }
-                    else if (GuidCache.Get(credentials.uri + "-Logon") as string == "Unauth")
+
+                    if (GuidCache.Get(credentials.uri + "-Logon") as string == "Unauth")
                     {
                         Person person = Person.FromBitIdAddress(credentials.address);
 
                         // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
 
-                        GuidCache.Set(credentials.uri + "-LoggedOn", person.Identity.ToString(CultureInfo.InvariantCulture) + ",1,,BitId 2FA");
+                        GuidCache.Set(credentials.uri + "-LoggedOn",
+                            person.Identity.ToString(CultureInfo.InvariantCulture) + ",1,,BitId 2FA");
                     }
 
                     response.StatusCode = 200;
@@ -194,6 +202,10 @@ namespace Swarmops.Pages.Security
                             signature = credentials.signature
                         }));
                     response.End();
+                }
+                catch (Exception e)
+                {
+                    Persistence.Key["BitIdLogin_Debug_Exception"] = e.ToString();
                 }
             }
             else
