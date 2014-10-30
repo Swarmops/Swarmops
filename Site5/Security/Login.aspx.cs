@@ -246,8 +246,8 @@ namespace Swarmops.Pages.Security
 
                 GuidCache.Delete(uri + "-Logon");
                 GuidCache.Delete(uri + "-LoggedOn");
+                GuidCache.Set(nonce + "-Identity", result);
 
-                FormsAuthentication.RedirectFromLoginPage(result, true); // set auth cookie
                 return true;
             }
             catch (Exception e)

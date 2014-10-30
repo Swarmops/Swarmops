@@ -4,9 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.ExtensionMethods;
+using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Security
@@ -15,20 +17,20 @@ namespace Swarmops.Security
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Persistence.Key["BitIdTest_Raw"] = Request.ToRaw();
-            Persistence.Key["BitIdTest_Uri"] = Request.Params["uri"];
-            Persistence.Key["BitIdTest_Address"] = Request.Params["address"];
-            Persistence.Key["BitIdText_Signature"] = Request.Params["signature"];
+            string nonce = Request.Params["Nonce"];
+            string identity = GuidCache.Get(nonce + "-Identity") as string;
+
+            if (string.IsNullOrEmpty(identity))
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                GuidCache.Delete(nonce + "-Identity");
+                FormsAuthentication.RedirectFromLoginPage(identity, true);
+            }
         }
 
-        // ReSharper disable once InconsistentNaming
-        [WebMethod]
-        public static void callback(string uri, string signature, string address)
-        {
-            Persistence.Key["BitIdTest_Uri"] = uri;
-            Persistence.Key["BitIdTest_Address"] = address;
-            Persistence.Key["BitIdText_Signature"] = signature;
-        }
     }
 }
 
