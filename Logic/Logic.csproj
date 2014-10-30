@@ -226,6 +226,7 @@
     <Compile Include="Structure\UptakeGeography.cs" />
     <Compile Include="Support\ActivistEvents.cs" />
     <Compile Include="Support\DatabaseMaintenance.cs" />
+    <Compile Include="Support\ExtensionMethods.cs" />
     <Compile Include="Support\Imagery.cs" />
     <Compile Include="Support\IXmlPayload.cs" />
     <Compile Include="Support\LogEntries\CashAdvanceRequestedLogEntry.cs" />
