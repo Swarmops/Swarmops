@@ -42,6 +42,8 @@ namespace Swarmops.Pages.Security
 
             // Check for POST data - for BitId via Webform
 
+            Persistence.Key["BitIdTest_HttpMethod"] = Request.HttpMethod;
+
             if (Request.HttpMethod == "POST")
             {
                 // We should ONLY get here if we're getting a BitId by Webform submission.
@@ -58,6 +60,8 @@ namespace Swarmops.Pages.Security
                     };
 
                     ProcessRespondBitId(credentials, Response);
+                    Persistence.Key["BitIdTest_SuccessForm"] = DateTime.Now.ToString();
+                    Response.End();
                     return;
                 }
                 else if (Request.ContentType == "application/json")
@@ -155,6 +159,8 @@ namespace Swarmops.Pages.Security
 
         protected void ProcessRespondBitId(BitIdCredentials credentials, HttpResponse response)
         {
+            Persistence.Key["BitId_Processing"] = DateTime.Now.ToString();
+
             BitcoinAddress testAddress = new BitcoinAddress(credentials.address);
             if (testAddress.VerifyMessage(credentials.uri, credentials.signature))
             {
