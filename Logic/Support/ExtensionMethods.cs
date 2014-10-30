@@ -1,4 +1,6 @@
-﻿namespace System.Web.ExtensionMethods
+﻿using System.IO;
+
+namespace System.Web.ExtensionMethods
 {
     /// <summary>
     /// Extension methods for HTTP Request.
