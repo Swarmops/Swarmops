@@ -27,7 +27,6 @@ namespace Swarmops.Security
             else
             {
                 GuidCache.Delete(nonce + "-Identity");
-                Persistence.Key["BitId_AuthComplete"] = DateTime.Now.ToString();
                 FormsAuthentication.RedirectFromLoginPage(identity, true);
             }
         }

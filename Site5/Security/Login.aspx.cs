@@ -37,16 +37,7 @@ namespace Swarmops.Pages.Security
                 return;
             }
 
-
-            // DEBUG: Log the entire raw request
-
-            Persistence.Key["BitIdTest_Raw"] = Request.ToRaw();
-            Persistence.Key["BitIdTest_AddressNight"] = Request.Params["address"];
-
-
             // Check for POST data - for BitId via Webform
-
-            Persistence.Key["BitIdTest_HttpMethod"] = Request.HttpMethod;
 
             if (Request.HttpMethod == "POST")
             {
@@ -64,7 +55,6 @@ namespace Swarmops.Pages.Security
                     };
 
                     ProcessRespondBitId(credentials, Response);
-                    Persistence.Key["BitIdTest_SuccessForm"] = DateTime.Now.ToString();
                     return;
                 }
                 else if (Request.ContentType == "application/json")
@@ -162,51 +152,37 @@ namespace Swarmops.Pages.Security
 
         protected void ProcessRespondBitId(BitIdCredentials credentials, HttpResponse response)
         {
-            Persistence.Key["BitId_Processing"] = DateTime.Now.ToString();
-
             BitcoinAddress testAddress = new BitcoinAddress(credentials.address);
             if (testAddress.VerifyMessage(credentials.uri, credentials.signature))
             {
                 // woooooo
 
-                Persistence.Key["BitId_KeyVerified"] = DateTime.Now.ToString();
-
                 try
                 {
-                    Persistence.Key["BitId_Point1"] = DateTime.Now.ToString();
                     if (this.CurrentUser != null)
                     {
-                        if (GuidCache.Get(credentials.uri + "-Intent") as string == "Register")
+                        if ((string) GuidCache.Get(credentials.uri + "-Intent") == "Register")
                         {
                             // set currentUser bitid
                             // Then go do something else, I guess
                         }
                     }
 
-                    Persistence.Key["BitId_Point2"] = DateTime.Now.ToString();
-
                     if (GuidCache.Get(credentials.uri + "-Logon") as string == "Unauth")
                     {
-                        Persistence.Key["BitId_Point2a"] = DateTime.Now.ToString();
                         Person person = Person.FromBitIdAddress(credentials.address);
-                        Persistence.Key["BitId_Point2b"] = DateTime.Now.ToString();
 
                         // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
 
                         GuidCache.Set(credentials.uri + "-LoggedOn",
                             person.Identity.ToString(CultureInfo.InvariantCulture) + ",1,,BitId 2FA");
-                        Persistence.Key["BitId_Point2c"] = DateTime.Now.ToString();
 
                     }
-
-                    Persistence.Key["BitId_Point3"] = DateTime.Now.ToString();
 
                     response.StatusCode = 200;
                     response.ContentType = "application/json";
                     response.Write("{\"address\":\"" + credentials.address + "\",\"signature\":\"" + credentials.signature + "\"}");
                     response.End();
-
-                    Persistence.Key["BitId_Point4"] = DateTime.Now.ToString();
                 }
                 catch (Exception e)
                 {
@@ -222,31 +198,22 @@ namespace Swarmops.Pages.Security
         [WebMethod]
         public static bool TestLogin(string uriEncoded, string nonce)
         {
-            Persistence.Key["BitId_Test_Point0"] = DateTime.Now.ToString();
             try
             {
                 string uri = HttpUtility.UrlDecode(uriEncoded);
-
-                Persistence.Key["BitId_Test_Uri"] = uri;
 
                 // a little sloppy nonce and uri checking rather than full parsing
                 // TODO: Full parse
                 if (!uri.Contains(nonce) || !uri.Contains(HttpContext.Current.Request.Url.Host))
                 {
-                    Persistence.Key["BitId_Test_Fail"] = DateTime.Now.ToString();
                     throw new ArgumentException();
                 }
 
-                Persistence.Key["BitId_Test_Point1"] = DateTime.Now.ToString();
                 string result = (string) GuidCache.Get(uri + "-LoggedOn");
                 if (string.IsNullOrEmpty(result))
                 {
-                    Persistence.Key["BitId_Test_Point1a"] = DateTime.Now.ToString();
                     return false;
                 }
-
-                Persistence.Key["BitId_Test_Point2"] = DateTime.Now.ToString();
-                Persistence.Key["BitId_Test_Result"] = result;
 
                 // We have a successful login when we get here
 

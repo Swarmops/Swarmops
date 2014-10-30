@@ -51,9 +51,10 @@
 	            dataType: "json",
 	            success: function (msg) {
 	                if (msg.d) {
-	                    alert("For great justice!!");
-	                    document.location = "/BitId.aspx?Nonce=" + bitIdNonce;
+                        // Login confirmed, fetch auth cookie from nonce in-context
+	                    document.location = "/Security/BitId.aspx?Nonce=" + bitIdNonce;
 	                } else {
+                        // Retry twice per second
 	                    setTimeout(function () {
 	                        recheckLogin();
 	                    }, 500);
