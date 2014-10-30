@@ -54,6 +54,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External Libraries\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="NBitcoin, Version=1.0.5.20, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Dependencies\bin\NBitcoin.dll</HintPath>
+    </Reference>
     <Reference Include="Starksoft.Cryptography.OpenPGP, Version=1.0.140.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External Libraries\Starksoft.Cryptography.OpenPGP.dll</HintPath>
