@@ -50,7 +50,7 @@
                 if ($('#DropTags<%# Eval("TagSetId") %>').combotree('tree').tree('getSelected') == null) {
                     isValid = false;
                     $('#SpanDropTags<%# Eval("TagSetId") %>').addClass("entryError");
-                    alertify.error('<%=Resources.Pages.Financial.FileExpenseClaim_ValidationError_MissingTag.Replace("'", "''") %>');
+                    alertify.error('<%=Resources.Pages_Financial.FileExpenseClaim_ValidationError_MissingTag.Replace("'", "''") %>');
                 }
             </ItemTemplate></asp:Repeater>
 

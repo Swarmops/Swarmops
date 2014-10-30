@@ -57,7 +57,7 @@
                         var rowCount = $(this).datagrid('getRows').length;
                         $("#spanHitCount").text(rowCount);
                         if (rowCount == 1000) {
-                            alertify.log("<%= Resources.Pages.People.ListFindPeople_TooManyHits %>");
+                            alertify.log("<%= Resources.Pages_People.ListFindPeople_TooManyHits %>");
                         }
 
                         // Leaving some remnant code from PayOutMoney in here for now, as similar code will be needed

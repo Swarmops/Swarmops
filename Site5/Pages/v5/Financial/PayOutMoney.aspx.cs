@@ -30,16 +30,16 @@ namespace Swarmops.Frontend.Pages.Financial
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages.Financial.PayOutMoney_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Financial.PayOutMoney_Info;
-            this.LabelPayOutMoneyHeader.Text = Resources.Pages.Financial.PayOutMoney_Header;
-            this.LabelGridHeaderAccount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_BankAccount;
-            this.LabelGridHeaderAmount.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Amount;
-            this.LabelGridHeaderBank.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_BankName;
-            this.LabelGridHeaderDue.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_DueDate;
-            this.LabelGridHeaderPaid.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PaidOut;
-            this.LabelGridHeaderRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
-            this.LabelGridHeaderReference.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference;
+            this.PageTitle = Resources.Pages_Financial.PayOutMoney_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages_Financial.PayOutMoney_Info;
+            this.LabelPayOutMoneyHeader.Text = Resources.Pages_Financial.PayOutMoney_Header;
+            this.LabelGridHeaderAccount.Text = Resources.Pages_Financial.PayOutMoney_GridHeader_BankAccount;
+            this.LabelGridHeaderAmount.Text = Resources.Pages_Financial.PayOutMoney_GridHeader_Amount;
+            this.LabelGridHeaderBank.Text = Resources.Pages_Financial.PayOutMoney_GridHeader_BankName;
+            this.LabelGridHeaderDue.Text = Resources.Pages_Financial.PayOutMoney_GridHeader_DueDate;
+            this.LabelGridHeaderPaid.Text = Resources.Pages_Financial.PayOutMoney_GridHeader_PaidOut;
+            this.LabelGridHeaderRecipient.Text = Resources.Pages_Financial.PayOutMoney_GridHeader_Recipient;
+            this.LabelGridHeaderReference.Text = Resources.Pages_Financial.PayOutMoney_GridHeader_Reference;
 
         }
 
@@ -71,7 +71,7 @@ namespace Swarmops.Frontend.Pages.Financial
             // Create result and return it
 
             result.AssignedId = payout.Identity;
-            result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
+            result.DisplayMessage = String.Format(Resources.Pages_Financial.PayOutMoney_PayoutCreated, payout.Identity,
                                                   payout.Recipient);
 
             result.DisplayMessage = HttpUtility.UrlEncode(result.DisplayMessage).Replace("+", "%20");
@@ -98,7 +98,7 @@ namespace Swarmops.Frontend.Pages.Financial
                 // this payout has already been settled, or picked up for settling
 
                 result.Success = false;
-                result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
+                result.DisplayMessage = String.Format(Resources.Pages_Financial.PayOutMoney_PayoutCannotUndo,
                                                       databaseId);
 
                 return result;
@@ -106,7 +106,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
             payout.UndoPayout();
 
-            result.DisplayMessage = HttpUtility.UrlEncode(String.Format(Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId)).Replace("+","%20");
+            result.DisplayMessage = HttpUtility.UrlEncode(String.Format(Resources.Pages_Financial.PayOutMoney_PayoutUndone, databaseId)).Replace("+","%20");
             result.Success = true;
             return result;
         }

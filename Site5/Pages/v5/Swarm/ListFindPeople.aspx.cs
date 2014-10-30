@@ -24,11 +24,11 @@ namespace Swarmops.Frontend.Pages.Swarm
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages.People.ListFindPeople_Title;
-            this.InfoBoxLiteral = Resources.Pages.People.ListFindPeople_Info;
+            this.PageTitle = Resources.Pages_People.ListFindPeople_Title;
+            this.InfoBoxLiteral = Resources.Pages_People.ListFindPeople_Info;
             this.LabelGeography.Text = Resources.Global.Global_Geography;
-            this.LabelNamePattern.Text = Resources.Pages.People.ListFindPeople_NamePattern;
-            this.LabelMatchingPeopleInX.Text = String.Format(Resources.Pages.People.ListFindPeople_MatchingPeopleInX,
+            this.LabelNamePattern.Text = Resources.Pages_People.ListFindPeople_NamePattern;
+            this.LabelMatchingPeopleInX.Text = String.Format(Resources.Pages_People.ListFindPeople_MatchingPeopleInX,
                 this.CurrentOrganization.Name);
 
             this.LabelGridHeaderAction.Text = Resources.Global.Global_Action;
@@ -68,7 +68,7 @@ namespace Swarmops.Frontend.Pages.Swarm
             // Create result and return it
 
             result.AssignedId = payout.Identity;
-            result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
+            result.DisplayMessage = String.Format(Resources.Pages_Financial.PayOutMoney_PayoutCreated, payout.Identity,
                                                   payout.Recipient);
 
             result.DisplayMessage = HttpUtility.UrlEncode(result.DisplayMessage).Replace("+", "%20");
@@ -95,7 +95,7 @@ namespace Swarmops.Frontend.Pages.Swarm
                 // this payout has already been settled, or picked up for settling
 
                 result.Success = false;
-                result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
+                result.DisplayMessage = String.Format(Resources.Pages_Financial.PayOutMoney_PayoutCannotUndo,
                                                       databaseId);
 
                 return result;
@@ -103,7 +103,7 @@ namespace Swarmops.Frontend.Pages.Swarm
 
             payout.UndoPayout();
 
-            result.DisplayMessage = HttpUtility.UrlEncode(String.Format(Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId)).Replace("+","%20");
+            result.DisplayMessage = HttpUtility.UrlEncode(String.Format(Resources.Pages_Financial.PayOutMoney_PayoutUndone, databaseId)).Replace("+","%20");
             result.Success = true;
             return result;
         }

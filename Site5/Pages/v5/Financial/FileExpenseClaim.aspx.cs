@@ -93,9 +93,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            this.PageTitle = Resources.Pages.Financial.FileExpenseClaim_PageTitle;
+            this.PageTitle = Resources.Pages_Financial.FileExpenseClaim_PageTitle;
             this.PageIcon = "iconshock-moneyback";
-            this.InfoBoxLiteral = Resources.Pages.Financial.FileExpenseClaim_Info;
+            this.InfoBoxLiteral = Resources.Pages_Financial.FileExpenseClaim_Info;
 
             if (!Page.IsPostBack)
             {
@@ -114,24 +114,24 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            this.LabelAmount.Text = string.Format(Resources.Pages.Financial.FileExpenseClaim_Amount,
+            this.LabelAmount.Text = string.Format(Resources.Pages_Financial.FileExpenseClaim_Amount,
                                                   CurrentOrganization.Currency.Code);
-            this.LabelPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_Description;
-            this.LabelBudget.Text = Resources.Pages.Financial.FileExpenseClaim_Budget;
-            this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderBankDetails;
-            this.LabelBankName.Text = Resources.Pages.Financial.FileExpenseClaim_BankName;
-            this.LabelBankClearing.Text = Resources.Pages.Financial.FileExpenseClaim_BankClearing;
-            this.LabelBankAccount.Text = Resources.Pages.Financial.FileExpenseClaim_BankAccount;
-            this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderReceiptImages;
-            this.LabelImageFiles.Text = Resources.Pages.Financial.FileExpenseClaim_UploadRecieptImages;
+            this.LabelPurpose.Text = Resources.Pages_Financial.FileExpenseClaim_Description;
+            this.LabelBudget.Text = Resources.Pages_Financial.FileExpenseClaim_Budget;
+            this.LabelHeaderBankDetails.Text = Resources.Pages_Financial.FileExpenseClaim_HeaderBankDetails;
+            this.LabelBankName.Text = Resources.Pages_Financial.FileExpenseClaim_BankName;
+            this.LabelBankClearing.Text = Resources.Pages_Financial.FileExpenseClaim_BankClearing;
+            this.LabelBankAccount.Text = Resources.Pages_Financial.FileExpenseClaim_BankAccount;
+            this.LabelHeaderImageFiles.Text = Resources.Pages_Financial.FileExpenseClaim_HeaderReceiptImages;
+            this.LabelImageFiles.Text = Resources.Pages_Financial.FileExpenseClaim_UploadRecieptImages;
 
-            this.LiteralErrorAmount.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount;
-            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose;
-            this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
-            this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
-            this.LiteralErrorBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
-            this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
-            this.LiteralErrorDocuments.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents;
+            this.LiteralErrorAmount.Text = Resources.Pages_Financial.FileExpenseClaim_ValidationError_Amount;
+            this.LiteralErrorPurpose.Text = Resources.Pages_Financial.FileExpenseClaim_ValidationError_Purpose;
+            this.LiteralErrorBudget.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_Budget;
+            this.LiteralErrorBankName.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_BankName;
+            this.LiteralErrorBankClearing.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_BankClearing;
+            this.LiteralErrorBankAccount.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_BankAccount;
+            this.LiteralErrorDocuments.Text = Resources.Pages_Financial.FileExpenseClaim_ValidationError_Documents;
 
         }
 
@@ -191,20 +191,20 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             documents.SetForeignObjectForAll(claim);
 
-            string successMessage = string.Format(Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartOne,
+            string successMessage = string.Format(Resources.Pages_Financial.FileExpenseClaim_SuccessMessagePartOne,
                                                   CurrentOrganization.Currency.Code,
                                                   (double) (amountCents/100.0),
                                                   budget.Name);
 
             if (budget.OwnerPersonId != CurrentUser.Identity)
             {
-                successMessage += "<br/><br/>" + Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartTwo +
+                successMessage += "<br/><br/>" + Resources.Pages_Financial.FileExpenseClaim_SuccessMessagePartTwo +
                                   "<br/>";
             }
             else
             {
                 successMessage += "<br/><br/>" +
-                                  Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartTwoOwnBudget +
+                                  Resources.Pages_Financial.FileExpenseClaim_SuccessMessagePartTwoOwnBudget +
                                   "<br/>";
                 claim.Attest (CurrentUser);
             }

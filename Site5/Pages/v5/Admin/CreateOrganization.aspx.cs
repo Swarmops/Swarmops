@@ -12,9 +12,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageTitle = Resources.Pages.Admin.CreateOrganization_PageTitle;
+            this.PageTitle = Resources.Pages_Admin.CreateOrganization_PageTitle;
             this.PageIcon = "iconshock-organization-add";
-            this.InfoBoxLiteral = Resources.Pages.Admin.CreateOrganization_Info;
+            this.InfoBoxLiteral = Resources.Pages_Admin.CreateOrganization_Info;
             this.DbVersionRequired = 2; // for FinancialAccounts.Active field in Create function
 
             if (!Page.IsPostBack)
@@ -33,11 +33,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         private void Localize()
         {
-            this.LabelOrganizationName.Text = Resources.Pages.Admin.CreateOrganization_NewOrgName;
-            this.LabelActivistLabel.Text = Resources.Pages.Admin.CreateOrganization_ActivistTitle;
-            this.LabelCreateAs.Text = Resources.Pages.Admin.CreateOrganization_CreateNewOrgAs;
-            this.LabelNativeCurrency.Text = Resources.Pages.Admin.CreateOrganization_NewOrgCurrency;
-            this.LabelPersonLabel.Text = Resources.Pages.Admin.CreateOrganization_RegularTitle;
+            this.LabelOrganizationName.Text = Resources.Pages_Admin.CreateOrganization_NewOrgName;
+            this.LabelActivistLabel.Text = Resources.Pages_Admin.CreateOrganization_ActivistTitle;
+            this.LabelCreateAs.Text = Resources.Pages_Admin.CreateOrganization_CreateNewOrgAs;
+            this.LabelNativeCurrency.Text = Resources.Pages_Admin.CreateOrganization_NewOrgCurrency;
+            this.LabelPersonLabel.Text = Resources.Pages_Admin.CreateOrganization_RegularTitle;
 
             this.ButtonCreate.Text = Resources.Global.Global_Create;
 
@@ -51,8 +51,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.DropCreateChild.Items.Add(new ListItem(Resources.Global.Global_SelectOne, "0"));
 
 
-            this.DropCreateChild.Items.Add(new ListItem(Resources.Pages.Admin.CreateOrganization_AsRoot, "Root"));
-            this.DropCreateChild.Items.Add(new ListItem(String.Format(Resources.Pages.Admin.CreateOrganization_ChildOfX, CurrentOrganization.Name), "Child"));
+            this.DropCreateChild.Items.Add(new ListItem(Resources.Pages_Admin.CreateOrganization_AsRoot, "Root"));
+            this.DropCreateChild.Items.Add(new ListItem(String.Format(Resources.Pages_Admin.CreateOrganization_ChildOfX, CurrentOrganization.Name), "Child"));
 
             List<string> localizedPersonLabels = new List<string>();
 
@@ -128,7 +128,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             Membership.Create(CurrentUser, newOrganization, DateTime.UtcNow.AddYears(2));
 
-            string successMessage = String.Format(Resources.Pages.Admin.CreateOrganization_Success, Resources.Global.ResourceManager.GetString("Title_" + peopleLabel + "_Ship"));
+            string successMessage = String.Format(Resources.Pages_Admin.CreateOrganization_Success, Resources.Global.ResourceManager.GetString("Title_" + peopleLabel + "_Ship"));
 
             // Create org here
 

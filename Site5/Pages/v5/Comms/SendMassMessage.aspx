@@ -34,12 +34,12 @@
         }
 
         function onClickSend() {
-            alertify.alert("<%= Resources.Pages.Comms.SendMassMessage_SendMessageResult %>");
+            alertify.alert("<%= Resources.Pages_Comms.SendMassMessage_SendMessageResult %>");
             return false;
         }
 
         function onClickTest() {
-            alertify.alert("<%= Resources.Pages.Comms.SendMassMessage_TestMessageResult %>");
+            alertify.alert("<%= Resources.Pages_Comms.SendMassMessage_TestMessageResult %>");
             return false;
         }
 
