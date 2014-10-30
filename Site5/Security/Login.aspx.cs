@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Web;
+using System.Web.ExtensionMethods;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using System.Web.Services;
@@ -37,7 +38,7 @@ namespace Swarmops.Pages.Security
 
             // DEBUG: Log the entire raw request
 
-            Persistence.Key["BitIdTest_Raw"] = Request.Raw();
+            Persistence.Key["BitIdTest_Raw"] = Request.ToRaw();
             Persistence.Key["BitIdTest_AddressNight"] = Request.Params["address"];
 
 
