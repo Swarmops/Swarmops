@@ -18,6 +18,7 @@
 	<title>Swarmops Alpha - Login</title>
 
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/alertify.css" rel="stylesheet" type="text/css" />
 
     <!-- custom styles -->
     
@@ -42,6 +43,7 @@
 	    });  // end of document.ready
 
 	    function recheckLogin() {
+	        alertify.log("Checking");
 	        $.ajax({
 	            type: "POST",
 	            url: "Login.aspx/TestLogin",
@@ -49,6 +51,7 @@
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
+	                alertify.success("Success " + msg.d);
 	                if (msg.d) {
 	                    alert("Successful login! Redirecting...");
 	                    document.location = "/";
@@ -59,6 +62,7 @@
 	                }
 	            },
 	            error: function (msg) {
+	                alertify.error("Error " + msg.d);
                     // we don't want the polling to die just because of a transient error
 	                setTimeout(function () {
 	                    recheckLogin();
@@ -115,14 +119,14 @@
         </div>
     </div>
     
-    <asp:Panel ID="PanelCheat" runat="server">
+    <asp:Panel ID="PanelCheat" runat="server" Visible="false">
         <h2 class="blue">Dev's Cheat Button<span class="arrow"></span></h2>
     
         <div class="box">
             <div class="content" style="line-height:14px">
                 <p>Since we're running on localhost, on a nonstandard port, with a debugger attached, and under Windows, this is clearly not a production environment. Since it's unlikely that the outside Internet has access to this machine, which means you can't login with BitID, a cheat button has been provided for you.</p><p>Press the button below to log on as Sandbox Administrator.</p>
                 
-                <asp:Button ID="ButtonCheat" runat="server" OnClick="ButtonCheat_Click" Text="Cheat Button" />
+                <div align="right"><asp:Button ID="ButtonCheat" runat="server" OnClick="ButtonCheat_Click" Text="Cheat Button" /></div>
             </div>
         </div>
     </asp:Panel>
@@ -142,6 +146,11 @@
 	</div>
 
 	</form>
+
+    <!-- some javascript in footer -->
+    
+    <script language="javascript" type="text/javascript" src="/Scripts/alertify.min.js" ></script>
+
 </body>
 </html>
 

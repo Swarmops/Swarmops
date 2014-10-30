@@ -27,6 +27,8 @@ namespace Swarmops.Pages.Security
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Person.FromIdentity(1).BitIdAddress = "14fRQCbR62EGzjPQks9XRAVRiqWhftn3dA";
+
             // Check if this is the first run ever. If so, redirect to Init.
 
             if (!SwarmDb.Configuration.IsConfigured())
