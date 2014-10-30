@@ -58,7 +58,7 @@
 	                } else {
 	                    setTimeout(function () {
 	                        recheckLogin();
-	                    }, 500);
+	                    }, 1000);
 	                }
 	            },
 	            error: function (msg) {

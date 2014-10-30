@@ -174,6 +174,7 @@ namespace Swarmops.Pages.Security
 
                 try
                 {
+                    Persistence.Key["BitId_Point1"] = DateTime.Now.ToString();
                     if (this.CurrentUser != null)
                     {
                         if (GuidCache.Get(credentials.uri + "-Intent") as string == "Register")
@@ -183,15 +184,23 @@ namespace Swarmops.Pages.Security
                         }
                     }
 
+                    Persistence.Key["BitId_Point2"] = DateTime.Now.ToString();
+
                     if (GuidCache.Get(credentials.uri + "-Logon") as string == "Unauth")
                     {
+                        Persistence.Key["BitId_Point2a"] = DateTime.Now.ToString();
                         Person person = Person.FromBitIdAddress(credentials.address);
+                        Persistence.Key["BitId_Point2b"] = DateTime.Now.ToString();
 
                         // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
 
                         GuidCache.Set(credentials.uri + "-LoggedOn",
                             person.Identity.ToString(CultureInfo.InvariantCulture) + ",1,,BitId 2FA");
+                        Persistence.Key["BitId_Point2c"] = DateTime.Now.ToString();
+
                     }
+
+                    Persistence.Key["BitId_Point3"] = DateTime.Now.ToString();
 
                     response.StatusCode = 200;
                     response.ContentType = "application/json";
@@ -202,6 +211,8 @@ namespace Swarmops.Pages.Security
                             signature = credentials.signature
                         }));
                     response.End();
+
+                    Persistence.Key["BitId_Point4"] = DateTime.Now.ToString();
                 }
                 catch (Exception e)
                 {
