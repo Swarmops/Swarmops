@@ -27,7 +27,6 @@ namespace Swarmops.Pages.Security
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Person.FromIdentity(1).BitIdAddress = "14fRQCbR62EGzjPQks9XRAVRiqWhftn3dA";
 
             // Check if this is the first run ever. If so, redirect to Init.
 
@@ -45,7 +44,7 @@ namespace Swarmops.Pages.Security
 
                 if (Request.Params["address"] != null)
                 {
-                    // looks like it
+                    // yes, indeed looks like it
 
                     BitIdCredentials credentials = new BitIdCredentials
                     {
@@ -112,10 +111,6 @@ namespace Swarmops.Pages.Security
                 }
             }
 
-
-
-
-
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
@@ -143,7 +138,7 @@ namespace Swarmops.Pages.Security
 
             GuidCache.Set(bitIdUri + "-Logon", "Unauth");
 
-            // TODO: need to NOT FUCKING USE GOOGLE CHARTS for this but bring home a QR package
+            // TODO: need to NOT FUCKING USE GOOGLE CHARTS for this but bring home a free QR package
 
             this.ImageBitIdQr.ImageUrl =
                 "http://chart.apis.google.com/chart?cht=qr&chs=400x400&chl=" + HttpUtility.UrlEncode(bitIdUri);
@@ -163,8 +158,12 @@ namespace Swarmops.Pages.Security
                     {
                         if ((string) GuidCache.Get(credentials.uri + "-Intent") == "Register")
                         {
-                            // set currentUser bitid
-                            // Then go do something else, I guess
+                            // the currently logged-on user desires to register this address
+                            // so set currentUser bitid
+                            this.CurrentUser.BitIdAddress = credentials.address;
+                            // Then go do something else, I guess? Flag somehow to original page
+                            // that the op is completed?
+                            GuidCache.Set(credentials.uri + "-Intent", "Complete");
                         }
                     }
 
@@ -172,22 +171,26 @@ namespace Swarmops.Pages.Security
                     {
                         Person person = Person.FromBitIdAddress(credentials.address);
 
+                        // TODO: If above throws, show friendly "unknown wallet" message
+
                         // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
 
                         GuidCache.Set(credentials.uri + "-LoggedOn",
                             person.Identity.ToString(CultureInfo.InvariantCulture) + ",1,,BitId 2FA");
 
                     }
-
-                    response.StatusCode = 200;
-                    response.ContentType = "application/json";
-                    response.Write("{\"address\":\"" + credentials.address + "\",\"signature\":\"" + credentials.signature + "\"}");
-                    response.End();
                 }
                 catch (Exception e)
                 {
                     Persistence.Key["BitIdLogin_Debug_Exception"] = e.ToString();
                 }
+
+                // TODO: Error codes
+
+                response.StatusCode = 200;
+                response.ContentType = "application/json";
+                response.Write("{\"address\":\"" + credentials.address + "\",\"signature\":\"" + credentials.signature + "\"}");
+                response.End();
             }
             else
             {
@@ -203,7 +206,7 @@ namespace Swarmops.Pages.Security
                 string uri = HttpUtility.UrlDecode(uriEncoded);
 
                 // a little sloppy nonce and uri checking rather than full parsing
-                // TODO: Full parse
+                // TODO: Full URI parse, the above is not enough
                 if (!uri.Contains(nonce) || !uri.Contains(HttpContext.Current.Request.Url.Host))
                 {
                     throw new ArgumentException();
