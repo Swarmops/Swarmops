@@ -16,6 +16,9 @@ namespace Swarmops.Security
         protected void Page_Load(object sender, EventArgs e)
         {
             Persistence.Key["BitIdTest_Raw"] = Request.ToRaw();
+            Persistence.Key["BitIdTest_Uri"] = Request.Params["uri"];
+            Persistence.Key["BitIdTest_Address"] = Request.Params["address"];
+            Persistence.Key["BitIdText_Signature"] = Request.Params["signature"];
         }
 
         // ReSharper disable once InconsistentNaming
