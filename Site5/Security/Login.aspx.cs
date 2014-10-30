@@ -239,6 +239,9 @@ namespace Swarmops.Pages.Security
                     return false;
                 }
 
+                Persistence.Key["BitId_Test_Point2"] = DateTime.Now.ToString();
+                Persistence.Key["BitId_Test_Result"] = result;
+
                 // We have a successful login when we get here
 
                 GuidCache.Delete(uri + "-Logon");
