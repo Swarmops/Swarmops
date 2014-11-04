@@ -117,166 +117,113 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CurrentUserInfo_Logout" xml:space="preserve">
-    <value>Logg ut</value>
-    <comment>Causes signoff and de-authentication</comment>
-  </data>
-  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
-    <value>Innstillinger</value>
-    <comment>Tooltip on hover over wrench icon</comment>
-  </data>
-  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
-    <value>Velg språk</value>
-    <comment>Shown as header of language list pop-up</comment>
-  </data>
-  
-  
-  <data name="Dashboard_PageTitle" xml:space="preserve">
-    <value>Meny</value>
-    <comment>Title of default page</comment>
-  </data>
   
   
   
   
-  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
-    <value>Konto</value>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>Middelen</value>
   </data>
-  <data name="Financial_Budget" xml:space="preserve">
-    <value>Budsjett</value>
+  
+  <data name="BalanceSheet_Current" xml:space="preserve">
+    <value>Huidige</value>
   </data>
-  <data name="Financial_CashAdvance" xml:space="preserve">
-    <value>Forskudd</value>
+  <data name="BalanceSheet_Debt" xml:space="preserve">
+    <value>Schuld</value>
+  </data>
+  <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
+    <value>Balans</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="BalanceSheet_EndYear" xml:space="preserve">
+    <value>Eind-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  
+  <data name="BalanceSheet_PageTitle" xml:space="preserve">
+    <value>Balans</value>
+  </data>
+  <data name="BalanceSheet_Q1" xml:space="preserve">
+    <value>Verander kwartaal 1</value>
+  </data>
+  <data name="BalanceSheet_Q2" xml:space="preserve">
+    <value>Verander kwartaal 2</value>
+  </data>
+  <data name="BalanceSheet_Q3" xml:space="preserve">
+    <value>Verander kwartaal 3</value>
+  </data>
+  <data name="BalanceSheet_Q4" xml:space="preserve">
+    <value>Verander kwartaal 4</value>
+  </data>
+  <data name="BalanceSheet_StartYear" xml:space="preserve">
+    <value>Begin-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="ProfitLossStatement_AccountName" xml:space="preserve">
+    <value>Rekening</value>
+  </data>
+  <data name="ProfitLossStatement_ContentHeader" xml:space="preserve">
+    <value>Winst/Verlies voor {0} voor het jaar</value>
+    <comment>The {0} is the organization name. The year number follows this string.</comment>
+  </data>
+  <data name="ProfitLossStatement_Costs" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
+    <value>WinstVerlies</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="ProfitLossStatement_Income" xml:space="preserve">
+    <value>Inkomsten</value>
+  </data>
+  
+  <data name="ProfitLossStatement_LastYear" xml:space="preserve">
+    <value>Afgelopen jaar</value>
+  </data>
+  <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
+    <value>Winst &amp; Verlies verklaring</value>
+  </data>
+  <data name="ProfitLossStatement_Q1" xml:space="preserve">
+    <value>Kwartaal 1</value>
+  </data>
+  <data name="ProfitLossStatement_Q2" xml:space="preserve">
+    <value>Kwartaal 2</value>
+  </data>
+  <data name="ProfitLossStatement_Q3" xml:space="preserve">
+    <value>Kwartaal 3</value>
+  </data>
+  <data name="ProfitLossStatement_Q4" xml:space="preserve">
+    <value>Kwartaal 4</value>
+  </data>
+  <data name="ProfitLossStatement_Results" xml:space="preserve">
+    <value>Resultaten</value>
+    <comment>Footer on P&amp;L statement</comment>
+  </data>
+  <data name="ProfitLossStatement_Ytd" xml:space="preserve">
+    <value>vanaf vorig jaareinde</value>
+    <comment>Year To Date</comment>
   </data>
   
   
-  <data name="Financial_ExpenseClaim" xml:space="preserve">
-    <value>Utgift</value>
-  </data>
-  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
-    <value>Utgift #{0}</value>
-  </data>
-  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
-    <value>Utgifter {0}</value>
-  </data>
-  <data name="Financial_InvoiceInbound" xml:space="preserve">
-    <value>Faktura</value>
-  </data>
-  <data name="Financial_InvoiceOutbound" xml:space="preserve">
-    <value>Faktura</value>
-  </data>
-  <data name="Financial_Parley" xml:space="preserve">
-    <value>Møte</value>
-  </data>
-  <data name="Financial_Salary" xml:space="preserve">
-    <value>Godtgjørelse</value>
-  </data>
-  <data name="Financial_SalarySpecification" xml:space="preserve">
-    <value>Godtgjørelse for {0:yyyy-MMM}</value>
-    <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
-  </data>
-  <data name="Financial_TaxesSpecification" xml:space="preserve">
-    <value>Skatt på godtgjørelser {0}</value>
-  </data>
-  <data name="Financial_TaxSpecification" xml:space="preserve">
-    <value>Skatt på godtgjørelse {0}</value>
-  </data>
-  <data name="Financial_TheTaxMan" xml:space="preserve">
-    <value>Skattefuten</value>
-    <comment>Used as recipient for taxes.</comment>
-  </data>
-  <data name="Financial_YearlyResult" xml:space="preserve">
-    <value>Årsresultat</value>
-  </data>
-  <data name="Global_ASAP" xml:space="preserve">
-    <value>Snarest!</value>
-    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
-  </data>
-  <data name="Global_Cancel" xml:space="preserve">
-    <value>Avbryt</value>
-    <comment>Displayed as cancellation link on changing something</comment>
-  </data>
-  <data name="Global_Change" xml:space="preserve">
-    <value>Endre?</value>
-    <comment>Link after describing what the user is looking at, allowing a change.</comment>
-  </data>
-  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
-    <value>Klikk på bildet for større versjon.</value>
-    <comment>Displayed where thumbnails can be enlarged modally.</comment>
-  </data>
-  <data name="Global_Confirm" xml:space="preserve">
-    <value>Bekreft</value>
-    <comment>Displayed as confirmation link on changing something</comment>
-  </data>
-  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
-    <value>-- Velg budsjett/konto --</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
-    <value>-- Velg organisasjon --</value>
-    <comment>Initializer in dropdown box.</comment>
-  </data>
-  
-  <data name="Global_NoOwner" xml:space="preserve">
-    <value>Ingen</value>
-    <comment>Displayed when an account/position etc is vacant</comment>
-  </data>
-  
-  <data name="Global_ProcessingFile" xml:space="preserve">
-    <value>Laster opp...</value>
-    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
-  </data>
-  <data name="Global_UploadFile" xml:space="preserve">
-    <value>Last opp</value>
-    <comment>Displayed on "Submit" button next to file upload controls.</comment>
-  </data>
-  
-  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
-    <value>Du må velge en fil å laste opp.</value>
-    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
+    <value>Budgeteigenaar</value>
+    <comment>Displayed above editables</comment>
   </data>
   
   
   
-  <data name="Sidebar_Information" xml:space="preserve">
-    <value>Info</value>
-    <comment>Information about current page</comment>
-  </data>
-  <data name="Sidebar_Todo" xml:space="preserve">
-    <value>Må gjøres</value>
-    <comment>List of todo items</comment>
+  <data name="SetRootBudgets_SetNewBudgets" xml:space="preserve">
+    <value>Stel nieuwe budgetten in</value>
+    <comment>Text on submit button</comment>
   </data>
   
   
   
   
-  <data name="Financial_ExpenseClaims" xml:space="preserve">
-    <value>Utgifter</value>
-  </data>
-  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
-    <value>Utgiftsgodtgjørelser</value>
-  </data>
-  <data name="Financial_InboundInvoices" xml:space="preserve">
-    <value>Fakturaer</value>
-  </data>
-  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
-    <value>Innkommende fakturaer</value>
-  </data>
-  <data name="Financial_OutboundInvoices" xml:space="preserve">
-    <value>Fakturaer</value>
-  </data>
-  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
-    <value>Utgående fakturaer</value>
-  </data>
-  <data name="Global_NA" xml:space="preserve">
-    <value>Ikke tilgjengelig</value>
-  </data>
   
-  <data name="Global_AsOfNow" xml:space="preserve">
-    <value>Akkurat nå</value>
-  </data>
-  <data name="Global_Today" xml:space="preserve">
-    <value>I dag</value>
+  <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
+    <value>Bank download instructies</value>
+    <comment>Header above instructions for generation of the bank file type selected.</comment>
   </data>
   
   
@@ -285,71 +232,26 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
+    <value>Bestand succesvol geïmporteerd</value>
+    <comment>Displayed as header after successful processing</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader_ErrorBalance" xml:space="preserve">
+    <value>Bestand gesynchroniseerd, echter data is niet synchroon</value>
+    <comment>Displayed as header after a good processing that ended in sync failure</comment>
+  </data>
+  
+  <data name="UploadBankFiles_ImportError" xml:space="preserve">
+    <value>Fout bij importeren bestand</value>
+    <comment>Displayed as header on import failure</comment>
+  </data>
+  
+  
+  
+  <data name="UploadBankFiles_PageTitle" xml:space="preserve">
+    <value>Upload Bank bestanden</value>
+    <comment>Displayed above main content.</comment>
+  </data>
   
   
   

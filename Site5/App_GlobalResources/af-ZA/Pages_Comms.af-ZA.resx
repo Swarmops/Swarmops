@@ -117,214 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="Global_Geography" xml:space="preserve">
-    <value>Geografie</value>
-    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  <data name="SendMassMessage_Geography" xml:space="preserve">
+    <value>crwdns6554046:0crwdne6554046:0</value>
   </data>
-  
-  <data name="Global_Mail" xml:space="preserve">
-    <value>eMail</value>
-    <comment>Somebody's email address.</comment>
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>crwdns6554047:0crwdne6554047:0</value>
   </data>
-  
-  <data name="Global_Notes" xml:space="preserve">
-    <value>Notizen</value>
-    <comment>Small notes in a grid, maybe in icon form</comment>
+  <data name="SendMassMessage_Info" xml:space="preserve">
+    <value>crwdns6554048:0crwdne6554048:0</value>
   </data>
-  <data name="Global_Phone" xml:space="preserve">
-    <value>Telefon</value>
-    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  <data name="SendMassMessage_MockMessageResult" xml:space="preserve">
+    <value>crwdns6554049:0crwdne6554049:0</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>crwdns6554050:0{0:N0}crwdne6554050:0</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
+  <data name="SendMassMessage_RecipientType" xml:space="preserve">
+    <value>crwdns6554051:0crwdne6554051:0</value>
+  </data>
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>crwdns6554052:0crwdne6554052:0</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>crwdns6554053:0crwdne6554053:0</value>
+  </data>
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>crwdns6554054:0crwdne6554054:0</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>crwdns6554055:0crwdne6554055:0</value>
+  </data>
+  <data name="SendMassMessage_Title" xml:space="preserve">
+    <value>crwdns6554056:0crwdne6554056:0</value>
+  </data>
 </root>

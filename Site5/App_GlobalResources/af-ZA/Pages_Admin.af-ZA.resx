@@ -117,214 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="Global_Geography" xml:space="preserve">
-    <value>Geografie</value>
-    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
+    <value>crwdns6554036:0crwdne6554036:0</value>
   </data>
-  
-  <data name="Global_Mail" xml:space="preserve">
-    <value>eMail</value>
-    <comment>Somebody's email address.</comment>
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>crwdns6554037:0crwdne6554037:0</value>
   </data>
-  
-  <data name="Global_Notes" xml:space="preserve">
-    <value>Notizen</value>
-    <comment>Small notes in a grid, maybe in icon form</comment>
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>crwdns6554038:0{0}crwdne6554038:0</value>
+    <comment>"Create org as..."</comment>
   </data>
-  <data name="Global_Phone" xml:space="preserve">
-    <value>Telefon</value>
-    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
+    <value>crwdns6554039:0crwdne6554039:0</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>crwdns6554040:0crwdne6554040:0</value>
+  </data>
+  <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
+    <value>crwdns6554041:0crwdne6554041:0</value>
+  </data>
+  <data name="CreateOrganization_NewOrgName" xml:space="preserve">
+    <value>crwdns6554042:0crwdne6554042:0</value>
+  </data>
+  <data name="CreateOrganization_PageTitle" xml:space="preserve">
+    <value>crwdns6554043:0crwdne6554043:0</value>
+  </data>
+  <data name="CreateOrganization_RegularTitle" xml:space="preserve">
+    <value>crwdns6554044:0crwdne6554044:0</value>
+    <comment>This can be "members", etc.</comment>
+  </data>
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>crwdns6554045:0{0}crwdne6554045:0</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
 </root>

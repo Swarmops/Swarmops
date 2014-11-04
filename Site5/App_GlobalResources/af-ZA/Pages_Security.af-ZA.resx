@@ -117,214 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="Global_Geography" xml:space="preserve">
-    <value>Geografie</value>
-    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>crwdns6554357:0crwdne6554357:0</value>
   </data>
-  
-  <data name="Global_Mail" xml:space="preserve">
-    <value>eMail</value>
-    <comment>Somebody's email address.</comment>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>crwdns6554358:0crwdne6554358:0</value>
   </data>
-  
-  <data name="Global_Notes" xml:space="preserve">
-    <value>Notizen</value>
-    <comment>Small notes in a grid, maybe in icon form</comment>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>crwdns6554359:0crwdne6554359:0</value>
   </data>
-  <data name="Global_Phone" xml:space="preserve">
-    <value>Telefon</value>
-    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>crwdns6554360:0{0}crwdne6554360:0</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>crwdns6554361:0crwdne6554361:0</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>crwdns6554362:0crwdne6554362:0</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>crwdns6554363:0crwdne6554363:0</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>crwdns6554364:0crwdne6554364:0</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>crwdns6554365:0crwdne6554365:0</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>crwdns6554366:0crwdne6554366:0</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>crwdns6554367:0crwdne6554367:0</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>crwdns6554368:0crwdne6554368:0</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>crwdns6554369:0crwdne6554369:0</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>crwdns6554370:0crwdne6554370:0</value>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>crwdns6554371:0crwdne6554371:0</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>crwdns6554372:0crwdne6554372:0</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>crwdns6554373:0crwdne6554373:0</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>crwdns6554374:0crwdne6554374:0</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>crwdns6554375:0crwdne6554375:0</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>crwdns6554376:0crwdne6554376:0</value>
+  </data>
+  <data name="Login_ManualLogin" xml:space="preserve">
+    <value>crwdns6554377:0crwdne6554377:0</value>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>crwdns6554378:0crwdne6554378:0</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>crwdns6554379:0crwdne6554379:0</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>crwdns6554380:0crwdne6554380:0</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>crwdns6554381:0crwdne6554381:0</value>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>crwdns6554382:0crwdne6554382:0</value>
+  </data>
 </root>

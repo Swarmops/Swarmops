@@ -117,214 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="Global_Geography" xml:space="preserve">
-    <value>Geografie</value>
-    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>Åtkomst till den här sidan nekades</value>
   </data>
-  
-  <data name="Global_Mail" xml:space="preserve">
-    <value>eMail</value>
-    <comment>Somebody's email address.</comment>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>Du försökte komma åt en sida som du inte har behörighet för. Se huvudpanelen till vänster för några skäl till varför detta kan ha hänt.</value>
   </data>
-  
-  <data name="Global_Notes" xml:space="preserve">
-    <value>Notizen</value>
-    <comment>Small notes in a grid, maybe in icon form</comment>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Åtkomst nekad</value>
   </data>
-  <data name="Global_Phone" xml:space="preserve">
-    <value>Telefon</value>
-    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  <data name="AccessDenied_Rant" xml:space="preserve">
+    <value>&lt;p&gt;Swarmops säkerhetsramverk har nekat dig åtkomst till sidan du försökte gå till. Detta innebär vanligtvis att dess funktioner var högre än åtkomstnivåerna som beviljats till dig för den valda organisationen (&lt;em&gt;{0}&lt;/em&gt;). Detta har inte loggats eller inrapporterats någonstans.&lt;/p&gt;&lt;p&gt;Det finns flera skäl varför detta kan ha hänt:&lt;/p&gt;</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ChangeOrganizations_CurrentOrganization" xml:space="preserve">
+    <value>Nuvarande organisation</value>
+  </data>
+  <data name="ChangeOrganizations_Info" xml:space="preserve">
+    <value>Du kan delta i flera organisationer på den här Swarmops-installationen. Här kan du växla mellan dem.</value>
+  </data>
+  <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
+    <value>Ny organisation</value>
+  </data>
+  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
+    <value>Du deltar inte i några andra organisationer på denna Swarmops-installation, så du inte kan byta till något annat. Därför så går vi tillbaka till Översikten istället.</value>
+  </data>
+  <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
+    <value>Byt organisation</value>
+  </data>
+  <data name="ChangeOrganizations_Switch" xml:space="preserve">
+    <value>Byt</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Header" xml:space="preserve">
+    <value>Inväntar Databasuppgradering</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Info" xml:space="preserve">
+    <value>Denna sida kräver en uppgraderad Swarmops-databas.</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_PageTitle" xml:space="preserve">
+    <value>Väntar på databasuppgradering</value>
+  </data>
+  <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
+    <value>&lt;p&gt;En omedelbart förestående databasuppgradering hindrar din tillgång till denna sida. &lt;strong&gt;Detta är ett tillfälligt fel&lt;/strong&gt; och Swarmops servrar borde redan arbeta på uppgraderingen ifråga.&lt;/p&gt; &lt;p&gt;Försök ladda om sidan om några minuter. Om det här felet kvarstår i mer än femton minuter, så kontakta din systemadministratör.&lt;/p&gt;</value>
+  </data>
+  <data name="Login_BitIdEnabled" xml:space="preserve">
+    <value>&lt;strong&gt;Tvåfaktorslogin med BitId är nu påslaget.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Från och med nu kan du använda din bitcoinplånbok för att logga in (och &lt;strong&gt;behöver&lt;/strong&gt; göra det). Tack för att du ökar säkerheten.&lt;br/&gt;&lt;br/&gt;Kom ihåg att lösenordsskydda din telefon också om du inte redan gjort det.</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCode" xml:space="preserve">
+    <value>2FA</value>
+  </data>
+  <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
+    <value>Ange din kod från Google Authenticator.</value>
+  </data>
+  <data name="Login_Header" xml:space="preserve">
+    <value>Logga in med Blockchain-teknik (BitId)</value>
+  </data>
+  <data name="Login_Help" xml:space="preserve">
+    <value>Hjälp</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Logga in till Swarmops med en bitcoinplånbok som stöder BitID. Du behöver inte ha några pengar i den. Om du inte har en BitID-kapabel bitcoinplånbok, så kan du logga in manuellt med ett klassiskt användarnamn och lösenord. (Ditt användarnamn är ditt namn eller e-post.)</value>
+  </data>
+  <data name="Login_ManualLogin" xml:space="preserve">
+    <value>Manuell inloggning</value>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Inloggning</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Lösen</value>
+  </data>
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Återställ lösenord</value>
+  </data>
+  <data name="Login_UnknownBitIdAddress" xml:space="preserve">
+    <value>Swarmops känner inte igen den här bitcoinadressen. Logga in manuellt och aktivera din bitcoinplånbok innan du använder den för att logga in.</value>
+  </data>
+  <data name="Login_Username" xml:space="preserve">
+    <value>Namn</value>
+  </data>
 </root>

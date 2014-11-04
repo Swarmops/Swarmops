@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
+    <value>crwdns6554227:0crwdne6554227:0</value>
+  </data>
+  <data name="AccountPlan_Info" xml:space="preserve">
+    <value>crwdns6554228:0crwdne6554228:0</value>
+  </data>
+  <data name="AccountPlan_PageTitle" xml:space="preserve">
+    <value>crwdns6554229:0crwdne6554229:0</value>
+  </data>
+  <data name="BalanceSheet_AccountName" xml:space="preserve">
+    <value>crwdns6554230:0crwdne6554230:0</value>
+  </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>crwdns6554231:0crwdne6554231:0</value>
+  </data>
+  <data name="BalanceSheet_ContentHeader" xml:space="preserve">
+    <value>crwdns6554232:0{0}crwdne6554232:0</value>
+    <comment>{0} is the organization name. The year follows immediately.</comment>
+  </data>
+  <data name="BalanceSheet_Current" xml:space="preserve">
+    <value>crwdns6554233:0crwdne6554233:0</value>
+  </data>
+  <data name="BalanceSheet_Debt" xml:space="preserve">
+    <value>crwdns6554234:0crwdne6554234:0</value>
+  </data>
+  <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
+    <value>crwdns6554235:0crwdne6554235:0</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="BalanceSheet_EndYear" xml:space="preserve">
+    <value>crwdns6554236:0crwdne6554236:0</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="BalanceSheet_Info" xml:space="preserve">
+    <value>crwdns6554237:0crwdne6554237:0</value>
+  </data>
+  <data name="BalanceSheet_PageTitle" xml:space="preserve">
+    <value>crwdns6554238:0crwdne6554238:0</value>
+  </data>
+  <data name="BalanceSheet_Q1" xml:space="preserve">
+    <value>crwdns6554239:0crwdne6554239:0</value>
+  </data>
+  <data name="BalanceSheet_Q2" xml:space="preserve">
+    <value>crwdns6554240:0crwdne6554240:0</value>
+  </data>
+  <data name="BalanceSheet_Q3" xml:space="preserve">
+    <value>crwdns6554241:0crwdne6554241:0</value>
+  </data>
+  <data name="BalanceSheet_Q4" xml:space="preserve">
+    <value>crwdns6554242:0crwdne6554242:0</value>
+  </data>
+  <data name="BalanceSheet_StartYear" xml:space="preserve">
+    <value>crwdns6554243:0crwdne6554243:0</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="ProfitLossStatement_AccountName" xml:space="preserve">
+    <value>crwdns6554244:0crwdne6554244:0</value>
+  </data>
+  <data name="ProfitLossStatement_ContentHeader" xml:space="preserve">
+    <value>crwdns6554245:0{0}crwdne6554245:0</value>
+    <comment>The {0} is the organization name. The year number follows this string.</comment>
+  </data>
+  <data name="ProfitLossStatement_Costs" xml:space="preserve">
+    <value>crwdns6554246:0crwdne6554246:0</value>
+  </data>
+  <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
+    <value>crwdns6554247:0crwdne6554247:0</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="ProfitLossStatement_Income" xml:space="preserve">
+    <value>crwdns6554248:0crwdne6554248:0</value>
+  </data>
+  <data name="ProfitLossStatement_Info" xml:space="preserve">
+    <value>crwdns6554249:0crwdne6554249:0</value>
+  </data>
+  <data name="ProfitLossStatement_LastYear" xml:space="preserve">
+    <value>crwdns6554250:0crwdne6554250:0</value>
+  </data>
+  <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
+    <value>crwdns6554251:0crwdne6554251:0</value>
+  </data>
+  <data name="ProfitLossStatement_Q1" xml:space="preserve">
+    <value>crwdns6554252:0crwdne6554252:0</value>
+  </data>
+  <data name="ProfitLossStatement_Q2" xml:space="preserve">
+    <value>crwdns6554253:0crwdne6554253:0</value>
+  </data>
+  <data name="ProfitLossStatement_Q3" xml:space="preserve">
+    <value>crwdns6554254:0crwdne6554254:0</value>
+  </data>
+  <data name="ProfitLossStatement_Q4" xml:space="preserve">
+    <value>crwdns6554255:0crwdne6554255:0</value>
+  </data>
+  <data name="ProfitLossStatement_Results" xml:space="preserve">
+    <value>crwdns6554256:0crwdne6554256:0</value>
+    <comment>Footer on P&amp;L statement</comment>
+  </data>
+  <data name="ProfitLossStatement_Ytd" xml:space="preserve">
+    <value>crwdns6554257:0crwdne6554257:0</value>
+    <comment>Year To Date</comment>
+  </data>
+  <data name="ResyncExternalAccount_Info" xml:space="preserve">
+    <value>crwdns6554258:0crwdne6554258:0</value>
+  </data>
+  <data name="ResyncExternalAccount_PageTitle" xml:space="preserve">
+    <value>crwdns6554259:0crwdne6554259:0</value>
+  </data>
+  <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
+    <value>crwdns6554260:0crwdne6554260:0</value>
+    <comment>Displayed above editables</comment>
+  </data>
+  <data name="SetRootBudgets_Info" xml:space="preserve">
+    <value>crwdns6554261:0crwdne6554261:0</value>
+  </data>
+  <data name="SetRootBudgets_PageHeader" xml:space="preserve">
+    <value>crwdns6554262:0{0}crwdne6554262:0</value>
+    <comment>The {0} is replaced with the organization's name.</comment>
+  </data>
+  <data name="SetRootBudgets_PageTitle" xml:space="preserve">
+    <value>crwdns6554263:0crwdne6554263:0</value>
+    <comment>Displayed above main content</comment>
+  </data>
+  <data name="SetRootBudgets_SetNewBudgets" xml:space="preserve">
+    <value>crwdns6554264:0crwdne6554264:0</value>
+    <comment>Text on submit button</comment>
+  </data>
+  <data name="UploadBankFiles_AccountStatement" xml:space="preserve">
+    <value>crwdns6554265:0crwdne6554265:0</value>
+  </data>
+  <data name="UploadBankFiles_BankAccount" xml:space="preserve">
+    <value>crwdns6554266:0crwdne6554266:0</value>
+  </data>
+  <data name="UploadBankFiles_BankScreenshot" xml:space="preserve">
+    <value>crwdns6554267:0crwdne6554267:0</value>
+    <comment>Displayed as header above modally zoomed screenshot</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
+    <value>crwdns6554268:0{0}crwdnd6554268:0{1:yyyy-MMM-dd}crwdnd6554268:0{2:yyyy-MMM-dd}crwdne6554268:0</value>
+    <comment>Displayed to help user determine scope of bank download</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince_Paypal" xml:space="preserve">
+    <value>crwdns6554269:0crwdne6554269:0</value>
+    <comment>Displayed instead of date of last transaction in the case of Paypal.</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
+    <value>crwdns6554270:0crwdne6554270:0</value>
+    <comment>Header above instructions for generation of the bank file type selected.</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
+    <value>crwdns6554271:0crwdne6554271:0</value>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions_PaypalFile" xml:space="preserve">
+    <value>crwdns6554272:0crwdne6554272:0</value>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions_PaysonFile" xml:space="preserve">
+    <value>crwdns6554273:0[date]crwdne6554273:0</value>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions_SebAccountFile" xml:space="preserve">
+    <value>crwdns6554274:0crwdne6554274:0</value>
+    <comment>Only translate to languages where SEB is active.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
+    <value>crwdns6554275:0{0:N0}crwdnd6554275:0{1:N0}crwdnd6554275:0{2}crwdnd6554275:0{3:N0}crwdne6554275:0</value>
+    <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
+    <value>crwdns6554276:0crwdne6554276:0</value>
+  </data>
+  <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
+    <value>crwdns6554277:0crwdne6554277:0</value>
+    <comment>The name of the expected file for uploading.</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
+    <value>crwdns6554278:0crwdne6554278:0</value>
+    <comment>Displayed as header after successful processing</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader_ErrorBalance" xml:space="preserve">
+    <value>crwdns6554279:0crwdne6554279:0</value>
+    <comment>Displayed as header after a good processing that ended in sync failure</comment>
+  </data>
+  <data name="UploadBankFiles_FileType" xml:space="preserve">
+    <value>crwdns6554280:0crwdne6554280:0</value>
+    <comment>can be Account Statement or Payments File</comment>
+  </data>
+  <data name="UploadBankFiles_ImportError" xml:space="preserve">
+    <value>crwdns6554281:0crwdne6554281:0</value>
+    <comment>Displayed as header on import failure</comment>
+  </data>
+  <data name="UploadBankFiles_ImportResults" xml:space="preserve">
+    <value>crwdns6554282:0{0:N0}crwdnd6554282:0{1:N0}crwdnd6554282:0{2}crwdnd6554282:0{3:N0}crwdne6554282:0</value>
+    <comment>Displayed on successful import. Assumes plural among all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_Info" xml:space="preserve">
+    <value>crwdns6554283:0crwdne6554283:0</value>
+    <comment>Displayed in sidebar on page.</comment>
+  </data>
+  <data name="UploadBankFiles_Instructions" xml:space="preserve">
+    <value>crwdns6554284:0crwdne6554284:0</value>
+  </data>
+  <data name="UploadBankFiles_PageTitle" xml:space="preserve">
+    <value>crwdns6554285:0crwdne6554285:0</value>
+    <comment>Displayed above main content.</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentAllDuplicates" xml:space="preserve">
+    <value>crwdns6554286:0crwdne6554286:0</value>
+  </data>
+  <data name="UploadBankFiles_PaymentCount" xml:space="preserve">
+    <value>crwdns6554287:0{0}crwdne6554287:0</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentFileUploadedHeader" xml:space="preserve">
+    <value>crwdns6554288:0crwdne6554288:0</value>
+  </data>
+  <data name="UploadBankFiles_PaymentGroupCount" xml:space="preserve">
+    <value>crwdns6554289:0{0}crwdne6554289:0</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentsFile" xml:space="preserve">
+    <value>crwdns6554290:0crwdne6554290:0</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary1" xml:space="preserve">
+    <value>crwdns6554291:0{0}crwdne6554291:0</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary2" xml:space="preserve">
+    <value>crwdns6554292:0{0}crwdnd6554292:0{1:N2}crwdnd6554292:0{2}crwdnd6554292:0{3}crwdne6554292:0</value>
+    <comment>like EUR 2,102.00 in 3 payments across 2 groups </comment>
+  </data>
+  <data name="UploadBankFiles_PaymentSummaryDuplicates" xml:space="preserve">
+    <value>crwdns6554293:0{0}crwdnd6554293:0{1}crwdne6554293:0</value>
+  </data>
+  <data name="UploadBankFiles_Processing" xml:space="preserve">
+    <value>crwdns6554294:0crwdne6554294:0</value>
+  </data>
+  <data name="UploadBankFiles_ProcessingComplete" xml:space="preserve">
+    <value>crwdns6554295:0crwdne6554295:0</value>
+  </data>
+  <data name="UploadBankFiles_ResultsBad" xml:space="preserve">
+    <value>crwdns6554296:0crwdne6554296:0</value>
+    <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsGood" xml:space="preserve">
+    <value>crwdns6554297:0{0:N0}crwdnd6554297:0{1:N0}crwdnd6554297:0{2:yyyy-MMM-dd}crwdnd6554297:0{3:yyyy-MMM-dd}crwdne6554297:0</value>
+    <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
+    <value>crwdns6554298:0{0:N0}crwdnd6554298:0{1:N0}crwdnd6554298:0{3}crwdnd6554298:0{2:N2}crwdne6554298:0</value>
+    <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded. 2 is the diff, 3 is the currency.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
+    <value>crwdns6554299:0crwdne6554299:0</value>
+    <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectBankAndAccount" xml:space="preserve">
+    <value>crwdns6554300:0crwdne6554300:0</value>
+  </data>
+  <data name="UploadBankFiles_SelectBankFileType" xml:space="preserve">
+    <value>crwdns6554301:0crwdne6554301:0</value>
+    <comment>Header above several bank logos, prompting a selection of bank.</comment>
+  </data>
+  <data name="UploadBankFiles_UploadAnother" xml:space="preserve">
+    <value>crwdns6554302:0crwdne6554302:0</value>
+    <comment>Displayed as header after uploading one file</comment>
+  </data>
+  <data name="UploadBankFiles_UploadBankFile" xml:space="preserve">
+    <value>crwdns6554303:0crwdne6554303:0</value>
+    <comment>Displayed as header above download instructions / upload form</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterDifference" xml:space="preserve">
+    <value>crwdns6554304:0crwdne6554304:0</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterLedgerBalance" xml:space="preserve">
+    <value>crwdns6554305:0crwdne6554305:0</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterTotal" xml:space="preserve">
+    <value>crwdns6554306:0crwdne6554306:0</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAction" xml:space="preserve">
+    <value>crwdns6554307:0crwdne6554307:0</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
+    <value>crwdns6554308:0crwdne6554308:0</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
+    <value>crwdns6554309:0crwdne6554309:0</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderExpectedCloseDate" xml:space="preserve">
+    <value>crwdns6554310:0crwdne6554310:0</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderId" xml:space="preserve">
+    <value>crwdns6554311:0crwdne6554311:0</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderOpenedDate" xml:space="preserve">
+    <value>crwdns6554312:0crwdne6554312:0</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
+    <value>crwdns6554313:0crwdne6554313:0</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Header" xml:space="preserve">
+    <value>crwdns6554314:0crwdne6554314:0</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Info" xml:space="preserve">
+    <value>crwdns6554315:0crwdne6554315:0</value>
+  </data>
+  <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
+    <value>crwdns6554316:0crwdne6554316:0</value>
+  </data>
+  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
+    <value>crwdns6554317:0crwdne6554317:0</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
+    <value>crwdns6554318:0crwdne6554318:0</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
+    <value>crwdns6554319:0crwdne6554319:0</value>
+  </data>
+  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
+    <value>crwdns6554320:0crwdne6554320:0</value>
+  </data>
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>crwdns6554321:0crwdne6554321:0</value>
+  </data>
+  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
+    <value>crwdns6554322:0crwdne6554322:0</value>
+    <comment>foo, bar replaced on load with actual values</comment>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
+    <value>crwdns6554323:0crwdne6554323:0</value>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
+    <value>crwdns6554324:0crwdne6554324:0</value>
+  </data>
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>crwdns6554325:0crwdne6554325:0</value>
+  </data>
+  <data name="AccountPlan_Edit_Header" xml:space="preserve">
+    <value>crwdns6554326:0crwdne6554326:0</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
+    <value>crwdns6554327:0crwdne6554327:0</value>
+    <comment>Automatic connections to bank, blockchain etc.</comment>
+  </data>
+  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
+    <value>crwdns6554328:0crwdne6554328:0</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
+    <value>crwdns6554329:0crwdne6554329:0</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialValue" xml:space="preserve">
+    <value>crwdns6554330:0crwdne6554330:0</value>
+    <comment>For asset and liability accounts - the value going into Swarmops first ledger year</comment>
+  </data>
+  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
+    <value>crwdns6554331:0crwdne6554331:0</value>
+  </data>
+  <data name="AccountPlan_ExpensesBudgetsAreNegaive" xml:space="preserve">
+    <value>crwdns6554332:0crwdne6554332:0</value>
+    <comment>Displayed as a message box</comment>
+  </data>
+  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
+    <value>crwdns6554333:0crwdne6554333:0</value>
+  </data>
+  <data name="AccountPlan_Header_Balance" xml:space="preserve">
+    <value>crwdns6554334:0crwdne6554334:0</value>
+  </data>
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>crwdns6554335:0crwdne6554335:0</value>
+  </data>
+  <data name="AccountPlan_Header_Edit" xml:space="preserve">
+    <value>crwdns6554336:0crwdne6554336:0</value>
+  </data>
+  <data name="AccountPlan_Header_Flags" xml:space="preserve">
+    <value>crwdns6554337:0crwdne6554337:0</value>
+  </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>crwdns6554338:0crwdne6554338:0</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>crwdns6554339:0crwdne6554339:0</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>crwdns6554340:0crwdne6554340:0</value>
+  </data>
+  <data name="InspectLedgers_FlaggingNotAvailable" xml:space="preserve">
+    <value>crwdns6554341:0crwdne6554341:0</value>
+  </data>
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>crwdns6554342:0crwdne6554342:0</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>crwdns6554343:0crwdne6554343:0</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>crwdns6554344:0crwdne6554344:0</value>
+  </data>
+  <data name="InspectLedgers_InspectNotAvailable" xml:space="preserve">
+    <value>crwdns6554345:0crwdne6554345:0</value>
+  </data>
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>crwdns6554346:0crwdne6554346:0</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>crwdns6554347:0crwdne6554347:0</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>crwdns6554348:0crwdne6554348:0</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>crwdns6554349:0crwdne6554349:0</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>crwdns6554350:0crwdne6554350:0</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>crwdns6554351:0crwdne6554351:0</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+</root>
