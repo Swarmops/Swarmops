@@ -13,7 +13,7 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Security
 {
-    public partial class BitId : System.Web.UI.Page
+    public partial class FinalizeLogin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

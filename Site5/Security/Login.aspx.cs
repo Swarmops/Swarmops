@@ -42,6 +42,8 @@ namespace Swarmops.Pages.Security
             {
                 // We should ONLY get here if we're getting a BitId by Webform submission.
 
+                Persistence.Key["BitId_RawData"] = Request.ToRaw();
+
                 if (Request.Params["address"] != null)
                 {
                     // yes, indeed looks like it
@@ -138,10 +140,10 @@ namespace Swarmops.Pages.Security
 
             GuidCache.Set(bitIdUri + "-Logon", "Unauth");
 
-            // TODO: need to NOT FUCKING USE GOOGLE CHARTS for this but bring home a free QR package
+            // TODO: need to NOT USE GOOGLE CHARTS for this but bring home a free QR package
 
             this.ImageBitIdQr.ImageUrl =
-                "http://chart.apis.google.com/chart?cht=qr&chs=400x400&chl=" + HttpUtility.UrlEncode(bitIdUri);
+                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" + HttpUtility.UrlEncode(bitIdUri);
         }
 
 
@@ -188,13 +190,13 @@ namespace Swarmops.Pages.Security
                 // TODO: Error codes
 
                 response.StatusCode = 200;
-                response.ContentType = "application/json";
+                response.SetJson();
                 response.Write("{\"address\":\"" + credentials.address + "\",\"signature\":\"" + credentials.signature + "\"}");
                 response.End();
             }
             else
             {
-                // TODO: return fuckoff code (technical term)
+                response.StatusCode = 401; // Be a bit more friendly in your return codes
             }
         }
 

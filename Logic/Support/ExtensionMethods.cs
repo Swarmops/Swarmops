@@ -1,7 +1,28 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 
 namespace System.Web.ExtensionMethods
 {
+    /// <summary>
+    /// Extension methods for HTTP Response.
+    /// </summary>
+    public static class HttpResponseExtensions
+    {
+        /// <summary>
+        /// Set the response to be JSON format, and add appropriate headers.
+        /// </summary>
+        /// <param name="response">None.</param>
+        public static void SetJson(this HttpResponse response)
+        {
+            response.ContentType = "application/json";
+            response.CacheControl = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0";  // IE dumbfixes
+            response.AddHeader("Last-Modified", DateTime.UtcNow.ToString(CultureInfo.InvariantCulture));
+            response.AddHeader("Pragma", "no-cache");
+        }
+    }
+
+
+
     /// <summary>
     /// Extension methods for HTTP Request.
     /// <remarks>

@@ -52,7 +52,7 @@
 	            success: function (msg) {
 	                if (msg.d) {
                         // Login confirmed, fetch auth cookie from nonce in-context
-	                    document.location = "/Security/BitId.aspx?Nonce=" + bitIdNonce;
+	                    document.location = "/Security/FinalizeLogin.aspx?Nonce=" + bitIdNonce;
 	                } else {
                         // Retry twice per second
 	                    setTimeout(function () {
@@ -112,8 +112,11 @@
     
     <div class="box">
         <div class="content" style="line-height:24px">
-            <div style="float:left">User<br/>Pass</div><div style="float:right"><input type="text" />&nbsp;<br/><input type="text"/></div>
-            <div style="clear:both"></div>
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr><td>User&nbsp;&nbsp;</td><td><input type="text" /></td></tr>
+                <tr><td>Pass&nbsp;&nbsp;</td><td><input type="text" /></td></tr>
+                <tr><td>2FA&nbsp;&nbsp;</td><td><input type="text" /></td></tr>
+            </table>
         </div>
     </div>
     
