@@ -36,6 +36,8 @@ namespace Swarmops.Pages.Security
                 return;
             }
 
+            Persistence.Key["Debug_RawData"] = Request.ToRaw();
+
             // Check for POST data - for BitId via Webform
 
             if (Request.HttpMethod == "POST")
