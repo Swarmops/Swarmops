@@ -352,6 +352,9 @@
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Communications.Transmission.NotificationPayload.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Financial.FinancialTransactionTagSetTypesStock.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Swarm.DashboardTodos.fr-FR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\is-IS\Logic.Communications.Transmission.NotificationPayload.is-IS.resx" />
+    <EmbeddedResource Include="App_GlobalResources\is-IS\Logic.Financial.FinancialTransactionTagSetTypesStock.is-IS.resx" />
+    <EmbeddedResource Include="App_GlobalResources\is-IS\Logic.Swarm.DashboardTodos.is-IS.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Communications.Transmission.NotificationPayload.it-IT.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Financial.FinancialTransactionTagSetTypesStock.it-IT.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Swarm.DashboardTodos.it-IT.resx" />
@@ -376,15 +379,18 @@
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Communications.Transmission.NotificationPayload.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Financial.FinancialTransactionTagSetTypesStock.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Swarm.DashboardTodos.pl-PL.resx" />
-    <EmbeddedResource Include="App_GlobalResources\pt-PT\Logic.Communications.Transmission.NotificationPayload.pt-PT.resx" />
-    <EmbeddedResource Include="App_GlobalResources\pt-PT\Logic.Financial.FinancialTransactionTagSetTypesStock.pt-PT.resx" />
-    <EmbeddedResource Include="App_GlobalResources\pt-PT\Logic.Swarm.DashboardTodos.pt-PT.resx" />
+    <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Communications.Transmission.NotificationPayload.pt-BR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Financial.FinancialTransactionTagSetTypesStock.pt-BR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Swarm.DashboardTodos.pt-BR.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Communications.Transmission.NotificationPayload.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Financial.FinancialTransactionTagSetTypesStock.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Swarm.DashboardTodos.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Communications.Transmission.NotificationPayload.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Financial.FinancialTransactionTagSetTypesStock.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Swarm.DashboardTodos.sv-SE.resx" />
+    <EmbeddedResource Include="App_GlobalResources\zh-CN\Logic.Communications.Transmission.NotificationPayload.zh-CN.resx" />
+    <EmbeddedResource Include="App_GlobalResources\zh-CN\Logic.Financial.FinancialTransactionTagSetTypesStock.zh-CN.resx" />
+    <EmbeddedResource Include="App_GlobalResources\zh-CN\Logic.Swarm.DashboardTodos.zh-CN.resx" />
     <EmbeddedResource Include="Security\App_LocalResources\Authentication.fi-FI.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
