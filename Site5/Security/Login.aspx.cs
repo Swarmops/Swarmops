@@ -12,6 +12,7 @@ using System.Web.Services;
 using System.Web.SessionState;
 using System.Web.UI;
 using Swarmops.Basic.Enums;
+using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
@@ -36,7 +37,7 @@ namespace Swarmops.Pages.Security
                 return;
             }
 
-            Persistence.Key["Debug_RawData"] = Request.ToRaw();
+            // Persistence.Key["Debug_RawData"] = Request.ToRaw();
 
             // Check for POST data - for BitId via Webform
 
@@ -65,7 +66,7 @@ namespace Swarmops.Pages.Security
                     BitIdCredentials credentials =
                         new JavaScriptSerializer().Deserialize<BitIdCredentials>(
                             new StreamReader(Request.InputStream).ReadToEnd());
-                        // TODO: untested but seems to work. Throws?
+                    // TODO: untested but seems to work. Throws?
 
                     ProcessRespondBitId(credentials, Response);
                     return;
@@ -193,7 +194,8 @@ namespace Swarmops.Pages.Security
 
                 response.StatusCode = 200;
                 response.SetJson();
-                response.Write("{\"address\":\"" + credentials.address + "\",\"signature\":\"" + credentials.signature + "\"}");
+                response.Write("{\"address\":\"" + credentials.address + "\",\"signature\":\"" + credentials.signature +
+                               "\"}");
                 response.End();
             }
             else
@@ -237,6 +239,37 @@ namespace Swarmops.Pages.Security
                 throw;
             }
         }
+
+        [WebMethod]
+        // ReSharper disable once InconsistentNaming
+        public static bool TestCredentials(string credentialsLogin, string credentialsPass, string credentials2FA, string logonUriEncoded)
+        {
+            if (!string.IsNullOrEmpty(credentialsLogin.Trim()) && !string.IsNullOrEmpty(credentialsPass.Trim()))
+            {
+                string logonUri = HttpUtility.UrlDecode(logonUriEncoded);
+
+                try
+                {
+                    Person authenticatedPerson = Swarmops.Logic.Security.Authentication.Authenticate(credentialsLogin,
+                        credentialsPass);
+
+                    // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
+
+                    GuidCache.Set(logonUri + "-LoggedOn",
+                        authenticatedPerson.Identity.ToString(CultureInfo.InvariantCulture) + ",1,,AuthPlain");
+                    return true;
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    return false;
+                }
+
+            }
+
+            return false;
+        }
+
+
 
         protected override void OnPreInit(EventArgs e)
         {

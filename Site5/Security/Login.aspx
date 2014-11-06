@@ -8,6 +8,7 @@
     <!-- jQuery and plugins -->
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js"></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
@@ -40,13 +41,70 @@
 	            recheckLogin();
 	        }, 1000);
 
+
+	        $('.InputManualCredentials').on('input', function () {
+	            onInputCredentials();
+	        });
+
+	        $('#TextLogin').focus();
+
 	    });  // end of document.ready
 
+
+	    var manualCredentialsTestTrigger;
+
+	    function onInputCredentials() {
+	        clearTimeout(manualCredentialsTestTrigger);
+
+	        manualCredentialsTestTrigger = setTimeout(function () {
+	            testManualCredentials();
+	        }, 1000);
+	    }
+
+	    function testManualCredentials() {
+	        // Submit credentials to server. If valid, they will validate through the recheckLogin call.
+
+	        var jsonData = {};
+            jsonData.credentialsLogin = $('#TextLogin').val();
+	        jsonData.credentialsPass = $('#TextPass').val();
+	        jsonData.credentials2FA = $('#Text2FA').val();
+	        jsonData.logonUriEncoded = bitIdUri;
+
+	        $.ajax({
+	            type: "POST",
+	            url: "Login.aspx/TestCredentials",
+	            data: $.toJSON(jsonData),
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (msg) {
+	                if (msg.d) {
+	                    alert('Logging in, please wait...');
+	                } else {
+                        // do nothing
+	                }
+	            },
+	            error: function (msg) {
+	                // retry after a second
+	                alert(msg.responseText);
+	                console.log(msg);
+	                setTimeout(function () {
+	                    testManualCredentials();
+	                }, 1000);
+	            }
+
+	        });
+	    }
+
 	    function recheckLogin() {
+
+	        var jsonData = {};
+	        jsonData.uriEncoded = bitIdUri;
+	        jsonData.nonce = bitIdNonce;
+
 	        $.ajax({
 	            type: "POST",
 	            url: "Login.aspx/TestLogin",
-	            data: '{"uriEncoded": "' + bitIdUri + '","nonce": "' + bitIdNonce + '"}',
+	            data: $.toJSON(jsonData),
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
@@ -113,9 +171,9 @@
     <div class="box">
         <div class="content" style="line-height:24px">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr><td>User&nbsp;&nbsp;</td><td><input type="text" /></td></tr>
-                <tr><td>Pass&nbsp;&nbsp;</td><td><input type="text" /></td></tr>
-                <tr><td>2FA&nbsp;&nbsp;</td><td><input type="text" /></td></tr>
+                <tr><td>User&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="InputManualCredentials" type="text" /></td></tr>
+                <tr><td>Pass&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="InputManualCredentials" type="password" /></td></tr>
+                <tr style="display:none"><td>2FA&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
             </table>
         </div>
     </div>
