@@ -85,8 +85,6 @@
 	            },
 	            error: function (msg) {
 	                // retry after a second
-	                alert(msg.responseText);
-	                console.log(msg);
 	                setTimeout(function () {
 	                    testManualCredentials();
 	                }, 1000);
