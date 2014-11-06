@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
+using System.Web;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
@@ -30,6 +31,28 @@ namespace Swarmops.Site.Pages.Ledgers
             this.PageTitle = Resources.Pages_Ledgers.UploadBankFiles_PageTitle;
             this.PageIcon = "iconshock-bank";
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+
+            // HACK HACK: If not a supported hardcoded org, bail out like a chicken
+
+            // UGLY UGLY UGLY
+
+            bool supportedHardcode = false;
+
+            if (PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE) && CurrentOrganization.Identity == 1) // PPSE
+            {
+                supportedHardcode = true;
+            }
+            if (PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) && CurrentOrganization.Identity == 7) // EPA
+            {
+                supportedHardcode = true;
+            }
+
+            if (!supportedHardcode)
+            {
+                Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode("There are no asset accounts set up for automation, so no accounts support data upload at this time. Returning to Dashboard.")));
+                Response.Redirect("/", true);
+            }
+
 
             if (!IsPostBack)
             {
