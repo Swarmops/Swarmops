@@ -25,7 +25,7 @@ Stable releases are built every six months, at the end of every calendar half-ye
 Installation
 ------------
 
-If you're daring enough to install a pilot of Swarmops, you're most welcome to do so. Using a fresh Debian or Ubuntu server, everything running as root:
+If you're daring enough to install a pilot of Swarmops, you're most welcome to do so. It's built for and tested on Ubuntu (Trusty+) or Debian (Wheezy+) servers. If you're running Debian Wheezy, you'll first need to upgrade Mono as instructed on [this page](http://www.mono-project.com/docs/getting-started/install/linux/) or Swarmops won't run. Then, run this as root:
 
 > `wget http://packages.swarmops.com/swarmops-packages.gpg.key`  
 > `apt-key add swarmops-packages.gpg.key`
