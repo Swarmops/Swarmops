@@ -542,4 +542,12 @@
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
+  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;The payments file was &lt;strong&gt;successfully imported.&lt;/strong&gt; {1:N0} payment(s) in {0:N0} group(s), totalling {3} {2:N2}, were imported.&lt;/p&gt;</value>
+    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;The payments file was &lt;strong&gt;successfully imported.&lt;/strong&gt; {1:N0} payment(s) in {0:N0} group(s), totalling {3} {2:N2}, were imported.&lt;/p&gt;&lt;p&gt;(There were also {5:N0} duplicate payment(s) in {4:N0} group(s).)&lt;/p&gt;</value>
+    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
+  </data>
 </root>

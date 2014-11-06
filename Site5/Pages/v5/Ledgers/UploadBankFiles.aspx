@@ -12,7 +12,7 @@
 
     <style type="text/css">
         
-        /* custom styles were used in Telerik version of page */
+        /* add custom styles here */
          
     </style>
 
@@ -95,6 +95,7 @@
                                     $('#DivUploadResultsGood').hide();
                                     $('#DivUploadResultsBad').hide();
                                     $('#DivUploadResultsQuestionable').hide();
+                                    $('#DivUploadResultsPayments').hide();
 
                                     $('#DivUploadResults' + msg2.d.Category + 'Text').html(msg2.d.Html);
                                     $('#DivUploadResults' + msg2.d.Category).show();
@@ -168,6 +169,10 @@
             <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-warning-96px.png" /></div><div id="DivUploadResultsQuestionableText"></div>
         </div>
         
+        <div id="DivUploadResultsPayments" style="display:none">
+            <div style="float:left;margin-right:10px"><img src="/Images/Icons/iconshock-cashregister-96px.png" /></div><div id="DivUploadResultsPaymentsText"></div>
+        </div>
+        
         <br clear="all"/>
     </div>
 
@@ -177,13 +182,11 @@
         
             <div class="entryFields">
                 <asp:DropDownList runat="server" ID="DropAccounts"/>
-                (Account statement)<br/>
-                <span id="SpanInstructions"></span><br/>
+                <span id="SpanInstructions"></span>&thinsp;<br/>
                 <Swarmops5:FileUpload runat="server" ID="UploadFile" Filter="NoFilter" DisplayCount="8" HideTrigger="true" ClientUploadCompleteCallback="uploadCompletedCallback" /></div>
         
             <div class="entryLabels">
                 <asp:Label runat="server" ID="LabelBankAccount" /><br/>
-                <asp:Label runat="server" ID="LabelFileType" /><br/>
                 <asp:Label runat="server" ID="LabelInstructions" /><br/>
                 <asp:Label runat="server" ID="LabelUploadBankFile" />
             </div>

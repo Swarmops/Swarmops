@@ -60,7 +60,6 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 this.InfoBoxLiteral = Resources.Pages_Ledgers.UploadBankFiles_Info;
                 this.LabelBankAccount.Text = Resources.Pages_Ledgers.UploadBankFiles_BankAccount;
-                this.LabelFileType.Text = Resources.Pages_Ledgers.UploadBankFiles_FileType;
                 this.LabelInstructions.Text = Resources.Pages_Ledgers.UploadBankFiles_Instructions;
                 this.LabelProcessing.Text = Resources.Pages_Ledgers.UploadBankFiles_Processing;
                 this.LabelProcessingComplete.Text = Resources.Pages_Ledgers.UploadBankFiles_ProcessingComplete;
@@ -206,7 +205,7 @@ namespace Swarmops.Site.Pages.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             int accountId = Int32.Parse(accountIdString);
-            BankFileType fileType = BankFileType.AccountStatement;
+            BankFileType fileType = BankFileType.Unknown;
 
             if (accountId < 0)
             {
@@ -277,7 +276,9 @@ namespace Swarmops.Site.Pages.Ledgers
         {
             ReportedImportResults results = new ReportedImportResults();
             ImportResultsCategory category = (ImportResultsCategory) GuidCache.Get(guid + "-Result");
-            ImportResults resultDetail = (ImportResults) GuidCache.Get(guid + "-ResultDetails");
+            ImportResults resultDetail = GuidCache.Get(guid + "-ResultDetails") as ImportResults;
+            ImportedPaymentData paymentsDetail = GuidCache.Get(guid + "-ResultDetails") as ImportedPaymentData;
+
             string html = string.Empty;
 
             switch (category)
@@ -294,6 +295,23 @@ namespace Swarmops.Site.Pages.Ledgers
                     break;
                 case ImportResultsCategory.Bad:
                     html = Resources.Pages_Ledgers.UploadBankFiles_ResultsBad;
+                    break;
+                case ImportResultsCategory.Payments:
+                    if (paymentsDetail.DuplicatePaymentCount > 0)
+                    {
+                        html = String.Format(Resources.Pages_Ledgers.UploadBankFiles_ResultsPaymentsWithDupes,
+                            paymentsDetail.PaymentGroupCount, paymentsDetail.PaymentCount,
+                            paymentsDetail.PaymentCentsTotal/100.0,
+                            paymentsDetail.Currency.Code, paymentsDetail.DuplicatePaymentGroupCount,
+                            paymentsDetail.DuplicatePaymentCount);
+                    }
+                    else
+                    {
+                        html = String.Format(Resources.Pages_Ledgers.UploadBankFiles_ResultsPayments,
+                            paymentsDetail.PaymentGroupCount, paymentsDetail.PaymentCount,
+                            paymentsDetail.PaymentCentsTotal / 100.0,
+                            paymentsDetail.Currency.Code);
+                    }
                     break;
                 default:
                     throw new NotImplementedException("Unhandled ImportResultCategory");
@@ -314,8 +332,11 @@ namespace Swarmops.Site.Pages.Ledgers
         {
             string guid = ((ProcessThreadArguments) args).Guid;
             BankFileType fileType = ((ProcessThreadArguments) args).FileType;
+            Person currentUser = ((ProcessThreadArguments) args).CurrentUser;
+            Organization organization = ((ProcessThreadArguments) args).Organization;
 
             Documents documents = Documents.RecentFromDescription(guid);
+            GuidCache.Set(guid + "-Progress", 1); // to make sure results aren't repeated from last file
             GuidCache.Set(guid + "-Result", ImportResultsCategory.Bad); // default - this is what happens if exception
 
             if (documents.Count != 1)
@@ -331,6 +352,42 @@ namespace Swarmops.Site.Pages.Ledgers
 
                 ExternalBankData externalData = new ExternalBankData();
                 externalData.Profile = account.ExternalBankDataProfile;
+
+                if (fileType == BankFileType.Unknown)
+                {
+                    using (StreamReader reader = uploadedDoc.GetReader(1252))
+                    {
+                        try
+                        {
+                            externalData.LoadData(reader, organization);
+                            // catch here and set result to BAD
+                            ImportResults results = ProcessImportedData(externalData, (ProcessThreadArguments)args);
+
+                            GuidCache.Set(guid + "-ResultDetails", results);
+                            if (results.AccountBalanceMatchesBank)
+                            {
+                                GuidCache.Set(guid + "-Result", ImportResultsCategory.Good);
+                            }
+                            else
+                            {
+                                GuidCache.Set(guid + "-Result", ImportResultsCategory.Questionable);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            reader.BaseStream.Position = 0; // rewind stream to retry parse with different file type
+
+                            // Try a payment file instead
+                            ImportedPaymentData paymentData = ImportBankgiroSE(reader, currentUser, organization);
+
+                            // Apparently, we were successful
+
+                            GuidCache.Set(guid + "-Result", ImportResultsCategory.Payments);
+                            GuidCache.Set(guid + "-ResultDetails", paymentData);
+                        }
+
+                    }
+                }
 
                 if (fileType == BankFileType.AccountStatement)
                 {
@@ -721,7 +778,8 @@ namespace Swarmops.Site.Pages.Ledgers
             Unknown = 0,
             Good,
             Questionable,
-            Bad
+            Bad,
+            Payments
         }
 
 
@@ -770,13 +828,10 @@ namespace Swarmops.Site.Pages.Ledgers
         }
 
 
-        protected ImportedPaymentData ImportBankgiroSE(Stream fileStream)
+        // ReSharper disable once InconsistentNaming
+        protected static ImportedPaymentData ImportBankgiroSE(StreamReader reader, Person currentUser, Organization organization)
         {
-            string contents = string.Empty;
-            using (TextReader reader = new StreamReader(fileStream, Encoding.GetEncoding(1252)))
-            {
-                contents = reader.ReadToEnd();
-            }
+            string contents = reader.ReadToEnd();
 
             string[] lines = contents.Split('\n');
 
@@ -902,13 +957,13 @@ namespace Swarmops.Site.Pages.Ledgers
 
                         // Dupe check
 
-                        PaymentGroup dupe = PaymentGroup.FromTag(this.CurrentOrganization, tag);
+                        PaymentGroup dupe = PaymentGroup.FromTag(organization, tag);
 
                         if (dupe == null)
                         {
                             // Commit all recorded payments
 
-                            PaymentGroup newGroup = PaymentGroup.Create(this.CurrentOrganization, timestamp, currency, this.CurrentUser);
+                            PaymentGroup newGroup = PaymentGroup.Create(organization, timestamp, currency, currentUser);
                             result.PaymentGroupCount++;
 
                             Int64 reportedAmountCents = Int64.Parse(line.Substring(50, 18), CultureInfo.InvariantCulture); // may differ because of duplicates
