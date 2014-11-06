@@ -78,7 +78,7 @@
 	            dataType: "json",
 	            success: function (msg) {
 	                if (msg.d) {
-	                    alert('Logging in, please wait...');
+	                    alert("<asp:Literal ID="LiteralLoginSuccess" runat="server" />");
 	                } else {
                         // do nothing
 	                }
@@ -171,9 +171,9 @@
     <div class="box">
         <div class="content" style="line-height:24px">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr><td>User&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="InputManualCredentials" type="text" /></td></tr>
-                <tr><td>Pass&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="InputManualCredentials" type="password" /></td></tr>
-                <tr style="display:none"><td>2FA&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
+                <tr><td><asp:Literal ID="LiteralCredentialsUser" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="InputManualCredentials" type="text" /></td></tr>
+                <tr><td><asp:Literal ID="LiteralCredentialsPass" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="InputManualCredentials" type="password" /></td></tr>
+                <tr style="display:none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
             </table>
         </div>
     </div>

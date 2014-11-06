@@ -178,6 +178,9 @@
   <data name="Login_Info" xml:space="preserve">
     <value>Login to Swarmops using your bitid-enabled bitcoin wallet. You do not need any funds in it. If you don't have a bitid-enabled bitcoin wallet, you can log in manually using a legacy username and password. (Your username is your name or email.)</value>
   </data>
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Logging in, please wait...</value>
+  </data>
   <data name="Login_ManualLogin" xml:space="preserve">
     <value>Manual Login</value>
   </data>

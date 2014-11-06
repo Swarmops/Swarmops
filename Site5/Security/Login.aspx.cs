@@ -288,6 +288,10 @@ namespace Swarmops.Pages.Security
             this.LabelSidebarManualLoginHeader.Text = Resources.Pages_Security.Login_ManualLogin;
             this.LabelHeader.Text = Resources.Pages_Security.Login_Header;
             this.LabelSidebarResetPassword.Text = Resources.Pages_Security.Login_ResetPassword;
+            this.LiteralCredentialsUser.Text = Resources.Pages_Security.Login_Username;
+            this.LiteralCredentialsPass.Text = Resources.Pages_Security.Login_Password;
+            this.LiteralCredentials2FA.Text = Resources.Pages_Security.Login_GoogleAuthenticatorCode;
+            this.LiteralLoginSuccess.Text = Resources.Pages_Security.Login_LoggingIn;
 
         }
 
