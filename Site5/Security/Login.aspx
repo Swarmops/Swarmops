@@ -78,7 +78,7 @@
 	            dataType: "json",
 	            success: function (msg) {
 	                if (msg.d) {
-	                    alert("<asp:Literal ID="LiteralLoginSuccess" runat="server" />");
+	                    // alert("<asp:Literal ID="LiteralLoginSuccess" runat="server" />");  // Modal on Chrome, so need a shaded div instead
 	                } else {
                         // do nothing
 	                }
