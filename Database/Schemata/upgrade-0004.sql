@@ -6,10 +6,10 @@ CREATE TABLE `FinancialAccountAutomationProfiles` (
   `DataProviderTypeId` INT NOT NULL,
   `ProvidedBy` VARCHAR(512) NOT NULL,
   `DateTimeUpdatedUtc` DATETIME NOT NULL,
-  PRIMARY KEY (`FinancialAccountAutomationProfileId`))
-  INDEX `Index_DataProviderTypeId` (`DataProviderTypeId` ASC)),
-  INDEX `Index_AutomationTypeId` (`FinancialAccountAutomationProfileTypeId` ASC)),
-  INDEX `Index_Updated` (`DateTimeUpdatedUtc` ASC));
+  PRIMARY KEY (`FinancialAccountAutomationProfileId`),
+  INDEX `Index_DataProviderTypeId` (`DataProviderTypeId` ASC),
+  INDEX `Index_AutomationTypeId` (`FinancialAccountAutomationProfileTypeId` ASC),
+  INDEX `Index_Updated` (`DateTimeUpdatedUtc` ASC),
   INDEX `Index_Name` (`Name` ASC))
 
 #
@@ -18,7 +18,7 @@ CREATE TABLE `FinancialAccountAutomationProfiles` (
 CREATE TABLE `FinancialAccountAutomationTypes` (
   `FinancialAccountAutomationTypeId` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(128) NOT NULL,
-  PRIMARY KEY (`FinancialAccountAutomationTypeId`)),
+  PRIMARY KEY (`FinancialAccountAutomationTypeId`),
   INDEX `Index_Name` (`Name` ASC))
 
 
@@ -28,7 +28,7 @@ CREATE TABLE `FinancialAccountAutomationTypes` (
 CREATE TABLE `DataProviderTypes` (
   `DataProviderTypeId` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(128) NOT NULL,
-  PRIMARY KEY (`DataProviderTypeId`)),
+  PRIMARY KEY (`DataProviderTypeId`),
   INDEX `Index_Name` (`Name` ASC))
 
 
@@ -53,7 +53,7 @@ CREATE TABLE `FieldSetData` (
   `DataKeyId` INT NOT NULL,
   `DataValue` VARCHAR(2048) NOT NULL,
   `DateTimeUpdatedUtc` DATETIME NOT NULL,
-  PRIMARY KEY (`FieldSetId`, `DataKey`, `FieldSetTypeId`),
+  PRIMARY KEY (`FieldSetId`, `DataKeyId`, `FieldSetTypeId`),
   INDEX `Index_Data` (`DataValue` ASC))
 
 
@@ -249,7 +249,7 @@ BEGIN
 
   ELSE
 
-    UPDATE FieldSetData SET FieldSetData.DataValue=dataValue,FieldSetData.UpdatedDateTimeUtc=updatedDateTimeUtc
+    UPDATE FieldSetData SET DataValue=dataValue,UpdatedDateTimeUtc=updatedDateTimeUtc
       WHERE FieldSetData.FieldSetId=fieldSetId
       AND FieldSetData.FieldSetTypeId=fieldSetTypeId
       AND FieldSetData.DataKeyId=dataKeyId;
@@ -284,7 +284,7 @@ BEGIN
     THEN
 
       INSERT INTO FinancialAccountAutomationProfileCountries(FinancialAccountAutomationProfileId,CountryId)
-        VALUES (financialAccountAutomationProfileId,countryId)
+        VALUES (financialAccountAutomationProfileId,countryId);
 
     END IF;
 
