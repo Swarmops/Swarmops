@@ -245,11 +245,11 @@ BEGIN
   THEN
 
     INSERT INTO FieldSetData (FieldSetId,FieldSetTypeId,DataKeyId,DataValue,DateTimeUpdatedUtc)
-      VALUES (fieldSetId,fieldSetTypeId,dataKeyId,dataValue,dateTimeUpdatedUtc)
+      VALUES (fieldSetId,fieldSetTypeId,dataKeyId,dataValue,dateTimeUpdatedUtc);
 
   ELSE
 
-    UPDATE FieldSetData SET DataValue=dataValue,UpdatedDateTimeUtc=updatedDateTimeUtc
+    UPDATE FieldSetData SET FieldSetData.DataValue=dataValue,FieldSetData.UpdatedDateTimeUtc=updatedDateTimeUtc
       WHERE FieldSetData.FieldSetId=fieldSetId
       AND FieldSetData.FieldSetTypeId=fieldSetTypeId
       AND FieldSetData.DataKeyId=dataKeyId;
