@@ -119,7 +119,7 @@
   </resheader>
   <data name="EasternEurope" xml:space="preserve">
     <value>Eastern Europe</value>
-    <comment>(East of former Iron Curtain)</comment>
+    <comment>(East of southern tip of Sweden, roughly)</comment>
   </data>
   <data name="Europe" xml:space="preserve">
     <value>Europe</value>
@@ -134,7 +134,7 @@
   </data>
   <data name="WesternEurope" xml:space="preserve">
     <value>Western Europe</value>
-    <comment>(West of former Iron Curtain)</comment>
+    <comment>(West of southern tip of Sweden, roughly)</comment>
   </data>
   <data name="World" xml:space="preserve">
     <value>World</value>
