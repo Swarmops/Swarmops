@@ -1,10 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="ListFindPeople.aspx.cs" Inherits="Swarmops.Frontend.Pages.Swarm.ListFindPeople" %>
-<%@ Register src="~/Controls/v5/UI/ExternalScripts.ascx" tagname="ExternalScripts" tagprefix="Swarmops5" %>
 <%@ Register src="~/Controls/v5/Base/ComboGeographies.ascx" tagname="ComboGeographies" tagprefix="Swarmops5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-    <Swarmops5:ExternalScripts ID="ExternalScripts2" Package="easyui" Control="tree" runat="server" />
-    <Swarmops5:ExternalScripts ID="ExternalScripts1" Package="easyui" Control="datagrid" runat="server" />
 	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
     
     <script type="text/javascript"> 
