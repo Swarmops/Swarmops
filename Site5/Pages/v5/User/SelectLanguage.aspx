@@ -13,15 +13,16 @@
 
         function confirmTranslate() {
 
-            /* -- this function doesn't seem to exist?
             alertify.set({
                 labels: {
                     ok: "Proceed to Crowdin translation login",
                     cancel: "Do not proceed"
                 }
-            });*/
+            });
 
-            alertify.confirm("Thank you for helping to translate Swarmops.<br/><br/>As the dashboard reloads into on-site translation mode, you will be asked to sign into Crowdin, the swarm-powered translation tool. If you don't have an account at Crowdin, you can create one. Once logged in, you can translate Swarmops on-site into your language.<br/><br/>Click OK to continue logging into Crowdin or creating an account there.", function(response) {
+            alertify.set({ buttonFocus: "none" });
+
+            alertify.confirm("Thank you for helping to translate Swarmops.<br/><br/>As the dashboard reloads into on-site translation mode, you will be asked to sign into Crowdin, the swarm-powered translation tool. If you don't have an account at Crowdin, you can create one. Once logged in, you can translate Swarmops on-site into your language.<br/><br/>Do you want to continue logging into Crowdin or creating an account there?<br/><br/>", function(response) {
                 if (response) {
                     // ok
                     document.location = "/Pages/v5/User/SetCulture.aspx?CultureId=af-ZA";

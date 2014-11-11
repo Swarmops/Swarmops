@@ -29,7 +29,8 @@
 	<!-- style sheet, followed by script style sheets -->
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
     <link href="/Style/jquery.qtip.css" rel="stylesheet" type="text/css" />
-    <link href="/Style/alertify.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
     <link href="/Style/superfish.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
     
