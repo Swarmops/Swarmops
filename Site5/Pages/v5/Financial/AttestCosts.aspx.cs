@@ -34,6 +34,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             PopulateExpenses();
             // PopulateSalaries();
 
+            this.EasyUIControlsUsed = EasyUIControl.DataGrid;
+
             this.RepeaterLightboxItems.DataSource = _documentList;
             this.RepeaterLightboxItems.DataBind();
 

@@ -56,6 +56,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
             this.DbVersionRequired = 2; // Account reparenting
+
+            this.EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
+
         }
 
 

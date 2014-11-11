@@ -47,6 +47,8 @@ namespace Swarmops
             this.LabelPageTitle.Text = this.CurrentPageTitle;
             this.Page.Title = "Swarmops - " + this.CurrentPageTitle;
 
+            this.ExternalScriptEasyUI.Controls = EasyUIControlsUsed.ToString();
+
             this.LiteralSidebarInfo.Text = this.CurrentPageInfoBoxLiteral;
 
             // Set logo image. If custom image is installed, use it instead.

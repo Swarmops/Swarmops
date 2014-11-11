@@ -35,6 +35,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             _documentList = new List<RepeatedDocument>();
 
             PopulateExpenses();
+            this.EasyUIControlsUsed = EasyUIControl.DataGrid;
+
 
             this.RepeaterLightboxItems.DataSource = _documentList;
             this.RepeaterLightboxItems.DataBind();

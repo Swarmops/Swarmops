@@ -19,7 +19,7 @@ namespace Swarmops.Frontend.Pages.Swarm
                 Localize();
             }
 
-           
+            this.EasyUIControlsUsed = EasyUIControl.Tree;
         }
 
         private void Localize()

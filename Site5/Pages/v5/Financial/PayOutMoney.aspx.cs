@@ -25,7 +25,8 @@ namespace Swarmops.Frontend.Pages.Financial
                 Localize();
             }
 
-           
+            this.EasyUIControlsUsed = EasyUIControl.DataGrid;
+
         }
 
         private void Localize()

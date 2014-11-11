@@ -72,6 +72,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 Localize();
             }
+
+            this.EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
         }
 
 

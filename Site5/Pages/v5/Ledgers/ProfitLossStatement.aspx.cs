@@ -28,6 +28,8 @@ public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
 
             Localize();
         }
+
+        this.EasyUIControlsUsed = EasyUIControl.DataGrid;
     }
 
     private void Localize()

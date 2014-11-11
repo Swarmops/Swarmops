@@ -18,10 +18,14 @@ public class MasterV5Base : System.Web.UI.MasterPage
 
     public string CurrentPageInfoBoxLiteral = string.Empty;
 
+    // ReSharper disable InconsistentNaming
     protected Person _currentUser = null;   // These are set in Master-v5.master.cs
     protected Authority _authority = null;
     protected Organization _currentOrganization = null;
     
+    public EasyUIControl EasyUIControlsUsed { get; set; }  // these are set by each page, and called by Master to render in ExternalScripts control
+    // ReSharper restore InconsistentNaming
+
     public DateTime PermissionCacheTimestamp
     {
         get

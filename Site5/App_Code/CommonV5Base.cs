@@ -109,3 +109,38 @@ public class CommonV5Base
     }
 
 }
+
+[Flags]
+// ReSharper disable once InconsistentNaming
+public enum EasyUIControl
+{
+    Unknown = 0,
+    Accordion    = 0x0000001,
+    Calendar     = 0x0000002,
+    Combo        = 0x0000004,
+    ComboBox     = 0x0000008,
+    DataGrid     = 0x0000010,
+    DateBox      = 0x0000020,
+    Dialog       = 0x0000040,
+    FileBox      = 0x0000080,
+    Layout       = 0x0000100,
+    LinkButton   = 0x0000200,
+    Menu         = 0x0000400,
+    MenuButton   = 0x0000800,
+    Messager     = 0x0001000,
+    NumberBox    = 0x0002000,
+    Pagination   = 0x0004000,
+    Panel        = 0x0008000,
+    ProgressBar  = 0x0010000,
+    PropertyGrid = 0x0020000,
+    SearchBox    = 0x0040000,
+    Slider       = 0x0080000,
+    Spinner      = 0x0100000,
+    SplitButton  = 0x0200000,
+    Tabs         = 0x0400000,
+    TextBox      = 0x0800000,
+    ToolTip      = 0x1000000,
+    Tree         = 0x2000000,
+    ValidateBox  = 0x4000000,
+    Window       = 0x8000000
+};

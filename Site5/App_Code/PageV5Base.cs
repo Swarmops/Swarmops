@@ -44,6 +44,13 @@ public class PageV5Base : System.Web.UI.Page
         set { this.Master.CurrentPageInfoBoxLiteral = value; }
     }
 
+    // ReSharper disable once InconsistentNaming
+    protected EasyUIControl EasyUIControlsUsed
+    {
+        get { return this.Master.EasyUIControlsUsed; }    
+        set { this.Master.EasyUIControlsUsed = value; }
+    }
+
     protected Person CurrentUser
     {
         get { return this.Master.CurrentUser; }
