@@ -19,7 +19,7 @@ else
   DROPFOLDER=internal
   BUILDNUMLEN=8
   if [ "$1" == "extscripts" ]; then
-    echo "Error: Cannot package external scripts for internal build. Use 'stable'."
+    echo "Error: Cannot package external scripts for internal build. Use 'sprint' or 'release'."
     exit 1;
   fi
 fi
@@ -90,6 +90,11 @@ if [ "$COPYFILES" == "yes" ]; then
   echo "Copying payload files into repo..."
   mkdir -p $DEPLOYDIR/$TARGETDIR
   cp -R $SOURCEDIR/* $DEPLOYDIR/$TARGETDIR/.
+
+  #Special case: remove staging sandbox from scripts before packaging
+  if [ "$1" == "extscripts" ]; then
+    rm -rf $DEPLOYDIR/$TARGETDIR/staging
+  fi
 
   if [ -d $SOURCEDIR/etcinitd ]; then
     echo "Adding /etc/init.d files..."

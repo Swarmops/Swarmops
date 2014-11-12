@@ -12,7 +12,7 @@ fi
 
 rm /home/packager/lastbuild/swarmops/internal/BuildDropped.txt
 cd /home/packager/swarmops
-./repackage-build
+scripts/repackage-build
 
 exit 0;
 
