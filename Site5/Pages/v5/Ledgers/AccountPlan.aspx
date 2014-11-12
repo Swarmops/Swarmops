@@ -4,7 +4,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script src="/Scripts/jquery.switchButton.js" language="javascript" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css" />
     <link rel="stylesheet" type="text/css" href="/Style/jquery.switchButton.css" />
 
 	<script type="text/javascript">

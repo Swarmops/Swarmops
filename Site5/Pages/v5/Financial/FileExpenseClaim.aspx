@@ -7,7 +7,6 @@
     <script src="/Scripts/jquery.fileupload/jquery.iframe-transport.js" type="text/javascript" language="javascript"></script>
     <!-- The basic File Upload plugin -->
     <script src="/Scripts/jquery.fileupload/jquery.fileupload.js" type="text/javascript" language="javascript"></script>
-	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
 
     <script type="text/javascript">
 

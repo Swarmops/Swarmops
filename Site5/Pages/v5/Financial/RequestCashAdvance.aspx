@@ -2,7 +2,6 @@
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
 
     <script type="text/javascript">
 

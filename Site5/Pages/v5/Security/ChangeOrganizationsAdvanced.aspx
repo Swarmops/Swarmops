@@ -10,8 +10,6 @@
             });
         });
      </script>
-
-	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">

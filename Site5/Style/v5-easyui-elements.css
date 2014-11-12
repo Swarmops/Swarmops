@@ -87,3 +87,12 @@ div.combobox-item {
 	background: #E4ECFF;
 	box-shadow: 0px 0px 4px 1px #C8D9FF inset;
 }
+
+
+
+/* TABS */
+
+
+.tabs-header {
+    background: transparent;
+}
