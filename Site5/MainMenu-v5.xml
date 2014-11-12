@@ -372,6 +372,16 @@
         <Children>
 
           <MainMenuItem>
+            <ResourceKey>Administration_EditOrganization</ResourceKey>
+            <UserLevel>4</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-box-cog</ImageUrl>
+            <NavigateUrl>/Pages/v5/Admin/EditOrganization.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
             <ResourceKey>Administration_CreateOrganization</ResourceKey>
             <UserLevel>4</UserLevel>
             <Permissions />

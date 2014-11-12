@@ -35,9 +35,22 @@ namespace Swarmops.Logic.Security
     public enum AccessAspect
     {
         Unknown = 0,
+        /// <summary>
+        /// Access to underlying ledgers
+        /// </summary>
         Bookkeeping,
+        /// <summary>
+        /// Access to regular accounting
+        /// </summary>
         Financials,
-        PersonData
+        /// <summary>
+        /// Access to personal details about people in org
+        /// </summary>
+        PersonData,
+        /// <summary>
+        /// Access to change organization's fundamental operating parameters
+        /// </summary>
+        Administration
     }
 
     public enum AccessType

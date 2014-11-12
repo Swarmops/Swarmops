@@ -93,6 +93,32 @@ div.combobox-item {
 /* TABS */
 
 
-.tabs-header {
+.tabs-header { /* overrides */
     background: transparent;
+    border: none;
+    padding-top: 0;
+}
+
+
+.tabs {
+    padding: 0;
+    padding-top: 2px;
+    border-color: #CCC;
+}
+
+.tabs-panels {
+    border: none;
+    padding-top: 5px;
+}
+
+.tabs li a.tabs-inner {
+    width: 64px !important;
+    padding: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    border-right: 1px solid #DDD;
+    margin-right: 5px;
 }
