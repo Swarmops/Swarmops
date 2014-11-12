@@ -9,7 +9,7 @@ cd ..
 
 #Update lines-of-code count
 cd ..
-BuildFiles/update-kaylock-count.sh
+BuildFiles/update-kaylock-count
 cd BuildFiles
 
 #After this, a manual git push should be done
