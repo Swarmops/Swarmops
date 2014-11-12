@@ -42,9 +42,13 @@ echo "Packaging Swarmops, branch '$DROPFOLDER', build $BUILDID."
 echo "----------------------------------------------------------------------"
 echo ""
 
-./repackage-one frontend $1
-./repackage-one backend $1
-./repackage-one common $1
+scripts/repackage-one frontend $1
+scripts/repackage-one backend $1
+scripts/repackage-one common $1
+
+if [ "$DROPFOLDER" != "internal" ]; then
+ # packaging extscripts should go here; copy from do-sprint
+fi
 
 echo "Notifying developers that new build has packaged for test/deployment..."
 

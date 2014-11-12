@@ -8,6 +8,8 @@ cd Localization
 cd ..
 
 #Update lines-of-code count
-./update-kaylock-count.sh
+cd ..
+BuildFiles/update-kaylock-count.sh
+cd BuildFiles
 
 #After this, a manual git push should be done
