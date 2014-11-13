@@ -2,8 +2,6 @@
 <%@ Register TagPrefix="Swarmops5" TagName="ExternalScripts" Src="~/Controls/v5/UI/ExternalScripts.ascx" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
-
     <script type="text/javascript">
 
         $(document).ready(function () {

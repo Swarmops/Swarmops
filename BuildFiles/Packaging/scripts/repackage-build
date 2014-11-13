@@ -47,7 +47,8 @@ scripts/repackage-one backend $1
 scripts/repackage-one common $1
 
 if [ "$DROPFOLDER" != "internal" ]; then
- # packaging extscripts should go here; copy from do-sprint
+  cp -R /home/prod/Smallwebs/HostedScripts/staging/* /home/prod/Smallwebs/HostedScripts/.
+  scripts/repackage-one extscripts sprint
 fi
 
 echo "Notifying developers that new build has packaged for test/deployment..."

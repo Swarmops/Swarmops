@@ -3,7 +3,6 @@
 <%@ Register src="~/Controls/v5/Base/ComboGeographies.ascx" tagname="ComboGeographies" tagprefix="Swarmops5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-	<link rel="stylesheet" type="text/css" href="/Style/v5-easyui-elements.css">
     
     <script type="text/javascript">
 

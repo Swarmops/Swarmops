@@ -17,9 +17,9 @@ namespace Swarmops.Frontend.Controls.v5.UI
             {
                 externalScriptUrl = "/Scripts/ExternalScripts";
             }
-            else if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+            else if (System.Diagnostics.Debugger.IsAttached || PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
             {
-                externalScriptUrl += "/staging"; // use staging area for new script versions on Sandbox
+                externalScriptUrl += "/staging"; // use staging area for new script versions on Sandbox and for all debugging
             }
 
             if (Package == "easyui")
@@ -42,6 +42,6 @@ namespace Swarmops.Frontend.Controls.v5.UI
         }
 
         public string Package { get; set; }
-        public string Controls { get; set; }
+        public new string Controls { get; set; }
     }
 }

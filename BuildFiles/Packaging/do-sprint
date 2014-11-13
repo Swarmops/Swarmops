@@ -1,6 +1,3 @@
 #!/bin/bash
 
 ./repackage-build sprint
-
-cp -R /home/prod/Smallwebs/HostedScripts/staging/* /home/prod/Smallwebs/HostedScripts/.
-./repackage-one extscripts sprint

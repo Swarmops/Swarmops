@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Web;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Financial;
@@ -130,13 +131,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             string successMessage = String.Format(Resources.Pages_Admin.CreateOrganization_Success, Resources.Global.ResourceManager.GetString("Title_" + peopleLabel + "_Ship"));
 
-            // Create org here
-
             Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(successMessage)));
 
-            // Redirect to dashboard
+            // Log in to new organization, then redirect to Edit
 
-            Response.Redirect("/", true);
+            Response.Redirect("/Pages/v5/Security/SetCurrentOrganization.aspx?OrganizationId=" + newOrganization.Identity.ToString(CultureInfo.InvariantCulture) + "&ReturnUrl=/Pages/v5/Admin/EditOrganization.aspx", true);
         }
 
     }

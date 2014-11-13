@@ -36,6 +36,7 @@
     
     <!-- external packages that are commonly used (on practically all pages) -->
     <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
+    <link href="/Style/v5-easyui-elements.css" rel="stylesheet" type="text/css" />
 
     <!-- additional scripts etc from individual pages -->
     <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />

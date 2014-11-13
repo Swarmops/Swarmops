@@ -147,7 +147,13 @@
     <comment>This can be "members", etc.</comment>
   </data>
   <data name="CreateOrganization_Success" xml:space="preserve">
-    <value>The new organization has been created. You have been given an initial two-year {0} in the organization, so you can work with it and set it up properly. To switch to working with your new organization, use the control panel top right.</value>
+    <value>The new organization has been created. You have been given an initial two-year {0} in the organization, so you can work with it and set it up properly. You have also been &lt;strong&gt;logged in&lt;/strong&gt; to your new organization instead of the one you were logged in to before.&lt;br/&gt;&lt;br/&gt;This is the Edit Organization panel, where you can set more parameters for your new organization.</value>
     <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
+  <data name="EditOrganization_Info" xml:space="preserve">
+    <value>Work in progress...</value>
+  </data>
+  <data name="EditOrganization_PageTitle" xml:space="preserve">
+    <value>Edit Organization</value>
   </data>
 </root>

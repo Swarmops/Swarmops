@@ -19,6 +19,7 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 throw new UnauthorizedAccessException("No"); // may cause problems on login screen?
             }
 
+            string returnUrlString = Request.QueryString["ReturnUrl"];
             string organizationIdString = Request.QueryString["OrganizationId"];
             int organizationId = Int32.Parse(organizationIdString);
             Organization suggestedOrganization = null;
@@ -47,10 +48,19 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 logonFlags = currentIdentityParts[3];
             }
 
-            FormsAuthentication.RedirectFromLoginPage(
-                CurrentUser.Identity.ToString(CultureInfo.InvariantCulture) + "," +
-                suggestedOrganization.Identity.ToString(CultureInfo.InvariantCulture) + ",," +
-                logonFlags, true);
+            string userIdentityString = CurrentUser.Identity.ToString(CultureInfo.InvariantCulture) + "," +
+                                         suggestedOrganization.Identity.ToString(CultureInfo.InvariantCulture) + ",," +
+                                         logonFlags;
+
+            if (!string.IsNullOrEmpty(returnUrlString))
+            {
+                FormsAuthentication.SetAuthCookie(userIdentityString, true);
+                Response.Redirect(returnUrlString);
+            }
+            else
+            {
+                FormsAuthentication.RedirectFromLoginPage(userIdentityString, true);
+            }
 
         }
     }

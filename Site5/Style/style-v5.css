@@ -1031,6 +1031,14 @@ input.ButtonSwarmopsUpload:active {
 }
 
 
+/* JQUERY PLUGIN OVERRIDES */
+
+
+nav.alertify-buttons {
+    margin-top: 20px;
+}
+
+
 /* COLOR SCHEME
 
    #A2BEFF #476EC7 #1C397E #C8D9FF #E4ECFF    -- blue (hue 222)
