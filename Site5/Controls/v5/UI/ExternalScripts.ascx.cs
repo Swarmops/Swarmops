@@ -42,6 +42,6 @@ namespace Swarmops.Frontend.Controls.v5.UI
         }
 
         public string Package { get; set; }
-        public string Controls { get; set; }
+        public new string Controls { get; set; }
     }
 }
