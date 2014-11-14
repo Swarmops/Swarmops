@@ -37,9 +37,10 @@
             <div class="entryFields">
                 <label for="CheckAccountBitcoinCold"><asp:Literal ID="LiteralLabelBitcoinColdShort" runat="server" Text="Bitcoin Cold"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckEnableBitcoinCold"/></div><br/>
                 <label for="CheckAccountBitcoinHot"><asp:Literal ID="LiteralLabelBitcoinHotShort" runat="server" Text="Bitcoin Hot"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckboxEnableBitcoinHot"/></div><br/>
-                <asp:TextBox runat="server" ID="TextDaysCashReserves" />&#8203;<br/>
+                <asp:TextBox runat="server" ID="TextDaysCashReserves" CssClass="alignRight" Text="60-90" />&#8203;<br/>
                 <label for="CheckAccountPaypal"><asp:Literal ID="Literal1" runat="server" Text="Paypal"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckboxEnablePaypal"/></div><br/>
                 <label for="CheckAccountForeign"><asp:Literal ID="Literal2" runat="server" Text="Forex Profit/Loss"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckboxEnableForeignProfitLoss"/></div><br/>
+                <label for="CheckAccountVat"><asp:Literal ID="Literal3" runat="server" Text="VAT In/Out"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckboxEnableVat"/></div><br/>
             </div>
             <div class="entryLabels">
                 Enable bitcoin coldwallet tracking?<br/>
@@ -47,6 +48,7 @@
                 Days of coin reserves to keep hot<br/>
                 Enable Paypal tracking and IPN?<br/>
                 Enable foreign currency accounts?<br/>
+                Enable Value Added Tax (VAT)?<br/>
             </div>
         </div>
         <div title="<img src='/Images/Icons/iconshock-group-diversified-64px.png' />">
@@ -60,10 +62,10 @@
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
             <h2>Mail transmission settings</h2>
             <div class="entryFields">
-                <asp:TextBox runat="server" ID="TextMailDomain" />&#8203;<br/>
-                <asp:TextBox runat="server" ID="TextMailAccounting" />&#8203;<br/>
-                <asp:TextBox runat="server" ID="TextMailHR" />&#8203;<br/>
-                <asp:TextBox runat="server" ID="TextMailOfficers" />&#8203;<br/>
+                <asp:TextBox runat="server" ID="TextMailDomain" Text="example.com" />&#8203;<br/>
+                <asp:TextBox runat="server" ID="TextMailAccounting" Text="Accounting" />&#8203;<br/>
+                <asp:TextBox runat="server" ID="TextMailHR" Text="Human Resources" />&#8203;<br/>
+                <asp:TextBox runat="server" ID="TextMailOfficers" Text="Swarmops Notification" />&#8203;<br/>
                 <asp:TextBox runat="server" ID="TextSmtpServer" />&#8203;<br/>
             </div>
             <div class="entryLabels">
