@@ -112,32 +112,27 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EasternEurope" xml:space="preserve">
-    <value>Eastern Europe</value>
-    <comment>(East of former Iron Curtain)</comment>
+  <data name="Init_SidebarActions_None" xml:space="preserve">
+    <value>No other actions are available until setup is completed.</value>
   </data>
-  <data name="Europe" xml:space="preserve">
-    <value>Europe</value>
+  <data name="Init_SidebarInfo_Welcome" xml:space="preserve">
+    <value>Welcome to Swarmops! This is what the interface looks like, but it's not active yet - first, we'll go through some steps to set up your installation. You'll be up and running shortly.</value>
+    <comment>Info box on database setup screen</comment>
   </data>
-  <data name="Microstates" xml:space="preserve">
-    <value>Microstates</value>
-    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  <data name="Init_SidebarTodo_CompleteSetup" xml:space="preserve">
+    <value>Complete setup.</value>
   </data>
-  <data name="Nordics" xml:space="preserve">
-    <value>Nordics</value>
-    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  <data name="Init_UserInfo_InstallingAdmin" xml:space="preserve">
+    <value>Systems Administrator</value>
+    <comment>Displayed in lieu of logged-in-username</comment>
   </data>
-  <data name="WesternEurope" xml:space="preserve">
-    <value>Western Europe</value>
-    <comment>(West of former Iron Curtain)</comment>
-  </data>
-  <data name="World" xml:space="preserve">
-    <value>World</value>
-    <comment>Root geography</comment>
+  <data name="Init_UserInfo_NoOrgsYet" xml:space="preserve">
+    <value>No organizations yet</value>
+    <comment>Displayed in lieu of organization name</comment>
   </data>
 </root>

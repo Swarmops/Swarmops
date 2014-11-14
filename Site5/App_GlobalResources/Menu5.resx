@@ -124,10 +124,7 @@
     <value>Access Control Lists</value>
   </data>
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
-    <value>Create New Organization</value>
-  </data>
-  <data name="Menu5_Administration_EditOrganization" xml:space="preserve">
-    <value>Edit Organization</value>
+    <value>Create Organization</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geography Tree</value>

@@ -117,27 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EasternEurope" xml:space="preserve">
-    <value>Eastern Europe</value>
-    <comment>(East of former Iron Curtain)</comment>
+  <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
+    <value>Activists will be called</value>
   </data>
-  <data name="Europe" xml:space="preserve">
-    <value>Europe</value>
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>Root-level organization</value>
   </data>
-  <data name="Microstates" xml:space="preserve">
-    <value>Microstates</value>
-    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>Child of {0}</value>
+    <comment>"Create org as..."</comment>
   </data>
-  <data name="Nordics" xml:space="preserve">
-    <value>Nordics</value>
-    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
+    <value>Create new organization as...</value>
   </data>
-  <data name="WesternEurope" xml:space="preserve">
-    <value>Western Europe</value>
-    <comment>(West of former Iron Curtain)</comment>
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>You can create a new organization either as a new standalone organization, or as a child organization of the current one. (In a child organization, everybody with responsibility in the parent organization automatically has corresponding rights and privileges.)</value>
   </data>
-  <data name="World" xml:space="preserve">
-    <value>World</value>
-    <comment>Root geography</comment>
+  <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
+    <value>Operating currency</value>
+  </data>
+  <data name="CreateOrganization_NewOrgName" xml:space="preserve">
+    <value>The new organization's name</value>
+  </data>
+  <data name="CreateOrganization_PageTitle" xml:space="preserve">
+    <value>Create New Organization</value>
+  </data>
+  <data name="CreateOrganization_RegularTitle" xml:space="preserve">
+    <value>Regular people will be called</value>
+    <comment>This can be "members", etc.</comment>
+  </data>
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>The new organization has been created. You have been given an initial two-year {0} in the organization, so you can work with it and set it up properly. To switch to working with your new organization, use the control panel top right.</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
   </data>
 </root>
