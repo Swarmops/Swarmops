@@ -117,542 +117,542 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CurrentUserInfo.Logout" xml:space="preserve">
+  <data name="CurrentUserInfo_Logout" xml:space="preserve">
     <value>Logga ut</value>
     <comment>Causes signoff and de-authentication</comment>
   </data>
-  <data name="CurrentUserInfo.Preferences" xml:space="preserve">
+  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
     <value>Inställningar</value>
     <comment>Tooltip on hover over wrench icon</comment>
   </data>
-  <data name="CurrentUserInfo.SelectLanguage" xml:space="preserve">
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
     <value>Välj språk</value>
     <comment>Shown as header of language list pop-up</comment>
   </data>
   
   
-  <data name="Dashboard.PageTitle" xml:space="preserve">
+  <data name="Dashboard_PageTitle" xml:space="preserve">
     <value>Skrivbord</value>
     <comment>Title of default page</comment>
   </data>
-  <data name="Financial.Actuals" xml:space="preserve">
+  <data name="Financial_Actuals" xml:space="preserve">
     <value>Utfall</value>
   </data>
-  <data name="Financial.ActualsPreliminary" xml:space="preserve">
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
     <value>Utfall (prel)</value>
   </data>
-  <data name="Financial.ActualsToDate" xml:space="preserve">
+  <data name="Financial_ActualsToDate" xml:space="preserve">
     <value>Utfall hittills</value>
   </data>
-  <data name="Financial.BookkeepingAccountLong" xml:space="preserve">
+  <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
     <value>Bokföringskonto</value>
   </data>
-  <data name="Financial.BookkeepingAccountShort" xml:space="preserve">
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
     <value>Konto</value>
   </data>
-  <data name="Financial.Budget" xml:space="preserve">
+  <data name="Financial_Budget" xml:space="preserve">
     <value>Budget</value>
   </data>
-  <data name="Financial.CashAdvance" xml:space="preserve">
+  <data name="Financial_CashAdvance" xml:space="preserve">
     <value>Förskott</value>
   </data>
-  <data name="Financial.CashAdvanceSpecification" xml:space="preserve">
+  <data name="Financial_CashAdvanceSpecification" xml:space="preserve">
     <value>Kontantförskott #{0}</value>
   </data>
-  <data name="Financial.CashAdvancesSpecification" xml:space="preserve">
+  <data name="Financial_CashAdvancesSpecification" xml:space="preserve">
     <value>Kontantförskott {0}</value>
   </data>
-  <data name="Financial.ExpenseClaim" xml:space="preserve">
+  <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Utlägg</value>
   </data>
-  <data name="Financial.ExpenseClaimSpecification" xml:space="preserve">
+  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
     <value>Utlägg #{0}</value>
   </data>
-  <data name="Financial.ExpenseClaimsSpecification" xml:space="preserve">
+  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>Utlägg {0}</value>
   </data>
-  <data name="Financial.InvoiceInbound" xml:space="preserve">
+  <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>Faktura</value>
   </data>
-  <data name="Financial.InvoiceOutbound" xml:space="preserve">
+  <data name="Financial_InvoiceOutbound" xml:space="preserve">
     <value>Faktura</value>
   </data>
-  <data name="Financial.Parley" xml:space="preserve">
+  <data name="Financial_Parley" xml:space="preserve">
     <value>Konferens</value>
   </data>
-  <data name="Financial.Salary" xml:space="preserve">
+  <data name="Financial_Salary" xml:space="preserve">
     <value>Lön</value>
   </data>
-  <data name="Financial.SalarySpecification" xml:space="preserve">
+  <data name="Financial_SalarySpecification" xml:space="preserve">
     <value>Lön för {0:MMM-yyyy}</value>
     <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
   </data>
-  <data name="Financial.TaxesSpecification" xml:space="preserve">
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
     <value>Skatt för lönerna {0}</value>
   </data>
-  <data name="Financial.TaxSpecification" xml:space="preserve">
+  <data name="Financial_TaxSpecification" xml:space="preserve">
     <value>Skatt för lön #{0}</value>
   </data>
-  <data name="Financial.TheTaxMan" xml:space="preserve">
+  <data name="Financial_TheTaxMan" xml:space="preserve">
     <value>Skatteverket</value>
     <comment>Used as recipient for taxes.</comment>
   </data>
-  <data name="Financial.YearlyResult" xml:space="preserve">
+  <data name="Financial_YearlyResult" xml:space="preserve">
     <value>Årets resultat</value>
   </data>
-  <data name="Global.ASAP" xml:space="preserve">
+  <data name="Global_ASAP" xml:space="preserve">
     <value>Snarast</value>
     <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
   </data>
-  <data name="Global.Cancel" xml:space="preserve">
+  <data name="Global_Cancel" xml:space="preserve">
     <value>Avbryt</value>
     <comment>Displayed as cancellation link on changing something</comment>
   </data>
-  <data name="Global.Change" xml:space="preserve">
+  <data name="Global_Change" xml:space="preserve">
     <value>Ändra?</value>
     <comment>Link after describing what the user is looking at, allowing a change.</comment>
   </data>
-  <data name="Global.ClickImageToEnlarge" xml:space="preserve">
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
     <value>Klicka bilden för att förstora.</value>
     <comment>Displayed where thumbnails can be enlarged modally.</comment>
   </data>
-  <data name="Global.Confirm" xml:space="preserve">
+  <data name="Global_Confirm" xml:space="preserve">
     <value>Bekräfta</value>
     <comment>Displayed as confirmation link on changing something</comment>
   </data>
-  <data name="Global.DropInits.SelectFinancialAccount" xml:space="preserve">
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
     <value>-- Välj budget/konto --</value>
     <comment>Initializer in dropdown box.</comment>
   </data>
-  <data name="Global.DropInits.SelectOrganization" xml:space="preserve">
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
     <value>-- Välj organisation --</value>
     <comment>Initializer in dropdown box.</comment>
   </data>
-  <data name="Global.GoThere" xml:space="preserve">
+  <data name="Global_GoThere" xml:space="preserve">
     <value>Gå dit...</value>
     <comment>Link after describing something.</comment>
   </data>
-  <data name="Global.NoOwner" xml:space="preserve">
+  <data name="Global_NoOwner" xml:space="preserve">
     <value>Ingen</value>
     <comment>Displayed when an account/position etc is vacant</comment>
   </data>
-  <data name="Global.Owner" xml:space="preserve">
+  <data name="Global_Owner" xml:space="preserve">
     <value>Ägare</value>
   </data>
-  <data name="Global.ProcessingFile" xml:space="preserve">
+  <data name="Global_ProcessingFile" xml:space="preserve">
     <value>Bearbetar fil...</value>
     <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
-  <data name="Global.UploadFile" xml:space="preserve">
+  <data name="Global_UploadFile" xml:space="preserve">
     <value>Ladda upp fil</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  <data name="Global.UploadFileToSwarmops" xml:space="preserve">
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
     <value>Ladda upp fil till Swarmops</value>
     <comment>Used as header above upload sections.</comment>
   </data>
-  <data name="Global.Upload.ErrorSelectFile" xml:space="preserve">
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
     <value>Välj fil att ladda upp.</value>
     <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
-  <data name="Master.SwitchOrganizationDialog" xml:space="preserve">
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
     <value>Du är inloggad i &lt;strong&gt;{0}&lt;/strong&gt;. Vill du växla till en annan organisation?</value>
   </data>
-  <data name="Sidebar.Actions" xml:space="preserve">
+  <data name="Sidebar_Actions" xml:space="preserve">
     <value>Genvägar</value>
     <comment>List of shortcuts to likely actions</comment>
   </data>
-  <data name="Sidebar.Actions.None" xml:space="preserve">
+  <data name="Sidebar_Actions_None" xml:space="preserve">
     <value>Inga föreslagna åtgärder just nu.</value>
     <comment>No shortcuts from this page right now.</comment>
   </data>
-  <data name="Sidebar.Information" xml:space="preserve">
+  <data name="Sidebar_Information" xml:space="preserve">
     <value>Info</value>
     <comment>Information about current page</comment>
   </data>
-  <data name="Sidebar.Todo" xml:space="preserve">
+  <data name="Sidebar_Todo" xml:space="preserve">
     <value>Att göra</value>
     <comment>List of todo items</comment>
   </data>
-  <data name="Sidebar.Todo.None" xml:space="preserve">
+  <data name="Sidebar_Todo_None" xml:space="preserve">
     <value>Inget brådskar just nu.</value>
     <comment>Indicator that nothing needs immediate attention</comment>
   </data>
-  <data name="Sidebar.Todo.Placeholder" xml:space="preserve">
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
     <value>Saker att göra kommer att finnas här.</value>
     <comment>Placeholder for future action items. Temporary.</comment>
   </data>
-  <data name="Financial.CashAdvances" xml:space="preserve">
+  <data name="Financial_CashAdvances" xml:space="preserve">
     <value>Förskott</value>
   </data>
-  <data name="Financial.CashAdvancesLong" xml:space="preserve">
+  <data name="Financial_CashAdvancesLong" xml:space="preserve">
     <value>Kontantförskott</value>
   </data>
-  <data name="Financial.ExpenseClaims" xml:space="preserve">
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
     <value>Utlägg</value>
   </data>
-  <data name="Financial.ExpenseClaimsLong" xml:space="preserve">
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
     <value>Utläggsanspråk</value>
   </data>
-  <data name="Financial.InboundInvoices" xml:space="preserve">
+  <data name="Financial_InboundInvoices" xml:space="preserve">
     <value>Fakturor</value>
   </data>
-  <data name="Financial.InboundInvoicesLong" xml:space="preserve">
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
     <value>Inkommande fakturor</value>
   </data>
-  <data name="Financial.OutboundInvoices" xml:space="preserve">
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
     <value>Fakturor</value>
   </data>
-  <data name="Financial.OutboundInvoicesLong" xml:space="preserve">
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
     <value>Utgående fakturor</value>
   </data>
-  <data name="Global.NA" xml:space="preserve">
+  <data name="Global_NA" xml:space="preserve">
     <value>---</value>
   </data>
-  <data name="Global.NALong" xml:space="preserve">
+  <data name="Global_NALong" xml:space="preserve">
     <value>Inte tillämplig</value>
   </data>
-  <data name="Global.AsOfNow" xml:space="preserve">
+  <data name="Global_AsOfNow" xml:space="preserve">
     <value>Just nu</value>
   </data>
-  <data name="Global.Today" xml:space="preserve">
+  <data name="Global_Today" xml:space="preserve">
     <value>Idag</value>
   </data>
-  <data name="Financial.TransactionTagSetTypeName.CostType" xml:space="preserve">
+  <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
     <value>Kostnadstyp</value>
     <comment>Second-dimension bookkeeping</comment>
   </data>
-  <data name="Financial.TransactionTagSetTypeName.ProjectName" xml:space="preserve">
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
     <value>Projekt</value>
     <comment>Tagging costs/income to projects</comment>
   </data>
-  <data name="Sidebar.Related" xml:space="preserve">
+  <data name="Sidebar_Related" xml:space="preserve">
     <value>Se även</value>
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
-  <data name="Financial.ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
     <value>Utlägg #{0} (minus förskott #{1})</value>
   </data>
-  <data name="Financial.ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
     <value>Utlägg #{0} (minus förskott)</value>
   </data>
-  <data name="Financial.ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
     <value>Utlägg #{0} (minus förskott #{1})</value>
   </data>
-  <data name="Financial.ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
     <value>Utlägg {0} (minus förskott)</value>
   </data>
-  <data name="Financial.ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
     <value>Utläggsanspråk #{0} av {1}</value>
   </data>
-  <data name="Financial.InboundInvoiceSpecificationWithSender" xml:space="preserve">
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
     <value>Inkommande faktura #{0} från {1}</value>
   </data>
-  <data name="Financial.ReceiptSpecification" xml:space="preserve">
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
     <value>Kvittobild {0} av {1}</value>
   </data>
-  <data name="Global.ImageSpecification" xml:space="preserve">
+  <data name="Global_ImageSpecification" xml:space="preserve">
     <value>Bild {0} av {1}</value>
   </data>
-  <data name="Financial.DueDate" xml:space="preserve">
+  <data name="Financial_DueDate" xml:space="preserve">
     <value>Förfallodatum</value>
     <comment>For invoices and similar</comment>
   </data>
-  <data name="Financial.Supplier" xml:space="preserve">
+  <data name="Financial_Supplier" xml:space="preserve">
     <value>Leverantör</value>
   </data>
-  <data name="Global.CurrentLanguageName.Native" xml:space="preserve">
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
     <value>Svenska</value>
     <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
   </data>
-  <data name="Global.No" xml:space="preserve">
+  <data name="Global_No" xml:space="preserve">
     <value>Nej</value>
     <comment>For yes/no options</comment>
   </data>
-  <data name="Global.Yes" xml:space="preserve">
+  <data name="Global_Yes" xml:space="preserve">
     <value>Ja</value>
     <comment>For yes/no options</comment>
   </data>
-  <data name="Financial.Asset" xml:space="preserve">
+  <data name="Financial_Asset" xml:space="preserve">
     <value>Tillgångar</value>
   </data>
-  <data name="Financial.Cost" xml:space="preserve">
+  <data name="Financial_Cost" xml:space="preserve">
     <value>Utgifter</value>
   </data>
-  <data name="Financial.Debt" xml:space="preserve">
+  <data name="Financial_Debt" xml:space="preserve">
     <value>Skulder</value>
   </data>
-  <data name="Financial.Income" xml:space="preserve">
+  <data name="Financial_Income" xml:space="preserve">
     <value>Intäkter</value>
   </data>
-  <data name="Global.SelectOne" xml:space="preserve">
+  <data name="Global_SelectOne" xml:space="preserve">
     <value>-- välj en --</value>
     <comment>Shown in dropdowns when selection required</comment>
   </data>
-  <data name="Global.Missing" xml:space="preserve">
+  <data name="Global_Missing" xml:space="preserve">
     <value>- saknas -</value>
     <comment>When a record or similar is missing. Used in grids.</comment>
   </data>
-  <data name="Global.Multiple" xml:space="preserve">
+  <data name="Global_Multiple" xml:space="preserve">
     <value>- flera -</value>
     <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
   </data>
-  <data name="Global.Off" xml:space="preserve">
+  <data name="Global_Off" xml:space="preserve">
     <value>Av</value>
     <comment>Off (as opposed to On)</comment>
   </data>
-  <data name="Global.On" xml:space="preserve">
+  <data name="Global_On" xml:space="preserve">
     <value>På</value>
     <comment>On (as opposed to Off)</comment>
   </data>
-  <data name="Title.Customer.Plural" xml:space="preserve">
+  <data name="Title_Customer_Plural" xml:space="preserve">
     <value>Kunder</value>
     <comment>Gender neutral plural</comment>
   </data>
-  <data name="Title.Citizen.Plural" xml:space="preserve">
+  <data name="Title_Citizen_Plural" xml:space="preserve">
     <value>Medborgare</value>
     <comment>Gender neutral plural</comment>
   </data>
-  <data name="Title.Activist.Plural" xml:space="preserve">
+  <data name="Title_Activist_Plural" xml:space="preserve">
     <value>Aktivister</value>
     <comment>Gender neutral plural</comment>
   </data>
-  <data name="Title.Customer.Female" xml:space="preserve">
+  <data name="Title_Customer_Female" xml:space="preserve">
     <value>Kund</value>
     <comment>Female singular</comment>
   </data>
-  <data name="Title.Citizen.Female" xml:space="preserve">
+  <data name="Title_Citizen_Female" xml:space="preserve">
     <value>Medborgare</value>
     <comment>Female singular</comment>
   </data>
-  <data name="Title.Activist.Female" xml:space="preserve">
+  <data name="Title_Activist_Female" xml:space="preserve">
     <value>Aktivist</value>
     <comment>Female singular</comment>
   </data>
-  <data name="Title.Customer.Generic" xml:space="preserve">
+  <data name="Title_Customer_Generic" xml:space="preserve">
     <value>Kund</value>
     <comment>Gender neutral</comment>
   </data>
-  <data name="Title.Citizen.Generic" xml:space="preserve">
+  <data name="Title_Citizen_Generic" xml:space="preserve">
     <value>Medborgare</value>
     <comment>Gender neutral</comment>
   </data>
-  <data name="Title.Activist.Generic" xml:space="preserve">
+  <data name="Title_Activist_Generic" xml:space="preserve">
     <value>Aktivist</value>
     <comment>Gender neutral</comment>
   </data>
-  <data name="Title.Customer.Male" xml:space="preserve">
+  <data name="Title_Customer_Male" xml:space="preserve">
     <value>Kund</value>
     <comment>Male singular</comment>
   </data>
-  <data name="Title.Citizen.Male" xml:space="preserve">
+  <data name="Title_Citizen_Male" xml:space="preserve">
     <value>Medborgare</value>
     <comment>Male singular</comment>
   </data>
-  <data name="Title.Activist.Male" xml:space="preserve">
+  <data name="Title_Activist_Male" xml:space="preserve">
     <value>Aktivist</value>
     <comment>Male singular</comment>
   </data>
-  <data name="Global.Organization.Commercial" xml:space="preserve">
+  <data name="Global_Organization_Commercial" xml:space="preserve">
     <value>Vinstdrivande</value>
     <comment>A commercial organization (for-profit enterprise)</comment>
   </data>
-  <data name="Global.Organization.Governmental" xml:space="preserve">
+  <data name="Global_Organization_Governmental" xml:space="preserve">
     <value>Offentlig</value>
     <comment>Organization that's part of government somehow</comment>
   </data>
-  <data name="Global.Organization.Nonprofit" xml:space="preserve">
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
     <value>Ideell</value>
     <comment>Non-profit (activist, political parties)</comment>
   </data>
-  <data name="Global.Geography" xml:space="preserve">
+  <data name="Global_Geography" xml:space="preserve">
     <value>Geografi</value>
     <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
   </data>
-  <data name="Global.Action" xml:space="preserve">
+  <data name="Global_Action" xml:space="preserve">
     <value>Verktyg</value>
     <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
   </data>
-  <data name="Global.Mail" xml:space="preserve">
+  <data name="Global_Mail" xml:space="preserve">
     <value>Mail</value>
     <comment>Somebody's email address.</comment>
   </data>
-  <data name="Global.Name" xml:space="preserve">
+  <data name="Global_Name" xml:space="preserve">
     <value>Namn</value>
     <comment>A plain person's first and last name</comment>
   </data>
-  <data name="Global.Notes" xml:space="preserve">
+  <data name="Global_Notes" xml:space="preserve">
     <value>Anm</value>
     <comment>Small notes in a grid, maybe in icon form</comment>
   </data>
-  <data name="Global.Phone" xml:space="preserve">
+  <data name="Global_Phone" xml:space="preserve">
     <value>Telefon</value>
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>
-  <data name="Title.Activist.Corps" xml:space="preserve">
+  <data name="Title_Activist_Corps" xml:space="preserve">
     <value>Aktivistsvärm</value>
   </data>
-  <data name="Title.Activist.Ship" xml:space="preserve">
+  <data name="Title_Activist_Ship" xml:space="preserve">
     <value>Aktivistskap</value>
   </data>
-  <data name="Title.Agent.Corps" xml:space="preserve">
+  <data name="Title_Agent_Corps" xml:space="preserve">
     <value>Agentkår</value>
   </data>
-  <data name="Title.Agent.Female" xml:space="preserve">
+  <data name="Title_Agent_Female" xml:space="preserve">
     <value>Agent</value>
   </data>
-  <data name="Title.Agent.Generic" xml:space="preserve">
+  <data name="Title_Agent_Generic" xml:space="preserve">
     <value>Agent</value>
   </data>
-  <data name="Title.Agent.Male" xml:space="preserve">
+  <data name="Title_Agent_Male" xml:space="preserve">
     <value>Agent</value>
   </data>
-  <data name="Title.Agent.Plural" xml:space="preserve">
+  <data name="Title_Agent_Plural" xml:space="preserve">
     <value>Agenter</value>
   </data>
-  <data name="Title.Agent.Ship" xml:space="preserve">
+  <data name="Title_Agent_Ship" xml:space="preserve">
     <value>Agentskap</value>
   </data>
-  <data name="Title.Ambassador.Corps" xml:space="preserve">
+  <data name="Title_Ambassador_Corps" xml:space="preserve">
     <value>Ambassadörskår</value>
   </data>
-  <data name="Title.Ambassador.Female" xml:space="preserve">
+  <data name="Title_Ambassador_Female" xml:space="preserve">
     <value>Ambassadör</value>
   </data>
-  <data name="Title.Ambassador.Generic" xml:space="preserve">
+  <data name="Title_Ambassador_Generic" xml:space="preserve">
     <value>Ambassadör</value>
   </data>
-  <data name="Title.Ambassador.Male" xml:space="preserve">
+  <data name="Title_Ambassador_Male" xml:space="preserve">
     <value>Ambassadör</value>
   </data>
-  <data name="Title.Ambassador.Plural" xml:space="preserve">
+  <data name="Title_Ambassador_Plural" xml:space="preserve">
     <value>Ambassadörer</value>
   </data>
-  <data name="Title.Ambassador.Ship" xml:space="preserve">
+  <data name="Title_Ambassador_Ship" xml:space="preserve">
     <value>Ambassadörskap</value>
   </data>
-  <data name="Title.Citizen.Corps" xml:space="preserve">
+  <data name="Title_Citizen_Corps" xml:space="preserve">
     <value>Medborgarna</value>
   </data>
-  <data name="Title.Citizen.Ship" xml:space="preserve">
+  <data name="Title_Citizen_Ship" xml:space="preserve">
     <value>Medborgarskap</value>
   </data>
-  <data name="Title.Customer.Corps" xml:space="preserve">
+  <data name="Title_Customer_Corps" xml:space="preserve">
     <value>Kunder</value>
   </data>
-  <data name="Title.Customer.Ship" xml:space="preserve">
+  <data name="Title_Customer_Ship" xml:space="preserve">
     <value>Kundskap</value>
   </data>
-  <data name="Title.Member.Corps" xml:space="preserve">
+  <data name="Title_Member_Corps" xml:space="preserve">
     <value>Medlemskår</value>
   </data>
-  <data name="Title.Member.Female" xml:space="preserve">
+  <data name="Title_Member_Female" xml:space="preserve">
     <value>Medlem</value>
   </data>
-  <data name="Title.Member.Generic" xml:space="preserve">
+  <data name="Title_Member_Generic" xml:space="preserve">
     <value>Medlem</value>
   </data>
-  <data name="Title.Member.Male" xml:space="preserve">
+  <data name="Title_Member_Male" xml:space="preserve">
     <value>Medlem</value>
   </data>
-  <data name="Title.Member.Plural" xml:space="preserve">
+  <data name="Title_Member_Plural" xml:space="preserve">
     <value>Medlemmar</value>
   </data>
-  <data name="Title.Member.Ship" xml:space="preserve">
+  <data name="Title_Member_Ship" xml:space="preserve">
     <value>Medlemskap</value>
   </data>
-  <data name="Title.Resident.Corps" xml:space="preserve">
+  <data name="Title_Resident_Corps" xml:space="preserve">
     <value>Invånare</value>
   </data>
-  <data name="Title.Resident.Female" xml:space="preserve">
+  <data name="Title_Resident_Female" xml:space="preserve">
     <value>Invånare</value>
   </data>
-  <data name="Title.Resident.Generic" xml:space="preserve">
+  <data name="Title_Resident_Generic" xml:space="preserve">
     <value>Invånare</value>
   </data>
-  <data name="Title.Resident.Male" xml:space="preserve">
+  <data name="Title_Resident_Male" xml:space="preserve">
     <value>Invånare</value>
   </data>
-  <data name="Title.Resident.Plural" xml:space="preserve">
+  <data name="Title_Resident_Plural" xml:space="preserve">
     <value>Invånare</value>
   </data>
-  <data name="Title.Resident.Ship" xml:space="preserve">
+  <data name="Title_Resident_Ship" xml:space="preserve">
     <value>Hemvist</value>
   </data>
-  <data name="Title.Salesperson.Corps" xml:space="preserve">
+  <data name="Title_Salesperson_Corps" xml:space="preserve">
     <value>Säljkår</value>
   </data>
-  <data name="Title.Salesperson.Female" xml:space="preserve">
+  <data name="Title_Salesperson_Female" xml:space="preserve">
     <value>Säljare</value>
   </data>
-  <data name="Title.Salesperson.Generic" xml:space="preserve">
+  <data name="Title_Salesperson_Generic" xml:space="preserve">
     <value>Säljare</value>
   </data>
-  <data name="Title.Salesperson.Male" xml:space="preserve">
+  <data name="Title_Salesperson_Male" xml:space="preserve">
     <value>Säljare</value>
   </data>
-  <data name="Title.Salesperson.Plural" xml:space="preserve">
+  <data name="Title_Salesperson_Plural" xml:space="preserve">
     <value>Säljare</value>
   </data>
-  <data name="Title.Salesperson.Ship" xml:space="preserve">
+  <data name="Title_Salesperson_Ship" xml:space="preserve">
     <value>Säljroll</value>
   </data>
-  <data name="Title.Supporter.Corps" xml:space="preserve">
+  <data name="Title_Supporter_Corps" xml:space="preserve">
     <value>Supporterkår</value>
   </data>
-  <data name="Title.Supporter.Female" xml:space="preserve">
+  <data name="Title_Supporter_Female" xml:space="preserve">
     <value>Supporter</value>
   </data>
-  <data name="Title.Supporter.Generic" xml:space="preserve">
+  <data name="Title_Supporter_Generic" xml:space="preserve">
     <value>Supporter</value>
   </data>
-  <data name="Title.Supporter.Male" xml:space="preserve">
+  <data name="Title_Supporter_Male" xml:space="preserve">
     <value>Supporter</value>
   </data>
-  <data name="Title.Supporter.Plural" xml:space="preserve">
+  <data name="Title_Supporter_Plural" xml:space="preserve">
     <value>Supportrar</value>
   </data>
-  <data name="Title.Supporter.Ship" xml:space="preserve">
+  <data name="Title_Supporter_Ship" xml:space="preserve">
     <value>Supporterskap</value>
   </data>
-  <data name="Global.Custom" xml:space="preserve">
+  <data name="Global_Custom" xml:space="preserve">
     <value>Kundskap</value>
     <comment>As in "show me the advanced options"</comment>
   </data>
-  <data name="Title.Conscript.Corps" xml:space="preserve">
+  <data name="Title_Conscript_Corps" xml:space="preserve">
     <value>Kår</value>
   </data>
-  <data name="Title.Conscript.Female" xml:space="preserve">
+  <data name="Title_Conscript_Female" xml:space="preserve">
     <value>Värnpliktig</value>
   </data>
-  <data name="Title.Conscript.Generic" xml:space="preserve">
+  <data name="Title_Conscript_Generic" xml:space="preserve">
     <value>Värnpliktig</value>
   </data>
-  <data name="Title.Conscript.Male" xml:space="preserve">
+  <data name="Title_Conscript_Male" xml:space="preserve">
     <value>Värnpliktig</value>
   </data>
-  <data name="Title.Conscript.Plural" xml:space="preserve">
+  <data name="Title_Conscript_Plural" xml:space="preserve">
     <value>Värnpliktiga</value>
   </data>
-  <data name="Title.Conscript.Ship" xml:space="preserve">
+  <data name="Title_Conscript_Ship" xml:space="preserve">
     <value>Värnpliktighet</value>
   </data>
-  <data name="Title.Employee.Corps" xml:space="preserve">
+  <data name="Title_Employee_Corps" xml:space="preserve">
     <value>Personal</value>
   </data>
-  <data name="Title.Employee.Female" xml:space="preserve">
+  <data name="Title_Employee_Female" xml:space="preserve">
     <value>Anställd</value>
   </data>
-  <data name="Title.Employee.Generic" xml:space="preserve">
+  <data name="Title_Employee_Generic" xml:space="preserve">
     <value>Anställd</value>
   </data>
-  <data name="Title.Employee.Male" xml:space="preserve">
+  <data name="Title_Employee_Male" xml:space="preserve">
     <value>Anställd</value>
   </data>
-  <data name="Title.Employee.Plural" xml:space="preserve">
+  <data name="Title_Employee_Plural" xml:space="preserve">
     <value>Anställda</value>
   </data>
-  <data name="Title.Employee.Ship" xml:space="preserve">
+  <data name="Title_Employee_Ship" xml:space="preserve">
     <value>Anställning</value>
   </data>
   
@@ -661,109 +661,109 @@
   
   
   
-  <data name="Title.Regular.Corps" xml:space="preserve">
+  <data name="Title_Regular_Corps" xml:space="preserve">
     <value>Soldatkår</value>
     <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
-  <data name="Title.Regular.Female" xml:space="preserve">
+  <data name="Title_Regular_Female" xml:space="preserve">
     <value>Soldat</value>
     <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
-  <data name="Title.Regular.Generic" xml:space="preserve">
+  <data name="Title_Regular_Generic" xml:space="preserve">
     <value>Soldat</value>
     <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
-  <data name="Title.Regular.Male" xml:space="preserve">
+  <data name="Title_Regular_Male" xml:space="preserve">
     <value>Soldat</value>
     <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
-  <data name="Title.Regular.Plural" xml:space="preserve">
+  <data name="Title_Regular_Plural" xml:space="preserve">
     <value>Soldat</value>
     <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
-  <data name="Title.Regular.Ship" xml:space="preserve">
+  <data name="Title_Regular_Ship" xml:space="preserve">
     <value>Soldatskap</value>
     <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
   </data>
-  <data name="Title.Sailor.Corps" xml:space="preserve">
+  <data name="Title_Sailor_Corps" xml:space="preserve">
     <value>Besättning</value>
   </data>
-  <data name="Title.Sailor.Female" xml:space="preserve">
+  <data name="Title_Sailor_Female" xml:space="preserve">
     <value>Sjöman</value>
     <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
-  <data name="Title.Sailor.Generic" xml:space="preserve">
+  <data name="Title_Sailor_Generic" xml:space="preserve">
     <value>Sjöman</value>
     <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
-  <data name="Title.Sailor.Male" xml:space="preserve">
+  <data name="Title_Sailor_Male" xml:space="preserve">
     <value>Sjöman</value>
     <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
-  <data name="Title.Sailor.Plural" xml:space="preserve">
+  <data name="Title_Sailor_Plural" xml:space="preserve">
     <value>Sjömän</value>
     <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
-  <data name="Title.Sailor.Ship" xml:space="preserve">
+  <data name="Title_Sailor_Ship" xml:space="preserve">
     <value>Sjömanskap</value>
     <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
   </data>
-  <data name="Global.Create" xml:space="preserve">
+  <data name="Global_Create" xml:space="preserve">
     <value>Skapa</value>
     <comment>Like "Create Organization"</comment>
   </data>
-  <data name="Title.Person.Corps" xml:space="preserve">
+  <data name="Title_Person_Corps" xml:space="preserve">
     <value>Styrkor</value>
   </data>
-  <data name="Title.Person.Female" xml:space="preserve">
+  <data name="Title_Person_Female" xml:space="preserve">
     <value>Person</value>
   </data>
-  <data name="Title.Person.Generic" xml:space="preserve">
+  <data name="Title_Person_Generic" xml:space="preserve">
     <value>Person</value>
   </data>
-  <data name="Title.Person.Male" xml:space="preserve">
+  <data name="Title_Person_Male" xml:space="preserve">
     <value>Person</value>
   </data>
-  <data name="Title.Person.Plural" xml:space="preserve">
+  <data name="Title_Person_Plural" xml:space="preserve">
     <value>Personer</value>
   </data>
-  <data name="Title.Person.Ship" xml:space="preserve">
+  <data name="Title_Person_Ship" xml:space="preserve">
     <value>Personskap</value>
   </data>
-  <data name="Global.AllYear" xml:space="preserve">
+  <data name="Global_AllYear" xml:space="preserve">
     <value>Hela</value>
   </data>
-  <data name="Global.Description" xml:space="preserve">
+  <data name="Global_Description" xml:space="preserve">
     <value>Beskrivning</value>
     <comment>As a general header of any description field</comment>
   </data>
-  <data name="Global.Q1" xml:space="preserve">
+  <data name="Global_Q1" xml:space="preserve">
     <value>Kv1</value>
     <comment>First quarter of the year</comment>
   </data>
-  <data name="Global.Q2" xml:space="preserve">
+  <data name="Global_Q2" xml:space="preserve">
     <value>Kv2</value>
     <comment>Second quarter of the year</comment>
   </data>
-  <data name="Global.Q3" xml:space="preserve">
+  <data name="Global_Q3" xml:space="preserve">
     <value>Kv3</value>
     <comment>Third quarter of the year</comment>
   </data>
-  <data name="Global.Q4" xml:space="preserve">
+  <data name="Global_Q4" xml:space="preserve">
     <value>Kv4</value>
     <comment>Fourth quarter of the year</comment>
   </data>
-  <data name="Global.Timestamp" xml:space="preserve">
+  <data name="Global_Timestamp" xml:space="preserve">
     <value>Tidpunkt</value>
   </data>
-  <data name="Ledgers.Balance" xml:space="preserve">
+  <data name="Ledgers_Balance" xml:space="preserve">
     <value>Saldo</value>
     <comment>As in 'account balance', not as in staying upright</comment>
   </data>
-  <data name="Ledgers.Credit" xml:space="preserve">
+  <data name="Ledgers_Credit" xml:space="preserve">
     <value>Kredit</value>
   </data>
-  <data name="Ledgers.Debit" xml:space="preserve">
+  <data name="Ledgers_Debit" xml:space="preserve">
     <value>Debet</value>
   </data>
   

@@ -140,19 +140,19 @@
   
   
   
-  <data name="Menu5.Financial.List" xml:space="preserve">
+  <data name="Menu5_Financial_List" xml:space="preserve">
     <value>Liste</value>
   </data>
   
   
-  <data name="Menu5.Financial.List.InboundInvoices" xml:space="preserve">
+  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
     <value>Factures Entrantes</value>
   </data>
-  <data name="Menu5.Financial.List.OutboundInvoices" xml:space="preserve">
+  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
     <value>Factures Sortantes</value>
   </data>
   
-  <data name="Menu5.Financial.List.Salaries" xml:space="preserve">
+  <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Salaires</value>
   </data>
   
@@ -170,11 +170,11 @@
   
   
   
-  <data name="Menu5.Governance.Vote" xml:space="preserve">
+  <data name="Menu5_Governance_Vote" xml:space="preserve">
     <value>Vote</value>
   </data>
   
-  <data name="Menu5.Ledgers" xml:space="preserve">
+  <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Grands Livres</value>
   </data>
   
@@ -193,7 +193,7 @@
   
   
   
-  <data name="Menu5.Organization" xml:space="preserve">
+  <data name="Menu5_Organization" xml:space="preserve">
     <value>Organisation</value>
   </data>
   

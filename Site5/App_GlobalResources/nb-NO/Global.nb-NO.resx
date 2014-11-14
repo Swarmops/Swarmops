@@ -117,21 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CurrentUserInfo.Logout" xml:space="preserve">
+  <data name="CurrentUserInfo_Logout" xml:space="preserve">
     <value>Logg ut</value>
     <comment>Causes signoff and de-authentication</comment>
   </data>
-  <data name="CurrentUserInfo.Preferences" xml:space="preserve">
+  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
     <value>Innstillinger</value>
     <comment>Tooltip on hover over wrench icon</comment>
   </data>
-  <data name="CurrentUserInfo.SelectLanguage" xml:space="preserve">
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
     <value>Velg språk</value>
     <comment>Shown as header of language list pop-up</comment>
   </data>
   
   
-  <data name="Dashboard.PageTitle" xml:space="preserve">
+  <data name="Dashboard_PageTitle" xml:space="preserve">
     <value>Meny</value>
     <comment>Title of default page</comment>
   </data>
@@ -139,110 +139,110 @@
   
   
   
-  <data name="Financial.BookkeepingAccountShort" xml:space="preserve">
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
     <value>Konto</value>
   </data>
-  <data name="Financial.Budget" xml:space="preserve">
+  <data name="Financial_Budget" xml:space="preserve">
     <value>Budsjett</value>
   </data>
-  <data name="Financial.CashAdvance" xml:space="preserve">
+  <data name="Financial_CashAdvance" xml:space="preserve">
     <value>Forskudd</value>
   </data>
   
   
-  <data name="Financial.ExpenseClaim" xml:space="preserve">
+  <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Utgift</value>
   </data>
-  <data name="Financial.ExpenseClaimSpecification" xml:space="preserve">
+  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
     <value>Utgift #{0}</value>
   </data>
-  <data name="Financial.ExpenseClaimsSpecification" xml:space="preserve">
+  <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>Utgifter {0}</value>
   </data>
-  <data name="Financial.InvoiceInbound" xml:space="preserve">
+  <data name="Financial_InvoiceInbound" xml:space="preserve">
     <value>Faktura</value>
   </data>
-  <data name="Financial.InvoiceOutbound" xml:space="preserve">
+  <data name="Financial_InvoiceOutbound" xml:space="preserve">
     <value>Faktura</value>
   </data>
-  <data name="Financial.Parley" xml:space="preserve">
+  <data name="Financial_Parley" xml:space="preserve">
     <value>Møte</value>
   </data>
-  <data name="Financial.Salary" xml:space="preserve">
+  <data name="Financial_Salary" xml:space="preserve">
     <value>Godtgjørelse</value>
   </data>
-  <data name="Financial.SalarySpecification" xml:space="preserve">
+  <data name="Financial_SalarySpecification" xml:space="preserve">
     <value>Godtgjørelse for {0:yyyy-MMM}</value>
     <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
   </data>
-  <data name="Financial.TaxesSpecification" xml:space="preserve">
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
     <value>Skatt på godtgjørelser {0}</value>
   </data>
-  <data name="Financial.TaxSpecification" xml:space="preserve">
+  <data name="Financial_TaxSpecification" xml:space="preserve">
     <value>Skatt på godtgjørelse {0}</value>
   </data>
-  <data name="Financial.TheTaxMan" xml:space="preserve">
+  <data name="Financial_TheTaxMan" xml:space="preserve">
     <value>Skattefuten</value>
     <comment>Used as recipient for taxes.</comment>
   </data>
-  <data name="Financial.YearlyResult" xml:space="preserve">
+  <data name="Financial_YearlyResult" xml:space="preserve">
     <value>Årsresultat</value>
   </data>
-  <data name="Global.ASAP" xml:space="preserve">
+  <data name="Global_ASAP" xml:space="preserve">
     <value>Snarest!</value>
     <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
   </data>
-  <data name="Global.Cancel" xml:space="preserve">
+  <data name="Global_Cancel" xml:space="preserve">
     <value>Avbryt</value>
     <comment>Displayed as cancellation link on changing something</comment>
   </data>
-  <data name="Global.Change" xml:space="preserve">
+  <data name="Global_Change" xml:space="preserve">
     <value>Endre?</value>
     <comment>Link after describing what the user is looking at, allowing a change.</comment>
   </data>
-  <data name="Global.ClickImageToEnlarge" xml:space="preserve">
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
     <value>Klikk på bildet for større versjon.</value>
     <comment>Displayed where thumbnails can be enlarged modally.</comment>
   </data>
-  <data name="Global.Confirm" xml:space="preserve">
+  <data name="Global_Confirm" xml:space="preserve">
     <value>Bekreft</value>
     <comment>Displayed as confirmation link on changing something</comment>
   </data>
-  <data name="Global.DropInits.SelectFinancialAccount" xml:space="preserve">
+  <data name="Global_DropInits_SelectFinancialAccount" xml:space="preserve">
     <value>-- Velg budsjett/konto --</value>
     <comment>Initializer in dropdown box.</comment>
   </data>
-  <data name="Global.DropInits.SelectOrganization" xml:space="preserve">
+  <data name="Global_DropInits_SelectOrganization" xml:space="preserve">
     <value>-- Velg organisasjon --</value>
     <comment>Initializer in dropdown box.</comment>
   </data>
   
-  <data name="Global.NoOwner" xml:space="preserve">
+  <data name="Global_NoOwner" xml:space="preserve">
     <value>Ingen</value>
     <comment>Displayed when an account/position etc is vacant</comment>
   </data>
   
-  <data name="Global.ProcessingFile" xml:space="preserve">
+  <data name="Global_ProcessingFile" xml:space="preserve">
     <value>Laster opp...</value>
     <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
-  <data name="Global.UploadFile" xml:space="preserve">
+  <data name="Global_UploadFile" xml:space="preserve">
     <value>Last opp</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
   
-  <data name="Global.Upload.ErrorSelectFile" xml:space="preserve">
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
     <value>Du må velge en fil å laste opp.</value>
     <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
   </data>
   
   
   
-  <data name="Sidebar.Information" xml:space="preserve">
+  <data name="Sidebar_Information" xml:space="preserve">
     <value>Info</value>
     <comment>Information about current page</comment>
   </data>
-  <data name="Sidebar.Todo" xml:space="preserve">
+  <data name="Sidebar_Todo" xml:space="preserve">
     <value>Må gjøres</value>
     <comment>List of todo items</comment>
   </data>
@@ -250,32 +250,32 @@
   
   
   
-  <data name="Financial.ExpenseClaims" xml:space="preserve">
+  <data name="Financial_ExpenseClaims" xml:space="preserve">
     <value>Utgifter</value>
   </data>
-  <data name="Financial.ExpenseClaimsLong" xml:space="preserve">
+  <data name="Financial_ExpenseClaimsLong" xml:space="preserve">
     <value>Utgiftsgodtgjørelser</value>
   </data>
-  <data name="Financial.InboundInvoices" xml:space="preserve">
+  <data name="Financial_InboundInvoices" xml:space="preserve">
     <value>Fakturaer</value>
   </data>
-  <data name="Financial.InboundInvoicesLong" xml:space="preserve">
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
     <value>Innkommende fakturaer</value>
   </data>
-  <data name="Financial.OutboundInvoices" xml:space="preserve">
+  <data name="Financial_OutboundInvoices" xml:space="preserve">
     <value>Fakturaer</value>
   </data>
-  <data name="Financial.OutboundInvoicesLong" xml:space="preserve">
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
     <value>Utgående fakturaer</value>
   </data>
-  <data name="Global.NA" xml:space="preserve">
+  <data name="Global_NA" xml:space="preserve">
     <value>Ikke tilgjengelig</value>
   </data>
   
-  <data name="Global.AsOfNow" xml:space="preserve">
+  <data name="Global_AsOfNow" xml:space="preserve">
     <value>Akkurat nå</value>
   </data>
-  <data name="Global.Today" xml:space="preserve">
+  <data name="Global_Today" xml:space="preserve">
     <value>I dag</value>
   </data>
   

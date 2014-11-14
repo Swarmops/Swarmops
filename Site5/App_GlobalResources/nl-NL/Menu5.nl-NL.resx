@@ -117,227 +117,227 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu5.Administration" xml:space="preserve">
+  <data name="Menu5_Administration" xml:space="preserve">
     <value>Beheerder</value>
   </data>
-  <data name="Menu5.Administration.AccessControlLists" xml:space="preserve">
+  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
     <value>Toegangscontrole lijst</value>
   </data>
   
-  <data name="Menu5.Administration.GeographyTree" xml:space="preserve">
+  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geografische Boom</value>
   </data>
-  <data name="Menu5.Administration.OrganizationClusters" xml:space="preserve">
+  <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Organisatieclusters</value>
   </data>
-  <data name="Menu5.Communications" xml:space="preserve">
+  <data name="Menu5_Communications" xml:space="preserve">
     <value>Communicatie</value>
   </data>
-  <data name="Menu5.Communications.EditAutomailText" xml:space="preserve">
+  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
     <value>Automail Tekst Aanpassen</value>
   </data>
-  <data name="Menu5.Communications.MailInbox" xml:space="preserve">
+  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
     <value>Beheer Mail Inbox</value>
   </data>
-  <data name="Menu5.Communications.MassMailing" xml:space="preserve">
+  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
     <value>Massa Mails</value>
   </data>
   
-  <data name="Menu5.Communications.PaperInbox" xml:space="preserve">
+  <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
     <value>Beheer Papieren Inbox</value>
   </data>
   
   
-  <data name="Menu5.Communications.ReporterList" xml:space="preserve">
+  <data name="Menu5_Communications_ReporterList" xml:space="preserve">
     <value>Beheer Reporterslijst</value>
   </data>
   
   
-  <data name="Menu5.Communications.TextActivists" xml:space="preserve">
+  <data name="Menu5_Communications_TextActivists" xml:space="preserve">
     <value>Bericht Activisten</value>
   </data>
-  <data name="Menu5.Communications.TextInbox" xml:space="preserve">
+  <data name="Menu5_Communications_TextInbox" xml:space="preserve">
     <value>Beheer Tekst Inbox</value>
   </data>
-  <data name="Menu5.Financial" xml:space="preserve">
+  <data name="Menu5_Financial" xml:space="preserve">
     <value>Financiën</value>
   </data>
-  <data name="Menu5.Financial.AttestCosts" xml:space="preserve">
+  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
     <value>Attest Kosten</value>
   </data>
-  <data name="Menu5.Financial.ClaimExpense" xml:space="preserve">
+  <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>Terugbetaling op Uitgaven</value>
   </data>
-  <data name="Menu5.Financial.CreatePurchaseOrder" xml:space="preserve">
+  <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Maak een Nieuwe Aankoop</value>
   </data>
-  <data name="Menu5.Financial.GigsAssistant" xml:space="preserve">
+  <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>Gigs Assistent</value>
   </data>
-  <data name="Menu5.Financial.List" xml:space="preserve">
+  <data name="Menu5_Financial_List" xml:space="preserve">
     <value>Lijst</value>
   </data>
   
   
-  <data name="Menu5.Financial.List.InboundInvoices" xml:space="preserve">
+  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
     <value>Binnenkomende Facturen</value>
   </data>
-  <data name="Menu5.Financial.List.OutboundInvoices" xml:space="preserve">
+  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
     <value>Uitgaande Facturen</value>
   </data>
-  <data name="Menu5.Financial.List.OutstandingAdvances" xml:space="preserve">
+  <data name="Menu5_Financial_List_OutstandingAdvances" xml:space="preserve">
     <value>Uitstaande Vooruitbetalingen in Cash</value>
   </data>
-  <data name="Menu5.Financial.List.Salaries" xml:space="preserve">
+  <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Salarissen</value>
   </data>
   
-  <data name="Menu5.Financial.PayOutMoney" xml:space="preserve">
+  <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>Geld Uitgeven</value>
   </data>
   
-  <data name="Menu5.Financial.ReceivedInvoice" xml:space="preserve">
+  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
     <value>Ontvangen Factuur</value>
   </data>
-  <data name="Menu5.Financial.RequestCashAdvance" xml:space="preserve">
+  <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>Vraag om Kasvoorschot</value>
   </data>
   
-  <data name="Menu5.Financial.ValidateReceipts" xml:space="preserve">
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>Declaraties valideren</value>
   </data>
   
-  <data name="Menu5.Financial.ViewLiquidityForecast" xml:space="preserve">
+  <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
     <value>Zie Liquiditeitsprognose</value>
   </data>
-  <data name="Menu5.Governance" xml:space="preserve">
+  <data name="Menu5_Governance" xml:space="preserve">
     <value>Bestuur</value>
   </data>
-  <data name="Menu5.Governance.Candidates" xml:space="preserve">
+  <data name="Menu5_Governance_Candidates" xml:space="preserve">
     <value>Kandidaten</value>
   </data>
-  <data name="Menu5.Governance.CreateVotingList" xml:space="preserve">
+  <data name="Menu5_Governance_CreateVotingList" xml:space="preserve">
     <value>Maak een Stemmenlijst</value>
   </data>
-  <data name="Menu5.Governance.MeetingAdmin" xml:space="preserve">
+  <data name="Menu5_Governance_MeetingAdmin" xml:space="preserve">
     <value>Vergaderingen Administratie</value>
   </data>
-  <data name="Menu5.Governance.MeetingBoardAdmin" xml:space="preserve">
+  <data name="Menu5_Governance_MeetingBoardAdmin" xml:space="preserve">
     <value>Vergadering Boardadmin</value>
   </data>
-  <data name="Menu5.Governance.Motions" xml:space="preserve">
+  <data name="Menu5_Governance_Motions" xml:space="preserve">
     <value>Moties</value>
   </data>
-  <data name="Menu5.Governance.Vote" xml:space="preserve">
+  <data name="Menu5_Governance_Vote" xml:space="preserve">
     <value>Stemmen</value>
   </data>
-  <data name="Menu5.Hacks.TemporaryAccessControl" xml:space="preserve">
+  <data name="Menu5_Hacks_TemporaryAccessControl" xml:space="preserve">
     <value>Instellen van Admin-toegang (tijdelijke pagina)</value>
   </data>
-  <data name="Menu5.Ledgers" xml:space="preserve">
+  <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Grootboeken</value>
   </data>
-  <data name="Menu5.Ledgers.AccountPlan" xml:space="preserve">
+  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
     <value>Account Plan</value>
   </data>
-  <data name="Menu5.Ledgers.AuditLedgers" xml:space="preserve">
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>Grootboek nazien</value>
   </data>
-  <data name="Menu5.Ledgers.BalanceSheet" xml:space="preserve">
+  <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>Balans</value>
   </data>
-  <data name="Menu5.Ledgers.CannotCloseBooks" xml:space="preserve">
+  <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>Kan grootboek niet afsluiten voor {0}</value>
   </data>
   
-  <data name="Menu5.Ledgers.CloseBooks" xml:space="preserve">
+  <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
     <value>Grootboek afsluiten voor {0}</value>
   </data>
   
-  <data name="Menu5.Ledgers.ImportBankData" xml:space="preserve">
+  <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Importeer Bankgegevens</value>
   </data>
   
   
-  <data name="Menu5.Ledgers.Payroll" xml:space="preserve">
+  <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>Salarisadministratie</value>
   </data>
-  <data name="Menu5.Ledgers.ProfitLossStatement" xml:space="preserve">
+  <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>Winst- &amp; verliesrekening</value>
   </data>
   
-  <data name="Menu5.Ledgers.SetBudgets" xml:space="preserve">
+  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
     <value>Budgetbedragen Instellen</value>
   </data>
-  <data name="Menu5.Ledgers.UploadBankFiles" xml:space="preserve">
+  <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>Upload Bankbestanden</value>
   </data>
   
-  <data name="Menu5.Organization" xml:space="preserve">
+  <data name="Menu5_Organization" xml:space="preserve">
     <value>Organisatie</value>
   </data>
-  <data name="Menu5.Organization.AvailableResponsibilities" xml:space="preserve">
+  <data name="Menu5_Organization_AvailableResponsibilities" xml:space="preserve">
     <value>Beschikbare Verantwoordelijkheden</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates" xml:space="preserve">
     <value>Communicatie Sjablonen</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates.Invoice" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates_Invoice" xml:space="preserve">
     <value>Facturen</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates.MassMailing" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates_MassMailing" xml:space="preserve">
     <value>Massa Mails</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates.Newsletter" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates_Newsletter" xml:space="preserve">
     <value>Nieuwsbrieven</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates.PressRelease" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates_PressRelease" xml:space="preserve">
     <value>Persberichten</value>
   </data>
-  <data name="Menu5.Organization.Feeds" xml:space="preserve">
+  <data name="Menu5_Organization_Feeds" xml:space="preserve">
     <value>Feeds</value>
   </data>
-  <data name="Menu5.Organization.Feeds.Newsletter" xml:space="preserve">
+  <data name="Menu5_Organization_Feeds_Newsletter" xml:space="preserve">
     <value>Nieuwsbrieven</value>
   </data>
-  <data name="Menu5.Organization.Feeds.PressReleases" xml:space="preserve">
+  <data name="Menu5_Organization_Feeds_PressReleases" xml:space="preserve">
     <value>Persberichten</value>
   </data>
-  <data name="Menu5.Organization.MemberStatistics" xml:space="preserve">
+  <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
     <value>Ledenstatistieken</value>
   </data>
-  <data name="Menu5.Organization.OrganizationChart" xml:space="preserve">
+  <data name="Menu5_Organization_OrganizationChart" xml:space="preserve">
     <value>Organigram</value>
   </data>
-  <data name="Menu5.Organization.Responsibilities" xml:space="preserve">
+  <data name="Menu5_Organization_Responsibilities" xml:space="preserve">
     <value>Organisatie Verantwoordelijkheden</value>
   </data>
-  <data name="Menu5.Organization.Settings" xml:space="preserve">
+  <data name="Menu5_Organization_Settings" xml:space="preserve">
     <value>Organisatie Instellingen</value>
   </data>
-  <data name="Menu5.Organization.SuborganizationTree" xml:space="preserve">
+  <data name="Menu5_Organization_SuborganizationTree" xml:space="preserve">
     <value>Suborganisatie Boom</value>
   </data>
-  <data name="Menu5.People" xml:space="preserve">
+  <data name="Menu5_People" xml:space="preserve">
     <value>Mensen</value>
   </data>
-  <data name="Menu5.People.AddMember" xml:space="preserve">
+  <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>Lid Toevoegen</value>
   </data>
   
-  <data name="Menu5.People.ListMembers" xml:space="preserve">
+  <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Ledenlijst</value>
   </data>
-  <data name="Menu5.People.LogActivism" xml:space="preserve">
+  <data name="Menu5_People_LogActivism" xml:space="preserve">
     <value>Log Activisme</value>
   </data>
-  <data name="Menu5.People.ManageConferences" xml:space="preserve">
+  <data name="Menu5_People_ManageConferences" xml:space="preserve">
     <value>Beheer Conferenties</value>
   </data>
-  <data name="Menu5.People.ManageVolunteers" xml:space="preserve">
+  <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>Beheren van Vrijwilligers</value>
   </data>
-  <data name="Menu5.People.NewConference" xml:space="preserve">
+  <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Nieuwe Conferentie</value>
   </data>
   

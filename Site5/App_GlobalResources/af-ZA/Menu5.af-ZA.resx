@@ -117,277 +117,277 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu5.Administration" xml:space="preserve">
+  <data name="Menu5_Administration" xml:space="preserve">
     <value>crwdns1639804:0crwdne1639804:0</value>
   </data>
-  <data name="Menu5.Administration.AccessControlLists" xml:space="preserve">
+  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
     <value>crwdns1639805:0crwdne1639805:0</value>
   </data>
-  <data name="Menu5.Administration.CreateOrganization" xml:space="preserve">
+  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>crwdns6553751:0crwdne6553751:0</value>
   </data>
-  <data name="Menu5.Administration.GeographyTree" xml:space="preserve">
+  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>crwdns1639806:0crwdne1639806:0</value>
   </data>
-  <data name="Menu5.Administration.OrganizationClusters" xml:space="preserve">
+  <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>crwdns1639807:0crwdne1639807:0</value>
   </data>
-  <data name="Menu5.Communications" xml:space="preserve">
+  <data name="Menu5_Communications" xml:space="preserve">
     <value>crwdns1639808:0crwdne1639808:0</value>
   </data>
-  <data name="Menu5.Communications.EditAutomailText" xml:space="preserve">
+  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
     <value>crwdns1639809:0crwdne1639809:0</value>
   </data>
-  <data name="Menu5.Communications.MailInbox" xml:space="preserve">
+  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
     <value>crwdns1639810:0crwdne1639810:0</value>
   </data>
-  <data name="Menu5.Communications.MassMailing" xml:space="preserve">
+  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
     <value>crwdns1639811:0crwdne1639811:0</value>
   </data>
-  <data name="Menu5.Communications.MobilizeActivists" xml:space="preserve">
+  <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
     <value>crwdns6553954:0crwdne6553954:0</value>
   </data>
-  <data name="Menu5.Communications.PaperInbox" xml:space="preserve">
+  <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
     <value>crwdns1639812:0crwdne1639812:0</value>
   </data>
-  <data name="Menu5.Communications.ReadPaperInbox" xml:space="preserve">
+  <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
     <value>crwdns6553955:0crwdne6553955:0</value>
   </data>
-  <data name="Menu5.Communications.ReceivedPaperLetter" xml:space="preserve">
+  <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
     <value>crwdns6553956:0crwdne6553956:0</value>
   </data>
-  <data name="Menu5.Communications.ReporterList" xml:space="preserve">
+  <data name="Menu5_Communications_ReporterList" xml:space="preserve">
     <value>crwdns1639814:0crwdne1639814:0</value>
   </data>
-  <data name="Menu5.Communications.SendMassMessage" xml:space="preserve">
+  <data name="Menu5_Communications_SendMassMessage" xml:space="preserve">
     <value>crwdns6553842:0crwdne6553842:0</value>
   </data>
-  <data name="Menu5.Communications.SendPressRelease" xml:space="preserve">
+  <data name="Menu5_Communications_SendPressRelease" xml:space="preserve">
     <value>crwdns6553957:0crwdne6553957:0</value>
   </data>
-  <data name="Menu5.Communications.TextActivists" xml:space="preserve">
+  <data name="Menu5_Communications_TextActivists" xml:space="preserve">
     <value>crwdns1639816:0crwdne1639816:0</value>
   </data>
-  <data name="Menu5.Communications.TextInbox" xml:space="preserve">
+  <data name="Menu5_Communications_TextInbox" xml:space="preserve">
     <value>crwdns1639817:0crwdne1639817:0</value>
   </data>
-  <data name="Menu5.Financial" xml:space="preserve">
+  <data name="Menu5_Financial" xml:space="preserve">
     <value>crwdns1639818:0crwdne1639818:0</value>
   </data>
-  <data name="Menu5.Financial.AttestCosts" xml:space="preserve">
+  <data name="Menu5_Financial_AttestCosts" xml:space="preserve">
     <value>crwdns1639819:0crwdne1639819:0</value>
   </data>
-  <data name="Menu5.Financial.ClaimExpense" xml:space="preserve">
+  <data name="Menu5_Financial_ClaimExpense" xml:space="preserve">
     <value>crwdns1639820:0crwdne1639820:0</value>
   </data>
-  <data name="Menu5.Financial.CreatePurchaseOrder" xml:space="preserve">
+  <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>crwdns1639821:0crwdne1639821:0</value>
   </data>
-  <data name="Menu5.Financial.GigsAssistant" xml:space="preserve">
+  <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
     <value>crwdns1639822:0crwdne1639822:0</value>
   </data>
-  <data name="Menu5.Financial.List" xml:space="preserve">
+  <data name="Menu5_Financial_List" xml:space="preserve">
     <value>crwdns1639823:0crwdne1639823:0</value>
   </data>
-  <data name="Menu5.Financial.List.CashRequests" xml:space="preserve">
+  <data name="Menu5_Financial_List_CashRequests" xml:space="preserve">
     <value>crwdns6553752:0crwdne6553752:0</value>
   </data>
-  <data name="Menu5.Financial.List.ExpenseClaims" xml:space="preserve">
+  <data name="Menu5_Financial_List_ExpenseClaims" xml:space="preserve">
     <value>crwdns6553753:0crwdne6553753:0</value>
   </data>
-  <data name="Menu5.Financial.List.InboundInvoices" xml:space="preserve">
+  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
     <value>crwdns1639825:0crwdne1639825:0</value>
   </data>
-  <data name="Menu5.Financial.List.OutboundInvoices" xml:space="preserve">
+  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
     <value>crwdns1639826:0crwdne1639826:0</value>
   </data>
-  <data name="Menu5.Financial.List.OutstandingAdvances" xml:space="preserve">
+  <data name="Menu5_Financial_List_OutstandingAdvances" xml:space="preserve">
     <value>crwdns1639827:0crwdne1639827:0</value>
   </data>
-  <data name="Menu5.Financial.List.Salaries" xml:space="preserve">
+  <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>crwdns1639828:0crwdne1639828:0</value>
   </data>
-  <data name="Menu5.Financial.ManageBudgets" xml:space="preserve">
+  <data name="Menu5_Financial_ManageBudgets" xml:space="preserve">
     <value>crwdns6553958:0crwdne6553958:0</value>
   </data>
-  <data name="Menu5.Financial.PayOutMoney" xml:space="preserve">
+  <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
     <value>crwdns1639830:0crwdne1639830:0</value>
   </data>
-  <data name="Menu5.Financial.Payroll" xml:space="preserve">
+  <data name="Menu5_Financial_Payroll" xml:space="preserve">
     <value>crwdns6553959:0crwdne6553959:0</value>
   </data>
-  <data name="Menu5.Financial.ReceivedInvoice" xml:space="preserve">
+  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
     <value>crwdns1639831:0crwdne1639831:0</value>
   </data>
-  <data name="Menu5.Financial.RequestCashAdvance" xml:space="preserve">
+  <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
     <value>crwdns1639832:0crwdne1639832:0</value>
   </data>
-  <data name="Menu5.Financial.SendInvoice" xml:space="preserve">
+  <data name="Menu5_Financial_SendInvoice" xml:space="preserve">
     <value>crwdns6553960:0crwdne6553960:0</value>
   </data>
-  <data name="Menu5.Financial.ValidateReceipts" xml:space="preserve">
+  <data name="Menu5_Financial_ValidateReceipts" xml:space="preserve">
     <value>crwdns6553685:0crwdne6553685:0</value>
   </data>
-  <data name="Menu5.Financial.ViewBudgetActuals" xml:space="preserve">
+  <data name="Menu5_Financial_ViewBudgetActuals" xml:space="preserve">
     <value>crwdns6553961:0crwdne6553961:0</value>
   </data>
-  <data name="Menu5.Financial.ViewLiquidityForecast" xml:space="preserve">
+  <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
     <value>crwdns1639835:0crwdne1639835:0</value>
   </data>
-  <data name="Menu5.Governance" xml:space="preserve">
+  <data name="Menu5_Governance" xml:space="preserve">
     <value>crwdns1639836:0crwdne1639836:0</value>
   </data>
-  <data name="Menu5.Governance.Candidates" xml:space="preserve">
+  <data name="Menu5_Governance_Candidates" xml:space="preserve">
     <value>crwdns1639837:0crwdne1639837:0</value>
   </data>
-  <data name="Menu5.Governance.CreateVotingList" xml:space="preserve">
+  <data name="Menu5_Governance_CreateVotingList" xml:space="preserve">
     <value>crwdns1639838:0crwdne1639838:0</value>
   </data>
-  <data name="Menu5.Governance.MeetingAdmin" xml:space="preserve">
+  <data name="Menu5_Governance_MeetingAdmin" xml:space="preserve">
     <value>crwdns1639839:0crwdne1639839:0</value>
   </data>
-  <data name="Menu5.Governance.MeetingBoardAdmin" xml:space="preserve">
+  <data name="Menu5_Governance_MeetingBoardAdmin" xml:space="preserve">
     <value>crwdns1639840:0crwdne1639840:0</value>
   </data>
-  <data name="Menu5.Governance.Motions" xml:space="preserve">
+  <data name="Menu5_Governance_Motions" xml:space="preserve">
     <value>crwdns1639841:0crwdne1639841:0</value>
   </data>
-  <data name="Menu5.Governance.Vote" xml:space="preserve">
+  <data name="Menu5_Governance_Vote" xml:space="preserve">
     <value>crwdns1639842:0crwdne1639842:0</value>
   </data>
-  <data name="Menu5.Hacks.TemporaryAccessControl" xml:space="preserve">
+  <data name="Menu5_Hacks_TemporaryAccessControl" xml:space="preserve">
     <value>crwdns6553686:0crwdne6553686:0</value>
   </data>
-  <data name="Menu5.Ledgers" xml:space="preserve">
+  <data name="Menu5_Ledgers" xml:space="preserve">
     <value>crwdns1639843:0crwdne1639843:0</value>
   </data>
-  <data name="Menu5.Ledgers.AccountPlan" xml:space="preserve">
+  <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
     <value>crwdns1639844:0crwdne1639844:0</value>
   </data>
-  <data name="Menu5.Ledgers.AuditLedgers" xml:space="preserve">
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
     <value>crwdns6498773:0crwdne6498773:0</value>
   </data>
-  <data name="Menu5.Ledgers.BalanceSheet" xml:space="preserve">
+  <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>crwdns1639845:0crwdne1639845:0</value>
   </data>
-  <data name="Menu5.Ledgers.CannotCloseBooks" xml:space="preserve">
+  <data name="Menu5_Ledgers_CannotCloseBooks" xml:space="preserve">
     <value>crwdns6498774:0{0}crwdne6498774:0</value>
   </data>
-  <data name="Menu5.Ledgers.CashflowAnalysis" xml:space="preserve">
+  <data name="Menu5_Ledgers_CashflowAnalysis" xml:space="preserve">
     <value>crwdns6553962:0crwdne6553962:0</value>
   </data>
-  <data name="Menu5.Ledgers.CloseBooks" xml:space="preserve">
+  <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
     <value>crwdns6498775:0{0}crwdne6498775:0</value>
   </data>
-  <data name="Menu5.Ledgers.DebugLedgers" xml:space="preserve">
+  <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>crwdns6498776:0crwdne6498776:0</value>
   </data>
-  <data name="Menu5.Ledgers.ImportBankData" xml:space="preserve">
+  <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>crwdns1639848:0crwdne1639848:0</value>
   </data>
-  <data name="Menu5.Ledgers.InspectLedgers" xml:space="preserve">
+  <data name="Menu5_Ledgers_InspectLedgers" xml:space="preserve">
     <value>crwdns6554013:0crwdne6554013:0</value>
   </data>
-  <data name="Menu5.Ledgers.LiquidityForecast" xml:space="preserve">
+  <data name="Menu5_Ledgers_LiquidityForecast" xml:space="preserve">
     <value>crwdns6553963:0crwdne6553963:0</value>
   </data>
-  <data name="Menu5.Ledgers.Payroll" xml:space="preserve">
+  <data name="Menu5_Ledgers_Payroll" xml:space="preserve">
     <value>crwdns1639849:0crwdne1639849:0</value>
   </data>
-  <data name="Menu5.Ledgers.ProfitLossStatement" xml:space="preserve">
+  <data name="Menu5_Ledgers_ProfitLossStatement" xml:space="preserve">
     <value>crwdns6498777:0crwdne6498777:0</value>
   </data>
-  <data name="Menu5.Ledgers.ResyncExternalAccount" xml:space="preserve">
+  <data name="Menu5_Ledgers_ResyncExternalAccount" xml:space="preserve">
     <value>crwdns6553754:0crwdne6553754:0</value>
   </data>
-  <data name="Menu5.Ledgers.SetBudgets" xml:space="preserve">
+  <data name="Menu5_Ledgers_SetBudgets" xml:space="preserve">
     <value>crwdns1639851:0crwdne1639851:0</value>
   </data>
-  <data name="Menu5.Ledgers.UploadBankFiles" xml:space="preserve">
+  <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
     <value>crwdns1639852:0crwdne1639852:0</value>
   </data>
-  <data name="Menu5.Ledgers.ViewOutstandingAccounts" xml:space="preserve">
+  <data name="Menu5_Ledgers_ViewOutstandingAccounts" xml:space="preserve">
     <value>crwdns6553607:0crwdne6553607:0</value>
   </data>
-  <data name="Menu5.Organization" xml:space="preserve">
+  <data name="Menu5_Organization" xml:space="preserve">
     <value>crwdns1639853:0crwdne1639853:0</value>
   </data>
-  <data name="Menu5.Organization.AvailableResponsibilities" xml:space="preserve">
+  <data name="Menu5_Organization_AvailableResponsibilities" xml:space="preserve">
     <value>crwdns1639854:0crwdne1639854:0</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates" xml:space="preserve">
     <value>crwdns1639855:0crwdne1639855:0</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates.Invoice" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates_Invoice" xml:space="preserve">
     <value>crwdns1639856:0crwdne1639856:0</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates.MassMailing" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates_MassMailing" xml:space="preserve">
     <value>crwdns1639857:0crwdne1639857:0</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates.Newsletter" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates_Newsletter" xml:space="preserve">
     <value>crwdns1639858:0crwdne1639858:0</value>
   </data>
-  <data name="Menu5.Organization.CommunicationTemplates.PressRelease" xml:space="preserve">
+  <data name="Menu5_Organization_CommunicationTemplates_PressRelease" xml:space="preserve">
     <value>crwdns1639859:0crwdne1639859:0</value>
   </data>
-  <data name="Menu5.Organization.Feeds" xml:space="preserve">
+  <data name="Menu5_Organization_Feeds" xml:space="preserve">
     <value>crwdns1639860:0crwdne1639860:0</value>
   </data>
-  <data name="Menu5.Organization.Feeds.Newsletter" xml:space="preserve">
+  <data name="Menu5_Organization_Feeds_Newsletter" xml:space="preserve">
     <value>crwdns1639861:0crwdne1639861:0</value>
   </data>
-  <data name="Menu5.Organization.Feeds.PressReleases" xml:space="preserve">
+  <data name="Menu5_Organization_Feeds_PressReleases" xml:space="preserve">
     <value>crwdns1639862:0crwdne1639862:0</value>
   </data>
-  <data name="Menu5.Organization.MemberStatistics" xml:space="preserve">
+  <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
     <value>crwdns1639863:0crwdne1639863:0</value>
   </data>
-  <data name="Menu5.Organization.OrganizationChart" xml:space="preserve">
+  <data name="Menu5_Organization_OrganizationChart" xml:space="preserve">
     <value>crwdns1639864:0crwdne1639864:0</value>
   </data>
-  <data name="Menu5.Organization.Responsibilities" xml:space="preserve">
+  <data name="Menu5_Organization_Responsibilities" xml:space="preserve">
     <value>crwdns1639865:0crwdne1639865:0</value>
   </data>
-  <data name="Menu5.Organization.Settings" xml:space="preserve">
+  <data name="Menu5_Organization_Settings" xml:space="preserve">
     <value>crwdns1639866:0crwdne1639866:0</value>
   </data>
-  <data name="Menu5.Organization.SuborganizationTree" xml:space="preserve">
+  <data name="Menu5_Organization_SuborganizationTree" xml:space="preserve">
     <value>crwdns1639867:0crwdne1639867:0</value>
   </data>
-  <data name="Menu5.People" xml:space="preserve">
+  <data name="Menu5_People" xml:space="preserve">
     <value>crwdns1639868:0crwdne1639868:0</value>
   </data>
-  <data name="Menu5.People.AddMember" xml:space="preserve">
+  <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>crwdns1639869:0crwdne1639869:0</value>
   </data>
-  <data name="Menu5.People.ListFind" xml:space="preserve">
+  <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>crwdns6553850:0crwdne6553850:0</value>
   </data>
-  <data name="Menu5.People.ListMembers" xml:space="preserve">
+  <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>crwdns1639870:0crwdne1639870:0</value>
   </data>
-  <data name="Menu5.People.LogActivism" xml:space="preserve">
+  <data name="Menu5_People_LogActivism" xml:space="preserve">
     <value>crwdns1639871:0crwdne1639871:0</value>
   </data>
-  <data name="Menu5.People.ManageConferences" xml:space="preserve">
+  <data name="Menu5_People_ManageConferences" xml:space="preserve">
     <value>crwdns1639872:0crwdne1639872:0</value>
   </data>
-  <data name="Menu5.People.ManageVolunteers" xml:space="preserve">
+  <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
     <value>crwdns1639873:0crwdne1639873:0</value>
   </data>
-  <data name="Menu5.People.NewConference" xml:space="preserve">
+  <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>crwdns1639874:0crwdne1639874:0</value>
   </data>
-  <data name="Menu5.People.RolesResponsibilities" xml:space="preserve">
+  <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
     <value>crwdns6553964:0crwdne6553964:0</value>
   </data>
-  <data name="Menu5.People.SelfSignup" xml:space="preserve">
+  <data name="Menu5_People_SelfSignup" xml:space="preserve">
     <value>crwdns6553965:0crwdne6553965:0</value>
   </data>
-  <data name="Menu5.Placeholder.Todo" xml:space="preserve">
+  <data name="Menu5_Placeholder_Todo" xml:space="preserve">
     <value>crwdns6553755:0crwdne6553755:0</value>
   </data>
-  <data name="Menu5.Ugly.Todo" xml:space="preserve">
+  <data name="Menu5_Ugly_Todo" xml:space="preserve">
     <value>crwdns6553756:0crwdne6553756:0</value>
   </data>
 </root>

@@ -117,19 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu5.Administration" xml:space="preserve">
+  <data name="Menu5_Administration" xml:space="preserve">
     <value>Verwaltung</value>
   </data>
   
   
   
   
-  <data name="Menu5.Communications" xml:space="preserve">
+  <data name="Menu5_Communications" xml:space="preserve">
     <value>Kommunikation</value>
   </data>
   
   
-  <data name="Menu5.Communications.MassMailing" xml:space="preserve">
+  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
     <value>Rundbrief</value>
   </data>
   
@@ -141,7 +141,7 @@
   
   
   
-  <data name="Menu5.Financial" xml:space="preserve">
+  <data name="Menu5_Financial" xml:space="preserve">
     <value>Finanzen</value>
   </data>
   
@@ -154,7 +154,7 @@
   
   
   
-  <data name="Menu5.Financial.List.Salaries" xml:space="preserve">
+  <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
     <value>Gehälter</value>
   </data>
   
@@ -167,18 +167,18 @@
   
   
   
-  <data name="Menu5.Governance.Candidates" xml:space="preserve">
+  <data name="Menu5_Governance_Candidates" xml:space="preserve">
     <value>Kandidaten</value>
   </data>
   
   
   
   
-  <data name="Menu5.Governance.Vote" xml:space="preserve">
+  <data name="Menu5_Governance_Vote" xml:space="preserve">
     <value>Abstimmen</value>
   </data>
   
-  <data name="Menu5.Ledgers" xml:space="preserve">
+  <data name="Menu5_Ledgers" xml:space="preserve">
     <value>Bestandsbuch</value>
   </data>
   
@@ -188,7 +188,7 @@
   
   
   
-  <data name="Menu5.Ledgers.ImportBankData" xml:space="preserve">
+  <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
     <value>Bankdaten importieren</value>
   </data>
   
@@ -199,7 +199,7 @@
   
   
   
-  <data name="Menu5.Organization" xml:space="preserve">
+  <data name="Menu5_Organization" xml:space="preserve">
     <value>Organisation</value>
   </data>
   
@@ -216,7 +216,7 @@
   
   
   
-  <data name="Menu5.People" xml:space="preserve">
+  <data name="Menu5_People" xml:space="preserve">
     <value>Menschen</value>
   </data>
   
