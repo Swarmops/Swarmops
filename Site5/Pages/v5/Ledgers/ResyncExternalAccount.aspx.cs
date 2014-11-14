@@ -49,8 +49,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             this.PageIcon = "iconshock-treasure";
-            this.PageTitle = Resources.Pages_Ledgers.ResyncExternalAccount_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages_Ledgers.ResyncExternalAccount_Info;
+            this.PageTitle = Resources.Pages.Ledgers.ResyncExternalAccount_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages.Ledgers.ResyncExternalAccount_Info;
 
             if (!Page.IsPostBack)
             {

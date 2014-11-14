@@ -123,15 +123,15 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
     private void Localize()
     {
-        this.LabelCurrentUserName.Text = Resources.Pages_Init.Init_UserInfo_InstallingAdmin;
-        this.LabelCurrentOrganizationName.Text = Resources.Pages_Init.Init_UserInfo_NoOrgsYet;
+        this.LabelCurrentUserName.Text = Resources.Pages.Init.Init_UserInfo_InstallingAdmin;
+        this.LabelCurrentOrganizationName.Text = Resources.Pages.Init.Init_UserInfo_NoOrgsYet;
         this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
         this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
-        this.LabelSidebarInfoContent.Text = Resources.Pages_Init.Init_SidebarInfo_Welcome;
+        this.LabelSidebarInfoContent.Text = Resources.Pages.Init.Init_SidebarInfo_Welcome;
         this.LabelSidebarActionsHeader.Text = Resources.Global.Sidebar_Actions;
-        this.LabelSidebarActionsContent.Text = Resources.Pages_Init.Init_SidebarActions_None;
+        this.LabelSidebarActionsContent.Text = Resources.Pages.Init.Init_SidebarActions_None;
         this.LabelSidebarTodoHeader.Text = Resources.Global.Sidebar_Todo;
-        this.LabelSidebarTodoConnectDatabase.Text = Resources.Pages_Init.Init_SidebarTodo_CompleteSetup;
+        this.LabelSidebarTodoConnectDatabase.Text = Resources.Pages.Init.Init_SidebarTodo_CompleteSetup;
 
         this.DropFavoriteColor.Items.Clear();
         this.DropFavoriteColor.Items.Add(" -- Select one --");

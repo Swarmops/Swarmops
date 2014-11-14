@@ -87,9 +87,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            this.PageTitle = Resources.Pages_Financial.CreateInboundInvoice_PageTitle;
+            this.PageTitle = Resources.Pages.Financial.CreateInboundInvoice_PageTitle;
             this.PageIcon = "iconshock-invoice";
-            this.InfoBoxLiteral = Resources.Pages_Financial.CreateInboundInvoice_Info;
+            this.InfoBoxLiteral = Resources.Pages.Financial.CreateInboundInvoice_Info;
 
             if (!Page.IsPostBack)
             {
@@ -108,21 +108,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             this.LabelSupplier.Text = Resources.Global.Financial_Supplier;
             this.LabelDueDate.Text = Resources.Global.Financial_DueDate;
-            this.LabelAmount.Text = string.Format(Resources.Pages_Financial.CreateInboundInvoice_Amount,
+            this.LabelAmount.Text = string.Format(Resources.Pages.Financial.CreateInboundInvoice_Amount,
                                                   CurrentOrganization.Currency.Code);
-            this.LabelPurpose.Text = Resources.Pages_Financial.CreateInboundInvoice_Description;
+            this.LabelPurpose.Text = Resources.Pages.Financial.CreateInboundInvoice_Description;
             this.LabelBudget.Text = Resources.Global.Financial_Budget;
-            this.LabelHeaderBankDetails.Text = Resources.Pages_Financial.CreateInboundInvoice_HeaderPaymentDetails;
-            this.LabelHeaderImageFiles.Text = Resources.Pages_Financial.CreateInboundInvoice_HeaderInvoiceImage;
-            this.LabelImageFiles.Text = Resources.Pages_Financial.CreateInboundInvoice_UploadInvoiceImage;
-            this.LabelReference.Text = Resources.Pages_Financial.CreateInboundInvoice_Reference;
-            this.LabelAccount.Text = Resources.Pages_Financial.CreateInboundInvoice_SupplierAccount;
+            this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.CreateInboundInvoice_HeaderPaymentDetails;
+            this.LabelHeaderImageFiles.Text = Resources.Pages.Financial.CreateInboundInvoice_HeaderInvoiceImage;
+            this.LabelImageFiles.Text = Resources.Pages.Financial.CreateInboundInvoice_UploadInvoiceImage;
+            this.LabelReference.Text = Resources.Pages.Financial.CreateInboundInvoice_Reference;
+            this.LabelAccount.Text = Resources.Pages.Financial.CreateInboundInvoice_SupplierAccount;
 
-            this.LiteralErrorAmount.Text = Resources.Pages_Financial.FileExpenseClaim_ValidationError_Amount;  // TODO: Validation errors
-            this.LiteralErrorPurpose.Text = Resources.Pages_Financial.FileExpenseClaim_ValidationError_Purpose;
-            this.LiteralErrorBudget.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_Budget;
-            this.LiteralErrorBankAccount.Text = Resources.Pages_Financial.CreateInboundInvoice_ValidationError_Account;
-            this.LiteralErrorDocuments.Text = Resources.Pages_Financial.FileExpenseClaim_ValidationError_Documents;
+            this.LiteralErrorAmount.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount;  // TODO: Validation errors
+            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose;
+            this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
+            this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Account;
+            this.LiteralErrorDocuments.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents;
 
         }
 
@@ -184,7 +184,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Display success message
 
-            this.LiteralSuccess.Text = HttpUtility.UrlEncode(String.Format(Resources.Pages_Financial.CreateInboundInvoice_SuccessMessage,
+            this.LiteralSuccess.Text = HttpUtility.UrlEncode(String.Format(Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
                                                      invoice.Identity)).Replace("+", "%20");
 
             // Reset all fields for next invoice

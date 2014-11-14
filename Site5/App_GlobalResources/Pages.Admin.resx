@@ -150,4 +150,10 @@
     <value>The new organization has been created. You have been given an initial two-year {0} in the organization, so you can work with it and set it up properly. To switch to working with your new organization, use the control panel top right.</value>
     <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
   </data>
+  <data name="EditOrganization_Info" xml:space="preserve">
+    <value>&lt;strong&gt;WORK IN PROGRESS.&lt;/strong&gt; Most of these options don't save yet.</value>
+  </data>
+  <data name="EditOrganization_PageTitle" xml:space="preserve">
+    <value>Edit Organization</value>
+  </data>
 </root>

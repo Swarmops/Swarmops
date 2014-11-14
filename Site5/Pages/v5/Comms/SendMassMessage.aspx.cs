@@ -12,8 +12,8 @@ namespace Swarmops.Frontend.Pages.Comms
         protected void Page_Load(object sender, EventArgs e)
         {
             this.PageIcon = "iconshock-messages";
-            this.PageTitle = Resources.Pages_Comms.SendMassMessage_Title;
-            this.InfoBoxLiteral = Resources.Pages_Comms.SendMassMessage_Info;
+            this.PageTitle = Resources.Pages.Comms.SendMassMessage_Title;
+            this.InfoBoxLiteral = Resources.Pages.Comms.SendMassMessage_Info;
 
             if (!Page.IsPostBack)
             {
@@ -26,9 +26,9 @@ namespace Swarmops.Frontend.Pages.Comms
 
         private void Localize()
         {
-            this.LabelGeography.Text = Resources.Pages_Comms.SendMassMessage_Geography;
-            this.LabelRecipientType.Text = Resources.Pages_Comms.SendMassMessage_RecipientType;
-            this.LabelHeaderMessage.Text = Resources.Pages_Comms.SendMassMessage_HeaderMessage;
+            this.LabelGeography.Text = Resources.Pages.Comms.SendMassMessage_Geography;
+            this.LabelRecipientType.Text = Resources.Pages.Comms.SendMassMessage_RecipientType;
+            this.LabelHeaderMessage.Text = Resources.Pages.Comms.SendMassMessage_HeaderMessage;
 
             this.DropRecipientClasses.Items.Clear();
             this.DropRecipientClasses.Items.Add(new ListItem(Resources.Global.Global_SelectOne, "0"));
@@ -38,8 +38,8 @@ namespace Swarmops.Frontend.Pages.Comms
             this.DropRecipientClasses.Items.Add(new ListItem("Officers", "101"));
             this.DropRecipientClasses.Items.Add(new ListItem("Volunteers", "102"));
 
-            this.ButtonSend.Text = Resources.Pages_Comms.SendMassMessage_SendMessage;
-            this.ButtonTest.Text = Resources.Pages_Comms.SendMassMessage_TestMessage;
+            this.ButtonSend.Text = Resources.Pages.Comms.SendMassMessage_SendMessage;
+            this.ButtonTest.Text = Resources.Pages.Comms.SendMassMessage_TestMessage;
         }
 
         public struct ConfirmPayoutResult
@@ -84,7 +84,7 @@ namespace Swarmops.Frontend.Pages.Comms
             }
 
             string result;
-            string[] resources = Resources.Pages_Comms.SendMassMessage_RecipientCount.Split('|');
+            string[] resources = Resources.Pages.Comms.SendMassMessage_RecipientCount.Split('|');
 
             switch (personCount)
             {

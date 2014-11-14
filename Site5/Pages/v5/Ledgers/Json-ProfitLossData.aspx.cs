@@ -40,10 +40,10 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
     {
         Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
-        localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Pages_Ledgers.BalanceSheet_Assets;
-        localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Pages_Ledgers.BalanceSheet_Debt;
-        localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Pages_Ledgers.ProfitLossStatement_Income;
-        localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Pages_Ledgers.ProfitLossStatement_Costs;
+        localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Assets;
+        localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Debt;
+        localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Income;
+        localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Costs;
 
         foreach (YearlyReportLine line in lines)
         {
@@ -57,7 +57,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
 
     private string WriteFooter (YearlyReportNode totals)
     {
-        string result = string.Format("\"name\":\"{0}\"", Resources.Pages_Ledgers.ProfitLossStatement_Results);
+        string result = string.Format("\"name\":\"{0}\"", Resources.Pages.Ledgers.ProfitLossStatement_Results);
 
         result += string.Format(CultureInfo.CurrentCulture, ",\"lastYear\":\"{0:N0}\"", (double)totals.PreviousYear / -100.0);
 

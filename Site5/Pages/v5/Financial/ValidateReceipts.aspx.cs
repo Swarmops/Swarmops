@@ -48,14 +48,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages_Financial.ValidateReceipts_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages_Financial.ValidateReceipts_Info;
-            this.LabelAttestCostsHeader.Text = Resources.Pages_Financial.ValidateReceipts_Header_ReceiptsAwaitingValidation;
+            this.PageTitle = Resources.Pages.Financial.ValidateReceipts_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages.Financial.ValidateReceipts_Info;
+            this.LabelAttestCostsHeader.Text = Resources.Pages.Financial.ValidateReceipts_Header_ReceiptsAwaitingValidation;
             this.LabelGridHeaderAction.Text = Resources.Global.Global_Action;
-            this.LabelGridHeaderBudget.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Budget; // Reuse some strings from Attest Costs
-            this.LabelGridHeaderDescription.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Description;
-            this.LabelGridHeaderDocs.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Docs;
-            this.LabelGridHeaderRequested.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Requested;
+            this.LabelGridHeaderBudget.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Budget; // Reuse some strings from Attest Costs
+            this.LabelGridHeaderDescription.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Description;
+            this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
+            this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
             FinancialTransactionTagSets tagSets = FinancialTransactionTagSets.ForOrganization(CurrentOrganization);
 
@@ -143,8 +143,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     validatableItem = expense;
-                    validatedTemplate = Resources.Pages_Financial.ValidateReceipts_ReceiptsValidated;
-                    devalidatedTemplate = Resources.Pages_Financial.ValidateReceipts_ReceiptsDevalidated;
+                    validatedTemplate = Resources.Pages.Financial.ValidateReceipts_ReceiptsValidated;
+                    devalidatedTemplate = Resources.Pages.Financial.ValidateReceipts_ReceiptsDevalidated;
                     amountCents = expense.AmountCents;
 
                     break;

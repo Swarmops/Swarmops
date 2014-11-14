@@ -280,18 +280,18 @@ namespace Swarmops.Pages.Security
         {
             this.LabelCurrentOrganizationName.Text = Resources.Global.Global_Organization;
             this.LabelCurrentUserName.Text = Resources.Global.Title_Person_Generic;
-            this.LabelPageTitle.Text = Resources.Pages_Security.Login_PageTitle;
+            this.LabelPageTitle.Text = Resources.Pages.Security.Login_PageTitle;
             this.LabelPreferences.Text = Resources.Global.Global_NA;
             this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
             this.LabelSidebarHelpHeader.Text = Resources.Global.Sidebar_Help;
-            this.LabelSidebarInfoContent.Text = Resources.Pages_Security.Login_Info;
-            this.LabelSidebarManualLoginHeader.Text = Resources.Pages_Security.Login_ManualLogin;
-            this.LabelHeader.Text = Resources.Pages_Security.Login_Header;
-            this.LabelSidebarResetPassword.Text = Resources.Pages_Security.Login_ResetPassword;
-            this.LiteralCredentialsUser.Text = Resources.Pages_Security.Login_Username;
-            this.LiteralCredentialsPass.Text = Resources.Pages_Security.Login_Password;
-            this.LiteralCredentials2FA.Text = Resources.Pages_Security.Login_GoogleAuthenticatorCode;
-            this.LiteralLoginSuccess.Text = Resources.Pages_Security.Login_LoggingIn;
+            this.LabelSidebarInfoContent.Text = Resources.Pages.Security.Login_Info;
+            this.LabelSidebarManualLoginHeader.Text = Resources.Pages.Security.Login_ManualLogin;
+            this.LabelHeader.Text = Resources.Pages.Security.Login_Header;
+            this.LabelSidebarResetPassword.Text = Resources.Pages.Security.Login_ResetPassword;
+            this.LiteralCredentialsUser.Text = Resources.Pages.Security.Login_Username;
+            this.LiteralCredentialsPass.Text = Resources.Pages.Security.Login_Password;
+            this.LiteralCredentials2FA.Text = Resources.Pages.Security.Login_GoogleAuthenticatorCode;
+            this.LiteralLoginSuccess.Text = Resources.Pages.Security.Login_LoggingIn;
 
         }
 

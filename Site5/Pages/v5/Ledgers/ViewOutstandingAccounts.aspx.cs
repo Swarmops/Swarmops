@@ -46,17 +46,17 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages_Ledgers.ViewOutstandingAccounts_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages_Ledgers.ViewOutstandingAccounts_Info;
+            this.PageTitle = Resources.Pages.Ledgers.ViewOutstandingAccounts_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages.Ledgers.ViewOutstandingAccounts_Info;
 
-            this.LabelViewOutstandingAccountsHeader.Text = Resources.Pages_Ledgers.ViewOutstandingAccounts_Header;
-            this.LabelGridHeaderAction.Text = Resources.Pages_Ledgers.ViewOutstandingAccounts_GridHeaderAction;
-            this.LabelGridHeaderAmount.Text = Resources.Pages_Ledgers.ViewOutstandingAccounts_GridHeaderAmount;
-            this.LabelGridHeaderCreatedDate.Text = Resources.Pages_Ledgers.ViewOutstandingAccounts_GridHeaderOpenedDate;
-            this.LabelGridHeaderDescription.Text = Resources.Pages_Ledgers.ViewOutstandingAccounts_GridHeaderDescription;
-            this.LabelGridHeaderExpectedCloseDate.Text = Resources.Pages_Ledgers.ViewOutstandingAccounts_GridHeaderExpectedCloseDate;
-            this.LabelGridHeaderId.Text = Resources.Pages_Ledgers.ViewOutstandingAccounts_GridHeaderId;
-            this.LabelGridHeaderRecipient.Text = Resources.Pages_Ledgers.ViewOutstandingAccounts_GridHeaderRecipient;
+            this.LabelViewOutstandingAccountsHeader.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_Header;
+            this.LabelGridHeaderAction.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderAction;
+            this.LabelGridHeaderAmount.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderAmount;
+            this.LabelGridHeaderCreatedDate.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderOpenedDate;
+            this.LabelGridHeaderDescription.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderDescription;
+            this.LabelGridHeaderExpectedCloseDate.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderExpectedCloseDate;
+            this.LabelGridHeaderId.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderId;
+            this.LabelGridHeaderRecipient.Text = Resources.Pages.Ledgers.ViewOutstandingAccounts_GridHeaderRecipient;
         }
     }
 }

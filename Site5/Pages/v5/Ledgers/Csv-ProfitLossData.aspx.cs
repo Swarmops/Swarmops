@@ -24,18 +24,18 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
         Response.ClearContent();
         Response.ClearHeaders();
         Response.ContentType = "text/plain";
-        Response.AppendHeader("Content-Disposition", "attachment;filename=" + Resources.Pages_Ledgers.ProfitLossStatement_DownloadFileName + _year.ToString(CultureInfo.InvariantCulture) + "-" + DateTime.Today.ToString("yyyyMMdd") + ".csv");
+        Response.AppendHeader("Content-Disposition", "attachment;filename=" + Resources.Pages.Ledgers.ProfitLossStatement_DownloadFileName + _year.ToString(CultureInfo.InvariantCulture) + "-" + DateTime.Today.ToString("yyyyMMdd") + ".csv");
 
         if (_year == DateTime.Today.Year)
         {
-            Response.Output.WriteLine("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"", Resources.Pages_Ledgers.ProfitLossStatement_AccountName, Resources.Pages_Ledgers.ProfitLossStatement_LastYear,
-                Resources.Pages_Ledgers.ProfitLossStatement_Q1, Resources.Pages_Ledgers.ProfitLossStatement_Q2, Resources.Pages_Ledgers.ProfitLossStatement_Q3, Resources.Pages_Ledgers.ProfitLossStatement_Q4,
-                Resources.Pages_Ledgers.ProfitLossStatement_Ytd);
+            Response.Output.WriteLine("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"", Resources.Pages.Ledgers.ProfitLossStatement_AccountName, Resources.Pages.Ledgers.ProfitLossStatement_LastYear,
+                Resources.Pages.Ledgers.ProfitLossStatement_Q1, Resources.Pages.Ledgers.ProfitLossStatement_Q2, Resources.Pages.Ledgers.ProfitLossStatement_Q3, Resources.Pages.Ledgers.ProfitLossStatement_Q4,
+                Resources.Pages.Ledgers.ProfitLossStatement_Ytd);
         }
         else
         {
-            Response.Output.WriteLine("\"{0}\",\"{1}\",\"{6}-{2}\",\"{6}-{3}\",\"{6}-{4}\",\"{6}-{5}\",\"{6}\"", Resources.Pages_Ledgers.ProfitLossStatement_AccountName, _year-1,
-                Resources.Pages_Ledgers.ProfitLossStatement_Q1, Resources.Pages_Ledgers.ProfitLossStatement_Q2, Resources.Pages_Ledgers.ProfitLossStatement_Q3, Resources.Pages_Ledgers.ProfitLossStatement_Q4,
+            Response.Output.WriteLine("\"{0}\",\"{1}\",\"{6}-{2}\",\"{6}-{3}\",\"{6}-{4}\",\"{6}-{5}\",\"{6}\"", Resources.Pages.Ledgers.ProfitLossStatement_AccountName, _year-1,
+                Resources.Pages.Ledgers.ProfitLossStatement_Q1, Resources.Pages.Ledgers.ProfitLossStatement_Q2, Resources.Pages.Ledgers.ProfitLossStatement_Q3, Resources.Pages.Ledgers.ProfitLossStatement_Q4,
                 _year);
         }
 
@@ -51,10 +51,10 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
     {
         Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
-        localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Pages_Ledgers.BalanceSheet_Assets;
-        localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Pages_Ledgers.BalanceSheet_Debt;
-        localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Pages_Ledgers.ProfitLossStatement_Income;
-        localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Pages_Ledgers.ProfitLossStatement_Costs;
+        localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Assets;
+        localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Debt;
+        localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Income;
+        localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Costs;
 
         foreach (YearlyReportLine line in lines)
         {

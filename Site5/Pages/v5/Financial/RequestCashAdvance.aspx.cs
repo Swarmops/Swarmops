@@ -15,9 +15,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            this.PageTitle = Resources.Pages_Financial.RequestCashAdvance_PageTitle;
+            this.PageTitle = Resources.Pages.Financial.RequestCashAdvance_PageTitle;
             this.PageIcon = "iconshock-walletmoney";
-            this.InfoBoxLiteral = Resources.Pages_Financial.RequestCashAdvance_Info;
+            this.InfoBoxLiteral = Resources.Pages.Financial.RequestCashAdvance_Info;
 
             if (!Page.IsPostBack)
             {
@@ -36,21 +36,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            this.LabelAmount.Text = string.Format(Resources.Pages_Financial.RequestCashAdvance_Amount,
+            this.LabelAmount.Text = string.Format(Resources.Pages.Financial.RequestCashAdvance_Amount,
                                                   CurrentOrganization.Currency.Code);
-            this.LabelPurpose.Text = Resources.Pages_Financial.RequestCashAdvance_Purpose;
-            this.LabelBudget.Text = Resources.Pages_Financial.RequestCashAdvance_Budget;
-            this.LabelHeaderBankDetails.Text = Resources.Pages_Financial.RequestCashAdvance_HeaderBankDetails;
-            this.LabelBankName.Text = Resources.Pages_Financial.RequestCashAdvance_BankName;
-            this.LabelBankClearing.Text = Resources.Pages_Financial.RequestCashAdvance_BankClearing;
-            this.LabelBankAccount.Text = Resources.Pages_Financial.RequestCashAdvance_BankAccount;
+            this.LabelPurpose.Text = Resources.Pages.Financial.RequestCashAdvance_Purpose;
+            this.LabelBudget.Text = Resources.Pages.Financial.RequestCashAdvance_Budget;
+            this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.RequestCashAdvance_HeaderBankDetails;
+            this.LabelBankName.Text = Resources.Pages.Financial.RequestCashAdvance_BankName;
+            this.LabelBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_BankClearing;
+            this.LabelBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_BankAccount;
 
-            this.LiteralErrorAmount.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_Amount;
-            this.LiteralErrorPurpose.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_Purpose;
-            this.LiteralErrorBudget.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_Budget;
-            this.LiteralErrorBankName.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_BankName;
-            this.LiteralErrorBankClearing.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_BankClearing;
-            this.LiteralErrorBankAccount.Text = Resources.Pages_Financial.RequestCashAdvance_ValidationError_BankAccount;
+            this.LiteralErrorAmount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Amount;
+            this.LiteralErrorPurpose.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Purpose;
+            this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
+            this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
+            this.LiteralErrorBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
+            this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
         }
 
 
@@ -87,20 +87,20 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Create success message
 
-            string successMessage = string.Format(Resources.Pages_Financial.RequestCashAdvance_SuccessMessagePartOne,
+            string successMessage = string.Format(Resources.Pages.Financial.RequestCashAdvance_SuccessMessagePartOne,
                                                   HttpUtility.HtmlEncode(CurrentUser.Name),
                                                   HttpUtility.HtmlEncode(description), CurrentOrganization.Currency.Code,
                                                   (double) (amountCents/100.0));
 
             if (budget.OwnerPersonId != CurrentUser.Identity)
             {
-                successMessage += "<br/><br/>" + Resources.Pages_Financial.RequestCashAdvance_SuccessMessagePartTwo +
+                successMessage += "<br/><br/>" + Resources.Pages.Financial.RequestCashAdvance_SuccessMessagePartTwo +
                                   "<br/>";
             }
             else
             {
                 successMessage += "<br/><br/>" +
-                                  Resources.Pages_Financial.RequestCashAdvance_SuccessMessagePartTwoOwnBudget +
+                                  Resources.Pages.Financial.RequestCashAdvance_SuccessMessagePartTwoOwnBudget +
                                   "<br/>";
                 cashAdvance.Attest (CurrentUser);
             }

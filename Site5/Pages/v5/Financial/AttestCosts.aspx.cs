@@ -69,16 +69,16 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages_Financial.AttestCosts_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages_Financial.AttestCosts_Info;
-            this.LabelAttestCostsHeader.Text = Resources.Pages_Financial.AttestCosts_Header_CostsAwaitingAttestation;
-            this.LabelGridHeaderAction.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Action;
-            this.LabelGridHeaderBeneficiary.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Beneficiary;
-            this.LabelGridHeaderBudget.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Budget;
-            this.LabelGridHeaderDescription.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Description;
-            this.LabelGridHeaderDocs.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Docs;
-            this.LabelGridHeaderItem.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Item;
-            this.LabelGridHeaderRequested.Text = Resources.Pages_Financial.AttestCosts_GridHeader_Requested;
+            this.PageTitle = Resources.Pages.Financial.AttestCosts_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages.Financial.AttestCosts_Info;
+            this.LabelAttestCostsHeader.Text = Resources.Pages.Financial.AttestCosts_Header_CostsAwaitingAttestation;
+            this.LabelGridHeaderAction.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Action;
+            this.LabelGridHeaderBeneficiary.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Beneficiary;
+            this.LabelGridHeaderBudget.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Budget;
+            this.LabelGridHeaderDescription.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Description;
+            this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
+            this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
+            this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
         }
 
         private enum AttestationMode
@@ -139,8 +139,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     attestableItem = advance;
-                    attestedTemplate = Resources.Pages_Financial.AttestCosts_AdvanceAttested;
-                    deattestedTemplate = Resources.Pages_Financial.AttestCosts_AdvanceDeattested;
+                    attestedTemplate = Resources.Pages.Financial.AttestCosts_AdvanceAttested;
+                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_AdvanceDeattested;
                     beneficiary = advance.Person.Name;
                     amountCents = advance.AmountCents;
 
@@ -157,8 +157,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     attestableItem = expense;
-                    attestedTemplate = Resources.Pages_Financial.AttestCosts_ExpenseAttested;
-                    deattestedTemplate = Resources.Pages_Financial.AttestCosts_ExpenseDeattested;
+                    attestedTemplate = Resources.Pages.Financial.AttestCosts_ExpenseAttested;
+                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_ExpenseDeattested;
                     beneficiary = expense.Claimer.Name;
                     amountCents = expense.AmountCents;
 
@@ -175,8 +175,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     attestableItem = invoice;
-                    attestedTemplate = Resources.Pages_Financial.AttestCosts_InvoiceAttested;
-                    deattestedTemplate = Resources.Pages_Financial.AttestCosts_InvoiceDeattested;
+                    attestedTemplate = Resources.Pages.Financial.AttestCosts_InvoiceAttested;
+                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_InvoiceDeattested;
                     beneficiary = invoice.Supplier;
                     amountCents = invoice.AmountCents;
 
@@ -193,8 +193,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     attestableItem = salary;
-                    attestedTemplate = Resources.Pages_Financial.AttestCosts_SalaryAttested;
-                    deattestedTemplate = Resources.Pages_Financial.AttestCosts_SalaryDeattested;
+                    attestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryAttested;
+                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryDeattested;
                     beneficiary = salary.PayrollItem.PersonCanonical;
                     amountCents = salary.GrossSalaryCents;
 
@@ -211,8 +211,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     }
 
                     attestableItem = parley;
-                    attestedTemplate = Resources.Pages_Financial.AttestCosts_ParleyAttested;
-                    deattestedTemplate = Resources.Pages_Financial.AttestCosts_ParleyDeattested;
+                    attestedTemplate = Resources.Pages.Financial.AttestCosts_ParleyAttested;
+                    deattestedTemplate = Resources.Pages.Financial.AttestCosts_ParleyDeattested;
                     beneficiary = parley.Person.Name;
                     amountCents = parley.BudgetCents;
 

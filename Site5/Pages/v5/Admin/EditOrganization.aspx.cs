@@ -14,8 +14,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             this.PageIcon = "iconshock-box-cog";
-            this.PageTitle = Resources.Pages_Admin.EditOrganization_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages_Admin.EditOrganization_Info;
+            this.PageTitle = Resources.Pages.Admin.EditOrganization_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages.Admin.EditOrganization_Info;
             this.PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Administration, AccessType.Write);
 
             this.EasyUIControlsUsed = EasyUIControl.Tabs;

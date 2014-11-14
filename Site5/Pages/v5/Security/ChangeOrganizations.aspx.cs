@@ -15,10 +15,10 @@ namespace Swarmops.Frontend.Pages.v5.Security
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageTitle = Resources.Pages_Security.ChangeOrganizations_PageTitle;
+            this.PageTitle = Resources.Pages.Security.ChangeOrganizations_PageTitle;
             this.PageIcon = "iconshock-organizations";
-            this.InfoBoxLiteral = Resources.Pages_Security.ChangeOrganizations_Info;
-            this.LabelNoOrganizations.Text = Resources.Pages_Security.ChangeOrganizations_NothingToChange;
+            this.InfoBoxLiteral = Resources.Pages.Security.ChangeOrganizations_Info;
+            this.LabelNoOrganizations.Text = Resources.Pages.Security.ChangeOrganizations_NothingToChange;
 
             PopulateRepeater();
         }
