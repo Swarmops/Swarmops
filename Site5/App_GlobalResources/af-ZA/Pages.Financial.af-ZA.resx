@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AttestCosts.AdvanceAttested" xml:space="preserve">
+    <value>crwdns6554057:0{0:N0}crwdnd6554057:0{1}crwdnd6554057:0{3:N2}crwdne6554057:0</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts.AdvanceDeattested" xml:space="preserve">
+    <value>crwdns6554058:0{0:N0}crwdnd6554058:0{1}crwdne6554058:0</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts.ExpenseAttested" xml:space="preserve">
+    <value>crwdns6554059:0{0:N0}crwdnd6554059:0{1}crwdnd6554059:0{2}crwdnd6554059:0{3:N2}crwdne6554059:0</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts.ExpenseDeattested" xml:space="preserve">
+    <value>crwdns6554060:0{0:N0}crwdnd6554060:0{1}crwdne6554060:0</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts.GridHeader.Action" xml:space="preserve">
+    <value>crwdns6554061:0crwdne6554061:0</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts.GridHeader.Beneficiary" xml:space="preserve">
+    <value>crwdns6554062:0crwdne6554062:0</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts.GridHeader.Budget" xml:space="preserve">
+    <value>crwdns6554063:0crwdne6554063:0</value>
+  </data>
+  <data name="AttestCosts.GridHeader.Description" xml:space="preserve">
+    <value>crwdns6554064:0crwdne6554064:0</value>
+  </data>
+  <data name="AttestCosts.GridHeader.Docs" xml:space="preserve">
+    <value>crwdns6554065:0crwdne6554065:0</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts.GridHeader.Item" xml:space="preserve">
+    <value>crwdns6554066:0crwdne6554066:0</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts.GridHeader.Requested" xml:space="preserve">
+    <value>crwdns6554067:0crwdne6554067:0</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  <data name="AttestCosts.Header.CostsAwaitingAttestation" xml:space="preserve">
+    <value>crwdns6554068:0crwdne6554068:0</value>
+  </data>
+  <data name="AttestCosts.Info" xml:space="preserve">
+    <value>crwdns6554069:0crwdne6554069:0</value>
+  </data>
+  <data name="AttestCosts.InvoiceAttested" xml:space="preserve">
+    <value>crwdns6554070:0{0:N0}crwdnd6554070:0{1}crwdnd6554070:0{2}crwdnd6554070:0{3:N2}crwdne6554070:0</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts.InvoiceDeattested" xml:space="preserve">
+    <value>crwdns6554071:0{0:N0}crwdnd6554071:0{1}crwdne6554071:0</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts.PageTitle" xml:space="preserve">
+    <value>crwdns6554072:0crwdne6554072:0</value>
+  </data>
+  <data name="AttestCosts.ParleyAttested" xml:space="preserve">
+    <value>crwdns6554073:0{0:N0}crwdnd6554073:0{1}crwdnd6554073:0{3:N2}crwdne6554073:0</value>
+  </data>
+  <data name="AttestCosts.ParleyDeattested" xml:space="preserve">
+    <value>crwdns6554074:0{0:N0}crwdnd6554074:0{1}crwdne6554074:0</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts.SalaryAttested" xml:space="preserve">
+    <value>crwdns6554075:0{0:N0}crwdnd6554075:0{1}crwdnd6554075:0{3:N2}crwdne6554075:0</value>
+  </data>
+  <data name="AttestCosts.SalaryDeattested" xml:space="preserve">
+    <value>crwdns6554076:0{0:N0}crwdnd6554076:0{1}crwdne6554076:0</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="CreateInboundInvoice.Amount" xml:space="preserve">
+    <value>crwdns6554077:0{0}crwdne6554077:0</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice.Description" xml:space="preserve">
+    <value>crwdns6554078:0crwdne6554078:0</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice.HeaderInvoiceImage" xml:space="preserve">
+    <value>crwdns6554079:0crwdne6554079:0</value>
+  </data>
+  <data name="CreateInboundInvoice.HeaderPaymentDetails" xml:space="preserve">
+    <value>crwdns6554080:0crwdne6554080:0</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice.Info" xml:space="preserve">
+    <value>crwdns6554081:0crwdne6554081:0</value>
+  </data>
+  <data name="CreateInboundInvoice.PageTitle" xml:space="preserve">
+    <value>crwdns6554082:0crwdne6554082:0</value>
+  </data>
+  <data name="CreateInboundInvoice.Reference" xml:space="preserve">
+    <value>crwdns6554083:0crwdne6554083:0</value>
+  </data>
+  <data name="CreateInboundInvoice.ReferenceAutomaticOcr" xml:space="preserve">
+    <value>crwdns6554084:0crwdne6554084:0</value>
+    <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
+  </data>
+  <data name="CreateInboundInvoice.ReferenceManual" xml:space="preserve">
+    <value>crwdns6554085:0crwdne6554085:0</value>
+    <comment>Other invoices come without automated processing and a manual </comment>
+  </data>
+  <data name="CreateInboundInvoice.SuccessMessage" xml:space="preserve">
+    <value>crwdns6554086:0{0:N0}crwdne6554086:0</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
+  <data name="CreateInboundInvoice.SupplierAccount" xml:space="preserve">
+    <value>crwdns6554087:0crwdne6554087:0</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice.UploadInvoiceImage" xml:space="preserve">
+    <value>crwdns6554088:0crwdne6554088:0</value>
+  </data>
+  <data name="CreateInboundInvoice.ValidationError.Account" xml:space="preserve">
+    <value>crwdns6554089:0crwdne6554089:0</value>
+  </data>
+  <data name="FileExpenseClaim.Amount" xml:space="preserve">
+    <value>crwdns6554090:0{0}crwdne6554090:0</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim.BankAccount" xml:space="preserve">
+    <value>crwdns6554091:0crwdne6554091:0</value>
+  </data>
+  <data name="FileExpenseClaim.BankClearing" xml:space="preserve">
+    <value>crwdns6554092:0crwdne6554092:0</value>
+  </data>
+  <data name="FileExpenseClaim.BankName" xml:space="preserve">
+    <value>crwdns6554093:0crwdne6554093:0</value>
+  </data>
+  <data name="FileExpenseClaim.Budget" xml:space="preserve">
+    <value>crwdns6554094:0crwdne6554094:0</value>
+  </data>
+  <data name="FileExpenseClaim.CostType" xml:space="preserve">
+    <value>crwdns6554095:0crwdne6554095:0</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim.Description" xml:space="preserve">
+    <value>crwdns6554096:0crwdne6554096:0</value>
+  </data>
+  <data name="FileExpenseClaim.HeaderBankDetails" xml:space="preserve">
+    <value>crwdns6554097:0crwdne6554097:0</value>
+  </data>
+  <data name="FileExpenseClaim.HeaderReceiptImages" xml:space="preserve">
+    <value>crwdns6554098:0crwdne6554098:0</value>
+  </data>
+  <data name="FileExpenseClaim.Info" xml:space="preserve">
+    <value>crwdns6554099:0crwdne6554099:0</value>
+  </data>
+  <data name="FileExpenseClaim.PageTitle" xml:space="preserve">
+    <value>crwdns6554100:0crwdne6554100:0</value>
+  </data>
+  <data name="FileExpenseClaim.SuccessMessagePartOne" xml:space="preserve">
+    <value>crwdns6554101:0{0}crwdnd6554101:0{1:N2}crwdnd6554101:0{2}crwdne6554101:0</value>
+    <comment>{0} is the currency, {1} is the amount, and {2} is the budget name.</comment>
+  </data>
+  <data name="FileExpenseClaim.SuccessMessagePartTwo" xml:space="preserve">
+    <value>crwdns6554102:0crwdne6554102:0</value>
+  </data>
+  <data name="FileExpenseClaim.SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>crwdns6554103:0crwdne6554103:0</value>
+  </data>
+  <data name="FileExpenseClaim.UploadRecieptImages" xml:space="preserve">
+    <value>crwdns6554104:0crwdne6554104:0</value>
+  </data>
+  <data name="FileExpenseClaim.ValidationError.Amount" xml:space="preserve">
+    <value>crwdns6554105:0{0}crwdne6554105:0</value>
+  </data>
+  <data name="FileExpenseClaim.ValidationError.Documents" xml:space="preserve">
+    <value>crwdns6554106:0crwdne6554106:0</value>
+  </data>
+  <data name="FileExpenseClaim.ValidationError.MissingTag" xml:space="preserve">
+    <value>crwdns6554107:0crwdne6554107:0</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim.ValidationError.Purpose" xml:space="preserve">
+    <value>crwdns6554108:0crwdne6554108:0</value>
+  </data>
+  <data name="PayOutMoney.GridHeader.Amount" xml:space="preserve">
+    <value>crwdns6554109:0crwdne6554109:0</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney.GridHeader.BankAccount" xml:space="preserve">
+    <value>crwdns6554110:0crwdne6554110:0</value>
+    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
+  </data>
+  <data name="PayOutMoney.GridHeader.BankName" xml:space="preserve">
+    <value>crwdns6554111:0crwdne6554111:0</value>
+  </data>
+  <data name="PayOutMoney.GridHeader.DueDate" xml:space="preserve">
+    <value>crwdns6554112:0crwdne6554112:0</value>
+  </data>
+  <data name="PayOutMoney.GridHeader.PaidOut" xml:space="preserve">
+    <value>crwdns6554113:0crwdne6554113:0</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney.GridHeader.Recipient" xml:space="preserve">
+    <value>crwdns6554114:0crwdne6554114:0</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney.GridHeader.Reference" xml:space="preserve">
+    <value>crwdns6554115:0crwdne6554115:0</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  <data name="PayOutMoney.Header" xml:space="preserve">
+    <value>crwdns6554116:0crwdne6554116:0</value>
+  </data>
+  <data name="PayOutMoney.Info" xml:space="preserve">
+    <value>crwdns6554117:0crwdne6554117:0</value>
+  </data>
+  <data name="PayOutMoney.PageTitle" xml:space="preserve">
+    <value>crwdns6554118:0crwdne6554118:0</value>
+  </data>
+  <data name="PayOutMoney.PayoutCannotUndo" xml:space="preserve">
+    <value>crwdns6554119:0{0}crwdne6554119:0</value>
+  </data>
+  <data name="PayOutMoney.PayoutCreated" xml:space="preserve">
+    <value>crwdns6554120:0{0:N0}crwdnd6554120:0{1}crwdne6554120:0</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney.PayoutUndone" xml:space="preserve">
+    <value>crwdns6554121:0{0:N0}crwdne6554121:0</value>
+  </data>
+  <data name="RequestCashAdvance.Amount" xml:space="preserve">
+    <value>crwdns6554122:0{0}crwdne6554122:0</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance.BankAccount" xml:space="preserve">
+    <value>crwdns6554123:0crwdne6554123:0</value>
+  </data>
+  <data name="RequestCashAdvance.BankClearing" xml:space="preserve">
+    <value>crwdns6554124:0crwdne6554124:0</value>
+  </data>
+  <data name="RequestCashAdvance.BankName" xml:space="preserve">
+    <value>crwdns6554125:0crwdne6554125:0</value>
+  </data>
+  <data name="RequestCashAdvance.Budget" xml:space="preserve">
+    <value>crwdns6554126:0crwdne6554126:0</value>
+  </data>
+  <data name="RequestCashAdvance.HeaderBankDetails" xml:space="preserve">
+    <value>crwdns6554127:0crwdne6554127:0</value>
+  </data>
+  <data name="RequestCashAdvance.Info" xml:space="preserve">
+    <value>crwdns6554128:0crwdne6554128:0</value>
+  </data>
+  <data name="RequestCashAdvance.PageTitle" xml:space="preserve">
+    <value>crwdns6554129:0crwdne6554129:0</value>
+  </data>
+  <data name="RequestCashAdvance.Purpose" xml:space="preserve">
+    <value>crwdns6554130:0crwdne6554130:0</value>
+  </data>
+  <data name="RequestCashAdvance.SuccessMessagePartOne" xml:space="preserve">
+    <value>crwdns6554131:0{0}crwdnd6554131:0{2}crwdnd6554131:0{3:N2}crwdne6554131:0</value>
+    <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
+  </data>
+  <data name="RequestCashAdvance.SuccessMessagePartTwo" xml:space="preserve">
+    <value>crwdns6554132:0crwdne6554132:0</value>
+  </data>
+  <data name="RequestCashAdvance.SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>crwdns6554133:0crwdne6554133:0</value>
+    <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
+  </data>
+  <data name="RequestCashAdvance.ValidationError.Amount" xml:space="preserve">
+    <value>crwdns6554134:0{0}crwdne6554134:0</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance.ValidationError.BankAccount" xml:space="preserve">
+    <value>crwdns6554135:0crwdne6554135:0</value>
+  </data>
+  <data name="RequestCashAdvance.ValidationError.BankClearing" xml:space="preserve">
+    <value>crwdns6554136:0crwdne6554136:0</value>
+  </data>
+  <data name="RequestCashAdvance.ValidationError.BankName" xml:space="preserve">
+    <value>crwdns6554137:0crwdne6554137:0</value>
+  </data>
+  <data name="RequestCashAdvance.ValidationError.Budget" xml:space="preserve">
+    <value>crwdns6554138:0crwdne6554138:0</value>
+  </data>
+  <data name="RequestCashAdvance.ValidationError.Purpose" xml:space="preserve">
+    <value>crwdns6554139:0crwdne6554139:0</value>
+  </data>
+  <data name="ValidateReceipts.Header.ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>crwdns6554140:0crwdne6554140:0</value>
+  </data>
+  <data name="ValidateReceipts.Info" xml:space="preserve">
+    <value>crwdns6554141:0crwdne6554141:0</value>
+  </data>
+  <data name="ValidateReceipts.PageTitle" xml:space="preserve">
+    <value>crwdns6554142:0crwdne6554142:0</value>
+  </data>
+  <data name="ValidateReceipts.ReceiptsDevalidated" xml:space="preserve">
+    <value>crwdns6554143:0{0:N0}crwdnd6554143:0{1}crwdnd6554143:0{2:N2}crwdne6554143:0</value>
+  </data>
+  <data name="ValidateReceipts.ReceiptsValidated" xml:space="preserve">
+    <value>crwdns6554144:0{0:N0}crwdnd6554144:0{1}crwdnd6554144:0{2:N2}crwdne6554144:0</value>
+  </data>
+</root>

@@ -117,25 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu5_Administration" xml:space="preserve">
+  <data name="Menu5.Administration" xml:space="preserve">
     <value>Администратор</value>
   </data>
-  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
+  <data name="Menu5.Administration.AccessControlLists" xml:space="preserve">
     <value>Списки управления доступом</value>
   </data>
   
   
   
-  <data name="Menu5_Communications" xml:space="preserve">
+  <data name="Menu5.Communications" xml:space="preserve">
     <value>Связь</value>
   </data>
-  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
+  <data name="Menu5.Communications.EditAutomailText" xml:space="preserve">
     <value>Редактировать текст для автоответа</value>
   </data>
-  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
+  <data name="Menu5.Communications.MailInbox" xml:space="preserve">
     <value>Управление папкой "Входящие"</value>
   </data>
-  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
+  <data name="Menu5.Communications.MassMailing" xml:space="preserve">
     <value>Массовые рассылки</value>
   </data>
   
@@ -147,62 +147,62 @@
   
   
   
-  <data name="Menu5_Financial" xml:space="preserve">
+  <data name="Menu5.Financial" xml:space="preserve">
     <value>Финансовые</value>
   </data>
   
   
   
   
-  <data name="Menu5_Financial_List" xml:space="preserve">
+  <data name="Menu5.Financial.List" xml:space="preserve">
     <value>Список</value>
   </data>
   
   
-  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
+  <data name="Menu5.Financial.List.InboundInvoices" xml:space="preserve">
     <value>Входящие счета-фактуры</value>
   </data>
-  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
+  <data name="Menu5.Financial.List.OutboundInvoices" xml:space="preserve">
     <value>Исходящие счета-фактуры</value>
   </data>
-  <data name="Menu5_Financial_List_OutstandingAdvances" xml:space="preserve">
+  <data name="Menu5.Financial.List.OutstandingAdvances" xml:space="preserve">
     <value>Непогашенные авансы наличными</value>
   </data>
-  <data name="Menu5_Financial_List_Salaries" xml:space="preserve">
+  <data name="Menu5.Financial.List.Salaries" xml:space="preserve">
     <value>Оклады</value>
   </data>
   
-  <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
+  <data name="Menu5.Financial.PayOutMoney" xml:space="preserve">
     <value>Деньги</value>
   </data>
   
-  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
+  <data name="Menu5.Financial.ReceivedInvoice" xml:space="preserve">
     <value>Полученный счет-фактура</value>
   </data>
-  <data name="Menu5_Financial_RequestCashAdvance" xml:space="preserve">
+  <data name="Menu5.Financial.RequestCashAdvance" xml:space="preserve">
     <value>Запрос наличными заранее</value>
   </data>
   
   
   
-  <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
+  <data name="Menu5.Financial.ViewLiquidityForecast" xml:space="preserve">
     <value>Просмотр прогноз ликвидности</value>
   </data>
-  <data name="Menu5_Governance" xml:space="preserve">
+  <data name="Menu5.Governance" xml:space="preserve">
     <value>Управление</value>
   </data>
-  <data name="Menu5_Governance_Candidates" xml:space="preserve">
+  <data name="Menu5.Governance.Candidates" xml:space="preserve">
     <value>Кандидаты</value>
   </data>
-  <data name="Menu5_Governance_CreateVotingList" xml:space="preserve">
+  <data name="Menu5.Governance.CreateVotingList" xml:space="preserve">
     <value>Создать список голосования</value>
   </data>
   
   
-  <data name="Menu5_Governance_Motions" xml:space="preserve">
+  <data name="Menu5.Governance.Motions" xml:space="preserve">
     <value>Движения</value>
   </data>
-  <data name="Menu5_Governance_Vote" xml:space="preserve">
+  <data name="Menu5.Governance.Vote" xml:space="preserve">
     <value>Голосование</value>
   </data>
   
@@ -223,51 +223,51 @@
   
   
   
-  <data name="Menu5_Organization" xml:space="preserve">
+  <data name="Menu5.Organization" xml:space="preserve">
     <value>Организация</value>
   </data>
   
   
-  <data name="Menu5_Organization_CommunicationTemplates_Invoice" xml:space="preserve">
+  <data name="Menu5.Organization.CommunicationTemplates.Invoice" xml:space="preserve">
     <value>Счета-фактуры</value>
   </data>
   
   
-  <data name="Menu5_Organization_CommunicationTemplates_PressRelease" xml:space="preserve">
+  <data name="Menu5.Organization.CommunicationTemplates.PressRelease" xml:space="preserve">
     <value>Пресс-релизы</value>
   </data>
   
   
   
-  <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
+  <data name="Menu5.Organization.MemberStatistics" xml:space="preserve">
     <value>Статистика Участника</value>
   </data>
   
   
-  <data name="Menu5_Organization_Settings" xml:space="preserve">
+  <data name="Menu5.Organization.Settings" xml:space="preserve">
     <value>Параметры Организации</value>
   </data>
   
-  <data name="Menu5_People" xml:space="preserve">
+  <data name="Menu5.People" xml:space="preserve">
     <value>Люди</value>
   </data>
-  <data name="Menu5_People_AddMember" xml:space="preserve">
+  <data name="Menu5.People.AddMember" xml:space="preserve">
     <value>Добавить участников</value>
   </data>
   
-  <data name="Menu5_People_ListMembers" xml:space="preserve">
+  <data name="Menu5.People.ListMembers" xml:space="preserve">
     <value>Список участников</value>
   </data>
-  <data name="Menu5_People_LogActivism" xml:space="preserve">
+  <data name="Menu5.People.LogActivism" xml:space="preserve">
     <value>Журнал Активности</value>
   </data>
-  <data name="Menu5_People_ManageConferences" xml:space="preserve">
+  <data name="Menu5.People.ManageConferences" xml:space="preserve">
     <value>Управление Конференциями</value>
   </data>
-  <data name="Menu5_People_ManageVolunteers" xml:space="preserve">
+  <data name="Menu5.People.ManageVolunteers" xml:space="preserve">
     <value>Управление Добровольцами</value>
   </data>
-  <data name="Menu5_People_NewConference" xml:space="preserve">
+  <data name="Menu5.People.NewConference" xml:space="preserve">
     <value>Новая Конференция</value>
   </data>
   

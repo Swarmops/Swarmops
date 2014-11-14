@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddMotionAmendment.AmendmentSubmittedAs" xml:space="preserve">
+    <value>Saved as #{0}-{1}.</value>
+    <comment>Keep very short</comment>
+  </data>
+  <data name="AddMotionAmendment.Decision" xml:space="preserve">
+    <value>Proposed decision</value>
+    <comment>Decision to be made, amending the motion</comment>
+  </data>
+  <data name="AddMotionAmendment.PageTitle" xml:space="preserve">
+    <value>Add Amendment</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotionAmendment.SubmitAmendment" xml:space="preserve">
+    <value>Submit Amendment</value>
+  </data>
+  <data name="AddMotionAmendment.Submitter" xml:space="preserve">
+    <value>Submitter</value>
+  </data>
+  <data name="AddMotionAmendment.SubmittingAmendmentInfo" xml:space="preserve">
+    <value>You are submitting an amendment to the motion</value>
+    <comment>In sidebar info box. Motion title follows in bold.</comment>
+  </data>
+  <data name="AddMotionAmendment.Text" xml:space="preserve">
+    <value>Rationale</value>
+    <comment>Text of motion amendment (justification and rationale)</comment>
+  </data>
+  <data name="AddMotionAmendment.Title" xml:space="preserve">
+    <value>Amendment title</value>
+  </data>
+  <data name="AddMotion.Decisions" xml:space="preserve">
+    <value>Decisions (one per line)</value>
+    <comment>Proposed decisions, one per line</comment>
+  </data>
+  <data name="AddMotion.MotionSubmittedAs" xml:space="preserve">
+    <value>Motion saved as #{0}.</value>
+    <comment>Keep short</comment>
+  </data>
+  <data name="AddMotion.PageTitle" xml:space="preserve">
+    <value>Add Motion</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="AddMotion.SubmitMotion" xml:space="preserve">
+    <value>Submit Motion</value>
+  </data>
+  <data name="AddMotion.Submitter" xml:space="preserve">
+    <value>Submitter</value>
+    <comment>Original submitter (not person at keyboard)</comment>
+  </data>
+  <data name="AddMotion.SubmittingMotionInfo" xml:space="preserve">
+    <value>You are submitting a motion to the meeting</value>
+    <comment>Meeting name follows in bold.</comment>
+  </data>
+  <data name="AddMotion.Text" xml:space="preserve">
+    <value>Motion rationale</value>
+    <comment>Text of motion</comment>
+  </data>
+  <data name="AddMotion.Title" xml:space="preserve">
+    <value>Motion title</value>
+    <comment>Motion title in form</comment>
+  </data>
+  <data name="AddMotion.WrongMeeting" xml:space="preserve">
+    <value>Wrong meeting?</value>
+    <comment>Link to change meetings</comment>
+  </data>
+  <data name="ListMotions.Grid.Amended" xml:space="preserve">
+    <value>Amended</value>
+  </data>
+  <data name="ListMotions.Grid.Amendments" xml:space="preserve">
+    <value>Amendments</value>
+  </data>
+  <data name="ListMotions.Grid.Carried" xml:space="preserve">
+    <value>Carried</value>
+  </data>
+  <data name="ListMotions.Grid.Designation" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="ListMotions.Grid.Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ListMotions.PageTitle" xml:space="preserve">
+    <value>List Motions</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ListMotions.Sidebar.Info" xml:space="preserve">
+    <value>You are looking at motions for the meeting</value>
+  </data>
+  <data name="ListMotions.SubmitAmendment" xml:space="preserve">
+    <value>Submit...</value>
+    <comment>Displayed in-grid</comment>
+  </data>
+  <data name="ViewMotion.AddAmendment" xml:space="preserve">
+    <value>Propose new amendment to motion</value>
+  </data>
+  <data name="ViewMotion.Amendment" xml:space="preserve">
+    <value>Amendment</value>
+  </data>
+  <data name="ViewMotion.AmendmentCountOne" xml:space="preserve">
+    <value>One amendment</value>
+  </data>
+  <data name="ViewMotion.AmendmentCountTwoPlus" xml:space="preserve">
+    <value>{0} amendments</value>
+  </data>
+  <data name="ViewMotion.AmendmentCountZero" xml:space="preserve">
+    <value>No amendments</value>
+  </data>
+  <data name="ViewMotion.AmendmentProposedChange" xml:space="preserve">
+    <value>Proposed Change</value>
+  </data>
+  <data name="ViewMotion.AmendmentText" xml:space="preserve">
+    <value>Rationale</value>
+  </data>
+  <data name="ViewMotion.DecisionPoints" xml:space="preserve">
+    <value>Proposed decisions</value>
+  </data>
+  <data name="ViewMotion.Discuss" xml:space="preserve">
+    <value>Discussion thread</value>
+    <comment>Label before link to forum or similar</comment>
+  </data>
+  <data name="ViewMotion.DiscussLink" xml:space="preserve">
+    <value>Forum thread (posts so far: {0})</value>
+    <comment>Hyperlink text</comment>
+  </data>
+  <data name="ViewMotion.MotionDesignation" xml:space="preserve">
+    <value>Motion #{0}</value>
+  </data>
+  <data name="ViewMotion.PageTitle" xml:space="preserve">
+    <value>Viewing Motion</value>
+    <comment>Used as header and page title</comment>
+  </data>
+  <data name="ViewMotion.Text" xml:space="preserve">
+    <value>Motion rationale</value>
+  </data>
+  <data name="ViewMotion.ViewingMotionInfo" xml:space="preserve">
+    <value>You are viewing a motion submitted to the meeting</value>
+    <comment>In sidebar info box. Meeting name follows in bold.</comment>
+  </data>
+  <data name="VoteAmendments.BoardRecommendation" xml:space="preserve">
+    <value>Board's Recommendation</value>
+    <comment>First item in dropdown box</comment>
+  </data>
+  <data name="VoteAmendments.Grid.Abstain" xml:space="preserve">
+    <value>Abst.</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.Board" xml:space="preserve">
+    <value>Board says</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.Change" xml:space="preserve">
+    <value>Change</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.Decision" xml:space="preserve">
+    <value>Decision</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.Designation" xml:space="preserve">
+    <value>#</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.No" xml:space="preserve">
+    <value>No</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.Rationale" xml:space="preserve">
+    <value>Rationale</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.Recommend" xml:space="preserve">
+    <value>Rec.</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.Text" xml:space="preserve">
+    <value>Text</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.TitleText" xml:space="preserve">
+    <value>Text / Title</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments.Grid.Yes" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Column header</comment>
+  </data>
+  <data name="VoteAmendments.Header" xml:space="preserve">
+    <value>Amendments for {0}</value>
+    <comment>In content box header. The meeting name goes in {0}.</comment>
+  </data>
+  <data name="VoteAmendments.Info" xml:space="preserve">
+    <value>Vote for suggested changes (amendments) to motions. If pass, they change the motion. In the next round, we will vote for the resulting motions. The individual amendments are listed under each motion, and there are additional details under each motion and amendment. Select a voting recommendation if you like.</value>
+  </data>
+  <data name="VoteAmendments.PageTitle" xml:space="preserve">
+    <value>Vote on Amendments</value>
+    <comment>In page title and header</comment>
+  </data>
+  <data name="VoteAmendments.Recommend.Abstain" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="VoteAmendments.Recommend.No" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="VoteAmendments.Recommend.Yes" xml:space="preserve">
+    <value>YES</value>
+  </data>
+  <data name="VoteAmendments.SelectRecommendation" xml:space="preserve">
+    <value>Select recommendations...</value>
+    <comment>Default in dropdown box</comment>
+  </data>
+  <data name="Vote.CreateVotingList" xml:space="preserve">
+    <value>Create voting list?</value>
+    <comment>This becomes a link which folds out to a popup asking "for motions or amendments".</comment>
+  </data>
+  <data name="Vote.CreateVotingList.Amendments" xml:space="preserve">
+    <value>Create voting list for amendments</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote.CreateVotingList.Elections" xml:space="preserve">
+    <value>Create voting list for an election</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote.CreateVotingList.Motions" xml:space="preserve">
+    <value>Create voting list for motions</value>
+    <comment>In pop-up after clicking "create voting list"</comment>
+  </data>
+  <data name="Vote.Info" xml:space="preserve">
+    <value>Sometimes, {0} holds meetings. During these meetings, members get to vote. This is a list of what you may vote on. You can also create a voting list that serves as a recommendation to others.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
+  <data name="Vote.MeetingElections" xml:space="preserve">
+    <value>Elections</value>
+  </data>
+  <data name="Vote.Motions" xml:space="preserve">
+    <value>Motions</value>
+  </data>
+  <data name="Vote.MotionVotingMotionAmendments" xml:space="preserve">
+    <value>Motion Amendments</value>
+  </data>
+  <data name="Vote.MotionVotingMotions" xml:space="preserve">
+    <value>Motions</value>
+  </data>
+  <data name="Vote.NotOpenedYet" xml:space="preserve">
+    <value>Not open yet</value>
+    <comment>Keep very short.</comment>
+  </data>
+  <data name="Vote.OpensOnDate" xml:space="preserve">
+    <value>Opens {0:yyyy-MMM-dd}.</value>
+    <comment>Note the embedded date format. Localize to national standard.</comment>
+  </data>
+  <data name="Vote.PageTitle" xml:space="preserve">
+    <value>Vote</value>
+  </data>
+  <data name="Vote.PointsOfOrder" xml:space="preserve">
+    <value>Points of Order</value>
+  </data>
+  <data name="Vote.PointsOfOrderTemp" xml:space="preserve">
+    <value>No points of order at the moment.</value>
+  </data>
+  <data name="Vote.VoteHere" xml:space="preserve">
+    <value>Vote here</value>
+    <comment>Link to voting page</comment>
+  </data>
+  <data name="Vote.VoteOnAmendments" xml:space="preserve">
+    <value>Vote on {0:N0} amendments:</value>
+    <comment>The {0} is the amendment count.</comment>
+  </data>
+  <data name="Vote.VoteOnMotions" xml:space="preserve">
+    <value>Vote on {0:N0} motions:</value>
+    <comment>The {0} is the motion count.</comment>
+  </data>
+  <data name="VoteAmendments.SaveVote" xml:space="preserve">
+    <value>I'm Done, Submit My Vote</value>
+    <comment>Button at end of page</comment>
+  </data>
+  <data name="VoteAmendments.SaveVote.Temp" xml:space="preserve">
+    <value>Can't Vote In Test Meeting</value>
+    <comment>For Tests Only</comment>
+  </data>
+</root>

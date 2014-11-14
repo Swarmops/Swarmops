@@ -217,21 +217,21 @@
   
   
   
-  <data name="Global_Geography" xml:space="preserve">
+  <data name="Global.Geography" xml:space="preserve">
     <value>Geografie</value>
     <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
   </data>
   
-  <data name="Global_Mail" xml:space="preserve">
+  <data name="Global.Mail" xml:space="preserve">
     <value>eMail</value>
     <comment>Somebody's email address.</comment>
   </data>
   
-  <data name="Global_Notes" xml:space="preserve">
+  <data name="Global.Notes" xml:space="preserve">
     <value>Notizen</value>
     <comment>Small notes in a grid, maybe in icon form</comment>
   </data>
-  <data name="Global_Phone" xml:space="preserve">
+  <data name="Global.Phone" xml:space="preserve">
     <value>Telefon</value>
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>

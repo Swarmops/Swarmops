@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountPlan.CreateRootAccount" xml:space="preserve">
+    <value>Skapa nytt toppnivåkonto</value>
+  </data>
+  <data name="AccountPlan.Info" xml:space="preserve">
+    <value>Detta är en översikt över konton i organisationens ekonomi. Du kan göra en del kontounderhåll här, men det mesta av den dagliga verksamheten bör delegeras till budgetägarna.</value>
+  </data>
+  <data name="AccountPlan.PageTitle" xml:space="preserve">
+    <value>Kontoplan</value>
+  </data>
+  <data name="BalanceSheet.AccountName" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="BalanceSheet.Assets" xml:space="preserve">
+    <value>Tillgångar</value>
+  </data>
+  <data name="BalanceSheet.ContentHeader" xml:space="preserve">
+    <value>Balansräkning för {0},</value>
+    <comment>{0} is the organization name. The year follows immediately.</comment>
+  </data>
+  <data name="BalanceSheet.Current" xml:space="preserve">
+    <value>Just nu</value>
+  </data>
+  <data name="BalanceSheet.Debt" xml:space="preserve">
+    <value>Skulder</value>
+  </data>
+  <data name="BalanceSheet.DownloadFileName" xml:space="preserve">
+    <value>Balans</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="BalanceSheet.EndYear" xml:space="preserve">
+    <value>Slut-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="BalanceSheet.Info" xml:space="preserve">
+    <value>Balansräkningen är en översikt över tillgångar och skulder vid ett ögonblick i tiden, och används för att se hur resultaten påverkar organisationens övergripande finansiella hälsa. Du kan också titta på &lt;a href="ProfitLossStatement.aspx"&gt; resultaträkningen&lt;/a&gt; som är en översikt över inkomster och utgifter.</value>
+  </data>
+  <data name="BalanceSheet.PageTitle" xml:space="preserve">
+    <value>Balansräkning</value>
+  </data>
+  <data name="BalanceSheet.Q1" xml:space="preserve">
+    <value>Ändr Kv1</value>
+  </data>
+  <data name="BalanceSheet.Q2" xml:space="preserve">
+    <value>Ändr Kv2</value>
+  </data>
+  <data name="BalanceSheet.Q3" xml:space="preserve">
+    <value>Ändr Kv3</value>
+  </data>
+  <data name="BalanceSheet.Q4" xml:space="preserve">
+    <value>Ändr Kv4</value>
+  </data>
+  
+  <data name="ProfitLossStatement.AccountName" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="ProfitLossStatement.ContentHeader" xml:space="preserve">
+    <value>Resultaträkning för {0} år</value>
+    <comment>The {0} is the organization name. The year number follows this string.</comment>
+  </data>
+  <data name="ProfitLossStatement.Costs" xml:space="preserve">
+    <value>Kostnader</value>
+  </data>
+  <data name="ProfitLossStatement.DownloadFileName" xml:space="preserve">
+    <value>Resultat</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="ProfitLossStatement.Income" xml:space="preserve">
+    <value>Inkomster</value>
+  </data>
+  <data name="ProfitLossStatement.Info" xml:space="preserve">
+    <value>Resultaträkningen är en översikt av inkomster och utgifter, och grupperas per budget eller kostnadstyp. Summan av alla inkomster och utgifter är det årliga reulstatet. Du kan också titta på &lt;a href="BalanceSheet.aspx"&gt;balansräkningen&lt;/a&gt; som är översikten över tillgångar och skulder.</value>
+  </data>
+  <data name="ProfitLossStatement.LastYear" xml:space="preserve">
+    <value>Föreg år</value>
+  </data>
+  <data name="ProfitLossStatement.PageTitle" xml:space="preserve">
+    <value>Resultaträkning</value>
+  </data>
+  
+  
+  
+  
+  <data name="ProfitLossStatement.Results" xml:space="preserve">
+    <value>Resultat</value>
+    <comment>Footer on P&amp;L statement</comment>
+  </data>
+  <data name="ProfitLossStatement.Ytd" xml:space="preserve">
+    <value>Hittills i år</value>
+    <comment>Year To Date</comment>
+  </data>
+  <data name="ResyncExternalAccount.Info" xml:space="preserve">
+    <value>Om din bokföring i Swarmops har gått ur synk med din bank, oavsett tekniskt fel eller mänskliga faktorn, kan du synkronisera om dem här genom att ladda upp en ny facitfil från banken som täcker den tidsram som du behöver synkronisera om.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Varning:&lt;/strong&gt; detta är en tidskrävande process som kan göra en &lt;em&gt;hel&lt;/em&gt; del förändringar i din bokföring. Använd den inte om du inte har upptäckt en diskrepans i din bokföring jämfört med banken. &lt;br/&gt; &lt;br/&gt;(Du får en chans att granska de föreslagna ändringarna innan de skrivs in i din bokföring.)</value>
+  </data>
+  <data name="ResyncExternalAccount.PageTitle" xml:space="preserve">
+    <value>Synkronisera om bankkontot</value>
+  </data>
+  <data name="SetRootBudgets.BudgetOwnerHeader" xml:space="preserve">
+    <value>Budget, ägare</value>
+    <comment>Displayed above editables</comment>
+  </data>
+  <data name="SetRootBudgets.Info" xml:space="preserve">
+    <value>Här sätter vi rotbudgetarna för varje budgetår. När dessa är satta, så delegerar varje budgetägare vidare budget inom sina respektive områden.</value>
+  </data>
+  <data name="SetRootBudgets.PageHeader" xml:space="preserve">
+    <value>Rotbudgetar för {0}</value>
+    <comment>The {0} is replaced with the organization's name.</comment>
+  </data>
+  <data name="SetRootBudgets.PageTitle" xml:space="preserve">
+    <value>Sätt rotnivåbudgetar</value>
+    <comment>Displayed above main content</comment>
+  </data>
+  <data name="SetRootBudgets.SetNewBudgets" xml:space="preserve">
+    <value>Spara budgetar</value>
+    <comment>Text on submit button</comment>
+  </data>
+  <data name="UploadBankFiles.AccountStatement" xml:space="preserve">
+    <value>Kontoutdrag</value>
+  </data>
+  <data name="UploadBankFiles.BankAccount" xml:space="preserve">
+    <value>Bankkonto</value>
+  </data>
+  <data name="UploadBankFiles.BankScreenshot" xml:space="preserve">
+    <value>Skärmdump från banken</value>
+    <comment>Displayed as header above modally zoomed screenshot</comment>
+  </data>
+  <data name="UploadBankFiles.DownloadDataSince" xml:space="preserve">
+    <value>&lt;/p&gt; &lt;p&gt;(De senaste uppgifterna i Swarmops för &lt;em&gt;{0}&lt;/em&gt; är från {1:yyyy-MMM-dd}. Du bör hämta bankdata från åtminstone &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
+    <comment>Displayed to help user determine scope of bank download</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="UploadBankFiles.ErrorBalance" xml:space="preserve">
+    <value>&lt;p&gt;Filen innehöll {0:N0} transaktioner. &lt;strong&gt;{1:N0} transaktioner&lt;/strong&gt; har importerats till kontot &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transaktioner var dubbletter.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Men bankens saldo stämmer inte med bokföringen i Swarmops.&lt;/strong&gt; Detta beror oftast på saknade transaktioner. Ladda upp ett kontoutdrag över med ett större tidsintervall så att Swarmops får alla transaktioner.&lt;/p&gt;&lt;p&gt;Swarmops bokföring konto är för närvarande &lt;strong&gt;inte i synk&lt;/strong&gt; med bankens.&lt;/p&gt;</value>
+    <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
+  </data>
+  
+  <data name="UploadBankFiles.ExpectedFile" xml:space="preserve">
+    <value>Förväntat filnamn</value>
+    <comment>The name of the expected file for uploading.</comment>
+  </data>
+  <data name="UploadBankFiles.FileImportedHeader" xml:space="preserve">
+    <value>Filen importerades</value>
+    <comment>Displayed as header after successful processing</comment>
+  </data>
+  <data name="UploadBankFiles.FileImportedHeader.ErrorBalance" xml:space="preserve">
+    <value>Filen importerades, men kontot är ur synk</value>
+    <comment>Displayed as header after a good processing that ended in sync failure</comment>
+  </data>
+  <data name="UploadBankFiles.FileType" xml:space="preserve">
+    <value>Filtyp</value>
+    <comment>can be Account Statement or Payments File</comment>
+  </data>
+  <data name="UploadBankFiles.ImportError" xml:space="preserve">
+    <value>Fel när filen importerades</value>
+    <comment>Displayed as header on import failure</comment>
+  </data>
+  <data name="UploadBankFiles.ImportResults" xml:space="preserve">
+    <value>&lt;p&gt;Filen innehöll {0:N0} transaktioner. &lt;strong&gt;{1:N0} transaktioner&lt;/strong&gt; har importerats till bokföringen för &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transaktioner var dubbletter.)&lt;/p&gt;&lt;p&gt;Efter import, så matchar bankens saldo det i Swarmops.&lt;/p&gt;</value>
+    <comment>Displayed on successful import. Assumes plural among all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles.Info" xml:space="preserve">
+    <value>Här kan du ladda upp filer från din bank eller betalningshanterare till din bokföring, exempelvis kontohistorik och betalningsfiler.</value>
+    <comment>Displayed in sidebar on page.</comment>
+  </data>
+  <data name="UploadBankFiles.Instructions" xml:space="preserve">
+    <value>Instruktioner</value>
+  </data>
+  <data name="UploadBankFiles.PageTitle" xml:space="preserve">
+    <value>Ladda upp bankfiler</value>
+    <comment>Displayed above main content.</comment>
+  </data>
+  <data name="UploadBankFiles.PaymentAllDuplicates" xml:space="preserve">
+    <value>De var dock alla dubbletter av betalningsinformation som laddats upp tidigare. Inga nya betalningar har importerats till Swarmops.</value>
+  </data>
+  <data name="UploadBankFiles.PaymentCount" xml:space="preserve">
+    <value>inga betalningar|en betalning|{0} betalningar</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles.PaymentFileUploadedHeader" xml:space="preserve">
+    <value>Betalningsfil uppladdad</value>
+  </data>
+  <data name="UploadBankFiles.PaymentGroupCount" xml:space="preserve">
+    <value>Ingen betalningsgrupp|en betalningsgrupp|{0} betalningsgrupper</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles.PaymentsFile" xml:space="preserve">
+    <value>Betalningsfil</value>
+  </data>
+  <data name="UploadBankFiles.PaymentSummary1" xml:space="preserve">
+    <value>Betalningsfilen innehöll {0}.</value>
+  </data>
+  <data name="UploadBankFiles.PaymentSummary2" xml:space="preserve">
+    <value>&lt;strong&gt;{0} {1:N2}&lt;/strong&gt; i betalningar importerades, fördelat över {2} i {3}.</value>
+    <comment>like EUR 2,102.00 in 3 payments across 2 groups </comment>
+  </data>
+  <data name="UploadBankFiles.PaymentSummaryDuplicates" xml:space="preserve">
+    <value>Det fanns också en del dubblettinformation ({0} i {1}).</value>
+  </data>
+  <data name="UploadBankFiles.Processing" xml:space="preserve">
+    <value>Bearbetar fil...</value>
+  </data>
+  <data name="UploadBankFiles.ProcessingComplete" xml:space="preserve">
+    <value>Bearbetning slutförd</value>
+  </data>
+  <data name="UploadBankFiles.ResultsBad" xml:space="preserve">
+    <value>&lt;p&gt;&lt;br/&gt; &lt;strong&gt;Filen kunde inte läsas som en indatafil till denna bank.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Det finns flera skäl till att detta kan hända: filen kan vara skadad eller banken kan i tysthet ha ändrat sitt filformat, eller så laddade du upp helt fel fil. Försök igen.&lt;/p&gt;</value>
+    <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
+  </data>
+  <data name="UploadBankFiles.ResultsGood" xml:space="preserve">
+    <value>&lt;p&gt;Filen har &lt;strong&gt;importerats.&lt;/strong&gt; {0:N0} nya transaktioner importerades; {1:N0} kasserades som dubbletter av det som redan fanns i Swarmops. Kontosaldot i Swarmops matchar banken.&lt;/p&gt;&lt;p&gt;Filen innehöll transaktioner från {2:yyyy-MMM-dd} till {3:yyyy-MMM-dd}.&lt;/p&gt;</value>
+    <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
+  </data>
+  <data name="UploadBankFiles.ResultsQuestionable" xml:space="preserve">
+    <value>&lt;p&gt;Filen importerades, men det &lt;strong&gt;resulterande kontosaldot stämmer inte.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Efter {0:N0} importerade transaktioner (och {1:N0} avfärdade dubbletter), så har hela filen bearbetats. Den resulterande kontosaldot i Swarmops är dock inte densamma som i bankutdraget; det finns en skillnad på {3} {2:N2}.&lt;/p&gt; &lt;p&gt;Försök ladda upp ett färskt kontoutdrag. Om saldot fortfarande inte stämmer, så kan du behöva &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;synkronisera om&lt;/a&gt; bankkontot med ett större bankutdrag.&lt;/p&gt;</value>
+    <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded. 2 is the diff, 3 is the currency.</comment>
+  </data>
+  <data name="UploadBankFiles.SelectAccount" xml:space="preserve">
+    <value>Välj bokföringskonto</value>
+    <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
+  </data>
+  <data name="UploadBankFiles.SelectBankAndAccount" xml:space="preserve">
+    <value>Välj filtyp och konto för uppladdning</value>
+  </data>
+  <data name="UploadBankFiles.SelectBankFileType" xml:space="preserve">
+    <value>Välj bankfiltyp</value>
+    <comment>Header above several bank logos, prompting a selection of bank.</comment>
+  </data>
+  <data name="UploadBankFiles.UploadAnother" xml:space="preserve">
+    <value>Ladda upp en bankfil till?</value>
+    <comment>Displayed as header after uploading one file</comment>
+  </data>
+  <data name="UploadBankFiles.UploadBankFile" xml:space="preserve">
+    <value>Ladda upp bankfil</value>
+    <comment>Displayed as header above download instructions / upload form</comment>
+  </data>
+  <data name="ViewOutstandingAccounts.FooterDifference" xml:space="preserve">
+    <value>Skillnad</value>
+  </data>
+  <data name="ViewOutstandingAccounts.FooterLedgerBalance" xml:space="preserve">
+    <value>Böckernas balans</value>
+  </data>
+  <data name="ViewOutstandingAccounts.FooterTotal" xml:space="preserve">
+    <value>Summa</value>
+  </data>
+  <data name="ViewOutstandingAccounts.GridHeaderAction" xml:space="preserve">
+    <value>Åtgärd</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts.GridHeaderAmount" xml:space="preserve">
+    <value>Belopp</value>
+  </data>
+  <data name="ViewOutstandingAccounts.GridHeaderDescription" xml:space="preserve">
+    <value>Beskrivning</value>
+  </data>
+  <data name="ViewOutstandingAccounts.GridHeaderExpectedCloseDate" xml:space="preserve">
+    <value>Stängs prel</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts.GridHeaderId" xml:space="preserve">
+    <value>Nr</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts.GridHeaderOpenedDate" xml:space="preserve">
+    <value>Öppnad</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts.GridHeaderRecipient" xml:space="preserve">
+    <value>Mottagare</value>
+  </data>
+  <data name="ViewOutstandingAccounts.Header" xml:space="preserve">
+    <value>Lista öppna</value>
+  </data>
+  <data name="ViewOutstandingAccounts.Info" xml:space="preserve">
+    <value>Denna sida visar utestående och öppen reskontra (utläggsanspråk, fakturor, kontantförskott etc), både i realtid och vid alla tidigare bokslutstillfällen.</value>
+  </data>
+  <data name="ViewOutstandingAccounts.PageTitle" xml:space="preserve">
+    <value>Lista öppen reskontra</value>
+  </data>
+  <data name="AccountPlan.Edit.AccountName" xml:space="preserve">
+    <value>Kontonamn</value>
+  </data>
+  <data name="AccountPlan.Edit.ActiveLong" xml:space="preserve">
+    <value>Är detta konto öppet för transaktioner?</value>
+  </data>
+  <data name="AccountPlan.Edit.ActiveShort" xml:space="preserve">
+    <value>Aktivt</value>
+  </data>
+  <data name="AccountPlan.Edit.AdministrativeLong" xml:space="preserve">
+    <value>Är transaktioner här bortfiltrerade från 2D-rapporter?</value>
+  </data>
+  
+  <data name="AccountPlan.Edit.BudgetBalance" xml:space="preserve">
+    <value>Budget (saldo är &lt;span id="SpanTextCurrency"&gt; foo&lt;/span&gt; &lt;span id="SpanEditBalance"&gt; bar&lt;/span&gt;)</value>
+    <comment>foo, bar replaced on load with actual values</comment>
+  </data>
+  <data name="AccountPlan.Edit.ExpensableLong" xml:space="preserve">
+    <value>Kan detta konto användas för utläggsanspråk?</value>
+  </data>
+  <data name="AccountPlan.Edit.ExpensableShort" xml:space="preserve">
+    <value>Utlägg</value>
+  </data>
+  <data name="AccountPlan.Edit.FileUploadProfile" xml:space="preserve">
+    <value>Bankprofil</value>
+  </data>
+  <data name="AccountPlan.Edit.Header" xml:space="preserve">
+    <value>Redigerar konto</value>
+  </data>
+  <data name="AccountPlan.Edit.HeaderAutomation" xml:space="preserve">
+    <value>Automatisering</value>
+    <comment>Automatic connections to bank, blockchain etc.</comment>
+  </data>
+  <data name="AccountPlan.Edit.HeaderConfiguration" xml:space="preserve">
+    <value>Konfiguration</value>
+  </data>
+  <data name="AccountPlan.Edit.HeaderDailyOperations" xml:space="preserve">
+    <value>Daglig verksamhet</value>
+  </data>
+  <data name="AccountPlan.Edit.InitialValue" xml:space="preserve">
+    <value>Ingående balans</value>
+    <comment>For asset and liability accounts - the value going into Swarmops first ledger year</comment>
+  </data>
+  <data name="AccountPlan.Edit.Parent" xml:space="preserve">
+    <value>Överordnat konto eller grupp</value>
+  </data>
+  <data name="AccountPlan.ExpensesBudgetsAreNegaive" xml:space="preserve">
+    <value>Detta är ett kostnadskonto. Sådana konton har normalt en negativ budget, eftersom de drar tillgångar från organisationen. Din föreslagna budget ändrades därför till negativ.</value>
+    <comment>Displayed as a message box</comment>
+  </data>
+  <data name="AccountPlan.Header.AccountName" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="AccountPlan.Header.Balance" xml:space="preserve">
+    <value>Saldo</value>
+  </data>
+  
+  <data name="AccountPlan.Header.Edit" xml:space="preserve">
+    <value>Ändra</value>
+  </data>
+  <data name="AccountPlan.Header.Flags" xml:space="preserve">
+    <value>Flaggor</value>
+  </data>
+  <data name="InspectLedgers.Header.For" xml:space="preserve">
+    <value>för</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers.Header.Inspect" xml:space="preserve">
+    <value>Granska</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers.PageTitle" xml:space="preserve">
+    <value>Granska bokföring</value>
+  </data>
+  
+  <data name="InspectLedgers.InboundBalance" xml:space="preserve">
+    <value>Ingående balans</value>
+  </data>
+  <data name="InspectLedgers.InboundBalanceZero" xml:space="preserve">
+    <value>Inget tidigare saldo</value>
+  </data>
+  <data name="InspectLedgers.Info" xml:space="preserve">
+    <value>Detta är den underliggande bokföringens huvudbok för organisationens finanser. Du kan studera bokföringen i detalj, t.ex. för revision. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt; &lt;strong&gt;Du tittar just nu på ett resultat konto, så tecknen är omvända - inkomst är negativ och kostnad positivt&lt;/strong&gt; på grund av hur venetiansk dubbel bokföring fungerar.&lt;/span&gt;</value>
+  </data>
+  
+  <data name="InspectLedgers.NoTransactions" xml:space="preserve">
+    <value>Det finns inga transaktioner i det här kontot för den valda tidsperioden.</value>
+  </data>
+  <data name="InspectLedgers.OutboundBalance" xml:space="preserve">
+    <value>Utgående balans</value>
+  </data>
+  <data name="InspectLedgers.OutboundBalanceZero" xml:space="preserve">
+    <value>Slutlig balans</value>
+  </data>
+  <data name="InspectLedgers.OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>Slutlig balans (hittills)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers.PleaseSelectAccount" xml:space="preserve">
+    <value>(Välj ett konto.)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  
+</root>

@@ -117,23 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu5_Administration" xml:space="preserve">
+  <data name="Menu5.Administration" xml:space="preserve">
     <value>Admin</value>
   </data>
-  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
+  <data name="Menu5.Administration.AccessControlLists" xml:space="preserve">
     <value>Tilgangslister</value>
   </data>
   
-  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
+  <data name="Menu5.Administration.GeographyTree" xml:space="preserve">
     <value>Geografitre</value>
   </data>
   
-  <data name="Menu5_Communications" xml:space="preserve">
+  <data name="Menu5.Communications" xml:space="preserve">
     <value>Kommunikasjon</value>
   </data>
   
   
-  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
+  <data name="Menu5.Communications.MassMailing" xml:space="preserve">
     <value>Masseutsendelse av mail</value>
   </data>
   
@@ -143,38 +143,38 @@
   
   
   
-  <data name="Menu5_Communications_TextActivists" xml:space="preserve">
+  <data name="Menu5.Communications.TextActivists" xml:space="preserve">
     <value>Send SMS til aktivister</value>
   </data>
   
-  <data name="Menu5_Financial" xml:space="preserve">
+  <data name="Menu5.Financial" xml:space="preserve">
     <value>Finansiell</value>
   </data>
   
   
-  <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
+  <data name="Menu5.Financial.CreatePurchaseOrder" xml:space="preserve">
     <value>Opprett innkjøpsordre</value>
   </data>
   
-  <data name="Menu5_Financial_List" xml:space="preserve">
+  <data name="Menu5.Financial.List" xml:space="preserve">
     <value>Liste</value>
   </data>
   
   
-  <data name="Menu5_Financial_List_InboundInvoices" xml:space="preserve">
+  <data name="Menu5.Financial.List.InboundInvoices" xml:space="preserve">
     <value>Innkommende fakturaer</value>
   </data>
-  <data name="Menu5_Financial_List_OutboundInvoices" xml:space="preserve">
+  <data name="Menu5.Financial.List.OutboundInvoices" xml:space="preserve">
     <value>Utgående fakturaer</value>
   </data>
   
   
   
-  <data name="Menu5_Financial_PayOutMoney" xml:space="preserve">
+  <data name="Menu5.Financial.PayOutMoney" xml:space="preserve">
     <value>Utbetal</value>
   </data>
   
-  <data name="Menu5_Financial_ReceivedInvoice" xml:space="preserve">
+  <data name="Menu5.Financial.ReceivedInvoice" xml:space="preserve">
     <value>Mottatt faktura</value>
   </data>
   
@@ -183,20 +183,20 @@
   
   
   
-  <data name="Menu5_Governance_Candidates" xml:space="preserve">
+  <data name="Menu5.Governance.Candidates" xml:space="preserve">
     <value>Kandidater</value>
   </data>
-  <data name="Menu5_Governance_CreateVotingList" xml:space="preserve">
+  <data name="Menu5.Governance.CreateVotingList" xml:space="preserve">
     <value>Opprett avstemning</value>
   </data>
-  <data name="Menu5_Governance_MeetingAdmin" xml:space="preserve">
+  <data name="Menu5.Governance.MeetingAdmin" xml:space="preserve">
     <value>Møteadministrasjon</value>
   </data>
   
-  <data name="Menu5_Governance_Motions" xml:space="preserve">
+  <data name="Menu5.Governance.Motions" xml:space="preserve">
     <value>Saker</value>
   </data>
-  <data name="Menu5_Governance_Vote" xml:space="preserve">
+  <data name="Menu5.Governance.Vote" xml:space="preserve">
     <value>Stem</value>
   </data>
   
@@ -208,7 +208,7 @@
   
   
   
-  <data name="Menu5_Ledgers_ImportBankData" xml:space="preserve">
+  <data name="Menu5.Ledgers.ImportBankData" xml:space="preserve">
     <value>Importer bankdata</value>
   </data>
   
@@ -234,14 +234,14 @@
   
   
   
-  <data name="Menu5_People" xml:space="preserve">
+  <data name="Menu5.People" xml:space="preserve">
     <value>Personer</value>
   </data>
-  <data name="Menu5_People_AddMember" xml:space="preserve">
+  <data name="Menu5.People.AddMember" xml:space="preserve">
     <value>Legg til medlem</value>
   </data>
   
-  <data name="Menu5_People_ListMembers" xml:space="preserve">
+  <data name="Menu5.People.ListMembers" xml:space="preserve">
     <value>Medlemsoversikt</value>
   </data>
   
