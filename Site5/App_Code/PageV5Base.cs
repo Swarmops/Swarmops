@@ -51,7 +51,7 @@ public class PageV5Base : System.Web.UI.Page
         set { this.Master.EasyUIControlsUsed = value; }
     }
 
-    protected IncludedControl IncludedControlsUsed
+    public IncludedControl IncludedControlsUsed
     {
         get { return this.Master.IncludedControlsUsed; }
         set { this.Master.IncludedControlsUsed = value; }
