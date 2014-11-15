@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Security;
@@ -19,9 +20,24 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Administration, AccessType.Write);
 
             this.EasyUIControlsUsed = EasyUIControl.Tabs;
+            this.IncludedControlsUsed = IncludedControl.FileUpload | IncludedControl.SwitchButton;
+        }
+
+        [WebMethod]
+        public static CallResult FlickSwitch(string switchName, bool switchOn)
+        {
+            // TODO
+
+            return new CallResult();
+        }
 
 
-
+        public class CallResult
+        {
+            public bool Success { get; set; }
+            public string OpResult { get; set; }
+            public string DisplayMessage { get; set; }
+            public string RequiredOn { get; set; }
         }
     }
 

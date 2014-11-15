@@ -48,6 +48,7 @@ namespace Swarmops
             this.Page.Title = "Swarmops - " + this.CurrentPageTitle;
 
             this.ExternalScriptEasyUI.Controls = EasyUIControlsUsed.ToString();
+            this.IncludedScripts.Controls = IncludedControlsUsed.ToString();
 
             this.LiteralSidebarInfo.Text = this.CurrentPageInfoBoxLiteral;
 

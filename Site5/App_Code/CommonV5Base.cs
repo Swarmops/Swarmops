@@ -144,3 +144,12 @@ public enum EasyUIControl
     ValidateBox  = 0x4000000,
     Window       = 0x8000000
 };
+
+
+[Flags]
+public enum IncludedControl
+{
+    Unknown = 0,
+    FileUpload   = 0x00000001,
+    SwitchButton = 0x00000002
+};

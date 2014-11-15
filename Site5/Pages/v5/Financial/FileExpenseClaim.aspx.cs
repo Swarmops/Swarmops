@@ -109,6 +109,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 Localize();
             }
+
+            IncludedControlsUsed = IncludedControl.FileUpload;
         }
 
 
