@@ -19,6 +19,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.InfoBoxLiteral = Resources.Pages.Admin.EditOrganization_Info;
             this.PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Administration, AccessType.Write);
 
+            if (!Page.IsPostBack)
+            {
+               this.DropMembersChurn.Items.Add(new ListItem(Resources.Global.Global_SelectOne, "0")); 
+            }
+
+            // Localize();
+
             this.EasyUIControlsUsed = EasyUIControl.Tabs;
             this.IncludedControlsUsed = IncludedControl.FileUpload | IncludedControl.SwitchButton;
         }

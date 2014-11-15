@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="EditOrganization.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Admin.EditOrganization" %>
 <%@ Register tagPrefix="Swarmops5" tagName="FileUpload" src="~/Controls/v5/Base/FileUpload.ascx"  %>
+<%@ Register tagPrefix="Swarmops5" tagName="DropDown" src="~/Controls/v5/Base/DropDown.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     
@@ -54,6 +55,16 @@
         </div>
         <div title="<img src='/Images/Icons/iconshock-group-diversified-64px.png' />">
             <h2>Participant policy</h2>
+            <div class="entryFields">
+                <Swarmops5:DropDown ID="DropMembersWhen" CssClass="DropTemp" runat="server"/>&#8203;<br/>
+                <Swarmops5:DropDown ID="DropMembersWhere" CssClass="DropTemp" runat="server"/>&#8203;<br/>
+                <Swarmops5:DropDown ID="DropMembersChurn" CssClass="DropTemp" runat="server"/>&#8203;<br/>
+                <Swarmops5:DropDown ID="DropMembershipDuration" CssClass="DropTemp" runat="server"/>&#8203;<br/>
+                <asp:TextBox ID="TextMembershipCost" runat="server" CssClass="alignRight" Text="0" />&#8203;<br/>
+                <asp:TextBox ID="TextRenewalCost" runat="server" CssClass="alignRight" Text="0" />&#8203;<br/>
+                <Swarmops5:DropDown ID="DropRenewalsAffect" CssClass="DropTemp" runat="server"/>&#8203;<br/>
+                <Swarmops5:DropDown ID="DropRenewalReminder" CssClass="DropTemp" runat="server"/>&#8203;<br/>
+            </div>
             <div class="entryLabels">
                 People become members when... [applied, applied+approved, applied+paid, applied+paid+approved, invited+paid, manual only]<br/>
                 People become members in... [root org only, most local org only, root + local, all on line root-local]<br/>
@@ -70,8 +81,9 @@
             <div class="entryFields">
                 <Swarmops5:FileUpload ID="UploadLogoLandscape" DisplayCount="1" runat="server" />
                 <Swarmops5:FileUpload ID="UploadLogoSquare" DisplayCount="1" runat="server" />
-                Bar&nbsp;<br/>
+                &nbsp;<br/>
                 <Swarmops5:FileUpload ID="UploadInvoiceTemplate" DisplayCount="1" runat="server" />
+                <Swarmops5:FileUpload ID="UploadInvoiceCover" DisplayCount="1" runat="server" />
                 <Swarmops5:FileUpload ID="UploadParticipantMailTemplate" DisplayCount="1" runat="server" />
                 <Swarmops5:FileUpload ID="UploadOfficerMailTemplate" DisplayCount="1" runat="server" />
                 <Swarmops5:FileUpload ID="UploadRenewalMailTemplate" DisplayCount="1" runat="server" />

@@ -1,35 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="CreateOrganization.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Admin.CreateOrganization" %>
-<%@ Register TagPrefix="Swarmops5" TagName="ExternalScripts" Src="~/Controls/v5/UI/ExternalScripts.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="DropDown" Src="~/Controls/v5/Base/DropDown.ascx" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script type="text/javascript">
 
         $(document).ready(function () {
             $('#<%=this.TextOrganizationName.ClientID %>').focus();
-
-            $('#<%=this.DropCreateChild.ClientID %>').combobox({
-                editable: false,
-                height: 30,
-                width: 300
-            });
-
-            $('#<%=this.DropCurrencies.ClientID%>').combobox({
-                editable: false,
-                height: 30,
-                width: 300
-            });
-
-            $('#<%=this.DropPersonLabel.ClientID%>').combobox({
-                editable: false,
-                height: 30,
-                width: 300
-            });
-
-            $('#<%=this.DropActivistLabel.ClientID%>').combobox({
-                editable: false,
-                height: 30,
-                width: 300
-            });
         });
 
         function validateFields() {
@@ -43,10 +19,10 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextOrganizationName" />&#8203;<br/>
-        <asp:DropDownList runat="server" ID="DropCreateChild" />&#8203;<br/>
-        <asp:DropDownList runat="server" ID="DropCurrencies"/>&#8203;<br/>
-        <asp:DropDownList runat="server" ID="DropPersonLabel" />&#8203;<br/>
-        <asp:DropDownList runat="server" ID="DropActivistLabel" />&#8203;<br/>
+        <Swarmops5:DropDown runat="server" ID="DropCreateChild" />&#8203;<br/>
+        <Swarmops5:DropDown runat="server" ID="DropCurrencies"/>&#8203;<br/>
+        <Swarmops5:DropDown runat="server" ID="DropPersonLabel" />&#8203;<br/>
+        <Swarmops5:DropDown runat="server" ID="DropActivistLabel" />&#8203;<br/>
         <asp:Button ID="ButtonCreate" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return validateFields();" OnClick="ButtonCreate_Click" Text="CreateXYZ"/>
     </div>
     <div class="entryLabels">
