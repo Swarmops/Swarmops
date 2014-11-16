@@ -58,22 +58,24 @@
             <div class="entryFields">
                 <Swarmops5:DropDown ID="DropMembersWhen" CssClass="DropTemp" runat="server"/>&#8203;<br/>
                 <Swarmops5:DropDown ID="DropMembersWhere" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <Swarmops5:DropDown ID="DropMembersChurn" CssClass="DropTemp" runat="server"/>&#8203;<br/>
                 <Swarmops5:DropDown ID="DropMembershipDuration" CssClass="DropTemp" runat="server"/>&#8203;<br/>
+                <Swarmops5:DropDown ID="DropMembersChurn" CssClass="DropTemp" runat="server"/>&#8203;<br/>
                 <asp:TextBox ID="TextMembershipCost" runat="server" CssClass="alignRight" Text="0" />&#8203;<br/>
                 <asp:TextBox ID="TextRenewalCost" runat="server" CssClass="alignRight" Text="0" />&#8203;<br/>
+                <Swarmops5:DropDown ID="DropRenewalDateEffect" CssClass="DropTemp" runat="server"/>&#8203;<br/>
                 <Swarmops5:DropDown ID="DropRenewalsAffect" CssClass="DropTemp" runat="server"/>&#8203;<br/>
                 <Swarmops5:DropDown ID="DropRenewalReminder" CssClass="DropTemp" runat="server"/>&#8203;<br/>
             </div>
             <div class="entryLabels">
-                People become members when... [applied, applied+approved, applied+paid, applied+paid+approved, invited+paid, manual only]<br/>
-                People become members in... [root org only, most local org only, root + local, all on line root-local]<br/>
-                People churn from membership when... [expiry date hits, not paid final reminder, manual churn only]<br/>
-                Membership lasts... [1 month, 1 year, 2 years, 5 years, forever]<br/>
-                Membership costs... [in operating currency]<br/>
-                Renewals cost... [in operating currency]<br/>
-                Renewals renew... [all active memberships, one org at a time]<br/>
-                Remind renewal... [30, 14, 7, 1 day in advance]<br/>
+                <asp:Label ID="LabelParticipationEntry" runat="server" /><br/>
+                <asp:Label ID="LabelParticipationOrg" runat="server" /><br/>
+                <asp:Label ID="LabelParticipationDuration" runat="server" /><br/>
+                <asp:Label ID="LabelParticipationChurn" runat="server" /><br/>
+                <asp:Label ID="LabelParticipationCost" runat="server" /><br/>
+                <asp:Label ID="LabelRenewalCost" runat="server" /><br/>
+                <asp:Label ID="LabelRenewalDateEffect" runat="server" /><br/>
+                <asp:Label ID="LabelRenewalsAffect" runat="server" /><br/>
+                <asp:Label ID="LabelRenewalReminder" runat="server" /><br/>
             </div>
         </div>
         <div title="<img src='/Images/Icons/iconshock-colorswatch-64px.png' />">

@@ -22,6 +22,7 @@ namespace Swarmops.Frontend.Controls.v5.Base
         public string SelectedValue
         {
             get { return this.DropControl.SelectedValue; }
+            set { this.DropControl.SelectedValue = value; }
         }
     }
 }
