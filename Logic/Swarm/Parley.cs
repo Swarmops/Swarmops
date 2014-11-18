@@ -139,10 +139,10 @@ namespace Swarmops.Logic.Swarm
 
             if (base.BudgetId < 0) // no account created yet
             {
-                ourBudget = FinancialAccount.Create(this.Budget.OrganizationId,
+                ourBudget = FinancialAccount.Create(this.Budget.Organization,
                                                     "Conf: " + this.Name,
                                                     FinancialAccountType.Cost,
-                                                    this.BudgetId);
+                                                    this.Budget);
 
                 parentBudget = this.Budget;
 
