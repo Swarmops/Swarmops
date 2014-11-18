@@ -114,7 +114,7 @@ namespace Swarmops.Logic.Financial
 
         public FinancialAccount AssetsVat
         {
-            get { return this[OrganizationFinancialAccountType.AssetsVat]; }
+            get { return this[OrganizationFinancialAccountType.AssetsVatInbound]; }
         }
 
         public FinancialAccount CostsBankFees
