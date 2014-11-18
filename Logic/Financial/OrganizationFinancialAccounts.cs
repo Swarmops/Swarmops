@@ -217,7 +217,7 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.IncomeSales]; }
         }
 
-        public FinancialAccount ConstsMiscalculations
+        public FinancialAccount CostsMiscalculations
         {
             get { return this[OrganizationFinancialAccountType.CostsMiscalculations]; }
         }
