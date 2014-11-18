@@ -97,6 +97,16 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.AssetsBankAccountMain]; }
         }
 
+        public FinancialAccount AssetsBitcoinCold
+        {
+            get { return this[OrganizationFinancialAccountType.AssetsBitcoinCold]; }
+        }
+
+        public FinancialAccount AssetsBitcoinHot
+        {
+            get { return this[OrganizationFinancialAccountType.AssetsBitcoinHot]; }
+        }
+
         public FinancialAccount AssetsOutboundInvoices
         {
             get { return this[OrganizationFinancialAccountType.AssetsOutboundInvoices]; }
@@ -125,6 +135,11 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount CostsAllocatedFunds
         {
             get { return this[OrganizationFinancialAccountType.CostsAllocatedFunds]; }
+        }
+
+        public FinancialAccount CostsCurrencyFluctuations
+        {
+            get { return this[OrganizationFinancialAccountType.CostsCurrencyFluctuations]; }
         }
 
         public FinancialAccount CostsInfrastructure
@@ -185,6 +200,11 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount DebtsOther
         {
             get { return this[OrganizationFinancialAccountType.DebtsSalary]; }
+        }
+
+        public FinancialAccount IncomeCurrencyFluctuations
+        {
+            get { return this[OrganizationFinancialAccountType.IncomeCurrencyFluctuations]; }
         }
 
         public FinancialAccount IncomeDonations
