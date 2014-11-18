@@ -247,7 +247,7 @@ namespace Swarmops.Logic.Structure
                 FinancialAccount.Create(this, "Salaries Due", FinancialAccountType.Debt, null);
             FinancialAccounts[OrganizationFinancialAccountType.DebtsTax] =
                 FinancialAccount.Create(this, "Taxes Due", FinancialAccountType.Debt, null);
-            FinancialAccounts[OrganizationFinancialAccountType.DebtsVat] =
+            FinancialAccounts[OrganizationFinancialAccountType.DebtsVatOutbound] =
                 FinancialAccount.Create(this, "Outbound Value Added Tax", FinancialAccountType.Debt, null);
 
             FinancialAccounts[OrganizationFinancialAccountType.IncomeDonations] =

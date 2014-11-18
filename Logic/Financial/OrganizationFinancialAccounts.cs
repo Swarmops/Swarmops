@@ -169,7 +169,7 @@ namespace Swarmops.Logic.Financial
 
         public FinancialAccount DebtsVat
         {
-            get { return this[OrganizationFinancialAccountType.DebtsVat]; }
+            get { return this[OrganizationFinancialAccountType.DebtsVatOutbound]; }
         }
 
         public FinancialAccount DebtsEarmarkedVirtualBanking
