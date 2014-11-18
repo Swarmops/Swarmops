@@ -112,7 +112,7 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.AssetsPaypal]; }
         }
 
-        public FinancialAccount AssetsVat
+        public FinancialAccount AssetsVatInbound
         {
             get { return this[OrganizationFinancialAccountType.AssetsVatInbound]; }
         }
@@ -167,7 +167,7 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.DebtsTax]; }
         }
 
-        public FinancialAccount DebtsVat
+        public FinancialAccount DebtsVatOutbound
         {
             get { return this[OrganizationFinancialAccountType.DebtsVatOutbound]; }
         }
