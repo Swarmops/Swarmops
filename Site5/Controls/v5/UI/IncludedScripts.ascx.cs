@@ -28,6 +28,10 @@ namespace Swarmops.Frontend.Controls.v5.UI
                             "<script src=\"/Scripts/jquery.switchButton.js\" language=\"javascript\" type=\"text/javascript\"></script>\r\n" +
                             "<link rel=\"stylesheet\" type=\"text/css\" href=\"/Style/jquery.switchButton.css\" />\r\n");
                         break;
+                    case "jsonparameters":
+                        scriptRef.Append(
+                            "<script language=\"javascript\" type=\"text/javascript\" src=\"/Scripts/jquery.json.min.js\"></script>");
+                        break;
                     default:
                         break;
                 }

@@ -360,7 +360,7 @@ public enum EasyUIControl
 public enum IncludedControl
 {
     Unknown = 0,
-    FileUpload   = 0x00000001,
-    SwitchButton = 0x00000002,
-    JsonEncoding = 0x00000004
+    FileUpload     = 0x00000001,
+    SwitchButton   = 0x00000002,
+    JsonParameters = 0x00000004
 };
