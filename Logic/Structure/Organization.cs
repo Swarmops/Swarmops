@@ -225,8 +225,8 @@ namespace Swarmops.Logic.Structure
             //    FinancialAccount.Create(this, "Bitcoin Holdings (Hot)", FinancialAccountType.Asset, null);
             //FinancialAccounts[OrganizationFinancialAccountType.AssetsBitcoinCold] =
             //    FinancialAccount.Create(this, "Bitcoin Cold Storage", FinancialAccountType.Asset, null);
-            FinancialAccounts[OrganizationFinancialAccountType.AssetsVatInbound] =
-                FinancialAccount.Create(this, "Inbound Value Added Tax", FinancialAccountType.Asset, null);
+            //FinancialAccounts[OrganizationFinancialAccountType.AssetsVatInbound] =
+            //    FinancialAccount.Create(this, "Inbound Value Added Tax", FinancialAccountType.Asset, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] =
                 FinancialAccount.Create(this, "Allocated funds", FinancialAccountType.Cost, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsBankFees] =
@@ -247,8 +247,8 @@ namespace Swarmops.Logic.Structure
                 FinancialAccount.Create(this, "Salaries Due", FinancialAccountType.Debt, null);
             FinancialAccounts[OrganizationFinancialAccountType.DebtsTax] =
                 FinancialAccount.Create(this, "Taxes Due", FinancialAccountType.Debt, null);
-            FinancialAccounts[OrganizationFinancialAccountType.DebtsVatOutbound] =
-                FinancialAccount.Create(this, "Outbound Value Added Tax", FinancialAccountType.Debt, null);
+            //FinancialAccounts[OrganizationFinancialAccountType.DebtsVatOutbound] =
+            //    FinancialAccount.Create(this, "Outbound Value Added Tax", FinancialAccountType.Debt, null);
 
             FinancialAccounts[OrganizationFinancialAccountType.IncomeDonations] =
                 FinancialAccount.Create(this, "Donations", FinancialAccountType.Income, null);

@@ -100,11 +100,13 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount AssetsBitcoinCold
         {
             get { return this[OrganizationFinancialAccountType.AssetsBitcoinCold]; }
+            set { this[OrganizationFinancialAccountType.AssetsBitcoinCold] = value; }
         }
 
         public FinancialAccount AssetsBitcoinHot
         {
             get { return this[OrganizationFinancialAccountType.AssetsBitcoinHot]; }
+            set { this[OrganizationFinancialAccountType.AssetsBitcoinHot] = value; }
         }
 
         public FinancialAccount AssetsOutboundInvoices
@@ -120,11 +122,13 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount AssetsPaypal
         {
             get { return this[OrganizationFinancialAccountType.AssetsPaypal]; }
+            set { this[OrganizationFinancialAccountType.AssetsPaypal] = value; }
         }
 
         public FinancialAccount AssetsVatInbound
         {
             get { return this[OrganizationFinancialAccountType.AssetsVatInbound]; }
+            set { this[OrganizationFinancialAccountType.AssetsVatInbound] = value; }
         }
 
         public FinancialAccount CostsBankFees
@@ -140,6 +144,7 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount CostsCurrencyFluctuations
         {
             get { return this[OrganizationFinancialAccountType.CostsCurrencyFluctuations]; }
+            set { this[OrganizationFinancialAccountType.CostsCurrencyFluctuations] = value; }
         }
 
         public FinancialAccount CostsInfrastructure
@@ -185,6 +190,7 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount DebtsVatOutbound
         {
             get { return this[OrganizationFinancialAccountType.DebtsVatOutbound]; }
+            set { this[OrganizationFinancialAccountType.DebtsVatOutbound] = value; }
         }
 
         public FinancialAccount DebtsEarmarkedVirtualBanking
@@ -205,6 +211,7 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount IncomeCurrencyFluctuations
         {
             get { return this[OrganizationFinancialAccountType.IncomeCurrencyFluctuations]; }
+            set { this[OrganizationFinancialAccountType.IncomeCurrencyFluctuations] = value; }
         }
 
         public FinancialAccount IncomeDonations

@@ -5,7 +5,10 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
 {
@@ -26,7 +29,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
 
             this.EasyUIControlsUsed = EasyUIControl.Tabs;
-            this.IncludedControlsUsed = IncludedControl.FileUpload | IncludedControl.SwitchButton;
+            this.IncludedControlsUsed = IncludedControl.FileUpload | IncludedControl.SwitchButton | IncludedControl.JsonParameters; 
         }
 
         private void Localize()
@@ -96,11 +99,234 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         }
 
         [WebMethod]
-        public static CallResult FlickSwitch(string switchName, bool switchOn)
+        public static InitialOrgData GetInitialData()
         {
-            // TODO
+            InitialOrgData result = new InitialOrgData();
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            Organization org = authData.CurrentOrganization;
 
-            return new CallResult();
+            if (org == null || authData.CurrentUser == null)
+            {
+                return result; // just... don't
+            }
+
+            result.AccountBitcoinCold = (org.FinancialAccounts.AssetsBitcoinCold != null);
+            result.AccountBitcoinHot =  (org.FinancialAccounts.AssetsBitcoinHot != null);
+            result.AccountPaypal =      (org.FinancialAccounts.AssetsPaypal != null);
+            result.AccountsForex =      (org.FinancialAccounts.IncomeCurrencyFluctuations != null);
+            result.AccountsVat =        (org.FinancialAccounts.AssetsVatInbound != null);
+
+            // TODO: Add all the other fields
+
+            return result;
+        }
+
+
+        [WebMethod]
+        public static CallResult SwitchToggled(string switchName, bool switchValue)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (authData.CurrentOrganization == null || authData.CurrentUser == null)
+            {
+                return null; // just don't... don't anything, actually
+            }
+
+            CallResult result = new CallResult();
+            result.Success = true;
+
+            FinancialAccounts workAccounts = new FinancialAccounts();
+
+            switch (switchName)
+            {
+                case "BitcoinCold":
+                    FinancialAccount coldAccount = authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold;
+                    if (coldAccount == null)
+                    {
+                        coldAccount = FinancialAccount.Create(authData.CurrentOrganization, "Bitcoin Assets Cold",
+                            FinancialAccountType.Asset, null);
+                        FinancialAccount.Create(authData.CurrentOrganization, "Cold Address 1",
+                            FinancialAccountType.Asset, coldAccount);
+                        FinancialAccount.Create(authData.CurrentOrganization, "Cold Address 2 (rename these)",
+                            FinancialAccountType.Asset, coldAccount);
+                        FinancialAccount.Create(authData.CurrentOrganization, "Cold Address... etc",
+                            FinancialAccountType.Asset, coldAccount);
+
+                        authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold = coldAccount;
+
+                        result.DisplayMessage =
+                            "Bitcoin cold accounts were created. Edit names and addresses in Account Plan."; // LOC
+                    }
+                    else
+                    {
+                        workAccounts.Add(coldAccount);
+                    }
+                break;
+                case "BitcoinHot":
+                    FinancialAccount hotAccount = authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot;
+                    if (hotAccount == null)
+                    {
+                        authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot = 
+                            FinancialAccount.Create(authData.CurrentOrganization, "Bitcoin Wallet Hot",
+                            FinancialAccountType.Asset, null);
+
+                        result.DisplayMessage =
+                            "Bitcoin hotwallet account was created. Upload its wallet file in Account Plan.";
+                    }
+                    else
+                    {
+                        workAccounts.Add(hotAccount);
+                    }
+                break;
+                case "Forex":
+                    FinancialAccount forexGain =
+                        authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations;
+                    FinancialAccount forexLoss =
+                        authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations;
+
+                    if (forexGain == null)
+                    {
+                        if (forexLoss != null)
+                        {
+                            throw new InvalidOperationException();
+                        }
+
+                        authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations = FinancialAccount.Create(authData.CurrentOrganization, "Forex holding gains",
+                            FinancialAccountType.Income, null);
+                        authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations = FinancialAccount.Create(authData.CurrentOrganization, "Forex holding losses",
+                            FinancialAccountType.Cost, null);
+
+                        result.DisplayMessage =
+                            "Forex gain/loss accounts were created and will be used to account for currency fluctuations.";
+                    }
+                    else
+                    {
+                        if (forexLoss == null)
+                        {
+                            throw new InvalidOperationException();
+                        }
+
+                        workAccounts.Add(forexGain);
+                        workAccounts.Add(forexLoss);
+                    }
+                    break;
+                case "Vat":
+                    FinancialAccount vatInbound = authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound;
+                    FinancialAccount vatOutbound = authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound;
+
+                    if (vatInbound == null)
+                    {
+                        if (vatOutbound != null)
+                        {
+                            throw new InvalidOperationException();
+                        }
+
+                        authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound = FinancialAccount.Create(authData.CurrentOrganization, "Inbound VAT",
+                            FinancialAccountType.Asset, null);
+                        authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound = FinancialAccount.Create(authData.CurrentOrganization, "Outbound VAT",
+                            FinancialAccountType.Debt, null);
+
+                        result.DisplayMessage = "Inbound and outbound VAT accounts were created.";
+                    }
+                    else
+                    {
+                        if (vatOutbound == null)
+                        {
+                            throw new InvalidOperationException();
+                        }
+
+                        workAccounts.Add(vatInbound);
+                        workAccounts.Add(vatOutbound);
+                    }
+                break;
+                case "Paypal":
+                    FinancialAccount assetsPaypal = authData.CurrentOrganization.FinancialAccounts.AssetsPaypal;
+                    if (assetsPaypal == null)
+                    {
+                        authData.CurrentOrganization.FinancialAccounts.AssetsPaypal =
+                            FinancialAccount.Create(authData.CurrentOrganization, "Paypal account",
+                                FinancialAccountType.Asset, null);
+
+                        result.DisplayMessage = "An account was created for Paypal account tracking.";
+                    }
+                    else
+                    {
+                        workAccounts.Add(assetsPaypal);
+                    }
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            if (workAccounts.Count > 0 && String.IsNullOrEmpty(result.DisplayMessage))
+            {
+                if (switchValue) // switch has been turned on
+                {
+                    // accounts can always be re-enabled. This is not a create, it is a re-enable.
+
+                    foreach (FinancialAccount account in workAccounts)
+                    {
+                        account.Active = true;
+                    }
+
+                    if (workAccounts.Count > 1)
+                    {
+                        result.DisplayMessage = "The accounts were re-enabled.";
+                    }
+                    else
+                    {
+                        result.DisplayMessage = "The account was re-enabled.";
+                    }
+                }
+                else // switch is being set to off position
+                {
+                    // if the accounts are currently enabled, we must first check there aren't
+                    // any transactions in them before disabling
+                    bool transactionsOnAccount = false;
+
+                    foreach (FinancialAccount account in workAccounts)
+                    {
+                        if (account.GetLastRows(5).Count > 0)
+                        {
+                            transactionsOnAccount = true;
+                        }
+                    }
+
+                    if (transactionsOnAccount)
+                    {
+                        if (workAccounts.Count > 1)
+                        {
+                            result.DisplayMessage = "Can't disable these accounts: there are transactions";
+                        }
+                        else
+                        {
+                            result.DisplayMessage = "Can't disable this account: there are transactions";
+                        }
+
+                        result.Success = false;
+                    }
+                    else
+                    {
+                        // Disable accounts
+
+                        foreach (FinancialAccount account in workAccounts)
+                        {
+                            account.Active = false;
+                        }
+
+                        if (workAccounts.Count > 1)
+                        {
+                            result.DisplayMessage = "The accounts were disabled.";
+                        }
+                        else
+                        {
+                            result.DisplayMessage = "The account was disabled.";
+                        }
+                    }
+                }
+            }
+
+            return result;
         }
 
 
@@ -110,6 +336,16 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             public string OpResult { get; set; }
             public string DisplayMessage { get; set; }
             public string RequiredOn { get; set; }
+        }
+
+
+        public class InitialOrgData
+        {
+            public bool AccountsVat;
+            public bool AccountPaypal;
+            public bool AccountBitcoinCold;
+            public bool AccountsForex;
+            public bool AccountBitcoinHot;
         }
     }
 
