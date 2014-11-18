@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using System.Globalization;
 using System.Threading;
 using System.Web;
+using Org.BouncyCastle.Asn1.Mozilla;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
@@ -10,14 +12,14 @@ using Swarmops.Logic.Swarm;
 /// </summary>
 public class CommonV5Base
 {
-	public CommonV5Base()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public CommonV5Base()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
 
-    static public void CulturePreInit (HttpRequest request)
+    public static void CulturePreInit(HttpRequest request)
     {
         // Localization
         // Set default culture (English, United States)
@@ -93,7 +95,8 @@ public class CommonV5Base
         result.CurrentUser = Person.FromIdentity(currentUserId);
         result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
 
-        CommonV5Base.CulturePreInit(HttpContext.Current.Request); // OnPreInit() isn't called in the static methods calling this fn
+        CommonV5Base.CulturePreInit(HttpContext.Current.Request);
+        // OnPreInit() isn't called in the static methods calling this fn
 
         /*
         string userCultureString = result.CurrentUser.PreferredCulture;
@@ -108,7 +111,214 @@ public class CommonV5Base
         return result;
     }
 
+
+
+
+/* COLOR SCHEME
+
+       #A2BEFF #476EC7 #1C397E #C8D9FF #E4ECFF    -- blue (hue 240)
+       #FFBC37 #C78B15 #7F5500 #FFD580 #FFEDC8    -- orange (hue 60)
+  
+        base    dark    xdark   light   xlight
+
+       S36L100 S64-L78 S78-L49 S22B100 S11L100    -- blue (hue 222)
+       S78L100 S89-L78 S100L50 S50L100 S22L100    -- orange (hue 40)
+    */
+
+
+
+
+    public static string GetColor(ColorType type, ColorVariant variant, ColorShift shift = ColorShift.None)
+    {
+        int hue = (type == ColorType.Base ? 222 : 40);
+        int saturation = 0;
+        int luminosity = 0;
+
+        switch (variant)
+        {
+            case ColorVariant.Base:
+                saturation = 100;
+                luminosity = 80;
+                break;
+            case ColorVariant.Dark:
+                saturation = 50;
+                luminosity = 50;
+                break;
+            case ColorVariant.XDark:
+                saturation = 65;
+                luminosity = 30;
+                break;
+            case ColorVariant.Light:
+                saturation = 100;
+                luminosity = 90;
+                break;
+            case ColorVariant.XLight:
+                saturation = 100;
+                luminosity = 95;
+                break;
+            default:
+                throw new NotImplementedException();
+
+        }
+
+        if (type == ColorType.Accent)
+        {
+            saturation *= 2;
+            if (saturation > 100)
+            {
+                saturation = 100;
+            }
+        }
+
+        switch (shift)
+        {
+            case ColorShift.SlightlyDarker:
+                luminosity -= 2;
+                break;
+            case ColorShift.SlightlyLighter:
+                luminosity += 2;
+                break;
+            default:
+                // do nothing
+                break;
+        }
+
+        Color color = ColorFromAhsb(100, hue, saturation / 100.0, luminosity / 100.0);
+        return String.Format("#{0:x2}{1:x2}{2:x2}", color.R, color.G, color.B);
+    }
+
+
+    public static Color ColorFromAhsb(int a, double h, double s, double b)
+    {
+        if (s < 0.001)
+        {
+            return Color.FromArgb(a, Convert.ToInt32(b * 255),
+                                  Convert.ToInt32(b * 255), Convert.ToInt32(b * 255));
+        }
+
+        double fMax, fMid, fMin;
+        int iSextant, iMax, iMid, iMin;
+
+        if (0.5 < b)
+        {
+            fMax = b - (b * s) + s;
+            fMin = b + (b * s) - s;
+        }
+        else
+        {
+            fMax = b + (b * s);
+            fMin = b - (b * s);
+        }
+
+        iSextant = (int)Math.Floor(h / 60f);
+        if (300f <= h)
+        {
+            h -= 360f;
+        }
+        h /= 60f;
+        h -= 2f * (float)Math.Floor(((iSextant + 1f) % 6f) / 2f);
+        if (0 == iSextant % 2)
+        {
+            fMid = h * (fMax - fMin) + fMin;
+        }
+        else
+        {
+            fMid = fMin - h * (fMax - fMin);
+        }
+
+        iMax = Convert.ToInt32(fMax * 255);
+        iMid = Convert.ToInt32(fMid * 255);
+        iMin = Convert.ToInt32(fMin * 255);
+
+        switch (iSextant)
+        {
+            case 1:
+                return Color.FromArgb(a, iMid, iMax, iMin);
+            case 2:
+                return Color.FromArgb(a, iMin, iMax, iMid);
+            case 3:
+                return Color.FromArgb(a, iMin, iMid, iMax);
+            case 4:
+                return Color.FromArgb(a, iMid, iMin, iMax);
+            case 5:
+                return Color.FromArgb(a, iMax, iMin, iMid);
+            default:
+                return Color.FromArgb(a, iMax, iMid, iMin);
+        }
+    }
+
+
+
+
+
+    protected static string HslToWebColor(int hue, int saturation, int luminosity) // 0-359, 0-100, 0-100
+    {
+        // This code is adapted from Wikipedia. Believed to be in the public domain or at the very least
+        // completely unencumbered.
+
+        double h = hue/360.0;
+        double s = saturation/100.0;
+        double l = luminosity/100.0;
+
+        double r, g, b;
+
+        if (s < 0.0001) // zero
+        {
+            r = g = b = l; // achromatic
+        }
+        else
+        {
+            double q = l < 0.5 ? l*(1 + s) : l + s - l*s;
+            double p = 2*l - q;
+            r = Hue2Rgb(p, q, h + 1/3);
+            g = Hue2Rgb(p, q, h);
+            b = Hue2Rgb(p, q, h - 1/3);
+        }
+
+        return String.Format("#{0:x2}{1:x2}{2:x2}", (int) (r*255), (int) (g*255), (int) (b*255));
+
+    }
+
+
+    private static double Hue2Rgb(double p, double q, double t)
+    {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1/6) return p + (q - p)*6*t;
+        if (t < 1/2) return q;
+        if (t < 2/3) return p + (q - p)*(2/3 - t)*6;
+        return p;
+    }
 }
+
+
+
+public enum ColorType
+    {
+        Unkown = 0,
+        Base,
+        Accent
+    }
+
+    public enum ColorVariant
+    {
+        Unknown = 0,
+        Base,
+        Light,
+        XLight,
+        Dark,
+        XDark
+    }
+
+    public enum ColorShift
+    {
+        Unknown = 0,
+        None,
+        SlightlyLighter,
+        SlightlyDarker
+    }
+
+
 
 [Flags]
 // ReSharper disable once InconsistentNaming
@@ -151,5 +361,6 @@ public enum IncludedControl
 {
     Unknown = 0,
     FileUpload   = 0x00000001,
-    SwitchButton = 0x00000002
+    SwitchButton = 0x00000002,
+    JsonEncoding = 0x00000004
 };

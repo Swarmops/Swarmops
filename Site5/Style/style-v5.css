@@ -1013,7 +1013,7 @@ input.ButtonSwarmopsUpload {
     background-color: #ddd;
 }
 
-input.ButtonSwarmopsUpload:hover {
+input.ButtonSwarmopsUpload:hover { 
     background-color: #f8f8f8;
 }
 

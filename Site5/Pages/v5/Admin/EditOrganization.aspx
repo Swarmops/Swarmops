@@ -6,13 +6,14 @@
     
 
     <script language="javascript" type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#divTabs').tabs();
             $('.EditCheck').switchbutton({
                 checkedLabel: '<%=Resources.Global.Global_On.ToUpperInvariant() %>',
                 uncheckedLabel: '<%=Resources.Global.Global_Off.ToUpperInvariant() %>',
+            }).change(function() {
+                $('#divUseAccountPlan').slideDown().fadeIn();
             });
-
         });
 
     </script>
@@ -51,6 +52,9 @@
                 Enable Paypal tracking and IPN?<br/>
                 Enable foreign currency accounts?<br/>
                 Enable Value Added Tax (VAT)?<br/>
+            </div>
+            <div id="divUseAccountPlan" style="display: none; width:100%; text-align:center; margin-top:20px; margin-bottom: 20px; border-top: 1px solid <%=CommonV5Base.GetColor(ColorType.Base, ColorVariant.Light)%>; border-bottom: 1px solid <%=CommonV5Base.GetColor(ColorType.Base, ColorVariant.Light)%>; background-color: <%=CommonV5Base.GetColor(ColorType.Base, ColorVariant.XLight)%>">
+                Use the <a href="#">Account Plan</a> page to set detailed parameters for these accounts, once enabled.
             </div>
         </div>
         <div title="<img src='/Images/Icons/iconshock-group-diversified-64px.png' />">

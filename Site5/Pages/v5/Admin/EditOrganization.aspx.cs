@@ -55,12 +55,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelRenewalReminder.Text = Resources.Pages.Admin.EditOrganization_RenewalReminders;
 
             this.DropMembersWhen.Items.Clear();
-            this.DropMembersWhen.Items.Add(new ListItem("On application", "Application"));
-            this.DropMembersWhen.Items.Add(new ListItem("On application + approval", "ApplicationApproval"));
-            this.DropMembersWhen.Items.Add(new ListItem("On application + payment", "ApplicationPayment"));
-            this.DropMembersWhen.Items.Add(new ListItem("Application, payment, approval", "ApplicationPaymentApproval"));
-            this.DropMembersWhen.Items.Add(new ListItem("Invitation + acceptance", "InvitationAcceptance"));
-            this.DropMembersWhen.Items.Add(new ListItem("Invitation + payment", "InvitationPayment"));
+            this.DropMembersWhen.Items.Add(new ListItem("Application submitted", "Application"));
+            this.DropMembersWhen.Items.Add(new ListItem("Application approved", "ApplicationApproval"));
+            this.DropMembersWhen.Items.Add(new ListItem("Application submitted + paid", "ApplicationPayment"));
+            this.DropMembersWhen.Items.Add(new ListItem("Application paid + approved", "ApplicationPaymentApproval"));
+            this.DropMembersWhen.Items.Add(new ListItem("Invited and accepted", "InvitationAcceptance"));
+            this.DropMembersWhen.Items.Add(new ListItem("Invited and paid", "InvitationPayment"));
             this.DropMembersWhen.Items.Add(new ListItem("Manual add only", "Manual"));
 
             this.DropMembersWhere.Items.Clear();
