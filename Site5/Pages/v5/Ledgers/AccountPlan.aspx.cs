@@ -58,7 +58,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.DbVersionRequired = 2; // Account reparenting
 
             this.EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
-
+            this.IncludedControlsUsed |= IncludedControl.SwitchButton | IncludedControl.JsonParameters;
         }
 
 

@@ -4,7 +4,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script src="/Scripts/jquery.switchButton.js" language="javascript" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="/Style/jquery.switchButton.css" />
 
 	<script type="text/javascript">
 
@@ -100,7 +99,13 @@
 	                                .change(function() {
 	                                    if (!suppressSwitchChangeAction) {
 	                                        $(this).parent().css('box-shadow', '0 0 1px 0 #FFFFC0');
-	                                        var callParameters = "{'accountId': '" + escape(accountId) + "', 'switchName':'" + $(this).attr("rel") + "','switchValue':'" + $(this).prop('checked') + "'}";
+
+	                                        var jsonData = {};
+	                                        jsonData.accountId = escape(accountId);
+	                                        jsonData.switchName = $(this).attr("rel");
+	                                        jsonData.switchValue = $(this).prop('checked');
+
+	                                        var callParameters = $.toJSON(jsonData);
 
 	                                        // If changing Active, set Expensable.Enabled to Active.Checked. If false, set Expensable.Checked to false, too
 
