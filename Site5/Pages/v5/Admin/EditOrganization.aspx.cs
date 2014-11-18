@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -110,11 +111,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 return result; // just... don't
             }
 
-            result.AccountBitcoinCold = (org.FinancialAccounts.AssetsBitcoinCold != null);
-            result.AccountBitcoinHot =  (org.FinancialAccounts.AssetsBitcoinHot != null);
-            result.AccountPaypal =      (org.FinancialAccounts.AssetsPaypal != null);
-            result.AccountsForex =      (org.FinancialAccounts.IncomeCurrencyFluctuations != null);
-            result.AccountsVat =        (org.FinancialAccounts.AssetsVatInbound != null);
+            result.AccountBitcoinCold = (org.FinancialAccounts.AssetsBitcoinCold != null && org.FinancialAccounts.AssetsBitcoinCold.Active);
+            result.AccountBitcoinHot =  (org.FinancialAccounts.AssetsBitcoinHot != null && org.FinancialAccounts.AssetsBitcoinHot.Active);
+            result.AccountPaypal =      (org.FinancialAccounts.AssetsPaypal != null && org.FinancialAccounts.AssetsPaypal.Active);
+            result.AccountsForex =      (org.FinancialAccounts.IncomeCurrencyFluctuations != null && org.FinancialAccounts.IncomeCurrencyFluctuations.Active);
+            result.AccountsVat =        (org.FinancialAccounts.AssetsVatInbound != null && org.FinancialAccounts.AssetsVatInbound.Active);
 
             // TODO: Add all the other fields
 
@@ -135,11 +136,19 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             CallResult result = new CallResult();
             result.Success = true;
 
+            bool bitcoinNative = (authData.CurrentOrganization.Currency.Code == "BTC");
+
             FinancialAccounts workAccounts = new FinancialAccounts();
 
             switch (switchName)
             {
                 case "BitcoinCold":
+
+                    if (switchValue && !bitcoinNative)
+                    {
+                        result.RequireForex = true;
+                    }
+
                     FinancialAccount coldAccount = authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold;
                     if (coldAccount == null)
                     {
@@ -163,6 +172,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     }
                 break;
                 case "BitcoinHot":
+                    if (switchValue && !bitcoinNative)
+                    {
+                        result.RequireForex = true;
+                    }
+
                     FinancialAccount hotAccount = authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot;
                     if (hotAccount == null)
                     {
@@ -206,8 +220,24 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                             throw new InvalidOperationException();
                         }
 
-                        workAccounts.Add(forexGain);
-                        workAccounts.Add(forexLoss);
+                        if (!bitcoinNative && switchValue == false &&
+                            ((authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold != null &&
+                              authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold.Active) ||
+                             (authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot != null &&
+                              authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.Active)))
+                        {
+                            // bitcoin is active, and we're not bitcoin native, so we're not turning off forex
+
+                            result.Success = false;
+                            result.DisplayMessage =
+                                "Cannot disable forex: bitcoin accounts are active in a non-bitcoin-native organization.";
+                            result.RequireForex = true;
+                        }
+                        else
+                        {
+                            workAccounts.Add(forexGain);
+                            workAccounts.Add(forexLoss);
+                        }
                     }
                     break;
                 case "Vat":
@@ -335,7 +365,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             public bool Success { get; set; }
             public string OpResult { get; set; }
             public string DisplayMessage { get; set; }
-            public string RequiredOn { get; set; }
+            public bool RequireForex { get; set; }
         }
 
 
