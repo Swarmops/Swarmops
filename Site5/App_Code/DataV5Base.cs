@@ -46,7 +46,7 @@ public class DataV5Base : System.Web.UI.Page
 
     protected override void OnPreInit(EventArgs e)
     {
-        CommonV5Base.CulturePreInit(Request);
+        CommonV5.CulturePreInit(Request);
 
  	    base.OnPreInit(e);
     }
@@ -139,7 +139,7 @@ public class DataV5Base : System.Web.UI.Page
 
     protected static AuthenticationData GetAuthenticationDataAndCulture()
     {
-        return CommonV5Base.GetAuthenticationDataAndCulture(HttpContext.Current);
+        return CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current);
     }
 
     protected static string JsonSanitize (string input)

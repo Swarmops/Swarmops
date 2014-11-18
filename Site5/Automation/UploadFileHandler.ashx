@@ -157,7 +157,7 @@ namespace Swarmops.Frontend.Automation
                 HttpPostedFile file = context.Request.Files[i];
                 string fullName = Path.GetFileName (file.FileName);
 
-                AuthenticationData authData = CommonV5Base.GetAuthenticationDataAndCulture (context);
+                AuthenticationData authData = CommonV5.GetAuthenticationDataAndCulture (context);
 
                 Person uploadingPerson = authData.CurrentUser;
                 Organization currentOrg = authData.CurrentOrganization;

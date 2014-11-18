@@ -8,11 +8,11 @@ using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
-/// Summary description for CommonV5Base
+/// Summary description for CommonV5
 /// </summary>
-public class CommonV5Base
+public class CommonV5
 {
-    public CommonV5Base()
+    public CommonV5()
     {
         //
         // TODO: Add constructor logic here
@@ -95,7 +95,7 @@ public class CommonV5Base
         result.CurrentUser = Person.FromIdentity(currentUserId);
         result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
 
-        CommonV5Base.CulturePreInit(HttpContext.Current.Request);
+        CommonV5.CulturePreInit(HttpContext.Current.Request);
         // OnPreInit() isn't called in the static methods calling this fn
 
         /*
