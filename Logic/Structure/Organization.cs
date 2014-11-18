@@ -225,7 +225,7 @@ namespace Swarmops.Logic.Structure
             //    FinancialAccount.Create(this, "Bitcoin Holdings (Hot)", FinancialAccountType.Asset, null);
             //FinancialAccounts[OrganizationFinancialAccountType.AssetsBitcoinCold] =
             //    FinancialAccount.Create(this, "Bitcoin Cold Storage", FinancialAccountType.Asset, null);
-            FinancialAccounts[OrganizationFinancialAccountType.AssetsVat] =
+            FinancialAccounts[OrganizationFinancialAccountType.AssetsVatInbound] =
                 FinancialAccount.Create(this, "Inbound Value Added Tax", FinancialAccountType.Asset, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] =
                 FinancialAccount.Create(this, "Allocated funds", FinancialAccountType.Cost, null);
