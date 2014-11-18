@@ -33,7 +33,7 @@
         /// <summary>
         /// Value Added Tax (inbound) that hasn't been declared yet and put on overall tax balance
         /// </summary>
-        AssetsVat,
+        AssetsVatInbound,
         /// <summary>
         /// If virtual banking is enabled, this is where the virtual assets go
         /// </summary>
@@ -61,7 +61,7 @@
         /// <summary>
         /// Undeclared Value Added Tax (outbound) before putting it on tax balance
         /// </summary>
-        DebtsVat,
+        DebtsVatOutbound,
         /// <summary>
         /// If virtual banking is enabled, this is the central debt to local assets
         /// </summary>
