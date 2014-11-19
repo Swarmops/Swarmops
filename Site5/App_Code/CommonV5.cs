@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Threading;
 using System.Web;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
@@ -92,7 +93,18 @@ public class CommonV5
         int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
 
         result.CurrentUser = Person.FromIdentity(currentUserId);
-        result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
+        try
+        {
+            result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
+        }
+        catch (ArgumentException)
+        {
+            if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+            {
+                // It's possible this organization was deleted. Log on to Sandbox instead.
+                result.CurrentOrganization = Organization.Sandbox;
+            }
+        }
 
         CommonV5.CulturePreInit(HttpContext.Current.Request);
         // OnPreInit() isn't called in the static methods calling this fn
