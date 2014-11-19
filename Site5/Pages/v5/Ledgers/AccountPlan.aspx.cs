@@ -138,6 +138,20 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod]
+        public static int CreateAccount(string accountType)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            FinancialAccountType accountTypeEnum = (FinancialAccountType) Enum.Parse(typeof (FinancialAccountType), accountType);
+
+            FinancialAccount account = FinancialAccount.Create(authData.CurrentOrganization,
+                Resources.Pages.Ledgers.AccountPlan_NewAccount, accountTypeEnum, null);
+
+            return account.Identity;
+        }
+
+
+
+        [WebMethod]
         public static bool SetAccountName(int accountId, string name)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();

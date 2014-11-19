@@ -8,206 +8,44 @@
 	<script type="text/javascript">
 
 	    $(document).ready(function () {
-        
+
 	        $('#tableAccountPlan').treegrid(
 	        {
-	            onBeforeExpand: function (foo) {
-	                $('span.accountplandata-collapsed-' + foo.id).fadeOut('fast', function () {
+	            onBeforeExpand: function(foo) {
+	                $('span.accountplandata-collapsed-' + foo.id).fadeOut('fast', function() {
 	                    $('span.accountplandata-expanded-' + foo.id).fadeIn('slow');
 	                });
 	            },
 
-	            onBeforeCollapse: function (foo) {
-	                $('span.accountplandata-expanded-' + foo.id).fadeOut('fast', function () {
+	            onBeforeCollapse: function(foo) {
+	                $('span.accountplandata-expanded-' + foo.id).fadeOut('fast', function() {
 	                    $('span.accountplandata-collapsed-' + foo.id).fadeIn('slow');
 	                });
 	            },
-	            
-	            onLoadSuccess: function () {
+
+	            onLoadSuccess: function() {
 	                $('div.datagrid').css('opacity', 1);
 
 	                $(".IconEdit").mouseover(function() {
-                        $(this).attr("src", "/Images/Icons/iconshock-wrench-16px-hot.png");
+	                    $(this).attr("src", "/Images/Icons/iconshock-wrench-16px-hot.png");
 	                });
 
 	                $(".IconEdit").mouseout(function() {
-                        $(this).attr("src", "/Images/Icons/iconshock-wrench-16px.png");
+	                    $(this).attr("src", "/Images/Icons/iconshock-wrench-16px.png");
+	                });
+
+	                $(".IconAdd, .LinkAdd").click(function() {
+	                    accountType = $(this).attr("accountType");
+	                    addAccount();
 	                });
 
 	                $(".IconEdit").click(function() {
 	                    accountId = $(this).attr("accountId");
-	                    accountType = accountId.substring(0,1);  // A, D, I, C
+	                    accountType = accountId.substring(0, 1); // A, D, I, C
 	                    accountId = accountId.substring(1);
 
-	                    var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
-	                    accountTreeLoaded = false;
-	                    accountTree.combotree('setText', '');
-
-	                    
-                        if (accountType == 'A') {
-                            $('#DivEditAssetLabels').show();
-                            $('#DivEditAssetControls').show();
-                            $('#DivEditProfitLossLabels').hide();
-                            $('#DivEditProfitLossControls').hide();
-                            accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Asset&ExcludeId=' + accountId);
-                        } else if (accountType == 'D') { // Debt, aka Liability
-                            $('#DivEditAssetLabels').hide();
-                            $('#DivEditAssetControls').hide();
-                            $('#DivEditProfitLossLabels').hide();
-                            $('#DivEditProfitLossControls').hide();
-                            accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Debt&ExcludeId=' + accountId);
-                        } else {  // P&L account
-                            $('#DivEditAssetLabels').hide();
-                            $('#DivEditAssetControls').hide();
-                            $('#DivEditProfitLossLabels').show();
-                            $('#DivEditProfitLossControls').show();
-                            
-                            if (accountType == 'I') {
-                                accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Income&ExcludeId=' + accountId);
-                            } else { // C for Costs aka Expenses
-                                accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Cost&ExcludeId=' + accountId);
-                            }
-                        }
-
-	                    // Clear out data in modal form, gray out to indicate being loaded
-
-                        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#DDD');
-                        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#DDD');
-	                    $('#TextAccountBudget').val('...').css('background-color', '#DDD');
-	                    $('#TextAccountName').val('...').css('background-color', '#DDD');
-	                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', '...');
-	                    accountTree.combotree('setText', '...');
-	                    parentAccountName = '';
-
-	                    window.scrollTo(0, 0);
-	                    $('body').css('overflow-y', 'hidden');
-	                    $('#divModalCover').fadeIn();
-
-	                    setTimeout(function() {
-	                        $('#divModalBox').animate({ "height": ($('#DivModalFields').outerHeight() + $('#HeaderModal').outerHeight()) + 40 + "px" }, 50);
-	                    }, 50); // set timeout to after checkboxes initialized, if this is the first show of modal
-
-	                    if (!checkboxesInitialized && (accountType == 'I' || accountType == 'C')) {
-	                        // This is a weird construct, but comes from the switchbuttons needing to be visible when initialized.
-                            // Hence, it can't be done in document.Ready but need to be done on first show.
-	                        setTimeout(function() {
-	                            $('.EditCheck')
-	                                .switchbutton({
-	                                    checkedLabel: '<%=Resources.Global.Global_On.ToUpperInvariant() %>',
-	                                    uncheckedLabel: '<%=Resources.Global.Global_Off.ToUpperInvariant() %>',
-	                                })
-	                                .change(function() {
-	                                    if (!suppressSwitchChangeAction) {
-	                                        $(this).parent().css('box-shadow', '0 0 1px 0 #FFFFC0');
-
-	                                        var jsonData = {};
-	                                        jsonData.accountId = escape(accountId);
-	                                        jsonData.switchName = $(this).attr("rel");
-	                                        jsonData.switchValue = $(this).prop('checked');
-
-	                                        var callParameters = $.toJSON(jsonData);
-
-	                                        // If changing Active, set Expensable.Enabled to Active.Checked. If false, set Expensable.Checked to false, too
-
-	                                        if ($(this).attr("rel") == "Active") {
-	                                            if (!$(this).prop('checked') && $("#CheckAccountExpensable").prop("checked")) {
-	                                                $("#CheckAccountExpensable").prop("checked", false).change();
-	                                            }
-	                                        }
-
-                                            // If changing Expensable to true, make sure that Active is true, too
-
-	                                        if ($(this).attr("rel") == "Expensable") {
-	                                            if ($(this).prop('checked') && !$("#CheckAccountActive").prop("checked")) {
-	                                                $("#CheckAccountActive").prop("checked", true).change();
-	                                            }
-	                                        }
-
-	                                        $.ajax({
-	                                            type: "POST",
-	                                            url: "AccountPlan.aspx/SetAccountSwitch",
-	                                            data: callParameters,
-	                                            contentType: "application/json; charset=utf-8",
-	                                            dataType: "json",
-	                                            success: $.proxy(function(msg) {
-	                                                if (msg.d) { // saved ok
-	                                                    $(this).parent().css('box-shadow', '0 0 1px 2px rgba(96,255,96,0.5)');
-	                                                    $(this).parent().animate({
-	                                                        boxShadow: '0 0 10px 2px rgba(0,255,0,0)'
-	                                                    }, 250);
-	                                                    accountDirty = true;
-	                                                } else {
-	                                                    suppressSwitchChangeAction = true;
-	                                                    $(this).click();
-	                                                    suppressSwitchChangeAction = false;
-	                                                    $(this).parent().css('box-shadow', '0 0 1px 2px rgba(255,96,96,0.8)');
-	                                                    $(this).parent().animate({
-	                                                        boxShadow: '0 0 15px 3px rgba(0,255,0,0)'
-	                                                    }, 750);
-	                                                    alertify.error("The server refused setting the switch as requested.");  // TODO: Localize
-	                                                }
-	                                                $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
-	                                            }, this),
-	                                            error: $.proxy(function() {
-	                                                alertify.error("There was an error calling the server to set the switch. Is the server reachable?"); // TODO: Localize
-	                                                suppressSwitchChangeAction = true;
-	                                                $(this).click();
-	                                                suppressSwitchChangeAction = false;
-	                                                $(this).parent().css('box-shadow', '0 0 1px 2px rgba(255,96,96,0.8)');
-	                                                $(this).parent().animate({
-	                                                    boxShadow: '0 0 15px 3px rgba(0,255,0,0)'
-	                                                }, 750);
-	                                            }, this)
-	                                        });
-	                                    }
-	                               });
-	                        }, 1);
-	                        checkboxesInitialized = true;
-	                    }
-
-	                    if (!parentDropInitialized) {
-	                        parentDropInitialized = true;
-	                        // Another weird construct for same reason. Show and hide the box once, and it'll init properly next.
-	                        setTimeout(function() {
-	                            $('#<%=this.DropParents.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();
-	                            $('#<%=this.DropParents.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();
-	                        }, 100);
-                        }
-
-	                    $.ajax({
-                            type: "POST",
-                            url: "AccountPlan.aspx/GetAccountData",
-                            data: "{'accountId': '" + escape(accountId) + "'}",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function (msg) {
-
-                                suppressSwitchChangeAction = true;
-                                $("#CheckAccountActive").prop("checked", msg.d.Active).change();
-                                $("#CheckAccountExpensable").prop("checked", msg.d.Expensable).change();
-                                $("#CheckAccountAdministrative").prop("checked", msg.d.Administrative).change();
-                                suppressSwitchChangeAction = false;
-
-                                modalAccountName = msg.d.AccountName;
-                                $('#TextAccountName').val(msg.d.AccountName).css('background-color', '#FFF');
-
-                                modalAccountBudget = msg.d.Budget;
-                                $('#TextAccountBudget').val(msg.d.Budget).css('background-color', '#FFF');
-
-                                $('#SpanTextCurrency').text(msg.d.CurrencyCode);
-                                $('#SpanEditBalance').text(msg.d.Balance);
-                                parentAccountName = msg.d.ParentAccountName;
-                                setAccountTreeText(parentAccountName);
-
-                                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFF');
-                                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
-                                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', msg.d.AccountOwnerName);
-                                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').val('');
-                            }
-                        });
-
+	                    beginEditAccount();
 	                });
-	        
 	            }
 	        });
 
@@ -310,6 +148,198 @@
 	        });
 
 	    });
+
+
+	    function addAccount() {
+	        $.ajax({
+	            type: "POST",
+	            url: "AccountPlan.aspx/CreateAccount",
+	            data: "{'accountType': '" + accountType + "'}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            async: false, // ugly but necessary to prevent races
+	            success: function(msg) {
+	                accountId = msg.d;
+	                accountType = accountType.substring(0, 1);
+	                accountDirty = true; // just created, so update needed
+	                beginEditAccount();
+	            },
+	            error: function() {
+	                alertify.error("There was an error calling the server to create the account. Is the server reachable?"); // TODO: Localize
+	            }
+	        });
+	    }
+
+
+	    function beginEditAccount() {
+	        var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
+	        accountTreeLoaded = false;
+	        accountTree.combotree('setText', '');
+
+	        if (accountType == 'A') {
+	            $('#DivEditAssetLabels').show();
+	            $('#DivEditAssetControls').show();
+	            $('#DivEditProfitLossLabels').hide();
+	            $('#DivEditProfitLossControls').hide();
+	            accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Asset&ExcludeId=' + accountId);
+	        } else if (accountType == 'D') { // Debt, aka Liability
+	            $('#DivEditAssetLabels').hide();
+	            $('#DivEditAssetControls').hide();
+	            $('#DivEditProfitLossLabels').hide();
+	            $('#DivEditProfitLossControls').hide();
+	            accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Debt&ExcludeId=' + accountId);
+	        } else { // P&L account
+	            $('#DivEditAssetLabels').hide();
+	            $('#DivEditAssetControls').hide();
+	            $('#DivEditProfitLossLabels').show();
+	            $('#DivEditProfitLossControls').show();
+
+	            if (accountType == 'I') {
+	                accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Income&ExcludeId=' + accountId);
+	            } else { // C for Costs aka Expenses
+	                accountTree.combotree('reload', '/Automation/Json-FinancialAccountsTree.aspx?AccountType=Cost&ExcludeId=' + accountId);
+	            }
+	        }
+
+	        // Clear out data in modal form, gray out to indicate being loaded
+
+	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#DDD');
+	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#DDD');
+	        $('#TextAccountBudget').val('...').css('background-color', '#DDD');
+	        $('#TextAccountName').val('...').css('background-color', '#DDD');
+	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', '...');
+
+	        accountTree.combotree('setText', '...');
+	        parentAccountName = '';
+
+	        window.scrollTo(0, 0);
+	        $('body').css('overflow-y', 'hidden');
+	        $('#divModalCover').fadeIn();
+
+	        setTimeout(function() {
+	            $('#divModalBox').animate({ "height": ($('#DivModalFields').outerHeight() + $('#HeaderModal').outerHeight()) + 40 + "px" }, 50);
+	        }, 50); // set timeout to after checkboxes initialized, if this is the first show of modal
+
+	        if (!checkboxesInitialized && (accountType == 'I' || accountType == 'C')) {
+	            // This is a weird construct, but comes from the switchbuttons needing to be visible when initialized.
+	            // Hence, it can't be done in document.Ready but need to be done on first show.
+	            setTimeout(function() {
+	                $('.EditCheck')
+	                    .switchbutton({
+	                        checkedLabel: '<%=Resources.Global.Global_On.ToUpperInvariant() %>',
+	                        uncheckedLabel: '<%=Resources.Global.Global_Off.ToUpperInvariant() %>',
+	                    })
+	                    .change(function() {
+	                        if (!suppressSwitchChangeAction) {
+	                            $(this).parent().css('box-shadow', '0 0 1px 0 #FFFFC0');
+
+	                            var jsonData = {};
+	                            jsonData.accountId = escape(accountId);
+	                            jsonData.switchName = $(this).attr("rel");
+	                            jsonData.switchValue = $(this).prop('checked');
+
+	                            var callParameters = $.toJSON(jsonData);
+
+	                            // If changing Active, set Expensable.Enabled to Active.Checked. If false, set Expensable.Checked to false, too
+
+	                            if ($(this).attr("rel") == "Active") {
+	                                if (!$(this).prop('checked') && $("#CheckAccountExpensable").prop("checked")) {
+	                                    $("#CheckAccountExpensable").prop("checked", false).change();
+	                                }
+	                            }
+
+	                            // If changing Expensable to true, make sure that Active is true, too
+
+	                            if ($(this).attr("rel") == "Expensable") {
+	                                if ($(this).prop('checked') && !$("#CheckAccountActive").prop("checked")) {
+	                                    $("#CheckAccountActive").prop("checked", true).change();
+	                                }
+	                            }
+
+	                            $.ajax({
+	                                type: "POST",
+	                                url: "AccountPlan.aspx/SetAccountSwitch",
+	                                data: callParameters,
+	                                contentType: "application/json; charset=utf-8",
+	                                dataType: "json",
+	                                success: $.proxy(function(msg) {
+	                                    if (msg.d) { // saved ok
+	                                        $(this).parent().css('box-shadow', '0 0 1px 2px rgba(96,255,96,0.5)');
+	                                        $(this).parent().animate({
+	                                            boxShadow: '0 0 10px 2px rgba(0,255,0,0)'
+	                                        }, 250);
+	                                        accountDirty = true;
+	                                    } else {
+	                                        suppressSwitchChangeAction = true;
+	                                        $(this).click();
+	                                        suppressSwitchChangeAction = false;
+	                                        $(this).parent().css('box-shadow', '0 0 1px 2px rgba(255,96,96,0.8)');
+	                                        $(this).parent().animate({
+	                                            boxShadow: '0 0 15px 3px rgba(0,255,0,0)'
+	                                        }, 750);
+	                                        alertify.error("The server refused setting the switch as requested."); // TODO: Localize
+	                                    }
+	                                    $('#TextAccountName').animate({ backgroundColor: "#FFFFFF" }, 250);
+	                                }, this),
+	                                error: $.proxy(function() {
+	                                    alertify.error("There was an error calling the server to set the switch. Is the server reachable?"); // TODO: Localize
+	                                    suppressSwitchChangeAction = true;
+	                                    $(this).click();
+	                                    suppressSwitchChangeAction = false;
+	                                    $(this).parent().css('box-shadow', '0 0 1px 2px rgba(255,96,96,0.8)');
+	                                    $(this).parent().animate({
+	                                        boxShadow: '0 0 15px 3px rgba(0,255,0,0)'
+	                                    }, 750);
+	                                }, this)
+	                            });
+	                        }
+	                    });
+	            }, 1);
+	            checkboxesInitialized = true;
+	        }
+
+	        if (!parentDropInitialized) {
+	            parentDropInitialized = true;
+	            // Another weird construct for same reason. Show and hide the box once, and it'll init properly next.
+	            setTimeout(function() {
+	                $('#<%=this.DropParents.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();
+	                $('#<%=this.DropParents.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();
+	            }, 100);
+	        }
+
+	        $.ajax({
+	            type: "POST",
+	            url: "AccountPlan.aspx/GetAccountData",
+	            data: "{'accountId': '" + escape(accountId) + "'}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function(msg) {
+
+	                suppressSwitchChangeAction = true;
+	                $("#CheckAccountActive").prop("checked", msg.d.Active).change();
+	                $("#CheckAccountExpensable").prop("checked", msg.d.Expensable).change();
+	                $("#CheckAccountAdministrative").prop("checked", msg.d.Administrative).change();
+	                suppressSwitchChangeAction = false;
+
+	                modalAccountName = msg.d.AccountName;
+	                $('#TextAccountName').val(msg.d.AccountName).css('background-color', '#FFF');
+
+	                modalAccountBudget = msg.d.Budget;
+	                $('#TextAccountBudget').val(msg.d.Budget).css('background-color', '#FFF');
+
+	                $('#SpanTextCurrency').text(msg.d.CurrencyCode);
+	                $('#SpanEditBalance').text(msg.d.Balance);
+	                parentAccountName = msg.d.ParentAccountName;
+	                setAccountTreeText(parentAccountName);
+
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFF');
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', msg.d.AccountOwnerName);
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').val('');
+	            }
+	        });
+
+	    }
 
         function modalShow() {
             $('#divModalCover').fadeIn();
@@ -418,13 +448,16 @@
 
 	</script>
     <style>
-	    .IconEdit {
+	    .IconEdit, .IconAdd {
 		    cursor: pointer;
 	    }
 	    #IconCloseEdit {
 		    cursor: pointer;
 		    
 	    }
+        .SpanGroupName {
+            font-weight: 700;
+        }
 	    .CheckboxContainer {
 		    float: right; padding-top: 4px;padding-right: 8px;
 	    }

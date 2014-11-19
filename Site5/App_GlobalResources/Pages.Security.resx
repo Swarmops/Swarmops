@@ -139,7 +139,7 @@
     <value>New organization</value>
   </data>
   <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
-    <value>You're not part of any other organizations on this Swarmops installation, so you can't switch to something else. Therefore, we're going back to Dashboard instead.</value>
+    <value>You're not participating in any other organization on this Swarmops installation, so you can't switch to something else. Therefore, we're going back to Dashboard instead.</value>
   </data>
   <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
     <value>Change Organizations</value>

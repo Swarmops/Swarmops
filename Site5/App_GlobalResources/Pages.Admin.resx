@@ -131,7 +131,7 @@
     <value>Create new organization as...</value>
   </data>
   <data name="CreateOrganization_Info" xml:space="preserve">
-    <value>You can create a new organization either as a new standalone organization, or as a child organization of the current one. (In a child organization, everybody with responsibility in the parent organization automatically has corresponding rights and privileges.)</value>
+    <value>You can create a new organization either as a new standalone organization, or as a child organization of the current one. (Everybody with responsibilities in a parent organization automatically has corresponding rights and privileges in all its children.)</value>
   </data>
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>Operating currency</value>
