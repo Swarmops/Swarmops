@@ -37,7 +37,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         private void Localize()
         {
             this.LabelAmount.Text = string.Format(Resources.Pages.Financial.RequestCashAdvance_Amount,
-                                                  CurrentOrganization.Currency.Code);
+                                                  CurrentOrganization.Currency.DisplayCode);
             this.LabelPurpose.Text = Resources.Pages.Financial.RequestCashAdvance_Purpose;
             this.LabelBudget.Text = Resources.Pages.Financial.RequestCashAdvance_Budget;
             this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.RequestCashAdvance_HeaderBankDetails;

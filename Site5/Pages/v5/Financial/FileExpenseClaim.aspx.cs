@@ -117,7 +117,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         private void Localize()
         {
             this.LabelAmount.Text = string.Format(Resources.Pages.Financial.FileExpenseClaim_Amount,
-                                                  CurrentOrganization.Currency.Code);
+                                                  CurrentOrganization.Currency.DisplayCode);
             this.LabelPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_Description;
             this.LabelBudget.Text = Resources.Pages.Financial.FileExpenseClaim_Budget;
             this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderBankDetails;
