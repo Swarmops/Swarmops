@@ -68,7 +68,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (YearlyReportLine line in reportLines)
             {
-                string element = string.Format("\"id\":{0},\"name\":\"{1}\"", line.AccountId,
+                string element = string.Format("\"id\":\"{0}\",\"name\":\"{1}\"", line.AccountId,
                                                JsonSanitize(line.AccountName));
 
                 if (line.Children.Count > 0)
