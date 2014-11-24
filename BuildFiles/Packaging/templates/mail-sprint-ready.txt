@@ -1,0 +1,3 @@
+A sprint build has been deployed to staging area. It is ready for packaging and deployment.
+
+Shell to swarmops-dev and run the 'do-sprint' script to deploy the sprint.

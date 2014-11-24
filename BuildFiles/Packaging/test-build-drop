@@ -4,6 +4,22 @@
 # /home/packager/lastbuild/swarmops/internal/BuildDropped.txt
 # and if that file exists, it launches an internal build.
 
+# It also watches for the completion of a sprint/release build and informs
+# when it is ready for deployment, but does not actually package those.
+
+if [ -e /home/packager/lastbuild/swarmops/sprint/BuildDropped.txt ]; then
+  rm /home/packager/lastbuild/swarmops/sprint/BuildDropped.txt
+  SPRINTNAME=$(cat ../lastbuild/swarmops/sprint/frontend/SprintName.txt | tr -d '\n')
+  BUILDID=$(cat ../lastbuild/swarmops/sprint/BuildIdentity.txt | tr -d ' \r')
+  COMMITID=$(cat ../lastbuild/swarmops/sprint/CommitIdentity.txt | tr -d ' \r')
+  BUILDID=$(echo $BUILDID | cut -c 1-6)$(echo $COMMITID | cut -c 1-7)
+
+  mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops SPRINT $SPRINTNAME ($BUILDID) ready." "rick.falkvinge@pirateacademy.eu" < /home/packager/swarmops/templates/mail-sprint-ready.txt
+
+fi
+
+
+
 if [ ! -e /home/packager/lastbuild/swarmops/internal/BuildDropped.txt ]; then
   exit 0;
 fi
