@@ -153,6 +153,10 @@
   <data name="EditOrganization_Info" xml:space="preserve">
     <value>&lt;strong&gt;WORK IN PROGRESS.&lt;/strong&gt; Most of these options don't save yet.</value>
   </data>
+  <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
+    <value>{0} numbering</value>
+    <comment>The {0} is the membership, ambassadorship, etc.</comment>
+  </data>
   <data name="EditOrganization_PageTitle" xml:space="preserve">
     <value>Edit Organization</value>
   </data>

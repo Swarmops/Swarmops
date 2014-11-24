@@ -58,7 +58,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelRenewalsAffect.Text = Resources.Pages.Admin.EditOrganization_RenewalsAffect;
             this.LabelRenewalDateEffect.Text = Resources.Pages.Admin.EditOrganization_RenewalDateEffect;
             this.LabelRenewalReminder.Text = Resources.Pages.Admin.EditOrganization_RenewalReminders;
-            this.LabelMemberNumber.Text = Resources.Pages.Admin.EditOrganization_MemberNumberStyle;
+            this.LabelMemberNumber.Text = 
+                String.Format(Resources.Pages.Admin.EditOrganization_MemberNumberStyle, participantship);
 
             this.DropMembersWhen.Items.Clear();
             this.DropMembersWhen.Items.Add(new ListItem("Application submitted", "Application"));
