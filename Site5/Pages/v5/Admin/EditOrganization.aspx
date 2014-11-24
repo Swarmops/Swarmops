@@ -135,6 +135,7 @@
                 <Swarmops5:DropDown ID="DropRenewalDateEffect" CssClass="DropTemp" runat="server"/>&#8203;<br/>
                 <Swarmops5:DropDown ID="DropRenewalsAffect" CssClass="DropTemp" runat="server"/>&#8203;<br/>
                 <Swarmops5:DropDown ID="DropRenewalReminder" CssClass="DropTemp" runat="server"/>&#8203;<br/>
+                <Swarmops5:DropDown ID="DropMemberNumber" runat="server" />&#8203;<br/>
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelParticipationEntry" runat="server" /><br/>
@@ -146,6 +147,7 @@
                 <asp:Label ID="LabelRenewalDateEffect" runat="server" /><br/>
                 <asp:Label ID="LabelRenewalsAffect" runat="server" /><br/>
                 <asp:Label ID="LabelRenewalReminder" runat="server" /><br/>
+                <asp:Label ID="LabelMemberNumber" runat="server" /><br />
             </div>
         </div>
         <div title="<img src='/Images/Icons/iconshock-colorswatch-64px.png' />">

@@ -54,9 +54,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelParticipationCost.Text =
                 String.Format(Resources.Pages.Admin.EditOrganization_ParticipationCost,
                     participantship, CurrentOrganization.Currency.DisplayCode);
+
             this.LabelRenewalsAffect.Text = Resources.Pages.Admin.EditOrganization_RenewalsAffect;
             this.LabelRenewalDateEffect.Text = Resources.Pages.Admin.EditOrganization_RenewalDateEffect;
             this.LabelRenewalReminder.Text = Resources.Pages.Admin.EditOrganization_RenewalReminders;
+            this.LabelMemberNumber.Text = Resources.Pages.Admin.EditOrganization_MemberNumberStyle;
 
             this.DropMembersWhen.Items.Clear();
             this.DropMembersWhen.Items.Add(new ListItem("Application submitted", "Application"));
@@ -97,6 +99,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.DropRenewalReminder.Items.Clear();
             this.DropRenewalReminder.Items.Add(new ListItem("30, 14, 7, 1 days before", "Standard"));
             this.DropRenewalReminder.Items.Add(new ListItem("Never", "Never"));
+
+            this.DropMemberNumber.Items.Clear();
+            this.DropMemberNumber.Items.Add(new ListItem("Global for installation", "Global"));
+            this.DropMemberNumber.Items.Add(new ListItem("Local for each organzation", "Local"));
         }
 
         [WebMethod]
