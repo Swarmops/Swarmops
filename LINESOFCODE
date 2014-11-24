@@ -132,7 +132,7 @@
      78 ./Database/Database-PaymentCodes.cs
     246 ./Database/Database-ConnectionsCommands.cs
     200 ./Database/Database-Events.cs
-    191 ./Database/Database-Constructors.cs
+    192 ./Database/Database-Constructors.cs
     171 ./Database/Database-ExternalIdentities.cs
     207 ./Database/Database-Salaries.cs
      83 ./Database/Database-AutoMails.cs
@@ -317,62 +317,64 @@
      24 ./Utility/Mail/Newsletter.cs
      10 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx
-    296 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
+    298 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
     211 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
-     85 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
+     82 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
     114 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx.cs
      13 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx
      76 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx
-    158 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx
-    151 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx
-    208 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
-    145 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
+    155 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx
+    144 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx
+    210 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
+    143 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
     197 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
-    184 ./Site5/Pages/v5/Financial/AttestCosts.aspx
+    183 ./Site5/Pages/v5/Financial/AttestCosts.aspx
      69 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx.cs
-    185 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx
+    183 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx
       1 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx
-    114 ./Site5/Pages/v5/Financial/PayOutMoney.aspx.cs
-    225 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx.cs
-    142 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
-     69 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
+    115 ./Site5/Pages/v5/Financial/PayOutMoney.aspx.cs
+    227 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx.cs
+    141 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
+     42 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
      16 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx
-    108 ./Site5/Pages/v5/Admin/Hacks/PopulateData.aspx
+    106 ./Site5/Pages/v5/Admin/Hacks/PopulateData.aspx
      59 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx.cs
      28 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx
     101 ./Site5/Pages/v5/Admin/Hacks/PopulateData.aspx.cs
      79 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx.cs
+    198 ./Site5/Pages/v5/Admin/EditOrganization.aspx
+    387 ./Site5/Pages/v5/Admin/EditOrganization.aspx.cs
     106 ./Site5/Pages/v5/Comms/SendMassMessage.aspx.cs
-     65 ./Site5/Pages/v5/Comms/SendMassMessage.aspx
+     63 ./Site5/Pages/v5/Comms/SendMassMessage.aspx
      13 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx
      13 ./Site5/Pages/v5/Security/AccessDenied.aspx.cs
      17 ./Site5/Pages/v5/Security/AccessDenied.aspx
-     36 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx
+     31 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx
      61 ./Site5/Pages/v5/Security/ChangeOrganizations.aspx.cs
       1 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx
-     84 ./Site5/Pages/v5/Security/ChangeOrganizations.aspx
+     82 ./Site5/Pages/v5/Security/ChangeOrganizations.aspx
       1 ./Site5/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx
      13 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx.cs
      91 ./Site5/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx.cs
      38 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx.cs
-     56 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx.cs
+     66 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx.cs
     841 ./Site5/Pages/v5/Init/Default.aspx.cs
     697 ./Site5/Pages/v5/Init/Default.aspx
-    704 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
+    706 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
     129 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx.cs
-     59 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.cs
+     61 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.cs
      22 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx
     328 ./Site5/Pages/v5/Ledgers/SetRootBudgets.aspx.cs
       0 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx
-     48 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx.cs
-    345 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx.cs
-    211 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
+     50 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx.cs
+    362 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx.cs
+    213 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
      29 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx
     189 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.cs
      11 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx
-     73 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx.cs
+     75 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx.cs
     423 ./Site5/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-ProfitLossData.aspx
@@ -383,30 +385,32 @@
     133 ./Site5/Pages/v5/Ledgers/Json-ProfitLossData.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx
     300 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx.cs
-    208 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx
-    137 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx
-     94 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx
-     44 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx.cs
+    205 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx
+    133 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx
+     92 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx
+     46 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx.cs
    1250 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx.cs
      92 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.cs
-    119 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx
-    270 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx
-    494 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx
-    117 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx
+    117 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx
+    267 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx
+    529 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx
+    114 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx
     131 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx.cs
       1 ./Site5/Pages/v5/Swarm/Json-ListFindPeople.aspx
-    208 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx
+     16 ./Site5/Pages/v5/Swarm/AddPerson.aspx.cs
+     35 ./Site5/Pages/v5/Swarm/AddPerson.aspx
+    204 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx
      63 ./Site5/Pages/v5/Swarm/Json-ListFindPeople.aspx.cs
     111 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx.cs
       1 ./Site5/Pages/v5/User/SetCulture.aspx
      70 ./Site5/Pages/v5/User/SelectLanguage.aspx.cs
      33 ./Site5/Pages/v5/User/SetCulture.aspx.cs
-     97 ./Site5/Pages/v5/User/SelectLanguage.aspx
+     96 ./Site5/Pages/v5/User/SelectLanguage.aspx
     191 ./Site5/Pages/v5/Support/StreamUpload.aspx.cs
       2 ./Site5/Pages/v5/Support/StreamUpload.aspx
      20 ./Site5/Default.aspx.cs
-     17 ./Site5/Default.aspx
+     18 ./Site5/Default.aspx
     377 ./Site5/Security/Login.aspx.cs
      99 ./Site5/Security/Login-Old.aspx.cs
     220 ./Site5/Security/Login.aspx
@@ -436,15 +440,17 @@
     128 ./Site5/Automation/Json-BudgetsTree.aspx.cs
      33 ./Site5/Tests/TestBookkeepingIntegrity.aspx
      80 ./Site5/Tests/TestBookkeepingIntegrity.aspx.cs
-    378 ./Site5/Master-v5.master.cs
+    393 ./Site5/Master-v5.master.cs
     106 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
      31 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
      40 ./Site5/Controls/v5/Base/ComboGeographies.ascx
-     73 ./Site5/Controls/v5/Base/FileUpload.ascx.cs
+     75 ./Site5/Controls/v5/Base/FileUpload.ascx.cs
+     27 ./Site5/Controls/v5/Base/DropDown.ascx.cs
      68 ./Site5/Controls/v5/Base/FileUpload.ascx
       1 ./Site5/Controls/v5/Base/MainMenu.ascx
+     34 ./Site5/Controls/v5/Base/DropDown.ascx
      20 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx.cs
-     36 ./Site5/Controls/v5/Financial/ComboBudgets.ascx
+    101 ./Site5/Controls/v5/Financial/ComboBudgets.ascx
       1 ./Site5/Controls/v5/Financial/ComboIncomeCostType.ascx
       1 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx
       8 ./Site5/Controls/v5/Financial/ComboIncomeCostType.ascx.cs
@@ -453,15 +459,17 @@
      18 ./Site5/Controls/v5/Swarm/ComboPeople.ascx.cs
      98 ./Site5/Controls/v5/Swarm/ComboPeople.ascx
      26 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx
-     35 ./Site5/Controls/v5/UI/ExternalScripts.ascx.cs
-      9 ./Site5/Controls/v5/UI/ExternalScripts.ascx
+     46 ./Site5/Controls/v5/UI/ExternalScripts.ascx.cs
+      5 ./Site5/Controls/v5/UI/ExternalScripts.ascx
+      5 ./Site5/Controls/v5/UI/IncludedScripts.ascx
+     44 ./Site5/Controls/v5/UI/IncludedScripts.ascx.cs
      81 ./Site5/Global.asax
+    376 ./Site5/App_Code/CommonV5.cs
     880 ./Site5/App_Code/GetGeographyData.cs
-     60 ./Site5/App_Code/MasterV5Base.cs
-    144 ./Site5/App_Code/PageV5Base.cs
-    151 ./Site5/App_Code/DataV5Base.cs
-     71 ./Site5/App_Code/ControlV5Base.cs
-    110 ./Site5/App_Code/CommonV5Base.cs
+     65 ./Site5/App_Code/MasterV5Base.cs
+    157 ./Site5/App_Code/PageV5Base.cs
+    163 ./Site5/App_Code/DataV5Base.cs
+     83 ./Site5/App_Code/ControlV5Base.cs
      96 ./Site5/App_Code/FieldValidation.cs
     376 ./Logic/App_GlobalResources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
      91 ./Logic/App_GlobalResources/Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs
@@ -485,9 +493,9 @@
      50 ./Logic/Financial/FinancialValidations.cs
     678 ./Logic/Financial/Payout.cs
      13 ./Logic/Financial/IBankDataPaymentsReader.cs
-     41 ./Logic/Financial/Currency.cs
+     55 ./Logic/Financial/Currency.cs
     212 ./Logic/Financial/FinancialAccounts.cs
-    406 ./Logic/Financial/FinancialAccount.cs
+    412 ./Logic/Financial/FinancialAccount.cs
      10 ./Logic/Financial/StockBankDataReaders.cs
     451 ./Logic/Financial/Payouts.cs
     189 ./Logic/Financial/Payment.cs
@@ -506,7 +514,7 @@
      10 ./Logic/Financial/ISummable.cs
     126 ./Logic/Financial/ExpenseClaims.cs
      59 ./Logic/Financial/ExternalBankDataRecord.cs
-    282 ./Logic/Financial/OrganizationFinancialAccounts.cs
+    309 ./Logic/Financial/OrganizationFinancialAccounts.cs
       9 ./Logic/Financial/IBankDataAccountStatementReader.cs
      23 ./Logic/Financial/ImportedBankData.cs
      71 ./Logic/Financial/FinancialTransactions.cs
@@ -539,7 +547,7 @@
      58 ./Logic/AssemblyInfo.cs
     809 ./Logic/Security/BCrypt.cs
      29 ./Logic/Security/MD5.cs
-     49 ./Logic/Security/Accesses.cs
+     62 ./Logic/Security/Accesses.cs
     309 ./Logic/Security/Authority.cs
      22 ./Logic/Security/ActivityEnum.cs
      29 ./Logic/Security/SHA1.cs
@@ -1177,4 +1185,4 @@
      33 ./Site4/App_Code/MasterV4Base.cs
     285 ./Site4/App_Code/GeoSok.cs
     700 ./Site4/App_Code/CellAddressableTable.cs
- 156454 total
+ 157661 total
