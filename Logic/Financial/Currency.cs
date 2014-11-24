@@ -1,3 +1,4 @@
+using System;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 
@@ -36,6 +37,19 @@ namespace Swarmops.Logic.Financial
         {
             return FromIdentityAggressive(
                 SwarmDb.GetDatabaseForWriting().CreateCurrency(code, name, sign));
+        }
+
+        public string DisplayCode
+        {
+            get
+            {
+                if (base.Code == "BTC")
+                {
+                    return "µBTC";
+                }
+
+                return base.Code;
+            }
         }
     }
 }

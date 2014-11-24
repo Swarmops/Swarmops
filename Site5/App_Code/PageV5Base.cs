@@ -51,6 +51,12 @@ public class PageV5Base : System.Web.UI.Page
         set { this.Master.EasyUIControlsUsed = value; }
     }
 
+    public IncludedControl IncludedControlsUsed
+    {
+        get { return this.Master.IncludedControlsUsed; }
+        set { this.Master.IncludedControlsUsed = value; }
+    }
+
     protected Person CurrentUser
     {
         get { return this.Master.CurrentUser; }
@@ -68,7 +74,7 @@ public class PageV5Base : System.Web.UI.Page
 
     protected override void OnPreInit(EventArgs e)
     {
-        CommonV5Base.CulturePreInit(Request);
+        CommonV5.CulturePreInit(Request);
 
  	    base.OnPreInit(e);
     }
@@ -130,7 +136,7 @@ public class PageV5Base : System.Web.UI.Page
         // the current set of authentication data. Static page methods cannot access
         // the instance data of PageV5Base.
 
-        return CommonV5Base.GetAuthenticationDataAndCulture(HttpContext.Current);
+        return CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current);
     }
 
     /// <summary>

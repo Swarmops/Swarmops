@@ -58,7 +58,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.DbVersionRequired = 2; // Account reparenting
 
             this.EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
-
+            this.IncludedControlsUsed |= IncludedControl.SwitchButton | IncludedControl.JsonParameters;
         }
 
 
@@ -135,6 +135,20 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             return true;
         }
+
+
+        [WebMethod]
+        public static int CreateAccount(string accountType)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            FinancialAccountType accountTypeEnum = (FinancialAccountType) Enum.Parse(typeof (FinancialAccountType), accountType);
+
+            FinancialAccount account = FinancialAccount.Create(authData.CurrentOrganization,
+                Resources.Pages.Ledgers.AccountPlan_NewAccount, accountTypeEnum, null);
+
+            return account.Identity;
+        }
+
 
 
         [WebMethod]

@@ -97,6 +97,18 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.AssetsBankAccountMain]; }
         }
 
+        public FinancialAccount AssetsBitcoinCold
+        {
+            get { return this[OrganizationFinancialAccountType.AssetsBitcoinCold]; }
+            set { this[OrganizationFinancialAccountType.AssetsBitcoinCold] = value; }
+        }
+
+        public FinancialAccount AssetsBitcoinHot
+        {
+            get { return this[OrganizationFinancialAccountType.AssetsBitcoinHot]; }
+            set { this[OrganizationFinancialAccountType.AssetsBitcoinHot] = value; }
+        }
+
         public FinancialAccount AssetsOutboundInvoices
         {
             get { return this[OrganizationFinancialAccountType.AssetsOutboundInvoices]; }
@@ -110,11 +122,13 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount AssetsPaypal
         {
             get { return this[OrganizationFinancialAccountType.AssetsPaypal]; }
+            set { this[OrganizationFinancialAccountType.AssetsPaypal] = value; }
         }
 
-        public FinancialAccount AssetsVat
+        public FinancialAccount AssetsVatInbound
         {
-            get { return this[OrganizationFinancialAccountType.AssetsVat]; }
+            get { return this[OrganizationFinancialAccountType.AssetsVatInbound]; }
+            set { this[OrganizationFinancialAccountType.AssetsVatInbound] = value; }
         }
 
         public FinancialAccount CostsBankFees
@@ -125,6 +139,12 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount CostsAllocatedFunds
         {
             get { return this[OrganizationFinancialAccountType.CostsAllocatedFunds]; }
+        }
+
+        public FinancialAccount CostsCurrencyFluctuations
+        {
+            get { return this[OrganizationFinancialAccountType.CostsCurrencyFluctuations]; }
+            set { this[OrganizationFinancialAccountType.CostsCurrencyFluctuations] = value; }
         }
 
         public FinancialAccount CostsInfrastructure
@@ -167,9 +187,10 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.DebtsTax]; }
         }
 
-        public FinancialAccount DebtsVat
+        public FinancialAccount DebtsVatOutbound
         {
-            get { return this[OrganizationFinancialAccountType.DebtsVat]; }
+            get { return this[OrganizationFinancialAccountType.DebtsVatOutbound]; }
+            set { this[OrganizationFinancialAccountType.DebtsVatOutbound] = value; }
         }
 
         public FinancialAccount DebtsEarmarkedVirtualBanking
@@ -187,6 +208,12 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.DebtsSalary]; }
         }
 
+        public FinancialAccount IncomeCurrencyFluctuations
+        {
+            get { return this[OrganizationFinancialAccountType.IncomeCurrencyFluctuations]; }
+            set { this[OrganizationFinancialAccountType.IncomeCurrencyFluctuations] = value; }
+        }
+
         public FinancialAccount IncomeDonations
         {
             get { return this[OrganizationFinancialAccountType.IncomeDonations]; }
@@ -197,7 +224,7 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.IncomeSales]; }
         }
 
-        public FinancialAccount ConstsMiscalculations
+        public FinancialAccount CostsMiscalculations
         {
             get { return this[OrganizationFinancialAccountType.CostsMiscalculations]; }
         }

@@ -46,8 +46,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             string childrenString = GetAccountsRecurse(type, 0);
 
-            return "{\"id\":\"" + -((int) type) + "\",\"accountName\":\"" + JsonSanitize(localizedGroupName) +
-                   "\",\"state\":\"open\",\"children\":[" + childrenString + "]}";
+            string addString = String.Format("<img class=\\\"IconAdd\\\" accountType=\\\"{0}\\\" src=\\\"/Images/Icons/iconshock-add-16px.png\\\" />", type.ToString());
+
+            return "{\"id\":\"" + -((int) type) + "\",\"accountName\":\"<span class=\\\"SpanGroupName\\\">" + JsonSanitize(localizedGroupName) + "</span> (<a class=\\\"LinkAdd\\\" accountType=\\\"" + type.ToString() + "\\\" href=\\\"#\\\">" + JsonSanitize(Resources.Pages.Ledgers.AccountPlan_AddAccount) +
+                   "</a>)\",\"state\":\"open\",\"children\":[" + childrenString + "],\"action\":\"" + addString + "\"}";
         }
 
         private string GetAccountsRecurse (FinancialAccountType accountType, int rootNodeId)

@@ -67,15 +67,37 @@
 	list-style-type: none;
 	background: white;
 	border-radius: 8px;
-	box-shadow: 0px 1px 4px 1px #1C397E inset;
+	box-shadow: 0px 1px 4px 1px #1C397E inset, 0 1px 4px 1px #1c397e;
 	
 	overflow:auto;
+}
+
+.combo-panel > .combobox-item {
+    font-size: 20px;
+    padding: 0 8px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    font-weight: lighter;
+}
+
+.combo-panel > .combobox-item-selected {
+    font-weight: 400;
+    border-top: 1px solid #c8d9ff;
+    border-bottom: 1px solid #c8d9ff;
+    background: #e4ecff;
+}
+
+.combo-panel > .treenode-item-selected {
+    background: #e4ecff;
+}
+
+.combo-panel > ul.tree > li > div.tree-node:first-child {
+    padding-left: 4px;
 }
 
 div.combobox-item {
 	cursor: pointer;
 }
-
 
 /* TREE */
 
@@ -83,7 +105,7 @@ div.combobox-item {
 {
 }
 
-.tree-node-hover{
+.tree-node-hover, .tree-node-selected{
 	background: #E4ECFF;
 	box-shadow: 0px 0px 4px 1px #C8D9FF inset;
 }

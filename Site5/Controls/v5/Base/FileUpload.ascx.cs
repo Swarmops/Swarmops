@@ -33,6 +33,8 @@ namespace Swarmops.Controls.Base
             {
                 GuidString = this.HiddenGuid.Value;
             }
+
+            ((PageV5Base) this.Page).IncludedControlsUsed |= IncludedControl.FileUpload; // causes master to include necessary script
         }
 
         public string GuidString;

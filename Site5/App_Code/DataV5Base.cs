@@ -4,6 +4,7 @@ using System.Web;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
@@ -31,7 +32,18 @@ public class DataV5Base : System.Web.UI.Page
             string organizationIdentityString = identityTokens[1];
 
             this.CurrentUser = Person.FromIdentity(Int32.Parse(userIdentityString));
-            this.CurrentOrganization = Organization.FromIdentity(Int32.Parse(organizationIdentityString));
+            try
+            {
+                this.CurrentOrganization = Organization.FromIdentity(Int32.Parse(organizationIdentityString));
+            }
+            catch (ArgumentException)
+            {
+                if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+                {
+                    // It's possible this organization was deleted. Log on to Sandbox instead.
+                    this.CurrentOrganization = Organization.Sandbox;
+                }
+            }
         }
         else
         {
@@ -46,7 +58,7 @@ public class DataV5Base : System.Web.UI.Page
 
     protected override void OnPreInit(EventArgs e)
     {
-        CommonV5Base.CulturePreInit(Request);
+        CommonV5.CulturePreInit(Request);
 
  	    base.OnPreInit(e);
     }
@@ -139,7 +151,7 @@ public class DataV5Base : System.Web.UI.Page
 
     protected static AuthenticationData GetAuthenticationDataAndCulture()
     {
-        return CommonV5Base.GetAuthenticationDataAndCulture(HttpContext.Current);
+        return CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current);
     }
 
     protected static string JsonSanitize (string input)

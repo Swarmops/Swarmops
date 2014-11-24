@@ -4,6 +4,7 @@ using System.Web;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
@@ -33,8 +34,19 @@ public class ControlV5Base : System.Web.UI.UserControl
         currentUserId = Convert.ToInt32(userIdentityString);
         currentOrganizationId = Convert.ToInt32(organizationIdentityString);
         _currentUser = Person.FromIdentity(currentUserId);
-        _currentOrganization = Organization.FromIdentity(currentOrganizationId);
         _authority = _currentUser.GetAuthority();
+        try
+        {
+            _currentOrganization = Organization.FromIdentity(currentOrganizationId);
+        }
+        catch (ArgumentException)
+        {
+            if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+            {
+                // It's possible this organization was deleted. Log on to Sandbox instead.
+                _currentOrganization = Organization.Sandbox;
+            }
+        }
 
         base.OnLoad(e);
     }

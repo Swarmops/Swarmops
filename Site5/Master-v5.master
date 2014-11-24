@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Master-v5.master.cs" Inherits="Swarmops.MasterV5" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ExternalScripts" Src="~/Controls/v5/UI/ExternalScripts.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="IncludedScripts" Src="~/Controls/v5/UI/IncludedScripts.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="MainMenu" Src="~/Controls/v5/Base/MainMenu.ascx" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -39,6 +40,8 @@
     <link href="/Style/v5-easyui-elements.css" rel="stylesheet" type="text/css" />
 
     <!-- additional scripts etc from individual pages -->
+    <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />
+
     <asp:ContentPlaceHolder id="PlaceHolderHead" runat="server" />
     <asp:Literal ID="LiteralCrowdinScript" runat="server" Text="" />
 

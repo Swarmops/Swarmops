@@ -103,7 +103,13 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().SetFinancialAccountBudgetMonthly(this.Identity, year, month, amountCents);
         }
 
-        public static FinancialAccount Create (int organizationId, string name, FinancialAccountType accountType, int parentFinancialAccountId)
+        public static FinancialAccount Create(Organization organization, string newAccountName,
+            FinancialAccountType accountType, FinancialAccount parentAccount)
+        {
+            return Create(organization.Identity, newAccountName, accountType, parentAccount == null? 0: parentAccount.Identity);
+        }
+
+        protected static FinancialAccount Create (int organizationId, string name, FinancialAccountType accountType, int parentFinancialAccountId)
         {
             int accountId = SwarmDb.GetDatabaseForWriting().CreateFinancialAccount(organizationId, name, accountType, parentFinancialAccountId);
             return FromIdentityAggressive(accountId);

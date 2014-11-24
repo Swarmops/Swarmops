@@ -534,7 +534,7 @@ namespace Swarmops
 
             //PirateWeb.Utility.Special.Sweden.SupportDatabase.CloseDelayWarnings();
 
-            NewsletterChecker.Run();
+            // NewsletterChecker.Run();
 		}
 
 
@@ -1155,7 +1155,7 @@ namespace Swarmops
 
 		private static void RunForumCheck()
 		{
-			SwedishForumMemberCheck.Run();
+			// SwedishForumMemberCheck.Run();
 		}
 
 		private static void RunRepaidTest()

@@ -24,6 +24,7 @@ public class MasterV5Base : System.Web.UI.MasterPage
     protected Organization _currentOrganization = null;
     
     public EasyUIControl EasyUIControlsUsed { get; set; }  // these are set by each page, and called by Master to render in ExternalScripts control
+    public IncludedControl IncludedControlsUsed { get; set; }  // as above with IncludedScripts control
     // ReSharper restore InconsistentNaming
 
     public DateTime PermissionCacheTimestamp

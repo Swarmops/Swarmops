@@ -550,4 +550,12 @@
     <value>&lt;br/&gt;&lt;p&gt;The payments file was &lt;strong&gt;successfully imported.&lt;/strong&gt; {1:N0} payment(s) in {0:N0} group(s), totalling {3} {2:N2}, were imported.&lt;/p&gt;&lt;p&gt;(There were also {5:N0} duplicate payment(s) in {4:N0} group(s).)&lt;/p&gt;</value>
     <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
   </data>
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>add account</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>New Account</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
 </root>

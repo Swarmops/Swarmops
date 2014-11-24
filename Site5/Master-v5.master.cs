@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 using Membership = Swarmops.Logic.Swarm.Membership;
 
@@ -32,7 +33,18 @@ namespace Swarmops
 
             _currentUser = Person.FromIdentity(currentUserId);
             _authority = _currentUser.GetAuthority();
-            _currentOrganization = Organization.FromIdentity(currentOrganizationId);
+            try
+            {
+                _currentOrganization = Organization.FromIdentity(currentOrganizationId);
+            }
+            catch (ArgumentException)
+            {
+                if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+                {
+                    // It's possible this organization was deleted. Log on to Sandbox instead.
+                    _currentOrganization = Organization.Sandbox;
+                }
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -48,6 +60,7 @@ namespace Swarmops
             this.Page.Title = "Swarmops - " + this.CurrentPageTitle;
 
             this.ExternalScriptEasyUI.Controls = EasyUIControlsUsed.ToString();
+            this.IncludedScripts.Controls = IncludedControlsUsed.ToString();
 
             this.LiteralSidebarInfo.Text = this.CurrentPageInfoBoxLiteral;
 
