@@ -15,15 +15,12 @@ svn update
 
 if [ "$1" == "release" ]; then
   DROPFOLDER=release
-  BUILDNUMLEN=6
   echo "Packaging FINISHED RELEASE for super-stable deployments."
 elif [ "$1" == "sprint" ]; then
   DROPFOLDER=sprint
-  BUILDNUMLEN=6
   echo "Packaging END-OF-SPRINT for normal deployments."
 elif [ "$1" == "" ]; then
   DROPFOLDER=internal
-  BUILDNUMLEN=8
   echo "internal" > ../lastbuild/swarmops/internal/frontend/SprintName.txt
   echo "Packaging internal test build."
 else
@@ -35,7 +32,7 @@ fi
 BUILDID=$(cat ../lastbuild/swarmops/$DROPFOLDER/BuildIdentity.txt | tr -d ' \r')
 COMMITID=$(cat ../lastbuild/swarmops/$DROPFOLDER/CommitIdentity.txt | tr -d ' \r')
 
-BUILDID=$(echo $BUILDID | cut -c 1-$BUILDNUMLEN)$(echo $COMMITID | cut -c 1-7)
+BUILDID=$(echo $BUILDID | cut -d '.' -f 1-3).$(echo $COMMITID | cut -c 1-7)
 
 echo ""
 echo "Packaging Swarmops, branch '$DROPFOLDER', build $BUILDID."
@@ -59,8 +56,8 @@ if [ "$DROPFOLDER" == "internal" ]; then
   echo "" >> deploymsg.txt
   echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at http://dev.swarmops.com/ as usual. Last 3 commits listed above." >> deploymsg.txt
 else
-  PACKAGELABEL="$DROPFOLDER $(cat ../lastbuild/swarmops/$DROPFOLDER/frontend/SprintName.txt | tr -d '\n')"
-  echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!" > deploymsg.txt
+  PACKAGELABEL="$DROPFOLDER $(cat ../lastbuild/swarmops/$DROPFOLDER/frontend/SprintName.txt | tr -d '\n\r')"
+  echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!\r\n" > deploymsg.txt
 fi
 
 # TODO: Add build messages to deploy message, at least for internal build
