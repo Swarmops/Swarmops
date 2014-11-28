@@ -790,4 +790,22 @@
   <data name="Sidebar_Help" xml:space="preserve">
     <value>Help</value>
   </data>
+  <data name="Title_Contributor_Corps" xml:space="preserve">
+    <value>Contributor Corps</value>
+  </data>
+  <data name="Title_Contributor_Female" xml:space="preserve">
+    <value>Contributor</value>
+  </data>
+  <data name="Title_Contributor_Generic" xml:space="preserve">
+    <value>Contributor</value>
+  </data>
+  <data name="Title_Contributor_Male" xml:space="preserve">
+    <value>Contributor</value>
+  </data>
+  <data name="Title_Contributor_Plural" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="Title_Contributor_Ship" xml:space="preserve">
+    <value>Contributorship</value>
+  </data>
 </root>

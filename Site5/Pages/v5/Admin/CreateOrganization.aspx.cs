@@ -27,7 +27,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         private readonly string[] _personLabels =
         {
-            "Activist", "Person", "Sailor", "Regular", "Ambassador", "Salesperson",
+            "Activist", "Person", "Sailor", "Regular", "Ambassador", "Salesperson", "Contributor",
             "Member", "Operative", "Employee", "Customer", "Conscript", "Resident", "Citizen", "Agent"
         };
 

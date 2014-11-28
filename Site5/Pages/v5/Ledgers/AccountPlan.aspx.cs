@@ -103,7 +103,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 result.Balance = (-accountTree.GetDeltaCents(new DateTime(year, 1, 1), new DateTime(year + 1, 1, 1)) / 100L).ToString("N0");
             }
-            result.CurrencyCode = account.Organization.Currency.Code;
+            result.CurrencyCode = account.Organization.Currency.DisplayCode;
 
             return result;
         }
@@ -124,7 +124,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (checkOpenedYear && ledgersClosedUntilYear > 0 && account.OpenedYear <= ledgersClosedUntilYear)
                 {
-                    // This require breaking the account, which we can't do yet (in this sprint, will come next sprint).
+                    // This requires breaking the account, which we can't do yet (in this sprint, will come next sprint).
                     return false;
                 }
             }

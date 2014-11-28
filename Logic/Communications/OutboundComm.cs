@@ -96,7 +96,7 @@ namespace Swarmops.Logic.Communications
         public static OutboundComm CreateNotificationAttestationNeeded(FinancialAccount budget, Person concernedPerson, string supplier, double amountRequested, string purpose, NotificationResource notification)
         {
             NotificationPayload payload = new NotificationPayload(notification.ToString());
-            payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.Code;
+            payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.DisplayCode;
             payload.Strings[NotificationString.OrganizationName] = budget.Organization.Name;
             payload.Strings[NotificationString.BudgetAmountFloat] = amountRequested.ToString(CultureInfo.InvariantCulture);
             payload.Strings[NotificationString.RequestPurpose] = purpose;
@@ -129,7 +129,7 @@ namespace Swarmops.Logic.Communications
         public static OutboundComm CreateNotificationFinancialValidationNeeded (Organization organization, double amountRequested, NotificationResource notification)
         {
             NotificationPayload payload = new NotificationPayload(notification.ToString());
-            payload.Strings[NotificationString.CurrencyCode] = organization.Currency.Code;
+            payload.Strings[NotificationString.CurrencyCode] = organization.Currency.DisplayCode;
             payload.Strings[NotificationString.OrganizationName] = organization.Name;
             payload.Strings[NotificationString.BudgetAmountFloat] = amountRequested.ToString(CultureInfo.InvariantCulture);
 
@@ -155,7 +155,7 @@ namespace Swarmops.Logic.Communications
         public static OutboundComm CreateNotificationOfFinancialValidation(FinancialAccount budget, Person concernedPerson, double amountRequested, string purpose, NotificationResource notification)
         {
             NotificationPayload payload = new NotificationPayload(notification.ToString());
-            payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.Code;
+            payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.DisplayCode;
             payload.Strings[NotificationString.OrganizationName] = budget.Organization.Name;
             payload.Strings[NotificationString.BudgetAmountFloat] = amountRequested.ToString(CultureInfo.InvariantCulture);
             payload.Strings[NotificationString.RequestPurpose] = purpose;
