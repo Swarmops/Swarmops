@@ -175,6 +175,21 @@
                 </div>
             </div>
 
+            <h2 class="blue">Report Bugs<span class="arrow"></span></h2>
+    
+            <div class="box">
+                <div class="content">
+                    <div class="link-row-encaps" onclick="var win=window.open('https://github.com/Swarmops/Swarmops/issues/new', '_blank'); win.focus();" >
+                        <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-warning-16px.png')"></div>
+                        Report a Swarmops bug (on Github)
+                    </div>
+                </div>
+            </div>
+            
+
+            
+            
+
             <asp:ContentPlaceHolder ID="PlaceHolderSide" runat="server" />
     
             <h2 class="orange"><asp:Label ID="LabelSidebarTodo" runat="server" /><span class="arrow"></span></h2>
