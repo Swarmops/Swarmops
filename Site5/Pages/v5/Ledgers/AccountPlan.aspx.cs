@@ -25,7 +25,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 // Localize
 
                 this.PageIcon = "iconshock-openbook";
-                this.PageTitle = Resources.Pages.Ledgers.AccountPlan_PageTitle;
+                this.BoxTitle.Text = Resources.Pages.Ledgers.AccountPlan_PageTitle;
                 this.InfoBoxLiteral = Resources.Pages.Ledgers.AccountPlan_Info;
                 this.LiteralExpensesBudgetsAreNegative.Text = Resources.Pages.Ledgers.AccountPlan_ExpensesBudgetsAreNegaive;
                 this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.AccountPlan_Header_AccountName;

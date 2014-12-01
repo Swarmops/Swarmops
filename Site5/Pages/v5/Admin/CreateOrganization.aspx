@@ -17,6 +17,7 @@
 
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextOrganizationName" />&#8203;<br/>
         <Swarmops5:DropDown runat="server" ID="DropCreateChild" />&#8203;<br/>

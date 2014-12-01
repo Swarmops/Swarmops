@@ -466,7 +466,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label ID="LabelContentHeader" runat="server" /></h2>
+    <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
     <table id="tableAccountPlan" title="" class="easyui-treegrid" style="width:680px;height:600px"  
         url="Json-AccountPlanData.aspx"
         rownumbers="false"

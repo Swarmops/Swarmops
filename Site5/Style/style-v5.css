@@ -182,67 +182,6 @@ img
 	font-weight: normal;
 }
 
-.RadMenu_WebBlue .rmRootGroup
-{
-	border: none !important;
-	background-image: none !important;
-	text-shadow: 0px 1px 1px #666 !important;
-}
-
-
-.RadMenu_WebBlue a.rmLink, .RadMenu_WebBlue .rmText, .RadMenu_WebBlue .rmLeftArrow, .RadMenu_WebBlue .rmRightArrow, .RadMenu_WebBlue .rmTopArrow, .RadMenu_WebBlue .rmBottomArrow {
-	background-image: url('/Style/Images/activizr-webblue-orange.png') !important;
-	background-color: transparent;
-}
-
-
-
-.RadMenu_WebBlue .rmRootGroup, .RadMenu_WebBlue a.rmLink, .RadMenu_WebBlue .rmText, .RadMenu_WebBlue .rmLeftArrow, .RadMenu_WebBlue .rmRightArrow, .RadMenu_WebBlue .rmTopArrow, .RadMenu_WebBlue .rmBottomArrow {
-	background-color: transparent !important;
-	border: none;
-	text-shadow: none;
-	font-family: Ubuntu, Liberation Sans, Arial, Helvetica, Sans-Serif !important;
-}
-
-
-.RadMenu_WebBlue a.rmLink:hover,
-.RadMenu_WebBlue a.rmFocused,
-.RadMenu_WebBlue a.rmSelected,
-.RadMenu_WebBlue a.rmExpanded,
-.RadMenu_WebBlue a.rmExpanded:hover
-
-{
-	color: inherit !important;
-}
-
-
-.RadMenu_WebBlue, .RadMenu_WebBlue a.rmLink {
-	font: 14px/23px Ubuntu !important;
-	font-weight: inherit !important;
-}
-
-
-.RadTreeList_WebBlue .rtlHeader {
-	background: #476EC7 0 -2300px repeat-x url(none) !important;
-}
-
-
-.RadTreeList_WebBlue .rtlA {
-	background-color: #F5F7FF !important;
-}
-
-.RadTreeList_WebBlue .rtlTable {
-	font: 12px/16px Ubuntu,sans-serif !important;
-}
-
-
-.RadTreeList .rtlHeader th {
-	font-weight: 500 !important;
-}
-
-.RadTreeList {
-	border-radius: 2px;
-}
 
 /* BARS AND BOXEN */
 
@@ -263,6 +202,8 @@ img
 {
 	width: 100%;
 	clear: both;
+
+    margin-top: 20px;
 	
 	background-color: #FFF;
 	-moz-border-radius: 5px;

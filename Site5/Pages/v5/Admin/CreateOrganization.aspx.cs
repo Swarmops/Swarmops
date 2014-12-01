@@ -13,7 +13,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageTitle = Resources.Pages.Admin.CreateOrganization_PageTitle;
+            this.BoxTitle.Text = Resources.Pages.Admin.CreateOrganization_PageTitle;
             this.PageIcon = "iconshock-organization-add";
             this.InfoBoxLiteral = Resources.Pages.Admin.CreateOrganization_Info;
             this.DbVersionRequired = 2; // for FinancialAccounts.Active field in Create function
