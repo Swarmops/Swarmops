@@ -65,7 +65,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 localizedPersonLabels.Add(localizedPersonLabel + "|" + personLabel);
             }
 
-            localizedPersonLabels.Sort();
+            localizedPersonLabels.Sort();  // Sorts _localized_
 
             foreach (string localizedPersonLabel in localizedPersonLabels)
             {
