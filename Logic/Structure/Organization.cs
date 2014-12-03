@@ -305,7 +305,14 @@ namespace Swarmops.Logic.Structure
         /// </summary>
         public Country DefaultCountry
         {
-            get { return Country.FromIdentity(DefaultCountryId); }
+            get
+            {
+                if (DefaultCountryId == 0)
+                {
+                    return null;
+                }
+                return Country.FromIdentity(DefaultCountryId);
+            }
         }
 
         /// <summary>

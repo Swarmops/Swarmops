@@ -24,5 +24,12 @@ namespace Swarmops.Frontend.Controls.v5.Base
             get { return this.DropControl.SelectedValue; }
             set { this.DropControl.SelectedValue = value; }
         }
+
+        public string OnClientChange { get; set; }
+
+        public string ClientControlID
+        {
+            get { return this.DropControl.ClientID; }
+        }
     }
 }

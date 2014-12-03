@@ -808,4 +808,20 @@
   <data name="Title_Contributor_Ship" xml:space="preserve">
     <value>Contributorship</value>
   </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Female</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Male</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_UnknownUndisclosed" xml:space="preserve">
+    <value>Unknown or Undisclosed</value>
+    <comment>Used for gender et al</comment>
+  </data>
+  <data name="Global_DateFormatShort" xml:space="preserve">
+    <value>MM/DD/YYYY</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  </data>
 </root>
