@@ -93,7 +93,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            this.BoxTitle.Text = Resources.Pages.Financial.FileExpenseClaim_PageTitle;
+            this.BoxTitle.Text = this.PageTitle = Resources.Pages.Financial.FileExpenseClaim_PageTitle;
             this.PageIcon = "iconshock-moneyback";
             this.InfoBoxLiteral = Resources.Pages.Financial.FileExpenseClaim_Info;
 

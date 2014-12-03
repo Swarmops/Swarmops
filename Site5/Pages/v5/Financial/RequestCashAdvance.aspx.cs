@@ -15,7 +15,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            this.BoxTitle.Text = Resources.Pages.Financial.RequestCashAdvance_PageTitle;
+            this.BoxTitle.Text = this.PageTitle = Resources.Pages.Financial.RequestCashAdvance_PageTitle;
             this.PageIcon = "iconshock-walletmoney";
             this.InfoBoxLiteral = Resources.Pages.Financial.RequestCashAdvance_Info;
 

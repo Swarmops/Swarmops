@@ -87,7 +87,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            this.BoxTitle.Text = Resources.Pages.Financial.CreateInboundInvoice_PageTitle;
+            this.BoxTitle.Text = this.PageTitle = Resources.Pages.Financial.CreateInboundInvoice_PageTitle;
             this.PageIcon = "iconshock-invoice";
             this.InfoBoxLiteral = Resources.Pages.Financial.CreateInboundInvoice_Info;
 
