@@ -225,9 +225,9 @@ namespace Swarmops.Database
                         {
                             result.Add(ReadCityFromDataReader(reader));
                         }
-                        return result.ToArray();
                     }
-                    throw new ArgumentException("Cities not in place yet for country: " + countryCode);
+
+                    return result.ToArray();
                 }
             }
         }
