@@ -24,11 +24,11 @@ namespace Swarmops.Frontend.Pages.Swarm
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages.People.ListFindPeople_Title;
-            this.InfoBoxLiteral = Resources.Pages.People.ListFindPeople_Info;
+            this.PageTitle = Resources.Pages.Swarm.ListFindPeople_Title;
+            this.InfoBoxLiteral = Resources.Pages.Swarm.ListFindPeople_Info;
             this.LabelGeography.Text = Resources.Global.Global_Geography;
-            this.LabelNamePattern.Text = Resources.Pages.People.ListFindPeople_NamePattern;
-            this.LabelMatchingPeopleInX.Text = String.Format(Resources.Pages.People.ListFindPeople_MatchingPeopleInX,
+            this.LabelNamePattern.Text = Resources.Pages.Swarm.ListFindPeople_NamePattern;
+            this.LabelMatchingPeopleInX.Text = String.Format(Resources.Pages.Swarm.ListFindPeople_MatchingPeopleInX,
                 this.CurrentOrganization.Name);
 
             this.LabelGridHeaderAction.Text = Resources.Global.Global_Action;

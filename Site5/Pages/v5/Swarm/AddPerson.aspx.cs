@@ -4,7 +4,7 @@ using System.Web.UI.WebControls;
 using Resources;
 using Resources.Pages;
 using Swarmops.Logic.Structure;
-
+using Swarmops.Logic.Swarm;
 
 // ReSharper disable once CheckNamespace
 
@@ -63,7 +63,7 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
         {
             // TODO
 
-            this.InfoBoxLiteral = People.AddPerson_Info;
+            this.InfoBoxLiteral = Resources.Pages.Swarm.AddPerson_Info;
 
             this.TextDateOfBirth.Attributes["placeholder"] = Global.Global_DateFormatShort;
             this.TextName.Attributes["placeholder"] = "Joe Smith";
