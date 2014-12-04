@@ -33,6 +33,7 @@ namespace Swarmops.Frontend.Automation
             List<GeographyData> geographyArray = new List<GeographyData>();
             PostalCodes codes = PostalCodes.ForCountry(countryCode);
             Country country = Country.FromCode(countryCode);
+            int maxPostalCodeLength = 0;
 
             foreach (PostalCode code in codes)
             {
@@ -41,6 +42,11 @@ namespace Swarmops.Frontend.Automation
                     Code = code.PostalCode, 
                     CityId = code.CityId
                 };
+
+                if (code.PostalCode.Length > maxPostalCodeLength)
+                {
+                    maxPostalCodeLength = code.PostalCode.Length;
+                }
 
                 postalCodeArray.Add(dataPoint);
             }
@@ -75,7 +81,8 @@ namespace Swarmops.Frontend.Automation
                 PostalCodes = postalCodeArray.ToArray(),
                 CityNames = cityArray.ToArray(),
                 Geographies = geographyArray.ToArray(),
-                PostalCodeLength = country.PostalCodeLength
+                PostalCodeLength = country.PostalCodeLength,
+                PostalCodeLengthCheck = maxPostalCodeLength
             };
 
             return result;
@@ -118,4 +125,5 @@ public class PostalCodesCities
     public CityData[] CityNames { get; set; }
     public GeographyData[] Geographies { get; set; }
     public int PostalCodeLength;
+    public int PostalCodeLengthCheck;
 }

@@ -61,7 +61,14 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
         {
             // TODO
 
+            this.InfoBoxLiteral = "<strong>Work in progress</strong>";
+
             this.TextDateOfBirth.Attributes["placeholder"] = Resources.Global.Global_DateFormatShort;
+            this.TextName.Attributes["placeholder"] = "Joe Smith";
+            this.TextMail.Attributes["placeholder"] = "joe@example.com";
+            this.TextPhone.Attributes["placeholder"] = "+1 263 151 1341";
+            this.TextStreet1.Attributes["placeholder"] = "78 West Avenue";
+            this.TextPostal.Attributes["placeholder"] = "123456";
         }
     }
 }

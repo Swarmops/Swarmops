@@ -117,29 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Country_AC" xml:space="preserve">
-    <value>Ascension Island</value>
-  </data>
-  <data name="Country_AD" xml:space="preserve">
-    <value>Andorra</value>
-  </data>
-  <data name="Country_AT" xml:space="preserve">
-    <value>Austria</value>
-  </data>
-  <data name="Country_AU" xml:space="preserve">
-    <value>Australia</value>
-  </data>
-  <data name="Country_BR" xml:space="preserve">
-    <value>Brazil</value>
-  </data>
-  <data name="Country_DE" xml:space="preserve">
-    <value>Germany</value>
-  </data>
   <data name="Country_DK" xml:space="preserve">
     <value>Denmark</value>
-  </data>
-  <data name="Country_ES" xml:space="preserve">
-    <value>Spain</value>
   </data>
   <data name="Country_FI" xml:space="preserve">
     <value>Finland</value>
@@ -150,23 +129,8 @@
   <data name="Country_NO" xml:space="preserve">
     <value>Norway</value>
   </data>
-  <data name="Country_PL" xml:space="preserve">
-    <value>Poland</value>
-  </data>
   <data name="Country_SE" xml:space="preserve">
     <value>Sweden</value>
-  </data>
-  <data name="Country_SK" xml:space="preserve">
-    <value>Slovak Republic</value>
-  </data>
-  <data name="Country_SM" xml:space="preserve">
-    <value>San Marino</value>
-  </data>
-  <data name="Country_UK" xml:space="preserve">
-    <value>United Kingdom</value>
-  </data>
-  <data name="Country_US" xml:space="preserve">
-    <value>United States</value>
   </data>
   <data name="EasternEurope" xml:space="preserve">
     <value>Eastern Europe</value>

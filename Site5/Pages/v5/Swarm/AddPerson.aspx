@@ -8,32 +8,68 @@
 
             $('#<%=this.TextPostal.ClientID%>').on('input', function() {
                 if (CheckPostalCode()) {
-                    $('#<%=this.TextDateOfBirth.ClientID%>').focus();
+                    if ($('#<%=this.TextPostal.ClientID%>').val().length == postalCodeLength) {
+                        $('#<%=this.TextDateOfBirth.ClientID%>').focus();
+                    }
                 }
+            });
+            $('#<%=this.TextCity.ClientID%>').on('input', function () {
+                CheckPostalCity();
             });
         });
 
+        function CheckPostalCity() {
+            var currentCity = $('#<%=this.TextCity.ClientID%>').val().toLowerCase();
+            if (currentCity in cityNameLookup) {
+                var geoId = cityNameLookup[currentCity];
+                $('#spanDetectedGeo').text(geographyIdLookup[geoId]);
+            } else {
+                $('#spanDetectedGeo').text('');
+            }
+        }
+
         function CheckPostalCode() {
-            var currentPostalCode = $('#<%=this.TextPostal.ClientID%>').val();
+            var currentPostalCode = $('#<%=this.TextPostal.ClientID%>').val().toLowerCase();
+            if (currentPostalCode.length > postalCodeLengthCheck) {
+                currentPostalCode = currentPostalCode.substring(0, postalCodeLengthCheck);
+            }
             if (currentPostalCode in postalCodeLookup) {
                 var cityId = postalCodeLookup[currentPostalCode];
-                $('#<%=this.TextCity.ClientID%>').attr("disabled", "disabled").val(cityNameLookup[cityId].Name);
-                $('#spanDetectedGeo').text(geographyNameLookup[cityNameLookup[cityId].GeoId]);
+                $('#<%=this.TextCity.ClientID%>').attr("disabled", "disabled").val(cityIdLookup[cityId].Name);
+                $('#spanDetectedGeo').text(geographyIdLookup[cityIdLookup[cityId].GeoId]);
+                postalCodeIdentified = true;
                 return true;
-            } else {
+            } else if (postalCodeIdentified) {
                 $('#<%=this.TextCity.ClientID%>').removeAttr("disabled").val('');
                 $('#spanDetectedGeo').text('');
+                postalCodeIdentified = false;
             }
             return false;
         }
 
         function AnimatePostalCodeLength() {
-            var postalTargetLength = postalCodeLength * 15 - 5;
-            var cityTargetLength = 235 - 15 * postalCodeLength;
+            if (postalCodeLength > 0) {
+                var postalTargetLength = postalCodeLength * 15 - 5;
+                var cityTargetLength = 235 - 15 * postalCodeLength;
 
-            $('#<%=this.TextPostal.ClientID%>').animate({ width: postalTargetLength + "px" });
-            $('#<%=this.TextCity.ClientID%>').animate({ width: cityTargetLength + "px" });
+                $('#<%=this.TextPostal.ClientID%>').animate({ width: postalTargetLength + "px" });
+                $('#<%=this.TextCity.ClientID%>').animate({ width: cityTargetLength + "px" });
 
+                if (!postalCodeVisible) {
+                    setTimeout(function() {
+                        $('#<%=this.TextPostal.ClientID%>').fadeIn(200);
+                    }, 100);
+                    postalCodeVisible = true;
+                }
+
+            } else if (postalCodeVisible) {
+                // Remove postal code altogether, if visible now
+
+                $('#<%=this.TextPostal.ClientID%>').animate({ width: 0 }, 200).fadeOut(100);
+                $('#<%=this.TextCity.ClientID%>').animate({ width: "255px" }, 600);
+
+                postalCodeVisible = false;
+            }
         }
 
         function UpdatePostalPrefix(oldValue, newValue) {
@@ -54,20 +90,24 @@
                 dataType: "json",
                 success: function (msg) {
                     postalCodeLookup = {};
+                    cityIdLookup = {};
                     cityNameLookup = {};
-                    geographyNameLookup = {};
+                    geographyIdLookup = {};
 
                     postalCodeLength = msg.d.PostalCodeLength;
+                    postalCodeLengthCheck = msg.d.PostalCodeLengthCheck;
+                    $('#<%=TextPostal.ClientID%>').attr('maxlength', postalCodeLength);
                     msg.d.PostalCodes.forEach(function (element, index, array) {
-                        postalCodeLookup[element.Code] = element.CityId;
+                        postalCodeLookup[element.Code.toLowerCase()] = element.CityId;
                     });
                     msg.d.CityNames.forEach(function(element, index, array) {
-                        cityNameLookup[element.Id] = {};
-                        cityNameLookup[element.Id].Name = element.Name;
-                        cityNameLookup[element.Id].GeoId = element.GeographyId;
+                        cityIdLookup[element.Id] = {};
+                        cityIdLookup[element.Id].Name = element.Name;
+                        cityIdLookup[element.Id].GeoId = element.GeographyId;
+                        cityNameLookup[element.Name.toLowerCase()] = element.GeographyId;
                     });
                     msg.d.Geographies.forEach(function(element, index, array) {
-                        geographyNameLookup[element.Id] = element.Name;
+                        geographyIdLookup[element.Id] = element.Name;
                     });
 
                     AnimatePostalCodeLength();
@@ -75,17 +115,22 @@
                 },
                 error: function (msg) {
                     console.log(msg);
-                    geographyNameLookup = {};
+                    geographyIdLookup = {};
                     postalCodeLookup = {};
+                    cityIdLookup = {};
                     cityNameLookup = {};
                 }
             });
         }
 
         var postalCodeLookup = {};
+        var cityIdLookup = {};
         var cityNameLookup = {};
-        var geographyNameLookup = {};
+        var geographyIdLookup = {};
         var postalCodeLength = 0;
+        var postalCodeLengthCheck = 0;
+        var postalCodeVisible = true;
+        var postalCodeIdentified = false;
 
     </script>
 </asp:Content>
@@ -109,14 +154,14 @@
         <asp:Label ID="LabelExpiry" runat="server" Text="YYYY-MM-DD" />&#8203;<br/>
     </div>
     <div class="entryLabels">
-        Name (First Last)<br />
+        Name<br />
         Country<br />
         Mail<br />
         Phone<br />
         <h2>ADDRESS</h2>
         Street 1<br />
         Street 2<br />
-        Postal Code, City<br />
+        <span id="spanLabelPostal">Postal Code, </span>City<br />
         <span id="SpanGeoDetected">Geography detected</span><span id="SpanGeoSelect" style="display:none">Select Geograhpy</span><br />
         <h2>STATISTICAL DATA</h2>
         Date of Birth<br />
