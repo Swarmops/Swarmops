@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace Swarmops.Basic
 {
     public class Strings
@@ -6,14 +8,11 @@ namespace Swarmops.Basic
         {
             get
             {
-                if (System.IO.Path.DirectorySeparatorChar == '/')
+                if (Path.DirectorySeparatorChar == '/')
                 {
                     return "PirateWeb";
                 }
-                else
-                {
-                    return "PirateWeb-W";
-                }
+                return "PirateWeb-W";
             }
         }
 

@@ -5,75 +5,29 @@ using Swarmops.Logic.Structure;
 namespace Swarmops.Logic.Financial
 {
     /// <summary>
-    /// Accessors for special accounts for a particular organization.
+    ///     Accessors for special accounts for a particular organization.
     /// </summary>
     public class OrganizationFinancialAccounts
     {
-        public static void PrimePiratpartietSE()  // One-off. Once this has been run once, delete it.
-        {
-            /* -- this was a one-time one-off
-            if (SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(1, OrganizationFinancialAccountType.AssetsBankAccountMain) != 0)
-            {
-                return;
-            }
+        private readonly int _organizationId;
 
-            if (!Organization.PPSE.Name.StartsWith("Piratpartiet"))
-            {
-                return; // not PP installation
-            }
-
-            OrganizationFinancialAccounts organizationAccounts = new OrganizationFinancialAccounts(1);
-
-            // HACK HACK HACK
-
-            organizationAccounts[OrganizationFinancialAccountType.CostsBankFees] = FinancialAccount.FromIdentity(26); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsBankAccountMain] = FinancialAccount.FromIdentity(1); //
-            organizationAccounts[OrganizationFinancialAccountType.IncomeDonations] = FinancialAccount.FromIdentity(4); //
-            organizationAccounts[OrganizationFinancialAccountType.IncomeGeneral] = FinancialAccount.FromIdentity(131); // 
-            organizationAccounts[OrganizationFinancialAccountType.IncomeSales] = FinancialAccount.FromIdentity(5); //
-            organizationAccounts[OrganizationFinancialAccountType.CostsInfrastructure] = FinancialAccount.FromIdentity(21); //
-            organizationAccounts[OrganizationFinancialAccountType.CostsLocalDonationTransfers] = FinancialAccount.FromIdentity(88); //
-            organizationAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] = FinancialAccount.FromIdentity(124); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsExpenseClaims] = FinancialAccount.FromIdentity(3); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsSalary] = FinancialAccount.FromIdentity(25); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsTax] = FinancialAccount.FromIdentity(86); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsInboundInvoices] = FinancialAccount.FromIdentity(25); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsOther] = FinancialAccount.FromIdentity(25); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsOutboundInvoices] = FinancialAccount.FromIdentity(28); // 
-            organizationAccounts[OrganizationFinancialAccountType.DebtsEquity] = FinancialAccount.FromIdentity(96); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsPaypal] = FinancialAccount.FromIdentity(2); //
-            organizationAccounts[OrganizationFinancialAccountType.CostsYearlyResult] = FinancialAccount.FromIdentity(97); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsOutstandingCashAdvances] = FinancialAccount.FromIdentity(156); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsVat] = FinancialAccount.FromIdentity(86); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsVat] = FinancialAccount.FromIdentity(86); //
-
-            FinancialAccount.FromIdentity(80).IsConferenceParent = true;
-            FinancialAccount.FromIdentity(27).IsConferenceParent = true;
-
-            Organization.PPSE.IsEconomyEnabled = true; // Kill this function in base, too
-             */
-        }
-
-        public OrganizationFinancialAccounts (int organizationId)
+        public OrganizationFinancialAccounts(int organizationId)
         {
             this._organizationId = organizationId;
         }
 
-        public OrganizationFinancialAccounts (Organization organization)
-            : this (organization.Identity)
+        public OrganizationFinancialAccounts(Organization organization)
+            : this(organization.Identity)
         {
-            
         }
-
-        private readonly int _organizationId;
 
 
         public FinancialAccount this[OrganizationFinancialAccountType accountType]
         {
             get
             {
-                int accountId = SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(_organizationId,
-                                                                                                  accountType);
+                int accountId = SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(this._organizationId,
+                    accountType);
 
                 if (accountId == 0)
                 {
@@ -84,8 +38,8 @@ namespace Swarmops.Logic.Financial
             }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetOrganizationFinancialAccountId(_organizationId, accountType,
-                                                                                 value.Identity);
+                SwarmDb.GetDatabaseForWriting().SetOrganizationFinancialAccountId(this._organizationId, accountType,
+                    value.Identity);
             }
         }
 
@@ -239,7 +193,7 @@ namespace Swarmops.Logic.Financial
 
                 FinancialAccounts costAccounts =
                     FinancialAccounts.ForOrganization(Organization.FromIdentity(this._organizationId),
-                                                      FinancialAccountType.Cost);
+                        FinancialAccountType.Cost);
 
                 foreach (FinancialAccount account in costAccounts)
                 {
@@ -256,20 +210,20 @@ namespace Swarmops.Logic.Financial
         public FinancialAccounts ExpensableBudgets
         {
             // TODO: This needs to return a tree, not a flat list.
-
             get
             {
                 FinancialAccounts result = new FinancialAccounts();
 
-                int yearlyResultId = this.CostsYearlyResult.Identity;
+                int yearlyResultId = CostsYearlyResult.Identity;
 
                 FinancialAccounts costAccounts =
-                    FinancialAccounts.ForOrganization(Organization.FromIdentity(_organizationId),
-                                                      FinancialAccountType.Cost);
+                    FinancialAccounts.ForOrganization(Organization.FromIdentity(this._organizationId),
+                        FinancialAccountType.Cost);
 
                 foreach (FinancialAccount account in costAccounts)
                 {
-                    if (account.Identity != yearlyResultId && account.Expensable) // really should be redundant, but still...
+                    if (account.Identity != yearlyResultId && account.Expensable)
+                        // really should be redundant, but still...
                     {
                         result.Add(account);
                     }
@@ -282,20 +236,20 @@ namespace Swarmops.Logic.Financial
         public FinancialAccounts InvoiceableBudgetsOutbound
         {
             // TODO: This needs to return a tree, not a flat list.
-
             get
             {
                 FinancialAccounts result = new FinancialAccounts();
 
-                int yearlyResultId = this.CostsYearlyResult.Identity;
+                int yearlyResultId = CostsYearlyResult.Identity;
 
                 FinancialAccounts costAccounts =
-                    FinancialAccounts.ForOrganization(Organization.FromIdentity(_organizationId),
-                                                      FinancialAccountType.Income);
+                    FinancialAccounts.ForOrganization(Organization.FromIdentity(this._organizationId),
+                        FinancialAccountType.Income);
 
                 foreach (FinancialAccount account in costAccounts)
                 {
-                    if (account.Identity != yearlyResultId && account.Expensable) // really should be redundant, but still...
+                    if (account.Identity != yearlyResultId && account.Expensable)
+                        // really should be redundant, but still...
                     {
                         result.Add(account);
                     }
@@ -305,5 +259,49 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public static void PrimePiratpartietSE() // One-off. Once this has been run once, delete it.
+        {
+            /* -- this was a one-time one-off
+            if (SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(1, OrganizationFinancialAccountType.AssetsBankAccountMain) != 0)
+            {
+                return;
+            }
+
+            if (!Organization.PPSE.Name.StartsWith("Piratpartiet"))
+            {
+                return; // not PP installation
+            }
+
+            OrganizationFinancialAccounts organizationAccounts = new OrganizationFinancialAccounts(1);
+
+            // HACK HACK HACK
+
+            organizationAccounts[OrganizationFinancialAccountType.CostsBankFees] = FinancialAccount.FromIdentity(26); //
+            organizationAccounts[OrganizationFinancialAccountType.AssetsBankAccountMain] = FinancialAccount.FromIdentity(1); //
+            organizationAccounts[OrganizationFinancialAccountType.IncomeDonations] = FinancialAccount.FromIdentity(4); //
+            organizationAccounts[OrganizationFinancialAccountType.IncomeGeneral] = FinancialAccount.FromIdentity(131); // 
+            organizationAccounts[OrganizationFinancialAccountType.IncomeSales] = FinancialAccount.FromIdentity(5); //
+            organizationAccounts[OrganizationFinancialAccountType.CostsInfrastructure] = FinancialAccount.FromIdentity(21); //
+            organizationAccounts[OrganizationFinancialAccountType.CostsLocalDonationTransfers] = FinancialAccount.FromIdentity(88); //
+            organizationAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] = FinancialAccount.FromIdentity(124); //
+            organizationAccounts[OrganizationFinancialAccountType.DebtsExpenseClaims] = FinancialAccount.FromIdentity(3); //
+            organizationAccounts[OrganizationFinancialAccountType.DebtsSalary] = FinancialAccount.FromIdentity(25); //
+            organizationAccounts[OrganizationFinancialAccountType.DebtsTax] = FinancialAccount.FromIdentity(86); //
+            organizationAccounts[OrganizationFinancialAccountType.DebtsInboundInvoices] = FinancialAccount.FromIdentity(25); //
+            organizationAccounts[OrganizationFinancialAccountType.DebtsOther] = FinancialAccount.FromIdentity(25); //
+            organizationAccounts[OrganizationFinancialAccountType.AssetsOutboundInvoices] = FinancialAccount.FromIdentity(28); // 
+            organizationAccounts[OrganizationFinancialAccountType.DebtsEquity] = FinancialAccount.FromIdentity(96); //
+            organizationAccounts[OrganizationFinancialAccountType.AssetsPaypal] = FinancialAccount.FromIdentity(2); //
+            organizationAccounts[OrganizationFinancialAccountType.CostsYearlyResult] = FinancialAccount.FromIdentity(97); //
+            organizationAccounts[OrganizationFinancialAccountType.AssetsOutstandingCashAdvances] = FinancialAccount.FromIdentity(156); //
+            organizationAccounts[OrganizationFinancialAccountType.AssetsVat] = FinancialAccount.FromIdentity(86); //
+            organizationAccounts[OrganizationFinancialAccountType.DebtsVat] = FinancialAccount.FromIdentity(86); //
+
+            FinancialAccount.FromIdentity(80).IsConferenceParent = true;
+            FinancialAccount.FromIdentity(27).IsConferenceParent = true;
+
+            Organization.PPSE.IsEconomyEnabled = true; // Kill this function in base, too
+             */
+        }
     }
 }

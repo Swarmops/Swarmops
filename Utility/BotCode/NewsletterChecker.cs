@@ -1,31 +1,20 @@
 using System;
 using System.Collections.Generic;
-using NRss;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Special.Sweden;
-using Swarmops.Logic.Structure;
-using Swarmops.Logic.Support;
-using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.BotCode
 {
     public class NewsletterChecker
     {
-        const int ForumIdTestPost = 262;//vBulletin,  old forum was  326;
-        const int ForumIdNewsletter = 342; //vBulletin,  old forum was 69;
+        private const int ForumIdTestPost = 262; //vBulletin,  old forum was  326;
+        private const int ForumIdNewsletter = 342; //vBulletin,  old forum was 69;
 
 
-        public class ReaderException : Exception
-        {
-            public ReaderException (string message, Exception innerException)
-                : base(message, innerException)
-            { }
-        }
-        static Dictionary<string, DateTime> feedErrorSignaled = new Dictionary<string, DateTime>();
+        private static Dictionary<string, DateTime> feedErrorSignaled = new Dictionary<string, DateTime>();
 
         [Obsolete("Too specialized for Swarmops. Plugin or generalize.", true)]
         public static void Run()
-        {/*
+        {
+/*
             //TODO: This list should reside in database/by organisation and possibly geography.
 
             CheckOneBlog("http://rickfalkvinge.se/feed", 1);
@@ -33,6 +22,15 @@ namespace Swarmops.Utility.BotCode
             CheckOneBlog("http://opassande.se/index.php/feed/", 367);
             CheckOneBlog("http://www.annatroberg.com/feed/", 11443);*/
         }
+
+        public class ReaderException : Exception
+        {
+            public ReaderException(string message, Exception innerException)
+                : base(message, innerException)
+            {
+            }
+        }
+
         /*
         private static void CheckOneBlog (string readerFeedUrl, int personId)
         {

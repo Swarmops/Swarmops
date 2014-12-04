@@ -14,15 +14,15 @@ namespace Swarmops.Basic.Types
 
 
         /// <summary>
-        /// Basic constructor. This is for database use and NOT for public construction.
+        ///     Basic constructor. This is for database use and NOT for public construction.
         /// </summary>
-        public BasicOutboundMail (int outboundMailId, MailAuthorType authorType, int authorPersonId, string title,
-                                  string body, int mailPriority, int mailTypeId, int organizationId,
-                                  int geographyId,
-                                  DateTime createdDateTime, DateTime releaseDateTime, bool readyForPickup, bool resolved,
-                                  bool processed,
-                                  DateTime resolvedDateTime, DateTime startProcessDateTime, DateTime endProcessDateTime,
-                                  int recipientCount, int recipientsSuccess, int recipientsFail)
+        public BasicOutboundMail(int outboundMailId, MailAuthorType authorType, int authorPersonId, string title,
+            string body, int mailPriority, int mailTypeId, int organizationId,
+            int geographyId,
+            DateTime createdDateTime, DateTime releaseDateTime, bool readyForPickup, bool resolved,
+            bool processed,
+            DateTime resolvedDateTime, DateTime startProcessDateTime, DateTime endProcessDateTime,
+            int recipientCount, int recipientsSuccess, int recipientsFail)
         {
             this.outboundMailId = outboundMailId;
             this.authorType = authorType;
@@ -49,24 +49,24 @@ namespace Swarmops.Basic.Types
         }
 
         /// <summary>
-        /// Constructor used by OutboundMail after creating record in db. NOT for other use
+        ///     Constructor used by OutboundMail after creating record in db. NOT for other use
         /// </summary>
-        public BasicOutboundMail (int outboundMailId, MailAuthorType authorType, int authorPersonId, string title,
-                                  string body, int mailPriority, int mailType, int organizationId,
-                                  int geographyId, DateTime createdDateTime, DateTime releaseDateTime)
+        public BasicOutboundMail(int outboundMailId, MailAuthorType authorType, int authorPersonId, string title,
+            string body, int mailPriority, int mailType, int organizationId,
+            int geographyId, DateTime createdDateTime, DateTime releaseDateTime)
             : this(outboundMailId, authorType, authorPersonId, title, body,
-                    mailPriority, mailType, organizationId, geographyId,
-                    createdDateTime, releaseDateTime,
-                    false, false, false, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, 0, 0, 0)
+                mailPriority, mailType, organizationId, geographyId,
+                createdDateTime, releaseDateTime,
+                false, false, false, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, 0, 0, 0)
         {
             // nothing more to do
         }
 
         /// <summary>
-        /// Copy constructor. Used when PirateWeb.Logic constructs an OutboundMail object.
+        ///     Copy constructor. Used when PirateWeb.Logic constructs an OutboundMail object.
         /// </summary>
         /// <param name="original">The original to copy.</param>
-        public BasicOutboundMail (BasicOutboundMail original)
+        public BasicOutboundMail(BasicOutboundMail original)
             : this(
                 original.outboundMailId, original.authorType, original.authorPersonId, original.title,
                 original.body, original.mailPriority, original.mailType,
@@ -86,11 +86,6 @@ namespace Swarmops.Basic.Types
         //   PROPERTIES AND ACCESSORS
         // ============================
 
-
-        public int Identity
-        {
-            get { return this.OutboundMailId; }
-        }
 
         public int OutboundMailId
         {
@@ -185,6 +180,11 @@ namespace Swarmops.Basic.Types
             set { this.recipientsFail = value; }
         }
 
+        public int Identity
+        {
+            get { return OutboundMailId; }
+        }
+
         #endregion
 
         #region Private fields
@@ -194,26 +194,26 @@ namespace Swarmops.Basic.Types
         // ==================
 
 
-        private int outboundMailId;
-        private MailAuthorType authorType;
-        private int authorPersonId;
-        private string title;
-        private string body;
-        private int mailPriority;
-        private int mailType;
-        private int geographyId;
-        private int organizationId;
-        private DateTime createdDateTime;
-        private DateTime releaseDateTime;
-        private bool readyForPickup;
-        private bool resolved;
+        private readonly int authorPersonId;
+        private readonly MailAuthorType authorType;
+        private readonly string body;
+        private readonly DateTime createdDateTime;
+        private readonly DateTime endProcessDateTime;
+        private readonly int geographyId;
+        private readonly int mailPriority;
+        private readonly int mailType;
+        private readonly int organizationId;
+        private readonly int outboundMailId;
+        private readonly DateTime releaseDateTime;
+        private readonly DateTime resolvedDateTime;
         private bool processed;
-        private DateTime resolvedDateTime;
-        private DateTime startProcessDateTime;
-        private DateTime endProcessDateTime;
+        private bool readyForPickup;
         private int recipientCount;
-        private int recipientsSuccess;
         private int recipientsFail;
+        private int recipientsSuccess;
+        private bool resolved;
+        private DateTime startProcessDateTime;
+        private string title;
 
         #endregion
     }

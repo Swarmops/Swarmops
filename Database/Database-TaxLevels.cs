@@ -6,8 +6,6 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
-
         #region Record reading - SELECT statements
 
         public double GetSalaryTaxLevel(int countryId, int taxLevelId, int grossSalary)
@@ -22,7 +20,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        String.Format("SELECT Tax,Year FROM SalaryTaxLevels WHERE CountryId={0} AND TaxLevelId={1} AND BracketLow<={2} AND Year<={3} ORDER BY BracketLow Desc LIMIT 1", countryId, taxLevelId, grossSalary, thisYear), connection);
+                        String.Format(
+                            "SELECT Tax,Year FROM SalaryTaxLevels WHERE CountryId={0} AND TaxLevelId={1} AND BracketLow<={2} AND Year<={3} ORDER BY BracketLow Desc LIMIT 1",
+                            countryId, taxLevelId, grossSalary, thisYear), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -51,15 +51,11 @@ namespace Swarmops.Database
             }
         }
 
-
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-        public void CreateSalaryTaxLevel (int countryId, int taxLevelId, int bracketLow, int year, double tax)
+        public void CreateSalaryTaxLevel(int countryId, int taxLevelId, int bracketLow, int year, double tax)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -72,15 +68,15 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "taxLevelId", taxLevelId);
                 AddParameterWithName(command, "bracketLow", bracketLow);
                 AddParameterWithName(command, "year", year);
-                AddParameterWithName(command, "tax", tax < 1.0 ? (int)(-tax * 10000) : (int)tax);
+                AddParameterWithName(command, "tax", tax < 1.0 ? (int) (-tax*10000) : (int) tax);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        [Obsolete ("We're using a new Year column rather than deleting obsolete tax data", false)]
-        public void DeleteTaxLevels (int countryId)
+        [Obsolete("We're using a new Year column rather than deleting obsolete tax data", false)]
+        public void DeleteTaxLevels(int countryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -95,10 +91,6 @@ namespace Swarmops.Database
             }
         }
 
-
-
         #endregion
-
     }
-
 }

@@ -6,28 +6,31 @@ namespace Swarmops.Basic.Types
     [Serializable]
     public class BasicCountry : IHasIdentity
     {
-        public BasicCountry (int countryId, string name, string code)
+        public BasicCountry(int countryId, string name, string code)
         {
-            this.CountryId = countryId;
-            this.Name = name;
-            this.Code = code;
+            CountryId = countryId;
+            Name = name;
+            Code = code;
         }
 
-        public BasicCountry (int countryId, string name, string code, string defaultCulture, string currencyCode, int geographyId, int postalCodeLength)
+        public BasicCountry(int countryId, string name, string code, string defaultCulture, string currencyCode,
+            int geographyId, int postalCodeLength)
             : this(countryId, name, code)
         {
-            this.Culture = defaultCulture;
-            this.CurrencyCode = currencyCode;
-            this.GeographyId = geographyId;
-            this.PostalCodeLength = postalCodeLength;
+            Culture = defaultCulture;
+            CurrencyCode = currencyCode;
+            GeographyId = geographyId;
+            PostalCodeLength = postalCodeLength;
         }
 
-        public BasicCountry (BasicCountry original)
-            : this(original.CountryId, original.Name, original.Code, original.Culture, original.CurrencyCode, original.GeographyId, original.PostalCodeLength )
+        public BasicCountry(BasicCountry original)
+            : this(
+                original.CountryId, original.Name, original.Code, original.Culture, original.CurrencyCode,
+                original.GeographyId, original.PostalCodeLength)
         {
         }
 
-        [Obsolete ("Do not call this function directly. It exists to enable serialization.", true)]
+        [Obsolete("Do not call this function directly. It exists to enable serialization.", true)]
         public BasicCountry()
         {
             // this does not initialize the Basic Country, but exists to enable serialization.
@@ -45,7 +48,7 @@ namespace Swarmops.Basic.Types
         {
             get
             {
-                if (this.Code == "SE")
+                if (Code == "SE")
                 {
                     return 1;
                 }
@@ -58,7 +61,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.CountryId; }
+            get { return CountryId; }
         }
 
         #endregion

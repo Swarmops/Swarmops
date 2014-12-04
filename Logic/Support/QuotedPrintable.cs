@@ -5,29 +5,29 @@ using System.Text.RegularExpressions;
 
 namespace Swarmops.Logic.Support
 {
-
     /// <summary>
-    /// Provide encoding and decoding of Quoted-Printable.
+    ///     Provide encoding and decoding of Quoted-Printable.
     /// </summary>
     public class QuotedPrintable
     {
-        public QuotedPrintable (Encoding encoding)
-        {
-            _encoding = encoding;
-        }
-
-        Encoding _encoding = Encoding.Default;
         /// <summary>
-        /// // so including the = connection, the length will be 76
+        ///     // so including the = connection, the length will be 76
         /// </summary>
         private const int RFC_1521_MAX_CHARS_PER_LINE = 75;
 
+        private readonly Encoding _encoding = Encoding.Default;
+
+        public QuotedPrintable(Encoding encoding)
+        {
+            this._encoding = encoding;
+        }
+
         /// <summary>
-        /// Return quoted printable string with 76 characters per line.
+        ///     Return quoted printable string with 76 characters per line.
         /// </summary>
         /// <param name="textToEncode"></param>
         /// <returns></returns>
-        public  string Encode (string textToEncode)
+        public string Encode(string textToEncode)
         {
             if (textToEncode == null)
                 throw new ArgumentNullException();
@@ -35,7 +35,7 @@ namespace Swarmops.Logic.Support
             return Encode(textToEncode, RFC_1521_MAX_CHARS_PER_LINE);
         }
 
-        private  string Encode (string textToEncode, int charsPerLine)
+        private string Encode(string textToEncode, int charsPerLine)
         {
             if (textToEncode == null)
                 throw new ArgumentNullException();
@@ -47,19 +47,19 @@ namespace Swarmops.Logic.Support
         }
 
         /// <summary>
-        /// Return quoted printable to be used in mail headers, if encoding is necessary
+        ///     Return quoted printable to be used in mail headers, if encoding is necessary
         /// </summary>
         /// <param name="textToEncode"></param>
         /// <returns></returns>
-        public  String EncodeMailHeaderString (string textToEncode)
+        public String EncodeMailHeaderString(string textToEncode)
         {
             String encChars = EncodeString(textToEncode);
             String displayName = "";
             if (encChars != textToEncode)
             {
                 displayName = "=?";
-                displayName += _encoding.BodyName;
-                displayName +="?Q?" + encChars.Replace(" ", "_") + "?=";
+                displayName += this._encoding.BodyName;
+                displayName += "?Q?" + encChars.Replace(" ", "_") + "?=";
             }
             else
                 displayName = textToEncode;
@@ -67,16 +67,16 @@ namespace Swarmops.Logic.Support
         }
 
         /// <summary>
-        /// Return quoted printable string, all in one line.
+        ///     Return quoted printable string, all in one line.
         /// </summary>
         /// <param name="textToEncode"></param>
         /// <returns></returns>
-        public  string EncodeString (string textToEncode)
+        public string EncodeString(string textToEncode)
         {
             if (textToEncode == null)
                 throw new ArgumentNullException();
 
-            byte[] bytes = _encoding.GetBytes(textToEncode);
+            byte[] bytes = this._encoding.GetBytes(textToEncode);
             StringBuilder builder = new StringBuilder();
             foreach (byte b in bytes)
             {
@@ -106,7 +106,7 @@ namespace Swarmops.Logic.Support
             return builder.ToString();
         }
 
-        private string FormatEncodedString (string qpstr, int maxcharlen)
+        private string FormatEncodedString(string qpstr, int maxcharlen)
         {
             if (qpstr == null)
                 throw new ArgumentNullException();
@@ -128,7 +128,7 @@ namespace Swarmops.Logic.Support
             return builder.ToString();
         }
 
-        private string HexDecoderEvaluator (Match m)
+        private string HexDecoderEvaluator(Match m)
         {
             if (String.IsNullOrEmpty(m.Value))
                 return null;
@@ -141,20 +141,20 @@ namespace Swarmops.Logic.Support
                 bytes[i] = Convert.ToByte(captures[i].Value, 16);
             }
 
-            return _encoding.GetString(bytes);
+            return this._encoding.GetString(bytes);
         }
 
-        private  string HexDecoder (string line)
+        private string HexDecoder(string line)
         {
             if (line == null)
                 throw new ArgumentNullException();
 
             Regex re = new Regex("((\\=([0-9A-F][0-9A-F]))*)", RegexOptions.IgnoreCase);
-            return re.Replace(line, new MatchEvaluator(HexDecoderEvaluator));
+            return re.Replace(line, HexDecoderEvaluator);
         }
 
 
-        public  string Decode (string encodedText)
+        public string Decode(string encodedText)
         {
             if (encodedText == null)
                 throw new ArgumentNullException();
@@ -174,6 +174,5 @@ namespace Swarmops.Logic.Support
                 return HexDecoder(builder.ToString());
             }
         }
-
     }
 }

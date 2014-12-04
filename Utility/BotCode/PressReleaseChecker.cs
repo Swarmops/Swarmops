@@ -13,20 +13,19 @@ namespace Swarmops.Utility.BotCode
     public class PressReleaseChecker
     {
         [Obsolete("Do not call this function until it's been generalized. Don't delete, though - generalize it.", true)]
-        public static void Run ()
+        public static void Run()
         {
             throw new NotImplementedException();
-            
+
             //TODO: This list should reside in database/by organisation and possibly geography.
 
             /*
             CheckOneFeed("http://press.piratpartiet.se/feed", "PPSE", Organization.PPSEid);
             CheckOneFeed("http://presscenter.ungpirat.se/feed", "UPSE", Organization.UPSEid);
              */
-
         }
 
-        private static void CheckOneFeed (string readerUrl, string persistAsKey, int orgIdForTemplate)
+        private static void CheckOneFeed(string readerUrl, string persistAsKey, int orgIdForTemplate)
         {
             string persistenceKey = String.Format("Pressrelease-Highwater-{0}", persistAsKey);
 
@@ -46,7 +45,6 @@ namespace Swarmops.Utility.BotCode
                 }
                 else
                 {
-
                     try
                     {
                         highWaterMark = DateTime.Parse(highWaterMarkString);
@@ -55,7 +53,9 @@ namespace Swarmops.Utility.BotCode
                     {
                         HeartBeater.Instance.SuggestRestart();
                         throw new Exception(
-                            "Triggered restart. Unable to read/parse old highwater mark from database in PressReleaseChecker.Run(), from key:" + persistenceKey + ", loaded string was '" + highWaterMarkString + "' expected format is " + DateTime.Now.ToString(), ex);
+                            "Triggered restart. Unable to read/parse old highwater mark from database in PressReleaseChecker.Run(), from key:" +
+                            persistenceKey + ", loaded string was '" + highWaterMarkString + "' expected format is " +
+                            DateTime.Now, ex);
                     }
                 }
                 DateTime storedHighWaterMark = highWaterMark;
@@ -95,7 +95,8 @@ namespace Swarmops.Utility.BotCode
                         catch (Exception ex)
                         {
                             throw new Exception(
-                                "Unable to commit/parse new highwater mark to database in PressReleaseChecker.Run(), loaded string was '" + newStoredHighWaterString + "'", ex);
+                                "Unable to commit/parse new highwater mark to database in PressReleaseChecker.Run(), loaded string was '" +
+                                newStoredHighWaterString + "'", ex);
                         }
 
                         if (DateTime.Parse(Persistence.Key[persistenceKey]) < item.PubDate)
@@ -117,9 +118,8 @@ namespace Swarmops.Utility.BotCode
                         }
                         else if (category.Name == "Uncategorized")
                         {
-                            continue;
                         }
-                        else 
+                        else
                         {
                             try
                             {
@@ -133,7 +133,8 @@ namespace Swarmops.Utility.BotCode
                             }
                             catch (Exception)
                             {
-                                ExceptionMail.Send(new Exception("Unrecognized media category in press release: " + category.Name));
+                                ExceptionMail.Send(
+                                    new Exception("Unrecognized media category in press release: " + category.Name));
                             }
                         }
                     }
@@ -172,7 +173,6 @@ namespace Swarmops.Utility.BotCode
                     }
 
 
-
                     // Send press release
 
                     //TODO: hardcoded  geo ... using  World
@@ -186,7 +186,7 @@ namespace Swarmops.Utility.BotCode
                     pressreleasemail.pOrgName = org.MailPrefixInherited;
                     if (allReporters)
                     {
-                        pressreleasemail.pPostedToCategories = "Alla";  // TODO: TRANSLATE
+                        pressreleasemail.pPostedToCategories = "Alla"; // TODO: TRANSLATE
                     }
                     else if (international)
                     {
@@ -197,7 +197,8 @@ namespace Swarmops.Utility.BotCode
                         pressreleasemail.pPostedToCategories = PressReleaseMail.GetConcatenatedCategoryString(categories);
                     }
 
-                    OutboundMail newMail = pressreleasemail.CreateFunctionalOutboundMail(MailAuthorType.PressService, OutboundMail.PriorityHighest, org, geo);
+                    OutboundMail newMail = pressreleasemail.CreateFunctionalOutboundMail(MailAuthorType.PressService,
+                        OutboundMail.PriorityHighest, org, geo);
 
                     int recipientCount = 0;
                     foreach (Reporter recipient in reporters)
@@ -227,14 +228,16 @@ namespace Swarmops.Utility.BotCode
             }
             catch (Exception ex)
             {
-                ExceptionMail.Send(new Exception("PressReleaseChecker failed:" + ex.Message + "\r\nwhen checking " + readerUrl, ex));
+                ExceptionMail.Send(
+                    new Exception("PressReleaseChecker failed:" + ex.Message + "\r\nwhen checking " + readerUrl, ex));
             }
             finally
             {
                 reader.Close();
             }
         }
-        private static string Blog2Mail (string text)
+
+        private static string Blog2Mail(string text)
         {
             return text.
                 Replace("<h3>", "<h2>").
@@ -246,6 +249,5 @@ namespace Swarmops.Utility.BotCode
                 Replace("&#8212;", "--").
                 Replace("&#8230;", "...");
         }
-
     }
 }

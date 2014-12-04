@@ -4,33 +4,30 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Swarm
 {
-    public class ParleyOptions: PluralBase<ParleyOptions,ParleyOption,BasicParleyOption>
+    public class ParleyOptions : PluralBase<ParleyOptions, ParleyOption, BasicParleyOption>
     {
-        public static ParleyOptions ForParley (Parley parley)
+        public static ParleyOptions ForParley(Parley parley)
         {
             return ForParley(parley, false);
         }
 
-        public static ParleyOptions ForParley (Parley parley, bool includeInactive)
+        public static ParleyOptions ForParley(Parley parley, bool includeInactive)
         {
             if (includeInactive)
             {
                 return FromArray(SwarmDb.GetDatabaseForReading().GetParleyOptions(parley));
             }
-            else
-            {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetParleyOptions(parley, DatabaseCondition.ActiveTrue));
-            }
+            return FromArray(SwarmDb.GetDatabaseForReading().GetParleyOptions(parley, DatabaseCondition.ActiveTrue));
         }
 
-        public static ParleyOptions ForParleyAttendee (ParleyAttendee attendee)
+        public static ParleyOptions ForParleyAttendee(ParleyAttendee attendee)
         {
             int[] parleyOptionIds = SwarmDb.GetDatabaseForReading().GetParleyAttendeeOptions(attendee.Identity);
 
             return FromIdentities(parleyOptionIds);
         }
 
-        public static ParleyOptions FromIdentities (int[] identities)
+        public static ParleyOptions FromIdentities(int[] identities)
         {
             ParleyOptions result = new ParleyOptions();
 

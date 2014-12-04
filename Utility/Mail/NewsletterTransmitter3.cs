@@ -1,8 +1,10 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
+using System.Threading;
 using System.Web;
 using Swarmops.Basic;
 using Swarmops.Logic.Support;
@@ -12,19 +14,19 @@ namespace Swarmops.Utility.Mail
 {
     public class NewsletterTransmitter3
     {
-        static QuotedPrintable qpUTF8 = new QuotedPrintable(Encoding.UTF8);
-        static QuotedPrintable qp8859 = new QuotedPrintable(Encoding.GetEncoding("ISO-8859-1"));
+        private static QuotedPrintable qpUTF8 = new QuotedPrintable(Encoding.UTF8);
+        private static readonly QuotedPrintable qp8859 = new QuotedPrintable(Encoding.GetEncoding("ISO-8859-1"));
 
-        public static void Send (Newsletter newsletter, string forumUrl)
+        public static void Send(Newsletter newsletter, string forumUrl)
         {
             string directory = "content" + Path.DirectorySeparatorChar + "mailtemplate-" +
-                               newsletter.TemplateId.ToString();
+                               newsletter.TemplateId;
 
             string htmlTemplate = "Failed to read HTML mail template.";
 
             using (
                 StreamReader reader = new StreamReader(directory + Path.DirectorySeparatorChar + "template.html",
-                                                       System.Text.Encoding.Default))
+                    Encoding.Default))
             {
                 htmlTemplate = reader.ReadToEnd();
             }
@@ -39,7 +41,7 @@ namespace Swarmops.Utility.Mail
 
             // assume Swedish
 
-            System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("sv-SE");
+            CultureInfo culture = new CultureInfo("sv-SE");
             string date = DateTime.Today.ToString("d MMMM yyyy", culture);
 
 
@@ -97,8 +99,8 @@ namespace Swarmops.Utility.Mail
             // MemoryStream memStream = new MemoryStream();
 
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(htmlTemplate,
-                                                                                 new ContentType(
-                                                                                     MediaTypeNames.Text.Html));
+                new ContentType(
+                    MediaTypeNames.Text.Html));
             htmlView.TransferEncoding = TransferEncoding.Base64;
 
             /*
@@ -190,8 +192,10 @@ namespace Swarmops.Utility.Mail
                     client.Credentials = null;
 
                     MailMessage message = new MailMessage(
-                        new MailAddress(newsletter.SenderAddress, qp8859.EncodeMailHeaderString(newsletter.SenderName), Encoding.GetEncoding("ISO-8859-1")),
-                        new MailAddress(recipient.Mail, qp8859.EncodeMailHeaderString(recipient.Name), Encoding.GetEncoding("ISO-8859-1")));
+                        new MailAddress(newsletter.SenderAddress, qp8859.EncodeMailHeaderString(newsletter.SenderName),
+                            Encoding.GetEncoding("ISO-8859-1")),
+                        new MailAddress(recipient.Mail, qp8859.EncodeMailHeaderString(recipient.Name),
+                            Encoding.GetEncoding("ISO-8859-1")));
 
                     message.Subject = "Piratpartiet: Nyhetsbrev " + DateTime.Today.ToString("yyyy-MM-dd"); // HACK
 
@@ -202,7 +206,7 @@ namespace Swarmops.Utility.Mail
                     // COMPENSATE FOR MONO BUG -- put logo online instead of attached
 
                     message.Body = message.Body.Replace("cid:pplogo" + newsletterIdentifier,
-                                                        "http://docs.piratpartiet.se/banners/newsletter-banner-pp-logo.png");
+                        "http://docs.piratpartiet.se/banners/newsletter-banner-pp-logo.png");
 
                     /*
                     Attachment attachment = new Attachment(directory + Path.DirectorySeparatorChar + "header-pp-logo.png", "image/png");
@@ -237,7 +241,7 @@ namespace Swarmops.Utility.Mail
 
                             // Otherwise, sleep for a while and try again.
 
-                            System.Threading.Thread.Sleep(1000);
+                            Thread.Sleep(1000);
                         }
                     }
 
@@ -248,7 +252,7 @@ namespace Swarmops.Utility.Mail
                     //Console.WriteLine("FAIL! <" + recipient.Email + ">");
                     ExceptionMail.Send(
                         new Exception(
-                            "Error sending mail to " + recipient.Name + " (#" + recipient.Identity.ToString() + ") <" +
+                            "Error sending mail to " + recipient.Name + " (#" + recipient.Identity + ") <" +
                             recipient.Mail + ">:", e));
                 }
             }

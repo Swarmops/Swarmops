@@ -8,9 +8,9 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.DashboardTasks
 {
-    public class Tasks: List<TaskGroup>
+    public class Tasks : List<TaskGroup>
     {
-        static public Tasks ForPersonOrganization (Person person, Organization organization)
+        public static Tasks ForPersonOrganization(Person person, Organization organization)
         {
             Tasks tasks = new Tasks();
 
@@ -26,7 +26,7 @@ namespace Swarmops.Logic.DashboardTasks
             return tasks;
         }
 
-        private void AddVolunteers (Person person, Organization organization)
+        private void AddVolunteers(Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.Volunteers);
 
@@ -42,11 +42,11 @@ namespace Swarmops.Logic.DashboardTasks
 
             if (group.Tasks.Count > 0)
             {
-                this.Add(group);
+                Add(group);
             }
         }
 
-        private void AddExpenseClaims (Person person, Organization organization)
+        private void AddExpenseClaims(Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.AttestExpenseClaims);
 
@@ -71,11 +71,11 @@ namespace Swarmops.Logic.DashboardTasks
 
             if (group.Tasks.Count > 0)
             {
-                this.Add(group);
+                Add(group);
             }
         }
 
-        private void AddSalaries (Person person, Organization organization)
+        private void AddSalaries(Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.AttestSalaries);
 
@@ -93,7 +93,7 @@ namespace Swarmops.Logic.DashboardTasks
 
             if (group.Tasks.Count > 0)
             {
-                this.Add(group);
+                Add(group);
             }
         }
 
@@ -115,7 +115,7 @@ namespace Swarmops.Logic.DashboardTasks
 
             if (group.Tasks.Count > 0)
             {
-                this.Add(group);
+                Add(group);
             }
         }
 
@@ -125,7 +125,10 @@ namespace Swarmops.Logic.DashboardTasks
 
             // TODO: Loop over roles, get all open claims for roles where person can attest
 
-            if (!person.GetAuthority().HasPermission(Permission.CanDoEconomyTransactions, organization.Identity, Geography.RootIdentity, Authorization.Flag.AnyGeographyExactOrganization))
+            if (
+                !person.GetAuthority()
+                    .HasPermission(Permission.CanDoEconomyTransactions, organization.Identity, Geography.RootIdentity,
+                        Authorization.Flag.AnyGeographyExactOrganization))
             {
                 // no permission, no tasks
                 return;
@@ -137,21 +140,21 @@ namespace Swarmops.Logic.DashboardTasks
             {
                 if (!claim.Validated)
                 {
-                    group.Tasks.Add(new TaskReceiptValidation (claim));
+                    group.Tasks.Add(new TaskReceiptValidation(claim));
                 }
             }
 
             if (group.Tasks.Count > 0)
             {
-                this.Add(group);
+                Add(group);
             }
         }
 
 
-        private void AddAdvanceDebts (Person person, Organization organization)
+        private void AddAdvanceDebts(Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.DeclareAdvanceDebts);
-            
+
             // TODO: One task group for each organization, actually
 
             ExpenseClaims claims = ExpenseClaims.FromClaimingPersonAndOrganization(person, organization);
@@ -169,18 +172,21 @@ namespace Swarmops.Logic.DashboardTasks
             if (debt > 0.0m)
             {
                 group.Tasks.Add(new TaskAdvanceDebt(debt));
-                this.Add(group);
+                Add(group);
             }
         }
 
 
-        private void AddPayouts (Person person, Organization organization)
+        private void AddPayouts(Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.Payout);
             TaskGroup groupUrgent = new TaskGroup(TaskGroupType.PayoutUrgently);
             TaskGroup groupOverdue = new TaskGroup(TaskGroupType.PayoutOverdue);
 
-            if (!person.GetAuthority().HasPermission(Permission.CanPayOutMoney, organization.Identity, 1, Authorization.Flag.AnyGeographyExactOrganization))
+            if (
+                !person.GetAuthority()
+                    .HasPermission(Permission.CanPayOutMoney, organization.Identity, 1,
+                        Authorization.Flag.AnyGeographyExactOrganization))
             {
                 return;
             }
@@ -206,26 +212,29 @@ namespace Swarmops.Logic.DashboardTasks
 
             if (group.Tasks.Count > 0)
             {
-                this.Add(group);
+                Add(group);
             }
 
             if (groupUrgent.Tasks.Count > 0)
             {
-                this.Add(groupUrgent);
+                Add(groupUrgent);
             }
 
             if (groupOverdue.Tasks.Count > 0)
             {
-                this.Add(groupOverdue);
+                Add(groupOverdue);
             }
         }
 
 
-        private void AddAttestationWarnings (Person person, Organization organization)
+        private void AddAttestationWarnings(Person person, Organization organization)
         {
             TaskGroup group = new TaskGroup(TaskGroupType.AttestationWarning);
 
-            if (!person.GetAuthority().HasPermission(Permission.CanSeeEconomyTransactions, organization.Identity, 1, Authorization.Flag.AnyGeographyExactOrganization))
+            if (
+                !person.GetAuthority()
+                    .HasPermission(Permission.CanSeeEconomyTransactions, organization.Identity, 1,
+                        Authorization.Flag.AnyGeographyExactOrganization))
             {
                 return;
             }
@@ -238,13 +247,13 @@ namespace Swarmops.Logic.DashboardTasks
             {
                 if (invoice.DueDate < threshold && !invoice.Attested)
                 {
-                    group.Tasks.Add(new TaskAttestationLate (invoice));
+                    group.Tasks.Add(new TaskAttestationLate(invoice));
                 }
             }
 
             if (group.Tasks.Count > 0)
             {
-                this.Add(group);
+                Add(group);
             }
         }
     }

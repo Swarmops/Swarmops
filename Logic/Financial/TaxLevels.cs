@@ -1,21 +1,20 @@
 using System;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
-using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
     public class TaxLevels
     {
-        static public double GetTax (Country country, int taxLevelIdentifier, double grossSalary)
+        public static double GetTax(Country country, int taxLevelIdentifier, double grossSalary)
         {
-            if (grossSalary < 1.0)  // The lowest tax bracket is 1 currency unit
+            if (grossSalary < 1.0) // The lowest tax bracket is 1 currency unit
             {
-                return 0.0;  // no tax
+                return 0.0; // no tax
             }
 
             double taxLevel = SwarmDb.GetDatabaseForReading().GetSalaryTaxLevel(country.Identity, taxLevelIdentifier,
-                                                      (int) Math.Floor(grossSalary));
+                (int) Math.Floor(grossSalary));
 
             if (taxLevel < 1.0)
             {
@@ -29,14 +28,14 @@ namespace Swarmops.Logic.Financial
             return taxLevel;
         }
 
-        static public void ImportTaxLevels (Country country, int year, string data)
+        public static void ImportTaxLevels(Country country, int year, string data)
         {
             if (country.Code != "SE")
             {
                 throw new NotImplementedException("Can't import this country's tax levels yet");
             }
 
-            string[] lines = data.Split('\n');   // if \r\n is used, the \r will be harmlessly at the end of lines
+            string[] lines = data.Split('\n'); // if \r\n is used, the \r will be harmlessly at the end of lines
 
             foreach (string line in lines)
             {
@@ -62,10 +61,11 @@ namespace Swarmops.Logic.Financial
 
                     if (isPercentage)
                     {
-                        tax = tax / 100.0;
+                        tax = tax/100.0;
                     }
 
-                    SwarmDb.GetDatabaseForWriting().CreateSalaryTaxLevel(country.Identity, taxLevelId, lowerBracket, year, tax);
+                    SwarmDb.GetDatabaseForWriting()
+                        .CreateSalaryTaxLevel(country.Identity, taxLevelId, lowerBracket, year, tax);
                 }
             }
         }

@@ -9,25 +9,25 @@ namespace Swarmops.Logic.Media
     {
         public int[] Identities
         {
-            get { return LogicServices.ObjectsToIdentifiers (ToArray()); }
+            get { return LogicServices.ObjectsToIdentifiers(ToArray()); }
         }
 
-        public static MediaCategories FromArray (BasicMediaCategory[] basicArray)
+        public static MediaCategories FromArray(BasicMediaCategory[] basicArray)
         {
-            var result = new MediaCategories();
+            MediaCategories result = new MediaCategories();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicMediaCategory basic in basicArray)
             {
-                result.Add (MediaCategory.FromBasic (basic));
+                result.Add(MediaCategory.FromBasic(basic));
             }
 
             return result;
         }
 
-        public static MediaCategories FromIdentities (int[] identities)
+        public static MediaCategories FromIdentities(int[] identities)
         {
-            return FromArray (SwarmDb.GetDatabaseForReading().GetMediaCategories (identities));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetMediaCategories(identities));
         }
 
         public static MediaCategories GetAll()

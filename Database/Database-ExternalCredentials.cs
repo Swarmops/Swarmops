@@ -6,7 +6,7 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public BasicExternalCredential GetExternalCredential (string serviceName)
+        public BasicExternalCredential GetExternalCredential(string serviceName)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -14,7 +14,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT ExternalCredentialId,ServiceName,Login,Password From ExternalCredentials WHERE ServiceName='" + serviceName.Replace("'", "''") + "'",
+                        "SELECT ExternalCredentialId,ServiceName,Login,Password From ExternalCredentials WHERE ServiceName='" +
+                        serviceName.Replace("'", "''") + "'",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -30,7 +31,7 @@ namespace Swarmops.Database
         }
 
 
-        private BasicExternalCredential ReadExternalCredentialFromDataReader (DbDataReader reader)
+        private BasicExternalCredential ReadExternalCredentialFromDataReader(DbDataReader reader)
         {
             int externalCredentialId = reader.GetInt32(0);
             string serviceName = reader.GetString(1);

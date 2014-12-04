@@ -25,7 +25,7 @@ namespace Swarmops.Utility.BotCode
         {
             string scrapeData = string.Empty;
 
-            HttpWebRequest request = (HttpWebRequest) HttpWebRequest.Create("http://knuff.se/topp50/knuffpoaeng/");
+            HttpWebRequest request = (HttpWebRequest) WebRequest.Create("http://knuff.se/topp50/knuffpoaeng/");
             request.UserAgent = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9b5) Gecko/2008050509 Firefox/3.0b5";
 
             using (Stream stream = request.GetResponse().GetResponseStream())

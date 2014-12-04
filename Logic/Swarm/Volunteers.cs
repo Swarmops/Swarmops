@@ -16,9 +16,9 @@ namespace Swarmops.Logic.Swarm
             return FromArray(SwarmDb.GetDatabaseForReading().GetOpenVolunteers());
         }
 
-        public static Volunteers FromArray (BasicVolunteer[] basicArray)
+        public static Volunteers FromArray(BasicVolunteer[] basicArray)
         {
-            var result = new Volunteers();
+            Volunteers result = new Volunteers();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicVolunteer basic in basicArray)
@@ -29,17 +29,17 @@ namespace Swarmops.Logic.Swarm
             return result;
         }
 
-        public static Volunteers FromSingle (Volunteer volunteer)
+        public static Volunteers FromSingle(Volunteer volunteer)
         {
-            var volunteers = new Volunteers();
+            Volunteers volunteers = new Volunteers();
             volunteers.Add(volunteer);
 
             return volunteers;
         }
 
-        public void Remove (Volunteers volunteersToRemove)
+        public void Remove(Volunteers volunteersToRemove)
         {
-            var identityLookup = new Dictionary<int, bool>();
+            Dictionary<int, bool> identityLookup = new Dictionary<int, bool>();
 
             foreach (Volunteer volunteer in volunteersToRemove)
             {
@@ -65,7 +65,7 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        public new void Remove (Volunteer volunteerToRemove)
+        public new void Remove(Volunteer volunteerToRemove)
         {
             Remove(FromSingle(volunteerToRemove));
         }
@@ -76,10 +76,10 @@ namespace Swarmops.Logic.Swarm
             // It's possible to write it more optimized, and build the DataSet by hand, but that takes
             // around 100 LoC.
 
-            var serializer = new XmlSerializer(typeof (Volunteers));
-            var sw = new StringWriter();
+            XmlSerializer serializer = new XmlSerializer(typeof (Volunteers));
+            StringWriter sw = new StringWriter();
             serializer.Serialize(sw, this);
-            var ds = new DataSet();
+            DataSet ds = new DataSet();
             ds.ReadXml(sw.ToString());
 
             return ds;

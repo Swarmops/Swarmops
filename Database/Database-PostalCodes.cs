@@ -25,11 +25,9 @@ namespace Swarmops.Database
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
-        public BasicPostalCode[] GetPostalCodesForCountry (int countryId)
+        public BasicPostalCode[] GetPostalCodesForCountry(int countryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -37,7 +35,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + postalCodeFieldSequence + "WHERE CountryId=" + countryId.ToString() + ";", connection);
+                        "SELECT" + postalCodeFieldSequence + "WHERE CountryId=" + countryId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -53,13 +51,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
-
         #region Creation and manipulation - stored procedures
-
 
         /* -- UNUSED
         public int CreateInboundInvoice(int organizationId, DateTime dueDate, int budgetId, 
@@ -218,15 +212,9 @@ namespace Swarmops.Database
             }
         }*/
 
-
-
         #endregion
 
-
-
-
         #region Dead template code
-
 
         /*
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)

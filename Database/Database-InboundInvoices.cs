@@ -37,13 +37,11 @@ namespace Swarmops.Database
             int closedByPersonId = reader.GetInt32(14);
 
             return new BasicInboundInvoice(inboundInvoiceId, organizationId, createdDateTime, dueDate,
-                                           amountCents, budgetId, supplier, payToAccount, ocr, invoiceReference,
-                                           attested, open, closedDateTime, closedByPersonId);
+                amountCents, budgetId, supplier, payToAccount, ocr, invoiceReference,
+                attested, open, closedDateTime, closedByPersonId);
         }
 
         #endregion
-
-
 
         #region Record reading - SELECT statements
 
@@ -55,7 +53,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + inboundInvoiceFieldSequence + "WHERE InboundInvoiceId=" + inboundInvoiceId + ";", connection);
+                        "SELECT" + inboundInvoiceFieldSequence + "WHERE InboundInvoiceId=" + inboundInvoiceId + ";",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -71,11 +70,11 @@ namespace Swarmops.Database
 
 
         /// <summary>
-        /// Gets a list of inbound invoices.
+        ///     Gets a list of inbound invoices.
         /// </summary>
         /// <param name="conditions">Optional Organization object and/or DatabaseConditions.</param>
         /// <returns>The inbound invoice list.</returns>
-        public BasicInboundInvoice[] GetInboundInvoices (params object[] conditions)
+        public BasicInboundInvoice[] GetInboundInvoices(params object[] conditions)
         {
             List<BasicInboundInvoice> result = new List<BasicInboundInvoice>();
 
@@ -85,7 +84,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + inboundInvoiceFieldSequence + ConstructWhereClause("InboundInvoices", conditions) + " ORDER BY DueDate;", connection);
+                        "SELECT" + inboundInvoiceFieldSequence + ConstructWhereClause("InboundInvoices", conditions) +
+                        " ORDER BY DueDate;", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -99,13 +99,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
-
         #region Creation and manipulation - stored procedures
-
 
         /* -- UNUSED
         public int CreateInboundInvoice(int organizationId, DateTime dueDate, int budgetId, 
@@ -134,7 +130,8 @@ namespace Swarmops.Database
         }*/
 
 
-        public int CreateInboundInvoice(int organizationId, DateTime dueDate, int budgetId, string supplier, string payToAccount, string ocr, string invoiceReference, Int64 amountCents, int createdByPersonId)
+        public int CreateInboundInvoice(int organizationId, DateTime dueDate, int budgetId, string supplier,
+            string payToAccount, string ocr, string invoiceReference, Int64 amountCents, int createdByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -193,7 +190,6 @@ namespace Swarmops.Database
         }
 
 
-
         public void SetInboundInvoiceAmount(int inboundInvoiceId, double amount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -209,7 +205,6 @@ namespace Swarmops.Database
                 command.ExecuteNonQuery();
             }
         }
-
 
 
         public void SetInboundInvoiceAmount(int inboundInvoiceId, Int64 amountCents)
@@ -229,7 +224,6 @@ namespace Swarmops.Database
         }
 
 
-
         public void SetInboundInvoiceBudget(int inboundInvoiceId, int budgetId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -245,7 +239,6 @@ namespace Swarmops.Database
                 command.ExecuteNonQuery();
             }
         }
-
 
 
         public void SetInboundInvoiceDueDate(int inboundInvoiceId, DateTime dueDate)
@@ -264,15 +257,9 @@ namespace Swarmops.Database
             }
         }
 
-
-
         #endregion
 
-
-
-
         #region Dead template code
-
 
         /*
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)

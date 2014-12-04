@@ -6,80 +6,39 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Governance
 {
-    public class MeetingElectionCandidate: BasicInternalPollCandidate
+    public class MeetingElectionCandidate : BasicInternalPollCandidate
     {
-        private MeetingElectionCandidate (BasicInternalPollCandidate basic): base (basic)
-        {
-            // private ctor
-        }
-
-        public static MeetingElectionCandidate FromBasic (BasicInternalPollCandidate basic)
-        {
-            return new MeetingElectionCandidate(basic);
-        }
-
-        public static MeetingElectionCandidate FromIdentity (int internalPollCandidateId)
-        {
-            if (!cache.ContainsKey(internalPollCandidateId))
-            {
-                cache [internalPollCandidateId] = FromBasic(SwarmDb.GetDatabaseForReading().GetInternalPollCandidate(internalPollCandidateId));
-            }
-
-            return cache[internalPollCandidateId];
-        }
-
-        public static MeetingElectionCandidate FromPersonAndPoll (Person person, MeetingElection poll)
-        {
-            MeetingElectionCandidates candidates =
-                MeetingElectionCandidates.FromArray(SwarmDb.GetDatabaseForReading().GetInternalPollCandidates(person, poll));
-
-            if (candidates.Count == 0)
-            {
-                return null; // Or throw exception? Which is the most accurate?
-            }
-
-            if (candidates.Count > 1)
-            {
-                throw new InvalidOperationException(
-                    "A specific person can not be a candidate more than once for a specific poll");
-            }
-
-            return candidates[0];
-        }
-
-
-        public static MeetingElectionCandidate Create (MeetingElection poll, Person person, string candidacyStatement)
-        {
-            return FromIdentity (SwarmDb.GetDatabaseForWriting().CreateInternalPollCandidate(poll.Identity, person.Identity, candidacyStatement));
-        }
-
-        private static Dictionary<int, MeetingElectionCandidate> cache;
+        private static readonly Dictionary<int, MeetingElectionCandidate> cache;
+        private Person personCache;
 
         static MeetingElectionCandidate()
         {
             cache = new Dictionary<int, MeetingElectionCandidate>();
         }
 
+        private MeetingElectionCandidate(BasicInternalPollCandidate basic) : base(basic)
+        {
+            // private ctor
+        }
+
 
         public string PersonName
         {
-            get { return this.Person.Name; }
+            get { return Person.Name; }
         }
 
         public Person Person
         {
             get
             {
-                if (personCache == null)
+                if (this.personCache == null)
                 {
-                    personCache = Person.FromIdentity(this.PersonId);
+                    this.personCache = Person.FromIdentity(PersonId);
                 }
 
-                return personCache;
+                return this.personCache;
             }
         }
-
-        private Person personCache;
 
         public string PersonSubtitle
         {
@@ -99,45 +58,87 @@ namespace Swarmops.Logic.Governance
 
         public string PersonBlogHtml
         {
-            get
-            {
-                return "Blogg: <a target=\"_blank\" href=\"" + Person.BlogUrl + "\">" + Person.BlogName + "</a>";
-            }
+            get { return "Blogg: <a target=\"_blank\" href=\"" + Person.BlogUrl + "\">" + Person.BlogName + "</a>"; }
         }
 
         public string PersonPhotoHtml
         {
             get
             {
-                return "<img src=\"http://data.piratpartiet.se/Handlers/DisplayPortrait.aspx?YSize=48&PersonId=" + this.PersonId.ToString() + "\" align=\"right\" height=\"48\" width=\"36\">";
+                return "<img src=\"http://data.piratpartiet.se/Handlers/DisplayPortrait.aspx?YSize=48&PersonId=" +
+                       PersonId + "\" align=\"right\" height=\"48\" width=\"36\">";
             }
         }
 
-        public override string ToString()
-        {
-            return this.Identity.ToString();
-        }
-
-        public void SetSortOrder(string sortOrder)
-        {
-            SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder(this.Identity, sortOrder);
-        }
-
-        public void RandomizeSortOrder()
-        {
-            SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder(this.Identity, System.Guid.NewGuid().ToString());
-        }
-
         public new string CandidacyStatement
-        { 
+        {
             get { return base.CandidacyStatement; }
 
             set
             {
                 base.CandidacyStatement = value;
-                cache[this.Identity] = this;  // Replace cache instance
-                SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateStatement(this.Identity, value);
+                cache[Identity] = this; // Replace cache instance
+                SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateStatement(Identity, value);
             }
+        }
+
+        public static MeetingElectionCandidate FromBasic(BasicInternalPollCandidate basic)
+        {
+            return new MeetingElectionCandidate(basic);
+        }
+
+        public static MeetingElectionCandidate FromIdentity(int internalPollCandidateId)
+        {
+            if (!cache.ContainsKey(internalPollCandidateId))
+            {
+                cache[internalPollCandidateId] =
+                    FromBasic(SwarmDb.GetDatabaseForReading().GetInternalPollCandidate(internalPollCandidateId));
+            }
+
+            return cache[internalPollCandidateId];
+        }
+
+        public static MeetingElectionCandidate FromPersonAndPoll(Person person, MeetingElection poll)
+        {
+            MeetingElectionCandidates candidates =
+                MeetingElectionCandidates.FromArray(SwarmDb.GetDatabaseForReading()
+                    .GetInternalPollCandidates(person, poll));
+
+            if (candidates.Count == 0)
+            {
+                return null; // Or throw exception? Which is the most accurate?
+            }
+
+            if (candidates.Count > 1)
+            {
+                throw new InvalidOperationException(
+                    "A specific person can not be a candidate more than once for a specific poll");
+            }
+
+            return candidates[0];
+        }
+
+
+        public static MeetingElectionCandidate Create(MeetingElection poll, Person person, string candidacyStatement)
+        {
+            return
+                FromIdentity(SwarmDb.GetDatabaseForWriting()
+                    .CreateInternalPollCandidate(poll.Identity, person.Identity, candidacyStatement));
+        }
+
+        public override string ToString()
+        {
+            return Identity.ToString();
+        }
+
+        public void SetSortOrder(string sortOrder)
+        {
+            SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder(Identity, sortOrder);
+        }
+
+        public void RandomizeSortOrder()
+        {
+            SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder(Identity, Guid.NewGuid().ToString());
         }
     }
 }

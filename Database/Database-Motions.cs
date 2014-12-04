@@ -11,10 +11,10 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string motionFieldSequence =
-            " MotionId,MeetingId,Designation,SubmittedByPersonId,CreatedByPersonId," +    // 0-4
-            "CreatedDateTime,AmendedByPersonId,AmendedDateTime,Title,Text," +             // 5-9
-            "AmendedText,DecisionPoints,AmendedDecisionPoints,Open,Carried," +            // 10-14
-            "ThreadUrl,Amended,SequenceNumber " +                                         // 15-17
+            " MotionId,MeetingId,Designation,SubmittedByPersonId,CreatedByPersonId," + // 0-4
+            "CreatedDateTime,AmendedByPersonId,AmendedDateTime,Title,Text," + // 5-9
+            "AmendedText,DecisionPoints,AmendedDecisionPoints,Open,Carried," + // 10-14
+            "ThreadUrl,Amended,SequenceNumber " + // 15-17
             "FROM Motions ";
 
         private static BasicMotion ReadMotionFromDataReader(IDataRecord reader)
@@ -38,12 +38,12 @@ namespace Swarmops.Database
             bool amended = reader.GetBoolean(16);
             int sequenceNumber = reader.GetInt32(17);
 
-            return new BasicMotion(motionId, meetingId, sequenceNumber, designation, submittedByPersonId, createdByPersonId, createdDateTime, amended, amendedByPersonId, amendedDateTime, title, text, amendedText, decisionPoints, amendedDecisionPoints, threadUrl, open, passed);
+            return new BasicMotion(motionId, meetingId, sequenceNumber, designation, submittedByPersonId,
+                createdByPersonId, createdDateTime, amended, amendedByPersonId, amendedDateTime, title, text,
+                amendedText, decisionPoints, amendedDecisionPoints, threadUrl, open, passed);
         }
 
         #endregion
-
-
 
         #region Record reading - SELECT statements
 
@@ -64,7 +64,7 @@ namespace Swarmops.Database
                         return ReadMotionFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown Motion Id: " + motionId.ToString());
+                    throw new ArgumentException("Unknown Motion Id: " + motionId);
                 }
             }
         }
@@ -93,14 +93,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateMotion(int meetingId, int submittingPersonId, int creatingPersonId, string title, string text, string decisionPoints)
+        public int CreateMotion(int meetingId, int submittingPersonId, int creatingPersonId, string title, string text,
+            string decisionPoints)
         {
             DateTime now = DateTime.Now;
 
@@ -122,6 +120,7 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
+
         /*
 
         public void SetSalaryNetPaid(int salaryId, bool netPaid)
@@ -201,8 +200,6 @@ namespace Swarmops.Database
         }
         */
 
-
         #endregion
-
     }
 }

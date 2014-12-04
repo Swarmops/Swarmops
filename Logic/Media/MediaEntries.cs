@@ -7,24 +7,24 @@ namespace Swarmops.Logic.Media
 {
     public class MediaEntries : List<MediaEntry>
     {
-        public static MediaEntries FromArray (BasicMediaEntry[] basicArray)
+        public static MediaEntries FromArray(BasicMediaEntry[] basicArray)
         {
-            var result = new MediaEntries();
+            MediaEntries result = new MediaEntries();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicMediaEntry basic in basicArray)
             {
-                result.Add (MediaEntry.FromBasic (basic));
+                result.Add(MediaEntry.FromBasic(basic));
             }
 
             return result;
         }
 
-        public void Add (MediaEntries moreMediaEntries)
+        public void Add(MediaEntries moreMediaEntries)
         {
             foreach (MediaEntry entry in moreMediaEntries)
             {
-                Add (entry);
+                Add(entry);
             }
         }
 
@@ -38,14 +38,14 @@ namespace Swarmops.Logic.Media
             return SwarmDb.GetDatabaseForReading().GetOldMediaKeywords();
         }
 
-        public static MediaEntries FromBlogKeyword (string keyword, DateTime minimumAge)
+        public static MediaEntries FromBlogKeyword(string keyword, DateTime minimumAge)
         {
-            return FromArray (SwarmDb.GetDatabaseForReading().GetBlogEntriesForKeyword (keyword, minimumAge));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetBlogEntriesForKeyword(keyword, minimumAge));
         }
 
-        public static MediaEntries FromOldMediaKeyword (string keyword, DateTime minimumAge)
+        public static MediaEntries FromOldMediaKeyword(string keyword, DateTime minimumAge)
         {
-            return FromArray (SwarmDb.GetDatabaseForReading().GetOldMediaEntriesForKeyword (keyword, minimumAge));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetOldMediaEntriesForKeyword(keyword, minimumAge));
         }
 
         public static Dictionary<int, bool> GetMediaTypeTable()
@@ -58,21 +58,22 @@ namespace Swarmops.Logic.Media
             return SwarmDb.GetDatabaseForReading().GetMediaKeywordTable();
         }
 
-        public static MediaEntries FromKeywordsSimplified (string[] keywords)
+        public static MediaEntries FromKeywordsSimplified(string[] keywords)
         {
-            var keywordIds = new List<int>();
+            List<int> keywordIds = new List<int>();
 
             foreach (string keyword in keywords)
             {
-                keywordIds.Add (SwarmDb.GetDatabaseForReading().GetMediaKeywordId (keyword));
+                keywordIds.Add(SwarmDb.GetDatabaseForReading().GetMediaKeywordId(keyword));
             }
 
-            return FromArray (SwarmDb.GetDatabaseForReading().GetMediaEntriesForKeywordIdsSimplified (keywordIds.ToArray()));
+            return
+                FromArray(SwarmDb.GetDatabaseForReading().GetMediaEntriesForKeywordIdsSimplified(keywordIds.ToArray()));
         }
 
-        public static int GetKeywordId (string keyword)
+        public static int GetKeywordId(string keyword)
         {
-            return SwarmDb.GetDatabaseForReading().GetMediaKeywordId (keyword);
+            return SwarmDb.GetDatabaseForReading().GetMediaKeywordId(keyword);
         }
     }
 }

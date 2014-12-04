@@ -9,7 +9,7 @@ namespace Swarmops.Logic.Swarm
     {
         #region Creation and Construction
 
-        private Activists (int[] personIds)
+        private Activists(int[] personIds)
         {
             this.personIds = personIds;
         }
@@ -23,13 +23,10 @@ namespace Swarmops.Logic.Swarm
         {
             get { return this.personIds.Length; }
         }
-        
+
         public int[] Identities
         {
-            get
-            {
-                return personIds;
-            }
+            get { return this.personIds; }
         }
 
         public People People
@@ -42,20 +39,20 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        public static int GetCountForGeography (Geography geography)
+        public static int GetCountForGeography(Geography geography)
         {
             Geographies geographies = geography.GetTree();
 
             return SwarmDb.GetDatabaseForReading().GetActivistCountForGeographies(geographies.Identities);
         }
 
-        public static Activists FromGeography (Geography geography)
+        public static Activists FromGeography(Geography geography)
         {
             Geographies geographies = geography.GetTree();
             return new Activists(SwarmDb.GetDatabaseForReading().GetActivistPersonIds(geographies.Identities));
         }
 
-        public void SendPhoneMessage (string message)
+        public void SendPhoneMessage(string message)
         {
             VerifyPeoplePopulated();
 
@@ -81,7 +78,7 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        public void SendNotice (string subject, string body)
+        public void SendNotice(string subject, string body)
         {
             VerifyPeoplePopulated();
 
@@ -92,7 +89,7 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        private void VerifyPeoplePopulated ()
+        private void VerifyPeoplePopulated()
         {
             if (this.people == null)
             {

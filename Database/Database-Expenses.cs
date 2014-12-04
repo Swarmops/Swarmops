@@ -9,7 +9,7 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public BasicExpenseClaim GetExpenseClaim (int expenseClaimId)
+        public BasicExpenseClaim GetExpenseClaim(int expenseClaimId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -19,7 +19,7 @@ namespace Swarmops.Database
                     "SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
                     "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
                     "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                    "FROM ExpenseClaims WHERE ExpenseClaimId=" + expenseClaimId.ToString(),
+                    "FROM ExpenseClaims WHERE ExpenseClaimId=" + expenseClaimId,
                     connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -44,10 +44,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                    "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                    "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                    "FROM ExpenseClaims " + ConstructWhereClause("ExpenseClaims", conditions),
-                                 connection);
+                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                 "FROM ExpenseClaims " + ConstructWhereClause("ExpenseClaims", conditions),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -71,10 +71,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                    "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                    "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                    "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId.ToString(),
-                                 connection);
+                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                 "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -98,10 +98,11 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                    "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                    "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                    "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId.ToString() + " AND OrganizationId=" + organizationId.ToString(),
-                                 connection);
+                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                 "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId +
+                                 " AND OrganizationId=" + organizationId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -125,10 +126,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                    "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                    "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                    "FROM ExpenseClaims WHERE BudgetId=" + budgetId.ToString() + " AND BudgetYear=" + budgetYear.ToString(),
-                                 connection);
+                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                 "FROM ExpenseClaims WHERE BudgetId=" + budgetId + " AND BudgetYear=" + budgetYear,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -152,10 +153,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                    "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                    "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                    "FROM ExpenseClaims WHERE OrganizationId=" + organizationId.ToString(),
-                                 connection);
+                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                 "FROM ExpenseClaims WHERE OrganizationId=" + organizationId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -170,7 +171,7 @@ namespace Swarmops.Database
         }
 
 
-        private BasicExpenseClaim ReadExpenseFromDataReader (DbDataReader reader)
+        private BasicExpenseClaim ReadExpenseFromDataReader(DbDataReader reader)
         {
             int expenseClaimId = reader.GetInt32(0);
             int claimingPersonId = reader.GetInt32(1);
@@ -190,14 +191,14 @@ namespace Swarmops.Database
             bool keepSeparate = reader.GetBoolean(15);
 
             return new BasicExpenseClaim(expenseClaimId, claimingPersonId, createdDateTime,
-                                    open, attested, documented, claimed, organizationId, geographyId,
-                                    budgetId, expenseDate, description, preApprovedAmount,
-                                    amountCents, repaid, keepSeparate);
+                open, attested, documented, claimed, organizationId, geographyId,
+                budgetId, expenseDate, description, preApprovedAmount,
+                amountCents, repaid, keepSeparate);
         }
 
 
         public int CreateExpenseClaim(int claimingPersonId, int organizationId, int budgetId,
-                                  DateTime expenseDate, string description, double amount)
+            DateTime expenseDate, string description, double amount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -218,7 +219,7 @@ namespace Swarmops.Database
         }
 
         public int CreateExpenseClaim(int claimingPersonId, int organizationId, int budgetId,
-                                  DateTime expenseDate, string description, Int64 amountCents)
+            DateTime expenseDate, string description, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -256,7 +257,7 @@ namespace Swarmops.Database
         }
 
 
-        public int SetExpenseClaimBudget (int expenseClaimId, int budgetId)
+        public int SetExpenseClaimBudget(int expenseClaimId, int budgetId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -273,7 +274,7 @@ namespace Swarmops.Database
         }
 
 
-        public int SetExpenseClaimBudgetYear (int expenseClaimId, int budgetYear)
+        public int SetExpenseClaimBudgetYear(int expenseClaimId, int budgetYear)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -290,7 +291,7 @@ namespace Swarmops.Database
         }
 
 
-        public int SetExpenseClaimDate (int expenseClaimId, DateTime expenseDate)
+        public int SetExpenseClaimDate(int expenseClaimId, DateTime expenseDate)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -324,7 +325,6 @@ namespace Swarmops.Database
         }
 
 
-
         public int SetExpenseClaimAmount(int expenseClaimId, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -340,7 +340,6 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
-
 
 
         public int SetExpenseClaimAttested(int expenseClaimId, bool attested)
@@ -360,7 +359,6 @@ namespace Swarmops.Database
         }
 
 
-
         public int SetExpenseClaimValidated(int expenseClaimId, bool validated)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -376,7 +374,6 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
-
 
 
         public int SetExpenseClaimKeepSeparate(int expenseClaimId, bool keepSeparate)
@@ -396,7 +393,6 @@ namespace Swarmops.Database
         }
 
 
-
         public int SetExpenseClaimClaimed(int expenseClaimId, bool claimed)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -412,8 +408,6 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
-
-
 
 
         public int SetExpenseClaimOpen(int expenseClaimId, bool open)
@@ -433,8 +427,6 @@ namespace Swarmops.Database
         }
 
 
-
-
         public int SetExpenseClaimRepaid(int expenseClaimId, bool repaid)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -450,8 +442,6 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
-
-
 
 
         public int CreateExpenseEvent(int expenseId, ExpenseEventType eventType, int personId)
@@ -476,8 +466,5 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }*/
         }
-
-
-
     }
 }

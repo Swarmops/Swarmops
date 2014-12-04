@@ -11,8 +11,8 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string ballotFieldSequence =
-            " BallotId,ElectionId,Name,OrganizationId,GeographyId," +   // 0-4
-            "BallotCount,DeliveryAddress " +             // 5-6
+            " BallotId,ElectionId,Name,OrganizationId,GeographyId," + // 0-4
+            "BallotCount,DeliveryAddress " + // 5-6
             "FROM Ballots ";
 
         private static BasicBallot ReadBallotFromDataReader(IDataRecord reader)
@@ -29,8 +29,6 @@ namespace Swarmops.Database
         }
 
         #endregion
-
-
 
         #region Record reading - SELECT statements
 
@@ -51,7 +49,7 @@ namespace Swarmops.Database
                         return ReadBallotFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown Ballot Id: " + ballotId.ToString());
+                    throw new ArgumentException("Unknown Ballot Id: " + ballotId);
                 }
             }
         }
@@ -91,7 +89,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT PersonId FROM BallotCandidates WHERE BallotId=" + ballotId + " ORDER BY SortOrder", connection);
+                        "SELECT PersonId FROM BallotCandidates WHERE BallotId=" + ballotId + " ORDER BY SortOrder",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -116,7 +115,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT PersonId FROM CandidateDocumentation WHERE ElectionId=" + electionId + " AND OrganizationId=" + organizationId, connection);
+                        "SELECT PersonId FROM CandidateDocumentation WHERE ElectionId=" + electionId +
+                        " AND OrganizationId=" + organizationId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -130,7 +130,7 @@ namespace Swarmops.Database
             }
         }
 
-        public Dictionary<int,int> GetBallotsForPerson (int personId)
+        public Dictionary<int, int> GetBallotsForPerson(int personId)
         {
             Dictionary<int, int> result = new Dictionary<int, int>();
 
@@ -146,7 +146,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result [reader.GetInt32(0)] = reader.GetInt32(1);
+                        result[reader.GetInt32(0)] = reader.GetInt32(1);
                     }
 
                     return result;
@@ -154,14 +154,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateBallot (int electionId, string name, int organizationId, int geographyId, int ballotCount, string deliveryAddress)
+        public int CreateBallot(int electionId, string name, int organizationId, int geographyId, int ballotCount,
+            string deliveryAddress)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -215,7 +213,6 @@ namespace Swarmops.Database
         }
 
 
-
         public void CreateBallotCandidate(int ballotId, int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -267,6 +264,5 @@ namespace Swarmops.Database
         }
 
         #endregion
-
     }
 }

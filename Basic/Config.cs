@@ -5,7 +5,7 @@ namespace Swarmops.Basic
 {
     public class Config
     {
-        static public int SmtpPort
+        public static int SmtpPort
         {
             get
             {
@@ -20,7 +20,7 @@ namespace Swarmops.Basic
             }
         }
 
-        static public string SmtpHost
+        public static string SmtpHost
         {
             get
             {

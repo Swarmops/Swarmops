@@ -13,7 +13,7 @@ namespace Swarmops.Database
             @" ExternalIdentityIdentity, ExternalIdentityTypeName, ExternalSystem, UserID, `Password`, AttachedToPerson
         FROM ExternalIdentities inner join ExternalIdentityTypes on TypeOfAccount=ExternalIdentityTypeId";
 
-        public BasicExternalIdentity GetExternalIdentity (int identity)
+        public BasicExternalIdentity GetExternalIdentity(int identity)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -37,7 +37,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicExternalIdentity GetExternalIdentityFromPersonIdAndType (int persId, ExternalIdentityType type)
+        public BasicExternalIdentity GetExternalIdentityFromPersonIdAndType(int persId, ExternalIdentityType type)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -45,7 +45,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + readFieldsSQL + " WHERE AttachedToPerson= @persId and ExternalIdentityTypeName = @typeName",
+                        "SELECT " + readFieldsSQL +
+                        " WHERE AttachedToPerson= @persId and ExternalIdentityTypeName = @typeName",
                         connection);
                 AddParameterWithName(command, "persId", persId);
                 AddParameterWithName(command, "typeName", type.ToString());
@@ -62,7 +63,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicExternalIdentity GetExternalIdentityFromUserIdAndType (string userid, ExternalIdentityType type)
+        public BasicExternalIdentity GetExternalIdentityFromUserIdAndType(string userid, ExternalIdentityType type)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -87,7 +88,7 @@ namespace Swarmops.Database
             }
         }
 
-        public List<BasicExternalIdentity> GetExternalIdentities (int persId)
+        public List<BasicExternalIdentity> GetExternalIdentities(int persId)
         {
             List<BasicExternalIdentity> retval = new List<BasicExternalIdentity>();
             using (DbConnection connection = GetMySqlDbConnection())
@@ -112,7 +113,7 @@ namespace Swarmops.Database
         }
 
         /// <summary>
-        /// Update/Insert if id == 0 it is an insert
+        ///     Update/Insert if id == 0 it is an insert
         /// </summary>
         /// <param name="externalIdentityIdentity"></param>
         /// <param name="externalSystem"></param>
@@ -121,7 +122,7 @@ namespace Swarmops.Database
         /// <param name="attachedToPerson"></param>
         /// <param name="typeOfAccount"></param>
         /// <returns></returns>
-        public BasicExternalIdentity SetExternalIdentity (
+        public BasicExternalIdentity SetExternalIdentity(
             int externalIdentityIdentity,
             ExternalIdentityType typeOfAccount,
             string externalSystem,
@@ -138,8 +139,8 @@ namespace Swarmops.Database
 
                 AddParameterWithName(command, "pExternalIdentityIdentity", externalIdentityIdentity);
                 AddParameterWithName(command, "pTypeOfAccount", typeOfAccount.ToString());
-                AddParameterWithName(command, "pExternalSystem", externalSystem.ToString());
-                AddParameterWithName(command, "pUserID", userID.ToString());
+                AddParameterWithName(command, "pExternalSystem", externalSystem);
+                AddParameterWithName(command, "pUserID", userID);
                 AddParameterWithName(command, "pPassword", password);
                 AddParameterWithName(command, "pAttachedToPerson", attachedToPerson);
 
@@ -155,18 +156,19 @@ namespace Swarmops.Database
         }
 
 
-
-
-        private BasicExternalIdentity ReadExternalIdentityFromDataReader (DbDataReader reader)
+        private BasicExternalIdentity ReadExternalIdentityFromDataReader(DbDataReader reader)
         {
-            int externalIdentityId = (int)reader["ExternalIdentityIdentity"];
-            ExternalIdentityType typeOfAccount = (ExternalIdentityType)Enum.Parse(typeof(ExternalIdentityType), reader["ExternalIdentityTypeName"].ToString());
-            string externalSystem = (string)reader["ExternalSystem"];
-            string userID = (string)reader["UserID"];
-            string password = (string)reader["Password"];
-            int attachedToPerson = (int)reader["AttachedToPerson"];
+            int externalIdentityId = (int) reader["ExternalIdentityIdentity"];
+            ExternalIdentityType typeOfAccount =
+                (ExternalIdentityType)
+                    Enum.Parse(typeof (ExternalIdentityType), reader["ExternalIdentityTypeName"].ToString());
+            string externalSystem = (string) reader["ExternalSystem"];
+            string userID = (string) reader["UserID"];
+            string password = (string) reader["Password"];
+            int attachedToPerson = (int) reader["AttachedToPerson"];
 
-            return new BasicExternalIdentity(externalIdentityId, typeOfAccount, externalSystem, userID, password, attachedToPerson);
+            return new BasicExternalIdentity(externalIdentityId, typeOfAccount, externalSystem, userID, password,
+                attachedToPerson);
         }
     }
 }

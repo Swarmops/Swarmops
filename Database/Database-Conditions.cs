@@ -8,7 +8,7 @@ namespace Swarmops.Database
     public partial class SwarmDb
     {
         /// <summary>
-        /// Constructs a WHERE clause for a table.
+        ///     Constructs a WHERE clause for a table.
         /// </summary>
         /// <param name="tableName">The table name, exactly as in the database.</param>
         /// <param name="conditionParameters">A sequence of IHasIdentity and/or DatabaseCondition objects.</param>
@@ -17,7 +17,7 @@ namespace Swarmops.Database
         //  Example: ConstructWhereClause (Organization.FromIdentity (1), Database.OpenTrue) makes
         //           a WHERE clause that matches OrganizationId=1 and Open=1.
         // 
-        private static string ConstructWhereClause (string tableName, params object[] conditionParameters)
+        private static string ConstructWhereClause(string tableName, params object[] conditionParameters)
         {
             List<string> conditionList = ConstructWhereClauseRecurse(tableName, conditionParameters);
 
@@ -33,9 +33,9 @@ namespace Swarmops.Database
 
 
         /// <summary>
-        /// Internal. Recurses for ConstructWhereClause.
+        ///     Internal. Recurses for ConstructWhereClause.
         /// </summary>
-        private static List<string> ConstructWhereClauseRecurse (string tableName, params object[] conditionParameters)
+        private static List<string> ConstructWhereClauseRecurse(string tableName, params object[] conditionParameters)
         {
             List<string> result = new List<string>();
 
@@ -51,16 +51,16 @@ namespace Swarmops.Database
                 }
                 else if (condition is DatabaseCondition)
                 {
-                    if ((DatabaseCondition)condition != DatabaseCondition.None)
+                    if ((DatabaseCondition) condition != DatabaseCondition.None)
                     {
-                        result.Add(tableName + "." + GetWhereClauseForCondition((DatabaseCondition)condition));
+                        result.Add(tableName + "." + GetWhereClauseForCondition((DatabaseCondition) condition));
                     }
                 }
                 else if (condition is string)
                 {
                     result.Add(condition as string);
                 }
-                else if (condition is object[])  // params object inherited and added to -- recurse
+                else if (condition is object[]) // params object inherited and added to -- recurse
                 {
                     List<string> recursed = ConstructWhereClauseRecurse(tableName, condition);
 
@@ -77,7 +77,7 @@ namespace Swarmops.Database
         }
 
 
-        private static string GetWhereClauseForObject (IHasIdentity foreignObject)
+        private static string GetWhereClauseForObject(IHasIdentity foreignObject)
         {
             // This is kind of dangerous and assumes that foreignObject has the same TYPE NAME,
             // including casing, as part of the DATABASE FIELD used for primary key.
@@ -96,11 +96,11 @@ namespace Swarmops.Database
                 return string.Empty;
             }
 
-            return " " + GetForeignTypeString(foreignObject) + "Id=" + foreignObject.Identity.ToString() + " ";
+            return " " + GetForeignTypeString(foreignObject) + "Id=" + foreignObject.Identity + " ";
         }
 
 
-        private static string GetWhereClauseForObjectList (IHasIdentities foreignObjects)
+        private static string GetWhereClauseForObjectList(IHasIdentities foreignObjects)
         {
             // As above, but with a List<IHasIdentity> object.
 
@@ -117,21 +117,22 @@ namespace Swarmops.Database
             {
                 // No ids to match. Make sure that no record is returned by asking for identity 0, which doesn't exist
 
-                identities = new int[1] { 0 };
+                identities = new int[1] {0};
             }
 
-            return " " + GetForeignTypeString(((List<IHasIdentity>)foreignObjects)[0]) + "Id IN (" + JoinIds(identities) + ") ";
+            return " " + GetForeignTypeString(((List<IHasIdentity>) foreignObjects)[0]) + "Id IN (" +
+                   JoinIds(identities) + ") ";
         }
 
 
-        private static string GetForeignTypeString (IHasIdentity foreignObject)
+        private static string GetForeignTypeString(IHasIdentity foreignObject)
         {
             string typeString = "";
-            foreach (object attribute in foreignObject.GetType().GetCustomAttributes(typeof(DbRecordType), true))
+            foreach (object attribute in foreignObject.GetType().GetCustomAttributes(typeof (DbRecordType), true))
             {
                 if (attribute is DbRecordType)
                 {
-                    typeString = ((DbRecordType)attribute).TypeName;
+                    typeString = ((DbRecordType) attribute).TypeName;
                 }
             }
             if (typeString == "")
@@ -149,7 +150,7 @@ namespace Swarmops.Database
         }
 
 
-        private static string GetWhereClauseForCondition (DatabaseCondition condition)
+        private static string GetWhereClauseForCondition(DatabaseCondition condition)
         {
             switch (condition)
             {
@@ -168,12 +169,12 @@ namespace Swarmops.Database
                 default:
                     throw new InvalidOperationException(
                         "Undefined or unimplemented DatabaseCondition in GetWhereClauseForCondition: " +
-                        condition.ToString());
+                        condition);
             }
         }
 
 
-        private static string JoinWhereClauses (params string[] clauses)
+        private static string JoinWhereClauses(params string[] clauses)
         {
             string result = string.Empty;
 
@@ -198,37 +199,43 @@ namespace Swarmops.Database
     public enum DatabaseCondition
     {
         /// <summary>
-        /// Undefined
+        ///     Undefined
         /// </summary>
         Unknown,
+
         /// <summary>
-        /// Retrieve only records where Open is true.
+        ///     Retrieve only records where Open is true.
         /// </summary>
         OpenTrue,
+
         /// <summary>
-        /// Retrieve only records where Open is false (closed records).
+        ///     Retrieve only records where Open is false (closed records).
         /// </summary>
         OpenFalse,
+
         /// <summary>
-        /// Retrieve only records where Attested is true.
+        ///     Retrieve only records where Attested is true.
         /// </summary>
         AttestedTrue,
+
         /// <summary>
-        /// Retreieve only records where Attested is false.
+        ///     Retreieve only records where Attested is false.
         /// </summary>
         AttestedFalse,
+
         /// <summary>
-        /// Retrieve only records where activists, memberships etc. are active.
+        ///     Retrieve only records where activists, memberships etc. are active.
         /// </summary>
         ActiveTrue,
+
         /// <summary>
-        /// Retrieve only records where activsts, memberships are closed/deactivated.
+        ///     Retrieve only records where activsts, memberships are closed/deactivated.
         /// </summary>
         ActiveFalse,
+
         /// <summary>
-        /// No condition
+        ///     No condition
         /// </summary>
         None
     }
-
 }

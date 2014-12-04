@@ -8,11 +8,11 @@ namespace Swarmops.Logic.Communications
 {
     public class AutoMail : BasicAutoMail
     {
-        private AutoMail() : base (null)
+        private AutoMail() : base(null)
         {
         } // Private constructor
 
-        private AutoMail (BasicAutoMail basic) : base (basic)
+        private AutoMail(BasicAutoMail basic) : base(basic)
         {
         }
 
@@ -23,20 +23,20 @@ namespace Swarmops.Logic.Communications
             set
             {
                 base.Body = value;
-                SwarmDb.GetDatabaseForWriting().SetAutoMail (this); // saves changes
+                SwarmDb.GetDatabaseForWriting().SetAutoMail(this); // saves changes
             }
         }
 
 
-        internal static AutoMail FromBasic (BasicAutoMail basic)
+        internal static AutoMail FromBasic(BasicAutoMail basic)
         {
-            return new AutoMail (basic);
+            return new AutoMail(basic);
         }
 
 
-        public static AutoMail FromTypeOrganizationAndGeography (AutoMailType type, Organization org, Geography geo)
+        public static AutoMail FromTypeOrganizationAndGeography(AutoMailType type, Organization org, Geography geo)
         {
-            BasicAutoMail basic = SwarmDb.GetDatabaseForReading().GetAutoMail (type, org.Identity, geo.Identity);
+            BasicAutoMail basic = SwarmDb.GetDatabaseForReading().GetAutoMail(type, org.Identity, geo.Identity);
 
             if (basic == null)
             {
@@ -48,16 +48,16 @@ namespace Swarmops.Logic.Communications
                 return null; // If there is no body, there is no mail
             }
 
-            return FromBasic (basic);
+            return FromBasic(basic);
         }
 
 
-        public static AutoMail Create (AutoMailType type, Organization org, Geography geo,
-                                       Person author, string title, string body)
+        public static AutoMail Create(AutoMailType type, Organization org, Geography geo,
+            Person author, string title, string body)
         {
-            SwarmDb.GetDatabaseForWriting().SetAutoMail (type, org.Identity, geo.Identity,
-                                                author == null ? 0 : author.Identity, title, body);
-            return FromTypeOrganizationAndGeography (type, org, geo);
+            SwarmDb.GetDatabaseForWriting().SetAutoMail(type, org.Identity, geo.Identity,
+                author == null ? 0 : author.Identity, title, body);
+            return FromTypeOrganizationAndGeography(type, org, geo);
         }
 
 

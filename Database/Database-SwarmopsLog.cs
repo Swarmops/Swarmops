@@ -27,11 +27,9 @@ namespace Swarmops.Database
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
-        public BasicSwarmopsLogEntry GetSwarmopsLogEntry (int swarmopsLogEntryId)
+        public BasicSwarmopsLogEntry GetSwarmopsLogEntry(int swarmopsLogEntryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -39,7 +37,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + swarmopsLogFieldSequence + "WHERE SwarmopsLogEntryId=" + swarmopsLogEntryId + ";", connection);
+                        "SELECT" + swarmopsLogFieldSequence + "WHERE SwarmopsLogEntryId=" + swarmopsLogEntryId + ";",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -48,7 +47,7 @@ namespace Swarmops.Database
                         return ReadSwarmopsLogEntryFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown SwarmopsLogEntryId: " + swarmopsLogEntryId.ToString());
+                    throw new ArgumentException("Unknown SwarmopsLogEntryId: " + swarmopsLogEntryId);
                 }
             }
         }
@@ -63,7 +62,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + swarmopsLogFieldSequence + " WHERE DateTime >= '" + startDate.ToString("yyyy-MM-dd HH:mm:ss") + "' AND DateTime < '" + endDate.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY DateTime", connection);
+                        "SELECT" + swarmopsLogFieldSequence + " WHERE DateTime >= '" +
+                        startDate.ToString("yyyy-MM-dd HH:mm:ss") + "' AND DateTime < '" +
+                        endDate.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY DateTime", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -77,15 +78,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
-
-
-
         #region Creation and manipulation - stored procedures
-
 
         public int CreateSwarmopsLogEntry(int personId, string entryType, string entryXml)
         {
@@ -107,7 +102,8 @@ namespace Swarmops.Database
             }
         }
 
-        public void CreateSwarmopsLogEntryAffectedObject (int swarmopsLogEntryId, string affectedObjectType, int affectedObjectId)
+        public void CreateSwarmopsLogEntryAffectedObject(int swarmopsLogEntryId, string affectedObjectType,
+            int affectedObjectId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -120,7 +116,7 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "affectedObjectType", affectedObjectType);
                 AddParameterWithName(command, "affectedObjectId", affectedObjectId);
 
-                command.ExecuteNonQuery();  // no return value - table has no identity
+                command.ExecuteNonQuery(); // no return value - table has no identity
             }
         }
 
@@ -203,8 +199,6 @@ namespace Swarmops.Database
         }
         */
 
-
         #endregion
-
     }
 }

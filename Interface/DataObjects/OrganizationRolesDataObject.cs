@@ -11,117 +11,53 @@ namespace Swarmops.Interface.DataObjects
 #if !__MonoCS__
     [DataObject(true)]
 #endif
-
     public class OrganizationRolesDataObject
     {
         public class Role : BasicPersonRole
         {
-            private string organisationName;
-            private string geographyName;
-            private string personName;
-            private string roleName;
-            private int level;
-            private int geoLevel;
-
-            public Role ()
-                : base()
+            public Role()
             {
             }
 
-            public Role (BasicPersonRole org)
+            public Role(BasicPersonRole org)
                 : base(org)
             {
-                organisationName = Organization.FromIdentity(this.OrganizationId).Name;
-                personName = Person.FromIdentity(this.PersonId).Name;
-                roleName = Enum.GetName(this.Type.GetType(), this.Type);
-                geographyName = "";
-                if (RoleTypes.ClassOfRole(this.Type) == RoleClass.Local)
+                this.OrganisationName = Organization.FromIdentity(OrganizationId).Name;
+                this.PersonName = Person.FromIdentity(PersonId).Name;
+                this.RoleName = Enum.GetName(Type.GetType(), Type);
+                this.GeographyName = "";
+                if (RoleTypes.ClassOfRole(Type) == RoleClass.Local)
                 {
                     if (GeographyId > 0)
                     {
-                        geographyName = Geography.FromIdentity(GeographyId).Name;
+                        this.GeographyName = Geography.FromIdentity(GeographyId).Name;
                     }
                 }
             }
 
-            public string GeographyName
-            {
-                get
-                {
-                    return geographyName;
-                }
-                set
-                {
-                    geographyName = value;
-                }
-            }
-            public int GeoLevel
-            {
-                get
-                {
-                    return geoLevel;
-                }
-                set
-                {
-                    geoLevel = value;
-                }
-            }
-            public int Level
-            {
-                get
-                {
-                    return level;
-                }
-                set
-                {
-                    level = value;
-                }
-            }
-            public string OrganisationName
-            {
-                get
-                {
-                    return organisationName;
-                }
-                set
-                {
-                    organisationName = value;
-                }
-            }
-            public string PersonName
-            {
-                get
-                {
-                    return personName;
-                }
-                set
-                {
-                    personName = value;
-                }
-            }
-            public string RoleName
-            {
-                get
-                {
-                    return roleName;
-                }
-                set
-                {
-                    roleName = value;
-                }
-            }
+            public string GeographyName { get; set; }
 
+            public int GeoLevel { get; set; }
+
+            public int Level { get; set; }
+
+            public string OrganisationName { get; set; }
+
+            public string PersonName { get; set; }
+
+            public string RoleName { get; set; }
         }
 
-        static private object dataLock = new object();
-        static private Dictionary<int, Geographies.HierSortOrder> hierarchicalSortOrder = new Dictionary<int, Geographies.HierSortOrder>();
+        private static readonly object dataLock = new object();
 
+        private static Dictionary<int, Geographies.HierSortOrder> hierarchicalSortOrder =
+            new Dictionary<int, Geographies.HierSortOrder>();
 
 
 #if !__MonoCS__
         [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        static public OrganizationRolesDataObject.Role[] SelectAllByOrganization (int organizationId)
+        public static Role[] SelectAllByOrganization(int organizationId)
         {
             try
             {
@@ -143,11 +79,12 @@ namespace Swarmops.Interface.DataObjects
             }
             catch
             {
-                return new OrganizationRolesDataObject.Role[0];
+                return new Role[0];
             }
         }
 
-        static private void RecursiveAddInTreeOrder (List<Role> resultList, Dictionary<int, List<Role>> roleDictionary, int currentOrg, int level)
+        private static void RecursiveAddInTreeOrder(List<Role> resultList, Dictionary<int, List<Role>> roleDictionary,
+            int currentOrg, int level)
         {
             if (roleDictionary.ContainsKey(currentOrg))
             {
@@ -157,19 +94,24 @@ namespace Swarmops.Interface.DataObjects
                         int res = 0;
                         try
                         {
-                            res = ((int)RoleTypes.ClassOfRole(r1.Type)).CompareTo((int)RoleTypes.ClassOfRole(r2.Type));
+                            res = ((int) RoleTypes.ClassOfRole(r1.Type)).CompareTo((int) RoleTypes.ClassOfRole(r2.Type));
                         }
-                        catch { }
+                        catch
+                        {
+                        }
                         try
                         {
                             if (res == 0)
-                                res = hierarchicalSortOrder[r1.GeographyId].Order.CompareTo(hierarchicalSortOrder[r2.GeographyId].Order);
+                                res =
+                                    hierarchicalSortOrder[r1.GeographyId].Order.CompareTo(
+                                        hierarchicalSortOrder[r2.GeographyId].Order);
                         }
-                        catch { }
+                        catch
+                        {
+                        }
                         if (res == 0)
                             res = r1.Type.CompareTo(r2.Type);
                         return res;
-
                     });
                 foreach (Role role in roleDictionary[currentOrg])
                 {
@@ -186,7 +128,7 @@ namespace Swarmops.Interface.DataObjects
 #if !__MonoCS__
         [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        static public OrganizationRolesDataObject.Role[] SelectSubByOrganization (int organizationId)
+        public static Role[] SelectSubByOrganization(int organizationId)
         {
             try
             {
@@ -211,14 +153,14 @@ namespace Swarmops.Interface.DataObjects
             }
             catch
             {
-                return new OrganizationRolesDataObject.Role[0];
+                return new Role[0];
             }
         }
 
 #if !__MonoCS__
         [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        static public OrganizationRolesDataObject.Role[] SelectThisByOrganization (int organizationId)
+        public static Role[] SelectThisByOrganization(int organizationId)
         {
             try
             {
@@ -243,7 +185,7 @@ namespace Swarmops.Interface.DataObjects
             }
             catch
             {
-                return new OrganizationRolesDataObject.Role[0];
+                return new Role[0];
             }
         }
     }

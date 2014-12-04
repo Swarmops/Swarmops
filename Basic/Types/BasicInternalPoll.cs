@@ -3,28 +3,33 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicInternalPoll: IHasIdentity
+    public class BasicInternalPoll : IHasIdentity
     {
-        public BasicInternalPoll (int internalPollId, int createdByPersonId, int organizationId, int geographyId, string name, bool runningOpen, bool votingOpen, int maxVoteLength, DateTime runningOpens, DateTime runningCloses, DateTime votingOpens, DateTime votingCloses, InternalPollResultsType resultsType)
+        public BasicInternalPoll(int internalPollId, int createdByPersonId, int organizationId, int geographyId,
+            string name, bool runningOpen, bool votingOpen, int maxVoteLength, DateTime runningOpens,
+            DateTime runningCloses, DateTime votingOpens, DateTime votingCloses, InternalPollResultsType resultsType)
         {
-            this.InternalPollId = internalPollId;
-            this.CreatedByPersonId = createdByPersonId;
-            this.OrganizationId = organizationId;
-            this.GeographyId = geographyId;
-            this.Name = name;
-            this.RunningOpen = runningOpen;
-            this.VotingOpen = votingOpen;
-            this.MaxVoteLength = maxVoteLength;
-            this.RunningOpens = runningOpens;
-            this.RunningCloses = runningCloses;
-            this.VotingOpens = votingOpens;
-            this.VotingCloses = votingCloses;
-            this.ResultsType = resultsType;
+            InternalPollId = internalPollId;
+            CreatedByPersonId = createdByPersonId;
+            OrganizationId = organizationId;
+            GeographyId = geographyId;
+            Name = name;
+            RunningOpen = runningOpen;
+            VotingOpen = votingOpen;
+            MaxVoteLength = maxVoteLength;
+            RunningOpens = runningOpens;
+            RunningCloses = runningCloses;
+            VotingOpens = votingOpens;
+            VotingCloses = votingCloses;
+            ResultsType = resultsType;
         }
 
         public BasicInternalPoll(BasicInternalPoll original)
-            : this(original.InternalPollId, original.CreatedByPersonId, original.OrganizationId, original.GeographyId, original.Name, original.RunningOpen,
-            original.VotingOpen, original.MaxVoteLength, original.RunningOpens, original.RunningCloses, original.VotingOpens, original.VotingCloses, original.ResultsType)
+            : this(
+                original.InternalPollId, original.CreatedByPersonId, original.OrganizationId, original.GeographyId,
+                original.Name, original.RunningOpen,
+                original.VotingOpen, original.MaxVoteLength, original.RunningOpens, original.RunningCloses,
+                original.VotingOpens, original.VotingCloses, original.ResultsType)
         {
             // empty copy ctor
         }
@@ -47,7 +52,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.InternalPollId; }
+            get { return InternalPollId; }
         }
 
         #endregion
@@ -57,16 +62,19 @@ namespace Swarmops.Basic.Types
     public enum InternalPollResultsType
     {
         Unknown,
+
         /// <summary>
-        /// Primaries vote -- a Condorcet Schultze divided into six lists and some other twists
+        ///     Primaries vote -- a Condorcet Schultze divided into six lists and some other twists
         /// </summary>
         Primaries,
+
         /// <summary>
-        /// A straight Condorcet Schultze, ranking the candidates
+        ///     A straight Condorcet Schultze, ranking the candidates
         /// </summary>
         Schulze,
+
         /// <summary>
-        /// Accept vote: Count the number of accepts for each candidate
+        ///     Accept vote: Count the number of accepts for each candidate
         /// </summary>
         Accept
     }

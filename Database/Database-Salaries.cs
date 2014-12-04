@@ -11,9 +11,9 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string salaryFieldSequence =
-            " SalaryId,PayrollItemId,PayoutDate,Salaries.BaseSalaryCents,NetSalaryCents," +  // 0-4
+            " SalaryId,PayrollItemId,PayoutDate,Salaries.BaseSalaryCents,NetSalaryCents," + // 0-4
             "SubtractiveTaxCents,AdditiveTaxCents,Attested,NetPaid,TaxPaid," + // 5-9
-            "Salaries.Open " +             // 10
+            "Salaries.Open " + // 10
             "FROM Salaries ";
 
         private static BasicSalary ReadSalaryFromDataReader(IDataRecord reader)
@@ -30,23 +30,22 @@ namespace Swarmops.Database
             bool taxPaid = reader.GetBoolean(9);
             bool open = reader.GetBoolean(10);
 
-            return new BasicSalary(salaryId, payrollItemId, payoutDate, baseSalaryCents, netSalaryCents, subtractiveTaxCents, additiveTaxCents,
-                                   attested, netPaid, taxPaid, open);
+            return new BasicSalary(salaryId, payrollItemId, payoutDate, baseSalaryCents, netSalaryCents,
+                subtractiveTaxCents, additiveTaxCents,
+                attested, netPaid, taxPaid, open);
         }
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
         /// <summary>
-        /// Gets a salary from the database.
+        ///     Gets a salary from the database.
         /// </summary>
         /// <param name="salaryId">The salary database identity.</param>
         /// <returns>The requested salary.</returns>
         /// <exception cref="ArgumentException">Thrown if there is no such identity.</exception>
-        public BasicSalary GetSalary (int salaryId)
+        public BasicSalary GetSalary(int salaryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -63,15 +62,18 @@ namespace Swarmops.Database
                         return ReadSalaryFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown Salary Id: " + salaryId.ToString());
+                    throw new ArgumentException("Unknown Salary Id: " + salaryId);
                 }
             }
         }
 
         /// <summary>
-        /// Gets salaries from the database.
+        ///     Gets salaries from the database.
         /// </summary>
-        /// <param name="conditions">An optional combination of a Person and/or Organization object and/or DatabaseCondition specifiers.</param>
+        /// <param name="conditions">
+        ///     An optional combination of a Person and/or Organization object and/or DatabaseCondition
+        ///     specifiers.
+        /// </param>
         /// <returns>A list of matching salaries.</returns>
         public BasicSalary[] GetSalaries(params object[] conditions)
         {
@@ -83,7 +85,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + salaryFieldSequence + "JOIN Payroll USING (PayrollItemId)" + ConstructWhereClause("Salaries", conditions), connection);
+                        "SELECT" + salaryFieldSequence + "JOIN Payroll USING (PayrollItemId)" +
+                        ConstructWhereClause("Salaries", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -97,15 +100,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-
-        public int CreateSalary(int payrollItemId, DateTime payoutDate, Int64 baseSalaryCents, Int64 netSalaryCents, Int64 subtractiveTaxCents, Int64 additiveTaxCents)
+        public int CreateSalary(int payrollItemId, DateTime payoutDate, Int64 baseSalaryCents, Int64 netSalaryCents,
+            Int64 subtractiveTaxCents, Int64 additiveTaxCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -144,7 +144,6 @@ namespace Swarmops.Database
                 // So if both are paid, Open is set to false.
             }
         }
-
 
 
         public void SetSalaryNetSalary(int salaryId, Int64 netSalaryCents)
@@ -200,9 +199,6 @@ namespace Swarmops.Database
             }
         }
 
-
-
         #endregion
-
     }
 }

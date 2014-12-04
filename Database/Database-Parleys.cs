@@ -8,17 +8,16 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
-        private const string parleyFieldSequence = 
-            " ParleyId, OrganizationId, PersonId, BudgetId, CreatedDateTime, " +  // 0-4
-            "Open, Attested, Name, GeographyId, Description, " +                 // 5-9
+        private const string parleyFieldSequence =
+            " ParleyId, OrganizationId, PersonId, BudgetId, CreatedDateTime, " + // 0-4
+            "Open, Attested, Name, GeographyId, Description, " + // 5-9
             "InformationUrl, StartDate, EndDate, BudgetCents, GuaranteeCents, " + // 10-14
-            "AttendanceFeeCents, ClosedDateTime" +                                // 15-16
+            "AttendanceFeeCents, ClosedDateTime" + // 15-16
             " FROM Parleys ";
 
-        private static BasicParley ReadParleyFromDataReader (IDataRecord reader)
+        private static BasicParley ReadParleyFromDataReader(IDataRecord reader)
         {
             int parleyId = reader.GetInt32(0);
             int organizationId = reader.GetInt32(1);
@@ -48,14 +47,11 @@ namespace Swarmops.Database
                 attendanceFeeCents, closedDateTime);
         }
 
-
         #endregion
-
 
         #region Database record reading -- SELECT clauses
 
-
-        public BasicParley GetParley (int parleyId)
+        public BasicParley GetParley(int parleyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -63,8 +59,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + parleyFieldSequence +
-                    "WHERE ParleyId=" + parleyId.ToString(),
-                                 connection);
+                                 "WHERE ParleyId=" + parleyId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -73,10 +69,9 @@ namespace Swarmops.Database
                         return ReadParleyFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such ParleyId:" + parleyId.ToString());
+                    throw new ArgumentException("No such ParleyId:" + parleyId);
                 }
             }
-
         }
 
 
@@ -104,14 +99,13 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Creation and manipulation -- stored procedures
 
-
-        public int CreateParley(int organizationId, int personId, int budgetId, string name, int geographyId, string description, string informationUrl, DateTime startDate, DateTime endDate, Int64 budgetCents, Int64 guaranteeCents, Int64 attendanceFeeCents)
+        public int CreateParley(int organizationId, int personId, int budgetId, string name, int geographyId,
+            string description, string informationUrl, DateTime startDate, DateTime endDate, Int64 budgetCents,
+            Int64 guaranteeCents, Int64 attendanceFeeCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -181,14 +175,12 @@ namespace Swarmops.Database
 
                 AddParameterWithName(command, "parleyId", parleyId);
                 AddParameterWithName(command, "open", open);
-                AddParameterWithName(command, "closedDateTime", DateTime.Now);  // ignored if open=true
+                AddParameterWithName(command, "closedDateTime", DateTime.Now); // ignored if open=true
 
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
 
         #endregion
-
-
     }
 }

@@ -4,37 +4,38 @@ using Swarmops.Database;
 
 namespace Swarmops.Logic.Financial
 {
-    public class PaymentInformation: BasicPaymentInformation
+    public class PaymentInformation : BasicPaymentInformation
     {
-        private PaymentInformation (BasicPaymentInformation basic): base (basic)
+        private PaymentInformation(BasicPaymentInformation basic) : base(basic)
         {
             // empty
         }
 
-        public static PaymentInformation FromBasic (BasicPaymentInformation basic)
+        public static PaymentInformation FromBasic(BasicPaymentInformation basic)
         {
             return new PaymentInformation(basic);
         }
     }
 
-    public class PaymentInformationList: List<PaymentInformation>
+    public class PaymentInformationList : List<PaymentInformation>
     {
-        static public PaymentInformationList FromArray(BasicPaymentInformation[] basicArray)
+        public static PaymentInformationList FromArray(BasicPaymentInformation[] basicArray)
         {
-            var result = new PaymentInformationList() { Capacity = basicArray.Length * 11 / 10 };
+            PaymentInformationList result = new PaymentInformationList {Capacity = basicArray.Length*11/10};
 
             foreach (BasicPaymentInformation basic in basicArray)
             {
-                result.Add((PaymentInformation)PaymentInformation.FromBasic(basic));
+                result.Add(PaymentInformation.FromBasic(basic));
             }
 
             return result;
         }
-        
-        
-        public static PaymentInformationList ForPayment (Payment payment)
+
+
+        public static PaymentInformationList ForPayment(Payment payment)
         {
-            BasicPaymentInformation[] basicInfoList = SwarmDb.GetDatabaseForReading().GetPaymentInformation(payment.Identity);
+            BasicPaymentInformation[] basicInfoList =
+                SwarmDb.GetDatabaseForReading().GetPaymentInformation(payment.Identity);
 
             return FromArray(basicInfoList);
         }

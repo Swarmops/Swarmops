@@ -5,8 +5,14 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialTransaction : IHasIdentity
     {
-        public BasicFinancialTransaction (int financialTransactionId, int organizationId, DateTime dateTime,
-                                          string description, string importHash)
+        private readonly DateTime dateTime;
+        private readonly int financialTransactionId;
+        private readonly string importHash;
+        private readonly int organizationId;
+        private string description;
+
+        public BasicFinancialTransaction(int financialTransactionId, int organizationId, DateTime dateTime,
+            string description, string importHash)
         {
             this.financialTransactionId = financialTransactionId;
             this.organizationId = organizationId;
@@ -15,18 +21,12 @@ namespace Swarmops.Basic.Types.Financial
             this.importHash = importHash;
         }
 
-        public BasicFinancialTransaction (BasicFinancialTransaction original) :
+        public BasicFinancialTransaction(BasicFinancialTransaction original) :
             this(
             original.financialTransactionId, original.organizationId, original.dateTime, original.description,
             original.importHash)
         {
         }
-
-        private int organizationId;
-        private int financialTransactionId;
-        private DateTime dateTime;
-        private string description;
-        private string importHash;
 
         public int OrganizationId
         {

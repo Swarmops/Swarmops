@@ -3,23 +3,24 @@ using System;
 namespace Swarmops.Database.Attributes
 {
     /// <summary>
-    /// DbRecordType is used to mark a class what its database record is named
-    /// Needed if a Logic entity is using Database-condition and have to work with a subclass
-    /// i.e.     [DbRecordType("Person")] on class Person
+    ///     DbRecordType is used to mark a class what its database record is named
+    ///     Needed if a Logic entity is using Database-condition and have to work with a subclass
+    ///     i.e.     [DbRecordType("Person")] on class Person
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
-    public class DbRecordType : System.Attribute
+    public class DbRecordType : Attribute
     {
-        string typeName = "";
+        private string typeName = "";
+
+        public DbRecordType(string recordname)
+        {
+            this.typeName = recordname;
+        }
 
         public string TypeName
         {
-            get { return typeName; }
-            set { typeName = value; }
-        }
-        public DbRecordType (string recordname)
-        {
-            typeName = recordname;
+            get { return this.typeName; }
+            set { this.typeName = value; }
         }
     }
 }

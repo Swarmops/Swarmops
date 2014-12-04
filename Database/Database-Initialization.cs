@@ -23,7 +23,7 @@ namespace Swarmops.Database
             }
         }
 
-        public int ExecuteAdminCommandScalar (string sqlSequence)
+        public int ExecuteAdminCommandScalar(string sqlSequence)
         {
             // TODO: Verify that we're in admin mode
 
@@ -44,6 +44,5 @@ namespace Swarmops.Database
                 return Convert.ToInt32(result);
             }
         }
-
     }
 }

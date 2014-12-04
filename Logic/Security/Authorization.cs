@@ -16,49 +16,71 @@ namespace Swarmops.Logic.Security
         public enum Flag
         {
             NotSpecified = 0,
+
             /// <summary>
-            /// Default equals NotSpecified, and means that Inheritance paths will be checked
+            ///     Default equals NotSpecified, and means that Inheritance paths will be checked
             /// </summary>
             Default = 0,
+
             /// <summary>
-            /// AnyGeography means that Geograpy of found role is not checked. Use to find PersonRole with permission, regardless of type and geograpy
+            ///     AnyGeography means that Geograpy of found role is not checked. Use to find PersonRole with permission, regardless
+            ///     of type and geograpy
             /// </summary>
             AnyGeography = 1 << 0,
+
             /// <summary>
-            /// ExactGeography means that Inheritance paths will NOT be checked, only exact hit is found
+            ///     ExactGeography means that Inheritance paths will NOT be checked, only exact hit is found
             /// </summary>
             ExactGeography = 1 << 1,
+
             /// <summary>
-            /// AnyGeography means that Organization of found role is not checked. Use to find PersonRole with permission, regardless of type and organisation
+            ///     AnyGeography means that Organization of found role is not checked. Use to find PersonRole with permission,
+            ///     regardless of type and organisation
             /// </summary>
             AnyOrganization = 1 << 3,
+
             /// <summary>
-            /// ExactOrganization means that Inheritance paths will NOT be checked, only exact hit is found
+            ///     ExactOrganization means that Inheritance paths will NOT be checked, only exact hit is found
             /// </summary>
             ExactOrganization = 1 << 4,
+
             /// <summary>
-            /// Combined for ease of use
+            ///     Combined for ease of use
             /// </summary>
             AnyGeographyAnyOrganization = AnyGeography | AnyOrganization,
+
             /// <summary>
-            /// Combined for ease of use
+            ///     Combined for ease of use
             /// </summary>
             AnyGeographyExactOrganization = AnyGeography | ExactOrganization,
+
             /// <summary>
-            /// Combined for ease of use
+            ///     Combined for ease of use
             /// </summary>
             ExactGeographyAnyOrganization = ExactGeography | AnyOrganization,
+
             /// <summary>
-            /// Combined for ease of use
+            ///     Combined for ease of use
             /// </summary>
             ExactGeographyExactOrganization = ExactGeography | ExactOrganization
         };
 
-        static Dictionary<Permission, RoleType[]> _PermissonsDict
-                = new Dictionary<Permission, RoleType[]>();
+        private static Dictionary<Permission, RoleType[]> _PermissonsDict
+            = new Dictionary<Permission, RoleType[]>();
 
-        static Dictionary<RoleType, Dictionary<Permission, bool>> _PermissonsPerRoleTypeDict
-                = new Dictionary<RoleType, Dictionary<Permission, bool>>();
+        private static Dictionary<RoleType, Dictionary<Permission, bool>> _PermissonsPerRoleTypeDict
+            = new Dictionary<RoleType, Dictionary<Permission, bool>>();
+
+        public static Boolean flagReload = true;
+
+        public static DateTime lastReload = DateTime.Now;
+
+        private static readonly object reloadLock = new object();
+
+        static Authorization()
+        {
+            InitializeStaticData();
+        }
 
         private static Dictionary<Permission, RoleType[]> PermissonsDict
         {
@@ -66,12 +88,49 @@ namespace Swarmops.Logic.Security
             {
                 if (flagReload)
                     InitializeStaticData();
-                return Authorization._PermissonsDict;
+                return _PermissonsDict;
             }
-            set { Authorization._PermissonsDict = value; }
+            set { _PermissonsDict = value; }
         }
 
-        public static bool RoleTypeHasPermission (RoleType r, Permission p)
+        /// <summary>
+        ///     List of the roles which make a member visible outwards.
+        /// </summary>
+        public static RoleType[] VisibleRoles
+        {
+            get
+            {
+                return new[]
+                {
+                    RoleType.LocalLead, RoleType.LocalDeputy, RoleType.OrganizationChairman,
+                    RoleType.OrganizationSecretary, RoleType.OrganizationTreasurer,
+                    RoleType.OrganizationVice1, RoleType.OrganizationVice2,
+                    RoleType.OrganizationBoardMember, RoleType.OrganizationBoardDeputy
+                };
+            }
+        }
+
+        /// <summary>
+        ///     Like VisibleRoles, but in dictionary form.
+        /// </summary>
+        public static Dictionary<RoleType, bool> VisibleRolesDictionary
+        {
+            get
+            {
+                Dictionary<RoleType, bool> result = new Dictionary<RoleType, bool>();
+
+                RoleType[] roleTypes = VisibleRoles;
+
+                foreach (RoleType roleType in roleTypes)
+                {
+                    result[roleType] = true;
+                }
+
+                return result;
+            }
+        }
+
+        public static bool RoleTypeHasPermission(RoleType r, Permission p)
         {
             if (flagReload)
                 InitializeStaticData();
@@ -86,12 +145,12 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public static RoleType[] RoleTypesWithPermission (Permission p)
+        public static RoleType[] RoleTypesWithPermission(Permission p)
         {
             return RoleTypesWithPermission(p, RoleTypes.AllLocalRoleTypes);
         }
 
-        public static RoleType[] RoleTypesWithPermission (Permission p, RoleType[] rt)
+        public static RoleType[] RoleTypesWithPermission(Permission p, RoleType[] rt)
         {
             List<RoleType> resList = new List<RoleType>();
             foreach (RoleType r in rt)
@@ -105,19 +164,7 @@ namespace Swarmops.Logic.Security
         }
 
 
-
-        static Authorization ()
-        {
-            InitializeStaticData();
-        }
-
-        static public Boolean flagReload = true;
-
-        static public DateTime lastReload = DateTime.Now;
-
-        static object reloadLock = new object();
-
-        public static void InitializeStaticData ()
+        public static void InitializeStaticData()
         {
             lock (reloadLock)
             {
@@ -146,7 +193,7 @@ namespace Swarmops.Logic.Security
                         tempDict[perm].Add(role);
                     }
                     Dictionary<Permission, RoleType[]> newPermissonsDict
-                           = new Dictionary<Permission, RoleType[]>();
+                        = new Dictionary<Permission, RoleType[]>();
                     foreach (Permission p in tempDict.Keys)
                     {
                         RoleType[] roles = tempDict[p].ToArray();
@@ -159,35 +206,31 @@ namespace Swarmops.Logic.Security
         }
 
 
-        internal class FoundItException : Exception
-        {
-        }
-
-
-        public static Authority GetPersonAuthority (int personId)
+        public static Authority GetPersonAuthority(int personId)
         {
             return Authority.FromBasic(SwarmDb.GetDatabaseForReading().GetPersonAuthority(Person.FromIdentity(personId)));
         }
 
 
-        public static BasicGeography[] GetNodesInAuthorityForOrganization (BasicAuthority authority, int organizationId)
+        public static BasicGeography[] GetNodesInAuthorityForOrganization(BasicAuthority authority, int organizationId)
         {
             return GetNodesInAuthorityForOrganization(authority, organizationId, RoleTypes.AllRoleTypes);
         }
 
-        public static BasicGeography[] GetNodesInAuthorityForOrganization (BasicAuthority authority, int organizationId, RoleType[] roleTypes)
+        public static BasicGeography[] GetNodesInAuthorityForOrganization(BasicAuthority authority, int organizationId,
+            RoleType[] roleTypes)
         {
             Organizations organizationLine = Organization.FromIdentity(organizationId).GetLine();
 
             // Build lookup tables
 
-            var orgLookup = new Dictionary<int, BasicOrganization>();
+            Dictionary<int, BasicOrganization> orgLookup = new Dictionary<int, BasicOrganization>();
             foreach (BasicOrganization organization in organizationLine)
             {
                 orgLookup[organization.OrganizationId] = organization;
             }
 
-            var roleLookup = new Dictionary<RoleType, bool>();
+            Dictionary<RoleType, bool> roleLookup = new Dictionary<RoleType, bool>();
             foreach (RoleType roleType in roleTypes)
             {
                 roleLookup[roleType] = true;
@@ -195,7 +238,7 @@ namespace Swarmops.Logic.Security
 
             // Create list
 
-            var result = new List<BasicGeography>();
+            List<BasicGeography> result = new List<BasicGeography>();
 
             if (authority.AllPersonRoles.Length > 0)
             {
@@ -235,42 +278,55 @@ namespace Swarmops.Logic.Security
 
 
         /// <summary>
-        /// Checks for authorization for a specific activity.
+        ///     Checks for authorization for a specific activity.
         /// </summary>
         /// <param name="permissionsNeeded">The permissions to allow or disallow.</param>
         /// <param name="organizationId">The organization the activity is applied to.</param>
         /// <param name="geographyId">The node the activity is applied to, or zero for world.</param>
         /// <param name="checkedPersonId">The person performing the activity (NOT the victim of it).</param>
         /// <returns>True if allowed under current authority.</returns>
-        public static bool CheckAuthorization (PermissionSet permissionsNeeded, int organizationId, int geoNodeId, int checkedPersonId, Flag flags)
+        public static bool CheckAuthorization(PermissionSet permissionsNeeded, int organizationId, int geoNodeId,
+            int checkedPersonId, Flag flags)
         {
-            return CheckAuthorization(permissionsNeeded, organizationId, geoNodeId, GetPersonAuthority(checkedPersonId), flags);
+            return CheckAuthorization(permissionsNeeded, organizationId, geoNodeId, GetPersonAuthority(checkedPersonId),
+                flags);
         }
 
         /// <summary>
-        /// Checks for authorization for a specific activity.
+        ///     Checks for authorization for a specific activity.
         /// </summary>
         /// <param name="permissionsNeeded">The permissions to allow or disallow.</param>
         /// <param name="organizationId">The organization the activity is applied to.</param>
         /// <param name="geographyId">The node the activity is applied to, or zero for world.</param>
         /// <param name="authority">The authority to test against.</param>
         /// <returns>True if allowed under current authority.</returns>
-        public static bool CheckAuthorization (PermissionSet permissionsNeeded, int organizationId, int geoNodeId, Authority authority, Flag flags)
+        public static bool CheckAuthorization(PermissionSet permissionsNeeded, int organizationId, int geoNodeId,
+            Authority authority, Flag flags)
         {
             if (permissionsNeeded == null)
                 return false;
             Geography currentGeo = null;
             if (geoNodeId > 0)
             {
-                try { currentGeo = Geography.FromIdentity(geoNodeId); }
-                catch { }
+                try
+                {
+                    currentGeo = Geography.FromIdentity(geoNodeId);
+                }
+                catch
+                {
+                }
             }
 
             Organization currentOrg = null;
             if (organizationId > 0)
             {
-                try { currentOrg = Organization.FromIdentity(organizationId); }
-                catch { }
+                try
+                {
+                    currentOrg = Organization.FromIdentity(organizationId);
+                }
+                catch
+                {
+                }
             }
 
 
@@ -282,48 +338,56 @@ namespace Swarmops.Logic.Security
 
                 if (perm.geographyId > 0)
                 {
-                    try { innerCurrentGeo = Geography.FromIdentity(perm.geographyId); }
-                    catch { }
+                    try
+                    {
+                        innerCurrentGeo = Geography.FromIdentity(perm.geographyId);
+                    }
+                    catch
+                    {
+                    }
                 }
                 else
                     innerCurrentGeo = currentGeo;
 
                 if (perm.orgId > 0)
                 {
-                    try { innerCurrentOrg = Organization.FromIdentity(perm.orgId); }
-                    catch { }
+                    try
+                    {
+                        innerCurrentOrg = Organization.FromIdentity(perm.orgId);
+                    }
+                    catch
+                    {
+                    }
                 }
                 else
                     innerCurrentOrg = currentOrg;
 
-                RoleType[] rolesForPerm = new RoleType[] { };
+                RoleType[] rolesForPerm = {};
                 if (PermissonsDict.ContainsKey(perm.perm))
                     rolesForPerm = PermissonsDict[perm.perm];
 
                 if (perm.perm == Permission.CanSeeSelf)
                     thisFound = 1;
                 else if (rolesForPerm.Length > 0)
-                    thisFound = CheckSpecificValidRoles(authority, rolesForPerm, innerCurrentGeo, innerCurrentOrg, thisFound, flags);
+                    thisFound = CheckSpecificValidRoles(authority, rolesForPerm, innerCurrentGeo, innerCurrentOrg,
+                        thisFound, flags);
 
 
                 if (permissionsNeeded.NeedOne && thisFound == 1)
                     return true;
                 if (permissionsNeeded.NeedAll && thisFound == -1)
                     return false;
-
             }
 
             //If Need all and not already returned, no false one was found
             if (permissionsNeeded.NeedAll)
                 return true;
-            else
-
-                return false;
+            return false;
         }
 
-        private static int CheckSpecificValidRoles (Authority authority, RoleType[] roles,
-                                                    Geography currentGeo, Organization currentOrg,
-                                                    int thisFound, Flag flags)
+        private static int CheckSpecificValidRoles(Authority authority, RoleType[] roles,
+            Geography currentGeo, Organization currentOrg,
+            int thisFound, Flag flags)
         {
             if (authority.HasAnyRoleType(roles))
             {
@@ -332,14 +396,17 @@ namespace Swarmops.Logic.Security
                 {
                     if (authority.HasRoleType(r) && (Array.IndexOf(RoleTypes.AllLocalRoleTypes, r) > -1))
                     {
-                        thisFound = authority.HasLocalRoleAtOrganizationGeography(currentOrg, currentGeo, r, flags) ? 1 : thisFound;
+                        thisFound = authority.HasLocalRoleAtOrganizationGeography(currentOrg, currentGeo, r, flags)
+                            ? 1
+                            : thisFound;
                     }
                     else if (authority.HasRoleType(r) && ((Array.IndexOf(RoleTypes.AllOrganizationalRoleTypes, r) > -1)))
                     {
                         thisFound = authority.HasRoleAtOrganization(currentOrg, r, flags) ? 1 : thisFound;
                     }
                     else if (authority.HasRoleType(r) && ((Array.IndexOf(RoleTypes.AllSystemRoleTypes, r) > -1)))
-                    {   //System PersonRole
+                    {
+                        //System PersonRole
                         thisFound = 1;
                     }
                     // break if we found one that gives access
@@ -357,8 +424,8 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public static Memberships FilterMembershipsToMatchAuthority (Memberships memberships, Geography personGeography,
-                                                                     Authority authority)
+        public static Memberships FilterMembershipsToMatchAuthority(Memberships memberships, Geography personGeography,
+            Authority authority)
         {
             // First: If sysadmin, return the whole list uncensored.
 
@@ -367,7 +434,7 @@ namespace Swarmops.Logic.Security
                 return memberships;
             }
 
-            var clearedMemberships = new Dictionary<int, Membership>();
+            Dictionary<int, Membership> clearedMemberships = new Dictionary<int, Membership>();
 
             //
             foreach (BasicPersonRole role in authority.OrganizationPersonRoles)
@@ -380,7 +447,9 @@ namespace Swarmops.Logic.Security
                     bool organizationClear = clearedOrganizations.ContainsKey(membership.OrganizationId);
 
                     if (organizationClear
-                        && authority.HasPermission(Permission.CanViewMemberships, membership.OrganizationId, membership.Person.GeographyId, Flag.Default))
+                        &&
+                        authority.HasPermission(Permission.CanViewMemberships, membership.OrganizationId,
+                            membership.Person.GeographyId, Flag.Default))
                     {
                         clearedMemberships[membership.Identity] = membership;
                     }
@@ -390,12 +459,15 @@ namespace Swarmops.Logic.Security
 
             foreach (BasicPersonRole role in authority.LocalPersonRoles)
             {
-                Dictionary<int, BasicGeography> clearedGeographies = GeographyCache.GetGeographyHashtable(role.GeographyId);
+                Dictionary<int, BasicGeography> clearedGeographies =
+                    GeographyCache.GetGeographyHashtable(role.GeographyId);
                 Dictionary<int, BasicOrganization> clearedOrganizations =
                     OrganizationCache.GetOrganizationHashtable(role.OrganizationId);
 
                 bool geographyClear = clearedGeographies.ContainsKey(personGeography.Identity);
-                geographyClear = geographyClear && authority.HasPermission(Permission.CanViewMemberships, role.OrganizationId, personGeography.Identity, Flag.Default);
+                geographyClear = geographyClear &&
+                                 authority.HasPermission(Permission.CanViewMemberships, role.OrganizationId,
+                                     personGeography.Identity, Flag.Default);
 
                 if (geographyClear)
                 {
@@ -414,7 +486,7 @@ namespace Swarmops.Logic.Security
 
             // Assemble the array
 
-            var result = new Memberships();
+            Memberships result = new Memberships();
 
             foreach (Membership membership in clearedMemberships.Values)
             {
@@ -425,14 +497,14 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public static People FilterPeopleToMatchAuthority (People people, Authority authority)
+        public static People FilterPeopleToMatchAuthority(People people, Authority authority)
         {
             return FilterPeopleToMatchAuthority(people, authority, -1);
             // -1 indicates to respect grace period
         }
 
 
-        public static People FilterPeopleToMatchAuthority (People people, Authority authority, int gracePeriod)
+        public static People FilterPeopleToMatchAuthority(People people, Authority authority, int gracePeriod)
         {
             // First: If sysadmin, return the whole list uncensored.
 
@@ -446,10 +518,11 @@ namespace Swarmops.Logic.Security
             if (gracePeriod == -1)
                 gracePeriod = Membership.GracePeriod;
 
-            Dictionary<int, List<BasicMembership>> membershipTable = databaseRead.GetMembershipsForPeople(people.Identities, gracePeriod);
+            Dictionary<int, List<BasicMembership>> membershipTable =
+                databaseRead.GetMembershipsForPeople(people.Identities, gracePeriod);
             Dictionary<int, int> geographyTable = databaseRead.GetPeopleGeographies(people.Identities);
 
-            var clearedPeople = new Dictionary<int, Person>();
+            Dictionary<int, Person> clearedPeople = new Dictionary<int, Person>();
 
             // TODO: Add org admin role, able to see previous members that aren't anonymized yet
 
@@ -469,19 +542,24 @@ namespace Swarmops.Logic.Security
                         foreach (BasicMembership membership in membershipTable[person.Identity])
                         {
                             if (clearedOrganizations.ContainsKey(membership.OrganizationId)
-                                && authority.HasPermission(Permission.CanSeePeople, membership.OrganizationId, person.GeographyId, Flag.Default))
+                                &&
+                                authority.HasPermission(Permission.CanSeePeople, membership.OrganizationId,
+                                    person.GeographyId, Flag.Default))
                             {
                                 if (membership.Active
                                     || (membership.Expires > DateTime.Now.AddDays(-gracePeriod)
                                         && membership.Expires.AddDays(1) > membership.DateTerminated
-                                        && authority.HasPermission(Permission.CanSeeExpiredDuringGracePeriod, membership.OrganizationId, person.GeographyId, Flag.Default)))
+                                        &&
+                                        authority.HasPermission(Permission.CanSeeExpiredDuringGracePeriod,
+                                            membership.OrganizationId, person.GeographyId, Flag.Default)))
                                 {
                                     clearedPeople[person.Identity] = person;
                                     break;
                                 }
                             }
                         }
-                    } /* -- commented out. This means "does the current authority have Org Admin privileges over Person"?
+                    }
+                        /* -- commented out. This means "does the current authority have Org Admin privileges over Person"?
                     else if (CanSeeNonMembers)
                     { //person isn't member anywhere
                         clearedPeople[person.Identity] = person;
@@ -499,12 +577,13 @@ namespace Swarmops.Logic.Security
 
             foreach (BasicPersonRole role in authority.LocalPersonRoles)
             {
-                Dictionary<int, BasicGeography> clearedGeographies = GeographyCache.GetGeographyHashtable(role.GeographyId);
-                Dictionary<int, BasicOrganization> clearedOrganizations = OrganizationCache.GetOrganizationHashtable(role.OrganizationId);
+                Dictionary<int, BasicGeography> clearedGeographies =
+                    GeographyCache.GetGeographyHashtable(role.GeographyId);
+                Dictionary<int, BasicOrganization> clearedOrganizations =
+                    OrganizationCache.GetOrganizationHashtable(role.OrganizationId);
 
                 foreach (Person person in people)
                 {
-
                     // Is the node AND the organization cleared in this officer's role for this to-be-viewed member?
 
                     if (membershipTable.ContainsKey(person.Identity))
@@ -524,12 +603,16 @@ namespace Swarmops.Logic.Security
 
                                 if (organizationClear > 0
                                     && geographyClear > 0
-                                    && authority.HasPermission(Permission.CanSeePeople, organizationClear, geographyClear, Flag.Default))
+                                    &&
+                                    authority.HasPermission(Permission.CanSeePeople, organizationClear, geographyClear,
+                                        Flag.Default))
                                 {
                                     if (membership.Active
                                         || (membership.Expires > DateTime.Now.AddDays(-gracePeriod)
                                             && membership.Expires.AddDays(1) > membership.DateTerminated
-                                            && authority.HasPermission(Permission.CanSeeExpiredDuringGracePeriod, membership.OrganizationId, person.GeographyId, Flag.Default)))
+                                            &&
+                                            authority.HasPermission(Permission.CanSeeExpiredDuringGracePeriod,
+                                                membership.OrganizationId, person.GeographyId, Flag.Default)))
                                     {
                                         clearedPeople[person.Identity] = person;
                                         break;
@@ -542,10 +625,9 @@ namespace Swarmops.Logic.Security
             }
 
 
-
             // End: Assemble an array of the resulting cleared people
 
-            var result = new People();
+            People result = new People();
 
             foreach (Person clearedPerson in clearedPeople.Values)
             {
@@ -556,10 +638,10 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public static BasicPerson[] FilterUnlistedPeople (BasicPerson[] people)
+        public static BasicPerson[] FilterUnlistedPeople(BasicPerson[] people)
         {
-            var unlistedTable = new Dictionary<int, bool>();
-            var result = new List<BasicPerson>();
+            Dictionary<int, bool> unlistedTable = new Dictionary<int, bool>();
+            List<BasicPerson> result = new List<BasicPerson>();
 
             // If list is empty, return empty
 
@@ -570,7 +652,8 @@ namespace Swarmops.Logic.Security
 
             // Get ALL unlisted people from database. They're not that many. Build a hashtable with them.
 
-            int[] anonymousPersonIds = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, ObjectOptionalDataType.Anonymous, "1");
+            int[] anonymousPersonIds = SwarmDb.GetDatabaseForReading()
+                .GetObjectsByOptionalData(ObjectType.Person, ObjectOptionalDataType.Anonymous, "1");
 
             foreach (int anonymousPersonId in anonymousPersonIds)
             {
@@ -591,17 +674,17 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public static BasicPerson[] FilterUniquePeople (BasicPerson[] people)
+        public static BasicPerson[] FilterUniquePeople(BasicPerson[] people)
         {
             // Somewhat crude dupelist, but atleast it can give some hints
 
             // changed to 3 different lists, should be more efficient // JL
-            var uniqueTableName = new Dictionary<string, List<Person>>();
-            var uniqueTablePhone = new Dictionary<string, List<Person>>();
-            var uniqueTableEmail = new Dictionary<string, List<Person>>();
+            Dictionary<string, List<Person>> uniqueTableName = new Dictionary<string, List<Person>>();
+            Dictionary<string, List<Person>> uniqueTablePhone = new Dictionary<string, List<Person>>();
+            Dictionary<string, List<Person>> uniqueTableEmail = new Dictionary<string, List<Person>>();
 
-            var result = new Dictionary<int, BasicPerson>();
-            var inputLookup = new Dictionary<int, BasicPerson>();
+            Dictionary<int, BasicPerson> result = new Dictionary<int, BasicPerson>();
+            Dictionary<int, BasicPerson> inputLookup = new Dictionary<int, BasicPerson>();
 
             // If list is empty, return empty
 
@@ -612,10 +695,9 @@ namespace Swarmops.Logic.Security
 
             foreach (Person p in people)
             {
-
                 if (uniqueTableName.ContainsKey(p.Name))
                 {
-                    foreach (var sameperson in uniqueTableName[p.Name])
+                    foreach (Person sameperson in uniqueTableName[p.Name])
                     {
                         MatchPerson(result, p, sameperson);
                     }
@@ -629,7 +711,7 @@ namespace Swarmops.Logic.Security
 
                 if (uniqueTablePhone.ContainsKey(p.Phone) && p.Phone.Replace("0", "").Trim() != "")
                 {
-                    foreach (var sameperson in uniqueTablePhone[p.Phone])
+                    foreach (Person sameperson in uniqueTablePhone[p.Phone])
                     {
                         MatchPerson(result, p, sameperson);
                     }
@@ -643,7 +725,7 @@ namespace Swarmops.Logic.Security
 
                 if (uniqueTableEmail.ContainsKey(p.Mail))
                 {
-                    foreach (var sameperson in uniqueTableEmail[p.Mail])
+                    foreach (Person sameperson in uniqueTableEmail[p.Mail])
                     {
                         MatchPerson(result, p, sameperson);
                     }
@@ -659,9 +741,9 @@ namespace Swarmops.Logic.Security
             return (new List<BasicPerson>(result.Values)).ToArray();
         }
 
-        private static void MatchPerson (Dictionary<int, BasicPerson> result, Person p, BasicPerson sameperson)
+        private static void MatchPerson(Dictionary<int, BasicPerson> result, Person p, BasicPerson sameperson)
         {
-            var matches = 0;
+            int matches = 0;
             if (p.Name.Trim().ToLower() == sameperson.Name.Trim().ToLower())
                 ++matches;
             if (p.Phone.Trim() == sameperson.Phone.Trim())
@@ -677,7 +759,7 @@ namespace Swarmops.Logic.Security
             }
         }
 
-        private static bool IsSystemAdministrator (BasicAuthority authority)
+        private static bool IsSystemAdministrator(BasicAuthority authority)
         {
             foreach (BasicPersonRole role in authority.SystemPersonRoles)
             {
@@ -690,44 +772,7 @@ namespace Swarmops.Logic.Security
             return false;
         }
 
-        /// <summary>
-        /// List of the roles which make a member visible outwards.
-        /// </summary>
-        public static RoleType[] VisibleRoles
-        {
-            get
-            {
-                return new RoleType[]
-                           {
-                               RoleType.LocalLead, RoleType.LocalDeputy, RoleType.OrganizationChairman,
-                               RoleType.OrganizationSecretary, RoleType.OrganizationTreasurer,
-                               RoleType.OrganizationVice1, RoleType.OrganizationVice2,
-                               RoleType.OrganizationBoardMember, RoleType.OrganizationBoardDeputy
-                           };
-            }
-        }
-
-        /// <summary>
-        /// Like VisibleRoles, but in dictionary form.
-        /// </summary>
-        public static Dictionary<RoleType, bool> VisibleRolesDictionary
-        {
-            get
-            {
-                Dictionary<RoleType, bool> result = new Dictionary<RoleType, bool>();
-
-                RoleType[] roleTypes = VisibleRoles;
-
-                foreach (RoleType roleType in roleTypes)
-                {
-                    result[roleType] = true;
-                }
-
-                return result;
-            }
-        }
-
-        public static int[] PersonsWithRoleInOrg (RoleType roleType, int p, bool includeChildOrgs)
+        public static int[] PersonsWithRoleInOrg(RoleType roleType, int p, bool includeChildOrgs)
         {
             Organizations line = new Organizations();
             if (includeChildOrgs)
@@ -736,7 +781,7 @@ namespace Swarmops.Logic.Security
                 line.Add(Organization.FromIdentity(p));
 
             BasicPersonRole[] basPersons
-                = SwarmDb.GetDatabaseForReading().GetPeopleWithRoleType(roleType, line.Identities, new int[] { });
+                = SwarmDb.GetDatabaseForReading().GetPeopleWithRoleType(roleType, line.Identities, new int[] {});
 
             List<int> retList = new List<int>();
 
@@ -746,5 +791,8 @@ namespace Swarmops.Logic.Security
             return retList.ToArray();
         }
 
+        internal class FoundItException : Exception
+        {
+        }
     }
 }

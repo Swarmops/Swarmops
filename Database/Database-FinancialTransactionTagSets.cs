@@ -9,33 +9,31 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
-  
         private const string financialTransactionTagSetFieldSequence =
-            " FinancialTransactionTagSetId,FinancialTransactionTagSetTypeId,OrganizationId,DisplayOrder,AllowUntagged," +    // 0-4
-            "VisibilityLevel,ProfitLossType " +                                                                              // 5-6
+            " FinancialTransactionTagSetId,FinancialTransactionTagSetTypeId,OrganizationId,DisplayOrder,AllowUntagged," +
+            // 0-4
+            "VisibilityLevel,ProfitLossType " + // 5-6
             "FROM FinancialTransactionTagSets ";
 
         private static BasicFinancialTransactionTagSet ReadFinancialTransactionTagSetFromDataReader(IDataRecord reader)
         {
             int financialTransactionTagSetId = reader.GetInt32(0);
-            int financialTransactionTagSetTypeId = reader.GetInt32 (1);
-            int organizationId = reader.GetInt32 (2);
-            int order = reader.GetInt32 (3);
-            bool allowUntagged = reader.GetBoolean (4);
+            int financialTransactionTagSetTypeId = reader.GetInt32(1);
+            int organizationId = reader.GetInt32(2);
+            int order = reader.GetInt32(3);
+            bool allowUntagged = reader.GetBoolean(4);
             int visibilityLevel = reader.GetInt32(5);
             int profitLossType = reader.GetInt32(6);
 
-            return new BasicFinancialTransactionTagSet(financialTransactionTagSetId, financialTransactionTagSetTypeId, organizationId, order, allowUntagged, visibilityLevel, profitLossType);
+            return new BasicFinancialTransactionTagSet(financialTransactionTagSetId, financialTransactionTagSetTypeId,
+                organizationId, order, allowUntagged, visibilityLevel, profitLossType);
         }
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
-
 
         public BasicFinancialTransactionTagSet GetFinancialTransactionTagSet(int financialTransactionTagSetId)
         {
@@ -44,7 +42,9 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + financialTransactionTagSetFieldSequence + " WHERE FinancialTransactionTagSetId=" + financialTransactionTagSetId.ToString(CultureInfo.InvariantCulture), connection);
+                    GetDbCommand(
+                        "SELECT" + financialTransactionTagSetFieldSequence + " WHERE FinancialTransactionTagSetId=" +
+                        financialTransactionTagSetId.ToString(CultureInfo.InvariantCulture), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -53,10 +53,10 @@ namespace Swarmops.Database
                         return ReadFinancialTransactionTagSetFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such FinancialTransactionSetTypeId: " + financialTransactionTagSetId.ToString(CultureInfo.InvariantCulture));
+                    throw new ArgumentException("No such FinancialTransactionSetTypeId: " +
+                                                financialTransactionTagSetId.ToString(CultureInfo.InvariantCulture));
                 }
             }
-
         }
 
 
@@ -68,7 +68,11 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT" + financialTransactionTagSetFieldSequence + ConstructWhereClause ("FinancialTransactionTagSets", conditions) + " ORDER BY DisplayOrder", connection);
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT" + financialTransactionTagSetFieldSequence +
+                        ConstructWhereClause("FinancialTransactionTagSets", conditions) + " ORDER BY DisplayOrder",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -82,12 +86,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
         #region Creation and manipulation -- stored procedures
-
 
         /* TODO
          * 
@@ -179,9 +180,7 @@ namespace Swarmops.Database
             }
         }*/
 
-
         #endregion
-
 
         #region Dead template code
 
@@ -526,7 +525,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

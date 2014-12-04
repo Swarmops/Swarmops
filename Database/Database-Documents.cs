@@ -48,7 +48,7 @@ namespace Swarmops.Database
                         "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
                         "WHERE Documents.DocumentTypeId=DocumentTypes.DocumentTypeId AND " +
                         "Documents.ForeignId = " + foreignId + " AND " +
-                        "DocumentTypes.Name = '" + documentType.ToString() + "';", connection);
+                        "DocumentTypes.Name = '" + documentType + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -75,7 +75,7 @@ namespace Swarmops.Database
                     "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
                     "WHERE Documents.DocumentTypeId=DocumentTypes.DocumentTypeId AND " +
                     "Documents.Description = '" + description.Replace("'", "''") + "' AND " +
-                    "Documents.UploadedDateTime > '" + DateTime.UtcNow.AddDays (-1).ToString ("yyyy-MM-dd HH:mm") + "'";
+                    "Documents.UploadedDateTime > '" + DateTime.UtcNow.AddDays(-1).ToString("yyyy-MM-dd HH:mm") + "'";
 
                 DbCommand command = GetDbCommand(sqlQuery, connection);
 
@@ -105,12 +105,12 @@ namespace Swarmops.Database
             DateTime uploadedDateTime = reader.GetDateTime(8);
 
             return new BasicDocument(documentId, serverFileName, clientFileName, description, docType,
-                                     foreignId, fileSize, uploadedByPersonId, uploadedDateTime);
+                foreignId, fileSize, uploadedByPersonId, uploadedDateTime);
         }
 
 
-
-        public int CreateDocument(string serverFileName, string clientFileName, long fileSize, string description, DocumentType documentType, int foreignId, int uploadedByPersonId)
+        public int CreateDocument(string serverFileName, string clientFileName, long fileSize, string description,
+            DocumentType documentType, int foreignId, int uploadedByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -145,7 +145,6 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
-
 
 
         public void SetDocumentServerFileName(int documentId, string serverFileName)
@@ -198,7 +197,6 @@ namespace Swarmops.Database
                 command.ExecuteNonQuery();
             }
         }
-
 
 
         // The rest was copied from Database-Financials as template code.

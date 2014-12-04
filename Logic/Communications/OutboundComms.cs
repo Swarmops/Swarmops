@@ -4,7 +4,7 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Communications
 {
-    public class OutboundComms: PluralBase<OutboundComms,OutboundComm,BasicOutboundComm>
+    public class OutboundComms : PluralBase<OutboundComms, OutboundComm, BasicOutboundComm>
     {
         public static OutboundComms GetOpen()
         {

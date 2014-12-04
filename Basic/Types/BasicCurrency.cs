@@ -2,18 +2,18 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicCurrency: IHasIdentity
+    public class BasicCurrency : IHasIdentity
     {
-        public BasicCurrency (int currencyId, string code, string name, string sign)
+        public BasicCurrency(int currencyId, string code, string name, string sign)
         {
-            this.CurrencyId = currencyId;
-            this.Code = code;
-            this.Name = name;
-            this.Sign = sign;
+            CurrencyId = currencyId;
+            Code = code;
+            Name = name;
+            Sign = sign;
         }
 
-        public BasicCurrency (BasicCurrency original)
-            : this (original.CurrencyId, original.Code, original.Name, original.Sign)
+        public BasicCurrency(BasicCurrency original)
+            : this(original.CurrencyId, original.Code, original.Name, original.Sign)
         {
             // empty copy ctor
         }
@@ -26,7 +26,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.CurrencyId; }
+            get { return CurrencyId; }
         }
     }
 }

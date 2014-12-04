@@ -7,21 +7,16 @@ namespace Swarmops.Logic.Structure
     [Serializable]
     public class City : BasicCity
     {
-        private City (BasicCity basic)
+        private City(BasicCity basic)
             : base(basic)
         {
         }
 
         // public ctor needed for serialization
-        [Obsolete ("Do not call this function directly. It is intended only for use in serialization.", true)]
-        public City(): base (0, string.Empty, 0, 0)
+        [Obsolete("Do not call this function directly. It is intended only for use in serialization.", true)]
+        public City() : base(0, string.Empty, 0, 0)
         {
             // this instance is NOT initalized, and intended to be used only in serialization.
-        }
-
-        public static City FromIdentity (int cityId)
-        {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetCity(cityId));
         }
 
 
@@ -30,24 +25,29 @@ namespace Swarmops.Logic.Structure
             get { return Geography.FromIdentity(GeographyId); } // TODO: Cache
         }
 
-        public static City FromBasic (BasicCity basic)
+        public static City FromIdentity(int cityId)
+        {
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetCity(cityId));
+        }
+
+        public static City FromBasic(BasicCity basic)
         {
             return new City(basic);
         }
 
-        public static City FromName (string cityName, int countryId)
+        public static City FromName(string cityName, int countryId)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetCityByName(cityName, countryId));
         }
-        
-        public static City FromName (string cityName, string countryCode)
+
+        public static City FromName(string cityName, string countryCode)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetCityByName(cityName, countryCode));
         }
 
-        public static City Create (string cityName, int countryId, int geographyId)
+        public static City Create(string cityName, int countryId, int geographyId)
         {
-            return City.FromIdentity(SwarmDb.GetDatabaseForWriting().CreateCity(cityName, countryId, geographyId));
+            return FromIdentity(SwarmDb.GetDatabaseForWriting().CreateCity(cityName, countryId, geographyId));
         }
     }
 }

@@ -1,9 +1,9 @@
 namespace Swarmops.Basic.Enums
 {
-	public enum AutoMailType
-	{
-		Unknown = 0,
-		Welcome,
+    public enum AutoMailType
+    {
+        Unknown = 0,
+        Welcome,
         MemberMail,
         OfficerMail,
         Reminder,
@@ -11,6 +11,6 @@ namespace Swarmops.Basic.Enums
         Expired,
         Newsletter,
         PressRelease,
-        WelcomeTimeLimitedContent=100 //Not implemented yet..
-	}
+        WelcomeTimeLimitedContent = 100 //Not implemented yet..
+    }
 }

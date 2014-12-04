@@ -8,10 +8,9 @@ namespace Swarmops.Logic.Swarm
 {
     public class ExternalIdentity : BasicExternalIdentity
     {
-
         private Person attachedToPerson;
 
-        private ExternalIdentity (BasicExternalIdentity basic)
+        private ExternalIdentity(BasicExternalIdentity basic)
             : base(basic)
         {
         }
@@ -19,96 +18,91 @@ namespace Swarmops.Logic.Swarm
 
         public new int ExternalIdentityIdentity
         {
-            get
-            {
-                return base.ExternalIdentityIdentity;
-            }
+            get { return base.ExternalIdentityIdentity; }
             private set
             {
-                throw new InvalidOperationException("Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
+                throw new InvalidOperationException(
+                    "Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
             }
         }
 
         public new string ExternalSystem
         {
-            get
-            {
-                return base.ExternalSystem;
-            }
+            get { return base.ExternalSystem; }
             private set
             {
-                throw new InvalidOperationException("Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
+                throw new InvalidOperationException(
+                    "Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
             }
         }
+
         public new string UserID
         {
-            get
-            {
-                return base.UserID;
-            }
+            get { return base.UserID; }
             private set
             {
-                throw new InvalidOperationException("Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
+                throw new InvalidOperationException(
+                    "Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
             }
         }
+
         public new string Password
         {
-            get
-            {
-                return base.Password;
-            }
+            get { return base.Password; }
             private set
             {
-                throw new InvalidOperationException("Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
+                throw new InvalidOperationException(
+                    "Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
             }
         }
+
         public Person AttachedToPerson
         {
             get
             {
-                if (attachedToPerson == null)
-                    attachedToPerson = Person.FromIdentity(base.AttachedToPersonID);
-                return attachedToPerson;
+                if (this.attachedToPerson == null)
+                    this.attachedToPerson = Person.FromIdentity(base.AttachedToPersonID);
+                return this.attachedToPerson;
             }
             private set
             {
-                throw new InvalidOperationException("Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
+                throw new InvalidOperationException(
+                    "Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
             }
         }
+
         public new ExternalIdentityType TypeOfAccount
         {
-            get
-            {
-                return base.TypeOfAccount;
-            }
+            get { return base.TypeOfAccount; }
             private set
             {
-                throw new InvalidOperationException("Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
+                throw new InvalidOperationException(
+                    "Do not set individual fields of ExternalIdentity separately. Use SetExternalIdentity() method.");
             }
         }
 
 
-        public static ExternalIdentity FromBasic (BasicExternalIdentity basic)
+        public static ExternalIdentity FromBasic(BasicExternalIdentity basic)
         {
             return new ExternalIdentity(basic);
         }
 
-        public static ExternalIdentity FromIdentity (int externalIdentityId)
+        public static ExternalIdentity FromIdentity(int externalIdentityId)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetExternalIdentity(externalIdentityId));
         }
 
-        public static ExternalIdentity FromUserIdAndType (string userid, ExternalIdentityType type)
+        public static ExternalIdentity FromUserIdAndType(string userid, ExternalIdentityType type)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetExternalIdentityFromUserIdAndType(userid, type));
         }
 
-        public static ExternalIdentity FromPersonIdAndType (int persId, ExternalIdentityType type)
+        public static ExternalIdentity FromPersonIdAndType(int persId, ExternalIdentityType type)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetExternalIdentityFromPersonIdAndType(persId, type));
         }
 
-        public static List<ExternalIdentity> ExternalItentitiesForPerson (int persId)
+        public static List<ExternalIdentity> ExternalItentitiesForPerson(int persId)
         {
             List<BasicExternalIdentity> templist = SwarmDb.GetDatabaseForReading().GetExternalIdentities(persId);
 
@@ -120,28 +114,25 @@ namespace Swarmops.Logic.Swarm
             }
 
             return retlist;
-
         }
 
 
-        public ExternalIdentity SetExternalIdentity (string ExternalSystem,
-                                        string UserID,
-                                        string Password,
-                                        int AttachedToPerson,
-                                        ExternalIdentityType TypeOfAccount)
+        public ExternalIdentity SetExternalIdentity(string ExternalSystem,
+            string UserID,
+            string Password,
+            int AttachedToPerson,
+            ExternalIdentityType TypeOfAccount)
         {
             return FromBasic(SwarmDb.GetDatabaseForWriting().SetExternalIdentity(
-                this.Identity, TypeOfAccount, ExternalSystem,
+                Identity, TypeOfAccount, ExternalSystem,
                 UserID, Password, AttachedToPerson));
-
-
-
         }
-        public static ExternalIdentity CreateExternalIdentity (string ExternalSystem,
-                                        string UserID,
-                                        string Password,
-                                        int AttachedToPerson,
-                                        ExternalIdentityType TypeOfAccount)
+
+        public static ExternalIdentity CreateExternalIdentity(string ExternalSystem,
+            string UserID,
+            string Password,
+            int AttachedToPerson,
+            ExternalIdentityType TypeOfAccount)
         {
             try
             {
@@ -149,13 +140,10 @@ namespace Swarmops.Logic.Swarm
                     0, TypeOfAccount, ExternalSystem,
                     UserID, Password, AttachedToPerson));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Failed to create ExternalIdentity", ex);
             }
-
-
         }
-
     }
 }

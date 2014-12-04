@@ -13,7 +13,7 @@ namespace Swarmops.Database
             return new BasicAutoMail[0];
         }
 
-        public BasicAutoMail GetAutoMail (AutoMailType type, int organizationId, int geographyId)
+        public BasicAutoMail GetAutoMail(AutoMailType type, int organizationId, int geographyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -21,9 +21,10 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "select AutoMails.AutoMailId,AutoMailTypes.Name,AutoMails.OrganizationId,AutoMails.GeographyId,AutoMails.AuthorPersonId,Title,Body " + 
+                        "select AutoMails.AutoMailId,AutoMailTypes.Name,AutoMails.OrganizationId,AutoMails.GeographyId,AutoMails.AuthorPersonId,Title,Body " +
                         "FROM AutoMails JOIN AutoMailTypes USING (AutoMailTypeId) " +
-                        "WHERE AutoMailTypes.Name='" + type.ToString() + "' AND AutoMails.OrganizationId=" + organizationId.ToString() + " AND AutoMails.GeographyId=" + geographyId.ToString(), connection);
+                        "WHERE AutoMailTypes.Name='" + type + "' AND AutoMails.OrganizationId=" + organizationId +
+                        " AND AutoMails.GeographyId=" + geographyId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -38,7 +39,7 @@ namespace Swarmops.Database
         }
 
 
-        private static BasicAutoMail ReadAutoMailFromDataReader (DbDataReader reader)
+        private static BasicAutoMail ReadAutoMailFromDataReader(DbDataReader reader)
         {
             int autoMailId = reader.GetInt32(0);
             AutoMailType type = (AutoMailType) Enum.Parse(typeof (AutoMailType), reader.GetString(1));
@@ -49,12 +50,12 @@ namespace Swarmops.Database
             string body = reader.GetString(6);
 
             return new BasicAutoMail(autoMailId, type, organizationId, geographyId, authorPersonId,
-                                     title, body);
+                title, body);
         }
 
 
-        public int SetAutoMail (AutoMailType type, int organizationId, int geographyId,
-                                int authorPersonId, string title, string body)
+        public int SetAutoMail(AutoMailType type, int organizationId, int geographyId,
+            int authorPersonId, string title, string body)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -75,10 +76,10 @@ namespace Swarmops.Database
         }
 
 
-        public int SetAutoMail (BasicAutoMail autoMail)
+        public int SetAutoMail(BasicAutoMail autoMail)
         {
             return SetAutoMail(autoMail.Type, autoMail.OrganizationId, autoMail.GeographyId,
-                               autoMail.AuthorPersonId, autoMail.Title, autoMail.Body);
+                autoMail.AuthorPersonId, autoMail.Title, autoMail.Body);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Swarmops.Utility.Special.Sweden
 {
     public class SupportMailReview
     {
-        public static void Run ()
+        public static void Run()
         {
             string lastIndexString = Persistence.Key["LastSupportMailIndex"];
 
@@ -17,7 +17,6 @@ namespace Swarmops.Utility.Special.Sweden
 
             if (!String.IsNullOrEmpty(lastIndexString))
             {
-
                 if (!Int32.TryParse(lastIndexString, out lastIndex))
                 {
                     throw new Exception("Failed to read LastSupportMailIndex:" + lastIndexString);
@@ -54,7 +53,7 @@ namespace Swarmops.Utility.Special.Sweden
                 string[] stringTokens = (email.From + " unknown unknown").Split(' ');
 
                 string subject = stringTokens[0].Substring(0, 1) + stringTokens[1].Substring(0, 1) + ", case " +
-                                 email.CaseId.ToString() + ": " + email.CaseTitle;
+                                 email.CaseId + ": " + email.CaseTitle;
 
                 MailMessage message = new MailMessage();
                 message.From = new MailAddress(Strings.MailSenderAddress, Strings.MailSenderName);

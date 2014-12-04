@@ -12,13 +12,13 @@ namespace Swarmops.Logic.Financial
 
     public class ImportedBankRow
     {
+        public Int64 AmountCentsGross;
+        public Int64 AmountCentsNet;
+        public string Comment;
+        public Int64 CurrentBalanceCents;
         public DateTime DateTime;
+        public Int64 FeeCents;
         public string HashBase;
         public string SuppliedTransactionId;
-        public Int64 CurrentBalanceCents;
-        public Int64 AmountCentsNet;
-        public Int64 AmountCentsGross;
-        public Int64 FeeCents;
-        public string Comment;
     };
 }

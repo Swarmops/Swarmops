@@ -5,16 +5,16 @@ using Swarmops.Interface.Objects;
 namespace Swarmops.Interface.DataObjects
 {
 #if !__MonoCS__
-	[DataObject(true)]
+    [DataObject(true)]
 #endif
-	public class ExpensePayoutsDataObject
-	{
+    public class ExpensePayoutsDataObject
+    {
 #if !__MonoCS__
-		[DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-		static public ExpensePayout[] SelectByOrganization(int organizationId)
-		{
-			return ExpensePayouts.FromOrganization(organizationId).ToArray();
-		}
-	}
+        public static ExpensePayout[] SelectByOrganization(int organizationId)
+        {
+            return ExpensePayouts.FromOrganization(organizationId).ToArray();
+        }
+    }
 }

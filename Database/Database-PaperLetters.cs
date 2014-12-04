@@ -11,7 +11,8 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public int CreatePaperLetter(int organizationId, string fromName, string replyAddress, DateTime receivedDate, int toPersonId, RoleType toPersonInRole, bool personal, int uploadedByPersonId)
+        public int CreatePaperLetter(int organizationId, string fromName, string replyAddress, DateTime receivedDate,
+            int toPersonId, RoleType toPersonInRole, bool personal, int uploadedByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -35,7 +36,6 @@ namespace Swarmops.Database
         }
 
 
-
         public BasicPaperLetter GetPaperLetter(int paperLetterId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -44,7 +44,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT PaperLetterId,OrganizationId,FromName,ReplyAddress,ReceivedDate,ToPersonId,"+
+                        "SELECT PaperLetterId,OrganizationId,FromName,ReplyAddress,ReceivedDate,ToPersonId," +
                         "ToPersonInRoleId,Personal,UploadedByPersonId,UploadedDateTime " +
                         "From PaperLetters WHERE PaperLetterId=" + paperLetterId + ";", connection);
 
@@ -88,7 +88,6 @@ namespace Swarmops.Database
         }
 
 
-
         public BasicPaperLetter[] GetPaperLettersForPerson(int personId)
         {
             List<BasicPaperLetter> result = new List<BasicPaperLetter>();
@@ -116,7 +115,6 @@ namespace Swarmops.Database
         }
 
 
-
         private BasicPaperLetter ReadPaperLetterFromDataReader(DbDataReader reader)
         {
             int paperLetterId = reader.GetInt32(0);
@@ -133,7 +131,6 @@ namespace Swarmops.Database
             return new BasicPaperLetter(paperLetterId, organizationId, fromName, replyAddress, receivedDate,
                 toPersonId, (RoleType) toPersonInRoleId, personal, uploadedByPersonId, uploadedDateTime);
         }
-
 
 
         /*

@@ -6,19 +6,39 @@ namespace Swarmops.Interface.Objects
 {
     public class OrganizationMetadata
     {
-        public OrganizationMetadata (int organizationId, bool recursive, Color color)
+        private readonly Color color;
+        private readonly int organizationId;
+        private readonly bool recursive;
+
+        public OrganizationMetadata(int organizationId, bool recursive, Color color)
         {
             this.organizationId = organizationId;
             this.recursive = recursive;
             this.color = color;
         }
 
+
+        public int OrganizationId
+        {
+            get { return this.organizationId; }
+        }
+
+        public bool Recursive
+        {
+            get { return this.recursive; }
+        }
+
+        public Color Color
+        {
+            get { return this.color; }
+        }
+
         /// <summary>
-        /// Determines the organization accessed from the URL, like *.piratpartiet.se => orgid 1.
+        ///     Determines the organization accessed from the URL, like *.piratpartiet.se => orgid 1.
         /// </summary>
         /// <param name="url">The url of the webpage in question, like data.piratpartiet.se/something.</param>
         /// <returns>A new OrganizationMetadata instance.</returns>
-        static public OrganizationMetadata FromUrl (string url)
+        public static OrganizationMetadata FromUrl(string url)
         {
             // We could do this using regexps, but it would be messy and error-prone. So instead, I'm going to do it
             // the old fashioned readable way.
@@ -63,7 +83,7 @@ namespace Swarmops.Interface.Objects
 
             if (url.EndsWith("localhost"))
             {
-                return new OrganizationMetadata(1, false, Color.FromArgb(0x66, 0, 0x87));  // debug purposes
+                return new OrganizationMetadata(1, false, Color.FromArgb(0x66, 0, 0x87)); // debug purposes
             }
 
             //HACK:
@@ -79,29 +99,7 @@ namespace Swarmops.Interface.Objects
             }
 
 
-
-
-            throw new ArgumentException("Unsupported organization" );
+            throw new ArgumentException("Unsupported organization");
         }
-
-
-        public int OrganizationId
-        {
-            get { return this.organizationId; }
-        }
-
-        public bool Recursive
-        {
-            get { return this.recursive; }
-        }
-
-        public Color Color
-        {
-            get { return this.color; }
-        }
-
-        private int organizationId;
-        private bool recursive;
-        private Color color;
     }
 }

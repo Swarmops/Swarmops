@@ -6,14 +6,14 @@ namespace Swarmops.Logic.Media
 {
     public class Reporters : List<Reporter>
     {
-        public static Reporters FromArray (BasicReporter[] basicArray)
+        public static Reporters FromArray(BasicReporter[] basicArray)
         {
-            var result = new Reporters();
+            Reporters result = new Reporters();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicReporter basic in basicArray)
             {
-                result.Add (Reporter.FromBasic (basic));
+                result.Add(Reporter.FromBasic(basic));
             }
 
             return result;
@@ -22,14 +22,14 @@ namespace Swarmops.Logic.Media
         public static Reporters GetAll()
         {
             BasicReporter[] basicReporters = SwarmDb.GetDatabaseForReading().GetReporters();
-            return FromArray (basicReporters);
+            return FromArray(basicReporters);
         }
 
-        public static Reporters FromMediaCategories (MediaCategories categories)
+        public static Reporters FromMediaCategories(MediaCategories categories)
         {
             BasicReporter[] basicReporters =
-                SwarmDb.GetDatabaseForReading().GetReportersFromMediaCategories (categories.Identities);
-            return FromArray (basicReporters);
+                SwarmDb.GetDatabaseForReading().GetReportersFromMediaCategories(categories.Identities);
+            return FromArray(basicReporters);
         }
     }
 }

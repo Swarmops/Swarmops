@@ -10,11 +10,10 @@ namespace Swarmops.Logic.DataObjects
 #endif
     public class GeographyWithPeopleDataObject
     {
-
 #if !__MonoCS__
         [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        public static GeographyWithPeople[] SelectSortedStatic (int orgId)
+        public static GeographyWithPeople[] SelectSortedStatic(int orgId)
         {
             Organizations orgs = Organization.FromIdentity(orgId).GetTree();
 
@@ -31,15 +30,12 @@ namespace Swarmops.Logic.DataObjects
                 row.SecondsContent = "";
                 row.OrgId = orgId;
                 Geographies gTree = geo.GetTree();
-                int[] members = SwarmDb.GetDatabaseForReading().GetMembersForOrganizationsAndGeographies(orgs.Identities, gTree.Identities);
-
-
+                int[] members = SwarmDb.GetDatabaseForReading()
+                    .GetMembersForOrganizationsAndGeographies(orgs.Identities, gTree.Identities);
             }
 
 
             return resList.ToArray();
-
         }
-
     }
 }

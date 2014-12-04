@@ -8,12 +8,11 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string parleyAttendeeFieldSequence =
             " ParleyAttendeeId, ParleyId, PersonId, SignupDateTime, Active, " + // 0-4
-            "CancelDateTime, Invoiced, OutboundInvoiceId, IsGuest" +            // 5-8
+            "CancelDateTime, Invoiced, OutboundInvoiceId, IsGuest" + // 5-8
             " FROM ParleyAttendees ";
 
         private static BasicParleyAttendee ReadParleyAttendeeFromDataReader(IDataRecord reader)
@@ -29,15 +28,13 @@ namespace Swarmops.Database
             int outboundInvoiceId = reader.GetInt32(7);
             bool isGuest = reader.GetBoolean(8);
 
-            return new BasicParleyAttendee (parleyAttendeeId, parleyId, personId, signupDateTime, active, cancelDateTime, invoiced, outboundInvoiceId, isGuest);
+            return new BasicParleyAttendee(parleyAttendeeId, parleyId, personId, signupDateTime, active, cancelDateTime,
+                invoiced, outboundInvoiceId, isGuest);
         }
-
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
-
 
         public BasicParleyAttendee GetParleyAttendee(int parleyAttendeeId)
         {
@@ -47,8 +44,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + parleyAttendeeFieldSequence +
-                    "WHERE ParleyAttendeeId=" + parleyAttendeeId.ToString(),
-                                 connection);
+                                 "WHERE ParleyAttendeeId=" + parleyAttendeeId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -57,10 +54,9 @@ namespace Swarmops.Database
                         return ReadParleyAttendeeFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such ParleyAttendeeId:" + parleyAttendeeId.ToString());
+                    throw new ArgumentException("No such ParleyAttendeeId:" + parleyAttendeeId);
                 }
             }
-
         }
 
 
@@ -74,7 +70,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + parleyAttendeeFieldSequence + ConstructWhereClause("ParleyAttendees", conditions), connection);
+                        "SELECT" + parleyAttendeeFieldSequence + ConstructWhereClause("ParleyAttendees", conditions),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -99,7 +96,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT ParleyOptionId FROM ParleyAttendeeOptions WHERE ParleyAttendeeId=" + parleyAttendeeId.ToString(), connection);
+                        "SELECT ParleyOptionId FROM ParleyAttendeeOptions WHERE ParleyAttendeeId=" + parleyAttendeeId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -113,14 +111,11 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Creation and manipulation -- stored procedures
 
-
-        public int CreateParleyAttendee(int parleyId, int personId, bool isGuest)  // ok
+        public int CreateParleyAttendee(int parleyId, int personId, bool isGuest) // ok
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -149,7 +144,8 @@ namespace Swarmops.Database
 
                 AddParameterWithName(command, "parleyAttendeeId", parleyAttendeeId);
                 AddParameterWithName(command, "active", active);
-                AddParameterWithName(command, "cancelDateTime", DateTime.Now);  // if active=false, set to cancellation time. if active=true, ignored
+                AddParameterWithName(command, "cancelDateTime", DateTime.Now);
+                    // if active=false, set to cancellation time. if active=true, ignored
 
                 return Convert.ToInt32(command.ExecuteScalar());
             }
@@ -189,7 +185,5 @@ namespace Swarmops.Database
         }
 
         #endregion
-
-
     }
 }

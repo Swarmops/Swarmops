@@ -8,11 +8,11 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        private const string exceptionLogFieldSequence = " ExceptionID, ExceptionDateTime, Source,ExceptionText FROM  ExceptionLog ";
+        private const string exceptionLogFieldSequence =
+            " ExceptionID, ExceptionDateTime, Source,ExceptionText FROM  ExceptionLog ";
 
-        private static BasicExceptionLog ExceptionLogFromDataReader (DbDataReader reader)
+        private static BasicExceptionLog ExceptionLogFromDataReader(DbDataReader reader)
         {
-
             int ExceptionId = reader.GetInt32(0);
             DateTime ExceptionDateTime = reader.GetDateTime(1);
             string Source = reader.GetString(2);
@@ -20,7 +20,7 @@ namespace Swarmops.Database
             return new BasicExceptionLog(ExceptionId, ExceptionDateTime, Source, ExceptionText);
         }
 
-        public void CreateExceptionLogEntry (DateTime dateTime, string source, Exception e)
+        public void CreateExceptionLogEntry(DateTime dateTime, string source, Exception e)
         {
             try
             {
@@ -42,13 +42,11 @@ namespace Swarmops.Database
             {
                 //never fail from this routine, it is used in exceptionhandlig, 
                 // and if it isn't possible log the error then so be it.
-                return;
             }
         }
 
 
-
-        public BasicExceptionLog[] GetExceptionLogTopEntries (int count)
+        public BasicExceptionLog[] GetExceptionLogTopEntries(int count)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -71,7 +69,6 @@ namespace Swarmops.Database
                     return result.ToArray();
                 }
             }
-
         }
     }
 }

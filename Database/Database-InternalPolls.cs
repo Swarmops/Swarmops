@@ -34,17 +34,16 @@ namespace Swarmops.Database
 
             InternalPollResultsType resultsType = (InternalPollResultsType) resultsTypeId;
 
-            return new BasicInternalPoll(internalPollId, createdByPersonId, organizationId, geographyId, name, runningOpen, votingOpen, maxVoteLength, runningOpens, runningCloses, votingOpens, votingCloses, resultsType);
+            return new BasicInternalPoll(internalPollId, createdByPersonId, organizationId, geographyId, name,
+                runningOpen, votingOpen, maxVoteLength, runningOpens, runningCloses, votingOpens, votingCloses,
+                resultsType);
         }
 
         #endregion
 
-
-
-
         #region Record reading - SELECT statements
 
-        public BasicInternalPoll GetInternalPoll (int internalPollId)
+        public BasicInternalPoll GetInternalPoll(int internalPollId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -52,7 +51,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + internalPollFieldSequence + "WHERE InternalPollId=" + internalPollId + ";", connection);
+                        "SELECT" + internalPollFieldSequence + "WHERE InternalPollId=" + internalPollId + ";",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -61,14 +61,14 @@ namespace Swarmops.Database
                         return ReadInternalPollFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown InternalPollId: " + internalPollId.ToString());
+                    throw new ArgumentException("Unknown InternalPollId: " + internalPollId);
                 }
             }
         }
 
 
         /// <summary>
-        /// Gets a list of internal polls.
+        ///     Gets a list of internal polls.
         /// </summary>
         /// <param name="conditions">Optional Organization object and/or DatabaseConditions.</param>
         /// <returns>The inbound invoice list.</returns>
@@ -82,7 +82,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + internalPollFieldSequence + ConstructWhereClause("InternalPoll", conditions), connection);
+                        "SELECT " + internalPollFieldSequence + ConstructWhereClause("InternalPoll", conditions),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -96,18 +97,14 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
-
 
         #region Creation and manipulation - stored procedures
 
         public int CreateInternalPoll(int organizationId, int geographyId, string name, int maxVoteLength,
-                                      InternalPollResultsType resultsType, int createdByPersonId, 
-                                      DateTime runningOpens, DateTime runningCloses, DateTime votingOpens, 
-                                      DateTime votingCloses)
+            InternalPollResultsType resultsType, int createdByPersonId,
+            DateTime runningOpens, DateTime runningCloses, DateTime votingOpens,
+            DateTime votingCloses)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -165,6 +162,5 @@ namespace Swarmops.Database
         }
 
         #endregion
-
     }
 }

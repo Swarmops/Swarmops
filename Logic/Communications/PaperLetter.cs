@@ -8,14 +8,14 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Communications
 {
-    public class PaperLetter: BasicPaperLetter
+    public class PaperLetter : BasicPaperLetter
     {
-        public static PaperLetter Create (Person creator, Organization organization, string fromName,
-            string[] replyAddressLines, DateTime receivedDate, Person recipient, RoleType recipientRole, 
+        public static PaperLetter Create(Person creator, Organization organization, string fromName,
+            string[] replyAddressLines, DateTime receivedDate, Person recipient, RoleType recipientRole,
             bool personal)
         {
             return Create(creator.Identity, organization.Identity, fromName, replyAddressLines, receivedDate,
-                          recipient.Identity, recipientRole, personal);
+                recipient.Identity, recipientRole, personal);
         }
 
 
@@ -24,32 +24,32 @@ namespace Swarmops.Logic.Communications
         {
             return FromIdentity(SwarmDb.GetDatabaseForWriting().
                 CreatePaperLetter(organizationId, fromName, String.Join("|", replyAddressLines),
-                                  receivedDate, toPersonId, toPersonInRole, personal, creatingPersonId));
+                    receivedDate, toPersonId, toPersonInRole, personal, creatingPersonId));
         }
 
-        public static PaperLetter FromIdentity (int paperLetterId)
+        public static PaperLetter FromIdentity(int paperLetterId)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetPaperLetter(paperLetterId));
         }
 
-        public static PaperLetter FromBasic (BasicPaperLetter basic)
+        public static PaperLetter FromBasic(BasicPaperLetter basic)
         {
             return new PaperLetter(basic);
         }
 
-        private PaperLetter (BasicPaperLetter basic): base (basic)
+        private PaperLetter(BasicPaperLetter basic) : base(basic)
         {
             // empty private constructor
         }
 
         public Documents Documents
         {
-            get { return Support.Documents.ForObject(this); }
+            get { return Documents.ForObject(this); }
         }
 
 #pragma warning disable 169
 // ReSharper disable InconsistentNaming
-        private new string ReplyAddress;  // hides ReplyAddress in base, quite on purpose
+        private new string ReplyAddress; // hides ReplyAddress in base, quite on purpose
 // ReSharper restore InconsistentNaming
 #pragma warning restore 169
 
@@ -70,6 +70,5 @@ namespace Swarmops.Logic.Communications
                 return Person.FromIdentity(base.ToPersonId);
             }
         }
-
     }
 }

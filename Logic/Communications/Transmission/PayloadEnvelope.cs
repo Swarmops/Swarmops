@@ -4,7 +4,7 @@ using Swarmops.Logic.Support;
 namespace Swarmops.Logic.Communications.Transmission
 {
     [Serializable]
-    public class PayloadEnvelope: PayloadBase<PayloadEnvelope>
+    public class PayloadEnvelope : PayloadBase<PayloadEnvelope>
     {
         public PayloadEnvelope()
         {

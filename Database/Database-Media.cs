@@ -9,8 +9,8 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public int CreateMediaEntryFromKeyword (string keyword, string mediaName, bool isBlog, string url, string title,
-                                                DateTime dateTime)
+        public int CreateMediaEntryFromKeyword(string keyword, string mediaName, bool isBlog, string url, string title,
+            DateTime dateTime)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -39,7 +39,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicMediaEntry[] GetBlogEntriesForKeyword (string keyword, DateTime minAge) // NOT ok
+        public BasicMediaEntry[] GetBlogEntriesForKeyword(string keyword, DateTime minAge) // NOT ok
         {
             throw new NotImplementedException("Not yet migrated to MySQL: GetBlogEntriesForKeyword");
             /*
@@ -49,7 +49,7 @@ namespace Swarmops.Database
                                     "' AND IsBlog %ISTRUE% ORDER BY MediaEntryDateTime DESC");*/
         }
 
-        public BasicMediaEntry[] GetOldMediaEntriesForKeyword (string keyword, DateTime minAge) // NOT ok
+        public BasicMediaEntry[] GetOldMediaEntriesForKeyword(string keyword, DateTime minAge) // NOT ok
         {
             throw new NotImplementedException("Not yet migrated to MySQL: GetOldMediaEntriesForKeyword");
 
@@ -60,7 +60,7 @@ namespace Swarmops.Database
                                     "' AND IsBlog %ISFALSE% ORDER BY MediaEntryDateTime DESC");*/
         }
 
-        private BasicMediaEntry[] ExecuteMediaDbQuery (string commandString)
+        private BasicMediaEntry[] ExecuteMediaDbQuery(string commandString)
         {
             List<BasicMediaEntry> result = new List<BasicMediaEntry>();
 
@@ -83,7 +83,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicMediaEntry[] GetMediaEntriesForKeywordIdsSimplified (int[] keywordIds) // migrated RF 2010-May-07
+        public BasicMediaEntry[] GetMediaEntriesForKeywordIdsSimplified(int[] keywordIds) // migrated RF 2010-May-07
         {
             List<BasicMediaEntry> result = new List<BasicMediaEntry>();
 
@@ -100,7 +100,8 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(new BasicMediaEntry(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2).ToString(), false, "N/A", "N/A", reader.GetDateTime(3)));
+                        result.Add(new BasicMediaEntry(reader.GetInt32(0), reader.GetInt32(1),
+                            reader.GetInt32(2).ToString(), false, "N/A", "N/A", reader.GetDateTime(3)));
                     }
                 }
             }
@@ -109,21 +110,22 @@ namespace Swarmops.Database
         }
 
 
-        private BasicMediaEntry ReadMediaEntryFromReader (DbDataReader reader) // NOT ok -- will need to migrate; any dependencies also won't work
+        private BasicMediaEntry ReadMediaEntryFromReader(DbDataReader reader)
+            // NOT ok -- will need to migrate; any dependencies also won't work
         {
-            int id = (int)reader["MediaKeywordEntryId"];
-            int keywordId = (int)reader["MediaKeywordId"];
-            string mediaName = (string)reader["MediaName"];
-            bool isBlog = (bool)reader["IsBlog"];
-            string mediaEntryTitle = (string)reader["MediaEntryTitle"];
-            string mediaEntryUrl = (string)reader["MediaEntryUrl"];
-            DateTime mediaEntryDateTime = (DateTime)reader["MediaEntryDateTime"];
+            int id = (int) reader["MediaKeywordEntryId"];
+            int keywordId = (int) reader["MediaKeywordId"];
+            string mediaName = (string) reader["MediaName"];
+            bool isBlog = (bool) reader["IsBlog"];
+            string mediaEntryTitle = (string) reader["MediaEntryTitle"];
+            string mediaEntryUrl = (string) reader["MediaEntryUrl"];
+            DateTime mediaEntryDateTime = (DateTime) reader["MediaEntryDateTime"];
 
             object translatedUrlObject = reader["TranslatedUrl"];
 
-            if (!(translatedUrlObject is System.DBNull))
+            if (!(translatedUrlObject is DBNull))
             {
-                string translatedUrl = (string)translatedUrlObject;
+                string translatedUrl = (string) translatedUrlObject;
 
                 if (translatedUrl != null && translatedUrl.Trim().Length > 0)
                 {
@@ -132,11 +134,11 @@ namespace Swarmops.Database
             }
 
             return new BasicMediaEntry(id, keywordId, mediaName, isBlog, mediaEntryTitle, mediaEntryUrl,
-                                       mediaEntryDateTime);
+                mediaEntryDateTime);
         }
 
 
-        public string[] GetBlogKeywords () // OK
+        public string[] GetBlogKeywords() // OK
         {
             List<string> result = new List<string>();
 
@@ -145,7 +147,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command = GetDbCommand("SELECT MediaKeyword From MediaKeywords WHERE SearchBlogs=1",
-                                                 connection);
+                    connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -158,7 +160,7 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        public string[] GetOldMediaKeywords ()   // OK
+        public string[] GetOldMediaKeywords() // OK
         {
             List<string> result = new List<string>();
 
@@ -167,7 +169,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command = GetDbCommand("SELECT MediaKeyword From MediaKeywords WHERE SearchOldMedia=1",
-                                                 connection);
+                    connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -181,7 +183,7 @@ namespace Swarmops.Database
         }
 
 
-        public Dictionary<int, bool> GetMediaTypeTable () // OK Todo: create enum instead of bool
+        public Dictionary<int, bool> GetMediaTypeTable() // OK Todo: create enum instead of bool
         {
             Dictionary<int, bool> result = new Dictionary<int, bool>();
 
@@ -202,7 +204,7 @@ namespace Swarmops.Database
             return result;
         }
 
-        public int GetMediaKeywordId (string keyword) // OK
+        public int GetMediaKeywordId(string keyword) // OK
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -219,16 +221,13 @@ namespace Swarmops.Database
                     {
                         return reader.GetInt32(0);
                     }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 0;
                 }
             }
         }
 
 
-        public Dictionary<int, string> GetMediaKeywordTable ()  // OK
+        public Dictionary<int, string> GetMediaKeywordTable() // OK
         {
             Dictionary<int, string> result = new Dictionary<int, string>();
 
@@ -250,7 +249,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicMediaCategory GetMediaCategory (int mediaCategoryId)  // OK
+        public BasicMediaCategory GetMediaCategory(int mediaCategoryId) // OK
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -258,7 +257,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT Name FROM MediaCategories WHERE MediaCategoryId=" + mediaCategoryId.ToString(),
+                        "SELECT Name FROM MediaCategories WHERE MediaCategoryId=" + mediaCategoryId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -268,13 +267,13 @@ namespace Swarmops.Database
                         return new BasicMediaCategory(mediaCategoryId, reader.GetString(0));
                     }
 
-                    throw new ArgumentException("No such MediaCategoryId: " + mediaCategoryId.ToString());
+                    throw new ArgumentException("No such MediaCategoryId: " + mediaCategoryId);
                 }
             }
         }
 
 
-        public BasicMediaCategory GetMediaCategoryByName (string mediaCategoryName)  // OK
+        public BasicMediaCategory GetMediaCategoryByName(string mediaCategoryName) // OK
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -298,7 +297,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicMediaCategory[] GetMediaCategories (int[] mediaCategoryIds)
+        public BasicMediaCategory[] GetMediaCategories(int[] mediaCategoryIds)
         {
             List<BasicMediaCategory> result = new List<BasicMediaCategory>();
 
@@ -324,7 +323,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicMediaCategory[] GetMediaCategories ()
+        public BasicMediaCategory[] GetMediaCategories()
         {
             List<BasicMediaCategory> result = new List<BasicMediaCategory>();
 
@@ -349,7 +348,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicMedium[] GetBlogTopList (DateTime date) // OK - migrated
+        public BasicMedium[] GetBlogTopList(DateTime date) // OK - migrated
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -379,7 +378,7 @@ namespace Swarmops.Database
                 command =
                     GetDbCommand(
                         "select BlogRankings.MediaId,Media.Name from BlogRankings JOIN Media USING (MediaId) WHERE BlogRankings.BlogRankingDateId=" +
-                        dateId.ToString() + " ORDER BY Ranking", connection);
+                        dateId + " ORDER BY Ranking", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -397,7 +396,7 @@ namespace Swarmops.Database
             }
         }
 
-        public void StoreBlogTopList (DateTime date, string[] rankedBlogNames)  // OK - migrated
+        public void StoreBlogTopList(DateTime date, string[] rankedBlogNames) // OK - migrated
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -425,7 +424,7 @@ namespace Swarmops.Database
         }
 
 
-        private string LimitStringLength (string input, int maxLength)
+        private string LimitStringLength(string input, int maxLength)
         {
             if (input.Length > maxLength)
             {

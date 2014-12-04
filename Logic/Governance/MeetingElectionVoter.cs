@@ -3,24 +3,16 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Governance
 {
-    public class MeetingElectionVoter: BasicInternalPollVoter
+    public class MeetingElectionVoter : BasicInternalPollVoter
     {
-        private MeetingElectionVoter (BasicInternalPollVoter basic): base (basic)
+        private MeetingElectionVoter(BasicInternalPollVoter basic) : base(basic)
         {
             // empty ctor
         }
 
-        public static MeetingElectionVoter FromBasic (BasicInternalPollVoter basic)
-        {
-            return new MeetingElectionVoter(basic);
-        }
-
         public Person Person
         {
-            get
-            {
-                return Person.FromIdentity(base.PersonId);
-            }
+            get { return Person.FromIdentity(base.PersonId); }
         }
 
         public MeetingElection Poll
@@ -30,10 +22,12 @@ namespace Swarmops.Logic.Governance
 
         public InternalPollVoterStatus VoterStatus
         {
-            get
-            {
-                return base.Open ? InternalPollVoterStatus.CanVote : InternalPollVoterStatus.HasAlreadyVoted;
-            }
+            get { return base.Open ? InternalPollVoterStatus.CanVote : InternalPollVoterStatus.HasAlreadyVoted; }
+        }
+
+        public static MeetingElectionVoter FromBasic(BasicInternalPollVoter basic)
+        {
+            return new MeetingElectionVoter(basic);
         }
     }
 }

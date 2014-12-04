@@ -14,10 +14,10 @@ namespace Swarmops.Logic.Swarm
     {
         public static readonly int GracePeriod = 28;
         private Organization organization;
-        private Person person;
         private BasicMembershipPaymentStatus paymentStatus;
+        private Person person;
 
-        private Membership (BasicMembership basic)
+        private Membership(BasicMembership basic)
             : base(basic)
         {
         }
@@ -55,9 +55,9 @@ namespace Swarmops.Logic.Swarm
             {
                 if (base.Expires != value)
                 {
-                    if (this.PersonId > 0 && this.OrganizationId > 0 && base.Expires != new DateTime(1900, 1, 1))
+                    if (PersonId > 0 && OrganizationId > 0 && base.Expires != new DateTime(1900, 1, 1))
                     {
-                        ChurnData.LogRetention(this.PersonId, this.OrganizationId, base.Expires);
+                        ChurnData.LogRetention(PersonId, OrganizationId, base.Expires);
                     }
                     SwarmDb.GetDatabaseForWriting().SetMembershipExpires(Identity, value);
                     base.Expires = value;
@@ -65,44 +65,12 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        public void SetPaymentStatus (MembershipPaymentStatus status, DateTime dateTime)
-        {
-            SwarmDb.GetDatabaseForWriting().SetMembershipPaymentStatus(Identity, status, dateTime);
-            LoadPaymentStatus();
-            paymentStatus.Status = status;
-            paymentStatus.StatusDateTime = dateTime;
-        }
-
-        private void LoadPaymentStatus ()
-        {
-            if (paymentStatus == null)
-            {
-                paymentStatus = SwarmDb.GetDatabaseForReading().GetMembershipPaymentStatus(this.Identity);
-            }
-        }
-
-
-        //Optimization metod, loadMultiple in one call
-        public static void LoadPaymentStatuses (Memberships mss)
-        {
-            Dictionary<int, BasicMembershipPaymentStatus> statuses =
-                SwarmDb.GetDatabaseForReading().GetMembershipPaymentStatuses(mss.Identities);
-            foreach (Membership ms in mss)
-            {
-                if (ms.paymentStatus == null && statuses.ContainsKey(ms.Identity))
-                {
-                    ms.paymentStatus = statuses[ms.Identity];
-                }
-            }
-        }
-
-
         public MembershipPaymentStatus PaymentStatus
         {
             get
             {
                 LoadPaymentStatus();
-                return paymentStatus.Status;
+                return this.paymentStatus.Status;
             }
             private set
             {
@@ -119,7 +87,7 @@ namespace Swarmops.Logic.Swarm
             get
             {
                 LoadPaymentStatus();
-                return paymentStatus.StatusDateTime;
+                return this.paymentStatus.StatusDateTime;
             }
             private set
             {
@@ -130,8 +98,39 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
+        public void SetPaymentStatus(MembershipPaymentStatus status, DateTime dateTime)
+        {
+            SwarmDb.GetDatabaseForWriting().SetMembershipPaymentStatus(Identity, status, dateTime);
+            LoadPaymentStatus();
+            this.paymentStatus.Status = status;
+            this.paymentStatus.StatusDateTime = dateTime;
+        }
 
-        public static Membership FromBasic (BasicMembership basic)
+        private void LoadPaymentStatus()
+        {
+            if (this.paymentStatus == null)
+            {
+                this.paymentStatus = SwarmDb.GetDatabaseForReading().GetMembershipPaymentStatus(Identity);
+            }
+        }
+
+
+        //Optimization metod, loadMultiple in one call
+        public static void LoadPaymentStatuses(Memberships mss)
+        {
+            Dictionary<int, BasicMembershipPaymentStatus> statuses =
+                SwarmDb.GetDatabaseForReading().GetMembershipPaymentStatuses(mss.Identities);
+            foreach (Membership ms in mss)
+            {
+                if (ms.paymentStatus == null && statuses.ContainsKey(ms.Identity))
+                {
+                    ms.paymentStatus = statuses[ms.Identity];
+                }
+            }
+        }
+
+
+        public static Membership FromBasic(BasicMembership basic)
         {
             return new Membership(basic);
         }
@@ -151,24 +150,25 @@ namespace Swarmops.Logic.Swarm
             return FromBasic(SwarmDb.GetDatabaseForReading().GetActiveMembership(personId, organizationId));
         }
 
-        public static Membership Create (int personId, int organizationId, DateTime expires)
+        public static Membership Create(int personId, int organizationId, DateTime expires)
         {
             int membershipId = SwarmDb.GetDatabaseForWriting().CreateMembership(personId, organizationId, expires);
 
             return FromIdentityAggressive(membershipId);
         }
 
-        public static Membership Create (Person person, Organization organization, DateTime expires)
+        public static Membership Create(Person person, Organization organization, DateTime expires)
         {
             return Create(person.Identity, organization.Identity, expires);
         }
 
-        public static Membership Import (Person person, Organization organization, DateTime memberSince,
-                                         DateTime expires)
+        public static Membership Import(Person person, Organization organization, DateTime memberSince,
+            DateTime expires)
         {
             return
-                FromIdentity(SwarmDb.GetDatabaseForWriting().ImportMembership(person.Identity, organization.Identity, memberSince,
-                                                                     expires));
+                FromIdentity(SwarmDb.GetDatabaseForWriting()
+                    .ImportMembership(person.Identity, organization.Identity, memberSince,
+                        expires));
         }
 
 
@@ -178,7 +178,7 @@ namespace Swarmops.Logic.Swarm
         //}
 
 
-        public void Terminate (EventSource eventSource, Person actingPerson, string description)
+        public void Terminate(EventSource eventSource, Person actingPerson, string description)
         {
             if (base.Active)
             {
@@ -197,12 +197,12 @@ namespace Swarmops.Logic.Swarm
                     if (personRole.OrganizationId == OrganizationId)
                     {
                         PWEvents.CreateEvent(eventSource, EventType.DeletedRole, actingPersonId,
-                                                                     personRole.OrganizationId, personRole.GeographyId,
-                                                                     Person.Identity, (int)personRole.Type,
-                                                                     string.Empty);
+                            personRole.OrganizationId, personRole.GeographyId,
+                            Person.Identity, (int) personRole.Type,
+                            string.Empty);
                         PWLog.Write(actingPersonId, PWLogItem.Person, Person.Identity, PWLogAction.RoleDeleted,
-                                    "Role " + personRole.Type.ToString() + " of " + personRole.Geography.Name +
-                                    " was deleted with membership.", string.Empty);
+                            "Role " + personRole.Type + " of " + personRole.Geography.Name +
+                            " was deleted with membership.", string.Empty);
                         personRole.Delete();
                     }
                 }
@@ -210,15 +210,15 @@ namespace Swarmops.Logic.Swarm
                 //now check if this means that you no longer are a member of some uplevel org, then remove those roles as well
                 foreach (PersonRole personRole in theRoles)
                 {
-                    if (!this.Person.MemberOfWithInherited(personRole.Organization))
+                    if (!Person.MemberOfWithInherited(personRole.Organization))
                     {
                         PWEvents.CreateEvent(eventSource, EventType.DeletedRole, actingPersonId,
-                                                                     personRole.OrganizationId, personRole.GeographyId,
-                                                                     Person.Identity, (int)personRole.Type,
-                                                                     string.Empty);
+                            personRole.OrganizationId, personRole.GeographyId,
+                            Person.Identity, (int) personRole.Type,
+                            string.Empty);
                         PWLog.Write(actingPersonId, PWLogItem.Person, Person.Identity, PWLogAction.RoleDeleted,
-                                    "Role " + personRole.Type.ToString() + " of " + personRole.Geography.Name +
-                                    " was deleted with membership of all suborgs.", string.Empty);
+                            "Role " + personRole.Type + " of " + personRole.Geography.Name +
+                            " was deleted with membership of all suborgs.", string.Empty);
                         personRole.Delete();
                     }
                 }
@@ -238,15 +238,15 @@ namespace Swarmops.Logic.Swarm
 
 
                 PWLog.Write(actingPersonId, PWLogItem.Person, Person.Identity, PWLogAction.MemberLost,
-                            eventSource.ToString() + ":" + description, string.Empty);
-                PWEvents.CreateEvent(src, EventType.LostMember, actingPersonId, this.OrganizationId, Person.GeographyId,
-                                     Person.Identity, 0, OrganizationId.ToString());
+                    eventSource + ":" + description, string.Empty);
+                PWEvents.CreateEvent(src, EventType.LostMember, actingPersonId, OrganizationId, Person.GeographyId,
+                    Person.Identity, 0, OrganizationId.ToString());
 
 
                 //Added LogChurn here to make SURE they always are logged with the membership.
-                if (PersonId > 0 && this.OrganizationId > 0 && base.Expires != new DateTime(1900, 1, 1))
+                if (PersonId > 0 && OrganizationId > 0 && base.Expires != new DateTime(1900, 1, 1))
                 {
-                    ChurnData.LogChurn(this.PersonId, this.OrganizationId);
+                    ChurnData.LogChurn(PersonId, OrganizationId);
                 }
                 SwarmDb.GetDatabaseForWriting().TerminateMembership(Identity);
                 base.Active = false;
@@ -260,9 +260,9 @@ namespace Swarmops.Logic.Swarm
                 {
                     try
                     {
-                        if (person.IsSubscribing(newsletterFeedId))
+                        if (this.person.IsSubscribing(newsletterFeedId))
                         {
-                            person.SetSubscription(newsletterFeedId, false);
+                            this.person.SetSubscription(newsletterFeedId, false);
                         }
                     }
                     catch (Exception)

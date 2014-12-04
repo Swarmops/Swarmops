@@ -8,18 +8,15 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         // None for this type
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
 
-
-        public int[] GetFinancialTransactionTagTypes (int financialTransactionId)
+        public int[] GetFinancialTransactionTagTypes(int financialTransactionId)
         {
             List<int> result = new List<int>();
             using (DbConnection connection = GetMySqlDbConnection())
@@ -27,27 +24,26 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT FinancialTransactionTagTypeId FROM FinancialTransactionTags WHERE FinancialTransactionId=" + financialTransactionId.ToString(CultureInfo.InvariantCulture), connection);
+                    GetDbCommand(
+                        "SELECT FinancialTransactionTagTypeId FROM FinancialTransactionTags WHERE FinancialTransactionId=" +
+                        financialTransactionId.ToString(CultureInfo.InvariantCulture), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetInt32(0)); // This is a tag type IDENTITY. Need another db call to read the actual tag types.
+                        result.Add(reader.GetInt32(0));
+                            // This is a tag type IDENTITY. Need another db call to read the actual tag types.
                     }
 
                     return result.ToArray();
                 }
             }
-
         }
-
 
         #endregion
 
-
         #region Creation and manipulation -- stored procedures
-
 
         public int CreateFinancialTransactionTag(int financialTransactionId, int financialTransactionTagTypeId)
         {
@@ -61,7 +57,7 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "financialTransactionId", financialTransactionId);
                 AddParameterWithName(command, "financialTransactionTagTypeId", financialTransactionTagTypeId);
 
-                return Convert.ToInt32(command.ExecuteScalar());  // returns identity, but it's not used - yet, anyway
+                return Convert.ToInt32(command.ExecuteScalar()); // returns identity, but it's not used - yet, anyway
             }
         }
 
@@ -95,10 +91,7 @@ namespace Swarmops.Database
             }
         }
 
-
-
         #endregion
-
 
         #region Dead template code
 
@@ -443,7 +436,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

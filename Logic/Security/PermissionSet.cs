@@ -8,76 +8,34 @@ namespace Swarmops.Logic.Security
 {
     public class PermissionSet
     {
-        public class Item
+        private bool needAll;
+        public List<Item> permsList = new List<Item>();
+
+
+        public PermissionSet(Permission p)
         {
-            public Item (int pOrgId, int pGeoId, Permission pPerm)
-            {
-                orgId = pOrgId;
-                geographyId = pGeoId;
-                perm = pPerm;
-            }
-            public Item (int pOrgId,  Permission pPerm)
-            {
-                orgId = pOrgId;
-                geographyId = -1;
-                perm = pPerm;
-            }
-            public Item (Permission pPerm)
-            {
-                orgId = -1;
-                geographyId = -1;
-                perm = pPerm;
-            }
-
-            public int orgId
-            { get; private set; }
-
-            public int geographyId
-            { get; private set; }
-
-            public Permission perm
-            { get; private set; }
-
-        }
-        public List<PermissionSet.Item> permsList = new List<PermissionSet.Item>();
-
-        private bool needAll = false;
-
-        public bool NeedAll
-        {
-            get { return needAll; }
-            set { needAll = value; }
+            this.permsList.Add(new Item(-1, -1, p));
         }
 
-        public bool NeedOne
+        public PermissionSet(Permission p, int orgId)
         {
-            get { return !needAll; }
-            set { needAll = !value; }
+            this.permsList.Add(new Item(orgId, -1, p));
         }
 
-
-        public PermissionSet (Permission p)
+        public PermissionSet(Permission p, int orgId, int geoId)
         {
-            permsList.Add(new Item(-1, -1, p));
-        }
-        public PermissionSet (Permission p,int orgId)
-        {
-            permsList.Add(new Item(orgId , -1, p));
-        }
-        public PermissionSet (Permission p, int orgId, int geoId)
-        {
-            permsList.Add(new Item(orgId , geoId , p));
+            this.permsList.Add(new Item(orgId, geoId, p));
         }
 
-        public PermissionSet (PermissionSet.Item pi)
+        public PermissionSet(Item pi)
         {
-            permsList.Add(pi);
+            this.permsList.Add(pi);
         }
 
-        public PermissionSet (string permsString)
+        public PermissionSet(string permsString)
         {
             Regex re = new Regex(
-@"          # will search Permission(1,1),Permission(1,1),Permission
+                @"          # will search Permission(1,1),Permission(1,1),Permission
 (                   # group for each ,Permission(1,1) or ,Permission
     (                   
         (               # Permission(1)
@@ -104,7 +62,7 @@ namespace Swarmops.Logic.Security
                     try
                     {
                         string pars = m.Groups["params"].Value;
-                        string[] split = pars.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] split = pars.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
                         if (pars.Length > 0)
                         {
                             org = int.Parse(split[0]);
@@ -113,92 +71,135 @@ namespace Swarmops.Logic.Security
                         }
                     }
                     catch
-                    { }
-                    Permission p = (Permission)Enum.Parse(typeof(Permission), hit, true);
-                    PermissionSet.Item item = new Item(org, geo, p);
-                    permsList.Add(item);
+                    {
+                    }
+                    Permission p = (Permission) Enum.Parse(typeof (Permission), hit, true);
+                    Item item = new Item(org, geo, p);
+                    this.permsList.Add(item);
                 }
                 catch
-                { }
+                {
+                }
             }
         }
 
-        public bool IsInSet (Permission p)
+        public bool NeedAll
         {
-            foreach (PermissionSet.Item ps in permsList)
+            get { return this.needAll; }
+            set { this.needAll = value; }
+        }
+
+        public bool NeedOne
+        {
+            get { return !this.needAll; }
+            set { this.needAll = !value; }
+        }
+
+        public bool IsInSet(Permission p)
+        {
+            foreach (Item ps in this.permsList)
                 if (ps.perm == p)
                     return true;
             return false;
         }
 
-        public bool IsInSet (PermissionSet ps)
+        public bool IsInSet(PermissionSet ps)
         {
             foreach (Permission p in ps)
-                if (!this.IsInSet(p))
+                if (!IsInSet(p))
                     return false;
             return true;
         }
 
-        public bool IsAnyInSet (PermissionSet ps)
+        public bool IsAnyInSet(PermissionSet ps)
         {
             foreach (Permission p in ps)
-                if (this.IsInSet(p))
+                if (IsInSet(p))
                     return true;
             return false;
         }
 
-        public override string ToString ()
+        public override string ToString()
         {
-            List<string> reslist = new List<string>(); 
-            foreach (PermissionSet.Item itm in this)
+            List<string> reslist = new List<string>();
+            foreach (Item itm in this)
             {
                 reslist.Add(itm.perm.ToString());
             }
             string[] resArr = reslist.ToArray();
-            string res = string.Join(needAll ? " & " : " | ", resArr);
+            string res = string.Join(this.needAll ? " & " : " | ", resArr);
             return res;
         }
 
-        public Enumerator GetEnumerator ()
+        public Enumerator GetEnumerator()
         {
             return new Enumerator(this);
         }
 
         public class Enumerator : IEnumerator
         {
-            int currentIndex = -1;
-            PermissionSet parent;
+            private readonly PermissionSet parent;
+            private int currentIndex = -1;
 
-            internal Enumerator (PermissionSet p)
+            internal Enumerator(PermissionSet p)
             {
                 this.parent = p;
-                this.Reset();
+                Reset();
             }
 
             public object Current
             {
                 get
                 {
-                    if (currentIndex < 0 || currentIndex > parent.permsList.Count - 1)
+                    if (this.currentIndex < 0 || this.currentIndex > this.parent.permsList.Count - 1)
                         return null;
-                    return parent.permsList[currentIndex];
+                    return this.parent.permsList[this.currentIndex];
                 }
             }
 
-            public bool MoveNext ()
+            public bool MoveNext()
             {
-                ++currentIndex;
+                ++this.currentIndex;
 
                 if (Current != null)
                     return true;
-                else
-                    return false;
+                return false;
             }
 
-            public void Reset ()
+            public void Reset()
             {
-                currentIndex = -1;
+                this.currentIndex = -1;
             }
+        }
+
+        public class Item
+        {
+            public Item(int pOrgId, int pGeoId, Permission pPerm)
+            {
+                orgId = pOrgId;
+                geographyId = pGeoId;
+                perm = pPerm;
+            }
+
+            public Item(int pOrgId, Permission pPerm)
+            {
+                orgId = pOrgId;
+                geographyId = -1;
+                perm = pPerm;
+            }
+
+            public Item(Permission pPerm)
+            {
+                orgId = -1;
+                geographyId = -1;
+                perm = pPerm;
+            }
+
+            public int orgId { get; private set; }
+
+            public int geographyId { get; private set; }
+
+            public Permission perm { get; private set; }
         }
     }
 }

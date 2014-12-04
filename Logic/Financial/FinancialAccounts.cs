@@ -9,11 +9,12 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class FinancialAccounts : PluralBase<FinancialAccounts,FinancialAccount,BasicFinancialAccount>
+    public class FinancialAccounts : PluralBase<FinancialAccounts, FinancialAccount, BasicFinancialAccount>
     {
         public static FinancialAccounts ForOrganization(Organization organization)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountTreeForOrganization(organization.Identity));
+            return
+                FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountTreeForOrganization(organization.Identity));
         }
 
         public static FinancialAccounts ForOwner(Person person)
@@ -22,8 +23,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-
-        public static FinancialAccounts ForOrganization (Organization organization, FinancialAccountType accountType)
+        public static FinancialAccounts ForOrganization(Organization organization, FinancialAccountType accountType)
         {
             FinancialAccounts allAccounts = ForOrganization(organization);
 
@@ -60,12 +60,13 @@ namespace Swarmops.Logic.Financial
             return result;
         }
 
-        public static FinancialAccounts FromBankTransactionTag (string tag)
+        public static FinancialAccounts FromBankTransactionTag(string tag)
         {
-            int[] accountIdentities = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.FinancialAccount,
-                                                                                      ObjectOptionalDataType.
-                                                                                          BankTransactionTag,
-                                                                                      tag.ToLower());
+            int[] accountIdentities =
+                SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.FinancialAccount,
+                    ObjectOptionalDataType.
+                        BankTransactionTag,
+                    tag.ToLower());
 
             return FromIdentities(accountIdentities);
         }
@@ -82,33 +83,35 @@ namespace Swarmops.Logic.Financial
 
         public FinancialAccountRows GetRows(DateTime start, DateTime end)
         {
-            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading().GetFinancialAccountRows(Identities, start, end, false);
+            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading()
+                .GetFinancialAccountRows(Identities, start, end, false);
             return FinancialAccountRows.FromArray(basicRows);
         }
 
         public FinancialAccountRows GetRowsFar(DateTime start, DateTime end)
         {
-            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading().GetFinancialAccountRows(Identities, start, end, true);
+            BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading()
+                .GetFinancialAccountRows(Identities, start, end, true);
             return FinancialAccountRows.FromArray(basicRows);
         }
 
         [Obsolete("This function uses double-point variables for money. Use GetBudgetSumCents instead.")]
         public double GetBudgetSum(int year)
         {
-            return SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget(this.Identities, year);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget(Identities, year);
         }
 
 
         public Int64 GetBudgetSumCents(int year)
         {
             // TODO: Add support in database
-            return (Int64)(SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget(this.Identities, year) * 100);
+            return (Int64) (SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget(Identities, year)*100);
         }
 
 
         public Int64 GetDeltaCents(DateTime start, DateTime end)
         {
-            return SwarmDb.GetDatabaseForReading().GetFinancialAccountBalanceDeltaCents(this.Identities, start, end);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountBalanceDeltaCents(Identities, start, end);
         }
 
 
@@ -119,7 +122,7 @@ namespace Swarmops.Logic.Financial
             return GetTree(nodes, rootAccount.Identity, 0);
         }
 
-        
+
         /*
         public Dictionary<int, BasicGeography> GetGeographyHashtable(int startGeographyId)
         {
@@ -137,7 +140,7 @@ namespace Swarmops.Logic.Financial
 
 
         private static FinancialAccounts GetTree(Dictionary<int, FinancialAccounts> accounts, int startNodeId,
-                                                   int generation)
+            int generation)
         {
             FinancialAccounts result = new FinancialAccounts();
 
@@ -184,7 +187,8 @@ namespace Swarmops.Logic.Financial
 
             Dictionary<int, FinancialAccounts> result = new Dictionary<int, FinancialAccounts>();
 
-            FinancialAccounts allAccounts = FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountsForOrganization(organization.Identity));
+            FinancialAccounts allAccounts =
+                FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountsForOrganization(organization.Identity));
 
             // Add the nodes.
 
@@ -207,7 +211,5 @@ namespace Swarmops.Logic.Financial
 
             return result;
         }
-
-
     }
 }

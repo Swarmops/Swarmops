@@ -12,15 +12,21 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
-        private const string payoutFieldSequence = 
-            " PayoutId,OrganizationId,Bank,Account,Reference," +                                      // 0-4
-            "AmountCents,ExpectedTransactionDate,Open,CreatedDateTime,CreatedByPersonId " +                // 5-9
+        private const string payoutFieldSequence =
+            " PayoutId,OrganizationId,Bank,Account,Reference," + // 0-4
+            "AmountCents,ExpectedTransactionDate,Open,CreatedDateTime,CreatedByPersonId " + // 5-9
             "FROM Payouts ";
 
-        private static BasicPayout ReadPayoutFromDataReader (IDataRecord reader)
+        private const string payoutDependencyFieldSequence =
+            " PayoutDependencies.PayoutId,FinancialDependencyTypes.Name,PayoutDependencies.ForeignId " + // 0-2
+            "FROM PayoutDependencies,FinancialDependencyTypes ";
+
+        private const string payoutDependencyTableJoin =
+            " FinancialDependencyTypes.FinancialDependencyTypeId=PayoutDependencies.FinancialDependencyTypeId ";
+
+        private static BasicPayout ReadPayoutFromDataReader(IDataRecord reader)
         {
             int payoutId = reader.GetInt32(0);
             int organizationId = reader.GetInt32(1);
@@ -37,30 +43,22 @@ namespace Swarmops.Database
                 expectedTransactionDate, open, createdDateTime, createdByPersonId);
         }
 
-        private const string payoutDependencyFieldSequence =
-            " PayoutDependencies.PayoutId,FinancialDependencyTypes.Name,PayoutDependencies.ForeignId " +  // 0-2
-            "FROM PayoutDependencies,FinancialDependencyTypes ";
-
-        private const string payoutDependencyTableJoin =
-            " FinancialDependencyTypes.FinancialDependencyTypeId=PayoutDependencies.FinancialDependencyTypeId ";
-
         private static BasicFinancialDependency ReadPayoutDependencyFromDataReader(IDataRecord reader)
         {
             int payoutId = reader.GetInt32(0);
             string financialDependencyTypeString = reader.GetString(1);
             int foreignId = reader.GetInt32(2);
 
-            return new BasicFinancialDependency(payoutId, (FinancialDependencyType) Enum.Parse(typeof (FinancialDependencyType), financialDependencyTypeString), foreignId);
+            return new BasicFinancialDependency(payoutId,
+                (FinancialDependencyType) Enum.Parse(typeof (FinancialDependencyType), financialDependencyTypeString),
+                foreignId);
         }
-
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
 
-
-        public BasicPayout GetPayout (int payoutId)
+        public BasicPayout GetPayout(int payoutId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -68,8 +66,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + payoutFieldSequence +
-                    "WHERE PayoutId=" + payoutId.ToString(),
-                                 connection);
+                                 "WHERE PayoutId=" + payoutId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -78,10 +76,9 @@ namespace Swarmops.Database
                         return ReadPayoutFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such PayoutId:" + payoutId.ToString());
+                    throw new ArgumentException("No such PayoutId:" + payoutId);
                 }
             }
-
         }
 
 
@@ -95,8 +92,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + payoutDependencyFieldSequence +
-                    "WHERE PayoutDependencies.PayoutId=" + payoutId.ToString() + " AND " + payoutDependencyTableJoin,
-                                 connection);
+                                 "WHERE PayoutDependencies.PayoutId=" + payoutId + " AND " + payoutDependencyTableJoin,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -124,10 +121,12 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + payoutDependencyFieldSequence +
-                    "WHERE PayoutDependencies.ForeignId=" + foreignObjectId.ToString(CultureInfo.InvariantCulture) +
-                    " AND FinancialDependencyTypes.Name='" + financialDependencyTypeName + "'" + // enum - no sanitation necessary
-                    " AND " + payoutDependencyTableJoin,
-                                 connection);
+                                 "WHERE PayoutDependencies.ForeignId=" +
+                                 foreignObjectId.ToString(CultureInfo.InvariantCulture) +
+                                 " AND FinancialDependencyTypes.Name='" + financialDependencyTypeName + "'" +
+                                 // enum - no sanitation necessary
+                                 " AND " + payoutDependencyTableJoin,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -135,10 +134,7 @@ namespace Swarmops.Database
                     {
                         return reader.GetInt32(0);
                     }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 0;
                 }
             }
         }
@@ -174,12 +170,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
         #region Creation and manipulation -- stored procedures
-
 
         public int CreatePayout(int organizationId, string bank, string account, string reference,
             double amount, DateTime expectedTransactionDate, int createdByPersonId)
@@ -314,7 +307,6 @@ namespace Swarmops.Database
         }
 
 
-
         public void SetPayoutAmount(int payoutId, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -348,9 +340,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Dead template code
 
@@ -695,7 +685,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

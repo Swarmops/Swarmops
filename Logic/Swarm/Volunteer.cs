@@ -11,33 +11,33 @@ namespace Swarmops.Logic.Swarm
     {
         #region Creation and Construction
 
-        private Volunteer ()
+        private Volunteer()
             : base(0, 0, 0, DateTime.MinValue, false, DateTime.MinValue, string.Empty)
         {
         }
 
-        private Volunteer (BasicVolunteer basic)
+        private Volunteer(BasicVolunteer basic)
             : base(basic)
         {
             // empty ctor
         }
 
-        public static Volunteer FromIdentity (int volunteerId)
+        public static Volunteer FromIdentity(int volunteerId)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetVolunteer(volunteerId));
         }
 
-        public static Volunteer FromBasic (BasicVolunteer basic)
+        public static Volunteer FromBasic(BasicVolunteer basic)
         {
             return new Volunteer(basic);
         }
 
-        public static Volunteer Create (Person person, Person owner)
+        public static Volunteer Create(Person person, Person owner)
         {
             return Create(person.Identity, owner.Identity);
         }
 
-        public static Volunteer Create (int personId, int ownerPersonId)
+        public static Volunteer Create(int personId, int ownerPersonId)
         {
             return FromIdentity(SwarmDb.GetDatabaseForWriting().CreateVolunteer(personId, ownerPersonId));
         }
@@ -120,25 +120,28 @@ namespace Swarmops.Logic.Swarm
 
         public VolunteerRoles Roles
         {
-            get { return VolunteerRoles.FromArray(SwarmDb.GetDatabaseForReading().GetVolunteerRolesByVolunteer(Identity)); }
+            get
+            {
+                return VolunteerRoles.FromArray(SwarmDb.GetDatabaseForReading().GetVolunteerRolesByVolunteer(Identity));
+            }
         }
 
-        public void AddRole (Organization organization, Geography geography, RoleType roleType)
+        public void AddRole(Organization organization, Geography geography, RoleType roleType)
         {
             AddRole(organization.Identity, geography.Identity, roleType);
         }
 
-        public void AddRole (int organizationId, int geographyId, RoleType roleType)
+        public void AddRole(int organizationId, int geographyId, RoleType roleType)
         {
             SwarmDb.GetDatabaseForWriting().CreateVolunteerRole(Identity, organizationId, geographyId, roleType);
         }
 
-        public void Close (string comments)
+        public void Close(string comments)
         {
             SwarmDb.GetDatabaseForWriting().CloseVolunteer(Identity, comments);
         }
 
-        private void PopulateCache ()
+        private void PopulateCache()
         {
             if (this.person == null)
             {
@@ -164,33 +167,32 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-
         /// <summary>
-        ///          Assign the volunteer to a suitable owner will try to assign to ElectoralCircuit lead
-        ///          If that is not possible it will go to district lead
+        ///     Assign the volunteer to a suitable owner will try to assign to ElectoralCircuit lead
+        ///     If that is not possible it will go to district lead
         /// </summary>
         /// <param name="geo"></param>
         /// <param name="withinOrg"></param>
         /// <param name="defaultOwner"></param>
         /// <param name="stopGeography">The parent of top geographies that could/should recieve volunteer (country) </param>
-        public void AutoAssign (Geography geo, int withinOrg, Person defaultOwner, int stopGeography)
+        public void AutoAssign(Geography geo, int withinOrg, Person defaultOwner, int stopGeography)
         {
-
             //Note: stopGeography is only needed because Districts ar not properly defined. Districts are the ones below country.
             try
             {
-                this.Owner = defaultOwner;
+                Owner = defaultOwner;
                 Geography volonteerGeography = geo;
 
 
                 //Move up to target geography level
                 //GeographyLevel targetLevel = GeographyLevel.ElectoralCircuit;
-                GeographyLevel targetLevel = GeographyLevel.District; //This will never hit bcse Districts ar not properly defined
+                GeographyLevel targetLevel = GeographyLevel.District;
+                    //This will never hit bcse Districts ar not properly defined
 
                 while (!(volonteerGeography.AtLevel(targetLevel))
-                    && (volonteerGeography.ParentGeographyId != 0)
-                        && (volonteerGeography.ParentGeographyId != stopGeography)
-                        )
+                       && (volonteerGeography.ParentGeographyId != 0)
+                       && (volonteerGeography.ParentGeographyId != stopGeography)
+                    )
                 {
                     volonteerGeography = volonteerGeography.Parent;
                 }
@@ -201,7 +203,7 @@ namespace Swarmops.Logic.Swarm
                 {
                     // Move "geography" up to district, wich are next below country, if no lead was found at the target level
                     while ((volonteerGeography.ParentGeographyId != 0)
-                        && (volonteerGeography.ParentGeographyId != stopGeography)
+                           && (volonteerGeography.ParentGeographyId != stopGeography)
                         )
                     {
                         volonteerGeography = volonteerGeography.Parent;
@@ -212,7 +214,7 @@ namespace Swarmops.Logic.Swarm
                 //Found anyone? otherwise leave default Owner.
                 if (localLead != null)
                 {
-                    this.Owner = localLead;
+                    Owner = localLead;
                 }
             }
             catch (Exception)

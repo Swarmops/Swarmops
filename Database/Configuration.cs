@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Web;
 using System.Xml.Serialization;
@@ -9,7 +10,7 @@ namespace Swarmops.Database
     public partial class SwarmDb
     {
         /// <summary>
-        /// This is the IN-CODE revision of the database. The version we expect to be running against.
+        ///     This is the IN-CODE revision of the database. The version we expect to be running against.
         /// </summary>
         public static int DbVersionExpected
         {
@@ -22,23 +23,32 @@ namespace Swarmops.Database
         [Serializable]
         public class Configuration
         {
-            public Configuration() {}
-            public Configuration (Credentials read, Credentials write, Credentials admin)
+            private static Configuration _configuration;
+
+            public Configuration()
             {
-                this.Read = read;
-                this.Write = write;
-                this.Admin = admin;
             }
+
+            public Configuration(Credentials read, Credentials write, Credentials admin)
+            {
+                Read = read;
+                Write = write;
+                Admin = admin;
+            }
+
+            public Credentials Read { get; set; }
+            public Credentials Write { get; set; }
+            public Credentials Admin { get; set; }
 
             public static bool IsConfigured()
             {
-                if (Configuration._configuration == null)
+                if (_configuration == null)
                 {
                     try
                     {
-                        Configuration.Load();
+                        Load();
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
                         return false;
                     }
@@ -48,10 +58,6 @@ namespace Swarmops.Database
 
                 return !String.IsNullOrEmpty(testString);
             }
-
-            public Credentials Read { get; set; }
-            public Credentials Write { get; set; }
-            public Credentials Admin { get; set; }
 
 
             public Configuration Get()
@@ -64,20 +70,19 @@ namespace Swarmops.Database
                 return _configuration;
             }
 
-            private static Configuration _configuration;
-
             public static bool TestConfigurationWritable()
             {
                 try
                 {
-                    using (FileStream stream = new FileStream(GetConfigurationFileName(), FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+                    using (
+                        FileStream stream = new FileStream(GetConfigurationFileName(), FileMode.Append, FileAccess.Write,
+                            FileShare.ReadWrite))
                     {
                         // do nothing                                                       
                     }
                 }
                 catch (Exception)
                 {
-
                     return false;
                 }
 
@@ -86,20 +91,21 @@ namespace Swarmops.Database
 
             public static void Load()
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
+                XmlSerializer serializer = new XmlSerializer(typeof (Configuration));
 
                 string configFileName = GetConfigurationFileName();
 
-                using (FileStream readFileStream = new FileStream(configFileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+                using (
+                    FileStream readFileStream = new FileStream(configFileName, FileMode.Open, FileAccess.Read,
+                        FileShare.Read))
                 {
-
                     _configuration = (Configuration) serializer.Deserialize(readFileStream);
                 }
             }
 
             public static void Set(Configuration configuration)
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
+                XmlSerializer serializer = new XmlSerializer(typeof (Configuration));
 
                 string fileName = GetConfigurationFileName();
                 using (TextWriter writeFileStream = new StreamWriter(fileName))
@@ -125,22 +131,41 @@ namespace Swarmops.Database
 
                     return "/etc/swarmops/database.config";
                 }
-                else if (System.Diagnostics.Debugger.IsAttached)
+                if (Debugger.IsAttached)
                 {
                     // Dev web process. This will throw if we're not in a HttpContext and trying to debug something else.
 
-                    return HttpContext.Current.Server.MapPath ("~/database.config");
+                    return HttpContext.Current.Server.MapPath("~/database.config");
                 }
-                else
-                {
-                    throw new NotImplementedException("Invalid state");
+                throw new NotImplementedException("Invalid state");
 
-                    // Dev console process
+                // Dev console process
 
-                    // Each dev needs to set the working directory to the Console directory when debugging
-                    // return "database.config"; 
-                }
+                // Each dev needs to set the working directory to the Console directory when debugging
+                // return "database.config"; 
             }
+        }
+
+        [Serializable]
+        public class Credentials
+        {
+            public Credentials()
+            {
+                // paramless ctor to enable serialization
+            }
+
+            public Credentials(string database, ServerSet servers, string username, string password)
+            {
+                Database = database;
+                ServerSet = servers;
+                Username = username;
+                Password = password;
+            }
+
+            public string Database { get; set; }
+            public ServerSet ServerSet { get; set; }
+            public string Username { get; set; }
+            public string Password { get; set; }
         }
 
         [Serializable]
@@ -152,35 +177,14 @@ namespace Swarmops.Database
                 ServerPriorities = new List<string>();
             }
 
-            public ServerSet (string singleServer)
+            public ServerSet(string singleServer)
             {
                 ServerPriorities = new List<string>();
                 ServerPriorities.Add(singleServer);
             }
 
-            public List<string> ServerPriorities { get; set; } // array of semicolon-delimited hostnames; topmost string in array is first-priority servers, and so on.
+            public List<string> ServerPriorities { get; set; }
+            // array of semicolon-delimited hostnames; topmost string in array is first-priority servers, and so on.
         }
-
-        [Serializable]
-        public class Credentials
-        {
-            public Credentials()
-            {
-                // paramless ctor to enable serialization
-            }
-
-            public Credentials (string database, ServerSet servers, string username, string password)
-            {
-                this.Database = database;
-                this.ServerSet = servers;
-                this.Username = username;
-                this.Password = password;
-            }
-
-            public string Database { get; set; }
-            public ServerSet ServerSet { get; set; }
-            public string Username { get; set; }
-            public string Password { get; set; }
-       }
     }
 }

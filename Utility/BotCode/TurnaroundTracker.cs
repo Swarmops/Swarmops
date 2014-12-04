@@ -1,9 +1,4 @@
 using System;
-using Swarmops.Database;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Special.Sweden;
-using Swarmops.Logic.Structure;
-using Swarmops.Logic.Support;
 
 namespace Swarmops.Utility.BotCode
 {
@@ -86,6 +81,7 @@ namespace Swarmops.Utility.BotCode
 
             Persistence.Key[persistenceKey] = lastDeltaId.ToString();*/
         }
+
         /*
         public static void Housekeeping()
         {

@@ -9,17 +9,17 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string outboundCommFieldSequence =
-            " OutboundCommId,SenderPersonId,FromPersonId,OrganizationId,CreatedDateTime," +   // 0-4
-            "ResolverClassId,RecipientDataXml,Resolved,ResolvedDateTime,Priority," +          // 5-9
-            "TransmitterClassId,PayloadXml,Open,StartTransmitDateTime,ClosedDateTime," +      // 10-14
-            "RecipientCount,RecipientsSuccess,RecipientsFail " +                              // 15-17
+            " OutboundCommId,SenderPersonId,FromPersonId,OrganizationId,CreatedDateTime," + // 0-4
+            "ResolverClassId,RecipientDataXml,Resolved,ResolvedDateTime,Priority," + // 5-9
+            "TransmitterClassId,PayloadXml,Open,StartTransmitDateTime,ClosedDateTime," + // 10-14
+            "RecipientCount,RecipientsSuccess,RecipientsFail " + // 15-17
             "FROM OutboundComms ";
 
-        private BasicOutboundComm ReadOutboundCommFromDataReader(IDataRecord reader) // Not static -- accesses cache, requiring connection strings
+        private BasicOutboundComm ReadOutboundCommFromDataReader(IDataRecord reader)
+            // Not static -- accesses cache, requiring connection strings
         {
             int outboundCommId = reader.GetInt32(0);
             int senderPersonId = reader.GetInt32(1);
@@ -27,13 +27,15 @@ namespace Swarmops.Database
             int organizationId = reader.GetInt32(3);
             DateTime createdDateTime = reader.GetDateTime(4);
 
-            int resolverClassId = reader.GetInt32(5); // Resolve to class name -- cached call more efficient than Join in Select
+            int resolverClassId = reader.GetInt32(5);
+                // Resolve to class name -- cached call more efficient than Join in Select
             string recipientDataXml = reader.GetString(6); // Interpreted by ResolverClass
             bool resolved = reader.GetBoolean(7);
             DateTime resolvedDateTime = reader.GetDateTime(8);
             OutboundCommPriority priority = (OutboundCommPriority) reader.GetInt32(9);
 
-            int transmitterClassId = reader.GetInt32(10); // Resolve to class name -- cached call more efficient than Join in Select
+            int transmitterClassId = reader.GetInt32(10);
+                // Resolve to class name -- cached call more efficient than Join in Select
             string payloadXml = reader.GetString(11); // Interpreted by TransmitterClass
             bool open = reader.GetBoolean(12);
             DateTime startTransmitDateTime = reader.GetDateTime(13);
@@ -50,18 +52,14 @@ namespace Swarmops.Database
 
             return new BasicOutboundComm
                 (outboundCommId, senderPersonId, fromPersonId, organizationId, createdDateTime,
-                 resolverClass, recipientDataXml, resolved, resolvedDateTime, priority,
-                 transmitterClass, payloadXml, open, startTransmitDateTime, closedDateTime,
-                 recipientCount, recipientSuccessCount, recipientFailCount);
-
-
+                    resolverClass, recipientDataXml, resolved, resolvedDateTime, priority,
+                    transmitterClass, payloadXml, open, startTransmitDateTime, closedDateTime,
+                    recipientCount, recipientSuccessCount, recipientFailCount);
         }
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
-
 
         public BasicOutboundComm GetOutboundComm(int outboundCommId)
         {
@@ -71,8 +69,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + outboundCommFieldSequence +
-                    "WHERE OutboundCommId=" + outboundCommId.ToString(),
-                                 connection);
+                                 "WHERE OutboundCommId=" + outboundCommId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -81,12 +79,10 @@ namespace Swarmops.Database
                         return ReadOutboundCommFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such OutboundCommId:" + outboundCommId.ToString());
+                    throw new ArgumentException("No such OutboundCommId:" + outboundCommId);
                 }
             }
-
         }
-
 
 
         public BasicOutboundComm[] GetOutboundComms(params object[] conditions)
@@ -99,7 +95,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + outboundCommFieldSequence + ConstructWhereClause("OutboundComms", conditions) + " ORDER BY Priority ASC", connection);
+                        "SELECT" + outboundCommFieldSequence + ConstructWhereClause("OutboundComms", conditions) +
+                        " ORDER BY Priority ASC", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -113,16 +110,14 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Database optimizations
 
         private static Dictionary<int, string> _resolverClassCache;
-        private static Dictionary<int, string> _transmitterClassCache; 
+        private static Dictionary<int, string> _transmitterClassCache;
 
-        protected string GetCachedResolverClassName (int resolverClassId)
+        protected string GetCachedResolverClassName(int resolverClassId)
         {
             if (_resolverClassCache == null)
             {
@@ -140,8 +135,8 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT Name FROM ResolverClasses WHERE ResolverClassId=" + resolverClassId.ToString(),
-                                 connection);
+                    GetDbCommand("SELECT Name FROM ResolverClasses WHERE ResolverClassId=" + resolverClassId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -151,10 +146,9 @@ namespace Swarmops.Database
                         return _resolverClassCache[resolverClassId];
                     }
 
-                    throw new ArgumentException("No such ResolverClassId:" + resolverClassId.ToString());
+                    throw new ArgumentException("No such ResolverClassId:" + resolverClassId);
                 }
             }
-
         }
 
         protected string GetCachedTransmitterClassName(int transmitterClassId)
@@ -174,8 +168,8 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT Name FROM TransmitterClasses WHERE TransmitterClassId=" + transmitterClassId.ToString(),
-                                 connection);
+                    GetDbCommand("SELECT Name FROM TransmitterClasses WHERE TransmitterClassId=" + transmitterClassId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -185,22 +179,17 @@ namespace Swarmops.Database
                         return _transmitterClassCache[transmitterClassId];
                     }
 
-                    throw new ArgumentException("No such TransmitterClassId:" + transmitterClassId.ToString());
+                    throw new ArgumentException("No such TransmitterClassId:" + transmitterClassId);
                 }
             }
-
         }
-
-
-
 
         #endregion
 
-
         #region Creation and manipulation -- stored procedures
 
-
-        public int CreateOutboundComm(int senderPersonId, int fromPersonId, int organizationId, string resolverClass, string recipientDataXml, string transmitterClass, string payloadXml, OutboundCommPriority priority)
+        public int CreateOutboundComm(int senderPersonId, int fromPersonId, int organizationId, string resolverClass,
+            string recipientDataXml, string transmitterClass, string payloadXml, OutboundCommPriority priority)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -212,11 +201,15 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "senderPersonId", senderPersonId);
                 AddParameterWithName(command, "fromPersonId", fromPersonId);
                 AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "resolverClass", String.IsNullOrEmpty(resolverClass) ? "0" : resolverClass);  // Will be turned into ID by stored procedure
-                AddParameterWithName(command, "recipientDataXml", String.IsNullOrEmpty(recipientDataXml) ? string.Empty : recipientDataXml);
-                AddParameterWithName(command, "transmitterClass", transmitterClass); // Will be turned into ID by stored procedure
+                AddParameterWithName(command, "resolverClass", String.IsNullOrEmpty(resolverClass) ? "0" : resolverClass);
+                    // Will be turned into ID by stored procedure
+                AddParameterWithName(command, "recipientDataXml",
+                    String.IsNullOrEmpty(recipientDataXml) ? string.Empty : recipientDataXml);
+                AddParameterWithName(command, "transmitterClass", transmitterClass);
+                    // Will be turned into ID by stored procedure
                 AddParameterWithName(command, "payloadXml", payloadXml);
-                AddParameterWithName(command, "priority", (int)priority);  // convert enum to integerized priority; convert back on field read
+                AddParameterWithName(command, "priority", (int) priority);
+                    // convert enum to integerized priority; convert back on field read
                 AddParameterWithName(command, "createdDateTime", DateTime.UtcNow);
 
                 return Convert.ToInt32(command.ExecuteScalar());
@@ -272,7 +265,6 @@ namespace Swarmops.Database
         }
 
         #endregion
-
 
         #region Dead template code
 
@@ -617,7 +609,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

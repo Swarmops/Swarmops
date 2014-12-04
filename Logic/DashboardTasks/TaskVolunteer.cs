@@ -2,7 +2,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.DashboardTasks
 {
-    public class TaskVolunteer: TaskBase
+    public class TaskVolunteer : TaskBase
     {
         public TaskVolunteer(Volunteer volunteer)
             : base(

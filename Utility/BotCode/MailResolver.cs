@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Structure;
-using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 using Swarmops.Utility.Mail;
 
@@ -11,7 +10,7 @@ namespace Swarmops.Utility.BotCode
 {
     public class MailResolver
     {
-        public static void Run ()
+        public static void Run()
         {
             OutboundMail mail = OutboundMail.GetFirstUnresolved();
 
@@ -32,7 +31,7 @@ namespace Swarmops.Utility.BotCode
 
             switch (mail.MailType)
             {
-                case (int)TypedMailTemplate.TemplateType.MemberMail: 
+                case (int) TypedMailTemplate.TemplateType.MemberMail:
                     // All members at this org and geography
 
                     People people = People.FromOrganizationAndGeography(mail.Organization, mail.Geography);
@@ -43,7 +42,7 @@ namespace Swarmops.Utility.BotCode
                     }
                     break;
 
-                case (int)TypedMailTemplate.TemplateType.OfficerMail: 
+                case (int) TypedMailTemplate.TemplateType.OfficerMail:
                     // All officers at this org and geography
                     int[] officers = Roles.GetAllDownwardRoles(mail.OrganizationId, mail.GeographyId);
                     downwardCount = officers.Length;
@@ -55,7 +54,7 @@ namespace Swarmops.Utility.BotCode
 
                 default:
                     throw new InvalidOperationException("Unhandled mail mode; can't resolve mail id " +
-                                                        mail.Identity.ToString());
+                                                        mail.Identity);
             }
 
             int[] upwardIds = Roles.GetAllUpwardRoles(mail.OrganizationId, mail.GeographyId);
@@ -155,19 +154,18 @@ namespace Swarmops.Utility.BotCode
 
             mailBody +=
                 "Transmissions will begin " + (mail.ReleaseDateTime < DateTime.Now
-                                                   ? "immediately"
-                                                   :
-                                                       "in " + (mail.ReleaseDateTime - DateTime.Now).Minutes.ToString() +
-                                                       " minutes") + ".\r\n";
+                    ? "immediately"
+                    : "in " + (mail.ReleaseDateTime - DateTime.Now).Minutes +
+                      " minutes") + ".\r\n";
 
             new MailTransmitter(
                 "PirateWeb", "noreply@pirateweb.net",
-                "Mail resolved: " + mail.Title + " (" + countTotal.ToString() + " recipients)", mailBody,
+                "Mail resolved: " + mail.Title + " (" + countTotal + " recipients)", mailBody,
                 Person.FromIdentity(mail.AuthorPersonId), true).Send();
         }
 
 
-        static private People ApplySubscription (People input, int feedId)
+        private static People ApplySubscription(People input, int feedId)
         {
             People output = new People();
 
@@ -183,7 +181,7 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        public static string CreateWelcomeMail (Person person, Organization organization)
+        public static string CreateWelcomeMail(Person person, Organization organization)
         {
             // for this person, iterate over all applicable geographies and organizations
 
@@ -192,7 +190,7 @@ namespace Swarmops.Utility.BotCode
 
             orgLine.Reverse(); // Start at the most local org
 
-            Dictionary<int,bool> orgMailedLookup = new Dictionary<int, bool>();
+            Dictionary<int, bool> orgMailedLookup = new Dictionary<int, bool>();
 
             int delay = 0;
             string result = string.Empty;
@@ -215,7 +213,8 @@ namespace Swarmops.Utility.BotCode
                     try
                     {
                         lead = Roles.GetLocalLead(org, geo);
-                        orgMailedLookup[org.Identity] = true; // Make sure that the chairman doesn't mail at a lower level
+                        orgMailedLookup[org.Identity] = true;
+                            // Make sure that the chairman doesn't mail at a lower level
                     }
                     catch (ArgumentException)
                     {
@@ -226,7 +225,7 @@ namespace Swarmops.Utility.BotCode
                         // If we get here, there is a mail template at the highest possible geo for this org, but no local lead.
                         // That's usually the case with board-centric organizations rather than executive-centric.
                         // Try to mail from chairman rather than the local lead.
-                       
+
                         try
                         {
                             orgMailedLookup[org.Identity] = true;
@@ -257,16 +256,16 @@ namespace Swarmops.Utility.BotCode
 
                     welcomemail.pBodyContent = autoMail.Body;
                     welcomemail.pSubject = autoMail.Title;
-                    
-                    OutboundMail newMail = welcomemail.CreateOutboundMail (lead, OutboundMail.PriorityNormal,
-                                                                            org, geo, DateTime.Now.AddMinutes(delay));
+
+                    OutboundMail newMail = welcomemail.CreateOutboundMail(lead, OutboundMail.PriorityNormal,
+                        org, geo, DateTime.Now.AddMinutes(delay));
                     newMail.AddRecipient(person.Identity, false);
                     newMail.SetRecipientCount(1);
                     newMail.SetResolved();
                     newMail.SetReadyForPickup();
-                    
+
                     result += String.Format(" - {0}/{1} by {2} (",
-                                            org.NameShort, geoName, lead.Canonical);
+                        org.NameShort, geoName, lead.Canonical);
                     if (delay == 0)
                     {
                         result += "sent now";

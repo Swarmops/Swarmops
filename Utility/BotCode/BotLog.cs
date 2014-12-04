@@ -6,7 +6,7 @@ namespace Swarmops.Utility.BotCode
 {
     public class BotLog
     {
-        static public void Write (int generation, string code, string message)
+        public static void Write(int generation, string code, string message)
         {
             string line = string.Empty;
 
@@ -27,7 +27,7 @@ namespace Swarmops.Utility.BotCode
             LogWrite(line);
         }
 
-        static private void LogWrite (string message)
+        private static void LogWrite(string message)
         {
             DateTime now = DateTime.Now;
 

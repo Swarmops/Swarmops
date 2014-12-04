@@ -11,9 +11,9 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string outboundInvoiceFieldSequence =
-            " OutboundInvoiceId,CustomerName,InvoiceAddressPaper,InvoiceAddressMail,CurrencyId," +  // 0-4
-            "0,OrganizationId,BudgetId,CreatedDateTime,CreatedByPersonId," +                   // 5-9
-            "DueDate,ReminderCount,Reference,Domestic,Open, " +                                     // 10-14
+            " OutboundInvoiceId,CustomerName,InvoiceAddressPaper,InvoiceAddressMail,CurrencyId," + // 0-4
+            "0,OrganizationId,BudgetId,CreatedDateTime,CreatedByPersonId," + // 5-9
+            "DueDate,ReminderCount,Reference,Domestic,Open, " + // 10-14
             "Sent,SecurityCode,TheirReference " +
             "FROM OutboundInvoices ";
 
@@ -46,11 +46,11 @@ namespace Swarmops.Database
             string theirReference = reader.GetString(17);
 
             return new BasicOutboundInvoice(outboundInvoiceId, customerName, invoiceAddressPaper, invoiceAddressMail,
-                                            currencyId, organizationId, budgetId, createdDateTime,
-                                            createdByPersonId, dueDate, reminderCount, reference, domestic, open, sent, securityCode, theirReference);
+                currencyId, organizationId, budgetId, createdDateTime,
+                createdByPersonId, dueDate, reminderCount, reference, domestic, open, sent, securityCode, theirReference);
         }
 
-        private BasicOutboundInvoiceItem ReadOutboundInvoiceItemFromDataReader (DbDataReader reader)
+        private BasicOutboundInvoiceItem ReadOutboundInvoiceItemFromDataReader(DbDataReader reader)
         {
             int outboundInvoiceItemId = reader.GetInt32(0);
             int outboundInvoiceId = reader.GetInt32(1);
@@ -62,8 +62,6 @@ namespace Swarmops.Database
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
         public BasicOutboundInvoice GetOutboundInvoice(int outboundInvoiceId)
@@ -74,7 +72,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + outboundInvoiceFieldSequence + "WHERE OutboundInvoiceId=" + outboundInvoiceId + ";", connection);
+                        "SELECT" + outboundInvoiceFieldSequence + "WHERE OutboundInvoiceId=" + outboundInvoiceId + ";",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -90,7 +89,7 @@ namespace Swarmops.Database
 
 
         /// <summary>
-        /// Gets a list of outbound invoices.
+        ///     Gets a list of outbound invoices.
         /// </summary>
         /// <param name="conditions">Optional Organization object and/or DatabaseConditions.</param>
         /// <returns>The inbound invoice list.</returns>
@@ -104,7 +103,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + outboundInvoiceFieldSequence + ConstructWhereClause("OutboundInvoices", conditions) + " ORDER BY DueDate;", connection);
+                        "SELECT" + outboundInvoiceFieldSequence + ConstructWhereClause("OutboundInvoices", conditions) +
+                        " ORDER BY DueDate;", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -119,8 +119,7 @@ namespace Swarmops.Database
         }
 
 
-
-        public BasicOutboundInvoiceItem GetOutboundInvoiceItem (int outboundInvoiceItemId)
+        public BasicOutboundInvoiceItem GetOutboundInvoiceItem(int outboundInvoiceItemId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -128,7 +127,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + outboundInvoiceItemFieldSequence + "WHERE OutboundInvoiceItemId=" + outboundInvoiceItemId + ";", connection);
+                        "SELECT" + outboundInvoiceItemFieldSequence + "WHERE OutboundInvoiceItemId=" +
+                        outboundInvoiceItemId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -143,10 +143,8 @@ namespace Swarmops.Database
         }
 
 
-
-
         /// <summary>
-        /// Gets a list of outbound invoice items.
+        ///     Gets a list of outbound invoice items.
         /// </summary>
         /// <param name="conditions">OutboundInvoice object.</param>
         /// <returns>The inbound invoice list.</returns>
@@ -160,7 +158,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + outboundInvoiceItemFieldSequence + ConstructWhereClause("OutboundInvoiceItems", conditions) + outboundInvoiceItemSortOrder + ";", connection);
+                        "SELECT" + outboundInvoiceItemFieldSequence +
+                        ConstructWhereClause("OutboundInvoiceItems", conditions) + outboundInvoiceItemSortOrder + ";",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -174,10 +174,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
@@ -284,8 +281,6 @@ namespace Swarmops.Database
         }
 
 
-
-
         public void SetOutboundInvoiceReference(int inboundInvoiceId, string reference)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -301,8 +296,6 @@ namespace Swarmops.Database
                 command.ExecuteNonQuery();
             }
         }
-
-
 
 
         public void SetOutboundInvoiceBudget(int outboundInvoiceId, int budgetId)
@@ -321,14 +314,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
-
-
         #region Dead template code
-
 
         /*
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)

@@ -7,39 +7,39 @@ namespace Swarmops.Logic.Swarm
 {
     public class PaymentCode : BasicPaymentCode
     {
-        private PaymentCode (BasicPaymentCode basic)
+        private PaymentCode(BasicPaymentCode basic)
             : base(basic)
         {
             // empty
         }
 
-        public static PaymentCode CreateFromPhone (string phoneNumber)
+        public static PaymentCode CreateFromPhone(string phoneNumber)
         {
             return Create(phoneNumber, 0);
         }
 
-        public static PaymentCode CreateFromPerson (Person person)
+        public static PaymentCode CreateFromPerson(Person person)
         {
             return CreateFromPerson(person.Identity);
         }
 
-        public static PaymentCode CreateFromPerson (int personId)
+        public static PaymentCode CreateFromPerson(int personId)
         {
             return Create(string.Empty, personId);
         }
 
-        public static PaymentCode FromBasic (BasicPaymentCode basic)
+        public static PaymentCode FromBasic(BasicPaymentCode basic)
         {
             return new PaymentCode(basic);
         }
 
-        public static PaymentCode FromCode (string paymentCode)
+        public static PaymentCode FromCode(string paymentCode)
         {
             return FromBasic(SwarmDb.GetDatabaseForReading().GetPaymentCode(paymentCode));
         }
 
 
-        private static PaymentCode Create (string phoneNumber, int personId)
+        private static PaymentCode Create(string phoneNumber, int personId)
         {
             bool success = false;
 
@@ -65,17 +65,17 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        public void Claim (Person claimingPerson)
+        public void Claim(Person claimingPerson)
         {
             Claim(claimingPerson.Identity);
         }
 
-        public void Claim (int claimingPersonId)
+        public void Claim(int claimingPersonId)
         {
             SwarmDb.GetDatabaseForWriting().ClaimPaymentCode(Identity, claimingPersonId);
         }
 
-        private static string CreateRandomCode (int length)
+        private static string CreateRandomCode(int length)
         {
             return Authentication.CreateRandomPassword(length);
         }

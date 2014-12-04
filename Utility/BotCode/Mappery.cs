@@ -1,18 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using Swarmops.Basic.Enums;
-using Swarmops.Logic.Structure;
-using Swarmops.Logic.Support;
-using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.BotCode
 {
     public class Mappery
     {
+        public Dictionary<int, string> OrgColorLookup; // ugly way to transfer data to delegate
+
         [Obsolete("Too specialized for Swarmops. Plugin or generalize.", true)]
         public static void CreateUngPiratUptakeMap()
         {
@@ -106,8 +101,6 @@ namespace Swarmops.Utility.BotCode
             Persistence.Key["OrgUptakeMap-2"] = regex.Replace(svg, matchEvaluator);*/
         }
 
-
-        public Dictionary<int, string> OrgColorLookup; // ugly way to transfer data to delegate
         /*
         public string UPUptakeLookupReplacer (Match match)
         {
@@ -127,12 +120,12 @@ namespace Swarmops.Utility.BotCode
         }*/
 
 
-        public static Color ColorFromAhsb (int a, float h, float s, float b)
+        public static Color ColorFromAhsb(int a, float h, float s, float b)
         {
             if (0 == s)
             {
                 return Color.FromArgb(a, Convert.ToInt32(b*255),
-                                      Convert.ToInt32(b*255), Convert.ToInt32(b*255));
+                    Convert.ToInt32(b*255), Convert.ToInt32(b*255));
             }
 
             float fMax, fMid, fMin;

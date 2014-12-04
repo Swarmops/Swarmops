@@ -6,7 +6,7 @@ namespace Swarmops.Logic.Support
 {
     public class ActivistEvents
     {
-        public static void TerminateActivistWithLogging (Person p, EventSource eventSourceSignupPage)
+        public static void TerminateActivistWithLogging(Person p, EventSource eventSourceSignupPage)
         {
             int orgId = 1;
             PWEvents.CreateEvent(eventSourceSignupPage,
@@ -22,7 +22,8 @@ namespace Swarmops.Logic.Support
         }
 
 
-        public static void CreateActivistWithLogging (Geography geo, Person newActivist, string logMessage, EventSource evtSrc, bool isPublic, bool isConfirmed, int orgId)
+        public static void CreateActivistWithLogging(Geography geo, Person newActivist, string logMessage,
+            EventSource evtSrc, bool isPublic, bool isConfirmed, int orgId)
         {
             PWEvents.CreateEvent(evtSrc,
                 EventType.NewActivist,
@@ -33,8 +34,8 @@ namespace Swarmops.Logic.Support
                 0,
                 string.Empty);
             newActivist.CreateActivist(isPublic, isConfirmed);
-            PWLog.Write(newActivist, PWLogItem.Person, newActivist.Identity, PWLogAction.ActivistJoin, "New activist joined.", logMessage);
+            PWLog.Write(newActivist, PWLogItem.Person, newActivist.Identity, PWLogAction.ActivistJoin,
+                "New activist joined.", logMessage);
         }
-
     }
 }

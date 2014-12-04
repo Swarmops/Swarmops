@@ -4,24 +4,28 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicExternalActivity: IHasIdentity
+    public class BasicExternalActivity : IHasIdentity
     {
-        public BasicExternalActivity (int externalActivityId, int organizationId, int geographyId, ExternalActivityType type, DateTime dateTime, string description, int createdByPersonId, DateTime createdDateTime,
+        public BasicExternalActivity(int externalActivityId, int organizationId, int geographyId,
+            ExternalActivityType type, DateTime dateTime, string description, int createdByPersonId,
+            DateTime createdDateTime,
             int dupeOfActivityId)
         {
-            this.ExternalActivityId = externalActivityId;
-            this.OrganizationId = organizationId;
-            this.GeographyId = geographyId;
-            this.Type = type;
-            this.DateTime = dateTime;
-            this.Description = description;
-            this.CreatedByPersonId = createdByPersonId;
-            this.CreatedDateTime = createdDateTime;
-            this.DupeOfActivityId = dupeOfActivityId;
+            ExternalActivityId = externalActivityId;
+            OrganizationId = organizationId;
+            GeographyId = geographyId;
+            Type = type;
+            DateTime = dateTime;
+            Description = description;
+            CreatedByPersonId = createdByPersonId;
+            CreatedDateTime = createdDateTime;
+            DupeOfActivityId = dupeOfActivityId;
         }
 
-        public BasicExternalActivity (BasicExternalActivity original):
-            this (original.ExternalActivityId, original.OrganizationId, original.GeographyId, original.Type, original.DateTime, original.Description, original.CreatedByPersonId, original.CreatedDateTime, original.DupeOfActivityId)
+        public BasicExternalActivity(BasicExternalActivity original) :
+            this(
+            original.ExternalActivityId, original.OrganizationId, original.GeographyId, original.Type, original.DateTime,
+            original.Description, original.CreatedByPersonId, original.CreatedDateTime, original.DupeOfActivityId)
         {
             // empty copy ctor
         }
@@ -38,7 +42,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.ExternalActivityId; }
+            get { return ExternalActivityId; }
         }
     }
 }

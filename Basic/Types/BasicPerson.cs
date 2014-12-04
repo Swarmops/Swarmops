@@ -4,39 +4,37 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
- 
-
     [Serializable]
     public class BasicPerson : IEmailPerson, IHasIdentity
     {
-        public BasicPerson (string name, string email)
+        public BasicPerson(string name, string email)
         {
-            this.Name = name;
-            this.Email = email;
+            Name = name;
+            Email = email;
         }
 
-        public BasicPerson (int personId, string passwordHash, string name, string email, string street,
-                            string postalCode, string cityName, int countryId, string phone, int geographyId,
-                            DateTime birthdate, PersonGender gender)
+        public BasicPerson(int personId, string passwordHash, string name, string email, string street,
+            string postalCode, string cityName, int countryId, string phone, int geographyId,
+            DateTime birthdate, PersonGender gender)
         {
-            this.PersonId = personId;
-            this.PasswordHash = passwordHash;
-            this.Name = name;
-            this.Email = email;
-            this.Street = street;
-            this.PostalCode = postalCode;
-            this.CityName = cityName;
-            this.CountryId = countryId;
-            this.Phone = phone;
-            this.GeographyId = geographyId;
-            this.Birthdate = birthdate;
-            this.Gender = gender;
+            PersonId = personId;
+            PasswordHash = passwordHash;
+            Name = name;
+            Email = email;
+            Street = street;
+            PostalCode = postalCode;
+            CityName = cityName;
+            CountryId = countryId;
+            Phone = phone;
+            GeographyId = geographyId;
+            Birthdate = birthdate;
+            Gender = gender;
         }
 
-        public BasicPerson (BasicPerson original)
-            : this (original.PersonId, original.PasswordHash, original.Name, original.Email, original.Street, 
-                    original.PostalCode, original.CityName, original.CountryId, original.Phone, 
-                    original.GeographyId, original.Birthdate, original.Gender)
+        public BasicPerson(BasicPerson original)
+            : this(original.PersonId, original.PasswordHash, original.Name, original.Email, original.Street,
+                original.PostalCode, original.CityName, original.CountryId, original.Phone,
+                original.GeographyId, original.Birthdate, original.Gender)
         {
         }
 
@@ -53,8 +51,6 @@ namespace Swarmops.Basic.Types
 
 
         public int PersonId { get; private set; }
-        public string Name { get; protected set; }
-        public string Email { get; protected set; }
         public string Street { get; protected set; }
         public string PostalCode { get; protected set; }
         public string CityName { get; protected set; }
@@ -64,14 +60,13 @@ namespace Swarmops.Basic.Types
         public int GeographyId { get; protected set; }
         public int CountryId { get; protected set; }
         public PersonGender Gender { get; protected set; }
+        public string Name { get; protected set; }
+        public string Email { get; protected set; }
 
 
         public int Identity
         {
             get { return PersonId; }
         }
-
-
-
     }
 }

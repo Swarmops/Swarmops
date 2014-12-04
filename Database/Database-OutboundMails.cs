@@ -10,13 +10,13 @@ namespace Swarmops.Database
     public partial class SwarmDb
     {
         private const string outboundMailFieldSequence =
-            " OutboundMailId,AuthorType,AuthorPersonId,Title,Body," +                   // 0-4
+            " OutboundMailId,AuthorType,AuthorPersonId,Title,Body," + // 0-4
             "MailPriority,MailType,OrganizationId,GeographyId,CreatedDateTime," + // 5-9
-            "ReleaseDateTime,ReadyForPickup,Resolved,Processed,ResolvedDateTime," +    // 10-14
-            "StartProcessDateTime,EndProcessDateTime,RecipientCount,RecipientsSuccess,RecipientsFail " +  // 15-19
+            "ReleaseDateTime,ReadyForPickup,Resolved,Processed,ResolvedDateTime," + // 10-14
+            "StartProcessDateTime,EndProcessDateTime,RecipientCount,RecipientsSuccess,RecipientsFail " + // 15-19
             " FROM OutboundMails ";
 
-        private static BasicOutboundMail ReadOutboundMailFromDataReader (IDataRecord reader)
+        private static BasicOutboundMail ReadOutboundMailFromDataReader(IDataRecord reader)
         {
             int outboundMailId = reader.GetInt32(0);
             int authorType = reader.GetInt32(1);
@@ -42,22 +42,24 @@ namespace Swarmops.Database
             int recipientsSuccess = reader.GetInt32(18);
             int recipientsFail = reader.GetInt32(19);
 
-            return new BasicOutboundMail(outboundMailId, (MailAuthorType)authorType, authorPersonId, title, body,
+            return new BasicOutboundMail(outboundMailId, (MailAuthorType) authorType, authorPersonId, title, body,
                 mailPriority, mailTypeId, organizationId, geographyId, createdDateTime,
-                releaseDateTime, readyForPickup, resolved, processed, resolvedDateTime, startProcessDateTime, endProcessDateTime,
+                releaseDateTime, readyForPickup, resolved, processed, resolvedDateTime, startProcessDateTime,
+                endProcessDateTime,
                 recipientCount, recipientsSuccess, recipientsFail);
         }
 
 
-        public BasicOutboundMail GetOutboundMail (int outboundMailId)
+        public BasicOutboundMail GetOutboundMail(int outboundMailId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + outboundMailFieldSequence + " WHERE OutboundMailId=" + outboundMailId.ToString(),
-                                 connection);
+                    GetDbCommand(
+                        "SELECT " + outboundMailFieldSequence + " WHERE OutboundMailId=" + outboundMailId.ToString(),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -73,7 +75,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicOutboundMail[] GetTopUnresolvedOutboundMail (int count)
+        public BasicOutboundMail[] GetTopUnresolvedOutboundMail(int count)
         {
             if (count == 0)
             {
@@ -88,7 +90,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + outboundMailFieldSequence + " WHERE ReadyForPickup=1 AND Resolved=0 AND Processed=0  ORDER BY MailPriority, OutboundMailId DESC LIMIT " + count.ToString(),
+                        "SELECT " + outboundMailFieldSequence +
+                        " WHERE ReadyForPickup=1 AND Resolved=0 AND Processed=0  ORDER BY MailPriority, OutboundMailId DESC LIMIT " +
+                        count.ToString(),
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -103,7 +107,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicOutboundMail[] GetTopUnprocessedOutboundMail (int count)
+        public BasicOutboundMail[] GetTopUnprocessedOutboundMail(int count)
         {
             if (count == 0)
             {
@@ -118,7 +122,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + outboundMailFieldSequence + " WHERE ReadyForPickup=1 AND Resolved=1 AND Processed=0 " +
+                        "SELECT " + outboundMailFieldSequence +
+                        " WHERE ReadyForPickup=1 AND Resolved=1 AND Processed=0 " +
                         " AND ReleaseDateTime < NOW() " +
                         " ORDER BY MailPriority, ReleaseDateTime, OutboundMailId DESC LIMIT " + count.ToString(),
                         connection);
@@ -134,7 +139,8 @@ namespace Swarmops.Database
                 }
             }
         }
-        public BasicOutboundMail[] GetOutboundMailQueue (int count)
+
+        public BasicOutboundMail[] GetOutboundMailQueue(int count)
         {
             // This may not survive the migration. SQL Syntax, etc.
 
@@ -182,9 +188,9 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
         }
 
 
-        public int CreateOutboundMail (MailAuthorType authorType, int authorPersonId, string title,
-                                       string body, int mailPriority, int mailType, int geographyId,
-                                       int organizationId, DateTime releaseDateTime)
+        public int CreateOutboundMail(MailAuthorType authorType, int authorPersonId, string title,
+            string body, int mailPriority, int mailType, int geographyId,
+            int organizationId, DateTime releaseDateTime)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -193,7 +199,7 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
                 DbCommand command = GetDbCommand("CreateOutboundMail", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "authorType", (int)authorType);
+                AddParameterWithName(command, "authorType", (int) authorType);
                 AddParameterWithName(command, "authorPersonId", authorPersonId);
                 AddParameterWithName(command, "title", title);
                 AddParameterWithName(command, "body", body);
@@ -215,7 +221,7 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
             }
         }
 
-        public void SetOutboundMailProcessed (int outboundMailId)
+        public void SetOutboundMailProcessed(int outboundMailId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -232,7 +238,7 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
         }
 
 
-        public void SetOutboundMailStartProcess (int outboundMailId)
+        public void SetOutboundMailStartProcess(int outboundMailId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -249,7 +255,7 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
         }
 
 
-        public void SetOutboundMailResolved (int outboundMailId)
+        public void SetOutboundMailResolved(int outboundMailId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -265,7 +271,7 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
             }
         }
 
-        public void SetOutboundMailReadyForPickup (int outboundMailId)
+        public void SetOutboundMailReadyForPickup(int outboundMailId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -280,7 +286,7 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
             }
         }
 
-        public void SetOutboundMailRecipientCount (int outboundMailId, int recipientCount)
+        public void SetOutboundMailRecipientCount(int outboundMailId, int recipientCount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -296,7 +302,7 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
             }
         }
 
-        public void IncrementOutboundMailSuccesses (int outboundMailId)
+        public void IncrementOutboundMailSuccesses(int outboundMailId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -311,7 +317,7 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
             }
         }
 
-        public void IncrementOutboundMailFailures (int outboundMailId)
+        public void IncrementOutboundMailFailures(int outboundMailId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -327,10 +333,9 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
         }
 
 
-
-        public BasicOutboundMail[] GetDuplicateOutboundMail (MailAuthorType authorType, int authorPersonId, string title,
-                                       string body, int mailPriority, int mailType, int geographyId,
-                                       int organizationId, DateTime createDateTime, int recieverId)
+        public BasicOutboundMail[] GetDuplicateOutboundMail(MailAuthorType authorType, int authorPersonId, string title,
+            string body, int mailPriority, int mailType, int geographyId,
+            int organizationId, DateTime createDateTime, int recieverId)
         {
             List<BasicOutboundMail> result = new List<BasicOutboundMail>();
 
@@ -339,9 +344,10 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
                 connection.Open();
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + outboundMailFieldSequence + @" INNER JOIN OutboundMailRecipients ON OutboundMailRecipients.OutboundMailId = OutboundMails.OutboundMailId
+                        "SELECT " + outboundMailFieldSequence +
+                        @" INNER JOIN OutboundMailRecipients ON OutboundMailRecipients.OutboundMailId = OutboundMails.OutboundMailId
                             WHERE (OutboundMailRecipients.PersonId = " + recieverId + @") 
-                            AND (OutboundMails.AuthorType = " + (int)authorType + @") 
+                            AND (OutboundMails.AuthorType = " + (int) authorType + @") 
                             AND (OutboundMails.AuthorPersonId = " + authorPersonId + @") 
                             AND (OutboundMails.Title = '" + title + @"') 
                             AND (OutboundMails.Body = '" + body + @"') 
@@ -349,7 +355,8 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
                             AND (OutboundMails.MailType = " + mailType + @") 
                             AND (OutboundMails.OrganizationId = " + organizationId + @") 
                             AND (OutboundMails.GeographyId = " + geographyId + @") 
-                            AND (OutboundMails.CreatedDateTime > TO_DATE('" + createDateTime.ToString("yyyy-MM-dd HH:mm:ss") + @"'))", connection);
+                            AND (OutboundMails.CreatedDateTime > TO_DATE('" +
+                        createDateTime.ToString("yyyy-MM-dd HH:mm:ss") + @"'))", connection);
 
                 command.CommandType = CommandType.Text;
 
@@ -362,7 +369,6 @@ order by EndProcessDateTime, MailPriority, ReleaseDateTime, OutboundMailId DESC
 
                     return result.ToArray();
                 }
-
             }
         }
     }

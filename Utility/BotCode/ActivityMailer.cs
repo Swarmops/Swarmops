@@ -1,10 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Net.Mail;
-using System.Web;
-using Swarmops.Logic.Structure;
-using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.BotCode
 {
@@ -94,7 +88,6 @@ namespace Swarmops.Utility.BotCode
                     }
                 }
             } */
-
         }
     }
 }

@@ -21,7 +21,8 @@ namespace Swarmops.Utility.Financial
                 {
                     foreach (FinancialTransaction tx in unbalancedTransactions)
                     {
-                        if (group.Open && tx.Description.EndsWith(group.Tag.Substring(4)) && tx.DateTime.Date == group.DateTime.Date && tx.Rows.AmountCentsTotal == group.AmountCents)
+                        if (group.Open && tx.Description.EndsWith(group.Tag.Substring(4)) &&
+                            tx.DateTime.Date == group.DateTime.Date && tx.Rows.AmountCentsTotal == group.AmountCents)
                         {
                             // Match!
 

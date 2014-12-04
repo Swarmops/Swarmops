@@ -3,21 +3,24 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicRefund: IHasIdentity
+    public class BasicRefund : IHasIdentity
     {
-        public BasicRefund (int refundId, int paymentId, bool open, Int64 amountCents, int createdByPersonId, DateTime createdDateTime, DateTime closedDateTime)
+        public BasicRefund(int refundId, int paymentId, bool open, Int64 amountCents, int createdByPersonId,
+            DateTime createdDateTime, DateTime closedDateTime)
         {
-            this.RefundId = refundId;
-            this.PaymentId = paymentId;
-            this.Open = open;
-            this.AmountCents = amountCents;
-            this.CreatedByPersonId = createdByPersonId;
-            this.CreatedDateTime = createdDateTime;
-            this.ClosedDateTime = closedDateTime;
+            RefundId = refundId;
+            PaymentId = paymentId;
+            Open = open;
+            AmountCents = amountCents;
+            CreatedByPersonId = createdByPersonId;
+            CreatedDateTime = createdDateTime;
+            ClosedDateTime = closedDateTime;
         }
 
         public BasicRefund(BasicRefund original)
-            :this (original.RefundId, original.PaymentId, original.Open, original.AmountCents, original.CreatedByPersonId, original.CreatedDateTime, original.ClosedDateTime)
+            : this(
+                original.RefundId, original.PaymentId, original.Open, original.AmountCents, original.CreatedByPersonId,
+                original.CreatedDateTime, original.ClosedDateTime)
         {
             // Empty copy ctor
         }
@@ -32,7 +35,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.RefundId; }
+            get { return RefundId; }
         }
     }
 }

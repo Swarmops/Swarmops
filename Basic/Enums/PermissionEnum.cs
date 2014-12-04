@@ -3,7 +3,7 @@ namespace Swarmops.Basic.Enums
     public enum Permission
     {
         /// <summary>
-        /// Undefined.
+        ///     Undefined.
         /// </summary>
         Undefined = 0,
         CanSeeSelf,

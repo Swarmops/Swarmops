@@ -9,15 +9,19 @@ namespace Swarmops.Logic.Financial
 {
     public class ExternalBankData
     {
+        public long LatestAccountBalanceCents;
+        public ExternalBankDataProfile Profile { get; set; }
+        public ExternalBankDataRecord[] Records { get; private set; }
+
         public void LoadData(Stream dataStream, Organization organization)
         {
-            using (TextReader reader = new StreamReader(dataStream))  // TODO: Is encoding necessary?
+            using (TextReader reader = new StreamReader(dataStream)) // TODO: Is encoding necessary?
             {
                 LoadData(reader, organization);
             }
         }
 
-        public void LoadData (TextReader reader, Organization organization)
+        public void LoadData(TextReader reader, Organization organization)
         {
             string data = reader.ReadToEnd();
             LoadData(data, organization);
@@ -41,7 +45,7 @@ namespace Swarmops.Logic.Financial
 
             string organizationCurrencyCode = organization.Currency.Code;
 
-            int crlfIndex = data.IndexOfAny(new char[] {'\n', '\r'});
+            int crlfIndex = data.IndexOfAny(new[] {'\n', '\r'});
 
             string fieldKeyLine = data.Substring(0, crlfIndex);
 
@@ -63,16 +67,17 @@ namespace Swarmops.Logic.Financial
                     }
                 }
 
-                if (!fieldNameLookup.ContainsKey(fieldName))   // wasn't found
+                if (!fieldNameLookup.ContainsKey(fieldName)) // wasn't found
                 {
-                    throw new InvalidOperationException("Field key \"" + fieldName + "\" was not supplied or found in data file");
+                    throw new InvalidOperationException("Field key \"" + fieldName +
+                                                        "\" was not supplied or found in data file");
                 }
             }
-            
+
 
             data = data.Substring(crlfIndex).Trim();
 
-            string[] lines = data.Split(new char[] {'\r', '\n'});
+            string[] lines = data.Split(new[] {'\r', '\n'});
 
             foreach (string lineData in lines)
             {
@@ -101,7 +106,8 @@ namespace Swarmops.Logic.Financial
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Description))
                 {
-                    newRecord.Description = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.Description]]);
+                    newRecord.Description =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.Description]]);
                 }
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.AccountBalance))
@@ -109,7 +115,8 @@ namespace Swarmops.Logic.Financial
                     // Dividing up to step-by-step statements instead of one long statement assists debugging
                     // of culture and other error sources
 
-                    string balanceString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.AccountBalance]]);
+                    string balanceString =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.AccountBalance]]);
                     try
                     {
                         newRecord.AccountBalanceCents = ParseAmountString(balanceString);
@@ -117,11 +124,12 @@ namespace Swarmops.Logic.Financial
                     catch (Exception innerException)
                     {
                         throw new FormatException("Couldn't parse account balance string - \"" + balanceString + "\"",
-                                                            innerException);
+                            innerException);
                     }
                 }
 
-                if (!fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Date) && !fieldNameLookup.ContainsKey(ExternalBankDataFieldName.DateTime))
+                if (!fieldNameLookup.ContainsKey(ExternalBankDataFieldName.Date) &&
+                    !fieldNameLookup.ContainsKey(ExternalBankDataFieldName.DateTime))
                 {
                     throw new InvalidOperationException("Cannot parse transactions file without at least a date field");
                 }
@@ -150,12 +158,13 @@ namespace Swarmops.Logic.Financial
                 }
                 else // no Date field, so by earlier logic, must have a DateTime field
                 {
-                    dateTime = DateTime.Parse(StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.DateTime]]), new CultureInfo(Profile.Culture));
+                    dateTime =
+                        DateTime.Parse(StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.DateTime]]),
+                            new CultureInfo(Profile.Culture));
                 }
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.TimeZone))
                 {
-
                     // Valid time zone formats are "XXX+hh:mm". The XXX are ignored.
 
                     // Throws exception if this doesn't parse, which is what we want
@@ -164,7 +173,8 @@ namespace Swarmops.Logic.Financial
                     timeZoneString = timeZoneString.Substring(timeZoneString.Length - 6);
                     TimeSpan timeZone = TimeSpan.Parse(timeZoneString);
 
-                    dateTime -= timeZone;  // minus, to bring the time to UTC. If time 13:00 is in tz +01:00, the UTC time is 12:00
+                    dateTime -= timeZone;
+                        // minus, to bring the time to UTC. If time 13:00 is in tz +01:00, the UTC time is 12:00
 
                     // Then move from UTC to local time, to match various bookkeeping laws. TODO: local time per organization, perhaps?
 
@@ -173,7 +183,9 @@ namespace Swarmops.Logic.Financial
 
                 // PILOT SPECIAL CASE: if Paypal and PPSE Pilot program, ignore everything before 2014
 
-                if (dateTime.Year < 2014 && organization.Identity == 1 && fieldNameLookup.ContainsKey(ExternalBankDataFieldName.UniqueId) && PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
+                if (dateTime.Year < 2014 && organization.Identity == 1 &&
+                    fieldNameLookup.ContainsKey(ExternalBankDataFieldName.UniqueId) &&
+                    PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE))
                 {
                     continue; // Do not import PayPal records from before 2013
                 }
@@ -185,7 +197,8 @@ namespace Swarmops.Logic.Financial
                     throw new ArgumentException("There must be a transaction amount field in the bank data profile");
                 }
 
-                string amountNetString = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionNet]]);
+                string amountNetString =
+                    StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.TransactionNet]]);
 
                 newRecord.TransactionNetCents = ParseAmountString(amountNetString);
 
@@ -209,14 +222,16 @@ namespace Swarmops.Logic.Financial
                 }
                 else
                 {
-                    newRecord.TransactionGrossCents = newRecord.TransactionNetCents; // if no "Gross" field, copy from net
+                    newRecord.TransactionGrossCents = newRecord.TransactionNetCents;
+                        // if no "Gross" field, copy from net
                 }
 
                 // Check for consistency of gross/net/fee:
 
                 if (newRecord.TransactionNetCents != newRecord.TransactionGrossCents + newRecord.FeeCents)
                 {
-                    throw new InvalidDataException("For a record, the net transaction amount does not match the gross less the fee.");
+                    throw new InvalidDataException(
+                        "For a record, the net transaction amount does not match the gross less the fee.");
                 }
 
                 if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.UniqueId))
@@ -225,7 +240,8 @@ namespace Swarmops.Logic.Financial
                 }
                 else if (fieldNameLookup.ContainsKey(ExternalBankDataFieldName.NotUniqueId))
                 {
-                    newRecord.NotUniqueId = StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.NotUniqueId]]);
+                    newRecord.NotUniqueId =
+                        StripQuotes(lineFields[fieldNameLookup[ExternalBankDataFieldName.NotUniqueId]]);
                 }
 
                 recordList.Add(newRecord);
@@ -233,11 +249,11 @@ namespace Swarmops.Logic.Financial
 
             if (Profile.LatestTransactionLocation == LatestTransactionLocation.Top)
             {
-                LatestAccountBalanceCents = recordList[0].AccountBalanceCents;
+                this.LatestAccountBalanceCents = recordList[0].AccountBalanceCents;
             }
             else if (Profile.LatestTransactionLocation == LatestTransactionLocation.Bottom)
             {
-                LatestAccountBalanceCents = recordList [recordList.Count- 1].AccountBalanceCents;
+                this.LatestAccountBalanceCents = recordList[recordList.Count - 1].AccountBalanceCents;
             }
             else
             {
@@ -246,11 +262,11 @@ namespace Swarmops.Logic.Financial
 
             recordList.Sort(new ExternalBankDataRecord());
 
-            this.Records = recordList.ToArray();
+            Records = recordList.ToArray();
         }
 
 
-        private Int64 ParseAmountString (string input)
+        private Int64 ParseAmountString(string input)
         {
             // This parser deals with a number of different cases and cultures.
             // It returns cents.
@@ -329,10 +345,6 @@ namespace Swarmops.Logic.Financial
 
             return input;
         }
-
-        public ExternalBankDataProfile Profile { get; set; }
-        public ExternalBankDataRecord[] Records { get; private set; }
-        public long LatestAccountBalanceCents;
     }
 
 
@@ -342,15 +354,22 @@ namespace Swarmops.Logic.Financial
     public class ExternalBankMismatchingDateTime
     {
         public DateTime DateTime;
-        public int MasterTransactionCount;
         public long MasterDeltaCents;
-        public int SwarmopsTransactionCount;
-        public long SwarmopsDeltaCents;
+        public int MasterTransactionCount;
         public ExternalBankMismatchingRecordDescription[] MismatchingRecords;
+        public long SwarmopsDeltaCents;
+        public int SwarmopsTransactionCount;
     }
 
     public class ExternalBankMismatchingRecordDescription
     {
+        public string Description;
+        public long[] MasterCents; // may have multiple txs with this description
+        public ExternalBankMismatchResyncAction[] ResyncActions;
+        public long[] SwarmopsCents; // may have multiple txs with this description
+        // public object[] TransactionDependencies;    // matching the Swarmops array
+        public FinancialTransaction[] Transactions; // matching the Swarmops array
+
         public ExternalBankMismatchingRecordDescription()
         {
             this.Description = string.Empty;
@@ -359,60 +378,58 @@ namespace Swarmops.Logic.Financial
             // this.TransactionDependencies = new object[0];
             this.ResyncActions = new ExternalBankMismatchResyncAction[0];
         }
-
-        public string Description;
-        public long[] MasterCents; // may have multiple txs with this description
-        public long[] SwarmopsCents;  // may have multiple txs with this description
-        public ExternalBankMismatchResyncAction[] ResyncActions;
-        // public object[] TransactionDependencies;    // matching the Swarmops array
-        public FinancialTransaction[] Transactions; // matching the Swarmops array
     }
 
     public class ExternalBankMismatchConstruction
     {
-        public ExternalBankMismatchConstruction()
-        {
-            Master = new Dictionary<string, ExternalBankMismatchingRecordConstruction>();
-            Swarmops = new Dictionary<string, ExternalBankMismatchingRecordConstruction>();
-        }
-
         public Dictionary<string, ExternalBankMismatchingRecordConstruction> Master;
         public Dictionary<string, ExternalBankMismatchingRecordConstruction> Swarmops;
+
+        public ExternalBankMismatchConstruction()
+        {
+            this.Master = new Dictionary<string, ExternalBankMismatchingRecordConstruction>();
+            this.Swarmops = new Dictionary<string, ExternalBankMismatchingRecordConstruction>();
+        }
     }
 
     public class ExternalBankMismatchingRecordConstruction
     {
-        public ExternalBankMismatchingRecordConstruction()
-        {
-            Cents = new List<long>();
-            this.Transactions = new List<FinancialTransaction>();
-        }
-
         public List<long> Cents;
         public List<FinancialTransaction> Transactions;
+
+        public ExternalBankMismatchingRecordConstruction()
+        {
+            this.Cents = new List<long>();
+            this.Transactions = new List<FinancialTransaction>();
+        }
     }
 
     public enum ExternalBankMismatchResyncAction
     {
         Unknown = 0,
+
         /// <summary>
-        /// No action necessary
+        ///     No action necessary
         /// </summary>
         NoAction,
+
         /// <summary>
-        /// Zero out and rewrite the Swarmops database transaction
+        ///     Zero out and rewrite the Swarmops database transaction
         /// </summary>
         RewriteSwarmops,
+
         /// <summary>
-        /// Zero out the Swarmops database transaction (it's not in the master)
+        ///     Zero out the Swarmops database transaction (it's not in the master)
         /// </summary>
         DeleteSwarmops,
+
         /// <summary>
-        /// Create a Swarmops transaction (master exists, not in Swarmops)
+        ///     Create a Swarmops transaction (master exists, not in Swarmops)
         /// </summary>
         CreateSwarmops,
+
         /// <summary>
-        /// No resync possible - manual action required
+        ///     No resync possible - manual action required
         /// </summary>
         ManualAction
     }

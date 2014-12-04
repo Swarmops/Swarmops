@@ -10,8 +10,8 @@ namespace Swarmops.Database
     {
         #region Field reading code
 
-        private const string countryFieldSequence = " CountryId,Name,Code,Culture,CurrencyCode," +  // 0-4
-                                            "GeographyId,PostalCodeLength FROM Countries ";         // 5-6
+        private const string countryFieldSequence = " CountryId,Name,Code,Culture,CurrencyCode," + // 0-4
+                                                    "GeographyId,PostalCodeLength FROM Countries "; // 5-6
 
 
         private static BasicCountry ReadCountryFromDataReader(DbDataReader reader)
@@ -29,18 +29,19 @@ namespace Swarmops.Database
 
         #endregion
 
-
         #region Record reading code
 
-        public BasicCountry GetCountry (string countryCode)
+        public BasicCountry GetCountry(string countryCode)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + countryFieldSequence + " WHERE Code='" + countryCode.ToUpperInvariant().Replace("'", "''") + "'",
-                                 connection);
+                    GetDbCommand(
+                        "SELECT " + countryFieldSequence + " WHERE Code='" +
+                        countryCode.ToUpperInvariant().Replace("'", "''") + "'",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -54,14 +55,14 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicCountry GetCountry (int countryId)
+        public BasicCountry GetCountry(int countryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + countryFieldSequence + " WHERE CountryId=" + countryId.ToString(),
-                                                 connection);
+                DbCommand command = GetDbCommand("SELECT " + countryFieldSequence + " WHERE CountryId=" + countryId,
+                    connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -75,7 +76,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicCountry[] GetAllCountries ()
+        public BasicCountry[] GetAllCountries()
         {
             List<BasicCountry> result = new List<BasicCountry>();
 
@@ -97,7 +98,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicCountry[] GetCountriesInUse ()
+        public BasicCountry[] GetCountriesInUse()
         {
             return GetAllCountries(); // Migrate this once Organizations has moved, too
 
@@ -124,9 +125,8 @@ namespace Swarmops.Database
 
         #endregion
 
-
-
-        public int CreateCountry (string name, string code, string culture, int geographyId, int postalCodeLength, string collation)
+        public int CreateCountry(string name, string code, string culture, int geographyId, int postalCodeLength,
+            string collation)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -146,7 +146,7 @@ namespace Swarmops.Database
             }
         }
 
-        public int SetCountryGeographyId (int countryId, int geographyId)
+        public int SetCountryGeographyId(int countryId, int geographyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -157,11 +157,9 @@ namespace Swarmops.Database
 
                 AddParameterWithName(command, "countryId", countryId);
                 AddParameterWithName(command, "geographyId", geographyId);
-                
+
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
-
-
     }
 }

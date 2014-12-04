@@ -5,7 +5,13 @@ namespace Swarmops.Logic.Special.Sweden
 {
     public class SupportCase : IHasIdentity
     {
-        public SupportCase (int identity, string title)
+        public readonly DateTime DateTimeClosed;
+        public readonly string Email;
+        public readonly bool Open;
+        public readonly int SupportCaseId;
+        public readonly string Title;
+
+        public SupportCase(int identity, string title)
         {
             this.SupportCaseId = identity;
             this.Title = title;
@@ -14,7 +20,7 @@ namespace Swarmops.Logic.Special.Sweden
             this.Email = string.Empty;
         }
 
-        public SupportCase (int identity, string title, string email)
+        public SupportCase(int identity, string title, string email)
         {
             this.SupportCaseId = identity;
             this.Title = title;
@@ -28,20 +34,14 @@ namespace Swarmops.Logic.Special.Sweden
             }
         }
 
-        public readonly int SupportCaseId;
-        public readonly string Title;
-        public readonly bool Open;
-        public readonly string Email;
-        public readonly DateTime DateTimeClosed;
-
         public int Identity
         {
-            get { return SupportCaseId; }
+            get { return this.SupportCaseId; }
         }
 
-        public void CloseWithComment (string comment)
+        public void CloseWithComment(string comment)
         {
-            SupportDatabase.CloseWithComment(this.Identity, comment);
+            SupportDatabase.CloseWithComment(Identity, comment);
         }
     }
 }

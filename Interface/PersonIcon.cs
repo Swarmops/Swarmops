@@ -1,6 +1,4 @@
 using System;
-using Swarmops.Basic.Enums;
-using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
@@ -8,21 +6,8 @@ namespace Swarmops.Interface
 {
     public class PersonIcon
     {
-        public class PersonIconSpec
-        {
-            public PersonIconSpec (string image, string altText)
-            {
-                this.Image = image;
-                this.AltText = altText;
-
-            }
-
-            public string Image = "";
-            public string AltText = "";
-        }
-
-        [Obsolete ("Person icons are deprecated in Swarmops in favor of individual avatars", true)]
-        public static PersonIconSpec ForPerson (Person person, Organizations organizations)
+        [Obsolete("Person icons are deprecated in Swarmops in favor of individual avatars", true)]
+        public static PersonIconSpec ForPerson(Person person, Organizations organizations)
         {
             throw new NotImplementedException("Person icons are deprecated in Swarmops v5 in favor of gravatars/avatars");
 
@@ -212,6 +197,18 @@ namespace Swarmops.Interface
                 // unhandled role type
                 return new PersonIconSpec("user-silhouette-question.png", "unknown role, " + (person.IsFemale ? "female" : person.IsMale ? "male" : ""));
             } */
-        } 
+        }
+
+        public class PersonIconSpec
+        {
+            public string AltText = "";
+            public string Image = "";
+
+            public PersonIconSpec(string image, string altText)
+            {
+                this.Image = image;
+                this.AltText = altText;
+            }
+        }
     }
 }

@@ -11,8 +11,8 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string meetingFieldSequence =
-            " MeetingId,OrganizationId,Name,MotionSubmissionEnds,AmendmentSubmissionEnds," +    // 0-4
-            "AmendmentVotingStarts,AmendmentVotingEnds,MotionVotingStarts,MotionVotingEnds " +  // 5-8
+            " MeetingId,OrganizationId,Name,MotionSubmissionEnds,AmendmentSubmissionEnds," + // 0-4
+            "AmendmentVotingStarts,AmendmentVotingEnds,MotionVotingStarts,MotionVotingEnds " + // 5-8
             "FROM Meetings ";
 
         private static BasicMeeting ReadMeetingFromDataReader(IDataRecord reader)
@@ -28,12 +28,10 @@ namespace Swarmops.Database
             DateTime motionVotingEnds = reader.GetDateTime(8);
 
             return new BasicMeeting(meetingId, organizationId, name, motionSubmissionEnds, amendmentSubmissionEnds,
-                                    amendmentVotingStarts, amendmentVotingEnds, motionVotingStarts, motionVotingEnds);
+                amendmentVotingStarts, amendmentVotingEnds, motionVotingStarts, motionVotingEnds);
         }
 
         #endregion
-
-
 
         #region Record reading - SELECT statements
 
@@ -54,7 +52,7 @@ namespace Swarmops.Database
                         return ReadMeetingFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown Meeting Id: " + meetingId.ToString());
+                    throw new ArgumentException("Unknown Meeting Id: " + meetingId);
                 }
             }
         }
@@ -83,10 +81,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
@@ -192,8 +187,6 @@ namespace Swarmops.Database
         }
         */
 
-
         #endregion
-
     }
 }

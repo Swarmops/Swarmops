@@ -12,11 +12,11 @@ namespace Swarmops.Logic.Structure
     {
         #region Creation and Construction
 
-        public static Geographies FromArray (BasicGeography[] basicArray)
+        public static Geographies FromArray(BasicGeography[] basicArray)
         {
-            var result = new Geographies();
+            Geographies result = new Geographies();
 
-            result.Capacity = basicArray.Length * 11 / 10;
+            result.Capacity = basicArray.Length*11/10;
             foreach (BasicGeography basic in basicArray)
             {
                 result.Add(Geography.FromBasic(basic));
@@ -25,27 +25,27 @@ namespace Swarmops.Logic.Structure
             return result;
         }
 
-        public static Geographies FromSingle (Geography geography)
+        public static Geographies FromSingle(Geography geography)
         {
-            var result = new Geographies();
+            Geographies result = new Geographies();
             result.Add(geography);
             return result;
         }
 
 
-        public static Geographies FromIdentities (int[] geoIds)
+        public static Geographies FromIdentities(int[] geoIds)
         {
             return FromArray(GeographyCache.GetGeographies(geoIds));
             //           return FromArray(SwarmDb.GetDatabaseForReading().GetGeographies(geoIds));
         }
 
 
-        public static Geographies FromLevel (Country country, GeographyLevel level)
+        public static Geographies FromLevel(Country country, GeographyLevel level)
         {
             return FromLevel(country.Identity, level);
         }
 
-        public static Geographies FromLevel (int countryId, GeographyLevel level)
+        public static Geographies FromLevel(int countryId, GeographyLevel level)
         {
             return FromIdentities(SwarmDb.GetDatabaseForReading().GetGeographyIdsFromLevel(countryId, level));
         }
@@ -76,22 +76,22 @@ namespace Swarmops.Logic.Structure
 
 
         /// <summary>
-        /// For every node in the list, pushes the node down in the tree to
-        /// at highest be "filterNode". For example, if World and Sweden was
-        /// passed with Europe as filterNode, Europe and Sweden would be 
-        /// returned.
+        ///     For every node in the list, pushes the node down in the tree to
+        ///     at highest be "filterNode". For example, if World and Sweden was
+        ///     passed with Europe as filterNode, Europe and Sweden would be
+        ///     returned.
         /// </summary>
         /// <param name="nodes">The list of nodes.</param>
         /// <param name="topGeography">The highest node to return.</param>
         /// <returns>The filtered list.</returns>
-        public Geographies FilterAbove (Geography topGeography)
+        public Geographies FilterAbove(Geography topGeography)
         {
-            var result = new Geographies();
+            Geographies result = new Geographies();
 
             // Build lookup
 
             Geographies filterLine = topGeography.GetLine();
-            var lineLookup = new Dictionary<int, bool>();
+            Dictionary<int, bool> lineLookup = new Dictionary<int, bool>();
             foreach (Geography node in filterLine)
             {
                 lineLookup[node.Identity] = true;
@@ -117,9 +117,9 @@ namespace Swarmops.Logic.Structure
         }
 
 
-        public Geographies RemoveRedundant ()
+        public Geographies RemoveRedundant()
         {
-            var remaining = new Dictionary<int, Geography>();
+            Dictionary<int, Geography> remaining = new Dictionary<int, Geography>();
 
             foreach (Geography geo in this)
             {
@@ -163,7 +163,7 @@ namespace Swarmops.Logic.Structure
 
             // Assemble result
 
-            var result = new Geographies();
+            Geographies result = new Geographies();
 
             foreach (int nodeId in remaining.Keys)
             {
@@ -174,7 +174,7 @@ namespace Swarmops.Logic.Structure
         }
 
 
-        public static Geographies LogicalOr (Geographies set1, Geographies set2)
+        public static Geographies LogicalOr(Geographies set1, Geographies set2)
         {
             // If either set is invalid, return the other
             // (a null is different from an empty set)
@@ -191,7 +191,7 @@ namespace Swarmops.Logic.Structure
 
             // Build table, eliminating duplicates
 
-            var table = new Dictionary<int, Geography>();
+            Dictionary<int, Geography> table = new Dictionary<int, Geography>();
 
             foreach (Geography geography in set1)
             {
@@ -205,7 +205,7 @@ namespace Swarmops.Logic.Structure
 
             // Assemble result
 
-            var result = new Geographies();
+            Geographies result = new Geographies();
 
             foreach (Geography geography in table.Values)
             {
@@ -215,57 +215,56 @@ namespace Swarmops.Logic.Structure
             return result;
         }
 
-        public Geographies LogicalOr (Geographies set2)
+        public Geographies LogicalOr(Geographies set2)
         {
             return LogicalOr(this, set2);
         }
 
-        public class HierSortOrder
-        {
-            internal HierSortOrder (int pOrder, int pLevel)
-            {
-                order = pOrder;
-                level = pLevel;
-            }
-            private int order;
-            private int level;
-            public int Level
-            {
-                get
-                {
-                    return level;
-                }
-            }
-            public int Order
-            {
-                get
-                {
-                    return order;
-                }
-            }
-        }
-
-        static public Dictionary<int, HierSortOrder> GetHierarchicalSortOrder ()
+        public static Dictionary<int, HierSortOrder> GetHierarchicalSortOrder()
         {
             Dictionary<int, HierSortOrder> resultDictionary = new Dictionary<int, HierSortOrder>();
             BuildHierarchicalSortOrder(resultDictionary, Geography.Root, 0);
             return resultDictionary;
         }
 
-        static private void BuildHierarchicalSortOrder (Dictionary<int, HierSortOrder> resultDictionary, Geography currentParent, int level)
+        private static void BuildHierarchicalSortOrder(Dictionary<int, HierSortOrder> resultDictionary,
+            Geography currentParent, int level)
         {
             if (level > 20)
             {
-                throw new Exception("Detected loop in Geographic data at geography id:" + currentParent.Identity.ToString() + ", " + currentParent.Name);
+                throw new Exception("Detected loop in Geographic data at geography id:" + currentParent.Identity + ", " +
+                                    currentParent.Name);
             }
 
             if (!resultDictionary.ContainsKey(currentParent.Identity))
             {
-                resultDictionary.Add(currentParent.Identity, new HierSortOrder(resultDictionary.Count,level));
+                resultDictionary.Add(currentParent.Identity, new HierSortOrder(resultDictionary.Count, level));
             }
 
             foreach (Geography subgeo in currentParent.Children)
                 BuildHierarchicalSortOrder(resultDictionary, subgeo, level + 1);
+        }
+
+        public class HierSortOrder
+        {
+            private readonly int level;
+            private readonly int order;
+
+            internal HierSortOrder(int pOrder, int pLevel)
+            {
+                this.order = pOrder;
+                this.level = pLevel;
+            }
+
+            public int Level
+            {
+                get { return this.level; }
+            }
+
+            public int Order
+            {
+                get { return this.order; }
+            }
         }
     }
 }

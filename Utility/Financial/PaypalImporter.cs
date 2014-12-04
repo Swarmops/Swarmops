@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -14,7 +15,8 @@ namespace Swarmops.Utility.Financial
         {
             if (!data.StartsWith("Date\t Time\t Time Zone\t Name\t Type"))
             {
-                runningPerson.SendPhoneMessage("The file you uploaded does not appear to be a PayPal tab-delimited file of all activity. No processing done. The data has been discarded.");
+                runningPerson.SendPhoneMessage(
+                    "The file you uploaded does not appear to be a PayPal tab-delimited file of all activity. No processing done. The data has been discarded.");
                 throw new ArgumentException("This does not appear to be a PayPal file");
             }
 
@@ -35,7 +37,8 @@ namespace Swarmops.Utility.Financial
 
             mailBody += String.Format("Rows processed: {0,9:N0}\r\n", stats.ProcessedTransactionCount);
             mailBody += String.Format("Tx imported:    {0,9:N0}\r\n", stats.ImportedTransactionCount);
-            mailBody += String.Format("Tx modified:    {0,9:N0}\r\n", stats.ModifiedTransactionCount - stats.ImportedTransactionCount);
+            mailBody += String.Format("Tx modified:    {0,9:N0}\r\n",
+                stats.ModifiedTransactionCount - stats.ImportedTransactionCount);
 
             runningPerson.SendNotice("PayPal file imported", mailBody, organization.Identity);
         }
@@ -72,7 +75,7 @@ namespace Swarmops.Utility.Financial
 
                 // DEBUG -- REMOVE WHEN DEPLOYING
 
-                if (System.Diagnostics.Debugger.IsAttached)
+                if (Debugger.IsAttached)
                 {
                     Console.WriteLine("New Row -----");
 
@@ -86,8 +89,9 @@ namespace Swarmops.Utility.Financial
 
                 row.SuppliedTransactionId = StripQuotes(parts[12]);
                 row.Comment = StripQuotes(parts[4]);
-                row.DateTime = DateTime.Parse(StripQuotes(parts[0]) + " " + StripQuotes(parts[1]), CultureInfo.InvariantCulture);
-                row.AmountCentsGross = Int64.Parse(StripQuotes(parts[7]).Replace(".", "").Replace(",",""));
+                row.DateTime = DateTime.Parse(StripQuotes(parts[0]) + " " + StripQuotes(parts[1]),
+                    CultureInfo.InvariantCulture);
+                row.AmountCentsGross = Int64.Parse(StripQuotes(parts[7]).Replace(".", "").Replace(",", ""));
                 row.FeeCents = Int64.Parse(StripQuotes(parts[8]).Replace(".", "").Replace(",", ""));
                 row.AmountCentsNet = Int64.Parse(StripQuotes(parts[9]).Replace(".", "").Replace(",", ""));
 
@@ -96,25 +100,6 @@ namespace Swarmops.Utility.Financial
 
             result.Rows = rows;
             return result;
-        }
-
-
-        protected class ImportResult
-        {
-            public double CurrentBalance;
-            public List<ImportedRow> Rows;
-        }
-
-        protected class ImportedRow
-        {
-            public DateTime DateTime;
-            public string HashBase;
-            public string SuppliedTransactionId;
-            public double CurrentBalance;
-            public Int64 AmountCentsNet;
-            public Int64 AmountCentsGross;
-            public Int64 FeeCents;
-            public string Comment;
         }
 
 
@@ -134,21 +119,14 @@ namespace Swarmops.Utility.Financial
         }
 
 
-        protected class ImportStats
-        {
-            public int ProcessedTransactionCount;
-            public int ModifiedTransactionCount;
-            public int ImportedTransactionCount;
-        }
-
-
-        protected static ImportStats ProcessImportedData(ImportResult import, Organization organization, Person importingPerson)
+        protected static ImportStats ProcessImportedData(ImportResult import, Organization organization,
+            Person importingPerson)
         {
             FinancialAccount payPalAccount = organization.FinancialAccounts.AssetsPaypal;
             FinancialAccount bankFees = organization.FinancialAccounts.CostsBankFees;
             FinancialAccount donations = organization.FinancialAccounts.IncomeDonations;
 
-            int autoDepositLimit = 1000;   // TODO: Get from organization parameters
+            int autoDepositLimit = 1000; // TODO: Get from organization parameters
             int autoWithdrawalLimit = 0;
 
             ImportStats result = new ImportStats();
@@ -170,7 +148,9 @@ namespace Swarmops.Utility.Financial
 
                 if (string.IsNullOrEmpty(importKey))
                 {
-                    string hashKey = row.HashBase + row.Comment + (row.AmountCentsNet / 100.0).ToString(CultureInfo.InvariantCulture) + row.CurrentBalance.ToString(CultureInfo.InvariantCulture) +
+                    string hashKey = row.HashBase + row.Comment +
+                                     (row.AmountCentsNet/100.0).ToString(CultureInfo.InvariantCulture) +
+                                     row.CurrentBalance.ToString(CultureInfo.InvariantCulture) +
                                      row.DateTime.ToString("yyyy-MM-dd-hh-mm-ss");
 
                     importKey = SHA1.Hash(hashKey).Replace(" ", "");
@@ -195,16 +175,15 @@ namespace Swarmops.Utility.Financial
                 try
                 {
                     transaction = FinancialTransaction.FromImportKey(organization, importKey);
-
                 }
                 catch (Exception)
                 {
                     // if we get here, that means the transaction did not yet exist
 
                     transaction = FinancialTransaction.ImportWithStub(organization.Identity, row.DateTime,
-                                                                   payPalAccount.Identity, amountCents,
-                                                                   row.Comment, importKey,
-                                                                   importingPerson.Identity);
+                        payPalAccount.Identity, amountCents,
+                        row.Comment, importKey,
+                        importingPerson.Identity);
                     result.ImportedTransactionCount++;
 
                     if (transaction == null)
@@ -225,7 +204,7 @@ namespace Swarmops.Utility.Financial
 
                 if (amountCents < 0)
                 {
-                    if ((-amountCents) < autoWithdrawalLimit * 100)
+                    if ((-amountCents) < autoWithdrawalLimit*100)
                     {
                         // Book against autoWithdrawal account.
 
@@ -241,7 +220,7 @@ namespace Swarmops.Utility.Financial
                         nominalTransaction[bankFees.Identity] = -row.FeeCents;
                         nominalTransaction[donations.Identity] = -row.AmountCentsGross;
                     }
-                    else if (amountCents < autoDepositLimit * 100)
+                    else if (amountCents < autoDepositLimit*100)
                     {
                         // Book against autoDeposit account.
 
@@ -261,5 +240,29 @@ namespace Swarmops.Utility.Financial
             return result;
         }
 
+        protected class ImportResult
+        {
+            public double CurrentBalance;
+            public List<ImportedRow> Rows;
+        }
+
+        protected class ImportStats
+        {
+            public int ImportedTransactionCount;
+            public int ModifiedTransactionCount;
+            public int ProcessedTransactionCount;
+        }
+
+        protected class ImportedRow
+        {
+            public Int64 AmountCentsGross;
+            public Int64 AmountCentsNet;
+            public string Comment;
+            public double CurrentBalance;
+            public DateTime DateTime;
+            public Int64 FeeCents;
+            public string HashBase;
+            public string SuppliedTransactionId;
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public BasicPaymentCode GetPaymentCode (string paymentCode)
+        public BasicPaymentCode GetPaymentCode(string paymentCode)
         {
             using (DbConnection connection = GetSqlServerDbConnection())
             {
@@ -31,7 +31,7 @@ namespace Swarmops.Database
         }
 
 
-        private BasicPaymentCode ReadPaymentCodeFromDataReader (DbDataReader reader)
+        private BasicPaymentCode ReadPaymentCodeFromDataReader(DbDataReader reader)
         {
             int issuedToPersonId = (int) reader["IssuedToPersonId"];
             string issuedToPhoneNumber = (string) reader["IssuedToPhoneNumber"];
@@ -42,7 +42,7 @@ namespace Swarmops.Database
             return new BasicPaymentCode(paymentCodeId, paymentCode, issuedToPhoneNumber, issuedToPersonId, claimed);
         }
 
-        public int CreatePaymentCode (string paymentCode, string issuingPhoneNumber, int issuingPersonId)
+        public int CreatePaymentCode(string paymentCode, string issuingPhoneNumber, int issuingPersonId)
         {
             using (DbConnection connection = GetSqlServerDbConnection())
             {
@@ -60,7 +60,7 @@ namespace Swarmops.Database
         }
 
 
-        public int ClaimPaymentCode (int paymentCodeId, int claimingPersonId)
+        public int ClaimPaymentCode(int paymentCodeId, int claimingPersonId)
         {
             using (DbConnection connection = GetSqlServerDbConnection())
             {

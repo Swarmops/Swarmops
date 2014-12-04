@@ -11,8 +11,12 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string internalPollVoteFieldSequence =
-            " InternalPollVoteId,InternalPollId,VerificationCode " +             // 0-3
+            " InternalPollVoteId,InternalPollId,VerificationCode " + // 0-3
             "FROM InternalPollVotes ";
+
+        private const string internalPollVoterFieldSequence =
+            " PersonId,InternalPollId,Open,ClosedDateTime " + // 0-3
+            "FROM InternalPollVoters ";
 
         private static BasicInternalPollVote ReadInternalPollVoteFromDataReader(IDataRecord reader)
         {
@@ -22,10 +26,6 @@ namespace Swarmops.Database
 
             return new BasicInternalPollVote(internalPollVoteId, internalPollId, verificationCode);
         }
-
-        private const string internalPollVoterFieldSequence =
-            " PersonId,InternalPollId,Open,ClosedDateTime " +             // 0-3
-            "FROM InternalPollVoters ";
 
         private static BasicInternalPollVoter ReadInternalPollVoterFromDataReader(IDataRecord reader)
         {
@@ -39,8 +39,6 @@ namespace Swarmops.Database
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
         public BasicInternalPollVote GetInternalPollVote(int internalPollVoteId)
@@ -51,7 +49,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + internalPollVoteFieldSequence + "WHERE InternalPollVoteId=" + internalPollVoteId + ";", connection);
+                        "SELECT" + internalPollVoteFieldSequence + "WHERE InternalPollVoteId=" + internalPollVoteId +
+                        ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -60,13 +59,13 @@ namespace Swarmops.Database
                         return ReadInternalPollVoteFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown Id: " + internalPollVoteId.ToString());
+                    throw new ArgumentException("Unknown Id: " + internalPollVoteId);
                 }
             }
         }
 
 
-        public BasicInternalPollVote GetInternalPollVote (string verificationCode)
+        public BasicInternalPollVote GetInternalPollVote(string verificationCode)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -74,7 +73,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + internalPollVoteFieldSequence + "WHERE VerificationCode='" + verificationCode.Replace("'", "''") + "';", connection);
+                        "SELECT" + internalPollVoteFieldSequence + "WHERE VerificationCode='" +
+                        verificationCode.Replace("'", "''") + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -83,7 +83,7 @@ namespace Swarmops.Database
                         return ReadInternalPollVoteFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown Verification Code: " + verificationCode.ToString());
+                    throw new ArgumentException("Unknown Verification Code: " + verificationCode);
                 }
             }
         }
@@ -99,7 +99,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + internalPollVoteFieldSequence + ConstructWhereClause("InternalPollVotes", conditions) + " ORDER BY VerificationCode", connection);
+                        "SELECT" + internalPollVoteFieldSequence + ConstructWhereClause("InternalPollVotes", conditions) +
+                        " ORDER BY VerificationCode", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -114,7 +115,7 @@ namespace Swarmops.Database
         }
 
 
-        public InternalPollVoterStatus GetInternalPollVoterStatus (int internalPollId, int personId)
+        public InternalPollVoterStatus GetInternalPollVoterStatus(int internalPollId, int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -122,13 +123,16 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT Open FROM InternalPollVoters WHERE InternalPollId=" + internalPollId.ToString() + " AND PersonId=" + personId.ToString(), connection);
+                        "SELECT Open FROM InternalPollVoters WHERE InternalPollId=" + internalPollId + " AND PersonId=" +
+                        personId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetBoolean(0)? InternalPollVoterStatus.CanVote : InternalPollVoterStatus.HasAlreadyVoted;
+                        return reader.GetBoolean(0)
+                            ? InternalPollVoterStatus.CanVote
+                            : InternalPollVoterStatus.HasAlreadyVoted;
                     }
 
                     return InternalPollVoterStatus.NotEligibleForPoll;
@@ -137,7 +141,7 @@ namespace Swarmops.Database
         }
 
 
-        public int[] GetInternalPollVoteDetails (int internalPollVoteId)
+        public int[] GetInternalPollVoteDetails(int internalPollVoteId)
         {
             List<int> result = new List<int>();
 
@@ -147,8 +151,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT InternalPollCandidateId FROM InternalPollVoteDetails WHERE InternalPollVoteId=" + 
-                        internalPollVoteId.ToString() + " ORDER BY Position", connection);
+                        "SELECT InternalPollCandidateId FROM InternalPollVoteDetails WHERE InternalPollVoteId=" +
+                        internalPollVoteId + " ORDER BY Position", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -163,7 +167,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicInternalPollVoter[] GetInternalPollVoters (params object[] conditions)
+        public BasicInternalPollVoter[] GetInternalPollVoters(params object[] conditions)
         {
             List<BasicInternalPollVoter> result = new List<BasicInternalPollVoter>();
 
@@ -172,7 +176,8 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command = GetDbCommand(
-                    "SELECT" + internalPollVoterFieldSequence + ConstructWhereClause("InternalPollVoters", conditions), connection);
+                    "SELECT" + internalPollVoterFieldSequence + ConstructWhereClause("InternalPollVoters", conditions),
+                    connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -184,11 +189,10 @@ namespace Swarmops.Database
                     return result.ToArray();
                 }
             }
-            
         }
 
 
-        public Dictionary<int,int> GetCandidateIdPersonIdMap (int pollId)
+        public Dictionary<int, int> GetCandidateIdPersonIdMap(int pollId)
         {
             Dictionary<int, int> result = new Dictionary<int, int>();
 
@@ -198,7 +202,7 @@ namespace Swarmops.Database
 
                 DbCommand command = GetDbCommand(
                     "SELECT InternalPollCandidateId,PersonId FROM InternalPollCandidates WHERE InternalPollId=" +
-                    pollId.ToString(), connection);
+                    pollId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -212,10 +216,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
@@ -255,7 +256,6 @@ namespace Swarmops.Database
         }
 
 
-
         public void ClearInternalPollVote(int internalPollVoteId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -270,8 +270,6 @@ namespace Swarmops.Database
                 command.ExecuteNonQuery();
             }
         }
-
-
 
 
         public int CreateInternalPollVoter(int internalPollId, int personId)
@@ -309,9 +307,6 @@ namespace Swarmops.Database
             }
         }
 
-
-
         #endregion
-
     }
 }

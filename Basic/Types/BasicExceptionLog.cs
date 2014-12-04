@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicExceptionLog
     {
-         public BasicExceptionLog (int ExceptionId,DateTime ExceptionDateTime, string Source, string ExceptionText)
+        public BasicExceptionLog(int ExceptionId, DateTime ExceptionDateTime, string Source, string ExceptionText)
         {
             this.ExceptionId = ExceptionId;
             this.ExceptionDateTime = ExceptionDateTime;
@@ -12,8 +12,8 @@ namespace Swarmops.Basic.Types
             this.ExceptionText = ExceptionText;
         }
 
-        public BasicExceptionLog (BasicExceptionLog original):
-             this(original.ExceptionId, original.ExceptionDateTime, original.Source, original.ExceptionText)
+        public BasicExceptionLog(BasicExceptionLog original) :
+            this(original.ExceptionId, original.ExceptionDateTime, original.Source, original.ExceptionText)
         {
             // empty copy ctor
         }
