@@ -10,7 +10,7 @@ UPDATE `Countries` SET `PostalCodeLength`='0' WHERE `Code`='GH'
 
 #
 
-ALTER TABLE `Countries` ADD COLUMN `CurrencyCode` VARCHAR(8) NOT NULL DEFAULT '' AFTER `Culture`;
+ALTER TABLE `Countries` ADD COLUMN `CurrencyCode` VARCHAR(8) NOT NULL DEFAULT '' AFTER `Culture`
 
 #
 
