@@ -13,7 +13,7 @@ namespace Swarmops.Logic.DataObjects
 #if !__MonoCS__
         [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        public static Person[] Select (int[] personIds)
+        public static Person[] Select(int[] personIds)
         {
             if (personIds == null)
             {
@@ -26,7 +26,7 @@ namespace Swarmops.Logic.DataObjects
 #if !__MonoCS__
         [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        public static Person[] SelectStatic (Person[] personArray)
+        public static Person[] SelectStatic(Person[] personArray)
         {
             if (personArray == null)
             {
@@ -39,7 +39,7 @@ namespace Swarmops.Logic.DataObjects
 #if !__MonoCS__
         [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        public static Person[] SelectStatic (People people)
+        public static Person[] SelectStatic(People people)
         {
             if (people == null)
             {
@@ -53,7 +53,7 @@ namespace Swarmops.Logic.DataObjects
 #if !__MonoCS__
         [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        public static Person[] SelectSortedStatic (People people, string sort)
+        public static Person[] SelectSortedStatic(People people, string sort)
         {
             if (people == null)
             {
@@ -62,7 +62,7 @@ namespace Swarmops.Logic.DataObjects
 
 
             List<Person> pList = new List<Person>();
-            Person[] foundPersons = SelectStatic((People)people);
+            Person[] foundPersons = SelectStatic(people);
             foreach (Person pers in foundPersons)
             {
                 pList.Add(pers);
@@ -70,29 +70,39 @@ namespace Swarmops.Logic.DataObjects
 
             switch (sort)
             {
-                case "PersonId": pList.Sort(PersonIdComparison); break;
-                case "Name": pList.Sort(NameComparison); break;
-                case "PostalCode": pList.Sort(PostalCodeComparison); break;
-                case "CityName": pList.Sort(CityComparison); break;
-                case "Birthdate": pList.Sort(BirthdateComparison); break;
+                case "PersonId":
+                    pList.Sort(PersonIdComparison);
+                    break;
+                case "Name":
+                    pList.Sort(NameComparison);
+                    break;
+                case "PostalCode":
+                    pList.Sort(PostalCodeComparison);
+                    break;
+                case "CityName":
+                    pList.Sort(CityComparison);
+                    break;
+                case "Birthdate":
+                    pList.Sort(BirthdateComparison);
+                    break;
 
-                // New sortexpressions
-                case "Email": pList.Sort(EmailComparison); break;
-                case "Phone": pList.Sort(PhoneComparison); break;
+                    // New sortexpressions
+                case "Email":
+                    pList.Sort(EmailComparison);
+                    break;
+                case "Phone":
+                    pList.Sort(PhoneComparison);
+                    break;
             }
 
             return pList.ToArray();
         }
 
-        public static Comparison<Person> PersonIdComparison = delegate(Person p1, Person p2)
-        {
-            return p1.PersonId.CompareTo(p2.PersonId);
-        };
+        public static Comparison<Person> PersonIdComparison =
+            delegate(Person p1, Person p2) { return p1.PersonId.CompareTo(p2.PersonId); };
 
-        public static Comparison<Person> NameComparison = delegate(Person p1, Person p2)
-        {
-            return p1.Name.CompareTo(p2.Name);
-        };
+        public static Comparison<Person> NameComparison =
+            delegate(Person p1, Person p2) { return p1.Name.CompareTo(p2.Name); };
 
         public static Comparison<Person> CityComparison = delegate(Person p1, Person p2)
         {
@@ -110,10 +120,8 @@ namespace Swarmops.Logic.DataObjects
             return cmpRes;
         };
 
-        public static Comparison<Person> BirthdateComparison = delegate(Person p1, Person p2)
-        {
-            return p1.Birthdate.CompareTo(p2.Birthdate);
-        };
+        public static Comparison<Person> BirthdateComparison =
+            delegate(Person p1, Person p2) { return p1.Birthdate.CompareTo(p2.Birthdate); };
 
         // Added for more sorting opportunities
         public static Comparison<Person> EmailComparison = delegate(Person p1, Person p2)
@@ -131,6 +139,5 @@ namespace Swarmops.Logic.DataObjects
                 cmpRes = p1.Name.CompareTo(p2.Name);
             return cmpRes;
         };
-
     }
 }

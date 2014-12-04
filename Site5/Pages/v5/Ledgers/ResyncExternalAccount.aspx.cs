@@ -20,9 +20,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
     public partial class ResyncExternalAccount : PageV5Base
     {
+        private static readonly Dictionary<string, object> _staticDataLookup;
+
         static ResyncExternalAccount()
         {
-            _staticDataLookup = new Dictionary<string, object>();  // This does not work at all for webfarms, which may be a problem down the road
+            _staticDataLookup = new Dictionary<string, object>();
+                // This does not work at all for webfarms, which may be a problem down the road
         }
 
         public static string StorageRoot
@@ -33,39 +36,37 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 {
                     return @"C:\Windows\Temp\Swarmops-Debug\"; // Windows debugging environment
                 }
-                else
-                {
-                    return "/var/lib/swarmops/upload/"; // production location on Debian installation  TODO: config file
-                }
+                return "/var/lib/swarmops/upload/"; // production location on Debian installation  TODO: config file
             }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.CurrentOrganization.IsEconomyEnabled)
+            if (!CurrentOrganization.IsEconomyEnabled)
             {
                 Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
-            this.PageIcon = "iconshock-treasure";
-            this.PageTitle = Resources.Pages.Ledgers.ResyncExternalAccount_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Ledgers.ResyncExternalAccount_Info;
+            PageIcon = "iconshock-treasure";
+            PageTitle = Resources.Pages.Ledgers.ResyncExternalAccount_PageTitle;
+            InfoBoxLiteral = Resources.Pages.Ledgers.ResyncExternalAccount_Info;
 
             if (!Page.IsPostBack)
             {
                 this.DropAccounts.Items.Add(new ListItem(Resources.Global.Global_SelectOne, "0"));
 
-                FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
-                                                                               FinancialAccountType.Asset);
+                FinancialAccounts accounts = FinancialAccounts.ForOrganization(CurrentOrganization,
+                    FinancialAccountType.Asset);
 
                 foreach (FinancialAccount account in accounts)
                 {
                     // TODO: COnstruct import settings for accounts
 
-                    if (this.CurrentOrganization.Name == "Piratpartiet SE" && account.Identity == 1)
+                    if (CurrentOrganization.Name == "Piratpartiet SE" && account.Identity == 1)
                     {
-                        this.DropAccounts.Items.Add(new ListItem(account.Name + " (SE/SEB)", account.Identity.ToString(CultureInfo.InvariantCulture)));
+                        this.DropAccounts.Items.Add(new ListItem(account.Name + " (SE/SEB)",
+                            account.Identity.ToString(CultureInfo.InvariantCulture)));
                     }
                 }
 
@@ -73,14 +74,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 Localize();
             }
 
-            this.EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
+            EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
         }
 
 
         private void Localize()
         {
         }
-
 
 
         [WebMethod(EnableSession = true)]
@@ -97,7 +97,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             lock (_staticDataLookup)
             {
-                int percentReady = (int)_staticDataLookup[key];
+                int percentReady = (int) _staticDataLookup[key];
 
                 if (percentReady >= 100)
                 {
@@ -111,9 +111,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     HttpContext.Current.Session["LedgersResync" + guid + "Account"] =
                         _staticDataLookup[guid + "Account"];
 
-                    _staticDataLookup[guid + "MismatchArray"] = null; // clear the static object, which will otherwise live on
+                    _staticDataLookup[guid + "MismatchArray"] = null;
+                        // clear the static object, which will otherwise live on
                     _staticDataLookup[guid + "Profile"] = null;
-                    
+
                     // TODO: Clear all _staticDataLookup starting with guid (leaks memory slightly)
                 }
 
@@ -135,15 +136,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             ExternalBankDataStatistics result = new ExternalBankDataStatistics();
 
-            result.FirstTransaction = (string)_staticDataLookup[guid + "FirstTx"];
-            result.LastTransaction = (string)_staticDataLookup[guid + "LastTx"];
-            result.TransactionCount = (string)_staticDataLookup[guid + "TxCount"];
+            result.FirstTransaction = (string) _staticDataLookup[guid + "FirstTx"];
+            result.LastTransaction = (string) _staticDataLookup[guid + "LastTx"];
+            result.TransactionCount = (string) _staticDataLookup[guid + "TxCount"];
 
             return result;
         }
-
-
-
 
 
         [WebMethod(true)]
@@ -157,7 +155,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
             if (account.Organization.Identity != authData.CurrentOrganization.Identity ||
-                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write)))
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Bookkeeping,
+                    AccessType.Write)))
             {
                 throw new UnauthorizedAccessException();
             }
@@ -165,19 +164,20 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             Thread initThread = new Thread(ProcessUploadThread);
 
             ProcessThreadArguments args = new ProcessThreadArguments
-                                              {Guid = guid, Organization = authData.CurrentOrganization, Account = account};
+            {Guid = guid, Organization = authData.CurrentOrganization, Account = account};
 
             initThread.Start(args);
         }
 
 
-
         [WebMethod(EnableSession = true)]
-        public static ResyncResults ExecuteResync (string guid)
+        public static ResyncResults ExecuteResync(string guid)
         {
             AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
 
-            if (!authenticationData.CurrentUser.HasAccess(new Access(authenticationData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write)))
+            if (
+                !authenticationData.CurrentUser.HasAccess(new Access(authenticationData.CurrentOrganization,
+                    AccessAspect.Bookkeeping, AccessType.Write)))
             {
                 throw new UnauthorizedAccessException();
             }
@@ -185,12 +185,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             ResyncResults results = new ResyncResults();
 
             ExternalBankMismatchingDateTime[] mismatchArray =
-                (ExternalBankMismatchingDateTime[]) HttpContext.Current.Session["LedgersResync" + guid + "MismatchArray"];
+                (ExternalBankMismatchingDateTime[])
+                    HttpContext.Current.Session["LedgersResync" + guid + "MismatchArray"];
 
-            FinancialAccount account = 
+            FinancialAccount account =
                 (FinancialAccount) HttpContext.Current.Session["LedgersResync" + guid + "Account"];
 
-            long autoDepositDonationCents = 1000 * 100;
+            long autoDepositDonationCents = 1000*100;
             FinancialAccount autoDonationAccount = account.Organization.FinancialAccounts.IncomeDonations;
 
             if (authenticationData.CurrentOrganization.Identity != account.OrganizationId)
@@ -200,7 +201,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (ExternalBankMismatchingDateTime mismatchDateTime in mismatchArray)
             {
-                foreach (ExternalBankMismatchingRecordDescription mismatchingRecord in mismatchDateTime.MismatchingRecords)
+                foreach (
+                    ExternalBankMismatchingRecordDescription mismatchingRecord in mismatchDateTime.MismatchingRecords)
                 {
                     for (int index = 0; index < mismatchingRecord.MasterCents.Length; index++)
                     {
@@ -216,9 +218,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         {
                             unhandled = true;
 
-                            IHasIdentity dependency = tx.Dependency as IHasIdentity;
+                            IHasIdentity dependency = tx.Dependency;
 
-                            if (dependency is PaymentGroup && mismatchingRecord.ResyncActions[index] == ExternalBankMismatchResyncAction.RewriteSwarmops)
+                            if (dependency is PaymentGroup &&
+                                mismatchingRecord.ResyncActions[index] ==
+                                ExternalBankMismatchResyncAction.RewriteSwarmops)
                             {
                                 if (cents == (dependency as PaymentGroup).SumCents)
                                 {
@@ -238,54 +242,57 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         }
 
 
-                        if (handlable) switch (mismatchingRecord.ResyncActions[index])
-                        {
-                            case ExternalBankMismatchResyncAction.DeleteSwarmops:
-                                if (tx == null)
-                                {
-                                    throw new InvalidOperationException("Can't have Delete op on a null transaction");
-                                }
+                        if (handlable)
+                            switch (mismatchingRecord.ResyncActions[index])
+                            {
+                                case ExternalBankMismatchResyncAction.DeleteSwarmops:
+                                    if (tx == null)
+                                    {
+                                        throw new InvalidOperationException("Can't have Delete op on a null transaction");
+                                    }
 
-                                tx.Description = tx.Description + " (killed/zeroed in resync)";
-                                tx.RecalculateTransaction(new Dictionary<int, long>(), authenticationData.CurrentUser);  // zeroes out
-                                break;
-                            case ExternalBankMismatchResyncAction.RewriteSwarmops:
-                                if (tx == null)
-                                {
-                                    throw new InvalidOperationException("Can't have Rewrite op on a null transaction");
-                                }
+                                    tx.Description = tx.Description + " (killed/zeroed in resync)";
+                                    tx.RecalculateTransaction(new Dictionary<int, long>(),
+                                        authenticationData.CurrentUser); // zeroes out
+                                    break;
+                                case ExternalBankMismatchResyncAction.RewriteSwarmops:
+                                    if (tx == null)
+                                    {
+                                        throw new InvalidOperationException(
+                                            "Can't have Rewrite op on a null transaction");
+                                    }
 
-                                Dictionary<int, long> newTx = new Dictionary<int, long>();
-                                newTx[account.Identity] = cents;
-                                if (cents > 0 && cents < autoDepositDonationCents)
-                                {
-                                    newTx[autoDonationAccount.Identity] = -cents; // negative; P&L account
-                                }
-                                tx.RecalculateTransaction(newTx, authenticationData.CurrentUser);
-                                break;
-                            case ExternalBankMismatchResyncAction.CreateSwarmops:
-                                if (tx != null)
-                                {
-                                    throw new InvalidOperationException("Transaction seems to already exist");
-                                }
+                                    Dictionary<int, long> newTx = new Dictionary<int, long>();
+                                    newTx[account.Identity] = cents;
+                                    if (cents > 0 && cents < autoDepositDonationCents)
+                                    {
+                                        newTx[autoDonationAccount.Identity] = -cents; // negative; P&L account
+                                    }
+                                    tx.RecalculateTransaction(newTx, authenticationData.CurrentUser);
+                                    break;
+                                case ExternalBankMismatchResyncAction.CreateSwarmops:
+                                    if (tx != null)
+                                    {
+                                        throw new InvalidOperationException("Transaction seems to already exist");
+                                    }
 
-                                tx = FinancialTransaction.Create(account.OwnerPersonId, mismatchDateTime.DateTime,
-                                                                 mismatchingRecord.Description);
-                                tx.AddRow(account, cents, authenticationData.CurrentUser);
+                                    tx = FinancialTransaction.Create(account.OwnerPersonId, mismatchDateTime.DateTime,
+                                        mismatchingRecord.Description);
+                                    tx.AddRow(account, cents, authenticationData.CurrentUser);
 
-                                if (cents > 0 && cents < autoDepositDonationCents)
-                                {
-                                    tx.AddRow(autoDonationAccount, -cents, authenticationData.CurrentUser);
-                                }
-                                break;
-                            case ExternalBankMismatchResyncAction.NoAction:
-                                // no action
-                                break;
-                            default:
-                                // not handled
-                                unhandled = true;
-                                break;
-                        }
+                                    if (cents > 0 && cents < autoDepositDonationCents)
+                                    {
+                                        tx.AddRow(autoDonationAccount, -cents, authenticationData.CurrentUser);
+                                    }
+                                    break;
+                                case ExternalBankMismatchResyncAction.NoAction:
+                                    // no action
+                                    break;
+                                default:
+                                    // not handled
+                                    unhandled = true;
+                                    break;
+                            }
 
                         if (unhandled)
                         {
@@ -302,33 +309,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return results;
         }
 
-
-
-
-
-
-        public class ExternalBankDataStatistics
-        {
-            public string FirstTransaction { get; set; }
-            public string LastTransaction { get; set; }
-            public string TransactionCount { get; set; }
-        }
-
-
-        public class ResyncResults
-        {
-            public int RecordsTotal { get; set; }
-            public int RecordsSuccess { get; set; }
-            public int RecordsFail { get; set; }
-        }
-
-        private class ProcessThreadArguments
-        {
-            public string Guid { get; set; }
-            public Organization Organization { get; set; }
-            public FinancialAccount Account { get; set; }
-        }
-
         private static void ProcessUploadThread(object args)
         {
             string guid = ((ProcessThreadArguments) args).Guid;
@@ -342,18 +322,21 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             Document uploadedDoc = documents[0];
 
-            FinancialAccount account = ((ProcessThreadArguments)args).Account;
+            FinancialAccount account = ((ProcessThreadArguments) args).Account;
 
             ExternalBankData externalData = new ExternalBankData();
-            externalData.Profile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId); // TODO: HACK HACK HACK HACK LOAD 
+            externalData.Profile = ExternalBankDataProfile.FromIdentity(ExternalBankDataProfile.SESebId);
+                // TODO: HACK HACK HACK HACK LOAD 
 
-            using (StreamReader reader = new StreamReader(StorageRoot + uploadedDoc.ServerFileName, Encoding.GetEncoding(1252)))
+            using (
+                StreamReader reader = new StreamReader(StorageRoot + uploadedDoc.ServerFileName,
+                    Encoding.GetEncoding(1252)))
             {
                 externalData.LoadData(reader, ((ProcessThreadArguments) args).Organization);
             }
 
             _staticDataLookup[guid + "FirstTx"] = externalData.Records[0].DateTime.ToLongDateString();
-            _staticDataLookup[guid + "LastTx"] = 
+            _staticDataLookup[guid + "LastTx"] =
                 externalData.Records[externalData.Records.Length - 1].DateTime.ToLongDateString();
             _staticDataLookup[guid + "TxCount"] = externalData.Records.Length.ToString("N0");
 
@@ -374,7 +357,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             bool foundMatch = false;
 
-            while (externalData.Records [currentRecordIndex].DateTime == timeWalker)
+            while (externalData.Records[currentRecordIndex].DateTime == timeWalker)
             {
                 if (externalData.Records[currentRecordIndex].AccountBalanceCents == swarmopsCentsStart)
                 {
@@ -396,13 +379,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             while (currentRecordIndex < externalData.Records.Length)
             {
-
                 DateTime lastTimestamp = timeWalker;
 
                 timeWalker = externalData.Records[currentRecordIndex].DateTime;
 
                 long swarmopsDeltaCents = account.GetDeltaCents(lastTimestamp.AddSeconds(1), timeWalker.AddSeconds(1));
-                    // "AddSeconds" because DeltaCents operates on ">= lowbound, < highbound"
+                // "AddSeconds" because DeltaCents operates on ">= lowbound, < highbound"
                 int timestampStartIndex = currentRecordIndex;
                 long masterDeltaCents = externalData.Records[currentRecordIndex++].TransactionNetCents;
                 int masterTransactionCount = 1;
@@ -424,14 +406,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     newMismatch.MasterTransactionCount = masterTransactionCount;
                     newMismatch.SwarmopsDeltaCents = swarmopsDeltaCents;
                     newMismatch.SwarmopsTransactionCount = 0; // TODO
-                    
+
                     // Load transactions from both sources. First, create the interim construction object.
 
                     ExternalBankMismatchConstruction mismatchConstruction = new ExternalBankMismatchConstruction();
 
                     // Load from Master
 
-                    for (int innerRecordIndex = timestampStartIndex; innerRecordIndex < currentRecordIndex; innerRecordIndex++)
+                    for (int innerRecordIndex = timestampStartIndex;
+                        innerRecordIndex < currentRecordIndex;
+                        innerRecordIndex++)
                     {
                         string description = externalData.Records[innerRecordIndex].Description.Replace("  ", " ");
 
@@ -441,16 +425,20 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                 new ExternalBankMismatchingRecordConstruction();
                         }
 
-                        mismatchConstruction.Master[description].Cents.Add(externalData.Records[innerRecordIndex].TransactionNetCents);
-                        mismatchConstruction.Master[description].Transactions.Add(null); // no dependencies on the master side, only on swarmops side
+                        mismatchConstruction.Master[description].Cents.Add(
+                            externalData.Records[innerRecordIndex].TransactionNetCents);
+                        mismatchConstruction.Master[description].Transactions.Add(null);
+                            // no dependencies on the master side, only on swarmops side
                     }
 
                     // Load from Swarmops
 
                     FinancialAccountRows swarmopsTransactionRows =
-                        account.GetRowsFar(lastTimestamp, timeWalker);  // the "select far" is a boundary < x <= boundary selector. Default is boundary <= x < boundary.
+                        account.GetRowsFar(lastTimestamp, timeWalker);
+                        // the "select far" is a boundary < x <= boundary selector. Default is boundary <= x < boundary.
 
-                    Dictionary<int, FinancialTransaction> lookupTransactions = new Dictionary<int, FinancialTransaction>();
+                    Dictionary<int, FinancialTransaction> lookupTransactions =
+                        new Dictionary<int, FinancialTransaction>();
 
                     // note all transaction IDs, then sum up per transaction
 
@@ -463,7 +451,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                     foreach (FinancialTransaction transaction in lookupTransactions.Values)
                     {
-                        string description = transaction.Description.Replace("  ", " "); // for legacy compatibility with new importer
+                        string description = transaction.Description.Replace("  ", " ");
+                            // for legacy compatibility with new importer
 
                         if (!mismatchConstruction.Swarmops.ContainsKey(description))
                         {
@@ -482,7 +471,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                     // Then, parse the intermediate construction object to the presentation-and-action object.
 
-                    Dictionary <string,ExternalBankMismatchingRecordDescription> mismatchingRecordList = new Dictionary<string, ExternalBankMismatchingRecordDescription>();
+                    Dictionary<string, ExternalBankMismatchingRecordDescription> mismatchingRecordList =
+                        new Dictionary<string, ExternalBankMismatchingRecordDescription>();
 
                     foreach (string masterKey in mismatchConstruction.Master.Keys)
                     {
@@ -505,27 +495,29 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         List<long> swarmopsCentsList = new List<long>();
                         List<object> dependenciesList = new List<object>();
                         List<FinancialTransaction> transactionsList = new List<FinancialTransaction>();
-                        List<ExternalBankMismatchResyncAction> actionsList = new List<ExternalBankMismatchResyncAction>();
+                        List<ExternalBankMismatchResyncAction> actionsList =
+                            new List<ExternalBankMismatchResyncAction>();
 
                         // STEP 1 - locate all identical matches
 
                         if (mismatchConstruction.Swarmops.ContainsKey(masterKey))
                         {
                             for (int masterIndex = 0;
-                                 masterIndex < mismatchConstruction.Master[masterKey].Cents.Count;
-                                 masterIndex++)
+                                masterIndex < mismatchConstruction.Master[masterKey].Cents.Count;
+                                masterIndex++)
                             {
                                 // no "continue" necessary on first run-through; nothing has been checked off yet
 
                                 long findMasterCents = mismatchConstruction.Master[masterKey].Cents[masterIndex];
 
                                 for (int swarmopsIndex = 0;
-                                     swarmopsIndex < mismatchConstruction.Swarmops[masterKey].Cents.Count;
-                                     swarmopsIndex++)
+                                    swarmopsIndex < mismatchConstruction.Swarmops[masterKey].Cents.Count;
+                                    swarmopsIndex++)
                                 {
                                     if (checkSwarmopsIndex.ContainsKey(swarmopsIndex))
                                     {
-                                        continue; // may have been checked off already in the rare case of twin identical amounts
+                                        continue;
+                                            // may have been checked off already in the rare case of twin identical amounts
                                     }
 
                                     if (findMasterCents == mismatchConstruction.Swarmops[masterKey].Cents[swarmopsIndex])
@@ -535,11 +527,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                         masterCentsList.Add(findMasterCents);
                                         swarmopsCentsList.Add(
                                             mismatchConstruction.Swarmops[masterKey].Cents[swarmopsIndex]);
-                                            // should be equal, we're defensive here
+                                        // should be equal, we're defensive here
                                         transactionsList.Add(
                                             mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex]);
                                         dependenciesList.Add(
-                                            mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex].Dependency);
+                                            mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex]
+                                                .Dependency);
                                         actionsList.Add(ExternalBankMismatchResyncAction.NoAction);
 
                                         checkMasterIndex[masterIndex] = true;
@@ -555,11 +548,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         // TODO: improve logic to handle same number of records left on both sides
 
-                        if (mismatchConstruction.Swarmops.ContainsKey(masterKey) && 
+                        if (mismatchConstruction.Swarmops.ContainsKey(masterKey) &&
                             mismatchConstruction.Master[masterKey].Cents.Count - checkMasterIndex.Keys.Count == 1 &&
-                            mismatchConstruction.Swarmops [masterKey].Cents.Count - checkSwarmopsIndex.Keys.Count == 1)
+                            mismatchConstruction.Swarmops[masterKey].Cents.Count - checkSwarmopsIndex.Keys.Count == 1)
                         {
-                            for (int masterIndex = 0; masterIndex < mismatchConstruction.Master[masterKey].Cents.Count; masterIndex++)
+                            for (int masterIndex = 0;
+                                masterIndex < mismatchConstruction.Master[masterKey].Cents.Count;
+                                masterIndex++)
                             {
                                 if (checkMasterIndex.ContainsKey(masterIndex))
                                 {
@@ -568,7 +563,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                                 long findMasterCents = mismatchConstruction.Master[masterKey].Cents[masterIndex];
 
-                                for (int swarmopsIndex = 0; swarmopsIndex < mismatchConstruction.Swarmops[masterKey].Cents.Count; swarmopsIndex++)
+                                for (int swarmopsIndex = 0;
+                                    swarmopsIndex < mismatchConstruction.Swarmops[masterKey].Cents.Count;
+                                    swarmopsIndex++)
                                 {
                                     if (checkSwarmopsIndex.ContainsKey(swarmopsIndex))
                                     {
@@ -577,8 +574,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                                     masterCentsList.Add(findMasterCents);
                                     swarmopsCentsList.Add(mismatchConstruction.Swarmops[masterKey].Cents[swarmopsIndex]);
-                                    dependenciesList.Add(mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex].Dependency);
-                                    transactionsList.Add(mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex]);
+                                    dependenciesList.Add(
+                                        mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex].Dependency);
+                                    transactionsList.Add(
+                                        mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex]);
                                     actionsList.Add(ExternalBankMismatchResyncAction.RewriteSwarmops);
 
                                     checkMasterIndex[masterIndex] = true;
@@ -593,7 +592,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         if (mismatchConstruction.Master[masterKey].Cents.Count > checkMasterIndex.Keys.Count)
                         {
-                            for (int masterIndex = 0; masterIndex < mismatchConstruction.Master[masterKey].Cents.Count; masterIndex++)
+                            for (int masterIndex = 0;
+                                masterIndex < mismatchConstruction.Master[masterKey].Cents.Count;
+                                masterIndex++)
                             {
                                 if (checkMasterIndex.ContainsKey(masterIndex))
                                 {
@@ -612,9 +613,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         // STEP 3b - log remaining on Swarmops side
 
-                        if (mismatchConstruction.Swarmops.ContainsKey(masterKey) && mismatchConstruction.Swarmops[masterKey].Cents.Count > checkSwarmopsIndex.Keys.Count)
+                        if (mismatchConstruction.Swarmops.ContainsKey(masterKey) &&
+                            mismatchConstruction.Swarmops[masterKey].Cents.Count > checkSwarmopsIndex.Keys.Count)
                         {
-                            for (int swarmopsIndex = 0; swarmopsIndex < mismatchConstruction.Swarmops[masterKey].Cents.Count; swarmopsIndex++)
+                            for (int swarmopsIndex = 0;
+                                swarmopsIndex < mismatchConstruction.Swarmops[masterKey].Cents.Count;
+                                swarmopsIndex++)
                             {
                                 if (checkSwarmopsIndex.ContainsKey(swarmopsIndex))
                                 {
@@ -623,9 +627,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                                 masterCentsList.Add(0); // null equivalent; invalid value
                                 swarmopsCentsList.Add(mismatchConstruction.Swarmops[masterKey].Cents[swarmopsIndex]);
-                                transactionsList.Add(mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex]);
+                                transactionsList.Add(
+                                    mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex]);
 
-                                if (mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex].Dependency != null)
+                                if (mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex].Dependency !=
+                                    null)
                                 {
                                     dependenciesList.Add(
                                         mismatchConstruction.Swarmops[masterKey].Transactions[swarmopsIndex].Dependency);
@@ -666,10 +672,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                             mismatchingRecordList[swarmopsKey].MasterCents =
                                 new long[mismatchConstruction.Swarmops[swarmopsKey].Cents.Count]; // inits to zero
 
-                            mismatchingRecordList[swarmopsKey].ResyncActions = new ExternalBankMismatchResyncAction[mismatchConstruction.Swarmops[swarmopsKey].Cents.Count];
-                            for (int index = 0; index < mismatchingRecordList[swarmopsKey].ResyncActions.Length; index++)
+                            mismatchingRecordList[swarmopsKey].ResyncActions =
+                                new ExternalBankMismatchResyncAction[
+                                    mismatchConstruction.Swarmops[swarmopsKey].Cents.Count];
+                            for (int index = 0;
+                                index < mismatchingRecordList[swarmopsKey].ResyncActions.Length;
+                                index++)
                             {
-                                mismatchingRecordList[swarmopsKey].ResyncActions[index] = ExternalBankMismatchResyncAction.DeleteSwarmops;
+                                mismatchingRecordList[swarmopsKey].ResyncActions[index] =
+                                    ExternalBankMismatchResyncAction.DeleteSwarmops;
                             }
                         }
                     }
@@ -686,7 +697,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     if (percentProcessed > 1)
                     {
                         _staticDataLookup[guid + "PercentRead"] = percentProcessed;
-                            // for the progress bar to update async
+                        // for the progress bar to update async
                     }
 
                     if (percentProcessed > 99)
@@ -698,10 +709,29 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     }
                 }
             }
-
-
         }
 
-        private static Dictionary<string, object> _staticDataLookup;
+
+        public class ExternalBankDataStatistics
+        {
+            public string FirstTransaction { get; set; }
+            public string LastTransaction { get; set; }
+            public string TransactionCount { get; set; }
+        }
+
+
+        private class ProcessThreadArguments
+        {
+            public string Guid { get; set; }
+            public Organization Organization { get; set; }
+            public FinancialAccount Account { get; set; }
+        }
+
+        public class ResyncResults
+        {
+            public int RecordsTotal { get; set; }
+            public int RecordsSuccess { get; set; }
+            public int RecordsFail { get; set; }
+        }
     }
 }

@@ -3,27 +3,32 @@ namespace Swarmops.Basic.Enums
     public enum FinancialValidationType
     {
         /// <summary>
-        /// Unknown type.
+        ///     Unknown type.
         /// </summary>
         Unknown = 0,
+
         /// <summary>
-        /// An attestation of an expenditure from a budget.
+        ///     An attestation of an expenditure from a budget.
         /// </summary>
         Attestation,
+
         /// <summary>
-        /// Removal of attested status.
+        ///     Removal of attested status.
         /// </summary>
         Deattestation,
+
         /// <summary>
-        /// Validation of expenditure documents.
+        ///     Validation of expenditure documents.
         /// </summary>
         Validation,
+
         /// <summary>
-        /// Devalidation - removal of validated status.
+        ///     Devalidation - removal of validated status.
         /// </summary>
         Devalidation,
+
         /// <summary>
-        /// Kill: close this financial doc as not valid.
+        ///     Kill: close this financial doc as not valid.
         /// </summary>
         Kill
     }

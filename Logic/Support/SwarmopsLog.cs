@@ -5,7 +5,7 @@ namespace Swarmops.Logic.Support
 {
     public class SwarmopsLog
     {
-        public static SwarmopsLogEntry CreateEntry (Person person, IXmlPayload logEntry)
+        public static SwarmopsLogEntry CreateEntry(Person person, IXmlPayload logEntry)
         {
             string logEntryClass = logEntry.GetType().ToString();
 

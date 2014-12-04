@@ -8,17 +8,13 @@ using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
-/// Summary description for ControlV5Base
+///     Summary description for ControlV5Base
 /// </summary>
 public class ControlV5Base : System.Web.UI.UserControl
 {
-    public ControlV5Base()
-    {
-    }
-
     public Authority _authority = null;
-    public Person _currentUser = null;
     public Organization _currentOrganization = null;
+    public Person _currentUser = null;
 
     protected override void OnLoad(EventArgs e)
     {
@@ -33,18 +29,18 @@ public class ControlV5Base : System.Web.UI.UserControl
 
         currentUserId = Convert.ToInt32(userIdentityString);
         currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-        _currentUser = Person.FromIdentity(currentUserId);
-        _authority = _currentUser.GetAuthority();
+        this._currentUser = Person.FromIdentity(currentUserId);
+        this._authority = this._currentUser.GetAuthority();
         try
         {
-            _currentOrganization = Organization.FromIdentity(currentOrganizationId);
+            this._currentOrganization = Organization.FromIdentity(currentOrganizationId);
         }
         catch (ArgumentException)
         {
             if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
             {
                 // It's possible this organization was deleted. Log on to Sandbox instead.
-                _currentOrganization = Organization.Sandbox;
+                this._currentOrganization = Organization.Sandbox;
             }
         }
 

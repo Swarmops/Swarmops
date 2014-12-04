@@ -15,7 +15,7 @@ namespace Swarmops.Logic.Communications
     {
         private static ServiceCredential credential; // credentials cache
         private static DateTime lastLoad = DateTime.MinValue;
-        private static object locker = new object();
+        private static readonly object locker = new object();
 
         private static ServiceCredential Credential
         {
@@ -27,10 +27,12 @@ namespace Swarmops.Logic.Communications
                     {
                         lastLoad = DateTime.Now;
                         String serviceName = Persistence.Key["SMSService"];
-                        BasicExternalCredential basicCredential = SwarmDb.GetDatabaseForReading().GetExternalCredential(serviceName);
+                        BasicExternalCredential basicCredential =
+                            SwarmDb.GetDatabaseForReading().GetExternalCredential(serviceName);
                         Encoding enc = Encoding.GetEncoding(28591); //ISO encoding (latin1)
 
-                        credential = new ServiceCredential(basicCredential.Login, basicCredential.Password, basicCredential.ServiceName, enc);
+                        credential = new ServiceCredential(basicCredential.Login, basicCredential.Password,
+                            basicCredential.ServiceName, enc);
                     }
 
                     return credential;
@@ -54,7 +56,7 @@ namespace Swarmops.Logic.Communications
             }
         }
 
-        internal static void Send (string phoneNumber, string message)
+        internal static void Send(string phoneNumber, string message)
         {
             switch (Credential.ServiceName)
             {
@@ -69,7 +71,7 @@ namespace Swarmops.Logic.Communications
             }
         }
 
-        public static bool CheckServiceStatus ()
+        public static bool CheckServiceStatus()
         {
             switch (Credential.ServiceName)
             {
@@ -77,35 +79,33 @@ namespace Swarmops.Logic.Communications
                     return true; //cant test this
 
                 case "SwedishKannel":
-                    {
-                        String username = Credential.Login;
-                        String password = Credential.Password;
-                        Encoding enc = Credential.Encoding;
-                        String url = "https://nurse.sanitarium.se/kannel/status";
-                        String result;
+                {
+                    String username = Credential.Login;
+                    String password = Credential.Password;
+                    Encoding enc = Credential.Encoding;
+                    String url = "https://nurse.sanitarium.se/kannel/status";
+                    String result;
 
-                        HttpWebResponse responseOut = null;
-                        try
-                        {
-                            result = HTTPSender.Send(url, enc, 1500, out responseOut);
-                            if (((int)responseOut.StatusCode).ToString().StartsWith("2"))
-                                return true;
-                            else
-                                return false;
-                        }
-                        catch (Exception)
-                        {
-                            return false;
-                        }
+                    HttpWebResponse responseOut = null;
+                    try
+                    {
+                        result = HTTPSender.Send(url, enc, 1500, out responseOut);
+                        if (((int) responseOut.StatusCode).ToString().StartsWith("2"))
+                            return true;
+                        return false;
                     }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+                }
                 default:
                     throw new Exception("Error on SMS transmit. Unknown SMS service: " + Credential.ServiceName);
             }
         }
 
-        public static void SendKannel (string phoneNumber, string message)
+        public static void SendKannel(string phoneNumber, string message)
         {
-
             //This is the swedish HOMEGROWN SMS sending mechanisma
             String encodedMessage = HttpUtility.UrlEncode(message, Credential.Encoding);
             String encodedPhone = NormalizePhoneNumber(phoneNumber, Credential.Encoding);
@@ -132,7 +132,7 @@ namespace Swarmops.Logic.Communications
             }
         }
 
-        internal static void SendMoSMS (string phone, string message)
+        internal static void SendMoSMS(string phone, string message)
         {
             // This is the SWEDISH sms transmission mechanism.
 
@@ -175,7 +175,7 @@ namespace Swarmops.Logic.Communications
         // A phone number should be in the format: 
         //   +<countrycode><phoneNumber without leading 0>
         // Also URL encode as the + is treated as a space if not encoded
-        internal static string NormalizePhoneNumber (string phoneNumber, Encoding enc)
+        internal static string NormalizePhoneNumber(string phoneNumber, Encoding enc)
         {
             phoneNumber = phoneNumber.Trim();
             if (phoneNumber.Length > 4 && !phoneNumber.StartsWith("+"))
@@ -199,7 +199,7 @@ namespace Swarmops.Logic.Communications
             return phoneNumber;
         }
 
-        public static string[] DeNormalizedPhoneNumber (string phoneNumber)
+        public static string[] DeNormalizedPhoneNumber(string phoneNumber)
         {
             string[] phoneNumbers = new string[3];
 
@@ -218,43 +218,41 @@ namespace Swarmops.Logic.Communications
             return phoneNumbers;
         }
 
-
         #region HTTP Sending Class
-
 
         private class HTTPSender : ICertificatePolicy
         {
-
-            public bool CheckValidationResult (ServicePoint sp, X509Certificate certificate, WebRequest request, int error)
+            public bool CheckValidationResult(ServicePoint sp, X509Certificate certificate, WebRequest request,
+                int error)
             {
                 return true;
             }
 
 
-            public static string Send (string http_payload, Encoding enc)
+            public static string Send(string http_payload, Encoding enc)
             {
                 HttpWebResponse responseOut = null;
                 return Send(http_payload, enc, -1, out responseOut);
             }
 
 
-            public static string Send (string http_payload, Encoding enc, int timeout, out HttpWebResponse responseOut)
+            public static string Send(string http_payload, Encoding enc, int timeout, out HttpWebResponse responseOut)
             {
                 // variabel för indata
-                var sb = new StringBuilder();
+                StringBuilder sb = new StringBuilder();
 
                 // buffer för inläsning
-                var buf = new byte[8092];
+                byte[] buf = new byte[8092];
 
 #pragma warning disable 618
                 // ServicePointManager.CertificatePolicy is obsoleted, but is the only thing that works on both windows and mono.
                 //Needed to avoid errors from homegrown SSL cert.
-                
+
                 ICertificatePolicy oldPolicy = ServicePointManager.CertificatePolicy;
                 ServicePointManager.CertificatePolicy = new HTTPSender();
 
                 // anropa websidan med aktuella data
-                var request = (HttpWebRequest)WebRequest.Create(http_payload);
+                HttpWebRequest request = (HttpWebRequest) WebRequest.Create(http_payload);
 
                 if (timeout > -1)
                 {
@@ -262,7 +260,7 @@ namespace Swarmops.Logic.Communications
                 }
 
                 // ta emot svarskoder
-                var response = (HttpWebResponse)request.GetResponse();
+                HttpWebResponse response = (HttpWebResponse) request.GetResponse();
                 responseOut = response;
                 ServicePointManager.CertificatePolicy = oldPolicy;
 #pragma warning restore 618
@@ -292,16 +290,17 @@ namespace Swarmops.Logic.Communications
         }
 
         #endregion
+
         #region Nested type: ServiceCredential
 
         internal class ServiceCredential
         {
+            internal readonly Encoding Encoding;
             internal readonly string Login;
             internal readonly string Password;
             internal readonly string ServiceName;
-            internal readonly Encoding Encoding;
 
-            internal ServiceCredential (string login, string password, string serviceName, Encoding enc)
+            internal ServiceCredential(string login, string password, string serviceName, Encoding enc)
             {
                 this.Login = login;
                 this.Password = password;

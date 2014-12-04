@@ -4,14 +4,14 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Logic.Communications
 {
     /// <summary>
-    /// Renders an OutboundComm for one specific type of comm and for the target person.
+    ///     Renders an OutboundComm for one specific type of comm and for the target person.
     /// </summary>
     public interface ICommsRenderer
     {
         RenderedComm RenderComm(Person person);
     }
 
-    public class RenderedComm: Dictionary<CommRenderPart,string>
+    public class RenderedComm : Dictionary<CommRenderPart, string>
     {
         // typeset for readability
     }

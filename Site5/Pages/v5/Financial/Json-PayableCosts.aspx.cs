@@ -11,11 +11,11 @@ namespace Swarmops.Frontend.Pages.Financial
         {
             // Access required is change access to financials
 
-            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Financials, AccessType.Write);
+            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Financials, AccessType.Write);
 
             // Get all payable items
 
-            Payouts payouts = Payouts.Construct(this.CurrentOrganization);
+            Payouts payouts = Payouts.Construct(CurrentOrganization);
 
             // Format as JSON and return
 
@@ -48,7 +48,9 @@ namespace Swarmops.Frontend.Pages.Financial
                     "<img id=\\\"IconApproval{7}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
                     "<img id=\\\"IconApproved{7}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />\"",
                     payout.ProtoIdentity,
-                    (payout.ExpectedTransactionDate <= today? Resources.Global.Global_ASAP: payout.ExpectedTransactionDate.ToShortDateString()),
+                    (payout.ExpectedTransactionDate <= today
+                        ? Resources.Global.Global_ASAP
+                        : payout.ExpectedTransactionDate.ToShortDateString()),
                     JsonSanitize(TryLocalize(payout.Recipient)),
                     JsonSanitize(payout.Bank),
                     JsonSanitize(payout.Account),
@@ -64,7 +66,5 @@ namespace Swarmops.Frontend.Pages.Financial
 
             return result.ToString();
         }
-
     }
-
 }

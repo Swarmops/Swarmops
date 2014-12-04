@@ -3,16 +3,23 @@ using System;
 namespace Swarmops.Basic.Types.Security
 {
     /// <summary>
-    /// Container of a person's authority within PirateWeb.
+    ///     Container of a person's authority within PirateWeb.
     /// </summary>
     public class BasicAuthority
     {
-        public BasicAuthority (int personId, BasicPersonRole[] systemPersonRoles, BasicPersonRole[] organizationPersonRoles,
-                               BasicPersonRole[] nodePersonRoles)
+        public readonly BasicPersonRole[] AllPersonRoles;
+        public readonly BasicPersonRole[] LocalPersonRoles;
+        public readonly BasicPersonRole[] OrganizationPersonRoles;
+        public readonly int PersonId;
+        public readonly BasicPersonRole[] SystemPersonRoles;
+
+        public BasicAuthority(int personId, BasicPersonRole[] systemPersonRoles,
+            BasicPersonRole[] organizationPersonRoles,
+            BasicPersonRole[] nodePersonRoles)
         {
             if (personId < 1)
             {
-                throw new ArgumentOutOfRangeException("PersonId cannot be " + personId.ToString());
+                throw new ArgumentOutOfRangeException("PersonId cannot be " + personId);
             }
 
             this.PersonId = personId;
@@ -35,23 +42,19 @@ namespace Swarmops.Basic.Types.Security
                 this.LocalPersonRoles = new BasicPersonRole[0];
             }
 
-            AllPersonRoles = new BasicPersonRole[SystemPersonRoles.Length + OrganizationPersonRoles.Length + LocalPersonRoles.Length];
+            this.AllPersonRoles =
+                new BasicPersonRole[
+                    this.SystemPersonRoles.Length + this.OrganizationPersonRoles.Length + this.LocalPersonRoles.Length];
 
-            if (SystemPersonRoles.Length > 0)
-                SystemPersonRoles.CopyTo(AllPersonRoles, 0);
+            if (this.SystemPersonRoles.Length > 0)
+                this.SystemPersonRoles.CopyTo(this.AllPersonRoles, 0);
 
-            if (OrganizationPersonRoles.Length > 0)
-                OrganizationPersonRoles.CopyTo(AllPersonRoles, SystemPersonRoles.Length);
+            if (this.OrganizationPersonRoles.Length > 0)
+                this.OrganizationPersonRoles.CopyTo(this.AllPersonRoles, this.SystemPersonRoles.Length);
 
-            if (LocalPersonRoles.Length > 0)
-                LocalPersonRoles.CopyTo(AllPersonRoles, SystemPersonRoles.Length + OrganizationPersonRoles.Length);
-
+            if (this.LocalPersonRoles.Length > 0)
+                this.LocalPersonRoles.CopyTo(this.AllPersonRoles,
+                    this.SystemPersonRoles.Length + this.OrganizationPersonRoles.Length);
         }
-
-        public readonly int PersonId;
-        public readonly BasicPersonRole[] SystemPersonRoles;
-        public readonly BasicPersonRole[] OrganizationPersonRoles;
-        public readonly BasicPersonRole[] LocalPersonRoles;
-        public readonly BasicPersonRole[] AllPersonRoles;
     }
 }

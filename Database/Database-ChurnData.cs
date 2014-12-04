@@ -13,10 +13,10 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string churnDataFieldSequence =
-            " PersonId,OrganizationId,Churn,DecisionDateTime,ExpiryDateTime " +  // 0-4
+            " PersonId,OrganizationId,Churn,DecisionDateTime,ExpiryDateTime " + // 0-4
             " FROM ChurnData ";
 
-        static private BasicChurnDataPoint ReadChurnDataPointFromDataReader (DbDataReader reader)
+        private static BasicChurnDataPoint ReadChurnDataPointFromDataReader(DbDataReader reader)
         {
             int personId = reader.GetInt32(0);
             int organizationId = reader.GetInt32(1);
@@ -25,15 +25,14 @@ namespace Swarmops.Database
             DateTime expiryDateTime = reader.GetDateTime(4);
 
             return new BasicChurnDataPoint(churn ? ChurnDataType.Churn : ChurnDataType.Retention, decisionDateTime,
-                                           expiryDateTime, personId, organizationId);
+                expiryDateTime, personId, organizationId);
         }
 
         #endregion
 
-
         #region Record reading code -- SELECT statements
 
-        public BasicChurnDataPoint[] GetChurnData (params object[] conditions)
+        public BasicChurnDataPoint[] GetChurnData(params object[] conditions)
         {
             List<BasicChurnDataPoint> result = new List<BasicChurnDataPoint>();
 
@@ -59,8 +58,8 @@ namespace Swarmops.Database
         }
 
 
-        public BasicChurnDataPoint[] GetChurnDataForOrganization (IHasIdentity organization, DateTime lowerDate,
-                                                                  DateTime upperDate)
+        public BasicChurnDataPoint[] GetChurnDataForOrganization(IHasIdentity organization, DateTime lowerDate,
+            DateTime upperDate)
         {
             // Since I don't trust SQL Server to make correct date comparisons, especially given
             // that the dates are passed in text in SQL, we get ALL the data and do
@@ -71,7 +70,7 @@ namespace Swarmops.Database
             DateTime maximumDateTime = upperDate.Date.AddDays(1);
 
             List<BasicChurnDataPoint> result = new List<BasicChurnDataPoint>();
-            BasicChurnDataPoint[] rawData = this.GetChurnData(organization);
+            BasicChurnDataPoint[] rawData = GetChurnData(organization);
 
             foreach (BasicChurnDataPoint churnPoint in rawData)
             {
@@ -86,10 +85,9 @@ namespace Swarmops.Database
 
             return result.ToArray();
         }
-        
+
         #endregion
 
-        
         #region Record creation and manipulation code -- stored procedures
 
         public int LogChurnData(int personId, int organizationId, bool churn, DateTime expiryDateTime)
@@ -98,7 +96,7 @@ namespace Swarmops.Database
         }
 
         public int LogChurnData(int personId, int organizationId, bool churn, DateTime expiryDateTime,
-                                 DateTime decisionDateTime)
+            DateTime decisionDateTime)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {

@@ -3,15 +3,15 @@ using Swarmops.Basic.Enums;
 namespace Swarmops.Basic.Types.Financial
 {
     /// <summary>
-    /// This class encapsulates what a financial transaction was constructed from.
+    ///     This class encapsulates what a financial transaction was constructed from.
     /// </summary>
     public class BasicFinancialDependency
     {
-        public BasicFinancialDependency (int objectId, FinancialDependencyType dependencyType, int foreignId)
+        public BasicFinancialDependency(int objectId, FinancialDependencyType dependencyType, int foreignId)
         {
-            this.ObjectId = objectId;
-            this.DependencyType = dependencyType;
-            this.ForeignId = foreignId;
+            ObjectId = objectId;
+            DependencyType = dependencyType;
+            ForeignId = foreignId;
         }
 
         public int ObjectId { get; private set; }

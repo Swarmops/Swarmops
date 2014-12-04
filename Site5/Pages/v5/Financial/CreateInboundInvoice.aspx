@@ -110,6 +110,7 @@
 
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    <h2><asp:Label ID="BoxTitle" runat="server"/></h2>
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextSupplier" />&#8203;<br/>

@@ -5,21 +5,14 @@ using System.Web.Services;
 using Swarmops.Logic.Support;
 
 /// <summary>
-/// Summary description for FieldValidation
+///     Summary description for FieldValidation
 /// </summary>
 [WebService(Namespace = "http://tempuri.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 [System.Web.Script.Services.ScriptService]
-public class FieldValidation : System.Web.Services.WebService {
-
-    public FieldValidation () {
-
-        //Uncomment the following line if using designed components 
-        //InitializeComponent(); 
-    }
-
-
+public class FieldValidation : System.Web.Services.WebService
+{
     private CultureInfo GetUserCulture()
     {
         // Determine correct culture for parsing
@@ -40,7 +33,8 @@ public class FieldValidation : System.Web.Services.WebService {
         {
             // No, determine from browser
             string browserPreference = "en-GB";
-            if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length > 0)
+            if (HttpContext.Current.Request.UserLanguages != null &&
+                HttpContext.Current.Request.UserLanguages.Length > 0)
             {
                 browserPreference = HttpContext.Current.Request.UserLanguages[0];
                 preferredCulture = browserPreference;
@@ -63,7 +57,7 @@ public class FieldValidation : System.Web.Services.WebService {
 
 
     [WebMethod]
-    public bool IsAmountValid (string amount)
+    public bool IsAmountValid(string amount)
     {
         CultureInfo culture = GetUserCulture();
 
@@ -82,7 +76,7 @@ public class FieldValidation : System.Web.Services.WebService {
     }
 
     [WebMethod]
-    public bool AreDocumentsUploaded (string guidString)
+    public bool AreDocumentsUploaded(string guidString)
     {
         Documents documents = Documents.RecentFromDescription(guidString);
 

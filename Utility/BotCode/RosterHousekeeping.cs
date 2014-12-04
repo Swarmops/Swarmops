@@ -1,18 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
-using Swarmops.Basic;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
-using Swarmops.Database;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.DataObjects;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
-using Swarmops.Utility.Mail;
 
 namespace Swarmops.Utility.BotCode
 {
@@ -21,7 +16,7 @@ namespace Swarmops.Utility.BotCode
         // This function should basically not be called. Any time it is called means a security
         // risk.
 
-        public static string ExportMemberList (int organizationIdRoot, DateTime membersAfter, DateTime membersBefore)
+        public static string ExportMemberList(int organizationIdRoot, DateTime membersAfter, DateTime membersBefore)
         {
             Organizations orgs = Organization.FromIdentity(organizationIdRoot).GetTree();
             StringBuilder result = new StringBuilder();
@@ -61,8 +56,8 @@ namespace Swarmops.Utility.BotCode
                     {
                         csvResultList.Add(
                             String.Format("{0},{1},{2},{3:yyyy-MMM-dd},{4}",
-                                          person.Name, person.Street, person.PostalCodeAndCity, person.Birthdate,
-                                          person.IsMale ? "Male" : "Female"));
+                                person.Name, person.Street, person.PostalCodeAndCity, person.Birthdate,
+                                person.IsMale ? "Male" : "Female"));
                     }
 
                     string[] csvResults = csvResultList.ToArray();
@@ -80,7 +75,7 @@ namespace Swarmops.Utility.BotCode
 
         // This should run daily.
 
-        public static void RemindAllExpiries ()
+        public static void RemindAllExpiries()
         {
             throw new NotImplementedException();
 
@@ -97,7 +92,7 @@ namespace Swarmops.Utility.BotCode
 
 
         [Obsolete("Generalize and localize this function.", true)]
-        public static void RemindExpiriesMail ()
+        public static void RemindExpiriesMail()
         {
             // Get expiring
 
@@ -120,7 +115,7 @@ namespace Swarmops.Utility.BotCode
 
                 foreach (Membership membership in memberships)
                 {
-                    if (membership.OrganizationId % 7 != weekDayInteger)
+                    if (membership.OrganizationId%7 != weekDayInteger)
                     {
                         continue;
                     }
@@ -132,9 +127,9 @@ namespace Swarmops.Utility.BotCode
                         SendReminderMail(membership);
                         Console.Write(".");
                         PWLog.Write(PWLogItem.Person, membership.PersonId,
-                                        PWLogAction.MembershipRenewReminder,
-                                        "Mail was sent to " + membership.Person.Mail +
-                                        " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);
+                            PWLogAction.MembershipRenewReminder,
+                            "Mail was sent to " + membership.Person.Mail +
+                            " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);
 
                         Console.Write(".");
 
@@ -150,11 +145,11 @@ namespace Swarmops.Utility.BotCode
                     catch (Exception x)
                     {
                         string logText = "FAILED sending mail to " + membership.Person.Mail +
-                                        " for reminder of pending renewal in " + membership.Organization.Name + ".";
+                                         " for reminder of pending renewal in " + membership.Organization.Name + ".";
                         failedReminders.Add(membership.Person.Canonical);
                         PWLog.Write(PWLogItem.Person, membership.PersonId,
-                                        PWLogAction.MembershipRenewReminder,
-                                        logText, string.Empty);
+                            PWLogAction.MembershipRenewReminder,
+                            logText, string.Empty);
                         ExceptionMail.Send(new Exception(logText, x));
                     }
                 }
@@ -204,7 +199,7 @@ namespace Swarmops.Utility.BotCode
 
         // This should run daily, suggested right after midnight.
 
-        public static void ChurnExpiredMembers ()
+        public static void ChurnExpiredMembers()
         {
             Organizations organizations = Organizations.GetAll();
 
@@ -231,8 +226,9 @@ namespace Swarmops.Utility.BotCode
                         if (personRole.OrganizationId == membership.OrganizationId)
                         {
                             PWEvents.CreateEvent(EventSource.PirateBot, EventType.DeletedRole, person.Identity,
-                                               personRole.OrganizationId, personRole.GeographyId, person.Identity, (int)personRole.Type,
-                                               string.Empty);
+                                personRole.OrganizationId, personRole.GeographyId, person.Identity,
+                                (int) personRole.Type,
+                                string.Empty);
                             personRole.Delete();
                         }
                     }
@@ -257,7 +253,7 @@ namespace Swarmops.Utility.BotCode
                     {
                         foreach (Membership personMembership in membershipsToDelete)
                         {
-                            membershipsIds += "," + personMembership.MembershipId.ToString();
+                            membershipsIds += "," + personMembership.MembershipId;
                         }
                         membershipsIds = membershipsIds.Substring(1);
                         string expiredMemberships = "";
@@ -267,7 +263,6 @@ namespace Swarmops.Utility.BotCode
                             {
                                 expiredMemberships += ", " + personMembership.Organization.Name;
                             }
-
                         }
                         expiredMemberships += ".  ";
                         expiredmail.pMemberships = expiredMemberships.Substring(2).Trim();
@@ -275,9 +270,9 @@ namespace Swarmops.Utility.BotCode
 
                     //TODO: URL for renewal, recieving end of this is NOT yet implemented...
                     // intended to recreate the memberships in MID
-                    string tokenBase = person.PasswordHash + "-" + membership.Expires.Year.ToString();
+                    string tokenBase = person.PasswordHash + "-" + membership.Expires.Year;
                     string stdLink = "https://pirateweb.net/Pages/Public/SE/People/MemberRenew.aspx?MemberId=" +
-                                     person.Identity.ToString() +
+                                     person.Identity +
                                      "&SecHash=" + SHA1.Hash(tokenBase).Replace(" ", "").Substring(0, 8) +
                                      "&MID=" + membershipsIds;
 
@@ -304,7 +299,7 @@ namespace Swarmops.Utility.BotCode
         }
 
         [Obsolete("Generalize and localize this functionality.", true)]
-        internal static void RemindExpiries (DateTime dateExpiry)
+        internal static void RemindExpiries(DateTime dateExpiry)
         {
             Organizations orgs = Organizations.GetAll();
 
@@ -320,20 +315,21 @@ namespace Swarmops.Utility.BotCode
                     {
                         SendReminderMail(membership);
                         PWLog.Write(PWLogItem.Person, membership.PersonId,
-                                        PWLogAction.MembershipRenewReminder,
-                                        "Mail was sent to " + membership.Person.Mail +
-                                        " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);
+                            PWLogAction.MembershipRenewReminder,
+                            "Mail was sent to " + membership.Person.Mail +
+                            " reminding to renew membership in " + membership.Organization.Name + ".", string.Empty);
                     }
                     catch (Exception ex)
                     {
-                        ExceptionMail.Send(new Exception("Failed to create reminder mail for person " + membership.PersonId, ex));
+                        ExceptionMail.Send(
+                            new Exception("Failed to create reminder mail for person " + membership.PersonId, ex));
                     }
                 }
             }
         }
 
         [Obsolete("Requires move to plugin or similar, or at least rearch into a hook", true)]
-        internal static void RemindExpiriesSms (DateTime dateExpiry, string message)
+        internal static void RemindExpiriesSms(DateTime dateExpiry, string message)
         {
             throw new NotImplementedException();
 
@@ -375,7 +371,7 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        internal static bool SendReminderSms (Person person, string message)
+        internal static bool SendReminderSms(Person person, string message)
         {
             bool result = false;
 
@@ -384,7 +380,7 @@ namespace Swarmops.Utility.BotCode
                 person.SendPhoneMessage(message);
                 result = true;
             }
-            // ignore exceptions
+                // ignore exceptions
             catch (Exception)
             {
             }
@@ -393,7 +389,7 @@ namespace Swarmops.Utility.BotCode
         }
 
         [Obsolete("Generalize and localize this function.", true)]
-        public static void SendReminderMail (Membership membership)
+        public static void SendReminderMail(Membership membership)
         {
             /*
             // First, determine the organization template to use. Prioritize a long ancestry.
@@ -494,7 +490,7 @@ namespace Swarmops.Utility.BotCode
             }*/
         }
 
-        public static void TimeoutVolunteers ()
+        public static void TimeoutVolunteers()
         {
             Volunteers volunteers = Volunteers.GetOpen();
             DateTime threshold = DateTime.Today.AddDays(-30);
@@ -521,6 +517,5 @@ namespace Swarmops.Utility.BotCode
 
 
         // Deleted a ton of special cases here, see file history if you need to copy code for reminding people to change org
-
     }
 }

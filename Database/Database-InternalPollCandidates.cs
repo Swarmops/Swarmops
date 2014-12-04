@@ -11,7 +11,7 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string internalPollCandidateFieldSequence =
-            " InternalPollCandidateId,InternalPollId,PersonId,CandidacyStatement " +             // 0-3
+            " InternalPollCandidateId,InternalPollId,PersonId,CandidacyStatement " + // 0-3
             "FROM InternalPollCandidates ";
 
         private static BasicInternalPollCandidate ReadInternalPollCandidateFromDataReader(IDataRecord reader)
@@ -26,8 +26,6 @@ namespace Swarmops.Database
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
         public BasicInternalPollCandidate GetInternalPollCandidate(int internalPollCandidateId)
@@ -38,7 +36,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + internalPollCandidateFieldSequence + "WHERE InternalPollCandidateId=" + internalPollCandidateId + ";", connection);
+                        "SELECT" + internalPollCandidateFieldSequence + "WHERE InternalPollCandidateId=" +
+                        internalPollCandidateId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -47,15 +46,18 @@ namespace Swarmops.Database
                         return ReadInternalPollCandidateFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown Id: " + internalPollCandidateId.ToString());
+                    throw new ArgumentException("Unknown Id: " + internalPollCandidateId);
                 }
             }
         }
 
         /// <summary>
-        /// Gets salaries from the database.
+        ///     Gets salaries from the database.
         /// </summary>
-        /// <param name="conditions">An optional combination of a Person and/or Organization object and/or DatabaseCondition specifiers.</param>
+        /// <param name="conditions">
+        ///     An optional combination of a Person and/or Organization object and/or DatabaseCondition
+        ///     specifiers.
+        /// </param>
         /// <returns>A list of matching salaries.</returns>
         public BasicInternalPollCandidate[] GetInternalPollCandidates(params object[] conditions)
         {
@@ -67,7 +69,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + internalPollCandidateFieldSequence + ConstructWhereClause("InternalPollCandidates", conditions) + " ORDER BY SortOrder", connection);
+                        "SELECT" + internalPollCandidateFieldSequence +
+                        ConstructWhereClause("InternalPollCandidates", conditions) + " ORDER BY SortOrder", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -81,10 +84,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
@@ -137,8 +137,6 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
     }
 }

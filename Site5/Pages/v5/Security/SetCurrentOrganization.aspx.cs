@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Web;
 using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Pages.v5.Security
@@ -49,8 +45,8 @@ namespace Swarmops.Frontend.Pages.v5.Security
             }
 
             string userIdentityString = CurrentUser.Identity.ToString(CultureInfo.InvariantCulture) + "," +
-                                         suggestedOrganization.Identity.ToString(CultureInfo.InvariantCulture) + ",," +
-                                         logonFlags;
+                                        suggestedOrganization.Identity.ToString(CultureInfo.InvariantCulture) + ",," +
+                                        logonFlags;
 
             if (!string.IsNullOrEmpty(returnUrlString))
             {
@@ -61,7 +57,6 @@ namespace Swarmops.Frontend.Pages.v5.Security
             {
                 FormsAuthentication.RedirectFromLoginPage(userIdentityString, true);
             }
-
         }
     }
 }

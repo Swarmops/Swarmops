@@ -14,10 +14,11 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string personRoleFieldSequence =
-            " PeopleRoles.PersonRoleId, PersonRoleTypes.Name, PeopleRoles.PersonId, PeopleRoles.OrganizationId, PeopleRoles.GeographyId " + // 0-4
+            " PeopleRoles.PersonRoleId, PersonRoleTypes.Name, PeopleRoles.PersonId, PeopleRoles.OrganizationId, PeopleRoles.GeographyId " +
+            // 0-4
             " FROM PeopleRoles JOIN PersonRoleTypes ON (PeopleRoles.PersonRoleTypeId=PersonRoleTypes.PersonRoleTypeId) ";
 
-        static private BasicPersonRole ReadPersonRoleFromDataReader (DbDataReader reader)
+        private static BasicPersonRole ReadPersonRoleFromDataReader(DbDataReader reader)
         {
             int personRoleId = reader.GetInt32(0);
             string personRoleTypeName = reader.GetString(1);
@@ -32,8 +33,7 @@ namespace Swarmops.Database
 
         #endregion
 
-
-        public BasicAuthority GetPersonAuthority (IHasIdentity person)
+        public BasicAuthority GetPersonAuthority(IHasIdentity person)
         {
             List<BasicPersonRole> systemRoles = new List<BasicPersonRole>();
             List<BasicPersonRole> organizationRoles = new List<BasicPersonRole>();
@@ -43,8 +43,9 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + personRoleFieldSequence + ConstructWhereClause("PersonRoles", person),
-                                                 connection);
+                DbCommand command =
+                    GetDbCommand("SELECT " + personRoleFieldSequence + ConstructWhereClause("PersonRoles", person),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -68,23 +69,25 @@ namespace Swarmops.Database
 
                             default:
                                 throw new InvalidOperationException("Invalid RoleTypeId (" + newPersonRole.Type +
-                                                                    ") in database for PersonId " + person.Identity.ToString());
+                                                                    ") in database for PersonId " +
+                                                                    person.Identity.ToString());
                         }
                     }
 
                     return new BasicAuthority(person.Identity, systemRoles.ToArray(), organizationRoles.ToArray(),
-                                              localRoles.ToArray());
+                        localRoles.ToArray());
                 }
             }
         }
 
-        public BasicPersonRole GetRole (int roleId)
+        public BasicPersonRole GetRole(int roleId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + personRoleFieldSequence + " WHERE PersonRoleId=" + roleId, connection);
+                DbCommand command = GetDbCommand("SELECT " + personRoleFieldSequence + " WHERE PersonRoleId=" + roleId,
+                    connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -100,13 +103,14 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicPersonRole[] GetPeopleWithRoleType (RoleType r, int[] orgId, int[] geoId)   // TODO: Refactor to use ConstructWhereClause
+        public BasicPersonRole[] GetPeopleWithRoleType(RoleType r, int[] orgId, int[] geoId)
+            // TODO: Refactor to use ConstructWhereClause
         {
             List<BasicPersonRole> retlist = new List<BasicPersonRole>();
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
-                string cmd = "SELECT " + personRoleFieldSequence + " WHERE Name= '" + r.ToString()+"'";
+                string cmd = "SELECT " + personRoleFieldSequence + " WHERE Name= '" + r.ToString() + "'";
                 if (orgId.Length > 0)
                     cmd += " AND OrganzationId IN (" + JoinIds(orgId) + ")";
                 if (geoId.Length > 0)
@@ -132,22 +136,23 @@ namespace Swarmops.Database
         }
 
 
-        public BasicPersonRole[] GetRolesForOrganization (int organizationId)
+        public BasicPersonRole[] GetRolesForOrganization(int organizationId)
         {
             return GetRolesForOrganizationsGeographies(new int[] {organizationId}, new int[0]);
         }
 
-        public BasicPersonRole[] GetRolesForOrganizationGeography (int organizationId, int geographyId)
+        public BasicPersonRole[] GetRolesForOrganizationGeography(int organizationId, int geographyId)
         {
-            return GetRolesForOrganizationGeographies(organizationId, new int[] { geographyId });
+            return GetRolesForOrganizationGeographies(organizationId, new int[] {geographyId});
         }
 
-        public BasicPersonRole[] GetRolesForOrganizationGeographies (int organizationId, int[] geographyIds)
+        public BasicPersonRole[] GetRolesForOrganizationGeographies(int organizationId, int[] geographyIds)
         {
-            return GetRolesForOrganizationsGeographies(new int[] { organizationId }, geographyIds);
+            return GetRolesForOrganizationsGeographies(new int[] {organizationId}, geographyIds);
         }
 
-        public BasicPersonRole[] GetRolesForOrganizationsGeographies (int[] organizationIds, int[] geographyIds)  // TODO: Refactor to use ConstructWhereClause
+        public BasicPersonRole[] GetRolesForOrganizationsGeographies(int[] organizationIds, int[] geographyIds)
+            // TODO: Refactor to use ConstructWhereClause
         {
             List<BasicPersonRole> result = new List<BasicPersonRole>();
 
@@ -184,8 +189,7 @@ namespace Swarmops.Database
         }
 
 
-
-        public int CreateRole (int personId, RoleType roleType, int organizationId, int nodeId)
+        public int CreateRole(int personId, RoleType roleType, int organizationId, int nodeId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -203,7 +207,7 @@ namespace Swarmops.Database
             }
         }
 
-        public void DeleteRole (int roleId)
+        public void DeleteRole(int roleId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {

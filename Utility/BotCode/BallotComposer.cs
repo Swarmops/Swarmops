@@ -8,81 +8,81 @@ namespace Swarmops.Utility.BotCode
 {
     public class BallotComposer
     {
+        private Dictionary<int, bool> defectionsLookup;
+        private Dictionary<int, MeetingElectionCandidates> geographicLists;
+        private MeetingElectionCandidates rawElectionResult;
+
         /// <summary>
-        /// Minimum fraction of either gender. Can be in the range 0.0 -- 0.5.
+        ///     Minimum fraction of either gender. Can be in the range 0.0 -- 0.5.
         /// </summary>
         public double GenderQuota { get; set; }
 
         /// <summary>
-        /// Sets the output from the election count, i.e. the Schulze output.
+        ///     Sets the output from the election count, i.e. the Schulze output.
         /// </summary>
         public MeetingElectionCandidates RawElectionResult
         {
             set
             {
-                rawElectionResult = value;
-                geographicLists = new Dictionary<int, MeetingElectionCandidates>();
+                this.rawElectionResult = value;
+                this.geographicLists = new Dictionary<int, MeetingElectionCandidates>();
             }
         }
 
-        private MeetingElectionCandidates rawElectionResult;
-
         /// <summary>
-        /// Sets the geographies for which to construct ballots.
+        ///     Sets the geographies for which to construct ballots.
         /// </summary>
         public Geographies BallotGeographies { set; get; }
 
         /// <summary>
-        /// Gets the final result.
+        ///     Gets the final result.
         /// </summary>
         public Dictionary<int, MeetingElectionCandidates> FinalBallots { get; private set; }
 
-        private Dictionary<int, MeetingElectionCandidates> geographicLists;
         public MeetingElectionCandidates QuotedMasterList { get; private set; }
-
-        private Dictionary<int, bool> defectionsLookup;
 
 
         public int[] DefectedPersonIds
         {
             set
             {
-                defectionsLookup = new Dictionary<int, bool>();
+                this.defectionsLookup = new Dictionary<int, bool>();
                 foreach (int defectedPersonId in value)
                 {
-                    defectionsLookup[defectedPersonId] = true;
+                    this.defectionsLookup[defectedPersonId] = true;
                 }
             }
         }
-        
+
 
         public void ComposeBallots(BallotCompositionMethod method)
         {
             FinalBallots = new Dictionary<int, MeetingElectionCandidates>();
 
-            QuotedMasterList = GenerateBallot(rawElectionResult, -1, BallotCompositionMethod.Unmixed);
-            if (geographicLists.Count == 0)
+            QuotedMasterList = GenerateBallot(this.rawElectionResult, -1, BallotCompositionMethod.Unmixed);
+            if (this.geographicLists.Count == 0)
             {
                 GenerateGeographicLists();
             }
 
             foreach (Geography ballotGeography in BallotGeographies)
             {
-                FinalBallots[ballotGeography.Identity] = GenerateBallot(geographicLists[ballotGeography.Identity], 22,
-                                                                        method);
+                FinalBallots[ballotGeography.Identity] = GenerateBallot(this.geographicLists[ballotGeography.Identity],
+                    22,
+                    method);
             }
         }
 
 
-        public bool CandidatePersonIdDefected (int personId)
+        public bool CandidatePersonIdDefected(int personId)
         {
-            return defectionsLookup.ContainsKey(personId);
+            return this.defectionsLookup.ContainsKey(personId);
         }
 
 
         private void GenerateGeographicLists()
         {
-            foreach (MeetingElectionCandidate candidate in rawElectionResult)
+            foreach (MeetingElectionCandidate candidate in this.rawElectionResult)
             {
                 foreach (Geography ballotGeography in BallotGeographies)
                 {
@@ -90,20 +90,20 @@ namespace Swarmops.Utility.BotCode
                     {
                         // This candidate is under this particular geography, so add to list
 
-                        if (!geographicLists.ContainsKey(ballotGeography.Identity))
+                        if (!this.geographicLists.ContainsKey(ballotGeography.Identity))
                         {
-                            geographicLists[ballotGeography.Identity] = new MeetingElectionCandidates();
+                            this.geographicLists[ballotGeography.Identity] = new MeetingElectionCandidates();
                         }
 
-                        geographicLists[ballotGeography.Identity].Add(candidate);
+                        this.geographicLists[ballotGeography.Identity].Add(candidate);
                     }
                 }
             }
         }
 
 
-
-        private MeetingElectionCandidates GenerateBallot (MeetingElectionCandidates rawList, int candidateCount, BallotCompositionMethod method)
+        private MeetingElectionCandidates GenerateBallot(MeetingElectionCandidates rawList, int candidateCount,
+            BallotCompositionMethod method)
         {
             MeetingElectionCandidates result = new MeetingElectionCandidates();
             Dictionary<int, bool> takenCandidates = new Dictionary<int, bool>();
@@ -117,7 +117,7 @@ namespace Swarmops.Utility.BotCode
 
             for (int rawIndex = 0; rawIndex < rawList.Count; rawIndex++)
             {
-                if (this.CandidatePersonIdDefected(rawList [rawIndex].PersonId))
+                if (CandidatePersonIdDefected(rawList[rawIndex].PersonId))
                 {
                     takenCandidates[rawIndex] = true;
                 }
@@ -136,15 +136,15 @@ namespace Swarmops.Utility.BotCode
                 //
                 // Should we add a candidate from the raw list or from the quoted master list?
 
-                int masterPosition = GetMasterListPosition (result.Count + 1, method);
+                int masterPosition = GetMasterListPosition(result.Count + 1, method);
 
                 if (masterPosition > 0)
                 {
                     // We should add a candidate from the master list, no quota calculations, BUT ONLY if this candidate
                     // hasn't already been added from the district list.
 
-                    int rawListIndex = FindCandidateIndex (QuotedMasterList[masterPosition - 1].InternalPollCandidateId,
-                                                     rawList);
+                    int rawListIndex = FindCandidateIndex(QuotedMasterList[masterPosition - 1].InternalPollCandidateId,
+                        rawList);
 
                     if (rawListIndex >= 0 && !takenCandidates.ContainsKey(rawListIndex))
                     {
@@ -188,8 +188,8 @@ namespace Swarmops.Utility.BotCode
                 // fall outside of bounds (33% or 66%). If so, ignore the quota if it is not obtainable.
 
                 PersonGender oppositeGender = (candidateGender == PersonGender.Male
-                                                   ? PersonGender.Female
-                                                   : PersonGender.Male);
+                    ? PersonGender.Female
+                    : PersonGender.Male);
 
                 double alternateMaleQuota = CalculateListMaleQuota(result, oppositeGender);
 
@@ -214,18 +214,17 @@ namespace Swarmops.Utility.BotCode
 
                 result.Add(rawList[nextCandidateIndex]);
                 takenCandidates[nextCandidateIndex] = true;
-                
             }
 
             return result;
         }
 
 
-        private static int FindCandidateIndex (int candidateId, MeetingElectionCandidates list)
+        private static int FindCandidateIndex(int candidateId, MeetingElectionCandidates list)
         {
             for (int index = 0; index < list.Count; index++)
             {
-                if (list [index].Identity == candidateId)
+                if (list[index].Identity == candidateId)
                 {
                     return index;
                 }
@@ -233,9 +232,10 @@ namespace Swarmops.Utility.BotCode
 
             return -1;
         }
-        
 
-        private static double CalculateListMaleQuota (MeetingElectionCandidates candidates, PersonGender nextCandidateGender)
+
+        private static double CalculateListMaleQuota(MeetingElectionCandidates candidates,
+            PersonGender nextCandidateGender)
         {
             if (candidates.Count < 1)
             {
@@ -261,26 +261,26 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        private static int GetNextSpecificGenderCandidate (MeetingElectionCandidates candidates, 
-            Dictionary<int,bool> takenCandidates, PersonGender desiredGender)
+        private static int GetNextSpecificGenderCandidate(MeetingElectionCandidates candidates,
+            Dictionary<int, bool> takenCandidates, PersonGender desiredGender)
         {
             int index = 0;
 
-            while (takenCandidates.ContainsKey(index) || candidates [index].Person.Gender != desiredGender)
+            while (takenCandidates.ContainsKey(index) || candidates[index].Person.Gender != desiredGender)
             {
-                index++;  // potential out-of-range exception here, if there aren't enough candidates
+                index++; // potential out-of-range exception here, if there aren't enough candidates
             }
 
             return index;
         }
 
         /// <summary>
-        /// Gets the position of the master list to use for this position on the local list.
+        ///     Gets the position of the master list to use for this position on the local list.
         /// </summary>
         /// <param name="currentPosition">The position of a particular ballot.</param>
         /// <param name="method">The composition method to use.</param>
         /// <returns>The position to pick from the master list, or zero if not from the master list.</returns>
-        private int GetMasterListPosition (int currentPosition, BallotCompositionMethod method)
+        private int GetMasterListPosition(int currentPosition, BallotCompositionMethod method)
         {
             if (method == BallotCompositionMethod.Unmixed)
             {
@@ -309,7 +309,7 @@ namespace Swarmops.Utility.BotCode
 
             if (method == BallotCompositionMethod.InterleavedTenNational)
             {
-                if ((currentPosition % 2 == 1) && currentPosition < 20)
+                if ((currentPosition%2 == 1) && currentPosition < 20)
                 {
                     return (currentPosition/2 + 1);
                 }
@@ -319,29 +319,32 @@ namespace Swarmops.Utility.BotCode
 
             throw new NotImplementedException("Unimplemented method");
         }
-
     }
 
     public enum BallotCompositionMethod
     {
         /// <summary>
-        /// FxCop directive - unused
+        ///     FxCop directive - unused
         /// </summary>
         Unknown = 0,
+
         /// <summary>
-        /// The national top ten names are the top ten on all geographic ballots.
+        ///     The national top ten names are the top ten on all geographic ballots.
         /// </summary>
         TopTenNational,
+
         /// <summary>
-        /// The national top five names are the top ten on all geographic ballots.
+        ///     The national top five names are the top ten on all geographic ballots.
         /// </summary>
         TopFiveNational,
+
         /// <summary>
-        /// Odd positions 1..19 are the national top ten names on all geographic ballots.
+        ///     Odd positions 1..19 are the national top ten names on all geographic ballots.
         /// </summary>
         InterleavedTenNational,
+
         /// <summary>
-        /// No top national names; only names from this district.
+        ///     No top national names; only names from this district.
         /// </summary>
         Unmixed
     }

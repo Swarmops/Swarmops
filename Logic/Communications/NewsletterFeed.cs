@@ -20,17 +20,17 @@ namespace Swarmops.Logic.Communications
 
         #region Creation and Construction
 
-        private NewsletterFeed (BasicNewsletterFeed basic)
+        private NewsletterFeed(BasicNewsletterFeed basic)
             : base(basic)
         {
         }
 
-        public static NewsletterFeed FromIdentity (int identity)
+        public static NewsletterFeed FromIdentity(int identity)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetNewsletterFeed((int)identity));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetNewsletterFeed(identity));
         }
 
-        public static NewsletterFeed FromBasic (BasicNewsletterFeed basic)
+        public static NewsletterFeed FromBasic(BasicNewsletterFeed basic)
         {
             return new NewsletterFeed(basic);
         }

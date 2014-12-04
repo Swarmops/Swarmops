@@ -2,31 +2,31 @@ using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Swarm
 {
-    public class OfficerChain: People
+    public class OfficerChain : People
     {
-        private OfficerChain (People original, int organizationId)
+        private readonly int organizationId;
+
+        private OfficerChain(People original, int organizationId)
         {
-            this.InsertRange(0, original);
+            InsertRange(0, original);
             this.organizationId = organizationId;
         }
-        
 
-        public new static OfficerChain FromOrganizationAndGeography (Organization org, Geography geo)
+
+        public new static OfficerChain FromOrganizationAndGeography(Organization org, Geography geo)
         {
             int[] concernedPeopleId = Roles.GetAllUpwardRoles(org.Identity, geo.Identity);
-            People concernedPeople = People.FromIdentities(concernedPeopleId);
+            People concernedPeople = FromIdentities(concernedPeopleId);
 
             return new OfficerChain(concernedPeople, org.Identity);
         }
 
-        public void SendNotice (string subject, string body)
+        public void SendNotice(string subject, string body)
         {
-            foreach(Person person in this)
+            foreach (Person person in this)
             {
                 person.SendOfficerNotice(subject, body, this.organizationId);
             }
         }
-
-        private readonly int organizationId;
     }
 }

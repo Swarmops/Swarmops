@@ -8,18 +8,18 @@ namespace Swarmops.Logic.Cache
 {
     public class GeographyCache
     {
-        static private DateTime lastRefresh;
-        static private object loadCacheLock = new object();
-        static public bool loadCache = true;
-        static private Dictionary<int, List<BasicGeography>> __geographyCache = null;
-        static readonly int cacheLifeSpanMinutes = 2;
+        private static DateTime lastRefresh;
+        private static object loadCacheLock = new object();
+        public static bool loadCache = true;
+        private static Dictionary<int, List<BasicGeography>> __geographyCache = null;
+        private static readonly int cacheLifeSpanMinutes = 2;
 
-        static GeographyCache ()
+        static GeographyCache()
         {
             lastRefresh = DateTime.MinValue;
         }
 
-        static private Dictionary<int, List<BasicGeography>> GetHashedGeographies ()
+        private static Dictionary<int, List<BasicGeography>> GetHashedGeographies()
         {
             lock (loadCacheLock)
             {
@@ -34,15 +34,15 @@ namespace Swarmops.Logic.Cache
         }
 
 
-        static public Geography FromCache (int geographyId)
+        public static Geography FromCache(int geographyId)
         {
             lock (loadCacheLock)
             {
-                    return Geography.FromBasic(GeographyCache.GetGeography(geographyId));
+                return Geography.FromBasic(GetGeography(geographyId));
             }
         }
 
-        static public BasicGeography[] GetAllGeographies ()
+        public static BasicGeography[] GetAllGeographies()
         {
             lock (loadCacheLock)
             {
@@ -58,27 +58,27 @@ namespace Swarmops.Logic.Cache
         }
 
 
-        static public BasicGeography[] GetGeographies (int[] ids)
+        public static BasicGeography[] GetGeographies(int[] ids)
         {
             List<BasicGeography> result = new List<BasicGeography>();
             lock (loadCacheLock)
             {
                 foreach (int i in ids)
                 {
-                    result.Add(GeographyCache.GetGeography(i) );
+                    result.Add(GetGeography(i));
                 }
                 return result.ToArray();
             }
         }
 
 
-        static public BasicGeography[] GetGeographyChildren (int parentGeographyId)
+        public static BasicGeography[] GetGeographyChildren(int parentGeographyId)
         {
             List<BasicGeography> result = new List<BasicGeography>();
             lock (loadCacheLock)
             {
                 // Prime the cache
-                BasicGeography partent = GeographyCache.GetGeography(parentGeographyId);
+                BasicGeography partent = GetGeography(parentGeographyId);
 
                 //TODO: Possible to miss a child geography here if it was added since last cache reload.
 
@@ -93,25 +93,24 @@ namespace Swarmops.Logic.Cache
         }
 
 
-        public static int CountGeographyChildren (int parentGeographyId)
+        public static int CountGeographyChildren(int parentGeographyId)
         {
             lock (loadCacheLock)
             {
                 // Prime the cache
-                BasicGeography partent = GeographyCache.GetGeography(parentGeographyId);
+                BasicGeography partent = GetGeography(parentGeographyId);
 
                 return GetHashedGeographies()[parentGeographyId].Count - 1;
             }
         }
 
 
-
-        static public BasicGeography[] GetGeographyLine (int leafGeographyId)
+        public static BasicGeography[] GetGeographyLine(int leafGeographyId)
         {
             List<BasicGeography> result = new List<BasicGeography>();
 
 
-            BasicGeography currentNode = GeographyCache.GetGeography(leafGeographyId);
+            BasicGeography currentNode = GetGeography(leafGeographyId);
 
             // This iterates until the zero-parentid root node is found
 
@@ -121,7 +120,7 @@ namespace Swarmops.Logic.Cache
 
                 if (currentNode.ParentGeographyId != 0)
                 {
-                    currentNode = GeographyCache.GetGeography(currentNode.ParentGeographyId);
+                    currentNode = GetGeography(currentNode.ParentGeographyId);
                 }
                 else
                 {
@@ -135,13 +134,13 @@ namespace Swarmops.Logic.Cache
         }
 
 
-        static public BasicGeography[] GetGeographyTree ()
+        public static BasicGeography[] GetGeographyTree()
         {
             return GetGeographyTree(1);
         }
 
 
-        public static Dictionary<int, BasicGeography> GetGeographyHashtable (int startGeographyId)
+        public static Dictionary<int, BasicGeography> GetGeographyHashtable(int startGeographyId)
         {
             BasicGeography[] nodes = GetGeographyTree(startGeographyId);
 
@@ -155,7 +154,7 @@ namespace Swarmops.Logic.Cache
             return result;
         }
 
-        static public BasicGeography[] GetGeographyTree (int startGeographyId)
+        public static BasicGeography[] GetGeographyTree(int startGeographyId)
         {
             Dictionary<int, List<BasicGeography>> nodes = GetHashedGeographies();
 
@@ -163,10 +162,9 @@ namespace Swarmops.Logic.Cache
         }
 
 
-
-
-        static private BasicGeography[] GetGeographyTree (Dictionary<int, List<BasicGeography>> geographies, int startNodeId,
-                                                   int generation)
+        private static BasicGeography[] GetGeographyTree(Dictionary<int, List<BasicGeography>> geographies,
+            int startNodeId,
+            int generation)
         {
             List<BasicGeography> result = new List<BasicGeography>();
 
@@ -202,7 +200,7 @@ namespace Swarmops.Logic.Cache
         }
 
 
-        static public BasicGeography GetGeography (int geographyId)
+        public static BasicGeography GetGeography(int geographyId)
         {
             lock (loadCacheLock)
             {
@@ -224,7 +222,7 @@ namespace Swarmops.Logic.Cache
         }
 
 
-        static public BasicGeography GetGeographyByName (string geographyName)
+        public static BasicGeography GetGeographyByName(string geographyName)
         {
             string cmpName = geographyName.ToLower().Trim();
             Dictionary<int, List<BasicGeography>> hashedGeographies = GetHashedGeographies();
@@ -238,7 +236,7 @@ namespace Swarmops.Logic.Cache
         }
 
 
-        static public void SetGeographyName (int geographyId, string name)
+        public static void SetGeographyName(int geographyId, string name)
         {
             SwarmDb.GetDatabaseForWriting().SetGeographyName(geographyId, name);
             BasicGeography geo = SwarmDb.GetDatabaseForReading().GetGeography(geographyId);
@@ -258,6 +256,5 @@ namespace Swarmops.Logic.Cache
                     return SwarmDb.GetDatabaseForReading().GetGeographyIdsFromLevel(countryId, level);
                 }
         ************************/
-
     }
 }

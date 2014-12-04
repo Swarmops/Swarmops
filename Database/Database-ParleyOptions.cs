@@ -8,11 +8,10 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string parleyOptionFieldSequence =
-            " ParleyId, ParleyOptionId, Description, AmountCents, Active" +  // 0-4
+            " ParleyId, ParleyOptionId, Description, AmountCents, Active" + // 0-4
             " FROM ParleyOptions ";
 
         private static BasicParleyOption ReadParleyOptionFromDataReader(IDataRecord reader)
@@ -26,12 +25,9 @@ namespace Swarmops.Database
             return new BasicParleyOption(parleyOptionId, parleyId, description, amountCents, active);
         }
 
-
         #endregion
 
-
         #region Database record reading -- SELECT clauses
-
 
         public BasicParleyOption GetParleyOption(int parleyOptionId)
         {
@@ -41,8 +37,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + parleyOptionFieldSequence +
-                    "WHERE ParleyOptionId=" + parleyOptionId.ToString(),
-                                 connection);
+                                 "WHERE ParleyOptionId=" + parleyOptionId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -51,10 +47,9 @@ namespace Swarmops.Database
                         return ReadParleyOptionFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such ParleyOptionId:" + parleyOptionId.ToString());
+                    throw new ArgumentException("No such ParleyOptionId:" + parleyOptionId);
                 }
             }
-
         }
 
 
@@ -68,7 +63,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + parleyOptionFieldSequence + ConstructWhereClause("ParleyOptions", conditions), connection);
+                        "SELECT" + parleyOptionFieldSequence + ConstructWhereClause("ParleyOptions", conditions),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -82,12 +78,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
         #region Creation and manipulation -- stored procedures
-
 
         public int CreateParleyOption(int parleyId, string description, Int64 amountCents)
         {
@@ -123,7 +116,5 @@ namespace Swarmops.Database
         }
 
         #endregion
-
-
     }
 }

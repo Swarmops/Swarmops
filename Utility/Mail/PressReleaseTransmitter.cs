@@ -1,22 +1,23 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
+using System.Threading;
 using System.Web;
 using Swarmops.Basic;
 using Swarmops.Logic.Media;
 
 namespace Swarmops.Utility.Mail
 {
-
     /// <summary>
-    /// This class i deprecated. Pressreleases are sent using the Typed template mechanism.
+    ///     This class i deprecated. Pressreleases are sent using the Typed template mechanism.
     /// </summary>
     internal class PressReleaseTransmitter
     {
-        public static void Send (string title, bool sendToAll, MediaCategories categories, string mailText,
-                                 Reporters reporters)
+        public static void Send(string title, bool sendToAll, MediaCategories categories, string mailText,
+            Reporters reporters)
         {
             string directory = "content" + Path.DirectorySeparatorChar + "pressreleasetemplate-1";
 
@@ -24,7 +25,7 @@ namespace Swarmops.Utility.Mail
 
             using (
                 StreamReader reader = new StreamReader(directory + Path.DirectorySeparatorChar + "template.html",
-                                                       System.Text.Encoding.GetEncoding(1252)))
+                    Encoding.GetEncoding(1252)))
             {
                 htmlTemplate = reader.ReadToEnd();
             }
@@ -39,7 +40,7 @@ namespace Swarmops.Utility.Mail
 
             // assume Swedish
 
-            System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("sv-SE");
+            CultureInfo culture = new CultureInfo("sv-SE");
             string date = DateTime.Today.ToString("d MMMM yyyy", culture);
             string time = DateTime.Now.ToString("HH:mm");
 
@@ -105,8 +106,8 @@ namespace Swarmops.Utility.Mail
             // MemoryStream memStream = new MemoryStream();
 
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(htmlTemplate,
-                                                                                 new ContentType(
-                                                                                     MediaTypeNames.Text.Html));
+                new ContentType(
+                    MediaTypeNames.Text.Html));
             htmlView.TransferEncoding = TransferEncoding.Base64;
 
             /*
@@ -197,7 +198,7 @@ namespace Swarmops.Utility.Mail
                         Replace("%reportername%", HttpUtility.HtmlEncode(reporter.Name)).
                         Replace("%reporteremail%", HttpUtility.HtmlEncode(reporter.Email)).
                         Replace("%reportercategories%",
-                                HttpUtility.HtmlEncode(GetConcatenatedCategoryString(reporter.MediaCategories)));
+                            HttpUtility.HtmlEncode(GetConcatenatedCategoryString(reporter.MediaCategories)));
 
                     message.Body = individualBody;
                     message.BodyEncoding = Encoding.ASCII;
@@ -206,7 +207,7 @@ namespace Swarmops.Utility.Mail
                     // COMPENSATE FOR MONO BUG -- put logo online instead of attached
 
                     message.Body = message.Body.Replace("cid:pplogo" + newsletterIdentifier,
-                                                        "http://docs.piratpartiet.se/banners/newsletter-banner-pp-logo.png");
+                        "http://docs.piratpartiet.se/banners/newsletter-banner-pp-logo.png");
 
                     /*
                     Attachment attachment = new Attachment(directory + Path.DirectorySeparatorChar + "header-pp-logo.png", "image/png");
@@ -235,7 +236,7 @@ namespace Swarmops.Utility.Mail
 
                             // Otherwise, sleep for a while and try again.
 
-                            System.Threading.Thread.Sleep(1000);
+                            Thread.Sleep(1000);
                         }
                     }
 
@@ -248,12 +249,12 @@ namespace Swarmops.Utility.Mail
                     //Console.WriteLine("FAIL! <" + recipient.Email + ">");
                     ExceptionMail.Send(
                         new Exception("Error sending press release to " + reporter.Name + " <" + reporter.Email + ">:",
-                                      e),true);
+                            e), true);
                 }
             }
         }
 
-        private static string GetConcatenatedCategoryString (MediaCategories categories)
+        private static string GetConcatenatedCategoryString(MediaCategories categories)
         {
             string result = categories[0].Name;
 

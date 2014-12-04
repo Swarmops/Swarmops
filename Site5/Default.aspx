@@ -10,6 +10,7 @@
     <p>This notice will be replaced with a proper Dashboard when all the basic functions are in place. You can see functions appear as they are implemented in the menu.</p>
     <p>A <a href="http://tinyurl.com/swarmops-plans-2014">rough roadmap</a> says that basic financials are implemented first, then member registry functions, then communications, then responsibilities, then governance. For more on the specific roadmap, go to the <a href="http://scrum.pirateacademy.eu/p/SWARMOPS#project">SCRUM planning</a> for Swarmops.</p>
     <p>Look at the Swarmops code on <a href="https://github.com/Swarmops/Swarmops">Github</a> (and feel free to contribute)! Current line count: 157,661.</p>
+    <p>Use this form to <a href="https://github.com/Swarmops/Swarmops/issues/new">report bugs</a> for these early builds.</p>
 </asp:Content>
 
 

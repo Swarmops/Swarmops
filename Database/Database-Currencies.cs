@@ -11,7 +11,7 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string currencyFieldSequence =
-            " CurrencyId,Code,Name,Sign " +                                         // 0-3
+            " CurrencyId,Code,Name,Sign " + // 0-3
             "FROM Currencies ";
 
         private static BasicCurrency ReadCurrencyFromDataReader(IDataRecord reader)
@@ -25,8 +25,6 @@ namespace Swarmops.Database
         }
 
         #endregion
-
-
 
         #region Record reading - SELECT statements
 
@@ -47,7 +45,7 @@ namespace Swarmops.Database
                         return ReadCurrencyFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown Currency Id: " + currencyId.ToString());
+                    throw new ArgumentException("Unknown Currency Id: " + currencyId);
                 }
             }
         }
@@ -60,7 +58,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + currencyFieldSequence + "WHERE Code='" + currencyCode.Replace("'", "''").ToUpperInvariant() + "';", connection);
+                        "SELECT" + currencyFieldSequence + "WHERE Code='" +
+                        currencyCode.Replace("'", "''").ToUpperInvariant() + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -99,10 +98,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
@@ -126,7 +122,7 @@ namespace Swarmops.Database
         }
 
 
-        public int SetCurrencyExchangeRate (DateTime date, int currencyId, double eur100)
+        public int SetCurrencyExchangeRate(DateTime date, int currencyId, double eur100)
         {
             DateTime now = DateTime.Now;
 
@@ -144,6 +140,7 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
+
         /*
 
         public void SetSalaryNetPaid(int salaryId, bool netPaid)
@@ -223,8 +220,6 @@ namespace Swarmops.Database
         }
         */
 
-
         #endregion
-
     }
 }

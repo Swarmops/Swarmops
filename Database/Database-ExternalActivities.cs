@@ -12,38 +12,38 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string externalActivityFieldSequence =
-            " ExternalActivityId,OrganizationId,GeographyId,DateTime,ExternalActivityTypes.Name," +   // 0-4
+            " ExternalActivityId,OrganizationId,GeographyId,DateTime,ExternalActivityTypes.Name," + // 0-4
             " Description,CreatedDateTime,CreatedByPersonId,DupeOfActivityId" +
             " FROM ExternalActivities JOIN ExternalActivityTypes USING (ExternalActivityTypeId) ";
 
-        private static BasicExternalActivity ReadExternalActivityFromDataReader (IDataRecord reader)
+        private static BasicExternalActivity ReadExternalActivityFromDataReader(IDataRecord reader)
         {
             int externalActivityId = reader.GetInt32(0);
             int organizationId = reader.GetInt32(1);
             int geographyId = reader.GetInt32(2);
             DateTime dateTime = reader.GetDateTime(3);
-            ExternalActivityType type = (ExternalActivityType)Enum.Parse(typeof(ExternalActivityType), reader.GetString(4));
+            ExternalActivityType type =
+                (ExternalActivityType) Enum.Parse(typeof (ExternalActivityType), reader.GetString(4));
             string description = reader.GetString(5);
             DateTime createdDateTime = reader.GetDateTime(6);
             int createdByPersonId = reader.GetInt32(7);
             int dupeOfActivityId = reader.GetInt32(8);
 
-            return new BasicExternalActivity(externalActivityId, organizationId, geographyId, type, dateTime, description, createdByPersonId, createdDateTime, dupeOfActivityId);
+            return new BasicExternalActivity(externalActivityId, organizationId, geographyId, type, dateTime,
+                description, createdByPersonId, createdDateTime, dupeOfActivityId);
         }
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
         /// <summary>
-        /// Gets an external activity from the database.
+        ///     Gets an external activity from the database.
         /// </summary>
         /// <param name="externalActivityId">The external activity database identity.</param>
         /// <returns>The requested external activity.</returns>
         /// <exception cref="ArgumentException">Thrown if there is no such identity.</exception>
-        public BasicExternalActivity GetExternalActivity (int externalActivityId)
+        public BasicExternalActivity GetExternalActivity(int externalActivityId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -51,7 +51,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + externalActivityFieldSequence + "WHERE ExternalActivityId=" + externalActivityId + ";", connection);
+                        "SELECT" + externalActivityFieldSequence + "WHERE ExternalActivityId=" + externalActivityId +
+                        ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -60,27 +61,34 @@ namespace Swarmops.Database
                         return ReadExternalActivityFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown External Activity Id: " + externalActivityId.ToString());
+                    throw new ArgumentException("Unknown External Activity Id: " + externalActivityId);
                 }
             }
         }
 
         /// <summary>
-        /// Gets ExternalActivities from the database.
+        ///     Gets ExternalActivities from the database.
         /// </summary>
-        /// <param name="conditions">An optional combination of a Person and/or Organization object and/or DatabaseCondition specifiers.</param>
+        /// <param name="conditions">
+        ///     An optional combination of a Person and/or Organization object and/or DatabaseCondition
+        ///     specifiers.
+        /// </param>
         /// <returns>A list of matching ExternalActivities.</returns>
-        public BasicExternalActivity[] GetExternalActivities (params object[] conditions)
+        public BasicExternalActivity[] GetExternalActivities(params object[] conditions)
         {
             return GetExternalActivitiesSorted("", 0, conditions);
         }
 
         /// <summary>
-        /// Gets ExternalActivities from the database.
+        ///     Gets ExternalActivities from the database.
         /// </summary>
-        /// <param name="conditions">An optional combination of a Person and/or Organization object and/or DatabaseCondition specifiers.</param>
+        /// <param name="conditions">
+        ///     An optional combination of a Person and/or Organization object and/or DatabaseCondition
+        ///     specifiers.
+        /// </param>
         /// <returns>A list of matching ExternalActivities.</returns>
-        public BasicExternalActivity[] GetExternalActivitiesSorted (string sortOrder, int limitCount, params object[] conditions)
+        public BasicExternalActivity[] GetExternalActivitiesSorted(string sortOrder, int limitCount,
+            params object[] conditions)
         {
             List<BasicExternalActivity> result = new List<BasicExternalActivity>();
 
@@ -107,7 +115,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + externalActivityFieldSequence + ConstructWhereClause("ExternalActivities", conditions) + sort + limit, connection);
+                        "SELECT" + externalActivityFieldSequence +
+                        ConstructWhereClause("ExternalActivities", conditions) + sort + limit, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -121,14 +130,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateExternalActivity (int organizationId, int geographyId, DateTime dateTime, ExternalActivityType type, string description, int createdByPersonId)
+        public int CreateExternalActivity(int organizationId, int geographyId, DateTime dateTime,
+            ExternalActivityType type, string description, int createdByPersonId)
         {
             if (description.Length > 256)
             {
@@ -154,9 +161,6 @@ namespace Swarmops.Database
             }
         }
 
-
-
         #endregion
-
     }
 }

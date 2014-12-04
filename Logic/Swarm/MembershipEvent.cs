@@ -25,8 +25,8 @@ namespace Swarmops.Logic.Swarm
             this.Gender = PersonGender.Unknown;
         }
 
-        public MembershipEvent (DateTime dateTime, int personId, int organizationId, int geographyId, int birthYear,
-                                PersonGender gender, int deltaCount)
+        public MembershipEvent(DateTime dateTime, int personId, int organizationId, int geographyId, int birthYear,
+            PersonGender gender, int deltaCount)
         {
             this.DateTime = dateTime;
             this.PersonId = personId;

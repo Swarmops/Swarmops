@@ -11,12 +11,12 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string organizationFieldSequence =
-            " OrganizationId, ParentOrganizationId, Name, NameInternational, NameShort, " +  // 0-4
+            " OrganizationId, ParentOrganizationId, Name, NameInternational, NameShort, " + // 0-4
             "Domain, MailPrefix, AnchorGeographyId, AcceptsMembers, AutoAssignNewMembers, " + // 5-9
             "DefaultCountryId " + // 10
             "FROM Organizations ";
 
-        private static BasicOrganization ReadOrganizationFromDataReader (DbDataReader reader)
+        private static BasicOrganization ReadOrganizationFromDataReader(DbDataReader reader)
         {
             int organizationId = reader.GetInt32(0);
             int parentOrganizationId = reader.GetInt32(1);
@@ -31,17 +31,16 @@ namespace Swarmops.Database
             int defaultCountryId = reader.GetInt32(10);
 
             return new BasicOrganization(organizationId, parentOrganizationId, name, nameInternational, nameShort,
-                                         domain, mailPrefix, anchorGeographyId, acceptsMembers, autoAssignNewMembers,
-                                         defaultCountryId);
+                domain, mailPrefix, anchorGeographyId, acceptsMembers, autoAssignNewMembers,
+                defaultCountryId);
         }
-
 
         #endregion
 
-
-        public int CreateOrganization (int ParentOrganizationId, string NameInternational, string Name, string NameShort, string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers, bool AutoAssignNewMembers, int DefaultCountryId)
+        public int CreateOrganization(int ParentOrganizationId, string NameInternational, string Name, string NameShort,
+            string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers, bool AutoAssignNewMembers,
+            int DefaultCountryId)
         {
-
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
@@ -64,7 +63,7 @@ namespace Swarmops.Database
             }
         }
 
-        public void DeleteOrganization (int OrganizationId)
+        public void DeleteOrganization(int OrganizationId)
         {
             int deletedOrganizationsID = 98;
             BasicOrganization org = GetOrganization(OrganizationId);
@@ -81,12 +80,12 @@ namespace Swarmops.Database
                 org.AutoAssignNewMembers,
                 org.DefaultCountryId,
                 OrganizationId);
-
         }
 
-        public void UpdateOrganization (int ParentOrganizationId, string NameInternational, string Name, string NameShort, string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers, bool AutoAssignNewMembers, int DefaultCountryId, int OrganizationId)
+        public void UpdateOrganization(int ParentOrganizationId, string NameInternational, string Name, string NameShort,
+            string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers, bool AutoAssignNewMembers,
+            int DefaultCountryId, int OrganizationId)
         {
-
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
@@ -110,15 +109,16 @@ namespace Swarmops.Database
         }
 
 
-        public BasicOrganization GetOrganization (int organizationId)
+        public BasicOrganization GetOrganization(int organizationId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + organizationFieldSequence + " WHERE Active=1 AND OrganizationId=" + organizationId.ToString(),
-                                 connection);
+                    GetDbCommand(
+                        "SELECT " + organizationFieldSequence + " WHERE Active=1 AND OrganizationId=" + organizationId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -127,13 +127,13 @@ namespace Swarmops.Database
                         return ReadOrganizationFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such OrganizationId: " + organizationId.ToString());
+                    throw new ArgumentException("No such OrganizationId: " + organizationId);
                 }
             }
         }
 
 
-        public int[] GetOrganizationsIdsInGeographies (BasicGeography[] nodes)
+        public int[] GetOrganizationsIdsInGeographies(BasicGeography[] nodes)
         {
             if (nodes == null || nodes.Length == 0)
             {
@@ -151,7 +151,7 @@ namespace Swarmops.Database
         }
 
 
-        public int[] GetOrganizationIdsInGeographies (int[] nodeIds)
+        public int[] GetOrganizationIdsInGeographies(int[] nodeIds)
         {
             if (nodeIds == null || nodeIds.Length == 0)
             {
@@ -166,7 +166,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT OrganizationId FROM Organizations Where Active=1 AND AnchorGeographyId in (" + JoinIds(nodeIds) +
+                        "SELECT OrganizationId FROM Organizations Where Active=1 AND AnchorGeographyId in (" +
+                        JoinIds(nodeIds) +
                         ")", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -194,11 +195,10 @@ namespace Swarmops.Database
             int[] resultArray = new int[resultKeys.Keys.Count];
             resultKeys.Keys.CopyTo(resultArray, 0);
             return resultArray;
-
         }
 
 
-        public Dictionary<int, List<int>> GetAllOrganizationUptakeGeographyIds ()
+        public Dictionary<int, List<int>> GetAllOrganizationUptakeGeographyIds()
         {
             Dictionary<int, List<int>> result = new Dictionary<int, List<int>>();
 
@@ -228,11 +228,12 @@ namespace Swarmops.Database
 
             return result;
         }
-        public int[] GetOrganizationUptakeGeographyIds (int organizationId)
+
+        public int[] GetOrganizationUptakeGeographyIds(int organizationId)
         {
             List<int> result = new List<int>();
 
-            BasicOrganization basicOrg = this.GetOrganization(organizationId);
+            BasicOrganization basicOrg = GetOrganization(organizationId);
             result.Add(basicOrg.AnchorGeographyId);
 
             using (DbConnection connection = GetMySqlDbConnection())
@@ -261,7 +262,7 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        public BasicUptakeGeography[] GetOrganizationUptakeGeographies (int organizationId, bool others)
+        public BasicUptakeGeography[] GetOrganizationUptakeGeographies(int organizationId, bool others)
         {
             List<BasicUptakeGeography> result = new List<BasicUptakeGeography>();
             using (DbConnection connection = GetMySqlDbConnection())
@@ -270,7 +271,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                    "SELECT OrganizationId, GeographyId FROM OrganizationUptakeGeographies WHERE OrganizationId" + (others ? "<>" : "=") + organizationId,
+                        "SELECT OrganizationId, GeographyId FROM OrganizationUptakeGeographies WHERE OrganizationId" +
+                        (others ? "<>" : "=") + organizationId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -285,7 +287,7 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        public void AddOrgUptakeGeography (int OrganizationId, int GeographyId)
+        public void AddOrgUptakeGeography(int OrganizationId, int GeographyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -298,12 +300,10 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "p_GeographyId", GeographyId);
                 command.ExecuteNonQuery();
             }
-
         }
 
-        public void DeleteOrgUptakeGeography (int OrganizationId, int GeographyId)
+        public void DeleteOrgUptakeGeography(int OrganizationId, int GeographyId)
         {
-
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
@@ -315,10 +315,9 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "p_GeographyId", GeographyId);
                 command.ExecuteNonQuery();
             }
-
         }
 
-        public BasicOrganization[] GetAllOrganizations ()
+        public BasicOrganization[] GetAllOrganizations()
         {
             List<BasicOrganization> result = new List<BasicOrganization>();
 
@@ -326,7 +325,10 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + organizationFieldSequence + " WHERE Active=1 AND ParentOrganizationId >= 0", connection);
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT " + organizationFieldSequence + " WHERE Active=1 AND ParentOrganizationId >= 0",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -341,7 +343,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicOrganization[] GetOrganizations (int[] organizationIds)
+        public BasicOrganization[] GetOrganizations(int[] organizationIds)
         {
             if (organizationIds == null || organizationIds.Length == 0)
             {
@@ -356,7 +358,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + organizationFieldSequence + " WHERE Active=1 AND OrganizationId IN (" + JoinIds(organizationIds) +
+                        "SELECT " + organizationFieldSequence + " WHERE Active=1 AND OrganizationId IN (" +
+                        JoinIds(organizationIds) +
                         ")", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -372,7 +375,7 @@ namespace Swarmops.Database
         }
 
 
-        public Dictionary<int, List<BasicOrganization>> GetHashedOrganizations ()
+        public Dictionary<int, List<BasicOrganization>> GetHashedOrganizations()
         {
             // This generates a Dictionary <int,List<Organization>>.
             // 
@@ -413,7 +416,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicOrganization[] GetOrganizationTree (int startOrganizationId)
+        public BasicOrganization[] GetOrganizationTree(int startOrganizationId)
         {
             Dictionary<int, List<BasicOrganization>> organizations = GetHashedOrganizations();
 
@@ -421,7 +424,7 @@ namespace Swarmops.Database
         }
 
 
-        public Dictionary<int, BasicOrganization> GetOrganizationHashtable (int startOrganizationId)
+        public Dictionary<int, BasicOrganization> GetOrganizationHashtable(int startOrganizationId)
         {
             BasicOrganization[] organizations = GetOrganizationTree(startOrganizationId);
 
@@ -436,8 +439,8 @@ namespace Swarmops.Database
         }
 
 
-        private BasicOrganization[] GetOrganizationTree (Dictionary<int, List<BasicOrganization>> organizations,
-                                                         int startOrganizationId, int generation)
+        private BasicOrganization[] GetOrganizationTree(Dictionary<int, List<BasicOrganization>> organizations,
+            int startOrganizationId, int generation)
         {
             List<BasicOrganization> result = new List<BasicOrganization>();
 
@@ -453,7 +456,7 @@ namespace Swarmops.Database
                     // Add recursively
 
                     BasicOrganization[] children = GetOrganizationTree(organizations, organization.OrganizationId,
-                                                                       generation + 1);
+                        generation + 1);
 
                     if (children.Length > 0)
                     {
@@ -476,7 +479,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicOrganization[] GetOrganizationLine (int leafOrganizationId)
+        public BasicOrganization[] GetOrganizationLine(int leafOrganizationId)
         {
             List<BasicOrganization> result = new List<BasicOrganization>();
 

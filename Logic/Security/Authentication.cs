@@ -12,35 +12,17 @@ namespace Swarmops.Logic.Security
     {
         private const int EmailVerificationTicketLength = 8;
 
-        public class VerificationTicketTooOldException : Exception
-        {
-            internal VerificationTicketTooOldException (string msg) : base(msg)
-            {
-            }
-        }
-
-        public class VerificationTicketWrongException : Exception
-        {
-            internal VerificationTicketWrongException (string msg) : base(msg)
-            {
-            }
-        }
-
-        public class VerificationTicketLengthException : Exception
-        {
-            internal VerificationTicketLengthException (string msg) : base(msg)
-            {
-            }
-        }
-
         /// <summary>
-        /// Returns one authenticated user from login token and password.
+        ///     Returns one authenticated user from login token and password.
         /// </summary>
         /// <param name="loginToken">The login token provided.</param>
         /// <param name="password">The password provided.</param>
         /// <returns>Exactly one authenticated user, if successful.</returns>
-        /// <exception cref="UnauthorizedAccessException">This function will throw an UnauthorizedAccessException if the user cannot be authenticated using the supplied credentials.</exception>
-        public static Person Authenticate (string loginToken, string password)
+        /// <exception cref="UnauthorizedAccessException">
+        ///     This function will throw an UnauthorizedAccessException if the user
+        ///     cannot be authenticated using the supplied credentials.
+        /// </exception>
+        public static Person Authenticate(string loginToken, string password)
         {
             // Get the list of people that match the login token.
 
@@ -129,11 +111,11 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public static string CreateRandomPassword (int length)
+        public static string CreateRandomPassword(int length)
         {
             string allowedChars = "ABCDEFHJKMNPQRTUVWXYZ23456789";
-            var chars = new char[length];
-            var randomizer = new Random();
+            char[] chars = new char[length];
+            Random randomizer = new Random();
 
             for (int index = 0; index < length; index++)
             {
@@ -144,12 +126,12 @@ namespace Swarmops.Logic.Security
         }
 
         /// <summary>
-        /// Generates a SHA-1 password hash, salted with the person's unique id.
+        ///     Generates a SHA-1 password hash, salted with the person's unique id.
         /// </summary>
         /// <param name="person">The person to generate the hash for.</param>
         /// <param name="password">The password to hash.</param>
         /// <returns>A hash on the format "C8 5B A2 19 B5..." (29 characters).</returns>
-        internal static string GenerateNewPasswordHash (Person person, string password)
+        internal static string GenerateNewPasswordHash(Person person, string password)
         {
             if (person == null)
             {
@@ -164,9 +146,10 @@ namespace Swarmops.Logic.Security
             return GenerateNewPasswordHash(person.PersonId, password);
         }
 
-        internal static string GenerateNewPasswordHash (int personId, string password)
+        internal static string GenerateNewPasswordHash(int personId, string password)
         {
-            string salt = BCrypt.GenerateSalt(12); // Longer than standard (10) on purpose. Should be good through 2020 or so.
+            string salt = BCrypt.GenerateSalt(12);
+                // Longer than standard (10) on purpose. Should be good through 2020 or so.
             string passwordHash = BCrypt.HashPassword(personId.ToString(CultureInfo.InvariantCulture) + password, salt);
 
             return passwordHash;
@@ -185,12 +168,12 @@ namespace Swarmops.Logic.Security
         }
 
         /// <summary>
-        /// Generates password hashes for legacy passwords in system (that are no longer generated).
+        ///     Generates password hashes for legacy passwords in system (that are no longer generated).
         /// </summary>
         /// <param name="person">The person to generate a hash for.</param>
         /// <param name="password">The password to hash.</param>
         /// <returns>A list of previously valid password hashes.</returns>
-        private static string[] GenerateLegacyPasswordHashes (Person person, string password)
+        private static string[] GenerateLegacyPasswordHashes(Person person, string password)
         {
 // Calling Obsolete Property is valid here since we are generationg legacy hashes.
 #pragma warning disable 618
@@ -202,21 +185,20 @@ namespace Swarmops.Logic.Security
                     MD5.Hash(password + person.PersonalNumber + "Pirate")
                 };
             }
-            else
-                return new[]
-                {
-                    SHA1.Hash(password + person.Identity + "Pirate")
-                };
+            return new[]
+            {
+                SHA1.Hash(password + person.Identity + "Pirate")
+            };
 #pragma warning restore 618
         }
 
 
         /// <summary>
-        /// Get all person IDs that match a certain login token.
+        ///     Get all person IDs that match a certain login token.
         /// </summary>
         /// <param name="loginToken">The login token to look for.</param>
         /// <returns>An array of person IDs.</returns>
-        private static People GetPeopleByLoginToken (string loginToken)
+        private static People GetPeopleByLoginToken(string loginToken)
         {
             People result = new People();
 
@@ -249,8 +231,8 @@ namespace Swarmops.Logic.Security
             if (cleanedNumber.Length == 10)
             {
                 int[] personIds = database.GetObjectsByOptionalData(ObjectType.Person,
-                                                                    ObjectOptionalDataType.PersonalNumber,
-                                                                    cleanedNumber);
+                    ObjectOptionalDataType.PersonalNumber,
+                    cleanedNumber);
 
                 foreach (int personId in personIds)
                 {
@@ -273,7 +255,7 @@ namespace Swarmops.Logic.Security
             return result;
         }
 
-        public static Person RequestNewPasswordProcess (string eMail, string URL)
+        public static Person RequestNewPasswordProcess(string eMail, string URL)
         {
             int personID = 0;
             int.TryParse(eMail, out personID);
@@ -281,7 +263,8 @@ namespace Swarmops.Logic.Security
             People candidatePeople = null;
             if (personID == 0)
             {
-                BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
+                BasicPerson[] people =
+                    SwarmDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
                 candidatePeople = People.FromArray(people);
 
                 // if multiple people share same e-mail, suppose the last one registered is the one to change.
@@ -295,7 +278,7 @@ namespace Swarmops.Logic.Security
             }
             else
             {
-                candidatePeople = People.FromIdentities(new int[] {personID});
+                candidatePeople = People.FromIdentities(new[] {personID});
                 if (candidatePeople.Count > 0)
                 {
                     authenticatedUser = candidatePeople[0];
@@ -322,7 +305,7 @@ namespace Swarmops.Logic.Security
             if (candidatePeople.Count == 1)
             {
                 App_LocalResources.Authentication.Culture =
-                    System.Globalization.CultureInfo.GetCultureInfo(authenticatedUser.PreferredCulture);
+                    CultureInfo.GetCultureInfo(authenticatedUser.PreferredCulture);
 
                 mailbody = App_LocalResources.Authentication.RequestNewPassword_Mail_Preamble;
                 mailbody += App_LocalResources.Authentication.RequestNewPassword_Mail_ClickOneLink;
@@ -341,7 +324,7 @@ namespace Swarmops.Logic.Security
                     }
 
                     links += "\r\n\r\n";
-                    links += "#" + p.PersonId.ToString();
+                    links += "#" + p.PersonId;
                     links += " [Member of:";
                     Memberships msList = p.GetMemberships();
                     foreach (Membership ms in msList)
@@ -369,7 +352,7 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public static void RequestMembershipConfirmation (Person p, string URL)
+        public static void RequestMembershipConfirmation(Person p, string URL)
         {
             string passwordTicket = CreateRandomPassword(EmailVerificationTicketLength);
 
@@ -379,7 +362,7 @@ namespace Swarmops.Logic.Security
             string mailbody = "";
 
             App_LocalResources.Authentication.Culture =
-                System.Globalization.CultureInfo.GetCultureInfo(p.PreferredCulture);
+                CultureInfo.GetCultureInfo(p.PreferredCulture);
 
             mailbody = App_LocalResources.Authentication.MembershipConf_Mail_Preamble;
             mailbody += "\r\n" + String.Format(URL, p.PersonId, passwordTicket);
@@ -389,29 +372,29 @@ namespace Swarmops.Logic.Security
             p.SendNotice(App_LocalResources.Authentication.MembershipConf_Mail_Subject, mailbody, 1);
         }
 
-        public static void ValidateEmailVerificationTicket (Person pers, string token)
+        public static void ValidateEmailVerificationTicket(Person pers, string token)
         {
             if (token.Length != EmailVerificationTicketLength)
             {
                 throw new VerificationTicketLengthException("Wrong length of code, should be " +
-                                                            EmailVerificationTicketLength.ToString() + " characters.");
+                                                            EmailVerificationTicketLength + " characters.");
             }
             string storedTicket = pers.ResetPasswordTicket;
-            string[] storedParts = storedTicket.Split(new char[] {';'});
+            string[] storedParts = storedTicket.Split(new[] {';'});
             if (storedParts.Length < 2)
             {
                 throw new VerificationTicketWrongException("No such code exists.");
             }
             DateTime createdTime = DateTime.MinValue;
             DateTime.TryParseExact(storedParts[1].Trim(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture,
-                                   DateTimeStyles.None, out createdTime);
+                DateTimeStyles.None, out createdTime);
 
             if (DateTime.Now.Subtract(createdTime).TotalHours > 10)
             {
                 throw new VerificationTicketTooOldException(
                     "Verification code too old, it must be used within 10 hours.");
             }
-            else if (SHA1.Hash(token) == storedParts[0])
+            if (SHA1.Hash(token) == storedParts[0])
             {
                 // Yes, proceed to next step
             }
@@ -421,7 +404,7 @@ namespace Swarmops.Logic.Security
             }
         }
 
-        public static void SetPasswordByEmailVerificationTicket (Person pers, string token, string newPassword)
+        public static void SetPasswordByEmailVerificationTicket(Person pers, string token, string newPassword)
         {
             ValidateEmailVerificationTicket(pers, token);
 
@@ -429,30 +412,27 @@ namespace Swarmops.Logic.Security
             pers.ResetPasswordTicket = "";
         }
 
-        internal static bool ValidatePassword (Person person, string oldpassword)
+        internal static bool ValidatePassword(Person person, string oldpassword)
         {
             if (CheckPassword(person, oldpassword))
             {
                 return true;
             }
-            else
+            // If the most recent password hash mechanism fails, try legacy hashes
+
+            string[] legacyHashes = GenerateLegacyPasswordHashes(person, oldpassword);
+
+            foreach (string legacyHash in legacyHashes)
             {
-                // If the most recent password hash mechanism fails, try legacy hashes
-
-                string[] legacyHashes = GenerateLegacyPasswordHashes(person, oldpassword);
-
-                foreach (string legacyHash in legacyHashes)
+                if (legacyHash == person.PasswordHash)
                 {
-                    if (legacyHash == person.PasswordHash)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;
         }
 
-        public static Person RequestActivistSignoffProcess (string eMail, string URL)
+        public static Person RequestActivistSignoffProcess(string eMail, string URL)
         {
             int personID = 0;
             int.TryParse(eMail, out personID);
@@ -461,7 +441,8 @@ namespace Swarmops.Logic.Security
             bool personIsActivist = false;
             if (personID == 0)
             {
-                BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
+                BasicPerson[] people =
+                    SwarmDb.GetDatabaseForReading().GetPeopleFromEmailPattern(eMail.ToLower().Replace("%", "").Trim());
                 candidatePeople = People.FromArray(people);
 
                 // if multiple people share same e-mail, suppose the last one registered is the one to change.
@@ -475,7 +456,7 @@ namespace Swarmops.Logic.Security
             }
             else
             {
-                candidatePeople = People.FromIdentities(new int[] {personID});
+                candidatePeople = People.FromIdentities(new[] {personID});
                 if (candidatePeople.Count > 0)
                 {
                     authenticatedUser = candidatePeople[0];
@@ -490,7 +471,7 @@ namespace Swarmops.Logic.Security
 
             //TODO: Localize
             string mailbody = "";
-            App_LocalResources.Authentication.Culture = System.Globalization.CultureInfo.InvariantCulture;
+            App_LocalResources.Authentication.Culture = CultureInfo.InvariantCulture;
 
 
             if (candidatePeople.Count == 1 && candidatePeople[0].IsActivist)
@@ -505,7 +486,7 @@ namespace Swarmops.Logic.Security
 
                 string encodedPasswordTicket =
                     SHA1.Hash(p.Identity.ToString(CultureInfo.InvariantCulture)).Replace(" ", "").Substring(0, 4) +
-                    p.Identity.ToString();
+                    p.Identity;
 
                 mailbody = App_LocalResources.Authentication.RequestActivistSignoff_Mail_Preamble;
                 mailbody += App_LocalResources.Authentication.RequestActivistSignoff_Mail_ClickOneLink;
@@ -530,9 +511,9 @@ namespace Swarmops.Logic.Security
 
                         string encodedPasswordTicket =
                             GenerateNewPasswordHash(p, p.Identity.ToString()).Replace(" ", "").Substring(0, 4) +
-                            p.Identity.ToString();
+                            p.Identity;
                         links += "\r\n\r\n";
-                        links += "#" + p.PersonId.ToString();
+                        links += "#" + p.PersonId;
 
                         links += "\r\n" + String.Format(URL, encodedPasswordTicket);
                     }
@@ -548,19 +529,41 @@ namespace Swarmops.Logic.Security
             if (personIsActivist)
             {
                 authenticatedUser.SendNotice(App_LocalResources.Authentication.RequestActivistSignoff_Mail_Subject,
-                                             mailbody, 1);
+                    mailbody, 1);
             }
             return authenticatedUser;
         }
 
 
-        public static void ValidateRequestActivistSignoffProcess (Person p, string code)
+        public static void ValidateRequestActivistSignoffProcess(Person p, string code)
         {
             string encodedPasswordTicket =
-                SHA1.Hash(p.Identity.ToString(CultureInfo.InvariantCulture)).Replace(" ", "").Substring(0, 4) + p.Identity.ToString();
+                SHA1.Hash(p.Identity.ToString(CultureInfo.InvariantCulture)).Replace(" ", "").Substring(0, 4) +
+                p.Identity;
             if (code != encodedPasswordTicket)
             {
                 throw new VerificationTicketWrongException("No such code exists.");
+            }
+        }
+
+        public class VerificationTicketLengthException : Exception
+        {
+            internal VerificationTicketLengthException(string msg) : base(msg)
+            {
+            }
+        }
+
+        public class VerificationTicketTooOldException : Exception
+        {
+            internal VerificationTicketTooOldException(string msg) : base(msg)
+            {
+            }
+        }
+
+        public class VerificationTicketWrongException : Exception
+        {
+            internal VerificationTicketWrongException(string msg) : base(msg)
+            {
             }
         }
     }

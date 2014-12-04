@@ -6,14 +6,9 @@ namespace Swarmops.Logic.Financial
     {
         #region Construction and Creation
 
-        private FinancialAccountRow (BasicFinancialAccountRow basic)
-            : base (basic)
+        private FinancialAccountRow(BasicFinancialAccountRow basic)
+            : base(basic)
         {
-        }
-
-        public static FinancialAccountRow FromBasic (BasicFinancialAccountRow basic)
-        {
-            return new FinancialAccountRow (basic);
         }
 
         public decimal Amount
@@ -21,11 +16,16 @@ namespace Swarmops.Logic.Financial
             get { return AmountCents/100.0m; }
         }
 
+        public static FinancialAccountRow FromBasic(BasicFinancialAccountRow basic)
+        {
+            return new FinancialAccountRow(basic);
+        }
+
         #endregion
 
         public FinancialTransaction Transaction
         {
-            get { return FinancialTransaction.FromIdentity(this.FinancialTransactionId); }
+            get { return FinancialTransaction.FromIdentity(FinancialTransactionId); }
         }
     }
 }

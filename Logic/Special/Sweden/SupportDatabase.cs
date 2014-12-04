@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
@@ -11,20 +13,20 @@ namespace Swarmops.Logic.Special.Sweden
 {
     public class SupportDatabase
     {
-        private static MySqlConnection GetConnection ()
+        private static MySqlConnection GetConnection()
         {
             string connect = Persistence.Key["SupportDatabaseConnect"];
             return new MySqlConnection(connect);
         }
 
 
-        private static SupportCase[] GetUndeliverableCases ()
+        private static SupportCase[] GetUndeliverableCases()
         {
             return GetUndeliverableCases(0, 99999);
         }
 
 
-        public static SupportCaseDelta[] GetCaseDeltas (int fromDeltaId)
+        public static SupportCaseDelta[] GetCaseDeltas(int fromDeltaId)
         {
             List<SupportCaseDelta> result = new List<SupportCaseDelta>();
 
@@ -34,7 +36,8 @@ namespace Swarmops.Logic.Special.Sweden
 
                 MySqlCommand command =
                     new MySqlCommand(
-                        "SELECT ixBugEvent,ixBug,ixPerson,dt,sVerb,sChanges FROM BugEvent WHERE ixBugEvent > " + fromDeltaId.ToString() + "  ORDER BY ixBugEvent",
+                        "SELECT ixBugEvent,ixBug,ixPerson,dt,sVerb,sChanges FROM BugEvent WHERE ixBugEvent > " +
+                        fromDeltaId + "  ORDER BY ixBugEvent",
                         connection);
                 command.CommandTimeout = 600;
 
@@ -42,7 +45,7 @@ namespace Swarmops.Logic.Special.Sweden
                 {
                     while (reader.Read())
                     {
-                        if (!reader.IsDBNull(1))  // Safeguard -- some ixBug are NULL due to data corruption
+                        if (!reader.IsDBNull(1)) // Safeguard -- some ixBug are NULL due to data corruption
                         {
                             result.Add(ReadSupportCaseDeltaFromReader(reader));
                         }
@@ -54,8 +57,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-
-        public static SupportCase[] GetOpenCases ()
+        public static SupportCase[] GetOpenCases()
         {
             List<SupportCase> result = new List<SupportCase>();
 
@@ -75,7 +77,7 @@ namespace Swarmops.Logic.Special.Sweden
                         {
                             result.Add(ReadFullSupportCaseFromReader(reader));
                         }
-                        catch (System.Data.SqlTypes.SqlNullValueException)
+                        catch (SqlNullValueException)
                         {
                             Console.WriteLine("Exception on bug {0}", reader.GetInt32(0));
                         }
@@ -87,8 +89,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-
-        public static SupportCase GetCase (int supportCaseId)
+        public static SupportCase GetCase(int supportCaseId)
         {
             using (MySqlConnection connection = GetConnection())
             {
@@ -96,7 +97,7 @@ namespace Swarmops.Logic.Special.Sweden
 
                 MySqlCommand command =
                     new MySqlCommand(
-                        "SELECT ixBug,sTitle,sCustomerEmail FROM Bug WHERE ixBug=" + supportCaseId.ToString(), connection);
+                        "SELECT ixBug,sTitle,sCustomerEmail FROM Bug WHERE ixBug=" + supportCaseId, connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -105,14 +106,13 @@ namespace Swarmops.Logic.Special.Sweden
                         return ReadFullSupportCaseFromReader(reader);
                     }
 
-                    throw new ArgumentException("No such Support Case Id: " + supportCaseId.ToString());
+                    throw new ArgumentException("No such Support Case Id: " + supportCaseId);
                 }
             }
         }
 
 
-
-        private static SupportCase[] GetUndeliverableCases (int startBugId, int limit)
+        private static SupportCase[] GetUndeliverableCases(int startBugId, int limit)
         {
             List<SupportCase> result = new List<SupportCase>();
 
@@ -122,7 +122,8 @@ namespace Swarmops.Logic.Special.Sweden
 
                 MySqlCommand command =
                     new MySqlCommand(
-                        "SELECT ixBug,sTitle FROM Bug WHERE (sTitle LIKE 'Undeliver%' OR sTitle = 'failure notice' OR sTitle LIKE 'Mail delivery failed: returning message to sender' OR sTitle LIKE 'Delivery Status Notification%' OR sTitle LIKE 'Olevererbart:%' OR sTitle LIKE 'Returned mail:%') AND fOpen=1 and ixBug > " + startBugId.ToString() + " order by ixBug LIMIT " + limit.ToString(),
+                        "SELECT ixBug,sTitle FROM Bug WHERE (sTitle LIKE 'Undeliver%' OR sTitle = 'failure notice' OR sTitle LIKE 'Mail delivery failed: returning message to sender' OR sTitle LIKE 'Delivery Status Notification%' OR sTitle LIKE 'Olevererbart:%' OR sTitle LIKE 'Returned mail:%') AND fOpen=1 and ixBug > " +
+                        startBugId + " order by ixBug LIMIT " + limit,
                         connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -137,7 +138,7 @@ namespace Swarmops.Logic.Special.Sweden
             return result.ToArray();
         }
 
-        private static SupportCase[] GetDelayWarnings ()
+        private static SupportCase[] GetDelayWarnings()
         {
             List<SupportCase> result = new List<SupportCase>();
 
@@ -163,7 +164,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        public static bool IsCaseOpen (int caseId)
+        public static bool IsCaseOpen(int caseId)
         {
             using (MySqlConnection connection = GetConnection())
             {
@@ -171,7 +172,7 @@ namespace Swarmops.Logic.Special.Sweden
 
                 MySqlCommand command =
                     new MySqlCommand(
-                        "SELECT fOpen FROM Bug WHERE ixBug=" + caseId.ToString(),
+                        "SELECT fOpen FROM Bug WHERE ixBug=" + caseId,
                         connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -190,8 +191,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-
-        public static DateTime? GetCaseCloseDateTime (int caseId)
+        public static DateTime? GetCaseCloseDateTime(int caseId)
         {
             using (MySqlConnection connection = GetConnection())
             {
@@ -199,7 +199,7 @@ namespace Swarmops.Logic.Special.Sweden
 
                 MySqlCommand command =
                     new MySqlCommand(
-                        "SELECT dtClosed FROM Bug WHERE ixBug=" + caseId.ToString(),
+                        "SELECT dtClosed FROM Bug WHERE ixBug=" + caseId,
                         connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -218,8 +218,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-
-        public static void CloseDelayWarnings ()
+        public static void CloseDelayWarnings()
         {
             SupportCase[] cases = GetDelayWarnings();
 
@@ -230,7 +229,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        public static SupportEmail[] GetRecentOutgoingEmails (int sinceEventId)
+        public static SupportEmail[] GetRecentOutgoingEmails(int sinceEventId)
         {
             List<SupportEmail> result = new List<SupportEmail>();
 
@@ -256,7 +255,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        public static string GetFirstEventText (int bugId)
+        public static string GetFirstEventText(int bugId)
         {
             using (MySqlConnection connection = GetConnection())
             {
@@ -264,14 +263,14 @@ namespace Swarmops.Logic.Special.Sweden
 
                 MySqlCommand command =
                     new MySqlCommand(
-                        "SELECT s FROM BugEvent WHERE ixBug = " + bugId.ToString() + " ORDER BY ixBugEvent LIMIT 1",
+                        "SELECT s FROM BugEvent WHERE ixBug = " + bugId + " ORDER BY ixBugEvent LIMIT 1",
                         connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return (string)reader[0];
+                        return (string) reader[0];
                     }
 
                     return string.Empty;
@@ -280,7 +279,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        private static SupportEmail ReadSupportEmailFromReader (MySqlDataReader reader)
+        private static SupportEmail ReadSupportEmailFromReader(MySqlDataReader reader)
         {
             SupportEmail email = new SupportEmail();
 
@@ -297,7 +296,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        private static SupportCase ReadFullSupportCaseFromReader (MySqlDataReader reader)
+        private static SupportCase ReadFullSupportCaseFromReader(MySqlDataReader reader)
         {
             // ixBug,sTitle,sCustomerEmail
 
@@ -314,7 +313,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        private static SupportCase ReadSupportCaseFromReader (MySqlDataReader reader)
+        private static SupportCase ReadSupportCaseFromReader(MySqlDataReader reader)
         {
             // ixBug,sTitle
 
@@ -325,7 +324,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        private static SupportCaseDelta ReadSupportCaseDeltaFromReader (MySqlDataReader reader)
+        private static SupportCaseDelta ReadSupportCaseDeltaFromReader(MySqlDataReader reader)
         {
             // ixBug,sTitle
 
@@ -341,9 +340,7 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-
-
-        internal static void CloseWithComment (int bugId, string comment)
+        internal static void CloseWithComment(int bugId, string comment)
         {
             using (MySqlConnection connection = GetConnection())
             {
@@ -354,17 +351,17 @@ namespace Swarmops.Logic.Special.Sweden
                 command.Parameters.AddWithValue("comment", comment);
                 command.Parameters.AddWithValue("dateTime", DateTime.Now);
 
-                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandType = CommandType.StoredProcedure;
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public static void NotifyBouncingEmails ()
+        public static void NotifyBouncingEmails()
         {
             Regex regex = new Regex(@"(?<email>[a-z_0-9\.\+\-]+\@[a-z_0-9\.\-]+)",
-                                    RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
             string SMSBouncingEmail = ("" + Persistence.Key["SMSBouncingEmail"]).ToUpper().Trim();
             Regex reIsNo = new Regex(@"(NO)|(N)|(NEJ)", RegexOptions.IgnoreCase);
@@ -378,9 +375,9 @@ namespace Swarmops.Logic.Special.Sweden
             SupportCase[] cases = null;
             while (lastCaseHandled == 0 || (cases != null && cases.Length > 0))
             {
-                cases = SupportDatabase.GetUndeliverableCases(lastCaseHandled, 100);
+                cases = GetUndeliverableCases(lastCaseHandled, 100);
 
-                if (cases.Length == 0)  // very very important bugfix
+                if (cases.Length == 0) // very very important bugfix
                 {
                     break;
                 }
@@ -430,7 +427,7 @@ namespace Swarmops.Logic.Special.Sweden
                             if (people.Count > 2)
                             {
                                 CloseWithComment(@case.Identity,
-                                                 "Bounced message closed. More than one person matches the email address. Both marked unreachable.");
+                                    "Bounced message closed. More than one person matches the email address. Both marked unreachable.");
 
                                 foreach (Person person in people)
                                 {
@@ -441,7 +438,7 @@ namespace Swarmops.Logic.Special.Sweden
                             else if (people.Count < 1)
                             {
                                 CloseWithComment(@case.Identity,
-                                                 "Bounced message closed. No person in the database matches the email address.");
+                                    "Bounced message closed. No person in the database matches the email address.");
                             }
 
                             else
@@ -472,29 +469,29 @@ namespace Swarmops.Logic.Special.Sweden
                                             if (dontSendSMS)
                                             {
                                                 CloseWithComment(@case.Identity,
-                                                                 "The person at phone# " + person.Phone + ", " + person.Name +
-                                                                 " (#" + person.Identity.ToString() +
-                                                                 "), was not contacted due to that SMS notification is currently turned off. Bounced message closed.");
+                                                    "The person at phone# " + person.Phone + ", " + person.Name +
+                                                    " (#" + person.Identity +
+                                                    "), was not contacted due to that SMS notification is currently turned off. Bounced message closed.");
                                             }
                                             else
                                             {
                                                 try
                                                 {
-                                                    person.SendPhoneMessage("Piratpartiet: den mailadress vi har till dig (" +
-                                                                            person.Mail +
-                                                                            ") studsar. Kontakta medlemsservice@piratpartiet.se med ny adress.");
+                                                    person.SendPhoneMessage(
+                                                        "Piratpartiet: den mailadress vi har till dig (" +
+                                                        person.Mail +
+                                                        ") studsar. Kontakta medlemsservice@piratpartiet.se med ny adress.");
                                                     CloseWithComment(@case.Identity,
-                                                                        "Successfully notified the member at phone# " + person.Phone +
-                                                                        ", " + person.Name + " (#" + person.Identity.ToString() +
-                                                                        "), about the bounced email using an SMS message. Case closed.");
-
+                                                        "Successfully notified the member at phone# " + person.Phone +
+                                                        ", " + person.Name + " (#" + person.Identity +
+                                                        "), about the bounced email using an SMS message. Case closed.");
                                                 }
                                                 catch (Exception)
                                                 {
                                                     CloseWithComment(@case.Identity,
-                                                                     "The person at phone# " + person.Phone + ", " + person.Name +
-                                                                     " (#" + person.Identity.ToString() +
-                                                                     "), could not be reached over SMS. This member has been marked unreachable. Bounced message closed.");
+                                                        "The person at phone# " + person.Phone + ", " + person.Name +
+                                                        " (#" + person.Identity +
+                                                        "), could not be reached over SMS. This member has been marked unreachable. Bounced message closed.");
                                                     person.MailUnreachable = true;
                                                 }
                                             }
@@ -502,8 +499,8 @@ namespace Swarmops.Logic.Special.Sweden
                                         else
                                         {
                                             CloseWithComment(@case.Identity,
-                                                             person.Name + " (#" + person.Identity.ToString() +
-                                                             ") does not have a listed phone number. This member has been marked unreachable. Bounced message closed.");
+                                                person.Name + " (#" + person.Identity +
+                                                ") does not have a listed phone number. This member has been marked unreachable. Bounced message closed.");
                                             person.MailUnreachable = true;
                                         }
                                     }
@@ -511,15 +508,16 @@ namespace Swarmops.Logic.Special.Sweden
                                 else
                                 {
                                     CloseWithComment(@case.Identity,
-                                                     "The person at phone# " + person.Phone + ", " + person.Name + " (#" +
-                                                     person.Identity.ToString() +
-                                                     ") has no active memberships. Bounced message closed.");
+                                        "The person at phone# " + person.Phone + ", " + person.Name + " (#" +
+                                        person.Identity +
+                                        ") has no active memberships. Bounced message closed.");
                                 }
                             }
                         }
                         else
                         {
-                            CloseWithComment(@case.Identity, "Bounced message closed. No email address could be located.");
+                            CloseWithComment(@case.Identity,
+                                "Bounced message closed. No email address could be located.");
                         }
                     }
                     else

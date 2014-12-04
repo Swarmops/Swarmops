@@ -9,16 +9,16 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
-    [DataObject (true)]
+    [DataObject(true)]
 #endif
     public class RolesDataObject
     {
 #if !__MonoCS__
-        [DataObjectMethod (DataObjectMethodType.Select)]
+        [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        public static BasicPersonRole[] Select (int personId, RoleClass roleClass)
+        public static BasicPersonRole[] Select(int personId, RoleClass roleClass)
         {
-            BasicAuthority authority = Authorization.GetPersonAuthority (personId);
+            BasicAuthority authority = Authorization.GetPersonAuthority(personId);
 
             switch (roleClass)
             {
@@ -32,16 +32,16 @@ namespace Swarmops.Logic.DataObjects
                     return authority.LocalPersonRoles;
 
                 default:
-                    throw new InvalidOperationException ("Undefined RoleClass in RolesDataObject.Select: " + roleClass);
+                    throw new InvalidOperationException("Undefined RoleClass in RolesDataObject.Select: " + roleClass);
             }
         }
 
 #if !__MonoCS__
-        [DataObjectMethod (DataObjectMethodType.Select)]
+        [DataObjectMethod(DataObjectMethodType.Select)]
 #endif
-        public static BasicPersonRole[] Select (Person person, RoleClass roleClass)
+        public static BasicPersonRole[] Select(Person person, RoleClass roleClass)
         {
-            return Select (person.Identity, roleClass);
+            return Select(person.Identity, roleClass);
         }
     }
 }

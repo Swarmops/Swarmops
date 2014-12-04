@@ -13,7 +13,7 @@ namespace Swarmops.Database
             " FROM Cities ";
 
 
-        private static BasicCity ReadCityFromDataReader (DbDataReader reader)
+        private static BasicCity ReadCityFromDataReader(DbDataReader reader)
         {
             int cityId = reader.GetInt32(0);
             int countryId = reader.GetInt32(1);
@@ -24,7 +24,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicCity[] GetCitiesByCountryAndPostalCode (int countryId, string postalCode)
+        public BasicCity[] GetCitiesByCountryAndPostalCode(int countryId, string postalCode)
         {
             List<int> cityIdList = new List<int>();
 
@@ -35,7 +35,7 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand(
                         "SELECT CityId FROM PostalCodes WHERE PostalCode='" + postalCode.Replace("'", "''") +
-                        "' AND CountryId=" + countryId.ToString(), connection);
+                        "' AND CountryId=" + countryId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -48,11 +48,11 @@ namespace Swarmops.Database
 
             return GetCities(cityIdList.ToArray());
         }
-        
-        public Dictionary<string,BasicCity> GetCitiesPerPostalCode (int countryId)
+
+        public Dictionary<string, BasicCity> GetCitiesPerPostalCode(int countryId)
         {
             Dictionary<string, int> postalList = new Dictionary<string, int>();
-            Dictionary<int, bool> cityIdList = new Dictionary<int,bool>();
+            Dictionary<int, bool> cityIdList = new Dictionary<int, bool>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -60,34 +60,34 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT CityId, PostalCode FROM PostalCodes WHERE CountryId=" + countryId.ToString(), connection);
+                        "SELECT CityId, PostalCode FROM PostalCodes WHERE CountryId=" + countryId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                    postalList[ reader.GetString(1)]=reader.GetInt32(0);
-                    cityIdList[ reader.GetInt32(0)]=true;
+                        postalList[reader.GetString(1)] = reader.GetInt32(0);
+                        cityIdList[reader.GetInt32(0)] = true;
                     }
                 }
             }
-            
+
             int[] cityIds = new int[cityIdList.Count];
-            cityIdList.Keys.CopyTo(cityIds,0);
+            cityIdList.Keys.CopyTo(cityIds, 0);
             BasicCity[] cityArr = GetCities(cityIds);
-            Dictionary<int,BasicCity> cities= new Dictionary<int,BasicCity>();
-            foreach(BasicCity bc in cityArr)
-                cities[bc.Identity]=bc;
-            Dictionary<string,BasicCity> result=new Dictionary<string,BasicCity>();
-            foreach(string pcode in postalList.Keys)
+            Dictionary<int, BasicCity> cities = new Dictionary<int, BasicCity>();
+            foreach (BasicCity bc in cityArr)
+                cities[bc.Identity] = bc;
+            Dictionary<string, BasicCity> result = new Dictionary<string, BasicCity>();
+            foreach (string pcode in postalList.Keys)
             {
-                result[pcode]=cities[postalList[pcode]];
+                result[pcode] = cities[postalList[pcode]];
             }
             return result;
         }
 
 
-        public BasicCity[] GetCities (int[] cityIds)
+        public BasicCity[] GetCities(int[] cityIds)
         {
             if (cityIds.Length == 0)
             {
@@ -100,8 +100,9 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CityId in (" + JoinIds(cityIds) + ")",
-                                                 connection);
+                DbCommand command =
+                    GetDbCommand("SELECT " + cityFieldSequence + " WHERE CityId in (" + JoinIds(cityIds) + ")",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -116,14 +117,14 @@ namespace Swarmops.Database
         }
 
 
-        public BasicCity GetCity (int cityId)
+        public BasicCity GetCity(int cityId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CityId=" + cityId.ToString(),
-                                                 connection);
+                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CityId=" + cityId,
+                    connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -132,7 +133,7 @@ namespace Swarmops.Database
                         return ReadCityFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such CityId: " + cityId.ToString());
+                    throw new ArgumentException("No such CityId: " + cityId);
                 }
             }
         }
@@ -144,8 +145,11 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace("'", "''") + "' AND CountryId=" + countryId.ToString(),
-                                                 connection);
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace("'", "''") +
+                        "' AND CountryId=" + countryId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -165,8 +169,11 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace("'", "''") + "' AND CountryCode='" + countryCode.ToUpperInvariant().Replace("'", "''") + "'",
-                                                 connection);
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace("'", "''") +
+                        "' AND CountryCode='" + countryCode.ToUpperInvariant().Replace("'", "''") + "'",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -186,8 +193,11 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace("'", "''") + "' AND CountryId=" + countryId.ToString(),
-                                                 connection);
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT " + cityFieldSequence + " WHERE CityName='" + cityName.Replace("'", "''") +
+                        "' AND CountryId=" + countryId,
+                        connection);
                 List<BasicCity> resList = new List<BasicCity>();
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -213,8 +223,9 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + cityFieldSequence + " WHERE CountryId=" + country.CountryId.ToString(),
-                                                 connection);
+                DbCommand command = GetDbCommand(
+                    "SELECT " + cityFieldSequence + " WHERE CountryId=" + country.CountryId,
+                    connection);
                 List<BasicCity> result = new List<BasicCity>();
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -225,9 +236,9 @@ namespace Swarmops.Database
                         {
                             result.Add(ReadCityFromDataReader(reader));
                         }
-                        return result.ToArray();
                     }
-                    throw new ArgumentException("Cities not in place yet for country: " + countryCode);
+
+                    return result.ToArray();
                 }
             }
         }
@@ -267,7 +278,5 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
-
-
     }
 }

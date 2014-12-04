@@ -8,11 +8,11 @@ namespace Swarmops.Logic.Swarm
         {
         }
 
-        private ChurnDataPoint (BasicChurnDataPoint basic) : base(basic)
+        private ChurnDataPoint(BasicChurnDataPoint basic) : base(basic)
         {
         }
 
-        internal static ChurnDataPoint FromBasic (BasicChurnDataPoint basic)
+        internal static ChurnDataPoint FromBasic(BasicChurnDataPoint basic)
         {
             return new ChurnDataPoint(basic);
         }

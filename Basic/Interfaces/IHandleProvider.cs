@@ -5,11 +5,11 @@ namespace Swarmops.Basic.Interfaces
 {
     public interface IHandleProvider
     {
-        string GetPersonHandle (int personId);
-        void SetPersonHandle (int personId, string newHandle);
-        HandleErrorType CanSetHandle (string newHandle);
+        string GetPersonHandle(int personId);
+        void SetPersonHandle(int personId, string newHandle);
+        HandleErrorType CanSetHandle(string newHandle);
 
-        int GetPersonByHandle (string handle);
+        int GetPersonByHandle(string handle);
     }
 }
 
@@ -28,26 +28,24 @@ namespace Swarmops.Basic.Exceptions
 {
     public class HandleException : Exception
     {
-        public HandleException (string attemptedHandle, HandleErrorType errorType)
+        private readonly string attemptedHandle;
+        private readonly HandleErrorType errorType;
+
+        public HandleException(string attemptedHandle, HandleErrorType errorType)
         {
             this.attemptedHandle = attemptedHandle;
             this.errorType = errorType;
         }
 
+        public HandleErrorType ErrorType
+        {
+            get { return this.errorType; }
+        }
 
         public override string ToString()
         {
-            return "HandleException: Handle '" + attemptedHandle + "' caused '" + errorType.ToString() + "'.\r\n" +
+            return "HandleException: Handle '" + this.attemptedHandle + "' caused '" + this.errorType + "'.\r\n" +
                    base.ToString();
         }
-
-
-        public HandleErrorType ErrorType
-        {
-            get { return errorType; }
-        }
-
-        private readonly string attemptedHandle;
-        private readonly HandleErrorType errorType;
     }
 }

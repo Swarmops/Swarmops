@@ -3,34 +3,34 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicInboundInvoice: IHasIdentity
+    public class BasicInboundInvoice : IHasIdentity
     {
-        public BasicInboundInvoice (int inboundInvoiceId, int organizationId, DateTime createdDateTime,
+        public BasicInboundInvoice(int inboundInvoiceId, int organizationId, DateTime createdDateTime,
             DateTime dueDate, Int64 amountCents, int budgetId, string supplier, string
-            payToAccount, string ocr, string invoiceReference, bool attested, bool open,
+                payToAccount, string ocr, string invoiceReference, bool attested, bool open,
             DateTime closedDateTime, int closedByPersonId)
         {
-            this.InboundInvoiceId = inboundInvoiceId;
-            this.OrganizationId = organizationId;
-            this.CreatedDateTime = createdDateTime;
-            this.DueDate = dueDate;
-            this.AmountCents = amountCents;
-            this.BudgetId = budgetId;
-            this.Supplier = supplier;
-            this.PayToAccount = payToAccount;
-            this.Ocr = ocr;
-            this.InvoiceReference = invoiceReference;
-            this.Attested = attested;
-            this.Open = open;
-            this.ClosedDateTime = closedDateTime;
-            this.ClosedByPersonId = closedByPersonId;
+            InboundInvoiceId = inboundInvoiceId;
+            OrganizationId = organizationId;
+            CreatedDateTime = createdDateTime;
+            DueDate = dueDate;
+            AmountCents = amountCents;
+            BudgetId = budgetId;
+            Supplier = supplier;
+            PayToAccount = payToAccount;
+            Ocr = ocr;
+            InvoiceReference = invoiceReference;
+            Attested = attested;
+            Open = open;
+            ClosedDateTime = closedDateTime;
+            ClosedByPersonId = closedByPersonId;
         }
 
-        public BasicInboundInvoice (BasicInboundInvoice original)
-            : this (original.InboundInvoiceId, original.OrganizationId, original.CreatedDateTime,
-            original.DueDate, original.AmountCents, original.BudgetId, 
-            original.Supplier, original.PayToAccount, original.Ocr, original.InvoiceReference,
-            original.Attested, original.Open, original.ClosedDateTime, original.ClosedByPersonId)
+        public BasicInboundInvoice(BasicInboundInvoice original)
+            : this(original.InboundInvoiceId, original.OrganizationId, original.CreatedDateTime,
+                original.DueDate, original.AmountCents, original.BudgetId,
+                original.Supplier, original.PayToAccount, original.Ocr, original.InvoiceReference,
+                original.Attested, original.Open, original.ClosedDateTime, original.ClosedByPersonId)
         {
             // empty copy ctor
         }
@@ -54,7 +54,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.InboundInvoiceId; }
+            get { return InboundInvoiceId; }
         }
 
         #endregion

@@ -9,35 +9,31 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
-        
         private const string financialTransactionTagTypeFieldSequence =
-            " FinancialTransactionTagTypeId,ParentFinancialTransactionTagTypeId,FinancialTransactionTagSetId,Name,Active," +    // 0-4
-            "OpenedYear,ClosedYear " +                     // 5-6
+            " FinancialTransactionTagTypeId,ParentFinancialTransactionTagTypeId,FinancialTransactionTagSetId,Name,Active," +
+            // 0-4
+            "OpenedYear,ClosedYear " + // 5-6
             "FROM FinancialTransactionTagTypes ";
 
         private static BasicFinancialTransactionTagType ReadFinancialTransactionTagTypeFromDataReader(IDataRecord reader)
         {
-            int financialTransactionTagTypeId = reader.GetInt32 (0);
-            int parentFinancialTransactionTagTypeId = reader.GetInt32 (1);
-            int financialTransactionTagSetId = reader.GetInt32 (2);
-            string name = reader.GetString (3);
-            bool active = reader.GetBoolean (4);
-            int openedYear = reader.GetInt32 (5);
-            int closedYear = reader.GetInt32 (6);
+            int financialTransactionTagTypeId = reader.GetInt32(0);
+            int parentFinancialTransactionTagTypeId = reader.GetInt32(1);
+            int financialTransactionTagSetId = reader.GetInt32(2);
+            string name = reader.GetString(3);
+            bool active = reader.GetBoolean(4);
+            int openedYear = reader.GetInt32(5);
+            int closedYear = reader.GetInt32(6);
 
-            return new BasicFinancialTransactionTagType(financialTransactionTagTypeId, parentFinancialTransactionTagTypeId, financialTransactionTagSetId, name, active, openedYear, closedYear);
+            return new BasicFinancialTransactionTagType(financialTransactionTagTypeId,
+                parentFinancialTransactionTagTypeId, financialTransactionTagSetId, name, active, openedYear, closedYear);
         }
-
-        
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
-
 
         public BasicFinancialTransactionTagType GetFinancialTransactionTagType(int financialTransactionTagTypeId)
         {
@@ -46,7 +42,9 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + financialTransactionTagTypeFieldSequence + " WHERE FinancialTransactionTagTypeId=" + financialTransactionTagTypeId.ToString(CultureInfo.InvariantCulture), connection);
+                    GetDbCommand(
+                        "SELECT" + financialTransactionTagTypeFieldSequence + " WHERE FinancialTransactionTagTypeId=" +
+                        financialTransactionTagTypeId.ToString(CultureInfo.InvariantCulture), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -55,10 +53,10 @@ namespace Swarmops.Database
                         return ReadFinancialTransactionTagTypeFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such FinancialTransactionSetTypeId: " + financialTransactionTagTypeId.ToString(CultureInfo.InvariantCulture));
+                    throw new ArgumentException("No such FinancialTransactionSetTypeId: " +
+                                                financialTransactionTagTypeId.ToString(CultureInfo.InvariantCulture));
                 }
             }
-
         }
 
 
@@ -70,7 +68,10 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT" + financialTransactionTagTypeFieldSequence + ConstructWhereClause("FinancialTransactionTagTypes", conditions), connection);
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT" + financialTransactionTagTypeFieldSequence +
+                        ConstructWhereClause("FinancialTransactionTagTypes", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -85,7 +86,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicFinancialTransactionTagType[] GetFinancialTransactionTagTypesByIdentity (int[] identities)
+        public BasicFinancialTransactionTagType[] GetFinancialTransactionTagTypesByIdentity(int[] identities)
         {
             List<BasicFinancialTransactionTagType> result = new List<BasicFinancialTransactionTagType>();
 
@@ -93,7 +94,10 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT" + financialTransactionTagTypeFieldSequence + " WHERE FinancialTransactionTagTypeId IN (" + JoinIds(identities) + ")", connection);
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT" + financialTransactionTagTypeFieldSequence +
+                        " WHERE FinancialTransactionTagTypeId IN (" + JoinIds(identities) + ")", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -107,12 +111,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
         #region Creation and manipulation -- stored procedures
-
 
         /* TODO
          * 
@@ -204,9 +205,7 @@ namespace Swarmops.Database
             }
         }*/
 
-
         #endregion
-
 
         #region Dead template code
 
@@ -551,7 +550,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

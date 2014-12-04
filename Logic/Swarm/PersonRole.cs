@@ -13,16 +13,18 @@ namespace Swarmops.Logic.Swarm
         {
         }
 
-        private PersonRole (BasicPersonRole basic) : base(basic)
+        private PersonRole(BasicPersonRole basic) : base(basic)
         {
         }
 
-        public static PersonRole Create (int personId, RoleType roleType, int organizationId, int nodeId)
+        public static PersonRole Create(int personId, RoleType roleType, int organizationId, int nodeId)
         {
-            return FromIdentityAggressive(SwarmDb.GetDatabaseForWriting().CreateRole(personId, roleType, organizationId, nodeId));
+            return
+                FromIdentityAggressive(SwarmDb.GetDatabaseForWriting()
+                    .CreateRole(personId, roleType, organizationId, nodeId));
         }
 
-        public static PersonRole FromBasic (BasicPersonRole basic)
+        public static PersonRole FromBasic(BasicPersonRole basic)
         {
             return new PersonRole(basic);
         }
@@ -34,7 +36,8 @@ namespace Swarmops.Logic.Swarm
 
         public static PersonRole FromIdentityAggressive(int roleId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForWriting().GetRole(roleId)); // Note "for writing". Intentional. Queries master db and bypasses replication lag to avoid race conditions.
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetRole(roleId));
+                // Note "for writing". Intentional. Queries master db and bypasses replication lag to avoid race conditions.
         }
 
         #endregion

@@ -9,6 +9,7 @@ using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
 using Swarmops.Utility;
 using Swarmops.Utility.BotCode;
+using Swarmops.Utility.Communications;
 using Swarmops.Utility.Mail;
 
 namespace Swarmops.Backend
@@ -16,14 +17,16 @@ namespace Swarmops.Backend
     internal class Program
     {
         private const string heartbeatFile = "/var/run/swarmops/backend/heartbeat.txt";
+        private static bool testMode;
 
-        private static void Main (string[] args)
+        private static void Main(string[] args)
         {
             testMode = false;
 
-            UnixSignal[] killSignals = new UnixSignal[]{
-                new UnixSignal (Signum.SIGINT),
-                new UnixSignal (Signum.SIGTERM),
+            UnixSignal[] killSignals =
+            {
+                new UnixSignal(Signum.SIGINT),
+                new UnixSignal(Signum.SIGTERM)
             };
 
             BotLog.Write(0, "MainCycle", string.Empty);
@@ -33,7 +36,8 @@ namespace Swarmops.Backend
             if (args.Length > 0)
             {
                 if (args[0].ToLower() == "test")
-                {/*
+                {
+/*
                     BotLog.Write(0, "MainCycle", "Running self-tests");
                     HeartBeater.Instance.Beat(heartbeatFile);  // Otherwise Heartbeater.Beat() will fail in various places
 
@@ -77,7 +81,7 @@ namespace Swarmops.Backend
                             throw new NotImplementedException();
                         }
 
-                        ICommsTransmitter transmitter = new Swarmops.Utility.Communications.CommsTransmitterMail();
+                        ICommsTransmitter transmitter = new CommsTransmitterMail();
 
                         OutboundCommRecipients recipients = comm.Recipients;
                         PayloadEnvelope envelope = PayloadEnvelope.FromXml(comm.PayloadXml);
@@ -92,7 +96,7 @@ namespace Swarmops.Backend
                     Console.Write("\r\nAll tests run. Waiting for mail queue to flush... ");
                     while (!MailTransmitter.CanExit)
                     {
-                        System.Threading.Thread.Sleep(50);
+                        Thread.Sleep(50);
                     }
 
                     Console.WriteLine("done.");
@@ -110,12 +114,12 @@ namespace Swarmops.Backend
 
                     // -----------------------    INSERT ANY ONE-OFF ACTIONS HERE  -------------------------
 
-                    
+
                     Console.Write("\r\nWaiting for mail queue to flush... ");
 
                     while (!MailTransmitter.CanExit)
                     {
-                        System.Threading.Thread.Sleep(50);
+                        Thread.Sleep(50);
                     }
 
                     Console.WriteLine("done.");
@@ -168,7 +172,7 @@ namespace Swarmops.Backend
 
             bool exitFlag = false;
 
-            while (!exitFlag)  // exit is handled by signals handling at end of loop
+            while (!exitFlag) // exit is handled by signals handling at end of loop
             {
                 BotLog.Write(0, "MainCycle", "Cycle Start");
 
@@ -182,7 +186,7 @@ namespace Swarmops.Backend
                     {
                         OnEveryMinute();
 
-                        if (cycleStartTime.Minute % 5 == 0)
+                        if (cycleStartTime.Minute%5 == 0)
                         {
                             OnEveryFiveMinutes();
                         }
@@ -232,8 +236,9 @@ namespace Swarmops.Backend
                     if (signalIndex < 1000)
                     {
                         exitFlag = true;
-                        Console.WriteLine("Caught signal " + killSignals[signalIndex].Signum.ToString() + ", exiting");
-                        BotLog.Write(0, "MainCycle", "EXIT SIGNAL (" + killSignals[signalIndex].Signum.ToString() + "), terminating backend");
+                        Console.WriteLine("Caught signal " + killSignals[signalIndex].Signum + ", exiting");
+                        BotLog.Write(0, "MainCycle",
+                            "EXIT SIGNAL (" + killSignals[signalIndex].Signum + "), terminating backend");
                     }
                 }
             }
@@ -249,7 +254,7 @@ namespace Swarmops.Backend
             }*/
 
             BotLog.Write(0, "MainCycle", "...done");
-            
+
             /*
             while (!MailTransmitter.CanExit)
             {
@@ -259,7 +264,7 @@ namespace Swarmops.Backend
             Thread.Sleep(2000);
         }
 
-        private static void OnEveryTenSeconds ()
+        private static void OnEveryTenSeconds()
         {
             try
             {
@@ -301,7 +306,6 @@ namespace Swarmops.Backend
                 }
 
                 BotLog.Write(0, "MainCycle", "Ten-second exit");
-
             }
             catch (Exception e)
             {
@@ -309,7 +313,7 @@ namespace Swarmops.Backend
             }
         }
 
-        private static void OnEveryMinute ()
+        private static void OnEveryMinute()
         {
             try
             {
@@ -323,7 +327,7 @@ namespace Swarmops.Backend
         }
 
 
-        private static void OnEveryFiveMinutes ()
+        private static void OnEveryFiveMinutes()
         {
             try
             {
@@ -374,7 +378,6 @@ namespace Swarmops.Backend
 
                     // Added during election rush 2010: clean up support database every five minutes instead of once a day
                     // SMS notifications for bounces are turned off, so people don't get SMS notifications in the middle of the night
-
                 }
                 catch (Exception e)
                 {
@@ -428,7 +431,7 @@ namespace Swarmops.Backend
         }
 
 
-        private static void OnEveryHour ()
+        private static void OnEveryHour()
         {
             DateTime startTime = DateTime.Now;
             try
@@ -456,7 +459,7 @@ namespace Swarmops.Backend
                 {
                     TraceAndReport(e);
                 }
-                
+
                 try
                 {
                     /*TestTrace("Running PaymentGroupMapper.Run()...");
@@ -509,7 +512,7 @@ namespace Swarmops.Backend
             }
         }
 
-        private static void OnMidnight ()
+        private static void OnMidnight()
         {
             try
             {
@@ -604,7 +607,7 @@ namespace Swarmops.Backend
             }
         }
 
-        private static void OnNoon ()
+        private static void OnNoon()
         {
             BotLog.Write(0, "MainCycle", "Noon entry");
 
@@ -638,7 +641,6 @@ namespace Swarmops.Backend
                     SupportDatabase.NotifyBouncingEmails();
                     TestTrace(" done.\r\n");*/
                 }
-
             }
             catch (Exception e)
             {
@@ -671,7 +673,7 @@ namespace Swarmops.Backend
             BotLog.Write(0, "MainCycle", "Noon exit");
         }
 
-        private static void OnTuesdayMorning ()
+        private static void OnTuesdayMorning()
         {
             try
             {
@@ -689,22 +691,19 @@ namespace Swarmops.Backend
             }
         }
 
-        private static void TraceAndReport (Exception e)
+        private static void TraceAndReport(Exception e)
         {
             TestTrace(" failed.\r\n");
             ExceptionMail.Send(e, true);
             TestTrace(e.ToString());
         }
 
-        private static void TestTrace (string message)
+        private static void TestTrace(string message)
         {
             if (testMode)
             {
                 Console.Write(message);
             }
         }
-
-
-        private static bool testMode;
     }
 }

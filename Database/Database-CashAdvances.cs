@@ -8,13 +8,12 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string cashAdvanceFieldSequence =
-            " CashAdvanceId,OrganizationId,PersonId,CreatedDateTime,CreatedByPersonId," +            // 0-4
-            "FinancialAccountId,AmountCents,Description,Open,Attested," +                            // 5-9
-            "PaidOut,AttestedByPersonId,AttestedDateTime " +                                         // 10-12
+            " CashAdvanceId,OrganizationId,PersonId,CreatedDateTime,CreatedByPersonId," + // 0-4
+            "FinancialAccountId,AmountCents,Description,Open,Attested," + // 5-9
+            "PaidOut,AttestedByPersonId,AttestedDateTime " + // 10-12
             "FROM CashAdvances ";
 
         private static BasicCashAdvance ReadCashAdvanceFromDataReader(IDataRecord reader)
@@ -40,14 +39,11 @@ namespace Swarmops.Database
                 paidOut, attestedByPersonId, attestedDateTime);
         }
 
-
         #endregion
-
 
         #region Database record reading -- SELECT clauses
 
-
-        public BasicCashAdvance GetCashAdvance (int cashAdvanceId)
+        public BasicCashAdvance GetCashAdvance(int cashAdvanceId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -55,8 +51,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT " + cashAdvanceFieldSequence +
-                    " WHERE CashAdvanceId=" + cashAdvanceId.ToString(),
-                                 connection);
+                                 " WHERE CashAdvanceId=" + cashAdvanceId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -65,10 +61,9 @@ namespace Swarmops.Database
                         return ReadCashAdvanceFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such CashAdvanceId:" + cashAdvanceId.ToString());
+                    throw new ArgumentException("No such CashAdvanceId:" + cashAdvanceId);
                 }
             }
-
         }
 
 
@@ -82,7 +77,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + cashAdvanceFieldSequence + ConstructWhereClause("CashAdvances", conditions), connection);
+                        "SELECT " + cashAdvanceFieldSequence + ConstructWhereClause("CashAdvances", conditions),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -96,12 +92,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
         #region Creation and manipulation -- stored procedures
-
 
         public int CreateCashAdvance(int personId, int createdByPersonId, int organizationId, int financialAccountId,
             Int64 amountCents, string description)
@@ -183,9 +176,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Dead template code
 
@@ -530,7 +521,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

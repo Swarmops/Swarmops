@@ -790,4 +790,42 @@
   <data name="Sidebar_Help" xml:space="preserve">
     <value>Help</value>
   </data>
+  <data name="Title_Contributor_Corps" xml:space="preserve">
+    <value>Contributor Corps</value>
+  </data>
+  <data name="Title_Contributor_Female" xml:space="preserve">
+    <value>Contributor</value>
+  </data>
+  <data name="Title_Contributor_Generic" xml:space="preserve">
+    <value>Contributor</value>
+  </data>
+  <data name="Title_Contributor_Male" xml:space="preserve">
+    <value>Contributor</value>
+  </data>
+  <data name="Title_Contributor_Plural" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="Title_Contributor_Ship" xml:space="preserve">
+    <value>Contributorship</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Female</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Male</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_UnknownUndisclosed" xml:space="preserve">
+    <value>Unknown or Undisclosed</value>
+    <comment>Used for gender et al</comment>
+  </data>
+  <data name="Global_DateFormatShort" xml:space="preserve">
+    <value>MM/DD/YYYY</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  </data>
+  <data name="Global_LongDateFormatSansWeekday" xml:space="preserve">
+    <value>MMM d, YYYY</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
 </root>

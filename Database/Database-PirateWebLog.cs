@@ -8,10 +8,10 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public int CreatePWLogEntry (DateTime dateTimeUtc, int actingPersonId, string affectedItemType,
-                                               int affectedItemId, string actionType, string actionDescription,
-                                               string changedField, string valueBefore,
-                                               string valueAfter, string comment, string ipAddress)
+        public int CreatePWLogEntry(DateTime dateTimeUtc, int actingPersonId, string affectedItemType,
+            int affectedItemId, string actionType, string actionDescription,
+            string changedField, string valueBefore,
+            string valueAfter, string comment, string ipAddress)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -36,15 +36,17 @@ namespace Swarmops.Database
             }
         }
 
-        public DateTime CheckLogEntry (string affectedItemType, int affectedItemId, string actionType)
+        public DateTime CheckLogEntry(string affectedItemType, int affectedItemId, string actionType)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT Max(DateTimeUtc) from PWLog WHERE AffectedItemId=" + affectedItemId + " AND AffectedItemType='" + affectedItemType + "' AND ActionType='" + actionType + "'",
-                                 connection);
+                    GetDbCommand(
+                        "SELECT Max(DateTimeUtc) from PWLog WHERE AffectedItemId=" + affectedItemId +
+                        " AND AffectedItemType='" + affectedItemType + "' AND ActionType='" + actionType + "'",
+                        connection);
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
@@ -57,10 +59,10 @@ namespace Swarmops.Database
                     return DateTime.MinValue;
                 }
             }
-
         }
 
-        public BasicPWLog[] GetLatestEvents (string affectedItemType, DateTime beforeDate, int[] affectedIds, string[] actionTypes)
+        public BasicPWLog[] GetLatestEvents(string affectedItemType, DateTime beforeDate, int[] affectedIds,
+            string[] actionTypes)
         {
             List<BasicPWLog> retlist = new List<BasicPWLog>();
             using (DbConnection connection = GetMySqlDbConnection())
@@ -69,13 +71,13 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT DateTimeUtc, ActingPersonId, AffectedItemType, AffectedItemId, ActionType, " +
-                                    " ActionDescription, ChangedField, ValueBefore, ValueAfter, Comment, IpAddress " +
-                                    " FROM PWLog  " +
-                                    " WHERE AffectedItemId in (" + JoinIds(affectedIds) + " ) " +
-                                        " AND AffectedItemType='" + affectedItemType + "' " +
-                                        " AND ActionType in (" + JoinStrings(actionTypes)+ ")" +
-                                        " AND DateTimeUtc < " + MySqlDate(beforeDate) + " order by DateTimeUtc desc",
-                                 connection);
+                                 " ActionDescription, ChangedField, ValueBefore, ValueAfter, Comment, IpAddress " +
+                                 " FROM PWLog  " +
+                                 " WHERE AffectedItemId in (" + JoinIds(affectedIds) + " ) " +
+                                 " AND AffectedItemType='" + affectedItemType + "' " +
+                                 " AND ActionType in (" + JoinStrings(actionTypes) + ")" +
+                                 " AND DateTimeUtc < " + MySqlDate(beforeDate) + " order by DateTimeUtc desc",
+                        connection);
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -85,7 +87,7 @@ namespace Swarmops.Database
                         string affectedItemTyp = reader.GetString(2);
                         int affectedItemId = reader.GetInt32(3);
                         string actionType = reader.GetString(4);
-                        string actionDescription = reader.IsDBNull(5) ? "" :reader.GetString(5);
+                        string actionDescription = reader.IsDBNull(5) ? "" : reader.GetString(5);
                         string changedField = reader.IsDBNull(6) ? "" : reader.GetString(6);
                         string valueBefore = reader.IsDBNull(7) ? "" : reader.GetString(7);
                         string valueAfter = reader.IsDBNull(8) ? "" : reader.GetString(8);
@@ -93,21 +95,20 @@ namespace Swarmops.Database
                         string ipAddress = reader.IsDBNull(10) ? "" : reader.GetString(10);
 
                         retlist.Add(new BasicPWLog(dateTimeUtc,
-                                                    actingPersonId,
-                                                    affectedItemType,
-                                                    affectedItemId,
-                                                    actionType,
-                                                    actionDescription,
-                                                    changedField,
-                                                    valueBefore,
-                                                    valueAfter,
-                                                    comment,
-                                                    ipAddress));
+                            actingPersonId,
+                            affectedItemType,
+                            affectedItemId,
+                            actionType,
+                            actionDescription,
+                            changedField,
+                            valueBefore,
+                            valueAfter,
+                            comment,
+                            ipAddress));
                     }
                 }
             }
             return retlist.ToArray();
         }
-
     }
 }

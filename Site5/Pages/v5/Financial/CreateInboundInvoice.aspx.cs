@@ -9,6 +9,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 {
     public partial class CreateInboundInvoice : PageV5Base
     {
+        private int[] _tagSetIds;
+
         protected void Page_Init(object sender, EventArgs e)
         {
             string tagSetIdsString = Request["ctl00$PlaceHolderMain$HiddenTagSetIdentifiers"];
@@ -17,16 +19,16 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (String.IsNullOrEmpty(tagSetIdsString))
             {
-                _tagSetIds = FinancialTransactionTagSets.ForOrganization(this.CurrentOrganization).Identities;
+                this._tagSetIds = FinancialTransactionTagSets.ForOrganization(CurrentOrganization).Identities;
             }
             else
             {
                 string[] tagSetIdStrings = tagSetIdsString.Split(',');
-                _tagSetIds = new int[tagSetIdStrings.Length];
+                this._tagSetIds = new int[tagSetIdStrings.Length];
 
                 for (int index = 0; index < tagSetIdStrings.Length; index++)
                 {
-                    _tagSetIds[index] = Int32.Parse(tagSetIdStrings[index]);
+                    this._tagSetIds[index] = Int32.Parse(tagSetIdStrings[index]);
                 }
             }
 
@@ -35,16 +37,16 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             List<TagSetDataSourceItem> dataSourceVisibleTags = new List<TagSetDataSourceItem>();
             List<TagSetDataSourceItem> dataSourceForcedTags = new List<TagSetDataSourceItem>();
 
-            foreach (int tagSetId in _tagSetIds)
+            foreach (int tagSetId in this._tagSetIds)
             {
-                TagSetDataSourceItem item = new TagSetDataSourceItem()
-                                                {
-                                                    TagSetId = tagSetId,
-                                                    TagSetLocalizedName =
-                                                        FinancialTransactionTagSetType.GetLocalizedName(
-                                                            FinancialTransactionTagSet.FromIdentity(tagSetId).
-                                                                FinancialTransactionTagSetTypeId)
-                                                };
+                TagSetDataSourceItem item = new TagSetDataSourceItem
+                {
+                    TagSetId = tagSetId,
+                    TagSetLocalizedName =
+                        FinancialTransactionTagSetType.GetLocalizedName(
+                            FinancialTransactionTagSet.FromIdentity(tagSetId).
+                                FinancialTransactionTagSetTypeId)
+                };
                 dataSourceVisibleTags.Add(item);
 
                 if (!FinancialTransactionTagSet.FromIdentity(tagSetId).AllowUntagged)
@@ -69,7 +71,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             List<string> tagSetIdStringList = new List<string>();
 
-            foreach (int tagSetId in _tagSetIds)
+            foreach (int tagSetId in this._tagSetIds)
             {
                 tagSetIdStringList.Add(tagSetId.ToString(CultureInfo.InvariantCulture));
             }
@@ -77,19 +79,17 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.HiddenTagSetIdentifiers.Value = String.Join(",", tagSetIdStringList.ToArray());
         }
 
-        private int[] _tagSetIds;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.CurrentOrganization.IsEconomyEnabled)
+            if (!CurrentOrganization.IsEconomyEnabled)
             {
                 Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
-            this.PageTitle = Resources.Pages.Financial.CreateInboundInvoice_PageTitle;
-            this.PageIcon = "iconshock-invoice";
-            this.InfoBoxLiteral = Resources.Pages.Financial.CreateInboundInvoice_Info;
+            this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.CreateInboundInvoice_PageTitle;
+            PageIcon = "iconshock-invoice";
+            InfoBoxLiteral = Resources.Pages.Financial.CreateInboundInvoice_Info;
 
             if (!Page.IsPostBack)
             {
@@ -101,6 +101,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 Localize();
             }
+
+            EasyUIControlsUsed = EasyUIControl.Tree;
         }
 
 
@@ -109,7 +111,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelSupplier.Text = Resources.Global.Financial_Supplier;
             this.LabelDueDate.Text = Resources.Global.Financial_DueDate;
             this.LabelAmount.Text = string.Format(Resources.Pages.Financial.CreateInboundInvoice_Amount,
-                                                  CurrentOrganization.Currency.Code);
+                CurrentOrganization.Currency.Code);
             this.LabelPurpose.Text = Resources.Pages.Financial.CreateInboundInvoice_Description;
             this.LabelBudget.Text = Resources.Global.Financial_Budget;
             this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.CreateInboundInvoice_HeaderPaymentDetails;
@@ -118,30 +120,30 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelReference.Text = Resources.Pages.Financial.CreateInboundInvoice_Reference;
             this.LabelAccount.Text = Resources.Pages.Financial.CreateInboundInvoice_SupplierAccount;
 
-            this.LiteralErrorAmount.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount;  // TODO: Validation errors
+            this.LiteralErrorAmount.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Amount;
+                // TODO: Validation errors
             this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose;
             this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
             this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.CreateInboundInvoice_ValidationError_Account;
             this.LiteralErrorDocuments.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents;
-
         }
 
 
-        protected void ButtonCreate_Click(object sender, EventArgs e)  // TODO
+        protected void ButtonCreate_Click(object sender, EventArgs e) // TODO
         {
             // The data has been validated client-side already. We'll throw unfriendly exceptions if invalid data is passed here.
             // People who choose to disable JavaScript and then submit bad input almost deserve to be hurt.
 
             double amount = Double.Parse(this.TextAmount.Text, NumberStyles.Number);
-                // parses in current culture - intentional
+            // parses in current culture - intentional
             Int64 amountCents = (Int64) amount*100;
 
             string description = this.TextPurpose.Text;
 
             DateTime dueDate = DateTime.Parse(this.TextDueDate.Text);
-            
 
-            FinancialAccount budget = FinancialAccount.FromIdentity(Int32.Parse(this.Request.Form["DropBudgets"]));
+
+            FinancialAccount budget = FinancialAccount.FromIdentity(Int32.Parse(Request.Form["DropBudgets"]));
 
             // sanity check
 
@@ -153,7 +155,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Get documents; check that documents have been uploaded
 
-            Documents documents = Documents.RecentFromDescription (this.FileUpload.GuidString);
+            Documents documents = Documents.RecentFromDescription(this.FileUpload.GuidString);
 
             if (documents.Count == 0)
             {
@@ -161,13 +163,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             InboundInvoice invoice = InboundInvoice.Create(CurrentOrganization, dueDate, amountCents, budget,
-                                                           this.TextSupplier.Text, this.TextPurpose.Text, this.TextAccount.Text, string.Empty,
-                                                           this.TextReference.Text, CurrentUser);
+                this.TextSupplier.Text, this.TextPurpose.Text, this.TextAccount.Text, string.Empty,
+                this.TextReference.Text, CurrentUser);
 
-            foreach (int tagSetId in _tagSetIds)
+            foreach (int tagSetId in this._tagSetIds)
             {
                 string selectedTagString =
-                    this.Request.Form["DropTags" + tagSetId.ToString(CultureInfo.InvariantCulture)];
+                    Request.Form["DropTags" + tagSetId.ToString(CultureInfo.InvariantCulture)];
 
                 if (!String.IsNullOrEmpty(selectedTagString))
                 {
@@ -184,8 +186,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Display success message
 
-            this.LiteralSuccess.Text = HttpUtility.UrlEncode(String.Format(Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
-                                                     invoice.Identity)).Replace("+", "%20");
+            this.LiteralSuccess.Text = HttpUtility.UrlEncode(
+                String.Format(Resources.Pages.Financial.CreateInboundInvoice_SuccessMessage,
+                    invoice.Identity)).Replace("+", "%20");
 
             // Reset all fields for next invoice
 

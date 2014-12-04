@@ -2,4 +2,4 @@
 0002 - Added functions for account plan maintenance and back/forward links to FinancialAccounts, Rick Falkvinge
 0003 - Added 'Year' field for salary tax data, Rick Falkvinge
 0004 - Added BankProfile tables and stored procs to insert/update, Rick Falkvinge
-
+0005 - Changed PostalCodeLength for NO DK to 4; for GH to zero; added Country.Currency

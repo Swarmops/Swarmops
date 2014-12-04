@@ -29,7 +29,17 @@ namespace Swarmops.Database
             }
         }*/
 
-        public int[] GetMembersForOrganizations (int[] organizationIds)
+        private const string membershipFieldSequence =
+            " Memberships.MembershipId, Memberships.PersonId, Memberships.OrganizationId, Memberships.Active, Memberships.Expires, " +
+            // 0-4
+            " Memberships.MemberSince, Memberships.DateTimeTerminated, Memberships.TerminatedAsInvalid " + // 5-7
+            " FROM Memberships ";
+
+        private const string membershipPaymentStatusFieldSequence =
+            " MembershipPayments.MembershipId, MembershipPayments.MembershipPaymentStatusId, MembershipPayments.StatusDateTime " +
+            " FROM MembershipPayments ";
+
+        public int[] GetMembersForOrganizations(int[] organizationIds)
         {
             if (organizationIds == null || organizationIds.Length == 0)
             {
@@ -53,7 +63,7 @@ namespace Swarmops.Database
         }
 
 
-        public int[] GetMembersForOrganizationsAndGeographies (int[] organizationIds, int[] geographyIds)
+        public int[] GetMembersForOrganizationsAndGeographies(int[] organizationIds, int[] geographyIds)
         {
             if (organizationIds == null || organizationIds.Length == 0)
             {
@@ -83,7 +93,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicMembership[] GetMemberships (params object[] conditions)
+        public BasicMembership[] GetMemberships(params object[] conditions)
         {
             List<BasicMembership> result = new List<BasicMembership>();
 
@@ -91,7 +101,9 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + membershipFieldSequence + ConstructWhereClause("Memberships", conditions), connection);
+                DbCommand command =
+                    GetDbCommand("SELECT " + membershipFieldSequence + ConstructWhereClause("Memberships", conditions),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -103,15 +115,15 @@ namespace Swarmops.Database
                     return result.ToArray();
                 }
             }
-
         }
 
 
-        public BasicMembership[] GetValidMembershipsForOrganizationAndPaymentStatus (int[] organizationIds, int paymentStatus)
+        public BasicMembership[] GetValidMembershipsForOrganizationAndPaymentStatus(int[] organizationIds,
+            int paymentStatus)
         {
             string sqlCommand =
-            @"SELECT    " + membershipFieldSequence +
-            @"       LEFT OUTER JOIN
+                @"SELECT    " + membershipFieldSequence +
+                @"       LEFT OUTER JOIN
                           MembershipPayments ON Memberships.MembershipId = MembershipPayments.MembershipId
                     WHERE     (Memberships.Active = 1) 
                     AND (coalesce(MembershipPayments.MembershipPaymentStatusId, 0) = " + paymentStatus + @") 
@@ -140,9 +152,7 @@ namespace Swarmops.Database
         }
 
 
-
-
-        public int GetMembershipCountForOrganizations (int[] organizationIds)
+        public int GetMembershipCountForOrganizations(int[] organizationIds)
         {
             if (organizationIds == null || organizationIds.Length == 0)
             {
@@ -162,7 +172,7 @@ namespace Swarmops.Database
             }
         }
 
-        public int GetMembershipCountForOrganizationsSince (int[] organizationIds, DateTime sinceWhen)
+        public int GetMembershipCountForOrganizationsSince(int[] organizationIds, DateTime sinceWhen)
         {
             if (organizationIds == null || organizationIds.Length == 0)
             {
@@ -183,7 +193,7 @@ namespace Swarmops.Database
             }
         }
 
-        public int GetMemberCountForOrganizations (int[] organizationIds)
+        public int GetMemberCountForOrganizations(int[] organizationIds)
         {
             if (organizationIds == null || organizationIds.Length == 0)
             {
@@ -203,7 +213,7 @@ namespace Swarmops.Database
             }
         }
 
-        public int GetMemberCountForOrganizationsAndGeographies (int[] organizationIds, int[] geographyIds)
+        public int GetMemberCountForOrganizationsAndGeographies(int[] organizationIds, int[] geographyIds)
         {
             if (organizationIds == null || organizationIds.Length == 0)
             {
@@ -230,7 +240,7 @@ namespace Swarmops.Database
         }
 
 
-        private static int[] ReadIntegersAtZeroFromDataReader (DbDataReader reader)
+        private static int[] ReadIntegersAtZeroFromDataReader(DbDataReader reader)
         {
             List<int> result = new List<int>();
 
@@ -243,13 +253,13 @@ namespace Swarmops.Database
         }
 
 
-        public Dictionary<int, List<BasicMembership>> GetMembershipsForPeople (int[] personIds)
+        public Dictionary<int, List<BasicMembership>> GetMembershipsForPeople(int[] personIds)
         {
             return GetMembershipsForPeople(personIds, 0);
         }
 
 
-        public Dictionary<int, List<BasicMembership>> GetMembershipsForPeople (int[] personIds, int gracePeriod)
+        public Dictionary<int, List<BasicMembership>> GetMembershipsForPeople(int[] personIds, int gracePeriod)
         {
             Dictionary<int, List<BasicMembership>> result = new Dictionary<int, List<BasicMembership>>();
 
@@ -271,9 +281,11 @@ namespace Swarmops.Database
                 connection.Open();
 
                 string commandString = "SELECT " + membershipFieldSequence + " WHERE "
-                                        + (gracePeriod == 0 ? "Active=1"
-                                            : " (Expires > DATE_ADD(NOW(),INTERVAL -" + gracePeriod + " Day) AND (Expires < DATE_ADD(DateTimeTerminated,INTERVAL 1 Day) OR Active=1))")
-                                            + " AND PersonId in (" + JoinIds(personIds) + ")";
+                                       + (gracePeriod == 0
+                                           ? "Active=1"
+                                           : " (Expires > DATE_ADD(NOW(),INTERVAL -" + gracePeriod +
+                                             " Day) AND (Expires < DATE_ADD(DateTimeTerminated,INTERVAL 1 Day) OR Active=1))")
+                                       + " AND PersonId in (" + JoinIds(personIds) + ")";
 
                 DbCommand command = GetDbCommand(commandString, connection);
                 command.CommandTimeout = 30; // If 30s is too short, something needs optimization.
@@ -299,7 +311,8 @@ namespace Swarmops.Database
             return result;
         }
 
-        private Dictionary<int, List<BasicMembership>> GetMembershipsForPeopleOptimizedForLargeSets (int[] personIds, int gracePeriod)
+        private Dictionary<int, List<BasicMembership>> GetMembershipsForPeopleOptimizedForLargeSets(int[] personIds,
+            int gracePeriod)
         {
             // This version is optimized for larger data sets. Rather than asking the database
             // for the correct set of people, ALL memberships are retrieved, and the filtering is
@@ -337,7 +350,8 @@ namespace Swarmops.Database
                 else if (gracePeriod != 0)
                 {
                     //Within graceperiod?
-                    if (membership.Expires.AddDays(gracePeriod) > DateTime.Now && membership.DateTerminated.AddDays(1) > membership.Expires)
+                    if (membership.Expires.AddDays(gracePeriod) > DateTime.Now &&
+                        membership.DateTerminated.AddDays(1) > membership.Expires)
                     {
                         if (personIdLookup.ContainsKey(membership.PersonId))
                         {
@@ -353,13 +367,11 @@ namespace Swarmops.Database
             }
 
 
-
             return result;
         }
 
 
-
-        public BasicMembership GetActiveMembership (int personId, int organizationId)
+        public BasicMembership GetActiveMembership(int personId, int organizationId)
         {
             if (personId == 0)
             {
@@ -379,8 +391,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + membershipFieldSequence + " WHERE Active=1 AND PersonId=" + personId.ToString() +
-                        " AND OrganizationId=" + organizationId.ToString(), connection);
+                        "SELECT " + membershipFieldSequence + " WHERE Active=1 AND PersonId=" + personId +
+                        " AND OrganizationId=" + organizationId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -389,14 +401,14 @@ namespace Swarmops.Database
                         return ReadMembershipFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No active membership for personid " + personId.ToString() +
-                                                ", organizationid " + organizationId.ToString());
+                    throw new ArgumentException("No active membership for personid " + personId +
+                                                ", organizationid " + organizationId);
                 }
             }
         }
 
 
-        public bool IsPersonMember (int personId, int organizationId)
+        public bool IsPersonMember(int personId, int organizationId)
         {
             try
             {
@@ -410,14 +422,14 @@ namespace Swarmops.Database
         }
 
 
-        public BasicMembership GetMembership (int membershipId)
+        public BasicMembership GetMembership(int membershipId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + membershipFieldSequence + " WHERE MembershipId=" + membershipId.ToString(), connection);
+                    GetDbCommand("SELECT " + membershipFieldSequence + " WHERE MembershipId=" + membershipId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -426,19 +438,13 @@ namespace Swarmops.Database
                         return ReadMembershipFromDataReader(reader);
                     }
 
-                    throw new ArgumentOutOfRangeException("No such MembershipId: " + membershipId.ToString());
+                    throw new ArgumentOutOfRangeException("No such MembershipId: " + membershipId);
                 }
             }
         }
 
 
-        private const string membershipFieldSequence =
-            " Memberships.MembershipId, Memberships.PersonId, Memberships.OrganizationId, Memberships.Active, Memberships.Expires, " +  // 0-4
-            " Memberships.MemberSince, Memberships.DateTimeTerminated, Memberships.TerminatedAsInvalid " +      // 5-7
-            " FROM Memberships ";
-
-
-        private static BasicMembership ReadMembershipFromDataReader (DbDataReader reader)
+        private static BasicMembership ReadMembershipFromDataReader(DbDataReader reader)
         {
             int membershipId = reader.GetInt32(0);
             int personId = reader.GetInt32(1);
@@ -450,19 +456,20 @@ namespace Swarmops.Database
             // bool terminatedAsInvalid = reader.GetBoolean(7);  Ignore this field for now
 
             return new BasicMembership(membershipId, personId, organizationId, memberSince, expires, active,
-                                       dateTerminated);
+                dateTerminated);
         }
 
 
-
-        public BasicMembershipPaymentStatus GetMembershipPaymentStatus (int membershipId)
+        public BasicMembershipPaymentStatus GetMembershipPaymentStatus(int membershipId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + membershipPaymentStatusFieldSequence + " WHERE MembershipPayments.MembershipId=" + membershipId.ToString() + " ORDER BY StatusDateTime DESC LIMIT 1", connection);
+                    GetDbCommand(
+                        "SELECT " + membershipPaymentStatusFieldSequence + " WHERE MembershipPayments.MembershipId=" +
+                        membershipId + " ORDER BY StatusDateTime DESC LIMIT 1", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -473,12 +480,13 @@ namespace Swarmops.Database
 
                     // No payment status -- return undefined
 
-                    return new BasicMembershipPaymentStatus(membershipId, MembershipPaymentStatus.Unknown, new DateTime(1900, 1, 1));
+                    return new BasicMembershipPaymentStatus(membershipId, MembershipPaymentStatus.Unknown,
+                        new DateTime(1900, 1, 1));
                 }
             }
         }
 
-        public Dictionary<int, BasicMembershipPaymentStatus> GetMembershipPaymentStatuses (int[] membershipIds)
+        public Dictionary<int, BasicMembershipPaymentStatus> GetMembershipPaymentStatuses(int[] membershipIds)
         {
             Dictionary<int, BasicMembershipPaymentStatus> retVal = new Dictionary<int, BasicMembershipPaymentStatus>();
             if (membershipIds.Length == 0)
@@ -488,7 +496,9 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + membershipPaymentStatusFieldSequence + " WHERE MembershipPayments.MembershipId IN (" + JoinIds(membershipIds) + ") ORDER BY StatusDateTime ASC ", connection);
+                    GetDbCommand(
+                        "SELECT " + membershipPaymentStatusFieldSequence + " WHERE MembershipPayments.MembershipId IN (" +
+                        JoinIds(membershipIds) + ") ORDER BY StatusDateTime ASC ", connection);
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -499,8 +509,8 @@ namespace Swarmops.Database
                     foreach (int i in membershipIds)
                     {
                         if (!retVal.ContainsKey(i))
-                            retVal[i] = new BasicMembershipPaymentStatus(i, MembershipPaymentStatus.Unknown, new DateTime(1900, 1, 1));
-
+                            retVal[i] = new BasicMembershipPaymentStatus(i, MembershipPaymentStatus.Unknown,
+                                new DateTime(1900, 1, 1));
                     }
                     return retVal;
                 }
@@ -508,24 +518,18 @@ namespace Swarmops.Database
         }
 
 
-
-
-        private const string membershipPaymentStatusFieldSequence =
-            " MembershipPayments.MembershipId, MembershipPayments.MembershipPaymentStatusId, MembershipPayments.StatusDateTime " +
-            " FROM MembershipPayments ";
-
-
-        private BasicMembershipPaymentStatus ReadMembershipPaymentStatusFromDataReader (DbDataReader reader)
+        private BasicMembershipPaymentStatus ReadMembershipPaymentStatusFromDataReader(DbDataReader reader)
         {
             int membershipId = reader.GetInt32(0);
             int membershipPaymentStatusId = reader.GetInt32(1);
             DateTime statusDateTime = reader.GetDateTime(2);
 
-            return new BasicMembershipPaymentStatus(membershipId, (MembershipPaymentStatus)membershipPaymentStatusId, statusDateTime);
+            return new BasicMembershipPaymentStatus(membershipId, (MembershipPaymentStatus) membershipPaymentStatusId,
+                statusDateTime);
         }
 
 
-        public void SetMembershipExpires (int membershipId, DateTime newExpiry)
+        public void SetMembershipExpires(int membershipId, DateTime newExpiry)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -541,7 +545,8 @@ namespace Swarmops.Database
             }
         }
 
-        public void SetMembershipPaymentStatus (int membershipId, MembershipPaymentStatus paymentStatus, DateTime statusDateTime)
+        public void SetMembershipPaymentStatus(int membershipId, MembershipPaymentStatus paymentStatus,
+            DateTime statusDateTime)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -550,7 +555,7 @@ namespace Swarmops.Database
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName(command, "membershipId", membershipId);
-                AddParameterWithName(command, "paymentStatusId", (int)paymentStatus);
+                AddParameterWithName(command, "paymentStatusId", (int) paymentStatus);
                 AddParameterWithName(command, "statusDateTime", statusDateTime);
 
                 command.ExecuteNonQuery();
@@ -558,7 +563,7 @@ namespace Swarmops.Database
         }
 
 
-        public int CreateMembership (int personId, int organizationId, DateTime expires)
+        public int CreateMembership(int personId, int organizationId, DateTime expires)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -575,7 +580,7 @@ namespace Swarmops.Database
             }
         }
 
-        public int ImportMembership (int personId, int organizationId, DateTime memberSince, DateTime expires)
+        public int ImportMembership(int personId, int organizationId, DateTime memberSince, DateTime expires)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -595,13 +600,13 @@ namespace Swarmops.Database
         }
 
 
-        public void TerminateMembership (int membershipId)
+        public void TerminateMembership(int membershipId)
         {
             TerminateMembership(membershipId, false);
         }
 
 
-        public void TerminateMembership (int membershipId, bool asInvalid)
+        public void TerminateMembership(int membershipId, bool asInvalid)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -617,24 +622,26 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicMembership[] GetExpiringMemberships (IHasIdentity organization, DateTime expiry)
+        public BasicMembership[] GetExpiringMemberships(IHasIdentity organization, DateTime expiry)
         {
             return GetExpiringMemberships(organization, expiry, expiry);
         }
 
-        public BasicMembership[] GetExpiringMemberships (IHasIdentity organization, DateTime lowerBound, DateTime upperBound)
+        public BasicMembership[] GetExpiringMemberships(IHasIdentity organization, DateTime lowerBound,
+            DateTime upperBound)
         {
             return GetExpiringMemberships(organization, lowerBound, upperBound, DatabaseCondition.ActiveTrue);
         }
 
-        public BasicMembership[] GetExpiringMemberships (IHasIdentity organization, DateTime lowerBound, DateTime upperBound, DatabaseCondition condition)
+        public BasicMembership[] GetExpiringMemberships(IHasIdentity organization, DateTime lowerBound,
+            DateTime upperBound, DatabaseCondition condition)
         {
             // Since I don't trust SQL Server to make correct date comparisons, especially given
             // that the dates are passed in text in SQL, we get ALL the memberships and do
             // the comparison in code instead. This is a run-seldom function, anyway, and getting
             // some 50k records with four short unlinked fields isn't that expensive.
 
-            BasicMembership[] memberships = this.GetMemberships(organization, condition);
+            BasicMembership[] memberships = GetMemberships(organization, condition);
 
             DateTime minimumDateTime = lowerBound.Date;
             DateTime maximumDateTime = upperBound.Date.AddDays(1);

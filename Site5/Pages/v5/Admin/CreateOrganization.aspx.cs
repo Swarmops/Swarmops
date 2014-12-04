@@ -11,25 +11,24 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 {
     public partial class CreateOrganization : PageV5Base
     {
+        private readonly string[] _personLabels =
+        {
+            "Activist", "Person", "Sailor", "Regular", "Ambassador", "Salesperson", "Contributor",
+            "Member", "Operative", "Employee", "Customer", "Conscript", "Resident", "Citizen", "Agent"
+        };
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageTitle = Resources.Pages.Admin.CreateOrganization_PageTitle;
-            this.PageIcon = "iconshock-organization-add";
-            this.InfoBoxLiteral = Resources.Pages.Admin.CreateOrganization_Info;
-            this.DbVersionRequired = 2; // for FinancialAccounts.Active field in Create function
+            this.BoxTitle.Text = PageTitle = Resources.Pages.Admin.CreateOrganization_PageTitle;
+            PageIcon = "iconshock-organization-add";
+            InfoBoxLiteral = Resources.Pages.Admin.CreateOrganization_Info;
+            DbVersionRequired = 2; // for FinancialAccounts.Active field in Create function
 
             if (!Page.IsPostBack)
             {
                 Localize();
             }
         }
-
-
-        private readonly string[] _personLabels =
-        {
-            "Activist", "Person", "Sailor", "Regular", "Ambassador", "Salesperson",
-            "Member", "Operative", "Employee", "Customer", "Conscript", "Resident", "Citizen", "Agent"
-        };
 
 
         private void Localize()
@@ -53,11 +52,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
 
             this.DropCreateChild.Items.Add(new ListItem(Resources.Pages.Admin.CreateOrganization_AsRoot, "Root"));
-            this.DropCreateChild.Items.Add(new ListItem(String.Format(Resources.Pages.Admin.CreateOrganization_ChildOfX, CurrentOrganization.Name), "Child"));
+            this.DropCreateChild.Items.Add(
+                new ListItem(
+                    String.Format(Resources.Pages.Admin.CreateOrganization_ChildOfX, CurrentOrganization.Name), "Child"));
 
             List<string> localizedPersonLabels = new List<string>();
 
-            foreach (string personLabel in _personLabels)
+            foreach (string personLabel in this._personLabels)
             {
                 string localizedPersonLabel =
                     Resources.Global.ResourceManager.GetString("Title_" + personLabel + "_Plural");
@@ -65,7 +66,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 localizedPersonLabels.Add(localizedPersonLabel + "|" + personLabel);
             }
 
-            localizedPersonLabels.Sort();
+            localizedPersonLabels.Sort(); // Sorts _localized_
 
             foreach (string localizedPersonLabel in localizedPersonLabels)
             {
@@ -129,14 +130,17 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             Membership.Create(CurrentUser, newOrganization, DateTime.UtcNow.AddYears(2));
 
-            string successMessage = String.Format(Resources.Pages.Admin.CreateOrganization_Success, Resources.Global.ResourceManager.GetString("Title_" + peopleLabel + "_Ship"));
+            string successMessage = String.Format(Resources.Pages.Admin.CreateOrganization_Success,
+                Resources.Global.ResourceManager.GetString("Title_" + peopleLabel + "_Ship"));
 
             Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(successMessage)));
 
             // Log in to new organization, then redirect to Edit
 
-            Response.Redirect("/Pages/v5/Security/SetCurrentOrganization.aspx?OrganizationId=" + newOrganization.Identity.ToString(CultureInfo.InvariantCulture) + "&ReturnUrl=/Pages/v5/Admin/EditOrganization.aspx", true);
+            Response.Redirect(
+                "/Pages/v5/Security/SetCurrentOrganization.aspx?OrganizationId=" +
+                newOrganization.Identity.ToString(CultureInfo.InvariantCulture) +
+                "&ReturnUrl=/Pages/v5/Admin/EditOrganization.aspx", true);
         }
-
     }
 }

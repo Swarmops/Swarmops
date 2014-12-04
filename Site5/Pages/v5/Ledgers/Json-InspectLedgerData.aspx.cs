@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Text;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -22,7 +17,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             string yearString = Request.QueryString["Year"];
             string monthString = Request.QueryString["Month"];
 
-            string emptyResponse = "[{\"id\":\"-\",\"description\":\"" + JsonSanitize(Resources.Pages.Ledgers.InspectLedgers_PleaseSelectAccount) + "\"}]";
+            string emptyResponse = "[{\"id\":\"-\",\"description\":\"" +
+                                   JsonSanitize(Resources.Pages.Ledgers.InspectLedgers_PleaseSelectAccount) + "\"}]";
 
             if (string.IsNullOrEmpty(accountIdString) || string.IsNullOrEmpty(yearString) ||
                 string.IsNullOrEmpty(monthString) || accountIdString == "undefined")
@@ -35,7 +31,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             int year = Int32.Parse(yearString);
             int month = Int32.Parse(monthString);
 
-            DateTime dawnOfMankind = new DateTime(1901,1,1); // no org will ever import bookkeeping from before this date
+            DateTime dawnOfMankind = new DateTime(1901, 1, 1);
+                // no org will ever import bookkeeping from before this date
 
             if (accountId <= 0)
             {
@@ -64,7 +61,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 periodStart = new DateTime(year, month, 1);
                 periodEnd = periodStart.AddMonths(1);
                 if (account.AccountType == FinancialAccountType.Income ||
-                     account.AccountType == FinancialAccountType.Cost)
+                    account.AccountType == FinancialAccountType.Cost)
                 {
                     balanceStart = new DateTime(year, 1, 1);
 
@@ -80,10 +77,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             else if (month > 20 && month < 25) // quarters 1..4 are coded as months 21..24
             {
-                periodStart = new DateTime(year, (month - 21) * 3 + 1, 1);
+                periodStart = new DateTime(year, (month - 21)*3 + 1, 1);
                 periodEnd = periodStart.AddMonths(3);
                 if (account.AccountType == FinancialAccountType.Income ||
-                     account.AccountType == FinancialAccountType.Cost)
+                    account.AccountType == FinancialAccountType.Cost)
                 {
                     balanceStart = new DateTime(year, 1, 1);
 
@@ -102,7 +99,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 periodStart = new DateTime(year, 1, 1);
                 periodEnd = new DateTime(year + 1, 1, 1);
                 if (account.AccountType == FinancialAccountType.Income ||
-                     account.AccountType == FinancialAccountType.Cost)
+                    account.AccountType == FinancialAccountType.Cost)
                 {
                     zeroStart = true;
                     zeroEnd = true;
@@ -138,7 +135,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             result.Append("{" +
-                          String.Format("\"description\":\"{0}\",\"balance\":\"{1:N0}\"", JsonSanitize(startString), runningBalance / 100.0) + "},");
+                          String.Format("\"description\":\"{0}\",\"balance\":\"{1:N0}\"", JsonSanitize(startString),
+                              runningBalance/100.0) + "},");
 
             foreach (FinancialAccountRow row in rows)
             {
@@ -168,7 +166,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     JsonSanitize(row.Description),
                     debitString,
                     creditString,
-                    runningBalance / 100.0,
+                    runningBalance/100.0,
                     JsonSanitize(actionHtml)) + "},");
             }
 
@@ -181,7 +179,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             result.Append("{" +
-              String.Format("\"description\":\"{0}\",\"balance\":\"{1:N0}\"", JsonSanitize(endString), runningBalance / 100.0) + "},");
+                          String.Format("\"description\":\"{0}\",\"balance\":\"{1:N0}\"", JsonSanitize(endString),
+                              runningBalance/100.0) + "},");
 
             Response.Output.WriteLine("[" + result.ToString().TrimEnd(',') + "]");
             Response.End();

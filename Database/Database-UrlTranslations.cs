@@ -7,7 +7,7 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public int CreateUrlTranslation (string url)
+        public int CreateUrlTranslation(string url)
         {
             using (DbConnection connection = GetSqlServerDbConnection())
             {
@@ -25,7 +25,7 @@ namespace Swarmops.Database
         }
 
 
-        public void SetUrlTranslation (string originalUrl, string translatedUrl)
+        public void SetUrlTranslation(string originalUrl, string translatedUrl)
         {
             using (DbConnection connection = GetSqlServerDbConnection())
             {
@@ -42,7 +42,7 @@ namespace Swarmops.Database
         }
 
 
-        public string[] GetUntranslatedUrls (int max)
+        public string[] GetUntranslatedUrls(int max)
         {
             List<string> result = new List<string>();
 
@@ -52,7 +52,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT TOP " + max.ToString() + " OriginalUrl FROM UrlTranslations WHERE Translated=0",
+                        "SELECT TOP " + max + " OriginalUrl FROM UrlTranslations WHERE Translated=0",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -68,7 +68,7 @@ namespace Swarmops.Database
         }
 
 
-        public string GetUrlTranslation (string url)
+        public string GetUrlTranslation(string url)
         {
             using (DbConnection connection = GetSqlServerDbConnection())
             {

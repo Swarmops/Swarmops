@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
@@ -13,15 +8,14 @@ using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
 {
-
     public partial class EditOrganization : PageV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageIcon = "iconshock-box-cog";
-            this.PageTitle = Resources.Pages.Admin.EditOrganization_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Admin.EditOrganization_Info;
-            this.PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Administration, AccessType.Write);
+            PageIcon = "iconshock-box-cog";
+            PageTitle = Resources.Pages.Admin.EditOrganization_PageTitle;
+            InfoBoxLiteral = Resources.Pages.Admin.EditOrganization_Info;
+            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Administration, AccessType.Write);
 
             if (!Page.IsPostBack)
             {
@@ -29,8 +23,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
 
 
-            this.EasyUIControlsUsed = EasyUIControl.Tabs;
-            this.IncludedControlsUsed = IncludedControl.FileUpload | IncludedControl.SwitchButton | IncludedControl.JsonParameters; 
+            EasyUIControlsUsed = EasyUIControl.Tabs;
+            IncludedControlsUsed = IncludedControl.FileUpload | IncludedControl.SwitchButton |
+                                   IncludedControl.JsonParameters;
         }
 
         private void Localize()
@@ -58,7 +53,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelRenewalsAffect.Text = Resources.Pages.Admin.EditOrganization_RenewalsAffect;
             this.LabelRenewalDateEffect.Text = Resources.Pages.Admin.EditOrganization_RenewalDateEffect;
             this.LabelRenewalReminder.Text = Resources.Pages.Admin.EditOrganization_RenewalReminders;
-            this.LabelMemberNumber.Text = 
+            this.LabelMemberNumber.Text =
                 String.Format(Resources.Pages.Admin.EditOrganization_MemberNumberStyle, participantship);
 
             this.DropMembersWhen.Items.Clear();
@@ -118,11 +113,16 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 return result; // just... don't
             }
 
-            result.AccountBitcoinCold = (org.FinancialAccounts.AssetsBitcoinCold != null && org.FinancialAccounts.AssetsBitcoinCold.Active);
-            result.AccountBitcoinHot =  (org.FinancialAccounts.AssetsBitcoinHot != null && org.FinancialAccounts.AssetsBitcoinHot.Active);
-            result.AccountPaypal =      (org.FinancialAccounts.AssetsPaypal != null && org.FinancialAccounts.AssetsPaypal.Active);
-            result.AccountsForex =      (org.FinancialAccounts.IncomeCurrencyFluctuations != null && org.FinancialAccounts.IncomeCurrencyFluctuations.Active);
-            result.AccountsVat =        (org.FinancialAccounts.AssetsVatInbound != null && org.FinancialAccounts.AssetsVatInbound.Active);
+            result.AccountBitcoinCold = (org.FinancialAccounts.AssetsBitcoinCold != null &&
+                                         org.FinancialAccounts.AssetsBitcoinCold.Active);
+            result.AccountBitcoinHot = (org.FinancialAccounts.AssetsBitcoinHot != null &&
+                                        org.FinancialAccounts.AssetsBitcoinHot.Active);
+            result.AccountPaypal = (org.FinancialAccounts.AssetsPaypal != null &&
+                                    org.FinancialAccounts.AssetsPaypal.Active);
+            result.AccountsForex = (org.FinancialAccounts.IncomeCurrencyFluctuations != null &&
+                                    org.FinancialAccounts.IncomeCurrencyFluctuations.Active);
+            result.AccountsVat = (org.FinancialAccounts.AssetsVatInbound != null &&
+                                  org.FinancialAccounts.AssetsVatInbound.Active);
 
             // TODO: Add all the other fields
 
@@ -177,7 +177,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     {
                         workAccounts.Add(coldAccount);
                     }
-                break;
+                    break;
                 case "BitcoinHot":
                     if (switchValue && !bitcoinNative)
                     {
@@ -187,9 +187,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     FinancialAccount hotAccount = authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot;
                     if (hotAccount == null)
                     {
-                        authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot = 
+                        authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot =
                             FinancialAccount.Create(authData.CurrentOrganization, "Bitcoin Wallet Hot",
-                            FinancialAccountType.Asset, null);
+                                FinancialAccountType.Asset, null);
 
                         result.DisplayMessage =
                             "Bitcoin hotwallet account was created. Upload its wallet file in Account Plan.";
@@ -198,7 +198,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     {
                         workAccounts.Add(hotAccount);
                     }
-                break;
+                    break;
                 case "Forex":
                     FinancialAccount forexGain =
                         authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations;
@@ -212,10 +212,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                             throw new InvalidOperationException();
                         }
 
-                        authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations = FinancialAccount.Create(authData.CurrentOrganization, "Forex holding gains",
-                            FinancialAccountType.Income, null);
-                        authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations = FinancialAccount.Create(authData.CurrentOrganization, "Forex holding losses",
-                            FinancialAccountType.Cost, null);
+                        authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations =
+                            FinancialAccount.Create(authData.CurrentOrganization, "Forex holding gains",
+                                FinancialAccountType.Income, null);
+                        authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations =
+                            FinancialAccount.Create(authData.CurrentOrganization, "Forex holding losses",
+                                FinancialAccountType.Cost, null);
 
                         result.DisplayMessage =
                             "Forex gain/loss accounts were created and will be used to account for currency fluctuations.";
@@ -258,10 +260,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                             throw new InvalidOperationException();
                         }
 
-                        authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound = FinancialAccount.Create(authData.CurrentOrganization, "Inbound VAT",
-                            FinancialAccountType.Asset, null);
-                        authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound = FinancialAccount.Create(authData.CurrentOrganization, "Outbound VAT",
-                            FinancialAccountType.Debt, null);
+                        authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound =
+                            FinancialAccount.Create(authData.CurrentOrganization, "Inbound VAT",
+                                FinancialAccountType.Asset, null);
+                        authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound =
+                            FinancialAccount.Create(authData.CurrentOrganization, "Outbound VAT",
+                                FinancialAccountType.Debt, null);
 
                         result.DisplayMessage = "Inbound and outbound VAT accounts were created.";
                     }
@@ -275,7 +279,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         workAccounts.Add(vatInbound);
                         workAccounts.Add(vatOutbound);
                     }
-                break;
+                    break;
                 case "Paypal":
                     FinancialAccount assetsPaypal = authData.CurrentOrganization.FinancialAccounts.AssetsPaypal;
                     if (assetsPaypal == null)
@@ -378,12 +382,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         public class InitialOrgData
         {
-            public bool AccountsVat;
-            public bool AccountPaypal;
             public bool AccountBitcoinCold;
-            public bool AccountsForex;
             public bool AccountBitcoinHot;
+            public bool AccountPaypal;
+            public bool AccountsForex;
+            public bool AccountsVat;
         }
     }
-
 }

@@ -3,22 +3,26 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicParleyAttendee: IHasIdentity
+    public class BasicParleyAttendee : IHasIdentity
     {
-        public BasicParleyAttendee (int parleyAttendeeId, int parleyId, int personId, DateTime signupDateTime, bool active, DateTime cancelDateTime, bool invoiced, int outboundInvoiceId, bool isGuest)
+        public BasicParleyAttendee(int parleyAttendeeId, int parleyId, int personId, DateTime signupDateTime,
+            bool active, DateTime cancelDateTime, bool invoiced, int outboundInvoiceId, bool isGuest)
         {
-            this.ParleyAttendeeId = parleyAttendeeId;
-            this.ParleyId = parleyId;
-            this.PersonId = personId;
-            this.SignupDateTime = signupDateTime;
-            this.Active = active;
-            this.CancelDateTime = cancelDateTime;
-            this.Invoiced = invoiced;
-            this.OutboundInvoiceId = outboundInvoiceId;
+            ParleyAttendeeId = parleyAttendeeId;
+            ParleyId = parleyId;
+            PersonId = personId;
+            SignupDateTime = signupDateTime;
+            Active = active;
+            CancelDateTime = cancelDateTime;
+            Invoiced = invoiced;
+            OutboundInvoiceId = outboundInvoiceId;
         }
 
         public BasicParleyAttendee(BasicParleyAttendee original)
-            : this (original.ParleyAttendeeId, original.ParleyId, original.PersonId, original.SignupDateTime, original.Active, original.CancelDateTime, original.Invoiced, original.OutboundInvoiceId, original.IsGuest)
+            : this(
+                original.ParleyAttendeeId, original.ParleyId, original.PersonId, original.SignupDateTime,
+                original.Active, original.CancelDateTime, original.Invoiced, original.OutboundInvoiceId,
+                original.IsGuest)
         {
             // empty copy ctor
         }
@@ -35,7 +39,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.ParleyAttendeeId; }
+            get { return ParleyAttendeeId; }
         }
     }
 }

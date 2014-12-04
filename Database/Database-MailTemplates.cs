@@ -8,7 +8,7 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public BasicMailTemplate[] GetMailTemplatesByName (string templatename)
+        public BasicMailTemplate[] GetMailTemplatesByName(string templatename)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -32,15 +32,12 @@ namespace Swarmops.Database
                         }
                         return retlist.ToArray();
                     }
-                    else
-                    {
-                        throw new ArgumentException("No mailtemplate named: " + templatename + " exists.");
-                    }
+                    throw new ArgumentException("No mailtemplate named: " + templatename + " exists.");
                 }
             }
         }
 
-        public BasicMailTemplate GetMailTemplateById (int templateId)
+        public BasicMailTemplate GetMailTemplateById(int templateId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -48,7 +45,7 @@ namespace Swarmops.Database
 
                 string sql = "SELECT  * from MailTemplates where TemplateId={0}";
 
-                sql = string.Format(sql, templateId.ToString());
+                sql = string.Format(sql, templateId);
 
                 DbCommand command = GetDbCommand(sql, connection);
 
@@ -58,18 +55,19 @@ namespace Swarmops.Database
                     {
                         return ReadMailTemplate(reader);
                     }
-                    throw new ArgumentException("No mailtemplate with id: " + templateId.ToString() + " exists.");
+                    throw new ArgumentException("No mailtemplate with id: " + templateId + " exists.");
                 }
             }
         }
 
-        public BasicMailTemplate[] GetAllMailTemplates ()
+        public BasicMailTemplate[] GetAllMailTemplates()
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                string sql = "SELECT * from MailTemplates order by templateName, CountryCode, LanguageCode, OrganizationId";
+                string sql =
+                    "SELECT * from MailTemplates order by templateName, CountryCode, LanguageCode, OrganizationId";
 
                 DbCommand command = GetDbCommand(sql, connection);
 
@@ -85,23 +83,23 @@ namespace Swarmops.Database
             }
         }
 
-        private static BasicMailTemplate ReadMailTemplate (DbDataReader reader)
+        private static BasicMailTemplate ReadMailTemplate(DbDataReader reader)
         {
-            int templateId = (int)reader["templateId"];
-            string templateName = reader["templateName"] != DBNull.Value ? (string)reader["templateName"] : "";
-            string langCode = reader["languageCode"] != DBNull.Value ? (string)reader["languageCode"] : "";
-            string crtyCode = reader["countryCode"] != DBNull.Value ? (string)reader["countryCode"] : "";
-            int orgId = reader["organizationId"] != DBNull.Value ? (int)reader["organizationId"] : 0;
-            string templateBody = reader["templateBody"] != DBNull.Value ? (string)reader["templateBody"] : "";
+            int templateId = (int) reader["templateId"];
+            string templateName = reader["templateName"] != DBNull.Value ? (string) reader["templateName"] : "";
+            string langCode = reader["languageCode"] != DBNull.Value ? (string) reader["languageCode"] : "";
+            string crtyCode = reader["countryCode"] != DBNull.Value ? (string) reader["countryCode"] : "";
+            int orgId = reader["organizationId"] != DBNull.Value ? (int) reader["organizationId"] : 0;
+            string templateBody = reader["templateBody"] != DBNull.Value ? (string) reader["templateBody"] : "";
             return new BasicMailTemplate(templateId, templateName, langCode, crtyCode, orgId, templateBody);
         }
 
-        public int SetMailTemplate (int templateId,
-                                    string templateName,
-                                    string languageCode,
-                                    string countryCode,
-                                    int organizationId,
-                                    string templateBody)
+        public int SetMailTemplate(int templateId,
+            string templateName,
+            string languageCode,
+            string countryCode,
+            int organizationId,
+            string templateBody)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -122,14 +120,14 @@ namespace Swarmops.Database
         }
 
 
-        public int SetMailTemplate (BasicMailTemplate mailTemplate)
+        public int SetMailTemplate(BasicMailTemplate mailTemplate)
         {
             return SetMailTemplate(mailTemplate.TemplateId,
-                    mailTemplate.TemplateName,
-                    mailTemplate.LanguageCode,
-                    mailTemplate.CountryCode,
-                    mailTemplate.OrganizationId,
-                    mailTemplate.TemplateBody);
+                mailTemplate.TemplateName,
+                mailTemplate.LanguageCode,
+                mailTemplate.CountryCode,
+                mailTemplate.OrganizationId,
+                mailTemplate.TemplateBody);
         }
     }
 }

@@ -8,15 +8,15 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string outboundCommRecipientFieldSequence =
-            " OutboundCommRecipientId,OutboundCommId,PersonId,Open,Success," +   // 0-4
-            "FailReasonId " +                                                    // 5
+            " OutboundCommRecipientId,OutboundCommId,PersonId,Open,Success," + // 0-4
+            "FailReasonId " + // 5
             "FROM OutboundCommRecipients ";
 
-        private BasicOutboundCommRecipient ReadOutboundCommRecipientFromDataReader(IDataRecord reader) // Not static -- accesses cache, requiring connection strings
+        private BasicOutboundCommRecipient ReadOutboundCommRecipientFromDataReader(IDataRecord reader)
+            // Not static -- accesses cache, requiring connection strings
         {
             int outboundCommRecipientId = reader.GetInt32(0);
             int outboundCommId = reader.GetInt32(1);
@@ -27,16 +27,13 @@ namespace Swarmops.Database
 
             string failReason = GetCachedFailReasonName(failReasonId);
 
-            return new BasicOutboundCommRecipient (outboundCommRecipientId, outboundCommId, personId, open, success, failReason);
-
-
+            return new BasicOutboundCommRecipient(outboundCommRecipientId, outboundCommId, personId, open, success,
+                failReason);
         }
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
-
 
         public BasicOutboundCommRecipient GetOutboundCommRecipient(int outboundCommRecipientId)
         {
@@ -46,8 +43,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + outboundCommRecipientFieldSequence +
-                    "WHERE OutboundCommRecipientId=" + outboundCommRecipientId.ToString(),
-                                 connection);
+                                 "WHERE OutboundCommRecipientId=" + outboundCommRecipientId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -56,12 +53,10 @@ namespace Swarmops.Database
                         return ReadOutboundCommRecipientFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such OutboundCommRecipientId:" + outboundCommRecipientId.ToString());
+                    throw new ArgumentException("No such OutboundCommRecipientId:" + outboundCommRecipientId);
                 }
             }
-
         }
-
 
 
         public BasicOutboundCommRecipient[] GetOutboundCommRecipients(params object[] conditions)
@@ -74,7 +69,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + outboundCommRecipientFieldSequence + ConstructWhereClause("OutboundCommRecipients", conditions), connection);
+                        "SELECT" + outboundCommRecipientFieldSequence +
+                        ConstructWhereClause("OutboundCommRecipients", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -88,9 +84,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Database optimizations
 
@@ -114,8 +108,8 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT Name FROM FailReasons WHERE FailReasonId=" + failReasonId.ToString(),
-                                 connection);
+                    GetDbCommand("SELECT Name FROM FailReasons WHERE FailReasonId=" + failReasonId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -125,18 +119,14 @@ namespace Swarmops.Database
                         return _failReasonCache[failReasonId];
                     }
 
-                    throw new ArgumentException("No such FailReasonId:" + failReasonId.ToString());
+                    throw new ArgumentException("No such FailReasonId:" + failReasonId);
                 }
             }
-
         }
-
 
         #endregion
 
-
         #region Creation and manipulation -- stored procedures
-
 
         public int CreateOutboundCommRecipient(int outboundCommId, int personId)
         {
@@ -154,7 +144,7 @@ namespace Swarmops.Database
             }
         }
 
-        public void SetOutboundCommRecipientClosed (int outboundCommRecipientId)
+        public void SetOutboundCommRecipientClosed(int outboundCommRecipientId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -189,7 +179,6 @@ namespace Swarmops.Database
         }
 
         #endregion
-
 
         #region Dead template code
 
@@ -534,7 +523,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

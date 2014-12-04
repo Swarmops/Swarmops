@@ -8,11 +8,36 @@ namespace Swarmops.Logic.Media
     {
         private MediaCategories mediaCategories;
 
-        private Reporter (BasicReporter original) : base (original)
+        private Reporter(BasicReporter original) : base(original)
         {
         }
 
-        public static Reporter Create (string name, string email, string[] categories)
+        public MediaCategories MediaCategories
+        {
+            get
+            {
+                if (MediaCategoryIds == null)
+                {
+                    MediaCategoryIds = SwarmDb.GetDatabaseForReading().GetReporterMediaCategories(Identity);
+                }
+
+                if (this.mediaCategories == null)
+                {
+                    if (MediaCategoryIds.Length > 0)
+                    {
+                        this.mediaCategories = MediaCategories.FromIdentities(MediaCategoryIds);
+                    }
+                    else
+                    {
+                        this.mediaCategories = new MediaCategories();
+                    }
+                }
+
+                return this.mediaCategories;
+            }
+        }
+
+        public static Reporter Create(string name, string email, string[] categories)
         {
             Reporter reporter = FromIdentity(SwarmDb.GetDatabaseForWriting().CreateReporter(name, email));
 
@@ -27,46 +52,20 @@ namespace Swarmops.Logic.Media
 
         public void Delete()
         {
-            SwarmDb.GetDatabaseForWriting().DeleteReporter(this.Identity);
+            SwarmDb.GetDatabaseForWriting().DeleteReporter(Identity);
 
             // After this operation, the object is no longer valid.
         }
 
 
-        public MediaCategories MediaCategories
+        public static Reporter FromBasic(BasicReporter basic)
         {
-            get
-            {
-                if (MediaCategoryIds == null)
-                {
-                    MediaCategoryIds = SwarmDb.GetDatabaseForReading().GetReporterMediaCategories (Identity);
-                }
-
-                if (this.mediaCategories == null)
-                {
-                    if (MediaCategoryIds.Length > 0)
-                    {
-                        this.mediaCategories = MediaCategories.FromIdentities(MediaCategoryIds);
-                    }
-                    else
-                    {
-                        this.mediaCategories = new MediaCategories();
-                    }
-
-                }
-
-                return this.mediaCategories;
-            }
+            return new Reporter(basic);
         }
 
-        public static Reporter FromBasic (BasicReporter basic)
+        public static Reporter FromIdentity(int identity)
         {
-            return new Reporter (basic);
-        }
-
-        public static Reporter FromIdentity (int identity)
-        {
-            return Reporter.FromBasic(SwarmDb.GetDatabaseForReading().GetReporter(identity));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetReporter(identity));
         }
 
         #region IComparable Members
@@ -75,7 +74,7 @@ namespace Swarmops.Logic.Media
         {
             Reporter otherReporter = (Reporter) obj;
 
-            return this.Name.CompareTo(otherReporter.Name);
+            return Name.CompareTo(otherReporter.Name);
         }
 
         #endregion

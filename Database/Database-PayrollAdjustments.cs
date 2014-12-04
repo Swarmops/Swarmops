@@ -11,8 +11,8 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string payrollAdjustmentFieldSequence =
-            " PayrollAdjustmentId,PayrollAdjustmentTypeId,PayrollItemId,AmountCents,Description," +   // 0-4
-            "Open,SalaryId " +       // 5-6
+            " PayrollAdjustmentId,PayrollAdjustmentTypeId,PayrollItemId,AmountCents,Description," + // 0-4
+            "Open,SalaryId " + // 5-6
             "FROM PayrollAdjustments ";
 
         private BasicPayrollAdjustment ReadPayrollAdjustmentFromDataReader(DbDataReader reader)
@@ -26,17 +26,15 @@ namespace Swarmops.Database
             int salaryId = reader.GetInt32(6);
 
             return new BasicPayrollAdjustment(payrollAdjustmentId, payrollItemId,
-                                              (PayrollAdjustmentType) payrollAdjustmentTypeId,
-                                              amountCents, description, open, salaryId);
+                (PayrollAdjustmentType) payrollAdjustmentTypeId,
+                amountCents, description, open, salaryId);
         }
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
-        public BasicPayrollAdjustment GetPayrollAdjustment (int payrollAdjustmentId)
+        public BasicPayrollAdjustment GetPayrollAdjustment(int payrollAdjustmentId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -44,7 +42,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + payrollAdjustmentFieldSequence + "WHERE PayrollAdjustmentId=" + payrollAdjustmentId + ";", connection);
+                        "SELECT" + payrollAdjustmentFieldSequence + "WHERE PayrollAdjustmentId=" + payrollAdjustmentId +
+                        ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -59,9 +58,12 @@ namespace Swarmops.Database
         }
 
         /// <summary>
-        /// Gets payroll.
+        ///     Gets payroll.
         /// </summary>
-        /// <param name="conditions">An optional combination of a Person and/or Organization object and/or DatabaseCondition specifiers.</param>
+        /// <param name="conditions">
+        ///     An optional combination of a Person and/or Organization object and/or DatabaseCondition
+        ///     specifiers.
+        /// </param>
         /// <returns>The list of matching payroll items.</returns>
         public BasicPayrollAdjustment[] GetPayrollAdjustments(params object[] conditions)
         {
@@ -73,7 +75,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + payrollAdjustmentFieldSequence + ConstructWhereClause("PayrollAdjustments", conditions), connection);
+                        "SELECT" + payrollAdjustmentFieldSequence +
+                        ConstructWhereClause("PayrollAdjustments", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -87,14 +90,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-        public int CreatePayrollAdjustment(int payrollItemId, PayrollAdjustmentType type, double amount, string description)
+        public int CreatePayrollAdjustment(int payrollItemId, PayrollAdjustmentType type, double amount,
+            string description)
         {
             if (description.Length > 128)
             {
@@ -109,7 +110,7 @@ namespace Swarmops.Database
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName(command, "payrollItemId", payrollItemId);
-                AddParameterWithName(command, "payrollAdjustmentTypeId", (int)type);
+                AddParameterWithName(command, "payrollAdjustmentTypeId", (int) type);
                 AddParameterWithName(command, "amount", amount);
                 AddParameterWithName(command, "description", description);
 
@@ -118,7 +119,8 @@ namespace Swarmops.Database
         }
 
 
-        public int CreatePayrollAdjustment(int payrollItemId, PayrollAdjustmentType type, Int64 amountCents, string description)
+        public int CreatePayrollAdjustment(int payrollItemId, PayrollAdjustmentType type, Int64 amountCents,
+            string description)
         {
             if (description.Length > 128)
             {
@@ -133,7 +135,7 @@ namespace Swarmops.Database
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName(command, "payrollItemId", payrollItemId);
-                AddParameterWithName(command, "payrollAdjustmentTypeId", (int)type);
+                AddParameterWithName(command, "payrollAdjustmentTypeId", (int) type);
                 AddParameterWithName(command, "amountCents", amountCents);
                 AddParameterWithName(command, "description", description);
 
@@ -158,15 +160,9 @@ namespace Swarmops.Database
             }
         }
 
-
-
         #endregion
 
-
-
-
         #region Dead template code
-
 
         /*
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)

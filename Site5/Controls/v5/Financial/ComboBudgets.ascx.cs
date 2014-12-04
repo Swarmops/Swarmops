@@ -4,9 +4,13 @@ namespace Swarmops.Controls.Financial
 {
     public partial class ComboBudgets : ControlV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        public enum AccountListType
         {
-
+            Unknown = 0,
+            Expensable,
+            InvoiceableOut,
+            InvoiceableIn,
+            All
         }
 
         public string OnClientLoaded { get; set; }
@@ -18,7 +22,7 @@ namespace Swarmops.Controls.Financial
         {
             get
             {
-                switch (this.ListType)
+                switch (ListType)
                 {
                     case AccountListType.Unknown:
                     case AccountListType.Expensable:
@@ -32,13 +36,8 @@ namespace Swarmops.Controls.Financial
             }
         }
 
-        public enum AccountListType
+        protected void Page_Load(object sender, EventArgs e)
         {
-            Unknown = 0,
-            Expensable,
-            InvoiceableOut,
-            InvoiceableIn,
-            All
         }
     }
 }

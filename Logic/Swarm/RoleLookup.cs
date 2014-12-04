@@ -9,7 +9,7 @@ namespace Swarmops.Logic.Swarm
     {
         private readonly Dictionary<RoleType, Roles> lookup;
 
-        internal RoleLookup (Roles initialSet)
+        internal RoleLookup(Roles initialSet)
         {
             this.lookup = new Dictionary<RoleType, Roles>();
 
@@ -37,7 +37,7 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        public static RoleLookup FromOrganization (int organizationId)
+        public static RoleLookup FromOrganization(int organizationId)
         {
             Roles roles =
                 Roles.FromArray(SwarmDb.GetDatabaseForReading().GetRolesForOrganization(organizationId));
@@ -45,20 +45,21 @@ namespace Swarmops.Logic.Swarm
             return new RoleLookup(roles);
         }
 
-        public static RoleLookup FromGeographyAndOrganization (int geographyId, int organizationId)
+        public static RoleLookup FromGeographyAndOrganization(int geographyId, int organizationId)
         {
             Roles roles =
-                Roles.FromArray(SwarmDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId));
+                Roles.FromArray(SwarmDb.GetDatabaseForReading()
+                    .GetRolesForOrganizationGeography(organizationId, geographyId));
 
             return new RoleLookup(roles);
         }
 
-        public static RoleLookup FromGeographyAndOrganization (Geography geography, Organization organization)
+        public static RoleLookup FromGeographyAndOrganization(Geography geography, Organization organization)
         {
             return FromGeographyAndOrganization(geography.Identity, organization.Identity);
         }
 
-        public static RoleLookup FromOrganization (Organization organization)
+        public static RoleLookup FromOrganization(Organization organization)
         {
             return FromOrganization(organization.Identity);
         }

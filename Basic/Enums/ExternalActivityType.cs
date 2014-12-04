@@ -13,4 +13,3 @@ namespace Swarmops.Basic.Enums
         Other
     }
 }
-

@@ -11,9 +11,11 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string motionAmendmentFieldSequence =
-            " MotionAmendmentId,MotionAmendments.MotionId,MotionAmendments.SequenceNumber,MotionAmendments.SubmittedByPersonId,MotionAmendments.CreatedByPersonId," +  // 0-4
-            "MotionAmendments.CreatedDateTime,MotionAmendments.Title,MotionAmendments.Text,MotionAmendments.DecisionPoint,MotionAmendments.Open," + // 5-9
-            "MotionAmendments.Carried " +                                    // 10
+            " MotionAmendmentId,MotionAmendments.MotionId,MotionAmendments.SequenceNumber,MotionAmendments.SubmittedByPersonId,MotionAmendments.CreatedByPersonId," +
+            // 0-4
+            "MotionAmendments.CreatedDateTime,MotionAmendments.Title,MotionAmendments.Text,MotionAmendments.DecisionPoint,MotionAmendments.Open," +
+            // 5-9
+            "MotionAmendments.Carried " + // 10
             "FROM MotionAmendments ";
 
         private static BasicMotionAmendment ReadMotionAmendmentFromDataReader(IDataRecord reader)
@@ -30,12 +32,11 @@ namespace Swarmops.Database
             bool open = reader.GetBoolean(9);
             bool carried = reader.GetBoolean(10);
 
-            return new BasicMotionAmendment(motionAmendmentId, motionId, sequenceNumber, submittedByPersonId, createdByPersonId, createdDateTime, title, text, decisionPoint, open, carried);
+            return new BasicMotionAmendment(motionAmendmentId, motionId, sequenceNumber, submittedByPersonId,
+                createdByPersonId, createdDateTime, title, text, decisionPoint, open, carried);
         }
 
         #endregion
-
-
 
         #region Record reading - SELECT statements
 
@@ -47,7 +48,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + motionAmendmentFieldSequence + "WHERE MotionAmendmentId=" + motionAmendmentId + ";", connection);
+                        "SELECT" + motionAmendmentFieldSequence + "WHERE MotionAmendmentId=" + motionAmendmentId + ";",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -56,7 +58,7 @@ namespace Swarmops.Database
                         return ReadMotionAmendmentFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown MotionAmendment Id: " + motionAmendmentId.ToString());
+                    throw new ArgumentException("Unknown MotionAmendment Id: " + motionAmendmentId);
                 }
             }
         }
@@ -71,7 +73,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + motionAmendmentFieldSequence + ConstructWhereClause("MotionAmendments", conditions), connection);
+                        "SELECT" + motionAmendmentFieldSequence + ConstructWhereClause("MotionAmendments", conditions),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -96,7 +99,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + motionAmendmentFieldSequence + " JOIN Motions ON (Motions.MotionId=MotionAmendments.MotionId) WHERE Motions.MeetingId=" + meetingId.ToString(), connection);
+                        "SELECT" + motionAmendmentFieldSequence +
+                        " JOIN Motions ON (Motions.MotionId=MotionAmendments.MotionId) WHERE Motions.MeetingId=" +
+                        meetingId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -110,16 +115,12 @@ namespace Swarmops.Database
             }
         }
 
-
-
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateMotionAmendment(int motionId, int submittingPersonId, int createdByPersonId, string title, string text, string decisionPoint)
+        public int CreateMotionAmendment(int motionId, int submittingPersonId, int createdByPersonId, string title,
+            string text, string decisionPoint)
         {
             DateTime now = DateTime.Now;
 
@@ -141,6 +142,7 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
+
         /*
 
         public void SetSalaryNetPaid(int salaryId, bool netPaid)
@@ -220,8 +222,6 @@ namespace Swarmops.Database
         }
         */
 
-
         #endregion
-
     }
 }

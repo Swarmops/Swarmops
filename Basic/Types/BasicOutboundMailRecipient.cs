@@ -7,9 +7,10 @@ namespace Swarmops.Basic.Types
         #region Creation and Construction
 
         /// <summary>
-        /// Normal constructor.
+        ///     Normal constructor.
         /// </summary>
-        public BasicOutboundMailRecipient (int outboundMailRecipientId, int outboundMailId, int personId, bool asOfficer,int personType)
+        public BasicOutboundMailRecipient(int outboundMailRecipientId, int outboundMailId, int personId, bool asOfficer,
+            int personType)
         {
             this.outboundMailId = outboundMailId;
             this.outboundMailRecipientId = outboundMailRecipientId;
@@ -19,10 +20,12 @@ namespace Swarmops.Basic.Types
         }
 
         /// <summary>
-        /// Copy constructor.
+        ///     Copy constructor.
         /// </summary>
-        public BasicOutboundMailRecipient (BasicOutboundMailRecipient original)
-            : this(original.outboundMailRecipientId, original.outboundMailId, original.personId, original.asOfficer, original.personType)
+        public BasicOutboundMailRecipient(BasicOutboundMailRecipient original)
+            : this(
+                original.outboundMailRecipientId, original.outboundMailId, original.personId, original.asOfficer,
+                original.personType)
         {
         }
 
@@ -46,12 +49,6 @@ namespace Swarmops.Basic.Types
         }
 
 
-        public int Identity
-        {
-            get { return this.OutboundMailRecipientId; }
-        }
-
-
         public bool AsOfficer
         {
             get { return this.asOfficer; }
@@ -59,18 +56,23 @@ namespace Swarmops.Basic.Types
 
         public int PersonType
         {
-            get { return this.personType ; }
+            get { return this.personType; }
+        }
+
+        public int Identity
+        {
+            get { return OutboundMailRecipientId; }
         }
 
         #endregion
 
         #region Private fields
 
-        private int outboundMailRecipientId;
-        private int outboundMailId;
-        private int personId;
-        private bool asOfficer;
-        private int personType = 0; //0 = Person, 1 = Reporter
+        private readonly bool asOfficer;
+        private readonly int outboundMailId;
+        private readonly int outboundMailRecipientId;
+        private readonly int personId;
+        private readonly int personType; //0 = Person, 1 = Reporter
 
         #endregion
     }

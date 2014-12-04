@@ -11,8 +11,8 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string communicationTurnaroundFieldSequence =
-            " OrganizationId,CommunicationTypeId,CommunicationId,DateTimeOpened,DateTimeFirstResponse," +  // 0-4
-            "PersonIdFirstResponse,DateTimeClosed,PersonIdClosed,Open,Responded " +                 // 5-9
+            " OrganizationId,CommunicationTypeId,CommunicationId,DateTimeOpened,DateTimeFirstResponse," + // 0-4
+            "PersonIdFirstResponse,DateTimeClosed,PersonIdClosed,Open,Responded " + // 5-9
             "FROM CommunicationTurnarounds ";
 
         private static BasicCommunicationTurnaround ReadCommunicationTurnaroundFromDataReader(IDataRecord reader)
@@ -28,17 +28,16 @@ namespace Swarmops.Database
             bool open = reader.GetBoolean(8);
             bool awaitingResponse = reader.GetBoolean(9);
 
-            return new BasicCommunicationTurnaround(organizationId, communicationTypeId, communicationId, dateTimeOpened, dateTimeFirstResponse, personIdFirstResponse, dateTimeClosed, personIdClosed, open, awaitingResponse);
+            return new BasicCommunicationTurnaround(organizationId, communicationTypeId, communicationId, dateTimeOpened,
+                dateTimeFirstResponse, personIdFirstResponse, dateTimeClosed, personIdClosed, open, awaitingResponse);
         }
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
-
-        public BasicCommunicationTurnaround GetCommunicationTurnaround (int organizationId, int communicationTypeId, int communicationId)
+        public BasicCommunicationTurnaround GetCommunicationTurnaround(int organizationId, int communicationTypeId,
+            int communicationId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -46,7 +45,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + communicationTurnaroundFieldSequence + "WHERE OrganizationId=" + organizationId.ToString() + " AND CommunicationTypeId=" + communicationTypeId.ToString() + " AND CommunicationId=" + communicationId.ToString() + ";", connection);
+                        "SELECT" + communicationTurnaroundFieldSequence + "WHERE OrganizationId=" + organizationId +
+                        " AND CommunicationTypeId=" + communicationTypeId + " AND CommunicationId=" + communicationId +
+                        ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -55,7 +56,7 @@ namespace Swarmops.Database
                         return ReadCommunicationTurnaroundFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("Unknown Communication Id: " + communicationId.ToString());
+                    throw new ArgumentException("Unknown Communication Id: " + communicationId);
                 }
             }
         }
@@ -71,7 +72,9 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + communicationTurnaroundFieldSequence + ConstructWhereClause("CommunicationTurnarounds", conditions) + " ORDER BY DateTimeOpened", connection);
+                        "SELECT" + communicationTurnaroundFieldSequence +
+                        ConstructWhereClause("CommunicationTurnarounds", conditions) + " ORDER BY DateTimeOpened",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -85,14 +88,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-        public void CreateCommunicationTurnaround (int organizationId, int communicationTypeId, int communicationId, DateTime dateTimeOpened)
+        public void CreateCommunicationTurnaround(int organizationId, int communicationTypeId, int communicationId,
+            DateTime dateTimeOpened)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -111,7 +112,8 @@ namespace Swarmops.Database
         }
 
 
-        public void SetCommunicationTurnaroundResponded(int organizationId, int communicationTypeId, int communicationId, DateTime dateTimeResponded, int personIdResponded)
+        public void SetCommunicationTurnaroundResponded(int organizationId, int communicationTypeId, int communicationId,
+            DateTime dateTimeResponded, int personIdResponded)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -127,12 +129,12 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "personIdResponded", personIdResponded);
 
                 command.ExecuteNonQuery();
-
             }
         }
 
 
-        public void SetCommunicationTurnaroundClosed(int organizationId, int communicationTypeId, int communicationId, DateTime dateTimeClosed, int personIdClosed)
+        public void SetCommunicationTurnaroundClosed(int organizationId, int communicationTypeId, int communicationId,
+            DateTime dateTimeClosed, int personIdClosed)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -148,14 +150,9 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "personIdClosed", personIdClosed);
 
                 command.ExecuteNonQuery();
-
             }
         }
 
-
-
-
         #endregion
-
     }
 }

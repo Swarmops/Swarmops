@@ -5,15 +5,15 @@ public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!this.CurrentOrganization.IsEconomyEnabled)
+        if (!CurrentOrganization.IsEconomyEnabled)
         {
             Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
             return;
         }
 
-        this.PageIcon = "iconshock-abacus";
-        this.PageTitle = Resources.Pages.Ledgers.ProfitLossStatement_PageTitle;
-        this.InfoBoxLiteral = Resources.Pages.Ledgers.ProfitLossStatement_Info;
+        PageIcon = "iconshock-abacus";
+        PageTitle = Resources.Pages.Ledgers.ProfitLossStatement_PageTitle;
+        InfoBoxLiteral = Resources.Pages.Ledgers.ProfitLossStatement_Info;
 
         if (!Page.IsPostBack)
         {
@@ -29,12 +29,13 @@ public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
             Localize();
         }
 
-        this.EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
+        EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
     }
 
     private void Localize()
     {
-        this.LabelContentHeader.Text = string.Format(Resources.Pages.Ledgers.ProfitLossStatement_ContentHeader, CurrentOrganization.Name);
+        this.LabelContentHeader.Text = string.Format(Resources.Pages.Ledgers.ProfitLossStatement_ContentHeader,
+            CurrentOrganization.Name);
         this.LiteralHeaderLastYear.Text = Resources.Pages.Ledgers.ProfitLossStatement_LastYear;
         this.LiteralHeaderQ1.Text = Resources.Pages.Ledgers.ProfitLossStatement_Q1;
         this.LiteralHeaderQ2.Text = Resources.Pages.Ledgers.ProfitLossStatement_Q2;
@@ -42,6 +43,5 @@ public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
         this.LiteralHeaderQ4.Text = Resources.Pages.Ledgers.ProfitLossStatement_Q4;
         this.LiteralHeaderYtd.Text = Resources.Pages.Ledgers.ProfitLossStatement_Ytd;
         this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.ProfitLossStatement_AccountName;
-
     }
 }

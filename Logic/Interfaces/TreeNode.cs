@@ -26,7 +26,5 @@ namespace Swarmops.Logic.Interfaces
         ITreeNodeObject ParentObject { get; }
 
         List<ITreeNodeObject> ChildObjects { get; }
-        
     }
-
 }

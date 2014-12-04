@@ -5,43 +5,45 @@ namespace Swarmops.Basic.Types
 {
     public class BasicExpenseClaim : IHasIdentity
     {
+        public readonly int GeographyId;
+        public readonly int OrganizationId;
+
         /// <summary>
-        /// Normal constructor
+        ///     Normal constructor
         /// </summary>
-        public BasicExpenseClaim (int expenseClaimId, int claimingPersonId, DateTime createdDateTime,
+        public BasicExpenseClaim(int expenseClaimId, int claimingPersonId, DateTime createdDateTime,
             bool open, bool attested, bool documented, bool claimed, int organizationId,
             int geographyId, int budgetId, DateTime expenseDate,
             string description, double preApprovedAmount, Int64 amountCents, bool repaid, bool keepSeparate)
         {
-            this.ExpenseClaimId = expenseClaimId;
-            this.ClaimingPersonId = claimingPersonId;
-            this.CreatedDateTime = createdDateTime;
-            this.Open = open;
-            this.Attested = attested;
-            this.Validated = documented;
-            this.Claimed = claimed;
+            ExpenseClaimId = expenseClaimId;
+            ClaimingPersonId = claimingPersonId;
+            CreatedDateTime = createdDateTime;
+            Open = open;
+            Attested = attested;
+            Validated = documented;
+            Claimed = claimed;
             this.OrganizationId = organizationId;
             this.GeographyId = geographyId;
-            this.BudgetId = budgetId;
-            this.ExpenseDate = expenseDate;
-            this.Description = description;
-            this.PreApprovedAmount = preApprovedAmount;
-            this.AmountCents = amountCents;
-            this.Repaid = repaid;
-            this.KeepSeparate = keepSeparate;
+            BudgetId = budgetId;
+            ExpenseDate = expenseDate;
+            Description = description;
+            PreApprovedAmount = preApprovedAmount;
+            AmountCents = amountCents;
+            Repaid = repaid;
+            KeepSeparate = keepSeparate;
         }
 
         /// <summary>
-        /// Copy constructor
+        ///     Copy constructor
         /// </summary>
-        public BasicExpenseClaim (BasicExpenseClaim original)
+        public BasicExpenseClaim(BasicExpenseClaim original)
             : this(original.Identity, original.ClaimingPersonId, original.CreatedDateTime,
-            original.Open, original.Attested, original.Validated, original.Claimed,
-            original.OrganizationId, original.GeographyId, original.BudgetId, 
-            original.ExpenseDate, original.Description,
-            original.PreApprovedAmount, original.AmountCents, original.Repaid, original.KeepSeparate)
+                original.Open, original.Attested, original.Validated, original.Claimed,
+                original.OrganizationId, original.GeographyId, original.BudgetId,
+                original.ExpenseDate, original.Description,
+                original.PreApprovedAmount, original.AmountCents, original.Repaid, original.KeepSeparate)
         {
-
         }
 
 
@@ -63,12 +65,9 @@ namespace Swarmops.Basic.Types
 
         // The fields below are not just encapsulated yet
 
-        public readonly int OrganizationId;
-        public readonly int GeographyId;
-
         public int Identity
         {
-            get { return this.ExpenseClaimId; }
+            get { return ExpenseClaimId; }
         }
     }
 }

@@ -5,18 +5,18 @@ namespace Swarmops.Logic.Media
 {
     public class MediaCategory : BasicMediaCategory
     {
-        private MediaCategory (BasicMediaCategory original) : base (original)
+        private MediaCategory(BasicMediaCategory original) : base(original)
         {
         }
 
-        public static MediaCategory FromName (string name)
+        public static MediaCategory FromName(string name)
         {
             return new MediaCategory(SwarmDb.GetDatabaseForReading().GetMediaCategoryByName(name));
         }
 
-        public static MediaCategory FromBasic (BasicMediaCategory basic)
+        public static MediaCategory FromBasic(BasicMediaCategory basic)
         {
-            return new MediaCategory (basic);
+            return new MediaCategory(basic);
         }
     }
 }

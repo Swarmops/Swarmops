@@ -18,6 +18,5 @@ namespace Swarmops.Database
                 return Convert.ToInt32(command.ExecuteScalar());
             }
         }
-
     }
 }

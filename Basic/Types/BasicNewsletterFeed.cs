@@ -2,7 +2,27 @@ namespace Swarmops.Basic.Types
 {
     public class BasicNewsletterFeed
     {
-        public BasicNewsletterFeed (int newsletterId, int organizationId, bool defaultSubscribed, string name)
+        /// <summary>
+        ///     If true, a new member in the owning organization will get this newsletter.
+        /// </summary>
+        public readonly bool DefaultSubscribed;
+
+        /// <summary>
+        ///     A friendly name for the newsletter.
+        /// </summary>
+        public readonly string Name;
+
+        /// <summary>
+        ///     The database identity of the newsletter feed.
+        /// </summary>
+        public readonly int NewsletterFeedId;
+
+        /// <summary>
+        ///     The identity of the organization that owns this newsletter.
+        /// </summary>
+        public readonly int OrganizationId;
+
+        public BasicNewsletterFeed(int newsletterId, int organizationId, bool defaultSubscribed, string name)
         {
             this.NewsletterFeedId = newsletterId;
             this.OrganizationId = organizationId;
@@ -12,32 +32,12 @@ namespace Swarmops.Basic.Types
 
         public BasicNewsletterFeed()
         {
-            Name = string.Empty;
+            this.Name = string.Empty;
         }
 
-        public BasicNewsletterFeed (BasicNewsletterFeed original)
+        public BasicNewsletterFeed(BasicNewsletterFeed original)
             : this(original.NewsletterFeedId, original.OrganizationId, original.DefaultSubscribed, original.Name)
         {
         }
-
-        /// <summary>
-        /// The database identity of the newsletter feed.
-        /// </summary>
-        public readonly int NewsletterFeedId;
-
-        /// <summary>
-        /// The identity of the organization that owns this newsletter.
-        /// </summary>
-        public readonly int OrganizationId;
-
-        /// <summary>
-        /// If true, a new member in the owning organization will get this newsletter.
-        /// </summary>
-        public readonly bool DefaultSubscribed;
-
-        /// <summary>
-        /// A friendly name for the newsletter.
-        /// </summary>
-        public readonly string Name;
     }
 }

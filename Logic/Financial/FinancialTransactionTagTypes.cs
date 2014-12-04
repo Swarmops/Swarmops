@@ -4,21 +4,23 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
-    public class FinancialTransactionTagTypes: PluralBase<FinancialTransactionTagTypes,FinancialTransactionTagType,BasicFinancialTransactionTagType>
+    public class FinancialTransactionTagTypes :
+        PluralBase<FinancialTransactionTagTypes, FinancialTransactionTagType, BasicFinancialTransactionTagType>
     {
-        public static FinancialTransactionTagTypes ForSet (FinancialTransactionTagSet set)
+        public static FinancialTransactionTagTypes ForSet(FinancialTransactionTagSet set)
         {
             return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagTypes(set));
         }
 
-        public static FinancialTransactionTagTypes FromIdentities (int[] identities)
+        public static FinancialTransactionTagTypes FromIdentities(int[] identities)
         {
             return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagTypesByIdentity(identities));
         }
 
-        public static FinancialTransactionTagTypes ForTransaction (FinancialTransaction transaction)
+        public static FinancialTransactionTagTypes ForTransaction(FinancialTransaction transaction)
         {
-            int[] tagTypeIdentities = SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagTypes(transaction.Identity);
+            int[] tagTypeIdentities =
+                SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagTypes(transaction.Identity);
 
             if (tagTypeIdentities.Length == 0)
             {

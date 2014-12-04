@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Security;
 
@@ -19,11 +15,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return;
             }
 
-            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read);
-            this.DbVersionRequired = 0; // base schema is fine
-            this.PageTitle = Resources.Pages.Ledgers.InspectLedgers_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Ledgers.InspectLedgers_Info;
-            this.PageIcon = "iconshock-ledger-inspect";
+            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read);
+            DbVersionRequired = 0; // base schema is fine
+            PageTitle = Resources.Pages.Ledgers.InspectLedgers_PageTitle;
+            InfoBoxLiteral = Resources.Pages.Ledgers.InspectLedgers_Info;
+            PageIcon = "iconshock-ledger-inspect";
 
             if (!Page.IsPostBack)
             {
@@ -39,10 +35,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 for (int monthNumber = 1; monthNumber <= 12; monthNumber++)
                 {
-                    this.DropMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"), monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
+                    this.DropMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
+                        monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
                 }
 
-                this.DropMonths.Items.Add(new ListItem(Resources.Global.Global_Q1, "21"));  // quarters and all-year are coded as fake month numbers
+                this.DropMonths.Items.Add(new ListItem(Resources.Global.Global_Q1, "21"));
+                    // quarters and all-year are coded as fake month numbers
                 this.DropMonths.Items.Add(new ListItem(Resources.Global.Global_Q2, "22"));
                 this.DropMonths.Items.Add(new ListItem(Resources.Global.Global_Q3, "23"));
                 this.DropMonths.Items.Add(new ListItem(Resources.Global.Global_Q4, "24"));
@@ -52,7 +50,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.DropMonths.SelectedValue = today.Month.ToString(CultureInfo.InvariantCulture);
             }
 
-            this.EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
+            EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
 
             Localize();
         }

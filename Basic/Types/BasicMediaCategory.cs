@@ -4,13 +4,25 @@ namespace Swarmops.Basic.Types
 {
     public class BasicMediaCategory : IHasIdentity
     {
-        public BasicMediaCategory (int mediaCategoryId, string name)
+        private readonly int mediaCategoryId;
+        private readonly string name;
+
+        #region IHasIdentity Members
+
+        public int Identity
+        {
+            get { return MediaCategoryId; }
+        }
+
+        #endregion
+
+        public BasicMediaCategory(int mediaCategoryId, string name)
         {
             this.mediaCategoryId = mediaCategoryId;
             this.name = name;
         }
 
-        public BasicMediaCategory (BasicMediaCategory original) :
+        public BasicMediaCategory(BasicMediaCategory original) :
             this(original.mediaCategoryId, original.name)
         {
         }
@@ -30,17 +42,5 @@ namespace Swarmops.Basic.Types
         {
             get { return this.mediaCategoryId; }
         }
-
-        private int mediaCategoryId;
-        private string name;
-
-        #region IHasIdentity Members
-
-        public int Identity
-        {
-            get { return MediaCategoryId; }
-        }
-
-        #endregion
     }
 }

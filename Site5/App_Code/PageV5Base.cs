@@ -8,14 +8,73 @@ using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
-/// Base class to use for all data generators (JSON, etc). It supplies identification and localization.
+///     Base class to use for all data generators (JSON, etc). It supplies identification and localization.
 /// </summary>
-
 public class PageV5Base : System.Web.UI.Page
 {
-    public PermissionSet pagePermissionDefault = new PermissionSet(Permission.CanSeeSelf); //Use from menu;
-    public Access PageAccessRequired = null; // v5 mechanism
     public int DbVersionRequired = 0; // v5 mechanism
+    public Access PageAccessRequired = null; // v5 mechanism
+    public PermissionSet pagePermissionDefault = new PermissionSet(Permission.CanSeeSelf); //Use from menu;
+
+    protected new MasterV5Base Master
+    {
+        get { return (MasterV5Base) base.Master; }
+    }
+
+    protected string PageTitle
+    {
+        get { return Master.CurrentPageTitle; }
+        set { Master.CurrentPageTitle = value; }
+    }
+
+    protected string PageIcon
+    {
+        get { return Master.CurrentPageIcon; }
+        set { Master.CurrentPageIcon = value; }
+    }
+
+    protected string InfoBoxLiteral
+    {
+        get { return Master.CurrentPageInfoBoxLiteral; }
+        set { Master.CurrentPageInfoBoxLiteral = value; }
+    }
+
+    // ReSharper disable once InconsistentNaming
+    protected EasyUIControl EasyUIControlsUsed
+    {
+        get { return Master.EasyUIControlsUsed; }
+        set { Master.EasyUIControlsUsed = value; }
+    }
+
+    public IncludedControl IncludedControlsUsed
+    {
+        get { return Master.IncludedControlsUsed; }
+        set { Master.IncludedControlsUsed = value; }
+    }
+
+    protected Person CurrentUser
+    {
+        get { return Master.CurrentUser; }
+    }
+
+    protected Organization CurrentOrganization
+    {
+        get { return Master.CurrentOrganization; }
+    }
+
+    protected Authority CurrentAuthority
+    {
+        get { return Master.CurrentAuthority; }
+    }
+
+    /// <summary>
+    ///     This is used to identify special cases for pilot installations. Because of the privacy implications, it
+    ///     should not be used at all from general availability onwards, except for those pilot installations.
+    /// </summary>
+    protected string InstallationId
+    {
+        get { return Persistence.Key["SwarmopsInstallationId"]; }
+    }
 
     /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
     protected override void OnInitComplete(System.EventArgs e)
@@ -23,67 +82,18 @@ public class PageV5Base : System.Web.UI.Page
         base.OnInitComplete(e);
     }
 
-    protected new MasterV5Base Master
-    { get { return (MasterV5Base)base.Master; } }
-
-    protected string PageTitle
-    {
-        get { return this.Master.CurrentPageTitle; }
-        set { this.Master.CurrentPageTitle = value; }
-    }
-
-    protected string PageIcon
-    {
-        get { return this.Master.CurrentPageIcon; }
-        set { this.Master.CurrentPageIcon = value; }
-    }
-
-    protected string InfoBoxLiteral
-    {
-        get { return this.Master.CurrentPageInfoBoxLiteral; }
-        set { this.Master.CurrentPageInfoBoxLiteral = value; }
-    }
-
-    // ReSharper disable once InconsistentNaming
-    protected EasyUIControl EasyUIControlsUsed
-    {
-        get { return this.Master.EasyUIControlsUsed; }    
-        set { this.Master.EasyUIControlsUsed = value; }
-    }
-
-    public IncludedControl IncludedControlsUsed
-    {
-        get { return this.Master.IncludedControlsUsed; }
-        set { this.Master.IncludedControlsUsed = value; }
-    }
-
-    protected Person CurrentUser
-    {
-        get { return this.Master.CurrentUser; }
-    }
-
-    protected Organization CurrentOrganization
-    {
-        get { return this.Master.CurrentOrganization; }
-    }
-
-    protected Authority CurrentAuthority
-    {
-        get { return this.Master.CurrentAuthority; }
-    }
-
     protected override void OnPreInit(EventArgs e)
     {
         CommonV5.CulturePreInit(Request);
 
- 	    base.OnPreInit(e);
+        base.OnPreInit(e);
     }
 
-    protected override void  OnPreRender(EventArgs e)
+    protected override void OnPreRender(EventArgs e)
     {
         // Check security of page against users's credentials
 
-        if (!CurrentUser.HasAccess (this.PageAccessRequired))
+        if (!CurrentUser.HasAccess(this.PageAccessRequired))
         {
             Response.Redirect("/Pages/v5/Security/AccessDenied.aspx");
         }
@@ -95,15 +105,15 @@ public class PageV5Base : System.Web.UI.Page
             Response.Redirect("/Pages/v5/Security/DatabaseUpgradeRequired.aspx");
         }
 
- 	    base.OnPreRender(e);
+        base.OnPreRender(e);
     }
 
-    protected string LocalizeCount (string resourceString, int count)
+    protected string LocalizeCount(string resourceString, int count)
     {
         return LocalizeCount(resourceString, count, false);
     }
 
-    protected string LocalizeCount (string resourceString, int count, bool capitalize)
+    protected string LocalizeCount(string resourceString, int count, bool capitalize)
     {
         string result;
         string[] parts = resourceString.Split('|');
@@ -138,21 +148,11 @@ public class PageV5Base : System.Web.UI.Page
 
         return CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current);
     }
-
-    /// <summary>
-    /// This is used to identify special cases for pilot installations. Because of the privacy implications, it
-    /// should not be used at all from general availability onwards, except for those pilot installations.
-    /// </summary>
-    protected string InstallationId
-    {
-        get { return Persistence.Key["SwarmopsInstallationId"]; }
-    }
 }
-
 
 
 public class AuthenticationData
 {
-    public Person CurrentUser;
     public Organization CurrentOrganization;
+    public Person CurrentUser;
 }

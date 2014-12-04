@@ -27,13 +27,10 @@ namespace Swarmops.Frontend.Automation
                 {
                     return @"C:\Windows\Temp\Swarmops-Debug\"; // Windows debugging environment
                 }
-                else
-                {
-                    return "/var/lib/swarmops/upload/"; // production location on Debian installation
-                }
+                return "/var/lib/swarmops/upload/"; // production location on Debian installation
             }
         }
-        
+
         private bool WeAreInDebugEnvironment
         {
             get { return Debugger.IsAttached; }
@@ -46,38 +43,38 @@ namespace Swarmops.Frontend.Automation
             get { return false; }
         }
 
-        public new void ProcessRequest (HttpContext context)
+        public new void ProcessRequest(HttpContext context)
         {
-            context.Response.AddHeader ("Pragma", "no-cache");
-            context.Response.AddHeader ("Cache-Control", "private, no-cache");
+            context.Response.AddHeader("Pragma", "no-cache");
+            context.Response.AddHeader("Cache-Control", "private, no-cache");
 
-            HandleMethod (context);
+            HandleMethod(context);
         }
 
         #endregion
 
         // Handle request based on method
-        private void HandleMethod (HttpContext context)
+        private void HandleMethod(HttpContext context)
         {
             switch (context.Request.HttpMethod)
             {
                 case "HEAD":
                 case "GET":
-                    if (GivenFilename (context)) DeliverFile (context);
-                    else ListCurrentFiles (context);
+                    if (GivenFilename(context)) DeliverFile(context);
+                    else ListCurrentFiles(context);
                     break;
 
                 case "POST":
                 case "PUT":
-                    UploadFile (context);
+                    UploadFile(context);
                     break;
 
                 case "DELETE":
-                    DeleteFile (context);
+                    DeleteFile(context);
                     break;
 
                 case "OPTIONS":
-                    ReturnOptions (context);
+                    ReturnOptions(context);
                     break;
 
                 default:
@@ -87,50 +84,50 @@ namespace Swarmops.Frontend.Automation
             }
         }
 
-        private static void ReturnOptions (HttpContext context)
+        private static void ReturnOptions(HttpContext context)
         {
-            context.Response.AddHeader ("Allow", "DELETE,GET,HEAD,POST,PUT,OPTIONS");
+            context.Response.AddHeader("Allow", "DELETE,GET,HEAD,POST,PUT,OPTIONS");
             context.Response.StatusCode = 200;
         }
 
         // Delete file from the server
-        private void DeleteFile (HttpContext context)
+        private void DeleteFile(HttpContext context)
         {
             string filePath = StorageRoot + context.Request["f"];
-            if (File.Exists (filePath))
+            if (File.Exists(filePath))
             {
-                File.Delete (filePath);
+                File.Delete(filePath);
             }
         }
 
         // Upload file to the server
-        private void UploadFile (HttpContext context)
+        private void UploadFile(HttpContext context)
         {
-            var statuses = new List<FilesStatus>();
+            List<FilesStatus> statuses = new List<FilesStatus>();
             NameValueCollection headers = context.Request.Headers;
 
-            if (string.IsNullOrEmpty (headers["X-File-Name"]))
+            if (string.IsNullOrEmpty(headers["X-File-Name"]))
             {
-                UploadWholeFile (context, statuses);
+                UploadWholeFile(context, statuses);
             }
             else
             {
-                UploadPartialFile (headers["X-File-Name"], context, statuses);
+                UploadPartialFile(headers["X-File-Name"], context, statuses);
             }
 
-            WriteJsonIframeSafe (context, statuses);
+            WriteJsonIframeSafe(context, statuses);
         }
 
         // Upload partial file
-        private void UploadPartialFile (string fileName, HttpContext context, List<FilesStatus> statuses)
+        private void UploadPartialFile(string fileName, HttpContext context, List<FilesStatus> statuses)
         {
             if (context.Request.Files.Count != 1)
-                throw new HttpRequestValidationException (
+                throw new HttpRequestValidationException(
                     "Attempt to upload chunked file containing more than one fragment per request");
             Stream inputStream = context.Request.Files[0].InputStream;
-            string fullName = StorageRoot + Path.GetFileName (fileName);
+            string fullName = StorageRoot + Path.GetFileName(fileName);
 
-            throw new NotImplementedException (
+            throw new NotImplementedException(
                 "We should never get to partial upload. If we do, something is very very unexpected and this needs to be implemented.");
 
             //using (var fs = new FileStream(fullName, FileMode.Append, FileAccess.Write))
@@ -150,14 +147,14 @@ namespace Swarmops.Frontend.Automation
         }
 
         // Upload entire file
-        private void UploadWholeFile (HttpContext context, List<FilesStatus> statuses)
+        private void UploadWholeFile(HttpContext context, List<FilesStatus> statuses)
         {
             for (int i = 0; i < context.Request.Files.Count; i++)
             {
                 HttpPostedFile file = context.Request.Files[i];
-                string fullName = Path.GetFileName (file.FileName);
+                string fullName = Path.GetFileName(file.FileName);
 
-                AuthenticationData authData = CommonV5.GetAuthenticationDataAndCulture (context);
+                AuthenticationData authData = CommonV5.GetAuthenticationDataAndCulture(context);
 
                 Person uploadingPerson = authData.CurrentUser;
                 Organization currentOrg = authData.CurrentOrganization;
@@ -171,7 +168,6 @@ namespace Swarmops.Frontend.Automation
                 }
                 else
                 {
-
                     // If not PDF, try to load as an image
 
                     /*                
@@ -186,7 +182,6 @@ namespace Swarmops.Frontend.Automation
 
                     if (filterType != "NoFilter")
                     {
-
                         // Try to load as image. If fails, not an acceptable file
 
                         try
@@ -200,7 +195,7 @@ namespace Swarmops.Frontend.Automation
 
                             // TODO: Accept general files
 
-                            var errorStatus = new FilesStatus(fullName, file.ContentLength);
+                            FilesStatus errorStatus = new FilesStatus(fullName, file.ContentLength);
                             errorStatus.error = "ERR_NOT_IMAGE";
                             errorStatus.url = string.Empty;
                             errorStatus.delete_url = string.Empty;
@@ -215,23 +210,23 @@ namespace Swarmops.Frontend.Automation
 
                 string guid = context.Request.QueryString["Guid"];
 
-                if (string.IsNullOrEmpty (guid))
+                if (string.IsNullOrEmpty(guid))
                 {
-                    throw new ArgumentException ("No Context Guid supplied with upload");
+                    throw new ArgumentException("No Context Guid supplied with upload");
                 }
 
-                string fileNameBase = guid + "-" + uploadingPerson.Identity.ToString ("X8").ToLowerInvariant() + "-" +
-                                currentOrg.Identity.ToString ("X4").ToLowerInvariant();
+                string fileNameBase = guid + "-" + uploadingPerson.Identity.ToString("X8").ToLowerInvariant() + "-" +
+                                      currentOrg.Identity.ToString("X4").ToLowerInvariant();
 
                 DateTime utcNow = DateTime.UtcNow;
 
-                string fileFolder = utcNow.Year.ToString ("0000") + Path.DirectorySeparatorChar +
-                                    utcNow.Month.ToString ("00") + Path.DirectorySeparatorChar +
-                                    utcNow.Day.ToString ("00");
+                string fileFolder = utcNow.Year.ToString("0000") + Path.DirectorySeparatorChar +
+                                    utcNow.Month.ToString("00") + Path.DirectorySeparatorChar +
+                                    utcNow.Day.ToString("00");
 
-                if (!Directory.Exists (StorageRoot + fileFolder))
+                if (!Directory.Exists(StorageRoot + fileFolder))
                 {
-                    Directory.CreateDirectory (StorageRoot + fileFolder);
+                    Directory.CreateDirectory(StorageRoot + fileFolder);
                 }
 
                 int fileCounter = 0;
@@ -240,19 +235,20 @@ namespace Swarmops.Frontend.Automation
                 do
                 {
                     fileCounter++;
-                    fileName = fileNameBase + "-" + fileCounter.ToString ("X2").ToLowerInvariant();
-                } while (File.Exists (StorageRoot + fileFolder + Path.DirectorySeparatorChar + fileName) && fileCounter < 512);
+                    fileName = fileNameBase + "-" + fileCounter.ToString("X2").ToLowerInvariant();
+                } while (File.Exists(StorageRoot + fileFolder + Path.DirectorySeparatorChar + fileName) &&
+                         fileCounter < 512);
 
                 if (fileCounter >= 512)
                 {
-                    throw new InvalidOperationException (
+                    throw new InvalidOperationException(
                         "File name determination failed; probable file system permissions error");
                 }
 
                 string relativeFileName = fileFolder + Path.DirectorySeparatorChar + fileName;
 
                 file.InputStream.Position = 0;
-                file.SaveAs (StorageRoot + relativeFileName);
+                file.SaveAs(StorageRoot + relativeFileName);
 
                 if (convertPdf)
                 {
@@ -265,24 +261,23 @@ namespace Swarmops.Frontend.Automation
                     if (WeAreInDebugEnvironment)
                     {
                         process = Process.Start("cmd.exe",
-                                                "/c convert -alpha off " + StorageRoot + relativeFileName + " " +
-                                                StorageRoot + relativeFileName +
-                                                "-%04d.png");
+                            "/c convert -alpha off " + StorageRoot + relativeFileName + " " +
+                            StorageRoot + relativeFileName +
+                            "-%04d.png");
                     }
                     else
                     {
                         process = Process.Start("bash",
-                                                "-c \"convert -density 300 -alpha off " + StorageRoot + relativeFileName + " " +
-                                                StorageRoot + relativeFileName +
-                                                "-%04d.png\"");  // Density 300 means 300dpi means production-grade conversion
-                        
+                            "-c \"convert -density 300 -alpha off " + StorageRoot + relativeFileName + " " +
+                            StorageRoot + relativeFileName +
+                            "-%04d.png\""); // Density 300 means 300dpi means production-grade conversion
                     }
-                    
+
                     process.WaitForExit();
-                    
+
                     if (process.ExitCode != 0)
                     {
-                        var errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
+                        FilesStatus errorStatus = new FilesStatus(fullName, -1); //file.ContentLength);
                         errorStatus.error = "ERR_BAD_PDF";
                         errorStatus.url = string.Empty;
                         errorStatus.delete_url = string.Empty;
@@ -295,12 +290,13 @@ namespace Swarmops.Frontend.Automation
 
                     string testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
 
-                    while (File.Exists (StorageRoot + testPageFileName))
+                    while (File.Exists(StorageRoot + testPageFileName))
                     {
                         long fileLength = new FileInfo(StorageRoot + testPageFileName).Length;
-                        
-		                Document.Create (testPageFileName, file.FileName + " " + (pageCounter + 1).ToString(CultureInfo.InvariantCulture), fileLength,
-		                                 guid, null, authData.CurrentUser);
+
+                        Document.Create(testPageFileName,
+                            file.FileName + " " + (pageCounter + 1).ToString(CultureInfo.InvariantCulture), fileLength,
+                            guid, null, authData.CurrentUser);
 
                         pageCounter++;
                         testPageFileName = String.Format("{0}-{1:D4}.png", relativeFileName, pageCounter);
@@ -308,21 +304,21 @@ namespace Swarmops.Frontend.Automation
                 }
                 else
                 {
-		            Document.Create (fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName, file.ContentLength,
-		                             guid, null, authData.CurrentUser);
-
+                    Document.Create(fileFolder + Path.DirectorySeparatorChar + fileName, file.FileName,
+                        file.ContentLength,
+                        guid, null, authData.CurrentUser);
                 }
 
-                statuses.Add (new FilesStatus (fullName, file.ContentLength));
+                statuses.Add(new FilesStatus(fullName, file.ContentLength));
             }
         }
 
-        private void WriteJsonIframeSafe (HttpContext context, List<FilesStatus> statuses)
+        private void WriteJsonIframeSafe(HttpContext context, List<FilesStatus> statuses)
         {
-            context.Response.AddHeader ("Vary", "Accept");
+            context.Response.AddHeader("Vary", "Accept");
             try
             {
-                if (context.Request["HTTP_ACCEPT"].Contains ("application/json"))
+                if (context.Request["HTTP_ACCEPT"].Contains("application/json"))
                     context.Response.ContentType = "application/json";
                 else
                     context.Response.ContentType = "text/plain";
@@ -332,42 +328,42 @@ namespace Swarmops.Frontend.Automation
                 context.Response.ContentType = "text/plain";
             }
 
-            string jsonObj = js.Serialize (statuses.ToArray());
-            context.Response.Write (jsonObj);
+            string jsonObj = this.js.Serialize(statuses.ToArray());
+            context.Response.Write(jsonObj);
         }
 
-        private static bool GivenFilename (HttpContext context)
+        private static bool GivenFilename(HttpContext context)
         {
-            return !string.IsNullOrEmpty (context.Request["f"]);
+            return !string.IsNullOrEmpty(context.Request["f"]);
         }
 
-        private void DeliverFile (HttpContext context)
+        private void DeliverFile(HttpContext context)
         {
             string filename = context.Request["f"];
             string filePath = StorageRoot + filename;
 
-            if (File.Exists (filePath))
+            if (File.Exists(filePath))
             {
-                context.Response.AddHeader ("Content-Disposition", "attachment; filename=\"" + filename + "\"");
+                context.Response.AddHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
                 context.Response.ContentType = "application/octet-stream";
                 context.Response.ClearContent();
-                context.Response.WriteFile (filePath);
+                context.Response.WriteFile(filePath);
             }
             else
                 context.Response.StatusCode = 404;
         }
 
-        private void ListCurrentFiles (HttpContext context)
+        private void ListCurrentFiles(HttpContext context)
         {
             FileInfo[] files =
-                new DirectoryInfo (StorageRoot)
-                    .GetFiles ("*", SearchOption.TopDirectoryOnly);
+                new DirectoryInfo(StorageRoot)
+                    .GetFiles("*", SearchOption.TopDirectoryOnly);
 
             // completely wrong, redo from scratch
 
-            string jsonObj = js.Serialize (files);
-            context.Response.AddHeader ("Content-Disposition", "inline; filename=\"files.json\"");
-            context.Response.Write (jsonObj);
+            string jsonObj = this.js.Serialize(files);
+            context.Response.AddHeader("Content-Disposition", "inline; filename=\"files.json\"");
+            context.Response.Write(jsonObj);
             context.Response.ContentType = "application/json";
         }
     }
@@ -380,14 +376,14 @@ namespace Swarmops.Frontend.Automation
         {
         }
 
-        public FilesStatus (FileInfo fileInfo)
+        public FilesStatus(FileInfo fileInfo)
         {
-            SetValues (fileInfo.Name, (int) fileInfo.Length);
+            SetValues(fileInfo.Name, (int) fileInfo.Length);
         }
 
-        public FilesStatus (string fileName, int fileLength)
+        public FilesStatus(string fileName, int fileLength)
         {
-            SetValues (fileName, fileLength);
+            SetValues(fileName, fileLength);
         }
 
         public string group { get; set; }
@@ -401,7 +397,7 @@ namespace Swarmops.Frontend.Automation
         public string delete_type { get; set; }
         public string error { get; set; }
 
-        private void SetValues (string fileName, int fileLength)
+        private void SetValues(string fileName, int fileLength)
         {
             name = fileName;
             type = "image/png";

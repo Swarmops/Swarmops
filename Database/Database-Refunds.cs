@@ -8,11 +8,10 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string refundFieldSequence =
-            " RefundId,PaymentId,Open,AmountCents,CreatedDateTime," +                           // 0-4
+            " RefundId,PaymentId,Open,AmountCents,CreatedDateTime," + // 0-4
             "ClosedDateTime,CreatedByPersonId" +
             " FROM Refunds ";
 
@@ -26,18 +25,15 @@ namespace Swarmops.Database
             DateTime closedDateTime = reader.GetDateTime(5);
             int createdByPersonId = reader.GetInt32(6);
 
-            return new BasicRefund(refundId, paymentId, open, amountCents, createdByPersonId, createdDateTime, closedDateTime);
+            return new BasicRefund(refundId, paymentId, open, amountCents, createdByPersonId, createdDateTime,
+                closedDateTime);
         }
-
-
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
 
-
-        public BasicRefund GetRefund (int refundId)
+        public BasicRefund GetRefund(int refundId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -45,8 +41,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + refundFieldSequence +
-                    "WHERE RefundId=" + refundId.ToString(),
-                                 connection);
+                                 "WHERE RefundId=" + refundId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -55,12 +51,10 @@ namespace Swarmops.Database
                         return ReadRefundFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such RefundId:" + refundId.ToString());
+                    throw new ArgumentException("No such RefundId:" + refundId);
                 }
             }
-
         }
-
 
 
         public BasicRefund[] GetRefunds(params object[] conditions)
@@ -87,16 +81,13 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Creation and manipulation -- stored procedures
 
-
-        public int CreateRefund (int paymentId, int createdByPersonId)
+        public int CreateRefund(int paymentId, int createdByPersonId)
         {
-            return CreateRefund(paymentId, createdByPersonId, 0L);  // zero is default; it means refund entire payment
+            return CreateRefund(paymentId, createdByPersonId, 0L); // zero is default; it means refund entire payment
         }
 
 
@@ -121,7 +112,7 @@ namespace Swarmops.Database
         }
 
 
-        public void SetRefundOpen (int refundId, bool open)
+        public void SetRefundOpen(int refundId, bool open)
         {
             DateTime now = DateTime.Now;
 
@@ -134,15 +125,13 @@ namespace Swarmops.Database
 
                 AddParameterWithName(command, "refundId", refundId);
                 AddParameterWithName(command, "open", open);
-                AddParameterWithName(command, "closedDateTime", now);  // always set, but only valid if open=false
+                AddParameterWithName(command, "closedDateTime", now); // always set, but only valid if open=false
 
                 command.ExecuteNonQuery();
             }
         }
 
-
         #endregion
-
 
         #region Dead template code
 
@@ -487,7 +476,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

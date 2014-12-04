@@ -12,24 +12,24 @@ namespace Swarmops.Frontend.Pages.Swarm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageIcon = "iconshock-group-search";
+            PageIcon = "iconshock-group-search";
 
             if (!Page.IsPostBack)
             {
                 Localize();
             }
 
-            this.EasyUIControlsUsed = EasyUIControl.Tree | EasyUIControl.DataGrid;
+            EasyUIControlsUsed = EasyUIControl.Tree | EasyUIControl.DataGrid;
         }
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages.People.ListFindPeople_Title;
-            this.InfoBoxLiteral = Resources.Pages.People.ListFindPeople_Info;
+            PageTitle = Resources.Pages.Swarm.ListFindPeople_Title;
+            InfoBoxLiteral = Resources.Pages.Swarm.ListFindPeople_Info;
             this.LabelGeography.Text = Resources.Global.Global_Geography;
-            this.LabelNamePattern.Text = Resources.Pages.People.ListFindPeople_NamePattern;
-            this.LabelMatchingPeopleInX.Text = String.Format(Resources.Pages.People.ListFindPeople_MatchingPeopleInX,
-                this.CurrentOrganization.Name);
+            this.LabelNamePattern.Text = Resources.Pages.Swarm.ListFindPeople_NamePattern;
+            this.LabelMatchingPeopleInX.Text = String.Format(Resources.Pages.Swarm.ListFindPeople_MatchingPeopleInX,
+                CurrentOrganization.Name);
 
             this.LabelGridHeaderAction.Text = Resources.Global.Global_Action;
             this.LabelGridHeaderGeography.Text = Resources.Global.Global_Geography;
@@ -37,23 +37,18 @@ namespace Swarmops.Frontend.Pages.Swarm
             this.LabelGridHeaderName.Text = Resources.Global.Global_Name;
             this.LabelGridHeaderPhone.Text = Resources.Global.Global_Phone;
             this.LabelGridHeaderNotes.Text = Resources.Global.Global_Notes;
-
         }
 
-        public struct ConfirmPayoutResult
-        {
-            public int AssignedId;
-            public string DisplayMessage;
-        };
-
         [WebMethod]
-        public static ConfirmPayoutResult ConfirmPayout (string protoIdentity)
+        public static ConfirmPayoutResult ConfirmPayout(string protoIdentity)
         {
             protoIdentity = HttpUtility.UrlDecode(protoIdentity);
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            if (!authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
+            if (
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials,
+                    AccessType.Write)))
             {
                 throw new SecurityAccessDeniedException("Insufficient privileges for operation");
             }
@@ -62,28 +57,22 @@ namespace Swarmops.Frontend.Pages.Swarm
 
             Payout payout = Payout.CreateFromProtoIdentity(authData.CurrentUser, protoIdentity);
             Swarmops.Logic.Support.PWEvents.CreateEvent(EventSource.PirateWeb, EventType.PayoutCreated,
-                                                       authData.CurrentUser.Identity, 1, 1, 0, payout.Identity,
-                                                       protoIdentity);
+                authData.CurrentUser.Identity, 1, 1, 0, payout.Identity,
+                protoIdentity);
 
             // Create result and return it
 
             result.AssignedId = payout.Identity;
             result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
-                                                  payout.Recipient);
+                payout.Recipient);
 
             result.DisplayMessage = HttpUtility.UrlEncode(result.DisplayMessage).Replace("+", "%20");
 
             return result;
         }
 
-        public struct UndoPayoutResult
-        {
-            public bool Success;
-            public string DisplayMessage;
-        }
-
         [WebMethod]
-        public static UndoPayoutResult UndoPayout (int databaseId)
+        public static UndoPayoutResult UndoPayout(int databaseId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             UndoPayoutResult result = new UndoPayoutResult();
@@ -96,17 +85,30 @@ namespace Swarmops.Frontend.Pages.Swarm
 
                 result.Success = false;
                 result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
-                                                      databaseId);
+                    databaseId);
 
                 return result;
             }
 
             payout.UndoPayout();
 
-            result.DisplayMessage = HttpUtility.UrlEncode(String.Format(Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId)).Replace("+","%20");
+            result.DisplayMessage =
+                HttpUtility.UrlEncode(String.Format(Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId))
+                    .Replace("+", "%20");
             result.Success = true;
             return result;
         }
-    }
 
+        public struct ConfirmPayoutResult
+        {
+            public int AssignedId;
+            public string DisplayMessage;
+        };
+
+        public struct UndoPayoutResult
+        {
+            public string DisplayMessage;
+            public bool Success;
+        }
+    }
 }

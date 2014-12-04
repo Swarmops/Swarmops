@@ -7,23 +7,23 @@ namespace Swarmops.Logic.Structure
         #region Creation and Construction
 
         // ReSharper disable UnusedPrivateMember
-        protected UptakeGeography ()
-        // ReSharper restore UnusedPrivateMember
+        protected UptakeGeography()
+            // ReSharper restore UnusedPrivateMember
         {
         } // disallow public direct construction
 
-        private UptakeGeography (BasicUptakeGeography basic)
+        private UptakeGeography(BasicUptakeGeography basic)
             : base(basic)
         {
         }
 
-        protected UptakeGeography (UptakeGeography other)
+        protected UptakeGeography(UptakeGeography other)
             : base(other)
         {
         }
 
 
-        public static UptakeGeography FromBasic (BasicUptakeGeography basic)
+        public static UptakeGeography FromBasic(BasicUptakeGeography basic)
         {
             return new UptakeGeography(basic);
         }
@@ -32,26 +32,18 @@ namespace Swarmops.Logic.Structure
 
         #region Public methods
 
-
         #endregion
 
         #region Public properties
 
-
         public string GeoName
         {
-            get
-            {
-                return this.Geography.Name;
-            }
+            get { return Geography.Name; }
         }
 
         public string OrgName
         {
-            get
-            {
-                return this.Organization.Name;
-            }
+            get { return Organization.Name; }
         }
 
         public Geography Geography
@@ -59,18 +51,18 @@ namespace Swarmops.Logic.Structure
             get
             {
                 if (this.geography == null)
-                    this.geography = Geography.FromIdentity(this.GeoId);
-                return geography;
+                    this.geography = Geography.FromIdentity(GeoId);
+                return this.geography;
             }
             protected set
             {
-                if (this.Organization != null)
-                    this.Organization.DeleteUptakeGeography(this.GeoId);
+                if (Organization != null)
+                    Organization.DeleteUptakeGeography(GeoId);
 
-                if (value != null && this.Organization != null)
-                    this.Organization.AddUptakeGeography(value.GeographyId);
+                if (value != null && Organization != null)
+                    Organization.AddUptakeGeography(value.GeographyId);
 
-                geography = value;
+                this.geography = value;
             }
         }
 
@@ -79,24 +71,23 @@ namespace Swarmops.Logic.Structure
             get
             {
                 if (this.organization == null)
-                    this.organization = Organization.FromIdentity(this.OrgId);
+                    this.organization = Organization.FromIdentity(OrgId);
 
-                return organization;
+                return this.organization;
             }
             protected set
             {
-                if (this.Organization != null)
-                    this.Organization.DeleteUptakeGeography(this.GeoId);
+                if (Organization != null)
+                    Organization.DeleteUptakeGeography(GeoId);
                 if (value != null)
-                    value.AddUptakeGeography(this.GeoId);
-                organization = value;
+                    value.AddUptakeGeography(GeoId);
+                this.organization = value;
             }
         }
+
         #endregion
 
         private Geography geography;
         private Organization organization;
-
-
-   }
+    }
 }

@@ -6,18 +6,16 @@ using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
-using Membership = Swarmops.Logic.Swarm.Membership;
 
 namespace Swarmops
 {
     public partial class MasterV5 : MasterV5Base
     {
-        protected void Page_Init (object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
             // Security stuff
             // Current authentication
@@ -55,14 +53,14 @@ namespace Swarmops
 
             // Titles and other page elements
 
-            this.IconPage.ImageUrl = "/Images/PageIcons/" + this.CurrentPageIcon + "-40px.png";
-            this.LabelPageTitle.Text = this.CurrentPageTitle;
-            this.Page.Title = "Swarmops - " + this.CurrentPageTitle;
+            this.IconPage.ImageUrl = "/Images/PageIcons/" + CurrentPageIcon + "-40px.png";
+            this.LabelPageTitle.Text = CurrentPageTitle;
+            Page.Title = "Swarmops - " + CurrentPageTitle;
 
             this.ExternalScriptEasyUI.Controls = EasyUIControlsUsed.ToString();
             this.IncludedScripts.Controls = IncludedControlsUsed.ToString();
 
-            this.LiteralSidebarInfo.Text = this.CurrentPageInfoBoxLiteral;
+            this.LiteralSidebarInfo.Text = CurrentPageInfoBoxLiteral;
 
             // Set logo image. If custom image is installed, use it instead.
 
@@ -91,9 +89,13 @@ namespace Swarmops
 
             // Rewrite if applicable
 
-            if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl) // only check client-side as many server sites de-SSL the connection before reaching the web server
+            if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl)
+                // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://swarmops-"))
+                if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") &&
+                    !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com") &&
+                    !Request.Url.ToString().StartsWith("http://localhost:") &&
+                    !Request.Url.ToString().StartsWith("http://swarmops-"))
                 {
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
 
@@ -154,9 +156,10 @@ namespace Swarmops
 
             if (dashMessage != null && dashMessage.Value.Length > 0)
             {
-                this.LiteralDocumentReadyHook.Text = string.Format("alertify.alert(unescape('{0}'.replace(/\\+/g, '%20')));", dashMessage.Value);
+                this.LiteralDocumentReadyHook.Text =
+                    string.Format("alertify.alert(unescape('{0}'.replace(/\\+/g, '%20')));", dashMessage.Value);
                 Response.SetCookie(new HttpCookie("DashboardMessage", string.Empty));
-                Response.Cookies ["DashboardMessage"].Expires = DateTime.Now.AddYears(-10);
+                Response.Cookies["DashboardMessage"].Expires = DateTime.Now.AddYears(-10);
             }
             else
             {
@@ -289,15 +292,13 @@ namespace Swarmops
         }*/
 
 
-
-
-                /*
+        /*
                 if (Convert.ToInt32(item.Attributes["UserLevel"]) < 4)   // TODO: user's menu level
                 {
                     item.Visible = false;
                 }*/
 
-                /*
+        /*
                 item.Enabled = true;
                 if (string.IsNullOrEmpty(item.Attributes["Permission"]) == false)
                 {
@@ -323,7 +324,7 @@ namespace Swarmops
                     item.Enabled = false;
                 }*/
 
-                /*
+        /*
                 string[] currentItemUrlSplit = item.NavigateUrl.ToLower().Split(new char[] { '/', '?' }, StringSplitOptions.RemoveEmptyEntries);
                 if (Array.Exists<string>(currentItemUrlSplit,
                                 delegate(String s) { if (s == thisPageUrl) return true; else return false; })
@@ -351,8 +352,7 @@ namespace Swarmops
                 {
                     item.Enabled = false;
                 }*/
-            
-        
+
 
         /*
         string CollectItemID(IRadMenuItemContainer item)
@@ -388,7 +388,5 @@ namespace Swarmops
             this.LiteralCrowdinScript.Text = crowdinCode;
             // Page.ClientScript.RegisterStartupScript(this.GetType(), "crowdin", crowdinCode, false);
         }
-
-
     }
 }

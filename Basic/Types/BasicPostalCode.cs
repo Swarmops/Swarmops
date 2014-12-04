@@ -7,10 +7,10 @@ namespace Swarmops.Basic.Types
     {
         public BasicPostalCode(int postalCodeId, string postalCode, int cityId, int countryId)
         {
-            this.PostalCodeId = postalCodeId;
-            this.PostalCode = postalCode.Replace(" ", "");
-            this.CityId = cityId;
-            this.CountryId = countryId;
+            PostalCodeId = postalCodeId;
+            PostalCode = postalCode.Replace(" ", "");
+            CityId = cityId;
+            CountryId = countryId;
         }
 
         public BasicPostalCode(BasicPostalCode original)
@@ -18,14 +18,14 @@ namespace Swarmops.Basic.Types
         {
         }
 
-        [Obsolete ("Do not call this ctor directly. It exists to enable serialization.", true)]
+        [Obsolete("Do not call this ctor directly. It exists to enable serialization.", true)]
         public BasicPostalCode()
         {
             // this should never be called from code
         }
 
         public int PostalCodeId { get; private set; }
-        public string PostalCode { get; private set; }  // any whitespace removed
+        public string PostalCode { get; private set; } // any whitespace removed
         public int CityId { get; protected set; }
         public int CountryId { get; protected set; }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Security;
 using System.Text;
 using MySql.Data.MySqlClient;
@@ -10,14 +11,14 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public DbConnection GetSqlServerDbConnection()   // Temporarily public for migratory purposes
+        public DbConnection GetSqlServerDbConnection() // Temporarily public for migratory purposes
         {
-            DbConnection connection = ProviderFactory.CreateConnection();
-            connection.ConnectionString = ConnectionString;
+            DbConnection connection = this.ProviderFactory.CreateConnection();
+            connection.ConnectionString = this.ConnectionString;
             return connection;
         }
 
-        protected DbConnection GetMySqlDbConnection () // This is a temporary function used during transition to MySql.
+        protected DbConnection GetMySqlDbConnection() // This is a temporary function used during transition to MySql.
         {
             DbConnection connection = new MySqlConnection();
 
@@ -35,15 +36,16 @@ namespace Swarmops.Database
             //-------- end change /JL
 
             if (specialConnectString == "")
-                specialConnectString = ConnectionString;
-            specialConnectString = specialConnectString.Replace("192.168.0.5", "192.168.0.7"); // for dev & debug at Rick's
+                specialConnectString = this.ConnectionString;
+            specialConnectString = specialConnectString.Replace("192.168.0.5", "192.168.0.7");
+                // for dev & debug at Rick's
 
             connection.ConnectionString = specialConnectString;
 
             return connection;
         }
 
-        protected DbCommand GetDbCommand (string commandText, DbConnection connection)
+        protected DbCommand GetDbCommand(string commandText, DbConnection connection)
         {
             DbCommand command = connection.CreateCommand();
             if (command.GetType().FullName == "System.Data.OleDb.OleDbCommand")
@@ -66,7 +68,7 @@ namespace Swarmops.Database
             return command;
         }
 
-        protected void AddParameterWithName (DbCommand command, string parameterName, object value)
+        protected void AddParameterWithName(DbCommand command, string parameterName, object value)
         {
             if (command.Parameters.GetType().Name == "SqlParameterCollection")
             {
@@ -76,27 +78,27 @@ namespace Swarmops.Database
 
                 if (value is Type)
                 {
-                    if ((Type) value == typeof(int))
+                    if ((Type) value == typeof (int))
                     {
                         parameterType = SqlDbType.Int;
                     }
-                    else if ((Type)value == typeof(DateTime))
+                    else if ((Type) value == typeof (DateTime))
                     {
                         parameterType = SqlDbType.DateTime;
                     }
-                    else if ((Type)value == typeof(bool))
+                    else if ((Type) value == typeof (bool))
                     {
                         parameterType = SqlDbType.Bit;
                     }
-                    else if ((Type)value == typeof(double) || (Type)value == typeof(float))
+                    else if ((Type) value == typeof (double) || (Type) value == typeof (float))
                     {
                         parameterType = SqlDbType.Float;
                     }
-                    else if ((Type)value == typeof(decimal))
+                    else if ((Type) value == typeof (decimal))
                     {
                         parameterType = SqlDbType.Money;
                     }
-                    else if (!((Type)value == typeof(string)))
+                    else if (!((Type) value == typeof (string)))
                     {
                         throw new Exception("Unhandled parameter type in AddParameterWithName: " + value.GetType().Name);
                     }
@@ -127,34 +129,34 @@ namespace Swarmops.Database
                     throw new Exception("Unhandled parameter type in AddParameterWithName: " + value.GetType().Name);
                 }
 
-                System.Data.SqlClient.SqlParameter parameter = null;
+                SqlParameter parameter = null;
 
                 if (parameterType == SqlDbType.NText)
                 {
                     int textLength = 256*2;
                     if (value != DBNull.Value)
                     {
-                        textLength = (value as string).Length * 2; // ntext / unicode buffer
+                        textLength = (value as string).Length*2; // ntext / unicode buffer
 
                         // establish a minimum amount of even 256-byte blocks that this string will fit in
 
                         textLength += 2; // terminating zero, in unicode
-                        textLength -= (textLength % 256);
+                        textLength -= (textLength%256);
                         textLength += 256;
                     }
-                    parameter = new System.Data.SqlClient.SqlParameter("@" + parameterName, parameterType, textLength);
+                    parameter = new SqlParameter("@" + parameterName, parameterType, textLength);
                 }
                 else
                 {
                     // For all other types, ignore the length parameter, let the default handle it
 
-                    parameter = new System.Data.SqlClient.SqlParameter("@" + parameterName, parameterType);
+                    parameter = new SqlParameter("@" + parameterName, parameterType);
                 }
 
                 parameter.Value = value;
 
-                System.Data.SqlClient.SqlParameterCollection sqlCollection =
-                    command.Parameters as System.Data.SqlClient.SqlParameterCollection;
+                SqlParameterCollection sqlCollection =
+                    command.Parameters as SqlParameterCollection;
 
                 sqlCollection.Add(parameter);
             }
@@ -179,7 +181,7 @@ namespace Swarmops.Database
         }
 
         // A common function used here and there. Placed here for convenience.
-        private static string JoinIds (int[] ids)
+        private static string JoinIds(int[] ids)
         {
             if (ids.Length == 0)
             {
@@ -200,7 +202,7 @@ namespace Swarmops.Database
         }
 
         // A common function used here and there. Placed here for convenience.
-        private static string JoinStrings (string[] strs)
+        private static string JoinStrings(string[] strs)
         {
             if (strs.Length == 0)
             {
@@ -219,9 +221,9 @@ namespace Swarmops.Database
 
             return builder.ToString();
         }
-        
+
         // A common function used here and there. Placed here for convenience.
-        private static string MySqlDate (DateTime d)
+        private static string MySqlDate(DateTime d)
         {
             return d.ToString("yyyyMMddHHmmss");
         }
@@ -229,7 +231,11 @@ namespace Swarmops.Database
 
         private string SqlSanitize(string input)
         {
-            string[] forbiddenArray = {"\\", "--", ";", "/*", "*/", "select ", "drop ", "update ", "delete ", "insert ", "="};
+            string[] forbiddenArray =
+            {
+                "\\", "--", ";", "/*", "*/", "select ", "drop ", "update ", "delete ", "insert ",
+                "="
+            };
 
             string output = input.Replace("'", "''"); // the typical case
             string inputLower = input.ToLowerInvariant();
@@ -237,7 +243,8 @@ namespace Swarmops.Database
             {
                 if (inputLower.Contains(forbidden))
                 {
-                    throw new SecurityException("Attempt at SQL injection: parameter passed to SELECT was '" + input + "'");
+                    throw new SecurityException("Attempt at SQL injection: parameter passed to SELECT was '" + input +
+                                                "'");
                 }
             }
 

@@ -1,12 +1,13 @@
 ﻿using System;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Utility.Communications;
 
 namespace Swarmops.Backend
 {
     internal class CommsTransmitter
     {
-        static internal void Run()
+        internal static void Run()
         {
             OutboundComms comms = OutboundComms.GetOpen();
 
@@ -24,7 +25,7 @@ namespace Swarmops.Backend
                     throw new NotImplementedException();
                 }
 
-                ICommsTransmitter transmitter = new Swarmops.Utility.Communications.CommsTransmitterMail();
+                ICommsTransmitter transmitter = new CommsTransmitterMail();
 
                 OutboundCommRecipients recipients = comm.Recipients;
                 PayloadEnvelope envelope = PayloadEnvelope.FromXml(comm.PayloadXml);

@@ -7,12 +7,14 @@ namespace Swarmops.Logic.Security
 {
     public class PgpKey
     {
-        static public void Generate (Person person, Organization organization)
+        public string Fingerprint { get; private set; }
+
+        public static void Generate(Person person, Organization organization)
         {
             GnuPG generatingInstance = new GnuPG();
             generatingInstance.Timeout = 120000;
             generatingInstance.GenerateKeyPair(person.Name, person.PartyEmail, organization.Name,
-                                        new DateTime(DateTime.Today.Year + 2, 12, 31));
+                new DateTime(DateTime.Today.Year + 2, 12, 31));
 
             GnuPGKeyCollection keys = new GnuPG().GetKeys();
             foreach (GnuPGKey key in keys)
@@ -33,9 +35,6 @@ namespace Swarmops.Logic.Security
                     person.CryptoFingerprint = key.Fingerprint;
                 }
             }
-
         }
-
-        public string Fingerprint { get; private set; }
     }
 }

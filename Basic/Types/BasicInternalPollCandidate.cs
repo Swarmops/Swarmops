@@ -2,18 +2,21 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicInternalPollCandidate: IHasIdentity
+    public class BasicInternalPollCandidate : IHasIdentity
     {
-        public BasicInternalPollCandidate (int internalPollCandidateId, int internalPollId, int personId, string candidacyStatement)
+        public BasicInternalPollCandidate(int internalPollCandidateId, int internalPollId, int personId,
+            string candidacyStatement)
         {
-            this.InternalPollCandidateId = internalPollCandidateId;
-            this.InternalPollId = internalPollId;
-            this.PersonId = personId;
-            this.CandidacyStatement = candidacyStatement;
+            InternalPollCandidateId = internalPollCandidateId;
+            InternalPollId = internalPollId;
+            PersonId = personId;
+            CandidacyStatement = candidacyStatement;
         }
 
-        public BasicInternalPollCandidate (BasicInternalPollCandidate original)
-            : this (original.InternalPollCandidateId, original.InternalPollId, original.PersonId, original.CandidacyStatement)
+        public BasicInternalPollCandidate(BasicInternalPollCandidate original)
+            : this(
+                original.InternalPollCandidateId, original.InternalPollId, original.PersonId,
+                original.CandidacyStatement)
         {
             // empty copy ctor
         }
@@ -27,7 +30,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.InternalPollCandidateId; }
+            get { return InternalPollCandidateId; }
         }
 
         #endregion

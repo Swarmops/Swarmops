@@ -4,11 +4,11 @@ using System.Text;
 namespace Swarmops
 {
     /// <summary>
-    /// Summary description for MD5.
+    ///     Summary description for MD5.
     /// </summary>
     public class MD5
     {
-        public static string Hash (string input)
+        public static string Hash(string input)
         {
             byte[] data = Encoding.GetEncoding(1252).GetBytes(input);
 
@@ -17,7 +17,7 @@ namespace Swarmops
 
             // Write the resulting hash to a string of hex values.
 
-            var result = new StringBuilder();
+            StringBuilder result = new StringBuilder();
 
             foreach (byte oneByte in hash)
             {

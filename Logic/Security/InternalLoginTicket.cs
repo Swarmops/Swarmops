@@ -7,5 +7,4 @@ namespace Swarmops.Logic.Security
         public DateTime created = DateTime.MinValue;
         public int validatedUserID = -1;
     }
-
 }

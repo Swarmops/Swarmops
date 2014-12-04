@@ -5,28 +5,33 @@ using System.Linq;
 namespace Swarmops.Logic.Cache
 {
     /// <summary>
-    ///  This class stores arbitrary objects, keyed by a GUID, for 24 hours. Primarily intended for progress bars and similar data that
-    /// needs to be stored in a separate, global namespace for accessibility reasons from JavaScript. DO NOT STORE SENSITIVE STUFF here
-    /// as it's generally accessible, at least not without accompanying access control.
-    /// 
-    /// TODO: Share this data across a web farm some bloody how. Put it in database? Too slow for progress bars... Memcached perhaps?
+    ///     This class stores arbitrary objects, keyed by a GUID, for 24 hours. Primarily intended for progress bars and
+    ///     similar data that
+    ///     needs to be stored in a separate, global namespace for accessibility reasons from JavaScript. DO NOT STORE
+    ///     SENSITIVE STUFF here
+    ///     as it's generally accessible, at least not without accompanying access control.
+    ///     TODO: Share this data across a web farm some bloody how. Put it in database? Too slow for progress bars...
+    ///     Memcached perhaps?
     /// </summary>
     public class GuidCache
     {
+        private static readonly Dictionary<string, CachedObject> _cache;
+        private static DateTime _nextGarbageCollect;
+
         static GuidCache()
         {
             _cache = new Dictionary<string, CachedObject>();
             _nextGarbageCollect = DateTime.MinValue;
         }
 
-        static public void Set(string guidString, object objectToCache)
+        public static void Set(string guidString, object objectToCache)
         {
             ConditionalGarbageCollect();
 
-            _cache[guidString] = new CachedObject() {StoredDateTime = DateTime.UtcNow, Object = objectToCache};
+            _cache[guidString] = new CachedObject {StoredDateTime = DateTime.UtcNow, Object = objectToCache};
         }
 
-        static public object Get(string guidString)
+        public static object Get(string guidString)
         {
             if (!_cache.ContainsKey(guidString))
             {
@@ -43,7 +48,7 @@ namespace Swarmops.Logic.Cache
             }
         }
 
-        static private void ConditionalGarbageCollect()
+        private static void ConditionalGarbageCollect()
         {
             lock (_cache) // thread safety
             {
@@ -59,7 +64,8 @@ namespace Swarmops.Logic.Cache
 
             DateTime expired = DateTime.UtcNow.AddHours(-24);
 
-            foreach (string key in _cache.Keys.ToList())  // ToList() is crucial - it takes a copy of the list, which may be modified in-loop
+            foreach (string key in _cache.Keys.ToList())
+                // ToList() is crucial - it takes a copy of the list, which may be modified in-loop
             {
                 if (_cache[key].StoredDateTime < expired)
                 {
@@ -68,15 +74,10 @@ namespace Swarmops.Logic.Cache
             }
         }
 
-        static private Dictionary<string, CachedObject> _cache;
-        private static DateTime _nextGarbageCollect;
-
         private class CachedObject
         {
-            public DateTime StoredDateTime { get; set; }
             public object Object;
+            public DateTime StoredDateTime { get; set; }
         }
     }
-
-
 }

@@ -3,28 +3,32 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicSalary: IHasIdentity
+    public class BasicSalary : IHasIdentity
     {
-        public BasicSalary (int salaryId, int payrollItemId, DateTime payoutDate, Int64 baseSalaryCents, Int64 netSalaryCents,
+        public BasicSalary(int salaryId, int payrollItemId, DateTime payoutDate, Int64 baseSalaryCents,
+            Int64 netSalaryCents,
             Int64 subtractiveTaxCents, Int64 additiveTaxCents, bool attested, bool netPaid, bool taxPaid, bool open)
         {
-            this.SalaryId = salaryId;
-            this.PayrollItemId = payrollItemId;
-            this.PayoutDate = payoutDate;
-            this.BaseSalaryCents = baseSalaryCents;
-            this.NetSalaryCents = netSalaryCents;
-            this.SubtractiveTaxCents = subtractiveTaxCents;
-            this.AdditiveTaxCents = additiveTaxCents;
-            this.Attested = attested;
-            this.NetPaid = netPaid;
-            this.TaxPaid = taxPaid;
-            this.Open = open;
+            SalaryId = salaryId;
+            PayrollItemId = payrollItemId;
+            PayoutDate = payoutDate;
+            BaseSalaryCents = baseSalaryCents;
+            NetSalaryCents = netSalaryCents;
+            SubtractiveTaxCents = subtractiveTaxCents;
+            AdditiveTaxCents = additiveTaxCents;
+            Attested = attested;
+            NetPaid = netPaid;
+            TaxPaid = taxPaid;
+            Open = open;
         }
 
-        public BasicSalary (BasicSalary original)
-            :this (original.SalaryId, original.PayrollItemId, original.PayoutDate, original.BaseSalaryCents, original.NetSalaryCents,
-            original.SubtractiveTaxCents, original.AdditiveTaxCents, original.Attested, original.NetPaid, original.TaxPaid,
-            original.Open)
+        public BasicSalary(BasicSalary original)
+            : this(
+                original.SalaryId, original.PayrollItemId, original.PayoutDate, original.BaseSalaryCents,
+                original.NetSalaryCents,
+                original.SubtractiveTaxCents, original.AdditiveTaxCents, original.Attested, original.NetPaid,
+                original.TaxPaid,
+                original.Open)
         {
             // empty copy constructor
         }
@@ -45,7 +49,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.SalaryId; }
+            get { return SalaryId; }
         }
 
         #endregion

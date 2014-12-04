@@ -6,9 +6,9 @@ namespace Swarmops.Logic.Structure
 {
     public class Cities : List<City>
     {
-        public static Cities FromArray (BasicCity[] array)
+        public static Cities FromArray(BasicCity[] array)
         {
-            var result = new Cities {Capacity = (array.Length*11/10)};
+            Cities result = new Cities {Capacity = (array.Length*11/10)};
 
             foreach (BasicCity basic in array)
             {
@@ -19,29 +19,29 @@ namespace Swarmops.Logic.Structure
         }
 
 
-        public static Cities FromPostalCode (string postalCode, Country country)
+        public static Cities FromPostalCode(string postalCode, Country country)
         {
             return FromPostalCode(postalCode, country.Identity);
         }
 
-        public static Cities FromPostalCode (string postalCode, string countryCode)
+        public static Cities FromPostalCode(string postalCode, string countryCode)
         {
             return FromPostalCode(postalCode, Country.FromCode(countryCode).Identity);
         }
 
-        public static Cities FromPostalCode (string postalCode, int countryId)
+        public static Cities FromPostalCode(string postalCode, int countryId)
         {
             return FromArray(SwarmDb.GetDatabaseForReading().GetCitiesByCountryAndPostalCode(countryId, postalCode));
         }
-        
-        public static Cities FromName (string cityName, int countryId)
+
+        public static Cities FromName(string cityName, int countryId)
         {
             return FromArray(SwarmDb.GetDatabaseForReading().GetCitiesByName(cityName, countryId));
         }
 
-        public static Cities ForCountry (string countryCode)
+        public static Cities ForCountry(string countryCode)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetCitiesByCountry (countryCode));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetCitiesByCountry(countryCode));
         }
     }
 }

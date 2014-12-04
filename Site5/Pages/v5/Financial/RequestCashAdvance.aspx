@@ -53,6 +53,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&#8203;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&#8203;<br/>

@@ -5,25 +5,23 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Communications
 {
-    public class CommunicationTurnarounds: PluralBase<CommunicationTurnarounds,CommunicationTurnaround,BasicCommunicationTurnaround>
+    public class CommunicationTurnarounds :
+        PluralBase<CommunicationTurnarounds, CommunicationTurnaround, BasicCommunicationTurnaround>
     {
-        public static CommunicationTurnarounds ForOrganization (Organization organization)
+        public static CommunicationTurnarounds ForOrganization(Organization organization)
         {
             return ForOrganization(organization, false);
         }
 
-        public static CommunicationTurnarounds ForOrganization (Organization organization, bool includeClosed)
+        public static CommunicationTurnarounds ForOrganization(Organization organization, bool includeClosed)
         {
             if (includeClosed)
             {
                 return FromArray(SwarmDb.GetDatabaseForReading().GetCommunicationTurnarounds(organization));
             }
-            else
-            {
-                return
-                    FromArray(SwarmDb.GetDatabaseForReading().GetCommunicationTurnarounds(organization,
-                                                                                 DatabaseCondition.OpenTrue));
-            }
+            return
+                FromArray(SwarmDb.GetDatabaseForReading().GetCommunicationTurnarounds(organization,
+                    DatabaseCondition.OpenTrue));
         }
     }
 }

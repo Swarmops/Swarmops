@@ -37,7 +37,8 @@ namespace Swarmops.Database
                         "  `Description` VARCHAR(256) NOT NULL," +
                         "  `DateTimeCreated` DATETIME NOT NULL," +
                         "  PRIMARY KEY (`TestId`)" +
-                        ") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table is created to test database credentials'", connection);
+                        ") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table is created to test database credentials'",
+                        connection);
 
                     command.ExecuteNonQuery();
                     return true;
@@ -59,7 +60,8 @@ namespace Swarmops.Database
                     connection.Open();
 
                     DbCommand command = GetDbCommand(
-                        "ALTER TABLE `CredentialsTests` ADD COLUMN `AppendedColumn` INT AFTER `DateTimeCreated`", connection);
+                        "ALTER TABLE `CredentialsTests` ADD COLUMN `AppendedColumn` INT AFTER `DateTimeCreated`",
+                        connection);
 
                     command.ExecuteNonQuery();
                     return true;
@@ -191,8 +193,6 @@ namespace Swarmops.Database
                 Debug.WriteLine(debug.ToString());
                 return false;
             }
-
         }
-
     }
 }

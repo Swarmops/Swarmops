@@ -5,6 +5,7 @@ using System.Reflection;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
+
 [assembly: AssemblyTitle("PirateWeb Database Assembly")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -12,7 +13,7 @@ using System.Reflection;
 [assembly: AssemblyProduct("")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]		
+[assembly: AssemblyCulture("")]
 
 //
 // Version information for an assembly consists of the following four values:
@@ -52,6 +53,7 @@ using System.Reflection;
 //   (*) Delay Signing is an advanced option - see the Microsoft .NET Framework
 //       documentation for more information on this.
 //
+
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]

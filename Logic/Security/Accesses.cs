@@ -4,7 +4,12 @@ namespace Swarmops.Logic.Security
 {
     public class Access
     {
-        public Access (AccessAspect aspect, AccessType type)
+        public readonly AccessAspect Aspect;
+        public readonly Geography Geography;
+        public readonly Organization Organization;
+        public readonly AccessType Type;
+
+        public Access(AccessAspect aspect, AccessType type)
         {
             this.Aspect = aspect;
             this.Type = type;
@@ -24,31 +29,30 @@ namespace Swarmops.Logic.Security
             this.Aspect = aspect;
             this.Type = type;
         }
-
-        public readonly Organization Organization;
-        public readonly Geography Geography;
-        public readonly AccessAspect Aspect;
-        public readonly AccessType Type;
     }
 
 
     public enum AccessAspect
     {
         Unknown = 0,
+
         /// <summary>
-        /// Access to underlying ledgers
+        ///     Access to underlying ledgers
         /// </summary>
         Bookkeeping,
+
         /// <summary>
-        /// Access to regular accounting
+        ///     Access to regular accounting
         /// </summary>
         Financials,
+
         /// <summary>
-        /// Access to personal details about people in org
+        ///     Access to personal details about people in org
         /// </summary>
         PersonData,
+
         /// <summary>
-        /// Access to change organization's fundamental operating parameters
+        ///     Access to change organization's fundamental operating parameters
         /// </summary>
         Administration
     }

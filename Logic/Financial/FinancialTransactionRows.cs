@@ -45,7 +45,8 @@ namespace Swarmops.Logic.Financial
 
                 foreach (FinancialTransactionRow row in this)
                 {
-                    if (row.Account.AccountType == FinancialAccountType.Asset || row.Account.AccountType == FinancialAccountType.Debt)
+                    if (row.Account.AccountType == FinancialAccountType.Asset ||
+                        row.Account.AccountType == FinancialAccountType.Debt)
                     {
                         result += row.Amount;
                     }
@@ -62,7 +63,8 @@ namespace Swarmops.Logic.Financial
 
                 foreach (FinancialTransactionRow row in this)
                 {
-                    if (row.Account.AccountType == FinancialAccountType.Asset || row.Account.AccountType == FinancialAccountType.Debt)
+                    if (row.Account.AccountType == FinancialAccountType.Asset ||
+                        row.Account.AccountType == FinancialAccountType.Debt)
                     {
                         result += row.AmountCents;
                     }
@@ -73,11 +75,11 @@ namespace Swarmops.Logic.Financial
 
         public static FinancialTransactionRows FromArray(BasicFinancialTransactionRow[] basicArray)
         {
-            var result = new FinancialTransactionRows {Capacity = (basicArray.Length*11/10)};
+            FinancialTransactionRows result = new FinancialTransactionRows {Capacity = (basicArray.Length*11/10)};
 
             foreach (BasicFinancialTransactionRow basic in basicArray)
             {
-                result.Add (FinancialTransactionRow.FromBasic (basic));
+                result.Add(FinancialTransactionRow.FromBasic(basic));
             }
 
             return result;

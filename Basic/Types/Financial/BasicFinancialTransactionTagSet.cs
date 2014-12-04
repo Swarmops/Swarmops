@@ -2,21 +2,24 @@
 
 namespace Swarmops.Basic.Types.Financial
 {
-    public class BasicFinancialTransactionTagSet: IHasIdentity
+    public class BasicFinancialTransactionTagSet : IHasIdentity
     {
-        public BasicFinancialTransactionTagSet (int financialTransactionTagSetId, int financialTransactionTagSetTypeId, int organizationId, int order, bool allowUntagged, int visibilityLevel, int profitLossType)
+        public BasicFinancialTransactionTagSet(int financialTransactionTagSetId, int financialTransactionTagSetTypeId,
+            int organizationId, int order, bool allowUntagged, int visibilityLevel, int profitLossType)
         {
-            this.FinancialTransactionTagSetId = financialTransactionTagSetId;
-            this.FinancialTransactionTagSetTypeId = financialTransactionTagSetTypeId;
-            this.OrganizationId = organizationId;
-            this.Order = order;
-            this.AllowUntagged = allowUntagged;
-            this.VisibilityLevel = visibilityLevel;
-            this.ProfitLossType = profitLossType;
+            FinancialTransactionTagSetId = financialTransactionTagSetId;
+            FinancialTransactionTagSetTypeId = financialTransactionTagSetTypeId;
+            OrganizationId = organizationId;
+            Order = order;
+            AllowUntagged = allowUntagged;
+            VisibilityLevel = visibilityLevel;
+            ProfitLossType = profitLossType;
         }
 
-        public BasicFinancialTransactionTagSet (BasicFinancialTransactionTagSet original):
-            this (original.FinancialTransactionTagSetId, original.FinancialTransactionTagSetTypeId, original.OrganizationId, original.Order, original.AllowUntagged, original.VisibilityLevel, original.ProfitLossType)
+        public BasicFinancialTransactionTagSet(BasicFinancialTransactionTagSet original) :
+            this(
+            original.FinancialTransactionTagSetId, original.FinancialTransactionTagSetTypeId, original.OrganizationId,
+            original.Order, original.AllowUntagged, original.VisibilityLevel, original.ProfitLossType)
         {
             // copy ctor
         }
@@ -31,7 +34,10 @@ namespace Swarmops.Basic.Types.Financial
 
         #region Implementation of IHasIdentity
 
-        public int Identity { get { return this.FinancialTransactionTagSetId; } }
+        public int Identity
+        {
+            get { return FinancialTransactionTagSetId; }
+        }
 
         #endregion
     }

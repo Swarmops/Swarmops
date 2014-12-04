@@ -16,12 +16,13 @@ namespace Swarmops.Database
     public partial class SwarmDb
     {
         private const string financialAccountFieldSequence =
-            " FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId," +  // 0-4
-            " OwnerPersonId,Open,OpenedYear,ClosedYear,Expensable," +  // 5-9
+            " FinancialAccountId,Name,OrganizationId,AccountType,ParentFinancialAccountId," + // 0-4
+            " OwnerPersonId,Open,OpenedYear,ClosedYear,Expensable," + // 5-9
             " Administrative,Active,LinkBackward,LinkForward " + // 10-13
             " FROM FinancialAccounts ";
 
-        public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)
+        public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType,
+            int pParentFinancialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -32,7 +33,7 @@ namespace Swarmops.Database
 
                 AddParameterWithName(command, "pOrganizationId", pOrganizationId);
                 AddParameterWithName(command, "pName", pName);
-                AddParameterWithName(command, "pAccountType", (int)pAccountType);
+                AddParameterWithName(command, "pAccountType", (int) pAccountType);
                 AddParameterWithName(command, "pParentFinancialAccountId", pParentFinancialAccountId);
 
                 return Convert.ToInt32(command.ExecuteScalar());
@@ -69,7 +70,7 @@ namespace Swarmops.Database
 
         public BasicFinancialAccount[] GetFinancialAccountsForOrganization(int organizationId)
         {
-            var result = new List<BasicFinancialAccount>();
+            List<BasicFinancialAccount> result = new List<BasicFinancialAccount>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -94,7 +95,7 @@ namespace Swarmops.Database
 
         public BasicFinancialAccount[] GetFinancialAccountsOwnedByPerson(int ownerPersonId)
         {
-            var result = new List<BasicFinancialAccount>();
+            List<BasicFinancialAccount> result = new List<BasicFinancialAccount>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -119,7 +120,7 @@ namespace Swarmops.Database
 
         public BasicFinancialAccount[] GetFinancialAccounts(int[] financialAccountIds)
         {
-            var result = new List<BasicFinancialAccount>();
+            List<BasicFinancialAccount> result = new List<BasicFinancialAccount>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -144,7 +145,7 @@ namespace Swarmops.Database
 
         public BasicFinancialTransaction GetFinancialTransaction(int financialTransactionId)
         {
-            var array = GetFinancialTransactions(new int[] {financialTransactionId});
+            BasicFinancialTransaction[] array = GetFinancialTransactions(new[] {financialTransactionId});
 
             if (array.Length == 0)
             {
@@ -154,7 +155,7 @@ namespace Swarmops.Database
             return array[0];
         }
 
-        public BasicFinancialTransaction[] GetFinancialTransactions (int[] financialTransactionIds)
+        public BasicFinancialTransaction[] GetFinancialTransactions(int[] financialTransactionIds)
         {
             List<BasicFinancialTransaction> result = new List<BasicFinancialTransaction>();
 
@@ -165,7 +166,7 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand(
                         "SELECT FinancialTransactionId,OrganizationId,DateTime,Comment,ImportHash From FinancialTransactions WHERE FinancialTransactionId IN (" +
-                        JoinIds (financialTransactionIds) + ");", connection);
+                        JoinIds(financialTransactionIds) + ");", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -179,7 +180,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicFinancialTransaction GetFinancialTransactionFromImportKey (int organizationId, string importKey)
+        public BasicFinancialTransaction GetFinancialTransactionFromImportKey(int organizationId, string importKey)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -187,7 +188,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT FinancialTransactionId,OrganizationId,DateTime,Comment,ImportHash From FinancialTransactions WHERE OrganizationId=" + organizationId.ToString() + " AND ImportHash='" + importKey.Replace("'", "''") + "';", connection);
+                        "SELECT FinancialTransactionId,OrganizationId,DateTime,Comment,ImportHash From FinancialTransactions WHERE OrganizationId=" +
+                        organizationId + " AND ImportHash='" + importKey.Replace("'", "''") + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -217,7 +219,7 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt64(0) / 100.0;
+                        return reader.GetInt64(0)/100.0;
                     }
 
                     throw new ArgumentException("Unknown Account Id");
@@ -281,7 +283,8 @@ namespace Swarmops.Database
             }
         }
 
-        public Int64 GetFinancialAccountBalanceDeltaCents(int[] financialAccountIds, DateTime startDate, DateTime endDate)
+        public Int64 GetFinancialAccountBalanceDeltaCents(int[] financialAccountIds, DateTime startDate,
+            DateTime endDate)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -320,16 +323,16 @@ namespace Swarmops.Database
             return GetFinancialAccountBalanceDeltaCents(financialAccountId, startDate, endDate)/100.0m;
         }
 
-        public BasicFinancialAccountRow[] GetFinancialAccountRows (int financialAccountId, DateTime startDateTime,
-                                                                   DateTime endDateTime, bool selectFar)
+        public BasicFinancialAccountRow[] GetFinancialAccountRows(int financialAccountId, DateTime startDateTime,
+            DateTime endDateTime, bool selectFar)
         {
-            return GetFinancialAccountRows(new int[] {financialAccountId}, startDateTime, endDateTime, selectFar);
+            return GetFinancialAccountRows(new[] {financialAccountId}, startDateTime, endDateTime, selectFar);
         }
 
         public BasicFinancialAccountRow[] GetFinancialAccountRows(int[] financialAccountIds, DateTime startDateTime,
-                                                           DateTime endDateTime, bool selectFar)
+            DateTime endDateTime, bool selectFar)
         {
-            var result = new List<BasicFinancialAccountRow>();
+            List<BasicFinancialAccountRow> result = new List<BasicFinancialAccountRow>();
 
             // initialize to near selector (equal sign by the lower bound
 
@@ -351,7 +354,8 @@ namespace Swarmops.Database
                         "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
                         JoinIds(financialAccountIds) + ") AND DateTime " + selectorLower + " '" +
                         startDateTime.ToString("yyyy-MM-dd HH:mm:ss") +
-                        "' AND DateTime " + selectorUpper + " '" + endDateTime.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY DateTime,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime;",
+                        "' AND DateTime " + selectorUpper + " '" + endDateTime.ToString("yyyy-MM-dd HH:mm:ss") +
+                        "' ORDER BY DateTime,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime;",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -367,14 +371,14 @@ namespace Swarmops.Database
         }
 
 
-        public BasicFinancialAccountRow[] GetLastFinancialAccountRows (int financialAccountId, int rowCount)
+        public BasicFinancialAccountRow[] GetLastFinancialAccountRows(int financialAccountId, int rowCount)
         {
-            return GetLastFinancialAccountRows(new int[] {financialAccountId}, rowCount);
+            return GetLastFinancialAccountRows(new[] {financialAccountId}, rowCount);
         }
 
-        public BasicFinancialAccountRow[] GetLastFinancialAccountRows (int[] financialAccountIds, int rowCount)
+        public BasicFinancialAccountRow[] GetLastFinancialAccountRows(int[] financialAccountIds, int rowCount)
         {
-            var result = new List<BasicFinancialAccountRow>();
+            List<BasicFinancialAccountRow> result = new List<BasicFinancialAccountRow>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -383,7 +387,9 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand(
                         "select FinancialTransactionRows.FinancialAccountId,FinancialTransactionRows.FinancialTransactionId,FinancialTransactions.DateTime,FinancialTransactions.Comment,FinancialTransactionRows.AmountCents,FinancialTransactionRows.CreatedDateTime,FinancialTransactionRows.CreatedByPersonId FROM FinancialTransactions,FinancialTransactionRows WHERE FinancialTransactionRows.Deleted=0 AND FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId AND FinancialTransactionRows.FinancialAccountId IN (" +
-                        JoinIds(financialAccountIds) + ") ORDER BY DateTime DESC,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime LIMIT " + rowCount.ToString() + ";",
+                        JoinIds(financialAccountIds) +
+                        ") ORDER BY DateTime DESC,FinancialTransactions.FinancialTransactionId,FinancialTransactionRows.CreatedDateTime LIMIT " +
+                        rowCount + ";",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -401,7 +407,7 @@ namespace Swarmops.Database
 
         public BasicFinancialTransactionRow[] GetFinancialTransactionRows(int financialTransactionId)
         {
-            var result = new List<BasicFinancialTransactionRow>();
+            List<BasicFinancialTransactionRow> result = new List<BasicFinancialTransactionRow>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -425,7 +431,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicFinancialTransactionRow GetFinancialTransactionRow (int financialTransactionRowId)
+        public BasicFinancialTransactionRow GetFinancialTransactionRow(int financialTransactionRowId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -449,9 +455,9 @@ namespace Swarmops.Database
         }
 
 
-        public BasicFinancialTransaction[] GetUnbalancedFinancialTransactions (int organizationId)
+        public BasicFinancialTransaction[] GetUnbalancedFinancialTransactions(int organizationId)
         {
-            var result = new List<BasicFinancialTransaction>();
+            List<BasicFinancialTransaction> result = new List<BasicFinancialTransaction>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -483,7 +489,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicFinancialTransaction GetFinancialTransactionFromDependency (IHasIdentity foreignObject)
+        public BasicFinancialTransaction GetFinancialTransactionFromDependency(IHasIdentity foreignObject)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -492,7 +498,8 @@ namespace Swarmops.Database
                 string commandString = "SELECT FinancialTransactionId FROM FinancialTransactionDependencies " +
                                        "JOIN FinancialDependencyTypes ON (FinancialDependencyTypes.FinancialDependencyTypeId=FinancialTransactionDependencies.FinancialDependencyTypeId) " +
                                        "WHERE FinancialDependencyTypes.Name='" + GetForeignTypeString(foreignObject) +
-                                       "' AND FinancialTransactionDependencies.ForeignId=" + foreignObject.Identity + ";";
+                                       "' AND FinancialTransactionDependencies.ForeignId=" + foreignObject.Identity +
+                                       ";";
 
 
                 DbCommand command = GetDbCommand(commandString, connection);
@@ -501,28 +508,26 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return GetFinancialTransaction(reader.GetInt32(0)); // Warning: opens another datareader before closing both
+                        return GetFinancialTransaction(reader.GetInt32(0));
+                            // Warning: opens another datareader before closing both
                     }
 
                     throw new ArgumentException(
                         String.Format("No financial transaction for specified dependency: {0} #{1}",
-                                      GetForeignTypeString(foreignObject), foreignObject.Identity));
+                            GetForeignTypeString(foreignObject), foreignObject.Identity));
                 }
             }
-            
-
-
         }
 
 
         /// <summary>
-        /// Gets all undocumented transactions that lowers assets for a particular organization
+        ///     Gets all undocumented transactions that lowers assets for a particular organization
         /// </summary>
         /// <param name="organizationId">The organization owning the transactions</param>
         /// <returns>A list of all such transactions</returns>
         public BasicFinancialTransaction[] GetUndocumentedFinancialTransactions(int organizationId)
         {
-            var result = new List<BasicFinancialTransaction>();
+            List<BasicFinancialTransaction> result = new List<BasicFinancialTransaction>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -535,7 +540,8 @@ namespace Swarmops.Database
                                        "FROM FinancialTransactions " +
                                        "JOIN FinancialTransactionRows ON (FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId) " +
                                        "JOIN FinancialAccounts ON (FinancialAccounts.FinancialAccountId=FinancialTransactionRows.FinancialAccountId) " +
-                                       "WHERE FinancialTransactions.OrganizationId=" + organizationId + " AND FinancialAccounts.AccountType IN (1,2) " +
+                                       "WHERE FinancialTransactions.OrganizationId=" + organizationId +
+                                       " AND FinancialAccounts.AccountType IN (1,2) " +
                                        "AND NOT EXISTS (SELECT DocumentId FROM Documents JOIN DocumentTypes ON (DocumentTypes.DocumentTypeId=Documents.DocumentTypeId) WHERE Documents.ForeignId=FinancialTransactions.FinancialTransactionId AND DocumentTypes.Name='FinancialTransaction') " +
                                        "AND NOT EXISTS (SELECT FinancialTransactionId FROM FinancialTransactionDependencies WHERE FinancialTransactionDependencies.FinancialTransactionId=FinancialTransactions.FinancialTransactionId) " +
                                        "GROUP BY FinancialTransactionId HAVING BalanceDelta < 0;";
@@ -563,7 +569,7 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand(
                         "select SUM(Amount) from FinancialAccountBudgets where Year=" + year +
-                        " AND FinancialAccountId IN (" +JoinIds(financialAccountIds) + ");", connection);
+                        " AND FinancialAccountId IN (" + JoinIds(financialAccountIds) + ");", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -847,15 +853,16 @@ namespace Swarmops.Database
             DateTime createdDateTime = reader.GetDateTime(4);
             int createdByPersonId = reader.GetInt32(5);
 
-            return new BasicFinancialTransactionRow(rowId, accountId, transactionId, amountCents, createdDateTime, createdByPersonId);
+            return new BasicFinancialTransactionRow(rowId, accountId, transactionId, amountCents, createdDateTime,
+                createdByPersonId);
         }
 
-        private BasicFinancialAccount ReadFinancialAccountFromDataReader (DbDataReader reader)
+        private BasicFinancialAccount ReadFinancialAccountFromDataReader(DbDataReader reader)
         {
             int accountId = reader.GetInt32(0);
             string name = reader.GetString(1);
             int organizationId = reader.GetInt32(2);
-            var accountType = (FinancialAccountType) reader.GetInt32(3);
+            FinancialAccountType accountType = (FinancialAccountType) reader.GetInt32(3);
             int parentFinancialAccountId = reader.GetInt32(4);
             int ownerPersonId = reader.GetInt32(5);
             bool open = reader.GetBoolean(6);
@@ -867,10 +874,12 @@ namespace Swarmops.Database
             int linkBackward = reader.GetInt32(12);
             int linkForward = reader.GetInt32(13);
 
-            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId, ownerPersonId, open, openedYear, closedYear, active, expensable, administrative, linkBackward, linkForward);
+            return new BasicFinancialAccount(accountId, name, accountType, organizationId, parentFinancialAccountId,
+                ownerPersonId, open, openedYear, closedYear, active, expensable, administrative, linkBackward,
+                linkForward);
         }
 
-        private BasicFinancialAccountRow ReadFinancialAccountRowFromDataReader (DbDataReader reader)
+        private BasicFinancialAccountRow ReadFinancialAccountRowFromDataReader(DbDataReader reader)
         {
             int accountId = reader.GetInt32(0);
             int transactionId = reader.GetInt32(1);
@@ -880,11 +889,12 @@ namespace Swarmops.Database
             DateTime rowDateTime = reader.GetDateTime(5);
             int rowCreatedByPersonId = reader.GetInt32(6);
 
-            return new BasicFinancialAccountRow(accountId, transactionId, transactionDateTime, comment, amountCents, rowDateTime, rowCreatedByPersonId);
+            return new BasicFinancialAccountRow(accountId, transactionId, transactionDateTime, comment, amountCents,
+                rowDateTime, rowCreatedByPersonId);
         }
 
 
-        private BasicFinancialTransaction ReadFinancialTransactionFromDataReader (DbDataReader reader)
+        private BasicFinancialTransaction ReadFinancialTransactionFromDataReader(DbDataReader reader)
         {
             int transactionId = reader.GetInt32(0);
             int organizationId = reader.GetInt32(1);
@@ -895,7 +905,7 @@ namespace Swarmops.Database
             return new BasicFinancialTransaction(transactionId, organizationId, dateTime, comment, importHash);
         }
 
-        public int CreateFinancialTransaction (int organizationId, DateTime dateTime, string comment)
+        public int CreateFinancialTransaction(int organizationId, DateTime dateTime, string comment)
         {
             if (comment.Length > 127)
             {
@@ -917,8 +927,8 @@ namespace Swarmops.Database
             }
         }
 
-        public int CreateFinancialTransactionStub (int organizationId, DateTime dateTime, int financialAccountId,
-                                                   Int64 amountCents, string comment, string importHash, int personId)
+        public int CreateFinancialTransactionStub(int organizationId, DateTime dateTime, int financialAccountId,
+            Int64 amountCents, string comment, string importHash, int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -940,7 +950,7 @@ namespace Swarmops.Database
         }
 
         public void CreateFinancialTransactionRow(int financialTransactionId, int financialAccountId, double amount,
-                                                   int personId)
+            int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -960,7 +970,7 @@ namespace Swarmops.Database
         }
 
         public void CreateFinancialTransactionRow(int financialTransactionId, int financialAccountId, Int64 amountCents,
-                                                   int personId)
+            int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -996,7 +1006,8 @@ namespace Swarmops.Database
         }
 
 
-        public void SetFinancialTransactionDependency(int financialTransactionId, FinancialDependencyType dependencyType, int foreignId)
+        public void SetFinancialTransactionDependency(int financialTransactionId, FinancialDependencyType dependencyType,
+            int foreignId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -1030,7 +1041,6 @@ namespace Swarmops.Database
         }
 
 
-
         public DateTime GetFinancialAccountFirstTransactionDate(int financialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -1040,9 +1050,10 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand(
                         "SELECT FinancialTransactions.DateTime FROM FinancialTransactions,FinancialTransactionRows " +
-                          "WHERE FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId " +
-                          "AND FinancialTransactionRows.FinancialAccountId = " + financialAccountId.ToString(CultureInfo.InvariantCulture) + " " +
-                          "ORDER BY FinancialTransactions.DateTime LIMIT 1;", connection);
+                        "WHERE FinancialTransactions.FinancialTransactionId=FinancialTransactionRows.FinancialTransactionId " +
+                        "AND FinancialTransactionRows.FinancialAccountId = " +
+                        financialAccountId.ToString(CultureInfo.InvariantCulture) + " " +
+                        "ORDER BY FinancialTransactions.DateTime LIMIT 1;", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -1050,15 +1061,15 @@ namespace Swarmops.Database
                     {
                         return reader.GetDateTime(0);
                     }
-                    else
-                    {
-                        throw new Exception("No transactions for this account yet"); // need better type here than "Exception"
-                    };
+                    throw new Exception("No transactions for this account yet");
+                        // need better type here than "Exception"
+                    ;
                 }
             }
         }
 
-        public BasicFinancialTransaction[] GetDependentFinancialTransactions(FinancialDependencyType dependencyType, int foreignId)
+        public BasicFinancialTransaction[] GetDependentFinancialTransactions(FinancialDependencyType dependencyType,
+            int foreignId)
         {
             List<int> transactionIds = new List<int>();
 
@@ -1069,9 +1080,9 @@ namespace Swarmops.Database
                 DbCommand command =
                     GetDbCommand(
                         "SELECT FinancialTransactionId FROM FinancialTransactionDependencies,FinancialDependencyTypes " +
-                        "WHERE FinancialDependencyTypes.Name='" + dependencyType.ToString() + "' AND " +
+                        "WHERE FinancialDependencyTypes.Name='" + dependencyType + "' AND " +
                         "FinancialDependencyTypes.FinancialDependencyTypeId=FinancialTransactionDependencies.FinancialDependencyTypeId AND " +
-                        "FinancialTransactionDependencies.ForeignId=" + foreignId.ToString(), connection);
+                        "FinancialTransactionDependencies.ForeignId=" + foreignId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -1095,7 +1106,8 @@ namespace Swarmops.Database
         // Fix this by introducing the BasicFinancialDependency type in the semi-near future, and
         // using it as a return type.
 
-        public void GetFinancialTransactionDependency (int financialTransactionId, out FinancialDependencyType dependencyType, out int foreignId)
+        public void GetFinancialTransactionDependency(int financialTransactionId,
+            out FinancialDependencyType dependencyType, out int foreignId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -1106,7 +1118,8 @@ namespace Swarmops.Database
                         "SELECT FinancialDependencyTypes.Name,FinancialTransactionDependencies.ForeignId " +
                         "FROM FinancialTransactionDependencies,FinancialDependencyTypes " +
                         "WHERE FinancialDependencyTypes.FinancialDependencyTypeId=FinancialTransactionDependencies.FinancialDependencyTypeId " +
-                        "AND FinancialTransactionDependencies.FinancialTransactionId=" + financialTransactionId.ToString(), connection);
+                        "AND FinancialTransactionDependencies.FinancialTransactionId=" + financialTransactionId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -1114,7 +1127,8 @@ namespace Swarmops.Database
                     {
                         // Set OUT parameters
 
-                        dependencyType = (FinancialDependencyType) Enum.Parse(typeof (FinancialDependencyType), reader.GetString(0));
+                        dependencyType =
+                            (FinancialDependencyType) Enum.Parse(typeof (FinancialDependencyType), reader.GetString(0));
                         foreignId = reader.GetInt32(1);
                     }
                     else
@@ -1126,14 +1140,13 @@ namespace Swarmops.Database
                     }
                 }
             }
-            
         }
-
 
 
         // TODO: Return BasicFinancialValidation object
 
-        public void CreateFinancialValidation (FinancialValidationType validationType, FinancialDependencyType dependencyType, int foreignId,
+        public void CreateFinancialValidation(FinancialValidationType validationType,
+            FinancialDependencyType dependencyType, int foreignId,
             DateTime validatedDateTime, int personId, double amount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -1155,10 +1168,6 @@ namespace Swarmops.Database
         }
 
 
-
-
-
-
         // -- lines and trees and children --
 
 
@@ -1172,14 +1181,15 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + financialAccountFieldSequence + " WHERE ParentFinancialAccountId = " + parentFinancialAccountId.ToString() +
+                        "SELECT " + financialAccountFieldSequence + " WHERE ParentFinancialAccountId = " +
+                        parentFinancialAccountId +
                         " ORDER BY \"Name\"", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadFinancialAccountFromDataReader (reader));
+                        result.Add(ReadFinancialAccountFromDataReader(reader));
                     }
 
                     return result.ToArray();
@@ -1259,7 +1269,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicFinancialAccount[] GetFinancialAccountTreeForOrganization (int organizationId)
+        public BasicFinancialAccount[] GetFinancialAccountTreeForOrganization(int organizationId)
         {
             Dictionary<int, List<BasicFinancialAccount>> nodes = GetHashedFinancialAccounts(organizationId);
 
@@ -1282,8 +1292,9 @@ namespace Swarmops.Database
         }*/
 
 
-        private BasicFinancialAccount[] GetFinancialAccountTree(Dictionary<int, List<BasicFinancialAccount>> financialAccounts, int startNodeId,
-                                                   int generation)
+        private BasicFinancialAccount[] GetFinancialAccountTree(
+            Dictionary<int, List<BasicFinancialAccount>> financialAccounts, int startNodeId,
+            int generation)
         {
             List<BasicFinancialAccount> result = new List<BasicFinancialAccount>();
 
@@ -1297,7 +1308,8 @@ namespace Swarmops.Database
 
                     // Add recursively
 
-                    BasicFinancialAccount[] children = GetFinancialAccountTree(financialAccounts, node.FinancialAccountId, generation + 1);
+                    BasicFinancialAccount[] children = GetFinancialAccountTree(financialAccounts,
+                        node.FinancialAccountId, generation + 1);
 
                     if (children.Length > 0)
                     {
@@ -1317,6 +1329,5 @@ namespace Swarmops.Database
 
             return result.ToArray();
         }
-
     }
 }

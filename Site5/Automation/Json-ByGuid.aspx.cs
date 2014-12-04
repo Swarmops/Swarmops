@@ -8,13 +8,13 @@ namespace Swarmops.Frontend.Automation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         [WebMethod]
-        static public int GetProgress(string guid)
+        public static int GetProgress(string guid)
         {
-            object progressObject = GuidCache.Get(guid + "-Progress"); // suffix because guid may refer to other data too
+            object progressObject = GuidCache.Get(guid + "-Progress");
+                // suffix because guid may refer to other data too
 
             if (progressObject != null)
             {

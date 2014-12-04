@@ -42,7 +42,7 @@ namespace Swarmops.Utility.Migrations
 
                         PersonOptionalDataKey key =
                             (PersonOptionalDataKey)
-                            Enum.Parse(typeof (PersonOptionalDataKey), personOptionalDataTypeString);
+                                Enum.Parse(typeof (PersonOptionalDataKey), personOptionalDataTypeString);
 
                         // Display
 
@@ -59,7 +59,6 @@ namespace Swarmops.Utility.Migrations
 
                         if (person != null)
                         {
-
                             if (personId != lastPersonId)
                             {
                                 Console.WriteLine(person.Canonical + " -- ");
@@ -68,9 +67,9 @@ namespace Swarmops.Utility.Migrations
 
                             ObjectOptionalDataType dataType =
                                 (ObjectOptionalDataType)
-                                Enum.Parse(typeof (ObjectOptionalDataType), personOptionalDataTypeString);
+                                    Enum.Parse(typeof (ObjectOptionalDataType), personOptionalDataTypeString);
 
-                            Console.WriteLine(" -- {0,-20} {1}", dataType.ToString(), displayData);
+                            Console.WriteLine(" -- {0,-20} {1}", dataType, displayData);
 
                             if (data.Trim().Length > 0)
                             {

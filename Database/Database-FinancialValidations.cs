@@ -12,8 +12,9 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string financialValidationFieldSequence =
-            " FinancialValidationId,FinancialValidationTypes.Name AS ValidationType,FinancialDependencyTypes.Name AS DependencyType,ForeignId,ValidatedDateTime," +  // 0-4
-            " PersonId,Amount " +  // 5-6
+            " FinancialValidationId,FinancialValidationTypes.Name AS ValidationType,FinancialDependencyTypes.Name AS DependencyType,ForeignId,ValidatedDateTime," +
+            // 0-4
+            " PersonId,Amount " + // 5-6
             " FROM FinancialValidations JOIN FinancialValidationTypes ON (FinancialValidations.TypeId=FinancialValidationTypes.FinancialValidationTypeId) " +
             " JOIN FinancialDependencyTypes USING (FinancialDependencyTypeId)";
 
@@ -23,20 +24,19 @@ namespace Swarmops.Database
         {
             int financialValidationId = reader.GetInt32(0);
             FinancialValidationType validationType =
-                (FinancialValidationType)(Enum.Parse(typeof(FinancialValidationType), reader.GetString(1)));
+                (FinancialValidationType) (Enum.Parse(typeof (FinancialValidationType), reader.GetString(1)));
             FinancialDependencyType dependencyType =
-                (FinancialDependencyType)(Enum.Parse(typeof(FinancialDependencyType), reader.GetString(2)));
+                (FinancialDependencyType) (Enum.Parse(typeof (FinancialDependencyType), reader.GetString(2)));
             int foreignId = reader.GetInt32(3);
             DateTime dateTime = reader.GetDateTime(4);
             int personId = reader.GetInt32(5);
             double amount = reader.GetDouble(6); // not yet used
 
-            return new BasicFinancialValidation(financialValidationId, validationType, personId, dateTime, dependencyType, foreignId);
+            return new BasicFinancialValidation(financialValidationId, validationType, personId, dateTime,
+                dependencyType, foreignId);
         }
 
         #endregion
-
-
 
         #region Record reading - SELECT statements
 
@@ -50,7 +50,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT " + financialValidationFieldSequence + " WHERE FinancialDependencyTypes.Name='" + dependencyType.ToString() + "' AND ForeignId=" + foreignId.ToString() + " " + financialValidationOrder, connection);
+                        "SELECT " + financialValidationFieldSequence + " WHERE FinancialDependencyTypes.Name='" +
+                        dependencyType + "' AND ForeignId=" + foreignId + " " + financialValidationOrder, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -64,9 +65,6 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
     }
 }

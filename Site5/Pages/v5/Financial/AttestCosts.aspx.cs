@@ -12,39 +12,36 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 {
     public partial class AttestCosts : PageV5Base
     {
+        private Dictionary<int, bool> _attestationRights;
+        private List<RepeatedDocument> _documentList;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.CurrentOrganization.IsEconomyEnabled)
+            if (!CurrentOrganization.IsEconomyEnabled)
             {
                 Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
-            this.PageIcon = "iconshock-stamped-paper";
+            PageIcon = "iconshock-stamped-paper";
 
             if (!Page.IsPostBack)
             {
                 Localize();
             }
 
-            _attestationRights = GetAttestationRights();
-            _documentList = new List<RepeatedDocument>();
+            this._attestationRights = GetAttestationRights();
+            this._documentList = new List<RepeatedDocument>();
 
             PopulateInboundInvoices();
             PopulateExpenses();
             // PopulateSalaries();
 
-            this.EasyUIControlsUsed = EasyUIControl.DataGrid;
+            EasyUIControlsUsed = EasyUIControl.DataGrid;
 
-            this.RepeaterLightboxItems.DataSource = _documentList;
+            this.RepeaterLightboxItems.DataSource = this._documentList;
             this.RepeaterLightboxItems.DataBind();
-
         }
-
-
-        private Dictionary<int, bool> _attestationRights;
-        private List<RepeatedDocument> _documentList; 
-
 
 
         private Dictionary<int, bool> GetAttestationRights()
@@ -54,11 +51,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // checks the owner.
 
             Dictionary<int, bool> result = new Dictionary<int, bool>();
-            FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization);
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization(CurrentOrganization);
 
             foreach (FinancialAccount account in accounts)
             {
-                if (account.OwnerPersonId == this.CurrentUser.Identity)
+                if (account.OwnerPersonId == CurrentUser.Identity)
                 {
                     result[account.Identity] = true;
                 }
@@ -69,8 +66,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages.Financial.AttestCosts_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Financial.AttestCosts_Info;
+            PageTitle = Resources.Pages.Financial.AttestCosts_PageTitle;
+            InfoBoxLiteral = Resources.Pages.Financial.AttestCosts_Info;
             this.LabelAttestCostsHeader.Text = Resources.Pages.Financial.AttestCosts_Header_CostsAwaitingAttestation;
             this.LabelGridHeaderAction.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Action;
             this.LabelGridHeaderBeneficiary.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Beneficiary;
@@ -81,15 +78,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
         }
 
-        private enum AttestationMode
-        {
-            Unknown = 0,
-            Attestation,
-            Deattestation
-        };
-
         [WebMethod]
-        public static string Attest (string identifier)
+        public static string Attest(string identifier)
         {
             identifier = HttpUtility.UrlDecode(identifier);
 
@@ -109,7 +99,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
-        private static string HandleAttestationDeattestation (string identifier, AttestationMode mode)
+        private static string HandleAttestationDeattestation(string identifier, AttestationMode mode)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
@@ -125,7 +115,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Find the item we are attesting or deattesting
 
-            switch(costType)
+            switch (costType)
             {
                 case 'A': // Case advance
                     CashAdvance advance = CashAdvance.FromIdentity(itemId);
@@ -133,7 +123,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (advance.Budget.OwnerPersonId != authData.CurrentUser.Identity && advance.Budget.OwnerPersonId != Person.NobodyId)
+                    if (advance.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
+                        advance.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -151,7 +142,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (expense.Budget.OwnerPersonId != authData.CurrentUser.Identity && expense.Budget.OwnerPersonId != Person.NobodyId)
+                    if (expense.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
+                        expense.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -169,7 +161,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (invoice.Budget.OwnerPersonId != authData.CurrentUser.Identity && invoice.Budget.OwnerPersonId != Person.NobodyId)
+                    if (invoice.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
+                        invoice.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -187,7 +180,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (salary.PayrollItem.Budget.OwnerPersonId != authData.CurrentUser.Identity && salary.PayrollItem.Budget.OwnerPersonId != Person.NobodyId)
+                    if (salary.PayrollItem.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
+                        salary.PayrollItem.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -205,7 +199,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (parley.Budget.OwnerPersonId != authData.CurrentUser.Identity && parley.Budget.OwnerPersonId != Person.NobodyId)
+                    if (parley.Budget.OwnerPersonId != authData.CurrentUser.Identity &&
+                        parley.Budget.OwnerPersonId != Person.NobodyId)
                     {
                         throw new SecurityAccessDeniedException("Called without attestation privileges");
                     }
@@ -218,7 +213,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                     break;
                 default:
-                    throw new InvalidOperationException("Unknown Cost Type in HandleAttestationDeattestation: \"" + identifier + "\"");
+                    throw new InvalidOperationException("Unknown Cost Type in HandleAttestationDeattestation: \"" +
+                                                        identifier + "\"");
             }
 
             // Finally, attest or deattest
@@ -227,33 +223,38 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 attestableItem.Attest(authData.CurrentUser);
                 result = string.Format(attestedTemplate, itemId, beneficiary, authData.CurrentOrganization.Currency.Code,
-                                       amountCents/100.0);
+                    amountCents/100.0);
             }
             else if (mode == AttestationMode.Deattestation)
             {
                 attestableItem.Deattest(authData.CurrentUser);
-                result = string.Format(deattestedTemplate, itemId, beneficiary, authData.CurrentOrganization.Currency.Code,
-                                       amountCents / 100.0);
+                result = string.Format(deattestedTemplate, itemId, beneficiary,
+                    authData.CurrentOrganization.Currency.Code,
+                    amountCents/100.0);
             }
             else
             {
-                throw new InvalidOperationException("Unknown Attestation Mode: " + mode.ToString());
+                throw new InvalidOperationException("Unknown Attestation Mode: " + mode);
             }
 
             return result;
         }
 
 
-
         private void PopulateExpenses()
         {
-            ExpenseClaims expenses = ExpenseClaims.ForOrganization(this.CurrentOrganization).WhereUnattested;
+            ExpenseClaims expenses = ExpenseClaims.ForOrganization(CurrentOrganization).WhereUnattested;
 
-            foreach (var expenseClaim in expenses)
+            foreach (ExpenseClaim expenseClaim in expenses)
             {
-                if (_attestationRights.ContainsKey(expenseClaim.BudgetId) || expenseClaim.Budget.OwnerPersonId == Person.NobodyId)
+                if (this._attestationRights.ContainsKey(expenseClaim.BudgetId) ||
+                    expenseClaim.Budget.OwnerPersonId == Person.NobodyId)
                 {
-                    AddDocuments(expenseClaim.Documents, "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture), String.Format(Resources.Global.Financial_ExpenseClaimSpecificationWithClaimer + " - ", expenseClaim.Identity, expenseClaim.ClaimerCanonical) + Resources.Global.Financial_ReceiptSpecification);
+                    AddDocuments(expenseClaim.Documents,
+                        "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture),
+                        String.Format(Resources.Global.Financial_ExpenseClaimSpecificationWithClaimer + " - ",
+                            expenseClaim.Identity, expenseClaim.ClaimerCanonical) +
+                        Resources.Global.Financial_ReceiptSpecification);
                 }
             }
         }
@@ -261,16 +262,19 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
         private void PopulateInboundInvoices()
         {
-            InboundInvoices invoices = InboundInvoices.ForOrganization(this.CurrentOrganization).WhereUnattested;
+            InboundInvoices invoices = InboundInvoices.ForOrganization(CurrentOrganization).WhereUnattested;
 
             foreach (InboundInvoice invoice in invoices)
             {
                 Documents dox = invoice.Documents;
                 bool hasDox = (dox.Count > 0 ? true : false);
 
-                if (_attestationRights.ContainsKey(invoice.BudgetId) || invoice.Budget.OwnerPersonId == Person.NobodyId)
+                if (this._attestationRights.ContainsKey(invoice.BudgetId) ||
+                    invoice.Budget.OwnerPersonId == Person.NobodyId)
                 {
-                    AddDocuments(invoice.Documents, "I" + invoice.Identity.ToString(CultureInfo.InvariantCulture), String.Format(Resources.Global.Financial_InboundInvoiceSpecificationWithSender + " - ", invoice.Identity, invoice.Supplier) + Resources.Global.Global_ImageSpecification);
+                    AddDocuments(invoice.Documents, "I" + invoice.Identity.ToString(CultureInfo.InvariantCulture),
+                        String.Format(Resources.Global.Financial_InboundInvoiceSpecificationWithSender + " - ",
+                            invoice.Identity, invoice.Supplier) + Resources.Global.Global_ImageSpecification);
                 }
             }
         }
@@ -283,11 +287,23 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             foreach (Document document in docs)
             {
-                RepeatedDocument newDoc = new RepeatedDocument {DocId = document.Identity, BaseId = baseId, Title=String.Format(titleBase, ++count, countTotal)};
+                RepeatedDocument newDoc = new RepeatedDocument
+                {
+                    DocId = document.Identity,
+                    BaseId = baseId,
+                    Title = String.Format(titleBase, ++count, countTotal)
+                };
 
-                _documentList.Add(newDoc);
+                this._documentList.Add(newDoc);
             }
         }
+
+        private enum AttestationMode
+        {
+            Unknown = 0,
+            Attestation,
+            Deattestation
+        };
 
         public class RepeatedDocument
         {

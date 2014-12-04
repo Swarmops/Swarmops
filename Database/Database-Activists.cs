@@ -7,7 +7,7 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public int[] GetActivistPersonIds (int[] geographyIds)
+        public int[] GetActivistPersonIds(int[] geographyIds)
         {
             List<int> result = new List<int>();
 
@@ -30,7 +30,7 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        public void CreateActivist (int personId, bool isPublic, bool isConfirmed)
+        public void CreateActivist(int personId, bool isPublic, bool isConfirmed)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -47,7 +47,7 @@ namespace Swarmops.Database
             }
         }
 
-        public int GetActivistCountForGeographies (int[] geographyIds)
+        public int GetActivistCountForGeographies(int[] geographyIds)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -65,7 +65,7 @@ namespace Swarmops.Database
         }
 
 
-        public bool GetActivistStatus (int personId)
+        public bool GetActivistStatus(int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -73,7 +73,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT * From Activists WHERE Active=1 AND PersonId=" + personId.ToString(),
+                        "SELECT * From Activists WHERE Active=1 AND PersonId=" + personId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -89,7 +89,7 @@ namespace Swarmops.Database
         }
 
 
-        public void TerminateActivist (int personId)
+        public void TerminateActivist(int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -100,12 +100,7 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "personId", personId);
 
                 command.ExecuteNonQuery();
-
             }
         }
-
-
-
-
     }
 }

@@ -2,22 +2,27 @@
 
 namespace Swarmops.Basic.Types.Financial
 {
-    public class BasicFinancialTransactionTagType: IHasIdentity
+    public class BasicFinancialTransactionTagType : IHasIdentity
     {
-        public BasicFinancialTransactionTagType (int financialTransactionTagTypeId, int parentFinancialTransactionTagTypeId, int financialTransactionTagSetId, string name, bool active, int openedYear, int closedYear)
+        public BasicFinancialTransactionTagType(int financialTransactionTagTypeId,
+            int parentFinancialTransactionTagTypeId, int financialTransactionTagSetId, string name, bool active,
+            int openedYear, int closedYear)
         {
-            this.FinancialTransactionTagTypeId = financialTransactionTagTypeId;
-            this.ParentFinancialTransactionTagTypeId = parentFinancialTransactionTagTypeId;
-            this.FinancialTransactionTagSetId = financialTransactionTagSetId;
-            this.Name = name;
-            this.Active = active;
-            this.OpenedYear = openedYear;
-            this.ClosedYear = closedYear;
+            FinancialTransactionTagTypeId = financialTransactionTagTypeId;
+            ParentFinancialTransactionTagTypeId = parentFinancialTransactionTagTypeId;
+            FinancialTransactionTagSetId = financialTransactionTagSetId;
+            Name = name;
+            Active = active;
+            OpenedYear = openedYear;
+            ClosedYear = closedYear;
         }
 
-        public BasicFinancialTransactionTagType (BasicFinancialTransactionTagType original):
-            this (original.FinancialTransactionTagTypeId, original.ParentFinancialTransactionTagTypeId, original.FinancialTransactionTagSetId, original.Name, original.Active, original.OpenedYear, original.ClosedYear)
-        { 
+        public BasicFinancialTransactionTagType(BasicFinancialTransactionTagType original) :
+            this(
+            original.FinancialTransactionTagTypeId, original.ParentFinancialTransactionTagTypeId,
+            original.FinancialTransactionTagSetId, original.Name, original.Active, original.OpenedYear,
+            original.ClosedYear)
+        {
             // copy ctor 
         }
 
@@ -31,7 +36,10 @@ namespace Swarmops.Basic.Types.Financial
 
         #region Implementation of IHasIdentity
 
-        public int Identity { get { return this.FinancialTransactionTagTypeId; } }
+        public int Identity
+        {
+            get { return FinancialTransactionTagTypeId; }
+        }
 
         #endregion
     }

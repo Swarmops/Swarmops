@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -16,13 +17,15 @@ namespace Swarmops.Utility.Financial
         {
             if (!data.StartsWith("\r\n<html>\r\n<head>\r\n    <style>\r\n        .tal"))
             {
-                runningPerson.SendPhoneMessage("The file you uploaded does not appear to be a Payson export file. No processing done. The data has been discarded.");
+                runningPerson.SendPhoneMessage(
+                    "The file you uploaded does not appear to be a Payson export file. No processing done. The data has been discarded.");
                 throw new ArgumentException("This does not appear to be a Payson file");
             }
 
             if (organization.Identity != 1)
             {
-                runningPerson.SendPhoneMessage("Payson import is currently only supported for PPSE. No processing done. The data has been discarded.");
+                runningPerson.SendPhoneMessage(
+                    "Payson import is currently only supported for PPSE. No processing done. The data has been discarded.");
                 throw new Exception("Payson is only supported for PPSE at the moment.");
             }
 
@@ -43,7 +46,8 @@ namespace Swarmops.Utility.Financial
 
             mailBody += String.Format("Rows processed: {0,9:N0}\r\n", stats.ProcessedTransactionCount);
             mailBody += String.Format("Tx imported:    {0,9:N0}\r\n", stats.ImportedTransactionCount);
-            mailBody += String.Format("Tx modified:    {0,9:N0}\r\n", stats.ModifiedTransactionCount - stats.ImportedTransactionCount);
+            mailBody += String.Format("Tx modified:    {0,9:N0}\r\n",
+                stats.ModifiedTransactionCount - stats.ImportedTransactionCount);
 
             runningPerson.SendNotice("Payson file imported", mailBody, organization.Identity);
         }
@@ -51,7 +55,8 @@ namespace Swarmops.Utility.Financial
 
         protected static ImportResult ImportPayson(string contents)
         {
-            string regexPattern = @"<tr>\s+<td>\s*(?<datetime>[0-9]{4}-[0-9]{2}-[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2})\s*</td><td>(?<comment1>[^<]*)</td><td>[^>]*</td><td>(?<txid>[0-9]+)</td>\s*<td>(?<from>[^<]+)</td>\s*<td>(?<to>[^<]+)</td><td class=\""tal\"">(?<gross>[\-0-9,]+)</td><td class=\""tal\"">(?<fee>[\-0-9,]+)</td><td class=\""tal\"">(?<vat>[\-0-9,]+)</td><td class=\""tal\"">(?<net>[\-0-9,]+)</td><td class=\""tal\"">(?<balance>[\-0-9,]+)</td><td>(?<currency>[^<]+)</td><td>(?<reference>[^<]+)</td><td[^>]+?>(?<comment2>[^<]+)</td>";
+            string regexPattern =
+                @"<tr>\s+<td>\s*(?<datetime>[0-9]{4}-[0-9]{2}-[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2})\s*</td><td>(?<comment1>[^<]*)</td><td>[^>]*</td><td>(?<txid>[0-9]+)</td>\s*<td>(?<from>[^<]+)</td>\s*<td>(?<to>[^<]+)</td><td class=\""tal\"">(?<gross>[\-0-9,]+)</td><td class=\""tal\"">(?<fee>[\-0-9,]+)</td><td class=\""tal\"">(?<vat>[\-0-9,]+)</td><td class=\""tal\"">(?<net>[\-0-9,]+)</td><td class=\""tal\"">(?<balance>[\-0-9,]+)</td><td>(?<currency>[^<]+)</td><td>(?<reference>[^<]+)</td><td[^>]+?>(?<comment2>[^<]+)</td>";
 
             Regex regex = new Regex(regexPattern, RegexOptions.Singleline);
             Match match = regex.Match(contents);
@@ -77,7 +82,7 @@ namespace Swarmops.Utility.Financial
 
                 // DEBUG -- REMOVE WHEN DEPLOYING
 
-                if (System.Diagnostics.Debugger.IsAttached)
+                if (Debugger.IsAttached)
                 {
                     Console.WriteLine("New Row -----");
 
@@ -112,25 +117,6 @@ namespace Swarmops.Utility.Financial
         }
 
 
-        protected class ImportResult
-        {
-            public double CurrentBalance;
-            public List<ImportedRow> Rows;
-        }
-
-        protected class ImportedRow
-        {
-            public DateTime DateTime;
-            public string HashBase;
-            public string SuppliedTransactionId;
-            public double CurrentBalance;
-            public Int64 AmountCentsNet;
-            public Int64 AmountCentsGross;
-            public Int64 FeeCents;
-            public string Comment;
-        }
-
-
         protected static string StripQuotes(string input)
         {
             if (input.StartsWith("\""))
@@ -147,21 +133,15 @@ namespace Swarmops.Utility.Financial
         }
 
 
-        protected class ImportStats
+        protected static ImportStats ProcessImportedData(ImportResult import, Organization organization,
+            Person importingPerson)
         {
-            public int ProcessedTransactionCount;
-            public int ModifiedTransactionCount;
-            public int ImportedTransactionCount;
-        }
-
-
-        protected static ImportStats ProcessImportedData(ImportResult import, Organization organization, Person importingPerson)
-        {
-            FinancialAccount paysonAccount = FinancialAccount.FromIdentity(99);   // HACK -- need something more sophisticated long run that allows different accounts for different orgs
+            FinancialAccount paysonAccount = FinancialAccount.FromIdentity(99);
+                // HACK -- need something more sophisticated long run that allows different accounts for different orgs
             FinancialAccount bankFees = organization.FinancialAccounts.CostsBankFees;
             FinancialAccount donations = organization.FinancialAccounts.IncomeDonations;
 
-            int autoDepositLimit = 1000;   // TODO: Get from organization parameters
+            int autoDepositLimit = 1000; // TODO: Get from organization parameters
             int autoWithdrawalLimit = 0;
 
             ImportStats result = new ImportStats();
@@ -183,7 +163,9 @@ namespace Swarmops.Utility.Financial
 
                 if (string.IsNullOrEmpty(importKey))
                 {
-                    string hashKey = row.HashBase + row.Comment + (row.AmountCentsNet / 100.0).ToString(CultureInfo.InvariantCulture) + row.CurrentBalance.ToString(CultureInfo.InvariantCulture) +
+                    string hashKey = row.HashBase + row.Comment +
+                                     (row.AmountCentsNet/100.0).ToString(CultureInfo.InvariantCulture) +
+                                     row.CurrentBalance.ToString(CultureInfo.InvariantCulture) +
                                      row.DateTime.ToString("yyyy-MM-dd-hh-mm-ss");
 
                     importKey = SHA1.Hash(hashKey).Replace(" ", "");
@@ -208,16 +190,15 @@ namespace Swarmops.Utility.Financial
                 try
                 {
                     transaction = FinancialTransaction.FromImportKey(organization, importKey);
-
                 }
                 catch (Exception)
                 {
                     // if we get here, that means the transaction did not yet exist
 
                     transaction = FinancialTransaction.ImportWithStub(organization.Identity, row.DateTime,
-                                                                   paysonAccount.Identity, amountCents,
-                                                                   row.Comment, importKey,
-                                                                   importingPerson.Identity);
+                        paysonAccount.Identity, amountCents,
+                        row.Comment, importKey,
+                        importingPerson.Identity);
                     result.ImportedTransactionCount++;
 
                     if (transaction == null)
@@ -238,7 +219,7 @@ namespace Swarmops.Utility.Financial
 
                 if (amountCents < 0)
                 {
-                    if ((-amountCents) < autoWithdrawalLimit * 100)
+                    if ((-amountCents) < autoWithdrawalLimit*100)
                     {
                         // Book against autoWithdrawal account.
 
@@ -254,7 +235,7 @@ namespace Swarmops.Utility.Financial
                         nominalTransaction[bankFees.Identity] = -row.FeeCents;
                         nominalTransaction[donations.Identity] = -row.AmountCentsGross;
                     }
-                    else if (amountCents < autoDepositLimit * 100)
+                    else if (amountCents < autoDepositLimit*100)
                     {
                         // Book against autoDeposit account.
 
@@ -274,5 +255,29 @@ namespace Swarmops.Utility.Financial
             return result;
         }
 
+        protected class ImportResult
+        {
+            public double CurrentBalance;
+            public List<ImportedRow> Rows;
+        }
+
+        protected class ImportStats
+        {
+            public int ImportedTransactionCount;
+            public int ModifiedTransactionCount;
+            public int ProcessedTransactionCount;
+        }
+
+        protected class ImportedRow
+        {
+            public Int64 AmountCentsGross;
+            public Int64 AmountCentsNet;
+            public string Comment;
+            public double CurrentBalance;
+            public DateTime DateTime;
+            public Int64 FeeCents;
+            public string HashBase;
+            public string SuppliedTransactionId;
+        }
     }
 }

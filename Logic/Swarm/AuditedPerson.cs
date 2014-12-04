@@ -5,152 +5,126 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Swarm
 {
-    public class AuditedPerson 
+    public class AuditedPerson
     {
-        public static implicit operator Person (AuditedPerson a)
-        {
-            return a.person;
-        }
+        private readonly Person person;
+        private string actionDescr = "";
+        private Person executor;
 
-
-        public static AuditedPerson FromPerson (Person person)
-        {
-            return new AuditedPerson(person);
-        }
-
-        public static AuditedPerson FromPerson (Person person, Person executor, string actionDescr)
-        {
-            AuditedPerson ap= new AuditedPerson(person);
-            ap.SetAudit(executor, actionDescr);
-            return ap;
-        }
-
-        protected AuditedPerson (Person person)
+        protected AuditedPerson(Person person)
         {
             this.person = person;
             this.executor = null;
             this.actionDescr = "";
         }
 
-        public void SetAudit (Person executor, string actionDescr)
-        {
-            this.executor = executor;
-            this.actionDescr = actionDescr;
-        }
-
-        protected void AuditField (string field, string oldVal, string newVal)
-        {
-            if (executor != null && (""+oldVal).Trim() != (""+newVal).Trim())
-            {
-                PWLog.Write(executor, PWLogItem.Person, this.person.Identity, PWLogAction.PersonFieldChange, actionDescr, "", field, ""+oldVal, ""+newVal);
-            }
-        }
-
         public virtual string Name
         {
-            get { return person.Name; }
+            get { return this.person.Name; }
             set
             {
                 AuditField("Name", Name, value);
-                person.Name = value;
+                this.person.Name = value;
             }
         }
 
 
         public virtual string Street
         {
-            get { return person.Street; }
+            get { return this.person.Street; }
             set
             {
                 AuditField("Street", Street, value);
-                person.Street = value;
+                this.person.Street = value;
             }
         }
 
 
         public virtual string PostalCode
         {
-            get { return person.PostalCode; }
+            get { return this.person.PostalCode; }
             set
             {
                 AuditField("PostalCode", PostalCode, value);
-                person.PostalCode = value;
+                this.person.PostalCode = value;
             }
         }
 
 
         public virtual string City
         {
-            get { return person.CityName; }
+            get { return this.person.CityName; }
             set
             {
                 AuditField("City", City, value);
-                person.CityName = value;
+                this.person.CityName = value;
             }
         }
 
 
         public virtual Country Country
         {
-            get { return person.Country; }
+            get { return this.person.Country; }
             set
             {
-                AuditField("Country", Country == null ? "" : Country.Identity.ToString(), value == null ? "" : value.Identity.ToString());
-                person.Country = value;
+                AuditField("Country", Country == null ? "" : Country.Identity.ToString(),
+                    value == null ? "" : value.Identity.ToString());
+                this.person.Country = value;
             }
         }
 
 
         public virtual Geography Geography
         {
-            get { return person.Geography; }
+            get { return this.person.Geography; }
             set
             {
-                AuditField("Geography", Geography == null ? "" : Geography.Identity.ToString(), value == null ? "" : value.Identity.ToString());
-                person.Geography = value;
+                AuditField("Geography", Geography == null ? "" : Geography.Identity.ToString(),
+                    value == null ? "" : value.Identity.ToString());
+                this.person.Geography = value;
             }
         }
 
 
         public virtual string Email
         {
-            get { return person.Mail; }
+            get { return this.person.Mail; }
             set
             {
                 AuditField("Email", Email, value);
-                person.Mail = value;
+                this.person.Mail = value;
             }
         }
 
 
         public virtual string Phone
         {
-            get { return person.Phone; }
+            get { return this.person.Phone; }
             set
             {
                 AuditField("Phone", Phone, value);
-                person.Phone = value;
+                this.person.Phone = value;
             }
         }
 
 
         public virtual DateTime Birthdate
         {
-            get { return person.Birthdate; }
+            get { return this.person.Birthdate; }
             set
             {
                 AuditField("Birthdate", Birthdate.ToString(), value.ToString());
-                person.Birthdate = value;
+                this.person.Birthdate = value;
             }
         }
 
         public virtual PersonGender Gender
         {
-            get { return person.Gender; }
+            get { return this.person.Gender; }
             set
             {
                 AuditField("Gender", Gender.ToString(), value.ToString());
-                person.Gender = value;
+                this.person.Gender = value;
             }
         }
 
@@ -159,145 +133,173 @@ namespace Swarmops.Logic.Swarm
 
         public virtual string PartyEmail
         {
-            get { return person.PartyEmail; }
+            get { return this.person.PartyEmail; }
             set
             {
                 AuditField("PartyEmail", PartyEmail, value);
-                person.PartyEmail = value;
+                this.person.PartyEmail = value;
             }
         }
 
 
         public virtual string BankName
         {
-            get { return person.BankName; }
+            get { return this.person.BankName; }
             set
             {
                 AuditField("BankName", BankName, value);
-                person.BankName = value;
+                this.person.BankName = value;
             }
         }
 
 
         public virtual string BankAccount
         {
-            get { return person.BankAccount; }
+            get { return this.person.BankAccount; }
             set
             {
                 AuditField("BankAccount", BankAccount, value);
-                person.BankAccount = value;
+                this.person.BankAccount = value;
             }
         }
 
 
         public virtual string BankClearing
         {
-            get { return person.BankClearing; }
+            get { return this.person.BankClearing; }
             set
             {
                 AuditField("BankClearing", BankClearing, value);
-                person.BankClearing = value;
+                this.person.BankClearing = value;
             }
         }
 
         [Obsolete("Use NationalIdNumber instead")]
         public virtual string PersonalNumber
         {
-            get { return person.PersonalNumber; }
+            get { return this.person.PersonalNumber; }
             set
             {
                 AuditField("PersonalNumber", PersonalNumber, value);
-                person.PersonalNumber = value;
+                this.person.PersonalNumber = value;
             }
         }
 
         public virtual bool MailUnreachable
         {
-            get { return person.MailUnreachable; }
+            get { return this.person.MailUnreachable; }
             set
             {
                 AuditField("MailUnreachable", MailUnreachable.ToString(), value.ToString());
-                person.MailUnreachable = value;
+                this.person.MailUnreachable = value;
             }
         }
 
         public virtual bool LimitMailToLatin1
         {
-            get { return person.LimitMailToLatin1; }
+            get { return this.person.LimitMailToLatin1; }
             set
             {
                 AuditField("LimitMailToLatin1", LimitMailToLatin1.ToString(), value.ToString());
-                person.LimitMailToLatin1 = value;
+                this.person.LimitMailToLatin1 = value;
             }
         }
 
         public virtual bool LimitMailToText
         {
-            get { return person.LimitMailToText; }
+            get { return this.person.LimitMailToText; }
             set
             {
                 AuditField("LimitMailToText", LimitMailToText.ToString(), value.ToString());
-                person.LimitMailToText = value;
+                this.person.LimitMailToText = value;
             }
         }
 
         public virtual bool NeverMail
         {
-            get { return person.NeverMail; }
+            get { return this.person.NeverMail; }
             set
             {
                 AuditField("NeverMail", NeverMail.ToString(), value.ToString());
-                person.NeverMail = value;
+                this.person.NeverMail = value;
             }
         }
 
         public virtual bool EMailIsInvalid
         {
-            get { return person.EMailIsInvalid; }
+            get { return this.person.EMailIsInvalid; }
             set
             {
                 AuditField("EMailIsInvalid", EMailIsInvalid.ToString(), value.ToString());
-                person.EMailIsInvalid = value;
+                this.person.EMailIsInvalid = value;
             }
         }
 
 
         public virtual string Handle
         {
-            get { return person.Handle; }
+            get { return this.person.Handle; }
             set
             {
                 AuditField("Handle", Handle, value);
-                person.Handle = value;
+                this.person.Handle = value;
             }
         }
 
         public virtual int SwedishForumAccountId
         {
-            get { return person.SwedishForumAccountId; }
+            get { return this.person.SwedishForumAccountId; }
             set
             {
                 AuditField("SwedishForumAccountId", SwedishForumAccountId.ToString(), value.ToString());
-                person.SwedishForumAccountId = value;
+                this.person.SwedishForumAccountId = value;
+            }
+        }
+
+        public static implicit operator Person(AuditedPerson a)
+        {
+            return a.person;
+        }
+
+
+        public static AuditedPerson FromPerson(Person person)
+        {
+            return new AuditedPerson(person);
+        }
+
+        public static AuditedPerson FromPerson(Person person, Person executor, string actionDescr)
+        {
+            AuditedPerson ap = new AuditedPerson(person);
+            ap.SetAudit(executor, actionDescr);
+            return ap;
+        }
+
+        public void SetAudit(Person executor, string actionDescr)
+        {
+            this.executor = executor;
+            this.actionDescr = actionDescr;
+        }
+
+        protected void AuditField(string field, string oldVal, string newVal)
+        {
+            if (this.executor != null && ("" + oldVal).Trim() != ("" + newVal).Trim())
+            {
+                PWLog.Write(this.executor, PWLogItem.Person, this.person.Identity, PWLogAction.PersonFieldChange,
+                    this.actionDescr, "", field, "" + oldVal, "" + newVal);
             }
         }
 
 
-        public virtual void SetPassword (string newPassword)
+        public virtual void SetPassword(string newPassword)
         {
             AuditField("SetPassword", "oldpassword", "newpassword");
-            person.SetPassword(newPassword);
+            this.person.SetPassword(newPassword);
         }
 
-        public virtual void SetSubscription (int newsletterFeedId, bool subscribe)
+        public virtual void SetSubscription(int newsletterFeedId, bool subscribe)
         {
             AuditField("SetSubscription", "Feed:" + newsletterFeedId, "" + subscribe);
-            person.SetSubscription(newsletterFeedId, subscribe);
+            this.person.SetSubscription(newsletterFeedId, subscribe);
         }
-
-
-        private Person executor = null;
-        private string actionDescr = "";
-        private Person person;
     }
 }

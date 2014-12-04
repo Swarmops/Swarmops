@@ -8,7 +8,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.Communications
 {
-    public class CommsTransmitterMail: ICommsTransmitter
+    public class CommsTransmitterMail : ICommsTransmitter
     {
         // To be implemented
 
@@ -32,7 +32,8 @@ namespace Swarmops.Utility.Communications
 
             try
             {
-                mail.From = new MailAddress(comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderName], Encoding.UTF8);
+                mail.From = new MailAddress(comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderName],
+                    Encoding.UTF8);
                 mail.To.Add(new MailAddress(person.Mail, person.Name));
             }
             catch (ArgumentException e)
@@ -54,13 +55,14 @@ namespace Swarmops.Utility.Communications
 
             if (now > _cacheReloadTime)
             {
-                smtpServer = _smtpServerCache = Persistence.Key ["SmtpServer"];
+                smtpServer = _smtpServerCache = Persistence.Key["SmtpServer"];
                 _cacheReloadTime = now.AddMinutes(5);
             }
 
             if (string.IsNullOrEmpty(smtpServer))
             {
-                smtpServer = "192.168.80.204"; // For development use only - invalidate cache instead of this, forcing re-reload
+                smtpServer = "192.168.80.204";
+                    // For development use only - invalidate cache instead of this, forcing re-reload
                 _cacheReloadTime = DateTime.MinValue;
             }
 
@@ -78,6 +80,5 @@ namespace Swarmops.Utility.Communications
                 throw new OutboundCommTransmitException("Cannot send mail to " + person.Mail, e);
             }
         }
-
     }
 }

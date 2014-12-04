@@ -8,12 +8,11 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-       
         #region Database field reading
 
         private const string paymentGroupFieldSequence =
-            " PaymentGroupId,OrganizationId,CurrencyId,AmountCents,DateTime," +    // 0-4
-            "Tag,CreatedDateTime,CreatedByPersonId,Open " +                     // 5-9
+            " PaymentGroupId,OrganizationId,CurrencyId,AmountCents,DateTime," + // 0-4
+            "Tag,CreatedDateTime,CreatedByPersonId,Open " + // 5-9
             "FROM PaymentGroups ";
 
         private static BasicPaymentGroup ReadPaymentGroupFromDataReader(IDataRecord reader)
@@ -29,14 +28,12 @@ namespace Swarmops.Database
             bool open = reader.GetBoolean(8);
 
             return new BasicPaymentGroup(paymentGroupId, organizationId, dateTime, currencyId, amountCents, tag,
-                                         createdByPersonId, createdDateTime, open);
+                createdByPersonId, createdDateTime, open);
         }
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
-
 
         public BasicPaymentGroup GetPaymentGroupByTag(int organizationId, string tag)
         {
@@ -46,8 +43,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + paymentGroupFieldSequence +
-                    "WHERE OrganizationId=" + organizationId.ToString() + " AND Tag='" + tag.Replace("'", "''") + "'",
-                                 connection);
+                                 "WHERE OrganizationId=" + organizationId + " AND Tag='" + tag.Replace("'", "''") + "'",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -59,7 +56,6 @@ namespace Swarmops.Database
                     return null;
                 }
             }
-
         }
 
 
@@ -71,8 +67,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + paymentGroupFieldSequence +
-                    "WHERE PaymentGroupId=" + paymentGroupId.ToString(),
-                                 connection);
+                                 "WHERE PaymentGroupId=" + paymentGroupId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -81,12 +77,10 @@ namespace Swarmops.Database
                         return ReadPaymentGroupFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such PaymentGroupId:" + paymentGroupId.ToString());
+                    throw new ArgumentException("No such PaymentGroupId:" + paymentGroupId);
                 }
             }
-
         }
-
 
 
         public BasicPaymentGroup[] GetPaymentGroups(params object[] conditions)
@@ -99,7 +93,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + paymentGroupFieldSequence + ConstructWhereClause("PaymentGroups", conditions), connection);
+                        "SELECT" + paymentGroupFieldSequence + ConstructWhereClause("PaymentGroups", conditions),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -113,14 +108,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Creation and manipulation -- stored procedures
 
-
-        public int CreatePaymentGroup(int organizationId, DateTime dateTime, int currencyId, DateTime createdDateTime, int createdByPersonId)
+        public int CreatePaymentGroup(int organizationId, DateTime dateTime, int currencyId, DateTime createdDateTime,
+            int createdByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -207,9 +200,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-        
 
         #region Dead template code
 
@@ -554,7 +545,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

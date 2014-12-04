@@ -5,24 +5,27 @@ namespace Swarmops.Logic.Structure
 {
     public class OrganizationParameters
     {
-        public OrganizationParameters (Organization organization)
+        private readonly ObjectOptionalData data;
+        private readonly Organization organization;
+
+        public OrganizationParameters(Organization organization)
         {
             this.organization = organization;
-            data = ObjectOptionalData.ForObject(organization);
+            this.data = ObjectOptionalData.ForObject(organization);
         }
 
         public bool EconomyEnabled
         {
             get
             {
-                if (data.HasData(ObjectOptionalDataType.OrgEconomyEnabled))
+                if (this.data.HasData(ObjectOptionalDataType.OrgEconomyEnabled))
                 {
-                    return data.GetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled);
+                    return this.data.GetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled);
                 }
 
-                if (organization.Identity == 1)  // temp
+                if (this.organization.Identity == 1) // temp
                 {
-                    data.SetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled, true);
+                    this.data.SetOptionalDataBool(ObjectOptionalDataType.OrgEconomyEnabled, true);
                 }
 
                 return false;
@@ -32,9 +35,9 @@ namespace Swarmops.Logic.Structure
 
         public int FirstFiscalYear
         {
-            get 
-            { 
-                int year = data.GetOptionalDataInt(ObjectOptionalDataType.OrgFirstFiscalYear);
+            get
+            {
+                int year = this.data.GetOptionalDataInt(ObjectOptionalDataType.OrgFirstFiscalYear);
                 return year;
             }
         }
@@ -44,14 +47,11 @@ namespace Swarmops.Logic.Structure
         {
             get
             {
-                int year = data.GetOptionalDataInt(ObjectOptionalDataType.OrgBooksClosedForYear);
+                int year = this.data.GetOptionalDataInt(ObjectOptionalDataType.OrgBooksClosedForYear);
 
                 return year;
             }
-            set
-            {
-                data.SetOptionalDataInt(ObjectOptionalDataType.OrgBooksClosedForYear, value);
-            }
+            set { this.data.SetOptionalDataInt(ObjectOptionalDataType.OrgBooksClosedForYear, value); }
         }
 
 
@@ -59,11 +59,11 @@ namespace Swarmops.Logic.Structure
         {
             get
             {
-                int year = data.GetOptionalDataInt(ObjectOptionalDataType.OrgBooksClosedForYear);
+                int year = this.data.GetOptionalDataInt(ObjectOptionalDataType.OrgBooksClosedForYear);
 
-                if (year == 0 && organization.Identity == 1)
+                if (year == 0 && this.organization.Identity == 1)
                 {
-                    data.SetOptionalDataInt(ObjectOptionalDataType.OrgBooksClosedForYear, 2009);
+                    this.data.SetOptionalDataInt(ObjectOptionalDataType.OrgBooksClosedForYear, 2009);
                     return 2009;
                 }
 
@@ -73,14 +73,14 @@ namespace Swarmops.Logic.Structure
 
         public string TaxAccount
         {
-            get 
-            { 
-                string taxAccount = data.GetOptionalDataString(ObjectOptionalDataType.OrgTaxAccount);
+            get
+            {
+                string taxAccount = this.data.GetOptionalDataString(ObjectOptionalDataType.OrgTaxAccount);
 
-                if (string.IsNullOrEmpty(taxAccount) && organization.Identity == 1)
+                if (string.IsNullOrEmpty(taxAccount) && this.organization.Identity == 1)
                 {
                     taxAccount = "Bg 5050-1055";
-                    data.SetOptionalDataString(ObjectOptionalDataType.OrgTaxAccount, taxAccount);
+                    this.data.SetOptionalDataString(ObjectOptionalDataType.OrgTaxAccount, taxAccount);
                 }
 
                 return taxAccount;
@@ -89,14 +89,14 @@ namespace Swarmops.Logic.Structure
 
         public string TaxOcr
         {
-            get 
-            { 
-                string taxOcr = data.GetOptionalDataString(ObjectOptionalDataType.OrgTaxOcr);
+            get
+            {
+                string taxOcr = this.data.GetOptionalDataString(ObjectOptionalDataType.OrgTaxOcr);
 
-                if (string.IsNullOrEmpty(taxOcr) && organization.Identity == 1)
+                if (string.IsNullOrEmpty(taxOcr) && this.organization.Identity == 1)
                 {
                     taxOcr = "1680243045141";
-                    data.SetOptionalDataString(ObjectOptionalDataType.OrgTaxOcr, taxOcr);
+                    this.data.SetOptionalDataString(ObjectOptionalDataType.OrgTaxOcr, taxOcr);
                 }
 
                 return taxOcr;
@@ -107,7 +107,7 @@ namespace Swarmops.Logic.Structure
         {
             get
             {
-                string accessList = data.GetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListRead);
+                string accessList = this.data.GetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListRead);
 
                 if (string.IsNullOrEmpty(accessList))
                 {
@@ -116,17 +116,14 @@ namespace Swarmops.Logic.Structure
 
                 return accessList;
             }
-            set
-            {
-                data.SetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListRead, value);
-            }
+            set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListRead, value); }
         }
 
         public string TemporaryAccessListWrite
         {
             get
             {
-                string accessList = data.GetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListWrite);
+                string accessList = this.data.GetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListWrite);
 
                 if (string.IsNullOrEmpty(accessList))
                 {
@@ -135,13 +132,7 @@ namespace Swarmops.Logic.Structure
 
                 return accessList;
             }
-            set
-            {
-                data.SetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListWrite, value);
-            }
+            set { this.data.SetOptionalDataString(ObjectOptionalDataType.OrgTemporaryAccessListWrite, value); }
         }
-
-        private ObjectOptionalData data;
-        private Organization organization;
     }
 }

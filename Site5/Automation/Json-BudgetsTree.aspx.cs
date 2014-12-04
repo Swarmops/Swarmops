@@ -33,8 +33,9 @@ namespace Swarmops.Frontend.Automation
 
             // Is this stuff in cache already?
 
-            string cacheKey = "ExpensableBudgets-Json-" + accountType.ToString() +   // use the sanitized input to prevent cache overload
-                              this.CurrentOrganization.Identity.ToString((CultureInfo.InvariantCulture));
+            string cacheKey = "ExpensableBudgets-Json-" + accountType +
+                              // use the sanitized input to prevent cache overload
+                              CurrentOrganization.Identity.ToString((CultureInfo.InvariantCulture));
 
             string accountsJson =
                 (string) Cache[cacheKey];
@@ -91,7 +92,7 @@ namespace Swarmops.Frontend.Automation
             accountsJson = RecurseTreeMap(treeMap, renderRootNodeId);
 
             Cache.Insert(cacheKey, accountsJson, null, DateTime.Now.AddMinutes(5), TimeSpan.Zero);
-                // cache lasts for five minutes, no sliding expiration
+            // cache lasts for five minutes, no sliding expiration
             Response.Output.WriteLine(accountsJson);
 
             Response.End();
@@ -104,7 +105,7 @@ namespace Swarmops.Frontend.Automation
             foreach (FinancialAccount account in treeMap[node])
             {
                 string element = string.Format("\"id\":{0},\"text\":\"{1}\"", account.Identity,
-                                               JsonSanitize(account.Name));
+                    JsonSanitize(account.Name));
 
                 if (treeMap.ContainsKey(account.Identity))
                 {
@@ -115,7 +116,6 @@ namespace Swarmops.Frontend.Automation
             }
 
             return "[" + String.Join(",", elements.ToArray()) + "]";
-
         }
 
         private enum AccountTypes

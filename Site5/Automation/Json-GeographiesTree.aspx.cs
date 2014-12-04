@@ -26,7 +26,8 @@ namespace Swarmops.Frontend.Automation
 
             // Is this stuff in cache already?
 
-            string cacheKey = "Geographies-Json-" + rootGeographyId.ToString(CultureInfo.InvariantCulture) + "-" + Thread.CurrentThread.CurrentCulture.Name;
+            string cacheKey = "Geographies-Json-" + rootGeographyId.ToString(CultureInfo.InvariantCulture) + "-" +
+                              Thread.CurrentThread.CurrentCulture.Name;
 
             string accountsJson =
                 (string) Cache[cacheKey];
@@ -60,12 +61,13 @@ namespace Swarmops.Frontend.Automation
                 treeMap[geography.ParentIdentity].Add(geography);
             }
 
-            int renderRootNodeId = rootGeography.ParentGeographyId; // This works as rootGeography will be the only present child in the collection; other children won't be there
+            int renderRootNodeId = rootGeography.ParentGeographyId;
+                // This works as rootGeography will be the only present child in the collection; other children won't be there
 
             accountsJson = RecurseTreeMap(treeMap, renderRootNodeId, true);
 
             Cache.Insert(cacheKey, accountsJson, null, DateTime.Now.AddMinutes(5), TimeSpan.Zero);
-                // cache lasts for five minutes, no sliding expiration
+            // cache lasts for five minutes, no sliding expiration
             Response.Output.WriteLine(accountsJson);
 
             Response.End();
@@ -78,18 +80,18 @@ namespace Swarmops.Frontend.Automation
             foreach (Geography geography in treeMap[node])
             {
                 string element = string.Format("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
-                                               JsonSanitize(TestLocalization(geography.Name)));
+                    JsonSanitize(TestLocalization(geography.Name)));
 
                 if (treeMap.ContainsKey(geography.Identity))
                 {
-                    element += ",\"state\":\"" + (expanded? "open":"closed") + "\",\"children\":" + RecurseTreeMap(treeMap, geography.Identity, false);
+                    element += ",\"state\":\"" + (expanded ? "open" : "closed") + "\",\"children\":" +
+                               RecurseTreeMap(treeMap, geography.Identity, false);
                 }
 
                 elements.Add("{" + element + "}");
             }
 
             return "[" + String.Join(",", elements.ToArray()) + "]";
-
         }
 
         private string TestLocalization(string name)
@@ -98,10 +100,7 @@ namespace Swarmops.Frontend.Automation
             {
                 return Resources.GeographyNames.ResourceManager.GetString(name.Substring(5));
             }
-            else
-            {
-                return name;
-            }
+            return name;
         }
     }
 }

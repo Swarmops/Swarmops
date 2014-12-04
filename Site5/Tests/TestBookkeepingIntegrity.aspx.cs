@@ -7,8 +7,8 @@ public partial class Tests_TestBookkeepingIntegrity : PageV5Base
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.PageTitle = "Test Bookkeeping Integrity";
-        this.PageIcon = "iconshock-tester";
+        PageTitle = "Test Bookkeeping Integrity";
+        PageIcon = "iconshock-tester";
 
         if (!Page.IsPostBack)
         {
@@ -19,7 +19,7 @@ public partial class Tests_TestBookkeepingIntegrity : PageV5Base
             this.DropYear.Items.Add(new ListItem("2011", "2011"));
         }
 
-        this.LabelThisOrganization.Text = this.CurrentOrganization.Name;
+        this.LabelThisOrganization.Text = CurrentOrganization.Name;
     }
 
     protected void DropYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -28,54 +28,53 @@ public partial class Tests_TestBookkeepingIntegrity : PageV5Base
 
         if (year < 2000) return;
 
-        FinancialAccounts balanceAccounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
-                                                                              FinancialAccountType.Balance);
+        FinancialAccounts balanceAccounts = FinancialAccounts.ForOrganization(CurrentOrganization,
+            FinancialAccountType.Balance);
 
-        FinancialAccounts resultAccounts = FinancialAccounts.ForOrganization(this.CurrentOrganization,
-                                                                             FinancialAccountType.Result);
+        FinancialAccounts resultAccounts = FinancialAccounts.ForOrganization(CurrentOrganization,
+            FinancialAccountType.Result);
 
-        FinancialAccount ownCapital = this.CurrentOrganization.FinancialAccounts.DebtsEquity;
-        FinancialAccount resultAsNoted = this.CurrentOrganization.FinancialAccounts.CostsYearlyResult;
+        FinancialAccount ownCapital = CurrentOrganization.FinancialAccounts.DebtsEquity;
+        FinancialAccount resultAsNoted = CurrentOrganization.FinancialAccounts.CostsYearlyResult;
 
         FinancialAccounts balancesWithoutCapital =
-            FinancialAccounts.ForOrganization(this.CurrentOrganization, FinancialAccountType.Balance);
+            FinancialAccounts.ForOrganization(CurrentOrganization, FinancialAccountType.Balance);
         balancesWithoutCapital.Remove(ownCapital);
 
-        FinancialAccounts resultAccountsWithoutNotedResult = FinancialAccounts.ForOrganization(this.CurrentOrganization,
-                                                                             FinancialAccountType.Result);
-        resultAccountsWithoutNotedResult.Remove(this.CurrentOrganization.FinancialAccounts.CostsYearlyResult);
+        FinancialAccounts resultAccountsWithoutNotedResult = FinancialAccounts.ForOrganization(CurrentOrganization,
+            FinancialAccountType.Result);
+        resultAccountsWithoutNotedResult.Remove(CurrentOrganization.FinancialAccounts.CostsYearlyResult);
 
-        Currency currency = this.CurrentOrganization.DefaultCountry.Currency;
+        Currency currency = CurrentOrganization.DefaultCountry.Currency;
 
         this.LabelResultsAll.Text = String.Format("{0} {1:N2}", currency.Code,
-                                                  resultAccounts.GetDeltaCents(new DateTime(year, 1, 1),
-                                                                               new DateTime(year + 1, 1, 1)) / 100.0);
+            resultAccounts.GetDeltaCents(new DateTime(year, 1, 1),
+                new DateTime(year + 1, 1, 1))/100.0);
 
         this.LabelResultsNoted.Text = String.Format("{0} {1:N2}", currency.Code,
-                                                    resultAsNoted.GetDeltaCents(new DateTime(year, 1, 1),
-                                                                                new DateTime(year + 1, 1, 1))/100.0);
+            resultAsNoted.GetDeltaCents(new DateTime(year, 1, 1),
+                new DateTime(year + 1, 1, 1))/100.0);
 
         this.LabelEoyBalance.Text = String.Format("{0} {1:N2}", currency.Code,
-                                                    balanceAccounts.GetDeltaCents(new DateTime(1900, 1, 1),
-                                                                                new DateTime(year + 1, 1, 1)) / 100.0);
+            balanceAccounts.GetDeltaCents(new DateTime(1900, 1, 1),
+                new DateTime(year + 1, 1, 1))/100.0);
 
         Int64 endOfLastYearCapital = ownCapital.GetDeltaCents(new DateTime(1900, 1, 1),
-                                                              new DateTime(year, 1, 1));
+            new DateTime(year, 1, 1));
 
         Int64 endOfSelectedYearCapital = ownCapital.GetDeltaCents(new DateTime(1900, 1, 1),
-                                                              new DateTime(year + 1, 1, 1));
+            new DateTime(year + 1, 1, 1));
 
-        this.LabelEolyOwnCapital.Text = String.Format("{0} {1:N2}", currency.Code, endOfLastYearCapital / 100.0);
+        this.LabelEolyOwnCapital.Text = String.Format("{0} {1:N2}", currency.Code, endOfLastYearCapital/100.0);
 
         this.LabelEocyOwnCapital.Text = String.Format("{0} {1:N2}", currency.Code,
-                                            endOfSelectedYearCapital / 100.0);
+            endOfSelectedYearCapital/100.0);
 
         this.LabelOwnCapitalDiff.Text = String.Format("{0} {1:N2}", currency.Code,
-                                            (endOfSelectedYearCapital - endOfLastYearCapital) / 100.0);
+            (endOfSelectedYearCapital - endOfLastYearCapital)/100.0);
 
         this.LabelOwnCapitalDelta.Text = String.Format("{0} {1:N2}", currency.Code,
-                                            ownCapital.GetDeltaCents(new DateTime(year, 1, 1),
-                                                                        new DateTime(year + 1, 1, 1)) / 100.0);
-
+            ownCapital.GetDeltaCents(new DateTime(year, 1, 1),
+                new DateTime(year + 1, 1, 1))/100.0);
     }
 }

@@ -4,15 +4,22 @@ namespace Swarmops.Basic.Types
 {
     public class BasicMailTemplate : IHasIdentity
     {
+        private readonly string countryCode;
+        private readonly string languageCode;
+        private readonly int organizationId;
+        private readonly int templateId;
+        private readonly string templateName;
+        private string templateBody;
+
         /// <summary>
-        /// Basic constructor.
+        ///     Basic constructor.
         /// </summary>
-        public BasicMailTemplate (int templateId,
-                                    string templateName,
-                                    string languageCode,
-                                    string countryCode,
-                                    int organizationId,
-                                    string templateBody)
+        public BasicMailTemplate(int templateId,
+            string templateName,
+            string languageCode,
+            string countryCode,
+            int organizationId,
+            string templateBody)
         {
             this.templateId = templateId;
             this.templateName = templateName;
@@ -20,20 +27,19 @@ namespace Swarmops.Basic.Types
             this.countryCode = countryCode;
             this.organizationId = organizationId;
             this.templateBody = templateBody;
-
         }
 
 
         /// <summary>
-        /// Copy constructor.
+        ///     Copy constructor.
         /// </summary>
-        public BasicMailTemplate (BasicMailTemplate original)
+        public BasicMailTemplate(BasicMailTemplate original)
             : this(original.templateId,
-                    original.templateName,
-                    original.languageCode,
-                    original.countryCode,
-                    original.organizationId,
-                    original.templateBody)
+                original.templateName,
+                original.languageCode,
+                original.countryCode,
+                original.organizationId,
+                original.templateBody)
         {
         }
 
@@ -42,38 +48,26 @@ namespace Swarmops.Basic.Types
             get { return this.templateId; }
         }
 
-        public int Identity
-        {
-            get { return this.templateId; }
-        }
-
 
         public string TemplateName
         {
-            get
-            {
-                return templateName;
-            }
+            get { return this.templateName; }
         }
+
         public string LanguageCode
         {
-            get
-            {
-                return languageCode;
-            }
+            get { return this.languageCode; }
         }
+
         public string CountryCode
         {
-            get
-            {
-                return countryCode;
-            }
+            get { return this.countryCode; }
         }
+
         public int OrganizationId
         {
             get { return this.organizationId; }
         }
-
 
 
         public string TemplateBody
@@ -82,11 +76,9 @@ namespace Swarmops.Basic.Types
             set { this.templateBody = value; }
         }
 
-        private int templateId;
-        private string templateName;
-        private string languageCode;
-        private string countryCode;
-        private int organizationId;
-        private string templateBody;
+        public int Identity
+        {
+            get { return this.templateId; }
+        }
     }
 }

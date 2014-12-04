@@ -8,6 +8,10 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
+        private const string reporterFieldSequence =
+            " ReporterId,Name,Email " + // 0-2
+            " FROM Reporters ";
+
         public int CreateReporter(string name, string email)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -57,14 +61,14 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicReporter GetReporter (int reporterId)
+        public BasicReporter GetReporter(int reporterId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + reporterFieldSequence + " WHERE ReporterId=" + reporterId.ToString(),
-                                                 connection);
+                DbCommand command = GetDbCommand("SELECT " + reporterFieldSequence + " WHERE ReporterId=" + reporterId,
+                    connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -73,7 +77,7 @@ namespace Swarmops.Database
                         return ReadReporterFromReader(reader);
                     }
 
-                    throw new ArgumentException("No such ReporterId: " + reporterId.ToString());
+                    throw new ArgumentException("No such ReporterId: " + reporterId);
                 }
             }
         }
@@ -85,7 +89,9 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + reporterFieldSequence + ConstructWhereClause("Reporters", conditions), connection);
+                DbCommand command =
+                    GetDbCommand("SELECT " + reporterFieldSequence + ConstructWhereClause("Reporters", conditions),
+                        connection);
                 List<BasicReporter> result = new List<BasicReporter>();
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -101,7 +107,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicReporter[] GetReportersFromMediaCategories (int[] mediaCategoryIds)
+        public BasicReporter[] GetReportersFromMediaCategories(int[] mediaCategoryIds)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -120,13 +126,14 @@ namespace Swarmops.Database
                         reporterIds.Add(reader.GetInt32(0));
                     }
                 }
-                   
+
                 List<BasicReporter> result = new List<BasicReporter>();
                 if (reporterIds.Count > 0)
                 {
                     command =
                         GetDbCommand(
-                            "SELECT " + reporterFieldSequence + " WHERE ReporterId in (" + JoinIds(reporterIds.ToArray()) + ")",
+                            "SELECT " + reporterFieldSequence + " WHERE ReporterId in (" +
+                            JoinIds(reporterIds.ToArray()) + ")",
                             connection);
 
                     using (DbDataReader reader = command.ExecuteReader())
@@ -139,13 +146,12 @@ namespace Swarmops.Database
                         return result.ToArray();
                     }
                 }
-                else
-                    return result.ToArray();
+                return result.ToArray();
             }
         }
 
 
-        public int[] GetReporterMediaCategories (int reporterId)
+        public int[] GetReporterMediaCategories(int reporterId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -154,7 +160,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT MediaCategoryId From ReportersMediaCategories WHERE ReporterId=" + reporterId.ToString(),
+                        "SELECT MediaCategoryId From ReportersMediaCategories WHERE ReporterId=" + reporterId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -170,12 +176,7 @@ namespace Swarmops.Database
         }
 
 
-        private const string reporterFieldSequence =
-            " ReporterId,Name,Email " +  // 0-2
-            " FROM Reporters ";
-
-
-        private static BasicReporter ReadReporterFromReader (DbDataReader reader)
+        private static BasicReporter ReadReporterFromReader(DbDataReader reader)
         {
             int id = reader.GetInt32(0);
             string name = reader.GetString(1);

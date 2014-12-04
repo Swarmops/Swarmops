@@ -8,13 +8,16 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string paymentFieldSequence =
-            " PaymentId,PaymentGroupId,AmountCents,Reference,FromAccount," +   // 0-4
-            "PaymentKey,HasImage,OutboundInvoiceId " +                           // 5-7
+            " PaymentId,PaymentGroupId,AmountCents,Reference,FromAccount," + // 0-4
+            "PaymentKey,HasImage,OutboundInvoiceId " + // 5-7
             "FROM Payments ";
+
+        private const string paymentInformationFieldSequence =
+            " PaymentInformationId,PaymentId,PaymentInformationTypes.Name,Data " + // 0-4
+            " FROM PaymentInformation JOIN PaymentInformationTypes USING (PaymentInformationTypeId) ";
 
         private static BasicPayment ReadPaymentFromDataReader(IDataRecord reader)
         {
@@ -27,14 +30,11 @@ namespace Swarmops.Database
             bool hasImage = reader.GetBoolean(6);
             int outboundInvoiceId = reader.GetInt32(7);
 
-            return new BasicPayment(paymentId, paymentGroupId, amountCents, reference, fromAccount, key, hasImage, outboundInvoiceId);
+            return new BasicPayment(paymentId, paymentGroupId, amountCents, reference, fromAccount, key, hasImage,
+                outboundInvoiceId);
         }
 
-        private const string paymentInformationFieldSequence =
-            " PaymentInformationId,PaymentId,PaymentInformationTypes.Name,Data " + // 0-4
-            " FROM PaymentInformation JOIN PaymentInformationTypes USING (PaymentInformationTypeId) ";
-
-        private static BasicPaymentInformation ReadPaymentInformationFromDataReader (IDataRecord reader)
+        private static BasicPaymentInformation ReadPaymentInformationFromDataReader(IDataRecord reader)
         {
             string dataTypeString = reader.GetString(2);
             string data = reader.GetString(3);
@@ -45,12 +45,9 @@ namespace Swarmops.Database
             return new BasicPaymentInformation(dataType, data);
         }
 
-
         #endregion
 
-
         #region Database record reading -- SELECT clauses
-
 
         public BasicPayment GetPayment(int paymentId)
         {
@@ -60,8 +57,8 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand("SELECT" + paymentFieldSequence +
-                    "WHERE PaymentId=" + paymentId.ToString(),
-                                 connection);
+                                 "WHERE PaymentId=" + paymentId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -70,12 +67,10 @@ namespace Swarmops.Database
                         return ReadPaymentFromDataReader(reader);
                     }
 
-                    throw new ArgumentException("No such PaymentId:" + paymentId.ToString());
+                    throw new ArgumentException("No such PaymentId:" + paymentId);
                 }
             }
-
         }
-
 
 
         public BasicPayment[] GetPayments(params object[] conditions)
@@ -113,7 +108,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + paymentInformationFieldSequence + " WHERE PaymentId=" + paymentId.ToString(), connection);
+                        "SELECT" + paymentInformationFieldSequence + " WHERE PaymentId=" + paymentId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -127,14 +122,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Creation and manipulation -- stored procedures
 
-
-        public int CreatePayment(int paymentGroupId, double amount, string reference, string fromAccount, string key, bool hasImage, int outboundInvoiceId)
+        public int CreatePayment(int paymentGroupId, double amount, string reference, string fromAccount, string key,
+            bool hasImage, int outboundInvoiceId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -156,7 +149,8 @@ namespace Swarmops.Database
         }
 
 
-        public int CreatePayment(int paymentGroupId, Int64 amountCents, string reference, string fromAccount, string key, bool hasImage, int outboundInvoiceId)
+        public int CreatePayment(int paymentGroupId, Int64 amountCents, string reference, string fromAccount, string key,
+            bool hasImage, int outboundInvoiceId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -195,7 +189,7 @@ namespace Swarmops.Database
             }
         }
 
-        [Obsolete ("This should never be called, ever: it ruins trackability.")]
+        [Obsolete("This should never be called, ever: it ruins trackability.")]
         public void DeletePayment(int paymentId)
         {
             // This function is necessary since the Swedish bank system only allows for a dupe check AFTER all payments
@@ -217,9 +211,7 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Dead template code
 
@@ -564,7 +556,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

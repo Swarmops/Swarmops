@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Threading;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Automation
 {
@@ -49,13 +47,12 @@ namespace Swarmops.Frontend.Automation
             }
 
             currenciesJson = currenciesJson.TrimEnd(',') + "]";
-            
+
             Cache.Insert(cacheKey, currenciesJson, null, DateTime.Now.AddMinutes(60), TimeSpan.Zero);
-                // cache lasts for sixty minutes, no sliding expiration
+            // cache lasts for sixty minutes, no sliding expiration
             Response.Output.WriteLine(currenciesJson);
 
             Response.End();
         }
-
     }
 }

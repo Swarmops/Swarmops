@@ -9,24 +9,14 @@ namespace Swarmops.Logic.Special.Mail
     // Have moved this Class from Utility to Logic to avoid circular dependency between assemblies /JL
     public class MailServerDatabase
     {
-        /// <summary>
-        /// class MailAccount is used for transport of results only
-        /// </summary>
-        public class MailAccount
-        {
-            public string account { get; set; }
-            public List<string> forwardedTo = new List<string>();
-            public List<string> forwardedFrom = new List<string>();
+        private static readonly string connectionString = "";
 
-        }
-
-
-        static MailServerDatabase ()
+        static MailServerDatabase()
         {
             connectionString = Persistence.Key["MailServerDatabaseConnect"];
         }
 
-        public static void AddAccount (string email, string initialPassword, int quotaMegabytes)
+        public static void AddAccount(string email, string initialPassword, int quotaMegabytes)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -37,14 +27,14 @@ namespace Swarmops.Logic.Special.Mail
                         new MySqlCommand(
                             "INSERT INTO users (email, password, quota) VALUES ('" + email.Replace("'", "''") +
                             "', ENCRYPT('" + initialPassword.Replace("'", "''") + "'), " +
-                            (1048576 * quotaMegabytes).ToString() + ");", connection))
+                            (1048576*quotaMegabytes) + ");", connection))
                 {
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public static List<MailAccount> SearchAccount (string email)
+        public static List<MailAccount> SearchAccount(string email)
         {
             //temporary test
 
@@ -89,9 +79,8 @@ namespace Swarmops.Logic.Special.Mail
             return new List<MailAccount>(foundAccounts.Values);
         }
 
-        public static string FindFreeAccount (string email)
+        public static string FindFreeAccount(string email)
         {
-
             email = email.Trim();
             if (email == null || email.IndexOf("@") < 2)
             {
@@ -104,19 +93,22 @@ namespace Swarmops.Logic.Special.Mail
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                using (MySqlCommand command = new MySqlCommand("select * from users where email = '" + email + "'", connection))
+                using (
+                    MySqlCommand command = new MySqlCommand("select * from users where email = '" + email + "'",
+                        connection))
                 {
                     using (DbDataReader reader = command.ExecuteReader())
                     {
                         if (!reader.Read())
-                        {   //Address not found, it's OK to use
+                        {
+                            //Address not found, it's OK to use
                             return email;
                         }
                     }
                 }
-                string[] splitDom = email.Split(new char[] { '@' });
+                string[] splitDom = email.Split(new[] {'@'});
 
-                string[] splitArr = splitDom[0].Split(new char[] { '.' });
+                string[] splitArr = splitDom[0].Split(new[] {'.'});
 
                 string firstPart = splitArr[0];
                 splitArr[0] = "";
@@ -131,20 +123,22 @@ namespace Swarmops.Logic.Special.Mail
                     MySqlCommand command =
                         new MySqlCommand(
                             "select * from users where email RLIKE " +
-                            "'^" + firstPart + "([.period.][^[.period.]]+){0,1}[.period.]" + secondPartRegEx + "@" + domainRegex + "'",
+                            "'^" + firstPart + "([.period.][^[.period.]]+){0,1}[.period.]" + secondPartRegEx + "@" +
+                            domainRegex + "'",
                             connection))
                 {
-                    List<string> foundAddresses = new List<string>(); ;
+                    List<string> foundAddresses = new List<string>();
+                    ;
                     using (DbDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            foundAddresses.Add(((string)reader["email"]).Trim().ToLowerInvariant());
+                            foundAddresses.Add(((string) reader["email"]).Trim().ToLowerInvariant());
                         }
                     }
                     string suggestMail = email;
                     char suggestChar = 'a';
-                    char suggestChar2 = (char)('a' - 1);
+                    char suggestChar2 = (char) ('a' - 1);
                     while (foundAddresses.Contains(suggestMail.Trim().ToLowerInvariant()))
                     {
                         string suggestString = "" + suggestChar;
@@ -159,7 +153,6 @@ namespace Swarmops.Logic.Special.Mail
 
                         suggestMail = firstPart + "." + suggestString + "." + secondPart + "@" + splitDom[1];
                         ++suggestChar;
-
                     }
                     return suggestMail;
                 }
@@ -167,7 +160,7 @@ namespace Swarmops.Logic.Special.Mail
         }
 
 
-        public static void SetNewPassword (string email, string newPassword)
+        public static void SetNewPassword(string email, string newPassword)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -181,11 +174,10 @@ namespace Swarmops.Logic.Special.Mail
                 {
                     command.ExecuteNonQuery();
                 }
-
             }
         }
 
-        public static void StartForwarding (string fromEmail, string toEmail)
+        public static void StartForwarding(string fromEmail, string toEmail)
         {
             fromEmail = fromEmail.Trim().Replace("'", "''");
             toEmail = toEmail.Trim().Replace("'", "''");
@@ -223,12 +215,13 @@ namespace Swarmops.Logic.Special.Mail
                         {
                             if (reader.Read())
                             {
-                                string tmpDest = ((string)reader["destination"]).Trim().ToLower();
+                                string tmpDest = ((string) reader["destination"]).Trim().ToLower();
                                 loopDict.Add(loopEmail, tmpDest);
                                 loopEmail = tmpDest;
                             }
                             else
-                            {   //Address not found
+                            {
+                                //Address not found
                                 loopEmail = "";
                             }
                         }
@@ -260,7 +253,7 @@ namespace Swarmops.Logic.Special.Mail
             }
         }
 
-        public static void StopSpecificForwarding (string fromEmail, string toEmail)
+        public static void StopSpecificForwarding(string fromEmail, string toEmail)
         {
             fromEmail = fromEmail.Trim().Replace("'", "''");
             if (fromEmail == null || fromEmail.IndexOf("@") < 2)
@@ -288,7 +281,8 @@ namespace Swarmops.Logic.Special.Mail
                 }
             }
         }
-        public static void StopForwarding (string fromEmail)
+
+        public static void StopForwarding(string fromEmail)
         {
             fromEmail = fromEmail.Trim().Replace("'", "''");
             if (fromEmail == null || fromEmail.IndexOf("@") < 2)
@@ -310,7 +304,7 @@ namespace Swarmops.Logic.Special.Mail
             }
         }
 
-        public static void DeleteAccount (string fromEmail)
+        public static void DeleteAccount(string fromEmail)
         {
             fromEmail = fromEmail.Trim().Replace("'", "''");
             if (fromEmail == null || fromEmail.IndexOf("@") < 2)
@@ -325,8 +319,8 @@ namespace Swarmops.Logic.Special.Mail
                 using (
                     MySqlCommand command =
                         new MySqlCommand(
-                    // Shortcut past the account that is to be removed
-                           @"Update forwardings
+                            // Shortcut past the account that is to be removed
+                            @"Update forwardings
                                INNER JOIN
                                   (SELECT DISTINCT
                                           forwardings.source,
@@ -340,11 +334,11 @@ namespace Swarmops.Logic.Special.Mail
                                ON (forwardings.source = Subquery.source)
                                set destination=Subquery.newDestination
                                where Subquery.orgDestination='" + fromEmail + "';" +
-                    // Delete where the removed account is source of forwarding
+                            // Delete where the removed account is source of forwarding
                             "DELETE FROM forwardings WHERE source='" + fromEmail + "';" +
-                    // Delete where the removed account is target of forwarding
+                            // Delete where the removed account is target of forwarding
                             "DELETE FROM forwardings WHERE destination='" + fromEmail + "';" +
-                    // Delete the user
+                            // Delete the user
                             "DELETE FROM users WHERE email='" + fromEmail + "';"
                             , connection))
                 {
@@ -353,6 +347,14 @@ namespace Swarmops.Logic.Special.Mail
             }
         }
 
-        private static string connectionString = "";
+        /// <summary>
+        ///     class MailAccount is used for transport of results only
+        /// </summary>
+        public class MailAccount
+        {
+            public List<string> forwardedFrom = new List<string>();
+            public List<string> forwardedTo = new List<string>();
+            public string account { get; set; }
+        }
     }
 }

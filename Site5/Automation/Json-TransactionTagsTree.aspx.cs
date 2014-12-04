@@ -15,7 +15,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             FinancialTransactionTagSet tagSet = FinancialTransactionTagSet.FromIdentity(tagSetId);
 
-            if (tagSet.OrganizationId != this.CurrentOrganization.Identity)
+            if (tagSet.OrganizationId != CurrentOrganization.Identity)
             {
                 throw new UnauthorizedAccessException();
             }
@@ -25,7 +25,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             string cacheKey = "FinancialTransactionTagTypes-Json-" +
                               tagSetId.ToString((CultureInfo.InvariantCulture));
 
-            string tagsJson = 
+            string tagsJson =
                 (string) Cache[cacheKey];
 
             if (tagsJson != null)
@@ -43,7 +43,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Build tree (there should be a template for this)
 
-            Dictionary<int, List<FinancialTransactionTagType>> treeMap = new Dictionary<int, List<FinancialTransactionTagType>>();
+            Dictionary<int, List<FinancialTransactionTagType>> treeMap =
+                new Dictionary<int, List<FinancialTransactionTagType>>();
 
             foreach (FinancialTransactionTagType tagType in tagTypes)
             {
@@ -67,7 +68,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             tagsJson = RecurseTreeMap(treeMap, renderRootNodeId);
 
             Cache.Insert(cacheKey, tagsJson, null, DateTime.Now.AddMinutes(5), TimeSpan.Zero);
-                // cache lasts for five minutes, no sliding expiration
+            // cache lasts for five minutes, no sliding expiration
             Response.Output.WriteLine(tagsJson);
 
             Response.End();
@@ -80,7 +81,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             foreach (FinancialTransactionTagType tagType in treeMap[node])
             {
                 string element = string.Format("\"id\":{0},\"text\":\"{1}\"", tagType.Identity,
-                                               JsonSanitize(tagType.Name));
+                    JsonSanitize(tagType.Name));
 
                 if (treeMap.ContainsKey(tagType.Identity))
                 {
@@ -91,8 +92,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             return "[" + String.Join(",", elements.ToArray()) + "]";
-
         }
-
     }
 }

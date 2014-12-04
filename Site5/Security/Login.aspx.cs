@@ -1,34 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
-using System.Threading;
 using System.Web;
 using System.Web.ExtensionMethods;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using System.Web.Services;
-using System.Web.SessionState;
 using System.Web.UI;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Types;
+using NBitcoin;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
-using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
-using Swarmops.Site.Automation;
-using NBitcoin;
 
 namespace Swarmops.Pages.Security
 {
-
     public partial class Login : DataV5Base // "Data" because we don't have a master page
     {
+        private static string _buildIdentity;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
             // Check if this is the first run ever. If so, redirect to Init.
 
             if (!SwarmDb.Configuration.IsConfigured())
@@ -61,7 +53,7 @@ namespace Swarmops.Pages.Security
                     ProcessRespondBitId(credentials, Response);
                     return;
                 }
-                else if (Request.ContentType == "application/json")
+                if (Request.ContentType == "application/json")
                 {
                     BitIdCredentials credentials =
                         new JavaScriptSerializer().Deserialize<BitIdCredentials>(
@@ -74,7 +66,6 @@ namespace Swarmops.Pages.Security
             }
 
 
-
             // If this is the Dev Sandbox, autologin
 
             if (Request.Url.Host == "dev.swarmops.com" &&
@@ -83,7 +74,7 @@ namespace Swarmops.Pages.Security
             {
                 Response.AppendCookie(new HttpCookie("DashboardMessage",
                     HttpUtility.UrlEncode(
-                        "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p><br/><br/>")));
+                        "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p>")));
                 FormsAuthentication.RedirectFromLoginPage("1,1", true);
             }
 
@@ -159,13 +150,13 @@ namespace Swarmops.Pages.Security
 
                 try
                 {
-                    if (this.CurrentUser != null)
+                    if (CurrentUser != null)
                     {
                         if ((string) GuidCache.Get(credentials.uri + "-Intent") == "Register")
                         {
                             // the currently logged-on user desires to register this address
                             // so set currentUser bitid
-                            this.CurrentUser.BitIdAddress = credentials.address;
+                            CurrentUser.BitIdAddress = credentials.address;
                             // Then go do something else, I guess? Flag somehow to original page
                             // that the op is completed?
                             GuidCache.Set(credentials.uri + "-Intent", "Complete");
@@ -182,7 +173,6 @@ namespace Swarmops.Pages.Security
 
                         GuidCache.Set(credentials.uri + "-LoggedOn",
                             person.Identity.ToString(CultureInfo.InvariantCulture) + ",1,,BitId 2FA");
-
                     }
                 }
                 catch (Exception e)
@@ -242,7 +232,8 @@ namespace Swarmops.Pages.Security
 
         [WebMethod]
         // ReSharper disable once InconsistentNaming
-        public static bool TestCredentials(string credentialsLogin, string credentialsPass, string credentials2FA, string logonUriEncoded)
+        public static bool TestCredentials(string credentialsLogin, string credentialsPass, string credentials2FA,
+            string logonUriEncoded)
         {
             if (!string.IsNullOrEmpty(credentialsLogin.Trim()) && !string.IsNullOrEmpty(credentialsPass.Trim()))
             {
@@ -263,12 +254,10 @@ namespace Swarmops.Pages.Security
                 {
                     return false;
                 }
-
             }
 
             return false;
         }
-
 
 
         protected override void OnPreInit(EventArgs e)
@@ -292,11 +281,7 @@ namespace Swarmops.Pages.Security
             this.LiteralCredentialsPass.Text = Resources.Pages.Security.Login_Password;
             this.LiteralCredentials2FA.Text = Resources.Pages.Security.Login_GoogleAuthenticatorCode;
             this.LiteralLoginSuccess.Text = Resources.Pages.Security.Login_LoggingIn;
-
         }
-
-
-        private static string _buildIdentity;
 
 
         private string GetBuildIdentity()
@@ -323,7 +308,6 @@ namespace Swarmops.Pages.Security
         }
 
 
-
         protected void ButtonLogin_Click(object sender, EventArgs args)
         {
             // Check the host names and addresses again as a security measure - after all, we can be called from outside our intended script
@@ -346,6 +330,11 @@ namespace Swarmops.Pages.Security
             }*/
         }
 
+        protected void ButtonCheat_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
 
         // ReSharper disable InconsistentNaming
         [Serializable]
@@ -364,14 +353,7 @@ namespace Swarmops.Pages.Security
             public string address { get; set; }
             public string signature { get; set; }
         }
+
         // ReSharper restore InconsistentNaming
-
-
-        protected void ButtonCheat_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
-
-

@@ -8,14 +8,15 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
-    public class FinancialTransactions : PluralBase<FinancialTransactions,FinancialTransaction,BasicFinancialTransaction>
+    public class FinancialTransactions :
+        PluralBase<FinancialTransactions, FinancialTransaction, BasicFinancialTransaction>
     {
-        public static FinancialTransactions GetIncomplete (Organization organization)
+        public static FinancialTransactions GetIncomplete(Organization organization)
         {
-            return GetIncomplete (organization.Identity);
+            return GetIncomplete(organization.Identity);
         }
 
-        public static FinancialTransactions GetUnbalanced (Organization organization)
+        public static FinancialTransactions GetUnbalanced(Organization organization)
         {
             return FromArray(SwarmDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions(organization.Identity));
         }
@@ -46,16 +47,16 @@ namespace Swarmops.Logic.Financial
             return result;
         }
 
-        public static FinancialTransactions ForDependentObject (IHasIdentity foreignObject)
+        public static FinancialTransactions ForDependentObject(IHasIdentity foreignObject)
         {
             return
-                FromArray(SwarmDb.GetDatabaseForReading().GetDependentFinancialTransactions(GetDependencyType(foreignObject),
-                                                                                   foreignObject.Identity));
+                FromArray(
+                    SwarmDb.GetDatabaseForReading().GetDependentFinancialTransactions(GetDependencyType(foreignObject),
+                        foreignObject.Identity));
         }
 
 
-
-        private static FinancialDependencyType GetDependencyType (IHasIdentity foreignObject)
+        private static FinancialDependencyType GetDependencyType(IHasIdentity foreignObject)
         {
             if (foreignObject is ExpenseClaim)
             {
@@ -66,7 +67,7 @@ namespace Swarmops.Logic.Financial
                 return FinancialDependencyType.InboundInvoice;
             }
 
-            throw new NotImplementedException("Unimplemented dependency type:" + foreignObject.GetType().ToString());
+            throw new NotImplementedException("Unimplemented dependency type:" + foreignObject.GetType());
         }
     }
 }

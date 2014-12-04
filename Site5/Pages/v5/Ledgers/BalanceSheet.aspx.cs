@@ -7,15 +7,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.CurrentOrganization.IsEconomyEnabled)
+            if (!CurrentOrganization.IsEconomyEnabled)
             {
                 Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
-            this.PageIcon = "iconshock-treasure";
-            this.PageTitle = Resources.Pages.Ledgers.BalanceSheet_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Ledgers.BalanceSheet_Info;
+            PageIcon = "iconshock-treasure";
+            PageTitle = Resources.Pages.Ledgers.BalanceSheet_PageTitle;
+            InfoBoxLiteral = Resources.Pages.Ledgers.BalanceSheet_Info;
 
             if (!Page.IsPostBack)
             {
@@ -31,14 +31,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 Localize();
             }
 
-            this.EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
+            EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
         }
 
 
         private void Localize()
         {
             this.LabelContentHeader.Text = string.Format(Resources.Pages.Ledgers.BalanceSheet_ContentHeader,
-                                                         CurrentOrganization.Name);
+                CurrentOrganization.Name);
             this.LiteralHeaderQ1.Text = Resources.Pages.Ledgers.BalanceSheet_Q1;
             this.LiteralHeaderQ2.Text = Resources.Pages.Ledgers.BalanceSheet_Q2;
             this.LiteralHeaderQ3.Text = Resources.Pages.Ledgers.BalanceSheet_Q3;
@@ -46,6 +46,5 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LiteralHeaderYtd.Text = Resources.Pages.Ledgers.BalanceSheet_Current;
             this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.BalanceSheet_AccountName;
         }
-
     }
 }

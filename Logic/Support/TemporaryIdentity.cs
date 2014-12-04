@@ -3,26 +3,24 @@ using Swarmops.Database;
 
 namespace Swarmops.Logic.Support
 {
-    public class TemporaryIdentity: IHasIdentity
+    public class TemporaryIdentity : IHasIdentity
     {
-        public TemporaryIdentity (int temporaryId)
+        private readonly int temporaryId;
+
+        public TemporaryIdentity(int temporaryId)
         {
             this.temporaryId = temporaryId;
         }
 
-        static public TemporaryIdentity GetNew()
-        {
-            return new TemporaryIdentity (SwarmDb.GetDatabaseForWriting().GetTemporaryIdentity());  // This is actually an Insert, not a Select
-        }
-
-        private int temporaryId;
-
         public int Identity
         {
-            get
-            {
-                return temporaryId;
-            }
+            get { return this.temporaryId; }
+        }
+
+        public static TemporaryIdentity GetNew()
+        {
+            return new TemporaryIdentity(SwarmDb.GetDatabaseForWriting().GetTemporaryIdentity());
+                // This is actually an Insert, not a Select
         }
     }
 }

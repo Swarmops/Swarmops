@@ -11,9 +11,9 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string payrollFieldSequence =
-            " PayrollItemId,PersonId,OrganizationId,CountryId,EmployedDate," +   // 0-4
-            "ReportsToPersonId,BaseSalaryCents,BudgetId,Open,TerminatedDate," +       // 5-9
-            "SubtractiveTaxLevelId,AdditiveTaxLevel " +                          // 10-11
+            " PayrollItemId,PersonId,OrganizationId,CountryId,EmployedDate," + // 0-4
+            "ReportsToPersonId,BaseSalaryCents,BudgetId,Open,TerminatedDate," + // 5-9
+            "SubtractiveTaxLevelId,AdditiveTaxLevel " + // 10-11
             "FROM Payroll ";
 
         private BasicPayrollItem ReadPayrollItemFromDataReader(DbDataReader reader)
@@ -32,13 +32,11 @@ namespace Swarmops.Database
             double additiveTaxLevel = reader.GetDouble(11);
 
             return new BasicPayrollItem(payrollItemId, personId, organizationId, countryId, employedDate,
-                reportsToPersonId, baseSalaryCents, budgetId, open, terminatedDate, subtractiveTaxLevelId, additiveTaxLevel);
-
+                reportsToPersonId, baseSalaryCents, budgetId, open, terminatedDate, subtractiveTaxLevelId,
+                additiveTaxLevel);
         }
 
         #endregion
-
-
 
         #region Record reading - SELECT statements
 
@@ -65,11 +63,14 @@ namespace Swarmops.Database
         }
 
         /// <summary>
-        /// Gets payroll.
+        ///     Gets payroll.
         /// </summary>
-        /// <param name="conditions">An optional combination of a Person and/or Organization object and/or DatabaseCondition specifiers.</param>
+        /// <param name="conditions">
+        ///     An optional combination of a Person and/or Organization object and/or DatabaseCondition
+        ///     specifiers.
+        /// </param>
         /// <returns>The list of matching payroll items.</returns>
-        public BasicPayrollItem[] GetPayroll (params object[] conditions)
+        public BasicPayrollItem[] GetPayroll(params object[] conditions)
         {
             List<BasicPayrollItem> result = new List<BasicPayrollItem>();
 
@@ -93,14 +94,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-        public int CreatePayrollItem(int personId, int organizationId, DateTime employedDate, int reportsToPersonId, int countryId,
+        public int CreatePayrollItem(int personId, int organizationId, DateTime employedDate, int reportsToPersonId,
+            int countryId,
             Int64 baseSalaryCents, int subtractiveTaxLevelId, double additiveTaxLevel, int budgetId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -142,7 +141,6 @@ namespace Swarmops.Database
         }
 
 
-
         public void SetPayrollItemTerminatedDate(int payrollItemId, DateTime dateTimeTerminated)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -158,7 +156,6 @@ namespace Swarmops.Database
                 command.ExecuteNonQuery();
             }
         }
-
 
 
         public void SetPayrollItemBaseSalary(int payrollItemId, Int64 baseSalaryCents)
@@ -177,15 +174,9 @@ namespace Swarmops.Database
             }
         }
 
-
-
         #endregion
 
-
-
-
         #region Dead template code
-
 
         /*
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)

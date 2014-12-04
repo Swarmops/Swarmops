@@ -13,7 +13,7 @@ namespace Swarmops.Database
         {
             List<BasicVolunteer> result = new List<BasicVolunteer>();
 
-            using (DbConnection connection = this.GetMySqlDbConnection())
+            using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
@@ -34,16 +34,16 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicVolunteer GetVolunteer (int volunteerId)
+        public BasicVolunteer GetVolunteer(int volunteerId)
         {
-            using (DbConnection connection = this.GetMySqlDbConnection())
+            using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
                     GetDbCommand(
                         "SELECT VolunteerId,PersonId,OwnerPersonId,OpenedDateTime,Open,ClosedDateTime,ClosingComments FROM Volunteers WHERE VolunteerId=" +
-                        volunteerId.ToString() + ";", connection);
+                        volunteerId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -57,16 +57,16 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicVolunteerRole GetVolunteerRole (int volunteerRoleId)
+        public BasicVolunteerRole GetVolunteerRole(int volunteerRoleId)
         {
-            using (DbConnection connection = this.GetMySqlDbConnection())
+            using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
                     GetDbCommand(
                         "SELECT VolunteerRoleId,VolunteerId,OrganizationId,GeographyId,RoleTypeId,Open,Assigned FROM VolunteerRoles WHERE VolunteerRoleId=" +
-                        volunteerRoleId.ToString() + ";", connection);
+                        volunteerRoleId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -81,18 +81,18 @@ namespace Swarmops.Database
         }
 
 
-        public BasicVolunteerRole[] GetVolunteerRolesByVolunteer (int volunteerId)
+        public BasicVolunteerRole[] GetVolunteerRolesByVolunteer(int volunteerId)
         {
             List<BasicVolunteerRole> result = new List<BasicVolunteerRole>();
 
-            using (DbConnection connection = this.GetMySqlDbConnection())
+            using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
                     GetDbCommand(
                         "SELECT VolunteerRoleId,VolunteerId,OrganizationId,GeographyId,RoleTypeId,Open,Assigned FROM VolunteerRoles WHERE VolunteerId=" +
-                        volunteerId.ToString() + ";", connection);
+                        volunteerId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -107,7 +107,7 @@ namespace Swarmops.Database
         }
 
 
-        private BasicVolunteer ReadVolunteerFromDataReader (DbDataReader reader)
+        private BasicVolunteer ReadVolunteerFromDataReader(DbDataReader reader)
         {
             int volunteerId = reader.GetInt32(0);
             int personId = reader.GetInt32(1);
@@ -118,11 +118,11 @@ namespace Swarmops.Database
             string closingComments = reader.GetString(6);
 
             return new BasicVolunteer(volunteerId, personId, ownerPersonId, openedDateTime, open, closedDateTime,
-                                      closingComments);
+                closingComments);
         }
 
 
-        private BasicVolunteerRole ReadVolunteerRoleFromDataReader (DbDataReader reader)
+        private BasicVolunteerRole ReadVolunteerRoleFromDataReader(DbDataReader reader)
         {
             int volunteerRoleId = reader.GetInt32(0);
             int volunteerId = reader.GetInt32(1);
@@ -133,13 +133,13 @@ namespace Swarmops.Database
             bool assigned = reader.GetBoolean(6);
 
             return new BasicVolunteerRole(volunteerRoleId, volunteerId, organizationId, geographyId,
-                                          (RoleType) roleTypeId, open, assigned);
+                (RoleType) roleTypeId, open, assigned);
         }
 
 
-        public int CreateVolunteer (int personId, int ownerPersonId)
+        public int CreateVolunteer(int personId, int ownerPersonId)
         {
-            using (DbConnection connection = this.GetMySqlDbConnection())
+            using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
@@ -154,9 +154,9 @@ namespace Swarmops.Database
             }
         }
 
-        public int CreateVolunteerRole (int volunteerId, int organizationId, int geographyId, RoleType roleType)
+        public int CreateVolunteerRole(int volunteerId, int organizationId, int geographyId, RoleType roleType)
         {
-            using (DbConnection connection = this.GetMySqlDbConnection())
+            using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
@@ -172,9 +172,9 @@ namespace Swarmops.Database
             }
         }
 
-        public void SetVolunteerOwnerPersonId (int volunteerId, int ownerPersonId)
+        public void SetVolunteerOwnerPersonId(int volunteerId, int ownerPersonId)
         {
-            using (DbConnection connection = this.GetMySqlDbConnection())
+            using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
@@ -188,9 +188,9 @@ namespace Swarmops.Database
             }
         }
 
-        public void CloseVolunteer (int volunteerId, string closingComments)
+        public void CloseVolunteer(int volunteerId, string closingComments)
         {
-            using (DbConnection connection = this.GetMySqlDbConnection())
+            using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
@@ -205,9 +205,9 @@ namespace Swarmops.Database
             }
         }
 
-        public void CloseVolunteerRole (int volunteerRoleId, bool wasAssigned)
+        public void CloseVolunteerRole(int volunteerRoleId, bool wasAssigned)
         {
-            using (DbConnection connection = this.GetMySqlDbConnection())
+            using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
