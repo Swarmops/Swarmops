@@ -13,21 +13,17 @@ namespace Swarmops.Basic.Types
             this.Code = code;
         }
 
-        public BasicCountry (int countryId, string name, string code, string defaultCulture)
+        public BasicCountry (int countryId, string name, string code, string defaultCulture, string currencyCode, int geographyId, int postalCodeLength)
             : this(countryId, name, code)
         {
             this.Culture = defaultCulture;
-        }
-
-        public BasicCountry (int countryId, string name, string code, string defaultCulture, int geographyId, int postalCodeLength)
-            : this(countryId, name, code, defaultCulture)
-        {
+            this.CurrencyCode = currencyCode;
             this.GeographyId = geographyId;
             this.PostalCodeLength = postalCodeLength;
         }
 
         public BasicCountry (BasicCountry original)
-            : this(original.CountryId, original.Name, original.Code, original.Culture, original.GeographyId, original.PostalCodeLength )
+            : this(original.CountryId, original.Name, original.Code, original.Culture, original.CurrencyCode, original.GeographyId, original.PostalCodeLength )
         {
         }
 
@@ -41,6 +37,7 @@ namespace Swarmops.Basic.Types
         public string Name { get; protected set; }
         public string Code { get; protected set; }
         public string Culture { get; protected set; }
+        public string CurrencyCode { get; protected set; }
         public int GeographyId { get; protected set; }
         public int PostalCodeLength { get; protected set; }
 

@@ -8,8 +8,16 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        // This class is in horrible need of serious refactoring. For its simplicity in task, it's a horrible bowl of spaghetti.
+        /// <summary>
+        /// This is the IN-CODE revision of the database. The version we expect to be running against.
+        /// </summary>
+        public static int DbVersionExpected
+        {
+            get { return 5; }
+        }
 
+
+        // This class is in horrible need of serious refactoring. For its simplicity in task, it's a horrible bowl of spaghetti.
 
         [Serializable]
         public class Configuration

@@ -66,15 +66,6 @@ namespace Swarmops.Database
             }
         }
 
-        /// <summary>
-        /// This is the IN-CODE revision of the database. The version we expect to be running against.
-        /// </summary>
-        public static int DbVersionExpected
-        {
-            get { return 4; }
-        }
-
-
         [Obsolete ("Do not use. Use SwarmDb.GetDatabaseForReading(), ...ForWriting() or ...ForAdmin().", true)]
         public static SwarmDb GetDatabase()
         {
