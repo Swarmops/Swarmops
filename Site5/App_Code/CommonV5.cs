@@ -8,17 +8,10 @@ using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
-/// Summary description for CommonV5
+///     Summary description for CommonV5
 /// </summary>
 public class CommonV5
 {
-    public CommonV5()
-    {
-        //
-        // TODO: Add constructor logic here
-        //
-    }
-
     public static void CulturePreInit(HttpRequest request)
     {
         // Localization
@@ -123,8 +116,6 @@ public class CommonV5
     }
 
 
-
-
 /* COLOR SCHEME
 
        #A2BEFF #476EC7 #1C397E #C8D9FF #E4ECFF    -- blue (hue 240)
@@ -135,8 +126,6 @@ public class CommonV5
        S36L100 S64-L78 S78-L49 S22B100 S11L100    -- blue (hue 222)
        S78L100 S89-L78 S100L50 S50L100 S22L100    -- orange (hue 40)
     */
-
-
 
 
     public static string GetColor(ColorType type, ColorVariant variant, ColorShift shift = ColorShift.None)
@@ -169,7 +158,6 @@ public class CommonV5
                 break;
             default:
                 throw new NotImplementedException();
-
         }
 
         if (type == ColorType.Accent)
@@ -194,7 +182,7 @@ public class CommonV5
                 break;
         }
 
-        Color color = ColorFromAhsb(100, hue, saturation / 100.0, luminosity / 100.0);
+        Color color = ColorFromAhsb(100, hue, saturation/100.0, luminosity/100.0);
         return String.Format("#{0:x2}{1:x2}{2:x2}", color.R, color.G, color.B);
     }
 
@@ -203,8 +191,8 @@ public class CommonV5
     {
         if (s < 0.001)
         {
-            return Color.FromArgb(a, Convert.ToInt32(b * 255),
-                                  Convert.ToInt32(b * 255), Convert.ToInt32(b * 255));
+            return Color.FromArgb(a, Convert.ToInt32(b*255),
+                Convert.ToInt32(b*255), Convert.ToInt32(b*255));
         }
 
         double fMax, fMid, fMin;
@@ -212,34 +200,34 @@ public class CommonV5
 
         if (0.5 < b)
         {
-            fMax = b - (b * s) + s;
-            fMin = b + (b * s) - s;
+            fMax = b - (b*s) + s;
+            fMin = b + (b*s) - s;
         }
         else
         {
-            fMax = b + (b * s);
-            fMin = b - (b * s);
+            fMax = b + (b*s);
+            fMin = b - (b*s);
         }
 
-        iSextant = (int)Math.Floor(h / 60f);
+        iSextant = (int) Math.Floor(h/60f);
         if (300f <= h)
         {
             h -= 360f;
         }
         h /= 60f;
-        h -= 2f * (float)Math.Floor(((iSextant + 1f) % 6f) / 2f);
-        if (0 == iSextant % 2)
+        h -= 2f*(float) Math.Floor(((iSextant + 1f)%6f)/2f);
+        if (0 == iSextant%2)
         {
-            fMid = h * (fMax - fMin) + fMin;
+            fMid = h*(fMax - fMin) + fMin;
         }
         else
         {
-            fMid = fMin - h * (fMax - fMin);
+            fMid = fMin - h*(fMax - fMin);
         }
 
-        iMax = Convert.ToInt32(fMax * 255);
-        iMid = Convert.ToInt32(fMid * 255);
-        iMin = Convert.ToInt32(fMin * 255);
+        iMax = Convert.ToInt32(fMax*255);
+        iMid = Convert.ToInt32(fMid*255);
+        iMin = Convert.ToInt32(fMin*255);
 
         switch (iSextant)
         {
@@ -257,9 +245,6 @@ public class CommonV5
                 return Color.FromArgb(a, iMax, iMid, iMin);
         }
     }
-
-
-
 
 
     protected static string HslToWebColor(int hue, int saturation, int luminosity) // 0-359, 0-100, 0-100
@@ -287,7 +272,6 @@ public class CommonV5
         }
 
         return String.Format("#{0:x2}{1:x2}{2:x2}", (int) (r*255), (int) (g*255), (int) (b*255));
-
     }
 
 
@@ -303,32 +287,30 @@ public class CommonV5
 }
 
 
-
 public enum ColorType
-    {
-        Unkown = 0,
-        Base,
-        Accent
-    }
+{
+    Unkown = 0,
+    Base,
+    Accent
+}
 
-    public enum ColorVariant
-    {
-        Unknown = 0,
-        Base,
-        Light,
-        XLight,
-        Dark,
-        XDark
-    }
+public enum ColorVariant
+{
+    Unknown = 0,
+    Base,
+    Light,
+    XLight,
+    Dark,
+    XDark
+}
 
-    public enum ColorShift
-    {
-        Unknown = 0,
-        None,
-        SlightlyLighter,
-        SlightlyDarker
-    }
-
+public enum ColorShift
+{
+    Unknown = 0,
+    None,
+    SlightlyLighter,
+    SlightlyDarker
+}
 
 
 [Flags]
@@ -336,34 +318,34 @@ public enum ColorType
 public enum EasyUIControl
 {
     Unknown = 0,
-    Accordion    = 0x0000001,
-    Calendar     = 0x0000002,
-    Combo        = 0x0000004,
-    ComboBox     = 0x0000008,
-    DataGrid     = 0x0000010,
-    DateBox      = 0x0000020,
-    Dialog       = 0x0000040,
-    FileBox      = 0x0000080,
-    Layout       = 0x0000100,
-    LinkButton   = 0x0000200,
-    Menu         = 0x0000400,
-    MenuButton   = 0x0000800,
-    Messager     = 0x0001000,
-    NumberBox    = 0x0002000,
-    Pagination   = 0x0004000,
-    Panel        = 0x0008000,
-    ProgressBar  = 0x0010000,
+    Accordion = 0x0000001,
+    Calendar = 0x0000002,
+    Combo = 0x0000004,
+    ComboBox = 0x0000008,
+    DataGrid = 0x0000010,
+    DateBox = 0x0000020,
+    Dialog = 0x0000040,
+    FileBox = 0x0000080,
+    Layout = 0x0000100,
+    LinkButton = 0x0000200,
+    Menu = 0x0000400,
+    MenuButton = 0x0000800,
+    Messager = 0x0001000,
+    NumberBox = 0x0002000,
+    Pagination = 0x0004000,
+    Panel = 0x0008000,
+    ProgressBar = 0x0010000,
     PropertyGrid = 0x0020000,
-    SearchBox    = 0x0040000,
-    Slider       = 0x0080000,
-    Spinner      = 0x0100000,
-    SplitButton  = 0x0200000,
-    Tabs         = 0x0400000,
-    TextBox      = 0x0800000,
-    ToolTip      = 0x1000000,
-    Tree         = 0x2000000,
-    ValidateBox  = 0x4000000,
-    Window       = 0x8000000
+    SearchBox = 0x0040000,
+    Slider = 0x0080000,
+    Spinner = 0x0100000,
+    SplitButton = 0x0200000,
+    Tabs = 0x0400000,
+    TextBox = 0x0800000,
+    ToolTip = 0x1000000,
+    Tree = 0x2000000,
+    ValidateBox = 0x4000000,
+    Window = 0x8000000
 };
 
 
@@ -371,7 +353,7 @@ public enum EasyUIControl
 public enum IncludedControl
 {
     Unknown = 0,
-    FileUpload     = 0x00000001,
-    SwitchButton   = 0x00000002,
+    FileUpload = 0x00000001,
+    SwitchButton = 0x00000002,
     JsonParameters = 0x00000004
 };

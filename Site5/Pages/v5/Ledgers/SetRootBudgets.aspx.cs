@@ -3,7 +3,7 @@ using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Basic.Enums;
-using Swarmops.Controls.Swarm;
+
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -11,7 +11,9 @@ using Swarmops.Logic.Swarm;
 
 public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 {
-    protected void Page_Init (object sender, EventArgs e)
+    private int _year;
+
+    protected void Page_Init(object sender, EventArgs e)
     {
         if (Page.IsPostBack)
         {
@@ -27,19 +29,19 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+        PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
-        this.HiddenInitOrganizationId.Value = this.CurrentOrganization.Identity.ToString();
+        this.HiddenInitOrganizationId.Value = CurrentOrganization.Identity.ToString();
 
-        this.PageIcon = "iconshock-moneybag";
-        this.PageTitle = Resources.Pages.Ledgers.SetRootBudgets_PageTitle;
+        PageIcon = "iconshock-moneybag";
+        PageTitle = Resources.Pages.Ledgers.SetRootBudgets_PageTitle;
 
         if (!Page.IsPostBack)
         {
             FinancialAccounts accounts = GetRootLevelResultAccounts();
 
             int currentYear = DateTime.Today.Year;
-            _year = currentYear;
+            this._year = currentYear;
 
             do
             {
@@ -60,7 +62,8 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
             UpdateYearlyResult(accounts);
 
-            this.LabelRootBudgetHeader.Text = String.Format(Resources.Pages.Ledgers.SetRootBudgets_PageHeader, this.CurrentOrganization.Name);
+            this.LabelRootBudgetHeader.Text = String.Format(Resources.Pages.Ledgers.SetRootBudgets_PageHeader,
+                CurrentOrganization.Name);
             this.LabelAccountHeader.Text = Resources.Global.Financial_BookkeepingAccountShort;
             this.LabelYearlyResultLabel.Text = Resources.Global.Financial_YearlyResult;
             this.ButtonSetBudgets.Text = Resources.Pages.Ledgers.SetRootBudgets_SetNewBudgets;
@@ -75,7 +78,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         }
         else
         {
-            _year = Int32.Parse(DropYears.SelectedItem.Text);
+            this._year = Int32.Parse(this.DropYears.SelectedItem.Text);
         }
 
         this.DropYears.Style[HtmlTextWriterStyle.FontWeight] = "bold";
@@ -88,11 +91,11 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
     private void LocalizeActualsHeader()
     {
-        if (this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >= _year)
+        if (CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >= this._year)
         {
             this.LabelActualsHeader.Text = Resources.Global.Financial_Actuals;
         }
-        else if (_year == DateTime.Today.Year)
+        else if (this._year == DateTime.Today.Year)
         {
             this.LabelActualsHeader.Text = Resources.Global.Financial_ActualsToDate;
         }
@@ -109,8 +112,10 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         foreach (FinancialAccount account in rootAccounts)
         {
-            budgetSum += account.GetTree().GetBudgetSumCents(_year)/100;
-            actualSum -= (account.GetTree().GetDeltaCents(new DateTime(_year,1,1), new DateTime(_year+1, 1, 1))+50)/100;  // negative: results accounts are sign reversed
+            budgetSum += account.GetTree().GetBudgetSumCents(this._year)/100;
+            actualSum -=
+                (account.GetTree().GetDeltaCents(new DateTime(this._year, 1, 1), new DateTime(this._year + 1, 1, 1)) +
+                 50)/100; // negative: results accounts are sign reversed
         }
 
         this.TextYearlyResult.Text = String.Format("{0:N0}", budgetSum);
@@ -119,8 +124,6 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         this.LabelYearlyResultActuals.Text = String.Format("{0:N0}", actualSum);
     }
-
-    private int _year;
 
     protected void RepeaterAccountNames_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
@@ -152,13 +155,13 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             return;
         }
 
-        FinancialAccount account = (FinancialAccount)item.DataItem;
+        FinancialAccount account = (FinancialAccount) item.DataItem;
 
         TextBox textBudget = (TextBox) e.Item.FindControl("TextBudget");
 
-        if (_year > 0) // called from after viewstate parsed
+        if (this._year > 0) // called from after viewstate parsed
         {
-            textBudget.Text = String.Format("{0:N0}", account.GetTree().GetBudgetSumCents(_year)/100);
+            textBudget.Text = String.Format("{0:N0}", account.GetTree().GetBudgetSumCents(this._year)/100);
             textBudget.Style[HtmlTextWriterStyle.TextAlign] = "right";
             textBudget.Style[HtmlTextWriterStyle.Width] = "80px";
         }
@@ -179,8 +182,9 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         // Swarmops.Controls.Swarm.PersonDetailPopup personDetail = (PersonDetailPopup)toolTip.FindControl("PersonDetail");
         // personDetail.PersonChanged += new PersonChangedEventHandler(PersonDetail_PersonChanged);
 
-        if (!Page.IsPostBack && this.CurrentAuthority != null)
-        {/*
+        if (!Page.IsPostBack && CurrentAuthority != null)
+        {
+/*
             personDetail.Person = accountOwner;
             personDetail.Cookie = account;*/
         }
@@ -191,8 +195,8 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         // this.TooltipManager.TargetControls.Add(labelBudgetOwner.ClientID, line.AccountIdentity.ToString(), true);
     }
 
-
-    void PersonDetail_PersonChanged(object sender, PersonChangedEventArgs e)
+    /*
+    private void PersonDetail_PersonChanged(object sender, PersonChangedEventArgs e)
     {
         // Here, an owner has changed. We need to re-bind the owners column.
 
@@ -207,7 +211,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         this.RepeaterAccountBudgets.DataBind();
 
         // RebindTooltips();
-    }
+    }*/
 
     protected void DropYears_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -228,7 +232,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
     private FinancialAccounts GetRootLevelResultAccounts()
     {
-        Organization org = this.CurrentOrganization;
+        Organization org = CurrentOrganization;
 
         if (org == null && Page.IsPostBack)
         {
@@ -282,14 +286,15 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             return;
         }
 
-        FinancialAccount account = (FinancialAccount)item.DataItem;
+        FinancialAccount account = (FinancialAccount) item.DataItem;
 
         Label labelActuals = (Label) e.Item.FindControl("LabelAccountActuals");
 
-        Int64 actuals = (account.GetTree().GetDeltaCents(new DateTime(_year, 1, 1), new DateTime(_year + 1, 1, 1))+50)/
-                             100;
+        Int64 actuals =
+            (account.GetTree().GetDeltaCents(new DateTime(this._year, 1, 1), new DateTime(this._year + 1, 1, 1)) + 50)/
+            100;
 
-        labelActuals.Text = String.Format("{0:N0}", -actuals);  // negative as results accounts are sign reversed
+        labelActuals.Text = String.Format("{0:N0}", -actuals); // negative as results accounts are sign reversed
     }
 
 
@@ -303,16 +308,17 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
             // TODO: Possible race condition here, fix with HiddenField
 
-            Int64 newBudgetAmount = Int64.Parse(textBudget.Text.Replace(",","").Replace(" ",""), Thread.CurrentThread.CurrentCulture);  // TODO: May throw -- catch and send error message
+            Int64 newBudgetAmount = Int64.Parse(textBudget.Text.Replace(",", "").Replace(" ", ""),
+                Thread.CurrentThread.CurrentCulture); // TODO: May throw -- catch and send error message
 
-            Int64 currentBudgetAmount = account.GetTree().GetBudgetSumCents(_year)/100;
+            Int64 currentBudgetAmount = account.GetTree().GetBudgetSumCents(this._year)/100;
 
             // Set the new amount to the difference between the single budget of this account and the intended amount
 
             if (newBudgetAmount != currentBudgetAmount)
             {
-                account.SetBudgetCents(_year,
-                                       account.GetBudgetCents(_year) + (newBudgetAmount - currentBudgetAmount)*100);
+                account.SetBudgetCents(this._year,
+                    account.GetBudgetCents(this._year) + (newBudgetAmount - currentBudgetAmount)*100);
             }
         }
 
@@ -324,6 +330,5 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         this.RepeaterAccountBudgets.DataSource = accounts;
         this.RepeaterAccountBudgets.DataBind();
-
     }
 }

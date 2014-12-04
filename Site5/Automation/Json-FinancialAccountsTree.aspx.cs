@@ -7,6 +7,8 @@ namespace Swarmops.Frontend.Automation
 {
     public partial class Json_FinancialAccountsTree : DataV5Base
     {
+        private Dictionary<int, List<FinancialAccount>> _hashedAccounts;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Response.ContentType = "application/json";
@@ -26,7 +28,7 @@ namespace Swarmops.Frontend.Automation
 
             // Get accounts
 
-            FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization, accountType);
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization(CurrentOrganization, accountType);
 
             // Build tree (there should be a template for this)
 
@@ -47,12 +49,13 @@ namespace Swarmops.Frontend.Automation
                 treeMap[account.ParentIdentity].Add(account);
             }
 
-            _hashedAccounts = treeMap;
+            this._hashedAccounts = treeMap;
 
             if (accountType == FinancialAccountType.Asset || accountType == FinancialAccountType.Balance ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup(FinancialAccountType.Asset, Resources.Pages.Ledgers.BalanceSheet_Assets) + ",";
+                response += GetAccountGroup(FinancialAccountType.Asset, Resources.Pages.Ledgers.BalanceSheet_Assets) +
+                            ",";
             }
 
             if (accountType == FinancialAccountType.Debt || accountType == FinancialAccountType.Balance ||
@@ -65,7 +68,8 @@ namespace Swarmops.Frontend.Automation
                 accountType == FinancialAccountType.All)
             {
                 response +=
-                    GetAccountGroup(FinancialAccountType.Income, Resources.Pages.Ledgers.ProfitLossStatement_Income) + ",";
+                    GetAccountGroup(FinancialAccountType.Income, Resources.Pages.Ledgers.ProfitLossStatement_Income) +
+                    ",";
             }
 
             if (accountType == FinancialAccountType.Cost || accountType == FinancialAccountType.Result ||
@@ -74,7 +78,8 @@ namespace Swarmops.Frontend.Automation
                 response += GetAccountGroup(FinancialAccountType.Cost, Resources.Pages.Ledgers.ProfitLossStatement_Costs);
             }
 
-            response = response.TrimEnd(','); // removes last comma regardless of where it came from or if it's even there
+            response = response.TrimEnd(',');
+                // removes last comma regardless of where it came from or if it's even there
 
             Response.Output.WriteLine("[" + response + "]");
             Response.End();
@@ -84,30 +89,28 @@ namespace Swarmops.Frontend.Automation
         {
             string childrenString = GetAccountsRecurse(type, 0);
 
-            return "{\"id\":\"" + -((int)type) + "\",\"text\":\"" + JsonSanitize(localizedGroupName) +
+            return "{\"id\":\"" + -((int) type) + "\",\"text\":\"" + JsonSanitize(localizedGroupName) +
                    "\",\"state\":\"open\",\"children\":[" + childrenString + "]}";
         }
-
-        private Dictionary<int, List<FinancialAccount>> _hashedAccounts = null;
 
 
         private string GetAccountsRecurse(FinancialAccountType accountType, int rootNodeId)
         {
             List<string> childStrings = new List<string>();
 
-            if (!_hashedAccounts.ContainsKey(rootNodeId))
+            if (!this._hashedAccounts.ContainsKey(rootNodeId))
             {
                 return string.Empty;
             }
 
-            if (_hashedAccounts[rootNodeId].Count == 1)
+            if (this._hashedAccounts[rootNodeId].Count == 1)
             {
                 // No children
 
                 return string.Empty;
             }
 
-            foreach (FinancialAccount account in _hashedAccounts[rootNodeId])
+            foreach (FinancialAccount account in this._hashedAccounts[rootNodeId])
             {
                 if (account.Identity == rootNodeId || account.AccountType != accountType)
                 {
@@ -124,13 +127,11 @@ namespace Swarmops.Frontend.Automation
                     "\"id\":\"{0}\",\"text\":\"{1}\"",
                     account.Identity,
                     Server.HtmlEncode(JsonSanitize(account.Name))
-                 ) + grandChildren + '}');
+                    ) + grandChildren + '}');
             }
 
             return String.Join(",", childStrings.ToArray());
         }
-
-
 
 
         private string RecurseTreeMap(Dictionary<int, List<FinancialAccount>> treeMap, int node)
@@ -140,7 +141,7 @@ namespace Swarmops.Frontend.Automation
             foreach (FinancialAccount account in treeMap[node])
             {
                 string element = string.Format("\"id\":{0},\"text\":\"{1}\"", account.Identity,
-                                               JsonSanitize(account.Name));
+                    JsonSanitize(account.Name));
 
                 if (treeMap.ContainsKey(account.Identity))
                 {
@@ -151,7 +152,6 @@ namespace Swarmops.Frontend.Automation
             }
 
             return "[" + String.Join(",", elements.ToArray()) + "]";
-
         }
     }
 }

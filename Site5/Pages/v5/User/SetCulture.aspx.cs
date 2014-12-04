@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
-using System.ServiceModel.Security;
 using System.Web;
-using System.Web.Services;
-using Swarmops.Logic.Financial;
-using Swarmops.Logic.Support;
-using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.User
 {
@@ -29,6 +21,5 @@ namespace Swarmops.Frontend.Pages.v5.User
             authenticationData.CurrentUser.PreferredCulture = cultureId;
             Response.Redirect("/"); // to dashboard
         }
-
     }
 }

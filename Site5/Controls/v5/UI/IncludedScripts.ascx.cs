@@ -1,13 +1,12 @@
 ﻿using System;
-using System.IO;
 using System.Text;
-using NBitcoin;
-using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Controls.v5.UI
 {
     public partial class IncludedScripts : ControlV5Base
     {
+        public new string Controls { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             StringBuilder scriptRef = new StringBuilder();
@@ -39,7 +38,5 @@ namespace Swarmops.Frontend.Controls.v5.UI
 
             this.LiteralReference.Text = scriptRef.ToString();
         }
-
-        public new string Controls { get; set; }
     }
 }

@@ -16,15 +16,14 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageTitle = "Populate Data";
-            this.PageIcon = "iconshock-battery-drill";
-            this.InfoBoxLiteral = "You've taken a wrong turn if you're even seeing this page. It's for development purposes.";
+            PageTitle = "Populate Data";
+            PageIcon = "iconshock-battery-drill";
+            InfoBoxLiteral = "You've taken a wrong turn if you're even seeing this page. It's for development purposes.";
         }
 
 
         private void Localize()
         {
-
         }
 
 
@@ -35,7 +34,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            if (!authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Unknown, AccessType.Write)))
+            if (
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Unknown,
+                    AccessType.Write)))
             {
                 throw new UnauthorizedAccessException();
             }
@@ -44,7 +45,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
             initThread.Start(guid);
         }
 
-        static private void ProcessUploadThread(object guidObject)
+        private static void ProcessUploadThread(object guidObject)
         {
             string guid = (string) guidObject;
             Documents documents = Documents.RecentFromDescription(guid);
@@ -72,7 +73,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
                     continue;
                 }
 
-                int percent = (count * 99) / lines.Length;
+                int percent = (count*99)/lines.Length;
                 if (percent == 0)
                 {
                     percent = 1;
@@ -83,7 +84,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
                 PersonGender gender = lineParts[2] == "male" ? PersonGender.Male : PersonGender.Female;
                 DateTime dateOfBirth = DateTime.Parse(lineParts[7], new CultureInfo("en-US"), DateTimeStyles.None);
                 Country country = Country.FromCode(lineParts[6]);
-                
+
 
                 Person newPerson = Person.Create(name, string.Empty, string.Empty, lineParts[8], lineParts[3],
                     lineParts[4].Replace(" ", ""), lineParts[5], lineParts[6], dateOfBirth, gender);
@@ -97,6 +98,5 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
 
             GuidCache.Set(guid + "-Progress", 100);
         }
-
     }
 }

@@ -2,9 +2,7 @@
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Resources;
-using Resources.Pages;
 using Swarmops.Logic.Structure;
-using Swarmops.Logic.Swarm;
 
 // ReSharper disable once CheckNamespace
 
@@ -27,7 +25,7 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
                 this.TextName.Focus();
             }
 
-            this.IncludedControlsUsed = IncludedControl.JsonParameters;
+            IncludedControlsUsed = IncludedControl.JsonParameters;
         }
 
         private void Populate()
@@ -46,9 +44,9 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
                 this.DropCountries.Items.Add(new ListItem(countryDisplay, country.Code));
             }
 
-            if (this.CurrentOrganization.DefaultCountry != null)
+            if (CurrentOrganization.DefaultCountry != null)
             {
-                this.DropCountries.SelectedValue = this.CurrentOrganization.DefaultCountry.Code;
+                this.DropCountries.SelectedValue = CurrentOrganization.DefaultCountry.Code;
             }
 
             this.DropGenders.Items.Clear();
@@ -63,7 +61,7 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
         {
             // TODO
 
-            this.InfoBoxLiteral = Resources.Pages.Swarm.AddPerson_Info;
+            InfoBoxLiteral = Resources.Pages.Swarm.AddPerson_Info;
 
             this.TextDateOfBirth.Attributes["placeholder"] = Global.Global_DateFormatShort;
             this.TextName.Attributes["placeholder"] = "Joe Smith";

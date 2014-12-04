@@ -8,14 +8,16 @@ using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
-/// Summary description for PageV5Base
-/// Base class to use for all pages that uses the Swarmops-v5 master page
+///     Summary description for PageV5Base
+///     Base class to use for all pages that uses the Swarmops-v5 master page
 /// </summary>
-
 public class DataV5Base : System.Web.UI.Page
 {
-    public PermissionSet pagePermissionDefault = new PermissionSet(Permission.CanSeeSelf); //Use from menu;
     public Access PageAccessRequired = null; // v5 mechanism
+    public PermissionSet pagePermissionDefault = new PermissionSet(Permission.CanSeeSelf); //Use from menu;
+
+    protected Person CurrentUser { get; private set; }
+    protected Organization CurrentOrganization { get; private set; }
 
     /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
     protected override void OnInitComplete(System.EventArgs e)
@@ -31,39 +33,36 @@ public class DataV5Base : System.Web.UI.Page
             string userIdentityString = identityTokens[0];
             string organizationIdentityString = identityTokens[1];
 
-            this.CurrentUser = Person.FromIdentity(Int32.Parse(userIdentityString));
+            CurrentUser = Person.FromIdentity(Int32.Parse(userIdentityString));
             try
             {
-                this.CurrentOrganization = Organization.FromIdentity(Int32.Parse(organizationIdentityString));
+                CurrentOrganization = Organization.FromIdentity(Int32.Parse(organizationIdentityString));
             }
             catch (ArgumentException)
             {
                 if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
                 {
                     // It's possible this organization was deleted. Log on to Sandbox instead.
-                    this.CurrentOrganization = Organization.Sandbox;
+                    CurrentOrganization = Organization.Sandbox;
                 }
             }
         }
         else
         {
-            this.CurrentUser = null; // unauthenticated!
-            this.CurrentOrganization = null; // unauthenticated!
+            CurrentUser = null; // unauthenticated!
+            CurrentOrganization = null; // unauthenticated!
         }
     }
-
-    protected Person CurrentUser { get; private set; }
-    protected Organization CurrentOrganization { get; private set; }
 
 
     protected override void OnPreInit(EventArgs e)
     {
         CommonV5.CulturePreInit(Request);
 
- 	    base.OnPreInit(e);
+        base.OnPreInit(e);
     }
 
-    protected override void  OnPreRender(EventArgs e)
+    protected override void OnPreRender(EventArgs e)
     {
         // Check security of page against users's credentials
 
@@ -78,12 +77,12 @@ public class DataV5Base : System.Web.UI.Page
         base.OnPreRender(e);
     }
 
-    protected string LocalizeCount (string resourceString, int count)
+    protected string LocalizeCount(string resourceString, int count)
     {
         return LocalizeCount(resourceString, count, false);
     }
 
-    protected string LocalizeCount (string resourceString, int count, bool capitalize)
+    protected string LocalizeCount(string resourceString, int count, bool capitalize)
     {
         string result;
         string[] parts = resourceString.Split('|');
@@ -131,21 +130,18 @@ public class DataV5Base : System.Web.UI.Page
         {
             return translatedResource.ToString();
         }
+        object argument = null;
+
+        if (inputParts[1].StartsWith("[Date]"))
+        {
+            argument = DateTime.Parse(inputParts[1].Substring(6), CultureInfo.InvariantCulture);
+        }
         else
         {
-            object argument = null;
-
-            if (inputParts[1].StartsWith("[Date]"))
-            {
-                argument = DateTime.Parse(inputParts[1].Substring(6), CultureInfo.InvariantCulture);
-            }
-            else
-            {
-                argument = inputParts[1];
-            }
-
-            return String.Format(translatedResource.ToString(), argument);
+            argument = inputParts[1];
         }
+
+        return String.Format(translatedResource.ToString(), argument);
     }
 
 
@@ -154,10 +150,8 @@ public class DataV5Base : System.Web.UI.Page
         return CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current);
     }
 
-    protected static string JsonSanitize (string input)
+    protected static string JsonSanitize(string input)
     {
         return input.Replace("\"", "\\\"").Replace("  ", " ").Trim();
     }
-
 }
-

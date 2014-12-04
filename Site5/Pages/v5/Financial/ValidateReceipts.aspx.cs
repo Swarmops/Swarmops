@@ -12,47 +12,47 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 {
     public partial class ValidateReceipts : PageV5Base
     {
+        private List<RepeatedDocument> _documentList;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.CurrentOrganization.IsEconomyEnabled)
+            if (!CurrentOrganization.IsEconomyEnabled)
             {
                 Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
-            if (!this.CurrentUser.HasAccess (new Access(CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
+            if (!CurrentUser.HasAccess(new Access(CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
             {
                 throw new UnauthorizedAccessException();
             }
 
-            this.PageIcon = "iconshock-invoice-greentick";
+            PageIcon = "iconshock-invoice-greentick";
 
             if (!Page.IsPostBack)
             {
                 Localize();
             }
 
-            _documentList = new List<RepeatedDocument>();
+            this._documentList = new List<RepeatedDocument>();
 
             PopulateExpenses();
-            this.EasyUIControlsUsed = EasyUIControl.DataGrid;
+            EasyUIControlsUsed = EasyUIControl.DataGrid;
 
 
-            this.RepeaterLightboxItems.DataSource = _documentList;
+            this.RepeaterLightboxItems.DataSource = this._documentList;
             this.RepeaterLightboxItems.DataBind();
-
         }
-
-
-        private List<RepeatedDocument> _documentList; 
 
         private void Localize()
         {
-            this.PageTitle = Resources.Pages.Financial.ValidateReceipts_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Financial.ValidateReceipts_Info;
-            this.LabelAttestCostsHeader.Text = Resources.Pages.Financial.ValidateReceipts_Header_ReceiptsAwaitingValidation;
+            PageTitle = Resources.Pages.Financial.ValidateReceipts_PageTitle;
+            InfoBoxLiteral = Resources.Pages.Financial.ValidateReceipts_Info;
+            this.LabelAttestCostsHeader.Text =
+                Resources.Pages.Financial.ValidateReceipts_Header_ReceiptsAwaitingValidation;
             this.LabelGridHeaderAction.Text = Resources.Global.Global_Action;
-            this.LabelGridHeaderBudget.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Budget; // Reuse some strings from Attest Costs
+            this.LabelGridHeaderBudget.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Budget;
+                // Reuse some strings from Attest Costs
             this.LabelGridHeaderDescription.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Description;
             this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
@@ -75,25 +75,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 {
                     tagSetHtml.AppendFormat(
                         "<th data-options=\"field:'tagSet{0}',width:{1},sortable:true,order:'asc'\">{2}</th>\r\n",
-                        tagSet.Identity, tagWidth, FinancialTransactionTagSetType.GetLocalizedName(tagSet.FinancialTransactionTagSetTypeId));
+                        tagSet.Identity, tagWidth,
+                        FinancialTransactionTagSetType.GetLocalizedName(tagSet.FinancialTransactionTagSetTypeId));
                 }
 
                 this.LiteralExtraTags.Text = tagSetHtml.ToString();
             }
 
-            this.LiteralDescriptionThStart.Text=String.Format("<th data-options=\"field:'description',width:{0}\">", descriptionWidth);
-            this.LiteralBudgetThStart.Text = String.Format("<th data-options=\"field:'budgetName',width:{0},sortable:true\">", tagWidth);
+            this.LiteralDescriptionThStart.Text = String.Format("<th data-options=\"field:'description',width:{0}\">",
+                descriptionWidth);
+            this.LiteralBudgetThStart.Text =
+                String.Format("<th data-options=\"field:'budgetName',width:{0},sortable:true\">", tagWidth);
         }
 
-        private enum AttestationMode
-        {
-            Unknown = 0,
-            Attestation,
-            Deattestation
-        };
-
         [WebMethod]
-        public static new string Validate (string identifier)
+        public new static string Validate(string identifier)
         {
             identifier = HttpUtility.UrlDecode(identifier);
 
@@ -113,7 +109,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
-        private static string HandleValidationDevalidation (string identifier, AttestationMode mode)
+        private static string HandleValidationDevalidation(string identifier, AttestationMode mode)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
@@ -129,7 +125,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // A lot of this code was copied from attest/deattest, even though validation only concerns expense receipts
 
-            switch(costType)
+            switch (costType)
             {
                 case 'E': // Expense claim
                     ExpenseClaim expense = ExpenseClaim.FromIdentity(itemId);
@@ -137,7 +133,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     {
                         throw new InvalidOperationException("Called to attest out-of-org line item");
                     }
-                    if (!authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
+                    if (
+                        !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials,
+                            AccessType.Write)))
                     {
                         throw new UnauthorizedAccessException();
                     }
@@ -149,7 +147,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                     break;
                 default:
-                    throw new InvalidOperationException("Unknown Cost Type in HandleValidationDevalidation: \"" + identifier + "\"");
+                    throw new InvalidOperationException("Unknown Cost Type in HandleValidationDevalidation: \"" +
+                                                        identifier + "\"");
             }
 
             // Finally, attest or deattest
@@ -158,47 +157,60 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 validatableItem.Validate(authData.CurrentUser);
                 result = string.Format(validatedTemplate, itemId, authData.CurrentOrganization.Currency.Code,
-                                       amountCents/100.0);
+                    amountCents/100.0);
             }
             else if (mode == AttestationMode.Deattestation)
             {
                 validatableItem.Devalidate(authData.CurrentUser);
                 result = string.Format(devalidatedTemplate, itemId, authData.CurrentOrganization.Currency.Code,
-                                       amountCents / 100.0);
+                    amountCents/100.0);
             }
             else
             {
-                throw new InvalidOperationException("Unknown Attestation Mode: " + mode.ToString());
+                throw new InvalidOperationException("Unknown Attestation Mode: " + mode);
             }
 
             return result;
         }
 
 
-
         private void PopulateExpenses()
         {
-            ExpenseClaims expenses = ExpenseClaims.ForOrganization(this.CurrentOrganization).WhereUnvalidated;
+            ExpenseClaims expenses = ExpenseClaims.ForOrganization(CurrentOrganization).WhereUnvalidated;
 
-            foreach (var expenseClaim in expenses)
+            foreach (ExpenseClaim expenseClaim in expenses)
             {
-                AddDocuments(expenseClaim.Documents, "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture), String.Format(Resources.Global.Financial_ExpenseClaimSpecification + " - ", expenseClaim.Identity) + Resources.Global.Financial_ReceiptSpecification);
+                AddDocuments(expenseClaim.Documents, "E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture),
+                    String.Format(Resources.Global.Financial_ExpenseClaimSpecification + " - ", expenseClaim.Identity) +
+                    Resources.Global.Financial_ReceiptSpecification);
             }
         }
 
 
-        private void AddDocuments (Documents docs, string baseId, string titleBase)
+        private void AddDocuments(Documents docs, string baseId, string titleBase)
         {
             int countTotal = docs.Count;
             int count = 0;
 
             foreach (Document document in docs)
             {
-                RepeatedDocument newDoc = new RepeatedDocument {DocId = document.Identity, BaseId = baseId, Title=String.Format(titleBase, ++count, countTotal)};
+                RepeatedDocument newDoc = new RepeatedDocument
+                {
+                    DocId = document.Identity,
+                    BaseId = baseId,
+                    Title = String.Format(titleBase, ++count, countTotal)
+                };
 
-                _documentList.Add(newDoc);
+                this._documentList.Add(newDoc);
             }
         }
+
+        private enum AttestationMode
+        {
+            Unknown = 0,
+            Attestation,
+            Deattestation
+        };
 
         public class RepeatedDocument
         {

@@ -75,7 +75,7 @@ namespace Swarmops.Frontend.Pages.Security
             foreach (Organization organization in treeMap[nodeId])
             {
                 string element = string.Format("\"id\":{0},\"text\":\"{1}\"", organization.Identity,
-                                               JsonSanitize(organization.Name));
+                    JsonSanitize(organization.Name));
 
                 if (treeMap.ContainsKey(organization.Identity))
                 {
@@ -86,7 +86,6 @@ namespace Swarmops.Frontend.Pages.Security
             }
 
             return "[" + String.Join(",", elements.ToArray()) + "]";
-
         }
     }
 }

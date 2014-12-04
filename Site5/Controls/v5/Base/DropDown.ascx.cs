@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Swarmops.Frontend.Controls.v5.Base
 {
     public partial class DropDown : ControlV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public ListItemCollection Items
         {
             get { return this.DropControl.Items; }
@@ -30,6 +21,10 @@ namespace Swarmops.Frontend.Controls.v5.Base
         public string ClientControlID
         {
             get { return this.DropControl.ClientID; }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
         }
     }
 }

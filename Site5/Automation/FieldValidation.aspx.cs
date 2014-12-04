@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
-using System.Web.Services.Description;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Automation
@@ -14,11 +9,10 @@ namespace Swarmops.Frontend.Automation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         [WebMethod]
-        public static void TestFoo (string input)
+        public static void TestFoo(string input)
         {
             AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
 
@@ -39,7 +33,7 @@ namespace Swarmops.Frontend.Automation
             {
                 PostalCodeData dataPoint = new PostalCodeData
                 {
-                    Code = code.PostalCode, 
+                    Code = code.PostalCode,
                     CityId = code.CityId
                 };
 
@@ -97,7 +91,6 @@ namespace Swarmops.Frontend.Automation
     }
 }
 
-
 [Serializable]
 public class PostalCodeData
 {
@@ -121,9 +114,9 @@ public class GeographyData
 [Serializable]
 public class PostalCodesCities
 {
+    public int PostalCodeLength;
+    public int PostalCodeLengthCheck;
     public PostalCodeData[] PostalCodes { get; set; }
     public CityData[] CityNames { get; set; }
     public GeographyData[] Geographies { get; set; }
-    public int PostalCodeLength;
-    public int PostalCodeLengthCheck;
 }

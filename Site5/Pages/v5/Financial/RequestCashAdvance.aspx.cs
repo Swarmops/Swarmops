@@ -9,23 +9,23 @@ namespace Swarmops.Frontend.Pages.v5.Financial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.CurrentOrganization.IsEconomyEnabled)
+            if (!CurrentOrganization.IsEconomyEnabled)
             {
                 Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
-            this.BoxTitle.Text = this.PageTitle = Resources.Pages.Financial.RequestCashAdvance_PageTitle;
-            this.PageIcon = "iconshock-walletmoney";
-            this.InfoBoxLiteral = Resources.Pages.Financial.RequestCashAdvance_Info;
+            this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.RequestCashAdvance_PageTitle;
+            PageIcon = "iconshock-walletmoney";
+            InfoBoxLiteral = Resources.Pages.Financial.RequestCashAdvance_Info;
 
             if (!Page.IsPostBack)
             {
                 // Prime bank details
 
-                this.TextBank.Text = this.CurrentUser.BankName;
-                this.TextClearing.Text = this.CurrentUser.BankClearing;
-                this.TextAccount.Text = this.CurrentUser.BankAccount;
+                this.TextBank.Text = CurrentUser.BankName;
+                this.TextClearing.Text = CurrentUser.BankClearing;
+                this.TextAccount.Text = CurrentUser.BankAccount;
                 this.TextAmount.Text = 0.ToString("N2");
                 this.TextAmount.Focus();
 
@@ -39,7 +39,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         private void Localize()
         {
             this.LabelAmount.Text = string.Format(Resources.Pages.Financial.RequestCashAdvance_Amount,
-                                                  CurrentOrganization.Currency.DisplayCode);
+                CurrentOrganization.Currency.DisplayCode);
             this.LabelPurpose.Text = Resources.Pages.Financial.RequestCashAdvance_Purpose;
             this.LabelBudget.Text = Resources.Pages.Financial.RequestCashAdvance_Budget;
             this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.RequestCashAdvance_HeaderBankDetails;
@@ -51,7 +51,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralErrorPurpose.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Purpose;
             this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
             this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
-            this.LiteralErrorBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
+            this.LiteralErrorBankClearing.Text =
+                Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
             this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
         }
 
@@ -61,12 +62,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // The data has been validated client-side already. We'll throw unfriendly exceptions if invalid data is passed here.
 
             double amount = Double.Parse(this.TextAmount.Text, NumberStyles.Number);
-                // parses in current culture - intentional
+            // parses in current culture - intentional
             Int64 amountCents = (Int64) amount*100;
 
             string description = this.TextPurpose.Text;
 
-            FinancialAccount budget = FinancialAccount.FromIdentity(Int32.Parse(this.Request.Form["DropBudgets"]));
+            FinancialAccount budget = FinancialAccount.FromIdentity(Int32.Parse(Request.Form["DropBudgets"]));
 
             // sanity check
 
@@ -84,15 +85,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // Create cash advance
 
             CashAdvance cashAdvance = CashAdvance.Create(CurrentOrganization, CurrentUser, CurrentUser, amountCents,
-                                                         budget,
-                                                         description);
+                budget,
+                description);
 
             // Create success message
 
             string successMessage = string.Format(Resources.Pages.Financial.RequestCashAdvance_SuccessMessagePartOne,
-                                                  HttpUtility.HtmlEncode(CurrentUser.Name),
-                                                  HttpUtility.HtmlEncode(description), CurrentOrganization.Currency.Code,
-                                                  (double) (amountCents/100.0));
+                HttpUtility.HtmlEncode(CurrentUser.Name),
+                HttpUtility.HtmlEncode(description), CurrentOrganization.Currency.Code,
+                amountCents/100.0);
 
             if (budget.OwnerPersonId != CurrentUser.Identity)
             {
@@ -104,7 +105,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 successMessage += "<br/><br/>" +
                                   Resources.Pages.Financial.RequestCashAdvance_SuccessMessagePartTwoOwnBudget +
                                   "<br/>";
-                cashAdvance.Attest (CurrentUser);
+                cashAdvance.Attest(CurrentUser);
             }
 
             Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(successMessage)));

@@ -19,7 +19,11 @@ namespace Swarmops.Frontend.Automation
 
             if (matches.Count == 1) // still allowed
             {
-                onePerson = '{' + String.Format("\"id\":\"{0}\",\"name\":\"{1}\",\"avatar16Url\":\"{2}\",\"avatar24Url\":\"{3}\"", matches[0].Identity, JsonSanitize(matches[0].Canonical), matches[0].GetSecureAvatarLink(16), matches[0].GetSecureAvatarLink(24)) + '}';
+                onePerson = '{' +
+                            String.Format(
+                                "\"id\":\"{0}\",\"name\":\"{1}\",\"avatar16Url\":\"{2}\",\"avatar24Url\":\"{3}\"",
+                                matches[0].Identity, JsonSanitize(matches[0].Canonical),
+                                matches[0].GetSecureAvatarLink(16), matches[0].GetSecureAvatarLink(24)) + '}';
             }
 
             Response.Output.WriteLine(onePerson);

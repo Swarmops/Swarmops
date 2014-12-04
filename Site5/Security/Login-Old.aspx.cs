@@ -26,7 +26,9 @@ namespace Swarmops.Pages.Security
             if (Request.Url.Host == "dev.swarmops.com" &&
                 PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
             {
-                Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode("<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p><br/><br/>")));
+                Response.AppendCookie(new HttpCookie("DashboardMessage",
+                    HttpUtility.UrlEncode(
+                        "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p><br/><br/>")));
                 FormsAuthentication.RedirectFromLoginPage("1,1", true);
             }
 
@@ -57,13 +59,16 @@ namespace Swarmops.Pages.Security
 
             // Rewrite if applicable
 
-            if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl) // only check client-side as many server sites de-SSL the connection before reaching the web server
+            if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl)
+                // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://swarmops-"))
+                if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") &&
+                    !Request.Url.ToString().StartsWith("http://localhost:") &&
+                    !Request.Url.ToString().StartsWith("http://swarmops-"))
                 {
                     Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
                 }
-            } 
+            }
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
@@ -75,7 +80,8 @@ namespace Swarmops.Pages.Security
             {
                 try
                 {
-                    BasicPerson authenticatedPerson = Swarmops.Logic.Security.Authentication.Authenticate(loginToken, password);
+                    BasicPerson authenticatedPerson = Swarmops.Logic.Security.Authentication.Authenticate(loginToken,
+                        password);
                     Person p = Person.FromIdentity(authenticatedPerson.PersonId);
 
                     if (p.PreferredCulture != Thread.CurrentThread.CurrentCulture.Name)
@@ -83,7 +89,7 @@ namespace Swarmops.Pages.Security
 
                     // TODO: Determine logged-on organization; possibly ask for clarification
 
-                    FormsAuthentication.RedirectFromLoginPage(authenticatedPerson.PersonId.ToString() + ",1", true);
+                    FormsAuthentication.RedirectFromLoginPage(authenticatedPerson.PersonId + ",1", true);
                 }
                 catch (Exception exception)
                 {
@@ -91,7 +97,6 @@ namespace Swarmops.Pages.Security
                     this.LabelLoginFailed.Text = exception.ToString();
                     this.LabelLoginFailed.Visible = true;
                     this.TextLogin.Focus();
-
                 }
             }
         }

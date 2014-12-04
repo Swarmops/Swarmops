@@ -31,7 +31,10 @@ namespace Swarmops.Frontend.Automation
 
             foreach (Person person in matches)
             {
-                string onePerson = '{' + String.Format("\"id\":\"{0}\",\"name\":\"{1}\",\"avatar16Url\":\"{2}\"", person.Identity, JsonSanitize(person.Canonical), person.GetSecureAvatarLink(16)) + '}';
+                string onePerson = '{' +
+                                   String.Format("\"id\":\"{0}\",\"name\":\"{1}\",\"avatar16Url\":\"{2}\"",
+                                       person.Identity, JsonSanitize(person.Canonical), person.GetSecureAvatarLink(16)) +
+                                   '}';
                 jsonPeople.Add(onePerson);
             }
 

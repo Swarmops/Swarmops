@@ -11,9 +11,9 @@ namespace Swarmops.Frontend.Pages.Comms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageIcon = "iconshock-messages";
-            this.PageTitle = Resources.Pages.Comms.SendMassMessage_Title;
-            this.InfoBoxLiteral = Resources.Pages.Comms.SendMassMessage_Info;
+            PageIcon = "iconshock-messages";
+            PageTitle = Resources.Pages.Comms.SendMassMessage_Title;
+            InfoBoxLiteral = Resources.Pages.Comms.SendMassMessage_Info;
 
             if (!Page.IsPostBack)
             {
@@ -42,12 +42,6 @@ namespace Swarmops.Frontend.Pages.Comms
             this.ButtonTest.Text = Resources.Pages.Comms.SendMassMessage_TestMessage;
         }
 
-        public struct ConfirmPayoutResult
-        {
-            public int AssignedId;
-            public string DisplayMessage;
-        };
-
         [WebMethod]
         public static string GetRecipientCount(int recipientTypeId, int geographyId)
         {
@@ -70,17 +64,16 @@ namespace Swarmops.Frontend.Pages.Comms
                     personCount = Activists.GetCountForGeography(geography);
                     break;
 
-                // TODO: Dynamic membership types
+                    // TODO: Dynamic membership types
 
                 case 101: // Officers
                     personCount = orgTree.GetRoleHolderCountForGeographies(geoTree);
                     break;
                 case 102: // Volunteers
-                    personCount = 0;  // TODO
+                    personCount = 0; // TODO
                     break;
                 default:
                     throw new NotImplementedException();
-
             }
 
             string result;
@@ -100,8 +93,12 @@ namespace Swarmops.Frontend.Pages.Comms
             }
 
             return result;
-
         }
-    }
 
+        public struct ConfirmPayoutResult
+        {
+            public int AssignedId;
+            public string DisplayMessage;
+        };
+    }
 }

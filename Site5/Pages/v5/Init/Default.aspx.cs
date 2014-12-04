@@ -17,6 +17,15 @@ using Swarmops.Site.Automation;
 
 public partial class Pages_v5_Init_Default : System.Web.UI.Page
 {
+    private static string _buildIdentity;
+    private static SwarmDb.Credentials _testReadCredentials;
+    private static SwarmDb.Credentials _testWriteCredentials;
+    private static SwarmDb.Credentials _testAdminCredentials;
+    private static int _initProgress;
+    private static string _initMessage = "Initializing...";
+    private static readonly Random GetRandom = new Random();
+    private static readonly object syncLock = new object();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
@@ -120,7 +129,6 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     }
 
 
-
     private void Localize()
     {
         this.LabelCurrentUserName.Text = Resources.Pages.Init.Init_UserInfo_InstallingAdmin;
@@ -153,9 +161,6 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     }
 
 
-    private static string _buildIdentity;
-
-
     private string GetBuildIdentity()
     {
         // Read build number if not loaded, or set to "Private" if none
@@ -179,11 +184,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     }
 
     [WebMethod]
-    static public PermissionsAnalysis FirstCredentialsTest
+    public static PermissionsAnalysis FirstCredentialsTest
         (string readDatabase, string readServer, string readUser, string readPassword,
-        string writeDatabase, string writeServer, string writeUser, string writePassword,
-        string adminDatabase, string adminServer, string adminUser, string adminPassword,
-        string serverName, string ipAddress)
+            string writeDatabase, string writeServer, string writeUser, string writePassword,
+            string adminDatabase, string adminServer, string adminUser, string adminPassword,
+            string serverName, string ipAddress)
     {
         if (!(VerifyHostName(serverName) && VerifyHostAddress(ipAddress)))
         {
@@ -194,18 +199,14 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         }
 
         _testReadCredentials = new SwarmDb.Credentials(
-                    readDatabase, new SwarmDb.ServerSet(readServer), readUser, readPassword);
+            readDatabase, new SwarmDb.ServerSet(readServer), readUser, readPassword);
         _testWriteCredentials = new SwarmDb.Credentials(
-                    writeDatabase, new SwarmDb.ServerSet(writeServer), writeUser, writePassword);
+            writeDatabase, new SwarmDb.ServerSet(writeServer), writeUser, writePassword);
         _testAdminCredentials = new SwarmDb.Credentials(
-                    adminDatabase, new SwarmDb.ServerSet(adminServer), adminUser, adminPassword);
+            adminDatabase, new SwarmDb.ServerSet(adminServer), adminUser, adminPassword);
 
-        return RecheckDatabasePermissions();  // Subsequent tests only call this function
+        return RecheckDatabasePermissions(); // Subsequent tests only call this function
     }
-
-    private static SwarmDb.Credentials _testReadCredentials;
-    private static SwarmDb.Credentials _testWriteCredentials;
-    private static SwarmDb.Credentials _testAdminCredentials;
 
 
     [WebMethod(true)]
@@ -222,7 +223,8 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     {
         while (_testReadCredentials == null || _testWriteCredentials == null || _testAdminCredentials == null)
         {
-            Thread.Sleep(100); // A couple of async race conditions happen as this is called, we need to wait for credentials
+            Thread.Sleep(100);
+                // A couple of async race conditions happen as this is called, we need to wait for credentials
         }
 
         PermissionsAnalysis result = new PermissionsAnalysis();
@@ -241,9 +243,10 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
         result.AdminCredentialsCanAdmin &= adminDb.TestDropTable();
         result.AdminCredentialsCanAdmin &= adminDb.TestCreateTable();
         result.AdminCredentialsCanAdmin &= adminDb.TestAlterTable();
-        result.AdminCredentialsCanAdmin &= adminDb.TestCreateProcedure();  // AND -- all must succeed
-        result.AdminCredentialsCanAdmin &= adminDb.TestDropProcedure();    // Test DROP before we mess up the state of the table, procedure
-        result.AdminCredentialsCanAdmin &= adminDb.TestCreateProcedure();  // therefore, recreate it after the drop
+        result.AdminCredentialsCanAdmin &= adminDb.TestCreateProcedure(); // AND -- all must succeed
+        result.AdminCredentialsCanAdmin &= adminDb.TestDropProcedure();
+            // Test DROP before we mess up the state of the table, procedure
+        result.AdminCredentialsCanAdmin &= adminDb.TestCreateProcedure(); // therefore, recreate it after the drop
 
         if (result.AdminCredentialsCanAdmin) // if we have a created table and procedure, otherwise default fail
         {
@@ -305,11 +308,11 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             result.WriteCredentialsCanLogin &&
             result.WriteCredentialsCanSelect &&
             result.WriteCredentialsCanExecute &&
-            !result.WriteCredentialsCanAdmin &&  // not this
+            !result.WriteCredentialsCanAdmin && // not this
             result.ReadCredentialsCanLogin &&
             result.ReadCredentialsCanSelect &&
             !result.ReadCredentialsCanExecute && // not this
-            !result.ReadCredentialsCanAdmin;     // not this
+            !result.ReadCredentialsCanAdmin; // not this
 
         return result;
     }
@@ -354,7 +357,7 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
 
     /// <summary>
-    /// This function copies the schemas and geography data off an existing Swarmops installation. Runs in its own thread.
+    ///     This function copies the schemas and geography data off an existing Swarmops installation. Runs in its own thread.
     /// </summary>
     public static void InitDatabaseThread()
     {
@@ -366,246 +369,250 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
 
         try
         {
+            // Get the schema and initialize the database structures. Requires ADMIN access to database.
 
-        // Get the schema and initialize the database structures. Requires ADMIN access to database.
+            Swarmops.Logic.Support.DatabaseMaintenance.FirstInitialization();
 
-        Swarmops.Logic.Support.DatabaseMaintenance.FirstInitialization();
-
-        _initProgress = 6;
-        _initMessage = "Applying all post-baseline database schema upgrades...";
-        Swarmops.Logic.Support.DatabaseMaintenance.UpgradeSchemata();
-        Thread.Sleep(100);
-
-        _initProgress = 5;
-        _initMessage = "Getting list of countries from Swarmops servers...";
-        Thread.Sleep(100);
-
-        // Create translation lists
-
-        Dictionary<int, int> geographyIdTranslation = new Dictionary<int, int>();
-        Dictionary<int, int> cityIdTranslation = new Dictionary<int, int>();
-        Dictionary<string, int> countryIdTranslation = new Dictionary<string, int>();
-        Dictionary<int, bool> cityIdsUsedLookup = new Dictionary<int, bool>();
-
-        // Initialize the root geography (which becomes #1 if everything works)
-
-        int rootGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography("[LOC]World", 0);
-
-        // Get the list of countries
-
-        Swarmops.Site.Automation.GetGeographyData geoDataFetcher = new GetGeographyData();
-
-        Swarmops.Site.Automation.Country[] countries = geoDataFetcher.GetCountries();
-
-        _initProgress = 7;
-        _initMessage = "Creating all countries on local server...";
-        Thread.Sleep(100);
-        int count = 0;
-        int total = countries.Length;
-
-        // Create all countries in our own database
-
-        foreach (Swarmops.Site.Automation.Country country in countries)
-        {
-            countryIdTranslation[country.Code] = SwarmDb.GetDatabaseForWriting().CreateCountry(country.Name,
-                                                                                                country.Code,
-                                                                                                country.Culture,
-                                                                                                rootGeographyId, 5,
-                                                                                                string.Empty);
-
-            count++;
-            _initMessage = String.Format("Creating all countries on local server... ({0}%)", count*100/total);
-        }
-
-        _initProgress = 10;
-
-        // Construct list of countries that have geographic data
-
-        List<string> initializableCountries = new List<string>();
-
-        foreach (Swarmops.Site.Automation.Country country in countries)
-        {
-            if (country.GeographyId != 1)
-            {
-                initializableCountries.Add(country.Code);
-            }
-        }
-
-        float initStepPerCountry = 90f/initializableCountries.Count;
-        int countryCount = 0;
-
-        // For each country...
-
-        foreach (string countryCode in initializableCountries)
-        {
-            // Get the geography layout
-
-            _initMessage = "Retrieving geography for " + countryCode + "...";
+            _initProgress = 6;
+            _initMessage = "Applying all post-baseline database schema upgrades...";
+            Swarmops.Logic.Support.DatabaseMaintenance.UpgradeSchemata();
             Thread.Sleep(100);
 
-            Swarmops.Site.Automation.Geography geography = geoDataFetcher.GetGeographyForCountry(countryCode);
-
-            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/6);
-            _initMessage = "Setting up geography for " + countryCode + "...";
+            _initProgress = 5;
+            _initMessage = "Getting list of countries from Swarmops servers...";
             Thread.Sleep(100);
 
-            // Create the country's root geography
+            // Create translation lists
 
-            int countryRootGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography(geography.Name,
-                                                                                          rootGeographyId);
-            geographyIdTranslation[geography.GeographyId] = countryRootGeographyId;
-            SwarmDb.GetDatabaseForWriting().SetCountryGeographyId(countryIdTranslation[countryCode],
-                                                                   countryRootGeographyId);
+            Dictionary<int, int> geographyIdTranslation = new Dictionary<int, int>();
+            Dictionary<int, int> cityIdTranslation = new Dictionary<int, int>();
+            Dictionary<string, int> countryIdTranslation = new Dictionary<string, int>();
+            Dictionary<int, bool> cityIdsUsedLookup = new Dictionary<int, bool>();
 
-            count = 0;
-            total = InitDatabaseThreadCountGeographyChildren (geography.Children);
+            // Initialize the root geography (which becomes #1 if everything works)
 
-            InitDatabaseThreadCreateGeographyChildren(geography.Children, countryRootGeographyId,
-                ref geographyIdTranslation, countryCode, ref count, total);
+            int rootGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography("[LOC]World", 0);
 
-            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/3);
-            _initMessage = "Retrieving cities for " + countryCode + "...";
+            // Get the list of countries
+
+            Swarmops.Site.Automation.GetGeographyData geoDataFetcher = new GetGeographyData();
+
+            Swarmops.Site.Automation.Country[] countries = geoDataFetcher.GetCountries();
+
+            _initProgress = 7;
+            _initMessage = "Creating all countries on local server...";
             Thread.Sleep(100);
+            int count = 0;
+            int total = countries.Length;
 
-            // Get the postal codes and cities
+            // Create all countries in our own database
 
-            Swarmops.Site.Automation.City[] cities = null;
-
-            try
+            foreach (Swarmops.Site.Automation.Country country in countries)
             {
-                cities = geoDataFetcher.GetCitiesForCountry(countryCode);
-            }
-            catch (Exception)
-                // This is a SoapHeaderException in VS debugging, but SOMETHING ELSE! in Mono runtime, so make it generic
-            {
-                // This is typically a country that isn't populated with cities yet. Ignore.
-                countryCount++;
-                continue;
-            }
+                countryIdTranslation[country.Code] = SwarmDb.GetDatabaseForWriting().CreateCountry(country.Name,
+                    country.Code,
+                    country.Culture,
+                    rootGeographyId, 5,
+                    string.Empty);
 
-
-            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/2);
-            _initMessage = "Retrieving postal codes for " + countryCode + "...";
-            Thread.Sleep(100);
-
-            Swarmops.Site.Automation.PostalCode[] postalCodes = geoDataFetcher.GetPostalCodesForCountry(countryCode);
-
-            // Find which cities are actually used
-
-            foreach (Swarmops.Site.Automation.PostalCode postalCode in postalCodes)
-            {
-                cityIdsUsedLookup[postalCode.CityId] = true;
+                count++;
+                _initMessage = String.Format("Creating all countries on local server... ({0}%)", count*100/total);
             }
 
-            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry*2/3);
+            _initProgress = 10;
 
-            // Insert cities
+            // Construct list of countries that have geographic data
 
-            int newCountryId = countryIdTranslation[countryCode];
+            List<string> initializableCountries = new List<string>();
 
-            int cityIdHighwater = SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommandScalar("SELECT Max(CityId) FROM Cities;");
-
-            _initMessage = string.Format("Setting up {0:N0} cities for {1}...", cities.Length, countryCode);
-
-            StringBuilder sqlCityBuild = new StringBuilder("INSERT INTO Cities (CityName, GeographyId, CountryId, Comment) VALUES ", 65536);
-            bool insertComma = false;
-
-            foreach (Swarmops.Site.Automation.City city in cities)
+            foreach (Swarmops.Site.Automation.Country country in countries)
             {
-                if (!geographyIdTranslation.ContainsKey(city.GeographyId))
+                if (country.GeographyId != 1)
                 {
-                    cityIdsUsedLookup[city.CityId] = false; // force non-use of invalid city
-                }
-
-                if (cityIdsUsedLookup[city.CityId])
-                {
-                    int newGeographyId = geographyIdTranslation[city.GeographyId];
-
-                    if (insertComma)
-                    {
-                        sqlCityBuild.Append(",");
-                    }
-
-                    sqlCityBuild.Append("('" + city.Name.Replace("'", "\'") + "'," + newGeographyId.ToString() + "," +
-                        newCountryId.ToString() + ",'')");
-                    insertComma = true;
-
-                    cityIdTranslation[city.CityId] = ++cityIdHighwater;  // Note that we assume the assigned ID here.
+                    initializableCountries.Add(country.Code);
                 }
             }
 
-            sqlCityBuild.Append(";");
+            float initStepPerCountry = 90f/initializableCountries.Count;
+            int countryCount = 0;
 
-            SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCityBuild.ToString()); // Inserts all cities in one bulk op, to save roundtrips
+            // For each country...
 
-            // Insert postal codes
-
-            _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry*5/6);
-            _initMessage = string.Format("Setting up {0:N0} postal codes for {1}...", postalCodes.Length, countryCode);
-
-            StringBuilder sqlBuild = new StringBuilder("INSERT INTO PostalCodes (PostalCode, CityId, CountryId) VALUES ", 65536);
-            insertComma = false;
-
-            foreach (Swarmops.Site.Automation.PostalCode postalCode in postalCodes)
+            foreach (string countryCode in initializableCountries)
             {
-                if (cityIdsUsedLookup[postalCode.CityId] == false)
-                {
-                    // Remnants of invalid pointers
+                // Get the geography layout
 
+                _initMessage = "Retrieving geography for " + countryCode + "...";
+                Thread.Sleep(100);
+
+                Swarmops.Site.Automation.Geography geography = geoDataFetcher.GetGeographyForCountry(countryCode);
+
+                _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/6);
+                _initMessage = "Setting up geography for " + countryCode + "...";
+                Thread.Sleep(100);
+
+                // Create the country's root geography
+
+                int countryRootGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography(geography.Name,
+                    rootGeographyId);
+                geographyIdTranslation[geography.GeographyId] = countryRootGeographyId;
+                SwarmDb.GetDatabaseForWriting().SetCountryGeographyId(countryIdTranslation[countryCode],
+                    countryRootGeographyId);
+
+                count = 0;
+                total = InitDatabaseThreadCountGeographyChildren(geography.Children);
+
+                InitDatabaseThreadCreateGeographyChildren(geography.Children, countryRootGeographyId,
+                    ref geographyIdTranslation, countryCode, ref count, total);
+
+                _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/3);
+                _initMessage = "Retrieving cities for " + countryCode + "...";
+                Thread.Sleep(100);
+
+                // Get the postal codes and cities
+
+                Swarmops.Site.Automation.City[] cities = null;
+
+                try
+                {
+                    cities = geoDataFetcher.GetCitiesForCountry(countryCode);
+                }
+                catch (Exception)
+                    // This is a SoapHeaderException in VS debugging, but SOMETHING ELSE! in Mono runtime, so make it generic
+                {
+                    // This is typically a country that isn't populated with cities yet. Ignore.
+                    countryCount++;
                     continue;
                 }
 
-                int newCityId = cityIdTranslation[postalCode.CityId];
 
-                if (insertComma)
+                _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry/2);
+                _initMessage = "Retrieving postal codes for " + countryCode + "...";
+                Thread.Sleep(100);
+
+                Swarmops.Site.Automation.PostalCode[] postalCodes = geoDataFetcher.GetPostalCodesForCountry(countryCode);
+
+                // Find which cities are actually used
+
+                foreach (Swarmops.Site.Automation.PostalCode postalCode in postalCodes)
                 {
-                    sqlBuild.Append(",");
+                    cityIdsUsedLookup[postalCode.CityId] = true;
                 }
 
-                sqlBuild.Append("('" + postalCode.PostalCode.Replace("'", "\'") + "'," + newCityId.ToString() + "," +
-                       newCountryId.ToString() + ")");
-                insertComma = true;
+                _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry*2/3);
+
+                // Insert cities
+
+                int newCountryId = countryIdTranslation[countryCode];
+
+                int cityIdHighwater =
+                    SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommandScalar("SELECT Max(CityId) FROM Cities;");
+
+                _initMessage = string.Format("Setting up {0:N0} cities for {1}...", cities.Length, countryCode);
+
+                StringBuilder sqlCityBuild =
+                    new StringBuilder("INSERT INTO Cities (CityName, GeographyId, CountryId, Comment) VALUES ", 65536);
+                bool insertComma = false;
+
+                foreach (Swarmops.Site.Automation.City city in cities)
+                {
+                    if (!geographyIdTranslation.ContainsKey(city.GeographyId))
+                    {
+                        cityIdsUsedLookup[city.CityId] = false; // force non-use of invalid city
+                    }
+
+                    if (cityIdsUsedLookup[city.CityId])
+                    {
+                        int newGeographyId = geographyIdTranslation[city.GeographyId];
+
+                        if (insertComma)
+                        {
+                            sqlCityBuild.Append(",");
+                        }
+
+                        sqlCityBuild.Append("('" + city.Name.Replace("'", "\'") + "'," + newGeographyId + "," +
+                                            newCountryId + ",'')");
+                        insertComma = true;
+
+                        cityIdTranslation[city.CityId] = ++cityIdHighwater; // Note that we assume the assigned ID here.
+                    }
+                }
+
+                sqlCityBuild.Append(";");
+
+                SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCityBuild.ToString());
+                    // Inserts all cities in one bulk op, to save roundtrips
+
+                // Insert postal codes
+
+                _initProgress = 10 + (int) (countryCount*initStepPerCountry + initStepPerCountry*5/6);
+                _initMessage = string.Format("Setting up {0:N0} postal codes for {1}...", postalCodes.Length,
+                    countryCode);
+
+                StringBuilder sqlBuild =
+                    new StringBuilder("INSERT INTO PostalCodes (PostalCode, CityId, CountryId) VALUES ", 65536);
+                insertComma = false;
+
+                foreach (Swarmops.Site.Automation.PostalCode postalCode in postalCodes)
+                {
+                    if (cityIdsUsedLookup[postalCode.CityId] == false)
+                    {
+                        // Remnants of invalid pointers
+
+                        continue;
+                    }
+
+                    int newCityId = cityIdTranslation[postalCode.CityId];
+
+                    if (insertComma)
+                    {
+                        sqlBuild.Append(",");
+                    }
+
+                    sqlBuild.Append("('" + postalCode.PostalCode.Replace("'", "\'") + "'," + newCityId + "," +
+                                    newCountryId + ")");
+                    insertComma = true;
+                }
+
+                sqlBuild.Append(";");
+
+                SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlBuild.ToString());
+                    // Inserts all postal codes in one bulk op, to save roundtrips
+
+                countryCount++;
+
+                _initProgress = 10 + (int) (countryCount*initStepPerCountry);
             }
 
-            sqlBuild.Append(";");
+            // Set Geography at baseline (TODO: Ask for what baseline we got)
 
-            SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlBuild.ToString()); // Inserts all postal codes in one bulk op, to save roundtrips
+            Persistence.Key["LastGeographyUpdateId"] = "0";
 
-            countryCount++;
+            // Set an installation ID
 
-            _initProgress = 10 + (int) (countryCount*initStepPerCountry);
-        }
+            Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
 
-        // Set Geography at baseline (TODO: Ask for what baseline we got)
+            // Create initial currencies (European)
 
-        Persistence.Key["LastGeographyUpdateId"] = "0";
+            Currency.Create("EUR", "Euros", "€");
+            Currency.Create("USD", "US Dollars", "$");
+            Currency.Create("CAD", "Canadian Dollars", "CA$");
+            Currency.Create("SEK", "Swedish Krona", string.Empty);
+            Currency.Create("NOK", "Norwegian Krona", string.Empty);
+            Currency.Create("DKK", "Danish Krona", string.Empty);
+            Currency.Create("ISK", "Icelandic Krona", string.Empty);
+            Currency.Create("CHF", "Swiss Franc", string.Empty);
+            Currency.Create("GBP", "Pounds Sterling", "£");
+            Currency.Create("BTC", "Bitcoin", "฿");
 
-        // Set an installation ID
+            // Create the sandbox
 
-        Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
+            Swarmops.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "swarmops.com", "Ops",
+                rootGeographyId, true,
+                true, 0).EnableEconomy(Swarmops.Logic.Financial.Currency.FromCode("EUR"));
 
-        // Create initial currencies (European)
-
-        Currency.Create("EUR", "Euros", "€");
-        Currency.Create("USD", "US Dollars", "$");
-        Currency.Create("CAD", "Canadian Dollars", "CA$");
-        Currency.Create("SEK", "Swedish Krona", string.Empty);
-        Currency.Create("NOK", "Norwegian Krona", string.Empty);
-        Currency.Create("DKK", "Danish Krona", string.Empty);
-        Currency.Create("ISK", "Icelandic Krona", string.Empty);
-        Currency.Create("CHF", "Swiss Franc", string.Empty);
-        Currency.Create("GBP", "Pounds Sterling", "£");
-        Currency.Create("BTC", "Bitcoin", "฿");
-
-        // Create the sandbox
-
-        Swarmops.Logic.Structure.Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "swarmops.com", "Ops",
-                                                     rootGeographyId, true,
-                                                     true, 0).EnableEconomy(Swarmops.Logic.Financial.Currency.FromCode("EUR"));
-
-        _initProgress = 100;
-        _initMessage = "Complete.";
-
+            _initProgress = 100;
+            _initMessage = "Complete.";
         }
         catch (Exception failedException)
         {
@@ -631,8 +638,8 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     }
 
     private static void InitDatabaseThreadCreateGeographyChildren(Swarmops.Site.Automation.Geography[] children,
-                                                                  int parentGeographyId,
-                                                                  ref Dictionary<int, int> geographyIdTranslation, string countryCode, ref int count, int total)
+        int parentGeographyId,
+        ref Dictionary<int, int> geographyIdTranslation, string countryCode, ref int count, int total)
     {
         count++;
 
@@ -641,20 +648,17 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             int newGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography(geography.Name, parentGeographyId);
             geographyIdTranslation[geography.GeographyId] = newGeographyId;
 
-            InitDatabaseThreadCreateGeographyChildren(geography.Children, newGeographyId, ref geographyIdTranslation, countryCode, ref count, total);
+            InitDatabaseThreadCreateGeographyChildren(geography.Children, newGeographyId, ref geographyIdTranslation,
+                countryCode, ref count, total);
         }
 
         if (total != 0)
         {
             _initMessage = String.Format("Setting up geography for {0}... ({1}%)", countryCode, count*100/total);
-                // shouldn't be here but wtf
+            // shouldn't be here but wtf
         }
         Thread.Sleep(50);
     }
-
-
-    private static int _initProgress = 0;
-    private static string _initMessage = "Initializing...";
 
 
     [WebMethod]
@@ -745,30 +749,14 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
     }
 
     //Function to get random number
-    private static readonly Random GetRandom = new Random();
-    private static readonly object syncLock = new object();
+
     private static int GetRandomNumber(int min, int max)
     {
-        lock(syncLock) { // synchronize
-            return GetRandom.Next(min, max+1);
+        lock (syncLock)
+        {
+            // synchronize
+            return GetRandom.Next(min, max + 1);
         }
-    }
-
-    public class PermissionsAnalysis
-    {
-        public bool AllPermissionsOk { get; set; }
-        public bool ReadCredentialsCanLogin { get; set; }
-        public bool ReadCredentialsCanSelect { get; set; }
-        public bool ReadCredentialsCanExecute { get; set; }
-        public bool ReadCredentialsCanAdmin { get; set; }
-        public bool WriteCredentialsCanLogin { get; set; }
-        public bool WriteCredentialsCanSelect { get; set; }
-        public bool WriteCredentialsCanExecute { get; set; }
-        public bool WriteCredentialsCanAdmin { get; set; }
-        public bool AdminCredentialsCanLogin { get; set; }
-        public bool AdminCredentialsCanSelect { get; set; }
-        public bool AdminCredentialsCanExecute { get; set; }
-        public bool AdminCredentialsCanAdmin { get; set; }
     }
 
     [WebMethod(true)]
@@ -809,14 +797,14 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             throw new InvalidOperationException("Cannot run initialization processes again when initialized.");
         }
 
-        Swarmops.Logic.Swarm.Person newPerson = Swarmops.Logic.Swarm.Person.Create(HttpUtility.UrlDecode(name), HttpUtility.UrlDecode(mail),
-                                             HttpUtility.UrlDecode(password), string.Empty, string.Empty, string.Empty,
-                                             string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
+        Swarmops.Logic.Swarm.Person newPerson = Swarmops.Logic.Swarm.Person.Create(HttpUtility.UrlDecode(name),
+            HttpUtility.UrlDecode(mail),
+            HttpUtility.UrlDecode(password), string.Empty, string.Empty, string.Empty,
+            string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
         newPerson.AddMembership(1, DateTime.MaxValue); // Add membership in Sandbox
         newPerson.AddRole(RoleType.SystemAdmin, 0, 0); // Add role System Admin
     }
-
 
 
     protected void ButtonLogin_Click(object sender, EventArgs args)
@@ -831,12 +819,30 @@ public partial class Pages_v5_Init_Default : System.Web.UI.Page
             }
         }
 
-        Swarmops.Logic.Swarm.Person expectedPersonOne = Swarmops.Logic.Security.Authentication.Authenticate("1", this.TextFirstUserPassword1.Text);
+        Swarmops.Logic.Swarm.Person expectedPersonOne = Swarmops.Logic.Security.Authentication.Authenticate("1",
+            this.TextFirstUserPassword1.Text);
 
         if (expectedPersonOne != null)
         {
             FormsAuthentication.RedirectFromLoginPage("1,1", true);
             Response.Redirect("/", true);
         }
+    }
+
+    public class PermissionsAnalysis
+    {
+        public bool AllPermissionsOk { get; set; }
+        public bool ReadCredentialsCanLogin { get; set; }
+        public bool ReadCredentialsCanSelect { get; set; }
+        public bool ReadCredentialsCanExecute { get; set; }
+        public bool ReadCredentialsCanAdmin { get; set; }
+        public bool WriteCredentialsCanLogin { get; set; }
+        public bool WriteCredentialsCanSelect { get; set; }
+        public bool WriteCredentialsCanExecute { get; set; }
+        public bool WriteCredentialsCanAdmin { get; set; }
+        public bool AdminCredentialsCanLogin { get; set; }
+        public bool AdminCredentialsCanSelect { get; set; }
+        public bool AdminCredentialsCanExecute { get; set; }
+        public bool AdminCredentialsCanAdmin { get; set; }
     }
 }

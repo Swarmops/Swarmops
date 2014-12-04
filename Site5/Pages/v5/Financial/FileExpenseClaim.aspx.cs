@@ -9,6 +9,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 {
     public partial class FileExpenseClaim : PageV5Base
     {
+        private int[] _tagSetIds;
+
         protected void Page_Init(object sender, EventArgs e)
         {
             string tagSetIdsString = Request["ctl00$PlaceHolderMain$HiddenTagSetIdentifiers"];
@@ -17,16 +19,16 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (String.IsNullOrEmpty(tagSetIdsString))
             {
-                _tagSetIds = FinancialTransactionTagSets.ForOrganization(this.CurrentOrganization).Identities;
+                this._tagSetIds = FinancialTransactionTagSets.ForOrganization(CurrentOrganization).Identities;
             }
             else
             {
                 string[] tagSetIdStrings = tagSetIdsString.Split(',');
-                _tagSetIds = new int[tagSetIdStrings.Length];
+                this._tagSetIds = new int[tagSetIdStrings.Length];
 
                 for (int index = 0; index < tagSetIdStrings.Length; index++)
                 {
-                    _tagSetIds[index] = Int32.Parse(tagSetIdStrings[index]);
+                    this._tagSetIds[index] = Int32.Parse(tagSetIdStrings[index]);
                 }
             }
 
@@ -35,9 +37,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             List<TagSetDataSourceItem> dataSourceVisibleTags = new List<TagSetDataSourceItem>();
             List<TagSetDataSourceItem> dataSourceForcedTags = new List<TagSetDataSourceItem>();
 
-            foreach (int tagSetId in _tagSetIds)
+            foreach (int tagSetId in this._tagSetIds)
             {
-                TagSetDataSourceItem item = new TagSetDataSourceItem()
+                TagSetDataSourceItem item = new TagSetDataSourceItem
                 {
                     TagSetId = tagSetId,
                     TagSetLocalizedName =
@@ -75,7 +77,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             List<string> tagSetIdStringList = new List<string>();
 
-            foreach (int tagSetId in _tagSetIds)
+            foreach (int tagSetId in this._tagSetIds)
             {
                 tagSetIdStringList.Add(tagSetId.ToString(CultureInfo.InvariantCulture));
             }
@@ -83,27 +85,25 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.HiddenTagSetIdentifiers.Value = String.Join(",", tagSetIdStringList.ToArray());
         }
 
-        private int[] _tagSetIds;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.CurrentOrganization.IsEconomyEnabled)
+            if (!CurrentOrganization.IsEconomyEnabled)
             {
                 Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
-            this.BoxTitle.Text = this.PageTitle = Resources.Pages.Financial.FileExpenseClaim_PageTitle;
-            this.PageIcon = "iconshock-moneyback";
-            this.InfoBoxLiteral = Resources.Pages.Financial.FileExpenseClaim_Info;
+            this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.FileExpenseClaim_PageTitle;
+            PageIcon = "iconshock-moneyback";
+            InfoBoxLiteral = Resources.Pages.Financial.FileExpenseClaim_Info;
 
             if (!Page.IsPostBack)
             {
                 // Prime bank details
 
-                this.TextBank.Text = this.CurrentUser.BankName;
-                this.TextClearing.Text = this.CurrentUser.BankClearing;
-                this.TextAccount.Text = this.CurrentUser.BankAccount;
+                this.TextBank.Text = CurrentUser.BankName;
+                this.TextClearing.Text = CurrentUser.BankClearing;
+                this.TextAccount.Text = CurrentUser.BankAccount;
                 this.TextAmount.Text = 0.ToString("N2");
                 this.TextAmount.Focus();
 
@@ -118,7 +118,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         private void Localize()
         {
             this.LabelAmount.Text = string.Format(Resources.Pages.Financial.FileExpenseClaim_Amount,
-                                                  CurrentOrganization.Currency.DisplayCode);
+                CurrentOrganization.Currency.DisplayCode);
             this.LabelPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_Description;
             this.LabelBudget.Text = Resources.Pages.Financial.FileExpenseClaim_Budget;
             this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderBankDetails;
@@ -132,10 +132,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose;
             this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
             this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
-            this.LiteralErrorBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
+            this.LiteralErrorBankClearing.Text =
+                Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
             this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
             this.LiteralErrorDocuments.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents;
-
         }
 
 
@@ -145,12 +145,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // People who choose to disable JavaScript and then submit bad input almost deserve to be hurt.
 
             double amount = Double.Parse(this.TextAmount.Text, NumberStyles.Number);
-                // parses in current culture - intentional
+            // parses in current culture - intentional
             Int64 amountCents = (Int64) amount*100;
 
             string description = this.TextPurpose.Text;
 
-            FinancialAccount budget = FinancialAccount.FromIdentity(Int32.Parse(this.Request.Form["DropBudgets"]));
+            FinancialAccount budget = FinancialAccount.FromIdentity(Int32.Parse(Request.Form["DropBudgets"]));
 
             // sanity check
 
@@ -167,19 +167,20 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // Get documents; check that documents have been uploaded
 
-            Documents documents = Documents.RecentFromDescription (this.FileUpload.GuidString);
+            Documents documents = Documents.RecentFromDescription(this.FileUpload.GuidString);
 
             if (documents.Count == 0)
             {
                 throw new InvalidOperationException("No documents uploaded");
             }
 
-            ExpenseClaim claim = ExpenseClaim.Create (this.CurrentUser, this.CurrentOrganization, budget, DateTime.UtcNow, description, amountCents);
+            ExpenseClaim claim = ExpenseClaim.Create(CurrentUser, CurrentOrganization, budget, DateTime.UtcNow,
+                description, amountCents);
 
-            foreach (int tagSetId in _tagSetIds)
+            foreach (int tagSetId in this._tagSetIds)
             {
                 string selectedTagString =
-                    this.Request.Form["DropTags" + tagSetId.ToString(CultureInfo.InvariantCulture)];
+                    Request.Form["DropTags" + tagSetId.ToString(CultureInfo.InvariantCulture)];
 
                 if (!String.IsNullOrEmpty(selectedTagString))
                 {
@@ -187,7 +188,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     if (selectedTagType != 0)
                     {
                         claim.FinancialTransaction.CreateTag(FinancialTransactionTagType.FromIdentity(selectedTagType),
-                                                             CurrentUser);
+                            CurrentUser);
                     }
                 }
             }
@@ -195,9 +196,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             documents.SetForeignObjectForAll(claim);
 
             string successMessage = string.Format(Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartOne,
-                                                  CurrentOrganization.Currency.Code,
-                                                  (double) (amountCents/100.0),
-                                                  budget.Name);
+                CurrentOrganization.Currency.Code,
+                amountCents/100.0,
+                budget.Name);
 
             if (budget.OwnerPersonId != CurrentUser.Identity)
             {
@@ -209,7 +210,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 successMessage += "<br/><br/>" +
                                   Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartTwoOwnBudget +
                                   "<br/>";
-                claim.Attest (CurrentUser);
+                claim.Attest(CurrentUser);
             }
 
             Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(successMessage)));

@@ -9,10 +9,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
     public partial class Json_OutstandingAccounts : DataV5Base
     {
+        private AuthenticationData _authenticationData;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Financials, AccessType.Read);
-            _authenticationData = GetAuthenticationDataAndCulture();
+            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Financials, AccessType.Read);
+            this._authenticationData = GetAuthenticationDataAndCulture();
 
             OutstandingAccountType accountType = OutstandingAccountType.ExpenseClaims;
             DateTime targetDateTime = DateTime.Today.AddDays(1);
@@ -22,22 +24,27 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             OutstandingAccounts outstandingAccounts = null;
             bool reverseLedgerSign = false;
 
-            if (Request.QueryString ["Year"] != null)
+            if (Request.QueryString["Year"] != null)
             {
-                targetDateTime = _authenticationData.CurrentOrganization.GetEndOfFiscalYear (Int32.Parse((string) Request.QueryString["Year"], CultureInfo.InvariantCulture));
+                targetDateTime =
+                    this._authenticationData.CurrentOrganization.GetEndOfFiscalYear(
+                        Int32.Parse(Request.QueryString["Year"], CultureInfo.InvariantCulture));
                 renderPresentTime = false;
             }
 
-            if (Request.QueryString ["AccountType"] != null)
+            if (Request.QueryString["AccountType"] != null)
             {
-                accountType = (OutstandingAccountType)Enum.Parse(typeof(OutstandingAccountType), Request.QueryString["AccountType"]); // Will throw on invalid input. Sucks to be hacker-wannabe
+                accountType =
+                    (OutstandingAccountType)
+                        Enum.Parse(typeof (OutstandingAccountType), Request.QueryString["AccountType"]);
+                    // Will throw on invalid input. Sucks to be hacker-wannabe
             }
 
 
             switch (accountType)
             {
                 case OutstandingAccountType.ExpenseClaims:
-                    balanceAccount = _authenticationData.CurrentOrganization.FinancialAccounts.DebtsExpenseClaims;
+                    balanceAccount = this._authenticationData.CurrentOrganization.FinancialAccounts.DebtsExpenseClaims;
                     outstandingAccounts = GetOutstandingExpenseClaims(renderPresentTime, targetDateTime);
                     reverseLedgerSign = true; // Expenses is debt and negative in ledger
                     break;
@@ -45,7 +52,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 case OutstandingAccountType.CashAdvances:
                     outstandingAccounts = GetOutstandingCashAdvances(renderPresentTime, targetDateTime);
                     balanceAccount =
-                        _authenticationData.CurrentOrganization.FinancialAccounts.AssetsOutstandingCashAdvances;
+                        this._authenticationData.CurrentOrganization.FinancialAccounts.AssetsOutstandingCashAdvances;
                     break;
                 default:
                     throw new NotImplementedException("Unimplemented Outstanding Account Type");
@@ -53,7 +60,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (renderPresentTime)
             {
-                ledgerExpectedCents = balanceAccount.GetDeltaCents(DateTime.MinValue, DateTime.MaxValue); // get ALL transactions
+                ledgerExpectedCents = balanceAccount.GetDeltaCents(DateTime.MinValue, DateTime.MaxValue);
+                    // get ALL transactions
             }
             else
             {
@@ -67,7 +75,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
             Response.ContentType = "application/json";
-            Response.Output.WriteLine (FormatJson(outstandingAccounts, ledgerExpectedCents));
+            Response.Output.WriteLine(FormatJson(outstandingAccounts, ledgerExpectedCents));
             Response.End();
         }
 
@@ -78,8 +86,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (renderPresentTime)
             {
-                ExpenseClaims claims = ExpenseClaims.ForOrganization(_authenticationData.CurrentOrganization);
-                Payouts payouts = Payouts.ForOrganization(_authenticationData.CurrentOrganization);
+                ExpenseClaims claims = ExpenseClaims.ForOrganization(this._authenticationData.CurrentOrganization);
+                Payouts payouts = Payouts.ForOrganization(this._authenticationData.CurrentOrganization);
 
                 foreach (ExpenseClaim claim in claims)
                 {
@@ -90,7 +98,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
                     {
                         outstandingAccounts.Add(OutstandingAccount.FromExpenseClaim(claim,
-                                                                                    payout.ExpectedTransactionDate));
+                            payout.ExpectedTransactionDate));
                     }
                 }
             }
@@ -109,7 +117,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 // Load all (ALL) expense claims for org
 
-                ExpenseClaims allClaims = ExpenseClaims.ForOrganization(_authenticationData.CurrentOrganization, true);
+                ExpenseClaims allClaims = ExpenseClaims.ForOrganization(this._authenticationData.CurrentOrganization,
+                    true);
                 // includes closed
 
                 // For each claim, determine whether it was open or not at targetDateTime
@@ -210,7 +219,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             // Load all (ALL) cash advances for org
 
-            CashAdvances allCashAdvances = CashAdvances.ForOrganization(_authenticationData.CurrentOrganization, true);
+            CashAdvances allCashAdvances = CashAdvances.ForOrganization(this._authenticationData.CurrentOrganization,
+                true);
             // includes closed
 
             // For each advance, determine whether it was open or not at targetDateTime
@@ -328,14 +338,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     "\"amount\":\"{5:N2}\"",
                     account.Identity,
                     account.CreatedDateTime.ToShortDateString(),
-                    (account.ExpectedClosed.Year <= 1950 ? Resources.Global.Global_NA : account.ExpectedClosed.ToShortDateString()),
+                    (account.ExpectedClosed.Year <= 1950
+                        ? Resources.Global.Global_NA
+                        : account.ExpectedClosed.ToShortDateString()),
                     JsonSanitize(account.Recipient),
                     JsonSanitize(account.Description),
-                    account.AmountCents / 100.0);
+                    account.AmountCents/100.0);
                 result.Append("},");
                 centsTotal += account.AmountCents;
             }
-            
+
             if (outstandingAccounts.Count > 0)
             {
                 result.Remove(result.Length - 1, 1); // remove last comma
@@ -346,33 +358,24 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.Append("{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{2:N2}\"",
-                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterTotal, balanceExpectedCents, centsTotal/100.0);
+                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterTotal, balanceExpectedCents, centsTotal/100.0);
 
             result.Append("},{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
-                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterLedgerBalance, balanceExpectedCents / 100.0);  // Expenses is a debt account, so reverse sign
+                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterLedgerBalance, balanceExpectedCents/100.0);
+                // Expenses is a debt account, so reverse sign
 
             result.Append("},{");
 
             result.AppendFormat("\"description\":\"{0}\",\"amount\":\"{1:N2}\"",
-                                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterDifference, (centsTotal - balanceExpectedCents) / 100.0);
+                Resources.Pages.Ledgers.ViewOutstandingAccounts_FooterDifference,
+                (centsTotal - balanceExpectedCents)/100.0);
 
 
             result.Append("}]}"); // on separate line to suppress warning
 
             return result.ToString();
-        }
-
-        private AuthenticationData _authenticationData;
-
-        private enum OutstandingAccountType
-        {
-            Unknown = 0,
-            ExpenseClaims,
-            CashAdvances,
-            InboundInvoices,
-            OutboundInvoices
         }
 
 
@@ -385,7 +388,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public DateTime CreatedDateTime { get; set; }
             public DateTime ExpectedClosed { get; set; }
 
-            public static OutstandingAccount FromExpenseClaim (ExpenseClaim claim, DateTime dateTimeExpectedClosed)
+            public static OutstandingAccount FromExpenseClaim(ExpenseClaim claim, DateTime dateTimeExpectedClosed)
             {
                 OutstandingAccount result = new OutstandingAccount
                 {
@@ -400,7 +403,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return result;
             }
 
-            public static OutstandingAccount FromCashAdvance (CashAdvance advance, DateTime dateTimePaidOut)
+            public static OutstandingAccount FromCashAdvance(CashAdvance advance, DateTime dateTimePaidOut)
             {
                 OutstandingAccount result = new OutstandingAccount
                 {
@@ -416,7 +419,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
         }
 
-        protected class OutstandingAccounts: List<OutstandingAccount>
+        private enum OutstandingAccountType
+        {
+            Unknown = 0,
+            ExpenseClaims,
+            CashAdvances,
+            InboundInvoices,
+            OutboundInvoices
+        }
+
+        protected class OutstandingAccounts : List<OutstandingAccount>
         {
             // empty class declaration - just want the name
         }

@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.ExtensionMethods;
 using System.Web.Security;
-using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Swarmops.Logic.Cache;
-using Swarmops.Logic.Support;
 
 namespace Swarmops.Security
 {
@@ -30,9 +21,5 @@ namespace Swarmops.Security
                 FormsAuthentication.RedirectFromLoginPage(identity, true);
             }
         }
-
     }
 }
-
-
-
