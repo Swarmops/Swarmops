@@ -83,7 +83,7 @@ namespace Swarmops.Pages.Security
             {
                 Response.AppendCookie(new HttpCookie("DashboardMessage",
                     HttpUtility.UrlEncode(
-                        "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p><br/><br/>")));
+                        "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p>")));
                 FormsAuthentication.RedirectFromLoginPage("1,1", true);
             }
 

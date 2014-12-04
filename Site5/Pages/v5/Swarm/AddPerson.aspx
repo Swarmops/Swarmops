@@ -59,6 +59,7 @@
                     setTimeout(function() {
                         $('#<%=this.TextPostal.ClientID%>').fadeIn(200);
                     }, 100);
+                    $('#spanLabelPostal').animate({ width: 'toggle' }, 400);
                     postalCodeVisible = true;
                 }
 
@@ -67,6 +68,7 @@
 
                 $('#<%=this.TextPostal.ClientID%>').animate({ width: 0 }, 200).fadeOut(100);
                 $('#<%=this.TextCity.ClientID%>').animate({ width: "255px" }, 600);
+                $('#spanLabelPostal').animate({ width: 'toggle' }, 400);
 
                 postalCodeVisible = false;
             }
@@ -96,7 +98,7 @@
 
                     postalCodeLength = msg.d.PostalCodeLength;
                     postalCodeLengthCheck = msg.d.PostalCodeLengthCheck;
-                    $('#<%=TextPostal.ClientID%>').attr('maxlength', postalCodeLength);
+                    $('#<%=TextPostal.ClientID%>').attr('maxlength', postalCodeLength).attr('placeholder', '12345678'.substring(0, postalCodeLength));
                     msg.d.PostalCodes.forEach(function (element, index, array) {
                         postalCodeLookup[element.Code.toLowerCase()] = element.CityId;
                     });
@@ -121,6 +123,30 @@
                     cityNameLookup = {};
                 }
             });
+        }
+
+        function ValidateFields() {
+            var isValid = true;
+
+            isValid = validateTextField('#<%=this.TextName.ClientID %>', '<asp:Literal runat="server" ID="LiteralErrorName" />') && isValid;
+            isValid = validateTextField('#<%=this.TextMail.ClientID %>', '<asp:Literal runat="server" ID="LiteralErrorMail" />') && isValid;
+            isValid = validateTextField('#<%=this.TextStreet1.ClientID %>', '<asp:Literal runat="server" ID="LiteralErrorStreet" />') && isValid;
+            isValid = validateTextField('#<%=this.TextCity.ClientID %>', '<asp:Literal runat="server" ID="LiteralErrorCity" />') && isValid;
+
+            // TODO: Actually validate geography?
+
+            return isValid;
+        }
+
+        function ValidateTextField(fieldId, message) {
+            if ($(fieldId).val().length == 0) {
+                alertify.error(message);
+                $(fieldId).addClass("entryError");
+                $(fieldId).focus();
+                return false;
+            }
+
+            return true;
         }
 
         var postalCodeLookup = {};
@@ -152,6 +178,7 @@
         <Swarmops5:DropDown runat="server" ID="DropGenders" />&#8203;<br/>
         &nbsp;<br/>
         <asp:Label ID="LabelExpiry" runat="server" Text="YYYY-MM-DD" />&#8203;<br/>
+        <asp:Button ID="ButtonSubmit" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return ValidateFields();" OnClick="ButtonSubmit_Click" Text="Register"/>
     </div>
     <div class="entryLabels">
         Name<br />
@@ -159,9 +186,9 @@
         Mail<br />
         Phone<br />
         <h2>ADDRESS</h2>
-        Street 1<br />
-        Street 2<br />
-        <span id="spanLabelPostal">Postal Code, </span>City<br />
+        Street 1 or P.O.<br />
+        Street 2 (optional)<br />
+        <span id="spanLabelPostal" style="display:inline-block; overflow: hidden">Postal Code,&nbsp;</span><span style="display:inline-block; overflow: hidden">City</span><br />
         <span id="SpanGeoDetected">Geography detected</span><span id="SpanGeoSelect" style="display:none">Select Geograhpy</span><br />
         <h2>STATISTICAL DATA</h2>
         Date of Birth<br />

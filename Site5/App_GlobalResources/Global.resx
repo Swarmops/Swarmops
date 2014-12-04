@@ -824,4 +824,8 @@
     <value>MM/DD/YYYY</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
+  <data name="Global_LongDateFormatSansWeekday" xml:space="preserve">
+    <value>MMM d, YYYY</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
 </root>
