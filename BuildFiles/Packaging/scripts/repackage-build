@@ -57,7 +57,7 @@ if [ "$DROPFOLDER" == "internal" ]; then
   echo "The packages (swarmops-frontend-internal, swarmops-backend-internal) are available from repositories now, and can be tested at http://dev.swarmops.com/ as usual. Last 3 commits listed above." >> deploymsg.txt
 else
   PACKAGELABEL="$DROPFOLDER $(cat ../lastbuild/swarmops/$DROPFOLDER/frontend/SprintName.txt | tr -d '\n\r')"
-  echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!\r\n" > deploymsg.txt
+  echo "NOTE: this is a $DROPFOLDER package bundle. It will deploy automatically to live systems via apt-get upgrade. Yay, we made another sprint!" > deploymsg.txt
 fi
 
 # TODO: Add build messages to deploy message, at least for internal build

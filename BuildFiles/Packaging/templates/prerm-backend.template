@@ -1,5 +1,5 @@
 #! /bin/bash
 
-update-rc.d -f swarmops-backend remove
+update-rc.d -f swarmops-backend remove > /dev/null
 /etc/init.d/swarmops-backend stop
 
