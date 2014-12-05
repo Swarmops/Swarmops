@@ -85,6 +85,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="App_GlobalResources\ParticipantTitles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParticipantTitles.resx</DependentUpon>
+    </Compile>
     <Compile Include="Cache\GuidCache.cs" />
     <Compile Include="Communications\ICommsRenderer.cs" />
     <Compile Include="Communications\ICommsResolver.cs" />
@@ -301,6 +306,7 @@
     <Compile Include="Swarm\ParleyOption.cs" />
     <Compile Include="Swarm\ParleyOptions.cs" />
     <Compile Include="Swarm\Parleys.cs" />
+    <Compile Include="Swarm\ParticipantTitle.cs" />
     <Compile Include="Swarm\PaymentCode.cs" />
     <Compile Include="Swarm\People.cs" />
     <Compile Include="Swarm\Person.cs" />
@@ -376,6 +382,10 @@
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Communications.Transmission.NotificationPayload.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Financial.FinancialTransactionTagSetTypesStock.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Swarm.DashboardTodos.nl-NL.resx" />
+    <EmbeddedResource Include="App_GlobalResources\ParticipantTitles.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ParticipantTitles.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Communications.Transmission.NotificationPayload.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Financial.FinancialTransactionTagSetTypesStock.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Swarm.DashboardTodos.pl-PL.resx" />

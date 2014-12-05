@@ -5,6 +5,7 @@ using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
 {
@@ -30,10 +31,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         private void Localize()
         {
-            string participants =
-                Resources.Global.ResourceManager.GetString("Title_" + CurrentOrganization.RegularLabel + "_Plural");
-            string participantship =
-                Resources.Global.ResourceManager.GetString("Title_" + CurrentOrganization.RegularLabel + "_Ship");
+            string participants = Participant.Localized (CurrentOrganization.RegularLabel, TitleVariant.Plural);
+            string participantship = Participant.Localized (CurrentOrganization.RegularLabel, TitleVariant.Ship);
 
             this.LabelParticipationEntry.Text =
                 String.Format(Resources.Pages.Admin.EditOrganization_ParticipationBeginsWhen, participants);
@@ -72,8 +71,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.DropMembersWhere.Items.Add(new ListItem("All applicable organizations", "All"));
 
             this.DropMembershipDuration.Items.Clear();
-            this.DropMembershipDuration.Items.Add(new ListItem("One month", "Month"));
-            this.DropMembershipDuration.Items.Add(new ListItem("One year", "Year"));
+            this.DropMembershipDuration.Items.Add(new ListItem("One month", "OneMonth"));
+            this.DropMembershipDuration.Items.Add(new ListItem("One year", "OneYear"));
             this.DropMembershipDuration.Items.Add(new ListItem("Two years", "TwoYears"));
             this.DropMembershipDuration.Items.Add(new ListItem("Five years", "FiveYears"));
             this.DropMembershipDuration.Items.Add(new ListItem("Forever", "Forever"));

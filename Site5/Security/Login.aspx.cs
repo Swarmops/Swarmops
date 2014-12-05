@@ -268,7 +268,7 @@ namespace Swarmops.Pages.Security
         private void Localize()
         {
             this.LabelCurrentOrganizationName.Text = Resources.Global.Global_Organization;
-            this.LabelCurrentUserName.Text = Resources.Global.Title_Person_Generic;
+            this.LabelCurrentUserName.Text = Participant.Localized (ParticipantTitle.Person, TitleVariant.Generic);
             this.LabelPageTitle.Text = Resources.Pages.Security.Login_PageTitle;
             this.LabelPreferences.Text = Resources.Global.Global_NA;
             this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;

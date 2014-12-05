@@ -16,6 +16,10 @@
             $('#<%=this.TextCity.ClientID%>').on('input', function () {
                 CheckPostalCity();
             });
+
+            if (onDocReadyAlert.length > 0) {
+                alertify.log(onDocReadyAlert);
+            }
         });
 
         function CheckPostalCity() {
@@ -128,10 +132,10 @@
         function ValidateFields() {
             var isValid = true;
 
-            isValid = validateTextField('#<%=this.TextName.ClientID %>', '<asp:Literal runat="server" ID="LiteralErrorName" />') && isValid;
-            isValid = validateTextField('#<%=this.TextMail.ClientID %>', '<asp:Literal runat="server" ID="LiteralErrorMail" />') && isValid;
-            isValid = validateTextField('#<%=this.TextStreet1.ClientID %>', '<asp:Literal runat="server" ID="LiteralErrorStreet" />') && isValid;
-            isValid = validateTextField('#<%=this.TextCity.ClientID %>', '<asp:Literal runat="server" ID="LiteralErrorCity" />') && isValid;
+            isValid = ValidateTextField('#<%=this.TextCity.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorCity" />") && isValid;
+            isValid = ValidateTextField('#<%=this.TextStreet1.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorStreet" />") && isValid;
+            isValid = ValidateTextField('#<%=this.TextMail.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorMail" />") && isValid;
+            isValid = ValidateTextField('#<%=this.TextName.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorName" />") && isValid;
 
             // TODO: Actually validate geography?
 
@@ -139,6 +143,7 @@
         }
 
         function ValidateTextField(fieldId, message) {
+            $(fieldId).removeClass("entryError");
             if ($(fieldId).val().length == 0) {
                 alertify.error(message);
                 $(fieldId).addClass("entryError");
@@ -158,6 +163,8 @@
         var postalCodeVisible = true;
         var postalCodeIdentified = false;
 
+        var onDocReadyAlert = '<asp:Literal ID="LiteralLoadAlert" runat="server" />';
+
     </script>
 </asp:Content>
 
@@ -176,8 +183,6 @@
         &nbsp;<br/>
         <asp:TextBox runat="server" ID="TextDateOfBirth" />&#8203;<br/>
         <Swarmops5:DropDown runat="server" ID="DropGenders" />&#8203;<br/>
-        &nbsp;<br/>
-        <asp:Label ID="LabelExpiry" runat="server" Text="YYYY-MM-DD" />&#8203;<br/>
         <asp:Button ID="ButtonSubmit" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return ValidateFields();" OnClick="ButtonSubmit_Click" Text="Register"/>
     </div>
     <div class="entryLabels">
@@ -193,9 +198,8 @@
         <h2>STATISTICAL DATA</h2>
         Date of Birth<br />
         Legal gender<br />
-        <h2>SIGNING UP AS</h2>
-        [Regular] until<br />
     </div>
+    <div style="clear:both"></div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">

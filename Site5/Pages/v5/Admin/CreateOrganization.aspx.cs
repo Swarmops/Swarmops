@@ -11,12 +11,6 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 {
     public partial class CreateOrganization : PageV5Base
     {
-        private readonly string[] _personLabels =
-        {
-            "Activist", "Person", "Sailor", "Regular", "Ambassador", "Salesperson", "Contributor",
-            "Member", "Operative", "Employee", "Customer", "Conscript", "Resident", "Citizen", "Agent"
-        };
-
         protected void Page_Load(object sender, EventArgs e)
         {
             this.BoxTitle.Text = PageTitle = Resources.Pages.Admin.CreateOrganization_PageTitle;
@@ -58,12 +52,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             List<string> localizedPersonLabels = new List<string>();
 
-            foreach (string personLabel in this._personLabels)
+            foreach (ParticipantTitle title in (ParticipantTitle[]) Enum.GetValues(typeof(ParticipantTitle)))
             {
                 string localizedPersonLabel =
-                    Resources.Global.ResourceManager.GetString("Title_" + personLabel + "_Plural");
+                    Participant.Localized(title, TitleVariant.Plural);
 
-                localizedPersonLabels.Add(localizedPersonLabel + "|" + personLabel);
+                localizedPersonLabels.Add(localizedPersonLabel + "|" + title.ToString());
             }
 
             localizedPersonLabels.Sort(); // Sorts _localized_
@@ -98,7 +92,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         protected void ButtonCreate_Click(object sender, EventArgs e)
         {
             string activistLabel = this.DropActivistLabel.SelectedValue;
-            string peopleLabel = this.DropPersonLabel.SelectedValue;
+            ParticipantTitle peopleLabel = (ParticipantTitle)(Enum.Parse(typeof(ParticipantTitle),this.DropPersonLabel.SelectedValue));
             string asRoot = this.DropCreateChild.SelectedValue;
             string currencyCode = this.DropCurrencies.SelectedValue;
             string newOrgName = this.TextOrganizationName.Text;
@@ -108,7 +102,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 throw new ArgumentException("Organization name can't be empty");
             }
 
-            if (activistLabel == "0" || peopleLabel == "0" || asRoot == "0" || currencyCode == "0")
+            if (activistLabel == "0" || peopleLabel == ParticipantTitle.Unknown || asRoot == "0" || currencyCode == "0")
             {
                 throw new ArgumentException("Necessary argument was not supplied (did client-side validation run?)");
             }
@@ -130,8 +124,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             Membership.Create(CurrentUser, newOrganization, DateTime.UtcNow.AddYears(2));
 
-            string successMessage = String.Format(Resources.Pages.Admin.CreateOrganization_Success,
-                Resources.Global.ResourceManager.GetString("Title_" + peopleLabel + "_Ship"));
+            string successMessage = String.Format (Resources.Pages.Admin.CreateOrganization_Success,
+                Participant.Localized (peopleLabel, TitleVariant.Ship));
 
             Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(successMessage)));
 
