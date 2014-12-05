@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicMembershipPaymentStatus
     {
-        public BasicMembershipPaymentStatus(int membershipId, MembershipPaymentStatus status, DateTime statusDateTime)
+        public BasicMembershipPaymentStatus (int membershipId, MembershipPaymentStatus status, DateTime statusDateTime)
         {
             MembershipId = membershipId;
             Status = status;

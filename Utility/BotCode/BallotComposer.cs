@@ -55,11 +55,11 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        public void ComposeBallots(BallotCompositionMethod method)
+        public void ComposeBallots (BallotCompositionMethod method)
         {
             FinalBallots = new Dictionary<int, MeetingElectionCandidates>();
 
-            QuotedMasterList = GenerateBallot(this.rawElectionResult, -1, BallotCompositionMethod.Unmixed);
+            QuotedMasterList = GenerateBallot (this.rawElectionResult, -1, BallotCompositionMethod.Unmixed);
             if (this.geographicLists.Count == 0)
             {
                 GenerateGeographicLists();
@@ -67,16 +67,16 @@ namespace Swarmops.Utility.BotCode
 
             foreach (Geography ballotGeography in BallotGeographies)
             {
-                FinalBallots[ballotGeography.Identity] = GenerateBallot(this.geographicLists[ballotGeography.Identity],
+                FinalBallots[ballotGeography.Identity] = GenerateBallot (this.geographicLists[ballotGeography.Identity],
                     22,
                     method);
             }
         }
 
 
-        public bool CandidatePersonIdDefected(int personId)
+        public bool CandidatePersonIdDefected (int personId)
         {
-            return this.defectionsLookup.ContainsKey(personId);
+            return this.defectionsLookup.ContainsKey (personId);
         }
 
 
@@ -86,23 +86,23 @@ namespace Swarmops.Utility.BotCode
             {
                 foreach (Geography ballotGeography in BallotGeographies)
                 {
-                    if (candidate.Person.Geography.Inherits(ballotGeography))
+                    if (candidate.Person.Geography.Inherits (ballotGeography))
                     {
                         // This candidate is under this particular geography, so add to list
 
-                        if (!this.geographicLists.ContainsKey(ballotGeography.Identity))
+                        if (!this.geographicLists.ContainsKey (ballotGeography.Identity))
                         {
                             this.geographicLists[ballotGeography.Identity] = new MeetingElectionCandidates();
                         }
 
-                        this.geographicLists[ballotGeography.Identity].Add(candidate);
+                        this.geographicLists[ballotGeography.Identity].Add (candidate);
                     }
                 }
             }
         }
 
 
-        private MeetingElectionCandidates GenerateBallot(MeetingElectionCandidates rawList, int candidateCount,
+        private MeetingElectionCandidates GenerateBallot (MeetingElectionCandidates rawList, int candidateCount,
             BallotCompositionMethod method)
         {
             MeetingElectionCandidates result = new MeetingElectionCandidates();
@@ -117,7 +117,7 @@ namespace Swarmops.Utility.BotCode
 
             for (int rawIndex = 0; rawIndex < rawList.Count; rawIndex++)
             {
-                if (CandidatePersonIdDefected(rawList[rawIndex].PersonId))
+                if (CandidatePersonIdDefected (rawList[rawIndex].PersonId))
                 {
                     takenCandidates[rawIndex] = true;
                 }
@@ -136,22 +136,22 @@ namespace Swarmops.Utility.BotCode
                 //
                 // Should we add a candidate from the raw list or from the quoted master list?
 
-                int masterPosition = GetMasterListPosition(result.Count + 1, method);
+                int masterPosition = GetMasterListPosition (result.Count + 1, method);
 
                 if (masterPosition > 0)
                 {
                     // We should add a candidate from the master list, no quota calculations, BUT ONLY if this candidate
                     // hasn't already been added from the district list.
 
-                    int rawListIndex = FindCandidateIndex(QuotedMasterList[masterPosition - 1].InternalPollCandidateId,
+                    int rawListIndex = FindCandidateIndex (QuotedMasterList[masterPosition - 1].InternalPollCandidateId,
                         rawList);
 
-                    if (rawListIndex >= 0 && !takenCandidates.ContainsKey(rawListIndex))
+                    if (rawListIndex >= 0 && !takenCandidates.ContainsKey (rawListIndex))
                     {
                         // The master list candidate is also on the district list, but has not been added. Add
                         // the candidate in the master list position.
 
-                        result.Add(QuotedMasterList[masterPosition - 1]);
+                        result.Add (QuotedMasterList[masterPosition - 1]);
                         takenCandidates[rawListIndex] = true;
                         continue;
                     }
@@ -160,7 +160,7 @@ namespace Swarmops.Utility.BotCode
                     {
                         // The master list candidate is not on the district list. Add the candidate.
 
-                        result.Add(QuotedMasterList[masterPosition - 1]);
+                        result.Add (QuotedMasterList[masterPosition - 1]);
                         continue;
                     }
 
@@ -174,14 +174,14 @@ namespace Swarmops.Utility.BotCode
 
                 int nextCandidateIndex = 0;
 
-                while (takenCandidates.ContainsKey(nextCandidateIndex))
+                while (takenCandidates.ContainsKey (nextCandidateIndex))
                 {
                     nextCandidateIndex++;
                 }
 
                 PersonGender candidateGender = rawList[nextCandidateIndex].Person.Gender;
 
-                double currentMaleQuota = CalculateListMaleQuota(result, candidateGender);
+                double currentMaleQuota = CalculateListMaleQuota (result, candidateGender);
 
                 // Here, we account an extremely rare situation where the correct quota is not even obtainable, e.g. 
                 // for position #3 where #1 is male and #2 is female and with a quota of 40%. Either way, it will
@@ -191,7 +191,7 @@ namespace Swarmops.Utility.BotCode
                     ? PersonGender.Female
                     : PersonGender.Male);
 
-                double alternateMaleQuota = CalculateListMaleQuota(result, oppositeGender);
+                double alternateMaleQuota = CalculateListMaleQuota (result, oppositeGender);
 
                 // If currentMaleQuota is outside of bounds AND the alternate quota IS inside of bounds...
 
@@ -203,7 +203,8 @@ namespace Swarmops.Utility.BotCode
 
                         try
                         {
-                            nextCandidateIndex = GetNextSpecificGenderCandidate(rawList, takenCandidates, oppositeGender);
+                            nextCandidateIndex = GetNextSpecificGenderCandidate (rawList, takenCandidates,
+                                oppositeGender);
                         }
                         catch (ArgumentOutOfRangeException)
                         {
@@ -212,7 +213,7 @@ namespace Swarmops.Utility.BotCode
                     }
                 }
 
-                result.Add(rawList[nextCandidateIndex]);
+                result.Add (rawList[nextCandidateIndex]);
                 takenCandidates[nextCandidateIndex] = true;
             }
 
@@ -220,7 +221,7 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        private static int FindCandidateIndex(int candidateId, MeetingElectionCandidates list)
+        private static int FindCandidateIndex (int candidateId, MeetingElectionCandidates list)
         {
             for (int index = 0; index < list.Count; index++)
             {
@@ -234,7 +235,7 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        private static double CalculateListMaleQuota(MeetingElectionCandidates candidates,
+        private static double CalculateListMaleQuota (MeetingElectionCandidates candidates,
             PersonGender nextCandidateGender)
         {
             if (candidates.Count < 1)
@@ -261,12 +262,12 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        private static int GetNextSpecificGenderCandidate(MeetingElectionCandidates candidates,
+        private static int GetNextSpecificGenderCandidate (MeetingElectionCandidates candidates,
             Dictionary<int, bool> takenCandidates, PersonGender desiredGender)
         {
             int index = 0;
 
-            while (takenCandidates.ContainsKey(index) || candidates[index].Person.Gender != desiredGender)
+            while (takenCandidates.ContainsKey (index) || candidates[index].Person.Gender != desiredGender)
             {
                 index++; // potential out-of-range exception here, if there aren't enough candidates
             }
@@ -280,7 +281,7 @@ namespace Swarmops.Utility.BotCode
         /// <param name="currentPosition">The position of a particular ballot.</param>
         /// <param name="method">The composition method to use.</param>
         /// <returns>The position to pick from the master list, or zero if not from the master list.</returns>
-        private int GetMasterListPosition(int currentPosition, BallotCompositionMethod method)
+        private int GetMasterListPosition (int currentPosition, BallotCompositionMethod method)
         {
             if (method == BallotCompositionMethod.Unmixed)
             {
@@ -317,7 +318,7 @@ namespace Swarmops.Utility.BotCode
                 return 0;
             }
 
-            throw new NotImplementedException("Unimplemented method");
+            throw new NotImplementedException ("Unimplemented method");
         }
     }
 

@@ -14,7 +14,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 CashAdvances result = new CashAdvances();
-                result.AddRange(this.Where(cashAdvance => !cashAdvance.Attested));
+                result.AddRange (this.Where (cashAdvance => !cashAdvance.Attested));
 
                 return result;
             }
@@ -25,7 +25,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 CashAdvances result = new CashAdvances();
-                result.AddRange(this.Where(cashAdvance => cashAdvance.Attested));
+                result.AddRange (this.Where (cashAdvance => cashAdvance.Attested));
 
                 return result;
             }
@@ -36,7 +36,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 CashAdvances result = new CashAdvances();
-                result.AddRange(this.Where(cashAdvance => cashAdvance.PaidOut));
+                result.AddRange (this.Where (cashAdvance => cashAdvance.PaidOut));
 
                 return result;
             }
@@ -47,7 +47,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 CashAdvances result = new CashAdvances();
-                result.AddRange(this.Where(cashAdvance => !cashAdvance.PaidOut));
+                result.AddRange (this.Where (cashAdvance => !cashAdvance.PaidOut));
 
                 return result;
             }
@@ -55,17 +55,17 @@ namespace Swarmops.Logic.Financial
 
         public Int64 TotalAmountCents
         {
-            get { return this.Sum(cashAdvance => cashAdvance.AmountCents); }
+            get { return this.Sum (cashAdvance => cashAdvance.AmountCents); }
         }
 
-        public static CashAdvances ForOrganization(Organization organization)
+        public static CashAdvances ForOrganization (Organization organization)
         {
-            return ForOrganization(organization, false);
+            return ForOrganization (organization, false);
         }
 
-        public static CashAdvances ForOrganization(Organization organization, bool includeClosed)
+        public static CashAdvances ForOrganization (Organization organization, bool includeClosed)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetCashAdvances(organization,
+            return FromArray (SwarmDb.GetDatabaseForReading().GetCashAdvances (organization,
                 includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
     }

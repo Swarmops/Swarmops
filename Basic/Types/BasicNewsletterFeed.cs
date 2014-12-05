@@ -22,7 +22,7 @@ namespace Swarmops.Basic.Types
         /// </summary>
         public readonly int OrganizationId;
 
-        public BasicNewsletterFeed(int newsletterId, int organizationId, bool defaultSubscribed, string name)
+        public BasicNewsletterFeed (int newsletterId, int organizationId, bool defaultSubscribed, string name)
         {
             this.NewsletterFeedId = newsletterId;
             this.OrganizationId = organizationId;
@@ -35,8 +35,8 @@ namespace Swarmops.Basic.Types
             this.Name = string.Empty;
         }
 
-        public BasicNewsletterFeed(BasicNewsletterFeed original)
-            : this(original.NewsletterFeedId, original.OrganizationId, original.DefaultSubscribed, original.Name)
+        public BasicNewsletterFeed (BasicNewsletterFeed original)
+            : this (original.NewsletterFeedId, original.OrganizationId, original.DefaultSubscribed, original.Name)
         {
         }
     }

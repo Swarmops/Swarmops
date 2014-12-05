@@ -6,16 +6,16 @@ namespace Swarmops.Basic.Types
     [Serializable]
     public class BasicCountry : IHasIdentity
     {
-        public BasicCountry(int countryId, string name, string code)
+        public BasicCountry (int countryId, string name, string code)
         {
             CountryId = countryId;
             Name = name;
             Code = code;
         }
 
-        public BasicCountry(int countryId, string name, string code, string defaultCulture, string currencyCode,
+        public BasicCountry (int countryId, string name, string code, string defaultCulture, string currencyCode,
             int geographyId, int postalCodeLength)
-            : this(countryId, name, code)
+            : this (countryId, name, code)
         {
             Culture = defaultCulture;
             CurrencyCode = currencyCode;
@@ -23,14 +23,14 @@ namespace Swarmops.Basic.Types
             PostalCodeLength = postalCodeLength;
         }
 
-        public BasicCountry(BasicCountry original)
-            : this(
+        public BasicCountry (BasicCountry original)
+            : this (
                 original.CountryId, original.Name, original.Code, original.Culture, original.CurrencyCode,
                 original.GeographyId, original.PostalCodeLength)
         {
         }
 
-        [Obsolete("Do not call this function directly. It exists to enable serialization.", true)]
+        [Obsolete ("Do not call this function directly. It exists to enable serialization.", true)]
         public BasicCountry()
         {
             // this does not initialize the Basic Country, but exists to enable serialization.
@@ -53,7 +53,7 @@ namespace Swarmops.Basic.Types
                     return 1;
                 }
 
-                throw new NotImplementedException("BasicCountry.CurrencyId");
+                throw new NotImplementedException ("BasicCountry.CurrencyId");
             }
         }
 

@@ -18,13 +18,13 @@ namespace Swarmops.Logic.Communications
         private IEmailPerson person;
 
         private OutboundMailRecipient()
-            : base(null)
+            : base (null)
         {
             // Never construct this way
         }
 
-        private OutboundMailRecipient(BasicOutboundMailRecipient basic, OutboundMail outboundMail)
-            : base(basic)
+        private OutboundMailRecipient (BasicOutboundMailRecipient basic, OutboundMail outboundMail)
+            : base (basic)
         {
             this.outboundMail = outboundMail;
         }
@@ -88,38 +88,39 @@ namespace Swarmops.Logic.Communications
                 RecipientType type = (RecipientType) base.PersonType;
                 if (type == RecipientType.Person)
                 {
-                    this.person = Person.FromIdentity(base.PersonId);
+                    this.person = Person.FromIdentity (base.PersonId);
                 }
                 else if (type == RecipientType.Reporter)
                 {
-                    this.person = Reporter.FromIdentity(base.PersonId);
+                    this.person = Reporter.FromIdentity (base.PersonId);
                 }
             }
         }
 
-        internal static OutboundMailRecipient FromBasic(BasicOutboundMailRecipient basic, OutboundMail outboundMail)
+        internal static OutboundMailRecipient FromBasic (BasicOutboundMailRecipient basic, OutboundMail outboundMail)
         {
-            return new OutboundMailRecipient(basic, outboundMail);
+            return new OutboundMailRecipient (basic, outboundMail);
         }
 
-        public static void Create(OutboundMail outboundMail, Person person, bool asOfficer)
+        public static void Create (OutboundMail outboundMail, Person person, bool asOfficer)
         {
-            Create(outboundMail.Identity, person.Identity, asOfficer, (int) RecipientType.Person);
+            Create (outboundMail.Identity, person.Identity, asOfficer, (int) RecipientType.Person);
         }
 
-        public static void Create(OutboundMail outboundMail, Reporter person, bool asOfficer)
+        public static void Create (OutboundMail outboundMail, Reporter person, bool asOfficer)
         {
-            Create(outboundMail.Identity, person.Identity, asOfficer, (int) RecipientType.Reporter);
+            Create (outboundMail.Identity, person.Identity, asOfficer, (int) RecipientType.Reporter);
         }
 
-        public static void Create(int outboundMailId, int personId, bool asOfficer, int personType)
+        public static void Create (int outboundMailId, int personId, bool asOfficer, int personType)
         {
-            SwarmDb.GetDatabaseForWriting().CreateOutboundMailRecipient(outboundMailId, personId, asOfficer, personType);
+            SwarmDb.GetDatabaseForWriting()
+                .CreateOutboundMailRecipient (outboundMailId, personId, asOfficer, personType);
         }
 
         public void Delete()
         {
-            SwarmDb.GetDatabaseForWriting().DeleteOutboundMailRecipient(Identity);
+            SwarmDb.GetDatabaseForWriting().DeleteOutboundMailRecipient (Identity);
         }
     }
 }

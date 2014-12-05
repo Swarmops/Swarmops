@@ -16,7 +16,7 @@ namespace Swarmops.Basic.Types.Communications
         /// <summary>
         ///     Basic constructor.
         /// </summary>
-        public BasicAutoMail(int autoMailId, AutoMailType type, int organizationId, int geographyId,
+        public BasicAutoMail (int autoMailId, AutoMailType type, int organizationId, int geographyId,
             int authorPersonId, string title, string body)
         {
             this.autoMailId = autoMailId;
@@ -32,8 +32,8 @@ namespace Swarmops.Basic.Types.Communications
         /// <summary>
         ///     Copy constructor.
         /// </summary>
-        public BasicAutoMail(BasicAutoMail original)
-            : this(original.autoMailId, original.type, original.organizationId, original.geographyId,
+        public BasicAutoMail (BasicAutoMail original)
+            : this (original.autoMailId, original.type, original.organizationId, original.geographyId,
                 original.authorPersonId, original.title, original.body)
         {
         }

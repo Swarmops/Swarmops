@@ -11,7 +11,7 @@ namespace Swarmops.Utility.BotCode
 
         private static Dictionary<string, DateTime> feedErrorSignaled = new Dictionary<string, DateTime>();
 
-        [Obsolete("Too specialized for Swarmops. Plugin or generalize.", true)]
+        [Obsolete ("Too specialized for Swarmops. Plugin or generalize.", true)]
         public static void Run()
         {
 /*
@@ -25,8 +25,8 @@ namespace Swarmops.Utility.BotCode
 
         public class ReaderException : Exception
         {
-            public ReaderException(string message, Exception innerException)
-                : base(message, innerException)
+            public ReaderException (string message, Exception innerException)
+                : base (message, innerException)
             {
             }
         }

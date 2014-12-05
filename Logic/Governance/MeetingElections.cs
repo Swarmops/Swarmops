@@ -7,19 +7,19 @@ namespace Swarmops.Logic.Governance
 {
     public class MeetingElections : PluralBase<MeetingElections, MeetingElection, BasicInternalPoll>
     {
-        public static MeetingElections ForOrganization(Organization organization)
+        public static MeetingElections ForOrganization (Organization organization)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPolls(organization));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetInternalPolls (organization));
         }
 
-        public static MeetingElections ForOrganizations(Organizations organizations)
+        public static MeetingElections ForOrganizations (Organizations organizations)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPolls(organizations));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetInternalPolls (organizations));
         }
 
         public static MeetingElections GetAll()
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPolls());
+            return FromArray (SwarmDb.GetDatabaseForReading().GetInternalPolls());
         }
     }
 }

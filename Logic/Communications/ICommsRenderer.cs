@@ -8,7 +8,7 @@ namespace Swarmops.Logic.Communications
     /// </summary>
     public interface ICommsRenderer
     {
-        RenderedComm RenderComm(Person person);
+        RenderedComm RenderComm (Person person);
     }
 
     public class RenderedComm : Dictionary<CommRenderPart, string>

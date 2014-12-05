@@ -6,34 +6,34 @@ namespace Swarmops.Logic.Swarm
 {
     public class ParleyOptions : PluralBase<ParleyOptions, ParleyOption, BasicParleyOption>
     {
-        public static ParleyOptions ForParley(Parley parley)
+        public static ParleyOptions ForParley (Parley parley)
         {
-            return ForParley(parley, false);
+            return ForParley (parley, false);
         }
 
-        public static ParleyOptions ForParley(Parley parley, bool includeInactive)
+        public static ParleyOptions ForParley (Parley parley, bool includeInactive)
         {
             if (includeInactive)
             {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetParleyOptions(parley));
+                return FromArray (SwarmDb.GetDatabaseForReading().GetParleyOptions (parley));
             }
-            return FromArray(SwarmDb.GetDatabaseForReading().GetParleyOptions(parley, DatabaseCondition.ActiveTrue));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetParleyOptions (parley, DatabaseCondition.ActiveTrue));
         }
 
-        public static ParleyOptions ForParleyAttendee(ParleyAttendee attendee)
+        public static ParleyOptions ForParleyAttendee (ParleyAttendee attendee)
         {
-            int[] parleyOptionIds = SwarmDb.GetDatabaseForReading().GetParleyAttendeeOptions(attendee.Identity);
+            int[] parleyOptionIds = SwarmDb.GetDatabaseForReading().GetParleyAttendeeOptions (attendee.Identity);
 
-            return FromIdentities(parleyOptionIds);
+            return FromIdentities (parleyOptionIds);
         }
 
-        public static ParleyOptions FromIdentities(int[] identities)
+        public static ParleyOptions FromIdentities (int[] identities)
         {
             ParleyOptions result = new ParleyOptions();
 
             foreach (int parleyId in identities)
             {
-                result.Add(ParleyOption.FromIdentity(parleyId));
+                result.Add (ParleyOption.FromIdentity (parleyId));
             }
 
             return result;

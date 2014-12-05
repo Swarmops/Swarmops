@@ -20,27 +20,27 @@ namespace Swarmops.Logic.Special.Sweden
     public interface IForumDatabase
     {
         bool TestMode { get; set; }
-        int CreateNewPost(int forumId, Person poster, string title, string description, string post);
-        int GetAccountId(string nick);
+        int CreateNewPost (int forumId, Person poster, string title, string description, string post);
+        int GetAccountId (string nick);
         int[] GetAccountList();
-        string GetAccountName(int accountId);
-        int GetPollIdFromTopicId(int topicId);
-        Dictionary<string, People> GetPollVotes(int pollId);
-        bool IsPartyMember(int accountId);
-        void SetPartyMember(int accountId);
-        void SetPartyNonmember(int accountId);
+        string GetAccountName (int accountId);
+        int GetPollIdFromTopicId (int topicId);
+        Dictionary<string, People> GetPollVotes (int pollId);
+        bool IsPartyMember (int accountId);
+        void SetPartyMember (int accountId);
+        void SetPartyNonmember (int accountId);
     }
 
     public class SwedishForumDatabase
     {
-        public static IForumDatabase GetDatabase(int type, string connectionstring)
+        public static IForumDatabase GetDatabase (int type, string connectionstring)
         {
             if (type == 1)
-                return SwedishForumDatabaseInstantForum.GetDatabase(connectionstring);
-            return SwedishForumDatabaseVBulletin.GetDatabase(connectionstring);
+                return SwedishForumDatabaseInstantForum.GetDatabase (connectionstring);
+            return SwedishForumDatabaseVBulletin.GetDatabase (connectionstring);
         }
 
-        public static IForumDatabase GetDatabase(int type)
+        public static IForumDatabase GetDatabase (int type)
         {
             if (type == 1)
                 return SwedishForumDatabaseInstantForum.GetDatabase();
@@ -51,13 +51,13 @@ namespace Swarmops.Logic.Special.Sweden
         {
             if (Path.DirectorySeparatorChar == '/')
             {
-                if (string.IsNullOrEmpty(Persistence.Key["SwedishForumDatabaseVBulletin_ConnectionString_Bot"]))
-                    return GetDatabase(1);
-                return GetDatabase(2);
+                if (string.IsNullOrEmpty (Persistence.Key["SwedishForumDatabaseVBulletin_ConnectionString_Bot"]))
+                    return GetDatabase (1);
+                return GetDatabase (2);
             }
-            if (string.IsNullOrEmpty(Persistence.Key["SwedishForumDatabaseVBulletin_ConnectionString_Web"]))
-                return GetDatabase(1);
-            return GetDatabase(2);
+            if (string.IsNullOrEmpty (Persistence.Key["SwedishForumDatabaseVBulletin_ConnectionString_Web"]))
+                return GetDatabase (1);
+            return GetDatabase (2);
         }
     }
 
@@ -89,55 +89,55 @@ namespace Swarmops.Logic.Special.Sweden
 
         #endregion
 
-        public SwedishForumDatabaseInstantForum(string connectString)
+        public SwedishForumDatabaseInstantForum (string connectString)
         {
             this.connectString = connectString;
         }
 
-        public int GetAccountId(string nick)
+        public int GetAccountId (string nick)
         {
             if (nick == null)
             {
-                throw new ArgumentNullException("nick");
+                throw new ArgumentNullException ("nick");
             }
 
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
                 SqlCommand command =
-                    new SqlCommand(
-                        String.Format("Select UserId from InstantASP_Users Where Username='{0}'",
-                            nick.Replace("'", "''")), connection);
+                    new SqlCommand (
+                        String.Format ("Select UserId from InstantASP_Users Where Username='{0}'",
+                            nick.Replace ("'", "''")), connection);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt32(0);
+                        return reader.GetInt32 (0);
                     }
-                    throw new ArgumentException("No such nick in database");
+                    throw new ArgumentException ("No such nick in database");
                 }
             }
         }
 
-        public string GetAccountName(int accountId)
+        public string GetAccountName (int accountId)
         {
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
                 SqlCommand command =
-                    new SqlCommand(String.Format("Select Username from InstantASP_Users Where UserId=" + accountId),
+                    new SqlCommand (String.Format ("Select Username from InstantASP_Users Where UserId=" + accountId),
                         connection);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetString(0);
+                        return reader.GetString (0);
                     }
-                    throw new ArgumentException("No such nick in database");
+                    throw new ArgumentException ("No such nick in database");
                 }
             }
         }
@@ -146,17 +146,17 @@ namespace Swarmops.Logic.Special.Sweden
         {
             List<int> result = new List<int>();
 
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(String.Format("Select UserId from InstantASP_Users"), connection);
+                SqlCommand command = new SqlCommand (String.Format ("Select UserId from InstantASP_Users"), connection);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetInt32(0));
+                        result.Add (reader.GetInt32 (0));
                     }
 
                     return result.ToArray();
@@ -178,22 +178,22 @@ namespace Swarmops.Logic.Special.Sweden
 
         #region Party Membership
 
-        public bool IsPartyMember(int accountId)
+        public bool IsPartyMember (int accountId)
         {
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
                 SqlCommand command =
-                    new SqlCommand(
-                        String.Format("Select PrimaryRoleID from InstantASP_Users where UserID=" + accountId),
+                    new SqlCommand (
+                        String.Format ("Select PrimaryRoleID from InstantASP_Users where UserID=" + accountId),
                         connection);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        int roleId = reader.GetInt16(0);
+                        int roleId = reader.GetInt16 (0);
                         if (roleId == 7)
                         {
                             return true;
@@ -201,37 +201,37 @@ namespace Swarmops.Logic.Special.Sweden
                         return false;
                     }
 
-                    throw new Exception("Account Id does not exist");
+                    throw new Exception ("Account Id does not exist");
                 }
             }
         }
 
 
-        public void SetPartyMember(int accountId)
+        public void SetPartyMember (int accountId)
         {
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand("PirateSetMember", connection);
+                SqlCommand command = new SqlCommand ("PirateSetMember", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@accountId", accountId);
+                command.Parameters.AddWithValue ("@accountId", accountId);
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPartyNonmember(int accountId)
+        public void SetPartyNonmember (int accountId)
         {
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand("PirateSetNonmember", connection);
+                SqlCommand command = new SqlCommand ("PirateSetNonmember", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@accountId", accountId);
+                command.Parameters.AddWithValue ("@accountId", accountId);
                 command.ExecuteNonQuery();
             }
         }
@@ -240,21 +240,21 @@ namespace Swarmops.Logic.Special.Sweden
 
         #region Polls
 
-        public int GetPollIdFromTopicId(int topicId)
+        public int GetPollIdFromTopicId (int topicId)
         {
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
                 SqlCommand command =
-                    new SqlCommand(String.Format("Select PollID from InstantForum_Polls where PostID=" + topicId),
+                    new SqlCommand (String.Format ("Select PollID from InstantForum_Polls where PostID=" + topicId),
                         connection);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt32(0);
+                        return reader.GetInt32 (0);
                     }
 
                     throw new ArgumentOutOfRangeException();
@@ -263,11 +263,11 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        public Dictionary<string, People> GetPollVotes(int pollId)
+        public Dictionary<string, People> GetPollVotes (int pollId)
         {
             // First, let's get the list of alternatives.
 
-            Dictionary<int, string> pollAlternatives = GetPollAlternatives(pollId);
+            Dictionary<int, string> pollAlternatives = GetPollAlternatives (pollId);
 
             // Construct a comma-separated list of the answer IDs.
 
@@ -275,20 +275,20 @@ namespace Swarmops.Logic.Special.Sweden
 
             foreach (int pollAlternativeId in pollAlternatives.Keys)
             {
-                altStringBuilder.Append("," + pollAlternativeId);
+                altStringBuilder.Append ("," + pollAlternativeId);
             }
 
-            string altString = altStringBuilder.ToString().Substring(1);
+            string altString = altStringBuilder.ToString().Substring (1);
 
             Dictionary<string, People> result = new Dictionary<string, People>();
 
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
                 SqlCommand command =
-                    new SqlCommand(
-                        String.Format(
+                    new SqlCommand (
+                        String.Format (
                             "Select PollAnswerID,UserID from InstantForum_PollVotes WHERE PollAnswerId IN (" + altString +
                             ")"), connection);
 
@@ -299,9 +299,9 @@ namespace Swarmops.Logic.Special.Sweden
                     while (reader.Read())
                     {
                         voteCount++;
-                        int forumUserId = reader.GetInt32(1);
+                        int forumUserId = reader.GetInt32 (1);
 
-                        People people = People.FromOptionalData(ObjectOptionalDataType.ForumAccountId,
+                        People people = People.FromOptionalData (ObjectOptionalDataType.ForumAccountId,
                             forumUserId.ToString());
                         if (people.Count > 1)
                         {
@@ -310,14 +310,14 @@ namespace Swarmops.Logic.Special.Sweden
                             {
                                 if (testPerson.GetMemberships().Count == 0)
                                 {
-                                    people.Remove(testPerson);
+                                    people.Remove (testPerson);
                                 }
                             }
 
                             if (people.Count > 1)
                             {
-                                throw new Exception("This is not possible -- check userid " + forumUserId +
-                                                    ", appears to be tied to several personIds");
+                                throw new Exception ("This is not possible -- check userid " + forumUserId +
+                                                     ", appears to be tied to several personIds");
                             }
                         }
 
@@ -328,15 +328,15 @@ namespace Swarmops.Logic.Special.Sweden
                             person = people[0];
                         }
 
-                        int pollAnswerId = reader.GetInt32(0);
+                        int pollAnswerId = reader.GetInt32 (0);
                         string pollAnswer = pollAlternatives[pollAnswerId];
 
-                        if (!result.ContainsKey(pollAnswer))
+                        if (!result.ContainsKey (pollAnswer))
                         {
                             result[pollAnswer] = new People();
                         }
 
-                        result[pollAnswer].Add(person);
+                        result[pollAnswer].Add (person);
                     }
 
                     return result;
@@ -345,24 +345,24 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        private Dictionary<int, string> GetPollAlternatives(int pollId)
+        private Dictionary<int, string> GetPollAlternatives (int pollId)
         {
             Dictionary<int, string> result = new Dictionary<int, string>();
 
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
                 SqlCommand command =
-                    new SqlCommand(
-                        String.Format("Select PollAnswerID,AnswerText from InstantForum_PollAnswers WHERE PollId=" +
-                                      pollId), connection);
+                    new SqlCommand (
+                        String.Format ("Select PollAnswerID,AnswerText from InstantForum_PollAnswers WHERE PollId=" +
+                                       pollId), connection);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result[reader.GetInt32(0)] = reader.GetString(1);
+                        result[reader.GetInt32 (0)] = reader.GetString (1);
                     }
 
                     return result;
@@ -374,40 +374,40 @@ namespace Swarmops.Logic.Special.Sweden
 
         #region Create Post
 
-        public int CreateNewPost(int forumId, Person poster, string title, string description, string post)
+        public int CreateNewPost (int forumId, Person poster, string title, string description, string post)
         {
             // Returns the new post id
             if (this.forceForumId != 0) forumId = this.forceForumId;
 
-            using (SqlConnection connection = new SqlConnection(this.connectString))
+            using (SqlConnection connection = new SqlConnection (this.connectString))
             {
                 connection.Open();
 
                 // First, insert the post itself
 
-                SqlCommand command = new SqlCommand("if_sp_InsertPost", connection);
+                SqlCommand command = new SqlCommand ("if_sp_InsertPost", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@intForumID", forumId);
-                command.Parameters.AddWithValue("@intTopicID", 0);
-                command.Parameters.AddWithValue("@intParentID", 0);
-                command.Parameters.AddWithValue("@intUserID", poster.SwedishForumAccountId);
-                command.Parameters.AddWithValue("@strMessageIcon", string.Empty);
-                command.Parameters.AddWithValue("@strTitle", title);
-                command.Parameters.AddWithValue("@strDescription", description);
-                command.Parameters.AddWithValue("@bitForumModerated", false);
-                command.Parameters.AddWithValue("@bitIsPoll", false);
-                command.Parameters.AddWithValue("@strIPAddress", "127.0.0.1");
+                command.Parameters.AddWithValue ("@intForumID", forumId);
+                command.Parameters.AddWithValue ("@intTopicID", 0);
+                command.Parameters.AddWithValue ("@intParentID", 0);
+                command.Parameters.AddWithValue ("@intUserID", poster.SwedishForumAccountId);
+                command.Parameters.AddWithValue ("@strMessageIcon", string.Empty);
+                command.Parameters.AddWithValue ("@strTitle", title);
+                command.Parameters.AddWithValue ("@strDescription", description);
+                command.Parameters.AddWithValue ("@bitForumModerated", false);
+                command.Parameters.AddWithValue ("@bitIsPoll", false);
+                command.Parameters.AddWithValue ("@strIPAddress", "127.0.0.1");
 
-                SqlParameter parameterText = new SqlParameter("@strMessage", SqlDbType.NText, post.Length*2 + 2048);
+                SqlParameter parameterText = new SqlParameter ("@strMessage", SqlDbType.NText, post.Length*2 + 2048);
                 parameterText.Value = post;
 
-                command.Parameters.Add(parameterText);
+                command.Parameters.Add (parameterText);
 
-                SqlParameter parameterResult = new SqlParameter("@intIdentity", SqlDbType.Int, 4);
+                SqlParameter parameterResult = new SqlParameter ("@intIdentity", SqlDbType.Int, 4);
                 parameterResult.Direction = ParameterDirection.Output;
 
-                command.Parameters.Add(parameterResult);
+                command.Parameters.Add (parameterResult);
 
                 command.ExecuteNonQuery();
 
@@ -415,15 +415,15 @@ namespace Swarmops.Logic.Special.Sweden
 
                 // Then, update the LastRead for this forum
 
-                command = new SqlCommand("if_sp_UpdateForumLastPostInformation", connection);
+                command = new SqlCommand ("if_sp_UpdateForumLastPostInformation", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.Add(new SqlParameter("@intForumID", forumId));
-                command.Parameters.Add(new SqlParameter("@intLastPosterPostID", postId));
-                command.Parameters.Add(new SqlParameter("@intLastPosterUserID", poster.SwedishForumAccountId));
-                command.Parameters.Add(new SqlParameter("@strLastPosterUsername", poster.Name));
-                command.Parameters.Add(new SqlParameter("@strLastPosterSubject", title));
-                command.Parameters.Add(new SqlParameter("@dtLastPosterDate", DateTime.Now));
+                command.Parameters.Add (new SqlParameter ("@intForumID", forumId));
+                command.Parameters.Add (new SqlParameter ("@intLastPosterPostID", postId));
+                command.Parameters.Add (new SqlParameter ("@intLastPosterUserID", poster.SwedishForumAccountId));
+                command.Parameters.Add (new SqlParameter ("@strLastPosterUsername", poster.Name));
+                command.Parameters.Add (new SqlParameter ("@strLastPosterSubject", title));
+                command.Parameters.Add (new SqlParameter ("@dtLastPosterDate", DateTime.Now));
 
                 command.ExecuteNonQuery();
 
@@ -433,9 +433,9 @@ namespace Swarmops.Logic.Special.Sweden
 
         #endregion
 
-        public static IForumDatabase GetDatabase(string connectionstring)
+        public static IForumDatabase GetDatabase (string connectionstring)
         {
-            return new SwedishForumDatabaseInstantForum(CachedConnectionString);
+            return new SwedishForumDatabaseInstantForum (CachedConnectionString);
         }
 
         public static IForumDatabase GetDatabase()
@@ -450,7 +450,7 @@ namespace Swarmops.Logic.Special.Sweden
                 ConnectionString = ConfigurationManager.ConnectionStrings["PirateWeb"].ConnectionString;
                 ProviderName = ConfigurationManager.ConnectionStrings["PirateWeb"].ProviderName;
 
-                Logging.LogInformation(LogSource.PirateDb,
+                Logging.LogInformation (LogSource.PirateDb,
                     "SwarmDb initialized from Config ConnectionString: [" + ConnectionString +
                     "] / [" + ProviderName + "]");
             }
@@ -464,12 +464,12 @@ namespace Swarmops.Logic.Special.Sweden
                     {
                         // We are running under mono
 
-                        using (StreamReader reader = new StreamReader(MonoConfigFile))
+                        using (StreamReader reader = new StreamReader (MonoConfigFile))
                         {
                             ConnectionString = reader.ReadLine();
                             ProviderName = reader.ReadLine();
 
-                            Logging.LogInformation(LogSource.PirateDb,
+                            Logging.LogInformation (LogSource.PirateDb,
                                 "SwarmDb initialized for Linux: [" + ConnectionString + "] / [" +
                                 ProviderName + "]");
                         }
@@ -477,13 +477,14 @@ namespace Swarmops.Logic.Special.Sweden
                     else if (HttpContext.Current != null)
                     {
                         // We are running a web application
-                        using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath(WebConfigFile))
+                        using (
+                            StreamReader reader = new StreamReader (HttpContext.Current.Server.MapPath (WebConfigFile))
                             )
                         {
                             ConnectionString = reader.ReadLine();
                             ProviderName = reader.ReadLine();
 
-                            Logging.LogInformation(LogSource.PirateDb,
+                            Logging.LogInformation (LogSource.PirateDb,
                                 "SwarmDb initialized for web: [" + ConnectionString + "] / [" +
                                 ProviderName + "]");
                         }
@@ -492,12 +493,12 @@ namespace Swarmops.Logic.Special.Sweden
                     {
                         // We are running an application, presumably directly from Visual Studio.
                         // If so, the current working directory is "PirateWeb/30/Console/bin".
-                        using (StreamReader reader = new StreamReader(AppConfigFile))
+                        using (StreamReader reader = new StreamReader (AppConfigFile))
                         {
                             ConnectionString = reader.ReadLine();
                             ProviderName = reader.ReadLine();
 
-                            Logging.LogInformation(LogSource.PirateDb,
+                            Logging.LogInformation (LogSource.PirateDb,
                                 "SwarmDb initialized for application: [" + ConnectionString +
                                 "] / [" + ProviderName + "]");
                         }
@@ -505,7 +506,7 @@ namespace Swarmops.Logic.Special.Sweden
                 }
                 catch (Exception)
                 {
-                    Logging.LogWarning(LogSource.PirateDb, "Unable to read Database.Config - defaulting");
+                    Logging.LogWarning (LogSource.PirateDb, "Unable to read Database.Config - defaulting");
                     // Ignore if we can't read the Database.config
                 }
 
@@ -529,13 +530,13 @@ namespace Swarmops.Logic.Special.Sweden
                 string DataSource = DefaultAppDataSource;
                 if (HttpContext.Current != null)
                 {
-                    DataSource = HttpContext.Current.Server.MapPath(DefaultWebDataSource);
+                    DataSource = HttpContext.Current.Server.MapPath (DefaultWebDataSource);
                 }
-                ConnectionString = DefaultConnectionString.Replace("%DataSource%", DataSource);
+                ConnectionString = DefaultConnectionString.Replace ("%DataSource%", DataSource);
                 ProviderName = DefaultProviderName;
             }
 
-            ConnectionString = ConnectionString.Replace("database=pirateweb", "database=pirateforums");
+            ConnectionString = ConnectionString.Replace ("database=pirateweb", "database=pirateforums");
 
             // Now write the correct data to the cache, for faster lookup next time.
             if (CachedConnectionString == null)
@@ -544,13 +545,13 @@ namespace Swarmops.Logic.Special.Sweden
                 CachedProviderName = ProviderName;
             }
 
-            return new SwedishForumDatabaseInstantForum(CachedConnectionString);
+            return new SwedishForumDatabaseInstantForum (CachedConnectionString);
         }
     }
 
     public class ErrorIgnorerPolicy : ICertificatePolicy
     {
-        public bool CheckValidationResult(ServicePoint sp, X509Certificate certificate, WebRequest request, int error)
+        public bool CheckValidationResult (ServicePoint sp, X509Certificate certificate, WebRequest request, int error)
         {
             if (error == 0)
                 return true;
@@ -573,57 +574,57 @@ namespace Swarmops.Logic.Special.Sweden
         private readonly string connectString = string.Empty;
         private int forceForumId;
 
-        public SwedishForumDatabaseVBulletin(string connectString)
+        public SwedishForumDatabaseVBulletin (string connectString)
         {
             this.connectString = connectString;
         }
 
 
-        public int GetAccountId(string nick)
+        public int GetAccountId (string nick)
         {
             if (nick == null)
             {
-                throw new ArgumentNullException("nick");
+                throw new ArgumentNullException ("nick");
             }
 
-            using (MySqlConnection connection = new MySqlConnection(this.connectString))
+            using (MySqlConnection connection = new MySqlConnection (this.connectString))
             {
                 connection.Open();
 
                 MySqlCommand command =
-                    new MySqlCommand(
-                        String.Format("Select userid from vb_user Where username='{0}'",
-                            nick.Replace("'", "''")), connection);
+                    new MySqlCommand (
+                        String.Format ("Select userid from vb_user Where username='{0}'",
+                            nick.Replace ("'", "''")), connection);
                 command.CommandTimeout = 20;
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt32(0);
+                        return reader.GetInt32 (0);
                     }
-                    throw new ArgumentException("No such nick in database");
+                    throw new ArgumentException ("No such nick in database");
                 }
             }
         }
 
 
-        public string GetAccountName(int accountId)
+        public string GetAccountName (int accountId)
         {
-            using (MySqlConnection connection = new MySqlConnection(this.connectString))
+            using (MySqlConnection connection = new MySqlConnection (this.connectString))
             {
                 connection.Open();
 
                 MySqlCommand command =
-                    new MySqlCommand(String.Format("Select username from vb_user Where userid=" + accountId),
+                    new MySqlCommand (String.Format ("Select username from vb_user Where userid=" + accountId),
                         connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetString(0);
+                        return reader.GetString (0);
                     }
-                    throw new ArgumentException("No such nick in database");
+                    throw new ArgumentException ("No such nick in database");
                 }
             }
         }
@@ -632,17 +633,17 @@ namespace Swarmops.Logic.Special.Sweden
         {
             List<int> result = new List<int>();
 
-            using (MySqlConnection connection = new MySqlConnection(this.connectString))
+            using (MySqlConnection connection = new MySqlConnection (this.connectString))
             {
                 connection.Open();
 
-                MySqlCommand command = new MySqlCommand(String.Format("Select userid from vb_user"), connection);
+                MySqlCommand command = new MySqlCommand (String.Format ("Select userid from vb_user"), connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetInt32(0));
+                        result.Add (reader.GetInt32 (0));
                     }
 
                     return result.ToArray();
@@ -664,15 +665,15 @@ namespace Swarmops.Logic.Special.Sweden
 
         #region Party Membership
 
-        public bool IsPartyMember(int accountId)
+        public bool IsPartyMember (int accountId)
         {
-            using (MySqlConnection connection = new MySqlConnection(this.connectString))
+            using (MySqlConnection connection = new MySqlConnection (this.connectString))
             {
                 connection.Open();
 
                 MySqlCommand command =
-                    new MySqlCommand(
-                        String.Format("Select membergroupids from vb_user where userid=" + accountId),
+                    new MySqlCommand (
+                        String.Format ("Select membergroupids from vb_user where userid=" + accountId),
                         connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -681,27 +682,27 @@ namespace Swarmops.Logic.Special.Sweden
                     {
                         string allGroups = ",";
 
-                        if (!reader.IsDBNull(0))
-                            allGroups += "" + reader.GetString(0) + ",";
+                        if (!reader.IsDBNull (0))
+                            allGroups += "" + reader.GetString (0) + ",";
 
-                        allGroups = allGroups.Replace(" ", "");
+                        allGroups = allGroups.Replace (" ", "");
 
-                        if (allGroups.Contains("," + partymembergroupid + ","))
+                        if (allGroups.Contains ("," + partymembergroupid + ","))
                         {
                             return true;
                         }
                         return false;
                     }
 
-                    throw new Exception("Account Id does not exist");
+                    throw new Exception ("Account Id does not exist");
                 }
             }
         }
 
 
-        public void SetPartyMember(int accountId)
+        public void SetPartyMember (int accountId)
         {
-            using (MySqlConnection connection = new MySqlConnection(this.connectString))
+            using (MySqlConnection connection = new MySqlConnection (this.connectString))
             {
                 connection.Open();
                 //TODO: Convert back to stored procedure
@@ -713,29 +714,29 @@ namespace Swarmops.Logic.Special.Sweden
 
                 string allGroups = ",";
 
-                MySqlCommand command = new MySqlCommand(
-                    String.Format("Select membergroupids from vb_user where userid=" + accountId),
+                MySqlCommand command = new MySqlCommand (
+                    String.Format ("Select membergroupids from vb_user where userid=" + accountId),
                     connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        if (!reader.IsDBNull(0))
-                            allGroups += "" + reader.GetString(0) + ",";
+                        if (!reader.IsDBNull (0))
+                            allGroups += "" + reader.GetString (0) + ",";
                     }
                 }
 
-                if (!allGroups.Contains("," + partymembergroupid + ","))
+                if (!allGroups.Contains ("," + partymembergroupid + ","))
                 {
                     allGroups = (allGroups
-                        .Replace(" ", "")
-                        .Replace(",,", ",")
-                        .Trim(',') + "," + partymembergroupid).Trim(',');
+                        .Replace (" ", "")
+                        .Replace (",,", ",")
+                        .Trim (',') + "," + partymembergroupid).Trim (',');
 
                     command =
-                        new MySqlCommand(
-                            String.Format(
+                        new MySqlCommand (
+                            String.Format (
                                 "Update vb_user set  membergroupids='{0}', displaygroupid={1} where userid={2}",
                                 allGroups, partymembergroupid, accountId),
                             connection);
@@ -746,9 +747,9 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        public void SetPartyNonmember(int accountId)
+        public void SetPartyNonmember (int accountId)
         {
-            using (MySqlConnection connection = new MySqlConnection(this.connectString))
+            using (MySqlConnection connection = new MySqlConnection (this.connectString))
             {
                 connection.Open();
 
@@ -761,29 +762,30 @@ namespace Swarmops.Logic.Special.Sweden
 
                 string allGroups = ",";
 
-                MySqlCommand command = new MySqlCommand(
-                    String.Format("Select membergroupids from vb_user where userid=" + accountId),
+                MySqlCommand command = new MySqlCommand (
+                    String.Format ("Select membergroupids from vb_user where userid=" + accountId),
                     connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        if (!reader.IsDBNull(0))
-                            allGroups += "" + reader.GetString(0) + ",";
+                        if (!reader.IsDBNull (0))
+                            allGroups += "" + reader.GetString (0) + ",";
                     }
                 }
 
-                if (allGroups.Contains("," + partymembergroupid + ","))
+                if (allGroups.Contains ("," + partymembergroupid + ","))
                 {
                     allGroups = allGroups
-                        .Replace(" ", "")
-                        .Replace("," + partymembergroupid + ",", ",")
-                        .Replace(",,", ",").Trim(',');
+                        .Replace (" ", "")
+                        .Replace ("," + partymembergroupid + ",", ",")
+                        .Replace (",,", ",").Trim (',');
 
                     command =
-                        new MySqlCommand(
-                            String.Format("Update vb_user set membergroupids='{0}',displaygroupid={1} where userid={2}",
+                        new MySqlCommand (
+                            String.Format (
+                                "Update vb_user set membergroupids='{0}',displaygroupid={1} where userid={2}",
                                 allGroups, nonmembergroupid, accountId
                                 ),
                             connection);
@@ -797,21 +799,21 @@ namespace Swarmops.Logic.Special.Sweden
 
         #region Get Polls
 
-        public int GetPollIdFromTopicId(int threadId)
+        public int GetPollIdFromTopicId (int threadId)
         {
-            using (MySqlConnection connection = new MySqlConnection(this.connectString))
+            using (MySqlConnection connection = new MySqlConnection (this.connectString))
             {
                 connection.Open();
 
-                MySqlCommand command = new MySqlCommand(
-                    String.Format("Select pollid from vb_thread where threadid=" + threadId),
+                MySqlCommand command = new MySqlCommand (
+                    String.Format ("Select pollid from vb_thread where threadid=" + threadId),
                     connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt32(0);
+                        return reader.GetInt32 (0);
                     }
 
                     throw new ArgumentOutOfRangeException();
@@ -820,19 +822,19 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        public Dictionary<string, People> GetPollVotes(int pollId)
+        public Dictionary<string, People> GetPollVotes (int pollId)
         {
             //// First, let's get the list of alternatives.
 
-            Dictionary<int, string> pollAlternatives = GetPollAlternatives(pollId);
+            Dictionary<int, string> pollAlternatives = GetPollAlternatives (pollId);
 
             Dictionary<string, People> result = new Dictionary<string, People>();
-            using (MySqlConnection connection = new MySqlConnection(this.connectString))
+            using (MySqlConnection connection = new MySqlConnection (this.connectString))
             {
                 connection.Open();
 
-                MySqlCommand command = new MySqlCommand(
-                    String.Format("Select userid, voteoption from pw_pollvote where pollid=" + pollId),
+                MySqlCommand command = new MySqlCommand (
+                    String.Format ("Select userid, voteoption from pw_pollvote where pollid=" + pollId),
                     connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -842,9 +844,9 @@ namespace Swarmops.Logic.Special.Sweden
                     while (reader.Read())
                     {
                         voteCount++;
-                        int forumUserId = reader.GetInt32(0);
+                        int forumUserId = reader.GetInt32 (0);
 
-                        People people = People.FromOptionalData(ObjectOptionalDataType.ForumAccountId,
+                        People people = People.FromOptionalData (ObjectOptionalDataType.ForumAccountId,
                             forumUserId.ToString());
                         if (people.Count > 1)
                         {
@@ -853,7 +855,7 @@ namespace Swarmops.Logic.Special.Sweden
                             {
                                 if (testPerson.GetMemberships().Count == 0)
                                 {
-                                    people.Remove(testPerson);
+                                    people.Remove (testPerson);
                                 }
                             }
 
@@ -862,8 +864,8 @@ namespace Swarmops.Logic.Special.Sweden
                                 string ids = "";
                                 foreach (Person p in people)
                                     ids += " " + p.Identity;
-                                throw new Exception("This is not possible -- check userid " + forumUserId +
-                                                    ", appears to be tied to several personIds:" + ids);
+                                throw new Exception ("This is not possible -- check userid " + forumUserId +
+                                                     ", appears to be tied to several personIds:" + ids);
                             }
                         }
 
@@ -874,19 +876,19 @@ namespace Swarmops.Logic.Special.Sweden
                             person = people[0];
                         }
 
-                        int pollAnswerId = reader.GetInt32(1);
+                        int pollAnswerId = reader.GetInt32 (1);
                         pollAnswerId--; //One based
-                        if (!pollAlternatives.ContainsKey(pollAnswerId))
+                        if (!pollAlternatives.ContainsKey (pollAnswerId))
                             pollAlternatives[pollAnswerId] = "" + pollAnswerId;
 
                         string pollAnswer = pollAlternatives[pollAnswerId];
 
-                        if (!result.ContainsKey(pollAnswer))
+                        if (!result.ContainsKey (pollAnswer))
                         {
                             result[pollAnswer] = new People();
                         }
 
-                        result[pollAnswer].Add(person);
+                        result[pollAnswer].Add (person);
                     }
 
                     return result;
@@ -895,30 +897,30 @@ namespace Swarmops.Logic.Special.Sweden
         }
 
 
-        private Dictionary<int, string> GetPollAlternatives(int pollId)
+        private Dictionary<int, string> GetPollAlternatives (int pollId)
         {
             Dictionary<int, string> result = new Dictionary<int, string>();
 
             //Förslag A |||Förslag B |||Förslag C |||Förslag D |||Förslag E |||Avstår
-            using (MySqlConnection connection = new MySqlConnection(this.connectString))
+            using (MySqlConnection connection = new MySqlConnection (this.connectString))
             {
                 connection.Open();
 
-                MySqlCommand command = new MySqlCommand(
-                    String.Format("Select options from pw_poll where pollid=" + pollId),
+                MySqlCommand command = new MySqlCommand (
+                    String.Format ("Select options from pw_poll where pollid=" + pollId),
                     connection);
                 string options = "";
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        options = reader.GetString(0);
+                        options = reader.GetString (0);
                     }
                     else
 
                         throw new ArgumentOutOfRangeException();
                 }
-                string[] results = options.Replace("|||", "\x12").Split('\x12');
+                string[] results = options.Replace ("|||", "\x12").Split ('\x12');
                 for (int i = 0; i < results.Length; ++i)
                     result[i] = results[i].Trim();
             }
@@ -929,7 +931,7 @@ namespace Swarmops.Logic.Special.Sweden
 
         #region Create Post
 
-        public int CreateNewPost(int forumId, Person poster, string title, string description, string post)
+        public int CreateNewPost (int forumId, Person poster, string title, string description, string post)
         {
             // call to vBulletin plugin to add post
             //key = special value secret key / selecting function to perform
@@ -952,18 +954,18 @@ namespace Swarmops.Logic.Special.Sweden
                 //Needed to avoid errors from homegrown SSL cert.
                 ServicePointManager.CertificatePolicy = new ErrorIgnorerPolicy();
 #pragma warning restore 618
-                HttpWebRequest req = (HttpWebRequest) WebRequest.Create(url);
+                HttpWebRequest req = (HttpWebRequest) WebRequest.Create (url);
                 //string proxy = null;
-                Encoding recieverEncoding = Encoding.GetEncoding("iso-8859-1");
+                Encoding recieverEncoding = Encoding.GetEncoding ("iso-8859-1");
 
-                string data = String.Format("key={0}&forumid={1}&userid={2}&title={3}&pagetext={4}",
-                    HttpUtility.UrlEncode(postTopicKey, recieverEncoding),
-                    HttpUtility.UrlEncode("" + forumId, recieverEncoding),
-                    HttpUtility.UrlEncode("" + personAccountId, recieverEncoding),
-                    HttpUtility.UrlEncode(title + ": " + description, recieverEncoding),
-                    HttpUtility.UrlEncode(post, recieverEncoding));
+                string data = String.Format ("key={0}&forumid={1}&userid={2}&title={3}&pagetext={4}",
+                    HttpUtility.UrlEncode (postTopicKey, recieverEncoding),
+                    HttpUtility.UrlEncode ("" + forumId, recieverEncoding),
+                    HttpUtility.UrlEncode ("" + personAccountId, recieverEncoding),
+                    HttpUtility.UrlEncode (title + ": " + description, recieverEncoding),
+                    HttpUtility.UrlEncode (post, recieverEncoding));
 
-                byte[] buffer = recieverEncoding.GetBytes(data); //Forum was set up for Latin-1
+                byte[] buffer = recieverEncoding.GetBytes (data); //Forum was set up for Latin-1
 
                 req.Method = "POST";
                 req.ContentType = "application/x-www-form-urlencoded";
@@ -975,11 +977,11 @@ namespace Swarmops.Logic.Special.Sweden
 
                 req.ServicePoint.Expect100Continue = false; //Disable stupid feature
 
-                req.Headers.Add("Pragma", "no-cache");
+                req.Headers.Add ("Pragma", "no-cache");
 
                 Stream reqst = req.GetRequestStream(); // add form data to request stream
 
-                reqst.Write(buffer, 0, buffer.Length);
+                reqst.Write (buffer, 0, buffer.Length);
                 reqst.Flush();
                 reqst.Close();
 
@@ -987,29 +989,29 @@ namespace Swarmops.Logic.Special.Sweden
                 HttpWebResponse res = (HttpWebResponse) req.GetResponse();
 
                 Stream resst = res.GetResponseStream();
-                StreamReader sr = new StreamReader(resst);
+                StreamReader sr = new StreamReader (resst);
                 string response = sr.ReadToEnd();
 
 
                 int postId = 0;
-                if (int.TryParse(response, out postId))
+                if (int.TryParse (response, out postId))
                 {
                     return postId;
                 }
-                throw new Exception("Error when calling CreateNewPost:" + response);
+                throw new Exception ("Error when calling CreateNewPost:" + response);
             }
             catch (WebException ex)
             {
-                throw new Exception("WebException when calling CreateNewPost:" + ex.Message);
+                throw new Exception ("WebException when calling CreateNewPost:" + ex.Message);
             }
         }
 
-        private string UrlEncode(string toEncode)
+        private string UrlEncode (string toEncode)
         {
-            return HttpUtility.UrlEncode(toEncode, Encoding.GetEncoding("iso-8859-1"));
+            return HttpUtility.UrlEncode (toEncode, Encoding.GetEncoding ("iso-8859-1"));
         }
 
-        public static bool Validator(object sender, X509Certificate certificate, X509Chain chain,
+        public static bool Validator (object sender, X509Certificate certificate, X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
         {
             return true;
@@ -1017,9 +1019,9 @@ namespace Swarmops.Logic.Special.Sweden
 
         #endregion
 
-        public static IForumDatabase GetDatabase(string connectionstring)
+        public static IForumDatabase GetDatabase (string connectionstring)
         {
-            return new SwedishForumDatabaseVBulletin(connectionstring);
+            return new SwedishForumDatabaseVBulletin (connectionstring);
         }
 
         public static IForumDatabase GetDatabase()
@@ -1042,7 +1044,7 @@ namespace Swarmops.Logic.Special.Sweden
                 }
                 catch (Exception)
                 {
-                    Logging.LogWarning(LogSource.PirateDb, "Unable to read Forum Connectionstring");
+                    Logging.LogWarning (LogSource.PirateDb, "Unable to read Forum Connectionstring");
                 }
 
                 // To simplify future checks
@@ -1058,7 +1060,7 @@ namespace Swarmops.Logic.Special.Sweden
                 CachedConnectionString = ConnectionString;
             }
 
-            return new SwedishForumDatabaseVBulletin(CachedConnectionString);
+            return new SwedishForumDatabaseVBulletin (CachedConnectionString);
         }
     }
 }

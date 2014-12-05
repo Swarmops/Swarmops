@@ -37,38 +37,38 @@ namespace Swarmops.Database
 
             if (specialConnectString == "")
                 specialConnectString = this.ConnectionString;
-            specialConnectString = specialConnectString.Replace("192.168.0.5", "192.168.0.7");
-                // for dev & debug at Rick's
+            specialConnectString = specialConnectString.Replace ("192.168.0.5", "192.168.0.7");
+            // for dev & debug at Rick's
 
             connection.ConnectionString = specialConnectString;
 
             return connection;
         }
 
-        protected DbCommand GetDbCommand(string commandText, DbConnection connection)
+        protected DbCommand GetDbCommand (string commandText, DbConnection connection)
         {
             DbCommand command = connection.CreateCommand();
             if (command.GetType().FullName == "System.Data.OleDb.OleDbCommand")
             {
                 commandText = commandText.
-                    Replace("%ISTRUE%", string.Empty).
-                    Replace("DISTINCT", string.Empty);
-                if (commandText.Contains("%ISFALSE%"))
+                    Replace ("%ISTRUE%", string.Empty).
+                    Replace ("DISTINCT", string.Empty);
+                if (commandText.Contains ("%ISFALSE%"))
                 {
-                    throw new NotImplementedException("%ISFALSE% has not been implemented for OleDbConnections");
+                    throw new NotImplementedException ("%ISFALSE% has not been implemented for OleDbConnections");
                 }
             }
             else
             {
-                commandText = commandText.Replace("%ISTRUE%", "= 1");
-                commandText = commandText.Replace("%ISFALSE%", "= 0");
+                commandText = commandText.Replace ("%ISTRUE%", "= 1");
+                commandText = commandText.Replace ("%ISFALSE%", "= 0");
             }
 
             command.CommandText = commandText;
             return command;
         }
 
-        protected void AddParameterWithName(DbCommand command, string parameterName, object value)
+        protected void AddParameterWithName (DbCommand command, string parameterName, object value)
         {
             if (command.Parameters.GetType().Name == "SqlParameterCollection")
             {
@@ -100,7 +100,7 @@ namespace Swarmops.Database
                     }
                     else if (!((Type) value == typeof (string)))
                     {
-                        throw new Exception("Unhandled parameter type in AddParameterWithName: " + value.GetType().Name);
+                        throw new Exception ("Unhandled parameter type in AddParameterWithName: " + value.GetType().Name);
                     }
                     value = DBNull.Value;
                 }
@@ -126,7 +126,7 @@ namespace Swarmops.Database
                 }
                 else if (!(value is string))
                 {
-                    throw new Exception("Unhandled parameter type in AddParameterWithName: " + value.GetType().Name);
+                    throw new Exception ("Unhandled parameter type in AddParameterWithName: " + value.GetType().Name);
                 }
 
                 SqlParameter parameter = null;
@@ -144,13 +144,13 @@ namespace Swarmops.Database
                         textLength -= (textLength%256);
                         textLength += 256;
                     }
-                    parameter = new SqlParameter("@" + parameterName, parameterType, textLength);
+                    parameter = new SqlParameter ("@" + parameterName, parameterType, textLength);
                 }
                 else
                 {
                     // For all other types, ignore the length parameter, let the default handle it
 
-                    parameter = new SqlParameter("@" + parameterName, parameterType);
+                    parameter = new SqlParameter ("@" + parameterName, parameterType);
                 }
 
                 parameter.Value = value;
@@ -158,16 +158,16 @@ namespace Swarmops.Database
                 SqlParameterCollection sqlCollection =
                     command.Parameters as SqlParameterCollection;
 
-                sqlCollection.Add(parameter);
+                sqlCollection.Add (parameter);
             }
             else if (command.GetType().FullName == "MySql.Data.MySqlClient.MySqlCommand")
             {
-                MySqlParameter newParameter = new MySqlParameter(parameterName, value);
-                command.Parameters.Add(newParameter);
+                MySqlParameter newParameter = new MySqlParameter (parameterName, value);
+                command.Parameters.Add (newParameter);
             }
             else
             {
-                int i = command.Parameters.Add(value);
+                int i = command.Parameters.Add (value);
 
                 if (command.GetType().FullName == "System.Data.OracleClient.OracleCommand")
                 {
@@ -181,7 +181,7 @@ namespace Swarmops.Database
         }
 
         // A common function used here and there. Placed here for convenience.
-        private static string JoinIds(int[] ids)
+        private static string JoinIds (int[] ids)
         {
             if (ids.Length == 0)
             {
@@ -190,19 +190,19 @@ namespace Swarmops.Database
 
             StringBuilder builder = new StringBuilder();
 
-            builder.Append(ids[0].ToString());
+            builder.Append (ids[0].ToString());
 
             for (int index = 1; index < ids.Length; index++)
             {
-                builder.Append(",");
-                builder.Append(ids[index].ToString());
+                builder.Append (",");
+                builder.Append (ids[index].ToString());
             }
 
             return builder.ToString();
         }
 
         // A common function used here and there. Placed here for convenience.
-        private static string JoinStrings(string[] strs)
+        private static string JoinStrings (string[] strs)
         {
             if (strs.Length == 0)
             {
@@ -211,25 +211,25 @@ namespace Swarmops.Database
 
             StringBuilder builder = new StringBuilder();
 
-            builder.Append("'" + strs[0] + "'");
+            builder.Append ("'" + strs[0] + "'");
 
             for (int index = 1; index < strs.Length; index++)
             {
-                builder.Append(",");
-                builder.Append("'" + strs[index] + "'");
+                builder.Append (",");
+                builder.Append ("'" + strs[index] + "'");
             }
 
             return builder.ToString();
         }
 
         // A common function used here and there. Placed here for convenience.
-        private static string MySqlDate(DateTime d)
+        private static string MySqlDate (DateTime d)
         {
-            return d.ToString("yyyyMMddHHmmss");
+            return d.ToString ("yyyyMMddHHmmss");
         }
 
 
-        private string SqlSanitize(string input)
+        private string SqlSanitize (string input)
         {
             string[] forbiddenArray =
             {
@@ -237,14 +237,14 @@ namespace Swarmops.Database
                 "="
             };
 
-            string output = input.Replace("'", "''"); // the typical case
+            string output = input.Replace ("'", "''"); // the typical case
             string inputLower = input.ToLowerInvariant();
             foreach (string forbidden in forbiddenArray)
             {
-                if (inputLower.Contains(forbidden))
+                if (inputLower.Contains (forbidden))
                 {
-                    throw new SecurityException("Attempt at SQL injection: parameter passed to SELECT was '" + input +
-                                                "'");
+                    throw new SecurityException ("Attempt at SQL injection: parameter passed to SELECT was '" + input +
+                                                 "'");
                 }
             }
 

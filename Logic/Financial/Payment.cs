@@ -14,8 +14,8 @@ namespace Swarmops.Logic.Financial
     {
         private PaymentInformationList informationList;
 
-        private Payment(BasicPayment payment)
-            : base(payment)
+        private Payment (BasicPayment payment)
+            : base (payment)
         {
             // empty copy ctor
         }
@@ -32,7 +32,7 @@ namespace Swarmops.Logic.Financial
                 {
                     if (infoPiece.Type == PaymentInformationType.Freeform)
                     {
-                        result.Add(infoPiece.Data);
+                        result.Add (infoPiece.Data);
                     }
                 }
 
@@ -42,58 +42,58 @@ namespace Swarmops.Logic.Financial
 
         public string PayerName
         {
-            get { return GetSinglePaymentInformation(PaymentInformationType.Name); }
+            get { return GetSinglePaymentInformation (PaymentInformationType.Name); }
         }
 
         public string PayerStreet
         {
-            get { return GetSinglePaymentInformation(PaymentInformationType.Street); }
+            get { return GetSinglePaymentInformation (PaymentInformationType.Street); }
         }
 
         public string PayerPostalCode
         {
-            get { return GetSinglePaymentInformation(PaymentInformationType.PostalCode); }
+            get { return GetSinglePaymentInformation (PaymentInformationType.PostalCode); }
         }
 
         public string PayerCity
         {
-            get { return GetSinglePaymentInformation(PaymentInformationType.City); }
+            get { return GetSinglePaymentInformation (PaymentInformationType.City); }
         }
 
         public string PayerOrganizationNumber
         {
-            get { return GetSinglePaymentInformation(PaymentInformationType.OrgNumber); }
+            get { return GetSinglePaymentInformation (PaymentInformationType.OrgNumber); }
         }
 
         public PaymentGroup Group
         {
-            get { return PaymentGroup.FromIdentity(PaymentGroupId); }
+            get { return PaymentGroup.FromIdentity (PaymentGroupId); }
         }
 
         public OutboundInvoice OutboundInvoice
         {
-            get { return OutboundInvoice.FromIdentity(OutboundInvoiceId); }
+            get { return OutboundInvoice.FromIdentity (OutboundInvoiceId); }
         }
 
-        public static Payment FromBasic(BasicPayment basic)
+        public static Payment FromBasic (BasicPayment basic)
         {
-            return new Payment(basic);
+            return new Payment (basic);
         }
 
-        public static Payment FromIdentity(int paymentId)
+        public static Payment FromIdentity (int paymentId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetPayment(paymentId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetPayment (paymentId));
         }
 
-        private static Payment FromIdentityAggressive(int paymentId)
+        private static Payment FromIdentityAggressive (int paymentId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForWriting().GetPayment(paymentId));
-                // "Writing" intentional - avoid race conditions
+            return FromBasic (SwarmDb.GetDatabaseForWriting().GetPayment (paymentId));
+            // "Writing" intentional - avoid race conditions
         }
 
-        public static Payment ForOutboundInvoice(OutboundInvoice invoice)
+        public static Payment ForOutboundInvoice (OutboundInvoice invoice)
         {
-            BasicPayment[] array = SwarmDb.GetDatabaseForReading().GetPayments(invoice);
+            BasicPayment[] array = SwarmDb.GetDatabaseForReading().GetPayments (invoice);
 
             if (array.Length == 0)
             {
@@ -102,18 +102,19 @@ namespace Swarmops.Logic.Financial
 
             if (array.Length > 1)
             {
-                throw new InvalidDataException("There can not be two payments for one invoice");
+                throw new InvalidDataException ("There can not be two payments for one invoice");
             }
 
-            return FromBasic(array[0]);
+            return FromBasic (array[0]);
         }
 
-        public static Payment Create(PaymentGroup group, double amount, string reference, string fromAccount, string key,
+        public static Payment Create (PaymentGroup group, double amount, string reference, string fromAccount,
+            string key,
             bool hasImage)
         {
             // Match against outbound invoice, too
 
-            OutboundInvoice invoice = OutboundInvoice.FromReference(reference);
+            OutboundInvoice invoice = OutboundInvoice.FromReference (reference);
 
             // TODO: Verify that invoice is not already closed; if so, issue refund
 
@@ -121,17 +122,17 @@ namespace Swarmops.Logic.Financial
 
             invoice.Open = false;
 
-            PWEvents.CreateEvent(EventSource.PirateWeb, EventType.OutboundInvoicePaid, 0, group.Organization.Identity,
+            PWEvents.CreateEvent (EventSource.PirateWeb, EventType.OutboundInvoicePaid, 0, group.Organization.Identity,
                 Geography.RootIdentity, 0, invoice.Identity, string.Empty);
-                // TODO: REMOVE PWLOG FOR SWARMOPS in due time
+            // TODO: REMOVE PWLOG FOR SWARMOPS in due time
 
             return
-                FromIdentityAggressive(SwarmDb.GetDatabaseForWriting()
-                    .CreatePayment(group.Identity, amount, reference, fromAccount, key, hasImage,
+                FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
+                    .CreatePayment (group.Identity, amount, reference, fromAccount, key, hasImage,
                         invoice.Identity));
         }
 
-        public static Payment CreateSingle(Organization organization, DateTime dateTime, Currency currency,
+        public static Payment CreateSingle (Organization organization, DateTime dateTime, Currency currency,
             Int64 amountCents, OutboundInvoice invoice, Person createdByPerson)
         {
             // TODO: Verify that invoice is not already closed; if so, issue refund
@@ -140,10 +141,10 @@ namespace Swarmops.Logic.Financial
 
             invoice.SetPaid();
 
-            PaymentGroup group = PaymentGroup.Create(organization, dateTime, currency, createdByPerson);
+            PaymentGroup group = PaymentGroup.Create (organization, dateTime, currency, createdByPerson);
             Payment newPayment =
-                FromIdentityAggressive(SwarmDb.GetDatabaseForWriting()
-                    .CreatePayment(group.Identity, amountCents, string.Empty, string.Empty, string.Empty, false,
+                FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
+                    .CreatePayment (group.Identity, amountCents, string.Empty, string.Empty, string.Empty, false,
                         invoice.Identity));
             group.AmountCents = amountCents;
 
@@ -154,12 +155,12 @@ namespace Swarmops.Logic.Financial
         {
             if (this.informationList == null)
             {
-                this.informationList = PaymentInformationList.ForPayment(this);
-                    // caution: assumes the list is static over lifetime of the payment object
+                this.informationList = PaymentInformationList.ForPayment (this);
+                // caution: assumes the list is static over lifetime of the payment object
             }
         }
 
-        private string GetSinglePaymentInformation(PaymentInformationType type)
+        private string GetSinglePaymentInformation (PaymentInformationType type)
         {
             PopulateInformation();
 
@@ -174,22 +175,22 @@ namespace Swarmops.Logic.Financial
             return null;
         }
 
-        public void AddInformation(PaymentInformationType type, string data)
+        public void AddInformation (PaymentInformationType type, string data)
         {
-            if (!string.IsNullOrEmpty(data))
+            if (!string.IsNullOrEmpty (data))
             {
-                SwarmDb.GetDatabaseForWriting().CreatePaymentInformation(Identity, type, data);
+                SwarmDb.GetDatabaseForWriting().CreatePaymentInformation (Identity, type, data);
             }
         }
 
-        public void Refund(Person refundingPerson)
+        public void Refund (Person refundingPerson)
         {
-            Financial.Refund.Create(this, refundingPerson);
+            Financial.Refund.Create (this, refundingPerson);
         }
 
-        public void Refund(Int64 amountCents, Person refundingPerson)
+        public void Refund (Int64 amountCents, Person refundingPerson)
         {
-            Financial.Refund.Create(this, refundingPerson, amountCents);
+            Financial.Refund.Create (this, refundingPerson, amountCents);
         }
     }
 }

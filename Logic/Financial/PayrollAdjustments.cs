@@ -6,15 +6,16 @@ namespace Swarmops.Logic.Financial
 {
     public class PayrollAdjustments : PluralBase<PayrollAdjustments, PayrollAdjustment, BasicPayrollAdjustment>
     {
-        public static PayrollAdjustments ForPayrollItem(PayrollItem payrollItem)
+        public static PayrollAdjustments ForPayrollItem (PayrollItem payrollItem)
         {
             return
-                FromArray(SwarmDb.GetDatabaseForReading().GetPayrollAdjustments(payrollItem, DatabaseCondition.OpenTrue));
+                FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetPayrollAdjustments (payrollItem, DatabaseCondition.OpenTrue));
         }
 
-        public static PayrollAdjustments ForSalary(Salary salary)
+        public static PayrollAdjustments ForSalary (Salary salary)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetPayrollAdjustments(salary));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetPayrollAdjustments (salary));
         }
     }
 }

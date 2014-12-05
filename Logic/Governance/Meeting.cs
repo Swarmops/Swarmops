@@ -5,19 +5,19 @@ namespace Swarmops.Logic.Governance
 {
     public class Meeting : BasicMeeting
     {
-        private Meeting(BasicMeeting basic) : base(basic)
+        private Meeting (BasicMeeting basic) : base (basic)
         {
             // empty ctor
         }
 
-        public static Meeting FromBasic(BasicMeeting basicMeeting)
+        public static Meeting FromBasic (BasicMeeting basicMeeting)
         {
-            return new Meeting(basicMeeting);
+            return new Meeting (basicMeeting);
         }
 
-        public static Meeting FromIdentity(int meetingId)
+        public static Meeting FromIdentity (int meetingId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetMeeting(meetingId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetMeeting (meetingId));
         }
     }
 }

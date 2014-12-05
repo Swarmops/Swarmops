@@ -6,26 +6,26 @@ namespace Swarmops.Logic.Swarm
     {
         private readonly int organizationId;
 
-        private OfficerChain(People original, int organizationId)
+        private OfficerChain (People original, int organizationId)
         {
-            InsertRange(0, original);
+            InsertRange (0, original);
             this.organizationId = organizationId;
         }
 
 
-        public new static OfficerChain FromOrganizationAndGeography(Organization org, Geography geo)
+        public new static OfficerChain FromOrganizationAndGeography (Organization org, Geography geo)
         {
-            int[] concernedPeopleId = Roles.GetAllUpwardRoles(org.Identity, geo.Identity);
-            People concernedPeople = FromIdentities(concernedPeopleId);
+            int[] concernedPeopleId = Roles.GetAllUpwardRoles (org.Identity, geo.Identity);
+            People concernedPeople = FromIdentities (concernedPeopleId);
 
-            return new OfficerChain(concernedPeople, org.Identity);
+            return new OfficerChain (concernedPeople, org.Identity);
         }
 
-        public void SendNotice(string subject, string body)
+        public void SendNotice (string subject, string body)
         {
             foreach (Person person in this)
             {
-                person.SendOfficerNotice(subject, body, this.organizationId);
+                person.SendOfficerNotice (subject, body, this.organizationId);
             }
         }
     }

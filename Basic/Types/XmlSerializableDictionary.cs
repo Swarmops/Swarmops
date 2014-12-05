@@ -3,7 +3,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-[XmlRoot("dictionary")]
+[XmlRoot ("dictionary")]
 public class SerializableDictionary<TKey, TValue>
     : Dictionary<TKey, TValue>, IXmlSerializable
 {
@@ -14,10 +14,10 @@ public class SerializableDictionary<TKey, TValue>
         return null;
     }
 
-    public void ReadXml(XmlReader reader)
+    public void ReadXml (XmlReader reader)
     {
-        XmlSerializer keySerializer = new XmlSerializer(typeof (TKey));
-        XmlSerializer valueSerializer = new XmlSerializer(typeof (TValue));
+        XmlSerializer keySerializer = new XmlSerializer (typeof (TKey));
+        XmlSerializer valueSerializer = new XmlSerializer (typeof (TValue));
 
         bool wasEmpty = reader.IsEmptyElement;
         reader.Read();
@@ -27,17 +27,17 @@ public class SerializableDictionary<TKey, TValue>
 
         while (reader.NodeType != XmlNodeType.EndElement)
         {
-            reader.ReadStartElement("item");
+            reader.ReadStartElement ("item");
 
-            reader.ReadStartElement("key");
-            TKey key = (TKey) keySerializer.Deserialize(reader);
+            reader.ReadStartElement ("key");
+            TKey key = (TKey) keySerializer.Deserialize (reader);
             reader.ReadEndElement();
 
-            reader.ReadStartElement("value");
-            TValue value = (TValue) valueSerializer.Deserialize(reader);
+            reader.ReadStartElement ("value");
+            TValue value = (TValue) valueSerializer.Deserialize (reader);
             reader.ReadEndElement();
 
-            Add(key, value);
+            Add (key, value);
 
             reader.ReadEndElement();
             reader.MoveToContent();
@@ -45,22 +45,22 @@ public class SerializableDictionary<TKey, TValue>
         reader.ReadEndElement();
     }
 
-    public void WriteXml(XmlWriter writer)
+    public void WriteXml (XmlWriter writer)
     {
-        XmlSerializer keySerializer = new XmlSerializer(typeof (TKey));
-        XmlSerializer valueSerializer = new XmlSerializer(typeof (TValue));
+        XmlSerializer keySerializer = new XmlSerializer (typeof (TKey));
+        XmlSerializer valueSerializer = new XmlSerializer (typeof (TValue));
 
         foreach (TKey key in Keys)
         {
-            writer.WriteStartElement("item");
+            writer.WriteStartElement ("item");
 
-            writer.WriteStartElement("key");
-            keySerializer.Serialize(writer, key);
+            writer.WriteStartElement ("key");
+            keySerializer.Serialize (writer, key);
             writer.WriteEndElement();
 
-            writer.WriteStartElement("value");
+            writer.WriteStartElement ("value");
             TValue value = this[key];
-            valueSerializer.Serialize(writer, value);
+            valueSerializer.Serialize (writer, value);
             writer.WriteEndElement();
 
             writer.WriteEndElement();

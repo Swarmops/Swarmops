@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicInternalPoll : IHasIdentity
     {
-        public BasicInternalPoll(int internalPollId, int createdByPersonId, int organizationId, int geographyId,
+        public BasicInternalPoll (int internalPollId, int createdByPersonId, int organizationId, int geographyId,
             string name, bool runningOpen, bool votingOpen, int maxVoteLength, DateTime runningOpens,
             DateTime runningCloses, DateTime votingOpens, DateTime votingCloses, InternalPollResultsType resultsType)
         {
@@ -24,8 +24,8 @@ namespace Swarmops.Basic.Types
             ResultsType = resultsType;
         }
 
-        public BasicInternalPoll(BasicInternalPoll original)
-            : this(
+        public BasicInternalPoll (BasicInternalPoll original)
+            : this (
                 original.InternalPollId, original.CreatedByPersonId, original.OrganizationId, original.GeographyId,
                 original.Name, original.RunningOpen,
                 original.VotingOpen, original.MaxVoteLength, original.RunningOpens, original.RunningCloses,

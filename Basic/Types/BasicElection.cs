@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicElection : IHasIdentity
     {
-        public BasicElection(int electionId, string name, int geographyId, DateTime date)
+        public BasicElection (int electionId, string name, int geographyId, DateTime date)
         {
             ElectionId = electionId;
             Name = name;
@@ -13,8 +13,8 @@ namespace Swarmops.Basic.Types
             Date = date;
         }
 
-        public BasicElection(BasicElection original) :
-            this(original.ElectionId, original.Name, original.GeographyId, original.Date)
+        public BasicElection (BasicElection original) :
+            this (original.ElectionId, original.Name, original.GeographyId, original.Date)
         {
             // empty copy ctor
         }

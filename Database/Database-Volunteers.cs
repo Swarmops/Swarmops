@@ -18,7 +18,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT VolunteerId,PersonId,OwnerPersonId,OpenedDateTime,Open,ClosedDateTime,ClosingComments FROM Volunteers WHERE Open=1;",
                         connection);
 
@@ -26,7 +26,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadVolunteerFromDataReader(reader));
+                        result.Add (ReadVolunteerFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -34,14 +34,14 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicVolunteer GetVolunteer(int volunteerId)
+        public BasicVolunteer GetVolunteer (int volunteerId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT VolunteerId,PersonId,OwnerPersonId,OpenedDateTime,Open,ClosedDateTime,ClosingComments FROM Volunteers WHERE VolunteerId=" +
                         volunteerId + ";", connection);
 
@@ -49,22 +49,22 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadVolunteerFromDataReader(reader);
+                        return ReadVolunteerFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown VolunteerId");
+                    throw new ArgumentException ("Unknown VolunteerId");
                 }
             }
         }
 
-        public BasicVolunteerRole GetVolunteerRole(int volunteerRoleId)
+        public BasicVolunteerRole GetVolunteerRole (int volunteerRoleId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT VolunteerRoleId,VolunteerId,OrganizationId,GeographyId,RoleTypeId,Open,Assigned FROM VolunteerRoles WHERE VolunteerRoleId=" +
                         volunteerRoleId + ";", connection);
 
@@ -72,16 +72,16 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadVolunteerRoleFromDataReader(reader);
+                        return ReadVolunteerRoleFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown VolunteerId");
+                    throw new ArgumentException ("Unknown VolunteerId");
                 }
             }
         }
 
 
-        public BasicVolunteerRole[] GetVolunteerRolesByVolunteer(int volunteerId)
+        public BasicVolunteerRole[] GetVolunteerRolesByVolunteer (int volunteerId)
         {
             List<BasicVolunteerRole> result = new List<BasicVolunteerRole>();
 
@@ -90,7 +90,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT VolunteerRoleId,VolunteerId,OrganizationId,GeographyId,RoleTypeId,Open,Assigned FROM VolunteerRoles WHERE VolunteerId=" +
                         volunteerId + ";", connection);
 
@@ -98,7 +98,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadVolunteerRoleFromDataReader(reader));
+                        result.Add (ReadVolunteerRoleFromDataReader (reader));
                     }
                 }
             }
@@ -107,115 +107,115 @@ namespace Swarmops.Database
         }
 
 
-        private BasicVolunteer ReadVolunteerFromDataReader(DbDataReader reader)
+        private BasicVolunteer ReadVolunteerFromDataReader (DbDataReader reader)
         {
-            int volunteerId = reader.GetInt32(0);
-            int personId = reader.GetInt32(1);
-            int ownerPersonId = reader.GetInt32(2);
-            DateTime openedDateTime = reader.GetDateTime(3);
-            bool open = reader.GetBoolean(4);
-            DateTime closedDateTime = reader.GetDateTime(5);
-            string closingComments = reader.GetString(6);
+            int volunteerId = reader.GetInt32 (0);
+            int personId = reader.GetInt32 (1);
+            int ownerPersonId = reader.GetInt32 (2);
+            DateTime openedDateTime = reader.GetDateTime (3);
+            bool open = reader.GetBoolean (4);
+            DateTime closedDateTime = reader.GetDateTime (5);
+            string closingComments = reader.GetString (6);
 
-            return new BasicVolunteer(volunteerId, personId, ownerPersonId, openedDateTime, open, closedDateTime,
+            return new BasicVolunteer (volunteerId, personId, ownerPersonId, openedDateTime, open, closedDateTime,
                 closingComments);
         }
 
 
-        private BasicVolunteerRole ReadVolunteerRoleFromDataReader(DbDataReader reader)
+        private BasicVolunteerRole ReadVolunteerRoleFromDataReader (DbDataReader reader)
         {
-            int volunteerRoleId = reader.GetInt32(0);
-            int volunteerId = reader.GetInt32(1);
-            int organizationId = reader.GetInt32(2);
-            int geographyId = reader.GetInt32(3);
-            int roleTypeId = reader.GetInt32(4);
-            bool open = reader.GetBoolean(5);
-            bool assigned = reader.GetBoolean(6);
+            int volunteerRoleId = reader.GetInt32 (0);
+            int volunteerId = reader.GetInt32 (1);
+            int organizationId = reader.GetInt32 (2);
+            int geographyId = reader.GetInt32 (3);
+            int roleTypeId = reader.GetInt32 (4);
+            bool open = reader.GetBoolean (5);
+            bool assigned = reader.GetBoolean (6);
 
-            return new BasicVolunteerRole(volunteerRoleId, volunteerId, organizationId, geographyId,
+            return new BasicVolunteerRole (volunteerRoleId, volunteerId, organizationId, geographyId,
                 (RoleType) roleTypeId, open, assigned);
         }
 
 
-        public int CreateVolunteer(int personId, int ownerPersonId)
+        public int CreateVolunteer (int personId, int ownerPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateVolunteer", connection);
+                DbCommand command = GetDbCommand ("CreateVolunteer", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "ownerPersonId", ownerPersonId);
-                AddParameterWithName(command, "openedDateTime", DateTime.Now);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "ownerPersonId", ownerPersonId);
+                AddParameterWithName (command, "openedDateTime", DateTime.Now);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int CreateVolunteerRole(int volunteerId, int organizationId, int geographyId, RoleType roleType)
+        public int CreateVolunteerRole (int volunteerId, int organizationId, int geographyId, RoleType roleType)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateVolunteerRole", connection);
+                DbCommand command = GetDbCommand ("CreateVolunteerRole", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "volunteerId", volunteerId);
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "geographyId", geographyId);
-                AddParameterWithName(command, "roleTypeId", (int) roleType);
+                AddParameterWithName (command, "volunteerId", volunteerId);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "geographyId", geographyId);
+                AddParameterWithName (command, "roleTypeId", (int) roleType);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public void SetVolunteerOwnerPersonId(int volunteerId, int ownerPersonId)
+        public void SetVolunteerOwnerPersonId (int volunteerId, int ownerPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetVolunteerOwnerPersonId", connection);
+                DbCommand command = GetDbCommand ("SetVolunteerOwnerPersonId", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "volunteerId", volunteerId);
-                AddParameterWithName(command, "ownerPersonId", ownerPersonId);
+                AddParameterWithName (command, "volunteerId", volunteerId);
+                AddParameterWithName (command, "ownerPersonId", ownerPersonId);
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public void CloseVolunteer(int volunteerId, string closingComments)
+        public void CloseVolunteer (int volunteerId, string closingComments)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CloseVolunteer", connection);
+                DbCommand command = GetDbCommand ("CloseVolunteer", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "volunteerId", volunteerId);
-                AddParameterWithName(command, "closedDateTime", DateTime.Now);
-                AddParameterWithName(command, "closingComments", closingComments);
+                AddParameterWithName (command, "volunteerId", volunteerId);
+                AddParameterWithName (command, "closedDateTime", DateTime.Now);
+                AddParameterWithName (command, "closingComments", closingComments);
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public void CloseVolunteerRole(int volunteerRoleId, bool wasAssigned)
+        public void CloseVolunteerRole (int volunteerRoleId, bool wasAssigned)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CloseVolunteerRole", connection);
+                DbCommand command = GetDbCommand ("CloseVolunteerRole", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "volunteerRoleId", volunteerRoleId);
-                AddParameterWithName(command, "assigned", wasAssigned);
+                AddParameterWithName (command, "volunteerRoleId", volunteerRoleId);
+                AddParameterWithName (command, "assigned", wasAssigned);
 
                 command.ExecuteNonQuery();
             }

@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicInternalPollCandidate : IHasIdentity
     {
-        public BasicInternalPollCandidate(int internalPollCandidateId, int internalPollId, int personId,
+        public BasicInternalPollCandidate (int internalPollCandidateId, int internalPollId, int personId,
             string candidacyStatement)
         {
             InternalPollCandidateId = internalPollCandidateId;
@@ -13,8 +13,8 @@ namespace Swarmops.Basic.Types
             CandidacyStatement = candidacyStatement;
         }
 
-        public BasicInternalPollCandidate(BasicInternalPollCandidate original)
-            : this(
+        public BasicInternalPollCandidate (BasicInternalPollCandidate original)
+            : this (
                 original.InternalPollCandidateId, original.InternalPollId, original.PersonId,
                 original.CandidacyStatement)
         {

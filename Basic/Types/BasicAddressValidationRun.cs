@@ -6,7 +6,7 @@ namespace Swarmops.Basic.Types
     {
         private readonly int validationRunId;
 
-        public BasicAddressValidationRun(int validationRunId)
+        public BasicAddressValidationRun (int validationRunId)
         {
             this.validationRunId = validationRunId;
         }

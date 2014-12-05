@@ -11,29 +11,29 @@ namespace Swarmops.Logic.Swarm
 {
     public class Parley : BasicParley, IAttestable
     {
-        private Parley(BasicParley basic) : base(basic)
+        private Parley (BasicParley basic) : base (basic)
         {
             // empty pvt ctor
         }
 
         public ParleyOptions Options
         {
-            get { return ParleyOptions.ForParley(this); }
+            get { return ParleyOptions.ForParley (this); }
         }
 
         public ParleyAttendees Attendees
         {
-            get { return ParleyAttendees.ForParley(this); }
+            get { return ParleyAttendees.ForParley (this); }
         }
 
         public Organization Organization
         {
-            get { return Organization.FromIdentity(OrganizationId); }
+            get { return Organization.FromIdentity (OrganizationId); }
         }
 
         public Person Person
         {
-            get { return Person.FromIdentity(PersonId); }
+            get { return Person.FromIdentity (PersonId); }
         }
 
         public decimal BudgetDecimal
@@ -59,7 +59,7 @@ namespace Swarmops.Logic.Swarm
                 if (base.Open != value)
                 {
                     base.Open = value;
-                    SwarmDb.GetDatabaseForWriting().SetParleyOpen(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetParleyOpen (Identity, value);
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace Swarmops.Logic.Swarm
             get
             {
                 BasicFinancialValidation[] validations =
-                    SwarmDb.GetDatabaseForReading().GetFinancialValidations(FinancialDependencyType.Parley,
+                    SwarmDb.GetDatabaseForReading().GetFinancialValidations (FinancialDependencyType.Parley,
                         Identity);
 
                 foreach (BasicFinancialValidation validation in validations)
@@ -107,13 +107,13 @@ namespace Swarmops.Logic.Swarm
 
                 if (base.BudgetId < 0)
                 {
-                    return FinancialAccount.FromIdentity(-base.BudgetId);
+                    return FinancialAccount.FromIdentity (-base.BudgetId);
                 }
-                return this.Budget.Parent;
+                return Budget.Parent;
             }
         }
 
-        public void Attest(Person attester)
+        public void Attest (Person attester)
         {
             if (Attested)
             {
@@ -128,7 +128,7 @@ namespace Swarmops.Logic.Swarm
 
             if (base.BudgetId < 0) // no account created yet
             {
-                ourBudget = FinancialAccount.Create(Budget.Organization,
+                ourBudget = FinancialAccount.Create (Budget.Organization,
                     "Conf: " + Name,
                     FinancialAccountType.Cost,
                     Budget);
@@ -137,7 +137,7 @@ namespace Swarmops.Logic.Swarm
 
                 base.BudgetId = ourBudget.Identity;
                 ourBudget.Owner = Person;
-                SwarmDb.GetDatabaseForWriting().SetParleyBudget(Identity, ourBudget.Identity);
+                SwarmDb.GetDatabaseForWriting().SetParleyBudget (Identity, ourBudget.Identity);
             }
             else
             {
@@ -146,7 +146,7 @@ namespace Swarmops.Logic.Swarm
 
                 if (!AttestedOnce)
                 {
-                    throw new InvalidOperationException(
+                    throw new InvalidOperationException (
                         "Budget exists despite parley not having been attested. This should not be possible.");
                 }
 
@@ -154,32 +154,32 @@ namespace Swarmops.Logic.Swarm
                 parentBudget = ParentBudget;
             }
 
-            ourBudget.SetBudgetCents(DateTime.Today.Year, -BudgetCents);
-            parentBudget.SetBudgetCents(DateTime.Today.Year,
-                parentBudget.GetBudgetCents(year) + BudgetCents); // cost budgets are negative
+            ourBudget.SetBudgetCents (DateTime.Today.Year, -BudgetCents);
+            parentBudget.SetBudgetCents (DateTime.Today.Year,
+                parentBudget.GetBudgetCents (year) + BudgetCents); // cost budgets are negative
 
             // Reserve the guarantee money
 
-            FinancialTransaction guaranteeFundsTx = FinancialTransaction.Create(OrganizationId, DateTime.Now,
+            FinancialTransaction guaranteeFundsTx = FinancialTransaction.Create (OrganizationId, DateTime.Now,
                 "Conference #" +
                 Identity + " Guarantee");
-            guaranteeFundsTx.AddRow(Budget, -GuaranteeCents, attester);
-            guaranteeFundsTx.AddRow(Budget.Parent, GuaranteeCents, attester);
+            guaranteeFundsTx.AddRow (Budget, -GuaranteeCents, attester);
+            guaranteeFundsTx.AddRow (Budget.Parent, GuaranteeCents, attester);
 
             // Finally, set as attested
 
-            PWEvents.CreateEvent(
+            PWEvents.CreateEvent (
                 EventSource.PirateWeb, EventType.ParleyAttested, attester.Identity,
                 OrganizationId, 0, 0, Identity, string.Empty);
 
             base.Attested = true;
-            SwarmDb.GetDatabaseForWriting().SetParleyAttested(Identity, true);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().SetParleyAttested (Identity, true);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
                 FinancialDependencyType.Parley, Identity,
                 DateTime.Now, attester.Identity, (double) (GuaranteeDecimal));
         }
 
-        public void Deattest(Person deattester)
+        public void Deattest (Person deattester)
         {
             throw new NotImplementedException();
             /*
@@ -197,58 +197,58 @@ namespace Swarmops.Logic.Swarm
 
         public FinancialAccount Budget
         {
-            get { return FinancialAccount.FromIdentity(BudgetId); }
+            get { return FinancialAccount.FromIdentity (BudgetId); }
         }
 
-        public static Parley FromBasic(BasicParley basic)
+        public static Parley FromBasic (BasicParley basic)
         {
-            return new Parley(basic);
+            return new Parley (basic);
         }
 
-        public static Parley FromIdentity(int parleyId)
+        public static Parley FromIdentity (int parleyId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetParley(parleyId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetParley (parleyId));
         }
 
-        public static Parley Create(Organization organization, Person person, FinancialAccount budgetInitial,
+        public static Parley Create (Organization organization, Person person, FinancialAccount budgetInitial,
             string name, Geography geography, string description, string informationUrl, DateTime startDate,
             DateTime endDate, Int64 budgetCents, Int64 guaranteeCents, Int64 attendanceFeeCents)
         {
             Parley newParley =
-                FromIdentity(SwarmDb.GetDatabaseForWriting().CreateParley(organization.Identity, person.Identity,
+                FromIdentity (SwarmDb.GetDatabaseForWriting().CreateParley (organization.Identity, person.Identity,
                     -(budgetInitial.Identity), name, geography.Identity,
                     description, informationUrl, startDate, endDate,
                     budgetCents, guaranteeCents, attendanceFeeCents));
 
-            PWEvents.CreateEvent(EventSource.PirateWeb, EventType.ParleyCreated, person.Identity, organization.Identity,
+            PWEvents.CreateEvent (EventSource.PirateWeb, EventType.ParleyCreated, person.Identity, organization.Identity,
                 0, 0, newParley.Identity, string.Empty);
 
             return newParley;
         }
 
-        public ParleyOption CreateOption(string description, Int64 amountCents)
+        public ParleyOption CreateOption (string description, Int64 amountCents)
         {
-            return ParleyOption.Create(this, description, amountCents);
+            return ParleyOption.Create (this, description, amountCents);
         }
 
-        public ParleyAttendee CreateAttendee(string firstName, string lastName, string email, bool asGuest)
+        public ParleyAttendee CreateAttendee (string firstName, string lastName, string email, bool asGuest)
         {
-            Person newAttendee = Person.Create(firstName + "|" + lastName, email, string.Empty, string.Empty,
+            Person newAttendee = Person.Create (firstName + "|" + lastName, email, string.Empty, string.Empty,
                 string.Empty, string.Empty, string.Empty,
                 Organization.DefaultCountry.Code, DateTime.Now, PersonGender.Unknown);
 
-            return ParleyAttendee.Create(this, newAttendee, asGuest);
+            return ParleyAttendee.Create (this, newAttendee, asGuest);
         }
 
-        public void CloseBudget(Person closingPerson)
+        public void CloseBudget (Person closingPerson)
         {
-            Int64 remainingFunds = -Budget.GetDeltaCents(CreatedDateTime, DateTime.Now);
+            Int64 remainingFunds = -Budget.GetDeltaCents (CreatedDateTime, DateTime.Now);
 
-            FinancialTransaction transaction = FinancialTransaction.Create(OrganizationId,
+            FinancialTransaction transaction = FinancialTransaction.Create (OrganizationId,
                 DateTime.Now,
                 "Closing conference #" + Identity);
-            transaction.AddRow(Budget, remainingFunds, closingPerson);
-            transaction.AddRow(Budget.Parent, -remainingFunds, closingPerson);
+            transaction.AddRow (Budget, remainingFunds, closingPerson);
+            transaction.AddRow (Budget.Parent, -remainingFunds, closingPerson);
         }
 
         public void CancelBudget()
@@ -259,9 +259,9 @@ namespace Swarmops.Logic.Swarm
 
             if (BudgetId > 0) // Budget attested and allocated
             {
-                Budget.Parent.SetBudgetCents(year,
-                    Budget.Parent.GetBudgetCents(year) - BudgetCents); // cost budgets are negative
-                Budget.SetBudgetCents(year, 0);
+                Budget.Parent.SetBudgetCents (year,
+                    Budget.Parent.GetBudgetCents (year) - BudgetCents); // cost budgets are negative
+                Budget.SetBudgetCents (year, 0);
             }
         }
     }

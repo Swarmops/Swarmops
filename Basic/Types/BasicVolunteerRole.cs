@@ -13,7 +13,7 @@ namespace Swarmops.Basic.Types
         private readonly int volunteerId;
         private readonly int volunteerRoleId;
 
-        public BasicVolunteerRole(int volunteerRoleId, int volunteerId, int organizationId, int geographyId,
+        public BasicVolunteerRole (int volunteerRoleId, int volunteerId, int organizationId, int geographyId,
             RoleType roleType, bool open, bool assigned)
         {
             this.volunteerRoleId = volunteerRoleId;
@@ -25,8 +25,8 @@ namespace Swarmops.Basic.Types
             this.assigned = assigned;
         }
 
-        public BasicVolunteerRole(BasicVolunteerRole original)
-            : this(original.volunteerRoleId, original.volunteerId, original.organizationId, original.geographyId,
+        public BasicVolunteerRole (BasicVolunteerRole original)
+            : this (original.volunteerRoleId, original.volunteerId, original.organizationId, original.geographyId,
                 original.roleType, original.open, original.assigned)
         {
         }

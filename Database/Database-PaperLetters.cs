@@ -11,39 +11,39 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public int CreatePaperLetter(int organizationId, string fromName, string replyAddress, DateTime receivedDate,
+        public int CreatePaperLetter (int organizationId, string fromName, string replyAddress, DateTime receivedDate,
             int toPersonId, RoleType toPersonInRole, bool personal, int uploadedByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePaperLetter", connection);
+                DbCommand command = GetDbCommand ("CreatePaperLetter", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "fromName", fromName);
-                AddParameterWithName(command, "replyAddress", replyAddress);
-                AddParameterWithName(command, "receivedDate", receivedDate);
-                AddParameterWithName(command, "toPersonId", toPersonId);
-                AddParameterWithName(command, "toPersonInRoleId", (int) toPersonInRole);
-                AddParameterWithName(command, "personal", personal);
-                AddParameterWithName(command, "uploadedByPersonId", uploadedByPersonId);
-                AddParameterWithName(command, "uploadedDateTime", DateTime.Now);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "fromName", fromName);
+                AddParameterWithName (command, "replyAddress", replyAddress);
+                AddParameterWithName (command, "receivedDate", receivedDate);
+                AddParameterWithName (command, "toPersonId", toPersonId);
+                AddParameterWithName (command, "toPersonInRoleId", (int) toPersonInRole);
+                AddParameterWithName (command, "personal", personal);
+                AddParameterWithName (command, "uploadedByPersonId", uploadedByPersonId);
+                AddParameterWithName (command, "uploadedDateTime", DateTime.Now);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public BasicPaperLetter GetPaperLetter(int paperLetterId)
+        public BasicPaperLetter GetPaperLetter (int paperLetterId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT PaperLetterId,OrganizationId,FromName,ReplyAddress,ReceivedDate,ToPersonId," +
                         "ToPersonInRoleId,Personal,UploadedByPersonId,UploadedDateTime " +
                         "From PaperLetters WHERE PaperLetterId=" + paperLetterId + ";", connection);
@@ -52,16 +52,16 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadPaperLetterFromDataReader(reader);
+                        return ReadPaperLetterFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown PaperLetter Id");
+                    throw new ArgumentException ("Unknown PaperLetter Id");
                 }
             }
         }
 
 
-        public BasicPaperLetter[] GetPaperLettersForOrganization(int organizationId)
+        public BasicPaperLetter[] GetPaperLettersForOrganization (int organizationId)
         {
             List<BasicPaperLetter> result = new List<BasicPaperLetter>();
 
@@ -70,7 +70,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT PaperLetterId,OrganizationId,FromName,ReplyAddress,ReceivedDate,ToPersonId," +
                         "ToPersonInRoleId,Personal,UploadedByPersonId,UploadedDateTime " +
                         "From PaperLetters WHERE OrganizationId=" + organizationId + ";", connection);
@@ -79,7 +79,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPaperLetterFromDataReader(reader));
+                        result.Add (ReadPaperLetterFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -88,7 +88,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicPaperLetter[] GetPaperLettersForPerson(int personId)
+        public BasicPaperLetter[] GetPaperLettersForPerson (int personId)
         {
             List<BasicPaperLetter> result = new List<BasicPaperLetter>();
 
@@ -97,7 +97,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT PaperLetterId,OrganizationId,FromName,ReplyAddress,ReceivedDate,ToPersonId," +
                         "ToPersonInRoleId,Personal,UploadedByPersonId,UploadedDateTime " +
                         "From PaperLetters WHERE ToPersonId=" + personId + ";", connection);
@@ -106,7 +106,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPaperLetterFromDataReader(reader));
+                        result.Add (ReadPaperLetterFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -115,20 +115,20 @@ namespace Swarmops.Database
         }
 
 
-        private BasicPaperLetter ReadPaperLetterFromDataReader(DbDataReader reader)
+        private BasicPaperLetter ReadPaperLetterFromDataReader (DbDataReader reader)
         {
-            int paperLetterId = reader.GetInt32(0);
-            int organizationId = reader.GetInt32(1);
-            string fromName = reader.GetString(2);
-            string replyAddress = reader.GetString(3);
-            DateTime receivedDate = reader.GetDateTime(4);
-            int toPersonId = reader.GetInt32(5);
-            int toPersonInRoleId = reader.GetInt32(6);
-            bool personal = reader.GetBoolean(7);
-            int uploadedByPersonId = reader.GetInt32(8);
-            DateTime uploadedDateTime = reader.GetDateTime(9);
+            int paperLetterId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32 (1);
+            string fromName = reader.GetString (2);
+            string replyAddress = reader.GetString (3);
+            DateTime receivedDate = reader.GetDateTime (4);
+            int toPersonId = reader.GetInt32 (5);
+            int toPersonInRoleId = reader.GetInt32 (6);
+            bool personal = reader.GetBoolean (7);
+            int uploadedByPersonId = reader.GetInt32 (8);
+            DateTime uploadedDateTime = reader.GetDateTime (9);
 
-            return new BasicPaperLetter(paperLetterId, organizationId, fromName, replyAddress, receivedDate,
+            return new BasicPaperLetter (paperLetterId, organizationId, fromName, replyAddress, receivedDate,
                 toPersonId, (RoleType) toPersonInRoleId, personal, uploadedByPersonId, uploadedDateTime);
         }
 

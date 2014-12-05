@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicParleyOption : IHasIdentity
     {
-        public BasicParleyOption(int parleyOptionId, int parleyId, string description, Int64 amountCents, bool active)
+        public BasicParleyOption (int parleyOptionId, int parleyId, string description, Int64 amountCents, bool active)
         {
             ParleyOptionId = parleyOptionId;
             ParleyId = parleyId;
@@ -14,8 +14,8 @@ namespace Swarmops.Basic.Types
             Active = active;
         }
 
-        public BasicParleyOption(BasicParleyOption original)
-            : this(
+        public BasicParleyOption (BasicParleyOption original)
+            : this (
                 original.ParleyOptionId, original.ParleyId, original.Description, original.AmountCents, original.Active)
         {
             // empty copy ctor

@@ -16,14 +16,14 @@ namespace Swarmops.Basic.Types
 
         #endregion
 
-        public BasicMediaCategory(int mediaCategoryId, string name)
+        public BasicMediaCategory (int mediaCategoryId, string name)
         {
             this.mediaCategoryId = mediaCategoryId;
             this.name = name;
         }
 
-        public BasicMediaCategory(BasicMediaCategory original) :
-            this(original.mediaCategoryId, original.name)
+        public BasicMediaCategory (BasicMediaCategory original) :
+            this (original.mediaCategoryId, original.name)
         {
         }
 

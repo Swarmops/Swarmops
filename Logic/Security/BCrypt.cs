@@ -393,38 +393,38 @@ namespace Swarmops.Logic.Security
         /// <param name="d">The byte array to encode</param>
         /// <param name="length">The number of bytes to encode</param>
         /// <returns>A Base64-encoded string</returns>
-        private static string EncodeBase64(byte[] d, int length)
+        private static string EncodeBase64 (byte[] d, int length)
         {
             if (length <= 0 || length > d.Length)
             {
-                throw new ArgumentOutOfRangeException("length", length, null);
+                throw new ArgumentOutOfRangeException ("length", length, null);
             }
 
-            StringBuilder rs = new StringBuilder(length*2);
+            StringBuilder rs = new StringBuilder (length*2);
 
             for (int offset = 0, c1, c2; offset < length;)
             {
                 c1 = d[offset++] & 0xff;
-                rs.Append(base64_code[(c1 >> 2) & 0x3f]);
+                rs.Append (base64_code[(c1 >> 2) & 0x3f]);
                 c1 = (c1 & 0x03) << 4;
                 if (offset >= length)
                 {
-                    rs.Append(base64_code[c1 & 0x3f]);
+                    rs.Append (base64_code[c1 & 0x3f]);
                     break;
                 }
                 c2 = d[offset++] & 0xff;
                 c1 |= (c2 >> 4) & 0x0f;
-                rs.Append(base64_code[c1 & 0x3f]);
+                rs.Append (base64_code[c1 & 0x3f]);
                 c1 = (c2 & 0x0f) << 2;
                 if (offset >= length)
                 {
-                    rs.Append(base64_code[c1 & 0x3f]);
+                    rs.Append (base64_code[c1 & 0x3f]);
                     break;
                 }
                 c2 = d[offset++] & 0xff;
                 c1 |= (c2 >> 6) & 0x03;
-                rs.Append(base64_code[c1 & 0x3f]);
-                rs.Append(base64_code[c2 & 0x3f]);
+                rs.Append (base64_code[c1 & 0x3f]);
+                rs.Append (base64_code[c2 & 0x3f]);
             }
 
             return rs.ToString();
@@ -437,7 +437,7 @@ namespace Swarmops.Logic.Security
         /// </summary>
         /// <param name="c">The Base64-encoded value</param>
         /// <returns>The decoded value of <c>x</c></returns>
-        private static int Char64(char c)
+        private static int Char64 (char c)
         {
             int i = c;
             return (i < 0 || i > index_64.Length) ? -1 : index_64[i];
@@ -451,44 +451,44 @@ namespace Swarmops.Logic.Security
         /// <param name="s">The string to decode</param>
         /// <param name="maximumLength">The maximum number of bytes to decode</param>
         /// <returns>An array containing the decoded bytes</returns>
-        private static byte[] DecodeBase64(string s, int maximumLength)
+        private static byte[] DecodeBase64 (string s, int maximumLength)
         {
-            List<byte> bytes = new List<byte>(Math.Min(maximumLength, s.Length));
+            List<byte> bytes = new List<byte> (Math.Min (maximumLength, s.Length));
 
             if (maximumLength <= 0)
             {
-                throw new ArgumentOutOfRangeException("maximumLength", maximumLength, null);
+                throw new ArgumentOutOfRangeException ("maximumLength", maximumLength, null);
             }
 
             for (int offset = 0, slen = s.Length, length = 0; offset < slen - 1 && length < maximumLength;)
             {
-                int c1 = Char64(s[offset++]);
-                int c2 = Char64(s[offset++]);
+                int c1 = Char64 (s[offset++]);
+                int c2 = Char64 (s[offset++]);
                 if (c1 == -1 || c2 == -1)
                 {
                     break;
                 }
 
-                bytes.Add((byte) ((c1 << 2) | ((c2 & 0x30) >> 4)));
+                bytes.Add ((byte) ((c1 << 2) | ((c2 & 0x30) >> 4)));
                 if (++length >= maximumLength || offset >= s.Length)
                 {
                     break;
                 }
 
-                int c3 = Char64(s[offset++]);
+                int c3 = Char64 (s[offset++]);
                 if (c3 == -1)
                 {
                     break;
                 }
 
-                bytes.Add((byte) (((c2 & 0x0f) << 4) | ((c3 & 0x3c) >> 2)));
+                bytes.Add ((byte) (((c2 & 0x0f) << 4) | ((c3 & 0x3c) >> 2)));
                 if (++length >= maximumLength || offset >= s.Length)
                 {
                     break;
                 }
 
-                int c4 = Char64(s[offset++]);
-                bytes.Add((byte) (((c3 & 0x03) << 6) | c4));
+                int c4 = Char64 (s[offset++]);
+                bytes.Add ((byte) (((c3 & 0x03) << 6) | c4));
 
                 ++length;
             }
@@ -508,7 +508,7 @@ namespace Swarmops.Logic.Security
         ///     The position in the array of the
         ///     blocks.
         /// </param>
-        private void Encipher(uint[] block, int offset)
+        private void Encipher (uint[] block, int offset)
         {
             uint i, n, l = block[offset], r = block[offset + 1];
 
@@ -546,7 +546,7 @@ namespace Swarmops.Logic.Security
         /// </param>
         /// <param name="offset">The current offset into data.</param>
         /// <returns>The next work of material from data.</returns>
-        private static uint StreamToWord(byte[] data, ref int offset)
+        private static uint StreamToWord (byte[] data, ref int offset)
         {
             uint word = 0;
 
@@ -565,16 +565,16 @@ namespace Swarmops.Logic.Security
         private void InitKey()
         {
             this.p = new uint[p_orig.Length];
-            p_orig.CopyTo(this.p, 0);
+            p_orig.CopyTo (this.p, 0);
             this.s = new uint[s_orig.Length];
-            s_orig.CopyTo(this.s, 0);
+            s_orig.CopyTo (this.s, 0);
         }
 
         /// <summary>
         ///     Key the Blowfish cipher.
         /// </summary>
         /// <param name="key">An array containing the key.</param>
-        private void Key(byte[] key)
+        private void Key (byte[] key)
         {
             uint[] lr = {0, 0};
             int plen = this.p.Length, slen = this.s.Length;
@@ -582,19 +582,19 @@ namespace Swarmops.Logic.Security
             int offset = 0;
             for (int i = 0; i < plen; i++)
             {
-                this.p[i] = this.p[i] ^ StreamToWord(key, ref offset);
+                this.p[i] = this.p[i] ^ StreamToWord (key, ref offset);
             }
 
             for (int i = 0; i < plen; i += 2)
             {
-                Encipher(lr, 0);
+                Encipher (lr, 0);
                 this.p[i] = lr[0];
                 this.p[i + 1] = lr[1];
             }
 
             for (int i = 0; i < slen; i += 2)
             {
-                Encipher(lr, 0);
+                Encipher (lr, 0);
                 this.s[i] = lr[0];
                 this.s[i + 1] = lr[1];
             }
@@ -607,7 +607,7 @@ namespace Swarmops.Logic.Security
         /// </summary>
         /// <param name="data">Salt information.</param>
         /// <param name="key">Password information.</param>
-        private void EksKey(byte[] data, byte[] key)
+        private void EksKey (byte[] data, byte[] key)
         {
             uint[] lr = {0, 0};
             int plen = this.p.Length, slen = this.s.Length;
@@ -615,24 +615,24 @@ namespace Swarmops.Logic.Security
             int keyOffset = 0;
             for (int i = 0; i < plen; i++)
             {
-                this.p[i] = this.p[i] ^ StreamToWord(key, ref keyOffset);
+                this.p[i] = this.p[i] ^ StreamToWord (key, ref keyOffset);
             }
 
             int dataOffset = 0;
             for (int i = 0; i < plen; i += 2)
             {
-                lr[0] ^= StreamToWord(data, ref dataOffset);
-                lr[1] ^= StreamToWord(data, ref dataOffset);
-                Encipher(lr, 0);
+                lr[0] ^= StreamToWord (data, ref dataOffset);
+                lr[1] ^= StreamToWord (data, ref dataOffset);
+                Encipher (lr, 0);
                 this.p[i] = lr[0];
                 this.p[i + 1] = lr[1];
             }
 
             for (int i = 0; i < slen; i += 2)
             {
-                lr[0] ^= StreamToWord(data, ref dataOffset);
-                lr[1] ^= StreamToWord(data, ref dataOffset);
-                Encipher(lr, 0);
+                lr[0] ^= StreamToWord (data, ref dataOffset);
+                lr[1] ^= StreamToWord (data, ref dataOffset);
+                Encipher (lr, 0);
                 this.s[i] = lr[0];
                 this.s[i + 1] = lr[1];
             }
@@ -652,39 +652,39 @@ namespace Swarmops.Logic.Security
         ///     rounds of hashing to apply.
         /// </param>
         /// <returns>An array containing the binary hashed password.</returns>
-        private byte[] CryptRaw(byte[] password, byte[] salt, int logRounds)
+        private byte[] CryptRaw (byte[] password, byte[] salt, int logRounds)
         {
             uint[] cdata = new uint[bf_crypt_ciphertext.Length];
-            bf_crypt_ciphertext.CopyTo(cdata, 0);
+            bf_crypt_ciphertext.CopyTo (cdata, 0);
 
             int clen = cdata.Length;
             byte[] ret;
 
             if (logRounds < 4 || logRounds > 31)
             {
-                throw new ArgumentOutOfRangeException("logRounds", logRounds, null);
+                throw new ArgumentOutOfRangeException ("logRounds", logRounds, null);
             }
 
             int rounds = 1 << logRounds;
             if (salt.Length != BCRYPT_SALT_LEN)
             {
-                throw new ArgumentException("Invalid salt length.", "salt");
+                throw new ArgumentException ("Invalid salt length.", "salt");
             }
 
             InitKey();
-            EksKey(salt, password);
+            EksKey (salt, password);
 
             for (int i = 0; i < rounds; i++)
             {
-                Key(password);
-                Key(salt);
+                Key (password);
+                Key (salt);
             }
 
             for (int i = 0; i < 64; i++)
             {
                 for (int j = 0; j < (clen >> 1); j++)
                 {
-                    Encipher(cdata, j << 1);
+                    Encipher (cdata, j << 1);
                 }
             }
 
@@ -709,22 +709,22 @@ namespace Swarmops.Logic.Security
         ///     using <c>BCrypt.GenerateSalt</c>).
         /// </param>
         /// <returns>The hashed password.</returns>
-        public static string HashPassword(string password, string salt)
+        public static string HashPassword (string password, string salt)
         {
             if (password == null)
             {
-                throw new ArgumentNullException("password");
+                throw new ArgumentNullException ("password");
             }
             if (salt == null)
             {
-                throw new ArgumentNullException("salt");
+                throw new ArgumentNullException ("salt");
             }
 
             char minor = (char) 0;
 
             if (salt[0] != '$' || salt[1] != '2')
             {
-                throw new ArgumentException("Invalid salt version");
+                throw new ArgumentException ("Invalid salt version");
             }
 
             int offset;
@@ -733,7 +733,7 @@ namespace Swarmops.Logic.Security
                 minor = salt[2];
                 if (minor != 'a' || salt[3] != '$')
                 {
-                    throw new ArgumentException("Invalid salt revision");
+                    throw new ArgumentException ("Invalid salt revision");
                 }
                 offset = 4;
             }
@@ -745,35 +745,35 @@ namespace Swarmops.Logic.Security
             // Extract number of rounds
             if (salt[offset + 2] > '$')
             {
-                throw new ArgumentException("Missing salt rounds");
+                throw new ArgumentException ("Missing salt rounds");
             }
 
-            int rounds = Int32.Parse(salt.Substring(offset, 2), NumberFormatInfo.InvariantInfo);
+            int rounds = Int32.Parse (salt.Substring (offset, 2), NumberFormatInfo.InvariantInfo);
 
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(password + (minor >= 'a' ? "\0" : String.Empty));
-            byte[] saltBytes = DecodeBase64(salt.Substring(offset + 3, 22),
+            byte[] passwordBytes = Encoding.UTF8.GetBytes (password + (minor >= 'a' ? "\0" : String.Empty));
+            byte[] saltBytes = DecodeBase64 (salt.Substring (offset + 3, 22),
                 BCRYPT_SALT_LEN);
 
             BCrypt bcrypt = new BCrypt();
 
-            byte[] hashed = bcrypt.CryptRaw(passwordBytes, saltBytes, rounds);
+            byte[] hashed = bcrypt.CryptRaw (passwordBytes, saltBytes, rounds);
 
             StringBuilder rs = new StringBuilder();
 
-            rs.Append("$2");
+            rs.Append ("$2");
             if (minor >= 'a')
             {
-                rs.Append(minor);
+                rs.Append (minor);
             }
-            rs.Append('$');
+            rs.Append ('$');
             if (rounds < 10)
             {
-                rs.Append('0');
+                rs.Append ('0');
             }
-            rs.Append(rounds);
-            rs.Append('$');
-            rs.Append(EncodeBase64(saltBytes, saltBytes.Length));
-            rs.Append(EncodeBase64(hashed,
+            rs.Append (rounds);
+            rs.Append ('$');
+            rs.Append (EncodeBase64 (saltBytes, saltBytes.Length));
+            rs.Append (EncodeBase64 (hashed,
                 (bf_crypt_ciphertext.Length*4) - 1));
 
             return rs.ToString();
@@ -788,22 +788,22 @@ namespace Swarmops.Logic.Security
         ///     logRounds).
         /// </param>
         /// <returns>An encoded salt value.</returns>
-        public static string GenerateSalt(int logRounds)
+        public static string GenerateSalt (int logRounds)
         {
             byte[] randomBytes = new byte[BCRYPT_SALT_LEN];
 
-            RandomNumberGenerator.Create().GetBytes(randomBytes);
+            RandomNumberGenerator.Create().GetBytes (randomBytes);
 
-            StringBuilder rs = new StringBuilder((randomBytes.Length*2) + 8);
+            StringBuilder rs = new StringBuilder ((randomBytes.Length*2) + 8);
 
-            rs.Append("$2a$");
+            rs.Append ("$2a$");
             if (logRounds < 10)
             {
-                rs.Append('0');
+                rs.Append ('0');
             }
-            rs.Append(logRounds);
-            rs.Append('$');
-            rs.Append(EncodeBase64(randomBytes, randomBytes.Length));
+            rs.Append (logRounds);
+            rs.Append ('$');
+            rs.Append (EncodeBase64 (randomBytes, randomBytes.Length));
 
             return rs.ToString();
         }
@@ -816,7 +816,7 @@ namespace Swarmops.Logic.Security
         /// <returns>An encoded salt value.</returns>
         public static string GenerateSalt()
         {
-            return GenerateSalt(GENSALT_DEFAULT_LOG2_ROUNDS);
+            return GenerateSalt (GENSALT_DEFAULT_LOG2_ROUNDS);
         }
 
         /// <summary>
@@ -829,9 +829,9 @@ namespace Swarmops.Logic.Security
         ///     <c>true</c> if the passwords, <c>false</c>
         ///     otherwise.
         /// </returns>
-        public static bool CheckPassword(string plaintext, string hashed)
+        public static bool CheckPassword (string plaintext, string hashed)
         {
-            return StringComparer.Ordinal.Compare(hashed, HashPassword(plaintext, hashed)) == 0;
+            return StringComparer.Ordinal.Compare (hashed, HashPassword (plaintext, hashed)) == 0;
         }
     }
 }

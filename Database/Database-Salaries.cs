@@ -16,21 +16,21 @@ namespace Swarmops.Database
             "Salaries.Open " + // 10
             "FROM Salaries ";
 
-        private static BasicSalary ReadSalaryFromDataReader(IDataRecord reader)
+        private static BasicSalary ReadSalaryFromDataReader (IDataRecord reader)
         {
-            int salaryId = reader.GetInt32(0);
-            int payrollItemId = reader.GetInt32(1);
-            DateTime payoutDate = reader.GetDateTime(2);
-            Int64 baseSalaryCents = reader.GetInt64(3);
-            Int64 netSalaryCents = reader.GetInt64(4);
-            Int64 subtractiveTaxCents = reader.GetInt64(5);
-            Int64 additiveTaxCents = reader.GetInt64(6);
-            bool attested = reader.GetBoolean(7);
-            bool netPaid = reader.GetBoolean(8);
-            bool taxPaid = reader.GetBoolean(9);
-            bool open = reader.GetBoolean(10);
+            int salaryId = reader.GetInt32 (0);
+            int payrollItemId = reader.GetInt32 (1);
+            DateTime payoutDate = reader.GetDateTime (2);
+            Int64 baseSalaryCents = reader.GetInt64 (3);
+            Int64 netSalaryCents = reader.GetInt64 (4);
+            Int64 subtractiveTaxCents = reader.GetInt64 (5);
+            Int64 additiveTaxCents = reader.GetInt64 (6);
+            bool attested = reader.GetBoolean (7);
+            bool netPaid = reader.GetBoolean (8);
+            bool taxPaid = reader.GetBoolean (9);
+            bool open = reader.GetBoolean (10);
 
-            return new BasicSalary(salaryId, payrollItemId, payoutDate, baseSalaryCents, netSalaryCents,
+            return new BasicSalary (salaryId, payrollItemId, payoutDate, baseSalaryCents, netSalaryCents,
                 subtractiveTaxCents, additiveTaxCents,
                 attested, netPaid, taxPaid, open);
         }
@@ -45,24 +45,24 @@ namespace Swarmops.Database
         /// <param name="salaryId">The salary database identity.</param>
         /// <returns>The requested salary.</returns>
         /// <exception cref="ArgumentException">Thrown if there is no such identity.</exception>
-        public BasicSalary GetSalary(int salaryId)
+        public BasicSalary GetSalary (int salaryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + salaryFieldSequence + "WHERE SalaryId=" + salaryId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadSalaryFromDataReader(reader);
+                        return ReadSalaryFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Salary Id: " + salaryId);
+                    throw new ArgumentException ("Unknown Salary Id: " + salaryId);
                 }
             }
         }
@@ -75,7 +75,7 @@ namespace Swarmops.Database
         ///     specifiers.
         /// </param>
         /// <returns>A list of matching salaries.</returns>
-        public BasicSalary[] GetSalaries(params object[] conditions)
+        public BasicSalary[] GetSalaries (params object[] conditions)
         {
             List<BasicSalary> result = new List<BasicSalary>();
 
@@ -84,15 +84,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + salaryFieldSequence + "JOIN Payroll USING (PayrollItemId)" +
-                        ConstructWhereClause("Salaries", conditions), connection);
+                        ConstructWhereClause ("Salaries", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadSalaryFromDataReader(reader));
+                        result.Add (ReadSalaryFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -104,39 +104,39 @@ namespace Swarmops.Database
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateSalary(int payrollItemId, DateTime payoutDate, Int64 baseSalaryCents, Int64 netSalaryCents,
+        public int CreateSalary (int payrollItemId, DateTime payoutDate, Int64 baseSalaryCents, Int64 netSalaryCents,
             Int64 subtractiveTaxCents, Int64 additiveTaxCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateSalaryPrecise", connection);
+                DbCommand command = GetDbCommand ("CreateSalaryPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payrollItemId", payrollItemId);
-                AddParameterWithName(command, "payoutDate", payoutDate);
-                AddParameterWithName(command, "baseSalaryCents", baseSalaryCents);
-                AddParameterWithName(command, "netSalaryCents", netSalaryCents);
-                AddParameterWithName(command, "subtractiveTaxCents", subtractiveTaxCents);
-                AddParameterWithName(command, "additiveTaxCents", additiveTaxCents);
+                AddParameterWithName (command, "payrollItemId", payrollItemId);
+                AddParameterWithName (command, "payoutDate", payoutDate);
+                AddParameterWithName (command, "baseSalaryCents", baseSalaryCents);
+                AddParameterWithName (command, "netSalaryCents", netSalaryCents);
+                AddParameterWithName (command, "subtractiveTaxCents", subtractiveTaxCents);
+                AddParameterWithName (command, "additiveTaxCents", additiveTaxCents);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public void SetSalaryNetPaid(int salaryId, bool netPaid)
+        public void SetSalaryNetPaid (int salaryId, bool netPaid)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetSalaryNetPaid", connection);
+                DbCommand command = GetDbCommand ("SetSalaryNetPaid", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "salaryId", salaryId);
-                AddParameterWithName(command, "netPaid", netPaid);
+                AddParameterWithName (command, "salaryId", salaryId);
+                AddParameterWithName (command, "netPaid", netPaid);
 
                 command.ExecuteNonQuery();
 
@@ -146,34 +146,34 @@ namespace Swarmops.Database
         }
 
 
-        public void SetSalaryNetSalary(int salaryId, Int64 netSalaryCents)
+        public void SetSalaryNetSalary (int salaryId, Int64 netSalaryCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetSalaryNetSalaryPrecise", connection);
+                DbCommand command = GetDbCommand ("SetSalaryNetSalaryPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "salaryId", salaryId);
-                AddParameterWithName(command, "netSalaryCents", netSalaryCents);
+                AddParameterWithName (command, "salaryId", salaryId);
+                AddParameterWithName (command, "netSalaryCents", netSalaryCents);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetSalaryTaxPaid(int salaryId, bool taxPaid)
+        public void SetSalaryTaxPaid (int salaryId, bool taxPaid)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetSalaryTaxPaid", connection);
+                DbCommand command = GetDbCommand ("SetSalaryTaxPaid", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "salaryId", salaryId);
-                AddParameterWithName(command, "taxPaid", taxPaid);
+                AddParameterWithName (command, "salaryId", salaryId);
+                AddParameterWithName (command, "taxPaid", taxPaid);
 
                 command.ExecuteNonQuery();
 
@@ -183,17 +183,17 @@ namespace Swarmops.Database
         }
 
 
-        public void SetSalaryAttested(int salaryId, bool attested)
+        public void SetSalaryAttested (int salaryId, bool attested)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetSalaryAttested", connection);
+                DbCommand command = GetDbCommand ("SetSalaryAttested", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "salaryId", salaryId);
-                AddParameterWithName(command, "attested", attested);
+                AddParameterWithName (command, "salaryId", salaryId);
+                AddParameterWithName (command, "attested", attested);
 
                 command.ExecuteNonQuery();
             }

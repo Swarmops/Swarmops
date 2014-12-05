@@ -16,25 +16,25 @@ namespace Swarmops.Database
             "PaidOut,AttestedByPersonId,AttestedDateTime " + // 10-12
             "FROM CashAdvances ";
 
-        private static BasicCashAdvance ReadCashAdvanceFromDataReader(IDataRecord reader)
+        private static BasicCashAdvance ReadCashAdvanceFromDataReader (IDataRecord reader)
         {
-            int cashAdvanceId = reader.GetInt32(0);
-            int organizationId = reader.GetInt32(1);
-            int personId = reader.GetInt32(2);
-            DateTime createdDateTime = reader.GetDateTime(3);
-            int createdByPersonId = reader.GetInt32(4);
+            int cashAdvanceId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32 (1);
+            int personId = reader.GetInt32 (2);
+            DateTime createdDateTime = reader.GetDateTime (3);
+            int createdByPersonId = reader.GetInt32 (4);
 
-            int financialAccountId = reader.GetInt32(5);
-            Int64 amountCents = reader.GetInt64(6);
-            string description = reader.GetString(7);
-            bool open = reader.GetBoolean(8);
-            bool attested = reader.GetBoolean(9);
+            int financialAccountId = reader.GetInt32 (5);
+            Int64 amountCents = reader.GetInt64 (6);
+            string description = reader.GetString (7);
+            bool open = reader.GetBoolean (8);
+            bool attested = reader.GetBoolean (9);
 
-            bool paidOut = reader.GetBoolean(10);
-            int attestedByPersonId = reader.GetInt32(11);
-            DateTime attestedDateTime = reader.GetDateTime(12);
+            bool paidOut = reader.GetBoolean (10);
+            int attestedByPersonId = reader.GetInt32 (11);
+            DateTime attestedDateTime = reader.GetDateTime (12);
 
-            return new BasicCashAdvance(cashAdvanceId, organizationId, personId, createdDateTime, createdByPersonId,
+            return new BasicCashAdvance (cashAdvanceId, organizationId, personId, createdDateTime, createdByPersonId,
                 financialAccountId, amountCents, description, open, attested,
                 paidOut, attestedByPersonId, attestedDateTime);
         }
@@ -43,31 +43,31 @@ namespace Swarmops.Database
 
         #region Database record reading -- SELECT clauses
 
-        public BasicCashAdvance GetCashAdvance(int cashAdvanceId)
+        public BasicCashAdvance GetCashAdvance (int cashAdvanceId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + cashAdvanceFieldSequence +
-                                 " WHERE CashAdvanceId=" + cashAdvanceId,
+                    GetDbCommand ("SELECT " + cashAdvanceFieldSequence +
+                                  " WHERE CashAdvanceId=" + cashAdvanceId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadCashAdvanceFromDataReader(reader);
+                        return ReadCashAdvanceFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such CashAdvanceId:" + cashAdvanceId);
+                    throw new ArgumentException ("No such CashAdvanceId:" + cashAdvanceId);
                 }
             }
         }
 
 
-        public BasicCashAdvance[] GetCashAdvances(params object[] conditions)
+        public BasicCashAdvance[] GetCashAdvances (params object[] conditions)
         {
             List<BasicCashAdvance> result = new List<BasicCashAdvance>();
 
@@ -76,15 +76,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT " + cashAdvanceFieldSequence + ConstructWhereClause("CashAdvances", conditions),
+                    GetDbCommand (
+                        "SELECT " + cashAdvanceFieldSequence + ConstructWhereClause ("CashAdvances", conditions),
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadCashAdvanceFromDataReader(reader));
+                        result.Add (ReadCashAdvanceFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -96,81 +96,81 @@ namespace Swarmops.Database
 
         #region Creation and manipulation -- stored procedures
 
-        public int CreateCashAdvance(int personId, int createdByPersonId, int organizationId, int financialAccountId,
+        public int CreateCashAdvance (int personId, int createdByPersonId, int organizationId, int financialAccountId,
             Int64 amountCents, string description)
         {
             if (description.Length > 128)
             {
-                description = description.Substring(0, 128); // varchar(128) field
+                description = description.Substring (0, 128); // varchar(128) field
             }
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateCashAdvance", connection);
+                DbCommand command = GetDbCommand ("CreateCashAdvance", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "createdByPersonId", createdByPersonId);
-                AddParameterWithName(command, "createdDateTime", DateTime.Now);
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "amountCents", amountCents);
-                AddParameterWithName(command, "financialAccountId", financialAccountId);
-                AddParameterWithName(command, "description", description);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "createdByPersonId", createdByPersonId);
+                AddParameterWithName (command, "createdDateTime", DateTime.Now);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "amountCents", amountCents);
+                AddParameterWithName (command, "financialAccountId", financialAccountId);
+                AddParameterWithName (command, "description", description);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public void SetCashAdvanceOpen(int cashAdvanceId, bool open)
+        public void SetCashAdvanceOpen (int cashAdvanceId, bool open)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetCashAdvanceOpen", connection);
+                DbCommand command = GetDbCommand ("SetCashAdvanceOpen", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "cashAdvanceId", cashAdvanceId);
-                AddParameterWithName(command, "open", open);
+                AddParameterWithName (command, "cashAdvanceId", cashAdvanceId);
+                AddParameterWithName (command, "open", open);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetCashAdvanceAttested(int cashAdvanceId, bool attested, int attestedByPersonId)
+        public void SetCashAdvanceAttested (int cashAdvanceId, bool attested, int attestedByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetCashAdvanceAttested", connection);
+                DbCommand command = GetDbCommand ("SetCashAdvanceAttested", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "cashAdvanceId", cashAdvanceId);
-                AddParameterWithName(command, "attested", attested);
-                AddParameterWithName(command, "attestedByPersonId", attestedByPersonId);
-                AddParameterWithName(command, "attestedDateTime", DateTime.Now);
+                AddParameterWithName (command, "cashAdvanceId", cashAdvanceId);
+                AddParameterWithName (command, "attested", attested);
+                AddParameterWithName (command, "attestedByPersonId", attestedByPersonId);
+                AddParameterWithName (command, "attestedDateTime", DateTime.Now);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetCashAdvancePaidOut(int cashAdvanceId, bool paidOut)
+        public void SetCashAdvancePaidOut (int cashAdvanceId, bool paidOut)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetCashAdvancePaidOut", connection);
+                DbCommand command = GetDbCommand ("SetCashAdvancePaidOut", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "cashAdvanceId", cashAdvanceId);
-                AddParameterWithName(command, "paidOut", paidOut);
+                AddParameterWithName (command, "cashAdvanceId", cashAdvanceId);
+                AddParameterWithName (command, "paidOut", paidOut);
 
                 command.ExecuteNonQuery();
             }

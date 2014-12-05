@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicMembership : IHasIdentity
     {
-        public BasicMembership(int personId, int organizationId)
+        public BasicMembership (int personId, int organizationId)
         {
             PersonId = personId;
             OrganizationId = organizationId;
@@ -13,14 +13,14 @@ namespace Swarmops.Basic.Types
             DateTerminated = DateTime.MinValue;
         }
 
-        public BasicMembership(int personId, int organizationId, DateTime memberSince, DateTime expires)
-            : this(personId, organizationId)
+        public BasicMembership (int personId, int organizationId, DateTime memberSince, DateTime expires)
+            : this (personId, organizationId)
         {
             MemberSince = memberSince;
             Expires = expires;
         }
 
-        public BasicMembership(int membershipId, int personId, int organizationId, DateTime memberSince,
+        public BasicMembership (int membershipId, int personId, int organizationId, DateTime memberSince,
             DateTime expires, bool active, DateTime dateTerminated)
         {
             MembershipId = membershipId;
@@ -32,8 +32,8 @@ namespace Swarmops.Basic.Types
             DateTerminated = dateTerminated;
         }
 
-        public BasicMembership(BasicMembership original)
-            : this(
+        public BasicMembership (BasicMembership original)
+            : this (
                 original.MembershipId, original.PersonId, original.OrganizationId, original.MemberSince,
                 original.Expires, original.Active, original.DateTerminated)
         {

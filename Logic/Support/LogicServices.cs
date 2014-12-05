@@ -12,11 +12,11 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="input">String to test.</param>
         /// <returns>True if safely parsable by Int32.Parse.</returns>
-        internal static bool IsNumber(string input)
+        internal static bool IsNumber (string input)
         {
             try
             {
-                Int32.Parse(input);
+                Int32.Parse (input);
                 return true;
             }
             catch (Exception)
@@ -31,7 +31,7 @@ namespace Swarmops.Logic.Support
         /// <param name="input">The string to clean.</param>
         /// <returns>The sanitized result.</returns>
         /// <remarks>This means that an input string of "abc153ûû" would come back as "153".</remarks>
-        internal static string CleanNumber(string input)
+        internal static string CleanNumber (string input)
         {
             if (input == null)
             {
@@ -44,21 +44,21 @@ namespace Swarmops.Logic.Support
             {
                 if (acter >= '0' && acter <= '9')
                 {
-                    result.Append(acter);
+                    result.Append (acter);
                 }
             }
 
             return result.ToString();
         }
 
-        internal static int[] ObjectsToIdentifiers(IHasIdentity[] identifiables)
+        internal static int[] ObjectsToIdentifiers (IHasIdentity[] identifiables)
         {
             List<int> result = new List<int>();
             result.Capacity = identifiables.Length*11/10;
 
             foreach (IHasIdentity identifiable in identifiables)
             {
-                result.Add(identifiable.Identity);
+                result.Add (identifiable.Identity);
             }
 
             return result.ToArray();

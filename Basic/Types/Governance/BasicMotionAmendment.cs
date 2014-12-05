@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types.Governance
 {
     public class BasicMotionAmendment : IHasIdentity
     {
-        public BasicMotionAmendment(int motionAmendmentId, int motionId, int sequenceNumber, int submittedByPersonId,
+        public BasicMotionAmendment (int motionAmendmentId, int motionId, int sequenceNumber, int submittedByPersonId,
             int createdByPersonId, DateTime createdDateTime, string title, string text, string decisionPoint, bool open,
             bool carried)
         {
@@ -22,8 +22,8 @@ namespace Swarmops.Basic.Types.Governance
             Carried = carried;
         }
 
-        public BasicMotionAmendment(BasicMotionAmendment original) :
-            this(
+        public BasicMotionAmendment (BasicMotionAmendment original) :
+            this (
             original.MotionAmendmentId, original.MotionId, original.SequenceNumber, original.SubmittedByPersonId,
             original.CreatedByPersonId, original.CreatedDateTime, original.Title, original.Text, original.DecisionPoint,
             original.Open, original.Carried)

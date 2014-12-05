@@ -16,45 +16,45 @@ namespace Swarmops.Logic.Support
 
                 foreach (TSingular singular in this)
                 {
-                    result.Add(singular.Identity);
+                    result.Add (singular.Identity);
                 }
 
                 return result.ToArray();
             }
         }
 
-        public static TPlural FromArray(TBasic[] basicArray)
+        public static TPlural FromArray (TBasic[] basicArray)
         {
             TPlural result = new TPlural {Capacity = basicArray.Length*11/10};
 
             foreach (TBasic basic in basicArray)
             {
-                result.Add((TSingular) SingularFactory.FromBasic(basic));
+                result.Add ((TSingular) SingularFactory.FromBasic (basic));
             }
 
             return result;
         }
 
 
-        public static TPlural FromSingle(TSingular singular)
+        public static TPlural FromSingle (TSingular singular)
         {
             TPlural result = new TPlural();
-            result.Add(singular);
+            result.Add (singular);
             return result;
         }
 
 
-        public static TPlural FromSingle(TBasic basic)
+        public static TPlural FromSingle (TBasic basic)
         {
             TPlural result = new TPlural();
 
-            result.Add((TSingular) SingularFactory.FromBasic(basic));
+            result.Add ((TSingular) SingularFactory.FromBasic (basic));
 
             return result;
         }
 
 
-        public static TPlural LogicalOr(TPlural set1, TPlural set2)
+        public static TPlural LogicalOr (TPlural set1, TPlural set2)
         {
             // If either set is invalid, return the other
             // (a null is different from an empty set)
@@ -89,14 +89,14 @@ namespace Swarmops.Logic.Support
 
             foreach (TSingular singular in table.Values)
             {
-                result.Add(singular);
+                result.Add (singular);
             }
 
             return result;
         }
 
 
-        public static TPlural LogicalAnd(TPlural set1, TPlural set2)
+        public static TPlural LogicalAnd (TPlural set1, TPlural set2)
         {
             // If either set is invalid, return the other
             // (a null is different from an empty set)
@@ -125,22 +125,22 @@ namespace Swarmops.Logic.Support
             TPlural result = new TPlural();
             foreach (TSingular singular in set1)
             {
-                if (set2Lookup.ContainsKey(singular.Identity))
+                if (set2Lookup.ContainsKey (singular.Identity))
                 {
-                    result.Add(singular);
+                    result.Add (singular);
                 }
             }
 
             return result;
         }
 
-        public new void Remove(TSingular objectToRemove)
+        public new void Remove (TSingular objectToRemove)
         {
             for (int index = 0; index < Count; index++)
             {
                 if (this[index].Identity == objectToRemove.Identity)
                 {
-                    RemoveAt(index);
+                    RemoveAt (index);
                     index--;
                 }
             }

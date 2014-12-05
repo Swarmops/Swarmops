@@ -9,12 +9,12 @@ namespace Swarmops.Basic.Types
     [Serializable]
     public class BasicGeography : IHasIdentity
     {
-        public BasicGeography(int geographyId, int parentGeographyId, string name)
-            : this(geographyId, parentGeographyId, name, 0)
+        public BasicGeography (int geographyId, int parentGeographyId, string name)
+            : this (geographyId, parentGeographyId, name, 0)
         {
         }
 
-        public BasicGeography(int geographyId, int parentGeographyId, string name, int generation)
+        public BasicGeography (int geographyId, int parentGeographyId, string name, int generation)
         {
             GeographyId = geographyId;
             ParentGeographyId = parentGeographyId;
@@ -22,12 +22,12 @@ namespace Swarmops.Basic.Types
             Generation = generation;
         }
 
-        public BasicGeography(BasicGeography original)
-            : this(original.GeographyId, original.ParentGeographyId, original.Name, original.Generation)
+        public BasicGeography (BasicGeography original)
+            : this (original.GeographyId, original.ParentGeographyId, original.Name, original.Generation)
         {
         }
 
-        [Obsolete("Do not use this ctor. It is provided to enable serializability.", true)]
+        [Obsolete ("Do not use this ctor. It is provided to enable serializability.", true)]
         public BasicGeography()
         {
             // provided for serializability - does not initialize fields

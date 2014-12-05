@@ -4,11 +4,11 @@ namespace Swarmops.Utility.BotCode
     {
         public static void Run()
         {
-            BotLog.Write(1, "UpdateStatsCache", "Entering (obsoleted does nothing");
+            BotLog.Write (1, "UpdateStatsCache", "Entering (obsoleted does nothing");
 
             UpdateBallotDistroData();
 
-            BotLog.Write(1, "UpdateStatsCache", "Exiting");
+            BotLog.Write (1, "UpdateStatsCache", "Exiting");
         }
 
         private static void UpdateBallotDistroData()

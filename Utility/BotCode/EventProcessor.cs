@@ -7,7 +7,7 @@ namespace Swarmops.Utility.BotCode
     {
         // This entire class could use a tune-up. More event types will come, too.
 
-        [Obsolete("Deprecated for Swarmops. Way too much hardcoded. Rewrite, generalize, or scrap.", true)]
+        [Obsolete ("Deprecated for Swarmops. Way too much hardcoded. Rewrite, generalize, or scrap.", true)]
         public static void Run()
         {
             /*

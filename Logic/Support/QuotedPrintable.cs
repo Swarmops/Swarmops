@@ -17,7 +17,7 @@ namespace Swarmops.Logic.Support
 
         private readonly Encoding _encoding = Encoding.Default;
 
-        public QuotedPrintable(Encoding encoding)
+        public QuotedPrintable (Encoding encoding)
         {
             this._encoding = encoding;
         }
@@ -27,15 +27,15 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="textToEncode"></param>
         /// <returns></returns>
-        public string Encode(string textToEncode)
+        public string Encode (string textToEncode)
         {
             if (textToEncode == null)
                 throw new ArgumentNullException();
 
-            return Encode(textToEncode, RFC_1521_MAX_CHARS_PER_LINE);
+            return Encode (textToEncode, RFC_1521_MAX_CHARS_PER_LINE);
         }
 
-        private string Encode(string textToEncode, int charsPerLine)
+        private string Encode (string textToEncode, int charsPerLine)
         {
             if (textToEncode == null)
                 throw new ArgumentNullException();
@@ -43,7 +43,7 @@ namespace Swarmops.Logic.Support
             if (charsPerLine <= 0)
                 throw new ArgumentOutOfRangeException();
 
-            return FormatEncodedString(EncodeString(textToEncode), charsPerLine);
+            return FormatEncodedString (EncodeString (textToEncode), charsPerLine);
         }
 
         /// <summary>
@@ -51,15 +51,15 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="textToEncode"></param>
         /// <returns></returns>
-        public String EncodeMailHeaderString(string textToEncode)
+        public String EncodeMailHeaderString (string textToEncode)
         {
-            String encChars = EncodeString(textToEncode);
+            String encChars = EncodeString (textToEncode);
             String displayName = "";
             if (encChars != textToEncode)
             {
                 displayName = "=?";
                 displayName += this._encoding.BodyName;
-                displayName += "?Q?" + encChars.Replace(" ", "_") + "?=";
+                displayName += "?Q?" + encChars.Replace (" ", "_") + "?=";
             }
             else
                 displayName = textToEncode;
@@ -71,33 +71,33 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="textToEncode"></param>
         /// <returns></returns>
-        public string EncodeString(string textToEncode)
+        public string EncodeString (string textToEncode)
         {
             if (textToEncode == null)
                 throw new ArgumentNullException();
 
-            byte[] bytes = this._encoding.GetBytes(textToEncode);
+            byte[] bytes = this._encoding.GetBytes (textToEncode);
             StringBuilder builder = new StringBuilder();
             foreach (byte b in bytes)
             {
                 if (b != 0)
                     if ((b < 32) || (b > 126))
-                        builder.Append(String.Format("={0}", b.ToString("X2")));
+                        builder.Append (String.Format ("={0}", b.ToString ("X2")));
                     else
                     {
                         switch (b)
                         {
                             case 13:
-                                builder.Append("=0D");
+                                builder.Append ("=0D");
                                 break;
                             case 10:
-                                builder.Append("=0A");
+                                builder.Append ("=0A");
                                 break;
                             case 61:
-                                builder.Append("=3D");
+                                builder.Append ("=3D");
                                 break;
                             default:
-                                builder.Append(Convert.ToChar(b));
+                                builder.Append (Convert.ToChar (b));
                                 break;
                         }
                     }
@@ -106,7 +106,7 @@ namespace Swarmops.Logic.Support
             return builder.ToString();
         }
 
-        private string FormatEncodedString(string qpstr, int maxcharlen)
+        private string FormatEncodedString (string qpstr, int maxcharlen)
         {
             if (qpstr == null)
                 throw new ArgumentNullException();
@@ -116,11 +116,11 @@ namespace Swarmops.Logic.Support
             int i = 0;
             foreach (char c in charArray)
             {
-                builder.Append(c);
+                builder.Append (c);
                 i++;
                 if (i == maxcharlen)
                 {
-                    builder.AppendLine("=");
+                    builder.AppendLine ("=");
                     i = 0;
                 }
             }
@@ -128,9 +128,9 @@ namespace Swarmops.Logic.Support
             return builder.ToString();
         }
 
-        private string HexDecoderEvaluator(Match m)
+        private string HexDecoderEvaluator (Match m)
         {
-            if (String.IsNullOrEmpty(m.Value))
+            if (String.IsNullOrEmpty (m.Value))
                 return null;
 
             CaptureCollection captures = m.Groups[3].Captures;
@@ -138,40 +138,40 @@ namespace Swarmops.Logic.Support
 
             for (int i = 0; i < captures.Count; i++)
             {
-                bytes[i] = Convert.ToByte(captures[i].Value, 16);
+                bytes[i] = Convert.ToByte (captures[i].Value, 16);
             }
 
-            return this._encoding.GetString(bytes);
+            return this._encoding.GetString (bytes);
         }
 
-        private string HexDecoder(string line)
+        private string HexDecoder (string line)
         {
             if (line == null)
                 throw new ArgumentNullException();
 
-            Regex re = new Regex("((\\=([0-9A-F][0-9A-F]))*)", RegexOptions.IgnoreCase);
-            return re.Replace(line, HexDecoderEvaluator);
+            Regex re = new Regex ("((\\=([0-9A-F][0-9A-F]))*)", RegexOptions.IgnoreCase);
+            return re.Replace (line, HexDecoderEvaluator);
         }
 
 
-        public string Decode(string encodedText)
+        public string Decode (string encodedText)
         {
             if (encodedText == null)
                 throw new ArgumentNullException();
 
-            using (StringReader sr = new StringReader(encodedText))
+            using (StringReader sr = new StringReader (encodedText))
             {
                 StringBuilder builder = new StringBuilder();
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.EndsWith("="))
-                        builder.Append(line.Substring(0, line.Length - 1));
+                    if (line.EndsWith ("="))
+                        builder.Append (line.Substring (0, line.Length - 1));
                     else
-                        builder.Append(line);
+                        builder.Append (line);
                 }
 
-                return HexDecoder(builder.ToString());
+                return HexDecoder (builder.ToString());
             }
         }
     }

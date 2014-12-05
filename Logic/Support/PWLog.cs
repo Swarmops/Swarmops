@@ -14,43 +14,43 @@ namespace Swarmops.Logic.Support
     {
         private static string hostIp = ""; //Used in batch programs
 
-        public static void Write(DateTime dateTimeUtc, int actingPersonId, PWLogItem affectedItem,
+        public static void Write (DateTime dateTimeUtc, int actingPersonId, PWLogItem affectedItem,
             int affectedItemId,
             PWLogAction actionType, string actionDescription, string comment,
             string changedField, string valueBefore, string valueAfter)
         {
-            SwarmDb.GetDatabaseForWriting().CreatePWLogEntry(dateTimeUtc, actingPersonId, affectedItem.ToString(),
+            SwarmDb.GetDatabaseForWriting().CreatePWLogEntry (dateTimeUtc, actingPersonId, affectedItem.ToString(),
                 affectedItemId, actionType.ToString(), actionDescription,
                 changedField, valueBefore, valueAfter, comment, GetCurrentIp());
         }
 
-        public static void Write(DateTime dateTimeUtc, Person actingPerson, PWLogItem affectedItem,
+        public static void Write (DateTime dateTimeUtc, Person actingPerson, PWLogItem affectedItem,
             int affectedItemId,
             PWLogAction actionType, string actionDescription, string comment,
             string changedField, string valueBefore, string valueAfter)
         {
-            Write(dateTimeUtc, actingPerson.Identity, affectedItem, affectedItemId, actionType,
+            Write (dateTimeUtc, actingPerson.Identity, affectedItem, affectedItemId, actionType,
                 actionDescription, comment, changedField, valueBefore, valueAfter);
         }
 
-        public static void Write(Person actingPerson, PWLogItem affectedItem, int affectedItemId,
+        public static void Write (Person actingPerson, PWLogItem affectedItem, int affectedItemId,
             PWLogAction actionType,
             string actionDescription, string comment, string changedField, string valueBefore,
             string valueAfter)
         {
-            Write(DateTime.UtcNow, actingPerson.Identity, affectedItem, affectedItemId, actionType,
+            Write (DateTime.UtcNow, actingPerson.Identity, affectedItem, affectedItemId, actionType,
                 actionDescription, comment, changedField, valueBefore, valueAfter);
         }
 
-        public static void Write(Person actingPerson, PWLogItem affectedItem, int affectedItemId,
+        public static void Write (Person actingPerson, PWLogItem affectedItem, int affectedItemId,
             PWLogAction actionType,
             string actionDescription, string comment)
         {
-            Write(DateTime.UtcNow, actingPerson.Identity, affectedItem, affectedItemId, actionType,
+            Write (DateTime.UtcNow, actingPerson.Identity, affectedItem, affectedItemId, actionType,
                 actionDescription, comment, string.Empty, string.Empty, string.Empty);
         }
 
-        public static void Write(int actingPersonId, PWLogItem affectedItem, int affectedItemId,
+        public static void Write (int actingPersonId, PWLogItem affectedItem, int affectedItemId,
             PWLogAction actionType,
             string actionDescription, string comment)
         {
@@ -58,20 +58,20 @@ namespace Swarmops.Logic.Support
             {
                 try
                 {
-                    comment = "Action done by " + Person.FromIdentity(actingPersonId).Name;
+                    comment = "Action done by " + Person.FromIdentity (actingPersonId).Name;
                 }
                 catch
                 {
                 }
             }
-            Write(DateTime.UtcNow, actingPersonId, affectedItem, affectedItemId, actionType,
+            Write (DateTime.UtcNow, actingPersonId, affectedItem, affectedItemId, actionType,
                 actionDescription, comment, string.Empty, string.Empty, string.Empty);
         }
 
-        public static void Write(PWLogItem affectedItem, int affectedItemId, PWLogAction actionType,
+        public static void Write (PWLogItem affectedItem, int affectedItemId, PWLogAction actionType,
             string actionDescription, string comment)
         {
-            Write(DateTime.UtcNow, 0, affectedItem, affectedItemId, actionType,
+            Write (DateTime.UtcNow, 0, affectedItem, affectedItemId, actionType,
                 actionDescription, comment, string.Empty, string.Empty, string.Empty);
         }
 
@@ -92,7 +92,7 @@ namespace Swarmops.Logic.Support
                         hostIp = "n/a";
                         string myHostName = Dns.GetHostName();
                         hostIp = myHostName;
-                        IPHostEntry ipEntry = Dns.GetHostEntry(myHostName);
+                        IPHostEntry ipEntry = Dns.GetHostEntry (myHostName);
                         IPAddress[] addr = ipEntry.AddressList;
                         hostIp = addr[0].ToString();
                     }
@@ -104,21 +104,21 @@ namespace Swarmops.Logic.Support
             }
         }
 
-        public static DateTime CheckLatest(PWLogItem affectedItemType, int affectedItemId, PWLogAction actionType)
+        public static DateTime CheckLatest (PWLogItem affectedItemType, int affectedItemId, PWLogAction actionType)
         {
             return SwarmDb.GetDatabaseForReading()
-                .CheckLogEntry(affectedItemType.ToString(), affectedItemId, actionType.ToString());
+                .CheckLogEntry (affectedItemType.ToString(), affectedItemId, actionType.ToString());
         }
 
-        public static BasicPWLog[] GetLatestEvents(PWLogItem affectedItemType, DateTime beforeDate, int[] affectedIds,
+        public static BasicPWLog[] GetLatestEvents (PWLogItem affectedItemType, DateTime beforeDate, int[] affectedIds,
             PWLogAction[] actionTypes)
         {
             List<string> actionTypeList = new List<string>();
             foreach (PWLogAction at in actionTypes)
-                actionTypeList.Add(at.ToString());
+                actionTypeList.Add (at.ToString());
 
             return SwarmDb.GetDatabaseForReading()
-                .GetLatestEvents(affectedItemType.ToString(), beforeDate, affectedIds, actionTypeList.ToArray());
+                .GetLatestEvents (affectedItemType.ToString(), beforeDate, affectedIds, actionTypeList.ToArray());
         }
     }
 

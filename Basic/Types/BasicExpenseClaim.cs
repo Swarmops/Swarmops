@@ -11,7 +11,7 @@ namespace Swarmops.Basic.Types
         /// <summary>
         ///     Normal constructor
         /// </summary>
-        public BasicExpenseClaim(int expenseClaimId, int claimingPersonId, DateTime createdDateTime,
+        public BasicExpenseClaim (int expenseClaimId, int claimingPersonId, DateTime createdDateTime,
             bool open, bool attested, bool documented, bool claimed, int organizationId,
             int geographyId, int budgetId, DateTime expenseDate,
             string description, double preApprovedAmount, Int64 amountCents, bool repaid, bool keepSeparate)
@@ -37,8 +37,8 @@ namespace Swarmops.Basic.Types
         /// <summary>
         ///     Copy constructor
         /// </summary>
-        public BasicExpenseClaim(BasicExpenseClaim original)
-            : this(original.Identity, original.ClaimingPersonId, original.CreatedDateTime,
+        public BasicExpenseClaim (BasicExpenseClaim original)
+            : this (original.Identity, original.ClaimingPersonId, original.CreatedDateTime,
                 original.Open, original.Attested, original.Validated, original.Claimed,
                 original.OrganizationId, original.GeographyId, original.BudgetId,
                 original.ExpenseDate, original.Description,

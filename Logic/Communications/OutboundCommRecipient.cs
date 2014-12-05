@@ -6,32 +6,32 @@ namespace Swarmops.Logic.Communications
 {
     public class OutboundCommRecipient : BasicOutboundCommRecipient
     {
-        private OutboundCommRecipient(BasicOutboundCommRecipient basic) : base(basic)
+        private OutboundCommRecipient (BasicOutboundCommRecipient basic) : base (basic)
         {
             // private ctor
         }
 
         public Person Person
         {
-            get { return Person.FromIdentity(base.PersonId); }
+            get { return Person.FromIdentity (base.PersonId); }
         }
 
-        public static OutboundCommRecipient FromBasic(BasicOutboundCommRecipient basic)
+        public static OutboundCommRecipient FromBasic (BasicOutboundCommRecipient basic)
         {
-            return new OutboundCommRecipient(basic);
+            return new OutboundCommRecipient (basic);
         }
 
         public void CloseSuccess()
         {
-            SwarmDb.GetDatabaseForWriting().SetOutboundCommRecipientClosed(Identity);
+            SwarmDb.GetDatabaseForWriting().SetOutboundCommRecipientClosed (Identity);
 
             base.Success = true;
             base.Open = false;
         }
 
-        public void CloseFailed(string failReason)
+        public void CloseFailed (string failReason)
         {
-            SwarmDb.GetDatabaseForWriting().SetOutboundCommRecipientFailed(Identity, failReason);
+            SwarmDb.GetDatabaseForWriting().SetOutboundCommRecipientFailed (Identity, failReason);
 
             base.Success = false;
             base.Open = false;

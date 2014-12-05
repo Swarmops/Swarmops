@@ -18,12 +18,12 @@ namespace Swarmops.Logic.Communications
         private string message = "";
 
         private Dictionary<int, BasicPerson> people = new Dictionary<int, BasicPerson>();
-            //people matching the set number
+        //people matching the set number
 
         private string replyMessage = "";
         private DateTime sentAt;
 
-        public PhoneMessage(string fromNumber, string message, DateTime sentAt)
+        public PhoneMessage (string fromNumber, string message, DateTime sentAt)
         {
             FromNumber = fromNumber;
             Message = message;
@@ -58,8 +58,8 @@ namespace Swarmops.Logic.Communications
                 // The phone number should come from SMS host as +46<num>
                 // But it can be saved in different formats in the DB, so try the most common
                 // ways to format the number.
-                string[] phoneNumbers = PhoneMessageTransmitter.DeNormalizedPhoneNumber(FromNumber);
-                this.people = PhoneMessageReceiver.GetPeopleFromPhoneNumbers(phoneNumbers);
+                string[] phoneNumbers = PhoneMessageTransmitter.DeNormalizedPhoneNumber (FromNumber);
+                this.people = PhoneMessageReceiver.GetPeopleFromPhoneNumbers (phoneNumbers);
             }
         }
 
@@ -78,37 +78,37 @@ namespace Swarmops.Logic.Communications
 
     internal interface IPhoneMessageHandler
     {
-        bool Filter(PhoneMessage msg);
-        bool Handle(PhoneMessage msg);
+        bool Filter (PhoneMessage msg);
+        bool Handle (PhoneMessage msg);
     }
 
 
     internal abstract class PhoneMessageHandler : IPhoneMessageHandler
     {
-        public virtual bool Filter(PhoneMessage message)
+        public virtual bool Filter (PhoneMessage message)
         {
             return (message.People.Count > 0);
         }
 
-        public virtual bool Handle(PhoneMessage message)
+        public virtual bool Handle (PhoneMessage message)
         {
             return false;
         }
 
-        protected virtual void ForwardMessage(string from, string to, string subject, string body)
+        protected virtual void ForwardMessage (string from, string to, string subject, string body)
         {
-            PhoneMessageReceiver.SendMail(from, to, subject, body);
+            PhoneMessageReceiver.SendMail (from, to, subject, body);
         }
     }
 
     internal class DefaultMessageHandler : PhoneMessageHandler
     {
-        public override bool Filter(PhoneMessage message)
+        public override bool Filter (PhoneMessage message)
         {
             return true; //Catch all
         }
 
-        public override bool Handle(PhoneMessage msg)
+        public override bool Handle (PhoneMessage msg)
         {
             string from = "sms-noreply@piratpartiet.se";
             string to = "smsreplies@piratpartiet.se";
@@ -123,7 +123,7 @@ namespace Swarmops.Logic.Communications
                 foreach (BasicPerson bp in msg.People.Values)
                 {
                     body += "Det telefonnumret tillhör medlem/aktivistnummer: ";
-                    Person person = Person.FromBasic(bp);
+                    Person person = Person.FromBasic (bp);
                     body += person.Identity + " (";
                     if (!person.IsActivist)
                         body += "ej ";
@@ -134,7 +134,7 @@ namespace Swarmops.Logic.Communications
                 {
                     numbers += "," + bp.PersonId;
                 }
-                body += "\r\n\r\n" + numbers.Substring(1);
+                body += "\r\n\r\n" + numbers.Substring (1);
             }
             else
                 body += "Hittade ingen medlem/aktivist i databasen med det numret.\r\n\r\n";
@@ -144,10 +144,10 @@ namespace Swarmops.Logic.Communications
                 body += "\r\nComment from SMS processing: " + msg.ErrorMessage;
             }
 
-            ForwardMessage(from, to, subject, body);
+            ForwardMessage (from, to, subject, body);
             msg.ReplyMessage +=
                 "\r\nDitt meddelande har vidarebefordrats till medlemsservice@piratpartiet.se. Kontakta oss om du undrar över något.";
-            PWLog.Write(PWLogItem.None, 0, PWLogAction.SMSHandled, "Forwarded SMS from " + msg.FromNumber + " to " + to,
+            PWLog.Write (PWLogItem.None, 0, PWLogAction.SMSHandled, "Forwarded SMS from " + msg.FromNumber + " to " + to,
                 msg.Message + "\r\n" + msg.ErrorMessage);
 
             return true;
@@ -156,28 +156,28 @@ namespace Swarmops.Logic.Communications
 
     internal class UnregisterActivistHandler : PhoneMessageHandler
     {
-        public override bool Filter(PhoneMessage msg)
+        public override bool Filter (PhoneMessage msg)
         {
-            string[] smsParts = msg.Message.ToLower().Trim().Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            string[] smsParts = msg.Message.ToLower().Trim().Split (new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             if ((smsParts[0] == "stopp" || smsParts[0] == "stop") &&
                 (smsParts[1] == "aktivist" || smsParts[1] == "activist"))
             {
-                return base.Filter(msg);
+                return base.Filter (msg);
             }
             return false;
         }
 
-        public override bool Handle(PhoneMessage msg)
+        public override bool Handle (PhoneMessage msg)
         {
             //TODO: Decide if more than one hit is OK
             if (msg.People.Count > 0)
             {
                 foreach (BasicPerson bPerson in msg.People.Values)
                 {
-                    Person person = Person.FromBasic(bPerson);
+                    Person person = Person.FromBasic (bPerson);
                     if (person.IsActivist)
                     {
-                        ActivistEvents.TerminateActivistWithLogging(person, EventSource.SMS);
+                        ActivistEvents.TerminateActivistWithLogging (person, EventSource.SMS);
                         return true;
                     }
                 }
@@ -192,9 +192,9 @@ namespace Swarmops.Logic.Communications
 
     internal class RegisterActivistHandler : PhoneMessageHandler
     {
-        public override bool Filter(PhoneMessage msg)
+        public override bool Filter (PhoneMessage msg)
         {
-            string[] smsParts = msg.Message.ToLower().Trim().Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            string[] smsParts = msg.Message.ToLower().Trim().Split (new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             if (smsParts[0] == "start" && (smsParts[1] == "aktivist" || smsParts[1] == "activist"))
             {
                 return true;
@@ -203,9 +203,9 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public override bool Handle(PhoneMessage msg)
+        public override bool Handle (PhoneMessage msg)
         {
-            Trace.WriteLine(msg); // use parameter to suppress warning
+            Trace.WriteLine (msg); // use parameter to suppress warning
 
             /* -- all of the phone message handling need to move to app or plugin
 
@@ -254,9 +254,9 @@ namespace Swarmops.Logic.Communications
 
     internal class RenewMembershipHandler : PhoneMessageHandler
     {
-        public override bool Filter(PhoneMessage msg)
+        public override bool Filter (PhoneMessage msg)
         {
-            string[] smsParts = msg.Message.ToLower().Trim().Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            string[] smsParts = msg.Message.ToLower().Trim().Split (new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             if (smsParts[0] == "pp" && smsParts[1] == "igen")
             {
                 return true;
@@ -265,7 +265,7 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public override bool Handle(PhoneMessage msg)
+        public override bool Handle (PhoneMessage msg)
         {
             /* This needs to move to a plugin. */
 
@@ -339,7 +339,7 @@ namespace Swarmops.Logic.Communications
 
 
             // use parameters to suppress warnings
-            Trace.WriteLine(msg);
+            Trace.WriteLine (msg);
             return false;
         }
     }
@@ -356,9 +356,9 @@ namespace Swarmops.Logic.Communications
                 if (_handlers.Count == 0)
                 {
                     //set up list of handlers
-                    _handlers.Add(new UnregisterActivistHandler());
-                    _handlers.Add(new RegisterActivistHandler());
-                    _handlers.Add(new DefaultMessageHandler()); // Always last
+                    _handlers.Add (new UnregisterActivistHandler());
+                    _handlers.Add (new RegisterActivistHandler());
+                    _handlers.Add (new DefaultMessageHandler()); // Always last
                 }
 
                 return _handlers;
@@ -372,10 +372,10 @@ namespace Swarmops.Logic.Communications
         /// <param name="fromNumber"></param>
         /// <param name="message"></param>
         /// <param name="sentAtStr"></param>
-        public static void Handle(string fromNumber, string message, DateTime sentAt)
+        public static void Handle (string fromNumber, string message, DateTime sentAt)
         {
             // create a message object 
-            PhoneMessage msg = new PhoneMessage(fromNumber, message, sentAt);
+            PhoneMessage msg = new PhoneMessage (fromNumber, message, sentAt);
 
             //Ask all handlers if they want to handle the message object
             foreach (IPhoneMessageHandler handler in Handlers)
@@ -383,10 +383,10 @@ namespace Swarmops.Logic.Communications
                 try
                 {
                     // Want to handle this message ?
-                    if (handler.Filter(msg))
+                    if (handler.Filter (msg))
                     {
                         // if Handle() returns true do not call the following handlers
-                        if (handler.Handle(msg))
+                        if (handler.Handle (msg))
                             break;
                     }
                 }
@@ -396,7 +396,7 @@ namespace Swarmops.Logic.Communications
             }
             if (msg.ReplyMessage != "")
             {
-                PhoneMessageTransmitter.Send(msg.FromNumber, msg.ReplyMessage);
+                PhoneMessageTransmitter.Send (msg.FromNumber, msg.ReplyMessage);
             }
         }
 
@@ -407,7 +407,7 @@ namespace Swarmops.Logic.Communications
         /// i
         /// <param name="phoneNumbers"></param>
         /// <returns></returns>
-        public static Dictionary<int, BasicPerson> GetPeopleFromPhoneNumbers(string[] phoneNumbers)
+        public static Dictionary<int, BasicPerson> GetPeopleFromPhoneNumbers (string[] phoneNumbers)
         {
             Dictionary<int, BasicPerson> peopleDict = new Dictionary<int, BasicPerson>();
 
@@ -416,11 +416,11 @@ namespace Swarmops.Logic.Communications
                 for (int i = 0; i < phoneNumbers.Length; i++)
                 {
                     BasicPerson[] people = SwarmDb.GetDatabaseForReading()
-                        .GetPeopleFromPhoneNumber("SE", phoneNumbers[i]);
+                        .GetPeopleFromPhoneNumber ("SE", phoneNumbers[i]);
                     foreach (BasicPerson bp in people)
                     {
                         //Only add if not seen.
-                        if (!peopleDict.ContainsKey(bp.PersonId))
+                        if (!peopleDict.ContainsKey (bp.PersonId))
                         {
                             peopleDict[bp.PersonId] = bp;
                         }
@@ -434,23 +434,23 @@ namespace Swarmops.Logic.Communications
             return peopleDict;
         }
 
-        internal static void SendMail(string from, string to, string subject, string body)
+        internal static void SendMail (string from, string to, string subject, string body)
         {
             MailMessage mail = new MailMessage();
             mail.IsBodyHtml = false;
             mail.Subject = subject;
             mail.Body = body;
-            mail.From = new MailAddress(from, from, Encoding.UTF8);
-            mail.To.Add(to);
+            mail.From = new MailAddress (from, from, Encoding.UTF8);
+            mail.To.Add (to);
 
-            SmtpClient mailserver = new SmtpClient("mail.piratpartiet.se", 587);
+            SmtpClient mailserver = new SmtpClient ("mail.piratpartiet.se", 587);
             try
             {
-                mailserver.Send(mail);
+                mailserver.Send (mail);
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message + "<br><hr>" + mail.Body);
+                throw new Exception (e.Message + "<br><hr>" + mail.Body);
             }
         }
     }

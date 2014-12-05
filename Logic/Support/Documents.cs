@@ -11,32 +11,32 @@ namespace Swarmops.Logic.Support
     {
         private IHasIdentity sourceObject;
 
-        public static Documents ForObject(IHasIdentity identifiableObject)
+        public static Documents ForObject (IHasIdentity identifiableObject)
         {
             Documents newInstance =
-                FromArray(
-                    SwarmDb.GetDatabaseForReading().GetDocumentsForForeignObject(
-                        Document.GetDocumentTypeForObject(identifiableObject), identifiableObject.Identity));
+                FromArray (
+                    SwarmDb.GetDatabaseForReading().GetDocumentsForForeignObject (
+                        Document.GetDocumentTypeForObject (identifiableObject), identifiableObject.Identity));
 
             newInstance.sourceObject = identifiableObject;
 
             return newInstance;
         }
 
-        public static Documents FromArray(BasicDocument[] basicArray)
+        public static Documents FromArray (BasicDocument[] basicArray)
         {
             Documents result = new Documents {Capacity = (basicArray.Length*11/10)};
 
             foreach (BasicDocument basic in basicArray)
             {
-                result.Add(Document.FromBasic(basic));
+                result.Add (Document.FromBasic (basic));
             }
 
             return result;
         }
 
 
-        public Document Add(string serverFileName, string clientFileName, Int64 fileSize,
+        public Document Add (string serverFileName, string clientFileName, Int64 fileSize,
             string description, Person uploader)
         {
             // This is kind of experimental. Is it a good idea to be able to write
@@ -45,31 +45,31 @@ namespace Swarmops.Logic.Support
 
             if (this.sourceObject == null)
             {
-                throw new InvalidOperationException(
+                throw new InvalidOperationException (
                     "Cannot add documents to a Documents instance that was not created from an object.");
             }
 
             Document newDocument =
-                Document.Create(serverFileName, clientFileName, fileSize, description,
+                Document.Create (serverFileName, clientFileName, fileSize, description,
                     this.sourceObject, uploader);
 
-            base.Add(newDocument);
+            base.Add (newDocument);
 
             return newDocument;
         }
 
 
-        public static Documents RecentFromDescription(string description)
+        public static Documents RecentFromDescription (string description)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetDocumentsRecentByDescription(description));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetDocumentsRecentByDescription (description));
         }
 
 
-        public void SetForeignObjectForAll(IHasIdentity foreignObject)
+        public void SetForeignObjectForAll (IHasIdentity foreignObject)
         {
             foreach (Document doc in this)
             {
-                doc.SetForeignObject(foreignObject);
+                doc.SetForeignObject (foreignObject);
             }
         }
     }

@@ -28,21 +28,21 @@ namespace Swarmops.Utility.Migrations
 
                     while (reader.Read())
                     {
-                        int personId = reader.GetInt32(0);
-                        string personOptionalDataTypeString = reader.GetString(1);
-                        string data = reader.GetString(2);
+                        int personId = reader.GetInt32 (0);
+                        string personOptionalDataTypeString = reader.GetString (1);
+                        string data = reader.GetString (2);
 
                         string displayData = data;
                         if (displayData.Length > 40)
                         {
-                            displayData = displayData.Substring(0, 40);
+                            displayData = displayData.Substring (0, 40);
                         }
 
-                        displayData = displayData.Replace("\r\n", "#");
+                        displayData = displayData.Replace ("\r\n", "#");
 
                         PersonOptionalDataKey key =
                             (PersonOptionalDataKey)
-                                Enum.Parse(typeof (PersonOptionalDataKey), personOptionalDataTypeString);
+                                Enum.Parse (typeof (PersonOptionalDataKey), personOptionalDataTypeString);
 
                         // Display
 
@@ -50,30 +50,30 @@ namespace Swarmops.Utility.Migrations
 
                         try
                         {
-                            person = Person.FromIdentity(personId);
+                            person = Person.FromIdentity (personId);
                         }
                         catch (Exception)
                         {
-                            Console.WriteLine("PERSON #{0} IS NOT IN DATABASE", personId);
+                            Console.WriteLine ("PERSON #{0} IS NOT IN DATABASE", personId);
                         }
 
                         if (person != null)
                         {
                             if (personId != lastPersonId)
                             {
-                                Console.WriteLine(person.Canonical + " -- ");
+                                Console.WriteLine (person.Canonical + " -- ");
                                 lastPersonId = personId;
                             }
 
                             ObjectOptionalDataType dataType =
                                 (ObjectOptionalDataType)
-                                    Enum.Parse(typeof (ObjectOptionalDataType), personOptionalDataTypeString);
+                                    Enum.Parse (typeof (ObjectOptionalDataType), personOptionalDataTypeString);
 
-                            Console.WriteLine(" -- {0,-20} {1}", dataType, displayData);
+                            Console.WriteLine (" -- {0,-20} {1}", dataType, displayData);
 
                             if (data.Trim().Length > 0)
                             {
-                                db.SetObjectOptionalData(person, dataType, data);
+                                db.SetObjectOptionalData (person, dataType, data);
                             }
                         }
                     }

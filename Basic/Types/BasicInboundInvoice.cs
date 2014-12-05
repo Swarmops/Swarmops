@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicInboundInvoice : IHasIdentity
     {
-        public BasicInboundInvoice(int inboundInvoiceId, int organizationId, DateTime createdDateTime,
+        public BasicInboundInvoice (int inboundInvoiceId, int organizationId, DateTime createdDateTime,
             DateTime dueDate, Int64 amountCents, int budgetId, string supplier, string
                 payToAccount, string ocr, string invoiceReference, bool attested, bool open,
             DateTime closedDateTime, int closedByPersonId)
@@ -26,8 +26,8 @@ namespace Swarmops.Basic.Types
             ClosedByPersonId = closedByPersonId;
         }
 
-        public BasicInboundInvoice(BasicInboundInvoice original)
-            : this(original.InboundInvoiceId, original.OrganizationId, original.CreatedDateTime,
+        public BasicInboundInvoice (BasicInboundInvoice original)
+            : this (original.InboundInvoiceId, original.OrganizationId, original.CreatedDateTime,
                 original.DueDate, original.AmountCents, original.BudgetId,
                 original.Supplier, original.PayToAccount, original.Ocr, original.InvoiceReference,
                 original.Attested, original.Open, original.ClosedDateTime, original.ClosedByPersonId)

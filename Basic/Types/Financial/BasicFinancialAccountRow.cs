@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialAccountRow
     {
-        public BasicFinancialAccountRow(int financialAccountId, int financialTransactionId, DateTime dateTime,
+        public BasicFinancialAccountRow (int financialAccountId, int financialTransactionId, DateTime dateTime,
             string comment, Int64 amountCents, DateTime rowDateTime, int rowCreatedByPersonId)
         {
             FinancialAccountId = financialAccountId;
@@ -16,8 +16,8 @@ namespace Swarmops.Basic.Types.Financial
             RowCreatedByPersonId = rowCreatedByPersonId;
         }
 
-        public BasicFinancialAccountRow(BasicFinancialAccountRow original)
-            : this(
+        public BasicFinancialAccountRow (BasicFinancialAccountRow original)
+            : this (
                 original.FinancialAccountId, original.FinancialTransactionId, original.TransactionDateTime,
                 original.Description,
                 original.AmountCents, original.RowDateTime, original.RowCreatedByPersonId)

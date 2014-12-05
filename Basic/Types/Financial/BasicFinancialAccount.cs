@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialAccount : IHasIdentity
     {
-        public BasicFinancialAccount(int financialAccountId, string name, FinancialAccountType accountType,
+        public BasicFinancialAccount (int financialAccountId, string name, FinancialAccountType accountType,
             int organizationId, int parentFinancialAccountId, int ownerPersonId,
             bool open, int openedYear, int closedYear, bool active, bool expensable,
             bool administrative, int linkBackward, int linkForward)
@@ -26,8 +26,8 @@ namespace Swarmops.Basic.Types.Financial
             LinkForward = linkForward;
         }
 
-        public BasicFinancialAccount(BasicFinancialAccount original) :
-            this(
+        public BasicFinancialAccount (BasicFinancialAccount original) :
+            this (
             original.Identity, original.Name, original.AccountType, original.OrganizationId,
             original.ParentFinancialAccountId, original.OwnerPersonId, original.Open, original.OpenedYear,
             original.ClosedYear, original.Active, original.Expensable, original.Administrative, original.LinkBackward,

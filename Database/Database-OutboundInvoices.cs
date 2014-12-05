@@ -24,54 +24,54 @@ namespace Swarmops.Database
         private const string outboundInvoiceItemSortOrder =
             " ORDER BY SortOrder,OutboundInvoiceItemId ";
 
-        private BasicOutboundInvoice ReadOutboundInvoiceFromDataReader(DbDataReader reader)
+        private BasicOutboundInvoice ReadOutboundInvoiceFromDataReader (DbDataReader reader)
         {
-            int outboundInvoiceId = reader.GetInt32(0);
-            string customerName = reader.GetString(1);
-            string invoiceAddressPaper = reader.GetString(2);
-            string invoiceAddressMail = reader.GetString(3);
-            int currencyId = reader.GetInt32(4);
+            int outboundInvoiceId = reader.GetInt32 (0);
+            string customerName = reader.GetString (1);
+            string invoiceAddressPaper = reader.GetString (2);
+            string invoiceAddressMail = reader.GetString (3);
+            int currencyId = reader.GetInt32 (4);
             // double amount = reader.GetDouble(5);
-            int organizationId = reader.GetInt32(6);
-            int budgetId = reader.GetInt32(7);
-            DateTime createdDateTime = reader.GetDateTime(8);
-            int createdByPersonId = reader.GetInt32(9);
-            DateTime dueDate = reader.GetDateTime(10);
-            int reminderCount = reader.GetInt32(11);
-            string reference = reader.GetString(12);
-            bool domestic = reader.GetBoolean(13);
-            bool open = reader.GetBoolean(14);
-            bool sent = reader.GetBoolean(15);
-            string securityCode = reader.GetString(16);
-            string theirReference = reader.GetString(17);
+            int organizationId = reader.GetInt32 (6);
+            int budgetId = reader.GetInt32 (7);
+            DateTime createdDateTime = reader.GetDateTime (8);
+            int createdByPersonId = reader.GetInt32 (9);
+            DateTime dueDate = reader.GetDateTime (10);
+            int reminderCount = reader.GetInt32 (11);
+            string reference = reader.GetString (12);
+            bool domestic = reader.GetBoolean (13);
+            bool open = reader.GetBoolean (14);
+            bool sent = reader.GetBoolean (15);
+            string securityCode = reader.GetString (16);
+            string theirReference = reader.GetString (17);
 
-            return new BasicOutboundInvoice(outboundInvoiceId, customerName, invoiceAddressPaper, invoiceAddressMail,
+            return new BasicOutboundInvoice (outboundInvoiceId, customerName, invoiceAddressPaper, invoiceAddressMail,
                 currencyId, organizationId, budgetId, createdDateTime,
                 createdByPersonId, dueDate, reminderCount, reference, domestic, open, sent, securityCode, theirReference);
         }
 
-        private BasicOutboundInvoiceItem ReadOutboundInvoiceItemFromDataReader(DbDataReader reader)
+        private BasicOutboundInvoiceItem ReadOutboundInvoiceItemFromDataReader (DbDataReader reader)
         {
-            int outboundInvoiceItemId = reader.GetInt32(0);
-            int outboundInvoiceId = reader.GetInt32(1);
-            string description = reader.GetString(2);
-            Int64 amountCents = reader.GetInt64(3);
+            int outboundInvoiceItemId = reader.GetInt32 (0);
+            int outboundInvoiceId = reader.GetInt32 (1);
+            string description = reader.GetString (2);
+            Int64 amountCents = reader.GetInt64 (3);
 
-            return new BasicOutboundInvoiceItem(outboundInvoiceItemId, outboundInvoiceId, description, amountCents);
+            return new BasicOutboundInvoiceItem (outboundInvoiceItemId, outboundInvoiceId, description, amountCents);
         }
 
         #endregion
 
         #region Record reading - SELECT statements
 
-        public BasicOutboundInvoice GetOutboundInvoice(int outboundInvoiceId)
+        public BasicOutboundInvoice GetOutboundInvoice (int outboundInvoiceId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + outboundInvoiceFieldSequence + "WHERE OutboundInvoiceId=" + outboundInvoiceId + ";",
                         connection);
 
@@ -79,10 +79,10 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadOutboundInvoiceFromDataReader(reader);
+                        return ReadOutboundInvoiceFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown OutboundInvoiceId");
+                    throw new ArgumentException ("Unknown OutboundInvoiceId");
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace Swarmops.Database
         /// </summary>
         /// <param name="conditions">Optional Organization object and/or DatabaseConditions.</param>
         /// <returns>The inbound invoice list.</returns>
-        public BasicOutboundInvoice[] GetOutboundInvoices(params object[] conditions)
+        public BasicOutboundInvoice[] GetOutboundInvoices (params object[] conditions)
         {
             List<BasicOutboundInvoice> result = new List<BasicOutboundInvoice>();
 
@@ -102,15 +102,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + outboundInvoiceFieldSequence + ConstructWhereClause("OutboundInvoices", conditions) +
+                    GetDbCommand (
+                        "SELECT" + outboundInvoiceFieldSequence + ConstructWhereClause ("OutboundInvoices", conditions) +
                         " ORDER BY DueDate;", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadOutboundInvoiceFromDataReader(reader));
+                        result.Add (ReadOutboundInvoiceFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -119,14 +119,14 @@ namespace Swarmops.Database
         }
 
 
-        public BasicOutboundInvoiceItem GetOutboundInvoiceItem(int outboundInvoiceItemId)
+        public BasicOutboundInvoiceItem GetOutboundInvoiceItem (int outboundInvoiceItemId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + outboundInvoiceItemFieldSequence + "WHERE OutboundInvoiceItemId=" +
                         outboundInvoiceItemId + ";", connection);
 
@@ -134,10 +134,10 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadOutboundInvoiceItemFromDataReader(reader);
+                        return ReadOutboundInvoiceItemFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown OutboundInvoiceId");
+                    throw new ArgumentException ("Unknown OutboundInvoiceId");
                 }
             }
         }
@@ -148,7 +148,7 @@ namespace Swarmops.Database
         /// </summary>
         /// <param name="conditions">OutboundInvoice object.</param>
         /// <returns>The inbound invoice list.</returns>
-        public BasicOutboundInvoiceItem[] GetOutboundInvoiceItems(params object[] conditions)
+        public BasicOutboundInvoiceItem[] GetOutboundInvoiceItems (params object[] conditions)
         {
             List<BasicOutboundInvoiceItem> result = new List<BasicOutboundInvoiceItem>();
 
@@ -157,16 +157,16 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + outboundInvoiceItemFieldSequence +
-                        ConstructWhereClause("OutboundInvoiceItems", conditions) + outboundInvoiceItemSortOrder + ";",
+                        ConstructWhereClause ("OutboundInvoiceItems", conditions) + outboundInvoiceItemSortOrder + ";",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadOutboundInvoiceItemFromDataReader(reader));
+                        result.Add (ReadOutboundInvoiceItemFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -178,7 +178,7 @@ namespace Swarmops.Database
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateOutboundInvoice(int organizationId, int createdByPersonId, DateTime dueDate,
+        public int CreateOutboundInvoice (int organizationId, int createdByPersonId, DateTime dueDate,
             int budgetId, string customerName, string invoiceAddressPaper, string invoiceAddressMail,
             int currencyId, string reference, bool domestic, string securityCode, string theirReference)
 
@@ -187,128 +187,128 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateOutboundInvoice", connection);
+                DbCommand command = GetDbCommand ("CreateOutboundInvoice", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "createdDateTime", DateTime.Now);
-                AddParameterWithName(command, "createdByPersonId", createdByPersonId);
-                AddParameterWithName(command, "dueDate", dueDate);
-                AddParameterWithName(command, "budgetId", budgetId);
-                AddParameterWithName(command, "customerName", customerName);
-                AddParameterWithName(command, "invoiceAddressPaper", invoiceAddressPaper);
-                AddParameterWithName(command, "invoiceAddressMail", invoiceAddressMail);
-                AddParameterWithName(command, "currencyId", currencyId);
-                AddParameterWithName(command, "reference", reference);
-                AddParameterWithName(command, "domestic", domestic);
-                AddParameterWithName(command, "securityCode", securityCode);
-                AddParameterWithName(command, "TheirReference", theirReference);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "createdDateTime", DateTime.Now);
+                AddParameterWithName (command, "createdByPersonId", createdByPersonId);
+                AddParameterWithName (command, "dueDate", dueDate);
+                AddParameterWithName (command, "budgetId", budgetId);
+                AddParameterWithName (command, "customerName", customerName);
+                AddParameterWithName (command, "invoiceAddressPaper", invoiceAddressPaper);
+                AddParameterWithName (command, "invoiceAddressMail", invoiceAddressMail);
+                AddParameterWithName (command, "currencyId", currencyId);
+                AddParameterWithName (command, "reference", reference);
+                AddParameterWithName (command, "domestic", domestic);
+                AddParameterWithName (command, "securityCode", securityCode);
+                AddParameterWithName (command, "TheirReference", theirReference);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int CreateOutboundInvoiceItem(int outboundInvoiceId, string description, double amount)
+        public int CreateOutboundInvoiceItem (int outboundInvoiceId, string description, double amount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateOutboundInvoiceItem", connection);
+                DbCommand command = GetDbCommand ("CreateOutboundInvoiceItem", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
-                AddParameterWithName(command, "description", description);
-                AddParameterWithName(command, "amount", amount);
-                AddParameterWithName(command, "sortOrder", 1);
+                AddParameterWithName (command, "outboundInvoiceId", outboundInvoiceId);
+                AddParameterWithName (command, "description", description);
+                AddParameterWithName (command, "amount", amount);
+                AddParameterWithName (command, "sortOrder", 1);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int CreateOutboundInvoiceItem(int outboundInvoiceId, string description, Int64 amountCents)
+        public int CreateOutboundInvoiceItem (int outboundInvoiceId, string description, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateOutboundInvoiceItemPrecise", connection);
+                DbCommand command = GetDbCommand ("CreateOutboundInvoiceItemPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
-                AddParameterWithName(command, "description", description);
-                AddParameterWithName(command, "amountCents", amountCents);
-                AddParameterWithName(command, "sortOrder", 1);
+                AddParameterWithName (command, "outboundInvoiceId", outboundInvoiceId);
+                AddParameterWithName (command, "description", description);
+                AddParameterWithName (command, "amountCents", amountCents);
+                AddParameterWithName (command, "sortOrder", 1);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public void SetOutboundInvoiceOpen(int outboundInvoiceId, bool open)
+        public void SetOutboundInvoiceOpen (int outboundInvoiceId, bool open)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetOutboundInvoiceOpen", connection);
+                DbCommand command = GetDbCommand ("SetOutboundInvoiceOpen", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
-                AddParameterWithName(command, "open", open);
+                AddParameterWithName (command, "outboundInvoiceId", outboundInvoiceId);
+                AddParameterWithName (command, "open", open);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetOutboundInvoiceSent(int inboundInvoiceId, bool sent)
+        public void SetOutboundInvoiceSent (int inboundInvoiceId, bool sent)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetOutboundInvoiceSent", connection);
+                DbCommand command = GetDbCommand ("SetOutboundInvoiceSent", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundInvoiceId", inboundInvoiceId);
-                AddParameterWithName(command, "sent", sent);
+                AddParameterWithName (command, "outboundInvoiceId", inboundInvoiceId);
+                AddParameterWithName (command, "sent", sent);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetOutboundInvoiceReference(int inboundInvoiceId, string reference)
+        public void SetOutboundInvoiceReference (int inboundInvoiceId, string reference)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetOutboundInvoiceReference", connection);
+                DbCommand command = GetDbCommand ("SetOutboundInvoiceReference", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundInvoiceId", inboundInvoiceId);
-                AddParameterWithName(command, "reference", reference);
+                AddParameterWithName (command, "outboundInvoiceId", inboundInvoiceId);
+                AddParameterWithName (command, "reference", reference);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetOutboundInvoiceBudget(int outboundInvoiceId, int budgetId)
+        public void SetOutboundInvoiceBudget (int outboundInvoiceId, int budgetId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetOutboundInvoiceBudget", connection);
+                DbCommand command = GetDbCommand ("SetOutboundInvoiceBudget", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
-                AddParameterWithName(command, "budgetId", budgetId);
+                AddParameterWithName (command, "outboundInvoiceId", outboundInvoiceId);
+                AddParameterWithName (command, "budgetId", budgetId);
 
                 command.ExecuteNonQuery();
             }

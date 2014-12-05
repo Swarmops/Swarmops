@@ -25,7 +25,7 @@ namespace Swarmops.Basic.Types
 
         #endregion
 
-        public BasicDocument(int documentId, string serverFileName, string clientFileName, string description,
+        public BasicDocument (int documentId, string serverFileName, string clientFileName, string description,
             DocumentType documentType, int foreignId, Int64 fileSize, int uploadedByPersonId, DateTime uploadedDateTime)
         {
             this.documentId = documentId;
@@ -39,8 +39,8 @@ namespace Swarmops.Basic.Types
             this.uploadedDateTime = uploadedDateTime;
         }
 
-        public BasicDocument(BasicDocument original) :
-            this(original.documentId, original.serverFileName, original.clientFileName, original.description,
+        public BasicDocument (BasicDocument original) :
+            this (original.documentId, original.serverFileName, original.clientFileName, original.description,
                 original.documentType, original.foreignId, original.fileSize, original.uploadedByPersonId,
                 original.uploadedDateTime)
         {

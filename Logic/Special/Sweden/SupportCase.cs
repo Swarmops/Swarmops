@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Special.Sweden
         public readonly int SupportCaseId;
         public readonly string Title;
 
-        public SupportCase(int identity, string title)
+        public SupportCase (int identity, string title)
         {
             this.SupportCaseId = identity;
             this.Title = title;
@@ -20,17 +20,17 @@ namespace Swarmops.Logic.Special.Sweden
             this.Email = string.Empty;
         }
 
-        public SupportCase(int identity, string title, string email)
+        public SupportCase (int identity, string title, string email)
         {
             this.SupportCaseId = identity;
             this.Title = title;
             this.Email = email;
 
-            int indexOfBracket = email.IndexOf('<');
+            int indexOfBracket = email.IndexOf ('<');
 
             if (indexOfBracket >= 0)
             {
-                this.Email = email.Substring(indexOfBracket + 1, email.IndexOf('>') - indexOfBracket - 1);
+                this.Email = email.Substring (indexOfBracket + 1, email.IndexOf ('>') - indexOfBracket - 1);
             }
         }
 
@@ -39,9 +39,9 @@ namespace Swarmops.Logic.Special.Sweden
             get { return this.SupportCaseId; }
         }
 
-        public void CloseWithComment(string comment)
+        public void CloseWithComment (string comment)
         {
-            SupportDatabase.CloseWithComment(Identity, comment);
+            SupportDatabase.CloseWithComment (Identity, comment);
         }
     }
 }

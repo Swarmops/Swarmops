@@ -8,7 +8,7 @@ namespace Swarmops.Logic.Communications
     {
         public static OutboundComms GetOpen()
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetOutboundComms(DatabaseCondition.OpenTrue));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetOutboundComms (DatabaseCondition.OpenTrue));
         }
     }
 }

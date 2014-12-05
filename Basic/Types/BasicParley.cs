@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicParley : IHasIdentity
     {
-        public BasicParley(int parleyId, int organizationId, int personId, int budgetId, DateTime createdDateTime,
+        public BasicParley (int parleyId, int organizationId, int personId, int budgetId, DateTime createdDateTime,
             bool open, bool attested, string name, int geographyId, string description, string informationUrl,
             DateTime startDate, DateTime endDate, Int64 budgetCents, Int64 guaranteeCents,
             Int64 attendanceFeeCents, DateTime closedDateTime)
@@ -29,8 +29,8 @@ namespace Swarmops.Basic.Types
             ClosedDateTime = closedDateTime;
         }
 
-        public BasicParley(BasicParley original)
-            : this(
+        public BasicParley (BasicParley original)
+            : this (
                 original.ParleyId, original.OrganizationId, original.PersonId, original.BudgetId,
                 original.CreatedDateTime, original.Open, original.Attested, original.Name, original.GeographyId,
                 original.Description, original.InformationUrl, original.StartDate, original.EndDate,

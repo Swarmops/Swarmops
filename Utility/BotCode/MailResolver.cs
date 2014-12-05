@@ -34,7 +34,7 @@ namespace Swarmops.Utility.BotCode
                 case (int) TypedMailTemplate.TemplateType.MemberMail:
                     // All members at this org and geography
 
-                    People people = People.FromOrganizationAndGeography(mail.Organization, mail.Geography);
+                    People people = People.FromOrganizationAndGeography (mail.Organization, mail.Geography);
                     downwardCount = people.Count;
                     foreach (Person person in people)
                     {
@@ -44,7 +44,7 @@ namespace Swarmops.Utility.BotCode
 
                 case (int) TypedMailTemplate.TemplateType.OfficerMail:
                     // All officers at this org and geography
-                    int[] officers = Roles.GetAllDownwardRoles(mail.OrganizationId, mail.GeographyId);
+                    int[] officers = Roles.GetAllDownwardRoles (mail.OrganizationId, mail.GeographyId);
                     downwardCount = officers.Length;
                     foreach (int personId in officers)
                     {
@@ -53,18 +53,18 @@ namespace Swarmops.Utility.BotCode
                     break;
 
                 default:
-                    throw new InvalidOperationException("Unhandled mail mode; can't resolve mail id " +
-                                                        mail.Identity);
+                    throw new InvalidOperationException ("Unhandled mail mode; can't resolve mail id " +
+                                                         mail.Identity);
             }
 
-            int[] upwardIds = Roles.GetAllUpwardRoles(mail.OrganizationId, mail.GeographyId);
+            int[] upwardIds = Roles.GetAllUpwardRoles (mail.OrganizationId, mail.GeographyId);
             upwardCount = upwardIds.Length;
 
             foreach (int personId in upwardIds)
             {
                 // Filter for subscription of copies to local mail. Inefficient filter, room for optimization.
 
-                if (Person.FromIdentity(personId).IsSubscribing(NewsletterFeed.TypeID.OfficerUpwardCopies))
+                if (Person.FromIdentity (personId).IsSubscribing (NewsletterFeed.TypeID.OfficerUpwardCopies))
                 {
                     officerIds[personId] = true;
                 }
@@ -75,20 +75,20 @@ namespace Swarmops.Utility.BotCode
             List<int> officerIdList = new List<int>();
             foreach (int officerId in officerIds.Keys)
             {
-                officerIdList.Add(officerId);
-                if (personIds.ContainsKey(officerId))
+                officerIdList.Add (officerId);
+                if (personIds.ContainsKey (officerId))
                 {
                     // If somebody is going to recieve this mail both due to area coverage and
                     // chain of command, send as chain of command only
 
-                    personIds.Remove(officerId);
+                    personIds.Remove (officerId);
                 }
             }
 
             List<int> personIdList = new List<int>();
             foreach (int personId in personIds.Keys)
             {
-                personIdList.Add(personId);
+                personIdList.Add (personId);
             }
 
             // Check for people who have declined local mail
@@ -101,7 +101,7 @@ namespace Swarmops.Utility.BotCode
             {
                 foreach (int personId in decliners.Keys)
                 {
-                    personIds.Remove(personId);
+                    personIds.Remove (personId);
                 }
 
                 // Rebuild list after decliners gone
@@ -109,7 +109,7 @@ namespace Swarmops.Utility.BotCode
                 personIdList = new List<int>();
                 foreach (int personId in personIds.Keys)
                 {
-                    personIdList.Add(personId);
+                    personIdList.Add (personId);
                 }
             }
 
@@ -118,14 +118,14 @@ namespace Swarmops.Utility.BotCode
 
             // Create recipients
 
-            mail.AddRecipients(personIdList.ToArray(), false);
-            mail.AddRecipients(officerIdList.ToArray(), true);
+            mail.AddRecipients (personIdList.ToArray(), false);
+            mail.AddRecipients (officerIdList.ToArray(), true);
 
             int countTotal = personIdList.Count + officerIdList.Count;
 
             // Mark as ready
 
-            mail.SetRecipientCount(countTotal);
+            mail.SetRecipientCount (countTotal);
             mail.SetResolved();
 
             // TODO: Set recipient count of mail
@@ -134,17 +134,17 @@ namespace Swarmops.Utility.BotCode
 
             string mailBody = "Your outbound mail with the title \"" + mail.Title +
                               "\" has been resolved for recipients and " +
-                              "will be sent to " + countTotal.ToString("#,##0") + " people.\r\n\r\nOut of these " +
-                              countTotal.ToString("#,##0") + ", " + (downwardCount - declineCount).ToString("#,##0") +
+                              "will be sent to " + countTotal.ToString ("#,##0") + " people.\r\n\r\nOut of these " +
+                              countTotal.ToString ("#,##0") + ", " + (downwardCount - declineCount).ToString ("#,##0") +
                               " are people within the requested " +
-                              "organization/geography (" + Organization.FromIdentity(mail.OrganizationId).Name + "/" +
-                              Geography.FromIdentity(mail.GeographyId).Name + "), and " +
-                              upwardCount.ToString("#,##0") + " are people in the chain of command who are " +
+                              "organization/geography (" + Organization.FromIdentity (mail.OrganizationId).Name + "/" +
+                              Geography.FromIdentity (mail.GeographyId).Name + "), and " +
+                              upwardCount.ToString ("#,##0") + " are people in the chain of command who are " +
                               "copied on the mail to know what's happening in the organization. There is normally some overlap between these two groups.\r\n\r\n";
 
             if (declineCount > 1)
             {
-                mailBody += declineCount.ToString("#,##0") +
+                mailBody += declineCount.ToString ("#,##0") +
                             " people will not receive the message because they have declined local mail.\r\n\r\n";
             }
             else if (declineCount == 1)
@@ -158,22 +158,22 @@ namespace Swarmops.Utility.BotCode
                     : "in " + (mail.ReleaseDateTime - DateTime.Now).Minutes +
                       " minutes") + ".\r\n";
 
-            new MailTransmitter(
+            new MailTransmitter (
                 "PirateWeb", "noreply@pirateweb.net",
                 "Mail resolved: " + mail.Title + " (" + countTotal + " recipients)", mailBody,
-                Person.FromIdentity(mail.AuthorPersonId), true).Send();
+                Person.FromIdentity (mail.AuthorPersonId), true).Send();
         }
 
 
-        private static People ApplySubscription(People input, int feedId)
+        private static People ApplySubscription (People input, int feedId)
         {
             People output = new People();
 
             foreach (Person person in input)
             {
-                if (person.IsSubscribing(feedId))
+                if (person.IsSubscribing (feedId))
                 {
-                    output.Add(person);
+                    output.Add (person);
                 }
             }
 
@@ -181,7 +181,7 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        public static string CreateWelcomeMail(Person person, Organization organization)
+        public static string CreateWelcomeMail (Person person, Organization organization)
         {
             // for this person, iterate over all applicable geographies and organizations
 
@@ -200,7 +200,7 @@ namespace Swarmops.Utility.BotCode
             {
                 foreach (Geography geo in geoLine) // but at the top geography
                 {
-                    AutoMail autoMail = AutoMail.FromTypeOrganizationAndGeography(AutoMailType.Welcome, org, geo);
+                    AutoMail autoMail = AutoMail.FromTypeOrganizationAndGeography (AutoMailType.Welcome, org, geo);
 
                     if (autoMail == null)
                     {
@@ -212,15 +212,15 @@ namespace Swarmops.Utility.BotCode
 
                     try
                     {
-                        lead = Roles.GetLocalLead(org, geo);
+                        lead = Roles.GetLocalLead (org, geo);
                         orgMailedLookup[org.Identity] = true;
-                            // Make sure that the chairman doesn't mail at a lower level
+                        // Make sure that the chairman doesn't mail at a lower level
                     }
                     catch (ArgumentException)
                     {
                     }
 
-                    if (lead == null && !orgMailedLookup.ContainsKey(org.Identity))
+                    if (lead == null && !orgMailedLookup.ContainsKey (org.Identity))
                     {
                         // If we get here, there is a mail template at the highest possible geo for this org, but no local lead.
                         // That's usually the case with board-centric organizations rather than executive-centric.
@@ -229,7 +229,7 @@ namespace Swarmops.Utility.BotCode
                         try
                         {
                             orgMailedLookup[org.Identity] = true;
-                            lead = Roles.GetChairman(org);
+                            lead = Roles.GetChairman (org);
                             geoName = "Chairman";
                         }
                         catch (ArgumentException)
@@ -257,14 +257,14 @@ namespace Swarmops.Utility.BotCode
                     welcomemail.pBodyContent = autoMail.Body;
                     welcomemail.pSubject = autoMail.Title;
 
-                    OutboundMail newMail = welcomemail.CreateOutboundMail(lead, OutboundMail.PriorityNormal,
-                        org, geo, DateTime.Now.AddMinutes(delay));
-                    newMail.AddRecipient(person.Identity, false);
-                    newMail.SetRecipientCount(1);
+                    OutboundMail newMail = welcomemail.CreateOutboundMail (lead, OutboundMail.PriorityNormal,
+                        org, geo, DateTime.Now.AddMinutes (delay));
+                    newMail.AddRecipient (person.Identity, false);
+                    newMail.SetRecipientCount (1);
                     newMail.SetResolved();
                     newMail.SetReadyForPickup();
 
-                    result += String.Format(" - {0}/{1} by {2} (",
+                    result += String.Format (" - {0}/{1} by {2} (",
                         org.NameShort, geoName, lead.Canonical);
                     if (delay == 0)
                     {
@@ -273,8 +273,8 @@ namespace Swarmops.Utility.BotCode
                     }
                     else
                     {
-                        result += "sending at " + DateTime.Now.AddMinutes(delay).ToString("HH:mm");
-                        delay += 31 + random.Next(52);
+                        result += "sending at " + DateTime.Now.AddMinutes (delay).ToString ("HH:mm");
+                        delay += 31 + random.Next (52);
                     }
                     result += ")\r\n";
                 }

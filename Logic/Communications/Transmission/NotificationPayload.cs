@@ -8,7 +8,7 @@ namespace Swarmops.Logic.Communications.Transmission
     [Serializable]
     public class NotificationPayload : PayloadBase<NotificationPayload>, ICommsRenderer
     {
-        [Obsolete(
+        [Obsolete (
             "Do not use this direct constructor. It is intended for XML serialization only. Therefore, you're getting a compile-time error.",
             true)]
         public NotificationPayload()
@@ -16,12 +16,13 @@ namespace Swarmops.Logic.Communications.Transmission
             // empty ctor, for XML reflection. Do not use.
         }
 
-        public NotificationPayload(string notificationResource) : this(notificationResource, new NotificationStrings())
+        public NotificationPayload (string notificationResource)
+            : this (notificationResource, new NotificationStrings())
         {
             // redirect to main ctor
         }
 
-        public NotificationPayload(string notificationResource, NotificationStrings strings)
+        public NotificationPayload (string notificationResource, NotificationStrings strings)
         {
             SubjectResource = notificationResource + "_Subject";
             BodyResource = notificationResource + "_Body";
@@ -37,8 +38,8 @@ namespace Swarmops.Logic.Communications.Transmission
             // TODO: Pick culture
 
             return
-                ExpandMacros(
-                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString(SubjectResource));
+                ExpandMacros (
+                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString (SubjectResource));
         }
 
         public string GetBody()
@@ -46,15 +47,15 @@ namespace Swarmops.Logic.Communications.Transmission
             // TODO: Pick culture
 
             return
-                ExpandMacros(
-                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString(BodyResource));
+                ExpandMacros (
+                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString (BodyResource));
         }
 
-        public string ExpandMacros(string input)
+        public string ExpandMacros (string input)
         {
             // TODO: Replace all, of course
 
-            input = input.Replace("[HostName]", Dns.GetHostName());
+            input = input.Replace ("[HostName]", Dns.GetHostName());
 
             // Loop through supplied strings and replace them in the resource. Not very efficient but who cares
 
@@ -62,7 +63,7 @@ namespace Swarmops.Logic.Communications.Transmission
             {
                 // TODO: Check if string ends in Float, and if so, parse and culturize it
 
-                input = input.Replace("[" + notificationString + "]", Strings[notificationString]);
+                input = input.Replace ("[" + notificationString + "]", Strings[notificationString]);
             }
 
             return input;
@@ -70,7 +71,7 @@ namespace Swarmops.Logic.Communications.Transmission
 
         #region Implementation of ICommsRenderer
 
-        public RenderedComm RenderComm(Person person)
+        public RenderedComm RenderComm (Person person)
         {
             RenderedComm result = new RenderedComm();
 

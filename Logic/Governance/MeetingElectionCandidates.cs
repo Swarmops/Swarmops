@@ -7,9 +7,9 @@ namespace Swarmops.Logic.Governance
     public class MeetingElectionCandidates :
         PluralBase<MeetingElectionCandidates, MeetingElectionCandidate, BasicInternalPollCandidate>
     {
-        public static MeetingElectionCandidates ForPoll(MeetingElection poll)
+        public static MeetingElectionCandidates ForPoll (MeetingElection poll)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPollCandidates(poll));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetInternalPollCandidates (poll));
         }
     }
 }

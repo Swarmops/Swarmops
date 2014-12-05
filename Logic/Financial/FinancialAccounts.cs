@@ -11,21 +11,22 @@ namespace Swarmops.Logic.Financial
 {
     public class FinancialAccounts : PluralBase<FinancialAccounts, FinancialAccount, BasicFinancialAccount>
     {
-        public static FinancialAccounts ForOrganization(Organization organization)
+        public static FinancialAccounts ForOrganization (Organization organization)
         {
             return
-                FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountTreeForOrganization(organization.Identity));
+                FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetFinancialAccountTreeForOrganization (organization.Identity));
         }
 
-        public static FinancialAccounts ForOwner(Person person)
+        public static FinancialAccounts ForOwner (Person person)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountsOwnedByPerson(person.Identity));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetFinancialAccountsOwnedByPerson (person.Identity));
         }
 
 
-        public static FinancialAccounts ForOrganization(Organization organization, FinancialAccountType accountType)
+        public static FinancialAccounts ForOrganization (Organization organization, FinancialAccountType accountType)
         {
-            FinancialAccounts allAccounts = ForOrganization(organization);
+            FinancialAccounts allAccounts = ForOrganization (organization);
 
             if (accountType == FinancialAccountType.All)
             {
@@ -51,75 +52,75 @@ namespace Swarmops.Logic.Financial
 
             foreach (FinancialAccount account in allAccounts)
             {
-                if (lookup.ContainsKey(account.AccountType))
+                if (lookup.ContainsKey (account.AccountType))
                 {
-                    result.Add(account);
+                    result.Add (account);
                 }
             }
 
             return result;
         }
 
-        public static FinancialAccounts FromBankTransactionTag(string tag)
+        public static FinancialAccounts FromBankTransactionTag (string tag)
         {
             int[] accountIdentities =
-                SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.FinancialAccount,
+                SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData (ObjectType.FinancialAccount,
                     ObjectOptionalDataType.
                         BankTransactionTag,
                     tag.ToLower());
 
-            return FromIdentities(accountIdentities);
+            return FromIdentities (accountIdentities);
         }
 
-        public static FinancialAccounts FromIdentities(int[] financialAccountIds)
+        public static FinancialAccounts FromIdentities (int[] financialAccountIds)
         {
             if (financialAccountIds.Length == 0)
             {
                 return new FinancialAccounts();
             }
 
-            return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccounts(financialAccountIds));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetFinancialAccounts (financialAccountIds));
         }
 
-        public FinancialAccountRows GetRows(DateTime start, DateTime end)
+        public FinancialAccountRows GetRows (DateTime start, DateTime end)
         {
             BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading()
-                .GetFinancialAccountRows(Identities, start, end, false);
-            return FinancialAccountRows.FromArray(basicRows);
+                .GetFinancialAccountRows (Identities, start, end, false);
+            return FinancialAccountRows.FromArray (basicRows);
         }
 
-        public FinancialAccountRows GetRowsFar(DateTime start, DateTime end)
+        public FinancialAccountRows GetRowsFar (DateTime start, DateTime end)
         {
             BasicFinancialAccountRow[] basicRows = SwarmDb.GetDatabaseForReading()
-                .GetFinancialAccountRows(Identities, start, end, true);
-            return FinancialAccountRows.FromArray(basicRows);
+                .GetFinancialAccountRows (Identities, start, end, true);
+            return FinancialAccountRows.FromArray (basicRows);
         }
 
-        [Obsolete("This function uses double-point variables for money. Use GetBudgetSumCents instead.")]
-        public double GetBudgetSum(int year)
+        [Obsolete ("This function uses double-point variables for money. Use GetBudgetSumCents instead.")]
+        public double GetBudgetSum (int year)
         {
-            return SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget(Identities, year);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget (Identities, year);
         }
 
 
-        public Int64 GetBudgetSumCents(int year)
+        public Int64 GetBudgetSumCents (int year)
         {
             // TODO: Add support in database
-            return (Int64) (SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget(Identities, year)*100);
+            return (Int64) (SwarmDb.GetDatabaseForReading().GetFinancialAccountsBudget (Identities, year)*100);
         }
 
 
-        public Int64 GetDeltaCents(DateTime start, DateTime end)
+        public Int64 GetDeltaCents (DateTime start, DateTime end)
         {
-            return SwarmDb.GetDatabaseForReading().GetFinancialAccountBalanceDeltaCents(Identities, start, end);
+            return SwarmDb.GetDatabaseForReading().GetFinancialAccountBalanceDeltaCents (Identities, start, end);
         }
 
 
-        public static FinancialAccounts GetTree(FinancialAccount rootAccount)
+        public static FinancialAccounts GetTree (FinancialAccount rootAccount)
         {
-            Dictionary<int, FinancialAccounts> nodes = GetHashedAccounts(rootAccount.Organization);
+            Dictionary<int, FinancialAccounts> nodes = GetHashedAccounts (rootAccount.Organization);
 
-            return GetTree(nodes, rootAccount.Identity, 0);
+            return GetTree (nodes, rootAccount.Identity, 0);
         }
 
 
@@ -139,7 +140,7 @@ namespace Swarmops.Logic.Financial
         }*/
 
 
-        private static FinancialAccounts GetTree(Dictionary<int, FinancialAccounts> accounts, int startNodeId,
+        private static FinancialAccounts GetTree (Dictionary<int, FinancialAccounts> accounts, int startNodeId,
             int generation)
         {
             FinancialAccounts result = new FinancialAccounts();
@@ -150,17 +151,17 @@ namespace Swarmops.Logic.Financial
             {
                 if (account.Identity != startNodeId)
                 {
-                    result.Add(account);
+                    result.Add (account);
 
                     // Add recursively
 
-                    FinancialAccounts children = GetTree(accounts, account.Identity, generation + 1);
+                    FinancialAccounts children = GetTree (accounts, account.Identity, generation + 1);
 
                     if (children.Count > 0)
                     {
                         foreach (FinancialAccount child in children)
                         {
-                            result.Add(child);
+                            result.Add (child);
                         }
                     }
                 }
@@ -168,14 +169,14 @@ namespace Swarmops.Logic.Financial
                 {
                     // The top parent is special and should be added; the others shouldn't
 
-                    result.Add(account);
+                    result.Add (account);
                 }
             }
 
             return result;
         }
 
-        public static Dictionary<int, FinancialAccounts> GetHashedAccounts(Organization organization)
+        public static Dictionary<int, FinancialAccounts> GetHashedAccounts (Organization organization)
         {
             // This generates a Dictionary <int,List<FinancialAccount>>.
             // 
@@ -188,14 +189,14 @@ namespace Swarmops.Logic.Financial
             Dictionary<int, FinancialAccounts> result = new Dictionary<int, FinancialAccounts>();
 
             FinancialAccounts allAccounts =
-                FromArray(SwarmDb.GetDatabaseForReading().GetFinancialAccountsForOrganization(organization.Identity));
+                FromArray (SwarmDb.GetDatabaseForReading().GetFinancialAccountsForOrganization (organization.Identity));
 
             // Add the nodes.
 
             foreach (FinancialAccount account in allAccounts)
             {
                 FinancialAccounts accounts = new FinancialAccounts();
-                accounts.Add(account);
+                accounts.Add (account);
 
                 result[account.Identity] = accounts;
             }
@@ -206,7 +207,7 @@ namespace Swarmops.Logic.Financial
 
             foreach (FinancialAccount account in allAccounts)
             {
-                result[account.ParentIdentity].Add(account);
+                result[account.ParentIdentity].Add (account);
             }
 
             return result;

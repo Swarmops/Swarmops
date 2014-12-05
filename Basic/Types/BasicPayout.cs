@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPayout : IHasIdentity
     {
-        public BasicPayout(int payoutId, int organizationId, string bank, string account,
+        public BasicPayout (int payoutId, int organizationId, string bank, string account,
             string reference, Int64 amountCents, DateTime expectedTransactionDate, bool open,
             DateTime createdDateTime, int createdByPersonId)
         {
@@ -21,8 +21,8 @@ namespace Swarmops.Basic.Types
             CreatedByPersonId = createdByPersonId;
         }
 
-        public BasicPayout(BasicPayout original) :
-            this(original.PayoutId, original.OrganizationId, original.Bank, original.Account,
+        public BasicPayout (BasicPayout original) :
+            this (original.PayoutId, original.OrganizationId, original.Bank, original.Account,
                 original.Reference, original.AmountCents, original.ExpectedTransactionDate, original.Open,
                 original.CreatedDateTime, original.CreatedByPersonId)
         {

@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPayment : IHasIdentity
     {
-        public BasicPayment(int paymentId, int paymentGroupId, Int64 amountCents, string reference, string fromAccount,
+        public BasicPayment (int paymentId, int paymentGroupId, Int64 amountCents, string reference, string fromAccount,
             string key, bool hasImage, int outboundInvoiceId)
         {
             PaymentId = paymentId;
@@ -18,8 +18,8 @@ namespace Swarmops.Basic.Types
             OutboundInvoiceId = outboundInvoiceId;
         }
 
-        public BasicPayment(BasicPayment original)
-            : this(
+        public BasicPayment (BasicPayment original)
+            : this (
                 original.PaymentId, original.PaymentGroupId, original.AmountCents, original.Reference,
                 original.FromAccount, original.Key, original.HasImage, original.OutboundInvoiceId)
         {

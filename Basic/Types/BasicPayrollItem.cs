@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPayrollItem : IHasIdentity
     {
-        public BasicPayrollItem(int payrollItemId, int personId, int organizationId, int countryId,
+        public BasicPayrollItem (int payrollItemId, int personId, int organizationId, int countryId,
             DateTime employedDate,
             int reportsToPersonId, Int64 baseSalaryCents, int budgetId, bool open, DateTime terminatedDate,
             int subtractiveTaxLevelId, double additiveTaxLevel)
@@ -24,8 +24,8 @@ namespace Swarmops.Basic.Types
             AdditiveTaxLevel = additiveTaxLevel;
         }
 
-        public BasicPayrollItem(BasicPayrollItem original)
-            : this(original.PayrollItemId, original.PersonId, original.OrganizationId, original.CountryId,
+        public BasicPayrollItem (BasicPayrollItem original)
+            : this (original.PayrollItemId, original.PersonId, original.OrganizationId, original.CountryId,
                 original.EmployedDate, original.ReportsToPersonId, original.BaseSalaryCents, original.BudgetId,
                 original.Open, original.TerminatedDate, original.SubtractiveTaxLevelId, original.AdditiveTaxLevel)
         {

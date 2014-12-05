@@ -23,8 +23,8 @@ namespace Swarmops.Logic.Communications
         /// <summary>
         ///     Private constructor from basic object
         /// </summary>
-        private OutboundMail(BasicOutboundMail basic)
-            : base(basic)
+        private OutboundMail (BasicOutboundMail basic)
+            : base (basic)
         {
             // remember titel for templated mail, it is the name of the template.
             if (MailType > 0)
@@ -34,14 +34,14 @@ namespace Swarmops.Logic.Communications
         /// <summary>
         ///     Creation from basic object - internal to PirateWeb.Logic
         /// </summary>
-        internal static OutboundMail FromBasic(BasicOutboundMail basic)
+        internal static OutboundMail FromBasic (BasicOutboundMail basic)
         {
             if (basic == null)
             {
                 return null;
             }
 
-            return new OutboundMail(basic);
+            return new OutboundMail (basic);
         }
 
 
@@ -50,27 +50,27 @@ namespace Swarmops.Logic.Communications
         /// </summary>
         /// <param name="outboundMailId">The Identity of the OutboundMail</param>
         /// <returns>An OutboundMail from the database</returns>
-        public static OutboundMail FromIdentity(int outboundMailId)
+        public static OutboundMail FromIdentity (int outboundMailId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetOutboundMail(outboundMailId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetOutboundMail (outboundMailId));
         }
 
 
-        public static OutboundMail Create(Person author, string title,
+        public static OutboundMail Create (Person author, string title,
             string body, int mailPriority, int mailType,
             Organization organization, Geography geography)
         {
-            return Create(author, title, body, mailPriority, mailType, organization,
+            return Create (author, title, body, mailPriority, mailType, organization,
                 geography, DateTime.Now);
         }
 
-        public static OutboundMail Create(Person author, string title,
+        public static OutboundMail Create (Person author, string title,
             string body, int mailPriority, int mailType,
             Organization organization, Geography geography, DateTime releaseDateTime)
         {
             return
-                FromIdentity(SwarmDb.GetDatabaseForWriting()
-                    .CreateOutboundMail(MailAuthorType.Person, author.Identity, title,
+                FromIdentity (SwarmDb.GetDatabaseForWriting()
+                    .CreateOutboundMail (MailAuthorType.Person, author.Identity, title,
                         body, mailPriority, mailType,
                         geography.Identity, organization.Identity,
                         releaseDateTime));
@@ -81,22 +81,22 @@ namespace Swarmops.Logic.Communications
         ///     Creates an unusable OutboundMail. Used for rendering previews - ONLY.
         ///     (this version, with the ignored priority param is for backward compability)
         /// </summary>
-        public static OutboundMail CreateFake(Person author, string title, string body, int ignoredPriority,
+        public static OutboundMail CreateFake (Person author, string title, string body, int ignoredPriority,
             int mailType,
             Organization organization, Geography geography)
         {
-            return CreateFake(author, title, body, mailType, organization, geography);
+            return CreateFake (author, title, body, mailType, organization, geography);
         }
 
 
         /// <summary>
         ///     Creates an unusable OutboundMail. Used for rendering previews - ONLY.
         /// </summary>
-        public static OutboundMail CreateFake(Person author, string title,
+        public static OutboundMail CreateFake (Person author, string title,
             string body, int mailType,
             Organization organization, Geography geography)
         {
-            return FromBasic(new BasicOutboundMail(0, MailAuthorType.Person, author.PersonId, title,
+            return FromBasic (new BasicOutboundMail (0, MailAuthorType.Person, author.PersonId, title,
                 body, 99, mailType, organization.Identity,
                 geography.Identity, DateTime.Now,
                 DateTime.Now, false, false, false, DateTime.MinValue,
@@ -106,30 +106,30 @@ namespace Swarmops.Logic.Communications
         /// <summary>
         ///     Creates an OutboundMail with a "functional" author.
         /// </summary>
-        public static OutboundMail CreateFunctional(MailAuthorType authorType, string title,
+        public static OutboundMail CreateFunctional (MailAuthorType authorType, string title,
             string body, int mailPriority, int mailType,
             int organizationId, int geographyId, DateTime releaseDateTime)
         {
-            int mailID = SwarmDb.GetDatabaseForWriting().CreateOutboundMail(authorType, 0, title,
+            int mailID = SwarmDb.GetDatabaseForWriting().CreateOutboundMail (authorType, 0, title,
                 body, mailPriority, mailType, geographyId,
                 organizationId, releaseDateTime);
 
             //Constructing instead of reading back from DB, saves time but..., Don't know if it is a good idea./JL
-            return FromBasic(new BasicOutboundMail(mailID, authorType, 0, title,
+            return FromBasic (new BasicOutboundMail (mailID, authorType, 0, title,
                 body, mailPriority, mailType, organizationId,
                 geographyId, DateTime.Now,
                 releaseDateTime));
         }
 
-        public List<OutboundMail> GetDuplicates(DateTime afterTime, int recipientId)
+        public List<OutboundMail> GetDuplicates (DateTime afterTime, int recipientId)
         {
             List<OutboundMail> retList = new List<OutboundMail>();
             BasicOutboundMail[] mails
-                = SwarmDb.GetDatabaseForReading().GetDuplicateOutboundMail(AuthorType, AuthorPersonId, Title,
+                = SwarmDb.GetDatabaseForReading().GetDuplicateOutboundMail (AuthorType, AuthorPersonId, Title,
                     Body, MailPriority, MailType, GeographyId, OrganizationId, afterTime, recipientId);
             foreach (BasicOutboundMail mail in mails)
             {
-                retList.Add(FromBasic(mail));
+                retList.Add (FromBasic (mail));
             }
 
             return retList;
@@ -138,11 +138,11 @@ namespace Swarmops.Logic.Communications
 
         public static OutboundMail GetFirstUnresolved()
         {
-            BasicOutboundMail[] mails = SwarmDb.GetDatabaseForReading().GetTopUnresolvedOutboundMail(1);
+            BasicOutboundMail[] mails = SwarmDb.GetDatabaseForReading().GetTopUnresolvedOutboundMail (1);
 
             if (mails.Length > 0)
             {
-                return FromBasic(mails[0]);
+                return FromBasic (mails[0]);
             }
 
             return null;
@@ -150,11 +150,11 @@ namespace Swarmops.Logic.Communications
 
         public static OutboundMail GetFirstUnprocessed()
         {
-            BasicOutboundMail[] mails = SwarmDb.GetDatabaseForReading().GetTopUnprocessedOutboundMail(1);
+            BasicOutboundMail[] mails = SwarmDb.GetDatabaseForReading().GetTopUnprocessedOutboundMail (1);
 
             if (mails.Length > 0)
             {
-                return FromBasic(mails[0]);
+                return FromBasic (mails[0]);
             }
 
             return null;
@@ -169,7 +169,7 @@ namespace Swarmops.Logic.Communications
             get { return base.StartProcessDateTime; }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetOutboundMailStartProcess(Identity);
+                SwarmDb.GetDatabaseForWriting().SetOutboundMailStartProcess (Identity);
                 base.StartProcessDateTime = DateTime.Now;
             }
         }
@@ -180,13 +180,13 @@ namespace Swarmops.Logic.Communications
             {
                 if (AuthorType != MailAuthorType.Person)
                 {
-                    throw new InvalidOperationException(
+                    throw new InvalidOperationException (
                         "OutboundMail.Author is not a valid property when OutboundMail.AuthorType isn't MailAuthorType.Person.");
                 }
 
                 if (this.author == null)
                 {
-                    this.author = Person.FromIdentity(AuthorPersonId);
+                    this.author = Person.FromIdentity (AuthorPersonId);
                 }
 
                 return this.author;
@@ -199,7 +199,7 @@ namespace Swarmops.Logic.Communications
             {
                 if (this.organization == null)
                 {
-                    this.organization = Organization.FromIdentity(OrganizationId);
+                    this.organization = Organization.FromIdentity (OrganizationId);
                 }
 
                 return this.organization;
@@ -212,7 +212,7 @@ namespace Swarmops.Logic.Communications
             {
                 if (this.geography == null)
                 {
-                    this.geography = Geography.FromIdentity(GeographyId);
+                    this.geography = Geography.FromIdentity (GeographyId);
                 }
 
                 return this.geography;
@@ -228,50 +228,50 @@ namespace Swarmops.Logic.Communications
 
         #region Recipient access and manipulation
 
-        public OutboundMailRecipients GetNextRecipientBatch(int batchSize)
+        public OutboundMailRecipients GetNextRecipientBatch (int batchSize)
         {
             return
-                OutboundMailRecipients.FromArray(
-                    SwarmDb.GetDatabaseForReading().GetTopOutboundMailRecipients(Identity, batchSize), this);
+                OutboundMailRecipients.FromArray (
+                    SwarmDb.GetDatabaseForReading().GetTopOutboundMailRecipients (Identity, batchSize), this);
         }
 
-        public void AddRecipient(Person person, bool asOfficer)
+        public void AddRecipient (Person person, bool asOfficer)
         {
-            AddRecipient(person.Identity, asOfficer);
+            AddRecipient (person.Identity, asOfficer);
         }
 
-        public void AddRecipient(Reporter person)
+        public void AddRecipient (Reporter person)
         {
-            AddReporterRecipient(person.Identity);
+            AddReporterRecipient (person.Identity);
         }
 
-        public void AddRecipients(int[] personIds, bool asOfficers)
-        {
-            foreach (int personId in personIds)
-            {
-                AddRecipient(personId, asOfficers);
-            }
-        }
-
-        public void AddReporterRecipients(int[] personIds)
+        public void AddRecipients (int[] personIds, bool asOfficers)
         {
             foreach (int personId in personIds)
             {
-                AddReporterRecipient(personId);
+                AddRecipient (personId, asOfficers);
             }
         }
 
-        public void AddRecipient(int personId, bool asOfficer)
+        public void AddReporterRecipients (int[] personIds)
+        {
+            foreach (int personId in personIds)
+            {
+                AddReporterRecipient (personId);
+            }
+        }
+
+        public void AddRecipient (int personId, bool asOfficer)
         {
             SwarmDb.GetDatabaseForWriting()
-                .CreateOutboundMailRecipient(Identity, personId, asOfficer,
+                .CreateOutboundMailRecipient (Identity, personId, asOfficer,
                     (int) OutboundMailRecipient.RecipientType.Person);
         }
 
-        private void AddReporterRecipient(int identity)
+        private void AddReporterRecipient (int identity)
         {
             SwarmDb.GetDatabaseForWriting()
-                .CreateOutboundMailRecipient(Identity, identity, false,
+                .CreateOutboundMailRecipient (Identity, identity, false,
                     (int) OutboundMailRecipient.RecipientType.Reporter);
         }
 
@@ -281,37 +281,37 @@ namespace Swarmops.Logic.Communications
 
         public void SetReadyForPickup()
         {
-            SwarmDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup(Identity);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup (Identity);
             base.ReadyForPickup = true;
         }
 
         public void SetResolved()
         {
-            SwarmDb.GetDatabaseForWriting().SetOutboundMailResolved(Identity);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailResolved (Identity);
             base.Resolved = true;
         }
 
         public void SetProcessed()
         {
-            SwarmDb.GetDatabaseForWriting().SetOutboundMailProcessed(Identity);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailProcessed (Identity);
             base.Processed = true;
         }
 
-        public void SetRecipientCount(int recipientCount)
+        public void SetRecipientCount (int recipientCount)
         {
-            SwarmDb.GetDatabaseForWriting().SetOutboundMailRecipientCount(Identity, recipientCount);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailRecipientCount (Identity, recipientCount);
             base.RecipientCount = recipientCount;
         }
 
         public void IncrementSuccesses()
         {
-            SwarmDb.GetDatabaseForWriting().IncrementOutboundMailSuccesses(Identity);
+            SwarmDb.GetDatabaseForWriting().IncrementOutboundMailSuccesses (Identity);
             base.RecipientsSuccess++;
         }
 
         public void IncrementFailures()
         {
-            SwarmDb.GetDatabaseForWriting().IncrementOutboundMailFailures(Identity);
+            SwarmDb.GetDatabaseForWriting().IncrementOutboundMailFailures (Identity);
             base.RecipientsFail++;
         }
 
@@ -324,7 +324,7 @@ namespace Swarmops.Logic.Communications
         /// </summary>
         /// <param name="person">The person to render for.</param>
         /// <returns>Text with proper replacements done</returns>
-        public string RenderText(IEmailPerson recipient, string culture)
+        public string RenderText (IEmailPerson recipient, string culture)
         {
             // First, check if there is a mail template AT ALL. If not, return the raw text.
             if (MailType == (int) TypedMailTemplate.TemplateType.None)
@@ -333,7 +333,7 @@ namespace Swarmops.Logic.Communications
             }
 
             // (If there is a template, the body contains the serialized placeholder values)
-            return Render(recipient, culture, true).PlainText;
+            return Render (recipient, culture, true).PlainText;
         }
 
 
@@ -342,22 +342,22 @@ namespace Swarmops.Logic.Communications
         /// </summary>
         /// <param name="recipient">The person to render for.</param>
         /// <returns>HTML with proper replacements done</returns>
-        public string RenderHtml(IEmailPerson recipient, string culture)
+        public string RenderHtml (IEmailPerson recipient, string culture)
         {
             // First, check if there is a mail template AT ALL. If not, return the raw text,
             // within <PRE></PRE> if not already html
 
             if (MailType == (int) TypedMailTemplate.TemplateType.None)
             {
-                Regex reHtmlType = new Regex(@"(</[a-z1-4]+>)", RegexOptions.IgnoreCase);
+                Regex reHtmlType = new Regex (@"(</[a-z1-4]+>)", RegexOptions.IgnoreCase);
 
-                if (reHtmlType.IsMatch(Body))
+                if (reHtmlType.IsMatch (Body))
                     return Body;
                 return "<PRE>" + Body + "</PRE>";
             }
 
             // (If there is a template, the body contains the serialized placeholder values)
-            return Render(recipient, culture, false).Html;
+            return Render (recipient, culture, false).Html;
         }
 
         /// <summary>
@@ -367,23 +367,23 @@ namespace Swarmops.Logic.Communications
         /// <param name="recipient">The culture to render for.</param>
         /// <param name="renderText">True if "Plain" template should be used (if available)</param>
         /// <returns>MailTemplate with proper replacements done</returns>
-        public MailTemplate Render(IEmailPerson recipient, string culture, bool renderText)
+        public MailTemplate Render (IEmailPerson recipient, string culture, bool renderText)
         {
             lock (lockTemplates)
             {
                 //Locking is needed since this is used in a multithreading scenario and the template is cached for efficiency
 
-                TypedMailTemplate template = PrepareTemplate(culture, renderText);
-                    // Setup template and load serialized replacements
-                template.FillIndividualPlaceholders(recipient); // Add recipient data
+                TypedMailTemplate template = PrepareTemplate (culture, renderText);
+                // Setup template and load serialized replacements
+                template.FillIndividualPlaceholders (recipient); // Add recipient data
                 template.InsertAllPlaceHoldersToTemplate(); // Make all replacements
                 Title = template.Template.TemplateTitleText; // Get the resulting title
                 template.Template.TemplateBody = template.Template.TemplateBody; // Force it to save Html
-                return new MailTemplate(template.Template);
+                return new MailTemplate (template.Template);
             }
         }
 
-        private TypedMailTemplate PrepareTemplate(string culture, bool renderText)
+        private TypedMailTemplate PrepareTemplate (string culture, bool renderText)
         {
             TypedMailTemplate template = null;
             if (renderText)
@@ -391,8 +391,8 @@ namespace Swarmops.Logic.Communications
                 if (this.templatePlain == null)
                 {
                     this.templatePlain =
-                        TypedMailTemplate.FromName(TypedMailTemplate.GetNameFromMailType(MailType) + "Plain");
-                    this.templatePlain.Initialize(culture.Substring(3), Organization.Identity, this,
+                        TypedMailTemplate.FromName (TypedMailTemplate.GetNameFromMailType (MailType) + "Plain");
+                    this.templatePlain.Initialize (culture.Substring (3), Organization.Identity, this,
                         (renderText ? "Plain" : ""));
                     this.templatePlain.PreparePlaceholders();
                 }
@@ -407,8 +407,8 @@ namespace Swarmops.Logic.Communications
             {
                 if (this.templateHtml == null)
                 {
-                    this.templateHtml = TypedMailTemplate.FromName(TypedMailTemplate.GetNameFromMailType(MailType));
-                    this.templateHtml.Initialize(culture.Substring(3), Organization.Identity, this,
+                    this.templateHtml = TypedMailTemplate.FromName (TypedMailTemplate.GetNameFromMailType (MailType));
+                    this.templateHtml.Initialize (culture.Substring (3), Organization.Identity, this,
                         (renderText ? "Plain" : ""));
                     this.templateHtml.PreparePlaceholders();
                 }

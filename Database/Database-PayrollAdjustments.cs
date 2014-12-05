@@ -15,17 +15,17 @@ namespace Swarmops.Database
             "Open,SalaryId " + // 5-6
             "FROM PayrollAdjustments ";
 
-        private BasicPayrollAdjustment ReadPayrollAdjustmentFromDataReader(DbDataReader reader)
+        private BasicPayrollAdjustment ReadPayrollAdjustmentFromDataReader (DbDataReader reader)
         {
-            int payrollAdjustmentId = reader.GetInt32(0);
-            int payrollAdjustmentTypeId = reader.GetInt32(1);
-            int payrollItemId = reader.GetInt32(2);
-            Int64 amountCents = reader.GetInt64(3);
-            string description = reader.GetString(4);
-            bool open = reader.GetBoolean(5);
-            int salaryId = reader.GetInt32(6);
+            int payrollAdjustmentId = reader.GetInt32 (0);
+            int payrollAdjustmentTypeId = reader.GetInt32 (1);
+            int payrollItemId = reader.GetInt32 (2);
+            Int64 amountCents = reader.GetInt64 (3);
+            string description = reader.GetString (4);
+            bool open = reader.GetBoolean (5);
+            int salaryId = reader.GetInt32 (6);
 
-            return new BasicPayrollAdjustment(payrollAdjustmentId, payrollItemId,
+            return new BasicPayrollAdjustment (payrollAdjustmentId, payrollItemId,
                 (PayrollAdjustmentType) payrollAdjustmentTypeId,
                 amountCents, description, open, salaryId);
         }
@@ -34,14 +34,14 @@ namespace Swarmops.Database
 
         #region Record reading - SELECT statements
 
-        public BasicPayrollAdjustment GetPayrollAdjustment(int payrollAdjustmentId)
+        public BasicPayrollAdjustment GetPayrollAdjustment (int payrollAdjustmentId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + payrollAdjustmentFieldSequence + "WHERE PayrollAdjustmentId=" + payrollAdjustmentId +
                         ";", connection);
 
@@ -49,10 +49,10 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadPayrollAdjustmentFromDataReader(reader);
+                        return ReadPayrollAdjustmentFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Payroll Adjustment Id");
+                    throw new ArgumentException ("Unknown Payroll Adjustment Id");
                 }
             }
         }
@@ -65,7 +65,7 @@ namespace Swarmops.Database
         ///     specifiers.
         /// </param>
         /// <returns>The list of matching payroll items.</returns>
-        public BasicPayrollAdjustment[] GetPayrollAdjustments(params object[] conditions)
+        public BasicPayrollAdjustment[] GetPayrollAdjustments (params object[] conditions)
         {
             List<BasicPayrollAdjustment> result = new List<BasicPayrollAdjustment>();
 
@@ -74,15 +74,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + payrollAdjustmentFieldSequence +
-                        ConstructWhereClause("PayrollAdjustments", conditions), connection);
+                        ConstructWhereClause ("PayrollAdjustments", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPayrollAdjustmentFromDataReader(reader));
+                        result.Add (ReadPayrollAdjustmentFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -94,67 +94,67 @@ namespace Swarmops.Database
 
         #region Creation and manipulation - stored procedures
 
-        public int CreatePayrollAdjustment(int payrollItemId, PayrollAdjustmentType type, double amount,
+        public int CreatePayrollAdjustment (int payrollItemId, PayrollAdjustmentType type, double amount,
             string description)
         {
             if (description.Length > 128)
             {
-                description = description.Substring(0, 128);
+                description = description.Substring (0, 128);
             }
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePayrollAdjustment", connection);
+                DbCommand command = GetDbCommand ("CreatePayrollAdjustment", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payrollItemId", payrollItemId);
-                AddParameterWithName(command, "payrollAdjustmentTypeId", (int) type);
-                AddParameterWithName(command, "amount", amount);
-                AddParameterWithName(command, "description", description);
+                AddParameterWithName (command, "payrollItemId", payrollItemId);
+                AddParameterWithName (command, "payrollAdjustmentTypeId", (int) type);
+                AddParameterWithName (command, "amount", amount);
+                AddParameterWithName (command, "description", description);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int CreatePayrollAdjustment(int payrollItemId, PayrollAdjustmentType type, Int64 amountCents,
+        public int CreatePayrollAdjustment (int payrollItemId, PayrollAdjustmentType type, Int64 amountCents,
             string description)
         {
             if (description.Length > 128)
             {
-                description = description.Substring(0, 128);
+                description = description.Substring (0, 128);
             }
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePayrollAdjustmentPrecise", connection);
+                DbCommand command = GetDbCommand ("CreatePayrollAdjustmentPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payrollItemId", payrollItemId);
-                AddParameterWithName(command, "payrollAdjustmentTypeId", (int) type);
-                AddParameterWithName(command, "amountCents", amountCents);
-                AddParameterWithName(command, "description", description);
+                AddParameterWithName (command, "payrollItemId", payrollItemId);
+                AddParameterWithName (command, "payrollAdjustmentTypeId", (int) type);
+                AddParameterWithName (command, "amountCents", amountCents);
+                AddParameterWithName (command, "description", description);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public void ClosePayrollAdjustment(int payrollAdjustmentId, int salaryId)
+        public void ClosePayrollAdjustment (int payrollAdjustmentId, int salaryId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("ClosePayrollAdjustment", connection);
+                DbCommand command = GetDbCommand ("ClosePayrollAdjustment", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payrollAdjustmentId", payrollAdjustmentId);
-                AddParameterWithName(command, "salaryId", salaryId);
+                AddParameterWithName (command, "payrollAdjustmentId", payrollAdjustmentId);
+                AddParameterWithName (command, "salaryId", salaryId);
 
                 command.ExecuteNonQuery();
             }

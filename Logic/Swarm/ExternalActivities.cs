@@ -23,30 +23,30 @@ namespace Swarmops.Logic.Swarm
             CreationDateDescending
         }
 
-        public static ExternalActivities ForOrganization(Organization organization)
+        public static ExternalActivities ForOrganization (Organization organization)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetExternalActivities(organization));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetExternalActivities (organization));
         }
 
-        public static ExternalActivities ForOrganization(Organization organization, SortOrder sort, int count)
+        public static ExternalActivities ForOrganization (Organization organization, SortOrder sort, int count)
         {
             return
-                FromArray(SwarmDb.GetDatabaseForReading()
-                    .GetExternalActivitiesSorted(sort.ToString(), count, organization));
+                FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetExternalActivitiesSorted (sort.ToString(), count, organization));
         }
 
-        public void Sort(SortOrder order)
+        public void Sort (SortOrder order)
         {
             switch (order)
             {
                 case SortOrder.DateDescending:
-                    Sort(ExternalActivity.CompareDateDescending);
+                    Sort (ExternalActivity.CompareDateDescending);
                     break;
                 case SortOrder.CreationDateDescending:
-                    Sort(ExternalActivity.CompareCreationDateDescending);
+                    Sort (ExternalActivity.CompareCreationDateDescending);
                     break;
                 default:
-                    throw new NotImplementedException("Unimplemented sort order");
+                    throw new NotImplementedException ("Unimplemented sort order");
             }
         }
     }

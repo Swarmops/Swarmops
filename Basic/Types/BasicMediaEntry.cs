@@ -22,7 +22,7 @@ namespace Swarmops.Basic.Types
 
         #endregion
 
-        public BasicMediaEntry(int id, int keywordId, string mediaName, bool isBlog, string title, string url,
+        public BasicMediaEntry (int id, int keywordId, string mediaName, bool isBlog, string title, string url,
             DateTime dateTime)
         {
             this.id = id;
@@ -34,15 +34,15 @@ namespace Swarmops.Basic.Types
             this.dateTime = dateTime;
         }
 
-        public BasicMediaEntry(BasicMediaEntry original)
-            : this(
+        public BasicMediaEntry (BasicMediaEntry original)
+            : this (
                 original.id, original.keywordId, original.mediaName, original.isBlog, original.title, original.url,
                 original.dateTime)
         {
         }
 
         public BasicMediaEntry()
-            : this(0, 0, string.Empty, false, string.Empty, string.Empty, DateTime.MinValue)
+            : this (0, 0, string.Empty, false, string.Empty, string.Empty, DateTime.MinValue)
         {
         }
 

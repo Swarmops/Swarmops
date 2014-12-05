@@ -6,16 +6,16 @@ using Swarmops.Logic.Structure;
 namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
-    [DataObject(true)]
+    [DataObject (true)]
 #endif
     public class GeographyWithPeopleDataObject
     {
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static GeographyWithPeople[] SelectSortedStatic(int orgId)
+        public static GeographyWithPeople[] SelectSortedStatic (int orgId)
         {
-            Organizations orgs = Organization.FromIdentity(orgId).GetTree();
+            Organizations orgs = Organization.FromIdentity (orgId).GetTree();
 
             List<GeographyWithPeople> resList = new List<GeographyWithPeople>();
             Geographies tree = Geography.Root.GetTree();
@@ -31,7 +31,7 @@ namespace Swarmops.Logic.DataObjects
                 row.OrgId = orgId;
                 Geographies gTree = geo.GetTree();
                 int[] members = SwarmDb.GetDatabaseForReading()
-                    .GetMembersForOrganizationsAndGeographies(orgs.Identities, gTree.Identities);
+                    .GetMembersForOrganizationsAndGeographies (orgs.Identities, gTree.Identities);
             }
 
 

@@ -11,17 +11,17 @@ namespace Swarmops.Logic.Support
     {
         private IHasIdentity forObject;
 
-        private ObjectOptionalData(BasicObjectOptionalData basic)
-            : base(basic)
+        private ObjectOptionalData (BasicObjectOptionalData basic)
+            : base (basic)
         {
             // empty ctor
         }
 
-        public string this[ObjectOptionalDataType dataType]
+        public string this [ObjectOptionalDataType dataType]
         {
             get
             {
-                if (OptionalData.ContainsKey(dataType))
+                if (OptionalData.ContainsKey (dataType))
                 {
                     return OptionalData[dataType];
                 }
@@ -30,27 +30,27 @@ namespace Swarmops.Logic.Support
             }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetObjectOptionalData(this.forObject, dataType, value);
+                SwarmDb.GetDatabaseForWriting().SetObjectOptionalData (this.forObject, dataType, value);
                 OptionalData[dataType] = value;
             }
         }
 
-        public static ObjectOptionalData FromBasic(BasicObjectOptionalData basic)
+        public static ObjectOptionalData FromBasic (BasicObjectOptionalData basic)
         {
-            return new ObjectOptionalData(basic);
+            return new ObjectOptionalData (basic);
         }
 
-        public static ObjectOptionalData ForObject(IHasIdentity identifiableObject)
+        public static ObjectOptionalData ForObject (IHasIdentity identifiableObject)
         {
             ObjectOptionalData thisObject =
-                FromBasic(SwarmDb.GetDatabaseForReading().GetObjectOptionalData(identifiableObject));
+                FromBasic (SwarmDb.GetDatabaseForReading().GetObjectOptionalData (identifiableObject));
             thisObject.forObject = identifiableObject;
             return thisObject;
         }
 
-        public bool HasData(ObjectOptionalDataType dataType)
+        public bool HasData (ObjectOptionalDataType dataType)
         {
-            if (OptionalData.ContainsKey(dataType))
+            if (OptionalData.ContainsKey (dataType))
             {
                 return true;
             }
@@ -74,9 +74,9 @@ namespace Swarmops.Logic.Support
 
         // Optional data support
 
-        public string GetOptionalDataString(ObjectOptionalDataType key)
+        public string GetOptionalDataString (ObjectOptionalDataType key)
         {
-            if (HasData(key))
+            if (HasData (key))
             {
                 return this[key];
             }
@@ -84,33 +84,33 @@ namespace Swarmops.Logic.Support
             return string.Empty;
         }
 
-        public void SetOptionalDataString(ObjectOptionalDataType key, string value)
+        public void SetOptionalDataString (ObjectOptionalDataType key, string value)
         {
-            SetOptionalData(key, value);
+            SetOptionalData (key, value);
         }
 
 
         // All ints default to 0
-        public int GetOptionalDataInt(ObjectOptionalDataType key)
+        public int GetOptionalDataInt (ObjectOptionalDataType key)
         {
-            if (HasData(key))
+            if (HasData (key))
             {
-                return Int32.Parse(this[key]);
+                return Int32.Parse (this[key]);
             }
 
             return 0;
         }
 
-        public void SetOptionalDataInt(ObjectOptionalDataType key, int value)
+        public void SetOptionalDataInt (ObjectOptionalDataType key, int value)
         {
-            SetOptionalData(key, value.ToString());
+            SetOptionalData (key, value.ToString());
         }
 
 
         // All bools default to false
-        public bool GetOptionalDataBool(ObjectOptionalDataType key)
+        public bool GetOptionalDataBool (ObjectOptionalDataType key)
         {
-            if (HasData(key))
+            if (HasData (key))
             {
                 return (this[key] == "1" ? true : false);
             }
@@ -118,18 +118,18 @@ namespace Swarmops.Logic.Support
             return false;
         }
 
-        public void SetOptionalDataBool(ObjectOptionalDataType key, bool value)
+        public void SetOptionalDataBool (ObjectOptionalDataType key, bool value)
         {
-            SetOptionalData(key, value ? "1" : "0");
+            SetOptionalData (key, value ? "1" : "0");
         }
 
 
-        public void SetOptionalData(ObjectOptionalDataType dataType, string data)
+        public void SetOptionalData (ObjectOptionalDataType dataType, string data)
         {
-            SwarmDb.GetDatabaseForWriting().SetObjectOptionalData(this.forObject, dataType, data);
+            SwarmDb.GetDatabaseForWriting().SetObjectOptionalData (this.forObject, dataType, data);
 
-            if (data == null && OptionalData.ContainsKey(dataType))
-                OptionalData.Remove(dataType);
+            if (data == null && OptionalData.ContainsKey (dataType))
+                OptionalData.Remove (dataType);
             else
                 this[dataType] = data;
         }

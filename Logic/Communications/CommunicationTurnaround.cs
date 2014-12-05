@@ -8,34 +8,34 @@ namespace Swarmops.Logic.Communications
 {
     public class CommunicationTurnaround : BasicCommunicationTurnaround
     {
-        private CommunicationTurnaround(BasicCommunicationTurnaround basic) : base(basic)
+        private CommunicationTurnaround (BasicCommunicationTurnaround basic) : base (basic)
         {
             // private ctor
         }
 
-        public static CommunicationTurnaround FromBasic(BasicCommunicationTurnaround basic)
+        public static CommunicationTurnaround FromBasic (BasicCommunicationTurnaround basic)
         {
-            return new CommunicationTurnaround(basic);
+            return new CommunicationTurnaround (basic);
         }
 
-        public static CommunicationTurnaround FromIdentity(Organization organization, int communicationTypeId,
+        public static CommunicationTurnaround FromIdentity (Organization organization, int communicationTypeId,
             int communicationId)
         {
             return
-                FromBasic(SwarmDb.GetDatabaseForReading()
-                    .GetCommunicationTurnaround(organization.Identity, communicationTypeId,
+                FromBasic (SwarmDb.GetDatabaseForReading()
+                    .GetCommunicationTurnaround (organization.Identity, communicationTypeId,
                         communicationId));
         }
 
-        public static CommunicationTurnaround Create(Organization organization, int communicationId,
+        public static CommunicationTurnaround Create (Organization organization, int communicationId,
             DateTime dateTimeOpened)
         {
             SwarmDb.GetDatabaseForWriting()
-                .CreateCommunicationTurnaround(organization.Identity, 1, communicationId, dateTimeOpened);
-            return FromIdentity(organization, 1, communicationId);
+                .CreateCommunicationTurnaround (organization.Identity, 1, communicationId, dateTimeOpened);
+            return FromIdentity (organization, 1, communicationId);
         }
 
-        public void SetResponded(DateTime dateTime, Person person)
+        public void SetResponded (DateTime dateTime, Person person)
         {
             if (!Open)
             {
@@ -55,13 +55,13 @@ namespace Swarmops.Logic.Communications
             }
 
             SwarmDb.GetDatabaseForWriting()
-                .SetCommunicationTurnaroundResponded(OrganizationId, CommunicationTypeId, CommunicationId, dateTime,
+                .SetCommunicationTurnaroundResponded (OrganizationId, CommunicationTypeId, CommunicationId, dateTime,
                     personId);
 
             base.Responded = true;
         }
 
-        public void Close(DateTime dateTime, Person person)
+        public void Close (DateTime dateTime, Person person)
         {
             if (!Open)
             {
@@ -76,7 +76,7 @@ namespace Swarmops.Logic.Communications
             }
 
             SwarmDb.GetDatabaseForWriting()
-                .SetCommunicationTurnaroundClosed(OrganizationId, CommunicationTypeId, CommunicationId, dateTime,
+                .SetCommunicationTurnaroundClosed (OrganizationId, CommunicationTypeId, CommunicationId, dateTime,
                     personId);
 
             base.Open = false;

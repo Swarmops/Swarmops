@@ -12,32 +12,32 @@ namespace Swarmops.Logic.Structure
     {
         #region Creation and Construction
 
-        public static Organizations FromSingle(Organization organization)
+        public static Organizations FromSingle (Organization organization)
         {
             Organizations result = new Organizations {organization};
 
             return result;
         }
 
-        public static Organizations FromArray(Organization[] organizationArray)
+        public static Organizations FromArray (Organization[] organizationArray)
         {
             Organizations result = new Organizations {Capacity = (organizationArray.Length*11/10)};
 
             foreach (Organization organization in organizationArray)
             {
-                result.Add(organization);
+                result.Add (organization);
             }
 
             return result;
         }
 
-        public static Organizations FromArray(BasicOrganization[] organizationArray)
+        public static Organizations FromArray (BasicOrganization[] organizationArray)
         {
             Organizations result = new Organizations {Capacity = (organizationArray.Length*11/10)};
 
             foreach (BasicOrganization basic in organizationArray)
             {
-                result.Add(Organization.FromBasic(basic));
+                result.Add (Organization.FromBasic (basic));
             }
 
             return result;
@@ -45,32 +45,32 @@ namespace Swarmops.Logic.Structure
 
         public static Organizations GetAll()
         {
-            return FromArray(OrganizationCache.GetAll());
+            return FromArray (OrganizationCache.GetAll());
         }
 
-        public static Organizations FromIdentities(int[] organizationIds)
+        public static Organizations FromIdentities (int[] organizationIds)
         {
             List<BasicOrganization> foundOrgs = new List<BasicOrganization>();
             foreach (int id in organizationIds)
             {
-                foundOrgs.Add(Organization.FromIdentity(id));
+                foundOrgs.Add (Organization.FromIdentity (id));
             }
-            return FromArray(foundOrgs.ToArray());
+            return FromArray (foundOrgs.ToArray());
         }
 
-        public static Organizations GetOrganizationsAvailableAtGeography(int geographyId)
+        public static Organizations GetOrganizationsAvailableAtGeography (int geographyId)
         {
-            BasicGeography[] nodeLine = GeographyCache.GetGeographyLine(geographyId);
-            return FromIdentities(OrganizationCache.GetOrganizationsIdsInGeographies(nodeLine));
+            BasicGeography[] nodeLine = GeographyCache.GetGeographyLine (geographyId);
+            return FromIdentities (OrganizationCache.GetOrganizationsIdsInGeographies (nodeLine));
         }
 
-        public static Organizations GetAllOrganizationsAvailableAtGeography(int geographyId)
+        public static Organizations GetAllOrganizationsAvailableAtGeography (int geographyId)
         {
             List<BasicGeography> nodeList = new List<BasicGeography>();
-            nodeList.AddRange(GeographyCache.GetGeographyLine(geographyId));
-            nodeList.AddRange(GeographyCache.GetGeographyTree(geographyId));
+            nodeList.AddRange (GeographyCache.GetGeographyLine (geographyId));
+            nodeList.AddRange (GeographyCache.GetGeographyTree (geographyId));
 
-            return FromIdentities(OrganizationCache.GetOrganizationsIdsInGeographies(nodeList.ToArray()));
+            return FromIdentities (OrganizationCache.GetOrganizationsIdsInGeographies (nodeList.ToArray()));
         }
 
         #endregion
@@ -114,7 +114,7 @@ namespace Swarmops.Logic.Structure
                             // Therefore, the current organization is already present in the collection,
                             // as a child of the compared organization. It can be safely removed.
 
-                            remaining.Remove(currentOrg.Identity);
+                            remaining.Remove (currentOrg.Identity);
                             break;
                         }
                     }
@@ -127,7 +127,7 @@ namespace Swarmops.Logic.Structure
 
             foreach (int organizationId in remaining.Keys)
             {
-                result.Add(remaining[organizationId]);
+                result.Add (remaining[organizationId]);
             }
 
             return result;
@@ -155,7 +155,7 @@ namespace Swarmops.Logic.Structure
 
             foreach (Organization org in table.Values)
             {
-                result.Add(org);
+                result.Add (org);
             }
 
             return result;
@@ -165,7 +165,7 @@ namespace Swarmops.Logic.Structure
 
         #region Logical Operators (And, Or)
 
-        public static Organizations LogicalOr(Organizations set1, Organizations set2)
+        public static Organizations LogicalOr (Organizations set1, Organizations set2)
         {
             // If either set is invalid, return the other
             // (a null is different from an empty set)
@@ -200,13 +200,13 @@ namespace Swarmops.Logic.Structure
 
             foreach (Organization org in table.Values)
             {
-                result.Add(org);
+                result.Add (org);
             }
 
             return result;
         }
 
-        public static Organizations LogicalAnd(Organizations set1, Organizations set2)
+        public static Organizations LogicalAnd (Organizations set1, Organizations set2)
         {
             // If either set is invalid, return the other
             // (a null is different from an empty set)
@@ -235,23 +235,23 @@ namespace Swarmops.Logic.Structure
             Organizations result = new Organizations();
             foreach (Organization org in set1)
             {
-                if (set2Lookup.ContainsKey(org.Identity))
+                if (set2Lookup.ContainsKey (org.Identity))
                 {
-                    result.Add(org);
+                    result.Add (org);
                 }
             }
 
             return result;
         }
 
-        public Organizations LogicalAnd(Organizations set2)
+        public Organizations LogicalAnd (Organizations set2)
         {
-            return LogicalAnd(this, set2);
+            return LogicalAnd (this, set2);
         }
 
-        public Organizations LogicalOr(Organizations set2)
+        public Organizations LogicalOr (Organizations set2)
         {
-            return LogicalOr(this, set2);
+            return LogicalOr (this, set2);
         }
 
         #endregion
@@ -272,7 +272,7 @@ namespace Swarmops.Logic.Structure
                 {
                     if (organization.IsEconomyEnabled)
                     {
-                        result.Add(organization);
+                        result.Add (organization);
                     }
                 }
 
@@ -282,32 +282,32 @@ namespace Swarmops.Logic.Structure
 
         public int[] Identities
         {
-            get { return LogicServices.ObjectsToIdentifiers(ToArray()); }
+            get { return LogicServices.ObjectsToIdentifiers (ToArray()); }
         }
 
 
         public int GetMembershipCount()
         {
-            return Memberships.GetMemberCountForOrganizations(this);
+            return Memberships.GetMemberCountForOrganizations (this);
         }
 
         public int GetMemberCount()
         {
-            return SwarmDb.GetDatabaseForReading().GetMemberCountForOrganizations(Identities);
+            return SwarmDb.GetDatabaseForReading().GetMemberCountForOrganizations (Identities);
         }
 
-        public int GetMemberCountForGeographies(Geographies geographies)
+        public int GetMemberCountForGeographies (Geographies geographies)
         {
-            return SwarmDb.GetDatabaseForReading().GetMemberCountForOrganizationsAndGeographies(Identities,
+            return SwarmDb.GetDatabaseForReading().GetMemberCountForOrganizationsAndGeographies (Identities,
                 geographies.Identities);
         }
 
-        public int GetRoleHolderCountForGeographies(Geographies geographies)
+        public int GetRoleHolderCountForGeographies (Geographies geographies)
         {
             Dictionary<int, bool> result = new Dictionary<int, bool>();
 
             BasicPersonRole[] personRoles =
-                SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(Identities,
+                SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies (Identities,
                     geographies.Identities);
 
             foreach (BasicPersonRole role in personRoles)
@@ -319,12 +319,12 @@ namespace Swarmops.Logic.Structure
         }
 
 
-        public People GetRoleHoldersForGeographies(Geographies geographies)
+        public People GetRoleHoldersForGeographies (Geographies geographies)
         {
             Dictionary<int, bool> result = new Dictionary<int, bool>();
 
             BasicPersonRole[] personRoles =
-                SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies(Identities,
+                SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies (Identities,
                     geographies.Identities);
 
             foreach (BasicPersonRole role in personRoles)
@@ -336,10 +336,10 @@ namespace Swarmops.Logic.Structure
 
             foreach (int key in result.Keys)
             {
-                list.Add(key);
+                list.Add (key);
             }
 
-            return People.FromIdentities(list.ToArray());
+            return People.FromIdentities (list.ToArray());
         }
 
         #endregion
@@ -349,13 +349,13 @@ namespace Swarmops.Logic.Structure
         // --------------------------------------------
 
 
-        public static Organization GetMostLocalOrganization(int geographyId, int rootOrganizationId)
+        public static Organization GetMostLocalOrganization (int geographyId, int rootOrganizationId)
         {
             // This function returns the most local organization in a tree under "rootOrganizationId".
 
             // First, find all possible organizations at the particular geography:
 
-            Organizations orgList = GetOrganizationsAvailableAtGeography(geographyId);
+            Organizations orgList = GetOrganizationsAvailableAtGeography (geographyId);
 
             // Second, only note those that inherit from the supplied root:
 
@@ -363,7 +363,7 @@ namespace Swarmops.Logic.Structure
 
             foreach (Organization org in orgList)
             {
-                if (org.IsOrInherits(rootOrganizationId))
+                if (org.IsOrInherits (rootOrganizationId))
                 {
                     table[org.OrganizationId] = org;
                 }
@@ -376,8 +376,8 @@ namespace Swarmops.Logic.Structure
             {
                 // No organizations!
 
-                throw new ArgumentException(
-                    string.Format(
+                throw new ArgumentException (
+                    string.Format (
                         "No organizations eligible under supplied organization ({0}) for supplied geography({1})",
                         rootOrganizationId, geographyId));
             }
@@ -389,7 +389,7 @@ namespace Swarmops.Logic.Structure
             {
                 foreach (Geography uptakeGeo in org.UptakeGeographies)
                 {
-                    Geographies geoLine = Geography.FromIdentity(org.AnchorGeographyId).GetLine();
+                    Geographies geoLine = Geography.FromIdentity (org.AnchorGeographyId).GetLine();
                     if (geoLine.Count > maxLength && org.AutoAssignNewMembers)
                     {
                         bestFit = org;

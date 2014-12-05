@@ -79,7 +79,7 @@ namespace Swarmops.Logic.DashboardTasks
             lookupDescriptionMany[TaskGroupType.AttestationWarning] = "Attestations for invoices {0} are running late";
         }
 
-        public TaskGroup(TaskGroupType type)
+        public TaskGroup (TaskGroupType type)
         {
             Type = type;
             Tasks = new List<TaskBase>();
@@ -104,16 +104,16 @@ namespace Swarmops.Logic.DashboardTasks
             {
                 if (Type == TaskGroupType.DeclareAdvanceDebts)
                 {
-                    return String.Format(lookupDescriptionSingle[TaskGroupType.DeclareAdvanceDebts],
+                    return String.Format (lookupDescriptionSingle[TaskGroupType.DeclareAdvanceDebts],
                         Tasks[0].Description);
                 }
-                if (this.Type == TaskGroupType.AttestationWarning)
+                if (Type == TaskGroupType.AttestationWarning)
                 {
                     List<int> identities = new List<int>();
 
-                    foreach (TaskBase item in this.Tasks)
+                    foreach (TaskBase item in Tasks)
                     {
-                        identities.Add(item.Identity);
+                        identities.Add (item.Identity);
                     }
 
                     identities.Sort();
@@ -122,13 +122,13 @@ namespace Swarmops.Logic.DashboardTasks
                         ? lookupDescriptionMany[TaskGroupType.AttestationWarning]
                         : lookupDescriptionSingle[TaskGroupType.AttestationWarning];
 
-                    return String.Format(baseString, Formatting.GenerateRangeString(identities));
+                    return String.Format (baseString, Formatting.GenerateRangeString (identities));
                 }
-                if (this.Tasks.Count > 1)
+                if (Tasks.Count > 1)
                 {
-                    return String.Format(lookupDescriptionMany[this.Type], this.Tasks.Count);
+                    return String.Format (lookupDescriptionMany[Type], Tasks.Count);
                 }
-                return lookupDescriptionSingle[this.Type];
+                return lookupDescriptionSingle[Type];
             }
         }
     }

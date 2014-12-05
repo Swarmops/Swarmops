@@ -5,7 +5,7 @@ namespace Swarmops.Logic.Financial
 {
     public class FinancialTransactionTagSet : BasicFinancialTransactionTagSet
     {
-        private FinancialTransactionTagSet(BasicFinancialTransactionTagSet basic) : base(basic)
+        private FinancialTransactionTagSet (BasicFinancialTransactionTagSet basic) : base (basic)
         {
             // ctor
         }
@@ -15,14 +15,14 @@ namespace Swarmops.Logic.Financial
             get { return (TagSetProfitLossType) base.ProfitLossType; }
         }
 
-        public static FinancialTransactionTagSet FromBasic(BasicFinancialTransactionTagSet basic)
+        public static FinancialTransactionTagSet FromBasic (BasicFinancialTransactionTagSet basic)
         {
-            return new FinancialTransactionTagSet(basic);
+            return new FinancialTransactionTagSet (basic);
         }
 
-        public static FinancialTransactionTagSet FromIdentity(int identity)
+        public static FinancialTransactionTagSet FromIdentity (int identity)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagSet(identity));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagSet (identity));
         }
     }
 

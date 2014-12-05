@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Swarm
         private string actionDescr = "";
         private Person executor;
 
-        protected AuditedPerson(Person person)
+        protected AuditedPerson (Person person)
         {
             this.person = person;
             this.executor = null;
@@ -23,7 +23,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.Name; }
             set
             {
-                AuditField("Name", Name, value);
+                AuditField ("Name", Name, value);
                 this.person.Name = value;
             }
         }
@@ -34,7 +34,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.Street; }
             set
             {
-                AuditField("Street", Street, value);
+                AuditField ("Street", Street, value);
                 this.person.Street = value;
             }
         }
@@ -45,7 +45,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.PostalCode; }
             set
             {
-                AuditField("PostalCode", PostalCode, value);
+                AuditField ("PostalCode", PostalCode, value);
                 this.person.PostalCode = value;
             }
         }
@@ -56,7 +56,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.CityName; }
             set
             {
-                AuditField("City", City, value);
+                AuditField ("City", City, value);
                 this.person.CityName = value;
             }
         }
@@ -67,7 +67,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.Country; }
             set
             {
-                AuditField("Country", Country == null ? "" : Country.Identity.ToString(),
+                AuditField ("Country", Country == null ? "" : Country.Identity.ToString(),
                     value == null ? "" : value.Identity.ToString());
                 this.person.Country = value;
             }
@@ -79,7 +79,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.Geography; }
             set
             {
-                AuditField("Geography", Geography == null ? "" : Geography.Identity.ToString(),
+                AuditField ("Geography", Geography == null ? "" : Geography.Identity.ToString(),
                     value == null ? "" : value.Identity.ToString());
                 this.person.Geography = value;
             }
@@ -91,7 +91,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.Mail; }
             set
             {
-                AuditField("Email", Email, value);
+                AuditField ("Email", Email, value);
                 this.person.Mail = value;
             }
         }
@@ -102,7 +102,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.Phone; }
             set
             {
-                AuditField("Phone", Phone, value);
+                AuditField ("Phone", Phone, value);
                 this.person.Phone = value;
             }
         }
@@ -113,7 +113,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.Birthdate; }
             set
             {
-                AuditField("Birthdate", Birthdate.ToString(), value.ToString());
+                AuditField ("Birthdate", Birthdate.ToString(), value.ToString());
                 this.person.Birthdate = value;
             }
         }
@@ -123,7 +123,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.Gender; }
             set
             {
-                AuditField("Gender", Gender.ToString(), value.ToString());
+                AuditField ("Gender", Gender.ToString(), value.ToString());
                 this.person.Gender = value;
             }
         }
@@ -136,7 +136,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.PartyEmail; }
             set
             {
-                AuditField("PartyEmail", PartyEmail, value);
+                AuditField ("PartyEmail", PartyEmail, value);
                 this.person.PartyEmail = value;
             }
         }
@@ -147,7 +147,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.BankName; }
             set
             {
-                AuditField("BankName", BankName, value);
+                AuditField ("BankName", BankName, value);
                 this.person.BankName = value;
             }
         }
@@ -158,7 +158,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.BankAccount; }
             set
             {
-                AuditField("BankAccount", BankAccount, value);
+                AuditField ("BankAccount", BankAccount, value);
                 this.person.BankAccount = value;
             }
         }
@@ -169,18 +169,18 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.BankClearing; }
             set
             {
-                AuditField("BankClearing", BankClearing, value);
+                AuditField ("BankClearing", BankClearing, value);
                 this.person.BankClearing = value;
             }
         }
 
-        [Obsolete("Use NationalIdNumber instead")]
+        [Obsolete ("Use NationalIdNumber instead")]
         public virtual string PersonalNumber
         {
             get { return this.person.PersonalNumber; }
             set
             {
-                AuditField("PersonalNumber", PersonalNumber, value);
+                AuditField ("PersonalNumber", PersonalNumber, value);
                 this.person.PersonalNumber = value;
             }
         }
@@ -190,7 +190,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.MailUnreachable; }
             set
             {
-                AuditField("MailUnreachable", MailUnreachable.ToString(), value.ToString());
+                AuditField ("MailUnreachable", MailUnreachable.ToString(), value.ToString());
                 this.person.MailUnreachable = value;
             }
         }
@@ -200,7 +200,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.LimitMailToLatin1; }
             set
             {
-                AuditField("LimitMailToLatin1", LimitMailToLatin1.ToString(), value.ToString());
+                AuditField ("LimitMailToLatin1", LimitMailToLatin1.ToString(), value.ToString());
                 this.person.LimitMailToLatin1 = value;
             }
         }
@@ -210,7 +210,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.LimitMailToText; }
             set
             {
-                AuditField("LimitMailToText", LimitMailToText.ToString(), value.ToString());
+                AuditField ("LimitMailToText", LimitMailToText.ToString(), value.ToString());
                 this.person.LimitMailToText = value;
             }
         }
@@ -220,7 +220,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.NeverMail; }
             set
             {
-                AuditField("NeverMail", NeverMail.ToString(), value.ToString());
+                AuditField ("NeverMail", NeverMail.ToString(), value.ToString());
                 this.person.NeverMail = value;
             }
         }
@@ -230,7 +230,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.EMailIsInvalid; }
             set
             {
-                AuditField("EMailIsInvalid", EMailIsInvalid.ToString(), value.ToString());
+                AuditField ("EMailIsInvalid", EMailIsInvalid.ToString(), value.ToString());
                 this.person.EMailIsInvalid = value;
             }
         }
@@ -241,7 +241,7 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.Handle; }
             set
             {
-                AuditField("Handle", Handle, value);
+                AuditField ("Handle", Handle, value);
                 this.person.Handle = value;
             }
         }
@@ -251,55 +251,55 @@ namespace Swarmops.Logic.Swarm
             get { return this.person.SwedishForumAccountId; }
             set
             {
-                AuditField("SwedishForumAccountId", SwedishForumAccountId.ToString(), value.ToString());
+                AuditField ("SwedishForumAccountId", SwedishForumAccountId.ToString(), value.ToString());
                 this.person.SwedishForumAccountId = value;
             }
         }
 
-        public static implicit operator Person(AuditedPerson a)
+        public static implicit operator Person (AuditedPerson a)
         {
             return a.person;
         }
 
 
-        public static AuditedPerson FromPerson(Person person)
+        public static AuditedPerson FromPerson (Person person)
         {
-            return new AuditedPerson(person);
+            return new AuditedPerson (person);
         }
 
-        public static AuditedPerson FromPerson(Person person, Person executor, string actionDescr)
+        public static AuditedPerson FromPerson (Person person, Person executor, string actionDescr)
         {
-            AuditedPerson ap = new AuditedPerson(person);
-            ap.SetAudit(executor, actionDescr);
+            AuditedPerson ap = new AuditedPerson (person);
+            ap.SetAudit (executor, actionDescr);
             return ap;
         }
 
-        public void SetAudit(Person executor, string actionDescr)
+        public void SetAudit (Person executor, string actionDescr)
         {
             this.executor = executor;
             this.actionDescr = actionDescr;
         }
 
-        protected void AuditField(string field, string oldVal, string newVal)
+        protected void AuditField (string field, string oldVal, string newVal)
         {
             if (this.executor != null && ("" + oldVal).Trim() != ("" + newVal).Trim())
             {
-                PWLog.Write(this.executor, PWLogItem.Person, this.person.Identity, PWLogAction.PersonFieldChange,
+                PWLog.Write (this.executor, PWLogItem.Person, this.person.Identity, PWLogAction.PersonFieldChange,
                     this.actionDescr, "", field, "" + oldVal, "" + newVal);
             }
         }
 
 
-        public virtual void SetPassword(string newPassword)
+        public virtual void SetPassword (string newPassword)
         {
-            AuditField("SetPassword", "oldpassword", "newpassword");
-            this.person.SetPassword(newPassword);
+            AuditField ("SetPassword", "oldpassword", "newpassword");
+            this.person.SetPassword (newPassword);
         }
 
-        public virtual void SetSubscription(int newsletterFeedId, bool subscribe)
+        public virtual void SetSubscription (int newsletterFeedId, bool subscribe)
         {
-            AuditField("SetSubscription", "Feed:" + newsletterFeedId, "" + subscribe);
-            this.person.SetSubscription(newsletterFeedId, subscribe);
+            AuditField ("SetSubscription", "Feed:" + newsletterFeedId, "" + subscribe);
+            this.person.SetSubscription (newsletterFeedId, subscribe);
         }
     }
 }

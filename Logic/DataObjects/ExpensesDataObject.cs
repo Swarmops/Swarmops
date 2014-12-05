@@ -6,63 +6,63 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
-    [DataObject(true)]
+    [DataObject (true)]
 #endif
     public class ExpensesDataObject
     {
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static ExpenseClaim[] SelectByClaimer(int personId)
+        public static ExpenseClaim[] SelectByClaimer (int personId)
         {
-            return ExpenseClaims.FromClaimingPerson(Person.FromIdentity(personId)).ToArray();
+            return ExpenseClaims.FromClaimingPerson (Person.FromIdentity (personId)).ToArray();
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static ExpenseClaim[] SelectOpenByClaimer(int personId)
+        public static ExpenseClaim[] SelectOpenByClaimer (int personId)
         {
-            return ExpenseClaims.FromClaimingPerson(Person.FromIdentity(personId)).WhereOpen.ToArray();
+            return ExpenseClaims.FromClaimingPerson (Person.FromIdentity (personId)).WhereOpen.ToArray();
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static ExpenseClaim[] SelectByClaimer(Person person)
+        public static ExpenseClaim[] SelectByClaimer (Person person)
         {
-            return SelectByClaimer(person.Identity);
+            return SelectByClaimer (person.Identity);
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static ExpenseClaim[] SelectOpenByClaimer(Person person)
+        public static ExpenseClaim[] SelectOpenByClaimer (Person person)
         {
-            return SelectOpenByClaimer(person.Identity);
+            return SelectOpenByClaimer (person.Identity);
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static ExpenseClaim[] SelectByOrganization(int organizationId)
+        public static ExpenseClaim[] SelectByOrganization (int organizationId)
         {
-            return ExpenseClaims.FromOrganization(Organization.FromIdentity(organizationId)).ToArray();
+            return ExpenseClaims.FromOrganization (Organization.FromIdentity (organizationId)).ToArray();
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static ExpenseClaim[] SelectUnapprovedByOrganization(int organizationId)
+        public static ExpenseClaim[] SelectUnapprovedByOrganization (int organizationId)
         {
-            return ExpenseClaims.FromOrganization(Organization.FromIdentity(organizationId)).WhereUnapproved.ToArray();
+            return ExpenseClaims.FromOrganization (Organization.FromIdentity (organizationId)).WhereUnapproved.ToArray();
         }
 
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static ExpenseClaim[] SelectStatic(ExpenseClaims expenseClaims)
+        public static ExpenseClaim[] SelectStatic (ExpenseClaims expenseClaims)
         {
             return expenseClaims.ToArray();
         }

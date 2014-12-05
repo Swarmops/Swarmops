@@ -6,21 +6,21 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public string GetKeyValue(string key)
+        public string GetKeyValue (string key)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT DataValue FROM FlatData WHERE DataKey='" + key.Replace("'", "''") + "'",
+                    GetDbCommand ("SELECT DataValue FROM FlatData WHERE DataKey='" + key.Replace ("'", "''") + "'",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetString(0);
+                        return reader.GetString (0);
                     }
 
                     return string.Empty;
@@ -29,17 +29,17 @@ namespace Swarmops.Database
         }
 
 
-        public void SetKeyValue(string key, string value)
+        public void SetKeyValue (string key, string value)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetKeyValue", connection);
+                DbCommand command = GetDbCommand ("SetKeyValue", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "dataKey", key);
-                AddParameterWithName(command, "dataValue", value);
+                AddParameterWithName (command, "dataKey", key);
+                AddParameterWithName (command, "dataValue", value);
 
                 command.ExecuteNonQuery();
             }

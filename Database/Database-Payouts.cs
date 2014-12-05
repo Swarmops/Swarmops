@@ -26,31 +26,31 @@ namespace Swarmops.Database
         private const string payoutDependencyTableJoin =
             " FinancialDependencyTypes.FinancialDependencyTypeId=PayoutDependencies.FinancialDependencyTypeId ";
 
-        private static BasicPayout ReadPayoutFromDataReader(IDataRecord reader)
+        private static BasicPayout ReadPayoutFromDataReader (IDataRecord reader)
         {
-            int payoutId = reader.GetInt32(0);
-            int organizationId = reader.GetInt32(1);
-            string bank = reader.GetString(2);
-            string account = reader.GetString(3);
-            string reference = reader.GetString(4);
-            Int64 amountCents = reader.GetInt64(5);
-            DateTime expectedTransactionDate = reader.GetDateTime(6);
-            bool open = reader.GetBoolean(7);
-            DateTime createdDateTime = reader.GetDateTime(8);
-            int createdByPersonId = reader.GetInt32(9);
+            int payoutId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32 (1);
+            string bank = reader.GetString (2);
+            string account = reader.GetString (3);
+            string reference = reader.GetString (4);
+            Int64 amountCents = reader.GetInt64 (5);
+            DateTime expectedTransactionDate = reader.GetDateTime (6);
+            bool open = reader.GetBoolean (7);
+            DateTime createdDateTime = reader.GetDateTime (8);
+            int createdByPersonId = reader.GetInt32 (9);
 
-            return new BasicPayout(payoutId, organizationId, bank, account, reference, amountCents,
+            return new BasicPayout (payoutId, organizationId, bank, account, reference, amountCents,
                 expectedTransactionDate, open, createdDateTime, createdByPersonId);
         }
 
-        private static BasicFinancialDependency ReadPayoutDependencyFromDataReader(IDataRecord reader)
+        private static BasicFinancialDependency ReadPayoutDependencyFromDataReader (IDataRecord reader)
         {
-            int payoutId = reader.GetInt32(0);
-            string financialDependencyTypeString = reader.GetString(1);
-            int foreignId = reader.GetInt32(2);
+            int payoutId = reader.GetInt32 (0);
+            string financialDependencyTypeString = reader.GetString (1);
+            int foreignId = reader.GetInt32 (2);
 
-            return new BasicFinancialDependency(payoutId,
-                (FinancialDependencyType) Enum.Parse(typeof (FinancialDependencyType), financialDependencyTypeString),
+            return new BasicFinancialDependency (payoutId,
+                (FinancialDependencyType) Enum.Parse (typeof (FinancialDependencyType), financialDependencyTypeString),
                 foreignId);
         }
 
@@ -58,31 +58,31 @@ namespace Swarmops.Database
 
         #region Database record reading -- SELECT clauses
 
-        public BasicPayout GetPayout(int payoutId)
+        public BasicPayout GetPayout (int payoutId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + payoutFieldSequence +
-                                 "WHERE PayoutId=" + payoutId,
+                    GetDbCommand ("SELECT" + payoutFieldSequence +
+                                  "WHERE PayoutId=" + payoutId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadPayoutFromDataReader(reader);
+                        return ReadPayoutFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such PayoutId:" + payoutId);
+                    throw new ArgumentException ("No such PayoutId:" + payoutId);
                 }
             }
         }
 
 
-        public BasicFinancialDependency[] GetPayoutDependencies(int payoutId)
+        public BasicFinancialDependency[] GetPayoutDependencies (int payoutId)
         {
             List<BasicFinancialDependency> result = new List<BasicFinancialDependency>();
 
@@ -91,15 +91,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + payoutDependencyFieldSequence +
-                                 "WHERE PayoutDependencies.PayoutId=" + payoutId + " AND " + payoutDependencyTableJoin,
+                    GetDbCommand ("SELECT" + payoutDependencyFieldSequence +
+                                  "WHERE PayoutDependencies.PayoutId=" + payoutId + " AND " + payoutDependencyTableJoin,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPayoutDependencyFromDataReader(reader));
+                        result.Add (ReadPayoutDependencyFromDataReader (reader));
                     }
                 }
             }
@@ -108,31 +108,31 @@ namespace Swarmops.Database
         }
 
 
-        public int GetPayoutIdFromDependency(IHasIdentity foreignObject, FinancialDependencyType typeName)
+        public int GetPayoutIdFromDependency (IHasIdentity foreignObject, FinancialDependencyType typeName)
         {
-            return GetPayoutIdFromDependency(foreignObject.Identity, typeName.ToString());
+            return GetPayoutIdFromDependency (foreignObject.Identity, typeName.ToString());
         }
 
-        private int GetPayoutIdFromDependency(int foreignObjectId, string financialDependencyTypeName)
+        private int GetPayoutIdFromDependency (int foreignObjectId, string financialDependencyTypeName)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + payoutDependencyFieldSequence +
-                                 "WHERE PayoutDependencies.ForeignId=" +
-                                 foreignObjectId.ToString(CultureInfo.InvariantCulture) +
-                                 " AND FinancialDependencyTypes.Name='" + financialDependencyTypeName + "'" +
-                                 // enum - no sanitation necessary
-                                 " AND " + payoutDependencyTableJoin,
+                    GetDbCommand ("SELECT" + payoutDependencyFieldSequence +
+                                  "WHERE PayoutDependencies.ForeignId=" +
+                                  foreignObjectId.ToString (CultureInfo.InvariantCulture) +
+                                  " AND FinancialDependencyTypes.Name='" + financialDependencyTypeName + "'" +
+                                  // enum - no sanitation necessary
+                                  " AND " + payoutDependencyTableJoin,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt32(0);
+                        return reader.GetInt32 (0);
                     }
                     return 0;
                 }
@@ -140,13 +140,13 @@ namespace Swarmops.Database
         }
 
 
-        public int GetPayoutIdFromDependency(IHasIdentity foreignObject)
+        public int GetPayoutIdFromDependency (IHasIdentity foreignObject)
         {
-            return GetPayoutIdFromDependency(foreignObject.Identity, GetForeignTypeString(foreignObject));
+            return GetPayoutIdFromDependency (foreignObject.Identity, GetForeignTypeString (foreignObject));
         }
 
 
-        public BasicPayout[] GetPayouts(params object[] conditions)
+        public BasicPayout[] GetPayouts (params object[] conditions)
         {
             List<BasicPayout> result = new List<BasicPayout>();
 
@@ -155,14 +155,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + payoutFieldSequence + ConstructWhereClause("Payouts", conditions), connection);
+                    GetDbCommand (
+                        "SELECT" + payoutFieldSequence + ConstructWhereClause ("Payouts", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPayoutFromDataReader(reader));
+                        result.Add (ReadPayoutFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -174,167 +174,167 @@ namespace Swarmops.Database
 
         #region Creation and manipulation -- stored procedures
 
-        public int CreatePayout(int organizationId, string bank, string account, string reference,
+        public int CreatePayout (int organizationId, string bank, string account, string reference,
             double amount, DateTime expectedTransactionDate, int createdByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePayout", connection);
+                DbCommand command = GetDbCommand ("CreatePayout", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "bank", bank);
-                AddParameterWithName(command, "account", account);
-                AddParameterWithName(command, "reference", reference);
-                AddParameterWithName(command, "amount", amount);
-                AddParameterWithName(command, "expectedTransactionDate", expectedTransactionDate);
-                AddParameterWithName(command, "createdDateTime", DateTime.Now);
-                AddParameterWithName(command, "createdByPersonId", createdByPersonId);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "bank", bank);
+                AddParameterWithName (command, "account", account);
+                AddParameterWithName (command, "reference", reference);
+                AddParameterWithName (command, "amount", amount);
+                AddParameterWithName (command, "expectedTransactionDate", expectedTransactionDate);
+                AddParameterWithName (command, "createdDateTime", DateTime.Now);
+                AddParameterWithName (command, "createdByPersonId", createdByPersonId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int CreatePayout(int organizationId, string bank, string account, string reference,
+        public int CreatePayout (int organizationId, string bank, string account, string reference,
             Int64 amountCents, DateTime expectedTransactionDate, int createdByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePayoutPrecise", connection);
+                DbCommand command = GetDbCommand ("CreatePayoutPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "bank", bank);
-                AddParameterWithName(command, "account", account);
-                AddParameterWithName(command, "reference", reference);
-                AddParameterWithName(command, "amountCents", amountCents);
-                AddParameterWithName(command, "expectedTransactionDate", expectedTransactionDate);
-                AddParameterWithName(command, "createdDateTime", DateTime.Now);
-                AddParameterWithName(command, "createdByPersonId", createdByPersonId);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "bank", bank);
+                AddParameterWithName (command, "account", account);
+                AddParameterWithName (command, "reference", reference);
+                AddParameterWithName (command, "amountCents", amountCents);
+                AddParameterWithName (command, "expectedTransactionDate", expectedTransactionDate);
+                AddParameterWithName (command, "createdDateTime", DateTime.Now);
+                AddParameterWithName (command, "createdByPersonId", createdByPersonId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public void CreatePayoutDependency(int payoutId, FinancialDependencyType dependencyType, int foreignId)
+        public void CreatePayoutDependency (int payoutId, FinancialDependencyType dependencyType, int foreignId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePayoutDependency", connection);
+                DbCommand command = GetDbCommand ("CreatePayoutDependency", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payoutId", payoutId);
-                AddParameterWithName(command, "financialDependencyType", dependencyType.ToString());
-                AddParameterWithName(command, "foreignId", foreignId);
+                AddParameterWithName (command, "payoutId", payoutId);
+                AddParameterWithName (command, "financialDependencyType", dependencyType.ToString());
+                AddParameterWithName (command, "foreignId", foreignId);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void MovePayoutDependencies(int fromPayoutId, int toPayoutId)
+        public void MovePayoutDependencies (int fromPayoutId, int toPayoutId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("MovePayoutDependencies", connection);
+                DbCommand command = GetDbCommand ("MovePayoutDependencies", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "fromPayoutId", fromPayoutId);
-                AddParameterWithName(command, "toPayoutId", toPayoutId);
+                AddParameterWithName (command, "fromPayoutId", fromPayoutId);
+                AddParameterWithName (command, "toPayoutId", toPayoutId);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void ClearPayoutDependencies(int payoutId)
+        public void ClearPayoutDependencies (int payoutId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("ClearPayoutDependencies", connection);
+                DbCommand command = GetDbCommand ("ClearPayoutDependencies", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payoutId", payoutId);
+                AddParameterWithName (command, "payoutId", payoutId);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPayoutOpen(int payoutId, bool open)
+        public void SetPayoutOpen (int payoutId, bool open)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPayoutOpen", connection);
+                DbCommand command = GetDbCommand ("SetPayoutOpen", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payoutId", payoutId);
-                AddParameterWithName(command, "open", open);
+                AddParameterWithName (command, "payoutId", payoutId);
+                AddParameterWithName (command, "open", open);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPayoutAmount(int payoutId, double amount)
+        public void SetPayoutAmount (int payoutId, double amount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPayoutAmount", connection);
+                DbCommand command = GetDbCommand ("SetPayoutAmount", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payoutId", payoutId);
-                AddParameterWithName(command, "amount", amount);
+                AddParameterWithName (command, "payoutId", payoutId);
+                AddParameterWithName (command, "amount", amount);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPayoutAmount(int payoutId, Int64 amountCents)
+        public void SetPayoutAmount (int payoutId, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPayoutAmountPrecise", connection);
+                DbCommand command = GetDbCommand ("SetPayoutAmountPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payoutId", payoutId);
-                AddParameterWithName(command, "amountCents", amountCents);
+                AddParameterWithName (command, "payoutId", payoutId);
+                AddParameterWithName (command, "amountCents", amountCents);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPayoutReference(int payoutId, string reference)
+        public void SetPayoutReference (int payoutId, string reference)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPayoutReference", connection);
+                DbCommand command = GetDbCommand ("SetPayoutReference", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payoutId", payoutId);
-                AddParameterWithName(command, "reference", reference);
+                AddParameterWithName (command, "payoutId", payoutId);
+                AddParameterWithName (command, "reference", reference);
 
                 command.ExecuteNonQuery();
             }

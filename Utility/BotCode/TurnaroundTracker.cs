@@ -4,10 +4,10 @@ namespace Swarmops.Utility.BotCode
 {
     public class TurnaroundTracker
     {
-        [Obsolete("This is dependent on a specific support system. Should move to plugin.", true)]
+        [Obsolete ("This is dependent on a specific support system. Should move to plugin.", true)]
         public static void Run()
         {
-            throw new NotImplementedException("Disabled for Swarmops");
+            throw new NotImplementedException ("Disabled for Swarmops");
 
             /*
             const string persistenceKey = "PPSE-LastSupportDeltaId";

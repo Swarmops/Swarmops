@@ -18,7 +18,7 @@ namespace Swarmops.Logic.Support
     /// </summary>
     internal class SingularFactory
     {
-        public static object FromBasic(IHasIdentity basic)
+        public static object FromBasic (IHasIdentity basic)
         {
             string argumentType = basic.GetType().ToString();
 
@@ -31,110 +31,110 @@ namespace Swarmops.Logic.Support
                     // ------------ COMMUNICATION CLASSES ------------
 
                 case "Swarmops.Basic.Types.BasicCommunicationTurnaround":
-                    return CommunicationTurnaround.FromBasic((BasicCommunicationTurnaround) basic);
+                    return CommunicationTurnaround.FromBasic ((BasicCommunicationTurnaround) basic);
 
                 case "Swarmops.Basic.Types.Communications.BasicOutboundComm":
-                    return OutboundComm.FromBasic((BasicOutboundComm) basic);
+                    return OutboundComm.FromBasic ((BasicOutboundComm) basic);
 
                 case "Swarmops.Basic.Types.Communications.BasicOutboundCommRecipient":
-                    return OutboundCommRecipient.FromBasic((BasicOutboundCommRecipient) basic);
+                    return OutboundCommRecipient.FromBasic ((BasicOutboundCommRecipient) basic);
 
 
                     // ----------- FINANCIAL CLASSES ----------
 
                 case "Swarmops.Basic.Types.BasicExpenseClaim":
-                    return ExpenseClaim.FromBasic((BasicExpenseClaim) basic);
+                    return ExpenseClaim.FromBasic ((BasicExpenseClaim) basic);
 
                 case "Swarmops.Basic.Types.Financial.BasicCashAdvance":
-                    return CashAdvance.FromBasic((BasicCashAdvance) basic);
+                    return CashAdvance.FromBasic ((BasicCashAdvance) basic);
 
                 case "Swarmops.Basic.Types.BasicInboundInvoice":
-                    return InboundInvoice.FromBasic((BasicInboundInvoice) basic);
+                    return InboundInvoice.FromBasic ((BasicInboundInvoice) basic);
 
                 case "Swarmops.Basic.Types.Financial.BasicFinancialAccount":
-                    return FinancialAccount.FromBasic((BasicFinancialAccount) basic);
+                    return FinancialAccount.FromBasic ((BasicFinancialAccount) basic);
 
                 case "Swarmops.Basic.Types.Financial.BasicFinancialTransaction":
-                    return FinancialTransaction.FromBasic((BasicFinancialTransaction) basic);
+                    return FinancialTransaction.FromBasic ((BasicFinancialTransaction) basic);
 
                 case "Swarmops.Basic.Types.BasicFinancialValidation":
-                    return FinancialValidation.FromBasic((BasicFinancialValidation) basic);
+                    return FinancialValidation.FromBasic ((BasicFinancialValidation) basic);
 
                 case "Swarmops.Basic.Types.BasicOutboundInvoice":
-                    return OutboundInvoice.FromBasic((BasicOutboundInvoice) basic);
+                    return OutboundInvoice.FromBasic ((BasicOutboundInvoice) basic);
 
                 case "Swarmops.Basic.Types.BasicOutboundInvoiceItem":
-                    return OutboundInvoiceItem.FromBasic((BasicOutboundInvoiceItem) basic);
+                    return OutboundInvoiceItem.FromBasic ((BasicOutboundInvoiceItem) basic);
 
                 case "Swarmops.Basic.Types.BasicPayment":
-                    return Payment.FromBasic((BasicPayment) basic);
+                    return Payment.FromBasic ((BasicPayment) basic);
 
                 case "Swarmops.Basic.Types.BasicPaymentGroup":
-                    return PaymentGroup.FromBasic((BasicPaymentGroup) basic);
+                    return PaymentGroup.FromBasic ((BasicPaymentGroup) basic);
 
                 case "Swarmops.Basic.Types.BasicPayout":
-                    return Payout.FromBasic((BasicPayout) basic);
+                    return Payout.FromBasic ((BasicPayout) basic);
 
                 case "Swarmops.Basic.Types.BasicPayrollAdjustment":
-                    return PayrollAdjustment.FromBasic((BasicPayrollAdjustment) basic);
+                    return PayrollAdjustment.FromBasic ((BasicPayrollAdjustment) basic);
 
                 case "Swarmops.Basic.Types.BasicPayrollItem":
-                    return PayrollItem.FromBasic((BasicPayrollItem) basic);
+                    return PayrollItem.FromBasic ((BasicPayrollItem) basic);
 
                 case "Swarmops.Basic.Types.BasicSalary":
-                    return Salary.FromBasic((BasicSalary) basic);
+                    return Salary.FromBasic ((BasicSalary) basic);
 
                 case "Swarmops.Basic.Types.BasicCurrency":
-                    return Currency.FromBasic((BasicCurrency) basic);
+                    return Currency.FromBasic ((BasicCurrency) basic);
 
                 case "Swarmops.Basic.Types.Financial.BasicFinancialTransactionTagSet":
-                    return FinancialTransactionTagSet.FromBasic((BasicFinancialTransactionTagSet) basic);
+                    return FinancialTransactionTagSet.FromBasic ((BasicFinancialTransactionTagSet) basic);
 
                 case "Swarmops.Basic.Types.Financial.BasicFinancialTransactionTagType":
-                    return FinancialTransactionTagType.FromBasic((BasicFinancialTransactionTagType) basic);
+                    return FinancialTransactionTagType.FromBasic ((BasicFinancialTransactionTagType) basic);
 
                     // ------------ GOVERNANCE CLASSES ------------
 
                 case "Swarmops.Basic.Types.BasicBallot":
-                    return Ballot.FromBasic((BasicBallot) basic);
+                    return Ballot.FromBasic ((BasicBallot) basic);
 
                 case "Swarmops.Basic.Types.BasicMeetingElectionCandidate":
-                    return MeetingElectionCandidate.FromBasic((BasicInternalPollCandidate) basic);
+                    return MeetingElectionCandidate.FromBasic ((BasicInternalPollCandidate) basic);
 
                 case "Swarmops.Basic.Types.BasicMeetingElection":
-                    return MeetingElection.FromBasic((BasicInternalPoll) basic);
+                    return MeetingElection.FromBasic ((BasicInternalPoll) basic);
 
                 case "Swarmops.Basic.Types.BasicMeetingElectionVote":
-                    return MeetingElectionVote.FromBasic((BasicInternalPollVote) basic);
+                    return MeetingElectionVote.FromBasic ((BasicInternalPollVote) basic);
 
                 case "Swarmops.Basic.Types.Governance.BasicMotion":
-                    return Motion.FromBasic((BasicMotion) basic);
+                    return Motion.FromBasic ((BasicMotion) basic);
 
                 case "Swarmops.Basic.Types.Governance.BasicMotionAmendment":
-                    return MotionAmendment.FromBasic((BasicMotionAmendment) basic);
+                    return MotionAmendment.FromBasic ((BasicMotionAmendment) basic);
 
 
                     // ------------ PARLEY/ACTIVISM CLASSES ------------
 
                 case "Swarmops.Basic.Types.BasicExternalActivity":
-                    return ExternalActivity.FromBasic((BasicExternalActivity) basic);
+                    return ExternalActivity.FromBasic ((BasicExternalActivity) basic);
 
                 case "Swarmops.Basic.Types.BasicParley":
-                    return Parley.FromBasic((BasicParley) basic);
+                    return Parley.FromBasic ((BasicParley) basic);
 
                 case "Swarmops.Basic.Types.BasicParleyAttendee":
-                    return ParleyAttendee.FromBasic((BasicParleyAttendee) basic);
+                    return ParleyAttendee.FromBasic ((BasicParleyAttendee) basic);
 
                 case "Swarmops.Basic.Types.BasicParleyOption":
-                    return ParleyOption.FromBasic((BasicParleyOption) basic);
+                    return ParleyOption.FromBasic ((BasicParleyOption) basic);
 
                 case "Swarmops.Basic.Types.BasicPerson":
-                    return Person.FromBasic((BasicPerson) basic);
+                    return Person.FromBasic ((BasicPerson) basic);
 
                     // ------------------ FAIL ----------------
 
                 default:
-                    throw new NotImplementedException("Unimplemented argument type in SingularFactory: " + argumentType);
+                    throw new NotImplementedException ("Unimplemented argument type in SingularFactory: " + argumentType);
             }
         }
     }

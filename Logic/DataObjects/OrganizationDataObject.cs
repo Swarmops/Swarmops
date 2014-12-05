@@ -7,7 +7,7 @@ using Swarmops.Logic.Structure;
 namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
-    [DataObject(true)]
+    [DataObject (true)]
 #endif
     public class OrganizationsDataObject
     {
@@ -19,12 +19,12 @@ namespace Swarmops.Logic.DataObjects
             {
             }
 
-            public Org(Organization org)
-                : base(org)
+            public Org (Organization org)
+                : base (org)
             {
                 try
                 {
-                    ParentName = FromIdentity(ParentOrganizationId).Name;
+                    ParentName = FromIdentity (ParentOrganizationId).Name;
                 }
                 catch
                 {
@@ -32,7 +32,7 @@ namespace Swarmops.Logic.DataObjects
                 }
                 try
                 {
-                    AnchorName = Geography.FromIdentity(AnchorGeographyId).Name;
+                    AnchorName = Geography.FromIdentity (AnchorGeographyId).Name;
                 }
                 catch
                 {
@@ -140,19 +140,19 @@ namespace Swarmops.Logic.DataObjects
             {
             }
 
-            public UptakeGeography(Structure.UptakeGeography other)
-                : base(other)
+            public UptakeGeography (Structure.UptakeGeography other)
+                : base (other)
             {
             }
 
-            internal static UptakeGeography fromUptake(Structure.UptakeGeography up)
+            internal static UptakeGeography fromUptake (Structure.UptakeGeography up)
             {
-                return new UptakeGeography(up);
+                return new UptakeGeography (up);
             }
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select, true)]
+        [DataObjectMethod (DataObjectMethodType.Select, true)]
 #endif
         public static Org[] Select()
         {
@@ -161,20 +161,20 @@ namespace Swarmops.Logic.DataObjects
             Organizations orgs = Organizations.GetAll();
             foreach (Organization org in orgs)
             {
-                res.Add(new Org(org));
+                res.Add (new Org (org));
             }
 
             return res.ToArray();
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select, true)]
+        [DataObjectMethod (DataObjectMethodType.Select, true)]
 #endif
-        public static Org Select(int orgid)
+        public static Org Select (int orgid)
         {
             try
             {
-                return new Org(Organization.FromIdentity(orgid));
+                return new Org (Organization.FromIdentity (orgid));
             }
             catch
             {
@@ -183,22 +183,22 @@ namespace Swarmops.Logic.DataObjects
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Organization[] Select(int[] OrganizationIds)
+        public static Organization[] Select (int[] OrganizationIds)
         {
             if (OrganizationIds == null)
             {
                 return new Organization[0];
             }
 
-            return Organizations.FromIdentities(OrganizationIds).ToArray();
+            return Organizations.FromIdentities (OrganizationIds).ToArray();
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Organization[] SelectStatic(Organization[] OrganizationArray)
+        public static Organization[] SelectStatic (Organization[] OrganizationArray)
         {
             if (OrganizationArray == null)
             {
@@ -209,9 +209,9 @@ namespace Swarmops.Logic.DataObjects
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Organization[] SelectStatic(Organizations Organizations)
+        public static Organization[] SelectStatic (Organizations Organizations)
         {
             if (Organizations == null)
             {
@@ -223,9 +223,9 @@ namespace Swarmops.Logic.DataObjects
 
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Organization[] SelectSortedStatic(Organizations Organizations, string sort)
+        public static Organization[] SelectSortedStatic (Organizations Organizations, string sort)
         {
             if (Organizations == null)
             {
@@ -234,16 +234,16 @@ namespace Swarmops.Logic.DataObjects
 
 
             List<Organization> pList = new List<Organization>();
-            Organization[] foundOrganizations = SelectStatic(Organizations);
+            Organization[] foundOrganizations = SelectStatic (Organizations);
             foreach (Organization pers in foundOrganizations)
             {
-                pList.Add(pers);
+                pList.Add (pers);
             }
 
             switch (sort)
             {
                 case "OrganizationId":
-                    pList.Sort(IdentityComparison);
+                    pList.Sort (IdentityComparison);
                     break;
             }
 
@@ -252,19 +252,19 @@ namespace Swarmops.Logic.DataObjects
 
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Insert, true)]
+        [DataObjectMethod (DataObjectMethodType.Insert, true)]
 #endif
-        public int AddOrganization(Org org)
+        public int AddOrganization (Org org)
         {
             try
             {
-                org.DefaultCountryId = Country.FromCode(org.CountryCode).CountryId;
+                org.DefaultCountryId = Country.FromCode (org.CountryCode).CountryId;
             }
             catch
             {
-                org.DefaultCountryId = FindDefaultCountry(org);
+                org.DefaultCountryId = FindDefaultCountry (org);
             }
-            org.Identity = Organization.Create(org.ParentOrganizationId, org.NameInternational,
+            org.Identity = Organization.Create (org.ParentOrganizationId, org.NameInternational,
                 org.Name, org.NameShort, org.Domain, org.MailPrefix, org.AnchorGeographyId, org.AcceptsMembers,
                 org.AutoAssignNewMembers, org.DefaultCountryId).Identity;
             // Return true if precisely one row was inserted, otherwise false
@@ -272,30 +272,30 @@ namespace Swarmops.Logic.DataObjects
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        [DataObjectMethod (DataObjectMethodType.Update, false)]
 #endif
-        public int AddDuplicateOrganization(Org org)
+        public int AddDuplicateOrganization (Org org)
         {
-            AddOrganization(org);
+            AddOrganization (org);
             return org.Identity;
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Update, true)]
+        [DataObjectMethod (DataObjectMethodType.Update, true)]
 #endif
-        public bool UpdateOrganisation(Org org)
+        public bool UpdateOrganisation (Org org)
         {
             try
             {
                 try
                 {
-                    org.DefaultCountryId = Country.FromCode(org.CountryCode).CountryId;
+                    org.DefaultCountryId = Country.FromCode (org.CountryCode).CountryId;
                 }
                 catch
                 {
-                    org.DefaultCountryId = FindDefaultCountry(org);
+                    org.DefaultCountryId = FindDefaultCountry (org);
                 }
-                Organization.UpdateOrganization(org.ParentOrganizationId, org.NameInternational,
+                Organization.UpdateOrganization (org.ParentOrganizationId, org.NameInternational,
                     org.Name, org.NameShort, org.Domain, org.MailPrefix, org.AnchorGeographyId, org.AcceptsMembers,
                     org.AutoAssignNewMembers, org.DefaultCountryId,
                     org.Identity);
@@ -304,17 +304,17 @@ namespace Swarmops.Logic.DataObjects
             }
             catch (Exception ex)
             {
-                HttpContext.Current.Response.Write("Failed Update:" + ex.Message);
-                throw new Exception("UpdateOrganisation failed because:" + ex.Message);
+                HttpContext.Current.Response.Write ("Failed Update:" + ex.Message);
+                throw new Exception ("UpdateOrganisation failed because:" + ex.Message);
             }
         }
 
-        private static int FindDefaultCountry(Org org)
+        private static int FindDefaultCountry (Org org)
         {
             //Find default country = Country of anchor.
-            Geographies line = Geography.FromIdentity(org.AnchorGeographyId).GetLine();
+            Geographies line = Geography.FromIdentity (org.AnchorGeographyId).GetLine();
             Geography[] arrLine = line.ToArray();
-            Array.Reverse(arrLine);
+            Array.Reverse (arrLine);
             Countries countries = Countries.GetAll();
             int foundCntry = 1; //sweden
             foreach (Geography geo in arrLine)
@@ -335,32 +335,32 @@ namespace Swarmops.Logic.DataObjects
 
 
         public static Comparison<Organization> IdentityComparison =
-            delegate(Organization p1, Organization p2) { return p1.OrganizationId.CompareTo(p2.OrganizationId); };
+            delegate (Organization p1, Organization p2) { return p1.OrganizationId.CompareTo (p2.OrganizationId); };
 
 
         //////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////
 
-        private static UptakeGeography[] UptakeFromArray(Structure.UptakeGeography[] inputArray)
+        private static UptakeGeography[] UptakeFromArray (Structure.UptakeGeography[] inputArray)
         {
             List<UptakeGeography> retlist = new List<UptakeGeography>();
 
             foreach (Structure.UptakeGeography up in inputArray)
             {
-                retlist.Add(UptakeGeography.fromUptake(up));
+                retlist.Add (UptakeGeography.fromUptake (up));
             }
             return retlist.ToArray();
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        [DataObjectMethod (DataObjectMethodType.Select, false)]
 #endif
-        public static UptakeGeography[] SelectOrgMineUptake(int orgid)
+        public static UptakeGeography[] SelectOrgMineUptake (int orgid)
         {
             try
             {
-                return UptakeFromArray(Organization.FromIdentity(orgid).GetUptakeGeographies(false));
+                return UptakeFromArray (Organization.FromIdentity (orgid).GetUptakeGeographies (false));
             }
             catch
             {
@@ -369,13 +369,13 @@ namespace Swarmops.Logic.DataObjects
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        [DataObjectMethod (DataObjectMethodType.Select, false)]
 #endif
-        public static UptakeGeography[] SelectOrgOthersUptake(int orgid)
+        public static UptakeGeography[] SelectOrgOthersUptake (int orgid)
         {
             try
             {
-                return UptakeFromArray(Organization.FromIdentity(orgid).GetUptakeGeographies(true));
+                return UptakeFromArray (Organization.FromIdentity (orgid).GetUptakeGeographies (true));
             }
             catch
             {
@@ -384,19 +384,19 @@ namespace Swarmops.Logic.DataObjects
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        [DataObjectMethod (DataObjectMethodType.Select, false)]
 #endif
-        public static UptakeGeography[] SelectOrgOthersUptakeForGeo(int orgid, int geoid)
+        public static UptakeGeography[] SelectOrgOthersUptakeForGeo (int orgid, int geoid)
         {
             try
             {
                 List<UptakeGeography> filtered = new List<UptakeGeography>();
                 UptakeGeography[] unfiltered =
-                    UptakeFromArray(Organization.FromIdentity(orgid).GetUptakeGeographies(true));
+                    UptakeFromArray (Organization.FromIdentity (orgid).GetUptakeGeographies (true));
                 foreach (UptakeGeography bu in unfiltered)
                 {
                     if (bu.GeoId == geoid)
-                        filtered.Add(bu);
+                        filtered.Add (bu);
                 }
                 return filtered.ToArray();
             }
@@ -406,28 +406,28 @@ namespace Swarmops.Logic.DataObjects
             }
         }
 
-        public static void UpdateOrgUptake(int orgid, int[] newUptakeGeos)
+        public static void UpdateOrgUptake (int orgid, int[] newUptakeGeos)
         {
             try
             {
-                Organization org = Organization.FromIdentity(orgid);
+                Organization org = Organization.FromIdentity (orgid);
                 List<int> inOld = new List<int>();
                 foreach (Geography oldGeo in org.UptakeGeographies)
                 {
-                    if (Array.IndexOf(newUptakeGeos, oldGeo.Identity) > -1)
+                    if (Array.IndexOf (newUptakeGeos, oldGeo.Identity) > -1)
                     {
-                        inOld.Add(oldGeo.Identity);
+                        inOld.Add (oldGeo.Identity);
                     }
                     else
                     {
-                        org.DeleteUptakeGeography(oldGeo.Identity);
+                        org.DeleteUptakeGeography (oldGeo.Identity);
                     }
                 }
                 foreach (int newgeo in newUptakeGeos)
                 {
-                    if (!inOld.Contains(newgeo))
+                    if (!inOld.Contains (newgeo))
                     {
-                        org.AddUptakeGeography(newgeo);
+                        org.AddUptakeGeography (newgeo);
                     }
                 }
             }
@@ -438,23 +438,23 @@ namespace Swarmops.Logic.DataObjects
 
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        [DataObjectMethod (DataObjectMethodType.Delete, false)]
 #endif
-        public bool DeleteUptake(UptakeGeography ut)
+        public bool DeleteUptake (UptakeGeography ut)
         {
-            Organization org = Organization.FromIdentity(ut.OrgId);
-            org.DeleteUptakeGeography(ut.GeoId);
+            Organization org = Organization.FromIdentity (ut.OrgId);
+            org.DeleteUptakeGeography (ut.GeoId);
 
             return true;
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        [DataObjectMethod (DataObjectMethodType.Insert, false)]
 #endif
-        public bool AddUptake(UptakeGeography ut)
+        public bool AddUptake (UptakeGeography ut)
         {
-            Organization org = Organization.FromIdentity(ut.OrgId);
-            org.AddUptakeGeography(ut.GeoId);
+            Organization org = Organization.FromIdentity (ut.OrgId);
+            org.AddUptakeGeography (ut.GeoId);
 
             // Return true if precisely one row was inserted, otherwise false
             return true;

@@ -14,7 +14,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 InboundInvoices result = new InboundInvoices();
-                result.AddRange(this.Where(invoice => invoice.Attested));
+                result.AddRange (this.Where (invoice => invoice.Attested));
 
                 return result;
             }
@@ -26,7 +26,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 InboundInvoices result = new InboundInvoices();
-                result.AddRange(this.Where(invoice => invoice.Attested == false));
+                result.AddRange (this.Where (invoice => invoice.Attested == false));
 
                 return result;
             }
@@ -68,9 +68,9 @@ namespace Swarmops.Logic.Financial
         /// </summary>
         /// <param name="organization">The organization.</param>
         /// <returns>The list of inbound invoices.</returns>
-        public static InboundInvoices ForOrganization(Organization organization)
+        public static InboundInvoices ForOrganization (Organization organization)
         {
-            return ForOrganization(organization, false);
+            return ForOrganization (organization, false);
         }
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace Swarmops.Logic.Financial
         /// <param name="organization">The organizations.</param>
         /// <param name="includeClosed">True to include closed records.</param>
         /// <returns>The list of inbound invoices.</returns>
-        public static InboundInvoices ForOrganization(Organization organization, bool includeClosed)
+        public static InboundInvoices ForOrganization (Organization organization, bool includeClosed)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetInboundInvoices(organization,
+            return FromArray (SwarmDb.GetDatabaseForReading().GetInboundInvoices (organization,
                 includeClosed
                     ? DatabaseCondition.None
                     : DatabaseCondition.OpenTrue));

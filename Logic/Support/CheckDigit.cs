@@ -73,15 +73,15 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="input">The string for which the check digit is to be calculated.</param>
         /// <returns>The input with the calculated check digit appended.</returns>
-        public static string AppendCheckDigit(string input)
+        public static string AppendCheckDigit (string input)
         {
-            int[] resultArray = Instance._AppendCheckDigit(_ConvertToIntArray(input));
+            int[] resultArray = Instance._AppendCheckDigit (_ConvertToIntArray (input));
 
             StringBuilder resultString = new StringBuilder();
 
             for (int i = 0; i < resultArray.Length; i++)
             {
-                resultString.Append(resultArray[i]);
+                resultString.Append (resultArray[i]);
             }
 
             return resultString.ToString();
@@ -93,10 +93,10 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="input">The long integer for which the check digit is to be calculated.</param>
         /// <returns>The input with the calculated check digit appended.</returns>
-        public static long AppendCheckDigit(long input)
+        public static long AppendCheckDigit (long input)
         {
-            int[] resultArray = Instance._AppendCheckDigit(_ConvertToIntArray(input));
-            return _ConvertToLong(resultArray);
+            int[] resultArray = Instance._AppendCheckDigit (_ConvertToIntArray (input));
+            return _ConvertToLong (resultArray);
         }
 
         /// <summary>
@@ -105,10 +105,10 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="input">The integer for which the check digit is to be calculated.</param>
         /// <returns>The input with the calculated check digit appended.</returns>
-        public static int AppendCheckDigit(int input)
+        public static int AppendCheckDigit (int input)
         {
-            int[] resultArray = Instance._AppendCheckDigit(_ConvertToIntArray(input));
-            long resultLong = _ConvertToLong(resultArray);
+            int[] resultArray = Instance._AppendCheckDigit (_ConvertToIntArray (input));
+            long resultLong = _ConvertToLong (resultArray);
             return (int) resultLong;
         }
 
@@ -118,9 +118,9 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="input">The integer array for which the check digit is to be calculated.</param>
         /// <returns>The input with the calculated check digit appended.</returns>
-        public static int[] AppendCheckDigit(int[] input)
+        public static int[] AppendCheckDigit (int[] input)
         {
-            return Instance._AppendCheckDigit(input);
+            return Instance._AppendCheckDigit (input);
         }
 
         //-----------------------------------------------------------------------------------------------
@@ -135,9 +135,9 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="input">The string for which the check digit is to be calculated.</param>
         /// <returns>The check digit for the input.</returns>
-        public static int CalculateCheckDigit(string input)
+        public static int CalculateCheckDigit (string input)
         {
-            return Instance._CalculateCheckDigit(_ConvertToIntArray(input));
+            return Instance._CalculateCheckDigit (_ConvertToIntArray (input));
         }
 
         /// <summary>
@@ -145,9 +145,9 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="input">The long integer for which the check digit is to be calculated.</param>
         /// <returns>The check digit for the input.</returns>
-        public static int CalculateCheckDigit(long input)
+        public static int CalculateCheckDigit (long input)
         {
-            return Instance._CalculateCheckDigit(_ConvertToIntArray(input));
+            return Instance._CalculateCheckDigit (_ConvertToIntArray (input));
         }
 
         /// <summary>
@@ -155,9 +155,9 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="input">The integer for which the check digit is to be calculated.</param>
         /// <returns>The check digit for the input.</returns>
-        public static int CalculateCheckDigit(int input)
+        public static int CalculateCheckDigit (int input)
         {
-            return Instance._CalculateCheckDigit(_ConvertToIntArray(input));
+            return Instance._CalculateCheckDigit (_ConvertToIntArray (input));
         }
 
         /// <summary>
@@ -165,9 +165,9 @@ namespace Swarmops.Logic.Support
         /// </summary>
         /// <param name="input">The integer array for which the check digit is to be calculated.</param>
         /// <returns>The check digit for the input.</returns>
-        public static int CalculateCheckDigit(int[] input)
+        public static int CalculateCheckDigit (int[] input)
         {
-            return Instance._CalculateCheckDigit(input);
+            return Instance._CalculateCheckDigit (input);
         }
 
         //-----------------------------------------------------------------------------------------------
@@ -188,9 +188,9 @@ namespace Swarmops.Logic.Support
         ///     Returns true if the last digit of the input is the valid check digit for
         ///     the input. Otherwise returns false.
         /// </returns>
-        public static bool Check(string input)
+        public static bool Check (string input)
         {
-            return Instance._Check(_ConvertToIntArray(input));
+            return Instance._Check (_ConvertToIntArray (input));
         }
 
         /// <summary>
@@ -204,9 +204,9 @@ namespace Swarmops.Logic.Support
         ///     Returns true if the last digit of the input is the valid check digit for
         ///     the input. Otherwise returns false.
         /// </returns>
-        public static bool Check(long input)
+        public static bool Check (long input)
         {
-            return Instance._Check(_ConvertToIntArray(input));
+            return Instance._Check (_ConvertToIntArray (input));
         }
 
         /// <summary>
@@ -220,9 +220,9 @@ namespace Swarmops.Logic.Support
         ///     Returns true if the last digit of the input is the valid check digit for
         ///     the input. Otherwise returns false.
         /// </returns>
-        public static bool Check(int input)
+        public static bool Check (int input)
         {
-            return Instance._Check(_ConvertToIntArray(input));
+            return Instance._Check (_ConvertToIntArray (input));
         }
 
         /// <summary>
@@ -237,9 +237,9 @@ namespace Swarmops.Logic.Support
         ///     Returns true if the last digit of the input is the valid check digit for
         ///     the input. Otherwise returns false.
         /// </returns>
-        public static bool Check(int[] input)
+        public static bool Check (int[] input)
         {
-            return Instance._Check(input);
+            return Instance._Check (input);
         }
 
         /// <summary>
@@ -254,9 +254,9 @@ namespace Swarmops.Logic.Support
         ///     Returns true if the check digit is valid for
         ///     the input. Otherwise returns false.
         /// </returns>
-        public static bool Check(string input, int checkDigit)
+        public static bool Check (string input, int checkDigit)
         {
-            return Instance._Check(_ConvertToIntArray(input), checkDigit);
+            return Instance._Check (_ConvertToIntArray (input), checkDigit);
         }
 
         /// <summary>
@@ -271,9 +271,9 @@ namespace Swarmops.Logic.Support
         ///     Returns true if the check digit is valid for
         ///     the input. Otherwise returns false.
         /// </returns>
-        public static bool Check(long input, int checkDigit)
+        public static bool Check (long input, int checkDigit)
         {
-            return Instance._Check(_ConvertToIntArray(input), checkDigit);
+            return Instance._Check (_ConvertToIntArray (input), checkDigit);
         }
 
         /// <summary>
@@ -288,9 +288,9 @@ namespace Swarmops.Logic.Support
         ///     Returns true if the check digit is valid for
         ///     the input. Otherwise returns false.
         /// </returns>
-        public static bool Check(int input, int checkDigit)
+        public static bool Check (int input, int checkDigit)
         {
-            return Instance._Check(_ConvertToIntArray(input), checkDigit);
+            return Instance._Check (_ConvertToIntArray (input), checkDigit);
         }
 
         /// <summary>
@@ -305,9 +305,9 @@ namespace Swarmops.Logic.Support
         ///     Returns true if the check digit is valid for
         ///     the input. Otherwise returns false.
         /// </returns>
-        public static bool Check(int[] input, int checkDigit)
+        public static bool Check (int[] input, int checkDigit)
         {
-            return Instance._Check(input, checkDigit);
+            return Instance._Check (input, checkDigit);
         }
 
         //-----------------------------------------------------------------------------------------------
@@ -340,27 +340,27 @@ namespace Swarmops.Logic.Support
         #region Private Static Methods
 
         //-----------------------------------------------------------------------------------------------
-        private static int[] _ConvertToIntArray(string input)
+        private static int[] _ConvertToIntArray (string input)
         {
             int[] inputArray = new int[input.Length];
 
             for (int i = 0; i < input.Length; i++)
-                inputArray[i] = Convert.ToInt32(input.Substring(i, 1));
+                inputArray[i] = Convert.ToInt32 (input.Substring (i, 1));
 
             return inputArray;
         }
 
-        private static int[] _ConvertToIntArray(long input)
+        private static int[] _ConvertToIntArray (long input)
         {
-            return _ConvertToIntArray(input.ToString());
+            return _ConvertToIntArray (input.ToString());
         }
 
-        private static int[] _ConvertToIntArray(int input)
+        private static int[] _ConvertToIntArray (int input)
         {
-            return _ConvertToIntArray(input.ToString());
+            return _ConvertToIntArray (input.ToString());
         }
 
-        private static long _ConvertToLong(int[] input)
+        private static long _ConvertToLong (int[] input)
         {
             long result = 0;
             long power = 1;
@@ -381,17 +381,17 @@ namespace Swarmops.Logic.Support
         #region Private Instance Methods
 
         //-----------------------------------------------------------------------------------------------
-        private int[] _AppendCheckDigit(int[] input)
+        private int[] _AppendCheckDigit (int[] input)
         {
-            int checkDigit = _CalculateCheckDigit(input);
+            int checkDigit = _CalculateCheckDigit (input);
             int[] result = new int[input.Length + 1];
-            input.CopyTo(result, 0);
+            input.CopyTo (result, 0);
             result[result.Length - 1] = checkDigit;
 
             return result;
         }
 
-        private int _CalculateCheckDigit(int[] input)
+        private int _CalculateCheckDigit (int[] input)
         {
             // First we need to reverse the order of the input digits
             int[] reversedInput = new int[input.Length];
@@ -406,7 +406,7 @@ namespace Swarmops.Logic.Support
             return checkDigit;
         }
 
-        private bool _Check(int[] input)
+        private bool _Check (int[] input)
         {
             // First we need to reverse the order of the input digits
             int[] reversedInput = new int[input.Length];
@@ -420,12 +420,12 @@ namespace Swarmops.Logic.Support
             return (check == 0);
         }
 
-        private bool _Check(int[] input, int checkDigit)
+        private bool _Check (int[] input, int checkDigit)
         {
             int[] newInput = new int[input.Length + 1];
-            input.CopyTo(newInput, 0);
+            input.CopyTo (newInput, 0);
             newInput[newInput.Length - 1] = checkDigit;
-            return _Check(newInput);
+            return _Check (newInput);
         }
 
         //-----------------------------------------------------------------------------------------------

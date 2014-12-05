@@ -6,7 +6,7 @@ namespace Swarmops.Basic.Types.Communications
 {
     public class BasicOutboundComm : IHasIdentity
     {
-        public BasicOutboundComm(int outboundCommId, int senderPersonId, int fromPersonId, int organizationId,
+        public BasicOutboundComm (int outboundCommId, int senderPersonId, int fromPersonId, int organizationId,
             DateTime createdDateTime, string resolverClass, string recipientDataXml, bool resolved,
             DateTime resolvedDateTime, OutboundCommPriority priority, string transmitterClass, string payloadXml,
             bool open, DateTime startTransmitDateTime, DateTime closedDateTime, int recipientCount,
@@ -33,8 +33,8 @@ namespace Swarmops.Basic.Types.Communications
         }
 
 
-        public BasicOutboundComm(BasicOutboundComm original) :
-            this(
+        public BasicOutboundComm (BasicOutboundComm original) :
+            this (
             original.OutboundCommId, original.SenderPersonId, original.FromPersonId, original.OrganizationId,
             original.CreatedDateTime, original.ResolverClass, original.RecipientDataXml, original.Resolved,
             original.ResolvedDateTime, original.Priority, original.TransmitterClass, original.PayloadXml,

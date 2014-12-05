@@ -13,13 +13,13 @@ namespace Swarmops.Basic.Types.Security
         public readonly int PersonId;
         public readonly BasicPersonRole[] SystemPersonRoles;
 
-        public BasicAuthority(int personId, BasicPersonRole[] systemPersonRoles,
+        public BasicAuthority (int personId, BasicPersonRole[] systemPersonRoles,
             BasicPersonRole[] organizationPersonRoles,
             BasicPersonRole[] nodePersonRoles)
         {
             if (personId < 1)
             {
-                throw new ArgumentOutOfRangeException("PersonId cannot be " + personId);
+                throw new ArgumentOutOfRangeException ("PersonId cannot be " + personId);
             }
 
             this.PersonId = personId;
@@ -47,13 +47,13 @@ namespace Swarmops.Basic.Types.Security
                     this.SystemPersonRoles.Length + this.OrganizationPersonRoles.Length + this.LocalPersonRoles.Length];
 
             if (this.SystemPersonRoles.Length > 0)
-                this.SystemPersonRoles.CopyTo(this.AllPersonRoles, 0);
+                this.SystemPersonRoles.CopyTo (this.AllPersonRoles, 0);
 
             if (this.OrganizationPersonRoles.Length > 0)
-                this.OrganizationPersonRoles.CopyTo(this.AllPersonRoles, this.SystemPersonRoles.Length);
+                this.OrganizationPersonRoles.CopyTo (this.AllPersonRoles, this.SystemPersonRoles.Length);
 
             if (this.LocalPersonRoles.Length > 0)
-                this.LocalPersonRoles.CopyTo(this.AllPersonRoles,
+                this.LocalPersonRoles.CopyTo (this.AllPersonRoles,
                     this.SystemPersonRoles.Length + this.OrganizationPersonRoles.Length);
         }
     }

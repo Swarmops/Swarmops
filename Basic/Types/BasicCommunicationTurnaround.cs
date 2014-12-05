@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicCommunicationTurnaround : IHasIdentity
     {
-        public BasicCommunicationTurnaround(int organizationId, int communicationTypeId, int communicationId,
+        public BasicCommunicationTurnaround (int organizationId, int communicationTypeId, int communicationId,
             DateTime dateTimeOpened, DateTime dateTimeFirstResponse, int personIdFirstResponse, DateTime dateTimeClosed,
             int personIdClosed, bool open, bool responded)
         {
@@ -21,8 +21,8 @@ namespace Swarmops.Basic.Types
             Responded = responded;
         }
 
-        public BasicCommunicationTurnaround(BasicCommunicationTurnaround original) :
-            this(
+        public BasicCommunicationTurnaround (BasicCommunicationTurnaround original) :
+            this (
             original.OrganizationId, original.CommunicationTypeId, original.CommunicationId, original.DateTimeOpened,
             original.DateTimeFirstResponse, original.PersonIdFirstResponse, original.DateTimeClosed,
             original.PersonIdClosed, original.Open, original.Responded)

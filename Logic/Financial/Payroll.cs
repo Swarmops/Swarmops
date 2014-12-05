@@ -15,9 +15,9 @@ namespace Swarmops.Logic.Financial
         /// </summary>
         /// <param name="organization">The organization.</param>
         /// <returns>The payroll.</returns>
-        public static Payroll ForOrganization(Organization organization)
+        public static Payroll ForOrganization (Organization organization)
         {
-            return ForOrganization(organization, false);
+            return ForOrganization (organization, false);
         }
 
 
@@ -27,9 +27,9 @@ namespace Swarmops.Logic.Financial
         /// <param name="organization">The organization to filter for.</param>
         /// <param name="includeClosed">True to include closed records.</param>
         /// <returns>The payroll.</returns>
-        public static Payroll ForOrganization(Organization organization, bool includeClosed)
+        public static Payroll ForOrganization (Organization organization, bool includeClosed)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetPayroll(organization,
+            return FromArray (SwarmDb.GetDatabaseForReading().GetPayroll (organization,
                 includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
 
@@ -40,7 +40,7 @@ namespace Swarmops.Logic.Financial
         /// <returns>The payroll.</returns>
         public static Payroll GetAll()
         {
-            return GetAll(false);
+            return GetAll (false);
         }
 
 
@@ -49,12 +49,12 @@ namespace Swarmops.Logic.Financial
         /// </summary>
         /// <param name="includeClosed">True to include closed records.</param>
         /// <returns>The payroll.</returns>
-        public static Payroll GetAll(bool includeClosed)
+        public static Payroll GetAll (bool includeClosed)
         {
             return
-                FromArray(
+                FromArray (
                     SwarmDb.GetDatabaseForReading()
-                        .GetPayroll(includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
+                        .GetPayroll (includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
 
         /// <summary>
@@ -66,10 +66,10 @@ namespace Swarmops.Logic.Financial
 
             string lastRun = Persistence.Key["LastSalaryRun"];
 
-            string expectedLastRun = today.ToString("yyyyMM", CultureInfo.InvariantCulture);
+            string expectedLastRun = today.ToString ("yyyyMM", CultureInfo.InvariantCulture);
 
             if (lastRun != null &&
-                String.Compare(lastRun, expectedLastRun, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) >= 0)
+                String.Compare (lastRun, expectedLastRun, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) >= 0)
             {
                 // nothing to do, return
 
@@ -82,12 +82,12 @@ namespace Swarmops.Logic.Financial
             // TODO: Different payday per organization?
 
             Payroll payroll = GetAll();
-            DateTime payday = new DateTime(today.Year, today.Month, 25);
+            DateTime payday = new DateTime (today.Year, today.Month, 25);
 
             foreach (PayrollItem payrollItem in payroll)
             {
-                Salary salary = Salary.Create(payrollItem, payday);
-                SwarmopsLog.CreateEntry(payrollItem.Person, new SalaryCreatedLogEntry(salary));
+                Salary salary = Salary.Create (payrollItem, payday);
+                SwarmopsLog.CreateEntry (payrollItem.Person, new SalaryCreatedLogEntry (salary));
 
                 // TODO: CREATE SALARY SPECIFICATION, SEND TO PERSON
             }

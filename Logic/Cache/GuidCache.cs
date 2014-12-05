@@ -24,27 +24,27 @@ namespace Swarmops.Logic.Cache
             _nextGarbageCollect = DateTime.MinValue;
         }
 
-        public static void Set(string guidString, object objectToCache)
+        public static void Set (string guidString, object objectToCache)
         {
             ConditionalGarbageCollect();
 
             _cache[guidString] = new CachedObject {StoredDateTime = DateTime.UtcNow, Object = objectToCache};
         }
 
-        public static object Get(string guidString)
+        public static object Get (string guidString)
         {
-            if (!_cache.ContainsKey(guidString))
+            if (!_cache.ContainsKey (guidString))
             {
                 return null;
             }
             return _cache[guidString].Object;
         }
 
-        public static void Delete(string guidString)
+        public static void Delete (string guidString)
         {
-            if (_cache.ContainsKey(guidString))
+            if (_cache.ContainsKey (guidString))
             {
-                _cache.Remove(guidString);
+                _cache.Remove (guidString);
             }
         }
 
@@ -59,17 +59,17 @@ namespace Swarmops.Logic.Cache
 
                 // Do a garbage collect and set the next one for, say, an hour out
 
-                _nextGarbageCollect = DateTime.UtcNow.AddHours(1); // do this first for thread reasons
+                _nextGarbageCollect = DateTime.UtcNow.AddHours (1); // do this first for thread reasons
             }
 
-            DateTime expired = DateTime.UtcNow.AddHours(-24);
+            DateTime expired = DateTime.UtcNow.AddHours (-24);
 
             foreach (string key in _cache.Keys.ToList())
                 // ToList() is crucial - it takes a copy of the list, which may be modified in-loop
             {
                 if (_cache[key].StoredDateTime < expired)
                 {
-                    _cache.Remove(key);
+                    _cache.Remove (key);
                 }
             }
         }

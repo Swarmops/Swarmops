@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicCurrency : IHasIdentity
     {
-        public BasicCurrency(int currencyId, string code, string name, string sign)
+        public BasicCurrency (int currencyId, string code, string name, string sign)
         {
             CurrencyId = currencyId;
             Code = code;
@@ -12,8 +12,8 @@ namespace Swarmops.Basic.Types
             Sign = sign;
         }
 
-        public BasicCurrency(BasicCurrency original)
-            : this(original.CurrencyId, original.Code, original.Name, original.Sign)
+        public BasicCurrency (BasicCurrency original)
+            : this (original.CurrencyId, original.Code, original.Name, original.Sign)
         {
             // empty copy ctor
         }

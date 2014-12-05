@@ -2,14 +2,14 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPaymentInformation
     {
-        public BasicPaymentInformation(PaymentInformationType type, string data)
+        public BasicPaymentInformation (PaymentInformationType type, string data)
         {
             Type = type;
             Data = data;
         }
 
-        public BasicPaymentInformation(BasicPaymentInformation original)
-            : this(original.Type, original.Data)
+        public BasicPaymentInformation (BasicPaymentInformation original)
+            : this (original.Type, original.Data)
         {
             // empty copy ctor
         }

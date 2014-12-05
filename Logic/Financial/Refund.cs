@@ -10,14 +10,14 @@ namespace Swarmops.Logic.Financial
 {
     public class Refund : BasicRefund
     {
-        private Refund(BasicRefund basic) : base(basic)
+        private Refund (BasicRefund basic) : base (basic)
         {
             // empty pvt ctor
         }
 
         public Payment Payment
         {
-            get { return Payment.FromIdentity(PaymentId); }
+            get { return Payment.FromIdentity (PaymentId); }
         }
 
         public decimal AmountDecimal
@@ -35,33 +35,33 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public static Refund FromBasic(BasicRefund basic)
+        public static Refund FromBasic (BasicRefund basic)
         {
-            return new Refund(basic);
+            return new Refund (basic);
         }
 
-        public static Refund FromIdentity(int refundId)
+        public static Refund FromIdentity (int refundId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetRefund(refundId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetRefund (refundId));
         }
 
-        public static Refund Create(Payment payment, Person creatingPerson)
+        public static Refund Create (Payment payment, Person creatingPerson)
         {
-            return Create(payment, creatingPerson, 0L);
+            return Create (payment, creatingPerson, 0L);
         }
 
-        public static Refund Create(Payment payment, Person creatingPerson, Int64 amountCents)
+        public static Refund Create (Payment payment, Person creatingPerson, Int64 amountCents)
         {
             if (amountCents > payment.AmountCents)
             {
-                throw new ArgumentException("Refund amount cannot exceed payment amount");
+                throw new ArgumentException ("Refund amount cannot exceed payment amount");
             }
 
             Refund refund =
-                FromIdentity(SwarmDb.GetDatabaseForWriting()
-                    .CreateRefund(payment.Identity, creatingPerson.Identity, amountCents));
+                FromIdentity (SwarmDb.GetDatabaseForWriting()
+                    .CreateRefund (payment.Identity, creatingPerson.Identity, amountCents));
 
-            PWEvents.CreateEvent(EventSource.PirateWeb, EventType.RefundCreated, 0,
+            PWEvents.CreateEvent (EventSource.PirateWeb, EventType.RefundCreated, 0,
                 refund.Payment.OutboundInvoice.Organization.Identity,
                 Geography.RootIdentity, 0, refund.Identity, string.Empty);
 

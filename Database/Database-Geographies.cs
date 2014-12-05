@@ -20,23 +20,23 @@ namespace Swarmops.Database
             " GeographyId, CountryId, Designation, GeographyLevelId " + // 0-3
             " FROM GeographyDesignations ";
 
-        private static BasicGeography ReadGeographyFromDataReader(DbDataReader reader)
+        private static BasicGeography ReadGeographyFromDataReader (DbDataReader reader)
         {
-            int geographyId = reader.GetInt32(0);
-            int parentGeographyId = reader.GetInt32(1);
-            string name = reader.GetString(2);
+            int geographyId = reader.GetInt32 (0);
+            int parentGeographyId = reader.GetInt32 (1);
+            string name = reader.GetString (2);
 
-            return new BasicGeography(geographyId, parentGeographyId, name);
+            return new BasicGeography (geographyId, parentGeographyId, name);
         }
 
-        private static BasicGeographyDesignation ReadGeographyDesignationFromDataReader(DbDataReader reader)
+        private static BasicGeographyDesignation ReadGeographyDesignationFromDataReader (DbDataReader reader)
         {
-            int geographyId = reader.GetInt32(0);
-            int countryId = reader.GetInt32(1);
-            string designation = reader.GetString(2);
-            GeographyLevel level = (GeographyLevel) reader.GetInt32(3);
+            int geographyId = reader.GetInt32 (0);
+            int countryId = reader.GetInt32 (1);
+            string designation = reader.GetString (2);
+            GeographyLevel level = (GeographyLevel) reader.GetInt32 (3);
 
-            return new BasicGeographyDesignation(geographyId, countryId, designation, level);
+            return new BasicGeographyDesignation (geographyId, countryId, designation, level);
         }
 
         #endregion
@@ -50,7 +50,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + geographyFieldSequence + " WHERE ParentGeographyId >= 0 ORDER BY \"Name\"",
                         connection);
 
@@ -58,7 +58,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadGeographyFromDataReader(reader));
+                        result.Add (ReadGeographyFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -67,7 +67,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicGeography[] GetGeographies(int[] ids)
+        public BasicGeography[] GetGeographies (int[] ids)
         {
             List<BasicGeography> result = new List<BasicGeography>();
 
@@ -76,16 +76,16 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + geographyFieldSequence + " WHERE ParentGeographyId >= 0 AND GeographyId in (" +
-                        JoinIds(ids) +
+                        JoinIds (ids) +
                         ") ORDER BY \"Name\"", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadGeographyFromDataReader(reader));
+                        result.Add (ReadGeographyFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -94,7 +94,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicGeography[] GetGeographyChildren(int parentGeographyId)
+        public BasicGeography[] GetGeographyChildren (int parentGeographyId)
         {
             List<BasicGeography> result = new List<BasicGeography>();
 
@@ -103,7 +103,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + geographyFieldSequence + " WHERE ParentGeographyId=" + parentGeographyId +
                         " ORDER BY \"Name\"", connection);
 
@@ -111,7 +111,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadGeographyFromDataReader(reader));
+                        result.Add (ReadGeographyFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -139,7 +139,7 @@ namespace Swarmops.Database
             foreach (BasicGeography node in nodes)
             {
                 List<BasicGeography> newList = new List<BasicGeography>();
-                newList.Add(node);
+                newList.Add (node);
 
                 result[node.GeographyId] = newList;
             }
@@ -150,7 +150,7 @@ namespace Swarmops.Database
             {
                 if (node.ParentGeographyId != 0)
                 {
-                    result[node.ParentGeographyId].Add(node);
+                    result[node.ParentGeographyId].Add (node);
                 }
             }
 
@@ -158,7 +158,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicGeography[] GetGeographyLine(int leafGeographyId)
+        public BasicGeography[] GetGeographyLine (int leafGeographyId)
         {
             List<BasicGeography> result = new List<BasicGeography>();
 
@@ -170,7 +170,7 @@ namespace Swarmops.Database
 
             while (currentNode.GeographyId != 0)
             {
-                result.Add(currentNode);
+                result.Add (currentNode);
 
                 if (currentNode.ParentGeographyId != 0)
                 {
@@ -178,7 +178,7 @@ namespace Swarmops.Database
                 }
                 else
                 {
-                    currentNode = new BasicGeography(0, 0, string.Empty);
+                    currentNode = new BasicGeography (0, 0, string.Empty);
                 }
             }
 
@@ -190,21 +190,21 @@ namespace Swarmops.Database
 
         public BasicGeography[] GetGeographyTree()
         {
-            return GetGeographyTree(1);
+            return GetGeographyTree (1);
         }
 
 
-        public BasicGeography[] GetGeographyTree(int startGeographyId)
+        public BasicGeography[] GetGeographyTree (int startGeographyId)
         {
             Dictionary<int, List<BasicGeography>> nodes = GetHashedGeographies();
 
-            return GetGeographyTree(nodes, startGeographyId, 0);
+            return GetGeographyTree (nodes, startGeographyId, 0);
         }
 
 
-        public Dictionary<int, BasicGeography> GetGeographyHashtable(int startGeographyId)
+        public Dictionary<int, BasicGeography> GetGeographyHashtable (int startGeographyId)
         {
-            BasicGeography[] nodes = GetGeographyTree(startGeographyId);
+            BasicGeography[] nodes = GetGeographyTree (startGeographyId);
 
             Dictionary<int, BasicGeography> result = new Dictionary<int, BasicGeography>();
 
@@ -217,7 +217,7 @@ namespace Swarmops.Database
         }
 
 
-        private BasicGeography[] GetGeographyTree(Dictionary<int, List<BasicGeography>> geographies, int startNodeId,
+        private BasicGeography[] GetGeographyTree (Dictionary<int, List<BasicGeography>> geographies, int startNodeId,
             int generation)
         {
             List<BasicGeography> result = new List<BasicGeography>();
@@ -228,17 +228,17 @@ namespace Swarmops.Database
             {
                 if (node.GeographyId != startNodeId)
                 {
-                    result.Add(new BasicGeography(node.GeographyId, node.ParentGeographyId, node.Name, generation + 1));
+                    result.Add (new BasicGeography (node.GeographyId, node.ParentGeographyId, node.Name, generation + 1));
 
                     // Add recursively
 
-                    BasicGeography[] children = GetGeographyTree(geographies, node.GeographyId, generation + 1);
+                    BasicGeography[] children = GetGeographyTree (geographies, node.GeographyId, generation + 1);
 
                     if (children.Length > 0)
                     {
                         foreach (BasicGeography child in children)
                         {
-                            result.Add(child);
+                            result.Add (child);
                         }
                     }
                 }
@@ -246,7 +246,7 @@ namespace Swarmops.Database
                 {
                     // The top parent is special and should be added; the others shouldn't
 
-                    result.Add(new BasicGeography(node.GeographyId, node.ParentGeographyId, node.Name, generation));
+                    result.Add (new BasicGeography (node.GeographyId, node.ParentGeographyId, node.Name, generation));
                 }
             }
 
@@ -254,37 +254,37 @@ namespace Swarmops.Database
         }
 
 
-        public BasicGeography GetGeography(int geographyId)
+        public BasicGeography GetGeography (int geographyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand(
+                DbCommand command = GetDbCommand (
                     "SELECT " + geographyFieldSequence + " WHERE GeographyId=" + geographyId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadGeographyFromDataReader(reader);
+                        return ReadGeographyFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such GeographyId: " + geographyId);
+                    throw new ArgumentException ("No such GeographyId: " + geographyId);
                 }
             }
         }
 
 
-        public BasicGeography GetGeographyByName(string geographyName)
+        public BasicGeography GetGeographyByName (string geographyName)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT " + geographyFieldSequence + " WHERE Name like '" + geographyName.Replace("'", "''") +
+                    GetDbCommand (
+                        "SELECT " + geographyFieldSequence + " WHERE Name like '" + geographyName.Replace ("'", "''") +
                         "%'",
                         connection);
 
@@ -292,18 +292,18 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadGeographyFromDataReader(reader);
+                        return ReadGeographyFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such Geography: " + geographyName);
+                    throw new ArgumentException ("No such Geography: " + geographyName);
                 }
             }
         }
 
 
-        public void SetGeographyName(int geographyId, string name)
+        public void SetGeographyName (int geographyId, string name)
         {
-            throw new NotImplementedException("Renaming geographies is not migrated to MySQL");
+            throw new NotImplementedException ("Renaming geographies is not migrated to MySQL");
             /*
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -321,7 +321,7 @@ namespace Swarmops.Database
 
         public Dictionary<int, int> GetGeographyVoterCounts()
         {
-            throw new NotImplementedException("Not Migrated to MySQL");
+            throw new NotImplementedException ("Not Migrated to MySQL");
             /*
             Dictionary<int, int> result = new Dictionary<int, int>();
 
@@ -346,10 +346,10 @@ namespace Swarmops.Database
             }*/
         }
 
-        public void CreateGeographyOfficialDesignation(int geographyId, GeographyLevel level, int countryId,
+        public void CreateGeographyOfficialDesignation (int geographyId, GeographyLevel level, int countryId,
             string designation)
         {
-            throw new NotImplementedException("Not Migrated to MySQL");
+            throw new NotImplementedException ("Not Migrated to MySQL");
             /*
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -367,30 +367,30 @@ namespace Swarmops.Database
             }*/
         }
 
-        public int GetGeographyIdFromOfficialDesignation(int countryId, GeographyLevel level, string designation)
+        public int GetGeographyIdFromOfficialDesignation (int countryId, GeographyLevel level, string designation)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "select GeographyId FROM GeographyDesignations WHERE CountryId=" + countryId +
                         " AND GeographyLevelId= " + ((int) level) + " AND Designation='" +
-                        designation.Replace("'", "''") + "'", connection);
+                        designation.Replace ("'", "''") + "'", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt32(0);
+                        return reader.GetInt32 (0);
                     }
-                    throw new ArgumentException("No such designation: " + designation);
+                    throw new ArgumentException ("No such designation: " + designation);
                 }
             }
         }
 
-        public GeographyLevel[] GetGeographyLevelsAtGeographyId(int geographyId)
+        public GeographyLevel[] GetGeographyLevelsAtGeographyId (int geographyId)
         {
             List<GeographyLevel> result = new List<GeographyLevel>();
 
@@ -399,7 +399,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "select GeographyLevelId FROM GeographyDesignations WHERE GeographyId=" +
                         geographyId, connection);
 
@@ -407,7 +407,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add((GeographyLevel) reader.GetInt32(0));
+                        result.Add ((GeographyLevel) reader.GetInt32 (0));
                     }
                 }
             }
@@ -415,7 +415,7 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        public BasicGeographyDesignation[] GetGeographyDesignationsForGeographyId(int geographyId)
+        public BasicGeographyDesignation[] GetGeographyDesignationsForGeographyId (int geographyId)
         {
             List<BasicGeographyDesignation> result = new List<BasicGeographyDesignation>();
 
@@ -424,14 +424,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + geographyDesignationFieldSequence + " WHERE GeographyId=" + geographyId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadGeographyDesignationFromDataReader(reader));
+                        result.Add (ReadGeographyDesignationFromDataReader (reader));
                     }
                 }
             }
@@ -439,7 +439,7 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        public int[] GetGeographyIdsFromLevel(int countryId, GeographyLevel level)
+        public int[] GetGeographyIdsFromLevel (int countryId, GeographyLevel level)
         {
             List<int> result = new List<int>();
 
@@ -448,7 +448,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "select GeographyId FROM GeographyDesignations WHERE GeographyLevelId=" +
                         ((int) level) + " AND CountryId=" + countryId, connection);
 
@@ -456,7 +456,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetInt32(0));
+                        result.Add (reader.GetInt32 (0));
                     }
                 }
             }
@@ -464,19 +464,19 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        public int CreateGeography(string name, int parentGeographyId)
+        public int CreateGeography (string name, int parentGeographyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateGeography", connection);
+                DbCommand command = GetDbCommand ("CreateGeography", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "name", name);
-                AddParameterWithName(command, "parentGeographyId", parentGeographyId);
+                AddParameterWithName (command, "name", name);
+                AddParameterWithName (command, "parentGeographyId", parentGeographyId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
     }

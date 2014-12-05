@@ -12,7 +12,8 @@ namespace Swarmops.Utility.BotCode
 {
     public class PressReleaseChecker
     {
-        [Obsolete("Do not call this function until it's been generalized. Don't delete, though - generalize it.", true)]
+        [Obsolete ("Do not call this function until it's been generalized. Don't delete, though - generalize it.", true)
+        ]
         public static void Run()
         {
             throw new NotImplementedException();
@@ -25,9 +26,9 @@ namespace Swarmops.Utility.BotCode
              */
         }
 
-        private static void CheckOneFeed(string readerUrl, string persistAsKey, int orgIdForTemplate)
+        private static void CheckOneFeed (string readerUrl, string persistAsKey, int orgIdForTemplate)
         {
-            string persistenceKey = String.Format("Pressrelease-Highwater-{0}", persistAsKey);
+            string persistenceKey = String.Format ("Pressrelease-Highwater-{0}", persistAsKey);
 
             DateTime highWaterMark = DateTime.MinValue;
 
@@ -37,7 +38,7 @@ namespace Swarmops.Utility.BotCode
             {
                 string highWaterMarkString = Persistence.Key[persistenceKey];
 
-                if (string.IsNullOrEmpty(highWaterMarkString))
+                if (string.IsNullOrEmpty (highWaterMarkString))
                 {
                     //Initialize highwatermark if never used
                     highWaterMark = DateTime.Now;
@@ -47,19 +48,19 @@ namespace Swarmops.Utility.BotCode
                 {
                     try
                     {
-                        highWaterMark = DateTime.Parse(highWaterMarkString);
+                        highWaterMark = DateTime.Parse (highWaterMarkString);
                     }
                     catch (Exception ex)
                     {
                         HeartBeater.Instance.SuggestRestart();
-                        throw new Exception(
+                        throw new Exception (
                             "Triggered restart. Unable to read/parse old highwater mark from database in PressReleaseChecker.Run(), from key:" +
                             persistenceKey + ", loaded string was '" + highWaterMarkString + "' expected format is " +
                             DateTime.Now, ex);
                     }
                 }
                 DateTime storedHighWaterMark = highWaterMark;
-                reader = new RssReader(readerUrl);
+                reader = new RssReader (readerUrl);
                 Rss rss = reader.Read();
 
                 foreach (RssChannelItem item in rss.Channel.Items)
@@ -67,7 +68,7 @@ namespace Swarmops.Utility.BotCode
                     // Ignore any items older than the highwater mark.
                     // Also ignore if older than two days
 
-                    if (item.PubDate < highWaterMark || item.PubDate < DateTime.Now.AddDays(-2))
+                    if (item.PubDate < highWaterMark || item.PubDate < DateTime.Now.AddDays (-2))
                     {
                         continue;
                     }
@@ -81,8 +82,8 @@ namespace Swarmops.Utility.BotCode
 
                     if (item.PubDate > storedHighWaterMark)
                     {
-                        Persistence.Key[persistenceKey] = item.PubDate.AddMinutes(2).ToString();
-                        storedHighWaterMark = item.PubDate.AddMinutes(2);
+                        Persistence.Key[persistenceKey] = item.PubDate.AddMinutes (2).ToString();
+                        storedHighWaterMark = item.PubDate.AddMinutes (2);
 
                         // Verify that it was written correctly to database. This is defensive programming to avoid a mail flood,
                         // in case we can't write to the database for some reason.
@@ -90,18 +91,18 @@ namespace Swarmops.Utility.BotCode
                         try
                         {
                             newStoredHighWaterString = Persistence.Key[persistenceKey];
-                            DateTime temp = DateTime.Parse(newStoredHighWaterString);
+                            DateTime temp = DateTime.Parse (newStoredHighWaterString);
                         }
                         catch (Exception ex)
                         {
-                            throw new Exception(
+                            throw new Exception (
                                 "Unable to commit/parse new highwater mark to database in PressReleaseChecker.Run(), loaded string was '" +
                                 newStoredHighWaterString + "'", ex);
                         }
 
-                        if (DateTime.Parse(Persistence.Key[persistenceKey]) < item.PubDate)
+                        if (DateTime.Parse (Persistence.Key[persistenceKey]) < item.PubDate)
                         {
-                            throw new Exception(
+                            throw new Exception (
                                 "Unable to commit new highwater mark to database in PressReleaseChecker.Run()");
                         }
                     }
@@ -123,23 +124,23 @@ namespace Swarmops.Utility.BotCode
                         {
                             try
                             {
-                                MediaCategory mediaCategory = MediaCategory.FromName(category.Name);
-                                categories.Add(mediaCategory);
+                                MediaCategory mediaCategory = MediaCategory.FromName (category.Name);
+                                categories.Add (mediaCategory);
 
-                                if (category.Name.StartsWith("International"))
+                                if (category.Name.StartsWith ("International"))
                                 {
                                     international = true;
                                 }
                             }
                             catch (Exception)
                             {
-                                ExceptionMail.Send(
-                                    new Exception("Unrecognized media category in press release: " + category.Name));
+                                ExceptionMail.Send (
+                                    new Exception ("Unrecognized media category in press release: " + category.Name));
                             }
                         }
                     }
 
-                    string mailText = Blog2Mail(item.Content);
+                    string mailText = Blog2Mail (item.Content);
 
                     // Create recipient list of relevant reporters
 
@@ -151,7 +152,7 @@ namespace Swarmops.Utility.BotCode
                     }
                     else
                     {
-                        reporters = Reporters.FromMediaCategories(categories);
+                        reporters = Reporters.FromMediaCategories (categories);
                     }
 
                     // Add officers if not int'l
@@ -161,7 +162,7 @@ namespace Swarmops.Utility.BotCode
 
                     if (!international)
                     {
-                        int[] officerIds = Roles.GetAllDownwardRoles(1, 1);
+                        int[] officerIds = Roles.GetAllDownwardRoles (1, 1);
                         foreach (int officerId in officerIds)
                         {
                             officerLookup[officerId] = true;
@@ -176,13 +177,13 @@ namespace Swarmops.Utility.BotCode
                     // Send press release
 
                     //TODO: hardcoded  geo ... using  World
-                    Organization org = Organization.FromIdentity(orgIdForTemplate);
+                    Organization org = Organization.FromIdentity (orgIdForTemplate);
                     Geography geo = Geography.Root;
                     PressReleaseMail pressreleasemail = new PressReleaseMail();
 
                     pressreleasemail.pSubject = item.Title;
                     pressreleasemail.pDate = DateTime.Now;
-                    pressreleasemail.pBodyContent = Blog2Mail(item.Content);
+                    pressreleasemail.pBodyContent = Blog2Mail (item.Content);
                     pressreleasemail.pOrgName = org.MailPrefixInherited;
                     if (allReporters)
                     {
@@ -194,42 +195,43 @@ namespace Swarmops.Utility.BotCode
                     }
                     else
                     {
-                        pressreleasemail.pPostedToCategories = PressReleaseMail.GetConcatenatedCategoryString(categories);
+                        pressreleasemail.pPostedToCategories =
+                            PressReleaseMail.GetConcatenatedCategoryString (categories);
                     }
 
-                    OutboundMail newMail = pressreleasemail.CreateFunctionalOutboundMail(MailAuthorType.PressService,
+                    OutboundMail newMail = pressreleasemail.CreateFunctionalOutboundMail (MailAuthorType.PressService,
                         OutboundMail.PriorityHighest, org, geo);
 
                     int recipientCount = 0;
                     foreach (Reporter recipient in reporters)
                     {
-                        if (!Formatting.ValidateEmailFormat(recipient.Email))
+                        if (!Formatting.ValidateEmailFormat (recipient.Email))
                         {
                             continue;
                         }
                         ++recipientCount;
-                        newMail.AddRecipient(recipient);
+                        newMail.AddRecipient (recipient);
                     }
                     foreach (int key in officerLookup.Keys)
                     {
-                        Person recipient = Person.FromIdentity(key);
-                        if (!Formatting.ValidateEmailFormat(recipient.Mail))
+                        Person recipient = Person.FromIdentity (key);
+                        if (!Formatting.ValidateEmailFormat (recipient.Mail))
                         {
                             continue;
                         }
                         ++recipientCount;
-                        newMail.AddRecipient(recipient, true);
+                        newMail.AddRecipient (recipient, true);
                     }
 
-                    newMail.SetRecipientCount(recipientCount);
+                    newMail.SetRecipientCount (recipientCount);
                     newMail.SetResolved();
                     newMail.SetReadyForPickup();
                 }
             }
             catch (Exception ex)
             {
-                ExceptionMail.Send(
-                    new Exception("PressReleaseChecker failed:" + ex.Message + "\r\nwhen checking " + readerUrl, ex));
+                ExceptionMail.Send (
+                    new Exception ("PressReleaseChecker failed:" + ex.Message + "\r\nwhen checking " + readerUrl, ex));
             }
             finally
             {
@@ -237,17 +239,17 @@ namespace Swarmops.Utility.BotCode
             }
         }
 
-        private static string Blog2Mail(string text)
+        private static string Blog2Mail (string text)
         {
             return text.
-                Replace("<h3>", "<h2>").
-                Replace("</h3>", "</h2>").
-                Replace("&#8220;", "\"").
-                Replace("&#8221;", "\"").
-                Replace("&#8216;", "'").
-                Replace("&#8217;", "'").
-                Replace("&#8212;", "--").
-                Replace("&#8230;", "...");
+                Replace ("<h3>", "<h2>").
+                Replace ("</h3>", "</h2>").
+                Replace ("&#8220;", "\"").
+                Replace ("&#8221;", "\"").
+                Replace ("&#8216;", "'").
+                Replace ("&#8217;", "'").
+                Replace ("&#8212;", "--").
+                Replace ("&#8230;", "...");
         }
     }
 }

@@ -17,10 +17,10 @@ namespace Swarmops.Database
 
         #region Select statements - reading data
 
-        public BasicObjectOptionalData GetObjectOptionalData(IHasIdentity forObject)
+        public BasicObjectOptionalData GetObjectOptionalData (IHasIdentity forObject)
         {
             Dictionary<ObjectOptionalDataType, string> initialData = new Dictionary<ObjectOptionalDataType, string>();
-            ObjectType objectType = GetObjectTypeForObject(forObject);
+            ObjectType objectType = GetObjectTypeForObject (forObject);
             int objectId = forObject.Identity;
 
             using (DbConnection connection = GetMySqlDbConnection())
@@ -28,7 +28,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + objectOptionalDataFieldSequence + "WHERE ObjectTypes.Name='" + objectType + "' " +
                         "AND ObjectOptionalData.ObjectId=" + objectId + ";", connection);
 
@@ -36,14 +36,14 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        string objectOptionalDataTypeString = reader.GetString(2);
-                        string data = reader.GetString(3);
+                        string objectOptionalDataTypeString = reader.GetString (2);
+                        string data = reader.GetString (3);
 
                         try
                         {
                             ObjectOptionalDataType objectOptionalDataType =
                                 (ObjectOptionalDataType)
-                                    Enum.Parse(typeof (ObjectOptionalDataType), objectOptionalDataTypeString);
+                                    Enum.Parse (typeof (ObjectOptionalDataType), objectOptionalDataTypeString);
 
                             initialData[objectOptionalDataType] = data;
                         }
@@ -53,13 +53,13 @@ namespace Swarmops.Database
                         }
                     }
 
-                    return new BasicObjectOptionalData(objectType, objectId, initialData);
+                    return new BasicObjectOptionalData (objectType, objectId, initialData);
                 }
             }
         }
 
 
-        public int[] GetObjectsByOptionalData(ObjectType objectType, ObjectOptionalDataType dataType, string data)
+        public int[] GetObjectsByOptionalData (ObjectType objectType, ObjectOptionalDataType dataType, string data)
         {
             List<int> objectIds = new List<int>();
 
@@ -68,16 +68,16 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + objectOptionalDataFieldSequence + "WHERE ObjectTypes.Name='" + objectType + "' " +
                         "AND ObjectOptionalDataTypes.Name='" + dataType + "' " +
-                        "AND ObjectOptionalData.Data='" + data.Replace("'", "''") + "';", connection);
+                        "AND ObjectOptionalData.Data='" + data.Replace ("'", "''") + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        objectIds.Add(reader.GetInt32(1));
+                        objectIds.Add (reader.GetInt32 (1));
                     }
 
                     return objectIds.ToArray();
@@ -86,7 +86,7 @@ namespace Swarmops.Database
         }
 
 
-        private static ObjectType GetObjectTypeForObject(IHasIdentity objectToIdentify)
+        private static ObjectType GetObjectTypeForObject (IHasIdentity objectToIdentify)
         {
             //string objectTypeString = objectToIdentify.GetType().ToString();
 
@@ -100,7 +100,7 @@ namespace Swarmops.Database
             // At this point, we should be able to cast the string to an ObjectType enum
             try
             {
-                return (ObjectType) Enum.Parse(typeof (ObjectType), objectTypeString);
+                return (ObjectType) Enum.Parse (typeof (ObjectType), objectTypeString);
             }
             catch
             {
@@ -110,7 +110,7 @@ namespace Swarmops.Database
                 {
                     try
                     {
-                        return (ObjectType) Enum.Parse(typeof (ObjectType), parentType.Name);
+                        return (ObjectType) Enum.Parse (typeof (ObjectType), parentType.Name);
                     }
                     catch
                     {
@@ -118,27 +118,27 @@ namespace Swarmops.Database
                     }
                 }
             }
-            throw new InvalidCastException("GetObjectTypeForObject could not identify object of type " +
-                                           objectToIdentify.GetType().Name);
+            throw new InvalidCastException ("GetObjectTypeForObject could not identify object of type " +
+                                            objectToIdentify.GetType().Name);
         }
 
         #endregion
 
         #region Stored procedures for modifying data
 
-        public void SetObjectOptionalData(IHasIdentity thisObject, ObjectOptionalDataType dataType, string data)
+        public void SetObjectOptionalData (IHasIdentity thisObject, ObjectOptionalDataType dataType, string data)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetObjectOptionalData", connection);
+                DbCommand command = GetDbCommand ("SetObjectOptionalData", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "objectType", GetObjectTypeForObject(thisObject).ToString());
-                AddParameterWithName(command, "objectId", thisObject.Identity);
-                AddParameterWithName(command, "objectOptionalDataType", dataType.ToString());
-                AddParameterWithName(command, "data", data);
+                AddParameterWithName (command, "objectType", GetObjectTypeForObject (thisObject).ToString());
+                AddParameterWithName (command, "objectId", thisObject.Identity);
+                AddParameterWithName (command, "objectOptionalDataType", dataType.ToString());
+                AddParameterWithName (command, "data", data);
 
                 command.ExecuteNonQuery();
             }

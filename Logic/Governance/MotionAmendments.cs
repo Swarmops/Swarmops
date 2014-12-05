@@ -6,14 +6,14 @@ namespace Swarmops.Logic.Governance
 {
     public class MotionAmendments : PluralBase<MotionAmendments, MotionAmendment, BasicMotionAmendment>
     {
-        public static MotionAmendments ForMotion(Motion motion)
+        public static MotionAmendments ForMotion (Motion motion)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetMotionAmendments(motion));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetMotionAmendments (motion));
         }
 
-        public static MotionAmendments ForMeeting(Meeting meeting)
+        public static MotionAmendments ForMeeting (Meeting meeting)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetMotionAmendmentsForMeeting(meeting.Identity));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetMotionAmendmentsForMeeting (meeting.Identity));
         }
     }
 }

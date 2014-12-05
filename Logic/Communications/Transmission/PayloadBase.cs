@@ -11,35 +11,35 @@ namespace Swarmops.Logic.Communications.Transmission
     {
         public string ToXml()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof (T));
+            XmlSerializer serializer = new XmlSerializer (typeof (T));
 
             MemoryStream stream = new MemoryStream();
-            serializer.Serialize(stream, this);
+            serializer.Serialize (stream, this);
 
             byte[] xmlBytes = stream.GetBuffer();
-            return Encoding.UTF8.GetString(xmlBytes);
+            return Encoding.UTF8.GetString (xmlBytes);
         }
 
-        public static T FromXml(string xml)
+        public static T FromXml (string xml)
         {
             // Compensate for stupid Mono encoding bugs
 
-            if (xml.StartsWith("?"))
+            if (xml.StartsWith ("?"))
             {
-                xml = xml.Substring(1);
+                xml = xml.Substring (1);
             }
 
-            xml = xml.Replace("&#x0;", "");
-            xml = xml.Replace("\x00", "");
+            xml = xml.Replace ("&#x0;", "");
+            xml = xml.Replace ("\x00", "");
 
-            XmlSerializer serializer = new XmlSerializer(typeof (T));
+            XmlSerializer serializer = new XmlSerializer (typeof (T));
 
             MemoryStream stream = new MemoryStream();
-            byte[] xmlBytes = Encoding.UTF8.GetBytes(xml);
-            stream.Write(xmlBytes, 0, xmlBytes.Length);
+            byte[] xmlBytes = Encoding.UTF8.GetBytes (xml);
+            stream.Write (xmlBytes, 0, xmlBytes.Length);
 
             stream.Position = 0;
-            T result = (T) serializer.Deserialize(stream);
+            T result = (T) serializer.Deserialize (stream);
             stream.Close();
 
             return result;

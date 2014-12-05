@@ -14,62 +14,63 @@ namespace Swarmops.Logic.Financial
     {
         #region Construction and Creation
 
-        private FinancialTransaction(BasicFinancialTransaction basic)
-            : base(basic)
+        private FinancialTransaction (BasicFinancialTransaction basic)
+            : base (basic)
         {
         }
 
-        public static FinancialTransaction FromBasic(BasicFinancialTransaction basic)
+        public static FinancialTransaction FromBasic (BasicFinancialTransaction basic)
         {
-            return new FinancialTransaction(basic);
+            return new FinancialTransaction (basic);
         }
 
-        public static FinancialTransaction FromIdentity(int financialTransactionId)
+        public static FinancialTransaction FromIdentity (int financialTransactionId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialTransaction(financialTransactionId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetFinancialTransaction (financialTransactionId));
         }
 
-        public static FinancialTransaction FromIdentityAggressive(int financialTransactionId)
+        public static FinancialTransaction FromIdentityAggressive (int financialTransactionId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForWriting().GetFinancialTransaction(financialTransactionId));
-                // ForWriting intentional - bypass replication lag
+            return FromBasic (SwarmDb.GetDatabaseForWriting().GetFinancialTransaction (financialTransactionId));
+            // ForWriting intentional - bypass replication lag
         }
 
-        public static FinancialTransaction FromDependency(IHasIdentity dependency)
+        public static FinancialTransaction FromDependency (IHasIdentity dependency)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialTransactionFromDependency(dependency));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetFinancialTransactionFromDependency (dependency));
         }
 
 
-        public static FinancialTransaction FromImportKey(Organization organization, string importKey)
+        public static FinancialTransaction FromImportKey (Organization organization, string importKey)
         {
             return
-                FromBasic(SwarmDb.GetDatabaseForReading()
-                    .GetFinancialTransactionFromImportKey(organization.Identity, importKey));
+                FromBasic (SwarmDb.GetDatabaseForReading()
+                    .GetFinancialTransactionFromImportKey (organization.Identity, importKey));
         }
 
 
-        public static FinancialTransaction ImportWithStub(int organizationId, DateTime dateTime, int financialAccountId,
+        public static FinancialTransaction ImportWithStub (int organizationId, DateTime dateTime, int financialAccountId,
             Int64 amountCents, string description, string importHash, int personId)
         {
-            int transactionId = SwarmDb.GetDatabaseForWriting().CreateFinancialTransactionStub(organizationId, dateTime,
-                financialAccountId, amountCents,
-                description, importHash, personId);
+            int transactionId = SwarmDb.GetDatabaseForWriting()
+                .CreateFinancialTransactionStub (organizationId, dateTime,
+                    financialAccountId, amountCents,
+                    description, importHash, personId);
 
             if (transactionId == 0)
             {
                 return null; // This was a dupe -- already imported, as determined by ImportHash
             }
 
-            return FromIdentityAggressive(transactionId);
+            return FromIdentityAggressive (transactionId);
         }
 
 
-        public static FinancialTransaction Create(int organizationId, DateTime dateTime, string description)
+        public static FinancialTransaction Create (int organizationId, DateTime dateTime, string description)
         {
             int transactionId = SwarmDb.GetDatabaseForWriting()
-                .CreateFinancialTransaction(organizationId, dateTime, description);
-            return FromIdentityAggressive(transactionId);
+                .CreateFinancialTransaction (organizationId, dateTime, description);
+            return FromIdentityAggressive (transactionId);
         }
 
         #endregion
@@ -79,17 +80,17 @@ namespace Swarmops.Logic.Financial
             get
             {
                 return
-                    FinancialTransactionRows.FromArray(
-                        SwarmDb.GetDatabaseForReading().GetFinancialTransactionRows(Identity));
+                    FinancialTransactionRows.FromArray (
+                        SwarmDb.GetDatabaseForReading().GetFinancialTransactionRows (Identity));
             }
         }
 
         public Documents Documents
         {
-            get { return Documents.ForObject(this); }
+            get { return Documents.ForObject (this); }
         }
 
-        public Int64 this[FinancialAccount account]
+        public Int64 this [FinancialAccount account]
         {
             get
             {
@@ -115,7 +116,7 @@ namespace Swarmops.Logic.Financial
             set
             {
                 base.Description = value;
-                SwarmDb.GetDatabaseForWriting().SetFinancialTransactionDescription(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetFinancialTransactionDescription (Identity, value);
             }
         }
 
@@ -125,7 +126,7 @@ namespace Swarmops.Logic.Financial
             {
                 try
                 {
-                    return FromDependency(this);
+                    return FromDependency (this);
                 }
                 catch (ArgumentException)
                 {
@@ -138,8 +139,8 @@ namespace Swarmops.Logic.Financial
         {
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetFinancialTransactionDependency(
-                    Identity, GetFinancialDependencyType(value), value.Identity);
+                SwarmDb.GetDatabaseForWriting().SetFinancialTransactionDependency (
+                    Identity, GetFinancialDependencyType (value), value.Identity);
             }
             get
             {
@@ -150,7 +151,7 @@ namespace Swarmops.Logic.Financial
                 FinancialDependencyType dependencyType;
                 int foreignId;
 
-                SwarmDb.GetDatabaseForReading().GetFinancialTransactionDependency(Identity, out dependencyType,
+                SwarmDb.GetDatabaseForReading().GetFinancialTransactionDependency (Identity, out dependencyType,
                     out foreignId);
 
                 if (foreignId == 0)
@@ -160,59 +161,59 @@ namespace Swarmops.Logic.Financial
 
                 if (dependencyType == FinancialDependencyType.ExpenseClaim)
                 {
-                    return ExpenseClaim.FromIdentity(foreignId);
+                    return ExpenseClaim.FromIdentity (foreignId);
                 }
 
                 if (dependencyType == FinancialDependencyType.InboundInvoice)
                 {
-                    return InboundInvoice.FromIdentity(foreignId);
+                    return InboundInvoice.FromIdentity (foreignId);
                 }
 
                 if (dependencyType == FinancialDependencyType.OutboundInvoice)
                 {
-                    return OutboundInvoice.FromIdentity(foreignId);
+                    return OutboundInvoice.FromIdentity (foreignId);
                 }
 
                 if (dependencyType == FinancialDependencyType.Salary)
                 {
-                    return Salary.FromIdentity(foreignId);
+                    return Salary.FromIdentity (foreignId);
                 }
 
                 if (dependencyType == FinancialDependencyType.Payout)
                 {
-                    return Payout.FromIdentity(foreignId);
+                    return Payout.FromIdentity (foreignId);
                 }
 
                 if (dependencyType == FinancialDependencyType.PaymentGroup)
                 {
-                    return PaymentGroup.FromIdentity(foreignId);
+                    return PaymentGroup.FromIdentity (foreignId);
                 }
 
                 if (dependencyType == FinancialDependencyType.FinancialTransaction)
                 {
-                    return FromIdentity(foreignId);
+                    return FromIdentity (foreignId);
                 }
 
-                throw new NotImplementedException("Unimplemented dependency type: " + dependencyType);
+                throw new NotImplementedException ("Unimplemented dependency type: " + dependencyType);
             }
         }
 
-        [Obsolete("Do not use double-precision methods. They leak cents. Use AddRow (FinancialAccount, Int64, Person).",
+        [Obsolete ("Do not use double-precision methods. They leak cents. Use AddRow (FinancialAccount, Int64, Person).",
             true)]
-        public void AddRow(FinancialAccount account, double amount, Person person)
+        public void AddRow (FinancialAccount account, double amount, Person person)
         {
-            AddRow(account, (Int64) (amount*100), person);
+            AddRow (account, (Int64) (amount*100), person);
         }
 
-        public void AddRow(FinancialAccount account, Int64 amountCents, Person person)
+        public void AddRow (FinancialAccount account, Int64 amountCents, Person person)
         {
-            AddRow(account.Identity, amountCents, person != null ? person.Identity : 0);
+            AddRow (account.Identity, amountCents, person != null ? person.Identity : 0);
         }
 
-        private void AddRow(int financialAccountId, Int64 amountCents, int personId)
+        private void AddRow (int financialAccountId, Int64 amountCents, int personId)
         {
             if (DateTime.Year <=
-                FinancialAccount.FromIdentity(financialAccountId).Organization.Parameters.FiscalBooksClosedUntilYear)
+                FinancialAccount.FromIdentity (financialAccountId).Organization.Parameters.FiscalBooksClosedUntilYear)
             {
                 // Recurse down into continuation transactions to write row in first nonclosed year
 
@@ -222,42 +223,42 @@ namespace Swarmops.Logic.Financial
                 {
                     // No continuation; create one
 
-                    transactionContinued = Create(OrganizationId, DateTime.Now,
+                    transactionContinued = Create (OrganizationId, DateTime.Now,
                         "Continued Tx #" + Identity);
-                    transactionContinued.AddRow(financialAccountId, amountCents, personId);
+                    transactionContinued.AddRow (financialAccountId, amountCents, personId);
                     transactionContinued.Dependency = this;
                 }
                 else
                 {
                     // Recurse
 
-                    transactionContinued.AddRow(financialAccountId, amountCents, personId);
+                    transactionContinued.AddRow (financialAccountId, amountCents, personId);
                 }
 
                 return;
             }
 
             SwarmDb.GetDatabaseForWriting()
-                .CreateFinancialTransactionRow(Identity, financialAccountId, amountCents, personId);
+                .CreateFinancialTransactionRow (Identity, financialAccountId, amountCents, personId);
         }
 
-        public void AddDocument(string serverFileName, string originalFileName, Int64 fileSize, string description,
+        public void AddDocument (string serverFileName, string originalFileName, Int64 fileSize, string description,
             Person uploader)
         {
             // Determine a new client file name
 
-            int indexOfLastPeriod = originalFileName.LastIndexOf('.');
-            string extension = originalFileName.Substring(indexOfLastPeriod).ToLower();
+            int indexOfLastPeriod = originalFileName.LastIndexOf ('.');
+            string extension = originalFileName.Substring (indexOfLastPeriod).ToLower();
             string newClientFileName = "transaction_" + Identity + "_document_" +
-                                       DateTime.Now.ToString("yyyyMMddHHmmss") + extension;
+                                       DateTime.Now.ToString ("yyyyMMddHHmmss") + extension;
 
             // Create the document
 
-            Document.Create(serverFileName, newClientFileName, fileSize, description, this, uploader);
+            Document.Create (serverFileName, newClientFileName, fileSize, description, this, uploader);
         }
 
 
-        private static FinancialDependencyType GetFinancialDependencyType(IHasIdentity foreignObject)
+        private static FinancialDependencyType GetFinancialDependencyType (IHasIdentity foreignObject)
         {
             if (foreignObject is ExpenseClaim)
             {
@@ -288,21 +289,21 @@ namespace Swarmops.Logic.Financial
                 return FinancialDependencyType.FinancialTransaction;
             }
 
-            throw new NotImplementedException("Unidentified dependency encountered in GetFinancialDependencyType:" +
-                                              foreignObject.GetType());
+            throw new NotImplementedException ("Unidentified dependency encountered in GetFinancialDependencyType:" +
+                                               foreignObject.GetType());
         }
 
 
-        public void CreateTag(FinancialTransactionTagType tagType, Person creatingPerson)
+        public void CreateTag (FinancialTransactionTagType tagType, Person creatingPerson)
         {
             // TODO: Verify that there isn't already a tag in this set in the transaction, and if so, delete it first
 
-            SwarmDb.GetDatabaseForWriting().CreateFinancialTransactionTag(Identity, tagType.Identity);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialTransactionTag (Identity, tagType.Identity);
 
             // TODO: Log that the tag was added (and by whom?)
         }
 
-        public FinancialTransactionTagType GetTag(FinancialTransactionTagSet tagSet)
+        public FinancialTransactionTagType GetTag (FinancialTransactionTagSet tagSet)
         {
             // We're lazy: we're getting ALL tags and picking out the correct one. It's a minimum of overhead given that
             // there should be at most five records in the most advanced scenarios, and this is cheaper than doing it
@@ -310,7 +311,7 @@ namespace Swarmops.Logic.Financial
 
             // Possible todo: cache tags (it's likely there are several calls in a row).
 
-            FinancialTransactionTagTypes tagTypes = FinancialTransactionTagTypes.ForTransaction(this);
+            FinancialTransactionTagTypes tagTypes = FinancialTransactionTagTypes.ForTransaction (this);
 
             foreach (FinancialTransactionTagType tagType in tagTypes)
             {
@@ -326,7 +327,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public bool RecalculateTransaction(Dictionary<int, Int64> nominalTransaction, Person loggingPerson)
+        public bool RecalculateTransaction (Dictionary<int, Int64> nominalTransaction, Person loggingPerson)
         {
             // TODO: Update dimension 2 with dimension 1 P&L accounts as template
 
@@ -343,7 +344,7 @@ namespace Swarmops.Logic.Financial
 
             foreach (FinancialTransactionRow row in Rows)
             {
-                if (!currentTransaction.ContainsKey(row.FinancialAccountId))
+                if (!currentTransaction.ContainsKey (row.FinancialAccountId))
                 {
                     currentTransaction[row.FinancialAccountId] = 0;
                 }
@@ -355,8 +356,8 @@ namespace Swarmops.Logic.Financial
 
             if (continuedTransaction != null)
             {
-                continuedTransaction.AddContinuedTransactionsToLookup(currentTransaction);
-                    // Recurses to all continued transactions
+                continuedTransaction.AddContinuedTransactionsToLookup (currentTransaction);
+                // Recurses to all continued transactions
             }
 
             // Step 2: create an image of what the transaction SHOULD look like with changes.
@@ -367,7 +368,7 @@ namespace Swarmops.Logic.Financial
 
             foreach (int accountId in currentTransaction.Keys)
             {
-                if (!nominalTransaction.ContainsKey(accountId))
+                if (!nominalTransaction.ContainsKey (accountId))
                 {
                     nominalTransaction[accountId] = 0;
                 }
@@ -375,7 +376,7 @@ namespace Swarmops.Logic.Financial
 
             foreach (int accountId in nominalTransaction.Keys)
             {
-                if (!currentTransaction.ContainsKey(accountId))
+                if (!currentTransaction.ContainsKey (accountId))
                 {
                     currentTransaction[accountId] = 0;
                 }
@@ -388,7 +389,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (currentTransaction[accountId] != nominalTransaction[accountId])
                 {
-                    AddRow(accountId, nominalTransaction[accountId] - currentTransaction[accountId],
+                    AddRow (accountId, nominalTransaction[accountId] - currentTransaction[accountId],
                         loggingPerson == null ? 0 : loggingPerson.Identity);
                     changedTransaction = true;
                 }
@@ -400,18 +401,18 @@ namespace Swarmops.Logic.Financial
             return changedTransaction;
         }
 
-        private void AddContinuedTransactionsToLookup(Dictionary<int, Int64> currentTransactionData)
+        private void AddContinuedTransactionsToLookup (Dictionary<int, Int64> currentTransactionData)
         {
             FinancialTransaction continuedTransaction = ContinuedTransaction;
 
             if (continuedTransaction != null)
             {
-                continuedTransaction.AddContinuedTransactionsToLookup(currentTransactionData);
+                continuedTransaction.AddContinuedTransactionsToLookup (currentTransactionData);
             }
 
             foreach (FinancialTransactionRow row in Rows)
             {
-                if (!currentTransactionData.ContainsKey(row.FinancialAccountId))
+                if (!currentTransactionData.ContainsKey (row.FinancialAccountId))
                 {
                     currentTransactionData[row.FinancialAccountId] = 0;
                 }

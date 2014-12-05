@@ -12,7 +12,7 @@ namespace Swarmops.Database
 
         #region Select statements - reading data
 
-        public int GetOrganizationFinancialAccountId(int organizationId,
+        public int GetOrganizationFinancialAccountId (int organizationId,
             OrganizationFinancialAccountType organizationFinancialAccountType)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -20,7 +20,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + organizationFinancialAccountsDataFieldSequence +
                         "WHERE OrganizationFinancialAccountTypes.Name='" + organizationFinancialAccountType + "' " +
                         "AND OrganizationFinancialAccounts.Organizationid=" + organizationId + ";", connection);
@@ -31,7 +31,7 @@ namespace Swarmops.Database
                     {
                         // account Id is third in select list, just return it
 
-                        return reader.GetInt32(2);
+                        return reader.GetInt32 (2);
                     }
 
                     // TODO: Throw instead if requested account not found?
@@ -109,19 +109,19 @@ namespace Swarmops.Database
 
         #region Stored procedures for modifying data
 
-        public void SetOrganizationFinancialAccountId(int organizationId, OrganizationFinancialAccountType accountType,
+        public void SetOrganizationFinancialAccountId (int organizationId, OrganizationFinancialAccountType accountType,
             int financialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetOrganizationFinancialAccount", connection);
+                DbCommand command = GetDbCommand ("SetOrganizationFinancialAccount", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "organizationFinancialAccountTypeName", accountType.ToString());
-                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "organizationFinancialAccountTypeName", accountType.ToString());
+                AddParameterWithName (command, "financialAccountId", financialAccountId);
 
                 command.ExecuteNonQuery();
             }

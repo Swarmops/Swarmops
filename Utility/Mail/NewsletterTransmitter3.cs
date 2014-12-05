@@ -14,10 +14,10 @@ namespace Swarmops.Utility.Mail
 {
     public class NewsletterTransmitter3
     {
-        private static QuotedPrintable qpUTF8 = new QuotedPrintable(Encoding.UTF8);
-        private static readonly QuotedPrintable qp8859 = new QuotedPrintable(Encoding.GetEncoding("ISO-8859-1"));
+        private static QuotedPrintable qpUTF8 = new QuotedPrintable (Encoding.UTF8);
+        private static readonly QuotedPrintable qp8859 = new QuotedPrintable (Encoding.GetEncoding ("ISO-8859-1"));
 
-        public static void Send(Newsletter newsletter, string forumUrl)
+        public static void Send (Newsletter newsletter, string forumUrl)
         {
             string directory = "content" + Path.DirectorySeparatorChar + "mailtemplate-" +
                                newsletter.TemplateId;
@@ -25,7 +25,7 @@ namespace Swarmops.Utility.Mail
             string htmlTemplate = "Failed to read HTML mail template.";
 
             using (
-                StreamReader reader = new StreamReader(directory + Path.DirectorySeparatorChar + "template.html",
+                StreamReader reader = new StreamReader (directory + Path.DirectorySeparatorChar + "template.html",
                     Encoding.Default))
             {
                 htmlTemplate = reader.ReadToEnd();
@@ -41,8 +41,8 @@ namespace Swarmops.Utility.Mail
 
             // assume Swedish
 
-            CultureInfo culture = new CultureInfo("sv-SE");
-            string date = DateTime.Today.ToString("d MMMM yyyy", culture);
+            CultureInfo culture = new CultureInfo ("sv-SE");
+            string date = DateTime.Today.ToString ("d MMMM yyyy", culture);
 
 
             // PREPARE HTML VIEW:
@@ -50,36 +50,36 @@ namespace Swarmops.Utility.Mail
             // Write in the title, intro, and body
 
             htmlTemplate = htmlTemplate.
-                Replace("%TITLE%", HttpUtility.HtmlEncode(newsletter.Title.ToUpper())).
-                Replace("%title%", HttpUtility.HtmlEncode(newsletter.Title)).
-                Replace("%date%", HttpUtility.HtmlEncode(date)).
-                Replace("%DATE%", HttpUtility.HtmlEncode(date.ToUpper())).
-                Replace("%forumposturl%", forumUrl);
+                Replace ("%TITLE%", HttpUtility.HtmlEncode (newsletter.Title.ToUpper())).
+                Replace ("%title%", HttpUtility.HtmlEncode (newsletter.Title)).
+                Replace ("%date%", HttpUtility.HtmlEncode (date)).
+                Replace ("%DATE%", HttpUtility.HtmlEncode (date.ToUpper())).
+                Replace ("%forumposturl%", forumUrl);
 
             string body = newsletter.Body;
 
             body = body.
-                Replace("<", "({[(").
-                Replace(">", ")}])").
-                Replace("\"", "quotQUOTquot");
+                Replace ("<", "({[(").
+                Replace (">", ")}])").
+                Replace ("\"", "quotQUOTquot");
 
-            body = HttpUtility.HtmlEncode(body);
+            body = HttpUtility.HtmlEncode (body);
 
             body = body.
-                Replace("({[(", "<").
-                Replace(")}])", ">").
-                Replace("quotQUOTquot", "\"").
-                Replace("&amp;#", "&#");
+                Replace ("({[(", "<").
+                Replace (")}])", ">").
+                Replace ("quotQUOTquot", "\"").
+                Replace ("&amp;#", "&#");
 
-            htmlTemplate = htmlTemplate.Replace("%body%", body);
+            htmlTemplate = htmlTemplate.Replace ("%body%", body);
 
             // Embed any inline images directly into the message
 
-            string newsletterIdentifier = DateTime.Now.ToString("yyyyMMddhhMMssfff") + "@piratpartiet.se";
+            string newsletterIdentifier = DateTime.Now.ToString ("yyyyMMddhhMMssfff") + "@piratpartiet.se";
 
             // TODO: Read the replacements from a config file
 
-            htmlTemplate = htmlTemplate.Replace("header-pp-logo.png", "cid:pplogo" + newsletterIdentifier);
+            htmlTemplate = htmlTemplate.Replace ("header-pp-logo.png", "cid:pplogo" + newsletterIdentifier);
 
 
             /*
@@ -98,8 +98,8 @@ namespace Swarmops.Utility.Mail
 
             // MemoryStream memStream = new MemoryStream();
 
-            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(htmlTemplate,
-                new ContentType(
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString (htmlTemplate,
+                new ContentType (
                     MediaTypeNames.Text.Html));
             htmlView.TransferEncoding = TransferEncoding.Base64;
 
@@ -188,16 +188,16 @@ namespace Swarmops.Utility.Mail
 
                 try
                 {
-                    SmtpClient client = new SmtpClient(Config.SmtpHost, Config.SmtpPort);
+                    SmtpClient client = new SmtpClient (Config.SmtpHost, Config.SmtpPort);
                     client.Credentials = null;
 
-                    MailMessage message = new MailMessage(
-                        new MailAddress(newsletter.SenderAddress, qp8859.EncodeMailHeaderString(newsletter.SenderName),
-                            Encoding.GetEncoding("ISO-8859-1")),
-                        new MailAddress(recipient.Mail, qp8859.EncodeMailHeaderString(recipient.Name),
-                            Encoding.GetEncoding("ISO-8859-1")));
+                    MailMessage message = new MailMessage (
+                        new MailAddress (newsletter.SenderAddress, qp8859.EncodeMailHeaderString (newsletter.SenderName),
+                            Encoding.GetEncoding ("ISO-8859-1")),
+                        new MailAddress (recipient.Mail, qp8859.EncodeMailHeaderString (recipient.Name),
+                            Encoding.GetEncoding ("ISO-8859-1")));
 
-                    message.Subject = "Piratpartiet: Nyhetsbrev " + DateTime.Today.ToString("yyyy-MM-dd"); // HACK
+                    message.Subject = "Piratpartiet: Nyhetsbrev " + DateTime.Today.ToString ("yyyy-MM-dd"); // HACK
 
                     message.Body = htmlTemplate;
                     message.BodyEncoding = Encoding.ASCII;
@@ -205,7 +205,7 @@ namespace Swarmops.Utility.Mail
 
                     // COMPENSATE FOR MONO BUG -- put logo online instead of attached
 
-                    message.Body = message.Body.Replace("cid:pplogo" + newsletterIdentifier,
+                    message.Body = message.Body.Replace ("cid:pplogo" + newsletterIdentifier,
                         "http://docs.piratpartiet.se/banners/newsletter-banner-pp-logo.png");
 
                     /*
@@ -226,12 +226,12 @@ namespace Swarmops.Utility.Mail
                     {
                         try
                         {
-                            client.Send(message);
+                            client.Send (message);
                             successOrPermanentFail = true;
                         }
                         catch (SmtpException e)
                         {
-                            if (!(e.ToString().StartsWith("System.Net.Mail.SmtpException: 4")))
+                            if (!(e.ToString().StartsWith ("System.Net.Mail.SmtpException: 4")))
                             {
                                 // This is NOT a temporary error (SMTP 4xx). Fail.
 
@@ -241,7 +241,7 @@ namespace Swarmops.Utility.Mail
 
                             // Otherwise, sleep for a while and try again.
 
-                            Thread.Sleep(1000);
+                            Thread.Sleep (1000);
                         }
                     }
 
@@ -250,8 +250,8 @@ namespace Swarmops.Utility.Mail
                 catch (Exception e)
                 {
                     //Console.WriteLine("FAIL! <" + recipient.Email + ">");
-                    ExceptionMail.Send(
-                        new Exception(
+                    ExceptionMail.Send (
+                        new Exception (
                             "Error sending mail to " + recipient.Name + " (#" + recipient.Identity + ") <" +
                             recipient.Mail + ">:", e));
                 }

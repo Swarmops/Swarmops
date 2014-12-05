@@ -18,15 +18,15 @@ namespace Swarmops.Basic.Types
 
         #endregion
 
-        public BasicMedium(int mediumId, string name, PoliticalAffiliation politicalAffiliation)
+        public BasicMedium (int mediumId, string name, PoliticalAffiliation politicalAffiliation)
         {
             this.mediumId = mediumId;
             this.name = name;
             this.politicalAffiliation = politicalAffiliation;
         }
 
-        public BasicMedium(int mediumId, string name)
-            : this(mediumId, name, PoliticalAffiliation.NotPolitical)
+        public BasicMedium (int mediumId, string name)
+            : this (mediumId, name, PoliticalAffiliation.NotPolitical)
         {
         }
 

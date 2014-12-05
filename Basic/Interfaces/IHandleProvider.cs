@@ -5,11 +5,11 @@ namespace Swarmops.Basic.Interfaces
 {
     public interface IHandleProvider
     {
-        string GetPersonHandle(int personId);
-        void SetPersonHandle(int personId, string newHandle);
-        HandleErrorType CanSetHandle(string newHandle);
+        string GetPersonHandle (int personId);
+        void SetPersonHandle (int personId, string newHandle);
+        HandleErrorType CanSetHandle (string newHandle);
 
-        int GetPersonByHandle(string handle);
+        int GetPersonByHandle (string handle);
     }
 }
 
@@ -31,7 +31,7 @@ namespace Swarmops.Basic.Exceptions
         private readonly string attemptedHandle;
         private readonly HandleErrorType errorType;
 
-        public HandleException(string attemptedHandle, HandleErrorType errorType)
+        public HandleException (string attemptedHandle, HandleErrorType errorType)
         {
             this.attemptedHandle = attemptedHandle;
             this.errorType = errorType;

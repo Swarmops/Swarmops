@@ -7,7 +7,7 @@ namespace Swarmops.Basic.Types.Financial
     /// </summary>
     public class BasicFinancialDependency
     {
-        public BasicFinancialDependency(int objectId, FinancialDependencyType dependencyType, int foreignId)
+        public BasicFinancialDependency (int objectId, FinancialDependencyType dependencyType, int foreignId)
         {
             ObjectId = objectId;
             DependencyType = dependencyType;

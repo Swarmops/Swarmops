@@ -8,12 +8,12 @@ namespace Swarmops
     /// </summary>
     public class MD5
     {
-        public static string Hash(string input)
+        public static string Hash (string input)
         {
-            byte[] data = Encoding.GetEncoding(1252).GetBytes(input);
+            byte[] data = Encoding.GetEncoding (1252).GetBytes (input);
 
             System.Security.Cryptography.MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] hash = md5.ComputeHash(data);
+            byte[] hash = md5.ComputeHash (data);
 
             // Write the resulting hash to a string of hex values.
 
@@ -21,7 +21,7 @@ namespace Swarmops
 
             foreach (byte oneByte in hash)
             {
-                result.Append(oneByte.ToString("X02") + " ");
+                result.Append (oneByte.ToString ("X02") + " ");
             }
 
             return result.ToString().TrimEnd();

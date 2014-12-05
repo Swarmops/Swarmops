@@ -8,13 +8,13 @@ namespace Swarmops.Logic.Communications
     /// </summary>
     public class OutboundCommTransmitException : Exception
     {
-        public OutboundCommTransmitException(string description) : base(description)
+        public OutboundCommTransmitException (string description) : base (description)
         {
             Description = description;
         }
 
-        public OutboundCommTransmitException(string description, Exception innerException)
-            : base(description, innerException)
+        public OutboundCommTransmitException (string description, Exception innerException)
+            : base (description, innerException)
         {
             Description = description;
         }

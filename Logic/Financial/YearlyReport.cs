@@ -18,7 +18,7 @@ namespace Swarmops.Logic.Financial
         private Dictionary<int, Int64>[] _treeLookups;
         private Dictionary<int, List<FinancialAccount>> _treeMap;
 
-        public static YearlyReport Create(Organization organization, int year, FinancialAccountType accountType)
+        public static YearlyReport Create (Organization organization, int year, FinancialAccountType accountType)
         {
             YearlyReport report = new YearlyReport();
             report.Organization = organization;
@@ -27,7 +27,7 @@ namespace Swarmops.Logic.Financial
 
             // Get accounts
 
-            FinancialAccounts accounts = FinancialAccounts.ForOrganization(organization, accountType);
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization (organization, accountType);
 
             // Remove unwanted accounts
 
@@ -39,7 +39,7 @@ namespace Swarmops.Logic.Financial
 
                 if (account.Identity == resultsAccount.Identity)
                 {
-                    accounts.Remove(account);
+                    accounts.Remove (account);
                     break;
                 }
             }
@@ -50,24 +50,24 @@ namespace Swarmops.Logic.Financial
 
             foreach (FinancialAccount account in accounts)
             {
-                if (!report._treeMap.ContainsKey(account.ParentIdentity))
+                if (!report._treeMap.ContainsKey (account.ParentIdentity))
                 {
                     report._treeMap[account.ParentIdentity] = new List<FinancialAccount>();
                 }
 
-                report._treeMap[account.ParentIdentity].Add(account);
+                report._treeMap[account.ParentIdentity].Add (account);
             }
 
 
             FinancialAccounts orderedList = new FinancialAccounts();
-                // This list is guaranteed to have parents before children
+            // This list is guaranteed to have parents before children
 
-            report.PopulateOrderedList(orderedList, 0); // recursively add nodes parents-first
-            report.PopulateLookups(orderedList); // populate the lookup tables for results per account
+            report.PopulateOrderedList (orderedList, 0); // recursively add nodes parents-first
+            report.PopulateLookups (orderedList); // populate the lookup tables for results per account
             report.PopulateTotals();
 
             report.ReportLines = new List<YearlyReportLine>();
-            report.RecurseAddLines(report.ReportLines, 0);
+            report.RecurseAddLines (report.ReportLines, 0);
 
             // Aggregate accounts, if appropriate
 
@@ -105,8 +105,8 @@ namespace Swarmops.Logic.Financial
                 remapLookup[FinancialAccountType.Asset] = assetLine;
                 remapLookup[FinancialAccountType.Debt] = debtLine;
 
-                newRootLevel.Add(assetLine);
-                newRootLevel.Add(debtLine);
+                newRootLevel.Add (assetLine);
+                newRootLevel.Add (debtLine);
             }
             else if (this._accountType == FinancialAccountType.Result)
             {
@@ -117,12 +117,12 @@ namespace Swarmops.Logic.Financial
                 remapLookup[FinancialAccountType.Income] = incomeLine;
                 remapLookup[FinancialAccountType.Cost] = costLine;
 
-                newRootLevel.Add(incomeLine);
-                newRootLevel.Add(costLine);
+                newRootLevel.Add (incomeLine);
+                newRootLevel.Add (costLine);
             }
             else
             {
-                throw new InvalidOperationException(
+                throw new InvalidOperationException (
                     "AccountType other than Balance or Result passed to YearlyReport.AggregateAccounts()");
             }
 
@@ -130,7 +130,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (reportLine.AccountId == equityIdentity)
                 {
-                    newRootLevel.Add(reportLine);
+                    newRootLevel.Add (reportLine);
                 }
                 else
                 {
@@ -140,7 +140,7 @@ namespace Swarmops.Logic.Financial
                         aggregateLine.Children = new List<YearlyReportLine>();
                     }
 
-                    aggregateLine.Children.Add(reportLine);
+                    aggregateLine.Children.Add (reportLine);
 
                     aggregateLine.AccountTreeValues.PreviousYear += reportLine.AccountTreeValues.PreviousYear;
                     for (int quarter = 0; quarter < 4; quarter++)
@@ -161,16 +161,16 @@ namespace Swarmops.Logic.Financial
         {
             this.Totals = new YearlyReportNode();
 
-            this.Totals.PreviousYear = PopulateOneTotal(this._singleLookups[0]);
-            this.Totals.ThisYear = PopulateOneTotal(this._singleLookups[5]);
+            this.Totals.PreviousYear = PopulateOneTotal (this._singleLookups[0]);
+            this.Totals.ThisYear = PopulateOneTotal (this._singleLookups[5]);
 
             for (int quarter = 0; quarter < 4; quarter++)
             {
-                this.Totals.Quarters[quarter] = PopulateOneTotal(this._singleLookups[quarter + 1]);
+                this.Totals.Quarters[quarter] = PopulateOneTotal (this._singleLookups[quarter + 1]);
             }
         }
 
-        private Int64 PopulateOneTotal(Dictionary<int, Int64> lookup)
+        private Int64 PopulateOneTotal (Dictionary<int, Int64> lookup)
         {
             Int64[] allValues = lookup.Values.ToArray();
 
@@ -178,7 +178,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        private void RecurseAddLines(List<YearlyReportLine> list, int renderNodeId)
+        private void RecurseAddLines (List<YearlyReportLine> list, int renderNodeId)
         {
             foreach (FinancialAccount account in this._treeMap[renderNodeId])
             {
@@ -186,20 +186,20 @@ namespace Swarmops.Logic.Financial
                 newLine.AccountId = account.Identity;
                 newLine.AccountName = account.Name;
                 newLine.AccountType = account.AccountType;
-                newLine.AccountValues = CreateYearlyReportNode(account.Identity, this._singleLookups);
-                newLine.AccountTreeValues = CreateYearlyReportNode(account.Identity, this._treeLookups);
+                newLine.AccountValues = CreateYearlyReportNode (account.Identity, this._singleLookups);
+                newLine.AccountTreeValues = CreateYearlyReportNode (account.Identity, this._treeLookups);
 
-                if (this._treeMap.ContainsKey(account.Identity))
+                if (this._treeMap.ContainsKey (account.Identity))
                 {
-                    RecurseAddLines(newLine.Children, account.Identity);
+                    RecurseAddLines (newLine.Children, account.Identity);
                 }
 
-                list.Add(newLine);
+                list.Add (newLine);
             }
         }
 
 
-        private YearlyReportNode CreateYearlyReportNode(int accountId, Dictionary<int, Int64>[] lookup)
+        private YearlyReportNode CreateYearlyReportNode (int accountId, Dictionary<int, Int64>[] lookup)
         {
             YearlyReportNode node = new YearlyReportNode();
             node.PreviousYear = lookup[0][accountId];
@@ -214,21 +214,21 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        private void PopulateOrderedList(FinancialAccounts orderedList, int renderNodeId)
+        private void PopulateOrderedList (FinancialAccounts orderedList, int renderNodeId)
         {
             foreach (FinancialAccount account in this._treeMap[renderNodeId])
             {
-                orderedList.Add(account);
+                orderedList.Add (account);
 
-                if (this._treeMap.ContainsKey(account.Identity))
+                if (this._treeMap.ContainsKey (account.Identity))
                 {
-                    PopulateOrderedList(orderedList, account.Identity); // recursive call
+                    PopulateOrderedList (orderedList, account.Identity); // recursive call
                 }
             }
         }
 
 
-        private void PopulateLookups(FinancialAccounts accounts)
+        private void PopulateLookups (FinancialAccounts accounts)
         {
             this._singleLookups = new Dictionary<int, Int64>[6];
             this._treeLookups = new Dictionary<int, Int64>[6];
@@ -241,8 +241,8 @@ namespace Swarmops.Logic.Financial
 
             DateTime[] quarterBoundaries =
             {
-                new DateTime(this.Year, 1, 1), new DateTime(this.Year, 3, 1), new DateTime(this.Year, 6, 1),
-                new DateTime(this.Year, 9, 1), new DateTime(this.Year + 1, 1, 1)
+                new DateTime (this.Year, 1, 1), new DateTime (this.Year, 3, 1), new DateTime (this.Year, 6, 1),
+                new DateTime (this.Year, 9, 1), new DateTime (this.Year + 1, 1, 1)
             };
 
             // 1) Actually, the accounts are already sorted. Or are supposed to be, anyway,
@@ -256,17 +256,18 @@ namespace Swarmops.Logic.Financial
 
                 if (this._accountType == FinancialAccountType.Result)
                 {
-                    this._singleLookups[0][account.Identity] = account.GetDeltaCents(new DateTime(this.Year - 1, 1, 1),
-                        new DateTime(this.Year, 1, 1));
+                    this._singleLookups[0][account.Identity] = account.GetDeltaCents (
+                        new DateTime (this.Year - 1, 1, 1),
+                        new DateTime (this.Year, 1, 1));
                 }
                 else if (this._accountType == FinancialAccountType.Balance)
                 {
-                    this._singleLookups[0][account.Identity] = account.GetDeltaCents(new DateTime(1900, 1, 1),
-                        new DateTime(this.Year, 1, 1));
+                    this._singleLookups[0][account.Identity] = account.GetDeltaCents (new DateTime (1900, 1, 1),
+                        new DateTime (this.Year, 1, 1));
                 }
                 else
                 {
-                    throw new InvalidOperationException(
+                    throw new InvalidOperationException (
                         "Can only calculate yearly reports for balance or P&L statements");
                 }
 
@@ -275,7 +276,7 @@ namespace Swarmops.Logic.Financial
                 for (int quarter = 0; quarter < 4; quarter++)
                 {
                     this._singleLookups[quarter + 1][account.Identity] =
-                        account.GetDeltaCents(quarterBoundaries[quarter],
+                        account.GetDeltaCents (quarterBoundaries[quarter],
                             quarterBoundaries[quarter + 1]);
                 }
 
@@ -283,17 +284,17 @@ namespace Swarmops.Logic.Financial
 
                 if (this._accountType == FinancialAccountType.Result)
                 {
-                    this._singleLookups[5][account.Identity] = account.GetDeltaCents(new DateTime(this.Year, 1, 1),
-                        new DateTime(this.Year + 1, 1, 1));
+                    this._singleLookups[5][account.Identity] = account.GetDeltaCents (new DateTime (this.Year, 1, 1),
+                        new DateTime (this.Year + 1, 1, 1));
                 }
                 else if (this._accountType == FinancialAccountType.Balance)
                 {
-                    this._singleLookups[5][account.Identity] = account.GetDeltaCents(new DateTime(1900, 1, 1),
-                        new DateTime(this.Year + 1, 1, 1));
+                    this._singleLookups[5][account.Identity] = account.GetDeltaCents (new DateTime (1900, 1, 1),
+                        new DateTime (this.Year + 1, 1, 1));
                 }
                 else
                 {
-                    throw new InvalidOperationException(
+                    throw new InvalidOperationException (
                         "Can only calculate yearly reports for balance or P&L statements");
                 }
 
@@ -309,14 +310,14 @@ namespace Swarmops.Logic.Financial
 
             for (int index = 0; index < 6; index++)
             {
-                AddChildrenValuesToParents(this._treeLookups[index], accounts);
+                AddChildrenValuesToParents (this._treeLookups[index], accounts);
             }
 
             // Done.
         }
 
 
-        private void AddChildrenValuesToParents(Dictionary<int, Int64> lookup, FinancialAccounts accounts)
+        private void AddChildrenValuesToParents (Dictionary<int, Int64> lookup, FinancialAccounts accounts)
         {
             // Iterate backwards and add any value to its parent's value, as they are sorted in tree order.
 

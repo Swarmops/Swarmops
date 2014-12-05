@@ -7,7 +7,7 @@ namespace Swarmops.Logic.Financial
 {
     public class FinancialTransactionRows : List<FinancialTransactionRow>
     {
-        [Obsolete("Do not use. Use AmountCentsTotal.", true)]
+        [Obsolete ("Do not use. Use AmountCentsTotal.", true)]
         public decimal AmountTotal
         {
             get
@@ -36,7 +36,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        [Obsolete("Do not use. Use Int64 BalanceCentsDelta.", true)]
+        [Obsolete ("Do not use. Use Int64 BalanceCentsDelta.", true)]
         public decimal BalanceDelta
         {
             get
@@ -73,13 +73,13 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public static FinancialTransactionRows FromArray(BasicFinancialTransactionRow[] basicArray)
+        public static FinancialTransactionRows FromArray (BasicFinancialTransactionRow[] basicArray)
         {
             FinancialTransactionRows result = new FinancialTransactionRows {Capacity = (basicArray.Length*11/10)};
 
             foreach (BasicFinancialTransactionRow basic in basicArray)
             {
-                result.Add(FinancialTransactionRow.FromBasic(basic));
+                result.Add (FinancialTransactionRow.FromBasic (basic));
             }
 
             return result;

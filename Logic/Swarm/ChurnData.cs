@@ -32,14 +32,14 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        internal static ChurnData FromArray(BasicChurnDataPoint[] basicArray)
+        internal static ChurnData FromArray (BasicChurnDataPoint[] basicArray)
         {
             ChurnData result = new ChurnData();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicChurnDataPoint basic in basicArray)
             {
-                result.Add(ChurnDataPoint.FromBasic(basic));
+                result.Add (ChurnDataPoint.FromBasic (basic));
             }
 
             return result;
@@ -51,47 +51,47 @@ namespace Swarmops.Logic.Swarm
         /// </summary>
         /// <param name="personId">The person churning.</param>
         /// <param name="organizationId">The organization churned from.</param>
-        public static void LogChurn(int personId, int organizationId)
+        public static void LogChurn (int personId, int organizationId)
         {
-            SwarmDb.GetDatabaseForWriting().LogChurnData(personId, organizationId, true, DateTime.Now);
+            SwarmDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, true, DateTime.Now);
         }
 
-        public static void LogRetention(int personId, int organizationId, DateTime expiry)
+        public static void LogRetention (int personId, int organizationId, DateTime expiry)
         {
-            SwarmDb.GetDatabaseForWriting().LogChurnData(personId, organizationId, false, expiry);
+            SwarmDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, false, expiry);
         }
 
-        public static void LogRetention(int personId, int organizationId, DateTime expiry, DateTime decisionDateTime)
+        public static void LogRetention (int personId, int organizationId, DateTime expiry, DateTime decisionDateTime)
         {
-            SwarmDb.GetDatabaseForWriting().LogChurnData(personId, organizationId, false, expiry, decisionDateTime);
-        }
-
-
-        public static ChurnData ForOrganization(Organization organization)
-        {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetChurnData(organization));
-        }
-
-        public static ChurnData ForPerson(Person person)
-        {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetChurnData(person));
+            SwarmDb.GetDatabaseForWriting().LogChurnData (personId, organizationId, false, expiry, decisionDateTime);
         }
 
 
-        public static ChurnData GetByDate(Organization organization, DateTime date)
+        public static ChurnData ForOrganization (Organization organization)
         {
-            return GetByDate(organization, date, date);
+            return FromArray (SwarmDb.GetDatabaseForReading().GetChurnData (organization));
         }
 
-        public static ChurnData GetByDate(Organization organization, DateTime dateLower, DateTime dateUpper)
+        public static ChurnData ForPerson (Person person)
+        {
+            return FromArray (SwarmDb.GetDatabaseForReading().GetChurnData (person));
+        }
+
+
+        public static ChurnData GetByDate (Organization organization, DateTime date)
+        {
+            return GetByDate (organization, date, date);
+        }
+
+        public static ChurnData GetByDate (Organization organization, DateTime dateLower, DateTime dateUpper)
         {
             return
-                FromArray(SwarmDb.GetDatabaseForReading()
-                    .GetChurnDataForOrganization(organization, dateLower, dateUpper));
+                FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetChurnDataForOrganization (organization, dateLower, dateUpper));
         }
 
 
-        public int GetRetentionDecisionRangeCount(int minDays, int maxDays)
+        public int GetRetentionDecisionRangeCount (int minDays, int maxDays)
         {
             int count = 0;
 

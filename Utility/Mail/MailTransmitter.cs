@@ -12,8 +12,8 @@ namespace Swarmops.Utility.Mail
 {
     public class MailTransmitter
     {
-        private static readonly QuotedPrintable qpUTF8 = new QuotedPrintable(Encoding.UTF8);
-        private static readonly QuotedPrintable qp8859 = new QuotedPrintable(Encoding.GetEncoding("ISO-8859-1"));
+        private static readonly QuotedPrintable qpUTF8 = new QuotedPrintable (Encoding.UTF8);
+        private static readonly QuotedPrintable qp8859 = new QuotedPrintable (Encoding.GetEncoding ("ISO-8859-1"));
         private static int outstandingTransmissions;
         private static readonly object lockObject = new object();
         private readonly string bodyPlain;
@@ -28,7 +28,7 @@ namespace Swarmops.Utility.Mail
             outstandingTransmissions = 0;
         }
 
-        public MailTransmitter(string fromName, string fromAddress, string subject, string bodyPlain, People recipients,
+        public MailTransmitter (string fromName, string fromAddress, string subject, string bodyPlain, People recipients,
             bool toOfficers)
         {
             this.fromName = fromName;
@@ -39,14 +39,14 @@ namespace Swarmops.Utility.Mail
             this.toOfficers = toOfficers;
         }
 
-        public MailTransmitter(string fromName, string fromAddress, string subject, string bodyPlain, Person recipient)
-            : this(fromName, fromAddress, subject, bodyPlain, People.FromArray(new[] {recipient}), false)
+        public MailTransmitter (string fromName, string fromAddress, string subject, string bodyPlain, Person recipient)
+            : this (fromName, fromAddress, subject, bodyPlain, People.FromArray (new[] {recipient}), false)
         {
         }
 
-        public MailTransmitter(string fromName, string fromAddress, string subject, string bodyPlain, Person recipient,
+        public MailTransmitter (string fromName, string fromAddress, string subject, string bodyPlain, Person recipient,
             bool toOfficers)
-            : this(fromName, fromAddress, subject, bodyPlain, People.FromArray(new[] {recipient}), toOfficers)
+            : this (fromName, fromAddress, subject, bodyPlain, People.FromArray (new[] {recipient}), toOfficers)
         {
         }
 
@@ -76,7 +76,7 @@ namespace Swarmops.Utility.Mail
 
                     if (this.toOfficers && recipient.Country.Identity == 1) // HACK until PirateWeb Exchange server up
                     {
-                        if (!Formatting.ValidateEmailFormat(recipient.PartyEmail.Trim()))
+                        if (!Formatting.ValidateEmailFormat (recipient.PartyEmail.Trim()))
                         {
                             if (recipient.Identity == 13354)
                             {
@@ -85,34 +85,34 @@ namespace Swarmops.Utility.Mail
                                 continue;
                             }
 
-                            Person.FromIdentity(1)
-                                .SendOfficerNotice("PirateBot Warning",
-                                    String.Format("The officer {0} (#{1}) does not have a party email.", recipient.Name,
+                            Person.FromIdentity (1)
+                                .SendOfficerNotice ("PirateBot Warning",
+                                    String.Format ("The officer {0} (#{1}) does not have a party email.", recipient.Name,
                                         recipient.Identity), 1);
 
                             continue;
                         }
 
                         message =
-                            new MailMessage(
-                                new MailAddress(this.fromAddress, qp8859.EncodeMailHeaderString(this.fromName),
+                            new MailMessage (
+                                new MailAddress (this.fromAddress, qp8859.EncodeMailHeaderString (this.fromName),
                                     Encoding.Default),
-                                new MailAddress(recipient.PartyEmail,
-                                    qp8859.EncodeMailHeaderString(recipient.Name + " (Piratpartiet)"),
+                                new MailAddress (recipient.PartyEmail,
+                                    qp8859.EncodeMailHeaderString (recipient.Name + " (Piratpartiet)"),
                                     Encoding.Default));
                     }
                     else
                     {
-                        if (!Formatting.ValidateEmailFormat(recipient.Mail.Trim()))
+                        if (!Formatting.ValidateEmailFormat (recipient.Mail.Trim()))
                         {
                             continue;
                         }
 
                         message =
-                            new MailMessage(
-                                new MailAddress(this.fromAddress, qpUTF8.EncodeMailHeaderString(this.fromName),
+                            new MailMessage (
+                                new MailAddress (this.fromAddress, qpUTF8.EncodeMailHeaderString (this.fromName),
                                     Encoding.UTF8),
-                                new MailAddress(recipient.Mail, qpUTF8.EncodeMailHeaderString(recipient.Name),
+                                new MailAddress (recipient.Mail, qpUTF8.EncodeMailHeaderString (recipient.Name),
                                     Encoding.UTF8));
                     }
 
@@ -140,12 +140,12 @@ namespace Swarmops.Utility.Mail
 
                     #endregion
 
-                    TransmitOneMessage(message); // Sending synchronosly
+                    TransmitOneMessage (message); // Sending synchronosly
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine(e.ToString());
-                    ExceptionMail.Send(new Exception("Excepton in Mailtransmitter.Send:", e), true);
+                    Debug.WriteLine (e.ToString());
+                    ExceptionMail.Send (new Exception ("Excepton in Mailtransmitter.Send:", e), true);
                 }
             }
 
@@ -198,36 +198,36 @@ namespace Swarmops.Utility.Mail
             #endregion
         }
 
-        internal void TransmitOneMessage(MailMessage message)
+        internal void TransmitOneMessage (MailMessage message)
         {
             if (Debugger.IsAttached)
             {
-                Debug.WriteLine("sending " + message.Subject);
-                Thread.Sleep(500); //simulate delay
+                Debug.WriteLine ("sending " + message.Subject);
+                Thread.Sleep (500); //simulate delay
             }
             else
             {
                 try
                 {
-                    SmtpClient client = new SmtpClient(Config.SmtpHost, Config.SmtpPort);
+                    SmtpClient client = new SmtpClient (Config.SmtpHost, Config.SmtpPort);
                     client.Credentials = null;
-                    client.Send(message);
+                    client.Send (message);
                 }
                 catch (SmtpFailedRecipientsException e)
                 {
                     List<string> recipients = new List<string>();
                     foreach (MailAddress address in message.To)
                     {
-                        recipients.Add(address.Address);
+                        recipients.Add (address.Address);
                     }
 
-                    throw new ArgumentException(
-                        "Bad Recipients: " + String.Join(", ", recipients.ToArray()) + " for mail with subject:" +
+                    throw new ArgumentException (
+                        "Bad Recipients: " + String.Join (", ", recipients.ToArray()) + " for mail with subject:" +
                         message.Subject, e);
                 }
                 catch (SmtpFailedRecipientException e)
                 {
-                    throw new ArgumentException(
+                    throw new ArgumentException (
                         "Bad Recipient: " + message.To[0].Address + " for mail with subject:" + message.Subject, e);
                 }
                 catch (SmtpException e)
@@ -235,14 +235,14 @@ namespace Swarmops.Utility.Mail
                     string msg = "Other smtp error:\r\n";
                     try
                     {
-                        msg += string.Format(
+                        msg += string.Format (
                             "Subject:{0}\r\nSender:{1}"
                             , this.subject, this.fromAddress);
                     }
                     catch (Exception)
                     {
                     }
-                    throw new ArgumentException(msg, e);
+                    throw new ArgumentException (msg, e);
                 }
             }
         }
@@ -251,18 +251,18 @@ namespace Swarmops.Utility.Mail
         ///     Asynchronous callback method. Not in use.
         /// </summary>
         /// <param name="result"></param>
-        internal static void MessageSent(IAsyncResult result)
+        internal static void MessageSent (IAsyncResult result)
         {
             MailTransmissionDelegate asyncTransmitter = (MailTransmissionDelegate) result.AsyncState;
 
             try
             {
-                asyncTransmitter.EndInvoke(result);
+                asyncTransmitter.EndInvoke (result);
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.ToString());
-                ExceptionMail.Send(e);
+                Debug.WriteLine (e.ToString());
+                ExceptionMail.Send (e);
             }
 
             lock (lockObject)

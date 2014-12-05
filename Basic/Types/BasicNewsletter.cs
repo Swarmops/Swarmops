@@ -17,7 +17,7 @@ namespace Swarmops.Basic.Types
         private readonly int organizationId;
         private readonly string title;
 
-        public BasicNewsletter(int newsletterId, string title, string introduction, string body,
+        public BasicNewsletter (int newsletterId, string title, string introduction, string body,
             int authorId, int templateId, int feedId)
         {
             this.newsletterId = newsletterId;
@@ -30,10 +30,10 @@ namespace Swarmops.Basic.Types
             this.newsletterFeedId = feedId;
         }
 
-        public BasicNewsletter(int newsletterId, string title, string introduction, string body,
+        public BasicNewsletter (int newsletterId, string title, string introduction, string body,
             int authorId, int templateId, int feedId, int organizationId, int geographyId)
             :
-                this(newsletterId, title, introduction, body, authorId, templateId, feedId)
+                this (newsletterId, title, introduction, body, authorId, templateId, feedId)
         {
             this.organizationId = organizationId;
             this.geographyId = geographyId;

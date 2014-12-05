@@ -20,19 +20,19 @@ namespace Swarmops.Database
 
         private const string financialValidationOrder = " ORDER BY FinancialValidationId ";
 
-        private static BasicFinancialValidation ReadFinancialValidationFromDataReader(IDataRecord reader)
+        private static BasicFinancialValidation ReadFinancialValidationFromDataReader (IDataRecord reader)
         {
-            int financialValidationId = reader.GetInt32(0);
+            int financialValidationId = reader.GetInt32 (0);
             FinancialValidationType validationType =
-                (FinancialValidationType) (Enum.Parse(typeof (FinancialValidationType), reader.GetString(1)));
+                (FinancialValidationType) (Enum.Parse (typeof (FinancialValidationType), reader.GetString (1)));
             FinancialDependencyType dependencyType =
-                (FinancialDependencyType) (Enum.Parse(typeof (FinancialDependencyType), reader.GetString(2)));
-            int foreignId = reader.GetInt32(3);
-            DateTime dateTime = reader.GetDateTime(4);
-            int personId = reader.GetInt32(5);
-            double amount = reader.GetDouble(6); // not yet used
+                (FinancialDependencyType) (Enum.Parse (typeof (FinancialDependencyType), reader.GetString (2)));
+            int foreignId = reader.GetInt32 (3);
+            DateTime dateTime = reader.GetDateTime (4);
+            int personId = reader.GetInt32 (5);
+            double amount = reader.GetDouble (6); // not yet used
 
-            return new BasicFinancialValidation(financialValidationId, validationType, personId, dateTime,
+            return new BasicFinancialValidation (financialValidationId, validationType, personId, dateTime,
                 dependencyType, foreignId);
         }
 
@@ -40,7 +40,7 @@ namespace Swarmops.Database
 
         #region Record reading - SELECT statements
 
-        public BasicFinancialValidation[] GetFinancialValidations(FinancialDependencyType dependencyType, int foreignId)
+        public BasicFinancialValidation[] GetFinancialValidations (FinancialDependencyType dependencyType, int foreignId)
         {
             List<BasicFinancialValidation> result = new List<BasicFinancialValidation>();
 
@@ -49,7 +49,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + financialValidationFieldSequence + " WHERE FinancialDependencyTypes.Name='" +
                         dependencyType + "' AND ForeignId=" + foreignId + " " + financialValidationOrder, connection);
 
@@ -57,7 +57,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadFinancialValidationFromDataReader(reader));
+                        result.Add (ReadFinancialValidationFromDataReader (reader));
                     }
 
                     return result.ToArray();

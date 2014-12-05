@@ -17,11 +17,11 @@ namespace Swarmops.Database
         //  Example: ConstructWhereClause (Organization.FromIdentity (1), Database.OpenTrue) makes
         //           a WHERE clause that matches OrganizationId=1 and Open=1.
         // 
-        private static string ConstructWhereClause(string tableName, params object[] conditionParameters)
+        private static string ConstructWhereClause (string tableName, params object[] conditionParameters)
         {
-            List<string> conditionList = ConstructWhereClauseRecurse(tableName, conditionParameters);
+            List<string> conditionList = ConstructWhereClauseRecurse (tableName, conditionParameters);
 
-            string conditions = JoinWhereClauses(conditionList.ToArray());
+            string conditions = JoinWhereClauses (conditionList.ToArray());
 
             if (conditions.Trim().Length > 5)
             {
@@ -35,7 +35,7 @@ namespace Swarmops.Database
         /// <summary>
         ///     Internal. Recurses for ConstructWhereClause.
         /// </summary>
-        private static List<string> ConstructWhereClauseRecurse(string tableName, params object[] conditionParameters)
+        private static List<string> ConstructWhereClauseRecurse (string tableName, params object[] conditionParameters)
         {
             List<string> result = new List<string>();
 
@@ -43,32 +43,32 @@ namespace Swarmops.Database
             {
                 if (condition is IHasIdentities)
                 {
-                    result.Add(GetWhereClauseForObjectList(condition as IHasIdentities));
+                    result.Add (GetWhereClauseForObjectList (condition as IHasIdentities));
                 }
                 if (condition is IHasIdentity)
                 {
-                    result.Add(GetWhereClauseForObject(condition as IHasIdentity));
+                    result.Add (GetWhereClauseForObject (condition as IHasIdentity));
                 }
                 else if (condition is DatabaseCondition)
                 {
                     if ((DatabaseCondition) condition != DatabaseCondition.None)
                     {
-                        result.Add(tableName + "." + GetWhereClauseForCondition((DatabaseCondition) condition));
+                        result.Add (tableName + "." + GetWhereClauseForCondition ((DatabaseCondition) condition));
                     }
                 }
                 else if (condition is string)
                 {
-                    result.Add(condition as string);
+                    result.Add (condition as string);
                 }
                 else if (condition is object[]) // params object inherited and added to -- recurse
                 {
-                    List<string> recursed = ConstructWhereClauseRecurse(tableName, condition);
+                    List<string> recursed = ConstructWhereClauseRecurse (tableName, condition);
 
                     // copy one by one
 
                     foreach (string recursedCondition in recursed)
                     {
-                        result.Add(recursedCondition);
+                        result.Add (recursedCondition);
                     }
                 }
             }
@@ -77,7 +77,7 @@ namespace Swarmops.Database
         }
 
 
-        private static string GetWhereClauseForObject(IHasIdentity foreignObject)
+        private static string GetWhereClauseForObject (IHasIdentity foreignObject)
         {
             // This is kind of dangerous and assumes that foreignObject has the same TYPE NAME,
             // including casing, as part of the DATABASE FIELD used for primary key.
@@ -96,11 +96,11 @@ namespace Swarmops.Database
                 return string.Empty;
             }
 
-            return " " + GetForeignTypeString(foreignObject) + "Id=" + foreignObject.Identity + " ";
+            return " " + GetForeignTypeString (foreignObject) + "Id=" + foreignObject.Identity + " ";
         }
 
 
-        private static string GetWhereClauseForObjectList(IHasIdentities foreignObjects)
+        private static string GetWhereClauseForObjectList (IHasIdentities foreignObjects)
         {
             // As above, but with a List<IHasIdentity> object.
 
@@ -120,15 +120,15 @@ namespace Swarmops.Database
                 identities = new int[1] {0};
             }
 
-            return " " + GetForeignTypeString(((List<IHasIdentity>) foreignObjects)[0]) + "Id IN (" +
-                   JoinIds(identities) + ") ";
+            return " " + GetForeignTypeString (((List<IHasIdentity>) foreignObjects)[0]) + "Id IN (" +
+                   JoinIds (identities) + ") ";
         }
 
 
-        private static string GetForeignTypeString(IHasIdentity foreignObject)
+        private static string GetForeignTypeString (IHasIdentity foreignObject)
         {
             string typeString = "";
-            foreach (object attribute in foreignObject.GetType().GetCustomAttributes(typeof (DbRecordType), true))
+            foreach (object attribute in foreignObject.GetType().GetCustomAttributes (typeof (DbRecordType), true))
             {
                 if (attribute is DbRecordType)
                 {
@@ -139,10 +139,10 @@ namespace Swarmops.Database
             {
                 typeString = foreignObject.GetType().ToString();
 
-                if (typeString.Contains("."))
+                if (typeString.Contains ("."))
                 {
-                    int periodIndex = typeString.LastIndexOf('.');
-                    typeString = typeString.Substring(periodIndex + 1);
+                    int periodIndex = typeString.LastIndexOf ('.');
+                    typeString = typeString.Substring (periodIndex + 1);
                 }
             }
 
@@ -150,7 +150,7 @@ namespace Swarmops.Database
         }
 
 
-        private static string GetWhereClauseForCondition(DatabaseCondition condition)
+        private static string GetWhereClauseForCondition (DatabaseCondition condition)
         {
             switch (condition)
             {
@@ -167,20 +167,20 @@ namespace Swarmops.Database
                 case DatabaseCondition.ActiveTrue:
                     return "Active=1";
                 default:
-                    throw new InvalidOperationException(
+                    throw new InvalidOperationException (
                         "Undefined or unimplemented DatabaseCondition in GetWhereClauseForCondition: " +
                         condition);
             }
         }
 
 
-        private static string JoinWhereClauses(params string[] clauses)
+        private static string JoinWhereClauses (params string[] clauses)
         {
             string result = string.Empty;
 
             foreach (string clause in clauses)
             {
-                if (!String.IsNullOrEmpty(clause))
+                if (!String.IsNullOrEmpty (clause))
                 {
                     result += "AND " + clause;
                 }
@@ -188,7 +188,7 @@ namespace Swarmops.Database
 
             if (result.Length > 0)
             {
-                return result.Substring(3) + " "; // strips first AND; ensures space on both sides in returned string
+                return result.Substring (3) + " "; // strips first AND; ensures space on both sides in returned string
             }
 
             return string.Empty;

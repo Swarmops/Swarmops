@@ -9,7 +9,7 @@ namespace Swarmops.Logic.Financial
 {
     public class Salary : BasicSalary, IAttestable
     {
-        internal Salary(BasicSalary basic) : base(basic)
+        internal Salary (BasicSalary basic) : base (basic)
         {
             // private ctor
         }
@@ -17,13 +17,13 @@ namespace Swarmops.Logic.Financial
 
         public PayrollItem PayrollItem
         {
-            get { return PayrollItem.FromIdentity(PayrollItemId); }
+            get { return PayrollItem.FromIdentity (PayrollItemId); }
         }
 
 
         public PayrollAdjustments Adjustments
         {
-            get { return PayrollAdjustments.ForSalary(this); }
+            get { return PayrollAdjustments.ForSalary (this); }
         }
 
 
@@ -57,7 +57,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (value != base.NetSalaryCents)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetSalaryNetSalary(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetSalaryNetSalary (Identity, value);
                     base.NetSalaryCents = value;
                 }
             }
@@ -109,7 +109,7 @@ namespace Swarmops.Logic.Financial
             get { return base.NetPaid; }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetSalaryNetPaid(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetSalaryNetPaid (Identity, value);
                 base.NetPaid = value;
                 base.Open = !(base.NetPaid && base.TaxPaid);
             }
@@ -120,7 +120,7 @@ namespace Swarmops.Logic.Financial
             get { return base.TaxPaid; }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetSalaryTaxPaid(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetSalaryTaxPaid (Identity, value);
                 base.NetPaid = value;
                 base.Open = !(base.NetPaid && base.TaxPaid);
             }
@@ -129,7 +129,7 @@ namespace Swarmops.Logic.Financial
 
         public FinancialValidations Validations
         {
-            get { return FinancialValidations.ForObject(this); }
+            get { return FinancialValidations.ForObject (this); }
         }
 
         //  dummy comment to force a build -- remove on sight
@@ -153,18 +153,18 @@ namespace Swarmops.Logic.Financial
 
         #region IAttestable Members
 
-        public void Attest(Person attester)
+        public void Attest (Person attester)
         {
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
                 FinancialDependencyType.Salary, Identity, DateTime.Now, attester.Identity, NetSalaryCents/100.0);
-            SwarmDb.GetDatabaseForWriting().SetSalaryAttested(Identity, true);
+            SwarmDb.GetDatabaseForWriting().SetSalaryAttested (Identity, true);
         }
 
-        public void Deattest(Person deattester)
+        public void Deattest (Person deattester)
         {
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
                 FinancialDependencyType.Salary, Identity, DateTime.Now, deattester.Identity, NetSalaryCents/100.0);
-            SwarmDb.GetDatabaseForWriting().SetSalaryAttested(Identity, false);
+            SwarmDb.GetDatabaseForWriting().SetSalaryAttested (Identity, false);
         }
 
         #endregion
@@ -174,26 +174,26 @@ namespace Swarmops.Logic.Financial
             get { return PayrollItem.Budget; }
         }
 
-        public static Salary FromBasic(BasicSalary basic)
+        public static Salary FromBasic (BasicSalary basic)
         {
-            return new Salary(basic);
+            return new Salary (basic);
         }
 
-        public static Salary FromIdentity(int salaryId)
+        public static Salary FromIdentity (int salaryId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetSalary(salaryId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetSalary (salaryId));
         }
 
-        public static Salary Create(int payrollItemId, DateTime payoutDate)
+        public static Salary Create (int payrollItemId, DateTime payoutDate)
         {
-            return Create(PayrollItem.FromIdentity(payrollItemId), payoutDate);
+            return Create (PayrollItem.FromIdentity (payrollItemId), payoutDate);
         }
 
-        public static Salary Create(PayrollItem payrollItem, DateTime payoutDate)
+        public static Salary Create (PayrollItem payrollItem, DateTime payoutDate)
         {
             // Load the existing adjustments.
 
-            PayrollAdjustments adjustments = PayrollAdjustments.ForPayrollItem(payrollItem);
+            PayrollAdjustments adjustments = PayrollAdjustments.ForPayrollItem (payrollItem);
 
             Int64 payCents = payrollItem.BaseSalaryCents;
 
@@ -209,7 +209,7 @@ namespace Swarmops.Logic.Financial
 
             // calculate tax
 
-            double subtractiveTax = TaxLevels.GetTax(payrollItem.Country, payrollItem.SubtractiveTaxLevelId,
+            double subtractiveTax = TaxLevels.GetTax (payrollItem.Country, payrollItem.SubtractiveTaxLevelId,
                 payCents/100.0);
 
             if (subtractiveTax < 1.0)
@@ -236,28 +236,28 @@ namespace Swarmops.Logic.Financial
 
             // Create salary, close adjustments
 
-            Salary salary = Create(payrollItem, payoutDate, payCents, subtractiveTaxCents, additiveTaxCents);
+            Salary salary = Create (payrollItem, payoutDate, payCents, subtractiveTaxCents, additiveTaxCents);
 
             // For each adjustment, close and bind to salary
 
             foreach (PayrollAdjustment adjustment in adjustments)
             {
-                adjustment.Close(salary);
+                adjustment.Close (salary);
             }
 
             // If net is negative, create rollover adjustment
 
             if (payCents < 0)
             {
-                PayrollAdjustment rollover1 = PayrollAdjustment.Create(payrollItem, PayrollAdjustmentType.NetAdjustment,
+                PayrollAdjustment rollover1 = PayrollAdjustment.Create (payrollItem, PayrollAdjustmentType.NetAdjustment,
                     -payCents,
                     "Deficit rolls over to next salary");
 
-                rollover1.Close(salary);
+                rollover1.Close (salary);
 
-                PayrollAdjustment rollover2 = PayrollAdjustment.Create(payrollItem, PayrollAdjustmentType.NetAdjustment,
+                PayrollAdjustment rollover2 = PayrollAdjustment.Create (payrollItem, PayrollAdjustmentType.NetAdjustment,
                     payCents, "Deficit rolled over from " +
-                              payoutDate.ToString("yyyy-MM-dd"));
+                              payoutDate.ToString ("yyyy-MM-dd"));
 
                 // keep rollover2 open, so the deficit from this salary is carried to the next
 
@@ -267,13 +267,13 @@ namespace Swarmops.Logic.Financial
             // Add the financial transaction
 
             FinancialTransaction transaction =
-                FinancialTransaction.Create(payrollItem.OrganizationId, DateTime.Now,
+                FinancialTransaction.Create (payrollItem.OrganizationId, DateTime.Now,
                     "Salary #" + salary.Identity + ": " + payrollItem.PersonCanonical +
                     " " +
-                    salary.PayoutDate.ToString("yyyy-MMM", CultureInfo.InvariantCulture));
-            transaction.AddRow(payrollItem.Budget, salary.CostTotalCents, null);
-            transaction.AddRow(payrollItem.Organization.FinancialAccounts.DebtsSalary, -salary.NetSalaryCents, null);
-            transaction.AddRow(payrollItem.Organization.FinancialAccounts.DebtsTax, -salary.TaxTotalCents, null);
+                    salary.PayoutDate.ToString ("yyyy-MMM", CultureInfo.InvariantCulture));
+            transaction.AddRow (payrollItem.Budget, salary.CostTotalCents, null);
+            transaction.AddRow (payrollItem.Organization.FinancialAccounts.DebtsSalary, -salary.NetSalaryCents, null);
+            transaction.AddRow (payrollItem.Organization.FinancialAccounts.DebtsTax, -salary.TaxTotalCents, null);
             transaction.Dependency = salary;
 
             // Finally, check if net and/or tax are zero, and if so, mark them as already-paid (i.e. not due for payment)
@@ -291,12 +291,12 @@ namespace Swarmops.Logic.Financial
             return salary;
         }
 
-        private static Salary Create(PayrollItem payrollItem, DateTime payoutDate, Int64 netSalaryCents,
+        private static Salary Create (PayrollItem payrollItem, DateTime payoutDate, Int64 netSalaryCents,
             Int64 subtractiveTaxCents, Int64 additiveTaxCents)
         {
             return
-                FromIdentity(SwarmDb.GetDatabaseForWriting()
-                    .CreateSalary(payrollItem.Identity, payoutDate, payrollItem.BaseSalaryCents, netSalaryCents,
+                FromIdentity (SwarmDb.GetDatabaseForWriting()
+                    .CreateSalary (payrollItem.Identity, payoutDate, payrollItem.BaseSalaryCents, netSalaryCents,
                         subtractiveTaxCents, additiveTaxCents));
         }
     }

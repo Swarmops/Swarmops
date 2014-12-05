@@ -31,7 +31,7 @@ namespace Swarmops.Basic.Types
         /// <param name="roleType">The node-specific role.</param>
         /// <param name="organizationId">The organization Id.</param>
         /// <param name="geographyId">The node Id.</param>
-        public BasicPersonRole(int roleId, int personId, RoleType type, int organizationId, int geographyId)
+        public BasicPersonRole (int roleId, int personId, RoleType type, int organizationId, int geographyId)
         {
             this.roleId = roleId;
             this.personId = personId;
@@ -43,8 +43,8 @@ namespace Swarmops.Basic.Types
         /// <summary>
         ///     Copy constructor.
         /// </summary>
-        public BasicPersonRole(BasicPersonRole original)
-            : this(original.roleId, original.personId, original.type, original.organizationId, original.geographyId)
+        public BasicPersonRole (BasicPersonRole original)
+            : this (original.roleId, original.personId, original.type, original.organizationId, original.geographyId)
         {
         }
 

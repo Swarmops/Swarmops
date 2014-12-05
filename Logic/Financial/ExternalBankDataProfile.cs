@@ -30,7 +30,7 @@ namespace Swarmops.Logic.Financial
                     case ExternalBankDateTimePrecision.Microsecond:
                         return "yyyy-MM-dd HH:mm:ss.ffffff";
                     default:
-                        throw new NotImplementedException("Unknown ExternalDateTimePrecision: " + this.Precision);
+                        throw new NotImplementedException ("Unknown ExternalDateTimePrecision: " + this.Precision);
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace Swarmops.Logic.Financial
 
         public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
 
-        public static ExternalBankDataProfile FromIdentity(int externalBankDataProfileId)
+        public static ExternalBankDataProfile FromIdentity (int externalBankDataProfileId)
         {
             ExternalBankDataProfile result = new ExternalBankDataProfile();
 
@@ -63,7 +63,7 @@ namespace Swarmops.Logic.Financial
             if (externalBankDataProfileId == SESebId)
             {
                 result.Name = "SEB";
-                result.Country = Country.FromCode("SE");
+                result.Country = Country.FromCode ("SE");
                 result.Culture = "sv-SE";
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Bokföringsdatum";
@@ -109,7 +109,7 @@ namespace Swarmops.Logic.Financial
                 return result;
             }
 
-            throw new ArgumentException("Unrecognized profile Id");
+            throw new ArgumentException ("Unrecognized profile Id");
         }
     }
 

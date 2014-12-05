@@ -23,56 +23,56 @@ namespace Swarmops.Utility.BotCode
 
         public class IgnoreRecipientException : Exception
         {
-            public IgnoreRecipientException(string message, Exception innerException)
-                : base(message, innerException)
+            public IgnoreRecipientException (string message, Exception innerException)
+                : base (message, innerException)
             {
             }
         }
 
         public class InvalidRecipientException : IgnoreRecipientException
         {
-            public InvalidRecipientException(string message, Exception innerException)
-                : base(message, innerException)
+            public InvalidRecipientException (string message, Exception innerException)
+                : base (message, innerException)
             {
             }
         }
 
         public class InvalidSenderException : Exception
         {
-            public InvalidSenderException(string message, Exception innerException)
-                : base(message, innerException)
+            public InvalidSenderException (string message, Exception innerException)
+                : base (message, innerException)
             {
             }
         }
 
         public class RemoveRecipientException : Exception
         {
-            public RemoveRecipientException(string message, Exception innerException)
-                : base(message, innerException)
+            public RemoveRecipientException (string message, Exception innerException)
+                : base (message, innerException)
             {
             }
         }
 
         public class ReportAndRetryRecipientException : RetryRecipientException
         {
-            public ReportAndRetryRecipientException(string message, Exception innerException)
-                : base(message, innerException)
+            public ReportAndRetryRecipientException (string message, Exception innerException)
+                : base (message, innerException)
             {
             }
         }
 
         public class RetryRecipientException : Exception
         {
-            public RetryRecipientException(string message, Exception innerException)
-                : base(message, innerException)
+            public RetryRecipientException (string message, Exception innerException)
+                : base (message, innerException)
             {
             }
         }
 
         #endregion
 
-        private static readonly QuotedPrintable qpUTF8 = new QuotedPrintable(Encoding.UTF8);
-        private static readonly QuotedPrintable qp8859 = new QuotedPrintable(Encoding.GetEncoding("ISO-8859-1"));
+        private static readonly QuotedPrintable qpUTF8 = new QuotedPrintable (Encoding.UTF8);
+        private static readonly QuotedPrintable qp8859 = new QuotedPrintable (Encoding.GetEncoding ("ISO-8859-1"));
         private static readonly Dictionary<Encoding, QuotedPrintable> QuotedPrintableEncoder = InitQpDictionary();
         private static int mailQueueSize;
         private static readonly Object lockObject = new Object();
@@ -83,7 +83,7 @@ namespace Swarmops.Utility.BotCode
         {
             Dictionary<Encoding, QuotedPrintable> qp = new Dictionary<Encoding, QuotedPrintable>();
             qp[Encoding.UTF8] = qpUTF8;
-            qp[Encoding.GetEncoding("ISO-8859-1")] = qp8859;
+            qp[Encoding.GetEncoding ("ISO-8859-1")] = qp8859;
             return qp;
         }
 
@@ -103,7 +103,7 @@ namespace Swarmops.Utility.BotCode
             }
 
             // Look for a mail to process, or keep processing.
-            OutboundMails mails = OutboundMails.GetTopUnprocessed(100);
+            OutboundMails mails = OutboundMails.GetTopUnprocessed (100);
             mailQueueSize = 0;
 
             if (mails.Count == 0)
@@ -135,9 +135,9 @@ namespace Swarmops.Utility.BotCode
                     {
                         string mailBody = string.Empty;
 
-                        new MailTransmitter(
+                        new MailTransmitter (
                             Strings.MailSenderName, Strings.MailSenderAddress, "Mail transmission begins: " + mail.Title,
-                            mailBody, Person.FromIdentity(mail.AuthorPersonId), true).Send();
+                            mailBody, Person.FromIdentity (mail.AuthorPersonId), true).Send();
                     }
                 }
 
@@ -158,7 +158,7 @@ namespace Swarmops.Utility.BotCode
                         //Tick the heartbeat to stop exernal restart if this takes a lot of time, but only if not debugging.
                     }
 
-                    OutboundMailRecipients recipients = mail.GetNextRecipientBatch(batchSize);
+                    OutboundMailRecipients recipients = mail.GetNextRecipientBatch (batchSize);
 
                     maxBatchSize -= recipients.Count; // Decrement number of recipients to process on next mail, if any
 
@@ -173,14 +173,15 @@ namespace Swarmops.Utility.BotCode
                             // TODO: Set special flag
                         {
                             string body = "Your mail has completed transmitting to " +
-                                          mail.RecipientCount.ToString("#,##0") +
-                                          " intended recipients. Out of these, " + mail.RecipientsFail.ToString("#,##0") +
+                                          mail.RecipientCount.ToString ("#,##0") +
+                                          " intended recipients. Out of these, " +
+                                          mail.RecipientsFail.ToString ("#,##0") +
                                           " failed because of invalid, empty, or otherwise bad e-mail addresses. These people have not received your message.\r\n";
 
-                            new MailTransmitter(
+                            new MailTransmitter (
                                 Strings.MailSenderName, Strings.MailSenderAddress,
                                 "Mail transmission completed: " + mail.Title, body,
-                                Person.FromIdentity(mail.AuthorPersonId),
+                                Person.FromIdentity (mail.AuthorPersonId),
                                 true).Send();
                         }
 
@@ -216,13 +217,13 @@ namespace Swarmops.Utility.BotCode
                             MailTransmissionAsyncState asyncState = new MailTransmissionAsyncState();
                             asyncState.dlgt = asyncTransmitter;
                             asyncState.recipient = recipient;
-                            IAsyncResult asyncResult = asyncTransmitter.BeginInvoke(recipient, MailSent, asyncState);
-                            sendInProgress.Add(asyncResult);
-                            waitHandlesList.Add(asyncResult.AsyncWaitHandle);
+                            IAsyncResult asyncResult = asyncTransmitter.BeginInvoke (recipient, MailSent, asyncState);
+                            sendInProgress.Add (asyncResult);
+                            waitHandlesList.Add (asyncResult.AsyncWaitHandle);
                             mailQueueSize++;
                         }
 
-                        Thread.Sleep(25); // Allow some time
+                        Thread.Sleep (25); // Allow some time
                     }
 
                     // now wait for them to finish;
@@ -233,7 +234,7 @@ namespace Swarmops.Utility.BotCode
 
                     while (numberStillExecuting > 0)
                     {
-                        WaitHandle.WaitAny(waitHandlesList.ToArray(), 100, true);
+                        WaitHandle.WaitAny (waitHandlesList.ToArray(), 100, true);
                         lock (lockObject)
                         {
                             numberStillExecuting = 0;
@@ -248,7 +249,7 @@ namespace Swarmops.Utility.BotCode
                                 {
                                     if (!asyncState.callbackCompleted)
                                     {
-                                        waitHandlesList.Add(iares.AsyncWaitHandle);
+                                        waitHandlesList.Add (iares.AsyncWaitHandle);
                                         numberStillExecuting++;
                                     }
                                     else
@@ -292,14 +293,14 @@ namespace Swarmops.Utility.BotCode
 
                         numberExecutingLast = numberStillExecuting;
 
-                        if (lastProgress.AddSeconds(60*2) < DateTime.Now)
+                        if (lastProgress.AddSeconds (60*2) < DateTime.Now)
                         {
                             // since last change, something must have hanged
                             lock (lockObject)
                             {
                                 mailQueueSize = -1000;
                             }
-                            throw new Exception("Timeout in MailProcessor");
+                            throw new Exception ("Timeout in MailProcessor");
                         }
                     }
                 }
@@ -307,17 +308,17 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        internal static OutboundMailRecipient TransmitOneMail(OutboundMailRecipient recipient)
+        internal static OutboundMailRecipient TransmitOneMail (OutboundMailRecipient recipient)
         {
             try
             {
                 // If the mail address in illegal format, do not try to send anything:
-                if (!Formatting.ValidateEmailFormat(recipient.EmailPerson.Email.Trim()))
+                if (!Formatting.ValidateEmailFormat (recipient.EmailPerson.Email.Trim()))
                 {
                     string msg = "Invalid email address:\r\nEmailPerson [" + recipient.EmailPerson.Identity +
                                  "], mail [" +
                                  recipient.EmailPerson.Email + "]\r\nwill not send mail:" + recipient.OutboundMail.Title;
-                    throw new InvalidRecipientException(msg, null);
+                    throw new InvalidRecipientException (msg, null);
                 }
 
                 // If the mail address is marked as unreachable, do not try to send anything
@@ -326,7 +327,7 @@ namespace Swarmops.Utility.BotCode
                     string msg = "MailUnreachable email address:\r\nEmailPerson [" + recipient.EmailPerson.Identity +
                                  "], mail [" +
                                  recipient.EmailPerson.Email + "]\r\nwill not send mail:" + recipient.OutboundMail.Title;
-                    throw new InvalidRecipientException(msg, null);
+                    throw new InvalidRecipientException (msg, null);
                 }
 
                 // If the mail address is marked as unreachable, do not try to send anything
@@ -335,7 +336,7 @@ namespace Swarmops.Utility.BotCode
                     string msg = "NeverMail email address:\r\nEmailPerson [" + recipient.EmailPerson.Identity +
                                  "], mail [" +
                                  recipient.EmailPerson.Email + "]\r\nwill not send mail:" + recipient.OutboundMail.Title;
-                    throw new IgnoreRecipientException(msg, null);
+                    throw new IgnoreRecipientException (msg, null);
                 }
 
 
@@ -350,7 +351,7 @@ namespace Swarmops.Utility.BotCode
                 string email = recipient.EmailPerson.Email.ToLower();
 
 
-                if (mail.MailType == 0 || mail.TemplateName.EndsWith("Plain"))
+                if (mail.MailType == 0 || mail.TemplateName.EndsWith ("Plain"))
                     limitToText = true;
 
                 // TEST: Does this user require the use of a text-only message (as opposed to multipart/alternative)?
@@ -374,7 +375,7 @@ namespace Swarmops.Utility.BotCode
                 // Capability tests end here
 
                 if (limitToLatin1)
-                    currentEncoding = Encoding.GetEncoding("ISO-8859-1");
+                    currentEncoding = Encoding.GetEncoding ("ISO-8859-1");
                 else
                     currentEncoding = Encoding.UTF8;
 
@@ -387,24 +388,24 @@ namespace Swarmops.Utility.BotCode
                 {
                     try
                     {
-                        message.From = new MailAddress(mail.Author.PartyEmail,
-                            qp.EncodeMailHeaderString(mail.Author.Name + " (" + mail.Organization.MailPrefixInherited +
-                                                      ")"),
+                        message.From = new MailAddress (mail.Author.PartyEmail,
+                            qp.EncodeMailHeaderString (mail.Author.Name + " (" + mail.Organization.MailPrefixInherited +
+                                                       ")"),
                             currentEncoding);
 
                         if (mail.Author.Identity == 1)
                         {
                             //TODO: Create alternative party mail optional data field, or organization chairman (based on roles) differently
                             // Ugly hack
-                            message.From = new MailAddress("rick.falkvinge@piratpartiet.se",
-                                qp.EncodeMailHeaderString(mail.Author.Name + " (" +
-                                                          mail.Organization.MailPrefixInherited + ")"),
+                            message.From = new MailAddress ("rick.falkvinge@piratpartiet.se",
+                                qp.EncodeMailHeaderString (mail.Author.Name + " (" +
+                                                           mail.Organization.MailPrefixInherited + ")"),
                                 currentEncoding);
                         }
                     }
                     catch (Exception ex)
                     {
-                        throw new InvalidSenderException(
+                        throw new InvalidSenderException (
                             "Invalid author address in MailProcessor.TransmitOneMail:" + (mail.AuthorPersonId) + ";" +
                             mail.Author.PartyEmail, ex);
                     }
@@ -413,13 +414,14 @@ namespace Swarmops.Utility.BotCode
                 {
                     try
                     {
-                        FunctionalMail.AddressItem aItem = mail.Organization.GetFunctionalMailAddressInh(mail.AuthorType);
-                        message.From = new MailAddress(aItem.Email, qp.EncodeMailHeaderString(aItem.Name),
+                        FunctionalMail.AddressItem aItem =
+                            mail.Organization.GetFunctionalMailAddressInh (mail.AuthorType);
+                        message.From = new MailAddress (aItem.Email, qp.EncodeMailHeaderString (aItem.Name),
                             currentEncoding);
                     }
                     catch (Exception ex)
                     {
-                        throw new InvalidSenderException(
+                        throw new InvalidSenderException (
                             "Unknown MailAuthorType in MailProcessor.TransmitOneMail:" + ((int) mail.AuthorType), ex);
                     }
                 }
@@ -429,9 +431,9 @@ namespace Swarmops.Utility.BotCode
                 {
                     try
                     {
-                        message.To.Add(new MailAddress(recipient.Person.PartyEmail,
-                            qp.EncodeMailHeaderString(recipient.Person.Name + " (" +
-                                                      mail.Organization.MailPrefixInherited + ")"),
+                        message.To.Add (new MailAddress (recipient.Person.PartyEmail,
+                            qp.EncodeMailHeaderString (recipient.Person.Name + " (" +
+                                                       mail.Organization.MailPrefixInherited + ")"),
                             currentEncoding));
                     }
                     catch (FormatException e)
@@ -440,15 +442,15 @@ namespace Swarmops.Utility.BotCode
                                      "], mail [" +
                                      recipient.Person.PartyEmail + "]\r\nwill not send mail:" +
                                      recipient.OutboundMail.Title;
-                        throw new InvalidRecipientException(msg, e);
+                        throw new InvalidRecipientException (msg, e);
                     }
                 }
                 else
                 {
                     try
                     {
-                        message.To.Add(new MailAddress(recipient.EmailPerson.Email,
-                            qp.EncodeMailHeaderString(recipient.EmailPerson.Name),
+                        message.To.Add (new MailAddress (recipient.EmailPerson.Email,
+                            qp.EncodeMailHeaderString (recipient.EmailPerson.Name),
                             currentEncoding));
                     }
                     catch (FormatException e)
@@ -457,7 +459,7 @@ namespace Swarmops.Utility.BotCode
                                      "], mail [" +
                                      recipient.EmailPerson.Email + "]\r\nwill not send mail:" +
                                      recipient.OutboundMail.Title;
-                        throw new InvalidRecipientException(msg, e);
+                        throw new InvalidRecipientException (msg, e);
                     }
                 }
 
@@ -494,11 +496,11 @@ namespace Swarmops.Utility.BotCode
                     {
                         try
                         {
-                            text = mail.RenderText(recipient.EmailPerson, culture);
+                            text = mail.RenderText (recipient.EmailPerson, culture);
                         }
                         catch (Exception ex)
                         {
-                            throw new RemoveRecipientException(
+                            throw new RemoveRecipientException (
                                 "TextRendering failed for " + mail.Title + " to " + recipient.EmailPerson.Email +
                                 " will not retry.\n", ex);
                         }
@@ -518,8 +520,8 @@ namespace Swarmops.Utility.BotCode
                     {
                         try
                         {
-                            text = mail.RenderText(recipient.EmailPerson, culture);
-                            html = mail.RenderHtml(recipient.EmailPerson, culture);
+                            text = mail.RenderText (recipient.EmailPerson, culture);
+                            html = mail.RenderHtml (recipient.EmailPerson, culture);
                         }
                         catch (Exception e)
                         {
@@ -527,18 +529,18 @@ namespace Swarmops.Utility.BotCode
                         }
                     }
                     if (text == "")
-                        throw new RemoveRecipientException(
+                        throw new RemoveRecipientException (
                             "Rendering (text) failed for " + mail.Title + " to " + recipient.EmailPerson.Email +
                             " will not retry.\n", ex);
                     if (html == "" || ex != null)
-                        throw new RemoveRecipientException(
+                        throw new RemoveRecipientException (
                             "Rendering (html) failed for " + mail.Title + " to " + recipient.EmailPerson.Email +
                             " will not retry.\n", ex);
 
-                    ContentType textContentType = new ContentType(MediaTypeNames.Text.Plain);
+                    ContentType textContentType = new ContentType (MediaTypeNames.Text.Plain);
                     textContentType.CharSet = currentEncoding.BodyName;
 
-                    ContentType htmlContentType = new ContentType(MediaTypeNames.Text.Html);
+                    ContentType htmlContentType = new ContentType (MediaTypeNames.Text.Html);
                     htmlContentType.CharSet = currentEncoding.BodyName;
 
                     AlternateView textView = null;
@@ -547,13 +549,15 @@ namespace Swarmops.Utility.BotCode
 
                     if (limitToLatin1)
                     {
-                        textView = new AlternateView(new MemoryStream(currentEncoding.GetBytes(text)), textContentType);
-                        htmlView = new AlternateView(new MemoryStream(currentEncoding.GetBytes(text)), htmlContentType);
+                        textView = new AlternateView (new MemoryStream (currentEncoding.GetBytes (text)),
+                            textContentType);
+                        htmlView = new AlternateView (new MemoryStream (currentEncoding.GetBytes (text)),
+                            htmlContentType);
                     }
                     else
                     {
-                        textView = AlternateView.CreateAlternateViewFromString(text, textContentType);
-                        htmlView = AlternateView.CreateAlternateViewFromString(html, htmlContentType);
+                        textView = AlternateView.CreateAlternateViewFromString (text, textContentType);
+                        htmlView = AlternateView.CreateAlternateViewFromString (html, htmlContentType);
                     }
 
                     // A fucking stupid Mono bug forces us to transfer-encode in base64: it can't encode qp properly
@@ -564,8 +568,8 @@ namespace Swarmops.Utility.BotCode
 
                     // Add the views in increasing order of preference
 
-                    message.AlternateViews.Add(textView);
-                    message.AlternateViews.Add(htmlView);
+                    message.AlternateViews.Add (textView);
+                    message.AlternateViews.Add (htmlView);
                 }
 
                 if (mail.AuthorType == MailAuthorType.PirateWeb)
@@ -588,8 +592,8 @@ namespace Swarmops.Utility.BotCode
 
                 if (Debugger.IsAttached)
                 {
-                    Debug.WriteLine("sending " + message.Subject + " to " + recipient.EmailPerson.Email);
-                    Thread.Sleep(200); //simulate delay
+                    Debug.WriteLine ("sending " + message.Subject + " to " + recipient.EmailPerson.Email);
+                    Thread.Sleep (200); //simulate delay
                 }
 
 
@@ -602,17 +606,17 @@ namespace Swarmops.Utility.BotCode
 
                     try
                     {
-                        SmtpClient client = new SmtpClient(smtpServer, 25);
-                        client.Send(message);
+                        SmtpClient client = new SmtpClient (smtpServer, 25);
+                        client.Send (message);
                     }
                     catch (SmtpException e)
                     {
-                        if (e.ToString().StartsWith("System.Net.Mail.SmtpException: 4"))
+                        if (e.ToString().StartsWith ("System.Net.Mail.SmtpException: 4"))
                         {
                             // Temporary error (SMTP 4xx). Try again.
 
-                            Thread.Sleep(2000); // Allow 2 seconds pause to wait for smtp-server to become available
-                            throw new ReportAndRetryRecipientException("Temporary smtp error, will retry.", e);
+                            Thread.Sleep (2000); // Allow 2 seconds pause to wait for smtp-server to become available
+                            throw new ReportAndRetryRecipientException ("Temporary smtp error, will retry.", e);
                         }
 
                         // Otherwise, bad recipient (assume so). Have the mail removed from the queue.
@@ -620,25 +624,25 @@ namespace Swarmops.Utility.BotCode
                         List<string> recipients = new List<string>();
                         foreach (MailAddress address in message.To)
                         {
-                            recipients.Add(address.Address);
+                            recipients.Add (address.Address);
                         }
 
-                        ExceptionMail.Send(
-                            new ArgumentException(
+                        ExceptionMail.Send (
+                            new ArgumentException (
                                 "Bad Recipients when sending to " + recipient.EmailPerson.Email + ": " +
-                                String.Join(", ", recipients.ToArray()), e));
+                                String.Join (", ", recipients.ToArray()), e));
 
                         if (mail.AuthorType == MailAuthorType.Person)
                         {
                             try
                             {
-                                mail.Author.SendOfficerNotice(
-                                    "Failed recipient(s): " + String.Join(", ", recipients.ToArray()),
+                                mail.Author.SendOfficerNotice (
+                                    "Failed recipient(s): " + String.Join (", ", recipients.ToArray()),
                                     "Some recipients failed inexplicably in a mail from you.", 1);
                             }
                             catch (Exception ex)
                             {
-                                throw new Exception("Failed to SendOfficerNotice to :" + mail.AuthorPersonId, ex);
+                                throw new Exception ("Failed to SendOfficerNotice to :" + mail.AuthorPersonId, ex);
                             }
                         }
                     }
@@ -651,8 +655,8 @@ namespace Swarmops.Utility.BotCode
             }
             catch (RetryRecipientException ex)
             {
-                Thread.Sleep(2000);
-                    // Allow 2 seconds pause to avoid flooding the errorlog too fast in case of a permanent failure
+                Thread.Sleep (2000);
+                // Allow 2 seconds pause to avoid flooding the errorlog too fast in case of a permanent failure
                 throw ex;
             }
             catch (Exception ex)
@@ -662,7 +666,7 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        internal static void MailSent(IAsyncResult result)
+        internal static void MailSent (IAsyncResult result)
         {
             lock (lockObject)
             {
@@ -671,7 +675,7 @@ namespace Swarmops.Utility.BotCode
                 OutboundMailRecipient recipient = asyncState.recipient;
                 try
                 {
-                    asyncTransmitter.EndInvoke(result);
+                    asyncTransmitter.EndInvoke (result);
 
                     try
                     {
@@ -681,15 +685,15 @@ namespace Swarmops.Utility.BotCode
                     catch (Exception ex)
                     {
                         // whatever.. The mail is sent, but we couldn't mark it as such, probably a database failure.
-                        asyncState.exception = new RemoveRecipientException("Couldn't remove mail recipient.", ex);
-                        ExceptionMail.Send(asyncState.exception, true);
+                        asyncState.exception = new RemoveRecipientException ("Couldn't remove mail recipient.", ex);
+                        ExceptionMail.Send (asyncState.exception, true);
                     }
                 }
                 catch (ReportAndRetryRecipientException e)
                 {
                     asyncState.exception = e;
-                    Debug.WriteLine(e.ToString());
-                    ExceptionMail.Send(e, true);
+                    Debug.WriteLine (e.ToString());
+                    ExceptionMail.Send (e, true);
                 }
                 catch (RetryRecipientException e)
                 {
@@ -718,13 +722,13 @@ namespace Swarmops.Utility.BotCode
                     {
                         // Return this exception in asyncState since it is important to stop flooding.
                         asyncState.exception =
-                            new RemoveRecipientException("Couldn't remove mail recipient after exception.", ex);
-                        ExceptionMail.Send(asyncState.exception, true); //Report the secondary exception
+                            new RemoveRecipientException ("Couldn't remove mail recipient after exception.", ex);
+                        ExceptionMail.Send (asyncState.exception, true); //Report the secondary exception
                     }
 
 
-                    Debug.WriteLine(e.ToString());
-                    ExceptionMail.Send(e, true);
+                    Debug.WriteLine (e.ToString());
+                    ExceptionMail.Send (e, true);
                 }
 
                 asyncState.callbackCompleted = true;

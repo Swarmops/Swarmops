@@ -4,9 +4,9 @@ namespace Swarmops.Logic.Support
 {
     public class UrlTranslations
     {
-        public static bool Create(string url)
+        public static bool Create (string url)
         {
-            int id = SwarmDb.GetDatabaseForWriting().CreateUrlTranslation(url);
+            int id = SwarmDb.GetDatabaseForWriting().CreateUrlTranslation (url);
 
             if (id > 0)
             {
@@ -15,14 +15,14 @@ namespace Swarmops.Logic.Support
             return false;
         }
 
-        public static void Set(string originalUrl, string translatedUrl)
+        public static void Set (string originalUrl, string translatedUrl)
         {
-            SwarmDb.GetDatabaseForWriting().SetUrlTranslation(originalUrl, translatedUrl);
+            SwarmDb.GetDatabaseForWriting().SetUrlTranslation (originalUrl, translatedUrl);
         }
 
-        public static string[] GetUntranslated(int maxCount)
+        public static string[] GetUntranslated (int maxCount)
         {
-            return SwarmDb.GetDatabaseForReading().GetUntranslatedUrls(maxCount);
+            return SwarmDb.GetDatabaseForReading().GetUntranslatedUrls (maxCount);
         }
     }
 }

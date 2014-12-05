@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicSwarmopsLogEntry : IHasIdentity
     {
-        public BasicSwarmopsLogEntry(int swarmopsLogEntryId, int personId, DateTime dateTime, int entryTypeId,
+        public BasicSwarmopsLogEntry (int swarmopsLogEntryId, int personId, DateTime dateTime, int entryTypeId,
             string entryXml)
         {
             SwarmopsLogEntryId = swarmopsLogEntryId;
@@ -15,8 +15,8 @@ namespace Swarmops.Basic.Types
             EntryXml = entryXml;
         }
 
-        public BasicSwarmopsLogEntry(BasicSwarmopsLogEntry original)
-            : this(
+        public BasicSwarmopsLogEntry (BasicSwarmopsLogEntry original)
+            : this (
                 original.SwarmopsLogEntryId, original.PersonId, original.DateTime, original.EntryTypeId,
                 original.EntryXml)
         {

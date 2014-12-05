@@ -16,22 +16,22 @@ namespace Swarmops.Database
             "SubtractiveTaxLevelId,AdditiveTaxLevel " + // 10-11
             "FROM Payroll ";
 
-        private BasicPayrollItem ReadPayrollItemFromDataReader(DbDataReader reader)
+        private BasicPayrollItem ReadPayrollItemFromDataReader (DbDataReader reader)
         {
-            int payrollItemId = reader.GetInt32(0);
-            int personId = reader.GetInt32(1);
-            int organizationId = reader.GetInt32(2);
-            int countryId = reader.GetInt32(3);
-            DateTime employedDate = reader.GetDateTime(4);
-            int reportsToPersonId = reader.GetInt32(5);
-            Int64 baseSalaryCents = reader.GetInt64(6);
-            int budgetId = reader.GetInt32(7);
-            bool open = reader.GetBoolean(8);
-            DateTime terminatedDate = reader.GetDateTime(9);
-            int subtractiveTaxLevelId = reader.GetInt32(10);
-            double additiveTaxLevel = reader.GetDouble(11);
+            int payrollItemId = reader.GetInt32 (0);
+            int personId = reader.GetInt32 (1);
+            int organizationId = reader.GetInt32 (2);
+            int countryId = reader.GetInt32 (3);
+            DateTime employedDate = reader.GetDateTime (4);
+            int reportsToPersonId = reader.GetInt32 (5);
+            Int64 baseSalaryCents = reader.GetInt64 (6);
+            int budgetId = reader.GetInt32 (7);
+            bool open = reader.GetBoolean (8);
+            DateTime terminatedDate = reader.GetDateTime (9);
+            int subtractiveTaxLevelId = reader.GetInt32 (10);
+            double additiveTaxLevel = reader.GetDouble (11);
 
-            return new BasicPayrollItem(payrollItemId, personId, organizationId, countryId, employedDate,
+            return new BasicPayrollItem (payrollItemId, personId, organizationId, countryId, employedDate,
                 reportsToPersonId, baseSalaryCents, budgetId, open, terminatedDate, subtractiveTaxLevelId,
                 additiveTaxLevel);
         }
@@ -40,24 +40,24 @@ namespace Swarmops.Database
 
         #region Record reading - SELECT statements
 
-        public BasicPayrollItem GetPayrollItem(int payrollItemId)
+        public BasicPayrollItem GetPayrollItem (int payrollItemId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + payrollFieldSequence + "WHERE PayrollItemId=" + payrollItemId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadPayrollItemFromDataReader(reader);
+                        return ReadPayrollItemFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Payroll Item Id");
+                    throw new ArgumentException ("Unknown Payroll Item Id");
                 }
             }
         }
@@ -70,7 +70,7 @@ namespace Swarmops.Database
         ///     specifiers.
         /// </param>
         /// <returns>The list of matching payroll items.</returns>
-        public BasicPayrollItem[] GetPayroll(params object[] conditions)
+        public BasicPayrollItem[] GetPayroll (params object[] conditions)
         {
             List<BasicPayrollItem> result = new List<BasicPayrollItem>();
 
@@ -79,14 +79,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + payrollFieldSequence + ConstructWhereClause("Payroll", conditions), connection);
+                    GetDbCommand (
+                        "SELECT" + payrollFieldSequence + ConstructWhereClause ("Payroll", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPayrollItemFromDataReader(reader));
+                        result.Add (ReadPayrollItemFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -98,7 +98,7 @@ namespace Swarmops.Database
 
         #region Creation and manipulation - stored procedures
 
-        public int CreatePayrollItem(int personId, int organizationId, DateTime employedDate, int reportsToPersonId,
+        public int CreatePayrollItem (int personId, int organizationId, DateTime employedDate, int reportsToPersonId,
             int countryId,
             Int64 baseSalaryCents, int subtractiveTaxLevelId, double additiveTaxLevel, int budgetId)
         {
@@ -106,69 +106,69 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePayrollItemPrecise", connection);
+                DbCommand command = GetDbCommand ("CreatePayrollItemPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "employedDate", DateTime.Now);
-                AddParameterWithName(command, "reportsToPersonId", reportsToPersonId);
-                AddParameterWithName(command, "countryId", countryId);
-                AddParameterWithName(command, "baseSalaryCents", baseSalaryCents);
-                AddParameterWithName(command, "subtractiveTaxLevelId", subtractiveTaxLevelId);
-                AddParameterWithName(command, "additiveTaxLevel", additiveTaxLevel);
-                AddParameterWithName(command, "budgetId", budgetId);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "employedDate", DateTime.Now);
+                AddParameterWithName (command, "reportsToPersonId", reportsToPersonId);
+                AddParameterWithName (command, "countryId", countryId);
+                AddParameterWithName (command, "baseSalaryCents", baseSalaryCents);
+                AddParameterWithName (command, "subtractiveTaxLevelId", subtractiveTaxLevelId);
+                AddParameterWithName (command, "additiveTaxLevel", additiveTaxLevel);
+                AddParameterWithName (command, "budgetId", budgetId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public void SetPayrollItemOpen(int payrollItemId, bool open)
+        public void SetPayrollItemOpen (int payrollItemId, bool open)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPayrollItemOpen", connection);
+                DbCommand command = GetDbCommand ("SetPayrollItemOpen", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payrollItemId", payrollItemId);
-                AddParameterWithName(command, "open", open);
+                AddParameterWithName (command, "payrollItemId", payrollItemId);
+                AddParameterWithName (command, "open", open);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPayrollItemTerminatedDate(int payrollItemId, DateTime dateTimeTerminated)
+        public void SetPayrollItemTerminatedDate (int payrollItemId, DateTime dateTimeTerminated)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPayrollItemOpen", connection);
+                DbCommand command = GetDbCommand ("SetPayrollItemOpen", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payrollItemId", payrollItemId);
-                AddParameterWithName(command, "dateTimeTerminated", dateTimeTerminated);
+                AddParameterWithName (command, "payrollItemId", payrollItemId);
+                AddParameterWithName (command, "dateTimeTerminated", dateTimeTerminated);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPayrollItemBaseSalary(int payrollItemId, Int64 baseSalaryCents)
+        public void SetPayrollItemBaseSalary (int payrollItemId, Int64 baseSalaryCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPayrollItemBaseSalaryPrecise", connection);
+                DbCommand command = GetDbCommand ("SetPayrollItemBaseSalaryPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "payrollItemId", payrollItemId);
-                AddParameterWithName(command, "baseSalaryCents", baseSalaryCents);
+                AddParameterWithName (command, "payrollItemId", payrollItemId);
+                AddParameterWithName (command, "baseSalaryCents", baseSalaryCents);
 
                 command.ExecuteNonQuery();
             }

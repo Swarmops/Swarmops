@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicBallot : IHasIdentity
     {
-        public BasicBallot(int ballotId, int electionId, int organizationId, int geographyId, string name, int count,
+        public BasicBallot (int ballotId, int electionId, int organizationId, int geographyId, string name, int count,
             string deliveryAddress)
         {
             BallotId = ballotId;
@@ -16,8 +16,8 @@ namespace Swarmops.Basic.Types
             DeliveryAddress = deliveryAddress;
         }
 
-        public BasicBallot(BasicBallot original)
-            : this(
+        public BasicBallot (BasicBallot original)
+            : this (
                 original.BallotId, original.ElectionId, original.OrganizationId, original.GeographyId, original.Name,
                 original.Count, original.DeliveryAddress)
         {

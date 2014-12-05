@@ -17,28 +17,28 @@ namespace Swarmops.Database
             "ThreadUrl,Amended,SequenceNumber " + // 15-17
             "FROM Motions ";
 
-        private static BasicMotion ReadMotionFromDataReader(IDataRecord reader)
+        private static BasicMotion ReadMotionFromDataReader (IDataRecord reader)
         {
-            int motionId = reader.GetInt32(0);
-            int meetingId = reader.GetInt32(1);
-            string designation = reader.GetString(2);
-            int submittedByPersonId = reader.GetInt32(3);
-            int createdByPersonId = reader.GetInt32(4);
-            DateTime createdDateTime = reader.GetDateTime(5);
-            int amendedByPersonId = reader.GetInt32(6);
-            DateTime amendedDateTime = reader.GetDateTime(7);
-            string title = reader.GetString(8);
-            string text = reader.GetString(9);
-            string amendedText = reader.GetString(10);
-            string decisionPoints = reader.GetString(11);
-            string amendedDecisionPoints = reader.GetString(12);
-            bool open = reader.GetBoolean(13);
-            bool passed = reader.GetBoolean(14);
-            string threadUrl = reader.GetString(15);
-            bool amended = reader.GetBoolean(16);
-            int sequenceNumber = reader.GetInt32(17);
+            int motionId = reader.GetInt32 (0);
+            int meetingId = reader.GetInt32 (1);
+            string designation = reader.GetString (2);
+            int submittedByPersonId = reader.GetInt32 (3);
+            int createdByPersonId = reader.GetInt32 (4);
+            DateTime createdDateTime = reader.GetDateTime (5);
+            int amendedByPersonId = reader.GetInt32 (6);
+            DateTime amendedDateTime = reader.GetDateTime (7);
+            string title = reader.GetString (8);
+            string text = reader.GetString (9);
+            string amendedText = reader.GetString (10);
+            string decisionPoints = reader.GetString (11);
+            string amendedDecisionPoints = reader.GetString (12);
+            bool open = reader.GetBoolean (13);
+            bool passed = reader.GetBoolean (14);
+            string threadUrl = reader.GetString (15);
+            bool amended = reader.GetBoolean (16);
+            int sequenceNumber = reader.GetInt32 (17);
 
-            return new BasicMotion(motionId, meetingId, sequenceNumber, designation, submittedByPersonId,
+            return new BasicMotion (motionId, meetingId, sequenceNumber, designation, submittedByPersonId,
                 createdByPersonId, createdDateTime, amended, amendedByPersonId, amendedDateTime, title, text,
                 amendedText, decisionPoints, amendedDecisionPoints, threadUrl, open, passed);
         }
@@ -47,29 +47,29 @@ namespace Swarmops.Database
 
         #region Record reading - SELECT statements
 
-        public BasicMotion GetMotion(int motionId)
+        public BasicMotion GetMotion (int motionId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + motionFieldSequence + "WHERE MotionId=" + motionId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadMotionFromDataReader(reader);
+                        return ReadMotionFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Motion Id: " + motionId);
+                    throw new ArgumentException ("Unknown Motion Id: " + motionId);
                 }
             }
         }
 
-        public BasicMotion[] GetMotions(params object[] conditions)
+        public BasicMotion[] GetMotions (params object[] conditions)
         {
             List<BasicMotion> result = new List<BasicMotion>();
 
@@ -78,14 +78,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + motionFieldSequence + ConstructWhereClause("Motions", conditions), connection);
+                    GetDbCommand (
+                        "SELECT" + motionFieldSequence + ConstructWhereClause ("Motions", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadMotionFromDataReader(reader));
+                        result.Add (ReadMotionFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -97,7 +97,7 @@ namespace Swarmops.Database
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateMotion(int meetingId, int submittingPersonId, int creatingPersonId, string title, string text,
+        public int CreateMotion (int meetingId, int submittingPersonId, int creatingPersonId, string title, string text,
             string decisionPoints)
         {
             DateTime now = DateTime.Now;
@@ -106,18 +106,18 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateMotion", connection);
+                DbCommand command = GetDbCommand ("CreateMotion", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "meetingId", meetingId);
-                AddParameterWithName(command, "submittingPersonId", submittingPersonId);
-                AddParameterWithName(command, "creatingPersonId", creatingPersonId);
-                AddParameterWithName(command, "createdDateTime", now);
-                AddParameterWithName(command, "title", title);
-                AddParameterWithName(command, "text", text);
-                AddParameterWithName(command, "decisionPoints", decisionPoints);
+                AddParameterWithName (command, "meetingId", meetingId);
+                AddParameterWithName (command, "submittingPersonId", submittingPersonId);
+                AddParameterWithName (command, "creatingPersonId", creatingPersonId);
+                AddParameterWithName (command, "createdDateTime", now);
+                AddParameterWithName (command, "title", title);
+                AddParameterWithName (command, "text", text);
+                AddParameterWithName (command, "decisionPoints", decisionPoints);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 

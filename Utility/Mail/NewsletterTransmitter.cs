@@ -12,14 +12,14 @@ namespace Swarmops.Utility.Mail
 {
     public class NewsletterTransmitter2
     {
-        private static QuotedPrintable qpUTF8 = new QuotedPrintable(Encoding.UTF8);
-        private static QuotedPrintable qp8859 = new QuotedPrintable(Encoding.GetEncoding("ISO-8859-1"));
+        private static QuotedPrintable qpUTF8 = new QuotedPrintable (Encoding.UTF8);
+        private static QuotedPrintable qp8859 = new QuotedPrintable (Encoding.GetEncoding ("ISO-8859-1"));
         private readonly string htmlTemplateFile;
         private readonly People sendList;
         private readonly string textTemplateFile;
         private readonly string title;
 
-        public NewsletterTransmitter2(string title, string htmlTemplateFile, string textTemplateFile, People sendList)
+        public NewsletterTransmitter2 (string title, string htmlTemplateFile, string textTemplateFile, People sendList)
         {
             this.title = title;
             this.htmlTemplateFile = htmlTemplateFile;
@@ -35,32 +35,32 @@ namespace Swarmops.Utility.Mail
 
         public void Send()
         {
-            int indexLastBackslash = this.htmlTemplateFile.LastIndexOf('\\');
+            int indexLastBackslash = this.htmlTemplateFile.LastIndexOf ('\\');
 
-            string directory = this.htmlTemplateFile.Substring(0, indexLastBackslash);
-            string nakedFileName = this.htmlTemplateFile.Substring(indexLastBackslash + 1);
+            string directory = this.htmlTemplateFile.Substring (0, indexLastBackslash);
+            string nakedFileName = this.htmlTemplateFile.Substring (indexLastBackslash + 1);
 
             string htmlTemplate = "Failed to read HTML mail template.";
             string textTemplate = "Failed to read plaintext mail template.";
             string intro = "Failed to read intro.";
             string mailBody = "Failed to read mail body.";
 
-            using (StreamReader reader = new StreamReader(this.htmlTemplateFile, Encoding.Default))
+            using (StreamReader reader = new StreamReader (this.htmlTemplateFile, Encoding.Default))
             {
                 htmlTemplate = reader.ReadToEnd();
             }
 
-            using (StreamReader reader = new StreamReader(this.textTemplateFile, Encoding.Default))
+            using (StreamReader reader = new StreamReader (this.textTemplateFile, Encoding.Default))
             {
                 textTemplate = reader.ReadToEnd();
             }
 
-            using (StreamReader reader = new StreamReader(directory + "\\" + "intro.txt", Encoding.Default))
+            using (StreamReader reader = new StreamReader (directory + "\\" + "intro.txt", Encoding.Default))
             {
                 intro = reader.ReadToEnd();
             }
 
-            using (StreamReader reader = new StreamReader(directory + "\\" + "body.txt", Encoding.Default))
+            using (StreamReader reader = new StreamReader (directory + "\\" + "body.txt", Encoding.Default))
             {
                 mailBody = reader.ReadToEnd();
             }
@@ -71,16 +71,16 @@ namespace Swarmops.Utility.Mail
             // Write in the title, intro, and body
 
             htmlTemplate = htmlTemplate.
-                Replace("%TITLE%", HttpUtility.HtmlEncode(this.title.ToUpper())).
-                Replace("%title%", HttpUtility.HtmlEncode(this.title)).
-                Replace("%intro%", HtmlEncode(intro)).
-                Replace("%body%", HtmlEncode(mailBody));
+                Replace ("%TITLE%", HttpUtility.HtmlEncode (this.title.ToUpper())).
+                Replace ("%title%", HttpUtility.HtmlEncode (this.title)).
+                Replace ("%intro%", HtmlEncode (intro)).
+                Replace ("%body%", HtmlEncode (mailBody));
 
             // Embed any inline images directly into the message
 
-            string newsletterIdentifier = DateTime.Now.ToString("yyyyMMddhhMMssfff") + "@piratpartiet.se";
+            string newsletterIdentifier = DateTime.Now.ToString ("yyyyMMddhhMMssfff") + "@piratpartiet.se";
 
-            htmlTemplate = htmlTemplate.Replace("Header-PP-Logo.png", "cid:pplogo" + newsletterIdentifier);
+            htmlTemplate = htmlTemplate.Replace ("Header-PP-Logo.png", "cid:pplogo" + newsletterIdentifier);
 
 
             /*
@@ -99,13 +99,13 @@ namespace Swarmops.Utility.Mail
 
             MemoryStream memStream = new MemoryStream();
 
-            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(htmlTemplate,
-                new ContentType(
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString (htmlTemplate,
+                new ContentType (
                     MediaTypeNames.Text.Html));
 
-            LinkedResource image = new LinkedResource(directory + "\\" + "Header-PP-Logo.png");
+            LinkedResource image = new LinkedResource (directory + "\\" + "Header-PP-Logo.png");
             image.ContentId = "pplogo" + newsletterIdentifier;
-            htmlView.LinkedResources.Add(image);
+            htmlView.LinkedResources.Add (image);
 
             /*
 			image = new LinkedResource(directory + "\\" + "MiddleRight.png");
@@ -151,25 +151,25 @@ namespace Swarmops.Utility.Mail
             // PREPARE FORUM FILE:
 
             string forumTemplate = textTemplate.
-                Replace("%TITLE%", "[h1]" + this.title.ToUpper() + "[/h1]").
-                Replace("%title%", "[h1]" + this.title + "[/h1]").
-                Replace("%intro%", intro).
-                Replace("%body%", mailBody);
+                Replace ("%TITLE%", "[h1]" + this.title.ToUpper() + "[/h1]").
+                Replace ("%title%", "[h1]" + this.title + "[/h1]").
+                Replace ("%intro%", intro).
+                Replace ("%body%", mailBody);
 
             // Replace "<a href="http://link">Text</a>" with "Text (http://link)"
 
             Regex regexLinksForum =
-                new Regex("(?s)\\[a\\s+href=\\\"(?<link>[^\\\"]+)\\\"\\](?<description>[^\\[]+)\\[/a\\]",
+                new Regex ("(?s)\\[a\\s+href=\\\"(?<link>[^\\\"]+)\\\"\\](?<description>[^\\[]+)\\[/a\\]",
                     RegexOptions.Multiline);
 
-            forumTemplate = regexLinksForum.Replace(forumTemplate,
+            forumTemplate = regexLinksForum.Replace (forumTemplate,
                 RewriteUrlsInForum);
 
             using (
-                StreamWriter writer = new StreamWriter(directory + "\\" + "forum.txt", false,
+                StreamWriter writer = new StreamWriter (directory + "\\" + "forum.txt", false,
                     Encoding.Default))
             {
-                writer.WriteLine(forumTemplate);
+                writer.WriteLine (forumTemplate);
             }
 
 
@@ -178,50 +178,50 @@ namespace Swarmops.Utility.Mail
             // Write in the title, intro, and body
 
             textTemplate = textTemplate.
-                Replace("%TITLE%", this.title.ToUpper()).
-                Replace("%title%", this.title).
-                Replace("%intro%", intro).
-                Replace("%body%", mailBody);
+                Replace ("%TITLE%", this.title.ToUpper()).
+                Replace ("%title%", this.title).
+                Replace ("%intro%", intro).
+                Replace ("%body%", mailBody);
 
             // Replace "<a href="http://link">Text</a>" with "Text (http://link)"
 
-            Regex regexLinks = new Regex(
+            Regex regexLinks = new Regex (
                 "(?s)\\[a\\s+href=\\\"(?<link>[^\\\"]+)\\\"\\](?<description>[^\\[]+)\\[/a\\]", RegexOptions.Multiline);
 
-            textTemplate = regexLinks.Replace(textTemplate, RewriteUrlsInText);
+            textTemplate = regexLinks.Replace (textTemplate, RewriteUrlsInText);
 
-            Regex regexHtmlCodes = new Regex("(?s)\\[[^\\[]+\\]", RegexOptions.Multiline);
+            Regex regexHtmlCodes = new Regex ("(?s)\\[[^\\[]+\\]", RegexOptions.Multiline);
 
-            textTemplate = regexHtmlCodes.Replace(textTemplate, string.Empty);
+            textTemplate = regexHtmlCodes.Replace (textTemplate, string.Empty);
 
-            ContentType typeUnicode = new ContentType(MediaTypeNames.Text.Plain);
+            ContentType typeUnicode = new ContentType (MediaTypeNames.Text.Plain);
             typeUnicode.CharSet = "utf-8";
 
-            AlternateView textUnicodeView = AlternateView.CreateAlternateViewFromString(textTemplate, typeUnicode);
+            AlternateView textUnicodeView = AlternateView.CreateAlternateViewFromString (textTemplate, typeUnicode);
 
-            ContentType typeIsoLatin1 = new ContentType(MediaTypeNames.Text.Plain);
+            ContentType typeIsoLatin1 = new ContentType (MediaTypeNames.Text.Plain);
             typeIsoLatin1.CharSet = "iso-8859-1";
 
-            AlternateView textHotmailView = new AlternateView(
-                new MemoryStream(Encoding.Default.GetBytes(textTemplate)), typeIsoLatin1);
+            AlternateView textHotmailView = new AlternateView (
+                new MemoryStream (Encoding.Default.GetBytes (textTemplate)), typeIsoLatin1);
 
             // Finally, send the views to all recipients.
 
-            SendViewsToAllRecipients(htmlView, textUnicodeView, textHotmailView);
+            SendViewsToAllRecipients (htmlView, textUnicodeView, textHotmailView);
         }
 
 
-        private static string RewriteUrlsInText(Match match)
+        private static string RewriteUrlsInText (Match match)
         {
             return match.Groups["description"].Value + " (" + match.Groups["link"].Value + ")";
         }
 
-        private static string RewriteUrlsInForum(Match match)
+        private static string RewriteUrlsInForum (Match match)
         {
             return "[url=" + match.Groups["link"].Value + "]" + match.Groups["description"].Value + "[/url]";
         }
 
-        private void SendViewsToAllRecipients(AlternateView htmlView, AlternateView textUnicodeView,
+        private void SendViewsToAllRecipients (AlternateView htmlView, AlternateView textUnicodeView,
             AlternateView textHotmailView)
         {
             int countTotal = this.sendList.Count;
@@ -237,74 +237,74 @@ namespace Swarmops.Utility.Mail
                     //continue;
                 }
 
-                Console.Write("{0:D4}/{1:D4} - ", count, countTotal);
+                Console.Write ("{0:D4}/{1:D4} - ", count, countTotal);
 
                 if (person.MailUnreachable)
                 {
-                    Console.WriteLine("UNREACHABLE");
+                    Console.WriteLine ("UNREACHABLE");
                     continue;
                 }
 
                 if (person.Mail.Length < 2)
                 {
-                    Console.WriteLine("NO EMAIL");
+                    Console.WriteLine ("NO EMAIL");
                     continue;
                 }
 
 
-                Console.WriteLine(person.Name);
+                Console.WriteLine (person.Name);
 
 
-                SmtpClient client = new SmtpClient("sparrow", 587);
+                SmtpClient client = new SmtpClient ("sparrow", 587);
 
-                MailMessage message = new MailMessage(
-                    new MailAddress("rick.falkvinge@piratpartiet.se", "Rick Falkvinge (Piratpartiet)"),
-                    new MailAddress(person.Mail, person.Name));
+                MailMessage message = new MailMessage (
+                    new MailAddress ("rick.falkvinge@piratpartiet.se", "Rick Falkvinge (Piratpartiet)"),
+                    new MailAddress (person.Mail, person.Name));
 
                 message.Subject = "Piratpartiet: " + this.title;
 
-                message.AlternateViews.Add(htmlView);
+                message.AlternateViews.Add (htmlView);
 
                 string personEmail = person.Mail.Trim().ToLower();
 
-                string identifier = String.Format("{0:X4}", person.Identity);
+                string identifier = String.Format ("{0:X4}", person.Identity);
                 char[] array = identifier.ToCharArray();
-                Array.Reverse(array);
+                Array.Reverse (array);
 
-                identifier = " [PP" + new string(array) + "]";
+                identifier = " [PP" + new string (array) + "]";
 
                 message.Subject += identifier;
 
-                if (personEmail.EndsWith("hotmail.com") || personEmail.EndsWith("msn.com"))
+                if (personEmail.EndsWith ("hotmail.com") || personEmail.EndsWith ("msn.com"))
                 {
-                    message.AlternateViews.Add(textHotmailView);
+                    message.AlternateViews.Add (textHotmailView);
                     message.Subject += " (anpassat till Hotmail)";
                     message.SubjectEncoding = Encoding.Default;
                 }
                 else
                 {
-                    message.AlternateViews.Add(textUnicodeView);
+                    message.AlternateViews.Add (textUnicodeView);
                 }
 
                 // EDIT THE BELOW LINE TO EDIT THE ATTACHMENT
 
-                message.Attachments.Add(
-                    new Attachment(@"C:\Documents and Settings\rick\Desktop\Piratpartiet Nyhetsbrev 2008-04-25.pdf"));
+                message.Attachments.Add (
+                    new Attachment (@"C:\Documents and Settings\rick\Desktop\Piratpartiet Nyhetsbrev 2008-04-25.pdf"));
 
 
-                client.Send(message);
+                client.Send (message);
             }
         }
 
 
-        private string HtmlEncode(string input)
+        private string HtmlEncode (string input)
         {
-            return HttpUtility.HtmlEncode(input).
-                Replace("\r\n\r\n", "</p>\r\n\r\n<p>").
-                Replace("[", "<").
-                Replace("]", ">").
-                Replace("&quot;", "\"").
-                Replace("&amp;", "&");
+            return HttpUtility.HtmlEncode (input).
+                Replace ("\r\n\r\n", "</p>\r\n\r\n<p>").
+                Replace ("[", "<").
+                Replace ("]", ">").
+                Replace ("&quot;", "\"").
+                Replace ("&amp;", "&");
         }
     }
 }

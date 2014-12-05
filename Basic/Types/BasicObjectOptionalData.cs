@@ -9,7 +9,7 @@ namespace Swarmops.Basic.Types
     {
         protected Dictionary<ObjectOptionalDataType, string> OptionalData;
 
-        public BasicObjectOptionalData(ObjectType objectType, int objectId,
+        public BasicObjectOptionalData (ObjectType objectType, int objectId,
             Dictionary<ObjectOptionalDataType, string> initialData)
         {
             ObjectType = objectType;
@@ -17,8 +17,8 @@ namespace Swarmops.Basic.Types
             this.OptionalData = initialData;
         }
 
-        public BasicObjectOptionalData(BasicObjectOptionalData original)
-            : this(original.ObjectType, original.ObjectId, original.OptionalData)
+        public BasicObjectOptionalData (BasicObjectOptionalData original)
+            : this (original.ObjectType, original.ObjectId, original.OptionalData)
         {
             // empty ctor
         }

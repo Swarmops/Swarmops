@@ -7,19 +7,19 @@ namespace Swarmops.Logic.Support
         // Usage: Persistence.Key ["Foobar"] = "42"; Console.WriteLine (Persistence.Key ["Barcode"]);
         // Bad class name and location, refactor later
 
-        public string this[string key]
+        public string this [string key]
         {
-            get { return SwarmDb.GetDatabaseForReading().GetKeyValue(key); }
+            get { return SwarmDb.GetDatabaseForReading().GetKeyValue (key); }
 
             set
             {
                 if (value == null)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetKeyValue(key, "-null-"); // TODO: Delete the key
+                    SwarmDb.GetDatabaseForWriting().SetKeyValue (key, "-null-"); // TODO: Delete the key
                 }
                 else
                 {
-                    SwarmDb.GetDatabaseForWriting().SetKeyValue(key, value);
+                    SwarmDb.GetDatabaseForWriting().SetKeyValue (key, value);
                 }
             }
         }

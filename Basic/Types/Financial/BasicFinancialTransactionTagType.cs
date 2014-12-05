@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialTransactionTagType : IHasIdentity
     {
-        public BasicFinancialTransactionTagType(int financialTransactionTagTypeId,
+        public BasicFinancialTransactionTagType (int financialTransactionTagTypeId,
             int parentFinancialTransactionTagTypeId, int financialTransactionTagSetId, string name, bool active,
             int openedYear, int closedYear)
         {
@@ -17,8 +17,8 @@ namespace Swarmops.Basic.Types.Financial
             ClosedYear = closedYear;
         }
 
-        public BasicFinancialTransactionTagType(BasicFinancialTransactionTagType original) :
-            this(
+        public BasicFinancialTransactionTagType (BasicFinancialTransactionTagType original) :
+            this (
             original.FinancialTransactionTagTypeId, original.ParentFinancialTransactionTagTypeId,
             original.FinancialTransactionTagSetId, original.Name, original.Active, original.OpenedYear,
             original.ClosedYear)

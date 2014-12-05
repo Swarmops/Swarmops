@@ -17,7 +17,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("Select RoleType, PermissionType from PermissionSpecifications",
+                DbCommand command = GetDbCommand ("Select RoleType, PermissionType from PermissionSpecifications",
                     connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
@@ -26,9 +26,9 @@ namespace Swarmops.Database
                     {
                         try
                         {
-                            result.Add(new BasicPermission(
-                                (RoleType) (Enum.Parse(typeof (RoleType), reader.GetString(0), true)),
-                                (Permission) (Enum.Parse(typeof (Permission), reader.GetString(1), true))
+                            result.Add (new BasicPermission (
+                                (RoleType) (Enum.Parse (typeof (RoleType), reader.GetString (0), true)),
+                                (Permission) (Enum.Parse (typeof (Permission), reader.GetString (1), true))
                                 )
                                 );
                         }
@@ -44,18 +44,18 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        public void StoreOnePermission(int RoleTypeId, int PermissionId, bool allow)
+        public void StoreOnePermission (int RoleTypeId, int PermissionId, bool allow)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("StoreOnePermission", connection);
+                DbCommand command = GetDbCommand ("StoreOnePermission", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "p_RoleType", ((RoleType) RoleTypeId).ToString());
-                AddParameterWithName(command, "p_PermissionType", ((Permission) PermissionId).ToString());
-                AddParameterWithName(command, "p_allow", allow ? 1 : 0);
+                AddParameterWithName (command, "p_RoleType", ((RoleType) RoleTypeId).ToString());
+                AddParameterWithName (command, "p_PermissionType", ((Permission) PermissionId).ToString());
+                AddParameterWithName (command, "p_allow", allow ? 1 : 0);
 
                 command.ExecuteNonQuery();
             }

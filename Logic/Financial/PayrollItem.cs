@@ -7,7 +7,7 @@ namespace Swarmops.Logic.Financial
 {
     public class PayrollItem : BasicPayrollItem
     {
-        private PayrollItem(BasicPayrollItem basic) : base(basic)
+        private PayrollItem (BasicPayrollItem basic) : base (basic)
         {
             // private constructor
         }
@@ -21,12 +21,12 @@ namespace Swarmops.Logic.Financial
 
         public Person Person
         {
-            get { return Person.FromIdentity(PersonId); }
+            get { return Person.FromIdentity (PersonId); }
         }
 
         public Person ReportsToPerson
         {
-            get { return Person.FromIdentity(ReportsToPersonId); }
+            get { return Person.FromIdentity (ReportsToPersonId); }
         }
 
         public string PersonCanonical
@@ -36,27 +36,27 @@ namespace Swarmops.Logic.Financial
 
         public FinancialAccount Budget
         {
-            get { return FinancialAccount.FromIdentity(BudgetId); }
+            get { return FinancialAccount.FromIdentity (BudgetId); }
         }
 
         public Country Country
         {
-            get { return Country.FromIdentity(CountryId); }
+            get { return Country.FromIdentity (CountryId); }
         }
 
         public Organization Organization
         {
-            get { return Organization.FromIdentity(OrganizationId); }
+            get { return Organization.FromIdentity (OrganizationId); }
         }
 
-        public static PayrollItem FromBasic(BasicPayrollItem basic)
+        public static PayrollItem FromBasic (BasicPayrollItem basic)
         {
-            return new PayrollItem(basic); // invoke private ctor
+            return new PayrollItem (basic); // invoke private ctor
         }
 
-        public static PayrollItem FromIdentity(int payrollItemId)
+        public static PayrollItem FromIdentity (int payrollItemId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetPayrollItem(payrollItemId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetPayrollItem (payrollItemId));
         }
     }
 }

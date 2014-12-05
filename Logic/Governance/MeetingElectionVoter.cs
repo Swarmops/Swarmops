@@ -5,19 +5,19 @@ namespace Swarmops.Logic.Governance
 {
     public class MeetingElectionVoter : BasicInternalPollVoter
     {
-        private MeetingElectionVoter(BasicInternalPollVoter basic) : base(basic)
+        private MeetingElectionVoter (BasicInternalPollVoter basic) : base (basic)
         {
             // empty ctor
         }
 
         public Person Person
         {
-            get { return Person.FromIdentity(base.PersonId); }
+            get { return Person.FromIdentity (base.PersonId); }
         }
 
         public MeetingElection Poll
         {
-            get { return MeetingElection.FromIdentity(base.InternalPollId); }
+            get { return MeetingElection.FromIdentity (base.InternalPollId); }
         }
 
         public InternalPollVoterStatus VoterStatus
@@ -25,9 +25,9 @@ namespace Swarmops.Logic.Governance
             get { return base.Open ? InternalPollVoterStatus.CanVote : InternalPollVoterStatus.HasAlreadyVoted; }
         }
 
-        public static MeetingElectionVoter FromBasic(BasicInternalPollVoter basic)
+        public static MeetingElectionVoter FromBasic (BasicInternalPollVoter basic)
         {
-            return new MeetingElectionVoter(basic);
+            return new MeetingElectionVoter (basic);
         }
     }
 }

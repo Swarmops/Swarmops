@@ -11,7 +11,7 @@ namespace Swarmops.Utility.Mail
         public readonly int TemplateId;
         public readonly string Title;
 
-        public Newsletter(int templateId, string senderName, string senderAddress, string title, string body,
+        public Newsletter (int templateId, string senderName, string senderAddress, string title, string body,
             People recipients)
         {
             this.TemplateId = templateId;

@@ -8,7 +8,7 @@ namespace Swarmops.Logic.Financial
     {
         public static Currencies GetAll()
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetCurrencies());
+            return FromArray (SwarmDb.GetDatabaseForReading().GetCurrencies());
         }
     }
 }

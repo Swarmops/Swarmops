@@ -28,7 +28,7 @@ namespace Swarmops.Backend
                 ICommsTransmitter transmitter = new CommsTransmitterMail();
 
                 OutboundCommRecipients recipients = comm.Recipients;
-                PayloadEnvelope envelope = PayloadEnvelope.FromXml(comm.PayloadXml);
+                PayloadEnvelope envelope = PayloadEnvelope.FromXml (comm.PayloadXml);
 
                 comm.StartTransmission();
 
@@ -36,12 +36,12 @@ namespace Swarmops.Backend
                 {
                     try
                     {
-                        transmitter.Transmit(envelope, recipient.Person);
+                        transmitter.Transmit (envelope, recipient.Person);
                         recipient.CloseSuccess();
                     }
                     catch (OutboundCommTransmitException e)
                     {
-                        recipient.CloseFailed(e.Description);
+                        recipient.CloseFailed (e.Description);
                     }
                 }
 

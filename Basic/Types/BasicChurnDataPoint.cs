@@ -29,7 +29,7 @@ namespace Swarmops.Basic.Types
         public readonly int OrganizationId;
         public readonly int PersonId;
 
-        public BasicChurnDataPoint(ChurnDataType dataType, DateTime decisionDateTime, DateTime expiryDate,
+        public BasicChurnDataPoint (ChurnDataType dataType, DateTime decisionDateTime, DateTime expiryDate,
             int personId, int organizationId)
         {
             this.DataType = dataType;
@@ -39,8 +39,8 @@ namespace Swarmops.Basic.Types
             this.OrganizationId = organizationId;
         }
 
-        public BasicChurnDataPoint(BasicChurnDataPoint original) :
-            this(
+        public BasicChurnDataPoint (BasicChurnDataPoint original) :
+            this (
             original.DataType, original.DecisionDateTime, original.ExpiryDate, original.PersonId,
             original.OrganizationId)
         {

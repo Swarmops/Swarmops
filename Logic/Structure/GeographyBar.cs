@@ -10,11 +10,11 @@ namespace Swarmops.Logic.Structure
 
         #region IComparable Members
 
-        public int CompareTo(object obj)
+        public int CompareTo (object obj)
         {
             GeographyBar otherBar = (GeographyBar) obj;
 
-            return this.Value.CompareTo(otherBar.Value);
+            return this.Value.CompareTo (otherBar.Value);
         }
 
         #endregion

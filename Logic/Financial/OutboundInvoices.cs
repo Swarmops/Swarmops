@@ -7,19 +7,20 @@ namespace Swarmops.Logic.Financial
 {
     public class OutboundInvoices : PluralBase<OutboundInvoices, OutboundInvoice, BasicOutboundInvoice>
     {
-        public static OutboundInvoices ForOrganization(Organization organization)
+        public static OutboundInvoices ForOrganization (Organization organization)
         {
-            return ForOrganization(organization, false);
+            return ForOrganization (organization, false);
         }
 
-        public static OutboundInvoices ForOrganization(Organization organization, bool includeClosed)
+        public static OutboundInvoices ForOrganization (Organization organization, bool includeClosed)
         {
             if (includeClosed)
             {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetOutboundInvoices(organization));
+                return FromArray (SwarmDb.GetDatabaseForReading().GetOutboundInvoices (organization));
             }
             return
-                FromArray(SwarmDb.GetDatabaseForReading().GetOutboundInvoices(organization, DatabaseCondition.OpenTrue));
+                FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetOutboundInvoices (organization, DatabaseCondition.OpenTrue));
         }
     }
 }

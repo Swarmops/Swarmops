@@ -11,20 +11,20 @@ namespace Swarmops.Logic.Special.Sweden
     {
         #region IHandleProvider Members
 
-        public string GetPersonHandle(int personId)
+        public string GetPersonHandle (int personId)
         {
-            Person person = Person.FromIdentity(personId);
+            Person person = Person.FromIdentity (personId);
 
             if (person.SwedishForumAccountId == 0)
             {
                 return null;
             }
 
-            return SwedishForumDatabase.GetDatabase().GetAccountName(person.SwedishForumAccountId);
+            return SwedishForumDatabase.GetDatabase().GetAccountName (person.SwedishForumAccountId);
         }
 
 
-        public void SetPersonHandle(int personId, string newHandle)
+        public void SetPersonHandle (int personId, string newHandle)
         {
             /* -- unused in Swarmops
 
@@ -70,18 +70,18 @@ namespace Swarmops.Logic.Special.Sweden
 
             // suppress warnings with trace messages
 
-            Trace.WriteLine(personId);
-            Trace.WriteLine(newHandle);
+            Trace.WriteLine (personId);
+            Trace.WriteLine (newHandle);
         }
 
-        public HandleErrorType CanSetHandle(string newHandle)
+        public HandleErrorType CanSetHandle (string newHandle)
         {
-            throw new Exception("The method or operation is not implemented.");
+            throw new Exception ("The method or operation is not implemented.");
         }
 
-        public int GetPersonByHandle(string handle)
+        public int GetPersonByHandle (string handle)
         {
-            throw new Exception("The method or operation is not implemented.");
+            throw new Exception ("The method or operation is not implemented.");
         }
 
         #endregion

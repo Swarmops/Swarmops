@@ -4,10 +4,10 @@ namespace Swarmops.Utility.Special.Sweden
 {
     public class SwedishForumMemberCheck
     {
-        [Obsolete("This kind of specialized code need to move to plugins for Swarmops.", true)]
+        [Obsolete ("This kind of specialized code need to move to plugins for Swarmops.", true)]
         public static void Run()
         {
-            throw new NotImplementedException("Deprecated for Swarmops");
+            throw new NotImplementedException ("Deprecated for Swarmops");
 
             /*
 

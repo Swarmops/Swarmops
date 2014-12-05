@@ -18,7 +18,7 @@ namespace Swarmops.Basic.Types
 
         #endregion
 
-        public BasicReporter(int reporterId, string name, string email, int[] mediaCategoryIds)
+        public BasicReporter (int reporterId, string name, string email, int[] mediaCategoryIds)
         {
             this.reporterId = reporterId;
             this.name = name;
@@ -26,8 +26,8 @@ namespace Swarmops.Basic.Types
             this.mediaCategoryIds = mediaCategoryIds;
         }
 
-        public BasicReporter(BasicReporter original) :
-            this(original.reporterId, original.name, original.email, original.mediaCategoryIds)
+        public BasicReporter (BasicReporter original) :
+            this (original.reporterId, original.name, original.email, original.mediaCategoryIds)
         {
         }
 

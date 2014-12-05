@@ -10,15 +10,15 @@ namespace Swarmops.Logic.Swarm
 {
     public class DashboardTodos : List<DashboardTodo>
     {
-        public static DashboardTodos ForPerson(Person person, Organization organization)
+        public static DashboardTodos ForPerson (Person person, Organization organization)
         {
             DashboardTodos result = new DashboardTodos();
 
-            result.AddExpenseClaimAttestations(person, organization);
-            result.AddCashAdvanceAttestations(person, organization);
+            result.AddExpenseClaimAttestations (person, organization);
+            result.AddCashAdvanceAttestations (person, organization);
             //result.AddSalaryAttestations(person, organization);   TODO!
-            result.AddReceiptValidations(person, organization);
-            result.AddPayouts(person, organization);
+            result.AddReceiptValidations (person, organization);
+            result.AddPayouts (person, organization);
 
             // TODO: Add any hooks
 
@@ -26,14 +26,14 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        private void AddReceiptValidations(Person person, Organization organization)
+        private void AddReceiptValidations (Person person, Organization organization)
         {
-            if (!person.HasAccess(new Access(organization, AccessAspect.Financials, AccessType.Write)))
+            if (!person.HasAccess (new Access (organization, AccessAspect.Financials, AccessType.Write)))
             {
                 return;
             }
 
-            ExpenseClaims claims = ExpenseClaims.ForOrganization(organization);
+            ExpenseClaims claims = ExpenseClaims.ForOrganization (organization);
             claims = claims.WhereUnvalidated;
 
             if (claims.Count == 0)
@@ -46,27 +46,27 @@ namespace Swarmops.Logic.Swarm
 
             if (claims.Count > 1)
             {
-                todo.Description = String.Format(Logic_Swarm_DashboardTodos.Validate_Receipts_Many,
-                    Formatting.GenerateRangeString(claims.Identities));
+                todo.Description = String.Format (Logic_Swarm_DashboardTodos.Validate_Receipts_Many,
+                    Formatting.GenerateRangeString (claims.Identities));
             }
             else
             {
-                todo.Description = String.Format(Logic_Swarm_DashboardTodos.Validate_Receipts_One, claims[0].Identity);
+                todo.Description = String.Format (Logic_Swarm_DashboardTodos.Validate_Receipts_One, claims[0].Identity);
             }
 
             todo.Icon = "/Images/PageIcons/iconshock-invoice-greentick-16px.png";
             todo.Url = "/Pages/v5/Financial/ValidateReceipts.aspx";
 
-            Add(todo);
+            Add (todo);
         }
 
 
         // TODO: Refactor the attest-X functions into one function with minimal differences
 
 
-        private void AddExpenseClaimAttestations(Person person, Organization organization)
+        private void AddExpenseClaimAttestations (Person person, Organization organization)
         {
-            ExpenseClaims claims = ExpenseClaims.ForOrganization(organization);
+            ExpenseClaims claims = ExpenseClaims.ForOrganization (organization);
             List<int> expenseClaimIds = new List<int>();
 
             bool isPersonOrgAdmin = false;
@@ -96,7 +96,7 @@ namespace Swarmops.Logic.Swarm
 
                 if (attestable)
                 {
-                    expenseClaimIds.Add(claim.Identity);
+                    expenseClaimIds.Add (claim.Identity);
                 }
             }
 
@@ -106,25 +106,25 @@ namespace Swarmops.Logic.Swarm
 
                 if (expenseClaimIds.Count > 1)
                 {
-                    todo.Description = String.Format(Logic_Swarm_DashboardTodos.Attest_ExpenseClaim_Many,
-                        Formatting.GenerateRangeString(expenseClaimIds));
+                    todo.Description = String.Format (Logic_Swarm_DashboardTodos.Attest_ExpenseClaim_Many,
+                        Formatting.GenerateRangeString (expenseClaimIds));
                 }
                 else
                 {
-                    todo.Description = String.Format(Logic_Swarm_DashboardTodos.Attest_ExpenseClaim_One,
+                    todo.Description = String.Format (Logic_Swarm_DashboardTodos.Attest_ExpenseClaim_One,
                         expenseClaimIds[0]);
                 }
 
                 todo.Icon = "/Images/PageIcons/iconshock-stamped-paper-16px.png";
                 todo.Url = "/Pages/v5/Financial/AttestCosts.aspx";
 
-                Add(todo);
+                Add (todo);
             }
         }
 
-        private void AddCashAdvanceAttestations(Person person, Organization organization)
+        private void AddCashAdvanceAttestations (Person person, Organization organization)
         {
-            CashAdvances advances = CashAdvances.ForOrganization(organization);
+            CashAdvances advances = CashAdvances.ForOrganization (organization);
             List<int> cashAdvanceIds = new List<int>();
 
             bool isPersonOrgAdmin = false;
@@ -155,7 +155,7 @@ namespace Swarmops.Logic.Swarm
 
                 if (attestable)
                 {
-                    cashAdvanceIds.Add(advance.Identity);
+                    cashAdvanceIds.Add (advance.Identity);
                 }
             }
 
@@ -165,25 +165,25 @@ namespace Swarmops.Logic.Swarm
 
                 if (cashAdvanceIds.Count > 1)
                 {
-                    todo.Description = String.Format(Logic_Swarm_DashboardTodos.Attest_CashAdvance_Many,
-                        Formatting.GenerateRangeString(cashAdvanceIds));
+                    todo.Description = String.Format (Logic_Swarm_DashboardTodos.Attest_CashAdvance_Many,
+                        Formatting.GenerateRangeString (cashAdvanceIds));
                 }
                 else
                 {
-                    todo.Description = String.Format(Logic_Swarm_DashboardTodos.Attest_CashAdvance_One,
+                    todo.Description = String.Format (Logic_Swarm_DashboardTodos.Attest_CashAdvance_One,
                         cashAdvanceIds[0]);
                 }
 
                 todo.Icon = "/Images/PageIcons/iconshock-stamped-paper-16px.png";
                 todo.Url = "/Pages/v5/Financial/AttestCosts.aspx";
 
-                Add(todo);
+                Add (todo);
             }
         }
 
-        private void AddPayouts(Person person, Organization organization)
+        private void AddPayouts (Person person, Organization organization)
         {
-            if (!person.HasAccess(new Access(organization, AccessAspect.Financials, AccessType.Write)))
+            if (!person.HasAccess (new Access (organization, AccessAspect.Financials, AccessType.Write)))
             {
                 return; // do not add this if can't pay out
             }
@@ -204,7 +204,7 @@ namespace Swarmops.Logic.Swarm
             int urgentPayoutCount = 0;
             int overduePayoutCount = 0;
 
-            Payouts payouts = Payouts.Construct(organization);
+            Payouts payouts = Payouts.Construct (organization);
 
             foreach (Payout payout in payouts)
             {
@@ -216,7 +216,7 @@ namespace Swarmops.Logic.Swarm
                     {
                         overduePayoutCount++;
                     }
-                    else if (payout.ExpectedTransactionDate < DateTime.Today.AddDays(7))
+                    else if (payout.ExpectedTransactionDate < DateTime.Today.AddDays (7))
                     {
                         urgentPayoutCount++;
                     }
@@ -226,30 +226,30 @@ namespace Swarmops.Logic.Swarm
             if (payoutCount > 0)
             {
                 todoNormal.Description = payoutCount > 1
-                    ? String.Format(Logic_Swarm_DashboardTodos.Payout_Many,
+                    ? String.Format (Logic_Swarm_DashboardTodos.Payout_Many,
                         payoutCount)
                     : Logic_Swarm_DashboardTodos.Payout_One;
-                Add(todoNormal);
+                Add (todoNormal);
             }
 
             if (overduePayoutCount > 0)
             {
                 todoOverdue.Description = overduePayoutCount > 1
-                    ? String.Format(Logic_Swarm_DashboardTodos.Payout_Overdue_Many,
+                    ? String.Format (Logic_Swarm_DashboardTodos.Payout_Overdue_Many,
                         payoutCount)
                     : Logic_Swarm_DashboardTodos.Payout_Overdue_One;
                 todoOverdue.Urgency = TodoUrgency.Red;
-                Add(todoOverdue);
+                Add (todoOverdue);
             }
 
             if (urgentPayoutCount > 0)
             {
                 todoUrgent.Description = overduePayoutCount > 1
-                    ? String.Format(Logic_Swarm_DashboardTodos.Payout_Urgent_Many,
+                    ? String.Format (Logic_Swarm_DashboardTodos.Payout_Urgent_Many,
                         payoutCount)
                     : Logic_Swarm_DashboardTodos.Payout_Urgent_One;
                 todoUrgent.Urgency = TodoUrgency.Yellow;
-                Add(todoUrgent);
+                Add (todoUrgent);
             }
         }
     }

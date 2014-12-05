@@ -8,19 +8,19 @@ namespace Swarmops.Logic.Support
 {
     public static class Formatting
     {
-        public static string CleanNumber(string input)
+        public static string CleanNumber (string input)
         {
-            return LogicServices.CleanNumber(input);
+            return LogicServices.CleanNumber (input);
         }
 
 
-        public static string GeneratePassword(int length)
+        public static string GeneratePassword (int length)
         {
-            return Authentication.CreateRandomPassword(length);
+            return Authentication.CreateRandomPassword (length);
         }
 
 
-        public static bool ValidateEmailFormat(string email)
+        public static bool ValidateEmailFormat (string email)
         {
             string gTLD = "aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|"
                           + "mobi|museum|name|net|org|pro|tel|travel";
@@ -46,20 +46,20 @@ namespace Swarmops.Logic.Support
                            + "va|vc|ve|vg|vi|vn|vu|"
                            + "wf|ws|ye|yt|yu|za|zm|zw";
             Regex re =
-                new Regex(
+                new Regex (
                     @"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:" +
                     ccTLD + "|" + gTLD + ")$", RegexOptions.IgnoreCase);
-            return re.IsMatch(email);
+            return re.IsMatch (email);
         }
 
 
-        public static string GenerateRangeString(List<int> ids)
+        public static string GenerateRangeString (List<int> ids)
         {
-            return GenerateRangeString(ids.ToArray());
+            return GenerateRangeString (ids.ToArray());
         }
 
 
-        public static string GenerateRangeString(int[] ids)
+        public static string GenerateRangeString (int[] ids)
         {
             if (ids.Length == 0)
             {
@@ -99,10 +99,10 @@ namespace Swarmops.Logic.Support
                 }
             }
 
-            return result.Substring(2);
+            return result.Substring (2);
         }
 
-        public static string AddLuhnChecksum(string number)
+        public static string AddLuhnChecksum (string number)
         {
             int sum = 0;
             for (int i = 0; i < number.Length; i++)
@@ -116,20 +116,20 @@ namespace Swarmops.Logic.Support
         }
 
 
-        public static string ReverseString(string input)
+        public static string ReverseString (string input)
         {
             char[] charArray = input.ToCharArray();
-            Array.Reverse(charArray);
-            return new string(charArray);
+            Array.Reverse (charArray);
+            return new string (charArray);
         }
 
-        public static string JoinIdentities(List<int> ids)
+        public static string JoinIdentities (List<int> ids)
         {
-            return JoinIdentities(ids.ToArray());
+            return JoinIdentities (ids.ToArray());
         }
 
 
-        public static string JoinIdentities(int[] ids)
+        public static string JoinIdentities (int[] ids)
         {
             if (ids.Length == 0)
             {
@@ -138,12 +138,12 @@ namespace Swarmops.Logic.Support
 
             StringBuilder builder = new StringBuilder();
 
-            builder.Append(ids[0].ToString());
+            builder.Append (ids[0].ToString());
 
             for (int index = 1; index < ids.Length; index++)
             {
-                builder.Append(",");
-                builder.Append(ids[index].ToString());
+                builder.Append (",");
+                builder.Append (ids[index].ToString());
             }
 
             return builder.ToString();

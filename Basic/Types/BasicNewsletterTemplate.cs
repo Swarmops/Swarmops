@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
         public string HtmlTemplate;
         public string TextTemplate;
 
-        public BasicNewsletterTemplate(string htmlTemplate, string textTemplate)
+        public BasicNewsletterTemplate (string htmlTemplate, string textTemplate)
         {
             this.HtmlTemplate = htmlTemplate;
             this.TextTemplate = textTemplate;

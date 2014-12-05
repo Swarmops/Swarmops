@@ -7,7 +7,7 @@ namespace Swarmops.Logic.Support
     {
         private readonly int temporaryId;
 
-        public TemporaryIdentity(int temporaryId)
+        public TemporaryIdentity (int temporaryId)
         {
             this.temporaryId = temporaryId;
         }
@@ -19,8 +19,8 @@ namespace Swarmops.Logic.Support
 
         public static TemporaryIdentity GetNew()
         {
-            return new TemporaryIdentity(SwarmDb.GetDatabaseForWriting().GetTemporaryIdentity());
-                // This is actually an Insert, not a Select
+            return new TemporaryIdentity (SwarmDb.GetDatabaseForWriting().GetTemporaryIdentity());
+            // This is actually an Insert, not a Select
         }
     }
 }

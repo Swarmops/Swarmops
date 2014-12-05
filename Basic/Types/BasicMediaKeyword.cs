@@ -18,20 +18,20 @@ namespace Swarmops.Basic.Types
 
         #endregion
 
-        public BasicMediaKeyword(int id, string keyword)
+        public BasicMediaKeyword (int id, string keyword)
         {
             this.id = id;
             this.keyword = keyword;
         }
 
-        public BasicMediaKeyword(BasicMediaKeyword original)
+        public BasicMediaKeyword (BasicMediaKeyword original)
         {
             this.id = original.id;
             this.keyword = original.keyword;
         }
 
         public BasicMediaKeyword()
-            : this(0, string.Empty)
+            : this (0, string.Empty)
         {
         }
 

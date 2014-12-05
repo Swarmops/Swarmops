@@ -15,16 +15,16 @@ namespace Swarmops.Utility.Communications
         private static string _smtpServerCache = string.Empty;
         private static DateTime _cacheReloadTime = DateTime.MinValue;
 
-        public void Transmit(PayloadEnvelope envelope, Person person)
+        public void Transmit (PayloadEnvelope envelope, Person person)
         {
             if (envelope.PayloadClass != "Swarmops.Logic.Communications.Transmission.NotificationPayload")
             {
                 throw new NotImplementedException();
             }
 
-            ICommsRenderer renderer = NotificationPayload.FromXml(envelope.PayloadXml);
+            ICommsRenderer renderer = NotificationPayload.FromXml (envelope.PayloadXml);
 
-            RenderedComm comm = renderer.RenderComm(person);
+            RenderedComm comm = renderer.RenderComm (person);
 
             MailMessage mail = new MailMessage();
 
@@ -32,16 +32,16 @@ namespace Swarmops.Utility.Communications
 
             try
             {
-                mail.From = new MailAddress(comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderName],
+                mail.From = new MailAddress (comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderName],
                     Encoding.UTF8);
-                mail.To.Add(new MailAddress(person.Mail, person.Name));
+                mail.To.Add (new MailAddress (person.Mail, person.Name));
             }
             catch (ArgumentException e)
             {
                 // Address failure -- either sender or recipient
 
                 _cacheReloadTime = DateTime.MinValue;
-                throw new OutboundCommTransmitException("Cannot send mail to " + person.Mail, e);
+                throw new OutboundCommTransmitException ("Cannot send mail to " + person.Mail, e);
             }
 
             mail.Subject = comm[CommRenderPart.Subject];
@@ -56,28 +56,28 @@ namespace Swarmops.Utility.Communications
             if (now > _cacheReloadTime)
             {
                 smtpServer = _smtpServerCache = Persistence.Key["SmtpServer"];
-                _cacheReloadTime = now.AddMinutes(5);
+                _cacheReloadTime = now.AddMinutes (5);
             }
 
-            if (string.IsNullOrEmpty(smtpServer))
+            if (string.IsNullOrEmpty (smtpServer))
             {
                 smtpServer = "192.168.80.204";
-                    // For development use only - invalidate cache instead of this, forcing re-reload
+                // For development use only - invalidate cache instead of this, forcing re-reload
                 _cacheReloadTime = DateTime.MinValue;
             }
 
-            SmtpClient mailClient = new SmtpClient(smtpServer);
+            SmtpClient mailClient = new SmtpClient (smtpServer);
 
             // TODO: SMTP Server login credentials
 
             try
             {
-                mailClient.Send(mail);
+                mailClient.Send (mail);
             }
             catch (Exception e)
             {
                 _cacheReloadTime = DateTime.MinValue;
-                throw new OutboundCommTransmitException("Cannot send mail to " + person.Mail, e);
+                throw new OutboundCommTransmitException ("Cannot send mail to " + person.Mail, e);
             }
         }
     }

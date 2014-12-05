@@ -12,10 +12,10 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateTemporaryIdentity", connection);
+                DbCommand command = GetDbCommand ("CreateTemporaryIdentity", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
     }

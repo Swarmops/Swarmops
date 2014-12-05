@@ -19,25 +19,25 @@ namespace Swarmops.Basic.Types
         {
         }
 
-        public BasicOrganization(int organizationId, string name, string nameInternational)
+        public BasicOrganization (int organizationId, string name, string nameInternational)
         {
             OrganizationId = organizationId;
             Name = name;
             NameInternational = nameInternational;
         }
 
-        public BasicOrganization(int organizationId, int parentOrganizationId, string name, string nameInternational) :
-            this(organizationId, name, nameInternational)
+        public BasicOrganization (int organizationId, int parentOrganizationId, string name, string nameInternational) :
+            this (organizationId, name, nameInternational)
         {
             ParentOrganizationId = parentOrganizationId;
         }
 
 
-        public BasicOrganization(int organizationId, int parentOrganizationId, string name, string nameInternational,
+        public BasicOrganization (int organizationId, int parentOrganizationId, string name, string nameInternational,
             string nameShort, string domain, string mailPrefix, int anchorGeographyId,
             bool acceptsMembers, bool autoAssignNewMembers,
             int defaultCountryId)
-            : this(organizationId, parentOrganizationId, name, nameInternational)
+            : this (organizationId, parentOrganizationId, name, nameInternational)
         {
             this.nameShort = nameShort;
             Domain = domain;
@@ -48,8 +48,8 @@ namespace Swarmops.Basic.Types
             DefaultCountryId = defaultCountryId;
         }
 
-        public BasicOrganization(BasicOrganization original)
-            : this(
+        public BasicOrganization (BasicOrganization original)
+            : this (
                 original.Identity, original.ParentOrganizationId, original.Name, original.NameInternational,
                 original.NameShort, original.Domain, original.MailPrefix, original.AnchorGeographyId,
                 original.AcceptsMembers, original.AutoAssignNewMembers, original.DefaultCountryId)

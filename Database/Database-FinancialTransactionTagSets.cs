@@ -17,17 +17,17 @@ namespace Swarmops.Database
             "VisibilityLevel,ProfitLossType " + // 5-6
             "FROM FinancialTransactionTagSets ";
 
-        private static BasicFinancialTransactionTagSet ReadFinancialTransactionTagSetFromDataReader(IDataRecord reader)
+        private static BasicFinancialTransactionTagSet ReadFinancialTransactionTagSetFromDataReader (IDataRecord reader)
         {
-            int financialTransactionTagSetId = reader.GetInt32(0);
-            int financialTransactionTagSetTypeId = reader.GetInt32(1);
-            int organizationId = reader.GetInt32(2);
-            int order = reader.GetInt32(3);
-            bool allowUntagged = reader.GetBoolean(4);
-            int visibilityLevel = reader.GetInt32(5);
-            int profitLossType = reader.GetInt32(6);
+            int financialTransactionTagSetId = reader.GetInt32 (0);
+            int financialTransactionTagSetTypeId = reader.GetInt32 (1);
+            int organizationId = reader.GetInt32 (2);
+            int order = reader.GetInt32 (3);
+            bool allowUntagged = reader.GetBoolean (4);
+            int visibilityLevel = reader.GetInt32 (5);
+            int profitLossType = reader.GetInt32 (6);
 
-            return new BasicFinancialTransactionTagSet(financialTransactionTagSetId, financialTransactionTagSetTypeId,
+            return new BasicFinancialTransactionTagSet (financialTransactionTagSetId, financialTransactionTagSetTypeId,
                 organizationId, order, allowUntagged, visibilityLevel, profitLossType);
         }
 
@@ -35,32 +35,32 @@ namespace Swarmops.Database
 
         #region Database record reading -- SELECT clauses
 
-        public BasicFinancialTransactionTagSet GetFinancialTransactionTagSet(int financialTransactionTagSetId)
+        public BasicFinancialTransactionTagSet GetFinancialTransactionTagSet (int financialTransactionTagSetId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + financialTransactionTagSetFieldSequence + " WHERE FinancialTransactionTagSetId=" +
-                        financialTransactionTagSetId.ToString(CultureInfo.InvariantCulture), connection);
+                        financialTransactionTagSetId.ToString (CultureInfo.InvariantCulture), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadFinancialTransactionTagSetFromDataReader(reader);
+                        return ReadFinancialTransactionTagSetFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such FinancialTransactionSetTypeId: " +
-                                                financialTransactionTagSetId.ToString(CultureInfo.InvariantCulture));
+                    throw new ArgumentException ("No such FinancialTransactionSetTypeId: " +
+                                                 financialTransactionTagSetId.ToString (CultureInfo.InvariantCulture));
                 }
             }
         }
 
 
-        public BasicFinancialTransactionTagSet[] GetFinancialTransactionTagSets(params object[] conditions)
+        public BasicFinancialTransactionTagSet[] GetFinancialTransactionTagSets (params object[] conditions)
         {
             List<BasicFinancialTransactionTagSet> result = new List<BasicFinancialTransactionTagSet>();
 
@@ -69,16 +69,16 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + financialTransactionTagSetFieldSequence +
-                        ConstructWhereClause("FinancialTransactionTagSets", conditions) + " ORDER BY DisplayOrder",
+                        ConstructWhereClause ("FinancialTransactionTagSets", conditions) + " ORDER BY DisplayOrder",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadFinancialTransactionTagSetFromDataReader(reader));
+                        result.Add (ReadFinancialTransactionTagSetFromDataReader (reader));
                     }
 
                     return result.ToArray();

@@ -19,7 +19,7 @@ namespace Swarmops.Logic.Structure
             this.Timestamp = DateTime.Now;
         }
 
-        public static GeographyStatistics GeneratePresent(int[] memberCountForOrganizations)
+        public static GeographyStatistics GeneratePresent (int[] memberCountForOrganizations)
         {
             Dictionary<int, int> voterCounts = SwarmDb.GetDatabaseForReading().GetGeographyVoterCounts();
             GeographyStatistics result = new GeographyStatistics();
@@ -30,7 +30,7 @@ namespace Swarmops.Logic.Structure
             {
                 GeographyDataPoint dataPoint = new GeographyDataPoint
                 {
-                    GeographyName = Geography.FromIdentity(geographyId).Name,
+                    GeographyName = Geography.FromIdentity (geographyId).Name,
                     GeographyId = geographyId,
                     VoterCount = voterCounts[geographyId]
                 };
@@ -44,8 +44,8 @@ namespace Swarmops.Logic.Structure
             foreach (int orgId in memberCountForOrganizations)
             {
                 People members =
-                    People.FromMemberships(
-                        Memberships.ForOrganizations(Organization.FromIdentity(orgId).GetTree()));
+                    People.FromMemberships (
+                        Memberships.ForOrganizations (Organization.FromIdentity (orgId).GetTree()));
 
                 foreach (Person person in members)
                 {
@@ -54,7 +54,7 @@ namespace Swarmops.Logic.Structure
                     // If we don't have this key, it's because it's too far down. Move up the tree until we're at least
                     // at municipal level.
 
-                    while (geography.Identity != 1 && !result.ContainsKey(geography.Identity))
+                    while (geography.Identity != 1 && !result.ContainsKey (geography.Identity))
                     {
                         geography = geography.Parent;
                     }
@@ -102,7 +102,7 @@ namespace Swarmops.Logic.Structure
                 {
                     // Increment our temp values for every geo node below the one we're currently processing.
 
-                    if (!result.ContainsKey(localNode.Identity))
+                    if (!result.ContainsKey (localNode.Identity))
                     {
                         continue;
                     }
@@ -127,7 +127,7 @@ namespace Swarmops.Logic.Structure
                     }
                 }
 
-                if (!result.ContainsKey(geography.Identity))
+                if (!result.ContainsKey (geography.Identity))
                 {
                     result[geography.Identity] = new GeographyDataPoint
                     {
@@ -164,16 +164,16 @@ namespace Swarmops.Logic.Structure
             return result;
         }
 
-        public static GeographyStatistics FromXml(string xml)
+        public static GeographyStatistics FromXml (string xml)
         {
-            GeographyStatisticsSerializable serializable = GeographyStatisticsSerializable.FromXml(xml);
+            GeographyStatisticsSerializable serializable = GeographyStatisticsSerializable.FromXml (xml);
 
             GeographyStatistics result = new GeographyStatistics();
 
             foreach (GeographyDataPoint dataPoint in serializable)
             {
                 result[dataPoint.GeographyId] = dataPoint;
-                result[dataPoint.GeographyId].GeographyName = HttpUtility.HtmlDecode(dataPoint.GeographyName);
+                result[dataPoint.GeographyId].GeographyName = HttpUtility.HtmlDecode (dataPoint.GeographyName);
             }
 
             return result;
@@ -188,8 +188,8 @@ namespace Swarmops.Logic.Structure
 
             foreach (GeographyDataPoint dataPoint in Values)
             {
-                dataPoint.GeographyName = HttpUtility.HtmlEncode(dataPoint.GeographyName);
-                serializable.Add(dataPoint);
+                dataPoint.GeographyName = HttpUtility.HtmlEncode (dataPoint.GeographyName);
+                serializable.Add (dataPoint);
             }
 
             return serializable.ToXml();
@@ -199,16 +199,16 @@ namespace Swarmops.Logic.Structure
     [Serializable]
     public class GeographyStatisticsSerializable : List<GeographyDataPoint>
     {
-        public static GeographyStatisticsSerializable FromXml(string xml)
+        public static GeographyStatisticsSerializable FromXml (string xml)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof (GeographyStatisticsSerializable));
+            XmlSerializer serializer = new XmlSerializer (typeof (GeographyStatisticsSerializable));
 
             MemoryStream stream = new MemoryStream();
-            byte[] xmlBytes = Encoding.Default.GetBytes(xml);
-            stream.Write(xmlBytes, 0, xmlBytes.Length);
+            byte[] xmlBytes = Encoding.Default.GetBytes (xml);
+            stream.Write (xmlBytes, 0, xmlBytes.Length);
 
             stream.Position = 0;
-            GeographyStatisticsSerializable result = (GeographyStatisticsSerializable) serializer.Deserialize(stream);
+            GeographyStatisticsSerializable result = (GeographyStatisticsSerializable) serializer.Deserialize (stream);
             stream.Close();
 
             return result;
@@ -217,13 +217,13 @@ namespace Swarmops.Logic.Structure
 
         public string ToXml()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof (GeographyStatisticsSerializable));
+            XmlSerializer serializer = new XmlSerializer (typeof (GeographyStatisticsSerializable));
 
             MemoryStream stream = new MemoryStream();
-            serializer.Serialize(stream, this);
+            serializer.Serialize (stream, this);
 
             byte[] xmlBytes = stream.GetBuffer();
-            return Encoding.Default.GetString(xmlBytes);
+            return Encoding.Default.GetString (xmlBytes);
         }
     }
 }

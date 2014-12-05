@@ -13,7 +13,7 @@ namespace Swarmops.Logic.Support.LogEntries
             // public ctor required for serializability
         }
 
-        public PayoutCreatedLogEntry(Person payingPerson, Person beneficiaryPerson, Organization organization,
+        public PayoutCreatedLogEntry (Person payingPerson, Person beneficiaryPerson, Organization organization,
             Currency currency, double amount, string reason)
         {
             Amount = amount;

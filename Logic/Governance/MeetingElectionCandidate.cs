@@ -16,7 +16,7 @@ namespace Swarmops.Logic.Governance
             cache = new Dictionary<int, MeetingElectionCandidate>();
         }
 
-        private MeetingElectionCandidate(BasicInternalPollCandidate basic) : base(basic)
+        private MeetingElectionCandidate (BasicInternalPollCandidate basic) : base (basic)
         {
             // private ctor
         }
@@ -33,7 +33,7 @@ namespace Swarmops.Logic.Governance
             {
                 if (this.personCache == null)
                 {
-                    this.personCache = Person.FromIdentity(PersonId);
+                    this.personCache = Person.FromIdentity (PersonId);
                 }
 
                 return this.personCache;
@@ -44,15 +44,15 @@ namespace Swarmops.Logic.Governance
         {
             get
             {
-                DateTime referenceDate = new DateTime(2010, 9, 19);
+                DateTime referenceDate = new DateTime (2010, 9, 19);
 
                 int age = referenceDate.Year - Person.Birthdate.Year;
-                if (referenceDate < Person.Birthdate.AddYears(age))
+                if (referenceDate < Person.Birthdate.AddYears (age))
                 {
                     age--;
                 }
 
-                return String.Format("{0} år, {1}", age, Person.Geography.Name);
+                return String.Format ("{0} år, {1}", age, Person.Geography.Name);
             }
         }
 
@@ -78,31 +78,31 @@ namespace Swarmops.Logic.Governance
             {
                 base.CandidacyStatement = value;
                 cache[Identity] = this; // Replace cache instance
-                SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateStatement(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateStatement (Identity, value);
             }
         }
 
-        public static MeetingElectionCandidate FromBasic(BasicInternalPollCandidate basic)
+        public static MeetingElectionCandidate FromBasic (BasicInternalPollCandidate basic)
         {
-            return new MeetingElectionCandidate(basic);
+            return new MeetingElectionCandidate (basic);
         }
 
-        public static MeetingElectionCandidate FromIdentity(int internalPollCandidateId)
+        public static MeetingElectionCandidate FromIdentity (int internalPollCandidateId)
         {
-            if (!cache.ContainsKey(internalPollCandidateId))
+            if (!cache.ContainsKey (internalPollCandidateId))
             {
                 cache[internalPollCandidateId] =
-                    FromBasic(SwarmDb.GetDatabaseForReading().GetInternalPollCandidate(internalPollCandidateId));
+                    FromBasic (SwarmDb.GetDatabaseForReading().GetInternalPollCandidate (internalPollCandidateId));
             }
 
             return cache[internalPollCandidateId];
         }
 
-        public static MeetingElectionCandidate FromPersonAndPoll(Person person, MeetingElection poll)
+        public static MeetingElectionCandidate FromPersonAndPoll (Person person, MeetingElection poll)
         {
             MeetingElectionCandidates candidates =
-                MeetingElectionCandidates.FromArray(SwarmDb.GetDatabaseForReading()
-                    .GetInternalPollCandidates(person, poll));
+                MeetingElectionCandidates.FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetInternalPollCandidates (person, poll));
 
             if (candidates.Count == 0)
             {
@@ -111,7 +111,7 @@ namespace Swarmops.Logic.Governance
 
             if (candidates.Count > 1)
             {
-                throw new InvalidOperationException(
+                throw new InvalidOperationException (
                     "A specific person can not be a candidate more than once for a specific poll");
             }
 
@@ -119,11 +119,11 @@ namespace Swarmops.Logic.Governance
         }
 
 
-        public static MeetingElectionCandidate Create(MeetingElection poll, Person person, string candidacyStatement)
+        public static MeetingElectionCandidate Create (MeetingElection poll, Person person, string candidacyStatement)
         {
             return
-                FromIdentity(SwarmDb.GetDatabaseForWriting()
-                    .CreateInternalPollCandidate(poll.Identity, person.Identity, candidacyStatement));
+                FromIdentity (SwarmDb.GetDatabaseForWriting()
+                    .CreateInternalPollCandidate (poll.Identity, person.Identity, candidacyStatement));
         }
 
         public override string ToString()
@@ -131,14 +131,14 @@ namespace Swarmops.Logic.Governance
             return Identity.ToString();
         }
 
-        public void SetSortOrder(string sortOrder)
+        public void SetSortOrder (string sortOrder)
         {
-            SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder(Identity, sortOrder);
+            SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder (Identity, sortOrder);
         }
 
         public void RandomizeSortOrder()
         {
-            SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder(Identity, Guid.NewGuid().ToString());
+            SwarmDb.GetDatabaseForWriting().SetInternalPollCandidateSortOrder (Identity, Guid.NewGuid().ToString());
         }
     }
 }

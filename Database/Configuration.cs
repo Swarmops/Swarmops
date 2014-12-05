@@ -29,7 +29,7 @@ namespace Swarmops.Database
             {
             }
 
-            public Configuration(Credentials read, Credentials write, Credentials admin)
+            public Configuration (Credentials read, Credentials write, Credentials admin)
             {
                 Read = read;
                 Write = write;
@@ -56,7 +56,7 @@ namespace Swarmops.Database
 
                 string testString = _configuration.Admin.Username;
 
-                return !String.IsNullOrEmpty(testString);
+                return !String.IsNullOrEmpty (testString);
             }
 
 
@@ -75,7 +75,8 @@ namespace Swarmops.Database
                 try
                 {
                     using (
-                        FileStream stream = new FileStream(GetConfigurationFileName(), FileMode.Append, FileAccess.Write,
+                        FileStream stream = new FileStream (GetConfigurationFileName(), FileMode.Append,
+                            FileAccess.Write,
                             FileShare.ReadWrite))
                     {
                         // do nothing                                                       
@@ -91,26 +92,26 @@ namespace Swarmops.Database
 
             public static void Load()
             {
-                XmlSerializer serializer = new XmlSerializer(typeof (Configuration));
+                XmlSerializer serializer = new XmlSerializer (typeof (Configuration));
 
                 string configFileName = GetConfigurationFileName();
 
                 using (
-                    FileStream readFileStream = new FileStream(configFileName, FileMode.Open, FileAccess.Read,
+                    FileStream readFileStream = new FileStream (configFileName, FileMode.Open, FileAccess.Read,
                         FileShare.Read))
                 {
-                    _configuration = (Configuration) serializer.Deserialize(readFileStream);
+                    _configuration = (Configuration) serializer.Deserialize (readFileStream);
                 }
             }
 
-            public static void Set(Configuration configuration)
+            public static void Set (Configuration configuration)
             {
-                XmlSerializer serializer = new XmlSerializer(typeof (Configuration));
+                XmlSerializer serializer = new XmlSerializer (typeof (Configuration));
 
                 string fileName = GetConfigurationFileName();
-                using (TextWriter writeFileStream = new StreamWriter(fileName))
+                using (TextWriter writeFileStream = new StreamWriter (fileName))
                 {
-                    serializer.Serialize(writeFileStream, configuration);
+                    serializer.Serialize (writeFileStream, configuration);
                 }
 
                 _configuration = configuration;
@@ -135,9 +136,9 @@ namespace Swarmops.Database
                 {
                     // Dev web process. This will throw if we're not in a HttpContext and trying to debug something else.
 
-                    return HttpContext.Current.Server.MapPath("~/database.config");
+                    return HttpContext.Current.Server.MapPath ("~/database.config");
                 }
-                throw new NotImplementedException("Invalid state");
+                throw new NotImplementedException ("Invalid state");
 
                 // Dev console process
 
@@ -154,7 +155,7 @@ namespace Swarmops.Database
                 // paramless ctor to enable serialization
             }
 
-            public Credentials(string database, ServerSet servers, string username, string password)
+            public Credentials (string database, ServerSet servers, string username, string password)
             {
                 Database = database;
                 ServerSet = servers;
@@ -177,10 +178,10 @@ namespace Swarmops.Database
                 ServerPriorities = new List<string>();
             }
 
-            public ServerSet(string singleServer)
+            public ServerSet (string singleServer)
             {
                 ServerPriorities = new List<string>();
-                ServerPriorities.Add(singleServer);
+                ServerPriorities.Add (singleServer);
             }
 
             public List<string> ServerPriorities { get; set; }

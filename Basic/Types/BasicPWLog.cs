@@ -17,7 +17,7 @@ namespace Swarmops.Basic.Types
         private string valueAfter;
         private string valueBefore;
 
-        public BasicPWLog(DateTime dateTimeUtc,
+        public BasicPWLog (DateTime dateTimeUtc,
             int actingPersonId,
             string affectedItemType,
             int affectedItemId,

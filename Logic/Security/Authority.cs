@@ -13,26 +13,26 @@ namespace Swarmops.Logic.Security
         #region Construction and Creation
 
         private Authority()
-            : base(0, null, null, null)
+            : base (0, null, null, null)
         {
         }
 
-        private Authority(BasicAuthority basic)
-            : base(basic.PersonId, basic.SystemPersonRoles, basic.OrganizationPersonRoles, basic.LocalPersonRoles)
+        private Authority (BasicAuthority basic)
+            : base (basic.PersonId, basic.SystemPersonRoles, basic.OrganizationPersonRoles, basic.LocalPersonRoles)
         {
         }
 
 
-        public static Authority FromBasic(BasicAuthority basic)
+        public static Authority FromBasic (BasicAuthority basic)
         {
-            return new Authority(basic);
+            return new Authority (basic);
         }
 
         #endregion
 
-        public Organizations GetOrganizations(RoleType[] forRoles)
+        public Organizations GetOrganizations (RoleType[] forRoles)
         {
-            if (HasRoleType(RoleType.SystemAdmin))
+            if (HasRoleType (RoleType.SystemAdmin))
             {
                 return Organizations.GetAll();
             }
@@ -41,25 +41,25 @@ namespace Swarmops.Logic.Security
 
             foreach (BasicPersonRole role in OrganizationPersonRoles)
             {
-                if (Array.IndexOf(forRoles, role.Type) >= 0)
-                    orgIdentities.Add(role.OrganizationId);
+                if (Array.IndexOf (forRoles, role.Type) >= 0)
+                    orgIdentities.Add (role.OrganizationId);
             }
 
             foreach (BasicPersonRole role in LocalPersonRoles)
             {
-                if (Array.IndexOf(forRoles, role.Type) >= 0)
-                    orgIdentities.Add(role.OrganizationId);
+                if (Array.IndexOf (forRoles, role.Type) >= 0)
+                    orgIdentities.Add (role.OrganizationId);
             }
 
-            return Organizations.FromIdentities(orgIdentities.ToArray());
+            return Organizations.FromIdentities (orgIdentities.ToArray());
         }
 
 
-        public bool CanSeePerson(Person person)
+        public bool CanSeePerson (Person person)
         {
-            People initialList = People.FromArray(new[] {person});
+            People initialList = People.FromArray (new[] {person});
 
-            People filteredList = Authorization.FilterPeopleToMatchAuthority(initialList, this);
+            People filteredList = Authorization.FilterPeopleToMatchAuthority (initialList, this);
 
             if (filteredList.Count == 0)
             {
@@ -70,36 +70,36 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public Geographies GetGeographiesForOrganization(Organization organization)
+        public Geographies GetGeographiesForOrganization (Organization organization)
         {
             return
-                GetGeographiesForOrganization(organization, RoleTypes.AllRoleTypes);
+                GetGeographiesForOrganization (organization, RoleTypes.AllRoleTypes);
         }
 
-        public Geographies GetGeographiesForOrganization(Organization organization, RoleType[] roleTypes)
+        public Geographies GetGeographiesForOrganization (Organization organization, RoleType[] roleTypes)
         {
             return
-                Geographies.FromArray(Authorization.GetNodesInAuthorityForOrganization(this, organization.Identity,
+                Geographies.FromArray (Authorization.GetNodesInAuthorityForOrganization (this, organization.Identity,
                     roleTypes));
         }
 
 
-        public bool HasLocalRoleAtOrganizationGeography(Organization organization, Geography geography,
+        public bool HasLocalRoleAtOrganizationGeography (Organization organization, Geography geography,
             Authorization.Flag flags)
         {
-            return HasLocalRoleAtOrganizationGeography(organization, geography, RoleTypes.AllLocalRoleTypes, flags);
+            return HasLocalRoleAtOrganizationGeography (organization, geography, RoleTypes.AllLocalRoleTypes, flags);
         }
 
 
-        public bool HasLocalRoleAtOrganizationGeography(Organization organization, Geography geography,
+        public bool HasLocalRoleAtOrganizationGeography (Organization organization, Geography geography,
             RoleType roleType, Authorization.Flag flags)
         {
-            return HasLocalRoleAtOrganizationGeography(organization, geography,
+            return HasLocalRoleAtOrganizationGeography (organization, geography,
                 new[] {roleType}, flags);
         }
 
 
-        public bool HasLocalRoleAtOrganizationGeography(Organization organization, Geography geography,
+        public bool HasLocalRoleAtOrganizationGeography (Organization organization, Geography geography,
             RoleType[] roleTypes, Authorization.Flag flags)
         {
             if (organization != null && organization.Identity == Organization.SandboxIdentity)
@@ -153,7 +153,7 @@ namespace Swarmops.Logic.Security
                         if (!organizationClear
                             && (flags & Authorization.Flag.ExactOrganization) == 0)
                         {
-                            if (organization != null && organization.Inherits(role.OrganizationId))
+                            if (organization != null && organization.Inherits (role.OrganizationId))
                             {
                                 organizationClear = true;
                             }
@@ -161,7 +161,7 @@ namespace Swarmops.Logic.Security
 
                         if (!geographyClear && (flags & Authorization.Flag.ExactGeography) == 0)
                         {
-                            if (geography != null && geography.Inherits(role.GeographyId))
+                            if (geography != null && geography.Inherits (role.GeographyId))
                             {
                                 geographyClear = true;
                             }
@@ -180,17 +180,17 @@ namespace Swarmops.Logic.Security
             return false;
         }
 
-        public bool HasRoleAtOrganization(Organization organization, Authorization.Flag flags)
+        public bool HasRoleAtOrganization (Organization organization, Authorization.Flag flags)
         {
-            return HasRoleAtOrganization(organization, RoleTypes.AllOrganizationalRoleTypes, flags);
+            return HasRoleAtOrganization (organization, RoleTypes.AllOrganizationalRoleTypes, flags);
         }
 
-        public bool HasRoleAtOrganization(Organization organization, RoleType roleType, Authorization.Flag flags)
+        public bool HasRoleAtOrganization (Organization organization, RoleType roleType, Authorization.Flag flags)
         {
-            return HasRoleAtOrganization(organization, new[] {roleType}, flags);
+            return HasRoleAtOrganization (organization, new[] {roleType}, flags);
         }
 
-        public bool HasRoleAtOrganization(Organization organization, RoleType[] roleTypes, Authorization.Flag flags)
+        public bool HasRoleAtOrganization (Organization organization, RoleType[] roleTypes, Authorization.Flag flags)
         {
             if (organization == null)
             {
@@ -220,7 +220,7 @@ namespace Swarmops.Logic.Security
 
                         if ((flags & Authorization.Flag.ExactOrganization) == 0)
                         {
-                            if (organization.Inherits(role.OrganizationId))
+                            if (organization.Inherits (role.OrganizationId))
                             {
                                 return true;
                             }
@@ -233,12 +233,12 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public bool HasRoleType(RoleType roleType)
+        public bool HasRoleType (RoleType roleType)
         {
-            return HasAnyRoleType(new[] {roleType});
+            return HasAnyRoleType (new[] {roleType});
         }
 
-        public bool HasAnyRoleType(RoleType[] roleTypes)
+        public bool HasAnyRoleType (RoleType[] roleTypes)
         {
             foreach (RoleType r in roleTypes)
             {
@@ -255,19 +255,19 @@ namespace Swarmops.Logic.Security
 
         public bool CanEditSystemRoles()
         {
-            return HasPermission(Permission.CanEditSystemRoles, -1, -1,
+            return HasPermission (Permission.CanEditSystemRoles, -1, -1,
                 Authorization.Flag.ExactGeography | Authorization.Flag.ExactOrganization);
         }
 
-        public bool CanEditOrgRolesForOrg(int orgId)
+        public bool CanEditOrgRolesForOrg (int orgId)
         {
-            return HasPermission(Permission.CanEditOrganisationalRoles, orgId, -1, Authorization.Flag.Default);
+            return HasPermission (Permission.CanEditOrganisationalRoles, orgId, -1, Authorization.Flag.Default);
         }
 
 
-        public bool HasAnyPermission(Permission perm)
+        public bool HasAnyPermission (Permission perm)
         {
-            return Authorization.CheckAuthorization(new PermissionSet(perm), -1, -1, this,
+            return Authorization.CheckAuthorization (new PermissionSet (perm), -1, -1, this,
                 Authorization.Flag.AnyGeographyAnyOrganization);
         }
 
@@ -277,32 +277,33 @@ namespace Swarmops.Logic.Security
             return Authorization.CheckAuthorization(new PermissionSet(perm), organizationId, Organization.RootIdentity, this, flags);
         } */
 
-        public bool HasPermission(Permission perm, int organizationId, int geographyId, Authorization.Flag flags)
+        public bool HasPermission (Permission perm, int organizationId, int geographyId, Authorization.Flag flags)
         {
-            return Authorization.CheckAuthorization(new PermissionSet(perm, organizationId, geographyId), organizationId,
+            return Authorization.CheckAuthorization (new PermissionSet (perm, organizationId, geographyId),
+                organizationId,
                 geographyId, this, flags);
         }
 
-        public bool HasPermission(PermissionSet perm, Authorization.Flag flags)
+        public bool HasPermission (PermissionSet perm, Authorization.Flag flags)
         {
-            return Authorization.CheckAuthorization(perm, -1, -1, this, flags);
+            return Authorization.CheckAuthorization (perm, -1, -1, this, flags);
         }
 
-        public bool HasPermission(PermissionSet perm, int organizationId, int geographyId, Authorization.Flag flags)
+        public bool HasPermission (PermissionSet perm, int organizationId, int geographyId, Authorization.Flag flags)
         {
-            return Authorization.CheckAuthorization(perm, organizationId, geographyId, this, flags);
+            return Authorization.CheckAuthorization (perm, organizationId, geographyId, this, flags);
         }
 
 
-        public Organizations OrganisationsWithPermission(Permission perm, RoleType[] roles)
+        public Organizations OrganisationsWithPermission (Permission perm, RoleType[] roles)
         {
-            Organizations orgList = GetOrganizations(roles);
+            Organizations orgList = GetOrganizations (roles);
             Organizations retList = new Organizations();
             foreach (Organization org in orgList)
             {
-                if (HasPermission(perm, org.Identity, -1, Authorization.Flag.Default))
-                    if (!retList.Contains(org))
-                        retList.Add(org);
+                if (HasPermission (perm, org.Identity, -1, Authorization.Flag.Default))
+                    if (!retList.Contains (org))
+                        retList.Add (org);
             }
             return retList;
         }

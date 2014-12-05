@@ -9,7 +9,7 @@ namespace Swarmops.Basic.Types
         /// <summary>
         ///     Normal constructor.
         /// </summary>
-        public BasicOutboundMailRecipient(int outboundMailRecipientId, int outboundMailId, int personId, bool asOfficer,
+        public BasicOutboundMailRecipient (int outboundMailRecipientId, int outboundMailId, int personId, bool asOfficer,
             int personType)
         {
             this.outboundMailId = outboundMailId;
@@ -22,8 +22,8 @@ namespace Swarmops.Basic.Types
         /// <summary>
         ///     Copy constructor.
         /// </summary>
-        public BasicOutboundMailRecipient(BasicOutboundMailRecipient original)
-            : this(
+        public BasicOutboundMailRecipient (BasicOutboundMailRecipient original)
+            : this (
                 original.outboundMailRecipientId, original.outboundMailId, original.personId, original.asOfficer,
                 original.personType)
         {

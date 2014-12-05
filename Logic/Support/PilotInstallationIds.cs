@@ -17,7 +17,7 @@
             get { return "db8f4ade-07f2-4f4f-a1c7-c9da91f93ea9"; }
         }
 
-        public static bool IsPilot(string installationId)
+        public static bool IsPilot (string installationId)
         {
             string thisInstallationId = Persistence.Key["SwarmopsInstallationId"];
             if (installationId == thisInstallationId)

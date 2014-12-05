@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPayrollAdjustment : IHasIdentity
     {
-        public BasicPayrollAdjustment(int payrollAdjustmentId, int payrollItemId, PayrollAdjustmentType type,
+        public BasicPayrollAdjustment (int payrollAdjustmentId, int payrollItemId, PayrollAdjustmentType type,
             Int64 amountCents,
             string description, bool open, int salaryId)
         {
@@ -19,8 +19,8 @@ namespace Swarmops.Basic.Types
         }
 
 
-        public BasicPayrollAdjustment(BasicPayrollAdjustment original)
-            : this(
+        public BasicPayrollAdjustment (BasicPayrollAdjustment original)
+            : this (
                 original.PayrollAdjustmentId, original.PayrollItemId, original.Type, original.AmountCents,
                 original.Description, original.Open, original.SalaryId)
         {

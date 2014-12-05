@@ -12,34 +12,34 @@ namespace Swarmops.Logic.Swarm
         #region Creation and Construction
 
         private Volunteer()
-            : base(0, 0, 0, DateTime.MinValue, false, DateTime.MinValue, string.Empty)
+            : base (0, 0, 0, DateTime.MinValue, false, DateTime.MinValue, string.Empty)
         {
         }
 
-        private Volunteer(BasicVolunteer basic)
-            : base(basic)
+        private Volunteer (BasicVolunteer basic)
+            : base (basic)
         {
             // empty ctor
         }
 
-        public static Volunteer FromIdentity(int volunteerId)
+        public static Volunteer FromIdentity (int volunteerId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetVolunteer(volunteerId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetVolunteer (volunteerId));
         }
 
-        public static Volunteer FromBasic(BasicVolunteer basic)
+        public static Volunteer FromBasic (BasicVolunteer basic)
         {
-            return new Volunteer(basic);
+            return new Volunteer (basic);
         }
 
-        public static Volunteer Create(Person person, Person owner)
+        public static Volunteer Create (Person person, Person owner)
         {
-            return Create(person.Identity, owner.Identity);
+            return Create (person.Identity, owner.Identity);
         }
 
-        public static Volunteer Create(int personId, int ownerPersonId)
+        public static Volunteer Create (int personId, int ownerPersonId)
         {
-            return FromIdentity(SwarmDb.GetDatabaseForWriting().CreateVolunteer(personId, ownerPersonId));
+            return FromIdentity (SwarmDb.GetDatabaseForWriting().CreateVolunteer (personId, ownerPersonId));
         }
 
         #endregion
@@ -67,7 +67,7 @@ namespace Swarmops.Logic.Swarm
             set
             {
                 this.ownerPerson = value;
-                SwarmDb.GetDatabaseForWriting().SetVolunteerOwnerPersonId(Identity, value.Identity);
+                SwarmDb.GetDatabaseForWriting().SetVolunteerOwnerPersonId (Identity, value.Identity);
             }
         }
 
@@ -122,35 +122,35 @@ namespace Swarmops.Logic.Swarm
         {
             get
             {
-                return VolunteerRoles.FromArray(SwarmDb.GetDatabaseForReading().GetVolunteerRolesByVolunteer(Identity));
+                return VolunteerRoles.FromArray (SwarmDb.GetDatabaseForReading().GetVolunteerRolesByVolunteer (Identity));
             }
         }
 
-        public void AddRole(Organization organization, Geography geography, RoleType roleType)
+        public void AddRole (Organization organization, Geography geography, RoleType roleType)
         {
-            AddRole(organization.Identity, geography.Identity, roleType);
+            AddRole (organization.Identity, geography.Identity, roleType);
         }
 
-        public void AddRole(int organizationId, int geographyId, RoleType roleType)
+        public void AddRole (int organizationId, int geographyId, RoleType roleType)
         {
-            SwarmDb.GetDatabaseForWriting().CreateVolunteerRole(Identity, organizationId, geographyId, roleType);
+            SwarmDb.GetDatabaseForWriting().CreateVolunteerRole (Identity, organizationId, geographyId, roleType);
         }
 
-        public void Close(string comments)
+        public void Close (string comments)
         {
-            SwarmDb.GetDatabaseForWriting().CloseVolunteer(Identity, comments);
+            SwarmDb.GetDatabaseForWriting().CloseVolunteer (Identity, comments);
         }
 
         private void PopulateCache()
         {
             if (this.person == null)
             {
-                this.person = Person.FromIdentity(PersonId);
+                this.person = Person.FromIdentity (PersonId);
             }
 
             if (this.ownerPerson == null)
             {
-                this.ownerPerson = Person.FromIdentity(OwnerPersonId);
+                this.ownerPerson = Person.FromIdentity (OwnerPersonId);
             }
 
             if (this.geography == null)
@@ -175,7 +175,7 @@ namespace Swarmops.Logic.Swarm
         /// <param name="withinOrg"></param>
         /// <param name="defaultOwner"></param>
         /// <param name="stopGeography">The parent of top geographies that could/should recieve volunteer (country) </param>
-        public void AutoAssign(Geography geo, int withinOrg, Person defaultOwner, int stopGeography)
+        public void AutoAssign (Geography geo, int withinOrg, Person defaultOwner, int stopGeography)
         {
             //Note: stopGeography is only needed because Districts ar not properly defined. Districts are the ones below country.
             try
@@ -187,9 +187,9 @@ namespace Swarmops.Logic.Swarm
                 //Move up to target geography level
                 //GeographyLevel targetLevel = GeographyLevel.ElectoralCircuit;
                 GeographyLevel targetLevel = GeographyLevel.District;
-                    //This will never hit bcse Districts ar not properly defined
+                //This will never hit bcse Districts ar not properly defined
 
-                while (!(volonteerGeography.AtLevel(targetLevel))
+                while (!(volonteerGeography.AtLevel (targetLevel))
                        && (volonteerGeography.ParentGeographyId != 0)
                        && (volonteerGeography.ParentGeographyId != stopGeography)
                     )
@@ -197,7 +197,7 @@ namespace Swarmops.Logic.Swarm
                     volonteerGeography = volonteerGeography.Parent;
                 }
 
-                Person localLead = Swarm.Roles.GetLocalLead(withinOrg, volonteerGeography.Identity);
+                Person localLead = Swarm.Roles.GetLocalLead (withinOrg, volonteerGeography.Identity);
 
                 if (localLead == null && volonteerGeography.Parent != null)
                 {
@@ -208,7 +208,7 @@ namespace Swarmops.Logic.Swarm
                     {
                         volonteerGeography = volonteerGeography.Parent;
                     }
-                    localLead = Swarm.Roles.GetLocalLead(withinOrg, volonteerGeography.Parent.Parent.Identity);
+                    localLead = Swarm.Roles.GetLocalLead (withinOrg, volonteerGeography.Parent.Parent.Identity);
                 }
 
                 //Found anyone? otherwise leave default Owner.

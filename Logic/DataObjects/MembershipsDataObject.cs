@@ -5,32 +5,32 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Logic.DataObjects
 {
 #if !__MonoCS__
-    [DataObject(true)]
+    [DataObject (true)]
 #endif
     public class MembershipsDataObject
     {
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Membership[] Select(int personId)
+        public static Membership[] Select (int personId)
         {
             return
-                Memberships.FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(Person.FromIdentity(personId)))
+                Memberships.FromArray (SwarmDb.GetDatabaseForReading().GetMemberships (Person.FromIdentity (personId)))
                     .ToArray();
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Membership[] Select(Person person)
+        public static Membership[] Select (Person person)
         {
-            return Select(person.Identity);
+            return Select (person.Identity);
         }
 
 #if !__MonoCS__
-        [DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Membership[] SelectStatic(Memberships memberships)
+        public static Membership[] SelectStatic (Memberships memberships)
         {
             return memberships.ToArray();
         }

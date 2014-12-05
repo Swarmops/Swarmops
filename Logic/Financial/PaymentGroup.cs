@@ -10,7 +10,7 @@ namespace Swarmops.Logic.Financial
 {
     public class PaymentGroup : BasicPaymentGroup, ISummable
     {
-        private PaymentGroup(BasicPaymentGroup basic) : base(basic)
+        private PaymentGroup (BasicPaymentGroup basic) : base (basic)
         {
             // empty ctor
         }
@@ -21,7 +21,7 @@ namespace Swarmops.Logic.Financial
             set
             {
                 base.Tag = value;
-                SwarmDb.GetDatabaseForWriting().SetPaymentGroupTag(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPaymentGroupTag (Identity, value);
             }
         }
 
@@ -31,7 +31,7 @@ namespace Swarmops.Logic.Financial
             set
             {
                 base.AmountCents = value;
-                SwarmDb.GetDatabaseForWriting().SetPaymentGroupAmount(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPaymentGroupAmount (Identity, value);
             }
         }
 
@@ -46,19 +46,19 @@ namespace Swarmops.Logic.Financial
             set
             {
                 base.Open = value;
-                SwarmDb.GetDatabaseForWriting().SetPaymentGroupOpen(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPaymentGroupOpen (Identity, value);
             }
         }
 
 
         public Organization Organization
         {
-            get { return Organization.FromIdentity(OrganizationId); }
+            get { return Organization.FromIdentity (OrganizationId); }
         }
 
         public Payments Payments
         {
-            get { return Payments.ForPaymentGroup(this); }
+            get { return Payments.ForPaymentGroup (this); }
         }
 
         public string Payers
@@ -70,13 +70,13 @@ namespace Swarmops.Logic.Financial
                 {
                     string payer = payment.PayerName;
 
-                    if (!string.IsNullOrEmpty(payer))
+                    if (!string.IsNullOrEmpty (payer))
                     {
-                        payerList.Add(payer);
+                        payerList.Add (payer);
                     }
                 }
 
-                return String.Join(", ", payerList.ToArray());
+                return String.Join (", ", payerList.ToArray());
             }
         }
 
@@ -94,48 +94,48 @@ namespace Swarmops.Logic.Financial
 
         #endregion
 
-        public static PaymentGroup FromIdentity(int paymentGroupId)
+        public static PaymentGroup FromIdentity (int paymentGroupId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetPaymentGroup(paymentGroupId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetPaymentGroup (paymentGroupId));
         }
 
-        private static PaymentGroup FromIdentityAggressive(int paymentGroupId)
+        private static PaymentGroup FromIdentityAggressive (int paymentGroupId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForWriting().GetPaymentGroup(paymentGroupId));
-                // "For writing" intentional - solves race conditions on create
+            return FromBasic (SwarmDb.GetDatabaseForWriting().GetPaymentGroup (paymentGroupId));
+            // "For writing" intentional - solves race conditions on create
         }
 
-        public static PaymentGroup FromBasic(BasicPaymentGroup basic)
+        public static PaymentGroup FromBasic (BasicPaymentGroup basic)
         {
-            return new PaymentGroup(basic);
+            return new PaymentGroup (basic);
         }
 
-        public static PaymentGroup Create(Organization organization, DateTime timestamp, Currency currency,
+        public static PaymentGroup Create (Organization organization, DateTime timestamp, Currency currency,
             Person createdByPerson)
         {
             return
-                FromIdentityAggressive(SwarmDb.GetDatabaseForWriting()
-                    .CreatePaymentGroup(organization.Identity, timestamp,
+                FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
+                    .CreatePaymentGroup (organization.Identity, timestamp,
                         currency.Identity,
                         DateTime.Now, createdByPerson == null ? 0 : createdByPerson.Identity));
         }
 
-        public static PaymentGroup FromTag(Organization organization, string tag)
+        public static PaymentGroup FromTag (Organization organization, string tag)
         {
             BasicPaymentGroup basicGroup = SwarmDb.GetDatabaseForReading()
-                .GetPaymentGroupByTag(organization.Identity, tag);
+                .GetPaymentGroupByTag (organization.Identity, tag);
 
             if (basicGroup == null)
             {
                 return null;
             }
 
-            return FromBasic(basicGroup);
+            return FromBasic (basicGroup);
         }
 
-        public Payment CreatePayment(double amount, string reference, string fromAccount, string key, bool hasImage)
+        public Payment CreatePayment (double amount, string reference, string fromAccount, string key, bool hasImage)
         {
-            return Payment.Create(this, amount, reference, fromAccount, key, hasImage);
+            return Payment.Create (this, amount, reference, fromAccount, key, hasImage);
         }
 
 
@@ -144,18 +144,18 @@ namespace Swarmops.Logic.Financial
             // This function attempts to find a transaction that matches the payment group, a transaction that is currently unbalanced.
             // If found, it balances the transaction against accounts receivable and ties it to the payment group.
 
-            FinancialTransactions transactions = FinancialTransactions.GetUnbalanced(Organization);
+            FinancialTransactions transactions = FinancialTransactions.GetUnbalanced (Organization);
 
-            return MapTransaction(transactions);
+            return MapTransaction (transactions);
         }
 
 
-        public bool MapTransaction(FinancialTransactions transactions)
+        public bool MapTransaction (FinancialTransactions transactions)
         {
             int namespaceLength = 4;
-                // typically, transactions are tagged to be unique per year, so the year is added to tag to make unique
+            // typically, transactions are tagged to be unique per year, so the year is added to tag to make unique
 
-            switch (Char.ToLowerInvariant(Tag[5]))
+            switch (Char.ToLowerInvariant (Tag[5]))
             {
                 case 'm':
                     namespaceLength = 6; // unique per year and month
@@ -168,20 +168,20 @@ namespace Swarmops.Logic.Financial
                     break;
             }
 
-            string lookfor = Tag.Substring(5 + namespaceLength).ToLowerInvariant().Trim();
-            int year = Int32.Parse(Tag.Substring(5, 4));
+            string lookfor = Tag.Substring (5 + namespaceLength).ToLowerInvariant().Trim();
+            int year = Int32.Parse (Tag.Substring (5, 4));
 
-            if (Char.IsDigit(Tag[0]))
+            if (Char.IsDigit (Tag[0]))
             {
-                lookfor = Tag.Substring(namespaceLength); // temp - remove after PPSE books closed for 2011
-                year = Int32.Parse(Tag.Substring(0, 4));
+                lookfor = Tag.Substring (namespaceLength); // temp - remove after PPSE books closed for 2011
+                year = Int32.Parse (Tag.Substring (0, 4));
             }
 
             foreach (FinancialTransaction transaction in transactions)
             {
                 if (transaction.Description.Length >= Organization.IncomingPaymentTag.Length + lookfor.Length &&
-                    transaction.Description.ToLowerInvariant().StartsWith(Organization.IncomingPaymentTag) &&
-                    transaction.Description.Trim().ToLowerInvariant().EndsWith(lookfor))
+                    transaction.Description.ToLowerInvariant().StartsWith (Organization.IncomingPaymentTag) &&
+                    transaction.Description.Trim().ToLowerInvariant().EndsWith (lookfor))
                 {
                     if (transaction.Rows.AmountCentsTotal == AmountCents)
                     {
@@ -191,7 +191,8 @@ namespace Swarmops.Logic.Financial
 
                             // match!
 
-                            transaction.AddRow(Organization.FinancialAccounts.AssetsOutboundInvoices, -AmountCents, null);
+                            transaction.AddRow (Organization.FinancialAccounts.AssetsOutboundInvoices, -AmountCents,
+                                null);
                             transaction.Dependency = this;
                             Open = false;
                             return true;

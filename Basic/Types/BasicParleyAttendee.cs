@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicParleyAttendee : IHasIdentity
     {
-        public BasicParleyAttendee(int parleyAttendeeId, int parleyId, int personId, DateTime signupDateTime,
+        public BasicParleyAttendee (int parleyAttendeeId, int parleyId, int personId, DateTime signupDateTime,
             bool active, DateTime cancelDateTime, bool invoiced, int outboundInvoiceId, bool isGuest)
         {
             ParleyAttendeeId = parleyAttendeeId;
@@ -18,8 +18,8 @@ namespace Swarmops.Basic.Types
             OutboundInvoiceId = outboundInvoiceId;
         }
 
-        public BasicParleyAttendee(BasicParleyAttendee original)
-            : this(
+        public BasicParleyAttendee (BasicParleyAttendee original)
+            : this (
                 original.ParleyAttendeeId, original.ParleyId, original.PersonId, original.SignupDateTime,
                 original.Active, original.CancelDateTime, original.Invoiced, original.OutboundInvoiceId,
                 original.IsGuest)

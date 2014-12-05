@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPaymentGroup : IHasIdentity
     {
-        public BasicPaymentGroup(int paymentGroupId, int organizationId, DateTime dateTime, int currencyId,
+        public BasicPaymentGroup (int paymentGroupId, int organizationId, DateTime dateTime, int currencyId,
             Int64 amountCents, string tag, int createdByPersonId, DateTime createdDateTime, bool open)
         {
             PaymentGroupId = paymentGroupId;
@@ -19,8 +19,8 @@ namespace Swarmops.Basic.Types
             Open = open;
         }
 
-        public BasicPaymentGroup(BasicPaymentGroup original)
-            : this(
+        public BasicPaymentGroup (BasicPaymentGroup original)
+            : this (
                 original.PaymentGroupId, original.OrganizationId, original.DateTime, original.CurrencyId,
                 original.AmountCents, original.Tag, original.CreatedByPersonId, original.CreatedDateTime, original.Open)
         {

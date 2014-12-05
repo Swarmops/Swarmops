@@ -9,13 +9,13 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public BasicExpenseClaim GetExpenseClaim(int expenseClaimId)
+        public BasicExpenseClaim GetExpenseClaim (int expenseClaimId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand(
+                DbCommand command = GetDbCommand (
                     "SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
                     "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
                     "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
@@ -26,15 +26,15 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadExpenseFromDataReader(reader);
+                        return ReadExpenseFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown ExpenseClaim Id");
+                    throw new ArgumentException ("Unknown ExpenseClaim Id");
                 }
             }
         }
 
-        public BasicExpenseClaim[] GetExpenseClaims(params object[] conditions)
+        public BasicExpenseClaim[] GetExpenseClaims (params object[] conditions)
         {
             List<BasicExpenseClaim> result = new List<BasicExpenseClaim>();
 
@@ -43,17 +43,17 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                 "FROM ExpenseClaims " + ConstructWhereClause("ExpenseClaims", conditions),
+                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
+                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                  "FROM ExpenseClaims " + ConstructWhereClause ("ExpenseClaims", conditions),
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadExpenseFromDataReader(reader));
+                        result.Add (ReadExpenseFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -61,7 +61,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicExpenseClaim[] GetExpenseClaimsByClaimer(int claimingPersonId)
+        public BasicExpenseClaim[] GetExpenseClaimsByClaimer (int claimingPersonId)
         {
             List<BasicExpenseClaim> result = new List<BasicExpenseClaim>();
 
@@ -70,17 +70,17 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                 "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId,
+                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
+                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                  "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadExpenseFromDataReader(reader));
+                        result.Add (ReadExpenseFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -88,7 +88,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicExpenseClaim[] GetExpenseClaimsByClaimerAndOrganization(int claimingPersonId, int organizationId)
+        public BasicExpenseClaim[] GetExpenseClaimsByClaimerAndOrganization (int claimingPersonId, int organizationId)
         {
             List<BasicExpenseClaim> result = new List<BasicExpenseClaim>();
 
@@ -97,18 +97,18 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                 "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId +
-                                 " AND OrganizationId=" + organizationId,
+                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
+                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                  "FROM ExpenseClaims WHERE ClaimingPersonId=" + claimingPersonId +
+                                  " AND OrganizationId=" + organizationId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadExpenseFromDataReader(reader));
+                        result.Add (ReadExpenseFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -116,7 +116,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicExpenseClaim[] GetExpenseClaimsByBudgetAndYear(int budgetId, int budgetYear)
+        public BasicExpenseClaim[] GetExpenseClaimsByBudgetAndYear (int budgetId, int budgetYear)
         {
             List<BasicExpenseClaim> result = new List<BasicExpenseClaim>();
 
@@ -125,17 +125,17 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                 "FROM ExpenseClaims WHERE BudgetId=" + budgetId + " AND BudgetYear=" + budgetYear,
+                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
+                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                  "FROM ExpenseClaims WHERE BudgetId=" + budgetId + " AND BudgetYear=" + budgetYear,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadExpenseFromDataReader(reader));
+                        result.Add (ReadExpenseFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -143,7 +143,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicExpenseClaim[] GetExpenseClaimsByOrganization(int organizationId)
+        public BasicExpenseClaim[] GetExpenseClaimsByOrganization (int organizationId)
         {
             List<BasicExpenseClaim> result = new List<BasicExpenseClaim>();
 
@@ -152,17 +152,17 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
-                                 "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
-                                 "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
-                                 "FROM ExpenseClaims WHERE OrganizationId=" + organizationId,
+                    GetDbCommand ("SELECT ExpenseClaimId,ClaimingPersonId,CreatedDateTime,Open,Attested," +
+                                  "Validated,Claimed,OrganizationId,GeographyId,BudgetId," +
+                                  "ExpenseDate,Description,PreApprovedAmount,AmountCents,Repaid,KeepSeparate " +
+                                  "FROM ExpenseClaims WHERE OrganizationId=" + organizationId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadExpenseFromDataReader(reader));
+                        result.Add (ReadExpenseFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -171,282 +171,282 @@ namespace Swarmops.Database
         }
 
 
-        private BasicExpenseClaim ReadExpenseFromDataReader(DbDataReader reader)
+        private BasicExpenseClaim ReadExpenseFromDataReader (DbDataReader reader)
         {
-            int expenseClaimId = reader.GetInt32(0);
-            int claimingPersonId = reader.GetInt32(1);
-            DateTime createdDateTime = reader.GetDateTime(2);
-            bool open = reader.GetBoolean(3);
-            bool attested = reader.GetBoolean(4);
-            bool documented = reader.GetBoolean(5);
-            bool claimed = reader.GetBoolean(6);
-            int organizationId = reader.GetInt32(7);
-            int geographyId = reader.GetInt32(8); // obsolete field
-            int budgetId = reader.GetInt32(9);
-            DateTime expenseDate = reader.GetDateTime(10);
-            string description = reader.GetString(11);
-            double preApprovedAmount = reader.GetDouble(12);
-            Int64 amountCents = reader.GetInt64(13);
-            bool repaid = reader.GetBoolean(14);
-            bool keepSeparate = reader.GetBoolean(15);
+            int expenseClaimId = reader.GetInt32 (0);
+            int claimingPersonId = reader.GetInt32 (1);
+            DateTime createdDateTime = reader.GetDateTime (2);
+            bool open = reader.GetBoolean (3);
+            bool attested = reader.GetBoolean (4);
+            bool documented = reader.GetBoolean (5);
+            bool claimed = reader.GetBoolean (6);
+            int organizationId = reader.GetInt32 (7);
+            int geographyId = reader.GetInt32 (8); // obsolete field
+            int budgetId = reader.GetInt32 (9);
+            DateTime expenseDate = reader.GetDateTime (10);
+            string description = reader.GetString (11);
+            double preApprovedAmount = reader.GetDouble (12);
+            Int64 amountCents = reader.GetInt64 (13);
+            bool repaid = reader.GetBoolean (14);
+            bool keepSeparate = reader.GetBoolean (15);
 
-            return new BasicExpenseClaim(expenseClaimId, claimingPersonId, createdDateTime,
+            return new BasicExpenseClaim (expenseClaimId, claimingPersonId, createdDateTime,
                 open, attested, documented, claimed, organizationId, geographyId,
                 budgetId, expenseDate, description, preApprovedAmount,
                 amountCents, repaid, keepSeparate);
         }
 
 
-        public int CreateExpenseClaim(int claimingPersonId, int organizationId, int budgetId,
+        public int CreateExpenseClaim (int claimingPersonId, int organizationId, int budgetId,
             DateTime expenseDate, string description, double amount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateExpenseClaim", connection);
+                DbCommand command = GetDbCommand ("CreateExpenseClaim", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "claimingPersonId", claimingPersonId);
-                AddParameterWithName(command, "createdDateTime", DateTime.Now);
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "expenseDate", expenseDate);
-                AddParameterWithName(command, "description", description);
-                AddParameterWithName(command, "amount", amount);
+                AddParameterWithName (command, "claimingPersonId", claimingPersonId);
+                AddParameterWithName (command, "createdDateTime", DateTime.Now);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "expenseDate", expenseDate);
+                AddParameterWithName (command, "description", description);
+                AddParameterWithName (command, "amount", amount);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int CreateExpenseClaim(int claimingPersonId, int organizationId, int budgetId,
+        public int CreateExpenseClaim (int claimingPersonId, int organizationId, int budgetId,
             DateTime expenseDate, string description, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateExpenseClaimPrecise", connection);
+                DbCommand command = GetDbCommand ("CreateExpenseClaimPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "claimingPersonId", claimingPersonId);
-                AddParameterWithName(command, "createdDateTime", DateTime.Now);
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "budgetId", budgetId);
-                AddParameterWithName(command, "expenseDate", expenseDate);
-                AddParameterWithName(command, "description", description);
-                AddParameterWithName(command, "amountCents", amountCents);
+                AddParameterWithName (command, "claimingPersonId", claimingPersonId);
+                AddParameterWithName (command, "createdDateTime", DateTime.Now);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "budgetId", budgetId);
+                AddParameterWithName (command, "expenseDate", expenseDate);
+                AddParameterWithName (command, "description", description);
+                AddParameterWithName (command, "amountCents", amountCents);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int SetExpenseClaimDescription(int expenseClaimId, string description)
+        public int SetExpenseClaimDescription (int expenseClaimId, string description)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimDescription", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimDescription", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "description", description);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "description", description);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimBudget(int expenseClaimId, int budgetId)
+        public int SetExpenseClaimBudget (int expenseClaimId, int budgetId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimBudget", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimBudget", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "budgetId", budgetId);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "budgetId", budgetId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimBudgetYear(int expenseClaimId, int budgetYear)
+        public int SetExpenseClaimBudgetYear (int expenseClaimId, int budgetYear)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimBudgetYear", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimBudgetYear", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "budgetYear", budgetYear);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "budgetYear", budgetYear);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimDate(int expenseClaimId, DateTime expenseDate)
+        public int SetExpenseClaimDate (int expenseClaimId, DateTime expenseDate)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimDate", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimDate", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "expenseDate", expenseDate);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "expenseDate", expenseDate);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimAmount(int expenseClaimId, double amount)
+        public int SetExpenseClaimAmount (int expenseClaimId, double amount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimAmount", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimAmount", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "amount", amount);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "amount", amount);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimAmount(int expenseClaimId, Int64 amountCents)
+        public int SetExpenseClaimAmount (int expenseClaimId, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimAmountPrecise", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimAmountPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "amountCents", amountCents);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "amountCents", amountCents);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimAttested(int expenseClaimId, bool attested)
+        public int SetExpenseClaimAttested (int expenseClaimId, bool attested)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimAttested", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimAttested", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "attested", attested);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "attested", attested);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimValidated(int expenseClaimId, bool validated)
+        public int SetExpenseClaimValidated (int expenseClaimId, bool validated)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimValidated", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimValidated", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "validated", validated);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "validated", validated);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimKeepSeparate(int expenseClaimId, bool keepSeparate)
+        public int SetExpenseClaimKeepSeparate (int expenseClaimId, bool keepSeparate)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimKeepSeparate", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimKeepSeparate", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "keepSeparate", keepSeparate);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "keepSeparate", keepSeparate);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimClaimed(int expenseClaimId, bool claimed)
+        public int SetExpenseClaimClaimed (int expenseClaimId, bool claimed)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimClaimed", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimClaimed", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "claimed", claimed);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "claimed", claimed);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimOpen(int expenseClaimId, bool open)
+        public int SetExpenseClaimOpen (int expenseClaimId, bool open)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimOpen", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimOpen", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "open", open);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "open", open);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetExpenseClaimRepaid(int expenseClaimId, bool repaid)
+        public int SetExpenseClaimRepaid (int expenseClaimId, bool repaid)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExpenseClaimRepaid", connection);
+                DbCommand command = GetDbCommand ("SetExpenseClaimRepaid", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "expenseClaimId", expenseClaimId);
-                AddParameterWithName(command, "repaid", repaid);
+                AddParameterWithName (command, "expenseClaimId", expenseClaimId);
+                AddParameterWithName (command, "repaid", repaid);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int CreateExpenseEvent(int expenseId, ExpenseEventType eventType, int personId)
+        public int CreateExpenseEvent (int expenseId, ExpenseEventType eventType, int personId)
         {
-            throw new NotImplementedException("Not migrated to version 4");
+            throw new NotImplementedException ("Not migrated to version 4");
 
             /*
             // WARNING: NOT CONVERTED TO V4 YET

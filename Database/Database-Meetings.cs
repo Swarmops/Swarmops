@@ -15,19 +15,19 @@ namespace Swarmops.Database
             "AmendmentVotingStarts,AmendmentVotingEnds,MotionVotingStarts,MotionVotingEnds " + // 5-8
             "FROM Meetings ";
 
-        private static BasicMeeting ReadMeetingFromDataReader(IDataRecord reader)
+        private static BasicMeeting ReadMeetingFromDataReader (IDataRecord reader)
         {
-            int meetingId = reader.GetInt32(0);
-            int organizationId = reader.GetInt32(1);
-            string name = reader.GetString(2);
-            DateTime motionSubmissionEnds = reader.GetDateTime(3);
-            DateTime amendmentSubmissionEnds = reader.GetDateTime(4);
-            DateTime amendmentVotingStarts = reader.GetDateTime(5);
-            DateTime amendmentVotingEnds = reader.GetDateTime(6);
-            DateTime motionVotingStarts = reader.GetDateTime(7);
-            DateTime motionVotingEnds = reader.GetDateTime(8);
+            int meetingId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32 (1);
+            string name = reader.GetString (2);
+            DateTime motionSubmissionEnds = reader.GetDateTime (3);
+            DateTime amendmentSubmissionEnds = reader.GetDateTime (4);
+            DateTime amendmentVotingStarts = reader.GetDateTime (5);
+            DateTime amendmentVotingEnds = reader.GetDateTime (6);
+            DateTime motionVotingStarts = reader.GetDateTime (7);
+            DateTime motionVotingEnds = reader.GetDateTime (8);
 
-            return new BasicMeeting(meetingId, organizationId, name, motionSubmissionEnds, amendmentSubmissionEnds,
+            return new BasicMeeting (meetingId, organizationId, name, motionSubmissionEnds, amendmentSubmissionEnds,
                 amendmentVotingStarts, amendmentVotingEnds, motionVotingStarts, motionVotingEnds);
         }
 
@@ -35,29 +35,29 @@ namespace Swarmops.Database
 
         #region Record reading - SELECT statements
 
-        public BasicMeeting GetMeeting(int meetingId)
+        public BasicMeeting GetMeeting (int meetingId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + meetingFieldSequence + "WHERE MeetingId=" + meetingId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadMeetingFromDataReader(reader);
+                        return ReadMeetingFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Meeting Id: " + meetingId);
+                    throw new ArgumentException ("Unknown Meeting Id: " + meetingId);
                 }
             }
         }
 
-        public BasicMeeting[] GetMeetings(params object[] conditions)
+        public BasicMeeting[] GetMeetings (params object[] conditions)
         {
             List<BasicMeeting> result = new List<BasicMeeting>();
 
@@ -66,14 +66,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + motionFieldSequence + ConstructWhereClause("Meetings", conditions), connection);
+                    GetDbCommand (
+                        "SELECT" + motionFieldSequence + ConstructWhereClause ("Meetings", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadMeetingFromDataReader(reader));
+                        result.Add (ReadMeetingFromDataReader (reader));
                     }
 
                     return result.ToArray();

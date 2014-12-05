@@ -9,7 +9,7 @@ namespace Swarmops.Utility.BotCode
         {
             // TODO: Foreach open poll...
 
-            MeetingElectionCandidates candidates = MeetingElectionCandidates.ForPoll(MeetingElection.Primaries2010);
+            MeetingElectionCandidates candidates = MeetingElectionCandidates.ForPoll (MeetingElection.Primaries2010);
 
             foreach (MeetingElectionCandidate candidate in candidates)
             {

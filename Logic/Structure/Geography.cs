@@ -15,46 +15,46 @@ namespace Swarmops.Logic.Structure
         #region Construction and Creation
 
         private Geography()
-            : base(0, 0, string.Empty)
+            : base (0, 0, string.Empty)
         {
             // private ctor prevents construction
         }
 
-        private Geography(BasicGeography basic)
-            : base(basic)
+        private Geography (BasicGeography basic)
+            : base (basic)
         {
             // construction from basic
         }
 
-        public static Geography FromBasic(BasicGeography basic)
+        public static Geography FromBasic (BasicGeography basic)
         {
-            return new Geography(basic);
+            return new Geography (basic);
         }
 
-        public static Geography FromIdentity(int geographyId)
+        public static Geography FromIdentity (int geographyId)
         {
-            return FromBasic(GeographyCache.GetGeography(geographyId));
+            return FromBasic (GeographyCache.GetGeography (geographyId));
             //return FromBasic(SwarmDb.GetDatabaseForReading().GetGeography(geographyId));
         }
 
-        public static Geography FromName(string geographyName)
+        public static Geography FromName (string geographyName)
         {
             // TODO: Possible dupes here, need resolution once we see the extent of the problem
 
-            return FromBasic(GeographyCache.GetGeographyByName(geographyName));
+            return FromBasic (GeographyCache.GetGeographyByName (geographyName));
             //return FromBasic(SwarmDb.GetDatabaseForReading().GetGeographyByName(geographyName));
         }
 
 
-        public static Geography FromOfficialDesignation(Country country, GeographyLevel level, string designation)
+        public static Geography FromOfficialDesignation (Country country, GeographyLevel level, string designation)
         {
-            return FromOfficialDesignation(country.Identity, level, designation);
+            return FromOfficialDesignation (country.Identity, level, designation);
         }
 
-        public static Geography FromOfficialDesignation(int countryId, GeographyLevel level, string designation)
+        public static Geography FromOfficialDesignation (int countryId, GeographyLevel level, string designation)
         {
             return
-                FromIdentity(SwarmDb.GetDatabaseForReading().GetGeographyIdFromOfficialDesignation(countryId, level,
+                FromIdentity (SwarmDb.GetDatabaseForReading().GetGeographyIdFromOfficialDesignation (countryId, level,
                     designation));
         }
 
@@ -95,7 +95,7 @@ namespace Swarmops.Logic.Structure
             {
                 List<ITreeNodeObject> retVal = new List<ITreeNodeObject>();
                 foreach (Geography child in Children)
-                    retVal.Add(child);
+                    retVal.Add (child);
                 return retVal;
             }
         }
@@ -104,43 +104,43 @@ namespace Swarmops.Logic.Structure
 
         public Geographies Children
         {
-            get { return Geographies.FromArray(GeographyCache.GetGeographyChildren(Identity)); }
+            get { return Geographies.FromArray (GeographyCache.GetGeographyChildren (Identity)); }
         }
 
         public int ChildrenCount
         {
-            get { return GeographyCache.CountGeographyChildren(Identity); }
+            get { return GeographyCache.CountGeographyChildren (Identity); }
         }
 
 
         public static Geography Root
         {
-            get { return FromIdentity(RootIdentity); }
+            get { return FromIdentity (RootIdentity); }
         }
 
         public Geography Parent
         {
-            get { return FromIdentity(ParentIdentity); }
+            get { return FromIdentity (ParentIdentity); }
         }
 
         public Geographies GetTree()
         {
-            return Geographies.FromArray(GeographyCache.GetGeographyTree(Identity));
+            return Geographies.FromArray (GeographyCache.GetGeographyTree (Identity));
             // return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyTree(Identity));
         }
 
         public Geographies GetLine()
         {
-            return Geographies.FromArray(GeographyCache.GetGeographyLine(Identity));
+            return Geographies.FromArray (GeographyCache.GetGeographyLine (Identity));
             //return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyLine(Identity));
         }
 
-        public bool Inherits(Geography prospectiveParent)
+        public bool Inherits (Geography prospectiveParent)
         {
-            return Inherits(prospectiveParent.Identity);
+            return Inherits (prospectiveParent.Identity);
         }
 
-        public bool Inherits(int prospectiveParentGeographyId)
+        public bool Inherits (int prospectiveParentGeographyId)
         {
             // Returns true if prospectiveParent is a parent of ours.
 
@@ -158,9 +158,9 @@ namespace Swarmops.Logic.Structure
         }
 
 
-        public bool AtLevel(GeographyLevel level)
+        public bool AtLevel (GeographyLevel level)
         {
-            GeographyLevel[] levels = SwarmDb.GetDatabaseForReading().GetGeographyLevelsAtGeographyId(Identity);
+            GeographyLevel[] levels = SwarmDb.GetDatabaseForReading().GetGeographyLevelsAtGeographyId (Identity);
 
             foreach (GeographyLevel potentialMatch in levels)
             {
@@ -175,7 +175,7 @@ namespace Swarmops.Logic.Structure
 
         public BasicGeographyDesignation[] GetGeographyDesignations()
         {
-            return SwarmDb.GetDatabaseForReading().GetGeographyDesignationsForGeographyId(Identity);
+            return SwarmDb.GetDatabaseForReading().GetGeographyDesignationsForGeographyId (Identity);
         }
     }
 }

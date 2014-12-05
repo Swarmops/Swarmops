@@ -14,46 +14,46 @@ namespace Swarmops.Database
             " ParleyId, ParleyOptionId, Description, AmountCents, Active" + // 0-4
             " FROM ParleyOptions ";
 
-        private static BasicParleyOption ReadParleyOptionFromDataReader(IDataRecord reader)
+        private static BasicParleyOption ReadParleyOptionFromDataReader (IDataRecord reader)
         {
-            int parleyId = reader.GetInt32(0);
-            int parleyOptionId = reader.GetInt32(1);
-            string description = reader.GetString(2);
-            Int64 amountCents = reader.GetInt64(3);
-            bool active = reader.GetBoolean(4);
+            int parleyId = reader.GetInt32 (0);
+            int parleyOptionId = reader.GetInt32 (1);
+            string description = reader.GetString (2);
+            Int64 amountCents = reader.GetInt64 (3);
+            bool active = reader.GetBoolean (4);
 
-            return new BasicParleyOption(parleyOptionId, parleyId, description, amountCents, active);
+            return new BasicParleyOption (parleyOptionId, parleyId, description, amountCents, active);
         }
 
         #endregion
 
         #region Database record reading -- SELECT clauses
 
-        public BasicParleyOption GetParleyOption(int parleyOptionId)
+        public BasicParleyOption GetParleyOption (int parleyOptionId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + parleyOptionFieldSequence +
-                                 "WHERE ParleyOptionId=" + parleyOptionId,
+                    GetDbCommand ("SELECT" + parleyOptionFieldSequence +
+                                  "WHERE ParleyOptionId=" + parleyOptionId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadParleyOptionFromDataReader(reader);
+                        return ReadParleyOptionFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such ParleyOptionId:" + parleyOptionId);
+                    throw new ArgumentException ("No such ParleyOptionId:" + parleyOptionId);
                 }
             }
         }
 
 
-        public BasicParleyOption[] GetParleyOptions(params object[] conditions)
+        public BasicParleyOption[] GetParleyOptions (params object[] conditions)
         {
             List<BasicParleyOption> result = new List<BasicParleyOption>();
 
@@ -62,15 +62,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + parleyOptionFieldSequence + ConstructWhereClause("ParleyOptions", conditions),
+                    GetDbCommand (
+                        "SELECT" + parleyOptionFieldSequence + ConstructWhereClause ("ParleyOptions", conditions),
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadParleyOptionFromDataReader(reader));
+                        result.Add (ReadParleyOptionFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -82,36 +82,36 @@ namespace Swarmops.Database
 
         #region Creation and manipulation -- stored procedures
 
-        public int CreateParleyOption(int parleyId, string description, Int64 amountCents)
+        public int CreateParleyOption (int parleyId, string description, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateParleyOption", connection);
+                DbCommand command = GetDbCommand ("CreateParleyOption", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "parleyId", parleyId);
-                AddParameterWithName(command, "description", description);
-                AddParameterWithName(command, "amountCents", amountCents);
+                AddParameterWithName (command, "parleyId", parleyId);
+                AddParameterWithName (command, "description", description);
+                AddParameterWithName (command, "amountCents", amountCents);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int SetParleyOptionActive(int parleyOptionId, bool active)
+        public int SetParleyOptionActive (int parleyOptionId, bool active)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetParleyOptionActive", connection);
+                DbCommand command = GetDbCommand ("SetParleyOptionActive", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "parleyOptionId", parleyOptionId);
-                AddParameterWithName(command, "active", active);
+                AddParameterWithName (command, "parleyOptionId", parleyOptionId);
+                AddParameterWithName (command, "active", active);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 

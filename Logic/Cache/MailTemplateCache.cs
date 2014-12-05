@@ -22,21 +22,21 @@ namespace Swarmops.Logic.Cache
             lastAccess = DateTime.MinValue;
         }
 
-        private static List<BasicMailTemplate> GetCachedTemplates(string templateName)
+        private static List<BasicMailTemplate> GetCachedTemplates (string templateName)
         {
             lock (loadCacheLock)
             {
-                if (loadCache || lastAccess.AddMinutes(cacheLifeSpanMinutes) < DateTime.Now)
+                if (loadCache || lastAccess.AddMinutes (cacheLifeSpanMinutes) < DateTime.Now)
                 {
                     __MailTemplateCache = new Dictionary<string, List<BasicMailTemplate>>();
                     loadCache = false;
                 }
 
-                if (!__MailTemplateCache.ContainsKey(templateName))
+                if (!__MailTemplateCache.ContainsKey (templateName))
                 {
                     BasicMailTemplate[] basicTemplates =
-                        SwarmDb.GetDatabaseForReading().GetMailTemplatesByName(templateName);
-                    List<BasicMailTemplate> tmplList = new List<BasicMailTemplate>(basicTemplates);
+                        SwarmDb.GetDatabaseForReading().GetMailTemplatesByName (templateName);
+                    List<BasicMailTemplate> tmplList = new List<BasicMailTemplate> (basicTemplates);
                     __MailTemplateCache[templateName] = tmplList;
                 }
 
@@ -45,15 +45,15 @@ namespace Swarmops.Logic.Cache
             }
         }
 
-        public static BasicMailTemplate GetBestMatch(string templateName, string language, string country,
+        public static BasicMailTemplate GetBestMatch (string templateName, string language, string country,
             Organization org)
         {
-            List<BasicMailTemplate> tmplList = GetCachedTemplates(templateName);
+            List<BasicMailTemplate> tmplList = GetCachedTemplates (templateName);
 
             Organizations orgLine = (org != null) ? org.GetLine() : new Organizations();
 
             int[] lineIDs = orgLine.Identities;
-            List<int> idlist = new List<int>(lineIDs);
+            List<int> idlist = new List<int> (lineIDs);
 
             BasicMailTemplate templateDefault = null;
             BasicMailTemplate countryDefault = null;
@@ -62,7 +62,7 @@ namespace Swarmops.Logic.Cache
 
             foreach (BasicMailTemplate bmt in tmplList)
             {
-                int thisIndex = idlist.IndexOf(bmt.OrganizationId);
+                int thisIndex = idlist.IndexOf (bmt.OrganizationId);
                 if (thisIndex > bestIndex)
                 {
                     bestIndex = thisIndex;

@@ -12,42 +12,42 @@ namespace Swarmops.Logic.Structure
     {
         #region Creation and Construction
 
-        public static Geographies FromArray(BasicGeography[] basicArray)
+        public static Geographies FromArray (BasicGeography[] basicArray)
         {
             Geographies result = new Geographies();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicGeography basic in basicArray)
             {
-                result.Add(Geography.FromBasic(basic));
+                result.Add (Geography.FromBasic (basic));
             }
 
             return result;
         }
 
-        public static Geographies FromSingle(Geography geography)
+        public static Geographies FromSingle (Geography geography)
         {
             Geographies result = new Geographies();
-            result.Add(geography);
+            result.Add (geography);
             return result;
         }
 
 
-        public static Geographies FromIdentities(int[] geoIds)
+        public static Geographies FromIdentities (int[] geoIds)
         {
-            return FromArray(GeographyCache.GetGeographies(geoIds));
+            return FromArray (GeographyCache.GetGeographies (geoIds));
             //           return FromArray(SwarmDb.GetDatabaseForReading().GetGeographies(geoIds));
         }
 
 
-        public static Geographies FromLevel(Country country, GeographyLevel level)
+        public static Geographies FromLevel (Country country, GeographyLevel level)
         {
-            return FromLevel(country.Identity, level);
+            return FromLevel (country.Identity, level);
         }
 
-        public static Geographies FromLevel(int countryId, GeographyLevel level)
+        public static Geographies FromLevel (int countryId, GeographyLevel level)
         {
-            return FromIdentities(SwarmDb.GetDatabaseForReading().GetGeographyIdsFromLevel(countryId, level));
+            return FromIdentities (SwarmDb.GetDatabaseForReading().GetGeographyIdsFromLevel (countryId, level));
         }
 
         #endregion
@@ -71,7 +71,7 @@ namespace Swarmops.Logic.Structure
 
         public int[] Identities
         {
-            get { return LogicServices.ObjectsToIdentifiers(ToArray()); }
+            get { return LogicServices.ObjectsToIdentifiers (ToArray()); }
         }
 
 
@@ -84,7 +84,7 @@ namespace Swarmops.Logic.Structure
         /// <param name="nodes">The list of nodes.</param>
         /// <param name="topGeography">The highest node to return.</param>
         /// <returns>The filtered list.</returns>
-        public Geographies FilterAbove(Geography topGeography)
+        public Geographies FilterAbove (Geography topGeography)
         {
             Geographies result = new Geographies();
 
@@ -101,15 +101,15 @@ namespace Swarmops.Logic.Structure
 
             foreach (Geography node in this)
             {
-                if (lineLookup.ContainsKey(node.Identity))
+                if (lineLookup.ContainsKey (node.Identity))
                 {
                     // Above cutoff point, add filter node
 
-                    result.Add(topGeography);
+                    result.Add (topGeography);
                 }
                 else
                 {
-                    result.Add(node);
+                    result.Add (node);
                 }
             }
 
@@ -133,7 +133,7 @@ namespace Swarmops.Logic.Structure
 
             foreach (Geography currentNode in this)
             {
-                Geographies currentLine = Geography.FromIdentity(currentNode.GeographyId).GetLine();
+                Geographies currentLine = Geography.FromIdentity (currentNode.GeographyId).GetLine();
 
                 foreach (Geography comparedNode in this)
                 {
@@ -154,7 +154,7 @@ namespace Swarmops.Logic.Structure
                             // Therefore, the current node is already present in the collection,
                             // as a child of the compared node. It can be safely removed.
 
-                            remaining.Remove(currentNode.GeographyId);
+                            remaining.Remove (currentNode.GeographyId);
                             break;
                         }
                     }
@@ -167,14 +167,14 @@ namespace Swarmops.Logic.Structure
 
             foreach (int nodeId in remaining.Keys)
             {
-                result.Add(remaining[nodeId]);
+                result.Add (remaining[nodeId]);
             }
 
             return result;
         }
 
 
-        public static Geographies LogicalOr(Geographies set1, Geographies set2)
+        public static Geographies LogicalOr (Geographies set1, Geographies set2)
         {
             // If either set is invalid, return the other
             // (a null is different from an empty set)
@@ -209,40 +209,40 @@ namespace Swarmops.Logic.Structure
 
             foreach (Geography geography in table.Values)
             {
-                result.Add(geography);
+                result.Add (geography);
             }
 
             return result;
         }
 
-        public Geographies LogicalOr(Geographies set2)
+        public Geographies LogicalOr (Geographies set2)
         {
-            return LogicalOr(this, set2);
+            return LogicalOr (this, set2);
         }
 
         public static Dictionary<int, HierSortOrder> GetHierarchicalSortOrder()
         {
             Dictionary<int, HierSortOrder> resultDictionary = new Dictionary<int, HierSortOrder>();
-            BuildHierarchicalSortOrder(resultDictionary, Geography.Root, 0);
+            BuildHierarchicalSortOrder (resultDictionary, Geography.Root, 0);
             return resultDictionary;
         }
 
-        private static void BuildHierarchicalSortOrder(Dictionary<int, HierSortOrder> resultDictionary,
+        private static void BuildHierarchicalSortOrder (Dictionary<int, HierSortOrder> resultDictionary,
             Geography currentParent, int level)
         {
             if (level > 20)
             {
-                throw new Exception("Detected loop in Geographic data at geography id:" + currentParent.Identity + ", " +
-                                    currentParent.Name);
+                throw new Exception ("Detected loop in Geographic data at geography id:" + currentParent.Identity + ", " +
+                                     currentParent.Name);
             }
 
-            if (!resultDictionary.ContainsKey(currentParent.Identity))
+            if (!resultDictionary.ContainsKey (currentParent.Identity))
             {
-                resultDictionary.Add(currentParent.Identity, new HierSortOrder(resultDictionary.Count, level));
+                resultDictionary.Add (currentParent.Identity, new HierSortOrder (resultDictionary.Count, level));
             }
 
             foreach (Geography subgeo in currentParent.Children)
-                BuildHierarchicalSortOrder(resultDictionary, subgeo, level + 1);
+                BuildHierarchicalSortOrder (resultDictionary, subgeo, level + 1);
         }
 
         public class HierSortOrder
@@ -250,7 +250,7 @@ namespace Swarmops.Logic.Structure
             private readonly int level;
             private readonly int order;
 
-            internal HierSortOrder(int pOrder, int pLevel)
+            internal HierSortOrder (int pOrder, int pLevel)
             {
                 this.order = pOrder;
                 this.level = pLevel;

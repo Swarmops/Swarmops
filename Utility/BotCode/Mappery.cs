@@ -8,7 +8,7 @@ namespace Swarmops.Utility.BotCode
     {
         public Dictionary<int, string> OrgColorLookup; // ugly way to transfer data to delegate
 
-        [Obsolete("Too specialized for Swarmops. Plugin or generalize.", true)]
+        [Obsolete ("Too specialized for Swarmops. Plugin or generalize.", true)]
         public static void CreateUngPiratUptakeMap()
         {
             throw new NotImplementedException();
@@ -120,12 +120,12 @@ namespace Swarmops.Utility.BotCode
         }*/
 
 
-        public static Color ColorFromAhsb(int a, float h, float s, float b)
+        public static Color ColorFromAhsb (int a, float h, float s, float b)
         {
             if (0 == s)
             {
-                return Color.FromArgb(a, Convert.ToInt32(b*255),
-                    Convert.ToInt32(b*255), Convert.ToInt32(b*255));
+                return Color.FromArgb (a, Convert.ToInt32 (b*255),
+                    Convert.ToInt32 (b*255), Convert.ToInt32 (b*255));
             }
 
             float fMax, fMid, fMin;
@@ -142,13 +142,13 @@ namespace Swarmops.Utility.BotCode
                 fMin = b - (b*s);
             }
 
-            iSextant = (int) Math.Floor(h/60f);
+            iSextant = (int) Math.Floor (h/60f);
             if (300f <= h)
             {
                 h -= 360f;
             }
             h /= 60f;
-            h -= 2f*(float) Math.Floor(((iSextant + 1f)%6f)/2f);
+            h -= 2f*(float) Math.Floor (((iSextant + 1f)%6f)/2f);
             if (0 == iSextant%2)
             {
                 fMid = h*(fMax - fMin) + fMin;
@@ -158,24 +158,24 @@ namespace Swarmops.Utility.BotCode
                 fMid = fMin - h*(fMax - fMin);
             }
 
-            iMax = Convert.ToInt32(fMax*255);
-            iMid = Convert.ToInt32(fMid*255);
-            iMin = Convert.ToInt32(fMin*255);
+            iMax = Convert.ToInt32 (fMax*255);
+            iMid = Convert.ToInt32 (fMid*255);
+            iMin = Convert.ToInt32 (fMin*255);
 
             switch (iSextant)
             {
                 case 1:
-                    return Color.FromArgb(a, iMid, iMax, iMin);
+                    return Color.FromArgb (a, iMid, iMax, iMin);
                 case 2:
-                    return Color.FromArgb(a, iMin, iMax, iMid);
+                    return Color.FromArgb (a, iMin, iMax, iMid);
                 case 3:
-                    return Color.FromArgb(a, iMin, iMid, iMax);
+                    return Color.FromArgb (a, iMin, iMid, iMax);
                 case 4:
-                    return Color.FromArgb(a, iMid, iMin, iMax);
+                    return Color.FromArgb (a, iMid, iMin, iMax);
                 case 5:
-                    return Color.FromArgb(a, iMax, iMin, iMid);
+                    return Color.FromArgb (a, iMax, iMin, iMid);
                 default:
-                    return Color.FromArgb(a, iMax, iMid, iMin);
+                    return Color.FromArgb (a, iMax, iMid, iMin);
             }
         }
 

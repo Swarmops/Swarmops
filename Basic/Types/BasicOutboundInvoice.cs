@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicOutboundInvoice : IHasIdentity
     {
-        public BasicOutboundInvoice(int outboundInvoiceId, string customerName, string invoiceAddressPaper,
+        public BasicOutboundInvoice (int outboundInvoiceId, string customerName, string invoiceAddressPaper,
             string invoiceAddressMail, int currencyId, int organizationId, int budgetId,
             DateTime createdDateTime, int createdByPersonId, DateTime dueDate, int reminderCount, string reference,
             bool domestic, bool open, bool sent, string securityCode, string theirReference)
@@ -30,8 +30,8 @@ namespace Swarmops.Basic.Types
         }
 
 
-        public BasicOutboundInvoice(BasicOutboundInvoice original) :
-            this(
+        public BasicOutboundInvoice (BasicOutboundInvoice original) :
+            this (
             original.OutboundInvoiceId, original.CustomerName, original.InvoiceAddressPaper, original.InvoiceAddressMail,
             original.CurrencyId, original.OrganizationId, original.BudgetId, original.CreatedDateTime,
             original.CreatedByPersonId, original.DueDate, original.ReminderCount, original.Reference, original.Domestic,

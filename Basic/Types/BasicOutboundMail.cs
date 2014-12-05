@@ -16,7 +16,7 @@ namespace Swarmops.Basic.Types
         /// <summary>
         ///     Basic constructor. This is for database use and NOT for public construction.
         /// </summary>
-        public BasicOutboundMail(int outboundMailId, MailAuthorType authorType, int authorPersonId, string title,
+        public BasicOutboundMail (int outboundMailId, MailAuthorType authorType, int authorPersonId, string title,
             string body, int mailPriority, int mailTypeId, int organizationId,
             int geographyId,
             DateTime createdDateTime, DateTime releaseDateTime, bool readyForPickup, bool resolved,
@@ -51,10 +51,10 @@ namespace Swarmops.Basic.Types
         /// <summary>
         ///     Constructor used by OutboundMail after creating record in db. NOT for other use
         /// </summary>
-        public BasicOutboundMail(int outboundMailId, MailAuthorType authorType, int authorPersonId, string title,
+        public BasicOutboundMail (int outboundMailId, MailAuthorType authorType, int authorPersonId, string title,
             string body, int mailPriority, int mailType, int organizationId,
             int geographyId, DateTime createdDateTime, DateTime releaseDateTime)
-            : this(outboundMailId, authorType, authorPersonId, title, body,
+            : this (outboundMailId, authorType, authorPersonId, title, body,
                 mailPriority, mailType, organizationId, geographyId,
                 createdDateTime, releaseDateTime,
                 false, false, false, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, 0, 0, 0)
@@ -66,8 +66,8 @@ namespace Swarmops.Basic.Types
         ///     Copy constructor. Used when PirateWeb.Logic constructs an OutboundMail object.
         /// </summary>
         /// <param name="original">The original to copy.</param>
-        public BasicOutboundMail(BasicOutboundMail original)
-            : this(
+        public BasicOutboundMail (BasicOutboundMail original)
+            : this (
                 original.outboundMailId, original.authorType, original.authorPersonId, original.title,
                 original.body, original.mailPriority, original.mailType,
                 original.organizationId, original.geographyId, original.createdDateTime, original.releaseDateTime,

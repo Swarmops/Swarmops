@@ -9,8 +9,8 @@ namespace Swarmops.Logic.Financial
         private FinancialAccount account;
         private FinancialTransaction transaction;
 
-        private FinancialTransactionRow(BasicFinancialTransactionRow basic)
-            : base(basic)
+        private FinancialTransactionRow (BasicFinancialTransactionRow basic)
+            : base (basic)
         {
         }
 
@@ -20,7 +20,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (this.transaction == null)
                 {
-                    this.transaction = FinancialTransaction.FromIdentity(base.FinancialTransactionId);
+                    this.transaction = FinancialTransaction.FromIdentity (base.FinancialTransactionId);
                 }
 
                 return this.transaction;
@@ -33,7 +33,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (this.account == null)
                 {
-                    this.account = FinancialAccount.FromIdentity(base.FinancialAccountId);
+                    this.account = FinancialAccount.FromIdentity (base.FinancialAccountId);
                 }
 
                 return this.account;
@@ -45,20 +45,20 @@ namespace Swarmops.Logic.Financial
             get { return Account.Name; }
         }
 
-        [Obsolete("Do not use. Use Int64 AmountCents.", true)]
+        [Obsolete ("Do not use. Use Int64 AmountCents.", true)]
         public decimal Amount
         {
             get { return AmountCents/100.0m; }
         }
 
-        public static FinancialTransactionRow FromBasic(BasicFinancialTransactionRow basic)
+        public static FinancialTransactionRow FromBasic (BasicFinancialTransactionRow basic)
         {
-            return new FinancialTransactionRow(basic);
+            return new FinancialTransactionRow (basic);
         }
 
-        public static FinancialTransactionRow FromIdentity(int identity)
+        public static FinancialTransactionRow FromIdentity (int identity)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialTransactionRow(identity));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetFinancialTransactionRow (identity));
         }
     }
 }

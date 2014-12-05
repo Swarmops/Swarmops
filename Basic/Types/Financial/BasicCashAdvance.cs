@@ -6,7 +6,7 @@ namespace Swarmops.Basic.Types.Financial
     [Serializable]
     public class BasicCashAdvance : IHasIdentity
     {
-        public BasicCashAdvance(int cashAdvanceId, int organizationId, int personId, DateTime createdDateTime,
+        public BasicCashAdvance (int cashAdvanceId, int organizationId, int personId, DateTime createdDateTime,
             int createdByPersonId,
             int financialAccountId, Int64 amountCents, string description, bool open, bool attested,
             bool paidOut, int attestedByPersonId, DateTime attestedDateTime)
@@ -26,8 +26,8 @@ namespace Swarmops.Basic.Types.Financial
             AttestedDateTime = attestedDateTime;
         }
 
-        public BasicCashAdvance(BasicCashAdvance original) :
-            this(
+        public BasicCashAdvance (BasicCashAdvance original) :
+            this (
             original.CashAdvanceId, original.OrganizationId, original.PersonId, original.CreatedDateTime,
             original.CreatedByPersonId,
             original.BudgetId, original.AmountCents, original.Description, original.Open, original.Attested,

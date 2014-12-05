@@ -15,7 +15,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 ExpenseClaims result = new ExpenseClaims();
-                result.AddRange(this.Where(expense => expense.Open));
+                result.AddRange (this.Where (expense => expense.Open));
 
                 return result;
             }
@@ -26,7 +26,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 ExpenseClaims result = new ExpenseClaims();
-                result.AddRange(this.Where(expense => expense.Approved));
+                result.AddRange (this.Where (expense => expense.Approved));
 
                 return result;
             }
@@ -37,7 +37,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 ExpenseClaims result = new ExpenseClaims();
-                result.AddRange(this.Where(expense => !expense.Approved));
+                result.AddRange (this.Where (expense => !expense.Approved));
 
                 return result;
             }
@@ -49,7 +49,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 ExpenseClaims result = new ExpenseClaims();
-                result.AddRange(this.Where(expenseClaim => !expenseClaim.Attested));
+                result.AddRange (this.Where (expenseClaim => !expenseClaim.Attested));
 
                 return result;
             }
@@ -61,7 +61,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 ExpenseClaims result = new ExpenseClaims();
-                result.AddRange(this.Where(expenseClaim => !expenseClaim.Validated));
+                result.AddRange (this.Where (expenseClaim => !expenseClaim.Validated));
 
                 return result;
             }
@@ -69,46 +69,46 @@ namespace Swarmops.Logic.Financial
 
         public decimal TotalAmount
         {
-            get { return this.Sum(claim => claim.Amount); }
+            get { return this.Sum (claim => claim.Amount); }
         }
 
         public Int64 TotalAmountCents
         {
-            get { return this.Sum(claim => claim.AmountCents); }
+            get { return this.Sum (claim => claim.AmountCents); }
         }
 
 
-        public static ExpenseClaims FromClaimingPersonAndOrganization(Person person, Organization organization)
+        public static ExpenseClaims FromClaimingPersonAndOrganization (Person person, Organization organization)
         {
             return
-                FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaimsByClaimerAndOrganization(person.Identity,
+                FromArray (SwarmDb.GetDatabaseForReading().GetExpenseClaimsByClaimerAndOrganization (person.Identity,
                     organization.Identity));
         }
 
 
-        public static ExpenseClaims FromClaimingPerson(Person person)
+        public static ExpenseClaims FromClaimingPerson (Person person)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaimsByClaimer(person.Identity));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetExpenseClaimsByClaimer (person.Identity));
         }
 
-        public static ExpenseClaims FromOrganization(Organization org)
+        public static ExpenseClaims FromOrganization (Organization org)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaimsByOrganization(org.Identity));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetExpenseClaimsByOrganization (org.Identity));
         }
 
 
-        public static ExpenseClaims ForOrganization(Organization org)
+        public static ExpenseClaims ForOrganization (Organization org)
         {
-            return ForOrganization(org, false);
+            return ForOrganization (org, false);
         }
 
-        public static ExpenseClaims ForOrganization(Organization org, bool includeClosed)
+        public static ExpenseClaims ForOrganization (Organization org, bool includeClosed)
         {
             if (includeClosed)
             {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaims(org));
+                return FromArray (SwarmDb.GetDatabaseForReading().GetExpenseClaims (org));
             }
-            return FromArray(SwarmDb.GetDatabaseForReading().GetExpenseClaims(org, DatabaseCondition.OpenTrue));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetExpenseClaims (org, DatabaseCondition.OpenTrue));
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialTransactionRow : IHasIdentity
     {
-        public BasicFinancialTransactionRow(int financialTransactionRowId, int financialAccountId,
+        public BasicFinancialTransactionRow (int financialTransactionRowId, int financialAccountId,
             int financialTransactionId, Int64 amountCents, DateTime createdDateTime, int createdByPersonId)
         {
             FinancialTransactionRowId = financialTransactionRowId;
@@ -16,8 +16,8 @@ namespace Swarmops.Basic.Types.Financial
             CreatedByPersonId = createdByPersonId;
         }
 
-        public BasicFinancialTransactionRow(BasicFinancialTransactionRow original)
-            : this(
+        public BasicFinancialTransactionRow (BasicFinancialTransactionRow original)
+            : this (
                 original.FinancialTransactionRowId, original.FinancialAccountId, original.FinancialTransactionId,
                 original.AmountCents, original.CreatedDateTime, original.CreatedByPersonId)
         {

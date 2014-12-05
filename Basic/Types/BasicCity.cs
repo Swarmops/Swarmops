@@ -6,7 +6,7 @@ namespace Swarmops.Basic.Types
     [Serializable]
     public class BasicCity : IHasIdentity
     {
-        public BasicCity(int cityId, string name, int countryId, int geographyId)
+        public BasicCity (int cityId, string name, int countryId, int geographyId)
         {
             CityId = cityId;
             Name = name;
@@ -14,12 +14,12 @@ namespace Swarmops.Basic.Types
             GeographyId = geographyId;
         }
 
-        public BasicCity(BasicCity original)
-            : this(original.CityId, original.Name, original.CountryId, original.GeographyId)
+        public BasicCity (BasicCity original)
+            : this (original.CityId, original.Name, original.CountryId, original.GeographyId)
         {
         }
 
-        [Obsolete("Do not call this ctor directly. It exists to enable serialization.", true)]
+        [Obsolete ("Do not call this ctor directly. It exists to enable serialization.", true)]
         public BasicCity()
         {
             // this ctor should never be called from code

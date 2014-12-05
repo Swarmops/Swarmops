@@ -14,7 +14,7 @@ namespace Swarmops.Basic.Types
         /// <summary>
         ///     Basic constructor.
         /// </summary>
-        public BasicMailTemplate(int templateId,
+        public BasicMailTemplate (int templateId,
             string templateName,
             string languageCode,
             string countryCode,
@@ -33,8 +33,8 @@ namespace Swarmops.Basic.Types
         /// <summary>
         ///     Copy constructor.
         /// </summary>
-        public BasicMailTemplate(BasicMailTemplate original)
-            : this(original.templateId,
+        public BasicMailTemplate (BasicMailTemplate original)
+            : this (original.templateId,
                 original.templateName,
                 original.languageCode,
                 original.countryCode,

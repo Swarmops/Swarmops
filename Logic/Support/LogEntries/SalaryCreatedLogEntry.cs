@@ -6,13 +6,13 @@ namespace Swarmops.Logic.Support.LogEntries
     [Serializable]
     public class SalaryCreatedLogEntry : FinancialActionBase
     {
-        [Obsolete("Do not call this constructor directly.", true)]
+        [Obsolete ("Do not call this constructor directly.", true)]
         public SalaryCreatedLogEntry()
         {
             // empty ctor needed for serializability; should not be called
         }
 
-        public SalaryCreatedLogEntry(Salary salary)
+        public SalaryCreatedLogEntry (Salary salary)
         {
             ActingPersonId = 0;
             BeneficiaryPersonId = salary.PayrollItem.PersonId;

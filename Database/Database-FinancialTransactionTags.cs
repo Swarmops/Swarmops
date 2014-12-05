@@ -16,7 +16,7 @@ namespace Swarmops.Database
 
         #region Database record reading -- SELECT clauses
 
-        public int[] GetFinancialTransactionTagTypes(int financialTransactionId)
+        public int[] GetFinancialTransactionTagTypes (int financialTransactionId)
         {
             List<int> result = new List<int>();
             using (DbConnection connection = GetMySqlDbConnection())
@@ -24,16 +24,16 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT FinancialTransactionTagTypeId FROM FinancialTransactionTags WHERE FinancialTransactionId=" +
-                        financialTransactionId.ToString(CultureInfo.InvariantCulture), connection);
+                        financialTransactionId.ToString (CultureInfo.InvariantCulture), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetInt32(0));
-                            // This is a tag type IDENTITY. Need another db call to read the actual tag types.
+                        result.Add (reader.GetInt32 (0));
+                        // This is a tag type IDENTITY. Need another db call to read the actual tag types.
                     }
 
                     return result.ToArray();
@@ -45,47 +45,47 @@ namespace Swarmops.Database
 
         #region Creation and manipulation -- stored procedures
 
-        public int CreateFinancialTransactionTag(int financialTransactionId, int financialTransactionTagTypeId)
+        public int CreateFinancialTransactionTag (int financialTransactionId, int financialTransactionTagTypeId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateFinancialTransactionTag", connection);
+                DbCommand command = GetDbCommand ("CreateFinancialTransactionTag", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "financialTransactionId", financialTransactionId);
-                AddParameterWithName(command, "financialTransactionTagTypeId", financialTransactionTagTypeId);
+                AddParameterWithName (command, "financialTransactionId", financialTransactionId);
+                AddParameterWithName (command, "financialTransactionTagTypeId", financialTransactionTagTypeId);
 
-                return Convert.ToInt32(command.ExecuteScalar()); // returns identity, but it's not used - yet, anyway
+                return Convert.ToInt32 (command.ExecuteScalar()); // returns identity, but it's not used - yet, anyway
             }
         }
 
-        public void DeleteFinancialTransactionTags(int financialTransactionId)
+        public void DeleteFinancialTransactionTags (int financialTransactionId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("DeleteFinancialTransactionTags", connection);
+                DbCommand command = GetDbCommand ("DeleteFinancialTransactionTags", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "financialTransactionId", financialTransactionId);
+                AddParameterWithName (command, "financialTransactionId", financialTransactionId);
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public void DeleteFinancialTransactionTag(int financialTransactionTagId)
+        public void DeleteFinancialTransactionTag (int financialTransactionTagId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("DeleteFinancialTransactionTag", connection);
+                DbCommand command = GetDbCommand ("DeleteFinancialTransactionTag", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "financialTransactionTagId", financialTransactionTagId);
+                AddParameterWithName (command, "financialTransactionTagId", financialTransactionTagId);
 
                 command.ExecuteNonQuery();
             }

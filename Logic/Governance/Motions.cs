@@ -6,9 +6,9 @@ namespace Swarmops.Logic.Governance
 {
     public class Motions : PluralBase<Motions, Motion, BasicMotion>
     {
-        public static Motions ForMeeting(Meeting meeting)
+        public static Motions ForMeeting (Meeting meeting)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetMotions(meeting));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetMotions (meeting));
         }
     }
 }

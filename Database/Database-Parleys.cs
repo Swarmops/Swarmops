@@ -17,30 +17,30 @@ namespace Swarmops.Database
             "AttendanceFeeCents, ClosedDateTime" + // 15-16
             " FROM Parleys ";
 
-        private static BasicParley ReadParleyFromDataReader(IDataRecord reader)
+        private static BasicParley ReadParleyFromDataReader (IDataRecord reader)
         {
-            int parleyId = reader.GetInt32(0);
-            int organizationId = reader.GetInt32(1);
-            int personId = reader.GetInt32(2);
-            int budgetId = reader.GetInt32(3);
-            DateTime createdDateTime = reader.GetDateTime(4);
+            int parleyId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32 (1);
+            int personId = reader.GetInt32 (2);
+            int budgetId = reader.GetInt32 (3);
+            DateTime createdDateTime = reader.GetDateTime (4);
 
-            bool open = reader.GetBoolean(5);
-            bool attested = reader.GetBoolean(6);
-            string name = reader.GetString(7);
-            int geographyId = reader.GetInt32(8);
-            string description = reader.GetString(9);
+            bool open = reader.GetBoolean (5);
+            bool attested = reader.GetBoolean (6);
+            string name = reader.GetString (7);
+            int geographyId = reader.GetInt32 (8);
+            string description = reader.GetString (9);
 
-            string informationUrl = reader.GetString(10);
-            DateTime startDate = reader.GetDateTime(11);
-            DateTime endDate = reader.GetDateTime(12);
-            Int64 budgetCents = reader.GetInt64(13);
-            Int64 guaranteeCents = reader.GetInt64(14);
+            string informationUrl = reader.GetString (10);
+            DateTime startDate = reader.GetDateTime (11);
+            DateTime endDate = reader.GetDateTime (12);
+            Int64 budgetCents = reader.GetInt64 (13);
+            Int64 guaranteeCents = reader.GetInt64 (14);
 
-            Int64 attendanceFeeCents = reader.GetInt64(15);
-            DateTime closedDateTime = reader.GetDateTime(16);
+            Int64 attendanceFeeCents = reader.GetInt64 (15);
+            DateTime closedDateTime = reader.GetDateTime (16);
 
-            return new BasicParley(
+            return new BasicParley (
                 parleyId, organizationId, personId, budgetId, createdDateTime,
                 open, attested, name, geographyId, description,
                 informationUrl, startDate, endDate, budgetCents, guaranteeCents,
@@ -51,31 +51,31 @@ namespace Swarmops.Database
 
         #region Database record reading -- SELECT clauses
 
-        public BasicParley GetParley(int parleyId)
+        public BasicParley GetParley (int parleyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + parleyFieldSequence +
-                                 "WHERE ParleyId=" + parleyId,
+                    GetDbCommand ("SELECT" + parleyFieldSequence +
+                                  "WHERE ParleyId=" + parleyId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadParleyFromDataReader(reader);
+                        return ReadParleyFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such ParleyId:" + parleyId);
+                    throw new ArgumentException ("No such ParleyId:" + parleyId);
                 }
             }
         }
 
 
-        public BasicParley[] GetParleys(params object[] conditions)
+        public BasicParley[] GetParleys (params object[] conditions)
         {
             List<BasicParley> result = new List<BasicParley>();
 
@@ -84,14 +84,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + parleyFieldSequence + ConstructWhereClause("Parleys", conditions), connection);
+                    GetDbCommand (
+                        "SELECT" + parleyFieldSequence + ConstructWhereClause ("Parleys", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadParleyFromDataReader(reader));
+                        result.Add (ReadParleyFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -103,7 +103,7 @@ namespace Swarmops.Database
 
         #region Creation and manipulation -- stored procedures
 
-        public int CreateParley(int organizationId, int personId, int budgetId, string name, int geographyId,
+        public int CreateParley (int organizationId, int personId, int budgetId, string name, int geographyId,
             string description, string informationUrl, DateTime startDate, DateTime endDate, Int64 budgetCents,
             Int64 guaranteeCents, Int64 attendanceFeeCents)
         {
@@ -111,73 +111,73 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateParley", connection);
+                DbCommand command = GetDbCommand ("CreateParley", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "budgetId", budgetId);
-                AddParameterWithName(command, "name", name);
-                AddParameterWithName(command, "geographyId", geographyId);
-                AddParameterWithName(command, "description", description);
-                AddParameterWithName(command, "informationUrl", informationUrl);
-                AddParameterWithName(command, "startDate", startDate);
-                AddParameterWithName(command, "endDate", endDate);
-                AddParameterWithName(command, "budgetCents", budgetCents);
-                AddParameterWithName(command, "guaranteeCents", guaranteeCents);
-                AddParameterWithName(command, "attendanceFeeCents", attendanceFeeCents);
-                AddParameterWithName(command, "createdDateTime", DateTime.Now);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "budgetId", budgetId);
+                AddParameterWithName (command, "name", name);
+                AddParameterWithName (command, "geographyId", geographyId);
+                AddParameterWithName (command, "description", description);
+                AddParameterWithName (command, "informationUrl", informationUrl);
+                AddParameterWithName (command, "startDate", startDate);
+                AddParameterWithName (command, "endDate", endDate);
+                AddParameterWithName (command, "budgetCents", budgetCents);
+                AddParameterWithName (command, "guaranteeCents", guaranteeCents);
+                AddParameterWithName (command, "attendanceFeeCents", attendanceFeeCents);
+                AddParameterWithName (command, "createdDateTime", DateTime.Now);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int SetParleyAttested(int parleyId, bool attested)
+        public int SetParleyAttested (int parleyId, bool attested)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetParleyAttested", connection);
+                DbCommand command = GetDbCommand ("SetParleyAttested", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "parleyId", parleyId);
-                AddParameterWithName(command, "attested", attested);
+                AddParameterWithName (command, "parleyId", parleyId);
+                AddParameterWithName (command, "attested", attested);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int SetParleyBudget(int parleyId, int budgetId)
+        public int SetParleyBudget (int parleyId, int budgetId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetParleyBudget", connection);
+                DbCommand command = GetDbCommand ("SetParleyBudget", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "parleyId", parleyId);
-                AddParameterWithName(command, "budgetId", budgetId);
+                AddParameterWithName (command, "parleyId", parleyId);
+                AddParameterWithName (command, "budgetId", budgetId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int SetParleyOpen(int parleyId, bool open)
+        public int SetParleyOpen (int parleyId, bool open)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetParleyOpen", connection);
+                DbCommand command = GetDbCommand ("SetParleyOpen", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "parleyId", parleyId);
-                AddParameterWithName(command, "open", open);
-                AddParameterWithName(command, "closedDateTime", DateTime.Now); // ignored if open=true
+                AddParameterWithName (command, "parleyId", parleyId);
+                AddParameterWithName (command, "open", open);
+                AddParameterWithName (command, "closedDateTime", DateTime.Now); // ignored if open=true
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 

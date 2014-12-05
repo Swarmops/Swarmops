@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types.Communications
 {
     public class BasicOutboundCommRecipient : IHasIdentity
     {
-        public BasicOutboundCommRecipient(int outboundCommRecipientId, int outboundCommId, int personId, bool open,
+        public BasicOutboundCommRecipient (int outboundCommRecipientId, int outboundCommId, int personId, bool open,
             bool success, string failReason)
         {
             OutboundCommRecipientId = outboundCommRecipientId;
@@ -15,8 +15,8 @@ namespace Swarmops.Basic.Types.Communications
             FailReason = failReason;
         }
 
-        public BasicOutboundCommRecipient(BasicOutboundCommRecipient original) :
-            this(
+        public BasicOutboundCommRecipient (BasicOutboundCommRecipient original) :
+            this (
             original.OutboundCommRecipientId, original.OutboundCommId, original.PersonId, original.Open,
             original.Success, original.FailReason)
         {

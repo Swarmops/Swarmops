@@ -16,36 +16,36 @@ namespace Swarmops.Logic.Financial
     {
         #region Construction and Creation
 
-        private ExpenseClaim() : base(null)
+        private ExpenseClaim() : base (null)
         {
         } // Private constructor prevents wanton creation
 
-        private ExpenseClaim(BasicExpenseClaim basic) : base(basic)
+        private ExpenseClaim (BasicExpenseClaim basic) : base (basic)
         {
         } // Used by FromBasic()
 
-        internal static ExpenseClaim FromBasic(BasicExpenseClaim basic)
+        internal static ExpenseClaim FromBasic (BasicExpenseClaim basic)
         {
-            return new ExpenseClaim(basic);
+            return new ExpenseClaim (basic);
         }
 
-        public static ExpenseClaim FromIdentity(int expenseId)
+        public static ExpenseClaim FromIdentity (int expenseId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetExpenseClaim(expenseId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetExpenseClaim (expenseId));
         }
 
-        public static ExpenseClaim FromIdentityAggressive(int expenseId)
+        public static ExpenseClaim FromIdentityAggressive (int expenseId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForWriting().GetExpenseClaim(expenseId));
-                // ForWriting is intentional - bypass replication lag
+            return FromBasic (SwarmDb.GetDatabaseForWriting().GetExpenseClaim (expenseId));
+            // ForWriting is intentional - bypass replication lag
         }
 
-        public static ExpenseClaim Create(Person claimer, Organization organization, FinancialAccount budget,
+        public static ExpenseClaim Create (Person claimer, Organization organization, FinancialAccount budget,
             DateTime expenseDate, string description, Int64 amountCents)
         {
             ExpenseClaim newClaim =
-                FromIdentityAggressive(SwarmDb.GetDatabaseForWriting()
-                    .CreateExpenseClaim(claimer.Identity, organization.Identity,
+                FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
+                    .CreateExpenseClaim (claimer.Identity, organization.Identity,
                         budget.Identity, expenseDate, description, amountCents));
             // Create the financial transaction with rows
 
@@ -53,15 +53,15 @@ namespace Swarmops.Logic.Financial
 
             if (transactionDescription.Length > 64)
             {
-                transactionDescription = transactionDescription.Substring(0, 61) + "...";
+                transactionDescription = transactionDescription.Substring (0, 61) + "...";
             }
 
             FinancialTransaction transaction =
-                FinancialTransaction.Create(organization.Identity, DateTime.Now,
+                FinancialTransaction.Create (organization.Identity, DateTime.Now,
                     transactionDescription);
 
-            transaction.AddRow(organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
-            transaction.AddRow(budget, amountCents, claimer);
+            transaction.AddRow (organization.FinancialAccounts.DebtsExpenseClaims, -amountCents, claimer);
+            transaction.AddRow (budget, amountCents, claimer);
 
             // Make the transaction dependent on the expense claim
 
@@ -69,12 +69,12 @@ namespace Swarmops.Logic.Financial
 
             // Create notifications
 
-            OutboundComm.CreateNotificationAttestationNeeded(budget, claimer, string.Empty, amountCents/100.0,
+            OutboundComm.CreateNotificationAttestationNeeded (budget, claimer, string.Empty, amountCents/100.0,
                 description, NotificationResource.ExpenseClaim_Created); // Slightly misplaced logic, but failsafer here
-            OutboundComm.CreateNotificationFinancialValidationNeeded(organization, amountCents/100.0,
+            OutboundComm.CreateNotificationFinancialValidationNeeded (organization, amountCents/100.0,
                 NotificationResource.Receipts_Filed);
-            SwarmopsLogEntry.Create(claimer,
-                new ExpenseClaimFiledLogEntry(claimer /*filing person*/, claimer /*beneficiary*/, amountCents/100.0,
+            SwarmopsLogEntry.Create (claimer,
+                new ExpenseClaimFiledLogEntry (claimer /*filing person*/, claimer /*beneficiary*/, amountCents/100.0,
                     budget, description), newClaim);
 
             return newClaim;
@@ -84,7 +84,7 @@ namespace Swarmops.Logic.Financial
 
         public Person Claimer
         {
-            get { return Person.FromIdentity(base.ClaimingPersonId); }
+            get { return Person.FromIdentity (base.ClaimingPersonId); }
         }
 
         public bool Approved
@@ -110,14 +110,14 @@ namespace Swarmops.Logic.Financial
 
         public Organization Organization
         {
-            get { return Organization.FromIdentity(OrganizationId); }
+            get { return Organization.FromIdentity (OrganizationId); }
         }
 
         public FinancialTransaction FinancialTransaction
         {
             get
             {
-                FinancialTransactions transactions = FinancialTransactions.ForDependentObject(this);
+                FinancialTransactions transactions = FinancialTransactions.ForDependentObject (this);
 
                 if (transactions.Count == 0)
                 {
@@ -129,8 +129,8 @@ namespace Swarmops.Logic.Financial
                     return transactions[0];
                 }
 
-                throw new InvalidOperationException("It appears expense claim #" + Identity +
-                                                    " has multiple dependent financial transactions. This is an invalid state.");
+                throw new InvalidOperationException ("It appears expense claim #" + Identity +
+                                                     " has multiple dependent financial transactions. This is an invalid state.");
             }
         }
 
@@ -141,7 +141,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (base.Attested != value)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested (Identity, value);
                     base.Attested = value;
                 }
             }
@@ -154,7 +154,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (base.Validated != value)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated (Identity, value);
                     base.Validated = value;
                 }
             }
@@ -168,7 +168,7 @@ namespace Swarmops.Logic.Financial
                 if (base.Open != value)
                 {
                     base.Open = value;
-                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimOpen(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimOpen (Identity, value);
                 }
             }
         }
@@ -181,8 +181,8 @@ namespace Swarmops.Logic.Financial
                 if (base.Claimed != value)
                 {
                     base.Claimed = value;
-                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimClaimed(Identity, value);
-                    UpdateFinancialTransaction(Claimer);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimClaimed (Identity, value);
+                    UpdateFinancialTransaction (Claimer);
                 }
             }
         }
@@ -195,7 +195,7 @@ namespace Swarmops.Logic.Financial
                 if (base.Repaid != value)
                 {
                     base.Repaid = value;
-                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimRepaid(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimRepaid (Identity, value);
                 }
             }
         }
@@ -208,7 +208,7 @@ namespace Swarmops.Logic.Financial
                 if (base.KeepSeparate != value)
                 {
                     base.KeepSeparate = value;
-                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimKeepSeparate(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetExpenseClaimKeepSeparate (Identity, value);
                 }
             }
         }
@@ -218,7 +218,7 @@ namespace Swarmops.Logic.Financial
             get { return base.Description; }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetExpenseClaimDescription(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetExpenseClaimDescription (Identity, value);
                 base.Description = value;
             }
         }
@@ -254,13 +254,13 @@ namespace Swarmops.Logic.Financial
 
         public Documents Documents
         {
-            get { return Documents.ForObject(this); }
+            get { return Documents.ForObject (this); }
         }
 
 
         public FinancialValidations Validations
         {
-            get { return FinancialValidations.ForObject(this); }
+            get { return FinancialValidations.ForObject (this); }
         }
 
         public Payout Payout
@@ -273,40 +273,40 @@ namespace Swarmops.Logic.Financial
                 }
 
                 int payoutId =
-                    SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency(this);
+                    SwarmDb.GetDatabaseForReading().GetPayoutIdFromDependency (this);
 
                 if (payoutId == 0)
                 {
                     return null; // or throw? When expense claim system was being phased in, payouts did not exist
                 }
 
-                return Payout.FromIdentity(payoutId);
+                return Payout.FromIdentity (payoutId);
             }
         }
 
         #region IValidatable Members
 
-        public void Validate(Person validator)
+        public void Validate (Person validator)
         {
-            SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated(Identity, true);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Validation,
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated (Identity, true);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Validation,
                 FinancialDependencyType.ExpenseClaim, Identity,
                 DateTime.Now, validator.Identity, (double) Amount);
             base.Validated = true;
 
-            OutboundComm.CreateNotificationOfFinancialValidation(Budget, Claimer, this.AmountCents/100.0, Description,
+            OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
                 NotificationResource.ExpenseClaim_Validated);
         }
 
-        public void Devalidate(Person devalidator)
+        public void Devalidate (Person devalidator)
         {
-            SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated(Identity, false);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Devalidation,
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated (Identity, false);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Devalidation,
                 FinancialDependencyType.ExpenseClaim, Identity,
                 DateTime.Now, devalidator.Identity, (double) Amount);
             base.Validated = false;
 
-            OutboundComm.CreateNotificationOfFinancialValidation(Budget, Claimer, this.AmountCents/100.0, Description,
+            OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
                 NotificationResource.ExpenseClaim_Devalidated);
         }
 
@@ -314,27 +314,27 @@ namespace Swarmops.Logic.Financial
 
         #region IAttestable Members
 
-        public void Attest(Person attester)
+        public void Attest (Person attester)
         {
-            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested(Identity, true);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested (Identity, true);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
                 FinancialDependencyType.ExpenseClaim, Identity,
                 DateTime.Now, attester.Identity, (double) Amount);
             base.Attested = true;
 
-            OutboundComm.CreateNotificationOfFinancialValidation(Budget, Claimer, this.AmountCents/100.0, Description,
+            OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
                 NotificationResource.ExpenseClaim_Attested);
         }
 
-        public void Deattest(Person deattester)
+        public void Deattest (Person deattester)
         {
-            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested(Identity, false);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested (Identity, false);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
                 FinancialDependencyType.ExpenseClaim, Identity,
                 DateTime.Now, deattester.Identity, (double) Amount);
             base.Attested = false;
 
-            OutboundComm.CreateNotificationOfFinancialValidation(Budget, Claimer, this.AmountCents/100.0, Description,
+            OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
                 NotificationResource.ExpenseClaim_Deattested);
         }
 
@@ -342,18 +342,18 @@ namespace Swarmops.Logic.Financial
 
         public FinancialAccount Budget
         {
-            get { return FinancialAccount.FromIdentity(base.BudgetId); }
+            get { return FinancialAccount.FromIdentity (base.BudgetId); }
         }
 
-        [Obsolete("Obsolete", true)]
-        public void CreateEvent(ExpenseEventType eventType, Person person)
+        [Obsolete ("Obsolete", true)]
+        public void CreateEvent (ExpenseEventType eventType, Person person)
         {
             // OBSOLETE
 
             // CreateEvent (eventType, person.Identity);
         }
 
-        public void CreateEvent(ExpenseEventType eventType, int personId)
+        public void CreateEvent (ExpenseEventType eventType, int personId)
         {
             // OBSOLETE
 
@@ -367,7 +367,7 @@ namespace Swarmops.Logic.Financial
             Open = false;
         }
 
-        public void SetAmountCents(Int64 amountCents, Person settingPerson)
+        public void SetAmountCents (Int64 amountCents, Person settingPerson)
         {
             if (base.AmountCents == amountCents)
             {
@@ -375,20 +375,20 @@ namespace Swarmops.Logic.Financial
             }
 
             base.AmountCents = amountCents;
-            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAmount(Identity, amountCents);
-            UpdateFinancialTransaction(settingPerson);
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAmount (Identity, amountCents);
+            UpdateFinancialTransaction (settingPerson);
         }
 
 
-        public void SetBudget(FinancialAccount budget, Person settingPerson)
+        public void SetBudget (FinancialAccount budget, Person settingPerson)
         {
-            SwarmDb.GetDatabaseForWriting().SetExpenseClaimBudget(Identity, budget.Identity);
+            SwarmDb.GetDatabaseForWriting().SetExpenseClaimBudget (Identity, budget.Identity);
             base.BudgetId = budget.Identity;
-            UpdateFinancialTransaction(settingPerson);
+            UpdateFinancialTransaction (settingPerson);
         }
 
 
-        public void Kill(Person killingPerson)
+        public void Kill (Person killingPerson)
         {
             // Set the state to Closed, Unvalidated, Unattested
 
@@ -396,8 +396,8 @@ namespace Swarmops.Logic.Financial
             Validated = false;
             Open = false;
 
-            UpdateFinancialTransaction(killingPerson);
-                // will zero out transaction since both Validated and Open are false
+            UpdateFinancialTransaction (killingPerson);
+            // will zero out transaction since both Validated and Open are false
 
             // Mark transaction as invalid in description
 
@@ -407,11 +407,11 @@ namespace Swarmops.Logic.Financial
 
         public void Recalibrate()
         {
-            UpdateFinancialTransaction(null); // only to be used for fix-bookkeeping scripts
+            UpdateFinancialTransaction (null); // only to be used for fix-bookkeeping scripts
         }
 
 
-        private void UpdateFinancialTransaction(Person updatingPerson)
+        private void UpdateFinancialTransaction (Person updatingPerson)
         {
             Dictionary<int, Int64> nominalTransaction = new Dictionary<int, Int64>();
 
@@ -430,7 +430,7 @@ namespace Swarmops.Logic.Financial
                 nominalTransaction[BudgetId] = AmountCents;
             }
 
-            FinancialTransaction.RecalculateTransaction(nominalTransaction, updatingPerson);
+            FinancialTransaction.RecalculateTransaction (nominalTransaction, updatingPerson);
         }
     }
 }

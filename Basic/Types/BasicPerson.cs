@@ -7,13 +7,13 @@ namespace Swarmops.Basic.Types
     [Serializable]
     public class BasicPerson : IEmailPerson, IHasIdentity
     {
-        public BasicPerson(string name, string email)
+        public BasicPerson (string name, string email)
         {
             Name = name;
             Email = email;
         }
 
-        public BasicPerson(int personId, string passwordHash, string name, string email, string street,
+        public BasicPerson (int personId, string passwordHash, string name, string email, string street,
             string postalCode, string cityName, int countryId, string phone, int geographyId,
             DateTime birthdate, PersonGender gender)
         {
@@ -31,8 +31,8 @@ namespace Swarmops.Basic.Types
             Gender = gender;
         }
 
-        public BasicPerson(BasicPerson original)
-            : this(original.PersonId, original.PasswordHash, original.Name, original.Email, original.Street,
+        public BasicPerson (BasicPerson original)
+            : this (original.PersonId, original.PasswordHash, original.Name, original.Email, original.Street,
                 original.PostalCode, original.CityName, original.CountryId, original.Phone,
                 original.GeographyId, original.Birthdate, original.Gender)
         {

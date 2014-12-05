@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicInternalPollVoter
     {
-        public BasicInternalPollVoter(int personId, int internalPollId, bool open, DateTime closedDateTime)
+        public BasicInternalPollVoter (int personId, int internalPollId, bool open, DateTime closedDateTime)
         {
             PersonId = personId;
             InternalPollId = internalPollId;
@@ -12,8 +12,8 @@ namespace Swarmops.Basic.Types
             ClosedDateTime = closedDateTime;
         }
 
-        public BasicInternalPollVoter(BasicInternalPollVoter original)
-            : this(original.PersonId, original.InternalPollId, original.Open, original.ClosedDateTime)
+        public BasicInternalPollVoter (BasicInternalPollVoter original)
+            : this (original.PersonId, original.InternalPollId, original.Open, original.ClosedDateTime)
         {
             // empty copy ctor
         }

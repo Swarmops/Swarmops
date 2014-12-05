@@ -6,7 +6,7 @@ namespace Swarmops.Logic.Swarm
 {
     public class ParleyOption : BasicParleyOption
     {
-        private ParleyOption(BasicParleyOption basic) : base(basic)
+        private ParleyOption (BasicParleyOption basic) : base (basic)
         {
             // empty pvt ctor
         }
@@ -16,21 +16,21 @@ namespace Swarmops.Logic.Swarm
             get { return AmountCents/100.0m; }
         }
 
-        public static ParleyOption FromBasic(BasicParleyOption basic)
+        public static ParleyOption FromBasic (BasicParleyOption basic)
         {
-            return new ParleyOption(basic);
+            return new ParleyOption (basic);
         }
 
-        public static ParleyOption FromIdentity(int parleyOptionId)
+        public static ParleyOption FromIdentity (int parleyOptionId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetParleyOption(parleyOptionId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetParleyOption (parleyOptionId));
         }
 
-        public static ParleyOption Create(Parley parley, string description, Int64 amountCents)
+        public static ParleyOption Create (Parley parley, string description, Int64 amountCents)
         {
             return
-                FromIdentity(SwarmDb.GetDatabaseForWriting()
-                    .CreateParleyOption(parley.Identity, description, amountCents));
+                FromIdentity (SwarmDb.GetDatabaseForWriting()
+                    .CreateParleyOption (parley.Identity, description, amountCents));
         }
     }
 }

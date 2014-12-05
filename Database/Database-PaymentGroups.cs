@@ -15,19 +15,19 @@ namespace Swarmops.Database
             "Tag,CreatedDateTime,CreatedByPersonId,Open " + // 5-9
             "FROM PaymentGroups ";
 
-        private static BasicPaymentGroup ReadPaymentGroupFromDataReader(IDataRecord reader)
+        private static BasicPaymentGroup ReadPaymentGroupFromDataReader (IDataRecord reader)
         {
-            int paymentGroupId = reader.GetInt32(0);
-            int organizationId = reader.GetInt32(1);
-            int currencyId = reader.GetInt32(2);
-            Int64 amountCents = reader.GetInt64(3);
-            DateTime dateTime = reader.GetDateTime(4);
-            string tag = reader.GetString(5);
-            DateTime createdDateTime = reader.GetDateTime(6);
-            int createdByPersonId = reader.GetInt32(7);
-            bool open = reader.GetBoolean(8);
+            int paymentGroupId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32 (1);
+            int currencyId = reader.GetInt32 (2);
+            Int64 amountCents = reader.GetInt64 (3);
+            DateTime dateTime = reader.GetDateTime (4);
+            string tag = reader.GetString (5);
+            DateTime createdDateTime = reader.GetDateTime (6);
+            int createdByPersonId = reader.GetInt32 (7);
+            bool open = reader.GetBoolean (8);
 
-            return new BasicPaymentGroup(paymentGroupId, organizationId, dateTime, currencyId, amountCents, tag,
+            return new BasicPaymentGroup (paymentGroupId, organizationId, dateTime, currencyId, amountCents, tag,
                 createdByPersonId, createdDateTime, open);
         }
 
@@ -35,22 +35,23 @@ namespace Swarmops.Database
 
         #region Database record reading -- SELECT clauses
 
-        public BasicPaymentGroup GetPaymentGroupByTag(int organizationId, string tag)
+        public BasicPaymentGroup GetPaymentGroupByTag (int organizationId, string tag)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + paymentGroupFieldSequence +
-                                 "WHERE OrganizationId=" + organizationId + " AND Tag='" + tag.Replace("'", "''") + "'",
+                    GetDbCommand ("SELECT" + paymentGroupFieldSequence +
+                                  "WHERE OrganizationId=" + organizationId + " AND Tag='" + tag.Replace ("'", "''") +
+                                  "'",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadPaymentGroupFromDataReader(reader);
+                        return ReadPaymentGroupFromDataReader (reader);
                     }
 
                     return null;
@@ -59,31 +60,31 @@ namespace Swarmops.Database
         }
 
 
-        public BasicPaymentGroup GetPaymentGroup(int paymentGroupId)
+        public BasicPaymentGroup GetPaymentGroup (int paymentGroupId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + paymentGroupFieldSequence +
-                                 "WHERE PaymentGroupId=" + paymentGroupId,
+                    GetDbCommand ("SELECT" + paymentGroupFieldSequence +
+                                  "WHERE PaymentGroupId=" + paymentGroupId,
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadPaymentGroupFromDataReader(reader);
+                        return ReadPaymentGroupFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such PaymentGroupId:" + paymentGroupId);
+                    throw new ArgumentException ("No such PaymentGroupId:" + paymentGroupId);
                 }
             }
         }
 
 
-        public BasicPaymentGroup[] GetPaymentGroups(params object[] conditions)
+        public BasicPaymentGroup[] GetPaymentGroups (params object[] conditions)
         {
             List<BasicPaymentGroup> result = new List<BasicPaymentGroup>();
 
@@ -92,15 +93,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + paymentGroupFieldSequence + ConstructWhereClause("PaymentGroups", conditions),
+                    GetDbCommand (
+                        "SELECT" + paymentGroupFieldSequence + ConstructWhereClause ("PaymentGroups", conditions),
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPaymentGroupFromDataReader(reader));
+                        result.Add (ReadPaymentGroupFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -112,89 +113,89 @@ namespace Swarmops.Database
 
         #region Creation and manipulation -- stored procedures
 
-        public int CreatePaymentGroup(int organizationId, DateTime dateTime, int currencyId, DateTime createdDateTime,
+        public int CreatePaymentGroup (int organizationId, DateTime dateTime, int currencyId, DateTime createdDateTime,
             int createdByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePaymentGroup", connection);
+                DbCommand command = GetDbCommand ("CreatePaymentGroup", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "dateTime", dateTime);
-                AddParameterWithName(command, "currencyId", currencyId);
-                AddParameterWithName(command, "createdDateTime", createdDateTime);
-                AddParameterWithName(command, "createdByPersonId", createdByPersonId);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "dateTime", dateTime);
+                AddParameterWithName (command, "currencyId", currencyId);
+                AddParameterWithName (command, "createdDateTime", createdDateTime);
+                AddParameterWithName (command, "createdByPersonId", createdByPersonId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public void SetPaymentGroupOpen(int paymentGroupId, bool open)
+        public void SetPaymentGroupOpen (int paymentGroupId, bool open)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPaymentGroupOpen", connection);
+                DbCommand command = GetDbCommand ("SetPaymentGroupOpen", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "paymentGroupId", paymentGroupId);
-                AddParameterWithName(command, "open", open);
+                AddParameterWithName (command, "paymentGroupId", paymentGroupId);
+                AddParameterWithName (command, "open", open);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPaymentGroupAmount(int paymentGroupId, double amount)
+        public void SetPaymentGroupAmount (int paymentGroupId, double amount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPaymentGroupAmount", connection);
+                DbCommand command = GetDbCommand ("SetPaymentGroupAmount", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "paymentGroupId", paymentGroupId);
-                AddParameterWithName(command, "amount", amount);
+                AddParameterWithName (command, "paymentGroupId", paymentGroupId);
+                AddParameterWithName (command, "amount", amount);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPaymentGroupAmount(int paymentGroupId, Int64 amountCents)
+        public void SetPaymentGroupAmount (int paymentGroupId, Int64 amountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPaymentGroupAmountPrecise", connection);
+                DbCommand command = GetDbCommand ("SetPaymentGroupAmountPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "paymentGroupId", paymentGroupId);
-                AddParameterWithName(command, "amountCents", amountCents);
+                AddParameterWithName (command, "paymentGroupId", paymentGroupId);
+                AddParameterWithName (command, "amountCents", amountCents);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetPaymentGroupTag(int paymentGroupId, string reference)
+        public void SetPaymentGroupTag (int paymentGroupId, string reference)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPaymentGroupTag", connection);
+                DbCommand command = GetDbCommand ("SetPaymentGroupTag", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "paymentGroupId", paymentGroupId);
-                AddParameterWithName(command, "tag", reference);
+                AddParameterWithName (command, "paymentGroupId", paymentGroupId);
+                AddParameterWithName (command, "tag", reference);
 
                 command.ExecuteNonQuery();
             }

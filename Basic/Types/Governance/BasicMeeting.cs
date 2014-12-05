@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types.Governance
 {
     public class BasicMeeting : IHasIdentity
     {
-        public BasicMeeting(int meetingId, int organizationId, string name, DateTime motionSubmissionEnds,
+        public BasicMeeting (int meetingId, int organizationId, string name, DateTime motionSubmissionEnds,
             DateTime amendmentSubmissionEnds, DateTime amendmentVotingStarts, DateTime amendmentVotingEnds,
             DateTime motionVotingStarts, DateTime motionVotingEnds)
         {
@@ -20,8 +20,8 @@ namespace Swarmops.Basic.Types.Governance
             MotionVotingEnds = motionVotingEnds;
         }
 
-        public BasicMeeting(BasicMeeting original) :
-            this(
+        public BasicMeeting (BasicMeeting original) :
+            this (
             original.MeetingId, original.OrganizationId, original.Name, original.MotionSubmissionEnds,
             original.AmendmentSubmissionEnds, original.AmendmentVotingStarts, original.AmendmentVotingEnds,
             original.MotionVotingStarts, original.MotionVotingEnds)

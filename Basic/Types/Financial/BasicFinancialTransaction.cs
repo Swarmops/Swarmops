@@ -11,7 +11,7 @@ namespace Swarmops.Basic.Types.Financial
         private readonly int organizationId;
         private string description;
 
-        public BasicFinancialTransaction(int financialTransactionId, int organizationId, DateTime dateTime,
+        public BasicFinancialTransaction (int financialTransactionId, int organizationId, DateTime dateTime,
             string description, string importHash)
         {
             this.financialTransactionId = financialTransactionId;
@@ -21,8 +21,8 @@ namespace Swarmops.Basic.Types.Financial
             this.importHash = importHash;
         }
 
-        public BasicFinancialTransaction(BasicFinancialTransaction original) :
-            this(
+        public BasicFinancialTransaction (BasicFinancialTransaction original) :
+            this (
             original.financialTransactionId, original.organizationId, original.dateTime, original.description,
             original.importHash)
         {

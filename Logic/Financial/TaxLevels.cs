@@ -6,21 +6,21 @@ namespace Swarmops.Logic.Financial
 {
     public class TaxLevels
     {
-        public static double GetTax(Country country, int taxLevelIdentifier, double grossSalary)
+        public static double GetTax (Country country, int taxLevelIdentifier, double grossSalary)
         {
             if (grossSalary < 1.0) // The lowest tax bracket is 1 currency unit
             {
                 return 0.0; // no tax
             }
 
-            double taxLevel = SwarmDb.GetDatabaseForReading().GetSalaryTaxLevel(country.Identity, taxLevelIdentifier,
-                (int) Math.Floor(grossSalary));
+            double taxLevel = SwarmDb.GetDatabaseForReading().GetSalaryTaxLevel (country.Identity, taxLevelIdentifier,
+                (int) Math.Floor (grossSalary));
 
             if (taxLevel < 1.0)
             {
                 // Percentage
 
-                return Math.Floor(grossSalary*taxLevel);
+                return Math.Floor (grossSalary*taxLevel);
             }
 
             // otherwise, absolute number
@@ -28,14 +28,14 @@ namespace Swarmops.Logic.Financial
             return taxLevel;
         }
 
-        public static void ImportTaxLevels(Country country, int year, string data)
+        public static void ImportTaxLevels (Country country, int year, string data)
         {
             if (country.Code != "SE")
             {
-                throw new NotImplementedException("Can't import this country's tax levels yet");
+                throw new NotImplementedException ("Can't import this country's tax levels yet");
             }
 
-            string[] lines = data.Split('\n'); // if \r\n is used, the \r will be harmlessly at the end of lines
+            string[] lines = data.Split ('\n'); // if \r\n is used, the \r will be harmlessly at the end of lines
 
             foreach (string line in lines)
             {
@@ -55,9 +55,9 @@ namespace Swarmops.Logic.Financial
 
                     bool isPercentage = line[2] == '%' ? true : false;
 
-                    int lowerBracket = Int32.Parse(line.Substring(5, 7));
-                    double tax = Double.Parse(line.Substring(19, 5));
-                    int taxLevelId = Int32.Parse(line.Substring(3, 2));
+                    int lowerBracket = Int32.Parse (line.Substring (5, 7));
+                    double tax = Double.Parse (line.Substring (19, 5));
+                    int taxLevelId = Int32.Parse (line.Substring (3, 2));
 
                     if (isPercentage)
                     {
@@ -65,7 +65,7 @@ namespace Swarmops.Logic.Financial
                     }
 
                     SwarmDb.GetDatabaseForWriting()
-                        .CreateSalaryTaxLevel(country.Identity, taxLevelId, lowerBracket, year, tax);
+                        .CreateSalaryTaxLevel (country.Identity, taxLevelId, lowerBracket, year, tax);
                 }
             }
         }

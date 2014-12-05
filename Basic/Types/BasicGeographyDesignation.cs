@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicGeographyDesignation
     {
-        public BasicGeographyDesignation(int geographyId, int countryId,
+        public BasicGeographyDesignation (int geographyId, int countryId,
             string designation, GeographyLevel geoLevelId)
         {
             GeographyId = geographyId;
@@ -13,8 +13,8 @@ namespace Swarmops.Basic.Types
             GeographyLevel = geoLevelId;
         }
 
-        public BasicGeographyDesignation(BasicGeographyDesignation original) :
-            this(original.GeographyId, original.CountryId, original.Designation, original.GeographyLevel)
+        public BasicGeographyDesignation (BasicGeographyDesignation original) :
+            this (original.GeographyId, original.CountryId, original.Designation, original.GeographyLevel)
         {
             // empty copy ctor
         }

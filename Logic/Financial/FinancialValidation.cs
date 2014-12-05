@@ -5,19 +5,19 @@ namespace Swarmops.Logic.Financial
 {
     public class FinancialValidation : BasicFinancialValidation
     {
-        private FinancialValidation(BasicFinancialValidation basic)
-            : base(basic)
+        private FinancialValidation (BasicFinancialValidation basic)
+            : base (basic)
         {
         }
 
         public Person Person
         {
-            get { return Person.FromIdentity(PersonId); }
+            get { return Person.FromIdentity (PersonId); }
         }
 
-        public static FinancialValidation FromBasic(BasicFinancialValidation basic)
+        public static FinancialValidation FromBasic (BasicFinancialValidation basic)
         {
-            return new FinancialValidation(basic);
+            return new FinancialValidation (basic);
         }
     }
 }

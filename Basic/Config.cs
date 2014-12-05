@@ -11,12 +11,12 @@ namespace Swarmops.Basic
             {
                 string portString = ConfigurationManager.AppSettings["SmtpPort"];
 
-                if (String.IsNullOrEmpty(portString))
+                if (String.IsNullOrEmpty (portString))
                 {
                     return 587;
                 }
 
-                return Int32.Parse(portString);
+                return Int32.Parse (portString);
             }
         }
 
@@ -26,7 +26,7 @@ namespace Swarmops.Basic
             {
                 string smtpHost = ConfigurationManager.AppSettings["SmtpHost"];
 
-                if (String.IsNullOrEmpty(smtpHost))
+                if (String.IsNullOrEmpty (smtpHost))
                 {
                     return "piratesmtp";
                 }

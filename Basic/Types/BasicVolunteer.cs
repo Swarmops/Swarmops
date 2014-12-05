@@ -13,7 +13,7 @@ namespace Swarmops.Basic.Types
         private readonly int personId;
         private readonly int volunteerId;
 
-        public BasicVolunteer(int volunteerId, int personId, int ownerPersonId, DateTime openedDateTime,
+        public BasicVolunteer (int volunteerId, int personId, int ownerPersonId, DateTime openedDateTime,
             bool open, DateTime closedDateTime, string closingComments)
         {
             this.volunteerId = volunteerId;
@@ -25,8 +25,8 @@ namespace Swarmops.Basic.Types
             this.closingComments = closingComments;
         }
 
-        public BasicVolunteer(BasicVolunteer original)
-            : this(original.volunteerId, original.personId, original.ownerPersonId, original.openedDateTime,
+        public BasicVolunteer (BasicVolunteer original)
+            : this (original.volunteerId, original.personId, original.ownerPersonId, original.openedDateTime,
                 original.open, original.closedDateTime, original.closingComments)
         {
             // copy ctor

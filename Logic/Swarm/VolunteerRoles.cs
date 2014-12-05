@@ -5,14 +5,14 @@ namespace Swarmops.Logic.Swarm
 {
     public class VolunteerRoles : List<VolunteerRole>
     {
-        public static VolunteerRoles FromArray(BasicVolunteerRole[] basicArray)
+        public static VolunteerRoles FromArray (BasicVolunteerRole[] basicArray)
         {
             VolunteerRoles result = new VolunteerRoles();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicVolunteerRole basic in basicArray)
             {
-                result.Add(VolunteerRole.FromBasic(basic));
+                result.Add (VolunteerRole.FromBasic (basic));
             }
 
             return result;

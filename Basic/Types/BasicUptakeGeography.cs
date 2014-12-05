@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
         private int geoId;
         private int orgId;
 
-        public BasicUptakeGeography(int pOrgId, int pGeoId)
+        public BasicUptakeGeography (int pOrgId, int pGeoId)
         {
             this.orgId = pOrgId;
             this.geoId = pGeoId;
@@ -15,7 +15,7 @@ namespace Swarmops.Basic.Types
         {
         }
 
-        public BasicUptakeGeography(BasicUptakeGeography other)
+        public BasicUptakeGeography (BasicUptakeGeography other)
         {
             this.orgId = other.orgId;
             this.geoId = other.geoId;

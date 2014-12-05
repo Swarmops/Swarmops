@@ -4,7 +4,7 @@ namespace Swarmops.Utility.BotCode
 {
     public class ActivityMailer
     {
-        [Obsolete("Disabled/Deprecated for Swarmops", true)]
+        [Obsolete ("Disabled/Deprecated for Swarmops", true)]
         public static void Run()
         {
             /* Nope. Disable this. 

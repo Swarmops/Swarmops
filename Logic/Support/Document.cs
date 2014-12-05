@@ -14,7 +14,7 @@ namespace Swarmops.Logic.Support
 {
     public class Document : BasicDocument
     {
-        private Document(BasicDocument document) : base(document)
+        private Document (BasicDocument document) : base (document)
         {
         }
 
@@ -23,7 +23,7 @@ namespace Swarmops.Logic.Support
             get { return base.ServerFileName; }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetDocumentServerFileName(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetDocumentServerFileName (Identity, value);
                 base.ServerFileName = value;
             }
         }
@@ -35,23 +35,23 @@ namespace Swarmops.Logic.Support
                 switch (DocumentType)
                 {
                     case DocumentType.ExpenseClaim:
-                        return ExpenseClaim.FromIdentity(ForeignId);
+                        return ExpenseClaim.FromIdentity (ForeignId);
 
                     case DocumentType.FinancialTransaction:
-                        return FinancialTransaction.FromIdentity(ForeignId);
+                        return FinancialTransaction.FromIdentity (ForeignId);
 
                     case DocumentType.InboundInvoice:
-                        return InboundInvoice.FromIdentity(ForeignId);
+                        return InboundInvoice.FromIdentity (ForeignId);
 
                     case DocumentType.PaperLetter:
-                        return PaperLetter.FromIdentity(ForeignId);
+                        return PaperLetter.FromIdentity (ForeignId);
 
                     case DocumentType.PayrollItem:
-                        return PayrollItem.FromIdentity(ForeignId);
+                        return PayrollItem.FromIdentity (ForeignId);
 
                     default:
-                        throw new NotImplementedException("DocumentType needs implementation: " +
-                                                          DocumentType.ToString());
+                        throw new NotImplementedException ("DocumentType needs implementation: " +
+                                                           DocumentType.ToString());
                 }
             }
         }
@@ -71,34 +71,34 @@ namespace Swarmops.Logic.Support
             }
         }
 
-        public static Document FromIdentity(int documentId)
+        public static Document FromIdentity (int documentId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetDocument(documentId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetDocument (documentId));
         }
 
-        public static Document FromIdentityAggressive(int documentId)
+        public static Document FromIdentityAggressive (int documentId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForWriting().GetDocument(documentId));
-                // "For writing" is intentional - bypasses a race condition in replication
+            return FromBasic (SwarmDb.GetDatabaseForWriting().GetDocument (documentId));
+            // "For writing" is intentional - bypasses a race condition in replication
         }
 
-        public static Document FromBasic(BasicDocument basicDocument)
+        public static Document FromBasic (BasicDocument basicDocument)
         {
-            return new Document(basicDocument);
+            return new Document (basicDocument);
         }
 
-        public static Document Create(string serverFileName, string clientFileName, Int64 fileSize,
+        public static Document Create (string serverFileName, string clientFileName, Int64 fileSize,
             string description, IHasIdentity identifiableObject, Person uploader)
         {
             int newDocumentId = SwarmDb.GetDatabaseForWriting().
-                CreateDocument(serverFileName, clientFileName, fileSize, description,
-                    GetDocumentTypeForObject(identifiableObject),
+                CreateDocument (serverFileName, clientFileName, fileSize, description,
+                    GetDocumentTypeForObject (identifiableObject),
                     identifiableObject == null ? 0 : identifiableObject.Identity, uploader.Identity);
 
-            return FromIdentityAggressive(newDocumentId);
+            return FromIdentityAggressive (newDocumentId);
         }
 
-        public static DocumentType GetDocumentTypeForObject(IHasIdentity foreignObject)
+        public static DocumentType GetDocumentTypeForObject (IHasIdentity foreignObject)
         {
             if (foreignObject == null)
             {
@@ -136,14 +136,14 @@ namespace Swarmops.Logic.Support
             }
             else
             {
-                throw new ArgumentException("Unrecognized foreign object type:" + foreignObject.GetType().ToString());
+                throw new ArgumentException ("Unrecognized foreign object type:" + foreignObject.GetType().ToString());
             }
         }
 
-        public void SetForeignObject(IHasIdentity foreignObject)
+        public void SetForeignObject (IHasIdentity foreignObject)
         {
             SwarmDb.GetDatabaseForWriting()
-                .SetDocumentForeignObject(Identity, GetDocumentTypeForObject(foreignObject), foreignObject.Identity);
+                .SetDocumentForeignObject (Identity, GetDocumentTypeForObject (foreignObject), foreignObject.Identity);
         }
 
 
@@ -151,19 +151,19 @@ namespace Swarmops.Logic.Support
         {
             // Unlink, actually
 
-            SetForeignObject(new TemporaryIdentity(0));
-            File.Delete(StorageRoot + ServerFileName);
-            SwarmDb.GetDatabaseForWriting().SetDocumentDescription(Identity, "Deleted");
+            SetForeignObject (new TemporaryIdentity (0));
+            File.Delete (StorageRoot + ServerFileName);
+            SwarmDb.GetDatabaseForWriting().SetDocumentDescription (Identity, "Deleted");
         }
 
-        public StreamReader GetReader(Encoding encoding)
+        public StreamReader GetReader (Encoding encoding)
         {
-            return new StreamReader(StorageRoot + ServerFileName, encoding);
+            return new StreamReader (StorageRoot + ServerFileName, encoding);
         }
 
-        public StreamReader GetReader(int encodingCodePage)
+        public StreamReader GetReader (int encodingCodePage)
         {
-            return GetReader(Encoding.GetEncoding(encodingCodePage));
+            return GetReader (Encoding.GetEncoding (encodingCodePage));
         }
     }
 }

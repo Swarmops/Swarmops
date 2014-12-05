@@ -14,15 +14,15 @@ namespace Swarmops.Logic.Financial
 {
     public class InboundInvoice : BasicInboundInvoice, IAttestable
     {
-        private InboundInvoice(BasicInboundInvoice basicInstance) :
-            base(basicInstance)
+        private InboundInvoice (BasicInboundInvoice basicInstance) :
+            base (basicInstance)
         {
             // constructor from basic type
         }
 
         public Documents Documents
         {
-            get { return Documents.ForObject(this); }
+            get { return Documents.ForObject (this); }
         }
 
         public new bool Open
@@ -32,7 +32,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (base.Open != value)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetInboundInvoiceOpen(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetInboundInvoiceOpen (Identity, value);
                     base.Open = value;
                 }
             }
@@ -40,7 +40,7 @@ namespace Swarmops.Logic.Financial
 
         public Organization Organization
         {
-            get { return Organization.FromIdentity(OrganizationId); }
+            get { return Organization.FromIdentity (OrganizationId); }
         }
 
 
@@ -57,7 +57,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (value != base.DueDate)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetInboundInvoiceDueDate(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetInboundInvoiceDueDate (Identity, value);
                     base.DueDate = value;
                 }
             }
@@ -67,7 +67,7 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                FinancialTransactions transactions = FinancialTransactions.ForDependentObject(this);
+                FinancialTransactions transactions = FinancialTransactions.ForDependentObject (this);
 
                 if (transactions.Count == 0)
                 {
@@ -79,14 +79,14 @@ namespace Swarmops.Logic.Financial
                     return transactions[0];
                 }
 
-                throw new InvalidOperationException("It appears inbound invoice #" + Identity +
-                                                    " has multiple dependent financial transactions. This is an invalid state.");
+                throw new InvalidOperationException ("It appears inbound invoice #" + Identity +
+                                                     " has multiple dependent financial transactions. This is an invalid state.");
             }
         }
 
         public FinancialValidations Validations
         {
-            get { return FinancialValidations.ForObject(this); }
+            get { return FinancialValidations.ForObject (this); }
         }
 
 
@@ -95,32 +95,32 @@ namespace Swarmops.Logic.Financial
             get
             {
                 return
-                    ObjectOptionalData.ForObject(this).GetOptionalDataString(
+                    ObjectOptionalData.ForObject (this).GetOptionalDataString (
                         ObjectOptionalDataType.InboundInvoiceDescription);
             }
 
             set
             {
-                ObjectOptionalData.ForObject(this)
-                    .SetOptionalDataString(ObjectOptionalDataType.InboundInvoiceDescription, value);
+                ObjectOptionalData.ForObject (this)
+                    .SetOptionalDataString (ObjectOptionalDataType.InboundInvoiceDescription, value);
             }
         }
 
         #region IAttestable Members
 
-        public void Attest(Person attester)
+        public void Attest (Person attester)
         {
-            SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested(Identity, true);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
+            SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested (Identity, true);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
                 FinancialDependencyType.InboundInvoice, Identity,
                 DateTime.Now, attester.Identity, (double) Amount);
             base.Attested = true;
         }
 
-        public void Deattest(Person deattester)
+        public void Deattest (Person deattester)
         {
-            SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested(Identity, false);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
+            SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested (Identity, false);
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
                 FinancialDependencyType.InboundInvoice, Identity,
                 DateTime.Now, deattester.Identity, (double) Amount);
             base.Attested = false;
@@ -137,16 +137,16 @@ namespace Swarmops.Logic.Financial
                     return null;
                 }
 
-                return FinancialAccount.FromIdentity(base.BudgetId);
+                return FinancialAccount.FromIdentity (base.BudgetId);
             }
         }
 
-        public static InboundInvoice Create(Organization organization, DateTime dueDate, Int64 amountCents,
+        public static InboundInvoice Create (Organization organization, DateTime dueDate, Int64 amountCents,
             FinancialAccount budget, string supplier, string description, string payToAccount, string ocr,
             string invoiceReference, Person creatingPerson)
         {
-            InboundInvoice newInvoice = FromIdentity(SwarmDb.GetDatabaseForWriting().
-                CreateInboundInvoice(organization.Identity, dueDate, budget.Identity,
+            InboundInvoice newInvoice = FromIdentity (SwarmDb.GetDatabaseForWriting().
+                CreateInboundInvoice (organization.Identity, dueDate, budget.Identity,
                     supplier, payToAccount, ocr,
                     invoiceReference, amountCents, creatingPerson.Identity));
 
@@ -155,11 +155,11 @@ namespace Swarmops.Logic.Financial
             // Create a corresponding financial transaction with rows
 
             FinancialTransaction transaction =
-                FinancialTransaction.Create(organization.Identity, DateTime.Now,
+                FinancialTransaction.Create (organization.Identity, DateTime.Now,
                     "Invoice #" + newInvoice.Identity + " from " + supplier);
 
-            transaction.AddRow(organization.FinancialAccounts.DebtsInboundInvoices, -amountCents, creatingPerson);
-            transaction.AddRow(budget, amountCents, creatingPerson);
+            transaction.AddRow (organization.FinancialAccounts.DebtsInboundInvoices, -amountCents, creatingPerson);
+            transaction.AddRow (budget, amountCents, creatingPerson);
 
             // Make the transaction dependent on the inbound invoice
 
@@ -167,44 +167,44 @@ namespace Swarmops.Logic.Financial
 
             // Create notification (slightly misplaced logic, but this is failsafest place)
 
-            OutboundComm.CreateNotificationAttestationNeeded(budget, creatingPerson, supplier, amountCents/100.0,
+            OutboundComm.CreateNotificationAttestationNeeded (budget, creatingPerson, supplier, amountCents/100.0,
                 description, NotificationResource.InboundInvoice_Created);
-                // Slightly misplaced logic, but failsafer here
-            SwarmopsLogEntry.Create(creatingPerson,
-                new InboundInvoiceCreatedLogEntry(creatingPerson, supplier, description, amountCents/100.0, budget),
+            // Slightly misplaced logic, but failsafer here
+            SwarmopsLogEntry.Create (creatingPerson,
+                new InboundInvoiceCreatedLogEntry (creatingPerson, supplier, description, amountCents/100.0, budget),
                 newInvoice);
 
             return newInvoice;
         }
 
-        public static InboundInvoice FromBasic(BasicInboundInvoice basic)
+        public static InboundInvoice FromBasic (BasicInboundInvoice basic)
         {
-            return new InboundInvoice(basic);
+            return new InboundInvoice (basic);
         }
 
-        public static InboundInvoice FromIdentity(int inboundInvoiceId)
+        public static InboundInvoice FromIdentity (int inboundInvoiceId)
         {
-            return new InboundInvoice(SwarmDb.GetDatabaseForReading().GetInboundInvoice(inboundInvoiceId));
+            return new InboundInvoice (SwarmDb.GetDatabaseForReading().GetInboundInvoice (inboundInvoiceId));
         }
 
 
-        public void SetBudget(FinancialAccount budget, Person settingPerson)
+        public void SetBudget (FinancialAccount budget, Person settingPerson)
         {
             base.BudgetId = budget.Identity;
-            SwarmDb.GetDatabaseForWriting().SetInboundInvoiceBudget(Identity, budget.Identity);
-            UpdateTransaction(settingPerson);
+            SwarmDb.GetDatabaseForWriting().SetInboundInvoiceBudget (Identity, budget.Identity);
+            UpdateTransaction (settingPerson);
         }
 
 
-        public void SetAmountCents(Int64 amountCents, Person settingPerson)
+        public void SetAmountCents (Int64 amountCents, Person settingPerson)
         {
             base.AmountCents = amountCents;
-            SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAmount(Identity, amountCents);
-            UpdateTransaction(settingPerson);
+            SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAmount (Identity, amountCents);
+            UpdateTransaction (settingPerson);
         }
 
 
-        private void UpdateTransaction(Person updatingPerson)
+        private void UpdateTransaction (Person updatingPerson)
         {
             Dictionary<int, Int64> nominalTransaction = new Dictionary<int, Int64>();
 
@@ -218,7 +218,7 @@ namespace Swarmops.Logic.Financial
                 nominalTransaction[BudgetId] = AmountCents;
             }
 
-            FinancialTransaction.RecalculateTransaction(nominalTransaction, updatingPerson);
+            FinancialTransaction.RecalculateTransaction (nominalTransaction, updatingPerson);
         }
     }
 }

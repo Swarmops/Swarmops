@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicRefund : IHasIdentity
     {
-        public BasicRefund(int refundId, int paymentId, bool open, Int64 amountCents, int createdByPersonId,
+        public BasicRefund (int refundId, int paymentId, bool open, Int64 amountCents, int createdByPersonId,
             DateTime createdDateTime, DateTime closedDateTime)
         {
             RefundId = refundId;
@@ -17,8 +17,8 @@ namespace Swarmops.Basic.Types
             ClosedDateTime = closedDateTime;
         }
 
-        public BasicRefund(BasicRefund original)
-            : this(
+        public BasicRefund (BasicRefund original)
+            : this (
                 original.RefundId, original.PaymentId, original.Open, original.AmountCents, original.CreatedByPersonId,
                 original.CreatedDateTime, original.ClosedDateTime)
         {

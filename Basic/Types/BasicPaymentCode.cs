@@ -20,7 +20,7 @@ namespace Swarmops.Basic.Types
 
         #endregion
 
-        public BasicPaymentCode(int paymentCodeId, string paymentCode, string issuedToPhoneNumber, int issuedToPersonId,
+        public BasicPaymentCode (int paymentCodeId, string paymentCode, string issuedToPhoneNumber, int issuedToPersonId,
             bool claimed)
         {
             this.paymentCodeId = paymentCodeId;
@@ -30,8 +30,8 @@ namespace Swarmops.Basic.Types
             this.claimed = claimed;
         }
 
-        public BasicPaymentCode(BasicPaymentCode original)
-            : this(
+        public BasicPaymentCode (BasicPaymentCode original)
+            : this (
                 original.paymentCodeId, original.paymentCode, original.issuedToPhoneNumber, original.issuedToPersonId,
                 original.claimed)
         {

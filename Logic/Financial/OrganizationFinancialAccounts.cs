@@ -11,22 +11,22 @@ namespace Swarmops.Logic.Financial
     {
         private readonly int _organizationId;
 
-        public OrganizationFinancialAccounts(int organizationId)
+        public OrganizationFinancialAccounts (int organizationId)
         {
             this._organizationId = organizationId;
         }
 
-        public OrganizationFinancialAccounts(Organization organization)
-            : this(organization.Identity)
+        public OrganizationFinancialAccounts (Organization organization)
+            : this (organization.Identity)
         {
         }
 
 
-        public FinancialAccount this[OrganizationFinancialAccountType accountType]
+        public FinancialAccount this [OrganizationFinancialAccountType accountType]
         {
             get
             {
-                int accountId = SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(this._organizationId,
+                int accountId = SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId (this._organizationId,
                     accountType);
 
                 if (accountId == 0)
@@ -34,11 +34,11 @@ namespace Swarmops.Logic.Financial
                     return null; // not set
                 }
 
-                return FinancialAccount.FromIdentity(accountId);
+                return FinancialAccount.FromIdentity (accountId);
             }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetOrganizationFinancialAccountId(this._organizationId, accountType,
+                SwarmDb.GetDatabaseForWriting().SetOrganizationFinancialAccountId (this._organizationId, accountType,
                     value.Identity);
             }
         }
@@ -192,14 +192,14 @@ namespace Swarmops.Logic.Financial
                 // THIS SERIOUSLY NEEDS OPTIMIZATION, MMMKAY?
 
                 FinancialAccounts costAccounts =
-                    FinancialAccounts.ForOrganization(Organization.FromIdentity(this._organizationId),
+                    FinancialAccounts.ForOrganization (Organization.FromIdentity (this._organizationId),
                         FinancialAccountType.Cost);
 
                 foreach (FinancialAccount account in costAccounts)
                 {
                     if (account.IsConferenceParent)
                     {
-                        result.Add(account);
+                        result.Add (account);
                     }
                 }
 
@@ -217,7 +217,7 @@ namespace Swarmops.Logic.Financial
                 int yearlyResultId = CostsYearlyResult.Identity;
 
                 FinancialAccounts costAccounts =
-                    FinancialAccounts.ForOrganization(Organization.FromIdentity(this._organizationId),
+                    FinancialAccounts.ForOrganization (Organization.FromIdentity (this._organizationId),
                         FinancialAccountType.Cost);
 
                 foreach (FinancialAccount account in costAccounts)
@@ -225,7 +225,7 @@ namespace Swarmops.Logic.Financial
                     if (account.Identity != yearlyResultId && account.Expensable)
                         // really should be redundant, but still...
                     {
-                        result.Add(account);
+                        result.Add (account);
                     }
                 }
 
@@ -243,7 +243,7 @@ namespace Swarmops.Logic.Financial
                 int yearlyResultId = CostsYearlyResult.Identity;
 
                 FinancialAccounts costAccounts =
-                    FinancialAccounts.ForOrganization(Organization.FromIdentity(this._organizationId),
+                    FinancialAccounts.ForOrganization (Organization.FromIdentity (this._organizationId),
                         FinancialAccountType.Income);
 
                 foreach (FinancialAccount account in costAccounts)
@@ -251,7 +251,7 @@ namespace Swarmops.Logic.Financial
                     if (account.Identity != yearlyResultId && account.Expensable)
                         // really should be redundant, but still...
                     {
-                        result.Add(account);
+                        result.Add (account);
                     }
                 }
 

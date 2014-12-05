@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicSupplier : IHasIdentity
     {
-        public BasicSupplier(int supplierId, string name, string email, string passwordHash, string bankAccount,
+        public BasicSupplier (int supplierId, string name, string email, string passwordHash, string bankAccount,
             DateTime createdDateTime, int createdByPersonId)
         {
             SupplierId = supplierId;
@@ -17,8 +17,8 @@ namespace Swarmops.Basic.Types
             CreatedByPersonId = createdByPersonId;
         }
 
-        public BasicSupplier(BasicSupplier original)
-            : this(
+        public BasicSupplier (BasicSupplier original)
+            : this (
                 original.SupplierId, original.Name, original.Email, original.PasswordHash, original.BankAccount,
                 original.CreatedDateTime, original.CreatedByPersonId)
         {

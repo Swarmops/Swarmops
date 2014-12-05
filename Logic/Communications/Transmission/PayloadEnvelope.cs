@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Communications.Transmission
             // default public ctor for serializability
         }
 
-        public PayloadEnvelope(IXmlPayload payload)
+        public PayloadEnvelope (IXmlPayload payload)
         {
             PayloadClass = payload.GetType().ToString();
             PayloadXml = payload.ToXml();

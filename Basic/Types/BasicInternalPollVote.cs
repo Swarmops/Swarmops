@@ -4,15 +4,15 @@ namespace Swarmops.Basic.Types
 {
     public class BasicInternalPollVote : IHasIdentity
     {
-        public BasicInternalPollVote(int internalPollVoteId, int internalPollId, string verificationCode)
+        public BasicInternalPollVote (int internalPollVoteId, int internalPollId, string verificationCode)
         {
             InternalPollVoteId = internalPollVoteId;
             InternalPollId = internalPollId;
             VerificationCode = verificationCode;
         }
 
-        public BasicInternalPollVote(BasicInternalPollVote original)
-            : this(original.InternalPollVoteId, original.InternalPollId, original.VerificationCode)
+        public BasicInternalPollVote (BasicInternalPollVote original)
+            : this (original.InternalPollVoteId, original.InternalPollId, original.VerificationCode)
         {
             // empty copy ctor   
         }

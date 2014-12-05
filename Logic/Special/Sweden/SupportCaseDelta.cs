@@ -5,7 +5,7 @@ namespace Swarmops.Logic.Special.Sweden
 {
     public class SupportCaseDelta : IHasIdentity
     {
-        public SupportCaseDelta(int supportCaseDeltaId, int supportCaseId, int supportPersonId, DateTime dateTime,
+        public SupportCaseDelta (int supportCaseDeltaId, int supportCaseId, int supportPersonId, DateTime dateTime,
             string verb, string changes)
         {
             SupportCaseDeltaId = supportCaseDeltaId;

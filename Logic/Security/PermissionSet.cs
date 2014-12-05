@@ -12,29 +12,29 @@ namespace Swarmops.Logic.Security
         public List<Item> permsList = new List<Item>();
 
 
-        public PermissionSet(Permission p)
+        public PermissionSet (Permission p)
         {
-            this.permsList.Add(new Item(-1, -1, p));
+            this.permsList.Add (new Item (-1, -1, p));
         }
 
-        public PermissionSet(Permission p, int orgId)
+        public PermissionSet (Permission p, int orgId)
         {
-            this.permsList.Add(new Item(orgId, -1, p));
+            this.permsList.Add (new Item (orgId, -1, p));
         }
 
-        public PermissionSet(Permission p, int orgId, int geoId)
+        public PermissionSet (Permission p, int orgId, int geoId)
         {
-            this.permsList.Add(new Item(orgId, geoId, p));
+            this.permsList.Add (new Item (orgId, geoId, p));
         }
 
-        public PermissionSet(Item pi)
+        public PermissionSet (Item pi)
         {
-            this.permsList.Add(pi);
+            this.permsList.Add (pi);
         }
 
-        public PermissionSet(string permsString)
+        public PermissionSet (string permsString)
         {
-            Regex re = new Regex(
+            Regex re = new Regex (
                 @"          # will search Permission(1,1),Permission(1,1),Permission
 (                   # group for each ,Permission(1,1) or ,Permission
     (                   
@@ -51,7 +51,7 @@ namespace Swarmops.Logic.Security
     )
     ,*                  # group could end with comma
 )", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
-            MatchCollection matches = re.Matches(permsString);
+            MatchCollection matches = re.Matches (permsString);
             foreach (Match m in matches)
             {
                 try
@@ -62,20 +62,20 @@ namespace Swarmops.Logic.Security
                     try
                     {
                         string pars = m.Groups["params"].Value;
-                        string[] split = pars.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
+                        string[] split = pars.Split (new[] {','}, StringSplitOptions.RemoveEmptyEntries);
                         if (pars.Length > 0)
                         {
-                            org = int.Parse(split[0]);
+                            org = int.Parse (split[0]);
                             if (pars.Length > 1)
-                                geo = int.Parse(split[1]);
+                                geo = int.Parse (split[1]);
                         }
                     }
                     catch
                     {
                     }
-                    Permission p = (Permission) Enum.Parse(typeof (Permission), hit, true);
-                    Item item = new Item(org, geo, p);
-                    this.permsList.Add(item);
+                    Permission p = (Permission) Enum.Parse (typeof (Permission), hit, true);
+                    Item item = new Item (org, geo, p);
+                    this.permsList.Add (item);
                 }
                 catch
                 {
@@ -95,7 +95,7 @@ namespace Swarmops.Logic.Security
             set { this.needAll = !value; }
         }
 
-        public bool IsInSet(Permission p)
+        public bool IsInSet (Permission p)
         {
             foreach (Item ps in this.permsList)
                 if (ps.perm == p)
@@ -103,18 +103,18 @@ namespace Swarmops.Logic.Security
             return false;
         }
 
-        public bool IsInSet(PermissionSet ps)
+        public bool IsInSet (PermissionSet ps)
         {
             foreach (Permission p in ps)
-                if (!IsInSet(p))
+                if (!IsInSet (p))
                     return false;
             return true;
         }
 
-        public bool IsAnyInSet(PermissionSet ps)
+        public bool IsAnyInSet (PermissionSet ps)
         {
             foreach (Permission p in ps)
-                if (IsInSet(p))
+                if (IsInSet (p))
                     return true;
             return false;
         }
@@ -124,16 +124,16 @@ namespace Swarmops.Logic.Security
             List<string> reslist = new List<string>();
             foreach (Item itm in this)
             {
-                reslist.Add(itm.perm.ToString());
+                reslist.Add (itm.perm.ToString());
             }
             string[] resArr = reslist.ToArray();
-            string res = string.Join(this.needAll ? " & " : " | ", resArr);
+            string res = string.Join (this.needAll ? " & " : " | ", resArr);
             return res;
         }
 
         public Enumerator GetEnumerator()
         {
-            return new Enumerator(this);
+            return new Enumerator (this);
         }
 
         public class Enumerator : IEnumerator
@@ -141,7 +141,7 @@ namespace Swarmops.Logic.Security
             private readonly PermissionSet parent;
             private int currentIndex = -1;
 
-            internal Enumerator(PermissionSet p)
+            internal Enumerator (PermissionSet p)
             {
                 this.parent = p;
                 Reset();
@@ -174,21 +174,21 @@ namespace Swarmops.Logic.Security
 
         public class Item
         {
-            public Item(int pOrgId, int pGeoId, Permission pPerm)
+            public Item (int pOrgId, int pGeoId, Permission pPerm)
             {
                 orgId = pOrgId;
                 geographyId = pGeoId;
                 perm = pPerm;
             }
 
-            public Item(int pOrgId, Permission pPerm)
+            public Item (int pOrgId, Permission pPerm)
             {
                 orgId = pOrgId;
                 geographyId = -1;
                 perm = pPerm;
             }
 
-            public Item(Permission pPerm)
+            public Item (Permission pPerm)
             {
                 orgId = -1;
                 geographyId = -1;

@@ -9,20 +9,20 @@ namespace Swarmops.Logic.Security
         public readonly Organization Organization;
         public readonly AccessType Type;
 
-        public Access(AccessAspect aspect, AccessType type)
+        public Access (AccessAspect aspect, AccessType type)
         {
             this.Aspect = aspect;
             this.Type = type;
         }
 
-        public Access(Organization organization, AccessAspect aspect, AccessType type)
+        public Access (Organization organization, AccessAspect aspect, AccessType type)
         {
             this.Organization = organization;
             this.Aspect = aspect;
             this.Type = type;
         }
 
-        public Access(Organization organization, Geography geography, AccessAspect aspect, AccessType type)
+        public Access (Organization organization, Geography geography, AccessAspect aspect, AccessType type)
         {
             this.Organization = organization;
             this.Geography = geography;

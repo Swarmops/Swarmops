@@ -13,13 +13,13 @@ namespace Swarmops.Database
         /// </summary>
         /// <param name="ReportId">The Report Id.</param>
         /// <returns>An int array of PersonId.</returns>
-        public int[] GetSubscribersForNewsletterFeed(int newsletterFeedId)
+        public int[] GetSubscribersForNewsletterFeed (int newsletterFeedId)
         {
             Dictionary<int, bool> hash = new Dictionary<int, bool>();
 
             // First, we get the newsletter feed we're working with.
 
-            BasicNewsletterFeed newsletterFeed = GetNewsletterFeed(newsletterFeedId);
+            BasicNewsletterFeed newsletterFeed = GetNewsletterFeed (newsletterFeedId);
 
             if (newsletterFeed.DefaultSubscribed)
             {
@@ -31,16 +31,16 @@ namespace Swarmops.Database
                 // Note that the individual preferences may have people not in the organization,
                 // and so the final list may include subscribers that are nonmembers.
 
-                BasicOrganization[] orgTree = GetOrganizationTree(newsletterFeed.OrganizationId);
+                BasicOrganization[] orgTree = GetOrganizationTree (newsletterFeed.OrganizationId);
 
                 List<int> organizationIds = new List<int>();
 
                 foreach (BasicOrganization org in orgTree)
                 {
-                    organizationIds.Add(org.Identity);
+                    organizationIds.Add (org.Identity);
                 }
 
-                int[] personIds = GetMembersForOrganizations(organizationIds.ToArray());
+                int[] personIds = GetMembersForOrganizations (organizationIds.ToArray());
 
                 foreach (int personId in personIds)
                 {
@@ -55,7 +55,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT PersonId,Subscribed FROM NewsletterSubscriptions WHERE NewsletterFeedId=" +
                         newsletterFeedId.ToString(), connection);
 
@@ -63,8 +63,8 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        int personId = reader.GetInt32(0);
-                        bool subscribed = reader.GetBoolean(1);
+                        int personId = reader.GetInt32 (0);
+                        bool subscribed = reader.GetBoolean (1);
 
                         if (personId > 0)
                         {
@@ -83,7 +83,7 @@ namespace Swarmops.Database
             {
                 if (hash[key])
                 {
-                    result.Add(key);
+                    result.Add (key);
                 }
             }
 
@@ -96,14 +96,14 @@ namespace Swarmops.Database
         /// </summary>
         /// <param name="newsletterId">The newsletter id.</param>
         /// <returns>A Newsletter instance.</returns>
-        public BasicNewsletterFeed GetNewsletterFeed(int newsletterFeedId)
+        public BasicNewsletterFeed GetNewsletterFeed (int newsletterFeedId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT OrganizationId,DefaultSubscribed,Name FROM NewsletterFeeds WHERE NewsletterFeedId=" +
                         newsletterFeedId.ToString(),
                         connection);
@@ -112,15 +112,15 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        int organizationId = reader.GetInt32(0);
-                        bool defaultSubscribed = reader.GetBoolean(1);
-                        string reportName = reader.GetString(2);
+                        int organizationId = reader.GetInt32 (0);
+                        bool defaultSubscribed = reader.GetBoolean (1);
+                        string reportName = reader.GetString (2);
 
-                        return new BasicNewsletterFeed(newsletterFeedId, organizationId, defaultSubscribed, reportName);
+                        return new BasicNewsletterFeed (newsletterFeedId, organizationId, defaultSubscribed, reportName);
                     }
                     else
                     {
-                        throw new ArgumentException("No such newsletter feed id: " + newsletterFeedId.ToString());
+                        throw new ArgumentException ("No such newsletter feed id: " + newsletterFeedId.ToString());
                     }
                 }
             }
@@ -131,7 +131,7 @@ namespace Swarmops.Database
         /// </summary>
         /// <param name="organizationId"></param>
         /// <returns></returns>
-        public BasicNewsletterFeed[] GetNewsletterFeedsForOrganization(int organizationId)
+        public BasicNewsletterFeed[] GetNewsletterFeedsForOrganization (int organizationId)
         {
             List<BasicNewsletterFeed> feeds = new List<BasicNewsletterFeed>();
 
@@ -140,7 +140,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT NewsletterFeedId, Name, DefaultSubscribed FROM NewsletterFeeds WHERE OrganizationId =" +
                         organizationId.ToString(), connection);
 
@@ -148,10 +148,10 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        int newsletterFeedId = reader.GetInt32(0);
-                        string reportName = reader.GetString(1);
-                        bool defaultSubscribed = reader.GetBoolean(2);
-                        feeds.Add(new BasicNewsletterFeed(newsletterFeedId, organizationId, defaultSubscribed,
+                        int newsletterFeedId = reader.GetInt32 (0);
+                        string reportName = reader.GetString (1);
+                        bool defaultSubscribed = reader.GetBoolean (2);
+                        feeds.Add (new BasicNewsletterFeed (newsletterFeedId, organizationId, defaultSubscribed,
                             reportName));
                     }
                 }
@@ -160,7 +160,7 @@ namespace Swarmops.Database
             return feeds.ToArray();
         }
 
-        public Dictionary<int, bool> GetNewsletterFeedsForSubscriber(int personId)
+        public Dictionary<int, bool> GetNewsletterFeedsForSubscriber (int personId)
         {
             Dictionary<int, bool> subs =
                 new Dictionary<int, bool>();
@@ -170,7 +170,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT NewsletterFeedId, Subscribed FROM NewsletterSubscriptions WHERE PersonId=" +
                         personId.ToString(), connection);
 
@@ -178,8 +178,8 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        int newsletterFeedId = reader.GetInt32(0);
-                        bool subscribed = reader.GetBoolean(1);
+                        int newsletterFeedId = reader.GetInt32 (0);
+                        bool subscribed = reader.GetBoolean (1);
                         subs[newsletterFeedId] = subscribed;
                     }
                 }
@@ -188,33 +188,33 @@ namespace Swarmops.Database
             return subs;
         }
 
-        public void SetNewsletterSubscription(int personId, int newsletterFeedId, bool subscribed)
+        public void SetNewsletterSubscription (int personId, int newsletterFeedId, bool subscribed)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPersonNewsletterSubscription", connection);
+                DbCommand command = GetDbCommand ("SetPersonNewsletterSubscription", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "newsletterFeedId", newsletterFeedId);
-                AddParameterWithName(command, "subscribed", subscribed);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "newsletterFeedId", newsletterFeedId);
+                AddParameterWithName (command, "subscribed", subscribed);
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public void DeletePersonNewsletterSubscriptions(int personId) // reverts to default
+        public void DeletePersonNewsletterSubscriptions (int personId) // reverts to default
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("DeletePersonNewsletterSubscriptions", connection);
+                DbCommand command = GetDbCommand ("DeletePersonNewsletterSubscriptions", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
+                AddParameterWithName (command, "personId", personId);
 
                 command.ExecuteNonQuery();
             }

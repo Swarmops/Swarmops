@@ -38,17 +38,17 @@ namespace Swarmops.Utility.BotCode
 
         public void Beat()
         {
-            Beat(this.lastFilename);
+            Beat (this.lastFilename);
         }
 
-        public void Beat(string filename)
+        public void Beat (string filename)
         {
             lock (lockObject)
             {
                 this.lastFilename = filename;
             }
 
-            if ((DateTime.Now.Subtract(this.lastBeat).TotalSeconds > 10)
+            if ((DateTime.Now.Subtract (this.lastBeat).TotalSeconds > 10)
                 && (this.FlagRestartRequested == false))
             {
                 try
@@ -59,18 +59,18 @@ namespace Swarmops.Utility.BotCode
 
                     if (nowString == Persistence.Key["PirateBot-L-Heartbeat"])
                     {
-                        writeFile(filename, DateTime.Now.ToString());
+                        writeFile (filename, DateTime.Now.ToString());
                     }
                     else
                     {
                         SuggestRestart();
-                        throw new Exception("Failed to update HeartBeat");
+                        throw new Exception ("Failed to update HeartBeat");
                     }
                 }
                 catch (Exception e)
                 {
                     SuggestRestart();
-                    throw new Exception("Failed to update HeartBeat", e);
+                    throw new Exception ("Failed to update HeartBeat", e);
                 }
             }
         }
@@ -78,16 +78,16 @@ namespace Swarmops.Utility.BotCode
 
         public void SuggestRestart()
         {
-            if (!File.Exists("./piratebotexit.flag"))
-                File.Create("./piratebotexit.flag");
+            if (!File.Exists ("./piratebotexit.flag"))
+                File.Create ("./piratebotexit.flag");
             this.FlagRestartRequested = true;
         }
 
-        public static void writeFile(string sPath, string content)
+        public static void writeFile (string sPath, string content)
         {
-            StreamWriter writeStream = new StreamWriter(new FileStream(sPath, FileMode.Create, FileAccess.ReadWrite),
+            StreamWriter writeStream = new StreamWriter (new FileStream (sPath, FileMode.Create, FileAccess.ReadWrite),
                 Encoding.Default);
-            writeStream.Write(content);
+            writeStream.Write (content);
             writeStream.Close();
         }
     }

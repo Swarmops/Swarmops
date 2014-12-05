@@ -12,20 +12,20 @@ namespace Swarmops.Logic.Structure
         {
         } // disallow public direct construction
 
-        private UptakeGeography(BasicUptakeGeography basic)
-            : base(basic)
+        private UptakeGeography (BasicUptakeGeography basic)
+            : base (basic)
         {
         }
 
-        protected UptakeGeography(UptakeGeography other)
-            : base(other)
+        protected UptakeGeography (UptakeGeography other)
+            : base (other)
         {
         }
 
 
-        public static UptakeGeography FromBasic(BasicUptakeGeography basic)
+        public static UptakeGeography FromBasic (BasicUptakeGeography basic)
         {
-            return new UptakeGeography(basic);
+            return new UptakeGeography (basic);
         }
 
         #endregion
@@ -51,16 +51,16 @@ namespace Swarmops.Logic.Structure
             get
             {
                 if (this.geography == null)
-                    this.geography = Geography.FromIdentity(GeoId);
+                    this.geography = Geography.FromIdentity (GeoId);
                 return this.geography;
             }
             protected set
             {
                 if (Organization != null)
-                    Organization.DeleteUptakeGeography(GeoId);
+                    Organization.DeleteUptakeGeography (GeoId);
 
                 if (value != null && Organization != null)
-                    Organization.AddUptakeGeography(value.GeographyId);
+                    Organization.AddUptakeGeography (value.GeographyId);
 
                 this.geography = value;
             }
@@ -71,16 +71,16 @@ namespace Swarmops.Logic.Structure
             get
             {
                 if (this.organization == null)
-                    this.organization = Organization.FromIdentity(OrgId);
+                    this.organization = Organization.FromIdentity (OrgId);
 
                 return this.organization;
             }
             protected set
             {
                 if (Organization != null)
-                    Organization.DeleteUptakeGeography(GeoId);
+                    Organization.DeleteUptakeGeography (GeoId);
                 if (value != null)
-                    value.AddUptakeGeography(GeoId);
+                    value.AddUptakeGeography (GeoId);
                 this.organization = value;
             }
         }

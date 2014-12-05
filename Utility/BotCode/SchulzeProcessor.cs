@@ -38,19 +38,19 @@ namespace Swarmops.Utility.BotCode
             //
             // We use this translation later as we use indexes as identities in the preference matrix.
 
-            Console.Write("Creating list of candidates and index lookup...");
+            Console.Write ("Creating list of candidates and index lookup...");
 
             this.candidateIds = new List<int>();
             this.indexOfCandidateId = new Dictionary<int, int>();
             int index = 0;
             foreach (MeetingElectionCandidate candidate in Candidates)
             {
-                this.candidateIds.Add(candidate.Identity);
+                this.candidateIds.Add (candidate.Identity);
                 this.indexOfCandidateId[candidate.Identity] = index;
                 index++;
             }
 
-            Console.WriteLine(" done.");
+            Console.WriteLine (" done.");
         }
 
 
@@ -67,15 +67,15 @@ namespace Swarmops.Utility.BotCode
             // checked off (as they were not voted for).
 
             this.preferenceXtoY = new int[this.candidateIds.Count, this.candidateIds.Count];
-                // huuuuuge matrix for 1000+ candidates, zero inited
+            // huuuuuge matrix for 1000+ candidates, zero inited
 
             int count = 1;
 
-            Console.WriteLine("Calculating raw preference matrix.");
+            Console.WriteLine ("Calculating raw preference matrix.");
 
             foreach (MeetingElectionVote vote in Votes)
             {
-                Console.Write("\r - vote {0:D5} of {1:D5}...", count, Votes.Count);
+                Console.Write ("\r - vote {0:D5} of {1:D5}...", count, Votes.Count);
 
                 Dictionary<int, bool> candidateIdSeen = new Dictionary<int, bool>();
                 int[] voteCandidateIds = vote.SelectedCandidateIdsInOrder;
@@ -101,7 +101,7 @@ namespace Swarmops.Utility.BotCode
 
                 foreach (int candidateId in this.candidateIds)
                 {
-                    if (!candidateIdSeen.ContainsKey(candidateId))
+                    if (!candidateIdSeen.ContainsKey (candidateId))
                     {
                         // Not on vote, so inferior to all candidates on the vote
 
@@ -116,7 +116,7 @@ namespace Swarmops.Utility.BotCode
                 count++;
             }
 
-            Console.WriteLine(" done.");
+            Console.WriteLine (" done.");
         }
 
 
@@ -130,11 +130,11 @@ namespace Swarmops.Utility.BotCode
 
             // First part of magic. Establish the direction of pairwise defeats. I think.
 
-            Console.WriteLine("Calculating link strengths.");
+            Console.WriteLine ("Calculating link strengths.");
 
             for (int outerIndex = 0; outerIndex < this.candidateIds.Count; outerIndex++)
             {
-                Console.Write("\r - Step 1: {0:D4} of {1:D4}...", outerIndex + 1, this.candidateIds.Count);
+                Console.Write ("\r - Step 1: {0:D4} of {1:D4}...", outerIndex + 1, this.candidateIds.Count);
 
                 for (int innerIndex = 0; innerIndex < this.candidateIds.Count; innerIndex++)
                 {
@@ -151,13 +151,13 @@ namespace Swarmops.Utility.BotCode
                 }
             }
 
-            Console.WriteLine(" done.");
+            Console.WriteLine (" done.");
 
             // Second part of magic, an O(n^3) algorithm. In the famous words of Alfred E. Neuman: Yecch!
 
             for (int outerIndex = 0; outerIndex < this.candidateIds.Count; outerIndex++)
             {
-                Console.Write("\r - Step 2: {0:D4} of {1:D4}...", outerIndex + 1, this.candidateIds.Count);
+                Console.Write ("\r - Step 2: {0:D4} of {1:D4}...", outerIndex + 1, this.candidateIds.Count);
 
                 for (int middleIndex = 0; middleIndex < this.candidateIds.Count; middleIndex++)
                 {
@@ -174,20 +174,20 @@ namespace Swarmops.Utility.BotCode
                         }
 
                         this.linkStrengthXtoY[middleIndex, innerIndex] =
-                            Math.Max(this.linkStrengthXtoY[middleIndex, innerIndex],
-                                Math.Min(this.linkStrengthXtoY[middleIndex, outerIndex],
+                            Math.Max (this.linkStrengthXtoY[middleIndex, innerIndex],
+                                Math.Min (this.linkStrengthXtoY[middleIndex, outerIndex],
                                     this.linkStrengthXtoY[outerIndex, innerIndex]));
                     }
                 }
             }
 
-            Console.WriteLine(" done.");
+            Console.WriteLine (" done.");
         }
 
 
         private void AssembleFinalOrder()
         {
-            Console.WriteLine("Assembling final list.");
+            Console.WriteLine ("Assembling final list.");
 
             MeetingElectionCandidates result = new MeetingElectionCandidates();
 
@@ -198,13 +198,13 @@ namespace Swarmops.Utility.BotCode
 
             while (candidatesRemaining > 0)
             {
-                Console.Write("\r - remaining: {0:D4}", candidatesRemaining);
+                Console.Write ("\r - remaining: {0:D4}", candidatesRemaining);
 
                 // Find the first nontaken candidate
 
                 int winningCandidateIndex = 0;
 
-                while (candidateAdded.ContainsKey(winningCandidateIndex))
+                while (candidateAdded.ContainsKey (winningCandidateIndex))
                 {
                     winningCandidateIndex++;
                 }
@@ -223,7 +223,7 @@ namespace Swarmops.Utility.BotCode
                         compareCandidateIndex < this.candidateIds.Count;
                         compareCandidateIndex++)
                     {
-                        if (candidateAdded.ContainsKey(compareCandidateIndex))
+                        if (candidateAdded.ContainsKey (compareCandidateIndex))
                         {
                             continue;
                         }
@@ -244,21 +244,21 @@ namespace Swarmops.Utility.BotCode
                 // We have the winning candidate among the not-yet-ranked candidates:
 
                 MeetingElectionCandidate candidate =
-                    MeetingElectionCandidate.FromIdentity(this.candidateIds[winningCandidateIndex]);
+                    MeetingElectionCandidate.FromIdentity (this.candidateIds[winningCandidateIndex]);
 
                 candidateAdded[winningCandidateIndex] = true;
-                result.Add(candidate);
+                result.Add (candidate);
                 candidatesRemaining--;
                 count++;
             }
 
             FinalOrder = result;
 
-            Console.WriteLine(", done.");
+            Console.WriteLine (", done.");
         }
 
 
-        public int GetCandidateDistance(int finalOrderIndex)
+        public int GetCandidateDistance (int finalOrderIndex)
         {
             // Gets the distance, in preference counts, between candidate [finalOrderIndex] and candidate [finalOrderIndex+1].
             // This is purely a diagnostic function and does not contribute to the results calculations.

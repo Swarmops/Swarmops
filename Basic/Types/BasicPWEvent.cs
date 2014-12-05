@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPWEvent
     {
-        public BasicPWEvent(int eventId, DateTime dateTime, bool open, DateTime processedDateTime, EventType eventType,
+        public BasicPWEvent (int eventId, DateTime dateTime, bool open, DateTime processedDateTime, EventType eventType,
             EventSource eventSource, int actingPersonId, int affectedPersonId, int organizationId,
             int geographyId, int parameterInt, string parameterText)
         {

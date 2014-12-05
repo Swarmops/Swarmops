@@ -11,6 +11,6 @@ namespace Swarmops.Logic.Communications
         /// </summary>
         /// <param name="comm">The piece of communications to send.</param>
         /// <param name="person">The person to send to.</param>
-        void Transmit(PayloadEnvelope envelope, Person person);
+        void Transmit (PayloadEnvelope envelope, Person person);
     }
 }

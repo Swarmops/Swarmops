@@ -5,7 +5,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicOutboundInvoiceItem : IHasIdentity
     {
-        public BasicOutboundInvoiceItem(int outboundInvoiceItemId, int outboundInvoiceId, string description,
+        public BasicOutboundInvoiceItem (int outboundInvoiceItemId, int outboundInvoiceId, string description,
             Int64 amountCents)
         {
             OutboundInvoiceItemId = outboundInvoiceItemId;
@@ -14,8 +14,9 @@ namespace Swarmops.Basic.Types
             AmountCents = amountCents;
         }
 
-        public BasicOutboundInvoiceItem(BasicOutboundInvoiceItem original) :
-            this(original.OutboundInvoiceItemId, original.OutboundInvoiceId, original.Description, original.AmountCents)
+        public BasicOutboundInvoiceItem (BasicOutboundInvoiceItem original) :
+            this (original.OutboundInvoiceItemId, original.OutboundInvoiceId, original.Description, original.AmountCents
+            )
         {
             // empty copy ctor
         }

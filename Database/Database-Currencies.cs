@@ -14,67 +14,67 @@ namespace Swarmops.Database
             " CurrencyId,Code,Name,Sign " + // 0-3
             "FROM Currencies ";
 
-        private static BasicCurrency ReadCurrencyFromDataReader(IDataRecord reader)
+        private static BasicCurrency ReadCurrencyFromDataReader (IDataRecord reader)
         {
-            int currencyId = reader.GetInt32(0);
-            string code = reader.GetString(1);
-            string name = reader.GetString(2);
-            string sign = reader.GetString(3);
+            int currencyId = reader.GetInt32 (0);
+            string code = reader.GetString (1);
+            string name = reader.GetString (2);
+            string sign = reader.GetString (3);
 
-            return new BasicCurrency(currencyId, code, name, sign);
+            return new BasicCurrency (currencyId, code, name, sign);
         }
 
         #endregion
 
         #region Record reading - SELECT statements
 
-        public BasicCurrency GetCurrency(int currencyId)
+        public BasicCurrency GetCurrency (int currencyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + currencyFieldSequence + "WHERE CurrencyId=" + currencyId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadCurrencyFromDataReader(reader);
+                        return ReadCurrencyFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Currency Id: " + currencyId);
+                    throw new ArgumentException ("Unknown Currency Id: " + currencyId);
                 }
             }
         }
 
-        public BasicCurrency GetCurrency(string currencyCode)
+        public BasicCurrency GetCurrency (string currencyCode)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + currencyFieldSequence + "WHERE Code='" +
-                        currencyCode.Replace("'", "''").ToUpperInvariant() + "';", connection);
+                        currencyCode.Replace ("'", "''").ToUpperInvariant() + "';", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadCurrencyFromDataReader(reader);
+                        return ReadCurrencyFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Currency Code: " + currencyCode);
+                    throw new ArgumentException ("Unknown Currency Code: " + currencyCode);
                 }
             }
         }
 
 
-        public BasicCurrency[] GetCurrencies(params object[] conditions)
+        public BasicCurrency[] GetCurrencies (params object[] conditions)
         {
             List<BasicCurrency> result = new List<BasicCurrency>();
 
@@ -83,14 +83,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + currencyFieldSequence + ConstructWhereClause("Currencies", conditions), connection);
+                    GetDbCommand (
+                        "SELECT" + currencyFieldSequence + ConstructWhereClause ("Currencies", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadCurrencyFromDataReader(reader));
+                        result.Add (ReadCurrencyFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -102,7 +102,7 @@ namespace Swarmops.Database
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateCurrency(string code, string name, string sign)
+        public int CreateCurrency (string code, string name, string sign)
         {
             DateTime now = DateTime.Now;
 
@@ -110,19 +110,19 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateCurrency", connection);
+                DbCommand command = GetDbCommand ("CreateCurrency", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "code", code.ToUpperInvariant());
-                AddParameterWithName(command, "name", name);
-                AddParameterWithName(command, "sign", sign);
+                AddParameterWithName (command, "code", code.ToUpperInvariant());
+                AddParameterWithName (command, "name", name);
+                AddParameterWithName (command, "sign", sign);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int SetCurrencyExchangeRate(DateTime date, int currencyId, double eur100)
+        public int SetCurrencyExchangeRate (DateTime date, int currencyId, double eur100)
         {
             DateTime now = DateTime.Now;
 
@@ -130,14 +130,14 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetCurrencyExchangeRate", connection);
+                DbCommand command = GetDbCommand ("SetCurrencyExchangeRate", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "currencyId", currencyId);
-                AddParameterWithName(command, "date", date.Date);
-                AddParameterWithName(command, "eur100", eur100);
+                AddParameterWithName (command, "currencyId", currencyId);
+                AddParameterWithName (command, "date", date.Date);
+                AddParameterWithName (command, "eur100", eur100);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 

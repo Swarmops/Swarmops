@@ -4,7 +4,7 @@ namespace Swarmops.Logic.DashboardTasks
 {
     public class TaskBase
     {
-        public TaskBase(int identity, string description, DateTime opened, DateTime expires)
+        public TaskBase (int identity, string description, DateTime opened, DateTime expires)
         {
             Identity = identity;
             Description = description;

@@ -5,7 +5,7 @@ namespace Swarmops.Logic.Financial
 {
     public class OutboundInvoiceItem : BasicOutboundInvoiceItem
     {
-        private OutboundInvoiceItem(BasicOutboundInvoiceItem basic) : base(basic)
+        private OutboundInvoiceItem (BasicOutboundInvoiceItem basic) : base (basic)
         {
             // empty ctor
         }
@@ -15,14 +15,14 @@ namespace Swarmops.Logic.Financial
             get { return AmountCents/100.0m; }
         }
 
-        public static OutboundInvoiceItem FromBasic(BasicOutboundInvoiceItem basic)
+        public static OutboundInvoiceItem FromBasic (BasicOutboundInvoiceItem basic)
         {
-            return new OutboundInvoiceItem(basic);
+            return new OutboundInvoiceItem (basic);
         }
 
-        public static OutboundInvoiceItem FromIdentity(int outboundInvoiceItemId)
+        public static OutboundInvoiceItem FromIdentity (int outboundInvoiceItemId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetOutboundInvoiceItem(outboundInvoiceItemId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetOutboundInvoiceItem (outboundInvoiceItemId));
         }
     }
 }

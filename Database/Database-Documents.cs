@@ -10,14 +10,14 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        public BasicDocument GetDocument(int documentId)
+        public BasicDocument GetDocument (int documentId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
                         "WHERE Documents.DocumentTypeId=DocumentTypes.DocumentTypeId AND " +
                         "Documents.DocumentId = " + documentId + ";", connection);
@@ -26,16 +26,16 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadDocumentFromDataReader(reader);
+                        return ReadDocumentFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Document Id");
+                    throw new ArgumentException ("Unknown Document Id");
                 }
             }
         }
 
 
-        public BasicDocument[] GetDocumentsForForeignObject(DocumentType documentType, int foreignId)
+        public BasicDocument[] GetDocumentsForForeignObject (DocumentType documentType, int foreignId)
         {
             List<BasicDocument> result = new List<BasicDocument>();
 
@@ -44,7 +44,7 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
                         "WHERE Documents.DocumentTypeId=DocumentTypes.DocumentTypeId AND " +
                         "Documents.ForeignId = " + foreignId + " AND " +
@@ -54,7 +54,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadDocumentFromDataReader(reader));
+                        result.Add (ReadDocumentFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -63,7 +63,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicDocument[] GetDocumentsRecentByDescription(string description)
+        public BasicDocument[] GetDocumentsRecentByDescription (string description)
         {
             List<BasicDocument> result = new List<BasicDocument>();
 
@@ -74,16 +74,16 @@ namespace Swarmops.Database
                 string sqlQuery =
                     "SELECT Documents.DocumentId,Documents.ServerFileName,Documents.ClientFileName,Documents.Description,DocumentTypes.Name AS DocumentType,Documents.ForeignId,Documents.FileSize,Documents.UploadedByPersonId,Documents.UploadedDateTime From Documents,DocumentTypes " +
                     "WHERE Documents.DocumentTypeId=DocumentTypes.DocumentTypeId AND " +
-                    "Documents.Description = '" + description.Replace("'", "''") + "' AND " +
-                    "Documents.UploadedDateTime > '" + DateTime.UtcNow.AddDays(-1).ToString("yyyy-MM-dd HH:mm") + "'";
+                    "Documents.Description = '" + description.Replace ("'", "''") + "' AND " +
+                    "Documents.UploadedDateTime > '" + DateTime.UtcNow.AddDays (-1).ToString ("yyyy-MM-dd HH:mm") + "'";
 
-                DbCommand command = GetDbCommand(sqlQuery, connection);
+                DbCommand command = GetDbCommand (sqlQuery, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadDocumentFromDataReader(reader));
+                        result.Add (ReadDocumentFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -92,45 +92,45 @@ namespace Swarmops.Database
         }
 
 
-        private BasicDocument ReadDocumentFromDataReader(DbDataReader reader)
+        private BasicDocument ReadDocumentFromDataReader (DbDataReader reader)
         {
-            int documentId = reader.GetInt32(0);
-            string serverFileName = reader.GetString(1);
-            string clientFileName = reader.GetString(2);
-            string description = reader.GetString(3);
-            DocumentType docType = (DocumentType) Enum.Parse(typeof (DocumentType), reader.GetString(4));
-            int foreignId = reader.GetInt32(5);
-            Int64 fileSize = reader.GetInt64(6);
-            int uploadedByPersonId = reader.GetInt32(7);
-            DateTime uploadedDateTime = reader.GetDateTime(8);
+            int documentId = reader.GetInt32 (0);
+            string serverFileName = reader.GetString (1);
+            string clientFileName = reader.GetString (2);
+            string description = reader.GetString (3);
+            DocumentType docType = (DocumentType) Enum.Parse (typeof (DocumentType), reader.GetString (4));
+            int foreignId = reader.GetInt32 (5);
+            Int64 fileSize = reader.GetInt64 (6);
+            int uploadedByPersonId = reader.GetInt32 (7);
+            DateTime uploadedDateTime = reader.GetDateTime (8);
 
-            return new BasicDocument(documentId, serverFileName, clientFileName, description, docType,
+            return new BasicDocument (documentId, serverFileName, clientFileName, description, docType,
                 foreignId, fileSize, uploadedByPersonId, uploadedDateTime);
         }
 
 
-        public int CreateDocument(string serverFileName, string clientFileName, long fileSize, string description,
+        public int CreateDocument (string serverFileName, string clientFileName, long fileSize, string description,
             DocumentType documentType, int foreignId, int uploadedByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateDocument", connection);
+                DbCommand command = GetDbCommand ("CreateDocument", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 // HACK - this bypasses the DB abstraction layer -- debug code to find out why
                 // CreateDocument only gets 4 parameters from the DB abstraction layer, when
                 // we give it 8
 
-                command.Parameters.Add(new MySqlParameter("serverFileName", serverFileName));
-                command.Parameters.Add(new MySqlParameter("clientFileName", clientFileName));
-                command.Parameters.Add(new MySqlParameter("description", description));
-                command.Parameters.Add(new MySqlParameter("docTypeString", documentType.ToString()));
-                command.Parameters.Add(new MySqlParameter("foreignId", foreignId));
-                command.Parameters.Add(new MySqlParameter("fileSize", fileSize));
-                command.Parameters.Add(new MySqlParameter("uploadedByPersonId", uploadedByPersonId));
-                command.Parameters.Add(new MySqlParameter("uploadedDateTime", DateTime.UtcNow));
+                command.Parameters.Add (new MySqlParameter ("serverFileName", serverFileName));
+                command.Parameters.Add (new MySqlParameter ("clientFileName", clientFileName));
+                command.Parameters.Add (new MySqlParameter ("description", description));
+                command.Parameters.Add (new MySqlParameter ("docTypeString", documentType.ToString()));
+                command.Parameters.Add (new MySqlParameter ("foreignId", foreignId));
+                command.Parameters.Add (new MySqlParameter ("fileSize", fileSize));
+                command.Parameters.Add (new MySqlParameter ("uploadedByPersonId", uploadedByPersonId));
+                command.Parameters.Add (new MySqlParameter ("uploadedDateTime", DateTime.UtcNow));
 
                 /*
                 AddParameterWithName(command, "serverFileName", serverFileName);
@@ -142,57 +142,57 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "uploadedByPersonId", uploadedByPersonId);
                 AddParameterWithName(command, "uploadedDateTime", DateTime.Now);*/
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public void SetDocumentServerFileName(int documentId, string serverFileName)
+        public void SetDocumentServerFileName (int documentId, string serverFileName)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetDocumentServerFileName", connection);
+                DbCommand command = GetDbCommand ("SetDocumentServerFileName", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "documentId", documentId);
-                AddParameterWithName(command, "newServerFileName", serverFileName);
+                AddParameterWithName (command, "documentId", documentId);
+                AddParameterWithName (command, "newServerFileName", serverFileName);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetDocumentDescription(int documentId, string newDescription)
+        public void SetDocumentDescription (int documentId, string newDescription)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetDocumentDescription", connection);
+                DbCommand command = GetDbCommand ("SetDocumentDescription", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "documentId", documentId);
-                AddParameterWithName(command, "newDescription", newDescription);
+                AddParameterWithName (command, "documentId", documentId);
+                AddParameterWithName (command, "newDescription", newDescription);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetDocumentForeignObject(int documentId, DocumentType newDocumentType, int newForeignId)
+        public void SetDocumentForeignObject (int documentId, DocumentType newDocumentType, int newForeignId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetDocumentForeignObject", connection);
+                DbCommand command = GetDbCommand ("SetDocumentForeignObject", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "documentId", documentId);
-                AddParameterWithName(command, "newDocumentTypeString", newDocumentType.ToString());
-                AddParameterWithName(command, "newForeignId", newForeignId);
+                AddParameterWithName (command, "documentId", documentId);
+                AddParameterWithName (command, "newDocumentTypeString", newDocumentType.ToString());
+                AddParameterWithName (command, "newForeignId", newForeignId);
 
                 command.ExecuteNonQuery();
             }

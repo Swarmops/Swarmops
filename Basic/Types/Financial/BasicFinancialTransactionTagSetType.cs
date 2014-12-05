@@ -4,14 +4,14 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialTransactionTagSetType : IHasIdentity
     {
-        public BasicFinancialTransactionTagSetType(int financialTransactionTagSetTypeId, string resourceName)
+        public BasicFinancialTransactionTagSetType (int financialTransactionTagSetTypeId, string resourceName)
         {
             FinancialTransactionTagSetTypeId = financialTransactionTagSetTypeId;
             ResourceName = resourceName;
         }
 
-        public BasicFinancialTransactionTagSetType(BasicFinancialTransactionTagSetType original) :
-            this(original.FinancialTransactionTagSetTypeId, original.ResourceName)
+        public BasicFinancialTransactionTagSetType (BasicFinancialTransactionTagSetType original) :
+            this (original.FinancialTransactionTagSetTypeId, original.ResourceName)
         {
             // copy ctor
         }

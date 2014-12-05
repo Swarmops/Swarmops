@@ -5,20 +5,20 @@ namespace Swarmops.Basic.Types
     [Serializable]
     public class BasicPostalCode
     {
-        public BasicPostalCode(int postalCodeId, string postalCode, int cityId, int countryId)
+        public BasicPostalCode (int postalCodeId, string postalCode, int cityId, int countryId)
         {
             PostalCodeId = postalCodeId;
-            PostalCode = postalCode.Replace(" ", "");
+            PostalCode = postalCode.Replace (" ", "");
             CityId = cityId;
             CountryId = countryId;
         }
 
-        public BasicPostalCode(BasicPostalCode original)
-            : this(original.PostalCodeId, original.PostalCode, original.CityId, original.CountryId)
+        public BasicPostalCode (BasicPostalCode original)
+            : this (original.PostalCodeId, original.PostalCode, original.CityId, original.CountryId)
         {
         }
 
-        [Obsolete("Do not call this ctor directly. It exists to enable serialization.", true)]
+        [Obsolete ("Do not call this ctor directly. It exists to enable serialization.", true)]
         public BasicPostalCode()
         {
             // this should never be called from code

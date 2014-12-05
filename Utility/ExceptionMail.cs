@@ -8,16 +8,16 @@ namespace Swarmops.Utility
 {
     public class ExceptionMail
     {
-        public static void Send(Exception e)
+        public static void Send (Exception e)
         {
-            Send(e, false);
+            Send (e, false);
         }
 
-        public static void Send(Exception e, bool logOnly)
+        public static void Send (Exception e, bool logOnly)
         {
             try
             {
-                SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry(DateTime.UtcNow, "ExceptionMail", e);
+                SwarmDb.GetDatabaseForWriting().CreateExceptionLogEntry (DateTime.UtcNow, "ExceptionMail", e);
             }
             catch
             {
@@ -25,9 +25,9 @@ namespace Swarmops.Utility
 
             if (!logOnly)
             {
-                new MailTransmitter(Strings.MailSenderName, Strings.MailSenderAddress,
+                new MailTransmitter (Strings.MailSenderName, Strings.MailSenderAddress,
                     "Swarmops EXCEPTION!",
-                    e.ToString(), People.FromIdentities(new[] {1}), false).Send();
+                    e.ToString(), People.FromIdentities (new[] {1}), false).Send();
             }
         }
     }

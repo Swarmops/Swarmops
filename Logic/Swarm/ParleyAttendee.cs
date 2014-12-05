@@ -9,19 +9,19 @@ namespace Swarmops.Logic.Swarm
 {
     public class ParleyAttendee : BasicParleyAttendee
     {
-        private ParleyAttendee(BasicParleyAttendee basic) : base(basic)
+        private ParleyAttendee (BasicParleyAttendee basic) : base (basic)
         {
             // empty pvt ctor
         }
 
         public ParleyOptions Options
         {
-            get { return ParleyOptions.ForParleyAttendee(this); }
+            get { return ParleyOptions.ForParleyAttendee (this); }
         }
 
         public Parley Parley
         {
-            get { return Parley.FromIdentity(ParleyId); }
+            get { return Parley.FromIdentity (ParleyId); }
         }
 
         public new bool Active
@@ -31,7 +31,7 @@ namespace Swarmops.Logic.Swarm
             {
                 if (value != base.Active)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetParleyAttendeeActive(Identity, value);
+                    SwarmDb.GetDatabaseForWriting().SetParleyAttendeeActive (Identity, value);
                     base.Active = value;
                 }
             }
@@ -39,70 +39,70 @@ namespace Swarmops.Logic.Swarm
 
         public Person Person
         {
-            get { return Person.FromIdentity(PersonId); }
+            get { return Person.FromIdentity (PersonId); }
         }
 
         public OutboundInvoice Invoice
         {
-            get { return OutboundInvoice.FromIdentity(base.OutboundInvoiceId); }
+            get { return OutboundInvoice.FromIdentity (base.OutboundInvoiceId); }
         }
 
-        public static ParleyAttendee FromBasic(BasicParleyAttendee basic)
+        public static ParleyAttendee FromBasic (BasicParleyAttendee basic)
         {
-            return new ParleyAttendee(basic);
+            return new ParleyAttendee (basic);
         }
 
-        public static ParleyAttendee FromIdentity(int parleyAttendeeId)
+        public static ParleyAttendee FromIdentity (int parleyAttendeeId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetParleyAttendee(parleyAttendeeId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetParleyAttendee (parleyAttendeeId));
         }
 
-        public static ParleyAttendee Create(Parley parley, Person person, bool asGuest)
+        public static ParleyAttendee Create (Parley parley, Person person, bool asGuest)
         {
             return
-                FromIdentity(SwarmDb.GetDatabaseForWriting()
-                    .CreateParleyAttendee(parley.Identity, person.Identity, asGuest));
+                FromIdentity (SwarmDb.GetDatabaseForWriting()
+                    .CreateParleyAttendee (parley.Identity, person.Identity, asGuest));
         }
 
-        public void AddOption(ParleyOption option)
+        public void AddOption (ParleyOption option)
         {
-            SwarmDb.GetDatabaseForWriting().AddParleyAttendeeOption(Identity, option.Identity);
+            SwarmDb.GetDatabaseForWriting().AddParleyAttendeeOption (Identity, option.Identity);
         }
 
         public void SendInvoice()
         {
-            DateTime invoiceDue = DateTime.Today.AddDays(14);
-            DateTime maxInvoiceDue = Parley.StartDate.AddDays(-10);
+            DateTime invoiceDue = DateTime.Today.AddDays (14);
+            DateTime maxInvoiceDue = Parley.StartDate.AddDays (-10);
 
             if (invoiceDue > maxInvoiceDue)
             {
                 invoiceDue = maxInvoiceDue;
             }
 
-            OutboundInvoice invoice = OutboundInvoice.Create(Parley.Organization, Parley.Person, invoiceDue,
+            OutboundInvoice invoice = OutboundInvoice.Create (Parley.Organization, Parley.Person, invoiceDue,
                 Parley.Budget, Person.Name, Person.Mail,
                 string.Empty,
                 Parley.Organization.DefaultCountry.Currency, true,
                 string.Empty);
 
-            invoice.AddItem("Deltagarkostnad " + Parley.Name, Parley.AttendanceFeeCents); // TODO: Localize
+            invoice.AddItem ("Deltagarkostnad " + Parley.Name, Parley.AttendanceFeeCents); // TODO: Localize
 
             ParleyOptions options = Options;
 
             foreach (ParleyOption option in options)
             {
-                invoice.AddItem(option.Description, option.AmountCents);
+                invoice.AddItem (option.Description, option.AmountCents);
             }
 
 
             // Create the financial transaction with rows
 
             FinancialTransaction transaction =
-                FinancialTransaction.Create(Parley.OrganizationId, DateTime.Now,
+                FinancialTransaction.Create (Parley.OrganizationId, DateTime.Now,
                     "Outbound Invoice #" + invoice.Identity + " to " + Person.Name);
 
-            transaction.AddRow(Parley.Organization.FinancialAccounts.AssetsOutboundInvoices, invoice.AmountCents, null);
-            transaction.AddRow(Parley.Budget, -invoice.AmountCents, null);
+            transaction.AddRow (Parley.Organization.FinancialAccounts.AssetsOutboundInvoices, invoice.AmountCents, null);
+            transaction.AddRow (Parley.Budget, -invoice.AmountCents, null);
 
             // Make the transaction dependent on the outbound invoice
 
@@ -110,7 +110,7 @@ namespace Swarmops.Logic.Swarm
 
             // Create the event for PirateBot-Mono to send off mails
 
-            PWEvents.CreateEvent(EventSource.PirateWeb, EventType.OutboundInvoiceCreated,
+            PWEvents.CreateEvent (EventSource.PirateWeb, EventType.OutboundInvoiceCreated,
                 PersonId, Parley.OrganizationId, 1, PersonId,
                 invoice.Identity, string.Empty);
 
@@ -119,7 +119,7 @@ namespace Swarmops.Logic.Swarm
             base.Invoiced = true;
             base.OutboundInvoiceId = invoice.Identity;
 
-            SwarmDb.GetDatabaseForWriting().SetParleyAttendeeInvoiced(Identity, invoice.Identity);
+            SwarmDb.GetDatabaseForWriting().SetParleyAttendeeInvoiced (Identity, invoice.Identity);
         }
     }
 }

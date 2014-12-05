@@ -12,14 +12,14 @@ namespace Swarmops.Logic.Governance
         // nothing much here
 
 
-        public static Ballots ForElection(Election election, Organization organization)
+        public static Ballots ForElection (Election election, Organization organization)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetBallots(election, organization));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetBallots (election, organization));
         }
 
-        public static Dictionary<int, int> GetBallotsForPerson(Person person)
+        public static Dictionary<int, int> GetBallotsForPerson (Person person)
         {
-            return SwarmDb.GetDatabaseForReading().GetBallotsForPerson(person.Identity);
+            return SwarmDb.GetDatabaseForReading().GetBallotsForPerson (person.Identity);
         }
     }
 }

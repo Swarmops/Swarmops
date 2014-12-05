@@ -51,19 +51,19 @@ namespace Swarmops.Logic.Swarm
                 int birthYear = 0;
                 PersonGender gender = PersonGender.Unknown;
 
-                if (geoLookup.ContainsKey(membership.PersonId))
+                if (geoLookup.ContainsKey (membership.PersonId))
                 {
                     geographyId = geoLookup[membership.PersonId];
                     gender = genderLookup[membership.PersonId];
                     birthYear = birthYearLookup[membership.PersonId];
                 }
 
-                result.Add(new MembershipEvent(membership.MemberSince, membership.PersonId, membership.OrganizationId,
+                result.Add (new MembershipEvent (membership.MemberSince, membership.PersonId, membership.OrganizationId,
                     geographyId, birthYear, gender, 1));
 
                 if (!membership.Active)
                 {
-                    TimeSpan safetyDelta = new TimeSpan(0);
+                    TimeSpan safetyDelta = new TimeSpan (0);
 
                     // A few records in the database have had their memberships terminated at the exact time of creation. This means that sorting will
                     // be unpredictable, when it relies on the termination coming at a later time than the creation.
@@ -73,13 +73,13 @@ namespace Swarmops.Logic.Swarm
                     if (membership.DateTerminated.Date == membership.MemberSince.Date)
                         // First simple check
                     {
-                        if ((membership.DateTerminated - membership.MemberSince) < new TimeSpan(0, 0, 5))
+                        if ((membership.DateTerminated - membership.MemberSince) < new TimeSpan (0, 0, 5))
                         {
-                            safetyDelta = new TimeSpan(0, 0, 5);
+                            safetyDelta = new TimeSpan (0, 0, 5);
                         }
                     }
 
-                    result.Add(new MembershipEvent(membership.DateTerminated + safetyDelta,
+                    result.Add (new MembershipEvent (membership.DateTerminated + safetyDelta,
                         membership.PersonId, membership.OrganizationId, geographyId,
                         birthYear, gender, -1));
                 }
@@ -87,22 +87,22 @@ namespace Swarmops.Logic.Swarm
 
             // Fourth - sort
 
-            result.Sort(new MembershipEventSorter());
+            result.Sort (new MembershipEventSorter());
 
             return result;
         }
 
 
-        public static MembershipEvents FromXml(string xml)
+        public static MembershipEvents FromXml (string xml)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof (MembershipEvents));
+            XmlSerializer serializer = new XmlSerializer (typeof (MembershipEvents));
 
             MemoryStream stream = new MemoryStream();
-            byte[] xmlBytes = Encoding.Default.GetBytes(xml);
-            stream.Write(xmlBytes, 0, xmlBytes.Length);
+            byte[] xmlBytes = Encoding.Default.GetBytes (xml);
+            stream.Write (xmlBytes, 0, xmlBytes.Length);
 
             stream.Position = 0;
-            MembershipEvents result = (MembershipEvents) serializer.Deserialize(stream);
+            MembershipEvents result = (MembershipEvents) serializer.Deserialize (stream);
             stream.Close();
 
             return result;
@@ -111,13 +111,13 @@ namespace Swarmops.Logic.Swarm
 
         public string ToXml()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof (MembershipEvents));
+            XmlSerializer serializer = new XmlSerializer (typeof (MembershipEvents));
 
             MemoryStream stream = new MemoryStream();
-            serializer.Serialize(stream, this);
+            serializer.Serialize (stream, this);
 
             byte[] xmlBytes = stream.GetBuffer();
-            return Encoding.Default.GetString(xmlBytes);
+            return Encoding.Default.GetString (xmlBytes);
         }
     }
 
@@ -125,7 +125,7 @@ namespace Swarmops.Logic.Swarm
     {
         #region IComparer<MembershipEvent> Members
 
-        public int Compare(MembershipEvent x, MembershipEvent y)
+        public int Compare (MembershipEvent x, MembershipEvent y)
         {
             if (x.DateTime < y.DateTime)
             {

@@ -9,7 +9,7 @@ namespace Swarmops.Logic.Swarm
     {
         #region Creation and Construction
 
-        private Activists(int[] personIds)
+        private Activists (int[] personIds)
         {
             this.personIds = personIds;
         }
@@ -39,20 +39,20 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        public static int GetCountForGeography(Geography geography)
+        public static int GetCountForGeography (Geography geography)
         {
             Geographies geographies = geography.GetTree();
 
-            return SwarmDb.GetDatabaseForReading().GetActivistCountForGeographies(geographies.Identities);
+            return SwarmDb.GetDatabaseForReading().GetActivistCountForGeographies (geographies.Identities);
         }
 
-        public static Activists FromGeography(Geography geography)
+        public static Activists FromGeography (Geography geography)
         {
             Geographies geographies = geography.GetTree();
-            return new Activists(SwarmDb.GetDatabaseForReading().GetActivistPersonIds(geographies.Identities));
+            return new Activists (SwarmDb.GetDatabaseForReading().GetActivistPersonIds (geographies.Identities));
         }
 
-        public void SendPhoneMessage(string message)
+        public void SendPhoneMessage (string message)
         {
             VerifyPeoplePopulated();
 
@@ -63,13 +63,13 @@ namespace Swarmops.Logic.Swarm
             foreach (Person person in this.people)
             {
                 // Check if we've already sent an sms to this phonenumber during this session
-                if (!dupeCheck.ContainsKey(person.Phone))
+                if (!dupeCheck.ContainsKey (person.Phone))
                 {
                     dupeCheck[person.Phone] = true;
 
                     try
                     {
-                        person.SendPhoneMessage(message);
+                        person.SendPhoneMessage (message);
                     }
                     catch (Exception)
                     {
@@ -78,13 +78,13 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        public void SendNotice(string subject, string body)
+        public void SendNotice (string subject, string body)
         {
             VerifyPeoplePopulated();
 
             foreach (Person person in this.people)
             {
-                person.SendNotice(subject, body, 1);
+                person.SendNotice (subject, body, 1);
             }
         }
 
@@ -93,7 +93,7 @@ namespace Swarmops.Logic.Swarm
         {
             if (this.people == null)
             {
-                this.people = People.FromIdentities(this.personIds);
+                this.people = People.FromIdentities (this.personIds);
             }
         }
     }

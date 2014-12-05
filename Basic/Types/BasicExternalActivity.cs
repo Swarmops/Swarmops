@@ -6,7 +6,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicExternalActivity : IHasIdentity
     {
-        public BasicExternalActivity(int externalActivityId, int organizationId, int geographyId,
+        public BasicExternalActivity (int externalActivityId, int organizationId, int geographyId,
             ExternalActivityType type, DateTime dateTime, string description, int createdByPersonId,
             DateTime createdDateTime,
             int dupeOfActivityId)
@@ -22,8 +22,8 @@ namespace Swarmops.Basic.Types
             DupeOfActivityId = dupeOfActivityId;
         }
 
-        public BasicExternalActivity(BasicExternalActivity original) :
-            this(
+        public BasicExternalActivity (BasicExternalActivity original) :
+            this (
             original.ExternalActivityId, original.OrganizationId, original.GeographyId, original.Type, original.DateTime,
             original.Description, original.CreatedByPersonId, original.CreatedDateTime, original.DupeOfActivityId)
         {

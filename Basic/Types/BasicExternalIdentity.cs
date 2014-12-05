@@ -13,7 +13,7 @@ namespace Swarmops.Basic.Types
         private readonly ExternalIdentityType typeOfAccount;
         private readonly string userID;
 
-        public BasicExternalIdentity(int ExternalIdentityIdentity,
+        public BasicExternalIdentity (int ExternalIdentityIdentity,
             ExternalIdentityType TypeOfAccount,
             string ExternalSystem,
             string UserID,
@@ -28,8 +28,8 @@ namespace Swarmops.Basic.Types
             this.typeOfAccount = TypeOfAccount;
         }
 
-        public BasicExternalIdentity(BasicExternalIdentity original)
-            : this(
+        public BasicExternalIdentity (BasicExternalIdentity original)
+            : this (
                 original.Identity, original.TypeOfAccount, original.ExternalSystem, original.UserID, original.Password,
                 original.AttachedToPersonID)
         {

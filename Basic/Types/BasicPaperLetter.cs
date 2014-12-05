@@ -6,7 +6,7 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPaperLetter : IHasIdentity
     {
-        public BasicPaperLetter(int paperLetterId, int organizationId, string fromName, string replyAddress,
+        public BasicPaperLetter (int paperLetterId, int organizationId, string fromName, string replyAddress,
             DateTime receivedDate, int toPersonId, RoleType toPersonInRole, bool personal, int uploadedByPersonId,
             DateTime uploadedDateTime)
         {
@@ -22,8 +22,8 @@ namespace Swarmops.Basic.Types
             UploadedDateTime = uploadedDateTime;
         }
 
-        public BasicPaperLetter(BasicPaperLetter original)
-            : this(original.PaperLetterId, original.OrganizationId, original.FromName, original.ReplyAddress,
+        public BasicPaperLetter (BasicPaperLetter original)
+            : this (original.PaperLetterId, original.OrganizationId, original.FromName, original.ReplyAddress,
                 original.ReceivedDate, original.ToPersonId, original.ToPersonInRole, original.Personal,
                 original.UploadedByPersonId,
                 original.UploadedDateTime)

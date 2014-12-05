@@ -12,7 +12,7 @@ namespace Swarmops.Logic.Support.LogEntries
             // empty ctor needed for serialize
         }
 
-        public InboundInvoiceCreatedLogEntry(Person creatingPerson, string supplier, string description, double amount,
+        public InboundInvoiceCreatedLogEntry (Person creatingPerson, string supplier, string description, double amount,
             FinancialAccount budget)
         {
             Amount = amount;

@@ -9,7 +9,7 @@ namespace Swarmops.Basic.Types
         public readonly string Password;
         public readonly string ServiceName;
 
-        public BasicExternalCredential(int externalCredentialId, string serviceName, string login, string password)
+        public BasicExternalCredential (int externalCredentialId, string serviceName, string login, string password)
         {
             this.ExternalCredentialId = externalCredentialId;
             this.ServiceName = serviceName;

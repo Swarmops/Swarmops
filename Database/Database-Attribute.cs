@@ -7,12 +7,12 @@ namespace Swarmops.Database.Attributes
     ///     Needed if a Logic entity is using Database-condition and have to work with a subclass
     ///     i.e.     [DbRecordType("Person")] on class Person
     /// </summary>
-    [AttributeUsage(AttributeTargets.All)]
+    [AttributeUsage (AttributeTargets.All)]
     public class DbRecordType : Attribute
     {
         private string typeName = "";
 
-        public DbRecordType(string recordname)
+        public DbRecordType (string recordname)
         {
             this.typeName = recordname;
         }

@@ -4,7 +4,7 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialTransactionTagSet : IHasIdentity
     {
-        public BasicFinancialTransactionTagSet(int financialTransactionTagSetId, int financialTransactionTagSetTypeId,
+        public BasicFinancialTransactionTagSet (int financialTransactionTagSetId, int financialTransactionTagSetTypeId,
             int organizationId, int order, bool allowUntagged, int visibilityLevel, int profitLossType)
         {
             FinancialTransactionTagSetId = financialTransactionTagSetId;
@@ -16,8 +16,8 @@ namespace Swarmops.Basic.Types.Financial
             ProfitLossType = profitLossType;
         }
 
-        public BasicFinancialTransactionTagSet(BasicFinancialTransactionTagSet original) :
-            this(
+        public BasicFinancialTransactionTagSet (BasicFinancialTransactionTagSet original) :
+            this (
             original.FinancialTransactionTagSetId, original.FinancialTransactionTagSetTypeId, original.OrganizationId,
             original.Order, original.AllowUntagged, original.VisibilityLevel, original.ProfitLossType)
         {

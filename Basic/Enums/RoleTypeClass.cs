@@ -215,25 +215,25 @@ namespace Swarmops.Basic.Enums
         private static RoleType[] CreateAllRoleTypes()
         {
             List<RoleType> retList = new List<RoleType>();
-            retList.AddRange(AllOrganizationalRoleTypes);
-            retList.AddRange(AllSystemRoleTypes);
-            retList.AddRange(AllLocalRoleTypes);
-            foreach (RoleType rt in Enum.GetValues(typeof (RoleType)))
+            retList.AddRange (AllOrganizationalRoleTypes);
+            retList.AddRange (AllSystemRoleTypes);
+            retList.AddRange (AllLocalRoleTypes);
+            foreach (RoleType rt in Enum.GetValues (typeof (RoleType)))
             {
-                if (!retList.Contains(rt))
-                    retList.Add(rt);
+                if (!retList.Contains (rt))
+                    retList.Add (rt);
             }
 
             return retList.ToArray();
         }
 
-        public static RoleClass ClassOfRole(RoleType r)
+        public static RoleClass ClassOfRole (RoleType r)
         {
-            if (Array.IndexOf(AllLocalRoleTypes, r) > -1)
+            if (Array.IndexOf (AllLocalRoleTypes, r) > -1)
                 return RoleClass.Local;
-            if (Array.IndexOf(AllOrganizationalRoleTypes, r) > -1)
+            if (Array.IndexOf (AllOrganizationalRoleTypes, r) > -1)
                 return RoleClass.Organization;
-            if (Array.IndexOf(AllSystemRoleTypes, r) > -1)
+            if (Array.IndexOf (AllSystemRoleTypes, r) > -1)
                 return RoleClass.System;
             return RoleClass.Undefined;
         }

@@ -6,7 +6,7 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicFinancialValidation : IHasIdentity
     {
-        public BasicFinancialValidation(int financialValidationId, FinancialValidationType validationType, int personId,
+        public BasicFinancialValidation (int financialValidationId, FinancialValidationType validationType, int personId,
             DateTime dateTime, FinancialDependencyType dependencyType, int foreignId)
         {
             FinancialValidationId = financialValidationId;
@@ -17,8 +17,8 @@ namespace Swarmops.Basic.Types.Financial
             ForeignId = foreignId;
         }
 
-        public BasicFinancialValidation(BasicFinancialValidation original)
-            : this(
+        public BasicFinancialValidation (BasicFinancialValidation original)
+            : this (
                 original.Identity, original.ValidationType, original.PersonId, original.DateTime,
                 original.DependencyType, original.ForeignId)
         {
