@@ -13,9 +13,24 @@ using Swarmops.Logic.Swarm;
 /// </summary>
 public class ControlV5Base : UserControl
 {
-    public Authority _authority = null;
-    public Organization _currentOrganization = null;
-    public Person _currentUser = null;
+    private Authority _authority;
+    private Organization _currentOrganization;
+    private Person _currentUser;
+
+    protected Organization CurrentOrganization
+    {
+        get { return this._currentOrganization; }
+    }
+
+    protected Person CurrentUser
+    {
+        get { return this._currentUser; }
+    }
+
+    protected Authority CurrentAuthority
+    {
+        get { return this._authority; }
+    }
 
     protected override void OnLoad (EventArgs e)
     {
@@ -48,34 +63,4 @@ public class ControlV5Base : UserControl
         base.OnLoad (e);
     }
 
-    protected string GetBuildIdentity()
-    {
-        // Read build number if not loaded, or set to "Private" if none
-        string buildIdentity = (string) GuidCache.Get ("_buildIdentity");
-
-        if (buildIdentity == null)
-        {
-            try
-            {
-                using (StreamReader reader = File.OpenText (HttpContext.Current.Request.MapPath ("~/BuildIdentity.txt"))
-                    )
-                {
-                    buildIdentity = "Build " + reader.ReadLine();
-                }
-
-                using (StreamReader reader = File.OpenText (HttpContext.Current.Request.MapPath ("~/SprintName.txt")))
-                {
-                    buildIdentity += " (" + reader.ReadLine() + ")";
-                }
-            }
-            catch (Exception)
-            {
-                buildIdentity = "Private Build";
-            }
-
-            GuidCache.Set ("_buildIdentity", buildIdentity);
-        }
-
-        return buildIdentity;
-    }
 }

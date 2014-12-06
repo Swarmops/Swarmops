@@ -4,16 +4,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
-            UpdatePostalPrefix('XX', $('#<%=DropCountries.ClientControlID%>').val());
+            UpdatePostalPrefix('XX', $('#<%= DropCountries.ClientControlID %>').val());
 
-            $('#<%=this.TextPostal.ClientID%>').on('input', function() {
+            $('#<%= TextPostal.ClientID %>').on('input', function() {
                 if (CheckPostalCode()) {
-                    if ($('#<%=this.TextPostal.ClientID%>').val().length == postalCodeLength) {
-                        $('#<%=this.TextDateOfBirth.ClientID%>').focus();
+                    if ($('#<%= TextPostal.ClientID %>').val().length == postalCodeLength) {
+                        $('#<%= TextDateOfBirth.ClientID %>').focus();
                     }
                 }
             });
-            $('#<%=this.TextCity.ClientID%>').on('input', function () {
+            $('#<%= TextCity.ClientID %>').on('input', function() {
                 CheckPostalCity();
             });
 
@@ -23,7 +23,7 @@
         });
 
         function CheckPostalCity() {
-            var currentCity = $('#<%=this.TextCity.ClientID%>').val().toLowerCase();
+            var currentCity = $('#<%= TextCity.ClientID %>').val().toLowerCase();
             if (currentCity in cityNameLookup) {
                 var geoId = cityNameLookup[currentCity];
                 $('#spanDetectedGeo').text(geographyIdLookup[geoId]);
@@ -33,18 +33,18 @@
         }
 
         function CheckPostalCode() {
-            var currentPostalCode = $('#<%=this.TextPostal.ClientID%>').val().toLowerCase();
+            var currentPostalCode = $('#<%= TextPostal.ClientID %>').val().toLowerCase();
             if (currentPostalCode.length > postalCodeLengthCheck) {
                 currentPostalCode = currentPostalCode.substring(0, postalCodeLengthCheck);
             }
             if (currentPostalCode in postalCodeLookup) {
                 var cityId = postalCodeLookup[currentPostalCode];
-                $('#<%=this.TextCity.ClientID%>').attr("disabled", "disabled").val(cityIdLookup[cityId].Name);
+                $('#<%= TextCity.ClientID %>').attr("disabled", "disabled").val(cityIdLookup[cityId].Name);
                 $('#spanDetectedGeo').text(geographyIdLookup[cityIdLookup[cityId].GeoId]);
                 postalCodeIdentified = true;
                 return true;
             } else if (postalCodeIdentified) {
-                $('#<%=this.TextCity.ClientID%>').removeAttr("disabled").val('');
+                $('#<%= TextCity.ClientID %>').removeAttr("disabled").val('');
                 $('#spanDetectedGeo').text('');
                 postalCodeIdentified = false;
             }
@@ -56,12 +56,12 @@
                 var postalTargetLength = postalCodeLength * 15 - 5;
                 var cityTargetLength = 235 - 15 * postalCodeLength;
 
-                $('#<%=this.TextPostal.ClientID%>').animate({ width: postalTargetLength + "px" });
-                $('#<%=this.TextCity.ClientID%>').animate({ width: cityTargetLength + "px" });
+                $('#<%= TextPostal.ClientID %>').animate({ width: postalTargetLength + "px" });
+                $('#<%= TextCity.ClientID %>').animate({ width: cityTargetLength + "px" });
 
                 if (!postalCodeVisible) {
                     setTimeout(function() {
-                        $('#<%=this.TextPostal.ClientID%>').fadeIn(200);
+                        $('#<%= TextPostal.ClientID %>').fadeIn(200);
                     }, 100);
                     $('#spanLabelPostal').animate({ width: 'toggle' }, 400);
                     postalCodeVisible = true;
@@ -70,8 +70,8 @@
             } else if (postalCodeVisible) {
                 // Remove postal code altogether, if visible now
 
-                $('#<%=this.TextPostal.ClientID%>').animate({ width: 0 }, 200).fadeOut(100);
-                $('#<%=this.TextCity.ClientID%>').animate({ width: "255px" }, 600);
+                $('#<%= TextPostal.ClientID %>').animate({ width: 0 }, 200).fadeOut(100);
+                $('#<%= TextCity.ClientID %>').animate({ width: "255px" }, 600);
                 $('#spanLabelPostal').animate({ width: 'toggle' }, 400);
 
                 postalCodeVisible = false;
@@ -80,7 +80,7 @@
 
         function UpdatePostalPrefix(oldValue, newValue) {
             $('#spanCountryPrefix').text(newValue);
-            $('#<%=this.TextCity.ClientID%>').removeAttr("disabled").val('');
+            $('#<%= TextCity.ClientID %>').removeAttr("disabled").val('');
             $('#spanDetectedGeo').text('');
 
             // Get postal code data for country. Heavy op; should not be done from mobile
@@ -94,7 +94,7 @@
                 data: $.toJSON(jsonData),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function (msg) {
+                success: function(msg) {
                     postalCodeLookup = {};
                     cityIdLookup = {};
                     cityNameLookup = {};
@@ -102,8 +102,8 @@
 
                     postalCodeLength = msg.d.PostalCodeLength;
                     postalCodeLengthCheck = msg.d.PostalCodeLengthCheck;
-                    $('#<%=TextPostal.ClientID%>').attr('maxlength', postalCodeLength).attr('placeholder', '12345678'.substring(0, postalCodeLength));
-                    msg.d.PostalCodes.forEach(function (element, index, array) {
+                    $('#<%= TextPostal.ClientID %>').attr('maxlength', postalCodeLength).attr('placeholder', '12345678'.substring(0, postalCodeLength));
+                    msg.d.PostalCodes.forEach(function(element, index, array) {
                         postalCodeLookup[element.Code.toLowerCase()] = element.CityId;
                     });
                     msg.d.CityNames.forEach(function(element, index, array) {
@@ -119,7 +119,7 @@
                     AnimatePostalCodeLength();
                     CheckPostalCode();
                 },
-                error: function (msg) {
+                error: function(msg) {
                     console.log(msg);
                     geographyIdLookup = {};
                     postalCodeLookup = {};
@@ -132,12 +132,10 @@
         function ValidateFields() {
             var isValid = true;
 
-            isValid = ValidateTextField('#<%=this.TextCity.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorCity" />") && isValid;
-            isValid = ValidateTextField('#<%=this.TextStreet1.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorStreet" />") && isValid;
-            isValid = ValidateTextField('#<%=this.TextMail.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorMail" />") && isValid;
-            isValid = ValidateTextField('#<%=this.TextName.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorName" />") && isValid;
-
-            // TODO: Actually validate geography?
+            isValid = ValidateTextField('#<%= TextCity.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorCity" />") && isValid;
+            isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorStreet" />") && isValid;
+            isValid = ValidateTextField('#<%= TextMail.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorMail" />") && isValid;
+            isValid = ValidateTextField('#<%= TextName.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorName" />") && isValid; // TODO: Actually validate geography?
 
             return isValid;
         }
@@ -164,42 +162,41 @@
         var postalCodeIdentified = false;
 
         var onDocReadyAlert = '<asp:Literal ID="LiteralLoadAlert" runat="server" />';
-
     </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2>Adding [Regular]</h2>
+    <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextName" />&#8203;<br/>
-        <Swarmops5:DropDown runat="server" OnClientChange="UpdatePostalPrefix" ID="DropCountries"/>&#8203;<br/>        
+        <Swarmops5:DropDown runat="server" OnClientChange=" UpdatePostalPrefix " ID="DropCountries"/>&#8203;<br/>        
         <asp:TextBox runat="server" ID="TextMail" />&#8203;<br/>
         <asp:TextBox runat="server" ID="TextPhone" />&#8203;<br/>
         &nbsp;<br/>
         <asp:TextBox runat="server" ID="TextStreet1" />&#8203;<br/>
         <asp:TextBox runat="server" ID="TextStreet2" />&#8203;<br/>
-        <div style="float:right;margin-right:5px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width:40px;overflow:hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+        <div style="float: right; margin-right: 5px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 40px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
         <span id="spanDetectedGeo">...</span>&nbsp;<br/>
         &nbsp;<br/>
         <asp:TextBox runat="server" ID="TextDateOfBirth" />&#8203;<br/>
         <Swarmops5:DropDown runat="server" ID="DropGenders" />&#8203;<br/>
-        <asp:Button ID="ButtonSubmit" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return ValidateFields();" OnClick="ButtonSubmit_Click" Text="Register"/>
+        <asp:Button ID="ButtonSubmit" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick=" return ValidateFields(); " OnClick="ButtonSubmit_Click" Text="Register"/>
     </div>
     <div class="entryLabels">
-        Name<br />
-        Country<br />
-        Mail<br />
-        Phone<br />
-        <h2>ADDRESS</h2>
-        Street 1 or P.O.<br />
-        Street 2 (optional)<br />
-        <span id="spanLabelPostal" style="display:inline-block; overflow: hidden">Postal Code,&nbsp;</span><span style="display:inline-block; overflow: hidden">City</span><br />
-        <span id="SpanGeoDetected">Geography detected</span><span id="SpanGeoSelect" style="display:none">Select Geograhpy</span><br />
-        <h2>STATISTICAL DATA</h2>
-        Date of Birth<br />
-        Legal gender<br />
+        <asp:Label ID="LabelName" runat="server" /><br />
+        <asp:Label ID="LabelCountry" runat="server" /><br />
+        <asp:Label ID="LabelMail" runat="server" /><br />
+        <asp:Label ID="LabelPhone" runat="server" /><br />
+        <h2><asp:Label ID="LabelHeaderAddresss" runat="server" /></h2>
+        <asp:Label ID="LabelStreet1" runat="server" /><br />
+        <asp:Label ID="LabelStreet2" runat="server" /><br />
+        <span id="spanLabelPostal" style="display: inline-block; overflow: hidden"><asp:Label ID="LabelPostalCode" runat="server" />,&nbsp;</span><span style="display: inline-block; overflow: hidden"><asp:Label runat="server" ID="LabelCity" /></span><br />
+        <span id="SpanGeoDetected"><asp:Label ID="LabelGeographyDetected" runat="server" /></span><span id="SpanGeoSelect" style="display: none"><asp:Label ID="LabelSelectGeography" runat="server" Text="XYZ Select Geography" /></span><br />
+        <h2><asp:Label ID="LabelHeaderStatData" runat="server" /></h2>
+        <asp:Label ID="LabelDateOfBirth" runat="server" /><br />
+        <asp:Label ID="LabelLegalGender" runat="server" /><br />
     </div>
-    <div style="clear:both"></div>
+    <div style="clear: both"></div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">

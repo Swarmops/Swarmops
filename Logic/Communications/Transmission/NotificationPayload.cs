@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using System.Net;
+using Swarmops.Database;
 using Swarmops.Logic.App_GlobalResources;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Communications.Transmission
@@ -53,9 +56,11 @@ namespace Swarmops.Logic.Communications.Transmission
 
         public string ExpandMacros (string input)
         {
-            // TODO: Replace all, of course
+            // Replace a few technical items that would be found in system-level notifications
 
             input = input.Replace ("[HostName]", Dns.GetHostName());
+            input = input.Replace ("[DbVersion]", SwarmDb.DbVersionExpected.ToString(CultureInfo.InvariantCulture));
+            input = input.Replace ("[SwarmopsVersion]", Formatting.SwarmopsVersion);
 
             // Loop through supplied strings and replace them in the resource. Not very efficient but who cares
 

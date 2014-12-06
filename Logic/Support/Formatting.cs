@@ -1,13 +1,77 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
 
 namespace Swarmops.Logic.Support
 {
     public static class Formatting
     {
+        private static string _swarmopsVersion;
+
+        public static string SwarmopsVersion
+        {
+            get
+            {
+                if (string.IsNullOrEmpty (_swarmopsVersion))
+                {
+                    if (System.Diagnostics.Debugger.IsAttached)
+                    {
+                        _swarmopsVersion = "Debug Environment";
+                        return _swarmopsVersion;
+                    }
+                    // Read build number if not loaded, or set to "Private" if none
+                    string buildIdentity = (string)GuidCache.Get("_buildIdentity");
+
+                    if (buildIdentity == null)
+                    {
+                        try
+                        {
+                            if (HttpContext.Current != null) // frontend: use friendly format
+                            {
+                                using (
+                                    StreamReader reader =
+                                        File.OpenText (HttpContext.Current.Request.MapPath ("~/BuildIdentity.txt")))
+                                {
+                                    buildIdentity = "Build " + reader.ReadLine();
+                                }
+
+                                using (
+                                    StreamReader reader =
+                                        File.OpenText (HttpContext.Current.Request.MapPath ("~/SprintName.txt")))
+                                {
+                                    buildIdentity += " (" + reader.ReadLine() + ")";
+                                }
+                            }
+                            else // backend: use build ID only
+                            {
+                                using (
+                                    StreamReader reader =
+                                        File.OpenText("/usr/share/swarmops/backend/BuildIdentity.txt"))
+                                {
+                                    buildIdentity = reader.ReadLine();
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            buildIdentity = "Private Build";
+                        }
+
+                        GuidCache.Set("_buildIdentity", buildIdentity);
+                        _swarmopsVersion = buildIdentity;
+                    }
+                }
+
+                return _swarmopsVersion;
+            }
+        }
+
         public static string CleanNumber (string input)
         {
             return LogicServices.CleanNumber (input);

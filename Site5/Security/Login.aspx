@@ -25,6 +25,7 @@
     
     <style type="text/css">
 
+        
     </style>
 
 </head>
@@ -33,111 +34,110 @@
         <asp:ScriptManager runat="server" ID="ScriptManagerBlahblah" />
 	    <script type="text/javascript">
 
-	    $(document).ready(function () {
+    	    $(document).ready(function() {
 
-	        /* document.ready goes here */
+    	        /* document.ready goes here */
 
-	        setTimeout(function() {
-	            recheckLogin();
-	        }, 1000);
-
-
-	        $('.InputManualCredentials').on('input', function () {
-	            onInputCredentials();
-	        });
-
-	        $('#TextLogin').focus();
-
-	    });  // end of document.ready
+    	        setTimeout(function() {
+    	            recheckLogin();
+    	        }, 1000);
 
 
-	    var manualCredentialsTestTrigger;
+    	        $('.InputManualCredentials').on('input', function() {
+    	            onInputCredentials();
+    	        });
 
-	    function onInputCredentials() {
-	        clearTimeout(manualCredentialsTestTrigger);
+    	        $('#TextLogin').focus();
 
-	        manualCredentialsTestTrigger = setTimeout(function () {
-	            testManualCredentials();
-	        }, 1000);
-	    }
+    	    }); // end of document.ready
 
-	    function testManualCredentials() {
-	        // Submit credentials to server. If valid, they will validate through the recheckLogin call.
 
-	        var jsonData = {};
-            jsonData.credentialsLogin = $('#TextLogin').val();
-	        jsonData.credentialsPass = $('#TextPass').val();
-	        jsonData.credentials2FA = $('#Text2FA').val();
-	        jsonData.logonUriEncoded = bitIdUri;
+    	    var manualCredentialsTestTrigger;
 
-	        $.ajax({
-	            type: "POST",
-	            url: "Login.aspx/TestCredentials",
-	            data: $.toJSON(jsonData),
-	            contentType: "application/json; charset=utf-8",
-	            dataType: "json",
-	            success: function (msg) {
-	                if (msg.d) {
-	                    // alert("<asp:Literal ID="LiteralLoginSuccess" runat="server" />");  // Modal on Chrome, so need a shaded div instead
-	                } else {
-                        // do nothing
-	                }
-	            },
-	            error: function (msg) {
-	                // retry after a second
-	                setTimeout(function () {
-	                    testManualCredentials();
-	                }, 1000);
-	            }
+    	    function onInputCredentials() {
+    	        clearTimeout(manualCredentialsTestTrigger);
 
-	        });
-	    }
+    	        manualCredentialsTestTrigger = setTimeout(function() {
+    	            testManualCredentials();
+    	        }, 1000);
+    	    }
 
-	    function recheckLogin() {
+    	    function testManualCredentials() {
+    	        // Submit credentials to server. If valid, they will validate through the recheckLogin call.
 
-	        var jsonData = {};
-	        jsonData.uriEncoded = bitIdUri;
-	        jsonData.nonce = bitIdNonce;
+    	        var jsonData = {};
+    	        jsonData.credentialsLogin = $('#TextLogin').val();
+    	        jsonData.credentialsPass = $('#TextPass').val();
+    	        jsonData.credentials2FA = $('#Text2FA').val();
+    	        jsonData.logonUriEncoded = bitIdUri;
 
-	        $.ajax({
-	            type: "POST",
-	            url: "Login.aspx/TestLogin",
-	            data: $.toJSON(jsonData),
-	            contentType: "application/json; charset=utf-8",
-	            dataType: "json",
-	            success: function (msg) {
-	                if (msg.d) {
-                        // Login confirmed, fetch auth cookie from nonce in-context
-	                    document.location = "/Security/FinalizeLogin.aspx?Nonce=" + bitIdNonce;
-	                } else {
-                        // Retry twice per second
-	                    setTimeout(function () {
-	                        recheckLogin();
-	                    }, 500);
-	                }
-	            },
-	            error: function (msg) {
-                    // we don't want the polling to die just because of a transient error
-	                setTimeout(function () {
-	                    recheckLogin();
-	                }, 1000);
-	            }
+    	        $.ajax({
+    	            type: "POST",
+    	            url: "Login.aspx/TestCredentials",
+    	            data: $.toJSON(jsonData),
+    	            contentType: "application/json; charset=utf-8",
+    	            dataType: "json",
+    	            success: function(msg) {
+    	                if (msg.d) {
+    	                    // alert("<asp:Literal ID="LiteralLoginSuccess" runat="server" />");  // Modal on Chrome, so need a shaded div instead
+    	                } else {
+    	                    // do nothing
+    	                }
+    	            },
+    	            error: function(msg) {
+    	                // retry after a second
+    	                setTimeout(function() {
+    	                    testManualCredentials();
+    	                }, 1000);
+    	            }
 
-	        });
-        }
+    	        });
+    	    }
 
-	    var bitIdUri = '<asp:Literal ID="LiteralUri" runat="server" />';
-	    var bitIdNonce = '<asp:Literal ID="LiteralNonce" runat="server" />';
+    	    function recheckLogin() {
 
-	</script>
+    	        var jsonData = {};
+    	        jsonData.uriEncoded = bitIdUri;
+    	        jsonData.nonce = bitIdNonce;
+
+    	        $.ajax({
+    	            type: "POST",
+    	            url: "Login.aspx/TestLogin",
+    	            data: $.toJSON(jsonData),
+    	            contentType: "application/json; charset=utf-8",
+    	            dataType: "json",
+    	            success: function(msg) {
+    	                if (msg.d) {
+    	                    // Login confirmed, fetch auth cookie from nonce in-context
+    	                    document.location = "/Security/FinalizeLogin.aspx?Nonce=" + bitIdNonce;
+    	                } else {
+    	                    // Retry twice per second
+    	                    setTimeout(function() {
+    	                        recheckLogin();
+    	                    }, 500);
+    	                }
+    	            },
+    	            error: function(msg) {
+    	                // we don't want the polling to die just because of a transient error
+    	                setTimeout(function() {
+    	                    recheckLogin();
+    	                }, 1000);
+    	            }
+
+    	        });
+    	    }
+
+    	    var bitIdUri = '<asp:Literal ID="LiteralUri" runat="server" />';
+    	    var bitIdNonce = '<asp:Literal ID="LiteralNonce" runat="server" />';
+    	</script>
 	
 
 	
     <!-- Main menu, emptied out here -->
 
 	<div class="center980px">
-	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div>
-        <div class="logoimage"><a href="/"><img style="border:none" src="/Security/Images/Swarmops-Logo.png" alt="Swarmops Logo" /></a></div>
+	    <div class="currentuserinfo"><div style="background-image: url('/Images/Icons/iconshock-user-16px.png'); background-repeat: no-repeat; padding-left: 16px; float: left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image: url('/Images/Icons/iconshock-workchair-16px.png'); background-repeat: no-repeat; padding-left: 17px; float: left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image: url('/Images/Icons/iconshock-gamepad-16px.png'); background-repeat: no-repeat; padding-left: 20px; float: left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div>
+        <div class="logoimage"><a href="/"><img style="border: none" src="/Security/Images/Swarmops-Logo.png" alt="Swarmops Logo" /></a></div>
         <div class="break"></div>
         <div class="topmenu">
             <div class="searchbox"><asp:TextBox ID="SearchBox" ReadOnly="true" runat="server" /></div>
@@ -167,11 +167,11 @@
     <h2 class="blue"><asp:Label ID="LabelSidebarManualLoginHeader" runat="server" /><span class="arrow"></span></h2>
     
     <div class="box">
-        <div class="content" style="line-height:24px">
+        <div class="content" style="line-height: 24px">
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr><td><asp:Literal ID="LiteralCredentialsUser" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="InputManualCredentials" type="text" /></td></tr>
                 <tr><td><asp:Literal ID="LiteralCredentialsPass" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="InputManualCredentials" type="password" /></td></tr>
-                <tr style="display:none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
+                <tr style="display: none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
             </table>
         </div>
     </div>
@@ -180,7 +180,7 @@
         <h2 class="blue">Dev's Cheat Button<span class="arrow"></span></h2>
     
         <div class="box">
-            <div class="content" style="line-height:14px">
+            <div class="content" style="line-height: 14px">
                 <p>Since we're running on localhost, on a nonstandard port, with a debugger attached, and under Windows, this is clearly not a production environment. Since it's unlikely that the outside Internet has access to this machine, which means you can't login with BitID, a cheat button has been provided for you.</p><p>Press the button below to log on as Sandbox Administrator.</p>
                 
                 <div align="right"><asp:Button ID="ButtonCheat" runat="server" OnClick="ButtonCheat_Click" Text="Cheat Button" /></div>
@@ -192,8 +192,8 @@
     
     <div class="box">
         <div class="content">
-            <div class="link-row-encaps" onclick="return false;" >
-                <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-databaseconnect-16px.png')"></div>
+            <div class="link-row-encaps" onclick=" return false; " >
+                <div class="link-row-icon" style="background-image: url('/Images/Icons/iconshock-databaseconnect-16px.png')"></div>
                 <asp:Label ID="LabelSidebarResetPassword" runat="server" />
             </div>
         </div>

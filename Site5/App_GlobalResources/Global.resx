@@ -534,4 +534,22 @@
     <value>two-year</value>
     <comment>Like "a two-year membership"</comment>
   </data>
+  <data name="Global_Address" xml:space="preserve">
+    <value>Address</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Country</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
 </root>

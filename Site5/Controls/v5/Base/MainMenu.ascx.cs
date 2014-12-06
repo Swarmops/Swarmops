@@ -2,7 +2,9 @@
 using System.IO;
 using System.Web.UI;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 using Swarmops.Interface.Objects;
+using Swarmops.Logic.Swarm;
 
 // ReSharper disable once CheckNamespace
 
@@ -12,8 +14,17 @@ namespace Swarmops.Controls.Base
     {
         public MainMenuItem[] MainMenuData { get; set; }
 
+        private string _regularLocalized;
+        private string _regularsLocalized;
+        private string _regularshipLocalized;
+
         protected void Page_Load (object sender, EventArgs e)
         {
+            ParticipantTitle regular = CurrentOrganization.RegularLabel;
+            _regularLocalized = Participant.Localized (regular);
+            _regularsLocalized = Participant.Localized (regular, TitleVariant.Plural);
+            _regularshipLocalized = Participant.Localized (regular, TitleVariant.Ship);
+
             // TODO: Put a small cache on this
 
             // TODO: Put plugins on it
@@ -49,11 +60,13 @@ namespace Swarmops.Controls.Base
                     localizedText = resourceObject.ToString();
                 }
             }
+            localizedText = localizedText.Replace ("[Regular]", _regularLocalized);
+            // TODO IF APPLICABLE - add other [Regulars] [Regularship] etc.
             localizedText = Server.HtmlEncode (localizedText); // muy importante
 
             if (menuItem.Type == MenuItemType.BuildNumber)
             {
-                localizedText = GetBuildIdentity();
+                localizedText = Swarmops.Logic.Support.Formatting.SwarmopsVersion;
             }
 
             string iconSize = "40px";

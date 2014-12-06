@@ -11,12 +11,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 {
     public partial class EditOrganization : PageV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             PageIcon = "iconshock-box-cog";
             PageTitle = Resources.Pages.Admin.EditOrganization_PageTitle;
             InfoBoxLiteral = Resources.Pages.Admin.EditOrganization_Info;
-            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Administration, AccessType.Write);
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Administration, AccessType.Write);
 
             if (!Page.IsPostBack)
             {
@@ -35,69 +35,69 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             string participantship = Participant.Localized (CurrentOrganization.RegularLabel, TitleVariant.Ship);
 
             this.LabelParticipationEntry.Text =
-                String.Format(Resources.Pages.Admin.EditOrganization_ParticipationBeginsWhen, participants);
+                String.Format (Resources.Pages.Admin.EditOrganization_ParticipationBeginsWhen, participants);
             this.LabelParticipationOrg.Text =
-                String.Format(Resources.Pages.Admin.EditOrganization_ParticipationBeginsOrg, participants);
+                String.Format (Resources.Pages.Admin.EditOrganization_ParticipationBeginsOrg, participants);
             this.LabelParticipationDuration.Text =
-                String.Format(Resources.Pages.Admin.EditOrganization_ParticipationDuration, participantship);
+                String.Format (Resources.Pages.Admin.EditOrganization_ParticipationDuration, participantship);
             this.LabelParticipationChurn.Text =
-                String.Format(Resources.Pages.Admin.EditOrganization_ParticipationChurn, participantship);
+                String.Format (Resources.Pages.Admin.EditOrganization_ParticipationChurn, participantship);
             this.LabelRenewalCost.Text =
-                String.Format(Resources.Pages.Admin.EditOrganization_RenewalsCost,
+                String.Format (Resources.Pages.Admin.EditOrganization_RenewalsCost,
                     CurrentOrganization.Currency.DisplayCode);
             this.LabelParticipationCost.Text =
-                String.Format(Resources.Pages.Admin.EditOrganization_ParticipationCost,
+                String.Format (Resources.Pages.Admin.EditOrganization_ParticipationCost,
                     participantship, CurrentOrganization.Currency.DisplayCode);
 
             this.LabelRenewalsAffect.Text = Resources.Pages.Admin.EditOrganization_RenewalsAffect;
             this.LabelRenewalDateEffect.Text = Resources.Pages.Admin.EditOrganization_RenewalDateEffect;
             this.LabelRenewalReminder.Text = Resources.Pages.Admin.EditOrganization_RenewalReminders;
             this.LabelMemberNumber.Text =
-                String.Format(Resources.Pages.Admin.EditOrganization_MemberNumberStyle, participantship);
+                String.Format (Resources.Pages.Admin.EditOrganization_MemberNumberStyle, participantship);
 
             this.DropMembersWhen.Items.Clear();
-            this.DropMembersWhen.Items.Add(new ListItem("Application submitted", "Application"));
-            this.DropMembersWhen.Items.Add(new ListItem("Application approved", "ApplicationApproval"));
-            this.DropMembersWhen.Items.Add(new ListItem("Application submitted + paid", "ApplicationPayment"));
-            this.DropMembersWhen.Items.Add(new ListItem("Application paid + approved", "ApplicationPaymentApproval"));
-            this.DropMembersWhen.Items.Add(new ListItem("Invited and accepted", "InvitationAcceptance"));
-            this.DropMembersWhen.Items.Add(new ListItem("Invited and paid", "InvitationPayment"));
-            this.DropMembersWhen.Items.Add(new ListItem("Manual add only", "Manual"));
+            this.DropMembersWhen.Items.Add (new ListItem ("Application submitted", "Application"));
+            this.DropMembersWhen.Items.Add (new ListItem ("Application approved", "ApplicationApproval"));
+            this.DropMembersWhen.Items.Add (new ListItem ("Application submitted + paid", "ApplicationPayment"));
+            this.DropMembersWhen.Items.Add (new ListItem ("Application paid + approved", "ApplicationPaymentApproval"));
+            this.DropMembersWhen.Items.Add (new ListItem ("Invited and accepted", "InvitationAcceptance"));
+            this.DropMembersWhen.Items.Add (new ListItem ("Invited and paid", "InvitationPayment"));
+            this.DropMembersWhen.Items.Add (new ListItem ("Manual add only", "Manual"));
 
             this.DropMembersWhere.Items.Clear();
-            this.DropMembersWhere.Items.Add(new ListItem("Root organization only", "Root"));
-            this.DropMembersWhere.Items.Add(new ListItem("Most local org only", "Local"));
-            this.DropMembersWhere.Items.Add(new ListItem("Root and most local org", "RootLocal"));
-            this.DropMembersWhere.Items.Add(new ListItem("All applicable organizations", "All"));
+            this.DropMembersWhere.Items.Add (new ListItem ("Root organization only", "Root"));
+            this.DropMembersWhere.Items.Add (new ListItem ("Most local org only", "Local"));
+            this.DropMembersWhere.Items.Add (new ListItem ("Root and most local org", "RootLocal"));
+            this.DropMembersWhere.Items.Add (new ListItem ("All applicable organizations", "All"));
 
             this.DropMembershipDuration.Items.Clear();
-            this.DropMembershipDuration.Items.Add(new ListItem("One month", "OneMonth"));
-            this.DropMembershipDuration.Items.Add(new ListItem("One year", "OneYear"));
-            this.DropMembershipDuration.Items.Add(new ListItem("Two years", "TwoYears"));
-            this.DropMembershipDuration.Items.Add(new ListItem("Five years", "FiveYears"));
-            this.DropMembershipDuration.Items.Add(new ListItem("Forever", "Forever"));
+            this.DropMembershipDuration.Items.Add (new ListItem ("One month", "OneMonth"));
+            this.DropMembershipDuration.Items.Add (new ListItem ("One year", "OneYear"));
+            this.DropMembershipDuration.Items.Add (new ListItem ("Two years", "TwoYears"));
+            this.DropMembershipDuration.Items.Add (new ListItem ("Five years", "FiveYears"));
+            this.DropMembershipDuration.Items.Add (new ListItem ("Forever", "Forever"));
             this.DropMembershipDuration.SelectedValue = "Year";
 
             this.DropMembersChurn.Items.Clear();
-            this.DropMembersChurn.Items.Add(new ListItem("Expiry date reached", "Expiry"));
-            this.DropMembersChurn.Items.Add(new ListItem("Not paid final reminder", "NotPaid"));
-            this.DropMembersChurn.Items.Add(new ListItem("Never", "Never"));
+            this.DropMembersChurn.Items.Add (new ListItem ("Expiry date reached", "Expiry"));
+            this.DropMembersChurn.Items.Add (new ListItem ("Not paid final reminder", "NotPaid"));
+            this.DropMembersChurn.Items.Add (new ListItem ("Never", "Never"));
 
             this.DropRenewalDateEffect.Items.Clear();
-            this.DropRenewalDateEffect.Items.Add(new ListItem("Date of renewal", "RenewalDate"));
-            this.DropRenewalDateEffect.Items.Add(new ListItem("Previous expiry", "FromExpiry"));
+            this.DropRenewalDateEffect.Items.Add (new ListItem ("Date of renewal", "RenewalDate"));
+            this.DropRenewalDateEffect.Items.Add (new ListItem ("Previous expiry", "FromExpiry"));
 
             this.DropRenewalsAffect.Items.Clear();
-            this.DropRenewalsAffect.Items.Add(new ListItem("All related organizations", "All"));
-            this.DropRenewalsAffect.Items.Add(new ListItem("One organization at a time", "One"));
+            this.DropRenewalsAffect.Items.Add (new ListItem ("All related organizations", "All"));
+            this.DropRenewalsAffect.Items.Add (new ListItem ("One organization at a time", "One"));
 
             this.DropRenewalReminder.Items.Clear();
-            this.DropRenewalReminder.Items.Add(new ListItem("30, 14, 7, 1 days before", "Standard"));
-            this.DropRenewalReminder.Items.Add(new ListItem("Never", "Never"));
+            this.DropRenewalReminder.Items.Add (new ListItem ("30, 14, 7, 1 days before", "Standard"));
+            this.DropRenewalReminder.Items.Add (new ListItem ("Never", "Never"));
 
             this.DropMemberNumber.Items.Clear();
-            this.DropMemberNumber.Items.Add(new ListItem("Global for installation", "Global"));
-            this.DropMemberNumber.Items.Add(new ListItem("Local for each organzation", "Local"));
+            this.DropMemberNumber.Items.Add (new ListItem ("Global for installation", "Global"));
+            this.DropMemberNumber.Items.Add (new ListItem ("Local for each organzation", "Local"));
         }
 
         [WebMethod]
@@ -130,7 +130,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
 
         [WebMethod]
-        public static CallResult SwitchToggled(string switchName, bool switchValue)
+        public static CallResult SwitchToggled (string switchName, bool switchValue)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
@@ -158,13 +158,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     FinancialAccount coldAccount = authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold;
                     if (coldAccount == null)
                     {
-                        coldAccount = FinancialAccount.Create(authData.CurrentOrganization, "Bitcoin Assets Cold",
+                        coldAccount = FinancialAccount.Create (authData.CurrentOrganization, "Bitcoin Assets Cold",
                             FinancialAccountType.Asset, null);
-                        FinancialAccount.Create(authData.CurrentOrganization, "Cold Address 1",
+                        FinancialAccount.Create (authData.CurrentOrganization, "Cold Address 1",
                             FinancialAccountType.Asset, coldAccount);
-                        FinancialAccount.Create(authData.CurrentOrganization, "Cold Address 2 (rename these)",
+                        FinancialAccount.Create (authData.CurrentOrganization, "Cold Address 2 (rename these)",
                             FinancialAccountType.Asset, coldAccount);
-                        FinancialAccount.Create(authData.CurrentOrganization, "Cold Address... etc",
+                        FinancialAccount.Create (authData.CurrentOrganization, "Cold Address... etc",
                             FinancialAccountType.Asset, coldAccount);
 
                         authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold = coldAccount;
@@ -174,7 +174,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     }
                     else
                     {
-                        workAccounts.Add(coldAccount);
+                        workAccounts.Add (coldAccount);
                     }
                     break;
                 case "BitcoinHot":
@@ -187,7 +187,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     if (hotAccount == null)
                     {
                         authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot =
-                            FinancialAccount.Create(authData.CurrentOrganization, "Bitcoin Wallet Hot",
+                            FinancialAccount.Create (authData.CurrentOrganization, "Bitcoin Wallet Hot",
                                 FinancialAccountType.Asset, null);
 
                         result.DisplayMessage =
@@ -195,7 +195,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     }
                     else
                     {
-                        workAccounts.Add(hotAccount);
+                        workAccounts.Add (hotAccount);
                     }
                     break;
                 case "Forex":
@@ -212,10 +212,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         }
 
                         authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations =
-                            FinancialAccount.Create(authData.CurrentOrganization, "Forex holding gains",
+                            FinancialAccount.Create (authData.CurrentOrganization, "Forex holding gains",
                                 FinancialAccountType.Income, null);
                         authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations =
-                            FinancialAccount.Create(authData.CurrentOrganization, "Forex holding losses",
+                            FinancialAccount.Create (authData.CurrentOrganization, "Forex holding losses",
                                 FinancialAccountType.Cost, null);
 
                         result.DisplayMessage =
@@ -243,8 +243,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         }
                         else
                         {
-                            workAccounts.Add(forexGain);
-                            workAccounts.Add(forexLoss);
+                            workAccounts.Add (forexGain);
+                            workAccounts.Add (forexLoss);
                         }
                     }
                     break;
@@ -260,10 +260,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         }
 
                         authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound =
-                            FinancialAccount.Create(authData.CurrentOrganization, "Inbound VAT",
+                            FinancialAccount.Create (authData.CurrentOrganization, "Inbound VAT",
                                 FinancialAccountType.Asset, null);
                         authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound =
-                            FinancialAccount.Create(authData.CurrentOrganization, "Outbound VAT",
+                            FinancialAccount.Create (authData.CurrentOrganization, "Outbound VAT",
                                 FinancialAccountType.Debt, null);
 
                         result.DisplayMessage = "Inbound and outbound VAT accounts were created.";
@@ -275,8 +275,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                             throw new InvalidOperationException();
                         }
 
-                        workAccounts.Add(vatInbound);
-                        workAccounts.Add(vatOutbound);
+                        workAccounts.Add (vatInbound);
+                        workAccounts.Add (vatOutbound);
                     }
                     break;
                 case "Paypal":
@@ -284,21 +284,21 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     if (assetsPaypal == null)
                     {
                         authData.CurrentOrganization.FinancialAccounts.AssetsPaypal =
-                            FinancialAccount.Create(authData.CurrentOrganization, "Paypal account",
+                            FinancialAccount.Create (authData.CurrentOrganization, "Paypal account",
                                 FinancialAccountType.Asset, null);
 
                         result.DisplayMessage = "An account was created for Paypal account tracking.";
                     }
                     else
                     {
-                        workAccounts.Add(assetsPaypal);
+                        workAccounts.Add (assetsPaypal);
                     }
                     break;
                 default:
                     throw new NotImplementedException();
             }
 
-            if (workAccounts.Count > 0 && String.IsNullOrEmpty(result.DisplayMessage))
+            if (workAccounts.Count > 0 && String.IsNullOrEmpty (result.DisplayMessage))
             {
                 if (switchValue) // switch has been turned on
                 {
@@ -326,7 +326,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                     foreach (FinancialAccount account in workAccounts)
                     {
-                        if (account.GetLastRows(5).Count > 0)
+                        if (account.GetLastRows (5).Count > 0)
                         {
                             transactionsOnAccount = true;
                         }

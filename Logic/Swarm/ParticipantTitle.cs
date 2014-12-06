@@ -6,7 +6,7 @@ namespace Swarmops.Logic.Swarm
 {
     public class Participant
     {
-        public static string Localized (ParticipantTitle title, TitleVariant variant)
+        public static string Localized (ParticipantTitle title, TitleVariant variant = TitleVariant.Generic)
         {
             return ParticipantTitles.ResourceManager.GetString ("Title_" + title + "_" + variant);
         }

@@ -90,6 +90,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ParticipantTitles.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Logic.Communications.Transmission.MailPayload.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Communications.Transmission.MailPayload.resx</DependentUpon>
+    </Compile>
     <Compile Include="Cache\GuidCache.cs" />
     <Compile Include="Communications\ICommsRenderer.cs" />
     <Compile Include="Communications\ICommsResolver.cs" />
@@ -392,6 +397,10 @@
     <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Communications.Transmission.NotificationPayload.pt-BR.resx" />
     <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Financial.FinancialTransactionTagSetTypesStock.pt-BR.resx" />
     <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Swarm.DashboardTodos.pt-BR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Logic.Communications.Transmission.MailPayload.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Communications.Transmission.MailPayload.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Communications.Transmission.NotificationPayload.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Financial.FinancialTransactionTagSetTypesStock.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Swarm.DashboardTodos.ru-RU.resx" />
