@@ -1,4 +1,5 @@
 ﻿using System;
+using Resources;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Controls.Base
@@ -17,14 +18,14 @@ namespace Swarmops.Controls.Base
                 RootGeographyId = value.Identity;
                 RootGeographyName = value.Name;
 
-                if (value.Name.StartsWith("[LOC]"))
+                if (value.Name.StartsWith ("[LOC]"))
                 {
-                    RootGeographyName = Resources.GeographyNames.ResourceManager.GetString(value.Name.Substring(5));
+                    RootGeographyName = GeographyNames.ResourceManager.GetString (value.Name.Substring (5));
                 }
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             RootGeography = Geography.Root; // set to "world" unless manually set to something else
         }

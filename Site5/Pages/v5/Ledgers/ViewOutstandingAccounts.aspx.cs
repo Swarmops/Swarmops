@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Globalization;
 using System.Web.UI.WebControls;
+using Resources;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
     public partial class ViewOutstandingAccounts : PageV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             if (!CurrentOrganization.IsEconomyEnabled)
             {
-                Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
+                Response.Redirect ("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
@@ -25,18 +26,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     int year = DateTime.Today.Year - 1;
                     int firstFiscalYear = CurrentOrganization.FirstFiscalYear;
 
-                    this.DropYears.Items.Add(new ListItem(Resources.Global.Global_AsOfNow, "Now"));
+                    this.DropYears.Items.Add (new ListItem (Global.Global_AsOfNow, "Now"));
 
                     while (year >= firstFiscalYear)
                     {
-                        this.DropYears.Items.Add(new ListItem(new DateTime(year, 12, 31).ToShortDateString(),
-                            year.ToString(CultureInfo.InvariantCulture)));
+                        this.DropYears.Items.Add (new ListItem (new DateTime (year, 12, 31).ToShortDateString(),
+                            year.ToString (CultureInfo.InvariantCulture)));
                         year--;
                     }
 
-                    this.DropAccounts.Items.Add(new ListItem(Resources.Global.Financial_ExpenseClaimsLong,
+                    this.DropAccounts.Items.Add (new ListItem (Global.Financial_ExpenseClaimsLong,
                         "ExpenseClaims"));
-                    this.DropAccounts.Items.Add(new ListItem(Resources.Global.Financial_CashAdvancesLong, "CashAdvances"));
+                    this.DropAccounts.Items.Add (new ListItem (Global.Financial_CashAdvancesLong, "CashAdvances"));
 
                     Localize();
                 }

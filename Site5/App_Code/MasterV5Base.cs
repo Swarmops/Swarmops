@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
@@ -6,7 +7,7 @@ using Swarmops.Logic.Swarm;
 /// <summary>
 ///     Summary description for MasterV4Base
 /// </summary>
-public class MasterV5Base : System.Web.UI.MasterPage
+public class MasterV5Base : MasterPage
 {
     public bool CurrentPageAllowed = false;
     public string CurrentPageIcon = string.Empty;
@@ -32,7 +33,7 @@ public class MasterV5Base : System.Web.UI.MasterPage
         {
             if (Session["MainMenu-v5_Enabling_TimeStamp"] != null)
             {
-                return new DateTime((long) Session["MainMenu-v5_Enabling_TimeStamp"]);
+                return new DateTime ((long) Session["MainMenu-v5_Enabling_TimeStamp"]);
             }
             return DateTime.MinValue;
         }

@@ -6,7 +6,7 @@ namespace Swarmops.Frontend.Pages.v5.User
 {
     public partial class SelectLanguage : PageV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             PageIcon = "iconshock-language";
 
@@ -30,26 +30,26 @@ namespace Swarmops.Frontend.Pages.v5.User
         {
             string[] availableCultures = {"sv-SE", "nl-NL", "ru-RU"};
 
-            Array.Sort(availableCultures);
-                // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
+            Array.Sort (availableCultures);
+            // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
 
             List<LanguageParameters> availableLanguages = new List<LanguageParameters>();
             foreach (string cultureId in availableCultures)
             {
                 LanguageParameters newLanguage = new LanguageParameters();
-                newLanguage.IconUrl = "/Images/Flags/" + cultureId.Substring(3, 2).ToLowerInvariant() + "-64px.png";
+                newLanguage.IconUrl = "/Images/Flags/" + cultureId.Substring (3, 2).ToLowerInvariant() + "-64px.png";
                 newLanguage.CultureId = cultureId;
-                CultureInfo culture = CultureInfo.CreateSpecificCulture(cultureId);
+                CultureInfo culture = CultureInfo.CreateSpecificCulture (cultureId);
                 newLanguage.DisplayName = culture.NativeName;
-                newLanguage.DisplayName = Char.ToUpperInvariant(newLanguage.DisplayName[0]) +
-                                          newLanguage.DisplayName.Substring(1); // Capitalize
+                newLanguage.DisplayName = Char.ToUpperInvariant (newLanguage.DisplayName[0]) +
+                                          newLanguage.DisplayName.Substring (1); // Capitalize
 
-                if (cultureId.StartsWith("en"))
+                if (cultureId.StartsWith ("en"))
                 {
                     newLanguage.IconUrl = "/Images/Flags/uk-64px.png";
-                        // use "uk" for en-GB and en-US rather than "gb" or "us"
+                    // use "uk" for en-GB and en-US rather than "gb" or "us"
                 }
-                availableLanguages.Add(newLanguage);
+                availableLanguages.Add (newLanguage);
             }
 
             this.RepeaterLanguages.DataSource = availableLanguages;

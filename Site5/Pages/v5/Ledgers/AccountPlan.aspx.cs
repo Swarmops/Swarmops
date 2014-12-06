@@ -40,11 +40,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             Invalid = 4
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             if (!CurrentOrganization.IsEconomyEnabled)
             {
-                Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
+                Response.Redirect ("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
@@ -80,7 +80,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.LiteralLabelOwner.Text = Global.Global_Owner;
                 this.LiteralLabelParent.Text = Resources.Pages.Ledgers.AccountPlan_Edit_Parent;
             }
-            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
             DbVersionRequired = 2; // Account reparenting
 
             EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
@@ -89,15 +89,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod]
-        public static JsonAccountData GetAccountData(int accountId)
+        public static JsonAccountData GetAccountData (int accountId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
             if (account.OrganizationId != authData.CurrentOrganization.Identity)
             {
-                throw new UnauthorizedAccessException("A million nopes");
+                throw new UnauthorizedAccessException ("A million nopes");
             }
 
             FinancialAccounts accountTree = account.GetTree();
@@ -108,8 +108,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.AccountName = account.Name;
             result.ParentAccountId = account.ParentIdentity;
             result.ParentAccountName = account.ParentFinancialAccountId == 0
-                ? Global.ResourceManager.GetString("Financial_" +
-                                                   account.AccountType)
+                ? Global.ResourceManager.GetString ("Financial_" +
+                                                    account.AccountType)
                 : account.Parent.Name;
             result.Expensable = account.Expensable;
             result.Administrative = account.Administrative;
@@ -117,21 +117,23 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.Open = account.Open;
             result.AccountOwnerName = account.OwnerPersonId != 0 ? account.Owner.Name : Global.Global_NoOwner;
             result.AccountOwnerAvatarUrl = account.OwnerPersonId != 0
-                ? account.Owner.GetSecureAvatarLink(24)
+                ? account.Owner.GetSecureAvatarLink (24)
                 : "/Images/Icons/iconshock-warning-24px.png";
-            result.Budget = (accountTree.GetBudgetSumCents(year)/100L).ToString("N0", CultureInfo.CurrentCulture);
+            result.Budget = (accountTree.GetBudgetSumCents (year)/100L).ToString ("N0", CultureInfo.CurrentCulture);
 
             if (account.AccountType == FinancialAccountType.Asset || account.AccountType == FinancialAccountType.Debt)
             {
                 result.Balance =
-                    (accountTree.GetDeltaCents(new DateTime(1900, 1, 1), new DateTime(year + 1, 1, 1))/100L).ToString(
-                        "N0");
+                    (accountTree.GetDeltaCents (new DateTime (1900, 1, 1), new DateTime (year + 1, 1, 1))/100L).ToString
+                        (
+                            "N0");
             }
             else
             {
                 result.Balance =
-                    (-accountTree.GetDeltaCents(new DateTime(year, 1, 1), new DateTime(year + 1, 1, 1))/100L).ToString(
-                        "N0");
+                    (-accountTree.GetDeltaCents (new DateTime (year, 1, 1), new DateTime (year + 1, 1, 1))/100L)
+                        .ToString (
+                            "N0");
             }
             result.CurrencyCode = account.Organization.Currency.DisplayCode;
 
@@ -139,14 +141,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
 
-        private static bool PrepareAccountChange(FinancialAccount account, AuthenticationData authData,
+        private static bool PrepareAccountChange (FinancialAccount account, AuthenticationData authData,
             bool checkOpenedYear)
         {
             // TODO: Check permissions, too (may be read-only)
 
             if (account.OrganizationId != authData.CurrentOrganization.Identity)
             {
-                throw new UnauthorizedAccessException("A million nopes");
+                throw new UnauthorizedAccessException ("A million nopes");
             }
 
             try
@@ -169,13 +171,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod]
-        public static int CreateAccount(string accountType)
+        public static int CreateAccount (string accountType)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             FinancialAccountType accountTypeEnum =
-                (FinancialAccountType) Enum.Parse(typeof (FinancialAccountType), accountType);
+                (FinancialAccountType) Enum.Parse (typeof (FinancialAccountType), accountType);
 
-            FinancialAccount account = FinancialAccount.Create(authData.CurrentOrganization,
+            FinancialAccount account = FinancialAccount.Create (authData.CurrentOrganization,
                 Resources.Pages.Ledgers.AccountPlan_NewAccount, accountTypeEnum, null);
 
             return account.Identity;
@@ -183,12 +185,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
 
         [WebMethod]
-        public static bool SetAccountName(int accountId, string name)
+        public static bool SetAccountName (int accountId, string name)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
-            string newName = HttpContext.Current.Server.UrlDecode(name);
+            string newName = HttpContext.Current.Server.UrlDecode (name);
 
             if (account.Name == newName)
             {
@@ -196,7 +198,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return true;
             }
 
-            if (!PrepareAccountChange(account, authData, true))
+            if (!PrepareAccountChange (account, authData, true))
             {
                 return false;
             }
@@ -206,10 +208,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
         [WebMethod]
-        public static bool SetAccountParent(int accountId, int parentAccountId)
+        public static bool SetAccountParent (int accountId, int parentAccountId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
             if (account.ParentFinancialAccountId == parentAccountId)
             {
@@ -217,7 +219,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return true;
             }
 
-            if (!PrepareAccountChange(account, authData, true))
+            if (!PrepareAccountChange (account, authData, true))
             {
                 return false;
             }
@@ -225,10 +227,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             FinancialAccount newParent = null; // to cover the root account case (reparenting to root)
             if (parentAccountId != 0)
             {
-                newParent = FinancialAccount.FromIdentity(parentAccountId);
+                newParent = FinancialAccount.FromIdentity (parentAccountId);
                 if (newParent.OrganizationId != authData.CurrentOrganization.Identity)
                 {
-                    throw new ArgumentException("Parent account mismatches with organization identity");
+                    throw new ArgumentException ("Parent account mismatches with organization identity");
                 }
             }
 
@@ -237,31 +239,31 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
         [WebMethod]
-        public static bool SetAccountOwner(int accountId, int newOwnerId)
+        public static bool SetAccountOwner (int accountId, int newOwnerId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
-            if (!PrepareAccountChange(account, authData, false))
+            if (!PrepareAccountChange (account, authData, false))
             {
                 return false;
             }
 
             // TODO SECURITY: Verify that authdata.AuthenticatedPerson can see personId, or this can be exploited to enumerate all people
 
-            account.Owner = Person.FromIdentity(newOwnerId);
+            account.Owner = Person.FromIdentity (newOwnerId);
             return true;
         }
 
         [WebMethod]
-        public static ChangeAccountDataResult SetAccountBudget(int accountId, string budget)
+        public static ChangeAccountDataResult SetAccountBudget (int accountId, string budget)
         {
             try
             {
                 AuthenticationData authData = GetAuthenticationDataAndCulture();
-                FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+                FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
-                if (!PrepareAccountChange(account, authData, false))
+                if (!PrepareAccountChange (account, authData, false))
                 {
                     return new ChangeAccountDataResult
                     {
@@ -270,28 +272,28 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 }
 
                 Int64 newTreeBudget;
-                budget = budget.Replace("%A0", "%20");
+                budget = budget.Replace ("%A0", "%20");
                 // some very weird browser space-to-otherspace translation weirds out number parsing
-                budget = HttpContext.Current.Server.UrlDecode(budget);
+                budget = HttpContext.Current.Server.UrlDecode (budget);
 
                 if (budget.Trim().Length > 0 &&
-                    Int64.TryParse(budget, NumberStyles.Currency, CultureInfo.CurrentCulture, out newTreeBudget))
+                    Int64.TryParse (budget, NumberStyles.Currency, CultureInfo.CurrentCulture, out newTreeBudget))
                 {
                     newTreeBudget *= 100; // convert to cents
 
                     int year = DateTime.Today.Year;
                     FinancialAccounts accountTree = account.GetTree();
-                    Int64 currentTreeBudget = accountTree.GetBudgetSumCents(year);
-                    Int64 currentSingleBudget = account.GetBudgetCents(year);
+                    Int64 currentTreeBudget = accountTree.GetBudgetSumCents (year);
+                    Int64 currentSingleBudget = account.GetBudgetCents (year);
                     Int64 suballocatedBudget = currentTreeBudget - currentSingleBudget;
 
                     Int64 newSingleBudget = newTreeBudget - suballocatedBudget;
 
-                    account.SetBudgetCents(DateTime.Today.Year, newSingleBudget);
+                    account.SetBudgetCents (DateTime.Today.Year, newSingleBudget);
                     return new ChangeAccountDataResult
                     {
                         Result = ChangeAccountDataOperationsResult.Changed,
-                        NewData = (newTreeBudget/100).ToString("N0", CultureInfo.CurrentCulture)
+                        NewData = (newTreeBudget/100).ToString ("N0", CultureInfo.CurrentCulture)
                     };
                 }
                 return new ChangeAccountDataResult
@@ -305,19 +307,19 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 // TODO: This really needs to be in Logic. DO NOT DO NOT DO NOT call Database layer directly from Site layer.
 
                 SwarmDb.GetDatabaseForWriting()
-                    .CreateExceptionLogEntry(DateTime.UtcNow, "AccountPlan-SetBudget", weirdException);
+                    .CreateExceptionLogEntry (DateTime.UtcNow, "AccountPlan-SetBudget", weirdException);
 
                 throw;
             }
         }
 
         [WebMethod]
-        public static bool SetAccountSwitch(int accountId, string switchName, bool switchValue)
+        public static bool SetAccountSwitch (int accountId, string switchName, bool switchValue)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
-            if (!PrepareAccountChange(account, authData, false))
+            if (!PrepareAccountChange (account, authData, false))
             {
                 return false;
             }
@@ -334,7 +336,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     account.Expensable = switchValue;
                     break;
                 default:
-                    throw new NotImplementedException("Unknown switchName parameter");
+                    throw new NotImplementedException ("Unknown switchName parameter");
             }
 
             return true;

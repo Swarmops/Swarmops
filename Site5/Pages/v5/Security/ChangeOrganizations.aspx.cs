@@ -9,7 +9,7 @@ namespace Swarmops.Frontend.Pages.v5.Security
     {
         public int OrganizationCount { get; set; }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             PageTitle = Resources.Pages.Security.ChangeOrganizations_PageTitle;
             PageIcon = "iconshock-organizations";
@@ -26,7 +26,7 @@ namespace Swarmops.Frontend.Pages.v5.Security
             List<OrganizationParameters> availableOrganizations = new List<OrganizationParameters>();
             foreach (Membership membership in memberships)
             {
-                if (membership.OrganizationId == 1 && !PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE))
+                if (membership.OrganizationId == 1 && !PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
                 {
                     // sandbox. Ignore.
                     continue;
@@ -37,7 +37,7 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 newOrganization.OrganizationId = membership.OrganizationId;
                 newOrganization.OrganizationName = membership.Organization.Name;
 
-                availableOrganizations.Add(newOrganization);
+                availableOrganizations.Add (newOrganization);
             }
 
             OrganizationCount = availableOrganizations.Count;

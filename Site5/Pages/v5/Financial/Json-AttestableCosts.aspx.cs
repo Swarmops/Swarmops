@@ -12,7 +12,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
     private Dictionary<int, bool> _attestationRights;
     private AttestableItems _items;
 
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load (object sender, EventArgs e)
     {
         // Get all attestable items
 
@@ -29,23 +29,23 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
         Response.ContentType = "application/json";
         string json = FormatAsJson();
-        Response.Output.WriteLine(json);
+        Response.Output.WriteLine (json);
         Response.End();
     }
 
     private string FormatAsJson()
     {
-        StringBuilder result = new StringBuilder(16384);
+        StringBuilder result = new StringBuilder (16384);
 
         string hasDoxString =
             "<img src=\\\"/Images/Icons/iconshock-glass-16px.png\\\" onmouseover=\\\"this.src='/Images/Icons/iconshock-glass-16px-hot.png';\\\" onmouseout=\\\"this.src='/Images/Icons/iconshock-glass-16px.png';\\\" baseid=\\\"{5}\\\" class=\\\"LocalViewDox\\\" style=\\\"cursor:pointer\\\" />";
 
-        result.Append("{\"rows\":[");
+        result.Append ("{\"rows\":[");
 
         foreach (AttestableItem item in this._items)
         {
-            result.Append("{");
-            result.AppendFormat(
+            result.Append ("{");
+            result.AppendFormat (
                 "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
                 "\"dox\":\"" + (item.HasDox ? hasDoxString : "&nbsp;") + "\"," +
                 "\"actions\":\"<span style=\\\"position:relative;top:3px\\\">" +
@@ -53,16 +53,16 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
                 "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
                 "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
                 "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
-                JsonSanitize(GetGlobalResourceObject("Global", item.IdentityDisplay).ToString()),
-                JsonSanitize(item.Beneficiary), JsonSanitize(TryLocalize(item.Description)),
-                JsonSanitize(item.BudgetName),
+                JsonSanitize (GetGlobalResourceObject ("Global", item.IdentityDisplay).ToString()),
+                JsonSanitize (item.Beneficiary), JsonSanitize (TryLocalize (item.Description)),
+                JsonSanitize (item.BudgetName),
                 item.AmountRequestedCents/100.0, item.Identity);
-            result.Append("},");
+            result.Append ("},");
         }
 
-        result.Remove(result.Length - 1, 1); // remove last comma
+        result.Remove (result.Length - 1, 1); // remove last comma
 
-        result.Append("]}");
+        result.Append ("]}");
 
         return result.ToString();
     }
@@ -75,7 +75,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
         // checks the owner.
 
         Dictionary<int, bool> result = new Dictionary<int, bool>();
-        FinancialAccounts accounts = FinancialAccounts.ForOrganization(CurrentOrganization);
+        FinancialAccounts accounts = FinancialAccounts.ForOrganization (CurrentOrganization);
 
         foreach (FinancialAccount account in accounts)
         {
@@ -91,13 +91,14 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     private void PopulateCashAdvances()
     {
-        CashAdvances advances = CashAdvances.ForOrganization(CurrentOrganization).WhereUnattested;
+        CashAdvances advances = CashAdvances.ForOrganization (CurrentOrganization).WhereUnattested;
 
         foreach (CashAdvance advance in advances)
         {
-            if (this._attestationRights.ContainsKey(advance.BudgetId) || advance.Budget.OwnerPersonId == Person.NobodyId)
+            if (this._attestationRights.ContainsKey (advance.BudgetId) ||
+                advance.Budget.OwnerPersonId == Person.NobodyId)
             {
-                this._items.Add(new AttestableItem("A" + advance.Identity.ToString(CultureInfo.InvariantCulture),
+                this._items.Add (new AttestableItem ("A" + advance.Identity.ToString (CultureInfo.InvariantCulture),
                     advance.Person.Name, advance.AmountCents, advance.Budget,
                     advance.Description, "Financial_CashAdvance", false, advance));
             }
@@ -107,17 +108,18 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     private void PopulateExpenses()
     {
-        ExpenseClaims expenses = ExpenseClaims.ForOrganization(CurrentOrganization).WhereUnattested;
+        ExpenseClaims expenses = ExpenseClaims.ForOrganization (CurrentOrganization).WhereUnattested;
 
         foreach (ExpenseClaim expenseClaim in expenses)
         {
-            if (this._attestationRights.ContainsKey(expenseClaim.BudgetId) ||
+            if (this._attestationRights.ContainsKey (expenseClaim.BudgetId) ||
                 expenseClaim.Budget.OwnerPersonId == Person.NobodyId)
             {
                 Documents dox = expenseClaim.Documents;
                 bool hasDox = (dox.Count > 0 ? true : false);
 
-                this._items.Add(new AttestableItem("E" + expenseClaim.Identity.ToString(CultureInfo.InvariantCulture),
+                this._items.Add (new AttestableItem (
+                    "E" + expenseClaim.Identity.ToString (CultureInfo.InvariantCulture),
                     expenseClaim.ClaimerCanonical, expenseClaim.AmountCents, expenseClaim.Budget,
                     expenseClaim.Description, "Financial_ExpenseClaim", hasDox, expenseClaim));
             }
@@ -127,16 +129,17 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     private void PopulateInboundInvoices()
     {
-        InboundInvoices invoices = InboundInvoices.ForOrganization(CurrentOrganization).WhereUnattested;
+        InboundInvoices invoices = InboundInvoices.ForOrganization (CurrentOrganization).WhereUnattested;
 
         foreach (InboundInvoice invoice in invoices)
         {
             Documents dox = invoice.Documents;
             bool hasDox = (dox.Count > 0 ? true : false);
 
-            if (this._attestationRights.ContainsKey(invoice.BudgetId) || invoice.Budget.OwnerPersonId == Person.NobodyId)
+            if (this._attestationRights.ContainsKey (invoice.BudgetId) ||
+                invoice.Budget.OwnerPersonId == Person.NobodyId)
             {
-                this._items.Add(new AttestableItem("I" + invoice.Identity.ToString(CultureInfo.InvariantCulture),
+                this._items.Add (new AttestableItem ("I" + invoice.Identity.ToString (CultureInfo.InvariantCulture),
                     invoice.Supplier, invoice.AmountCents, invoice.Budget, invoice.InvoiceReference,
                     "Financial_InvoiceInbound", hasDox, invoice));
             }
@@ -146,17 +149,17 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     private void PopulateSalaries()
     {
-        Salaries salaries = Salaries.ForOrganization(CurrentOrganization).WhereUnattested;
+        Salaries salaries = Salaries.ForOrganization (CurrentOrganization).WhereUnattested;
 
         foreach (Salary salary in salaries)
         {
-            if (this._attestationRights.ContainsKey(salary.PayrollItem.BudgetId) ||
+            if (this._attestationRights.ContainsKey (salary.PayrollItem.BudgetId) ||
                 salary.PayrollItem.Budget.OwnerPersonId == Person.NobodyId)
             {
-                this._items.Add(new AttestableItem("S" + salary.Identity.ToString(CultureInfo.InvariantCulture),
+                this._items.Add (new AttestableItem ("S" + salary.Identity.ToString (CultureInfo.InvariantCulture),
                     salary.PayrollItem.PersonCanonical, salary.CostTotalCents, salary.PayrollItem.Budget,
                     "[Loc]Financial_SalarySpecification|[Date]" +
-                    salary.PayoutDate.ToString(CultureInfo.InvariantCulture), "Financial_Salary", false, salary));
+                    salary.PayoutDate.ToString (CultureInfo.InvariantCulture), "Financial_Salary", false, salary));
             }
         }
     }
@@ -164,13 +167,13 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     private void PopulateParleys()
     {
-        Parleys parleys = Parleys.ForOrganization(CurrentOrganization).WhereUnattested;
+        Parleys parleys = Parleys.ForOrganization (CurrentOrganization).WhereUnattested;
 
         foreach (Parley parley in parleys)
         {
-            if (this._attestationRights.ContainsKey(parley.BudgetId) || parley.Budget.OwnerPersonId == Person.NobodyId)
+            if (this._attestationRights.ContainsKey (parley.BudgetId) || parley.Budget.OwnerPersonId == Person.NobodyId)
             {
-                this._items.Add(new AttestableItem("P" + parley.Identity.ToString(CultureInfo.InvariantCulture),
+                this._items.Add (new AttestableItem ("P" + parley.Identity.ToString (CultureInfo.InvariantCulture),
                     parley.Person.Canonical, parley.BudgetCents, parley.ParentBudget, parley.Name, "Financial_Parley",
                     false, parley));
             }
@@ -179,7 +182,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     protected class AttestableItem
     {
-        public AttestableItem(string identity, string beneficiary, Int64 amountCents, FinancialAccount account,
+        public AttestableItem (string identity, string beneficiary, Int64 amountCents, FinancialAccount account,
             string description, string identityDisplay, bool hasDox, IHasIdentity item)
         {
             IdentityDisplay = identityDisplay;

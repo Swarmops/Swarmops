@@ -5,9 +5,9 @@ using Swarmops.Logic.Security;
 
 public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load (object sender, EventArgs e)
     {
-        PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+        PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
         PageTitle = "Close Ledgers";
         PageIcon = "iconshock-calculator-lock";
@@ -25,8 +25,8 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // Check if all transactions are balanced, so we can close
 
-        FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced(CurrentOrganization);
-            // TODO: this fn should move to Organization
+        FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced (CurrentOrganization);
+        // TODO: this fn should move to Organization
 
         int closingYear = CurrentOrganization.Parameters.FiscalBooksClosedUntilYear + 1;
 
@@ -92,7 +92,7 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // Then, actually close the ledgers.
 
-        FinancialAccounts accounts = FinancialAccounts.ForOrganization(CurrentOrganization);
+        FinancialAccounts accounts = FinancialAccounts.ForOrganization (CurrentOrganization);
         Int64 balanceDeltaCents = 0;
         Int64 resultsDeltaCents = 0;
 
@@ -102,25 +102,25 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
             if (account.AccountType == FinancialAccountType.Asset || account.AccountType == FinancialAccountType.Debt)
             {
-                accountBalanceCents = account.GetDeltaCents(new DateTime(2006, 1, 1),
-                    new DateTime(closingYear + 1, 1, 1));
+                accountBalanceCents = account.GetDeltaCents (new DateTime (2006, 1, 1),
+                    new DateTime (closingYear + 1, 1, 1));
                 balanceDeltaCents += accountBalanceCents;
             }
             else
             {
-                accountBalanceCents = account.GetDeltaCents(new DateTime(closingYear, 1, 1),
-                    new DateTime(closingYear + 1, 1, 1));
+                accountBalanceCents = account.GetDeltaCents (new DateTime (closingYear, 1, 1),
+                    new DateTime (closingYear + 1, 1, 1));
                 resultsDeltaCents += accountBalanceCents;
             }
         }
 
         if (balanceDeltaCents == -resultsDeltaCents && closingYear < DateTime.Today.Year)
         {
-            FinancialTransaction resultTransaction = FinancialTransaction.Create(CurrentOrganization.Identity,
-                new DateTime(closingYear, 12, 31, 23, 59, 00), "Årets resultat " + closingYear);
-                // TODO: Localize string
-            resultTransaction.AddRow(CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, null);
-            resultTransaction.AddRow(CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents, null);
+            FinancialTransaction resultTransaction = FinancialTransaction.Create (CurrentOrganization.Identity,
+                new DateTime (closingYear, 12, 31, 23, 59, 00), "Årets resultat " + closingYear);
+            // TODO: Localize string
+            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, null);
+            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents, null);
 
             // Ledgers are now at zero-sum for the year's result accounts and from the start up until end-of-closing-year for the balance accounts.
 
@@ -128,7 +128,7 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
         }
         else
         {
-            Console.WriteLine("NOT creating transaction.");
+            Console.WriteLine ("NOT creating transaction.");
         }
     }
 }

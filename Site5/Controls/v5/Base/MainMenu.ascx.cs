@@ -12,44 +12,44 @@ namespace Swarmops.Controls.Base
     {
         public MainMenuItem[] MainMenuData { get; set; }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             // TODO: Put a small cache on this
 
             // TODO: Put plugins on it
 
-            XmlSerializer serializer = new XmlSerializer(typeof (MainMenuItem[]));
+            XmlSerializer serializer = new XmlSerializer (typeof (MainMenuItem[]));
 
-            using (TextReader reader = new StreamReader(Server.MapPath("~/MainMenu-v5.xml")))
+            using (TextReader reader = new StreamReader (Server.MapPath ("~/MainMenu-v5.xml")))
             {
-                MainMenuData = (MainMenuItem[]) serializer.Deserialize(reader);
+                MainMenuData = (MainMenuItem[]) serializer.Deserialize (reader);
             }
         }
 
-        protected override void Render(HtmlTextWriter output)
+        protected override void Render (HtmlTextWriter output)
         {
-            output.Write("<ul id='MainMenuContainer' class='sf-menu'>");
+            output.Write ("<ul id='MainMenuContainer' class='sf-menu'>");
             foreach (MainMenuItem menuItem in MainMenuData)
             {
-                WriteMenuItem(menuItem, output);
+                WriteMenuItem (menuItem, output);
             }
-            output.Write("</ul>");
+            output.Write ("</ul>");
         }
 
-        private void WriteMenuItem(MainMenuItem menuItem, HtmlTextWriter output)
+        private void WriteMenuItem (MainMenuItem menuItem, HtmlTextWriter output)
         {
-            output.Write("<li class=\"{0}\">", menuItem.Type);
+            output.Write ("<li class=\"{0}\">", menuItem.Type);
             string localizedText = "RESOURCE NOT FOUND";
 
-            if (!String.IsNullOrEmpty(menuItem.ResourceKey))
+            if (!String.IsNullOrEmpty (menuItem.ResourceKey))
             {
-                object resourceObject = GetGlobalResourceObject("Menu5", "Menu5_" + menuItem.ResourceKey);
+                object resourceObject = GetGlobalResourceObject ("Menu5", "Menu5_" + menuItem.ResourceKey);
                 if (resourceObject != null)
                 {
                     localizedText = resourceObject.ToString();
                 }
             }
-            localizedText = Server.HtmlEncode(localizedText); // muy importante
+            localizedText = Server.HtmlEncode (localizedText); // muy importante
 
             if (menuItem.Type == MenuItemType.BuildNumber)
             {
@@ -58,7 +58,7 @@ namespace Swarmops.Controls.Base
 
             string iconSize = "40px";
 
-            if (File.Exists(Server.MapPath("~/Images/PageIcons/" + menuItem.ImageUrl + "-20px.png")))
+            if (File.Exists (Server.MapPath ("~/Images/PageIcons/" + menuItem.ImageUrl + "-20px.png")))
             {
                 iconSize = "20px";
             }
@@ -70,26 +70,26 @@ namespace Swarmops.Controls.Base
                     // MEH forcing build
 
                 case MenuItemType.Link:
-                    output.Write(
+                    output.Write (
                         "<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-{3}.png\"  height=\"20\" width=\"20\"  />{2}</a>",
                         menuItem.ImageUrl, menuItem.NavigateUrl, localizedText, iconSize);
                     break;
                 case MenuItemType.Disabled:
                 case MenuItemType.BuildNumber:
                     string imageUrl = "/Images/PageIcons/" + menuItem.ImageUrl + "-" + iconSize + ".png";
-                    if (String.IsNullOrEmpty(menuItem.ImageUrl))
+                    if (String.IsNullOrEmpty (menuItem.ImageUrl))
                     {
                         imageUrl = "/Images/PageIcons/transparency-16px.png";
-                            // doesn't matter in slightest if browser resizes to 20px
+                        // doesn't matter in slightest if browser resizes to 20px
                     }
-                    output.Write("<a href='#disabled'><img src=\"{0}\" height=\"20\" width=\"20\" />{1}</a>", imageUrl,
+                    output.Write ("<a href='#disabled'><img src=\"{0}\" height=\"20\" width=\"20\" />{1}</a>", imageUrl,
                         localizedText);
                     break;
                 case MenuItemType.Submenu:
-                    output.Write("<a href='#'>" + localizedText + "</a>");
+                    output.Write ("<a href='#'>" + localizedText + "</a>");
                     break;
                 case MenuItemType.Separator:
-                    output.Write("&nbsp;<hr/>");
+                    output.Write ("&nbsp;<hr/>");
                     break;
                 default:
                     throw new NotImplementedException();
@@ -97,15 +97,15 @@ namespace Swarmops.Controls.Base
 
             if (menuItem.Children.Length > 0)
             {
-                output.Write("<ul>");
+                output.Write ("<ul>");
                 foreach (MainMenuItem child in menuItem.Children)
                 {
-                    WriteMenuItem(child, output);
+                    WriteMenuItem (child, output);
                 }
-                output.Write("</ul>");
+                output.Write ("</ul>");
             }
 
-            output.Write("</li>");
+            output.Write ("</li>");
         }
     }
 }

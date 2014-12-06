@@ -6,7 +6,7 @@ namespace Swarmops.Frontend.Pages.Security
 {
     public partial class ChangeOrganizationsAdvanced : PageV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
@@ -27,15 +27,15 @@ namespace Swarmops.Frontend.Pages.Security
             this.LabelNewOrganization.Text = Resources.Pages.Security.ChangeOrganizations_NewOrganization;
         }
 
-        protected void ButtonSwitch_Click(object sender, EventArgs e)
+        protected void ButtonSwitch_Click (object sender, EventArgs e)
         {
-            int newOrganizationId = Int32.Parse(Request.Form["DropOrganizations"]);
+            int newOrganizationId = Int32.Parse (Request.Form["DropOrganizations"]);
 
             // TODO: Re-authorize user's ability to log onto this org
 
-            FormsAuthentication.RedirectFromLoginPage(
-                CurrentUser.Identity.ToString(CultureInfo.InvariantCulture) + "," +
-                newOrganizationId.ToString(CultureInfo.InvariantCulture), true);
+            FormsAuthentication.RedirectFromLoginPage (
+                CurrentUser.Identity.ToString (CultureInfo.InvariantCulture) + "," +
+                newOrganizationId.ToString (CultureInfo.InvariantCulture), true);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Swarmops.Frontend.Controls.v5.Base
             get { return this.DropControl.ClientID; }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
         }
     }

@@ -2,8 +2,9 @@
 using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Resources;
+using Resources.Pages;
 using Swarmops.Basic.Enums;
-
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -13,7 +14,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 {
     private int _year;
 
-    protected void Page_Init(object sender, EventArgs e)
+    protected void Page_Init (object sender, EventArgs e)
     {
         if (Page.IsPostBack)
         {
@@ -27,14 +28,14 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         }
     }
 
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load (object sender, EventArgs e)
     {
-        PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+        PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
         this.HiddenInitOrganizationId.Value = CurrentOrganization.Identity.ToString();
 
         PageIcon = "iconshock-moneybag";
-        PageTitle = Resources.Pages.Ledgers.SetRootBudgets_PageTitle;
+        PageTitle = Ledgers.SetRootBudgets_PageTitle;
 
         if (!Page.IsPostBack)
         {
@@ -45,9 +46,9 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
             do
             {
-                this.DropYears.Items.Add(new ListItem(currentYear.ToString()));
+                this.DropYears.Items.Add (new ListItem (currentYear.ToString()));
                 currentYear--;
-            } while (accounts[0].GetTree().GetBudgetSumCents(currentYear) > 0);
+            } while (accounts[0].GetTree().GetBudgetSumCents (currentYear) > 0);
 
             this.DropYears.SelectedIndex = 0;
 
@@ -60,25 +61,25 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             this.RepeaterAccountActuals.DataSource = accounts;
             this.RepeaterAccountActuals.DataBind();
 
-            UpdateYearlyResult(accounts);
+            UpdateYearlyResult (accounts);
 
-            this.LabelRootBudgetHeader.Text = String.Format(Resources.Pages.Ledgers.SetRootBudgets_PageHeader,
+            this.LabelRootBudgetHeader.Text = String.Format (Ledgers.SetRootBudgets_PageHeader,
                 CurrentOrganization.Name);
-            this.LabelAccountHeader.Text = Resources.Global.Financial_BookkeepingAccountShort;
-            this.LabelYearlyResultLabel.Text = Resources.Global.Financial_YearlyResult;
-            this.ButtonSetBudgets.Text = Resources.Pages.Ledgers.SetRootBudgets_SetNewBudgets;
-            this.LabelBudgetOwnerHeader.Text = Resources.Pages.Ledgers.SetRootBudgets_BudgetOwnerHeader;
+            this.LabelAccountHeader.Text = Global.Financial_BookkeepingAccountShort;
+            this.LabelYearlyResultLabel.Text = Global.Financial_YearlyResult;
+            this.ButtonSetBudgets.Text = Ledgers.SetRootBudgets_SetNewBudgets;
+            this.LabelBudgetOwnerHeader.Text = Ledgers.SetRootBudgets_BudgetOwnerHeader;
 
-            this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
-            this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
-            this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
-            this.LabelDashboardInfo.Text = Resources.Pages.Ledgers.SetRootBudgets_Info;
+            this.LabelSidebarActions.Text = Global.Sidebar_Actions;
+            this.LabelSidebarInfo.Text = Global.Sidebar_Information;
+            this.LabelSidebarTodo.Text = Global.Sidebar_Todo;
+            this.LabelDashboardInfo.Text = Ledgers.SetRootBudgets_Info;
 
             LocalizeActualsHeader();
         }
         else
         {
-            this._year = Int32.Parse(this.DropYears.SelectedItem.Text);
+            this._year = Int32.Parse (this.DropYears.SelectedItem.Text);
         }
 
         this.DropYears.Style[HtmlTextWriterStyle.FontWeight] = "bold";
@@ -93,39 +94,39 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
     {
         if (CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >= this._year)
         {
-            this.LabelActualsHeader.Text = Resources.Global.Financial_Actuals;
+            this.LabelActualsHeader.Text = Global.Financial_Actuals;
         }
         else if (this._year == DateTime.Today.Year)
         {
-            this.LabelActualsHeader.Text = Resources.Global.Financial_ActualsToDate;
+            this.LabelActualsHeader.Text = Global.Financial_ActualsToDate;
         }
         else
         {
-            this.LabelActualsHeader.Text = Resources.Global.Financial_ActualsPreliminary;
+            this.LabelActualsHeader.Text = Global.Financial_ActualsPreliminary;
         }
     }
 
-    protected void UpdateYearlyResult(FinancialAccounts rootAccounts)
+    protected void UpdateYearlyResult (FinancialAccounts rootAccounts)
     {
         Int64 budgetSum = 0;
         Int64 actualSum = 0;
 
         foreach (FinancialAccount account in rootAccounts)
         {
-            budgetSum += account.GetTree().GetBudgetSumCents(this._year)/100;
+            budgetSum += account.GetTree().GetBudgetSumCents (this._year)/100;
             actualSum -=
-                (account.GetTree().GetDeltaCents(new DateTime(this._year, 1, 1), new DateTime(this._year + 1, 1, 1)) +
+                (account.GetTree().GetDeltaCents (new DateTime (this._year, 1, 1), new DateTime (this._year + 1, 1, 1)) +
                  50)/100; // negative: results accounts are sign reversed
         }
 
-        this.TextYearlyResult.Text = String.Format("{0:N0}", budgetSum);
+        this.TextYearlyResult.Text = String.Format ("{0:N0}", budgetSum);
         this.TextYearlyResult.Style[HtmlTextWriterStyle.Width] = "80px";
         this.TextYearlyResult.Style[HtmlTextWriterStyle.TextAlign] = "right";
 
-        this.LabelYearlyResultActuals.Text = String.Format("{0:N0}", actualSum);
+        this.LabelYearlyResultActuals.Text = String.Format ("{0:N0}", actualSum);
     }
 
-    protected void RepeaterAccountNames_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    protected void RepeaterAccountNames_ItemDataBound (object sender, RepeaterItemEventArgs e)
     {
         RepeaterItem item = e.Item;
 
@@ -136,8 +137,8 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         FinancialAccount account = (FinancialAccount) item.DataItem;
 
-        Label labelAccountName = (Label) e.Item.FindControl("LabelAccountName");
-        Label labelAccountType = (Label) e.Item.FindControl("LabelAccountType");
+        Label labelAccountName = (Label) e.Item.FindControl ("LabelAccountName");
+        Label labelAccountType = (Label) e.Item.FindControl ("LabelAccountType");
 
         labelAccountName.Text = account.Name;
 
@@ -146,7 +147,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         labelAccountType.Text = account.AccountType.ToString();
     }
 
-    protected void RepeaterAccountBudgets_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    protected void RepeaterAccountBudgets_ItemDataBound (object sender, RepeaterItemEventArgs e)
     {
         RepeaterItem item = e.Item;
 
@@ -157,20 +158,20 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         FinancialAccount account = (FinancialAccount) item.DataItem;
 
-        TextBox textBudget = (TextBox) e.Item.FindControl("TextBudget");
+        TextBox textBudget = (TextBox) e.Item.FindControl ("TextBudget");
 
         if (this._year > 0) // called from after viewstate parsed
         {
-            textBudget.Text = String.Format("{0:N0}", account.GetTree().GetBudgetSumCents(this._year)/100);
+            textBudget.Text = String.Format ("{0:N0}", account.GetTree().GetBudgetSumCents (this._year)/100);
             textBudget.Style[HtmlTextWriterStyle.TextAlign] = "right";
             textBudget.Style[HtmlTextWriterStyle.Width] = "80px";
         }
 
-        Label labelOwnerName = (Label) e.Item.FindControl("LabelBudgetOwner");
+        Label labelOwnerName = (Label) e.Item.FindControl ("LabelBudgetOwner");
         Person accountOwner = account.Owner;
         if (accountOwner == null)
         {
-            labelOwnerName.Text = Resources.Global.Global_NoOwner;
+            labelOwnerName.Text = Global.Global_NoOwner;
         }
         else
         {
@@ -189,7 +190,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             personDetail.Cookie = account;*/
         }
 
-        HiddenField hiddenAccountId = (HiddenField) e.Item.FindControl("HiddenAccountId");
+        HiddenField hiddenAccountId = (HiddenField) e.Item.FindControl ("HiddenAccountId");
         hiddenAccountId.Value = account.Identity.ToString();
 
         // this.TooltipManager.TargetControls.Add(labelBudgetOwner.ClientID, line.AccountIdentity.ToString(), true);
@@ -213,11 +214,11 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         // RebindTooltips();
     }*/
 
-    protected void DropYears_SelectedIndexChanged(object sender, EventArgs e)
+    protected void DropYears_SelectedIndexChanged (object sender, EventArgs e)
     {
         FinancialAccounts accounts = GetRootLevelResultAccounts();
 
-        UpdateYearlyResult(accounts);
+        UpdateYearlyResult (accounts);
 
         this.RepeaterAccountBudgets.DataSource = accounts;
         this.RepeaterAccountBudgets.DataBind();
@@ -239,11 +240,11 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
             // If we're being called from Page_Init to create controls just to catch events, then this.CurrentOrganization won't be set.
             // We need to create it temporarily from a hidden field:
 
-            org = Organization.FromIdentity(Int32.Parse(Request["ctl00$PlaceHolderMain$HiddenInitOrganizationId"]));
+            org = Organization.FromIdentity (Int32.Parse (Request["ctl00$PlaceHolderMain$HiddenInitOrganizationId"]));
         }
 
         FinancialAccount yearlyResult = org.FinancialAccounts.CostsYearlyResult;
-        FinancialAccounts allAccounts = FinancialAccounts.ForOrganization(org, FinancialAccountType.Result);
+        FinancialAccounts allAccounts = FinancialAccounts.ForOrganization (org, FinancialAccountType.Result);
 
         // Select root accounts
 
@@ -253,7 +254,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         {
             if (account.ParentFinancialAccountId == 0 && account.Identity != yearlyResult.Identity)
             {
-                accounts.Add(account);
+                accounts.Add (account);
             }
         }
 
@@ -277,7 +278,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
         }
     }*/
 
-    protected void RepeaterAccountActuals_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    protected void RepeaterAccountActuals_ItemDataBound (object sender, RepeaterItemEventArgs e)
     {
         RepeaterItem item = e.Item;
 
@@ -288,37 +289,37 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         FinancialAccount account = (FinancialAccount) item.DataItem;
 
-        Label labelActuals = (Label) e.Item.FindControl("LabelAccountActuals");
+        Label labelActuals = (Label) e.Item.FindControl ("LabelAccountActuals");
 
         Int64 actuals =
-            (account.GetTree().GetDeltaCents(new DateTime(this._year, 1, 1), new DateTime(this._year + 1, 1, 1)) + 50)/
+            (account.GetTree().GetDeltaCents (new DateTime (this._year, 1, 1), new DateTime (this._year + 1, 1, 1)) + 50)/
             100;
 
-        labelActuals.Text = String.Format("{0:N0}", -actuals); // negative as results accounts are sign reversed
+        labelActuals.Text = String.Format ("{0:N0}", -actuals); // negative as results accounts are sign reversed
     }
 
 
-    protected void ButtonSetBudgets_Click(object sender, EventArgs e)
+    protected void ButtonSetBudgets_Click (object sender, EventArgs e)
     {
         foreach (RepeaterItem repeaterItem in this.RepeaterAccountBudgets.Items)
         {
-            HiddenField hiddenAccountId = (HiddenField) repeaterItem.FindControl("HiddenAccountId");
-            TextBox textBudget = (TextBox) repeaterItem.FindControl("TextBudget");
-            FinancialAccount account = FinancialAccount.FromIdentity(Int32.Parse(hiddenAccountId.Value));
+            HiddenField hiddenAccountId = (HiddenField) repeaterItem.FindControl ("HiddenAccountId");
+            TextBox textBudget = (TextBox) repeaterItem.FindControl ("TextBudget");
+            FinancialAccount account = FinancialAccount.FromIdentity (Int32.Parse (hiddenAccountId.Value));
 
             // TODO: Possible race condition here, fix with HiddenField
 
-            Int64 newBudgetAmount = Int64.Parse(textBudget.Text.Replace(",", "").Replace(" ", ""),
+            Int64 newBudgetAmount = Int64.Parse (textBudget.Text.Replace (",", "").Replace (" ", ""),
                 Thread.CurrentThread.CurrentCulture); // TODO: May throw -- catch and send error message
 
-            Int64 currentBudgetAmount = account.GetTree().GetBudgetSumCents(this._year)/100;
+            Int64 currentBudgetAmount = account.GetTree().GetBudgetSumCents (this._year)/100;
 
             // Set the new amount to the difference between the single budget of this account and the intended amount
 
             if (newBudgetAmount != currentBudgetAmount)
             {
-                account.SetBudgetCents(this._year,
-                    account.GetBudgetCents(this._year) + (newBudgetAmount - currentBudgetAmount)*100);
+                account.SetBudgetCents (this._year,
+                    account.GetBudgetCents (this._year) + (newBudgetAmount - currentBudgetAmount)*100);
             }
         }
 
@@ -326,7 +327,7 @@ public partial class Pages_v5_Ledgers_SetRootBudgets : PageV5Base
 
         FinancialAccounts accounts = GetRootLevelResultAccounts();
 
-        UpdateYearlyResult(accounts);
+        UpdateYearlyResult (accounts);
 
         this.RepeaterAccountBudgets.DataSource = accounts;
         this.RepeaterAccountBudgets.DataBind();

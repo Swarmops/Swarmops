@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
+using Resources;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Automation
 {
     public partial class Json_GeographiesTree : DataV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             GetAuthenticationDataAndCulture();
 
@@ -19,14 +20,14 @@ namespace Swarmops.Frontend.Automation
             // What's our root GeographyId? (probably Geography.RootIdentity...)
 
             string rootIdString = Request.QueryString["RootGeographyId"];
-            if (!string.IsNullOrEmpty(rootIdString))
+            if (!string.IsNullOrEmpty (rootIdString))
             {
-                rootGeographyId = Int32.Parse(rootIdString); // will throw if invalid Int32, but who cares
+                rootGeographyId = Int32.Parse (rootIdString); // will throw if invalid Int32, but who cares
             }
 
             // Is this stuff in cache already?
 
-            string cacheKey = "Geographies-Json-" + rootGeographyId.ToString(CultureInfo.InvariantCulture) + "-" +
+            string cacheKey = "Geographies-Json-" + rootGeographyId.ToString (CultureInfo.InvariantCulture) + "-" +
                               Thread.CurrentThread.CurrentCulture.Name;
 
             string accountsJson =
@@ -34,14 +35,14 @@ namespace Swarmops.Frontend.Automation
 
             if (accountsJson != null)
             {
-                Response.Output.WriteLine(accountsJson);
+                Response.Output.WriteLine (accountsJson);
                 Response.End();
                 return;
             }
 
             // Not in cache. Construct.
 
-            Geography rootGeography = Geography.FromIdentity(rootGeographyId);
+            Geography rootGeography = Geography.FromIdentity (rootGeographyId);
 
             // Get geography tree
 
@@ -53,52 +54,52 @@ namespace Swarmops.Frontend.Automation
 
             foreach (Geography geography in geographies)
             {
-                if (!treeMap.ContainsKey(geography.ParentIdentity))
+                if (!treeMap.ContainsKey (geography.ParentIdentity))
                 {
                     treeMap[geography.ParentIdentity] = new List<Geography>();
                 }
 
-                treeMap[geography.ParentIdentity].Add(geography);
+                treeMap[geography.ParentIdentity].Add (geography);
             }
 
             int renderRootNodeId = rootGeography.ParentGeographyId;
-                // This works as rootGeography will be the only present child in the collection; other children won't be there
+            // This works as rootGeography will be the only present child in the collection; other children won't be there
 
-            accountsJson = RecurseTreeMap(treeMap, renderRootNodeId, true);
+            accountsJson = RecurseTreeMap (treeMap, renderRootNodeId, true);
 
-            Cache.Insert(cacheKey, accountsJson, null, DateTime.Now.AddMinutes(5), TimeSpan.Zero);
+            Cache.Insert (cacheKey, accountsJson, null, DateTime.Now.AddMinutes (5), TimeSpan.Zero);
             // cache lasts for five minutes, no sliding expiration
-            Response.Output.WriteLine(accountsJson);
+            Response.Output.WriteLine (accountsJson);
 
             Response.End();
         }
 
-        private string RecurseTreeMap(Dictionary<int, List<Geography>> treeMap, int node, bool expanded)
+        private string RecurseTreeMap (Dictionary<int, List<Geography>> treeMap, int node, bool expanded)
         {
             List<string> elements = new List<string>();
 
             foreach (Geography geography in treeMap[node])
             {
-                string element = string.Format("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
-                    JsonSanitize(TestLocalization(geography.Name)));
+                string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
+                    JsonSanitize (TestLocalization (geography.Name)));
 
-                if (treeMap.ContainsKey(geography.Identity))
+                if (treeMap.ContainsKey (geography.Identity))
                 {
                     element += ",\"state\":\"" + (expanded ? "open" : "closed") + "\",\"children\":" +
-                               RecurseTreeMap(treeMap, geography.Identity, false);
+                               RecurseTreeMap (treeMap, geography.Identity, false);
                 }
 
-                elements.Add("{" + element + "}");
+                elements.Add ("{" + element + "}");
             }
 
-            return "[" + String.Join(",", elements.ToArray()) + "]";
+            return "[" + String.Join (",", elements.ToArray()) + "]";
         }
 
-        private string TestLocalization(string name)
+        private string TestLocalization (string name)
         {
-            if (name.StartsWith("[LOC]"))
+            if (name.StartsWith ("[LOC]"))
             {
-                return Resources.GeographyNames.ResourceManager.GetString(name.Substring(5));
+                return GeographyNames.ResourceManager.GetString (name.Substring (5));
             }
             return name;
         }

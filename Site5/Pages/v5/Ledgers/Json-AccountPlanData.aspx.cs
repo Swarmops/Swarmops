@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Resources;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -19,13 +20,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private Dictionary<int, Int64> _treeBudgetLookup;
         private int _year = 2012;
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             this._authenticationData = GetAuthenticationDataAndCulture();
             this._year = DateTime.Today.Year;
 
             if (
-                !this._authenticationData.CurrentUser.HasAccess(new Access(
+                !this._authenticationData.CurrentUser.HasAccess (new Access (
                     this._authenticationData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
             {
                 throw new UnauthorizedAccessException();
@@ -37,39 +38,39 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             string response = string.Empty;
 
-            PopulateLookups(FinancialAccounts.ForOrganization(this._authenticationData.CurrentOrganization));
-            this._hashedAccounts = FinancialAccounts.GetHashedAccounts(this._authenticationData.CurrentOrganization);
+            PopulateLookups (FinancialAccounts.ForOrganization (this._authenticationData.CurrentOrganization));
+            this._hashedAccounts = FinancialAccounts.GetHashedAccounts (this._authenticationData.CurrentOrganization);
 
-            response += GetAccountGroup(FinancialAccountType.Asset, Resources.Pages.Ledgers.BalanceSheet_Assets) + ",";
-            response += GetAccountGroup(FinancialAccountType.Debt, Resources.Pages.Ledgers.BalanceSheet_Debt) + ",";
+            response += GetAccountGroup (FinancialAccountType.Asset, Resources.Pages.Ledgers.BalanceSheet_Assets) + ",";
+            response += GetAccountGroup (FinancialAccountType.Debt, Resources.Pages.Ledgers.BalanceSheet_Debt) + ",";
             response +=
-                GetAccountGroup(FinancialAccountType.Income, Resources.Pages.Ledgers.ProfitLossStatement_Income) + ",";
-            response += GetAccountGroup(FinancialAccountType.Cost, Resources.Pages.Ledgers.ProfitLossStatement_Costs);
+                GetAccountGroup (FinancialAccountType.Income, Resources.Pages.Ledgers.ProfitLossStatement_Income) + ",";
+            response += GetAccountGroup (FinancialAccountType.Cost, Resources.Pages.Ledgers.ProfitLossStatement_Costs);
 
-            Response.Output.WriteLine("[" + response + "]");
+            Response.Output.WriteLine ("[" + response + "]");
             Response.End();
         }
 
-        private string GetAccountGroup(FinancialAccountType type, string localizedGroupName)
+        private string GetAccountGroup (FinancialAccountType type, string localizedGroupName)
         {
-            string childrenString = GetAccountsRecurse(type, 0);
+            string childrenString = GetAccountsRecurse (type, 0);
 
             string addString =
-                String.Format(
+                String.Format (
                     "<img class=\\\"IconAdd\\\" accountType=\\\"{0}\\\" src=\\\"/Images/Icons/iconshock-add-16px.png\\\" />",
                     type);
 
             return "{\"id\":\"" + -((int) type) + "\",\"accountName\":\"<span class=\\\"SpanGroupName\\\">" +
-                   JsonSanitize(localizedGroupName) + "</span> (<a class=\\\"LinkAdd\\\" accountType=\\\"" + type +
-                   "\\\" href=\\\"#\\\">" + JsonSanitize(Resources.Pages.Ledgers.AccountPlan_AddAccount) +
+                   JsonSanitize (localizedGroupName) + "</span> (<a class=\\\"LinkAdd\\\" accountType=\\\"" + type +
+                   "\\\" href=\\\"#\\\">" + JsonSanitize (Resources.Pages.Ledgers.AccountPlan_AddAccount) +
                    "</a>)\",\"state\":\"open\",\"children\":[" + childrenString + "],\"action\":\"" + addString + "\"}";
         }
 
-        private string GetAccountsRecurse(FinancialAccountType accountType, int rootNodeId)
+        private string GetAccountsRecurse (FinancialAccountType accountType, int rootNodeId)
         {
             List<string> childStrings = new List<string>();
 
-            if (!this._hashedAccounts.ContainsKey(rootNodeId))
+            if (!this._hashedAccounts.ContainsKey (rootNodeId))
             {
                 return string.Empty;
             }
@@ -98,8 +99,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         ownerString =
                             "<span style=\\\"padding-left:20px;background-repeat:no-repeat;background-image:url('" +
-                            account.Owner.GetSecureAvatarLink(16) + "')\\\">" +
-                            JsonSanitize(Server.HtmlEncode(account.Owner.Canonical)) + "</span>";
+                            account.Owner.GetSecureAvatarLink (16) + "')\\\">" +
+                            JsonSanitize (Server.HtmlEncode (account.Owner.Canonical)) + "</span>";
                     }
                     else
                     {
@@ -107,51 +108,51 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         ownerString =
                             "<span style=\\\"padding-left:20px;background-repeat:no-repeat;background-position:center left;background-image:url('/Images/Icons/iconshock-warning-16x12px.png')\\\">" +
-                            JsonSanitize(Server.HtmlEncode(Resources.Global.Global_NoOwner)) + "</span>";
+                            JsonSanitize (Server.HtmlEncode (Global.Global_NoOwner)) + "</span>";
                     }
                 }
 
-                string grandChildren = GetAccountsRecurse(accountType, account.Identity);
-                if (!string.IsNullOrEmpty(grandChildren))
+                string grandChildren = GetAccountsRecurse (accountType, account.Identity);
+                if (!string.IsNullOrEmpty (grandChildren))
                 {
                     grandChildren = ",\"state\":\"closed\",\"children\":[" + grandChildren + "]";
                 }
 
                 string editString =
-                    String.Format(
+                    String.Format (
                         "<img class=\\\"IconEdit\\\" accountId=\\\"{0}{1}\\\" src=\\\"/Images/Icons/iconshock-wrench-16px.png\\\" />",
-                        accountType.ToString().Substring(0, 1), account.Identity);
+                        accountType.ToString().Substring (0, 1), account.Identity);
 
 
-                childStrings.Add('{' +
-                                 String.Format(
-                                     "\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\",\"action\":\"{5}\"",
-                                     account.Identity,
-                                     Server.HtmlEncode(JsonSanitize(account.Name)),
-                                     ownerString,
-                                     this._hashedAccounts[account.Identity].Count > 1
-                                         ? JsonDualString(account.Identity, this._treeBalanceLookup[account.Identity],
-                                             this._singleBalanceLookup[account.Identity])
-                                         : (this._singleBalanceLookup[account.Identity]/100.0).ToString("N0",
-                                             CultureInfo.CurrentCulture),
-                                     account.AccountType == FinancialAccountType.Income ||
-                                     account.AccountType == FinancialAccountType.Cost
-                                         ? this._hashedAccounts[account.Identity].Count > 1
-                                             ? (JsonDualString(account.Identity,
-                                                 this._treeBudgetLookup[account.Identity],
-                                                 this._singleBudgetLookup[account.Identity]))
-                                             : (this._singleBudgetLookup[account.Identity]/100.0).ToString("N0",
-                                                 CultureInfo.CurrentCulture)
-                                         : string.Empty,
-                                     editString
-                                     ) + grandChildren + '}');
+                childStrings.Add ('{' +
+                                  String.Format (
+                                      "\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\",\"action\":\"{5}\"",
+                                      account.Identity,
+                                      Server.HtmlEncode (JsonSanitize (account.Name)),
+                                      ownerString,
+                                      this._hashedAccounts[account.Identity].Count > 1
+                                          ? JsonDualString (account.Identity, this._treeBalanceLookup[account.Identity],
+                                              this._singleBalanceLookup[account.Identity])
+                                          : (this._singleBalanceLookup[account.Identity]/100.0).ToString ("N0",
+                                              CultureInfo.CurrentCulture),
+                                      account.AccountType == FinancialAccountType.Income ||
+                                      account.AccountType == FinancialAccountType.Cost
+                                          ? this._hashedAccounts[account.Identity].Count > 1
+                                              ? (JsonDualString (account.Identity,
+                                                  this._treeBudgetLookup[account.Identity],
+                                                  this._singleBudgetLookup[account.Identity]))
+                                              : (this._singleBudgetLookup[account.Identity]/100.0).ToString ("N0",
+                                                  CultureInfo.CurrentCulture)
+                                          : string.Empty,
+                                      editString
+                                      ) + grandChildren + '}');
             }
 
-            return String.Join(",", childStrings.ToArray());
+            return String.Join (",", childStrings.ToArray());
         }
 
 
-        private void PopulateLookups(FinancialAccounts accounts)
+        private void PopulateLookups (FinancialAccounts accounts)
         {
             this._singleBalanceLookup = new Dictionary<int, Int64>();
             this._treeBalanceLookup = new Dictionary<int, Int64>();
@@ -173,21 +174,22 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 if (account.AccountType == FinancialAccountType.Cost ||
                     account.AccountType == FinancialAccountType.Income)
                 {
-                    this._singleBalanceLookup[account.Identity] = -account.GetDeltaCents(new DateTime(this._year, 1, 1),
-                        new DateTime(this._year + 1, 1, 1));
-                    this._singleBudgetLookup[account.Identity] = account.GetBudgetCents(this._year);
+                    this._singleBalanceLookup[account.Identity] =
+                        -account.GetDeltaCents (new DateTime (this._year, 1, 1),
+                            new DateTime (this._year + 1, 1, 1));
+                    this._singleBudgetLookup[account.Identity] = account.GetBudgetCents (this._year);
                 }
                 else if (account.AccountType == FinancialAccountType.Asset ||
                          account.AccountType == FinancialAccountType.Debt)
                 {
-                    this._singleBalanceLookup[account.Identity] = account.GetDeltaCents(new DateTime(1900, 1, 1),
-                        new DateTime(this._year + 1, 1, 1));
+                    this._singleBalanceLookup[account.Identity] = account.GetDeltaCents (new DateTime (1900, 1, 1),
+                        new DateTime (this._year + 1, 1, 1));
                     this._singleBudgetLookup[account.Identity] = 0; // balance accounts don't have budgets
                 }
                 else
                 {
-                    throw new InvalidOperationException("Account with invalid type encountered - " +
-                                                        account.AccountType);
+                    throw new InvalidOperationException ("Account with invalid type encountered - " +
+                                                         account.AccountType);
                 }
 
                 // copy to treeLookups
@@ -198,14 +200,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             // 3) Add all children's values to parents
 
-            AddChildrenValuesToParents(this._treeBalanceLookup, accounts);
-            AddChildrenValuesToParents(this._treeBudgetLookup, accounts);
+            AddChildrenValuesToParents (this._treeBalanceLookup, accounts);
+            AddChildrenValuesToParents (this._treeBudgetLookup, accounts);
 
             // Done.
         }
 
 
-        private void AddChildrenValuesToParents(Dictionary<int, Int64> lookup, FinancialAccounts accounts)
+        private void AddChildrenValuesToParents (Dictionary<int, Int64> lookup, FinancialAccounts accounts)
         {
             // Iterate backwards and add any value to its parent's value, as they are sorted in tree order.
 
@@ -222,15 +224,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
 
-        private string JsonDualString(int accountId, Int64 treeValue, Int64 singleValue)
+        private string JsonDualString (int accountId, Int64 treeValue, Int64 singleValue)
         {
             if (treeValue != 0 && singleValue == 0)
             {
-                return string.Format(CultureInfo.CurrentCulture,
+                return string.Format (CultureInfo.CurrentCulture,
                     "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>",
                     accountId, treeValue/100.00);
             }
-            return string.Format(CultureInfo.CurrentCulture,
+            return string.Format (CultureInfo.CurrentCulture,
                 "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>",
                 accountId, treeValue/100.0, singleValue/100.0);
         }

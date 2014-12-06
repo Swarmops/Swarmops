@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Globalization;
 using System.Web;
+using System.Web.Script.Services;
 using System.Web.Services;
 using Swarmops.Logic.Support;
 
 /// <summary>
 ///     Summary description for FieldValidation
 /// </summary>
-[WebService(Namespace = "http://tempuri.org/")]
-[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+[WebService (Namespace = "http://tempuri.org/")]
+[WebServiceBinding (ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-[System.Web.Script.Services.ScriptService]
-public class FieldValidation : System.Web.Services.WebService
+[ScriptService]
+public class FieldValidation : WebService
 {
     private CultureInfo GetUserCulture()
     {
@@ -45,7 +46,7 @@ public class FieldValidation : System.Web.Services.WebService
 
         try
         {
-            culture = CultureInfo.CreateSpecificCulture(preferredCulture);
+            culture = CultureInfo.CreateSpecificCulture (preferredCulture);
         }
         catch (Exception)
         {
@@ -57,7 +58,7 @@ public class FieldValidation : System.Web.Services.WebService
 
 
     [WebMethod]
-    public bool IsAmountValid(string amount)
+    public bool IsAmountValid (string amount)
     {
         CultureInfo culture = GetUserCulture();
 
@@ -65,7 +66,7 @@ public class FieldValidation : System.Web.Services.WebService
 
         try
         {
-            Double.Parse(HttpUtility.UrlDecode(amount), NumberStyles.Number, culture);
+            Double.Parse (HttpUtility.UrlDecode (amount), NumberStyles.Number, culture);
             return true;
         }
         catch (Exception)
@@ -76,9 +77,9 @@ public class FieldValidation : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool AreDocumentsUploaded(string guidString)
+    public bool AreDocumentsUploaded (string guidString)
     {
-        Documents documents = Documents.RecentFromDescription(guidString);
+        Documents documents = Documents.RecentFromDescription (guidString);
 
         if (documents.Count == 0)
         {

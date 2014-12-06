@@ -5,16 +5,17 @@ using System.Web.Services;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.Financial
 {
     public partial class PayOutMoney : PageV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             if (!CurrentOrganization.IsEconomyEnabled)
             {
-                Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
+                Response.Redirect ("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
@@ -43,51 +44,51 @@ namespace Swarmops.Frontend.Pages.Financial
         }
 
         [WebMethod]
-        public static ConfirmPayoutResult ConfirmPayout(string protoIdentity)
+        public static ConfirmPayoutResult ConfirmPayout (string protoIdentity)
         {
-            protoIdentity = HttpUtility.UrlDecode(protoIdentity);
+            protoIdentity = HttpUtility.UrlDecode (protoIdentity);
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials,
+                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Financials,
                     AccessType.Write)))
             {
-                throw new SecurityAccessDeniedException("Insufficient privileges for operation");
+                throw new SecurityAccessDeniedException ("Insufficient privileges for operation");
             }
 
             ConfirmPayoutResult result = new ConfirmPayoutResult();
 
-            Payout payout = Payout.CreateFromProtoIdentity(authData.CurrentUser, protoIdentity);
-            Swarmops.Logic.Support.PWEvents.CreateEvent(EventSource.PirateWeb, EventType.PayoutCreated,
+            Payout payout = Payout.CreateFromProtoIdentity (authData.CurrentUser, protoIdentity);
+            PWEvents.CreateEvent (EventSource.PirateWeb, EventType.PayoutCreated,
                 authData.CurrentUser.Identity, 1, 1, 0, payout.Identity,
                 protoIdentity);
 
             // Create result and return it
 
             result.AssignedId = payout.Identity;
-            result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
+            result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
                 payout.Recipient);
 
-            result.DisplayMessage = HttpUtility.UrlEncode(result.DisplayMessage).Replace("+", "%20");
+            result.DisplayMessage = HttpUtility.UrlEncode (result.DisplayMessage).Replace ("+", "%20");
 
             return result;
         }
 
         [WebMethod]
-        public static UndoPayoutResult UndoPayout(int databaseId)
+        public static UndoPayoutResult UndoPayout (int databaseId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             UndoPayoutResult result = new UndoPayoutResult();
 
-            Payout payout = Payout.FromIdentity(databaseId);
+            Payout payout = Payout.FromIdentity (databaseId);
 
             if (!payout.Open)
             {
                 // this payout has already been settled, or picked up for settling
 
                 result.Success = false;
-                result.DisplayMessage = String.Format(Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
+                result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCannotUndo,
                     databaseId);
 
                 return result;
@@ -96,8 +97,8 @@ namespace Swarmops.Frontend.Pages.Financial
             payout.UndoPayout();
 
             result.DisplayMessage =
-                HttpUtility.UrlEncode(String.Format(Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId))
-                    .Replace("+", "%20");
+                HttpUtility.UrlEncode (String.Format (Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId))
+                    .Replace ("+", "%20");
             result.Success = true;
             return result;
         }

@@ -11,7 +11,7 @@ namespace Swarmops.Controls.Financial
 
         public bool NobodySelected { set; protected get; }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
         }
     }

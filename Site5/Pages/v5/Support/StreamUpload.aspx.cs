@@ -24,12 +24,12 @@ namespace Swarmops.Pages.v5.Support
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             string documentIdString = Request.QueryString["DocId"];
-            int documentId = Int32.Parse(documentIdString);
+            int documentId = Int32.Parse (documentIdString);
 
-            Document document = Document.FromIdentity(documentId);
+            Document document = Document.FromIdentity (documentId);
 
             //Orgid is needed to safely verify permission
             int orgId = 0; // initialize to invalid
@@ -67,7 +67,7 @@ namespace Swarmops.Pages.v5.Support
                     }
 
 
-                    FinancialAccount budget = FinancialAccount.FromIdentity(budgetId);
+                    FinancialAccount budget = FinancialAccount.FromIdentity (budgetId);
 
                     if (budget.OwnerPersonId == CurrentUser.Identity || budget.OwnerPersonId == 0)
                     {
@@ -77,7 +77,9 @@ namespace Swarmops.Pages.v5.Support
 
                     // TODO: Security leak - check CurrentOrganization against Document's org
 
-                    if (CurrentUser.HasAccess(new Access(CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
+                    if (
+                        CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Financials,
+                            AccessType.Write)))
                     {
                         hasPermission = true;
                     }
@@ -146,42 +148,42 @@ namespace Swarmops.Pages.v5.Support
 
             if (!hasPermission)
             {
-                throw new Exception("Access is not allowed");
+                throw new Exception ("Access is not allowed");
             }
 
             string contentType = string.Empty;
 
             string fileNameLower = document.ClientFileName.ToLowerInvariant();
 
-            if (fileNameLower.EndsWith(".pdf"))
+            if (fileNameLower.EndsWith (".pdf"))
             {
                 contentType = MediaTypeNames.Application.Pdf;
             }
-            else if (fileNameLower.EndsWith(".png"))
+            else if (fileNameLower.EndsWith (".png"))
             {
                 contentType = "image/png"; // why isn't this in MediaTypeNames?
             }
-            else if (fileNameLower.EndsWith(".jpg"))
+            else if (fileNameLower.EndsWith (".jpg"))
             {
                 contentType = MediaTypeNames.Image.Jpeg;
             }
 
             string legacyMarker = string.Empty;
 
-            if (!File.Exists(StorageRoot + document.ServerFileName))
+            if (!File.Exists (StorageRoot + document.ServerFileName))
             {
                 legacyMarker = "legacy/"; // for some legacy installations, all older files are placed here
             }
 
             // TODO: If still doesn't exist, perhaps return a friendly error image instead?
 
-            if (!File.Exists(StorageRoot + legacyMarker + document.ServerFileName))
+            if (!File.Exists (StorageRoot + legacyMarker + document.ServerFileName))
             {
-                throw new FileNotFoundException(StorageRoot + legacyMarker + document.ServerFileName);
+                throw new FileNotFoundException (StorageRoot + legacyMarker + document.ServerFileName);
             }
 
             Response.ContentType = contentType + "; filename=" + document.ClientFileName;
-            Response.TransmitFile(StorageRoot + legacyMarker + document.ServerFileName);
+            Response.TransmitFile (StorageRoot + legacyMarker + document.ServerFileName);
         }
     }
 }

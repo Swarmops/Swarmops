@@ -1,5 +1,6 @@
 using System;
 using System.Web.UI;
+using Resources;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Controls.Swarm
@@ -32,7 +33,7 @@ namespace Swarmops.Controls.Swarm
                 {
                     ViewState[ClientID + "_PersonId"] = value.Identity;
 
-                    this.ImageAvatar.ImageUrl = this._person.GetSecureAvatarLink(96);
+                    this.ImageAvatar.ImageUrl = this._person.GetSecureAvatarLink (96);
                     this.LabelPersonName.Text = this._person.Name;
                     this.LabelPersonIdentity.Text = "#" + this._person.Identity;
                 }
@@ -49,13 +50,13 @@ namespace Swarmops.Controls.Swarm
 
         public bool Changeable { get; set; }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             object personId = ViewState[ClientID + "_PersonId"];
 
             if (personId != null)
             {
-                this._person = Person.FromIdentity((int) personId);
+                this._person = Person.FromIdentity ((int) personId);
             }
 
             this.LabelPersonName.Style[HtmlTextWriterStyle.FontSize] = "20px";
@@ -67,12 +68,12 @@ namespace Swarmops.Controls.Swarm
 
             // this.ButtonSetNew.Text = Resources.Controls.Pirates.PersonDetailPopup_ChangePerson;
             // this.LabelWriteLabel.Text = Resources.Controls.Pirates.PersonDetailPopup_ChangeTo;
-            this.ButtonConfirmPerson.Text = Resources.Global.Global_Confirm;
-            this.ButtonCancel.Text = Resources.Global.Global_Cancel;
+            this.ButtonConfirmPerson.Text = Global.Global_Confirm;
+            this.ButtonCancel.Text = Global.Global_Cancel;
         }
 
 
-        protected void ButtonSetNew_Click(object sender, EventArgs e)
+        protected void ButtonSetNew_Click (object sender, EventArgs e)
         {
             this.PanelRead.Visible = false;
             this.PanelWrite.Visible = true;
@@ -93,18 +94,18 @@ namespace Swarmops.Controls.Swarm
             else
             {
                 this.ImageAvatar.ImageUrl =
-                    Person.FromIdentity((int) ViewState[ClientID + "_PersonId"]).GetSecureAvatarLink(96);
+                    Person.FromIdentity ((int) ViewState[ClientID + "_PersonId"]).GetSecureAvatarLink (96);
             }
         }
 
 
-        protected void PersonNew_SelectedPersonChanged(object sender, EventArgs e)
+        protected void PersonNew_SelectedPersonChanged (object sender, EventArgs e)
         {
             // this.ImageAvatar.ImageUrl = this.PersonNew.SelectedPerson.GetSecureAvatarLink(96);
             this.ButtonConfirmPerson.Visible = true;
         }
 
-        protected void ButtonConfirmPerson_Click(object sender, EventArgs e)
+        protected void ButtonConfirmPerson_Click (object sender, EventArgs e)
         {
             // this._person = this.PersonNew.SelectedPerson;
 
@@ -112,7 +113,7 @@ namespace Swarmops.Controls.Swarm
 
             if (settableInterface != null)
             {
-                settableInterface.SetOwner(this._person);
+                settableInterface.SetOwner (this._person);
             }
 
             if (PersonChanged != null)
@@ -125,7 +126,7 @@ namespace Swarmops.Controls.Swarm
             Reset();
         }
 
-        protected void ButtonCancel_Click(object sender, EventArgs e)
+        protected void ButtonCancel_Click (object sender, EventArgs e)
         {
             Reset();
         }
@@ -139,7 +140,7 @@ namespace Swarmops.Controls.Swarm
         public readonly object Cookie;
         public readonly Person NewPerson;
 
-        public PersonChangedEventArgs(Person newPerson, object cookie)
+        public PersonChangedEventArgs (Person newPerson, object cookie)
         {
             this.NewPerson = newPerson;
             this.Cookie = cookie;

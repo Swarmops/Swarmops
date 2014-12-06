@@ -1,10 +1,11 @@
 ﻿using System;
+using Resources;
 
 public partial class Default : PageV5Base
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load (object sender, EventArgs e)
     {
-        PageTitle = Resources.Global.Dashboard_PageTitle;
+        PageTitle = Global.Dashboard_PageTitle;
         PageIcon = "iconshock-steering-wheel";
 
         /*

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Resources;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Logic.Financial;
@@ -99,7 +100,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private Dictionary<int, Int64> _treeBudgetLookup;
         private int _year = 2012;
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             this._authenticationData = GetAuthenticationDataAndCulture();
             this._year = DateTime.Today.Year;
@@ -113,7 +114,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 (ExternalBankDataProfile) Session["LedgersResync" + guid + "Profile"];
 
             if (
-                !this._authenticationData.CurrentUser.HasAccess(new Access(
+                !this._authenticationData.CurrentUser.HasAccess (new Access (
                     this._authenticationData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
             {
                 throw new UnauthorizedAccessException();
@@ -130,7 +131,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (ExternalBankMismatchingDateTime mismatch in mismatchArray)
             {
-                string rowId = mismatch.DateTime.ToString("yyyyMMddHHmmss");
+                string rowId = mismatch.DateTime.ToString ("yyyyMMddHHmmss");
 
                 List<string> childItems = new List<string>();
 
@@ -150,77 +151,77 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         if (dependency != null)
                         {
                             dependencyString = dependency.GetType().ToString();
-                            int lastPeriod = dependencyString.LastIndexOf('.');
-                            dependencyString = dependencyString.Substring(lastPeriod + 1);
+                            int lastPeriod = dependencyString.LastIndexOf ('.');
+                            dependencyString = dependencyString.Substring (lastPeriod + 1);
 
-                            dependencyString += " #" + (dependency as IHasIdentity).Identity.ToString("N0");
+                            dependencyString += " #" + (dependency as IHasIdentity).Identity.ToString ("N0");
                         }
 
-                        childItems.Add("{\"id\":\"" + rowId + childItems.Count.ToString("##0") + "\",\"rowName\":\"" +
-                                       JsonSanitize(mismatchingRecord.Description) + "\",\"swarmopsData\":\"" +
-                                       PrintNullableCents(currentOrganizationCurrency,
-                                           mismatchingRecord.SwarmopsCents[masterIndex]) + "\",\"masterData\":\"" +
-                                       PrintNullableCents(currentOrganizationCurrency,
-                                           mismatchingRecord.MasterCents[masterIndex]) + "\",\"resyncAction\":\"" +
-                                       JsonSanitize(mismatchingRecord.ResyncActions[masterIndex].ToString()) +
-                                       "\",\"notes\":\"" +
-                                       JsonSanitize(dependencyString) + "\"}");
+                        childItems.Add ("{\"id\":\"" + rowId + childItems.Count.ToString ("##0") + "\",\"rowName\":\"" +
+                                        JsonSanitize (mismatchingRecord.Description) + "\",\"swarmopsData\":\"" +
+                                        PrintNullableCents (currentOrganizationCurrency,
+                                            mismatchingRecord.SwarmopsCents[masterIndex]) + "\",\"masterData\":\"" +
+                                        PrintNullableCents (currentOrganizationCurrency,
+                                            mismatchingRecord.MasterCents[masterIndex]) + "\",\"resyncAction\":\"" +
+                                        JsonSanitize (mismatchingRecord.ResyncActions[masterIndex].ToString()) +
+                                        "\",\"notes\":\"" +
+                                        JsonSanitize (dependencyString) + "\"}");
                     }
                 }
 
-                string childrenString = String.Join(",", childItems.ToArray());
+                string childrenString = String.Join (",", childItems.ToArray());
 
-                string rowName = mismatch.DateTime.ToString(profile.DateTimeFormatString);
+                string rowName = mismatch.DateTime.ToString (profile.DateTimeFormatString);
 
                 string swarmopsData = currentOrganizationCurrency + " " +
-                                      (mismatch.SwarmopsDeltaCents/100.0).ToString("N2");
+                                      (mismatch.SwarmopsDeltaCents/100.0).ToString ("N2");
 
                 string masterData = currentOrganizationCurrency + " " +
-                                    (mismatch.MasterDeltaCents/100.0).ToString("N2");
+                                    (mismatch.MasterDeltaCents/100.0).ToString ("N2");
 
                 string notes = "Diff: " +
-                               ((mismatch.MasterDeltaCents - mismatch.SwarmopsDeltaCents)/100.0).ToString("N2");
+                               ((mismatch.MasterDeltaCents - mismatch.SwarmopsDeltaCents)/100.0).ToString ("N2");
 
-                items.Add("{\"id\":\"" + rowId + "\",\"rowName\":\"" + rowName + "\",\"swarmopsData\":\"" +
-                          JsonSanitize(swarmopsData) + "\",\"masterData\":\"" + JsonSanitize(masterData) +
-                          "\",\"notes\":\"" + JsonSanitize(notes) + "\",\"state\":\"closed\",\"children\":[" +
-                          childrenString + "]}");
+                items.Add ("{\"id\":\"" + rowId + "\",\"rowName\":\"" + rowName + "\",\"swarmopsData\":\"" +
+                           JsonSanitize (swarmopsData) + "\",\"masterData\":\"" + JsonSanitize (masterData) +
+                           "\",\"notes\":\"" + JsonSanitize (notes) + "\",\"state\":\"closed\",\"children\":[" +
+                           childrenString + "]}");
             }
 
-            Response.Output.WriteLine("[" + String.Join(",", items.ToArray()) + "]");
+            Response.Output.WriteLine ("[" + String.Join (",", items.ToArray()) + "]");
             Response.End();
         }
 
-        private string PrintNullableCents(string currency, long cents)
+        private string PrintNullableCents (string currency, long cents)
         {
             if (cents == 0)
             {
-                return Resources.Global.Global_Missing;
+                return Global.Global_Missing;
             }
 
-            return currency + " " + (cents/100.0).ToString("N2"); // TODO: Verify that culture is applied
+            return currency + " " + (cents/100.0).ToString ("N2"); // TODO: Verify that culture is applied
         }
 
-        private string PrintCents(long cents)
+        private string PrintCents (long cents)
         {
-            return (cents/100.0).ToString("N2"); // TODO: Verify that culture is applied
+            return (cents/100.0).ToString ("N2"); // TODO: Verify that culture is applied
         }
 
-        private string PrintCentsArray(long[] cents)
+        private string PrintCentsArray (long[] cents)
         {
             if (cents.Length == 1)
             {
-                return PrintCents(cents[0]);
+                return PrintCents (cents[0]);
             }
             if (cents.Length == 0)
             {
-                return Resources.Global.Global_Missing;
+                return Global.Global_Missing;
             }
-            return Resources.Global.Global_Multiple;
+            return Global.Global_Multiple;
         }
 
 
-        private void PopulateLookups(FinancialAccounts accounts)
+        private void PopulateLookups (FinancialAccounts accounts)
         {
             this._singleBalanceLookup = new Dictionary<int, Int64>();
             this._treeBalanceLookup = new Dictionary<int, Int64>();
@@ -242,21 +243,22 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 if (account.AccountType == FinancialAccountType.Cost ||
                     account.AccountType == FinancialAccountType.Income)
                 {
-                    this._singleBalanceLookup[account.Identity] = -account.GetDeltaCents(new DateTime(this._year, 1, 1),
-                        new DateTime(this._year + 1, 1, 1));
-                    this._singleBudgetLookup[account.Identity] = account.GetBudgetCents(this._year);
+                    this._singleBalanceLookup[account.Identity] =
+                        -account.GetDeltaCents (new DateTime (this._year, 1, 1),
+                            new DateTime (this._year + 1, 1, 1));
+                    this._singleBudgetLookup[account.Identity] = account.GetBudgetCents (this._year);
                 }
                 else if (account.AccountType == FinancialAccountType.Asset ||
                          account.AccountType == FinancialAccountType.Debt)
                 {
-                    this._singleBalanceLookup[account.Identity] = account.GetDeltaCents(new DateTime(1900, 1, 1),
-                        new DateTime(this._year + 1, 1, 1));
+                    this._singleBalanceLookup[account.Identity] = account.GetDeltaCents (new DateTime (1900, 1, 1),
+                        new DateTime (this._year + 1, 1, 1));
                     this._singleBudgetLookup[account.Identity] = 0; // balance accounts don't have budgets
                 }
                 else
                 {
-                    throw new InvalidOperationException("Account with invalid type encountered - " +
-                                                        account.AccountType);
+                    throw new InvalidOperationException ("Account with invalid type encountered - " +
+                                                         account.AccountType);
                 }
 
                 // copy to treeLookups
@@ -267,14 +269,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             // 3) Add all children's values to parents
 
-            AddChildrenValuesToParents(this._treeBalanceLookup, accounts);
-            AddChildrenValuesToParents(this._treeBudgetLookup, accounts);
+            AddChildrenValuesToParents (this._treeBalanceLookup, accounts);
+            AddChildrenValuesToParents (this._treeBudgetLookup, accounts);
 
             // Done.
         }
 
 
-        private void AddChildrenValuesToParents(Dictionary<int, Int64> lookup, FinancialAccounts accounts)
+        private void AddChildrenValuesToParents (Dictionary<int, Int64> lookup, FinancialAccounts accounts)
         {
             // Iterate backwards and add any value to its parent's value, as they are sorted in tree order.
 
@@ -291,15 +293,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
 
-        private string JsonDualString(int accountId, Int64 treeValue, Int64 singleValue)
+        private string JsonDualString (int accountId, Int64 treeValue, Int64 singleValue)
         {
             if (treeValue != 0 && singleValue == 0)
             {
-                return string.Format(CultureInfo.CurrentCulture,
+                return string.Format (CultureInfo.CurrentCulture,
                     "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>",
                     accountId, treeValue/100.00);
             }
-            return string.Format(CultureInfo.CurrentCulture,
+            return string.Format (CultureInfo.CurrentCulture,
                 "<span class=\\\"accountplandata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N0}</span><span class=\\\"accountplandata-expanded-{0}\\\" style=\\\"display:none\\\">{2:N0}</span>",
                 accountId, treeValue/100.0, singleValue/100.0);
         }

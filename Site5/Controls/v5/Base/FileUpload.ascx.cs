@@ -36,7 +36,7 @@ namespace Swarmops.Controls.Base
         public string ClientUploadCompleteCallback { get; set; }
         public string ClientUploadStartedCallback { get; set; }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
@@ -66,7 +66,7 @@ namespace Swarmops.Controls.Base
             }
 
             ((PageV5Base) Page).IncludedControlsUsed |= IncludedControl.FileUpload;
-                // causes master to include necessary script
+            // causes master to include necessary script
         }
 
 

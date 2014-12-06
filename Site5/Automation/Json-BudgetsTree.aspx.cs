@@ -7,7 +7,7 @@ namespace Swarmops.Frontend.Automation
 {
     public partial class Json_BudgetsTree : DataV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             Response.ContentType = "application/json";
 
@@ -35,14 +35,14 @@ namespace Swarmops.Frontend.Automation
 
             string cacheKey = "ExpensableBudgets-Json-" + accountType +
                               // use the sanitized input to prevent cache overload
-                              CurrentOrganization.Identity.ToString((CultureInfo.InvariantCulture));
+                              CurrentOrganization.Identity.ToString ((CultureInfo.InvariantCulture));
 
             string accountsJson =
                 (string) Cache[cacheKey];
 
             if (accountsJson != null)
             {
-                Response.Output.WriteLine(accountsJson);
+                Response.Output.WriteLine (accountsJson);
                 Response.End();
                 return;
             }
@@ -72,12 +72,12 @@ namespace Swarmops.Frontend.Automation
 
             foreach (FinancialAccount account in accounts)
             {
-                if (!treeMap.ContainsKey(account.ParentIdentity))
+                if (!treeMap.ContainsKey (account.ParentIdentity))
                 {
                     treeMap[account.ParentIdentity] = new List<FinancialAccount>();
                 }
 
-                treeMap[account.ParentIdentity].Add(account);
+                treeMap[account.ParentIdentity].Add (account);
             }
 
             int renderRootNodeId = 0;
@@ -89,33 +89,33 @@ namespace Swarmops.Frontend.Automation
                 renderRootNodeId = treeMap[0][0].Identity;
             }
 
-            accountsJson = RecurseTreeMap(treeMap, renderRootNodeId);
+            accountsJson = RecurseTreeMap (treeMap, renderRootNodeId);
 
-            Cache.Insert(cacheKey, accountsJson, null, DateTime.Now.AddMinutes(5), TimeSpan.Zero);
+            Cache.Insert (cacheKey, accountsJson, null, DateTime.Now.AddMinutes (5), TimeSpan.Zero);
             // cache lasts for five minutes, no sliding expiration
-            Response.Output.WriteLine(accountsJson);
+            Response.Output.WriteLine (accountsJson);
 
             Response.End();
         }
 
-        private string RecurseTreeMap(Dictionary<int, List<FinancialAccount>> treeMap, int node)
+        private string RecurseTreeMap (Dictionary<int, List<FinancialAccount>> treeMap, int node)
         {
             List<string> elements = new List<string>();
 
             foreach (FinancialAccount account in treeMap[node])
             {
-                string element = string.Format("\"id\":{0},\"text\":\"{1}\"", account.Identity,
-                    JsonSanitize(account.Name));
+                string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", account.Identity,
+                    JsonSanitize (account.Name));
 
-                if (treeMap.ContainsKey(account.Identity))
+                if (treeMap.ContainsKey (account.Identity))
                 {
-                    element += ",\"state\":\"closed\",\"children\":" + RecurseTreeMap(treeMap, account.Identity);
+                    element += ",\"state\":\"closed\",\"children\":" + RecurseTreeMap (treeMap, account.Identity);
                 }
 
-                elements.Add("{" + element + "}");
+                elements.Add ("{" + element + "}");
             }
 
-            return "[" + String.Join(",", elements.ToArray()) + "]";
+            return "[" + String.Join (",", elements.ToArray()) + "]";
         }
 
         private enum AccountTypes

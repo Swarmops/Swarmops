@@ -5,11 +5,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
     public partial class BalanceSheet : PageV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             if (!CurrentOrganization.IsEconomyEnabled)
             {
-                Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
+                Response.Redirect ("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
@@ -24,7 +24,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 while (year >= firstFiscalYear)
                 {
-                    this.DropYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
+                    this.DropYears.Items.Add (year.ToString (CultureInfo.InvariantCulture));
                     year--;
                 }
 
@@ -37,7 +37,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
         private void Localize()
         {
-            this.LabelContentHeader.Text = string.Format(Resources.Pages.Ledgers.BalanceSheet_ContentHeader,
+            this.LabelContentHeader.Text = string.Format (Resources.Pages.Ledgers.BalanceSheet_ContentHeader,
                 CurrentOrganization.Name);
             this.LiteralHeaderQ1.Text = Resources.Pages.Ledgers.BalanceSheet_Q1;
             this.LiteralHeaderQ2.Text = Resources.Pages.Ledgers.BalanceSheet_Q2;

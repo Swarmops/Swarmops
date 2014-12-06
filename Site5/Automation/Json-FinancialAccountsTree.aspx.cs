@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Resources.Pages;
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 
@@ -9,11 +10,11 @@ namespace Swarmops.Frontend.Automation
     {
         private Dictionary<int, List<FinancialAccount>> _hashedAccounts;
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             Response.ContentType = "application/json";
             FinancialAccountType accountType =
-                (FinancialAccountType) (Enum.Parse(typeof (FinancialAccountType), Request.QueryString["AccountType"]));
+                (FinancialAccountType) (Enum.Parse (typeof (FinancialAccountType), Request.QueryString["AccountType"]));
 
             string response = string.Empty;
 
@@ -21,14 +22,14 @@ namespace Swarmops.Frontend.Automation
 
             string excludeIdString = Request.QueryString["ExcludeId"];
 
-            if (!String.IsNullOrEmpty(excludeIdString))
+            if (!String.IsNullOrEmpty (excludeIdString))
             {
-                excludeId = Int32.Parse(excludeIdString);
+                excludeId = Int32.Parse (excludeIdString);
             }
 
             // Get accounts
 
-            FinancialAccounts accounts = FinancialAccounts.ForOrganization(CurrentOrganization, accountType);
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization (CurrentOrganization, accountType);
 
             // Build tree (there should be a template for this)
 
@@ -41,12 +42,12 @@ namespace Swarmops.Frontend.Automation
                     continue;
                 }
 
-                if (!treeMap.ContainsKey(account.ParentIdentity))
+                if (!treeMap.ContainsKey (account.ParentIdentity))
                 {
                     treeMap[account.ParentIdentity] = new List<FinancialAccount>();
                 }
 
-                treeMap[account.ParentIdentity].Add(account);
+                treeMap[account.ParentIdentity].Add (account);
             }
 
             this._hashedAccounts = treeMap;
@@ -54,51 +55,51 @@ namespace Swarmops.Frontend.Automation
             if (accountType == FinancialAccountType.Asset || accountType == FinancialAccountType.Balance ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup(FinancialAccountType.Asset, Resources.Pages.Ledgers.BalanceSheet_Assets) +
+                response += GetAccountGroup (FinancialAccountType.Asset, Ledgers.BalanceSheet_Assets) +
                             ",";
             }
 
             if (accountType == FinancialAccountType.Debt || accountType == FinancialAccountType.Balance ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup(FinancialAccountType.Debt, Resources.Pages.Ledgers.BalanceSheet_Debt) + ",";
+                response += GetAccountGroup (FinancialAccountType.Debt, Ledgers.BalanceSheet_Debt) + ",";
             }
 
             if (accountType == FinancialAccountType.Income || accountType == FinancialAccountType.Result ||
                 accountType == FinancialAccountType.All)
             {
                 response +=
-                    GetAccountGroup(FinancialAccountType.Income, Resources.Pages.Ledgers.ProfitLossStatement_Income) +
+                    GetAccountGroup (FinancialAccountType.Income, Ledgers.ProfitLossStatement_Income) +
                     ",";
             }
 
             if (accountType == FinancialAccountType.Cost || accountType == FinancialAccountType.Result ||
                 accountType == FinancialAccountType.All)
             {
-                response += GetAccountGroup(FinancialAccountType.Cost, Resources.Pages.Ledgers.ProfitLossStatement_Costs);
+                response += GetAccountGroup (FinancialAccountType.Cost, Ledgers.ProfitLossStatement_Costs);
             }
 
-            response = response.TrimEnd(',');
-                // removes last comma regardless of where it came from or if it's even there
+            response = response.TrimEnd (',');
+            // removes last comma regardless of where it came from or if it's even there
 
-            Response.Output.WriteLine("[" + response + "]");
+            Response.Output.WriteLine ("[" + response + "]");
             Response.End();
         }
 
-        private string GetAccountGroup(FinancialAccountType type, string localizedGroupName)
+        private string GetAccountGroup (FinancialAccountType type, string localizedGroupName)
         {
-            string childrenString = GetAccountsRecurse(type, 0);
+            string childrenString = GetAccountsRecurse (type, 0);
 
-            return "{\"id\":\"" + -((int) type) + "\",\"text\":\"" + JsonSanitize(localizedGroupName) +
+            return "{\"id\":\"" + -((int) type) + "\",\"text\":\"" + JsonSanitize (localizedGroupName) +
                    "\",\"state\":\"open\",\"children\":[" + childrenString + "]}";
         }
 
 
-        private string GetAccountsRecurse(FinancialAccountType accountType, int rootNodeId)
+        private string GetAccountsRecurse (FinancialAccountType accountType, int rootNodeId)
         {
             List<string> childStrings = new List<string>();
 
-            if (!this._hashedAccounts.ContainsKey(rootNodeId))
+            if (!this._hashedAccounts.ContainsKey (rootNodeId))
             {
                 return string.Empty;
             }
@@ -117,41 +118,41 @@ namespace Swarmops.Frontend.Automation
                     continue;
                 }
 
-                string grandChildren = GetAccountsRecurse(accountType, account.Identity);
-                if (!string.IsNullOrEmpty(grandChildren))
+                string grandChildren = GetAccountsRecurse (accountType, account.Identity);
+                if (!string.IsNullOrEmpty (grandChildren))
                 {
                     grandChildren = ",\"state\":\"closed\",\"children\":[" + grandChildren + "]";
                 }
 
-                childStrings.Add('{' + String.Format(
+                childStrings.Add ('{' + String.Format (
                     "\"id\":\"{0}\",\"text\":\"{1}\"",
                     account.Identity,
-                    Server.HtmlEncode(JsonSanitize(account.Name))
+                    Server.HtmlEncode (JsonSanitize (account.Name))
                     ) + grandChildren + '}');
             }
 
-            return String.Join(",", childStrings.ToArray());
+            return String.Join (",", childStrings.ToArray());
         }
 
 
-        private string RecurseTreeMap(Dictionary<int, List<FinancialAccount>> treeMap, int node)
+        private string RecurseTreeMap (Dictionary<int, List<FinancialAccount>> treeMap, int node)
         {
             List<string> elements = new List<string>();
 
             foreach (FinancialAccount account in treeMap[node])
             {
-                string element = string.Format("\"id\":{0},\"text\":\"{1}\"", account.Identity,
-                    JsonSanitize(account.Name));
+                string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", account.Identity,
+                    JsonSanitize (account.Name));
 
-                if (treeMap.ContainsKey(account.Identity))
+                if (treeMap.ContainsKey (account.Identity))
                 {
-                    element += ",\"state\":\"closed\",\"children\":" + RecurseTreeMap(treeMap, account.Identity);
+                    element += ",\"state\":\"closed\",\"children\":" + RecurseTreeMap (treeMap, account.Identity);
                 }
 
-                elements.Add("{" + element + "}");
+                elements.Add ("{" + element + "}");
             }
 
-            return "[" + String.Join(",", elements.ToArray()) + "]";
+            return "[" + String.Join (",", elements.ToArray()) + "]";
         }
     }
 }

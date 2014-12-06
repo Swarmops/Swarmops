@@ -12,7 +12,7 @@ using Swarmops.Logic.Swarm;
 /// </summary>
 public class CommonV5
 {
-    public static void CulturePreInit(HttpRequest request)
+    public static void CulturePreInit (HttpRequest request)
     {
         // Localization
         // Set default culture (English, United States)
@@ -51,7 +51,7 @@ public class CommonV5
 
         try
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(preferredCulture);
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture (preferredCulture);
         }
         catch (Exception) // if we can't set the culture, what do we do? ("We send the Marines.")
         {
@@ -63,7 +63,7 @@ public class CommonV5
         Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
     }
 
-    public static AuthenticationData GetAuthenticationDataAndCulture(HttpContext suppliedContext)
+    public static AuthenticationData GetAuthenticationDataAndCulture (HttpContext suppliedContext)
     {
         // This function is called from static page methods in AJAX calls to get
         // the current set of authentication data. Static page methods cannot access
@@ -77,29 +77,29 @@ public class CommonV5
 
         // TODO: If identity is null or empty, set null user + org
 
-        string[] identityTokens = identity.Split(',');
+        string[] identityTokens = identity.Split (',');
 
         string userIdentityString = identityTokens[0];
         string organizationIdentityString = identityTokens[1];
 
-        int currentUserId = Convert.ToInt32(userIdentityString);
-        int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
+        int currentUserId = Convert.ToInt32 (userIdentityString);
+        int currentOrganizationId = Convert.ToInt32 (organizationIdentityString);
 
-        result.CurrentUser = Person.FromIdentity(currentUserId);
+        result.CurrentUser = Person.FromIdentity (currentUserId);
         try
         {
-            result.CurrentOrganization = Organization.FromIdentity(currentOrganizationId);
+            result.CurrentOrganization = Organization.FromIdentity (currentOrganizationId);
         }
         catch (ArgumentException)
         {
-            if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+            if (PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
             {
                 // It's possible this organization was deleted. Log on to Sandbox instead.
                 result.CurrentOrganization = Organization.Sandbox;
             }
         }
 
-        CommonV5.CulturePreInit(HttpContext.Current.Request);
+        CulturePreInit (HttpContext.Current.Request);
         // OnPreInit() isn't called in the static methods calling this fn
 
         /*
@@ -128,7 +128,7 @@ public class CommonV5
     */
 
 
-    public static string GetColor(ColorType type, ColorVariant variant, ColorShift shift = ColorShift.None)
+    public static string GetColor (ColorType type, ColorVariant variant, ColorShift shift = ColorShift.None)
     {
         int hue = (type == ColorType.Base ? 222 : 40);
         int saturation = 0;
@@ -182,17 +182,17 @@ public class CommonV5
                 break;
         }
 
-        Color color = ColorFromAhsb(100, hue, saturation/100.0, luminosity/100.0);
-        return String.Format("#{0:x2}{1:x2}{2:x2}", color.R, color.G, color.B);
+        Color color = ColorFromAhsb (100, hue, saturation/100.0, luminosity/100.0);
+        return String.Format ("#{0:x2}{1:x2}{2:x2}", color.R, color.G, color.B);
     }
 
 
-    public static Color ColorFromAhsb(int a, double h, double s, double b)
+    public static Color ColorFromAhsb (int a, double h, double s, double b)
     {
         if (s < 0.001)
         {
-            return Color.FromArgb(a, Convert.ToInt32(b*255),
-                Convert.ToInt32(b*255), Convert.ToInt32(b*255));
+            return Color.FromArgb (a, Convert.ToInt32 (b*255),
+                Convert.ToInt32 (b*255), Convert.ToInt32 (b*255));
         }
 
         double fMax, fMid, fMin;
@@ -209,13 +209,13 @@ public class CommonV5
             fMin = b - (b*s);
         }
 
-        iSextant = (int) Math.Floor(h/60f);
+        iSextant = (int) Math.Floor (h/60f);
         if (300f <= h)
         {
             h -= 360f;
         }
         h /= 60f;
-        h -= 2f*(float) Math.Floor(((iSextant + 1f)%6f)/2f);
+        h -= 2f*(float) Math.Floor (((iSextant + 1f)%6f)/2f);
         if (0 == iSextant%2)
         {
             fMid = h*(fMax - fMin) + fMin;
@@ -225,29 +225,29 @@ public class CommonV5
             fMid = fMin - h*(fMax - fMin);
         }
 
-        iMax = Convert.ToInt32(fMax*255);
-        iMid = Convert.ToInt32(fMid*255);
-        iMin = Convert.ToInt32(fMin*255);
+        iMax = Convert.ToInt32 (fMax*255);
+        iMid = Convert.ToInt32 (fMid*255);
+        iMin = Convert.ToInt32 (fMin*255);
 
         switch (iSextant)
         {
             case 1:
-                return Color.FromArgb(a, iMid, iMax, iMin);
+                return Color.FromArgb (a, iMid, iMax, iMin);
             case 2:
-                return Color.FromArgb(a, iMin, iMax, iMid);
+                return Color.FromArgb (a, iMin, iMax, iMid);
             case 3:
-                return Color.FromArgb(a, iMin, iMid, iMax);
+                return Color.FromArgb (a, iMin, iMid, iMax);
             case 4:
-                return Color.FromArgb(a, iMid, iMin, iMax);
+                return Color.FromArgb (a, iMid, iMin, iMax);
             case 5:
-                return Color.FromArgb(a, iMax, iMin, iMid);
+                return Color.FromArgb (a, iMax, iMin, iMid);
             default:
-                return Color.FromArgb(a, iMax, iMid, iMin);
+                return Color.FromArgb (a, iMax, iMid, iMin);
         }
     }
 
 
-    protected static string HslToWebColor(int hue, int saturation, int luminosity) // 0-359, 0-100, 0-100
+    protected static string HslToWebColor (int hue, int saturation, int luminosity) // 0-359, 0-100, 0-100
     {
         // This code is adapted from Wikipedia. Believed to be in the public domain or at the very least
         // completely unencumbered.
@@ -266,16 +266,16 @@ public class CommonV5
         {
             double q = l < 0.5 ? l*(1 + s) : l + s - l*s;
             double p = 2*l - q;
-            r = Hue2Rgb(p, q, h + 1/3);
-            g = Hue2Rgb(p, q, h);
-            b = Hue2Rgb(p, q, h - 1/3);
+            r = Hue2Rgb (p, q, h + 1/3);
+            g = Hue2Rgb (p, q, h);
+            b = Hue2Rgb (p, q, h - 1/3);
         }
 
-        return String.Format("#{0:x2}{1:x2}{2:x2}", (int) (r*255), (int) (g*255), (int) (b*255));
+        return String.Format ("#{0:x2}{1:x2}{2:x2}", (int) (r*255), (int) (g*255), (int) (b*255));
     }
 
 
-    private static double Hue2Rgb(double p, double q, double t)
+    private static double Hue2Rgb (double p, double q, double t)
     {
         if (t < 0) t += 1;
         if (t > 1) t -= 1;

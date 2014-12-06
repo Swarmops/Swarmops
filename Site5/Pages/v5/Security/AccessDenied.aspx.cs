@@ -1,15 +1,16 @@
 ﻿using System;
+using Resources.Pages;
 
 public partial class Security_AccessDenied : PageV5Base
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load (object sender, EventArgs e)
     {
-        PageTitle = Resources.Pages.Security.AccessDenied_PageTitle;
+        PageTitle = Security.AccessDenied_PageTitle;
         PageIcon = "iconshock-disconnect";
 
-        this.LabelAccessDeniedHeader.Text = Resources.Pages.Security.AccessDenied_Header;
-        InfoBoxLiteral = Resources.Pages.Security.AccessDenied_Info;
-        this.LiteralAccessDeniedRant.Text = String.Format(Resources.Pages.Security.AccessDenied_Rant,
+        this.LabelAccessDeniedHeader.Text = Security.AccessDenied_Header;
+        InfoBoxLiteral = Security.AccessDenied_Info;
+        this.LiteralAccessDeniedRant.Text = String.Format (Security.AccessDenied_Rant,
             CurrentOrganization.Name);
     }
 }

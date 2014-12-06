@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Globalization;
+using Resources.Pages;
 
 public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load (object sender, EventArgs e)
     {
         if (!CurrentOrganization.IsEconomyEnabled)
         {
-            Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
+            Response.Redirect ("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
             return;
         }
 
         PageIcon = "iconshock-abacus";
-        PageTitle = Resources.Pages.Ledgers.ProfitLossStatement_PageTitle;
-        InfoBoxLiteral = Resources.Pages.Ledgers.ProfitLossStatement_Info;
+        PageTitle = Ledgers.ProfitLossStatement_PageTitle;
+        InfoBoxLiteral = Ledgers.ProfitLossStatement_Info;
 
         if (!Page.IsPostBack)
         {
@@ -22,7 +23,7 @@ public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
 
             while (year >= firstFiscalYear)
             {
-                this.DropYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
+                this.DropYears.Items.Add (year.ToString (CultureInfo.InvariantCulture));
                 year--;
             }
 
@@ -34,14 +35,14 @@ public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
 
     private void Localize()
     {
-        this.LabelContentHeader.Text = string.Format(Resources.Pages.Ledgers.ProfitLossStatement_ContentHeader,
+        this.LabelContentHeader.Text = string.Format (Ledgers.ProfitLossStatement_ContentHeader,
             CurrentOrganization.Name);
-        this.LiteralHeaderLastYear.Text = Resources.Pages.Ledgers.ProfitLossStatement_LastYear;
-        this.LiteralHeaderQ1.Text = Resources.Pages.Ledgers.ProfitLossStatement_Q1;
-        this.LiteralHeaderQ2.Text = Resources.Pages.Ledgers.ProfitLossStatement_Q2;
-        this.LiteralHeaderQ3.Text = Resources.Pages.Ledgers.ProfitLossStatement_Q3;
-        this.LiteralHeaderQ4.Text = Resources.Pages.Ledgers.ProfitLossStatement_Q4;
-        this.LiteralHeaderYtd.Text = Resources.Pages.Ledgers.ProfitLossStatement_Ytd;
-        this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.ProfitLossStatement_AccountName;
+        this.LiteralHeaderLastYear.Text = Ledgers.ProfitLossStatement_LastYear;
+        this.LiteralHeaderQ1.Text = Ledgers.ProfitLossStatement_Q1;
+        this.LiteralHeaderQ2.Text = Ledgers.ProfitLossStatement_Q2;
+        this.LiteralHeaderQ3.Text = Ledgers.ProfitLossStatement_Q3;
+        this.LiteralHeaderQ4.Text = Ledgers.ProfitLossStatement_Q4;
+        this.LiteralHeaderYtd.Text = Ledgers.ProfitLossStatement_Ytd;
+        this.LiteralHeaderAccountName.Text = Ledgers.ProfitLossStatement_AccountName;
     }
 }
