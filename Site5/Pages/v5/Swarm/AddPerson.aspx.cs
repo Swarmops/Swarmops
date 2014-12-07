@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Reflection;
 using System.Runtime.Versioning;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Basic.Enums;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
@@ -80,6 +84,7 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
             this.LabelStreet2.Text = Resources.Pages.Swarm.AddPerson_Street2;
             this.LabelPostalCode.Text = Resources.Global.Global_PostalCode;
             this.LabelCity.Text = Resources.Global.Global_City;
+            this.LabelGeographyDetected.Text = Resources.Pages.Swarm.AddPerson_GeographyDetected;
             this.LabelHeaderStatData.Text = Resources.Pages.Swarm.AddPerson_StatisticalData;
             this.LabelDateOfBirth.Text = Resources.Global.Global_DateOfBirth;
             this.LabelLegalGender.Text = Resources.Pages.Swarm.AddPerson_LegalGender;
@@ -95,8 +100,27 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
         protected void ButtonSubmit_Click (object sender, EventArgs e)
         {
-            string randomPassword = Authentication.CreateRandomPassword (24);
+            /*
+            Person newPerson = Person.Create (this.TextName.Text, this.TextMail.Text, string.Empty, this.TextPhone.Text,
+                this.TextStreet1.Text + this.TextStreet2.Text,
+                this.TextPostal.Text, this.TextCity.Text, this.DropCountries.SelectedValue, DateTime.UtcNow,
+                PersonGender.Unknown);
 
+            Membership newMembership = Membership.Create (newPerson, CurrentOrganization, DateTime.Today.AddYears (1));
+
+            PayloadEnvelope envelope = new PayloadEnvelope();
+            ParticipantMailPayload payload = new ParticipantMailPayload(ParticipantMailType.MemberAddedWelcome, newMembership, CurrentUser);
+            envelope.PayloadXml = payload.ToXml();
+            envelope.PayloadClass = payload.GetType().ToString();
+
+            Assembly assembly = typeof (PayloadEnvelope).Assembly;
+
+            Type payloadType = assembly.GetType (envelope.PayloadClass);
+            var methodInfo = payloadType.GetMethod("FromXml", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+
+            ICommsRenderer renderer = (ICommsRenderer)(methodInfo.Invoke (null, new object[] { envelope.PayloadXml }));
+
+            */
 
             // Person.Create()
 

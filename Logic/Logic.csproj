@@ -70,6 +70,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Communications.Transmission.DefaultCommTemplates.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,6 +109,7 @@
     <Compile Include="Communications\OutboundCommRecipients.cs" />
     <Compile Include="Communications\OutboundComms.cs" />
     <Compile Include="Communications\OutboundCommTransmitException.cs" />
+    <Compile Include="Communications\Transmission\ParticipantMailPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadEnvelope.cs" />
     <Compile Include="Communications\Transmission\NotificationPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadBase.cs" />
@@ -369,6 +375,10 @@
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Communications.Transmission.NotificationPayload.it-IT.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Financial.FinancialTransactionTagSetTypesStock.it-IT.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Swarm.DashboardTodos.it-IT.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Logic.Communications.Transmission.DefaultCommTemplates.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\Logic.Financial.FinancialTransactionTagSetTypesStock.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs</LastGenOutput>

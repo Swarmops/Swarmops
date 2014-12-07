@@ -80,8 +80,6 @@ namespace Swarmops.Controls.Base
             {
                     // TODO: More types here, and check with the CSS. Some work to get good looking
 
-                    // MEH forcing build
-
                 case MenuItemType.Link:
                     output.Write (
                         "<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-{3}.png\"  height=\"20\" width=\"20\"  />{2}</a>",

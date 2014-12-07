@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Mail;
+using System.Reflection;
 using System.Text;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
@@ -10,20 +11,21 @@ namespace Swarmops.Utility.Communications
 {
     public class CommsTransmitterMail : ICommsTransmitter
     {
-        // To be implemented
+        // To be implemented better
 
         private static string _smtpServerCache = string.Empty;
         private static DateTime _cacheReloadTime = DateTime.MinValue;
 
         public void Transmit (PayloadEnvelope envelope, Person person)
         {
-            if (envelope.PayloadClass != "Swarmops.Logic.Communications.Transmission.NotificationPayload")
-            {
-                throw new NotImplementedException();
-            }
+            // Create the renderer via reflection of the static FromXml method
 
-            ICommsRenderer renderer = NotificationPayload.FromXml (envelope.PayloadXml);
+            Assembly assembly = typeof(PayloadEnvelope).Assembly;
 
+            Type payloadType = assembly.GetType(envelope.PayloadClass);
+            var methodInfo = payloadType.GetMethod("FromXml", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+
+            ICommsRenderer renderer = (ICommsRenderer)(methodInfo.Invoke(null, new object[] { envelope.PayloadXml }));
             RenderedComm comm = renderer.RenderComm (person);
 
             MailMessage mail = new MailMessage();
@@ -32,7 +34,7 @@ namespace Swarmops.Utility.Communications
 
             try
             {
-                mail.From = new MailAddress (comm[CommRenderPart.SenderMail], comm[CommRenderPart.SenderName],
+                mail.From = new MailAddress ((string) comm[CommRenderPart.SenderMail], (string) comm[CommRenderPart.SenderName],
                     Encoding.UTF8);
                 mail.To.Add (new MailAddress (person.Mail, person.Name));
             }
@@ -44,8 +46,8 @@ namespace Swarmops.Utility.Communications
                 throw new OutboundCommTransmitException ("Cannot send mail to " + person.Mail, e);
             }
 
-            mail.Subject = comm[CommRenderPart.Subject];
-            mail.Body = comm[CommRenderPart.BodyText];
+            mail.Subject = (string) comm[CommRenderPart.Subject];
+            mail.Body = (string) comm[CommRenderPart.BodyText];
             mail.SubjectEncoding = Encoding.UTF8;
             mail.BodyEncoding = Encoding.UTF8;
 

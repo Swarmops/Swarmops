@@ -271,7 +271,6 @@ namespace Swarmops.Pages.Security
         {
             this.LabelCurrentOrganizationName.Text = Global.Global_Organization;
             this.LabelCurrentUserName.Text = Participant.Localized (ParticipantTitle.Person, TitleVariant.Generic);
-            this.LabelPageTitle.Text = Resources.Pages.Security.Login_PageTitle;
             this.LabelPreferences.Text = Global.Global_NA;
             this.LabelSidebarInfoHeader.Text = Global.Sidebar_Information;
             this.LabelSidebarHelpHeader.Text = Global.Sidebar_Help;

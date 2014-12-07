@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Communications
         RenderedComm RenderComm (Person person);
     }
 
-    public class RenderedComm : Dictionary<CommRenderPart, string>
+    public class RenderedComm : Dictionary<CommRenderPart, object>
     {
         // typeset for readability
     }

@@ -144,8 +144,6 @@
         </div>
         
         <div class="mainbar">
-            <div id="page-icon-encaps"><asp:Image ID="IconPage" runat="server" ImageUrl="~/Security/Images/iconshock-fingerprint-scanner-40px.png" /></div><h1><asp:Label ID="LabelPageTitle" Text="Login" runat="server" /></h1>
-        
             <div class="box">
                 <div class="content">
                 

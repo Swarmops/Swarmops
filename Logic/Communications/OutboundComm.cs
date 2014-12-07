@@ -112,6 +112,28 @@ namespace Swarmops.Logic.Communications
         }
 
 
+        public static OutboundComm CreateMembershipLetter (ParticipantMailType mailType, Membership membership,
+            Person actingPerson)
+        {
+            List<Person> recipients = People.FromSingle (membership.Person);
+
+            OutboundComm comm = OutboundComm.Create (null, null, membership.Organization, 
+                CommResolverClass.Unknown, null,
+                CommTransmitterClass.CommsTransmitterMail,
+                new ParticipantMailPayload (mailType, membership, actingPerson).ToXml(),
+                OutboundCommPriority.Low);
+
+            foreach (Person person in recipients)
+            {
+                comm.AddRecipient(person);
+            }
+
+            comm.Resolved = true;
+
+            return comm;
+        }
+
+
         public static OutboundComm CreateNotification (Organization organization, string notificationResourceString)
         {
             List<Person> recipients = People.FromSingle (Person.FromIdentity (1)); // Initial Admin recipient
