@@ -132,33 +132,34 @@
         function ValidateFields() {
             var isValid = true;
 
-            isValid = ValidateTextField('#<%= TextCity.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorCity" />") && isValid;
-            isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorStreet" />") && isValid;
-            isValid = ValidateTextField('#<%= TextMail.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorMail" />") && isValid;
-            isValid = ValidateTextField('#<%= TextName.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorName" />") && isValid; // TODO: Actually validate geography?
-
             var dateFieldContents = $('#<%= TextDateOfBirth.ClientID%>').val();
             if (dateFieldContents.length > 0) {
 
-                alert('testing');
+                var jsonData = {};
+                jsonData.input = dateFieldContents;
 
                 $.ajax({
                     type: "POST",
                     url: "/Automation/FieldValidation.aspx/IsDateValid",
-                    data: "{'amount': '" + escape($('#<%=this.TextAmount.ClientID %>').val()) + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: false,  // blocks until function returns - race conditions otherwise
-                success: function (msg) {
-                    if (msg.d != true) {
-                        isValid = false;
-                        $('#TextAmount').addClass("entryError");
-                        alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
-                        $('#<%=this.TextAmount.ClientID %>').focus();
+                    data: $.toJSON(jsonData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,  // blocks until function returns - race conditions otherwise
+                    success: function (msg) {
+                        if (msg.d != true) {
+                            isValid = false;
+                            $('#<%= TextDateOfBirth.ClientID %>').addClass("entryError");
+                            alertify.error("<asp:Literal runat="server" ID="LiteralErrorDate" />");
+                            $('#<%=this.TextDateOfBirth.ClientID %>').focus();
+                        }
                     }
-                }
-            });
-        }
+                });
+            }
+
+            isValid = ValidateTextField('#<%= TextCity.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorCity" />") && isValid;
+            isValid = ValidateTextField('#<%= TextStreet1.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorStreet" />") && isValid;
+            isValid = ValidateTextField('#<%= TextMail.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorMail" />") && isValid;
+            isValid = ValidateTextField('#<%= TextName.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorName" />") && isValid; // TODO: Actually validate geography?
 
             return isValid;
         }

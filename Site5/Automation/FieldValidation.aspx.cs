@@ -32,7 +32,7 @@ namespace Swarmops.Frontend.Automation
 
 
         [WebMethod]
-        public bool IsAmountValid(string amount)
+        public static bool IsAmountValid(string amount)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture(); // sets culture
 
@@ -51,7 +51,7 @@ namespace Swarmops.Frontend.Automation
         }
 
         [WebMethod]
-        public bool AreDocumentsUploaded(string guidString)
+        public static bool AreDocumentsUploaded(string guidString)
         {
             Documents documents = Documents.RecentFromDescription(guidString);
 

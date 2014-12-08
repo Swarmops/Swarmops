@@ -33,7 +33,7 @@
                     if (msg.d != true) {
                         isValid = false;
                         alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
-                        $('#<%=this.TextAmount.ClientID %>').focus();
+                        $('#<%=this.TextAmount.ClientID %>').addClass("entryError").focus();
                     }
                 }
             });
@@ -44,6 +44,7 @@
         function validateTextField (fieldId, message) {
             if ($(fieldId).val().length == 0) {
                 alertify.error(message);
+                $(fieldId).addClass("entryError");
                 $(fieldId).focus();
                 return false;
             }

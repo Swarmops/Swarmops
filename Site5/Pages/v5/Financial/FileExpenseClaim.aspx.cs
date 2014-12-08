@@ -111,7 +111,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             EasyUIControlsUsed = EasyUIControl.Tree;
-            IncludedControlsUsed = IncludedControl.FileUpload;
+            IncludedControlsUsed = IncludedControl.FileUpload | IncludedControl.JsonParameters;
         }
 
 

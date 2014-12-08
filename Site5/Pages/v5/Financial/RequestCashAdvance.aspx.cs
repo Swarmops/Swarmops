@@ -33,6 +33,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             EasyUIControlsUsed = EasyUIControl.Tree;
+            IncludedControlsUsed = IncludedControl.JsonParameters;
         }
 
 
@@ -47,7 +48,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_BankClearing;
             this.LabelBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_BankAccount;
 
-            this.LiteralErrorAmount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Amount;
+            this.LiteralErrorAmount.Text = String.Format(Resources.Pages.Financial.RequestCashAdvance_ValidationError_Amount, CurrentOrganization.Currency.DisplayCode);
             this.LiteralErrorPurpose.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Purpose;
             this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
             this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;

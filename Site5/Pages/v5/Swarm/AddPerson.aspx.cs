@@ -9,6 +9,7 @@ using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 // ReSharper disable once CheckNamespace
@@ -68,6 +69,7 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
             this.LiteralErrorMail.Text = Resources.Pages.Swarm.AddPerson_ErrorMail;
             this.LiteralErrorName.Text = Resources.Pages.Swarm.AddPerson_ErrorName;
             this.LiteralErrorStreet.Text = Resources.Pages.Swarm.AddPerson_ErrorStreet;
+            this.LiteralErrorDate.Text = Resources.Pages.Swarm.AddPerson_ErrorDate;
 
             this.BoxTitle.Text = PageTitle = String.Format (Resources.Pages.Swarm.AddPerson_Title,
                 Participant.Localized (CurrentOrganization.RegularLabel));
@@ -100,7 +102,12 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
         protected void ButtonSubmit_Click (object sender, EventArgs e)
         {
-            // TODO: Parse birthdate
+            DateTime dateOfBirth = new DateTime (1800, 1, 1); // null equivalent
+
+            if (this.TextDateOfBirth.Text.Length > 0)
+            {
+                dateOfBirth = DateTime.Parse (this.TextDateOfBirth.Text);
+            }
 
             Person newPerson = Person.Create (this.TextName.Text, this.TextMail.Text, string.Empty, this.TextPhone.Text,
                 this.TextStreet1.Text + this.TextStreet2.Text,
@@ -111,7 +118,11 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
             OutboundComm.CreateMembershipLetter (ParticipantMailType.MemberAddedWelcome, newMembership, CurrentUser);
 
-            // TODO: LOG
+            SwarmopsLogEntry logEntry = SwarmopsLog.CreateEntry (newPerson,
+                new Swarmops.Logic.Support.LogEntries.PersonAddedLogEntry (newMembership, CurrentUser));
+
+            logEntry.CreateAffectedObject (newMembership);
+            logEntry.CreateAffectedObject (CurrentUser);
 
             // Clear form and make way for next person
 
