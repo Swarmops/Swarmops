@@ -26,7 +26,7 @@
                 <ResourceKey>People_AddPerson</ResourceKey>
                 <UserLevel>2</UserLevel>
                 <Permissions />
-                <ImageUrl>iconshock-person-add</ImageUrl>
+                <ImageUrl>iconshock-user-add</ImageUrl>
                 <NavigateUrl>/Pages/v5/Swarm/AddPerson.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />

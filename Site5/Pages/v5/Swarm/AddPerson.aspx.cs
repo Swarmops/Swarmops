@@ -25,10 +25,16 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
             this.TextPostal.Style[HtmlTextWriterStyle.Width] = "70px";
             this.TextCity.Style[HtmlTextWriterStyle.Width] = "160px";
 
+            this.BoxTitle.Text = PageTitle = String.Format(Resources.Pages.Swarm.AddPerson_Title,
+                Participant.Localized(CurrentOrganization.RegularLabel));
+            InfoBoxLiteral = String.Format(Resources.Pages.Swarm.AddPerson_Info, Global.Timespan_OneYear,
+                Participant.Localized(CurrentOrganization.RegularLabel, TitleVariant.Ship),
+                DateTime.Today.AddYears(1).ToLongDateString());
+
             if (!Page.IsPostBack)
             {
-                Populate();
                 Localize();
+                Populate();
 
                 this.TextName.Focus();
             }
@@ -71,12 +77,6 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
             this.LiteralErrorStreet.Text = Resources.Pages.Swarm.AddPerson_ErrorStreet;
             this.LiteralErrorDate.Text = Resources.Pages.Swarm.AddPerson_ErrorDate;
 
-            this.BoxTitle.Text = PageTitle = String.Format (Resources.Pages.Swarm.AddPerson_Title,
-                Participant.Localized (CurrentOrganization.RegularLabel));
-            InfoBoxLiteral = String.Format (Resources.Pages.Swarm.AddPerson_Info, Global.Timespan_OneYear,
-                Participant.Localized (CurrentOrganization.RegularLabel, TitleVariant.Ship),
-                DateTime.Today.AddYears (1).ToLongDateString());
-
             this.LabelName.Text = Resources.Global.Global_Name;
             this.LabelCountry.Text = Resources.Global.Global_Country;
             this.LabelMail.Text = Resources.Global.Global_Mail;
@@ -90,7 +90,6 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
             this.LabelHeaderStatData.Text = Resources.Pages.Swarm.AddPerson_StatisticalData;
             this.LabelDateOfBirth.Text = Resources.Global.Global_DateOfBirth;
             this.LabelLegalGender.Text = Resources.Pages.Swarm.AddPerson_LegalGender;
-
 
             this.TextDateOfBirth.Attributes["placeholder"] = Global.Global_DateFormatShortReadable;
             this.TextName.Attributes["placeholder"] = "Joe Smith";
@@ -109,9 +108,14 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
                 dateOfBirth = DateTime.Parse (this.TextDateOfBirth.Text);
             }
 
+            string street = this.TextStreet1.Text;
+            if (!string.IsNullOrEmpty (this.TextStreet2.Text))
+            {
+                street += "|" + this.TextStreet2.Text;
+            }
+
             Person newPerson = Person.Create (this.TextName.Text, this.TextMail.Text, string.Empty, this.TextPhone.Text,
-                this.TextStreet1.Text + this.TextStreet2.Text,
-                this.TextPostal.Text, this.TextCity.Text, this.DropCountries.SelectedValue, DateTime.UtcNow,
+                street, this.TextPostal.Text, this.TextCity.Text, this.DropCountries.SelectedValue, dateOfBirth,
                 (PersonGender)Enum.Parse(typeof(PersonGender), this.DropGenders.SelectedValue));
 
             Membership newMembership = Membership.Create (newPerson, CurrentOrganization, DateTime.Today.AddYears (1));
