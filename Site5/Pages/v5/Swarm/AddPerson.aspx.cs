@@ -111,14 +111,7 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
             OutboundComm.CreateMembershipLetter (ParticipantMailType.MemberAddedWelcome, newMembership, CurrentUser);
 
-            // Person.Create()
-
-            // Send notify
-
-            // "Welcome to Swarmops. Your password is:\r\n\r\n" + randomPassword;
-
-            // Send password in mail
-
+            // TODO: LOG
 
             // Clear form and make way for next person
 

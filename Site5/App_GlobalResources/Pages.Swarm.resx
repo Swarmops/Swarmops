@@ -120,6 +120,9 @@
   <data name="AddPerson_ErrorCity" xml:space="preserve">
     <value>A valid city is required.</value>
   </data>
+  <data name="AddPerson_ErrorDate" xml:space="preserve">
+    <value>Provide a valid date or leave this field empty.</value>
+  </data>
   <data name="AddPerson_ErrorMail" xml:space="preserve">
     <value>A valid email is required.</value>
   </data>

@@ -58,34 +58,8 @@ public class FieldValidation : WebService
 
 
     [WebMethod]
-    public bool IsAmountValid (string amount)
+    public bool IsDateValid (string input)
     {
-        CultureInfo culture = GetUserCulture();
-
-        // Try to parse the string we got as a double
-
-        try
-        {
-            Double.Parse (HttpUtility.UrlDecode (amount), NumberStyles.Number, culture);
-            return true;
-        }
-        catch (Exception)
-        {
-        }
-
-        return false;
-    }
-
-    [WebMethod]
-    public bool AreDocumentsUploaded (string guidString)
-    {
-        Documents documents = Documents.RecentFromDescription (guidString);
-
-        if (documents.Count == 0)
-        {
-            return false;
-        }
-
-        return true;
+        
     }
 }

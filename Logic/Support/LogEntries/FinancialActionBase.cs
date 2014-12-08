@@ -15,6 +15,9 @@ namespace Swarmops.Logic.Support.LogEntries
         public string Description { get; set; }
         public int OwnerPersonId { get; set; }
         public string OwnerPersonName { get; set; }
+        /// <summary>
+        /// Always in UTC
+        /// </summary>
         public DateTime DateTime { get; set; }
     }
 }

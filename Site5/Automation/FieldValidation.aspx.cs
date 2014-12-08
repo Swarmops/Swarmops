@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Web.Services;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Automation
 {
@@ -12,12 +14,57 @@ namespace Swarmops.Frontend.Automation
         }
 
         [WebMethod]
+        public static bool IsDateValid (string input)
+        {
+            AuthenticationData authenticationData = GetAuthenticationDataAndCulture(); // sets culture
+
+            DateTime dummyResult;
+            return DateTime.TryParse (input, out dummyResult);
+        }
+
+        [WebMethod]
         public static void TestFoo (string input)
         {
             AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
 
             System.Diagnostics.Trace.WriteLine (input);
         }
+
+
+        [WebMethod]
+        public bool IsAmountValid(string amount)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture(); // sets culture
+
+            // Try to parse the string we got as a double
+
+            try
+            {
+                Double.Parse(amount, NumberStyles.Number);
+                return true;
+            }
+            catch (Exception)
+            {
+            }
+
+            return false;
+        }
+
+        [WebMethod]
+        public bool AreDocumentsUploaded(string guidString)
+        {
+            Documents documents = Documents.RecentFromDescription(guidString);
+
+            if (documents.Count == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+
 
         [WebMethod]
         public static PostalCodesCities GetPostalCodesCities (string countryCode)

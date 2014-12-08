@@ -137,6 +137,29 @@
             isValid = ValidateTextField('#<%= TextMail.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorMail" />") && isValid;
             isValid = ValidateTextField('#<%= TextName.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorName" />") && isValid; // TODO: Actually validate geography?
 
+            var dateFieldContents = $('#<%= TextDateOfBirth.ClientID%>').val();
+            if (dateFieldContents.length > 0) {
+
+                alert('testing');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Automation/FieldValidation.aspx/IsDateValid",
+                    data: "{'amount': '" + escape($('#<%=this.TextAmount.ClientID %>').val()) + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,  // blocks until function returns - race conditions otherwise
+                success: function (msg) {
+                    if (msg.d != true) {
+                        isValid = false;
+                        $('#TextAmount').addClass("entryError");
+                        alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
+                        $('#<%=this.TextAmount.ClientID %>').focus();
+                    }
+                }
+            });
+        }
+
             return isValid;
         }
 
