@@ -12,9 +12,10 @@ namespace Swarmops.Logic.Support
     public class DatabaseMaintenance
     {
         /// <summary>
-        /// Feeds a newly-created database with an empty structure. Do not use on populated databases; it's like a Genesis Device.
+        ///     Feeds a newly-created database with an empty structure. Do not use on populated databases; it's like a Genesis
+        ///     Device.
         /// </summary>
-        static public void FirstInitialization()
+        public static void FirstInitialization()
         {
             // Security check: make sure we throw an exception if we try to get person 1.
 
@@ -24,7 +25,7 @@ namespace Swarmops.Logic.Support
 
             try
             {
-                personOne = Person.FromIdentity(1);
+                personOne = Person.FromIdentity (1);
                 initialized = true;
             }
             catch (Exception)
@@ -32,27 +33,31 @@ namespace Swarmops.Logic.Support
                 // Do nothing, the exception is expected
             }
 
-            if (initialized == true && personOne != null) // double checks in case Database behavior should change to return null rather than throw later
+            if (initialized && personOne != null)
+                // double checks in case Database behavior should change to return null rather than throw later
             {
-                throw new InvalidOperationException("Cannot run Genesis Device style initalization on already-populated database");
+                throw new InvalidOperationException (
+                    "Cannot run Genesis Device style initalization on already-populated database");
             }
 
             using (WebClient client = new WebClient())
             {
-                sql = client.DownloadString("http://packages.swarmops.com/schemata/initialize.sql");  // Hardcoded as security measure - don't want to pass arbitrary sql in from web layer
+                sql = client.DownloadString ("http://packages.swarmops.com/schemata/initialize.sql");
+                // Hardcoded as security measure - don't want to pass arbitrary sql in from web layer
             }
 
-            string[] sqlCommands = sql.Split('#');  // in the file, the commands are split by a single # sign. (Semicolons are an integral part of storedprocs, so they can't be used.)
+            string[] sqlCommands = sql.Split ('#');
+            // in the file, the commands are split by a single # sign. (Semicolons are an integral part of storedprocs, so they can't be used.)
 
             foreach (string sqlCommand in sqlCommands)
             {
-                SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCommand.Trim());
+                SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand (sqlCommand.Trim());
             }
 
-            SwarmDb.GetDatabaseForWriting().SetKeyValue("DbVersion", "1"); // We're at baseline
+            SwarmDb.GetDatabaseForWriting().SetKeyValue ("DbVersion", "1"); // We're at baseline
         }
 
-        static public void UpgradeSchemata()
+        public static void UpgradeSchemata()
         {
             int currentDbVersion = SwarmDb.DbVersion;
             int expectedDbVersion = SwarmDb.DbVersionExpected;
@@ -63,25 +68,27 @@ namespace Swarmops.Logic.Support
             {
                 currentDbVersion++;
 
-                string fileName = String.Format("http://packages.swarmops.com/schemata/upgrade-{0:D4}.sql", currentDbVersion);
+                string fileName = String.Format ("http://packages.swarmops.com/schemata/upgrade-{0:D4}.sql",
+                    currentDbVersion);
 
                 using (WebClient client = new WebClient())
                 {
-                    sql = client.DownloadString(fileName);
+                    sql = client.DownloadString (fileName);
                 }
 
-                string[] sqlCommands = sql.Split('#');  // in the file, the commands are split by a single # sign. (Semicolons are an integral part of storedprocs, so they can't be used.)
+                string[] sqlCommands = sql.Split ('#');
+                // in the file, the commands are split by a single # sign. (Semicolons are an integral part of storedprocs, so they can't be used.)
 
                 foreach (string sqlCommand in sqlCommands)
                 {
                     try
                     {
-                        SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand(sqlCommand.Trim());
+                        SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand (sqlCommand.Trim());
                     }
                     catch (MySqlException exception)
                     {
                         SwarmDb.GetDatabaseForWriting()
-                            .CreateExceptionLogEntry(DateTime.UtcNow, "DatabaseUpgrade", exception);
+                            .CreateExceptionLogEntry (DateTime.UtcNow, "DatabaseUpgrade", exception);
 
                         // Continue processing after logging error.
                         // TODO: Throw and abort? Tricky decision
@@ -89,14 +96,16 @@ namespace Swarmops.Logic.Support
                 }
 
                 upgraded = true;
-                SwarmDb.GetDatabaseForWriting().SetKeyValue("DbVersion", currentDbVersion.ToString(CultureInfo.InvariantCulture)); // Increment after each successful run
+                SwarmDb.GetDatabaseForWriting()
+                    .SetKeyValue ("DbVersion", currentDbVersion.ToString (CultureInfo.InvariantCulture));
+                // Increment after each successful run
             }
 
             if (upgraded)
             {
                 try
                 {
-                    OutboundComm.CreateNotification(null, NotificationResource.System_DatabaseSchemaUpgraded);
+                    OutboundComm.CreateNotification (null, NotificationResource.System_DatabaseSchemaUpgraded);
                 }
                 catch (ArgumentException)
                 {

@@ -6,80 +6,68 @@ using Swarmops.Basic.Types;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
-/// Summary description for ListPersonDataSource
+///     Summary description for ListPersonDataSource
 /// </summary>
 public class ListPerson : Person
 {
     //additional fields for the list
-    private DateTime joinedDate;
-    public DateTime JoinedDate
-    {
-        get { return joinedDate; }
-        set { joinedDate = value; }
-    }
-
     private DateTime expiresDate;
-    public DateTime ExpiresDate
-    {
-        get { return expiresDate; }
-        set { expiresDate = value; }
-    }
+    private DateTime joinedDate;
 
-    private MembershipPaymentStatus paymentStatus;
-    public MembershipPaymentStatus PaymentStatus
-    {
-        get { return paymentStatus; }
-        set { paymentStatus = value; }
-    }
-
-    int membershipId;
-
-    public int MembershipId
-    {
-        get { return membershipId; }
-        set { membershipId = value; }
-    }
-
-    public ListPerson (BasicPerson b)
+    public ListPerson(BasicPerson b)
         : base(b)
     {
     }
 
-    public ListPerson (Person p)
+    public ListPerson(Person p)
         : base(p)
     {
     }
 
-    public ListPerson ()
+    public ListPerson()
         : base(null)
     {
     }
 
+    public DateTime JoinedDate
+    {
+        get { return this.joinedDate; }
+        set { this.joinedDate = value; }
+    }
 
+    public DateTime ExpiresDate
+    {
+        get { return this.expiresDate; }
+        set { this.expiresDate = value; }
+    }
+
+    public MembershipPaymentStatus PaymentStatus { get; set; }
+
+    public int MembershipId { get; set; }
 }
 
 public class ListPersonDataSource
 {
-    int[] listedPersons;
+    private readonly int[] listedPersons;
     public int selectedOrgId = 1;
 
-    public ListPersonDataSource ()
+    public ListPersonDataSource()
     {
     }
 
-    public ListPersonDataSource (int[] listedPersons)
+    public ListPersonDataSource(int[] listedPersons)
     {
         this.listedPersons = listedPersons;
     }
 
-    public List<ListPerson> GetData (string sortBy)
+    public List<ListPerson> GetData(string sortBy)
     {
-
         List<ListPerson> retval = new List<ListPerson>();
-        if (listedPersons != null)
+        if (this.listedPersons != null)
         {
-            People ppl = People.FromIdentities(listedPersons);
-            Dictionary<int, List<BasicMembership>> membershipTable = Memberships.GetMembershipsForPeople(listedPersons, Membership.GracePeriod);
+            People ppl = People.FromIdentities(this.listedPersons);
+            Dictionary<int, List<BasicMembership>> membershipTable =
+                Memberships.GetMembershipsForPeople(this.listedPersons, Membership.GracePeriod);
             Memberships membershipsToLoad = new Memberships();
             foreach (Person p in ppl)
             {
@@ -87,7 +75,7 @@ public class ListPersonDataSource
                 {
                     foreach (BasicMembership bm in membershipTable[p.Identity])
                     {
-                        if (bm.OrganizationId == selectedOrgId)
+                        if (bm.OrganizationId == this.selectedOrgId)
                         {
                             Membership ms = Membership.FromBasic(bm);
                             membershipsToLoad.Add(ms);
@@ -110,7 +98,7 @@ public class ListPersonDataSource
                 {
                     foreach (BasicMembership bm in membershipTable[p.Identity])
                     {
-                        if (bm.OrganizationId == selectedOrgId)
+                        if (bm.OrganizationId == this.selectedOrgId)
                         {
                             Membership ms = memberships[bm.MembershipId];
                             lp.JoinedDate = ms.MemberSince;
@@ -123,19 +111,19 @@ public class ListPersonDataSource
             }
         }
 
-        PropertyInfo pi = typeof(ListPerson).GetProperty(sortBy);
+        PropertyInfo pi = typeof (ListPerson).GetProperty(sortBy);
         if (pi != null)
         {
-
-            MemberInfo [] miA = pi.PropertyType.GetMember("CompareTo", MemberTypes.Method, BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            MemberInfo[] miA = pi.PropertyType.GetMember("CompareTo", MemberTypes.Method,
+                BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
             if (miA.Length > 0)
             {
-
-                MethodInfo mi =(MethodInfo) miA[0];
-                retval.Sort(delegate(ListPerson p1, ListPerson p2)
-                {
-                    return Convert.ToInt32(mi.Invoke(pi.GetValue(p1, null), new object[] { pi.GetValue(p2, null) }));
-                });
+                MethodInfo mi = (MethodInfo) miA[0];
+                retval.Sort(
+                    delegate(ListPerson p1, ListPerson p2)
+                    {
+                        return Convert.ToInt32(mi.Invoke(pi.GetValue(p1, null), new[] {pi.GetValue(p2, null)}));
+                    });
             }
         }
         return retval;

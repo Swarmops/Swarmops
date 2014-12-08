@@ -13,17 +13,17 @@ namespace Swarmops.Logic.Swarm
     {
         public static Volunteers GetOpen()
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetOpenVolunteers());
+            return FromArray (SwarmDb.GetDatabaseForReading().GetOpenVolunteers());
         }
 
         public static Volunteers FromArray (BasicVolunteer[] basicArray)
         {
-            var result = new Volunteers();
+            Volunteers result = new Volunteers();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicVolunteer basic in basicArray)
             {
-                result.Add(Volunteer.FromBasic(basic));
+                result.Add (Volunteer.FromBasic (basic));
             }
 
             return result;
@@ -31,15 +31,15 @@ namespace Swarmops.Logic.Swarm
 
         public static Volunteers FromSingle (Volunteer volunteer)
         {
-            var volunteers = new Volunteers();
-            volunteers.Add(volunteer);
+            Volunteers volunteers = new Volunteers();
+            volunteers.Add (volunteer);
 
             return volunteers;
         }
 
         public void Remove (Volunteers volunteersToRemove)
         {
-            var identityLookup = new Dictionary<int, bool>();
+            Dictionary<int, bool> identityLookup = new Dictionary<int, bool>();
 
             foreach (Volunteer volunteer in volunteersToRemove)
             {
@@ -50,11 +50,11 @@ namespace Swarmops.Logic.Swarm
 
             while (index < Count)
             {
-                if (identityLookup.ContainsKey(this[index].Identity))
+                if (identityLookup.ContainsKey (this[index].Identity))
                 {
                     // This volunteer should be removed from the list.
 
-                    RemoveAt(index);
+                    RemoveAt (index);
                 }
                 else
                 {
@@ -67,7 +67,7 @@ namespace Swarmops.Logic.Swarm
 
         public new void Remove (Volunteer volunteerToRemove)
         {
-            Remove(FromSingle(volunteerToRemove));
+            Remove (FromSingle (volunteerToRemove));
         }
 
         public DataSet ToDataSet()
@@ -76,11 +76,11 @@ namespace Swarmops.Logic.Swarm
             // It's possible to write it more optimized, and build the DataSet by hand, but that takes
             // around 100 LoC.
 
-            var serializer = new XmlSerializer(typeof (Volunteers));
-            var sw = new StringWriter();
-            serializer.Serialize(sw, this);
-            var ds = new DataSet();
-            ds.ReadXml(sw.ToString());
+            XmlSerializer serializer = new XmlSerializer (typeof (Volunteers));
+            StringWriter sw = new StringWriter();
+            serializer.Serialize (sw, this);
+            DataSet ds = new DataSet();
+            ds.ReadXml (sw.ToString());
 
             return ds;
         }

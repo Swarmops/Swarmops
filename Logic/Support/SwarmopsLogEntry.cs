@@ -5,9 +5,9 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
 {
-    public class SwarmopsLogEntry: BasicSwarmopsLogEntry
+    public class SwarmopsLogEntry : BasicSwarmopsLogEntry
     {
-        private SwarmopsLogEntry (BasicSwarmopsLogEntry basic):
+        private SwarmopsLogEntry (BasicSwarmopsLogEntry basic) :
             base (basic)
         {
             // private ctor
@@ -15,31 +15,32 @@ namespace Swarmops.Logic.Support
 
         public static SwarmopsLogEntry FromBasic (BasicSwarmopsLogEntry basic)
         {
-            return new SwarmopsLogEntry(basic);
+            return new SwarmopsLogEntry (basic);
         }
 
         public static SwarmopsLogEntry FromIdentity (int swarmopsLogEntryId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetSwarmopsLogEntry(swarmopsLogEntryId));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetSwarmopsLogEntry (swarmopsLogEntryId));
         }
 
         public static SwarmopsLogEntry FromIdentityAggressive (int swarmopsLogEntryId)
         {
-            return FromBasic(SwarmDb.GetDatabaseForWriting().GetSwarmopsLogEntry(swarmopsLogEntryId)); // Writing intentional
+            return FromBasic (SwarmDb.GetDatabaseForWriting().GetSwarmopsLogEntry (swarmopsLogEntryId));
+            // Writing intentional
         }
 
         public static SwarmopsLogEntry Create (Person person, IXmlPayload logEntry, params object[] affectedObjects)
         {
-            SwarmopsLogEntry entry = SwarmopsLog.CreateEntry(person, logEntry);
+            SwarmopsLogEntry entry = SwarmopsLog.CreateEntry (person, logEntry);
 
             if (person != null)
             {
-                entry.CreateAffectedObject(person);
+                entry.CreateAffectedObject (person);
             }
 
             foreach (IHasIdentity affectedObject in affectedObjects)
             {
-                entry.CreateAffectedObject(affectedObject);
+                entry.CreateAffectedObject (affectedObject);
             }
 
             return entry;
@@ -48,12 +49,13 @@ namespace Swarmops.Logic.Support
         public void CreateAffectedObject (IHasIdentity affectedObject)
         {
             string className = affectedObject.GetType().ToString();
-            int dotIndex = className.LastIndexOf('.');
+            int dotIndex = className.LastIndexOf ('.');
 
-            className = className.Substring(dotIndex + 1); // assumes there's always at least one dot in a class name
-            
+            className = className.Substring (dotIndex + 1); // assumes there's always at least one dot in a class name
 
-            SwarmDb.GetDatabaseForWriting().CreateSwarmopsLogEntryAffectedObject(this.Identity, className, affectedObject.Identity);
+
+            SwarmDb.GetDatabaseForWriting()
+                .CreateSwarmopsLogEntryAffectedObject (Identity, className, affectedObject.Identity);
         }
     }
 }

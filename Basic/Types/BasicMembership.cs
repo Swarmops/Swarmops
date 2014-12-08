@@ -7,33 +7,33 @@ namespace Swarmops.Basic.Types
     {
         public BasicMembership (int personId, int organizationId)
         {
-            this.PersonId = personId;
-            this.OrganizationId = organizationId;
-            this.Active = true;
-            this.DateTerminated = DateTime.MinValue;
+            PersonId = personId;
+            OrganizationId = organizationId;
+            Active = true;
+            DateTerminated = DateTime.MinValue;
         }
 
         public BasicMembership (int personId, int organizationId, DateTime memberSince, DateTime expires)
-            : this(personId, organizationId)
+            : this (personId, organizationId)
         {
-            this.MemberSince = memberSince;
-            this.Expires = expires;
+            MemberSince = memberSince;
+            Expires = expires;
         }
 
         public BasicMembership (int membershipId, int personId, int organizationId, DateTime memberSince,
-                                DateTime expires, bool active, DateTime dateTerminated)
+            DateTime expires, bool active, DateTime dateTerminated)
         {
-            this.MembershipId = membershipId;
-            this.PersonId = personId;
-            this.OrganizationId = organizationId;
-            this.MemberSince = memberSince;
-            this.Expires = expires;
-            this.Active = active;
-            this.DateTerminated = dateTerminated;
+            MembershipId = membershipId;
+            PersonId = personId;
+            OrganizationId = organizationId;
+            MemberSince = memberSince;
+            Expires = expires;
+            Active = active;
+            DateTerminated = dateTerminated;
         }
 
         public BasicMembership (BasicMembership original)
-            : this(
+            : this (
                 original.MembershipId, original.PersonId, original.OrganizationId, original.MemberSince,
                 original.Expires, original.Active, original.DateTerminated)
         {
@@ -48,23 +48,18 @@ namespace Swarmops.Basic.Types
         public DateTime DateTerminated { get; protected set; }
         public DateTime Expires { get; protected set; }
 
-
-
-
-        // RICK NOTES: I moved the MembershipPayments to a separate table, as they are NULL on most rows.
-        // Not implemented as per 2010-01-11.
-        
-        // Also, note the renaming of "Valid" to "Active", consistently with other objects and analogous to "Open".
-
-
-
         #region IHasIdentity Members
 
         public int Identity
         {
-            get { return this.MembershipId; }
+            get { return MembershipId; }
         }
 
         #endregion
+
+        // RICK NOTES: I moved the MembershipPayments to a separate table, as they are NULL on most rows.
+        // Not implemented as per 2010-01-11.
+
+        // Also, note the renaming of "Valid" to "Active", consistently with other objects and analogous to "Open".
     }
 }

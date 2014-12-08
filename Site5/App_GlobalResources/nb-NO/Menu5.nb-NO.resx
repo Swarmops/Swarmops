@@ -124,6 +124,7 @@
     <value>Tilgangslister</value>
   </data>
   
+  
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geografitre</value>
   </data>
@@ -240,6 +241,7 @@
   <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>Legg til medlem</value>
   </data>
+  
   
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Medlemsoversikt</value>

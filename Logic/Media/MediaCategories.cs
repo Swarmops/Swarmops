@@ -14,7 +14,7 @@ namespace Swarmops.Logic.Media
 
         public static MediaCategories FromArray (BasicMediaCategory[] basicArray)
         {
-            var result = new MediaCategories();
+            MediaCategories result = new MediaCategories();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicMediaCategory basic in basicArray)
@@ -32,7 +32,7 @@ namespace Swarmops.Logic.Media
 
         public static MediaCategories GetAll()
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetMediaCategories());
+            return FromArray (SwarmDb.GetDatabaseForReading().GetMediaCategories());
         }
     }
 }

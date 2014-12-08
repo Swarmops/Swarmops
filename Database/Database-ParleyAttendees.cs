@@ -8,63 +8,59 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string parleyAttendeeFieldSequence =
             " ParleyAttendeeId, ParleyId, PersonId, SignupDateTime, Active, " + // 0-4
-            "CancelDateTime, Invoiced, OutboundInvoiceId, IsGuest" +            // 5-8
+            "CancelDateTime, Invoiced, OutboundInvoiceId, IsGuest" + // 5-8
             " FROM ParleyAttendees ";
 
-        private static BasicParleyAttendee ReadParleyAttendeeFromDataReader(IDataRecord reader)
+        private static BasicParleyAttendee ReadParleyAttendeeFromDataReader (IDataRecord reader)
         {
-            int parleyAttendeeId = reader.GetInt32(0);
-            int parleyId = reader.GetInt32(1);
-            int personId = reader.GetInt32(2);
-            DateTime signupDateTime = reader.GetDateTime(3);
-            bool active = reader.GetBoolean(4);
+            int parleyAttendeeId = reader.GetInt32 (0);
+            int parleyId = reader.GetInt32 (1);
+            int personId = reader.GetInt32 (2);
+            DateTime signupDateTime = reader.GetDateTime (3);
+            bool active = reader.GetBoolean (4);
 
-            DateTime cancelDateTime = reader.GetDateTime(5);
-            bool invoiced = reader.GetBoolean(6);
-            int outboundInvoiceId = reader.GetInt32(7);
-            bool isGuest = reader.GetBoolean(8);
+            DateTime cancelDateTime = reader.GetDateTime (5);
+            bool invoiced = reader.GetBoolean (6);
+            int outboundInvoiceId = reader.GetInt32 (7);
+            bool isGuest = reader.GetBoolean (8);
 
-            return new BasicParleyAttendee (parleyAttendeeId, parleyId, personId, signupDateTime, active, cancelDateTime, invoiced, outboundInvoiceId, isGuest);
+            return new BasicParleyAttendee (parleyAttendeeId, parleyId, personId, signupDateTime, active, cancelDateTime,
+                invoiced, outboundInvoiceId, isGuest);
         }
-
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
 
-
-        public BasicParleyAttendee GetParleyAttendee(int parleyAttendeeId)
+        public BasicParleyAttendee GetParleyAttendee (int parleyAttendeeId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + parleyAttendeeFieldSequence +
-                    "WHERE ParleyAttendeeId=" + parleyAttendeeId.ToString(),
-                                 connection);
+                    GetDbCommand ("SELECT" + parleyAttendeeFieldSequence +
+                                  "WHERE ParleyAttendeeId=" + parleyAttendeeId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadParleyAttendeeFromDataReader(reader);
+                        return ReadParleyAttendeeFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such ParleyAttendeeId:" + parleyAttendeeId.ToString());
+                    throw new ArgumentException ("No such ParleyAttendeeId:" + parleyAttendeeId);
                 }
             }
-
         }
 
 
-        public BasicParleyAttendee[] GetParleyAttendees(params object[] conditions)
+        public BasicParleyAttendee[] GetParleyAttendees (params object[] conditions)
         {
             List<BasicParleyAttendee> result = new List<BasicParleyAttendee>();
 
@@ -73,14 +69,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + parleyAttendeeFieldSequence + ConstructWhereClause("ParleyAttendees", conditions), connection);
+                    GetDbCommand (
+                        "SELECT" + parleyAttendeeFieldSequence + ConstructWhereClause ("ParleyAttendees", conditions),
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadParleyAttendeeFromDataReader(reader));
+                        result.Add (ReadParleyAttendeeFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -89,7 +86,7 @@ namespace Swarmops.Database
         }
 
 
-        public int[] GetParleyAttendeeOptions(int parleyAttendeeId)
+        public int[] GetParleyAttendeeOptions (int parleyAttendeeId)
         {
             List<int> result = new List<int>();
 
@@ -98,14 +95,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT ParleyOptionId FROM ParleyAttendeeOptions WHERE ParleyAttendeeId=" + parleyAttendeeId.ToString(), connection);
+                    GetDbCommand (
+                        "SELECT ParleyOptionId FROM ParleyAttendeeOptions WHERE ParleyAttendeeId=" + parleyAttendeeId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetInt32(0));
+                        result.Add (reader.GetInt32 (0));
                     }
 
                     return result.ToArray();
@@ -113,83 +111,79 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Creation and manipulation -- stored procedures
 
-
-        public int CreateParleyAttendee(int parleyId, int personId, bool isGuest)  // ok
+        public int CreateParleyAttendee (int parleyId, int personId, bool isGuest) // ok
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateParleyAttendee", connection);
+                DbCommand command = GetDbCommand ("CreateParleyAttendee", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "parleyId", parleyId);
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "signupDateTime", DateTime.Now);
-                AddParameterWithName(command, "isGuest", isGuest);
+                AddParameterWithName (command, "parleyId", parleyId);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "signupDateTime", DateTime.Now);
+                AddParameterWithName (command, "isGuest", isGuest);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int SetParleyAttendeeActive(int parleyAttendeeId, bool active)
+        public int SetParleyAttendeeActive (int parleyAttendeeId, bool active)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetParleyAttendeeActive", connection);
+                DbCommand command = GetDbCommand ("SetParleyAttendeeActive", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "parleyAttendeeId", parleyAttendeeId);
-                AddParameterWithName(command, "active", active);
-                AddParameterWithName(command, "cancelDateTime", DateTime.Now);  // if active=false, set to cancellation time. if active=true, ignored
+                AddParameterWithName (command, "parleyAttendeeId", parleyAttendeeId);
+                AddParameterWithName (command, "active", active);
+                AddParameterWithName (command, "cancelDateTime", DateTime.Now);
+                // if active=false, set to cancellation time. if active=true, ignored
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int SetParleyAttendeeInvoiced(int parleyAttendeeId, int outboundInvoiceId)
+        public int SetParleyAttendeeInvoiced (int parleyAttendeeId, int outboundInvoiceId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetParleyAttendeeInvoiced", connection);
+                DbCommand command = GetDbCommand ("SetParleyAttendeeInvoiced", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "parleyAttendeeId", parleyAttendeeId);
-                AddParameterWithName(command, "invoiced", (outboundInvoiceId > 0 ? true : false));
-                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
+                AddParameterWithName (command, "parleyAttendeeId", parleyAttendeeId);
+                AddParameterWithName (command, "invoiced", (outboundInvoiceId > 0 ? true : false));
+                AddParameterWithName (command, "outboundInvoiceId", outboundInvoiceId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int AddParleyAttendeeOption(int parleyAttendeeId, int parleyOptionId)
+        public int AddParleyAttendeeOption (int parleyAttendeeId, int parleyOptionId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("AddParleyAttendeeOption", connection);
+                DbCommand command = GetDbCommand ("AddParleyAttendeeOption", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "parleyAttendeeId", parleyAttendeeId);
-                AddParameterWithName(command, "parleyOptionId", parleyOptionId);
+                AddParameterWithName (command, "parleyAttendeeId", parleyAttendeeId);
+                AddParameterWithName (command, "parleyOptionId", parleyOptionId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
         #endregion
-
-
     }
 }

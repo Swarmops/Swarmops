@@ -4,30 +4,33 @@ using Swarmops.Basic.Interfaces;
 namespace Swarmops.Basic.Types.Financial
 {
     [Serializable]
-    public class BasicCashAdvance: IHasIdentity
+    public class BasicCashAdvance : IHasIdentity
     {
-        public BasicCashAdvance(int cashAdvanceId, int organizationId, int personId, DateTime createdDateTime, int createdByPersonId,
-            int financialAccountId, Int64 amountCents, string description, bool open, bool attested, 
+        public BasicCashAdvance (int cashAdvanceId, int organizationId, int personId, DateTime createdDateTime,
+            int createdByPersonId,
+            int financialAccountId, Int64 amountCents, string description, bool open, bool attested,
             bool paidOut, int attestedByPersonId, DateTime attestedDateTime)
         {
-            this.CashAdvanceId = cashAdvanceId;
-            this.OrganizationId = organizationId;
-            this.PersonId = personId;
-            this.CreatedDateTime = createdDateTime;
-            this.CreatedByPersonId = createdByPersonId;
-            this.BudgetId = financialAccountId;
-            this.AmountCents = amountCents;
-            this.Description = description;
-            this.Open = open;
-            this.Attested = attested;
-            this.PaidOut = paidOut;
-            this.AttestedByPersonId = attestedByPersonId;
-            this.AttestedDateTime = attestedDateTime;
+            CashAdvanceId = cashAdvanceId;
+            OrganizationId = organizationId;
+            PersonId = personId;
+            CreatedDateTime = createdDateTime;
+            CreatedByPersonId = createdByPersonId;
+            BudgetId = financialAccountId;
+            AmountCents = amountCents;
+            Description = description;
+            Open = open;
+            Attested = attested;
+            PaidOut = paidOut;
+            AttestedByPersonId = attestedByPersonId;
+            AttestedDateTime = attestedDateTime;
         }
 
-        public BasicCashAdvance (BasicCashAdvance original):
-            this(original.CashAdvanceId, original.OrganizationId, original.PersonId, original.CreatedDateTime, original.CreatedByPersonId,
-            original.BudgetId, original.AmountCents,original.Description, original.Open, original.Attested,
+        public BasicCashAdvance (BasicCashAdvance original) :
+            this (
+            original.CashAdvanceId, original.OrganizationId, original.PersonId, original.CreatedDateTime,
+            original.CreatedByPersonId,
+            original.BudgetId, original.AmountCents, original.Description, original.Open, original.Attested,
             original.PaidOut, original.AttestedByPersonId, original.AttestedDateTime)
         {
             // copy ctor - no action other than copying original object
@@ -55,6 +58,9 @@ namespace Swarmops.Basic.Types.Financial
 
         // IHasIdentity interface
 
-        public int Identity { get { return this.CashAdvanceId; } }
+        public int Identity
+        {
+            get { return CashAdvanceId; }
+        }
     }
 }

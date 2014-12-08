@@ -117,6 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddPerson_ErrorCity" xml:space="preserve">
+    <value>A valid city is required.</value>
+  </data>
+  <data name="AddPerson_ErrorDate" xml:space="preserve">
+    <value>Provide a valid date or leave this field empty.</value>
+  </data>
+  <data name="AddPerson_ErrorMail" xml:space="preserve">
+    <value>A valid email is required.</value>
+  </data>
+  <data name="AddPerson_ErrorName" xml:space="preserve">
+    <value>A name is required.</value>
+  </data>
+  <data name="AddPerson_ErrorStreet" xml:space="preserve">
+    <value>A valid street or P.O. box is required.</value>
+  </data>
+  <data name="AddPerson_GeographyDetected" xml:space="preserve">
+    <value>Geography detected</value>
+  </data>
+  <data name="AddPerson_Info" xml:space="preserve">
+    <value>This is where you enter new people into the organization. As you register them for a &lt;strong&gt;{0} {1}&lt;/strong&gt; lasting until &lt;strong&gt;{2}&lt;/strong&gt;, they will receive a welcome message with a randomized login password in mail. The local officers will also be notified of the new person, for an opportunity to send them a welcome message.</value>
+    <comment>{0} and {1} can be "one-year" and "Membership", for example. {2} is LongDateString.</comment>
+  </data>
+  <data name="AddPerson_LegalGender" xml:space="preserve">
+    <value>Legal Gender</value>
+    <comment>"Legal" to cut short discussions on 50 different genders for the time being</comment>
+  </data>
+  <data name="AddPerson_PersonSuccessfullyRegistered" xml:space="preserve">
+    <value>The person was successfully added to the organization. A welcome mail has been sent.</value>
+  </data>
+  <data name="AddPerson_StatisticalData" xml:space="preserve">
+    <value>Statistical Data</value>
+    <comment>Header for gender, date of birth</comment>
+  </data>
+  <data name="AddPerson_Street1PO" xml:space="preserve">
+    <value>Street 1 (or P.O. Box)</value>
+  </data>
+  <data name="AddPerson_Street2" xml:space="preserve">
+    <value>Street 2 - if applicable</value>
+  </data>
+  <data name="AddPerson_Title" xml:space="preserve">
+    <value>Add {0}</value>
+    <comment>The {0} is replaced in code. Singular form gender neutral of Participant.</comment>
+  </data>
   <data name="ListFindPeople_Info" xml:space="preserve">
     <value>Use this to find people in the organization. You can search by geography and by name pattern ("Jo S" will match Joel Sander).</value>
   </data>

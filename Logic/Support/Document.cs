@@ -12,35 +12,90 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
 {
-    public class Document: BasicDocument
+    public class Document : BasicDocument
     {
-        private Document (BasicDocument document): base (document)
+        private Document (BasicDocument document) : base (document)
         {
-            
         }
 
-        public static Document FromIdentity(int documentId)
+        public new string ServerFileName
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetDocument(documentId));
+            get { return base.ServerFileName; }
+            set
+            {
+                SwarmDb.GetDatabaseForWriting().SetDocumentServerFileName (Identity, value);
+                base.ServerFileName = value;
+            }
         }
 
-        public static Document FromIdentityAggressive(int documentId)
+        public IHasIdentity ForeignObject
         {
-            return FromBasic(SwarmDb.GetDatabaseForWriting().GetDocument(documentId)); // "For writing" is intentional - bypasses a race condition in replication
+            get
+            {
+                switch (DocumentType)
+                {
+                    case DocumentType.ExpenseClaim:
+                        return ExpenseClaim.FromIdentity (ForeignId);
+
+                    case DocumentType.FinancialTransaction:
+                        return FinancialTransaction.FromIdentity (ForeignId);
+
+                    case DocumentType.InboundInvoice:
+                        return InboundInvoice.FromIdentity (ForeignId);
+
+                    case DocumentType.PaperLetter:
+                        return PaperLetter.FromIdentity (ForeignId);
+
+                    case DocumentType.PayrollItem:
+                        return PayrollItem.FromIdentity (ForeignId);
+
+                    default:
+                        throw new NotImplementedException ("DocumentType needs implementation: " +
+                                                           DocumentType.ToString());
+                }
+            }
         }
 
-        public static Document FromBasic(BasicDocument basicDocument)
+        protected static string StorageRoot
         {
-            return new Document(basicDocument);
+            get
+            {
+                if (Debugger.IsAttached)
+                {
+                    return @"C:\Windows\Temp\Swarmops-Debug\"; // Windows debugging environment
+                }
+                else
+                {
+                    return "/var/lib/swarmops/upload/"; // production location on Debian installation
+                }
+            }
         }
 
-        public static Document Create (string serverFileName, string clientFileName, Int64 fileSize, 
+        public static Document FromIdentity (int documentId)
+        {
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetDocument (documentId));
+        }
+
+        public static Document FromIdentityAggressive (int documentId)
+        {
+            return FromBasic (SwarmDb.GetDatabaseForWriting().GetDocument (documentId));
+            // "For writing" is intentional - bypasses a race condition in replication
+        }
+
+        public static Document FromBasic (BasicDocument basicDocument)
+        {
+            return new Document (basicDocument);
+        }
+
+        public static Document Create (string serverFileName, string clientFileName, Int64 fileSize,
             string description, IHasIdentity identifiableObject, Person uploader)
         {
             int newDocumentId = SwarmDb.GetDatabaseForWriting().
-                CreateDocument(serverFileName, clientFileName, fileSize, description, GetDocumentTypeForObject(identifiableObject), identifiableObject == null? 0: identifiableObject.Identity, uploader.Identity);
+                CreateDocument (serverFileName, clientFileName, fileSize, description,
+                    GetDocumentTypeForObject (identifiableObject),
+                    identifiableObject == null ? 0 : identifiableObject.Identity, uploader.Identity);
 
-            return FromIdentityAggressive(newDocumentId);
+            return FromIdentityAggressive (newDocumentId);
         }
 
         public static DocumentType GetDocumentTypeForObject (IHasIdentity foreignObject)
@@ -81,88 +136,34 @@ namespace Swarmops.Logic.Support
             }
             else
             {
-                throw new ArgumentException("Unrecognized foreign object type:" + foreignObject.GetType().ToString());
-            }
-        }
-
-        public new string ServerFileName
-        {
-            get { return base.ServerFileName; }
-            set
-            {
-                SwarmDb.GetDatabaseForWriting().SetDocumentServerFileName(this.Identity, value);
-                base.ServerFileName = value;
+                throw new ArgumentException ("Unrecognized foreign object type:" + foreignObject.GetType().ToString());
             }
         }
 
         public void SetForeignObject (IHasIdentity foreignObject)
         {
-            SwarmDb.GetDatabaseForWriting().SetDocumentForeignObject(this.Identity, GetDocumentTypeForObject(foreignObject), foreignObject.Identity);
+            SwarmDb.GetDatabaseForWriting()
+                .SetDocumentForeignObject (Identity, GetDocumentTypeForObject (foreignObject), foreignObject.Identity);
         }
 
-
-        public IHasIdentity ForeignObject
-        {
-            get
-            {
-                switch (DocumentType)
-                {
-                    case DocumentType.ExpenseClaim:
-                        return ExpenseClaim.FromIdentity(this.ForeignId);
-
-                    case DocumentType.FinancialTransaction:
-                        return FinancialTransaction.FromIdentity(this.ForeignId);
- 
-                    case DocumentType.InboundInvoice:
-                        return InboundInvoice.FromIdentity(this.ForeignId);
-
-                    case DocumentType.PaperLetter:
-                        return PaperLetter.FromIdentity(this.ForeignId);
-
-                    case DocumentType.PayrollItem:
-                        return PayrollItem.FromIdentity(this.ForeignId);
-
-                    default:
-                        throw new NotImplementedException("DocumentType needs implementation: " + DocumentType.ToString());
-                }
-            }
-        }
 
         public void Delete()
         {
             // Unlink, actually
 
-            SetForeignObject(new TemporaryIdentity(0));
-            File.Delete(StorageRoot + ServerFileName);
-            SwarmDb.GetDatabaseForWriting().SetDocumentDescription(this.Identity, "Deleted");
-
+            SetForeignObject (new TemporaryIdentity (0));
+            File.Delete (StorageRoot + ServerFileName);
+            SwarmDb.GetDatabaseForWriting().SetDocumentDescription (Identity, "Deleted");
         }
 
-        protected static string StorageRoot
+        public StreamReader GetReader (Encoding encoding)
         {
-            get
-            {
-                if (Debugger.IsAttached)
-                {
-                    return @"C:\Windows\Temp\Swarmops-Debug\"; // Windows debugging environment
-                }
-                else
-                {
-                    return "/var/lib/swarmops/upload/"; // production location on Debian installation
-                }
-            }
+            return new StreamReader (StorageRoot + ServerFileName, encoding);
         }
 
-        public StreamReader GetReader(Encoding encoding)
+        public StreamReader GetReader (int encodingCodePage)
         {
-            return new StreamReader(StorageRoot + this.ServerFileName, encoding);
+            return GetReader (Encoding.GetEncoding (encodingCodePage));
         }
-
-        public StreamReader GetReader(int encodingCodePage)
-        {
-            return GetReader(Encoding.GetEncoding(encodingCodePage));
-        }
-
-
     }
 }

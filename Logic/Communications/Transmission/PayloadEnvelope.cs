@@ -4,14 +4,14 @@ using Swarmops.Logic.Support;
 namespace Swarmops.Logic.Communications.Transmission
 {
     [Serializable]
-    public class PayloadEnvelope: PayloadBase<PayloadEnvelope>
+    public class PayloadEnvelope : PayloadBase<PayloadEnvelope>
     {
         public PayloadEnvelope()
         {
             // default public ctor for serializability
         }
 
-        public PayloadEnvelope(IXmlPayload payload)
+        public PayloadEnvelope (IXmlPayload payload)
         {
             PayloadClass = payload.GetType().ToString();
             PayloadXml = payload.ToXml();

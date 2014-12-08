@@ -4,13 +4,13 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPermission
     {
-        public RoleType RoleType;
         public Permission PermissionType;
+        public RoleType RoleType;
 
         public BasicPermission (RoleType pRoleType, Permission pPermissionType)
         {
-            RoleType = pRoleType;
-            PermissionType = pPermissionType;
+            this.RoleType = pRoleType;
+            this.PermissionType = pPermissionType;
         }
     }
 }

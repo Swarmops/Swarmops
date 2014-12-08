@@ -15,7 +15,7 @@ namespace Swarmops.Logic.Communications
     {
         private static ServiceCredential credential; // credentials cache
         private static DateTime lastLoad = DateTime.MinValue;
-        private static object locker = new object();
+        private static readonly object locker = new object();
 
         private static ServiceCredential Credential
         {
@@ -23,14 +23,16 @@ namespace Swarmops.Logic.Communications
             {
                 lock (locker)
                 {
-                    if (credential == null || DateTime.Now.Subtract(lastLoad).TotalSeconds > 30)
+                    if (credential == null || DateTime.Now.Subtract (lastLoad).TotalSeconds > 30)
                     {
                         lastLoad = DateTime.Now;
                         String serviceName = Persistence.Key["SMSService"];
-                        BasicExternalCredential basicCredential = SwarmDb.GetDatabaseForReading().GetExternalCredential(serviceName);
-                        Encoding enc = Encoding.GetEncoding(28591); //ISO encoding (latin1)
+                        BasicExternalCredential basicCredential =
+                            SwarmDb.GetDatabaseForReading().GetExternalCredential (serviceName);
+                        Encoding enc = Encoding.GetEncoding (28591); //ISO encoding (latin1)
 
-                        credential = new ServiceCredential(basicCredential.Login, basicCredential.Password, basicCredential.ServiceName, enc);
+                        credential = new ServiceCredential (basicCredential.Login, basicCredential.Password,
+                            basicCredential.ServiceName, enc);
                     }
 
                     return credential;
@@ -49,7 +51,7 @@ namespace Swarmops.Logic.Communications
                     case "SwedishKannel":
                         return 0.03; //Guess
                     default:
-                        throw new Exception("Error on SMSCost. Unknown SMS service: " + Credential.ServiceName);
+                        throw new Exception ("Error on SMSCost. Unknown SMS service: " + Credential.ServiceName);
                 }
             }
         }
@@ -59,17 +61,17 @@ namespace Swarmops.Logic.Communications
             switch (Credential.ServiceName)
             {
                 case "SwedishSms":
-                    SendMoSMS(phoneNumber, message);
+                    SendMoSMS (phoneNumber, message);
                     break;
                 case "SwedishKannel":
-                    SendKannel(phoneNumber, message);
+                    SendKannel (phoneNumber, message);
                     break;
                 default:
-                    throw new Exception("Error on SMS transmit. Unknown SMS service: " + Credential.ServiceName);
+                    throw new Exception ("Error on SMS transmit. Unknown SMS service: " + Credential.ServiceName);
             }
         }
 
-        public static bool CheckServiceStatus ()
+        public static bool CheckServiceStatus()
         {
             switch (Credential.ServiceName)
             {
@@ -77,38 +79,36 @@ namespace Swarmops.Logic.Communications
                     return true; //cant test this
 
                 case "SwedishKannel":
-                    {
-                        String username = Credential.Login;
-                        String password = Credential.Password;
-                        Encoding enc = Credential.Encoding;
-                        String url = "https://nurse.sanitarium.se/kannel/status";
-                        String result;
+                {
+                    String username = Credential.Login;
+                    String password = Credential.Password;
+                    Encoding enc = Credential.Encoding;
+                    String url = "https://nurse.sanitarium.se/kannel/status";
+                    String result;
 
-                        HttpWebResponse responseOut = null;
-                        try
-                        {
-                            result = HTTPSender.Send(url, enc, 1500, out responseOut);
-                            if (((int)responseOut.StatusCode).ToString().StartsWith("2"))
-                                return true;
-                            else
-                                return false;
-                        }
-                        catch (Exception)
-                        {
-                            return false;
-                        }
+                    HttpWebResponse responseOut = null;
+                    try
+                    {
+                        result = HTTPSender.Send (url, enc, 1500, out responseOut);
+                        if (((int) responseOut.StatusCode).ToString().StartsWith ("2"))
+                            return true;
+                        return false;
                     }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+                }
                 default:
-                    throw new Exception("Error on SMS transmit. Unknown SMS service: " + Credential.ServiceName);
+                    throw new Exception ("Error on SMS transmit. Unknown SMS service: " + Credential.ServiceName);
             }
         }
 
         public static void SendKannel (string phoneNumber, string message)
         {
-
             //This is the swedish HOMEGROWN SMS sending mechanisma
-            String encodedMessage = HttpUtility.UrlEncode(message, Credential.Encoding);
-            String encodedPhone = NormalizePhoneNumber(phoneNumber, Credential.Encoding);
+            String encodedMessage = HttpUtility.UrlEncode (message, Credential.Encoding);
+            String encodedPhone = NormalizePhoneNumber (phoneNumber, Credential.Encoding);
 
             String username = Credential.Login;
             String password = Credential.Password;
@@ -124,11 +124,11 @@ namespace Swarmops.Logic.Communications
                           "&text=" + encodedMessage +
                           "&charset=latin1";
 
-            result = HTTPSender.Send(call_string, enc);
+            result = HTTPSender.Send (call_string, enc);
 
             if (result != "0: Accepted for delivery")
             {
-                throw new Exception("Error on SMS transmit: phone number " + phoneNumber + ", error code " + result);
+                throw new Exception ("Error on SMS transmit: phone number " + phoneNumber + ", error code " + result);
             }
         }
 
@@ -150,11 +150,11 @@ namespace Swarmops.Logic.Communications
             // Sätt vilken typ av SMS som skall skickas.
             String mosms_type = "text";
 
-            String encodedMessage = HttpUtility.UrlEncode(message, Credential.Encoding);
+            String encodedMessage = HttpUtility.UrlEncode (message, Credential.Encoding);
 
             // Sätt SMS-meddelandet som skall skickas
             String mosms_data = encodedMessage;
-            mosms_data = HttpUtility.UrlEncode(mosms_data, enc);
+            mosms_data = HttpUtility.UrlEncode (mosms_data, enc);
 
             call_string = mosms_url +
                           "?username=" + mosms_username +
@@ -163,12 +163,12 @@ namespace Swarmops.Logic.Communications
                           "&type=" + mosms_type +
                           "&data=" + mosms_data;
 
-            result = HTTPSender.Send(call_string, enc);
-            result = HttpUtility.UrlDecode(result, enc);
+            result = HTTPSender.Send (call_string, enc);
+            result = HttpUtility.UrlDecode (result, enc);
 
             if (result != "0")
             {
-                throw new Exception("Error on SMS transmit: phone number " + phone + ", error code " + result);
+                throw new Exception ("Error on SMS transmit: phone number " + phone + ", error code " + result);
             }
         }
 
@@ -178,15 +178,15 @@ namespace Swarmops.Logic.Communications
         internal static string NormalizePhoneNumber (string phoneNumber, Encoding enc)
         {
             phoneNumber = phoneNumber.Trim();
-            if (phoneNumber.Length > 4 && !phoneNumber.StartsWith("+"))
+            if (phoneNumber.Length > 4 && !phoneNumber.StartsWith ("+"))
             {
-                if (phoneNumber.StartsWith("00"))
+                if (phoneNumber.StartsWith ("00"))
                 {
-                    phoneNumber = "+" + phoneNumber.Substring(2);
+                    phoneNumber = "+" + phoneNumber.Substring (2);
                 }
-                else if (phoneNumber.StartsWith("0"))
+                else if (phoneNumber.StartsWith ("0"))
                 {
-                    phoneNumber = "+46" + phoneNumber.Substring(1);
+                    phoneNumber = "+46" + phoneNumber.Substring (1);
                 }
                 else
                 {
@@ -194,7 +194,7 @@ namespace Swarmops.Logic.Communications
                 }
             }
 
-            phoneNumber = HttpUtility.UrlEncode(phoneNumber, enc);
+            phoneNumber = HttpUtility.UrlEncode (phoneNumber, enc);
 
             return phoneNumber;
         }
@@ -203,7 +203,7 @@ namespace Swarmops.Logic.Communications
         {
             string[] phoneNumbers = new string[3];
 
-            Match match = Regex.Match(phoneNumber, @"^(((00|\+)46)|0)(7[0236]\d+)$");
+            Match match = Regex.Match (phoneNumber, @"^(((00|\+)46)|0)(7[0236]\d+)$");
             if (match.Success)
             {
                 GroupCollection groups = match.Groups;
@@ -218,14 +218,12 @@ namespace Swarmops.Logic.Communications
             return phoneNumbers;
         }
 
-
         #region HTTP Sending Class
-
 
         private class HTTPSender : ICertificatePolicy
         {
-
-            public bool CheckValidationResult (ServicePoint sp, X509Certificate certificate, WebRequest request, int error)
+            public bool CheckValidationResult (ServicePoint sp, X509Certificate certificate, WebRequest request,
+                int error)
             {
                 return true;
             }
@@ -234,27 +232,27 @@ namespace Swarmops.Logic.Communications
             public static string Send (string http_payload, Encoding enc)
             {
                 HttpWebResponse responseOut = null;
-                return Send(http_payload, enc, -1, out responseOut);
+                return Send (http_payload, enc, -1, out responseOut);
             }
 
 
             public static string Send (string http_payload, Encoding enc, int timeout, out HttpWebResponse responseOut)
             {
                 // variabel för indata
-                var sb = new StringBuilder();
+                StringBuilder sb = new StringBuilder();
 
                 // buffer för inläsning
-                var buf = new byte[8092];
+                byte[] buf = new byte[8092];
 
 #pragma warning disable 618
                 // ServicePointManager.CertificatePolicy is obsoleted, but is the only thing that works on both windows and mono.
                 //Needed to avoid errors from homegrown SSL cert.
-                
+
                 ICertificatePolicy oldPolicy = ServicePointManager.CertificatePolicy;
                 ServicePointManager.CertificatePolicy = new HTTPSender();
 
                 // anropa websidan med aktuella data
-                var request = (HttpWebRequest)WebRequest.Create(http_payload);
+                HttpWebRequest request = (HttpWebRequest) WebRequest.Create (http_payload);
 
                 if (timeout > -1)
                 {
@@ -262,7 +260,7 @@ namespace Swarmops.Logic.Communications
                 }
 
                 // ta emot svarskoder
-                var response = (HttpWebResponse)request.GetResponse();
+                HttpWebResponse response = (HttpWebResponse) request.GetResponse();
                 responseOut = response;
                 ServicePointManager.CertificatePolicy = oldPolicy;
 #pragma warning restore 618
@@ -275,15 +273,15 @@ namespace Swarmops.Logic.Communications
                 do
                 {
                     // fyll bufferten
-                    count = resStream.Read(buf, 0, buf.Length);
+                    count = resStream.Read (buf, 0, buf.Length);
                     // kontrollera att data finns att läsa
                     if (count != 0)
                     {
                         // koda som ISO text
-                        tempString = enc.GetString(buf, 0, count);
+                        tempString = enc.GetString (buf, 0, count);
 
                         // bygg upp svarssträngen
-                        sb.Append(tempString);
+                        sb.Append (tempString);
                     }
                 } while (count > 0); // finns mer data att läsa?
 
@@ -292,14 +290,15 @@ namespace Swarmops.Logic.Communications
         }
 
         #endregion
+
         #region Nested type: ServiceCredential
 
         internal class ServiceCredential
         {
+            internal readonly Encoding Encoding;
             internal readonly string Login;
             internal readonly string Password;
             internal readonly string ServiceName;
-            internal readonly Encoding Encoding;
 
             internal ServiceCredential (string login, string password, string serviceName, Encoding enc)
             {

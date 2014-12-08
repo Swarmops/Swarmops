@@ -4,21 +4,11 @@ using Swarmops.Database;
 
 namespace Swarmops.Logic.Financial
 {
-    public class PayrollAdjustment: BasicPayrollAdjustment
+    public class PayrollAdjustment : BasicPayrollAdjustment
     {
-        private PayrollAdjustment (BasicPayrollAdjustment basic): base (basic)
+        private PayrollAdjustment (BasicPayrollAdjustment basic) : base (basic)
         {
             // private constructor
-        }
-
-        public static PayrollAdjustment FromBasic (BasicPayrollAdjustment basic)
-        {
-            return new PayrollAdjustment(basic); // invoke private ctor
-        }
-
-        public static PayrollAdjustment FromIdentity (int payrollAdjustmentId)
-        {
-            return FromBasic (SwarmDb.GetDatabaseForReading().GetPayrollAdjustment(payrollAdjustmentId));
         }
 
 
@@ -35,29 +25,41 @@ namespace Swarmops.Logic.Financial
             // Hide setter
         }
 
+        public decimal AmountDecimal
+        {
+            get { return base.AmountCents/100.0m; }
+        }
+
+        public static PayrollAdjustment FromBasic (BasicPayrollAdjustment basic)
+        {
+            return new PayrollAdjustment (basic); // invoke private ctor
+        }
+
+        public static PayrollAdjustment FromIdentity (int payrollAdjustmentId)
+        {
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetPayrollAdjustment (payrollAdjustmentId));
+        }
+
 
         public void Close (Salary salary)
         {
             if (!Open)
             {
-                throw new InvalidOperationException("Payroll adjustment #" + this.Identity.ToString() + " cannot be closed; is already closed");
+                throw new InvalidOperationException ("Payroll adjustment #" + Identity +
+                                                     " cannot be closed; is already closed");
             }
 
-            SwarmDb.GetDatabaseForWriting().ClosePayrollAdjustment(this.Identity, salary.Identity);
+            SwarmDb.GetDatabaseForWriting().ClosePayrollAdjustment (Identity, salary.Identity);
             base.Open = false;
             base.SalaryId = salary.Identity;
         }
 
 
-        public static PayrollAdjustment Create (PayrollItem item, PayrollAdjustmentType type, double amount, string description)
+        public static PayrollAdjustment Create (PayrollItem item, PayrollAdjustmentType type, double amount,
+            string description)
         {
-            int id = SwarmDb.GetDatabaseForWriting().CreatePayrollAdjustment(item.Identity, type, amount, description);
-            return PayrollAdjustment.FromIdentity(id);
-        }
-
-        public decimal AmountDecimal
-        {
-            get { return base.AmountCents/100.0m; }
+            int id = SwarmDb.GetDatabaseForWriting().CreatePayrollAdjustment (item.Identity, type, amount, description);
+            return FromIdentity (id);
         }
     }
 }

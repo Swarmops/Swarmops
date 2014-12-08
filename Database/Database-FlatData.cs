@@ -13,13 +13,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT DataValue FROM FlatData WHERE DataKey='" + key.Replace("'", "''") + "'", connection);
+                    GetDbCommand ("SELECT DataValue FROM FlatData WHERE DataKey='" + key.Replace ("'", "''") + "'",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetString(0);
+                        return reader.GetString (0);
                     }
 
                     return string.Empty;
@@ -34,18 +35,18 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetKeyValue", connection);
+                DbCommand command = GetDbCommand ("SetKeyValue", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "dataKey", key);
-                AddParameterWithName(command, "dataValue", value);
+                AddParameterWithName (command, "dataKey", key);
+                AddParameterWithName (command, "dataValue", value);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public Dictionary<string,string> GetOldKeyValues()
+        public Dictionary<string, string> GetOldKeyValues()
         {
             /*
             Dictionary<string, string> result = new Dictionary<string, string>();

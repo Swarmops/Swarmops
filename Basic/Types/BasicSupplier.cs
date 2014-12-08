@@ -3,20 +3,24 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicSupplier: IHasIdentity
+    public class BasicSupplier : IHasIdentity
     {
-        public BasicSupplier (int supplierId, string name, string email, string passwordHash, string bankAccount, DateTime createdDateTime, int createdByPersonId)
+        public BasicSupplier (int supplierId, string name, string email, string passwordHash, string bankAccount,
+            DateTime createdDateTime, int createdByPersonId)
         {
-            this.SupplierId = supplierId;
-            this.Name = name;
-            this.Email = email;
-            this.PasswordHash = passwordHash;
-            this.BankAccount = bankAccount;
-            this.CreatedDateTime = createdDateTime;
-            this.CreatedByPersonId = createdByPersonId;
+            SupplierId = supplierId;
+            Name = name;
+            Email = email;
+            PasswordHash = passwordHash;
+            BankAccount = bankAccount;
+            CreatedDateTime = createdDateTime;
+            CreatedByPersonId = createdByPersonId;
         }
 
-        public BasicSupplier(BasicSupplier original): this (original.SupplierId, original.Name, original.Email, original.PasswordHash, original.BankAccount, original.CreatedDateTime, original.CreatedByPersonId)
+        public BasicSupplier (BasicSupplier original)
+            : this (
+                original.SupplierId, original.Name, original.Email, original.PasswordHash, original.BankAccount,
+                original.CreatedDateTime, original.CreatedByPersonId)
         {
             // empty copy ctor
         }
@@ -31,7 +35,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.SupplierId; }
+            get { return SupplierId; }
         }
     }
 }

@@ -8,9 +8,9 @@ namespace Swarmops.Logic.Financial
     public class FinancialTransactionTagSets :
         PluralBase<FinancialTransactionTagSets, FinancialTransactionTagSet, BasicFinancialTransactionTagSet>
     {
-        public static FinancialTransactionTagSets ForOrganization(Organization organization)
+        public static FinancialTransactionTagSets ForOrganization (Organization organization)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagSets(organization));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetFinancialTransactionTagSets (organization));
         }
     }
 }

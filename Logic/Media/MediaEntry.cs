@@ -17,19 +17,17 @@ namespace Swarmops.Logic.Media
         }
 
         public static bool CreateFromKeyword (string keyword, string mediaName, bool isBlog, string url, string title,
-                                              DateTime dateTime)
+            DateTime dateTime)
         {
-            int id = SwarmDb.GetDatabaseForWriting().CreateMediaEntryFromKeyword (keyword, mediaName, isBlog, url, title,
-                                                                         dateTime);
+            int id = SwarmDb.GetDatabaseForWriting()
+                .CreateMediaEntryFromKeyword (keyword, mediaName, isBlog, url, title,
+                    dateTime);
 
             if (id != 0)
             {
                 return true; // an object was created
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Swarmops.Logic.Support
     internal class LogicServices
     {
         /// <summary>
-        /// Determines if a string can be parsed as an Int32.
+        ///     Determines if a string can be parsed as an Int32.
         /// </summary>
         /// <param name="input">String to test.</param>
         /// <returns>True if safely parsable by Int32.Parse.</returns>
@@ -26,7 +26,7 @@ namespace Swarmops.Logic.Support
         }
 
         /// <summary>
-        /// Removes any non-digits from a string.
+        ///     Removes any non-digits from a string.
         /// </summary>
         /// <param name="input">The string to clean.</param>
         /// <returns>The sanitized result.</returns>
@@ -38,7 +38,7 @@ namespace Swarmops.Logic.Support
                 return string.Empty;
             }
 
-            var result = new StringBuilder();
+            StringBuilder result = new StringBuilder();
 
             foreach (char acter in input)
             {
@@ -53,7 +53,7 @@ namespace Swarmops.Logic.Support
 
         internal static int[] ObjectsToIdentifiers (IHasIdentity[] identifiables)
         {
-            var result = new List<int>();
+            List<int> result = new List<int>();
             result.Capacity = identifiables.Length*11/10;
 
             foreach (IHasIdentity identifiable in identifiables)

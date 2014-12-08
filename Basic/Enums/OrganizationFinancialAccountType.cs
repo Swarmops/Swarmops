@@ -3,115 +3,142 @@
     public enum OrganizationFinancialAccountType
     {
         /// <summary>
-        /// Undefined
+        ///     Undefined
         /// </summary>
         Unknown,
+
         /// <summary>
-        /// Main bank transaction account - not a savings account or similar
+        ///     Main bank transaction account - not a savings account or similar
         /// </summary>
         AssetsBankAccountMain,
+
         /// <summary>
-        /// The account where outbound invoices are kept
+        ///     The account where outbound invoices are kept
         /// </summary>
         AssetsOutboundInvoices,
+
         /// <summary>
-        /// If org has a PayPal account, this is where is goes
+        ///     If org has a PayPal account, this is where is goes
         /// </summary>
         AssetsPaypal,
+
         /// <summary>
-        /// Assets held in bitcoin (if any), immediately accessible.
+        ///     Assets held in bitcoin (if any), immediately accessible.
         /// </summary>
         AssetsBitcoinHot,
+
         /// <summary>
-        /// Assets held in bitcoin cold storage (if any).
+        ///     Assets held in bitcoin cold storage (if any).
         /// </summary>
         AssetsBitcoinCold,
+
         /// <summary>
-        /// Any outstanding cash advances that have been paid out and not cleared against receipts or paid back
+        ///     Any outstanding cash advances that have been paid out and not cleared against receipts or paid back
         /// </summary>
         AssetsOutstandingCashAdvances,
+
         /// <summary>
-        /// Value Added Tax (inbound) that hasn't been declared yet and put on overall tax balance
+        ///     Value Added Tax (inbound) that hasn't been declared yet and put on overall tax balance
         /// </summary>
         AssetsVatInbound,
+
         /// <summary>
-        /// If virtual banking is enabled, this is where the virtual assets go
+        ///     If virtual banking is enabled, this is where the virtual assets go
         /// </summary>
         AssetsVirtualBanking,
+
         /// <summary>
-        /// Any expense claims on the organization that have not been paid back
+        ///     Any expense claims on the organization that have not been paid back
         /// </summary>
         DebtsExpenseClaims,
+
         /// <summary>
-        /// Invoices sent to the organization until paid against bank account
+        ///     Invoices sent to the organization until paid against bank account
         /// </summary>
         DebtsInboundInvoices,
+
         /// <summary>
-        /// Salaries due for payout until cleared against bank account
+        ///     Salaries due for payout until cleared against bank account
         /// </summary>
         DebtsSalary,
+
         /// <summary>
-        /// Taxes due for payout until cleared against bank account
+        ///     Taxes due for payout until cleared against bank account
         /// </summary>
         DebtsTax,
+
         /// <summary>
-        /// Equity - the difference between debt and assets
+        ///     Equity - the difference between debt and assets
         /// </summary>
         DebtsEquity,
+
         /// <summary>
-        /// Undeclared Value Added Tax (outbound) before putting it on tax balance
+        ///     Undeclared Value Added Tax (outbound) before putting it on tax balance
         /// </summary>
         DebtsVatOutbound,
+
         /// <summary>
-        /// If virtual banking is enabled, this is the central debt to local assets
+        ///     If virtual banking is enabled, this is the central debt to local assets
         /// </summary>
         DebtsEarmarkedVirtualBanking,
+
         /// <summary>
-        /// Earmarked assets in other ways
+        ///     Earmarked assets in other ways
         /// </summary>
         DebtsEarmarkedOtherAssets,
+
         /// <summary>
-        /// Other debts in general
+        ///     Other debts in general
         /// </summary>
         DebtsOther,
+
         /// <summary>
-        /// Income from sales - default outbound invoices to this acct
+        ///     Income from sales - default outbound invoices to this acct
         /// </summary>
         IncomeSales,
+
         /// <summary>
-        /// Income from donations - default autodonates here
+        ///     Income from donations - default autodonates here
         /// </summary>
         IncomeDonations,
+
         /// <summary>
-        /// Bank fees - default small minus posts on bank statements here
+        ///     Bank fees - default small minus posts on bank statements here
         /// </summary>
         CostsBankFees,
+
         /// <summary>
-        /// Gains from currency fluctuation (typically bitcoin or altcoins).
+        ///     Gains from currency fluctuation (typically bitcoin or altcoins).
         /// </summary>
         IncomeCurrencyFluctuations,
+
         /// <summary>
-        /// IT and such - default SMS charges, etc, here
+        ///     IT and such - default SMS charges, etc, here
         /// </summary>
         CostsInfrastructure,
+
         /// <summary>
-        /// If virtual banking is enabled, this is a counterbalance account
+        ///     If virtual banking is enabled, this is a counterbalance account
         /// </summary>
         CostsLocalDonationTransfers,
+
         /// <summary>
-        /// No description
+        ///     No description
         /// </summary>
         CostsAllocatedFunds,
+
         /// <summary>
-        /// Losses from currency fluctuation (typically bitcoin or altcoins).
+        ///     Losses from currency fluctuation (typically bitcoin or altcoins).
         /// </summary>
         CostsCurrencyFluctuations,
+
         /// <summary>
-        /// Various bookkeeping errors
+        ///     Various bookkeeping errors
         /// </summary>
         CostsMiscalculations,
+
         /// <summary>
-        /// When closing books, this is the yearly result (balanced against DebtsEquity)
+        ///     When closing books, this is the yearly result (balanced against DebtsEquity)
         /// </summary>
         CostsYearlyResult, // multi-account type
     };

@@ -3,12 +3,22 @@ using Swarmops.Basic.Interfaces;
 namespace Swarmops.Basic.Types
 {
     /// <summary>
-    /// This class encapsulates a single newsletter.
+    ///     This class encapsulates a single newsletter.
     /// </summary>
     public class BasicNewsletter : IHasIdentity
     {
+        private readonly int authorId;
+        private readonly string body;
+        private readonly int geographyId;
+        private readonly string introduction;
+        private readonly int newsletterFeedId;
+        private readonly int newsletterId;
+        private readonly int newsletterTemplateId;
+        private readonly int organizationId;
+        private readonly string title;
+
         public BasicNewsletter (int newsletterId, string title, string introduction, string body,
-                                int authorId, int templateId, int feedId)
+            int authorId, int templateId, int feedId)
         {
             this.newsletterId = newsletterId;
             this.newsletterFeedId = feedId;
@@ -21,9 +31,9 @@ namespace Swarmops.Basic.Types
         }
 
         public BasicNewsletter (int newsletterId, string title, string introduction, string body,
-                                int authorId, int templateId, int feedId, int organizationId, int geographyId)
+            int authorId, int templateId, int feedId, int organizationId, int geographyId)
             :
-                this(newsletterId, title, introduction, body, authorId, templateId, feedId)
+                this (newsletterId, title, introduction, body, authorId, templateId, feedId)
         {
             this.organizationId = organizationId;
             this.geographyId = geographyId;
@@ -31,47 +41,47 @@ namespace Swarmops.Basic.Types
 
         public int NewsletterId
         {
-            get { return newsletterId; }
+            get { return this.newsletterId; }
         }
 
         public string Title
         {
-            get { return title; }
+            get { return this.title; }
         }
 
         public string Introduction
         {
-            get { return introduction; }
+            get { return this.introduction; }
         }
 
         public string Body
         {
-            get { return body; }
+            get { return this.body; }
         }
 
         public int AuthorId
         {
-            get { return authorId; }
+            get { return this.authorId; }
         }
 
         public int NewsletterFeedId
         {
-            get { return newsletterFeedId; }
+            get { return this.newsletterFeedId; }
         }
 
         public int NewsletterTemplateId
         {
-            get { return newsletterTemplateId; }
+            get { return this.newsletterTemplateId; }
         }
 
         public int OrganizationId
         {
-            get { return organizationId; }
+            get { return this.organizationId; }
         }
 
         public int GeographyId
         {
-            get { return geographyId; }
+            get { return this.geographyId; }
         }
 
         #region IHasIdentity Members
@@ -82,15 +92,5 @@ namespace Swarmops.Basic.Types
         }
 
         #endregion
-
-        private int newsletterId;
-        private string title;
-        private string introduction;
-        private string body;
-        private int authorId;
-        private int newsletterFeedId;
-        private int newsletterTemplateId;
-        private int geographyId;
-        private int organizationId;
     }
 }

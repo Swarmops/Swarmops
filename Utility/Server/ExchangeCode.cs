@@ -1,9 +1,7 @@
-//using CDOEXM;
-
 namespace Swarmops.Utility.Server
 {
     /// <summary>
-    /// Summary description for ExchangeCode.
+    ///     Summary description for ExchangeCode.
     /// </summary>
     public class ExchangeCode
     {

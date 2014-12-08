@@ -7,7 +7,7 @@ namespace Swarmops.Logic.Communications
     {
         public static OutboundMailRecipients FromArray (BasicOutboundMailRecipient[] basicArray, OutboundMail mail)
         {
-            var result = new OutboundMailRecipients();
+            OutboundMailRecipients result = new OutboundMailRecipients();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicOutboundMailRecipient basic in basicArray)

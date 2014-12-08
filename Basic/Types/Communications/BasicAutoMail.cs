@@ -5,11 +5,19 @@ namespace Swarmops.Basic.Types.Communications
 {
     public class BasicAutoMail : IHasIdentity
     {
+        private readonly int authorPersonId;
+        private readonly int autoMailId;
+        private readonly int geographyId;
+        private readonly int organizationId;
+        private readonly string title;
+        private readonly AutoMailType type;
+        private string body;
+
         /// <summary>
-        /// Basic constructor.
+        ///     Basic constructor.
         /// </summary>
         public BasicAutoMail (int autoMailId, AutoMailType type, int organizationId, int geographyId,
-                              int authorPersonId, string title, string body)
+            int authorPersonId, string title, string body)
         {
             this.autoMailId = autoMailId;
             this.type = type;
@@ -22,22 +30,17 @@ namespace Swarmops.Basic.Types.Communications
 
 
         /// <summary>
-        /// Copy constructor.
+        ///     Copy constructor.
         /// </summary>
         public BasicAutoMail (BasicAutoMail original)
-            : this(original.autoMailId, original.type, original.organizationId, original.geographyId,
-                   original.authorPersonId, original.title, original.body)
+            : this (original.autoMailId, original.type, original.organizationId, original.geographyId,
+                original.authorPersonId, original.title, original.body)
         {
         }
 
         public int AutoMailId
         {
             get { return this.autoMailId; }
-        }
-
-        public int Identity
-        {
-            get { return this.AutoMailId; }
         }
 
         public AutoMailType Type
@@ -71,12 +74,9 @@ namespace Swarmops.Basic.Types.Communications
             set { this.body = value; }
         }
 
-        private int autoMailId;
-        private AutoMailType type;
-        private int organizationId;
-        private int geographyId;
-        private int authorPersonId;
-        private string title;
-        private string body;
+        public int Identity
+        {
+            get { return AutoMailId; }
+        }
     }
 }

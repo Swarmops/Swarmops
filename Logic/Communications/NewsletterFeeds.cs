@@ -7,7 +7,7 @@ namespace Swarmops.Logic.Communications
     {
         public static NewsletterFeeds FromArray (BasicNewsletterFeed[] basicArray)
         {
-            var result = new NewsletterFeeds();
+            NewsletterFeeds result = new NewsletterFeeds();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicNewsletterFeed basic in basicArray)

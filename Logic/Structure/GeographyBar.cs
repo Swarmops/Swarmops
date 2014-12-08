@@ -12,9 +12,9 @@ namespace Swarmops.Logic.Structure
 
         public int CompareTo (object obj)
         {
-            var otherBar = (GeographyBar) obj;
+            GeographyBar otherBar = (GeographyBar) obj;
 
-            return this.Value.CompareTo(otherBar.Value);
+            return this.Value.CompareTo (otherBar.Value);
         }
 
         #endregion

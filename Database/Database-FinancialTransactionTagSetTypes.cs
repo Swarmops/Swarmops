@@ -9,36 +9,37 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
- 
         private const string financialTransactionTagSetTypeFieldSequence =
-            " FinancialTransactionTagSetTypeId,ResourceName " +    // 0-1
+            " FinancialTransactionTagSetTypeId,ResourceName " + // 0-1
             "FROM FinancialTransactionTagSetTypes ";
 
-        private static BasicFinancialTransactionTagSetType ReadFinancialTransactionTagSetTypeFromDataReader(IDataRecord reader)
+        private static BasicFinancialTransactionTagSetType ReadFinancialTransactionTagSetTypeFromDataReader (
+            IDataRecord reader)
         {
-            int financialTransactionTagSetTypeId = reader.GetInt32(0);
-            string resourceName = reader.GetString(1);
+            int financialTransactionTagSetTypeId = reader.GetInt32 (0);
+            string resourceName = reader.GetString (1);
 
-            return new BasicFinancialTransactionTagSetType(financialTransactionTagSetTypeId, resourceName);
+            return new BasicFinancialTransactionTagSetType (financialTransactionTagSetTypeId, resourceName);
         }
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
 
-
-        public BasicFinancialTransactionTagSetType GetFinancialTransactionTagSetType (int financialTransactionTagSetTypeId)
+        public BasicFinancialTransactionTagSetType GetFinancialTransactionTagSetType (
+            int financialTransactionTagSetTypeId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + financialTransactionTagSetTypeFieldSequence + " WHERE FinancialTransactionTagSetTypeId=" + financialTransactionTagSetTypeId.ToString(CultureInfo.InvariantCulture), connection);
+                    GetDbCommand (
+                        "SELECT" + financialTransactionTagSetTypeFieldSequence +
+                        " WHERE FinancialTransactionTagSetTypeId=" +
+                        financialTransactionTagSetTypeId.ToString (CultureInfo.InvariantCulture), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -47,10 +48,10 @@ namespace Swarmops.Database
                         return ReadFinancialTransactionTagSetTypeFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such FinancialTransactionSetTypeId: " + financialTransactionTagSetTypeId.ToString(CultureInfo.InvariantCulture));
+                    throw new ArgumentException ("No such FinancialTransactionSetTypeId: " +
+                                                 financialTransactionTagSetTypeId.ToString (CultureInfo.InvariantCulture));
                 }
             }
-
         }
 
 
@@ -62,7 +63,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT" + financialTransactionTagSetTypeFieldSequence, connection);
+                DbCommand command = GetDbCommand ("SELECT" + financialTransactionTagSetTypeFieldSequence, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -76,12 +77,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
         #region Creation and manipulation -- stored procedures
-
 
         /* TODO
          * 
@@ -173,9 +171,7 @@ namespace Swarmops.Database
             }
         }*/
 
-
         #endregion
-
 
         #region Dead template code
 
@@ -520,7 +516,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

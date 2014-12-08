@@ -5,12 +5,27 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPersonRole : IHasIdentity
     {
-        protected BasicPersonRole ()
+        private readonly int geographyId;
+        private readonly int organizationId;
+        private readonly int personId;
+        private readonly int roleId;
+        private readonly RoleType type;
+
+        #region IHasIdentity Members
+
+        public int Identity
+        {
+            get { return RoleId; }
+        }
+
+        #endregion
+
+        protected BasicPersonRole()
         {
         }
 
         /// <summary>
-        /// Normal constructor.
+        ///     Normal constructor.
         /// </summary>
         /// <param name="personId">The person Id.</param>
         /// <param name="roleType">The node-specific role.</param>
@@ -26,10 +41,10 @@ namespace Swarmops.Basic.Types
         }
 
         /// <summary>
-        /// Copy constructor.
+        ///     Copy constructor.
         /// </summary>
         public BasicPersonRole (BasicPersonRole original)
-            : this(original.roleId, original.personId, original.type, original.organizationId, original.geographyId)
+            : this (original.roleId, original.personId, original.type, original.organizationId, original.geographyId)
         {
         }
 
@@ -58,20 +73,5 @@ namespace Swarmops.Basic.Types
         {
             get { return this.geographyId; }
         }
-
-        private int roleId;
-        private int personId;
-        private RoleType type;
-        private int organizationId;
-        private int geographyId;
-
-        #region IHasIdentity Members
-
-        public int Identity
-        {
-            get { return this.RoleId; }
-        }
-
-        #endregion
     }
 }

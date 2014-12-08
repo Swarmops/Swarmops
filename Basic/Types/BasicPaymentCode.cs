@@ -5,8 +5,23 @@ namespace Swarmops.Basic.Types
 {
     public class BasicPaymentCode : IHasIdentity
     {
+        private readonly int issuedToPersonId;
+        private readonly string issuedToPhoneNumber;
+        private readonly string paymentCode;
+        private readonly int paymentCodeId;
+        private bool claimed;
+
+        #region IHasIdentity Members
+
+        public int Identity
+        {
+            get { return PaymentCodeId; }
+        }
+
+        #endregion
+
         public BasicPaymentCode (int paymentCodeId, string paymentCode, string issuedToPhoneNumber, int issuedToPersonId,
-                                 bool claimed)
+            bool claimed)
         {
             this.paymentCodeId = paymentCodeId;
             this.paymentCode = paymentCode;
@@ -16,7 +31,7 @@ namespace Swarmops.Basic.Types
         }
 
         public BasicPaymentCode (BasicPaymentCode original)
-            : this(
+            : this (
                 original.paymentCodeId, original.paymentCode, original.issuedToPhoneNumber, original.issuedToPersonId,
                 original.claimed)
         {
@@ -50,42 +65,24 @@ namespace Swarmops.Basic.Types
         }
 
 
+        public PaymentCodeIssueType IssueType
+        {
+            get
+            {
+                if (this.issuedToPersonId == 0)
+                {
+                    return PaymentCodeIssueType.Phone;
+                }
+                return PaymentCodeIssueType.Person;
+            }
+        }
+
         protected void SetClaimed()
         {
             this.claimed = true;
         }
 
 
-        public PaymentCodeIssueType IssueType
-        {
-            get
-            {
-                if (issuedToPersonId == 0)
-                {
-                    return PaymentCodeIssueType.Phone;
-                }
-                else
-                {
-                    return PaymentCodeIssueType.Person;
-                }
-            }
-        }
-
-
-        private int paymentCodeId;
-        private string paymentCode;
-        private string issuedToPhoneNumber;
-        private int issuedToPersonId;
-        private bool claimed;
         //private bool balanced;
-
-        #region IHasIdentity Members
-
-        public int Identity
-        {
-            get { return this.PaymentCodeId; }
-        }
-
-        #endregion
     }
 }

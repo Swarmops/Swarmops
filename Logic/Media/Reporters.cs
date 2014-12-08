@@ -8,7 +8,7 @@ namespace Swarmops.Logic.Media
     {
         public static Reporters FromArray (BasicReporter[] basicArray)
         {
-            var result = new Reporters();
+            Reporters result = new Reporters();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicReporter basic in basicArray)

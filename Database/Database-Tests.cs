@@ -31,13 +31,14 @@ namespace Swarmops.Database
                 {
                     connection.Open();
 
-                    DbCommand command = GetDbCommand(
+                    DbCommand command = GetDbCommand (
                         "CREATE TABLE `CredentialsTests` (" +
                         "  `TestId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT," +
                         "  `Description` VARCHAR(256) NOT NULL," +
                         "  `DateTimeCreated` DATETIME NOT NULL," +
                         "  PRIMARY KEY (`TestId`)" +
-                        ") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table is created to test database credentials'", connection);
+                        ") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table is created to test database credentials'",
+                        connection);
 
                     command.ExecuteNonQuery();
                     return true;
@@ -45,7 +46,7 @@ namespace Swarmops.Database
             }
             catch (Exception debug)
             {
-                Debug.WriteLine(debug.ToString());
+                Debug.WriteLine (debug.ToString());
                 return false;
             }
         }
@@ -58,8 +59,9 @@ namespace Swarmops.Database
                 {
                     connection.Open();
 
-                    DbCommand command = GetDbCommand(
-                        "ALTER TABLE `CredentialsTests` ADD COLUMN `AppendedColumn` INT AFTER `DateTimeCreated`", connection);
+                    DbCommand command = GetDbCommand (
+                        "ALTER TABLE `CredentialsTests` ADD COLUMN `AppendedColumn` INT AFTER `DateTimeCreated`",
+                        connection);
 
                     command.ExecuteNonQuery();
                     return true;
@@ -67,7 +69,7 @@ namespace Swarmops.Database
             }
             catch (Exception debug)
             {
-                Debug.WriteLine(debug.ToString());
+                Debug.WriteLine (debug.ToString());
                 return false;
             }
         }
@@ -81,7 +83,7 @@ namespace Swarmops.Database
                 {
                     connection.Open();
 
-                    DbCommand command = GetDbCommand(
+                    DbCommand command = GetDbCommand (
                         "DROP TABLE `CredentialsTests`", connection);
 
                     command.ExecuteNonQuery();
@@ -90,7 +92,7 @@ namespace Swarmops.Database
             }
             catch (Exception debug)
             {
-                Debug.WriteLine(debug.ToString());
+                Debug.WriteLine (debug.ToString());
                 return false;
             }
         }
@@ -103,7 +105,7 @@ namespace Swarmops.Database
                 {
                     connection.Open();
 
-                    DbCommand command = GetDbCommand(
+                    DbCommand command = GetDbCommand (
                         "CREATE PROCEDURE `CreateCredentialsTest`(" +
                         "   description VARCHAR(128)" +
                         ")" +
@@ -120,7 +122,7 @@ namespace Swarmops.Database
             }
             catch (Exception debug)
             {
-                Debug.WriteLine(debug.ToString());
+                Debug.WriteLine (debug.ToString());
                 return false;
             }
         }
@@ -133,7 +135,7 @@ namespace Swarmops.Database
                 {
                     connection.Open();
 
-                    DbCommand command = GetDbCommand(
+                    DbCommand command = GetDbCommand (
                         "DROP PROCEDURE `CreateCredentialsTest`", connection);
 
                     command.ExecuteNonQuery();
@@ -142,22 +144,22 @@ namespace Swarmops.Database
             }
             catch (Exception debug)
             {
-                Debug.WriteLine(debug.ToString());
+                Debug.WriteLine (debug.ToString());
                 return false;
             }
         }
 
-        public bool TestExecute(string testDescription)
+        public bool TestExecute (string testDescription)
         {
             try
             {
                 using (DbConnection connection = GetMySqlDbConnection())
                 {
                     connection.Open();
-                    DbCommand command = GetDbCommand("CreateCredentialsTest", connection);
+                    DbCommand command = GetDbCommand ("CreateCredentialsTest", connection);
                     command.CommandType = CommandType.StoredProcedure;
 
-                    AddParameterWithName(command, "description", testDescription);
+                    AddParameterWithName (command, "description", testDescription);
 
                     command.ExecuteNonQuery();
                     return true;
@@ -165,7 +167,7 @@ namespace Swarmops.Database
             }
             catch (Exception debug)
             {
-                Debug.WriteLine(debug.ToString());
+                Debug.WriteLine (debug.ToString());
                 return false;
             }
         }
@@ -179,7 +181,7 @@ namespace Swarmops.Database
                     connection.Open();
 
                     DbCommand command =
-                        GetDbCommand(
+                        GetDbCommand (
                             "SELECT * FROM CredentialsTests", connection);
                     DbDataReader reader = command.ExecuteReader();
 
@@ -188,11 +190,9 @@ namespace Swarmops.Database
             }
             catch (Exception debug)
             {
-                Debug.WriteLine(debug.ToString());
+                Debug.WriteLine (debug.ToString());
                 return false;
             }
-
         }
-
     }
 }

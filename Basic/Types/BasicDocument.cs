@@ -4,8 +4,27 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicDocument: IHasIdentity
+    public class BasicDocument : IHasIdentity
     {
+        private readonly string clientFileName;
+        private readonly int documentId;
+        private readonly DocumentType documentType;
+        private readonly Int64 fileSize;
+        private readonly int foreignId;
+        private readonly int uploadedByPersonId;
+        private readonly DateTime uploadedDateTime;
+        private string description;
+        private string serverFileName;
+
+        #region IHasIdentity Members
+
+        public int Identity
+        {
+            get { return DocumentId; }
+        }
+
+        #endregion
+
         public BasicDocument (int documentId, string serverFileName, string clientFileName, string description,
             DocumentType documentType, int foreignId, Int64 fileSize, int uploadedByPersonId, DateTime uploadedDateTime)
         {
@@ -20,9 +39,10 @@ namespace Swarmops.Basic.Types
             this.uploadedDateTime = uploadedDateTime;
         }
 
-        public BasicDocument (BasicDocument original):
+        public BasicDocument (BasicDocument original) :
             this (original.documentId, original.serverFileName, original.clientFileName, original.description,
-            original.documentType, original.foreignId, original.fileSize, original.uploadedByPersonId, original.uploadedDateTime)
+                original.documentType, original.foreignId, original.fileSize, original.uploadedByPersonId,
+                original.uploadedDateTime)
         {
             // empty ctor apart from calling the other one
         }
@@ -63,7 +83,7 @@ namespace Swarmops.Basic.Types
         {
             get { return this.fileSize; }
         }
-  
+
         public int UploadedByPersonId
         {
             get { return this.uploadedByPersonId; }
@@ -73,25 +93,5 @@ namespace Swarmops.Basic.Types
         {
             get { return this.uploadedDateTime; }
         }
-
-        private int documentId;
-        private string serverFileName;
-        private string clientFileName;
-        private string description;
-        private DocumentType documentType;
-        private int foreignId;
-        private Int64 fileSize;
-        private int uploadedByPersonId;
-        private DateTime uploadedDateTime;
-
-
-        #region IHasIdentity Members
-
-        public int Identity
-        {
-            get { return this.DocumentId; }
-        }
-
-        #endregion
     }
 }

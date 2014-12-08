@@ -5,20 +5,21 @@ namespace Swarmops.Basic.Types.Financial
     public class BasicFinancialAccountRow
     {
         public BasicFinancialAccountRow (int financialAccountId, int financialTransactionId, DateTime dateTime,
-                                         string comment, Int64 amountCents, DateTime rowDateTime, int rowCreatedByPersonId)
+            string comment, Int64 amountCents, DateTime rowDateTime, int rowCreatedByPersonId)
         {
-            this.FinancialAccountId = financialAccountId;
-            this.FinancialTransactionId = financialTransactionId;
-            this.TransactionDateTime = dateTime;
-            this.Description = comment;
-            this.AmountCents = amountCents;
-            this.RowDateTime = rowDateTime;
-            this.RowCreatedByPersonId = rowCreatedByPersonId;
+            FinancialAccountId = financialAccountId;
+            FinancialTransactionId = financialTransactionId;
+            TransactionDateTime = dateTime;
+            Description = comment;
+            AmountCents = amountCents;
+            RowDateTime = rowDateTime;
+            RowCreatedByPersonId = rowCreatedByPersonId;
         }
 
         public BasicFinancialAccountRow (BasicFinancialAccountRow original)
-            : this(
-                original.FinancialAccountId, original.FinancialTransactionId, original.TransactionDateTime, original.Description,
+            : this (
+                original.FinancialAccountId, original.FinancialTransactionId, original.TransactionDateTime,
+                original.Description,
                 original.AmountCents, original.RowDateTime, original.RowCreatedByPersonId)
         {
         }
@@ -30,6 +31,5 @@ namespace Swarmops.Basic.Types.Financial
         public Int64 AmountCents { get; private set; }
         public DateTime RowDateTime { get; private set; }
         public int RowCreatedByPersonId { get; private set; }
-
     }
 }

@@ -14,50 +14,51 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
 {
     public partial class PopulateData : PageV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
-            this.PageTitle = "Populate Data";
-            this.PageIcon = "iconshock-battery-drill";
-            this.InfoBoxLiteral = "You've taken a wrong turn if you're even seeing this page. It's for development purposes.";
+            PageTitle = "Populate Data";
+            PageIcon = "iconshock-battery-drill";
+            InfoBoxLiteral = "You've taken a wrong turn if you're even seeing this page. It's for development purposes.";
         }
 
 
         private void Localize()
         {
-
         }
 
 
-        [WebMethod(true)]
-        public static void InitializeProcessing(string guid)
+        [WebMethod (true)]
+        public static void InitializeProcessing (string guid)
         {
             // Start an async thread that does all the work, then return
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            if (!authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Unknown, AccessType.Write)))
+            if (
+                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Unknown,
+                    AccessType.Write)))
             {
                 throw new UnauthorizedAccessException();
             }
 
-            Thread initThread = new Thread(ProcessUploadThread);
-            initThread.Start(guid);
+            Thread initThread = new Thread (ProcessUploadThread);
+            initThread.Start (guid);
         }
 
-        static private void ProcessUploadThread(object guidObject)
+        private static void ProcessUploadThread (object guidObject)
         {
             string guid = (string) guidObject;
-            Documents documents = Documents.RecentFromDescription(guid);
+            Documents documents = Documents.RecentFromDescription (guid);
             Document uploadedDoc = documents[0];
             string data = string.Empty;
             int count = 0;
 
-            using (StreamReader reader = uploadedDoc.GetReader(1252))
+            using (StreamReader reader = uploadedDoc.GetReader (1252))
             {
                 data = reader.ReadToEnd();
             }
 
-            string[] lines = data.Split('\n');
+            string[] lines = data.Split ('\n');
 
             Random random = new Random();
 
@@ -65,38 +66,37 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
             {
                 count++;
                 string line = lineRaw.Trim();
-                string[] lineParts = line.Split('\t');
+                string[] lineParts = line.Split ('\t');
 
                 if (lineParts.Length < 12)
                 {
                     continue;
                 }
 
-                int percent = (count * 99) / lines.Length;
+                int percent = (count*99)/lines.Length;
                 if (percent == 0)
                 {
                     percent = 1;
                 }
-                GuidCache.Set(guid + "-Progress", percent);
+                GuidCache.Set (guid + "-Progress", percent);
 
                 string name = lineParts[0] + " " + lineParts[1];
                 PersonGender gender = lineParts[2] == "male" ? PersonGender.Male : PersonGender.Female;
-                DateTime dateOfBirth = DateTime.Parse(lineParts[7], new CultureInfo("en-US"), DateTimeStyles.None);
-                Country country = Country.FromCode(lineParts[6]);
-                
+                DateTime dateOfBirth = DateTime.Parse (lineParts[7], new CultureInfo ("en-US"), DateTimeStyles.None);
+                Country country = Country.FromCode (lineParts[6]);
 
-                Person newPerson = Person.Create(name, string.Empty, string.Empty, lineParts[8], lineParts[3],
-                    lineParts[4].Replace(" ", ""), lineParts[5], lineParts[6], dateOfBirth, gender);
+
+                Person newPerson = Person.Create (name, string.Empty, string.Empty, lineParts[8], lineParts[3],
+                    lineParts[4].Replace (" ", ""), lineParts[5], lineParts[6], dateOfBirth, gender);
 
                 newPerson.NationalIdNumber = lineParts[9];
                 newPerson.Longitude = lineParts[10];
                 newPerson.Latitude = lineParts[11];
 
-                newPerson.AddMembership(1, DateTime.Today.AddDays(random.Next(365)));
+                newPerson.AddMembership (1, DateTime.Today.AddDays (random.Next (365)));
             }
 
-            GuidCache.Set(guid + "-Progress", 100);
+            GuidCache.Set (guid + "-Progress", 100);
         }
-
     }
 }

@@ -1,33 +1,38 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Web;
 using System.Web.Security;
+using System.Web.UI;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Pages.Security
 {
-    public partial class LoginOld : System.Web.UI.Page
+    public partial class LoginOld : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             // Check if this is the first run ever. If so, redirect to Init.
 
             if (!SwarmDb.Configuration.IsConfigured())
             {
-                Response.Redirect("/Pages/v5/Init/", true);
+                Response.Redirect ("/Pages/v5/Init/", true);
                 return;
             }
 
             // If this is the Dev Sandbox, autologin
 
             if (Request.Url.Host == "dev.swarmops.com" &&
-                PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+                PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
             {
-                Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode("<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p><br/><br/>")));
-                FormsAuthentication.RedirectFromLoginPage("1,1", true);
+                Response.AppendCookie (new HttpCookie ("DashboardMessage",
+                    HttpUtility.UrlEncode (
+                        "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p><br/><br/>")));
+                FormsAuthentication.RedirectFromLoginPage ("1,1", true);
             }
 
 
@@ -45,9 +50,9 @@ namespace Swarmops.Pages.Security
             string cloudFlareVisitorScheme = Request.Headers["CF-Visitor"];
             bool cloudFlareSsl = false;
 
-            if (!string.IsNullOrEmpty(cloudFlareVisitorScheme))
+            if (!string.IsNullOrEmpty (cloudFlareVisitorScheme))
             {
-                if (cloudFlareVisitorScheme.Contains("\"scheme\":\"https\""))
+                if (cloudFlareVisitorScheme.Contains ("\"scheme\":\"https\""))
                 {
                     cloudFlareSsl = true;
                 }
@@ -57,41 +62,44 @@ namespace Swarmops.Pages.Security
 
             // Rewrite if applicable
 
-            if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl) // only check client-side as many server sites de-SSL the connection before reaching the web server
+            if (Request.Url.ToString().StartsWith ("http://") && !cloudFlareSsl)
+                // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://swarmops-"))
+                if (!Request.Url.ToString().StartsWith ("http://dev.swarmops.com/") &&
+                    !Request.Url.ToString().StartsWith ("http://localhost:") &&
+                    !Request.Url.ToString().StartsWith ("http://swarmops-"))
                 {
-                    Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
+                    Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
                 }
-            } 
+            }
         }
 
-        protected void ButtonLogin_Click(object sender, EventArgs e)
+        protected void ButtonLogin_Click (object sender, EventArgs e)
         {
             string loginToken = this.TextLogin.Text;
             string password = this.TextPassword.Text;
 
-            if (!string.IsNullOrEmpty(loginToken.Trim()) && !string.IsNullOrEmpty(password.Trim()))
+            if (!string.IsNullOrEmpty (loginToken.Trim()) && !string.IsNullOrEmpty (password.Trim()))
             {
                 try
                 {
-                    BasicPerson authenticatedPerson = Swarmops.Logic.Security.Authentication.Authenticate(loginToken, password);
-                    Person p = Person.FromIdentity(authenticatedPerson.PersonId);
+                    BasicPerson authenticatedPerson = Authentication.Authenticate (loginToken,
+                        password);
+                    Person p = Person.FromIdentity (authenticatedPerson.PersonId);
 
                     if (p.PreferredCulture != Thread.CurrentThread.CurrentCulture.Name)
                         p.PreferredCulture = Thread.CurrentThread.CurrentCulture.Name;
 
                     // TODO: Determine logged-on organization; possibly ask for clarification
 
-                    FormsAuthentication.RedirectFromLoginPage(authenticatedPerson.PersonId.ToString() + ",1", true);
+                    FormsAuthentication.RedirectFromLoginPage (authenticatedPerson.PersonId + ",1", true);
                 }
                 catch (Exception exception)
                 {
-                    System.Diagnostics.Debug.WriteLine(exception.ToString());
+                    Debug.WriteLine (exception.ToString());
                     this.LabelLoginFailed.Text = exception.ToString();
                     this.LabelLoginFailed.Visible = true;
                     this.TextLogin.Focus();
-
                 }
             }
         }

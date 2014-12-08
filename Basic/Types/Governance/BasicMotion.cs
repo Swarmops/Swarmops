@@ -3,32 +3,40 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types.Governance
 {
-    public class BasicMotion: IHasIdentity
+    public class BasicMotion : IHasIdentity
     {
-        public BasicMotion (int motionId, int meetingId, int sequenceNumber, string designation, int submittedByPersonId, int createdByPersonId, DateTime createdDateTime, bool amended, int amendedByPersonId, DateTime amendedDateTime, string title, string text, string amendedText, string decisionPoints, string amendedDecisionPoints, string threadUrl, bool open, bool carried)
+        public BasicMotion (int motionId, int meetingId, int sequenceNumber, string designation, int submittedByPersonId,
+            int createdByPersonId, DateTime createdDateTime, bool amended, int amendedByPersonId,
+            DateTime amendedDateTime, string title, string text, string amendedText, string decisionPoints,
+            string amendedDecisionPoints, string threadUrl, bool open, bool carried)
         {
-            this.MotionId = motionId;
-            this.MeetingId = meetingId;
-            this.SequenceNumber = sequenceNumber;
-            this.Designation = designation;
-            this.SubmittedByPersonId = submittedByPersonId;
-            this.CreatedByPersonId = createdByPersonId;
-            this.CreatedDateTime = createdDateTime;
-            this.Amended = amended;
-            this.AmendedByPersonId = amendedByPersonId;
-            this.AmendedDateTime = amendedDateTime;
-            this.Title = title;
-            this.Text = text;
-            this.AmendedText = amendedText;
-            this.DecisionPoints = decisionPoints;
-            this.AmendedDecisionPoints = amendedDecisionPoints;
-            this.ThreadUrl = threadUrl;
-            this.Open = open;
-            this.Carried = carried;
+            MotionId = motionId;
+            MeetingId = meetingId;
+            SequenceNumber = sequenceNumber;
+            Designation = designation;
+            SubmittedByPersonId = submittedByPersonId;
+            CreatedByPersonId = createdByPersonId;
+            CreatedDateTime = createdDateTime;
+            Amended = amended;
+            AmendedByPersonId = amendedByPersonId;
+            AmendedDateTime = amendedDateTime;
+            Title = title;
+            Text = text;
+            AmendedText = amendedText;
+            DecisionPoints = decisionPoints;
+            AmendedDecisionPoints = amendedDecisionPoints;
+            ThreadUrl = threadUrl;
+            Open = open;
+            Carried = carried;
         }
 
-        public BasicMotion (BasicMotion original):
-            this (original.MotionId, original.MeetingId, original.SequenceNumber, original.Designation, original.SubmittedByPersonId, original.CreatedByPersonId, original.CreatedDateTime, original.Amended, original.AmendedByPersonId, original.AmendedDateTime, original.Title, original.Text, original.AmendedText, original.DecisionPoints, original.AmendedDecisionPoints, original.ThreadUrl, original.Open, original.Carried)
+        public BasicMotion (BasicMotion original) :
+            this (
+            original.MotionId, original.MeetingId, original.SequenceNumber, original.Designation,
+            original.SubmittedByPersonId, original.CreatedByPersonId, original.CreatedDateTime, original.Amended,
+            original.AmendedByPersonId, original.AmendedDateTime, original.Title, original.Text, original.AmendedText,
+            original.DecisionPoints, original.AmendedDecisionPoints, original.ThreadUrl, original.Open, original.Carried
+            )
         {
             // empty copy ctor
         }
@@ -56,7 +64,7 @@ namespace Swarmops.Basic.Types.Governance
 
         public int Identity
         {
-            get { return this.MotionId; }
+            get { return MotionId; }
         }
     }
 }

@@ -9,87 +9,83 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string outboundCommFieldSequence =
-            " OutboundCommId,SenderPersonId,FromPersonId,OrganizationId,CreatedDateTime," +   // 0-4
-            "ResolverClassId,RecipientDataXml,Resolved,ResolvedDateTime,Priority," +          // 5-9
-            "TransmitterClassId,PayloadXml,Open,StartTransmitDateTime,ClosedDateTime," +      // 10-14
-            "RecipientCount,RecipientsSuccess,RecipientsFail " +                              // 15-17
+            " OutboundCommId,SenderPersonId,FromPersonId,OrganizationId,CreatedDateTime," + // 0-4
+            "ResolverClassId,RecipientDataXml,Resolved,ResolvedDateTime,Priority," + // 5-9
+            "TransmitterClassId,PayloadXml,Open,StartTransmitDateTime,ClosedDateTime," + // 10-14
+            "RecipientCount,RecipientsSuccess,RecipientsFail " + // 15-17
             "FROM OutboundComms ";
 
-        private BasicOutboundComm ReadOutboundCommFromDataReader(IDataRecord reader) // Not static -- accesses cache, requiring connection strings
+        private BasicOutboundComm ReadOutboundCommFromDataReader (IDataRecord reader)
+            // Not static -- accesses cache, requiring connection strings
         {
-            int outboundCommId = reader.GetInt32(0);
-            int senderPersonId = reader.GetInt32(1);
-            int fromPersonId = reader.GetInt32(2);
-            int organizationId = reader.GetInt32(3);
-            DateTime createdDateTime = reader.GetDateTime(4);
+            int outboundCommId = reader.GetInt32 (0);
+            int senderPersonId = reader.GetInt32 (1);
+            int fromPersonId = reader.GetInt32 (2);
+            int organizationId = reader.GetInt32 (3);
+            DateTime createdDateTime = reader.GetDateTime (4);
 
-            int resolverClassId = reader.GetInt32(5); // Resolve to class name -- cached call more efficient than Join in Select
-            string recipientDataXml = reader.GetString(6); // Interpreted by ResolverClass
-            bool resolved = reader.GetBoolean(7);
-            DateTime resolvedDateTime = reader.GetDateTime(8);
-            OutboundCommPriority priority = (OutboundCommPriority) reader.GetInt32(9);
+            int resolverClassId = reader.GetInt32 (5);
+            // Resolve to class name -- cached call more efficient than Join in Select
+            string recipientDataXml = reader.GetString (6); // Interpreted by ResolverClass
+            bool resolved = reader.GetBoolean (7);
+            DateTime resolvedDateTime = reader.GetDateTime (8);
+            OutboundCommPriority priority = (OutboundCommPriority) reader.GetInt32 (9);
 
-            int transmitterClassId = reader.GetInt32(10); // Resolve to class name -- cached call more efficient than Join in Select
-            string payloadXml = reader.GetString(11); // Interpreted by TransmitterClass
-            bool open = reader.GetBoolean(12);
-            DateTime startTransmitDateTime = reader.GetDateTime(13);
-            DateTime closedDateTime = reader.GetDateTime(14);
+            int transmitterClassId = reader.GetInt32 (10);
+            // Resolve to class name -- cached call more efficient than Join in Select
+            string payloadXml = reader.GetString (11); // Interpreted by TransmitterClass
+            bool open = reader.GetBoolean (12);
+            DateTime startTransmitDateTime = reader.GetDateTime (13);
+            DateTime closedDateTime = reader.GetDateTime (14);
 
-            int recipientCount = reader.GetInt32(15); // Set by resolver
-            int recipientSuccessCount = reader.GetInt32(16);
-            int recipientFailCount = reader.GetInt32(17);
+            int recipientCount = reader.GetInt32 (15); // Set by resolver
+            int recipientSuccessCount = reader.GetInt32 (16);
+            int recipientFailCount = reader.GetInt32 (17);
 
             // TODO: resolve resolverClass, transmitterClass
 
-            string resolverClass = GetCachedResolverClassName(resolverClassId);
-            string transmitterClass = GetCachedTransmitterClassName(transmitterClassId);
+            string resolverClass = GetCachedResolverClassName (resolverClassId);
+            string transmitterClass = GetCachedTransmitterClassName (transmitterClassId);
 
             return new BasicOutboundComm
                 (outboundCommId, senderPersonId, fromPersonId, organizationId, createdDateTime,
-                 resolverClass, recipientDataXml, resolved, resolvedDateTime, priority,
-                 transmitterClass, payloadXml, open, startTransmitDateTime, closedDateTime,
-                 recipientCount, recipientSuccessCount, recipientFailCount);
-
-
+                    resolverClass, recipientDataXml, resolved, resolvedDateTime, priority,
+                    transmitterClass, payloadXml, open, startTransmitDateTime, closedDateTime,
+                    recipientCount, recipientSuccessCount, recipientFailCount);
         }
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
 
-
-        public BasicOutboundComm GetOutboundComm(int outboundCommId)
+        public BasicOutboundComm GetOutboundComm (int outboundCommId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + outboundCommFieldSequence +
-                    "WHERE OutboundCommId=" + outboundCommId.ToString(),
-                                 connection);
+                    GetDbCommand ("SELECT" + outboundCommFieldSequence +
+                                  "WHERE OutboundCommId=" + outboundCommId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadOutboundCommFromDataReader(reader);
+                        return ReadOutboundCommFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such OutboundCommId:" + outboundCommId.ToString());
+                    throw new ArgumentException ("No such OutboundCommId:" + outboundCommId);
                 }
             }
-
         }
 
 
-
-        public BasicOutboundComm[] GetOutboundComms(params object[] conditions)
+        public BasicOutboundComm[] GetOutboundComms (params object[] conditions)
         {
             List<BasicOutboundComm> result = new List<BasicOutboundComm>();
 
@@ -98,14 +94,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + outboundCommFieldSequence + ConstructWhereClause("OutboundComms", conditions) + " ORDER BY Priority ASC", connection);
+                    GetDbCommand (
+                        "SELECT" + outboundCommFieldSequence + ConstructWhereClause ("OutboundComms", conditions) +
+                        " ORDER BY Priority ASC", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadOutboundCommFromDataReader(reader));
+                        result.Add (ReadOutboundCommFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -113,14 +110,12 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Database optimizations
 
         private static Dictionary<int, string> _resolverClassCache;
-        private static Dictionary<int, string> _transmitterClassCache; 
+        private static Dictionary<int, string> _transmitterClassCache;
 
         protected string GetCachedResolverClassName (int resolverClassId)
         {
@@ -130,7 +125,7 @@ namespace Swarmops.Database
                 _resolverClassCache[0] = null; // special case for resolvers
             }
 
-            if (_resolverClassCache.ContainsKey(resolverClassId))
+            if (_resolverClassCache.ContainsKey (resolverClassId))
             {
                 return _resolverClassCache[resolverClassId];
             }
@@ -140,31 +135,30 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT Name FROM ResolverClasses WHERE ResolverClassId=" + resolverClassId.ToString(),
-                                 connection);
+                    GetDbCommand ("SELECT Name FROM ResolverClasses WHERE ResolverClassId=" + resolverClassId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        _resolverClassCache[resolverClassId] = reader.GetString(0);
+                        _resolverClassCache[resolverClassId] = reader.GetString (0);
                         return _resolverClassCache[resolverClassId];
                     }
 
-                    throw new ArgumentException("No such ResolverClassId:" + resolverClassId.ToString());
+                    throw new ArgumentException ("No such ResolverClassId:" + resolverClassId);
                 }
             }
-
         }
 
-        protected string GetCachedTransmitterClassName(int transmitterClassId)
+        protected string GetCachedTransmitterClassName (int transmitterClassId)
         {
             if (_transmitterClassCache == null)
             {
                 _transmitterClassCache = new Dictionary<int, string>();
             }
 
-            if (_transmitterClassCache.ContainsKey(transmitterClassId))
+            if (_transmitterClassCache.ContainsKey (transmitterClassId))
             {
                 return _transmitterClassCache[transmitterClassId];
             }
@@ -174,105 +168,104 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT Name FROM TransmitterClasses WHERE TransmitterClassId=" + transmitterClassId.ToString(),
-                                 connection);
+                    GetDbCommand ("SELECT Name FROM TransmitterClasses WHERE TransmitterClassId=" + transmitterClassId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        _transmitterClassCache[transmitterClassId] = reader.GetString(0);
+                        _transmitterClassCache[transmitterClassId] = reader.GetString (0);
                         return _transmitterClassCache[transmitterClassId];
                     }
 
-                    throw new ArgumentException("No such TransmitterClassId:" + transmitterClassId.ToString());
+                    throw new ArgumentException ("No such TransmitterClassId:" + transmitterClassId);
                 }
             }
-
         }
 
-
-
-
         #endregion
-
 
         #region Creation and manipulation -- stored procedures
 
-
-        public int CreateOutboundComm(int senderPersonId, int fromPersonId, int organizationId, string resolverClass, string recipientDataXml, string transmitterClass, string payloadXml, OutboundCommPriority priority)
+        public int CreateOutboundComm (int senderPersonId, int fromPersonId, int organizationId, string resolverClass,
+            string recipientDataXml, string transmitterClass, string payloadXml, OutboundCommPriority priority)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateOutboundComm", connection);
+                DbCommand command = GetDbCommand ("CreateOutboundComm", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "senderPersonId", senderPersonId);
-                AddParameterWithName(command, "fromPersonId", fromPersonId);
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "resolverClass", String.IsNullOrEmpty(resolverClass) ? "0" : resolverClass);  // Will be turned into ID by stored procedure
-                AddParameterWithName(command, "recipientDataXml", String.IsNullOrEmpty(recipientDataXml) ? string.Empty : recipientDataXml);
-                AddParameterWithName(command, "transmitterClass", transmitterClass); // Will be turned into ID by stored procedure
-                AddParameterWithName(command, "payloadXml", payloadXml);
-                AddParameterWithName(command, "priority", (int)priority);  // convert enum to integerized priority; convert back on field read
-                AddParameterWithName(command, "createdDateTime", DateTime.UtcNow);
+                AddParameterWithName (command, "senderPersonId", senderPersonId);
+                AddParameterWithName (command, "fromPersonId", fromPersonId);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "resolverClass",
+                    String.IsNullOrEmpty (resolverClass) ? "0" : resolverClass);
+                // Will be turned into ID by stored procedure
+                AddParameterWithName (command, "recipientDataXml",
+                    String.IsNullOrEmpty (recipientDataXml) ? string.Empty : recipientDataXml);
+                AddParameterWithName (command, "transmitterClass", transmitterClass);
+                // Will be turned into ID by stored procedure
+                AddParameterWithName (command, "payloadXml", payloadXml);
+                AddParameterWithName (command, "priority", (int) priority);
+                // convert enum to integerized priority; convert back on field read
+                AddParameterWithName (command, "createdDateTime", DateTime.UtcNow);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public void SetOutboundCommResolved(int outboundCommId)
+        public void SetOutboundCommResolved (int outboundCommId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetOutboundCommResolved", connection);
+                DbCommand command = GetDbCommand ("SetOutboundCommResolved", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundCommId", outboundCommId);
-                AddParameterWithName(command, "dateTime", DateTime.UtcNow);
+                AddParameterWithName (command, "outboundCommId", outboundCommId);
+                AddParameterWithName (command, "dateTime", DateTime.UtcNow);
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public void SetOutboundCommTransmissionStart(int outboundCommId)
+        public void SetOutboundCommTransmissionStart (int outboundCommId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetOutboundCommTransmissionStart", connection);
+                DbCommand command = GetDbCommand ("SetOutboundCommTransmissionStart", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundCommId", outboundCommId);
-                AddParameterWithName(command, "dateTime", DateTime.UtcNow);
+                AddParameterWithName (command, "outboundCommId", outboundCommId);
+                AddParameterWithName (command, "dateTime", DateTime.UtcNow);
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public void SetOutboundCommClosed(int outboundCommId)
+        public void SetOutboundCommClosed (int outboundCommId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetOutboundCommClosed", connection);
+                DbCommand command = GetDbCommand ("SetOutboundCommClosed", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundCommId", outboundCommId);
-                AddParameterWithName(command, "dateTime", DateTime.UtcNow);
+                AddParameterWithName (command, "outboundCommId", outboundCommId);
+                AddParameterWithName (command, "dateTime", DateTime.UtcNow);
 
                 command.ExecuteNonQuery();
             }
         }
 
         #endregion
-
 
         #region Dead template code
 
@@ -617,7 +610,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

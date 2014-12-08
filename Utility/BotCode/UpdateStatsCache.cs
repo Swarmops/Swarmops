@@ -2,23 +2,24 @@ namespace Swarmops.Utility.BotCode
 {
     public class UpdateStatsCache
     {
-        static public void Run()
+        public static void Run()
         {
-            BotLog.Write(1, "UpdateStatsCache", "Entering (obsoleted does nothing");
+            BotLog.Write (1, "UpdateStatsCache", "Entering (obsoleted does nothing");
 
             UpdateBallotDistroData();
 
-            BotLog.Write(1, "UpdateStatsCache", "Exiting");
+            BotLog.Write (1, "UpdateStatsCache", "Exiting");
         }
 
-        private static void UpdateBallotDistroData ()
+        private static void UpdateBallotDistroData()
         {
             //Empty method now this is done from the web app.
         }
 
-        private static void ObsoletedUpdateBallotDistroData ()
+        private static void ObsoletedUpdateBallotDistroData()
         {
             #region Obsoleted commented code
+
             //BotLog.Write(2, "BallotDistroData", "Entering");
             //BotLog.Write(2, "BallotDistroData", "Getting geographic voter counts...");
 
@@ -175,10 +176,7 @@ namespace Swarmops.Utility.BotCode
             //BotLog.Write(2, "BallotDistroData", "Done collecting election day data.");
 
 
-
-
             //BotLog.Write(2, "BallotDistroData", "Aggregating per electoral circuit.");
-
 
 
             //// This is not very optimized, but it runs only once per hour and
@@ -234,6 +232,7 @@ namespace Swarmops.Utility.BotCode
             //Persistence.Key["BallotCoverage-SE"] = coverageData.ToXml();
 
             //BotLog.Write(2, "BallotDistroData", "Exiting");
+
             #endregion
         }
     }

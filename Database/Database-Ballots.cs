@@ -11,52 +11,51 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string ballotFieldSequence =
-            " BallotId,ElectionId,Name,OrganizationId,GeographyId," +   // 0-4
-            "BallotCount,DeliveryAddress " +             // 5-6
+            " BallotId,ElectionId,Name,OrganizationId,GeographyId," + // 0-4
+            "BallotCount,DeliveryAddress " + // 5-6
             "FROM Ballots ";
 
-        private static BasicBallot ReadBallotFromDataReader(IDataRecord reader)
+        private static BasicBallot ReadBallotFromDataReader (IDataRecord reader)
         {
-            int ballotId = reader.GetInt32(0);
-            int electionId = reader.GetInt32(1);
-            string name = reader.GetString(2);
-            int organizationId = reader.GetInt32(3);
-            int geographyId = reader.GetInt32(4);
-            int ballotCount = reader.GetInt32(5);
-            string deliveryAddress = reader.GetString(6);
+            int ballotId = reader.GetInt32 (0);
+            int electionId = reader.GetInt32 (1);
+            string name = reader.GetString (2);
+            int organizationId = reader.GetInt32 (3);
+            int geographyId = reader.GetInt32 (4);
+            int ballotCount = reader.GetInt32 (5);
+            string deliveryAddress = reader.GetString (6);
 
-            return new BasicBallot(ballotId, electionId, organizationId, geographyId, name, ballotCount, deliveryAddress);
+            return new BasicBallot (ballotId, electionId, organizationId, geographyId, name, ballotCount,
+                deliveryAddress);
         }
 
         #endregion
 
-
-
         #region Record reading - SELECT statements
 
-        public BasicBallot GetBallot(int ballotId)
+        public BasicBallot GetBallot (int ballotId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT" + ballotFieldSequence + "WHERE BallotId=" + ballotId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadBallotFromDataReader(reader);
+                        return ReadBallotFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Ballot Id: " + ballotId.ToString());
+                    throw new ArgumentException ("Unknown Ballot Id: " + ballotId);
                 }
             }
         }
 
-        public BasicBallot[] GetBallots(params object[] conditions)
+        public BasicBallot[] GetBallots (params object[] conditions)
         {
             List<BasicBallot> result = new List<BasicBallot>();
 
@@ -65,14 +64,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + ballotFieldSequence + ConstructWhereClause("Ballots", conditions), connection);
+                    GetDbCommand (
+                        "SELECT" + ballotFieldSequence + ConstructWhereClause ("Ballots", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadBallotFromDataReader(reader));
+                        result.Add (ReadBallotFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -81,7 +80,7 @@ namespace Swarmops.Database
         }
 
 
-        public int[] GetBallotCandidates(int ballotId)
+        public int[] GetBallotCandidates (int ballotId)
         {
             List<int> result = new List<int>();
 
@@ -90,14 +89,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT PersonId FROM BallotCandidates WHERE BallotId=" + ballotId + " ORDER BY SortOrder", connection);
+                    GetDbCommand (
+                        "SELECT PersonId FROM BallotCandidates WHERE BallotId=" + ballotId + " ORDER BY SortOrder",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetInt32(0));
+                        result.Add (reader.GetInt32 (0));
                     }
 
                     return result.ToArray();
@@ -106,7 +106,7 @@ namespace Swarmops.Database
         }
 
 
-        public int[] GetDocumentedCandidates(int electionId, int organizationId)
+        public int[] GetDocumentedCandidates (int electionId, int organizationId)
         {
             List<int> result = new List<int>();
 
@@ -115,14 +115,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT PersonId FROM CandidateDocumentation WHERE ElectionId=" + electionId + " AND OrganizationId=" + organizationId, connection);
+                    GetDbCommand (
+                        "SELECT PersonId FROM CandidateDocumentation WHERE ElectionId=" + electionId +
+                        " AND OrganizationId=" + organizationId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetInt32(0));
+                        result.Add (reader.GetInt32 (0));
                     }
 
                     return result.ToArray();
@@ -130,7 +131,7 @@ namespace Swarmops.Database
             }
         }
 
-        public Dictionary<int,int> GetBallotsForPerson (int personId)
+        public Dictionary<int, int> GetBallotsForPerson (int personId)
         {
             Dictionary<int, int> result = new Dictionary<int, int>();
 
@@ -139,14 +140,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT BallotId,SortOrder FROM BallotCandidates WHERE PersonId=" + personId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result [reader.GetInt32(0)] = reader.GetInt32(1);
+                        result[reader.GetInt32 (0)] = reader.GetInt32 (1);
                     }
 
                     return result;
@@ -154,119 +155,115 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
-        public int CreateBallot (int electionId, string name, int organizationId, int geographyId, int ballotCount, string deliveryAddress)
+        public int CreateBallot (int electionId, string name, int organizationId, int geographyId, int ballotCount,
+            string deliveryAddress)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateBallot", connection);
+                DbCommand command = GetDbCommand ("CreateBallot", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "electionId", electionId);
-                AddParameterWithName(command, "name", name);
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "geographyId", geographyId);
-                AddParameterWithName(command, "ballotCount", ballotCount);
-                AddParameterWithName(command, "deliveryAddress", deliveryAddress);
+                AddParameterWithName (command, "electionId", electionId);
+                AddParameterWithName (command, "name", name);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "geographyId", geographyId);
+                AddParameterWithName (command, "ballotCount", ballotCount);
+                AddParameterWithName (command, "deliveryAddress", deliveryAddress);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public void SetBallotCount(int ballotId, int ballotCount)
+        public void SetBallotCount (int ballotId, int ballotCount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetBallotCount", connection);
+                DbCommand command = GetDbCommand ("SetBallotCount", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "ballotId", ballotId);
-                AddParameterWithName(command, "ballotCount", ballotCount);
+                AddParameterWithName (command, "ballotId", ballotId);
+                AddParameterWithName (command, "ballotCount", ballotCount);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetBallotDeliveryAddress(int ballotId, string deliveryAddress)
+        public void SetBallotDeliveryAddress (int ballotId, string deliveryAddress)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetBallotDeliveryAddress", connection);
+                DbCommand command = GetDbCommand ("SetBallotDeliveryAddress", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "ballotId", ballotId);
-                AddParameterWithName(command, "deliveryAddress", deliveryAddress);
+                AddParameterWithName (command, "ballotId", ballotId);
+                AddParameterWithName (command, "deliveryAddress", deliveryAddress);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-
-        public void CreateBallotCandidate(int ballotId, int personId)
+        public void CreateBallotCandidate (int ballotId, int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateBallotCandidate", connection);
+                DbCommand command = GetDbCommand ("CreateBallotCandidate", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "ballotId", ballotId);
-                AddParameterWithName(command, "personId", personId);
+                AddParameterWithName (command, "ballotId", ballotId);
+                AddParameterWithName (command, "personId", personId);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void ClearBallotCandidates(int ballotId)
+        public void ClearBallotCandidates (int ballotId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("ClearBallotCandidates", connection);
+                DbCommand command = GetDbCommand ("ClearBallotCandidates", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "ballotId", ballotId);
+                AddParameterWithName (command, "ballotId", ballotId);
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetCandidateDocumentationReceived(int electionId, int organizationId, int personId)
+        public void SetCandidateDocumentationReceived (int electionId, int organizationId, int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetCandidateDocumentationReceived", connection);
+                DbCommand command = GetDbCommand ("SetCandidateDocumentationReceived", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "electionId", electionId);
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "dateTimeReceived", DateTime.Now);
+                AddParameterWithName (command, "electionId", electionId);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "dateTimeReceived", DateTime.Now);
 
                 command.ExecuteNonQuery();
             }
         }
 
         #endregion
-
     }
 }

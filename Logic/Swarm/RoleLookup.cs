@@ -15,20 +15,20 @@ namespace Swarmops.Logic.Swarm
 
             foreach (PersonRole role in initialSet)
             {
-                if (!this.lookup.ContainsKey(role.Type))
+                if (!this.lookup.ContainsKey (role.Type))
                 {
                     this.lookup[role.Type] = new Roles();
                 }
 
-                this.lookup[role.Type].Add(role);
+                this.lookup[role.Type].Add (role);
             }
         }
 
-        public Roles this[RoleType roleType]
+        public Roles this [RoleType roleType]
         {
             get
             {
-                if (this.lookup.ContainsKey(roleType))
+                if (this.lookup.ContainsKey (roleType))
                 {
                     return this.lookup[roleType];
                 }
@@ -40,27 +40,28 @@ namespace Swarmops.Logic.Swarm
         public static RoleLookup FromOrganization (int organizationId)
         {
             Roles roles =
-                Roles.FromArray(SwarmDb.GetDatabaseForReading().GetRolesForOrganization(organizationId));
+                Roles.FromArray (SwarmDb.GetDatabaseForReading().GetRolesForOrganization (organizationId));
 
-            return new RoleLookup(roles);
+            return new RoleLookup (roles);
         }
 
         public static RoleLookup FromGeographyAndOrganization (int geographyId, int organizationId)
         {
             Roles roles =
-                Roles.FromArray(SwarmDb.GetDatabaseForReading().GetRolesForOrganizationGeography(organizationId, geographyId));
+                Roles.FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetRolesForOrganizationGeography (organizationId, geographyId));
 
-            return new RoleLookup(roles);
+            return new RoleLookup (roles);
         }
 
         public static RoleLookup FromGeographyAndOrganization (Geography geography, Organization organization)
         {
-            return FromGeographyAndOrganization(geography.Identity, organization.Identity);
+            return FromGeographyAndOrganization (geography.Identity, organization.Identity);
         }
 
         public static RoleLookup FromOrganization (Organization organization)
         {
-            return FromOrganization(organization.Identity);
+            return FromOrganization (organization.Identity);
         }
     }
 }

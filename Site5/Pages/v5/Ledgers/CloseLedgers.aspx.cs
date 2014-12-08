@@ -2,20 +2,20 @@
 using Swarmops.Basic.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
-using Swarmops.Logic.Structure;
 
 public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load (object sender, EventArgs e)
     {
-        this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
+        PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
 
-        this.PageTitle = "Close Ledgers";
-        this.PageIcon = "iconshock-calculator-lock";
+        PageTitle = "Close Ledgers";
+        PageIcon = "iconshock-calculator-lock";
 
         // Check if on a closable year
 
-        if (this.CurrentOrganization.Parameters.EconomyEnabled == false || this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear == DateTime.Today.Year - 1)
+        if (CurrentOrganization.Parameters.EconomyEnabled == false ||
+            CurrentOrganization.Parameters.FiscalBooksClosedUntilYear == DateTime.Today.Year - 1)
         {
             this.PanelCannotClose.Visible = true;
             this.PanelSuccess.Visible = false;
@@ -25,14 +25,15 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // Check if all transactions are balanced, so we can close
 
-        FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced(this.CurrentOrganization); // TODO: this fn should move to Organization
+        FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced (CurrentOrganization);
+        // TODO: this fn should move to Organization
 
-        int closingYear = this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear + 1;
+        int closingYear = CurrentOrganization.Parameters.FiscalBooksClosedUntilYear + 1;
 
         bool hasOpenTxForClosingYear = false;
 
         foreach (FinancialTransaction unbalancedTransaction in unbalancedTransactions)
-        { 
+        {
             if (unbalancedTransaction.DateTime.Year <= closingYear)
             {
                 hasOpenTxForClosingYear = true;
@@ -91,7 +92,7 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         // Then, actually close the ledgers.
 
-        FinancialAccounts accounts = FinancialAccounts.ForOrganization(this.CurrentOrganization);
+        FinancialAccounts accounts = FinancialAccounts.ForOrganization (CurrentOrganization);
         Int64 balanceDeltaCents = 0;
         Int64 resultsDeltaCents = 0;
 
@@ -101,30 +102,33 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
             if (account.AccountType == FinancialAccountType.Asset || account.AccountType == FinancialAccountType.Debt)
             {
-                accountBalanceCents = account.GetDeltaCents(new DateTime(2006, 1, 1), new DateTime(closingYear + 1, 1, 1));
+                accountBalanceCents = account.GetDeltaCents (new DateTime (2006, 1, 1),
+                    new DateTime (closingYear + 1, 1, 1));
                 balanceDeltaCents += accountBalanceCents;
             }
             else
             {
-                accountBalanceCents = account.GetDeltaCents(new DateTime(closingYear, 1, 1), new DateTime(closingYear + 1, 1, 1));
+                accountBalanceCents = account.GetDeltaCents (new DateTime (closingYear, 1, 1),
+                    new DateTime (closingYear + 1, 1, 1));
                 resultsDeltaCents += accountBalanceCents;
             }
         }
 
         if (balanceDeltaCents == -resultsDeltaCents && closingYear < DateTime.Today.Year)
         {
-            FinancialTransaction resultTransaction = FinancialTransaction.Create(this.CurrentOrganization.Identity, new DateTime(closingYear, 12, 31, 23, 59, 00), "Årets resultat " + closingYear.ToString());  // TODO: Localize string
-            resultTransaction.AddRow(this.CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, null);
-            resultTransaction.AddRow(this.CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents, null);
+            FinancialTransaction resultTransaction = FinancialTransaction.Create (CurrentOrganization.Identity,
+                new DateTime (closingYear, 12, 31, 23, 59, 00), "Årets resultat " + closingYear);
+            // TODO: Localize string
+            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, null);
+            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents, null);
 
             // Ledgers are now at zero-sum for the year's result accounts and from the start up until end-of-closing-year for the balance accounts.
 
-            this.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear = closingYear;
+            CurrentOrganization.Parameters.FiscalBooksClosedUntilYear = closingYear;
         }
         else
         {
-            Console.WriteLine("NOT creating transaction.");
+            Console.WriteLine ("NOT creating transaction.");
         }
-
     }
 }

@@ -40,6 +40,17 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public string AccountName
+        {
+            get { return Account.Name; }
+        }
+
+        [Obsolete ("Do not use. Use Int64 AmountCents.", true)]
+        public decimal Amount
+        {
+            get { return AmountCents/100.0m; }
+        }
+
         public static FinancialTransactionRow FromBasic (BasicFinancialTransactionRow basic)
         {
             return new FinancialTransactionRow (basic);
@@ -48,17 +59,6 @@ namespace Swarmops.Logic.Financial
         public static FinancialTransactionRow FromIdentity (int identity)
         {
             return FromBasic (SwarmDb.GetDatabaseForReading().GetFinancialTransactionRow (identity));
-        }
-
-        public string AccountName
-        {
-            get { return Account.Name; }   
-        }
-
-        [Obsolete ("Do not use. Use Int64 AmountCents.", true)]
-        public decimal Amount
-        {
-            get { return AmountCents/100.0m; }
         }
     }
 }

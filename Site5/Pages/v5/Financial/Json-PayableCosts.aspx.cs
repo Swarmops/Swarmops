@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Resources;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -7,36 +8,36 @@ namespace Swarmops.Frontend.Pages.Financial
 {
     public partial class JsonPayableCosts : DataV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             // Access required is change access to financials
 
-            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Financials, AccessType.Write);
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Financials, AccessType.Write);
 
             // Get all payable items
 
-            Payouts payouts = Payouts.Construct(this.CurrentOrganization);
+            Payouts payouts = Payouts.Construct (CurrentOrganization);
 
             // Format as JSON and return
 
             Response.ContentType = "application/json";
-            string json = FormatAsJson(payouts);
-            Response.Output.WriteLine(json);
+            string json = FormatAsJson (payouts);
+            Response.Output.WriteLine (json);
             Response.End();
         }
 
-        private string FormatAsJson(Payouts payouts)
+        private string FormatAsJson (Payouts payouts)
         {
-            StringBuilder result = new StringBuilder(16384);
+            StringBuilder result = new StringBuilder (16384);
 
-            result.Append("{\"rows\":[");
+            result.Append ("{\"rows\":[");
 
             DateTime today = DateTime.Today;
 
             foreach (Payout payout in payouts)
             {
-                result.Append("{");
-                result.AppendFormat(
+                result.Append ("{");
+                result.AppendFormat (
                     "\"itemId\":\"{0}\"," +
                     "\"due\":\"{1}\"," +
                     "\"recipient\":\"{2}\"," +
@@ -48,23 +49,23 @@ namespace Swarmops.Frontend.Pages.Financial
                     "<img id=\\\"IconApproval{7}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
                     "<img id=\\\"IconApproved{7}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{0}\\\" height=\\\"16\\\" width=\\\"16\\\" />\"",
                     payout.ProtoIdentity,
-                    (payout.ExpectedTransactionDate <= today? Resources.Global.Global_ASAP: payout.ExpectedTransactionDate.ToShortDateString()),
-                    JsonSanitize(TryLocalize(payout.Recipient)),
-                    JsonSanitize(payout.Bank),
-                    JsonSanitize(payout.Account),
-                    JsonSanitize(TryLocalize(payout.Reference)),
+                    (payout.ExpectedTransactionDate <= today
+                        ? Global.Global_ASAP
+                        : payout.ExpectedTransactionDate.ToShortDateString()),
+                    JsonSanitize (TryLocalize (payout.Recipient)),
+                    JsonSanitize (payout.Bank),
+                    JsonSanitize (payout.Account),
+                    JsonSanitize (TryLocalize (payout.Reference)),
                     payout.AmountCents/100.0,
-                    payout.ProtoIdentity.Replace("|", ""));
-                result.Append("},");
+                    payout.ProtoIdentity.Replace ("|", ""));
+                result.Append ("},");
             }
 
-            result.Remove(result.Length - 1, 1); // remove last comma
+            result.Remove (result.Length - 1, 1); // remove last comma
 
-            result.Append("]}");
+            result.Append ("]}");
 
             return result.ToString();
         }
-
     }
-
 }

@@ -4,20 +4,23 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types.Financial
 {
-    public class BasicFinancialValidation: IHasIdentity
+    public class BasicFinancialValidation : IHasIdentity
     {
-        public BasicFinancialValidation (int financialValidationId, FinancialValidationType validationType, int personId, DateTime dateTime, FinancialDependencyType dependencyType, int foreignId)
+        public BasicFinancialValidation (int financialValidationId, FinancialValidationType validationType, int personId,
+            DateTime dateTime, FinancialDependencyType dependencyType, int foreignId)
         {
-            this.FinancialValidationId = financialValidationId;
-            this.ValidationType = validationType;
-            this.PersonId = personId;
-            this.DateTime = dateTime;
-            this.DependencyType = dependencyType;
-            this.ForeignId = foreignId;
+            FinancialValidationId = financialValidationId;
+            ValidationType = validationType;
+            PersonId = personId;
+            DateTime = dateTime;
+            DependencyType = dependencyType;
+            ForeignId = foreignId;
         }
 
         public BasicFinancialValidation (BasicFinancialValidation original)
-            :this (original.Identity, original.ValidationType, original.PersonId, original.DateTime, original.DependencyType, original.ForeignId)
+            : this (
+                original.Identity, original.ValidationType, original.PersonId, original.DateTime,
+                original.DependencyType, original.ForeignId)
         {
             // empty copy ctor
         }
@@ -28,9 +31,10 @@ namespace Swarmops.Basic.Types.Financial
         public DateTime DateTime { get; private set; }
         public FinancialDependencyType DependencyType { get; private set; }
         public int ForeignId { get; private set; }
+
         public int Identity
         {
-            get { return this.FinancialValidationId; }
+            get { return FinancialValidationId; }
         }
     }
 }

@@ -3,19 +3,22 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicSwarmopsLogEntry: IHasIdentity
+    public class BasicSwarmopsLogEntry : IHasIdentity
     {
-        public BasicSwarmopsLogEntry (int swarmopsLogEntryId, int personId, DateTime dateTime, int entryTypeId, string entryXml)
+        public BasicSwarmopsLogEntry (int swarmopsLogEntryId, int personId, DateTime dateTime, int entryTypeId,
+            string entryXml)
         {
-            this.SwarmopsLogEntryId = swarmopsLogEntryId;
-            this.PersonId = personId;
-            this.DateTime = dateTime;
-            this.EntryTypeId = entryTypeId;
-            this.EntryXml = entryXml;
+            SwarmopsLogEntryId = swarmopsLogEntryId;
+            PersonId = personId;
+            DateTime = dateTime;
+            EntryTypeId = entryTypeId;
+            EntryXml = entryXml;
         }
 
         public BasicSwarmopsLogEntry (BasicSwarmopsLogEntry original)
-            : this (original.SwarmopsLogEntryId, original.PersonId, original.DateTime, original.EntryTypeId, original.EntryXml)
+            : this (
+                original.SwarmopsLogEntryId, original.PersonId, original.DateTime, original.EntryTypeId,
+                original.EntryXml)
         {
             // copy ctor
         }
@@ -28,7 +31,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.SwarmopsLogEntryId; }
+            get { return SwarmopsLogEntryId; }
         }
     }
 }

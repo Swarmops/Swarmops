@@ -1,199 +1,199 @@
-     44 ./Basic/Strings.cs
-     93 ./Basic/Types/BasicPayrollItem.cs
+     43 ./Basic/Strings.cs
+    104 ./Basic/Types/BasicPayrollItem.cs
      34 ./Basic/Types/BasicParleyOption.cs
-     73 ./Basic/Types/BasicExpenseClaim.cs
+     72 ./Basic/Types/BasicExpenseClaim.cs
      42 ./Basic/Types/BasicNewsletterFeed.cs
-     66 ./Basic/Types/BasicPaymentInformation.cs
-     42 ./Basic/Types/BasicCity.cs
-     38 ./Basic/Types/BasicRefund.cs
-     26 ./Basic/Types/BasicExceptionLog.cs
-     46 ./Basic/Types/BasicChurnDataPoint.cs
-     19 ./Basic/Types/BasicMembershipPaymentStatus.cs
+     75 ./Basic/Types/BasicPaymentInformation.cs
+     41 ./Basic/Types/BasicCity.cs
+     40 ./Basic/Types/BasicRefund.cs
+     25 ./Basic/Types/BasicExceptionLog.cs
+     48 ./Basic/Types/BasicChurnDataPoint.cs
+     18 ./Basic/Types/BasicMembershipPaymentStatus.cs
      26 ./Basic/Types/BasicGeographyDesignation.cs
      31 ./Basic/Types/BasicElection.cs
-     32 ./Basic/Types/BasicPostalCode.cs
+     31 ./Basic/Types/BasicPostalCode.cs
      13 ./Basic/Types/BasicNewsletterTemplate.cs
-     32 ./Basic/Types/BasicCurrency.cs
-     60 ./Basic/Types/Financial/BasicCashAdvance.cs
-     29 ./Basic/Types/Financial/BasicFinancialTransactionTagSetType.cs
-     38 ./Basic/Types/Financial/BasicFinancialTransactionTagType.cs
+     31 ./Basic/Types/BasicCurrency.cs
+     65 ./Basic/Types/Financial/BasicCashAdvance.cs
+     30 ./Basic/Types/Financial/BasicFinancialTransactionTagSetType.cs
+     45 ./Basic/Types/Financial/BasicFinancialTransactionTagType.cs
      41 ./Basic/Types/Financial/BasicFinancialTransactionRow.cs
-     38 ./Basic/Types/Financial/BasicFinancialTransactionTagSet.cs
-     59 ./Basic/Types/Financial/BasicFinancialAccount.cs
-     36 ./Basic/Types/Financial/BasicFinancialValidation.cs
+     43 ./Basic/Types/Financial/BasicFinancialTransactionTagSet.cs
+     63 ./Basic/Types/Financial/BasicFinancialAccount.cs
+     39 ./Basic/Types/Financial/BasicFinancialValidation.cs
      65 ./Basic/Types/Financial/BasicFinancialTransaction.cs
      34 ./Basic/Types/Financial/BasicFinancialAccountRow.cs
-     21 ./Basic/Types/Financial/BasicFinancialDependency.cs
+     20 ./Basic/Types/Financial/BasicFinancialDependency.cs
      47 ./Basic/Types/BasicMediaKeyword.cs
-     16 ./Basic/Types/BasicPermission.cs
+     15 ./Basic/Types/BasicPermission.cs
      47 ./Basic/Types/BasicMedium.cs
-     38 ./Basic/Types/BasicPWEvent.cs
-     44 ./Basic/Types/BasicExternalActivity.cs
+     39 ./Basic/Types/BasicPWEvent.cs
+     47 ./Basic/Types/BasicExternalActivity.cs
      45 ./Basic/Types/BasicMediaCategory.cs
-     44 ./Basic/Types/BasicInternalPollVoter.cs
-    145 ./Basic/Types/BasicOrganization.cs
-     78 ./Basic/Types/BasicVolunteerRole.cs
-     79 ./Basic/Types/BasicVolunteer.cs
-     85 ./Basic/Types/BasicCountry.cs
-     32 ./Basic/Types/BasicOutboundInvoiceItem.cs
-     37 ./Basic/Types/BasicSupplier.cs
-     45 ./Basic/Types/BasicCommunicationTurnaround.cs
-     36 ./Basic/Types/BasicBallot.cs
-     53 ./Basic/Types/BasicPaperLetter.cs
-     91 ./Basic/Types/BasicMailTemplate.cs
-     56 ./Basic/Types/Security/BasicAuthority.cs
+     46 ./Basic/Types/BasicInternalPollVoter.cs
+     92 ./Basic/Types/BasicOrganization.cs
+     77 ./Basic/Types/BasicVolunteerRole.cs
+     78 ./Basic/Types/BasicVolunteer.cs
+     68 ./Basic/Types/BasicCountry.cs
+     33 ./Basic/Types/BasicOutboundInvoiceItem.cs
+     40 ./Basic/Types/BasicSupplier.cs
+     49 ./Basic/Types/BasicCommunicationTurnaround.cs
+     39 ./Basic/Types/BasicBallot.cs
+     54 ./Basic/Types/BasicPaperLetter.cs
+     83 ./Basic/Types/BasicMailTemplate.cs
+     59 ./Basic/Types/Security/BasicAuthority.cs
      76 ./Basic/Types/BasicPersonRole.cs
-     42 ./Basic/Types/BasicPaymentGroup.cs
+     44 ./Basic/Types/BasicPaymentGroup.cs
      28 ./Basic/Types/BasicObjectOptionalData.cs
-     22 ./Basic/Types/BasicInternalPollVoteDetail.cs
-     61 ./Basic/Types/Governance/BasicMotion.cs
-     44 ./Basic/Types/Governance/BasicMotionAmendment.cs
-     41 ./Basic/Types/Governance/BasicMeeting.cs
-     41 ./Basic/Types/BasicParleyAttendee.cs
-     90 ./Basic/Types/BasicPaymentCode.cs
-     60 ./Basic/Types/BasicParley.cs
-     72 ./Basic/Types/Communications/BasicOutboundComm.cs
-     39 ./Basic/Types/Communications/BasicOutboundCommRecipient.cs
+     21 ./Basic/Types/BasicInternalPollVoteDetail.cs
+     69 ./Basic/Types/Governance/BasicMotion.cs
+     50 ./Basic/Types/Governance/BasicMotionAmendment.cs
+     46 ./Basic/Types/Governance/BasicMeeting.cs
+     44 ./Basic/Types/BasicParleyAttendee.cs
+     87 ./Basic/Types/BasicPaymentCode.cs
+     65 ./Basic/Types/BasicParley.cs
+     75 ./Basic/Types/Communications/BasicOutboundComm.cs
+     41 ./Basic/Types/Communications/BasicOutboundCommRecipient.cs
      81 ./Basic/Types/Communications/BasicAutoMail.cs
-     62 ./Basic/Types/BasicInboundInvoice.cs
+     61 ./Basic/Types/BasicInboundInvoice.cs
     219 ./Basic/Types/BasicOutboundMail.cs
-     34 ./Basic/Types/BasicSwarmopsLogEntry.cs
+     36 ./Basic/Types/BasicSwarmopsLogEntry.cs
      18 ./Basic/Types/GeographyWithPeople.cs
-     35 ./Basic/Types/BasicInternalPollCandidate.cs
-     97 ./Basic/Types/BasicDocument.cs
+     37 ./Basic/Types/BasicInternalPollCandidate.cs
+     96 ./Basic/Types/BasicDocument.cs
      25 ./Basic/Types/BasicExternalCredential.cs
-    114 ./Basic/Types/BasicPWLog.cs
-     66 ./Basic/Types/XmlSerializableDictionary.cs
-     53 ./Basic/Types/BasicSalary.cs
-     52 ./Basic/Types/BasicPayout.cs
-     63 ./Basic/Types/BasicReporter.cs
+    111 ./Basic/Types/BasicPWLog.cs
+     70 ./Basic/Types/XmlSerializableDictionary.cs
+     56 ./Basic/Types/BasicSalary.cs
+     51 ./Basic/Types/BasicPayout.cs
+     62 ./Basic/Types/BasicReporter.cs
      18 ./Basic/Types/BasicAddressValidationRun.cs
-     73 ./Basic/Types/BasicInternalPoll.cs
-     88 ./Basic/Types/BasicExternalIdentity.cs
-     69 ./Basic/Types/BasicMembership.cs
-     61 ./Basic/Types/BasicOutboundInvoice.cs
+     80 ./Basic/Types/BasicInternalPoll.cs
+     76 ./Basic/Types/BasicExternalIdentity.cs
+     64 ./Basic/Types/BasicMembership.cs
+     66 ./Basic/Types/BasicOutboundInvoice.cs
      64 ./Basic/Types/BasicGeography.cs
-     76 ./Basic/Types/BasicOutboundMailRecipient.cs
-     36 ./Basic/Types/BasicUptakeGeography.cs
-     76 ./Basic/Types/BasicPerson.cs
+     78 ./Basic/Types/BasicOutboundMailRecipient.cs
+     35 ./Basic/Types/BasicUptakeGeography.cs
+     71 ./Basic/Types/BasicPerson.cs
      95 ./Basic/Types/BasicNewsletter.cs
      84 ./Basic/Types/BasicMediaEntry.cs
-     57 ./Basic/Types/BasicPayrollAdjustment.cs
-     40 ./Basic/Types/BasicPayment.cs
-     33 ./Basic/Types/BasicInternalPollVote.cs
-     43 ./Basic/Diagnostics/Logging.cs
-      7 ./Basic/Interfaces/IHasIdentities.cs
-     52 ./Basic/Interfaces/IHandleProvider.cs
+     62 ./Basic/Types/BasicPayrollAdjustment.cs
+     42 ./Basic/Types/BasicPayment.cs
+     32 ./Basic/Types/BasicInternalPollVote.cs
+     42 ./Basic/Diagnostics/Logging.cs
+      6 ./Basic/Interfaces/IHasIdentities.cs
+     50 ./Basic/Interfaces/IHandleProvider.cs
       7 ./Basic/Interfaces/IEmailPerson.cs
       6 ./Basic/Interfaces/IHasIdentity.cs
      26 ./Basic/Properties/Settings.Designer.cs
      58 ./Basic/Properties/AssemblyInfo.cs
-     38 ./Basic/Config.cs
-     29 ./Basic/Enums/FinancialValidationType.cs
-     20 ./Basic/Enums/ExternalIdentityType.cs
-     49 ./Basic/Enums/FinancialDependencyType.cs
-     29 ./Basic/Enums/PersonOptionalDataKey.cs
-    206 ./Basic/Enums/RoleTypeClass.cs
-    240 ./Basic/Enums/ObjectOptionalDataType.cs
+     37 ./Basic/Config.cs
+     34 ./Basic/Enums/FinancialValidationType.cs
+     19 ./Basic/Enums/ExternalIdentityType.cs
+     59 ./Basic/Enums/FinancialDependencyType.cs
+     28 ./Basic/Enums/PersonOptionalDataKey.cs
+    240 ./Basic/Enums/RoleTypeClass.cs
+    288 ./Basic/Enums/ObjectOptionalDataType.cs
      10 ./Basic/Enums/ExpenseEventType.cs
-     35 ./Basic/Enums/OutboundCommPriority.cs
-     58 ./Basic/Enums/MailAuthorType.cs
-     37 ./Basic/Enums/FinancialAccountType.cs
-     15 ./Basic/Enums/CommunicationType.cs
-     29 ./Basic/Enums/GeographyLevel.cs
+     41 ./Basic/Enums/OutboundCommPriority.cs
+     57 ./Basic/Enums/MailAuthorType.cs
+     44 ./Basic/Enums/FinancialAccountType.cs
+     16 ./Basic/Enums/CommunicationType.cs
+     34 ./Basic/Enums/GeographyLevel.cs
      16 ./Basic/Enums/PoliticalAffiliation.cs
-     25 ./Basic/Enums/AddressValidationResult.cs
+     29 ./Basic/Enums/AddressValidationResult.cs
      59 ./Basic/Enums/EventTypeSource.cs
       8 ./Basic/Enums/PaymentCodeIssueType.cs
-     16 ./Basic/Enums/AutoMailType.cs
-     39 ./Basic/Enums/DocumentType.cs
-     16 ./Basic/Enums/ExternalActivityType.cs
+     15 ./Basic/Enums/AutoMailType.cs
+     46 ./Basic/Enums/DocumentType.cs
+     14 ./Basic/Enums/ExternalActivityType.cs
      48 ./Basic/Enums/PermissionEnum.cs
-    118 ./Basic/Enums/OrganizationFinancialAccountType.cs
-     17 ./Basic/Enums/InvalidMembershipType.cs
+    144 ./Basic/Enums/OrganizationFinancialAccountType.cs
+     19 ./Basic/Enums/InvalidMembershipType.cs
       8 ./Basic/Enums/PersonGender.cs
-     41 ./Basic/Enums/MembershipPaymentStatus.cs
+     45 ./Basic/Enums/MembershipPaymentStatus.cs
      28 ./Basic/EventTypesSources.cs
-    709 ./Backend/Program.cs
+    708 ./Backend/Program.cs
      38 ./Backend/Properties/AssemblyInfo.cs
      51 ./Backend/CommsTransmitter.cs
-   1021 ./Database/Database-InboundInvoices.cs
-    482 ./Database/Database-Expenses.cs
-    531 ./Database/Database-FinancialTransactionTagSets.cs
-     68 ./Database/Database-Permissions.cs
+   1008 ./Database/Database-InboundInvoices.cs
+    469 ./Database/Database-Expenses.cs
+    528 ./Database/Database-FinancialTransactionTagSets.cs
+     63 ./Database/Database-Permissions.cs
     226 ./Database/Database-MotionAmendments.cs
-    151 ./Database/Database-OptionalData.cs
-    160 ./Database/Database-CommunicationTurnarounds.cs
-    700 ./Database/Database-Payouts.cs
-     76 ./Database/Database-ExceptionLog.cs
-    209 ./Database/Database-SwarmopsLog.cs
-    193 ./Database/Database-Parleys.cs
-    128 ./Database/Database-ParleyOptions.cs
+    148 ./Database/Database-OptionalData.cs
+    159 ./Database/Database-CommunicationTurnarounds.cs
+    688 ./Database/Database-Payouts.cs
+     73 ./Database/Database-ExceptionLog.cs
+    203 ./Database/Database-SwarmopsLog.cs
+    185 ./Database/Database-Parleys.cs
+    119 ./Database/Database-ParleyOptions.cs
      78 ./Database/Database-PaymentCodes.cs
-    246 ./Database/Database-ConnectionsCommands.cs
-    200 ./Database/Database-Events.cs
-    192 ./Database/Database-Constructors.cs
-    171 ./Database/Database-ExternalIdentities.cs
-    207 ./Database/Database-Salaries.cs
-     83 ./Database/Database-AutoMails.cs
-     48 ./Database/Database-Initialization.cs
-   1077 ./Database/Database-OutboundInvoices.cs
-    169 ./Database/Database-InternalPolls.cs
-    198 ./Database/Database-Meetings.cs
-    178 ./Database/Configuration.cs
-    448 ./Database/Database-FinancialTransactionTags.cs
-    556 ./Database/Database-FinancialTransactionTagTypes.cs
-    975 ./Database/Database-PostalCodes.cs
-    194 ./Database/Database-ParleyAttendees.cs
-    486 ./Database/Database-Geographies.cs
-    934 ./Database/Database-Payroll.cs
-    623 ./Database/Database-Documents.cs
+    253 ./Database/Database-ConnectionsCommands.cs
+    209 ./Database/Database-Events.cs
+    187 ./Database/Database-Constructors.cs
+    173 ./Database/Database-ExternalIdentities.cs
+    203 ./Database/Database-Salaries.cs
+     84 ./Database/Database-AutoMails.cs
+     47 ./Database/Database-Initialization.cs
+   1065 ./Database/Database-OutboundInvoices.cs
+    165 ./Database/Database-InternalPolls.cs
+    191 ./Database/Database-Meetings.cs
+    190 ./Database/Configuration.cs
+    439 ./Database/Database-FinancialTransactionTags.cs
+    554 ./Database/Database-FinancialTransactionTagTypes.cs
+    963 ./Database/Database-PostalCodes.cs
+    188 ./Database/Database-ParleyAttendees.cs
+    482 ./Database/Database-Geographies.cs
+    925 ./Database/Database-Payroll.cs
+    621 ./Database/Database-Documents.cs
     131 ./Database/Database-OrganizationFinancialAccounts.cs
-    121 ./Database/Database-ChurnData.cs
-    539 ./Database/Database-OutboundCommRecipients.cs
-    272 ./Database/Database-PostalCodesCities.cs
+    119 ./Database/Database-ChurnData.cs
+    526 ./Database/Database-OutboundCommRecipients.cs
+    281 ./Database/Database-PostalCodesCities.cs
     197 ./Database/Database-Tests.cs
-     42 ./Database/Database-ExternalCredentials.cs
-    662 ./Database/Database-People.cs
-    507 ./Database/Database-Organizations.cs
-    110 ./Database/Database-Activists.cs
+     43 ./Database/Database-ExternalCredentials.cs
+    668 ./Database/Database-People.cs
+    511 ./Database/Database-Organizations.cs
+    105 ./Database/Database-Activists.cs
      25 ./Database/Database-Attribute.cs
-    881 ./Database/Database-PaperLetters.cs
-   1321 ./Database/Database-Financials.cs
-     73 ./Database/Database-FlatData.cs
+    878 ./Database/Database-PaperLetters.cs
+   1334 ./Database/Database-Financials.cs
+     74 ./Database/Database-FlatData.cs
      26 ./Database/Properties/Settings.Designer.cs
-     57 ./Database/Properties/AssemblyInfo.cs
+     58 ./Database/Properties/AssemblyInfo.cs
     223 ./Database/Database-Volunteers.cs
-    219 ./Database/Database-Roles.cs
-    559 ./Database/Database-PaymentGroups.cs
-    368 ./Database/Database-OutboundMails.cs
-    657 ./Database/Database-Memberships.cs
+    223 ./Database/Database-Roles.cs
+    549 ./Database/Database-PaymentGroups.cs
+    374 ./Database/Database-OutboundMails.cs
+    666 ./Database/Database-Memberships.cs
     164 ./Database/Database-Countries.cs
-    103 ./Database/Database-TaxLevels.cs
-     71 ./Database/Database-FinancialValidations.cs
-    161 ./Database/Database-ExternalActivities.cs
-    569 ./Database/Database-Payments.cs
-    233 ./Database/Database-Conditions.cs
+     96 ./Database/Database-TaxLevels.cs
+     69 ./Database/Database-FinancialValidations.cs
+    165 ./Database/Database-ExternalActivities.cs
+    560 ./Database/Database-Payments.cs
+    240 ./Database/Database-Conditions.cs
      93 ./Database/Database-UrlTranslations.cs
-    186 ./Database/Database-Reporters.cs
-     22 ./Database/Database-TemporaryIdentities.cs
-    207 ./Database/Database-Motions.cs
-    437 ./Database/Database-Media.cs
-    622 ./Database/Database-OutboundComms.cs
-    492 ./Database/Database-Refunds.cs
-     87 ./Database/Database-OutboundMailRecipients.cs
+    187 ./Database/Database-Reporters.cs
+     21 ./Database/Database-TemporaryIdentities.cs
+    204 ./Database/Database-Motions.cs
+    436 ./Database/Database-Media.cs
+    613 ./Database/Database-OutboundComms.cs
+    479 ./Database/Database-Refunds.cs
+     86 ./Database/Database-OutboundMailRecipients.cs
      23 ./Database/Database-OutboundPhoneMessages.cs
-    112 ./Database/Database-PirateWebLog.cs
+    113 ./Database/Database-PirateWebLog.cs
     137 ./Database/Database-Optimizations.cs
-    915 ./Database/Database-PayrollAdjustments.cs
-    229 ./Database/Database-Currencies.cs
-    220 ./Database/Database-Newsletters.cs
-    271 ./Database/Database-Ballots.cs
-    143 ./Database/Database-InternalPollCandidates.cs
-    535 ./Database/Database-CashAdvances.cs
-    134 ./Database/Database-MailTemplates.cs
-    525 ./Database/Database-FinancialTransactionTagSetTypes.cs
-    316 ./Database/Database-InternalPollVotes.cs
+    911 ./Database/Database-PayrollAdjustments.cs
+    224 ./Database/Database-Currencies.cs
+    222 ./Database/Database-Newsletters.cs
+    268 ./Database/Database-Ballots.cs
+    141 ./Database/Database-InternalPollCandidates.cs
+    524 ./Database/Database-CashAdvances.cs
+    132 ./Database/Database-MailTemplates.cs
+    519 ./Database/Database-FinancialTransactionTagSetTypes.cs
+    312 ./Database/Database-InternalPollVotes.cs
       2 ./Site-Data/Forms/DisplayOutboundInvoice.aspx
      83 ./Site-Data/Forms/DisplayOutboundInvoice.aspx.cs
     104 ./Site-Data/Xml/Roles.aspx.cs
@@ -273,148 +273,148 @@
      21 ./Site-Data/HtmlIncludes/InternalPollCandidates.aspx
      71 ./Site-Data/HtmlIncludes/DisplayLatestActivism.aspx.cs
       3 ./Site-Data/HtmlIncludes/DisplayLatestActivism.aspx
-     31 ./Utility/Special/UrlTranslator.cs
-     73 ./Utility/Special/Sweden/SupportMailReview.cs
-    107 ./Utility/Special/Sweden/SwedishForumMemberCheck.cs
-    277 ./Utility/Financial/PaysonImporter.cs
-    264 ./Utility/Financial/PaypalImporter.cs
+     28 ./Utility/Special/UrlTranslator.cs
+     72 ./Utility/Special/Sweden/SupportMailReview.cs
+    102 ./Utility/Special/Sweden/SwedishForumMemberCheck.cs
+    282 ./Utility/Financial/PaysonImporter.cs
+    267 ./Utility/Financial/PaypalImporter.cs
      37 ./Utility/Financial/PaymentGroupMapper.cs
-     85 ./Utility/Migrations/PeopleOptionalData.cs
+     83 ./Utility/Migrations/PeopleOptionalData.cs
     514 ./Utility/EventProcessor.cs
      33 ./Utility/ExceptionMail.cs
-    525 ./Utility/BotCode/RosterHousekeeping.cs
-    240 ./Utility/BotCode/NewsletterChecker.cs
-    280 ./Utility/BotCode/SchulzeProcessor.cs
-    100 ./Utility/BotCode/ActivityMailer.cs
-    528 ./Utility/BotCode/Mappery.cs
+    520 ./Utility/BotCode/RosterHousekeeping.cs
+    238 ./Utility/BotCode/NewsletterChecker.cs
+    281 ./Utility/BotCode/SchulzeProcessor.cs
+     92 ./Utility/BotCode/ActivityMailer.cs
+    521 ./Utility/BotCode/Mappery.cs
      80 ./Utility/BotCode/ForumHousekeeping.cs
      53 ./Utility/BotCode/BlogTop50Scraper.cs
-   2112 ./Utility/BotCode/EventProcessor.cs
-     43 ./Utility/BotCode/BotLog.cs
-    240 ./Utility/BotCode/UpdateStatsCache.cs
+   2093 ./Utility/BotCode/EventProcessor.cs
+     42 ./Utility/BotCode/BotLog.cs
+    238 ./Utility/BotCode/UpdateStatsCache.cs
     142 ./Utility/BotCode/App_LocalResources/EventProcessor.Designer.cs
       0 ./Utility/BotCode/App_LocalResources/EventProcessor.fi-FI.Designer.cs
       0 ./Utility/BotCode/App_LocalResources/EventProcessor.sv-SE.Designer.cs
-     63 ./Utility/BotCode/MediaWatcher.cs
-    715 ./Utility/BotCode/MailProcessor.cs
-     95 ./Utility/BotCode/HeartBeater.cs
-     68 ./Utility/BotCode/SalaryProcessor.cs
-    250 ./Utility/BotCode/PressReleaseChecker.cs
-     90 ./Utility/BotCode/BlogWatcher.cs
-    291 ./Utility/BotCode/MailResolver.cs
-    109 ./Utility/BotCode/TurnaroundTracker.cs
-     21 ./Utility/BotCode/InternalPollRandomizer.cs
-    186 ./Utility/BotCode/InternalPollMaintenance.cs
-    348 ./Utility/BotCode/BallotComposer.cs
+     65 ./Utility/BotCode/MediaWatcher.cs
+    747 ./Utility/BotCode/MailProcessor.cs
+     93 ./Utility/BotCode/HeartBeater.cs
+     66 ./Utility/BotCode/SalaryProcessor.cs
+    254 ./Utility/BotCode/PressReleaseChecker.cs
+     91 ./Utility/BotCode/BlogWatcher.cs
+    290 ./Utility/BotCode/MailResolver.cs
+    104 ./Utility/BotCode/TurnaroundTracker.cs
+     19 ./Utility/BotCode/InternalPollRandomizer.cs
+    183 ./Utility/BotCode/InternalPollMaintenance.cs
+    351 ./Utility/BotCode/BallotComposer.cs
      37 ./Utility/Properties/AssemblyInfo.cs
-     77 ./Utility/Server/ExchangeCode.cs
+     75 ./Utility/Server/ExchangeCode.cs
     144 ./Utility/Server/ActiveDirectoryCode.cs
-     83 ./Utility/Communications/CommsTransmitterMail.cs
-    256 ./Utility/Mail/NewsletterTransmitter3.cs
-    272 ./Utility/Mail/PressReleaseTransmitter.cs
-    263 ./Utility/Mail/MailTransmitter.cs
-    311 ./Utility/Mail/NewsletterTransmitter.cs
+     85 ./Utility/Communications/CommsTransmitterMail.cs
+    260 ./Utility/Mail/NewsletterTransmitter3.cs
+    273 ./Utility/Mail/PressReleaseTransmitter.cs
+    275 ./Utility/Mail/MailTransmitter.cs
+    309 ./Utility/Mail/NewsletterTransmitter.cs
      24 ./Utility/Mail/Newsletter.cs
      10 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx
-    298 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
-    211 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
-     82 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
-    114 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx.cs
+    316 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
+    217 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
+     87 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
+    118 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx.cs
      13 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx
-     76 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx.cs
+     73 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx
-    155 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx
-    144 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx
-    210 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
+    156 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx
+    148 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx
+    224 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
     143 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
-    197 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
+    217 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
     183 ./Site5/Pages/v5/Financial/AttestCosts.aspx
-     69 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx.cs
+     70 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx.cs
     183 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx
       1 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx
-    115 ./Site5/Pages/v5/Financial/PayOutMoney.aspx.cs
-    227 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx.cs
+    117 ./Site5/Pages/v5/Financial/PayOutMoney.aspx.cs
+    230 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx.cs
     141 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
-     42 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
+     43 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
      16 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx
     106 ./Site5/Pages/v5/Admin/Hacks/PopulateData.aspx
      59 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx.cs
      28 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx
     101 ./Site5/Pages/v5/Admin/Hacks/PopulateData.aspx.cs
-     79 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx.cs
+     73 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx.cs
     198 ./Site5/Pages/v5/Admin/EditOrganization.aspx
-    387 ./Site5/Pages/v5/Admin/EditOrganization.aspx.cs
-    106 ./Site5/Pages/v5/Comms/SendMassMessage.aspx.cs
+    390 ./Site5/Pages/v5/Admin/EditOrganization.aspx.cs
+    104 ./Site5/Pages/v5/Comms/SendMassMessage.aspx.cs
      63 ./Site5/Pages/v5/Comms/SendMassMessage.aspx
      13 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx
-     13 ./Site5/Pages/v5/Security/AccessDenied.aspx.cs
+     15 ./Site5/Pages/v5/Security/AccessDenied.aspx.cs
      17 ./Site5/Pages/v5/Security/AccessDenied.aspx
      31 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx
-     61 ./Site5/Pages/v5/Security/ChangeOrganizations.aspx.cs
+     55 ./Site5/Pages/v5/Security/ChangeOrganizations.aspx.cs
       1 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx
      82 ./Site5/Pages/v5/Security/ChangeOrganizations.aspx
       1 ./Site5/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx
-     13 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx.cs
-     91 ./Site5/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx.cs
-     38 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx.cs
-     66 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx.cs
-    841 ./Site5/Pages/v5/Init/Default.aspx.cs
+     14 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx.cs
+     90 ./Site5/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx.cs
+     40 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx.cs
+     61 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx.cs
+    857 ./Site5/Pages/v5/Init/Default.aspx.cs
     697 ./Site5/Pages/v5/Init/Default.aspx
-    706 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
-    129 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx.cs
-     61 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.cs
+    738 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
+    133 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx.cs
+     63 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.cs
      22 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx
-    328 ./Site5/Pages/v5/Ledgers/SetRootBudgets.aspx.cs
+    334 ./Site5/Pages/v5/Ledgers/SetRootBudgets.aspx.cs
       0 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx
-     50 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx.cs
-    362 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx.cs
-    213 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
-     29 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx.cs
+     49 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx.cs
+    369 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx.cs
+    239 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
+     30 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx
-    189 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.cs
+    188 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.cs
      11 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx
-     75 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx.cs
-    423 ./Site5/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx.cs
+     74 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx.cs
+    436 ./Site5/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-ProfitLossData.aspx
      70 ./Site5/Pages/v5/Ledgers/SetRootBudgets.aspx
-     84 ./Site5/Pages/v5/Ledgers/Csv-BalanceData.aspx.cs
+     91 ./Site5/Pages/v5/Ledgers/Csv-BalanceData.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Csv-BalanceData.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx
-    133 ./Site5/Pages/v5/Ledgers/Json-ProfitLossData.aspx.cs
+    141 ./Site5/Pages/v5/Ledgers/Json-ProfitLossData.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx
-    300 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx.cs
+    308 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx.cs
     205 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx
     133 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx
      92 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx
-     46 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx.cs
-   1250 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx.cs
-     92 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.cs
+     47 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx.cs
+   1278 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx.cs
+     98 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.cs
     117 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx
     267 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx
     529 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx
     114 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx
-    131 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx.cs
+    126 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx.cs
       1 ./Site5/Pages/v5/Swarm/Json-ListFindPeople.aspx
-     16 ./Site5/Pages/v5/Swarm/AddPerson.aspx.cs
-     35 ./Site5/Pages/v5/Swarm/AddPerson.aspx
+    146 ./Site5/Pages/v5/Swarm/AddPerson.aspx.cs
+    226 ./Site5/Pages/v5/Swarm/AddPerson.aspx
     204 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx
-     63 ./Site5/Pages/v5/Swarm/Json-ListFindPeople.aspx.cs
-    111 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx.cs
+     65 ./Site5/Pages/v5/Swarm/Json-ListFindPeople.aspx.cs
+    116 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx.cs
       1 ./Site5/Pages/v5/User/SetCulture.aspx
-     70 ./Site5/Pages/v5/User/SelectLanguage.aspx.cs
-     33 ./Site5/Pages/v5/User/SetCulture.aspx.cs
+     65 ./Site5/Pages/v5/User/SelectLanguage.aspx.cs
+     24 ./Site5/Pages/v5/User/SetCulture.aspx.cs
      96 ./Site5/Pages/v5/User/SelectLanguage.aspx
-    191 ./Site5/Pages/v5/Support/StreamUpload.aspx.cs
+    188 ./Site5/Pages/v5/Support/StreamUpload.aspx.cs
       2 ./Site5/Pages/v5/Support/StreamUpload.aspx
-     20 ./Site5/Default.aspx.cs
-     18 ./Site5/Default.aspx
-    377 ./Site5/Security/Login.aspx.cs
-     99 ./Site5/Security/Login-Old.aspx.cs
-    220 ./Site5/Security/Login.aspx
-     38 ./Site5/Security/FinalizeLogin.aspx.cs
+     17 ./Site5/Default.aspx.cs
+     19 ./Site5/Default.aspx
+    360 ./Site5/Security/Login.aspx.cs
+    106 ./Site5/Security/Login-Old.aspx.cs
+    218 ./Site5/Security/Login.aspx
+     25 ./Site5/Security/FinalizeLogin.aspx.cs
      53 ./Site5/Security/Login-Old.aspx
       0 ./Site5/Security/FinalizeLogin.aspx
       0 ./Site5/Automation/Json-GeographiesTree.aspx
@@ -425,282 +425,287 @@
      46 ./Site5/Automation/GetGeographyData.asmx
       1 ./Site5/Automation/Json-TransactionTagsTree.aspx
      28 ./Site5/Automation/Json-ByGuid.aspx.cs
-      1 ./Site5/Automation/FieldValidation.asmx
-     60 ./Site5/Automation/Json-AvailableCurrencies.aspx.cs
-     44 ./Site5/Automation/Json-SearchPeoplePattern.aspx.cs
+     57 ./Site5/Automation/Json-AvailableCurrencies.aspx.cs
+     47 ./Site5/Automation/Json-SearchPeoplePattern.aspx.cs
       0 ./Site5/Automation/Json-BudgetsTree.aspx
       0 ./Site5/Automation/Json-FinancialAccountsTree.aspx
-    416 ./Site5/Automation/UploadFileHandler.ashx
+    412 ./Site5/Automation/UploadFileHandler.ashx
       1 ./Site5/Automation/Json-SearchPeoplePattern.aspx
       1 ./Site5/Automation/FieldValidation.aspx
-    156 ./Site5/Automation/Json-FinancialAccountsTree.aspx.cs
-     97 ./Site5/Automation/Json-TransactionTagsTree.aspx.cs
-     26 ./Site5/Automation/FieldValidation.aspx.cs
-     29 ./Site5/Automation/Json-GetPersonAvatar.aspx.cs
+    157 ./Site5/Automation/Json-FinancialAccountsTree.aspx.cs
+     96 ./Site5/Automation/Json-TransactionTagsTree.aspx.cs
+    168 ./Site5/Automation/FieldValidation.aspx.cs
+     33 ./Site5/Automation/Json-GetPersonAvatar.aspx.cs
     128 ./Site5/Automation/Json-BudgetsTree.aspx.cs
      33 ./Site5/Tests/TestBookkeepingIntegrity.aspx
-     80 ./Site5/Tests/TestBookkeepingIntegrity.aspx.cs
-    393 ./Site5/Master-v5.master.cs
-    106 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
-     31 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
+     79 ./Site5/Tests/TestBookkeepingIntegrity.aspx.cs
+    392 ./Site5/Master-v5.master.cs
+    121 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
+     32 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
      40 ./Site5/Controls/v5/Base/ComboGeographies.ascx
-     75 ./Site5/Controls/v5/Base/FileUpload.ascx.cs
-     27 ./Site5/Controls/v5/Base/DropDown.ascx.cs
+     78 ./Site5/Controls/v5/Base/FileUpload.ascx.cs
+     29 ./Site5/Controls/v5/Base/DropDown.ascx.cs
      68 ./Site5/Controls/v5/Base/FileUpload.ascx
       1 ./Site5/Controls/v5/Base/MainMenu.ascx
-     34 ./Site5/Controls/v5/Base/DropDown.ascx
-     20 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx.cs
+     40 ./Site5/Controls/v5/Base/DropDown.ascx
+     15 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx.cs
     101 ./Site5/Controls/v5/Financial/ComboBudgets.ascx
       1 ./Site5/Controls/v5/Financial/ComboIncomeCostType.ascx
       1 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx
       8 ./Site5/Controls/v5/Financial/ComboIncomeCostType.ascx.cs
-     43 ./Site5/Controls/v5/Financial/ComboBudgets.ascx.cs
-    152 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx.cs
-     18 ./Site5/Controls/v5/Swarm/ComboPeople.ascx.cs
+     42 ./Site5/Controls/v5/Financial/ComboBudgets.ascx.cs
+    148 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx.cs
+     17 ./Site5/Controls/v5/Swarm/ComboPeople.ascx.cs
      98 ./Site5/Controls/v5/Swarm/ComboPeople.ascx
      26 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx
-     46 ./Site5/Controls/v5/UI/ExternalScripts.ascx.cs
+     49 ./Site5/Controls/v5/UI/ExternalScripts.ascx.cs
       5 ./Site5/Controls/v5/UI/ExternalScripts.ascx
       5 ./Site5/Controls/v5/UI/IncludedScripts.ascx
-     44 ./Site5/Controls/v5/UI/IncludedScripts.ascx.cs
-     81 ./Site5/Global.asax
-    376 ./Site5/App_Code/CommonV5.cs
+     41 ./Site5/Controls/v5/UI/IncludedScripts.ascx.cs
+     77 ./Site5/Global.asax
+    358 ./Site5/App_Code/CommonV5.cs
     880 ./Site5/App_Code/GetGeographyData.cs
-     65 ./Site5/App_Code/MasterV5Base.cs
-    157 ./Site5/App_Code/PageV5Base.cs
-    163 ./Site5/App_Code/DataV5Base.cs
-     83 ./Site5/App_Code/ControlV5Base.cs
-     96 ./Site5/App_Code/FieldValidation.cs
+     56 ./Site5/App_Code/MasterV5Base.cs
+    158 ./Site5/App_Code/PageV5Base.cs
+    157 ./Site5/App_Code/DataV5Base.cs
+     65 ./Site5/App_Code/ControlV5Base.cs
+     91 ./Logic/App_GlobalResources/Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs
+     81 ./Logic/App_GlobalResources/Logic.Communications.Transmission.MailPayload.Designer.cs
     376 ./Logic/App_GlobalResources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
      91 ./Logic/App_GlobalResources/Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs
     171 ./Logic/App_GlobalResources/Logic.Swarm.DashboardTodos.Designer.cs
-    533 ./Logic/Special/Sweden/SupportDatabase.cs
+    927 ./Logic/App_GlobalResources/ParticipantTitles.Designer.cs
+    530 ./Logic/Special/Sweden/SupportDatabase.cs
      11 ./Logic/Special/Sweden/SupportEmail.cs
-   1105 ./Logic/Special/Sweden/SwedishForumDatabase.cs
+   1065 ./Logic/Special/Sweden/SwedishForumDatabase.cs
      32 ./Logic/Special/Sweden/SupportCaseDelta.cs
-     90 ./Logic/Special/Sweden/SwedishForumHandleProvider.cs
+     88 ./Logic/Special/Sweden/SwedishForumHandleProvider.cs
      46 ./Logic/Special/Sweden/SupportCase.cs
-    357 ./Logic/Special/Mail/MailServerDatabase.cs
-     22 ./Logic/Special/DummyBitcoin.cs
-     31 ./Logic/Interfaces/TreeNode.cs
-    383 ./Logic/Cache/OrganizationCache.cs
-    262 ./Logic/Cache/GeographyCache.cs
-     85 ./Logic/Cache/MailTemplateCache.cs
+    359 ./Logic/Special/Mail/MailServerDatabase.cs
+     17 ./Logic/Special/DummyBitcoin.cs
+     29 ./Logic/Interfaces/TreeNode.cs
+    377 ./Logic/Cache/OrganizationCache.cs
+    259 ./Logic/Cache/GeographyCache.cs
+     88 ./Logic/Cache/MailTemplateCache.cs
      82 ./Logic/Cache/GuidCache.cs
-     91 ./Logic/Financial/InboundInvoices.cs
-    203 ./Logic/Financial/PaymentGroup.cs
-    346 ./Logic/Financial/OutboundInvoice.cs
-     50 ./Logic/Financial/FinancialValidations.cs
-    678 ./Logic/Financial/Payout.cs
-     13 ./Logic/Financial/IBankDataPaymentsReader.cs
-     55 ./Logic/Financial/Currency.cs
-    212 ./Logic/Financial/FinancialAccounts.cs
-    412 ./Logic/Financial/FinancialAccount.cs
-     10 ./Logic/Financial/StockBankDataReaders.cs
-    451 ./Logic/Financial/Payouts.cs
-    189 ./Logic/Financial/Payment.cs
-    165 ./Logic/Financial/CashAdvance.cs
-     14 ./Logic/Financial/Payments.cs
-     73 ./Logic/Financial/TaxLevels.cs
-     63 ./Logic/Financial/PayrollAdjustment.cs
-     14 ./Logic/Financial/OutboundInvoiceItems.cs
-     71 ./Logic/Financial/Refund.cs
-    306 ./Logic/Financial/Salary.cs
-     10 ./Logic/Financial/IValidatable.cs
-     28 ./Logic/Financial/FinancialTransactionTagType.cs
-     19 ./Logic/Financial/PayrollAdjustments.cs
-     27 ./Logic/Financial/OutboundInvoices.cs
-    180 ./Logic/Financial/ExternalBankDataProfile.cs
-     10 ./Logic/Financial/ISummable.cs
-    126 ./Logic/Financial/ExpenseClaims.cs
-     59 ./Logic/Financial/ExternalBankDataRecord.cs
-    309 ./Logic/Financial/OrganizationFinancialAccounts.cs
-      9 ./Logic/Financial/IBankDataAccountStatementReader.cs
+     89 ./Logic/Financial/InboundInvoices.cs
+    206 ./Logic/Financial/PaymentGroup.cs
+    342 ./Logic/Financial/OutboundInvoice.cs
+     53 ./Logic/Financial/FinancialValidations.cs
+    676 ./Logic/Financial/Payout.cs
+     12 ./Logic/Financial/IBankDataPaymentsReader.cs
+     54 ./Logic/Financial/Currency.cs
+    215 ./Logic/Financial/FinancialAccounts.cs
+    420 ./Logic/Financial/FinancialAccount.cs
+     17 ./Logic/Financial/StockBankDataReaders.cs
+    456 ./Logic/Financial/Payouts.cs
+    195 ./Logic/Financial/Payment.cs
+    168 ./Logic/Financial/CashAdvance.cs
+     13 ./Logic/Financial/Payments.cs
+     72 ./Logic/Financial/TaxLevels.cs
+     64 ./Logic/Financial/PayrollAdjustment.cs
+     13 ./Logic/Financial/OutboundInvoiceItems.cs
+     70 ./Logic/Financial/Refund.cs
+    302 ./Logic/Financial/Salary.cs
+      9 ./Logic/Financial/IValidatable.cs
+     27 ./Logic/Financial/FinancialTransactionTagType.cs
+     20 ./Logic/Financial/PayrollAdjustments.cs
+     25 ./Logic/Financial/OutboundInvoices.cs
+    196 ./Logic/Financial/ExternalBankDataProfile.cs
+      9 ./Logic/Financial/ISummable.cs
+    113 ./Logic/Financial/ExpenseClaims.cs
+     63 ./Logic/Financial/ExternalBankDataRecord.cs
+    306 ./Logic/Financial/OrganizationFinancialAccounts.cs
+      8 ./Logic/Financial/IBankDataAccountStatementReader.cs
      23 ./Logic/Financial/ImportedBankData.cs
-     71 ./Logic/Financial/FinancialTransactions.cs
-     28 ./Logic/Financial/OutboundInvoiceItem.cs
-     31 ./Logic/Financial/FinancialTransactionTagTypes.cs
+     73 ./Logic/Financial/FinancialTransactions.cs
+     27 ./Logic/Financial/OutboundInvoiceItem.cs
+     32 ./Logic/Financial/FinancialTransactionTagTypes.cs
      63 ./Logic/Financial/FinancialTransactionRow.cs
-    228 ./Logic/Financial/InboundInvoice.cs
-    457 ./Logic/Financial/ExpenseClaim.cs
-     23 ./Logic/Financial/FinancialValidation.cs
+    223 ./Logic/Financial/InboundInvoice.cs
+    435 ./Logic/Financial/ExpenseClaim.cs
+     22 ./Logic/Financial/FinancialValidation.cs
     368 ./Logic/Financial/YearlyReport.cs
-     82 ./Logic/Financial/PayrollItem.cs
-     16 ./Logic/Financial/FinancialTransactionTagSets.cs
-     18 ./Logic/Financial/Currencies.cs
-     10 ./Logic/Financial/FinancialTransactionTagSetTypesStock.cs
+     61 ./Logic/Financial/PayrollItem.cs
+     15 ./Logic/Financial/FinancialTransactionTagSets.cs
+     13 ./Logic/Financial/Currencies.cs
+      9 ./Logic/Financial/FinancialTransactionTagSetTypesStock.cs
      42 ./Logic/Financial/PaymentInformation.cs
      19 ./Logic/Financial/FinancialAccountRows.cs
-     12 ./Logic/Financial/IAttestable.cs
-     72 ./Logic/Financial/CashAdvances.cs
-    420 ./Logic/Financial/FinancialTransaction.cs
+     10 ./Logic/Financial/IAttestable.cs
+     71 ./Logic/Financial/CashAdvances.cs
+    423 ./Logic/Financial/FinancialTransaction.cs
      30 ./Logic/Financial/FinancialAccountRow.cs
-     22 ./Logic/Financial/FinancialTransactionTagSetType.cs
-    419 ./Logic/Financial/ExternalBankData.cs
-     27 ./Logic/Financial/PaymentGroups.cs
-     46 ./Logic/Financial/FinancialTransactionTagSet.cs
-      8 ./Logic/Financial/BankDataReaders/SEPaymentsBankgiroReader.cs
-     13 ./Logic/Financial/BankDataReaders/TabSeparatedValuesReader.cs
-     85 ./Logic/Financial/FinancialTransactionRows.cs
-     84 ./Logic/Financial/Salaries.cs
+     21 ./Logic/Financial/FinancialTransactionTagSetType.cs
+    435 ./Logic/Financial/ExternalBankData.cs
+     24 ./Logic/Financial/PaymentGroups.cs
+     47 ./Logic/Financial/FinancialTransactionTagSet.cs
+      6 ./Logic/Financial/BankDataReaders/SEPaymentsBankgiroReader.cs
+     12 ./Logic/Financial/BankDataReaders/TabSeparatedValuesReader.cs
+     87 ./Logic/Financial/FinancialTransactionRows.cs
+     66 ./Logic/Financial/Salaries.cs
      95 ./Logic/Financial/Payroll.cs
      58 ./Logic/AssemblyInfo.cs
-    809 ./Logic/Security/BCrypt.cs
+    836 ./Logic/Security/BCrypt.cs
      29 ./Logic/Security/MD5.cs
-     62 ./Logic/Security/Accesses.cs
-    309 ./Logic/Security/Authority.cs
-     22 ./Logic/Security/ActivityEnum.cs
+     65 ./Logic/Security/Accesses.cs
+    310 ./Logic/Security/Authority.cs
+     24 ./Logic/Security/ActivityEnum.cs
      29 ./Logic/Security/SHA1.cs
     204 ./Logic/Security/PermissionSet.cs
-     41 ./Logic/Security/PgpKey.cs
-     11 ./Logic/Security/InternalLoginTicket.cs
+     39 ./Logic/Security/PgpKey.cs
+      9 ./Logic/Security/InternalLoginTicket.cs
       0 ./Logic/Security/App_LocalResources/Authentication.sv-SE.Designer.cs
     221 ./Logic/Security/App_LocalResources/Authentication.Designer.cs
-    749 ./Logic/Security/Authorization.cs
-    566 ./Logic/Security/Authentication.cs
+    800 ./Logic/Security/Authorization.cs
+    569 ./Logic/Security/Authentication.cs
      30 ./Logic/Structure/Countries.cs
      36 ./Logic/Structure/GeographyStatisticsOverTime.cs
      52 ./Logic/Structure/City.cs
      51 ./Logic/Structure/GeographyDataPoint.cs
-    147 ./Logic/Structure/OrganizationParameters.cs
+    137 ./Logic/Structure/OrganizationParameters.cs
     228 ./Logic/Structure/GeographyStatistics.cs
-     33 ./Logic/Structure/PostalCodes.cs
-    408 ./Logic/Structure/Organizations.cs
-     42 ./Logic/Structure/PostalCode.cs
+     32 ./Logic/Structure/PostalCodes.cs
+    411 ./Logic/Structure/Organizations.cs
+     40 ./Logic/Structure/PostalCode.cs
      21 ./Logic/Structure/GeographyBar.cs
-    101 ./Logic/Structure/UptakeGeography.cs
-     49 ./Logic/Structure/Country.cs
-     26 ./Logic/Structure/GeographyWithPeople.cs
-    188 ./Logic/Structure/Geography.cs
-    945 ./Logic/Structure/Organization.cs
+     92 ./Logic/Structure/UptakeGeography.cs
+     48 ./Logic/Structure/Country.cs
+     23 ./Logic/Structure/GeographyWithPeople.cs
+    180 ./Logic/Structure/Geography.cs
+    934 ./Logic/Structure/Organization.cs
      46 ./Logic/Structure/Cities.cs
-    270 ./Logic/Structure/Geographies.cs
-     58 ./Logic/Governance/MeetingElectionVote.cs
-     13 ./Logic/Governance/MeetingElectionCandidates.cs
-    143 ./Logic/Governance/MeetingElection.cs
-     44 ./Logic/Governance/MotionAmendment.cs
-     78 ./Logic/Governance/Ballot.cs
-     38 ./Logic/Governance/MeetingElectionVoter.cs
+    269 ./Logic/Structure/Geographies.cs
+     59 ./Logic/Governance/MeetingElectionVote.cs
+     14 ./Logic/Governance/MeetingElectionCandidates.cs
+    147 ./Logic/Governance/MeetingElection.cs
+     49 ./Logic/Governance/MotionAmendment.cs
+     79 ./Logic/Governance/Ballot.cs
+     32 ./Logic/Governance/MeetingElectionVoter.cs
      13 ./Logic/Governance/MeetingElectionVotes.cs
      24 ./Logic/Governance/MeetingElections.cs
-     25 ./Logic/Governance/Ballots.cs
-     52 ./Logic/Governance/Motion.cs
-     43 ./Logic/Governance/MeetingElectionVoters.cs
+     24 ./Logic/Governance/Ballots.cs
+     53 ./Logic/Governance/Motion.cs
+     39 ./Logic/Governance/MeetingElectionVoters.cs
      13 ./Logic/Governance/Motions.cs
-    142 ./Logic/Governance/MeetingElectionCandidate.cs
-     57 ./Logic/Governance/Election.cs
+    143 ./Logic/Governance/MeetingElectionCandidate.cs
+     60 ./Logic/Governance/Election.cs
      22 ./Logic/Governance/Meeting.cs
      18 ./Logic/Governance/MotionAmendments.cs
      14 ./Logic/Communications/OutboundCommRecipients.cs
-     77 ./Logic/Communications/CommunicationTurnaround.cs
-    447 ./Logic/Communications/OutboundMail.cs
-     29 ./Logic/Communications/ICommsRenderer.cs
-      6 ./Logic/Communications/ICommsResolver.cs
-     22 ./Logic/Communications/OutboundCommTransmitException.cs
-    602 ./Logic/Communications/MailTemplate.cs
+     84 ./Logic/Communications/CommunicationTurnaround.cs
+    452 ./Logic/Communications/OutboundMail.cs
+     28 ./Logic/Communications/ICommsRenderer.cs
+      5 ./Logic/Communications/ICommsResolver.cs
+     23 ./Logic/Communications/OutboundCommTransmitException.cs
+    596 ./Logic/Communications/MailTemplate.cs
      39 ./Logic/Communications/NewsletterFeed.cs
-    121 ./Logic/Communications/OutboundMailRecipient.cs
-    460 ./Logic/Communications/PhoneMessageReceiver.cs
-    314 ./Logic/Communications/PhoneMessageTransmitter.cs
-     23 ./Logic/Communications/Transmission/PayloadEnvelope.cs
-     48 ./Logic/Communications/Transmission/PayloadBase.cs
-    137 ./Logic/Communications/Transmission/NotificationPayload.cs
+    125 ./Logic/Communications/OutboundMailRecipient.cs
+    456 ./Logic/Communications/PhoneMessageReceiver.cs
+    313 ./Logic/Communications/PhoneMessageTransmitter.cs
+     22 ./Logic/Communications/Transmission/PayloadEnvelope.cs
+     47 ./Logic/Communications/Transmission/PayloadBase.cs
+    122 ./Logic/Communications/Transmission/ParticipantMailPayload.cs
+    149 ./Logic/Communications/Transmission/NotificationPayload.cs
      29 ./Logic/Communications/OutboundMails.cs
      20 ./Logic/Communications/OutboundMailRecipients.cs
      34 ./Logic/Communications/NewsletterFeeds.cs
-     29 ./Logic/Communications/CommunicationTurnarounds.cs
-     75 ./Logic/Communications/PaperLetter.cs
+     26 ./Logic/Communications/CommunicationTurnarounds.cs
+     73 ./Logic/Communications/PaperLetter.cs
      15 ./Logic/Communications/ICommsTransmitter.cs
      72 ./Logic/Communications/AutoMail.cs
-     46 ./Logic/Communications/PaperLetters.cs
-    247 ./Logic/Communications/OutboundComm.cs
-     42 ./Logic/Communications/OutboundCommRecipient.cs
-   1024 ./Logic/Communications/TypedMailTemplate.cs
-     14 ./Logic/Communications/OutboundComms.cs
-     65 ./Logic/Swarm/RoleLookup.cs
-     50 ./Logic/Swarm/ExternalActivity.cs
+     45 ./Logic/Communications/PaperLetters.cs
+    275 ./Logic/Communications/OutboundComm.cs
+     41 ./Logic/Communications/OutboundCommRecipient.cs
+   1285 ./Logic/Communications/TypedMailTemplate.cs
+     13 ./Logic/Communications/OutboundComms.cs
+     66 ./Logic/Swarm/RoleLookup.cs
+     51 ./Logic/Swarm/ExternalActivity.cs
      33 ./Logic/Swarm/VolunteerRole.cs
-     32 ./Logic/Swarm/OfficerChain.cs
+     31 ./Logic/Swarm/OfficerChain.cs
      20 ./Logic/Swarm/VolunteerRoles.cs
-     34 ./Logic/Swarm/ParleyOption.cs
-      7 ./Logic/Swarm/Interfaces.cs
-    123 ./Logic/Swarm/ChurnData.cs
-    253 ./Logic/Swarm/Roles.cs
+     35 ./Logic/Swarm/ParleyOption.cs
+      6 ./Logic/Swarm/Interfaces.cs
+    125 ./Logic/Swarm/ChurnData.cs
+    260 ./Logic/Swarm/Roles.cs
      87 ./Logic/Swarm/Volunteers.cs
-    102 ./Logic/Swarm/Activists.cs
-     19 ./Logic/Swarm/DashboardTodo.cs
+     99 ./Logic/Swarm/Activists.cs
+     18 ./Logic/Swarm/DashboardTodo.cs
      39 ./Logic/Swarm/MembershipEvent.cs
-    123 ./Logic/Swarm/ParleyAttendee.cs
-    256 ./Logic/Swarm/DashboardTodos.cs
-    303 ./Logic/Swarm/AuditedPerson.cs
-     50 ./Logic/Swarm/ExternalActivities.cs
-     67 ./Logic/Swarm/PersonRole.cs
+    124 ./Logic/Swarm/ParleyAttendee.cs
+    255 ./Logic/Swarm/DashboardTodos.cs
+    304 ./Logic/Swarm/AuditedPerson.cs
+     52 ./Logic/Swarm/ExternalActivities.cs
+     70 ./Logic/Swarm/PersonRole.cs
     275 ./Logic/Swarm/Membership.cs
-    132 ./Logic/Swarm/Memberships.cs
-     60 ./Logic/Swarm/Parleys.cs
-   1112 ./Logic/Swarm/Person.cs
-    535 ./Logic/Swarm/People.cs
+    138 ./Logic/Swarm/Memberships.cs
+     49 ./Logic/Swarm/Parleys.cs
+   1105 ./Logic/Swarm/Person.cs
+    532 ./Logic/Swarm/People.cs
     143 ./Logic/Swarm/MembershipEvents.cs
      82 ./Logic/Swarm/PaymentCode.cs
      19 ./Logic/Swarm/ChurnDataPoint.cs
-    161 ./Logic/Swarm/ExternalIdentity.cs
-     45 ./Logic/Swarm/ParleyOptions.cs
-    276 ./Logic/Swarm/Parley.cs
-     14 ./Logic/Swarm/ParleyAttendees.cs
-    222 ./Logic/Swarm/Volunteer.cs
+     59 ./Logic/Swarm/ParticipantTitle.cs
+    148 ./Logic/Swarm/ExternalIdentity.cs
+     41 ./Logic/Swarm/ParleyOptions.cs
+    267 ./Logic/Swarm/Parley.cs
+     13 ./Logic/Swarm/ParleyAttendees.cs
+    224 ./Logic/Swarm/Volunteer.cs
      69 ./Logic/DataObjects/ExpensesDataObject.cs
-     35 ./Logic/DataObjects/MembershipsDataObject.cs
+     37 ./Logic/DataObjects/MembershipsDataObject.cs
      46 ./Logic/DataObjects/RolesDataObject.cs
-    548 ./Logic/DataObjects/OrganizationDataObject.cs
-     44 ./Logic/DataObjects/GeographyWithPeopleDataObject.cs
-    135 ./Logic/DataObjects/PeopleDataObject.cs
-     23 ./Logic/Support/SwarmopsLog.cs
-     28 ./Logic/Support/TemporaryIdentity.cs
-     27 ./Logic/Support/PilotInstallationIds.cs
-     76 ./Logic/Support/Documents.cs
-    220 ./Logic/Support/PWLog.cs
+    462 ./Logic/DataObjects/OrganizationDataObject.cs
+     40 ./Logic/DataObjects/GeographyWithPeopleDataObject.cs
+    142 ./Logic/DataObjects/PeopleDataObject.cs
+     22 ./Logic/Support/SwarmopsLog.cs
+     25 ./Logic/Support/TemporaryIdentity.cs
+     30 ./Logic/Support/PilotInstallationIds.cs
+     75 ./Logic/Support/Documents.cs
+    244 ./Logic/Support/PWLog.cs
      66 ./Logic/Support/LogicServices.cs
-     63 ./Logic/Support/Imagery.cs
+     61 ./Logic/Support/Imagery.cs
      50 ./Logic/Support/PWEvents.cs
-      7 ./Logic/Support/IXmlPayload.cs
-    153 ./Logic/Support/PluralBase.cs
-    148 ./Logic/Support/Formatting.cs
-     59 ./Logic/Support/SwarmopsLogEntry.cs
-     30 ./Logic/Support/UrlTranslations.cs
-    179 ./Logic/Support/QuotedPrintable.cs
-    372 ./Logic/Support/CheckDigit.cs
+      6 ./Logic/Support/IXmlPayload.cs
+    148 ./Logic/Support/PluralBase.cs
+    215 ./Logic/Support/Formatting.cs
+     60 ./Logic/Support/SwarmopsLogEntry.cs
+     27 ./Logic/Support/UrlTranslations.cs
+    177 ./Logic/Support/QuotedPrintable.cs
+    434 ./Logic/Support/CheckDigit.cs
      22 ./Logic/Support/PirateWebDebug.cs
-    143 ./Logic/Support/ObjectOptionalData.cs
-    144 ./Logic/Support/SingularFactory.cs
+    136 ./Logic/Support/ObjectOptionalData.cs
+    140 ./Logic/Support/SingularFactory.cs
      40 ./Logic/Support/ActivistEvents.cs
     168 ./Logic/Support/Document.cs
-     25 ./Logic/Support/LogEntries/FinancialActionBase.cs
+     24 ./Logic/Support/LogEntries/MembershipActionBase.cs
+     22 ./Logic/Support/LogEntries/FinancialActionBase.cs
      30 ./Logic/Support/LogEntries/ExpenseClaimFiledLogEntry.cs
      33 ./Logic/Support/LogEntries/InboundInvoiceCreatedLogEntry.cs
-     28 ./Logic/Support/LogEntries/PayoutCreatedLogEntry.cs
-     47 ./Logic/Support/LogEntries/LogEntryBase.cs
-     32 ./Logic/Support/LogEntries/SalaryCreatedLogEntry.cs
+     26 ./Logic/Support/LogEntries/PersonAddedLogEntry.cs
+     27 ./Logic/Support/LogEntries/PayoutCreatedLogEntry.cs
+     46 ./Logic/Support/LogEntries/LogEntryBase.cs
+     28 ./Logic/Support/LogEntries/SalaryCreatedLogEntry.cs
      30 ./Logic/Support/LogEntries/CashAdvanceRequestedLogEntry.cs
      25 ./Logic/Support/Optimizations.cs
-     96 ./Logic/Support/ExtensionMethods.cs
-     73 ./Logic/Support/SerializableDictionary.cs
+     93 ./Logic/Support/ExtensionMethods.cs
+     75 ./Logic/Support/SerializableDictionary.cs
      37 ./Logic/Support/Persistence.cs
-    108 ./Logic/Support/DatabaseMaintenance.cs
-     20 ./Logic/DashboardTasks/TaskBase.cs
-     15 ./Logic/DashboardTasks/TaskExpenseClaim.cs
-     12 ./Logic/DashboardTasks/TaskSalary.cs
-     15 ./Logic/DashboardTasks/TaskVolunteer.cs
-     12 ./Logic/DashboardTasks/TaskReceiptValidation.cs
-     16 ./Logic/DashboardTasks/TaskAdvanceDebt.cs
-     14 ./Logic/DashboardTasks/TaskPayout.cs
-     12 ./Logic/DashboardTasks/TaskAttestationLate.cs
-     15 ./Logic/DashboardTasks/TaskInboundInvoice.cs
-    171 ./Logic/DashboardTasks/TaskGroup.cs
-    251 ./Logic/DashboardTasks/Tasks.cs
-     34 ./Logic/Media/MediaEntry.cs
+    116 ./Logic/Support/DatabaseMaintenance.cs
+     19 ./Logic/DashboardTasks/TaskBase.cs
+     14 ./Logic/DashboardTasks/TaskExpenseClaim.cs
+     15 ./Logic/DashboardTasks/TaskSalary.cs
+     14 ./Logic/DashboardTasks/TaskVolunteer.cs
+     14 ./Logic/DashboardTasks/TaskReceiptValidation.cs
+     15 ./Logic/DashboardTasks/TaskAdvanceDebt.cs
+     12 ./Logic/DashboardTasks/TaskPayout.cs
+     11 ./Logic/DashboardTasks/TaskAttestationLate.cs
+     14 ./Logic/DashboardTasks/TaskInboundInvoice.cs
+    190 ./Logic/DashboardTasks/TaskGroup.cs
+    259 ./Logic/DashboardTasks/Tasks.cs
+     32 ./Logic/Media/MediaEntry.cs
      34 ./Logic/Media/Reporters.cs
-     82 ./Logic/Media/Reporter.cs
-     77 ./Logic/Media/MediaEntries.cs
+     81 ./Logic/Media/Reporter.cs
+     78 ./Logic/Media/MediaEntries.cs
      21 ./Logic/Media/MediaCategory.cs
      37 ./Logic/Media/MediaCategories.cs
      36 ./Tests/Properties/AssemblyInfo.cs
@@ -708,17 +713,17 @@
    1740 ./Console/Console.cs
      57 ./Console/AssemblyInfo.cs
      97 ./Interface/RssWriter.cs
-     60 ./Interface/Collections/ExpensePayouts.cs
-     34 ./Interface/Properties/AssemblyInfo.cs
-     67 ./Interface/PirateWebMapProvider.cs
-     70 ./Interface/Localization/LocalizationManager.cs
-    250 ./Interface/DataObjects/OrganizationRolesDataObject.cs
-    142 ./Interface/DataObjects/ListPersonDataSource.cs
-     20 ./Interface/DataObjects/ExpensePayoutsDataObject.cs
-    107 ./Interface/Objects/OrganizationMetadata.cs
-    159 ./Interface/Objects/MainMenuItem.cs
-    180 ./Interface/Objects/ExpensePayout.cs
-    217 ./Interface/PersonIcon.cs
+     58 ./Interface/Collections/ExpensePayouts.cs
+     37 ./Interface/Properties/AssemblyInfo.cs
+     69 ./Interface/PirateWebMapProvider.cs
+     73 ./Interface/Localization/LocalizationManager.cs
+    191 ./Interface/DataObjects/OrganizationRolesDataObject.cs
+    130 ./Interface/DataObjects/ListPersonDataSource.cs
+     19 ./Interface/DataObjects/ExpensePayoutsDataObject.cs
+    104 ./Interface/Objects/OrganizationMetadata.cs
+    156 ./Interface/Objects/MainMenuItem.cs
+    173 ./Interface/Objects/ExpensePayout.cs
+    213 ./Interface/PersonIcon.cs
      19 ./Site4/Pages/Special/Debug/Default.aspx.cs
      16 ./Site4/Pages/Special/Debug/Default.aspx
      94 ./Site4/Pages/Special/FI/Import.aspx
@@ -1185,4 +1190,4 @@
      33 ./Site4/App_Code/MasterV4Base.cs
     285 ./Site4/App_Code/GeoSok.cs
     700 ./Site4/App_Code/CellAddressableTable.cs
- 157661 total
+ 159688 total

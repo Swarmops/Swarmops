@@ -3,24 +3,29 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicCommunicationTurnaround: IHasIdentity
+    public class BasicCommunicationTurnaround : IHasIdentity
     {
-        public BasicCommunicationTurnaround(int organizationId, int communicationTypeId, int communicationId, DateTime dateTimeOpened, DateTime dateTimeFirstResponse, int personIdFirstResponse, DateTime dateTimeClosed, int personIdClosed, bool open, bool responded)
+        public BasicCommunicationTurnaround (int organizationId, int communicationTypeId, int communicationId,
+            DateTime dateTimeOpened, DateTime dateTimeFirstResponse, int personIdFirstResponse, DateTime dateTimeClosed,
+            int personIdClosed, bool open, bool responded)
         {
-            this.OrganizationId = organizationId;
-            this.CommunicationTypeId = communicationTypeId;
-            this.CommunicationId = communicationId;
-            this.DateTimeOpened = dateTimeOpened;
-            this.DateTimeFirstResponse = dateTimeFirstResponse;
-            this.PersonIdFirstResponse = personIdFirstResponse;
-            this.DateTimeClosed = dateTimeClosed;
-            this.PersonIdClosed = personIdClosed;
-            this.Open = open;
-            this.Responded = responded;
+            OrganizationId = organizationId;
+            CommunicationTypeId = communicationTypeId;
+            CommunicationId = communicationId;
+            DateTimeOpened = dateTimeOpened;
+            DateTimeFirstResponse = dateTimeFirstResponse;
+            PersonIdFirstResponse = personIdFirstResponse;
+            DateTimeClosed = dateTimeClosed;
+            PersonIdClosed = personIdClosed;
+            Open = open;
+            Responded = responded;
         }
 
-        public BasicCommunicationTurnaround (BasicCommunicationTurnaround original):
-            this (original.OrganizationId, original.CommunicationTypeId, original.CommunicationId, original.DateTimeOpened, original.DateTimeFirstResponse, original.PersonIdFirstResponse, original.DateTimeClosed, original.PersonIdClosed, original.Open, original.Responded)
+        public BasicCommunicationTurnaround (BasicCommunicationTurnaround original) :
+            this (
+            original.OrganizationId, original.CommunicationTypeId, original.CommunicationId, original.DateTimeOpened,
+            original.DateTimeFirstResponse, original.PersonIdFirstResponse, original.DateTimeClosed,
+            original.PersonIdClosed, original.Open, original.Responded)
         {
             // empty copy ctor
         }
@@ -39,7 +44,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.CommunicationId; }  // ok, this isn't great, but wtf
+            get { return CommunicationId; } // ok, this isn't great, but wtf
         }
     }
 }

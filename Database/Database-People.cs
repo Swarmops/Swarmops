@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 
@@ -19,18 +20,18 @@ namespace Swarmops.Database
 
         private static BasicPerson ReadPersonFromDataReader (DbDataReader reader)
         {
-            int personId = reader.GetInt32(0);
-            string passwordHash = reader.GetString(1);
-            string name = reader.GetString(2);
-            string email = reader.GetString(3);
-            string street = reader.GetString(4);
-            string postalCode = reader.GetString(5);
-            string cityName = reader.GetString(6);
-            int countryId = reader.GetInt32(7);
-            string phone = reader.GetString(8);
-            int geographyId = reader.GetInt32(9);
-            DateTime birthdate = reader.GetDateTime(10);
-            int genderId = reader.GetInt32(11);
+            int personId = reader.GetInt32 (0);
+            string passwordHash = reader.GetString (1);
+            string name = reader.GetString (2);
+            string email = reader.GetString (3);
+            string street = reader.GetString (4);
+            string postalCode = reader.GetString (5);
+            string cityName = reader.GetString (6);
+            int countryId = reader.GetInt32 (7);
+            string phone = reader.GetString (8);
+            int geographyId = reader.GetInt32 (9);
+            DateTime birthdate = reader.GetDateTime (10);
+            int genderId = reader.GetInt32 (11);
 
 
             // Fix broken names, emails
@@ -38,19 +39,17 @@ namespace Swarmops.Database
             email = email.ToLower().Trim();
             name = name.Trim();
 
-            while (name.Contains("  "))
+            while (name.Contains ("  "))
             {
-                name = name.Replace("  ", " ");
+                name = name.Replace ("  ", " ");
             }
 
 
-            return new BasicPerson(personId, passwordHash, name, email, street, postalCode, cityName, countryId, phone,
-                                   geographyId, birthdate, (PersonGender)genderId);
+            return new BasicPerson (personId, passwordHash, name, email, street, postalCode, cityName, countryId, phone,
+                geographyId, birthdate, (PersonGender) genderId);
         }
 
         #endregion
-
-
 
         #region Retrieving lists of people based on wildcards or partial data
 
@@ -63,8 +62,9 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT " + personFieldSequence + " WHERE Name like '" + GetSqlPatternFromNamePattern(namePattern).Replace("'", "''") + "'",
+                    GetDbCommand (
+                        "SELECT " + personFieldSequence + " WHERE Name like '" +
+                        GetSqlPatternFromNamePattern (namePattern).Replace ("'", "''") + "'",
                         connection);
                 command.CommandTimeout = 120;
 
@@ -72,7 +72,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
@@ -80,21 +80,21 @@ namespace Swarmops.Database
             return result.ToArray();
         }
 
-        private string GetSqlPatternFromNamePattern(string namePattern)
+        private string GetSqlPatternFromNamePattern (string namePattern)
         {
             // Remove any injection codes
-            namePattern = SqlSanitize(namePattern).Replace("%", String.Empty).Trim();
+            namePattern = SqlSanitize (namePattern).Replace ("%", String.Empty).Trim();
 
-            while (namePattern.Contains("  "))
+            while (namePattern.Contains ("  "))
             {
-                namePattern = namePattern.Replace("  ", " ");
+                namePattern = namePattern.Replace ("  ", " ");
             }
 
             if (namePattern.Length > 0)
             {
-                namePattern = namePattern.Replace(" ", "% ") + "%";
+                namePattern = namePattern.Replace (" ", "% ") + "%";
 
-                if (!namePattern.Contains(" "))
+                if (!namePattern.Contains (" "))
                 {
                     namePattern = "%" + namePattern;
                 }
@@ -116,12 +116,12 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + personFieldSequence + " WHERE BirthDate >= @fromdate AND BirthDate < @todate",
                         connection);
 
-                AddParameterWithName(command, "fromdate", fromdate);
-                AddParameterWithName(command, "todate", todate);
+                AddParameterWithName (command, "fromdate", fromdate);
+                AddParameterWithName (command, "todate", todate);
 
                 command.CommandTimeout = 120;
 
@@ -129,7 +129,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
@@ -146,8 +146,8 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT " + personFieldSequence + " WHERE Email LIKE '" + emailPattern.Replace("'", "''") + "'",
+                    GetDbCommand (
+                        "SELECT " + personFieldSequence + " WHERE Email LIKE '" + emailPattern.Replace ("'", "''") + "'",
                         connection);
                 command.CommandTimeout = 120;
 
@@ -155,7 +155,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
@@ -172,8 +172,8 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT " + personFieldSequence + " WHERE City like '" + cityPattern.Replace("'", "''") + "'",
+                    GetDbCommand (
+                        "SELECT " + personFieldSequence + " WHERE City like '" + cityPattern.Replace ("'", "''") + "'",
                         connection);
                 command.CommandTimeout = 120;
 
@@ -181,7 +181,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
@@ -198,8 +198,9 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT " + personFieldSequence + " WHERE PostalCode like '" + pcPattern.Replace("'", "''") + "'",
+                    GetDbCommand (
+                        "SELECT " + personFieldSequence + " WHERE PostalCode like '" + pcPattern.Replace ("'", "''") +
+                        "'",
                         connection);
                 command.CommandTimeout = 120;
 
@@ -207,7 +208,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
@@ -219,15 +220,15 @@ namespace Swarmops.Database
         {
             List<BasicPerson> result = new List<BasicPerson>();
             for (int i = 0; i < postalCodes.Length; ++i)
-                postalCodes[i] = postalCodes[i].Replace("'", "''");
+                postalCodes[i] = postalCodes[i].Replace ("'", "''");
 
-            string postalCodesString = ("'" + string.Join("','", postalCodes) + "'").Replace(" ", "");
+            string postalCodesString = ("'" + string.Join ("','", postalCodes) + "'").Replace (" ", "");
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + personFieldSequence + " WHERE TRIM(PostalCode) In (" + postalCodesString + ")",
                         connection);
                 command.CommandTimeout = 120;
@@ -236,7 +237,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
@@ -253,23 +254,22 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + personFieldSequence + " WHERE Email='" + email.Replace("'", "''").Trim() + "'",
-                                 connection);
+                    GetDbCommand (
+                        "SELECT " + personFieldSequence + " WHERE Email='" + email.Replace ("'", "''").Trim() + "'",
+                        connection);
                 command.CommandTimeout = 120;
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
 
             return result.ToArray();
         }
-
-
 
 
         public BasicPerson[] GetPeopleFromPhoneNumber (int countryId, string phoneNumber)
@@ -281,16 +281,17 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT " + personFieldSequence + " WHERE CountryId=" + countryId.ToString() + " AND PhoneNumber='" +
-                        phoneNumber.Replace("'", "''") + "'", connection);
+                    GetDbCommand (
+                        "SELECT " + personFieldSequence + " WHERE CountryId=" + countryId.ToString() +
+                        " AND PhoneNumber='" +
+                        phoneNumber.Replace ("'", "''") + "'", connection);
                 command.CommandTimeout = 300;
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
@@ -300,9 +301,9 @@ namespace Swarmops.Database
 
         public BasicPerson[] GetPeopleFromPhoneNumber (string countryCode, string phoneNumber)
         {
-            BasicCountry country = GetCountry(countryCode);
+            BasicCountry country = GetCountry (countryCode);
 
-            return GetPeopleFromPhoneNumber(country.Identity, phoneNumber);
+            return GetPeopleFromPhoneNumber (country.Identity, phoneNumber);
         }
 
         #endregion
@@ -324,14 +325,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + personFieldSequence + " WHERE PersonId in (" + JoinIds(personIds) + ")", connection);
+                    GetDbCommand ("SELECT " + personFieldSequence + " WHERE PersonId in (" + JoinIds (personIds) + ")",
+                        connection);
                 command.CommandTimeout = 120;
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
@@ -340,7 +342,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicPerson[] GetAllPeople ()
+        public BasicPerson[] GetAllPeople()
         {
             List<BasicPerson> result = new List<BasicPerson>();
 
@@ -348,14 +350,14 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + personFieldSequence, connection);
+                DbCommand command = GetDbCommand ("SELECT " + personFieldSequence, connection);
                 command.CommandTimeout = 120;
 
                 using (DbDataReader reader = command.ExecuteReader())
-                { 
+                {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
                 }
             }
@@ -370,7 +372,8 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + personFieldSequence + " WHERE PersonId=" + personId, connection);
+                DbCommand command = GetDbCommand ("SELECT " + personFieldSequence + " WHERE PersonId=" + personId,
+                    connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -378,7 +381,7 @@ namespace Swarmops.Database
                     {
                         // Parse the person
 
-                        BasicPerson person = ReadPersonFromDataReader(reader);
+                        BasicPerson person = ReadPersonFromDataReader (reader);
 
                         return person;
                     }
@@ -386,11 +389,13 @@ namespace Swarmops.Database
                     {
                         // A special case here for developers who don't have the registry of people, but lots and lots of links to people in financi
 
-                        if (System.Diagnostics.Debugger.IsAttached)
+                        if (Debugger.IsAttached)
                         {
-                            return new BasicPerson(personId, string.Empty, "PERSON #" + personId.ToString() + " NOT IN DEV DB", "noreply@example.com", "Foobar 12", "12345", "Duckville", 1, "", 1, new DateTime (1972, 1, 21), PersonGender.Unknown);
+                            return new BasicPerson (personId, string.Empty,
+                                "PERSON #" + personId.ToString() + " NOT IN DEV DB", "noreply@example.com", "Foobar 12",
+                                "12345", "Duckville", 1, "", 1, new DateTime (1972, 1, 21), PersonGender.Unknown);
                         }
-                        throw new ArgumentException("No such PersonId: " + personId.ToString());
+                        throw new ArgumentException ("No such PersonId: " + personId.ToString());
                     }
                 }
             }
@@ -412,8 +417,8 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT PersonId, GeographyId From People WHERE PersonId in (" + JoinIds(personIds) + ")",
+                    GetDbCommand (
+                        "SELECT PersonId, GeographyId From People WHERE PersonId in (" + JoinIds (personIds) + ")",
                         connection);
                 command.CommandTimeout = 120;
 
@@ -421,7 +426,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetInt32(0), reader.GetInt32(1));
+                        result.Add (reader.GetInt32 (0), reader.GetInt32 (1));
                     }
                 }
             }
@@ -430,7 +435,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicPerson[] GetPeopleInGeographies(int[] geographyIds)
+        public BasicPerson[] GetPeopleInGeographies (int[] geographyIds)
         {
             if (geographyIds.Length == 0)
             {
@@ -443,21 +448,21 @@ namespace Swarmops.Database
             {
                 connection.Open();
                 DbCommand command =
-                    GetDbCommand("SELECT " + personFieldSequence + " WHERE GeographyId IN (" + JoinIds(geographyIds) + ")",
-                                 connection);
+                    GetDbCommand (
+                        "SELECT " + personFieldSequence + " WHERE GeographyId IN (" + JoinIds (geographyIds) + ")",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
 
                     return result.ToArray();
                 }
             }
         }
-
 
 
         public BasicPerson[] GetPeopleInGeographiesWithPattern (int[] geographyIds, string pattern)
@@ -471,24 +476,26 @@ namespace Swarmops.Database
 
             if (pattern.Length == 0)
             {
-                return GetPeopleInGeographies(geographyIds); // no pattern => fall back to just geography
+                return GetPeopleInGeographies (geographyIds); // no pattern => fall back to just geography
             }
 
-            string sqlPattern = GetSqlPatternFromNamePattern(pattern);
+            string sqlPattern = GetSqlPatternFromNamePattern (pattern);
             List<BasicPerson> result = new List<BasicPerson>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
                 DbCommand command =
-                    GetDbCommand("SELECT " + personFieldSequence + " WHERE GeographyId IN (" + JoinIds(geographyIds) + ") AND (Name like '" + sqlPattern + "' OR Email like '" + sqlPattern + "')",
-                                 connection);
+                    GetDbCommand (
+                        "SELECT " + personFieldSequence + " WHERE GeographyId IN (" + JoinIds (geographyIds) +
+                        ") AND (Name like '" + sqlPattern + "' OR Email like '" + sqlPattern + "')",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPersonFromDataReader(reader));
+                        result.Add (ReadPersonFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -497,88 +504,87 @@ namespace Swarmops.Database
         }
 
 
-
-        public void SetPersonName(int personId, string name)
+        public void SetPersonName (int personId, string name)
         {
-            this.SetPersonBasicStringValue(personId, "Name", name);
+            SetPersonBasicStringValue (personId, "Name", name);
         }
 
         public void SetPersonPasswordHash (int personId, string passwordHash)
         {
-            this.SetPersonBasicStringValue(personId, "PasswordHash", passwordHash);
+            SetPersonBasicStringValue (personId, "PasswordHash", passwordHash);
         }
 
         public void SetPersonStreet (int personId, string street)
         {
-            this.SetPersonBasicStringValue(personId, "Street", street);
+            SetPersonBasicStringValue (personId, "Street", street);
         }
 
         public void SetPersonPostalCode (int personId, string postalCode)
         {
-            this.SetPersonBasicStringValue(personId, "PostalCode", postalCode);
+            SetPersonBasicStringValue (personId, "PostalCode", postalCode);
         }
 
         public void SetPersonCity (int personId, string city)
         {
-            this.SetPersonBasicStringValue(personId, "City", city);
+            SetPersonBasicStringValue (personId, "City", city);
         }
 
         public void SetPersonPhone (int personId, string phone)
         {
-            this.SetPersonBasicStringValue(personId, "PhoneNumber", phone);
+            SetPersonBasicStringValue (personId, "PhoneNumber", phone);
         }
 
         public void SetPersonEmail (int personId, string email)
         {
-            this.SetPersonBasicStringValue(personId, "Email", email);
+            SetPersonBasicStringValue (personId, "Email", email);
         }
 
         public int CreatePerson (string name, string email)
         {
-            return CreatePerson(name, email, string.Empty, string.Empty, string.Empty, string.Empty, 0,
-                                DateTime.MinValue, PersonGender.Unknown);
+            return CreatePerson (name, email, string.Empty, string.Empty, string.Empty, string.Empty, 0,
+                DateTime.MinValue, PersonGender.Unknown);
         }
 
         protected void SetPersonBasicStringValue (int personId, string key, string newValue)
         {
-            string parameterName = Char.ToLower(key[0]) + key.Substring(1);
+            string parameterName = Char.ToLower (key[0]) + key.Substring (1);
             string storedProcedureName = "SetPerson" + key;
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand(storedProcedureName, connection);
+                DbCommand command = GetDbCommand (storedProcedureName, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, parameterName, newValue);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, parameterName, newValue);
                 command.ExecuteNonQuery();
             }
         }
 
         public int CreatePerson (string name, string email, string phone, string street, string postalCode, string city,
-                                 int countryId, DateTime birthDate, PersonGender gender)
+            int countryId, DateTime birthDate, PersonGender gender)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePerson", connection);
+                DbCommand command = GetDbCommand ("CreatePerson", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "name", name);
-                AddParameterWithName(command, "email", email);
-                AddParameterWithName(command, "passwordHash", string.Empty);
-                AddParameterWithName(command, "phoneNumber", phone);
-                AddParameterWithName(command, "street", street);
-                AddParameterWithName(command, "postalCode", postalCode);
-                AddParameterWithName(command, "city", city);
-                AddParameterWithName(command, "countryId", countryId);
-                AddParameterWithName(command, "birthdate", birthDate);
-                AddParameterWithName(command, "genderId", (int)gender);
+                AddParameterWithName (command, "name", name);
+                AddParameterWithName (command, "email", email);
+                AddParameterWithName (command, "passwordHash", string.Empty);
+                AddParameterWithName (command, "phoneNumber", phone);
+                AddParameterWithName (command, "street", street);
+                AddParameterWithName (command, "postalCode", postalCode);
+                AddParameterWithName (command, "city", city);
+                AddParameterWithName (command, "countryId", countryId);
+                AddParameterWithName (command, "birthdate", birthDate);
+                AddParameterWithName (command, "genderId", (int) gender);
 
-                int personId = Convert.ToInt32(command.ExecuteScalar());
+                int personId = Convert.ToInt32 (command.ExecuteScalar());
 
                 return personId;
             }
@@ -605,11 +611,11 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPersonGeography", connection);
+                DbCommand command = GetDbCommand ("SetPersonGeography", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "geographyId", geographyId);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "geographyId", geographyId);
                 command.ExecuteNonQuery();
             }
         }
@@ -621,11 +627,11 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPersonCountry", connection);
+                DbCommand command = GetDbCommand ("SetPersonCountry", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "countryId", countryId);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "countryId", countryId);
                 command.ExecuteNonQuery();
             }
         }
@@ -636,11 +642,11 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPersonGender", connection);
+                DbCommand command = GetDbCommand ("SetPersonGender", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "genderId", (int)gender);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "genderId", (int) gender);
                 command.ExecuteNonQuery();
             }
         }
@@ -651,11 +657,11 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetPersonBirthdate", connection);
+                DbCommand command = GetDbCommand ("SetPersonBirthdate", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "birthdate", birthdate);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "birthdate", birthdate);
                 command.ExecuteNonQuery();
             }
         }

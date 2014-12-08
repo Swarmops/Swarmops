@@ -6,7 +6,7 @@ namespace Swarmops.Frontend.Pages.Security
 {
     public partial class AccessibleOrganizationsTree : DataV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             Response.ContentType = "application/json";
 
@@ -49,15 +49,15 @@ namespace Swarmops.Frontend.Pages.Security
 
             foreach (Organization organization in allOrganizations)
             {
-                if (!treeMap.ContainsKey(organization.ParentIdentity))
+                if (!treeMap.ContainsKey (organization.ParentIdentity))
                 {
                     treeMap[organization.ParentIdentity] = new Organizations();
                 }
 
-                treeMap[organization.ParentIdentity].Add(organization);
+                treeMap[organization.ParentIdentity].Add (organization);
             }
 
-            Response.Output.WriteLine(RecurseTreeMap(treeMap, 0));
+            Response.Output.WriteLine (RecurseTreeMap (treeMap, 0));
 
             /* TODO: Cache, if master installation grows large
 
@@ -68,25 +68,24 @@ namespace Swarmops.Frontend.Pages.Security
             Response.End();
         }
 
-        private string RecurseTreeMap(Dictionary<int, Organizations> treeMap, int nodeId)
+        private string RecurseTreeMap (Dictionary<int, Organizations> treeMap, int nodeId)
         {
             List<string> elements = new List<string>();
 
             foreach (Organization organization in treeMap[nodeId])
             {
-                string element = string.Format("\"id\":{0},\"text\":\"{1}\"", organization.Identity,
-                                               JsonSanitize(organization.Name));
+                string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", organization.Identity,
+                    JsonSanitize (organization.Name));
 
-                if (treeMap.ContainsKey(organization.Identity))
+                if (treeMap.ContainsKey (organization.Identity))
                 {
-                    element += ",\"state\":\"closed\",\"children\":" + RecurseTreeMap(treeMap, organization.Identity);
+                    element += ",\"state\":\"closed\",\"children\":" + RecurseTreeMap (treeMap, organization.Identity);
                 }
 
-                elements.Add("{" + element + "}");
+                elements.Add ("{" + element + "}");
             }
 
-            return "[" + String.Join(",", elements.ToArray()) + "]";
-
+            return "[" + String.Join (",", elements.ToArray()) + "]";
         }
     }
 }

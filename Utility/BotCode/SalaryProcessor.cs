@@ -9,15 +9,15 @@ namespace Swarmops.Utility.BotCode
 {
     public class SalaryProcessor
     {
-        static public void Run()
+        public static void Run()
         {
             DateTime today = DateTime.Today;
 
             string lastRun = Persistence.Key["LastSalaryRun"];
 
-            string expectedLastRun = today.ToString("yyyyMM", CultureInfo.InvariantCulture);
+            string expectedLastRun = today.ToString ("yyyyMM", CultureInfo.InvariantCulture);
 
-            if (lastRun != null && String.Compare(lastRun,expectedLastRun) >= 0)
+            if (lastRun != null && String.Compare (lastRun, expectedLastRun) >= 0)
             {
                 // nothing to do, return
 
@@ -29,16 +29,15 @@ namespace Swarmops.Utility.BotCode
             // Process the payroll for all organizations. Assume payday is 25th.
 
             Payroll payroll = Payroll.GetAll();
-            DateTime payday = new DateTime(today.Year, today.Month, 25);
+            DateTime payday = new DateTime (today.Year, today.Month, 25);
 
-            Dictionary<int,double> salariesTotalPerBudget = new Dictionary<int, double>();
+            Dictionary<int, double> salariesTotalPerBudget = new Dictionary<int, double>();
 
             foreach (PayrollItem payrollItem in payroll)
             {
-                Salary salary = Salary.Create(payrollItem, payday);
-                PWEvents.CreateEvent(EventSource.PirateBot, EventType.SalaryCreated, 0, payrollItem.OrganizationId,
-                                   0, payrollItem.Person.Identity, salary.Identity, string.Empty);
-
+                Salary salary = Salary.Create (payrollItem, payday);
+                PWEvents.CreateEvent (EventSource.PirateBot, EventType.SalaryCreated, 0, payrollItem.OrganizationId,
+                    0, payrollItem.Person.Identity, salary.Identity, string.Empty);
             }
         }
 

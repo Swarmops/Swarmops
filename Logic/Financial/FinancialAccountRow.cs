@@ -11,21 +11,21 @@ namespace Swarmops.Logic.Financial
         {
         }
 
-        public static FinancialAccountRow FromBasic (BasicFinancialAccountRow basic)
-        {
-            return new FinancialAccountRow (basic);
-        }
-
         public decimal Amount
         {
             get { return AmountCents/100.0m; }
+        }
+
+        public static FinancialAccountRow FromBasic (BasicFinancialAccountRow basic)
+        {
+            return new FinancialAccountRow (basic);
         }
 
         #endregion
 
         public FinancialTransaction Transaction
         {
-            get { return FinancialTransaction.FromIdentity(this.FinancialTransactionId); }
+            get { return FinancialTransaction.FromIdentity (FinancialTransactionId); }
         }
     }
 }

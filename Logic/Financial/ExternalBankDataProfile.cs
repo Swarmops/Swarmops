@@ -6,16 +6,20 @@ namespace Swarmops.Logic.Financial
 {
     public class ExternalBankDataProfile
     {
+        public FeeSignage FeeSignage;
+        public LatestTransactionLocation LatestTransactionLocation;
+        public ExternalBankDateTimePrecision Precision;
+
         private ExternalBankDataProfile()
         {
-            this.FieldNames = new Dictionary<ExternalBankDataFieldName, string>();
+            FieldNames = new Dictionary<ExternalBankDataFieldName, string>();
         }
 
         public string DateTimeFormatString
         {
             get
             {
-                switch (Precision)
+                switch (this.Precision)
                 {
                     case ExternalBankDateTimePrecision.Day:
                         return "yyyy-MM-dd";
@@ -26,13 +30,31 @@ namespace Swarmops.Logic.Financial
                     case ExternalBankDateTimePrecision.Microsecond:
                         return "yyyy-MM-dd HH:mm:ss.ffffff";
                     default:
-                        throw new NotImplementedException("Unknown ExternalDateTimePrecision: " + Precision.ToString());
+                        throw new NotImplementedException ("Unknown ExternalDateTimePrecision: " + this.Precision);
                 }
-
             }
         }
 
-        static public ExternalBankDataProfile FromIdentity (int externalBankDataProfileId)
+        public static int SESebId
+        {
+            get { return 1; }
+        } // Ugly pre-db hacks
+
+        public static int PaypalId
+        {
+            get { return 2; }
+        }
+
+        public string Name { get; set; }
+        public Country Country { get; set; }
+        public string Culture { get; set; }
+        public string Currency { get; set; }
+        public string BankDataAccountReader { get; set; }
+        public string BankDataPaymentsReader { get; set; }
+
+        public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
+
+        public static ExternalBankDataProfile FromIdentity (int externalBankDataProfileId)
         {
             ExternalBankDataProfile result = new ExternalBankDataProfile();
 
@@ -41,7 +63,7 @@ namespace Swarmops.Logic.Financial
             if (externalBankDataProfileId == SESebId)
             {
                 result.Name = "SEB";
-                result.Country = Country.FromCode("SE");
+                result.Country = Country.FromCode ("SE");
                 result.Culture = "sv-SE";
 
                 result.FieldNames[ExternalBankDataFieldName.Date] = "Bokföringsdatum";
@@ -87,23 +109,8 @@ namespace Swarmops.Logic.Financial
                 return result;
             }
 
-            throw new ArgumentException("Unrecognized profile Id");
+            throw new ArgumentException ("Unrecognized profile Id");
         }
-
-        static public int SESebId { get { return 1; } }   // Ugly pre-db hacks
-        static public int PaypalId { get { return 2; } }
-
-        public string Name { get; set; }
-        public Country Country { get; set; }
-        public string Culture { get; set; }
-        public string Currency { get; set; }
-        public LatestTransactionLocation LatestTransactionLocation;
-        public ExternalBankDateTimePrecision Precision;
-        public FeeSignage FeeSignage;
-        public string BankDataAccountReader { get; set; }
-        public string BankDataPaymentsReader { get; set; }
-
-        public Dictionary<ExternalBankDataFieldName, string> FieldNames { get; private set; }
     }
 
     public enum ExternalBankDataFieldName
@@ -126,12 +133,14 @@ namespace Swarmops.Logic.Financial
     public enum LatestTransactionLocation
     {
         Unknown = 0,
+
         /// <summary>
-        /// Latest transaction is at the top of the file (the first record, meaning reverse chrono order).
+        ///     Latest transaction is at the top of the file (the first record, meaning reverse chrono order).
         /// </summary>
         Top,
+
         /// <summary>
-        /// Latest transaction is at the bottom of the file (last record, chrono order).
+        ///     Latest transaction is at the bottom of the file (last record, chrono order).
         /// </summary>
         Bottom
     }
@@ -139,28 +148,34 @@ namespace Swarmops.Logic.Financial
     public enum ExternalBankDateTimePrecision
     {
         Unknown = 0,
+
         /// <summary>
-        /// The external bank has day precision only. Typical for oldbanks.
+        ///     The external bank has day precision only. Typical for oldbanks.
         /// </summary>
         Day,
+
         /// <summary>
-        /// The external bank has minute (hour:minute) precision on top of day.
+        ///     The external bank has minute (hour:minute) precision on top of day.
         /// </summary>
         Minute,
+
         /// <summary>
-        /// The external bank tags transactions with hour, minute, and second.
+        ///     The external bank tags transactions with hour, minute, and second.
         /// </summary>
         Second,
+
         /// <summary>
-        /// The external bank has millisecond-level timestamps for transactions. Not implemented.
+        ///     The external bank has millisecond-level timestamps for transactions. Not implemented.
         /// </summary>
         Millisecond,
+
         /// <summary>
-        /// The external bank has microsecond-resolution timestamp for transactions
+        ///     The external bank has microsecond-resolution timestamp for transactions
         /// </summary>
         Microsecond,
+
         /// <summary>
-        /// The external bank has nanosecond-resolution timestamp for transactions
+        ///     The external bank has nanosecond-resolution timestamp for transactions
         /// </summary>
         Nanosecond
     }
@@ -168,12 +183,14 @@ namespace Swarmops.Logic.Financial
     public enum FeeSignage
     {
         Unknown = 0,
+
         /// <summary>
-        /// The transaction fee is positively listed (as a positive number), so that gross - fee = net.
+        ///     The transaction fee is positively listed (as a positive number), so that gross - fee = net.
         /// </summary>
         Positive,
+
         /// <summary>
-        /// The transaction fee is listed as negative, so that gross + fee = net. Example: Paypal.
+        ///     The transaction fee is listed as negative, so that gross + fee = net. Example: Paypal.
         /// </summary>
         Negative
     }

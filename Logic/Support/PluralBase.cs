@@ -1,28 +1,13 @@
-
-
 using System.Collections.Generic;
 using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Logic.Support
 {
-    public class PluralBase<TPlural,TSingular,TBasic>: List<TSingular>, IHasIdentities
-        where TPlural: PluralBase<TPlural, TSingular, TBasic>, new()
-        where TBasic: IHasIdentity
-        where TSingular: IHasIdentity
+    public class PluralBase<TPlural, TSingular, TBasic> : List<TSingular>, IHasIdentities
+        where TPlural : PluralBase<TPlural, TSingular, TBasic>, new()
+        where TBasic : IHasIdentity
+        where TSingular : IHasIdentity
     {
-        static public TPlural FromArray (TBasic[] basicArray)
-        {
-            var result = new TPlural {Capacity = basicArray.Length*11/10};
-
-            foreach (TBasic basic in basicArray)
-            {
-                result.Add((TSingular) SingularFactory.FromBasic(basic));
-            }
-
-            return result;
-        }
-
-
         public int[] Identities
         {
             get
@@ -31,34 +16,45 @@ namespace Swarmops.Logic.Support
 
                 foreach (TSingular singular in this)
                 {
-                    result.Add(singular.Identity);
+                    result.Add (singular.Identity);
                 }
 
                 return result.ToArray();
             }
         }
 
-
-        static public TPlural FromSingle (TSingular singular)
+        public static TPlural FromArray (TBasic[] basicArray)
         {
-            var result = new TPlural();
-            result.Add(singular);
-            return result;
-        }
+            TPlural result = new TPlural {Capacity = basicArray.Length*11/10};
 
-
-        static public TPlural FromSingle (TBasic basic)
-        {
-            var result = new TPlural();
-
-            result.Add((TSingular) SingularFactory.FromBasic(basic));
+            foreach (TBasic basic in basicArray)
+            {
+                result.Add ((TSingular) SingularFactory.FromBasic (basic));
+            }
 
             return result;
         }
 
 
+        public static TPlural FromSingle (TSingular singular)
+        {
+            TPlural result = new TPlural();
+            result.Add (singular);
+            return result;
+        }
 
-        public static TPlural LogicalOr(TPlural set1, TPlural set2)
+
+        public static TPlural FromSingle (TBasic basic)
+        {
+            TPlural result = new TPlural();
+
+            result.Add ((TSingular) SingularFactory.FromBasic (basic));
+
+            return result;
+        }
+
+
+        public static TPlural LogicalOr (TPlural set1, TPlural set2)
         {
             // If either set is invalid, return the other
             // (a null is different from an empty set)
@@ -75,7 +71,7 @@ namespace Swarmops.Logic.Support
 
             // Build table, eliminating duplicates
 
-            var table = new Dictionary<int, TSingular>();
+            Dictionary<int, TSingular> table = new Dictionary<int, TSingular>();
 
             foreach (TSingular singular in set1)
             {
@@ -89,19 +85,18 @@ namespace Swarmops.Logic.Support
 
             // Assemble result
 
-            var result = new TPlural();
+            TPlural result = new TPlural();
 
             foreach (TSingular singular in table.Values)
             {
-                result.Add(singular);
+                result.Add (singular);
             }
 
             return result;
         }
 
 
-
-        public static TPlural LogicalAnd(TPlural set1, TPlural set2)
+        public static TPlural LogicalAnd (TPlural set1, TPlural set2)
         {
             // If either set is invalid, return the other
             // (a null is different from an empty set)
@@ -116,7 +111,7 @@ namespace Swarmops.Logic.Support
                 return set1;
             }
 
-            var set2Lookup = new Dictionary<int, bool>();
+            Dictionary<int, bool> set2Lookup = new Dictionary<int, bool>();
 
             // Build set2's lookup table
 
@@ -127,12 +122,12 @@ namespace Swarmops.Logic.Support
 
             // Build result
 
-            var result = new TPlural();
+            TPlural result = new TPlural();
             foreach (TSingular singular in set1)
             {
-                if (set2Lookup.ContainsKey(singular.Identity))
+                if (set2Lookup.ContainsKey (singular.Identity))
                 {
-                    result.Add(singular);
+                    result.Add (singular);
                 }
             }
 
@@ -141,11 +136,11 @@ namespace Swarmops.Logic.Support
 
         public new void Remove (TSingular objectToRemove)
         {
-            for (int index = 0; index < this.Count; index++)
+            for (int index = 0; index < Count; index++)
             {
                 if (this[index].Identity == objectToRemove.Identity)
                 {
-                    this.RemoveAt(index);
+                    RemoveAt (index);
                     index--;
                 }
             }

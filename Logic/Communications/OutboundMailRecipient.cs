@@ -8,17 +8,23 @@ namespace Swarmops.Logic.Communications
 {
     public class OutboundMailRecipient : BasicOutboundMailRecipient
     {
+        public enum RecipientType
+        {
+            Person,
+            Reporter
+        }
+
         private readonly OutboundMail outboundMail;
         private IEmailPerson person;
 
-        private OutboundMailRecipient ()
-            : base(null)
+        private OutboundMailRecipient()
+            : base (null)
         {
             // Never construct this way
         }
 
         private OutboundMailRecipient (BasicOutboundMailRecipient basic, OutboundMail outboundMail)
-            : base(basic)
+            : base (basic)
         {
             this.outboundMail = outboundMail;
         }
@@ -44,24 +50,6 @@ namespace Swarmops.Logic.Communications
             get { return this.outboundMail; }
         }
 
-        public enum RecipientType { Person, Reporter }
-
-        private void CachePerson ()
-        {
-            if (this.person == null)
-            {
-                RecipientType type = (RecipientType)base.PersonType;
-                if (type == RecipientType.Person)
-                {
-                    this.person = Person.FromIdentity(base.PersonId);
-                }
-                else if (type == RecipientType.Reporter)
-                {
-                    this.person = Reporter.FromIdentity(base.PersonId);
-                }
-            }
-        }
-
         public IEmailPerson EmailPerson // Cache the Person object
         {
             get
@@ -70,15 +58,15 @@ namespace Swarmops.Logic.Communications
                 return this.person;
             }
         }
+
         public Person Person // Cache the Person object
         {
             get
             {
                 CachePerson();
                 if (this.person is Person)
-                    return (Person)this.person;
-                else
-                    return null;
+                    return (Person) this.person;
+                return null;
             }
         }
 
@@ -88,35 +76,51 @@ namespace Swarmops.Logic.Communications
             {
                 CachePerson();
                 if (this.person is Reporter)
-                    return (Reporter)this.person;
-                else
-                    return null;
+                    return (Reporter) this.person;
+                return null;
+            }
+        }
+
+        private void CachePerson()
+        {
+            if (this.person == null)
+            {
+                RecipientType type = (RecipientType) base.PersonType;
+                if (type == RecipientType.Person)
+                {
+                    this.person = Person.FromIdentity (base.PersonId);
+                }
+                else if (type == RecipientType.Reporter)
+                {
+                    this.person = Reporter.FromIdentity (base.PersonId);
+                }
             }
         }
 
         internal static OutboundMailRecipient FromBasic (BasicOutboundMailRecipient basic, OutboundMail outboundMail)
         {
-            return new OutboundMailRecipient(basic, outboundMail);
+            return new OutboundMailRecipient (basic, outboundMail);
         }
 
         public static void Create (OutboundMail outboundMail, Person person, bool asOfficer)
         {
-            Create(outboundMail.Identity, person.Identity, asOfficer,(int)RecipientType.Person);
+            Create (outboundMail.Identity, person.Identity, asOfficer, (int) RecipientType.Person);
         }
 
         public static void Create (OutboundMail outboundMail, Reporter person, bool asOfficer)
         {
-            Create(outboundMail.Identity, person.Identity, asOfficer,(int)RecipientType.Reporter);
+            Create (outboundMail.Identity, person.Identity, asOfficer, (int) RecipientType.Reporter);
         }
 
         public static void Create (int outboundMailId, int personId, bool asOfficer, int personType)
         {
-            SwarmDb.GetDatabaseForWriting().CreateOutboundMailRecipient(outboundMailId, personId, asOfficer, personType);
+            SwarmDb.GetDatabaseForWriting()
+                .CreateOutboundMailRecipient (outboundMailId, personId, asOfficer, personType);
         }
 
-        public void Delete ()
+        public void Delete()
         {
-            SwarmDb.GetDatabaseForWriting().DeleteOutboundMailRecipient(Identity);
+            SwarmDb.GetDatabaseForWriting().DeleteOutboundMailRecipient (Identity);
         }
     }
 }

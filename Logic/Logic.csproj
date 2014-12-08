@@ -70,6 +70,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Communications.Transmission.DefaultCommTemplates.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +90,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="App_GlobalResources\ParticipantTitles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParticipantTitles.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Logic.Communications.Transmission.MailPayload.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Communications.Transmission.MailPayload.resx</DependentUpon>
+    </Compile>
     <Compile Include="Cache\GuidCache.cs" />
     <Compile Include="Communications\ICommsRenderer.cs" />
     <Compile Include="Communications\ICommsResolver.cs" />
@@ -94,6 +109,7 @@
     <Compile Include="Communications\OutboundCommRecipients.cs" />
     <Compile Include="Communications\OutboundComms.cs" />
     <Compile Include="Communications\OutboundCommTransmitException.cs" />
+    <Compile Include="Communications\Transmission\ParticipantMailPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadEnvelope.cs" />
     <Compile Include="Communications\Transmission\NotificationPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadBase.cs" />
@@ -230,6 +246,8 @@
     <Compile Include="Support\Imagery.cs" />
     <Compile Include="Support\IXmlPayload.cs" />
     <Compile Include="Support\LogEntries\CashAdvanceRequestedLogEntry.cs" />
+    <Compile Include="Support\LogEntries\MembershipActionBase.cs" />
+    <Compile Include="Support\LogEntries\PersonAddedLogEntry.cs" />
     <Compile Include="Support\LogEntries\SalaryCreatedLogEntry.cs" />
     <Compile Include="Support\LogEntries\InboundInvoiceCreatedLogEntry.cs" />
     <Compile Include="Support\LogEntries\ExpenseClaimFiledLogEntry.cs" />
@@ -301,6 +319,7 @@
     <Compile Include="Swarm\ParleyOption.cs" />
     <Compile Include="Swarm\ParleyOptions.cs" />
     <Compile Include="Swarm\Parleys.cs" />
+    <Compile Include="Swarm\ParticipantTitle.cs" />
     <Compile Include="Swarm\PaymentCode.cs" />
     <Compile Include="Swarm\People.cs" />
     <Compile Include="Swarm\Person.cs" />
@@ -358,6 +377,10 @@
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Communications.Transmission.NotificationPayload.it-IT.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Financial.FinancialTransactionTagSetTypesStock.it-IT.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Swarm.DashboardTodos.it-IT.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Logic.Communications.Transmission.DefaultCommTemplates.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\Logic.Financial.FinancialTransactionTagSetTypesStock.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs</LastGenOutput>
@@ -376,12 +399,20 @@
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Communications.Transmission.NotificationPayload.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Financial.FinancialTransactionTagSetTypesStock.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Swarm.DashboardTodos.nl-NL.resx" />
+    <EmbeddedResource Include="App_GlobalResources\ParticipantTitles.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ParticipantTitles.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Communications.Transmission.NotificationPayload.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Financial.FinancialTransactionTagSetTypesStock.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Swarm.DashboardTodos.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Communications.Transmission.NotificationPayload.pt-BR.resx" />
     <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Financial.FinancialTransactionTagSetTypesStock.pt-BR.resx" />
     <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Swarm.DashboardTodos.pt-BR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Logic.Communications.Transmission.MailPayload.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Communications.Transmission.MailPayload.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Communications.Transmission.NotificationPayload.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Financial.FinancialTransactionTagSetTypesStock.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Swarm.DashboardTodos.ru-RU.resx" />

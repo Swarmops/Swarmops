@@ -9,23 +9,50 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class Payouts: PluralBase<Payouts,Payout,BasicPayout>
+    public class Payouts : PluralBase<Payouts, Payout, BasicPayout>
     {
+        public decimal TotalAmount
+        {
+            get
+            {
+                decimal result = 0.0m;
+
+                foreach (Payout payout in this)
+                {
+                    result += payout.Amount;
+                }
+
+                return result;
+            }
+        }
+
+        public Int64 TotalAmountCents
+        {
+            get
+            {
+                Int64 result = 0;
+
+                foreach (Payout payout in this)
+                {
+                    result += payout.AmountCents;
+                }
+
+                return result;
+            }
+        }
+
         public static Payouts ForOrganization (Organization organization)
         {
-            return ForOrganization(organization, false);
+            return ForOrganization (organization, false);
         }
 
         public static Payouts ForOrganization (Organization organization, bool includeClosed)
         {
             if (includeClosed)
             {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetPayouts(organization));
+                return FromArray (SwarmDb.GetDatabaseForReading().GetPayouts (organization));
             }
-            else
-            {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetPayouts(organization, DatabaseCondition.OpenTrue));
-            }
+            return FromArray (SwarmDb.GetDatabaseForReading().GetPayouts (organization, DatabaseCondition.OpenTrue));
         }
 
         public static Payouts Construct (Organization organization)
@@ -35,17 +62,17 @@ namespace Swarmops.Logic.Financial
 
             Payouts result = new Payouts();
 
-            AddUnpaidExpenseClaims(result, organization);
-            AddUnpaidInboundInvoices(result, organization);
-            AddUnpaidSalaries(result, organization);
-            AddUnpaidCashAdvances(result, organization);
+            AddUnpaidExpenseClaims (result, organization);
+            AddUnpaidInboundInvoices (result, organization);
+            AddUnpaidSalaries (result, organization);
+            AddUnpaidCashAdvances (result, organization);
 
             return result;
         }
 
-        private static void AddUnpaidExpenseClaims(Payouts payoutList, Organization organization)
+        private static void AddUnpaidExpenseClaims (Payouts payoutList, Organization organization)
         {
-            ExpenseClaims claims = ExpenseClaims.FromOrganization(organization);
+            ExpenseClaims claims = ExpenseClaims.FromOrganization (organization);
 
             Dictionary<int, Payout> payoutLookup = new Dictionary<int, Payout>();
 
@@ -60,22 +87,22 @@ namespace Swarmops.Logic.Financial
                         // this should be added to the list. Check if we already have pending payouts
                         // for this person:
 
-                        if (payoutLookup.ContainsKey(claim.ClaimingPersonId))
+                        if (payoutLookup.ContainsKey (claim.ClaimingPersonId))
                         {
                             // Yes. Add claim to list.
 
-                            payoutLookup[claim.ClaimingPersonId].DependentExpenseClaims.Add(claim);
+                            payoutLookup[claim.ClaimingPersonId].DependentExpenseClaims.Add (claim);
                         }
                         else
                         {
                             // No. Create a new payout for this person.
 
-                            BasicPayout basicPayout = new BasicPayout(0, organization.Identity, claim.Claimer.BankName,
-                                                                      claim.Claimer.BankClearing + " / " + claim.Claimer.BankAccount, string.Empty, 0,
-                                                                      DateTime.MinValue, false, DateTime.Now, 0);
-                            Payout payout = Payout.FromBasic(basicPayout);
+                            BasicPayout basicPayout = new BasicPayout (0, organization.Identity, claim.Claimer.BankName,
+                                claim.Claimer.BankClearing + " / " + claim.Claimer.BankAccount, string.Empty, 0,
+                                DateTime.MinValue, false, DateTime.Now, 0);
+                            Payout payout = Payout.FromBasic (basicPayout);
 
-                            payout.DependentExpenseClaims.Add(claim);
+                            payout.DependentExpenseClaims.Add (claim);
 
                             payoutLookup[claim.ClaimingPersonId] = payout;
                         }
@@ -86,18 +113,18 @@ namespace Swarmops.Logic.Financial
             // At this point, all the expense claims have been added - but we need to add the open
             // cash advances and deduct them.
 
-            CashAdvances cashAdvances = CashAdvances.ForOrganization(organization);
+            CashAdvances cashAdvances = CashAdvances.ForOrganization (organization);
             cashAdvances = cashAdvances.WherePaid;
 
             // At this point, only open and paid cash advances are in the list: they're debts to the org
 
             foreach (CashAdvance cashAdvance in cashAdvances)
             {
-                if (payoutLookup.ContainsKey(cashAdvance.PersonId))
+                if (payoutLookup.ContainsKey (cashAdvance.PersonId))
                 {
                     // there's a payout prepared to this person - we need to deduct the cash advance from it.
 
-                    payoutLookup[cashAdvance.PersonId].DependentCashAdvancesPayback.Add(cashAdvance);
+                    payoutLookup[cashAdvance.PersonId].DependentCashAdvancesPayback.Add (cashAdvance);
                 }
             }
 
@@ -112,7 +139,7 @@ namespace Swarmops.Logic.Financial
                 foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
                 {
                     newAmountCents += claim.AmountCents;
-                    claimIds.Add(claim.Identity);
+                    claimIds.Add (claim.Identity);
                 }
 
                 foreach (CashAdvance previousAdvance in payout.DependentCashAdvancesPayback)
@@ -121,34 +148,34 @@ namespace Swarmops.Logic.Financial
                 }
 
                 string lessAdvancesIndicator = payout.DependentCashAdvancesPayback.Count > 0
-                                                   ? "LessAdvances"
-                                                   : string.Empty;
+                    ? "LessAdvances"
+                    : string.Empty;
 
                 payout.AmountCents = newAmountCents;
 
                 if (claimIds.Count == 1)
                 {
-                    payout.Reference = "[Loc]Financial_ExpenseClaimSpecification" + lessAdvancesIndicator + "|" + claimIds[0].ToString(CultureInfo.InvariantCulture);
+                    payout.Reference = "[Loc]Financial_ExpenseClaimSpecification" + lessAdvancesIndicator + "|" +
+                                       claimIds[0].ToString (CultureInfo.InvariantCulture);
                 }
                 else
                 {
                     claimIds.Sort();
-                    payout.Reference = "[Loc]Financial_ExpenseClaimsSpecification" + lessAdvancesIndicator + "|" + Formatting.GenerateRangeString(claimIds);
+                    payout.Reference = "[Loc]Financial_ExpenseClaimsSpecification" + lessAdvancesIndicator + "|" +
+                                       Formatting.GenerateRangeString (claimIds);
                 }
 
                 if (newAmountCents > 0)
                 {
-                    payoutList.Add(payout);
+                    payoutList.Add (payout);
                 }
             }
-
         }
 
 
-
-        private static void AddUnpaidCashAdvances(Payouts payoutList, Organization organization)
+        private static void AddUnpaidCashAdvances (Payouts payoutList, Organization organization)
         {
-            CashAdvances advances = CashAdvances.ForOrganization(organization);
+            CashAdvances advances = CashAdvances.ForOrganization (organization);
             advances = advances.WhereAttested;
             advances = advances.WhereUnpaid;
 
@@ -160,25 +187,26 @@ namespace Swarmops.Logic.Financial
 
                 if (!advance.Open || !advance.Attested || advance.PaidOut)
                 {
-                    throw new InvalidOperationException("Got into loop with closed/unattested/paid-out cash advances - this is not a possible state");
+                    throw new InvalidOperationException (
+                        "Got into loop with closed/unattested/paid-out cash advances - this is not a possible state");
                 }
 
-                if (payoutLookup.ContainsKey(advance.PersonId))
+                if (payoutLookup.ContainsKey (advance.PersonId))
                 {
                     // Yes. Add claim to list.
 
-                    payoutLookup[advance.PersonId].DependentCashAdvancesPayout.Add(advance);
+                    payoutLookup[advance.PersonId].DependentCashAdvancesPayout.Add (advance);
                 }
                 else
                 {
                     // No. Create a new payout for this person.
 
-                    BasicPayout basicPayout = new BasicPayout(0, organization.Identity, advance.Person.BankName,
-                                                                advance.Person.BankClearing + " / " + advance.Person.BankAccount, string.Empty, 0,
-                                                                DateTime.MinValue, false, DateTime.Now, 0);
-                    Payout payout = Payout.FromBasic(basicPayout);
+                    BasicPayout basicPayout = new BasicPayout (0, organization.Identity, advance.Person.BankName,
+                        advance.Person.BankClearing + " / " + advance.Person.BankAccount, string.Empty, 0,
+                        DateTime.MinValue, false, DateTime.Now, 0);
+                    Payout payout = Payout.FromBasic (basicPayout);
 
-                    payout.DependentCashAdvancesPayout.Add(advance);
+                    payout.DependentCashAdvancesPayout.Add (advance);
 
                     payoutLookup[advance.PersonId] = payout;
                 }
@@ -195,46 +223,49 @@ namespace Swarmops.Logic.Financial
                 foreach (CashAdvance advance in payout.DependentCashAdvancesPayout)
                 {
                     newAmountCents += advance.AmountCents;
-                    advanceIds.Add(advance.Identity);
+                    advanceIds.Add (advance.Identity);
                 }
 
                 payout.AmountCents = newAmountCents;
 
                 if (advanceIds.Count == 1)
                 {
-                    payout.Reference = "[Loc]Financial_CashAdvanceSpecification|" + advanceIds[0].ToString(CultureInfo.InvariantCulture);
+                    payout.Reference = "[Loc]Financial_CashAdvanceSpecification|" +
+                                       advanceIds[0].ToString (CultureInfo.InvariantCulture);
                 }
                 else
                 {
                     advanceIds.Sort();
-                    payout.Reference = "[Loc]Financial_CashAdvancesSpecification|" + Formatting.GenerateRangeString(advanceIds);
+                    payout.Reference = "[Loc]Financial_CashAdvancesSpecification|" +
+                                       Formatting.GenerateRangeString (advanceIds);
                 }
 
                 if (newAmountCents > 0)
                 {
-                    payoutList.Add(payout);
+                    payoutList.Add (payout);
                 }
             }
         }
 
 
-
-        private static void AddUnpaidInboundInvoices(Payouts payoutList, Organization organization)
+        private static void AddUnpaidInboundInvoices (Payouts payoutList, Organization organization)
         {
-            InboundInvoices invoices = InboundInvoices.ForOrganization(organization);
+            InboundInvoices invoices = InboundInvoices.ForOrganization (organization);
 
             foreach (InboundInvoice invoice in invoices)
             {
                 if (invoice.Attested)
                 {
-                    BasicPayout basicPayout = new BasicPayout(0, organization.Identity, string.Empty,
-                                                              invoice.PayToAccount, invoice.Ocr.Length > 0? "OCR " + invoice.Ocr : "Ref# " + invoice.InvoiceReference, (Int64) (invoice.Amount * 100),
-                                                              invoice.DueDate, false, DateTime.Now, 0);
-                    Payout payout = Payout.FromBasic(basicPayout);
+                    BasicPayout basicPayout = new BasicPayout (0, organization.Identity, string.Empty,
+                        invoice.PayToAccount,
+                        invoice.Ocr.Length > 0 ? "OCR " + invoice.Ocr : "Ref# " + invoice.InvoiceReference,
+                        (Int64) (invoice.Amount*100),
+                        invoice.DueDate, false, DateTime.Now, 0);
+                    Payout payout = Payout.FromBasic (basicPayout);
 
-                    payout.DependentInvoices.Add(invoice);
+                    payout.DependentInvoices.Add (invoice);
 
-                    payoutList.Add(payout);
+                    payoutList.Add (payout);
                 }
             }
         }
@@ -243,7 +274,7 @@ namespace Swarmops.Logic.Financial
         {
             Int64 taxTotalCents = 0;
 
-            Salaries salaries = Salaries.ForOrganization(organization);
+            Salaries salaries = Salaries.ForOrganization (organization);
             List<int> identityList = new List<int>();
             DateTime payDay = DateTime.MaxValue;
 
@@ -259,14 +290,16 @@ namespace Swarmops.Logic.Financial
                     PayrollItem payrollItem = salary.PayrollItem;
                     Person employee = payrollItem.Person;
 
-                    BasicPayout basicPayout = new BasicPayout(0, organization.Identity, employee.BankName,
-                                                              employee.BankClearing+" / "+employee.BankAccount, "[Loc]Financial_SalarySpecification|[Date]" + salary.PayoutDate.ToString(CultureInfo.InvariantCulture), 
-                                                              salary.NetSalaryCents, salary.PayoutDate, false, DateTime.Now, 0);
-                    Payout payout = Payout.FromBasic(basicPayout);
+                    BasicPayout basicPayout = new BasicPayout (0, organization.Identity, employee.BankName,
+                        employee.BankClearing + " / " + employee.BankAccount,
+                        "[Loc]Financial_SalarySpecification|[Date]" +
+                        salary.PayoutDate.ToString (CultureInfo.InvariantCulture),
+                        salary.NetSalaryCents, salary.PayoutDate, false, DateTime.Now, 0);
+                    Payout payout = Payout.FromBasic (basicPayout);
 
-                    payout.DependentSalariesNet.Add(salary);
+                    payout.DependentSalariesNet.Add (salary);
 
-                    payoutList.Add(payout);
+                    payoutList.Add (payout);
 
                     if (payDay > salary.PayoutDate)
                     {
@@ -277,7 +310,7 @@ namespace Swarmops.Logic.Financial
                 if (!salary.TaxPaid)
                 {
                     taxTotalCents += salary.TaxTotalCents;
-                    identityList.Add(salary.Identity);
+                    identityList.Add (salary.Identity);
 
                     if (payDay > salary.PayoutDate)
                     {
@@ -294,39 +327,40 @@ namespace Swarmops.Logic.Financial
 
                 if (identityList.Count == 1)
                 {
-                    referenceString = "[Loc]Financial_TaxSpecification|" + identityList[0].ToString();
+                    referenceString = "[Loc]Financial_TaxSpecification|" + identityList[0];
                 }
                 else
                 {
                     identityList.Sort();
-                    referenceString = "[Loc]Financial_TaxesSpecification|" + Formatting.GenerateRangeString(identityList);
+                    referenceString = "[Loc]Financial_TaxesSpecification|" +
+                                      Formatting.GenerateRangeString (identityList);
                 }
 
 
-                BasicPayout basicPayout = new BasicPayout(0, organization.Identity, "[Loc]Financial_TheTaxMan",
-                                                          string.Empty, referenceString,
-                                                          taxTotalCents, payDay, false, DateTime.Now, 0);
-                Payout payout = Payout.FromBasic(basicPayout);
+                BasicPayout basicPayout = new BasicPayout (0, organization.Identity, "[Loc]Financial_TheTaxMan",
+                    string.Empty, referenceString,
+                    taxTotalCents, payDay, false, DateTime.Now, 0);
+                Payout payout = Payout.FromBasic (basicPayout);
 
                 foreach (int salaryId in identityList)
                 {
-                    payout.DependentSalariesTax.Add(Salary.FromIdentity(salaryId));
+                    payout.DependentSalariesTax.Add (Salary.FromIdentity (salaryId));
                 }
 
-                payoutList.Add(payout);
+                payoutList.Add (payout);
             }
         }
 
 
-        public static void AutomatchAgainstUnbalancedTransactions(Organization organization)
+        public static void AutomatchAgainstUnbalancedTransactions (Organization organization)
         {
             // Matches unbalanced financial transactions against unclosed payouts
 
             // Should this be in bot?
 
-            Payouts payouts = Payouts.ForOrganization(organization);
+            Payouts payouts = ForOrganization (organization);
 
-            FinancialTransactions transactions = FinancialTransactions.GetUnbalanced(organization);
+            FinancialTransactions transactions = FinancialTransactions.GetUnbalanced (organization);
 
             foreach (FinancialTransaction transaction in transactions)
             {
@@ -334,8 +368,8 @@ namespace Swarmops.Logic.Financial
 
                 // First, establish that there are no similar transactions within 7 days. N^2 search.
 
-                DateTime timeLow = transaction.DateTime.AddDays(-7);
-                DateTime timeHigh = transaction.DateTime.AddDays(7);
+                DateTime timeLow = transaction.DateTime.AddDays (-7);
+                DateTime timeHigh = transaction.DateTime.AddDays (7);
 
                 bool foundCompeting = false;
 
@@ -372,21 +406,24 @@ namespace Swarmops.Logic.Financial
                     DateTime payoutLowerTimeLimit = timeLow;
                     DateTime payoutUpperTimeLimit = timeHigh;
 
-                    if (payout.AmountCents == -transaction.Rows.AmountCentsTotal && (payout.DependentCashAdvancesPayout.Count > 0 || payout.DependentCashAdvancesPayback.Count > 0))
+                    if (payout.AmountCents == -transaction.Rows.AmountCentsTotal &&
+                        (payout.DependentCashAdvancesPayout.Count > 0 || payout.DependentCashAdvancesPayback.Count > 0))
                     {
                         // HACK: While PW5 doesn't have a manual-debug interface, special case for cash advances
 
-                        payoutLowerTimeLimit = transaction.DateTime.AddDays(-60);
-                        payoutUpperTimeLimit = transaction.DateTime.AddDays(60);
+                        payoutLowerTimeLimit = transaction.DateTime.AddDays (-60);
+                        payoutUpperTimeLimit = transaction.DateTime.AddDays (60);
                     }
 
-                    if (payout.ExpectedTransactionDate >= payoutLowerTimeLimit && payout.ExpectedTransactionDate <= payoutUpperTimeLimit && payout.AmountCents == -transaction.Rows.AmountCentsTotal)
+                    if (payout.ExpectedTransactionDate >= payoutLowerTimeLimit &&
+                        payout.ExpectedTransactionDate <= payoutUpperTimeLimit &&
+                        payout.AmountCents == -transaction.Rows.AmountCentsTotal)
                     {
                         // Console.WriteLine(" - - payout #{0} matches ({1}, {2:yyyy-MM-dd})", payout.Identity, payout.Recipient, payout.ExpectedTransactionDate);
 
                         try
                         {
-                            FinancialTransaction tiedTransaction = FinancialTransaction.FromDependency(payout);
+                            FinancialTransaction tiedTransaction = FinancialTransaction.FromDependency (payout);
 
                             // Console.WriteLine(" - - - but is tied to transaction #{0} already", tiedTransaction.Identity);
                             break;
@@ -411,40 +448,9 @@ namespace Swarmops.Logic.Financial
                 }
                 else
                 {
-                    Payout payout = Payout.FromIdentity(payoutIdFound);
-                    payout.BindToTransactionAndClose(transaction, null);
-                  
+                    Payout payout = Payout.FromIdentity (payoutIdFound);
+                    payout.BindToTransactionAndClose (transaction, null);
                 }
-            }
-        }
-
-        public decimal TotalAmount
-        {
-            get
-            {
-                decimal result = 0.0m;
-
-                foreach (Payout payout in this)
-                {
-                    result += payout.Amount;
-                }
-
-                return result;
-            }
-        }
-
-        public Int64 TotalAmountCents
-        {
-            get 
-            { 
-                Int64 result = 0;
-            
-                foreach (Payout payout in this)
-                {
-                    result += payout.AmountCents;
-                }
-
-                return result;
             }
         }
     }

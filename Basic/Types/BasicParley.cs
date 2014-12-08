@@ -3,32 +3,38 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicParley: IHasIdentity
+    public class BasicParley : IHasIdentity
     {
-        public BasicParley (int parleyId, int organizationId, int personId, int budgetId, DateTime createdDateTime, bool open, bool attested, string name, int geographyId, string description, string informationUrl, DateTime startDate, DateTime endDate, Int64 budgetCents, Int64 guaranteeCents,
+        public BasicParley (int parleyId, int organizationId, int personId, int budgetId, DateTime createdDateTime,
+            bool open, bool attested, string name, int geographyId, string description, string informationUrl,
+            DateTime startDate, DateTime endDate, Int64 budgetCents, Int64 guaranteeCents,
             Int64 attendanceFeeCents, DateTime closedDateTime)
         {
-            this.ParleyId = parleyId;
-            this.OrganizationId = organizationId;
-            this.PersonId = personId;
-            this.BudgetId = budgetId;
-            this.CreatedDateTime = createdDateTime;
-            this.Open = open;
-            this.Attested = attested;
-            this.Name = name;
-            this.GeographyId = geographyId;
-            this.Description = description;
-            this.InformationUrl = informationUrl;
-            this.StartDate = startDate;
-            this.EndDate = endDate;
-            this.BudgetCents = budgetCents;
-            this.GuaranteeCents = guaranteeCents;
-            this.AttendanceFeeCents = attendanceFeeCents;
-            this.ClosedDateTime = closedDateTime;
+            ParleyId = parleyId;
+            OrganizationId = organizationId;
+            PersonId = personId;
+            BudgetId = budgetId;
+            CreatedDateTime = createdDateTime;
+            Open = open;
+            Attested = attested;
+            Name = name;
+            GeographyId = geographyId;
+            Description = description;
+            InformationUrl = informationUrl;
+            StartDate = startDate;
+            EndDate = endDate;
+            BudgetCents = budgetCents;
+            GuaranteeCents = guaranteeCents;
+            AttendanceFeeCents = attendanceFeeCents;
+            ClosedDateTime = closedDateTime;
         }
 
         public BasicParley (BasicParley original)
-            : this (original.ParleyId, original.OrganizationId, original.PersonId, original.BudgetId, original.CreatedDateTime, original.Open, original.Attested, original.Name, original.GeographyId, original.Description, original.InformationUrl, original.StartDate, original.EndDate, original.BudgetCents, original.GuaranteeCents, original.AttendanceFeeCents, original.ClosedDateTime)
+            : this (
+                original.ParleyId, original.OrganizationId, original.PersonId, original.BudgetId,
+                original.CreatedDateTime, original.Open, original.Attested, original.Name, original.GeographyId,
+                original.Description, original.InformationUrl, original.StartDate, original.EndDate,
+                original.BudgetCents, original.GuaranteeCents, original.AttendanceFeeCents, original.ClosedDateTime)
         {
             // empty copy ctor
         }
@@ -54,7 +60,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.ParleyId; }
+            get { return ParleyId; }
         }
     }
 }

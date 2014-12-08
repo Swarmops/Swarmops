@@ -5,13 +5,20 @@ namespace Swarmops.Basic.Types
 {
     public class BasicExternalIdentity : IHasIdentity
     {
+        private readonly int attachedToPersonID;
+        private readonly int externalIdentityIdentity;
 
-        public BasicExternalIdentity ( int ExternalIdentityIdentity,
-                                        ExternalIdentityType TypeOfAccount,
-                                        string ExternalSystem,
-                                        string UserID,
-                                        string Password,
-                                        int AttachedToPersonID)
+        private readonly string externalSystem;
+        private readonly string password;
+        private readonly ExternalIdentityType typeOfAccount;
+        private readonly string userID;
+
+        public BasicExternalIdentity (int ExternalIdentityIdentity,
+            ExternalIdentityType TypeOfAccount,
+            string ExternalSystem,
+            string UserID,
+            string Password,
+            int AttachedToPersonID)
         {
             this.externalIdentityIdentity = ExternalIdentityIdentity;
             this.externalSystem = ExternalSystem;
@@ -22,59 +29,41 @@ namespace Swarmops.Basic.Types
         }
 
         public BasicExternalIdentity (BasicExternalIdentity original)
-            : this(original.Identity, original.TypeOfAccount, original.ExternalSystem, original.UserID, original.Password, original.AttachedToPersonID)
+            : this (
+                original.Identity, original.TypeOfAccount, original.ExternalSystem, original.UserID, original.Password,
+                original.AttachedToPersonID)
         {
         }
 
-        private int externalIdentityIdentity;
-
-        private string externalSystem;
-        private string userID;
-        private string password;
-        private int attachedToPersonID;
-        private ExternalIdentityType typeOfAccount;
-        
         public int ExternalIdentityIdentity
         {
-            get { return externalIdentityIdentity; }
+            get { return this.externalIdentityIdentity; }
         }
 
         public string ExternalSystem
         {
-            get
-            {
-                return externalSystem;
-            }
-        }
-        public string UserID
-        {
-            get
-            {
-                return userID;
-            }
-        }
-        public string Password
-        {
-            get
-            {
-                return password;
-            }
-        }
-        public int AttachedToPersonID
-        {
-            get
-            {
-                return attachedToPersonID;
-            }
-        }
-        public ExternalIdentityType TypeOfAccount
-        {
-            get
-            {
-                return typeOfAccount;
-            }
+            get { return this.externalSystem; }
         }
 
+        public string UserID
+        {
+            get { return this.userID; }
+        }
+
+        public string Password
+        {
+            get { return this.password; }
+        }
+
+        public int AttachedToPersonID
+        {
+            get { return this.attachedToPersonID; }
+        }
+
+        public ExternalIdentityType TypeOfAccount
+        {
+            get { return this.typeOfAccount; }
+        }
 
         #region IHasIdentity Members
 

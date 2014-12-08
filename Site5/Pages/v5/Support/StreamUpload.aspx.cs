@@ -20,19 +20,16 @@ namespace Swarmops.Pages.v5.Support
                 {
                     return @"C:\Windows\Temp\Swarmops-Debug\"; // Windows debugging environment
                 }
-                else
-                {
-                    return "/var/lib/swarmops/upload/"; // production location on Debian installation  TODO: config file
-                }
+                return "/var/lib/swarmops/upload/"; // production location on Debian installation  TODO: config file
             }
         }
-        
-        protected void Page_Load(object sender, EventArgs e)
+
+        protected void Page_Load (object sender, EventArgs e)
         {
             string documentIdString = Request.QueryString["DocId"];
-            int documentId = Int32.Parse(documentIdString);
+            int documentId = Int32.Parse (documentIdString);
 
-            Document document = Document.FromIdentity(documentId);
+            Document document = Document.FromIdentity (documentId);
 
             //Orgid is needed to safely verify permission
             int orgId = 0; // initialize to invalid
@@ -42,67 +39,68 @@ namespace Swarmops.Pages.v5.Support
             switch (document.DocumentType)
             {
                 case DocumentType.FinancialTransaction:
-                    {/*
+                {
+/*
                         //TODO: Get the orgId from foreign object
                         if (this.CurrentAuthority.HasPermission(Permission.CanSeeEconomyDetails, orgId, -1, Authorization.Flag.ExactOrganization))
                         {
                             hasPermission = true;
                         }*/
-                    }
+                }
                     break;
                 case DocumentType.ExpenseClaim:
                 case DocumentType.InboundInvoice:
+                {
+                    int budgetId = 0;
+
+                    if (document.DocumentType == DocumentType.ExpenseClaim)
                     {
-
-                        int budgetId = 0;
-
-                        if (document.DocumentType == DocumentType.ExpenseClaim)
-                        {
-                            ExpenseClaim claim = (ExpenseClaim)document.ForeignObject;
-                            orgId = claim.Budget.OrganizationId;
-                            budgetId = claim.BudgetId;
-                        }
-                        else
-                        {
-                            InboundInvoice invoice = (InboundInvoice)document.ForeignObject;
-                            orgId = invoice.Budget.OrganizationId;
-                            budgetId = invoice.BudgetId;
-                        }
+                        ExpenseClaim claim = (ExpenseClaim) document.ForeignObject;
+                        orgId = claim.Budget.OrganizationId;
+                        budgetId = claim.BudgetId;
+                    }
+                    else
+                    {
+                        InboundInvoice invoice = (InboundInvoice) document.ForeignObject;
+                        orgId = invoice.Budget.OrganizationId;
+                        budgetId = invoice.BudgetId;
+                    }
 
 
-                        FinancialAccount budget = FinancialAccount.FromIdentity(budgetId);
+                    FinancialAccount budget = FinancialAccount.FromIdentity (budgetId);
 
-                        if (budget.OwnerPersonId == this.CurrentUser.Identity || budget.OwnerPersonId == 0)
-                        {
-                            hasPermission = true;
-                            break;
-                        }
+                    if (budget.OwnerPersonId == CurrentUser.Identity || budget.OwnerPersonId == 0)
+                    {
+                        hasPermission = true;
+                        break;
+                    }
 
-			// TODO: Security leak - check CurrentOrganization against Document's org
+                    // TODO: Security leak - check CurrentOrganization against Document's org
 
-                        if (this.CurrentUser.HasAccess (new Access(CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
-                        {
-                            hasPermission = true;
-                            break;
-                        }
-                        /*
+                    if (
+                        CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Financials,
+                            AccessType.Write)))
+                    {
+                        hasPermission = true;
+                    }
+                    /*
                         if (this.CurrentAuthority.HasPermission(Permission.CanSeeEconomyDetails, orgId, -1, Authorization.Flag.ExactOrganization))
                         {
                             hasPermission = true;
                             break;
                         }*/
 
-                        break;
-                    }
+                    break;
+                }
                 case DocumentType.PaperLetter:
-                    {
-                        PaperLetter letter = (PaperLetter)document.ForeignObject;
+                {
+                    PaperLetter letter = (PaperLetter) document.ForeignObject;
 
-                        if (letter.Recipient.Identity == this.CurrentUser.Identity)
-                        {
-                            hasPermission = true; // A letter to the viewer
-                        }
-                            /*
+                    if (letter.Recipient.Identity == CurrentUser.Identity)
+                    {
+                        hasPermission = true; // A letter to the viewer
+                    }
+                    /*
                         // Otherwise, are there overriding permissions, if not addressed to him/her?
 
                         else if (!letter.Personal)
@@ -137,55 +135,55 @@ namespace Swarmops.Pages.v5.Support
                                 hasPermission = true;
                             }
                         }*/
-                    }
+                }
                     break;
                 case DocumentType.PersonPhoto:
-                    {
-                        // These are public
+                {
+                    // These are public
 
-                        hasPermission = true;
-                    }
+                    hasPermission = true;
+                }
                     break;
             }
 
             if (!hasPermission)
             {
-                throw new Exception("Access is not allowed");
+                throw new Exception ("Access is not allowed");
             }
 
             string contentType = string.Empty;
 
             string fileNameLower = document.ClientFileName.ToLowerInvariant();
 
-            if (fileNameLower.EndsWith(".pdf"))
+            if (fileNameLower.EndsWith (".pdf"))
             {
                 contentType = MediaTypeNames.Application.Pdf;
             }
-            else if (fileNameLower.EndsWith(".png"))
+            else if (fileNameLower.EndsWith (".png"))
             {
                 contentType = "image/png"; // why isn't this in MediaTypeNames?
             }
-            else if (fileNameLower.EndsWith(".jpg"))
+            else if (fileNameLower.EndsWith (".jpg"))
             {
                 contentType = MediaTypeNames.Image.Jpeg;
             }
 
             string legacyMarker = string.Empty;
 
-            if (!File.Exists(StorageRoot + document.ServerFileName))
+            if (!File.Exists (StorageRoot + document.ServerFileName))
             {
                 legacyMarker = "legacy/"; // for some legacy installations, all older files are placed here
             }
 
             // TODO: If still doesn't exist, perhaps return a friendly error image instead?
 
-            if (!File.Exists(StorageRoot + legacyMarker + document.ServerFileName))
+            if (!File.Exists (StorageRoot + legacyMarker + document.ServerFileName))
             {
-                throw new FileNotFoundException(StorageRoot + legacyMarker + document.ServerFileName);
+                throw new FileNotFoundException (StorageRoot + legacyMarker + document.ServerFileName);
             }
 
             Response.ContentType = contentType + "; filename=" + document.ClientFileName;
-            Response.TransmitFile(StorageRoot + legacyMarker + document.ServerFileName);
+            Response.TransmitFile (StorageRoot + legacyMarker + document.ServerFileName);
         }
     }
 }

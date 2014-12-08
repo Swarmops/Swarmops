@@ -7,14 +7,16 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
 {
-    public class Documents: List<Document>
+    public class Documents : List<Document>
     {
+        private IHasIdentity sourceObject;
+
         public static Documents ForObject (IHasIdentity identifiableObject)
         {
             Documents newInstance =
-                FromArray(
-                    SwarmDb.GetDatabaseForReading().GetDocumentsForForeignObject(
-                        Document.GetDocumentTypeForObject(identifiableObject), identifiableObject.Identity));
+                FromArray (
+                    SwarmDb.GetDatabaseForReading().GetDocumentsForForeignObject (
+                        Document.GetDocumentTypeForObject (identifiableObject), identifiableObject.Identity));
 
             newInstance.sourceObject = identifiableObject;
 
@@ -23,35 +25,35 @@ namespace Swarmops.Logic.Support
 
         public static Documents FromArray (BasicDocument[] basicArray)
         {
-            var result = new Documents { Capacity = (basicArray.Length * 11 / 10) };
+            Documents result = new Documents {Capacity = (basicArray.Length*11/10)};
 
             foreach (BasicDocument basic in basicArray)
             {
-                result.Add(Document.FromBasic(basic));
+                result.Add (Document.FromBasic (basic));
             }
 
             return result;
         }
 
 
-        public Document Add (string serverFileName, string clientFileName, Int64 fileSize, 
+        public Document Add (string serverFileName, string clientFileName, Int64 fileSize,
             string description, Person uploader)
         {
             // This is kind of experimental. Is it a good idea to be able to write
             // Expenses.Documents.Add (...), or is it just stupid?
 
 
-            if (sourceObject == null)
+            if (this.sourceObject == null)
             {
-                throw new InvalidOperationException(
+                throw new InvalidOperationException (
                     "Cannot add documents to a Documents instance that was not created from an object.");
             }
 
-            Document newDocument = 
-                Document.Create(serverFileName, clientFileName, fileSize, description,
-                                   sourceObject, uploader);
+            Document newDocument =
+                Document.Create (serverFileName, clientFileName, fileSize, description,
+                    this.sourceObject, uploader);
 
-            base.Add(newDocument);
+            base.Add (newDocument);
 
             return newDocument;
         }
@@ -67,10 +69,8 @@ namespace Swarmops.Logic.Support
         {
             foreach (Document doc in this)
             {
-                doc.SetForeignObject(foreignObject);
+                doc.SetForeignObject (foreignObject);
             }
         }
-
-        private IHasIdentity sourceObject = null;
     }
 }

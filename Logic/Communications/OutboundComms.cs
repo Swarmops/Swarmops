@@ -4,11 +4,11 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Communications
 {
-    public class OutboundComms: PluralBase<OutboundComms,OutboundComm,BasicOutboundComm>
+    public class OutboundComms : PluralBase<OutboundComms, OutboundComm, BasicOutboundComm>
     {
         public static OutboundComms GetOpen()
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetOutboundComms(DatabaseCondition.OpenTrue));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetOutboundComms (DatabaseCondition.OpenTrue));
         }
     }
 }

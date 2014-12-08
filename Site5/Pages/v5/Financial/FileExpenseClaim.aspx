@@ -49,10 +49,13 @@
 
             isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorPurpose" />") && isValid;
 
+            var jsonData = {};
+            jsonData.amount = $('#<%=this.TextAmount.ClientID %>').val();
+
             $.ajax({
                 type: "POST",
-                url: "/Automation/FieldValidation.asmx/IsAmountValid",
-                data: "{'amount': '" + escape($('#<%=this.TextAmount.ClientID %>').val()) + "'}",
+                url: "/Automation/FieldValidation.aspx/IsAmountValid",
+                data: $.toJSON(jsonData),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,  // blocks until function returns - race conditions otherwise
@@ -68,7 +71,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Automation/FieldValidation.asmx/AreDocumentsUploaded",
+                url: "/Automation/FieldValidation.aspx/AreDocumentsUploaded",
                 data: "{'guidString': '<%=this.FileUpload.GuidString %>'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -101,6 +104,7 @@
 
 
 <asp:Content ID="Content5" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&#8203;<br/>

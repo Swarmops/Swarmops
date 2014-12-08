@@ -4,6 +4,20 @@ namespace Swarmops.Basic.Types
 {
     public class BasicReporter : IEmailPerson, IHasIdentity
     {
+        private readonly string email;
+        private readonly string name;
+        private readonly int reporterId;
+        private int[] mediaCategoryIds; // null if not loaded
+
+        #region IHasIdentity Members
+
+        public int Identity
+        {
+            get { return ReporterId; }
+        }
+
+        #endregion
+
         public BasicReporter (int reporterId, string name, string email, int[] mediaCategoryIds)
         {
             this.reporterId = reporterId;
@@ -13,21 +27,27 @@ namespace Swarmops.Basic.Types
         }
 
         public BasicReporter (BasicReporter original) :
-            this(original.reporterId, original.name, original.email, original.mediaCategoryIds)
+            this (original.reporterId, original.name, original.email, original.mediaCategoryIds)
         {
         }
 
         public BasicReporter()
         {
-            reporterId = 0;
-            name = string.Empty;
-            email = string.Empty;
-            mediaCategoryIds = new int[0];
+            this.reporterId = 0;
+            this.name = string.Empty;
+            this.email = string.Empty;
+            this.mediaCategoryIds = new int[0];
         }
 
         public int ReporterId
         {
             get { return this.reporterId; }
+        }
+
+        public int[] MediaCategoryIds
+        {
+            get { return this.mediaCategoryIds; }
+            set { this.mediaCategoryIds = value; } // this is an exception to the norm
         }
 
         public string Name
@@ -39,26 +59,5 @@ namespace Swarmops.Basic.Types
         {
             get { return this.email; }
         }
-
-        public int[] MediaCategoryIds
-        {
-            get { return this.mediaCategoryIds; }
-            set { this.mediaCategoryIds = value; } // this is an exception to the norm
-        }
-
-
-        private int reporterId;
-        private string name;
-        private string email;
-        private int[] mediaCategoryIds; // null if not loaded
-
-        #region IHasIdentity Members
-
-        public int Identity
-        {
-            get { return ReporterId; }
-        }
-
-        #endregion
     }
 }

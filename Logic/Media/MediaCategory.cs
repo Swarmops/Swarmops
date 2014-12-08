@@ -11,7 +11,7 @@ namespace Swarmops.Logic.Media
 
         public static MediaCategory FromName (string name)
         {
-            return new MediaCategory(SwarmDb.GetDatabaseForReading().GetMediaCategoryByName(name));
+            return new MediaCategory (SwarmDb.GetDatabaseForReading().GetMediaCategoryByName (name));
         }
 
         public static MediaCategory FromBasic (BasicMediaCategory basic)

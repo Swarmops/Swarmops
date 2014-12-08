@@ -9,7 +9,7 @@ namespace Swarmops.Logic.Media
     {
         public static MediaEntries FromArray (BasicMediaEntry[] basicArray)
         {
-            var result = new MediaEntries();
+            MediaEntries result = new MediaEntries();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicMediaEntry basic in basicArray)
@@ -60,14 +60,15 @@ namespace Swarmops.Logic.Media
 
         public static MediaEntries FromKeywordsSimplified (string[] keywords)
         {
-            var keywordIds = new List<int>();
+            List<int> keywordIds = new List<int>();
 
             foreach (string keyword in keywords)
             {
                 keywordIds.Add (SwarmDb.GetDatabaseForReading().GetMediaKeywordId (keyword));
             }
 
-            return FromArray (SwarmDb.GetDatabaseForReading().GetMediaEntriesForKeywordIdsSimplified (keywordIds.ToArray()));
+            return
+                FromArray (SwarmDb.GetDatabaseForReading().GetMediaEntriesForKeywordIdsSimplified (keywordIds.ToArray()));
         }
 
         public static int GetKeywordId (string keyword)

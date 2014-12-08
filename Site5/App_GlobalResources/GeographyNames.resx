@@ -117,9 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Country_DK" xml:space="preserve">
+    <value>Denmark</value>
+  </data>
+  <data name="Country_FI" xml:space="preserve">
+    <value>Finland</value>
+  </data>
+  <data name="Country_GH" xml:space="preserve">
+    <value>Ghana</value>
+  </data>
+  <data name="Country_NO" xml:space="preserve">
+    <value>Norway</value>
+  </data>
+  <data name="Country_SE" xml:space="preserve">
+    <value>Sweden</value>
+  </data>
   <data name="EasternEurope" xml:space="preserve">
     <value>Eastern Europe</value>
-    <comment>(East of former Iron Curtain)</comment>
+    <comment>(East of southern tip of Sweden, appx)</comment>
   </data>
   <data name="Europe" xml:space="preserve">
     <value>Europe</value>
@@ -132,9 +147,48 @@
     <value>Nordics</value>
     <comment>(Finland Denmark Norway Sweden Iceland)</comment>
   </data>
+  <data name="USA_EastNorthCentral" xml:space="preserve">
+    <value>East North Central</value>
+  </data>
+  <data name="USA_EastSouthCentral" xml:space="preserve">
+    <value>East South Central</value>
+  </data>
+  <data name="USA_MidAtlantic" xml:space="preserve">
+    <value>Mid-Atlantic</value>
+  </data>
+  <data name="USA_Midwest" xml:space="preserve">
+    <value>Midwest</value>
+  </data>
+  <data name="USA_Mountain" xml:space="preserve">
+    <value>Mountain</value>
+  </data>
+  <data name="USA_NewEngland" xml:space="preserve">
+    <value>New England</value>
+  </data>
+  <data name="USA_Northeast" xml:space="preserve">
+    <value>Northeast</value>
+  </data>
+  <data name="USA_Pacific" xml:space="preserve">
+    <value>Pacific</value>
+  </data>
+  <data name="USA_South" xml:space="preserve">
+    <value>South</value>
+  </data>
+  <data name="USA_SouthAtlantic" xml:space="preserve">
+    <value>South Atlantic</value>
+  </data>
+  <data name="USA_West" xml:space="preserve">
+    <value>West</value>
+  </data>
+  <data name="USA_WestNorthCentral" xml:space="preserve">
+    <value>West North Central</value>
+  </data>
+  <data name="USA_WestSouthCentral" xml:space="preserve">
+    <value>West South Central</value>
+  </data>
   <data name="WesternEurope" xml:space="preserve">
     <value>Western Europe</value>
-    <comment>(West of former Iron Curtain)</comment>
+    <comment>(West of southern tip of Sweden, appx)</comment>
   </data>
   <data name="World" xml:space="preserve">
     <value>World</value>

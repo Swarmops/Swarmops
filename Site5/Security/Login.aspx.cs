@@ -1,39 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
-using System.Threading;
 using System.Web;
 using System.Web.ExtensionMethods;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using System.Web.Services;
-using System.Web.SessionState;
 using System.Web.UI;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Types;
+using NBitcoin;
+using Resources;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
-using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
-using Swarmops.Site.Automation;
-using NBitcoin;
 
 namespace Swarmops.Pages.Security
 {
-
     public partial class Login : DataV5Base // "Data" because we don't have a master page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        private static string _buildIdentity;
 
+        protected void Page_Load (object sender, EventArgs e)
+        {
             // Check if this is the first run ever. If so, redirect to Init.
 
             if (!SwarmDb.Configuration.IsConfigured())
             {
-                Response.Redirect("/Pages/v5/Init/", true);
+                Response.Redirect ("/Pages/v5/Init/", true);
                 return;
             }
 
@@ -58,33 +52,32 @@ namespace Swarmops.Pages.Security
                         signature = Request.Params["signature"]
                     };
 
-                    ProcessRespondBitId(credentials, Response);
+                    ProcessRespondBitId (credentials, Response);
                     return;
                 }
-                else if (Request.ContentType == "application/json")
+                if (Request.ContentType == "application/json")
                 {
                     BitIdCredentials credentials =
-                        new JavaScriptSerializer().Deserialize<BitIdCredentials>(
-                            new StreamReader(Request.InputStream).ReadToEnd());
+                        new JavaScriptSerializer().Deserialize<BitIdCredentials> (
+                            new StreamReader (Request.InputStream).ReadToEnd());
                     // TODO: untested but seems to work. Throws?
 
-                    ProcessRespondBitId(credentials, Response);
+                    ProcessRespondBitId (credentials, Response);
                     return;
                 }
             }
 
 
-
             // If this is the Dev Sandbox, autologin
 
             if (Request.Url.Host == "dev.swarmops.com" &&
-                PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox) &&
+                PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox) &&
                 Request.QueryString["SuppressAutologin"] != "true")
             {
-                Response.AppendCookie(new HttpCookie("DashboardMessage",
-                    HttpUtility.UrlEncode(
-                        "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p><br/><br/>")));
-                FormsAuthentication.RedirectFromLoginPage("1,1", true);
+                Response.AppendCookie (new HttpCookie ("DashboardMessage",
+                    HttpUtility.UrlEncode (
+                        "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p>")));
+                FormsAuthentication.RedirectFromLoginPage ("1,1", true);
             }
 
             // Check for SSL and force it
@@ -94,9 +87,9 @@ namespace Swarmops.Pages.Security
             string cloudFlareVisitorScheme = Request.Headers["CF-Visitor"];
             bool cloudFlareSsl = false;
 
-            if (!string.IsNullOrEmpty(cloudFlareVisitorScheme))
+            if (!string.IsNullOrEmpty (cloudFlareVisitorScheme))
             {
-                if (cloudFlareVisitorScheme.Contains("\"scheme\":\"https\""))
+                if (cloudFlareVisitorScheme.Contains ("\"scheme\":\"https\""))
                 {
                     cloudFlareSsl = true;
                 }
@@ -106,13 +99,13 @@ namespace Swarmops.Pages.Security
 
             // Rewrite if applicable
 
-            if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl)
+            if (Request.Url.ToString().StartsWith ("http://") && !cloudFlareSsl)
                 // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") &&
-                    !Request.Url.ToString().StartsWith("http://localhost:"))
+                if (!Request.Url.ToString().StartsWith ("http://dev.swarmops.com/") &&
+                    !Request.Url.ToString().StartsWith ("http://localhost:"))
                 {
-                    Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
+                    Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
                 }
             }
 
@@ -125,64 +118,63 @@ namespace Swarmops.Pages.Security
             // Generate BitID tokens
 
             Guid guid = Guid.NewGuid();
-            string guidString = guid.ToString().Replace("-", "");
+            string guidString = guid.ToString().Replace ("-", "");
 
-            string nonce = guidString + DateTime.UtcNow.Ticks.ToString("x8");
+            string nonce = guidString + DateTime.UtcNow.Ticks.ToString ("x8");
 
             string hostName = Request.Url.Host;
 
             string bitIdUri = "bitid://" + hostName + "/Security/Login.aspx?x=" + nonce;
 
-            if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl)
+            if (Request.Url.ToString().StartsWith ("http://") && !cloudFlareSsl)
             {
                 bitIdUri += "&u=1";
             }
 
-            this.LiteralUri.Text = HttpUtility.UrlEncode(bitIdUri);
+            this.LiteralUri.Text = HttpUtility.UrlEncode (bitIdUri);
             this.LiteralNonce.Text = nonce;
 
-            GuidCache.Set(bitIdUri + "-Logon", "Unauth");
+            GuidCache.Set (bitIdUri + "-Logon", "Unauth");
 
             // TODO: need to NOT USE GOOGLE CHARTS for this but bring home a free QR package
 
             this.ImageBitIdQr.ImageUrl =
-                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" + HttpUtility.UrlEncode(bitIdUri);
+                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" + HttpUtility.UrlEncode (bitIdUri);
         }
 
 
-        protected void ProcessRespondBitId(BitIdCredentials credentials, HttpResponse response)
+        protected void ProcessRespondBitId (BitIdCredentials credentials, HttpResponse response)
         {
-            BitcoinAddress testAddress = new BitcoinAddress(credentials.address);
-            if (testAddress.VerifyMessage(credentials.uri, credentials.signature))
+            BitcoinAddress testAddress = new BitcoinAddress (credentials.address);
+            if (testAddress.VerifyMessage (credentials.uri, credentials.signature))
             {
                 // woooooo
 
                 try
                 {
-                    if (this.CurrentUser != null)
+                    if (CurrentUser != null)
                     {
-                        if ((string) GuidCache.Get(credentials.uri + "-Intent") == "Register")
+                        if ((string) GuidCache.Get (credentials.uri + "-Intent") == "Register")
                         {
                             // the currently logged-on user desires to register this address
                             // so set currentUser bitid
-                            this.CurrentUser.BitIdAddress = credentials.address;
+                            CurrentUser.BitIdAddress = credentials.address;
                             // Then go do something else, I guess? Flag somehow to original page
                             // that the op is completed?
-                            GuidCache.Set(credentials.uri + "-Intent", "Complete");
+                            GuidCache.Set (credentials.uri + "-Intent", "Complete");
                         }
                     }
 
-                    if (GuidCache.Get(credentials.uri + "-Logon") as string == "Unauth")
+                    if (GuidCache.Get (credentials.uri + "-Logon") as string == "Unauth")
                     {
-                        Person person = Person.FromBitIdAddress(credentials.address);
+                        Person person = Person.FromBitIdAddress (credentials.address);
 
                         // TODO: If above throws, show friendly "unknown wallet" message
 
                         // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
 
-                        GuidCache.Set(credentials.uri + "-LoggedOn",
-                            person.Identity.ToString(CultureInfo.InvariantCulture) + ",1,,BitId 2FA");
-
+                        GuidCache.Set (credentials.uri + "-LoggedOn",
+                            person.Identity.ToString (CultureInfo.InvariantCulture) + ",1,,BitId 2FA");
                     }
                 }
                 catch (Exception e)
@@ -194,8 +186,8 @@ namespace Swarmops.Pages.Security
 
                 response.StatusCode = 200;
                 response.SetJson();
-                response.Write("{\"address\":\"" + credentials.address + "\",\"signature\":\"" + credentials.signature +
-                               "\"}");
+                response.Write ("{\"address\":\"" + credentials.address + "\",\"signature\":\"" + credentials.signature +
+                                "\"}");
                 response.End();
             }
             else
@@ -205,30 +197,30 @@ namespace Swarmops.Pages.Security
         }
 
         [WebMethod]
-        public static bool TestLogin(string uriEncoded, string nonce)
+        public static bool TestLogin (string uriEncoded, string nonce)
         {
             try
             {
-                string uri = HttpUtility.UrlDecode(uriEncoded);
+                string uri = HttpUtility.UrlDecode (uriEncoded);
 
                 // a little sloppy nonce and uri checking rather than full parsing
                 // TODO: Full URI parse, the above is not enough
-                if (!uri.Contains(nonce) || !uri.Contains(HttpContext.Current.Request.Url.Host))
+                if (!uri.Contains (nonce) || !uri.Contains (HttpContext.Current.Request.Url.Host))
                 {
                     throw new ArgumentException();
                 }
 
-                string result = (string) GuidCache.Get(uri + "-LoggedOn");
-                if (string.IsNullOrEmpty(result))
+                string result = (string) GuidCache.Get (uri + "-LoggedOn");
+                if (string.IsNullOrEmpty (result))
                 {
                     return false;
                 }
 
                 // We have a successful login when we get here
 
-                GuidCache.Delete(uri + "-Logon");
-                GuidCache.Delete(uri + "-LoggedOn");
-                GuidCache.Set(nonce + "-Identity", result);
+                GuidCache.Delete (uri + "-Logon");
+                GuidCache.Delete (uri + "-LoggedOn");
+                GuidCache.Set (nonce + "-Identity", result);
 
                 return true;
             }
@@ -242,48 +234,46 @@ namespace Swarmops.Pages.Security
 
         [WebMethod]
         // ReSharper disable once InconsistentNaming
-        public static bool TestCredentials(string credentialsLogin, string credentialsPass, string credentials2FA, string logonUriEncoded)
+        public static bool TestCredentials (string credentialsLogin, string credentialsPass, string credentials2FA,
+            string logonUriEncoded)
         {
-            if (!string.IsNullOrEmpty(credentialsLogin.Trim()) && !string.IsNullOrEmpty(credentialsPass.Trim()))
+            if (!string.IsNullOrEmpty (credentialsLogin.Trim()) && !string.IsNullOrEmpty (credentialsPass.Trim()))
             {
-                string logonUri = HttpUtility.UrlDecode(logonUriEncoded);
+                string logonUri = HttpUtility.UrlDecode (logonUriEncoded);
 
                 try
                 {
-                    Person authenticatedPerson = Swarmops.Logic.Security.Authentication.Authenticate(credentialsLogin,
+                    Person authenticatedPerson = Authentication.Authenticate (credentialsLogin,
                         credentialsPass);
 
                     // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
 
-                    GuidCache.Set(logonUri + "-LoggedOn",
-                        authenticatedPerson.Identity.ToString(CultureInfo.InvariantCulture) + ",1,,AuthPlain");
+                    GuidCache.Set (logonUri + "-LoggedOn",
+                        authenticatedPerson.Identity.ToString (CultureInfo.InvariantCulture) + ",1,,AuthPlain");
                     return true;
                 }
                 catch (UnauthorizedAccessException)
                 {
                     return false;
                 }
-
             }
 
             return false;
         }
 
 
-
-        protected override void OnPreInit(EventArgs e)
+        protected override void OnPreInit (EventArgs e)
         {
-            base.OnPreInit(e);
+            base.OnPreInit (e);
         }
 
         private void Localize()
         {
-            this.LabelCurrentOrganizationName.Text = Resources.Global.Global_Organization;
-            this.LabelCurrentUserName.Text = Resources.Global.Title_Person_Generic;
-            this.LabelPageTitle.Text = Resources.Pages.Security.Login_PageTitle;
-            this.LabelPreferences.Text = Resources.Global.Global_NA;
-            this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
-            this.LabelSidebarHelpHeader.Text = Resources.Global.Sidebar_Help;
+            this.LabelCurrentOrganizationName.Text = Global.Global_Organization;
+            this.LabelCurrentUserName.Text = Participant.Localized (ParticipantTitle.Person, TitleVariant.Generic);
+            this.LabelPreferences.Text = Global.Global_NA;
+            this.LabelSidebarInfoHeader.Text = Global.Sidebar_Information;
+            this.LabelSidebarHelpHeader.Text = Global.Sidebar_Help;
             this.LabelSidebarInfoContent.Text = Resources.Pages.Security.Login_Info;
             this.LabelSidebarManualLoginHeader.Text = Resources.Pages.Security.Login_ManualLogin;
             this.LabelHeader.Text = Resources.Pages.Security.Login_Header;
@@ -292,11 +282,7 @@ namespace Swarmops.Pages.Security
             this.LiteralCredentialsPass.Text = Resources.Pages.Security.Login_Password;
             this.LiteralCredentials2FA.Text = Resources.Pages.Security.Login_GoogleAuthenticatorCode;
             this.LiteralLoginSuccess.Text = Resources.Pages.Security.Login_LoggingIn;
-
         }
-
-
-        private static string _buildIdentity;
 
 
         private string GetBuildIdentity()
@@ -308,7 +294,8 @@ namespace Swarmops.Pages.Security
                 try
                 {
                     using (
-                        StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/BuildIdentity.txt")))
+                        StreamReader reader = File.OpenText (HttpContext.Current.Request.MapPath ("~/BuildIdentity.txt"))
+                        )
                     {
                         _buildIdentity = "Build " + reader.ReadLine();
                     }
@@ -323,8 +310,7 @@ namespace Swarmops.Pages.Security
         }
 
 
-
-        protected void ButtonLogin_Click(object sender, EventArgs args)
+        protected void ButtonLogin_Click (object sender, EventArgs args)
         {
             // Check the host names and addresses again as a security measure - after all, we can be called from outside our intended script
             /*
@@ -346,6 +332,11 @@ namespace Swarmops.Pages.Security
             }*/
         }
 
+        protected void ButtonCheat_Click (object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
 
         // ReSharper disable InconsistentNaming
         [Serializable]
@@ -364,14 +355,7 @@ namespace Swarmops.Pages.Security
             public string address { get; set; }
             public string signature { get; set; }
         }
+
         // ReSharper restore InconsistentNaming
-
-
-        protected void ButtonCheat_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
-
-

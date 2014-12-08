@@ -23,13 +23,10 @@ namespace Swarmops.Logic.Swarm
         {
             get { return this.personIds.Length; }
         }
-        
+
         public int[] Identities
         {
-            get
-            {
-                return personIds;
-            }
+            get { return this.personIds; }
         }
 
         public People People
@@ -46,13 +43,13 @@ namespace Swarmops.Logic.Swarm
         {
             Geographies geographies = geography.GetTree();
 
-            return SwarmDb.GetDatabaseForReading().GetActivistCountForGeographies(geographies.Identities);
+            return SwarmDb.GetDatabaseForReading().GetActivistCountForGeographies (geographies.Identities);
         }
 
         public static Activists FromGeography (Geography geography)
         {
             Geographies geographies = geography.GetTree();
-            return new Activists(SwarmDb.GetDatabaseForReading().GetActivistPersonIds(geographies.Identities));
+            return new Activists (SwarmDb.GetDatabaseForReading().GetActivistPersonIds (geographies.Identities));
         }
 
         public void SendPhoneMessage (string message)
@@ -66,13 +63,13 @@ namespace Swarmops.Logic.Swarm
             foreach (Person person in this.people)
             {
                 // Check if we've already sent an sms to this phonenumber during this session
-                if (!dupeCheck.ContainsKey(person.Phone))
+                if (!dupeCheck.ContainsKey (person.Phone))
                 {
                     dupeCheck[person.Phone] = true;
 
                     try
                     {
-                        person.SendPhoneMessage(message);
+                        person.SendPhoneMessage (message);
                     }
                     catch (Exception)
                     {
@@ -87,16 +84,16 @@ namespace Swarmops.Logic.Swarm
 
             foreach (Person person in this.people)
             {
-                person.SendNotice(subject, body, 1);
+                person.SendNotice (subject, body, 1);
             }
         }
 
 
-        private void VerifyPeoplePopulated ()
+        private void VerifyPeoplePopulated()
         {
             if (this.people == null)
             {
-                this.people = People.FromIdentities(this.personIds);
+                this.people = People.FromIdentities (this.personIds);
             }
         }
     }

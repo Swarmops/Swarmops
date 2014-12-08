@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -6,9 +7,7 @@ namespace Swarmops.Logic.Support
 {
     public class Imagery
     {
-
-
-        static public Image Resize (Image sourceImage, int width, int height)
+        public static Image Resize (Image sourceImage, int width, int height)
         {
             // Code copied from CodeProject, http://www.codeproject.com/KB/GDI-plus/imageresize.aspx
 
@@ -23,37 +22,37 @@ namespace Swarmops.Logic.Support
             float nPercentW = 0;
             float nPercentH = 0;
 
-            nPercentW = ((float)width / (float)sourceWidth);
-            nPercentH = ((float)height / (float)sourceHeight);
-            if (nPercentH > nPercentW)  // modified: crop, don't pad
+            nPercentW = (width/(float) sourceWidth);
+            nPercentH = (height/(float) sourceHeight);
+            if (nPercentH > nPercentW) // modified: crop, don't pad
             {
                 nPercent = nPercentH;
-                destX = System.Convert.ToInt16((width -
-                              (sourceWidth * nPercent)) / 2);
+                destX = Convert.ToInt16 ((width -
+                                          (sourceWidth*nPercent))/2);
             }
             else
             {
                 nPercent = nPercentW;
-                destY = System.Convert.ToInt16((height -
-                              (sourceHeight * nPercent)) / 2);
+                destY = Convert.ToInt16 ((height -
+                                          (sourceHeight*nPercent))/2);
             }
 
-            int destWidth = (int)(sourceWidth * nPercent);
-            int destHeight = (int)(sourceHeight * nPercent);
+            int destWidth = (int) (sourceWidth*nPercent);
+            int destHeight = (int) (sourceHeight*nPercent);
 
-            Bitmap bmPhoto = new Bitmap(width, height,
-                              PixelFormat.Format24bppRgb);
-            bmPhoto.SetResolution(sourceImage.HorizontalResolution,
-                             sourceImage.VerticalResolution);
+            Bitmap bmPhoto = new Bitmap (width, height,
+                PixelFormat.Format24bppRgb);
+            bmPhoto.SetResolution (sourceImage.HorizontalResolution,
+                sourceImage.VerticalResolution);
 
-            Graphics grPhoto = Graphics.FromImage(bmPhoto);
-            grPhoto.Clear(Color.Red);
+            Graphics grPhoto = Graphics.FromImage (bmPhoto);
+            grPhoto.Clear (Color.Red);
             grPhoto.InterpolationMode =
-                    InterpolationMode.HighQualityBicubic;
+                InterpolationMode.HighQualityBicubic;
 
-            grPhoto.DrawImage(sourceImage,
-                new Rectangle(destX, destY, destWidth, destHeight),
-                new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
+            grPhoto.DrawImage (sourceImage,
+                new Rectangle (destX, destY, destWidth, destHeight),
+                new Rectangle (sourceX, sourceY, sourceWidth, sourceHeight),
                 GraphicsUnit.Pixel);
 
             grPhoto.Dispose();

@@ -1,21 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Net.Mail;
-using System.Text;
-using Swarmops.Basic;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Types;
-using Swarmops.Logic.Communications;
-using Swarmops.Logic.Financial;
-using Swarmops.Logic.Governance;
-using Swarmops.Logic.Security;
-using Swarmops.Logic.Special.Mail;
-using Swarmops.Logic.Structure;
-using Swarmops.Logic.Support;
-using Swarmops.Logic.Swarm;
-using Swarmops.Utility.Financial;
-using Swarmops.Utility.Mail;
+using System.IO;
 
 namespace Swarmops.Utility.BotCode
 {
@@ -23,8 +7,8 @@ namespace Swarmops.Utility.BotCode
     {
         // This entire class could use a tune-up. More event types will come, too.
 
-        [Obsolete("Deprecated for Swarmops. Way too much hardcoded. Rewrite, generalize, or scrap.", true)]
-        public static void Run ()
+        [Obsolete ("Deprecated for Swarmops. Way too much hardcoded. Rewrite, generalize, or scrap.", true)]
+        public static void Run()
         {
             /*
             BasicPWEvent[] events = PWEvents.GetTopUnprocessedEvents();
@@ -207,16 +191,13 @@ namespace Swarmops.Utility.BotCode
         }
 
 
-        internal static bool RunningOnLinux ()
+        internal static bool RunningOnLinux()
         {
-            if (System.IO.Path.DirectorySeparatorChar == '/')
+            if (Path.DirectorySeparatorChar == '/')
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         /*

@@ -15,11 +15,11 @@ namespace Swarmops.Logic.Support
             {
                 if (value == null)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetKeyValue(key, "-null-"); // TODO: Delete the key
+                    SwarmDb.GetDatabaseForWriting().SetKeyValue (key, "-null-"); // TODO: Delete the key
                 }
                 else
                 {
-                    SwarmDb.GetDatabaseForWriting().SetKeyValue(key, value);
+                    SwarmDb.GetDatabaseForWriting().SetKeyValue (key, value);
                 }
             }
         }

@@ -2,20 +2,23 @@
 
 namespace Swarmops.Basic.Types.Communications
 {
-    public class BasicOutboundCommRecipient: IHasIdentity
+    public class BasicOutboundCommRecipient : IHasIdentity
     {
-        public BasicOutboundCommRecipient (int outboundCommRecipientId, int outboundCommId, int personId, bool open, bool success, string failReason)
+        public BasicOutboundCommRecipient (int outboundCommRecipientId, int outboundCommId, int personId, bool open,
+            bool success, string failReason)
         {
-            this.OutboundCommRecipientId = outboundCommRecipientId;
-            this.OutboundCommId = outboundCommId;
-            this.PersonId = personId;
-            this.Open = open;
-            this.Success = success;
-            this.FailReason = failReason;
+            OutboundCommRecipientId = outboundCommRecipientId;
+            OutboundCommId = outboundCommId;
+            PersonId = personId;
+            Open = open;
+            Success = success;
+            FailReason = failReason;
         }
 
-        public BasicOutboundCommRecipient (BasicOutboundCommRecipient original):
-            this (original.OutboundCommRecipientId, original.OutboundCommId, original.PersonId, original.Open, original.Success, original.FailReason)
+        public BasicOutboundCommRecipient (BasicOutboundCommRecipient original) :
+            this (
+            original.OutboundCommRecipientId, original.OutboundCommId, original.PersonId, original.Open,
+            original.Success, original.FailReason)
         {
             // copy ctor
         }
@@ -31,7 +34,7 @@ namespace Swarmops.Basic.Types.Communications
 
         public int Identity
         {
-            get { return this.OutboundCommRecipientId; }
+            get { return OutboundCommRecipientId; }
         }
 
         #endregion

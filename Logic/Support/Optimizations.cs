@@ -4,7 +4,7 @@ using Swarmops.Database;
 namespace Swarmops.Logic.Support
 {
     /// <summary>
-    /// This class contains one-off optimizations that don't fit anywhere.
+    ///     This class contains one-off optimizations that don't fit anywhere.
     /// </summary>
     public class Optimizations
     {
@@ -18,9 +18,9 @@ namespace Swarmops.Logic.Support
             return SwarmDb.GetDatabaseForReading().GetGeographyVoterCounts();
         }
 
-        public static Dictionary<int,int> GetInternalPollVoteCountsPerGeography(int pollId)
+        public static Dictionary<int, int> GetInternalPollVoteCountsPerGeography (int pollId)
         {
-            return SwarmDb.GetDatabaseForReading().GetInternalPollVoteCountsPerGeography(pollId);
+            return SwarmDb.GetDatabaseForReading().GetInternalPollVoteCountsPerGeography (pollId);
         }
     }
 }

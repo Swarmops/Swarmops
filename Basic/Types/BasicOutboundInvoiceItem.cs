@@ -3,18 +3,20 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicOutboundInvoiceItem: IHasIdentity
+    public class BasicOutboundInvoiceItem : IHasIdentity
     {
-        public BasicOutboundInvoiceItem (int outboundInvoiceItemId, int outboundInvoiceId, string description, Int64 amountCents)
+        public BasicOutboundInvoiceItem (int outboundInvoiceItemId, int outboundInvoiceId, string description,
+            Int64 amountCents)
         {
-            this.OutboundInvoiceItemId = outboundInvoiceItemId;
-            this.OutboundInvoiceId = outboundInvoiceId;
-            this.Description = description;
-            this.AmountCents = amountCents;
+            OutboundInvoiceItemId = outboundInvoiceItemId;
+            OutboundInvoiceId = outboundInvoiceId;
+            Description = description;
+            AmountCents = amountCents;
         }
 
-        public BasicOutboundInvoiceItem(BasicOutboundInvoiceItem original): 
-            this (original.OutboundInvoiceItemId, original.OutboundInvoiceId, original.Description, original.AmountCents)
+        public BasicOutboundInvoiceItem (BasicOutboundInvoiceItem original) :
+            this (original.OutboundInvoiceItemId, original.OutboundInvoiceId, original.Description, original.AmountCents
+            )
         {
             // empty copy ctor
         }
@@ -26,7 +28,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.OutboundInvoiceItemId; }
+            get { return OutboundInvoiceItemId; }
         }
     }
 }

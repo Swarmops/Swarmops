@@ -9,22 +9,21 @@ namespace Swarmops.Utility.Special.Sweden
 {
     public class SupportMailReview
     {
-        public static void Run ()
+        public static void Run()
         {
             string lastIndexString = Persistence.Key["LastSupportMailIndex"];
 
             int lastIndex = 110000;
 
-            if (!String.IsNullOrEmpty(lastIndexString))
+            if (!String.IsNullOrEmpty (lastIndexString))
             {
-
-                if (!Int32.TryParse(lastIndexString, out lastIndex))
+                if (!Int32.TryParse (lastIndexString, out lastIndex))
                 {
-                    throw new Exception("Failed to read LastSupportMailIndex:" + lastIndexString);
+                    throw new Exception ("Failed to read LastSupportMailIndex:" + lastIndexString);
                 }
             }
 
-            SupportEmail[] emails = SupportDatabase.GetRecentOutgoingEmails(lastIndex);
+            SupportEmail[] emails = SupportDatabase.GetRecentOutgoingEmails (lastIndex);
 
             int highIndex = lastIndex;
 
@@ -44,30 +43,30 @@ namespace Swarmops.Utility.Special.Sweden
 
                 if (Persistence.Key["LastSupportMailIndex"] != highIndex.ToString())
                 {
-                    throw new Exception("Unable to commit new highwater mark to database in SupportMailReview.Run()");
+                    throw new Exception ("Unable to commit new highwater mark to database in SupportMailReview.Run()");
                 }
             }
 
             foreach (SupportEmail email in emails)
             {
                 // add extra words to avoid arrayindex exceptions
-                string[] stringTokens = (email.From + " unknown unknown").Split(' ');
+                string[] stringTokens = (email.From + " unknown unknown").Split (' ');
 
-                string subject = stringTokens[0].Substring(0, 1) + stringTokens[1].Substring(0, 1) + ", case " +
-                                 email.CaseId.ToString() + ": " + email.CaseTitle;
+                string subject = stringTokens[0].Substring (0, 1) + stringTokens[1].Substring (0, 1) + ", case " +
+                                 email.CaseId + ": " + email.CaseTitle;
 
                 MailMessage message = new MailMessage();
-                message.From = new MailAddress(Strings.MailSenderAddress, Strings.MailSenderName);
-                message.To.Add(new MailAddress("pp.se.mail@lists.pirateweb.net"));
+                message.From = new MailAddress (Strings.MailSenderAddress, Strings.MailSenderName);
+                message.To.Add (new MailAddress ("pp.se.mail@lists.pirateweb.net"));
                 message.Subject = subject;
                 message.Body = "Mail skickat av " + email.From + " till " + email.To + ":\r\n\r\n";
                 message.BodyEncoding = Encoding.UTF8;
 
                 message.Body += email.Body;
 
-                SmtpClient client = new SmtpClient(Config.SmtpHost, Config.SmtpPort);
+                SmtpClient client = new SmtpClient (Config.SmtpHost, Config.SmtpPort);
                 client.Credentials = null;
-                client.Send(message);
+                client.Send (message);
             }
         }
     }

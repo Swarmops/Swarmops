@@ -2,15 +2,15 @@
 
 namespace Swarmops.Basic.Types.Financial
 {
-    public class BasicFinancialTransactionTagSetType: IHasIdentity
+    public class BasicFinancialTransactionTagSetType : IHasIdentity
     {
         public BasicFinancialTransactionTagSetType (int financialTransactionTagSetTypeId, string resourceName)
         {
-            this.FinancialTransactionTagSetTypeId = financialTransactionTagSetTypeId;
-            this.ResourceName = resourceName;
+            FinancialTransactionTagSetTypeId = financialTransactionTagSetTypeId;
+            ResourceName = resourceName;
         }
 
-        public BasicFinancialTransactionTagSetType (BasicFinancialTransactionTagSetType original):
+        public BasicFinancialTransactionTagSetType (BasicFinancialTransactionTagSetType original) :
             this (original.FinancialTransactionTagSetTypeId, original.ResourceName)
         {
             // copy ctor
@@ -19,10 +19,12 @@ namespace Swarmops.Basic.Types.Financial
         public int FinancialTransactionTagSetTypeId { get; private set; }
         public string ResourceName { get; private set; }
 
-
         #region Implementation of IHasIdentity
 
-        public int Identity { get { return this.FinancialTransactionTagSetTypeId; } }
+        public int Identity
+        {
+            get { return FinancialTransactionTagSetTypeId; }
+        }
 
         #endregion
     }

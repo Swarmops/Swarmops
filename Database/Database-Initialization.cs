@@ -8,7 +8,7 @@ namespace Swarmops.Database
     {
         // These functions are bloody dangerous, mmmkay?
 
-        public void ExecuteAdminCommand(string sqlSequence)
+        public void ExecuteAdminCommand (string sqlSequence)
         {
             // TODO: Verify that we're in admin mode
 
@@ -16,7 +16,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand(sqlSequence, connection);
+                DbCommand command = GetDbCommand (sqlSequence, connection);
                 command.CommandType = CommandType.Text;
 
                 command.ExecuteNonQuery();
@@ -31,7 +31,7 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand(sqlSequence, connection);
+                DbCommand command = GetDbCommand (sqlSequence, connection);
                 command.CommandType = CommandType.Text;
 
                 object result = command.ExecuteScalar();
@@ -41,9 +41,8 @@ namespace Swarmops.Database
                     return 0;
                 }
 
-                return Convert.ToInt32(result);
+                return Convert.ToInt32 (result);
             }
         }
-
     }
 }

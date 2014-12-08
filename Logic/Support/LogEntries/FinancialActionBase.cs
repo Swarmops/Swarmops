@@ -3,13 +3,8 @@
 namespace Swarmops.Logic.Support.LogEntries
 {
     [Serializable]
-    public class FinancialActionBase: LogEntryBase<FinancialActionBase>
+    public class FinancialActionBase : LogEntryBase<FinancialActionBase>
     {
-        public FinancialActionBase()
-        {
-            // necessary for serialization
-        }
-        
         public int FinancialAccountId { get; set; }
         public string FinancialAccountName { get; set; }
         public int ActingPersonId { get; set; }
@@ -20,6 +15,9 @@ namespace Swarmops.Logic.Support.LogEntries
         public string Description { get; set; }
         public int OwnerPersonId { get; set; }
         public string OwnerPersonName { get; set; }
+        /// <summary>
+        /// Always in UTC
+        /// </summary>
         public DateTime DateTime { get; set; }
     }
 }

@@ -19,10 +19,13 @@
 
             isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorPurpose" />") && isValid;
 
+            var jsonData = {};
+            jsonData.amount = $('#<%=this.TextAmount.ClientID %>').val();
+
             $.ajax({
                 type: "POST",
-                url: "/Automation/FieldValidation.asmx/IsAmountValid",
-                data: "{'amount': '" + escape($('#<%=this.TextAmount.ClientID %>').val()) + "'}",
+                url: "/Automation/FieldValidation.aspx/IsAmountValid",
+                data: $.toJSON(jsonData),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,  // blocks until function returns - race conditions otherwise
@@ -30,7 +33,7 @@
                     if (msg.d != true) {
                         isValid = false;
                         alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
-                        $('#<%=this.TextAmount.ClientID %>').focus();
+                        $('#<%=this.TextAmount.ClientID %>').addClass("entryError").focus();
                     }
                 }
             });
@@ -41,6 +44,7 @@
         function validateTextField (fieldId, message) {
             if ($(fieldId).val().length == 0) {
                 alertify.error(message);
+                $(fieldId).addClass("entryError");
                 $(fieldId).focus();
                 return false;
             }
@@ -53,6 +57,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
+    <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
     <div class="entryFields">
         <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&#8203;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&#8203;<br/>

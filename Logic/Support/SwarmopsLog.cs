@@ -9,15 +9,15 @@ namespace Swarmops.Logic.Support
         {
             string logEntryClass = logEntry.GetType().ToString();
 
-            if (logEntryClass.StartsWith("Swarmops.Logic.Support.LogEntries."))
+            if (logEntryClass.StartsWith ("Swarmops.Logic.Support.LogEntries."))
             {
-                logEntryClass = logEntryClass.Substring("Swarmops.Logic.Support.LogEntries.".Length);
+                logEntryClass = logEntryClass.Substring ("Swarmops.Logic.Support.LogEntries.".Length);
             }
 
-            int logEntryId = SwarmDb.GetDatabaseForWriting().CreateSwarmopsLogEntry(
+            int logEntryId = SwarmDb.GetDatabaseForWriting().CreateSwarmopsLogEntry (
                 person != null ? person.Identity : 0, logEntryClass, logEntry.ToXml());
 
-            return SwarmopsLogEntry.FromIdentityAggressive(logEntryId);
+            return SwarmopsLogEntry.FromIdentityAggressive (logEntryId);
         }
     }
 }

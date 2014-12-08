@@ -14,7 +14,7 @@ namespace Swarmops.Logic.Support
 
             if (HttpContext.Current != null)
             {
-                debug += "Application Directory: " + HttpContext.Current.Server.MapPath("~/Test.mdb") + "\r\n";
+                debug += "Application Directory: " + HttpContext.Current.Server.MapPath ("~/Test.mdb") + "\r\n";
             }
 
             return debug;

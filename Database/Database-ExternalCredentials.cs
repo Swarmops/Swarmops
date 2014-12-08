@@ -13,18 +13,19 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT ExternalCredentialId,ServiceName,Login,Password From ExternalCredentials WHERE ServiceName='" + serviceName.Replace("'", "''") + "'",
+                    GetDbCommand (
+                        "SELECT ExternalCredentialId,ServiceName,Login,Password From ExternalCredentials WHERE ServiceName='" +
+                        serviceName.Replace ("'", "''") + "'",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadExternalCredentialFromDataReader(reader);
+                        return ReadExternalCredentialFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Service Name");
+                    throw new ArgumentException ("Unknown Service Name");
                 }
             }
         }
@@ -32,12 +33,12 @@ namespace Swarmops.Database
 
         private BasicExternalCredential ReadExternalCredentialFromDataReader (DbDataReader reader)
         {
-            int externalCredentialId = reader.GetInt32(0);
-            string serviceName = reader.GetString(1);
-            string login = reader.GetString(2);
-            string password = reader.GetString(3);
+            int externalCredentialId = reader.GetInt32 (0);
+            string serviceName = reader.GetString (1);
+            string login = reader.GetString (2);
+            string password = reader.GetString (3);
 
-            return new BasicExternalCredential(externalCredentialId, serviceName, login, password);
+            return new BasicExternalCredential (externalCredentialId, serviceName, login, password);
         }
     }
 }

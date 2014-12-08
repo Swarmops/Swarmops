@@ -8,77 +8,72 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
         #region Database field reading
 
         private const string paymentFieldSequence =
-            " PaymentId,PaymentGroupId,AmountCents,Reference,FromAccount," +   // 0-4
-            "PaymentKey,HasImage,OutboundInvoiceId " +                           // 5-7
+            " PaymentId,PaymentGroupId,AmountCents,Reference,FromAccount," + // 0-4
+            "PaymentKey,HasImage,OutboundInvoiceId " + // 5-7
             "FROM Payments ";
-
-        private static BasicPayment ReadPaymentFromDataReader(IDataRecord reader)
-        {
-            int paymentId = reader.GetInt32(0);
-            int paymentGroupId = reader.GetInt32(1);
-            Int64 amountCents = reader.GetInt64(2);
-            string reference = reader.GetString(3);
-            string fromAccount = reader.GetString(4);
-            string key = reader.GetString(5);
-            bool hasImage = reader.GetBoolean(6);
-            int outboundInvoiceId = reader.GetInt32(7);
-
-            return new BasicPayment(paymentId, paymentGroupId, amountCents, reference, fromAccount, key, hasImage, outboundInvoiceId);
-        }
 
         private const string paymentInformationFieldSequence =
             " PaymentInformationId,PaymentId,PaymentInformationTypes.Name,Data " + // 0-4
             " FROM PaymentInformation JOIN PaymentInformationTypes USING (PaymentInformationTypeId) ";
 
-        private static BasicPaymentInformation ReadPaymentInformationFromDataReader (IDataRecord reader)
+        private static BasicPayment ReadPaymentFromDataReader (IDataRecord reader)
         {
-            string dataTypeString = reader.GetString(2);
-            string data = reader.GetString(3);
+            int paymentId = reader.GetInt32 (0);
+            int paymentGroupId = reader.GetInt32 (1);
+            Int64 amountCents = reader.GetInt64 (2);
+            string reference = reader.GetString (3);
+            string fromAccount = reader.GetString (4);
+            string key = reader.GetString (5);
+            bool hasImage = reader.GetBoolean (6);
+            int outboundInvoiceId = reader.GetInt32 (7);
 
-            PaymentInformationType dataType =
-                (PaymentInformationType) Enum.Parse(typeof (PaymentInformationType), dataTypeString, true);
-
-            return new BasicPaymentInformation(dataType, data);
+            return new BasicPayment (paymentId, paymentGroupId, amountCents, reference, fromAccount, key, hasImage,
+                outboundInvoiceId);
         }
 
+        private static BasicPaymentInformation ReadPaymentInformationFromDataReader (IDataRecord reader)
+        {
+            string dataTypeString = reader.GetString (2);
+            string data = reader.GetString (3);
+
+            PaymentInformationType dataType =
+                (PaymentInformationType) Enum.Parse (typeof (PaymentInformationType), dataTypeString, true);
+
+            return new BasicPaymentInformation (dataType, data);
+        }
 
         #endregion
 
-
         #region Database record reading -- SELECT clauses
 
-
-        public BasicPayment GetPayment(int paymentId)
+        public BasicPayment GetPayment (int paymentId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT" + paymentFieldSequence +
-                    "WHERE PaymentId=" + paymentId.ToString(),
-                                 connection);
+                    GetDbCommand ("SELECT" + paymentFieldSequence +
+                                  "WHERE PaymentId=" + paymentId,
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadPaymentFromDataReader(reader);
+                        return ReadPaymentFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("No such PaymentId:" + paymentId.ToString());
+                    throw new ArgumentException ("No such PaymentId:" + paymentId);
                 }
             }
-
         }
 
 
-
-        public BasicPayment[] GetPayments(params object[] conditions)
+        public BasicPayment[] GetPayments (params object[] conditions)
         {
             List<BasicPayment> result = new List<BasicPayment>();
 
@@ -87,14 +82,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + paymentFieldSequence + ConstructWhereClause("Payments", conditions), connection);
+                    GetDbCommand (
+                        "SELECT" + paymentFieldSequence + ConstructWhereClause ("Payments", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPaymentFromDataReader(reader));
+                        result.Add (ReadPaymentFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -103,7 +98,7 @@ namespace Swarmops.Database
         }
 
 
-        public BasicPaymentInformation[] GetPaymentInformation(int paymentId)
+        public BasicPaymentInformation[] GetPaymentInformation (int paymentId)
         {
             List<BasicPaymentInformation> result = new List<BasicPaymentInformation>();
 
@@ -112,14 +107,14 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + paymentInformationFieldSequence + " WHERE PaymentId=" + paymentId.ToString(), connection);
+                    GetDbCommand (
+                        "SELECT" + paymentInformationFieldSequence + " WHERE PaymentId=" + paymentId, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadPaymentInformationFromDataReader(reader));
+                        result.Add (ReadPaymentInformationFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -127,76 +122,76 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
-
 
         #region Creation and manipulation -- stored procedures
 
-
-        public int CreatePayment(int paymentGroupId, double amount, string reference, string fromAccount, string key, bool hasImage, int outboundInvoiceId)
+        public int CreatePayment (int paymentGroupId, double amount, string reference, string fromAccount, string key,
+            bool hasImage, int outboundInvoiceId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePayment", connection);
+                DbCommand command = GetDbCommand ("CreatePayment", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "paymentGroupId", paymentGroupId);
-                AddParameterWithName(command, "amount", amount);
-                AddParameterWithName(command, "reference", reference);
-                AddParameterWithName(command, "fromAccount", fromAccount);
-                AddParameterWithName(command, "paymentKey", key);
-                AddParameterWithName(command, "hasImage", hasImage);
-                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
+                AddParameterWithName (command, "paymentGroupId", paymentGroupId);
+                AddParameterWithName (command, "amount", amount);
+                AddParameterWithName (command, "reference", reference);
+                AddParameterWithName (command, "fromAccount", fromAccount);
+                AddParameterWithName (command, "paymentKey", key);
+                AddParameterWithName (command, "hasImage", hasImage);
+                AddParameterWithName (command, "outboundInvoiceId", outboundInvoiceId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int CreatePayment(int paymentGroupId, Int64 amountCents, string reference, string fromAccount, string key, bool hasImage, int outboundInvoiceId)
+        public int CreatePayment (int paymentGroupId, Int64 amountCents, string reference, string fromAccount,
+            string key,
+            bool hasImage, int outboundInvoiceId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePaymentPrecise", connection);
+                DbCommand command = GetDbCommand ("CreatePaymentPrecise", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "paymentGroupId", paymentGroupId);
-                AddParameterWithName(command, "amountCents", amountCents);
-                AddParameterWithName(command, "reference", reference);
-                AddParameterWithName(command, "fromAccount", fromAccount);
-                AddParameterWithName(command, "paymentKey", key);
-                AddParameterWithName(command, "hasImage", hasImage);
-                AddParameterWithName(command, "outboundInvoiceId", outboundInvoiceId);
+                AddParameterWithName (command, "paymentGroupId", paymentGroupId);
+                AddParameterWithName (command, "amountCents", amountCents);
+                AddParameterWithName (command, "reference", reference);
+                AddParameterWithName (command, "fromAccount", fromAccount);
+                AddParameterWithName (command, "paymentKey", key);
+                AddParameterWithName (command, "hasImage", hasImage);
+                AddParameterWithName (command, "outboundInvoiceId", outboundInvoiceId);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
 
-        public int CreatePaymentInformation(int paymentId, PaymentInformationType type, string data)
+        public int CreatePaymentInformation (int paymentId, PaymentInformationType type, string data)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreatePaymentInformation", connection);
+                DbCommand command = GetDbCommand ("CreatePaymentInformation", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "paymentId", paymentId);
-                AddParameterWithName(command, "dataTypeString", type.ToString());
-                AddParameterWithName(command, "data", data);
+                AddParameterWithName (command, "paymentId", paymentId);
+                AddParameterWithName (command, "dataTypeString", type.ToString());
+                AddParameterWithName (command, "data", data);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
         [Obsolete ("This should never be called, ever: it ruins trackability.")]
-        public void DeletePayment(int paymentId)
+        public void DeletePayment (int paymentId)
         {
             // This function is necessary since the Swedish bank system only allows for a dupe check AFTER all payments
             // have been communicated, so they are created as data is received. If the data was a dupe, it is therefore
@@ -208,18 +203,16 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("DeletePayment", connection);
+                DbCommand command = GetDbCommand ("DeletePayment", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "paymentId", paymentId);
+                AddParameterWithName (command, "paymentId", paymentId);
 
                 command.ExecuteNonQuery();
             }
         }
 
-
         #endregion
-
 
         #region Dead template code
 
@@ -564,7 +557,5 @@ namespace Swarmops.Database
         */
 
         #endregion
-
-
     }
 }

@@ -5,8 +5,25 @@ namespace Swarmops.Basic.Types
 {
     public class BasicMediaEntry : IHasIdentity
     {
+        private readonly DateTime dateTime;
+        private readonly int id;
+        private readonly bool isBlog;
+        private readonly int keywordId;
+        private readonly string mediaName;
+        private readonly string title;
+        private readonly string url;
+
+        #region IHasIdentity Members
+
+        public int Identity
+        {
+            get { return Id; }
+        }
+
+        #endregion
+
         public BasicMediaEntry (int id, int keywordId, string mediaName, bool isBlog, string title, string url,
-                                DateTime dateTime)
+            DateTime dateTime)
         {
             this.id = id;
             this.keywordId = keywordId;
@@ -18,30 +35,30 @@ namespace Swarmops.Basic.Types
         }
 
         public BasicMediaEntry (BasicMediaEntry original)
-            : this(
+            : this (
                 original.id, original.keywordId, original.mediaName, original.isBlog, original.title, original.url,
                 original.dateTime)
         {
         }
 
         public BasicMediaEntry()
-            : this(0, 0, string.Empty, false, string.Empty, string.Empty, DateTime.MinValue)
+            : this (0, 0, string.Empty, false, string.Empty, string.Empty, DateTime.MinValue)
         {
         }
 
         public int Id
         {
-            get { return id; }
+            get { return this.id; }
         }
 
         public int KeywordId
         {
-            get { return keywordId; }
+            get { return this.keywordId; }
         }
 
         public string Title
         {
-            get { return title; }
+            get { return this.title; }
         }
 
         public string MediaName
@@ -52,34 +69,17 @@ namespace Swarmops.Basic.Types
 
         public string Url
         {
-            get { return url; }
+            get { return this.url; }
         }
 
         public DateTime DateTime
         {
-            get { return dateTime; }
+            get { return this.dateTime; }
         }
 
         public bool IsBlog
         {
             get { return this.isBlog; }
         }
-
-        private int id;
-        private DateTime dateTime;
-        private string title;
-        private string mediaName;
-        private string url;
-        private int keywordId;
-        private bool isBlog;
-
-        #region IHasIdentity Members
-
-        public int Identity
-        {
-            get { return Id; }
-        }
-
-        #endregion
     }
 }

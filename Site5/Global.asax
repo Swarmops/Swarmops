@@ -1,38 +1,37 @@
 <%@ Application Language="C#" %>
-<%@ Import Namespace="System.Collections.Generic" %>
 
 
 <script runat="server">
 
-    private void Application_Start (object sender, EventArgs e)
+    private void Application_Start(object sender, EventArgs e)
     {
         // Code that runs on application startup
 
         // Set supported cultures
-        HttpContext.Current.Application["Cultures"] = new string[] { "sv-SE", "en-US", "en-GB", "de-DE", "de-AT", "fi-FI" };
+        HttpContext.Current.Application["Cultures"] = new[] {"sv-SE", "en-US", "en-GB", "de-DE", "de-AT", "fi-FI"};
 
         HttpContext.Current.Application["UserRoleCache"] = new Dictionary<int, string[]>();
     }
 
-    private void Application_End (object sender, EventArgs e)
+    private void Application_End(object sender, EventArgs e)
     {
         //  Code that runs on application shutdown
     }
 
-    private void Application_Error (object sender, EventArgs e)
+    private void Application_Error(object sender, EventArgs e)
     {
         // Code that runs when an unhandled error occurs
     }
 
 
-    protected void Application_BeginRequest (Object sender, EventArgs e)
+    protected void Application_BeginRequest(Object sender, EventArgs e)
     {
         // The culture was once set here for localization, but Mono resets CultureInfo before entering the page cycle.
         // Setting the CultureInfo has been moved to PageV5Base.OnPreInit().
     }
 
 
-    protected void Application_AuthenticateRequest (object sender, EventArgs e)
+    protected void Application_AuthenticateRequest(object sender, EventArgs e)
     {
         // Set default roles (none)
 
@@ -59,23 +58,21 @@
             //// TODO: Set CurrentUser to new object, with roles
         }
         */
-
     }
 
-    private void Session_Start (object sender, EventArgs e)
+    private void Session_Start(object sender, EventArgs e)
     {
         // Code that runs when a new session is started
-        
-        // This part really should have been in Application_Start, but it doesn't fire for some reason
 
+        // This part really should have been in Application_Start, but it doesn't fire for some reason
     }
 
-    private void Session_End (object sender, EventArgs e)
+    private void Session_End(object sender, EventArgs e)
     {
         // Code that runs when a session ends. 
         // Note: The Session_End event is raised only when the sessionstate mode
         // is set to InProc in the Web.config file. If session mode is set to StateServer 
         // or SQLServer, the event is not raised.
     }
-</script>
 
+</script>

@@ -6,11 +6,9 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-
-
         #region Record reading - SELECT statements
 
-        public double GetSalaryTaxLevel(int countryId, int taxLevelId, int grossSalary)
+        public double GetSalaryTaxLevel (int countryId, int taxLevelId, int grossSalary)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -21,14 +19,16 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        String.Format("SELECT Tax,Year FROM SalaryTaxLevels WHERE CountryId={0} AND TaxLevelId={1} AND BracketLow<={2} AND Year<={3} ORDER BY BracketLow Desc LIMIT 1", countryId, taxLevelId, grossSalary, thisYear), connection);
+                    GetDbCommand (
+                        String.Format (
+                            "SELECT Tax,Year FROM SalaryTaxLevels WHERE CountryId={0} AND TaxLevelId={1} AND BracketLow<={2} AND Year<={3} ORDER BY BracketLow Desc LIMIT 1",
+                            countryId, taxLevelId, grossSalary, thisYear), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        int year = reader.GetInt32(1);
+                        int year = reader.GetInt32 (1);
 
                         if (thisYear != year)
                         {
@@ -36,7 +36,7 @@ namespace Swarmops.Database
                             // TODO: a very limited time, but not in a sustained situation
                         }
 
-                        int taxLevel = reader.GetInt32(0);
+                        int taxLevel = reader.GetInt32 (0);
 
                         if (taxLevel < 0)
                         {
@@ -46,16 +46,13 @@ namespace Swarmops.Database
                         return taxLevel;
                     }
 
-                    throw new ArgumentException("Can't find tax rate for level/country: " + taxLevelId + "/" + countryId);
+                    throw new ArgumentException ("Can't find tax rate for level/country: " + taxLevelId + "/" +
+                                                 countryId);
                 }
             }
         }
 
-
-
         #endregion
-
-
 
         #region Creation and manipulation - stored procedures
 
@@ -65,14 +62,14 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateSalaryTaxLevel", connection);
+                DbCommand command = GetDbCommand ("CreateSalaryTaxLevel", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "countryId", countryId);
-                AddParameterWithName(command, "taxLevelId", taxLevelId);
-                AddParameterWithName(command, "bracketLow", bracketLow);
-                AddParameterWithName(command, "year", year);
-                AddParameterWithName(command, "tax", tax < 1.0 ? (int)(-tax * 10000) : (int)tax);
+                AddParameterWithName (command, "countryId", countryId);
+                AddParameterWithName (command, "taxLevelId", taxLevelId);
+                AddParameterWithName (command, "bracketLow", bracketLow);
+                AddParameterWithName (command, "year", year);
+                AddParameterWithName (command, "tax", tax < 1.0 ? (int) (-tax*10000) : (int) tax);
 
                 command.ExecuteNonQuery();
             }
@@ -86,19 +83,15 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("DeleteTaxLevels", connection);
+                DbCommand command = GetDbCommand ("DeleteTaxLevels", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "countryId", countryId);
+                AddParameterWithName (command, "countryId", countryId);
 
                 command.ExecuteNonQuery();
             }
         }
 
-
-
         #endregion
-
     }
-
 }

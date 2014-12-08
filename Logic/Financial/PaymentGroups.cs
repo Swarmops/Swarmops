@@ -5,23 +5,21 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
-    public class PaymentGroups: PluralBase<PaymentGroups,PaymentGroup,BasicPaymentGroup>
+    public class PaymentGroups : PluralBase<PaymentGroups, PaymentGroup, BasicPaymentGroup>
     {
         public static PaymentGroups ForOrganization (Organization organization)
         {
-            return ForOrganization(organization, false);
+            return ForOrganization (organization, false);
         }
 
         public static PaymentGroups ForOrganization (Organization organization, bool includeClosed)
         {
             if (includeClosed)
             {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetPaymentGroups(organization));
+                return FromArray (SwarmDb.GetDatabaseForReading().GetPaymentGroups (organization));
             }
-            else
-            {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetPaymentGroups(organization, DatabaseCondition.OpenTrue));
-            }
+            return
+                FromArray (SwarmDb.GetDatabaseForReading().GetPaymentGroups (organization, DatabaseCondition.OpenTrue));
         }
     }
 }

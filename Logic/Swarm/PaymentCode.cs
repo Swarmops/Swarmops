@@ -8,34 +8,34 @@ namespace Swarmops.Logic.Swarm
     public class PaymentCode : BasicPaymentCode
     {
         private PaymentCode (BasicPaymentCode basic)
-            : base(basic)
+            : base (basic)
         {
             // empty
         }
 
         public static PaymentCode CreateFromPhone (string phoneNumber)
         {
-            return Create(phoneNumber, 0);
+            return Create (phoneNumber, 0);
         }
 
         public static PaymentCode CreateFromPerson (Person person)
         {
-            return CreateFromPerson(person.Identity);
+            return CreateFromPerson (person.Identity);
         }
 
         public static PaymentCode CreateFromPerson (int personId)
         {
-            return Create(string.Empty, personId);
+            return Create (string.Empty, personId);
         }
 
         public static PaymentCode FromBasic (BasicPaymentCode basic)
         {
-            return new PaymentCode(basic);
+            return new PaymentCode (basic);
         }
 
         public static PaymentCode FromCode (string paymentCode)
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetPaymentCode(paymentCode));
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetPaymentCode (paymentCode));
         }
 
 
@@ -45,13 +45,13 @@ namespace Swarmops.Logic.Swarm
 
             while (!success)
             {
-                string randomCode = CreateRandomCode(5);
+                string randomCode = CreateRandomCode (5);
 
                 try
                 {
-                    int codeId = SwarmDb.GetDatabaseForWriting().CreatePaymentCode(randomCode, phoneNumber, personId);
+                    int codeId = SwarmDb.GetDatabaseForWriting().CreatePaymentCode (randomCode, phoneNumber, personId);
                     success = true;
-                    return FromBasic(SwarmDb.GetDatabaseForReading().GetPaymentCode(randomCode));
+                    return FromBasic (SwarmDb.GetDatabaseForReading().GetPaymentCode (randomCode));
                 }
                 catch (Exception)
                 {
@@ -67,17 +67,17 @@ namespace Swarmops.Logic.Swarm
 
         public void Claim (Person claimingPerson)
         {
-            Claim(claimingPerson.Identity);
+            Claim (claimingPerson.Identity);
         }
 
         public void Claim (int claimingPersonId)
         {
-            SwarmDb.GetDatabaseForWriting().ClaimPaymentCode(Identity, claimingPersonId);
+            SwarmDb.GetDatabaseForWriting().ClaimPaymentCode (Identity, claimingPersonId);
         }
 
         private static string CreateRandomCode (int length)
         {
-            return Authentication.CreateRandomPassword(length);
+            return Authentication.CreateRandomPassword (length);
         }
     }
 }

@@ -1,30 +1,31 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
+using System.Threading;
 using System.Web;
 using Swarmops.Basic;
 using Swarmops.Logic.Media;
 
 namespace Swarmops.Utility.Mail
 {
-
     /// <summary>
-    /// This class i deprecated. Pressreleases are sent using the Typed template mechanism.
+    ///     This class i deprecated. Pressreleases are sent using the Typed template mechanism.
     /// </summary>
     internal class PressReleaseTransmitter
     {
         public static void Send (string title, bool sendToAll, MediaCategories categories, string mailText,
-                                 Reporters reporters)
+            Reporters reporters)
         {
             string directory = "content" + Path.DirectorySeparatorChar + "pressreleasetemplate-1";
 
             string htmlTemplate = "Failed to read HTML mail template.";
 
             using (
-                StreamReader reader = new StreamReader(directory + Path.DirectorySeparatorChar + "template.html",
-                                                       System.Text.Encoding.GetEncoding(1252)))
+                StreamReader reader = new StreamReader (directory + Path.DirectorySeparatorChar + "template.html",
+                    Encoding.GetEncoding (1252)))
             {
                 htmlTemplate = reader.ReadToEnd();
             }
@@ -39,15 +40,15 @@ namespace Swarmops.Utility.Mail
 
             // assume Swedish
 
-            System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("sv-SE");
-            string date = DateTime.Today.ToString("d MMMM yyyy", culture);
-            string time = DateTime.Now.ToString("HH:mm");
+            CultureInfo culture = new CultureInfo ("sv-SE");
+            string date = DateTime.Today.ToString ("d MMMM yyyy", culture);
+            string time = DateTime.Now.ToString ("HH:mm");
 
             string categoriesSentTo = "Alla kategorier";
 
             if (!sendToAll)
             {
-                categoriesSentTo = GetConcatenatedCategoryString(categories);
+                categoriesSentTo = GetConcatenatedCategoryString (categories);
             }
 
             // PREPARE HTML VIEW:
@@ -55,37 +56,37 @@ namespace Swarmops.Utility.Mail
             // Write in the title, intro, and body
 
             htmlTemplate = htmlTemplate.
-                Replace("%TITLE%", HttpUtility.HtmlEncode(title.ToUpper())).
-                Replace("%title%", HttpUtility.HtmlEncode(title)).
-                Replace("%date%", HttpUtility.HtmlEncode(date)).
-                Replace("%DATE%", HttpUtility.HtmlEncode(date.ToUpper())).
-                Replace("%time%", HttpUtility.HtmlEncode(time)).
-                Replace("%postedtocategories%", HttpUtility.HtmlEncode(categoriesSentTo));
+                Replace ("%TITLE%", HttpUtility.HtmlEncode (title.ToUpper())).
+                Replace ("%title%", HttpUtility.HtmlEncode (title)).
+                Replace ("%date%", HttpUtility.HtmlEncode (date)).
+                Replace ("%DATE%", HttpUtility.HtmlEncode (date.ToUpper())).
+                Replace ("%time%", HttpUtility.HtmlEncode (time)).
+                Replace ("%postedtocategories%", HttpUtility.HtmlEncode (categoriesSentTo));
 
             string body = mailText;
 
             body = body.
-                Replace("<", "({[(").
-                Replace(">", ")}])").
-                Replace("\"", "quotQUOTquot");
+                Replace ("<", "({[(").
+                Replace (">", ")}])").
+                Replace ("\"", "quotQUOTquot");
 
-            body = HttpUtility.HtmlEncode(body);
+            body = HttpUtility.HtmlEncode (body);
 
             body = body.
-                Replace("({[(", "<").
-                Replace(")}])", ">").
-                Replace("quotQUOTquot", "\"").
-                Replace("&amp;#", "&#");
+                Replace ("({[(", "<").
+                Replace (")}])", ">").
+                Replace ("quotQUOTquot", "\"").
+                Replace ("&amp;#", "&#");
 
-            htmlTemplate = htmlTemplate.Replace("%body%", body);
+            htmlTemplate = htmlTemplate.Replace ("%body%", body);
 
             // Embed any inline images directly into the message
 
-            string newsletterIdentifier = DateTime.Now.ToString("yyyyMMddhhMMssfff") + "@piratpartiet.se";
+            string newsletterIdentifier = DateTime.Now.ToString ("yyyyMMddhhMMssfff") + "@piratpartiet.se";
 
             // TODO: Read the replacements from a config file
 
-            htmlTemplate = htmlTemplate.Replace("header-pp-logo.png", "cid:pplogo" + newsletterIdentifier);
+            htmlTemplate = htmlTemplate.Replace ("header-pp-logo.png", "cid:pplogo" + newsletterIdentifier);
 
 
             /*
@@ -104,9 +105,9 @@ namespace Swarmops.Utility.Mail
 
             // MemoryStream memStream = new MemoryStream();
 
-            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(htmlTemplate,
-                                                                                 new ContentType(
-                                                                                     MediaTypeNames.Text.Html));
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString (htmlTemplate,
+                new ContentType (
+                    MediaTypeNames.Text.Html));
             htmlView.TransferEncoding = TransferEncoding.Base64;
 
             /*
@@ -182,22 +183,22 @@ namespace Swarmops.Utility.Mail
 
                 try
                 {
-                    SmtpClient client = new SmtpClient(Config.SmtpHost, Config.SmtpPort);
+                    SmtpClient client = new SmtpClient (Config.SmtpHost, Config.SmtpPort);
                     client.Credentials = null;
 
-                    MailMessage message = new MailMessage(
-                        new MailAddress("press@piratpartiet.se", "Piratpartiet Press"),
-                        new MailAddress(reporter.Email, reporter.Name, Encoding.UTF8));
+                    MailMessage message = new MailMessage (
+                        new MailAddress ("press@piratpartiet.se", "Piratpartiet Press"),
+                        new MailAddress (reporter.Email, reporter.Name, Encoding.UTF8));
 
                     message.Subject = "PP-Press: " + title;
 
                     string individualBody = htmlTemplate;
 
                     individualBody = individualBody.
-                        Replace("%reportername%", HttpUtility.HtmlEncode(reporter.Name)).
-                        Replace("%reporteremail%", HttpUtility.HtmlEncode(reporter.Email)).
-                        Replace("%reportercategories%",
-                                HttpUtility.HtmlEncode(GetConcatenatedCategoryString(reporter.MediaCategories)));
+                        Replace ("%reportername%", HttpUtility.HtmlEncode (reporter.Name)).
+                        Replace ("%reporteremail%", HttpUtility.HtmlEncode (reporter.Email)).
+                        Replace ("%reportercategories%",
+                            HttpUtility.HtmlEncode (GetConcatenatedCategoryString (reporter.MediaCategories)));
 
                     message.Body = individualBody;
                     message.BodyEncoding = Encoding.ASCII;
@@ -205,8 +206,8 @@ namespace Swarmops.Utility.Mail
 
                     // COMPENSATE FOR MONO BUG -- put logo online instead of attached
 
-                    message.Body = message.Body.Replace("cid:pplogo" + newsletterIdentifier,
-                                                        "http://docs.piratpartiet.se/banners/newsletter-banner-pp-logo.png");
+                    message.Body = message.Body.Replace ("cid:pplogo" + newsletterIdentifier,
+                        "http://docs.piratpartiet.se/banners/newsletter-banner-pp-logo.png");
 
                     /*
                     Attachment attachment = new Attachment(directory + Path.DirectorySeparatorChar + "header-pp-logo.png", "image/png");
@@ -220,12 +221,12 @@ namespace Swarmops.Utility.Mail
                     {
                         try
                         {
-                            client.Send(message);
+                            client.Send (message);
                             successOrPermanentFail = true;
                         }
                         catch (SmtpException e)
                         {
-                            if (!(e.ToString().StartsWith("System.Net.Mail.SmtpException: 4")))
+                            if (!(e.ToString().StartsWith ("System.Net.Mail.SmtpException: 4")))
                             {
                                 // This is NOT a temporary error (SMTP 4xx). Fail.
 
@@ -235,7 +236,7 @@ namespace Swarmops.Utility.Mail
 
                             // Otherwise, sleep for a while and try again.
 
-                            System.Threading.Thread.Sleep(1000);
+                            Thread.Sleep (1000);
                         }
                     }
 
@@ -246,9 +247,9 @@ namespace Swarmops.Utility.Mail
                 catch (Exception e)
                 {
                     //Console.WriteLine("FAIL! <" + recipient.Email + ">");
-                    ExceptionMail.Send(
-                        new Exception("Error sending press release to " + reporter.Name + " <" + reporter.Email + ">:",
-                                      e),true);
+                    ExceptionMail.Send (
+                        new Exception ("Error sending press release to " + reporter.Name + " <" + reporter.Email + ">:",
+                            e), true);
                 }
             }
         }

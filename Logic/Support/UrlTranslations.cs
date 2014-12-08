@@ -6,26 +6,23 @@ namespace Swarmops.Logic.Support
     {
         public static bool Create (string url)
         {
-            int id = SwarmDb.GetDatabaseForWriting().CreateUrlTranslation(url);
+            int id = SwarmDb.GetDatabaseForWriting().CreateUrlTranslation (url);
 
             if (id > 0)
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public static void Set (string originalUrl, string translatedUrl)
         {
-            SwarmDb.GetDatabaseForWriting().SetUrlTranslation(originalUrl, translatedUrl);
+            SwarmDb.GetDatabaseForWriting().SetUrlTranslation (originalUrl, translatedUrl);
         }
 
         public static string[] GetUntranslated (int maxCount)
         {
-            return SwarmDb.GetDatabaseForReading().GetUntranslatedUrls(maxCount);
+            return SwarmDb.GetDatabaseForReading().GetUntranslatedUrls (maxCount);
         }
     }
 }

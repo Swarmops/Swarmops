@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -12,27 +13,29 @@ namespace Swarmops.Utility.Financial
 {
     public class PaysonImporter
     {
-        public static void Run(string data, Organization organization, Person runningPerson)
+        public static void Run (string data, Organization organization, Person runningPerson)
         {
-            if (!data.StartsWith("\r\n<html>\r\n<head>\r\n    <style>\r\n        .tal"))
+            if (!data.StartsWith ("\r\n<html>\r\n<head>\r\n    <style>\r\n        .tal"))
             {
-                runningPerson.SendPhoneMessage("The file you uploaded does not appear to be a Payson export file. No processing done. The data has been discarded.");
-                throw new ArgumentException("This does not appear to be a Payson file");
+                runningPerson.SendPhoneMessage (
+                    "The file you uploaded does not appear to be a Payson export file. No processing done. The data has been discarded.");
+                throw new ArgumentException ("This does not appear to be a Payson file");
             }
 
             if (organization.Identity != 1)
             {
-                runningPerson.SendPhoneMessage("Payson import is currently only supported for PPSE. No processing done. The data has been discarded.");
-                throw new Exception("Payson is only supported for PPSE at the moment.");
+                runningPerson.SendPhoneMessage (
+                    "Payson import is currently only supported for PPSE. No processing done. The data has been discarded.");
+                throw new Exception ("Payson is only supported for PPSE at the moment.");
             }
 
-            ImportResult result = ImportPayson(data);
+            ImportResult result = ImportPayson (data);
 
-            ImportStats stats = ProcessImportedData(result, organization, runningPerson);
+            ImportStats stats = ProcessImportedData (result, organization, runningPerson);
 
             try
             {
-                runningPerson.SendPhoneMessage("The Payson file was processed. See mail for more details.");
+                runningPerson.SendPhoneMessage ("The Payson file was processed. See mail for more details.");
             }
             catch (Exception)
             {
@@ -41,20 +44,22 @@ namespace Swarmops.Utility.Financial
 
             string mailBody = string.Empty;
 
-            mailBody += String.Format("Rows processed: {0,9:N0}\r\n", stats.ProcessedTransactionCount);
-            mailBody += String.Format("Tx imported:    {0,9:N0}\r\n", stats.ImportedTransactionCount);
-            mailBody += String.Format("Tx modified:    {0,9:N0}\r\n", stats.ModifiedTransactionCount - stats.ImportedTransactionCount);
+            mailBody += String.Format ("Rows processed: {0,9:N0}\r\n", stats.ProcessedTransactionCount);
+            mailBody += String.Format ("Tx imported:    {0,9:N0}\r\n", stats.ImportedTransactionCount);
+            mailBody += String.Format ("Tx modified:    {0,9:N0}\r\n",
+                stats.ModifiedTransactionCount - stats.ImportedTransactionCount);
 
-            runningPerson.SendNotice("Payson file imported", mailBody, organization.Identity);
+            runningPerson.SendNotice ("Payson file imported", mailBody, organization.Identity);
         }
 
 
-        protected static ImportResult ImportPayson(string contents)
+        protected static ImportResult ImportPayson (string contents)
         {
-            string regexPattern = @"<tr>\s+<td>\s*(?<datetime>[0-9]{4}-[0-9]{2}-[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2})\s*</td><td>(?<comment1>[^<]*)</td><td>[^>]*</td><td>(?<txid>[0-9]+)</td>\s*<td>(?<from>[^<]+)</td>\s*<td>(?<to>[^<]+)</td><td class=\""tal\"">(?<gross>[\-0-9,]+)</td><td class=\""tal\"">(?<fee>[\-0-9,]+)</td><td class=\""tal\"">(?<vat>[\-0-9,]+)</td><td class=\""tal\"">(?<net>[\-0-9,]+)</td><td class=\""tal\"">(?<balance>[\-0-9,]+)</td><td>(?<currency>[^<]+)</td><td>(?<reference>[^<]+)</td><td[^>]+?>(?<comment2>[^<]+)</td>";
+            string regexPattern =
+                @"<tr>\s+<td>\s*(?<datetime>[0-9]{4}-[0-9]{2}-[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2})\s*</td><td>(?<comment1>[^<]*)</td><td>[^>]*</td><td>(?<txid>[0-9]+)</td>\s*<td>(?<from>[^<]+)</td>\s*<td>(?<to>[^<]+)</td><td class=\""tal\"">(?<gross>[\-0-9,]+)</td><td class=\""tal\"">(?<fee>[\-0-9,]+)</td><td class=\""tal\"">(?<vat>[\-0-9,]+)</td><td class=\""tal\"">(?<net>[\-0-9,]+)</td><td class=\""tal\"">(?<balance>[\-0-9,]+)</td><td>(?<currency>[^<]+)</td><td>(?<reference>[^<]+)</td><td[^>]+?>(?<comment2>[^<]+)</td>";
 
-            Regex regex = new Regex(regexPattern, RegexOptions.Singleline);
-            Match match = regex.Match(contents);
+            Regex regex = new Regex (regexPattern, RegexOptions.Singleline);
+            Match match = regex.Match (contents);
 
             ImportResult result = new ImportResult();
             List<ImportedRow> rows = new List<ImportedRow>();
@@ -70,39 +75,39 @@ namespace Swarmops.Utility.Financial
 
                 if (result.CurrentBalance == 0.0)
                 {
-                    result.CurrentBalance = Int64.Parse(match.Groups["balance"].Value.Replace(",", ""))/10000.0;
+                    result.CurrentBalance = Int64.Parse (match.Groups["balance"].Value.Replace (",", ""))/10000.0;
                 }
 
                 ImportedRow row = new ImportedRow();
 
                 // DEBUG -- REMOVE WHEN DEPLOYING
 
-                if (System.Diagnostics.Debugger.IsAttached)
+                if (Debugger.IsAttached)
                 {
-                    Console.WriteLine("New Row -----");
+                    Console.WriteLine ("New Row -----");
 
-                    Console.WriteLine("- SuppliedTxId: {0}", match.Groups["txid"].Value);
-                    Console.WriteLine("- Comment:      {0}", HttpUtility.HtmlDecode(match.Groups["comment2"].Value));
-                    Console.WriteLine("- DateTime:     {0}", match.Groups["datetime"].Value);
-                    Console.WriteLine("- AmountGross:  {0}", match.Groups["gross"].Value);
-                    Console.WriteLine("- Fee:          {0}", match.Groups["fee"].Value);
-                    Console.WriteLine("- AmountNet:    {0}", match.Groups["net"].Value);
+                    Console.WriteLine ("- SuppliedTxId: {0}", match.Groups["txid"].Value);
+                    Console.WriteLine ("- Comment:      {0}", HttpUtility.HtmlDecode (match.Groups["comment2"].Value));
+                    Console.WriteLine ("- DateTime:     {0}", match.Groups["datetime"].Value);
+                    Console.WriteLine ("- AmountGross:  {0}", match.Groups["gross"].Value);
+                    Console.WriteLine ("- Fee:          {0}", match.Groups["fee"].Value);
+                    Console.WriteLine ("- AmountNet:    {0}", match.Groups["net"].Value);
                 }
 
-                string comment = HttpUtility.HtmlDecode(match.Groups["comment2"].Value.Trim());
-                if (String.IsNullOrEmpty(comment))
+                string comment = HttpUtility.HtmlDecode (match.Groups["comment2"].Value.Trim());
+                if (String.IsNullOrEmpty (comment))
                 {
                     comment = match.Groups["comment1"].Value.Trim();
                 }
 
                 row.SuppliedTransactionId = "Payson-" + match.Groups["txid"].Value;
                 row.Comment = comment;
-                row.DateTime = DateTime.Parse(match.Groups["datetime"].Value, CultureInfo.InvariantCulture);
-                row.AmountCentsGross = Int64.Parse(match.Groups["gross"].Value.Replace(".", "").Replace(",", ""))/100;
-                row.FeeCents = Int64.Parse(match.Groups["fee"].Value.Replace(".", "").Replace(",", ""))/100;
-                row.AmountCentsNet = Int64.Parse(match.Groups["net"].Value.Replace(".", "").Replace(",", ""))/100;
+                row.DateTime = DateTime.Parse (match.Groups["datetime"].Value, CultureInfo.InvariantCulture);
+                row.AmountCentsGross = Int64.Parse (match.Groups["gross"].Value.Replace (".", "").Replace (",", ""))/100;
+                row.FeeCents = Int64.Parse (match.Groups["fee"].Value.Replace (".", "").Replace (",", ""))/100;
+                row.AmountCentsNet = Int64.Parse (match.Groups["net"].Value.Replace (".", "").Replace (",", ""))/100;
 
-                rows.Add(row);
+                rows.Add (row);
 
                 match = match.NextMatch();
             }
@@ -112,56 +117,31 @@ namespace Swarmops.Utility.Financial
         }
 
 
-        protected class ImportResult
+        protected static string StripQuotes (string input)
         {
-            public double CurrentBalance;
-            public List<ImportedRow> Rows;
-        }
-
-        protected class ImportedRow
-        {
-            public DateTime DateTime;
-            public string HashBase;
-            public string SuppliedTransactionId;
-            public double CurrentBalance;
-            public Int64 AmountCentsNet;
-            public Int64 AmountCentsGross;
-            public Int64 FeeCents;
-            public string Comment;
-        }
-
-
-        protected static string StripQuotes(string input)
-        {
-            if (input.StartsWith("\""))
+            if (input.StartsWith ("\""))
             {
-                input = input.Substring(1);
+                input = input.Substring (1);
             }
 
-            if (input.EndsWith("\""))
+            if (input.EndsWith ("\""))
             {
-                input = input.Substring(0, input.Length - 1);
+                input = input.Substring (0, input.Length - 1);
             }
 
             return input;
         }
 
 
-        protected class ImportStats
+        protected static ImportStats ProcessImportedData (ImportResult import, Organization organization,
+            Person importingPerson)
         {
-            public int ProcessedTransactionCount;
-            public int ModifiedTransactionCount;
-            public int ImportedTransactionCount;
-        }
-
-
-        protected static ImportStats ProcessImportedData(ImportResult import, Organization organization, Person importingPerson)
-        {
-            FinancialAccount paysonAccount = FinancialAccount.FromIdentity(99);   // HACK -- need something more sophisticated long run that allows different accounts for different orgs
+            FinancialAccount paysonAccount = FinancialAccount.FromIdentity (99);
+            // HACK -- need something more sophisticated long run that allows different accounts for different orgs
             FinancialAccount bankFees = organization.FinancialAccounts.CostsBankFees;
             FinancialAccount donations = organization.FinancialAccounts.IncomeDonations;
 
-            int autoDepositLimit = 1000;   // TODO: Get from organization parameters
+            int autoDepositLimit = 1000; // TODO: Get from organization parameters
             int autoWithdrawalLimit = 0;
 
             ImportStats result = new ImportStats();
@@ -172,7 +152,7 @@ namespace Swarmops.Utility.Financial
 
                 // If too old, ignore.
 
-                if (row.DateTime < new DateTime(2010, 4, 1))
+                if (row.DateTime < new DateTime (2010, 4, 1))
                 {
                     continue;
                 }
@@ -181,17 +161,19 @@ namespace Swarmops.Utility.Financial
 
                 // If importKey is empty, construct a hash from the data fields.
 
-                if (string.IsNullOrEmpty(importKey))
+                if (string.IsNullOrEmpty (importKey))
                 {
-                    string hashKey = row.HashBase + row.Comment + (row.AmountCentsNet / 100.0).ToString(CultureInfo.InvariantCulture) + row.CurrentBalance.ToString(CultureInfo.InvariantCulture) +
-                                     row.DateTime.ToString("yyyy-MM-dd-hh-mm-ss");
+                    string hashKey = row.HashBase + row.Comment +
+                                     (row.AmountCentsNet/100.0).ToString (CultureInfo.InvariantCulture) +
+                                     row.CurrentBalance.ToString (CultureInfo.InvariantCulture) +
+                                     row.DateTime.ToString ("yyyy-MM-dd-hh-mm-ss");
 
-                    importKey = SHA1.Hash(hashKey).Replace(" ", "");
+                    importKey = SHA1.Hash (hashKey).Replace (" ", "");
                 }
 
                 if (importKey.Length > 30)
                 {
-                    importKey = importKey.Substring(0, 30);
+                    importKey = importKey.Substring (0, 30);
                 }
 
                 Int64 amountCents = row.AmountCentsNet;
@@ -207,17 +189,16 @@ namespace Swarmops.Utility.Financial
 
                 try
                 {
-                    transaction = FinancialTransaction.FromImportKey(organization, importKey);
-
+                    transaction = FinancialTransaction.FromImportKey (organization, importKey);
                 }
                 catch (Exception)
                 {
                     // if we get here, that means the transaction did not yet exist
 
-                    transaction = FinancialTransaction.ImportWithStub(organization.Identity, row.DateTime,
-                                                                   paysonAccount.Identity, amountCents,
-                                                                   row.Comment, importKey,
-                                                                   importingPerson.Identity);
+                    transaction = FinancialTransaction.ImportWithStub (organization.Identity, row.DateTime,
+                        paysonAccount.Identity, amountCents,
+                        row.Comment, importKey,
+                        importingPerson.Identity);
                     result.ImportedTransactionCount++;
 
                     if (transaction == null)
@@ -238,7 +219,7 @@ namespace Swarmops.Utility.Financial
 
                 if (amountCents < 0)
                 {
-                    if ((-amountCents) < autoWithdrawalLimit * 100)
+                    if ((-amountCents) < autoWithdrawalLimit*100)
                     {
                         // Book against autoWithdrawal account.
 
@@ -254,7 +235,7 @@ namespace Swarmops.Utility.Financial
                         nominalTransaction[bankFees.Identity] = -row.FeeCents;
                         nominalTransaction[donations.Identity] = -row.AmountCentsGross;
                     }
-                    else if (amountCents < autoDepositLimit * 100)
+                    else if (amountCents < autoDepositLimit*100)
                     {
                         // Book against autoDeposit account.
 
@@ -264,7 +245,7 @@ namespace Swarmops.Utility.Financial
 
                 if (transaction.Rows.AmountCentsTotal != 0) // If transaction is unbalanced, balance it
                 {
-                    if (transaction.RecalculateTransaction(nominalTransaction, importingPerson))
+                    if (transaction.RecalculateTransaction (nominalTransaction, importingPerson))
                     {
                         result.ModifiedTransactionCount++;
                     }
@@ -274,5 +255,29 @@ namespace Swarmops.Utility.Financial
             return result;
         }
 
+        protected class ImportResult
+        {
+            public double CurrentBalance;
+            public List<ImportedRow> Rows;
+        }
+
+        protected class ImportStats
+        {
+            public int ImportedTransactionCount;
+            public int ModifiedTransactionCount;
+            public int ProcessedTransactionCount;
+        }
+
+        protected class ImportedRow
+        {
+            public Int64 AmountCentsGross;
+            public Int64 AmountCentsNet;
+            public string Comment;
+            public double CurrentBalance;
+            public DateTime DateTime;
+            public Int64 FeeCents;
+            public string HashBase;
+            public string SuppliedTransactionId;
+        }
     }
 }

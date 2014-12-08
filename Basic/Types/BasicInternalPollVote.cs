@@ -2,13 +2,13 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicInternalPollVote: IHasIdentity
+    public class BasicInternalPollVote : IHasIdentity
     {
         public BasicInternalPollVote (int internalPollVoteId, int internalPollId, string verificationCode)
         {
-            this.InternalPollVoteId = internalPollVoteId;
-            this.InternalPollId = internalPollId;
-            this.VerificationCode = verificationCode;
+            InternalPollVoteId = internalPollVoteId;
+            InternalPollId = internalPollId;
+            VerificationCode = verificationCode;
         }
 
         public BasicInternalPollVote (BasicInternalPollVote original)
@@ -25,7 +25,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.InternalPollVoteId; }
+            get { return InternalPollVoteId; }
         }
 
         #endregion

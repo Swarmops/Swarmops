@@ -8,33 +8,36 @@ namespace Swarmops.Logic.Cache
 {
     public class MailTemplateCache
     {
-        static private DateTime lastAccess = DateTime.MinValue;
-        static private object loadCacheLock = new object();
-        static public bool loadCache = true;
-        static private Dictionary<string, List<BasicMailTemplate>> __MailTemplateCache = new Dictionary<string, List<BasicMailTemplate>>();
-        static readonly int cacheLifeSpanMinutes = 1;
+        private static DateTime lastAccess = DateTime.MinValue;
+        private static readonly object loadCacheLock = new object();
+        public static bool loadCache = true;
 
-        static MailTemplateCache ()
+        private static Dictionary<string, List<BasicMailTemplate>> __MailTemplateCache =
+            new Dictionary<string, List<BasicMailTemplate>>();
+
+        private static readonly int cacheLifeSpanMinutes = 1;
+
+        static MailTemplateCache()
         {
             lastAccess = DateTime.MinValue;
         }
 
-        static private List<BasicMailTemplate> GetCachedTemplates (string templateName)
+        private static List<BasicMailTemplate> GetCachedTemplates (string templateName)
         {
             lock (loadCacheLock)
             {
-                if (loadCache || lastAccess.AddMinutes(cacheLifeSpanMinutes) < DateTime.Now)
+                if (loadCache || lastAccess.AddMinutes (cacheLifeSpanMinutes) < DateTime.Now)
                 {
                     __MailTemplateCache = new Dictionary<string, List<BasicMailTemplate>>();
                     loadCache = false;
                 }
 
-                if (!__MailTemplateCache.ContainsKey(templateName))
+                if (!__MailTemplateCache.ContainsKey (templateName))
                 {
-                    BasicMailTemplate[] basicTemplates = SwarmDb.GetDatabaseForReading().GetMailTemplatesByName(templateName);
-                    List<BasicMailTemplate> tmplList = new List<BasicMailTemplate>(basicTemplates);
+                    BasicMailTemplate[] basicTemplates =
+                        SwarmDb.GetDatabaseForReading().GetMailTemplatesByName (templateName);
+                    List<BasicMailTemplate> tmplList = new List<BasicMailTemplate> (basicTemplates);
                     __MailTemplateCache[templateName] = tmplList;
-
                 }
 
                 lastAccess = DateTime.Now;
@@ -42,14 +45,15 @@ namespace Swarmops.Logic.Cache
             }
         }
 
-        static public BasicMailTemplate GetBestMatch (string templateName, string language, string country, Organization org)
+        public static BasicMailTemplate GetBestMatch (string templateName, string language, string country,
+            Organization org)
         {
-            List<BasicMailTemplate> tmplList = GetCachedTemplates(templateName);
+            List<BasicMailTemplate> tmplList = GetCachedTemplates (templateName);
 
-            Organizations orgLine = ( org != null) ? org.GetLine() : new Organizations();
+            Organizations orgLine = (org != null) ? org.GetLine() : new Organizations();
 
             int[] lineIDs = orgLine.Identities;
-            List<int> idlist = new List<int>(lineIDs);
+            List<int> idlist = new List<int> (lineIDs);
 
             BasicMailTemplate templateDefault = null;
             BasicMailTemplate countryDefault = null;
@@ -58,7 +62,7 @@ namespace Swarmops.Logic.Cache
 
             foreach (BasicMailTemplate bmt in tmplList)
             {
-                int thisIndex = idlist.IndexOf(bmt.OrganizationId);
+                int thisIndex = idlist.IndexOf (bmt.OrganizationId);
                 if (thisIndex > bestIndex)
                 {
                     bestIndex = thisIndex;
@@ -75,12 +79,11 @@ namespace Swarmops.Logic.Cache
             }
             if (bestSofar != null)
                 return bestSofar;
-            else if (countryDefault != null)
+            if (countryDefault != null)
                 return countryDefault;
-            else if (templateDefault != null)
+            if (templateDefault != null)
                 return templateDefault;
-            else
-                return null;
+            return null;
         }
     }
 }

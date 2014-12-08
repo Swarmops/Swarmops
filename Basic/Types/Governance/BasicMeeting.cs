@@ -3,23 +3,28 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types.Governance
 {
-    public class BasicMeeting: IHasIdentity
+    public class BasicMeeting : IHasIdentity
     {
-        public BasicMeeting (int meetingId, int organizationId, string name, DateTime motionSubmissionEnds, DateTime amendmentSubmissionEnds, DateTime amendmentVotingStarts, DateTime amendmentVotingEnds, DateTime motionVotingStarts, DateTime motionVotingEnds)
+        public BasicMeeting (int meetingId, int organizationId, string name, DateTime motionSubmissionEnds,
+            DateTime amendmentSubmissionEnds, DateTime amendmentVotingStarts, DateTime amendmentVotingEnds,
+            DateTime motionVotingStarts, DateTime motionVotingEnds)
         {
-            this.MeetingId = meetingId;
-            this.OrganizationId = organizationId;
-            this.Name = name;
-            this.MotionSubmissionEnds = motionSubmissionEnds;
-            this.AmendmentSubmissionEnds = amendmentSubmissionEnds;
-            this.AmendmentVotingStarts = amendmentVotingStarts;
-            this.AmendmentVotingEnds = amendmentVotingEnds;
-            this.MotionVotingStarts = motionVotingStarts;
-            this.MotionVotingEnds = motionVotingEnds;
+            MeetingId = meetingId;
+            OrganizationId = organizationId;
+            Name = name;
+            MotionSubmissionEnds = motionSubmissionEnds;
+            AmendmentSubmissionEnds = amendmentSubmissionEnds;
+            AmendmentVotingStarts = amendmentVotingStarts;
+            AmendmentVotingEnds = amendmentVotingEnds;
+            MotionVotingStarts = motionVotingStarts;
+            MotionVotingEnds = motionVotingEnds;
         }
 
-        public BasicMeeting (BasicMeeting original):
-            this (original.MeetingId, original.OrganizationId, original.Name, original.MotionSubmissionEnds, original.AmendmentSubmissionEnds, original.AmendmentVotingStarts, original.AmendmentVotingEnds, original.MotionVotingStarts, original.MotionVotingEnds)
+        public BasicMeeting (BasicMeeting original) :
+            this (
+            original.MeetingId, original.OrganizationId, original.Name, original.MotionSubmissionEnds,
+            original.AmendmentSubmissionEnds, original.AmendmentVotingStarts, original.AmendmentVotingEnds,
+            original.MotionVotingStarts, original.MotionVotingEnds)
         {
             // empty copy ctor
         }
@@ -36,7 +41,7 @@ namespace Swarmops.Basic.Types.Governance
 
         public int Identity
         {
-            get { return this.MeetingId; }
+            get { return MeetingId; }
         }
     }
 }

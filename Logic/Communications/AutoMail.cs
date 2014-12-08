@@ -53,10 +53,10 @@ namespace Swarmops.Logic.Communications
 
 
         public static AutoMail Create (AutoMailType type, Organization org, Geography geo,
-                                       Person author, string title, string body)
+            Person author, string title, string body)
         {
             SwarmDb.GetDatabaseForWriting().SetAutoMail (type, org.Identity, geo.Identity,
-                                                author == null ? 0 : author.Identity, title, body);
+                author == null ? 0 : author.Identity, title, body);
             return FromTypeOrganizationAndGeography (type, org, geo);
         }
 

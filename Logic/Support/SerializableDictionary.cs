@@ -1,25 +1,27 @@
 ﻿using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace Swarmops.Logic.Support
 {
-
     // Code from Paul Welter's Weblog at http://weblogs.asp.net/pwelter34/archive/2006/05/03/444961.aspx -- assumed by style, writing and tone of Q&A to be in public domain
 
-    [XmlRoot("dictionary")]
+    [XmlRoot ("dictionary")]
     public class SerializableDictionary<TKey, TValue>
         : Dictionary<TKey, TValue>, IXmlSerializable
     {
         #region IXmlSerializable Members
-        public System.Xml.Schema.XmlSchema GetSchema()
+
+        public XmlSchema GetSchema()
         {
             return null;
         }
 
-        public void ReadXml(System.Xml.XmlReader reader)
+        public void ReadXml (XmlReader reader)
         {
-            XmlSerializer keySerializer = new XmlSerializer(typeof(TKey));
-            XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
+            XmlSerializer keySerializer = new XmlSerializer (typeof (TKey));
+            XmlSerializer valueSerializer = new XmlSerializer (typeof (TValue));
 
             bool wasEmpty = reader.IsEmptyElement;
             reader.Read();
@@ -27,19 +29,19 @@ namespace Swarmops.Logic.Support
             if (wasEmpty)
                 return;
 
-            while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+            while (reader.NodeType != XmlNodeType.EndElement)
             {
-                reader.ReadStartElement("item");
+                reader.ReadStartElement ("item");
 
-                reader.ReadStartElement("key");
-                TKey key = (TKey)keySerializer.Deserialize(reader);
+                reader.ReadStartElement ("key");
+                TKey key = (TKey) keySerializer.Deserialize (reader);
                 reader.ReadEndElement();
 
-                reader.ReadStartElement("value");
-                TValue value = (TValue)valueSerializer.Deserialize(reader);
+                reader.ReadStartElement ("value");
+                TValue value = (TValue) valueSerializer.Deserialize (reader);
                 reader.ReadEndElement();
 
-                this.Add(key, value);
+                Add (key, value);
 
                 reader.ReadEndElement();
                 reader.MoveToContent();
@@ -47,27 +49,28 @@ namespace Swarmops.Logic.Support
             reader.ReadEndElement();
         }
 
-        public void WriteXml(System.Xml.XmlWriter writer)
+        public void WriteXml (XmlWriter writer)
         {
-            XmlSerializer keySerializer = new XmlSerializer(typeof(TKey));
-            XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
+            XmlSerializer keySerializer = new XmlSerializer (typeof (TKey));
+            XmlSerializer valueSerializer = new XmlSerializer (typeof (TValue));
 
-            foreach (TKey key in this.Keys)
+            foreach (TKey key in Keys)
             {
-                writer.WriteStartElement("item");
+                writer.WriteStartElement ("item");
 
-                writer.WriteStartElement("key");
-                keySerializer.Serialize(writer, key);
+                writer.WriteStartElement ("key");
+                keySerializer.Serialize (writer, key);
                 writer.WriteEndElement();
 
-                writer.WriteStartElement("value");
+                writer.WriteStartElement ("value");
                 TValue value = this[key];
-                valueSerializer.Serialize(writer, value);
+                valueSerializer.Serialize (writer, value);
                 writer.WriteEndElement();
 
                 writer.WriteEndElement();
             }
         }
+
         #endregion
     }
 }

@@ -6,12 +6,11 @@ using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using Resources;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
-using Membership = Swarmops.Logic.Swarm.Membership;
 
 namespace Swarmops
 {
@@ -23,23 +22,23 @@ namespace Swarmops
             // Current authentication
 
             string identity = HttpContext.Current.User.Identity.Name;
-            string[] identityTokens = identity.Split(',');
+            string[] identityTokens = identity.Split (',');
 
             string userIdentityString = identityTokens[0];
             string organizationIdentityString = identityTokens[1];
 
-            int currentUserId = Convert.ToInt32(userIdentityString);
-            int currentOrganizationId = Convert.ToInt32(organizationIdentityString);
+            int currentUserId = Convert.ToInt32 (userIdentityString);
+            int currentOrganizationId = Convert.ToInt32 (organizationIdentityString);
 
-            _currentUser = Person.FromIdentity(currentUserId);
+            _currentUser = Person.FromIdentity (currentUserId);
             _authority = _currentUser.GetAuthority();
             try
             {
-                _currentOrganization = Organization.FromIdentity(currentOrganizationId);
+                _currentOrganization = Organization.FromIdentity (currentOrganizationId);
             }
             catch (ArgumentException)
             {
-                if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+                if (PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
                 {
                     // It's possible this organization was deleted. Log on to Sandbox instead.
                     _currentOrganization = Organization.Sandbox;
@@ -47,7 +46,7 @@ namespace Swarmops
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             // Event subscriptions
 
@@ -55,19 +54,19 @@ namespace Swarmops
 
             // Titles and other page elements
 
-            this.IconPage.ImageUrl = "/Images/PageIcons/" + this.CurrentPageIcon + "-40px.png";
-            this.LabelPageTitle.Text = this.CurrentPageTitle;
-            this.Page.Title = "Swarmops - " + this.CurrentPageTitle;
+            this.IconPage.ImageUrl = "/Images/PageIcons/" + CurrentPageIcon + "-40px.png";
+            this.LabelPageTitle.Text = CurrentPageTitle;
+            Page.Title = "Swarmops - " + CurrentPageTitle;
 
             this.ExternalScriptEasyUI.Controls = EasyUIControlsUsed.ToString();
             this.IncludedScripts.Controls = IncludedControlsUsed.ToString();
 
-            this.LiteralSidebarInfo.Text = this.CurrentPageInfoBoxLiteral;
+            this.LiteralSidebarInfo.Text = CurrentPageInfoBoxLiteral;
 
             // Set logo image. If custom image is installed, use it instead.
 
             this.ImageLogo.ImageUrl = "~/Images/Logo-Stock.png";
-            if (File.Exists(Server.MapPath("~/Images/Logo-Custom.png")))
+            if (File.Exists (Server.MapPath ("~/Images/Logo-Custom.png")))
             {
                 this.ImageLogo.ImageUrl = "~/Images/Logo-Custom.png";
             }
@@ -79,9 +78,9 @@ namespace Swarmops
             string cloudFlareVisitorScheme = Request.Headers["CF-Visitor"];
             bool cloudFlareSsl = false;
 
-            if (!string.IsNullOrEmpty(cloudFlareVisitorScheme))
+            if (!string.IsNullOrEmpty (cloudFlareVisitorScheme))
             {
-                if (cloudFlareVisitorScheme.Contains("\"scheme\":\"https\""))
+                if (cloudFlareVisitorScheme.Contains ("\"scheme\":\"https\""))
                 {
                     cloudFlareSsl = true;
                 }
@@ -91,11 +90,15 @@ namespace Swarmops
 
             // Rewrite if applicable
 
-            if (Request.Url.ToString().StartsWith("http://") && !cloudFlareSsl) // only check client-side as many server sites de-SSL the connection before reaching the web server
+            if (Request.Url.ToString().StartsWith ("http://") && !cloudFlareSsl)
+                // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && !Request.Url.ToString().StartsWith("http://sandbox.swarmops.com") && !Request.Url.ToString().StartsWith("http://localhost:") && !Request.Url.ToString().StartsWith("http://swarmops-"))
+                if (!Request.Url.ToString().StartsWith ("http://dev.swarmops.com/") &&
+                    !Request.Url.ToString().StartsWith ("http://sandbox.swarmops.com") &&
+                    !Request.Url.ToString().StartsWith ("http://localhost:") &&
+                    !Request.Url.ToString().StartsWith ("http://swarmops-"))
                 {
-                    Response.Redirect(Request.Url.ToString().Replace("http:", "https:"));
+                    Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
 
                     // Only force this if set to force it in database
                     // TODO: Make admin init task
@@ -113,7 +116,7 @@ namespace Swarmops
 
             // Set up todo items
 
-            DashboardTodos todos = DashboardTodos.ForPerson(_currentUser, _currentOrganization);
+            DashboardTodos todos = DashboardTodos.ForPerson (_currentUser, _currentOrganization);
 
             this.RepeaterTodoItems.DataSource = todos;
             this.RepeaterTodoItems.DataBind();
@@ -126,7 +129,7 @@ namespace Swarmops
             Dictionary<string, bool> enableCache = new Dictionary<string, bool>();
 
             if (Session["MainMenu-v4_Enabling"] != null
-                && PermissionCacheTimestamp.AddSeconds(10) > DateTime.Now
+                && PermissionCacheTimestamp.AddSeconds (10) > DateTime.Now
                 && Authorization.lastReload < PermissionCacheTimestamp)
             {
                 enableCache = Session["MainMenu-v4_Enabling"] as Dictionary<string, bool>;
@@ -154,9 +157,10 @@ namespace Swarmops
 
             if (dashMessage != null && dashMessage.Value.Length > 0)
             {
-                this.LiteralDocumentReadyHook.Text = string.Format("alertify.alert(unescape('{0}'.replace(/\\+/g, '%20')));", dashMessage.Value);
-                Response.SetCookie(new HttpCookie("DashboardMessage", string.Empty));
-                Response.Cookies ["DashboardMessage"].Expires = DateTime.Now.AddYears(-10);
+                this.LiteralDocumentReadyHook.Text =
+                    string.Format ("alertify.alert(unescape('{0}'.replace(/\\+/g, '%20')));", dashMessage.Value);
+                Response.SetCookie (new HttpCookie ("DashboardMessage", string.Empty));
+                Response.Cookies["DashboardMessage"].Expires = DateTime.Now.AddYears (-10);
             }
             else
             {
@@ -170,9 +174,9 @@ namespace Swarmops
 
         private void Localize()
         {
-            this.LabelSidebarInfo.Text = Resources.Global.Sidebar_Information;
-            this.LabelSidebarActions.Text = Resources.Global.Sidebar_Actions;
-            this.LabelSidebarTodo.Text = Resources.Global.Sidebar_Todo;
+            this.LabelSidebarInfo.Text = Global.Sidebar_Information;
+            this.LabelSidebarActions.Text = Global.Sidebar_Actions;
+            this.LabelSidebarTodo.Text = Global.Sidebar_Todo;
 
             string cultureString = Thread.CurrentThread.CurrentCulture.ToString();
             string cultureStringLower = cultureString.ToLowerInvariant();
@@ -181,19 +185,19 @@ namespace Swarmops
             {
                 cultureString = "en-US";
                 cultureStringLower = "en-us";
-                Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureString);
+                Thread.CurrentThread.CurrentCulture = new CultureInfo (cultureString);
 
-                HttpCookie cookieCulture = new HttpCookie("PreferredCulture");
+                HttpCookie cookieCulture = new HttpCookie ("PreferredCulture");
                 cookieCulture.Value = cultureString;
-                cookieCulture.Expires = DateTime.Now.AddDays(365);
-                Response.Cookies.Add(cookieCulture);
+                cookieCulture.Expires = DateTime.Now.AddDays (365);
+                Response.Cookies.Add (cookieCulture);
             }
 
             string flagName = "uk";
 
-            if (!cultureStringLower.StartsWith("en") && cultureString.Length > 3)
+            if (!cultureStringLower.StartsWith ("en") && cultureString.Length > 3)
             {
-                flagName = cultureStringLower.Substring(3);
+                flagName = cultureStringLower.Substring (3);
             }
 
             if (cultureStringLower == "af-za") // "South African Afrikaans", a special placeholder for localization code
@@ -208,8 +212,8 @@ namespace Swarmops
 
             this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + "-24px.png";
 
-            this.LinkLogout.Text = Resources.Global.CurrentUserInfo_Logout;
-            this.LabelPreferences.Text = Resources.Global.CurrentUserInfo_Preferences;
+            this.LinkLogout.Text = Global.CurrentUserInfo_Logout;
+            this.LabelPreferences.Text = Global.CurrentUserInfo_Preferences;
             // this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
         }
 
@@ -289,15 +293,13 @@ namespace Swarmops
         }*/
 
 
-
-
-                /*
+        /*
                 if (Convert.ToInt32(item.Attributes["UserLevel"]) < 4)   // TODO: user's menu level
                 {
                     item.Visible = false;
                 }*/
 
-                /*
+        /*
                 item.Enabled = true;
                 if (string.IsNullOrEmpty(item.Attributes["Permission"]) == false)
                 {
@@ -323,7 +325,7 @@ namespace Swarmops
                     item.Enabled = false;
                 }*/
 
-                /*
+        /*
                 string[] currentItemUrlSplit = item.NavigateUrl.ToLower().Split(new char[] { '/', '?' }, StringSplitOptions.RemoveEmptyEntries);
                 if (Array.Exists<string>(currentItemUrlSplit,
                                 delegate(String s) { if (s == thisPageUrl) return true; else return false; })
@@ -351,8 +353,7 @@ namespace Swarmops
                 {
                     item.Enabled = false;
                 }*/
-            
-        
+
 
         /*
         string CollectItemID(IRadMenuItemContainer item)
@@ -368,7 +369,7 @@ namespace Swarmops
         }*/
 
 
-        protected void LinkLogout_Click(object sender, EventArgs e)
+        protected void LinkLogout_Click (object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
             FormsAuthentication.RedirectToLoginPage();
@@ -388,7 +389,5 @@ namespace Swarmops
             this.LiteralCrowdinScript.Text = crowdinCode;
             // Page.ClientScript.RegisterStartupScript(this.GetType(), "crowdin", crowdinCode, false);
         }
-
-
     }
 }

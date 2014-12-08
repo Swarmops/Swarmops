@@ -13,12 +13,12 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateUrlTranslation", connection);
+                DbCommand command = GetDbCommand ("CreateUrlTranslation", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "originalUrl", url);
+                AddParameterWithName (command, "originalUrl", url);
 
-                int urlTranslationId = Convert.ToInt32(command.ExecuteScalar());
+                int urlTranslationId = Convert.ToInt32 (command.ExecuteScalar());
 
                 return urlTranslationId;
             }
@@ -31,11 +31,11 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetUrlTranslation", connection);
+                DbCommand command = GetDbCommand ("SetUrlTranslation", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "originalUrl", originalUrl);
-                AddParameterWithName(command, "translatedUrl", translatedUrl);
+                AddParameterWithName (command, "originalUrl", originalUrl);
+                AddParameterWithName (command, "translatedUrl", translatedUrl);
 
                 command.ExecuteNonQuery();
             }
@@ -51,15 +51,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT TOP " + max.ToString() + " OriginalUrl FROM UrlTranslations WHERE Translated=0",
+                    GetDbCommand (
+                        "SELECT TOP " + max + " OriginalUrl FROM UrlTranslations WHERE Translated=0",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(reader.GetString(0));
+                        result.Add (reader.GetString (0));
                     }
 
                     return result.ToArray();
@@ -75,15 +75,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT TranslatedUrl FROM UrlTranslations WHERE OriginalUrl='" + url.Replace("'", "''") +
+                    GetDbCommand (
+                        "SELECT TranslatedUrl FROM UrlTranslations WHERE OriginalUrl='" + url.Replace ("'", "''") +
                         "' AND Translated=1", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetString(0);
+                        return reader.GetString (0);
                     }
 
                     return null;

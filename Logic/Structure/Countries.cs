@@ -6,23 +6,23 @@ namespace Swarmops.Logic.Structure
 {
     public class Countries : List<Country>
     {
-        public static Countries GetAll ()
+        public static Countries GetAll()
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetAllCountries());
+            return FromArray (SwarmDb.GetDatabaseForReading().GetAllCountries());
         }
 
-        public static Countries GetInUse ()
+        public static Countries GetInUse()
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetCountriesInUse());
+            return FromArray (SwarmDb.GetDatabaseForReading().GetCountriesInUse());
         }
 
         public static Countries FromArray (BasicCountry[] basicArray)
         {
-            var result = new Countries {Capacity = (basicArray.Length*11/10)};
+            Countries result = new Countries {Capacity = (basicArray.Length*11/10)};
 
             foreach (BasicCountry basic in basicArray)
             {
-                result.Add(Country.FromBasic(basic));
+                result.Add (Country.FromBasic (basic));
             }
 
             return result;

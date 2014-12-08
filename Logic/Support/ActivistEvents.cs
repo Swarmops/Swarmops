@@ -9,7 +9,7 @@ namespace Swarmops.Logic.Support
         public static void TerminateActivistWithLogging (Person p, EventSource eventSourceSignupPage)
         {
             int orgId = 1;
-            PWEvents.CreateEvent(eventSourceSignupPage,
+            PWEvents.CreateEvent (eventSourceSignupPage,
                 EventType.LostActivist,
                 p.Identity,
                 orgId,
@@ -18,13 +18,14 @@ namespace Swarmops.Logic.Support
                 0,
                 string.Empty);
             p.TerminateActivist();
-            PWLog.Write(PWLogItem.Person, p.Identity, PWLogAction.ActivistLost, "Lost as activist", string.Empty);
+            PWLog.Write (PWLogItem.Person, p.Identity, PWLogAction.ActivistLost, "Lost as activist", string.Empty);
         }
 
 
-        public static void CreateActivistWithLogging (Geography geo, Person newActivist, string logMessage, EventSource evtSrc, bool isPublic, bool isConfirmed, int orgId)
+        public static void CreateActivistWithLogging (Geography geo, Person newActivist, string logMessage,
+            EventSource evtSrc, bool isPublic, bool isConfirmed, int orgId)
         {
-            PWEvents.CreateEvent(evtSrc,
+            PWEvents.CreateEvent (evtSrc,
                 EventType.NewActivist,
                 newActivist.Identity,
                 orgId,
@@ -32,9 +33,9 @@ namespace Swarmops.Logic.Support
                 newActivist.Identity,
                 0,
                 string.Empty);
-            newActivist.CreateActivist(isPublic, isConfirmed);
-            PWLog.Write(newActivist, PWLogItem.Person, newActivist.Identity, PWLogAction.ActivistJoin, "New activist joined.", logMessage);
+            newActivist.CreateActivist (isPublic, isConfirmed);
+            PWLog.Write (newActivist, PWLogItem.Person, newActivist.Identity, PWLogAction.ActivistJoin,
+                "New activist joined.", logMessage);
         }
-
     }
 }

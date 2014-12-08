@@ -4,27 +4,29 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicPaperLetter: IHasIdentity
+    public class BasicPaperLetter : IHasIdentity
     {
         public BasicPaperLetter (int paperLetterId, int organizationId, string fromName, string replyAddress,
-            DateTime receivedDate, int toPersonId, RoleType toPersonInRole, bool personal, int uploadedByPersonId, DateTime uploadedDateTime)
+            DateTime receivedDate, int toPersonId, RoleType toPersonInRole, bool personal, int uploadedByPersonId,
+            DateTime uploadedDateTime)
         {
-            this.PaperLetterId = paperLetterId;
-            this.OrganizationId = organizationId;
-            this.FromName = fromName;
-            this.ReplyAddress = replyAddress;
-            this.ReceivedDate = receivedDate;
-            this.ToPersonId = toPersonId;
-            this.ToPersonInRole = toPersonInRole;
-            this.Personal = personal;
-            this.UploadedByPersonId = uploadedByPersonId;
-            this.UploadedDateTime = uploadedDateTime;
+            PaperLetterId = paperLetterId;
+            OrganizationId = organizationId;
+            FromName = fromName;
+            ReplyAddress = replyAddress;
+            ReceivedDate = receivedDate;
+            ToPersonId = toPersonId;
+            ToPersonInRole = toPersonInRole;
+            Personal = personal;
+            UploadedByPersonId = uploadedByPersonId;
+            UploadedDateTime = uploadedDateTime;
         }
 
         public BasicPaperLetter (BasicPaperLetter original)
             : this (original.PaperLetterId, original.OrganizationId, original.FromName, original.ReplyAddress,
-            original.ReceivedDate, original.ToPersonId, original.ToPersonInRole, original.Personal, original.UploadedByPersonId,
-            original.UploadedDateTime)
+                original.ReceivedDate, original.ToPersonId, original.ToPersonInRole, original.Personal,
+                original.UploadedByPersonId,
+                original.UploadedDateTime)
         {
             // empty copy ctor
         }
@@ -45,7 +47,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.PaperLetterId; }
+            get { return PaperLetterId; }
         }
 
         #endregion

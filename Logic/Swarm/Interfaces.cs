@@ -2,6 +2,6 @@
 {
     public interface IOwnerSettable
     {
-        void SetOwner(Person newOwner);
+        void SetOwner (Person newOwner);
     }
 }

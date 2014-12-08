@@ -12,29 +12,28 @@ namespace Swarmops.Logic.Structure
     [Serializable]
     public class Geography : BasicGeography, ITreeNode, ITreeNodeObject
     {
-
         #region Construction and Creation
 
-        private Geography ()
-            : base(0, 0, string.Empty)
+        private Geography()
+            : base (0, 0, string.Empty)
         {
             // private ctor prevents construction
         }
 
         private Geography (BasicGeography basic)
-            : base(basic)
+            : base (basic)
         {
             // construction from basic
         }
 
         public static Geography FromBasic (BasicGeography basic)
         {
-            return new Geography(basic);
+            return new Geography (basic);
         }
 
         public static Geography FromIdentity (int geographyId)
         {
-            return FromBasic(GeographyCache.GetGeography(geographyId));
+            return FromBasic (GeographyCache.GetGeography (geographyId));
             //return FromBasic(SwarmDb.GetDatabaseForReading().GetGeography(geographyId));
         }
 
@@ -42,52 +41,24 @@ namespace Swarmops.Logic.Structure
         {
             // TODO: Possible dupes here, need resolution once we see the extent of the problem
 
-            return FromBasic(GeographyCache.GetGeographyByName(geographyName));
+            return FromBasic (GeographyCache.GetGeographyByName (geographyName));
             //return FromBasic(SwarmDb.GetDatabaseForReading().GetGeographyByName(geographyName));
         }
 
 
         public static Geography FromOfficialDesignation (Country country, GeographyLevel level, string designation)
         {
-            return FromOfficialDesignation(country.Identity, level, designation);
+            return FromOfficialDesignation (country.Identity, level, designation);
         }
 
         public static Geography FromOfficialDesignation (int countryId, GeographyLevel level, string designation)
         {
             return
-                FromIdentity(SwarmDb.GetDatabaseForReading().GetGeographyIdFromOfficialDesignation(countryId, level,
-                                                                                          designation));
+                FromIdentity (SwarmDb.GetDatabaseForReading().GetGeographyIdFromOfficialDesignation (countryId, level,
+                    designation));
         }
 
         #endregion
-
-        public Geographies Children
-        {
-            get
-            {
-                return Geographies.FromArray(GeographyCache.GetGeographyChildren(Identity));
-            }
-        }
-
-        public int ChildrenCount
-        {
-            get
-            {
-                return GeographyCache.CountGeographyChildren(Identity);
-            }
-        }
-
-
-        public static Geography Root
-        {
-            get { return FromIdentity(RootIdentity); }
-        }
-
-        public Geography Parent
-        {
-            get { return FromIdentity(ParentIdentity); }
-        }
-
 
         public static readonly int RootIdentity = 1; // The identity of the root geography (i.e., "World")
 
@@ -109,43 +80,64 @@ namespace Swarmops.Logic.Structure
             get { return Children.Identities; }
         }
 
-        [XmlIgnore]  // interface cannot be serialized
-        [SoapIgnore] 
+        [XmlIgnore] // interface cannot be serialized
+        [SoapIgnore]
         public ITreeNodeObject ParentObject
         {
-            get { return this.Parent; }
+            get { return Parent; }
         }
 
         [XmlIgnore] // interface cannot be serialized
-        [SoapIgnore]    
+        [SoapIgnore]
         public List<ITreeNodeObject> ChildObjects
         {
             get
             {
                 List<ITreeNodeObject> retVal = new List<ITreeNodeObject>();
                 foreach (Geography child in Children)
-                    retVal.Add(child);
+                    retVal.Add (child);
                 return retVal;
             }
         }
 
         #endregion
 
-        public Geographies GetTree ()
+        public Geographies Children
         {
-            return Geographies.FromArray(GeographyCache.GetGeographyTree(Identity));
+            get { return Geographies.FromArray (GeographyCache.GetGeographyChildren (Identity)); }
+        }
+
+        public int ChildrenCount
+        {
+            get { return GeographyCache.CountGeographyChildren (Identity); }
+        }
+
+
+        public static Geography Root
+        {
+            get { return FromIdentity (RootIdentity); }
+        }
+
+        public Geography Parent
+        {
+            get { return FromIdentity (ParentIdentity); }
+        }
+
+        public Geographies GetTree()
+        {
+            return Geographies.FromArray (GeographyCache.GetGeographyTree (Identity));
             // return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyTree(Identity));
         }
 
-        public Geographies GetLine ()
+        public Geographies GetLine()
         {
-            return Geographies.FromArray(GeographyCache.GetGeographyLine(Identity));
+            return Geographies.FromArray (GeographyCache.GetGeographyLine (Identity));
             //return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyLine(Identity));
         }
 
         public bool Inherits (Geography prospectiveParent)
         {
-            return Inherits(prospectiveParent.Identity);
+            return Inherits (prospectiveParent.Identity);
         }
 
         public bool Inherits (int prospectiveParentGeographyId)
@@ -168,7 +160,7 @@ namespace Swarmops.Logic.Structure
 
         public bool AtLevel (GeographyLevel level)
         {
-            GeographyLevel[] levels = SwarmDb.GetDatabaseForReading().GetGeographyLevelsAtGeographyId(Identity);
+            GeographyLevel[] levels = SwarmDb.GetDatabaseForReading().GetGeographyLevelsAtGeographyId (Identity);
 
             foreach (GeographyLevel potentialMatch in levels)
             {
@@ -181,9 +173,9 @@ namespace Swarmops.Logic.Structure
             return false;
         }
 
-        public BasicGeographyDesignation[] GetGeographyDesignations ()
+        public BasicGeographyDesignation[] GetGeographyDesignations()
         {
-            return SwarmDb.GetDatabaseForReading().GetGeographyDesignationsForGeographyId(Identity);
+            return SwarmDb.GetDatabaseForReading().GetGeographyDesignationsForGeographyId (Identity);
         }
     }
 }

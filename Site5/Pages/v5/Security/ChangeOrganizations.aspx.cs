@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
-using System.ServiceModel.Security;
-using System.Web;
-using System.Web.Services;
-using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
@@ -13,11 +7,13 @@ namespace Swarmops.Frontend.Pages.v5.Security
 {
     public partial class ChangeOrganizations : PageV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        public int OrganizationCount { get; set; }
+
+        protected void Page_Load (object sender, EventArgs e)
         {
-            this.PageTitle = Resources.Pages.Security.ChangeOrganizations_PageTitle;
-            this.PageIcon = "iconshock-organizations";
-            this.InfoBoxLiteral = Resources.Pages.Security.ChangeOrganizations_Info;
+            PageTitle = Resources.Pages.Security.ChangeOrganizations_PageTitle;
+            PageIcon = "iconshock-organizations";
+            InfoBoxLiteral = Resources.Pages.Security.ChangeOrganizations_Info;
             this.LabelNoOrganizations.Text = Resources.Pages.Security.ChangeOrganizations_NothingToChange;
 
             PopulateRepeater();
@@ -30,7 +26,7 @@ namespace Swarmops.Frontend.Pages.v5.Security
             List<OrganizationParameters> availableOrganizations = new List<OrganizationParameters>();
             foreach (Membership membership in memberships)
             {
-                if (membership.OrganizationId == 1 && !PilotInstallationIds.IsPilot(PilotInstallationIds.PiratePartySE))
+                if (membership.OrganizationId == 1 && !PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
                 {
                     // sandbox. Ignore.
                     continue;
@@ -41,16 +37,14 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 newOrganization.OrganizationId = membership.OrganizationId;
                 newOrganization.OrganizationName = membership.Organization.Name;
 
-                availableOrganizations.Add(newOrganization);
+                availableOrganizations.Add (newOrganization);
             }
 
-            this.OrganizationCount = availableOrganizations.Count;
+            OrganizationCount = availableOrganizations.Count;
 
             this.RepeaterOrganizations.DataSource = availableOrganizations;
             this.RepeaterOrganizations.DataBind();
         }
-
-        public int OrganizationCount { get; set; }
 
         private class OrganizationParameters
         {

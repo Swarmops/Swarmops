@@ -1,10 +1,7 @@
 using System;
 using System.Diagnostics;
 using Swarmops.Basic.Enums;
-using Swarmops.Basic.Exceptions;
 using Swarmops.Basic.Interfaces;
-using Swarmops.Database;
-using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Special.Sweden
@@ -16,19 +13,20 @@ namespace Swarmops.Logic.Special.Sweden
 
         public string GetPersonHandle (int personId)
         {
-            Person person = Person.FromIdentity(personId);
+            Person person = Person.FromIdentity (personId);
 
             if (person.SwedishForumAccountId == 0)
             {
                 return null;
             }
 
-            return SwedishForumDatabase.GetDatabase().GetAccountName(person.SwedishForumAccountId);
+            return SwedishForumDatabase.GetDatabase().GetAccountName (person.SwedishForumAccountId);
         }
 
 
         public void SetPersonHandle (int personId, string newHandle)
-        {   /* -- unused in Swarmops
+        {
+            /* -- unused in Swarmops
 
             Person person = Person.FromIdentity(personId);
             int newHandleAccountId = 0;
@@ -72,18 +70,18 @@ namespace Swarmops.Logic.Special.Sweden
 
             // suppress warnings with trace messages
 
-            Trace.WriteLine(personId);
-            Trace.WriteLine(newHandle);
-        } 
+            Trace.WriteLine (personId);
+            Trace.WriteLine (newHandle);
+        }
 
         public HandleErrorType CanSetHandle (string newHandle)
         {
-            throw new Exception("The method or operation is not implemented.");
+            throw new Exception ("The method or operation is not implemented.");
         }
 
         public int GetPersonByHandle (string handle)
         {
-            throw new Exception("The method or operation is not implemented.");
+            throw new Exception ("The method or operation is not implemented.");
         }
 
         #endregion

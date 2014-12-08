@@ -3,19 +3,20 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicParleyOption: IHasIdentity
+    public class BasicParleyOption : IHasIdentity
     {
         public BasicParleyOption (int parleyOptionId, int parleyId, string description, Int64 amountCents, bool active)
         {
-            this.ParleyOptionId = parleyOptionId;
-            this.ParleyId = parleyId;
-            this.Description = description;
-            this.AmountCents = amountCents;
-            this.Active = active;
+            ParleyOptionId = parleyOptionId;
+            ParleyId = parleyId;
+            Description = description;
+            AmountCents = amountCents;
+            Active = active;
         }
 
         public BasicParleyOption (BasicParleyOption original)
-            : this (original.ParleyOptionId, original.ParleyId, original.Description, original.AmountCents, original.Active)
+            : this (
+                original.ParleyOptionId, original.ParleyId, original.Description, original.AmountCents, original.Active)
         {
             // empty copy ctor
         }
@@ -28,7 +29,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.ParleyOptionId; }
+            get { return ParleyOptionId; }
         }
     }
 }

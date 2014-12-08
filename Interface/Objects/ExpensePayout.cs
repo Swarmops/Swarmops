@@ -7,174 +7,168 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Interface.Objects
 {
-	public class ExpensePayout: IHasIdentity
-	{
-		internal ExpensePayout(Person person, ExpenseClaims expenseClaims)
-		{
-			this.person = person;
-			this.expenseClaims = expenseClaims;
+    public class ExpensePayout : IHasIdentity
+    {
+        private readonly decimal amount;
+        private readonly ExpenseClaims expenseClaims;
+        private readonly Person person;
 
-			decimal total = 0.0m;
+        internal ExpensePayout(Person person, ExpenseClaims expenseClaims)
+        {
+            this.person = person;
+            this.expenseClaims = expenseClaims;
 
-			foreach (ExpenseClaim expense in expenseClaims)
-			{
-				total += expense.Amount;
-			}
+            decimal total = 0.0m;
 
-			this.amount = total;
-		}
+            foreach (ExpenseClaim expense in expenseClaims)
+            {
+                total += expense.Amount;
+            }
 
-		private readonly Person person;
+            this.amount = total;
+        }
 
-		public Person Person
-		{
-			get { return person; }
-		}
+        public Person Person
+        {
+            get { return this.person; }
+        }
 
-		private readonly decimal amount;
+        public decimal Amount
+        {
+            get { return this.amount; }
+        }
 
-		public decimal Amount
-		{
-			get { return amount; }
-		}
-
-		private readonly ExpenseClaims expenseClaims;
-
-		public ExpenseClaims ExpenseClaims
-		{
-			get { return expenseClaims; }
-		}
-
-		public static ExpensePayout FromOrganizationAndPerson (int organizationId, int personId)
-		{
-			ExpenseClaims allExpenseClaims = ExpenseClaims.FromOrganization(Organization.FromIdentity(organizationId));
-			ExpenseClaims expenseClaims = new ExpenseClaims();
-
-			// Aggregate per person
-
-			foreach (ExpenseClaim expense in allExpenseClaims)
-			{
-				if (expense.ClaimingPersonId == personId)
-				{
-					if (expense.Approved && expense.Open)
-					{
-						// Ready for payout
-
-						expenseClaims.Add(expense);
-					}
-				}
-			}
-
-			// Create ExpensePayout object
-
-			return new ExpensePayout(Person.FromIdentity(personId), expenseClaims);
-		}
+        public ExpenseClaims ExpenseClaims
+        {
+            get { return this.expenseClaims; }
+        }
 
 
-		public string ReceiptIdentitiesString // this could be calculated on construction
-		{
-			get
-			{
-				List<string> identities = new List<string>();
+        public string ReceiptIdentitiesString // this could be calculated on construction
+        {
+            get
+            {
+                List<string> identities = new List<string>();
 
-				foreach (ExpenseClaim expense in expenseClaims)
-				{
-					identities.Add(expense.Identity.ToString());
-				}
+                foreach (ExpenseClaim expense in this.expenseClaims)
+                {
+                    identities.Add(expense.Identity.ToString());
+                }
 
-				return String.Join(",", identities.ToArray());
-			}
-		}
+                return String.Join(",", identities.ToArray());
+            }
+        }
 
-		public string ReceiptList  // this could be calculated on construction
-		{
-			get
-			{
-				List<string> spans = new List<string>();
-				List<int> expenseIdList = new List<int>();
+        public string ReceiptList // this could be calculated on construction
+        {
+            get
+            {
+                List<string> spans = new List<string>();
+                List<int> expenseIdList = new List<int>();
 
-				foreach (ExpenseClaim expense in expenseClaims)
-				{
-					expenseIdList.Add(expense.Identity);
-				}
+                foreach (ExpenseClaim expense in this.expenseClaims)
+                {
+                    expenseIdList.Add(expense.Identity);
+                }
 
-				int[] expenseIds = expenseIdList.ToArray();
-				Array.Sort(expenseIds);
+                int[] expenseIds = expenseIdList.ToArray();
+                Array.Sort(expenseIds);
 
-				// iterate over the sorted array: group spans of ids together
+                // iterate over the sorted array: group spans of ids together
 
-				int spanStart = expenseIds[0];
-				int spanLength = 0;
-				int currentIndex = 1;
+                int spanStart = expenseIds[0];
+                int spanLength = 0;
+                int currentIndex = 1;
 
-				while (currentIndex < expenseIds.Length)
-				{
-					if (spanStart + spanLength + 1 == expenseIds[currentIndex])
-					{
-						// the span continues
+                while (currentIndex < expenseIds.Length)
+                {
+                    if (spanStart + spanLength + 1 == expenseIds[currentIndex])
+                    {
+                        // the span continues
 
-						spanLength++;
-						currentIndex++;
-					}
-					else
-					{
-						// the span does NOT continue: add
+                        spanLength++;
+                        currentIndex++;
+                    }
+                    else
+                    {
+                        // the span does NOT continue: add
 
-						if (spanLength == 0)
-						{
-							spans.Add(spanStart.ToString());
-						}
-						else if (spanLength == 1) // really means 2, is zero based
-						{
-							spans.Add(spanStart.ToString());
-							spans.Add((spanStart + 1).ToString());
-						}
-						else
-						{
-							spans.Add (String.Format ("{0}-{1}", spanStart, spanStart + spanLength));
-						}
+                        if (spanLength == 0)
+                        {
+                            spans.Add(spanStart.ToString());
+                        }
+                        else if (spanLength == 1) // really means 2, is zero based
+                        {
+                            spans.Add(spanStart.ToString());
+                            spans.Add((spanStart + 1).ToString());
+                        }
+                        else
+                        {
+                            spans.Add(String.Format("{0}-{1}", spanStart, spanStart + spanLength));
+                        }
 
-						spanStart = expenseIds[currentIndex];
-						spanLength = 0;
+                        spanStart = expenseIds[currentIndex];
+                        spanLength = 0;
 
-						currentIndex++;
+                        currentIndex++;
+                    }
+                }
 
-					}
-				}
+                // Add the last span
 
-				// Add the last span
+                if (spanLength == 0)
+                {
+                    spans.Add(spanStart.ToString());
+                }
+                else if (spanLength == 1) // really means 2, is zero based
+                {
+                    spans.Add(spanStart.ToString());
+                    spans.Add((spanStart + 1).ToString());
+                }
+                else if (spanLength > 1)
+                {
+                    spans.Add(String.Format("{0}-{1}", spanStart, spanStart + spanLength));
+                }
 
-				if (spanLength == 0)
-				{
-					spans.Add(spanStart.ToString());
-				}
-				else if (spanLength == 1) // really means 2, is zero based
-				{
-					spans.Add(spanStart.ToString());
-					spans.Add((spanStart + 1).ToString());
-				}
-				else if (spanLength > 1)
-				{
-					spans.Add (String.Format ("{0}-{1}", spanStart, spanStart + spanLength));
-				}
+                // Join spans together with ", " between them
 
-				// Join spans together with ", " between them
+                return String.Join(", ", spans.ToArray());
+            }
+        }
 
-				return String.Join (", ", spans.ToArray());
+        #region IHasIdentity Members
 
-			}
-		}
+        public int Identity
+        {
+            // We're borrowing the person's identity, as that is what we iterate across.
+            get { return this.person.Identity; }
+        }
 
+        #endregion
 
-		#region IHasIdentity Members
+        public static ExpensePayout FromOrganizationAndPerson(int organizationId, int personId)
+        {
+            ExpenseClaims allExpenseClaims = ExpenseClaims.FromOrganization(Organization.FromIdentity(organizationId));
+            ExpenseClaims expenseClaims = new ExpenseClaims();
 
-		public int Identity
-		{
-			// We're borrowing the person's identity, as that is what we iterate across.
+            // Aggregate per person
 
-			get { return person.Identity; }
-		}
+            foreach (ExpenseClaim expense in allExpenseClaims)
+            {
+                if (expense.ClaimingPersonId == personId)
+                {
+                    if (expense.Approved && expense.Open)
+                    {
+                        // Ready for payout
 
-		#endregion
-	}
+                        expenseClaims.Add(expense);
+                    }
+                }
+            }
+
+            // Create ExpensePayout object
+
+            return new ExpensePayout(Person.FromIdentity(personId), expenseClaims);
+        }
+    }
 }

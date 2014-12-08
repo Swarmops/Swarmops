@@ -20,19 +20,19 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + readFieldsSQL + " WHERE ExternalIdentityIdentity=@id",
                         connection);
-                AddParameterWithName(command, "id", identity);
+                AddParameterWithName (command, "id", identity);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadExternalIdentityFromDataReader(reader);
+                        return ReadExternalIdentityFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Identity");
+                    throw new ArgumentException ("Unknown Identity");
                 }
             }
         }
@@ -44,20 +44,21 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT " + readFieldsSQL + " WHERE AttachedToPerson= @persId and ExternalIdentityTypeName = @typeName",
+                    GetDbCommand (
+                        "SELECT " + readFieldsSQL +
+                        " WHERE AttachedToPerson= @persId and ExternalIdentityTypeName = @typeName",
                         connection);
-                AddParameterWithName(command, "persId", persId);
-                AddParameterWithName(command, "typeName", type.ToString());
+                AddParameterWithName (command, "persId", persId);
+                AddParameterWithName (command, "typeName", type.ToString());
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadExternalIdentityFromDataReader(reader);
+                        return ReadExternalIdentityFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Identity");
+                    throw new ArgumentException ("Unknown Identity");
                 }
             }
         }
@@ -69,20 +70,20 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + readFieldsSQL + " WHERE UserID = @userid and ExternalIdentityTypeName = @type",
                         connection);
-                AddParameterWithName(command, "userid", userid);
-                AddParameterWithName(command, "type", type.ToString());
+                AddParameterWithName (command, "userid", userid);
+                AddParameterWithName (command, "type", type.ToString());
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadExternalIdentityFromDataReader(reader);
+                        return ReadExternalIdentityFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Identity");
+                    throw new ArgumentException ("Unknown Identity");
                 }
             }
         }
@@ -95,16 +96,16 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + readFieldsSQL + " WHERE AttachedToPerson= @persId",
                         connection);
-                AddParameterWithName(command, "persId", persId);
+                AddParameterWithName (command, "persId", persId);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        retval.Add(ReadExternalIdentityFromDataReader(reader));
+                        retval.Add (ReadExternalIdentityFromDataReader (reader));
                     }
                     return retval;
                 }
@@ -112,7 +113,7 @@ namespace Swarmops.Database
         }
 
         /// <summary>
-        /// Update/Insert if id == 0 it is an insert
+        ///     Update/Insert if id == 0 it is an insert
         /// </summary>
         /// <param name="externalIdentityIdentity"></param>
         /// <param name="externalSystem"></param>
@@ -133,21 +134,21 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetExternalIdentity", connection);
+                DbCommand command = GetDbCommand ("SetExternalIdentity", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "pExternalIdentityIdentity", externalIdentityIdentity);
-                AddParameterWithName(command, "pTypeOfAccount", typeOfAccount.ToString());
-                AddParameterWithName(command, "pExternalSystem", externalSystem.ToString());
-                AddParameterWithName(command, "pUserID", userID.ToString());
-                AddParameterWithName(command, "pPassword", password);
-                AddParameterWithName(command, "pAttachedToPerson", attachedToPerson);
+                AddParameterWithName (command, "pExternalIdentityIdentity", externalIdentityIdentity);
+                AddParameterWithName (command, "pTypeOfAccount", typeOfAccount.ToString());
+                AddParameterWithName (command, "pExternalSystem", externalSystem);
+                AddParameterWithName (command, "pUserID", userID);
+                AddParameterWithName (command, "pPassword", password);
+                AddParameterWithName (command, "pAttachedToPerson", attachedToPerson);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadExternalIdentityFromDataReader(reader);
+                        return ReadExternalIdentityFromDataReader (reader);
                     }
                 }
             }
@@ -155,18 +156,19 @@ namespace Swarmops.Database
         }
 
 
-
-
         private BasicExternalIdentity ReadExternalIdentityFromDataReader (DbDataReader reader)
         {
-            int externalIdentityId = (int)reader["ExternalIdentityIdentity"];
-            ExternalIdentityType typeOfAccount = (ExternalIdentityType)Enum.Parse(typeof(ExternalIdentityType), reader["ExternalIdentityTypeName"].ToString());
-            string externalSystem = (string)reader["ExternalSystem"];
-            string userID = (string)reader["UserID"];
-            string password = (string)reader["Password"];
-            int attachedToPerson = (int)reader["AttachedToPerson"];
+            int externalIdentityId = (int) reader["ExternalIdentityIdentity"];
+            ExternalIdentityType typeOfAccount =
+                (ExternalIdentityType)
+                    Enum.Parse (typeof (ExternalIdentityType), reader["ExternalIdentityTypeName"].ToString());
+            string externalSystem = (string) reader["ExternalSystem"];
+            string userID = (string) reader["UserID"];
+            string password = (string) reader["Password"];
+            int attachedToPerson = (int) reader["AttachedToPerson"];
 
-            return new BasicExternalIdentity(externalIdentityId, typeOfAccount, externalSystem, userID, password, attachedToPerson);
+            return new BasicExternalIdentity (externalIdentityId, typeOfAccount, externalSystem, userID, password,
+                attachedToPerson);
         }
     }
 }

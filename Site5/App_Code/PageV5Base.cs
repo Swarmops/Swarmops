@@ -1,5 +1,6 @@
 using System;
 using System.Web;
+using System.Web.UI;
 using Swarmops.Basic.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Security;
@@ -8,105 +9,115 @@ using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
-/// Base class to use for all data generators (JSON, etc). It supplies identification and localization.
+///     Base class to use for all data generators (JSON, etc). It supplies identification and localization.
 /// </summary>
-
-public class PageV5Base : System.Web.UI.Page
+public class PageV5Base : Page
 {
-    public PermissionSet pagePermissionDefault = new PermissionSet(Permission.CanSeeSelf); //Use from menu;
-    public Access PageAccessRequired = null; // v5 mechanism
     public int DbVersionRequired = 0; // v5 mechanism
-
-    /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
-    protected override void OnInitComplete(System.EventArgs e)
-    {
-        base.OnInitComplete(e);
-    }
+    public Access PageAccessRequired = null; // v5 mechanism
+    public PermissionSet pagePermissionDefault = new PermissionSet (Permission.CanSeeSelf); //Use from menu;
 
     protected new MasterV5Base Master
-    { get { return (MasterV5Base)base.Master; } }
+    {
+        get { return (MasterV5Base) base.Master; }
+    }
 
     protected string PageTitle
     {
-        get { return this.Master.CurrentPageTitle; }
-        set { this.Master.CurrentPageTitle = value; }
+        get { return Master.CurrentPageTitle; }
+        set { Master.CurrentPageTitle = value; }
     }
 
     protected string PageIcon
     {
-        get { return this.Master.CurrentPageIcon; }
-        set { this.Master.CurrentPageIcon = value; }
+        get { return Master.CurrentPageIcon; }
+        set { Master.CurrentPageIcon = value; }
     }
 
     protected string InfoBoxLiteral
     {
-        get { return this.Master.CurrentPageInfoBoxLiteral; }
-        set { this.Master.CurrentPageInfoBoxLiteral = value; }
+        get { return Master.CurrentPageInfoBoxLiteral; }
+        set { Master.CurrentPageInfoBoxLiteral = value; }
     }
 
     // ReSharper disable once InconsistentNaming
     protected EasyUIControl EasyUIControlsUsed
     {
-        get { return this.Master.EasyUIControlsUsed; }    
-        set { this.Master.EasyUIControlsUsed = value; }
+        get { return Master.EasyUIControlsUsed; }
+        set { Master.EasyUIControlsUsed = value; }
     }
 
     public IncludedControl IncludedControlsUsed
     {
-        get { return this.Master.IncludedControlsUsed; }
-        set { this.Master.IncludedControlsUsed = value; }
+        get { return Master.IncludedControlsUsed; }
+        set { Master.IncludedControlsUsed = value; }
     }
 
     protected Person CurrentUser
     {
-        get { return this.Master.CurrentUser; }
+        get { return Master.CurrentUser; }
     }
 
     protected Organization CurrentOrganization
     {
-        get { return this.Master.CurrentOrganization; }
+        get { return Master.CurrentOrganization; }
     }
 
     protected Authority CurrentAuthority
     {
-        get { return this.Master.CurrentAuthority; }
+        get { return Master.CurrentAuthority; }
     }
 
-    protected override void OnPreInit(EventArgs e)
+    /// <summary>
+    ///     This is used to identify special cases for pilot installations. Because of the privacy implications, it
+    ///     should not be used at all from general availability onwards, except for those pilot installations.
+    /// </summary>
+    protected string InstallationId
     {
-        CommonV5.CulturePreInit(Request);
-
- 	    base.OnPreInit(e);
+        get { return Persistence.Key["SwarmopsInstallationId"]; }
     }
 
-    protected override void  OnPreRender(EventArgs e)
+    /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
+    protected override void OnInitComplete (EventArgs e)
+    {
+        base.OnInitComplete (e);
+    }
+
+    protected override void OnPreInit (EventArgs e)
+    {
+        CommonV5.CulturePreInit (Request);
+
+        base.OnPreInit (e);
+    }
+
+    protected override void OnPreRender (EventArgs e)
     {
         // Check security of page against users's credentials
 
         if (!CurrentUser.HasAccess (this.PageAccessRequired))
         {
-            Response.Redirect("/Pages/v5/Security/AccessDenied.aspx");
+            Response.Redirect ("/Pages/v5/Security/AccessDenied.aspx");
         }
 
         // Check necessary database revision
 
         if (this.DbVersionRequired > SwarmDb.DbVersion)
         {
-            Response.Redirect("/Pages/v5/Security/DatabaseUpgradeRequired.aspx");
+            Response.Redirect ("/Pages/v5/Security/DatabaseUpgradeRequired.aspx");
         }
 
- 	    base.OnPreRender(e);
+        base.OnPreRender (e);
     }
 
     protected string LocalizeCount (string resourceString, int count)
     {
-        return LocalizeCount(resourceString, count, false);
+        return LocalizeCount (resourceString, count, false);
     }
 
     protected string LocalizeCount (string resourceString, int count, bool capitalize)
     {
         string result;
-        string[] parts = resourceString.Split('|');
+        string[] parts = resourceString.Split ('|');
 
         switch (count)
         {
@@ -117,13 +128,13 @@ public class PageV5Base : System.Web.UI.Page
                 result = parts[1];
                 break;
             default:
-                result = String.Format(parts[2], count);
+                result = String.Format (parts[2], count);
                 break;
         }
 
         if (capitalize)
         {
-            result = Char.ToUpperInvariant(result[0]) + result.Substring(1);
+            result = Char.ToUpperInvariant (result[0]) + result.Substring (1);
         }
 
         return result;
@@ -136,23 +147,13 @@ public class PageV5Base : System.Web.UI.Page
         // the current set of authentication data. Static page methods cannot access
         // the instance data of PageV5Base.
 
-        return CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current);
-    }
-
-    /// <summary>
-    /// This is used to identify special cases for pilot installations. Because of the privacy implications, it
-    /// should not be used at all from general availability onwards, except for those pilot installations.
-    /// </summary>
-    protected string InstallationId
-    {
-        get { return Persistence.Key["SwarmopsInstallationId"]; }
+        return CommonV5.GetAuthenticationDataAndCulture (HttpContext.Current);
     }
 }
 
 
-
 public class AuthenticationData
 {
-    public Person CurrentUser;
     public Organization CurrentOrganization;
+    public Person CurrentUser;
 }

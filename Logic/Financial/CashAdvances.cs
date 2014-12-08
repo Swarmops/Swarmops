@@ -7,25 +7,14 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
-    public class CashAdvances: PluralBase<CashAdvances,CashAdvance,BasicCashAdvance>
+    public class CashAdvances : PluralBase<CashAdvances, CashAdvance, BasicCashAdvance>
     {
-        static public CashAdvances ForOrganization(Organization organization)
-        {
-            return ForOrganization(organization, false);
-        }
-
-        static public CashAdvances ForOrganization(Organization organization, bool includeClosed)
-        {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetCashAdvances(organization,
-                includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
-        }
-
         public CashAdvances WhereUnattested
         {
             get
             {
                 CashAdvances result = new CashAdvances();
-                result.AddRange(this.Where(cashAdvance => !cashAdvance.Attested));
+                result.AddRange (this.Where (cashAdvance => !cashAdvance.Attested));
 
                 return result;
             }
@@ -36,7 +25,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 CashAdvances result = new CashAdvances();
-                result.AddRange(this.Where(cashAdvance => cashAdvance.Attested));
+                result.AddRange (this.Where (cashAdvance => cashAdvance.Attested));
 
                 return result;
             }
@@ -47,7 +36,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 CashAdvances result = new CashAdvances();
-                result.AddRange(this.Where(cashAdvance => cashAdvance.PaidOut));
+                result.AddRange (this.Where (cashAdvance => cashAdvance.PaidOut));
 
                 return result;
             }
@@ -58,7 +47,7 @@ namespace Swarmops.Logic.Financial
             get
             {
                 CashAdvances result = new CashAdvances();
-                result.AddRange(this.Where(cashAdvance => !cashAdvance.PaidOut));
+                result.AddRange (this.Where (cashAdvance => !cashAdvance.PaidOut));
 
                 return result;
             }
@@ -66,7 +55,18 @@ namespace Swarmops.Logic.Financial
 
         public Int64 TotalAmountCents
         {
-            get { return this.Sum(cashAdvance => cashAdvance.AmountCents); }
+            get { return this.Sum (cashAdvance => cashAdvance.AmountCents); }
+        }
+
+        public static CashAdvances ForOrganization (Organization organization)
+        {
+            return ForOrganization (organization, false);
+        }
+
+        public static CashAdvances ForOrganization (Organization organization, bool includeClosed)
+        {
+            return FromArray (SwarmDb.GetDatabaseForReading().GetCashAdvances (organization,
+                includeClosed ? DatabaseCondition.None : DatabaseCondition.OpenTrue));
         }
     }
 }

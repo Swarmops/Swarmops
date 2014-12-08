@@ -25,6 +25,5 @@ namespace Swarmops.Basic.Enums
         CryptoSecret,
         CryptoRevocation,
         CryptoFingerprint
-
     }
 }

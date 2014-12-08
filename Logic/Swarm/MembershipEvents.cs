@@ -26,9 +26,9 @@ namespace Swarmops.Logic.Swarm
 
             BasicPerson[] allPeople = SwarmDb.GetDatabaseForReading().GetAllPeople();
 
-            var geoLookup = new Dictionary<int, int>();
-            var genderLookup = new Dictionary<int, PersonGender>();
-            var birthYearLookup = new Dictionary<int, int>();
+            Dictionary<int, int> geoLookup = new Dictionary<int, int>();
+            Dictionary<int, PersonGender> genderLookup = new Dictionary<int, PersonGender>();
+            Dictionary<int, int> birthYearLookup = new Dictionary<int, int>();
 
             foreach (BasicPerson person in allPeople)
             {
@@ -43,7 +43,7 @@ namespace Swarmops.Logic.Swarm
 
             // Third phase - for every membership, generate one or two membership events
 
-            var result = new MembershipEvents();
+            MembershipEvents result = new MembershipEvents();
 
             foreach (BasicMembership membership in allMemberships)
             {
@@ -51,43 +51,43 @@ namespace Swarmops.Logic.Swarm
                 int birthYear = 0;
                 PersonGender gender = PersonGender.Unknown;
 
-                if (geoLookup.ContainsKey(membership.PersonId))
+                if (geoLookup.ContainsKey (membership.PersonId))
                 {
                     geographyId = geoLookup[membership.PersonId];
                     gender = genderLookup[membership.PersonId];
                     birthYear = birthYearLookup[membership.PersonId];
                 }
 
-                result.Add(new MembershipEvent(membership.MemberSince, membership.PersonId, membership.OrganizationId,
-                                               geographyId, birthYear, gender, 1));
+                result.Add (new MembershipEvent (membership.MemberSince, membership.PersonId, membership.OrganizationId,
+                    geographyId, birthYear, gender, 1));
 
                 if (!membership.Active)
                 {
-                    var safetyDelta = new TimeSpan(0);
+                    TimeSpan safetyDelta = new TimeSpan (0);
 
                     // A few records in the database have had their memberships terminated at the exact time of creation. This means that sorting will
                     // be unpredictable, when it relies on the termination coming at a later time than the creation.
 
                     // To solve this, make sure they are more than five seconds apart.
 
-                    if (((DateTime) membership.DateTerminated).Date == membership.MemberSince.Date)
+                    if (membership.DateTerminated.Date == membership.MemberSince.Date)
                         // First simple check
                     {
-                        if ((((DateTime) membership.DateTerminated) - membership.MemberSince) < new TimeSpan(0, 0, 5))
+                        if ((membership.DateTerminated - membership.MemberSince) < new TimeSpan (0, 0, 5))
                         {
-                            safetyDelta = new TimeSpan(0, 0, 5);
+                            safetyDelta = new TimeSpan (0, 0, 5);
                         }
                     }
 
-                    result.Add(new MembershipEvent((DateTime) membership.DateTerminated + safetyDelta,
-                                                   membership.PersonId, membership.OrganizationId, geographyId,
-                                                   birthYear, gender, -1));
+                    result.Add (new MembershipEvent (membership.DateTerminated + safetyDelta,
+                        membership.PersonId, membership.OrganizationId, geographyId,
+                        birthYear, gender, -1));
                 }
             }
 
             // Fourth - sort
 
-            result.Sort(new MembershipEventSorter());
+            result.Sort (new MembershipEventSorter());
 
             return result;
         }
@@ -95,14 +95,14 @@ namespace Swarmops.Logic.Swarm
 
         public static MembershipEvents FromXml (string xml)
         {
-            var serializer = new XmlSerializer(typeof (MembershipEvents));
+            XmlSerializer serializer = new XmlSerializer (typeof (MembershipEvents));
 
-            var stream = new MemoryStream();
-            byte[] xmlBytes = Encoding.Default.GetBytes(xml);
-            stream.Write(xmlBytes, 0, xmlBytes.Length);
+            MemoryStream stream = new MemoryStream();
+            byte[] xmlBytes = Encoding.Default.GetBytes (xml);
+            stream.Write (xmlBytes, 0, xmlBytes.Length);
 
             stream.Position = 0;
-            var result = (MembershipEvents) serializer.Deserialize(stream);
+            MembershipEvents result = (MembershipEvents) serializer.Deserialize (stream);
             stream.Close();
 
             return result;
@@ -111,13 +111,13 @@ namespace Swarmops.Logic.Swarm
 
         public string ToXml()
         {
-            var serializer = new XmlSerializer(typeof (MembershipEvents));
+            XmlSerializer serializer = new XmlSerializer (typeof (MembershipEvents));
 
-            var stream = new MemoryStream();
-            serializer.Serialize(stream, this);
+            MemoryStream stream = new MemoryStream();
+            serializer.Serialize (stream, this);
 
             byte[] xmlBytes = stream.GetBuffer();
-            return Encoding.Default.GetString(xmlBytes);
+            return Encoding.Default.GetString (xmlBytes);
         }
     }
 
@@ -131,7 +131,7 @@ namespace Swarmops.Logic.Swarm
             {
                 return -1;
             }
-            else if (x.DateTime > y.DateTime)
+            if (x.DateTime > y.DateTime)
             {
                 return 1;
             }

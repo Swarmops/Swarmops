@@ -4,41 +4,37 @@ using Swarmops.Database;
 
 namespace Swarmops.Logic.Governance
 {
-    public class MeetingElectionVoters: List<MeetingElectionVoter>
+    public class MeetingElectionVoters : List<MeetingElectionVoter>
     {
-        static public MeetingElectionVoters FromArray(BasicInternalPollVoter[] basicArray)
+        public static MeetingElectionVoters FromArray (BasicInternalPollVoter[] basicArray)
         {
-            var result = new MeetingElectionVoters { Capacity = basicArray.Length * 11 / 10 };
+            MeetingElectionVoters result = new MeetingElectionVoters {Capacity = basicArray.Length*11/10};
 
             foreach (BasicInternalPollVoter basic in basicArray)
             {
-                result.Add(MeetingElectionVoter.FromBasic(basic));
+                result.Add (MeetingElectionVoter.FromBasic (basic));
             }
 
             return result;
         }
 
-        static public MeetingElectionVoters ForPoll(MeetingElection poll, bool includeClosed)
+        public static MeetingElectionVoters ForPoll (MeetingElection poll, bool includeClosed)
         {
             if (includeClosed)
             {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPollVoters(poll));
+                return FromArray (SwarmDb.GetDatabaseForReading().GetInternalPollVoters (poll));
             }
-            else
-            {
-                return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPollVoters(poll, DatabaseCondition.OpenTrue));
-            }
+            return FromArray (SwarmDb.GetDatabaseForReading().GetInternalPollVoters (poll, DatabaseCondition.OpenTrue));
         }
 
-        static public MeetingElectionVoters ForPoll(MeetingElection poll)
+        public static MeetingElectionVoters ForPoll (MeetingElection poll)
         {
-            return ForPoll(poll, false);
+            return ForPoll (poll, false);
         }
 
-        static public MeetingElectionVoters ForPollClosed (MeetingElection poll)
+        public static MeetingElectionVoters ForPollClosed (MeetingElection poll)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetInternalPollVoters(poll, DatabaseCondition.OpenFalse));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetInternalPollVoters (poll, DatabaseCondition.OpenFalse));
         }
-
     }
 }

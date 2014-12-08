@@ -34,7 +34,7 @@ namespace Swarmops.Logic.Swarm
 
         internal static ChurnData FromArray (BasicChurnDataPoint[] basicArray)
         {
-            var result = new ChurnData();
+            ChurnData result = new ChurnData();
 
             result.Capacity = basicArray.Length*11/10;
             foreach (BasicChurnDataPoint basic in basicArray)
@@ -47,7 +47,7 @@ namespace Swarmops.Logic.Swarm
 
 
         /// <summary>
-        /// Call this when one or more memberships have expired for a person.
+        ///     Call this when one or more memberships have expired for a person.
         /// </summary>
         /// <param name="personId">The person churning.</param>
         /// <param name="organizationId">The organization churned from.</param>
@@ -85,7 +85,9 @@ namespace Swarmops.Logic.Swarm
 
         public static ChurnData GetByDate (Organization organization, DateTime dateLower, DateTime dateUpper)
         {
-            return FromArray (SwarmDb.GetDatabaseForReading().GetChurnDataForOrganization (organization, dateLower, dateUpper));
+            return
+                FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetChurnDataForOrganization (organization, dateLower, dateUpper));
         }
 
 

@@ -6,28 +6,32 @@ namespace Swarmops.Basic.Types.Financial
     public class BasicFinancialAccount : IHasIdentity
     {
         public BasicFinancialAccount (int financialAccountId, string name, FinancialAccountType accountType,
-                                      int organizationId, int parentFinancialAccountId, int ownerPersonId,
-                                      bool open, int openedYear, int closedYear, bool active, bool expensable,
-                                      bool administrative, int linkBackward, int linkForward)
+            int organizationId, int parentFinancialAccountId, int ownerPersonId,
+            bool open, int openedYear, int closedYear, bool active, bool expensable,
+            bool administrative, int linkBackward, int linkForward)
         {
-            this.FinancialAccountId = financialAccountId;
-            this.Name = name;
-            this.AccountType = accountType;
-            this.OrganizationId = organizationId;
-            this.OwnerPersonId = ownerPersonId;
-            this.ParentFinancialAccountId = parentFinancialAccountId;
-            this.Open = open;
-            this.OpenedYear = openedYear;
-            this.ClosedYear = closedYear;
-            this.Active = active;
-            this.Expensable = expensable;
-            this.Administrative = administrative;
-            this.LinkBackward = linkBackward;
-            this.LinkForward = linkForward;
+            FinancialAccountId = financialAccountId;
+            Name = name;
+            AccountType = accountType;
+            OrganizationId = organizationId;
+            OwnerPersonId = ownerPersonId;
+            ParentFinancialAccountId = parentFinancialAccountId;
+            Open = open;
+            OpenedYear = openedYear;
+            ClosedYear = closedYear;
+            Active = active;
+            Expensable = expensable;
+            Administrative = administrative;
+            LinkBackward = linkBackward;
+            LinkForward = linkForward;
         }
 
         public BasicFinancialAccount (BasicFinancialAccount original) :
-            this(original.Identity, original.Name, original.AccountType, original.OrganizationId, original.ParentFinancialAccountId, original.OwnerPersonId, original.Open, original.OpenedYear, original.ClosedYear, original.Active, original.Expensable, original.Administrative, original.LinkBackward, original.LinkForward)
+            this (
+            original.Identity, original.Name, original.AccountType, original.OrganizationId,
+            original.ParentFinancialAccountId, original.OwnerPersonId, original.Open, original.OpenedYear,
+            original.ClosedYear, original.Active, original.Expensable, original.Administrative, original.LinkBackward,
+            original.LinkForward)
         {
             // Empty copy constructor
         }
@@ -52,7 +56,7 @@ namespace Swarmops.Basic.Types.Financial
 
         public int Identity
         {
-            get { return this.FinancialAccountId; }
+            get { return FinancialAccountId; }
         }
 
         #endregion

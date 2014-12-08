@@ -2,8 +2,8 @@
 
 namespace Swarmops.Logic.Financial
 {
-    interface IBankDataAccountStatementReader
+    internal interface IBankDataAccountStatementReader
     {
-        ImportedBankData ReadData(StreamReader data, FinancialAccount account, ExternalBankDataProfile profile);
+        ImportedBankData ReadData (StreamReader data, FinancialAccount account, ExternalBankDataProfile profile);
     }
 }

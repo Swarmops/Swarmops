@@ -5,7 +5,13 @@
             $('#<%=this.DropControl.ClientID %>').combobox({
                 editable: false,
                 height: 30,
-                width: 300
+                width: 300<% 
+                if (!String.IsNullOrEmpty(this.OnClientChange))
+                {
+                    Response.Write(",\r\nonChange: function(newVal, oldVal) { " + this.OnClientChange + "(oldVal, newVal); }");
+                }
+                           
+                %>
             });
             $('#<%=this.DropControl.ClientID %>').combobox('setValue', '<%=this.DropControl.SelectedValue%>');
 

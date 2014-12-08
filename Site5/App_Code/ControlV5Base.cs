@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Web;
+using System.Web.UI;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -8,76 +9,58 @@ using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
-/// Summary description for ControlV5Base
+///     Summary description for ControlV5Base
 /// </summary>
-public class ControlV5Base : System.Web.UI.UserControl
+public class ControlV5Base : UserControl
 {
-    public ControlV5Base()
+    private Authority _authority;
+    private Organization _currentOrganization;
+    private Person _currentUser;
+
+    protected Organization CurrentOrganization
     {
+        get { return this._currentOrganization; }
     }
 
-    public Authority _authority = null;
-    public Person _currentUser = null;
-    public Organization _currentOrganization = null;
+    protected Person CurrentUser
+    {
+        get { return this._currentUser; }
+    }
 
-    protected override void OnLoad(EventArgs e)
+    protected Authority CurrentAuthority
+    {
+        get { return this._authority; }
+    }
+
+    protected override void OnLoad (EventArgs e)
     {
         int currentUserId = 0;
         int currentOrganizationId = 0;
 
         string identity = HttpContext.Current.User.Identity.Name;
-        string[] identityTokens = identity.Split(',');
+        string[] identityTokens = identity.Split (',');
 
         string userIdentityString = identityTokens[0];
         string organizationIdentityString = identityTokens[1];
 
-        currentUserId = Convert.ToInt32(userIdentityString);
-        currentOrganizationId = Convert.ToInt32(organizationIdentityString);
-        _currentUser = Person.FromIdentity(currentUserId);
-        _authority = _currentUser.GetAuthority();
+        currentUserId = Convert.ToInt32 (userIdentityString);
+        currentOrganizationId = Convert.ToInt32 (organizationIdentityString);
+        this._currentUser = Person.FromIdentity (currentUserId);
+        this._authority = this._currentUser.GetAuthority();
         try
         {
-            _currentOrganization = Organization.FromIdentity(currentOrganizationId);
+            this._currentOrganization = Organization.FromIdentity (currentOrganizationId);
         }
         catch (ArgumentException)
         {
-            if (PilotInstallationIds.IsPilot(PilotInstallationIds.DevelopmentSandbox))
+            if (PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
             {
                 // It's possible this organization was deleted. Log on to Sandbox instead.
-                _currentOrganization = Organization.Sandbox;
+                this._currentOrganization = Organization.Sandbox;
             }
         }
 
-        base.OnLoad(e);
+        base.OnLoad (e);
     }
 
-    protected string GetBuildIdentity()
-    {
-        // Read build number if not loaded, or set to "Private" if none
-        string buildIdentity = (string) GuidCache.Get("_buildIdentity");
-
-        if (buildIdentity == null)
-        {
-            try
-            {
-                using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/BuildIdentity.txt")))
-                {
-                    buildIdentity = "Build " + reader.ReadLine();
-                }
-
-                using (StreamReader reader = File.OpenText(HttpContext.Current.Request.MapPath("~/SprintName.txt")))
-                {
-                    buildIdentity += " (" + reader.ReadLine() + ")";
-                }
-            }
-            catch (Exception)
-            {
-                buildIdentity = "Private Build";
-            }
-
-            GuidCache.Set("_buildIdentity", buildIdentity);
-        }
-
-        return buildIdentity;
-    }
 }

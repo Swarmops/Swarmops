@@ -10,23 +10,24 @@ namespace Swarmops.Database
     {
         #region Field reading code
 
-        private const string countryFieldSequence = " CountryId,Name,Code,Culture,GeographyId " +  // 0-4
-                                            " FROM Countries ";
+        private const string countryFieldSequence = " CountryId,Name,Code,Culture,CurrencyCode," + // 0-4
+                                                    "GeographyId,PostalCodeLength FROM Countries "; // 5-6
 
 
-        private static BasicCountry ReadCountryFromDataReader(DbDataReader reader)
+        private static BasicCountry ReadCountryFromDataReader (DbDataReader reader)
         {
-            int countryId = reader.GetInt32(0);
-            string name = reader.GetString(1);
-            string code = reader.GetString(2).ToUpperInvariant();
-            string culture = reader.GetString(3);
-            int geographyId = reader.GetInt32(4);
+            int countryId = reader.GetInt32 (0);
+            string name = reader.GetString (1);
+            string code = reader.GetString (2).ToUpperInvariant();
+            string culture = reader.GetString (3);
+            string currencyCode = reader.GetString (4);
+            int geographyId = reader.GetInt32 (5);
+            int postalCodeLength = reader.GetInt32 (6);
 
-            return new BasicCountry(countryId, name, code, culture, geographyId);
+            return new BasicCountry (countryId, name, code, culture, currencyCode, geographyId, postalCodeLength);
         }
 
         #endregion
-
 
         #region Record reading code
 
@@ -37,17 +38,19 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand("SELECT " + countryFieldSequence + " WHERE Code='" + countryCode.ToUpperInvariant().Replace("'", "''") + "'",
-                                 connection);
+                    GetDbCommand (
+                        "SELECT " + countryFieldSequence + " WHERE Code='" +
+                        countryCode.ToUpperInvariant().Replace ("'", "''") + "'",
+                        connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadCountryFromDataReader(reader);
+                        return ReadCountryFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown Country Code");
+                    throw new ArgumentException ("Unknown Country Code");
                 }
             }
         }
@@ -58,22 +61,22 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + countryFieldSequence + " WHERE CountryId=" + countryId.ToString(),
-                                                 connection);
+                DbCommand command = GetDbCommand ("SELECT " + countryFieldSequence + " WHERE CountryId=" + countryId,
+                    connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadCountryFromDataReader(reader);
+                        return ReadCountryFromDataReader (reader);
                     }
 
-                    throw new ArgumentException("Unknown CountryId");
+                    throw new ArgumentException ("Unknown CountryId");
                 }
             }
         }
 
-        public BasicCountry[] GetAllCountries ()
+        public BasicCountry[] GetAllCountries()
         {
             List<BasicCountry> result = new List<BasicCountry>();
 
@@ -81,13 +84,13 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SELECT " + countryFieldSequence + " ORDER BY Code", connection);
+                DbCommand command = GetDbCommand ("SELECT " + countryFieldSequence + " ORDER BY Code", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadCountryFromDataReader(reader));
+                        result.Add (ReadCountryFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -95,7 +98,7 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicCountry[] GetCountriesInUse ()
+        public BasicCountry[] GetCountriesInUse()
         {
             return GetAllCountries(); // Migrate this once Organizations has moved, too
 
@@ -122,25 +125,24 @@ namespace Swarmops.Database
 
         #endregion
 
-
-
-        public int CreateCountry (string name, string code, string culture, int geographyId, int postalCodeLength, string collation)
+        public int CreateCountry (string name, string code, string culture, int geographyId, int postalCodeLength,
+            string collation)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateCountry", connection);
+                DbCommand command = GetDbCommand ("CreateCountry", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "name", name);
-                AddParameterWithName(command, "code", code);
-                AddParameterWithName(command, "culture", culture);
-                AddParameterWithName(command, "geographyId", geographyId);
-                AddParameterWithName(command, "postalCodeLength", postalCodeLength);
-                AddParameterWithName(command, "collation", collation);
+                AddParameterWithName (command, "name", name);
+                AddParameterWithName (command, "code", code);
+                AddParameterWithName (command, "culture", culture);
+                AddParameterWithName (command, "geographyId", geographyId);
+                AddParameterWithName (command, "postalCodeLength", postalCodeLength);
+                AddParameterWithName (command, "collation", collation);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
@@ -150,16 +152,14 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetCountryGeographyId", connection);
+                DbCommand command = GetDbCommand ("SetCountryGeographyId", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "countryId", countryId);
-                AddParameterWithName(command, "geographyId", geographyId);
-                
-                return Convert.ToInt32(command.ExecuteScalar());
+                AddParameterWithName (command, "countryId", countryId);
+                AddParameterWithName (command, "geographyId", geographyId);
+
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
-
-
     }
 }

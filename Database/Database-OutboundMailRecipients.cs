@@ -12,17 +12,17 @@ namespace Swarmops.Database
             " FROM OutboundMailRecipients ";
 
 
-        private BasicOutboundMailRecipient ReadOutboundMailRecipientFromDataReader(DbDataReader reader)
+        private BasicOutboundMailRecipient ReadOutboundMailRecipientFromDataReader (DbDataReader reader)
         {
-            int outboundMailRecipientId = reader.GetInt32(0);
-            int outboundMailId = reader.GetInt32(1);
-            int personId = reader.GetInt32(2);
-            bool asOfficer = reader.GetBoolean(3);
-            int personType = reader.GetInt32(4);
+            int outboundMailRecipientId = reader.GetInt32 (0);
+            int outboundMailId = reader.GetInt32 (1);
+            int personId = reader.GetInt32 (2);
+            bool asOfficer = reader.GetBoolean (3);
+            int personType = reader.GetInt32 (4);
 
-            return new BasicOutboundMailRecipient(outboundMailRecipientId, outboundMailId, personId, asOfficer, personType);
+            return new BasicOutboundMailRecipient (outboundMailRecipientId, outboundMailId, personId, asOfficer,
+                personType);
         }
-
 
 
         public BasicOutboundMailRecipient[] GetTopOutboundMailRecipients (int outboundMailId, int batchSize)
@@ -34,15 +34,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
+                    GetDbCommand (
                         "SELECT " + outboundMailRecipientFieldSequence + " WHERE OutboundMailId=" +
-                        outboundMailId.ToString() + " LIMIT " + batchSize.ToString(), connection);
+                        outboundMailId + " LIMIT " + batchSize, connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadOutboundMailRecipientFromDataReader(reader));
+                        result.Add (ReadOutboundMailRecipientFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -51,17 +51,16 @@ namespace Swarmops.Database
         }
 
 
-
         public void DeleteOutboundMailRecipient (int outboundMailRecipientId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("DeleteOutboundMailRecipient", connection);
+                DbCommand command = GetDbCommand ("DeleteOutboundMailRecipient", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundMailRecipientId", outboundMailRecipientId);
+                AddParameterWithName (command, "outboundMailRecipientId", outboundMailRecipientId);
 
                 command.ExecuteNonQuery();
             }
@@ -73,13 +72,13 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("CreateOutboundMailRecipient", connection);
+                DbCommand command = GetDbCommand ("CreateOutboundMailRecipient", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "outboundMailId", outboundMailId);
-                AddParameterWithName(command, "personId", personId);
-                AddParameterWithName(command, "asOfficer", asOfficer);
-                AddParameterWithName(command, "personType", personType);
+                AddParameterWithName (command, "outboundMailId", outboundMailId);
+                AddParameterWithName (command, "personId", personId);
+                AddParameterWithName (command, "asOfficer", asOfficer);
+                AddParameterWithName (command, "personType", personType);
 
                 command.ExecuteNonQuery();
             }

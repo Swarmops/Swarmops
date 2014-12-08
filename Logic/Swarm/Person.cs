@@ -10,6 +10,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Database;
 using Swarmops.Database.Attributes;
 using Swarmops.Logic.Communications;
+using Swarmops.Logic.DashboardTasks;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Special.Mail;
 using Swarmops.Logic.Special.Sweden;
@@ -19,31 +20,32 @@ using Swarmops.Logic.Support;
 namespace Swarmops.Logic.Swarm
 {
     [Serializable]
-    [DbRecordType("Person")]
+    [DbRecordType ("Person")]
     public class Person : BasicPerson, IComparable, IHasIdentity
     {
         private readonly IHandleProvider handleProvider;
+        private ObjectOptionalData _optionalData;
         private Dictionary<int, bool> subscriptions;
 
         protected Person (BasicPerson basic)
-            : base(basic)
+            : base (basic)
         {
             // Today, we set the Swedish handle provider. This can be changed as desired.
 
             this.handleProvider = new SwedishForumHandleProvider();
         }
 
-        private ObjectOptionalData _optionalData;
         private ObjectOptionalData OptionalData
         {
             get
             {
-                if (_optionalData == null)
+                if (this._optionalData == null)
                 {
-                    Person p = (Person)this;
-                    _optionalData = ObjectOptionalData.ForObject(p); //Added cast, otherwise it fails for subclasses
+                    Person p = this;
+                    this._optionalData = ObjectOptionalData.ForObject (p);
+                    //Added cast, otherwise it fails for subclasses
                 }
-                return _optionalData;
+                return this._optionalData;
             }
         }
 
@@ -54,20 +56,20 @@ namespace Swarmops.Logic.Swarm
 
         public bool IsActivist
         {
-            get { return SwarmDb.GetDatabaseForReading().GetActivistStatus(Identity); }
+            get { return SwarmDb.GetDatabaseForReading().GetActivistStatus (Identity); }
         }
 
         public new virtual string Name
         {
-            get { return base.Name.Replace("|", " "); }
-            set { SwarmDb.GetDatabaseForWriting().SetPersonName(Identity, value); }
+            get { return base.Name.Replace ("|", " "); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonName (Identity, value); }
         }
 
 
         public new virtual string Street
         {
             get { return base.Street; }
-            set { SwarmDb.GetDatabaseForWriting().SetPersonStreet(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonStreet (Identity, value); }
         }
 
 
@@ -76,7 +78,7 @@ namespace Swarmops.Logic.Swarm
             get { return base.PostalCode; }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetPersonPostalCode(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPersonPostalCode (Identity, value);
                 base.PostalCode = value;
                 ResolveGeography();
             }
@@ -88,7 +90,7 @@ namespace Swarmops.Logic.Swarm
             get { return base.CityName; }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetPersonCity(Identity, value);
+                SwarmDb.GetDatabaseForWriting().SetPersonCity (Identity, value);
                 base.CityName = value;
                 ResolveGeography();
             }
@@ -97,53 +99,13 @@ namespace Swarmops.Logic.Swarm
 
         public Country Country
         {
-            get { return Country.FromIdentity(base.CountryId); }
+            get { return Country.FromIdentity (base.CountryId); }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetPersonCountry(Identity, value.Identity);
+                SwarmDb.GetDatabaseForWriting().SetPersonCountry (Identity, value.Identity);
                 base.CountryId = value.Identity;
                 ResolveGeography();
             }
-        }
-
-
-        protected int ResolveGeography ()
-        {
-            if (base.CountryId == 0)
-            {
-                base.GeographyId = 1;
-                SwarmDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, 1);
-                return 1; // root geography, if no country set
-            }
-
-            Structure.Cities cities = Cities.FromPostalCode(this.PostalCode, base.CountryId);
-            City city = null;
-
-            if (cities.Count == 0)
-            {
-                try
-                {
-                    city = Structure.City.FromName(this.CityName, this.CountryId);
-                }
-                catch (ArgumentException)
-                {
-                    // ignore
-                }
-            }
-            else
-            {
-                city = cities[0]; // This may be adjusted manually, but will work in 99.9% of cases
-            }
-
-            if (city == null)
-            {
-                base.GeographyId = Country.FromIdentity(base.CountryId).GeographyId;
-                return base.GeographyId;
-            }
-
-            base.GeographyId = city.GeographyId;
-            SwarmDb.GetDatabaseForWriting().SetPersonGeography(this.Identity, base.GeographyId);
-            return city.GeographyId;
         }
 
 
@@ -156,11 +118,11 @@ namespace Swarmops.Logic.Swarm
                     ResolveGeography();
                 }
 
-                return Geography.FromIdentity(GeographyId);
+                return Geography.FromIdentity (GeographyId);
             }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetPersonGeography(Identity, value.Identity);
+                SwarmDb.GetDatabaseForWriting().SetPersonGeography (Identity, value.Identity);
                 base.GeographyId = value.Identity;
             }
         }
@@ -182,27 +144,27 @@ namespace Swarmops.Logic.Swarm
         public virtual string Mail
         {
             get { return base.Email; }
-            set { SwarmDb.GetDatabaseForWriting().SetPersonEmail(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonEmail (Identity, value); }
         }
 
 
         public new virtual string Phone
         {
             get { return base.Phone; }
-            set { SwarmDb.GetDatabaseForWriting().SetPersonPhone(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonPhone (Identity, value); }
         }
 
 
         public new virtual DateTime Birthdate
         {
             get { return base.Birthdate; }
-            set { SwarmDb.GetDatabaseForWriting().SetPersonBirthdate(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonBirthdate (Identity, value); }
         }
 
         public new virtual PersonGender Gender
         {
             get { return base.Gender; }
-            set { SwarmDb.GetDatabaseForWriting().SetPersonGender(Identity, value); }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonGender (Identity, value); }
         }
 
 
@@ -212,127 +174,113 @@ namespace Swarmops.Logic.Swarm
         {
             get
             {
-                string email = OptionalData.GetOptionalDataString(ObjectOptionalDataType.PartyEmail);
+                string email = OptionalData.GetOptionalDataString (ObjectOptionalDataType.PartyEmail);
 
                 return email;
             }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.PartyEmail, value); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.PartyEmail, value); }
         }
 
 
         public virtual string BankName
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.BankName); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BankName, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.BankName); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BankName, value); }
         }
 
 
         public virtual string BankClearing
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.BankClearing); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BankClearing, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.BankClearing); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BankClearing, value); }
         }
 
 
         public virtual string BankAccount
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.BankAccount); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BankAccount, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.BankAccount); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BankAccount, value); }
         }
 
 
         public virtual string CryptoPublicKey
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.CryptoPublicKey); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.CryptoPublicKey, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.CryptoPublicKey); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.CryptoPublicKey, value); }
         }
 
         public virtual string CryptoSecretKey
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.CryptoSecretKey); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.CryptoSecretKey, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.CryptoSecretKey); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.CryptoSecretKey, value); }
         }
 
         public virtual string CryptoFingerprint
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.CryptoFingerprint); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.CryptoFingerprint, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.CryptoFingerprint); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.CryptoFingerprint, value); }
         }
 
         public virtual string CryptoRevocationCertificate
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.CryptoRevocation); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.CryptoRevocation, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.CryptoRevocation); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.CryptoRevocation, value); }
         }
 
         [Obsolete ("Use NationalIdNumber instead")]
         public virtual string PersonalNumber
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.PersonalNumber); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.PersonalNumber, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.PersonalNumber); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.PersonalNumber, value); }
         }
 
         public virtual string NationalIdNumber
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.NationalIdNumber); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.NationalIdNumber, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.NationalIdNumber); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.NationalIdNumber, value); }
         }
 
         public virtual string Longitude
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.Longitude); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.Longitude, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.Longitude); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.Longitude, value); }
         }
 
         public virtual string Latitude
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.Latitude); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.Latitude, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.Latitude); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.Latitude, value); }
         }
 
         public virtual string BitIdAddress
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.BitIdLoginAddress); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BitIdLoginAddress, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.BitIdLoginAddress); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BitIdLoginAddress, value); }
         }
-
-        public static Person FromBitIdAddress(string address)
-        {
-            People candidates = People.FromOptionalData(ObjectOptionalDataType.BitIdLoginAddress, address);
-
-            if (candidates.Count == 1)
-            {
-                return candidates[0];
-            }
-
-            throw new ArgumentException("Zero or several candidates");
-        }
-
-
 
 
         public virtual bool MailUnreachable
         {
-            get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.MailUnreachable); }
-            set { OptionalData.SetOptionalDataBool(ObjectOptionalDataType.MailUnreachable, value); }
+            get { return OptionalData.GetOptionalDataBool (ObjectOptionalDataType.MailUnreachable); }
+            set { OptionalData.SetOptionalDataBool (ObjectOptionalDataType.MailUnreachable, value); }
         }
 
         public virtual bool LimitMailToLatin1
         {
-            get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.LimitMailToLatin1); }
-            set { OptionalData.SetOptionalDataBool(ObjectOptionalDataType.LimitMailToLatin1, value); }
+            get { return OptionalData.GetOptionalDataBool (ObjectOptionalDataType.LimitMailToLatin1); }
+            set { OptionalData.SetOptionalDataBool (ObjectOptionalDataType.LimitMailToLatin1, value); }
         }
 
         public virtual bool LimitMailToText
         {
-            get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.LimitMailToText); }
-            set { OptionalData.SetOptionalDataBool(ObjectOptionalDataType.LimitMailToText, value); }
+            get { return OptionalData.GetOptionalDataBool (ObjectOptionalDataType.LimitMailToText); }
+            set { OptionalData.SetOptionalDataBool (ObjectOptionalDataType.LimitMailToText, value); }
         }
 
         public virtual bool NeverMail
         {
-            get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.NeverMail); }
-            set { OptionalData.SetOptionalDataBool(ObjectOptionalDataType.NeverMail, value); }
+            get { return OptionalData.GetOptionalDataBool (ObjectOptionalDataType.NeverMail); }
+            set { OptionalData.SetOptionalDataBool (ObjectOptionalDataType.NeverMail, value); }
         }
 
 
@@ -342,31 +290,31 @@ namespace Swarmops.Logic.Swarm
             {
                 if (this.handleProvider == null)
                 {
-                    throw new NotImplementedException("No handle provider");
+                    throw new NotImplementedException ("No handle provider");
                 }
 
-                return this.handleProvider.GetPersonHandle(Identity);
+                return this.handleProvider.GetPersonHandle (Identity);
             }
             set
             {
                 if (this.handleProvider == null)
                 {
-                    throw new NotImplementedException("No handle provider");
+                    throw new NotImplementedException ("No handle provider");
                 }
 
-                this.handleProvider.SetPersonHandle(Identity, value);
+                this.handleProvider.SetPersonHandle (Identity, value);
             }
         }
 
         public virtual int SwedishForumAccountId
         {
-            get { return OptionalData.GetOptionalDataInt(ObjectOptionalDataType.ForumAccountId); }
-            set { OptionalData.SetOptionalDataInt(ObjectOptionalDataType.ForumAccountId, value); }
+            get { return OptionalData.GetOptionalDataInt (ObjectOptionalDataType.ForumAccountId); }
+            set { OptionalData.SetOptionalDataInt (ObjectOptionalDataType.ForumAccountId, value); }
         }
 
         public virtual string SwedishForumAccountName
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.ForumAccountName); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.ForumAccountName); }
         }
 
 
@@ -376,48 +324,264 @@ namespace Swarmops.Logic.Swarm
         {
             get
             {
-                throw (new Exception("Person.HasFinancialAccess was called; it is replaced by Authority.HasAccess(...)"));
+                throw (new Exception ("Person.HasFinancialAccess was called; it is replaced by Authority.HasAccess(...)"));
             }
         }
 
         public string ResetPasswordTicket
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.ResetPasswordTicket); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.ResetPasswordTicket, value); }
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.ResetPasswordTicket); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.ResetPasswordTicket, value); }
         }
 
         public virtual bool EMailIsInvalid
         {
-            get { return OptionalData.GetOptionalDataBool(ObjectOptionalDataType.EMailIsInvalid); }
-            set { OptionalData.SetOptionalDataBool(ObjectOptionalDataType.EMailIsInvalid, value); }
+            get { return OptionalData.GetOptionalDataBool (ObjectOptionalDataType.EMailIsInvalid); }
+            set { OptionalData.SetOptionalDataBool (ObjectOptionalDataType.EMailIsInvalid, value); }
         }
 
+        public new string PasswordHash
+        {
+            get { return base.PasswordHash; }
+            set
+            {
+                SwarmDb.GetDatabaseForWriting().SetPersonPasswordHash (Identity, value);
+                base.PasswordHash = value;
+            }
+        }
+
+        public virtual string TempPasswordHash
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.PersonTempPasswordStore); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.PersonTempPasswordStore, value); }
+        }
+
+        public string Initials
+        {
+            get
+            {
+                string[] nameWords = Name.Split (' ');
+
+                string result = string.Empty;
+                foreach (string nameWord in nameWords)
+                {
+                    if (nameWord.Length > 0)
+                    {
+                        result += Char.ToUpperInvariant (nameWord[0]);
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        public string PreferredCulture
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty (OptionalData.GetOptionalDataString (ObjectOptionalDataType.PreferredCulture)))
+                {
+                    return OptionalData.GetOptionalDataString (ObjectOptionalDataType.PreferredCulture);
+                }
+
+                // make best guesses:
+
+                if (base.CountryId != 0 && Country != null && !string.IsNullOrEmpty (Country.Culture))
+                {
+                    return Country.Culture;
+                }
+
+                //not set, make a guess...
+
+                foreach (Membership ms in GetMemberships (false))
+                {
+                    try
+                    {
+                        return ms.Organization.DefaultCountry.Culture;
+                    }
+                    catch
+                    {
+                    }
+                }
+
+                return CultureInfo.InvariantCulture.Name;
+            }
+
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.PreferredCulture, value); }
+        }
+
+        public string Canonical // On the canonical format "Rick Falkvinge (#1)"
+        {
+            get { return Name + " (#" + Identity + ")"; }
+        }
+
+        public Image Portrait
+        {
+            get
+            {
+                Documents docs = Documents.ForObject (this);
+
+                if (docs.Count == 0)
+                {
+                    return null;
+                }
+
+                return Image.FromFile (@"C:\Data\Uploads\PirateWeb\" + docs[0].ServerFileName);
+            }
+        }
+
+        public string PortraitPhotographer
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.PortraitPhotographer); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.PortraitPhotographer, value); }
+        }
+
+        public string TShirtSize
+            // ReSharper restore InconsistentNaming
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.TShirtSize); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.TShirtSize, value); }
+        }
+
+        public string BlogName
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.BlogName); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BlogName, value); }
+        }
+
+        public string BlogUrl
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.BlogUrl); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BlogUrl, value); }
+        }
+
+        public string Formal
+        {
+            get { return FirstName[0] + " " + LastName; }
+        }
+
+        public string FirstName
+        {
+            get
+            {
+                int indexLastSpace = Name.LastIndexOf (' ');
+                if (indexLastSpace == -1)
+                {
+                    return Name;
+                }
+
+                return Name.Substring (0, indexLastSpace);
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                int indexLastSpace = Name.LastIndexOf (' ');
+                if (indexLastSpace == -1)
+                {
+                    return Name;
+                }
+
+                return Name.Substring (indexLastSpace + 1);
+            }
+        }
+
+        protected string MailMD5
+        {
+            get
+            {
+                string email = Mail.Trim().ToLowerInvariant();
+
+                string md5 = MD5.Hash (email);
+
+                return md5.Replace (" ", "").ToLowerInvariant();
+            }
+        }
+
+        public static int NobodyId
+        {
+            get { return 0; }
+        }
 
         #region IComparable Members
 
         // TODO: Is same name really a match for equality for Person?  /JL
         public int CompareTo (object obj)
         {
-            var otherPerson = (Person)obj;
+            Person otherPerson = (Person) obj;
 
-            return String.Compare(Name, otherPerson.Name);
+            return String.Compare (Name, otherPerson.Name);
         }
 
         #endregion
 
-        public static Person FromIdentity(int personId)
+        protected int ResolveGeography()
         {
-            return FromBasic(SwarmDb.GetDatabaseForReading().GetPerson(personId));
+            if (base.CountryId == 0)
+            {
+                base.GeographyId = 1;
+                SwarmDb.GetDatabaseForWriting().SetPersonGeography (Identity, 1);
+                return 1; // root geography, if no country set
+            }
+
+            Cities cities = Cities.FromPostalCode (PostalCode, base.CountryId);
+            City city = null;
+
+            if (cities.Count == 0)
+            {
+                try
+                {
+                    city = City.FromName (CityName, CountryId);
+                }
+                catch (ArgumentException)
+                {
+                    // ignore
+                }
+            }
+            else
+            {
+                city = cities[0]; // This may be adjusted manually, but will work in 99.9% of cases
+            }
+
+            if (city == null)
+            {
+                base.GeographyId = Country.FromIdentity (base.CountryId).GeographyId;
+                return base.GeographyId;
+            }
+
+            base.GeographyId = city.GeographyId;
+            SwarmDb.GetDatabaseForWriting().SetPersonGeography (Identity, base.GeographyId);
+            return city.GeographyId;
         }
 
-        public static Person FromIdentityAggressive(int personId)
+        public static Person FromBitIdAddress (string address)
         {
-            return FromBasic(SwarmDb.GetDatabaseForWriting().GetPerson(personId)); // Note "for writing". Intentional. Queries master db and bypasses replication lag.
+            People candidates = People.FromOptionalData (ObjectOptionalDataType.BitIdLoginAddress, address);
+
+            if (candidates.Count == 1)
+            {
+                return candidates[0];
+            }
+
+            throw new ArgumentException ("Zero or several candidates");
+        }
+
+        public static Person FromIdentity (int personId)
+        {
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetPerson (personId));
+        }
+
+        public static Person FromIdentityAggressive (int personId)
+        {
+            return FromBasic (SwarmDb.GetDatabaseForWriting().GetPerson (personId));
+            // Note "for writing". Intentional. Queries master db and bypasses replication lag.
         }
 
         public Authority GetAuthority()
         {
-            return Authorization.GetPersonAuthority(Identity);
+            return Authorization.GetPersonAuthority (Identity);
         }
 
         public Memberships GetMemberships (bool includeTerminated)
@@ -427,17 +591,19 @@ namespace Swarmops.Logic.Swarm
                 return GetMemberships();
             }
 
-            return Memberships.FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(this));
+            return Memberships.FromArray (SwarmDb.GetDatabaseForReading().GetMemberships (this));
         }
 
-        public Memberships GetMemberships ()
+        public Memberships GetMemberships()
         {
-            return Memberships.FromArray(SwarmDb.GetDatabaseForReading().GetMemberships(this, DatabaseCondition.ActiveTrue));
+            return
+                Memberships.FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetMemberships (this, DatabaseCondition.ActiveTrue));
         }
 
 
         /// <summary>
-        /// Returns the most recent membership for an org wich is active or terminated within the grace period
+        ///     Returns the most recent membership for an org wich is active or terminated within the grace period
         /// </summary>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <param name="orgId"></param>
@@ -445,8 +611,8 @@ namespace Swarmops.Logic.Swarm
         public Membership GetRecentMembership (int gracePeriod, int orgId)
         {
             List<int> orgIdList = new List<int>();
-            orgIdList.Add(orgId);
-            Memberships mss = GetRecentMemberships(orgIdList, gracePeriod);
+            orgIdList.Add (orgId);
+            Memberships mss = GetRecentMemberships (orgIdList, gracePeriod);
             foreach (Membership ms in mss)
             {
                 if (ms.OrganizationId == orgId)
@@ -456,56 +622,54 @@ namespace Swarmops.Logic.Swarm
         }
 
         /// <summary>
-        /// Returns most recent membership for each org wich is active or terminated within the grace period
+        ///     Returns most recent membership for each org wich is active or terminated within the grace period
         /// </summary>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <returns></returns>
         public Memberships GetRecentMemberships (int gracePeriod)
         {
             List<int> orgIdList = new List<int>();
-            return GetRecentMemberships(orgIdList, gracePeriod);
+            return GetRecentMemberships (orgIdList, gracePeriod);
         }
 
         /// <summary>
-        /// Returns most recent membership for each org wich is active or terminated within the grace period
+        ///     Returns most recent membership for each org wich is active or terminated within the grace period
         /// </summary>
         /// <param name="orgs">List of ids. If empty, all orgs</param>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <returns></returns>
         public Memberships GetRecentMemberships (Organizations orgs, int gracePeriod)
         {
-            List<int> orgIdList = new List<int>(orgs.Identities);
-            return GetRecentMemberships(orgIdList, gracePeriod);
+            List<int> orgIdList = new List<int> (orgs.Identities);
+            return GetRecentMemberships (orgIdList, gracePeriod);
         }
 
         /// <summary>
-        /// Returns most recent membership for each org wich is active or terminated within the grace period
+        ///     Returns most recent membership for each org wich is active or terminated within the grace period
         /// </summary>
         /// <param name="orgs">List of ids. If empty, all orgs</param>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <returns></returns>
         public Memberships GetRecentMemberships (List<int> orgs, int gracePeriod)
         {
-            Memberships memberships = this.GetMemberships(true);
+            Memberships memberships = GetMemberships (true);
             Dictionary<int, Membership> collectMembers = new Dictionary<int, Membership>();
 
-            memberships.Sort(delegate(Membership ms1, Membership ms2)
-            {
-                return ms2.DateTerminated.CompareTo(ms1.DateTerminated);
-            });
+            memberships.Sort (
+                delegate (Membership ms1, Membership ms2) { return ms2.DateTerminated.CompareTo (ms1.DateTerminated); });
 
             //Keep one for each org, the active one or the one with the highest Terminationdate
             foreach (Membership membership in memberships)
             {
-                if (orgs.Count == 0 || orgs.Contains(membership.OrganizationId))
+                if (orgs.Count == 0 || orgs.Contains (membership.OrganizationId))
                 {
                     if (membership.Active)
                     {
                         collectMembers[membership.OrganizationId] = membership;
                     }
-                    else if (membership.DateTerminated.AddDays(gracePeriod) > DateTime.Today)
+                    else if (membership.DateTerminated.AddDays (gracePeriod) > DateTime.Today)
                     {
-                        if (!collectMembers.ContainsKey(membership.OrganizationId)
+                        if (!collectMembers.ContainsKey (membership.OrganizationId)
                             || collectMembers[membership.OrganizationId].Active == false)
                         {
                             collectMembers[membership.OrganizationId] = membership;
@@ -515,20 +679,20 @@ namespace Swarmops.Logic.Swarm
             }
 
             Memberships collectedMS = new Memberships();
-            collectedMS.AddRange(collectMembers.Values);
+            collectedMS.AddRange (collectMembers.Values);
 
             if (collectedMS.Count > 0)
-            { //sort to get most recent first
-                collectedMS.Sort(delegate(Membership ms1, Membership ms2)
+            {
+                //sort to get most recent first
+                collectedMS.Sort (delegate (Membership ms1, Membership ms2)
                 {
                     if (ms1.Active && ms1.Active != ms2.Active)
                         return -1; // active before terminated
-                    else if (ms1.Active != ms2.Active)
-                        return 1;// active before terminated
-                    else if (ms1.Active)
-                        return ms1.Expires.CompareTo(ms2.Expires); // active with lowest expiry
-                    else
-                        return ms2.DateTerminated.CompareTo(ms1.DateTerminated); // terminated with latest terminationdate
+                    if (ms1.Active != ms2.Active)
+                        return 1; // active before terminated
+                    if (ms1.Active)
+                        return ms1.Expires.CompareTo (ms2.Expires); // active with lowest expiry
+                    return ms2.DateTerminated.CompareTo (ms1.DateTerminated); // terminated with latest terminationdate
                 });
             }
 
@@ -537,46 +701,47 @@ namespace Swarmops.Logic.Swarm
 
         internal static Person FromBasic (BasicPerson basic)
         {
-            return new Person(basic);
+            return new Person (basic);
         }
 
         public static Person Create (string name, string email, string password, string phone, string street,
-                                     string postal, string city, string countryCode, DateTime dateOfBirth,
-                                     PersonGender gender)
+            string postal, string city, string countryCode, DateTime dateOfBirth,
+            PersonGender gender)
         {
             BasicCountry country = null;
 
             if (countryCode.Length > 0)
             {
-                country = Structure.Country.FromCode(countryCode);
+                country = Country.FromCode (countryCode);
             }
 
             // Clean data
 
-            while (name.Contains("  "))
+            while (name.Contains ("  "))
             {
-                name = name.Replace("  ", " ");
+                name = name.Replace ("  ", " ");
             }
 
             name = name.Trim();
             email = email.ToLower().Trim();
-            phone = LogicServices.CleanNumber(phone);
-            postal = postal.Replace(" ", "").Trim();
+            phone = LogicServices.CleanNumber (phone);
+            postal = postal.Replace (" ", "").Trim();
 
-            int personId = SwarmDb.GetDatabaseForWriting().CreatePerson(name, email, phone, street, postal, city,
-                country == null? 0: country.Identity, dateOfBirth, gender);
+            int personId = SwarmDb.GetDatabaseForWriting().CreatePerson (name, email, phone, street, postal, city,
+                country == null ? 0 : country.Identity, dateOfBirth, gender);
 
 
             // Resolve the geography
 
-            Person newPerson = Person.FromIdentityAggressive(personId); // aggressive bypasses replication lag, avoids race condition
+            Person newPerson = FromIdentityAggressive (personId);
+            // aggressive bypasses replication lag, avoids race condition
             newPerson.ResolveGeography();
 
             // Generate the salted password hash and set it
 
             if (password.Length > 0)
             {
-                newPerson.PasswordHash = Authentication.GenerateNewPasswordHash(personId, password);
+                newPerson.PasswordHash = Authentication.GenerateNewPasswordHash (personId, password);
             }
             else
             {
@@ -590,161 +755,143 @@ namespace Swarmops.Logic.Swarm
 
         public Membership AddMembership (Organization organization, DateTime expires)
         {
-            return AddMembership(organization.Identity, expires);
+            return AddMembership (organization.Identity, expires);
         }
 
         public Membership AddMembership (int organizationId, DateTime expires)
         {
-            return Membership.Create(Identity, organizationId, expires);
+            return Membership.Create (Identity, organizationId, expires);
         }
 
         private bool? HasExplicitSubscription (int newsletterFeedId)
         {
             if (null == this.subscriptions)
             {
-                this.subscriptions = SwarmDb.GetDatabaseForReading().GetNewsletterFeedsForSubscriber(PersonId);
+                this.subscriptions = SwarmDb.GetDatabaseForReading().GetNewsletterFeedsForSubscriber (PersonId);
             }
 
-            if (this.subscriptions.ContainsKey(newsletterFeedId))
+            if (this.subscriptions.ContainsKey (newsletterFeedId))
             {
                 return this.subscriptions[newsletterFeedId];
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
         public bool IsSubscribing (int newsletterFeedId)
         {
-            bool? subscription = HasExplicitSubscription(newsletterFeedId);
+            bool? subscription = HasExplicitSubscription (newsletterFeedId);
             if (subscription != null)
             {
-                return (bool)subscription;
+                return (bool) subscription;
             }
-            else
+            try
             {
-                try
-                {   //Added try catch, throws exception on nonexisting feed id
-                    NewsletterFeed feed = NewsletterFeed.FromIdentity(newsletterFeedId);
-                    return feed.DefaultSubscribed;
-                }
-                catch
-                {
-                    return false;
-                }
+                //Added try catch, throws exception on nonexisting feed id
+                NewsletterFeed feed = NewsletterFeed.FromIdentity (newsletterFeedId);
+                return feed.DefaultSubscribed;
+            }
+            catch
+            {
+                return false;
             }
         }
 
         public virtual void SetSubscription (int newsletterFeedId, bool subscribe)
         {
-            bool? subscription = HasExplicitSubscription(newsletterFeedId);
+            bool? subscription = HasExplicitSubscription (newsletterFeedId);
             if (subscription != null && subscription != subscribe)
             {
-                SwarmDb.GetDatabaseForWriting().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
+                SwarmDb.GetDatabaseForWriting().SetNewsletterSubscription (PersonId, newsletterFeedId, subscribe);
             }
             else
             {
-                NewsletterFeed feed = NewsletterFeed.FromIdentity(newsletterFeedId);
+                NewsletterFeed feed = NewsletterFeed.FromIdentity (newsletterFeedId);
                 if (subscribe != feed.DefaultSubscribed)
                 {
-                    SwarmDb.GetDatabaseForWriting().SetNewsletterSubscription(PersonId, newsletterFeedId, subscribe);
+                    SwarmDb.GetDatabaseForWriting().SetNewsletterSubscription (PersonId, newsletterFeedId, subscribe);
                 }
             }
             this.subscriptions[newsletterFeedId] = subscribe;
         }
 
 
-        public void DeleteSubscriptionData ()
+        public void DeleteSubscriptionData()
         {
-            SwarmDb.GetDatabaseForWriting().DeletePersonNewsletterSubscriptions(Identity);
+            SwarmDb.GetDatabaseForWriting().DeletePersonNewsletterSubscriptions (Identity);
         }
 
 
         /// <summary>
-        /// Sends a phone text message to the person's mobile phone.
+        ///     Sends a phone text message to the person's mobile phone.
         /// </summary>
         public void SendPhoneMessage (string message)
         {
             // HACK: This currently only works for Swedish people.
             try
             {
-                PhoneMessageTransmitter.Send(Phone, message);
+                PhoneMessageTransmitter.Send (Phone, message);
                 // SwarmDb.GetDatabase().LogTransmittedPhoneMessage(Identity, Phone, message);
             }
             catch (Exception ex)
             {
-                throw new Exception("Failed to send phone message:[" + message + "]\r\nto person [#" + Identity.ToString() + "]:\r\n" + ex.Message, ex);
+                throw new Exception (
+                    "Failed to send phone message:[" + message + "]\r\nto person [#" + Identity + "]:\r\n" + ex.Message,
+                    ex);
             }
         }
 
 
         public virtual void SetPassword (string newPassword)
         {
-            string hash = Authentication.GenerateNewPasswordHash(Identity, newPassword);
-            SwarmDb.GetDatabaseForWriting().SetPersonPasswordHash(Identity, hash);
+            string hash = Authentication.GenerateNewPasswordHash (Identity, newPassword);
+            SwarmDb.GetDatabaseForWriting().SetPersonPasswordHash (Identity, hash);
             base.PasswordHash = hash;
-        }
-
-
-        public new string PasswordHash
-        {
-            get { return base.PasswordHash; }
-            set
-            {
-                SwarmDb.GetDatabaseForWriting().SetPersonPasswordHash(Identity, value);
-                base.PasswordHash = value;
-            }
-        }
-
-        public virtual string TempPasswordHash
-        {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.PersonTempPasswordStore); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.PersonTempPasswordStore, value); }
         }
 
 
         private void SendNotice (string subject, string body, int organizationId, bool asOfficer)
         {
-            int mailId = SwarmDb.GetDatabaseForWriting().CreateOutboundMail(
+            int mailId = SwarmDb.GetDatabaseForWriting().CreateOutboundMail (
                 asOfficer ? MailAuthorType.PirateWeb : MailAuthorType.Service, 0, subject,
                 body, OutboundMail.PriorityNormal, 0, GeographyId, organizationId, DateTime.Now);
-            SwarmDb.GetDatabaseForWriting().CreateOutboundMailRecipient(mailId, Identity, asOfficer, (int)OutboundMailRecipient.RecipientType.Person);
-            SwarmDb.GetDatabaseForWriting().SetOutboundMailRecipientCount(mailId, 1);
-            SwarmDb.GetDatabaseForWriting().SetOutboundMailResolved(mailId);
-            SwarmDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup(mailId);
+            SwarmDb.GetDatabaseForWriting()
+                .CreateOutboundMailRecipient (mailId, Identity, asOfficer,
+                    (int) OutboundMailRecipient.RecipientType.Person);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailRecipientCount (mailId, 1);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailResolved (mailId);
+            SwarmDb.GetDatabaseForWriting().SetOutboundMailReadyForPickup (mailId);
         }
 
         public void SendNotice (string subject, string body, int organizationId)
         {
             //TODO: Comes in here with organizationId hardcoded as 1 from a lot of places
-            SendNotice(subject, body, organizationId, false);
+            SendNotice (subject, body, organizationId, false);
         }
 
         public void SendOfficerNotice (string subject, string body, int organizationId)
         {
-            SendNotice(subject, body, organizationId, true);
+            SendNotice (subject, body, organizationId, true);
         }
 
 
         public void SendOfficerNotice (TypedMailTemplate mailtempl, int organizationId)
         {
-            SendNotice(mailtempl, organizationId, true);
+            SendNotice (mailtempl, organizationId, true);
         }
 
         public void SendNotice (TypedMailTemplate mailtempl, int organizationId)
         {
-            SendNotice(mailtempl, organizationId, false);
+            SendNotice (mailtempl, organizationId, false);
         }
 
         public void SendNotice (TypedMailTemplate mailtempl, int organizationId, bool asOfficer)
         {
-            OutboundMail mail = mailtempl.CreateFunctionalOutboundMail(
-                    asOfficer ? MailAuthorType.PirateWeb : MailAuthorType.Service,
-                    OutboundMail.PriorityNormal, Organization.FromIdentity(organizationId),
-                    Geography.Root, DateTime.Now);
-            mail.AddRecipient(this, asOfficer);
-            mail.SetRecipientCount(1);
+            OutboundMail mail = mailtempl.CreateFunctionalOutboundMail (
+                asOfficer ? MailAuthorType.PirateWeb : MailAuthorType.Service,
+                OutboundMail.PriorityNormal, Organization.FromIdentity (organizationId),
+                Geography.Root, DateTime.Now);
+            mail.AddRecipient (this, asOfficer);
+            mail.SetRecipientCount (1);
             mail.SetResolved();
             mail.SetReadyForPickup();
         }
@@ -752,40 +899,39 @@ namespace Swarmops.Logic.Swarm
 
         public void CreateActivist (bool isPublic, bool isConfirmed)
         {
-            SwarmDb.GetDatabaseForWriting().CreateActivist(Identity, isPublic, isConfirmed);
+            SwarmDb.GetDatabaseForWriting().CreateActivist (Identity, isPublic, isConfirmed);
         }
 
-        public void TerminateActivist ()
+        public void TerminateActivist()
         {
-            SwarmDb.GetDatabaseForWriting().TerminateActivist(Identity);
+            SwarmDb.GetDatabaseForWriting().TerminateActivist (Identity);
         }
 
         public PersonRole AddRole (RoleType roleType, Organization organization, Geography geography)
         {
-            return AddRole(roleType, organization.Identity, geography.Identity);
+            return AddRole (roleType, organization.Identity, geography.Identity);
         }
 
         public PersonRole AddRole (RoleType roleType, int organizationId, int geographyId)
         {
-            return PersonRole.Create(Identity, roleType, organizationId, geographyId);
+            return PersonRole.Create (Identity, roleType, organizationId, geographyId);
         }
 
 
-
-        public string CreatePPMailAddress ()
+        public string CreatePPMailAddress()
         {
             // TODO: Handle different mail domains based on organisation of person.
 
-            string name = this.Name.Trim();
-            name = RemoveDiacritics(name);
+            string name = Name.Trim();
+            name = RemoveDiacritics (name);
             name = name.ToLower();
-            name = name.Replace("æ", "ae");
+            name = name.Replace ("æ", "ae");
             //change all non valid chars to '.'
-            Regex re = new Regex(@"[^-a-z0-9\.]", RegexOptions.IgnoreCase);
-            name = re.Replace(name, ".");
+            Regex re = new Regex (@"[^-a-z0-9\.]", RegexOptions.IgnoreCase);
+            name = re.Replace (name, ".");
 
-            while (name.Contains(".."))
-                name = name.Replace("..", ".");
+            while (name.Contains (".."))
+                name = name.Replace ("..", ".");
 
             return name + "@piratpartiet.se";
         }
@@ -794,133 +940,50 @@ namespace Swarmops.Logic.Swarm
         {
             // Doesn't account for æ, but strips everything else conceivable
 
-            string stFormD = stIn.Normalize(NormalizationForm.FormD);
+            string stFormD = stIn.Normalize (NormalizationForm.FormD);
             StringBuilder sb = new StringBuilder();
 
             for (int ich = 0; ich < stFormD.Length; ich++)
             {
-                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory (stFormD[ich]);
                 if (uc != UnicodeCategory.NonSpacingMark)
                 {
-                    sb.Append(stFormD[ich]);
+                    sb.Append (stFormD[ich]);
                 }
             }
 
-            return (sb.ToString().Normalize(NormalizationForm.FormC));
+            return (sb.ToString().Normalize (NormalizationForm.FormC));
         }
 
 
-        public string CreateUniquePPMailAddress ()
+        public string CreateUniquePPMailAddress()
         {
-            string newAddress = this.CreatePPMailAddress();
-            newAddress = MailServerDatabase.FindFreeAccount(newAddress);
+            string newAddress = CreatePPMailAddress();
+            newAddress = MailServerDatabase.FindFreeAccount (newAddress);
             return newAddress;
         }
 
         public bool ValidatePassword (string oldpassword)
         {
-            return Authentication.ValidatePassword(this, oldpassword);
+            return Authentication.ValidatePassword (this, oldpassword);
         }
 
-        public string HexIdentifier ()
+        public string HexIdentifier()
         {
-            string identifier = String.Format("{0:X4}", Identity);
+            string identifier = String.Format ("{0:X4}", Identity);
             char[] array = identifier.ToCharArray();
-            Array.Reverse(array);
-            return new string(array);
-        }
-
-        public string Initials
-        {
-            get
-            {
-                string[] nameWords = Name.Split(' ');
-
-                string result = string.Empty;
-                foreach (string nameWord in nameWords)
-                {
-                    if (nameWord.Length > 0)
-                    {
-                        result += Char.ToUpperInvariant(nameWord[0]);
-                    }
-                }
-
-                return result;
-            }
-        }
-
-        public string PreferredCulture
-        {
-            get
-            {
-                if (!string.IsNullOrEmpty(OptionalData.GetOptionalDataString(ObjectOptionalDataType.PreferredCulture)))
-                {
-                    return OptionalData.GetOptionalDataString(ObjectOptionalDataType.PreferredCulture);
-                }
-
-                // make best guesses:
-
-                if (base.CountryId != 0 && this.Country != null && !string.IsNullOrEmpty(this.Country.Culture))
-                {
-                    return this.Country.Culture;
-                }
-
-                //not set, make a guess...
-
-                foreach (Membership ms in this.GetMemberships(false))
-                {
-                    try
-                    {
-                        return ms.Organization.DefaultCountry.Culture;
-                    }
-                    catch { }
-                }
-
-                return CultureInfo.InvariantCulture.Name;
-            }
-
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.PreferredCulture, value); }
-
-
-        }
-
-        public string Canonical   // On the canonical format "Rick Falkvinge (#1)"
-        {
-            get
-            {
-                return Name + " (#" + Identity.ToString() + ")";
-            }
-        }
-
-        public Image Portrait
-        {
-            get
-            {
-                Documents docs = Documents.ForObject(this);
-
-                if (docs.Count == 0)
-                {
-                    return null;
-                }
-
-                return Image.FromFile(@"C:\Data\Uploads\PirateWeb\" + docs[0].ServerFileName);
-            }
-        }
-
-        public string PortraitPhotographer
-        {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.PortraitPhotographer); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.PortraitPhotographer, value); }
+            Array.Reverse (array);
+            return new string (array);
         }
 
         public bool MemberOf (Organization organization)
         {
-            return MemberOf (organization.Identity );
+            return MemberOf (organization.Identity);
         }
 
         public bool MemberOf (int orgId)
         {
-            Memberships memberships = this.GetMemberships();
+            Memberships memberships = GetMemberships();
 
             foreach (Membership membership in memberships)
             {
@@ -935,21 +998,20 @@ namespace Swarmops.Logic.Swarm
 
         public bool MemberOfWithInherited (int orgId)
         {
-            Memberships memberships = this.GetMemberships();
+            Memberships memberships = GetMemberships();
             foreach (Membership membership in memberships)
             {
-                if (membership.Organization.IsOrInherits(orgId))
+                if (membership.Organization.IsOrInherits (orgId))
                 {
                     return true;
                 }
             }
-              return false;
+            return false;
         }
 
         public bool MemberOfWithInherited (Organization org)
         {
-            return MemberOfWithInherited(org.Identity );
-
+            return MemberOfWithInherited (org.Identity);
         }
 
         /* --- not used, commented out for usage of hardcoded org ids
@@ -987,88 +1049,20 @@ namespace Swarmops.Logic.Swarm
         } */
 
         // ReSharper disable InconsistentNaming
-        public string TShirtSize
-        // ReSharper restore InconsistentNaming
+
+        public Tasks GetTasksForOrganization (Organization organization)
         {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.TShirtSize); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.TShirtSize, value); }
-        }
-
-        public string BlogName
-        {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.BlogName); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BlogName, value); }
-        }
-
-        public string BlogUrl
-        {
-            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.BlogUrl); }
-            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BlogUrl, value); }
-        }
-
-        public DashboardTasks.Tasks GetTasksForOrganization(Organization organization)
-        {
-            return Logic.DashboardTasks.Tasks.ForPersonOrganization(this, organization);
-        }
-
-        public string Formal
-        {
-            get { return FirstName[0] + " " + LastName; }
-        }
-
-        public string FirstName
-        {
-            get
-            {
-                int indexLastSpace = Name.LastIndexOf(' ');
-                if (indexLastSpace == -1)
-                {
-                    return Name;
-                }
-
-                return Name.Substring(0, indexLastSpace);
-            }
-        }
-
-        public string LastName
-        {
-            get
-            {
-                int indexLastSpace = Name.LastIndexOf(' ');
-                if (indexLastSpace == -1)
-                {
-                    return Name;
-                }
-
-                return Name.Substring(indexLastSpace + 1);
-            }
-        }
-
-        protected string MailMD5
-        {
-            get
-            {
-                string email = this.Mail.Trim().ToLowerInvariant();
-
-                string md5 = MD5.Hash(email);
-
-                return md5.Replace(" ", "").ToLowerInvariant();
-            }
+            return Tasks.ForPersonOrganization (this, organization);
         }
 
         public string GetAvatarLink (int pixelSize)
         {
-            return string.Format("http://www.gravatar.com/avatar/{0}.jpg?s={1}&d=mm", this.MailMD5, pixelSize);
+            return string.Format ("http://www.gravatar.com/avatar/{0}.jpg?s={1}&d=mm", MailMD5, pixelSize);
         }
 
         public string GetSecureAvatarLink (int pixelSize)
         {
-            return GetAvatarLink(pixelSize).Replace("http://www", "https://secure");
-        }
-
-        public static int NobodyId
-        {
-            get { return 0; }
+            return GetAvatarLink (pixelSize).Replace ("http://www", "https://secure");
         }
 
         public bool HasAccess (Access access)
@@ -1090,16 +1084,17 @@ namespace Swarmops.Logic.Swarm
             }
             else if (access.Type == AccessType.Read)
             {
-                ids = access.Organization.Parameters.TemporaryAccessListWrite + " " + access.Organization.Parameters.TemporaryAccessListRead; // Write access implies read access
+                ids = access.Organization.Parameters.TemporaryAccessListWrite + " " +
+                      access.Organization.Parameters.TemporaryAccessListRead; // Write access implies read access
             }
 
 
             List<string> resultingPeople = new List<string>();
-            string[] idStrings = ids.Trim().Replace("  ", " ").Split(' ');
+            string[] idStrings = ids.Trim().Replace ("  ", " ").Split (' ');
 
             foreach (string idString in idStrings)
             {
-                if (Int32.Parse(idString) == this.Identity)
+                if (Int32.Parse (idString) == Identity)
                 {
                     return true;
                 }
@@ -1109,5 +1104,3 @@ namespace Swarmops.Logic.Swarm
         }
     }
 }
-
-  

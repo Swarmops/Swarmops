@@ -1,30 +1,30 @@
 ﻿using System;
+using System.Web.UI;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
 /// <summary>
-/// Summary description for MasterV4Base
+///     Summary description for MasterV4Base
 /// </summary>
-
-public class MasterV5Base : System.Web.UI.MasterPage
+public class MasterV5Base : MasterPage
 {
-
     public bool CurrentPageAllowed = false;
-    public bool CurrentPageProhibited = false;
-
-    public string CurrentPageTitle = string.Empty;
     public string CurrentPageIcon = string.Empty;
 
     public string CurrentPageInfoBoxLiteral = string.Empty;
+    public bool CurrentPageProhibited = false;
+
+    public string CurrentPageTitle = string.Empty;
 
     // ReSharper disable InconsistentNaming
-    protected Person _currentUser = null;   // These are set in Master-v5.master.cs
     protected Authority _authority = null;
     protected Organization _currentOrganization = null;
-    
-    public EasyUIControl EasyUIControlsUsed { get; set; }  // these are set by each page, and called by Master to render in ExternalScripts control
-    public IncludedControl IncludedControlsUsed { get; set; }  // as above with IncludedScripts control
+    protected Person _currentUser = null; // These are set in Master-v5.master.cs
+
+    public EasyUIControl EasyUIControlsUsed { get; set; }
+    // these are set by each page, and called by Master to render in ExternalScripts control
+    public IncludedControl IncludedControlsUsed { get; set; } // as above with IncludedScripts control
     // ReSharper restore InconsistentNaming
 
     public DateTime PermissionCacheTimestamp
@@ -33,16 +33,11 @@ public class MasterV5Base : System.Web.UI.MasterPage
         {
             if (Session["MainMenu-v5_Enabling_TimeStamp"] != null)
             {
-                return new DateTime((long)Session["MainMenu-v5_Enabling_TimeStamp"]);
+                return new DateTime ((long) Session["MainMenu-v5_Enabling_TimeStamp"]);
             }
-            else
-                return DateTime.MinValue;
-
+            return DateTime.MinValue;
         }
-        set
-        {
-            Session["MainMenu-v5_Enabling_TimeStamp"] = value.Ticks;
-        }
+        set { Session["MainMenu-v5_Enabling_TimeStamp"] = value.Ticks; }
     }
 
     public Person CurrentUser
@@ -59,7 +54,4 @@ public class MasterV5Base : System.Web.UI.MasterPage
     {
         get { return this._authority; }
     }
-
 }
-
-

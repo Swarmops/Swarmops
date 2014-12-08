@@ -8,18 +8,37 @@ namespace Swarmops.Logic.Cache
 {
     public class OrganizationCache
     {
-        static private DateTime lastRefresh;
-        static private object loadCacheLock = new object();
-        static public bool __loadCache = true;
-        static private Dictionary<int, List<BasicOrganization>> __organizationCache = null;
-        static readonly int cacheLifeSpanMinutes = 2;
+        private static DateTime lastRefresh;
+        private static object loadCacheLock = new object();
+        public static bool __loadCache = true;
+        private static Dictionary<int, List<BasicOrganization>> __organizationCache = null;
+        private static readonly int cacheLifeSpanMinutes = 2;
+        private static Dictionary<int, List<int>> __cachedUptakeGeographies = null;
 
-        static OrganizationCache ()
+        static OrganizationCache()
         {
             lastRefresh = DateTime.MinValue;
         }
 
-        private static Dictionary<int, List<BasicOrganization>> GetHashedOrganizations ()
+        public static bool needsReload
+        {
+            get
+            {
+                lock (loadCacheLock)
+                {
+                    return (__loadCache || lastRefresh.AddMinutes (cacheLifeSpanMinutes) < DateTime.Now);
+                }
+            }
+            private set
+            {
+                lock (loadCacheLock)
+                {
+                    __loadCache = value;
+                }
+            }
+        }
+
+        private static Dictionary<int, List<BasicOrganization>> GetHashedOrganizations()
         {
             if (needsReload)
             {
@@ -37,51 +56,30 @@ namespace Swarmops.Logic.Cache
             return __organizationCache;
         }
 
-        public static bool needsReload
-        {
-            get
-            {
-                lock (loadCacheLock)
-                {
-                    return (__loadCache || lastRefresh.AddMinutes(cacheLifeSpanMinutes) < DateTime.Now);
-                }
-            }
-            private set
-            {
-                lock (loadCacheLock)
-                {
-                    __loadCache = value;
-                }
-            }
-        }
-
         public static Organization FromCache (int OrganizationId)
         {
-
             lock (loadCacheLock)
             {
-                return Organization.FromBasic(OrganizationCache.GetOrganization(OrganizationId));
+                return Organization.FromBasic (GetOrganization (OrganizationId));
             }
-
         }
 
 
         internal static int CreateOrganization (int ParentOrganizationId, string NameInternational, string Name,
-                                                string NameShort, string Domain, string MailPrefix,
-                                                int AnchorGeographyId, bool AcceptsMembers,
-                                                bool AutoAssignNewMembers, int DefaultCountryId)
+            string NameShort, string Domain, string MailPrefix,
+            int AnchorGeographyId, bool AcceptsMembers,
+            bool AutoAssignNewMembers, int DefaultCountryId)
         {
-
-            int Identity = SwarmDb.GetDatabaseForWriting().CreateOrganization(ParentOrganizationId,
-                                     NameInternational,
-                                     Name,
-                                     NameShort,
-                                     Domain,
-                                     MailPrefix,
-                                     AnchorGeographyId,
-                                     AcceptsMembers,
-                                     AutoAssignNewMembers,
-                                     DefaultCountryId);
+            int Identity = SwarmDb.GetDatabaseForWriting().CreateOrganization (ParentOrganizationId,
+                NameInternational,
+                Name,
+                NameShort,
+                Domain,
+                MailPrefix,
+                AnchorGeographyId,
+                AcceptsMembers,
+                AutoAssignNewMembers,
+                DefaultCountryId);
             needsReload = true;
             return Identity;
         }
@@ -90,17 +88,16 @@ namespace Swarmops.Logic.Cache
             string NameShort, string Domain, string MailPrefix, int AnchorGeographyId, bool AcceptsMembers,
             bool AutoAssignNewMembers, int DefaultCountryId, int OrganizationId)
         {
-            SwarmDb.GetDatabaseForWriting().UpdateOrganization(ParentOrganizationId, NameInternational, Name, NameShort, Domain,
-                MailPrefix, AnchorGeographyId, AcceptsMembers, AutoAssignNewMembers, DefaultCountryId,
-                OrganizationId);
+            SwarmDb.GetDatabaseForWriting()
+                .UpdateOrganization (ParentOrganizationId, NameInternational, Name, NameShort, Domain,
+                    MailPrefix, AnchorGeographyId, AcceptsMembers, AutoAssignNewMembers, DefaultCountryId,
+                    OrganizationId);
 
-            OrganizationCache.needsReload = true;
-
+            needsReload = true;
         }
 
         internal static void Reload (int objectId)
         {
-
             __loadCache = true;
 
             // Let this be for the moment, new and old parents need to be loaded as well. Better right now to reload the whole cache.
@@ -108,17 +105,17 @@ namespace Swarmops.Logic.Cache
             //{
             //    __organizationCache[objectId][0] = Organization.FromBasic(SwarmDb.GetDatabaseForReading().GetOrganization(objectId));
             //}
-
         }
-        public static BasicOrganization[] GetAll ()
+
+        public static BasicOrganization[] GetAll()
         {
             lock (loadCacheLock)
             {
-                Dictionary<int, List<BasicOrganization>> hashedOrganisations = OrganizationCache.GetHashedOrganizations();
+                Dictionary<int, List<BasicOrganization>> hashedOrganisations = GetHashedOrganizations();
                 List<BasicOrganization> returnList = new List<BasicOrganization>();
                 foreach (int id in hashedOrganisations.Keys)
                 {
-                    returnList.Add(hashedOrganisations[id][0]);
+                    returnList.Add (hashedOrganisations[id][0]);
                 }
                 return returnList.ToArray();
             }
@@ -126,43 +123,42 @@ namespace Swarmops.Logic.Cache
 
         public static BasicOrganization GetOrganization (int OrganizationId)
         {
-
             lock (loadCacheLock)
             {
-                Dictionary<int, List<BasicOrganization>> hashedOrganisations = OrganizationCache.GetHashedOrganizations();
-                if (hashedOrganisations.ContainsKey(OrganizationId))
+                Dictionary<int, List<BasicOrganization>> hashedOrganisations = GetHashedOrganizations();
+                if (hashedOrganisations.ContainsKey (OrganizationId))
                     return hashedOrganisations[OrganizationId][0];
                 else
                 {
                     //Didn't find, strange, id's should exist, try reloading the cache, it could be newly added.
 
                     needsReload = true;
-                    hashedOrganisations = OrganizationCache.GetHashedOrganizations();
-                    if (hashedOrganisations.ContainsKey(OrganizationId))
+                    hashedOrganisations = GetHashedOrganizations();
+                    if (hashedOrganisations.ContainsKey (OrganizationId))
                         return hashedOrganisations[OrganizationId][0];
                     else
                     {
-                        throw new ArgumentException("No such OrganizationId: " + OrganizationId.ToString());
+                        throw new ArgumentException ("No such OrganizationId: " + OrganizationId.ToString());
                     }
-                };
+                }
+                ;
             }
-
         }
 
         public static BasicOrganization[] GetOrganizationTree (int startOrganizationId)
         {
             lock (loadCacheLock)
             {
-                Dictionary<int, List<BasicOrganization>> organizations = OrganizationCache.GetHashedOrganizations();
+                Dictionary<int, List<BasicOrganization>> organizations = GetHashedOrganizations();
 
-                return GetOrganizationTree(organizations, startOrganizationId, 0);
+                return GetOrganizationTree (organizations, startOrganizationId, 0);
             }
         }
 
 
         public static Dictionary<int, BasicOrganization> GetOrganizationHashtable (int startOrganizationId)
         {
-            BasicOrganization[] organizations = GetOrganizationTree(startOrganizationId);
+            BasicOrganization[] organizations = GetOrganizationTree (startOrganizationId);
 
             Dictionary<int, BasicOrganization> result = new Dictionary<int, BasicOrganization>();
 
@@ -176,12 +172,12 @@ namespace Swarmops.Logic.Cache
 
 
         private static BasicOrganization[] GetOrganizationTree (Dictionary<int, List<BasicOrganization>> organizations,
-                                                         int startOrganizationId, int generation)
+            int startOrganizationId, int generation)
         {
             List<BasicOrganization> result = new List<BasicOrganization>();
 
             //Prime the cache
-            BasicOrganization start = OrganizationCache.GetOrganization(startOrganizationId);
+            BasicOrganization start = GetOrganization (startOrganizationId);
 
             List<BasicOrganization> thisList = organizations[startOrganizationId];
 
@@ -189,19 +185,19 @@ namespace Swarmops.Logic.Cache
             {
                 if (organization.OrganizationId != startOrganizationId)
                 {
-                    result.Add(organization);
+                    result.Add (organization);
                     // new Organization(organization.OrganizationId, organization.ParentOrganizationId, organization.Name, generation + 1));
 
                     // Add recursively
 
-                    BasicOrganization[] children = GetOrganizationTree(organizations, organization.OrganizationId,
-                                                                       generation + 1);
+                    BasicOrganization[] children = GetOrganizationTree (organizations, organization.OrganizationId,
+                        generation + 1);
 
                     if (children.Length > 0)
                     {
                         foreach (BasicOrganization child in children)
                         {
-                            result.Add(child);
+                            result.Add (child);
                         }
                     }
                 }
@@ -209,7 +205,7 @@ namespace Swarmops.Logic.Cache
                 {
                     // The top parent is special and should be added; the others shouldn't
 
-                    result.Add(organization);
+                    result.Add (organization);
                     //  (new Organization(organization.OrganizationId, organization.ParentOrganizationId, organization.Name, generation));
                 }
             }
@@ -217,19 +213,19 @@ namespace Swarmops.Logic.Cache
             return result.ToArray();
         }
 
-        static public BasicOrganization[] GetOrganizationChildren (int parentOrgId)
+        public static BasicOrganization[] GetOrganizationChildren (int parentOrgId)
         {
             List<BasicOrganization> result = new List<BasicOrganization>();
             lock (loadCacheLock)
             {
-                BasicOrganization parent = OrganizationCache.GetOrganization(parentOrgId);
+                BasicOrganization parent = GetOrganization (parentOrgId);
                 //TODO: It is possible to miss a child here if that child was added after the last cache load.
 
                 Dictionary<int, List<BasicOrganization>> hashedOrganizations = GetHashedOrganizations();
                 foreach (BasicOrganization b in hashedOrganizations[parentOrgId])
                 {
                     if (b.Identity != parentOrgId)
-                        result.Add(b);
+                        result.Add (b);
                 }
                 return result.ToArray();
             }
@@ -237,22 +233,21 @@ namespace Swarmops.Logic.Cache
 
         public static BasicOrganization[] GetOrganizationLine (int leafOrganizationId)
         {
-
             lock (loadCacheLock)
             {
                 List<BasicOrganization> result = new List<BasicOrganization>();
 
-                BasicOrganization currentOrganization = OrganizationCache.GetOrganization(leafOrganizationId);
+                BasicOrganization currentOrganization = GetOrganization (leafOrganizationId);
 
                 // This iterates until the zero-parentid root Organization is found
 
                 while (currentOrganization.OrganizationId > 0)
                 {
-                    result.Add(currentOrganization);
+                    result.Add (currentOrganization);
 
                     if (currentOrganization.ParentOrganizationId > 0)
                     {
-                        currentOrganization = OrganizationCache.GetOrganization(currentOrganization.ParentOrganizationId);
+                        currentOrganization = GetOrganization (currentOrganization.ParentOrganizationId);
                     }
                     else
                     {
@@ -266,10 +261,11 @@ namespace Swarmops.Logic.Cache
             }
         }
 
-        [Obsolete ("Never use this function. Mark the org as unused, deleted. Records are needed for historic reasons.", true)]
+        [Obsolete ("Never use this function. Mark the org as unused, deleted. Records are needed for historic reasons.",
+            true)]
         internal static void DeleteOrganization (int p)
         {
-            SwarmDb.GetDatabaseForWriting().DeleteOrganization(p);
+            SwarmDb.GetDatabaseForWriting().DeleteOrganization (p);
             needsReload = true;
         }
 
@@ -279,9 +275,8 @@ namespace Swarmops.Logic.Cache
 
         // this is nulled when a main cache load is done, so it don't need a timing parameter really 
         // since that will be governed by the timeout of organisations.
-        static private Dictionary<int, List<int>> __cachedUptakeGeographies = null;
 
-        static private Dictionary<int, List<int>> GetUptakes ()
+        private static Dictionary<int, List<int>> GetUptakes()
         {
             //to make sure we dont end up loading uptakes, loding organisations, then load uptakes again.
             lock (loadCacheLock)
@@ -307,14 +302,14 @@ namespace Swarmops.Logic.Cache
 
             foreach (BasicGeography node in nodes)
             {
-                nodeIdList.Add(node.GeographyId);
+                nodeIdList.Add (node.GeographyId);
             }
 
-            return GetOrganizationIdsInGeographies(nodeIdList.ToArray());
+            return GetOrganizationIdsInGeographies (nodeIdList.ToArray());
         }
 
 
-        static public int[] GetOrganizationIdsInGeographies (int[] nodeIds)
+        public static int[] GetOrganizationIdsInGeographies (int[] nodeIds)
         {
             if (nodeIds == null || nodeIds.Length == 0)
             {
@@ -332,7 +327,7 @@ namespace Swarmops.Logic.Cache
                 foreach (int id in hashedOrgs.Keys)
                 {
                     BasicOrganization bo = hashedOrgs[id][0];
-                    if (idsToFind.ContainsKey(bo.AnchorGeographyId))
+                    if (idsToFind.ContainsKey (bo.AnchorGeographyId))
                     {
                         resultKeys[bo.Identity] = true;
                     }
@@ -344,11 +339,11 @@ namespace Swarmops.Logic.Cache
                 foreach (int orgId in allUptakes.Keys)
                 {
                     //connected to valid org?
-                    if (hashedOrgs.ContainsKey(orgId))
+                    if (hashedOrgs.ContainsKey (orgId))
                     {
                         foreach (int geoId in allUptakes[orgId])
                         {
-                            if (idsToFind.ContainsKey(geoId))
+                            if (idsToFind.ContainsKey (geoId))
                             {
                                 resultKeys[orgId] = true;
                             }
@@ -358,27 +353,26 @@ namespace Swarmops.Logic.Cache
             }
 
 
-            return (new List<int>(resultKeys.Keys)).ToArray(); ;
+            return (new List<int> (resultKeys.Keys)).ToArray();
+            ;
         }
 
         internal static void AddOrgUptakeGeography (int p, int geoId)
         {
-            SwarmDb.GetDatabaseForWriting().AddOrgUptakeGeography(p, geoId);
+            SwarmDb.GetDatabaseForWriting().AddOrgUptakeGeography (p, geoId);
             lock (loadCacheLock)
             {
                 __cachedUptakeGeographies = null;
             }
-
         }
 
         internal static void DeleteOrgUptakeGeography (int p, int geoId)
         {
-            SwarmDb.GetDatabaseForWriting().DeleteOrgUptakeGeography(p, geoId);
+            SwarmDb.GetDatabaseForWriting().DeleteOrgUptakeGeography (p, geoId);
             lock (loadCacheLock)
             {
                 __cachedUptakeGeographies = null;
             }
-
         }
     }
 }

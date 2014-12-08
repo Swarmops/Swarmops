@@ -8,14 +8,14 @@ namespace Swarmops.Basic.Types
     {
         public BasicCity (int cityId, string name, int countryId, int geographyId)
         {
-            this.CityId = cityId;
-            this.Name = name;
-            this.CountryId = countryId;
-            this.GeographyId = geographyId;
+            CityId = cityId;
+            Name = name;
+            CountryId = countryId;
+            GeographyId = geographyId;
         }
 
         public BasicCity (BasicCity original)
-            : this(original.CityId, original.Name, original.CountryId, original.GeographyId)
+            : this (original.CityId, original.Name, original.CountryId, original.GeographyId)
         {
         }
 
@@ -30,12 +30,11 @@ namespace Swarmops.Basic.Types
         public int CountryId { get; protected set; }
         public int GeographyId { get; protected set; }
 
-
         #region IHasIdentity Members
 
         public int Identity
         {
-            get { return this.CityId; }
+            get { return CityId; }
         }
 
         #endregion

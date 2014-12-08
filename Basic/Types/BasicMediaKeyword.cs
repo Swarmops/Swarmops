@@ -6,6 +6,18 @@ namespace Swarmops.Basic.Types
     [Serializable]
     public class BasicMediaKeyword : IHasIdentity
     {
+        private readonly int id;
+        private readonly string keyword;
+
+        #region IHasIdentity Members
+
+        public int Identity
+        {
+            get { return Id; }
+        }
+
+        #endregion
+
         public BasicMediaKeyword (int id, string keyword)
         {
             this.id = id;
@@ -19,30 +31,18 @@ namespace Swarmops.Basic.Types
         }
 
         public BasicMediaKeyword()
-            : this(0, string.Empty)
+            : this (0, string.Empty)
         {
         }
 
         public int Id
         {
-            get { return id; }
+            get { return this.id; }
         }
 
         public string Keyword
         {
-            get { return keyword; }
+            get { return this.keyword; }
         }
-
-        private int id;
-        private string keyword;
-
-        #region IHasIdentity Members
-
-        public int Identity
-        {
-            get { return Id; }
-        }
-
-        #endregion
     }
 }

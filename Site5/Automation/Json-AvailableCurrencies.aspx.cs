@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Threading;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Automation
 {
     public partial class Json_AvailableCurrencies : DataV5Base
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
             GetAuthenticationDataAndCulture();
 
@@ -24,7 +22,7 @@ namespace Swarmops.Frontend.Automation
 
             if (currenciesJson != null)
             {
-                Response.Output.WriteLine(currenciesJson);
+                Response.Output.WriteLine (currenciesJson);
                 Response.End();
                 return;
             }
@@ -35,7 +33,7 @@ namespace Swarmops.Frontend.Automation
 
             foreach (Currency currency in currencies)
             {
-                currencyStrings.Add(String.Format("{0} {1}|{0}", currency.Code, currency.Name));
+                currencyStrings.Add (String.Format ("{0} {1}|{0}", currency.Code, currency.Name));
             }
 
             currencyStrings.Sort();
@@ -43,19 +41,18 @@ namespace Swarmops.Frontend.Automation
 
             foreach (string currencyString in currencyStrings)
             {
-                string[] parts = currencyString.Split('|');
+                string[] parts = currencyString.Split ('|');
 
-                currenciesJson += "{" + String.Format("\"label\":\"{0}\",\"code\":\"{1}\"", parts[0], parts[1]) + "},";
+                currenciesJson += "{" + String.Format ("\"label\":\"{0}\",\"code\":\"{1}\"", parts[0], parts[1]) + "},";
             }
 
-            currenciesJson = currenciesJson.TrimEnd(',') + "]";
-            
-            Cache.Insert(cacheKey, currenciesJson, null, DateTime.Now.AddMinutes(60), TimeSpan.Zero);
-                // cache lasts for sixty minutes, no sliding expiration
-            Response.Output.WriteLine(currenciesJson);
+            currenciesJson = currenciesJson.TrimEnd (',') + "]";
+
+            Cache.Insert (cacheKey, currenciesJson, null, DateTime.Now.AddMinutes (60), TimeSpan.Zero);
+            // cache lasts for sixty minutes, no sliding expiration
+            Response.Output.WriteLine (currenciesJson);
 
             Response.End();
         }
-
     }
 }

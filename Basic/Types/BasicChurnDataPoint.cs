@@ -6,12 +6,14 @@ namespace Swarmops.Basic.Enums
     public enum ChurnDataType
     {
         Unknown = 0,
+
         /// <summary>
-        /// The member churned (dropped out, left).
+        ///     The member churned (dropped out, left).
         /// </summary>
         Churn,
+
         /// <summary>
-        /// The member remained in the organization (renewed).
+        ///     The member remained in the organization (renewed).
         /// </summary>
         Retention
     }
@@ -21,8 +23,14 @@ namespace Swarmops.Basic.Types
 {
     public class BasicChurnDataPoint
     {
+        public readonly ChurnDataType DataType;
+        public readonly DateTime DecisionDateTime;
+        public readonly DateTime ExpiryDate;
+        public readonly int OrganizationId;
+        public readonly int PersonId;
+
         public BasicChurnDataPoint (ChurnDataType dataType, DateTime decisionDateTime, DateTime expiryDate,
-                                    int personId, int organizationId)
+            int personId, int organizationId)
         {
             this.DataType = dataType;
             this.DecisionDateTime = decisionDateTime;
@@ -32,16 +40,10 @@ namespace Swarmops.Basic.Types
         }
 
         public BasicChurnDataPoint (BasicChurnDataPoint original) :
-            this(
+            this (
             original.DataType, original.DecisionDateTime, original.ExpiryDate, original.PersonId,
             original.OrganizationId)
         {
         }
-
-        public readonly ChurnDataType DataType;
-        public readonly DateTime DecisionDateTime;
-        public readonly DateTime ExpiryDate;
-        public readonly int OrganizationId;
-        public readonly int PersonId;
     }
 }

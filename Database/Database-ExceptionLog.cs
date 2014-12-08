@@ -8,16 +8,16 @@ namespace Swarmops.Database
 {
     public partial class SwarmDb
     {
-        private const string exceptionLogFieldSequence = " ExceptionID, ExceptionDateTime, Source,ExceptionText FROM  ExceptionLog ";
+        private const string exceptionLogFieldSequence =
+            " ExceptionID, ExceptionDateTime, Source,ExceptionText FROM  ExceptionLog ";
 
         private static BasicExceptionLog ExceptionLogFromDataReader (DbDataReader reader)
         {
-
-            int ExceptionId = reader.GetInt32(0);
-            DateTime ExceptionDateTime = reader.GetDateTime(1);
-            string Source = reader.GetString(2);
-            string ExceptionText = reader.GetString(3);
-            return new BasicExceptionLog(ExceptionId, ExceptionDateTime, Source, ExceptionText);
+            int ExceptionId = reader.GetInt32 (0);
+            DateTime ExceptionDateTime = reader.GetDateTime (1);
+            string Source = reader.GetString (2);
+            string ExceptionText = reader.GetString (3);
+            return new BasicExceptionLog (ExceptionId, ExceptionDateTime, Source, ExceptionText);
         }
 
         public void CreateExceptionLogEntry (DateTime dateTime, string source, Exception e)
@@ -28,12 +28,12 @@ namespace Swarmops.Database
                 {
                     connection.Open();
 
-                    DbCommand command = GetDbCommand("CreateExceptionLogEntry", connection);
+                    DbCommand command = GetDbCommand ("CreateExceptionLogEntry", connection);
                     command.CommandType = CommandType.StoredProcedure;
 
-                    AddParameterWithName(command, "exceptionDateTime", dateTime);
-                    AddParameterWithName(command, "source", source);
-                    AddParameterWithName(command, "exceptionText", e.ToString());
+                    AddParameterWithName (command, "exceptionDateTime", dateTime);
+                    AddParameterWithName (command, "source", source);
+                    AddParameterWithName (command, "exceptionText", e.ToString());
 
                     command.ExecuteNonQuery(); // no primary key for exception log
                 }
@@ -42,10 +42,8 @@ namespace Swarmops.Database
             {
                 //never fail from this routine, it is used in exceptionhandlig, 
                 // and if it isn't possible log the error then so be it.
-                return;
             }
         }
-
 
 
         public BasicExceptionLog[] GetExceptionLogTopEntries (int count)
@@ -55,7 +53,7 @@ namespace Swarmops.Database
                 List<BasicExceptionLog> result = new List<BasicExceptionLog>();
                 connection.Open();
 
-                DbCommand command = GetDbCommand(@"
+                DbCommand command = GetDbCommand (@"
                         SELECT  " + exceptionLogFieldSequence + @"
                         order by ExceptionID desc LIMIT " + count, connection);
 
@@ -65,13 +63,12 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ExceptionLogFromDataReader(reader));
+                        result.Add (ExceptionLogFromDataReader (reader));
                     }
 
                     return result.ToArray();
                 }
             }
-
         }
     }
 }

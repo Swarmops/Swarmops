@@ -13,19 +13,19 @@ namespace Swarmops.Logic.Swarm
     {
         public int[] Identities
         {
-            get { return LogicServices.ObjectsToIdentifiers(ToArray()); }
+            get { return LogicServices.ObjectsToIdentifiers (ToArray()); }
         }
 
         public static People FromMemberships (Memberships memberships)
         {
-            var personIds = new List<int>();
+            List<int> personIds = new List<int>();
 
             foreach (Membership membership in memberships)
             {
-                personIds.Add(membership.PersonId);
+                personIds.Add (membership.PersonId);
             }
 
-            return FromIdentities(personIds.ToArray());
+            return FromIdentities (personIds.ToArray());
         }
 
         public static People FromIdentities (int[] personIds)
@@ -35,7 +35,7 @@ namespace Swarmops.Logic.Swarm
                 // If over fivehundred identities are requested, we won't pass the array to
                 // SQL Server. Rather, we'll get ALL the people and parse the list ourselves.
 
-                var lookup = new Dictionary<int, bool>();
+                Dictionary<int, bool> lookup = new Dictionary<int, bool>();
 
                 foreach (int key in personIds)
                 {
@@ -43,27 +43,24 @@ namespace Swarmops.Logic.Swarm
                 }
 
                 BasicPerson[] basicArray = SwarmDb.GetDatabaseForReading().GetAllPeople();
-                var result = new People();
+                People result = new People();
 
                 for (int index = 0; index < basicArray.Length; index++)
                 {
-                    if (lookup.ContainsKey(basicArray[index].Identity))
+                    if (lookup.ContainsKey (basicArray[index].Identity))
                     {
-                        result.Add(Person.FromBasic(basicArray[index]));
+                        result.Add (Person.FromBasic (basicArray[index]));
                     }
                 }
 
                 return result;
             }
-            else
-            {
-                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeople(personIds));
-            }
+            return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeople (personIds));
         }
 
-        public static People GetAll ()
+        public static People GetAll()
         {
-            return People.FromArray(SwarmDb.GetDatabaseForReading().GetAllPeople());
+            return People.FromArray (SwarmDb.GetDatabaseForReading().GetAllPeople());
         }
 
         public static People FromNamePattern (string namePattern)
@@ -73,24 +70,24 @@ namespace Swarmops.Logic.Swarm
                 return new People();
             }
 
-            return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromNamePattern(namePattern));
+            return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromNamePattern (namePattern));
         }
 
         public static People FromBirthDatePattern (DateTime fromdate, DateTime todate)
         {
-            return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromBirthdate(fromdate, todate));
+            return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromBirthdate (fromdate, todate));
         }
 
         public static People FromEmailPattern (string emailPattern)
         {
             // Remove any injection codes
-            emailPattern = emailPattern.Replace("%", String.Empty).Trim();
+            emailPattern = emailPattern.Replace ("%", String.Empty).Trim();
 
             if (emailPattern.Length > 0)
             {
                 emailPattern = "%" + emailPattern + "%";
 
-                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromEmailPattern(emailPattern));
+                return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromEmailPattern (emailPattern));
             }
 
             return null; // If no valid search string was supplied
@@ -99,13 +96,13 @@ namespace Swarmops.Logic.Swarm
         public static People FromCityPattern (string cityPattern)
         {
             // Remove any injection codes
-            cityPattern = cityPattern.Replace("%", String.Empty).Trim();
+            cityPattern = cityPattern.Replace ("%", String.Empty).Trim();
 
             if (cityPattern.Length > 0)
             {
                 cityPattern = "%" + cityPattern + "%";
 
-                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromCityPattern(cityPattern));
+                return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromCityPattern (cityPattern));
             }
 
             return null; // If no valid search string was supplied
@@ -114,13 +111,13 @@ namespace Swarmops.Logic.Swarm
         public static People FromPostalCodePattern (string pcPattern)
         {
             // Remove any injection codes
-            pcPattern = pcPattern.Replace("%", String.Empty).Trim();
+            pcPattern = pcPattern.Replace ("%", String.Empty).Trim();
 
             if (pcPattern.Length > 0)
             {
                 pcPattern = pcPattern + "%";
 
-                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromPostalCodePattern(pcPattern));
+                return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromPostalCodePattern (pcPattern));
             }
 
             return null; // If no valid search string was supplied
@@ -131,8 +128,7 @@ namespace Swarmops.Logic.Swarm
             // Remove any injection codes
             if (pcodes.Length > 0)
             {
-
-                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromPostalCodes(pcodes));
+                return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromPostalCodes (pcodes));
             }
 
             return null; // If no valid search string was supplied
@@ -142,7 +138,7 @@ namespace Swarmops.Logic.Swarm
         {
             if (email.Length > 0)
             {
-                return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromEmail(email));
+                return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromEmail (email));
             }
 
             return null; // If no valid search string was supplied
@@ -163,8 +159,8 @@ namespace Swarmops.Logic.Swarm
                 return set1;
             }
 
-            var result = new People();
-            var set2Lookup = new Dictionary<int, bool>();
+            People result = new People();
+            Dictionary<int, bool> set2Lookup = new Dictionary<int, bool>();
 
             // Build set2's lookup table
 
@@ -177,9 +173,9 @@ namespace Swarmops.Logic.Swarm
 
             foreach (Person person in set1)
             {
-                if (set2Lookup.ContainsKey(person.Identity))
+                if (set2Lookup.ContainsKey (person.Identity))
                 {
-                    result.Add(person);
+                    result.Add (person);
                 }
             }
 
@@ -203,7 +199,7 @@ namespace Swarmops.Logic.Swarm
 
             // Build table, eliminating duplicates
 
-            var table = new Dictionary<int, Person>();
+            Dictionary<int, Person> table = new Dictionary<int, Person>();
 
             foreach (Person person in set1)
             {
@@ -221,11 +217,11 @@ namespace Swarmops.Logic.Swarm
 
             // Assemble result, without any nulls in the original sets
 
-            var result = new People();
+            People result = new People();
 
             foreach (Person person in table.Values)
             {
-                result.Add(person);
+                result.Add (person);
             }
 
             return result;
@@ -233,29 +229,29 @@ namespace Swarmops.Logic.Swarm
 
         public People LogicalAnd (People set2)
         {
-            return LogicalAnd(this, set2);
+            return LogicalAnd (this, set2);
         }
 
         public People LogicalOr (People set2)
         {
-            return LogicalOr(this, set2);
+            return LogicalOr (this, set2);
         }
 
         public People Filter (Predicate<Person> match)
         {
             People retlist = new People();
 
-            this.ForEach(delegate(Person p)
+            ForEach (delegate (Person p)
             {
-                if (match(p))
-                    retlist.Add(p);
+                if (match (p))
+                    retlist.Add (p);
             });
 
             return retlist;
         }
 
 
-        public static People FromOrganizationAndGeographyWithPattern(Organization organization, Geography geography,
+        public static People FromOrganizationAndGeographyWithPattern (Organization organization, Geography geography,
             string pattern)
         {
             Geographies geoTree = geography.GetTree();
@@ -263,9 +259,9 @@ namespace Swarmops.Logic.Swarm
             pattern = pattern.Trim();
             if (pattern.Length == 0)
             {
-                return FromOrganizationAndGeography(organization, geography);
+                return FromOrganizationAndGeography (organization, geography);
             }
-            else if (pattern.Length < 3)
+            if (pattern.Length < 3)
             {
                 // too short pattern! Return empty set.
                 return new People();
@@ -273,29 +269,29 @@ namespace Swarmops.Logic.Swarm
 
             // First, get list of people in the geography, then filter on memberships
 
-            BasicPerson[] candidates = SwarmDb.GetDatabaseForReading().GetPeopleInGeographiesWithPattern(geoTree.Identities, pattern);
+            BasicPerson[] candidates =
+                SwarmDb.GetDatabaseForReading().GetPeopleInGeographiesWithPattern (geoTree.Identities, pattern);
 
-            return FilterByMembership(candidates, organization);
+            return FilterByMembership (candidates, organization);
         }
 
 
-        public static People FromOrganizationAndGeography(Organization organization, Geography geography)
+        public static People FromOrganizationAndGeography (Organization organization, Geography geography)
         {
             Geographies geoTree = geography.GetTree();
 
             // First, get list of people in the geography, then filter on memberships
 
-            BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleInGeographies(geoTree.Identities);
+            BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleInGeographies (geoTree.Identities);
 
             // Filter on memberships
 
-            return FilterByMembership(people, organization);
+            return FilterByMembership (people, organization);
         }
 
 
-        private static People FilterByMembership(BasicPerson[] candidates, Organization organization)
+        private static People FilterByMembership (BasicPerson[] candidates, Organization organization)
         {
-           
             // Get the organization tree
 
             Organizations orgTree = organization.GetTree();
@@ -304,7 +300,7 @@ namespace Swarmops.Logic.Swarm
             // that has at least one membership in an organization in the lookup table,
             // add that person to the final result.
 
-            var lookup = new Dictionary<int, BasicOrganization>();
+            Dictionary<int, BasicOrganization> lookup = new Dictionary<int, BasicOrganization>();
 
             foreach (Organization org in orgTree)
             {
@@ -314,19 +310,20 @@ namespace Swarmops.Logic.Swarm
             // Get the list of all memberships
 
             Dictionary<int, List<BasicMembership>> memberships =
-                SwarmDb.GetDatabaseForReading().GetMembershipsForPeople(LogicServices.ObjectsToIdentifiers(candidates));
+                SwarmDb.GetDatabaseForReading()
+                    .GetMembershipsForPeople (LogicServices.ObjectsToIdentifiers (candidates));
 
-            var result = new People();
+            People result = new People();
 
             foreach (BasicPerson basicPerson in candidates)
             {
                 bool memberOfOrganization = false;
 
-                if (memberships.ContainsKey(basicPerson.Identity))
+                if (memberships.ContainsKey (basicPerson.Identity))
                 {
                     foreach (BasicMembership membership in memberships[basicPerson.Identity])
                     {
-                        if (lookup.ContainsKey(membership.OrganizationId))
+                        if (lookup.ContainsKey (membership.OrganizationId))
                         {
                             memberOfOrganization = true;
                         }
@@ -335,7 +332,7 @@ namespace Swarmops.Logic.Swarm
 
                 if (memberOfOrganization)
                 {
-                    result.Add(Person.FromBasic(basicPerson));
+                    result.Add (Person.FromBasic (basicPerson));
                 }
             }
 
@@ -344,17 +341,17 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromGeography (int geographyId)
         {
-            Geographies geoTree = Geography.FromIdentity(geographyId).GetTree();
+            Geographies geoTree = Geography.FromIdentity (geographyId).GetTree();
 
             // First, get list of people in the geography, then filter on memberships
 
-            BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleInGeographies(geoTree.Identities);
+            BasicPerson[] people = SwarmDb.GetDatabaseForReading().GetPeopleInGeographies (geoTree.Identities);
 
-            var result = new People();
+            People result = new People();
 
             foreach (BasicPerson basicPerson in people)
             {
-                result.Add(Person.FromBasic(basicPerson));
+                result.Add (Person.FromBasic (basicPerson));
             }
 
             return result;
@@ -362,23 +359,21 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromSingle (Person person)
         {
-            var result = new People();
-            result.Add(person);
+            People result = new People();
+            result.Add (person);
 
             return result;
         }
 
 
-
-
         public static People FromArray (Person[] personArray)
         {
-            var result = new People();
+            People result = new People();
 
-            result.Capacity = personArray.Length * 11 / 10;
+            result.Capacity = personArray.Length*11/10;
             foreach (Person person in personArray)
             {
-                result.Add(person);
+                result.Add (person);
             }
 
             return result;
@@ -386,12 +381,12 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromArray (BasicPerson[] personArray)
         {
-            var result = new People();
+            People result = new People();
 
-            result.Capacity = personArray.Length * 11 / 10;
+            result.Capacity = personArray.Length*11/10;
             foreach (BasicPerson basic in personArray)
             {
-                result.Add(Person.FromBasic(basic));
+                result.Add (Person.FromBasic (basic));
             }
 
             return result;
@@ -400,27 +395,29 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromOptionalData (ObjectOptionalDataType dataType, string data)
         {
-            return People.FromIdentities(SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Person, dataType, data));
+            return
+                FromIdentities (SwarmDb.GetDatabaseForReading()
+                    .GetObjectsByOptionalData (ObjectType.Person, dataType, data));
         }
 
         public static People FromPhoneNumber (int countryId, string phoneNumber)
         {
-            return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromPhoneNumber(countryId, phoneNumber));
+            return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromPhoneNumber (countryId, phoneNumber));
         }
 
         public static People FromPhoneNumber (string countryCode, string phoneNumber)
         {
-            return People.FromArray(SwarmDb.GetDatabaseForReading().GetPeopleFromPhoneNumber(countryCode, phoneNumber));
+            return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromPhoneNumber (countryCode, phoneNumber));
         }
 
         public People GetVisiblePeopleByAuthority (Authority authority)
         {
-            return GetVisiblePeopleByAuthority(authority, 0);
+            return GetVisiblePeopleByAuthority (authority, 0);
         }
 
         public People GetVisiblePeopleByAuthority (Authority authority, int gracePeriod)
         {
-            return Authorization.FilterPeopleToMatchAuthority(this, authority,gracePeriod );
+            return Authorization.FilterPeopleToMatchAuthority (this, authority, gracePeriod);
         }
 
         public People GetVisiblePeople (Organization organization)
@@ -430,13 +427,13 @@ namespace Swarmops.Logic.Swarm
             // First, get all the currently visible people for this org
 
             Dictionary<RoleType, bool> roleTypeLookup = Authorization.VisibleRolesDictionary;
-            Roles orgRoles = Roles.FromOrganization(organization);
+            Roles orgRoles = Roles.FromOrganization (organization);
 
             Dictionary<int, bool> personIdLookup = new Dictionary<int, bool>();
 
             foreach (PersonRole orgRole in orgRoles)
             {
-                if (roleTypeLookup.ContainsKey(orgRole.Type))
+                if (roleTypeLookup.ContainsKey (orgRole.Type))
                 {
                     personIdLookup[orgRole.PersonId] = true;
                 }
@@ -446,27 +443,27 @@ namespace Swarmops.Logic.Swarm
 
             foreach (Person person in this)
             {
-                if (personIdLookup.ContainsKey(person.Identity))
+                if (personIdLookup.ContainsKey (person.Identity))
                 {
-                    result.Add(person);
+                    result.Add (person);
                 }
             }
 
             return result;
         }
 
-        public People RemoveUnique ()
+        public People RemoveUnique()
         {
             BasicPerson[] arrayToFilter = ToArray();
-            BasicPerson[] filtered = Authorization.FilterUniquePeople(arrayToFilter);
-            return FromArray(filtered);
+            BasicPerson[] filtered = Authorization.FilterUniquePeople (arrayToFilter);
+            return FromArray (filtered);
         }
 
-        public People RemoveUnlisted ()
+        public People RemoveUnlisted()
         {
             BasicPerson[] arrayToFilter = ToArray();
-            BasicPerson[] filtered = Authorization.FilterUnlistedPeople(arrayToFilter);
-            return FromArray(filtered);
+            BasicPerson[] filtered = Authorization.FilterUnlistedPeople (arrayToFilter);
+            return FromArray (filtered);
         }
 
 
@@ -484,32 +481,32 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromNewsletterFeed (int feedId)
         {
-            int[] subscriberIds = SwarmDb.GetDatabaseForReading().GetSubscribersForNewsletterFeed(2);
+            int[] subscriberIds = SwarmDb.GetDatabaseForReading().GetSubscribersForNewsletterFeed (2);
 
-            return FromIdentities(subscriberIds);
+            return FromIdentities (subscriberIds);
         }
 
         public new void Remove (Person personToRemove)
         {
-            for (int index = 0; index < this.Count; index++)
+            for (int index = 0; index < Count; index++)
             {
                 if (this[index].Identity == personToRemove.Identity)
                 {
-                    RemoveAt(index);
+                    RemoveAt (index);
                     index--;
                 }
             }
         }
 
 
-        public static Dictionary<int, int> GetPeopleGeographies ()
+        public static Dictionary<int, int> GetPeopleGeographies()
         {
             return SwarmDb.GetDatabaseForReading().GetPeopleGeographies();
         }
 
         public static People FromIdentities (int[] personIds, bool preserveOrder)
         {
-            People set = People.FromIdentities(personIds);
+            People set = FromIdentities (personIds);
 
             if (preserveOrder == false)
             {
@@ -527,7 +524,7 @@ namespace Swarmops.Logic.Swarm
 
             foreach (int identity in personIds)
             {
-                result.Add(lookup[identity]);
+                result.Add (lookup[identity]);
             }
 
             return result;

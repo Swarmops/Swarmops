@@ -6,10 +6,10 @@ namespace Swarmops.Logic.DashboardTasks
     {
         public TaskBase (int identity, string description, DateTime opened, DateTime expires)
         {
-            this.Identity = identity;
-            this.Description = description;
-            this.Opened = opened;
-            this.Expires = expires;
+            Identity = identity;
+            Description = description;
+            Opened = opened;
+            Expires = expires;
         }
 
         public int Identity { get; protected set; }

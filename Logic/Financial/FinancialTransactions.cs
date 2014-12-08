@@ -8,7 +8,8 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
-    public class FinancialTransactions : PluralBase<FinancialTransactions,FinancialTransaction,BasicFinancialTransaction>
+    public class FinancialTransactions :
+        PluralBase<FinancialTransactions, FinancialTransaction, BasicFinancialTransaction>
     {
         public static FinancialTransactions GetIncomplete (Organization organization)
         {
@@ -17,18 +18,18 @@ namespace Swarmops.Logic.Financial
 
         public static FinancialTransactions GetUnbalanced (Organization organization)
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions(organization.Identity));
+            return FromArray (SwarmDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions (organization.Identity));
         }
 
 
-        public static FinancialTransactions GetIncomplete(int organizationId)
+        public static FinancialTransactions GetIncomplete (int organizationId)
         {
             FinancialTransactions unbalanced =
-                FromArray(SwarmDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions(organizationId));
+                FromArray (SwarmDb.GetDatabaseForReading().GetUnbalancedFinancialTransactions (organizationId));
             FinancialTransactions undocumented =
-                FromArray(SwarmDb.GetDatabaseForReading().GetUndocumentedFinancialTransactions(organizationId));
+                FromArray (SwarmDb.GetDatabaseForReading().GetUndocumentedFinancialTransactions (organizationId));
 
-            FinancialTransactions allIncomplete = LogicalOr(unbalanced, undocumented);
+            FinancialTransactions allIncomplete = LogicalOr (unbalanced, undocumented);
 
             // filter by year, too
             // HACK: get book-close date from Org object
@@ -39,7 +40,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (transaction.DateTime.Year > 2009)
                 {
-                    result.Add(transaction);
+                    result.Add (transaction);
                 }
             }
 
@@ -49,10 +50,11 @@ namespace Swarmops.Logic.Financial
         public static FinancialTransactions ForDependentObject (IHasIdentity foreignObject)
         {
             return
-                FromArray(SwarmDb.GetDatabaseForReading().GetDependentFinancialTransactions(GetDependencyType(foreignObject),
-                                                                                   foreignObject.Identity));
+                FromArray (
+                    SwarmDb.GetDatabaseForReading()
+                        .GetDependentFinancialTransactions (GetDependencyType (foreignObject),
+                            foreignObject.Identity));
         }
-
 
 
         private static FinancialDependencyType GetDependencyType (IHasIdentity foreignObject)
@@ -66,7 +68,7 @@ namespace Swarmops.Logic.Financial
                 return FinancialDependencyType.InboundInvoice;
             }
 
-            throw new NotImplementedException("Unimplemented dependency type:" + foreignObject.GetType().ToString());
+            throw new NotImplementedException ("Unimplemented dependency type:" + foreignObject.GetType());
         }
     }
 }

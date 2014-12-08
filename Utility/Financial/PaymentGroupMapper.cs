@@ -11,8 +11,8 @@ namespace Swarmops.Utility.Financial
 
             foreach (Organization organization in economyEnabledOrgs)
             {
-                FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced(organization);
-                PaymentGroups groups = PaymentGroups.ForOrganization(organization);
+                FinancialTransactions unbalancedTransactions = FinancialTransactions.GetUnbalanced (organization);
+                PaymentGroups groups = PaymentGroups.ForOrganization (organization);
                 FinancialAccount assetsOutboundInvoices = organization.FinancialAccounts.AssetsOutboundInvoices;
 
                 // This is an N^2 search. Don't care. It runs background.
@@ -21,12 +21,13 @@ namespace Swarmops.Utility.Financial
                 {
                     foreach (FinancialTransaction tx in unbalancedTransactions)
                     {
-                        if (group.Open && tx.Description.EndsWith(group.Tag.Substring(4)) && tx.DateTime.Date == group.DateTime.Date && tx.Rows.AmountCentsTotal == group.AmountCents)
+                        if (group.Open && tx.Description.EndsWith (group.Tag.Substring (4)) &&
+                            tx.DateTime.Date == group.DateTime.Date && tx.Rows.AmountCentsTotal == group.AmountCents)
                         {
                             // Match!
 
                             tx.Dependency = group;
-                            tx.AddRow(assetsOutboundInvoices, -group.AmountCents, null);
+                            tx.AddRow (assetsOutboundInvoices, -group.AmountCents, null);
                             group.Open = false;
                         }
                     }

@@ -9,24 +9,26 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 {
     public partial class FileExpenseClaim : PageV5Base
     {
-        protected void Page_Init(object sender, EventArgs e)
+        private int[] _tagSetIds;
+
+        protected void Page_Init (object sender, EventArgs e)
         {
             string tagSetIdsString = Request["ctl00$PlaceHolderMain$HiddenTagSetIdentifiers"];
 
             // Find our tag ids, either from previously hidden var or load from org
 
-            if (String.IsNullOrEmpty(tagSetIdsString))
+            if (String.IsNullOrEmpty (tagSetIdsString))
             {
-                _tagSetIds = FinancialTransactionTagSets.ForOrganization(this.CurrentOrganization).Identities;
+                this._tagSetIds = FinancialTransactionTagSets.ForOrganization (CurrentOrganization).Identities;
             }
             else
             {
-                string[] tagSetIdStrings = tagSetIdsString.Split(',');
-                _tagSetIds = new int[tagSetIdStrings.Length];
+                string[] tagSetIdStrings = tagSetIdsString.Split (',');
+                this._tagSetIds = new int[tagSetIdStrings.Length];
 
                 for (int index = 0; index < tagSetIdStrings.Length; index++)
                 {
-                    _tagSetIds[index] = Int32.Parse(tagSetIdStrings[index]);
+                    this._tagSetIds[index] = Int32.Parse (tagSetIdStrings[index]);
                 }
             }
 
@@ -35,26 +37,26 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             List<TagSetDataSourceItem> dataSourceVisibleTags = new List<TagSetDataSourceItem>();
             List<TagSetDataSourceItem> dataSourceForcedTags = new List<TagSetDataSourceItem>();
 
-            foreach (int tagSetId in _tagSetIds)
+            foreach (int tagSetId in this._tagSetIds)
             {
-                TagSetDataSourceItem item = new TagSetDataSourceItem()
+                TagSetDataSourceItem item = new TagSetDataSourceItem
                 {
                     TagSetId = tagSetId,
                     TagSetLocalizedName =
-                        FinancialTransactionTagSetType.GetLocalizedName(
-                            FinancialTransactionTagSet.FromIdentity(tagSetId).
+                        FinancialTransactionTagSetType.GetLocalizedName (
+                            FinancialTransactionTagSet.FromIdentity (tagSetId).
                                 FinancialTransactionTagSetTypeId)
                 };
 
-                FinancialTransactionTagSet tagSet = FinancialTransactionTagSet.FromIdentity(tagSetId);
+                FinancialTransactionTagSet tagSet = FinancialTransactionTagSet.FromIdentity (tagSetId);
 
                 if (tagSet.VisibilityLevel <= 1)
                 {
-                    dataSourceVisibleTags.Add(item);
+                    dataSourceVisibleTags.Add (item);
 
                     if (!tagSet.AllowUntagged)
                     {
-                        dataSourceForcedTags.Add(item);
+                        dataSourceForcedTags.Add (item);
                     }
                 }
             }
@@ -75,50 +77,48 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             List<string> tagSetIdStringList = new List<string>();
 
-            foreach (int tagSetId in _tagSetIds)
+            foreach (int tagSetId in this._tagSetIds)
             {
-                tagSetIdStringList.Add(tagSetId.ToString(CultureInfo.InvariantCulture));
+                tagSetIdStringList.Add (tagSetId.ToString (CultureInfo.InvariantCulture));
             }
 
-            this.HiddenTagSetIdentifiers.Value = String.Join(",", tagSetIdStringList.ToArray());
+            this.HiddenTagSetIdentifiers.Value = String.Join (",", tagSetIdStringList.ToArray());
         }
 
-        private int[] _tagSetIds;
-
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load (object sender, EventArgs e)
         {
-            if (!this.CurrentOrganization.IsEconomyEnabled)
+            if (!CurrentOrganization.IsEconomyEnabled)
             {
-                Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
+                Response.Redirect ("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
-            this.PageTitle = Resources.Pages.Financial.FileExpenseClaim_PageTitle;
-            this.PageIcon = "iconshock-moneyback";
-            this.InfoBoxLiteral = Resources.Pages.Financial.FileExpenseClaim_Info;
+            this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.FileExpenseClaim_PageTitle;
+            PageIcon = "iconshock-moneyback";
+            InfoBoxLiteral = Resources.Pages.Financial.FileExpenseClaim_Info;
 
             if (!Page.IsPostBack)
             {
                 // Prime bank details
 
-                this.TextBank.Text = this.CurrentUser.BankName;
-                this.TextClearing.Text = this.CurrentUser.BankClearing;
-                this.TextAccount.Text = this.CurrentUser.BankAccount;
-                this.TextAmount.Text = 0.ToString("N2");
+                this.TextBank.Text = CurrentUser.BankName;
+                this.TextClearing.Text = CurrentUser.BankClearing;
+                this.TextAccount.Text = CurrentUser.BankAccount;
+                this.TextAmount.Text = 0.ToString ("N2");
                 this.TextAmount.Focus();
 
                 Localize();
             }
 
             EasyUIControlsUsed = EasyUIControl.Tree;
-            IncludedControlsUsed = IncludedControl.FileUpload;
+            IncludedControlsUsed = IncludedControl.FileUpload | IncludedControl.JsonParameters;
         }
 
 
         private void Localize()
         {
-            this.LabelAmount.Text = string.Format(Resources.Pages.Financial.FileExpenseClaim_Amount,
-                                                  CurrentOrganization.Currency.DisplayCode);
+            this.LabelAmount.Text = string.Format (Resources.Pages.Financial.FileExpenseClaim_Amount,
+                CurrentOrganization.Currency.DisplayCode);
             this.LabelPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_Description;
             this.LabelBudget.Text = Resources.Pages.Financial.FileExpenseClaim_Budget;
             this.LabelHeaderBankDetails.Text = Resources.Pages.Financial.FileExpenseClaim_HeaderBankDetails;
@@ -132,31 +132,31 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralErrorPurpose.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Purpose;
             this.LiteralErrorBudget.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_Budget;
             this.LiteralErrorBankName.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankName;
-            this.LiteralErrorBankClearing.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
+            this.LiteralErrorBankClearing.Text =
+                Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankClearing;
             this.LiteralErrorBankAccount.Text = Resources.Pages.Financial.RequestCashAdvance_ValidationError_BankAccount;
             this.LiteralErrorDocuments.Text = Resources.Pages.Financial.FileExpenseClaim_ValidationError_Documents;
-
         }
 
 
-        protected void ButtonRequest_Click(object sender, EventArgs e)
+        protected void ButtonRequest_Click (object sender, EventArgs e)
         {
             // The data has been validated client-side already. We'll throw unfriendly exceptions if invalid data is passed here.
             // People who choose to disable JavaScript and then submit bad input almost deserve to be hurt.
 
-            double amount = Double.Parse(this.TextAmount.Text, NumberStyles.Number);
-                // parses in current culture - intentional
+            double amount = Double.Parse (this.TextAmount.Text, NumberStyles.Number);
+            // parses in current culture - intentional
             Int64 amountCents = (Int64) amount*100;
 
             string description = this.TextPurpose.Text;
 
-            FinancialAccount budget = FinancialAccount.FromIdentity(Int32.Parse(this.Request.Form["DropBudgets"]));
+            FinancialAccount budget = FinancialAccount.FromIdentity (Int32.Parse (Request.Form["DropBudgets"]));
 
             // sanity check
 
             if (budget.Organization.Identity != CurrentOrganization.Identity)
             {
-                throw new InvalidOperationException("Budget-organization mismatch; won't file expense claim");
+                throw new InvalidOperationException ("Budget-organization mismatch; won't file expense claim");
             }
 
             // Store bank details for current user
@@ -171,33 +171,35 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (documents.Count == 0)
             {
-                throw new InvalidOperationException("No documents uploaded");
+                throw new InvalidOperationException ("No documents uploaded");
             }
 
-            ExpenseClaim claim = ExpenseClaim.Create (this.CurrentUser, this.CurrentOrganization, budget, DateTime.UtcNow, description, amountCents);
+            ExpenseClaim claim = ExpenseClaim.Create (CurrentUser, CurrentOrganization, budget, DateTime.UtcNow,
+                description, amountCents);
 
-            foreach (int tagSetId in _tagSetIds)
+            foreach (int tagSetId in this._tagSetIds)
             {
                 string selectedTagString =
-                    this.Request.Form["DropTags" + tagSetId.ToString(CultureInfo.InvariantCulture)];
+                    Request.Form["DropTags" + tagSetId.ToString (CultureInfo.InvariantCulture)];
 
-                if (!String.IsNullOrEmpty(selectedTagString))
+                if (!String.IsNullOrEmpty (selectedTagString))
                 {
-                    int selectedTagType = Int32.Parse(selectedTagString);
+                    int selectedTagType = Int32.Parse (selectedTagString);
                     if (selectedTagType != 0)
                     {
-                        claim.FinancialTransaction.CreateTag(FinancialTransactionTagType.FromIdentity(selectedTagType),
-                                                             CurrentUser);
+                        claim.FinancialTransaction.CreateTag (
+                            FinancialTransactionTagType.FromIdentity (selectedTagType),
+                            CurrentUser);
                     }
                 }
             }
 
-            documents.SetForeignObjectForAll(claim);
+            documents.SetForeignObjectForAll (claim);
 
-            string successMessage = string.Format(Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartOne,
-                                                  CurrentOrganization.Currency.Code,
-                                                  (double) (amountCents/100.0),
-                                                  budget.Name);
+            string successMessage = string.Format (Resources.Pages.Financial.FileExpenseClaim_SuccessMessagePartOne,
+                CurrentOrganization.Currency.Code,
+                amountCents/100.0,
+                budget.Name);
 
             if (budget.OwnerPersonId != CurrentUser.Identity)
             {
@@ -212,11 +214,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 claim.Attest (CurrentUser);
             }
 
-            Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(successMessage)));
+            Response.AppendCookie (new HttpCookie ("DashboardMessage", HttpUtility.UrlEncode (successMessage)));
 
             // Redirect to dashboard
 
-            Response.Redirect("/", true);
+            Response.Redirect ("/", true);
         }
 
 

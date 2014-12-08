@@ -7,7 +7,7 @@ namespace Swarmops.Logic.Financial
 {
     public class FinancialTransactionRows : List<FinancialTransactionRow>
     {
-        [Obsolete("Do not use. Use AmountCentsTotal.", true)]
+        [Obsolete ("Do not use. Use AmountCentsTotal.", true)]
         public decimal AmountTotal
         {
             get
@@ -36,7 +36,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        [Obsolete("Do not use. Use Int64 BalanceCentsDelta.", true)]
+        [Obsolete ("Do not use. Use Int64 BalanceCentsDelta.", true)]
         public decimal BalanceDelta
         {
             get
@@ -45,7 +45,8 @@ namespace Swarmops.Logic.Financial
 
                 foreach (FinancialTransactionRow row in this)
                 {
-                    if (row.Account.AccountType == FinancialAccountType.Asset || row.Account.AccountType == FinancialAccountType.Debt)
+                    if (row.Account.AccountType == FinancialAccountType.Asset ||
+                        row.Account.AccountType == FinancialAccountType.Debt)
                     {
                         result += row.Amount;
                     }
@@ -62,7 +63,8 @@ namespace Swarmops.Logic.Financial
 
                 foreach (FinancialTransactionRow row in this)
                 {
-                    if (row.Account.AccountType == FinancialAccountType.Asset || row.Account.AccountType == FinancialAccountType.Debt)
+                    if (row.Account.AccountType == FinancialAccountType.Asset ||
+                        row.Account.AccountType == FinancialAccountType.Debt)
                     {
                         result += row.AmountCents;
                     }
@@ -71,9 +73,9 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public static FinancialTransactionRows FromArray(BasicFinancialTransactionRow[] basicArray)
+        public static FinancialTransactionRows FromArray (BasicFinancialTransactionRow[] basicArray)
         {
-            var result = new FinancialTransactionRows {Capacity = (basicArray.Length*11/10)};
+            FinancialTransactionRows result = new FinancialTransactionRows {Capacity = (basicArray.Length*11/10)};
 
             foreach (BasicFinancialTransactionRow basic in basicArray)
             {

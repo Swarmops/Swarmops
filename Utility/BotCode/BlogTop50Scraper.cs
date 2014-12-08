@@ -15,7 +15,7 @@ namespace Swarmops.Utility.BotCode
             // Every hour of the day, we check that this has been recorded for the day. This is just in case
             // the bot isn't running at midnight, to make sure that we get one entry per day.
 
-            if (SwarmDb.GetDatabaseForReading().GetBlogTopList(DateTime.Today) == null)
+            if (SwarmDb.GetDatabaseForReading().GetBlogTopList (DateTime.Today) == null)
             {
                 ScrapeAndStore();
             }
@@ -25,30 +25,30 @@ namespace Swarmops.Utility.BotCode
         {
             string scrapeData = string.Empty;
 
-            HttpWebRequest request = (HttpWebRequest) HttpWebRequest.Create("http://knuff.se/topp50/knuffpoaeng/");
+            HttpWebRequest request = (HttpWebRequest) WebRequest.Create ("http://knuff.se/topp50/knuffpoaeng/");
             request.UserAgent = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9b5) Gecko/2008050509 Firefox/3.0b5";
 
             using (Stream stream = request.GetResponse().GetResponseStream())
             {
-                using (StreamReader reader = new StreamReader(stream, Encoding.GetEncoding(1252)))
+                using (StreamReader reader = new StreamReader (stream, Encoding.GetEncoding (1252)))
                 {
                     scrapeData = reader.ReadToEnd();
                 }
             }
 
-            Regex regex = new Regex("<h4 .*?><a href.*?>(?<blogname>.*?)</a>", RegexOptions.None);
+            Regex regex = new Regex ("<h4 .*?><a href.*?>(?<blogname>.*?)</a>", RegexOptions.None);
 
-            Match match = regex.Match(scrapeData);
+            Match match = regex.Match (scrapeData);
 
             List<string> rankingList = new List<string>();
             while (match.Success)
             {
                 string blogName = match.Groups["blogname"].Value;
-                rankingList.Add(blogName);
+                rankingList.Add (blogName);
                 match = match.NextMatch();
             }
 
-            SwarmDb.GetDatabaseForWriting().StoreBlogTopList(DateTime.Today, rankingList.ToArray());
+            SwarmDb.GetDatabaseForWriting().StoreBlogTopList (DateTime.Today, rankingList.ToArray());
         }
     }
 }

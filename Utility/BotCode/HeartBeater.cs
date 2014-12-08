@@ -1,33 +1,55 @@
 using System;
 using System.IO;
+using System.Text;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Utility.BotCode
 {
     public class HeartBeater
     {
-        static private HeartBeater instance = null;
-        static private object lockObject = new object();
+        private static HeartBeater instance;
+        private static readonly object lockObject = new object();
 
-        private bool FlagRestartRequested = false;
+        private bool FlagRestartRequested;
         private DateTime lastBeat = DateTime.MinValue;
         private string lastFilename = "";
 
-
-        public void Beat ()
+        public bool WasKilled
         {
-            Beat(lastFilename);
+            get { return this.FlagRestartRequested; }
+        }
+
+        public static HeartBeater Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (lockObject)
+                    {
+                        if (instance == null)
+                            instance = new HeartBeater();
+                    }
+                }
+                return instance;
+            }
+        }
+
+
+        public void Beat()
+        {
+            Beat (this.lastFilename);
         }
 
         public void Beat (string filename)
         {
             lock (lockObject)
             {
-                lastFilename = filename;
+                this.lastFilename = filename;
             }
 
-            if ((DateTime.Now.Subtract(lastBeat).TotalSeconds > 10)
-                            && (this.FlagRestartRequested == false))
+            if ((DateTime.Now.Subtract (this.lastBeat).TotalSeconds > 10)
+                && (this.FlagRestartRequested == false))
             {
                 try
                 {
@@ -37,59 +59,36 @@ namespace Swarmops.Utility.BotCode
 
                     if (nowString == Persistence.Key["PirateBot-L-Heartbeat"])
                     {
-                        writeFile(filename, DateTime.Now.ToString());
+                        writeFile (filename, DateTime.Now.ToString());
                     }
                     else
                     {
-                        this.SuggestRestart();
-                        throw new Exception("Failed to update HeartBeat");
+                        SuggestRestart();
+                        throw new Exception ("Failed to update HeartBeat");
                     }
                 }
                 catch (Exception e)
                 {
-                    this.SuggestRestart();
-                    throw new Exception("Failed to update HeartBeat", e);
+                    SuggestRestart();
+                    throw new Exception ("Failed to update HeartBeat", e);
                 }
             }
         }
 
 
-        public void SuggestRestart ()
+        public void SuggestRestart()
         {
-            if (!File.Exists("./piratebotexit.flag"))
-                File.Create("./piratebotexit.flag");
+            if (!File.Exists ("./piratebotexit.flag"))
+                File.Create ("./piratebotexit.flag");
             this.FlagRestartRequested = true;
         }
 
-        public bool WasKilled
+        public static void writeFile (string sPath, string content)
         {
-            get { return (this.FlagRestartRequested == true); }
-        }
-
-        public static HeartBeater Instance
-        {
-            get
-            {
-
-                if (instance == null)
-                {
-                    lock (lockObject)
-                    {
-                        if (instance == null)
-                            instance = new HeartBeater();
-                    }
-
-                }
-                return instance;
-            }
-        }
-        static public void writeFile (string sPath, string content)
-        {
-            StreamWriter writeStream = new StreamWriter(new FileStream(sPath, FileMode.Create, FileAccess.ReadWrite), System.Text.Encoding.Default);
-            writeStream.Write(content);
+            StreamWriter writeStream = new StreamWriter (new FileStream (sPath, FileMode.Create, FileAccess.ReadWrite),
+                Encoding.Default);
+            writeStream.Write (content);
             writeStream.Close();
         }
-
-
     }
 }

@@ -13,23 +13,22 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string churnDataFieldSequence =
-            " PersonId,OrganizationId,Churn,DecisionDateTime,ExpiryDateTime " +  // 0-4
+            " PersonId,OrganizationId,Churn,DecisionDateTime,ExpiryDateTime " + // 0-4
             " FROM ChurnData ";
 
-        static private BasicChurnDataPoint ReadChurnDataPointFromDataReader (DbDataReader reader)
+        private static BasicChurnDataPoint ReadChurnDataPointFromDataReader (DbDataReader reader)
         {
-            int personId = reader.GetInt32(0);
-            int organizationId = reader.GetInt32(1);
-            bool churn = reader.GetBoolean(2);
-            DateTime decisionDateTime = reader.GetDateTime(3);
-            DateTime expiryDateTime = reader.GetDateTime(4);
+            int personId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32 (1);
+            bool churn = reader.GetBoolean (2);
+            DateTime decisionDateTime = reader.GetDateTime (3);
+            DateTime expiryDateTime = reader.GetDateTime (4);
 
-            return new BasicChurnDataPoint(churn ? ChurnDataType.Churn : ChurnDataType.Retention, decisionDateTime,
-                                           expiryDateTime, personId, organizationId);
+            return new BasicChurnDataPoint (churn ? ChurnDataType.Churn : ChurnDataType.Retention, decisionDateTime,
+                expiryDateTime, personId, organizationId);
         }
 
         #endregion
-
 
         #region Record reading code -- SELECT statements
 
@@ -42,15 +41,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT " + churnDataFieldSequence + ConstructWhereClause("ChurnData", conditions) +
+                    GetDbCommand (
+                        "SELECT " + churnDataFieldSequence + ConstructWhereClause ("ChurnData", conditions) +
                         " ORDER BY ExpiryDateTime", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadChurnDataPointFromDataReader(reader));
+                        result.Add (ReadChurnDataPointFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -60,7 +59,7 @@ namespace Swarmops.Database
 
 
         public BasicChurnDataPoint[] GetChurnDataForOrganization (IHasIdentity organization, DateTime lowerDate,
-                                                                  DateTime upperDate)
+            DateTime upperDate)
         {
             // Since I don't trust SQL Server to make correct date comparisons, especially given
             // that the dates are passed in text in SQL, we get ALL the data and do
@@ -68,10 +67,10 @@ namespace Swarmops.Database
             // some 30k records with two unlinked fields isn't that expensive.
 
             DateTime minimumDateTime = lowerDate.Date;
-            DateTime maximumDateTime = upperDate.Date.AddDays(1);
+            DateTime maximumDateTime = upperDate.Date.AddDays (1);
 
             List<BasicChurnDataPoint> result = new List<BasicChurnDataPoint>();
-            BasicChurnDataPoint[] rawData = this.GetChurnData(organization);
+            BasicChurnDataPoint[] rawData = GetChurnData (organization);
 
             foreach (BasicChurnDataPoint churnPoint in rawData)
             {
@@ -80,40 +79,39 @@ namespace Swarmops.Database
 
                 if (churnPoint.ExpiryDate >= minimumDateTime && churnPoint.ExpiryDate < maximumDateTime)
                 {
-                    result.Add(churnPoint);
+                    result.Add (churnPoint);
                 }
             }
 
             return result.ToArray();
         }
-        
+
         #endregion
 
-        
         #region Record creation and manipulation code -- stored procedures
 
-        public int LogChurnData(int personId, int organizationId, bool churn, DateTime expiryDateTime)
+        public int LogChurnData (int personId, int organizationId, bool churn, DateTime expiryDateTime)
         {
-            return LogChurnData(personId, organizationId, churn, expiryDateTime, DateTime.Now);
+            return LogChurnData (personId, organizationId, churn, expiryDateTime, DateTime.Now);
         }
 
-        public int LogChurnData(int personId, int organizationId, bool churn, DateTime expiryDateTime,
-                                 DateTime decisionDateTime)
+        public int LogChurnData (int personId, int organizationId, bool churn, DateTime expiryDateTime,
+            DateTime decisionDateTime)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("LogChurnData", connection);
+                DbCommand command = GetDbCommand ("LogChurnData", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "p_personId", personId);
-                AddParameterWithName(command, "p_organizationId", organizationId);
-                AddParameterWithName(command, "p_churn", churn);
-                AddParameterWithName(command, "p_decisionDateTime", decisionDateTime);
-                AddParameterWithName(command, "p_expiryDateTime", expiryDateTime);
+                AddParameterWithName (command, "p_personId", personId);
+                AddParameterWithName (command, "p_organizationId", organizationId);
+                AddParameterWithName (command, "p_churn", churn);
+                AddParameterWithName (command, "p_decisionDateTime", decisionDateTime);
+                AddParameterWithName (command, "p_expiryDateTime", expiryDateTime);
 
-                return Convert.ToInt32(command.ExecuteScalar());
+                return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 

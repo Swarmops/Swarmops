@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Title_Activist_Corps" xml:space="preserve">
+    <value>Aktivistsvärm</value>
+  </data>
+  <data name="Title_Activist_Female" xml:space="preserve">
+    <value>Aktivist</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Activist_Generic" xml:space="preserve">
+    <value>Aktivist</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Activist_Male" xml:space="preserve">
+    <value>Aktivist</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Activist_Plural" xml:space="preserve">
+    <value>Aktivister</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Title_Activist_Ship" xml:space="preserve">
+    <value>Aktivistskap</value>
+  </data>
+  <data name="Title_Agent_Corps" xml:space="preserve">
+    <value>Agentkår</value>
+  </data>
+  <data name="Title_Agent_Female" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="Title_Agent_Generic" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="Title_Agent_Male" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="Title_Agent_Plural" xml:space="preserve">
+    <value>Agenter</value>
+  </data>
+  <data name="Title_Agent_Ship" xml:space="preserve">
+    <value>Agentskap</value>
+  </data>
+  <data name="Title_Ambassador_Corps" xml:space="preserve">
+    <value>Ambassadörskår</value>
+  </data>
+  <data name="Title_Ambassador_Female" xml:space="preserve">
+    <value>Ambassadör</value>
+  </data>
+  <data name="Title_Ambassador_Generic" xml:space="preserve">
+    <value>Ambassadör</value>
+  </data>
+  <data name="Title_Ambassador_Male" xml:space="preserve">
+    <value>Ambassadör</value>
+  </data>
+  <data name="Title_Ambassador_Plural" xml:space="preserve">
+    <value>Ambassadörer</value>
+  </data>
+  <data name="Title_Ambassador_Ship" xml:space="preserve">
+    <value>Ambassadörskap</value>
+  </data>
+  <data name="Title_Citizen_Corps" xml:space="preserve">
+    <value>Medborgare</value>
+  </data>
+  <data name="Title_Citizen_Female" xml:space="preserve">
+    <value>Medborgare</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Citizen_Generic" xml:space="preserve">
+    <value>Medborgare</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Citizen_Male" xml:space="preserve">
+    <value>Medborgare</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Citizen_Plural" xml:space="preserve">
+    <value>Medborgare</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Title_Citizen_Ship" xml:space="preserve">
+    <value>Medborgarskap</value>
+  </data>
+  <data name="Title_Conscript_Corps" xml:space="preserve">
+    <value>Kår</value>
+  </data>
+  <data name="Title_Conscript_Female" xml:space="preserve">
+    <value>Värnpliktig</value>
+  </data>
+  <data name="Title_Conscript_Generic" xml:space="preserve">
+    <value>Värnpliktig</value>
+  </data>
+  <data name="Title_Conscript_Male" xml:space="preserve">
+    <value>Värnpliktig</value>
+  </data>
+  <data name="Title_Conscript_Plural" xml:space="preserve">
+    <value>Värnpliktiga</value>
+  </data>
+  <data name="Title_Conscript_Ship" xml:space="preserve">
+    <value>Värnpliktighet</value>
+  </data>
+  <data name="Title_Contributor_Corps" xml:space="preserve">
+    <value>Medarbetarkår</value>
+  </data>
+  <data name="Title_Contributor_Female" xml:space="preserve">
+    <value>Medarbetare</value>
+  </data>
+  <data name="Title_Contributor_Generic" xml:space="preserve">
+    <value>Medarbetare</value>
+  </data>
+  <data name="Title_Contributor_Male" xml:space="preserve">
+    <value>Medarbetare</value>
+  </data>
+  <data name="Title_Contributor_Plural" xml:space="preserve">
+    <value>Medarbetare</value>
+  </data>
+  <data name="Title_Contributor_Ship" xml:space="preserve">
+    <value>Medarbetarskap</value>
+  </data>
+  <data name="Title_Customer_Corps" xml:space="preserve">
+    <value>Kundkår</value>
+  </data>
+  <data name="Title_Customer_Female" xml:space="preserve">
+    <value>Kund</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Customer_Generic" xml:space="preserve">
+    <value>Kund</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Customer_Male" xml:space="preserve">
+    <value>Kund</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Customer_Plural" xml:space="preserve">
+    <value>Kunder</value>
+    <comment>Gender neutral plural</comment>
+  </data>
+  <data name="Title_Customer_Ship" xml:space="preserve">
+    <value>Kundskap</value>
+  </data>
+  <data name="Title_Employee_Corps" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="Title_Employee_Female" xml:space="preserve">
+    <value>Anställd</value>
+  </data>
+  <data name="Title_Employee_Generic" xml:space="preserve">
+    <value>Anställd</value>
+  </data>
+  <data name="Title_Employee_Male" xml:space="preserve">
+    <value>Anställd</value>
+  </data>
+  <data name="Title_Employee_Plural" xml:space="preserve">
+    <value>Anställda</value>
+  </data>
+  <data name="Title_Employee_Ship" xml:space="preserve">
+    <value>Anställning</value>
+  </data>
+  <data name="Title_Member_Corps" xml:space="preserve">
+    <value>Medlemskår</value>
+  </data>
+  <data name="Title_Member_Female" xml:space="preserve">
+    <value>Medlem</value>
+  </data>
+  <data name="Title_Member_Generic" xml:space="preserve">
+    <value>Medlem</value>
+  </data>
+  <data name="Title_Member_Male" xml:space="preserve">
+    <value>Medlem</value>
+  </data>
+  <data name="Title_Member_Plural" xml:space="preserve">
+    <value>Medlemmar</value>
+  </data>
+  <data name="Title_Member_Ship" xml:space="preserve">
+    <value>Medlemskap</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="Title_Person_Corps" xml:space="preserve">
+    <value>Styrkor</value>
+  </data>
+  <data name="Title_Person_Female" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="Title_Person_Generic" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="Title_Person_Male" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="Title_Person_Plural" xml:space="preserve">
+    <value>Personer</value>
+  </data>
+  <data name="Title_Person_Ship" xml:space="preserve">
+    <value>Personskap</value>
+  </data>
+  <data name="Title_Regular_Corps" xml:space="preserve">
+    <value>Kår</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Female" xml:space="preserve">
+    <value>Soldat</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Generic" xml:space="preserve">
+    <value>Soldat</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Male" xml:space="preserve">
+    <value>Soldat</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Plural" xml:space="preserve">
+    <value>Soldat</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Regular_Ship" xml:space="preserve">
+    <value>Soldatskap</value>
+    <comment>"Regular" in the military soldier sense, not "regular customer"</comment>
+  </data>
+  <data name="Title_Resident_Corps" xml:space="preserve">
+    <value>Invånare</value>
+  </data>
+  <data name="Title_Resident_Female" xml:space="preserve">
+    <value>Invånare</value>
+  </data>
+  <data name="Title_Resident_Generic" xml:space="preserve">
+    <value>Invånare</value>
+  </data>
+  <data name="Title_Resident_Male" xml:space="preserve">
+    <value>Invånare</value>
+  </data>
+  <data name="Title_Resident_Plural" xml:space="preserve">
+    <value>Invånare</value>
+  </data>
+  <data name="Title_Resident_Ship" xml:space="preserve">
+    <value>Hemvist</value>
+  </data>
+  <data name="Title_Sailor_Corps" xml:space="preserve">
+    <value>Besättning</value>
+  </data>
+  <data name="Title_Sailor_Female" xml:space="preserve">
+    <value>Sjöman</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Generic" xml:space="preserve">
+    <value>Sjöman</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Male" xml:space="preserve">
+    <value>Sjöman</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Plural" xml:space="preserve">
+    <value>Sjömän</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Sailor_Ship" xml:space="preserve">
+    <value>Sjömanskap</value>
+    <comment>("Seaman" is a Navy rank, not a genderized title)</comment>
+  </data>
+  <data name="Title_Salesperson_Corps" xml:space="preserve">
+    <value>Säljkår</value>
+  </data>
+  <data name="Title_Salesperson_Female" xml:space="preserve">
+    <value>Säljare</value>
+  </data>
+  <data name="Title_Salesperson_Generic" xml:space="preserve">
+    <value>Säljare</value>
+  </data>
+  <data name="Title_Salesperson_Male" xml:space="preserve">
+    <value>Säljare</value>
+  </data>
+  <data name="Title_Salesperson_Plural" xml:space="preserve">
+    <value>Säljare</value>
+  </data>
+  <data name="Title_Salesperson_Ship" xml:space="preserve">
+    <value>Säljroll</value>
+  </data>
+  <data name="Title_Supporter_Corps" xml:space="preserve">
+    <value>Supporterkår</value>
+  </data>
+  <data name="Title_Supporter_Female" xml:space="preserve">
+    <value>Supporter</value>
+  </data>
+  <data name="Title_Supporter_Generic" xml:space="preserve">
+    <value>Supporter</value>
+  </data>
+  <data name="Title_Supporter_Male" xml:space="preserve">
+    <value>Supporter</value>
+  </data>
+  <data name="Title_Supporter_Plural" xml:space="preserve">
+    <value>Supportrar</value>
+  </data>
+  <data name="Title_Supporter_Ship" xml:space="preserve">
+    <value>Supporterskap</value>
+  </data>
+</root>

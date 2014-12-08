@@ -5,6 +5,19 @@ namespace Swarmops.Basic.Types
 {
     public class BasicMedium : IHasIdentity
     {
+        private readonly int mediumId;
+        private readonly string name;
+        private readonly PoliticalAffiliation politicalAffiliation;
+
+        #region IHasIdentity Members
+
+        public int Identity
+        {
+            get { return MediumId; }
+        }
+
+        #endregion
+
         public BasicMedium (int mediumId, string name, PoliticalAffiliation politicalAffiliation)
         {
             this.mediumId = mediumId;
@@ -13,7 +26,7 @@ namespace Swarmops.Basic.Types
         }
 
         public BasicMedium (int mediumId, string name)
-            : this(mediumId, name, Enums.PoliticalAffiliation.NotPolitical)
+            : this (mediumId, name, PoliticalAffiliation.NotPolitical)
         {
         }
 
@@ -31,18 +44,5 @@ namespace Swarmops.Basic.Types
         {
             get { return this.mediumId; }
         }
-
-        private int mediumId;
-        private string name;
-        private PoliticalAffiliation politicalAffiliation;
-
-        #region IHasIdentity Members
-
-        public int Identity
-        {
-            get { return this.MediumId; }
-        }
-
-        #endregion
     }
 }

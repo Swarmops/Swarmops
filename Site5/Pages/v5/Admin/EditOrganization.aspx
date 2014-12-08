@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="EditOrganization.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Admin.EditOrganization" %>
+<%@ Import Namespace="Resources" %>
 <%@ Register tagPrefix="Swarmops5" tagName="FileUpload" src="~/Controls/v5/Base/FileUpload.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="DropDown" src="~/Controls/v5/Base/DropDown.ascx" %>
 
@@ -9,9 +10,9 @@
         $(document).ready(function() {
             $('#divTabs').tabs();
             $('.EditCheck').switchbutton({
-                checkedLabel: '<%=Resources.Global.Global_On.ToUpperInvariant() %>',
-                uncheckedLabel: '<%=Resources.Global.Global_Off.ToUpperInvariant() %>',
-            }).change(function () {
+                checkedLabel: '<%= Global.Global_On.ToUpperInvariant() %>',
+                uncheckedLabel: '<%= Global.Global_Off.ToUpperInvariant() %>',
+            }).change(function() {
 
                 if (suppressSwitchResponse) {
                     return;
@@ -29,7 +30,7 @@
                     data: $.toJSON(jsonData),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: function (msg) {
+                    success: function(msg) {
                         if (msg.d.Success) {
                             alertify.log(msg.d.DisplayMessage);
                             if (msg.d.RequireForex && !($('#CheckEnableForex').prop("checked"))) {
@@ -42,7 +43,7 @@
                             }
                         }
                     },
-                    error: function (msg) {
+                    error: function(msg) {
                         // TODO: Reset switch, protest server unreachable
                     }
 
@@ -57,10 +58,10 @@
                 data: "{}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function (msg) {
+                success: function(msg) {
                     initializeSettings(msg.d);
                 },
-                error: function (msg) {
+                error: function(msg) {
                     // TODO: try again? bail out?
                     alert("The server did not respond with the organization's current settings.");
                 }
@@ -85,16 +86,15 @@
     </script>
         
     <style type="text/css">
-	    .IconEdit {
-		    cursor: pointer;
-	    }
-	    #IconCloseEdit {
-		    cursor: pointer;
-		    
-	    }
-	    .CheckboxContainer {
-		    float: right; padding-top: 6px;padding-right: 8px;
-	    }
+        .IconEdit { cursor: pointer; }
+
+        #IconCloseEdit { cursor: pointer; }
+
+        .CheckboxContainer {
+            float: right;
+            padding-top: 6px;
+            padding-right: 8px;
+        }
     </style>
 
 
@@ -119,7 +119,7 @@
                 Enable foreign currency accounts?<br/>
                 Enable Value Added Tax (VAT)?<br/>
             </div>
-            <div id="divUseAccountPlan" style="display: none; width:100%; text-align:center; margin-top:20px; margin-bottom: 20px; border-top: 1px solid <%=CommonV5.GetColor(ColorType.Base, ColorVariant.Light)%>; border-bottom: 1px solid <%=CommonV5.GetColor(ColorType.Base, ColorVariant.Light)%>; background-color: <%=CommonV5.GetColor(ColorType.Base, ColorVariant.XLight)%>">
+            <div id="divUseAccountPlan" style="display: none; width: 100%; text-align: center; margin-top: 20px; margin-bottom: 20px; border-top: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; border-bottom: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; background-color: <%= CommonV5.GetColor (ColorType.Base, ColorVariant.XLight) %>">
                 Use the <a href="/Pages/v5/Ledgers/AccountPlan.aspx">Account Plan</a> page to set detailed parameters for these accounts, once enabled.
             </div>
         </div>

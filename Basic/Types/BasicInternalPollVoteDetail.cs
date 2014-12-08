@@ -4,9 +4,9 @@ namespace Swarmops.Basic.Types
     {
         public BasicInternalPollVoteDetail (int internalPollVoteId, int internalPollCandidateId, int position)
         {
-            this.InternalPollVoteId = internalPollVoteId;
-            this.InternalPollCandidateId = internalPollCandidateId;
-            this.Position = position;
+            InternalPollVoteId = internalPollVoteId;
+            InternalPollCandidateId = internalPollCandidateId;
+            Position = position;
         }
 
         public BasicInternalPollVoteDetail (BasicInternalPollVoteDetail original)

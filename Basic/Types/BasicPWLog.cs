@@ -5,17 +5,29 @@ namespace Swarmops.Basic.Types
     [Serializable]
     public class BasicPWLog
     {
-        public BasicPWLog ( DateTime dateTimeUtc,
-                            int actingPersonId,
-                            string affectedItemType,
-                            int affectedItemId,
-                            string actionType,
-                            string actionDescription,
-                            string changedField,
-                            string valueBefore,
-                            string valueAfter,
-                            string comment,
-                            string ipAddress)
+        private int actingPersonId;
+        private string actionDescription;
+        private string actionType;
+        private int affectedItemId;
+        private string affectedItemType;
+        private string changedField;
+        private string comment;
+        private DateTime dateTimeUtc;
+        private string ipAddress;
+        private string valueAfter;
+        private string valueBefore;
+
+        public BasicPWLog (DateTime dateTimeUtc,
+            int actingPersonId,
+            string affectedItemType,
+            int affectedItemId,
+            string actionType,
+            string actionDescription,
+            string changedField,
+            string valueBefore,
+            string valueAfter,
+            string comment,
+            string ipAddress)
         {
             this.dateTimeUtc = dateTimeUtc;
             this.actingPersonId = actingPersonId;
@@ -28,87 +40,73 @@ namespace Swarmops.Basic.Types
             this.valueAfter = valueAfter;
             this.comment = comment;
             this.ipAddress = ipAddress;
-
         }
 
 
         public DateTime DateTimeUtc
         {
-            get { return dateTimeUtc; }
-            set { dateTimeUtc = value; }
+            get { return this.dateTimeUtc; }
+            set { this.dateTimeUtc = value; }
         }
 
         public int ActingPersonId
         {
-            get { return actingPersonId; }
-            set { actingPersonId = value; }
+            get { return this.actingPersonId; }
+            set { this.actingPersonId = value; }
         }
 
         public string AffectedItemType
         {
-            get { return affectedItemType; }
-            set { affectedItemType = value; }
+            get { return this.affectedItemType; }
+            set { this.affectedItemType = value; }
         }
 
         public int AffectedItemId
         {
-            get { return affectedItemId; }
-            set { affectedItemId = value; }
+            get { return this.affectedItemId; }
+            set { this.affectedItemId = value; }
         }
 
         public string ActionType
         {
-            get { return actionType; }
-            set { actionType = value; }
+            get { return this.actionType; }
+            set { this.actionType = value; }
         }
 
         public string ActionDescription
         {
-            get { return actionDescription; }
-            set { actionDescription = value; }
+            get { return this.actionDescription; }
+            set { this.actionDescription = value; }
         }
 
         public string ChangedField
         {
-            get { return changedField; }
-            set { changedField = value; }
+            get { return this.changedField; }
+            set { this.changedField = value; }
         }
 
         public string ValueBefore
         {
-            get { return valueBefore; }
-            set { valueBefore = value; }
+            get { return this.valueBefore; }
+            set { this.valueBefore = value; }
         }
 
         public string ValueAfter
         {
-            get { return valueAfter; }
-            set { valueAfter = value; }
+            get { return this.valueAfter; }
+            set { this.valueAfter = value; }
         }
 
         public string Comment
         {
-            get { return comment; }
-            set { comment = value; }
+            get { return this.comment; }
+            set { this.comment = value; }
         }
 
         public string IpAddress
         {
-            get { return ipAddress; }
-            set { ipAddress = value; }
+            get { return this.ipAddress; }
+            set { this.ipAddress = value; }
         }
-
-        private DateTime dateTimeUtc;
-        private int actingPersonId;
-        private string affectedItemType;
-        private int affectedItemId;
-        private string actionType;
-        private string actionDescription;
-        private string changedField;
-        private string valueBefore;
-        private string valueAfter;
-        private string comment;
-        private string ipAddress;
-
     }
 }

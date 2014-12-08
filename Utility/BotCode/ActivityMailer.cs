@@ -1,16 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Net.Mail;
-using System.Web;
-using Swarmops.Logic.Structure;
-using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Utility.BotCode
 {
     public class ActivityMailer
     {
-        [Obsolete("Disabled/Deprecated for Swarmops", true)]
+        [Obsolete ("Disabled/Deprecated for Swarmops", true)]
         public static void Run()
         {
             /* Nope. Disable this. 
@@ -94,7 +88,6 @@ namespace Swarmops.Utility.BotCode
                     }
                 }
             } */
-
         }
     }
 }

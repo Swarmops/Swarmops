@@ -13,19 +13,17 @@ namespace Swarmops.Database
         private const string postalCodeFieldSequence =
             " PostalCodeId,PostalCode,CityId,CountryId FROM PostalCodes ";
 
-        private BasicPostalCode ReadPostalCodeFromDataReader(DbDataReader reader)
+        private BasicPostalCode ReadPostalCodeFromDataReader (DbDataReader reader)
         {
-            int postalCodeId = reader.GetInt32(0);
-            string postalCode = reader.GetString(1);
-            int cityId = reader.GetInt32(2);
-            int countryId = reader.GetInt32(3);
+            int postalCodeId = reader.GetInt32 (0);
+            string postalCode = reader.GetString (1);
+            int cityId = reader.GetInt32 (2);
+            int countryId = reader.GetInt32 (3);
 
-            return new BasicPostalCode(postalCodeId, postalCode, cityId, countryId);
+            return new BasicPostalCode (postalCodeId, postalCode, cityId, countryId);
         }
 
         #endregion
-
-
 
         #region Record reading - SELECT statements
 
@@ -36,8 +34,8 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + postalCodeFieldSequence + "WHERE CountryId=" + countryId.ToString() + ";", connection);
+                    GetDbCommand (
+                        "SELECT" + postalCodeFieldSequence + "WHERE CountryId=" + countryId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -45,7 +43,7 @@ namespace Swarmops.Database
 
                     while (reader.Read())
                     {
-                        result.Add(ReadPostalCodeFromDataReader(reader));
+                        result.Add (ReadPostalCodeFromDataReader (reader));
                     }
 
                     return result.ToArray();
@@ -53,13 +51,9 @@ namespace Swarmops.Database
             }
         }
 
-
         #endregion
 
-
-
         #region Creation and manipulation - stored procedures
-
 
         /* -- UNUSED
         public int CreateInboundInvoice(int organizationId, DateTime dueDate, int budgetId, 
@@ -218,15 +212,9 @@ namespace Swarmops.Database
             }
         }*/
 
-
-
         #endregion
 
-
-
-
         #region Dead template code
-
 
         /*
         public int CreateFinancialAccount(int pOrganizationId, string pName, FinancialAccountType pAccountType, int pParentFinancialAccountId)

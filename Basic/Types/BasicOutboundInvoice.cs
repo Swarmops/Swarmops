@@ -3,33 +3,39 @@ using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types
 {
-    public class BasicOutboundInvoice: IHasIdentity
+    public class BasicOutboundInvoice : IHasIdentity
     {
-        public BasicOutboundInvoice (int outboundInvoiceId, string customerName, string invoiceAddressPaper, string invoiceAddressMail, int currencyId, int organizationId, int budgetId, 
-            DateTime createdDateTime, int createdByPersonId, DateTime dueDate, int reminderCount, string reference, bool domestic, bool open, bool sent, string securityCode, string theirReference)
+        public BasicOutboundInvoice (int outboundInvoiceId, string customerName, string invoiceAddressPaper,
+            string invoiceAddressMail, int currencyId, int organizationId, int budgetId,
+            DateTime createdDateTime, int createdByPersonId, DateTime dueDate, int reminderCount, string reference,
+            bool domestic, bool open, bool sent, string securityCode, string theirReference)
         {
-            this.OutboundInvoiceId = outboundInvoiceId;
-            this.CustomerName = customerName;
-            this.InvoiceAddressPaper = invoiceAddressPaper;
-            this.InvoiceAddressMail = invoiceAddressMail;
-            this.CurrencyId = currencyId;
-            this.OrganizationId = organizationId;
-            this.BudgetId = budgetId;
-            this.CreatedDateTime = createdDateTime;
-            this.CreatedByPersonId = createdByPersonId;
-            this.DueDate = dueDate;
-            this.ReminderCount = reminderCount;
-            this.Reference = reference;
-            this.Domestic = domestic;
-            this.Open = open;
-            this.Sent = sent;
-            this.SecurityCode = securityCode;
-            this.TheirReference = theirReference;
+            OutboundInvoiceId = outboundInvoiceId;
+            CustomerName = customerName;
+            InvoiceAddressPaper = invoiceAddressPaper;
+            InvoiceAddressMail = invoiceAddressMail;
+            CurrencyId = currencyId;
+            OrganizationId = organizationId;
+            BudgetId = budgetId;
+            CreatedDateTime = createdDateTime;
+            CreatedByPersonId = createdByPersonId;
+            DueDate = dueDate;
+            ReminderCount = reminderCount;
+            Reference = reference;
+            Domestic = domestic;
+            Open = open;
+            Sent = sent;
+            SecurityCode = securityCode;
+            TheirReference = theirReference;
         }
 
 
-        public BasicOutboundInvoice (BasicOutboundInvoice original):
-            this (original.OutboundInvoiceId, original.CustomerName, original.InvoiceAddressPaper, original.InvoiceAddressMail, original.CurrencyId, original.OrganizationId, original.BudgetId, original.CreatedDateTime, original.CreatedByPersonId, original.DueDate, original.ReminderCount, original.Reference, original.Domestic, original.Open, original.Sent, original.SecurityCode, original.TheirReference)
+        public BasicOutboundInvoice (BasicOutboundInvoice original) :
+            this (
+            original.OutboundInvoiceId, original.CustomerName, original.InvoiceAddressPaper, original.InvoiceAddressMail,
+            original.CurrencyId, original.OrganizationId, original.BudgetId, original.CreatedDateTime,
+            original.CreatedByPersonId, original.DueDate, original.ReminderCount, original.Reference, original.Domestic,
+            original.Open, original.Sent, original.SecurityCode, original.TheirReference)
         {
             // empty copy ctor
         }
@@ -55,7 +61,7 @@ namespace Swarmops.Basic.Types
 
         public int Identity
         {
-            get { return this.OutboundInvoiceId; }
+            get { return OutboundInvoiceId; }
         }
     }
 }

@@ -10,19 +10,20 @@ namespace Swarmops.Database
             " OrganizationFinancialAccountTypes.Name AS OrganizationFinancialAccountType,OrganizationFinancialAccounts.OrganizationId,OrganizationFinancialAccounts.FinancialAccountId FROM OrganizationFinancialAccounts " +
             "JOIN OrganizationFinancialAccountTypes ON (OrganizationFinancialAccounts.OrganizationFinancialAccountTypeId=OrganizationFinancialAccountTypes.OrganizationFinancialAccountTypeId) ";
 
-
         #region Select statements - reading data
 
-        public int GetOrganizationFinancialAccountId(int organizationId, OrganizationFinancialAccountType organizationFinancialAccountType)
+        public int GetOrganizationFinancialAccountId (int organizationId,
+            OrganizationFinancialAccountType organizationFinancialAccountType)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + organizationFinancialAccountsDataFieldSequence + "WHERE OrganizationFinancialAccountTypes.Name='" + organizationFinancialAccountType.ToString() + "' " +
-                        "AND OrganizationFinancialAccounts.Organizationid=" + organizationId.ToString() + ";", connection);
+                    GetDbCommand (
+                        "SELECT" + organizationFinancialAccountsDataFieldSequence +
+                        "WHERE OrganizationFinancialAccountTypes.Name='" + organizationFinancialAccountType + "' " +
+                        "AND OrganizationFinancialAccounts.Organizationid=" + organizationId + ";", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -30,7 +31,7 @@ namespace Swarmops.Database
                     {
                         // account Id is third in select list, just return it
 
-                        return reader.GetInt32(2);
+                        return reader.GetInt32 (2);
                     }
 
                     // TODO: Throw instead if requested account not found?
@@ -39,6 +40,7 @@ namespace Swarmops.Database
                 }
             }
         }
+
         /*
 
         public int[] GetObjectsByOptionalData(ObjectType objectType, ObjectOptionalDataType dataType, string data)
@@ -105,26 +107,25 @@ namespace Swarmops.Database
 
         #endregion
 
-
         #region Stored procedures for modifying data
 
-        public void SetOrganizationFinancialAccountId(int organizationId, OrganizationFinancialAccountType accountType, int financialAccountId)
+        public void SetOrganizationFinancialAccountId (int organizationId, OrganizationFinancialAccountType accountType,
+            int financialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetOrganizationFinancialAccount", connection);
+                DbCommand command = GetDbCommand ("SetOrganizationFinancialAccount", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "organizationId", organizationId);
-                AddParameterWithName(command, "organizationFinancialAccountTypeName", accountType.ToString());
-                AddParameterWithName(command, "financialAccountId", financialAccountId);
+                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "organizationFinancialAccountTypeName", accountType.ToString());
+                AddParameterWithName (command, "financialAccountId", financialAccountId);
 
                 command.ExecuteNonQuery();
             }
         }
-
 
         #endregion
     }
