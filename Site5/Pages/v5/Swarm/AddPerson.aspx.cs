@@ -100,27 +100,16 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
         protected void ButtonSubmit_Click (object sender, EventArgs e)
         {
-            /*
+            // TODO: Parse birthdate
+
             Person newPerson = Person.Create (this.TextName.Text, this.TextMail.Text, string.Empty, this.TextPhone.Text,
                 this.TextStreet1.Text + this.TextStreet2.Text,
                 this.TextPostal.Text, this.TextCity.Text, this.DropCountries.SelectedValue, DateTime.UtcNow,
-                PersonGender.Unknown);
+                (PersonGender)Enum.Parse(typeof(PersonGender), this.DropGenders.SelectedValue));
 
             Membership newMembership = Membership.Create (newPerson, CurrentOrganization, DateTime.Today.AddYears (1));
 
-            PayloadEnvelope envelope = new PayloadEnvelope();
-            ParticipantMailPayload payload = new ParticipantMailPayload(ParticipantMailType.MemberAddedWelcome, newMembership, CurrentUser);
-            envelope.PayloadXml = payload.ToXml();
-            envelope.PayloadClass = payload.GetType().ToString();
-
-            Assembly assembly = typeof (PayloadEnvelope).Assembly;
-
-            Type payloadType = assembly.GetType (envelope.PayloadClass);
-            var methodInfo = payloadType.GetMethod("FromXml", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
-
-            ICommsRenderer renderer = (ICommsRenderer)(methodInfo.Invoke (null, new object[] { envelope.PayloadXml }));
-
-            */
+            OutboundComm.CreateMembershipLetter (ParticipantMailType.MemberAddedWelcome, newMembership, CurrentUser);
 
             // Person.Create()
 

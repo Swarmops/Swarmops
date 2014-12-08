@@ -141,7 +141,7 @@
     <comment>"Legal" to cut short discussions on 50 different genders for the time being</comment>
   </data>
   <data name="AddPerson_PersonSuccessfullyRegistered" xml:space="preserve">
-    <value>The person was successfully added to the organization.</value>
+    <value>The person was successfully added to the organization. A welcome mail has been sent.</value>
   </data>
   <data name="AddPerson_StatisticalData" xml:space="preserve">
     <value>Statistical Data</value>
