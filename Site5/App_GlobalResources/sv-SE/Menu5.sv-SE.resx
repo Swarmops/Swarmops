@@ -123,9 +123,8 @@
   <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
     <value>Tillgångskontrollistor</value>
   </data>
-  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
-    <value>Skapa organisation</value>
-  </data>
+  
+  
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geografiträd</value>
   </data>
@@ -360,6 +359,7 @@
   <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>Lägg Till Medlem</value>
   </data>
+  
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>Sök/Lista folk</value>
   </data>

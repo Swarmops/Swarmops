@@ -124,7 +124,10 @@
     <value>crwdns1639805:0crwdne1639805:0</value>
   </data>
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
-    <value>crwdns6553751:0crwdne6553751:0</value>
+    <value>crwdns6555405:0crwdne6555405:0</value>
+  </data>
+  <data name="Menu5_Administration_EditOrganization" xml:space="preserve">
+    <value>crwdns6555406:0crwdne6555406:0</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>crwdns1639806:0crwdne1639806:0</value>
@@ -359,6 +362,9 @@
   </data>
   <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>crwdns1639869:0crwdne1639869:0</value>
+  </data>
+  <data name="Menu5_People_AddPerson" xml:space="preserve">
+    <value>crwdns6555407:0[Regular]crwdne6555407:0</value>
   </data>
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>crwdns6553850:0crwdne6553850:0</value>

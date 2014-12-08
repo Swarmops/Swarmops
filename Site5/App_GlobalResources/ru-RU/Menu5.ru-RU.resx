@@ -126,6 +126,7 @@
   
   
   
+  
   <data name="Menu5_Communications" xml:space="preserve">
     <value>Связь</value>
   </data>
@@ -254,6 +255,7 @@
   <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>Добавить участников</value>
   </data>
+  
   
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Список участников</value>

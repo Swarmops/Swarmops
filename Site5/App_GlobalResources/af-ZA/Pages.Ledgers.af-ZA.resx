@@ -549,4 +549,12 @@
     <value>crwdns6555190:0{1:N0}crwdnd6555190:0{0:N0}crwdnd6555190:0{3}crwdnd6555190:0{2:N2}crwdnd6555190:0{5:N0}crwdnd6555190:0{4:N0}crwdne6555190:0</value>
     <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
   </data>
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>crwdns6555419:0crwdne6555419:0</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>crwdns6555420:0crwdne6555420:0</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
 </root>

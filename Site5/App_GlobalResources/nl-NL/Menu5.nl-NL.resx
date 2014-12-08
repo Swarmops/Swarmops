@@ -124,6 +124,7 @@
     <value>Toegangscontrole lijst</value>
   </data>
   
+  
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geografische Boom</value>
   </data>
@@ -324,6 +325,7 @@
   <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>Lid Toevoegen</value>
   </data>
+  
   
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Ledenlijst</value>
