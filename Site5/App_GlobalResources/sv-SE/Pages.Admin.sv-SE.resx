@@ -130,9 +130,7 @@
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>Skapa ny organisation som...</value>
   </data>
-  <data name="CreateOrganization_Info" xml:space="preserve">
-    <value>Du kan skapa en ny organisation som en ny fristående organisation, eller som en underorganisation till den nuvarande. (I en underorganisation, så får alla med ansvar i den överordnade organisationen automatiskt motsvarande rättigheter och privilegier.)</value>
-  </data>
+  
   <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
     <value>Arbetsvaluta</value>
   </data>
@@ -150,6 +148,16 @@
     <value>Den nya organisationen har skapats. Du har tilldelats två års {0} i organisationen, så att du kan arbeta med den och sätta upp den ordentligt. Om du vill byta till att arbeta med din nya organisation, använd kontrollpanelen uppe till höger.</value>
     <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
 </root>

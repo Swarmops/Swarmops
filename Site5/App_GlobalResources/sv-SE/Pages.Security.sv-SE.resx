@@ -138,9 +138,7 @@
   <data name="ChangeOrganizations_NewOrganization" xml:space="preserve">
     <value>Ny organisation</value>
   </data>
-  <data name="ChangeOrganizations_NothingToChange" xml:space="preserve">
-    <value>Du deltar inte i några andra organisationer på denna Swarmops-installation, så du inte kan byta till något annat. Därför så går vi tillbaka till Översikten istället.</value>
-  </data>
+  
   <data name="ChangeOrganizations_PageTitle" xml:space="preserve">
     <value>Byt organisation</value>
   </data>
