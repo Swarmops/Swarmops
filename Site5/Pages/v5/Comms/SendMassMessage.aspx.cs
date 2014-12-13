@@ -23,6 +23,8 @@ namespace Swarmops.Frontend.Pages.Comms
 
             this.TextMessage.Style[HtmlTextWriterStyle.Width] = "674px";
             this.TextMessage.Style["resize"] = "none";
+
+            EasyUIControlsUsed = EasyUIControl.Tree;
         }
 
         private void Localize()

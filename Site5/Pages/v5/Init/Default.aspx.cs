@@ -170,28 +170,6 @@ public partial class Pages_v5_Init_Default : Page
     }
 
 
-    private string GetBuildIdentity()
-    {
-        // Read build number if not loaded, or set to "Private" if none
-
-        if (_buildIdentity == null)
-        {
-            try
-            {
-                using (StreamReader reader = File.OpenText (HttpContext.Current.Request.MapPath ("~/BuildIdentity.txt"))
-                    )
-                {
-                    _buildIdentity = "Build " + reader.ReadLine();
-                }
-            }
-            catch (Exception)
-            {
-                _buildIdentity = "Private Build";
-            }
-        }
-
-        return _buildIdentity;
-    }
 
     [WebMethod]
     public static PermissionsAnalysis FirstCredentialsTest

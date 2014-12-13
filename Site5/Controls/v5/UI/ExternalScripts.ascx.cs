@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Web.UI;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Controls.v5.UI
@@ -38,9 +39,14 @@ namespace Swarmops.Frontend.Controls.v5.UI
                 string[] controlNames = Controls.Split (',');
                 foreach (string controlName in controlNames)
                 {
-                    scriptRef.AppendFormat ("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + externalScriptUrl +
-                                            "/easyui/themes/default/{0}.css\" />\r\n",
-                        controlName.Trim().ToLowerInvariant());
+                    string controlNameLower = controlName.Trim().ToLowerInvariant();
+                    if (controlNameLower != "unknown")
+                    {
+                        scriptRef.AppendFormat (
+                            "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + externalScriptUrl +
+                            "/easyui/themes/default/{0}.css\" />\r\n",
+                            controlNameLower);
+                    }
                 }
 
                 this.LiteralReference.Text = scriptRef.ToString();
