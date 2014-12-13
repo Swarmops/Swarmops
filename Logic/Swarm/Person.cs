@@ -529,7 +529,22 @@ namespace Swarmops.Logic.Swarm
             Cities cities = Cities.FromPostalCode (PostalCode, base.CountryId);
             City city = null;
 
-            if (cities.Count == 0)
+            if (cities.Count == 0 && PostalCode.Length > 3)
+            {
+                // try shortening the postal code - like NL dataset - and see if we find anything
+
+                for (int shortening = 1; shortening <= 3; shortening++)
+                {
+                    cities = Cities.FromPostalCode (PostalCode.Substring (0, PostalCode.Length - shortening),
+                        base.CountryId);
+                    if (cities.Count > 0)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if (cities.Count == 0) // still no hit? Move on to getting city by name
             {
                 try
                 {
