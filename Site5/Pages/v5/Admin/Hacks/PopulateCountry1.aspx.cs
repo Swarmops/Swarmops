@@ -56,7 +56,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
 
             if (!PilotInstallationIds.IsPilot (PilotInstallationIds.SwarmopsLive) && !Debugger.IsAttached)
             {
-                throw new UnauthorizedAccessException("This may only run on Swarmops Master");
+                // throw new UnauthorizedAccessException("This may only run on Swarmops Master");
             }
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
