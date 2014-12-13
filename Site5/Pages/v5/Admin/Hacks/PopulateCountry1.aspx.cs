@@ -40,15 +40,15 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
             //
             // Tab separated fields
             //
-            // [countrycode] [tab] [geo1] .. [geo_n]
+            // [countrycode] [tab] [geo1] [tab] [geo2] [tab] .. [tab] [geo_n]
             //
             // example:
             // 
-            // NL [Tab] Greater Amsterdam
-            // NL [Tab] Greater Amsterdam [Tab] Amsterdam
-            // NL [Tab] Greater Amsterdam [Tab] Amsterdam [Tab] Wallen
+            // NL [Tab] Noord-Holland [Tab] Greater Amsterdam
+            // NL [Tab] Noord-Holland [Tab] Greater Amsterdam [Tab] Amsterdam
+            // NL [Tab] Noord-Holland [Tab] Greater Amsterdam [Tab] Amsterdam [Tab] Wallen
             //
-            // To populate all four nodes, only the last line is necessary, but all three lines are valid.
+            // To populate all five nodes (including country), only the last line is necessary, but all these lines are valid.
             //
             // Nodes are not re-populated on repetition. Node names within a country scope are required to
             // be unique.

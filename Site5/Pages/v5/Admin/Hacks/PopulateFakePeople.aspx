@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="PopulateData.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Admin.Hacks.PopulateData" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="PopulateFakePeople.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Admin.Hacks.PopulateFakePeople" %>
 <%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ExternalScripts" Src="~/Controls/v5/UI/ExternalScripts.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
@@ -21,7 +21,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "PopulateData.aspx/InitializeProcessing",
+                url: "PopulateFakePeople.aspx/InitializeProcessing",
                 data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -89,7 +89,7 @@
         </div>
         
         <div class="entryLabels">
-            Upload file for processing<br/><br/>
+            Upload <strong>fake people</strong> for processing<br/><br/>
         </div>
     </div>
     <div clear="both"></div>

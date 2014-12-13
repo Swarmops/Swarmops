@@ -89,7 +89,7 @@
         </div>
         
         <div class="entryLabels">
-            Upload file for processing<br/><br/>
+            Upload <strong>postal codes</strong> for processing<br/><br/>
         </div>
     </div>
     <div clear="both"></div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Web.Services;
 using Swarmops.Basic.Enums;
@@ -12,11 +13,11 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
 {
-    public partial class PopulateData : PageV5Base
+    public partial class PopulateFakePeople : PageV5Base
     {
         protected void Page_Load (object sender, EventArgs e)
         {
-            PageTitle = "Populate Data";
+            PageTitle = "Populate Data - Fake People";
             PageIcon = "iconshock-battery-drill";
             InfoBoxLiteral = "You've taken a wrong turn if you're even seeing this page. It's for development purposes.";
         }
@@ -53,7 +54,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
             string data = string.Empty;
             int count = 0;
 
-            using (StreamReader reader = uploadedDoc.GetReader (1252))
+            using (StreamReader reader = uploadedDoc.GetReader (Encoding.UTF8))
             {
                 data = reader.ReadToEnd();
             }

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Web.Services;
 using Swarmops.Basic.Enums;
+using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -17,7 +19,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
     {
         protected void Page_Load (object sender, EventArgs e)
         {
-            PageTitle = "Populate Country - Postal Codes, Cities";
+            PageTitle = "Populate Country 2 - Postal Codes, Cities";
             PageIcon = "iconshock-battery-drill";
             InfoBoxLiteral = "You've taken a wrong turn if you're even seeing this page. It's for development purposes.";
         }
@@ -32,6 +34,22 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
         public static void InitializeProcessing (string guid)
         {
             // Start an async thread that does all the work, then return
+
+
+            // FORMAT OF FILE
+            //
+            // Tab separated fields
+            //
+            // [countrycode] [tab] [postalCode] [tab] [cityName] [tab] [geoNodeName]
+            //
+            // example:
+            // 
+            // NL [Tab] 1026 [Tab] Amsterdam-Zuid [Tab] Amsterdam
+            //
+            // For countries that don't use postal codes, leave the postal code field empty.
+            //
+            // Node names within a country scope are required to be unique.
+
 
             if (!PilotInstallationIds.IsPilot(PilotInstallationIds.SwarmopsLive) && !Debugger.IsAttached)
             {
@@ -70,38 +88,65 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
 
             Random random = new Random();
 
+            Dictionary<string,bool> postalCodeDupes = new Dictionary<string, bool>();
+
             foreach (string lineRaw in lines)
             {
                 count++;
                 string line = lineRaw.Trim();
                 string[] lineParts = line.Split ('\t');
 
-                if (lineParts.Length < 12)
+                if (lineParts.Length != 4)
                 {
                     continue;
                 }
 
-                int percent = (count*99)/lines.Length;
+                int percent = (count * 99) / lines.Length;
                 if (percent == 0)
                 {
                     percent = 1;
                 }
-                GuidCache.Set (guid + "-Progress", percent);
-
-                string name = lineParts[0] + " " + lineParts[1];
-                PersonGender gender = lineParts[2] == "male" ? PersonGender.Male : PersonGender.Female;
-                DateTime dateOfBirth = DateTime.Parse (lineParts[7], new CultureInfo ("en-US"), DateTimeStyles.None);
-                Country country = Country.FromCode (lineParts[6]);
+                GuidCache.Set(guid + "-Progress", percent);
 
 
-                Person newPerson = Person.Create (name, string.Empty, string.Empty, lineParts[8], lineParts[3],
-                    lineParts[4].Replace (" ", ""), lineParts[5], lineParts[6], dateOfBirth, gender);
+                string countryCode = lineParts[0].Trim().ToUpperInvariant();
+                string postalCode = lineParts[1].Trim();
+                string cityName = lineParts[2].Trim();
+                string nodeName = lineParts[3].Trim();
 
-                newPerson.NationalIdNumber = lineParts[9];
-                newPerson.Longitude = lineParts[10];
-                newPerson.Latitude = lineParts[11];
+                // Dupecheck
 
-                newPerson.AddMembership (1, DateTime.Today.AddDays (random.Next (365)));
+                if (postalCodeDupes.ContainsKey (postalCode))
+                {
+                    continue;
+                }
+
+                Geography geography = Geography.FromName (nodeName); // may dupe!
+
+                // First, make sure country exists
+
+                Country country = Country.FromCode (countryCode);
+
+                // Then, check if the city name exists
+
+                City city = null;
+
+                try
+                {
+                    city = City.FromName (cityName, country.Identity);
+                }
+                catch (ArgumentException)
+                {
+                    city = City.Create (cityName, country.Identity, geography.Identity);
+                }
+
+                // Last, add the postal code, if there is any
+
+                if (!string.IsNullOrEmpty (postalCode))
+                {
+                    SwarmDb.GetDatabaseForWriting().CreatePostalCode (postalCode, city.Identity, country.Identity);
+                    postalCodeDupes[postalCode] = true;
+                }
             }
 
             GuidCache.Set (guid + "-Progress", 100);
