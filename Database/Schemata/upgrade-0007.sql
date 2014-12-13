@@ -1,4 +1,4 @@
-UPDATE `Countries` SET `CurrencyCode`='EUR', `PostalCodeLength`='6' WHERE `CountryCode`='NL'
+UPDATE `Countries` SET `CurrencyCode`='EUR', `PostalCodeLength`='6' WHERE `Code`='NL'
 
 #
 
