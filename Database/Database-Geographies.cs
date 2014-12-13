@@ -284,8 +284,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + geographyFieldSequence + " WHERE Name like '" + geographyName.Replace ("'", "''") +
-                        "%'",
+                        "SELECT " + geographyFieldSequence + " WHERE Name ='" + geographyName.Replace ("'", "''") + "'",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
