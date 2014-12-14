@@ -518,7 +518,7 @@ public partial class Pages_v5_Init_Default : Page
                             sqlCityBuild.Append (",");
                         }
 
-                        sqlCityBuild.Append ("('" + city.Name.Replace ("'", "\'") + "'," + newGeographyId + "," +
+                        sqlCityBuild.Append ("('" + city.Name.Replace ("'", "\\'") + "'," + newGeographyId + "," +
                                              newCountryId + ",'')");
                         insertComma = true;
 
