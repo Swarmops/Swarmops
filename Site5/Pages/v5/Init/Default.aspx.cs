@@ -361,7 +361,7 @@ public partial class Pages_v5_Init_Default : Page
 
             DatabaseMaintenance.FirstInitialization();
 
-            _initProgress = 6;
+            _initProgress = 3;
             _initMessage = "Applying all post-baseline database schema upgrades...";
             DatabaseMaintenance.UpgradeSchemata();
             Thread.Sleep (100);
