@@ -400,7 +400,7 @@ public partial class Pages_v5_Init_Default : Page
                 countryIdTranslation[country.Code] = SwarmDb.GetDatabaseForWriting().CreateCountry (country.Name,
                     country.Code,
                     country.Culture,
-                    rootGeographyId, 5,
+                    rootGeographyId, country.PostalCodeLength,
                     string.Empty);
 
                 count++;

@@ -473,11 +473,20 @@ namespace Swarmops.Site.Automation
 
         private int geographyIdField;
 
+        private int postalCodeLengthField;
+
         /// <remarks/>
         public int CountryId
         {
             get { return this.countryIdField; }
             set { this.countryIdField = value; }
+        }
+
+        /// <remarks/>
+        public int PostalCodeLength
+        {
+            get { return this.postalCodeLengthField; }
+            set { this.postalCodeLengthField = value; }
         }
 
         /// <remarks/>
