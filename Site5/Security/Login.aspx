@@ -56,6 +56,7 @@
 
     	    function onInputCredentials() {
     	        clearTimeout(manualCredentialsTestTrigger);
+    	        $('#TextLogin, #TextPass').css('background-image', 'none');
 
     	        manualCredentialsTestTrigger = setTimeout(function() {
     	            testManualCredentials();
@@ -71,6 +72,10 @@
     	        jsonData.credentials2FA = $('#Text2FA').val();
     	        jsonData.logonUriEncoded = bitIdUri;
 
+    	        if (jsonData.credentialsLogin.length == 0 || jsonData.credentialsPass.length == 0) {
+	                return; // empty pass or login
+	            }
+
     	        $.ajax({
     	            type: "POST",
     	            url: "Login.aspx/TestCredentials",
@@ -80,8 +85,10 @@
     	            success: function(msg) {
     	                if (msg.d) {
     	                    // alert("<asp:Literal ID="LiteralLoginSuccess" runat="server" />");  // Modal on Chrome, so need a shaded div instead
+    	                    $('#TextLogin, #TextPass').css('background-image', "url('/Security/Images/iconshock-greentick-16px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
     	                } else {
-    	                    // do nothing
+    	                    // inform user of bad credentials by means of a red cross on _both_ boxes
+    	                    $('#TextLogin, #TextPass').css('background-image', "url('/Security/Images/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
     	                }
     	            },
     	            error: function(msg) {
