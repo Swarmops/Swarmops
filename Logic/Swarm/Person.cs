@@ -430,6 +430,12 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
+        public int LastLogonOrganizationId
+        {
+            get { return OptionalData.GetOptionalDataInt (ObjectOptionalDataType.LastLoginOrganizationId); }
+            set { OptionalData.SetOptionalDataInt (ObjectOptionalDataType.LastLoginOrganizationId, value); }
+        }
+
         public string PortraitPhotographer
         {
             get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.PortraitPhotographer); }

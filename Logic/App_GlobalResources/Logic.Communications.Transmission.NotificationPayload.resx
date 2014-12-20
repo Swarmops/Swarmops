@@ -137,7 +137,7 @@ Expect more communication from the budget owner to follow on the matter.</value>
 This means you should see the amount on your account shortly.</value>
   </data>
   <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
-    <value>[OrganizationName] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
@@ -146,14 +146,14 @@ Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
-    <value>(ACTION ITEM) [OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
@@ -162,7 +162,7 @@ Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
-    <value>(ACTION ITEM) [OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
@@ -172,14 +172,14 @@ Expect more communication from the budget owner to follow on the matter.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. Expect more communications to follow on what you need to do to file a proper expense claim.</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
     <value>The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been DE-validated by the financial record keepers of the organization. This usually indicates some sort of problem with the documentation of your expense claim.
@@ -187,7 +187,7 @@ Expect more communication from the budget owner to follow on the matter.</value>
 Expect more communication to follow on the matter. If you don't hear from record keepers in short time on this matter, do follow up with them.</value>
   </data>
   <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been marked as paid out by the organization's accountants.
@@ -195,7 +195,7 @@ Expect more communication to follow on the matter. If you don't hear from record
 This means you should see the amount on your account shortly.</value>
   </data>
   <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Paid: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Expense Claim Paid: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
     <value>The receipts for your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], have been validated by people responsible for keeping the records in order.
@@ -204,7 +204,7 @@ The claim will be paid out to you when the amount has also been attested by the 
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
-    <value>[OrganizationName] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="InboundInvoice_Created_Body" xml:space="preserve">
     <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
@@ -212,7 +212,36 @@ The claim will be paid out to you when the amount has also been attested by the 
 Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
-    <value>(ACTION ITEM) [OrganizationName] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>A new [Regular] was manually added to [OrganizationName] within an area of yours.</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] New [Regular]: [PersonName], [PersonGeography] [CountryCode] (manual)</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>A new [Regular] has signed up for [OrganizationName] within an area of yours.</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] New [Regular]: [PersonName], [PersonGeography] [CountryCode]</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [Regularship] renewed: [PersonName], [PersonGeography] [CountryCode] (manual)</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>Your message has been queued for delivery and the recipients have been resolved. Your mail will be sent to, or be attempted to sent to, [RecipientCount] people in [Geography] in [OrganizationName].</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Comm recipients determined for [GeographyName]: [RecipientCount]</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>Your message to [GeographyName] has been sent to all scheduled recipients. Of the [RecipientCount] planned recipients, [RecipientsSuccess] succeeded from Swarmops' horizon. (These can fail later for a number of reasons, from broken computers to hospitalized recipients.)
+
+Time spent transmitting: [TransmissionTime].</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Comms transmitted: [GeographyName]</value>
   </data>
   <data name="Receipts_Filed_Body" xml:space="preserve">
     <value>Receipts have been filed that need validation for their financial processes to continue.
@@ -220,7 +249,7 @@ Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
 Please log on to Swarmops at [SystemUrl] to confirm or reject them.</value>
   </data>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
-    <value>(ACTION ITEM) [OrganizationName] Receipts Filed - Validation Needed</value>
+    <value>[[OrganizationName] - ACTION ITEM] Receipts Filed - Validation Needed</value>
   </data>
   <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
     <value>Swarmops Backend [SwarmopsVersion] on host [HostName] has successfully upgraded the Swarmops database schema to revision [DbVersion].

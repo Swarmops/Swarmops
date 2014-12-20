@@ -12,6 +12,7 @@ using Resources;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
@@ -234,7 +235,7 @@ namespace Swarmops.Pages.Security
 
         [WebMethod]
         // ReSharper disable once InconsistentNaming
-        public static bool TestCredentials (string credentialsLogin, string credentialsPass, string credentials2FA,
+        public static string TestCredentials (string credentialsLogin, string credentialsPass, string credentials2FA,
             string logonUriEncoded)
         {
             if (!string.IsNullOrEmpty (credentialsLogin.Trim()) && !string.IsNullOrEmpty (credentialsPass.Trim()))
@@ -248,17 +249,32 @@ namespace Swarmops.Pages.Security
 
                     // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
 
+                    int lastOrgId = authenticatedPerson.LastLogonOrganizationId;
+
+                    if (lastOrgId == 0)
+                    {
+                        lastOrgId = Organization.SandboxIdentity;
+                    }
+
+                    if (!authenticatedPerson.MemberOfWithInherited (lastOrgId))
+                    {
+                        // If the person doesn't have access to the last organization (anymore), log on to Sandbox
+
+                        lastOrgId = 1;
+                    }
+
                     GuidCache.Set (logonUri + "-LoggedOn",
-                        authenticatedPerson.Identity.ToString (CultureInfo.InvariantCulture) + ",1,,AuthPlain");
-                    return true;
+                        authenticatedPerson.Identity.ToString (CultureInfo.InvariantCulture) + "," + lastOrgId.ToString(CultureInfo.InvariantCulture) + ",,AuthPlain");
+
+                    return "Success";  // Prepare here for "2FARequired" return code
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    return false;
+                    return "Fail";
                 }
             }
 
-            return false;
+            return "Fail";
         }
 
 
@@ -281,7 +297,6 @@ namespace Swarmops.Pages.Security
             this.LiteralCredentialsUser.Text = Resources.Pages.Security.Login_Username;
             this.LiteralCredentialsPass.Text = Resources.Pages.Security.Login_Password;
             this.LiteralCredentials2FA.Text = Resources.Pages.Security.Login_GoogleAuthenticatorCode;
-            this.LiteralLoginSuccess.Text = Resources.Pages.Security.Login_LoggingIn;
         }
 
 

@@ -284,6 +284,11 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         ///     For a person, the BitId address they use to login
         /// </summary>
-        BitIdLoginAddress
+        BitIdLoginAddress,
+        
+        /// <summary>
+        /// For a person, the last logged-on organization id. Used to go back there on new login.
+        /// </summary>
+        LastLoginOrganizationId
     }
 }
