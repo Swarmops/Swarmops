@@ -32,13 +32,15 @@
 
         // If we've been called as "/Default.aspx", strip it mercilessly and redirect
 
+        /* -- DISABLED -- This didn't work on Mono -- more testing needed
+         
         string callUrl = Request.Url.ToString();
 
         if (callUrl.EndsWith("/Default.aspx"))
         {
             Response.Redirect(callUrl.Substring(0, callUrl.Length - "/Default.aspx".Length), true); // "true" prevents further processing
-        }
-        
+        } */
+
         // Testing for page rewrite.
 
         string[] rewriteCandidates =
