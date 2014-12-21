@@ -26,7 +26,6 @@ using PostalCode = Swarmops.Site.Automation.PostalCode;
 
 public partial class Pages_v5_Init_Default : Page
 {
-    private static string _buildIdentity;
     private static SwarmDb.Credentials _testReadCredentials;
     private static SwarmDb.Credentials _testWriteCredentials;
     private static SwarmDb.Credentials _testAdminCredentials;
