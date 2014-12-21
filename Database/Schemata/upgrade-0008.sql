@@ -76,6 +76,3 @@ BEGIN
   SELECT LAST_INSERT_ID() As Identity;
 
 END
-
-
-#
