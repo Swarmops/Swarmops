@@ -14,12 +14,13 @@ namespace Swarmops.Security
 
             if (string.IsNullOrEmpty (identity))
             {
-                Response.Redirect ("Login.aspx");
+                Response.Redirect ("Login");
             }
             else
             {
                 GuidCache.Delete (nonce + "-Identity");
-                FormsAuthentication.RedirectFromLoginPage (identity, true);
+                FormsAuthentication.SetAuthCookie (identity, true);
+                Response.Redirect ("/");
             }
         }
     }

@@ -118,7 +118,7 @@
     	            success: function(msg) {
     	                if (msg.d) {
     	                    // Login confirmed, fetch auth cookie from nonce in-context
-    	                    document.location = "/Security/FinalizeLogin.aspx?Nonce=" + bitIdNonce;
+    	                    document.location = "/Security/FinalizeLogin?Nonce=" + bitIdNonce;
     	                } else {
     	                    // Retry twice per second
     	                    setTimeout(function() {
