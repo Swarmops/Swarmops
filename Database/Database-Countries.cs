@@ -12,7 +12,7 @@ namespace Swarmops.Database
         #region Field reading code
 
         private const string countryFieldSequence = " CountryId,Name,Code,Culture,CurrencyCode," + // 0-4
-                                                    "GeographyId,PostalCodeLength FROM Countries "; // 5-6
+                                                    "GeographyId,PostalCodeLength,PostalCodeFormat FROM Countries "; // 5-7
 
 
         private static BasicCountry ReadCountryFromDataReader (DbDataReader reader)
@@ -24,8 +24,9 @@ namespace Swarmops.Database
             string currencyCode = reader.GetString (4);
             int geographyId = reader.GetInt32 (5);
             int postalCodeLength = reader.GetInt32 (6);
+            string postalCodeFormat = reader.GetString (7);
 
-            return new BasicCountry (countryId, name, code, culture, currencyCode, geographyId, postalCodeLength);
+            return new BasicCountry (countryId, name, code, culture, currencyCode, geographyId, postalCodeLength, postalCodeFormat);
         }
 
         #endregion
