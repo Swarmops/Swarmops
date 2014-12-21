@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Structure;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Support;

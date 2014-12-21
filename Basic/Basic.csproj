@@ -72,7 +72,7 @@
     <Compile Include="Types\Financial\BasicFinancialTransactionTagSetType.cs" />
     <Compile Include="Types\Financial\BasicFinancialTransactionTagType.cs" />
     <Compile Include="Types\Financial\BasicFinancialValidation.cs" />
-    <Compile Include="Types\BasicPostalCode.cs" />
+    <Compile Include="Types\Structure\BasicPostalCode.cs" />
     <Compile Include="Types\Financial\BasicFinancialAccount.cs" />
     <Compile Include="Types\Governance\BasicMeeting.cs" />
     <Compile Include="Config.cs" />
@@ -97,8 +97,8 @@
     <Compile Include="Types\Security\BasicAuthority.cs" />
     <Compile Include="Types\Communications\BasicAutoMail.cs" />
     <Compile Include="Types\BasicChurnDataPoint.cs" />
-    <Compile Include="Types\BasicCity.cs" />
-    <Compile Include="Types\BasicCountry.cs" />
+    <Compile Include="Types\Structure\BasicCity.cs" />
+    <Compile Include="Types\Structure\BasicCountry.cs" />
     <Compile Include="Types\BasicDocument.cs" />
     <Compile Include="Types\BasicExpenseClaim.cs" />
     <Compile Include="Types\BasicExternalCredential.cs" />
@@ -147,7 +147,7 @@
     <Compile Include="Interfaces\IHandleProvider.cs" />
     <Compile Include="Interfaces\IHasIdentity.cs" />
     <Compile Include="Types\BasicNewsletterFeed.cs" />
-    <Compile Include="Types\BasicGeography.cs" />
+    <Compile Include="Types\Structure\BasicGeography.cs" />
     <Compile Include="Types\BasicPayout.cs" />
     <Compile Include="Types\BasicPayrollItem.cs" />
     <Compile Include="Types\BasicPermission.cs" />
@@ -156,7 +156,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Types\BasicMembership.cs" />
-    <Compile Include="Types\BasicOrganization.cs" />
+    <Compile Include="Types\Structure\BasicOrganization.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -171,9 +171,8 @@
     <Compile Include="Types\BasicUptakeGeography.cs" />
     <Compile Include="Types\BasicVolunteer.cs" />
     <Compile Include="Types\BasicVolunteerRole.cs" />
-    <Compile Include="Types\BasicGeographyDesignation.cs" />
+    <Compile Include="Types\Structure\BasicGeographyDesignation.cs" />
     <Compile Include="Types\BasicCurrency.cs" />
-    <Compile Include="Types\GeographyWithPeople.cs" />
     <Compile Include="Types\BasicInternalPollVoter.cs" />
     <Compile Include="Types\XmlSerializableDictionary.cs" />
   </ItemGroup>

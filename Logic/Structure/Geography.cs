@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Structure;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Interfaces;

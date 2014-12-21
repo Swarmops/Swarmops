@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Structure;
 using Swarmops.Database;
 using Swarmops.Database.Attributes;
 using Swarmops.Logic.Communications;
