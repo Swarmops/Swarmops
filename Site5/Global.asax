@@ -41,14 +41,15 @@
             Response.Redirect(callUrl.Substring(0, callUrl.Length - "/Default.aspx".Length), true); // "true" prevents further processing
         } */
 
-        // Testing for page rewrite.
+        // Testing for page rewrite. Tests IN ORDER.
 
         string[] rewriteCandidates =
         {
-            "{0}/Default.aspx",
-            "{0}Default.aspx",
-            "{0}.aspx",
-            "/Pages/v5{0}.aspx"
+            "{0}/Default.aspx",  // for dev.swarmops.com
+            "{0}Default.aspx",   // for dev.swarmops.com/
+            "{0}.aspx",          // for dev.swarmops.com/Security/Login
+            "/Pages/v5{0}.aspx", // for dev.swarmops.com/User/SelectLanguage
+            "/Pages/v5{0}"       // for dev.swarmops.com/Ledgers/Json-SomethingData.aspx
         };
 
         foreach (string stringCandidate in rewriteCandidates)
