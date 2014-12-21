@@ -5,3 +5,4 @@
 0005 - Changed PostalCodeLength for NO DK to 4; for GH to zero; added Country.Currency. [Rick Falkvinge]
 0006 - Added Memberships.LocalNumber and .FamilyNumber; added CurrencyExchangeRate tables/procs. [Rick Falkvinge]
 0007 - NL update; added Lat/Long to PostalCodes and to People, indexed [RF]
+0008 - GeographyUpdate updates ahead of deploying: added country, Guid [RF]
