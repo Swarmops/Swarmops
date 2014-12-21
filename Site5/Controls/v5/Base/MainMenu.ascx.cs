@@ -52,7 +52,7 @@ namespace Swarmops.Controls.Base
         {
             output.Write ("<li class=\"{0}\">", menuItem.Type);
             string localizedText = "RESOURCE NOT FOUND";
-            string prettyNavUrl = menuItem.NavigateUrl;
+            string prettyNavUrl = menuItem.NavigateUrl ?? string.Empty;
 
             if (!Debugger.IsAttached)
             {
