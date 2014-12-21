@@ -29,6 +29,15 @@
     {
         // The culture was once set here for localization, but Mono resets CultureInfo before entering the page cycle.
         // Setting the CultureInfo has been moved to PageV5Base.OnPreInit().
+
+        // If we've been called as "/Default.aspx", strip it mercilessly and redirect
+
+        string callUrl = Request.Url.ToString();
+
+        if (callUrl.EndsWith("/Default.aspx"))
+        {
+            Response.Redirect(callUrl.Substring(0, callUrl.Length - "/Default.aspx".Length), true); // "true" prevents further processing
+        }
         
         // Testing for page rewrite.
 
@@ -48,9 +57,6 @@
                 Context.RewritePath (rewrittenCandidate);
             }
         }
-        
-        
-        
     }
 
 

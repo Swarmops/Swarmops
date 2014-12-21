@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Web.UI;
 using System.Xml.Serialization;
@@ -51,6 +52,12 @@ namespace Swarmops.Controls.Base
         {
             output.Write ("<li class=\"{0}\">", menuItem.Type);
             string localizedText = "RESOURCE NOT FOUND";
+            string prettyNavUrl = menuItem.NavigateUrl;
+
+            if (!Debugger.IsAttached)
+            {
+                prettyNavUrl = prettyNavUrl.Replace ("/Pages/v5/", "/").Replace (".aspx", "");
+            }
 
             if (!String.IsNullOrEmpty (menuItem.ResourceKey))
             {
@@ -83,7 +90,7 @@ namespace Swarmops.Controls.Base
                 case MenuItemType.Link:
                     output.Write (
                         "<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-{3}.png\"  height=\"20\" width=\"20\"  />{2}</a>",
-                        menuItem.ImageUrl, menuItem.NavigateUrl, localizedText, iconSize);
+                        menuItem.ImageUrl, prettyNavUrl, localizedText, iconSize);
                     break;
                 case MenuItemType.Disabled:
                 case MenuItemType.BuildNumber:
