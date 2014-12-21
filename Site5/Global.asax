@@ -1,4 +1,5 @@
 <%@ Application Language="C#" %>
+<%@ Import Namespace="System.IO" %>
 
 
 <script runat="server">
@@ -28,6 +29,28 @@
     {
         // The culture was once set here for localization, but Mono resets CultureInfo before entering the page cycle.
         // Setting the CultureInfo has been moved to PageV5Base.OnPreInit().
+        
+        // Testing for page rewrite.
+
+        string[] rewriteCandidates =
+        {
+            "{0}/Default.aspx",
+            "{0}Default.aspx",
+            "{0}.aspx",
+            "/Pages/v5{0}.aspx"
+        };
+
+        foreach (string stringCandidate in rewriteCandidates)
+        {
+            string rewrittenCandidate = String.Format (stringCandidate, Request.Path);
+            if (File.Exists (Server.MapPath (rewrittenCandidate)))
+            {
+                Context.RewritePath (rewrittenCandidate);
+            }
+        }
+        
+        
+        
     }
 
 
