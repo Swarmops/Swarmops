@@ -72,6 +72,7 @@
     <Compile Include="Types\Financial\BasicFinancialTransactionTagSetType.cs" />
     <Compile Include="Types\Financial\BasicFinancialTransactionTagType.cs" />
     <Compile Include="Types\Financial\BasicFinancialValidation.cs" />
+    <Compile Include="Types\Structure\BasicGeographyUpdate.cs" />
     <Compile Include="Types\Structure\BasicPostalCode.cs" />
     <Compile Include="Types\Financial\BasicFinancialAccount.cs" />
     <Compile Include="Types\Governance\BasicMeeting.cs" />
