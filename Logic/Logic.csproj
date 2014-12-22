@@ -236,6 +236,8 @@
     <Compile Include="Governance\MotionAmendment.cs" />
     <Compile Include="Governance\MotionAmendments.cs" />
     <Compile Include="Governance\Motions.cs" />
+    <Compile Include="Structure\GeographyUpdate.cs" />
+    <Compile Include="Structure\GeographyUpdates.cs" />
     <Compile Include="Structure\OrganizationParameters.cs" />
     <Compile Include="Structure\PostalCode.cs" />
     <Compile Include="Structure\PostalCodes.cs" />

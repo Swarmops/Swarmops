@@ -4,11 +4,12 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
+using Swarmops.Basic.Interfaces;
 
 namespace Swarmops.Basic.Types.Structure
 {
     [Serializable]
-    public class BasicGeographyUpdate
+    public class BasicGeographyUpdate: IHasIdentity
     {
         [Obsolete ("Do not call this ctor directly. It is intended for serialization.", true)]
         public BasicGeographyUpdate()
@@ -37,7 +38,7 @@ namespace Swarmops.Basic.Types.Structure
                 original.CountryCode, original.ChangeDataXml, original.CreatedDateTime, original.EffectiveDateTime,
                 original.Processed)
         {
-            
+            // copy ctor - empty
         }
 
 
@@ -50,5 +51,7 @@ namespace Swarmops.Basic.Types.Structure
         public DateTime CreatedDateTime { get; private set; }
         public DateTime EffectiveDateTime { get; private set; }
         public bool Processed { get; protected set; }
+
+        public int Identity { get { return GeographyUpdateId; } }
     }
 }

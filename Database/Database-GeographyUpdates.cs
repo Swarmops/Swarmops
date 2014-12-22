@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
@@ -41,6 +42,33 @@ namespace Swarmops.Database
         }
 
         #endregion
+
+
+        public BasicGeographyUpdate GetGeographyUpdate(int identity)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT " + geographyUpdateFieldSequence + " WHERE GeographyUpdateId=" + identity.ToString(CultureInfo.InvariantCulture), connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                         return ReadGeographyUpdateFromDataReader(reader);
+                    }
+
+                    throw new ArgumentException ("No such GeographyUpdate: " +
+                                                 identity.ToString (CultureInfo.InvariantCulture));
+                }
+            }
+        }
+
+
+
 
         public BasicGeographyUpdate[] GetAllGeographyUpdates()
         {
