@@ -52,7 +52,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + geographyUpdateFieldSequence + " ORDER BY \"CreatedDateTime\"", connection);
+                        "SELECT " + geographyUpdateFieldSequence + " ORDER BY CreatedDateTime", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
