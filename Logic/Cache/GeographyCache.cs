@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Structure;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 
@@ -228,7 +229,7 @@ namespace Swarmops.Logic.Cache
             Dictionary<int, List<BasicGeography>> hashedGeographies = GetHashedGeographies();
             foreach (int entry in hashedGeographies.Keys)
             {
-                if (hashedGeographies[entry][0].Name.ToLower().Trim().StartsWith (cmpName))
+                if (hashedGeographies[entry][0].Name.ToLower().Trim() == cmpName)
                     return hashedGeographies[entry][0];
             }
             //TODO: This can miss due to that the geography was added after last cache reload

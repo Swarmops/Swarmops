@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Structure;
 using Swarmops.Database;
 
 namespace Swarmops.Logic.Structure

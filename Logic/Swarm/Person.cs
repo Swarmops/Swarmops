@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Structure;
 using Swarmops.Database;
 using Swarmops.Database.Attributes;
 using Swarmops.Logic.Communications;
@@ -430,6 +431,12 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
+        public int LastLogonOrganizationId
+        {
+            get { return OptionalData.GetOptionalDataInt (ObjectOptionalDataType.LastLoginOrganizationId); }
+            set { OptionalData.SetOptionalDataInt (ObjectOptionalDataType.LastLoginOrganizationId, value); }
+        }
+
         public string PortraitPhotographer
         {
             get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.PortraitPhotographer); }
@@ -529,7 +536,22 @@ namespace Swarmops.Logic.Swarm
             Cities cities = Cities.FromPostalCode (PostalCode, base.CountryId);
             City city = null;
 
-            if (cities.Count == 0)
+            if (cities.Count == 0 && PostalCode.Length > 3)
+            {
+                // try shortening the postal code - like NL dataset - and see if we find anything
+
+                for (int shortening = 1; shortening <= 3; shortening++)
+                {
+                    cities = Cities.FromPostalCode (PostalCode.Substring (0, PostalCode.Length - shortening),
+                        base.CountryId);
+                    if (cities.Count > 0)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if (cities.Count == 0) // still no hit? Move on to getting city by name
             {
                 try
                 {

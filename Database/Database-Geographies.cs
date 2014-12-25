@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Common;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Structure;
 
 namespace Swarmops.Database
 {
@@ -284,8 +285,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand (
-                        "SELECT " + geographyFieldSequence + " WHERE Name like '" + geographyName.Replace ("'", "''") +
-                        "%'",
+                        "SELECT " + geographyFieldSequence + " WHERE Name ='" + geographyName.Replace ("'", "''") + "'",
                         connection);
 
                 using (DbDataReader reader = command.ExecuteReader())

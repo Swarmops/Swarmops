@@ -1,4 +1,5 @@
 <%@ Application Language="C#" %>
+<%@ Import Namespace="System.IO" %>
 
 
 <script runat="server">
@@ -28,6 +29,37 @@
     {
         // The culture was once set here for localization, but Mono resets CultureInfo before entering the page cycle.
         // Setting the CultureInfo has been moved to PageV5Base.OnPreInit().
+
+        // If we've been called as "/Default.aspx", strip it mercilessly and redirect
+
+        /* -- DISABLED -- This didn't work on Mono -- more testing needed
+         
+        string callUrl = Request.Url.ToString();
+
+        if (callUrl.EndsWith("/Default.aspx"))
+        {
+            Response.Redirect(callUrl.Substring(0, callUrl.Length - "/Default.aspx".Length), true); // "true" prevents further processing
+        } */
+
+        // Testing for page rewrite. Tests IN ORDER.
+
+        string[] rewriteCandidates =
+        {
+            "{0}/Default.aspx",  // for dev.swarmops.com
+            "{0}Default.aspx",   // for dev.swarmops.com/
+            "{0}.aspx",          // for dev.swarmops.com/Security/Login
+            "/Pages/v5{0}.aspx", // for dev.swarmops.com/User/SelectLanguage
+            "/Pages/v5{0}"       // for dev.swarmops.com/Ledgers/Json-SomethingData.aspx
+        };
+
+        foreach (string stringCandidate in rewriteCandidates)
+        {
+            string rewrittenCandidate = String.Format (stringCandidate, Request.Path);
+            if (File.Exists (Server.MapPath (rewrittenCandidate)))
+            {
+                Context.RewritePath (rewrittenCandidate);
+            }
+        }
     }
 
 

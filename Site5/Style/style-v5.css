@@ -358,6 +358,12 @@ div.loginbox
 	background-color: #E4ECFF;
 }
 
+
+input.InputManualCredentials {
+    border: solid 1px #A2BEFF;
+    padding: 2px;
+}
+
 span.loginalphabetasign
 {
 	font-size: 24px;

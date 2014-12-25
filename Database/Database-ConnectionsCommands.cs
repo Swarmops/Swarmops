@@ -234,10 +234,10 @@ namespace Swarmops.Database
             string[] forbiddenArray =
             {
                 "\\", "--", ";", "/*", "*/", "select ", "drop ", "update ", "delete ", "insert ",
-                "="
+                "=", "`"
             };
 
-            string output = input.Replace ("'", "''"); // the typical case
+            string output = input.Replace ("'", "\\'"); // the typical case
             string inputLower = input.ToLowerInvariant();
             foreach (string forbidden in forbiddenArray)
             {

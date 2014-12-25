@@ -30,8 +30,8 @@ If you're daring enough to install a pilot of Swarmops, you're most welcome to d
 > `wget http://packages.swarmops.com/swarmops-packages.gpg.key`  
 > `apt-key add swarmops-packages.gpg.key`
 
-Then, edit /etc/apt/sources.list to include this line, probably at the bottom:
-> `deb http://packages.swarmops.com/ squeeze contrib`
+Then, add the Swarmops repository to your list of software sources:
+> `echo deb http://packages.swarmops.com/ squeeze contrib > /etc/apt/sources.list.d/swarmops.list`
 
 Then run
 > `apt-get update`  

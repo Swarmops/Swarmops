@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CentralEurope" xml:space="preserve">
+    <value>Central Europe</value>
+  </data>
   <data name="Country_DK" xml:space="preserve">
     <value>Denmark</value>
   </data>
@@ -126,6 +129,9 @@
   <data name="Country_GH" xml:space="preserve">
     <value>Ghana</value>
   </data>
+  <data name="Country_NL" xml:space="preserve">
+    <value>Netherlands</value>
+  </data>
   <data name="Country_NO" xml:space="preserve">
     <value>Norway</value>
   </data>
@@ -134,7 +140,6 @@
   </data>
   <data name="EasternEurope" xml:space="preserve">
     <value>Eastern Europe</value>
-    <comment>(East of southern tip of Sweden, appx)</comment>
   </data>
   <data name="Europe" xml:space="preserve">
     <value>Europe</value>
@@ -146,6 +151,12 @@
   <data name="Nordics" xml:space="preserve">
     <value>Nordics</value>
     <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  </data>
+  <data name="NorthernEurope" xml:space="preserve">
+    <value>Nothern Europe</value>
+  </data>
+  <data name="SouthernEurope" xml:space="preserve">
+    <value>Southern Europe</value>
   </data>
   <data name="USA_EastNorthCentral" xml:space="preserve">
     <value>East North Central</value>
@@ -188,7 +199,6 @@
   </data>
   <data name="WesternEurope" xml:space="preserve">
     <value>Western Europe</value>
-    <comment>(West of southern tip of Sweden, appx)</comment>
   </data>
   <data name="World" xml:space="preserve">
     <value>World</value>

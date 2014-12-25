@@ -111,7 +111,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance Paid: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string CashAdvance_PaidOut_Subject {
             get {
@@ -131,7 +131,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (ACTION ITEM) [OrganizationName] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed.
         /// </summary>
         internal static string CashAdvance_Requested_Subject {
             get {
@@ -149,7 +149,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Attested: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string ExpenseClaim_Attested_Subject {
             get {
@@ -169,7 +169,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (ACTION ITEM) [OrganizationName] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Expense Claim Created: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed.
         /// </summary>
         internal static string ExpenseClaim_Created_Subject {
             get {
@@ -189,7 +189,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string ExpenseClaim_Deattested_Subject {
             get {
@@ -207,7 +207,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim DENIED: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string ExpenseClaim_Denied_Subject {
             get {
@@ -227,7 +227,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Receipts DE-validated: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string ExpenseClaim_Devalidated_Subject {
             get {
@@ -247,7 +247,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Expense Claim Paid: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Paid: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string ExpenseClaim_PaidOut_Subject {
             get {
@@ -267,7 +267,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Expense Claim Receipts Validated: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string ExpenseClaim_Validated_Subject {
             get {
@@ -287,11 +287,94 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (ACTION ITEM) [OrganizationName] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed.
         /// </summary>
         internal static string InboundInvoice_Created_Subject {
             get {
                 return ResourceManager.GetString("InboundInvoice_Created_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new [Regular] was manually added to [OrganizationName] within an area of yours..
+        /// </summary>
+        internal static string Membership_New_Added_Body {
+            get {
+                return ResourceManager.GetString("Membership_New_Added_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] New [Regular]: [PersonName], [PersonGeography] [CountryCode] (manual).
+        /// </summary>
+        internal static string Membership_New_Added_Subject {
+            get {
+                return ResourceManager.GetString("Membership_New_Added_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new [Regular] has signed up for [OrganizationName] within an area of yours..
+        /// </summary>
+        internal static string Membership_New_Selfsignup_Body {
+            get {
+                return ResourceManager.GetString("Membership_New_Selfsignup_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] New [Regular]: [PersonName], [PersonGeography] [CountryCode].
+        /// </summary>
+        internal static string Membership_New_Selfsignup_Subject {
+            get {
+                return ResourceManager.GetString("Membership_New_Selfsignup_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] [Regularship] renewed: [PersonName], [PersonGeography] [CountryCode] (manual).
+        /// </summary>
+        internal static string Membership_Renewed_Manual_Subject {
+            get {
+                return ResourceManager.GetString("Membership_Renewed_Manual_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your message has been queued for delivery and the recipients have been resolved. Your mail will be sent to, or be attempted to sent to, [RecipientCount] people in [Geography] in [OrganizationName]..
+        /// </summary>
+        internal static string OutboundComm_Resolved_Body {
+            get {
+                return ResourceManager.GetString("OutboundComm_Resolved_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Comm recipients determined for [GeographyName]: [RecipientCount].
+        /// </summary>
+        internal static string OutboundComm_Resolved_Subject {
+            get {
+                return ResourceManager.GetString("OutboundComm_Resolved_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your message to [GeographyName] has been sent to all scheduled recipients. Of the [RecipientCount] planned recipients, [RecipientsSuccess] succeeded from Swarmops&apos; horizon. (These can fail later for a number of reasons, from broken computers to hospitalized recipients.)
+        ///
+        ///Time spent transmitting: [TransmissionTime]..
+        /// </summary>
+        internal static string OutboundComm_Sent_Body {
+            get {
+                return ResourceManager.GetString("OutboundComm_Sent_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Comms transmitted: [GeographyName].
+        /// </summary>
+        internal static string OutboundComm_Sent_Subject {
+            get {
+                return ResourceManager.GetString("OutboundComm_Sent_Subject", resourceCulture);
             }
         }
         
@@ -307,7 +390,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (ACTION ITEM) [OrganizationName] Receipts Filed - Validation Needed.
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Receipts Filed - Validation Needed.
         /// </summary>
         internal static string Receipts_Filed_Subject {
             get {

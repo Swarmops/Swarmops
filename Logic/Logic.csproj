@@ -67,6 +67,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Logic.Communications.Transmission.MailPayload.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Automation\GetGeographyData.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Cache\GuidCache.cs" />
     <Compile Include="Communications\ICommsRenderer.cs" />
@@ -236,6 +240,8 @@
     <Compile Include="Governance\MotionAmendment.cs" />
     <Compile Include="Governance\MotionAmendments.cs" />
     <Compile Include="Governance\Motions.cs" />
+    <Compile Include="Structure\GeographyUpdate.cs" />
+    <Compile Include="Structure\GeographyUpdates.cs" />
     <Compile Include="Structure\OrganizationParameters.cs" />
     <Compile Include="Structure\PostalCode.cs" />
     <Compile Include="Structure\PostalCodes.cs" />

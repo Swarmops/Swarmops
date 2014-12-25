@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Communications;
@@ -12,130 +15,53 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Logic.Support
 {
     /// <summary>
-    ///     This class supports the PluralBase foundation. Mirroring FromBasic() here is the
-    ///     price we pay to get FromArray(), FromSingle(), LogicalOr() etc in all the plural
-    ///     classes.
+    ///     This class supports the PluralBase foundation.
     /// </summary>
     internal class SingularFactory
     {
         public static object FromBasic (IHasIdentity basic)
         {
-            string argumentType = basic.GetType().ToString();
+            // ASSUMPTION: We're assuming that the type to be created exists in the "Logic" assembly, and that we can bind permanently in a lookup
 
-            switch (argumentType)
+            MethodInfo basicConverterMethod = null;
+            Type basicType = basic.GetType();
+
+            if (_converterLookup.ContainsKey (basicType))
             {
-                    // ----- Is there any way to make self-writing code here through replication or similar, so
-                    // ----- that every case doesn't need to be listed?
-
-
-                    // ------------ COMMUNICATION CLASSES ------------
-
-                case "Swarmops.Basic.Types.BasicCommunicationTurnaround":
-                    return CommunicationTurnaround.FromBasic ((BasicCommunicationTurnaround) basic);
-
-                case "Swarmops.Basic.Types.Communications.BasicOutboundComm":
-                    return OutboundComm.FromBasic ((BasicOutboundComm) basic);
-
-                case "Swarmops.Basic.Types.Communications.BasicOutboundCommRecipient":
-                    return OutboundCommRecipient.FromBasic ((BasicOutboundCommRecipient) basic);
-
-
-                    // ----------- FINANCIAL CLASSES ----------
-
-                case "Swarmops.Basic.Types.BasicExpenseClaim":
-                    return ExpenseClaim.FromBasic ((BasicExpenseClaim) basic);
-
-                case "Swarmops.Basic.Types.Financial.BasicCashAdvance":
-                    return CashAdvance.FromBasic ((BasicCashAdvance) basic);
-
-                case "Swarmops.Basic.Types.BasicInboundInvoice":
-                    return InboundInvoice.FromBasic ((BasicInboundInvoice) basic);
-
-                case "Swarmops.Basic.Types.Financial.BasicFinancialAccount":
-                    return FinancialAccount.FromBasic ((BasicFinancialAccount) basic);
-
-                case "Swarmops.Basic.Types.Financial.BasicFinancialTransaction":
-                    return FinancialTransaction.FromBasic ((BasicFinancialTransaction) basic);
-
-                case "Swarmops.Basic.Types.BasicFinancialValidation":
-                    return FinancialValidation.FromBasic ((BasicFinancialValidation) basic);
-
-                case "Swarmops.Basic.Types.BasicOutboundInvoice":
-                    return OutboundInvoice.FromBasic ((BasicOutboundInvoice) basic);
-
-                case "Swarmops.Basic.Types.BasicOutboundInvoiceItem":
-                    return OutboundInvoiceItem.FromBasic ((BasicOutboundInvoiceItem) basic);
-
-                case "Swarmops.Basic.Types.BasicPayment":
-                    return Payment.FromBasic ((BasicPayment) basic);
-
-                case "Swarmops.Basic.Types.BasicPaymentGroup":
-                    return PaymentGroup.FromBasic ((BasicPaymentGroup) basic);
-
-                case "Swarmops.Basic.Types.BasicPayout":
-                    return Payout.FromBasic ((BasicPayout) basic);
-
-                case "Swarmops.Basic.Types.BasicPayrollAdjustment":
-                    return PayrollAdjustment.FromBasic ((BasicPayrollAdjustment) basic);
-
-                case "Swarmops.Basic.Types.BasicPayrollItem":
-                    return PayrollItem.FromBasic ((BasicPayrollItem) basic);
-
-                case "Swarmops.Basic.Types.BasicSalary":
-                    return Salary.FromBasic ((BasicSalary) basic);
-
-                case "Swarmops.Basic.Types.BasicCurrency":
-                    return Currency.FromBasic ((BasicCurrency) basic);
-
-                case "Swarmops.Basic.Types.Financial.BasicFinancialTransactionTagSet":
-                    return FinancialTransactionTagSet.FromBasic ((BasicFinancialTransactionTagSet) basic);
-
-                case "Swarmops.Basic.Types.Financial.BasicFinancialTransactionTagType":
-                    return FinancialTransactionTagType.FromBasic ((BasicFinancialTransactionTagType) basic);
-
-                    // ------------ GOVERNANCE CLASSES ------------
-
-                case "Swarmops.Basic.Types.BasicBallot":
-                    return Ballot.FromBasic ((BasicBallot) basic);
-
-                case "Swarmops.Basic.Types.BasicMeetingElectionCandidate":
-                    return MeetingElectionCandidate.FromBasic ((BasicInternalPollCandidate) basic);
-
-                case "Swarmops.Basic.Types.BasicMeetingElection":
-                    return MeetingElection.FromBasic ((BasicInternalPoll) basic);
-
-                case "Swarmops.Basic.Types.BasicMeetingElectionVote":
-                    return MeetingElectionVote.FromBasic ((BasicInternalPollVote) basic);
-
-                case "Swarmops.Basic.Types.Governance.BasicMotion":
-                    return Motion.FromBasic ((BasicMotion) basic);
-
-                case "Swarmops.Basic.Types.Governance.BasicMotionAmendment":
-                    return MotionAmendment.FromBasic ((BasicMotionAmendment) basic);
-
-
-                    // ------------ PARLEY/ACTIVISM CLASSES ------------
-
-                case "Swarmops.Basic.Types.BasicExternalActivity":
-                    return ExternalActivity.FromBasic ((BasicExternalActivity) basic);
-
-                case "Swarmops.Basic.Types.BasicParley":
-                    return Parley.FromBasic ((BasicParley) basic);
-
-                case "Swarmops.Basic.Types.BasicParleyAttendee":
-                    return ParleyAttendee.FromBasic ((BasicParleyAttendee) basic);
-
-                case "Swarmops.Basic.Types.BasicParleyOption":
-                    return ParleyOption.FromBasic ((BasicParleyOption) basic);
-
-                case "Swarmops.Basic.Types.BasicPerson":
-                    return Person.FromBasic ((BasicPerson) basic);
-
-                    // ------------------ FAIL ----------------
-
-                default:
-                    throw new NotImplementedException ("Unimplemented argument type in SingularFactory: " + argumentType);
+                basicConverterMethod = _converterLookup[basicType];
             }
+            else
+            {
+
+                Assembly logicAssembly = typeof (SingularFactory).Assembly;
+                Assembly basicAssembly = typeof (BasicPerson).Assembly;
+
+                System.Type[] logicTypes =
+                    logicAssembly.GetTypes().Where (type => type.IsSubclassOf (basicType)).ToArray();
+
+                if (logicTypes.Length > 1)
+                {
+                    throw new InvalidOperationException ("More than one type in Swarmops.Logic derives from " +
+                                                         basicType.ToString());
+                }
+                if (logicTypes.Length == 0)
+                {
+                    throw new InvalidOperationException (
+                        "Unable to find higher-order class in Swarmops.Logic for base type " + basicType.ToString());
+                }
+
+                Type logicType = logicTypes[0];
+
+                basicConverterMethod = logicType.GetMethod ("FromBasic", BindingFlags.Static | BindingFlags.Public);
+                _converterLookup[basicType] = basicConverterMethod;
+            }
+
+            object result = basicConverterMethod.Invoke(null, new object[] {basic});
+
+            return result;
+
         }
+
+        static private Dictionary<Type, MethodInfo> _converterLookup = new Dictionary<Type, MethodInfo>();
     }
 }

@@ -56,6 +56,7 @@
 
     	    function onInputCredentials() {
     	        clearTimeout(manualCredentialsTestTrigger);
+    	        $('#TextLogin, #TextPass').css('background-image', 'none');
 
     	        manualCredentialsTestTrigger = setTimeout(function() {
     	            testManualCredentials();
@@ -71,6 +72,10 @@
     	        jsonData.credentials2FA = $('#Text2FA').val();
     	        jsonData.logonUriEncoded = bitIdUri;
 
+    	        if (jsonData.credentialsLogin.length == 0 || jsonData.credentialsPass.length == 0) {
+	                return; // empty pass or login
+	            }
+
     	        $.ajax({
     	            type: "POST",
     	            url: "Login.aspx/TestCredentials",
@@ -78,11 +83,15 @@
     	            contentType: "application/json; charset=utf-8",
     	            dataType: "json",
     	            success: function(msg) {
-    	                if (msg.d) {
-    	                    // alert("<asp:Literal ID="LiteralLoginSuccess" runat="server" />");  // Modal on Chrome, so need a shaded div instead
-    	                } else {
-    	                    // do nothing
-    	                }
+    	                if (msg.d == "Success") {
+    	                    // Good credentials. TODO: Add manual 2FA challenge if applicable.
+    	                    $('#TextLogin, #TextPass').css('background-image', "url('/Security/Images/iconshock-greentick-16px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+    	                } else if (msg.d == "Fail") {
+	                        // inform user of bad credentials by means of a red cross on _both_ boxes
+	                        $('#TextLogin, #TextPass').css('background-image', "url('/Security/Images/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                    } else {
+	                        // wut?
+	                    }
     	            },
     	            error: function(msg) {
     	                // retry after a second
@@ -109,7 +118,7 @@
     	            success: function(msg) {
     	                if (msg.d) {
     	                    // Login confirmed, fetch auth cookie from nonce in-context
-    	                    document.location = "/Security/FinalizeLogin.aspx?Nonce=" + bitIdNonce;
+    	                    document.location = "/Security/FinalizeLogin?Nonce=" + bitIdNonce;
     	                } else {
     	                    // Retry twice per second
     	                    setTimeout(function() {

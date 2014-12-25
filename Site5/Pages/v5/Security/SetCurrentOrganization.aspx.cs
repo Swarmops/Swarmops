@@ -48,6 +48,8 @@ namespace Swarmops.Frontend.Pages.v5.Security
                                         suggestedOrganization.Identity.ToString (CultureInfo.InvariantCulture) + ",," +
                                         logonFlags;
 
+            CurrentUser.LastLogonOrganizationId = suggestedOrganization.Identity;
+
             if (!string.IsNullOrEmpty (returnUrlString))
             {
                 FormsAuthentication.SetAuthCookie (userIdentityString, true);
