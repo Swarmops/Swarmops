@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Xml.Serialization;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
@@ -39,6 +40,8 @@ namespace Swarmops.Logic.Financial
         {
             using(WebClient client = new WebClient())
             {
+                SupportFunctions.DisableSslCertificateChecks(); // MONO BUG/MISFEATURE: Mono has no root certificates, so can't verify cert
+
                 client.Encoding = Encoding.UTF8;
                 string rateDataRaw = client.DownloadString("https://bitpay.com/api/rates");
 
