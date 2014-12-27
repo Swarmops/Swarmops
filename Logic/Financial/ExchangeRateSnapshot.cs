@@ -59,9 +59,9 @@ namespace Swarmops.Logic.Financial
 
                 while (match.Success)
                 {
-                    string currencyCode = match.Groups[0].Value;
-                    string currencyName = match.Groups[1].Value;
-                    double btcRate = Double.Parse (match.Groups[2].Value, NumberStyles.AllowDecimalPoint,
+                    string currencyCode = match.Groups[1].Value;
+                    string currencyName = match.Groups[2].Value;
+                    double btcRate = Double.Parse (match.Groups[3].Value, NumberStyles.AllowDecimalPoint,
                         CultureInfo.InvariantCulture);
 
 
