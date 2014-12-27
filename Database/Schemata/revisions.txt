@@ -6,3 +6,4 @@
 0006 - Added Memberships.LocalNumber and .FamilyNumber; added CurrencyExchangeRate tables/procs. [Rick Falkvinge]
 0007 - NL update; added Lat/Long to PostalCodes and to People, indexed [RF]
 0008 - GeographyUpdate updates ahead of deploying: added country, Guid [RF]
+0009 - Fixed SalaryTaxLevels and CreateExchangeRateDataPoint [RF]

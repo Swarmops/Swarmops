@@ -67,6 +67,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -119,6 +120,8 @@
     <Compile Include="Communications\Transmission\PayloadBase.cs" />
     <Compile Include="Financial\BankDataReaders\SEPaymentsBankgiroReader.cs" />
     <Compile Include="Financial\Currencies.cs" />
+    <Compile Include="Financial\ExchangeRateSnapshot.cs" />
+    <Compile Include="Financial\ExchangeRateSnapshots.cs" />
     <Compile Include="Financial\IBankDataAccountStatementReader.cs" />
     <Compile Include="Financial\IBankDataPaymentsReader.cs" />
     <Compile Include="Financial\BankDataReaders\TabSeparatedValuesReader.cs" />
