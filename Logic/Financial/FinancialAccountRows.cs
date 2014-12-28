@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Database;
+using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Financial
 {
@@ -15,6 +18,16 @@ namespace Swarmops.Logic.Financial
             }
 
             return result;
+        }
+
+        public static FinancialAccountRows ForOrganization(Organization organization, DateTime fromDate,
+            DateTime toDate)
+        {
+            FinancialAccounts orgAccounts = FinancialAccounts.ForOrganization (organization);
+            orgAccounts.GetRows (fromDate, toDate);
+            return
+                FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetFinancialAccountRows (orgAccounts.Identities, fromDate, toDate, false));
         }
     }
 }

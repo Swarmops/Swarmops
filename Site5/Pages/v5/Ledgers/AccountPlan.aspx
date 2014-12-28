@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="AccountPlan.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.AccountPlan" %>
+<%@ Import Namespace="Swarmops.Logic.Financial" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboPeople" Src="~/Controls/v5/Swarm/ComboPeople.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="TextCurrency" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script src="/Scripts/jquery.switchButton.js" language="javascript" type="text/javascript"></script>
@@ -147,6 +149,51 @@
 	            });
 	        });
 
+	        $('#<%=CurrencyInitialBalance.ClientID%>_Input').blur(function() {
+	            var newAccountInitialBalance = $(this).val();
+
+	            if (modalAccountInitialBalance == newAccountInitialBalance) {
+	                return; // nothing changed, nothing to do
+	            }
+
+	            if (accountType == 'D' && newAccountInitialBalance[0] != '-') {
+	                alertify.alert('<asp:Literal ID="LiteralDebtBalancesAreNegative" runat="server" />');
+	                newAccountInitialBalance = "-" + newAccountInitialBalance;
+	            }
+
+	            var jsonData = {};
+	            jsonData.accountId = accountId;
+	            jsonData.newInitialBalanceString = newAccountInitialBalance;
+
+	            $(this).css('background-color', '#FFFFE0');
+	            $.ajax({
+	                type: "POST",
+	                url: "AccountPlan.aspx/SetAccountInitialBalance",
+	                data: $.toJSON(jsonData),
+	                contentType: "application/json; charset=utf-8",
+	                dataType: "json",
+	                success: $.proxy(function(msg) {
+	                    if (msg.d.Result == 3 || msg.d.Result == 4) { // Invalid or NoPermission
+	                        $(this).css('background-color', '#FFA0A0');
+	                        alertify.error("There was an error attempting to set your initial balance."); // TODO: Localize
+	                    } else {  // msg.d.Result should be Changed here
+	                        $(this).css('background-color', '#E0FFE0');
+	                        modalAccountInitialBalance = msg.d.NewData;
+	                        accountDirty = true;
+	                    }
+	                    $(this).val(modalAccountInitialBalance);
+	                    $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
+	                }, this),
+	                error: $.proxy(function(msg) {
+	                    alertify.error("There was an error calling the server to set your initial balance. Is the server reachable?"); // TODO: Localize
+	                    $(this).val(modalAccountInitialBalance);
+	                    $(this).css('background-color', '#FFA0A0');
+	                    $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
+	                }, this)
+	            });
+	        });
+
+
 	    });
 
 
@@ -175,6 +222,14 @@
 	        var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
 	        accountTreeLoaded = false;
 	        accountTree.combotree('setText', '');
+
+	        if ((accountType == 'A' || accountType == 'D') && firstFiscalYear > ledgersClosedUntil) {
+	            $('#DivEditInitLabels').show();
+	            $('#DivEditInitControls').show();
+	        } else {
+	            $('#DivEditInitLabels').hide();
+	            $('#DivEditInitControls').hide();
+	        }
 
 	        if (accountType == 'A') {
 	            $('#DivEditAssetLabels').show();
@@ -207,6 +262,7 @@
 	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#DDD');
 	        $('#TextAccountBudget').val('...').css('background-color', '#DDD');
 	        $('#TextAccountName').val('...').css('background-color', '#DDD');
+	        $('#<%=CurrencyInitialBalance.ClientID%>_Input').val('...').css('background-color', '#DDD');
 	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', '...');
 
 	        accountTree.combotree('setText', '...');
@@ -327,6 +383,9 @@
 	                modalAccountBudget = msg.d.Budget;
 	                $('#TextAccountBudget').val(msg.d.Budget).css('background-color', '#FFF');
 
+	                modalAccountInitialBalance = msg.d.InitialBalance;
+	                $('#<%=CurrencyInitialBalance.ClientID%>_Input').val(msg.d.InitialBalance).css('background-color', '#FFF');
+
 	                $('#SpanTextCurrency').text(msg.d.CurrencyCode);
 	                $('#SpanEditBalance').text(msg.d.Balance);
 	                parentAccountName = msg.d.ParentAccountName;
@@ -432,10 +491,13 @@
 	    }
 
 
-        var currentYear = <%=DateTime.Today.Year %>;
+	    var currentYear = <%=DateTime.Today.Year %>;
+	    var firstFiscalYear = <%=CurrentOrganization.FirstFiscalYear %>;
+	    var ledgersClosedUntil = <%=CurrentOrganization.Parameters.FiscalBooksClosedUntilYear %>;
 
 	    var modalAccountName = "";
 	    var modalAccountBudget = "";
+	    var modalAccountInitialBalance = "";
 	    var accountId = 0;
 	    var accountType = '';
 	    var accountDirty = false;
@@ -492,16 +554,20 @@
                 <div style="float:right;margin-top: 2px;margin-right: -5px"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2 id="HeaderModal"><asp:Literal ID="LiteralHeaderEditingAccount" runat="server"/></h2>
                 <div id="DivModalFields" class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
                     <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" OnClientSelect="onAccountTreeSelect" />&nbsp;<br/>
-                    &nbsp;<br/>
-                    <div id="DivEditProfitLossControls"><Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
+                    <div id="DivEditProfitLossControls">&nbsp;<br/>
+                    <Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
                     <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>
                     &nbsp;<br/>
                     <label for="CheckAccountActive"><asp:Literal ID="LiteralLabelActiveShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckAccountActive"/></div><br/>
                     <label for="CheckAccountExpensable"><asp:Literal ID="LiteralLabelExpensableShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
                     <label for="CheckAccountAdministrative"><asp:Literal ID="LiteralLabelAdministrativeShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
                     &nbsp;<br/></div>
-                    <div id="DivEditAssetControls"><asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
-                    <input type="text" id="TextAutomationPaymentTag" readonly="readonly"/>&nbsp;<br/></div>
+                    <div id="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" />&nbsp;<br/></div>
+                    <div id="DivEditAssetControls">
+                        &nbsp;<br/>
+                        <asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
+                        <input type="text" id="TextAutomationPaymentTag" readonly="readonly"/>&nbsp;<br/>
+                    </div>
                 </div>
                 <div class="entryLabels"><asp:Literal ID="LiteralLabelAccountName" runat="server"/><br/>
                     <asp:Literal ID="LiteralLabelParent" runat="server"/><br/>
@@ -512,6 +578,7 @@
                     <asp:Literal ID="LiteralLabelActiveLong" runat="server"/><br/>
                     <asp:Literal ID="LiteralLabelExpensableLong" runat="server"/><br/>
                     <asp:Literal ID="LiteralLabelAdministrativeLong" runat="server"/><br/></div>
+                    <div id="DivEditInitLabels"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/></div> 
                     <div id="DivEditAssetLabels"><h2><asp:Literal ID="LiteralLabelHeaderAutomation" runat="server"/></h2>
                     <asp:Literal ID="LiteralLabelFileUploadProfile" runat="server"/><br/>
                     <span id="SpanUploadParameterName">Upload parameter, if any</span></div> 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
 using System.Web.Services;
@@ -7,6 +8,7 @@ using Swarmops.Basic.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
@@ -56,7 +58,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.BoxTitle.Text = PageTitle = Resources.Pages.Ledgers.AccountPlan_PageTitle;
                 InfoBoxLiteral = Resources.Pages.Ledgers.AccountPlan_Info;
                 this.LiteralExpensesBudgetsAreNegative.Text =
-                    Resources.Pages.Ledgers.AccountPlan_ExpensesBudgetsAreNegaive;
+                    Resources.Pages.Ledgers.AccountPlan_ExpensesBudgetsAreNegative;
+                this.LiteralDebtBalancesAreNegative.Text =
+                    Resources.Pages.Ledgers.AccountPlan_DebtBalancesAreNegative;
                 this.LiteralHeaderAccountName.Text = Resources.Pages.Ledgers.AccountPlan_Header_AccountName;
                 this.LiteralHeaderBalance.Text = Resources.Pages.Ledgers.AccountPlan_Header_Balance;
                 this.LiteralHeaderBudget.Text = Resources.Pages.Ledgers.AccountPlan_Header_Budget;
@@ -79,6 +83,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     Resources.Pages.Ledgers.AccountPlan_Edit_HeaderDailyOperations;
                 this.LiteralLabelOwner.Text = Global.Global_Owner;
                 this.LiteralLabelParent.Text = Resources.Pages.Ledgers.AccountPlan_Edit_Parent;
+
+                this.LiteralLabelInitialAmount.Text =
+                    String.Format (Resources.Pages.Ledgers.AccountPlan_Edit_InitialBalance,
+                        CurrentOrganization.FirstFiscalYear, CurrentOrganization.Currency.DisplayCode);
             }
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
             DbVersionRequired = 2; // Account reparenting
@@ -127,6 +135,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     (accountTree.GetDeltaCents (new DateTime (1900, 1, 1), new DateTime (year + 1, 1, 1))/100L).ToString
                         (
                             "N0");
+                result.InitialBalance =
+                    (accountTree.GetDeltaCents (new DateTime (1900, 1, 1),
+                        new DateTime (authData.CurrentOrganization.FirstFiscalYear, 1, 1)).ToString ("N2"));
             }
             else
             {
@@ -134,6 +145,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     (-accountTree.GetDeltaCents (new DateTime (year, 1, 1), new DateTime (year + 1, 1, 1))/100L)
                         .ToString (
                             "N0");
+                result.InitialBalance = "N/A"; // unused
             }
             result.CurrencyCode = account.Organization.Currency.DisplayCode;
 
@@ -256,6 +268,87 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
         [WebMethod]
+        public static ChangeAccountDataResult SetAccountInitialBalance (int accountId, string newInitialBalanceString)
+        {
+            try
+            {
+                AuthenticationData authData = GetAuthenticationDataAndCulture();
+                FinancialAccount account = FinancialAccount.FromIdentity (accountId);
+
+                if (!PrepareAccountChange (account, authData, false) || authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >= authData.CurrentOrganization.FirstFiscalYear)
+                {
+                    return new ChangeAccountDataResult
+                    {
+                        Result = ChangeAccountDataOperationsResult.NoPermission
+                    };
+                }
+
+                Int64 desiredInitialBalanceCents =
+                    (Int64)
+                        (Double.Parse (newInitialBalanceString,
+                            NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint,
+                            CultureInfo.CurrentCulture)*100.0);
+
+                Int64 currentInitialBalanceCents = account.GetDeltaCents (new DateTime (1900, 1, 1),
+                    new DateTime (authData.CurrentOrganization.FirstFiscalYear, 1, 1));
+
+                Int64 deltaCents = desiredInitialBalanceCents - currentInitialBalanceCents;
+
+                // Find or create "Initial Balances" transaction
+
+                FinancialAccountRows testRows = FinancialAccountRows.ForOrganization (authData.CurrentOrganization,
+                    new DateTime (1900, 1, 1), new DateTime (authData.CurrentOrganization.FirstFiscalYear, 1, 1));
+
+                FinancialTransaction initialBalancesTransaction = null;
+
+                foreach (FinancialAccountRow row in testRows)
+                {
+                    if (row.Transaction.Description == "Initial Balances")
+                    {
+                        initialBalancesTransaction = row.Transaction;
+                        break;
+                    }
+                }
+
+                if (initialBalancesTransaction == null)
+                {
+                    // create transaction
+
+                    initialBalancesTransaction = FinancialTransaction.Create (authData.CurrentOrganization.Identity,
+                        new DateTime (authData.CurrentOrganization.FirstFiscalYear - 1, 12, 31), "Initial Balances");
+                }
+
+                Dictionary<int, Int64> recalcBase = initialBalancesTransaction.GetRecalculationBase();
+                int equityAccountId = authData.CurrentOrganization.FinancialAccounts.DebtsEquity.Identity;
+
+                if (!recalcBase.ContainsKey (accountId))
+                {
+                    recalcBase[accountId] = 0;
+                }
+                if (!recalcBase.ContainsKey (equityAccountId))
+                {
+                    recalcBase[equityAccountId] = 0;
+                }
+
+                recalcBase[accountId] += deltaCents;
+                recalcBase[equityAccountId] -= deltaCents;
+                initialBalancesTransaction.RecalculateTransaction (recalcBase, authData.CurrentUser);
+                return new ChangeAccountDataResult
+                {
+                    Result = ChangeAccountDataOperationsResult.Changed,
+                    NewData = (desiredInitialBalanceCents / 100.0).ToString("N2", CultureInfo.CurrentCulture)
+                };
+            }
+            catch (Exception weirdException)
+            {
+                SwarmDb.GetDatabaseForWriting()
+                    .CreateExceptionLogEntry(DateTime.UtcNow, "AccountPlan-SetInitBalance", weirdException);
+
+                throw;
+            }
+        }
+
+        [WebMethod]
         public static ChangeAccountDataResult SetAccountBudget (int accountId, string budget)
         {
             try
@@ -357,6 +450,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             public string AccountOwnerName;
             public bool Active;
             public bool Administrative;
+            public string InitialBalance;
             public string Balance;
             public string Budget;
             public string ClosedYear;
