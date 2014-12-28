@@ -62,12 +62,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             // The data has been validated client-side already. We'll throw unfriendly exceptions if invalid data is passed here.
 
-            // MONO BUG: Need to re-set the current culture for parsing to work properly.
-
-            AuthenticationData authData = CommonV5.GetAuthenticationDataAndCulture (HttpContext.Current);
-
             double amount = this.TextAmount.Value;
-            Int64 amountCents = (Int64) amount*100;
+            Int64 amountCents = (Int64) (amount*100.0);
 
             string description = this.TextPurpose.Text;
 
