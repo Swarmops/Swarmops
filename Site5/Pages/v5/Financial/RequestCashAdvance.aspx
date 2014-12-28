@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="RequestCashAdvance.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Financial.RequestCashAdvance" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="CurrencyTextBox" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 
@@ -20,7 +21,7 @@
             isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorPurpose" />") && isValid;
 
             var jsonData = {};
-            jsonData.amount = $('#<%=this.TextAmount.ClientID %>').val();
+            jsonData.amount = $('#<%=this.TextAmount.ClientID %>_Input').val();
 
             $.ajax({
                 type: "POST",
@@ -33,7 +34,7 @@
                     if (msg.d != true) {
                         isValid = false;
                         alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
-                        $('#<%=this.TextAmount.ClientID %>').addClass("entryError").focus();
+                        $('#<%=this.TextAmount.ClientID %>_Input').addClass("entryError").focus();
                     }
                 }
             });
@@ -59,7 +60,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label ID="BoxTitle" runat="server" /></h2>
     <div class="entryFields">
-        <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&#8203;<br/>
+        <Swarmops5:CurrencyTextBox runat="server" ID="TextAmount" CssClass="alignRight" />&#8203;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&#8203;<br/>
         <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />&nbsp;<br/>
         &nbsp;<br/><!-- placeholder for label-side H2 -->
