@@ -12,7 +12,7 @@ DROP PROCEDURE `InsertExchangeRateSnapshotData`
 #
 
 
-CREATE `CreateExchangeRateDatapoint`(
+CREATE PROCEDURE `CreateExchangeRateDatapoint`(
   IN currencyExchangeRateSnapshotId INTEGER,
   IN currencyAId INTEGER,
   IN currencyBId INTEGER,
