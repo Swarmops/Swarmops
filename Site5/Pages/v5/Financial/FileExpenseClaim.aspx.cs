@@ -104,8 +104,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 this.TextBank.Text = CurrentUser.BankName;
                 this.TextClearing.Text = CurrentUser.BankClearing;
                 this.TextAccount.Text = CurrentUser.BankAccount;
-                this.TextAmount.Text = 0.ToString ("N2");
-                this.TextAmount.Focus();
+                this.CurrencyAmount.Value = 0;
+                this.CurrencyAmount.Focus();
 
                 Localize();
             }
@@ -144,9 +144,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // The data has been validated client-side already. We'll throw unfriendly exceptions if invalid data is passed here.
             // People who choose to disable JavaScript and then submit bad input almost deserve to be hurt.
 
-            double amount = Double.Parse (this.TextAmount.Text, NumberStyles.Number);
-            // parses in current culture - intentional
-            Int64 amountCents = (Int64) (amount*100.0);
+            Int64 amountCents = (Int64) (this.CurrencyAmount.Value*100.0);
 
             string description = this.TextPurpose.Text;
 

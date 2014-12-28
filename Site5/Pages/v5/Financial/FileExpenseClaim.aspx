@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="FileExpenseClaim.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Financial.FileExpenseClaim" %>
 <%@ Register src="~/Controls/v5/Base/FileUpload.ascx" tagname="FileUpload" tagprefix="Swarmops5" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="CurrencyAmount" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 
@@ -50,7 +51,7 @@
             isValid = validateTextField('#<%=this.TextPurpose.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorPurpose" />") && isValid;
 
             var jsonData = {};
-            jsonData.amount = $('#<%=this.TextAmount.ClientID %>').val();
+            jsonData.amount = $('#<%=this.CurrencyAmount.ClientID %>_Input').val();
 
             $.ajax({
                 type: "POST",
@@ -62,9 +63,9 @@
                 success: function (msg) {
                     if (msg.d != true) {
                         isValid = false;
-                        $('#TextAmount').addClass("entryError");
+                        $('#<%=this.CurrencyAmount.ClientID %>_Input').addClass("entryError");
                         alertify.error("<asp:Literal runat="server" ID="LiteralErrorAmount" />");
-                        $('#<%=this.TextAmount.ClientID %>').focus();
+                        $('#<%=this.CurrencyAmount.ClientID %>_Input').focus();
                     }
                 }
             });
@@ -107,7 +108,7 @@
     <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
     <asp:HiddenField ID="HiddenTagSetIdentifiers" runat="server"/>
     <div class="entryFields">
-        <asp:TextBox runat="server" ID="TextAmount" CssClass="alignRight" />&#8203;<br/>
+        <Swarmops5:CurrencyAmount runat="server" ID="CurrencyAmount" />&#8203;<br/>
         <asp:TextBox runat="server" ID="TextPurpose" />&#8203;<br/>
         <Swarmops5:ComboBudgets ID="ComboBudgets" runat="server" />&nbsp;<br/>
         <asp:Repeater ID="RepeaterTagDrop" runat="server"><ItemTemplate><span id="SpanDropTags<%# Eval("TagSetId") %>"><select class="easyui-combotree" url="/Automation/Json-TransactionTagsTree.aspx?TagSetId=<%# Eval("TagSetId") %>" name="DropTags<%# Eval("TagSetId") %>" id="DropTags<%# Eval("TagSetId") %>" animate="true" style="width:300px"></select></span>&nbsp;<br/></ItemTemplate></asp:Repeater>
