@@ -39,5 +39,7 @@ namespace Swarmops.Frontend.Controls.v5.Financial
             }
             set { this.Input.Text = value.ToString ("N2", CultureInfo.CurrentCulture); }
         }
+
+        // TODO: Add other-currency parsing
     }
 }
