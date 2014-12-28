@@ -327,11 +327,26 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public Dictionary<int, Int64> GetRecalculationBase()
+        {
+            Dictionary<int, Int64> currentTransaction = new Dictionary<int, Int64>();
+
+            foreach (FinancialTransactionRow row in Rows)
+            {
+                if (!currentTransaction.ContainsKey(row.FinancialAccountId))
+                {
+                    currentTransaction[row.FinancialAccountId] = 0;
+                }
+
+                currentTransaction[row.FinancialAccountId] += row.AmountCents;
+            }
+
+            return currentTransaction;
+        }
+
+
         public bool RecalculateTransaction (Dictionary<int, Int64> nominalTransaction, Person loggingPerson)
         {
-            // TODO: Update dimension 2 with dimension 1 P&L accounts as template
-
-
             bool changedTransaction = false;
 
             // We need to create a delta. This is... somewhat complicated.
@@ -340,17 +355,7 @@ namespace Swarmops.Logic.Financial
             // 2) Create a "should-look-like" transaction record. (done in calling routine, already).
             // 3) Apply the delta, in two steps.
 
-            Dictionary<int, Int64> currentTransaction = new Dictionary<int, Int64>();
-
-            foreach (FinancialTransactionRow row in Rows)
-            {
-                if (!currentTransaction.ContainsKey (row.FinancialAccountId))
-                {
-                    currentTransaction[row.FinancialAccountId] = 0;
-                }
-
-                currentTransaction[row.FinancialAccountId] += row.AmountCents;
-            }
+            Dictionary<int, Int64> currentTransaction = GetRecalculationBase();
 
             FinancialTransaction continuedTransaction = ContinuedTransaction;
 
@@ -394,9 +399,6 @@ namespace Swarmops.Logic.Financial
                     changedTransaction = true;
                 }
             }
-
-            // TODO: Dimension 2
-
 
             return changedTransaction;
         }

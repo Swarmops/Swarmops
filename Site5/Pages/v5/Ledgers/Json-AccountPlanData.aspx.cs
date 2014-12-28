@@ -41,11 +41,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             PopulateLookups (FinancialAccounts.ForOrganization (this._authenticationData.CurrentOrganization));
             this._hashedAccounts = FinancialAccounts.GetHashedAccounts (this._authenticationData.CurrentOrganization);
 
-            response += GetAccountGroup (FinancialAccountType.Asset, Resources.Pages.Ledgers.BalanceSheet_Assets) + ",";
-            response += GetAccountGroup (FinancialAccountType.Debt, Resources.Pages.Ledgers.BalanceSheet_Debt) + ",";
+            response += GetAccountGroup (FinancialAccountType.Asset, Resources.Global.Financial_Asset) + ",";
+            response += GetAccountGroup (FinancialAccountType.Debt, Resources.Global.Financial_Debt) + ",";
             response +=
-                GetAccountGroup (FinancialAccountType.Income, Resources.Pages.Ledgers.ProfitLossStatement_Income) + ",";
-            response += GetAccountGroup (FinancialAccountType.Cost, Resources.Pages.Ledgers.ProfitLossStatement_Costs);
+                GetAccountGroup (FinancialAccountType.Income, Resources.Global.Financial_Income) + ",";
+            response += GetAccountGroup (FinancialAccountType.Cost, Resources.Global.Financial_Cost);
 
             Response.Output.WriteLine ("[" + response + "]");
             Response.End();

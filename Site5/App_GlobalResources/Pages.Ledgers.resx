@@ -400,6 +400,7 @@
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
     <value>Amount</value>
+    <comment>keep short</comment>
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
     <value>Description</value>
@@ -469,14 +470,10 @@
   <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
     <value>Daily Operations</value>
   </data>
-  <data name="AccountPlan_Edit_InitialValue" xml:space="preserve">
-    <value>Initial Value</value>
-    <comment>For asset and liability accounts - the value going into Swarmops first ledger year</comment>
-  </data>
   <data name="AccountPlan_Edit_Parent" xml:space="preserve">
     <value>Parent account or group</value>
   </data>
-  <data name="AccountPlan_ExpensesBudgetsAreNegaive" xml:space="preserve">
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
     <value>This is an Expenses account. Such accounts normally have a budget in the negative, since they drain assets from the organization. Your proposed budget was changed to negative.</value>
     <comment>Displayed as a message box</comment>
   </data>
@@ -557,5 +554,12 @@
   <data name="AccountPlan_NewAccount" xml:space="preserve">
     <value>New Account</value>
     <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>This is a Liabilities account. Such accounts normally have a balance in the negative, since they represent negative assets in the organization. Your entered initial balance was changed to negative.</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>Initial Balance (inbound into {0}), {1}</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
   </data>
 </root>

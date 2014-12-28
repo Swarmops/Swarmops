@@ -146,7 +146,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             double amount = Double.Parse (this.TextAmount.Text, NumberStyles.Number);
             // parses in current culture - intentional
-            Int64 amountCents = (Int64) amount*100;
+            Int64 amountCents = (Int64) (amount*100.0);
 
             string description = this.TextPurpose.Text;
 

@@ -526,6 +526,8 @@ namespace Swarmops.Backend
                         RosterHousekeeping.ChurnExpiredMembers();
                         TestTrace(" done.\r\n");*/
                     }
+
+                    ExchangeRateSnapshot.Create();
                 }
                 catch (Exception e)
                 {

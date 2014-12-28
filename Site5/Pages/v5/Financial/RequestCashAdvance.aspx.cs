@@ -26,7 +26,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 this.TextBank.Text = CurrentUser.BankName;
                 this.TextClearing.Text = CurrentUser.BankClearing;
                 this.TextAccount.Text = CurrentUser.BankAccount;
-                this.TextAmount.Text = 0.ToString ("N2");
+                this.TextAmount.Value = 0.0;
                 this.TextAmount.Focus();
 
                 Localize();
@@ -62,9 +62,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             // The data has been validated client-side already. We'll throw unfriendly exceptions if invalid data is passed here.
 
-            double amount = Double.Parse (this.TextAmount.Text, NumberStyles.Number);
-            // parses in current culture - intentional
-            Int64 amountCents = (Int64) amount*100;
+            double amount = this.TextAmount.Value;
+            Int64 amountCents = (Int64) (amount*100.0);
 
             string description = this.TextPurpose.Text;
 

@@ -1,5 +1,6 @@
 ﻿<%@ WebService Language="C#" Class="GetGeographyData" %>
 
+using System;
 using System.Web.Services;
 using Swarmops.Logic.Structure;
 
@@ -43,5 +44,17 @@ public class GetGeographyData : System.Web.Services.WebService
     public Geography GetGeographyForCountry(string countryCode)
     {
         return Country.FromCode(countryCode).Geography;
+    }
+
+    [WebMethod]
+    public GeographyUpdates GetGeographyUpdatesSince (DateTime dateTime)
+    {
+        return GeographyUpdates.GetCreatedSince (dateTime);
+    }
+
+    [WebMethod]
+    public GeographyUpdates GetGeographyUpdates()
+    {
+        return GeographyUpdates.GetCreatedSince (new DateTime (1900, 1, 1));
     }
 }
