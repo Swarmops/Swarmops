@@ -13,7 +13,7 @@ DROP PROCEDURE `InsertExchangeRateSnapshotData`
 
 
 CREATE PROCEDURE `CreateExchangeRateDatapoint`(
-  IN currencyExchangeRateSnapshotId INTEGER,
+  IN exchangeRateSnapshotId INTEGER,
   IN currencyAId INTEGER,
   IN currencyBId INTEGER,
   IN aPerB DOUBLE
@@ -21,6 +21,6 @@ CREATE PROCEDURE `CreateExchangeRateDatapoint`(
 BEGIN
 
   INSERT INTO CurrencyExchangeRateSnapshotData (CurrencyExchangeRateSnapshotId,CurrencyAId,CurrencyBId,APerB)
-    VALUES (currencyExchangeRateSnapshotId,currencyAId,currencyBId,aPerB);
+    VALUES (exchangeRateSnapshotId,currencyAId,currencyBId,aPerB);
 
 END
