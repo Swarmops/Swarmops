@@ -23,11 +23,11 @@ namespace Swarmops.Frontend.Controls.v5.Financial
                 double outParse = 0.0;
                 string contents = Input.Text;
 
-                if (Double.TryParse (contents, NumberStyles.Currency, CultureInfo.CurrentCulture, out outParse))
+                if (Double.TryParse (contents, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out outParse))
                 {
                     return outParse;
                 }
-                if (Double.TryParse (contents, NumberStyles.Currency, CultureInfo.InvariantCulture, out outParse))
+                if (Double.TryParse(contents, NumberStyles.AllowThousands | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out outParse))
                 {
                     return outParse;
                 }
