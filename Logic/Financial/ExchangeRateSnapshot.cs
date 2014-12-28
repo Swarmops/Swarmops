@@ -70,6 +70,8 @@ namespace Swarmops.Logic.Financial
                     double btcRate = Double.Parse (match.Groups[3].Value, NumberStyles.AllowDecimalPoint,
                         CultureInfo.InvariantCulture);
 
+                    btcRate /= 1000000.0; // We're operating in microbitcoin, so adjust the stored exchange rate accordingly (right-shift six decimal places)
+
                     int currencyId = GetOrCreateCurrency (currencyCode, currencyName);
 
                     SwarmDb.GetDatabaseForWriting()
