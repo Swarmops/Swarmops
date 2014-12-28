@@ -15,7 +15,5 @@ public partial class Default : PageV5Base
 
         InfoBoxLiteral =
             "This is a Dashboard placeholder. It will contain a snapshot of the state of things as soon as the basic functions are re-implemented in the new interface.";
-
-        ExchangeRateSnapshot.Create();
     }
 }
