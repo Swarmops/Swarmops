@@ -96,7 +96,7 @@
                                 var thisIcon = this;
                                 $.ajax({
                                     type: "POST",
-                                    url: "PayOutMoney.aspx/ConfirmPayout",
+                                    url: "/Pages/v5/SOMEPATH/PayOutMoney.aspx/ConfirmPayout",
                                     data: "{'protoIdentity': '" + escape($(this).attr("baseid")) + "'}",
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
@@ -120,7 +120,7 @@
                                 $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
                                 $.ajax({
                                     type: "POST",
-                                    url: "PayOutMoney.aspx/UndoPayout",
+                                    url: "/Pages/v5/SOMEPATH/PayOutMoney.aspx/UndoPayout",
                                     data: "{'databaseId': '" + $("#IconApproval" + $(thisIcon).attr("baseid").replace(/\|/g, '')).attr("databaseid") + "'}",
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",

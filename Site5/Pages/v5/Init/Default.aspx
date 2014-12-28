@@ -104,7 +104,7 @@
 	                if (hostName && hostName.length > 0 && hostAddress && hostAddress.length > 0) {
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "Default.aspx/VerifyHostNameAndAddress",
+	                        url: "/Pages/v5/Init/Default.aspx/VerifyHostNameAndAddress",
 	                        data: "{'name': '" + escape(hostName) + "', 'address': '" + escape(hostAddress) + "'}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
@@ -129,7 +129,7 @@
 	                if (isValid) { // Validate writability of config file
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "Default.aspx/IsConfigurationFileWritable",
+	                        url: "/Pages/v5/Init/Default.aspx/IsConfigurationFileWritable",
 	                        data: "{}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
@@ -177,7 +177,7 @@
 	                                   // also, won't get re-enabled no matter the outcome
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "Default.aspx/FirstCredentialsTest",
+	                        url: "/Pages/v5/Init/Default.aspx/FirstCredentialsTest",
 	                        data: "{" +
 	                            "'readDatabase':'" + $('#<%=this.TextCredentialsReadDatabase.ClientID %>').val() + "',"+
 	                            "'readServer':'" + $('#<%=this.TextCredentialsReadServer.ClientID %>').val() + "',"+
@@ -261,7 +261,7 @@
 	                if (isValid) {
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "Default.aspx/CreateFirstUser",
+	                        url: "/Pages/v5/Init/Default.aspx/CreateFirstUser",
 	                        data: "{'name': '" + escape($('#<%=this.TextFirstUserName.ClientID %>').val()) + "', 'mail': '" + escape($('#<%=this.TextFirstUserMail.ClientID %>').val()) + "', 'password': '" + escape($('#<%=this.TextFirstUserPassword1.ClientID %>').val()) + "'}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
@@ -306,7 +306,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/ResetTestCredentials",
+	            url: "/Pages/v5/Init/Default.aspx/ResetTestCredentials",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -321,7 +321,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/IsConfigurationFileWritable",
+	            url: "/Pages/v5/Init/Default.aspx/IsConfigurationFileWritable",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -346,7 +346,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/GetInitProgress",
+	            url: "/Pages/v5/Init/Default.aspx/GetInitProgress",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -381,7 +381,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/GetInitProgressMessage",
+	            url: "/Pages/v5/Init/Default.aspx/GetInitProgressMessage",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -411,7 +411,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/RecheckDatabasePermissions",
+	            url: "/Pages/v5/Init/Default.aspx/RecheckDatabasePermissions",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -462,7 +462,7 @@
 	    function beginInitDatabase() {
             $.ajax({
                 type: "POST",
-                url: "Default.aspx/InitDatabase",
+                url: "/Pages/v5/Init/Default.aspx/InitDatabase",
                 data: "{}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

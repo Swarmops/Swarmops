@@ -29,7 +29,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "UploadBankFiles.aspx/GetAccountUploadInstructions",
+                        url: "/Pages/v5/Ledgers/UploadBankFiles.aspx/GetAccountUploadInstructions",
                         data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -54,7 +54,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "UploadBankFiles.aspx/InitializeProcessing",
+                url: "/Pages/v5/Ledgers/UploadBankFiles.aspx/InitializeProcessing",
                 data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -84,7 +84,7 @@
 	                    
                         $.ajax({
                             type: "POST",
-                            url: "UploadBankFiles.aspx/GetReportedImportResults",
+                            url: "/Pages/v5/Ledgers/UploadBankFiles.aspx/GetReportedImportResults",
                             data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",

@@ -20,7 +20,7 @@
         function onGeographyChange(newGeographyId) {
             $.ajax({
                 type: "POST",
-                url: "SendMassMessage.aspx/GetRecipientCount",
+                url: "/Pages/v5/Comms/SendMassMessage.aspx/GetRecipientCount",
                 data: "{'recipientTypeId': '" + $('#<%=this.DropRecipientClasses.ClientID %>').val() + "', 'geographyId':'" + newGeographyId + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

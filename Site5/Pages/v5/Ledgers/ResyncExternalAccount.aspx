@@ -81,7 +81,7 @@
             
 	        $.ajax({
 	            type: "POST",
-	            url: "ResyncExternalAccount.aspx/InitializeProcessing",
+	            url: "/Pages/v5/Ledgers/ResyncExternalAccount.aspx/InitializeProcessing",
                 data: "{'guid': '<%= this.UploadFile.GuidString %>', 'accountIdString':'" + $('#<%= this.DropAccounts.ClientID %>').val() + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -97,7 +97,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "ResyncExternalAccount.aspx/GetProcessingProgress",
+	            url: "/Pages/v5/Ledgers/ResyncExternalAccount.aspx/GetProcessingProgress",
                 data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -156,7 +156,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "ResyncExternalAccount.aspx/ExecuteResync",
+	            url: "/Pages/v5/Ledgers/ResyncExternalAccount.aspx/ExecuteResync",
                 data: "{'guid': '<%= this.UploadFile.GuidString %>'}",
 	            async: false,
 	            contentType: "application/json; charset=utf-8",

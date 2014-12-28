@@ -85,7 +85,7 @@
 	            $('#TextAccountName').css('background-color', '#FFFFE0');
 	            $.ajax({
 	                type: "POST",
-	                url: "AccountPlan.aspx/SetAccountName",
+	                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountName",
 	                data: "{'accountId': '" + escape(accountId) + "', 'name':'" + escape(newAccountName) + "'}",
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
@@ -124,7 +124,7 @@
 	            $('#TextAccountBudget').css('background-color', '#FFFFE0');
 	            $.ajax({
 	                type: "POST",
-	                url: "AccountPlan.aspx/SetAccountBudget",
+	                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountBudget",
 	                data: "{'accountId': '" + escape(accountId) + "', 'budget':'" + escape(newAccountBudget) + "'}",
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
@@ -168,7 +168,7 @@
 	            $(this).css('background-color', '#FFFFE0');
 	            $.ajax({
 	                type: "POST",
-	                url: "AccountPlan.aspx/SetAccountInitialBalance",
+	                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountInitialBalance",
 	                data: $.toJSON(jsonData),
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
@@ -200,7 +200,7 @@
 	    function addAccount() {
 	        $.ajax({
 	            type: "POST",
-	            url: "AccountPlan.aspx/CreateAccount",
+	            url: "/Pages/v5/Ledgers/AccountPlan.aspx/CreateAccount",
 	            data: "{'accountType': '" + accountType + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -314,7 +314,7 @@
 
 	                            $.ajax({
 	                                type: "POST",
-	                                url: "AccountPlan.aspx/SetAccountSwitch",
+	                                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountSwitch",
 	                                data: callParameters,
 	                                contentType: "application/json; charset=utf-8",
 	                                dataType: "json",
@@ -365,7 +365,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "AccountPlan.aspx/GetAccountData",
+	            url: "/Pages/v5/Ledgers/AccountPlan.aspx/GetAccountData",
 	            data: "{'accountId': '" + escape(accountId) + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -408,7 +408,7 @@
             $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFFFE0');
             $.ajax({
                 type: "POST",
-                url: "AccountPlan.aspx/SetAccountOwner",
+                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountOwner",
                 data: "{'accountId':'" + escape(accountId) + "','newOwnerId':'" + escape(personId) + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -455,7 +455,7 @@
 	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFFFE0');
 	        $.ajax({
 	            type: "POST",
-	            url: "AccountPlan.aspx/SetAccountParent",
+	            url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountParent",
 	            data: "{'accountId':'" + escape(accountId) + "','parentAccountId':'" + escape(parentAccountId) + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
