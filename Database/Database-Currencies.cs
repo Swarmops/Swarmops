@@ -121,26 +121,6 @@ namespace Swarmops.Database
             }
         }
 
-
-        public int SetCurrencyExchangeRate (DateTime date, int currencyId, double eur100)
-        {
-            DateTime now = DateTime.Now;
-
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
-
-                DbCommand command = GetDbCommand ("SetCurrencyExchangeRate", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                AddParameterWithName (command, "currencyId", currencyId);
-                AddParameterWithName (command, "date", date.Date);
-                AddParameterWithName (command, "eur100", eur100);
-
-                return Convert.ToInt32 (command.ExecuteScalar());
-            }
-        }
-
         /*
 
         public void SetSalaryNetPaid(int salaryId, bool netPaid)

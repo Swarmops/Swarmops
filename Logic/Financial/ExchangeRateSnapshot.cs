@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Xml.Serialization;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Database;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
@@ -52,9 +53,14 @@ namespace Swarmops.Logic.Financial
                 Regex regex = new Regex (regexPattern);
                 Match match = regex.Match (rateDataRaw);
 
+                int exchangeRateSnapshotId = 0;
+                int bitcoinId = GetOrCreateCurrency ("BTC", "Bitcoin");
+
                 if (match.Success)
                 {
                     // We have at least one match, so prepare a new ExchangeRate snapshot
+
+                    exchangeRateSnapshotId = SwarmDb.GetDatabaseForWriting().CreateExchangeRateSnapshot();
                 }
 
                 while (match.Success)
@@ -64,12 +70,28 @@ namespace Swarmops.Logic.Financial
                     double btcRate = Double.Parse (match.Groups[3].Value, NumberStyles.AllowDecimalPoint,
                         CultureInfo.InvariantCulture);
 
+                    int currencyId = GetOrCreateCurrency (currencyCode, currencyName);
+
+                    SwarmDb.GetDatabaseForWriting()
+                        .CreateExchangeRateDatapoint (exchangeRateSnapshotId, currencyId, bitcoinId, btcRate);
 
                     match = match.NextMatch();
                 }
 
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 BitpayRateDatapoint[] rates = (BitpayRateDatapoint[]) serializer.Deserialize<BitpayRateDatapoint[]> (rateDataRaw);
+            }
+        }
+
+        private static int GetOrCreateCurrency (string currencyCode, string currencyName)
+        {
+            try
+            {
+                return Currency.FromCode (currencyCode).Identity;
+            }
+            catch (ArgumentException)
+            {
+                return Currency.Create (currencyCode, currencyName, string.Empty).Identity;
             }
         }
 
