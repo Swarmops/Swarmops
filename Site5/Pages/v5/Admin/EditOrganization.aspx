@@ -26,7 +26,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "EditOrganization.aspx/SwitchToggled",
+                    url: "/Pages/v5/Admin/EditOrganization.aspx/SwitchToggled",
                     data: $.toJSON(jsonData),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -54,7 +54,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "EditOrganization.aspx/GetInitialData",
+                url: "/Pages/v5/Admin/EditOrganization.aspx/GetInitialData",
                 data: "{}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

@@ -10,6 +10,7 @@
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.smartWizard-2.0.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js"></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
@@ -104,7 +105,7 @@
 	                if (hostName && hostName.length > 0 && hostAddress && hostAddress.length > 0) {
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "Default.aspx/VerifyHostNameAndAddress",
+	                        url: "/Pages/v5/Init/Default.aspx/VerifyHostNameAndAddress",
 	                        data: "{'name': '" + escape(hostName) + "', 'address': '" + escape(hostAddress) + "'}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
@@ -129,7 +130,7 @@
 	                if (isValid) { // Validate writability of config file
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "Default.aspx/IsConfigurationFileWritable",
+	                        url: "/Pages/v5/Init/Default.aspx/IsConfigurationFileWritable",
 	                        data: "{}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
@@ -139,8 +140,9 @@
 
 	                                // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
 	                                $('#DivDatabaseUnwritable').css('display', 'none');
-	                                $('#DivDatabaseWritable').css('display', 'inline');
-	                                $('#<%=this.TextCredentialsReadDatabase.ClientID %>').focus();
+	                                $('#DivDatabaseRootConfig').css('display', 'inline');
+	                                setTimeout('$("#TextMysqlServerHost").focus();', 250);
+	                                //$('#<%=this.TextCredentialsReadDatabase.ClientID %>').focus();
 	                            } else {
 	                                // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
 
@@ -155,9 +157,17 @@
 	            else if (stepNumber == 2) {
 	                isValid = true; // assume true, make false as we go
 
-	                textBoxes = ["<%=this.TextCredentialsReadDatabase.ClientID %>", "<%=this.TextCredentialsReadServer.ClientID %>", "<%=this.TextCredentialsReadUser.ClientID %>", "<%=this.TextCredentialsReadPassword.ClientID %>",
-	                    "<%=this.TextCredentialsWriteDatabase.ClientID %>", "<%=this.TextCredentialsWriteServer.ClientID %>", "<%=this.TextCredentialsWriteUser.ClientID %>", "<%=this.TextCredentialsWritePassword.ClientID %>",
-	                    "<%=this.TextCredentialsAdminDatabase.ClientID %>", "<%=this.TextCredentialsAdminServer.ClientID %>", "<%=this.TextCredentialsAdminUser.ClientID %>", "<%=this.TextCredentialsAdminPassword.ClientID %>"];
+	                textBoxes = [];
+
+	                if (autoConfigMode) {
+	                    textBoxes = ["TextMysqlServerHost", "TextMysqlRootPassword"];
+	                } else {
+	                    textBoxes = [
+	                        "<%=this.TextCredentialsReadDatabase.ClientID %>", "<%=this.TextCredentialsReadServer.ClientID %>", "<%=this.TextCredentialsReadUser.ClientID %>", "<%=this.TextCredentialsReadPassword.ClientID %>",
+	                        "<%=this.TextCredentialsWriteDatabase.ClientID %>", "<%=this.TextCredentialsWriteServer.ClientID %>", "<%=this.TextCredentialsWriteUser.ClientID %>", "<%=this.TextCredentialsWritePassword.ClientID %>",
+	                        "<%=this.TextCredentialsAdminDatabase.ClientID %>", "<%=this.TextCredentialsAdminServer.ClientID %>", "<%=this.TextCredentialsAdminUser.ClientID %>", "<%=this.TextCredentialsAdminPassword.ClientID %>"
+	                    ];
+	                }
 
 	                for (loop = 0; loop < textBoxes.length; loop++) {
 	                    fieldContents = $('#' + textBoxes[loop]).val();
@@ -174,42 +184,73 @@
 
 	                if (isValid) {
 	                    DisableNext(); // block Next during synchro call - it may take a while
-	                                   // also, won't get re-enabled no matter the outcome
-	                    $.ajax({
-	                        type: "POST",
-	                        url: "Default.aspx/FirstCredentialsTest",
-	                        data: "{" +
-	                            "'readDatabase':'" + $('#<%=this.TextCredentialsReadDatabase.ClientID %>').val() + "',"+
-	                            "'readServer':'" + $('#<%=this.TextCredentialsReadServer.ClientID %>').val() + "',"+
-	                            "'readUser':'" + $('#<%=this.TextCredentialsReadUser.ClientID %>').val() + "',"+
-	                            "'readPassword':'" + $('#<%=this.TextCredentialsReadPassword.ClientID %>').val() + "',"+
-	                            "'writeDatabase':'" + $('#<%=this.TextCredentialsWriteDatabase.ClientID %>').val() + "',"+
-	                            "'writeServer':'" + $('#<%=this.TextCredentialsWriteServer.ClientID %>').val() + "',"+
-	                            "'writeUser':'" + $('#<%=this.TextCredentialsWriteUser.ClientID %>').val() + "',"+
-	                            "'writePassword':'" + $('#<%=this.TextCredentialsWritePassword.ClientID %>').val() + "',"+
-	                            "'adminDatabase':'" + $('#<%=this.TextCredentialsAdminDatabase.ClientID %>').val() + "',"+
-	                            "'adminServer':'" + $('#<%=this.TextCredentialsAdminServer.ClientID %>').val() + "',"+
-	                            "'adminUser':'" + $('#<%=this.TextCredentialsAdminUser.ClientID %>').val() + "',"+
-	                            "'adminPassword':'" + $('#<%=this.TextCredentialsAdminPassword.ClientID %>').val() + "',"+
-	                            "'serverName':'" + hostName + "'," +
-	                            "'ipAddress':'" + hostAddress +"'}",
-	                        contentType: "application/json; charset=utf-8",
-	                        dataType: "json",
-	                        async: false,  // blocks until function returns - race conditions otherwise
-	                        success: function (msg) {
-	                            if (msg.d.AllPermissionsOk != true) {
+	                    // also, won't get re-enabled no matter the outcome
 
-	                                // We have a permissions problem. Block further progress and display the problem.
-	                                updatePermissionsAnalysisDisplay(msg.d);
-	                                $('#DivDatabaseWritable').fadeOut(400, 'swing', function() { $('#DivDatabasePermissionProblem').fadeIn(200); });
-	                                setTimeout('recheckDatabasePermissionsAnalysis();', 5000); // 5s until first re-check
-	                                isValid = false;
-	                            } else {
-	                                // re-enable Next only on exit of step 3
+	                    var jsonData = {};
+	                    jsonData.serverName = hostName;
+	                    jsonData.ipAddress = hostAddress;
+
+	                    if (autoConfigMode) {
+	                        jsonData.mysqlHostName = $('#TextMysqlServerHost').val();
+	                        jsonData.rootPassword = $('#TextMysqlRootPassword').val();
+
+	                        $.ajax({
+	                            type: "POST",
+	                            url: "/Pages/v5/Init/Default.aspx/CreateDatabaseFromRoot",
+	                            data: $.toJSON(jsonData),
+	                            contentType: "application/json; charset=utf-8",
+	                            dataType: "json",
+	                            async: false, // blocks until function returns - race conditions otherwise
+	                            success: function (msg) {
+	                                if (msg.d != true) {
+
+	                                    // Credentials problem.
+	                                    $('#TextMysqlRootPassword, #TextMysqlServerHost').css('background-image', "url('/Images/Icons/iconshock-cross-12px.png')").css('background-position', 'right center').css('background-repeat', 'no-repeat');
+	                                    EnableNext();
+	                                    isValid = false;
+	                                } else {
+	                                    // re-enable Next only on exit of step 3
+	                                }
 	                            }
-	                        }
-	                    });
-                    }
+	                        });
+                        }
+	                    else
+                        {
+	                        jsonData.readDatabase = $('#<%=this.TextCredentialsReadDatabase.ClientID %>').val();
+	                        jsonData.readServer = $('#<%=this.TextCredentialsReadServer.ClientID %>').val();
+	                        jsonData.readUser = $('#<%=this.TextCredentialsReadUser.ClientID %>').val();
+	                        jsonData.readPassword = $('#<%=this.TextCredentialsReadPassword.ClientID %>').val();
+	                        jsonData.writeDatabase = $('#<%=this.TextCredentialsWriteDatabase.ClientID %>').val();
+	                        jsonData.writeServer = $('#<%=this.TextCredentialsWriteServer.ClientID %>').val();
+	                        jsonData.writeUser = $('#<%=this.TextCredentialsWriteUser.ClientID %>').val();
+	                        jsonData.writePassword = $('#<%=this.TextCredentialsWritePassword.ClientID %>').val();
+	                        jsonData.adminDatabase = $('#<%=this.TextCredentialsAdminDatabase.ClientID %>').val();
+	                        jsonData.adminServer = $('#<%=this.TextCredentialsAdminServer.ClientID %>').val();
+	                        jsonData.adminUser = $('#<%=this.TextCredentialsAdminUser.ClientID %>').val();
+	                        jsonData.adminPassword = $('#<%=this.TextCredentialsAdminPassword.ClientID %>').val();
+
+	                        $.ajax({
+	                            type: "POST",
+	                            url: "/Pages/v5/Init/Default.aspx/FirstCredentialsTest",
+	                            data: $.toJSON(jsonData),
+	                            contentType: "application/json; charset=utf-8",
+	                            dataType: "json",
+	                            async: false, // blocks until function returns - race conditions otherwise
+	                            success: function(msg) {
+	                                if (msg.d.AllPermissionsOk != true) {
+
+	                                    // We have a permissions problem. Block further progress and display the problem.
+	                                    updatePermissionsAnalysisDisplay(msg.d);
+	                                    $('#DivDatabaseManualConfig').fadeOut(400, 'swing', function() { $('#DivDatabasePermissionProblem').fadeIn(200); });
+	                                    setTimeout('recheckDatabasePermissionsAnalysis();', 5000); // 5s until first re-check
+	                                    isValid = false;
+	                                } else {
+	                                    // re-enable Next only on exit of step 3
+	                                }
+	                            }
+	                        });
+	                    }
+	                }
 
 
 	                if (isValid) {
@@ -261,7 +302,7 @@
 	                if (isValid) {
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "Default.aspx/CreateFirstUser",
+	                        url: "/Pages/v5/Init/Default.aspx/CreateFirstUser",
 	                        data: "{'name': '" + escape($('#<%=this.TextFirstUserName.ClientID %>').val()) + "', 'mail': '" + escape($('#<%=this.TextFirstUserMail.ClientID %>').val()) + "', 'password': '" + escape($('#<%=this.TextFirstUserPassword1.ClientID %>').val()) + "'}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
@@ -306,12 +347,12 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/ResetTestCredentials",
+	            url: "/Pages/v5/Init/Default.aspx/ResetTestCredentials",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
-	                $('#DivDatabasePermissionProblem').fadeOut(200, 'swing', function () { $('#DivDatabaseWritable').fadeIn(200); EnableNext(); });
+	                $('#DivDatabasePermissionProblem').fadeOut(200, 'swing', function () { $('#DivDatabaseManualConfig').fadeIn(200); EnableNext(); });
 	            }
 	        });
         }
@@ -321,17 +362,17 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/IsConfigurationFileWritable",
+	            url: "/Pages/v5/Init/Default.aspx/IsConfigurationFileWritable",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
 	            success: function (msg) {
 	                if (msg.d == true) {
 
-	                    // Yes, config is writable. Hide "unwritable" div, show "writable" div, all is nice
+	                    // Yes, config is writable. Hide "unwritable" div, show "config" div, all is nice
 	                    $('#DivDatabaseUnwritable').css('display', 'none');
-	                    $('#DivDatabaseWritable').fadeIn('slow');
-	                    setTimeout('$("#<%=this.TextCredentialsReadDatabase.ClientID %>").focus();', 250);
+	                    $('#DivDatabaseManualConfig').fadeIn('slow');
+	                    setTimeout('$("#TextMysqlServerHost").focus();', 250);
 	                    EnableNext();
 	                } else {
 	                    // Config is NOT writable. Keep the error on-screen and keep re-checking every two seconds.
@@ -346,7 +387,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/GetInitProgress",
+	            url: "/Pages/v5/Init/Default.aspx/GetInitProgress",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -381,7 +422,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/GetInitProgressMessage",
+	            url: "/Pages/v5/Init/Default.aspx/GetInitProgressMessage",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -411,7 +452,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "Default.aspx/RecheckDatabasePermissions",
+	            url: "/Pages/v5/Init/Default.aspx/RecheckDatabasePermissions",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -462,7 +503,7 @@
 	    function beginInitDatabase() {
             $.ajax({
                 type: "POST",
-                url: "Default.aspx/InitDatabase",
+                url: "/Pages/v5/Init/Default.aspx/InitDatabase",
                 data: "{}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -470,16 +511,24 @@
                 }
            
             });
-        }
+	    }
 
+	    function goManualCredentials() {
+	        autoConfigMode = false;
+	        $('#DivDatabaseRootConfig').css('display', 'none');
+	        $('#DivDatabaseManualConfig').fadeIn('slow');
+	        setTimeout('$("#<%=this.TextCredentialsReadDatabase.ClientID %>").focus();', 250);
+	    }
+
+	    var autoConfigMode = true;
 
 	</script>
 	
     <!-- Main menu, dynamically constructed -->
 
 	<div class="center980px">
-	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk.png" /></div>
-        <div class="logoimage"><a href="/"><img style="border:none" src="/Style/Images/Logo-Stock.png" alt="Swarmops Logo" /></a></div>
+	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div>
+        <div class="logoimage"><a href="/"><img style="border:none" src="/Images/Logo-Stock.png" alt="Swarmops Logo" /></a></div>
         <div class="break"></div>
         <div class="topmenu">
             <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>
@@ -582,8 +631,15 @@
                                   </tr>
                               </table>
   			            </div>
-                        <div id="DivDatabaseWritable" style="display:none">
-                            <h2>Connect to database</h2>	
+                        <div id="DivDatabaseRootConfig" style="display:none">
+                            <h2>Create the database and users</h2>
+                            <p>The Swarmops install sequence can set up the database and users for you, if you provide a root password to the MySQL database server.</p>
+                            <p>(If you don't trust the Swarmops install to do that, that's fine, go to <a href="javascript:goManualCredentials();">manual account credentials</a>.)</p>
+                            <div class="entryLabelsAdmin" style="width:250px">Hostname of MySQL database server<br/>Root password for that MySQL server<br/>&nbsp;</div>
+                            <div class="entryFieldsAdmin"><input type="text" id="TextMysqlServerHost" value="localhost"/>&nbsp;<br/><input type="password" id="TextMysqlRootPassword"/>&nbsp;</div>
+                        </div>
+                        <div id="DivDatabaseManualConfig" style="display:none">
+                            <h2>Connect to existing database</h2>
                             <p>Before you fill this in, you will need to have created a database on a MySQL server that this web server can access, and set up user accounts that can access it. For security reasons, we <strong>require</strong> having three separate accounts - one for reading (SELECT permissions only), one for writing (SELECT and EXECUTE), and one for admin. All three accounts also need SELECT permissions on the mysql database.</p>
 
                             <div class="entryLabelsAdmin" style="width:120px">

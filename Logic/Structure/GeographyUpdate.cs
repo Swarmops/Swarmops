@@ -159,7 +159,7 @@ namespace Swarmops.Logic.Structure
                     cityIdsUsedLookup[city.CityId] = false; // force non-use of invalid city
                 }
 
-                if (cityIdsUsedLookup[city.CityId])
+                if ((cityIdsUsedLookup.ContainsKey(city.CityId) && cityIdsUsedLookup[city.CityId]) || country.PostalCodeLength == 0)
                 {
                     int newGeographyId = geographyIdTranslation[city.GeographyId];
 

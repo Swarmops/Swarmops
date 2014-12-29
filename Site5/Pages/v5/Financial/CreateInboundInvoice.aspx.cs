@@ -96,7 +96,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 // Prime bank details
 
-                this.TextAmount.Text = 0.ToString ("N2");
+                this.CurrencyAmount.Value = 0;
                 this.TextSupplier.Focus();
                 this.TextDueDate.Text = DateTime.Today.AddDays (30).ToShortDateString(); // Use current culture
 
@@ -137,9 +137,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // The data has been validated client-side already. We'll throw unfriendly exceptions if invalid data is passed here.
             // People who choose to disable JavaScript and then submit bad input almost deserve to be hurt.
 
-            double amount = Double.Parse (this.TextAmount.Text, NumberStyles.Number);
-            // parses in current culture - intentional
-            Int64 amountCents = (Int64) (amount*100);
+            Int64 amountCents = (Int64) (this.CurrencyAmount.Value*100.0);
 
             string description = this.TextPurpose.Text;
 
@@ -200,7 +198,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.TextAccount.Text = String.Empty;
             this.TextPurpose.Text = String.Empty;
             this.TextReference.Text = String.Empty;
-            this.TextAmount.Text = 0.ToString ("N2");
+            this.CurrencyAmount.Value = 0;
             this.TextDueDate.Text = DateTime.Today.AddDays (30).ToShortDateString(); // Use current culture
 
             // the easyUI combo fields should reset automatically on form submission unless we explicitly reconstruct

@@ -136,8 +136,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         (
                             "N0");
                 result.InitialBalance =
-                    (accountTree.GetDeltaCents (new DateTime (1900, 1, 1),
-                        new DateTime (authData.CurrentOrganization.FirstFiscalYear, 1, 1)).ToString ("N2"));
+                    ((accountTree.GetDeltaCents (new DateTime (1900, 1, 1),
+                        new DateTime (authData.CurrentOrganization.FirstFiscalYear, 1, 1))/100.0).ToString ("N2"));
             }
             else
             {

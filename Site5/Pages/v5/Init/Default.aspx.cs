@@ -166,10 +166,78 @@ public partial class Pages_v5_Init_Default : Page
         {
             flagName = cultureStringLower.Substring (3);
         }
-        this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + ".png";
+        this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + "-24px.png";
     }
 
 
+    [WebMethod]
+    public static bool CreateDatabaseFromRoot (string mysqlHostName, string rootPassword, string serverName, string ipAddress)
+    {
+        if (!(VerifyHostName(serverName) && VerifyHostAddress(ipAddress)))
+        {
+            if (!Debugger.IsAttached)
+            {
+                return true; // Probable hack attempt - fail silently
+            }
+        }
+
+        try
+        {
+            string random = Authentication.CreateRandomPassword(5);
+
+            SwarmDb.Credentials rootCredentials = new SwarmDb.Credentials("mysql", new SwarmDb.ServerSet(mysqlHostName), "root", rootPassword);
+
+            string readPass = GenerateLongPassword();
+            string writePass = GenerateLongPassword();
+            string adminPass = GenerateLongPassword();
+
+            string[] initInstructions =
+                DbCreateScript.Replace ("[random]", random)
+                    .Replace ("[readpass]", readPass)
+                    .Replace ("[writepass]", writePass)
+                    .Replace ("[adminpass]", adminPass).Split ('#');
+
+            SwarmDb.GetTestDatabase (rootCredentials).ExecuteAdminCommands (initInstructions);
+
+            PermissionsAnalysis permissionsResult = FirstCredentialsTest (
+                "Swarmops-" + random, mysqlHostName, "Swarmops-R-" + random, readPass,
+                "Swarmops-" + random, mysqlHostName, "Swarmops-W-" + random, writePass,
+                "Swarmops-" + random, mysqlHostName, "Swarmops-A-" + random, adminPass,
+                serverName, ipAddress);
+
+            if (!permissionsResult.AllPermissionsOk)
+            {
+                throw new InvalidOperationException("waaaaaah");
+            }
+
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
+    const string DbCreateScript =
+        "CREATE DATABASE `Swarmops-[random]`#" +
+        "CREATE USER `Swarmops-R-[random]` IDENTIFIED BY '[readpass]'#" +
+        "CREATE USER `Swarmops-W-[random]` IDENTIFIED BY '[writepass]'#" +
+        "CREATE USER `Swarmops-A-[random]` IDENTIFIED BY '[adminpass]'#" +
+        "GRANT SELECT ON mysql.proc TO `Swarmops-W-[random]`#" +
+        "GRANT SELECT ON mysql.proc TO `Swarmops-A-[random]`#" +
+        "USE `Swarmops-[random]`#" +
+        "GRANT ALL ON `Swarmops-[random]`.* TO `Swarmops-A-[random]`#" +
+        "GRANT SELECT ON `Swarmops-[random]`.* TO `Swarmops-W-[random]`#" +
+        "GRANT EXECUTE ON `Swarmops-[random]`.* TO `Swarmops-W-[random]`#" +
+        "GRANT SELECT ON `Swarmops-[random]`.* TO `Swarmops-R-[random]`#" +
+        "FLUSH PRIVILEGES";
+
+
+
+    static private string GenerateLongPassword()
+    {
+        return Guid.NewGuid().ToString ("N") + Guid.NewGuid().ToString ("N");
+    }
 
     [WebMethod]
     public static PermissionsAnalysis FirstCredentialsTest
@@ -427,10 +495,11 @@ public partial class Pages_v5_Init_Default : Page
             {
                 // Get the geography layout
 
-                _initMessage = "Initializing geography for " + countryCode + "... ";
+                _initMessage = "Initializing geography for country " + countryCode + "... ";
                 Thread.Sleep (100);
 
                 GeographyUpdate.PrimeCountry (countryCode);
+                GuidCache.Set ("DbInitProgress", string.Empty);
 
                 countryCount++;
 
@@ -446,6 +515,8 @@ public partial class Pages_v5_Init_Default : Page
 
             Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
 
+            _initMessage = "Initializing currencies...";
+
             // Create initial currencies (European et al)
 
             Currency.Create ("EUR", "Euros", "€");
@@ -458,6 +529,10 @@ public partial class Pages_v5_Init_Default : Page
             Currency.Create ("CHF", "Swiss Franc", string.Empty);
             Currency.Create ("GBP", "Pounds Sterling", "£");
             Currency.Create ("BTC", "Bitcoin", "฿");
+
+            // Fetch the first set of exchange rates, completing the currency collection
+
+            ExchangeRateSnapshot.Create();
 
             // Create the sandbox
 
@@ -645,7 +720,10 @@ public partial class Pages_v5_Init_Default : Page
             FormsAuthentication.RedirectFromLoginPage ("1,1", true);
             Response.Redirect ("/", true);
         }
+
+
     }
+
 
     public class PermissionsAnalysis
     {

@@ -65,7 +65,7 @@
                                 var thisIcon = this;
                                 $.ajax({
                                     type: "POST",
-                                    url: "ValidateReceipts.aspx/Validate",
+                                    url: "/Pages/v5/Financial/ValidateReceipts.aspx/Validate",
                                     data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
@@ -87,7 +87,7 @@
                                 var thisIcon = this;
                                 $.ajax({
                                     type: "POST",
-                                    url: "ValidateReceipts.aspx/Devalidate",
+                                    url: "/Pages/v5/Financial/ValidateReceipts.aspx/Devalidate",
                                     data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",

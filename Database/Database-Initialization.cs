@@ -8,7 +8,7 @@ namespace Swarmops.Database
     {
         // These functions are bloody dangerous, mmmkay?
 
-        public void ExecuteAdminCommand (string sqlSequence)
+        public void ExecuteAdminCommand(string sql)
         {
             // TODO: Verify that we're in admin mode
 
@@ -16,14 +16,31 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand (sqlSequence, connection);
+                DbCommand command = GetDbCommand(sql, connection);
                 command.CommandType = CommandType.Text;
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public int ExecuteAdminCommandScalar (string sqlSequence)
+        public void ExecuteAdminCommands(string[] sqlSequence)
+        {
+            // TODO: Verify that we're in admin mode
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                foreach (string sql in sqlSequence)
+                {
+                    DbCommand command = GetDbCommand (sql, connection);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public int ExecuteAdminCommandScalar(string sqlSequence)
         {
             // TODO: Verify that we're in admin mode
 

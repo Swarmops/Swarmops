@@ -41,5 +41,10 @@ namespace Swarmops.Frontend.Controls.v5.Financial
         }
 
         // TODO: Add other-currency parsing
+
+        public new void Focus()
+        {
+            this.Input.Focus();
+        }
     }
 }
