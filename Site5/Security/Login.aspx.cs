@@ -28,7 +28,7 @@ namespace Swarmops.Pages.Security
 
             if (!SwarmDb.Configuration.IsConfigured())
             {
-                Response.Redirect ("/Init/", true);
+                Response.Redirect ("/Pages/v5/Init/", true);
                 return;
             }
 
