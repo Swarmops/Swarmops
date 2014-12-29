@@ -63,9 +63,12 @@ namespace ccnet.SharedLabeller.CruiseControl.plugin
 
         public string Generate(IIntegrationResult integrationResult)
         {
+            ThoughtWorks.CruiseControl.Core.Util.Log.Debug("About to read label prefix file. Filename: {0}", PrefixFile);
+            string prefix = System.IO.File.ReadAllText(PrefixFile).Trim();
+
             if (ShouldIncrementLabel(integrationResult.LastIntegration))
             {
-                return Prefix + this.GetLabel();
+                return prefix + "+" + this.GetLabel();
             }
             else
             {
@@ -86,9 +89,6 @@ namespace ccnet.SharedLabeller.CruiseControl.plugin
         /// <returns></returns>
         private string GetLabel()
         {
-            ThoughtWorks.CruiseControl.Core.Util.Log.Debug("About to read label prefix file. Filename: {0}", PrefixFile);
-            string prefix = System.IO.File.ReadAllText (PrefixFile).Trim();
-
             ThoughtWorks.CruiseControl.Core.Util.Log.Debug("About to read build number file. Filename: {0}", SharedLabelFilePath);
             using (FileStream fileStream = File.Open(this.SharedLabelFilePath,
                      FileMode.OpenOrCreate,
