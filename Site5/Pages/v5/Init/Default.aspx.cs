@@ -166,7 +166,7 @@ public partial class Pages_v5_Init_Default : Page
         {
             flagName = cultureStringLower.Substring (3);
         }
-        this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + ".png";
+        this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + "-24px.png";
     }
 
 

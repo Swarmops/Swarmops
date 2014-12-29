@@ -22,6 +22,8 @@ namespace Swarmops.Frontend.Automation
                 matches = new People();
             }
 
+            // TODO: Add filter so the people must have active memberships of this org or any org below it (fixes #1)
+
             if (matches.Count > 10)
             {
                 matches.RemoveRange (10, matches.Count - 10);
