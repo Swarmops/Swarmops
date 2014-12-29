@@ -62,7 +62,7 @@ cp ../lastbuild/swarmops/$DROPFOLDER/CommitIdentity.txt ./CommitIdentity.txt
 BUILDID=$(cat BuildIdentity.txt | tr -d ' \r')
 COMMITID=$(cat CommitIdentity.txt | tr -d ' \r')
 
-BUILDID=$(echo $BUILDID | cut -d '.' -f 1-3).$(echo $COMMITID | cut -c 1-7)
+BUILDID=$(echo $BUILDID)-$(echo $COMMITID | cut -c 1-7)
 
 echo ""
 echo "Building package $PACKAGENAME $BUILDID."
