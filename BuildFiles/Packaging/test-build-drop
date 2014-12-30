@@ -12,7 +12,7 @@ if [ -e /home/packager/lastbuild/swarmops/sprint/BuildDropped.txt ]; then
   SPRINTNAME=$(cat /home/packager/lastbuild/swarmops/sprint/frontend/SprintName.txt | tr -d '\r\n')
   BUILDID=$(cat /home/packager/lastbuild/swarmops/sprint/BuildIdentity.txt | tr -d ' \r\n')
   COMMITID=$(cat /home/packager/lastbuild/swarmops/sprint/CommitIdentity.txt | tr -d ' \r\n')
-  BUILDID=$(echo $BUILDID | cut -d '.' -f 1-3).$(echo $COMMITID | cut -c 1-7)
+  BUILDID=$(echo $BUILDID)-$(echo $COMMITID | cut -c 1-7)
 
   mail -a "From: Swarmops Builder <builds@swarmops.com>" -s "Swarmops SPRINT $SPRINTNAME ($BUILDID) ready." "rick.falkvinge@pirateacademy.eu" < /home/packager/swarmops/templates/mail-sprint-ready.txt
 

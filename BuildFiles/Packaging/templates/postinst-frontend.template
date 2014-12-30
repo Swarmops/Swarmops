@@ -1,5 +1,6 @@
 #! /bin/bash
 
 #echo "Swarmops Frontend post-installation script running"
-#just make sure the upload folder exists
+#just make sure the upload folder exists and is writeable by www-data
 mkdir -p /var/lib/swarmops/upload
+chown www-data:www-data /var/lib/swarmops/upload

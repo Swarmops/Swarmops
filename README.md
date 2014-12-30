@@ -25,19 +25,18 @@ Stable releases are built every six months, at the end of every calendar half-ye
 Installation
 ------------
 
-If you're daring enough to install a pilot of Swarmops, you're most welcome to do so. It's built for and tested on Ubuntu (Trusty+) or Debian (Wheezy+) servers. If you're running Debian Wheezy, you'll first need to upgrade Mono as instructed on [this page](http://www.mono-project.com/docs/getting-started/install/linux/) or Swarmops won't run. Then, run this as root:
+If you're daring enough to install a pilot of Swarmops, you're most welcome to do so. It's built for and tested on Ubuntu (Trusty+) or Debian (Wheezy+) servers. If you're running Debian Wheezy, you'll first need to upgrade Mono as instructed on [this page](http://www.mono-project.com/docs/getting-started/install/linux/) or Swarmops won't run. Then, run these commands as root - first, fetch the signing key for the repository:
 
-> `wget http://packages.swarmops.com/swarmops-packages.gpg.key`  
-> `apt-key add swarmops-packages.gpg.key`
+> `wget -qO- http://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -`
 
 Then, add the Swarmops repository to your list of software sources:
 > `echo deb http://packages.swarmops.com/ squeeze contrib > /etc/apt/sources.list.d/swarmops.list`
 
-Then run
-> `apt-get update`  
+Then, run this to install the Swarmops frontend:
+> `apt-get update`
 > `apt-get install swarmops-frontend`
 
-(the install sometimes hangs on installing a dependent package, apache2-mod-mono. That's not an issue with Swarmops, but still irritating. It manifests as Apache restarting and never restarting. If so, break, fix, and redo until installed.)
+(the install sometimes hangs on installing a dependent package, apache2-mod-mono. That's not an issue with Swarmops, but still irritating. It manifests as Apache trying to restart and freezing there. This irritating bug in the apache2-mod-mono install can be released by opening a second shell and restarting Apache using `/etc/init.d/apache2 restart` in the second shell, at which point the install in the first shell will continue.)
 
 Install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there.
 

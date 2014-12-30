@@ -2,10 +2,11 @@ Package: swarmops-backend
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends: swarmops-common,mono-runtime (>= 3.2.8),libmono-corlib4.0-cil (>= 3.2.8),libmono-posix4.0-cil (>= 3.2.8),libmono-system-data4.0-cil (>= 3.2.8),libmono-system-web-http4.0-cil (>= 3.2.8),libmono-system-web-services4.0-cil (>= 3.2.8)
+Depends: swarmops-common,mono-runtime (>= 3.2.8),libmono-corlib4.0-cil (>= 3.2.8),libmono-posix4.0-cil (>= 3.2.8),libmono-system-data4.0-cil (>= 3.2.8),libmono-system-web-http4.0-cil (>= 3.2.8)
 Conflicts: swarmops-backend-internal,swarmops-backend-stable
 Homepage: http://swarmops.com/
 Description: Swarmops Backend
  Swarmops is a swarm activist administration system.
  This package is the back-end. It runs on Mono.
- Target is Ubuntu 11.10 and up.
+ Target is Ubuntu 14.10 / Debian Wheezy and up.
+
