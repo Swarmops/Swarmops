@@ -168,7 +168,10 @@
   <data name="BalanceSheet_Q4" xml:space="preserve">
     <value>Ändr Kv4</value>
   </data>
-  
+  <data name="BalanceSheet_StartYear" xml:space="preserve">
+    <value>Start-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
   <data name="ProfitLossStatement_AccountName" xml:space="preserve">
     <value>Konto</value>
   </data>
@@ -195,10 +198,18 @@
   <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
     <value>Resultaträkning</value>
   </data>
-  
-  
-  
-  
+  <data name="ProfitLossStatement_Q1" xml:space="preserve">
+    <value>Q1</value>
+  </data>
+  <data name="ProfitLossStatement_Q2" xml:space="preserve">
+    <value>Q2</value>
+  </data>
+  <data name="ProfitLossStatement_Q3" xml:space="preserve">
+    <value>Q3</value>
+  </data>
+  <data name="ProfitLossStatement_Q4" xml:space="preserve">
+    <value>Q4</value>
+  </data>
   <data name="ProfitLossStatement_Results" xml:space="preserve">
     <value>Resultat</value>
     <comment>Footer on P&amp;L statement</comment>
@@ -246,9 +257,17 @@
     <value>&lt;/p&gt; &lt;p&gt;(De senaste uppgifterna i Swarmops för &lt;em&gt;{0}&lt;/em&gt; är från {1:yyyy-MMM-dd}. Du bör hämta bankdata från åtminstone &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
     <comment>Displayed to help user determine scope of bank download</comment>
   </data>
-  
-  
-  
+  <data name="UploadBankFiles_DownloadDataSince_Paypal" xml:space="preserve">
+    <value>&lt;/p&gt; &lt;p&gt;(Paypal anger tiden för den senaste transaktionsnedladdningen. Hämta alla transaktioner från den tidpunkten, plus kanske tre dagars överlapp för säkerhets skull.)</value>
+    <comment>Displayed instead of date of last transaction in the case of Paypal.</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
+    <value>Nedladdningsinstruktioner</value>
+    <comment>Header above instructions for generation of the bank file type selected.</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
+    <value>Olika banker har olika sätt att få BGMAX-filen. På SEB går du till &lt;strong&gt;betalningar&lt;/strong&gt; och &lt;strong&gt;filkommunikation&lt;/strong&gt; för att se en lista över filer att hämta. Andra banker har andra metoder. I vilket fall, så ladda upp dem här.</value>
+  </data>
   
   
   
@@ -256,7 +275,9 @@
     <value>&lt;p&gt;Filen innehöll {0:N0} transaktioner. &lt;strong&gt;{1:N0} transaktioner&lt;/strong&gt; har importerats till kontot &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transaktioner var dubbletter.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Men bankens saldo stämmer inte med bokföringen i Swarmops.&lt;/strong&gt; Detta beror oftast på saknade transaktioner. Ladda upp ett kontoutdrag över med ett större tidsintervall så att Swarmops får alla transaktioner.&lt;/p&gt;&lt;p&gt;Swarmops bokföring konto är för närvarande &lt;strong&gt;inte i synk&lt;/strong&gt; med bankens.&lt;/p&gt;</value>
     <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
   </data>
-  
+  <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
+    <value>&lt;h3&gt;Bankfilen kunde inte importeras.&lt;/h3&gt;&lt;p&gt;Detta har ett av tre skäl: du missade någon detalj i nedladddningsinstruktionerna, banken har ändrat sitt filformat, eller så har du av misstag laddat upp helt fel fil (som ett foto från senaste firmafesten istället för transaktionslistan). Inga transaktioner importerades. &lt;strong&gt;Försök igen.&lt;/strong&gt;</value>
+  </data>
   <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
     <value>Förväntat filnamn</value>
     <comment>The name of the expected file for uploading.</comment>
@@ -371,6 +392,7 @@
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
     <value>Belopp</value>
+    <comment>keep short</comment>
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
     <value>Beskrivning</value>
@@ -411,7 +433,9 @@
   <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
     <value>Är transaktioner här bortfiltrerade från 2D-rapporter?</value>
   </data>
-  
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Admin</value>
+  </data>
   <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
     <value>Budget (saldo är &lt;span id="SpanTextCurrency"&gt; foo&lt;/span&gt; &lt;span id="SpanEditBalance"&gt; bar&lt;/span&gt;)</value>
     <comment>foo, bar replaced on load with actual values</comment>
@@ -438,14 +462,10 @@
   <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
     <value>Daglig verksamhet</value>
   </data>
-  <data name="AccountPlan_Edit_InitialValue" xml:space="preserve">
-    <value>Ingående balans</value>
-    <comment>For asset and liability accounts - the value going into Swarmops first ledger year</comment>
-  </data>
   <data name="AccountPlan_Edit_Parent" xml:space="preserve">
     <value>Överordnat konto eller grupp</value>
   </data>
-  <data name="AccountPlan_ExpensesBudgetsAreNegaive" xml:space="preserve">
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
     <value>Detta är ett kostnadskonto. Sådana konton har normalt en negativ budget, eftersom de drar tillgångar från organisationen. Din föreslagna budget ändrades därför till negativ.</value>
     <comment>Displayed as a message box</comment>
   </data>
@@ -455,7 +475,9 @@
   <data name="AccountPlan_Header_Balance" xml:space="preserve">
     <value>Saldo</value>
   </data>
-  
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
   <data name="AccountPlan_Header_Edit" xml:space="preserve">
     <value>Ändra</value>
   </data>
@@ -501,9 +523,31 @@
     <value>(Välj ett konto.)</value>
     <comment>Displayed initially and when no valid account selected</comment>
   </data>
-  
-  
-  
-  
-  
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Betalningsfilen har &lt;strong&gt;importerats.&lt;/strong&gt; {1:N0} betalning(ar) i {0:N0} grupp(er), totalt {3} {2:N2}, importerades.&lt;/p&gt;</value>
+    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;Betalningsfilen har &lt;strong&gt;importerats.&lt;/strong&gt; {1:N0} betalning(ar) i {0:N0} grupp(er), totalt {3} {2:N2}, importerades.&lt;/p&gt;&lt;p&gt;(Det fanns också {5:N0} duplikat, alltså tidigare importerad data, i {4:N0} grupp(er).)&lt;/p&gt;</value>
+    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
+  </data>
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>lägg till konto</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>Nytt konto</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>Detta är ett skuldkonto. Sådana konton har normalt negativa saldon, eftersom de redovisar negativa tillgångar (skulder) för organisationen. Ditt angivna ingångssaldo ändrades till negativt.</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>Ingångssaldo (in i året {0}), {1}</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
+  </data>
 </root>

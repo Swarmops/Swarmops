@@ -485,21 +485,65 @@
   <data name="Ledgers_Debit" xml:space="preserve">
     <value>Debet</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Organisation</value>
+  </data>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Hjälp</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Kvinna</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Man</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_UnknownUndisclosed" xml:space="preserve">
+    <value>Okänd eller Privat</value>
+    <comment>Used for gender et al</comment>
+  </data>
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>ÅÅÅÅ-MM-DD</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  </data>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>d MMM yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>femårs</value>
+  </data>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>livstids</value>
+    <comment>Like "a lifetime membership"</comment>
+  </data>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>enmånads</value>
+  </data>
+  <data name="Timespan_OneYear" xml:space="preserve">
+    <value>ettårs</value>
+  </data>
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>tvåårs</value>
+    <comment>Like "a two-year membership"</comment>
+  </data>
+  <data name="Global_Address" xml:space="preserve">
+    <value>Adress</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Land</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Födelsedatum</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Postnummer</value>
+  </data>
 </root>

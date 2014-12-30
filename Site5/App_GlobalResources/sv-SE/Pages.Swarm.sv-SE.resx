@@ -117,21 +117,63 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="AddPerson_ErrorCity" xml:space="preserve">
+    <value>En giltig ort krävs.</value>
+  </data>
+  <data name="AddPerson_ErrorDate" xml:space="preserve">
+    <value>Ange ett giltigt datum eller lämna fältet tomt.</value>
+  </data>
+  <data name="AddPerson_ErrorMail" xml:space="preserve">
+    <value>En giltig mailadress krävs.</value>
+  </data>
+  <data name="AddPerson_ErrorName" xml:space="preserve">
+    <value>Ett namn krävs.</value>
+  </data>
+  <data name="AddPerson_ErrorStreet" xml:space="preserve">
+    <value>En giltig gatuadress eller postbox krävs.</value>
+  </data>
+  <data name="AddPerson_GeographyDetected" xml:space="preserve">
+    <value>Bedömd geografi</value>
+  </data>
+  <data name="AddPerson_Info" xml:space="preserve">
+    <value>Det är här du skriver in nya människor till organisationen. När du skriver in dem för ett &lt;strong&gt;{0} {1}&lt;/strong&gt; som varar fram till &lt;strong&gt;{2}&lt;/strong&gt;, så får de ett välkomstmeddelande med ett slumpat inloggningslösenord i mail. De lokala funktionärerna får också notiser om den nya kollegan, för att ge möjlighet att välkomna även lokalt.</value>
+    <comment>{0} and {1} can be "one-year" and "Membership", for example. {2} is LongDateString.</comment>
+  </data>
+  <data name="AddPerson_LegalGender" xml:space="preserve">
+    <value>Juridiskt kön</value>
+    <comment>"Legal" to cut short discussions on 50 different genders for the time being</comment>
+  </data>
+  <data name="AddPerson_PersonSuccessfullyRegistered" xml:space="preserve">
+    <value>Personen har lagts till organisationen. Ett välkomstmail har skickats.</value>
+  </data>
+  <data name="AddPerson_StatisticalData" xml:space="preserve">
+    <value>Statistiska uppgifter</value>
+    <comment>Header for gender, date of birth</comment>
+  </data>
+  <data name="AddPerson_Street1PO" xml:space="preserve">
+    <value>Gatuadress/postbox</value>
+  </data>
+  <data name="AddPerson_Street2" xml:space="preserve">
+    <value>Gatuadress extrarad</value>
+  </data>
+  <data name="AddPerson_Title" xml:space="preserve">
+    <value>Lägg till {0}</value>
+    <comment>The {0} is replaced in code. Singular form gender neutral of Participant.</comment>
+  </data>
+  <data name="ListFindPeople_Info" xml:space="preserve">
+    <value>Används för att hitta personer i organisationen. Du kan söka på geografi och namnmönster ("Jo S" kommer till exempel att matcha alla som heter Joel Sander).</value>
+  </data>
+  <data name="ListFindPeople_MatchingPeopleInX" xml:space="preserve">
+    <value>Matchande personer i {0}</value>
+    <comment>The {0} parameter is the organization name.</comment>
+  </data>
+  <data name="ListFindPeople_NamePattern" xml:space="preserve">
+    <value>Namn eller -mönster</value>
+  </data>
+  <data name="ListFindPeople_Title" xml:space="preserve">
+    <value>Sök och lista personer</value>
+  </data>
+  <data name="ListFindPeople_TooManyHits" xml:space="preserve">
+    <value>Resultatet innehåller över tusen personer (visar de första tusen). Begränsa sökningen lite?</value>
+  </data>
 </root>

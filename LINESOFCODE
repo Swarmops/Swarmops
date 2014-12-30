@@ -725,6 +725,8 @@
      22 ./Tests/DummyTest.cs
    1740 ./Console/Console.cs
      57 ./Console/AssemblyInfo.cs
+    132 ./BuildFiles/Building/SharedLabeller/SharedLabeller.cs
+     36 ./BuildFiles/Building/SharedLabeller/Properties/AssemblyInfo.cs
      97 ./Interface/RssWriter.cs
      58 ./Interface/Collections/ExpensePayouts.cs
      37 ./Interface/Properties/AssemblyInfo.cs
@@ -737,4 +739,4 @@
     156 ./Interface/Objects/MainMenuItem.cs
     173 ./Interface/Objects/ExpensePayout.cs
     213 ./Interface/PersonIcon.cs
- 102408 total
+ 102576 total
