@@ -120,6 +120,9 @@
   <data name="AddPerson_ErrorCity" xml:space="preserve">
     <value>crwdns6555518:0crwdne6555518:0</value>
   </data>
+  <data name="AddPerson_ErrorDate" xml:space="preserve">
+    <value>crwdns6555535:0crwdne6555535:0</value>
+  </data>
   <data name="AddPerson_ErrorMail" xml:space="preserve">
     <value>crwdns6555519:0crwdne6555519:0</value>
   </data>
@@ -141,7 +144,7 @@
     <comment>"Legal" to cut short discussions on 50 different genders for the time being</comment>
   </data>
   <data name="AddPerson_PersonSuccessfullyRegistered" xml:space="preserve">
-    <value>crwdns6555525:0crwdne6555525:0</value>
+    <value>crwdns6555536:0crwdne6555536:0</value>
   </data>
   <data name="AddPerson_StatisticalData" xml:space="preserve">
     <value>crwdns6555526:0crwdne6555526:0</value>

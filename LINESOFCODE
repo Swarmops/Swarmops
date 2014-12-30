@@ -4,16 +4,14 @@
      72 ./Basic/Types/BasicExpenseClaim.cs
      42 ./Basic/Types/BasicNewsletterFeed.cs
      75 ./Basic/Types/BasicPaymentInformation.cs
-     41 ./Basic/Types/BasicCity.cs
      40 ./Basic/Types/BasicRefund.cs
      25 ./Basic/Types/BasicExceptionLog.cs
      48 ./Basic/Types/BasicChurnDataPoint.cs
      18 ./Basic/Types/BasicMembershipPaymentStatus.cs
-     26 ./Basic/Types/BasicGeographyDesignation.cs
      31 ./Basic/Types/BasicElection.cs
-     31 ./Basic/Types/BasicPostalCode.cs
      13 ./Basic/Types/BasicNewsletterTemplate.cs
      31 ./Basic/Types/BasicCurrency.cs
+     44 ./Basic/Types/Financial/BasicExchangeRateSnapshot.cs
      65 ./Basic/Types/Financial/BasicCashAdvance.cs
      30 ./Basic/Types/Financial/BasicFinancialTransactionTagSetType.cs
      45 ./Basic/Types/Financial/BasicFinancialTransactionTagType.cs
@@ -31,10 +29,8 @@
      47 ./Basic/Types/BasicExternalActivity.cs
      45 ./Basic/Types/BasicMediaCategory.cs
      46 ./Basic/Types/BasicInternalPollVoter.cs
-     92 ./Basic/Types/BasicOrganization.cs
      77 ./Basic/Types/BasicVolunteerRole.cs
      78 ./Basic/Types/BasicVolunteer.cs
-     68 ./Basic/Types/BasicCountry.cs
      33 ./Basic/Types/BasicOutboundInvoiceItem.cs
      40 ./Basic/Types/BasicSupplier.cs
      49 ./Basic/Types/BasicCommunicationTurnaround.cs
@@ -46,6 +42,13 @@
      44 ./Basic/Types/BasicPaymentGroup.cs
      28 ./Basic/Types/BasicObjectOptionalData.cs
      21 ./Basic/Types/BasicInternalPollVoteDetail.cs
+     41 ./Basic/Types/Structure/BasicCity.cs
+     26 ./Basic/Types/Structure/BasicGeographyDesignation.cs
+     31 ./Basic/Types/Structure/BasicPostalCode.cs
+     92 ./Basic/Types/Structure/BasicOrganization.cs
+     70 ./Basic/Types/Structure/BasicCountry.cs
+     57 ./Basic/Types/Structure/BasicGeographyUpdate.cs
+     64 ./Basic/Types/Structure/BasicGeography.cs
      69 ./Basic/Types/Governance/BasicMotion.cs
      50 ./Basic/Types/Governance/BasicMotionAmendment.cs
      46 ./Basic/Types/Governance/BasicMeeting.cs
@@ -58,7 +61,6 @@
      61 ./Basic/Types/BasicInboundInvoice.cs
     219 ./Basic/Types/BasicOutboundMail.cs
      36 ./Basic/Types/BasicSwarmopsLogEntry.cs
-     18 ./Basic/Types/GeographyWithPeople.cs
      37 ./Basic/Types/BasicInternalPollCandidate.cs
      96 ./Basic/Types/BasicDocument.cs
      25 ./Basic/Types/BasicExternalCredential.cs
@@ -72,7 +74,6 @@
      76 ./Basic/Types/BasicExternalIdentity.cs
      64 ./Basic/Types/BasicMembership.cs
      66 ./Basic/Types/BasicOutboundInvoice.cs
-     64 ./Basic/Types/BasicGeography.cs
      78 ./Basic/Types/BasicOutboundMailRecipient.cs
      35 ./Basic/Types/BasicUptakeGeography.cs
      71 ./Basic/Types/BasicPerson.cs
@@ -94,7 +95,7 @@
      59 ./Basic/Enums/FinancialDependencyType.cs
      28 ./Basic/Enums/PersonOptionalDataKey.cs
     240 ./Basic/Enums/RoleTypeClass.cs
-    288 ./Basic/Enums/ObjectOptionalDataType.cs
+    293 ./Basic/Enums/ObjectOptionalDataType.cs
      10 ./Basic/Enums/ExpenseEventType.cs
      41 ./Basic/Enums/OutboundCommPriority.cs
      57 ./Basic/Enums/MailAuthorType.cs
@@ -114,7 +115,7 @@
       8 ./Basic/Enums/PersonGender.cs
      45 ./Basic/Enums/MembershipPaymentStatus.cs
      28 ./Basic/EventTypesSources.cs
-    708 ./Backend/Program.cs
+    710 ./Backend/Program.cs
      38 ./Backend/Properties/AssemblyInfo.cs
      51 ./Backend/CommsTransmitter.cs
    1008 ./Database/Database-InboundInvoices.cs
@@ -130,20 +131,22 @@
     185 ./Database/Database-Parleys.cs
     119 ./Database/Database-ParleyOptions.cs
      78 ./Database/Database-PaymentCodes.cs
+    225 ./Database/Database-ExchangeRates.cs
     253 ./Database/Database-ConnectionsCommands.cs
     209 ./Database/Database-Events.cs
     187 ./Database/Database-Constructors.cs
     173 ./Database/Database-ExternalIdentities.cs
     203 ./Database/Database-Salaries.cs
      84 ./Database/Database-AutoMails.cs
-     47 ./Database/Database-Initialization.cs
+    208 ./Database/Database-GeographyUpdates.cs
+     64 ./Database/Database-Initialization.cs
    1065 ./Database/Database-OutboundInvoices.cs
     165 ./Database/Database-InternalPolls.cs
     191 ./Database/Database-Meetings.cs
     190 ./Database/Configuration.cs
     439 ./Database/Database-FinancialTransactionTags.cs
     554 ./Database/Database-FinancialTransactionTagTypes.cs
-    963 ./Database/Database-PostalCodes.cs
+    964 ./Database/Database-PostalCodes.cs
     188 ./Database/Database-ParleyAttendees.cs
     482 ./Database/Database-Geographies.cs
     925 ./Database/Database-Payroll.cs
@@ -151,11 +154,11 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
     119 ./Database/Database-ChurnData.cs
     526 ./Database/Database-OutboundCommRecipients.cs
-    281 ./Database/Database-PostalCodesCities.cs
+    282 ./Database/Database-PostalCodesCities.cs
     197 ./Database/Database-Tests.cs
      43 ./Database/Database-ExternalCredentials.cs
-    668 ./Database/Database-People.cs
-    511 ./Database/Database-Organizations.cs
+    669 ./Database/Database-People.cs
+    512 ./Database/Database-Organizations.cs
     105 ./Database/Database-Activists.cs
      25 ./Database/Database-Attribute.cs
     878 ./Database/Database-PaperLetters.cs
@@ -168,7 +171,7 @@
     549 ./Database/Database-PaymentGroups.cs
     374 ./Database/Database-OutboundMails.cs
     666 ./Database/Database-Memberships.cs
-    164 ./Database/Database-Countries.cs
+    166 ./Database/Database-Countries.cs
      96 ./Database/Database-TaxLevels.cs
      69 ./Database/Database-FinancialValidations.cs
     165 ./Database/Database-ExternalActivities.cs
@@ -186,8 +189,8 @@
     113 ./Database/Database-PirateWebLog.cs
     137 ./Database/Database-Optimizations.cs
     911 ./Database/Database-PayrollAdjustments.cs
-    224 ./Database/Database-Currencies.cs
-    222 ./Database/Database-Newsletters.cs
+    204 ./Database/Database-Currencies.cs
+    223 ./Database/Database-Newsletters.cs
     268 ./Database/Database-Ballots.cs
     141 ./Database/Database-InternalPollCandidates.cs
     524 ./Database/Database-CashAdvances.cs
@@ -318,14 +321,14 @@
      10 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx
     316 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
-    217 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
-     87 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
-    118 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx.cs
+    215 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
+     88 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
+    117 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx.cs
      13 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx
      73 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx
-    156 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx
-    148 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx
+    157 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx
+    149 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx
     224 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
     143 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
     217 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
@@ -334,18 +337,22 @@
     183 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx
       1 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx
     117 ./Site5/Pages/v5/Financial/PayOutMoney.aspx.cs
-    230 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx.cs
+    228 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx.cs
     141 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
      43 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
+    154 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry2.aspx.cs
+    106 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry2.aspx
      16 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx
-    106 ./Site5/Pages/v5/Admin/Hacks/PopulateData.aspx
+    106 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry1.aspx
+    106 ./Site5/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx
      59 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx.cs
+    166 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry1.aspx.cs
+    102 ./Site5/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx.cs
      28 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx
-    101 ./Site5/Pages/v5/Admin/Hacks/PopulateData.aspx.cs
      73 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx.cs
     198 ./Site5/Pages/v5/Admin/EditOrganization.aspx
     390 ./Site5/Pages/v5/Admin/EditOrganization.aspx.cs
-    104 ./Site5/Pages/v5/Comms/SendMassMessage.aspx.cs
+    106 ./Site5/Pages/v5/Comms/SendMassMessage.aspx.cs
      63 ./Site5/Pages/v5/Comms/SendMassMessage.aspx
      13 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx
      15 ./Site5/Pages/v5/Security/AccessDenied.aspx.cs
@@ -358,9 +365,9 @@
      14 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx.cs
      90 ./Site5/Pages/v5/Security/Json-AccessibleOrganizationsTree.aspx.cs
      40 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx.cs
-     61 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx.cs
-    857 ./Site5/Pages/v5/Init/Default.aspx.cs
-    697 ./Site5/Pages/v5/Init/Default.aspx
+     63 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx.cs
+    743 ./Site5/Pages/v5/Init/Default.aspx.cs
+    753 ./Site5/Pages/v5/Init/Default.aspx
     738 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
     133 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx.cs
      63 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.cs
@@ -368,7 +375,7 @@
     334 ./Site5/Pages/v5/Ledgers/SetRootBudgets.aspx.cs
       0 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx
      49 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx.cs
-    369 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx.cs
+    463 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx.cs
     239 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
      30 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx
@@ -393,7 +400,7 @@
      98 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.cs
     117 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx
     267 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx
-    529 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx
+    596 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx
     114 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx
     126 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx.cs
@@ -409,24 +416,25 @@
      96 ./Site5/Pages/v5/User/SelectLanguage.aspx
     188 ./Site5/Pages/v5/Support/StreamUpload.aspx.cs
       2 ./Site5/Pages/v5/Support/StreamUpload.aspx
-     17 ./Site5/Default.aspx.cs
+     18 ./Site5/Default.aspx.cs
      19 ./Site5/Default.aspx
-    360 ./Site5/Security/Login.aspx.cs
+    376 ./Site5/Security/Login.aspx.cs
     106 ./Site5/Security/Login-Old.aspx.cs
-    218 ./Site5/Security/Login.aspx
-     25 ./Site5/Security/FinalizeLogin.aspx.cs
+    227 ./Site5/Security/Login.aspx
+     26 ./Site5/Security/FinalizeLogin.aspx.cs
      53 ./Site5/Security/Login-Old.aspx
       0 ./Site5/Security/FinalizeLogin.aspx
       0 ./Site5/Automation/Json-GeographiesTree.aspx
       1 ./Site5/Automation/Json-GetPersonAvatar.aspx
+     43 ./Site5/Automation/GetFinancialData.asmx
     106 ./Site5/Automation/Json-GeographiesTree.aspx.cs
       0 ./Site5/Automation/Json-AvailableCurrencies.aspx
       1 ./Site5/Automation/Json-ByGuid.aspx
-     46 ./Site5/Automation/GetGeographyData.asmx
+     59 ./Site5/Automation/GetGeographyData.asmx
       1 ./Site5/Automation/Json-TransactionTagsTree.aspx
      28 ./Site5/Automation/Json-ByGuid.aspx.cs
      57 ./Site5/Automation/Json-AvailableCurrencies.aspx.cs
-     47 ./Site5/Automation/Json-SearchPeoplePattern.aspx.cs
+     49 ./Site5/Automation/Json-SearchPeoplePattern.aspx.cs
       0 ./Site5/Automation/Json-BudgetsTree.aspx
       0 ./Site5/Automation/Json-FinancialAccountsTree.aspx
     412 ./Site5/Automation/UploadFileHandler.ashx
@@ -440,7 +448,7 @@
      33 ./Site5/Tests/TestBookkeepingIntegrity.aspx
      79 ./Site5/Tests/TestBookkeepingIntegrity.aspx.cs
     392 ./Site5/Master-v5.master.cs
-    121 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
+    128 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
      32 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
      40 ./Site5/Controls/v5/Base/ComboGeographies.ascx
      78 ./Site5/Controls/v5/Base/FileUpload.ascx.cs
@@ -448,30 +456,29 @@
      68 ./Site5/Controls/v5/Base/FileUpload.ascx
       1 ./Site5/Controls/v5/Base/MainMenu.ascx
      40 ./Site5/Controls/v5/Base/DropDown.ascx
-     15 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx.cs
+     49 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx.cs
     101 ./Site5/Controls/v5/Financial/ComboBudgets.ascx
       1 ./Site5/Controls/v5/Financial/ComboIncomeCostType.ascx
-      1 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx
+      4 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx
       8 ./Site5/Controls/v5/Financial/ComboIncomeCostType.ascx.cs
      42 ./Site5/Controls/v5/Financial/ComboBudgets.ascx.cs
     148 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx.cs
      17 ./Site5/Controls/v5/Swarm/ComboPeople.ascx.cs
      98 ./Site5/Controls/v5/Swarm/ComboPeople.ascx
      26 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx
-     49 ./Site5/Controls/v5/UI/ExternalScripts.ascx.cs
+     55 ./Site5/Controls/v5/UI/ExternalScripts.ascx.cs
       5 ./Site5/Controls/v5/UI/ExternalScripts.ascx
       5 ./Site5/Controls/v5/UI/IncludedScripts.ascx
      41 ./Site5/Controls/v5/UI/IncludedScripts.ascx.cs
-     77 ./Site5/Global.asax
+    109 ./Site5/Global.asax
     358 ./Site5/App_Code/CommonV5.cs
-    880 ./Site5/App_Code/GetGeographyData.cs
      56 ./Site5/App_Code/MasterV5Base.cs
     158 ./Site5/App_Code/PageV5Base.cs
     157 ./Site5/App_Code/DataV5Base.cs
      65 ./Site5/App_Code/ControlV5Base.cs
      91 ./Logic/App_GlobalResources/Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs
      81 ./Logic/App_GlobalResources/Logic.Communications.Transmission.MailPayload.Designer.cs
-    376 ./Logic/App_GlobalResources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
+    459 ./Logic/App_GlobalResources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
      91 ./Logic/App_GlobalResources/Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs
     171 ./Logic/App_GlobalResources/Logic.Swarm.DashboardTodos.Designer.cs
     927 ./Logic/App_GlobalResources/ParticipantTitles.Designer.cs
@@ -484,8 +491,8 @@
     359 ./Logic/Special/Mail/MailServerDatabase.cs
      17 ./Logic/Special/DummyBitcoin.cs
      29 ./Logic/Interfaces/TreeNode.cs
-    377 ./Logic/Cache/OrganizationCache.cs
-    259 ./Logic/Cache/GeographyCache.cs
+    378 ./Logic/Cache/OrganizationCache.cs
+    260 ./Logic/Cache/GeographyCache.cs
      88 ./Logic/Cache/MailTemplateCache.cs
      82 ./Logic/Cache/GuidCache.cs
      89 ./Logic/Financial/InboundInvoices.cs
@@ -519,9 +526,11 @@
       8 ./Logic/Financial/IBankDataAccountStatementReader.cs
      23 ./Logic/Financial/ImportedBankData.cs
      73 ./Logic/Financial/FinancialTransactions.cs
+     15 ./Logic/Financial/ExchangeRateSnapshots.cs
      27 ./Logic/Financial/OutboundInvoiceItem.cs
      32 ./Logic/Financial/FinancialTransactionTagTypes.cs
      63 ./Logic/Financial/FinancialTransactionRow.cs
+    109 ./Logic/Financial/ExchangeRateSnapshot.cs
     223 ./Logic/Financial/InboundInvoice.cs
     435 ./Logic/Financial/ExpenseClaim.cs
      22 ./Logic/Financial/FinancialValidation.cs
@@ -531,10 +540,10 @@
      13 ./Logic/Financial/Currencies.cs
       9 ./Logic/Financial/FinancialTransactionTagSetTypesStock.cs
      42 ./Logic/Financial/PaymentInformation.cs
-     19 ./Logic/Financial/FinancialAccountRows.cs
+     32 ./Logic/Financial/FinancialAccountRows.cs
      10 ./Logic/Financial/IAttestable.cs
      71 ./Logic/Financial/CashAdvances.cs
-    423 ./Logic/Financial/FinancialTransaction.cs
+    425 ./Logic/Financial/FinancialTransaction.cs
      30 ./Logic/Financial/FinancialAccountRow.cs
      21 ./Logic/Financial/FinancialTransactionTagSetType.cs
     435 ./Logic/Financial/ExternalBankData.cs
@@ -557,25 +566,27 @@
       9 ./Logic/Security/InternalLoginTicket.cs
       0 ./Logic/Security/App_LocalResources/Authentication.sv-SE.Designer.cs
     221 ./Logic/Security/App_LocalResources/Authentication.Designer.cs
-    800 ./Logic/Security/Authorization.cs
+    801 ./Logic/Security/Authorization.cs
     569 ./Logic/Security/Authentication.cs
-     30 ./Logic/Structure/Countries.cs
+     31 ./Logic/Structure/Countries.cs
      36 ./Logic/Structure/GeographyStatisticsOverTime.cs
-     52 ./Logic/Structure/City.cs
+     53 ./Logic/Structure/City.cs
      51 ./Logic/Structure/GeographyDataPoint.cs
     137 ./Logic/Structure/OrganizationParameters.cs
     228 ./Logic/Structure/GeographyStatistics.cs
-     32 ./Logic/Structure/PostalCodes.cs
-    411 ./Logic/Structure/Organizations.cs
-     40 ./Logic/Structure/PostalCode.cs
+     33 ./Logic/Structure/PostalCodes.cs
+    412 ./Logic/Structure/Organizations.cs
+    259 ./Logic/Structure/GeographyUpdate.cs
+     41 ./Logic/Structure/PostalCode.cs
      21 ./Logic/Structure/GeographyBar.cs
      92 ./Logic/Structure/UptakeGeography.cs
-     48 ./Logic/Structure/Country.cs
+     49 ./Logic/Structure/Country.cs
      23 ./Logic/Structure/GeographyWithPeople.cs
-    180 ./Logic/Structure/Geography.cs
-    934 ./Logic/Structure/Organization.cs
-     46 ./Logic/Structure/Cities.cs
-    269 ./Logic/Structure/Geographies.cs
+     24 ./Logic/Structure/GeographyUpdates.cs
+    181 ./Logic/Structure/Geography.cs
+    935 ./Logic/Structure/Organization.cs
+     47 ./Logic/Structure/Cities.cs
+    270 ./Logic/Structure/Geographies.cs
      59 ./Logic/Governance/MeetingElectionVote.cs
      14 ./Logic/Governance/MeetingElectionCandidates.cs
     147 ./Logic/Governance/MeetingElection.cs
@@ -592,6 +603,7 @@
      60 ./Logic/Governance/Election.cs
      22 ./Logic/Governance/Meeting.cs
      18 ./Logic/Governance/MotionAmendments.cs
+    889 ./Logic/Automation/GetGeographyData.cs
      14 ./Logic/Communications/OutboundCommRecipients.cs
      84 ./Logic/Communications/CommunicationTurnaround.cs
     452 ./Logic/Communications/OutboundMail.cs
@@ -640,8 +652,8 @@
     275 ./Logic/Swarm/Membership.cs
     138 ./Logic/Swarm/Memberships.cs
      49 ./Logic/Swarm/Parleys.cs
-   1105 ./Logic/Swarm/Person.cs
-    532 ./Logic/Swarm/People.cs
+   1127 ./Logic/Swarm/Person.cs
+    533 ./Logic/Swarm/People.cs
     143 ./Logic/Swarm/MembershipEvents.cs
      82 ./Logic/Swarm/PaymentCode.cs
      19 ./Logic/Swarm/ChurnDataPoint.cs
@@ -674,8 +686,9 @@
     434 ./Logic/Support/CheckDigit.cs
      22 ./Logic/Support/PirateWebDebug.cs
     136 ./Logic/Support/ObjectOptionalData.cs
-    140 ./Logic/Support/SingularFactory.cs
+     66 ./Logic/Support/SingularFactory.cs
      40 ./Logic/Support/ActivistEvents.cs
+     23 ./Logic/Support/General.cs
     168 ./Logic/Support/Document.cs
      24 ./Logic/Support/LogEntries/MembershipActionBase.cs
      22 ./Logic/Support/LogEntries/FinancialActionBase.cs
@@ -712,6 +725,8 @@
      22 ./Tests/DummyTest.cs
    1740 ./Console/Console.cs
      57 ./Console/AssemblyInfo.cs
+    132 ./BuildFiles/Building/SharedLabeller/SharedLabeller.cs
+     36 ./BuildFiles/Building/SharedLabeller/Properties/AssemblyInfo.cs
      97 ./Interface/RssWriter.cs
      58 ./Interface/Collections/ExpensePayouts.cs
      37 ./Interface/Properties/AssemblyInfo.cs
@@ -724,470 +739,4 @@
     156 ./Interface/Objects/MainMenuItem.cs
     173 ./Interface/Objects/ExpensePayout.cs
     213 ./Interface/PersonIcon.cs
-     19 ./Site4/Pages/Special/Debug/Default.aspx.cs
-     16 ./Site4/Pages/Special/Debug/Default.aspx
-     94 ./Site4/Pages/Special/FI/Import.aspx
-    108 ./Site4/Pages/Special/FI/HandlePaymentStatus.aspx.cs
-    104 ./Site4/Pages/Special/FI/HandlePaymentStatus.aspx
-    258 ./Site4/Pages/Special/FI/Import.aspx.cs
-    113 ./Site4/Pages/Special/DK/Export.aspx.cs
-      1 ./Site4/Pages/Special/DK/Export.aspx
-     17 ./Site4/Pages/Special/SE/MediaEntriesFra.aspx
-     17 ./Site4/Pages/Special/SE/SokAdress.aspx
-    211 ./Site4/Pages/Special/SE/MediaEntriesFra.aspx.cs
-    266 ./Site4/Pages/Special/SE/MediaEntriesIpred1.aspx.cs
-    143 ./Site4/Pages/Special/SE/SokAdress.aspx.cs
-     45 ./Site4/Pages/Special/SE/VerifyForumPoll.aspx
-     27 ./Site4/Pages/Special/SE/UngPirat/Join.aspx
-    399 ./Site4/Pages/Special/SE/UngPirat/Export.aspx.cs
-      1 ./Site4/Pages/Special/SE/UngPirat/Export.aspx
-     70 ./Site4/Pages/Special/SE/UngPirat/Join.aspx.cs
-    279 ./Site4/Pages/Special/SE/VerifyForumPoll.aspx.cs
-     17 ./Site4/Pages/Special/SE/MediaEntriesIpred1.aspx
-    100 ./Site4/Pages/Security/Login.aspx.cs
-     91 ./Site4/Pages/Security/Login.aspx
-     59 ./Site4/Pages/Security/LoginXMPP.ashx
-    275 ./Site4/Pages/Security/ValidateTicket.aspx.cs
-     62 ./Site4/Pages/Security/InternalLogin.aspx.cs
-    122 ./Site4/Pages/Security/SubsystemLogin.aspx.cs
-      3 ./Site4/Pages/Security/ValidateTicket.aspx
-     30 ./Site4/Pages/Security/InternalLogin.aspx
-     18 ./Site4/Pages/Security/Logout.aspx.cs
-     16 ./Site4/Pages/Security/Logout.aspx
-      1 ./Site4/Pages/Security/SubsystemLogin.aspx
-     52 ./Site4/Pages/Security/IsUserXMPP.ashx
-     14 ./Site4/Pages/v4/v3/Account/MembershipSettings.aspx
-    140 ./Site4/Pages/v4/v3/Account/Memberships.aspx.cs
-     15 ./Site4/Pages/v4/v3/Account/SubscriptionSettings.aspx
-     21 ./Site4/Pages/v4/v3/Account/BasicDetails.aspx
-     58 ./Site4/Pages/v4/v3/Account/Memberships.aspx
-     81 ./Site4/Pages/v4/v3/Account/BasicDetails.aspx.cs
-     18 ./Site4/Pages/v4/v3/Account/MembershipSettings.aspx.cs
-     33 ./Site4/Pages/v4/v3/Account/SubscriptionSettings.aspx.cs
-     21 ./Site4/Pages/v4/v3/Financials/ExpenseReceipts.aspx
-     22 ./Site4/Pages/v4/v3/Financials/ExpenseReceipts.aspx.cs
-     49 ./Site4/Pages/v4/v3/Financials/ExpensePayouts.aspx.cs
-     60 ./Site4/Pages/v4/v3/Financials/ExpensePayouts.aspx
-     15 ./Site4/Pages/v4/v3/MembersFramed/MembershipSettings.aspx
-     13 ./Site4/Pages/v4/v3/MembersFramed/SearchFrame.aspx.cs
-    242 ./Site4/Pages/v4/v3/MembersFramed/Memberships.aspx.cs
-     14 ./Site4/Pages/v4/v3/MembersFramed/SubscriptionSettings.aspx
-    113 ./Site4/Pages/v4/v3/MembersFramed/SearchFrame.aspx
-    359 ./Site4/Pages/v4/v3/MembersFramed/RolesResponsibilities.aspx.cs
-     30 ./Site4/Pages/v4/v3/MembersFramed/BasicDetails.aspx
-    107 ./Site4/Pages/v4/v3/MembersFramed/PersonFrame.aspx
-     68 ./Site4/Pages/v4/v3/MembersFramed/Memberships.aspx
-    353 ./Site4/Pages/v4/v3/MembersFramed/Add.aspx.cs
-    167 ./Site4/Pages/v4/v3/MembersFramed/RolesResponsibilities.aspx
-     61 ./Site4/Pages/v4/v3/MembersFramed/BasicDetails.aspx.cs
-    164 ./Site4/Pages/v4/v3/MembersFramed/List.aspx
-    140 ./Site4/Pages/v4/v3/MembersFramed/Add.aspx
-    151 ./Site4/Pages/v4/v3/MembersFramed/Search.aspx
-     47 ./Site4/Pages/v4/v3/MembersFramed/MembershipSettings.aspx.cs
-    363 ./Site4/Pages/v4/v3/MembersFramed/Search.aspx.cs
-     62 ./Site4/Pages/v4/v3/MembersFramed/PersonFrame.aspx.cs
-     52 ./Site4/Pages/v4/v3/MembersFramed/SubscriptionSettings.aspx.cs
-    340 ./Site4/Pages/v4/v3/MembersFramed/List.aspx.cs
-    168 ./Site4/Pages/v4/v3/GeographyOfficers.aspx.cs
-     17 ./Site4/Pages/v4/v3/Members/MembershipSettings.aspx
-     13 ./Site4/Pages/v4/v3/Members/SearchFrame.aspx.cs
-    213 ./Site4/Pages/v4/v3/Members/Memberships.aspx.cs
-     28 ./Site4/Pages/v4/v3/Members/SubscriptionSettings.aspx
-     13 ./Site4/Pages/v4/v3/Members/SearchFrame.aspx
-    348 ./Site4/Pages/v4/v3/Members/RolesResponsibilities.aspx.cs
-     29 ./Site4/Pages/v4/v3/Members/BasicDetails.aspx
-     71 ./Site4/Pages/v4/v3/Members/Memberships.aspx
-    353 ./Site4/Pages/v4/v3/Members/Add.aspx.cs
-    170 ./Site4/Pages/v4/v3/Members/RolesResponsibilities.aspx
-     60 ./Site4/Pages/v4/v3/Members/BasicDetails.aspx.cs
-     74 ./Site4/Pages/v4/v3/Members/List.aspx
-    140 ./Site4/Pages/v4/v3/Members/Add.aspx
-     82 ./Site4/Pages/v4/v3/Members/Search.aspx
-     47 ./Site4/Pages/v4/v3/Members/MembershipSettings.aspx.cs
-    222 ./Site4/Pages/v4/v3/Members/Search.aspx.cs
-    120 ./Site4/Pages/v4/v3/Members/SubscriptionSettings.aspx.cs
-    290 ./Site4/Pages/v4/v3/Members/List.aspx.cs
-     14 ./Site4/Pages/v4/v3/GeographyOfficers.aspx
-    139 ./Site4/Pages/v4/v3/Communications/SendLocalMail.aspx
-    275 ./Site4/Pages/v4/v3/Communications/SendLocalMail.aspx.cs
-    124 ./Site4/Pages/v4/v3/Communications/SendLocalMailEditor.aspx
-    273 ./Site4/Pages/v4/v3/Communications/SendLocalMailEditor.aspx.cs
-    300 ./Site4/Pages/v4/v3/Communications/AutoMails.aspx.cs
-    133 ./Site4/Pages/v4/v3/Communications/AutoMails.aspx
-    110 ./Site4/Pages/v4/v3/ActivePirate/Expenses.aspx
-    224 ./Site4/Pages/v4/v3/ActivePirate/Expenses.aspx.cs
-    263 ./Site4/Pages/v4/ListInvalidEmail.aspx.cs
-     49 ./Site4/Pages/v4/Organization/EditBallot.aspx
-    157 ./Site4/Pages/v4/Organization/EditBallot.aspx.cs
-     63 ./Site4/Pages/v4/Organization/AddMotion.aspx.cs
-    105 ./Site4/Pages/v4/Organization/AddBallot.aspx.cs
-     43 ./Site4/Pages/v4/Organization/CreateInternalPoll.aspx
-    117 ./Site4/Pages/v4/Organization/VoteMotionAmendments.aspx.cs
-     78 ./Site4/Pages/v4/Organization/VoteMotionAmendments.aspx
-     42 ./Site4/Pages/v4/Organization/AddBallot.aspx
-     47 ./Site4/Pages/v4/Organization/ReceivedCandidateDocumentation.aspx
-     44 ./Site4/Pages/v4/Organization/AddMotion.aspx
-     53 ./Site4/Pages/v4/Organization/CreateInternalPoll.aspx.cs
-     79 ./Site4/Pages/v4/Organization/ReceivedCandidateDocumentation.aspx.cs
-     75 ./Site4/Pages/v4/EditPerson.aspx.cs
-    108 ./Site4/Pages/v4/EditPerson.aspx
-    276 ./Site4/Pages/v4/DHL.aspx.cs
-    203 ./Site4/Pages/v4/Activism/LogActivism.aspx.cs
-    111 ./Site4/Pages/v4/Activism/CreateParley.aspx
-    192 ./Site4/Pages/v4/Activism/ManageParleys.aspx.cs
-     57 ./Site4/Pages/v4/Activism/ManageParleys.aspx
-     73 ./Site4/Pages/v4/Activism/LogActivism.aspx
-    142 ./Site4/Pages/v4/Activism/CreateParley.aspx.cs
-     22 ./Site4/Pages/v4/Financial/ViewInboundInvoices.aspx.cs
-     83 ./Site4/Pages/v4/Financial/ManageBudget.aspx
-    563 ./Site4/Pages/v4/Financial/AttestCosts.aspx.cs
-    117 ./Site4/Pages/v4/Financial/AuditGeneralLedger.aspx.cs
-     74 ./Site4/Pages/v4/Financial/ImportPayments.aspx
-    113 ./Site4/Pages/v4/Financial/PopupEditTransaction.aspx
-    298 ./Site4/Pages/v4/Financial/FixIncompleteTransactions.aspx
-     56 ./Site4/Pages/v4/Financial/InvoiceAdvanceDebtsPartial.aspx
-    243 ./Site4/Pages/v4/Financial/PopupMapOutboundInvoice.aspx.cs
-    296 ./Site4/Pages/v4/Financial/AllocateFunds.aspx.cs
-    120 ./Site4/Pages/v4/Financial/UploadFinancialData.aspx.cs
-    219 ./Site4/Pages/v4/Financial/InvoiceAdvanceDebtsPartial.aspx.cs
-    203 ./Site4/Pages/v4/Financial/BudgetUsageBar.aspx.cs
-     90 ./Site4/Pages/v4/Financial/ImportBankTransactions.aspx
-    331 ./Site4/Pages/v4/Financial/PopupAuditTransaction.aspx.cs
-     85 ./Site4/Pages/v4/Financial/PopupAuditTransaction.aspx
-     56 ./Site4/Pages/v4/Financial/PopupEditBudget.aspx
-     64 ./Site4/Pages/v4/Financial/InvoiceAdvanceDebts.aspx
-    221 ./Site4/Pages/v4/Financial/CreateInboundInvoice.aspx.cs
-    117 ./Site4/Pages/v4/Financial/ViewSalariesTaxMonthlyForm.aspx.cs
-    203 ./Site4/Pages/v4/Financial/ViewBalanceSheet.aspx
-     33 ./Site4/Pages/v4/Financial/ViewInboundInvoices.aspx
-    119 ./Site4/Pages/v4/Financial/ViewPayroll.aspx
-    345 ./Site4/Pages/v4/Financial/ViewSalariesTaxMonthly.aspx.cs
-    229 ./Site4/Pages/v4/Financial/PopupEditExpenseClaim.aspx.cs
-     50 ./Site4/Pages/v4/Financial/PopupEditAccount.aspx
-    520 ./Site4/Pages/v4/Financial/ImportBankTransactions.aspx.cs
-    180 ./Site4/Pages/v4/Financial/PopupEditPayrollAdjustments.aspx.cs
-     62 ./Site4/Pages/v4/Financial/PopupEditPayout.aspx
-    138 ./Site4/Pages/v4/Financial/ViewExpenseClaims.aspx.cs
-    434 ./Site4/Pages/v4/Financial/ViewResultSheet.aspx.cs
-    391 ./Site4/Pages/v4/Financial/PopupEditPayout.aspx.cs
-     93 ./Site4/Pages/v4/Financial/CreateOutboundInvoice.aspx
-     63 ./Site4/Pages/v4/Financial/UploadFinancialData.aspx
-     65 ./Site4/Pages/v4/Financial/PreparePayouts.aspx
-     22 ./Site4/Pages/v4/Financial/ViewOutboundInvoices.aspx.cs
-    219 ./Site4/Pages/v4/Financial/ViewResultSheet.aspx
-    404 ./Site4/Pages/v4/Financial/ViewBudget.aspx.cs
-     88 ./Site4/Pages/v4/Financial/PopupAddAccount.aspx
-    142 ./Site4/Pages/v4/Financial/ValidateExpenseDocumentation.aspx.cs
-     70 ./Site4/Pages/v4/Financial/EditAccountPlan.aspx
-    134 ./Site4/Pages/v4/Financial/ViewExpenseClaims.aspx
-     35 ./Site4/Pages/v4/Financial/EditAccountPlan.aspx.cs
-    105 ./Site4/Pages/v4/Financial/CreateInboundInvoice.aspx
-      2 ./Site4/Pages/v4/Financial/ViewSalariesTaxMonthlyForm.aspx
-     83 ./Site4/Pages/v4/Financial/PopupEditAccount.aspx.cs
-    299 ./Site4/Pages/v4/Financial/InvoiceAdvanceDebts.aspx.cs
-    139 ./Site4/Pages/v4/Financial/PreparePayouts.aspx.cs
-    181 ./Site4/Pages/v4/Financial/ClaimExpense.aspx
-    217 ./Site4/Pages/v4/Financial/ViewBookkeeping.aspx
-     88 ./Site4/Pages/v4/Financial/PopupEditExpenseClaim.aspx
-     82 ./Site4/Pages/v4/Financial/PopupEditInboundInvoice.aspx
-    189 ./Site4/Pages/v4/Financial/ViewSalariesTaxMonthly.aspx
-    114 ./Site4/Pages/v4/Financial/ViewPayroll.aspx.cs
-     92 ./Site4/Pages/v4/Financial/AllocateFunds.aspx
-    555 ./Site4/Pages/v4/Financial/ManageBudget.aspx.cs
-    225 ./Site4/Pages/v4/Financial/ImportPayments.aspx.cs
-    189 ./Site4/Pages/v4/Financial/ViewSalariesTaxYearly.aspx
-    278 ./Site4/Pages/v4/Financial/ViewBookkeeping.aspx.cs
-    238 ./Site4/Pages/v4/Financial/RequestAdvance.aspx.cs
-     73 ./Site4/Pages/v4/Financial/PopupEditBudgetOwner.aspx.cs
-     53 ./Site4/Pages/v4/Financial/PopupEditBudgetOwner.aspx
-    147 ./Site4/Pages/v4/Financial/AttestCosts.aspx
-     56 ./Site4/Pages/v4/Financial/PopupMapOutboundInvoice.aspx
-    211 ./Site4/Pages/v4/Financial/ViewBudget.aspx
-    234 ./Site4/Pages/v4/Financial/CreateOutboundInvoice.aspx.cs
-     33 ./Site4/Pages/v4/Financial/ViewOutboundInvoices.aspx
-     21 ./Site4/Pages/v4/Financial/BudgetUsageBar.aspx
-    211 ./Site4/Pages/v4/Financial/PopupEditTransaction.aspx.cs
-     87 ./Site4/Pages/v4/Financial/PopupEditBudget.aspx.cs
-    107 ./Site4/Pages/v4/Financial/RequestAdvance.aspx
-    319 ./Site4/Pages/v4/Financial/FixIncompleteTransactions.aspx.cs
-     89 ./Site4/Pages/v4/Financial/AuditGeneralLedger.aspx
-    494 ./Site4/Pages/v4/Financial/ViewBalanceSheet.aspx.cs
-    500 ./Site4/Pages/v4/Financial/ClaimExpense.aspx.cs
-     92 ./Site4/Pages/v4/Financial/PopupEditPayrollAdjustments.aspx
-     90 ./Site4/Pages/v4/Financial/PopupAddAccount.aspx.cs
-    121 ./Site4/Pages/v4/Financial/ValidateExpenseDocumentation.aspx
-    187 ./Site4/Pages/v4/Financial/PopupEditInboundInvoice.aspx.cs
-    359 ./Site4/Pages/v4/Financial/ViewSalariesTaxYearly.aspx.cs
-    208 ./Site4/Pages/v4/Admin/RunForOffice.aspx.cs
-     68 ./Site4/Pages/v4/Admin/Impersonate.aspx.cs
-     46 ./Site4/Pages/v4/Admin/ValidateCanSee.aspx.cs
-    108 ./Site4/Pages/v4/Admin/MailQ.aspx.cs
-    335 ./Site4/Pages/v4/Admin/EditMailTemplate.aspx.cs
-     13 ./Site4/Pages/v4/Admin/ValidateCanSee.aspx
-    353 ./Site4/Pages/v4/Admin/PlaceInternalVote.aspx.cs
-     26 ./Site4/Pages/v4/Admin/MailQ.aspx
-    147 ./Site4/Pages/v4/Admin/PlaceInternalVote.aspx
-    194 ./Site4/Pages/v4/Admin/AddInternalPollCandidate.aspx.cs
-    113 ./Site4/Pages/v4/Admin/EditPermsGrid.aspx
-     28 ./Site4/Pages/v4/Admin/ImportTaxLevels.aspx
-    847 ./Site4/Pages/v4/Admin/EditOrg.aspx
-     79 ./Site4/Pages/v4/Admin/AddInternalPollCandidate.aspx
-    102 ./Site4/Pages/v4/Admin/MailServerAccounts.aspx
-    204 ./Site4/Pages/v4/Admin/PopupEditMailAccount.aspx.cs
-     80 ./Site4/Pages/v4/Admin/MailServerAccounts.aspx.cs
-    734 ./Site4/Pages/v4/Admin/EditOrg.aspx.cs
-    113 ./Site4/Pages/v4/Admin/RunForOffice.aspx
-     24 ./Site4/Pages/v4/Admin/Impersonate.aspx
-    142 ./Site4/Pages/v4/Admin/PopupEditMailAccount.aspx
-     77 ./Site4/Pages/v4/Admin/Exceptions.aspx.cs
-     38 ./Site4/Pages/v4/Admin/ImportTaxLevels.aspx.cs
-    105 ./Site4/Pages/v4/Admin/EditPermsGrid.aspx.cs
-    200 ./Site4/Pages/v4/Admin/EditMailTemplate.aspx
-     29 ./Site4/Pages/v4/Admin/Exceptions.aspx
-     72 ./Site4/Pages/v4/FindPeople.aspx.cs
-    131 ./Site4/Pages/v4/ListInvalidEmail.aspx
-    280 ./Site4/Pages/v4/DHL.aspx
-    116 ./Site4/Pages/v4/PersonXMPPID.aspx
-     61 ./Site4/Pages/v4/CheckActivism.aspx.cs
-     27 ./Site4/Pages/v4/CheckActivism.aspx
-     65 ./Site4/Pages/v4/Communications/SmsInboxSweden.aspx
-    128 ./Site4/Pages/v4/Communications/AlertActivists.aspx
-     70 ./Site4/Pages/v4/Communications/PaperLetterInbox.aspx.cs
-    277 ./Site4/Pages/v4/Communications/ListReporters.aspx.cs
-    286 ./Site4/Pages/v4/Communications/SmsInboxSweden.aspx.cs
-    135 ./Site4/Pages/v4/Communications/ListReporters.aspx
-     82 ./Site4/Pages/v4/Communications/ReceivedPaperLetter.aspx
-    336 ./Site4/Pages/v4/Communications/AlertActivists.aspx.cs
-     92 ./Site4/Pages/v4/Communications/PaperLetterInbox.aspx
-    251 ./Site4/Pages/v4/Communications/ReceivedPaperLetter.aspx.cs
-    169 ./Site4/Pages/v4/FindPeople.aspx
-      2 ./Site4/Pages/v4/Support/DownloadDocument.aspx
-    156 ./Site4/Pages/v4/Support/DownloadDocument.aspx.cs
-    710 ./Site4/Pages/v4/Pirates/ListVolunteers.aspx.cs
-    317 ./Site4/Pages/v4/Pirates/ListVolunteers.aspx
-     45 ./Site4/Pages/v4/Pirates/ListKeyPeople.aspx
-     77 ./Site4/Pages/v4/Pirates/PopupManageVolunteer.aspx
-    217 ./Site4/Pages/v4/Pirates/ListKeyPeople.aspx.cs
-    131 ./Site4/Pages/v4/Pirates/PopupManageVolunteer.aspx.cs
-     95 ./Site4/Pages/v4/PersonXMPPID.aspx.cs
-     67 ./Site4/Pages/Public/PayInvoice.aspx
-    102 ./Site4/Pages/Public/PayInvoice.aspx.cs
-     32 ./Site4/Pages/Public/Frames/ParleySignup.aspx
-    126 ./Site4/Pages/Public/Frames/ParleySignup.aspx.cs
-      9 ./Site4/Pages/Public/PhpIncludes/GetNewPaymentCode.aspx
-     16 ./Site4/Pages/Public/PhpIncludes/GetTreeMemberCount.aspx
-      9 ./Site4/Pages/Public/PhpIncludes/GetMemberCount.aspx
-    123 ./Site4/Pages/Public/PhpIncludes/GeographyOfficersPPSE.aspx
-    133 ./Site4/Pages/Public/Charts/MembershipThroughput.aspx.cs
-     15 ./Site4/Pages/Public/Charts/MembershipGraph-UngPirat.aspx
-    155 ./Site4/Pages/Public/Charts/MemberCount.aspx.cs
-     16 ./Site4/Pages/Public/Charts/MembershipThroughput.aspx
-    187 ./Site4/Pages/Public/Charts/MembersAgesGenders.aspx.cs
-    178 ./Site4/Pages/Public/Charts/MediaCompetitiveTimeline.aspx.cs
-    165 ./Site4/Pages/Public/Charts/GrowthByGender.aspx.cs
-    207 ./Site4/Pages/Public/Charts/GeographicMemberRanking.aspx.cs
-     15 ./Site4/Pages/Public/Charts/MemberCount-Closeup.aspx
-     15 ./Site4/Pages/Public/Charts/GeographicMemberRanking.aspx
-     15 ./Site4/Pages/Public/Charts/MembershipDurations.aspx
-    183 ./Site4/Pages/Public/Charts/MemberCount-Closeup.aspx.cs
-    113 ./Site4/Pages/Public/Charts/MediaKeywordFrequency.aspx.cs
-     15 ./Site4/Pages/Public/Charts/MemberCount.aspx
-    129 ./Site4/Pages/Public/Charts/MembershipGraph-UngPirat.aspx.cs
-    125 ./Site4/Pages/Public/Charts/MembershipGraph-PPSE.aspx.cs
-     15 ./Site4/Pages/Public/Charts/MediaCompetitiveTimeline.aspx
-     15 ./Site4/Pages/Public/Charts/ChurnRetentionAgesGenders.aspx
-     15 ./Site4/Pages/Public/Charts/ChurnVsGrowth.aspx
-    191 ./Site4/Pages/Public/Charts/ChurnVsRetention.aspx.cs
-    186 ./Site4/Pages/Public/Charts/ChurnVsGrowth.aspx.cs
-    192 ./Site4/Pages/Public/Charts/ChurnRetentionAgesGenders.aspx.cs
-    153 ./Site4/Pages/Public/Charts/MemberRetention.aspx.cs
-    160 ./Site4/Pages/Public/Charts/MembershipDurations.aspx.cs
-     15 ./Site4/Pages/Public/Charts/ChurnVsRetention.aspx
-     15 ./Site4/Pages/Public/Charts/MembersAgesGenders.aspx
-     15 ./Site4/Pages/Public/Charts/GrowthByGender.aspx
-     15 ./Site4/Pages/Public/Charts/MembershipGraph-PPSE.aspx
-     16 ./Site4/Pages/Public/Charts/MemberRetention.aspx
-     15 ./Site4/Pages/Public/Charts/MediaKeywordFrequency.aspx
-    142 ./Site4/Pages/Public/Hacks/Sms2010.aspx.cs
-    131 ./Site4/Pages/Public/Hacks/Ballots2010Phones.aspx.cs
-     16 ./Site4/Pages/Public/Hacks/LocalCandidates.aspx
-    139 ./Site4/Pages/Public/Hacks/Ballots2010Code.aspx.cs
-     36 ./Site4/Pages/Public/Hacks/Ballots2010Phones.aspx
-     36 ./Site4/Pages/Public/Hacks/Sms2010.aspx
-     36 ./Site4/Pages/Public/Hacks/Ballots2010.aspx
-     36 ./Site4/Pages/Public/Hacks/LocalCandidates.aspx.cs
-      3 ./Site4/Pages/Public/Hacks/MembersAtDreamhack.aspx
-     35 ./Site4/Pages/Public/Hacks/Ballots2010Code.aspx
-    131 ./Site4/Pages/Public/Hacks/Ballots2010.aspx.cs
-     32 ./Site4/Pages/Public/WebServices/Members.asmx
-     18 ./Site4/Pages/Public/PublicDemo-v4.aspx.cs
-     34 ./Site4/Pages/Public/FI/People/ConfirmMembership.aspx.cs
-     25 ./Site4/Pages/Public/FI/People/ConfirmMembership.aspx
-    198 ./Site4/Pages/Public/FI/People/RequestNewPassword.aspx.cs
-    149 ./Site4/Pages/Public/FI/People/RequestNewPassword.aspx
-    727 ./Site4/Pages/Public/FI/NewMember/New.aspx.cs
-    464 ./Site4/Pages/Public/FI/NewMember/New.aspx
-    159 ./Site4/Pages/Public/Data/MemberCountHistoryPerGeography.aspx.cs
-    100 ./Site4/Pages/Public/Data/MemberCountHistory.aspx.cs
-    115 ./Site4/Pages/Public/Data/MemberCountHistoryPerGeography.aspx
-     62 ./Site4/Pages/Public/Data/MemberCountHistory.aspx
-    125 ./Site4/Pages/Public/PublicDemo-v4.aspx
-    196 ./Site4/Pages/Public/DK/People/RequestNewPassword.aspx.cs
-    150 ./Site4/Pages/Public/DK/People/RequestNewPassword.aspx
-    590 ./Site4/Pages/Public/DK/NewMember/New.aspx.cs
-    451 ./Site4/Pages/Public/DK/NewMember/New.aspx
-      3 ./Site4/Pages/Public/SE/Rss/PiratpartietRss.aspx
-     54 ./Site4/Pages/Public/SE/Rss/PiratpartietRss.aspx.cs
-     68 ./Site4/Pages/Public/SE/Renewal.aspx.cs
-     34 ./Site4/Pages/Public/SE/Interfaces/PP-Medlem.aspx.cs
-      1 ./Site4/Pages/Public/SE/Interfaces/PP-Medlem.aspx
-     90 ./Site4/Pages/Public/SE/Interfaces/PP2007.aspx
-     99 ./Site4/Pages/Public/SE/People/MemberTerminate.aspx.cs
-    117 ./Site4/Pages/Public/SE/People/OfficerSignup.aspx.cs
-    176 ./Site4/Pages/Public/SE/People/ActivistSignoff.aspx.cs
-     20 ./Site4/Pages/Public/SE/People/SubscriptionSettings.aspx
-     55 ./Site4/Pages/Public/SE/People/MemberTerminate.aspx
-    101 ./Site4/Pages/Public/SE/People/ActivistSignoff.aspx
-     61 ./Site4/Pages/Public/SE/People/MemberNewActivist.aspx.cs
-    430 ./Site4/Pages/Public/SE/People/MemberRenew.aspx.cs
-    202 ./Site4/Pages/Public/SE/People/RequestNewPassword.aspx.cs
-    149 ./Site4/Pages/Public/SE/People/RequestNewPassword.aspx
-    235 ./Site4/Pages/Public/SE/People/MemberSignup.aspx
-     81 ./Site4/Pages/Public/SE/People/ActivistSignup.aspx
-     78 ./Site4/Pages/Public/SE/People/OfficerSignup.aspx
-    139 ./Site4/Pages/Public/SE/People/ActivistSignup.aspx.cs
-     53 ./Site4/Pages/Public/SE/People/SubscriptionSettings.aspx.cs
-     53 ./Site4/Pages/Public/SE/People/MemberRenew.aspx
-    290 ./Site4/Pages/Public/SE/People/MemberSignup.aspx.cs
-     16 ./Site4/Pages/Public/SE/People/MemberNewActivist.aspx
-     16 ./Site4/Pages/Public/SE/UP/Renew.aspx
-     85 ./Site4/Pages/Public/SE/UP/Renew.aspx.cs
-    240 ./Site4/Pages/Public/SE/RequestRenewal.aspx
-    585 ./Site4/Pages/Public/SE/NewMember/New.aspx.cs
-    474 ./Site4/Pages/Public/SE/NewMember/New.aspx
-     16 ./Site4/Pages/Public/SE/Renewal.aspx
-    340 ./Site4/Pages/Public/SE/RequestRenewal.aspx.cs
-     69 ./Site4/Pages/Public/Handlers/SMSReceiver.ashx
-     16 ./Site4/Pages/Public/Handlers/ConfirmParleyAttendee.aspx
-     50 ./Site4/Pages/Public/Handlers/ConfirmParleyAttendee.aspx.cs
-     16 ./Site4/Pages/Public/Handlers/PaysonIpnListener.aspx
-    209 ./Site4/Pages/Public/Handlers/PaypalListener.aspx.cs
-    203 ./Site4/Pages/Public/Handlers/PaysonIpnListener.aspx.cs
-     16 ./Site4/Pages/Public/Handlers/PaypalListener.aspx
-    218 ./Site4/Pages/Public/NO/People/MemberSignup.aspx
-    425 ./Site4/Pages/Public/NO/People/MemberSignup.aspx.cs
-    223 ./Site4/m/Default.aspx.cs
-     29 ./Site4/m/Default.aspx
-     45 ./Site4/m/Search.aspx
-    130 ./Site4/m/Search.aspx.cs
-     50 ./Site4/jQuery/jHtmlArea/AutoPostTest.aspx
-     16 ./Site4/jQuery/ServerControls/TreeDropdown.ascx
-    928 ./Site4/jQuery/ServerControls/TreeDropdown.ascx.cs
-     21 ./Site4/Default.aspx.cs
-    183 ./Site4/PirateWeb-v4.master.cs
-      1 ./Site4/WebServices/OrgTreeService.asmx
-     32 ./Site4/WebServices/Members.asmx
-      1 ./Site4/WebServices/GeoSok.asmx
-      1 ./Site4/WebServices/GeographyTreeService.asmx
-     83 ./Site4/Default.aspx
-    103 ./Site4/Tests/FunnelArea.aspx
-    158 ./Site4/Tests/JL/TestForum4.aspx.cs
-     18 ./Site4/Tests/JL/TestGeoCache.aspx
-     37 ./Site4/Tests/JL/TestForum2.aspx.cs
-     21 ./Site4/Tests/JL/TestGeoCache.aspx.cs
-     24 ./Site4/Tests/JL/TestForum.aspx.cs
-      2 ./Site4/Tests/JL/callValidate.aspx
-     49 ./Site4/Tests/JL/TestGeoTreeJQ.aspx.cs
-     14 ./Site4/Tests/JL/TestForum3.aspx
-     17 ./Site4/Tests/JL/callValidate.aspx.cs
-     16 ./Site4/Tests/JL/TestForum2.aspx
-      7 ./Site4/Tests/JL/TestForumPost.aspx
-     34 ./Site4/Tests/JL/TestForumPost.aspx.cs
-     20 ./Site4/Tests/JL/TestForum.aspx
-     15 ./Site4/Tests/JL/TestGeoTreeJQ.aspx
-    160 ./Site4/Tests/JL/TestForum3.aspx.cs
-     44 ./Site4/Tests/JL/TestForum4.aspx
-     64 ./Site4/Tests/kp03.aspx
-     16 ./Site4/PirateWeb-v4-menuless.master.cs
-     38 ./Site4/Handlers/DisplayPortrait.aspx.cs
-      2 ./Site4/Handlers/DisplayPortrait.aspx
-     55 ./Site4/Controls/v3/LanguageSelector.ascx
-    335 ./Site4/Controls/v3/PersonBasicDetails.ascx
-     75 ./Site4/Controls/v3/SetPersonPassword.ascx.cs
-     44 ./Site4/Controls/v3/PersonDetailsPagesMenu.ascx.cs
-    105 ./Site4/Controls/v3/LanguageSelector.ascx.cs
-     80 ./Site4/Controls/v3/SetPersonPassword.ascx
-     64 ./Site4/Controls/v3/PersonList.ascx.cs
-     54 ./Site4/Controls/v3/GeographyLine.ascx.cs
-     68 ./Site4/Controls/v3/ExpenseList.ascx.cs
-     36 ./Site4/Controls/v3/ExpenseList.ascx
-     31 ./Site4/Controls/v3/PirateWebHeader.ascx.cs
-      4 ./Site4/Controls/v3/PirateWebHeader.ascx
-    602 ./Site4/Controls/v3/PersonBasicDetails.ascx.cs
-      1 ./Site4/Controls/v3/GeographyLine.ascx
-     35 ./Site4/Controls/v3/PersonList.ascx
-      8 ./Site4/Controls/v3/PersonDetailsPagesMenu.ascx
-     81 ./Site4/Controls/v3/mPersonList.ascx.cs
-     37 ./Site4/Controls/v3/mPersonList.ascx
-      4 ./Site4/Controls/v4/ListRecentActivism.ascx
-    149 ./Site4/Controls/v4/InboundInvoiceGrid.ascx.cs
-     84 ./Site4/Controls/v4/v3/PersonDetailsPagesMenu.ascx.cs
-    316 ./Site4/Controls/v4/v3/PersonList.ascx.cs
-     13 ./Site4/Controls/v4/v3/Subscriptions.ascx
-    155 ./Site4/Controls/v4/v3/Subscriptions.ascx.cs
-     57 ./Site4/Controls/v4/v3/PersonList.ascx
-     11 ./Site4/Controls/v4/v3/PersonDetailsPagesMenu.ascx
-    100 ./Site4/Controls/v4/OutboundInvoiceGrid.ascx
-      3 ./Site4/Controls/v4/ListLocalContacts.ascx
-    150 ./Site4/Controls/v4/PersonDetailPopup.ascx.cs
-     52 ./Site4/Controls/v4/ListOfficerTodos.ascx.cs
-    131 ./Site4/Controls/v4/FinancialAccountTree.ascx.cs
-      4 ./Site4/Controls/v4/GeographyTree.ascx
-     72 ./Site4/Controls/v4/OrganizationRoles.ascx
-     16 ./Site4/Controls/v4/WSOrgTree.ascx
-     18 ./Site4/Controls/v4/WSGeographyTree.ascx
-     23 ./Site4/Controls/v4/SelectOrganizationLine.ascx
-    120 ./Site4/Controls/v4/Financial/ListBudgets.ascx.cs
-    291 ./Site4/Controls/v4/Financial/Ledger.ascx.cs
-     59 ./Site4/Controls/v4/Financial/Ledger.ascx
-      3 ./Site4/Controls/v4/Financial/ListBudgets.ascx
-     11 ./Site4/Controls/v4/PageTitle.ascx
-    111 ./Site4/Controls/v4/InboundInvoiceGrid.ascx
-      4 ./Site4/Controls/v4/OrganizationTree.ascx
-     90 ./Site4/Controls/v4/OrganizationRoles.ascx.cs
-     58 ./Site4/Controls/v4/PageTitle.ascx.cs
-      3 ./Site4/Controls/v4/ListOfficerTodos.ascx
-     51 ./Site4/Controls/v4/GeographyTreeDropDown.ascx
-      3 ./Site4/Controls/v4/DocumentList.ascx
-    170 ./Site4/Controls/v4/WSOrgTreeDropDown.ascx.cs
-     81 ./Site4/Controls/v4/FinancialAccountTreeDropDown.ascx.cs
-    394 ./Site4/Controls/v4/WSGeographyTree.ascx.cs
-    107 ./Site4/Controls/v4/GeographyTreeDropDown.ascx.cs
-     49 ./Site4/Controls/v4/ListRecentActivism.ascx.cs
-    202 ./Site4/Controls/v4/GeographyTree.ascx.cs
-     45 ./Site4/Controls/v4/WSOrgTreeDropDown.ascx
-    130 ./Site4/Controls/v4/ComboPerson.ascx.cs
-      4 ./Site4/Controls/v4/FinancialAccountTree.ascx
-     47 ./Site4/Controls/v4/WSGeographyTreeDropDown.ascx
-     45 ./Site4/Controls/v4/FinancialAccountTreeDropDown.ascx
-    145 ./Site4/Controls/v4/OrganizationTree.ascx.cs
-     51 ./Site4/Controls/v4/OrganizationTreeDropDown.ascx
-     82 ./Site4/Controls/v4/ListLocalContacts.ascx.cs
-    171 ./Site4/Controls/v4/WSGeographyTreeDropDown.ascx.cs
-     91 ./Site4/Controls/v4/DocumentList.ascx.cs
-     27 ./Site4/Controls/v4/PersonDetailPopup.ascx
-    394 ./Site4/Controls/v4/WSOrgTree.ascx.cs
-     39 ./Site4/Controls/v4/SelectOrganizationLine.ascx.cs
-     51 ./Site4/Controls/v4/OrganizationTreeDropDown.ascx.cs
-      8 ./Site4/Controls/v4/ComboPerson.ascx
-    122 ./Site4/Controls/v4/OutboundInvoiceGrid.ascx.cs
-    117 ./Site4/Global.asax
-     75 ./Site4/App_Code/OrgTreeService.cs
-    158 ./Site4/App_Code/AdminPermsMainGridTable.cs
-     71 ./Site4/App_Code/CompressedViewStatePageBase.cs
-     41 ./Site4/App_Code/PageV4Base.cs
-     47 ./Site4/App_Code/GeographyTreeService.cs
-     33 ./Site4/App_Code/MasterV4Base.cs
-    285 ./Site4/App_Code/GeoSok.cs
-    700 ./Site4/App_Code/CellAddressableTable.cs
- 159688 total
+ 102576 total

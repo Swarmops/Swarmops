@@ -291,12 +291,24 @@
   <data name="Title_Member_Ship" xml:space="preserve">
     <value>Medlemskap</value>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Title_Operative_Corps" xml:space="preserve">
+    <value>Agentkår</value>
+  </data>
+  <data name="Title_Operative_Female" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="Title_Operative_Generic" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="Title_Operative_Male" xml:space="preserve">
+    <value>Agent</value>
+  </data>
+  <data name="Title_Operative_Plural" xml:space="preserve">
+    <value>Agenter</value>
+  </data>
+  <data name="Title_Operative_Ship" xml:space="preserve">
+    <value>Agentskap</value>
+  </data>
   <data name="Title_Person_Corps" xml:space="preserve">
     <value>Styrkor</value>
   </data>

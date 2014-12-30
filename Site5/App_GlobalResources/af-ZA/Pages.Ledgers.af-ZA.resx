@@ -399,6 +399,7 @@
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
     <value>crwdns6555145:0crwdne6555145:0</value>
+    <comment>keep short</comment>
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
     <value>crwdns6555146:0crwdne6555146:0</value>
@@ -468,15 +469,11 @@
   <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
     <value>crwdns6555166:0crwdne6555166:0</value>
   </data>
-  <data name="AccountPlan_Edit_InitialValue" xml:space="preserve">
-    <value>crwdns6555167:0crwdne6555167:0</value>
-    <comment>For asset and liability accounts - the value going into Swarmops first ledger year</comment>
-  </data>
   <data name="AccountPlan_Edit_Parent" xml:space="preserve">
     <value>crwdns6555168:0crwdne6555168:0</value>
   </data>
-  <data name="AccountPlan_ExpensesBudgetsAreNegaive" xml:space="preserve">
-    <value>crwdns6555169:0crwdne6555169:0</value>
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>crwdns6555565:0crwdne6555565:0</value>
     <comment>Displayed as a message box</comment>
   </data>
   <data name="AccountPlan_Header_AccountName" xml:space="preserve">
@@ -556,5 +553,12 @@
   <data name="AccountPlan_NewAccount" xml:space="preserve">
     <value>crwdns6555420:0crwdne6555420:0</value>
     <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>crwdns6555566:0crwdne6555566:0</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>crwdns6555567:0{0}crwdnd6555567:0{1}crwdne6555567:0</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
   </data>
 </root>

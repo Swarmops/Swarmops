@@ -32,7 +32,7 @@ fi
 BUILDID=$(cat ../lastbuild/swarmops/$DROPFOLDER/BuildIdentity.txt | tr -d ' \r')
 COMMITID=$(cat ../lastbuild/swarmops/$DROPFOLDER/CommitIdentity.txt | tr -d ' \r')
 
-BUILDID=$(echo $BUILDID | cut -d '.' -f 1-3).$(echo $COMMITID | cut -c 1-7)
+BUILDID=$(echo $BUILDID)-$(echo $COMMITID | cut -c 1-7)
 
 echo ""
 echo "Packaging Swarmops, branch '$DROPFOLDER', build $BUILDID."

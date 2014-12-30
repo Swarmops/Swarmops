@@ -227,6 +227,7 @@
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
     <value>Сумма</value>
+    <comment>keep short</comment>
   </data>
   <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
     <value>Описание</value>
@@ -240,6 +241,7 @@
   <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
     <value>Получатель</value>
   </data>
+  
   
   
   

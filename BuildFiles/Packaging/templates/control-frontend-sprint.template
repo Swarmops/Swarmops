@@ -8,4 +8,4 @@ Homepage: http://swarmops.com/
 Description: Swarmops Frontend
  Swarmops is a swarm activist administration system.
  This package is the front-end. It runs on Mono.
- Target is Ubuntu 11.10 and up.
+ Target is Ubuntu 14.10 / Debian Wheezy and up.

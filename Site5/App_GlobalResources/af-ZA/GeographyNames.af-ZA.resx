@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CentralEurope" xml:space="preserve">
+    <value>crwdns6555561:0crwdne6555561:0</value>
+  </data>
   <data name="Country_DK" xml:space="preserve">
     <value>crwdns6555372:0crwdne6555372:0</value>
   </data>
@@ -126,6 +129,9 @@
   <data name="Country_GH" xml:space="preserve">
     <value>crwdns6555374:0crwdne6555374:0</value>
   </data>
+  <data name="Country_NL" xml:space="preserve">
+    <value>crwdns6555562:0crwdne6555562:0</value>
+  </data>
   <data name="Country_NO" xml:space="preserve">
     <value>crwdns6555375:0crwdne6555375:0</value>
   </data>
@@ -134,7 +140,6 @@
   </data>
   <data name="EasternEurope" xml:space="preserve">
     <value>crwdns6553986:0crwdne6553986:0</value>
-    <comment>(East of southern tip of Sweden, appx)</comment>
   </data>
   <data name="Europe" xml:space="preserve">
     <value>crwdns6553987:0crwdne6553987:0</value>
@@ -146,6 +151,12 @@
   <data name="Nordics" xml:space="preserve">
     <value>crwdns6553988:0crwdne6553988:0</value>
     <comment>(Finland Denmark Norway Sweden Iceland)</comment>
+  </data>
+  <data name="NorthernEurope" xml:space="preserve">
+    <value>crwdns6555563:0crwdne6555563:0</value>
+  </data>
+  <data name="SouthernEurope" xml:space="preserve">
+    <value>crwdns6555564:0crwdne6555564:0</value>
   </data>
   <data name="USA_EastNorthCentral" xml:space="preserve">
     <value>crwdns6555377:0crwdne6555377:0</value>
@@ -188,7 +199,6 @@
   </data>
   <data name="WesternEurope" xml:space="preserve">
     <value>crwdns6553989:0crwdne6553989:0</value>
-    <comment>(West of southern tip of Sweden, appx)</comment>
   </data>
   <data name="World" xml:space="preserve">
     <value>crwdns6553990:0crwdne6553990:0</value>
