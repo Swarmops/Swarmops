@@ -53,6 +53,13 @@ namespace Swarmops.Logic.Support
                 Type logicType = logicTypes[0];
 
                 basicConverterMethod = logicType.GetMethod ("FromBasic", BindingFlags.Static | BindingFlags.Public);
+
+                if (basicConverterMethod == null)
+                {
+                    throw new InvalidOperationException(
+                        "Unable to find a public static method named \"" + logicType.ToString() + ".FromBasic (" +basicType.ToString()+ ")\" in the Swarmops.Logic assembly");
+                }
+
                 _converterLookup[basicType] = basicConverterMethod;
             }
 
