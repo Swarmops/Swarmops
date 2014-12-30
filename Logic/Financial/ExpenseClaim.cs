@@ -24,7 +24,7 @@ namespace Swarmops.Logic.Financial
         {
         } // Used by FromBasic()
 
-        internal static ExpenseClaim FromBasic (BasicExpenseClaim basic)
+        public static ExpenseClaim FromBasic (BasicExpenseClaim basic)
         {
             return new ExpenseClaim (basic);
         }
