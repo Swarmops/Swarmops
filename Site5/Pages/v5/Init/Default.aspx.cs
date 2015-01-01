@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -405,12 +406,59 @@ public partial class Pages_v5_Init_Default : Page
                 _testWriteCredentials,
                 _testAdminCredentials));
 
-        // Start an async thread that does all the work, then return
+        // SECURITY: Set machine token crypto keys to randomized values
+
+        if (!Debugger.IsAttached)  // (but not while debugging in a non-live environment)
+        {
+            string machineKeyXml =
+                "<?xml version=\"1.0\" ?>\n" +
+                "<!--\n" +
+                "  The MachineKey is the key used to encrypt/decrypt the cookie containing\n" +
+                "  authentication information. When you have multiple front-end web servers\n" +
+                "  serving a single Swarmops installation, this key must be identical on\n" +
+                "  all front-end machines - otherwise, authentication won't follow from\n" +
+                "  one server to the next.\n\n" +
+                "  This particular MachineKey was randomized at the time of initial\n" +
+                "  installation of this Swarmops database, and is unique. If you have\n" +
+                "  multiple front-ends, you need to copy this file to /etc/swarmops\n" +
+                "  on each of them.\n" +
+                "-->\n" +
+                GetMachineKey() + "\n";
+
+            File.WriteAllText ("/etc/swarmops/machineKey.config", machineKeyXml, Encoding.GetEncoding (1252));
+        }
+
+        // Start an async thread that does all the initialization work, then return
 
         Thread initThread = new Thread (InitDatabaseThread);
         initThread.Start();
     }
 
+
+    private static string GetMachineKey()
+    {
+        StringBuilder machineKey = new StringBuilder();
+        machineKey.Append("<machineKey \n");
+        machineKey.Append("validationKey=\"" + GetRandomKey (64) + "\"\n");
+        machineKey.Append("decryptionKey=\"" + GetRandomKey (32) + "\"\n");
+        machineKey.Append("validation=\"HMACSHA512\" decryption=\"AES\"\n");
+        machineKey.Append("/>\n");
+        return machineKey.ToString();
+    }
+
+    public static string GetRandomKey(int bytelength)
+    {
+        byte[] buffer = new byte[bytelength];
+        RNGCryptoServiceProvider devRandom = new RNGCryptoServiceProvider();
+        devRandom.GetBytes(buffer);
+
+        StringBuilder result = new StringBuilder(bytelength * 2);
+        for (int loop = 0; loop < buffer.Length; loop++)
+        {
+            result.AppendFormat ("{0:X2}", buffer[loop]);
+        }
+        return result.ToString();
+    }
 
     /// <summary>
     ///     This function copies the schemas and geography data off an existing Swarmops installation. Runs in its own thread.
