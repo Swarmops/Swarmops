@@ -26,7 +26,7 @@ CREATE TABLE `RolesAdditional` (
   `AdditionalRoleId` INT NOT NULL AUTO_INCREMENT,
   `OrganizationId` INT NOT NULL,
   `GeographyId` INT NOT NULL,
-  `OverridesDefaultRoleId` INT NOT NULL,
+  `OverridesHigherRoleId` INT NOT NULL,
   `CreatedByPersonId` INT NOT NULL,
   `CreatedDateTimeUtc` DATETIME NOT NULL,
   `RoleTypeId` INT NOT NULL,
@@ -71,6 +71,7 @@ CREATE TABLE `RolesAssigned` (
   `CreatedByPersonId` INT NOT NULL,
   `CreatedByRoleId` INT NOT NULL,
   `Active` TINYINT NOT NULL DEFAULT 1,
+  `Acting` TINYINT NOT NULL DEFAULT 0,
   `TerminatedDateTimeUtc` DATETIME NOT NULL DEFAULT '1800-01-01',
   `TerminatedByPersonId` INT NOT NULL DEFAULT 0,
   `TerminatedByRoleId` INT NOT NULL DEFAULT 0,
@@ -232,6 +233,25 @@ END
 
 
 #
+
+
+CREATE PROCEDURE `SetAssignedRoleActing` (
+  IN assignedRoleId INT,
+  IN acting TINYINT
+)
+BEGIN
+
+  UPDATE RolesAssigned
+    SET
+      RolesAssigned.Acting=acting 
+    WHERE 
+      RolesAssigned.AssignedRoleId=assignedRoleId;
+
+END
+
+
+#
+
 
 
 CREATE PROCEDURE `TerminateAssignedRole` (
