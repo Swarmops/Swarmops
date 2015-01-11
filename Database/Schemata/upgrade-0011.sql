@@ -42,7 +42,7 @@ CREATE TABLE `RolesAdditional` (
   PRIMARY KEY (`AdditionalRoleId`),
   INDEX `Index_Org` (`OrganizationId` ASC),
   INDEX `Index_Geo` (`GeographyId` ASC),
-  INDEX `Index_Report1` (`ReportsToDefaultId` ASC),
+  INDEX `Index_Report1` (`ReportsToDefaultRoleId` ASC),
   INDEX `Index_Report2` (`ReportsToAdditionalRoleId` ASC),
   INDEX `Index_Report3` (`DotReportsToRoleId` ASC))
 
@@ -54,7 +54,7 @@ CREATE TABLE `RoleTypes` (
   `RoleTypeId` INT unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(64) NOT NULL,
   INDEX `Index_Name` (`Name` ASC),
-  PRIMARY KEY (`PersonRoleTypeId`))
+  PRIMARY KEY (`RoleTypeId`))
 
 
 #

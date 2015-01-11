@@ -8,3 +8,4 @@
 0008 - GeographyUpdate updates ahead of deploying: added country, Guid [RF]
 0009 - Fixed SalaryTaxLevels and CreateExchangeRateDataPoint [RF]
 0010 - Fix for CurrencyExchangeRateSnapshotData [RF]
+0011 - Added tables, procedures for centralized, decentralized roles [RF]
