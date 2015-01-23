@@ -48,6 +48,13 @@
 
 	                    beginEditAccount();
 	                });
+	            },
+
+	            rowStyler: function (rowData) {
+	                if (rowData.inactive == true)
+	                {
+	                    return { class: 'RowInactive', style: { color: '#c0c0c0' } };
+	                }
 	            }
 	        });
 
@@ -523,6 +530,10 @@
 	    .CheckboxContainer {
 		    float: right; padding-top: 4px;padding-right: 8px;
 	    }
+        .RowInactive
+        {
+            color: #C0C0C0;
+        }
     </style>
 
 </asp:Content>
@@ -592,5 +603,13 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
     
+    <h2 class="blue"><asp:Label ID="LabelSidebarOptions" Text="Options" runat="server" /><span class="arrow"></span></h2>
+    
+    <div class="box">
+        <div class="content">
+            <input type="checkbox" id="checkOptionsShowInactive" /><label for="checkOptionsShowInactive"><asp:Label ID="LabelOptionsShowInactive" runat="server" Text="Show inactive accounts XYZ"/></label>
+        </div>
+    </div>
+
 </asp:Content>
 

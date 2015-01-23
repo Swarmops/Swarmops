@@ -126,7 +126,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 childStrings.Add ('{' +
                                   String.Format (
-                                      "\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\",\"action\":\"{5}\"",
+                                      "\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\",\"action\":\"{5}\",\"inactive\":\"{6}\"",
                                       account.Identity,
                                       Server.HtmlEncode (JsonSanitize (account.Name)),
                                       ownerString,
@@ -144,7 +144,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                               : (this._singleBudgetLookup[account.Identity]/100.0).ToString ("N0",
                                                   CultureInfo.CurrentCulture)
                                           : string.Empty,
-                                      editString
+                                      editString,
+                                      account.Active? "true":"false"
                                       ) + grandChildren + '}');
             }
 
