@@ -390,13 +390,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                     account.SetBudgetCents (DateTime.Today.Year, newSingleBudget);
 
-                    // Once we've set the budget, also update the "yearly result" budget
+                    // Once we've set the budget, also update the "yearly result" budget.
+                    // This will be the WRONG SIGN for a P&L budget, but much better for display purposes (positive result is a profit, negative a loss).
+                    // Will need to compensate for this in a future budget vs. actuals display.
 
                     int thisYear = DateTime.UtcNow.Year;
                     FinancialAccounts allProfitLossAccounts = FinancialAccounts.ForOrganization(authData.CurrentOrganization);
                     Int64 newProfitLossProjection = allProfitLossAccounts.Where(queryAccount => queryAccount.Identity != authData.CurrentOrganization.FinancialAccounts.CostsYearlyResult.Identity).Sum(queryAccount => queryAccount.GetBudgetCents(thisYear));
 
-                    authData.CurrentOrganization.FinancialAccounts.CostsYearlyResult.SetBudgetCents(thisYear, -newProfitLossProjection);
+                    authData.CurrentOrganization.FinancialAccounts.CostsYearlyResult.SetBudgetCents(thisYear, newProfitLossProjection);
 
                     return new ChangeAccountDataResult
                     {
