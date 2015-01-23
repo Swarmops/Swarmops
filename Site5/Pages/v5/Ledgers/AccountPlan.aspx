@@ -51,9 +51,10 @@
 	            },
 
 	            rowStyler: function (rowData) {
-	                if (rowData.inactive == true)
+	                console.log(rowData);
+	                if (rowData.inactive == "true")
 	                {
-	                    return { class: 'RowInactive', style: { color: '#c0c0c0' } };
+	                    return { class: 'RowInactive' };
 	                }
 	            }
 	        });
@@ -200,6 +201,16 @@
 	            });
 	        });
 
+	        $('#CheckOptionsShowInactive').change(function() {
+	            if ($(this).prop("checked"))
+	            {
+	                $('.RowInactive').slideDown();
+	            }
+	            else
+	            {
+	                $('.RowInactive').slideUp();
+	            }
+	        });
 
 	    });
 
@@ -332,6 +343,8 @@
 	                                            boxShadow: '0 0 10px 2px rgba(0,255,0,0)'
 	                                        }, 250);
 	                                        accountDirty = true;
+	                                        // update the "inactive count" display for all success calls, even though we only need it for "active"
+	                                        updateInactiveCount();
 	                                    } else {
 	                                        suppressSwitchChangeAction = true;
 	                                        $(this).click();
@@ -405,6 +418,20 @@
 	            }
 	        });
 
+	    }
+
+	    function updateInactiveCount()
+	    {
+	        $.ajax({
+	            type: "POST",
+	            url: "/Pages/v5/Ledgers/AccountPlan.aspx/GetInactiveAccountCount",
+	            data: "{}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function(msg) {
+	                $("#SpanInactiveCount").text(msg.d);
+	            }
+	        });
 	    }
 
         function modalShow() {
@@ -533,6 +560,7 @@
         .RowInactive
         {
             color: #C0C0C0;
+            display: none;
         }
     </style>
 
@@ -606,8 +634,10 @@
     <h2 class="blue"><asp:Label ID="LabelSidebarOptions" Text="Options" runat="server" /><span class="arrow"></span></h2>
     
     <div class="box">
-        <div class="content">
-            <input type="checkbox" id="checkOptionsShowInactive" /><label for="checkOptionsShowInactive"><asp:Label ID="LabelOptionsShowInactive" runat="server" Text="Show inactive accounts XYZ"/></label>
+        <div class="content" style="margin-left:5px">
+            <div class="link-row-encaps" style="cursor:default; margin-left:2px">
+               <span style="position:relative;top:2px;left:1px"><input type="checkbox" id="CheckOptionsShowInactive" /></span>&nbsp;<label for="CheckOptionsShowInactive"><asp:Label ID="LabelOptionsShowInactive" runat="server" Text="Show inactive accounts XYZ"/></label>
+            </div>
         </div>
     </div>
 

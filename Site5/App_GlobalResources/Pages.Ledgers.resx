@@ -562,4 +562,8 @@
     <value>Initial Balance (inbound into {0}), {1}</value>
     <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
   </data>
+  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
+    <value>Show Inactive Accounts (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
+    <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
 </root>

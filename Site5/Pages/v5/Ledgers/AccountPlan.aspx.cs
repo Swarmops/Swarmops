@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
@@ -87,6 +88,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.LiteralLabelInitialAmount.Text =
                     String.Format (Resources.Pages.Ledgers.AccountPlan_Edit_InitialBalance,
                         CurrentOrganization.FirstFiscalYear, CurrentOrganization.Currency.DisplayCode);
+
+                FinancialAccounts organizationAccounts = FinancialAccounts.ForOrganization(this.CurrentOrganization);
+                int inactiveCount = organizationAccounts.Count(account => !account.Active);
+
+                this.LabelOptionsShowInactive.Text = String.Format(Resources.Pages.Ledgers.AccountPlan_Options_ShowInactive, inactiveCount);
             }
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
             DbVersionRequired = 2; // Account reparenting
@@ -383,12 +389,22 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     Int64 newSingleBudget = newTreeBudget - suballocatedBudget;
 
                     account.SetBudgetCents (DateTime.Today.Year, newSingleBudget);
+
+                    // Once we've set the budget, also update the "yearly result" budget
+
+                    int thisYear = DateTime.UtcNow.Year;
+                    FinancialAccounts allProfitLossAccounts = FinancialAccounts.ForOrganization(authData.CurrentOrganization);
+                    Int64 newProfitLossProjection = allProfitLossAccounts.Where(queryAccount => queryAccount.Identity != authData.CurrentOrganization.FinancialAccounts.CostsYearlyResult.Identity).Sum(queryAccount => queryAccount.GetBudgetCents(thisYear));
+
+                    authData.CurrentOrganization.FinancialAccounts.CostsYearlyResult.SetBudgetCents(thisYear, -newProfitLossProjection);
+
                     return new ChangeAccountDataResult
                     {
                         Result = ChangeAccountDataOperationsResult.Changed,
                         NewData = (newTreeBudget/100).ToString ("N0", CultureInfo.CurrentCulture)
                     };
                 }
+
                 return new ChangeAccountDataResult
                 {
                     Result = ChangeAccountDataOperationsResult.Invalid
@@ -433,6 +449,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             return true;
+        }
+
+
+        [WebMethod]
+        public static string GetInactiveAccountCount()
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            int inactiveAccountCount = FinancialAccounts.ForOrganization(authData.CurrentOrganization).Count(account => !account.Active);
+            return inactiveAccountCount.ToString("N0");
         }
 
 

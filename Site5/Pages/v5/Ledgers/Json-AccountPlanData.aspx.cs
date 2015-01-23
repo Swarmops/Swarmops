@@ -145,7 +145,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                                   CultureInfo.CurrentCulture)
                                           : string.Empty,
                                       editString,
-                                      account.Active? "true":"false"
+                                      account.Active? "false":"true" // reverses condition on purpose
                                       ) + grandChildren + '}');
             }
 
