@@ -402,6 +402,22 @@
           </MainMenuItem>
 
           <MainMenuItem>
+            <UserLevel>4</UserLevel>
+            <Type>Separator</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
+            <ResourceKey>Admin_SystemSettings</ResourceKey>
+            <UserLevel>4</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-battery-drill</ImageUrl>
+            <NavigateUrl>/Pages/v5/Admin/Settings.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
             <UserLevel>1</UserLevel>
             <Type>Separator</Type>
             <Children />

@@ -47,14 +47,25 @@ namespace Swarmops.Logic.Security
         Financials,
 
         /// <summary>
-        ///     Access to personal details about people in org
+        ///     Access to send various correspondence, w/o necessarily knowing the recipients
+        /// </summary>
+        Correspondence,
+
+        /// <summary>
+        ///     Access to personal details about people in an organization
         /// </summary>
         PersonData,
 
         /// <summary>
         ///     Access to change organization's fundamental operating parameters
         /// </summary>
-        Administration
+        Administration,
+
+        /// <summary>
+        ///     Access to this Swarmops installation and its operating parameters
+        /// </summary>
+        System
+
     }
 
     public enum AccessType
