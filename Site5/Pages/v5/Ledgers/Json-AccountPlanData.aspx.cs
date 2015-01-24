@@ -64,7 +64,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             else if (type == FinancialAccountType.Cost && projectedResults >= 0) // expected loss or zero
             {
-                childrenString += "," + GetProfitLossNode("ProjectedLoss", projectedResults);
+                childrenString += "," + GetProfitLossNode("ProjectedLoss", -projectedResults);
             }
 
             string addString =

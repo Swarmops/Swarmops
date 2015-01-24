@@ -49,7 +49,7 @@
 	                    beginEditAccount();
 	                });
 
-	                if ($('#CheckOptionShowInactive').prop("checked"))
+	                if ($('#CheckOptionsShowInactive').prop("checked"))
 	                {
 	                    $('.RowInactive').show();
 	                }
