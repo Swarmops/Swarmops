@@ -243,6 +243,52 @@ Time spent transmitting: [TransmissionTime].</value>
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Comms transmitted: [GeographyName]</value>
   </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Somebody, most likely you, requested a reset of the password associated with this email address at [OrganizationName]. However, two-factor authentication has been enabled for this account for heightened security. Therefore, the password CANNOT be reset by simple means.
+
+Please contact a personnel administrator at [OrganizationName] to resolve your problem and issue a new password following a more rigorous identification procedure matching the two-factor security level.
+
+Thank you for your understanding.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cannot Reset Password</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Your password at [OrganizationName] was changed.
+
+If you did not just perform this password change, there has been a security breach. If this is the case, please block your account IMMEDIATELY by clicking the following link:
+
+[SystemUrl]Security/LockoutAccount?Email=[EmailAddress]&amp;Ticket=[LockoutTicket]
+
+For security purposes, there will not be a confirmation dialog: your account will be locked the instant you go to this link, and administrators will contact you to verify what happened and work with you to re-enable your account.
+
+However, if it was you yourself who changed the password, and thereby caused this notification to be sent, everything is obviously fine and just as it should be. Carry on.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Password was changed</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>People at [OrganizationName] have issued a password reset ticket to your account, presumably at your request. This ticket is valid for the next 24 hours.
+
+Please follow this link to reset your password and re-enable any two-factor authentication, if it was previously enabled:
+
+[SystemUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+
+This ticket will expire in 24 hours. If you do not reset your password in this time frame, you will need to contact the administrators at [OrganizationName] to issue a new password reset ticket.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Password Reset Ticket</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Somebody, most likely you, requested a reset of the password associated with this email address at [OrganizationName]. If this was you, please follow the link below in the next 60 minutes to complete the password reset procedure:
+
+[SystemUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+
+If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did not request, please notify the administrator.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Password Reset Ticket</value>
+  </data>
   <data name="Receipts_Filed_Body" xml:space="preserve">
     <value>Receipts have been filed that need validation for their financial processes to continue.
 

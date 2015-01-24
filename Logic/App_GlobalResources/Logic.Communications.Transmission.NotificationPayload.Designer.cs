@@ -379,6 +379,98 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Somebody, most likely you, requested a reset of the password associated with this email address at [OrganizationName]. However, two-factor authentication has been enabled for this account for heightened security. Therefore, the password CANNOT be reset by simple means.
+        ///
+        ///Please contact a personnel administrator at [OrganizationName] to resolve your problem and issue a new password following a more rigorous identification procedure matching the two-factor security level.
+        ///
+        ///Thank you for your understanding..
+        /// </summary>
+        internal static string Password_CannotReset2FA_Body {
+            get {
+                return ResourceManager.GetString("Password_CannotReset2FA_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Cannot Reset Password.
+        /// </summary>
+        internal static string Password_CannotReset2FA_Subject {
+            get {
+                return ResourceManager.GetString("Password_CannotReset2FA_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password at [OrganizationName] was changed.
+        ///
+        ///If you did not just perform this password change, there has been a security breach. If this is the case, please block your account IMMEDIATELY by clicking the following link:
+        ///
+        ///[SystemUrl]Security/LockoutAccount?Email=[EmailAddress]&amp;Ticket=[LockoutTicket]
+        ///
+        ///For security purposes, there will not be a confirmation dialog: your account will be locked the instant you go to this link, and administrators will contact you to verify what happened and work with y [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Password_Changed_Body {
+            get {
+                return ResourceManager.GetString("Password_Changed_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Password was changed.
+        /// </summary>
+        internal static string Password_Changed_Subject {
+            get {
+                return ResourceManager.GetString("Password_Changed_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to People at [OrganizationName] have issued a password reset ticket to your account, presumably at your request. This ticket is valid for the next 24 hours.
+        ///
+        ///Please follow this link to reset your password and re-enable any two-factor authentication, if it was previously enabled:
+        ///
+        ///[SystemUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+        ///
+        ///This ticket will expire in 24 hours. If you do not reset your password in this time frame, you will need to contact the administrators at [OrganizationName] to issu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Password_ResetByCrew_Body {
+            get {
+                return ResourceManager.GetString("Password_ResetByCrew_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Password Reset Ticket.
+        /// </summary>
+        internal static string Password_ResetByCrew_Subject {
+            get {
+                return ResourceManager.GetString("Password_ResetByCrew_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Somebody, most likely you, requested a reset of the password associated with this email address at [OrganizationName]. If this was you, please follow the link below in the next 60 minutes to complete the password reset procedure:
+        ///
+        ///[SystemUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+        ///
+        ///If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did not [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Password_ResetOnRequest_Body {
+            get {
+                return ResourceManager.GetString("Password_ResetOnRequest_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Password Reset Ticket.
+        /// </summary>
+        internal static string Password_ResetOnRequest_Subject {
+            get {
+                return ResourceManager.GetString("Password_ResetOnRequest_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receipts have been filed that need validation for their financial processes to continue.
         ///
         ///Please log on to Swarmops at [SystemUrl] to confirm or reject them..
