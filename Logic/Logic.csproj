@@ -306,6 +306,7 @@
     <Compile Include="Support\SingularFactory.cs" />
     <Compile Include="Support\SwarmopsLog.cs" />
     <Compile Include="Support\SwarmopsLogEntry.cs" />
+    <Compile Include="Support\SystemSettings.cs" />
     <Compile Include="Support\TemporaryIdentity.cs" />
     <Compile Include="Support\UrlTranslations.cs" />
     <Compile Include="Swarm\Activists.cs" />
@@ -402,6 +403,7 @@
     <EmbeddedResource Include="App_GlobalResources\Logic.Communications.Transmission.NotificationPayload.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Communications.Transmission.NotificationPayload.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\nb-NO\Logic.Communications.Transmission.NotificationPayload.nb-NO.resx" />
     <EmbeddedResource Include="App_GlobalResources\nb-NO\Logic.Financial.FinancialTransactionTagSetTypesStock.nb-NO.resx" />
@@ -422,6 +424,7 @@
     <EmbeddedResource Include="App_GlobalResources\Logic.Communications.Transmission.MailPayload.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Communications.Transmission.MailPayload.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Communications.Transmission.NotificationPayload.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Financial.FinancialTransactionTagSetTypesStock.ru-RU.resx" />

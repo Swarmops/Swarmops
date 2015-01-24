@@ -122,7 +122,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
         ///
-        ///Please log on to Swarmops at [SystemUrl] to attest or deny..
+        ///Please log on to Swarmops at [ExternalUrl] to attest or deny..
         /// </summary>
         internal static string CashAdvance_Requested_Body {
             get {
@@ -160,7 +160,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
         ///
-        ///Please log on to Swarmops at [SystemUrl] to attest or deny..
+        ///Please log on to Swarmops at [ExternalUrl] to attest or deny..
         /// </summary>
         internal static string ExpenseClaim_Created_Body {
             get {
@@ -278,7 +278,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
         ///
-        ///Please log on to Swarmops at [SystemUrl] to attest or deny..
+        ///Please log on to Swarmops at [ExternalUrl] to attest or deny..
         /// </summary>
         internal static string InboundInvoice_Created_Body {
             get {
@@ -405,9 +405,9 @@ namespace Swarmops.Logic.App_GlobalResources {
         ///
         ///If you did not just perform this password change, there has been a security breach. If this is the case, please block your account IMMEDIATELY by clicking the following link:
         ///
-        ///[SystemUrl]Security/LockoutAccount?Email=[EmailAddress]&amp;Ticket=[LockoutTicket]
+        ///[ExternalUrl]Security/LockoutAccount?Email=[EmailAddress]&amp;Ticket=[LockoutTicket]
         ///
-        ///For security purposes, there will not be a confirmation dialog: your account will be locked the instant you go to this link, and administrators will contact you to verify what happened and work with y [rest of string was truncated]&quot;;.
+        ///For security purposes, there will not be a confirmation dialog: your account will be locked the instant you go to this link, and administrators will contact you to verify what happened and work with [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Password_Changed_Body {
             get {
@@ -429,9 +429,9 @@ namespace Swarmops.Logic.App_GlobalResources {
         ///
         ///Please follow this link to reset your password and re-enable any two-factor authentication, if it was previously enabled:
         ///
-        ///[SystemUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+        ///[ExternalUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
         ///
-        ///This ticket will expire in 24 hours. If you do not reset your password in this time frame, you will need to contact the administrators at [OrganizationName] to issu [rest of string was truncated]&quot;;.
+        ///This ticket will expire in 24 hours. If you do not reset your password in this time frame, you will need to contact the administrators at [OrganizationName] to is [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Password_ResetByCrew_Body {
             get {
@@ -451,9 +451,9 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to Somebody, most likely you, requested a reset of the password associated with this email address at [OrganizationName]. If this was you, please follow the link below in the next 60 minutes to complete the password reset procedure:
         ///
-        ///[SystemUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+        ///[ExternalUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
         ///
-        ///If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did not [rest of string was truncated]&quot;;.
+        ///If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did n [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Password_ResetOnRequest_Body {
             get {
@@ -473,7 +473,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to Receipts have been filed that need validation for their financial processes to continue.
         ///
-        ///Please log on to Swarmops at [SystemUrl] to confirm or reject them..
+        ///Please log on to Swarmops at [ExternalUrl] to confirm or reject them..
         /// </summary>
         internal static string Receipts_Filed_Body {
             get {
