@@ -197,6 +197,12 @@
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>Externally Accessible URL</value>
   </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>Various technical settings for this Swarmops installation. Not specific to any organization or person, but installation-wide.</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
   <data name="SystemSettings_SmtpServer" xml:space="preserve">
     <value>SMTP Server (user:pass@host:port)</value>
   </data>

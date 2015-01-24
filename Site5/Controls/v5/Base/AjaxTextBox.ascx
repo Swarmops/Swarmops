@@ -11,13 +11,13 @@
 
             if (currentValue != _initVal_<%=this.TextInput.ClientID%>) {
                 var jsonData = {};
-                jsonData.newString = currentValue;
+                jsonData.newValue = currentValue;
                 jsonData.cookie = '<%=this.Cookie%>';
 
                 // The AJAX call expects the following function prototype:
                 //
                 // [WebMethod]
-                // public static AjaxTextBox.AjaxResult FunctionName (string newString, string cookie);
+                // public static AjaxTextBox.CallbackResult FunctionName (string newValue, string cookie);
                 //
                 // The page must include IncludedControls.JsonParameters and IncludedControls.ColorAnimation among its script.
                 //
@@ -54,7 +54,7 @@
                             $(this).css('background-color', '#E0FFE0');
                             _initVal_<%=this.TextInput.ClientID%> = msg.d.NewData;
                         }
-                        $(this).val(modalAccountInitialBalance);
+                        $(this).val(_initVal_<%=this.TextInput.ClientID%>);
                         $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
                     }, this),
                     error: $.proxy(function (msg) {

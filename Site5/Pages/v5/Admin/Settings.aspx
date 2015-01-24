@@ -19,10 +19,12 @@
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
             <h2>Correspondence transmission settings</h2>
             <div class="entryFields">
-                <Swarmops5:AjaxTextBox runat="server" ID="TextSmtpServer" Cookie="Smtp" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextSmtpServer" Cookie="Smtp" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="localhost:587" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextExternalUrl" Cookie="ExtUrl" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="https://swarmops.example.com/" />&#8203;<br/>
             </div>
             <div class="entryLabels">
-                SMTP server (user:pass@host:port)<br/>
+                <asp:Label ID="LabelSmtpServer" runat="server" /><br/>
+                <asp:Label ID="LabelExternalUrl" runat="server" /><br />
             </div>
         </div>
     </div>

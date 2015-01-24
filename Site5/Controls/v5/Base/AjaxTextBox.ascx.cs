@@ -11,7 +11,7 @@ namespace Swarmops.Frontend.Controls.v5.Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.TextInput.Attributes["Placeholder"] = this.Placeholder;
         }
 
         public string Text
@@ -28,6 +28,8 @@ namespace Swarmops.Frontend.Controls.v5.Base
         public string Cookie { set; get; }
         public string AjaxCallbackUrl { set; get; }
 
+        public string Placeholder { get; set; }
+
         // Ajax result codes and classes
 
         public const int CodeUnknown = 0;
@@ -36,7 +38,7 @@ namespace Swarmops.Frontend.Controls.v5.Base
         public const int CodeInvalid = 3;
         public const int CodeNoPermission = 4;
 
-        public class AjaxResult
+        public class CallbackResult
         {
             public int ResultCode { get; set; }
             public string DisplayMessage { get; set; } // may be empty

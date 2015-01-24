@@ -14,6 +14,7 @@ namespace Swarmops.Utility.Communications
         // To be implemented better
 
         private static string _smtpServerCache = string.Empty;
+        private static int _smtpPortCache = 25;
         private static DateTime _cacheReloadTime = DateTime.MinValue;
 
         public void Transmit (PayloadEnvelope envelope, Person person)
@@ -52,23 +53,26 @@ namespace Swarmops.Utility.Communications
             mail.BodyEncoding = Encoding.UTF8;
 
             string smtpServer = _smtpServerCache;
+            int smtpPort = _smtpPortCache;
 
             DateTime now = DateTime.Now;
 
             if (now > _cacheReloadTime)
             {
-                smtpServer = _smtpServerCache = Persistence.Key["SmtpServer"];
+                smtpServer = SystemSettings.SmtpHost;
+                smtpPort = SystemSettings.SmtpPort;
                 _cacheReloadTime = now.AddMinutes (5);
             }
 
             if (string.IsNullOrEmpty (smtpServer))
             {
-                smtpServer = "192.168.80.204";
+                smtpServer = "localhost";
+                smtpPort = 25;
                 // For development use only - invalidate cache instead of this, forcing re-reload
                 _cacheReloadTime = DateTime.MinValue;
             }
 
-            SmtpClient mailClient = new SmtpClient (smtpServer);
+            SmtpClient mailClient = new SmtpClient (smtpServer, smtpPort);
 
             // TODO: SMTP Server login credentials
 
