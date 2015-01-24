@@ -134,7 +134,7 @@
   </data>
   <data name="BalanceSheet_ContentHeader" xml:space="preserve">
     <value>Balance Sheet for {0},</value>
-    <comment>{0} is the organization name. The year follows immediately.</comment>
+    <comment>{0} is the organization name. The year follows immediately, so keep ending comma.</comment>
   </data>
   <data name="BalanceSheet_Current" xml:space="preserve">
     <value>Current</value>
@@ -565,5 +565,13 @@
   <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
     <value>Show Inactive Accounts (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
     <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
+    <value>Projected Loss {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
+    <value>Projected Profit {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
   </data>
 </root>

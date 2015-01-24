@@ -48,10 +48,18 @@
 
 	                    beginEditAccount();
 	                });
+
+	                if ($('#CheckOptionShowInactive').prop("checked"))
+	                {
+	                    $('.RowInactive').show();
+	                }
 	            },
 
 	            rowStyler: function (rowData) {
-	                console.log(rowData);
+	                if (rowData.rowCssClass != null)
+	                {
+	                    return { class: rowData.rowCssClass };
+	                }
 	                if (rowData.inactive == "true")
 	                {
 	                    return { class: 'RowInactive' };
@@ -562,6 +570,11 @@
             color: #C0C0C0;
             display: none;
         }
+        .RowProjectedLoss, .RowProjectedProfit
+        {
+            font-weight:500;
+        }
+
     </style>
 
 </asp:Content>
