@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Swarmops.Pages.Security.RequestPasswordReset" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RequestPasswordReset.aspx.cs" Inherits="Swarmops.Pages.Security.RequestPasswordReset" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -58,9 +58,19 @@
         <div class="mainbar">
             <div class="box">
                 <div class="content">
-                
-                    <h2><asp:Label ID="LabelHeader" runat="server" Text="XYZ Login with blockchain technology (BitID)" /></h2>
-                    <div align="center"><asp:Image ID="ImageBitIdQr" runat="server"/></div>
+                    <h2><asp:Label ID="LabelContentTitle" runat="server" /></h2>
+                    <div id="DivEmail">
+                        <div class="entryFields">
+                            <asp:TextBox runat="server" ID="TextEmail" />&#8203;<br/>
+                            <!-- button -->
+                        </div>
+                        <div class="entryLabels">
+                            <asp:Label ID="LabelMail" runat="server" /><br />
+                        </div>
+                    </div>
+                    <div id="DivSuccessMaybe">
+                        <asp:Label ID="LabelSuccessMaybe" runat="server" />
+                    </div>
                 </div>
             </div>
         
@@ -85,18 +95,6 @@
             </table>
         </div>
     </div>
-    
-    <asp:Panel ID="PanelCheat" runat="server" Visible="false">
-        <h2 class="blue">Dev's Cheat Button<span class="arrow"></span></h2>
-    
-        <div class="box">
-            <div class="content" style="line-height: 14px">
-                <p>Since we're running on localhost, on a nonstandard port, with a debugger attached, and under Windows, this is clearly not a production environment. Since it's unlikely that the outside Internet has access to this machine, which means you can't login with BitID, a cheat button has been provided for you.</p><p>Press the button below to log on as Sandbox Administrator.</p>
-                
-                <div align="right"><asp:Button ID="ButtonCheat" runat="server" OnClick="ButtonCheat_Click" Text="Cheat Button" /></div>
-            </div>
-        </div>
-    </asp:Panel>
     
     <h2 class="orange"><asp:Label ID="LabelSidebarHelpHeader" runat="server" /><span class="arrow"></span></h2>
     

@@ -160,6 +160,21 @@
     <value>&lt;p&gt;There is a database upgrade pending that prevents your access to this page. &lt;strong&gt;This is a temporary condition&lt;/strong&gt; and the Swarmops servers should already be working on performing the necessary upgrade.&lt;/p&gt;
 &lt;p&gt;Retry loading the page in a few minutes. If the condition persists for more than fifteen minutes, contact your system administrator.&lt;/p&gt;</value>
   </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>The account &lt;strong&gt;was not locked down&lt;/strong&gt;. There is no such account, or the ticket was invalid or too old. If you still want to lock down this account, contact the administrators of this Swarmops installation.</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>If you're seeing this page, you're trying to lock down a user account for security reasons. If the link was valid and hasn't expired, the account is already locked down.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>User Account Lockdown</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>The account has been &lt;strong&gt;successfully locked down&lt;/strong&gt; and any active sessions are now terminated.</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>Lockdown Ticket</value>
+  </data>
   <data name="Login_BitIdEnabled" xml:space="preserve">
     <value>&lt;strong&gt;BitId two-factor authentication is now enabled.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;From now on, you can use your bitcoin wallet to log in (and will &lt;strong&gt;need&lt;/strong&gt; to do so). Thank you for enabling added security.&lt;br/&gt;&lt;br/&gt;Please remember to keep your phone secure with a password, too.</value>
   </data>
@@ -198,5 +213,41 @@
   </data>
   <data name="Login_Username" xml:space="preserve">
     <value>User</value>
+  </data>
+  <data name="ResetPassword_Email" xml:space="preserve">
+    <value>Reset password for mail address</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>There is no valid password reset ticket for this email address, the address does not exist, the password reset ticket is invalid, or it has expired. Password reset failed.</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>You're resetting the password for a user account. Enter your new password twice to set it and login.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>The new password cannot be empty.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Repeat New Password</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>You may reset the password associated with an email address. A link with a ticket code will be sent to that email address, which you must follow to reset your password.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Your password was changed and you have been logged in to Swarmops using your new password.</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>If the email was associated with an account on this Swarmops installation, a reset ticket has now been sent. Open that mail and click the link in the mail to reset your password. (If the email did not exist, nothing was sent.)&lt;br/&gt;&lt;br/&gt;You may close this browser tab. It is not needed anymore.</value>
   </data>
 </root>
