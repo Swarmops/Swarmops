@@ -75,7 +75,7 @@ namespace Swarmops.Basic.Enums
         LimitMailToLatin1,
 
         /// <summary>
-        ///     ?
+        ///     Ticket used to reset an account password. Format is {datetimeUtcExpires},{ticket}.
         /// </summary>
         ResetPasswordTicket,
 
@@ -268,7 +268,7 @@ namespace Swarmops.Basic.Enums
 
         /// <summary>
         ///     A National ID number, if any. Like US SSN.
-        /// </summary>
+        /// </summary>untLockdownTicket
         NationalIdNumber,
 
         /// <summary>
@@ -289,6 +289,17 @@ namespace Swarmops.Basic.Enums
         /// <summary>
         /// For a person, the last logged-on organization id. Used to go back there on new login.
         /// </summary>
-        LastLoginOrganizationId
+        LastLoginOrganizationId,
+
+        /// <summary>
+        /// Can be used to lock down a person's account. Format {datetimeUtcExpires},{ticket}.
+        /// </summary>
+        AccountLockdownTicket,
+
+        /// <summary>
+        /// The datetime UTC when the account was set under lockdown (or empty/null if it is not).
+        /// </summary>
+        AccountUnderLockdownSince
+
     }
 }
