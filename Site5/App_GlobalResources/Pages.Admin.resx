@@ -206,4 +206,7 @@
   <data name="SystemSettings_SmtpServer" xml:space="preserve">
     <value>SMTP Server (user:pass@host:port)</value>
   </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>Swarmops has sent you a test mail to verify your new SMTP server settings.</value>
+  </data>
 </root>

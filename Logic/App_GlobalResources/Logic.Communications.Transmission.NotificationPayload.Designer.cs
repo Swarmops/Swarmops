@@ -531,6 +531,24 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is a test mail sent by Swarmops [SwarmopsVersion] running on [HostName]. You just changed the mail server settings. To verify that the new settings are correct, Swarmops dispatches this test message to be sent from the back end..
+        /// </summary>
+        internal static string System_MailServerTest_Body {
+            get {
+                return ResourceManager.GetString("System_MailServerTest_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops Mail Server Test.
+        /// </summary>
+        internal static string System_MailServerTest_Subject {
+            get {
+                return ResourceManager.GetString("System_MailServerTest_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks..
         /// </summary>
         internal static string System_Startup_Body {

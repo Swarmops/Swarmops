@@ -313,6 +313,12 @@ This is for information only. You do not need to take action.</value>
   <data name="System_Exception_Subject" xml:space="preserve">
     <value>Swarmops EXCEPTION!</value>
   </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>This is a test mail sent by Swarmops [SwarmopsVersion] running on [HostName]. You just changed the mail server settings. To verify that the new settings are correct, Swarmops dispatches this test message to be sent from the back end.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Swarmops Mail Server Test</value>
+  </data>
   <data name="System_Startup_Body" xml:space="preserve">
     <value>Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks.</value>
   </data>

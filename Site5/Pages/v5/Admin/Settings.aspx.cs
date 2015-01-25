@@ -11,6 +11,8 @@ using System.Globalization;
 using System.Web.Services;
 using System.Text.RegularExpressions;
 using Swarmops.Frontend.Controls.v5.Base;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
 {
@@ -98,8 +100,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         SystemSettings.SmtpHost = host;
                         SystemSettings.SmtpPort = port;
 
+                        OutboundComm.CreateNotification(Organization.Sandbox, Logic.Communications.Transmission.NotificationResource.System_MailServerTest);
+
                         result.ResultCode = AjaxTextBox.CodeChanged;
                         result.NewData = FormatSmtpAccessString (user, pass, host, port);
+                        result.DisplayMessage = Resources.Pages.Admin.SystemSettings_TestMailSent;
                     }
                     else
                     {
