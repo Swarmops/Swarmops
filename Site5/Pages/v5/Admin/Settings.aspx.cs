@@ -89,7 +89,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                             }
                             catch (FormatException)
                             {
-                                result.DisplayMessage = "Port must be numeric. Unable to parse host:port.";
+                                result.DisplayMessage = Resources.Pages.Admin.SystemSettings_Error_SmtpHostPort;
                                 result.ResultCode = AjaxTextBox.CodeInvalid;
                                 return result; // return early
                             }
@@ -109,7 +109,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     else
                     {
                         result.ResultCode = AjaxTextBox.CodeInvalid;
-                        result.DisplayMessage = "Unable to parse user, pass, host, and/or port. (Only host is required.)";
+                        result.DisplayMessage = Resources.Pages.Admin.SystemSettings_Error_SmtpSyntax;
                     }
 
                     break;
