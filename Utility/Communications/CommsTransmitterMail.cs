@@ -15,6 +15,8 @@ namespace Swarmops.Utility.Communications
 
         private static string _smtpServerCache = string.Empty;
         private static int _smtpPortCache = 25;
+        private static string _smtpUserCache = string.Empty;
+        private static string _smtpPasswordCache = string.Empty;
         private static DateTime _cacheReloadTime = DateTime.MinValue;
 
         public void Transmit (PayloadEnvelope envelope, Person person)
@@ -54,13 +56,18 @@ namespace Swarmops.Utility.Communications
 
             string smtpServer = _smtpServerCache;
             int smtpPort = _smtpPortCache;
+            string smtpUser = _smtpUserCache;
+            string smtpPassword = _smtpPasswordCache;
 
             DateTime now = DateTime.Now;
 
             if (now > _cacheReloadTime)
             {
-                smtpServer = SystemSettings.SmtpHost;
-                smtpPort = SystemSettings.SmtpPort;
+                smtpServer = _smtpServerCache = SystemSettings.SmtpHost;
+                smtpPort = _smtpPortCache = SystemSettings.SmtpPort;
+                smtpUser = _smtpUserCache = SystemSettings.SmtpUser;
+                smtpPassword = _smtpPasswordCache = SystemSettings.SmtpPassword;
+                
                 _cacheReloadTime = now.AddMinutes (5);
             }
 
@@ -73,8 +80,10 @@ namespace Swarmops.Utility.Communications
             }
 
             SmtpClient mailClient = new SmtpClient (smtpServer, smtpPort);
-
-            // TODO: SMTP Server login credentials
+            if (!string.IsNullOrEmpty(smtpUser))
+            {
+                mailClient.Credentials = new System.Net.NetworkCredential(smtpUser, smtpPassword);
+            }
 
             try
             {
