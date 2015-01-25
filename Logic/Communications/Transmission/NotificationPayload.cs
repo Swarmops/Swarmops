@@ -119,7 +119,11 @@ namespace Swarmops.Logic.Communications.Transmission
         ExpenseClaim_PaidOut,
         Payout_Settled,
         InboundInvoice_Created,
-        Receipts_Filed
+        Receipts_Filed,
+        Password_ResetOnRequest,
+        Password_ResetByCrew,
+        Password_CannotReset2FA,
+        Password_Changed
     }
 
 // ReSharper restore InconsistentNaming
