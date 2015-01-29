@@ -19,7 +19,7 @@
 
         public static bool IsPilot (string installationId)
         {
-            string thisInstallationId = Persistence.Key["SwarmopsInstallationId"];
+            string thisInstallationId = SystemSettings.InstallationId;
             if (installationId == thisInstallationId)
             {
                 return true;
