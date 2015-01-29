@@ -206,6 +206,9 @@
   <data name="SystemSettings_Info" xml:space="preserve">
     <value>Various technical settings for this Swarmops installation. Not specific to any organization or person, but installation-wide.</value>
   </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>Installation Name</value>
+  </data>
   <data name="SystemSettings_PageTitle" xml:space="preserve">
     <value>System Settings</value>
   </data>
@@ -214,5 +217,8 @@
   </data>
   <data name="SystemSettings_TestMailSent" xml:space="preserve">
     <value>Swarmops has sent you a test mail to verify your new SMTP server settings.</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>You really, really, REALLY should use HTTPS for a website like this. But you knew that already, didn't you?</value>
   </data>
 </root>

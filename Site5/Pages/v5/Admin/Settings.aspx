@@ -8,6 +8,14 @@
         $(document).ready(function() {
             $('#divTabs').tabs();
         });
+
+        function onUrlChange(newText) {
+            // Nag an admin who tries to create an unsecure website
+            if (newText.length >= 7 && newText.substring(0,7) == 'http://') {
+                alertify.log("<%=Resources.Pages.Admin.SystemSettings_Warning_Insecure %>");
+            }
+        }
+
     </script>
 
 
@@ -20,10 +28,12 @@
             <h2>Correspondence transmission settings</h2>
             <div class="entryFields">
                 <Swarmops5:AjaxTextBox runat="server" ID="TextSmtpServer" Cookie="Smtp" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="localhost:587" />&#8203;<br/>
-                <Swarmops5:AjaxTextBox runat="server" ID="TextExternalUrl" Cookie="ExtUrl" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="https://swarmops.example.com/" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextInstallationName" Cookie="InstallationName" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="localhost:587" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextExternalUrl" Cookie="ExtUrl" OnChange="onUrlChange" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="https://swarmops.example.com/" />&#8203;<br/>
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelSmtpServer" runat="server" /><br/>
+                <asp:Label ID="LabelInstallationName" runat="server" /><br/>
                 <asp:Label ID="LabelExternalUrl" runat="server" /><br />
             </div>
         </div>

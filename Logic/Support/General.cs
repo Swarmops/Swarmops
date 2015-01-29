@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Swarmops.Logic.Support
 {
@@ -35,5 +36,23 @@ namespace Swarmops.Logic.Support
             return result.ToString();
         }
 
+        public static string GetRemoteIPAddressChain()
+        {
+            string forwardedIps =
+                HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            string directIp = 
+                HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+
+            string result = directIp;
+
+            if (!string.IsNullOrEmpty(forwardedIps))
+            {
+                result = forwardedIps.Split (',').Last().Trim();
+                result += " (" + directIp + ", " + forwardedIps + ")";
+            }
+
+            return result;
+        }
     }
 }

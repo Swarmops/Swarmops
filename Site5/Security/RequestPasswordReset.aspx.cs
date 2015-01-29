@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Pages.Security
@@ -26,12 +27,14 @@ namespace Swarmops.Pages.Security
             {
                 Localize();
             }
+
+            this.TextMailAddress.Focus();
         }
 
         private void Localize()
         {
             // Normal template
-            this.LabelSidebarInfoContent.Text = Resources.Pages.Security.ResetPassword_Info;
+            this.LabelSidebarInfoContent.Text = Resources.Pages.Security.ResetPassword_InfoRequest;
             this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
             this.LabelCurrentOrganizationName.Text = Resources.Global.Global_Organization;
             this.LabelCurrentUserName.Text = Resources.Global.Global_NoOwner;
@@ -69,6 +72,7 @@ namespace Swarmops.Pages.Security
 
                 OutboundComm.CreateSecurityNotification (concernedPerson, null, null, string.Empty,
                     NotificationResource.Password_CannotReset2FA);
+                return true; // still returning true - the fail info is in mail only
             }
 
 
@@ -79,7 +83,8 @@ namespace Swarmops.Pages.Security
             OutboundComm.CreateSecurityNotification (concernedPerson, null, null, resetTicket,
                 NotificationResource.Password_ResetOnRequest);
 
-            // Create log entry
+            SwarmopsLog.CreateEntry (null,
+                new PasswordResetRequest (concernedPerson, SupportFunctions.GetRemoteIPAddressChain()));
 
             return true;
         }

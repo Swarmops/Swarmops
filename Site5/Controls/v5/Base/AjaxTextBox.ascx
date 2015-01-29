@@ -56,9 +56,17 @@
                         }
                         $(this).val(_initVal_<%=this.TextInput.ClientID%>);
                         $(this).animate({ backgroundColor: "#FFFFFF" }, 250);
+                        <%
+
+                            if (!string.IsNullOrEmpty (this.OnChange))
+                            {
+                                Response.Write (this.OnChange + "(msg.d.NewData);");  // JavaScript callback on successful change
+                            }
+    
+                        %>
                     }, this),
                     error: $.proxy(function (msg) {
-                        alertify.error("There was an error calling the server to set the new value. Is the server reachable?"); // TODO: Localize
+                        alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
                         $(this).val (_initVal_<%=this.TextInput.ClientID%>);
                         $(this).css('background-color', '#FFA0A0');
                         $(this).animate({ backgroundColor: "#FFFFFF" }, 250);

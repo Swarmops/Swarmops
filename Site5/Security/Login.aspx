@@ -19,7 +19,8 @@
 	<title>Swarmops Alpha - Login</title>
 
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
-    <link href="/Style/alertify.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
 
     <!-- custom styles -->
     
@@ -199,7 +200,7 @@
     
     <div class="box">
         <div class="content">
-            <div class="link-row-encaps" onclick=" return false; " >
+            <div class="link-row-encaps" onclick=" document.location='/Security/RequestPasswordReset'; return false; " >
                 <div class="link-row-icon" style="background-image: url('/Images/Icons/iconshock-databaseconnect-16px.png')"></div>
                 <asp:Label ID="LabelSidebarResetPassword" runat="server" />
             </div>

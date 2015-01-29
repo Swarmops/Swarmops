@@ -215,16 +215,19 @@
     <value>User</value>
   </data>
   <data name="ResetPassword_Email" xml:space="preserve">
-    <value>Reset password for mail address</value>
+    <value>Re-enter your mail address</value>
   </data>
   <data name="ResetPassword_Failed" xml:space="preserve">
-    <value>There is no valid password reset ticket for this email address, the address does not exist, the password reset ticket is invalid, or it has expired. Password reset failed.</value>
+    <value>There is no valid password reset ticket for this mail address, the address does not exist, the password reset ticket is invalid, or it has expired. Password reset failed.</value>
   </data>
   <data name="ResetPassword_Info" xml:space="preserve">
     <value>You're resetting the password for a user account. Enter your new password twice to set it and login.</value>
   </data>
   <data name="ResetPassword_InfoRequest" xml:space="preserve">
     <value>Enter your mail account to send instructions to that address on how to proceed with the password reset procedure. It will contain a unique and expiring code that you will need to use to proceed.</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>The two passwords do not match. Please retry.</value>
   </data>
   <data name="ResetPassword_NoEmpty" xml:space="preserve">
     <value>The new password cannot be empty.</value>
@@ -239,7 +242,7 @@
     <value>Repeat New Password</value>
   </data>
   <data name="ResetPassword_RequestInfo" xml:space="preserve">
-    <value>You may reset the password associated with an email address. A link with a ticket code will be sent to that email address, which you must follow to reset your password.</value>
+    <value>You may reset the password associated with an mail address. A link with a ticket code will be sent to that mail address, which you must follow to reset your password.</value>
   </data>
   <data name="ResetPassword_Reset" xml:space="preserve">
     <value>Reset</value>
@@ -251,6 +254,6 @@
     <value>Ticket</value>
   </data>
   <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
-    <value>If the email was associated with an account on this Swarmops installation, a &lt;strong&gt;reset ticket has been sent.&lt;/strong&gt; Open that mail and click the link in the mail to reset your password. (If the email did not exist, nothing was sent.)&lt;br/&gt;&lt;br/&gt;You may close this browser tab. It is not needed anymore.</value>
+    <value>If the mail address was associated with an account on this Swarmops installation, a &lt;strong&gt;reset ticket has been sent.&lt;/strong&gt; Open that mail and click the link in the mail to reset your password. (If the email did not exist, nothing was sent.)&lt;br/&gt;&lt;br/&gt;You may close this browser tab. It is not needed anymore.</value>
   </data>
 </root>

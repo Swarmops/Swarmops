@@ -26,6 +26,7 @@ namespace Swarmops.Frontend.Controls.v5.Base
         }
 
         public string Cookie { set; get; }
+        public string OnChange { get; set; }
         public string AjaxCallbackUrl { set; get; }
 
         public string Placeholder { get; set; }

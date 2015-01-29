@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RequestPasswordReset.aspx.cs" Inherits="Swarmops.Pages.Security.RequestPasswordReset" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ResetPassword.aspx.cs" Inherits="Swarmops.Pages.Security.ResetPassword" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -17,7 +17,7 @@
     <link href='https://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css' />
 
     <!-- page title -->
-	<title>Swarmops Alpha - Request Password Reset</title>
+	<title>Swarmops Alpha - Password Reset</title>
 
     <link href="/Style/style-v5.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,7 @@
     
     <style type="text/css">
 
-        div#DivSuccessMaybe {
-            display: none;
-        }
-        
+    
     </style>
 
 </head>
@@ -45,13 +42,20 @@
 
 	        });
 
-            function resetPassword() {
-                var jsonData = {};
-                jsonData.mailAddress = $('#<%=this.TextMailAddress.ClientID%>').val();
+	        function resetPassword() {
+	            var jsonData = {};
+	            jsonData.mailAddress = $('#<%=this.TextMailAddress.ClientID%>').val();
+	            jsonData.ticket = val();
+	            jsonData.newPassword = val();
+
+	            if (jsonData.newPassword != val()) {
+	                alertify.error("<%= Resources.Pages.Security.ResetPassword_NewPasswordsDontMatch %>");
+	                return false;
+	            }
 
                 $.ajax({
                     type: "POST",
-                    url: "/Security/RequestPasswordReset.aspx/RequestTicket",
+                    url: "/Security/ResetPassword.aspx/PerformReset",
                     data: $.toJSON(jsonData),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -60,9 +64,11 @@
                         if (msg.d) {
                             $('#DivSuccessMaybe').slideDown();
                             $('#DivMailEntry').slideUp();
-                        } // ignore a "false" for now - it means an invalid (syntactically wrong) mail addr
+                        } else {
+                            alertify.alert("<%= Resources.Pages.Security.ResetPassword_Failed %>");
+                        }
                     },
-                    error: function(msg) {
+                    error: function (msg) {
                         alertify.error("<%=Resources.Global.Error_AjaxCallException%>");
                     }
                 });
@@ -91,10 +97,16 @@
                     <div id="DivMailEntry">
                         <div class="entryFields">
                             <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
+                            <asp:TextBox runat="server" ID="TextTicket" />&#8203;<br/>
+                            <asp:TextBox runat="server" ID="TextPassword1" />&#8203;<br/>
+                            <asp:TextBox runat="server" ID="TextPassword2" />&#8203;<br/>
                             <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
                         </div>
                         <div class="entryLabels">
                             <asp:Label ID="LabelMail" runat="server" /><br />
+                            <asp:Label ID="LabelTicket" runat="server" /><br />
+                            <asp:Label ID="LabelPassword1" runat="server" /><br />
+                            <asp:Label ID="LabelPassword2" runat="server" /><br />
                         </div>
                     </div>
                     <div style="clear:both"></div>

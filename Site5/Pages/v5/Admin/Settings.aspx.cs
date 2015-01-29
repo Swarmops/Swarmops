@@ -32,6 +32,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 this.TextSmtpServer.Text = FormatSmtpAccessString(SystemSettings.SmtpUser, SystemSettings.SmtpPassword,
                     SystemSettings.SmtpHost, SystemSettings.SmtpPort);
                 this.TextExternalUrl.Text = SystemSettings.ExternalUrl;
+                this.TextInstallationName.Text = SystemSettings.InstallationName;
 
                 Localize();
             }
@@ -62,6 +63,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         {
             this.LabelExternalUrl.Text = Resources.Pages.Admin.SystemSettings_ExternalUrl;
             this.LabelSmtpServer.Text = Resources.Pages.Admin.SystemSettings_SmtpServer;
+            this.LabelInstallationName.Text = Resources.Pages.Admin.SystemSettings_InstallationName;
         }
 
         [WebMethod]
@@ -111,8 +113,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         result.ResultCode = AjaxTextBox.CodeInvalid;
                         result.DisplayMessage = Resources.Pages.Admin.SystemSettings_Error_SmtpSyntax;
                     }
-
                     break;
+
                 case "ExtUrl":
                     if (!newValue.EndsWith("/"))
                     {
@@ -128,6 +130,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     result.NewData = newValue;
                     result.ResultCode = AjaxTextBox.CodeSuccess;
                     break;
+
+                case "InstallationName":
+                    result.NewData = newValue.Trim();
+                    result.ResultCode = AjaxTextBox.CodeSuccess;
+                    SystemSettings.InstallationName = newValue;
+                    break;
+
                 default:
                     throw new NotImplementedException("Unknown cookie in StoreCallback");
             }
