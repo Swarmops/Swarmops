@@ -50,7 +50,7 @@ namespace Swarmops.Pages.Security
                 return false; // this is the only case when we return false: a _syntactically_invalid_ address
             }
 
-            People concernedPeople = People.FromEmail (mailAddress); // Should result in exactly 1
+            People concernedPeople = People.FromMail (mailAddress); // Should result in exactly 1
 
 
             string resetTicket = SupportFunctions.GenerateSecureRandomKey (16); // 16 bytes = 128 bits random key, more than good enough
