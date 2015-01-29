@@ -246,14 +246,36 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public static OutboundComm CreateSecurityNotifcation (Person concernedPerson, Person actingPerson, string ticket,
+        private static OutboundComm CreateSingleRecipientNotification (NotificationPayload payload,
+            Organization organization, Person addressee)
+        {
+            OutboundComm comm = OutboundComm.Create(null, null, organization, CommResolverClass.Unknown, null,
+                CommTransmitterClass.CommsTransmitterMail, new PayloadEnvelope(payload).ToXml(),
+                OutboundCommPriority.Low);
+
+            comm.AddRecipient(addressee);
+            comm.Resolved = true;
+            return comm;
+        }
+
+
+        public static OutboundComm CreateSecurityNotifcation (Person concernedPerson, Person actingPerson, Organization organization, string ticket,
             NotificationResource notification)
         {
             NotificationPayload payload = new NotificationPayload(notification.ToString());
-            payload.Strings[NotificationString.ActingPersonName] = actingPerson.Name;
-            payload.Strings[NotificationString.ConcernedPersonName] = actingPerson.Name;
-            payload.Strings[NotificationString.]
+            payload.Strings[NotificationString.ActingPersonName] = 
+                actingPerson != null
+                ? actingPerson.Name
+                : string.Empty;
+            payload.Strings[NotificationString.ConcernedPersonName] = concernedPerson.Name;
+            payload.Strings[NotificationString.MailAddress] = concernedPerson.Mail;
+            payload.Strings[NotificationString.TicketCode] = ticket;
+            if (organization != null)
+            {
+                payload.Strings[NotificationString.OrganizationName] = organization.Name;
+            }
 
+            return CreateSingleRecipientNotification (payload, organization, concernedPerson);
         }
 
 
