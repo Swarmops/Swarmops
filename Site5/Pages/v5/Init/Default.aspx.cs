@@ -439,26 +439,13 @@ public partial class Pages_v5_Init_Default : Page
     {
         StringBuilder machineKey = new StringBuilder();
         machineKey.Append("<machineKey \n");
-        machineKey.Append("validationKey=\"" + GetRandomKey (64) + "\"\n");
-        machineKey.Append("decryptionKey=\"" + GetRandomKey (32) + "\"\n");
+        machineKey.Append("validationKey=\"" + SupportFunctions.GenerateSecureRandomKey (64) + "\"\n");
+        machineKey.Append("decryptionKey=\"" + SupportFunctions.GenerateSecureRandomKey (32) + "\"\n");
         machineKey.Append("validation=\"HMACSHA512\" decryption=\"AES\"\n");
         machineKey.Append("/>\n");
         return machineKey.ToString();
     }
 
-    public static string GetRandomKey(int bytelength)
-    {
-        byte[] buffer = new byte[bytelength];
-        RNGCryptoServiceProvider devRandom = new RNGCryptoServiceProvider();
-        devRandom.GetBytes(buffer);
-
-        StringBuilder result = new StringBuilder(bytelength * 2);
-        for (int loop = 0; loop < buffer.Length; loop++)
-        {
-            result.AppendFormat ("{0:X2}", buffer[loop]);
-        }
-        return result.ToString();
-    }
 
     /// <summary>
     ///     This function copies the schemas and geography data off an existing Swarmops installation. Runs in its own thread.

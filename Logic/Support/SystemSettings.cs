@@ -79,6 +79,17 @@ namespace Swarmops.Logic.Support
             }
         }
 
+        static public string InstallationId
+        {
+            get { return Persistence.Key["SwarmopsInstallationId"]; } // no setter - intentional
+        }
+
+        static public string InstallationName
+        {
+            get { return GetDefaultedPersistedKey ("InstallationName", "Swarmops"); }
+            set { Persistence.Key["InstallationName"] = value;  }
+        }
+
         static private string GetDefaultedPersistedKey (string key, string defaultValue)
         {
             string result = Persistence.Key[key];

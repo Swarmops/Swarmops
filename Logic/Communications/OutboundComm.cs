@@ -246,6 +246,17 @@ namespace Swarmops.Logic.Communications
         }
 
 
+        public static OutboundComm CreateSecurityNotifcation (Person concernedPerson, Person actingPerson, string ticket,
+            NotificationResource notification)
+        {
+            NotificationPayload payload = new NotificationPayload(notification.ToString());
+            payload.Strings[NotificationString.ActingPersonName] = actingPerson.Name;
+            payload.Strings[NotificationString.ConcernedPersonName] = actingPerson.Name;
+            payload.Strings[NotificationString.]
+
+        }
+
+
         public void AddRecipient (Person person)
         {
             if (person == null)

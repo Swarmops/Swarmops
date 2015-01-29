@@ -552,4 +552,7 @@
   <data name="Global_PostalCode" xml:space="preserve">
     <value>Postal Code</value>
   </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>There was a general, unspecified error contacting the Swarmops server. Is the still network operational and the server available?</value>
+  </data>
 </root>

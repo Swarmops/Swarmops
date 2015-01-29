@@ -61,7 +61,8 @@ namespace Swarmops.Logic.Communications.Transmission
             input = input.Replace ("[HostName]", Dns.GetHostName());
             input = input.Replace ("[DbVersion]", SwarmDb.DbVersionExpected.ToString(CultureInfo.InvariantCulture));
             input = input.Replace ("[SwarmopsVersion]", Formatting.SwarmopsVersion);
-            input = input.Replace ("[ExternalUrl]", SystemSettings.ExternalUrl);
+            input = input.Replace("[InstallationName]", SystemSettings.InstallationName);
+            input = input.Replace("[ExternalUrl]", SystemSettings.ExternalUrl);
 
             // Loop through supplied strings and replace them in the resource. Not very efficient but who cares
 
@@ -131,21 +132,21 @@ namespace Swarmops.Logic.Communications.Transmission
     public enum NotificationString
     {
         Unknown = 0,
-        ConcernedPersonName,
         ActingPersonName,
-        TertiaryPersonName,
-        OrganizationName,
+        BudgetAmountFloat,
+        BudgetName,
+        ConcernedPersonName,
+        CurrencyCode,
         DateTime,
         DateTimeExpiry,
-        BudgetName,
-        BudgetAmountFloat,
-        CurrencyCode,
+        Description,
         EmbeddedPreformattedText,
+        OrganizationName,
+        MailAddress,
         RequestPurpose,
-        HostName,
-        SwarmopsVersion,
-        Supplier,
-        Description
+        TertiaryPersonName,
+        TicketCode,
+        Supplier
     }
 
     [Serializable]

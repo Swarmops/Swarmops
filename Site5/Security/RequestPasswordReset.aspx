@@ -26,6 +26,9 @@
     
     <style type="text/css">
 
+        div#DivSuccessMaybe {
+            display: none;
+        }
         
     </style>
 
@@ -41,12 +44,37 @@
 
 	        });
 
+            function resetPassword() {
+                var jsonData = {};
+                jsonData.mailAddress = $('#<%=this.TextMailAddress.ClientID%>').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Security/RequestPasswordReset.aspx/RequestTicket",
+                    data: $.toJSON(jsonData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,  // blocks until function returns - race conditions otherwise
+                    success: function (msg) {
+                        if (msg.d) {
+                            $('#DivSuccessMaybe').slideDown();
+                            $('#DivMailEntry').slideUp();
+                        } // ignore a "false" for now - it means an invalid (syntactically wrong) mail addr
+                    },
+                    error: function(msg) {
+                        alertify.error("<%=Resources.Global.Error_AjaxCallException%>");
+                    }
+                });
+
+                return false; // prevent page submission
+            }
+
     	</script>
 	
 
 	
     <!-- Main menu, emptied out here -->
-
+        
 	<div class="center980px">
 	    <div class="currentuserinfo"><div style="background-image: url('/Images/Icons/iconshock-user-16px.png'); background-repeat: no-repeat; padding-left: 16px; float: left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image: url('/Images/Icons/iconshock-workchair-16px.png'); background-repeat: no-repeat; padding-left: 17px; float: left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image: url('/Images/Icons/iconshock-gamepad-16px.png'); background-repeat: no-repeat; padding-left: 20px; float: left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div>
         <div class="logoimage"><a href="/"><img style="border: none" src="/Security/Images/Swarmops-Logo.png" alt="Swarmops Logo" /></a></div>
@@ -59,53 +87,32 @@
             <div class="box">
                 <div class="content">
                     <h2><asp:Label ID="LabelContentTitle" runat="server" /></h2>
-                    <div id="DivEmail">
+                    <div id="DivMailEntry">
                         <div class="entryFields">
-                            <asp:TextBox runat="server" ID="TextEmail" />&#8203;<br/>
-                            <!-- button -->
+                            <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
+                            <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
                         </div>
                         <div class="entryLabels">
                             <asp:Label ID="LabelMail" runat="server" /><br />
                         </div>
                     </div>
+                    <div style="clear:both"></div>
                     <div id="DivSuccessMaybe">
-                        <asp:Label ID="LabelSuccessMaybe" runat="server" />
+                        <asp:Label ID="LabelSuccessMaybe" runat="server" /><br/><br/><!-- some ugly formatting solutions on the one-off pages -->
                     </div>
                 </div>
             </div>
         
         </div>
         <div class="sidebar">
-    <h2 class="blue"><asp:Label ID="LabelSidebarInfoHeader" runat="server" /><span class="arrow"></span></h2>
+        <h2 class="blue"><asp:Label ID="LabelSidebarInfoHeader" runat="server" /><span class="arrow"></span></h2>
     
-    <div class="box">
-        <div class="content">
-        <asp:Label ID="LabelSidebarInfoContent" runat="server" />
-        </div>
-    </div>
-    
-    <h2 class="blue"><asp:Label ID="LabelSidebarManualLoginHeader" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content" style="line-height: 24px">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr><td><asp:Literal ID="LiteralCredentialsUser" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextLogin" class="InputManualCredentials" type="text" /></td></tr>
-                <tr><td><asp:Literal ID="LiteralCredentialsPass" runat="server" />&nbsp;&nbsp;</td><td align="right"><input id="TextPass" class="InputManualCredentials" type="password" /></td></tr>
-                <tr style="display: none"><td><asp:Literal id="LiteralCredentials2FA" runat="server" />&nbsp;&nbsp;</td><td><input id="Text2FA" class="InputManualCredentials" type="password" /></td></tr>
-            </table>
-        </div>
-    </div>
-    
-    <h2 class="orange"><asp:Label ID="LabelSidebarHelpHeader" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-            <div class="link-row-encaps" onclick=" return false; " >
-                <div class="link-row-icon" style="background-image: url('/Images/Icons/iconshock-databaseconnect-16px.png')"></div>
-                <asp:Label ID="LabelSidebarResetPassword" runat="server" />
+            <div class="box">
+                <div class="content">
+                    <asp:Label ID="LabelSidebarInfoContent" runat="server" />
+                </div>
             </div>
-        </div>
-    </div>
+   
         </div>
         
 	</div>

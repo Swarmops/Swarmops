@@ -254,18 +254,18 @@ Thank you for your understanding.</value>
     <value>[[OrganizationName]] Cannot Reset Password</value>
   </data>
   <data name="Password_Changed_Body" xml:space="preserve">
-    <value>Your password at [OrganizationName] was changed.
+    <value>Your [InstallationName] password was changed at [ExternalUrl].
 
 If you did not just perform this password change, there has been a security breach. If this is the case, please block your account IMMEDIATELY by clicking the following link:
 
-[ExternalUrl]Security/LockoutAccount?Email=[EmailAddress]&amp;Ticket=[LockoutTicket]
+[ExternalUrl]Security/LockoutAccount?Mail=[MailAddress]&amp;Ticket=[LockoutTicket]
 
 For security purposes, there will not be a confirmation dialog: your account will be locked the instant you go to this link, and administrators will contact you to verify what happened and work with you to re-enable your account.
 
 However, if it was you yourself who changed the password, and thereby caused this notification to be sent, everything is obviously fine and just as it should be. Carry on.</value>
   </data>
   <data name="Password_Changed_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Password was changed</value>
+    <value>[[InstallationName]] Password was changed</value>
   </data>
   <data name="Password_ResetByCrew_Body" xml:space="preserve">
     <value>People at [OrganizationName] have issued a password reset ticket to your account, presumably at your request. This ticket is valid for the next 24 hours.
@@ -280,14 +280,14 @@ This ticket will expire in 24 hours. If you do not reset your password in this t
     <value>[[OrganizationName]] Password Reset Ticket</value>
   </data>
   <data name="Password_ResetOnRequest_Body" xml:space="preserve">
-    <value>Somebody, most likely you, requested a reset of the password associated with this email address at [OrganizationName]. If this was you, please follow the link below in the next 60 minutes to complete the password reset procedure:
+    <value>Somebody, most likely you, requested a reset of the password associated with this email address at [InstallationName]. If this was you, please follow the link below in the next 60 minutes to complete the password reset procedure:
 
-[ExternalUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
 
 If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did not request, please notify the administrator.)</value>
   </data>
   <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Password Reset Ticket</value>
+    <value>[[InstallationName]] Password Reset Ticket</value>
   </data>
   <data name="Receipts_Filed_Body" xml:space="preserve">
     <value>Receipts have been filed that need validation for their financial processes to continue.

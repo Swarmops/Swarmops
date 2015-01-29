@@ -223,6 +223,9 @@
   <data name="ResetPassword_Info" xml:space="preserve">
     <value>You're resetting the password for a user account. Enter your new password twice to set it and login.</value>
   </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Enter your mail account to send instructions to that address on how to proceed with the password reset procedure. It will contain a unique and expiring code that you will need to use to proceed.</value>
+  </data>
   <data name="ResetPassword_NoEmpty" xml:space="preserve">
     <value>The new password cannot be empty.</value>
   </data>
@@ -248,6 +251,6 @@
     <value>Ticket</value>
   </data>
   <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
-    <value>If the email was associated with an account on this Swarmops installation, a reset ticket has now been sent. Open that mail and click the link in the mail to reset your password. (If the email did not exist, nothing was sent.)&lt;br/&gt;&lt;br/&gt;You may close this browser tab. It is not needed anymore.</value>
+    <value>If the email was associated with an account on this Swarmops installation, a &lt;strong&gt;reset ticket has been sent.&lt;/strong&gt; Open that mail and click the link in the mail to reset your password. (If the email did not exist, nothing was sent.)&lt;br/&gt;&lt;br/&gt;You may close this browser tab. It is not needed anymore.</value>
   </data>
 </root>

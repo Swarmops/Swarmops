@@ -401,13 +401,13 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your password at [OrganizationName] was changed.
+        ///   Looks up a localized string similar to Your [InstallationName] password was changed at [ExternalUrl].
         ///
         ///If you did not just perform this password change, there has been a security breach. If this is the case, please block your account IMMEDIATELY by clicking the following link:
         ///
-        ///[ExternalUrl]Security/LockoutAccount?Email=[EmailAddress]&amp;Ticket=[LockoutTicket]
+        ///[ExternalUrl]Security/LockoutAccount?Mail=[MailAddress]&amp;Ticket=[LockoutTicket]
         ///
-        ///For security purposes, there will not be a confirmation dialog: your account will be locked the instant you go to this link, and administrators will contact you to verify what happened and work with [rest of string was truncated]&quot;;.
+        ///For security purposes, there will not be a confirmation dialog: your account will be locked the instant you go to this link, and administrators will contact you to verify what happened a [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Password_Changed_Body {
             get {
@@ -416,7 +416,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Password was changed.
+        ///   Looks up a localized string similar to [[InstallationName]] Password was changed.
         /// </summary>
         internal static string Password_Changed_Subject {
             get {
@@ -449,11 +449,11 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Somebody, most likely you, requested a reset of the password associated with this email address at [OrganizationName]. If this was you, please follow the link below in the next 60 minutes to complete the password reset procedure:
+        ///   Looks up a localized string similar to Somebody, most likely you, requested a reset of the password associated with this email address at [InstallationName]. If this was you, please follow the link below in the next 60 minutes to complete the password reset procedure:
         ///
-        ///[ExternalUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+        ///[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
         ///
-        ///If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did n [rest of string was truncated]&quot;;.
+        ///If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did not reques [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Password_ResetOnRequest_Body {
             get {
@@ -462,7 +462,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Password Reset Ticket.
+        ///   Looks up a localized string similar to [[InstallationName]] Password Reset Ticket.
         /// </summary>
         internal static string Password_ResetOnRequest_Subject {
             get {
