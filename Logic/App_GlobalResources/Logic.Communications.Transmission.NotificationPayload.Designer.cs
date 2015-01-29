@@ -379,9 +379,9 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Somebody, most likely you, requested a reset of the password associated with this email address at [OrganizationName]. However, two-factor authentication has been enabled for this account for heightened security. Therefore, the password CANNOT be reset by simple means.
+        ///   Looks up a localized string similar to Somebody, most likely you, requested a reset of the password associated with this mail address at [InstallationName]. However, two-factor authentication has been enabled for this account for heightened security. Therefore, the password CANNOT be reset by simple means.
         ///
-        ///Please contact a personnel administrator at [OrganizationName] to resolve your problem and issue a new password following a more rigorous identification procedure matching the two-factor security level.
+        ///Please contact a personnel administrator at [InstallationName] to resolve your problem and issue a new password following a more rigorous identification procedure matching the two-factor security level.
         ///
         ///Thank you for your understanding..
         /// </summary>
@@ -392,7 +392,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Cannot Reset Password.
+        ///   Looks up a localized string similar to [[InstallationName]] Cannot Reset Password.
         /// </summary>
         internal static string Password_CannotReset2FA_Subject {
             get {

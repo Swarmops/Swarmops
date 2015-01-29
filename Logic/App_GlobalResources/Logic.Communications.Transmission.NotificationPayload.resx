@@ -244,14 +244,14 @@ Time spent transmitting: [TransmissionTime].</value>
     <value>[[OrganizationName]] Comms transmitted: [GeographyName]</value>
   </data>
   <data name="Password_CannotReset2FA_Body" xml:space="preserve">
-    <value>Somebody, most likely you, requested a reset of the password associated with this email address at [OrganizationName]. However, two-factor authentication has been enabled for this account for heightened security. Therefore, the password CANNOT be reset by simple means.
+    <value>Somebody, most likely you, requested a reset of the password associated with this mail address at [InstallationName]. However, two-factor authentication has been enabled for this account for heightened security. Therefore, the password CANNOT be reset by simple means.
 
-Please contact a personnel administrator at [OrganizationName] to resolve your problem and issue a new password following a more rigorous identification procedure matching the two-factor security level.
+Please contact a personnel administrator at [InstallationName] to resolve your problem and issue a new password following a more rigorous identification procedure matching the two-factor security level.
 
 Thank you for your understanding.</value>
   </data>
   <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Cannot Reset Password</value>
+    <value>[[InstallationName]] Cannot Reset Password</value>
   </data>
   <data name="Password_Changed_Body" xml:space="preserve">
     <value>Your [InstallationName] password was changed at [ExternalUrl].

@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
@@ -52,12 +56,28 @@ namespace Swarmops.Pages.Security
 
             People concernedPeople = People.FromMail (mailAddress); // Should result in exactly 1
 
+            if (concernedPeople.Count != 1)
+            {
+                return true; // TODO: Prevent registration with duplicate mail addy, or this will cause problems down the road
+            }
+
+            Person concernedPerson = concernedPeople[0];
+
+            if (!string.IsNullOrEmpty (concernedPerson.BitIdAddress))
+            {
+                // Cannot reset password - two factor auth is enabled. Manual intervention required.
+
+                OutboundComm.CreateSecurityNotification (concernedPerson, null, null, string.Empty,
+                    NotificationResource.Password_CannotReset2FA);
+            }
+
 
             string resetTicket = SupportFunctions.GenerateSecureRandomKey (16); // 16 bytes = 128 bits random key, more than good enough
 
+            concernedPerson.ResetPasswordTicket = DateTime.UtcNow.AddHours (1).ToString(CultureInfo.InvariantCulture) + "," + resetTicket; // Adds expiry - one hour
 
-
-            Outbound
+            OutboundComm.CreateSecurityNotification (concernedPerson, null, null, resetTicket,
+                NotificationResource.Password_ResetOnRequest);
 
             // Create log entry
 
