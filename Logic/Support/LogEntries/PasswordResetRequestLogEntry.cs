@@ -10,14 +10,14 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Logic.Support.LogEntries
 {
     [Serializable]
-    public class PasswordResetRequest: SecurityActionBase
+    public class PasswordResetRequestLogEntry: SecurityActionBase
     {
-        public PasswordResetRequest()
+        public PasswordResetRequestLogEntry()
         {
             // empty ctor for serialization
         }
 
-        public PasswordResetRequest (Person concernedPerson, string remoteIPAddresses, 
+        public PasswordResetRequestLogEntry (Person concernedPerson, string remoteIPAddresses, 
             Person actingPerson = null, Organization organization = null)
         {
             this.ConcernedPersonId = concernedPerson.Identity;

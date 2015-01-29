@@ -84,7 +84,7 @@ namespace Swarmops.Pages.Security
                 NotificationResource.Password_ResetOnRequest);
 
             SwarmopsLog.CreateEntry (null,
-                new PasswordResetRequest (concernedPerson, SupportFunctions.GetRemoteIPAddressChain()));
+                new PasswordResetRequestLogEntry (concernedPerson, SupportFunctions.GetRemoteIPAddressChain()));
 
             return true;
         }

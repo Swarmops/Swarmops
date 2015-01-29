@@ -254,18 +254,18 @@ Thank you for your understanding.</value>
     <value>[[InstallationName]] Cannot Reset Password</value>
   </data>
   <data name="Password_Changed_Body" xml:space="preserve">
-    <value>Your [InstallationName] password was changed at [ExternalUrl].
+    <value>Your [InstallationName] password was just changed at [ExternalUrl].
 
-If you did not just perform this password change, there has been a security breach. If this is the case, please block your account IMMEDIATELY by clicking the following link:
+If you did not just perform this password change, there has been a security breach. If this is the case, please lock your account down IMMEDIATELY by clicking the following link:
 
-[ExternalUrl]Security/LockoutAccount?Mail=[MailAddress]&amp;Ticket=[LockoutTicket]
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
 
-For security purposes, there will not be a confirmation dialog: your account will be locked the instant you go to this link, and administrators will contact you to verify what happened and work with you to re-enable your account.
+If you confirm a lockdown on the link above, any existing sessions will terminate immediately, logons with the newly-set password will be locked out, and administrators will contact you to verify what happened and work with you to re-enable your account.
 
-However, if it was you yourself who changed the password, and thereby caused this notification to be sent, everything is obviously fine and just as it should be. Carry on.</value>
+However, if it was you yourself who changed the password just now, and thereby caused this notification to be sent, everything is obviously fine and just as it should be. Carry on.</value>
   </data>
   <data name="Password_Changed_Subject" xml:space="preserve">
-    <value>[[InstallationName]] Password was changed</value>
+    <value>[[InstallationName]] Password Changed</value>
   </data>
   <data name="Password_ResetByCrew_Body" xml:space="preserve">
     <value>People at [OrganizationName] have issued a password reset ticket to your account, presumably at your request. This ticket is valid for the next 24 hours.

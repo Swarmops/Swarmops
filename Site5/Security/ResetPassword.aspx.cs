@@ -1,10 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
+using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NBitcoin.BouncyCastle.Asn1.Ocsp;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Pages.Security
@@ -24,6 +33,7 @@ namespace Swarmops.Pages.Security
                 {
                     this.TextTicket.Text = suppliedTicket.Trim().ToUpperInvariant();
                     this.TextTicket.ReadOnly = true;
+                    this.TextTicket.Enabled = false;
                 }
 
                 Localize();
@@ -64,12 +74,70 @@ namespace Swarmops.Pages.Security
 
             if (resetData.Length != 2)
             {
-                return false; // invalid data
+                return false; // invalid data or no ticket
             }
 
+            // This may throw on invalid data, which will give a slightly different error but that's fine too for now.
+            DateTime ticketExpiresUtc = DateTime.Parse(resetData[0]);
+            if (DateTime.UtcNow > ticketExpiresUtc)
+            {
+                // Ticket expired.
+                return false;
+            }
 
+            if (ticket != resetData[1])
+            {
+                // Bad ticket.
+                return false;
+            }
 
-            return false; // temp
+            // When we get here, all checks to reset the password have completed. Change the password, log the change,
+            // notify the user that the password was changed, set a new authentication cookie, and have the web page
+            // redirect to Dashboard (by returning true).
+
+            // Clear password reset ticket
+
+            resetPerson.ResetPasswordTicket = string.Empty;
+
+            // Create lockdown code, notify
+
+            string lockdownTicket = SupportFunctions.GenerateSecureRandomKey (16);
+            OutboundComm.CreateSecurityNotification (resetPerson, null, null, lockdownTicket,
+                NotificationResource.Password_Changed);
+            resetPerson.AccountLockdownTicket = DateTime.UtcNow.AddDays (1).ToString (CultureInfo.InvariantCulture) + "," +
+                                         lockdownTicket;
+
+            // Set new password
+
+            resetPerson.SetPassword (newPassword);
+
+            // Log the password reset
+
+            SwarmopsLog.CreateEntry (resetPerson,
+                new PasswordResetLogEntry (resetPerson, SupportFunctions.GetRemoteIPAddressChain()));
+
+            // Set authentication cookies
+
+            int lastOrgId = resetPerson.LastLogonOrganizationId;
+
+            if (lastOrgId == 0)
+            {
+                lastOrgId = Organization.SandboxIdentity;
+            }
+
+            if (!resetPerson.MemberOfWithInherited(lastOrgId))
+            {
+                // If the person doesn't have access to the last organization (anymore), log on to Sandbox
+
+                lastOrgId = 1;
+            }
+
+            // Set cookies
+
+            FormsAuthentication.SetAuthCookie(resetPerson.Identity.ToString(CultureInfo.InvariantCulture) + "," + lastOrgId.ToString(CultureInfo.InvariantCulture) + ",,AuthPlain", true);
+            HttpContext.Current.Response.SetCookie (new HttpCookie ("DashboardMessage", Resources.Pages.Security.ResetPassword_Success));
+
+            return true; // temp
 
             // do NOT NOT NOT trim password - this is deliberate. Starting/ending pwds in whitespace must be possible
 

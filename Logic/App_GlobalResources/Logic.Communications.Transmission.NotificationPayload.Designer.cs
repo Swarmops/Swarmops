@@ -401,13 +401,13 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your [InstallationName] password was changed at [ExternalUrl].
+        ///   Looks up a localized string similar to Your [InstallationName] password was just changed at [ExternalUrl].
         ///
-        ///If you did not just perform this password change, there has been a security breach. If this is the case, please block your account IMMEDIATELY by clicking the following link:
+        ///If you did not just perform this password change, there has been a security breach. If this is the case, please lock your account down IMMEDIATELY by clicking the following link:
         ///
-        ///[ExternalUrl]Security/LockoutAccount?Mail=[MailAddress]&amp;Ticket=[LockoutTicket]
+        ///[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
         ///
-        ///For security purposes, there will not be a confirmation dialog: your account will be locked the instant you go to this link, and administrators will contact you to verify what happened a [rest of string was truncated]&quot;;.
+        ///If you confirm a lockdown on the link above, any existing sessions will terminate immediately, logons with the newly-set password will be locked out, and administrators will conta [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Password_Changed_Body {
             get {
@@ -416,7 +416,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[InstallationName]] Password was changed.
+        ///   Looks up a localized string similar to [[InstallationName]] Password Changed.
         /// </summary>
         internal static string Password_Changed_Subject {
             get {

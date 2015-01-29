@@ -218,10 +218,10 @@
     <value>Re-enter your mail address</value>
   </data>
   <data name="ResetPassword_Failed" xml:space="preserve">
-    <value>There is no valid password reset ticket for this mail address, the address does not exist, the password reset ticket is invalid, or it has expired. Password reset failed.</value>
+    <value>There is no valid password reset ticket for this mail address, the address does not exist, the password reset ticket is invalid, or it has expired.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Password reset failed.&lt;/strong&gt;</value>
   </data>
   <data name="ResetPassword_Info" xml:space="preserve">
-    <value>You're resetting the password for a user account. Enter your new password twice to set it and login.</value>
+    <value>You're resetting the password for a user account. Enter your new password twice to set it and login. (If you're trying to start the password-reset procedure, you need a ticket to do so. &lt;a href="/Security/RequestPasswordReset"&gt;Create a ticket.&lt;/a&gt;)</value>
   </data>
   <data name="ResetPassword_InfoRequest" xml:space="preserve">
     <value>Enter your mail account to send instructions to that address on how to proceed with the password reset procedure. It will contain a unique and expiring code that you will need to use to proceed.</value>
@@ -248,7 +248,7 @@
     <value>Reset</value>
   </data>
   <data name="ResetPassword_Success" xml:space="preserve">
-    <value>Your password was changed and you have been logged in to Swarmops using your new password.</value>
+    <value>Your password was changed and you have been logged on to Swarmops using your new password.</value>
   </data>
   <data name="ResetPassword_Ticket" xml:space="preserve">
     <value>Ticket</value>

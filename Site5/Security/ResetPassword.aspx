@@ -45,11 +45,16 @@
 	        function resetPassword() {
 	            var jsonData = {};
 	            jsonData.mailAddress = $('#<%=this.TextMailAddress.ClientID%>').val();
-	            jsonData.ticket = val();
-	            jsonData.newPassword = val();
+	            jsonData.ticket = $('#<%=this.TextTicket.ClientID%>').val();
+	            jsonData.newPassword = $('#<%=this.TextPassword1.ClientID%>').val();
 
-	            if (jsonData.newPassword != val()) {
+	            if (jsonData.newPassword != $('#<%=this.TextPassword2.ClientID%>').val()) {
 	                alertify.error("<%= Resources.Pages.Security.ResetPassword_NewPasswordsDontMatch %>");
+	                return false;
+	            }
+
+	            if (jsonData.newPassword == "") {
+	                alertify.error("<%= Resources.Pages.Security.ResetPassword_NoEmpty %>");
 	                return false;
 	            }
 
@@ -62,8 +67,7 @@
                     async: false,  // blocks until function returns - race conditions otherwise
                     success: function (msg) {
                         if (msg.d) {
-                            $('#DivSuccessMaybe').slideDown();
-                            $('#DivMailEntry').slideUp();
+                            document.location = "/"; // success, auth cookies have been set - redirect to Dashboard
                         } else {
                             alertify.alert("<%= Resources.Pages.Security.ResetPassword_Failed %>");
                         }
@@ -98,8 +102,8 @@
                         <div class="entryFields">
                             <asp:TextBox runat="server" ID="TextMailAddress" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextTicket" />&#8203;<br/>
-                            <asp:TextBox runat="server" ID="TextPassword1" />&#8203;<br/>
-                            <asp:TextBox runat="server" ID="TextPassword2" />&#8203;<br/>
+                            <asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" />&#8203;<br/>
+                            <asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" />&#8203;<br/>
                             <asp:Button ID="ButtonRequest" runat="server" CssClass="buttonAccentColor NoInputFocus" OnClientClick="return resetPassword();" Text="XYZ Request"/>
                         </div>
                         <div class="entryLabels">
