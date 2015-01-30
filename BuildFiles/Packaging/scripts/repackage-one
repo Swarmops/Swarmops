@@ -137,13 +137,26 @@ else
   fi
 fi
 
+if [ -e "../templates/preinst-$PACKAGE.template" ]; then
+  echo "Adding $PACKAGE preinst script..."
+  cp ../templates/preinst-$PACKAGE.template DEBIAN/preinst
+  chmod +x DEBIAN/preinst
+else
+  if [ -e "DEBIAN/preinst" ]; then
+    echo "Deleting old preinst script..."
+    rm DEBIAN/preinst
+  fi
+fi
+
 echo "Converting CRLF line endings in scripts to LF-only..."
 dos2unix -q DEBIAN/*
 dos2unix -q etc/init.d/*
 
 echo "Setting build number $BUILDID..."
-sed -i "s/--BuildNumber--/$BUILDID/" DEBIAN/control
-echo $BUILDID > $DEPLOYDIR/$TARGETDIR/BuildIdentity.txt
+sed -i "s/--BuildNumber--/$BUILDID/g" DEBIAN/control
+if [ -e $DEPLOYDIR/$TARGETDIR ]; then
+  echo $BUILDID > $DEPLOYDIR/$TARGETDIR/BuildIdentity.txt
+fi
 
 # Calculating new checksums
 echo "Creating MD5 checksum file..."
