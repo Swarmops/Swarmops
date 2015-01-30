@@ -140,13 +140,14 @@ Det betyder att du borde se beloppet på ditt konto inom kort.</value>
     <value>[[OrganizationName]] Kontantförskott utbetalt: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] har begärt ett kontantförskott på [CurrencyCode] [BudgetAmountFloat] rörande [RequestPurpose]. Dessa pengar är en del av din budget, [BudgetName].
+    <value>[ConcernedPersonName] har begärt ett kontantförskott på [CurrencyCode] [BudgetAmountFloat] för [RequestPurpose]. Dessa pengar är en del av din budget, [BudgetName].
 
-Vänligen logga på Swarmops på [SystemUrl] för att attestera eller avslå.</value>
+Vänligen logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts att attestera eller neka.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ÅTGÄRD BEHÖVS] Förskott begärt: [CurrencyCode] [BudgetAmountFloat] - attest behövs</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
     <value>Ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har attesterats av budgetägaren. Det kommer att betalas ut till dig när kvittona granskats för räkenskaperna.</value>
@@ -156,9 +157,9 @@ Vänligen logga på Swarmops på [SystemUrl] för att attestera eller avslå.</v
     <value>[[OrganizationName]] Utläggsanspråk attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
-    <value>[ConcernedPersonName] har lagt ett utläggsanspråk i [OrganizationName] mot budgeten [BudgetName] på [CurrencyCode] [BudgetAmountFloat]. Anspråket gäller [RequestPurpose]. Som budgetägare behöver du attestera det här utläggsanspråket.
+    <value>[ConcernedPersonName] har lagt ett utläggsanspråk mot budgeten [BudgetName] på [CurrencyCode] [BudgetAmountFloat]. Anspråket gäller [RequestPurpose]. Det betalas bara ut om du attesterar kostnaden.
 
-Vänligen logga på Swarmops på [SystemUrl] för att attestera eller avslå.</value>
+Logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts för att attestera eller neka anspråket.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
@@ -209,12 +210,13 @@ Utläggsanspråket kommer att betalas ut till dig när beloppet också är attes
     <value>[[OrganizationName]] Kvitton för utläggsanspråk granskade: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="InboundInvoice_Created_Body" xml:space="preserve">
-    <value>En faktura från [Supplier], gällande [Description], har lagts mot din budget [BudgetName] på beloppet [CurrencyCode] [BudgetAmountFloat]. Du måste attestera fakturan innan den går till betalning.
+    <value>En faktura från [Supplier] gällande [Description] har inkommit mot din budget [BudgetName]. Fakturan är på [CurrencyCode] [BudgetAmountFloat]. Du måste attestera fakturan innan den går till betalning.
 
-Logga på Swarmops på [SystemUrl] för att attestera eller avslå.</value>
+Logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts för att attestera eller neka fakturan.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ÅTGÄRD KRÄVS] Faktura mottagen: [CurrencyCode] [BudgetAmountFloat] - attest behövs</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>En ny [Regular] lades manuellt till [OrganizationName] inom ett område där du har ansvar.</value>
@@ -245,13 +247,52 @@ Tid från order till sändningen var klar: [TransmissionTime].</value>
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Meddelande sänt: [GeographyName]</value>
   </data>
-  <data name="Receipts_Filed_Body" xml:space="preserve">
-    <value>Kvitton har lagts in som behöver granskas för att gå vidare till utbetalning.
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Någon, troligtvis du, har begärt en lösenordsåterställning till [InstallationName] för kontot som är kopplat till den här mailadressen. Dock har tvåfaktorsautentisering aktiverats på det här kontot för att höja säkerheten. Därför går det inte heller att återställa lösenordet lika enkelt.
 
-Logga på Swarmops på [SystemUrl] för att godkänna eller avslå dem.</value>
+Kontakta en personaladministratör på [InstallationName] för att lösa ditt problem och utfärda ett nytt lösenord efter en identitetskontroll som överensstämmer med säkerhetsnivån för tvåfaktorsautenticering.
+
+Tack för din förståelse.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Kan inte återställa lösenord</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Ditt lösenord till [InstallationName] på [ExternalUrl] ändrades nyss.
+
+Om det inte var du som ändrade på lösenordet just nu, så gjorde någon annan det, förmodligen i syfte att logga in som dig. Om så är fallet, vänligen lås ditt konto OMEDELBART genom att klicka på följande länk:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+Då du bekräftar en nedlåsning på länken ovan, så kommer befintliga sessioner kommer att avslutas omedelbart, inloggningar med det nya lösenordet blir utelåsta, och administratörer kommer att kontakta dig för att kontrollera vad som hänt och arbeta med dig för att återaktivera ditt konto.
+
+Men om det var du själv som ändrade lösenordet just nu, och därmed ligger bakom att detta mail skickades för din kännedom, så är allt givetvis bra och precis som det ska vara.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Lösenordet har ändrats</value>
+  </data>
+  
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Lösenordsåterställningskod</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Någon, troligtvis du, har begärt en återställning av lösenordet som är kopplat till denna e-postadress på [InstallationName]. Om det var du, så följ länken nedan inom en timme för att fullfölja lösenordsåterställningen:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+Om du INTE har begärt att lösenordet ska återställas, så kan (och bör) du ignorera detta mail. Koden ovan gäller bara i en timme. (Om du får en stor mängd sådana här lösenordsåterställningskoder som du inte har frågat efter, vänligen meddela administratörer på [InstallationName].)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Lösenordsåterställningskod</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>Kvitton har lämnats in. De behöver godkännas för att gå vidare till utbetalning och andra processer.
+
+Logga in på [InstallationName] på [ExternalUrl]Financial/ValidateReceipts att godkänna eller underkänna dem.</value>
   </data>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ÅTGÄRD KRÄVS] Kvitton inlagda - granskning behövs</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
     <value>Swarmops Backend [SwarmopsVersion] på servern [HostName] har uppgraderat Swarmops' databasschema till version [DbVersion].  Detta är endast för information. Du behöver inte vidta någon åtgärd.</value>
@@ -264,6 +305,12 @@ Logga på Swarmops på [SystemUrl] för att godkänna eller avslå dem.</value>
   </data>
   <data name="System_Exception_Subject" xml:space="preserve">
     <value>Swarmops EXCEPTION!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>Detta är ett testmail som skickats av Swarmops [SwarmopsVersion] på [HostName]. Eftersom du precis ändrade mailserverinställningarna, så skickas det här testmailet för att se att dina nya inställningar fungerar.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Swarmops Test av Mailserver</value>
   </data>
   <data name="System_Startup_Body" xml:space="preserve">
     <value>Swarmops Backend version [SwarmopsVersion], som körs på maskinen [HostName], har startat och har anslutit till databasen och notifieringsmekanismer.</value>

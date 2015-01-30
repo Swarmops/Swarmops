@@ -159,6 +159,21 @@
   <data name="DatabaseUpgradeRequired_Rant" xml:space="preserve">
     <value>crwdns6555045:0crwdne6555045:0</value>
   </data>
+  <data name="LockdownAccount_Failed" xml:space="preserve">
+    <value>crwdns6555597:0crwdne6555597:0</value>
+  </data>
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>crwdns6555598:0crwdne6555598:0</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>crwdns6555599:0crwdne6555599:0</value>
+  </data>
+  <data name="LockdownAccount_Success" xml:space="preserve">
+    <value>crwdns6555600:0crwdne6555600:0</value>
+  </data>
+  <data name="LockdownAccount_Ticket" xml:space="preserve">
+    <value>crwdns6555601:0crwdne6555601:0</value>
+  </data>
   <data name="Login_BitIdEnabled" xml:space="preserve">
     <value>crwdns6555046:0crwdne6555046:0</value>
   </data>
@@ -197,5 +212,47 @@
   </data>
   <data name="Login_Username" xml:space="preserve">
     <value>crwdns6555058:0crwdne6555058:0</value>
+  </data>
+  <data name="ResetPassword_Email" xml:space="preserve">
+    <value>crwdns6555602:0crwdne6555602:0</value>
+  </data>
+  <data name="ResetPassword_Failed" xml:space="preserve">
+    <value>crwdns6555603:0crwdne6555603:0</value>
+  </data>
+  <data name="ResetPassword_Info" xml:space="preserve">
+    <value>crwdns6555604:0crwdne6555604:0</value>
+  </data>
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>crwdns6555605:0crwdne6555605:0</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>crwdns6555606:0crwdne6555606:0</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>crwdns6555607:0crwdne6555607:0</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>crwdns6555608:0crwdne6555608:0</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>crwdns6555609:0crwdne6555609:0</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>crwdns6555610:0crwdne6555610:0</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>crwdns6555611:0crwdne6555611:0</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>crwdns6555612:0crwdne6555612:0</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>crwdns6555613:0crwdne6555613:0</value>
+  </data>
+  <data name="ResetPassword_Ticket" xml:space="preserve">
+    <value>crwdns6555614:0crwdne6555614:0</value>
+  </data>
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>crwdns6555615:0crwdne6555615:0</value>
   </data>
 </root>

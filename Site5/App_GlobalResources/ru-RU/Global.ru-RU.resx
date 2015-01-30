@@ -244,7 +244,10 @@
     <value>Загрузить файл</value>
     <comment>Displayed on "Submit" button next to file upload controls.</comment>
   </data>
-  
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Загрузить файл в Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
   <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
     <value>Пожалуйста, выберите файл для загрузки.</value>
     <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
@@ -306,6 +309,10 @@
     <value>Сегодня</value>
   </data>
   
+  <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
+    <value>Проект</value>
+    <comment>Tagging costs/income to projects</comment>
+  </data>
   
   
   
@@ -315,57 +322,174 @@
   
   
   
+  <data name="Financial_DueDate" xml:space="preserve">
+    <value>Срок сдачи</value>
+    <comment>For invoices and similar</comment>
+  </data>
+  <data name="Financial_Supplier" xml:space="preserve">
+    <value>Поставщик</value>
+  </data>
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>Английский (США)</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>Нет</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Да</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Financial_Asset" xml:space="preserve">
+    <value>Активы</value>
+  </data>
+  <data name="Financial_Cost" xml:space="preserve">
+    <value>Расходы</value>
+  </data>
+  
+  
+  <data name="Global_SelectOne" xml:space="preserve">
+    <value>-- Выберите --</value>
+    <comment>Shown in dropdowns when selection required</comment>
+  </data>
+  <data name="Global_Missing" xml:space="preserve">
+    <value>- отсутствует -</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>- несколько -</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
+  <data name="Global_Off" xml:space="preserve">
+    <value>Выкл</value>
+    <comment>Off (as opposed to On)</comment>
+  </data>
+  <data name="Global_On" xml:space="preserve">
+    <value>Вкл</value>
+    <comment>On (as opposed to Off)</comment>
+  </data>
+  <data name="Global_Organization_Commercial" xml:space="preserve">
+    <value>Коммерческая</value>
+    <comment>A commercial organization (for-profit enterprise)</comment>
+  </data>
+  <data name="Global_Organization_Governmental" xml:space="preserve">
+    <value>Государственная</value>
+    <comment>Organization that's part of government somehow</comment>
+  </data>
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
+    <value>Некоммерческая</value>
+    <comment>Non-profit (activist, political parties)</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>Географическое местоположение</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
+  <data name="Global_Action" xml:space="preserve">
+    <value>Действие</value>
+    <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
+  </data>
+  <data name="Global_Mail" xml:space="preserve">
+    <value>Электронная почта</value>
+    <comment>Somebody's email address.</comment>
+  </data>
+  <data name="Global_Name" xml:space="preserve">
+    <value>Название</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
+  <data name="Global_Notes" xml:space="preserve">
+    <value>Примечания</value>
+    <comment>Small notes in a grid, maybe in icon form</comment>
+  </data>
+  <data name="Global_Phone" xml:space="preserve">
+    <value>Телефон</value>
+    <comment>Somebody's telephone number. Mobile assumed.</comment>
+  </data>
+  <data name="Global_Custom" xml:space="preserve">
+    <value>Пользовательское</value>
+    <comment>As in "show me the advanced options"</comment>
+  </data>
+  <data name="Global_Create" xml:space="preserve">
+    <value>Создать</value>
+    <comment>Like "Create Organization"</comment>
+  </data>
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Global_Description" xml:space="preserve">
+    <value>Описание</value>
+    <comment>As a general header of any description field</comment>
+  </data>
+  <data name="Global_Q1" xml:space="preserve">
+    <value>1 Квартал</value>
+    <comment>First quarter of the year</comment>
+  </data>
+  <data name="Global_Q2" xml:space="preserve">
+    <value>2 Квартал</value>
+    <comment>Second quarter of the year</comment>
+  </data>
+  <data name="Global_Q3" xml:space="preserve">
+    <value>3 Квартал</value>
+    <comment>Third quarter of the year</comment>
+  </data>
+  <data name="Global_Q4" xml:space="preserve">
+    <value>4 Квартал</value>
+    <comment>Fourth quarter of the year</comment>
+  </data>
+  
+  <data name="Ledgers_Balance" xml:space="preserve">
+    <value>Баланс</value>
+    <comment>As in 'account balance', not as in staying upright</comment>
+  </data>
+  
+  
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Организация</value>
+  </data>
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Жен.</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Муж.</value>
+    <comment>Legal gender</comment>
+  </data>
+  
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>ММ/ДД/ГГГГ</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  </data>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>МММ д, ГГГГ</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>пятилетка</value>
+  </data>
   
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_Address" xml:space="preserve">
+    <value>Адрес</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Страна</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Дата рождения</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Почтовый индекс</value>
+  </data>
   
 </root>

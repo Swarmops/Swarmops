@@ -134,7 +134,7 @@
   </data>
   <data name="BalanceSheet_ContentHeader" xml:space="preserve">
     <value>crwdns6555069:0{0}crwdne6555069:0</value>
-    <comment>{0} is the organization name. The year follows immediately.</comment>
+    <comment>{0} is the organization name. The year follows immediately, so keep ending comma.</comment>
   </data>
   <data name="BalanceSheet_Current" xml:space="preserve">
     <value>crwdns6555070:0crwdne6555070:0</value>
@@ -560,5 +560,17 @@
   <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
     <value>crwdns6555567:0{0}crwdnd6555567:0{1}crwdne6555567:0</value>
     <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
+  </data>
+  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
+    <value>crwdns6555594:0{0:N0}crwdne6555594:0</value>
+    <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
+    <value>crwdns6555595:0{0}crwdne6555595:0</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
+    <value>crwdns6555596:0{0}crwdne6555596:0</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
   </data>
 </root>
