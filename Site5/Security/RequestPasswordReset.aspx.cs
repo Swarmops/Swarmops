@@ -42,7 +42,7 @@ namespace Swarmops.Pages.Security
 
             // Page specific
             this.LabelContentTitle.Text = Resources.Pages.Security.ResetPassword_PageTitle;
-            this.LabelMail.Text = Resources.Pages.Security.ResetPassword_Email;
+            this.LabelMail.Text = Resources.Pages.Security.ResetPassword_Mail1;
             this.LabelSuccessMaybe.Text = Resources.Pages.Security.ResetPassword_TicketSentMaybe;
             this.ButtonRequest.Text = Resources.Pages.Security.ResetPassword_Reset;
         }
@@ -76,7 +76,8 @@ namespace Swarmops.Pages.Security
             }
 
 
-            string resetTicket = SupportFunctions.GenerateSecureRandomKey (16); // 16 bytes = 128 bits random key, more than good enough
+            string resetTicket = SupportFunctions.GenerateSecureRandomKey (16);
+            resetTicket = resetTicket.Substring (0, 21); // We're using a 21-character (84-bit) key mostly for UI consistency with the ticket sent in mail, and it's secure enough
 
             concernedPerson.ResetPasswordTicket = DateTime.UtcNow.AddHours (1).ToString(CultureInfo.InvariantCulture) + "," + resetTicket; // Adds expiry - one hour
 

@@ -84,8 +84,8 @@ namespace Swarmops.Logic.Communications.Transmission
 
             result[CommRenderPart.Subject] = GetSubject();
             result[CommRenderPart.BodyText] = GetBody();
-            result[CommRenderPart.SenderName] = "Swarmops Administrative";
-            result[CommRenderPart.SenderMail] = "admin@swarmops.com";
+            result[CommRenderPart.SenderName] = SystemSettings.AdminNotificationSender; // TODO: Make dependent on an enum
+            result[CommRenderPart.SenderMail] = SystemSettings.AdminNotificationAddress;
 
             return result;
         }

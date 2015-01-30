@@ -114,9 +114,6 @@
                         </div>
                     </div>
                     <div style="clear:both"></div>
-                    <div id="DivSuccessMaybe">
-                        <asp:Label ID="LabelSuccessMaybe" runat="server" /><br/><br/><!-- some ugly formatting solutions on the one-off pages -->
-                    </div>
                 </div>
             </div>
         

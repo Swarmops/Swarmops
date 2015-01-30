@@ -9,17 +9,16 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         protected void Page_Load (object sender, EventArgs e)
         {
+            string cultureId = Request.QueryString["CultureId"];
+            Response.SetCookie(new HttpCookie("PreferredCulture", cultureId));
+            
             AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
-
-            if (authenticationData.CurrentUser == null)
+            if (authenticationData.CurrentUser != null)
             {
-                throw new UnauthorizedAccessException ("No"); // may cause problems on login screen?
+                authenticationData.CurrentUser.PreferredCulture = cultureId;
             }
 
-            string cultureId = Request.QueryString["CultureId"];
-            Response.SetCookie (new HttpCookie ("PreferredCulture", cultureId));
-            authenticationData.CurrentUser.PreferredCulture = cultureId;
-            Response.Redirect ("/"); // to dashboard
+            Response.Redirect ("/"); // to dashboard - or maybe back to login page
         }
     }
 }

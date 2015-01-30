@@ -79,6 +79,20 @@ namespace Swarmops.Logic.Support
             }
         }
 
+
+        static public string AdminNotificationSender
+        {
+            get { return GetDefaultedPersistedKey ("AdminMailFrom", "Swarmops Admin"); }
+            set { Persistence.Key["AdminMailFrom"] = value; }
+        }
+
+        static public string AdminNotificationAddress
+        {
+            get { return GetDefaultedPersistedKey ("AdminMailAddress", "swarmops-admin@example.com"); }
+            set { Persistence.Key["AdminMailAddress"] = value; }
+        }
+
+
         static public string InstallationId
         {
             get { return Persistence.Key["SwarmopsInstallationId"]; } // no setter - intentional

@@ -64,6 +64,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelExternalUrl.Text = Resources.Pages.Admin.SystemSettings_ExternalUrl;
             this.LabelSmtpServer.Text = Resources.Pages.Admin.SystemSettings_SmtpServer;
             this.LabelInstallationName.Text = Resources.Pages.Admin.SystemSettings_InstallationName;
+            this.LabelAdminAddress.Text = Resources.Pages.Admin.SystemSettings_AdminAddress;
+            this.LabelAdminSender.Text = Resources.Pages.Admin.SystemSettings_AdminSender;
         }
 
         [WebMethod]

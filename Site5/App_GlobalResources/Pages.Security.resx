@@ -214,9 +214,6 @@
   <data name="Login_Username" xml:space="preserve">
     <value>User</value>
   </data>
-  <data name="ResetPassword_Email" xml:space="preserve">
-    <value>Re-enter your mail address</value>
-  </data>
   <data name="ResetPassword_Failed" xml:space="preserve">
     <value>There is no valid password reset ticket for this mail address, the address does not exist, the password reset ticket is invalid, or it has expired.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Password reset failed.&lt;/strong&gt;</value>
   </data>
@@ -224,7 +221,13 @@
     <value>You're resetting the password for a user account. Enter your new password twice to set it and login. (If you're trying to start the password-reset procedure, you need a ticket to do so. &lt;a href="/Security/RequestPasswordReset"&gt;Create a ticket.&lt;/a&gt;)</value>
   </data>
   <data name="ResetPassword_InfoRequest" xml:space="preserve">
-    <value>Enter your mail account to send instructions to that address on how to proceed with the password reset procedure. It will contain a unique and expiring code that you will need to use to proceed.</value>
+    <value>Enter your mail address to receive instructions how to proceed with the password reset procedure. The instructions will contain a unique and expiring code that you will need to use to proceed.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Enter your mail address</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Re-enter your mail address</value>
   </data>
   <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
     <value>The two passwords do not match. Please retry.</value>

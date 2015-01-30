@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using System.Net.Mail;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Support;
@@ -27,6 +29,9 @@ namespace Swarmops.Utility.Communications
 
             Type payloadType = assembly.GetType(envelope.PayloadClass);
             var methodInfo = payloadType.GetMethod("FromXml", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+
+            // Set culture specific to the person being rendered for
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture (!string.IsNullOrEmpty (person.PreferredCulture) ? person.PreferredCulture : "en-US");
 
             ICommsRenderer renderer = (ICommsRenderer)(methodInfo.Invoke(null, new object[] { envelope.PayloadXml }));
             RenderedComm comm = renderer.RenderComm (person);

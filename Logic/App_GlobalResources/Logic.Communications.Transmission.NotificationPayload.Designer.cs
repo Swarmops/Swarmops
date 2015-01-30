@@ -429,9 +429,9 @@ namespace Swarmops.Logic.App_GlobalResources {
         ///
         ///Please follow this link to reset your password and re-enable any two-factor authentication, if it was previously enabled:
         ///
-        ///[ExternalUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+        ///[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
         ///
-        ///This ticket will expire in 24 hours. If you do not reset your password in this time frame, you will need to contact the administrators at [OrganizationName] to is [rest of string was truncated]&quot;;.
+        ///This ticket will expire in 24 hours. If you do not reset your password in this time frame, you will need to contact the administrators at [OrganizationName] to issue a new [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Password_ResetByCrew_Body {
             get {

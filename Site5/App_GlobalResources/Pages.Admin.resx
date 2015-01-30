@@ -194,6 +194,12 @@
     <value>Renewal cost (in {0})</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
   </data>
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>Admin Notifications From Address</value>
+  </data>
+  <data name="SystemSettings_AdminSender" xml:space="preserve">
+    <value>Admin Notifications From Name</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>SMTP Port must be numeric. Unable to parse host:port.</value>
   </data>

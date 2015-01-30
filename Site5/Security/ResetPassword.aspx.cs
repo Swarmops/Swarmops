@@ -29,7 +29,7 @@ namespace Swarmops.Pages.Security
             if (!Page.IsPostBack)
             {
                 string suppliedTicket = Request.QueryString["Ticket"];
-                if (!string.IsNullOrEmpty (suppliedTicket) && suppliedTicket.Trim().Length == 32)
+                if (!string.IsNullOrEmpty (suppliedTicket) && suppliedTicket.Trim().Length == 21)
                 {
                     this.TextTicket.Text = suppliedTicket.Trim().ToUpperInvariant();
                     this.TextTicket.ReadOnly = true;
@@ -53,7 +53,7 @@ namespace Swarmops.Pages.Security
 
             // Page specific
             this.LabelContentTitle.Text = Resources.Pages.Security.ResetPassword_PageTitle;
-            this.LabelMail.Text = Resources.Pages.Security.ResetPassword_Email;
+            this.LabelMail.Text = Resources.Pages.Security.ResetPassword_Mail2;
             this.LabelPassword1.Text = Resources.Pages.Security.ResetPassword_Password;
             this.LabelPassword2.Text = Resources.Pages.Security.ResetPassword_PasswordRepeat;
             this.LabelTicket.Text = Resources.Pages.Security.ResetPassword_Ticket;
