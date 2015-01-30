@@ -14,6 +14,9 @@ namespace Swarmops.Utility.Communications
         // To be implemented better
 
         private static string _smtpServerCache = string.Empty;
+        private static int _smtpPortCache = 25;
+        private static string _smtpUserCache = string.Empty;
+        private static string _smtpPasswordCache = string.Empty;
         private static DateTime _cacheReloadTime = DateTime.MinValue;
 
         public void Transmit (PayloadEnvelope envelope, Person person)
@@ -52,25 +55,35 @@ namespace Swarmops.Utility.Communications
             mail.BodyEncoding = Encoding.UTF8;
 
             string smtpServer = _smtpServerCache;
+            int smtpPort = _smtpPortCache;
+            string smtpUser = _smtpUserCache;
+            string smtpPassword = _smtpPasswordCache;
 
             DateTime now = DateTime.Now;
 
             if (now > _cacheReloadTime)
             {
-                smtpServer = _smtpServerCache = Persistence.Key["SmtpServer"];
+                smtpServer = _smtpServerCache = SystemSettings.SmtpHost;
+                smtpPort = _smtpPortCache = SystemSettings.SmtpPort;
+                smtpUser = _smtpUserCache = SystemSettings.SmtpUser;
+                smtpPassword = _smtpPasswordCache = SystemSettings.SmtpPassword;
+                
                 _cacheReloadTime = now.AddMinutes (5);
             }
 
             if (string.IsNullOrEmpty (smtpServer))
             {
-                smtpServer = "192.168.80.204";
+                smtpServer = "localhost";
+                smtpPort = 25;
                 // For development use only - invalidate cache instead of this, forcing re-reload
                 _cacheReloadTime = DateTime.MinValue;
             }
 
-            SmtpClient mailClient = new SmtpClient (smtpServer);
-
-            // TODO: SMTP Server login credentials
+            SmtpClient mailClient = new SmtpClient (smtpServer, smtpPort);
+            if (!string.IsNullOrEmpty(smtpUser))
+            {
+                mailClient.Credentials = new System.Net.NetworkCredential(smtpUser, smtpPassword);
+            }
 
             try
             {

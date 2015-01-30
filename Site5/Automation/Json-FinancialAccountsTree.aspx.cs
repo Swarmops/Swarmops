@@ -27,6 +27,8 @@ namespace Swarmops.Frontend.Automation
                 excludeId = Int32.Parse (excludeIdString);
             }
 
+            int resultsAccountId = CurrentOrganization.FinancialAccounts.CostsYearlyResult.Identity;
+
             // Get accounts
 
             FinancialAccounts accounts = FinancialAccounts.ForOrganization (CurrentOrganization, accountType);
@@ -37,7 +39,7 @@ namespace Swarmops.Frontend.Automation
 
             foreach (FinancialAccount account in accounts)
             {
-                if (account.Identity == excludeId)
+                if (account.Identity == excludeId || account.Identity == resultsAccountId)
                 {
                     continue;
                 }

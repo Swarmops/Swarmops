@@ -122,7 +122,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
         ///
-        ///Please log on to Swarmops at [SystemUrl] to attest or deny..
+        ///Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny..
         /// </summary>
         internal static string CashAdvance_Requested_Body {
             get {
@@ -160,7 +160,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
         ///
-        ///Please log on to Swarmops at [SystemUrl] to attest or deny..
+        ///Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny..
         /// </summary>
         internal static string ExpenseClaim_Created_Body {
             get {
@@ -278,7 +278,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
         ///
-        ///Please log on to Swarmops at [SystemUrl] to attest or deny..
+        ///Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny..
         /// </summary>
         internal static string InboundInvoice_Created_Body {
             get {
@@ -379,9 +379,101 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Somebody, most likely you, requested a reset of the password associated with this mail address at [InstallationName]. However, two-factor authentication has been enabled for this account for heightened security. Therefore, the password CANNOT be reset by simple means.
+        ///
+        ///Please contact a personnel administrator at [InstallationName] to resolve your problem and issue a new password following a more rigorous identification procedure matching the two-factor security level.
+        ///
+        ///Thank you for your understanding..
+        /// </summary>
+        internal static string Password_CannotReset2FA_Body {
+            get {
+                return ResourceManager.GetString("Password_CannotReset2FA_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[InstallationName]] Cannot Reset Password.
+        /// </summary>
+        internal static string Password_CannotReset2FA_Subject {
+            get {
+                return ResourceManager.GetString("Password_CannotReset2FA_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your [InstallationName] password was just changed at [ExternalUrl].
+        ///
+        ///If you did not just perform this password change, there has been a security breach. If this is the case, please lock your account down IMMEDIATELY by clicking the following link:
+        ///
+        ///[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+        ///
+        ///If you confirm a lockdown on the link above, any existing sessions will terminate immediately, logons with the newly-set password will be locked out, and administrators will conta [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Password_Changed_Body {
+            get {
+                return ResourceManager.GetString("Password_Changed_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[InstallationName]] Password Changed.
+        /// </summary>
+        internal static string Password_Changed_Subject {
+            get {
+                return ResourceManager.GetString("Password_Changed_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to People at [OrganizationName] have issued a password reset ticket to your account, presumably at your request. This ticket is valid for the next 24 hours.
+        ///
+        ///Please follow this link to reset your password and re-enable any two-factor authentication, if it was previously enabled:
+        ///
+        ///[ExternalUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+        ///
+        ///This ticket will expire in 24 hours. If you do not reset your password in this time frame, you will need to contact the administrators at [OrganizationName] to is [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Password_ResetByCrew_Body {
+            get {
+                return ResourceManager.GetString("Password_ResetByCrew_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Password Reset Ticket.
+        /// </summary>
+        internal static string Password_ResetByCrew_Subject {
+            get {
+                return ResourceManager.GetString("Password_ResetByCrew_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Somebody, most likely you, requested a reset of the password associated with this email address at [InstallationName]. If this was you, please follow the link below in the next 60 minutes to complete the password reset procedure:
+        ///
+        ///[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+        ///
+        ///If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did not reques [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Password_ResetOnRequest_Body {
+            get {
+                return ResourceManager.GetString("Password_ResetOnRequest_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[InstallationName]] Password Reset Ticket.
+        /// </summary>
+        internal static string Password_ResetOnRequest_Subject {
+            get {
+                return ResourceManager.GetString("Password_ResetOnRequest_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receipts have been filed that need validation for their financial processes to continue.
         ///
-        ///Please log on to Swarmops at [SystemUrl] to confirm or reject them..
+        ///Please log on to [InstallationName] at [ExternalUrl]Financial/ValidateReceipts to validate or reject them..
         /// </summary>
         internal static string Receipts_Filed_Body {
             get {
@@ -435,6 +527,24 @@ namespace Swarmops.Logic.App_GlobalResources {
         internal static string System_Exception_Subject {
             get {
                 return ResourceManager.GetString("System_Exception_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is a test mail sent by Swarmops [SwarmopsVersion] running on [HostName]. You just changed the mail server settings. To verify that the new settings are correct, Swarmops dispatches this test message to be sent from the back end..
+        /// </summary>
+        internal static string System_MailServerTest_Body {
+            get {
+                return ResourceManager.GetString("System_MailServerTest_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops Mail Server Test.
+        /// </summary>
+        internal static string System_MailServerTest_Subject {
+            get {
+                return ResourceManager.GetString("System_MailServerTest_Subject", resourceCulture);
             }
         }
         

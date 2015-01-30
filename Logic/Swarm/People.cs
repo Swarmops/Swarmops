@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Swarm
             return null; // If no valid search string was supplied
         }
 
-        public static People FromEmail (string email)
+        public static People FromMail (string email)
         {
             if (email.Length > 0)
             {

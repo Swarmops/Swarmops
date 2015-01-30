@@ -194,4 +194,31 @@
     <value>Renewal cost (in {0})</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
   </data>
+  <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
+    <value>SMTP Port must be numeric. Unable to parse host:port.</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>Unable to parse user, pass, host, and/or port. (Only host is required.)</value>
+  </data>
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>Externally Accessible URL</value>
+  </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>Various technical settings for this Swarmops installation. Not specific to any organization or person, but installation-wide.</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>Installation Name</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>SMTP Server (user:pass@host:port)</value>
+  </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>Swarmops has sent you a test mail to verify your new SMTP server settings.</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>You really, really, REALLY should use HTTPS for a website like this. But you knew that already, didn't you?</value>
+  </data>
 </root>

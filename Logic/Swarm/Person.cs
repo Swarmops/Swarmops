@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
+using NBitcoin;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
@@ -863,9 +864,17 @@ namespace Swarmops.Logic.Swarm
         }
 
 
+        public string AccountLockdownTicket
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.AccountLockdownTicket); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.AccountLockdownTicket, value); }
+        }
+
+
+
         public virtual void SetPassword (string newPassword)
         {
-            string hash = Authentication.GenerateNewPasswordHash (Identity, newPassword);
+            string hash = Authentication.GenerateNewPasswordHash (this, newPassword);
             SwarmDb.GetDatabaseForWriting().SetPersonPasswordHash (Identity, hash);
             base.PasswordHash = hash;
         }

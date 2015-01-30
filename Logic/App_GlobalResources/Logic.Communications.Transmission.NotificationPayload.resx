@@ -142,11 +142,12 @@ This means you should see the amount on your account shortly.</value>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
 
-Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
+Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
@@ -158,7 +159,7 @@ Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
 
-Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
+Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
@@ -209,10 +210,11 @@ The claim will be paid out to you when the amount has also been attested by the 
   <data name="InboundInvoice_Created_Body" xml:space="preserve">
     <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
 
-Please log on to Swarmops at [SystemUrl] to attest or deny.</value>
+Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to attest or deny.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>A new [Regular] was manually added to [OrganizationName] within an area of yours.</value>
@@ -243,13 +245,60 @@ Time spent transmitting: [TransmissionTime].</value>
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Comms transmitted: [GeographyName]</value>
   </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>Somebody, most likely you, requested a reset of the password associated with this mail address at [InstallationName]. However, two-factor authentication has been enabled for this account for heightened security. Therefore, the password CANNOT be reset by simple means.
+
+Please contact a personnel administrator at [InstallationName] to resolve your problem and issue a new password following a more rigorous identification procedure matching the two-factor security level.
+
+Thank you for your understanding.</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Cannot Reset Password</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>Your [InstallationName] password was just changed at [ExternalUrl].
+
+If you did not just perform this password change, there has been a security breach. If this is the case, please lock your account down IMMEDIATELY by clicking the following link:
+
+[ExternalUrl]Security/AccountLockdown?Mail=[MailAddress]&amp;Ticket=[TicketCode]
+
+If you confirm a lockdown on the link above, any existing sessions will terminate immediately, logons with the newly-set password will be locked out, and administrators will contact you to verify what happened and work with you to re-enable your account.
+
+However, if it was you yourself who changed the password just now, and thereby caused this notification to be sent, everything is obviously fine and just as it should be. Carry on.</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Password Changed</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>People at [OrganizationName] have issued a password reset ticket to your account, presumably at your request. This ticket is valid for the next 24 hours.
+
+Please follow this link to reset your password and re-enable any two-factor authentication, if it was previously enabled:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[ResetPasswordTicket]
+
+This ticket will expire in 24 hours. If you do not reset your password in this time frame, you will need to contact the administrators at [OrganizationName] to issue a new password reset ticket.</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Password Reset Ticket</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>Somebody, most likely you, requested a reset of the password associated with this email address at [InstallationName]. If this was you, please follow the link below in the next 60 minutes to complete the password reset procedure:
+
+[ExternalUrl]Security/ResetPassword?Ticket=[TicketCode]
+
+If you did NOT request a password reset, you can (and should) ignore this mail. The password reset request will expire in one hour. (If you are getting a large number of these password reset links that you did not request, please notify the administrator.)</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>[[InstallationName]] Password Reset Ticket</value>
+  </data>
   <data name="Receipts_Filed_Body" xml:space="preserve">
     <value>Receipts have been filed that need validation for their financial processes to continue.
 
-Please log on to Swarmops at [SystemUrl] to confirm or reject them.</value>
+Please log on to [InstallationName] at [ExternalUrl]Financial/ValidateReceipts to validate or reject them.</value>
   </data>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Receipts Filed - Validation Needed</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
     <value>Swarmops Backend [SwarmopsVersion] on host [HostName] has successfully upgraded the Swarmops database schema to revision [DbVersion].
@@ -266,6 +315,12 @@ This is for information only. You do not need to take action.</value>
   </data>
   <data name="System_Exception_Subject" xml:space="preserve">
     <value>Swarmops EXCEPTION!</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>This is a test mail sent by Swarmops [SwarmopsVersion] running on [HostName]. You just changed the mail server settings. To verify that the new settings are correct, Swarmops dispatches this test message to be sent from the back end.</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>Swarmops Mail Server Test</value>
   </data>
   <data name="System_Startup_Body" xml:space="preserve">
     <value>Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks.</value>

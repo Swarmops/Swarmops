@@ -546,4 +546,7 @@
   <data name="Global_PostalCode" xml:space="preserve">
     <value>Postnummer</value>
   </data>
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>Ett allmänt och odefinierat fel uppstod när Swarmopsservern kontaktades. Fungerar fortfarande nätverket, och är servern fortfarande tillgänglig?</value>
+  </data>
 </root>

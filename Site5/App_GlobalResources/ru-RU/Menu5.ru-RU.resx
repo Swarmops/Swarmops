@@ -123,7 +123,12 @@
   <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
     <value>Списки управления доступом</value>
   </data>
-  
+  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
+    <value>Создать Новую Организацию</value>
+  </data>
+  <data name="Menu5_Administration_EditOrganization" xml:space="preserve">
+    <value>Редактировать Организацию</value>
+  </data>
   
   
   
@@ -144,7 +149,9 @@
   
   
   
-  
+  <data name="Menu5_Communications_SendMassMessage" xml:space="preserve">
+    <value>Массовая Рассылка Сообщений</value>
+  </data>
   
   
   
@@ -222,7 +229,9 @@
   
   
   
-  
+  <data name="Menu5_Ledgers_UploadBankFiles" xml:space="preserve">
+    <value>Выгрузка банковских файлов</value>
+  </data>
   
   <data name="Menu5_Organization" xml:space="preserve">
     <value>Организация</value>
@@ -238,7 +247,9 @@
     <value>Пресс-релизы</value>
   </data>
   
-  
+  <data name="Menu5_Organization_Feeds_Newsletter" xml:space="preserve">
+    <value>Лента новостей</value>
+  </data>
   
   <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
     <value>Статистика Участника</value>
@@ -256,7 +267,9 @@
     <value>Добавить участников</value>
   </data>
   
-  
+  <data name="Menu5_People_ListFind" xml:space="preserve">
+    <value>Список/Поиск Людей</value>
+  </data>
   <data name="Menu5_People_ListMembers" xml:space="preserve">
     <value>Список участников</value>
   </data>
@@ -272,7 +285,9 @@
   <data name="Menu5_People_NewConference" xml:space="preserve">
     <value>Новая Конференция</value>
   </data>
-  
+  <data name="Menu5_People_RolesResponsibilities" xml:space="preserve">
+    <value>Роли и Обязанности</value>
+  </data>
   
   
   

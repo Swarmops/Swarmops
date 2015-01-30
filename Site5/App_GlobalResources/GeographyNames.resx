@@ -201,7 +201,7 @@
     <value>Western Europe</value>
   </data>
   <data name="World" xml:space="preserve">
-    <value>World</value>
+    <value>Global</value>
     <comment>Root geography</comment>
   </data>
 </root>

@@ -189,7 +189,7 @@
     <value>Västeuropa</value>
   </data>
   <data name="World" xml:space="preserve">
-    <value>Världen</value>
+    <value>Globalt</value>
     <comment>Root geography</comment>
   </data>
 </root>

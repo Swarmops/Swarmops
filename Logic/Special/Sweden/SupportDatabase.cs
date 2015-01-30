@@ -422,7 +422,7 @@ namespace Swarmops.Logic.Special.Sweden
                         if (match.Success)
                         {
                             string email = match.Groups["email"].Value;
-                            People people = People.FromEmail (email);
+                            People people = People.FromMail (email);
 
                             if (people.Count > 2)
                             {

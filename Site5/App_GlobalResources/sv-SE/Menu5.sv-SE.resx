@@ -135,6 +135,9 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Organisationskluster</value>
   </data>
+  <data name="Menu5_Admin_SystemSettings" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>Kommunikation</value>
   </data>

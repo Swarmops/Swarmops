@@ -19,6 +19,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private Dictionary<int, Int64> _treeBalanceLookup;
         private Dictionary<int, Int64> _treeBudgetLookup;
         private int _year = 2012;
+        private int _resultAccountId;
 
         protected void Page_Load (object sender, EventArgs e)
         {
@@ -40,6 +41,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             PopulateLookups (FinancialAccounts.ForOrganization (this._authenticationData.CurrentOrganization));
             this._hashedAccounts = FinancialAccounts.GetHashedAccounts (this._authenticationData.CurrentOrganization);
+            this._resultAccountId = this._authenticationData.CurrentOrganization.FinancialAccounts.CostsYearlyResult.Identity;
 
             response += GetAccountGroup (FinancialAccountType.Asset, Resources.Global.Financial_Asset) + ",";
             response += GetAccountGroup (FinancialAccountType.Debt, Resources.Global.Financial_Debt) + ",";
@@ -55,6 +57,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             string childrenString = GetAccountsRecurse (type, 0);
 
+            Int64 projectedResults = _treeBudgetLookup.ContainsKey (_resultAccountId) ? _treeBudgetLookup[_resultAccountId] : 0;
+            if (type == FinancialAccountType.Income && projectedResults <= 0) // expected profit or zero
+            {
+                childrenString += "," + GetProfitLossNode("ProjectedProfit", -projectedResults);
+            }
+            else if (type == FinancialAccountType.Cost && projectedResults >= 0) // expected loss or zero
+            {
+                childrenString += "," + GetProfitLossNode("ProjectedLoss", -projectedResults);
+            }
+
             string addString =
                 String.Format (
                     "<img class=\\\"IconAdd\\\" accountType=\\\"{0}\\\" src=\\\"/Images/Icons/iconshock-add-16px.png\\\" />",
@@ -65,6 +77,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                    "\\\" href=\\\"#\\\">" + JsonSanitize (Resources.Pages.Ledgers.AccountPlan_AddAccount) +
                    "</a>)\",\"state\":\"open\",\"children\":[" + childrenString + "],\"action\":\"" + addString + "\"}";
         }
+
+        private string GetProfitLossNode(string resource, Int64 amount)
+        {
+            string node = '{' + string.Format(
+                "\"id\":\"{0}\",\"accountName\":\"{1}\",\"rowCssClass\":\"{2}\",\"budget\":\"{3:N0}\"",
+                "Row" + resource, string.Format (Resources.Pages.Ledgers.ResourceManager.GetString("AccountPlan_" + resource), _year), "Row" + resource, amount / 100.0) + '}';
+
+            return node;
+        }
+
 
         private string GetAccountsRecurse (FinancialAccountType accountType, int rootNodeId)
         {
@@ -84,7 +106,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (FinancialAccount account in this._hashedAccounts[rootNodeId])
             {
-                if (account.Identity == rootNodeId || account.AccountType != accountType)
+                if (account.Identity == rootNodeId || account.AccountType != accountType || account.Identity == _resultAccountId)
                 {
                     continue;
                 }
@@ -126,7 +148,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 childStrings.Add ('{' +
                                   String.Format (
-                                      "\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\",\"action\":\"{5}\"",
+                                      "\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\",\"action\":\"{5}\",\"inactive\":\"{6}\"",
                                       account.Identity,
                                       Server.HtmlEncode (JsonSanitize (account.Name)),
                                       ownerString,
@@ -144,7 +166,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                               : (this._singleBudgetLookup[account.Identity]/100.0).ToString ("N0",
                                                   CultureInfo.CurrentCulture)
                                           : string.Empty,
-                                      editString
+                                      editString,
+                                      account.Active? "false":"true" // reverses condition on purpose
                                       ) + grandChildren + '}');
             }
 
