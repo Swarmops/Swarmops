@@ -122,7 +122,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
         ///
-        ///Please log on to Swarmops at [ExternalUrl] to attest or deny..
+        ///Please log on to [InstallationName] at [ExternalUrl] to attest or deny..
         /// </summary>
         internal static string CashAdvance_Requested_Body {
             get {
@@ -160,7 +160,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to [ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
         ///
-        ///Please log on to Swarmops at [ExternalUrl] to attest or deny..
+        ///Please log on to [InstallationName] at [ExternalUrl] to attest or deny..
         /// </summary>
         internal static string ExpenseClaim_Created_Body {
             get {
@@ -278,7 +278,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
         ///
-        ///Please log on to Swarmops at [ExternalUrl] to attest or deny..
+        ///Please log on to [InstallationName] at [ExternalUrl] to attest or deny..
         /// </summary>
         internal static string InboundInvoice_Created_Body {
             get {
@@ -473,7 +473,7 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to Receipts have been filed that need validation for their financial processes to continue.
         ///
-        ///Please log on to Swarmops at [ExternalUrl] to confirm or reject them..
+        ///Please log on to [InstallationName] at [ExternalUrl] to confirm or reject them..
         /// </summary>
         internal static string Receipts_Filed_Body {
             get {

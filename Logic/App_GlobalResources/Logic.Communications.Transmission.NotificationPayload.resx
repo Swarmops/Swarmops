@@ -142,11 +142,12 @@ This means you should see the amount on your account shortly.</value>
   <data name="CashAdvance_Requested_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has requested a cash advance of [CurrencyCode] [BudgetAmountFloat] for the purpose of [RequestPurpose]. This money is part of your budget, [BudgetName].
 
-Please log on to Swarmops at [ExternalUrl] to attest or deny.</value>
+Please log on to [InstallationName] at [ExternalUrl] to attest or deny.</value>
     <comment>This is sent to the budget owner(s) only.</comment>
   </data>
   <data name="CashAdvance_Requested_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Cash Advance Requested: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will be paid out to you when the receipts are confirmed valid.</value>
@@ -158,7 +159,7 @@ Please log on to Swarmops at [ExternalUrl] to attest or deny.</value>
   <data name="ExpenseClaim_Created_Body" xml:space="preserve">
     <value>[ConcernedPersonName] has created an expense claim against the budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. The claim concerns [RequestPurpose]. You will need to attest this expense claim.
 
-Please log on to Swarmops at [ExternalUrl] to attest or deny.</value>
+Please log on to [InstallationName] at [ExternalUrl] to attest or deny.</value>
     <comment>This is sent to the budget owner(s)only.</comment>
   </data>
   <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
@@ -209,10 +210,11 @@ The claim will be paid out to you when the amount has also been attested by the 
   <data name="InboundInvoice_Created_Body" xml:space="preserve">
     <value>An invoice from [Supplier], concerning [Description], has been filed against your budget of [BudgetName] for the amount of [CurrencyCode] [BudgetAmountFloat]. You must attest this invoice before it proceeds to payout.
 
-Please log on to Swarmops at [ExternalUrl] to attest or deny.</value>
+Please log on to [InstallationName] at [ExternalUrl] to attest or deny.</value>
   </data>
   <data name="InboundInvoice_Created_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Invoice Filed: [CurrencyCode] [BudgetAmountFloat] - Attestation Needed</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="Membership_New_Added_Body" xml:space="preserve">
     <value>A new [Regular] was manually added to [OrganizationName] within an area of yours.</value>
@@ -292,10 +294,11 @@ If you did NOT request a password reset, you can (and should) ignore this mail. 
   <data name="Receipts_Filed_Body" xml:space="preserve">
     <value>Receipts have been filed that need validation for their financial processes to continue.
 
-Please log on to Swarmops at [ExternalUrl] to confirm or reject them.</value>
+Please log on to [InstallationName] at [ExternalUrl] to confirm or reject them.</value>
   </data>
   <data name="Receipts_Filed_Subject" xml:space="preserve">
     <value>[[OrganizationName] - ACTION ITEM] Receipts Filed - Validation Needed</value>
+    <comment>ACTION ITEM should be translated.</comment>
   </data>
   <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
     <value>Swarmops Backend [SwarmopsVersion] on host [HostName] has successfully upgraded the Swarmops database schema to revision [DbVersion].
