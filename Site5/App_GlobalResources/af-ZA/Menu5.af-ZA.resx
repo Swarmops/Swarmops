@@ -135,6 +135,9 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>crwdns1639807:0crwdne1639807:0</value>
   </data>
+  <data name="Menu5_Admin_SystemSettings" xml:space="preserve">
+    <value>crwdns6555584:0crwdne6555584:0</value>
+  </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>crwdns1639808:0crwdne1639808:0</value>
   </data>

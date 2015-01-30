@@ -192,4 +192,31 @@
     <value>Förnyelse kostar (i {0})</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
   </data>
+  <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
+    <value>SMTP-porten måste vara ett nummer. Det gick inte att förstå hostnamn:port.</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>Det gick inte att parsa användare, pass, hostnamn eller port. (Endast hostnamn krävs.)</value>
+  </data>
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>Externt åtkomlig URL</value>
+  </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>Olika tekniska inställningar för den här Swarmopsinstallationen. Inte specifika för någon organisation eller person, utan systemtäckande.</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>Installationsnamn</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>SMTP-server (user:pass@host:port)</value>
+  </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>Swarmops har skickat ett testmail för att kontrollera dina nya SMTP-serverinställningar.</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>Du borde verkligen, VERKLIGEN använda HTTPS för en sådan här webbsite. Men det visste du väl redan?</value>
+  </data>
 </root>

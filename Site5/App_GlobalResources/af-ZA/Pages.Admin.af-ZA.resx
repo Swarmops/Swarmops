@@ -194,4 +194,31 @@
     <value>crwdns6555418:0{0}crwdne6555418:0</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
   </data>
+  <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
+    <value>crwdns6555585:0crwdne6555585:0</value>
+  </data>
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>crwdns6555586:0crwdne6555586:0</value>
+  </data>
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>crwdns6555587:0crwdne6555587:0</value>
+  </data>
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>crwdns6555588:0crwdne6555588:0</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>crwdns6555589:0crwdne6555589:0</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
+    <value>crwdns6555590:0crwdne6555590:0</value>
+  </data>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>crwdns6555591:0crwdne6555591:0</value>
+  </data>
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>crwdns6555592:0crwdne6555592:0</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>crwdns6555593:0crwdne6555593:0</value>
+  </data>
 </root>
