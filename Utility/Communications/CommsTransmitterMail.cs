@@ -31,7 +31,8 @@ namespace Swarmops.Utility.Communications
             var methodInfo = payloadType.GetMethod("FromXml", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 
             // Set culture specific to the person being rendered for
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture (!string.IsNullOrEmpty (person.PreferredCulture) ? person.PreferredCulture : "en-US");
+            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture =
+                CultureInfo.CreateSpecificCulture (!string.IsNullOrEmpty (person.PreferredCulture) ? person.PreferredCulture : "en-US");
 
             ICommsRenderer renderer = (ICommsRenderer)(methodInfo.Invoke(null, new object[] { envelope.PayloadXml }));
             RenderedComm comm = renderer.RenderComm (person);

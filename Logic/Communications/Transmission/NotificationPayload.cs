@@ -61,8 +61,8 @@ namespace Swarmops.Logic.Communications.Transmission
             input = input.Replace ("[HostName]", Dns.GetHostName());
             input = input.Replace ("[DbVersion]", SwarmDb.DbVersionExpected.ToString(CultureInfo.InvariantCulture));
             input = input.Replace ("[SwarmopsVersion]", Formatting.SwarmopsVersion);
-            input = input.Replace("[InstallationName]", SystemSettings.InstallationName);
-            input = input.Replace("[ExternalUrl]", SystemSettings.ExternalUrl);
+            input = input.Replace ("[InstallationName]", SystemSettings.InstallationName);
+            input = input.Replace ("[ExternalUrl]", SystemSettings.ExternalUrl);
 
             // Loop through supplied strings and replace them in the resource. Not very efficient but who cares
 

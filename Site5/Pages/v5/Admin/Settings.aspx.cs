@@ -33,6 +33,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     SystemSettings.SmtpHost, SystemSettings.SmtpPort);
                 this.TextExternalUrl.Text = SystemSettings.ExternalUrl;
                 this.TextInstallationName.Text = SystemSettings.InstallationName;
+                this.TextAdminAddress.Text = SystemSettings.AdminNotificationAddress;
+                this.TextAdminSender.Text = SystemSettings.AdminNotificationSender;
 
                 Localize();
             }
@@ -136,7 +138,19 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 case "InstallationName":
                     result.NewData = newValue.Trim();
                     result.ResultCode = AjaxTextBox.CodeSuccess;
-                    SystemSettings.InstallationName = newValue;
+                    SystemSettings.InstallationName = result.NewData;
+                    break;
+
+                case "AdminSender":
+                    result.NewData = newValue.Trim();
+                    result.ResultCode = AjaxTextBox.CodeSuccess;
+                    SystemSettings.InstallationName = result.NewData;
+                    break;
+
+                case "AdminAddress":
+                    result.NewData = newValue.Trim();
+                    result.ResultCode = AjaxTextBox.CodeSuccess;
+                    SystemSettings.AdminNotificationAddress = result.NewData;
                     break;
 
                 default:
