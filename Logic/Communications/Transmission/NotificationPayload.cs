@@ -36,22 +36,18 @@ namespace Swarmops.Logic.Communications.Transmission
         public string BodyResource { get; set; }
         public NotificationStrings Strings { get; set; }
 
-        public string GetSubject()
+        public string GetSubject(string cultureId)
         {
-            // TODO: Pick culture
-
             return
                 ExpandMacros (
-                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString (SubjectResource));
+                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString (SubjectResource, CultureInfo.CreateSpecificCulture (cultureId)));
         }
 
-        public string GetBody()
+        public string GetBody(string cultureId)
         {
-            // TODO: Pick culture
-
             return
                 ExpandMacros (
-                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString (BodyResource));
+                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString (BodyResource, CultureInfo.CreateSpecificCulture (cultureId)));
         }
 
         public string ExpandMacros (string input)
@@ -80,10 +76,16 @@ namespace Swarmops.Logic.Communications.Transmission
 
         public RenderedComm RenderComm (Person person)
         {
+            string culture = person.PreferredCulture;
+            if (string.IsNullOrEmpty (culture))
+            {
+                culture = "en-US";
+            }
+
             RenderedComm result = new RenderedComm();
 
-            result[CommRenderPart.Subject] = GetSubject();
-            result[CommRenderPart.BodyText] = GetBody();
+            result[CommRenderPart.Subject] = GetSubject(culture);
+            result[CommRenderPart.BodyText] = GetBody(culture);
             result[CommRenderPart.SenderName] = SystemSettings.AdminNotificationSender; // TODO: Make dependent on an enum
             result[CommRenderPart.SenderMail] = SystemSettings.AdminNotificationAddress;
 
