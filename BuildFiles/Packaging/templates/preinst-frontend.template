@@ -4,7 +4,7 @@
 # (It's very rude to shut down services without asking first like this, but even more rude of the lib-mod-mono
 # installer to just bloody hang.)
 
-if [! -e /etc/swarmops/database.config ]; then
+if [ ! -e /etc/swarmops/database.config ]; then
   if /etc/init.d/apache2 status > /dev/null; then
     # Set a flag to postinst to restart Apache
     echo foo > /tmp/swarmops-restart-apache.flag
