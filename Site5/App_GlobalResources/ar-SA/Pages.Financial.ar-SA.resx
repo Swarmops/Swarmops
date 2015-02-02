@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AttestCosts_AdvanceAttested" xml:space="preserve">
+    <value>السلفة النقدية رقم {0:N0} لـ {1} تم الموافقة عليها لـ {3:N2}.</value>
+    <comment>Status message.</comment>
+  </data>
+  <data name="AttestCosts_AdvanceDeattested" xml:space="preserve">
+    <value>السلفة النقدية رقم {0:N0} ل {1} لم يتم الموافقة عليها. هذه السلفة لن يتم دفعها حتى يتم المصادقة عليها مرة أخرى.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
+    <value>المطالبة المالية للنفقات رقم {0:N0} من {1} على {2} {3:N2} قد تم الموافقة عليها.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_ExpenseDeattested" xml:space="preserve">
+    <value>المطالبة المالية للنفقات رقم {0:N0} من {1} لم يتم المصادقة عليها. هذه المطالبة لن يتم دفع تعويضها حتى تتم المصادقة عليها مرة أخرى.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Action" xml:space="preserve">
+    <value>الإجراء</value>
+    <comment>Yes / No buttons. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
+    <value>المستفيد</value>
+    <comment>The receiver of money.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>الميزانية</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
+    <value>مستندات</value>
+    <comment>Button to see underlying documentation. Keep short!</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Item" xml:space="preserve">
+    <value>البند</value>
+    <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
+  </data>
+  <data name="AttestCosts_GridHeader_Requested" xml:space="preserve">
+    <value>المطلوب</value>
+    <comment>Header for the requested amount.</comment>
+  </data>
+  <data name="AttestCosts_Header_CostsAwaitingAttestation" xml:space="preserve">
+    <value>تكاليف بانتظار مصادقتك</value>
+  </data>
+  <data name="AttestCosts_Info" xml:space="preserve">
+    <value>هنا يمكنك التصديق على النففات التي يطالب بها الآخرون من ميزانيتك. لا شيء يتم صرفه إلى بعد الحصول على مصادقتك.</value>
+  </data>
+  <data name="AttestCosts_InvoiceAttested" xml:space="preserve">
+    <value>الفاتورة رقم {0:N0} من {1} على {2} {3:N2} قد تمت المصادقة عليها.</value>
+    <comment>{2} is the currency.</comment>
+  </data>
+  <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
+    <value>الفاتورة رقم {0:N0} من {1} لم تتم المصادقة عليها. هذه الفاتورة لن يتم دفعها حتى تتم المصادقة عليها مرة أخرى.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_PageTitle" xml:space="preserve">
+    <value>المصادقة على النففات</value>
+  </data>
+  <data name="AttestCosts_ParleyAttested" xml:space="preserve">
+    <value>المؤتمر رقم {0:N0}، الذي يتم تنظيمه من قبل {1}، قد تمت المصادقة عليه لـ {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_ParleyDeattested" xml:space="preserve">
+    <value>المؤتمر رقم {0:N0} الذي يتم تنظيمه من قبل {1} لم تتم المصادقة عليه. ولن يتم إعطاءه الضوء الأخضر حتى تعاد المصادقة عليه مرة أخرى.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_SalaryAttested" xml:space="preserve">
+    <value>المرتب رقم #{0:N0} لـ {1} قد تمت المصادقة عليه لـ {3:N2}.</value>
+  </data>
+  <data name="AttestCosts_SalaryDeattested" xml:space="preserve">
+    <value>المرتب رقم{0:N0} لـ {1} لم تتم المصادقة عليه. ولن يتم دفعه حتى تعاد المصادقة عليه مرة أخرى.</value>
+    <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Amount" xml:space="preserve">
+    <value>مبلغ الفاتورة (بالـ {0})</value>
+    <comment>{0} is the organization's main currency.</comment>
+  </data>
+  <data name="CreateInboundInvoice_Description" xml:space="preserve">
+    <value>الوصف</value>
+    <comment>Free-text description of invoice</comment>
+  </data>
+  <data name="CreateInboundInvoice_HeaderInvoiceImage" xml:space="preserve">
+    <value>صورة الفاتورة</value>
+  </data>
+  <data name="CreateInboundInvoice_HeaderPaymentDetails" xml:space="preserve">
+    <value>تفاصيل الدفع</value>
+    <comment>Displayed as header over supplier's account details</comment>
+  </data>
+  <data name="CreateInboundInvoice_Info" xml:space="preserve">
+    <value>هنا يمكنك تسجيل الفواتير الواردة لمنظمتك ("الحسابات المدينة"). أدخل اسم المورد، المبلغ، تاريخ الاستحقاق، الرقم المرجعي للفاتورة، وارفع صورة الفاتورة. أيضاً اختر بند الميزانية. وسوف تحتاج الفاتورة إلى الاعتماد والتصديق من المسؤول عن الميزانية كالعادة. (وستتضمن النسخ القادمة من هذه الآلية طلبات الشراء وقوائم الموردين)</value>
+  </data>
+  <data name="CreateInboundInvoice_PageTitle" xml:space="preserve">
+    <value>استلام فاتورة واردة</value>
+  </data>
+  <data name="CreateInboundInvoice_Reference" xml:space="preserve">
+    <value>الرقم المرجعي للفاتورة</value>
+  </data>
+  <data name="CreateInboundInvoice_ReferenceAutomaticOcr" xml:space="preserve">
+    <value>التعرف الضوئي على الحروف/التلقائي</value>
+    <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
+  </data>
+  
+  <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
+    <value>الفاتورة الواردة رقم {0:N0} تم حفظها في الملف.</value>
+    <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
+  </data>
+  <data name="CreateInboundInvoice_SupplierAccount" xml:space="preserve">
+    <value>الحساب</value>
+    <comment>Free text input, intended to convey everything needed to get the money right</comment>
+  </data>
+  <data name="CreateInboundInvoice_UploadInvoiceImage" xml:space="preserve">
+    <value>رفع ملف الصورة</value>
+  </data>
+  <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
+    <value>الرجاء إدخال الحساب البنكي للمورد أو ما يكافؤه.</value>
+  </data>
+  <data name="FileExpenseClaim_Amount" xml:space="preserve">
+    <value>مبلغ المطالبة المالية (بالـ{0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="FileExpenseClaim_BankAccount" xml:space="preserve">
+    <value>رقم الحساب</value>
+  </data>
+  <data name="FileExpenseClaim_BankClearing" xml:space="preserve">
+    <value>رقم المقاصة</value>
+  </data>
+  <data name="FileExpenseClaim_BankName" xml:space="preserve">
+    <value>اسم البنك</value>
+  </data>
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>الميزانية</value>
+  </data>
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>نوع التكلفة</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
+  <data name="FileExpenseClaim_Description" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderBankDetails" xml:space="preserve">
+    <value>تفاصيل معلومات حسابك البنكي</value>
+  </data>
+  <data name="FileExpenseClaim_HeaderReceiptImages" xml:space="preserve">
+    <value>صورة الإيصال</value>
+  </data>
+  <data name="FileExpenseClaim_Info" xml:space="preserve">
+    <value>إذا قمت بعملية شراء باسم المنظمة باستخدام مالك الخاص، فإنه من المرجح أنك ترغب في استعادته عن طريق ملأ نموذج &lt;em&gt; المطالبة المالية &lt;/em&gt;. وتقوم بذلك هنا عن طريق رفع صور الإيصالات، واختيار بند الميزانية الذي يجب أن تخصم منه. وإذا كنت قد استلمت سلفة نقدية لهذه المشتريات، فإن هذا هو النموذج الذي تستخدمه لتصفية مديونيتك اتجاه المنظمة والرفع بالإيصالات.</value>
+  </data>
+  <data name="FileExpenseClaim_PageTitle" xml:space="preserve">
+    <value>مطالبة مالية لاسترداد نفقات</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartOne" xml:space="preserve">
+    <value>تم حفظ المطالبة المالية للنفقات لـ {1:N2} {0} على بند ميزانية {2}. لا بد من مطابقة الإيصالات والتحقق منها وكذلك المصادقة على المطالبة من قبل المسؤول عن الميزانية.</value>
+    <comment>{0} is the currency, {1} is the amount, and {2} is the budget name.</comment>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwo" xml:space="preserve">
+    <value>بمجرد الانتهاء من هذا الأمر سيتم فسح المال من أجل دفعه إلى الحساب الذي قمت بتقديمه.</value>
+  </data>
+  <data name="FileExpenseClaim_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>بما أن هذه الميزانية خاصة بك، فإن المصادقة قد تمت فعلاً. وبقيت عملية المطابقة الضرورية.</value>
+  </data>
+  <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
+    <value>رفع صور الإيصالات</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>يرجى إدخال مبلغ المال (في {0}) الذي تطالب به.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Documents" xml:space="preserve">
+    <value>الرجاء رفع صورة واحدة أو أكثر للإيصالات التي تدعم مطالبتك المالية.</value>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>الرجاء تحديد أحد الخيارات كما هو مبين.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>الرجاء وصف هذه العملية الشرائية.</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
+    <value>المبلغ</value>
+    <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
+    <value>المقاصة/حساب</value>
+    <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
+    <value>البنك</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
+    <value>تاريخ الاستحقاق</value>
+  </data>
+  <data name="PayOutMoney_GridHeader_PaidOut" xml:space="preserve">
+    <value>دفعت</value>
+    <comment>Possibly in imperative; a click in this column indicates payment has been done. It is an action column, not an information column.</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Recipient" xml:space="preserve">
+    <value>المُستلم</value>
+    <comment>Can be org (for invoice) or person (for salary, expense, advance)</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Reference" xml:space="preserve">
+    <value>المرجع</value>
+    <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
+  </data>
+  <data name="PayOutMoney_Header" xml:space="preserve">
+    <value>النفقات الجاهزة للتعويض</value>
+  </data>
+  <data name="PayOutMoney_Info" xml:space="preserve">
+    <value>هذه هي الأشكال المتنوعة للنفقات التي سيتم دفعها للمنظمة والتي اجتازت كل العقبات لدفع التعويضات. إنها جاهزة الآن لتدفع للمستلم. هنا يتم التحقق منها أثناء إجراء عملية الدفع (ربما أثناء فتحك لنافذة المصرف الخاص بك في إطار آخر).</value>
+  </data>
+  <data name="PayOutMoney_PageTitle" xml:space="preserve">
+    <value>المطالبات الجاهزة لدفع التعويض</value>
+  </data>
+  <data name="PayOutMoney_PayoutCannotUndo" xml:space="preserve">
+    <value>لا يمكن التراجع عن التعويض رقم {0}: لقد تمت تسويته أو إغلاقه.</value>
+  </data>
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>التعويض رقم {0:N0} لصالح {1} تم إنشاؤه.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>التعويض رقم {0:N0} تم التراجع عنه وعادت كل الأمور إلى حالها.</value>
+  </data>
+  <data name="RequestCashAdvance_Amount" xml:space="preserve">
+    <value>مبلغ السلفة (بالـ {0})</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_BankAccount" xml:space="preserve">
+    <value>رقم الحساب</value>
+  </data>
+  <data name="RequestCashAdvance_BankClearing" xml:space="preserve">
+    <value>رقم المقاصة</value>
+  </data>
+  <data name="RequestCashAdvance_BankName" xml:space="preserve">
+    <value>اسم البنك</value>
+  </data>
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>الميزانية</value>
+  </data>
+  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
+    <value>تفاصيل معلومات حسابك البنكي</value>
+  </data>
+  <data name="RequestCashAdvance_Info" xml:space="preserve">
+    <value>إذا كنت على وشك القيام بعملية شراء نيابة عن المنظمة، وكنت في حاجة إلى المال مقدما بدلاً من التقدم بمطالبة مالية فيما بعد، فإنه يمكنك طلب سلفه نقدية لغرض محدد.</value>
+  </data>
+  <data name="RequestCashAdvance_PageTitle" xml:space="preserve">
+    <value>طلب سلفة نقدية</value>
+  </data>
+  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
+    <value>الغرض</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartOne" xml:space="preserve">
+    <value>تم طلب سلفه نقدية لـ &lt;strong&gt;{0}&lt;/strong&gt;. المبلغ المطلوب هو {2} {3:N2}. يرجى ملاحظة أن هذه السلفة تعتبر بمثابة &lt;strong&gt;قرض&lt;/strong&gt; من المنظمة حتى يتم تسليم الإيصالات.</value>
+    <comment>{0} is the person receiving the advance, {1} is the entered description. {2} is the currency (in caps) and {3:N2} is the amount, with two decimals, displayed in culture.</comment>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwo" xml:space="preserve">
+    <value>هذا الأمر يحتاج إلى مصادقة المسؤول عن الميزانية أولاً ثم بعد ذلك يتم الانتقال إلى دفع التعويض.</value>
+  </data>
+  <data name="RequestCashAdvance_SuccessMessagePartTwoOwnBudget" xml:space="preserve">
+    <value>بما أن هذه الميزانية خاصة بك، فإن المصادقة قد تمت تلقائياً وتم الاتنقال إلى التعويض.</value>
+    <comment>This is displayed if either the person creating the cash advance OR the person receiving it is the budget owner.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
+    <value>يرجى إدخال مبلغ المال (في {0}) الذي تريده مقدماً.</value>
+    <comment>{0} is the currency.</comment>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>الرجاء إدخال رقم الحساب البنكي الخاص بك.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankClearing" xml:space="preserve">
+    <value>الرجاء إدخال رقم المقاصة للبنك الخاص بك.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>الرجاء إدخال اسم البنك الخاص بك.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>الرجاء اختر الميزانية التي سوف يتم الصرف منها.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>الرجاء تحديد الغرض من السلفة النقدية.</value>
+  </data>
+  <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
+    <value>الإيصالات التي تنتظر مطابقتك</value>
+  </data>
+  <data name="ValidateReceipts_Info" xml:space="preserve">
+    <value>هنا يمكنك التحقق والتدقيق في الإيصالات المرفقة مع المطالبات المالية. تحقق من صحة المبالغ ومن كون الإيصالات مطابقة للبيان الوارد في المطالبات المالية.</value>
+  </data>
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>مطابقة الإيصالات</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
+    <value>لم يمكن مطابقة إيصالات المطالبة المالية رقم {0:N0} الخاصة بـ {1} {2:N2}. المطالبة المالية لن يتم نقلها إلى التعويضات حتى تتم إعادة مطابقتها.</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>تمت مطابقة إيصالات المطالبة المالية رقم {0:N0} الخاصة بـ {1}{2:N2}.</value>
+  </data>
+</root>

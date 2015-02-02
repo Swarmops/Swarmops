@@ -117,54 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu5_Administration" xml:space="preserve">
-    <value>مدير النظام</value>
-  </data>
-  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
-    <value>قوائم التحكم بالوصول</value>
-  </data>
-  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
-    <value>إنشاء منظمة جديدة</value>
-  </data>
-  <data name="Menu5_Administration_EditOrganization" xml:space="preserve">
-    <value>تغيير معلومات منظمة</value>
-  </data>
-  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
-    <value>الشجرة الجغرافية</value>
-  </data>
-  <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
-    <value>تجمعات المنظمة</value>
-  </data>
-  <data name="Menu5_Admin_SystemSettings" xml:space="preserve">
-    <value>إعدادات النظام</value>
-  </data>
-  <data name="Menu5_Communications" xml:space="preserve">
-    <value>الاتصالات</value>
-  </data>
-  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
-    <value>تحرير نص البريد الآلي</value>
-  </data>
-  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
-    <value>إدارة البريد الوارد</value>
-  </data>
-  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
-    <value>حملة بريد</value>
-  </data>
-  <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
-    <value>حشد النشطاء</value>
-  </data>
-  <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
-    <value>إدارة الوارد الورقي</value>
-  </data>
-  <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
-    <value>قراءة الوارد الورقي</value>
-  </data>
-  <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
-    <value>الرسائل الورقية المستلمة</value>
-  </data>
-  <data name="Menu5_Communications_ReporterList" xml:space="preserve">
-    <value>إدارة قائمة المراسلين</value>
-  </data>
   
   
   
@@ -199,40 +151,6 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="Menu5_People" xml:space="preserve">
-    <value>Jäsenet</value>
-  </data>
   
   
   

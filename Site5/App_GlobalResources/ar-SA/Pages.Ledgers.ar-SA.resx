@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountPlan_CreateRootAccount" xml:space="preserve">
+    <value>إنشاء حساب جذري جديد</value>
+  </data>
+  <data name="AccountPlan_Info" xml:space="preserve">
+    <value>هذه نظرة عامة على الحسابات المالية في دفتر الأستاذ الخاص بك. يمكنك القيام ببعض عمليات الصيانة من هنا، ولو أنه يجب تفويض معظم العمليات اليومية إلى الأشخاص المسؤولين عن الميزانيات.</value>
+  </data>
+  <data name="AccountPlan_PageTitle" xml:space="preserve">
+    <value>شجرة الحسابات</value>
+  </data>
+  <data name="BalanceSheet_AccountName" xml:space="preserve">
+    <value>الحساب</value>
+  </data>
+  <data name="BalanceSheet_Assets" xml:space="preserve">
+    <value>الأصول</value>
+  </data>
+  <data name="BalanceSheet_ContentHeader" xml:space="preserve">
+    <value>الميزانية العمومية ل {0}،</value>
+    <comment>{0} is the organization name. The year follows immediately, so keep ending comma.</comment>
+  </data>
+  <data name="BalanceSheet_Current" xml:space="preserve">
+    <value>الحالي</value>
+  </data>
+  <data name="BalanceSheet_Debt" xml:space="preserve">
+    <value>الخصوم</value>
+  </data>
+  <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
+    <value>الميزانية العمومية</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="BalanceSheet_EndYear" xml:space="preserve">
+    <value>الانتهاء-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="BalanceSheet_Info" xml:space="preserve">
+    <value>تقدم الميزانية العمومية لمحة عامة عن الأصول والمديونيات عند نقطة محددة من الزمن, وتستخدم لمعرفة كيفية تأثير النتائج على الحالة المالية العامة للمنظمة. قد ترغب ايضاً في التعرف على  &lt;a href="ProfitLossStatement.aspx"&gt; بيان الأرباح والخسائر &lt;/a&gt; والذي يستعرض الإيرادات والنفقات.</value>
+  </data>
+  <data name="BalanceSheet_PageTitle" xml:space="preserve">
+    <value>الميزانية العمومية</value>
+  </data>
+  <data name="BalanceSheet_Q1" xml:space="preserve">
+    <value>التغيير للربع 1</value>
+  </data>
+  <data name="BalanceSheet_Q2" xml:space="preserve">
+    <value>التغيير للربع 2</value>
+  </data>
+  <data name="BalanceSheet_Q3" xml:space="preserve">
+    <value>التغيير للربع 3</value>
+  </data>
+  <data name="BalanceSheet_Q4" xml:space="preserve">
+    <value>التغيير للربع 4</value>
+  </data>
+  <data name="BalanceSheet_StartYear" xml:space="preserve">
+    <value>البداية-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="ProfitLossStatement_AccountName" xml:space="preserve">
+    <value>الحساب</value>
+  </data>
+  
+  <data name="ProfitLossStatement_Costs" xml:space="preserve">
+    <value>النفقات</value>
+  </data>
+  <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
+    <value>ارباح/خسائر</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="ProfitLossStatement_Income" xml:space="preserve">
+    <value>الإيرادات</value>
+  </data>
+  <data name="ProfitLossStatement_Info" xml:space="preserve">
+    <value>يقدم بيان الأرباح والخسائر لمحة عامة عن الإيرادات والنفقات والتي يتم تصنيفها حسب الميزانيات أو نوعية التكلفة/ الإيراد. ويعطي المجموع الكلي للإيرادات والنفقات النتائج السنوية. وقد ترغب في الاطلاع على  &lt;a href="BalanceSheet.aspx"&gt; الميزانية العمومة &lt;/a&gt; والتي تستعرض الأصول والمديونيات.</value>
+  </data>
+  <data name="ProfitLossStatement_LastYear" xml:space="preserve">
+    <value>العام الماضي</value>
+  </data>
+  <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
+    <value>بيان الأرباح والخسائر</value>
+  </data>
+  <data name="ProfitLossStatement_Q1" xml:space="preserve">
+    <value>الربع 1</value>
+  </data>
+  <data name="ProfitLossStatement_Q2" xml:space="preserve">
+    <value>الربع 2</value>
+  </data>
+  <data name="ProfitLossStatement_Q3" xml:space="preserve">
+    <value>الربع 3</value>
+  </data>
+  <data name="ProfitLossStatement_Q4" xml:space="preserve">
+    <value>الربع 4</value>
+  </data>
+  <data name="ProfitLossStatement_Results" xml:space="preserve">
+    <value>النتائج</value>
+    <comment>Footer on P&amp;L statement</comment>
+  </data>
+  <data name="ProfitLossStatement_Ytd" xml:space="preserve">
+    <value>منذ بداية السنة</value>
+    <comment>Year To Date</comment>
+  </data>
+  <data name="ResyncExternalAccount_Info" xml:space="preserve">
+    <value>إذا حصل أي خلل في التحديث المتزامن لسجلاتك المحاسبية في نظام سوارموبس مع سجلات البنك لاي سبب تقني أو بشري، فإنه يمكنك إعادة تحديثهم هنا عن طريق رفع الملف الرئيسي الذي يغطي الفترة الزمنية التي ترغب في تحديثها تزامنياً. .&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;تحذير:&lt;/strong&gt; هذه عملية مستهلكة للوقت يمكنها أن تجري &lt;em&gt;الكثير جداً &lt;/em&gt; من التعديلات على سجلاتك. فلا تستخدمها إلا إذا اكتشفت عدم تطابق ما في سجلاتك مع سجلات البنك. &lt;br/&gt;&lt;br/&gt; (سيكون لديك فرصة لمراجعة التغيرات المقترحة قبل أن يتم عكسها في سجلاتك المحاسبية)</value>
+  </data>
+  <data name="ResyncExternalAccount_PageTitle" xml:space="preserve">
+    <value>إعادة التحديث المتزامن للحساب البنكي</value>
+  </data>
+  <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
+    <value>المسؤول عن الميزانية</value>
+    <comment>Displayed above editables</comment>
+  </data>
+  <data name="SetRootBudgets_Info" xml:space="preserve">
+    <value>هنا يتم إعداد الميزانيات الأسية لكل سنة مالية. بعد أن يتم تحديدها جميعاً، يقوم كل مسؤول ميزانية بتخصيص الأموال الخاصة بفرعه من الميزانية حسب الهيكل المعتمد.</value>
+  </data>
+  <data name="SetRootBudgets_PageHeader" xml:space="preserve">
+    <value>الميزانيات الأسية لـ {0}</value>
+    <comment>The {0} is replaced with the organization's name.</comment>
+  </data>
+  <data name="SetRootBudgets_PageTitle" xml:space="preserve">
+    <value>إعداد ميزانيات أسية</value>
+    <comment>Displayed above main content</comment>
+  </data>
+  <data name="SetRootBudgets_SetNewBudgets" xml:space="preserve">
+    <value>إعداد ميزانيات جديدة</value>
+    <comment>Text on submit button</comment>
+  </data>
+  <data name="UploadBankFiles_AccountStatement" xml:space="preserve">
+    <value>البيان المحاسبي</value>
+  </data>
+  <data name="UploadBankFiles_BankAccount" xml:space="preserve">
+    <value>الحساب البنكي</value>
+  </data>
+  <data name="UploadBankFiles_BankScreenshot" xml:space="preserve">
+    <value>الموقف المالي البنكي</value>
+    <comment>Displayed as header above modally zoomed screenshot</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
+    <value>&lt;/p&gt; &lt;p&gt;(أحدث البيانات الموجودة في نظام سوارموبس لـ &lt;em&gt;{0}&lt;/em&gt; من تاريخ {1:yyyy-MMM-dd}. يجب عليك تحميل بيانات البنك على الأقل من تاريخ &lt;strong&gt;{2:yyyy-MMM-dd}-&lt;/strong&gt;)</value>
+    <comment>Displayed to help user determine scope of bank download</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince_Paypal" xml:space="preserve">
+    <value>&lt;/p&gt; &lt;p&gt;(سيخبرك Paypall عن وقت آخر تحميل للمعاملات. قم بتحميل جميع المعاملات ابتداءً من تلك النقطة  مع إضافة ثلاثة أيام كتداخل.)</value>
+    <comment>Displayed instead of date of last transaction in the case of Paypal.</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions" xml:space="preserve">
+    <value>تعليمات تحميل بيانات البنك</value>
+    <comment>Header above instructions for generation of the bank file type selected.</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
+    <value>لدى البنوك المختلفة وسائل مختلفة للحصول على ملف تنسيق BGMAX. في SEB، تذهب إلى &lt;strong&gt;المدفوعات&lt;/strong&gt; و &lt;strong&gt;اتصالات الملف&lt;/strong&gt; لمشاهدة قائمة ملفات للاسترداد. بنوك أخرى لديها طرق أخرى وعلى أية حال، قم برفعه هنا.</value>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions_PaypalFile" xml:space="preserve">
+    <value>سجل دخولك إلى Paypal. اذهب إلى &lt;strong&gt;الحساب الخاص بك&lt;/strong&gt;، وضمن القائمة "&lt;strong&gt;المحفوظات&lt;/strong&gt;"، حدد &lt;strong&gt;تاريخ التحميل&lt;/strong&gt;. حدد &lt;strong&gt;نطاق تاريخ مخصص&lt;/strong&gt;، قم بإدخال النطاق منذ آخر تحميل (كما ورد) بالإضافة إلى بضعة أيام للتداخل، والأهم من ذلك، حدد &lt;strong&gt;علامة التبويب محدد-كل الأنشطة&lt;/strong&gt;. انقر فوق &lt;strong&gt;تحميل&lt;/strong&gt;-&lt;/p&gt;&lt;p&gt;سيمر بعض الوقت قبل أن تستلم بريداً إلكترونياً من Paypal يخبرك بأن الملف جاهز للتحميل. سوف يكون اسمه &lt;em&gt;download.txt&lt;/em&gt;. قم برفع هذا الملف.</value>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions_PaysonFile" xml:space="preserve">
+    <value>تسجيل الدخول إلى Payson. انتقل إلى علامة التبويب &lt;strong&gt;History&lt;/strong&gt;، وانقر فوق &lt;strong&gt;Export history&lt;/strong&gt;. سيتم تسمية الملف الذي تم تنزيله &lt;em&gt;Payson_Export_[date].xls&lt;/em&gt;. قم برفع هذا الملف.</value>
+  </data>
+  <data name="UploadBankFiles_DownloadInstructions_SebAccountFile" xml:space="preserve">
+    <value>إفتح حساب الإنترنت الخاص بك في بنك SEB . اذهب إلى &lt;strong&gt;your account&lt;/strong&gt;، وأدخل النطاق الزمني الذي ترغب في تحميله في مربع البحث. اضغط على &lt;strong&gt;filter&lt;/strong&gt;. وبعد ذلك، انقر فوق الارتباط &lt;strong&gt;save the account history&lt;/strong&gt;. وسوف تظهر قائمة منبثقة. اختر &lt;strong&gt;csv&lt;/strong&gt; و &lt;strong&gt;tab separated&lt;/strong&gt;، ثم &lt;strong&gt;save&lt;/strong&gt;. سيتم تسمية الملف الذي تم تنزيله &lt;em&gt;Kontohändelser.csv&lt;/em&gt;. قم برفع هذا الملف.</value>
+    <comment>Only translate to languages where SEB is active.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
+    <value>&lt;p&gt;الملف احتوى على عدد  {0:N0} من العمليات. {1:N0} عملية تم استيرادها بنجاح إلى حساب {2}. (عدد {3:N0} كانت عمليات مكررة).&lt;/p&gt;&lt;p&gt;ومع ذلك فإن الرصيد البنكي لا يتطابق مع السجلات في نظام سوارموبس. وهذا يحدث عادة بسبب بعض المعاملات المفقودة. الرجاء رفع قائمة المعاملات خلال فترة زمنية كبيرة للتأكد من أنه يمكن لنظام سوارموبس أن يرى جميع العمليات.&lt;/p&gt;&lt;pحالياً فإن السجلات المحاسبية لنظام سوارموبس &lt;strong&gt;غير متطابقة&lt;/strong&gt; مع سجلات البنك.</value>
+    <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
+    <value>&lt;h3&gt;لم يمكن استيراد ملف البنك.&lt;/h3&gt;&lt;p&gt;هناك واحد من ثلاثة أسباب: إما أنه قد غابت عنك بعض تفاصيل إرشادات الرفع، أو أن البنك قد غير تنسيق الملف، أو أنك قمت برفع الملف الخاطئ تماما بطريق الخطأ (على سبيل المثال صورة من ألبوم الحفلة الأخيرة بدلاً من قائمة التعاملات). لم يتم استيراد أية تعاملات على الإطلاق. &lt;strong&gt;الرجاء إعادة المحاولة.&lt;/strong&gt;</value>
+  </data>
+  <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
+    <value>الملف المتوقع</value>
+    <comment>The name of the expected file for uploading.</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
+    <value>تم استيراد الملف بنجاح</value>
+    <comment>Displayed as header after successful processing</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader_ErrorBalance" xml:space="preserve">
+    <value>تم استيراد الملف، ولكن البيانات ليست متزامنة</value>
+    <comment>Displayed as header after a good processing that ended in sync failure</comment>
+  </data>
+  <data name="UploadBankFiles_FileType" xml:space="preserve">
+    <value>نوع الملف</value>
+    <comment>can be Account Statement or Payments File</comment>
+  </data>
+  <data name="UploadBankFiles_ImportError" xml:space="preserve">
+    <value>خطأ في استيراد الملف</value>
+    <comment>Displayed as header on import failure</comment>
+  </data>
+  <data name="UploadBankFiles_ImportResults" xml:space="preserve">
+    <value>&lt;p&gt;الملف احتوى على عدد  {0:N0} من العمليات. {1:N0} عملية تم استيرادها بنجاح إلى حساب {2}. (عدد {3:N0} كانت عمليات مكررة).&lt;/p&gt;&lt;p&gt; بعد عملية الاستيراد أصبح الرصيد البنكي في نظام سوارموبس مطابقاً للبنك.&lt;/p&gt;</value>
+    <comment>Displayed on successful import. Assumes plural among all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_Info" xml:space="preserve">
+    <value>هنا، يمكنك رفع الملفات من بنكك أو مقدم خدمة مدفوعاتك إلى السجلات المحاسبية في منظمتك. وتشمل الأمثلة تاريخ الحساب والمدفوعات المستلمة.</value>
+    <comment>Displayed in sidebar on page.</comment>
+  </data>
+  <data name="UploadBankFiles_Instructions" xml:space="preserve">
+    <value>الإرشادات</value>
+  </data>
+  <data name="UploadBankFiles_PageTitle" xml:space="preserve">
+    <value>رفع ملفات البنك</value>
+    <comment>Displayed above main content.</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentAllDuplicates" xml:space="preserve">
+    <value>ومع ذلك، كانت كلها تكرارا لمعلومات الدفع التي تم رفعها سابقا. لم يتم استيراد معلومات دفع جديدة إلى سوارموبس.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentCount" xml:space="preserve">
+    <value>لا مدفوعات | دفعة واحدة فقط | عدد {0} من الدفعات</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentFileUploadedHeader" xml:space="preserve">
+    <value>تم رفع ملف المدفوعات</value>
+  </data>
+  <data name="UploadBankFiles_PaymentGroupCount" xml:space="preserve">
+    <value>لا مجموعة مدفوعات | مجموعة مدفوعات واحدة | {0} من مجموعات المدفوعات</value>
+    <comment>none|one|many</comment>
+  </data>
+  <data name="UploadBankFiles_PaymentsFile" xml:space="preserve">
+    <value>ملف المدفوعات</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary1" xml:space="preserve">
+    <value>ملف المدفوعات يحتوي {0}.</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary2" xml:space="preserve">
+    <value>&lt;strong&gt;{0} {1:N2}&lt;/strong&gt; من المدفوعات تم استيرادها، موزعة على {2} عبر {3}.</value>
+    <comment>like EUR 2,102.00 in 3 payments across 2 groups </comment>
+  </data>
+  <data name="UploadBankFiles_PaymentSummaryDuplicates" xml:space="preserve">
+    <value>كان هناك أيضا بعض المعلومات المكررة ({0} عبر {1}).</value>
+  </data>
+  <data name="UploadBankFiles_Processing" xml:space="preserve">
+    <value>معالجة  ملف...</value>
+  </data>
+  <data name="UploadBankFiles_ProcessingComplete" xml:space="preserve">
+    <value>اكتملت المعالجة</value>
+  </data>
+  <data name="UploadBankFiles_ResultsBad" xml:space="preserve">
+    <value>&lt;p&gt;&lt;br/&gt; &lt;strong&gt;تعذر قراءة الملف كملف إدخال لهذا البنك-&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;هناك عدة أسباب يمكن أن تتسبب بهذا: قد يكون الملف تالفاً، أو أن البنك قد قام بتغيير تنسيق الملف دون أخبارك، أو أنك قمت برفع الملف الخاطئ تماما. الرجاء المحاولة مرة أخرى.&lt;/p&gt;</value>
+    <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsGood" xml:space="preserve">
+    <value>&lt;p&gt; تم استيراد الملف بنجاح. تم استيراد عدد {0:N0} من العمليات، تم إهمال عدد {1:N0} من العمليات لتكرارها لما هو موجود مسبقاً في نظام سوارموبس. الرصيد الموجود في نظام سوارموبس متطابق لما هو موجود في البنك..&lt;/p&gt;&lt;p&gt; وقد احتوى الملف على عمليات من الفترة {2:yyyy-MMM-dd} إلى {3:yyyy-MMM-dd}</value>
+    <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
+    <value>&lt;p&gt; تم استيراد الملف، ولكن الرصيد الناتج غير متطابق. &lt;/p&gt;&lt;p&gt;بعد استيراد عدد  {0:N0} من العمليات (وإهمال عدد  {1:N0} من العمليات المكررة)، فقد تمت معالجة الملف كاملاً. ومع ذلك فإن الرصيد الناتج في نظام سوارموبس لا يتطابق مع الموجود في كشف البنك. هناك فرق قيمته  {3} {2:N2}.
+&lt;/p&gt;&lt;p&gt; الرجاء محاولة رفع كشف حساب جديد. وإذا استمر ذلك في إنتاج رصيد غير متطابق، ربما تود تجربة &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt; إعادة مزامنة&lt;/a&gt; الحساب البنكي مع ملف شامل لكشف الحساب.</value>
+    <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded. 2 is the diff, 3 is the currency.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
+    <value>اختر حساباً مالياً</value>
+    <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectBankAndAccount" xml:space="preserve">
+    <value>اختر نوع الملف والحساب لرفعه</value>
+  </data>
+  <data name="UploadBankFiles_SelectBankFileType" xml:space="preserve">
+    <value>اختر نوع ملف البنك</value>
+    <comment>Header above several bank logos, prompting a selection of bank.</comment>
+  </data>
+  <data name="UploadBankFiles_UploadAnother" xml:space="preserve">
+    <value>رفع ملف بنك آخر؟</value>
+    <comment>Displayed as header after uploading one file</comment>
+  </data>
+  <data name="UploadBankFiles_UploadBankFile" xml:space="preserve">
+    <value>رفع ملف البنك</value>
+    <comment>Displayed as header above download instructions / upload form</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterDifference" xml:space="preserve">
+    <value>الفرق</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterLedgerBalance" xml:space="preserve">
+    <value>رصيد دفتر الأستاذ</value>
+  </data>
+  <data name="ViewOutstandingAccounts_FooterTotal" xml:space="preserve">
+    <value>المجموع</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAction" xml:space="preserve">
+    <value>الإجراء</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
+    <value>المبلغ</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderExpectedCloseDate" xml:space="preserve">
+    <value>إغلاق النفقات</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderId" xml:space="preserve">
+    <value>المعرف</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderOpenedDate" xml:space="preserve">
+    <value>تاريخ فتح الحساب</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
+    <value>المُستلم</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Header" xml:space="preserve">
+    <value>عرض الحسابات التي تحتاج إلى تسوية</value>
+  </data>
+  <data name="ViewOutstandingAccounts_Info" xml:space="preserve">
+    <value>هذه الصفحة تتيح لك التحقق من الحسابا المعلقة والتي لم تتم تسويتها (نفقات، فواتير، سلف نقدية، إلخ) في الوقت الحالي أو في وقت إغلاق أي دفتر أستاذ سابق.</value>
+  </data>
+  <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
+    <value>سرد الحسابات التي لم تتم تسويتها</value>
+  </data>
+  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
+    <value>اسم الحساب</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
+    <value>هل يمكن تنفيذ العمليات على هذا الحساب؟</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
+    <value>نشط</value>
+  </data>
+  <data name="AccountPlan_Edit_AdministrativeLong" xml:space="preserve">
+    <value>هل العمليات على هذا الحساب مستبعدة من التقارير ثنائية الأبعاد؟</value>
+  </data>
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>مدير النظام</value>
+  </data>
+  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
+    <value>الميزانية (الرصيد &lt;span id="SpanTextCurrency"&gt;فو&lt;/span&gt; &lt;span id="SpanEditBalance"&gt;بار&lt;/span&gt;)</value>
+    <comment>foo, bar replaced on load with actual values</comment>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableLong" xml:space="preserve">
+    <value>هل يمكن للآخرين استخدام هذا الحساب لتقارير النفقات؟</value>
+  </data>
+  <data name="AccountPlan_Edit_ExpensableShort" xml:space="preserve">
+    <value>يقبل النفقات</value>
+  </data>
+  <data name="AccountPlan_Edit_FileUploadProfile" xml:space="preserve">
+    <value>بروفايل رفع الملفات</value>
+  </data>
+  <data name="AccountPlan_Edit_Header" xml:space="preserve">
+    <value>تحرير الحساب</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
+    <value>أتمتة</value>
+    <comment>Automatic connections to bank, blockchain etc.</comment>
+  </data>
+  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
+    <value>إعدادات</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
+    <value>العمليات اليومية</value>
+  </data>
+  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
+    <value>الحساب أو المجموعة الأصل</value>
+  </data>
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>هذا حساب نفقات. عادة ما تكون هذه الحسابات ذات ميزانية سلبية، نظراً لأنها استنزاف لأصول المنظمة. تم تغيير ميزانيتك المقترحة لتكون سلبية.</value>
+    <comment>Displayed as a message box</comment>
+  </data>
+  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
+    <value>الحساب</value>
+  </data>
+  <data name="AccountPlan_Header_Balance" xml:space="preserve">
+    <value>الرصيد</value>
+  </data>
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>الميزانية</value>
+  </data>
+  <data name="AccountPlan_Header_Edit" xml:space="preserve">
+    <value>تحرير</value>
+  </data>
+  <data name="AccountPlan_Header_Flags" xml:space="preserve">
+    <value>علامات</value>
+  </data>
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>للفترة</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>تفتيش</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>تدقيق دفاتر الأستاذ</value>
+  </data>
+  <data name="InspectLedgers_FlaggingNotAvailable" xml:space="preserve">
+    <value>وضع علامة على تعامل مالي لم يتم تنفيذه بعد. وهو مجدول للتنفيذ في إحدى دورات سبرنت الحمراء المبكرة في أواخر الربع الأول من عام 2015.</value>
+  </data>
+  <data name="InspectLedgers_InboundBalance" xml:space="preserve">
+    <value>الرصيد المورد</value>
+  </data>
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>لا رصيد سابق</value>
+  </data>
+  <data name="InspectLedgers_Info" xml:space="preserve">
+    <value>هذه هي السجلات الأساسية حسب الطريقة الفينيسية لدفاتر الأستاذ الخاصة بمالية المنظمة. يمكنك دراستها بالتفصيل لأغراض التدقيق المحاسبي. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt;&lt;strong&gt; أنت الآن تشاهد حساب الأرباح والخسائر، لذلك فإن الإشارات معكوسة - الإيرادات بالسالب والنفقات بالموجب&lt;/strong&gt; تماشياً مع الأسلوب الفينيسي في مسك الدفاتر.&lt;/span&gt;</value>
+  </data>
+  <data name="InspectLedgers_InspectNotAvailable" xml:space="preserve">
+    <value>تدقيق معاملة واحدة لم يتم تنفيذه حتى الآن. وهو مجدول للتنفيذ في وقت مبكر من إحدى دورات السبرنت الحمراء في نهايات الربع الأول لعام 2015.</value>
+  </data>
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>لا توجد أي تعاملات على هذا الحساب للفترة الزمنية التي تم تحديدها.</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalance" xml:space="preserve">
+    <value>الرصيد المرحل</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>الرصيد النهائي</value>
+  </data>
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>الرصيد النهائي (حتى تاريخه)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>(يرجى اختيار حساب)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  
+  <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt; تم استيراد ملف المدفوعات بنجاح.  تم استيراد {1:N0} دفعة/دفعات في {0:N0} مجموعة/مجموعات، بما مجموعه {3} {2:N2}.</value>
+    <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt; تم استيراد ملف المدفوعات بنجاح.  تم استيراد {1:N0} دفعة/دفعات في {0:N0} مجموعة/مجموعات، بما مجموعه {3} {2:N2}..&lt;/p&gt;
+&lt;/p&gt;(وقد كان هناك عدد  {5:N0} من المدفوعات المكررة في  {4:N0} من المجموعات)&lt;/p&gt;&lt;p&gt;</value>
+    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
+  </data>
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>إضافة حساباً</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>حساب جديد</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>هذا حساب خصوم. هذه الحسابات يكون رصيدها عادة بالسالب، نظراً لأنها تمثل أصولاً سالبة في المنظمة. تم تغيير رصيدك الأولى الذي أدخلته إلى السالب.</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>الرصيد الأولى (المورد إلى {0})، {1}</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
+  </data>
+  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
+    <value>أظهر الحسابات غير النشطة (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
+    <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
+    <value>الخسارة المتوقعة {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
+    <value>الأرباح المتوقعة {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+</root>

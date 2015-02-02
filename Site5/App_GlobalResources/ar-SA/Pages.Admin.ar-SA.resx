@@ -117,132 +117,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu5_Administration" xml:space="preserve">
-    <value>مدير النظام</value>
+  <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
+    <value>النشطاء سيتم تسميتهم</value>
   </data>
-  <data name="Menu5_Administration_AccessControlLists" xml:space="preserve">
-    <value>قوائم التحكم بالوصول</value>
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>المنظمة الأساس</value>
   </data>
-  <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>المنظمة الوليدة من {0}</value>
+    <comment>"Create org as..."</comment>
+  </data>
+  <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
+    <value>إنشاء المنظمة الجديدة ك...</value>
+  </data>
+  <data name="CreateOrganization_Info" xml:space="preserve">
+    <value>يمكنك إنشاء منظمة جديدة كمنظمة مستقلة، أو كمنظمة وليدة من المنظمة الحالية. (جميع الأشخاص في المنظمة الأم مع مسؤولياتهم سيكون لهم نفس الصلاحيات والامتيازات في المنظمة الوليدة تلقائياً.)</value>
+  </data>
+  <data name="CreateOrganization_NewOrgCurrency" xml:space="preserve">
+    <value>عملة المنظمة</value>
+  </data>
+  <data name="CreateOrganization_NewOrgName" xml:space="preserve">
+    <value>اسم المنظمة الجديدة</value>
+  </data>
+  <data name="CreateOrganization_PageTitle" xml:space="preserve">
     <value>إنشاء منظمة جديدة</value>
   </data>
-  <data name="Menu5_Administration_EditOrganization" xml:space="preserve">
-    <value>تغيير معلومات منظمة</value>
+  <data name="CreateOrganization_RegularTitle" xml:space="preserve">
+    <value>الأشخاص العاديون سيتم تسميتهم</value>
+    <comment>This can be "members", etc.</comment>
   </data>
-  <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
-    <value>الشجرة الجغرافية</value>
+  
+  
+  
+  
+  
+  <data name="EditOrganization_ParticipationBeginsWhen" xml:space="preserve">
+    <value>أصبح الأشخاص {0} عندما</value>
+    <comment>The {0} is member, ambassador, etc. in the gender neutral plural.</comment>
   </data>
-  <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
-    <value>تجمعات المنظمة</value>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="SystemSettings_ExternalUrl" xml:space="preserve">
+    <value>عنوان URL يمكن الوصول إليها خارجياً</value>
   </data>
-  <data name="Menu5_Admin_SystemSettings" xml:space="preserve">
+  <data name="SystemSettings_Info" xml:space="preserve">
+    <value>الإعدادات التقنية المختلفة لهذا التنصيب من نظام سوارموبس. غير مخصص لأي منظمة أو شخص وهي على مستوى التنصيب ككل.</value>
+  </data>
+  <data name="SystemSettings_InstallationName" xml:space="preserve">
+    <value>اسم التنصيب</value>
+  </data>
+  <data name="SystemSettings_PageTitle" xml:space="preserve">
     <value>إعدادات النظام</value>
   </data>
-  <data name="Menu5_Communications" xml:space="preserve">
-    <value>الاتصالات</value>
+  <data name="SystemSettings_SmtpServer" xml:space="preserve">
+    <value>خادم SMTP (user:pass@host:port)</value>
   </data>
-  <data name="Menu5_Communications_EditAutomailText" xml:space="preserve">
-    <value>تحرير نص البريد الآلي</value>
-  </data>
-  <data name="Menu5_Communications_MailInbox" xml:space="preserve">
-    <value>إدارة البريد الوارد</value>
-  </data>
-  <data name="Menu5_Communications_MassMailing" xml:space="preserve">
-    <value>حملة بريد</value>
-  </data>
-  <data name="Menu5_Communications_MobilizeActivists" xml:space="preserve">
-    <value>حشد النشطاء</value>
-  </data>
-  <data name="Menu5_Communications_PaperInbox" xml:space="preserve">
-    <value>إدارة الوارد الورقي</value>
-  </data>
-  <data name="Menu5_Communications_ReadPaperInbox" xml:space="preserve">
-    <value>قراءة الوارد الورقي</value>
-  </data>
-  <data name="Menu5_Communications_ReceivedPaperLetter" xml:space="preserve">
-    <value>الرسائل الورقية المستلمة</value>
-  </data>
-  <data name="Menu5_Communications_ReporterList" xml:space="preserve">
-    <value>إدارة قائمة المراسلين</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="Menu5_People" xml:space="preserve">
-    <value>Jäsenet</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
 </root>
