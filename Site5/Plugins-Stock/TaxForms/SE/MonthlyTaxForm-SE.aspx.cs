@@ -155,7 +155,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 1510, 1726,
                     rightAlign); // Deducted total
 
-                DrawWrittenNumber (data.TaxTotal, 1510, 1793, graphics);
+                DrawWrittenNumber (data.TaxTotal, 1485, 1793, graphics);
             }
 
             using (Stream responseStream = Response.OutputStream)
@@ -170,12 +170,12 @@ namespace Swarmops.Plugins.Stock.TaxForms
         {
             // This inserts spaces between every other character
             string numberString = number.ToString ("F0");
-            char thinSpace = ' '; // this is a UNICODE THIN SPACE character (U+2009)
+            char space = ' ';
             string drawString = string.Empty + numberString[0];
 
             for (int loop = 1; loop < numberString.Length; loop++)
             {
-                drawString += thinSpace;
+                drawString += space;
                 drawString += numberString[loop];
             }
 
