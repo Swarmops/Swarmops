@@ -60,7 +60,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
             string courierFontName = "Liberation Mono";
             int smallSize = 18;
             int regularSize = 24;
-            int handWriteSize = 40;
+            int handWriteSize = 36;
 
             if (Debugger.IsAttached)
             {
@@ -95,8 +95,8 @@ namespace Swarmops.Plugins.Stock.TaxForms
 
                 if (year <= 2014)
                 {
-                    graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 680, 292);
-                    graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 620, 1460);
+                    graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 676, 288);
+                    graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 616, 1456);
                     graphics.DrawString (String.Format ("{0,4}-{1:D2}-{2:D2}", year, month + 1, 12), fontPreprinted,
                         brushPreprinted, 820, 160);
                     graphics.DrawString (orgNumber, fontPreprinted, brushPreprinted, 1110, 160);
@@ -155,7 +155,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 1510, 1726,
                     rightAlign); // Deducted total
 
-                DrawWrittenNumber (data.TaxTotal, 1485, 1793, graphics);
+                DrawWrittenNumber (data.TaxTotal, 1492, 1793, graphics);
             }
 
             using (Stream responseStream = Response.OutputStream)
