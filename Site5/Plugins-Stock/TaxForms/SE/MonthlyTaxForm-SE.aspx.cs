@@ -74,10 +74,10 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 StringFormat rightAlign = new StringFormat();
                 rightAlign.Alignment = StringAlignment.Far;
 
-                Font fontHandwriting = new Font (courierFontName, 64, FontStyle.Regular);
-                Font fontPreprinted = new Font (courierFontName, 30, FontStyle.Bold);
-                Font fontPreprintedSmall = new Font (courierFontName, 24, FontStyle.Bold);
-                Font fontPreprintedSans = new Font (sansFontName, 30, FontStyle.Bold);
+                Font fontHandwriting = new Font (courierFontName, handWriteSize, FontStyle.Regular);
+                Font fontPreprinted = new Font (courierFontName, regularSize, FontStyle.Bold);
+                Font fontPreprintedSmall = new Font (courierFontName, smallSize, FontStyle.Bold);
+                Font fontPreprintedSans = new Font (sansFontName, regularSize, FontStyle.Bold);
 
                 Brush brushHandwriting = Brushes.Blue;
                 Brush brushPreprinted = Brushes.Red;
