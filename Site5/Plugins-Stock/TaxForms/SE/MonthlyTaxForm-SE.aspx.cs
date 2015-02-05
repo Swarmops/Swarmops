@@ -38,17 +38,35 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 formVersion = 2010;
             }
 
+            Dictionary<int, Dictionary<GraphicsElement, int>> coord =
+                new Dictionary<int, Dictionary<GraphicsElement, int>>();
+
+            // Coordinates for various elements on the form versions
+
+            coord[2010] = new Dictionary<GraphicsElement, int>();
+            coord[2015] = new Dictionary<GraphicsElement, int>();
+
+
             Image form = Image.FromFile (MapPath (".") + "/MonthlyTaxForm-SE-" + formVersion + ".png");  // the "." says "in same folder as this file"
 
             CultureInfo swedishCulture = CultureInfo.CreateSpecificCulture ("sv-SE");
             monthString = new DateTime(year, month, 1).ToString("MMMM yyyy", swedishCulture);
 
+            string orgNumber = "xxxxxx-xxxx";
             string sansFontName = "Liberation Sans";
             string courierFontName = "Liberation Mono";
+            int smallSize = 18;
+            int regularSize = 24;
+            int handWriteSize = 48;
+
             if (Debugger.IsAttached)
             {
                 sansFontName = "Arial"; // yeahyeah...
                 courierFontName = "Courier New";
+                orgNumber = "DEBUGGER ATTACHED";
+                smallSize = 24;
+                regularSize = 30;
+                handWriteSize = 64;
             }
 
             using (Graphics graphics = Graphics.FromImage (form))
@@ -56,7 +74,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 StringFormat rightAlign = new StringFormat();
                 rightAlign.Alignment = StringAlignment.Far;
 
-                Font fontHandwriting = new Font (courierFontName, 64, FontStyle.Bold);
+                Font fontHandwriting = new Font (courierFontName, 64, FontStyle.Regular);
                 Font fontPreprinted = new Font (courierFontName, 30, FontStyle.Bold);
                 Font fontPreprintedSmall = new Font (courierFontName, 24, FontStyle.Bold);
                 Font fontPreprintedSans = new Font (sansFontName, 30, FontStyle.Bold);
@@ -78,7 +96,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
                     graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 620, 1460);
                     graphics.DrawString (String.Format ("{0,4}-{1:D2}-{2:D2}", year, month + 1, 12), fontPreprinted,
                         brushPreprinted, 820, 160);
-                    graphics.DrawString ("xxxxxx-xxxx", fontPreprinted, brushPreprinted, 1110, 160);
+                    graphics.DrawString (orgNumber, fontPreprinted, brushPreprinted, 1110, 160);
                 }
                 else // the latest revision of the tax form
                 {
@@ -86,7 +104,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
                     graphics.DrawString (monthString, fontPreprintedSans, brushPreprinted, 610, 1455);
                     graphics.DrawString (String.Format ("{0,4}-{1:D2}-{2:D2}", year, month + 1, 12), fontPreprinted,
                         brushPreprinted, 820, 160);
-                    graphics.DrawString ("xxxxxx-xxxx", fontPreprinted, brushPreprinted, 1110, 160);
+                    graphics.DrawString (orgNumber, fontPreprinted, brushPreprinted, 1110, 160);
                 }
 
                 // Draw the years and tax rates and other on-form constants more discreetly
@@ -152,6 +170,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
             {
                 Salary = new double[3];
                 TaxAdditive = new double[3];
+                TaxTotal = 99999; // Prime with something for font metrics debugging
             }
 
             public double[] Salary;
@@ -194,6 +213,19 @@ namespace Swarmops.Plugins.Stock.TaxForms
             }
 
             return result;
+        }
+
+        private enum GraphicsElement
+        {
+            Unknown = 0,
+            LeftColumnX,
+            RightColumnX,
+            AgeBracketMainY,
+            AgeBracketDistY,
+            AdditiveTaxTotalY,
+            SummaryTopLineY,
+            SummaryBottomLineY,
+            SummaryTotalY
         }
     }
 }
