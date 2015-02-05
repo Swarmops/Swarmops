@@ -20,8 +20,9 @@ namespace Swarmops.Frontend.Controls.v5.Base
             set { this.TextInput.Text = value; }
         }
 
-        public void Focus()
+        public override void Focus()
         {
+            base.Focus();
             this.TextInput.Focus();
         }
 

@@ -28,7 +28,7 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"sv-SE", "nl-NL", "ru-RU"};
+            string[] availableCultures = {"ar-SA", "sv-SE", "nl-NL", "ru-RU"};
 
             Array.Sort (availableCultures);
             // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
@@ -48,6 +48,11 @@ namespace Swarmops.Frontend.Pages.v5.User
                 {
                     newLanguage.IconUrl = "/Images/Flags/uk-64px.png";
                     // use "uk" for en-GB and en-US rather than "gb" or "us"
+                }
+                else if (cultureId.StartsWith ("ar"))
+                {
+                    newLanguage.IconUrl = "/Images/Flags/ae-64px.png";
+                    // The culture is ar-SA but we're not giving Saudi Arabia the light of day here
                 }
                 availableLanguages.Add (newLanguage);
             }

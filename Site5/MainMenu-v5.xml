@@ -242,6 +242,16 @@
                 <Permissions />
                 <Type>Disabled</Type>
                 <Children />
+                    <MainMenuItem>
+                        <ResourceKey>Financial_Payroll_TaxForms</ResourceKey>
+                        <UserLevel>3</UserLevel>
+                        <Permissions />
+                        <ImageUrl />
+                        <NavigateUrl>/Pages/v5/Financial/ViewPayrollTaxForms.aspx</NavigateUrl>
+                        <Type>Link</Type>
+                        <Children />
+                    </MainMenuItem>
+                
             </MainMenuItem>
           
             <MainMenuItem>
@@ -341,8 +351,33 @@
                 <Type>Separator</Type>
                 <Children />
             </MainMenuItem>
-          
-            <MainMenuItem>
+
+          <MainMenuItem>
+            <ResourceKey>Ledgers_TaxForms</ResourceKey>
+            <UserLevel>3</UserLevel>
+            <Permissions />
+            <Type>Submenu</Type>
+            <Children>
+              <MainMenuItem>
+                <ResourceKey>Ledgers_TaxForms_Payroll</ResourceKey>
+                <UserLevel>3</UserLevel>
+                <Permissions />
+                <ImageUrl />
+                <NavigateUrl>/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+              </MainMenuItem>
+            </Children>
+
+          </MainMenuItem>
+
+          <MainMenuItem>
+            <UserLevel>3</UserLevel>
+            <Type>Separator</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
                 <ResourceKey>Ledgers_UploadBankFiles</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />

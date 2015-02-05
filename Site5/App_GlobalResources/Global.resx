@@ -555,4 +555,21 @@
   <data name="Error_AjaxCallException" xml:space="preserve">
     <value>There was a general, unspecified error contacting the Swarmops server. Is the network still operational and the server available?</value>
   </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="Global_View" xml:space="preserve">
+    <value>View</value>
+    <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="Global_YearMonth" xml:space="preserve">
+    <value>Year/Month</value>
+  </data>
+  <data name="Global_YearX" xml:space="preserve">
+    <value>Year {0}</value>
+    <comment>As in "the year X".</comment>
+  </data>
 </root>

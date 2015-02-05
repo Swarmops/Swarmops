@@ -399,4 +399,10 @@
   <data name="Menu5_Ugly_Todo" xml:space="preserve">
     <value>This is a temporary menu. Yes it's ugly now.</value>
   </data>
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Tax Forms</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Payroll Tax Forms</value>
+  </data>
 </root>

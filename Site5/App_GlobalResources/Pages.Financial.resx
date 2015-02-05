@@ -342,6 +342,33 @@
   <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
     <value>Payout #{0:N0} was undone and everything restored.</value>
   </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Additive Tax</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Deducted Tax</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Gross Paycheck</value>
+  </data>
+  <data name="PayrollTaxForms_Info" xml:space="preserve">
+    <value>View cheat sheets (completed tax forms) for the organization payroll, which are easy for you to copy to your actual tax forms, or possibly even print as is. Performance and actual forms vary by country and sometimes depend on third-party code and plugins.</value>
+  </data>
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Payroll Tax Forms</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>Monthly Tax Forms For {0} For</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Total Cost</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Total Tax</value>
+  </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>Advance amount (in {0})</value>
     <comment>{0} is the currency.</comment>

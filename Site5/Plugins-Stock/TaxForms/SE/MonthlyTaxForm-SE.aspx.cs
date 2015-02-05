@@ -1,0 +1,199 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using Swarmops.Logic.Financial;
+using Swarmops.Logic.Structure;
+
+namespace Swarmops.Plugins.Stock.TaxForms
+{
+    public partial class MonthlyTaxFormSE : DataV5Base
+    {
+        protected void Page_Load (object sender, EventArgs e)
+        {
+            string monthString = Request.QueryString["YearMonth"];
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            Organization organization = authData.CurrentOrganization;
+
+            int year = Int32.Parse (monthString.Substring (0, 4));
+            int month = Int32.Parse (monthString.Substring (4)); // never mind input checking
+
+            int[] yearBreakpoints = { 1938, year-65, year-26 };
+            double[] taxRates = {10.21, 15.49, 31.42}; // will need to adapt this when some of the rates change
+
+            SalaryTaxData data = GetSalaryData (year, month, organization, yearBreakpoints);
+
+            Response.ContentType = "image/png";
+
+            int formVersion = 2015;
+            if (year < 2015)
+            {
+                formVersion = 2010;
+            }
+
+            Image form = Image.FromFile (MapPath (".") + "/MonthlyTaxForm-SE-" + formVersion + ".png");  // the "." says "in same folder as this file"
+
+            CultureInfo swedishCulture = CultureInfo.CreateSpecificCulture ("sv-SE");
+            monthString = new DateTime(year, month, 1).ToString("MMMM yyyy", swedishCulture);
+
+            string sansFontName = "Liberation Sans";
+            string courierFontName = "Liberation Mono";
+            if (Debugger.IsAttached)
+            {
+                sansFontName = "Arial"; // yeahyeah...
+                courierFontName = "Courier New";
+            }
+
+            using (Graphics graphics = Graphics.FromImage (form))
+            {
+                StringFormat rightAlign = new StringFormat();
+                rightAlign.Alignment = StringAlignment.Far;
+
+                Font fontHandwriting = new Font (courierFontName, 64, FontStyle.Bold);
+                Font fontPreprinted = new Font (courierFontName, 30, FontStyle.Bold);
+                Font fontPreprintedSmall = new Font (courierFontName, 24, FontStyle.Bold);
+                Font fontPreprintedSans = new Font (sansFontName, 30, FontStyle.Bold);
+
+                Brush brushHandwriting = Brushes.Blue;
+                Brush brushPreprinted = Brushes.Red;
+                Brush brushPreprintedDiscreet = Brushes.DarkRed;
+
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+                // Draw the header and monthname - things to pay attention to
+
+                graphics.DrawString (organization.Name, fontPreprinted, brushPreprinted, 150, 170);
+
+                if (year <= 2014)
+                {
+                    graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 680, 292);
+                    graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 620, 1460);
+                    graphics.DrawString (String.Format ("{0,4}-{1:D2}-{2:D2}", year, month + 1, 12), fontPreprinted,
+                        brushPreprinted, 820, 160);
+                    graphics.DrawString ("xxxxxx-xxxx", fontPreprinted, brushPreprinted, 1110, 160);
+                }
+                else // the latest revision of the tax form
+                {
+                    graphics.DrawString (monthString, fontPreprintedSans, brushPreprinted, 670, 287);
+                    graphics.DrawString (monthString, fontPreprintedSans, brushPreprinted, 610, 1455);
+                    graphics.DrawString (String.Format ("{0,4}-{1:D2}-{2:D2}", year, month + 1, 12), fontPreprinted,
+                        brushPreprinted, 820, 160);
+                    graphics.DrawString ("xxxxxx-xxxx", fontPreprinted, brushPreprinted, 1110, 160);
+                }
+
+                // Draw the years and tax rates and other on-form constants more discreetly
+
+                graphics.DrawString (taxRates[2].ToString ("F2", swedishCulture), fontPreprintedSmall,
+                    brushPreprintedDiscreet, 828, 731);
+                graphics.DrawString (taxRates[1].ToString ("F2", swedishCulture), fontPreprintedSmall,
+                    brushPreprintedDiscreet, 828, 798);
+                graphics.DrawString (taxRates[0].ToString ("F2", swedishCulture), fontPreprintedSmall,
+                    brushPreprintedDiscreet, 828, 865);
+
+                graphics.DrawString (string.Format ("{0} - {1}", yearBreakpoints[1], yearBreakpoints[2] - 1),
+                    fontPreprintedSmall, brushPreprintedDiscreet, 200, 731);
+                graphics.DrawString (string.Format ("{0} -", yearBreakpoints[2] - 1),
+                    fontPreprintedSmall, brushPreprintedDiscreet, 200, 798);
+                graphics.DrawString (string.Format ("{0}", yearBreakpoints[1] - 1),
+                    fontPreprintedSmall, brushPreprintedDiscreet, 252, 861);
+
+                // Draw the actual numbers
+
+                graphics.DrawString (data.SalaryTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 792, 358,
+                    rightAlign); // Salary total sub
+                graphics.DrawString (data.SalaryTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 792, 558,
+                    rightAlign); // Salary total total
+
+                for (int ageBracket = 0; ageBracket <= 2; ageBracket++)
+                {
+                    if (data.Salary[ageBracket] > 0.0)
+                    {
+                        graphics.DrawString (data.Salary[ageBracket].ToString ("F0"), fontHandwriting, brushHandwriting,
+                            792, 692 + ageBracket*67, rightAlign); // Salary
+                        graphics.DrawString (data.TaxAdditive[ageBracket].ToString ("F0"), fontHandwriting,
+                            brushHandwriting, 1510, 692 + ageBracket*67, rightAlign); // Employer's fee
+                    }
+                }
+
+                graphics.DrawString(data.SalaryTotal.ToString("F0"), fontHandwriting, brushHandwriting, 792, 1524,
+                    rightAlign); // Salary total again
+                graphics.DrawString (data.SalaryTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 792, 1725,
+                    rightAlign); // Salary total again
+                graphics.DrawString(data.TaxAdditiveTotal.ToString("F0"), fontHandwriting, brushHandwriting, 1510,
+                    1326, rightAlign); // Emp fee total
+                graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 1510, 1525,
+                    rightAlign); // Deducted main
+                graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 1510, 1726,
+                    rightAlign); // Deducted total
+                graphics.DrawString (data.TaxTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 1510, 1793,
+                    rightAlign); // Tax cost total
+            }
+
+            using (Stream responseStream = Response.OutputStream)
+            {
+                form.Save (responseStream, ImageFormat.Png);
+            }
+
+        }
+
+
+
+        private class SalaryTaxData
+        {
+            public SalaryTaxData()
+            {
+                Salary = new double[3];
+                TaxAdditive = new double[3];
+            }
+
+            public double[] Salary;
+            public double SalaryTotal;
+            public double TaxSubtractiveTotal;
+            public double[] TaxAdditive;
+            public double TaxAdditiveTotal;
+            public double TaxTotal;
+        }
+
+
+        private SalaryTaxData GetSalaryData (int year, int month, Organization organization, int[] yearBreakpoints)
+        {
+            SalaryTaxData result = new SalaryTaxData();
+
+            Salaries salaries = Salaries.ForOrganization (organization, true);
+
+            foreach (Salary salary in salaries)
+            {
+                if (salary.PayoutDate.Year == year && salary.PayoutDate.Month == month)
+                {
+                    int employeeBirthYear = salary.PayrollItem.Person.Birthdate.Year;
+                    int ageBracket = 0; // main
+                    if (employeeBirthYear >= yearBreakpoints[2])
+                    {
+                        ageBracket = 1; // youth rebate
+                    }
+                    else if (employeeBirthYear < yearBreakpoints[1])
+                    {
+                        ageBracket = 2; // pensioners
+                    }
+
+                    result.Salary[ageBracket] += salary.GrossSalaryCents/100.0;
+                    result.SalaryTotal += salary.GrossSalaryCents/100.0;
+                    result.TaxSubtractiveTotal += salary.SubtractiveTaxCents/100.0;
+                    result.TaxAdditive[ageBracket] += salary.AdditiveTaxCents/100.0;
+                    result.TaxAdditiveTotal += salary.AdditiveTaxCents/100.0;
+                    result.TaxTotal += salary.TaxTotalCents/100.0;
+                }
+            }
+
+            return result;
+        }
+    }
+}
