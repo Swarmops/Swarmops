@@ -53,7 +53,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
             coord[2010][GraphicsElement.RightColumnX] = 1492;
 
             coord[2015][GraphicsElement.LeftColumnX] = 800;
-            coord[2015][GraphicsElement.RightColumnX] = 1510;
+            coord[2015][GraphicsElement.RightColumnX] = 1512;
 
             coord[2010][GraphicsElement.AgeBracketMainY] = 694;
             coord[2010][GraphicsElement.AgeBracketDistY] = 67;
@@ -146,10 +146,10 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 }
                 else // the latest revision of the tax form
                 {
-                    graphics.DrawString(organization.Name.ToUpperInvariant(), fontPreprinted, brushPreprinted, 840, 260);
+                    graphics.DrawString(organization.Name.ToUpperInvariant(), fontPreprinted, brushPreprinted, 840, 255);
 
-                    graphics.DrawString(monthString, fontPreprintedSans, brushPreprinted, 700, 365);
-                    graphics.DrawString (monthString, fontPreprintedSans, brushPreprinted, 637, 1487);
+                    graphics.DrawString(monthString, fontPreprintedSans, brushPreprinted, 702, 363);
+                    graphics.DrawString (monthString, fontPreprintedSans, brushPreprinted, 639, 1485);
                     graphics.DrawString (String.Format ("{0,4}-{1:D2}-{2:D2}", year, month + 1, 12), fontPreprinted,
                         brushPreprinted, 840, 180);
                     graphics.DrawString (orgNumber, fontPreprinted, brushPreprinted, 1125, 180);
@@ -180,7 +180,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
 
                 for (int ageBracket = 0; ageBracket <= 2; ageBracket++)
                 {
-                    if (1.0 > 0.0)
+                    if (data.Salary[ageBracket] > 0.0)
                     {
                         DrawWrittenNumber(data.Salary[ageBracket], coord[formVersion][GraphicsElement.LeftColumnX],
                             coord[formVersion][GraphicsElement.AgeBracketMainY] +
@@ -227,8 +227,6 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 x += 10; // Mono has different metrics because of bloody course it has
             }
 
-            y += 3; // global adjustment (ok, this is ugly)
-
             // This inserts spaces between every other character
             string numberString = number.ToString ("F0");
             char space = ' ';
@@ -254,7 +252,6 @@ namespace Swarmops.Plugins.Stock.TaxForms
             {
                 Salary = new double[3];
                 TaxAdditive = new double[3];
-                TaxTotal = 123456789; // Prime with something for font metrics debugging
             }
 
             public double[] Salary;
