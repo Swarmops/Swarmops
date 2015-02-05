@@ -104,7 +104,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 StringFormat rightAlign = new StringFormat();
                 rightAlign.Alignment = StringAlignment.Far;
 
-                _fontHandwriting = new Font (sansFontName, handWriteSize, FontStyle.Regular);
+                _fontHandwriting = new Font (sansFontName, handWriteSize, FontStyle.Bold);
                 Font fontPreprinted = new Font (courierFontName, regularSize, FontStyle.Bold);
                 Font fontPreprintedSmall = new Font (courierFontName, smallSize, FontStyle.Bold);
                 Font fontPreprintedSans = new Font (sansFontName, regularSize, FontStyle.Bold);
