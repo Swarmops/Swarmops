@@ -16,6 +16,9 @@ namespace Swarmops.Plugins.Stock.TaxForms
 {
     public partial class MonthlyTaxFormSE : DataV5Base
     {
+        private Font _fontHandwriting;
+        private Brush _brushHandwriting;
+
         protected void Page_Load (object sender, EventArgs e)
         {
             string monthString = Request.QueryString["YearMonth"];
@@ -57,7 +60,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
             string courierFontName = "Liberation Mono";
             int smallSize = 18;
             int regularSize = 24;
-            int handWriteSize = 48;
+            int handWriteSize = 40;
 
             if (Debugger.IsAttached)
             {
@@ -66,7 +69,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 orgNumber = "DEBUGGER ATTACHED";
                 smallSize = 24;
                 regularSize = 30;
-                handWriteSize = 64;
+                handWriteSize = 52;
             }
 
             using (Graphics graphics = Graphics.FromImage (form))
@@ -74,12 +77,12 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 StringFormat rightAlign = new StringFormat();
                 rightAlign.Alignment = StringAlignment.Far;
 
-                Font fontHandwriting = new Font (courierFontName, handWriteSize, FontStyle.Regular);
+                _fontHandwriting = new Font (sansFontName, handWriteSize, FontStyle.Regular);
                 Font fontPreprinted = new Font (courierFontName, regularSize, FontStyle.Bold);
                 Font fontPreprintedSmall = new Font (courierFontName, smallSize, FontStyle.Bold);
                 Font fontPreprintedSans = new Font (sansFontName, regularSize, FontStyle.Bold);
 
-                Brush brushHandwriting = Brushes.Blue;
+                _brushHandwriting = Brushes.Blue;
                 Brush brushPreprinted = Brushes.Red;
                 Brush brushPreprintedDiscreet = Brushes.DarkRed;
 
@@ -110,49 +113,49 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 // Draw the years and tax rates and other on-form constants more discreetly
 
                 graphics.DrawString (taxRates[2].ToString ("F2", swedishCulture), fontPreprintedSmall,
-                    brushPreprintedDiscreet, 828, 731);
+                    brushPreprintedDiscreet, 840, 729);
                 graphics.DrawString (taxRates[1].ToString ("F2", swedishCulture), fontPreprintedSmall,
-                    brushPreprintedDiscreet, 828, 798);
+                    brushPreprintedDiscreet, 840, 796);
                 graphics.DrawString (taxRates[0].ToString ("F2", swedishCulture), fontPreprintedSmall,
-                    brushPreprintedDiscreet, 828, 865);
+                    brushPreprintedDiscreet, 840, 863);
 
                 graphics.DrawString (string.Format ("{0} - {1}", yearBreakpoints[1], yearBreakpoints[2] - 1),
-                    fontPreprintedSmall, brushPreprintedDiscreet, 200, 731);
+                    fontPreprintedSmall, brushPreprintedDiscreet, 190, 729);
                 graphics.DrawString (string.Format ("{0} -", yearBreakpoints[2] - 1),
-                    fontPreprintedSmall, brushPreprintedDiscreet, 200, 798);
+                    fontPreprintedSmall, brushPreprintedDiscreet, 190, 796);
                 graphics.DrawString (string.Format ("{0}", yearBreakpoints[1] - 1),
-                    fontPreprintedSmall, brushPreprintedDiscreet, 252, 861);
+                    fontPreprintedSmall, brushPreprintedDiscreet, 250, 859);
 
                 // Draw the actual numbers
 
-                graphics.DrawString (data.SalaryTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 792, 358,
+                graphics.DrawString (data.SalaryTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 792, 358,
                     rightAlign); // Salary total sub
-                graphics.DrawString (data.SalaryTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 792, 558,
+                graphics.DrawString (data.SalaryTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 792, 558,
                     rightAlign); // Salary total total
 
                 for (int ageBracket = 0; ageBracket <= 2; ageBracket++)
                 {
                     if (data.Salary[ageBracket] > 0.0)
                     {
-                        graphics.DrawString (data.Salary[ageBracket].ToString ("F0"), fontHandwriting, brushHandwriting,
+                        graphics.DrawString (data.Salary[ageBracket].ToString ("F0"), _fontHandwriting, _brushHandwriting,
                             792, 692 + ageBracket*67, rightAlign); // Salary
-                        graphics.DrawString (data.TaxAdditive[ageBracket].ToString ("F0"), fontHandwriting,
-                            brushHandwriting, 1510, 692 + ageBracket*67, rightAlign); // Employer's fee
+                        graphics.DrawString (data.TaxAdditive[ageBracket].ToString ("F0"), _fontHandwriting,
+                            _brushHandwriting, 1510, 692 + ageBracket*67, rightAlign); // Employer's fee
                     }
                 }
 
-                graphics.DrawString(data.SalaryTotal.ToString("F0"), fontHandwriting, brushHandwriting, 792, 1524,
+                graphics.DrawString(data.SalaryTotal.ToString("F0"), _fontHandwriting, _brushHandwriting, 792, 1524,
                     rightAlign); // Salary total again
-                graphics.DrawString (data.SalaryTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 792, 1725,
+                graphics.DrawString (data.SalaryTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 792, 1725,
                     rightAlign); // Salary total again
-                graphics.DrawString(data.TaxAdditiveTotal.ToString("F0"), fontHandwriting, brushHandwriting, 1510,
+                graphics.DrawString(data.TaxAdditiveTotal.ToString("F0"), _fontHandwriting, _brushHandwriting, 1510,
                     1326, rightAlign); // Emp fee total
-                graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 1510, 1525,
+                graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 1510, 1525,
                     rightAlign); // Deducted main
-                graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 1510, 1726,
+                graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 1510, 1726,
                     rightAlign); // Deducted total
-                graphics.DrawString (data.TaxTotal.ToString ("F0"), fontHandwriting, brushHandwriting, 1510, 1793,
-                    rightAlign); // Tax cost total
+
+                DrawWrittenNumber (data.TaxTotal, 1510, 1793, graphics);
             }
 
             using (Stream responseStream = Response.OutputStream)
@@ -163,6 +166,26 @@ namespace Swarmops.Plugins.Stock.TaxForms
         }
 
 
+        private void DrawWrittenNumber (double number, int x, int y, Graphics graphics)
+        {
+            // This inserts spaces between every other character
+            string numberString = number.ToString ("F0");
+            char thinSpace = ' '; // this is a UNICODE THIN SPACE character (U+2009)
+            string drawString = string.Empty + numberString[0];
+
+            for (int loop = 1; loop < numberString.Length; loop++)
+            {
+                drawString += thinSpace;
+                drawString += numberString[loop];
+            }
+
+            StringFormat rightAlign = new StringFormat();
+            rightAlign.Alignment = StringAlignment.Far;
+
+            graphics.DrawString (drawString, _fontHandwriting, _brushHandwriting, x, y, rightAlign);
+
+        }
+
 
         private class SalaryTaxData
         {
@@ -170,7 +193,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
             {
                 Salary = new double[3];
                 TaxAdditive = new double[3];
-                TaxTotal = 99999; // Prime with something for font metrics debugging
+                TaxTotal = 123456789; // Prime with something for font metrics debugging
             }
 
             public double[] Salary;
