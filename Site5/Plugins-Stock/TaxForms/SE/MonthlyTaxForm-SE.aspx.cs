@@ -61,8 +61,8 @@ namespace Swarmops.Plugins.Stock.TaxForms
             coord[2015][GraphicsElement.AgeBracketMainY] = 770;
             coord[2015][GraphicsElement.AgeBracketDistY] = 65;
 
-            coord[2010][GraphicsElement.SalaryY] = 355;
-            coord[2010][GraphicsElement.SalaryTotalY] = 555;
+            coord[2010][GraphicsElement.SalaryY] = 360;
+            coord[2010][GraphicsElement.SalaryTotalY] = 560;
             coord[2010][GraphicsElement.AdditiveTaxTotalY] = 1329;
             coord[2010][GraphicsElement.DeductedTaxY] = 1529;
             coord[2010][GraphicsElement.DeductedTaxTotalY] = 1727;
