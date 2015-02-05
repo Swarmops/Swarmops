@@ -28,7 +28,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
             int year = Int32.Parse (monthString.Substring (0, 4));
             int month = Int32.Parse (monthString.Substring (4)); // never mind input checking
 
-            int[] yearBreakpoints = { 1938, year-65, year-26 };
+            int[] yearBreakpoints = {1938, year - 65, year - 26};
             double[] taxRates = {10.21, 15.49, 31.42}; // will need to adapt this when some of the rates change
 
             SalaryTaxData data = GetSalaryData (year, month, organization, yearBreakpoints);
@@ -48,6 +48,33 @@ namespace Swarmops.Plugins.Stock.TaxForms
 
             coord[2010] = new Dictionary<GraphicsElement, int>();
             coord[2015] = new Dictionary<GraphicsElement, int>();
+
+            coord[2010][GraphicsElement.LeftColumnX] = 775;
+            coord[2010][GraphicsElement.RightColumnX] = 1492;
+
+            coord[2015][GraphicsElement.LeftColumnX] = 800;
+            coord[2015][GraphicsElement.RightColumnX] = 1510;
+
+            coord[2010][GraphicsElement.AgeBracketMainY] = 694;
+            coord[2010][GraphicsElement.AgeBracketDistY] = 67;
+
+            coord[2015][GraphicsElement.AgeBracketMainY] = 770;
+            coord[2015][GraphicsElement.AgeBracketDistY] = 65;
+
+            coord[2010][GraphicsElement.SalaryY] = 355;
+            coord[2010][GraphicsElement.SalaryTotalY] = 555;
+            coord[2010][GraphicsElement.AdditiveTaxTotalY] = 1329;
+            coord[2010][GraphicsElement.DeductedTaxY] = 1529;
+            coord[2010][GraphicsElement.DeductedTaxTotalY] = 1727;
+            coord[2010][GraphicsElement.SummaryTotalY] = 1795;
+
+            coord[2015][GraphicsElement.SalaryY] = 440;
+            coord[2015][GraphicsElement.SalaryTotalY] = 640;
+            coord[2015][GraphicsElement.AdditiveTaxTotalY] = 1395;
+            coord[2015][GraphicsElement.DeductedTaxY] = 1560;
+            coord[2015][GraphicsElement.DeductedTaxTotalY] = 1759;
+            coord[2015][GraphicsElement.SummaryTotalY] = 1825;
+
 
 
             Image form = Image.FromFile (MapPath (".") + "/MonthlyTaxForm-SE-" + formVersion + ".png");  // the "." says "in same folder as this file"
@@ -69,7 +96,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 orgNumber = "DEBUGGER ATTACHED";
                 smallSize = 24;
                 regularSize = 30;
-                handWriteSize = 52;
+                handWriteSize = 48;
             }
 
             using (Graphics graphics = Graphics.FromImage (form))
@@ -89,74 +116,101 @@ namespace Swarmops.Plugins.Stock.TaxForms
                 graphics.CompositingQuality = CompositingQuality.HighQuality;
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-                // Draw the header and monthname - things to pay attention to
-
-                graphics.DrawString (organization.Name, fontPreprinted, brushPreprinted, 150, 170);
+                // Draw the header and monthname - things to pay attention to when looking at cheat sheet
 
                 if (year <= 2014)
                 {
-                    graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 676, 288);
-                    graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 616, 1456);
+                    graphics.DrawString(organization.Name, fontPreprinted, brushPreprinted, 150, 170);
+
+                    graphics.DrawString(monthString, fontPreprinted, brushPreprinted, 676, 288);
+                    graphics.DrawString (monthString, fontPreprinted, brushPreprinted, 610, 1455);
                     graphics.DrawString (String.Format ("{0,4}-{1:D2}-{2:D2}", year, month + 1, 12), fontPreprinted,
                         brushPreprinted, 820, 160);
                     graphics.DrawString (orgNumber, fontPreprinted, brushPreprinted, 1110, 160);
+
+                    // Draw the years and tax rates and other on-form constants more discreetly
+
+                    graphics.DrawString(taxRates[2].ToString("F2", swedishCulture), fontPreprintedSmall,
+                        brushPreprintedDiscreet, 840, 729);
+                    graphics.DrawString(taxRates[1].ToString("F2", swedishCulture), fontPreprintedSmall,
+                        brushPreprintedDiscreet, 840, 796);
+                    graphics.DrawString(taxRates[0].ToString("F2", swedishCulture), fontPreprintedSmall,
+                        brushPreprintedDiscreet, 840, 863);
+
+                    graphics.DrawString(string.Format("{0} - {1}", yearBreakpoints[1], yearBreakpoints[2] - 1),
+                        fontPreprintedSmall, brushPreprintedDiscreet, 190, 729);
+                    graphics.DrawString(string.Format("{0} -", yearBreakpoints[2] - 1),
+                        fontPreprintedSmall, brushPreprintedDiscreet, 190, 796);
+                    graphics.DrawString(string.Format("{0}", yearBreakpoints[1] - 1),
+                        fontPreprintedSmall, brushPreprintedDiscreet, 250, 859);
                 }
                 else // the latest revision of the tax form
                 {
-                    graphics.DrawString (monthString, fontPreprintedSans, brushPreprinted, 670, 287);
-                    graphics.DrawString (monthString, fontPreprintedSans, brushPreprinted, 610, 1455);
+                    graphics.DrawString(organization.Name.ToUpperInvariant(), fontPreprinted, brushPreprinted, 840, 260);
+
+                    graphics.DrawString(monthString, fontPreprintedSans, brushPreprinted, 700, 365);
+                    graphics.DrawString (monthString, fontPreprintedSans, brushPreprinted, 637, 1487);
                     graphics.DrawString (String.Format ("{0,4}-{1:D2}-{2:D2}", year, month + 1, 12), fontPreprinted,
-                        brushPreprinted, 820, 160);
-                    graphics.DrawString (orgNumber, fontPreprinted, brushPreprinted, 1110, 160);
+                        brushPreprinted, 840, 180);
+                    graphics.DrawString (orgNumber, fontPreprinted, brushPreprinted, 1125, 180);
+
+                    // Draw the years and tax rates and other on-form constants more discreetly
+
+                    graphics.DrawString(taxRates[2].ToString("F2", swedishCulture), fontPreprintedSmall,
+                        brushPreprintedDiscreet, 870, 798);
+                    graphics.DrawString(taxRates[1].ToString("F2", swedishCulture), fontPreprintedSmall,
+                        brushPreprintedDiscreet, 870, 865);
+                    graphics.DrawString(taxRates[0].ToString("F2", swedishCulture), fontPreprintedSmall,
+                        brushPreprintedDiscreet, 870, 932);
+
+                    graphics.DrawString(string.Format("{0} - {1}", yearBreakpoints[1], yearBreakpoints[2] - 1),
+                        fontPreprintedSmall, brushPreprintedDiscreet, 220, 800);
+                    graphics.DrawString(string.Format("{0} -", yearBreakpoints[2] - 1),
+                        fontPreprintedSmall, brushPreprintedDiscreet, 220, 863);
+                    graphics.DrawString(string.Format("{0}", yearBreakpoints[1] - 1),
+                        fontPreprintedSmall, brushPreprintedDiscreet, 270, 924);
                 }
 
-                // Draw the years and tax rates and other on-form constants more discreetly
+                // Draw the actual numbers: First, salary totals
 
-                graphics.DrawString (taxRates[2].ToString ("F2", swedishCulture), fontPreprintedSmall,
-                    brushPreprintedDiscreet, 840, 729);
-                graphics.DrawString (taxRates[1].ToString ("F2", swedishCulture), fontPreprintedSmall,
-                    brushPreprintedDiscreet, 840, 796);
-                graphics.DrawString (taxRates[0].ToString ("F2", swedishCulture), fontPreprintedSmall,
-                    brushPreprintedDiscreet, 840, 863);
+                DrawWrittenNumber(data.SalaryTotal, coord[formVersion][GraphicsElement.LeftColumnX], coord[formVersion][GraphicsElement.SalaryY], graphics);
+                DrawWrittenNumber(data.SalaryTotal, coord[formVersion][GraphicsElement.LeftColumnX], coord[formVersion][GraphicsElement.SalaryTotalY], graphics);
 
-                graphics.DrawString (string.Format ("{0} - {1}", yearBreakpoints[1], yearBreakpoints[2] - 1),
-                    fontPreprintedSmall, brushPreprintedDiscreet, 190, 729);
-                graphics.DrawString (string.Format ("{0} -", yearBreakpoints[2] - 1),
-                    fontPreprintedSmall, brushPreprintedDiscreet, 190, 796);
-                graphics.DrawString (string.Format ("{0}", yearBreakpoints[1] - 1),
-                    fontPreprintedSmall, brushPreprintedDiscreet, 250, 859);
-
-                // Draw the actual numbers
-
-                graphics.DrawString (data.SalaryTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 792, 358,
-                    rightAlign); // Salary total sub
-                graphics.DrawString (data.SalaryTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 792, 558,
-                    rightAlign); // Salary total total
+                // Additive tax
 
                 for (int ageBracket = 0; ageBracket <= 2; ageBracket++)
                 {
-                    if (data.Salary[ageBracket] > 0.0)
+                    if (1.0 > 0.0)
                     {
-                        graphics.DrawString (data.Salary[ageBracket].ToString ("F0"), _fontHandwriting, _brushHandwriting,
-                            792, 692 + ageBracket*67, rightAlign); // Salary
-                        graphics.DrawString (data.TaxAdditive[ageBracket].ToString ("F0"), _fontHandwriting,
-                            _brushHandwriting, 1510, 692 + ageBracket*67, rightAlign); // Employer's fee
+                        DrawWrittenNumber(data.Salary[ageBracket], coord[formVersion][GraphicsElement.LeftColumnX],
+                            coord[formVersion][GraphicsElement.AgeBracketMainY] +
+                            coord[formVersion][GraphicsElement.AgeBracketDistY] * ageBracket,
+                            graphics);
+
+                        DrawWrittenNumber(data.TaxAdditive[ageBracket], coord[formVersion][GraphicsElement.RightColumnX],
+                            coord[formVersion][GraphicsElement.AgeBracketMainY] +
+                            coord[formVersion][GraphicsElement.AgeBracketDistY] * ageBracket,
+                            graphics);
+
                     }
                 }
 
-                graphics.DrawString(data.SalaryTotal.ToString("F0"), _fontHandwriting, _brushHandwriting, 792, 1524,
-                    rightAlign); // Salary total again
-                graphics.DrawString (data.SalaryTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 792, 1725,
-                    rightAlign); // Salary total again
-                graphics.DrawString(data.TaxAdditiveTotal.ToString("F0"), _fontHandwriting, _brushHandwriting, 1510,
-                    1326, rightAlign); // Emp fee total
-                graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 1510, 1525,
-                    rightAlign); // Deducted main
-                graphics.DrawString (data.TaxSubtractiveTotal.ToString ("F0"), _fontHandwriting, _brushHandwriting, 1510, 1726,
-                    rightAlign); // Deducted total
+                DrawWrittenNumber (data.TaxAdditiveTotal, coord[formVersion][GraphicsElement.RightColumnX], coord[formVersion][GraphicsElement.AdditiveTaxTotalY], graphics);
 
-                DrawWrittenNumber (data.TaxTotal, 1492, 1793, graphics);
+                // Deducted taxes
+
+                DrawWrittenNumber(data.SalaryTotal, coord[formVersion][GraphicsElement.LeftColumnX], coord[formVersion][GraphicsElement.DeductedTaxY], graphics);
+                DrawWrittenNumber(data.SalaryTotal, coord[formVersion][GraphicsElement.LeftColumnX], coord[formVersion][GraphicsElement.DeductedTaxTotalY], graphics);
+
+                DrawWrittenNumber(data.TaxSubtractiveTotal, coord[formVersion][GraphicsElement.RightColumnX], coord[formVersion][GraphicsElement.DeductedTaxY], graphics);
+                DrawWrittenNumber(data.TaxSubtractiveTotal, coord[formVersion][GraphicsElement.RightColumnX], coord[formVersion][GraphicsElement.DeductedTaxTotalY], graphics);
+
+                // Grand total
+
+                DrawWrittenNumber (data.TaxTotal, coord[formVersion][GraphicsElement.RightColumnX], coord[formVersion][GraphicsElement.SummaryTotalY], graphics);
             }
+
+            // Write graphics buffer as PNG stream to Response object
 
             using (Stream responseStream = Response.OutputStream)
             {
@@ -168,6 +222,13 @@ namespace Swarmops.Plugins.Stock.TaxForms
 
         private void DrawWrittenNumber (double number, int x, int y, Graphics graphics)
         {
+            if (Debugger.IsAttached)
+            {
+                x += 10; // Mono has different metrics because of bloody course it has
+            }
+
+            y += 3; // global adjustment (ok, this is ugly)
+
             // This inserts spaces between every other character
             string numberString = number.ToString ("F0");
             char space = ' ';
@@ -246,8 +307,11 @@ namespace Swarmops.Plugins.Stock.TaxForms
             AgeBracketMainY,
             AgeBracketDistY,
             AdditiveTaxTotalY,
+            DeductedTaxY,
+            DeductedTaxTotalY,
+            SalaryY,
+            SalaryTotalY,
             SummaryTopLineY,
-            SummaryBottomLineY,
             SummaryTotalY
         }
     }
