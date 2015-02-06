@@ -49,6 +49,12 @@ strong
 }
 
 
+/* RTL */
+body.rtl {
+    direction: rtl;
+}
+
+
 /* MAIN WRAPPERY */
 
 
@@ -80,7 +86,7 @@ div.break
 	width: 400px;
 }
 
-[style*="rtl"] .logoimage
+body.rtl .logoimage
 {
 	float: right;
 }
@@ -115,7 +121,7 @@ div.currentuserinfo
 	font-size:14px;
 }
 
-[style*="rtl"] div.currentuserinfo {
+body.rtl div.currentuserinfo {
     float: left;
 }
 
@@ -160,7 +166,7 @@ img
 	left:-5px;
 }
 
-[style*="rtl"] .searchbox {
+body.rtl .searchbox {
     float: left;
     left: 5px;
 }
@@ -182,7 +188,7 @@ img
 	font-family: Ubuntu, Liberation Sans, Arial, Helvetica, Sans-Serif;
 }
 
-[style*="rtl"] .searchbox input {
+body.rtl .searchbox input {
     padding-left: inherit;
     padding-right: 26px;
     background-position-x: right;
@@ -209,7 +215,7 @@ img
 	width: 700px;
 }
 
-[style*="rtl"] .mainbar {
+body.rtl .mainbar {
     float: right;
 }
 
@@ -220,7 +226,7 @@ img
 	margin-left: 20px;
 }
 
-[style*="rtl"] .sidebar {
+body.rtl .sidebar {
     float: left;
 }
 

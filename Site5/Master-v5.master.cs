@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
@@ -169,6 +170,14 @@ namespace Swarmops
             {
                 this.LiteralDocumentReadyHook.Text = string.Empty;
             }
+
+            // Enable support for RTL languages
+
+            if (Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft)
+            {
+                this.LiteralBodyClass.Text = "rtl";
+            }
+
         }
 
         private void SetupDropboxes()

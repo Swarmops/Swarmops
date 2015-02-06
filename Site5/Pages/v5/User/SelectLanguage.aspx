@@ -64,6 +64,23 @@
             height: 48px;
         }
 
+        div.divLanguageEncapsulation {
+            direction: ltr;
+        }
+
+        div.divLanguageEncapsulation.rtl {
+            direction: rtl;
+        }
+
+        div.divLanguageEncapsulation.rtl div.divLanguageFlag {
+            float: right;
+            background-position: right;
+            padding-left: inherit;
+            padding-right: 2px;
+            margin-left: inherit;
+            margin-right: 4px;
+        }
+
         div.spanLanguageNativeName {
             padding-top: 10px;
             font-size: 24px;
@@ -79,7 +96,7 @@
     <hr/>
     <asp:Repeater runat="server" ID="RepeaterLanguages">
         <ItemTemplate>
-            <div class="divLanguageEncapsulation" onclick="document.location='/Pages/v5/User/SetCulture.aspx?CultureId=<%# Eval("CultureId") %>';">
+            <div class='divLanguageEncapsulation <%#Eval("Rtl") %>' onclick="document.location='/Pages/v5/User/SetCulture.aspx?CultureId=<%# Eval("CultureId") %>';">
                 <div class="divLanguageFlag" style="background-image:url('<%# Eval("IconUrl")%>')" ></div>
                 <div class="spanLanguageNativeName"><%# Eval("DisplayName") %></div>
             </div>

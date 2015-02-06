@@ -10,6 +10,13 @@ namespace Swarmops.Frontend.Pages.v5.User
         protected void Page_Load (object sender, EventArgs e)
         {
             string cultureId = Request.QueryString["CultureId"];
+
+            // Arabic: We present ar-AE but need to set ar-SA for dumb reasons
+            if (cultureId == "ar-AE")
+            {
+                cultureId = "ar-SA";
+            }
+
             Response.SetCookie(new HttpCookie("PreferredCulture", cultureId));
             
             AuthenticationData authenticationData = GetAuthenticationDataAndCulture();

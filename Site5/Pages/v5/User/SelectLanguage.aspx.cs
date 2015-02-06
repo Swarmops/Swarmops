@@ -28,7 +28,7 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private void PopulateRepeater()
         {
-            string[] availableCultures = {"ar-SA", "sv-SE", "nl-NL", "ru-RU"};
+            string[] availableCultures = {"ar-AE", "sv-SE", "nl-NL", "ru-RU"};
 
             Array.Sort (availableCultures);
             // sort by locale string, and that's ok, that happens to give the same result as sorting on country name
@@ -44,16 +44,21 @@ namespace Swarmops.Frontend.Pages.v5.User
                 newLanguage.DisplayName = Char.ToUpperInvariant (newLanguage.DisplayName[0]) +
                                           newLanguage.DisplayName.Substring (1); // Capitalize
 
-                if (cultureId.StartsWith ("en"))
+                if (cultureId.StartsWith("en"))
                 {
                     newLanguage.IconUrl = "/Images/Flags/uk-64px.png";
                     // use "uk" for en-GB and en-US rather than "gb" or "us"
                 }
-                else if (cultureId.StartsWith ("ar"))
+                if (cultureId.StartsWith("ar"))
                 {
                     newLanguage.IconUrl = "/Images/Flags/ae-64px.png";
-                    // The culture is ar-SA but we're not giving Saudi Arabia the light of day here
+                    // crowdin's generic culture is ar-SA but we're not showing the SA flag
                 }
+                if (culture.TextInfo.IsRightToLeft)
+                {
+                    newLanguage.Rtl = "rtl";
+                }
+
                 availableLanguages.Add (newLanguage);
             }
 
@@ -63,6 +68,7 @@ namespace Swarmops.Frontend.Pages.v5.User
 
         private class LanguageParameters
         {
+            public string Rtl { get; set; }
             public string IconUrl { get; set; }
             public string CultureId { get; set; }
             public string DisplayName { get; set; }
