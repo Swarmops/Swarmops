@@ -164,7 +164,7 @@ namespace Swarmops.Backend
                 Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
             }
 
-            DateTime cycleStartTime = DateTime.Now;
+            DateTime cycleStartTime = DateTime.UtcNow;
 
             int lastSecond = cycleStartTime.Second;
             int lastMinute = cycleStartTime.Minute;
@@ -176,7 +176,7 @@ namespace Swarmops.Backend
             {
                 BotLog.Write (0, "MainCycle", "Cycle Start");
 
-                cycleStartTime = DateTime.Now;
+                cycleStartTime = DateTime.UtcNow;
 
                 try
                 {
