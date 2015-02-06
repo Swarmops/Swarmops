@@ -100,6 +100,7 @@ namespace Swarmops.Database
 
         #endregion
 
+
         #region Creation and manipulation - stored procedures
 
         public int CreateCurrency (string code, string name, string sign)

@@ -7,6 +7,7 @@
 .sf-menu li {
 	position: relative;
 }
+
 .sf-menu ul {
 	position: absolute;
 	display: none;
@@ -14,25 +15,44 @@
 	left: 0;
 	z-index: 9990;
 }
+
+[style*="rtl"] .sf-menu ul { /* RTL override */
+    left: inherit;
+    right: 0;
+}
+
 .sf-menu > li {
 	float: left;
 }
+
+[style*="rtl"] .sf-menu > li {  /* RTL override */
+	float: right;
+}
+
 
 .sf-menu li:hover > ul,
 .sf-menu li.sfHover > ul
 {
     display: block;
-    box-shadow: #1C397E 0px 1px 1px 1px, #A2BEFF 0px 1px 5px 1px;
+    box-shadow: 0px 1px 1px 1px #1C397E, 0px 1px 5px 1px #A2BEFF;
 }
+
 
 .sf-menu a {
 	display: block;
 	position: relative;
 }
+
 .sf-menu ul ul {
 	top: 0;
 	left: 100%;
 }
+
+[style*="rtl"] .sf-menu ul ul {  /* RTL override*/
+    left: inherit;
+	right: 100%;
+}
+
 
 
 /*** SWARMOPS SKIN - HEAVILY MODIFIED FROM SUPERFISH DISTRO ***/
@@ -41,6 +61,13 @@
 	float: left;
 	margin-left: 14px;
 }
+
+[style*="rtl"] .sf-menu {
+	float: right;
+    margin-left: inherit;
+	margin-right: 14px;
+}
+
 .sf-menu ul {
 	box-shadow: 2px 2px 6px rgba(0,0,0,.2);
 	min-width: 12em; /* allow long menu items to determine submenu width */
@@ -61,6 +88,12 @@
 {
     padding: 2px 10px 8px 12px;
 }
+
+[style*="rtl"] .sf-menu ul a
+{
+    padding: 2px 12px 8px 10px;
+}
+
 
 .sf-menu a:hover, .sf-menu li.sfHover > a
 {
@@ -92,6 +125,12 @@
     left: -4px;
 }
 
+[style*="rtl"] .sf-menu ul li img
+{
+    left: 4px;
+}
+
+
 .sf-menu li {
 	background: transparent;
 	white-space: nowrap; /* no need for Supersubs plugin */
@@ -102,9 +141,22 @@
 .sf-menu ul li {
 	background: #E4ECFF;
 }
+
+.sf-menu li.Submenu li.Submenu {  /* default: LTR website */
+    background: #FF00FF url('/Style/submenu-rightarrow.png') no-repeat right top; /* testing selector */
+    padding-left: 20px; /* no icon */
+}
+
+[style*="rtl"] .sf-menu li.Submenu li.Submenu { /* Right-to-left override */
+    background: #FF0044 url('/Style/submenu-leftarrow.png') no-repeat right top; /* testing selector */
+    padding-left: inherit;
+    padding-right: 20px; /* no icon */
+}
+
+/* -- commented out
 .sf-menu ul ul li {
 	background: #FF00FF;
-}
+}*/
 
 .sf-menu li:not(.Separator):hover, .sf-menu li.sfHover
  {

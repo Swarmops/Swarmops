@@ -31,28 +31,42 @@ namespace Swarmops.Database
         #endregion
 
         #region Record reading - SELECT statements
-        /*
-        public BasicCurrency GetCurrency(int currencyId)
+        
+        public double GetCurrencyExchangeRate (int fromCurrencyId, int toCurrencyId, DateTime valuationDateTime)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand(
-                        "SELECT" + currencyFieldSequence + "WHERE CurrencyId=" + currencyId + ";", connection);
+                    GetDbCommand(String.Format (
+                        "SELECT CurrencyExchangeRateSnapshotData.CurrencyAId AS CurrencyAId, " +
+                        "  CurrencyExchangeRateSnapshotData.CurrencyBId AS CurrencyBId, " +
+                        "  CurrencyExchangeRateSnapshotData.APerB AS Rate, " +
+                        "  CurrencyExchangeRateSnapshots.DateTime AS RateTime " +
+                        "  FROM CurrencyExchangeRateSnapshotData " +
+                        "  JOIN CurrencyExchangeRateSnapshots USING (CurrencyExchangeRateSnapshotId)" +
+                        "  WHERE CurrencyAId = {0} AND CurrencyBId = {1} AND CurrencyExchangeRateSnapshots.DateTime < @valuationDateTime " +
+                        "  ORDER BY CurrencyExchangeRateSnapshots.DateTime DESC " +
+                        "  LIMIT 1;", fromCurrencyId, toCurrencyId), connection);
+
+                AddParameterWithName (command, "valuationDateTime", valuationDateTime);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return ReadCurrencyFromDataReader(reader);
+                        DateTime testDate = reader.GetDateTime (3);
+
+                        return reader.GetDouble(2);
                     }
 
-                    throw new ArgumentException("Unknown Currency Id: " + currencyId);
+                    throw new ArgumentException("Unknown Exchange Rate");
                 }
             }
         }
+        
+        /*
 
         public BasicCurrency GetCurrency(string currencyCode)
         {

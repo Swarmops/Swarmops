@@ -1,3 +1,5 @@
+using System;
+using NBitcoin;
 using Swarmops.Basic.Types;
 using Swarmops.Database;
 
@@ -22,6 +24,50 @@ namespace Swarmops.Logic.Financial
                 return base.Code;
             }
         }
+
+        public bool IsBitcoin
+        {
+            get { return (base.Code == "BTC"); }
+        }
+
+        public static Currency Bitcoin
+        {
+            get { return Currency.FromCode ("BTC"); }
+        }
+
+
+        public double GetConversionRate (Currency otherCurrency)
+        {
+            return GetConversionRate (otherCurrency, DateTime.UtcNow);
+        }
+
+
+        public double GetConversionRate (Currency otherCurrency, DateTime valuationDateTime)
+        {
+            if (this.IsBitcoin)
+            {
+                return SwarmDb.GetDatabaseForReading()
+                    .GetCurrencyExchangeRate (otherCurrency.Identity, this.Identity, valuationDateTime);
+            }
+            else if (otherCurrency.IsBitcoin)
+            {
+                return 1.0 / SwarmDb.GetDatabaseForReading()
+                    .GetCurrencyExchangeRate (otherCurrency.Identity, this.Identity, valuationDateTime);
+            }
+            else
+            {
+                // Neither is bitcoin, so go via bitcoin
+
+                int bitcoinCurrencyId = Currency.Bitcoin.Identity;
+                double thisPerBitcoin = SwarmDb.GetDatabaseForReading()
+                    .GetCurrencyExchangeRate (this.Identity, bitcoinCurrencyId, valuationDateTime);
+                double otherPerBitcoin = SwarmDb.GetDatabaseForReading()
+                    .GetCurrencyExchangeRate (otherCurrency.Identity, bitcoinCurrencyId, valuationDateTime);
+
+                return otherPerBitcoin/thisPerBitcoin;  // returns other-per-this, allowing multiplication with exchange rate
+            }
+        }
+
 
         public static Currency FromBasic (BasicCurrency basic)
         {
