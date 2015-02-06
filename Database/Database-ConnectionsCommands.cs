@@ -229,7 +229,7 @@ namespace Swarmops.Database
         }
 
 
-        private string SqlSanitize (string input)
+        private string SqlSanitize (string input)  // TODO: Replace with parameterized queries everywhere.
         {
             string[] forbiddenArray =
             {

@@ -138,6 +138,7 @@
     <Compile Include="Financial\FinancialTransactionTagTypes.cs" />
     <Compile Include="Financial\ImportedBankData.cs" />
     <Compile Include="Financial\ISummable.cs" />
+    <Compile Include="Financial\Money.cs" />
     <Compile Include="Financial\StockBankDataReaders.cs" />
     <Compile Include="Financial\YearlyReport.cs" />
     <Compile Include="Security\Accesses.cs" />
