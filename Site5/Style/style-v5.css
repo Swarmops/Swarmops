@@ -80,6 +80,10 @@ div.break
 	width: 400px;
 }
 
+[style*="rtl"] .logoimage
+{
+	float: right;
+}
 
 
 /* CURRENT USER INFO */
@@ -111,6 +115,9 @@ div.currentuserinfo
 	font-size:14px;
 }
 
+[style*="rtl"] div.currentuserinfo {
+    float: left;
+}
 
 
 /* MAIN TOP MENU */
@@ -153,6 +160,11 @@ img
 	left:-5px;
 }
 
+[style*="rtl"] .searchbox {
+    float: left;
+    left: 5px;
+}
+
 .searchbox input
 {
 	width:150px;
@@ -168,6 +180,12 @@ img
 	background-image:url('/Images/Icons/iconshock-search-24px.png');
 	background-repeat:no-repeat;
 	font-family: Ubuntu, Liberation Sans, Arial, Helvetica, Sans-Serif;
+}
+
+[style*="rtl"] .searchbox input {
+    padding-left: inherit;
+    padding-right: 26px;
+    background-position-x: right;
 }
 
 
@@ -191,11 +209,19 @@ img
 	width: 700px;
 }
 
+[style*="rtl"] .mainbar {
+    float: right;
+}
+
 .sidebar
 {
 	float: right;
 	width: 240px;
 	margin-left: 20px;
+}
+
+[style*="rtl"] .sidebar {
+    float: left;
 }
 
 .box
