@@ -206,6 +206,16 @@ body.rtl .searchbox input {
 	font-weight: normal;
 }
 
+body.rtl #ctl00_MainMenu {
+	left: inherit;
+    right: 20px;
+}
+
+body.rtl span.buildId {
+    direction: ltr; /* parentheses freak out unless specified LTR */
+}
+
+
 
 /* BARS AND BOXEN */
 
@@ -228,6 +238,8 @@ body.rtl .mainbar {
 
 body.rtl .sidebar {
     float: left;
+    margin-left: inherit;
+    margin-right: 20px;
 }
 
 .box
@@ -450,15 +462,19 @@ span.loginalphabetasign
 	background: #EA8511;
 	border: 1px solid #EA8511;
 	box-shadow: 1px 1px 4px #7F5500;
-	background: -moz-linear-gradient(top, #FFC145, #F0AB22);
-	background: -webkit-linear-gradient(top, #FFC145, #F0AB22);
-	background: linear-gradient(top, #FFC145, #F0AB22);
+	background: linear-gradient(#FFC145, #F0AB22);
 	text-shadow: #FFEDC8 0px 0px 3px, #FFEDC8 0px 0px 3px;
 	border-color: #C78B15;
 	position: relative;
 	top: -1px;
 	left: -1px;
 	cursor: pointer;
+}
+
+body.rtl .buttonAccentColor {
+	float:left;
+    left: inherit;
+    right: -1px;
 }
 
 .buttonAccentColor:hover, .buttonAccentColor:active {
@@ -472,10 +488,13 @@ span.loginalphabetasign
 	left: -2px;
 	box-shadow: 2px 2px 4px #7F5500;
 	background: #FFC34D;
-	background: -moz-linear-gradient(top, #FFD580, #FFC34D);
-	background: -webkit-linear-gradient(top, #FFD580, #FFC34D);
-	background: linear-gradient(top, #FFD580, #FFC34D);
+	background: linear-gradient(#FFD580, #FFC34D);
+}
 
+body.rtl .buttonAccentColor:hover, 
+body.rtl .buttonAccentColor:focus {
+    left: inherit;
+    right: -2px;
 }
 
 
@@ -503,6 +522,11 @@ span.loginalphabetasign
 	border: solid 1px #C78B15;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
+}
+
+body.rtl .button-orange {
+    padding: 2px 20px 2px 4px;
+    background-position: right;
 }
 
 .button-orange:hover
@@ -539,8 +563,7 @@ span.loginalphabetasign
 .entryFields
 {
 	background: #A2BEFF;
-	background: -webkit-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0));
-	background: -moz-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0));
+	background: linear-gradient(#B0C8FF, #86A6F0);
 	border-radius: 6px;
 	line-height: 40px;
 	float:right;
@@ -553,9 +576,13 @@ span.loginalphabetasign
 	font-size: 24px;
 	width: 330px;
 	
-	-webkit-box-shadow: 0 1px 3px 1px #1C397E;
-	-moz-box-shadow: 0 1px 3px 1px #1C397E;
 	box-shadow: 0 1px 3px 1px #1C397E;
+}
+
+body.rtl .entryFields {
+    float: left;
+    padding-left: 8px;
+    padding-right: 10px;
 }
 
 
@@ -593,6 +620,11 @@ span.loginalphabetasign
 	font-weight: 300;
 	white-space: nowrap;
 	overflow-x: hidden;
+}
+
+body.rtl .entryLabels {
+    padding-left: inherit;
+    padding-right: 15px;
 }
 
 .content .entryLabels h2 
@@ -790,6 +822,10 @@ div#page-icon-encaps
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
 }
 
+body.rtl .sidebar h2 {
+    float: right;
+}
+
 .sidebar h2.blue
 {
 	background-color: #A2BEFF;
@@ -819,6 +855,11 @@ div#page-icon-encaps
 	bottom: -7px;
 	left: 10px;
 	position: absolute;
+}
+
+body.rtl .sidebar h2 span.arrow {
+    left: inherit;
+    right: 10px;
 }
 
 .sidebar h2.blue span.arrow
@@ -1001,6 +1042,15 @@ input.ButtonSwarmopsUpload:active {
 }
 
 
+.buttonUploadFile {
+    height:36px;
+    padding-top:4px;
+    float: left;
+}
+
+body.rtl .buttonUploadFile {
+    float: right;
+}
 
 
 .ImageFlag

@@ -34,6 +34,12 @@
 	filter:alpha(opacity=40);
 }
 
+body.rtl .combo-arrow {
+    left: inherit;
+    right: 3px;
+}
+
+
 /* overrides when controls are used in page headers as part of a H2 */
 
 .content h2 span span.combo {

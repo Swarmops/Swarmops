@@ -37,7 +37,6 @@ namespace Swarmops.Frontend.Pages.v5.User
             foreach (string cultureId in availableCultures)
             {
                 LanguageParameters newLanguage = new LanguageParameters();
-                newLanguage.IconUrl = "/Images/Flags/" + cultureId.Substring (3, 2).ToLowerInvariant() + "-64px.png";
                 newLanguage.CultureId = cultureId;
                 CultureInfo culture = CultureInfo.CreateSpecificCulture (cultureId);
                 newLanguage.DisplayName = culture.NativeName;
@@ -49,10 +48,14 @@ namespace Swarmops.Frontend.Pages.v5.User
                     newLanguage.IconUrl = "/Images/Flags/uk-64px.png";
                     // use "uk" for en-GB and en-US rather than "gb" or "us"
                 }
-                if (cultureId.StartsWith("ar"))
+                else if (cultureId.StartsWith ("ar"))
                 {
-                    newLanguage.IconUrl = "/Images/Flags/ae-64px.png";
-                    // crowdin's generic culture is ar-SA but we're not showing the SA flag
+                    newLanguage.IconUrl = "/Images/Flags/Arabic-64px.png";
+                    // crowdin's generic culture is ar-SA but Arabic is not country specific
+                }
+                else
+                {
+                    newLanguage.IconUrl = "/Images/Flags/" + cultureId.Substring(3, 2).ToLowerInvariant() + "-64px.png";
                 }
                 if (culture.TextInfo.IsRightToLeft)
                 {

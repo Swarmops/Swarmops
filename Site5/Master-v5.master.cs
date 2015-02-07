@@ -54,12 +54,8 @@ namespace Swarmops
         {
             // Event subscriptions
 
-            // this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
-
             // Titles and other page elements
 
-            this.IconPage.ImageUrl = "/Images/PageIcons/" + CurrentPageIcon + "-40px.png";
-            this.LabelPageTitle.Text = CurrentPageTitle;
             Page.Title = "Swarmops - " + CurrentPageTitle;
 
             this.ExternalScriptEasyUI.Controls = EasyUIControlsUsed.ToString();
@@ -210,6 +206,11 @@ namespace Swarmops
             if (!cultureStringLower.StartsWith ("en") && cultureString.Length > 3)
             {
                 flagName = cultureStringLower.Substring (3);
+            }
+
+            if (cultureStringLower.StartsWith ("ar"))
+            {
+                flagName = "Arabic";
             }
 
             if (cultureStringLower == "af-za") // "South African Afrikaans", a special placeholder for localization code

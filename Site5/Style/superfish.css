@@ -143,14 +143,11 @@ body.rtl .sf-menu ul li img
 }
 
 .sf-menu li.Submenu li.Submenu {  /* default: LTR website */
-    background: #FF00FF url('/Style/submenu-rightarrow.png') no-repeat right top; /* testing selector */
-    padding-left: 20px; /* no icon */
+    background: #E4ECFF url('/Style/Images/menu-arrow-right.png') no-repeat right top;
 }
 
 body.rtl .sf-menu li.Submenu li.Submenu { /* Right-to-left override */
-    background: #FF0044 url('/Style/submenu-leftarrow.png') no-repeat right top; /* testing selector */
-    padding-left: inherit;
-    padding-right: 20px; /* no icon */
+    background: #E4ECFF url('/Style/Images/menu-arrow-left.png') no-repeat left top;
 }
 
 /* -- commented out
@@ -158,33 +155,34 @@ body.rtl .sf-menu li.Submenu li.Submenu { /* Right-to-left override */
 	background: #FF00FF;
 }*/
 
-.sf-menu li:not(.Separator):hover, .sf-menu li.sfHover
+.sf-menu li:not(.Separator):hover,
+.sf-menu li.sfHover
  {
     /* Same as Sidebar.Orange */
 	background-color: #FFBC37;
-	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC145', endColorstr='#F0AB22');  /* MSIE */
-	background: -moz-linear-gradient(top, #FFC145, #F0AB22);  /* Mozilla */
-	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22)); /* Chrome, Safari */
-	-webkit-transition: none;
-	-webkit-transition: none;
-	transition: none;
+	background: linear-gradient(#FFC145, #F0AB22);
 	transition: none;
     box-shadow: #C78B15 0 0px 2px 0px inset;
 	/* text-shadow: #C78B15 0px 0px 3px, #C78B15 0px 0px 3px; */
  }
 
+
 .sf-menu ul li:not(.Separator):hover,
 .sf-menu ul li.sfHover {
 	background-color: #FFBC37;
-	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC145', endColorstr='#F0AB22');  /* MSIE */
-	background: -moz-linear-gradient(top, #FFC145, #F0AB22);  /* Mozilla */
-	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22)); /* Chrome, Safari */
+	background: linear-gradient(#FFC145, #F0AB22);
 	/* only transition out, not in */
-	-webkit-transition: none;
-	-webkit-transition: none;
-	transition: none;
 	transition: none;
 }
+
+.sf-menu li.Submenu li.Submenu:hover {
+    background: #FFBC37 url('/Style/Images/menu-arrow-right-white.png') no-repeat right top;  /* how combine gradient with image? */
+}
+
+body.rtl .sf-menu li.Submenu li.Submenu:hover {
+    background: #FFBC37 url('/Style/Images/menu-arrow-left-white.png') no-repeat left top;  /* how combine gradient with image? */
+}
+
 
 /*** arrows (for all except IE7) **/
 .sf-menu ul ul.sf-arrows .sf-with-ul {

@@ -70,10 +70,12 @@ namespace Swarmops.Controls.Base
             localizedText = localizedText.Replace ("[Regular]", _regularLocalized);
             // TODO IF APPLICABLE - add other [Regulars] [Regularship] etc.
             localizedText = Server.HtmlEncode (localizedText); // muy importante
+            string cssClass = String.Empty;
 
             if (menuItem.Type == MenuItemType.BuildNumber)
             {
                 localizedText = Swarmops.Logic.Support.Formatting.SwarmopsVersion;
+                cssClass = " class=\"buildId\"";
             }
 
             string iconSize = "40px";
@@ -100,11 +102,20 @@ namespace Swarmops.Controls.Base
                         imageUrl = "/Images/PageIcons/transparency-16px.png";
                         // doesn't matter in slightest if browser resizes to 20px
                     }
-                    output.Write ("<a href='#disabled'><img src=\"{0}\" height=\"20\" width=\"20\" />{1}</a>", imageUrl,
-                        localizedText);
+                    output.Write ("<a href='#disabled'><img src=\"{0}\" height=\"20\" width=\"20\" /><span{2}>{1}</span></a>", imageUrl,
+                        localizedText, cssClass);
                     break;
                 case MenuItemType.Submenu:
-                    output.Write ("<a href='#'>" + localizedText + "</a>");
+                    if (string.IsNullOrEmpty (menuItem.ImageUrl))
+                    {
+                        output.Write ("<a href='#'>" + localizedText + "</a>");
+                    }
+                    else
+                    {
+                        output.Write(
+                            "<a href=\"#\"><img src=\"/Images/PageIcons/{0}-{3}.png\"  height=\"20\" width=\"20\"  />{2}</a>",
+                            menuItem.ImageUrl, prettyNavUrl, localizedText, iconSize);
+                    }
                     break;
                 case MenuItemType.Separator:
                     output.Write ("&nbsp;<hr/>");
