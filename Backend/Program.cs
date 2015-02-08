@@ -228,7 +228,7 @@ namespace Swarmops.Backend
 
                 // Wait for a maximum of ten seconds
 
-                while (DateTime.Now < cycleStartTime.AddSeconds (10) && !exitFlag)
+                while (DateTime.UtcNow < cycleStartTime.AddSeconds (10) && !exitFlag)
                 {
                     // block until a SIGINT or SIGTERM signal is generated, or one second has passed.
                     int signalIndex = UnixSignal.WaitAny (killSignals, 1000);

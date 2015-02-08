@@ -29,7 +29,7 @@ namespace Swarmops.Utility.BotCode
 
         private static void LogWrite (string message)
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
 
             string logFileName = "/var/log/swarmops/backend-log-" +
                                  now.ToString ("yyyy-MM-dd-HH") + ".log";
