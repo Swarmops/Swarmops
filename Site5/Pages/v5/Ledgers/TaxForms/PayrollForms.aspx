@@ -23,7 +23,7 @@
 
 	                $('img.IconFormMonth').click(function() {
 	                    var yearMonth = $(this).attr("yearmonth");
-	                    $('a#LinkFancyBox').attr("href", "/Plugins-Stock/TaxForms/" + selectedCountry + "/MonthlyTaxForm-" + selectedCountry + ".aspx?YearMonth=" + yearMonth + "&Country=" + selectedCountry);
+	                    $('a#LinkFancyBox').attr("href", "/Plugins-Stock/Taxes/" + selectedCountry + "/MonthlyTaxForm-" + selectedCountry + ".aspx?YearMonth=" + yearMonth + "&Country=" + selectedCountry);
 	                    $('a#LinkFancyBox').click();
 	                });
 	            }
