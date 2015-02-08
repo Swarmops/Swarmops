@@ -31,13 +31,18 @@ namespace Swarmops.Utility.BotCode
         {
             DateTime now = DateTime.UtcNow;
 
-            string logFileName = "/var/log/swarmops/backend-log-" +
+            string logFileName = "/var/log/swarmops/backend-" +
                                  now.ToString ("yyyy-MM-dd-HH") + ".log";
 
             using (StreamWriter writer = new StreamWriter (logFileName, true, Encoding.GetEncoding (1252)))
             {
                 writer.WriteLine ("[" + now.ToString ("HH:mm:ss.fff") + "] " + message);
             }
+        }
+
+        public static void DeleteOld (int daysToKeep)
+        {
+            // TODO
         }
     }
 }

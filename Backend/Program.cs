@@ -165,6 +165,7 @@ namespace Swarmops.Backend
             }
 
             DateTime cycleStartTime = DateTime.UtcNow;
+            DateTime cycleEndTime = cycleStartTime.AddSeconds (10);
 
             int lastSecond = cycleStartTime.Second;
             int lastMinute = cycleStartTime.Minute;
@@ -226,12 +227,12 @@ namespace Swarmops.Backend
                 lastMinute = cycleStartTime.Minute;
                 lastHour = cycleStartTime.Hour;
 
-                // Wait for a maximum of ten seconds
+                // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime
 
-                while (DateTime.UtcNow < cycleStartTime.AddSeconds (10) && !exitFlag)
+                while (DateTime.UtcNow < cycleEndTime && !exitFlag)
                 {
-                    // block until a SIGINT or SIGTERM signal is generated, or one second has passed.
-                    int signalIndex = UnixSignal.WaitAny (killSignals, 1000);
+                    // block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
+                    int signalIndex = UnixSignal.WaitAny (killSignals, 250);
 
                     if (signalIndex < 1000)
                     {
@@ -536,9 +537,7 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    /*TestTrace("Running InternalPollMaintenance.Run()...");
-                    InternalPollMaintenance.Run();
-                    TestTrace(" done.\r\n");*/
+                    BotLog.DeleteOld (14); // delete logs older than 14 days
                 }
                 catch (Exception e)
                 {
