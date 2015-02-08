@@ -27,40 +27,9 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public decimal BaseSalaryDecimal
-        {
-            get { return base.BaseSalaryCents/100.0m; }
-        }
-
-
-        public decimal SubtractiveTaxDecimal
-        {
-            get { return base.SubtractiveTaxCents/100.0m; }
-        }
-
-        public decimal AdditiveTaxDecimal
-        {
-            get { return base.AdditiveTaxCents/100.0m; }
-        }
-
-
-        public decimal NetSalaryDecimal
-        {
-            get { return base.NetSalaryCents/100.0m; }
-        }
-
-
         public new Int64 NetSalaryCents
         {
-            get { return base.NetSalaryCents; } // TODO: CONVERT TO MAKE CENTS-BASED CALCULATIONS THE MASTER
-            set
-            {
-                if (value != base.NetSalaryCents)
-                {
-                    SwarmDb.GetDatabaseForWriting().SetSalaryNetSalary (Identity, value);
-                    base.NetSalaryCents = value;
-                }
-            }
+            get { return base.NetSalaryCents; }
         }
 
 
@@ -121,7 +90,7 @@ namespace Swarmops.Logic.Financial
             set
             {
                 SwarmDb.GetDatabaseForWriting().SetSalaryTaxPaid (Identity, value);
-                base.NetPaid = value;
+                base.TaxPaid = value;
                 base.Open = !(base.NetPaid && base.TaxPaid);
             }
         }
@@ -209,16 +178,21 @@ namespace Swarmops.Logic.Financial
 
             // calculate tax
 
-            double subtractiveTax = TaxLevels.GetTax (payrollItem.Country, payrollItem.SubtractiveTaxLevelId,
-                payCents/100.0);
-
-            if (subtractiveTax < 1.0)
+            Money grossInOrgCurrency = new Money
             {
-                // this is a percentage and not an absolute number
+                Cents = payCents,
+                Currency = payrollItem.Organization.Currency,
+                ValuationDateTime = DateTime.UtcNow
+            };
 
-                subtractiveTax = payCents*subtractiveTax;
-            }
-            Int64 subtractiveTaxCents = (Int64) (subtractiveTax*100);
+            Money grossInTaxCurrency = grossInOrgCurrency.ToCurrency (payrollItem.Country.Currency);
+
+            Money subtractiveTax = TaxLevels.GetTax (payrollItem.Country, payrollItem.SubtractiveTaxLevelId,
+                grossInTaxCurrency);
+
+            Money subtractiveTaxInOrgCurrency = subtractiveTax.ToCurrency (payrollItem.Organization.Currency);
+
+            Int64 subtractiveTaxCents = (Int64) (subtractiveTaxInOrgCurrency.Cents);
 
             Int64 additiveTaxCents = (Int64) (payCents*payrollItem.AdditiveTaxLevel);
 
@@ -234,6 +208,25 @@ namespace Swarmops.Logic.Financial
                 }
             }
 
+            // If net is negative, create rollover adjustment
+
+            PayrollAdjustment rolloverAdjustment = null;
+
+            if (payCents < 0)
+            {
+                rolloverAdjustment = PayrollAdjustment.Create(payrollItem, PayrollAdjustmentType.NetAdjustment,
+                    -payCents,
+                    "Deficit rolls over to next salary");
+
+                PayrollAdjustment.Create(payrollItem, PayrollAdjustmentType.NetAdjustment,
+                    payCents, "Deficit rolled over from " +
+                              payoutDate.ToString("yyyy-MM-dd"));
+
+                // keep second rollover open, so the deficit from this salary is carried to the next
+
+                payCents = 0;
+            }
+
             // Create salary, close adjustments
 
             Salary salary = Create (payrollItem, payoutDate, payCents, subtractiveTaxCents, additiveTaxCents);
@@ -245,23 +238,9 @@ namespace Swarmops.Logic.Financial
                 adjustment.Close (salary);
             }
 
-            // If net is negative, create rollover adjustment
-
-            if (payCents < 0)
+            if (rolloverAdjustment != null)
             {
-                PayrollAdjustment rollover1 = PayrollAdjustment.Create (payrollItem, PayrollAdjustmentType.NetAdjustment,
-                    -payCents,
-                    "Deficit rolls over to next salary");
-
-                rollover1.Close (salary);
-
-                PayrollAdjustment rollover2 = PayrollAdjustment.Create (payrollItem, PayrollAdjustmentType.NetAdjustment,
-                    payCents, "Deficit rolled over from " +
-                              payoutDate.ToString ("yyyy-MM-dd"));
-
-                // keep rollover2 open, so the deficit from this salary is carried to the next
-
-                salary.NetSalaryCents = 0;
+                rolloverAdjustment.Close (salary);
             }
 
             // Add the financial transaction

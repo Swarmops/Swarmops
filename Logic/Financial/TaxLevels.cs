@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 
@@ -6,26 +7,28 @@ namespace Swarmops.Logic.Financial
 {
     public class TaxLevels
     {
-        public static double GetTax (Country country, int taxLevelIdentifier, double grossSalary)
+        public static Money GetTax (Country country, int taxLevelIdentifier, Money grossSalary)
         {
-            if (grossSalary < 1.0) // The lowest tax bracket is 1 currency unit
+            if (grossSalary.Cents < 0) // The lowest tax bracket is 1 currency unit
             {
-                return 0.0; // no tax
+                return new Money(0, country.Currency); // no tax
             }
 
+            Int64 grossCentsInCountryCurrency = grossSalary.ToCurrency (country.Currency).Cents;
+
             double taxLevel = SwarmDb.GetDatabaseForReading().GetSalaryTaxLevel (country.Identity, taxLevelIdentifier,
-                (int) Math.Floor (grossSalary));
+                (int) Math.Floor (grossCentsInCountryCurrency / 100.0));
 
             if (taxLevel < 1.0)
             {
                 // Percentage
 
-                return Math.Floor (grossSalary*taxLevel);
+                return new Money ((Int64) Math.Floor (grossCentsInCountryCurrency*taxLevel), country.Currency);
             }
 
             // otherwise, absolute number
 
-            return taxLevel;
+            return new Money((Int64) (taxLevel * 100.0), country.Currency);
         }
 
         public static void ImportTaxLevels (Country country, int year, string data)

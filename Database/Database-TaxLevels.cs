@@ -14,8 +14,6 @@ namespace Swarmops.Database
             {
                 int thisYear = DateTime.Today.Year; // TODO: Fiscal years may be different in some weird countries
 
-                // TODO: Adapt currency if the operating currency is different from the tax currency? Or should that be in the logic layer?
-
                 connection.Open();
 
                 DbCommand command =
