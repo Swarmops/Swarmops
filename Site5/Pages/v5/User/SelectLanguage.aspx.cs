@@ -43,6 +43,9 @@ namespace Swarmops.Frontend.Pages.v5.User
                 newLanguage.DisplayName = Char.ToUpperInvariant (newLanguage.DisplayName[0]) +
                                           newLanguage.DisplayName.Substring (1); // Capitalize
 
+                // Do not display country, just the language name
+                newLanguage.DisplayName = newLanguage.DisplayName.Split (' ')[0];
+
                 if (cultureId.StartsWith("en"))
                 {
                     newLanguage.IconUrl = "/Images/Flags/uk-64px.png";
