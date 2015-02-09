@@ -549,4 +549,21 @@
   <data name="Error_AjaxCallException" xml:space="preserve">
     <value>Ett allmänt och odefinierat fel uppstod när Swarmopsservern kontaktades. Fungerar fortfarande nätverket, och är servern fortfarande tillgänglig?</value>
   </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>Månad</value>
+  </data>
+  <data name="Global_View" xml:space="preserve">
+    <value>Visa</value>
+    <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Year" xml:space="preserve">
+    <value>År</value>
+  </data>
+  <data name="Global_YearMonth" xml:space="preserve">
+    <value>År/månad</value>
+  </data>
+  <data name="Global_YearX" xml:space="preserve">
+    <value>År {0}</value>
+    <comment>As in "the year X".</comment>
+  </data>
 </root>

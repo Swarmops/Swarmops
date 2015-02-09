@@ -213,9 +213,6 @@
   <data name="Login_Username" xml:space="preserve">
     <value>crwdns6555058:0crwdne6555058:0</value>
   </data>
-  <data name="ResetPassword_Email" xml:space="preserve">
-    <value>crwdns6555602:0crwdne6555602:0</value>
-  </data>
   <data name="ResetPassword_Failed" xml:space="preserve">
     <value>crwdns6555603:0crwdne6555603:0</value>
   </data>
@@ -223,7 +220,13 @@
     <value>crwdns6555604:0crwdne6555604:0</value>
   </data>
   <data name="ResetPassword_InfoRequest" xml:space="preserve">
-    <value>crwdns6555605:0crwdne6555605:0</value>
+    <value>crwdns6555650:0crwdne6555650:0</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>crwdns6555651:0crwdne6555651:0</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>crwdns6555652:0crwdne6555652:0</value>
   </data>
   <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
     <value>crwdns6555606:0crwdne6555606:0</value>

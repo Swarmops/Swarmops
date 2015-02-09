@@ -162,8 +162,12 @@
   <data name="LockdownAccount_Failed" xml:space="preserve">
     <value>Kontot &lt;strong&gt;har inte låsts&lt;/strong&gt; utan är fortfarande öppet för användning. Det finns inget sådant konto, låskoden var felaktig, eller låskoden var för gammal. Om du fortfarande vill låsa detta konto, kontakta administratörerna för denna Swarmopsinstallation.</value>
   </data>
-  
-  
+  <data name="LockdownAccount_Info" xml:space="preserve">
+    <value>Om du ser denna sida, försöker du låsa ett användarkonto av säkerhetsskäl. Om länken var giltig och inte har förfallit, har kontot redan låsts.</value>
+  </data>
+  <data name="LockdownAccount_PageTitle" xml:space="preserve">
+    <value>Nedlåsning av användarkonto</value>
+  </data>
   <data name="LockdownAccount_Success" xml:space="preserve">
     <value>Kontot &lt;strong&gt;är nu låst&lt;/strong&gt; och nu avslutas alla aktiva sessioner.</value>
   </data>
@@ -209,9 +213,6 @@
   <data name="Login_Username" xml:space="preserve">
     <value>Namn</value>
   </data>
-  <data name="ResetPassword_Email" xml:space="preserve">
-    <value>Ange din mailadress igen</value>
-  </data>
   <data name="ResetPassword_Failed" xml:space="preserve">
     <value>Det finns ingen giltig lösenordsåterställningskod för denna mailadress, adressen finns inte, återställningskoden är ogiltig, eller så har den har gått ut.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Det gick inte att återställa lösenordet.&lt;/strong&gt;</value>
   </data>
@@ -219,7 +220,13 @@
     <value>Du sätter ett nytt lösenord för ett användarkonto. Ange det nya lösenordet två gånger för att lagra det och logga in. (Om du försöker påbörja processen med återställning av lösenord, så behöver du en återställningskod först. &lt;a href="/Security/RequestPasswordReset"&gt;Skapa en återställningskod.&lt;/a&gt;)</value>
   </data>
   <data name="ResetPassword_InfoRequest" xml:space="preserve">
-    <value>Ange din mailadress för att skicka instruktioner till den adressen om hur du går vidare med återställning av lösenord. Den kommer att innehålla en unik återställningskod som du behöver för att gå vidare.</value>
+    <value>Ange din mailadress för att få instruktioner för hur du går vidare med lösenordåterställning. Instruktionerna innehåller en unik återställningsbiljett som du behöver.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Din mailadress</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Ange din mailadress igen</value>
   </data>
   <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
     <value>De två lösenorden matchar inte. Försök igen.</value>

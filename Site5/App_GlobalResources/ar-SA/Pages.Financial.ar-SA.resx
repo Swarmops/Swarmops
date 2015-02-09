@@ -339,6 +339,14 @@
   <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
     <value>التعويض رقم {0:N0} تم التراجع عنه وعادت كل الأمور إلى حالها.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>مبلغ السلفة (بالـ {0})</value>
     <comment>{0} is the currency.</comment>

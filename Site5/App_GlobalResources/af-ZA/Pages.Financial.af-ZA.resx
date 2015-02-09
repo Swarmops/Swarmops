@@ -342,6 +342,33 @@
   <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
     <value>crwdns6555337:0{0:N0}crwdne6555337:0</value>
   </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>crwdns6555634:0crwdne6555634:0</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>crwdns6555635:0crwdne6555635:0</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>crwdns6555636:0crwdne6555636:0</value>
+  </data>
+  <data name="PayrollTaxForms_Info" xml:space="preserve">
+    <value>crwdns6555637:0crwdne6555637:0</value>
+  </data>
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>crwdns6555638:0crwdne6555638:0</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>crwdns6555639:0{0}crwdne6555639:0</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>crwdns6555640:0crwdne6555640:0</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>crwdns6555641:0crwdne6555641:0</value>
+  </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>crwdns6555338:0{0}crwdne6555338:0</value>
     <comment>{0} is the currency.</comment>

@@ -194,6 +194,12 @@
     <value>crwdns6555418:0{0}crwdne6555418:0</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
   </data>
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>crwdns6555632:0crwdne6555632:0</value>
+  </data>
+  <data name="SystemSettings_AdminSender" xml:space="preserve">
+    <value>crwdns6555633:0crwdne6555633:0</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>crwdns6555585:0crwdne6555585:0</value>
   </data>
