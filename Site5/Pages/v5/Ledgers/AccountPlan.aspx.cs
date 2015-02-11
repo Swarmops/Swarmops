@@ -97,8 +97,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
             DbVersionRequired = 2; // Account reparenting
 
-            EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
-            IncludedControlsUsed |= IncludedControl.SwitchButton | IncludedControl.JsonParameters;
+            RegisterControl (EasyUIControl.DataGrid | EasyUIControl.Tree);
+            RegisterControl (IncludedControl.SwitchButton);
         }
 
 

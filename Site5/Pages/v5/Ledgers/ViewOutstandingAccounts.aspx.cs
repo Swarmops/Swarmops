@@ -42,7 +42,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     Localize();
                 }
             }
-            EasyUIControlsUsed = EasyUIControl.DataGrid;
+            RegisterControl (EasyUIControl.DataGrid);
         }
 
         private void Localize()

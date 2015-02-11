@@ -38,8 +38,6 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
                 this.TextName.Focus();
             }
-
-            IncludedControlsUsed = IncludedControl.JsonParameters;
         }
 
         private void Populate()

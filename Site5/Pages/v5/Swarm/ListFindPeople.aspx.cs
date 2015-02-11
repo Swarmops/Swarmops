@@ -22,7 +22,7 @@ namespace Swarmops.Frontend.Pages.Swarm
                 Localize();
             }
 
-            EasyUIControlsUsed = EasyUIControl.Tree | EasyUIControl.DataGrid;
+            RegisterControl (EasyUIControl.Tree | EasyUIControl.DataGrid);
         }
 
         private void Localize()

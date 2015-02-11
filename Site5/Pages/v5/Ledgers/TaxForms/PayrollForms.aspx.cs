@@ -27,7 +27,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers.TaxForms
                 Localize();
             }
 
-            EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
+            RegisterControl (EasyUIControl.DataGrid | EasyUIControl.Tree);
         }
 
 

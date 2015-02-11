@@ -102,10 +102,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 Localize();
             }
-
-            EasyUIControlsUsed = EasyUIControl.Tree;
-            IncludedControlsUsed = IncludedControl.JsonParameters;
-            ;
         }
 
 
