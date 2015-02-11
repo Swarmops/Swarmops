@@ -17,4 +17,21 @@ public partial class Controls_v5_Swarm_TreePersonRoles : ControlV5Base
     protected void Page_Load(object sender, EventArgs e)
     {
     }
+
+    public RoleLevel Level { get; set; }
+    public int OrganizationId { get; set; }
+    public int GeographyId { get; set; }
+
+
+    public enum RoleLevel
+    {
+        Unknown = 0,
+        Systemwide,
+        Organizationwide,
+        SuborganizationwideDefault,
+        OrganizationTop,
+        SuborganizationTopDefault,
+        GeographicDefault,
+        Geographic
+    }
 }

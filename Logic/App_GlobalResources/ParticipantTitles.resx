@@ -117,6 +117,57 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Position_Organization_Auditor" xml:space="preserve">
+    <value>Auditor</value>
+  </data>
+  <data name="Position_Organization_AuditorAssistant" xml:space="preserve">
+    <value>Auditor Assistant</value>
+  </data>
+  <data name="Position_Organization_AuditorAssistant_Plural" xml:space="preserve">
+    <value>Auditor Assistants</value>
+  </data>
+  <data name="Position_Organization_Auditor_Plural" xml:space="preserve">
+    <value>Auditors</value>
+  </data>
+  <data name="Position_Organization_BoardDeputy" xml:space="preserve">
+    <value>Board Deputy</value>
+  </data>
+  <data name="Position_Organization_BoardDeputy_Plural" xml:space="preserve">
+    <value>Board Deputies</value>
+  </data>
+  <data name="Position_Organization_BoardMember" xml:space="preserve">
+    <value>Board Member</value>
+  </data>
+  <data name="Position_Organization_BoardMember_Plural" xml:space="preserve">
+    <value>Board Members</value>
+  </data>
+  <data name="Position_Organization_Chairperson" xml:space="preserve">
+    <value>Chairperson of the Board</value>
+  </data>
+  <data name="Position_Organization_ChairpersonDeputy" xml:space="preserve">
+    <value>Chairperson Deputy</value>
+  </data>
+  <data name="Position_Organization_ChairpersonDeputy_Plural" xml:space="preserve">
+    <value>Chairperson Deputies</value>
+  </data>
+  <data name="Position_Organization_Chairperson_Plural" xml:space="preserve">
+    <value>Chairpeople of the Board</value>
+  </data>
+  <data name="Position_System_AdministratorAssistantRO" xml:space="preserve">
+    <value>Sysadmin Assistant (Read-only)</value>
+  </data>
+  <data name="Position_System_AdministratorAssistantRO_Plural" xml:space="preserve">
+    <value>Sysadmin Assistants (Read-only)</value>
+  </data>
+  <data name="Position_System_AdministratorAssistantRW" xml:space="preserve">
+    <value>Sysadmin (Read/Write)</value>
+  </data>
+  <data name="Position_System_AdministratorAssistantRW_Plural" xml:space="preserve">
+    <value>Sysadmins (Read/write)</value>
+  </data>
+  <data name="Position_System_AdministratorMain" xml:space="preserve">
+    <value>Principal Sysadmin</value>
+  </data>
   <data name="Title_Activist_Corps" xml:space="preserve">
     <value>Activist Swarm</value>
   </data>

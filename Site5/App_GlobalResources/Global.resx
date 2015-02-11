@@ -572,4 +572,8 @@
     <value>Year {0}</value>
     <comment>As in "the year X".</comment>
   </data>
+  <data name="Swarm_Vacant" xml:space="preserve">
+    <value>(vacant)</value>
+    <comment>For unassigned positions</comment>
+  </data>
 </root>

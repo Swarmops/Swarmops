@@ -4,7 +4,13 @@
 
         $(document).ready(function() {
 
-            // initialize table
+            $('#<%=this.ClientID%>_tablePositions').treegrid(
+	        {
+
+	            onLoadSuccess: function () {
+                    // Anything here
+	            }
+	        });
 
         });
 
@@ -13,7 +19,7 @@
 
 
     <table id="<%=this.ClientID %>_tablePositions" title="" class="easyui-treegrid" style="width:680px;height:600px"  
-        url="/Automation/Json-Positions.aspx"
+        url="/Automation/Json-PersonRoleTreeData.aspx"
         rownumbers="false"
         animate="true"
         fitColumns="true"

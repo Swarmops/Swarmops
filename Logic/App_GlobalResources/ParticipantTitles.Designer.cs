@@ -61,6 +61,159 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auditor.
+        /// </summary>
+        internal static string Position_Organization_Auditor {
+            get {
+                return ResourceManager.GetString("Position_Organization_Auditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auditors.
+        /// </summary>
+        internal static string Position_Organization_Auditor_Plural {
+            get {
+                return ResourceManager.GetString("Position_Organization_Auditor_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auditor Assistant.
+        /// </summary>
+        internal static string Position_Organization_AuditorAssistant {
+            get {
+                return ResourceManager.GetString("Position_Organization_AuditorAssistant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auditor Assistants.
+        /// </summary>
+        internal static string Position_Organization_AuditorAssistant_Plural {
+            get {
+                return ResourceManager.GetString("Position_Organization_AuditorAssistant_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Board Deputy.
+        /// </summary>
+        internal static string Position_Organization_BoardDeputy {
+            get {
+                return ResourceManager.GetString("Position_Organization_BoardDeputy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Board Deputies.
+        /// </summary>
+        internal static string Position_Organization_BoardDeputy_Plural {
+            get {
+                return ResourceManager.GetString("Position_Organization_BoardDeputy_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Board Member.
+        /// </summary>
+        internal static string Position_Organization_BoardMember {
+            get {
+                return ResourceManager.GetString("Position_Organization_BoardMember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Board Members.
+        /// </summary>
+        internal static string Position_Organization_BoardMember_Plural {
+            get {
+                return ResourceManager.GetString("Position_Organization_BoardMember_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chairperson of the Board.
+        /// </summary>
+        internal static string Position_Organization_Chairperson {
+            get {
+                return ResourceManager.GetString("Position_Organization_Chairperson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chairpeople of the Board.
+        /// </summary>
+        internal static string Position_Organization_Chairperson_Plural {
+            get {
+                return ResourceManager.GetString("Position_Organization_Chairperson_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chairperson Deputy.
+        /// </summary>
+        internal static string Position_Organization_ChairpersonDeputy {
+            get {
+                return ResourceManager.GetString("Position_Organization_ChairpersonDeputy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chairperson Deputies.
+        /// </summary>
+        internal static string Position_Organization_ChairpersonDeputy_Plural {
+            get {
+                return ResourceManager.GetString("Position_Organization_ChairpersonDeputy_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sysadmin Assistant (Read-only).
+        /// </summary>
+        internal static string Position_System_AdministratorAssistantRO {
+            get {
+                return ResourceManager.GetString("Position_System_AdministratorAssistantRO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sysadmin Assistants (Read-only).
+        /// </summary>
+        internal static string Position_System_AdministratorAssistantRO_Plural {
+            get {
+                return ResourceManager.GetString("Position_System_AdministratorAssistantRO_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sysadmin (Read/Write).
+        /// </summary>
+        internal static string Position_System_AdministratorAssistantRW {
+            get {
+                return ResourceManager.GetString("Position_System_AdministratorAssistantRW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sysadmins (Read/write).
+        /// </summary>
+        internal static string Position_System_AdministratorAssistantRW_Plural {
+            get {
+                return ResourceManager.GetString("Position_System_AdministratorAssistantRW_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Principal Sysadmin.
+        /// </summary>
+        internal static string Position_System_AdministratorMain {
+            get {
+                return ResourceManager.GetString("Position_System_AdministratorMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activist Swarm.
         /// </summary>
         internal static string Title_Activist_Corps {
