@@ -555,4 +555,21 @@
   <data name="Error_AjaxCallException" xml:space="preserve">
     <value>crwdns6555583:0crwdne6555583:0</value>
   </data>
+  <data name="Global_Month" xml:space="preserve">
+    <value>crwdns6555625:0crwdne6555625:0</value>
+  </data>
+  <data name="Global_View" xml:space="preserve">
+    <value>crwdns6555626:0crwdne6555626:0</value>
+    <comment>As in "inspect"</comment>
+  </data>
+  <data name="Global_Year" xml:space="preserve">
+    <value>crwdns6555627:0crwdne6555627:0</value>
+  </data>
+  <data name="Global_YearMonth" xml:space="preserve">
+    <value>crwdns6555628:0crwdne6555628:0</value>
+  </data>
+  <data name="Global_YearX" xml:space="preserve">
+    <value>crwdns6555629:0{0}crwdne6555629:0</value>
+    <comment>As in "the year X".</comment>
+  </data>
 </root>

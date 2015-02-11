@@ -238,7 +238,7 @@
     <value>crwdns6555574:0[InstallationName]crwdne6555574:0</value>
   </data>
   <data name="Password_ResetByCrew_Body" xml:space="preserve">
-    <value>crwdns6555575:0[OrganizationName]crwdnd6555575:0[ExternalUrl]crwdnd6555575:0[ResetPasswordTicket]crwdnd6555575:0[OrganizationName]crwdne6555575:0</value>
+    <value>crwdns6555624:0[OrganizationName]crwdnd6555624:0[ExternalUrl]crwdnd6555624:0[TicketCode]crwdnd6555624:0[OrganizationName]crwdne6555624:0</value>
   </data>
   <data name="Password_ResetByCrew_Subject" xml:space="preserve">
     <value>crwdns6555576:0[OrganizationName]crwdne6555576:0</value>

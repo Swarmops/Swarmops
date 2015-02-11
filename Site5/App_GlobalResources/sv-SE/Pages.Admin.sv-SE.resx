@@ -192,6 +192,8 @@
     <value>Förnyelse kostar (i {0})</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
   </data>
+  
+  
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>SMTP-porten måste vara ett nummer. Det gick inte att förstå hostnamn:port.</value>
   </data>

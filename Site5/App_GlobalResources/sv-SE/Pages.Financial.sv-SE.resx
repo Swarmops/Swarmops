@@ -141,7 +141,9 @@
     <value>Mottagare</value>
     <comment>The receiver of money.</comment>
   </data>
-  
+  <data name="AttestCosts_GridHeader_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
   <data name="AttestCosts_GridHeader_Description" xml:space="preserve">
     <value>Beskrivning</value>
   </data>
@@ -247,7 +249,9 @@
   <data name="FileExpenseClaim_BankName" xml:space="preserve">
     <value>Bankens namn</value>
   </data>
-  
+  <data name="FileExpenseClaim_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
   <data name="FileExpenseClaim_CostType" xml:space="preserve">
     <value>Kostnadstyp</value>
     <comment>This is the 2nd bookkeeping dimension.</comment>
@@ -301,7 +305,9 @@
     <value>Clearing / Konto</value>
     <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
   </data>
-  
+  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
+    <value>Bank</value>
+  </data>
   <data name="PayOutMoney_GridHeader_DueDate" xml:space="preserve">
     <value>Förfallodatum</value>
   </data>
@@ -336,6 +342,33 @@
   <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
     <value>Utbetalning #{0:N0} ångrades och allt återställdes.</value>
   </data>
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>Arbetsgivaravgifter</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Avdragen skatt</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Bruttolön</value>
+  </data>
+  <data name="PayrollTaxForms_Info" xml:space="preserve">
+    <value>Visa fusklapp (ifyllda deklarationsblanketter) för lönelistan, som är lätta för dig att kopiera till dina faktiska deklarationsblanketter, eller möjligen skriva ut som de är. Prestanda och faktiska former varierar beroende på land och skatteverk, och ibland även på tredjepartskod och plugins.</value>
+  </data>
+  <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
+    <value>Arbetsgivardeklarationer</value>
+  </data>
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>Månatliga deklarationsblanketter för {0} för</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Totalkostnad</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Total skatt</value>
+  </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>Förskottsbelopp (i {0})</value>
     <comment>{0} is the currency.</comment>
@@ -349,7 +382,9 @@
   <data name="RequestCashAdvance_BankName" xml:space="preserve">
     <value>Bankens namn</value>
   </data>
-  
+  <data name="RequestCashAdvance_Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
   <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
     <value>Dina bankuppgifter</value>
   </data>

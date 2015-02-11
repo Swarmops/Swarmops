@@ -573,4 +573,31 @@
     <value>crwdns6555596:0{0}crwdne6555596:0</value>
     <comment>"Projected" as in "Budgeted". {0} is year.</comment>
   </data>
+  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
+    <value>crwdns6555642:0crwdne6555642:0</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
+    <value>crwdns6555643:0crwdne6555643:0</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
+    <value>crwdns6555644:0crwdne6555644:0</value>
+  </data>
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>crwdns6555645:0crwdne6555645:0</value>
+  </data>
+  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
+    <value>crwdns6555646:0crwdne6555646:0</value>
+  </data>
+  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
+    <value>crwdns6555647:0crwdne6555647:0</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
+    <value>crwdns6555648:0crwdne6555648:0</value>
+  </data>
+  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
+    <value>crwdns6555649:0crwdne6555649:0</value>
+  </data>
 </root>

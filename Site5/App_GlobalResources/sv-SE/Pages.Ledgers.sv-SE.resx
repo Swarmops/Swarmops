@@ -562,4 +562,31 @@
     <value>Budgeterad vinst {0}</value>
     <comment>"Projected" as in "Budgeted". {0} is year.</comment>
   </data>
+  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
+    <value>Arbetsgivaravgifter</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
+    <value>Avdragen skatt</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
+    <value>Bruttolön</value>
+  </data>
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>Visa fusklapp (ifyllda deklarationsblanketter) för lönelistan, som är lätta för dig att kopiera till dina faktiska deklarationsblanketter, eller möjligen skriva ut som de är. Prestanda och faktiska former varierar beroende på land och skatteverk, och ibland även på tredjepartskod och plugins.</value>
+  </data>
+  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
+    <value>Arbetsgivardeklarationer</value>
+  </data>
+  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
+    <value>Månatliga deklarationsblanketter för</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
+    <value>Totalkostnad</value>
+  </data>
+  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
+    <value>Total skatt</value>
+  </data>
 </root>
