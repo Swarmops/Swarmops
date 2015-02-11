@@ -23,7 +23,6 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             // HACK: The organization part must be removed once proper access control is in place
             this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.System, AccessType.Write);
             this.IncludedControlsUsed = IncludedControl.JsonParameters | IncludedControl.SwitchButton;
-            this.EasyUIControlsUsed = EasyUIControl.Tabs;
             this.PageTitle = Resources.Pages.Admin.SystemSettings_PageTitle;
             this.InfoBoxLiteral = Resources.Pages.Admin.SystemSettings_Info;
 
@@ -38,6 +37,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
                 Localize();
             }
+
+            RegisterControl (EasyUIControl.Tabs);
         }
 
         private static string FormatSmtpAccessString (string user, string pass, string host, int port)

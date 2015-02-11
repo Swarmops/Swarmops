@@ -149,6 +149,16 @@ public class PageV5Base : Page
 
         return CommonV5.GetAuthenticationDataAndCulture (HttpContext.Current);
     }
+
+    public void RegisterControl (EasyUIControl control) // public for use by child controls
+    {
+        this.EasyUIControlsUsed |= control;
+    }
+
+    public void RegisterControl (IncludedControl control) // public for use by child controls
+    {
+        this.IncludedControlsUsed |= control;
+    }
 }
 
 
