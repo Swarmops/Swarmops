@@ -36,6 +36,12 @@ namespace Swarmops.Controls.Base
         public string ClientUploadCompleteCallback { get; set; }
         public string ClientUploadStartedCallback { get; set; }
 
+        protected void Page_Init (object sender, EventArgs e)
+        {
+            // cause master to include necessary script
+            ((PageV5Base)Page).RegisterControl(IncludedControl.FileUpload);
+        }
+
         protected void Page_Load (object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -64,9 +70,6 @@ namespace Swarmops.Controls.Base
             {
                 this.GuidString = this.HiddenGuid.Value;
             }
-
-            ((PageV5Base) Page).IncludedControlsUsed |= IncludedControl.FileUpload;
-            // causes master to include necessary script
         }
 
 

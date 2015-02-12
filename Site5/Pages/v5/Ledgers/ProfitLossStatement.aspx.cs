@@ -30,7 +30,7 @@ public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
             Localize();
         }
 
-        EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
+        RegisterControl (EasyUIControl.DataGrid | EasyUIControl.Tree);
     }
 
     private void Localize()

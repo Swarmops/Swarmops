@@ -41,13 +41,13 @@ public class PageV5Base : Page
     }
 
     // ReSharper disable once InconsistentNaming
-    protected EasyUIControl EasyUIControlsUsed
+    private EasyUIControl EasyUIControlsUsed
     {
         get { return Master.EasyUIControlsUsed; }
         set { Master.EasyUIControlsUsed = value; }
     }
 
-    public IncludedControl IncludedControlsUsed
+    private IncludedControl IncludedControlsUsed
     {
         get { return Master.IncludedControlsUsed; }
         set { Master.IncludedControlsUsed = value; }
@@ -148,6 +148,16 @@ public class PageV5Base : Page
         // the instance data of PageV5Base.
 
         return CommonV5.GetAuthenticationDataAndCulture (HttpContext.Current);
+    }
+
+    public void RegisterControl (EasyUIControl control) // public for use by child controls
+    {
+        this.EasyUIControlsUsed |= control;
+    }
+
+    public void RegisterControl (IncludedControl control) // public for use by child controls
+    {
+        this.IncludedControlsUsed |= control;
     }
 }
 

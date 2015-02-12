@@ -23,10 +23,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 Localize();
             }
 
-
-            EasyUIControlsUsed = EasyUIControl.Tabs;
-            IncludedControlsUsed = IncludedControl.FileUpload | IncludedControl.SwitchButton |
-                                   IncludedControl.JsonParameters;
+            RegisterControl (EasyUIControl.Tabs);
+            RegisterControl (IncludedControl.SwitchButton);
         }
 
         private void Localize()

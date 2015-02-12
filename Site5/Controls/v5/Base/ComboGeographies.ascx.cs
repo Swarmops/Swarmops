@@ -25,6 +25,11 @@ namespace Swarmops.Controls.Base
             }
         }
 
+        protected void Page_Init (object sender, EventArgs e)
+        {
+            ((PageV5Base) this.Page).RegisterControl (EasyUIControl.Tree);
+        }
+
         protected void Page_Load (object sender, EventArgs e)
         {
             RootGeography = Geography.Root; // set to "world" unless manually set to something else

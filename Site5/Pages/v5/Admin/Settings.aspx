@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="Settings.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Admin.Settings" %>
 <%@ Register tagPrefix="Swarmops5" tagName="AjaxTextBox" src="~/Controls/v5/Base/AjaxTextBox.ascx"  %>
+<%@ Register tagPrefix="Swarmops5" tagName="TreePersonRoles" src="~/Controls/v5/Swarm/TreePersonRoles.ascx"  %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
@@ -27,6 +28,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div id="divTabs" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
+        <div title="<img src='/Images/Icons/iconshock-group-diversified-64px.png' />">
+            <h2>System Administrators</h2>
+            <Swarmops5:TreePersonRoles ID="TreeRoles" runat="server" />
+        </div>
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
             <h2>Correspondence transmission settings</h2>
             <div class="entryFields">

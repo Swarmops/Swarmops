@@ -51,7 +51,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 this.DropMonths.SelectedValue = today.Month.ToString (CultureInfo.InvariantCulture);
             }
 
-            EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
+            RegisterControl (EasyUIControl.DataGrid | EasyUIControl.Tree);
 
             Localize();
         }
