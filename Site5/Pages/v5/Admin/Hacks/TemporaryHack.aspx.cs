@@ -51,8 +51,8 @@ public partial class Pages_v5_Admin_Hacks_TemporaryHack : Page
                 payment.Group.Open = false;
             }
 
-            if (transaction.Description == "Kostnad" && transaction.Rows.BalanceCentsDelta < 0 &&
-                transaction.Rows.BalanceCentsDelta > -10000)
+            if ((transaction.Description == "Kostnad" || transaction.Description == "Bank charges") && transaction.Rows.BalanceCentsDelta < 0 &&
+                transaction.Rows.BalanceCentsDelta > -125000)
             {
                 // Bank fee.
 

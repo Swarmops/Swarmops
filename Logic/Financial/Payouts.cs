@@ -415,6 +415,14 @@ namespace Swarmops.Logic.Financial
                         payoutUpperTimeLimit = transaction.DateTime.AddDays (60);
                     }
 
+                    // HACK: Allow for up to 20 days beyond scheduled payment to catch tax payments
+
+                    if (payout.DependentSalariesTax.Count > 0)
+                    {
+                        payoutLowerTimeLimit = transaction.DateTime.AddDays (-25);
+                        payoutUpperTimeLimit = transaction.DateTime.AddDays (3); // nobody pays taxes early...
+                    }
+
                     if (payout.ExpectedTransactionDate >= payoutLowerTimeLimit &&
                         payout.ExpectedTransactionDate <= payoutUpperTimeLimit &&
                         payout.AmountCents == -transaction.Rows.AmountCentsTotal)
