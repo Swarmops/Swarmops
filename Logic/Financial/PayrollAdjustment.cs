@@ -1,5 +1,6 @@
 using System;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Swarm;
 using Swarmops.Database;
 
 namespace Swarmops.Logic.Financial

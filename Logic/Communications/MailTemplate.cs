@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using HtmlAgilityPack;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Communications;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Structure;

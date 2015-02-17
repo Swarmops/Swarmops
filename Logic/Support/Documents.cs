@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Common;
 using Swarmops.Database;
 using Swarmops.Logic.Swarm;
 

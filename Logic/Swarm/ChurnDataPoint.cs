@@ -1,4 +1,5 @@
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Swarm;
 
 namespace Swarmops.Logic.Swarm
 {

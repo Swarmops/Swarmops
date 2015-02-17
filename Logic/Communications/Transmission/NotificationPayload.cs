@@ -152,7 +152,7 @@ namespace Swarmops.Logic.Communications.Transmission
     }
 
     [Serializable]
-    public class NotificationStrings : SerializableDictionary<NotificationString, string>
+    public class NotificationStrings : Basic.Types.Common.SerializableDictionary<NotificationString, string>
     {
         // typeset
     }

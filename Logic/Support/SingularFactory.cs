@@ -7,6 +7,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Communications;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Basic.Types.Governance;
+using Swarmops.Basic.Types.Swarm;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Governance;

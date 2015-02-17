@@ -1,4 +1,5 @@
 using System;
+using Swarmops.Basic.Types.Swarm;
 
 namespace Swarmops.Basic.Types.Security
 {

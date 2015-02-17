@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Swarm;
 using Swarmops.Database;
 
 namespace Swarmops.Logic.Swarm

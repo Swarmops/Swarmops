@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Text;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Swarm;
 using Swarmops.Database;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;

@@ -5,6 +5,7 @@ using System.Data.Common;
 using MySql.Data.MySqlClient;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Common;
 
 namespace Swarmops.Database
 {

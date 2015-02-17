@@ -2,6 +2,8 @@ using System;
 using System.Globalization;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Financial;
+using Swarmops.Basic.Types.Swarm;
 using Swarmops.Database;
 using Swarmops.Logic.Swarm;
 

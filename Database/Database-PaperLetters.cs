@@ -6,6 +6,7 @@ using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 
 // This is the first part of Database to fully use MySql.
+using Swarmops.Basic.Types.Communications;
 
 namespace Swarmops.Database
 {

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
+using Swarmops.Basic.Types.Swarm;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Swarm;
 

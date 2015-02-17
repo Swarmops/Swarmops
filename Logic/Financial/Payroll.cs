@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Swarm;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;

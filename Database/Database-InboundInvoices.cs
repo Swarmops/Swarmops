@@ -5,6 +5,7 @@ using System.Data.Common;
 using Swarmops.Basic.Types;
 
 // This is the first part of Database to fully use MySql.
+using Swarmops.Basic.Types.Financial;
 
 namespace Swarmops.Database
 {

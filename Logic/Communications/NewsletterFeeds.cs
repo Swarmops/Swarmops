@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Communications;
 
 namespace Swarmops.Logic.Communications
 {

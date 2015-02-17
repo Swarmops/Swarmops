@@ -5,6 +5,7 @@ using System.Data.Common;
 using Swarmops.Basic.Enums;
 using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.System;
 
 namespace Swarmops.Database
 {

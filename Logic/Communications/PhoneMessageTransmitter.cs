@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Security;
 using Swarmops.Database;
 using Swarmops.Logic.Support;
 
