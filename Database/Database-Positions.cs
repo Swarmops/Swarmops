@@ -83,8 +83,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Basic.Types.Swarm;
 
 namespace Swarmops.Database
 {
@@ -107,60 +109,112 @@ namespace Swarmops.Database
 
         private const string positionAssignmentFieldSequence =
             " PositionAssignmentId,OrganizationId,GeographyId,PositionId,PersonId," +                              //  0-4
-            "ExpiresDateTimeUtc,CreatedDateTimeUtc,CreatedByPersonId,CreatedByPositionId,Active," +                //  5-9
+            "CreatedDateTimeUtc,CreatedByPersonId,CreatedByPositionId,Active,ExpiresDateTimeUtc," +                //  5-9
             "TerminatedDateTimeUtc,TerminatedByPersonId,TerminatedByPositionId,AssignmentNotes,TerminationNotes" + // 10-14
             " FROM PositionAssignments ";
 
-        private static BasicRefund ReadStandardPositionFromDataReader(IDataRecord reader)
+        private static BasicPosition ReadStandardPositionFromDataReader(IDataRecord reader)
         {
-            int refundId = reader.GetInt32(0);
-            int paymentId = reader.GetInt32(1);
-            bool open = reader.GetBoolean(2);
-            Int64 amountCents = reader.GetInt64(3);
-            DateTime createdDateTime = reader.GetDateTime(4);
-            DateTime closedDateTime = reader.GetDateTime(5);
-            int createdByPersonId = reader.GetInt32(6);
+            int standardPositionId = reader.GetInt32(0);
+            int organizationId = reader.GetInt32 (1);
+            int positionLevel = reader.GetInt32 (2);
+            int positionTypeId = reader.GetInt32 (3);
+            bool active = reader.GetBoolean (4);
+            bool volunteerable = reader.GetBoolean (5);
+            bool overridable = reader.GetBoolean (6);
+            bool covert = reader.GetBoolean (7);
+            int reportsToStandardPositionId = reader.GetInt32 (8);
+            int dotReportsToStandardPositionId = reader.GetInt32 (9);
+            int minCount = reader.GetInt32 (10);
+            int maxCount = reader.GetInt32 (11);
 
-            return new BasicRefund(refundId, paymentId, open, amountCents, createdByPersonId, createdDateTime,
-                closedDateTime);
+            return new BasicPosition (standardPositionId, organizationId, positionLevel, 0 /*geographyId*/, overridable, 
+                0 /*overridesId*/, 0 /*createdByPerson*/, DateTime.MinValue /*createdDateTimeUtc*/, positionTypeId, 
+                true /*inheritsDownward*/, volunteerable, active, covert, reportsToStandardPositionId,
+                dotReportsToStandardPositionId, minCount, maxCount);
         }
 
-        private static BasicRefund ReadAdditionalPositionFromDataReader(IDataRecord reader)
+        private static BasicPosition ReadAdditionalPositionFromDataReader(IDataRecord reader)
         {
-            int refundId = reader.GetInt32(0);
-            int paymentId = reader.GetInt32(1);
-            bool open = reader.GetBoolean(2);
-            Int64 amountCents = reader.GetInt64(3);
-            DateTime createdDateTime = reader.GetDateTime(4);
-            DateTime closedDateTime = reader.GetDateTime(5);
-            int createdByPersonId = reader.GetInt32(6);
+            int additionalPositionId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32 (1);
+            int geographyId = reader.GetInt32 (2);
+            int overridesHigherPositionId = reader.GetInt32 (3);
+            int createdByPersonId = reader.GetInt32 (4);
+            DateTime createdDateTimeUtc = reader.GetDateTime (5);
+            int positionTypeId = reader.GetInt32 (6);
+            bool inheritsDownward = reader.GetBoolean (7);
+            bool volunteerable = reader.GetBoolean (8);
+            bool active = reader.GetBoolean (9);
+            bool covert = reader.GetBoolean (10);
+            int reportsToStandardPositionId = reader.GetInt32 (11);
+            int reportsToAdditionalPositionId = reader.GetInt32 (12);
+            int dotReportsToStandardPositionId = reader.GetInt32 (13);
+            int minCount = reader.GetInt32 (14);
+            int maxCount = reader.GetInt32 (15);
 
-            return new BasicRefund(refundId, paymentId, open, amountCents, createdByPersonId, createdDateTime,
-                closedDateTime);
+            int reportsToPositionId = (reportsToAdditionalPositionId != 0)
+                ? -reportsToAdditionalPositionId
+                : reportsToStandardPositionId;
+
+            return new BasicPosition (-additionalPositionId, organizationId, 5 /*PositionLevel.Geographic*/,
+                geographyId, false /*overridable*/, overridesHigherPositionId,
+                createdByPersonId, createdDateTimeUtc, positionTypeId, inheritsDownward, volunteerable, active, covert,
+                reportsToPositionId, dotReportsToStandardPositionId, minCount, maxCount);
+
         }
 
-        private static BasicRefund ReadPositionAssignmentFromDataReader(IDataRecord reader)
+        private static BasicPositionAssignment ReadPositionAssignmentFromDataReader(IDataRecord reader)
         {
-            int refundId = reader.GetInt32(0);
-            int paymentId = reader.GetInt32(1);
-            bool open = reader.GetBoolean(2);
-            Int64 amountCents = reader.GetInt64(3);
-            DateTime createdDateTime = reader.GetDateTime(4);
-            DateTime closedDateTime = reader.GetDateTime(5);
-            int createdByPersonId = reader.GetInt32(6);
+            int positionAssigmentId = reader.GetInt32 (0);
+            int organizationId = reader.GetInt32 (1); // this field is necessary because assignment can be to a suborg of the position record
+            int geographyId = reader.GetInt32 (2);
+            int positionId = reader.GetInt32 (3);
+            int personId = reader.GetInt32 (4);
+            DateTime createdDateTimeUtc = reader.GetDateTime (5);
+            int createdByPersonId = reader.GetInt32 (6);
+            int createdByPositionId = reader.GetInt32 (7);
+            bool active = reader.GetBoolean (8);
+            DateTime expiresDateTimeUtc = reader.GetDateTime (9);
+            DateTime terminatedDateTimeUtc = reader.GetDateTime (10);
+            int terminatedByPersonId = reader.GetInt32 (11);
+            int terminatedByPositionId = reader.GetInt32 (12);
+            string assignmentNotes = reader.GetString (13);
+            string terminationNotes = reader.GetString (14);
 
-            return new BasicRefund(refundId, paymentId, open, amountCents, createdByPersonId, createdDateTime,
-                closedDateTime);
+            return new BasicPositionAssignment (positionAssigmentId, organizationId, geographyId, positionId,
+                createdDateTimeUtc, createdByPersonId, createdByPositionId, active, expiresDateTimeUtc,
+                terminatedDateTimeUtc, terminatedByPersonId, terminatedByPositionId, assignmentNotes, terminationNotes);
         }
-
 
         #endregion
 
         #region Database record reading -- SELECT clauses
 
+        public BasicPosition GetPosition (int positionId)
+        {
+            if (positionId > 0)
+            {
+                return GetStandardPosition (positionId);
+            }
+            else
+            {
+                return GetAdditionalPosition (-positionId);
+            }
+        }
+
+        public BasicPosition[] GetPositions (params object[] conditions)
+        {
+            BasicPosition[] standardHits = GetStandardPositions (conditions);
+            BasicPosition[] additionalHits = GetAdditionalPositions (conditions);
+
+            return standardHits.Concat (additionalHits).ToArray();
+
+        }
+
         #region Standard Positions
 
-        public BasicRefund GetStandardPosition (int standardPositionId)
+        public BasicPosition GetStandardPosition (int standardPositionId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -175,7 +229,7 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadRefundFromDataReader(reader);
+                        return ReadStandardPositionFromDataReader(reader);
                     }
 
                     throw new ArgumentException("No such StandardPositionId:" + standardPositionId);
@@ -184,9 +238,9 @@ namespace Swarmops.Database
         }
 
 
-        public BasicRefund[] GetStandardPositions(params object[] conditions)
+        public BasicPosition[] GetStandardPositions(params object[] conditions)
         {
-            List<BasicRefund> result = new List<BasicRefund>();
+            List<BasicPosition> result = new List<BasicPosition>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -200,7 +254,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadRefundFromDataReader(reader));
+                        result.Add(ReadStandardPositionFromDataReader(reader));
                     }
 
                     return result.ToArray();
@@ -213,7 +267,7 @@ namespace Swarmops.Database
 
         #region Additional Positions
 
-        public BasicRefund GetAdditionalPosition(int additionalPositionId)
+        public BasicPosition GetAdditionalPosition(int additionalPositionId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -228,7 +282,7 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadRefundFromDataReader(reader);
+                        return ReadAdditionalPositionFromDataReader(reader);
                     }
 
                     throw new ArgumentException("No such StandardPositionId:" + additionalPositionId);
@@ -237,9 +291,9 @@ namespace Swarmops.Database
         }
 
 
-        public BasicRefund[] GetAdditionalPositions(params object[] conditions)
+        public BasicPosition[] GetAdditionalPositions(params object[] conditions)
         {
-            List<BasicRefund> result = new List<BasicRefund>();
+            List<BasicPosition> result = new List<BasicPosition>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -247,13 +301,13 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + standardPositionFieldSequence + ConstructWhereClause("PositionsAdditional", conditions), connection);
+                        "SELECT" + additionalPositionFieldSequence + ConstructWhereClause("PositionsAdditional", conditions), connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadRefundFromDataReader(reader));
+                        result.Add(ReadAdditionalPositionFromDataReader(reader));
                     }
 
                     return result.ToArray();
@@ -266,7 +320,7 @@ namespace Swarmops.Database
 
         #region Position Assignments
 
-        public BasicRefund GetPositionAssignment(int positionAssignmentId)
+        public BasicPositionAssignment GetPositionAssignment(int positionAssignmentId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -281,7 +335,7 @@ namespace Swarmops.Database
                 {
                     if (reader.Read())
                     {
-                        return ReadRefundFromDataReader(reader);
+                        return ReadPositionAssignmentFromDataReader(reader);
                     }
 
                     throw new ArgumentException("No such PositionAssignmentId:" + positionAssignmentId);
@@ -290,9 +344,9 @@ namespace Swarmops.Database
         }
 
 
-        public BasicRefund[] GetPositionAssignments(params object[] conditions)
+        public BasicPositionAssignment[] GetPositionAssignments(params object[] conditions)
         {
-            List<BasicRefund> result = new List<BasicRefund>();
+            List<BasicPositionAssignment> result = new List<BasicPositionAssignment>();
 
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -306,7 +360,7 @@ namespace Swarmops.Database
                 {
                     while (reader.Read())
                     {
-                        result.Add(ReadRefundFromDataReader(reader));
+                        result.Add(ReadPositionAssignmentFromDataReader(reader));
                     }
 
                     return result.ToArray();
@@ -320,6 +374,15 @@ namespace Swarmops.Database
         #endregion
 
         #region Creation and manipulation -- stored procedures
+
+
+        public int CreateStandardPosition (int organizationId, int positionLevel, string positionType,
+            bool volunteerable, bool overridable, int reportsToPositionId, int dotReportsToPositionId, int minCount,
+            int maxCount)
+        {
+            return 0;
+        }
+
         /*
         public int CreateRefund(int paymentId, int createdByPersonId)
         {

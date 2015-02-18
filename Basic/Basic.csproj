@@ -15,7 +15,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -60,6 +60,8 @@
     <Compile Include="Enums\OrganizationFinancialAccountType.cs" />
     <Compile Include="Enums\OutboundCommPriority.cs" />
     <Compile Include="Types\Governance\BasicBallot.cs" />
+    <Compile Include="Types\Swarm\BasicPosition.cs" />
+    <Compile Include="Types\Swarm\BasicPositionAssignment.cs" />
     <Compile Include="Types\System\BasicSwarmopsLogEntry.cs" />
     <Compile Include="Types\Communications\BasicOutboundComm.cs" />
     <Compile Include="Types\Communications\BasicOutboundCommRecipient.cs" />
