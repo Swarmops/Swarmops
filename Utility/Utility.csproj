@@ -140,6 +140,10 @@
       <Project>{6608c2e6-f841-4cd1-8ab2-28dc3b1dddd1}</Project>
       <Name>Basic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{bbf83512-8486-469e-9d7b-c3c1b78c3f4d}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Database\Database.csproj">
       <Project>{3a5b5f19-51a5-48ce-a82e-97d5c189e5cb}</Project>
       <Name>Database</Name>
