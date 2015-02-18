@@ -83,12 +83,14 @@ namespace Swarmops.Logic.Support
                 {
                     try
                     {
-                        SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand (sqlCommand.Trim());
+                        SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand (sqlCommand.Trim().TrimEnd (';'));  // removes whitespace first, then any ; at the end (if left in by mistake)
                     }
                     catch (MySqlException exception)
                     {
                         SwarmDb.GetDatabaseForWriting()
-                            .CreateExceptionLogEntry (DateTime.UtcNow, "DatabaseUpgrade", exception);
+                            .CreateExceptionLogEntry (DateTime.UtcNow, "DatabaseUpgrade",
+                                new Exception (string.Format ("Exception upgrading to Db{0:D4}", currentDbVersion),
+                                    exception));
 
                         // Continue processing after logging error.
                         // TODO: Throw and abort? Tricky decision
