@@ -1,5 +1,5 @@
 ﻿using System;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.App_GlobalResources;
 
 namespace Swarmops.Logic.Swarm

@@ -1,5 +1,5 @@
 using System;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 
 namespace Swarmops.Basic.Types.Swarm
 {

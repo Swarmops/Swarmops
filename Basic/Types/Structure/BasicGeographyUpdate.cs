@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.Structure
 {

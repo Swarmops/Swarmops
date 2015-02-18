@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Web;
 using System.Web.Services;
 using Resources;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;

@@ -1,7 +1,6 @@
 using System;
-using Swarmops.Basic.Enums;
 
-namespace Swarmops.Basic.Interfaces
+namespace Swarmops.Common.Interfaces
 {
     public interface IHandleProvider
     {
@@ -11,10 +10,7 @@ namespace Swarmops.Basic.Interfaces
 
         int GetPersonByHandle (string handle);
     }
-}
 
-namespace Swarmops.Basic.Enums
-{
     public enum HandleErrorType
     {
         Unknown = 0,
@@ -22,10 +18,7 @@ namespace Swarmops.Basic.Enums
         HandleNotFound,
         HandleOccupied
     }
-}
 
-namespace Swarmops.Basic.Exceptions
-{
     public class HandleException : Exception
     {
         private readonly string attemptedHandle;

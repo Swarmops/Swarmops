@@ -5,7 +5,6 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Web.Services;
-using Swarmops.Basic.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;

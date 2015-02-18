@@ -12,7 +12,7 @@ using System.Web.Services;
 using System.Web.SessionState;
 using System.Web.UI;
 using Resources;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;

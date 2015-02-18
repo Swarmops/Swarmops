@@ -1,4 +1,4 @@
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.System
 {

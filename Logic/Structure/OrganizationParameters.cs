@@ -1,4 +1,4 @@
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Structure

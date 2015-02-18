@@ -1,4 +1,4 @@
-namespace Swarmops.Basic.Enums
+namespace Swarmops.Common.Enums
 {
     /// <summary>
     ///     For handling of membership fee payment

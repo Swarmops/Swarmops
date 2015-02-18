@@ -1,7 +1,7 @@
 using System;
 using System.Web;
 using System.Web.UI;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;

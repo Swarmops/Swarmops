@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Governance;
 using Swarmops.Logic.Structure;
 

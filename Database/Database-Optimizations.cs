@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
-using Swarmops.Basic.Enums;
 
 // This file contains odd functions that are optimizations of very specific cases, that would otherwise
 // require remodeling of the data model and/or very expensive database operations.
+using Swarmops.Common.Enums;
 
 namespace Swarmops.Database
 {

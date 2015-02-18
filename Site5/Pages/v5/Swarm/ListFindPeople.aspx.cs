@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.Services;
 using Resources;
 using Resources.Pages;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;

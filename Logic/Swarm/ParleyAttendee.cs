@@ -1,6 +1,6 @@
 using System;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Structure;

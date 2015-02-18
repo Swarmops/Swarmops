@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Globalization;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Interfaces;
 using Swarmops.Basic.Types.Financial;
 
 // This is the first part of Database to fully use MySql.
 
 // TODO: This was written with several classes in one file. Break out to one class per file.
+using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Database
 {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Swarmops.Basic.Enums
+namespace Swarmops.Common.Enums
 {
     public enum MailAuthorType
     {

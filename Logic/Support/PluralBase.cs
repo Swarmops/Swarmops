@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Logic.Support
 {

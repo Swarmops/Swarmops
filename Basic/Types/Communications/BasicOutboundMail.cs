@@ -1,6 +1,6 @@
 using System;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.Communications
 {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Swarm;
 
 /// <summary>

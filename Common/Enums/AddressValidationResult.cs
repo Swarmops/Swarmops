@@ -1,4 +1,4 @@
-namespace Swarmops.Basic
+namespace Swarmops.Common.Enums
 {
     public enum AddressValidationResult
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Logic.Support
 {

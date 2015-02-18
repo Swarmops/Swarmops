@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Resources.Pages;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 
 namespace Swarmops.Frontend.Automation

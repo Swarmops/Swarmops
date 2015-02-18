@@ -1,4 +1,4 @@
-namespace Swarmops.Basic.Interfaces
+namespace Swarmops.Common.Interfaces
 {
     public interface IHasIdentity
     {

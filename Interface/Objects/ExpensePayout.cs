@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
