@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.App_GlobalResources;
 
 namespace Swarmops.Logic.Swarm
@@ -10,7 +11,7 @@ namespace Swarmops.Logic.Swarm
     public class Position
     {
 
-        public static string Localized (PositionTitle title, bool plural = false)
+        public static string Localized (PositionType title, bool plural = false)
         {
             string titleString = title.ToString();
             if (plural)
@@ -20,13 +21,5 @@ namespace Swarmops.Logic.Swarm
 
             return ParticipantTitles.ResourceManager.GetString ("Position_" + titleString);
         }
-    }
-
-    public enum PositionTitle
-    {
-        Unknown = 0,
-        System_AdministratorMain,
-        System_AdministratorAssistantRW,
-        System_AdministratorAssistantRO
     }
 }

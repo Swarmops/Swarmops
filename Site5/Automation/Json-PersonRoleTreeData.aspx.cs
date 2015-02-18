@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
@@ -24,11 +25,11 @@ namespace Swarmops.Frontend.Automation
 
             JsonPosition root = new JsonPosition();
             root.Id = "Root"; // heh. Sysadmin has id "root". Heh.
-            root.LocalizedTitle = Position.Localized (PositionTitle.System_AdministratorMain);
+            root.LocalizedTitle = Position.Localized (PositionType.System_SysadminMain);
             root.AssignedName = Person.FromIdentity (Int32.Parse (writeAdminIds[0])).Canonical;
 
-            root.Children.Add(new JsonPosition { Id = "AsstRW", LocalizedTitle = Position.Localized(PositionTitle.System_AdministratorAssistantRW, true), AssignedName = Resources.Global.Swarm_Vacant });
-            root.Children.Add(new JsonPosition { Id = "AsstRO", LocalizedTitle = Position.Localized(PositionTitle.System_AdministratorAssistantRO, true), AssignedName = Resources.Global.Swarm_Vacant });
+            root.Children.Add(new JsonPosition { Id = "AsstRW", LocalizedTitle = Position.Localized(PositionType.System_SysadminReadWrite, true), AssignedName = Resources.Global.Swarm_Vacant });
+            root.Children.Add(new JsonPosition { Id = "AsstRO", LocalizedTitle = Position.Localized(PositionType.System_SysadminAssistantReadOnly, true), AssignedName = Resources.Global.Swarm_Vacant });
 
             JsonPositions positions = new JsonPositions();
             positions.Add (root);

@@ -153,20 +153,20 @@
   <data name="Position_Organization_Chairperson_Plural" xml:space="preserve">
     <value>Chairpeople of the Board</value>
   </data>
-  <data name="Position_System_AdministratorAssistantRO" xml:space="preserve">
+  <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
     <value>Sysadmin Assistant (Read-only)</value>
   </data>
-  <data name="Position_System_AdministratorAssistantRO_Plural" xml:space="preserve">
+  <data name="Position_System_SysadminAssistantReadOnly_Plural" xml:space="preserve">
     <value>Sysadmin Assistants (Read-only)</value>
   </data>
-  <data name="Position_System_AdministratorAssistantRW" xml:space="preserve">
+  <data name="Position_System_SysadminMain" xml:space="preserve">
+    <value>Principal Sysadmin</value>
+  </data>
+  <data name="Position_System_SysadminReadWrite" xml:space="preserve">
     <value>Sysadmin (Read/Write)</value>
   </data>
-  <data name="Position_System_AdministratorAssistantRW_Plural" xml:space="preserve">
+  <data name="Position_System_SysadminReadWrite_Plural" xml:space="preserve">
     <value>Sysadmins (Read/write)</value>
-  </data>
-  <data name="Position_System_AdministratorMain" xml:space="preserve">
-    <value>Principal Sysadmin</value>
   </data>
   <data name="Title_Activist_Corps" xml:space="preserve">
     <value>Activist Swarm</value>

@@ -62,6 +62,8 @@
     <Compile Include="Enums\PersonGender.cs" />
     <Compile Include="Enums\PersonOptionalDataKey.cs" />
     <Compile Include="Enums\PoliticalAffiliation.cs" />
+    <Compile Include="Enums\PositionLevel.cs" />
+    <Compile Include="Enums\PositionType.cs" />
     <Compile Include="Enums\RoleTypeClass.cs" />
     <Compile Include="Interfaces\IEmailPerson.cs" />
     <Compile Include="Interfaces\IHandleProvider.cs" />

@@ -171,45 +171,45 @@ namespace Swarmops.Logic.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to Sysadmin Assistant (Read-only).
         /// </summary>
-        internal static string Position_System_AdministratorAssistantRO {
+        internal static string Position_System_SysadminAssistantReadOnly {
             get {
-                return ResourceManager.GetString("Position_System_AdministratorAssistantRO", resourceCulture);
+                return ResourceManager.GetString("Position_System_SysadminAssistantReadOnly", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Sysadmin Assistants (Read-only).
         /// </summary>
-        internal static string Position_System_AdministratorAssistantRO_Plural {
+        internal static string Position_System_SysadminAssistantReadOnly_Plural {
             get {
-                return ResourceManager.GetString("Position_System_AdministratorAssistantRO_Plural", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sysadmin (Read/Write).
-        /// </summary>
-        internal static string Position_System_AdministratorAssistantRW {
-            get {
-                return ResourceManager.GetString("Position_System_AdministratorAssistantRW", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sysadmins (Read/write).
-        /// </summary>
-        internal static string Position_System_AdministratorAssistantRW_Plural {
-            get {
-                return ResourceManager.GetString("Position_System_AdministratorAssistantRW_Plural", resourceCulture);
+                return ResourceManager.GetString("Position_System_SysadminAssistantReadOnly_Plural", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Principal Sysadmin.
         /// </summary>
-        internal static string Position_System_AdministratorMain {
+        internal static string Position_System_SysadminMain {
             get {
-                return ResourceManager.GetString("Position_System_AdministratorMain", resourceCulture);
+                return ResourceManager.GetString("Position_System_SysadminMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sysadmin (Read/Write).
+        /// </summary>
+        internal static string Position_System_SysadminReadWrite {
+            get {
+                return ResourceManager.GetString("Position_System_SysadminReadWrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sysadmins (Read/write).
+        /// </summary>
+        internal static string Position_System_SysadminReadWrite_Plural {
+            get {
+                return ResourceManager.GetString("Position_System_SysadminReadWrite_Plural", resourceCulture);
             }
         }
         

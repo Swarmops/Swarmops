@@ -7,15 +7,16 @@ namespace Swarmops.Basic.Types.Swarm
 {
     public class BasicPositionAssignment
     {
-        public BasicPositionAssignment (int positionAssignmentId, int organizationId, int geographyId, int positionId,
+        public BasicPositionAssignment (int positionAssignmentId, int organizationId, int geographyId, int positionId, int personId,
             DateTime createdDateTimeUtc, int createdByPersonId, int createdByPositionId, bool active, DateTime expiresDateTimeUtc,
-            DateTime terminatedDateTimeUtc, int terminatedByPersonId,
-            int terminatedByPositionId, string assignmentNotes, string terminationNotes)
+            DateTime terminatedDateTimeUtc, int terminatedByPersonId, int terminatedByPositionId, string assignmentNotes, 
+            string terminationNotes)
         {
             this.PositionAssignmentId = positionAssignmentId;
             this.OrganizationId = organizationId;
             this.GeographyId = geographyId;
             this.PositionId = positionId;
+            this.PersonId = personId;
             this.CreatedDateTimeUtc = createdDateTimeUtc;
             this.CreatedByPersonId = createdByPersonId;
             this.CreatedByPositionId = createdByPositionId;
@@ -30,8 +31,8 @@ namespace Swarmops.Basic.Types.Swarm
 
         public BasicPositionAssignment (BasicPositionAssignment original)
             : this (original.PositionAssignmentId, original.OrganizationId, original.GeographyId, original.PositionId,
-                original.CreatedDateTimeUtc, original.CreatedByPersonId, original.CreatedByPositionId, original.Active,
-                original.ExpiresDateTimeUtc, original.TerminatedDateTimeUtc, original.TerminatedByPersonId,
+                original.PersonId, original.CreatedDateTimeUtc, original.CreatedByPersonId, original.CreatedByPositionId, 
+                original.Active, original.ExpiresDateTimeUtc, original.TerminatedDateTimeUtc, original.TerminatedByPersonId,
                 original.TerminatedByPositionId, original.AssignmentNotes, original.TerminationNotes)
         {
             // copy ctor
@@ -41,6 +42,7 @@ namespace Swarmops.Basic.Types.Swarm
         public int OrganizationId { get; private set; }
         public int GeographyId { get; private set; }
         public int PositionId { get; private set; }
+        public int PersonId { get; private set; }
         public DateTime CreatedDateTimeUtc { get; private set; }
         public int CreatedByPersonId { get; private set; }
         public int CreatedByPositionId { get; private set; }
