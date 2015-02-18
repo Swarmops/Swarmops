@@ -9,14 +9,16 @@ namespace Swarmops.Basic.Types.Swarm
 {
     public class BasicPosition: IHasIdentity
     {
-        public BasicPosition(int positionId, int organizationId, PositionLevel positionLevel, int geographyId, bool overridable, 
-            int overridesHigherPositionId, int createdByPersonId, DateTime createdDateTimeUtc, string positionTypeName,
+        public BasicPosition(int positionId, int organizationId, PositionLevel positionLevel, string positionTypeName, string positionTitleName, 
+            int geographyId, bool overridable, int overridesHigherPositionId, int createdByPersonId, DateTime createdDateTimeUtc,
             bool inheritsDownward, bool volunteerable, bool active, bool covert, int reportsToPositionId,
             int dotReportsToPositionId, int minCount, int maxCount)
         {
             this.PositionId = positionId;
             this.OrganizationId = organizationId;
             this.PositionLevel = positionLevel;
+            this.PositionTypeName = positionTypeName;
+            this.PositionTitleName = positionTitleName;
             this.GeographyId = geographyId;
             this.Overridable = overridable;
             this.OverridesHigherPositionId = overridesHigherPositionId;
@@ -35,8 +37,8 @@ namespace Swarmops.Basic.Types.Swarm
 
         public BasicPosition (BasicPosition original)
             : this (
-                original.PositionId, original.OrganizationId, original.PositionLevel, original.GeographyId, original.Overridable,
-                original.OverridesHigherPositionId, original.CreatedByPersonId, original.CreatedDateTimeUtc, original.PositionTypeName,
+                original.PositionId, original.OrganizationId, original.PositionLevel, original.PositionTypeName, original.PositionTitleName, 
+                original.GeographyId, original.Overridable, original.OverridesHigherPositionId, original.CreatedByPersonId, original.CreatedDateTimeUtc,
                 original.InheritsDownward, original.Volunteerable, original.Active,
                 original.Covert, original.ReportsToPositionId, original.DotReportsToPositionId, original.MinCount,
                 original.MaxCount)
@@ -46,13 +48,14 @@ namespace Swarmops.Basic.Types.Swarm
 
         public int PositionId { get; private set; }
         public PositionLevel PositionLevel { get; private set; }
+        public string PositionTypeName { get; private set; }
+        public string PositionTitleName { get; private set; } // strings not enums; plugins may extend from stock enum
         public int OrganizationId { get; private set; }
         public int GeographyId { get; private set; }
         public bool Overridable { get; protected set; }
         public int OverridesHigherPositionId { get; protected set; }
         public int CreatedByPersonId { get; private set; }
         public DateTime CreatedDateTimeUtc { get; private set; }
-        public string PositionTypeName { get; private set; }
         public bool InheritsDownward { get; protected set; }
         public bool Volunteerable { get; protected set; }
         public bool Active { get; protected set; }

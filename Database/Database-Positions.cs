@@ -96,17 +96,21 @@ namespace Swarmops.Database
         #region Database field reading
 
         private const string standardPositionFieldSequence =
-            " PositionsStandard.StandardPositionId,PositionsStandard.OrganizationId,PositionsStandard.PositionLevel,PositionTypes.Name,PositionsStandard.Active," +                       //  0-4
-            "PositionsStandard.Volunteerable,PositionsStandard.Overridable,PositionsStandard.Covert,PositionsStandard.ReportsToStandardPositionId,PositionsStandard.DotReportsToStandardPositionId," +  //  5-9
-            "PositionsStandard.MinCount,PositionsStandard.MaxCount" +                                                                             // 10-11
-            " FROM PositionsStandard JOIN PositionTypes ON (PositionsStandard.PositionTypeId=PositionTypes.PositionTypeId) ";
+            " PositionsStandard.StandardPositionId,PositionsStandard.OrganizationId,PositionsStandard.PositionLevel,PositionTypes.Name,PositionTitles.Name," +                  //  0-4
+            "PositionsStandard.Active,PositionsStandard.Volunteerable,PositionsStandard.Overridable,PositionsStandard.Covert,PositionsStandard.ReportsToStandardPositionId," +  //  5-9
+            "PositionsStandard.DotReportsToStandardPositionId,PositionsStandard.MinCount,PositionsStandard.MaxCount" +                                                          // 10-12
+            " FROM PositionsStandard " +
+            " JOIN PositionTypes ON (PositionsStandard.PositionTypeId=PositionTypes.PositionTypeId) " +
+            " JOIN PositionTitles ON (PositionsStandard.PositionTitleId=PositionTitles.PositionTitleId) ";
 
         private const string additionalPositionFieldSequence =
-            " PositionsAdditional.AdditionalPositionId,PositionsAdditional.OrganizationId,PositionsAdditional.GeographyId,PositionsAdditional.OverridesHigherPositionId,PositionsAdditional.CreatedByPersonId," +      //  0-4
-            "PositionsAdditional.CreatedDateTimeUtc,PositionTypes.Name,PositionsAdditional.InheritsDownward,PositionsAdditional.Volunteerable,PositionsAdditional.Active," +                           //  5-9
-            "PositionsAdditional.Covert,PositionsAdditional.ReportsToStandardPositionId,PositionsAdditional.ReportsToAdditionalPositionId,PositionsAdditional.DotReportsToPositionId,PositionsAdditional.MinCount," +  // 10-14
-            "PositionsAdditional.MaxCount" +                                                                                           // 15
-            " FROM PositionsAdditional JOIN PositionTypes ON (PositionsAdditional.PositionTypeId=PositionTypes.PositionTypeId) ";
+            " PositionsAdditional.AdditionalPositionId,PositionsAdditional.OrganizationId,PositionsAdditional.GeographyId,PositionsAdditional.OverridesHigherPositionId,PositionsAdditional.CreatedByPersonId," +    //  0-4
+            "PositionsAdditional.CreatedDateTimeUtc,PositionTypes.Name,PositionTitles.Name,PositionsAdditional.InheritsDownward,PositionsAdditional.Volunteerable," +                                                //  5-9
+            "PositionsAdditional.Active,PositionsAdditional.Covert,PositionsAdditional.ReportsToStandardPositionId,PositionsAdditional.ReportsToAdditionalPositionId,PositionsAdditional.DotReportsToPositionId," +  // 10-14
+            "PositionsAdditional.MinCount,PositionsAdditional.MaxCount" +                                                                                                                                            // 15-16
+            " FROM PositionsAdditional " +
+            " JOIN PositionTypes ON (PositionsAdditional.PositionTypeId=PositionTypes.PositionTypeId) " +
+            " JOIN PositionTitles ON (PositionsAdditional.PositionTitleId=PositionTitles.PositionTitleId) ";
 
         private const string positionAssignmentFieldSequence =
             " PositionAssignmentId,OrganizationId,GeographyId,PositionId,PersonId," +                              //  0-4
@@ -120,17 +124,18 @@ namespace Swarmops.Database
             int organizationId = reader.GetInt32 (1);
             PositionLevel positionLevel = (PositionLevel) reader.GetInt32 (2);
             string positionTypeName = reader.GetString (3);
-            bool active = reader.GetBoolean (4);
-            bool volunteerable = reader.GetBoolean (5);
-            bool overridable = reader.GetBoolean (6);
-            bool covert = reader.GetBoolean (7);
-            int reportsToStandardPositionId = reader.GetInt32 (8);
-            int dotReportsToStandardPositionId = reader.GetInt32 (9);
-            int minCount = reader.GetInt32 (10);
-            int maxCount = reader.GetInt32 (11);
+            string positionTitleName = reader.GetString (4);
+            bool active = reader.GetBoolean (5);
+            bool volunteerable = reader.GetBoolean (6);
+            bool overridable = reader.GetBoolean (7);
+            bool covert = reader.GetBoolean (8);
+            int reportsToStandardPositionId = reader.GetInt32 (9);
+            int dotReportsToStandardPositionId = reader.GetInt32 (10);
+            int minCount = reader.GetInt32 (11);
+            int maxCount = reader.GetInt32 (12);
 
-            return new BasicPosition (standardPositionId, organizationId, positionLevel, 0 /*geographyId*/, overridable, 
-                0 /*overridesId*/, 0 /*createdByPerson*/, DateTime.MinValue /*createdDateTimeUtc*/, positionTypeName, 
+            return new BasicPosition (standardPositionId, organizationId, positionLevel, positionTypeName, positionTitleName, 
+                0 /*geographyId*/, overridable, 0 /*overridesId*/, 0 /*createdByPerson*/, DateTime.MinValue /*createdDateTimeUtc*/,
                 true /*inheritsDownward*/, volunteerable, active, covert, reportsToStandardPositionId,
                 dotReportsToStandardPositionId, minCount, maxCount);
         }
@@ -144,23 +149,24 @@ namespace Swarmops.Database
             int createdByPersonId = reader.GetInt32 (4);
             DateTime createdDateTimeUtc = reader.GetDateTime (5);
             string positionTypeName = reader.GetString (6);
-            bool inheritsDownward = reader.GetBoolean (7);
-            bool volunteerable = reader.GetBoolean (8);
-            bool active = reader.GetBoolean (9);
-            bool covert = reader.GetBoolean (10);
-            int reportsToStandardPositionId = reader.GetInt32 (11);
-            int reportsToAdditionalPositionId = reader.GetInt32 (12);
-            int dotReportsToStandardPositionId = reader.GetInt32 (13);
-            int minCount = reader.GetInt32 (14);
-            int maxCount = reader.GetInt32 (15);
+            string positionTitleName = reader.GetString (7);
+            bool inheritsDownward = reader.GetBoolean (8);
+            bool volunteerable = reader.GetBoolean (9);
+            bool active = reader.GetBoolean (10);
+            bool covert = reader.GetBoolean (11);
+            int reportsToStandardPositionId = reader.GetInt32 (12);
+            int reportsToAdditionalPositionId = reader.GetInt32 (13);
+            int dotReportsToStandardPositionId = reader.GetInt32 (14);
+            int minCount = reader.GetInt32 (15);
+            int maxCount = reader.GetInt32 (16);
 
             int reportsToPositionId = (reportsToAdditionalPositionId != 0)
                 ? -reportsToAdditionalPositionId
                 : reportsToStandardPositionId;
 
-            return new BasicPosition (-additionalPositionId, organizationId, PositionLevel.Geography, 
-                geographyId, false /*overridable*/, overridesHigherPositionId,
-                createdByPersonId, createdDateTimeUtc, positionTypeName, inheritsDownward, volunteerable, active, covert,
+            return new BasicPosition (-additionalPositionId, organizationId, PositionLevel.Geography,
+                positionTypeName, positionTitleName, geographyId, false /*overridable*/, overridesHigherPositionId, 
+                createdByPersonId, createdDateTimeUtc, inheritsDownward, volunteerable, active, covert,
                 reportsToPositionId, dotReportsToStandardPositionId, minCount, maxCount);
 
         }
@@ -377,9 +383,9 @@ namespace Swarmops.Database
         #region Creation and manipulation -- stored procedures
 
 
-        public int CreateStandardPosition(int organizationId, PositionLevel positionLevel, string positionType,
-            bool volunteerable, bool overridable, int reportsToPositionId, int dotReportsToPositionId, int minCount,
-            int maxCount)
+        public int CreateStandardPosition(int organizationId, PositionLevel positionLevel, string positionTypeName,
+            string positionTitleName, bool volunteerable, bool overridable, int reportsToPositionId, int dotReportsToPositionId, 
+            int minCount, int maxCount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -390,9 +396,10 @@ namespace Swarmops.Database
 
                 AddParameterWithName(command, "organizationId", organizationId);
                 AddParameterWithName(command, "positionLevel", (int)positionLevel);
-                AddParameterWithName(command, "positionType", positionType);
+                AddParameterWithName(command, "positionType", positionTypeName);
+                AddParameterWithName(command, "positionTitle", positionTypeName);
                 AddParameterWithName(command, "volunteerable", volunteerable);
-                AddParameterWithName(command, "overridable", positionType);
+                AddParameterWithName(command, "overridable", overridable);
                 AddParameterWithName(command, "reportsToStandardPositionId", reportsToPositionId);
                 AddParameterWithName(command, "dotReportsToStandardPositionId", dotReportsToPositionId);
                 AddParameterWithName(command, "minCount", minCount);
@@ -402,9 +409,9 @@ namespace Swarmops.Database
             }
         }
 
-        public int CreateAdditionalPosition(int organizationId, int geographyId, string positionType,
-            int overridesStandardPositionId, bool volunteerable, bool inheritsDownward, int reportsToPositionId, int dotReportsToPositionId, 
-            int createdByPersonId, int minCount, int maxCount)
+        public int CreateAdditionalPosition(int organizationId, int geographyId, int overridesHigherPositionId, int createdByPersonId, 
+            string positionTypeName, string positionTitleName, bool inheritsDownward, bool volunteerable, bool overridable, 
+            int reportsToPositionId, int dotReportsToPositionId,  int minCount, int maxCount)
         {
             DateTime utcNow = DateTime.UtcNow;
 
@@ -417,13 +424,17 @@ namespace Swarmops.Database
 
                 AddParameterWithName(command, "organizationId", organizationId);
                 AddParameterWithName(command, "geographyId", geographyId);
-                AddParameterWithName(command, "positionType", positionType);
+                AddParameterWithName(command, "overridesHigherPositionId", overridesHigherPositionId);
+                AddParameterWithName(command, "createdByPersonId", createdByPersonId);
+                AddParameterWithName(command, "createdDateTimeUtc", utcNow);
+                AddParameterWithName(command, "positionType", positionTypeName);
+                AddParameterWithName(command, "positionTitle", positionTypeName);
+                AddParameterWithName(command, "inheritsDownward", volunteerable);
                 AddParameterWithName(command, "volunteerable", volunteerable);
-                AddParameterWithName(command, "overridable", positionType);
+                AddParameterWithName(command, "overridable", volunteerable);
                 AddParameterWithName(command, "reportsToStandardPositionId", reportsToPositionId > 0 ? reportsToPositionId : 0);
                 AddParameterWithName(command, "reportsToAdditionalPositionId", reportsToPositionId < 0 ? -reportsToPositionId : 0);
                 AddParameterWithName(command, "dotReportsToStandardPositionId", dotReportsToPositionId);
-                AddParameterWithName(command, "createdDateTimeUtc", utcNow);
                 AddParameterWithName(command, "minCount", minCount);
                 AddParameterWithName(command, "maxCount", maxCount);
 

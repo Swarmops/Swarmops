@@ -18,7 +18,9 @@ CREATE TABLE `PositionTitles` (
 
 
 ALTER TABLE `PositionsAdditional` 
-ADD COLUMN `PositionTitleId` INT NOT NULL AFTER `PositionTypeId`
+ADD COLUMN `PositionTitleId` INT NOT NULL AFTER `PositionTypeId`,
+CHANGE COLUMN `Active` `Active` TINYINT(4) NOT NULL DEFAULT '1' AFTER `InheritsDownward`,
+ADD COLUMN `Overridable` TINYINT NOT NULL AFTER `Volunteerable`
 
 
 #
@@ -49,14 +51,15 @@ CREATE PROCEDURE `CreateAdditionalPosition`(
   IN geographyId INT,
   IN positionType VARCHAR(128),
   IN positionTitle VARCHAR(128),
-  IN overridesStandardPositionId INT,
+  IN overridesHigherPositionId INT,
+  IN createdByPersonId INT,
+  IN createdDateTimeUtc DATETIME,
   IN volunteerable TINYINT,
+  IN overridable TINYINT,
   IN inheritsDownward TINYINT,
   IN reportsToStandardPositionId INT,
   IN reportsToAdditionalPositionId INT,
   IN dotReportsToStandardPositionId INT,
-  IN createdByPersonId INT,
-  IN createdDateTimeUtc DATETIME,
   IN minCount INT,
   IN maxCount INT
 )
@@ -93,8 +96,8 @@ BEGIN
 
   END IF;
 
-  INSERT INTO PositionsAdditional (OrganizationId,GeographyId,PositionTypeId,PositionTitleId,Volunteerable,InheritsDownward,OverridesStandardPositionId,ReportsToStandardPositionId,ReportsToAdditionalPositionId,DotReportsToStandardPositionId,CreatedByPersonId,CreatedDateTimeUtc,MinCount,MaxCount)
-    VALUES (organizationId,geographyId,positionTypeId,positionTitleId,volunteerable,inheritsDownward,overridesStandardPositionId,reportsToStandardPositionId,reportsToAdditionalPositionId,dotReportsToStandardPositionId,createdByPersonId,createdDateTimeUtc,minCount,maxCount);
+  INSERT INTO PositionsAdditional (OrganizationId,GeographyId,OverridesHigherPositionId,CreatedByPersonId,CreatedDateTimeUtc,PositionTypeId,PositionTitleId,InheritsDownward,Volunteerable,Overridable,ReportsToStandardPositionId,ReportsToAdditionalPositionId,DotReportsToStandardPositionId,MinCount,MaxCount)
+    VALUES (organizationId,geographyId,overridesHigherPositionId,createdByPersonId,createdDateTimeUtc,positionTypeId,positionTitleId,inheritsDownward,volunteerable,overridable,reportsToStandardPositionId,reportsToAdditionalPositionId,dotReportsToStandardPositionId,minCount,maxCount);
 
   SELECT LAST_INSERT_ID() AS Identity;
 
