@@ -10,4 +10,4 @@
 0010 - Fix for CurrencyExchangeRateSnapshotData [RF]
 0011 - Added tables, procedures for centralized, decentralized roles [RF]
 0012 - Renamed "Roles" to "Positions" to clarify terminology [RF]
-
+0013 - Added PositionTitles for organizational culture flexibility [RF]
