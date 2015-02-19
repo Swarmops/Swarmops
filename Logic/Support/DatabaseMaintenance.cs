@@ -71,9 +71,18 @@ namespace Swarmops.Logic.Support
                 string fileName = String.Format ("http://packages.swarmops.com/schemata/upgrade-{0:D4}.sql",
                     currentDbVersion);
 
-                using (WebClient client = new WebClient())
+                try
                 {
-                    sql = client.DownloadString (fileName);
+                    using (WebClient client = new WebClient())
+                    {
+                        sql = client.DownloadString (fileName);
+                    }
+                }
+                catch (Exception)
+                {
+                    OutboundComm.CreateNotification (null, NotificationResource.System_DatabaseUpgradeFailed);
+
+                    return;
                 }
 
                 string[] sqlCommands = sql.Split ('#');

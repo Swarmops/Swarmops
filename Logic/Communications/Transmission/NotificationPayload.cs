@@ -103,6 +103,7 @@ namespace Swarmops.Logic.Communications.Transmission
         System_Startup,
         System_Exception,
         System_DatabaseSchemaUpgraded,
+        System_DatabaseUpgradeFailed,
         System_MailServerTest,
         CashAdvance_Requested,
         CashAdvance_Attested,

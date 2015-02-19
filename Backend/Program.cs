@@ -466,25 +466,20 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    /*TestTrace("Running BlogWatcher.Run()...");
-                    BlogWatcher.Run();
-                    TestTrace(" done.\r\n");*/
+                    // This will upgrade the database schema if and only if we failed to do so on entry.
+
+                    if (SwarmDb.DbVersion < SwarmDb.DbVersionExpected)
+                    {
+                        BotLog.Write (1, "MainCycle", "Entering DbUpgrade");
+                        DatabaseMaintenance.UpgradeSchemata();
+                        BotLog.Write (1, "MainCycle", "Exited DbUpgrade");
+                    }
                 }
                 catch (Exception e)
                 {
                     TraceAndReport (e);
                 }
 
-                try
-                {
-                    /*TestTrace("Running MediaWatcher.Run()...");
-                    MediaWatcher.Run();
-                    TestTrace(" done.\r\n");*/
-                }
-                catch (Exception e)
-                {
-                    TraceAndReport (e);
-                }
 
                 try
                 {
