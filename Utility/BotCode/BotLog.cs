@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -34,9 +35,17 @@ namespace Swarmops.Utility.BotCode
             string logFileName = "/var/log/swarmops/backend-" +
                                  now.ToString ("yyyy-MM-dd-HH") + ".log";
 
-            using (StreamWriter writer = new StreamWriter (logFileName, true, Encoding.GetEncoding (1252)))
+            if (!Debugger.IsAttached)
             {
-                writer.WriteLine ("[" + now.ToString ("HH:mm:ss.fff") + "] " + message);
+                using (StreamWriter writer = new StreamWriter (logFileName, true, Encoding.GetEncoding (1252)))
+                {
+                    writer.WriteLine ("[" + now.ToString ("HH:mm:ss.fff") + "] " + message);
+                }
+            }
+            else
+            {
+                // If we're in a development environment, write the log entry to the Output window instead.
+                Debug.WriteLine("[" + now.ToString("HH:mm:ss.fff") + "] " + message);
             }
         }
 
