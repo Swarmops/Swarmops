@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.Threading;
 using Mono.Unix;
 using Mono.Unix.Native;
@@ -23,11 +25,12 @@ namespace Swarmops.Backend
         {
             testMode = false;
 
-            UnixSignal[] killSignals =
+            UnixSignal[] killSignals = null;
+
+            if (!Debugger.IsAttached)
             {
-                new UnixSignal (Signum.SIGINT),
-                new UnixSignal (Signum.SIGTERM)
-            };
+                killSignals = new UnixSignal[] {new UnixSignal (Signum.SIGINT), new UnixSignal (Signum.SIGTERM)};
+            }
 
             BotLog.Write (0, "MainCycle", string.Empty);
             BotLog.Write (0, "MainCycle", "-----------------------------------------------");
@@ -165,7 +168,7 @@ namespace Swarmops.Backend
             }
 
             DateTime cycleStartTime = DateTime.UtcNow;
-            DateTime cycleEndTime = cycleStartTime.AddSeconds (10);
+            DateTime cycleEndTime;
 
             int lastSecond = cycleStartTime.Second;
             int lastMinute = cycleStartTime.Minute;
@@ -178,6 +181,7 @@ namespace Swarmops.Backend
                 BotLog.Write (0, "MainCycle", "Cycle Start");
 
                 cycleStartTime = DateTime.UtcNow;
+                cycleEndTime = cycleStartTime.AddSeconds(10);
 
                 try
                 {
@@ -227,20 +231,41 @@ namespace Swarmops.Backend
                 lastMinute = cycleStartTime.Minute;
                 lastHour = cycleStartTime.Hour;
 
-                // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime
+                // Wait for a maximum of ten seconds (the difference between cycleStartTime and cycleEndTime)
 
-                while (DateTime.UtcNow < cycleEndTime && !exitFlag)
+                DateTime utcNow = DateTime.UtcNow;
+                while (utcNow < cycleEndTime && !exitFlag)
                 {
-                    // block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
-                    int signalIndex = UnixSignal.WaitAny (killSignals, 250);
+                    int signalIndex = 250;
 
-                    if (signalIndex < 1000)
+                    // Block until a SIGINT or SIGTERM signal is generated, or 1/4 second has passed.
+                    // However, we can't do that in a development environment - it won't have the
+                    // Mono.Posix assembly, and won't understand UnixSignals. So people running this in
+                    // a dev environment will need to stop it manually.
+
+                    if (!Debugger.IsAttached)
+                    {
+                        signalIndex = UnixSignal.WaitAny(killSignals, 250);
+                    }
+                    else
+                    {
+                        TimeSpan timeLeft = (cycleEndTime - utcNow);
+
+                        BotLog.Write(0, "MainCycle Debug",
+                            string.Format(CultureInfo.InvariantCulture, "Waiting for {0:F2} more seconds for cycle end",
+                                timeLeft.TotalMilliseconds / 1000.0));
+                        Thread.Sleep(250);
+                    }
+
+                    if (signalIndex < 250)
                     {
                         exitFlag = true;
                         Console.WriteLine ("Caught signal " + killSignals[signalIndex].Signum + ", exiting");
                         BotLog.Write (0, "MainCycle",
                             "EXIT SIGNAL (" + killSignals[signalIndex].Signum + "), terminating backend");
                     }
+
+                    utcNow = DateTime.UtcNow;
                 }
             }
 

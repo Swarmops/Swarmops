@@ -134,9 +134,26 @@ namespace Swarmops.Database
                 }
                 if (Debugger.IsAttached)
                 {
-                    // Dev web process. This will throw if we're not in a HttpContext and trying to debug something else.
+                    if (HttpContext.Current != null)
+                    {
+                        // Dev web process. This will throw if we're not in a HttpContext and trying to debug something else.
+                        return HttpContext.Current.Server.MapPath ("~/database.config");
+                    }
+                    else
+                    {
+                        // Dev console process.
 
-                    return HttpContext.Current.Server.MapPath ("~/database.config");
+                        string configLocation = "../Site5/database.config";
+
+                        // however, we don't know exactly how deep in the directory structure we are, so keep adding ../ until we
+                        // correct level. We may hit the root if the config doesn't exist and that'll throw us out.
+
+                        while (!File.Exists (configLocation))
+                        {
+                            configLocation = "../" + configLocation;
+                        }
+                        return configLocation;
+                    }
                 }
                 throw new NotImplementedException ("Invalid state");
 
