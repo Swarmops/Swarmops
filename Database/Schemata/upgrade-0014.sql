@@ -29,3 +29,13 @@ BEGIN
   SELECT LAST_INSERT_ID() AS Identity;
 
 END
+
+
+#
+
+
+ALTER TABLE `PositionTypes` 
+CHANGE COLUMN `PositionTypeId` `PositionTypeId` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT
+
+
+
