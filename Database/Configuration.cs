@@ -14,7 +14,7 @@ namespace Swarmops.Database
         /// </summary>
         public static int DbVersionExpected
         {
-            get { return 14; }
+            get { return 15; }
         }
 
 
