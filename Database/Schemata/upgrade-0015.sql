@@ -50,15 +50,20 @@ CREATE PROCEDURE `CreatePosition`(
   IN positionLevel INT,
   IN organizationId INT,
   IN geographyId INT,
-  IN positionType VARCHAR(128),
-  IN positionTitle VARCHAR(128),
   IN overridesHigherPositionId INT,
+
   IN createdByPersonId INT,
   IN createdByPositionId INT,
   IN createdDateTimeUtc DATETIME,
+  IN positionType VARCHAR(128),
+  IN positionTitle VARCHAR(128),
+
+  IN inheritsDownward TINYINT,
+  -- active defaults to true
   IN volunteerable TINYINT,
   IN overridable TINYINT,
-  IN inheritsDownward TINYINT,
+  -- covert defaults to false
+
   IN reportsToPositionId INT,
   IN dotReportsToPositionId INT,
   IN minCount INT,
