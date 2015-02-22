@@ -32,7 +32,7 @@ namespace Swarmops.Frontend.Automation
             string cacheKey = "Geographies-Json-" + parentGeographyId.ToString (CultureInfo.InvariantCulture) + "-" +
                               Thread.CurrentThread.CurrentCulture.Name;
 
-            string accountsJson = null; // (string) Cache[cacheKey];
+            string accountsJson =(string) Cache[cacheKey];
 
             if (accountsJson != null)
             {
