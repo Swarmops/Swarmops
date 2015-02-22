@@ -9,12 +9,14 @@ namespace Swarmops.Controls.Base
         public string OnClientLoaded { get; set; }
         public string OnClientSelect { get; set; }
         protected int RootGeographyId { get; private set; }
+        protected int ParentGeographyId { get; private set; }
         protected string RootGeographyName { get; private set; }
 
         public Geography RootGeography
         {
             set
             {
+                ParentGeographyId = value.ParentIdentity;
                 RootGeographyId = value.Identity;
                 RootGeographyName = value.Name;
 

@@ -21,8 +21,6 @@ namespace Swarmops.Frontend.Automation
 
             Tree<Position> systemPositions = Positions.ForSystem().Tree;
 
-
-
             Response.Output.WriteLine(RecursePositionTree (systemPositions.RootNodes));
 
             Response.End();
@@ -40,7 +38,7 @@ namespace Swarmops.Frontend.Automation
             foreach (TreeNode<Position> positionNode in positionNodes)
             {
                 Position position = positionNode.Data;
-                string localizedPositionName = position.Localized (positionNode.Data.MaxCount > 1);
+                string localizedPositionName = position.Localized (positionNode.Data.MaxCount != 1);
                 PositionAssignments assignments = position.Assignments;
 
                 string parentName = string.Empty;

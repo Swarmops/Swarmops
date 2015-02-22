@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Generics;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Support;
@@ -265,6 +266,28 @@ namespace Swarmops.Logic.Structure
             public int Order
             {
                 get { return this.order; }
+            }
+        }
+
+        public static Tree<Geography> Tree
+        {
+            get
+            {
+                const string cacheKey = "FullGeographyTree";
+
+                object testObject = GuidCache.Get(cacheKey);
+                if (testObject == null)
+                {
+                    Geographies geographies = Geography.Root.GetTree();
+                    Tree<Geography> geoTree = Tree<Geography>.FromCollection(geographies);
+
+                    GuidCache.Set(cacheKey, geoTree);
+                    return geoTree;
+                }
+                else
+                {
+                    return (Tree<Geography>)testObject;
+                }
             }
         }
     }

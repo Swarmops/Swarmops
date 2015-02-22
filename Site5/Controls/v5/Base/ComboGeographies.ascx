@@ -12,10 +12,18 @@
                            {
                                 Response.Write(this.OnClientLoaded + "(); ");
                            }%>
-                }<% 
+                },
+                loader: function (param, success, error) {
+                    if (!param.id) {
+                        $.getJSON("/Automation/Json-GeographiesTree.aspx?ParentGeographyId=<%=this.ParentGeographyId%>", null, success);
+                    } else {
+                        $.getJSON("/Automation/Json-GeographiesTree.aspx?InitialExpand=false&ParentGeographyId=" + param.id, null, success);
+                    }
+                }
+            <% 
                            if (!String.IsNullOrEmpty(this.OnClientSelect))
                            {
-                               Response.Write(", onSelect: function(account) { " + this.OnClientSelect + "(account.id); }");
+                               Response.Write(", onSelect: function(row) { " + this.OnClientSelect + "(row.id); }");
                            }
                            
                            %>
@@ -38,4 +46,4 @@
     });
  </script>
  
- <span id="<%=this.ClientID %>_SpanGeographies"><select class="easyui-combotree" url="/Automation/Json-GeographiesTree.aspx?RootGeographyId=<%=this.RootGeographyId %>" name="DropGeographies" id="<%=this.ClientID %>_DropGeographies" animate="true" style="width:300px"></select></span>
+ <span id="<%=this.ClientID %>_SpanGeographies"><select class="easyui-combotree" name="DropGeographies" id="<%=this.ClientID %>_DropGeographies" animate="true" style="width:300px"></select></span>

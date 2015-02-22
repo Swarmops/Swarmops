@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using Resources;
+using Swarmops.Common.Generics;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Automation
@@ -15,23 +16,27 @@ namespace Swarmops.Frontend.Automation
 
             Response.ContentType = "application/json";
 
-            int rootGeographyId = Geography.RootIdentity;
+            int parentGeographyId = 0;
 
-            // What's our root GeographyId? (probably Geography.RootIdentity...)
+            bool initialExpand = true;
 
-            string rootIdString = Request.QueryString["RootGeographyId"];
-            if (!string.IsNullOrEmpty (rootIdString))
+            if (Request.QueryString["InitialExpand"] == "false")
             {
-                rootGeographyId = Int32.Parse (rootIdString); // will throw if invalid Int32, but who cares
+                initialExpand = false;
+            }
+
+            string parentIdString = Request.QueryString["ParentGeographyId"];
+            if (!string.IsNullOrEmpty (parentIdString))
+            {
+                parentGeographyId = Int32.Parse (parentIdString); // will throw if invalid Int32, but who cares
             }
 
             // Is this stuff in cache already?
 
-            string cacheKey = "Geographies-Json-" + rootGeographyId.ToString (CultureInfo.InvariantCulture) + "-" +
+            string cacheKey = "Geographies-Json-" + parentGeographyId.ToString (CultureInfo.InvariantCulture) + "-" +
                               Thread.CurrentThread.CurrentCulture.Name;
 
-            string accountsJson =
-                (string) Cache[cacheKey];
+            string accountsJson = (string) Cache[cacheKey];
 
             if (accountsJson != null)
             {
@@ -42,51 +47,60 @@ namespace Swarmops.Frontend.Automation
 
             // Not in cache. Construct.
 
-            Geography rootGeography = Geography.FromIdentity (rootGeographyId);
+            _geoTree = Geographies.Tree;
+            Countries countries = Countries.GetAll();
+            _countryLookup = new Dictionary<int, Country>();
 
-            // Get geography tree
-
-            Geographies geographies = rootGeography.GetTree();
-
-            // Build tree (there should be a template for this)
-
-            Dictionary<int, List<Geography>> treeMap = new Dictionary<int, List<Geography>>();
-
-            foreach (Geography geography in geographies)
+            foreach (Country country in countries)
             {
-                if (!treeMap.ContainsKey (geography.ParentIdentity))
+                if (country.GeographyId > Geography.RootIdentity)
                 {
-                    treeMap[geography.ParentIdentity] = new List<Geography>();
+                    _countryLookup[country.GeographyId] = country;
                 }
-
-                treeMap[geography.ParentIdentity].Add (geography);
             }
 
-            int renderRootNodeId = rootGeography.ParentGeographyId;
-            // This works as rootGeography will be the only present child in the collection; other children won't be there
+            List<TreeNode<Geography>> rootNodes = _geoTree.RootNodes;
 
-            accountsJson = RecurseTreeMap (treeMap, renderRootNodeId, true);
+            if (parentGeographyId != 0)
+            {
+                rootNodes = _geoTree[parentGeographyId].Children;
+            }
 
-            Cache.Insert (cacheKey, accountsJson, null, DateTime.Now.AddMinutes (5), TimeSpan.Zero);
-            // cache lasts for five minutes, no sliding expiration
+            accountsJson = RecurseTreeMap (rootNodes, false);
+
+            Cache.Insert (cacheKey, accountsJson, null, DateTime.Now.AddMinutes (15), TimeSpan.Zero);
+            // cache lasts for fifteen minutes, no sliding expiration
             Response.Output.WriteLine (accountsJson);
 
             Response.End();
         }
 
-        private string RecurseTreeMap (Dictionary<int, List<Geography>> treeMap, int node, bool expanded)
+        private Tree<Geography> _geoTree;
+        private Dictionary<int, Country> _countryLookup;
+
+        private string RecurseTreeMap (List<TreeNode<Geography>> geoBranch, bool expanded)
         {
             List<string> elements = new List<string>();
 
-            foreach (Geography geography in treeMap[node])
+            foreach (TreeNode<Geography> geographyNode in geoBranch)
             {
+                Geography geography = geographyNode.Data;
+
                 string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
                     JsonSanitize (TestLocalization (geography.Name)));
 
-                if (treeMap.ContainsKey (geography.Identity))
+                if (_countryLookup.ContainsKey (geography.Identity))
+                {
+                    // this is a country node. Populate with stuff to enable lazy-load of the tree.
+                    Country country = _countryLookup[geography.Identity];
+
+                    element += ",\"children1\":\"\",\"state\":\"closed\"," +
+                    string.Format ("\"countryId\":\"{0}\",\"countryNode\":\"{1}\"", country.Code, geography.Identity);
+                } 
+                else if (geographyNode.Children.Count > 0)
                 {
                     element += ",\"state\":\"" + (expanded ? "open" : "closed") + "\",\"children\":" +
-                               RecurseTreeMap (treeMap, geography.Identity, false);
+                               RecurseTreeMap (geographyNode.Children, false);
                 }
 
                 elements.Add ("{" + element + "}");

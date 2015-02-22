@@ -44,7 +44,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site5", "Site5\", "{367F36E
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "1186"
+		VWDPort = "8081"
+		VWDDynamicPort = "false"
 		VWDVirtualPath = "/"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection

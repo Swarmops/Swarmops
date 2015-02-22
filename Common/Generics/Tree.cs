@@ -19,9 +19,9 @@ namespace Swarmops.Common.Generics
         public List<TreeNode<TNode>> RootNodes { get; private set; }
         private readonly Dictionary<int, TreeNode<TNode>> _nodeLookup;
 
-        public TNode this [int identity]
+        public TreeNode<TNode> this [int identity]
         {
-            get { return this._nodeLookup[identity].Data; }
+            get { return this._nodeLookup[identity]; }
         }
 
         public static Tree<TNode> FromCollection (List<TNode> collection)

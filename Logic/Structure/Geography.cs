@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Generics;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Interfaces;
@@ -178,5 +179,6 @@ namespace Swarmops.Logic.Structure
         {
             return SwarmDb.GetDatabaseForReading().GetGeographyDesignationsForGeographyId (Identity);
         }
+
     }
 }
