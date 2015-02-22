@@ -315,7 +315,7 @@ namespace Swarmops.Logic.DataObjects
             Geographies line = Geography.FromIdentity (org.AnchorGeographyId).GetLine();
             Geography[] arrLine = line.ToArray();
             Array.Reverse (arrLine);
-            Countries countries = Countries.GetAll();
+            Countries countries = Countries.All;
             int foundCntry = 1; //sweden
             foreach (Geography geo in arrLine)
             {

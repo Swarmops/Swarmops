@@ -42,7 +42,7 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
         private void Populate()
         {
-            Countries allCountries = Countries.GetAll();
+            Countries allCountries = Countries.All;
             this.DropCountries.Items.Clear();
 
             foreach (Country country in allCountries)

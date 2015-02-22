@@ -13,7 +13,7 @@ public class GetGeographyData : System.Web.Services.WebService
     [WebMethod]
     public Countries GetCountries()
     {
-        return Countries.GetAll();
+        return Countries.All;
     }
 
     [WebMethod]

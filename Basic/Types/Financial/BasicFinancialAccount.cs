@@ -3,7 +3,7 @@ using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.Financial
 {
-    public class BasicFinancialAccount : IHasIdentity
+    public class BasicFinancialAccount : IHasIdentity, IHasParentIdentity
     {
         public BasicFinancialAccount (int financialAccountId, string name, FinancialAccountType accountType,
             int organizationId, int parentFinancialAccountId, int ownerPersonId,
@@ -52,12 +52,10 @@ namespace Swarmops.Basic.Types.Financial
         public int LinkBackward { protected get; set; }
         public int LinkForward { protected get; set; }
 
-        #region IHasIdentity Members
+        #region Interface Members
 
-        public int Identity
-        {
-            get { return FinancialAccountId; }
-        }
+        public int Identity { get { return FinancialAccountId; } }
+        public int ParentIdentity { get { return ParentFinancialAccountId; } }
 
         #endregion
     }

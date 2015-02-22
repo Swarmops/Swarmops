@@ -2,16 +2,14 @@ using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.Structure
 {
-    public class BasicOrganization : IHasIdentity
+    public class BasicOrganization : IHasIdentity, IHasParentIdentity
     {
         private string nameShort;
 
-        #region IHasIdentity Members
+        #region Interface Members
 
-        public int Identity
-        {
-            get { return this.OrganizationId; }
-        }
+        public int Identity { get { return this.OrganizationId; } }
+        public int ParentIdentity { get { return this.ParentOrganizationId; } }
 
         #endregion
 

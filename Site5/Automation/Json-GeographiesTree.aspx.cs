@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Threading;
 using Resources;
 using Swarmops.Common.Generics;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Automation
@@ -48,15 +49,21 @@ namespace Swarmops.Frontend.Automation
             // Not in cache. Construct.
 
             _geoTree = Geographies.Tree;
-            Countries countries = Countries.GetAll();
-            _countryLookup = new Dictionary<int, Country>();
+            _countryLookup = (Dictionary<int, Country>) GuidCache.Get ("Json-GeographiesTree._countryLookup");
 
-            foreach (Country country in countries)
+            if (_countryLookup == null)
             {
-                if (country.GeographyId > Geography.RootIdentity)
+                Countries countries = Countries.All;
+                _countryLookup = new Dictionary<int, Country>();
+
+                foreach (Country country in countries)
                 {
-                    _countryLookup[country.GeographyId] = country;
+                    if (country.GeographyId > Geography.RootIdentity)
+                    {
+                        _countryLookup[country.GeographyId] = country;
+                    }
                 }
+                GuidCache.Set("Json-GeographiesTree._countryLookup", _countryLookup);
             }
 
             List<TreeNode<Geography>> rootNodes = _geoTree.RootNodes;
@@ -66,7 +73,7 @@ namespace Swarmops.Frontend.Automation
                 rootNodes = _geoTree[parentGeographyId].Children;
             }
 
-            accountsJson = RecurseTreeMap (rootNodes, false);
+            accountsJson = RecurseTreeMap (rootNodes, initialExpand);
 
             Cache.Insert (cacheKey, accountsJson, null, DateTime.Now.AddMinutes (15), TimeSpan.Zero);
             // cache lasts for fifteen minutes, no sliding expiration
@@ -86,8 +93,27 @@ namespace Swarmops.Frontend.Automation
             {
                 Geography geography = geographyNode.Data;
 
+                string geoName = TestLocalization (geography.Name);
+
+                if (_countryLookup.ContainsKey (geography.Identity))
+                {
+                    // Special case for country nodes: "[NativeName] ([LocalizedName])", e.g. "Deutschland (Tyskland)" for Germany when in Swedish
+
+                    string localizedCountryName = GeographyNames.ResourceManager.GetString("Country_" + _countryLookup[geography.Identity].Code);
+                    string nativeCountryName = geography.Name.Split ('(')[0].Trim();
+
+                    if (localizedCountryName != nativeCountryName)
+                    {
+                        geoName = nativeCountryName + " (" + localizedCountryName + ")";
+                    }
+                    else
+                    {
+                        geoName = nativeCountryName;
+                    }
+                }
+
                 string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
-                    JsonSanitize (TestLocalization (geography.Name)));
+                    JsonSanitize (TestLocalization (geoName)));
 
                 if (_countryLookup.ContainsKey (geography.Identity))
                 {

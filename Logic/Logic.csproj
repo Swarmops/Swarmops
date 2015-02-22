@@ -202,7 +202,6 @@
     <Compile Include="Financial\Salaries.cs" />
     <Compile Include="Financial\Salary.cs" />
     <Compile Include="Financial\TaxLevels.cs" />
-    <Compile Include="Interfaces\TreeNode.cs" />
     <Compile Include="Financial\ExpenseClaim.cs" />
     <Compile Include="Financial\FinancialAccount.cs" />
     <Compile Include="Financial\FinancialAccountRow.cs" />
