@@ -19,12 +19,7 @@ namespace Swarmops.Frontend.Automation
 
             int parentGeographyId = 0;
 
-            bool initialExpand = true;
-
-            if (Request.QueryString["InitialExpand"] == "false")
-            {
-                initialExpand = false;
-            }
+            bool initialExpand = (Request.QueryString["InitialExpand"] != "false");
 
             string parentIdString = Request.QueryString["ParentGeographyId"];
             if (!string.IsNullOrEmpty (parentIdString))
@@ -37,7 +32,7 @@ namespace Swarmops.Frontend.Automation
             string cacheKey = "Geographies-Json-" + parentGeographyId.ToString (CultureInfo.InvariantCulture) + "-" +
                               Thread.CurrentThread.CurrentCulture.Name;
 
-            string accountsJson = (string) Cache[cacheKey];
+            string accountsJson = null; // (string) Cache[cacheKey];
 
             if (accountsJson != null)
             {
@@ -92,6 +87,7 @@ namespace Swarmops.Frontend.Automation
             foreach (TreeNode<Geography> geographyNode in geoBranch)
             {
                 Geography geography = geographyNode.Data;
+                Country country = null;
 
                 string geoName = TestLocalization (geography.Name);
 
@@ -99,7 +95,8 @@ namespace Swarmops.Frontend.Automation
                 {
                     // Special case for country nodes: "[NativeName] ([LocalizedName])", e.g. "Deutschland (Tyskland)" for Germany when in Swedish
 
-                    string localizedCountryName = GeographyNames.ResourceManager.GetString("Country_" + _countryLookup[geography.Identity].Code);
+                    country = _countryLookup[geography.Identity];
+                    string localizedCountryName = GeographyNames.ResourceManager.GetString("Country_" + country.Code);
                     string nativeCountryName = geography.Name.Split ('(')[0].Trim();
 
                     if (localizedCountryName != nativeCountryName)
@@ -115,13 +112,15 @@ namespace Swarmops.Frontend.Automation
                 string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
                     JsonSanitize (TestLocalization (geoName)));
 
-                if (_countryLookup.ContainsKey (geography.Identity))
+                if (country != null)
                 {
-                    // this is a country node. Populate with stuff to enable lazy-load of the tree.
-                    Country country = _countryLookup[geography.Identity];
+                    // this is a country node. Populate with stuff to enable lazy-load of the tree at this point.
 
                     element += ",\"children1\":\"\",\"state\":\"closed\"," +
-                    string.Format ("\"countryId\":\"{0}\",\"countryNode\":\"{1}\"", country.Code, geography.Identity);
+                    string.Format ("\"countryId\":\"{0}\",\"countryNode\":\"{1}\"", country.Code.ToLowerInvariant(), geography.Identity);
+
+                    // Suppress icon to reaplce with flag
+                    element += ",\"iconCls\":\"countryNode\"";
                 } 
                 else if (geographyNode.Children.Count > 0)
                 {
