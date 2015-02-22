@@ -166,7 +166,7 @@
     <value>Sysadmin (Read/Write)</value>
   </data>
   <data name="Position_System_SysadminReadWrite_Plural" xml:space="preserve">
-    <value>Sysadmins (Read/write)</value>
+    <value>Sysadmins (Read/Write)</value>
   </data>
   <data name="Title_Activist_Corps" xml:space="preserve">
     <value>Activist Swarm</value>

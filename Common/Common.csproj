@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\DbEnumField.cs" />
+    <Compile Include="Attributes\DbRecordType.cs" />
     <Compile Include="Enums\AddressValidationResult.cs" />
     <Compile Include="Enums\AutoMailType.cs" />
     <Compile Include="Enums\CommunicationType.cs" />
@@ -63,12 +65,16 @@
     <Compile Include="Enums\PersonOptionalDataKey.cs" />
     <Compile Include="Enums\PoliticalAffiliation.cs" />
     <Compile Include="Enums\PositionLevel.cs" />
+    <Compile Include="Enums\PositionTitle.cs" />
     <Compile Include="Enums\PositionType.cs" />
     <Compile Include="Enums\RoleTypeClass.cs" />
+    <Compile Include="Generics\Tree.cs" />
     <Compile Include="Interfaces\IEmailPerson.cs" />
     <Compile Include="Interfaces\IHandleProvider.cs" />
     <Compile Include="Interfaces\IHasIdentities.cs" />
     <Compile Include="Interfaces\IHasIdentity.cs" />
+    <Compile Include="Interfaces\IHasSingularPluralTypes.cs" />
+    <Compile Include="Interfaces\IHasParentIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

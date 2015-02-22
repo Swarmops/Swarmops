@@ -9,7 +9,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
 {
-    public partial class EditOrganization : PageV5Base
+    public partial class OrgSettings : PageV5Base
     {
         protected void Page_Load (object sender, EventArgs e)
         {

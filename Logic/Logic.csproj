@@ -92,10 +92,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="App_GlobalResources\ParticipantTitles.Designer.cs">
+    <Compile Include="App_GlobalResources\LocalizedTitles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ParticipantTitles.resx</DependentUpon>
+      <DependentUpon>LocalizedTitles.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\Logic.Communications.Transmission.MailPayload.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -340,6 +340,9 @@
     <Compile Include="Swarm\Person.cs" />
     <Compile Include="Swarm\PersonRole.cs" />
     <Compile Include="Swarm\Position.cs" />
+    <Compile Include="Swarm\PositionAssignment.cs" />
+    <Compile Include="Swarm\PositionAssignments.cs" />
+    <Compile Include="Swarm\Positions.cs" />
     <Compile Include="Swarm\RoleLookup.cs" />
     <Compile Include="Swarm\Roles.cs" />
     <Compile Include="Swarm\Volunteer.cs" />
@@ -438,9 +441,9 @@
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Communications.Transmission.NotificationPayload.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Financial.FinancialTransactionTagSetTypesStock.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Swarm.DashboardTodos.nl-NL.resx" />
-    <EmbeddedResource Include="App_GlobalResources\ParticipantTitles.resx">
+    <EmbeddedResource Include="App_GlobalResources\LocalizedTitles.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ParticipantTitles.Designer.cs</LastGenOutput>
+      <LastGenOutput>LocalizedTitles.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Communications.Transmission.NotificationPayload.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Financial.FinancialTransactionTagSetTypesStock.pl-PL.resx" />

@@ -12,8 +12,8 @@ namespace Swarmops.Logic.Support
     public class DatabaseMaintenance
     {
         /// <summary>
-        ///     Feeds a newly-created database with an empty structure. Do not use on populated databases; it's like a Genesis
-        ///     Device.
+        ///     Feeds a newly-created database with an empty structure. Do not use on populated databases; 
+        ///     it's like a Genesis Device.
         /// </summary>
         public static void FirstInitialization()
         {

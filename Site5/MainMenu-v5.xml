@@ -422,7 +422,7 @@
             <UserLevel>4</UserLevel>
             <Permissions />
             <ImageUrl>iconshock-box-cog</ImageUrl>
-            <NavigateUrl>/Pages/v5/Admin/EditOrganization.aspx</NavigateUrl>
+            <NavigateUrl>/Pages/v5/Admin/OrgSettings.aspx</NavigateUrl>
             <Type>Link</Type>
             <Children />
           </MainMenuItem>
@@ -448,7 +448,7 @@
             <UserLevel>4</UserLevel>
             <Permissions />
             <ImageUrl>iconshock-battery-drill</ImageUrl>
-            <NavigateUrl>/Pages/v5/Admin/Settings.aspx</NavigateUrl>
+            <NavigateUrl>/Pages/v5/Admin/SystemSettings.aspx</NavigateUrl>
             <Type>Link</Type>
             <Children />
           </MainMenuItem>

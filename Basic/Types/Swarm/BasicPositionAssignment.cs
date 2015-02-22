@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.Swarm
 {
-    public class BasicPositionAssignment
+    public class BasicPositionAssignment: IHasIdentity
     {
         public BasicPositionAssignment (int positionAssignmentId, int organizationId, int geographyId, int positionId, int personId,
             DateTime createdDateTimeUtc, int createdByPersonId, int createdByPositionId, bool active, DateTime expiresDateTimeUtc,
@@ -53,5 +54,7 @@ namespace Swarmops.Basic.Types.Swarm
         public int TerminatedByPositionId { get; protected set; }
         public string AssignmentNotes { get; private set; }
         public string TerminationNotes { get; protected set; }
+
+        public int Identity { get { return this.PositionAssignmentId; } }
     }
 }

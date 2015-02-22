@@ -69,7 +69,6 @@
     <Compile Include="Database-Meetings.cs" />
     <Compile Include="Database-CommunicationTurnarounds.cs" />
     <Compile Include="Database-ExternalActivities.cs" />
-    <Compile Include="Database-Attribute.cs" />
     <Compile Include="Database-Ballots.cs" />
     <Compile Include="Database-ExternalIdentities.cs" />
     <Compile Include="Database-Conditions.cs" />

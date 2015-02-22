@@ -8,7 +8,7 @@ namespace Swarmops.Logic.Swarm
     {
         public static string Localized (ParticipantTitle title, TitleVariant variant = TitleVariant.Generic)
         {
-            return ParticipantTitles.ResourceManager.GetString ("Title_" + title + "_" + variant);
+            return LocalizedTitles.ResourceManager.GetString ("Title_" + title + "_" + variant);
         }
 
         public static string Localized (ParticipantTitle title, PersonGender gender)

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Swarmops.Common.Attributes;
+using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
-using Swarmops.Database.Attributes;
 
 namespace Swarmops.Database
 {
@@ -41,7 +43,7 @@ namespace Swarmops.Database
 
             foreach (object condition in conditionParameters)
             {
-                if (condition is IHasIdentities)
+                if (condition is IHasIdentities && condition is IHasSingularPluralTypes)
                 {
                     result.Add (GetWhereClauseForObjectList (condition as IHasIdentities));
                 }
@@ -62,13 +64,21 @@ namespace Swarmops.Database
                 }
                 else if (condition is object[]) // params object inherited and added to -- recurse
                 {
-                    List<string> recursed = ConstructWhereClauseRecurse (tableName, condition);
+                    // We're being passed an array as one of the arguments. This is a bit odd but we can handle that too.
 
-                    // copy one by one
-
-                    foreach (string recursedCondition in recursed)
+                    foreach (object partialCondition in (object[]) condition)
                     {
-                        result.Add (recursedCondition);
+                        result = result.Concat (ConstructWhereClauseRecurse (tableName, partialCondition)).ToList();
+                    }
+                }
+                else // iterate through attributes to find final hope of clue
+                {
+                    foreach (object attribute in condition.GetType().GetCustomAttributes (typeof (DbEnumField), true))
+                    {
+                        if (attribute is DbEnumField)
+                        {
+                            result.Add (tableName + "." + ((DbEnumField) attribute).FieldName + "=" + (int) condition);
+                        }
                     }
                 }
             }
@@ -120,30 +130,35 @@ namespace Swarmops.Database
                 identities = new int[1] {0};
             }
 
-            return " " + GetForeignTypeString (((List<IHasIdentity>) foreignObjects)[0]) + "Id IN (" +
+            if (!(foreignObjects is IHasSingularPluralTypes))
+            {
+                throw new ArgumentException("IHasIdentities object passed with missing IHasSingularPluralTypes interface");
+            }
+
+            return " " + GetForeignTypeString (((IHasSingularPluralTypes) foreignObjects).SingularType) + "Id IN (" +
                    JoinIds (identities) + ") ";
         }
 
 
         private static string GetForeignTypeString (IHasIdentity foreignObject)
         {
-            string typeString = "";
-            foreach (object attribute in foreignObject.GetType().GetCustomAttributes (typeof (DbRecordType), true))
+            return GetForeignTypeString (foreignObject.GetType());
+        }
+
+
+        private static string GetForeignTypeString (Type foreignObjectType)
+        {
+            string typeString = string.Empty;
+            foreach (object attribute in foreignObjectType.GetCustomAttributes (typeof (DbRecordType), true))
             {
                 if (attribute is DbRecordType)
                 {
                     typeString = ((DbRecordType) attribute).TypeName;
                 }
             }
-            if (typeString == "")
+            if (string.IsNullOrEmpty(typeString))
             {
-                typeString = foreignObject.GetType().ToString();
-
-                if (typeString.Contains ("."))
-                {
-                    int periodIndex = typeString.LastIndexOf ('.');
-                    typeString = typeString.Substring (periodIndex + 1);
-                }
+                typeString = foreignObjectType.Name;
             }
 
             return typeString;

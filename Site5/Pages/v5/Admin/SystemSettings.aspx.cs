@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Security;
@@ -13,10 +15,11 @@ using System.Text.RegularExpressions;
 using Swarmops.Frontend.Controls.v5.Base;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
 {
-    public partial class Settings : PageV5Base
+    public partial class SystemSettingsPage : PageV5Base // different classname to not collide with Logic.Structure.SystemSettings
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,8 +40,67 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 Localize();
             }
 
+            CheckSysadminsPopulated();
+
             RegisterControl (EasyUIControl.Tabs);
             RegisterControl (IncludedControl.JsonParameters | IncludedControl.SwitchButton);
+        }
+
+        private void CheckSysadminsPopulated()
+        {
+            Positions systemPositions = Positions.ForSystem();
+
+            if (systemPositions.Count == 0)
+            {
+                // not initalized. Initialize.
+
+                Positions.CreateSysadminPositions();
+                systemPositions = Positions.ForSystem();
+            }
+
+            PositionAssignments assignments = systemPositions.Assignments;
+            if (assignments.Count == 0)
+            {
+                // The positions exist, but nothing was assigned to them.
+                // Assign sysadmins as the org admins from org #1. (Grandfathering procedure.)
+
+                // This code can safely be removed once all the pilots can be certain to have run it.
+
+                Organization template = Organization.FromIdentity(1);
+                string readWriteIdsString = template.Parameters.TemporaryAccessListWrite;
+                string[] readWriteIdsArray = readWriteIdsString.Split(',');
+                string readOnlyIdsString = template.Parameters.TemporaryAccessListRead;
+                string[] readOnlyIdsArray = readWriteIdsString.Split(',');
+
+                Position rootSysadmin = Position.RootSysadmin;
+                rootSysadmin.Assign(Person.FromIdentity(Int32.Parse(readWriteIdsArray[0])), null /*assignedby*/, null /*assignedby*/,
+                    "Initial sysadmin", null /*does not expire*/);
+
+                Positions rootChildren = rootSysadmin.Children;
+                Position sysadminRW =
+                    rootChildren.Where (position => position.PositionType == PositionType.System_SysadminReadWrite).ToList() [0]; // should exist
+                Position sysadminAssistantRO =
+                    rootChildren.Where (
+                        position => position.PositionType == PositionType.System_SysadminAssistantReadOnly).ToList()[0];
+
+                for (int readWriteIndex = 1; readWriteIndex < readWriteIdsArray.Length; readWriteIndex++)
+                {
+                    sysadminRW.Assign (Person.FromIdentity (int.Parse (readWriteIdsArray[readWriteIndex])), 
+                        null /*assignedBy*/, null /*assignedBy*/,
+                        "Initial sysadmin", null /*does not expire*/);
+                }
+
+                foreach (string readOnlyPersonIdString in readOnlyIdsArray)
+                {
+                    if (readOnlyPersonIdString != "1")
+                    {
+                        sysadminAssistantRO.Assign (Person.FromIdentity (int.Parse (readOnlyPersonIdString)),
+                            null /*assignedBy*/, null /*assignedBy*/,
+                            "Initial sysadmin assistant", null /*does not expire*/);
+                    }
+                }
+            }
+
         }
 
         private static string FormatSmtpAccessString (string user, string pass, string host, int port)

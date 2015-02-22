@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Logic.Support
 {
-    public class PluralBase<TPlural, TSingular, TBasic> : List<TSingular>, IHasIdentities
+    public class PluralBase<TPlural, TSingular, TBasic> : List<TSingular>, IHasIdentities, IHasSingularPluralTypes
         where TPlural : PluralBase<TPlural, TSingular, TBasic>, new()
         where TBasic : IHasIdentity
         where TSingular : IHasIdentity
@@ -145,5 +146,8 @@ namespace Swarmops.Logic.Support
                 }
             }
         }
+
+        public Type SingularType { get { return typeof(TSingular); } }
+        public Type PluralType { get { return typeof(TPlural); } }
     }
 }
