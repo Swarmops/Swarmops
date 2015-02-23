@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common.Enums;
 
 namespace Swarmops.Logic.Financial
 {

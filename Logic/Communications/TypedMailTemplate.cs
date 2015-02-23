@@ -8,8 +8,8 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml.Serialization;
 using HtmlAgilityPack;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Media;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -19,8 +19,8 @@ namespace Swarmops.Logic.Communications
 {
     public class TypedMailTemplate
     {
-        private SerializableDictionary<string, PlaceHolder> placeholders =
-            new SerializableDictionary<string, PlaceHolder>();
+        private Basic.Types.Common.SerializableDictionary<string, PlaceHolder> placeholders =
+            new Basic.Types.Common.SerializableDictionary<string, PlaceHolder>();
 
         private MailTemplate template;
         private TemplateType templatetype = TemplateType.None;
@@ -254,7 +254,7 @@ namespace Swarmops.Logic.Communications
         /// <summary>
         ///     Dictionary of placeholders
         /// </summary>
-        public SerializableDictionary<string, PlaceHolder> Placeholders
+        public Basic.Types.Common.SerializableDictionary<string, PlaceHolder> Placeholders
         {
             get { return this.placeholders; }
             internal set { this.placeholders = value; }
@@ -473,10 +473,10 @@ namespace Swarmops.Logic.Communications
         protected void DeserializePlaceHolders (string content)
         {
             XmlSerializer s = new XmlSerializer (Placeholders.GetType());
-            SerializableDictionary<string, PlaceHolder> tempPlaceHolders =
-                new SerializableDictionary<string, PlaceHolder>();
+            Basic.Types.Common.SerializableDictionary<string, PlaceHolder> tempPlaceHolders =
+                new Basic.Types.Common.SerializableDictionary<string, PlaceHolder>();
             TextReader r = new StringReader (content);
-            tempPlaceHolders = (SerializableDictionary<string, PlaceHolder>) s.Deserialize (r);
+            tempPlaceHolders = (Basic.Types.Common.SerializableDictionary<string, PlaceHolder>) s.Deserialize (r);
             r.Close();
 
             foreach (PlaceHolder ph in Placeholders.Values)

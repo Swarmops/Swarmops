@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Resources;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 

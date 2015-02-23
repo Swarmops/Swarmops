@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Resources;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 

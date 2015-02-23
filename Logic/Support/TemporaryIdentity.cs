@@ -1,4 +1,4 @@
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Interfaces;
 using Swarmops.Database;
 
 namespace Swarmops.Logic.Support

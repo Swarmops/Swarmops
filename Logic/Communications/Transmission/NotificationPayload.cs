@@ -103,6 +103,7 @@ namespace Swarmops.Logic.Communications.Transmission
         System_Startup,
         System_Exception,
         System_DatabaseSchemaUpgraded,
+        System_DatabaseUpgradeFailed,
         System_MailServerTest,
         CashAdvance_Requested,
         CashAdvance_Attested,
@@ -152,7 +153,7 @@ namespace Swarmops.Logic.Communications.Transmission
     }
 
     [Serializable]
-    public class NotificationStrings : SerializableDictionary<NotificationString, string>
+    public class NotificationStrings : Basic.Types.Common.SerializableDictionary<NotificationString, string>
     {
         // typeset
     }

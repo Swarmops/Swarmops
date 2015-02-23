@@ -11,7 +11,7 @@ using System.Text;
 using System.Web;
 using MySql.Data.MySqlClient;
 using Swarmops.Basic.Diagnostics;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 

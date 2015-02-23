@@ -1,6 +1,7 @@
 using System;
 using NBitcoin;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 
 namespace Swarmops.Logic.Financial

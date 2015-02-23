@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBF83512-8486-469E-9D7B-C3C1B78C3F4D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Swarmops.Common</RootNamespace>
+    <AssemblyName>Swarmops.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Site5\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Site5\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\DbEnumField.cs" />
+    <Compile Include="Attributes\DbRecordType.cs" />
+    <Compile Include="Enums\AddressValidationResult.cs" />
+    <Compile Include="Enums\AutoMailType.cs" />
+    <Compile Include="Enums\CommunicationType.cs" />
+    <Compile Include="Enums\DocumentType.cs" />
+    <Compile Include="Enums\EventTypeSource.cs" />
+    <Compile Include="Enums\ExpenseEventType.cs" />
+    <Compile Include="Enums\ExternalActivityType.cs" />
+    <Compile Include="Enums\ExternalIdentityType.cs" />
+    <Compile Include="Enums\FinancialAccountType.cs" />
+    <Compile Include="Enums\FinancialDependencyType.cs" />
+    <Compile Include="Enums\FinancialValidationType.cs" />
+    <Compile Include="Enums\GeographyLevel.cs" />
+    <Compile Include="Enums\InvalidMembershipType.cs" />
+    <Compile Include="Enums\MailAuthorType.cs" />
+    <Compile Include="Enums\MembershipPaymentStatus.cs" />
+    <Compile Include="Enums\ObjectOptionalDataType.cs" />
+    <Compile Include="Enums\OrganizationFinancialAccountType.cs" />
+    <Compile Include="Enums\OutboundCommPriority.cs" />
+    <Compile Include="Enums\PaymentCodeIssueType.cs" />
+    <Compile Include="Enums\PermissionEnum.cs" />
+    <Compile Include="Enums\PersonGender.cs" />
+    <Compile Include="Enums\PersonOptionalDataKey.cs" />
+    <Compile Include="Enums\PoliticalAffiliation.cs" />
+    <Compile Include="Enums\PositionLevel.cs" />
+    <Compile Include="Enums\PositionTitle.cs" />
+    <Compile Include="Enums\PositionType.cs" />
+    <Compile Include="Enums\RoleTypeClass.cs" />
+    <Compile Include="Generics\Tree.cs" />
+    <Compile Include="Interfaces\IEmailPerson.cs" />
+    <Compile Include="Interfaces\IHandleProvider.cs" />
+    <Compile Include="Interfaces\IHasIdentities.cs" />
+    <Compile Include="Interfaces\IHasIdentity.cs" />
+    <Compile Include="Interfaces\IHasSingularPluralTypes.cs" />
+    <Compile Include="Interfaces\IHasParentIdentity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

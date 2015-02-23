@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using Resources;
+using Swarmops.Common.Generics;
+using Swarmops.Logic.Cache;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Automation
@@ -15,23 +17,22 @@ namespace Swarmops.Frontend.Automation
 
             Response.ContentType = "application/json";
 
-            int rootGeographyId = Geography.RootIdentity;
+            int parentGeographyId = 0;
 
-            // What's our root GeographyId? (probably Geography.RootIdentity...)
+            bool initialExpand = (Request.QueryString["InitialExpand"] != "false");
 
-            string rootIdString = Request.QueryString["RootGeographyId"];
-            if (!string.IsNullOrEmpty (rootIdString))
+            string parentIdString = Request.QueryString["ParentGeographyId"];
+            if (!string.IsNullOrEmpty (parentIdString))
             {
-                rootGeographyId = Int32.Parse (rootIdString); // will throw if invalid Int32, but who cares
+                parentGeographyId = Int32.Parse (parentIdString); // will throw if invalid Int32, but who cares
             }
 
             // Is this stuff in cache already?
 
-            string cacheKey = "Geographies-Json-" + rootGeographyId.ToString (CultureInfo.InvariantCulture) + "-" +
+            string cacheKey = "Geographies-Json-" + parentGeographyId.ToString (CultureInfo.InvariantCulture) + "-" +
                               Thread.CurrentThread.CurrentCulture.Name;
 
-            string accountsJson =
-                (string) Cache[cacheKey];
+            string accountsJson =(string) Cache[cacheKey];
 
             if (accountsJson != null)
             {
@@ -42,51 +43,89 @@ namespace Swarmops.Frontend.Automation
 
             // Not in cache. Construct.
 
-            Geography rootGeography = Geography.FromIdentity (rootGeographyId);
+            _geoTree = Geographies.Tree;
+            _countryLookup = (Dictionary<int, Country>) GuidCache.Get ("Json-GeographiesTree._countryLookup");
 
-            // Get geography tree
-
-            Geographies geographies = rootGeography.GetTree();
-
-            // Build tree (there should be a template for this)
-
-            Dictionary<int, List<Geography>> treeMap = new Dictionary<int, List<Geography>>();
-
-            foreach (Geography geography in geographies)
+            if (_countryLookup == null)
             {
-                if (!treeMap.ContainsKey (geography.ParentIdentity))
-                {
-                    treeMap[geography.ParentIdentity] = new List<Geography>();
-                }
+                Countries countries = Countries.All;
+                _countryLookup = new Dictionary<int, Country>();
 
-                treeMap[geography.ParentIdentity].Add (geography);
+                foreach (Country country in countries)
+                {
+                    if (country.GeographyId > Geography.RootIdentity)
+                    {
+                        _countryLookup[country.GeographyId] = country;
+                    }
+                }
+                GuidCache.Set("Json-GeographiesTree._countryLookup", _countryLookup);
             }
 
-            int renderRootNodeId = rootGeography.ParentGeographyId;
-            // This works as rootGeography will be the only present child in the collection; other children won't be there
+            List<TreeNode<Geography>> rootNodes = _geoTree.RootNodes;
 
-            accountsJson = RecurseTreeMap (treeMap, renderRootNodeId, true);
+            if (parentGeographyId != 0)
+            {
+                rootNodes = _geoTree[parentGeographyId].Children;
+            }
 
-            Cache.Insert (cacheKey, accountsJson, null, DateTime.Now.AddMinutes (5), TimeSpan.Zero);
-            // cache lasts for five minutes, no sliding expiration
+            accountsJson = RecurseTreeMap (rootNodes, initialExpand);
+
+            Cache.Insert (cacheKey, accountsJson, null, DateTime.Now.AddMinutes (15), TimeSpan.Zero);
+            // cache lasts for fifteen minutes, no sliding expiration
             Response.Output.WriteLine (accountsJson);
 
             Response.End();
         }
 
-        private string RecurseTreeMap (Dictionary<int, List<Geography>> treeMap, int node, bool expanded)
+        private Tree<Geography> _geoTree;
+        private Dictionary<int, Country> _countryLookup;
+
+        private string RecurseTreeMap (List<TreeNode<Geography>> geoBranch, bool expanded)
         {
             List<string> elements = new List<string>();
 
-            foreach (Geography geography in treeMap[node])
+            foreach (TreeNode<Geography> geographyNode in geoBranch)
             {
-                string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
-                    JsonSanitize (TestLocalization (geography.Name)));
+                Geography geography = geographyNode.Data;
+                Country country = null;
 
-                if (treeMap.ContainsKey (geography.Identity))
+                string geoName = TestLocalization (geography.Name);
+
+                if (_countryLookup.ContainsKey (geography.Identity))
+                {
+                    // Special case for country nodes: "[NativeName] ([LocalizedName])", e.g. "Deutschland (Tyskland)" for Germany when in Swedish
+
+                    country = _countryLookup[geography.Identity];
+                    string localizedCountryName = GeographyNames.ResourceManager.GetString("Country_" + country.Code);
+                    string nativeCountryName = geography.Name.Split ('(')[0].Trim();
+
+                    if (localizedCountryName != nativeCountryName)
+                    {
+                        geoName = nativeCountryName + " (" + localizedCountryName + ")";
+                    }
+                    else
+                    {
+                        geoName = nativeCountryName;
+                    }
+                }
+
+                string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
+                    JsonSanitize (TestLocalization (geoName)));
+
+                if (country != null)
+                {
+                    // this is a country node. Populate with stuff to enable lazy-load of the tree at this point.
+
+                    element += ",\"children1\":\"\",\"state\":\"closed\"," +
+                    string.Format ("\"countryId\":\"{0}\",\"countryNode\":\"{1}\"", country.Code.ToLowerInvariant(), geography.Identity);
+
+                    // Suppress icon to reaplce with flag
+                    element += ",\"iconCls\":\"countryNode\"";
+                } 
+                else if (geographyNode.Children.Count > 0)
                 {
                     element += ",\"state\":\"" + (expanded ? "open" : "closed") + "\",\"children\":" +
-                               RecurseTreeMap (treeMap, geography.Identity, false);
+                               RecurseTreeMap (geographyNode.Children, false);
                 }
 
                 elements.Add ("{" + element + "}");

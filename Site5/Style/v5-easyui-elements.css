@@ -127,6 +127,10 @@ div.combobox-item {
 }
 
 
+.tree-icon.tree-folder.countryNode {
+    display: none; /* suppress display of node, when country flag is displayed */
+}
+
 
 /* TABS */
 

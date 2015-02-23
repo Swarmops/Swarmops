@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
+using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 using Swarmops.Database;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -10,7 +12,7 @@ using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Swarm
 {
-    public class People : List<Person>
+    public class People : List<Person>, IHasIdentities, IHasSingularPluralTypes
     {
         public int[] Identities
         {
@@ -530,5 +532,8 @@ namespace Swarmops.Logic.Swarm
 
             return result;
         }
+
+        public Type SingularType { get { return typeof(Person); } }
+        public Type PluralType { get { return typeof(People); } }
     }
 }

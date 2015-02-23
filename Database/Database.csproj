@@ -15,7 +15,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -69,7 +69,6 @@
     <Compile Include="Database-Meetings.cs" />
     <Compile Include="Database-CommunicationTurnarounds.cs" />
     <Compile Include="Database-ExternalActivities.cs" />
-    <Compile Include="Database-Attribute.cs" />
     <Compile Include="Database-Ballots.cs" />
     <Compile Include="Database-ExternalIdentities.cs" />
     <Compile Include="Database-Conditions.cs" />
@@ -116,6 +115,7 @@
     <Compile Include="Database-PayrollAdjustments.cs" />
     <Compile Include="Database-People.cs" />
     <Compile Include="Database-PirateWebLog.cs" />
+    <Compile Include="Database-Positions.cs" />
     <Compile Include="Database-PostalCodes.cs" />
     <Compile Include="Database-PostalCodesCities.cs" />
     <Compile Include="Database-Refunds.cs" />
@@ -141,6 +141,10 @@
     <ProjectReference Include="..\Basic\Basic.csproj">
       <Project>{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}</Project>
       <Name>Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{bbf83512-8486-469e-9d7b-c3c1b78c3f4d}</Project>
+      <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />

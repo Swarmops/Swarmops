@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Resources.Pages;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 
 public partial class Pages_v5_Ledgers_Csv_BalanceData : DataV5Base

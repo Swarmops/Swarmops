@@ -511,6 +511,28 @@ namespace Swarmops.Logic.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Swarmops Backend [SwarmopsVersion] on Host [Hostname] has FAILED in upgrading the Swarmops database. This is usually due to a transient external network error, causing the patch file retrieval to fail.
+        ///
+        ///We are currently at database schema revision [DbVersion], but are trying to upgrade to [DbVersionExpected].
+        ///
+        ///The upgrade will be retried every hour. Some functionality may be disabled until the database has been upgraded. If you want to troubleshoot manually, the database upgrade packages are retrieved f [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string System_DatabaseUpgradeFailed_Body {
+            get {
+                return ResourceManager.GetString("System_DatabaseUpgradeFailed_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops database upgrade FAILED.
+        /// </summary>
+        internal static string System_DatabaseUpgradeFailed_Subject {
+            get {
+                return ResourceManager.GetString("System_DatabaseUpgradeFailed_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unhandled exception was thrown in Swarmops:
         ///
         ///[EmbeddedPreformattedText].

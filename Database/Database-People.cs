@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
+using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common.Enums;
 
 namespace Swarmops.Database
 {

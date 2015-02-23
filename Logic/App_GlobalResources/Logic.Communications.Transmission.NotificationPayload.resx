@@ -308,6 +308,16 @@ This is for information only. You do not need to take action.</value>
   <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
     <value>Swarmops database upgraded</value>
   </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Swarmops Backend [SwarmopsVersion] on Host [Hostname] has FAILED in upgrading the Swarmops database. This is usually due to a transient external network error, causing the patch file retrieval to fail.
+
+We are currently at database schema revision [DbVersion], but are trying to upgrade to [DbVersionExpected].
+
+The upgrade will be retried every hour. Some functionality may be disabled until the database has been upgraded. If you want to troubleshoot manually, the database upgrade packages are retrieved from packages.swarmops.com, the same place where apt-get fetches its software packages.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Swarmops database upgrade FAILED</value>
+  </data>
   <data name="System_Exception_Body" xml:space="preserve">
     <value>An unhandled exception was thrown in Swarmops:
 

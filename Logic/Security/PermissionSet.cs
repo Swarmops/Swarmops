@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 
 namespace Swarmops.Logic.Security
 {

@@ -550,8 +550,14 @@
     <value>حدث خطأ عام وغير محدد أثناء الاتصال مع خادم نظام سوارموبس. هل ما زالت الشكبة متصلة والخادم متوافراً؟</value>
   </data>
   
+  <data name="Global_View" xml:space="preserve">
+    <value>عرض</value>
+    <comment>As in "inspect"</comment>
+  </data>
   
-  
+  <data name="Global_YearMonth" xml:space="preserve">
+    <value>السنة/الشهر</value>
+  </data>
   
   
 </root>

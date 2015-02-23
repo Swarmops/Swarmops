@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.System;
 using Swarmops.Database;
 using Swarmops.Logic.Swarm;
 

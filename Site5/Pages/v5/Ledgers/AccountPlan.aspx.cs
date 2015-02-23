@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Web;
 using System.Web.Services;
 using Resources;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -97,8 +97,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);
             DbVersionRequired = 2; // Account reparenting
 
-            EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
-            IncludedControlsUsed |= IncludedControl.SwitchButton | IncludedControl.JsonParameters;
+            RegisterControl (EasyUIControl.DataGrid | EasyUIControl.Tree);
+            RegisterControl (IncludedControl.SwitchButton);
         }
 
 

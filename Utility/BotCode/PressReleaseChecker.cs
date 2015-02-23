@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using NRss;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Media;
 using Swarmops.Logic.Structure;

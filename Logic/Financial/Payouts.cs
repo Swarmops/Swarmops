@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -413,6 +414,14 @@ namespace Swarmops.Logic.Financial
 
                         payoutLowerTimeLimit = transaction.DateTime.AddDays (-60);
                         payoutUpperTimeLimit = transaction.DateTime.AddDays (60);
+                    }
+
+                    // HACK: Allow for up to 20 days beyond scheduled payment to catch tax payments
+
+                    if (payout.DependentSalariesTax.Count > 0)
+                    {
+                        payoutLowerTimeLimit = transaction.DateTime.AddDays (-25);
+                        payoutUpperTimeLimit = transaction.DateTime.AddDays (3); // nobody pays taxes early...
                     }
 
                     if (payout.ExpectedTransactionDate >= payoutLowerTimeLimit &&

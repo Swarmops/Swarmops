@@ -1,6 +1,7 @@
 using System;
 using System.Data.Common;
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Security;
 
 namespace Swarmops.Database
 {

@@ -75,7 +75,7 @@ namespace Swarmops.Controls.Base
             if (menuItem.Type == MenuItemType.BuildNumber)
             {
                 localizedText = Swarmops.Logic.Support.Formatting.SwarmopsVersion;
-                cssClass = " class=\"buildId\"";
+                cssClass = " dir=\"ltr\"";
             }
 
             string iconSize = "40px";

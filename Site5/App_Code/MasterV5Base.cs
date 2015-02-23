@@ -27,6 +27,13 @@ public class MasterV5Base : MasterPage
     public IncludedControl IncludedControlsUsed { get; set; } // as above with IncludedScripts control
     // ReSharper restore InconsistentNaming
 
+
+    public MasterV5Base()
+    {
+        IncludedControlsUsed = IncludedControl.JsonParameters; // Include this by default to reduce errors
+    }
+
+
     public DateTime PermissionCacheTimestamp
     {
         get

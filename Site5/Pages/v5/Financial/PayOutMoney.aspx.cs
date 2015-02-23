@@ -2,7 +2,7 @@
 using System.ServiceModel.Security;
 using System.Web;
 using System.Web.Services;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -26,7 +26,7 @@ namespace Swarmops.Frontend.Pages.Financial
                 Localize();
             }
 
-            EasyUIControlsUsed = EasyUIControl.DataGrid;
+            RegisterControl (EasyUIControl.DataGrid);
         }
 
         private void Localize()

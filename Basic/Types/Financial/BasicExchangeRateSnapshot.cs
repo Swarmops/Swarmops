@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.Financial
 {

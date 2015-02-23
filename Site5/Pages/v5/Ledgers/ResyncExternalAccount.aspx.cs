@@ -10,8 +10,8 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using Resources;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -75,7 +75,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 Localize();
             }
 
-            EasyUIControlsUsed = EasyUIControl.DataGrid | EasyUIControl.Tree;
+            RegisterControl (EasyUIControl.DataGrid | EasyUIControl.Tree);
         }
 
 

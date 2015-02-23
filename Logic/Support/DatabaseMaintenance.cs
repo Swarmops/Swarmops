@@ -12,8 +12,8 @@ namespace Swarmops.Logic.Support
     public class DatabaseMaintenance
     {
         /// <summary>
-        ///     Feeds a newly-created database with an empty structure. Do not use on populated databases; it's like a Genesis
-        ///     Device.
+        ///     Feeds a newly-created database with an empty structure. Do not use on populated databases; 
+        ///     it's like a Genesis Device.
         /// </summary>
         public static void FirstInitialization()
         {
@@ -71,9 +71,18 @@ namespace Swarmops.Logic.Support
                 string fileName = String.Format ("http://packages.swarmops.com/schemata/upgrade-{0:D4}.sql",
                     currentDbVersion);
 
-                using (WebClient client = new WebClient())
+                try
                 {
-                    sql = client.DownloadString (fileName);
+                    using (WebClient client = new WebClient())
+                    {
+                        sql = client.DownloadString (fileName);
+                    }
+                }
+                catch (Exception)
+                {
+                    OutboundComm.CreateNotification (null, NotificationResource.System_DatabaseUpgradeFailed);
+
+                    return;
                 }
 
                 string[] sqlCommands = sql.Split ('#');
@@ -83,12 +92,14 @@ namespace Swarmops.Logic.Support
                 {
                     try
                     {
-                        SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand (sqlCommand.Trim());
+                        SwarmDb.GetDatabaseForAdmin().ExecuteAdminCommand (sqlCommand.Trim().TrimEnd (';'));  // removes whitespace first, then any ; at the end (if left in by mistake)
                     }
                     catch (MySqlException exception)
                     {
                         SwarmDb.GetDatabaseForWriting()
-                            .CreateExceptionLogEntry (DateTime.UtcNow, "DatabaseUpgrade", exception);
+                            .CreateExceptionLogEntry (DateTime.UtcNow, "DatabaseUpgrade",
+                                new Exception (string.Format ("Exception upgrading to Db{0:D4}", currentDbVersion),
+                                    exception));
 
                         // Continue processing after logging error.
                         // TODO: Throw and abort? Tricky decision

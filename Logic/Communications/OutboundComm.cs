@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types.Communications;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Financial;

@@ -1,15 +1,14 @@
 using System;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
-using Swarmops.Logic.Interfaces;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class FinancialAccount : BasicFinancialAccount, ITreeNode, IOwnerSettable
+    public class FinancialAccount : BasicFinancialAccount, IOwnerSettable
     {
         private FinancialAccount (BasicFinancialAccount basic)
             : base (basic)
@@ -214,8 +213,6 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        #region ITreeNode Members
-
         private ObjectOptionalData _optionalData;
 
         public Geography AssignedGeography
@@ -269,17 +266,10 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public int ParentIdentity
-        {
-            get { return ParentFinancialAccountId; }
-        }
-
         public int[] ChildrenIdentities
         {
             get { return Children.Identities; }
         }
-
-        #endregion
 
         #region IOwnerSettable members
 

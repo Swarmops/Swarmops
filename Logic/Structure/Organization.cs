@@ -4,20 +4,20 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
+using Swarmops.Basic.Types.Swarm;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
-using Swarmops.Logic.Interfaces;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Structure
 {
-    public class Organization : BasicOrganization, ITreeNode, IComparable, ITreeNodeObject
+    public class Organization : BasicOrganization, IComparable
     {
         #region Creation and Construction
 
@@ -131,36 +131,6 @@ namespace Swarmops.Logic.Structure
 
         #endregion
 
-        #region ITreeNode Members
-
-        public int ParentIdentity
-        {
-            get { return ParentOrganizationId; }
-        }
-
-
-        public int[] ChildrenIdentities
-        {
-            get { return Children.Identities; }
-        }
-
-        public ITreeNodeObject ParentObject
-        {
-            get { return Parent; }
-        }
-
-        public List<ITreeNodeObject> ChildObjects
-        {
-            get
-            {
-                List<ITreeNodeObject> retVal = new List<ITreeNodeObject>();
-                foreach (Organization child in Children)
-                    retVal.Add (child);
-                return retVal;
-            }
-        }
-
-        #endregion
 
         private ObjectOptionalData OptionalData
         {

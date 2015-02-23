@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
+using Swarmops.Common.Enums;
+using Swarmops.Common.Generics;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
-using Swarmops.Logic.Interfaces;
 
 namespace Swarmops.Logic.Structure
 {
     [Serializable]
-    public class Geography : BasicGeography, ITreeNode, ITreeNodeObject
+    public class Geography : BasicGeography
     {
         #region Construction and Creation
 
@@ -63,45 +63,8 @@ namespace Swarmops.Logic.Structure
 
         public static readonly int RootIdentity = 1; // The identity of the root geography (i.e., "World")
 
-        public static readonly int SwedenId = 30;
-        public static readonly int DenmarkId = 357;
-        public static readonly int FinlandId = 358;
-
         public static readonly int IgnoreGeography = -1; // Used as parameter to methods where geography is optional
 
-        #region ITreeNode Members
-
-        public int ParentIdentity
-        {
-            get { return ParentGeographyId; }
-        }
-
-        public int[] ChildrenIdentities
-        {
-            get { return Children.Identities; }
-        }
-
-        [XmlIgnore] // interface cannot be serialized
-        [SoapIgnore]
-        public ITreeNodeObject ParentObject
-        {
-            get { return Parent; }
-        }
-
-        [XmlIgnore] // interface cannot be serialized
-        [SoapIgnore]
-        public List<ITreeNodeObject> ChildObjects
-        {
-            get
-            {
-                List<ITreeNodeObject> retVal = new List<ITreeNodeObject>();
-                foreach (Geography child in Children)
-                    retVal.Add (child);
-                return retVal;
-            }
-        }
-
-        #endregion
 
         public Geographies Children
         {
@@ -178,5 +141,6 @@ namespace Swarmops.Logic.Structure
         {
             return SwarmDb.GetDatabaseForReading().GetGeographyDesignationsForGeographyId (Identity);
         }
+
     }
 }

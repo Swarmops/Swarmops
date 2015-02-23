@@ -1,8 +1,8 @@
 using System;
 using System.Data;
 using System.Data.Common;
-using Swarmops.Basic.Enums;
 using Swarmops.Basic.Types.Communications;
+using Swarmops.Common.Enums;
 
 namespace Swarmops.Database
 {

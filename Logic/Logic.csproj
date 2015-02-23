@@ -92,10 +92,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="App_GlobalResources\ParticipantTitles.Designer.cs">
+    <Compile Include="App_GlobalResources\LocalizedTitles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ParticipantTitles.resx</DependentUpon>
+      <DependentUpon>LocalizedTitles.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\Logic.Communications.Transmission.MailPayload.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -202,7 +202,6 @@
     <Compile Include="Financial\Salaries.cs" />
     <Compile Include="Financial\Salary.cs" />
     <Compile Include="Financial\TaxLevels.cs" />
-    <Compile Include="Interfaces\TreeNode.cs" />
     <Compile Include="Financial\ExpenseClaim.cs" />
     <Compile Include="Financial\FinancialAccount.cs" />
     <Compile Include="Financial\FinancialAccountRow.cs" />
@@ -339,6 +338,10 @@
     <Compile Include="Swarm\People.cs" />
     <Compile Include="Swarm\Person.cs" />
     <Compile Include="Swarm\PersonRole.cs" />
+    <Compile Include="Swarm\Position.cs" />
+    <Compile Include="Swarm\PositionAssignment.cs" />
+    <Compile Include="Swarm\PositionAssignments.cs" />
+    <Compile Include="Swarm\Positions.cs" />
     <Compile Include="Swarm\RoleLookup.cs" />
     <Compile Include="Swarm\Roles.cs" />
     <Compile Include="Swarm\Volunteer.cs" />
@@ -362,6 +365,10 @@
       <Project>{6608C2E6-F841-4CD1-8AB2-28DC3B1DDDD1}</Project>
       <Name>Basic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{bbf83512-8486-469e-9d7b-c3c1b78c3f4d}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Database\Database.csproj">
       <Project>{3A5B5F19-51A5-48CE-A82E-97D5C189E5CB}</Project>
       <Name>Database</Name>
@@ -383,6 +390,12 @@
     <EmbeddedResource Include="App_GlobalResources\de-DE\Logic.Communications.Transmission.NotificationPayload.de-DE.resx" />
     <EmbeddedResource Include="App_GlobalResources\de-DE\Logic.Financial.FinancialTransactionTagSetTypesStock.de-DE.resx" />
     <EmbeddedResource Include="App_GlobalResources\de-DE\Logic.Swarm.DashboardTodos.de-DE.resx" />
+    <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Communications.Transmission.DefaultCommTemplates.el-GR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Communications.Transmission.MailPayload.el-GR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Communications.Transmission.NotificationPayload.el-GR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Financial.FinancialTransactionTagSetTypesStock.el-GR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Swarm.DashboardTodos.el-GR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\el-GR\ParticipantTitles.el-GR.resx" />
     <EmbeddedResource Include="App_GlobalResources\es-ES\Logic.Communications.Transmission.NotificationPayload.es-ES.resx" />
     <EmbeddedResource Include="App_GlobalResources\es-ES\Logic.Financial.FinancialTransactionTagSetTypesStock.es-ES.resx" />
     <EmbeddedResource Include="App_GlobalResources\es-ES\Logic.Swarm.DashboardTodos.es-ES.resx" />
@@ -427,9 +440,9 @@
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Communications.Transmission.NotificationPayload.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Financial.FinancialTransactionTagSetTypesStock.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Swarm.DashboardTodos.nl-NL.resx" />
-    <EmbeddedResource Include="App_GlobalResources\ParticipantTitles.resx">
+    <EmbeddedResource Include="App_GlobalResources\LocalizedTitles.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ParticipantTitles.Designer.cs</LastGenOutput>
+      <LastGenOutput>LocalizedTitles.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Communications.Transmission.NotificationPayload.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Financial.FinancialTransactionTagSetTypesStock.pl-PL.resx" />

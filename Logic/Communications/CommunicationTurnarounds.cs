@@ -1,4 +1,5 @@
 using Swarmops.Basic.Types;
+using Swarmops.Basic.Types.Communications;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;

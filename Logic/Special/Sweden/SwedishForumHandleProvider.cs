@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
-using Swarmops.Basic.Enums;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Special.Sweden

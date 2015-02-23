@@ -1,5 +1,5 @@
 using System;
-using Swarmops.Basic.Interfaces;
+using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.Structure
 {
@@ -7,7 +7,7 @@ namespace Swarmops.Basic.Types.Structure
     ///     A geographical node.
     /// </summary>
     [Serializable]
-    public class BasicGeography : IHasIdentity
+    public class BasicGeography : IHasIdentity, IHasParentIdentity
     {
         public BasicGeography (int geographyId, int parentGeographyId, string name)
             : this (geographyId, parentGeographyId, name, 0)
@@ -53,12 +53,10 @@ namespace Swarmops.Basic.Types.Structure
         /// </summary>
         public int Generation { get; protected set; }
 
-        #region IHasIdentity Members
+        #region Interface Members
 
-        public int Identity
-        {
-            get { return this.GeographyId; }
-        }
+        public int Identity { get { return this.GeographyId; } }
+        public int ParentIdentity { get { return this.ParentGeographyId; }}
 
         #endregion
     }

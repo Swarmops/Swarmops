@@ -1,6 +1,6 @@
 using System;
 using System.Data.Common;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Swarm;
 

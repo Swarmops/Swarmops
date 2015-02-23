@@ -4,7 +4,7 @@ using System.Runtime.Versioning;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Resources;
-using Swarmops.Basic.Enums;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Security;
@@ -38,13 +38,11 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
                 this.TextName.Focus();
             }
-
-            IncludedControlsUsed = IncludedControl.JsonParameters;
         }
 
         private void Populate()
         {
-            Countries allCountries = Countries.GetAll();
+            Countries allCountries = Countries.All;
             this.DropCountries.Items.Clear();
 
             foreach (Country country in allCountries)

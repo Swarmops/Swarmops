@@ -2,12 +2,31 @@ using System.Collections.Generic;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Database;
+using Swarmops.Logic.Cache;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Structure
 {
-    public class Countries : List<Country>
+    public class Countries : PluralBase<Countries, Country, BasicCountry>
     {
-        public static Countries GetAll()
+        public static Countries All
+        {
+            get
+            {
+                // Cached - the list of countries doesn't change that much
+
+                Countries result = (Countries) GuidCache.Get ("Countries.All");
+                if (result == null)
+                {
+                    result = Countries.GetAll();
+                    GuidCache.Set ("Countries.All", result);
+                }
+
+                return result;
+            }
+        }
+
+        private static Countries GetAll() // private - uncached version shouldn't be used outside this class
         {
             return FromArray (SwarmDb.GetDatabaseForReading().GetAllCountries());
         }
@@ -17,16 +36,5 @@ namespace Swarmops.Logic.Structure
             return FromArray (SwarmDb.GetDatabaseForReading().GetCountriesInUse());
         }
 
-        public static Countries FromArray (BasicCountry[] basicArray)
-        {
-            Countries result = new Countries {Capacity = (basicArray.Length*11/10)};
-
-            foreach (BasicCountry basic in basicArray)
-            {
-                result.Add (Country.FromBasic (basic));
-            }
-
-            return result;
-        }
     }
 }
