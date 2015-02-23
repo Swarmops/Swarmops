@@ -262,6 +262,12 @@
   <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
     <value>crwdns6553825:0crwdne6553825:0</value>
   </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>crwdns6555653:0[SwarmopsVersion]crwdnd6555653:0[Hostname]crwdnd6555653:0[DbVersion]crwdnd6555653:0[DbVersionExpected]crwdne6555653:0</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>crwdns6555654:0crwdne6555654:0</value>
+  </data>
   <data name="System_Exception_Body" xml:space="preserve">
     <value>crwdns6553664:0[EmbeddedPreformattedText]crwdne6553664:0</value>
   </data>
