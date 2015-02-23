@@ -389,6 +389,10 @@
   </data>
   
   
-  
-  
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>نماذج الضرائب</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>نماذج ضريبة الرواتب</value>
+  </data>
 </root>

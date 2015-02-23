@@ -308,6 +308,8 @@ Logga in på [InstallationName] på [ExternalUrl]Financial/ValidateReceipts att 
   <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
     <value>Swarmops-databas uppgraderades</value>
   </data>
+  
+  
   <data name="System_Exception_Body" xml:space="preserve">
     <value>En ohanterad exception kastades i Swarmops: [EmbeddedPreformattedText]</value>
   </data>

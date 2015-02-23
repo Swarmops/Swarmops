@@ -569,12 +569,27 @@
     <value>الأرباح المتوقعة {0}</value>
     <comment>"Projected" as in "Budgeted". {0} is year.</comment>
   </data>
+  <data name="TaxForms_Payroll_AdditiveTax" xml:space="preserve">
+    <value>الضريبة المضافة</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
+    <value>الضريبة المخصومة</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
+    <value>الراتب الإجمالي</value>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
+  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
+    <value>نماذج الضرائب الشهرية لـ</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
+    <value>التكلفة الإجمالية</value>
+  </data>
+  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
+    <value>إجمالي الضريبة</value>
+  </data>
 </root>
