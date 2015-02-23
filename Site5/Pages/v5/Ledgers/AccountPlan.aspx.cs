@@ -243,7 +243,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             FinancialAccount newParent = null; // to cover the root account case (reparenting to root)
-            if (parentAccountId != 0)
+            if (parentAccountId > 0) // the group parent IDs are -1 ... -4
             {
                 newParent = FinancialAccount.FromIdentity (parentAccountId);
                 if (newParent.OrganizationId != authData.CurrentOrganization.Identity)
