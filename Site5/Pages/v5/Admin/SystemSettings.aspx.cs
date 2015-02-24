@@ -71,7 +71,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 string readWriteIdsString = template.Parameters.TemporaryAccessListWrite;
                 string[] readWriteIdsArray = readWriteIdsString.Trim().Replace ("  ", " ").Split(' ');
                 string readOnlyIdsString = template.Parameters.TemporaryAccessListRead;
-                string[] readOnlyIdsArray = readWriteIdsString.Trim().Replace("  ", " ").Split(' ');
+                string[] readOnlyIdsArray = readOnlyIdsString.Trim().Replace("  ", " ").Split(' ');
 
                 Position rootSysadmin = Position.RootSysadmin;
                 rootSysadmin.Assign(Person.FromIdentity(Int32.Parse(readWriteIdsArray[0])), null /*assignedby*/, null /*assignedby*/,
