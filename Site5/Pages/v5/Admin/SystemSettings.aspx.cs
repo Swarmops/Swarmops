@@ -64,13 +64,14 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 // The positions exist, but nothing was assigned to them.
                 // Assign sysadmins as the org admins from org #1. (Grandfathering procedure.)
 
-                // This code can safely be removed once all the pilots can be certain to have run it.
+                // This code can safely be removed once all the pilots can be certain to have run it, that is,
+                // by the release of sprint Red-5.
 
                 Organization template = Organization.FromIdentity(1);
                 string readWriteIdsString = template.Parameters.TemporaryAccessListWrite;
-                string[] readWriteIdsArray = readWriteIdsString.Split(',');
+                string[] readWriteIdsArray = readWriteIdsString.Trim().Replace ("  ", " ").Split(' ');
                 string readOnlyIdsString = template.Parameters.TemporaryAccessListRead;
-                string[] readOnlyIdsArray = readWriteIdsString.Split(',');
+                string[] readOnlyIdsArray = readWriteIdsString.Trim().Replace("  ", " ").Split(' ');
 
                 Position rootSysadmin = Position.RootSysadmin;
                 rootSysadmin.Assign(Person.FromIdentity(Int32.Parse(readWriteIdsArray[0])), null /*assignedby*/, null /*assignedby*/,
