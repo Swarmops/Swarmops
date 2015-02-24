@@ -178,6 +178,11 @@ namespace Swarmops.Logic.Financial
             get { return this[OrganizationFinancialAccountType.IncomeSales]; }
         }
 
+        public FinancialAccount IncomeMembershipDues
+        {
+            get { return this[OrganizationFinancialAccountType.IncomeMembershipDues]; }
+        }
+
         public FinancialAccount CostsMiscalculations
         {
             get { return this[OrganizationFinancialAccountType.CostsMiscalculations]; }
@@ -259,49 +264,5 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public static void PrimePiratpartietSE() // One-off. Once this has been run once, delete it.
-        {
-            /* -- this was a one-time one-off
-            if (SwarmDb.GetDatabaseForReading().GetOrganizationFinancialAccountId(1, OrganizationFinancialAccountType.AssetsBankAccountMain) != 0)
-            {
-                return;
-            }
-
-            if (!Organization.PPSE.Name.StartsWith("Piratpartiet"))
-            {
-                return; // not PP installation
-            }
-
-            OrganizationFinancialAccounts organizationAccounts = new OrganizationFinancialAccounts(1);
-
-            // HACK HACK HACK
-
-            organizationAccounts[OrganizationFinancialAccountType.CostsBankFees] = FinancialAccount.FromIdentity(26); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsBankAccountMain] = FinancialAccount.FromIdentity(1); //
-            organizationAccounts[OrganizationFinancialAccountType.IncomeDonations] = FinancialAccount.FromIdentity(4); //
-            organizationAccounts[OrganizationFinancialAccountType.IncomeGeneral] = FinancialAccount.FromIdentity(131); // 
-            organizationAccounts[OrganizationFinancialAccountType.IncomeSales] = FinancialAccount.FromIdentity(5); //
-            organizationAccounts[OrganizationFinancialAccountType.CostsInfrastructure] = FinancialAccount.FromIdentity(21); //
-            organizationAccounts[OrganizationFinancialAccountType.CostsLocalDonationTransfers] = FinancialAccount.FromIdentity(88); //
-            organizationAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] = FinancialAccount.FromIdentity(124); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsExpenseClaims] = FinancialAccount.FromIdentity(3); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsSalary] = FinancialAccount.FromIdentity(25); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsTax] = FinancialAccount.FromIdentity(86); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsInboundInvoices] = FinancialAccount.FromIdentity(25); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsOther] = FinancialAccount.FromIdentity(25); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsOutboundInvoices] = FinancialAccount.FromIdentity(28); // 
-            organizationAccounts[OrganizationFinancialAccountType.DebtsEquity] = FinancialAccount.FromIdentity(96); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsPaypal] = FinancialAccount.FromIdentity(2); //
-            organizationAccounts[OrganizationFinancialAccountType.CostsYearlyResult] = FinancialAccount.FromIdentity(97); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsOutstandingCashAdvances] = FinancialAccount.FromIdentity(156); //
-            organizationAccounts[OrganizationFinancialAccountType.AssetsVat] = FinancialAccount.FromIdentity(86); //
-            organizationAccounts[OrganizationFinancialAccountType.DebtsVat] = FinancialAccount.FromIdentity(86); //
-
-            FinancialAccount.FromIdentity(80).IsConferenceParent = true;
-            FinancialAccount.FromIdentity(27).IsConferenceParent = true;
-
-            Organization.PPSE.IsEconomyEnabled = true; // Kill this function in base, too
-             */
-        }
     }
 }

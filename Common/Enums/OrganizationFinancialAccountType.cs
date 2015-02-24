@@ -93,24 +93,29 @@
         DebtsOther,
 
         /// <summary>
-        ///     Income from sales - default outbound invoices to this acct
-        /// </summary>
-        IncomeSales,
-
-        /// <summary>
         ///     Income from donations - default autodonates here
         /// </summary>
         IncomeDonations,
 
         /// <summary>
-        ///     Bank fees - default small minus posts on bank statements here
+        ///     Income from membership fees - default membership invoices here
         /// </summary>
-        CostsBankFees,
+        IncomeMembershipDues,
+
+        /// <summary>
+        ///     Income from sales - default outbound invoices to this acct
+        /// </summary>
+        IncomeSales,
 
         /// <summary>
         ///     Gains from currency fluctuation (typically bitcoin or altcoins).
         /// </summary>
         IncomeCurrencyFluctuations,
+
+        /// <summary>
+        ///     Bank fees - default small minus posts on bank statements here
+        /// </summary>
+        CostsBankFees,
 
         /// <summary>
         ///     IT and such - default SMS charges, etc, here
