@@ -19,7 +19,7 @@
 
 
     <table id="<%=this.ClientID %>_tablePositions" title="" class="easyui-treegrid" style="width:680px;height:600px"  
-        url="/Automation/Json-PositionTree.aspx"
+        url="/Automation/Json-PositionsTree.aspx"
         rownumbers="false"
         animate="true"
         fitColumns="true"

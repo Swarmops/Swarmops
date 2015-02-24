@@ -9,7 +9,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Automation
 {
-    public partial class Json_PositionTree : DataV5Base
+    public partial class Json_PositionsTree : DataV5Base
     {
         protected void Page_Load(object sender, EventArgs e)
         {
