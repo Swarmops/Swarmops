@@ -155,7 +155,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 runningBalance += row.AmountCents;
 
                 string actionHtml = String.Format (
-                    "<img src=\"/Images/Icons/iconshock-magnifyingglass-16px.png\" class=\"LocalIconInspect\" baseid=\"\" />&nbsp;<img src=\"/Images/Icons/iconshock-flag-white-16px.png\" class=\"LocalIconFlag\" baseid=\"{0}\" />",
+                    "<img src=\"/Images/Icons/iconshock-magnifyingglass-16px.png\" class=\"LocalIconInspect\" txId=\"{0}\" />&nbsp;<img src=\"/Images/Icons/iconshock-flag-white-16px.png\" class=\"LocalIconFlag\" txId=\"{0}\" />",
                     row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
 
                 result.Append ("{" + String.Format (

@@ -252,6 +252,16 @@ namespace Swarmops.Common.Enums
         OrgTemporaryAccessListRead,
 
         /// <summary>
+        /// If defined, will autologin to read "open ledgers" when accessed through this domain
+        /// </summary>
+        OrgOpenLedgersDomain,
+
+        /// <summary>
+        /// If defined, will login to this organization when accessed through this domain (credentials still required)
+        /// </summary>
+        OrgVanityDomain,
+
+        /// <summary>
         ///     Free-text description of an inbound invoice (what's it for?)
         /// </summary>
         InboundInvoiceDescription,

@@ -601,4 +601,12 @@
   <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
     <value>Total Tax</value>
   </data>
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>Viewing/Editing Transaction #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>Inspecting Transaction #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
 </root>

@@ -54,6 +54,42 @@ namespace Swarmops.Logic.Structure
             return new Organization (basic);
         }
 
+        public static Organization FromOpenLedgersDomain(string domain)
+        {
+            int[] organizationIds = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Organization, ObjectOptionalDataType.OrgOpenLedgersDomain, domain);
+
+            if (organizationIds.Length < 1)
+            {
+                return null;
+            }
+            else if (organizationIds.Length == 1)
+            {
+                return Organization.FromIdentity(organizationIds[0]);
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid state: multiple organizations with same open-ledgers domain");
+            }
+        }
+
+        public static Organization FromVanityDomain(string domain)
+        {
+            int[] organizationIds = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Organization, ObjectOptionalDataType.OrgVanityDomain, domain);
+
+            if (organizationIds.Length < 1)
+            {
+                return null;
+            }
+            else if (organizationIds.Length == 1)
+            {
+                return Organization.FromIdentity(organizationIds[0]);
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid state: multiple organizations with same vanity domain");
+            }
+        }
+
         #endregion
 
         private ObjectOptionalData _optionalData;
@@ -902,5 +938,7 @@ namespace Swarmops.Logic.Structure
 
             return new DateTime (year, 12, 31, 23, 59, 59, 999);
         }
+
+
     }
 }
