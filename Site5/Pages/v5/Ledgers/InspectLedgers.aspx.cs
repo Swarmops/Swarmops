@@ -70,6 +70,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             this.LabelFlagNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_FlaggingNotAvailable;
             this.LabelInspectNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_InspectNotAvailable;
+
+            // if write access
+
+            this.LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_EditingTransactionX;
+
+            // else if read access
+
+            this.LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_InspectingTransactionX;
         }
     }
 }

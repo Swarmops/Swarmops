@@ -1134,5 +1134,10 @@ namespace Swarmops.Logic.Swarm
 
             return false;
         }
+
+        // A couple of special cases
+
+        public const int OpenLedgersIdentity = -1;
+
     }
 }

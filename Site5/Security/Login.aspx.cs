@@ -68,10 +68,13 @@ namespace Swarmops.Pages.Security
                 }
             }
 
+            string requestHost = Request.Url.Host;
+
+
 
             // If this is the Dev Sandbox, autologin
 
-            if (Request.Url.Host == "dev.swarmops.com" &&
+            if (requestHost == "dev.swarmops.com" &&
                 PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox) &&
                 Request.QueryString["SuppressAutologin"] != "true")
             {
@@ -80,6 +83,16 @@ namespace Swarmops.Pages.Security
                         "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p>")));
                 FormsAuthentication.SetAuthCookie ("1,1", true);
                 Response.Redirect ("/");
+            }
+
+            // If we're on an Open Ledgers domain, autologin as Open Ledgers
+
+            Organization organization = Organization.FromOpenLedgersDomain(requestHost); // returns null if doesn't exist
+
+            if (organization != null)
+            {
+                Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(Resources.Pages.Security.Login_AsOpenLedgers)));
+                FormsAuthentication.SetAuthCookie(Person.OpenLedgersIdentity.ToString() + "," + organization.Identity.ToString(), true);
             }
 
             // Check for SSL and force it

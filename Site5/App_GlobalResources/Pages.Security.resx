@@ -175,6 +175,10 @@
   <data name="LockdownAccount_Ticket" xml:space="preserve">
     <value>Lockdown Ticket</value>
   </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>&lt;strong&gt;OPEN LEDGERS&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;{0} is running Open Ledgers. This means that anybody may inspect the financial reports and bookkeeping. You have been logged on to the organization's Operations to do just that.</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
   <data name="Login_BitIdEnabled" xml:space="preserve">
     <value>&lt;strong&gt;BitId two-factor authentication is now enabled.&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;From now on, you can use your bitcoin wallet to log in (and will &lt;strong&gt;need&lt;/strong&gt; to do so). Thank you for enabling added security.&lt;br/&gt;&lt;br/&gt;Please remember to keep your phone secure with a password, too.</value>
   </data>
