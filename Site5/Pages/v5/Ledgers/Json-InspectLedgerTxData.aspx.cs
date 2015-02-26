@@ -88,12 +88,14 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     row.CreatedByPerson.Initials) + "},");
             }
 
-            if (rows.Count == 0)
+            Int64 amountCentsTotal = transaction.Rows.AmountCentsTotal;
+
+            if (amountCentsTotal == 0)
             {
                 // If there are no transactions in this time period, say so
 
-                result.Append ("{\"description\":\"" +
-                               JsonSanitize (Resources.Pages.Ledgers.InspectLedgers_NoTransactions) + "\"},");
+                result.Append ("{\"accountName\":\"" +
+                               JsonSanitize (Resources.Pages.Ledgers.InspectLedgers_UnbalancedTransaction) + "\"},");
             }
 
             Response.Output.WriteLine ("[" + result.ToString().TrimEnd (',') + "]");

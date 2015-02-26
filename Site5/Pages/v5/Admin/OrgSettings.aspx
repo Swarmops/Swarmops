@@ -27,7 +27,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/Pages/v5/Admin/EditOrganization.aspx/SwitchToggled",
+                    url: "/Pages/v5/Admin/OrgSettings.aspx/SwitchToggled",
                     data: $.toJSON(jsonData),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -55,7 +55,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Pages/v5/Admin/EditOrganization.aspx/GetInitialData",
+                url: "/Pages/v5/Admin/OrgSettings.aspx/GetInitialData",
                 data: "{}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -194,8 +194,8 @@
         <div title="<img src='/Images/Icons/iconshock-star-gold-64px.png' />">
             <h2>Premium Features</h2>
             <div class="entryFields">
-                <Swarmops5:AjaxTextBox runat="server" ID="TextVanityDomain" />&#8203;<br/>
-                <Swarmops5:AjaxTextBox runat="server" ID="TextOpenLedgersDomain" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextVanityDomain" Cookie="VanityDomain" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextOpenLedgersDomain" Cookie="OpenLedgersDomain" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />&#8203;<br/>
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelVanityDomain" runat="server" /><br/>

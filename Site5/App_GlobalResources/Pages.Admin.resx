@@ -198,7 +198,7 @@
     <comment>The {0} is the operating currency (USD etc).</comment>
   </data>
   <data name="EditOrganization_VanityDomain" xml:space="preserve">
-    <value>Vanity Domain</value>
+    <value>Organization Vanity Domain</value>
   </data>
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>Admin Notifications From Address</value>

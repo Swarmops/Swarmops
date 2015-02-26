@@ -124,10 +124,15 @@
         }
 
         .spanAnnoyingBlink {
+            -webkit-animation: blink 0.5s linear infinite;
             animation: blink 0.5s linear infinite;
         }
 
         @keyframes blink {  
+            0% { color: darkred; }
+            100% { color: red; }
+        }
+        @-webkit-keyframes blink {  
             0% { color: darkred; }
             100% { color: red; }
         }
@@ -163,7 +168,7 @@
             <div class="content">
                 <div class="divIconCloseModal"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2><asp:Literal ID="LiteralEditHeader" runat="server"/></h2>
                 <table id="gridTransaction" class="easyui-datagrid" style="width:100%;height:240px"
-                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectTransactionData.aspx'"
+                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerTxData.aspx'"
                 idField="id">
                 <thead>
                     <tr>

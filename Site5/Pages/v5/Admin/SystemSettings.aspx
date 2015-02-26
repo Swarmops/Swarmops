@@ -35,11 +35,11 @@
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
             <h2>Correspondence transmission settings</h2>
             <div class="entryFields">
-                <Swarmops5:AjaxTextBox runat="server" ID="TextSmtpServer" Cookie="Smtp" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="localhost:587" />&#8203;<br/>
-                <Swarmops5:AjaxTextBox runat="server" ID="TextInstallationName" Cookie="InstallationName" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="localhost:587" />&#8203;<br/>
-                <Swarmops5:AjaxTextBox runat="server" ID="TextExternalUrl" Cookie="ExtUrl" OnChange="onUrlChange" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="https://swarmops.example.com/" />&#8203;<br/>
-                <Swarmops5:AjaxTextBox runat="server" ID="TextAdminSender" Cookie="AdminSender" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="Swarmops Admin" />&#8203;<br/>
-                <Swarmops5:AjaxTextBox runat="server" ID="TextAdminAddress" Cookie="AdminAddress" AjaxCallbackUrl="/Pages/v5/Admin/Settings.aspx/StoreCallback" Placeholder="swarmops-admin@example.com" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextSmtpServer" Cookie="Smtp" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="localhost:587" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextInstallationName" Cookie="InstallationName" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="localhost:587" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextExternalUrl" Cookie="ExtUrl" OnChange="onUrlChange" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="https://swarmops.example.com/" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextAdminSender" Cookie="AdminSender" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="Swarmops Admin" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextAdminAddress" Cookie="AdminAddress" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="swarmops-admin@example.com" />&#8203;<br/>
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelSmtpServer" runat="server" /><br/>
