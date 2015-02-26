@@ -138,6 +138,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         static public AjaxTextBox.CallbackResult StoreCallback(string newValue, string cookie)
         {
             AjaxTextBox.CallbackResult result = new AjaxTextBox.CallbackResult();
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (!authData.CurrentUser.HasAccess (new Access (AccessAspect.System, AccessType.Write)))
+            {
+                result.ResultCode = AjaxTextBox.CodeNoPermission;
+                return result; // fail silently
+            }
 
             switch (cookie)
             {

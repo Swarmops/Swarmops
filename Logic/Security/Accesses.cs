@@ -37,9 +37,19 @@ namespace Swarmops.Logic.Security
         Unknown = 0,
 
         /// <summary>
-        ///     Access to underlying ledgers
+        ///     Basic access to underlying ledgers
         /// </summary>
         Bookkeeping,
+
+        /// <summary>
+        ///     Detailed access to underlying ledgers (documents, descriptions)
+        /// </summary>
+        BookkeepingDetails,
+
+        /// <summary>
+        ///     Access to auditing working material (redflagged transactions, etc)
+        /// </summary>
+        Auditing,
 
         /// <summary>
         ///     Access to regular accounting
@@ -54,7 +64,7 @@ namespace Swarmops.Logic.Security
         /// <summary>
         ///     Access to personal details about people in an organization
         /// </summary>
-        PersonData,
+        PersonalData,
 
         /// <summary>
         ///     Access to change organization's fundamental operating parameters

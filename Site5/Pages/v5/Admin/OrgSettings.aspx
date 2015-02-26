@@ -2,6 +2,7 @@
 <%@ Import Namespace="Resources" %>
 <%@ Register tagPrefix="Swarmops5" tagName="FileUpload" src="~/Controls/v5/Base/FileUpload.ascx"  %>
 <%@ Register tagPrefix="Swarmops5" tagName="DropDown" src="~/Controls/v5/Base/DropDown.ascx" %>
+<%@ Register tagPrefix="Swarmops5" tagName="AjaxTextBox" src="~/Controls/v5/Base/AjaxTextBox.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     
@@ -189,6 +190,18 @@
                 User Notification sender<br/>
                 SMTP server (default if blank)
             </div>
+        </div>
+        <div title="<img src='/Images/Icons/iconshock-star-gold-64px.png' />">
+            <h2>Premium Features</h2>
+            <div class="entryFields">
+                <Swarmops5:AjaxTextBox runat="server" ID="TextVanityDomain" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextOpenLedgersDomain" />&#8203;<br/>
+            </div>
+            <div class="entryLabels">
+                <asp:Label ID="LabelVanityDomain" runat="server" /><br/>
+                <asp:Label ID="LabelOpenLedgersDomain" runat="server" /><br/>
+            </div>
+
         </div>
     </div>
 

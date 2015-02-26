@@ -176,4 +176,10 @@
   <data name="ListFindPeople_TooManyHits" xml:space="preserve">
     <value>The result set contains over a thousand people (display limited to a thousand). Please refine your search?</value>
   </data>
+  <data name="Positions_AssignPerson" xml:space="preserve">
+    <value>Assign person...</value>
+  </data>
+  <data name="Positions_CreateNewPosition" xml:space="preserve">
+    <value>Create new position...</value>
+  </data>
 </root>

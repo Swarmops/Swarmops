@@ -576,4 +576,8 @@
     <value>(vacant)</value>
     <comment>For unassigned positions</comment>
   </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>define to enable</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
 </root>

@@ -609,4 +609,22 @@
     <value>Inspecting Transaction #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
     <comment>The transaction id is replaced client-side on display</comment>
   </data>
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>Account name</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>Balance is correct:</value>
+  </data>
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>(No transaction data)</value>
+  </data>
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>Initials</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>Logged</value>
+  </data>
+  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
+    <value>Transaction is &lt;span class="spanAnnoyingBlink"&gt;UNBALANCED&lt;/span&gt;:</value>
+  </data>
 </root>

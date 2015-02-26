@@ -157,6 +157,9 @@
     <value>{0} numbering</value>
     <comment>The {0} is the membership, ambassadorship, etc.</comment>
   </data>
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>Open Ledgers Domain</value>
+  </data>
   <data name="EditOrganization_PageTitle" xml:space="preserve">
     <value>Edit Organization</value>
   </data>
@@ -193,6 +196,9 @@
   <data name="EditOrganization_RenewalsCost" xml:space="preserve">
     <value>Renewal cost (in {0})</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
+  </data>
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>Vanity Domain</value>
   </data>
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>Admin Notifications From Address</value>

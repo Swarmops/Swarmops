@@ -68,8 +68,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelGridHeaderDescription.Text = Global.Global_Description;
             this.LabelGridHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
 
+            this.LabelGridHeaderAccountName.Text = Resources.Pages.Ledgers.InspectLedgers_AccountName;
+            this.LabelGridHeaderDateTimeEntered.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedByInitials;
+            this.LabelGridHeaderDeltaNegative2.Text = Global.Ledgers_Credit;
+            this.LabelGridHeaderDeltaPositive2.Text = Global.Ledgers_Debit;
+            this.LabelGridHeaderInitials.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedByInitials;
+
             this.LabelFlagNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_FlaggingNotAvailable;
-            this.LabelInspectNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_InspectNotAvailable;
 
             // if write access
 

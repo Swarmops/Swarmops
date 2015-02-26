@@ -939,6 +939,26 @@ namespace Swarmops.Logic.Structure
             return new DateTime (year, 12, 31, 23, 59, 59, 999);
         }
 
+        public DateTime GetStartOfFiscalYear (int year)
+        {
+            // Returns the first millisecond of the fiscal year. For now, this is limited to calendar years; the function
+            // exists for future expandability.
+
+            return new DateTime (year, 1, 1, 0, 0, 0, 0);
+        }
+
+
+        public string VanityDomain
+        {
+            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.OrgVanityDomain); }
+            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.OrgVanityDomain, value); }
+        }
+
+        public string OpenLedgersDomain
+        {
+            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.OrgOpenLedgersDomain); }
+            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.OrgOpenLedgersDomain, value); }
+        }
 
     }
 }

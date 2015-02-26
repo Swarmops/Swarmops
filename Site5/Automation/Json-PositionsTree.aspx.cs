@@ -41,20 +41,16 @@ namespace Swarmops.Frontend.Automation
                 string localizedPositionName = position.Localized (positionNode.Data.MaxCount != 1);
                 PositionAssignments assignments = position.Assignments;
 
-                string parentName = string.Empty;
-                if (positionNode.Parent != null)
-                {
-                    parentName = positionNode.Parent.Data.Localized();
-                }
+                string expires = string.Empty;
 
-                string assignedName = Resources.Global.Swarm_Vacant;
+                string assignedName = Resources.Global.Swarm_Vacant + "<br/>Testing line 2<br/>Testing line 3";
                 if (assignments.Count > 0)
                 {
                     assignedName = assignments[0].Person.Canonical;
                 }
 
-                string element = string.Format("\"id\":\"{0}\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"reportsTo\":\"{3}\"", 
-                    position.Identity, JsonSanitize (localizedPositionName), JsonSanitize (assignedName), JsonSanitize (parentName));
+                string element = string.Format("\"id\":\"{0}\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\"", 
+                    position.Identity, JsonSanitize (localizedPositionName), JsonSanitize (assignedName), JsonSanitize (expires));
 
                 // TODO: Add all assignments after the first one right here
 

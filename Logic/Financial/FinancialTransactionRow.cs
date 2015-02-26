@@ -1,6 +1,7 @@
 using System;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
+using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
@@ -43,6 +44,19 @@ namespace Swarmops.Logic.Financial
         public string AccountName
         {
             get { return Account.Name; }
+        }
+
+        public Person CreatedByPerson
+        {
+            get
+            {
+                if (base.CreatedByPersonId > 0)
+                {
+                    return Person.FromIdentity (base.CreatedByPersonId);
+                }
+
+                return null;
+            }
         }
 
         [Obsolete ("Do not use. Use Int64 AmountCents.", true)]

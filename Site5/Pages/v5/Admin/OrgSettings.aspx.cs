@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Runtime.Versioning;
+using System.Text.RegularExpressions;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using Swarmops.Common.Enums;
+using Swarmops.Frontend.Controls.v5.Base;
+using Swarmops.Logic.Communications;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.v5.Admin
@@ -52,6 +57,13 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelRenewalReminder.Text = Resources.Pages.Admin.EditOrganization_RenewalReminders;
             this.LabelMemberNumber.Text =
                 String.Format (Resources.Pages.Admin.EditOrganization_MemberNumberStyle, participantship);
+
+            // Premium features
+
+            this.LabelVanityDomain.Text = Resources.Pages.Admin.EditOrganization_VanityDomain;
+            this.LabelOpenLedgersDomain.Text = Resources.Pages.Admin.EditOrganization_OpenLedgersDomain;
+            this.TextVanityDomain.Placeholder = Resources.Global.Global_DefineToEnable;
+            this.TextOpenLedgersDomain.Placeholder = Resources.Global.Global_DefineToEnable;
 
             this.DropMembersWhen.Items.Clear();
             this.DropMembersWhen.Items.Add (new ListItem ("Application submitted", "Application"));
@@ -362,6 +374,40 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         }
                     }
                 }
+            }
+
+            return result;
+        }
+
+
+        [WebMethod]
+        static public AjaxTextBox.CallbackResult StoreCallback(string newValue, string cookie)
+        {
+            AjaxTextBox.CallbackResult result = new AjaxTextBox.CallbackResult();
+            AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
+
+            if (!authenticationData.CurrentUser.HasAccess (new Access (authenticationData.CurrentOrganization, AccessAspect.Administration, AccessType.Write)))
+            {
+                result.ResultCode = AjaxTextBox.CodeNoPermission;
+                return result;
+            }
+
+            switch (cookie)
+            {
+                case "VanityDomain":
+                    result.NewData = newValue.Trim();
+                    result.ResultCode = AjaxTextBox.CodeSuccess;
+                    authenticationData.CurrentOrganization.VanityDomain = result.NewData;
+                    break;
+
+                case "OpenLedgersDomain":
+                    result.NewData = newValue.Trim();
+                    result.ResultCode = AjaxTextBox.CodeSuccess;
+                    authenticationData.CurrentOrganization.OpenLedgersDomain = result.NewData;
+                    break;
+
+                default:
+                    throw new NotImplementedException("Unknown cookie in StoreCallback");
             }
 
             return result;
