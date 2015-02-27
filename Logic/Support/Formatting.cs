@@ -146,17 +146,17 @@ namespace Swarmops.Logic.Support
                     {
                         // The last sequence was just a single number.
 
-                        result += ", #" + ids[index - 1];
+                        result += ", #" + ids[index - 1].ToString("N0");
                     }
                     else if (indexOfLastDiscontinuity == index - 2)
                     {
                         // Two numbers in last sequence. Treat as discontinuous.
-                        result += ", #" + ids[indexOfLastDiscontinuity] + ", #" + ids[index - 1];
+                        result += ", #" + ids[indexOfLastDiscontinuity].ToString("N0") + ", #" + ids[index - 1].ToString("N0");
                     }
                     else
                     {
                         // Contiguity.
-                        result += ", #" + ids[indexOfLastDiscontinuity] + "-" + ids[index - 1];
+                        result += ", #" + ids[indexOfLastDiscontinuity].ToString("N0") + "-" + ids[index - 1].ToString("N0");
                     }
 
                     indexOfLastDiscontinuity = index;

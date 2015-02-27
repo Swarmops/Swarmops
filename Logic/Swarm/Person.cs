@@ -415,7 +415,7 @@ namespace Swarmops.Logic.Swarm
 
         public string Canonical // On the canonical format "Rick Falkvinge (#1)"
         {
-            get { return Name + " (#" + Identity + ")"; }
+            get { return Name + " (#" + Identity.ToString("N0") + ")"; }
         }
 
         public Image Portrait
