@@ -165,5 +165,16 @@ namespace Swarmops.Logic.Financial
         {
             get { return FinancialAccount.FromIdentity (BudgetId); }
         }
+
+        public Organization Organization
+        {
+            get { return Organization.FromIdentity(OrganizationId); }
+        }
+
+        public FinancialValidations Validations
+        {
+            get { return FinancialValidations.ForObject(this); }
+        }
+
     }
 }
