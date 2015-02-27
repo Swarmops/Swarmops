@@ -46,13 +46,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException ("Access denied because security tokens say so");
             }
 
-            bool listDetails = false;
-
-            if (CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
-            {
-                listDetails = true;
-            }
-
             FinancialTransactionRows rows = transaction.Rows;
 
             // SIGNOFF: CONTINUE HERE BUILDING JSON DATA FOR TRANSACTION
@@ -66,11 +59,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 if (row.AmountCents < 0)
                 {
-                    creditString = String.Format ("{0:N0}", row.AmountCents/100.0);
+                    creditString = String.Format ("{0:N2}", row.AmountCents/100.0);
                 }
                 else if (row.AmountCents > 0)
                 {
-                    debitString = String.Format ("{0:N0}", row.AmountCents/100.0);
+                    debitString = String.Format ("{0:N2}", row.AmountCents/100.0);
                 }
 
                 string actionHtml = String.Format (
@@ -78,24 +71,37 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
 
                 result.Append ("{" + String.Format (
-                    "\"id\":\"{0}\",\"dateTime\":\"{1:MMM-dd HH:mm}\",\"accountName\":\"{2}\"," +
+                    "\"id\":\"{0}\",\"dateTime\":\"{1:yyyy-MMM-dd HH:mm}\",\"accountName\":\"{2}\"," +
                     "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"initials\":\"{5}\"",
                     row.FinancialTransactionId,
                     row.CreatedDateTime,
                     JsonSanitize (row.AccountName),
                     debitString,
                     creditString,
-                    row.CreatedByPerson.Initials) + "},");
+                    row.CreatedByPerson != null? row.CreatedByPerson.Initials: Resources.Global.Global_System) + "},");
             }
 
             Int64 amountCentsTotal = transaction.Rows.AmountCentsTotal;
 
-            if (amountCentsTotal == 0)
+            if (amountCentsTotal != 0)
             {
-                // If there are no transactions in this time period, say so
+                // If the transaction is unbalanced, make a huge deal about it
 
-                result.Append ("{\"accountName\":\"" +
-                               JsonSanitize (Resources.Pages.Ledgers.InspectLedgers_UnbalancedTransaction) + "\"},");
+                result.Append ("{\"accountName\":\"<img src='/Images/Icons/iconshock-warning-24px.png' height='16px' width='16px' class='elementFloatFar' />" +
+                               JsonSanitize (Resources.Pages.Ledgers.InspectLedgers_UnbalancedTransaction) + "\",");
+
+                if (amountCentsTotal < 0)
+                {
+                    result.AppendFormat("\"deltaPos\":\"<span class='spanAnnoyingBlink'>{0:N2}</span>\"",
+                        -amountCentsTotal / 100.0);
+                }
+                else if (amountCentsTotal > 0)
+                {
+                    result.AppendFormat("\"deltaNeg\":\"<span class='spanAnnoyingBlink'>{0:N2}</span>\"",
+                        -amountCentsTotal / 100.0);
+                }
+
+                result.Append ("},");  // the comma isn't really necessary here but will be stripped later and is kept for cut&paste consistency of this code block
             }
 
             Response.Output.WriteLine ("[" + result.ToString().TrimEnd (',') + "]");

@@ -172,7 +172,7 @@
     <value>Expense</value>
   </data>
   <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
-    <value>Expense  #{0}</value>
+    <value>Expense #{0:N0}</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>Expenses {0}</value>
@@ -337,10 +337,10 @@
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>Expense #{0} (minus advance #{1})</value>
+    <value>Expense #{0:N0} (minus advance #{1:N0})</value>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>Expense #{0} (minus advances)</value>
+    <value>Expense #{0:N0} (minus advances)</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
     <value>Expenses {0} (minus advance #{1})</value>
@@ -349,10 +349,10 @@
     <value>Expenses {0} (minus advances)</value>
   </data>
   <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>Expense Claim #{0} by {1}</value>
+    <value>Expense Claim #{0:N0} by {1}</value>
   </data>
   <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
-    <value>Inbound Invoice #{0} from {1}</value>
+    <value>Inbound Invoice #{0:N0} from {1}</value>
   </data>
   <data name="Financial_ReceiptSpecification" xml:space="preserve">
     <value>Receipt Image {0} of {1}</value>
@@ -579,5 +579,30 @@
   <data name="Global_DefineToEnable" xml:space="preserve">
     <value>define to enable</value>
     <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Cash Advance #{0:N0} for {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>Cash Advance #{0:N0} Payback </value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>Cash Advances {0} Payback</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Cash Advances {0} for {1}</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>Expense Claim #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>Expense Claims {0} by {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>Inbound Invoice #{0:N0}</value>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>System</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
   </data>
 </root>

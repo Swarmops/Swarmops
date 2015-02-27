@@ -147,7 +147,6 @@ namespace Swarmops.Logic.Support
                 .SetDocumentForeignObject (Identity, GetDocumentTypeForObject (foreignObject), foreignObject.Identity);
         }
 
-
         public void Delete()
         {
             // Unlink, actually
@@ -165,6 +164,19 @@ namespace Swarmops.Logic.Support
         public StreamReader GetReader (int encodingCodePage)
         {
             return GetReader (Encoding.GetEncoding (encodingCodePage));
+        }
+
+        public Person UploadedByPerson
+        {
+            get
+            {
+                if (base.UploadedByPersonId > 0)
+                {
+                    return Person.FromIdentity (base.UploadedByPersonId);
+                }
+
+                return null;
+            }
         }
     }
 }

@@ -385,6 +385,24 @@ body.rtl .divIconCloseModal {
 }
 
 
+.elementFloatNear {
+    float: left;
+}
+
+.elementFloatFar {
+    float: right;
+}
+
+body.rtl .elementFloatNear {
+    float: right;
+}
+
+body.rtl .elementFloatFar {
+    float: left;
+}
+
+
+
 /* LOGINBOX */
 
 body.loginpage

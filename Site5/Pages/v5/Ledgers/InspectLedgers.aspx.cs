@@ -1,8 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
+using System.Web;
+using System.Web.Services;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
+using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -69,12 +77,16 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelGridHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
 
             this.LabelGridHeaderAccountName.Text = Resources.Pages.Ledgers.InspectLedgers_AccountName;
-            this.LabelGridHeaderDateTimeEntered.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedByInitials;
+            this.LabelGridHeaderDateTimeEntered.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedDate;
             this.LabelGridHeaderDeltaNegative2.Text = Global.Ledgers_Credit;
             this.LabelGridHeaderDeltaPositive2.Text = Global.Ledgers_Debit;
             this.LabelGridHeaderInitials.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedByInitials;
 
             this.LabelFlagNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_FlaggingNotAvailable;
+
+            this.LabelAddTransactionRowsHeader.Text = Resources.Pages.Ledgers.InspectLedgers_HeaderAddTransactionRow;
+            this.LabelTrackedTransactionHeader.Text =
+                Resources.Pages.Ledgers.InspectLedgers_HeaderAutoTransactionTracking;
 
             // if write access
 
@@ -83,6 +95,159 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             // else if read access
 
             this.LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_InspectingTransactionX;
+
+            // Access helpers to JavaScript (don't actually determine access, but help in UI prettiness)
+
+            this.LiteralAuditAccess.Text =
+                (CurrentUser.HasAccess(new Access(CurrentOrganization, AccessAspect.Auditing, AccessType.Write)))
+                    ? "true"
+                    : "false";
+            this.LiteralWriteAccess.Text =
+                (CurrentUser.HasAccess(new Access(CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write)))
+                    ? "true"
+                    : "false";
+            this.LiteralDetailAccess.Text =
+                (CurrentUser.HasAccess(new Access(CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read)))
+                    ? "true"
+                    : "false";
+        }
+
+        [WebMethod]
+        public static string GetTransactionTracking (int txId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                    AccessAspect.BookkeepingDetails, AccessType.Read)))
+            {
+                return string.Empty; // leave no clue to an attacker why the call failed
+            }
+
+            FinancialTransaction transaction = FinancialTransaction.FromIdentity (txId);
+
+            IHasIdentity dependency = transaction.Dependency;
+
+            if (dependency == null)
+            {
+                return string.Empty;
+            }
+
+            return GetTrackingDetails (dependency);
+        }
+
+        private static string GetTrackingDetails (object someObject)
+        {
+            string objectType = someObject.GetType().Name;
+
+            switch (objectType)
+            {
+                case "Payout":
+                    Payout payout = (Payout) someObject;
+                    string result =
+                        String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_ThisIsPayoutX, payout.Identity) +
+                        " ";
+
+                    List<string> subValidations = new List<string>();
+                    List<string> subResults = new List<string>();
+
+                    if (payout.DependentExpenseClaims.Count > 0)
+                    {
+                        if (payout.DependentExpenseClaims.Count == 1)
+                        {
+                            subResults.Add("<strong>" + String.Format(Resources.Global.Financial_ExpenseClaimSpecificationWithClaimer, payout.DependentExpenseClaims[0].Identity, HttpUtility.HtmlEncode(payout.DependentExpenseClaims[0].Claimer.Name)) + ".</strong>");
+                        }
+                        else
+                        {
+                            subResults.Add("<strong>" + String.Format(Resources.Global.Financial_ExpenseClaimsSpecificationWithClaimer, Formatting.GenerateRangeString(payout.DependentExpenseClaims.Identities), HttpUtility.HtmlEncode(payout.DependentExpenseClaims[0].Claimer.Name)) + ".</strong>");
+                        }
+
+                        foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
+                        {
+                            subValidations.Add ("<strong>" + String.Format (Resources.Global.Financial_ExpenseClaimLongSpecification, claim.Identity) + ":</strong> " + claim.Organization.Currency.Code + " " + (claim.AmountCents / 100.0).ToString("N2") + ". " + HttpUtility.HtmlEncode (GetValidationDetails(claim.Validations)) + " " + GetDocumentDetails(claim.Documents));
+                        }
+                    }
+
+                    if (payout.DependentCashAdvancesPayback.Count > 0)
+                    {
+                        if (payout.DependentCashAdvancesPayback.Count == 1)
+                        {
+                            subResults.Add("<strong>" + String.Format(Resources.Global.Financial_CashAdvancePaybackSpecification, payout.DependentCashAdvancesPayback[0].Identity) + ".</strong>");
+                        }
+                        else
+                        {
+                            subResults.Add("<strong>" + String.Format(Resources.Global.Financial_CashAdvancePaybacksSpecification, Formatting.GenerateRangeString(payout.DependentExpenseClaims.Identities)) + ".</strong>");
+                        }
+                    }
+
+                    if (payout.DependentCashAdvancesPayout.Count > 0)
+                    {
+                        if (payout.DependentCashAdvancesPayout.Count == 1)
+                        {
+                            subResults.Add("<strong>" + String.Format(Resources.Global.Financial_CashAdvanceLongSpecificationWithRecipient, payout.DependentCashAdvancesPayout[0].Identity) + ".</strong>");
+                        }
+                        else
+                        {
+                            subResults.Add("<strong>" + String.Format(Resources.Global.Financial_CashAdvancesLongSpecificationWithRecipient, Formatting.GenerateRangeString(payout.DependentExpenseClaims.Identities)) + ".</strong>");
+                        }
+
+                        foreach (CashAdvance advance in payout.DependentCashAdvancesPayout)
+                        {
+                            subValidations.Add("<strong>" + String.Format(Resources.Global.Financial_CashAdvanceSpecification, advance.Identity) + ":</strong> " + advance.Organization.Currency.Code + " " + (advance.AmountCents / 100.0).ToString("N2") + ". " + HttpUtility.HtmlEncode(GetValidationDetails(advance.Validations)));
+                        }
+                    }
+
+                    if (payout.DependentInvoices.Count > 0)
+                    {
+                        // Assume _one_ invoice
+
+                        InboundInvoice invoice = payout.DependentInvoices[0];
+
+                        subResults.Add ("<strong>" + String.Format (
+                            Resources.Global.Financial_InboundInvoiceSpecificationWithSender, invoice.Identity,
+                            invoice.Supplier) + ".</strong>");
+
+                        subValidations.Add("<strong>" + String.Format (Resources.Global.Financial_InboundInvoiceSpecification, invoice.Identity) + ":</strong> " + invoice.Organization.Currency.Code + " " + (invoice.AmountCents / 100.0).ToString("N2") + ". " + GetValidationDetails(invoice.Validations) + " " +
+                                            GetDocumentDetails (invoice.Documents));
+                    }
+
+                    
+
+                    result += String.Join (" " + Resources.Pages.Ledgers.InspectLedgers_TxDetail_CombinedWith + " ", subResults);
+
+                    return "<p>" + result + "</p><p>" + String.Join ("</p><p>", subValidations) + "</p>";
+
+                    break;
+                default:
+                    return "Unimplemented dependency type: " + objectType;
+            }
+        }
+
+        private static string GetValidationDetails (FinancialValidations validations)
+        {
+            string result = string.Empty;
+
+            foreach (FinancialValidation validation in validations)
+            {
+                if (validation.ValidationType == FinancialValidationType.Attestation)
+                {
+                    result += String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_AttestedByX + ". ", validation.Person.Canonical,
+                        validation.DateTime);
+                }
+                if (validation.ValidationType == FinancialValidationType.Validation)
+                {
+                    result += String.Format(Resources.Pages.Ledgers.InspectLedgers_TxDetail_ValidatedByX + ". ", validation.Person.Canonical,
+                        validation.DateTime);
+                }
+            }
+
+            return result;
+        }
+
+        private static string GetDocumentDetails (Documents documents)
+        {
+            return "Documents were uploaded by " + documents[0].UploadedByPerson.Canonical + " at " +
+                   documents[0].UploadedDateTime.ToString ("yyyy-MMM-dd HH:mm") + ". <a href='#'>View documents.</a>";
         }
     }
 }

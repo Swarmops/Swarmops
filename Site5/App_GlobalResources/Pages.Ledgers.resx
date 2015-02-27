@@ -625,6 +625,32 @@
     <value>Logged</value>
   </data>
   <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
-    <value>Transaction is &lt;span class="spanAnnoyingBlink"&gt;UNBALANCED&lt;/span&gt;:</value>
+    <value>Transaction is &lt;span class="spanAnnoyingBlink"&gt;UNBALANCED:&lt;/span&gt; missing amount</value>
+  </data>
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>Add rows to transaction</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>Autotransaction tracking details</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>Attested by {0} on {1:yyyy-MMM-dd}</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>combined with</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
+    <value>&lt;strong&gt;Inbound Invoice #{0:N0}&lt;/strong&gt; from {1}:</value>
+    <comment>the {1} is the supplier name</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>This is &lt;strong&gt;Payout #{0:N0}.&lt;/strong&gt; It's a payout for</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>Document validation by {0} on {1:yyyy-MMM-dd}</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
   </data>
 </root>

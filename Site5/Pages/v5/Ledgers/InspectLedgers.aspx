@@ -46,7 +46,10 @@
                 });
 
                 $('#gridTransaction').datagrid({
-                    onLoadSuccess: function() {}
+                    onLoadSuccess: function() {
+                        $('#gridTransaction').datagrid('resize');
+
+                    }
                 });
 
 	        $('#<%=DropYears.ClientID %>').change(function () {
@@ -65,8 +68,6 @@
     	            transactionDirty = false;
     	        }
     	    });
-
-
 
 	        $('div.datagrid').css('opacity', 0.4);
 	    });
@@ -99,12 +100,45 @@
             $('#divModalCover').fadeIn();
 
             $('#gridTransaction').datagrid({ url: 'Json-InspectLedgerTxData.aspx?TxId=' + transactionId });
+
+            var jsonData = {};
+            jsonData.txId = transactionId;
+
+            $.ajax({
+                type: "POST",
+                url: "/Pages/v5/Ledgers/InspectLedgers.aspx/GetTransactionTracking",
+                data: $.toJSON(jsonData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.d.length > 1) {
+                        $('#divTransactionTrackingDetails').html(msg.d);
+                        $('#divTransactionTrackingDetails').show();
+                        $('#divEditTransaction').hide();
+                    } else {
+                        $('#divTransactionTrackingDetails').hide();
+                        $('#divEditTransaction').show();
+                    }
+                },
+                error: function (msg) {
+                    alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                }
+            });
+        }
+
+        function onTransactionTrackingLoaded(data) {
+            console.log(data);
         }
 
         function onFlagTransaction(transactionId) {
             alertify.log('<asp:Label ID="LabelFlagNotAvailable" runat="server" />');
-
         }
+
+        // the variables below only handle the cosmetics and not actual access
+        var canSeeDetail = <asp:Literal ID="LiteralDetailAccess" runat="server" />;
+        var canWriteRows = <asp:Literal ID="LiteralWriteAccess" runat="server" />;
+        var canAuditTx = <asp:Literal ID="LiteralAuditAccess" runat="server" />;
+
 
 	</script>
 
@@ -167,25 +201,34 @@
         <div id="divModalBox" class="box modal">
             <div class="content">
                 <div class="divIconCloseModal"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2><asp:Literal ID="LiteralEditHeader" runat="server"/></h2>
-                <table id="gridTransaction" class="easyui-datagrid" style="width:100%;height:240px"
+                <table id="gridTransaction" class="easyui-datagrid" style="width:100%"
                 data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerTxData.aspx'"
                 idField="id">
-                <thead>
-                    <tr>
-                        <th data-options="field:'accountName',width:270"><asp:Label ID="LabelGridHeaderAccountName" runat="server" Text="XYZ Description" /></th>  
-                        <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive2" runat="server" Text="XYZ Debit" /></th>
-                        <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative2" runat="server" Text="XYZ Credit" /></th>
-                        <th data-options="field:'dateTime',width:90"><asp:Label ID="LabelGridHeaderDateTimeEntered" runat="server" Text="XYZ DateTime" /></th>
-                        <th data-options="field:'initials',width:50"><asp:Label ID="LabelGridHeaderInitials" runat="server" Text="ID#"/></th>  
-                    </tr>
-                </thead>
-            </table>
-                <div id="DivModalFields" class="entryFields">
-                    ModalFields
+                    <thead>
+                        <tr>
+                            <th data-options="field:'accountName',width:270"><asp:Label ID="LabelGridHeaderAccountName" runat="server" Text="XYZ Description" /></th>  
+                            <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive2" runat="server" Text="XYZ Debit" /></th>
+                            <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative2" runat="server" Text="XYZ Credit" /></th>
+                            <th data-options="field:'dateTime',width:90"><asp:Label ID="LabelGridHeaderDateTimeEntered" runat="server" Text="XYZ DateTime" /></th>
+                            <th data-options="field:'initials',width:50"><asp:Label ID="LabelGridHeaderInitials" runat="server" Text="ID#"/></th>  
+                        </tr>
+                    </thead>
+                </table>
+                
+                <div id="divEditTransaction">
+                    <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
+                    <div id="divModalFields" class="entryFields">
+                        ModalFields
+                    </div>
+                    <div class="entryLabels">
+                        entryLabels
+                    </div>
                 </div>
-                <div class="entryLabels">
-                    entryLabels
+                <div id="divTransactionTracking">
+                <h2><asp:Label ID="LabelTrackedTransactionHeader" runat="server" /></h2>
+                <div id="divTransactionTrackingDetails"></div>
                 </div>
+
             </div>
         </div>
     </div>
