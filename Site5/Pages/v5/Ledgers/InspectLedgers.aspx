@@ -3,6 +3,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     
+	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
+    <script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.snipe.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -47,7 +52,17 @@
 
                 $('#gridTransaction').datagrid({
                     onLoadSuccess: function() {
-                        $('#gridTransaction').datagrid('resize');
+                        
+                        // Dynamic reloading screws up resizing for some reason, so we'll have to resize the tx grid manually.
+
+                        var heightBody = $('div#divModalCover table.datagrid-btable').height();
+                        $('div#divModalCover div.datagrid-body').height(heightBody);
+
+                        var heightHeaders = $('div#divModalCover div.datagrid-header').height();
+                        $('div#divModalCover div.datagrid-view').height(heightBody + heightHeaders + 20); // +20 adds some margin on the bottom. It's an arbitrary number.
+                        $('div#divModalCover div.datagrid-wrap').height(heightBody + heightHeaders + 20);
+
+                        $('div#divModalBox').height($('div#divModalBox div.content').height() + 20);
 
                     }
                 });
@@ -103,6 +118,7 @@
 
             var jsonData = {};
             jsonData.txId = transactionId;
+            $('span#spanModalTransactionId').text(transactionId);
 
             $.ajax({
                 type: "POST",
@@ -115,6 +131,20 @@
                         $('#divTransactionTrackingDetails').html(msg.d);
                         $('#divTransactionTrackingDetails').show();
                         $('#divEditTransaction').hide();
+
+                        $("a.FancyBox_Gallery").fancybox({
+                            'overlayShow': true,
+                            'transitionIn': 'fade',
+                            'transitionOut': 'fade',
+                            'type': 'image',
+                            'opacity': true
+                        });
+
+                        $("a.linkViewDox").click(function () {
+                            $("a.FancyBox_Gallery[rel='" + $(this).attr("objectId") + "']").first().click();
+                        });
+
+
                     } else {
                         $('#divTransactionTrackingDetails').hide();
                         $('#divEditTransaction').show();
@@ -171,6 +201,10 @@
             100% { color: red; }
         }
 
+        span.hiddenDocLinks {
+            display: none;
+        }
+
     </style>
 
 </asp:Content>
@@ -199,9 +233,9 @@
     
         <div id="divModalCover" class="modalcover">
         <div id="divModalBox" class="box modal">
-            <div class="content">
+            <div class="content" style="overflow:hidden">
                 <div class="divIconCloseModal"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2><asp:Literal ID="LiteralEditHeader" runat="server"/></h2>
-                <table id="gridTransaction" class="easyui-datagrid" style="width:100%"
+                <table id="gridTransaction" class="easyui-datagrid" style="width:910px"
                 data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerTxData.aspx'"
                 idField="id">
                     <thead>

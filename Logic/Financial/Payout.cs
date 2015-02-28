@@ -264,6 +264,20 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public Person CreatedByPerson
+        {
+            get
+            {
+                if (base.CreatedByPersonId > 0)
+                {
+                    return Person.FromIdentity (base.CreatedByPersonId);
+                }
+
+                return null;
+            }
+        }
+
+
         public FinancialTransaction FinancialTransaction
         {
             get { return FinancialTransaction.FromDependency (this); }

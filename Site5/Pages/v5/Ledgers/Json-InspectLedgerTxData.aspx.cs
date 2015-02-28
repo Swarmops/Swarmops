@@ -48,8 +48,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             FinancialTransactionRows rows = transaction.Rows;
 
-            // SIGNOFF: CONTINUE HERE BUILDING JSON DATA FOR TRANSACTION
-
             StringBuilder result = new StringBuilder (16384);
 
             foreach (FinancialTransactionRow row in rows)
@@ -65,10 +63,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 {
                     debitString = String.Format ("{0:N2}", row.AmountCents/100.0);
                 }
-
-                string actionHtml = String.Format (
-                    "<img src=\"/Images/Icons/iconshock-magnifyingglass-16px.png\" class=\"LocalIconInspect\" txId=\"{0}\" />&nbsp;<img src=\"/Images/Icons/iconshock-flag-white-16px.png\" class=\"LocalIconFlag\" txId=\"{0}\" />",
-                    row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
 
                 result.Append ("{" + String.Format (
                     "\"id\":\"{0}\",\"dateTime\":\"{1:yyyy-MMM-dd HH:mm}\",\"accountName\":\"{2}\"," +

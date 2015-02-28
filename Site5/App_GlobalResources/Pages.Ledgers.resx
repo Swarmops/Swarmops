@@ -653,4 +653,12 @@
     <value>Document validation by {0} on {1:yyyy-MMM-dd}</value>
     <comment>"Document" refers to receipts, invoices, etc.</comment>
   </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>Executed by {0}.</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>Base salary {0} {1:N2}, gross adjustments {2:+N2;-N2;none}, gross salary {3:N2}, deducted tax {4:N2}, net adjustments {5:+N2;-N2;none}, payout {6:N2}.</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
 </root>

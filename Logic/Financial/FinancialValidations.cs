@@ -38,6 +38,10 @@ namespace Swarmops.Logic.Financial
             {
                 return FinancialDependencyType.Salary;
             }
+            if (foreignObject is CashAdvance)
+            {
+                return FinancialDependencyType.CashAdvance;
+            }
 
             throw new NotImplementedException ("Unknown dependency: " + foreignObject.GetType());
         }

@@ -373,15 +373,11 @@ body.rtl .sidebar {
 
 .divIconCloseModal {
     float:right;
-    margin-top: 2px;
-    margin-right: -5px
 }
 
 
 body.rtl .divIconCloseModal {
     float:left;
-    margin-top: 2px;
-    margin-left: -5px
 }
 
 

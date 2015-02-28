@@ -605,4 +605,23 @@
     <value>System</value>
     <comment>as in "Created by: System" for roles, transactions etc.</comment>
   </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>Salaries {0} for {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>Salary Taxes for {0:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>Salary #{0:N0} for {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>Salary #{0:N0} for {1:yyyy-MMM} for {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Salary #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>Taxes for Salary #{0:N0} for {1:yyyy-MMM}</value>
+  </data>
 </root>
