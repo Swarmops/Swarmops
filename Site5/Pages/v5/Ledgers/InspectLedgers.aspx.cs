@@ -169,7 +169,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
                         {
-                            subValidations.Add ("<strong>" + String.Format (Resources.Global.Financial_ExpenseClaimLongSpecification, claim.Identity) + ":</strong> " + claim.Organization.Currency.Code + " " + (claim.AmountCents / 100.0).ToString("N2") + ". " + HttpUtility.HtmlEncode (GetValidationDetails(claim.Validations)) + " " + GetDocumentDetails(claim.Documents, claim));
+                            subValidations.Add (GetObjectDetails (claim));
                         }
                     }
 
@@ -200,7 +200,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         foreach (CashAdvance advance in payout.DependentCashAdvancesPayout)
                         {
-                            subValidations.Add("<strong>" + String.Format(Resources.Global.Financial_CashAdvanceSpecification, advance.Identity) + ":</strong> " + advance.Organization.Currency.Code + " " + (advance.AmountCents / 100.0).ToString("N2") + ". " + HttpUtility.HtmlEncode(GetValidationDetails(advance.Validations)));
+                            subValidations.Add (GetObjectDetails (advance));
                         }
                     }
 
@@ -214,8 +214,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                             Resources.Global.Financial_InboundInvoiceSpecificationWithSender, invoice.Identity,
                             invoice.Supplier) + "</strong>");
 
-                        subValidations.Add("<strong>" + String.Format (Resources.Global.Financial_InboundInvoiceSpecification, invoice.Identity) + ":</strong> " + invoice.Organization.Currency.Code + " " + (invoice.AmountCents / 100.0).ToString("N2") + ". " + GetValidationDetails(invoice.Validations) + " " +
-                                            GetDocumentDetails (invoice.Documents, invoice));
+                        subValidations.Add(GetObjectDetails (invoice));
                     }
 
                     if (payout.DependentSalariesNet.Count > 0)
@@ -229,19 +228,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                             salary.Identity, salary.PayoutDate, HttpUtility.HtmlEncode (salary.PayrollItem.PersonCanonical)) +
                                         "</strong>");
 
-                        subValidations.Add ("<strong>" +
-                                            String.Format (Resources.Global.Financial_SalaryIdentity, salary.Identity) +
-                                            ":</strong> " +
-                                            String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_SalaryDetail,
-                                                salary.PayrollItem.Organization.Currency.Code,
-                                                salary.BaseSalaryCents/100.0,                              // base salary
-                                                (salary.GrossSalaryCents - salary.BaseSalaryCents)/100.0,  // before-tax adjustments
-                                                salary.GrossSalaryCents/100.0,                             // before-tax adjusted salary
-                                                salary.SubtractiveTaxCents/100.0,                          // tax deduction
-                                                (salary.NetSalaryCents + salary.SubtractiveTaxCents -
-                                                 salary.GrossSalaryCents)/100.0,                           // after-tax adjustments
-                                                salary.NetSalaryCents/100.0) +                             // actual payout amount
-                                            " " + GetValidationDetails (salary.Validations));
+                        subValidations.Add (GetObjectDetails (salary));
                     }
 
                     if (payout.DependentSalariesTax.Count > 0)
@@ -267,7 +254,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                     return "<p>" + result + "</p><p>" + String.Join ("</p><p>", subValidations) + "</p>";
 
-                    break;
+                case "ExpenseClaim":
+                case "CashAdvance":
+                case "InboundInvoice":
+                case "Salary":
+                    return "<p>" + GetObjectDetails ((IHasIdentity) someObject) + "</p>";
+                    
                 default:
                     return "Unimplemented dependency type: " + objectType;
             }
@@ -308,6 +300,62 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return "Documents were uploaded by " + documents[0].UploadedByPerson.Canonical + " at " +
                    documents[0].UploadedDateTime.ToString ("yyyy-MMM-dd HH:mm") + 
                    ". <a href='#' class='linkViewDox' objectId='" + objectIdString + "'>View documents.</a><span class='hiddenDocLinks'>" + docLink + "</span>";
+        }
+
+        private static string GetObjectDetails (IHasIdentity identifiableObject)
+        {
+            switch (identifiableObject.GetType().Name)
+            {
+                case "ExpenseClaim":
+                    ExpenseClaim claim = (ExpenseClaim) identifiableObject;
+
+                    return "<strong>" +
+                           String.Format (Resources.Global.Financial_ExpenseClaimLongSpecification, claim.Identity) +
+                           ":</strong> " + claim.Organization.Currency.Code + " " +
+                           (claim.AmountCents/100.0).ToString ("N2") + ". " +
+                           HttpUtility.HtmlEncode (GetValidationDetails (claim.Validations)) + " " +
+                           GetDocumentDetails (claim.Documents, claim);
+
+                case "CashAdvance":
+                    CashAdvance advance = (CashAdvance) identifiableObject;
+
+                    return "<strong>" +
+                           String.Format (Resources.Global.Financial_CashAdvanceSpecification, advance.Identity) +
+                           ":</strong> " + advance.Organization.Currency.Code + " " +
+                           (advance.AmountCents/100.0).ToString ("N2") + ". " +
+                           HttpUtility.HtmlEncode (GetValidationDetails (advance.Validations));
+
+                case "InboundInvoice":
+                    InboundInvoice invoice = (InboundInvoice) identifiableObject;
+
+                    return "<strong>" +
+                           String.Format (Resources.Global.Financial_InboundInvoiceSpecification, invoice.Identity) +
+                           ":</strong> " + invoice.Organization.Currency.Code + " " +
+                           (invoice.AmountCents/100.0).ToString ("N2") + ". " +
+                           GetValidationDetails (invoice.Validations) + " " +
+                           GetDocumentDetails (invoice.Documents, invoice);
+
+                case "Salary":
+                    Salary salary = (Salary) identifiableObject;
+
+                    return "<strong>" +
+                           String.Format (Resources.Global.Financial_SalaryIdentity, salary.Identity) +
+                           ":</strong> " +
+                           String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_SalaryDetail,
+                               salary.PayrollItem.Organization.Currency.Code,
+                               salary.BaseSalaryCents/100.0,                             // base salary
+                               (salary.GrossSalaryCents - salary.BaseSalaryCents)/100.0, // before-tax adjustments
+                               salary.GrossSalaryCents/100.0,                            // before-tax adjusted salary
+                               salary.SubtractiveTaxCents/100.0,                         // tax deduction
+                               (salary.NetSalaryCents + salary.SubtractiveTaxCents -
+                                salary.GrossSalaryCents)/100.0,                          // after-tax adjustments
+                               salary.NetSalaryCents/100.0) +                            // actual payout amount
+                           " " + GetValidationDetails (salary.Validations);
+
+                default:
+                    throw new NotImplementedException ("Unhandled object type in GetObjectDetails: " +
+                                                       identifiableObject.GetType().Name);
+            }
         }
     }
 }
