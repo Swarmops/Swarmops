@@ -1,4 +1,5 @@
 using System;
+using System.Security;
 using System.Web;
 using System.Web.UI;
 using Swarmops.Common.Enums;
@@ -7,6 +8,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
+using PermissionSet = Swarmops.Logic.Security.PermissionSet;
 
 /// <summary>
 ///     Base class to use for all data generators (JSON, etc). It supplies identification and localization.
@@ -92,6 +94,13 @@ public class PageV5Base : Page
 
     protected override void OnPreRender (EventArgs e)
     {
+        // Check that the page has security defined
+
+        if (this.PageAccessRequired == null)
+        {
+            throw new SecurityException("Page security is undefined at " + this.GetType().FullName + ". This is not permitted: minimum security must be defined for every page.");
+        }
+
         // Check security of page against users's credentials
 
         if (!CurrentUser.HasAccess (this.PageAccessRequired))

@@ -38,6 +38,8 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
                 this.TextName.Focus();
             }
+
+            this.PageAccessRequired = new Access (CurrentOrganization, AccessAspect.PersonalData, AccessType.Write);
         }
 
         private void Populate()

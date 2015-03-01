@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -16,6 +17,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             PageIcon = "iconshock-treasure";
             PageTitle = Resources.Pages.Ledgers.BalanceSheet_PageTitle;
             InfoBoxLiteral = Resources.Pages.Ledgers.BalanceSheet_Info;
+
+            // Security: If the org has open ledgers, then anyone may read. Otherwise, Financials.Read.
+
+            if (!String.IsNullOrEmpty (CurrentOrganization.OpenLedgersDomain))
+            {
+                PageAccessRequired = new Access (AccessAspect.Null, AccessType.Read);
+            }
+            else
+            {
+                PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Financials, AccessType.Read);
+            }
+
 
             if (!Page.IsPostBack)
             {

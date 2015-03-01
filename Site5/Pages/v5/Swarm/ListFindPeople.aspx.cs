@@ -16,6 +16,7 @@ namespace Swarmops.Frontend.Pages.Swarm
         protected void Page_Load (object sender, EventArgs e)
         {
             PageIcon = "iconshock-group-search";
+            this.PageAccessRequired = new Access (CurrentOrganization, AccessAspect.PersonalData, AccessType.Read);
 
             if (!Page.IsPostBack)
             {

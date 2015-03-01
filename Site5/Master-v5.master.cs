@@ -174,6 +174,13 @@ namespace Swarmops
                 this.LiteralBodyClass.Text = "rtl";
             }
 
+            // If we're running as an open-something identity, remove the Preferences div
+
+            if (CurrentUser.Identity < 0)
+            {
+                this.LiteralDocumentReadyHook.Text += @" $('#divUserPreferences').hide();";
+            }
+
         }
 
         private void SetupDropboxes()

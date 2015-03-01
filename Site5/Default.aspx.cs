@@ -1,6 +1,7 @@
 ﻿using System;
 using Resources;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 
 public partial class Default : PageV5Base
 {
@@ -8,6 +9,7 @@ public partial class Default : PageV5Base
     {
         PageTitle = Global.Dashboard_PageTitle;
         PageIcon = "iconshock-steering-wheel";
+        this.PageAccessRequired = new Access(AccessAspect.Null, AccessType.Read); // dummy security until there's something to show on Dashboard
 
         /*
         this.LabelActionListMotions.Text = Resources.Pages.Governance.ListMotions_PageTitle;

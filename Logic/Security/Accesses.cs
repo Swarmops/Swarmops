@@ -74,8 +74,27 @@ namespace Swarmops.Logic.Security
         /// <summary>
         ///     Access to this Swarmops installation and its operating parameters
         /// </summary>
-        System
+        System,
 
+        /// <summary>
+        ///     Null security: disable security checks entirely, like for Dashboard where each component rolls their own
+        /// </summary>
+        Null,
+
+        /// <summary>
+        ///     Uniquely identified person (logged on) in a specific org. Write access means they can submit expense reports on their own behalf &c.
+        /// </summary>
+        Participant,
+
+        /// <summary>
+        ///     Can enter received invoices, paper letters, etc.
+        /// </summary>
+        Secretarial,
+
+        /// <summary>
+        ///     Access to personalized salary data (implies financial read access)
+        /// </summary>
+        Payroll
     }
 
     public enum AccessType

@@ -23,10 +23,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 return;
             }
 
-            if (!CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
-            {
-                throw new UnauthorizedAccessException();
-            }
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Financials, AccessType.Write);
 
             PageIcon = "iconshock-invoice-greentick";
 

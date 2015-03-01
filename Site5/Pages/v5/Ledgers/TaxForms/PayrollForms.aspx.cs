@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Web.UI.WebControls;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers.TaxForms
 {
@@ -17,6 +18,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers.TaxForms
             PageIcon = "iconshock-treasure";
             PageTitle = Resources.Pages.Financial.PayrollTaxForms_PageTitle;
             InfoBoxLiteral = Resources.Pages.Financial.PayrollTaxForms_Info;
+
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Payroll, AccessType.Read);
 
             if (!Page.IsPostBack)
             {

@@ -19,6 +19,8 @@ namespace Swarmops.Frontend.Pages.Financial
                 return;
             }
 
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Financials, AccessType.Write);
+
             PageIcon = "iconshock-money-envelope";
 
             if (!Page.IsPostBack)

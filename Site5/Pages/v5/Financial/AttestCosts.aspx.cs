@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Services;
 using Resources;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
@@ -25,6 +26,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             PageIcon = "iconshock-stamped-paper";
+
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Participant, AccessType.Read);   // No specific access aspect for owning a budget (yet?)
 
             if (!Page.IsPostBack)
             {

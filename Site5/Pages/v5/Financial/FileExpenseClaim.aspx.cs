@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Financial
@@ -96,6 +97,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.FileExpenseClaim_PageTitle;
             PageIcon = "iconshock-moneyback";
             InfoBoxLiteral = Resources.Pages.Financial.FileExpenseClaim_Info;
+
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Participant, AccessType.Write);
 
             if (!Page.IsPostBack)
             {

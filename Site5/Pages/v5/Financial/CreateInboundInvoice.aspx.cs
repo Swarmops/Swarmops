@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Web;
 using Resources;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Financial
@@ -91,6 +92,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.CreateInboundInvoice_PageTitle;
             PageIcon = "iconshock-invoice";
             InfoBoxLiteral = Resources.Pages.Financial.CreateInboundInvoice_Info;
+
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Secretarial, AccessType.Write);
 
             if (!Page.IsPostBack)
             {

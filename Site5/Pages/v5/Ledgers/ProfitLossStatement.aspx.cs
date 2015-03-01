@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Resources.Pages;
+using Swarmops.Logic.Security;
 
 public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
 {
@@ -15,6 +16,18 @@ public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
         PageIcon = "iconshock-abacus";
         PageTitle = Ledgers.ProfitLossStatement_PageTitle;
         InfoBoxLiteral = Ledgers.ProfitLossStatement_Info;
+
+        // Security: If the org has open ledgers, then anyone may read. Otherwise, Financials.Read.
+
+        if (!String.IsNullOrEmpty(CurrentOrganization.OpenLedgersDomain))
+        {
+            PageAccessRequired = new Access(AccessAspect.Null, AccessType.Read);
+        }
+        else
+        {
+            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Financials, AccessType.Read);
+        }
+
 
         if (!Page.IsPostBack)
         {

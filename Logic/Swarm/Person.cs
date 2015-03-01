@@ -1110,6 +1110,13 @@ namespace Swarmops.Logic.Swarm
 
             string ids = string.Empty;
 
+            if (access.Aspect == AccessAspect.Null)
+            {
+                // Null security (like Dashboard), so return true
+
+                return true;
+            }
+
             if (access.Type == AccessType.Write)
             {
                 ids = access.Organization.Parameters.TemporaryAccessListWrite;

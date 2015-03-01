@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
@@ -16,6 +17,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             PageIcon = "iconshock-cabinet";
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Financials, AccessType.Read);
 
             if (!Page.IsPostBack)
             {

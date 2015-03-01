@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.v5.Financial
 {
@@ -18,6 +19,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.BoxTitle.Text = PageTitle = Resources.Pages.Financial.RequestCashAdvance_PageTitle;
             PageIcon = "iconshock-walletmoney";
             InfoBoxLiteral = Resources.Pages.Financial.RequestCashAdvance_Info;
+
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Participant, AccessType.Write);
 
             if (!Page.IsPostBack)
             {

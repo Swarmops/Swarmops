@@ -3,6 +3,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
@@ -15,6 +16,8 @@ namespace Swarmops.Frontend.Pages.Comms
             PageIcon = "iconshock-messages";
             PageTitle = Resources.Pages.Comms.SendMassMessage_Title;
             InfoBoxLiteral = Resources.Pages.Comms.SendMassMessage_Info;
+
+            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Correspondence, AccessType.Write);
 
             if (!Page.IsPostBack)
             {
