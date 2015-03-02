@@ -124,7 +124,7 @@
                 Use the <a href="/Pages/v5/Ledgers/AccountPlan.aspx">Account Plan</a> page to set detailed parameters for these accounts, once enabled.
             </div>
         </div>
-        <div title="<img src='/Images/Icons/iconshock-group-diversified-64px.png' />">
+        <div title="<img src='/Images/Icons/iconshock-contacts-64px.png' />">
             <h2>Participant policy</h2>
             <div class="entryFields">
                 <Swarmops5:DropDown ID="DropMembersWhen" CssClass="DropTemp" runat="server"/>&#8203;<br/>

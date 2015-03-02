@@ -418,7 +418,7 @@
         <Children>
 
           <MainMenuItem>
-            <ResourceKey>Administration_EditOrganization</ResourceKey>
+            <ResourceKey>Administration_OrganizationSettings</ResourceKey>
             <UserLevel>4</UserLevel>
             <Permissions />
             <ImageUrl>iconshock-box-cog</ImageUrl>
@@ -444,7 +444,7 @@
           </MainMenuItem>
 
           <MainMenuItem>
-            <ResourceKey>Admin_SystemSettings</ResourceKey>
+            <ResourceKey>Administration_SystemSettings</ResourceKey>
             <UserLevel>4</UserLevel>
             <Permissions />
             <ImageUrl>iconshock-battery-drill</ImageUrl>
