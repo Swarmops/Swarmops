@@ -159,16 +159,16 @@ namespace Swarmops.Plugins.Stock.TaxForms
                     graphics.DrawString(taxRates[2].ToString("F2", swedishCulture), fontPreprintedSmall,
                         brushPreprintedDiscreet, 855, 798);
                     graphics.DrawString(taxRates[1].ToString("F2", swedishCulture), fontPreprintedSmall,
-                        brushPreprintedDiscreet, 855, 865);
+                        brushPreprintedDiscreet, 855, 864);
                     graphics.DrawString(taxRates[0].ToString("F2", swedishCulture), fontPreprintedSmall,
-                        brushPreprintedDiscreet, 855, 930);
+                        brushPreprintedDiscreet, 855, 929);
 
                     graphics.DrawString(string.Format("{0}-{1}", yearBreakpoints[1], yearBreakpoints[2] - 1),
                         fontPreprintedSmall, brushPreprintedDiscreet, 215, 800);
                     graphics.DrawString(string.Format("{0}-", yearBreakpoints[2]),
                         fontPreprintedSmall, brushPreprintedDiscreet, 215, 866);
                     graphics.DrawString(string.Format("1938-{0}", yearBreakpoints[1] - 1),
-                        fontPreprintedSmall, brushPreprintedDiscreet, 215, 934);
+                        fontPreprintedSmall, brushPreprintedDiscreet, 215, 932);
                 }
 
                 // Draw the actual numbers: First, salary totals
