@@ -661,4 +661,7 @@
     <value>Base salary {0} {1:N2}, gross adjustments {2:+N2;-N2;none}, gross salary {3:N2}, deducted tax {4:N2}, net adjustments {5:+N2;-N2;none}, payout {6:N2}.</value>
     <comment>The "none"s in the format strings need to be translated.</comment>
   </data>
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>Please select an account in order to add a row to this transaction.</value>
+  </data>
 </root>

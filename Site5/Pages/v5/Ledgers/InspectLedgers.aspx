@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="InspectLedgers.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.InspectLedgers" %>
+<%@ Import Namespace="System.Net.Mime" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="CurrencyTextBox" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     
@@ -11,61 +13,61 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-                $('#gridLedgers').datagrid(
-                {
-                    onLoadSuccess: function() {
-                        $('div.datagrid').css('opacity', 1);
-                        $('#imageLoadIndicator').hide();
-                        $('span.loadingHeader').hide();
+            $('#gridLedgers').datagrid(
+            {
+                onLoadSuccess: function() {
+                    $('div.datagrid').css('opacity', 1);
+                    $('#imageLoadIndicator').hide();
+                    $('span.loadingHeader').hide();
 
-                        // Merge inbound, outbound balances
+                    // Merge inbound, outbound balances
 
-                        var rowCount = $('#gridLedgers').datagrid('getRows').length;
-                        if (rowCount > 0) {
-                            $('#gridLedgers').datagrid('mergeCells', {
-                                index: 0,
-                                field: 'description',
-                                colspan: 3
-                            });
-                            $('#gridLedgers').datagrid('mergeCells', {
-                                index: rowCount - 1,
-                                field: 'description',
-                                colspan: 3
-                            });
-                            //$('#gridOutstandingAccounts').dataGrid('mergeCells', {index: rowCount, field:'id', colspan: 5});
-                            // Footer cells could not be merged in datagrid :(
-
-                        }
-
-                        // Enable various actions on icon
-
-                        $('img.LocalIconFlag').click(function() {
-                            transactionId = $(this).attr("txId");
-                            onFlagTransaction("Add Tx Id here");
+                    var rowCount = $('#gridLedgers').datagrid('getRows').length;
+                    if (rowCount > 0) {
+                        $('#gridLedgers').datagrid('mergeCells', {
+                            index: 0,
+                            field: 'description',
+                            colspan: 3
                         });
-                        $('img.LocalIconInspect').click(function() {
-                            transactionId = $(this).attr("txId");
-                            onInspectTransaction(transactionId);
+                        $('#gridLedgers').datagrid('mergeCells', {
+                            index: rowCount - 1,
+                            field: 'description',
+                            colspan: 3
                         });
+                        //$('#gridOutstandingAccounts').dataGrid('mergeCells', {index: rowCount, field:'id', colspan: 5});
+                        // Footer cells could not be merged in datagrid :(
+
                     }
-                });
 
-                $('#gridTransaction').datagrid({
-                    onLoadSuccess: function() {
+                    // Enable various actions on icon
+
+                    $('img.LocalIconFlag').click(function() {
+                        transactionId = $(this).attr("txId");
+                        onFlagTransaction("Add Tx Id here");
+                    });
+                    $('img.LocalIconInspect').click(function() {
+                        transactionId = $(this).attr("txId");
+                        onInspectTransaction(transactionId);
+                    });
+                }
+            });
+
+            $('#gridTransaction').datagrid({
+                onLoadSuccess: function() {
                         
-                        // Dynamic reloading screws up resizing for some reason, so we'll have to resize the tx grid manually.
+                    // Dynamic reloading screws up resizing for some reason, so we'll have to resize the tx grid manually.
 
-                        var heightBody = $('div#divModalCover table.datagrid-btable').height();
-                        $('div#divModalCover div.datagrid-body').height(heightBody);
+                    var heightBody = $('div#divModalCover table.datagrid-btable').height();
+                    $('div#divModalCover div.datagrid-body').height(heightBody);
 
-                        var heightHeaders = $('div#divModalCover div.datagrid-header').height();
-                        $('div#divModalCover div.datagrid-view').height(heightBody + heightHeaders + 20); // +20 adds some margin on the bottom. It's an arbitrary number.
-                        $('div#divModalCover div.datagrid-wrap').height(heightBody + heightHeaders + 20);
+                    var heightHeaders = $('div#divModalCover div.datagrid-header').height();
+                    $('div#divModalCover div.datagrid-view').height(heightBody + heightHeaders + 20); // +20 adds some margin on the bottom. It's an arbitrary number.
+                    $('div#divModalCover div.datagrid-wrap').height(heightBody + heightHeaders + 20);
 
-                        $('div#divModalBox').height($('div#divModalBox div.content').height() + 20);
+                    $('div#divModalBox').height($('div#divModalBox div.content').height() + 20);
 
-                    }
-                });
+                }
+            });
 
 	        $('#<%=DropYears.ClientID %>').change(function () {
 	            reloadData();
@@ -79,10 +81,14 @@
     	        $('#divModalCover').fadeOut();
 
     	        if (transactionDirty) {
-    	            $('#tableAccountPlan').treegrid('reload');
+    	            $('#gridLedgers').datagrid('reload');
     	            transactionDirty = false;
     	        }
     	    });
+
+            $('#ButtonAddTransactionRow').click(function() {
+                addTransactionRow();
+            });
 
 	        $('div.datagrid').css('opacity', 0.4);
 	    });
@@ -96,6 +102,46 @@
             reloadData();
         }
 
+        function addTransactionRow() {
+            var amountString = $('#<%=TextInsertAmount.ClientID%>_Input').val();
+            var rowAccountId = 0;
+            var selectedAccountNode = $('#<%=this.BudgetAddRow.ClientID%>_DropBudgets').combotree('tree').tree('getSelected');
+            
+            if (selectedAccountNode == null || selectedAccountNode.id < 1) {
+                alertify.error (unescape('<asp:Literal ID="LiteralErrorAddRowSelectAccount" runat="server" />'));
+                return;
+            }
+
+            if (canWriteRows) {
+
+                transactionDirty = true;
+
+                var jsonData = {};
+                jsonData.txId = transactionId;
+                jsonData.accountId = selectedAccountNode.id;
+                jsonData.amountString = amountString;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Pages/v5/Ledgers/InspectLedgers.aspx/AddTransactionRow",
+                    data: $.toJSON(jsonData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(msg) {
+                        if (msg.d) { // true = success
+                            $('#gridTransaction').datagrid('reload');
+                            prefillUnbalancedAmount();
+                        } else {
+                            alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                        }
+                    },
+                    error: function(msg) {
+                        alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                    }
+                });
+            }
+        }
+
         function reloadData()
         {
             var selectedYear = $('#<%=DropYears.ClientID %>').val();
@@ -106,58 +152,92 @@
         	$('#imageLoadIndicator').show();
 	        $('div.datagrid').css('opacity', 0.4);
 
-	        $('#gridOutstandingAccounts').datagrid('reload');
+	        // $('#gridOutstandingAccounts').datagrid('reload');
+        }
+
+        function prefillUnbalancedAmount() {
+
+            var jsonData = {};
+            jsonData.txId = transactionId;
+
+            $.ajax({
+                type: "POST",
+                url: "/Pages/v5/Ledgers/InspectLedgers.aspx/GetUnbalancedAmount",
+                data: $.toJSON(jsonData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(msg) {
+                    if (msg.d.length > 1) {
+                        $('#<%=this.TextInsertAmount.ClientID%>_Input').val(msg.d);
+                        } else {
+                            alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                        }
+                    },
+                    error: function(msg) {
+                        alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                    }
+            });
         }
 
         function onInspectTransaction(transactionId) {
             window.scrollTo(0, 0);
             $('body').css('overflow-y', 'hidden');
             $('#divModalCover').fadeIn();
+            $('span#spanModalTransactionId').text(transactionId);
 
             $('#gridTransaction').datagrid({ url: 'Json-InspectLedgerTxData.aspx?TxId=' + transactionId });
 
             var jsonData = {};
             jsonData.txId = transactionId;
-            $('span#spanModalTransactionId').text(transactionId);
 
-            $.ajax({
-                type: "POST",
-                url: "/Pages/v5/Ledgers/InspectLedgers.aspx/GetTransactionTracking",
-                data: $.toJSON(jsonData),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    if (msg.d.length > 1) {
-                        $('#divTransactionTrackingDetails').html(msg.d);
-                        $('#divTransactionTrackingDetails').show();
-                        $('#divEditTransaction').hide();
+            if (canWriteRows) {
+                prefillUnbalancedAmount();
+            }
 
-                        $("a.FancyBox_Gallery").fancybox({
-                            'overlayShow': true,
-                            'transitionIn': 'fade',
-                            'transitionOut': 'fade',
-                            'type': 'image',
-                            'opacity': true
-                        });
+            if (canSeeDetail || canWriteRows) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Pages/v5/Ledgers/InspectLedgers.aspx/GetTransactionTracking",
+                    data: $.toJSON(jsonData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(msg) {
+                        if (msg.d.length > 1) {
+                            $('#divTransactionTrackingDetails').html(msg.d);
+                            $('#divTransactionTrackingDetails').show();
+                            $('#divEditTransaction').hide();
 
-                        $("a.linkViewDox").click(function () {
-                            $("a.FancyBox_Gallery[rel='" + $(this).attr("objectId") + "']").first().click();
-                        });
+                            $("a.FancyBox_Gallery").fancybox({
+                                'overlayShow': true,
+                                'transitionIn': 'fade',
+                                'transitionOut': 'fade',
+                                'type': 'image',
+                                'opacity': true
+                            });
+
+                            $("a.linkViewDox").click(function() {
+                                $("a.FancyBox_Gallery[rel='" + $(this).attr("objectId") + "']").first().click();
+                            });
 
 
-                    } else {
-                        $('#divTransactionTrackingDetails').hide();
-                        $('#divEditTransaction').show();
+                        } else {
+                            $('#divTransactionTracking').hide();
+
+                            if (canWriteRows) {
+                                $('#divEditTransaction').show();
+                            } else {
+                                $('#divEditTransaction').hide();
+                            }
+                        }
+                    },
+                    error: function(msg) {
+                        alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
                     }
-                },
-                error: function (msg) {
-                    alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
-                }
-            });
-        }
-
-        function onTransactionTrackingLoaded(data) {
-            console.log(data);
+                });
+            } else {
+                $('#divEditTransaction').hide();
+                $('#divTransactionTracking').hide();
+            }
         }
 
         function onFlagTransaction(transactionId) {
@@ -251,12 +331,8 @@
                 
                 <div id="divEditTransaction">
                     <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
-                    <div id="divModalFields" class="entryFields">
-                        ModalFields
-                    </div>
-                    <div class="entryLabels">
-                        entryLabels
-                    </div>
+                    <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value=' <asp:Literal ID="LiteralAddRowButton" runat="server" /> '/></span></h2></span>
+                    
                 </div>
                 <div id="divTransactionTracking">
                 <h2><asp:Label ID="LabelTrackedTransactionHeader" runat="server" /></h2>

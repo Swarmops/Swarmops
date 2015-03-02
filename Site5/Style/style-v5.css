@@ -307,7 +307,7 @@ body.rtl .sidebar {
 	margin-bottom: 7px;
 }
 
-.content > h2 > select, .content > h2 > span > span.combo > input.combo-text {
+.content > h2 > select, .content > h2 > span > span.combo > input.combo-text, .content > h2 > input, .content > h2 > span.elementFloatFar > input {
 	font-size: 16px;
     font-weight: bold;
     color: #1C397E;

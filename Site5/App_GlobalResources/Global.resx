@@ -624,4 +624,16 @@
   <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
     <value>Taxes for Salary #{0:N0} for {1:yyyy-MMM}</value>
   </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Account</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Amount</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>Add</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
 </root>

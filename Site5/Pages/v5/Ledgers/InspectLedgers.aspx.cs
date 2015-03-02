@@ -95,6 +95,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     AccessType.Write)))
             {
                 this.LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_EditingTransactionX;
+                this.LabelAddRowAccount.Text = Resources.Global.Financial_Account;
+                this.LabelAddRowAmount.Text = Resources.Global.Financial_Amount;
+                this.LiteralErrorAddRowSelectAccount.Text =
+                    Resources.Pages.Ledgers.InspectLedgers_TxDetail_ErrorAddRowNoAccount;
+                this.LiteralAddRowButton.Text = Resources.Global.Global_Add;
             }
             else // read access, at a minimum of AccessAspect.Bookkeeping
             {
@@ -118,18 +123,68 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
         [WebMethod]
-        public static string GetTransactionTracking (int txId)
+        public static bool AddTransactionRow(int txId, int accountId, string amountString)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization,
+                    AccessAspect.Bookkeeping, AccessType.Write)))
+            {
+                return false; // fail
+            }
+
+            FinancialTransaction transaction = FinancialTransaction.FromIdentity(txId);
+            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
+
+            Double amountFloat = Double.Parse (amountString);
+            Int64 amountCents = (Int64) (amountFloat*100.0);
+
+            if (account.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new InvalidOperationException("Account/Organization mismatch");
+            }
+
+            if (amountCents == 0)
+            {
+                return false;
+            }
+
+            transaction.AddRow (account, amountCents, authData.CurrentUser);
+
+            return true;
+        }
+
+        [WebMethod]
+        public static string GetUnbalancedAmount(int txId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization,
+                    AccessAspect.Bookkeeping, AccessType.Read)))
+            {
+                return string.Empty; // leave no clue to an attacker why the call failed
+            }
+
+            FinancialTransaction transaction = FinancialTransaction.FromIdentity(txId);
+
+            return (-transaction.Rows.AmountCentsTotal / 100.0).ToString("N2");
+        }
+
+        [WebMethod]
+        public static string GetTransactionTracking(int txId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization,
                     AccessAspect.BookkeepingDetails, AccessType.Read)))
             {
                 return string.Empty; // leave no clue to an attacker why the call failed
             }
 
-            FinancialTransaction transaction = FinancialTransaction.FromIdentity (txId);
+            FinancialTransaction transaction = FinancialTransaction.FromIdentity(txId);
 
             IHasIdentity dependency = transaction.Dependency;
 
@@ -138,10 +193,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return string.Empty;
             }
 
-            return GetTrackingDetails (dependency);
+            return GetTrackingDetails(dependency);
         }
 
-        private static string GetTrackingDetails (object someObject)
+        private static string GetTrackingDetails(object someObject)
         {
             string objectType = someObject.GetType().Name;
 
