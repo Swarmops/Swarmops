@@ -87,12 +87,13 @@ namespace Swarmops.Pages.Security
 
             // If we're on an Open Ledgers domain, autologin as Open Ledgers
 
-            Organization organization = Organization.FromOpenLedgersDomain(requestHost); // returns null if doesn't exist
+            Organization organizationOpenLedgers = Organization.FromOpenLedgersDomain(requestHost); // returns null if doesn't exist
 
-            if (organization != null)
+            if (organizationOpenLedgers != null)
             {
-                Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(Resources.Pages.Security.Login_AsOpenLedgers)));
-                FormsAuthentication.SetAuthCookie(Person.OpenLedgersIdentity.ToString() + "," + organization.Identity.ToString(), true);
+                Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(String.Format(Resources.Pages.Security.Login_AsOpenLedgers, organizationOpenLedgers.Name))));
+                FormsAuthentication.SetAuthCookie(Person.OpenLedgersIdentity.ToString() + "," + organizationOpenLedgers.Identity.ToString(), true);
+                Response.Redirect ("/Ledgers/BalanceSheet");
             }
 
             // Check for SSL and force it

@@ -96,7 +96,7 @@ public class PageV5Base : Page
     {
         // Check that the page has security defined
 
-        if (this.PageAccessRequired == null)
+        if (this.PageAccessRequired == null && !this.GetType().FullName.ToLowerInvariant().Contains ("accessdenied"))
         {
             throw new SecurityException("Page security is undefined at " + this.GetType().FullName + ". This is not permitted: minimum security must be defined for every page.");
         }

@@ -18,7 +18,7 @@ namespace Swarmops.Basic.Types.Security
             BasicPersonRole[] organizationPersonRoles,
             BasicPersonRole[] nodePersonRoles)
         {
-            if (personId < 1)
+            if (personId < -1)
             {
                 throw new ArgumentOutOfRangeException ("PersonId cannot be " + personId);
             }

@@ -594,7 +594,18 @@ namespace Swarmops.Logic.Swarm
 
         public static Person FromIdentity (int personId)
         {
-            return FromBasic (SwarmDb.GetDatabaseForReading().GetPerson (personId));
+            if (personId > 0)
+            {
+                return FromBasic (SwarmDb.GetDatabaseForReading().GetPerson (personId));
+            }
+            else if (personId == Person.OpenLedgersIdentity)
+            {
+                return
+                    FromBasic (new BasicPerson (personId, string.Empty, "Open Ledgers", string.Empty, string.Empty,
+                        string.Empty, string.Empty, 0, string.Empty, 0, DateTime.MinValue, PersonGender.Unknown));
+            }
+
+            throw new ArgumentException("No such PersonId: " + personId);
         }
 
         public static Person FromIdentityAggressive (int personId)
@@ -1114,6 +1125,14 @@ namespace Swarmops.Logic.Swarm
             {
                 // Null security (like Dashboard), so return true
 
+                return true;
+            }
+
+            // if Open Ledgers
+
+            if ((access.Aspect == AccessAspect.Bookkeeping || access.Aspect == AccessAspect.Financials) &&
+                access.Type == AccessType.Read && this.Identity == Person.OpenLedgersIdentity)
+            {
                 return true;
             }
 

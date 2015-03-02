@@ -32,7 +32,14 @@ namespace Swarmops.Controls.Base
 
             XmlSerializer serializer = new XmlSerializer (typeof (MainMenuItem[]));
 
-            using (TextReader reader = new StreamReader (Server.MapPath ("~/MainMenu-v5.xml")))
+            string mainMenuFile = "~/MainMenu-v5.xml";
+
+            if (CurrentUser.Identity == Person.OpenLedgersIdentity)
+            {
+                mainMenuFile = "~/MainMenu-v5-OpenLedgers.xml";
+            }
+
+            using (TextReader reader = new StreamReader (Server.MapPath (mainMenuFile)))
             {
                 MainMenuData = (MainMenuItem[]) serializer.Deserialize (reader);
             }
@@ -90,9 +97,18 @@ namespace Swarmops.Controls.Base
                     // TODO: More types here, and check with the CSS. Some work to get good looking
 
                 case MenuItemType.Link:
-                    output.Write (
-                        "<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-{3}.png\"  height=\"20\" width=\"20\"  />{2}</a>",
-                        menuItem.ImageUrl, prettyNavUrl, localizedText, iconSize);
+                    if (!string.IsNullOrEmpty (menuItem.ImageUrl))
+                    {
+                        output.Write (
+                            "<a href=\"{1}\"><img src=\"/Images/PageIcons/{0}-{3}.png\"  height=\"20\" width=\"20\"  />{2}</a>",
+                            menuItem.ImageUrl, prettyNavUrl, localizedText, iconSize);
+                    }
+                    else
+                    {
+                        output.Write(
+                            "<a href=\"{0}\">{1}</a>",
+                            prettyNavUrl, localizedText);
+                    }
                     break;
                 case MenuItemType.Disabled:
                 case MenuItemType.BuildNumber:

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.v5.User
 {
@@ -14,6 +15,8 @@ namespace Swarmops.Frontend.Pages.v5.User
             {
                 Localize();
             }
+
+            PageAccessRequired = new Access (AccessAspect.Null, AccessType.Unknown);
 
             PopulateRepeater();
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.v5.User
 {
@@ -18,9 +19,10 @@ namespace Swarmops.Frontend.Pages.v5.User
             }
 
             Response.SetCookie(new HttpCookie("PreferredCulture", cultureId));
+            PageAccessRequired = new Access(AccessAspect.Null, AccessType.Unknown);
             
             AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
-            if (authenticationData.CurrentUser != null)
+            if (authenticationData.CurrentUser != null && authenticationData.CurrentUser.PersonId > 0)
             {
                 authenticationData.CurrentUser.PreferredCulture = cultureId;
             }
