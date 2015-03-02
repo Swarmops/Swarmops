@@ -157,18 +157,18 @@ namespace Swarmops.Plugins.Stock.TaxForms
                     // Draw the years and tax rates and other on-form constants more discreetly
 
                     graphics.DrawString(taxRates[2].ToString("F2", swedishCulture), fontPreprintedSmall,
-                        brushPreprintedDiscreet, 870, 798);
+                        brushPreprintedDiscreet, 865, 798);
                     graphics.DrawString(taxRates[1].ToString("F2", swedishCulture), fontPreprintedSmall,
-                        brushPreprintedDiscreet, 870, 865);
+                        brushPreprintedDiscreet, 865, 863);
                     graphics.DrawString(taxRates[0].ToString("F2", swedishCulture), fontPreprintedSmall,
-                        brushPreprintedDiscreet, 870, 932);
+                        brushPreprintedDiscreet, 865, 928);
 
-                    graphics.DrawString(string.Format("{0} - {1}", yearBreakpoints[1], yearBreakpoints[2] - 1),
-                        fontPreprintedSmall, brushPreprintedDiscreet, 220, 800);
-                    graphics.DrawString(string.Format("{0} -", yearBreakpoints[2] - 1),
-                        fontPreprintedSmall, brushPreprintedDiscreet, 220, 863);
-                    graphics.DrawString(string.Format("{0}", yearBreakpoints[1] - 1),
-                        fontPreprintedSmall, brushPreprintedDiscreet, 270, 924);
+                    graphics.DrawString(string.Format("{0}-{1}", yearBreakpoints[1], yearBreakpoints[2] - 1),
+                        fontPreprintedSmall, brushPreprintedDiscreet, 215, 800);
+                    graphics.DrawString(string.Format("{0}-", yearBreakpoints[2]),
+                        fontPreprintedSmall, brushPreprintedDiscreet, 215, 866);
+                    graphics.DrawString(string.Format("1938-{0}", yearBreakpoints[1] - 1),
+                        fontPreprintedSmall, brushPreprintedDiscreet, 215, 930);
                 }
 
                 // Draw the actual numbers: First, salary totals
