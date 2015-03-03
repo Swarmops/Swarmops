@@ -2,6 +2,7 @@
 using Resources;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Swarm;
 
 public partial class Default : PageV5Base
 {
@@ -17,5 +18,12 @@ public partial class Default : PageV5Base
 
         InfoBoxLiteral =
             "This is a Dashboard placeholder. It will contain a snapshot of the state of things as soon as the basic functions are re-implemented in the new interface.";
+
+        // If Open Ledgers, redirect to Balance Sheet: Don't show Dashboard
+
+        if (CurrentUser.Identity == Person.OpenLedgersIdentity)
+        {
+            Response.Redirect ("/Ledgers/BalanceSheet");
+        }
     }
 }
