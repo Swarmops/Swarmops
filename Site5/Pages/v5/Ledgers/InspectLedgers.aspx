@@ -147,12 +147,12 @@
             var selectedYear = $('#<%=DropYears.ClientID %>').val();
             var selectedMonth = $('#<%=DropMonths.ClientID %>').val();
 
+            currentYear = selectedYear;
+
             $('#gridLedgers').datagrid({ url: 'Json-InspectLedgerData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth + "&AccountId=" + accountId});
 
         	$('#imageLoadIndicator').show();
 	        $('div.datagrid').css('opacity', 0.4);
-
-	        // $('#gridOutstandingAccounts').datagrid('reload');
         }
 
         function prefillUnbalancedAmount() {
@@ -190,7 +190,7 @@
             var jsonData = {};
             jsonData.txId = transactionId;
 
-            if (canWriteRows) {
+            if (canWriteRows && ledgersClosedUntil < currentYear) {
                 prefillUnbalancedAmount();
             }
 
@@ -223,7 +223,7 @@
                         } else {
                             $('#divTransactionTracking').hide();
 
-                            if (canWriteRows) {
+                            if (canWriteRows && currentYear > ledgersClosedUntil) {
                                 $('#divEditTransaction').show();
                             } else {
                                 $('#divEditTransaction').hide();
@@ -248,6 +248,8 @@
         var canSeeDetail = <asp:Literal ID="LiteralDetailAccess" runat="server" />;
         var canWriteRows = <asp:Literal ID="LiteralWriteAccess" runat="server" />;
         var canAuditTx = <asp:Literal ID="LiteralAuditAccess" runat="server" />;
+        var ledgersClosedUntil = <asp:Literal ID="LiteralLedgersClosedUntil" runat="server" />;
+        var currentYear = 0;
 
 
 	</script>

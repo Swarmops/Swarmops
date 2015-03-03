@@ -670,4 +670,7 @@
   <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
     <value>Annual Profit</value>
   </data>
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>(detailed description withheld)</value>
+  </data>
 </root>

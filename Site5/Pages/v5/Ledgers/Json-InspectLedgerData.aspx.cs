@@ -55,6 +55,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             DateTime balanceStart = dawnOfMankind;
             bool zeroStart = false;
             bool zeroEnd = false;
+            bool displayDescription = CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read));
 
             if (month > 0 && month <= 12)
             {
@@ -142,6 +143,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 string creditString = string.Empty;
                 string debitString = string.Empty;
+                string description = row.Description;
+
+                if (!displayDescription)
+                {
+                    description = Resources.Pages.Ledgers.InspectLedgers_TxDetail_DescriptionWithheld;
+                }
 
                 if (row.AmountCents < 0)
                 {
@@ -163,7 +170,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     "\"deltaPos\":\"{3}\",\"deltaNeg\":\"{4}\",\"balance\":\"{5:N0}\",\"action\":\"{6}\"",
                     row.FinancialTransactionId,
                     row.TransactionDateTime,
-                    JsonSanitize (row.Description),
+                    JsonSanitize (description),
                     debitString,
                     creditString,
                     runningBalance/100.0,
