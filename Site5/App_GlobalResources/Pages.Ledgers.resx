@@ -664,4 +664,10 @@
   <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
     <value>Please select an account in order to add a row to this transaction.</value>
   </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>Annual Loss</value>
+  </data>
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>Annual Profit</value>
+  </data>
 </root>

@@ -29,6 +29,11 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
         // TODO: this fn should move to Organization
 
         int closingYear = CurrentOrganization.Parameters.FiscalBooksClosedUntilYear + 1;
+        if (closingYear < 1000)
+        {
+            closingYear = CurrentOrganization.FirstFiscalYear;
+        }
+
 
         bool hasOpenTxForClosingYear = false;
 
@@ -116,11 +121,17 @@ public partial class Pages_v5_Ledgers_CloseLedgers : PageV5Base
 
         if (balanceDeltaCents == -resultsDeltaCents && closingYear < DateTime.Today.Year)
         {
+            string transactionLabel = Resources.Pages.Ledgers.CloseLedgers_AnnualProfit;
+
+            if (balanceDeltaCents < 0)
+            {
+                transactionLabel = Resources.Pages.Ledgers.CloseLedgers_AnnualLoss;
+            }
+
             FinancialTransaction resultTransaction = FinancialTransaction.Create (CurrentOrganization.Identity,
-                new DateTime (closingYear, 12, 31, 23, 59, 00), "Årets resultat " + closingYear);
-            // TODO: Localize string
-            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, null);
-            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents, null);
+                new DateTime (closingYear, 12, 31, 23, 59, 00), transactionLabel +  " " + closingYear);
+            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.CostsYearlyResult, -resultsDeltaCents, CurrentUser);
+            resultTransaction.AddRow (CurrentOrganization.FinancialAccounts.DebtsEquity, -balanceDeltaCents, CurrentUser);
 
             // Ledgers are now at zero-sum for the year's result accounts and from the start up until end-of-closing-year for the balance accounts.
 
