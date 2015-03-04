@@ -10,22 +10,21 @@ using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
-using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
 {
     public partial class InspectLedgers : PageV5Base
     {
-        protected void Page_Load (object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!CurrentOrganization.IsEconomyEnabled)
             {
-                Response.Redirect ("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
+                Response.Redirect("/Pages/v5/Financial/EconomyNotEnabled.aspx", true);
                 return;
             }
 
-            PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read);
+            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read);
             DbVersionRequired = 0; // base schema is fine
             PageTitle = Resources.Pages.Ledgers.InspectLedgers_PageTitle;
             InfoBoxLiteral = Resources.Pages.Ledgers.InspectLedgers_Info;
@@ -39,28 +38,28 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                 while (year >= firstYear)
                 {
-                    this.DropYears.Items.Add (year.ToString (CultureInfo.InvariantCulture));
+                    this.DropYears.Items.Add(year.ToString(CultureInfo.InvariantCulture));
                     year--;
                 }
 
                 for (int monthNumber = 1; monthNumber <= 12; monthNumber++)
                 {
-                    this.DropMonths.Items.Add (new ListItem (new DateTime (2014, monthNumber, 1).ToString ("MMM"),
-                        monthNumber.ToString (CultureInfo.InvariantCulture))); // will autolocalize
+                    this.DropMonths.Items.Add(new ListItem(new DateTime(2014, monthNumber, 1).ToString("MMM"),
+                        monthNumber.ToString(CultureInfo.InvariantCulture))); // will autolocalize
                 }
 
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q1, "21"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q1, "21"));
                 // quarters and all-year are coded as fake month numbers
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q2, "22"));
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q3, "23"));
-                this.DropMonths.Items.Add (new ListItem (Global.Global_Q4, "24"));
-                this.DropMonths.Items.Add (new ListItem (Global.Global_AllYear, "31"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q2, "22"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q3, "23"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_Q4, "24"));
+                this.DropMonths.Items.Add(new ListItem(Global.Global_AllYear, "31"));
 
                 this.DropYears.SelectedIndex = 0;
-                this.DropMonths.SelectedValue = today.Month.ToString (CultureInfo.InvariantCulture);
+                this.DropMonths.SelectedValue = today.Month.ToString(CultureInfo.InvariantCulture);
             }
 
-            RegisterControl (EasyUIControl.DataGrid | EasyUIControl.Tree);
+            RegisterControl(EasyUIControl.DataGrid | EasyUIControl.Tree);
 
             Localize();
         }
@@ -92,15 +91,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             // if write access
 
             if (
-                CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails,
+                CurrentUser.HasAccess(new Access(CurrentOrganization, AccessAspect.BookkeepingDetails,
                     AccessType.Write)))
             {
                 this.LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_EditingTransactionX;
-                this.LabelAddRowAccount.Text = Resources.Global.Financial_Account;
-                this.LabelAddRowAmount.Text = Resources.Global.Financial_Amount;
-                this.LiteralErrorAddRowSelectAccount.Text =
-                    Resources.Pages.Ledgers.InspectLedgers_TxDetail_ErrorAddRowNoAccount;
-                this.LiteralAddRowButton.Text = Resources.Global.Global_Add;
             }
             else // read access, at a minimum of AccessAspect.Bookkeeping
             {
@@ -121,64 +115,6 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 (CurrentUser.HasAccess(new Access(CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read)))
                     ? "true"
                     : "false";
-
-            // this.LiteralLedgersClosedUntil.Text = CurrentOrganization.Parameters.FiscalBooksClosedUntilYear.ToString();
-        }
-
-        [WebMethod]
-        public static bool AddTransactionRow(int txId, int accountId, string amountString)
-        {
-            AuthenticationData authData = GetAuthenticationDataAndCulture();
-
-            if (
-                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization,
-                    AccessAspect.Bookkeeping, AccessType.Write)))
-            {
-                return false; // fail
-            }
-
-            FinancialTransaction transaction = FinancialTransaction.FromIdentity(txId);
-
-            if (authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >= transaction.DateTime.Year)
-            {
-                return false; // can't edit closed books
-            }
-
-            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
-
-            Double amountFloat = Double.Parse (amountString);
-            Int64 amountCents = (Int64) (amountFloat*100.0);
-
-            if (account.OrganizationId != authData.CurrentOrganization.Identity)
-            {
-                throw new InvalidOperationException("Account/Organization mismatch");
-            }
-
-            if (amountCents == 0)
-            {
-                return false;
-            }
-
-            transaction.AddRow (account, amountCents, authData.CurrentUser);
-
-            return true;
-        }
-
-        [WebMethod]
-        public static string GetUnbalancedAmount(int txId)
-        {
-            AuthenticationData authData = GetAuthenticationDataAndCulture();
-
-            if (
-                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization,
-                    AccessAspect.Bookkeeping, AccessType.Read)))
-            {
-                return string.Empty; // leave no clue to an attacker why the call failed
-            }
-
-            FinancialTransaction transaction = FinancialTransaction.FromIdentity(txId);
-
-            return (-transaction.Rows.AmountCentsTotal / 100.0).ToString("N2");
         }
 
         [WebMethod]
@@ -212,9 +148,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             switch (objectType)
             {
                 case "Payout":
-                    Payout payout = (Payout) someObject;
+                    Payout payout = (Payout)someObject;
                     string result =
-                        String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_ThisIsPayoutX, payout.Identity) +
+                        String.Format(Resources.Pages.Ledgers.InspectLedgers_TxDetail_ThisIsPayoutX, payout.Identity) +
                         " ";
 
                     List<string> subValidations = new List<string>();
@@ -233,7 +169,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         foreach (ExpenseClaim claim in payout.DependentExpenseClaims)
                         {
-                            subValidations.Add (GetObjectDetails (claim));
+                            subValidations.Add("<strong>" + String.Format(Resources.Global.Financial_ExpenseClaimLongSpecification, claim.Identity) + ":</strong> " + claim.Organization.Currency.Code + " " + (claim.AmountCents / 100.0).ToString("N2") + ". " + HttpUtility.HtmlEncode(GetValidationDetails(claim.Validations)) + " " + GetDocumentDetails(claim.Documents, claim));
                         }
                     }
 
@@ -264,7 +200,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         foreach (CashAdvance advance in payout.DependentCashAdvancesPayout)
                         {
-                            subValidations.Add (GetObjectDetails (advance));
+                            subValidations.Add("<strong>" + String.Format(Resources.Global.Financial_CashAdvanceSpecification, advance.Identity) + ":</strong> " + advance.Organization.Currency.Code + " " + (advance.AmountCents / 100.0).ToString("N2") + ". " + HttpUtility.HtmlEncode(GetValidationDetails(advance.Validations)));
                         }
                     }
 
@@ -274,11 +210,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         InboundInvoice invoice = payout.DependentInvoices[0];
 
-                        subResults.Add ("<strong>" + String.Format (
+                        subResults.Add("<strong>" + String.Format(
                             Resources.Global.Financial_InboundInvoiceSpecificationWithSender, invoice.Identity,
                             invoice.Supplier) + "</strong>");
 
-                        subValidations.Add(GetObjectDetails (invoice));
+                        subValidations.Add("<strong>" + String.Format(Resources.Global.Financial_InboundInvoiceSpecification, invoice.Identity) + ":</strong> " + invoice.Organization.Currency.Code + " " + (invoice.AmountCents / 100.0).ToString("N2") + ". " + GetValidationDetails(invoice.Validations) + " " +
+                                            GetDocumentDetails(invoice.Documents, invoice));
                     }
 
                     if (payout.DependentSalariesNet.Count > 0)
@@ -287,12 +224,24 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
                         Salary salary = payout.DependentSalariesNet[0];
 
-                        subResults.Add ("<strong>" +
-                                        String.Format (Resources.Global.Financial_SalaryDualSpecificationWithRecipient,
-                                            salary.Identity, salary.PayoutDate, HttpUtility.HtmlEncode (salary.PayrollItem.PersonCanonical)) +
+                        subResults.Add("<strong>" +
+                                        String.Format(Resources.Global.Financial_SalaryDualSpecificationWithRecipient,
+                                            salary.Identity, salary.PayoutDate, HttpUtility.HtmlEncode(salary.PayrollItem.PersonCanonical)) +
                                         "</strong>");
 
-                        subValidations.Add (GetObjectDetails (salary));
+                        subValidations.Add("<strong>" +
+                                            String.Format(Resources.Global.Financial_SalaryIdentity, salary.Identity) +
+                                            ":</strong> " +
+                                            String.Format(Resources.Pages.Ledgers.InspectLedgers_TxDetail_SalaryDetail,
+                                                salary.PayrollItem.Organization.Currency.Code,
+                                                salary.BaseSalaryCents / 100.0,                              // base salary
+                                                (salary.GrossSalaryCents - salary.BaseSalaryCents) / 100.0,  // before-tax adjustments
+                                                salary.GrossSalaryCents / 100.0,                             // before-tax adjusted salary
+                                                salary.SubtractiveTaxCents / 100.0,                          // tax deduction
+                                                (salary.NetSalaryCents + salary.SubtractiveTaxCents -
+                                                 salary.GrossSalaryCents) / 100.0,                           // after-tax adjustments
+                                                salary.NetSalaryCents / 100.0) +                             // actual payout amount
+                                            " " + GetValidationDetails(salary.Validations));
                     }
 
                     if (payout.DependentSalariesTax.Count > 0)
@@ -306,30 +255,25 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         }
                         else
                         {
-                            subResults.Add ("<strong>" +
-                                            String.Format (Resources.Global.Financial_SalariesTaxSpecification, salary0.PayoutDate) + "</strong>");
+                            subResults.Add("<strong>" +
+                                            String.Format(Resources.Global.Financial_SalariesTaxSpecification, salary0.PayoutDate) + "</strong>");
                         }
                     }
 
 
                     result +=
-                        String.Join (" " + Resources.Pages.Ledgers.InspectLedgers_TxDetail_CombinedWith + " ",
-                            subResults) + ". " + String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_PaidOutBy, payout.CreatedByPerson.Canonical);
+                        String.Join(" " + Resources.Pages.Ledgers.InspectLedgers_TxDetail_CombinedWith + " ",
+                            subResults) + ". " + String.Format(Resources.Pages.Ledgers.InspectLedgers_TxDetail_PaidOutBy, payout.CreatedByPerson.Canonical);
 
-                    return "<p>" + result + "</p><p>" + String.Join ("</p><p>", subValidations) + "</p>";
+                    return "<p>" + result + "</p><p>" + String.Join("</p><p>", subValidations) + "</p>";
 
-                case "ExpenseClaim":
-                case "CashAdvance":
-                case "InboundInvoice":
-                case "Salary":
-                    return "<p>" + GetObjectDetails ((IHasIdentity) someObject) + "</p>";
-                    
+                    break;
                 default:
                     return "Unimplemented dependency type: " + objectType;
             }
         }
 
-        private static string GetValidationDetails (FinancialValidations validations)
+        private static string GetValidationDetails(FinancialValidations validations)
         {
             string result = string.Empty;
 
@@ -337,7 +281,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 if (validation.ValidationType == FinancialValidationType.Attestation)
                 {
-                    result += String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_AttestedByX + ". ", validation.Person.Canonical,
+                    result += String.Format(Resources.Pages.Ledgers.InspectLedgers_TxDetail_AttestedByX + ". ", validation.Person.Canonical,
                         validation.DateTime);
                 }
                 if (validation.ValidationType == FinancialValidationType.Validation)
@@ -350,7 +294,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return result;
         }
 
-        private static string GetDocumentDetails (Documents documents, IHasIdentity identifiableObject)
+        private static string GetDocumentDetails(Documents documents, IHasIdentity identifiableObject)
         {
             string docLink = string.Empty;
             string objectIdString = identifiableObject.GetType().Name + identifiableObject.Identity;
@@ -362,64 +306,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             return "Documents were uploaded by " + documents[0].UploadedByPerson.Canonical + " at " +
-                   documents[0].UploadedDateTime.ToString ("yyyy-MMM-dd HH:mm") + 
+                   documents[0].UploadedDateTime.ToString("yyyy-MMM-dd HH:mm") +
                    ". <a href='#' class='linkViewDox' objectId='" + objectIdString + "'>View documents.</a><span class='hiddenDocLinks'>" + docLink + "</span>";
-        }
-
-        private static string GetObjectDetails (IHasIdentity identifiableObject)
-        {
-            switch (identifiableObject.GetType().Name)
-            {
-                case "ExpenseClaim":
-                    ExpenseClaim claim = (ExpenseClaim) identifiableObject;
-
-                    return "<strong>" +
-                           String.Format (Resources.Global.Financial_ExpenseClaimLongSpecification, claim.Identity) +
-                           ":</strong> " + claim.Organization.Currency.Code + " " +
-                           (claim.AmountCents/100.0).ToString ("N2") + ". " +
-                           HttpUtility.HtmlEncode (GetValidationDetails (claim.Validations)) + " " +
-                           GetDocumentDetails (claim.Documents, claim);
-
-                case "CashAdvance":
-                    CashAdvance advance = (CashAdvance) identifiableObject;
-
-                    return "<strong>" +
-                           String.Format (Resources.Global.Financial_CashAdvanceSpecification, advance.Identity) +
-                           ":</strong> " + advance.Organization.Currency.Code + " " +
-                           (advance.AmountCents/100.0).ToString ("N2") + ". " +
-                           HttpUtility.HtmlEncode (GetValidationDetails (advance.Validations));
-
-                case "InboundInvoice":
-                    InboundInvoice invoice = (InboundInvoice) identifiableObject;
-
-                    return "<strong>" +
-                           String.Format (Resources.Global.Financial_InboundInvoiceSpecification, invoice.Identity) +
-                           ":</strong> " + invoice.Organization.Currency.Code + " " +
-                           (invoice.AmountCents/100.0).ToString ("N2") + ". " +
-                           GetValidationDetails (invoice.Validations) + " " +
-                           GetDocumentDetails (invoice.Documents, invoice);
-
-                case "Salary":
-                    Salary salary = (Salary) identifiableObject;
-
-                    return "<strong>" +
-                           String.Format (Resources.Global.Financial_SalaryIdentity, salary.Identity) +
-                           ":</strong> " +
-                           String.Format (Resources.Pages.Ledgers.InspectLedgers_TxDetail_SalaryDetail,
-                               salary.PayrollItem.Organization.Currency.Code,
-                               salary.BaseSalaryCents/100.0,                             // base salary
-                               (salary.GrossSalaryCents - salary.BaseSalaryCents)/100.0, // before-tax adjustments
-                               salary.GrossSalaryCents/100.0,                            // before-tax adjusted salary
-                               salary.SubtractiveTaxCents/100.0,                         // tax deduction
-                               (salary.NetSalaryCents + salary.SubtractiveTaxCents -
-                                salary.GrossSalaryCents)/100.0,                          // after-tax adjustments
-                               salary.NetSalaryCents/100.0) +                            // actual payout amount
-                           " " + GetValidationDetails (salary.Validations);
-
-                default:
-                    throw new NotImplementedException ("Unhandled object type in GetObjectDetails: " +
-                                                       identifiableObject.GetType().Name);
-            }
         }
     }
 }
