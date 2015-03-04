@@ -90,7 +90,7 @@ namespace Swarmops
 
             // Rewrite if applicable
 
-            if (Request.Url.ToString().StartsWith ("http://") && !cloudFlareSsl)
+            if (Request.Url.ToString().StartsWith ("http://") && !cloudFlareSsl && CurrentUser.Identity > 0)
                 // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
                 if (!Request.Url.ToString().StartsWith ("http://dev.swarmops.com/") &&
