@@ -122,7 +122,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     ? "true"
                     : "false";
 
-            this.LiteralLedgersClosedUntil.Text = CurrentOrganization.Parameters.FiscalBooksClosedUntilYear.ToString();
+            // this.LiteralLedgersClosedUntil.Text = CurrentOrganization.Parameters.FiscalBooksClosedUntilYear.ToString();
         }
 
         [WebMethod]

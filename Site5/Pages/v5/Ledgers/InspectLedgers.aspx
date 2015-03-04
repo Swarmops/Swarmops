@@ -200,7 +200,7 @@
             // Mono mistransmission debug comment 2
             // Mono mistransmission debug comment 3
 
-            if (canWriteRows && ledgersClosedUntil < /* three and a half */ currentYear) {
+            if (canWriteRows /*&& ledgersClosedUntil < currentYear*/) {
 
                 // Mono mistransmission debug comment 4
                 // Mono mistransmission debug comment 5
@@ -247,7 +247,7 @@
                         } else {
                             $('#divTransactionTracking').hide();
 
-                            if (canWriteRows && currentYear > ledgersClosedUntil) {
+                            if (canWriteRows /*&& currentYear > ledgersClosedUntil*/) {
                                 $('#divEditTransaction').show();
                             } else {
                                 $('#divEditTransaction').hide();
@@ -272,7 +272,6 @@
         var canSeeDetail = <asp:Literal ID="LiteralDetailAccess" runat="server" />;
         var canWriteRows = <asp:Literal ID="LiteralWriteAccess" runat="server" />;
         var canAuditTx = <asp:Literal ID="LiteralAuditAccess" runat="server" />;
-        var ledgersClosedUntil = <asp:Literal ID="LiteralLedgersClosedUntil" runat="server" />;
         var currentYear = 0;
 
 
