@@ -93,16 +93,20 @@ namespace Swarmops
             if (Request.Url.ToString().StartsWith ("http://") && !cloudFlareSsl)
                 // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
-                if (!Request.Url.ToString().StartsWith("http://dev.swarmops.com/") && 
-                    !Request.Url.ToString().StartsWith("http://dev-opentest.swarmops.com/") &&
-                    !Request.Url.ToString().StartsWith ("http://sandbox.swarmops.com") &&
-                    !Request.Url.ToString().StartsWith ("http://localhost:") &&
-                    !Request.Url.ToString().StartsWith ("http://swarmops-"))
+                if (CurrentUser.Identity > 0)
                 {
-                    Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
+                    // if we're in identified mode (i.e. we're not operating as Open Ledgers or similar)
 
-                    // Only force this if set to force it in database
-                    // TODO: Make admin init task
+                    if (!Request.Url.ToString().StartsWith ("http://dev.swarmops.com/") &&
+                        !Request.Url.ToString().StartsWith ("http://sandbox.swarmops.com") &&
+                        !Request.Url.ToString().StartsWith ("http://localhost:") &&
+                        !Request.Url.ToString().StartsWith ("http://swarmops-"))
+                    {
+                        Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
+
+                        // Only force this if set to force it in database
+                        // TODO: Make admin init task
+                    }
                 }
             }
 
