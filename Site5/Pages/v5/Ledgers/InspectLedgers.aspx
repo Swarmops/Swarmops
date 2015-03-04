@@ -249,6 +249,8 @@
             var canWriteRows = <asp:Literal ID="LiteralWriteAccess" runat="server" />;
             var canAuditTx = <asp:Literal ID="LiteralAuditAccess" runat="server" />;
 
+            var ledgersClosedUntil = <asp:Literal ID="LiteralLedgersClosedUntil" runat="server" />;
+            var currentYear = 0;
 
 	</script>
 

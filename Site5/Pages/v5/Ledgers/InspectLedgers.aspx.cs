@@ -10,6 +10,7 @@ using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
@@ -120,6 +121,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 (CurrentUser.HasAccess(new Access(CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read)))
                     ? "true"
                     : "false";
+
+            this.LiteralLedgersClosedUntil.Text = CurrentOrganization.Parameters.FiscalBooksClosedUntilYear.ToString();
         }
 
         [WebMethod]
@@ -135,6 +138,12 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
 
             FinancialTransaction transaction = FinancialTransaction.FromIdentity(txId);
+
+            if (authData.CurrentOrganization.Parameters.FiscalBooksClosedUntilYear >= transaction.DateTime.Year)
+            {
+                return false; // can't edit closed books
+            }
+
             FinancialAccount account = FinancialAccount.FromIdentity(accountId);
 
             Double amountFloat = Double.Parse(amountString);
