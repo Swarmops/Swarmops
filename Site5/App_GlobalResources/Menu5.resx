@@ -127,7 +127,7 @@
     <value>Create New Organization</value>
   </data>
   <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
-    <value>Edit Organization</value>
+    <value>Organization Settings</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geography Tree</value>
