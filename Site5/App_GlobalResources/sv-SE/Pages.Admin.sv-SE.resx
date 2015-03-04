@@ -155,6 +155,9 @@
     <value>Numrering av {0}</value>
     <comment>The {0} is the membership, ambassadorship, etc.</comment>
   </data>
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>Domän för öppna räkenskaper</value>
+  </data>
   <data name="EditOrganization_PageTitle" xml:space="preserve">
     <value>Redigera organisation</value>
   </data>
@@ -192,8 +195,15 @@
     <value>Förnyelse kostar (i {0})</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
   </data>
-  
-  
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>Egendomän för organisationen</value>
+  </data>
+  <data name="SystemSettings_AdminAddress" xml:space="preserve">
+    <value>Adminnotiser från adress</value>
+  </data>
+  <data name="SystemSettings_AdminSender" xml:space="preserve">
+    <value>Adminnotiser från namn</value>
+  </data>
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>SMTP-porten måste vara ett nummer. Det gick inte att förstå hostnamn:port.</value>
   </data>

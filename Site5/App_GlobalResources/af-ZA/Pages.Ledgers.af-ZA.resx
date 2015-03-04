@@ -600,4 +600,76 @@
   <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
     <value>crwdns6555649:0crwdne6555649:0</value>
   </data>
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>crwdns6555796:0crwdne6555796:0</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>crwdns6555797:0crwdne6555797:0</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>crwdns6555798:0crwdne6555798:0</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>crwdns6555799:0crwdne6555799:0</value>
+  </data>
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>crwdns6555800:0crwdne6555800:0</value>
+  </data>
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>crwdns6555801:0crwdne6555801:0</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>crwdns6555802:0crwdne6555802:0</value>
+  </data>
+  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
+    <value>crwdns6555803:0crwdne6555803:0</value>
+  </data>
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>crwdns6555804:0crwdne6555804:0</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>crwdns6555805:0crwdne6555805:0</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>crwdns6555806:0{0}crwdnd6555806:0{1:yyyy-MMM-dd}crwdne6555806:0</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>crwdns6555807:0crwdne6555807:0</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
+    <value>crwdns6555808:0{0:N0}crwdnd6555808:0{1}crwdne6555808:0</value>
+    <comment>the {1} is the supplier name</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>crwdns6555809:0{0:N0}crwdne6555809:0</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>crwdns6555810:0{0}crwdnd6555810:0{1:yyyy-MMM-dd}crwdne6555810:0</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>crwdns6555811:0{0}crwdne6555811:0</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>crwdns6555812:0{0}crwdnd6555812:0{1:N2}crwdnd6555812:0{3:N2}crwdnd6555812:0{4:N2}crwdnd6555812:0{6:N2}crwdne6555812:0</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>crwdns6555813:0crwdne6555813:0</value>
+  </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>crwdns6555814:0crwdne6555814:0</value>
+  </data>
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>crwdns6555815:0crwdne6555815:0</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>crwdns6555816:0crwdne6555816:0</value>
+  </data>
 </root>

@@ -174,6 +174,10 @@
   <data name="LockdownAccount_Ticket" xml:space="preserve">
     <value>crwdns6555601:0crwdne6555601:0</value>
   </data>
+  <data name="Login_AsOpenLedgers" xml:space="preserve">
+    <value>crwdns6555817:0{0}crwdne6555817:0</value>
+    <comment>The {0} is the organization name.</comment>
+  </data>
   <data name="Login_BitIdEnabled" xml:space="preserve">
     <value>crwdns6555046:0crwdne6555046:0</value>
   </data>

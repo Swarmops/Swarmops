@@ -166,7 +166,7 @@
     <value>Utlägg</value>
   </data>
   <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
-    <value>Utlägg #{0}</value>
+    <value>Utlägg #{0:N0}</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>Utlägg {0}</value>
@@ -331,10 +331,10 @@
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>Utlägg #{0} (minus förskott #{1})</value>
+    <value>Utlägg #{0:N0} (minus förskott #{1:N0})</value>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>Utlägg #{0} (minus förskott)</value>
+    <value>Utlägg #{0:N0} (minus förskott)</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
     <value>Utlägg #{0} (minus förskott #{1})</value>
@@ -343,10 +343,10 @@
     <value>Utlägg {0} (minus förskott)</value>
   </data>
   <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>Utläggsanspråk #{0} av {1}</value>
+    <value>Utläggsanspråk #{0:N0} av {1}</value>
   </data>
   <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
-    <value>Inkommande faktura #{0} från {1}</value>
+    <value>Inkommande faktura #{0:N0} från {1}</value>
   </data>
   <data name="Financial_ReceiptSpecification" xml:space="preserve">
     <value>Kvittobild {0} av {1}</value>
@@ -566,5 +566,68 @@
     <value>År {0}</value>
     <comment>As in "the year X".</comment>
   </data>
-  
+  <data name="Swarm_Vacant" xml:space="preserve">
+    <value>(vakant)</value>
+    <comment>For unassigned positions</comment>
+  </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>ange för att aktivera</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Kontantförskott #{0:N0} till {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>Återbetalning kontantförskott #{0:N0}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>Återbetalning kontantförskott {0}</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Kontantförskott {0} till {1}</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>Utläggsanspråk #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>Utläggsanspråk {0} av {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>Inkommande faktura #{0:N0}</value>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>System</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>Löner {0} för {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>Löneskatter för {0:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>Lön #{0:N0} för {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>Lön #{0:N0} för {1:yyyy-MMM} till {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Lön #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>Skatter för lön #{0:N0} för {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Konto</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Belopp</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>Lägg till</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
 </root>

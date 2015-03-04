@@ -165,9 +165,7 @@
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Расходы</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
-    <value>Расход #{0}</value>
-  </data>
+  
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>Расходы {0}</value>
   </data>
@@ -491,6 +489,24 @@
   <data name="Global_PostalCode" xml:space="preserve">
     <value>Почтовый индекс</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

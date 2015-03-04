@@ -153,9 +153,7 @@
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Utgift</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
-    <value>Utgift #{0}</value>
-  </data>
+  
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>Utgifter {0}</value>
   </data>
@@ -278,6 +276,24 @@
   <data name="Global_Today" xml:space="preserve">
     <value>I dag</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

@@ -126,18 +126,14 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>إنشاء منظمة جديدة</value>
   </data>
-  <data name="Menu5_Administration_EditOrganization" xml:space="preserve">
-    <value>تحرير معلومات منظمة</value>
-  </data>
+  
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>شجرة المناطق الجغرافية</value>
   </data>
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>مجموعات المنظمة</value>
   </data>
-  <data name="Menu5_Admin_SystemSettings" xml:space="preserve">
-    <value>إعدادات النظام</value>
-  </data>
+  
   <data name="Menu5_Communications" xml:space="preserve">
     <value>الاتصالات</value>
   </data>

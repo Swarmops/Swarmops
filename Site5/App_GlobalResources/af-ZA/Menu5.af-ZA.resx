@@ -126,8 +126,8 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>crwdns6555405:0crwdne6555405:0</value>
   </data>
-  <data name="Menu5_Administration_EditOrganization" xml:space="preserve">
-    <value>crwdns6555406:0crwdne6555406:0</value>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>crwdns6555792:0crwdne6555792:0</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>crwdns1639806:0crwdne1639806:0</value>
@@ -135,8 +135,8 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>crwdns1639807:0crwdne1639807:0</value>
   </data>
-  <data name="Menu5_Admin_SystemSettings" xml:space="preserve">
-    <value>crwdns6555584:0crwdne6555584:0</value>
+  <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
+    <value>crwdns6555793:0crwdne6555793:0</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>crwdns1639808:0crwdne1639808:0</value>

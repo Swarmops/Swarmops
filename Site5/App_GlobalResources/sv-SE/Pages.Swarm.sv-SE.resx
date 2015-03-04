@@ -176,4 +176,10 @@
   <data name="ListFindPeople_TooManyHits" xml:space="preserve">
     <value>Resultatet innehåller över tusen personer (visar de första tusen). Begränsa sökningen lite?</value>
   </data>
+  <data name="Positions_AssignPerson" xml:space="preserve">
+    <value>Tillsätt positionen/tjänsten...</value>
+  </data>
+  <data name="Positions_CreateNewPosition" xml:space="preserve">
+    <value>Skapa ny position/tjänst...</value>
+  </data>
 </root>
