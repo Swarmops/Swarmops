@@ -150,6 +150,7 @@
                 var selectedMonth = $('#<%=DropMonths.ClientID %>').val();
 
                 currentYear = selectedYear;
+                closedLedgers = (currentYear <= ledgersClosedUntil);
 
             $('#gridLedgers').datagrid({ url: 'Json-InspectLedgerData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth + "&AccountId=" + accountId});
 
@@ -194,7 +195,7 @@
                     var jsonData = {};
                     jsonData.txId = transactionId;
 
-                    if (canWriteRows) {
+                    if (canWriteRows && !closedLedgers) {
                         prefillUnbalancedAmount();
                     }
 
@@ -227,7 +228,7 @@
                                 } else {
                                     $('#divTransactionTracking').hide();
 
-                                    if (canWriteRows) {
+                                    if (canWriteRows && !closedLedgers) {
                                         $('#divEditTransaction').show();
                                     } else {
                                         $('#divEditTransaction').hide();
@@ -255,6 +256,8 @@
 
             var ledgersClosedUntil = <asp:Literal ID="LiteralLedgersClosedUntil" runat="server" />;
             var currentYear = 0;
+
+        var closedLedgers = false;
 
 	</script>
 
