@@ -90,6 +90,8 @@
                 addTransactionRow();
             });
 
+            currentYear = $('#<%=DropYears.ClientID %>').val();
+
             $('div.datagrid').css('opacity', 0.4);
         });
 	    
@@ -145,7 +147,9 @@
             function reloadData()
             {
                 var selectedYear = $('#<%=DropYears.ClientID %>').val();
-            var selectedMonth = $('#<%=DropMonths.ClientID %>').val();
+                var selectedMonth = $('#<%=DropMonths.ClientID %>').val();
+
+                currentYear = selectedYear;
 
             $('#gridLedgers').datagrid({ url: 'Json-InspectLedgerData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth + "&AccountId=" + accountId});
 
