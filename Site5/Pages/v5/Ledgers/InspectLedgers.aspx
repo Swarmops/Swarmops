@@ -219,7 +219,6 @@
                                 $("a.FancyBox_Gallery[rel='" + $(this).attr("objectId") + "']").first().click();
                             });
 
-
                         } else {
                             $('#divTransactionTracking').hide();
 

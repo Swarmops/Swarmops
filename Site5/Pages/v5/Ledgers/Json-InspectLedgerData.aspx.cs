@@ -56,6 +56,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             bool zeroStart = false;
             bool zeroEnd = false;
             bool displayDescription = CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read));
+            bool canSeeAudit = CurrentUser.HasAccess(new Access(CurrentOrganization, AccessAspect.Auditing, AccessType.Read));
 
             if (month > 0 && month <= 12)
             {
@@ -162,8 +163,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 runningBalance += row.AmountCents;
 
                 string actionHtml = String.Format (
-                    "<img src=\"/Images/Icons/iconshock-magnifyingglass-16px.png\" class=\"LocalIconInspect\" txId=\"{0}\" />&nbsp;<img src=\"/Images/Icons/iconshock-flag-white-16px.png\" class=\"LocalIconFlag\" txId=\"{0}\" />",
-                    row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
+                    "<img src=\"/Images/Icons/iconshock-magnifyingglass-16px.png\" class=\"LocalIconInspect\" txId=\"{0}\" />", row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
+
+                if (canSeeAudit)
+                {
+                    actionHtml +=
+                        String.Format (
+                            "&nbsp;<img src=\"/Images/Icons/iconshock-flag-white-16px.png\" class=\"LocalIconFlag\" txId=\"{0}\" />",
+                            row.FinancialTransactionId.ToString (CultureInfo.InvariantCulture));
+                }
 
                 result.Append ("{" + String.Format (
                     "\"id\":\"{0}\",\"datetime\":\"{1:MMM-dd HH:mm}\",\"description\":\"{2}\"," +
