@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="InspectLedgers.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.InspectLedgers" %>
-<%@ Import Namespace="System.Net.Mime" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="CurrencyTextBox" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
 
@@ -86,13 +85,20 @@
     	        }
     	    });
 
-            $('#ButtonAddTransactionRow').click(function() {
+    	    $('#ButtonAddTransactionRow').click(function() {
+                // Foo - mistransmission debug
                 addTransactionRow();
-            });
+    	        // Bar - mistransmission debug
+    	    });
 
 	        $('div.datagrid').css('opacity', 0.4);
 	    });
 	    
+
+        // Mono mistransmission debug comment 7
+        // Mono mistransmission debug comment 8
+        // Mono mistransmission debug comment 9
+
         var accountId = 0;
         var transactionId = 0;
     	var transactionDirty = false;
@@ -190,7 +196,16 @@
             var jsonData = {};
             jsonData.txId = transactionId;
 
-            if (canWriteRows && ledgersClosedUntil < currentYear) {
+            // Mono mistransmission debug comment 1
+            // Mono mistransmission debug comment 2
+            // Mono mistransmission debug comment 3
+
+            if (canWriteRows && ledgersClosedUntil < /* three and a half */ currentYear) {
+
+                // Mono mistransmission debug comment 4
+                // Mono mistransmission debug comment 5
+                // Mono mistransmission debug comment 6
+
                 prefillUnbalancedAmount();
             }
 
@@ -200,9 +215,19 @@
                     url: "/Pages/v5/Ledgers/InspectLedgers.aspx/GetTransactionTracking",
                     data: $.toJSON(jsonData),
                     contentType: "application/json; charset=utf-8",
+
+                    // Mono mistransmission debug comment 13
+                    // Mono mistransmission debug comment 14
+                    // Mono mistransmission debug comment 15
+
                     dataType: "json",
                     success: function(msg) {
                         if (msg.d.length > 1) {
+
+                            // Mono mistransmission debug comment 10
+                            // Mono mistransmission debug comment 11
+                            // Mono mistransmission debug comment 12
+
                             $('#divTransactionTrackingDetails').html(msg.d);
                             $('#divTransactionTrackingDetails').show();
                             $('#divEditTransaction').hide();
