@@ -126,8 +126,8 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Skapa ny organisation</value>
   </data>
-  <data name="Menu5_Administration_EditOrganization" xml:space="preserve">
-    <value>Redigera organisation</value>
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Organisationsinställningar</value>
   </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>Geografiträd</value>
@@ -135,7 +135,7 @@
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>Organisationskluster</value>
   </data>
-  <data name="Menu5_Admin_SystemSettings" xml:space="preserve">
+  <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
     <value>Systeminställningar</value>
   </data>
   <data name="Menu5_Communications" xml:space="preserve">

@@ -126,9 +126,7 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Создать Новую Организацию</value>
   </data>
-  <data name="Menu5_Administration_EditOrganization" xml:space="preserve">
-    <value>Редактировать Организацию</value>
-  </data>
+  
   
   
   

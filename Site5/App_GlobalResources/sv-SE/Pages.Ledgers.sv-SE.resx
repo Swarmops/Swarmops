@@ -589,4 +589,76 @@
   <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
     <value>Total skatt</value>
   </data>
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>Visar/redigerar transaktion #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>Granskar transaktion #&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>Kontonamn</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>Saldot är korrekt:</value>
+  </data>
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>(Ingen transaktionsdata)</value>
+  </data>
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>Initialer</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>Bokförd</value>
+  </data>
+  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
+    <value>Transaktionen är &lt;span class="spanAnnoyingBlink"&gt;OBALANSERAD:&lt;/span&gt; saknat belopp</value>
+  </data>
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>Lägg till rader i transaktionen</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>Spårningsdetaljer för Automattransaktion</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>Attesterad av {0} {1:yyyy-MMM-dd}</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>i kombination med</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
+    <value>&lt;strong&gt;Inkommande faktura #{0:N0}&lt;/strong&gt; från {1}:</value>
+    <comment>the {1} is the supplier name</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>Detta är &lt;strong&gt;utbetalning #{0:N0}.&lt;/strong&gt; Det är en utbetalning för</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>Dokumentgranskning av {0} {1:yyyy-MMM-dd}</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>Utförd av {0}.</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>Grundlön {0} {1:N2}, bruttojusteringar {2:+N2;-N2;inga}, bruttolön {3:N2}, avdragen skatt {4:N2}, nettojusteringar {5:+N2;-N2;inga}, utbetalning {6:N2}.</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>Välj ett konto för att lägga till en rad till den här transaktionen.</value>
+  </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>Årets förlust</value>
+  </data>
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>Årets vinst</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>(detaljerad beskrivning visas ej)</value>
+  </data>
 </root>

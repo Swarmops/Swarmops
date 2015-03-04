@@ -176,4 +176,10 @@
   <data name="ListFindPeople_TooManyHits" xml:space="preserve">
     <value>crwdns6555534:0crwdne6555534:0</value>
   </data>
+  <data name="Positions_AssignPerson" xml:space="preserve">
+    <value>crwdns6555818:0crwdne6555818:0</value>
+  </data>
+  <data name="Positions_CreateNewPosition" xml:space="preserve">
+    <value>crwdns6555819:0crwdne6555819:0</value>
+  </data>
 </root>

@@ -308,8 +308,16 @@ Logga in på [InstallationName] på [ExternalUrl]Financial/ValidateReceipts att 
   <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
     <value>Swarmops-databas uppgraderades</value>
   </data>
-  
-  
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>Swarmops Backend [SwarmopsVersion] på maskinen [Hostname] har MISSLYCKATS med att uppgradera databasen för Swarmops. Detta beror oftast på transienta externa nätverksfel, som gör att hämtningen av patchfilen eller patchfilerna misslyckas.
+
+Vi befinner oss på databasens schemanummer [DbVersion], men försöker att uppgradera till [DbVersionExpected] som behövs för de senaste paketen.
+
+Uppgraderingen kommer att försökas på nytt varje timme. Vissa funktioner kan vara oåtkomliga innan databasen har uppdaterats. Om det här inte går över och du vill felsöka manuellt, så hämtas schemapatchfilerna från packages.swarmops.com, samma plats som apt-get hämtar sina programvarupaket från.</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>Swarmops databasuppgradering MISSLYCKADES</value>
+  </data>
   <data name="System_Exception_Body" xml:space="preserve">
     <value>En ohanterad exception kastades i Swarmops: [EmbeddedPreformattedText]</value>
   </data>

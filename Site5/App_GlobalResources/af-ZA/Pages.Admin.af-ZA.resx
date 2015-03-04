@@ -157,6 +157,9 @@
     <value>crwdns6555409:0{0}crwdne6555409:0</value>
     <comment>The {0} is the membership, ambassadorship, etc.</comment>
   </data>
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>crwdns6555794:0crwdne6555794:0</value>
+  </data>
   <data name="EditOrganization_PageTitle" xml:space="preserve">
     <value>crwdns6555031:0crwdne6555031:0</value>
   </data>
@@ -193,6 +196,9 @@
   <data name="EditOrganization_RenewalsCost" xml:space="preserve">
     <value>crwdns6555418:0{0}crwdne6555418:0</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
+  </data>
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>crwdns6555795:0crwdne6555795:0</value>
   </data>
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>crwdns6555632:0crwdne6555632:0</value>

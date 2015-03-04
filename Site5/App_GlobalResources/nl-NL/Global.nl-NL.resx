@@ -171,9 +171,7 @@
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>Kosten</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
-    <value>Kosten #{0}</value>
-  </data>
+  
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>Kosten {0}</value>
   </data>
@@ -330,17 +328,29 @@
     <value>Gerelateerde</value>
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>Kosten #{0} (min voorschot #{1})</value>
-  </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>Kosten #{0} (min voorschotten)</value>
-  </data>
   
   
-  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>Kosten vordering #{0} door {1}</value>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

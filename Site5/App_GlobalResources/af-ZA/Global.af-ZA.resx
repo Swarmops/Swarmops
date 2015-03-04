@@ -172,7 +172,7 @@
     <value>crwdns6552483:0crwdne6552483:0</value>
   </data>
   <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
-    <value>crwdns6552484:0{0}crwdne6552484:0</value>
+    <value>crwdns6555769:0{0:N0}crwdne6555769:0</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>crwdns6552485:0{0}crwdne6552485:0</value>
@@ -337,10 +337,10 @@
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>crwdns6553677:0{0}crwdnd6553677:0{1}crwdne6553677:0</value>
+    <value>crwdns6555770:0{0:N0}crwdnd6555770:0{1:N0}crwdne6555770:0</value>
   </data>
   <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>crwdns6553678:0{0}crwdne6553678:0</value>
+    <value>crwdns6555771:0{0:N0}crwdne6555771:0</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
     <value>crwdns6553679:0{0}crwdnd6553679:0{1}crwdne6553679:0</value>
@@ -349,10 +349,10 @@
     <value>crwdns6553680:0{0}crwdne6553680:0</value>
   </data>
   <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>crwdns6553681:0{0}crwdnd6553681:0{1}crwdne6553681:0</value>
+    <value>crwdns6555772:0{0:N0}crwdnd6555772:0{1}crwdne6555772:0</value>
   </data>
   <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
-    <value>crwdns6553682:0{0}crwdnd6553682:0{1}crwdne6553682:0</value>
+    <value>crwdns6555773:0{0:N0}crwdnd6555773:0{1}crwdne6555773:0</value>
   </data>
   <data name="Financial_ReceiptSpecification" xml:space="preserve">
     <value>crwdns6553683:0{0}crwdnd6553683:0{1}crwdne6553683:0</value>
@@ -575,5 +575,65 @@
   <data name="Swarm_Vacant" xml:space="preserve">
     <value>crwdns6555655:0crwdne6555655:0</value>
     <comment>For unassigned positions</comment>
+  </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>crwdns6555774:0crwdne6555774:0</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>crwdns6555775:0{0:N0}crwdnd6555775:0{1}crwdne6555775:0</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>crwdns6555820:0{0:N0}crwdne6555820:0</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>crwdns6555777:0{0}crwdne6555777:0</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>crwdns6555778:0{0}crwdnd6555778:0{1}crwdne6555778:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>crwdns6555779:0{0:N0}crwdne6555779:0</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>crwdns6555780:0{0}crwdnd6555780:0{1}crwdne6555780:0</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>crwdns6555781:0{0:N0}crwdne6555781:0</value>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>crwdns6555782:0crwdne6555782:0</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>crwdns6555783:0{0}crwdnd6555783:0{1:yyyy-MMM}crwdne6555783:0</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>crwdns6555784:0{0:yyyy-MMM}crwdne6555784:0</value>
+  </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>crwdns6555785:0{0:N0}crwdnd6555785:0{1:yyyy-MMM}crwdne6555785:0</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>crwdns6555786:0{0:N0}crwdnd6555786:0{1:yyyy-MMM}crwdnd6555786:0{2}crwdne6555786:0</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>crwdns6555787:0{0:N0}crwdne6555787:0</value>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>crwdns6555788:0{0:N0}crwdnd6555788:0{1:yyyy-MMM}crwdne6555788:0</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>crwdns6555789:0crwdne6555789:0</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>crwdns6555790:0crwdne6555790:0</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>crwdns6555791:0crwdne6555791:0</value>
+    <comment>as in "add element", "add row", etc</comment>
   </data>
 </root>

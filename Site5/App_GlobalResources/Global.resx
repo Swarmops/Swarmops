@@ -584,7 +584,7 @@
     <value>Cash Advance #{0:N0} for {1}</value>
   </data>
   <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
-    <value>Cash Advance #{0:N0} Payback </value>
+    <value>Cash Advance #{0:N0} Payback</value>
   </data>
   <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
     <value>Cash Advances {0} Payback</value>

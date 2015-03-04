@@ -171,9 +171,7 @@
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>صرف</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
-    <value>صرف رقم {0}</value>
-  </data>
+  
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>النفقات {0}</value>
   </data>
@@ -336,24 +334,16 @@
     <value>ذات الصلة</value>
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
-    <value>الصرف رقم {0} (ناقص السلفة رقم{1})</value>
-  </data>
-  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
-    <value>الصرف رقم{0} (ناقص السلف)</value>
-  </data>
+  
+  
   <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
     <value>النفقات {0} (ناقص السلفة رقم{1})</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
     <value>النفقات {0} (ناقص السلف)</value>
   </data>
-  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
-    <value>المطالبة المالية رقم {0} عن طريق {1}</value>
-  </data>
-  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
-    <value>الفاتورة الواردة رقم {0} من {1}</value>
-  </data>
+  
+  
   <data name="Financial_ReceiptSpecification" xml:space="preserve">
     <value>صورة إيصال {0} لـ{1}</value>
   </data>
@@ -558,6 +548,24 @@
   <data name="Global_YearMonth" xml:space="preserve">
     <value>السنة/الشهر</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
 </root>
