@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="InspectLedgers.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.InspectLedgers" %>
-<%@ Import Namespace="System.Net.Mime" %>
+<%@ Import Namespace="Resources" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="CurrencyTextBox" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
 
@@ -54,7 +54,7 @@
 
             $('#gridTransaction').datagrid({
                 onLoadSuccess: function() {
-                        
+
                     // Dynamic reloading screws up resizing for some reason, so we'll have to resize the tx grid manually.
 
                     var heightBody = $('div#divModalCover table.datagrid-btable').height();
@@ -69,15 +69,15 @@
                 }
             });
 
-            $('#<%=DropYears.ClientID %>').change(function () {
+            $('#<%= DropYears.ClientID %>').change(function() {
                 reloadData();
             });
 
-            $('#<%=DropMonths.ClientID %>').change(function () {
+            $('#<%= DropMonths.ClientID %>').change(function() {
                 reloadData();
             });
 
-            $("#IconCloseEdit").click(function () {
+            $("#IconCloseEdit").click(function() {
                 $('#divModalCover').fadeOut();
 
                 if (transactionDirty) {
@@ -90,11 +90,11 @@
                 addTransactionRow();
             });
 
-            currentYear = $('#<%=DropYears.ClientID %>').val();
+            currentYear = $('#<%= DropYears.ClientID %>').val();
 
             $('div.datagrid').css('opacity', 0.4);
         });
-	    
+
         var accountId = 0;
         var transactionId = 0;
         var transactionDirty = false;
@@ -105,12 +105,12 @@
         }
 
         function addTransactionRow() {
-            var amountString = $('#<%=TextInsertAmount.ClientID%>_Input').val();
+            var amountString = $('#<%= TextInsertAmount.ClientID %>_Input').val();
             var rowAccountId = 0;
-            var selectedAccountNode = $('#<%=this.BudgetAddRow.ClientID%>_DropBudgets').combotree('tree').tree('getSelected');
-            
+            var selectedAccountNode = $('#<%= BudgetAddRow.ClientID %>_DropBudgets').combotree('tree').tree('getSelected');
+
             if (selectedAccountNode == null || selectedAccountNode.id < 1) {
-                alertify.error (unescape('<asp:Literal ID="LiteralErrorAddRowSelectAccount" runat="server" />'));
+                alertify.error(unescape('<asp:Literal ID="LiteralErrorAddRowSelectAccount" runat="server" />');
                 return;
             }
 
@@ -134,25 +134,24 @@
                             $('#gridTransaction').datagrid('reload');
                             prefillUnbalancedAmount();
                         } else {
-                            alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                            alertify.error("<%= Global.Error_AjaxCallException %>");
                         }
                     },
                     error: function(msg) {
-                        alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                        alertify.error("<%= Global.Error_AjaxCallException %>");
                     }
                 });
-                }
             }
+        }
 
-            function reloadData()
-            {
-                var selectedYear = $('#<%=DropYears.ClientID %>').val();
-                var selectedMonth = $('#<%=DropMonths.ClientID %>').val();
+        function reloadData() {
+            var selectedYear = $('#<%= DropYears.ClientID %>').val();
+            var selectedMonth = $('#<%= DropMonths.ClientID %>').val();
 
-                currentYear = selectedYear;
-                closedLedgers = (currentYear <= ledgersClosedUntil);
+            currentYear = selectedYear;
+            closedLedgers = (currentYear <= ledgersClosedUntil);
 
-            $('#gridLedgers').datagrid({ url: 'Json-InspectLedgerData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth + "&AccountId=" + accountId});
+            $('#gridLedgers').datagrid({ url: 'Json-InspectLedgerData.aspx?Year=' + selectedYear + "&Month=" + selectedMonth + "&AccountId=" + accountId });
 
             $('#imageLoadIndicator').show();
             $('div.datagrid').css('opacity', 0.4);
@@ -173,105 +172,102 @@
                 dataType: "json",
                 success: function(msg) {
                     if (msg.d.length > 1) {
-                        $('#<%=this.TextInsertAmount.ClientID%>_Input').val(msg.d);
+                        $('#<%= TextInsertAmount.ClientID %>_Input').val(msg.d);
                     } else {
-                        alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                        alertify.error("<%= Global.Error_AjaxCallException %>");
                     }
                 },
                 error: function(msg) {
-                    alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
-                    }
-            });
+                    alertify.error("<%= Global.Error_AjaxCallException %>");
                 }
+            });
+        }
 
-                function onInspectTransaction(transactionId) {
-                    window.scrollTo(0, 0);
-                    $('body').css('overflow-y', 'hidden');
-                    $('#divModalCover').fadeIn();
-                    $('span#spanModalTransactionId').text(transactionId);
+        function onInspectTransaction(transactionId) {
+            window.scrollTo(0, 0);
+            $('body').css('overflow-y', 'hidden');
+            $('#divModalCover').fadeIn();
+            $('span#spanModalTransactionId').text(transactionId);
 
-                    $('#gridTransaction').datagrid({ url: 'Json-InspectLedgerTxData.aspx?TxId=' + transactionId });
+            $('#gridTransaction').datagrid({ url: 'Json-InspectLedgerTxData.aspx?TxId=' + transactionId });
 
-                    var jsonData = {};
-                    jsonData.txId = transactionId;
+            var jsonData = {};
+            jsonData.txId = transactionId;
 
-                    if (canWriteRows && !closedLedgers) {
-                        prefillUnbalancedAmount();
-                    }
+            if (canWriteRows && !closedLedgers) {
+                prefillUnbalancedAmount();
+            }
 
-                    if (canSeeDetail || canWriteRows) {
-                        $.ajax({
-                            type: "POST",
-                            url: "/Pages/v5/Ledgers/InspectLedgers.aspx/GetTransactionTracking",
-                            data: $.toJSON(jsonData),
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function(msg) {
-                                if (msg.d.length > 1) {
-                                    $('#divTransactionTrackingDetails').html(msg.d);
-                                    $('#divTransactionTrackingDetails').show();
-                                    $('#divEditTransaction').hide();
+            if (canSeeDetail || canWriteRows) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Pages/v5/Ledgers/InspectLedgers.aspx/GetTransactionTracking",
+                    data: $.toJSON(jsonData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(msg) {
+                        if (msg.d.length > 1) {
+                            $('#divTransactionTrackingDetails').html(msg.d);
+                            $('#divTransactionTrackingDetails').show();
+                            $('#divEditTransaction').hide();
 
-                                    $("a.FancyBox_Gallery").fancybox({
-                                        'overlayShow': true,
-                                        'transitionIn': 'fade',
-                                        'transitionOut': 'fade',
-                                        'type': 'image',
-                                        'opacity': true
-                                    });
+                            $("a.FancyBox_Gallery").fancybox({
+                                'overlayShow': true,
+                                'transitionIn': 'fade',
+                                'transitionOut': 'fade',
+                                'type': 'image',
+                                'opacity': true
+                            });
 
-                                    $("a.linkViewDox").click(function() {
-                                        $("a.FancyBox_Gallery[rel='" + $(this).attr("objectId") + "']").first().click();
-                                    });
+                            $("a.linkViewDox").click(function() {
+                                $("a.FancyBox_Gallery[rel='" + $(this).attr("objectId") + "']").first().click();
+                            });
 
 
-                                } else {
-                                    $('#divTransactionTracking').hide();
+                        } else {
+                            $('#divTransactionTracking').hide();
 
-                                    if (canWriteRows && !closedLedgers) {
-                                        $('#divEditTransaction').show();
-                                    } else {
-                                        $('#divEditTransaction').hide();
-                                    }
-                                }
-                            },
-                            error: function(msg) {
-                                alertify.error("<%= Resources.Global.Error_AjaxCallException %>");
+                            if (canWriteRows && !closedLedgers) {
+                                $('#divEditTransaction').show();
+                            } else {
+                                $('#divEditTransaction').hide();
+                            }
+                        }
+                    },
+                    error: function(msg) {
+                        alertify.error("<%= Global.Error_AjaxCallException %>");
                     }
                 });
-                } else {
-                    $('#divEditTransaction').hide();
-                    $('#divTransactionTracking').hide();
-                }
+            } else {
+                $('#divEditTransaction').hide();
+                $('#divTransactionTracking').hide();
             }
+        }
 
-            function onFlagTransaction(transactionId) {
-                alertify.log('<asp:Label ID="LabelFlagNotAvailable" runat="server" />');
-            }
+        function onFlagTransaction(transactionId) {
+            alertify.log('<asp:Label ID="LabelFlagNotAvailable" runat="server" />');
+        }
 
-            // the variables below only handle the cosmetics and not actual access
-            var canSeeDetail = <asp:Literal ID="LiteralDetailAccess" runat="server" />;
-            var canWriteRows = <asp:Literal ID="LiteralWriteAccess" runat="server" />;
-            var canAuditTx = <asp:Literal ID="LiteralAuditAccess" runat="server" />;
+        // the variables below only handle the cosmetics and not actual access
+        var canSeeDetail =  <asp:Literal ID="LiteralDetailAccess" runat="server" />;
+        var canWriteRows =  <asp:Literal ID="LiteralWriteAccess" runat="server" />;
+        var canAuditTx =  <asp:Literal ID="LiteralAuditAccess" runat="server" />;
 
-            var ledgersClosedUntil = <asp:Literal ID="LiteralLedgersClosedUntil" runat="server" />;
-            var currentYear = 0;
+        var ledgersClosedUntil =  <asp:Literal ID="LiteralLedgersClosedUntil" runat="server" />;
+        var currentYear = 0;
 
         var closedLedgers = false;
 
-	</script>
+    </script>
 
 
     <style type="text/css">
-        .datagrid-row-selected,.datagrid-row-over{
-            background:transparent;
-	    }
-   	    table.datagrid-ftable {
-		    font-weight: 500;
-	    }
+        .datagrid-row-selected, .datagrid-row-over { background: transparent; }
+
+        table.datagrid-ftable { font-weight: 500; }
 
         .LocalIconInspect, .LocalIconFlag {
-            cursor:pointer;
+            cursor: pointer;
             position: relative;
             top: 4px;
         }
@@ -281,18 +277,19 @@
             animation: blink 0.5s linear infinite;
         }
 
-        @keyframes blink {  
+        @keyframes blink {
             0% { color: darkred; }
-            100% { color: red; }
-        }
-        @-webkit-keyframes blink {  
-            0% { color: darkred; }
+
             100% { color: red; }
         }
 
-        span.hiddenDocLinks {
-            display: none;
+        @-webkit-keyframes blink {
+            0% { color: darkred; }
+
+            100% { color: red; }
         }
+
+        span.hiddenDocLinks { display: none; }
 
     </style>
 
@@ -301,9 +298,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
-    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets ID="DropBudgets" OnClientSelect="onAccountSelected" ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
+    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
     
-        <table id="gridLedgers" class="easyui-datagrid" style="width:680px;height:500px"
+        <table id="gridLedgers" class="easyui-datagrid" style="width: 680px; height: 500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerData.aspx'"
         idField="id">
         <thead>  
@@ -322,9 +319,9 @@
     
         <div id="divModalCover" class="modalcover">
         <div id="divModalBox" class="box modal">
-            <div class="content" style="overflow:hidden">
+            <div class="content" style="overflow: hidden">
                 <div class="divIconCloseModal"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2><asp:Literal ID="LiteralEditHeader" runat="server"/></h2>
-                <table id="gridTransaction" class="easyui-datagrid" style="width:910px"
+                <table id="gridTransaction" class="easyui-datagrid" style="width: 910px"
                 data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerTxData.aspx'"
                 idField="id">
                     <thead>
