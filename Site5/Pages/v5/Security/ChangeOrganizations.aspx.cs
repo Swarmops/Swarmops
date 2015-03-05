@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
@@ -15,6 +16,15 @@ namespace Swarmops.Frontend.Pages.v5.Security
             PageIcon = "iconshock-organizations";
             InfoBoxLiteral = Resources.Pages.Security.ChangeOrganizations_Info;
             this.LabelNoOrganizations.Text = Resources.Pages.Security.ChangeOrganizations_NothingToChange;
+
+            PageAccessRequired = new Access (AccessAspect.Null, AccessType.Unknown);
+
+            if (CurrentUser.Identity < 0)
+            {
+                // We're logged on as open-something
+
+                Response.Redirect ("/");  // back to dashboard
+            }
 
             PopulateRepeater();
         }
