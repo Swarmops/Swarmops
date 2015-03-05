@@ -110,7 +110,7 @@
             var selectedAccountNode = $('#<%= BudgetAddRow.ClientID %>_DropBudgets').combotree('tree').tree('getSelected');
 
             if (selectedAccountNode == null || selectedAccountNode.id < 1) {
-                alertify.error(unescape('<asp:Literal ID="LiteralErrorAddRowSelectAccount" runat="server" />');
+                alertify.error(unescape('<asp:Literal ID="LiteralErrorAddRowSelectAccount" runat="server" />'));
                 return;
             }
 
