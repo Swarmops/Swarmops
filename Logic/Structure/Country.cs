@@ -27,7 +27,7 @@ namespace Swarmops.Logic.Structure
 
         public Currency Currency
         {
-            get { return Currency.FromIdentity (CurrencyId); }
+            get { return Currency.FromCode (CurrencyCode); }
         }
 
         public static Country FromBasic (BasicCountry basic)

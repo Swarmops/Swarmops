@@ -46,19 +46,6 @@ namespace Swarmops.Basic.Types.Structure
         public int PostalCodeLength { get; protected set; }
         public string PostalCodeFormat { get; protected set; }
 
-        public int CurrencyId
-        {
-            get
-            {
-                if (this.Code == "SE")
-                {
-                    return 1;
-                }
-
-                throw new NotImplementedException ("BasicCountry.CurrencyId");
-            }
-        }
-
         #region IHasIdentity Members
 
         public int Identity
