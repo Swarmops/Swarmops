@@ -194,7 +194,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     attestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryAttested;
                     deattestedTemplate = Resources.Pages.Financial.AttestCosts_SalaryDeattested;
                     beneficiary = salary.PayrollItem.PersonCanonical;
-                    amountCents = salary.GrossSalaryCents;
+                    amountCents = salary.GrossSalaryCents + salary.AdditiveTaxCents;
 
                     break;
                 case 'P': // Parley, aka Conference
