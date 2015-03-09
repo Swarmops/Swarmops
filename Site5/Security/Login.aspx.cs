@@ -10,6 +10,7 @@ using System.Web.UI;
 using NBitcoin;
 using Resources;
 using Swarmops.Database;
+using Swarmops.Interface.Support;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -78,9 +79,7 @@ namespace Swarmops.Pages.Security
                 PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox) &&
                 Request.QueryString["SuppressAutologin"] != "true")
             {
-                Response.AppendCookie (new HttpCookie ("DashboardMessage",
-                    HttpUtility.UrlEncode (
-                        "<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p>")));
+                DashboardMessage.Set ("<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p>");
                 FormsAuthentication.SetAuthCookie ("1,1", true);
                 Response.Redirect ("/");
             }
@@ -91,9 +90,9 @@ namespace Swarmops.Pages.Security
 
             if (organizationOpenLedgers != null)
             {
-                Response.AppendCookie(new HttpCookie("DashboardMessage", HttpUtility.UrlEncode(String.Format(Resources.Pages.Security.Login_AsOpenLedgers, organizationOpenLedgers.Name))));
+                DashboardMessage.Set (String.Format(Resources.Pages.Security.Login_AsOpenLedgers, organizationOpenLedgers.Name));
                 FormsAuthentication.SetAuthCookie(Person.OpenLedgersIdentity.ToString() + "," + organizationOpenLedgers.Identity.ToString(), true);
-                Response.Redirect ("/Ledgers/BalanceSheet");
+                Response.Redirect (@"/Ledgers/BalanceSheet");
             }
 
             // Check for SSL and force it

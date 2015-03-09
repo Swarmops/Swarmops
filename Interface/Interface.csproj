@@ -67,6 +67,7 @@
     <Compile Include="PirateWebMapProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RssWriter.cs" />
+    <Compile Include="Support\DashboardMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Basic\Basic.csproj">

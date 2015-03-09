@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using Resources;
+using Swarmops.Interface.Support;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -155,9 +156,8 @@ namespace Swarmops
             if (dashMessage != null && dashMessage.Value.Length > 0)
             {
                 this.LiteralDocumentReadyHook.Text =
-                    string.Format ("alertify.alert(unescape('{0}'.replace(/\\+/g, '%20')));", dashMessage.Value);
-                Response.SetCookie (new HttpCookie ("DashboardMessage", string.Empty));
-                Response.Cookies["DashboardMessage"].Expires = DateTime.Now.AddYears (-10);
+                    string.Format ("alertify.alert(decodeURIComponent('{0}'));", dashMessage.Value);
+                DashboardMessage.Reset();
             }
             else
             {

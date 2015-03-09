@@ -16,6 +16,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
+using Swarmops.Interface.Support;
 
 // TODO: There are significant remnants in this file from the old Telerik-based upload code. When Account Automation is complete and the user can select a bank profile
 // for an account, uploading payment files as well as bank statements, remove that dead code as its templates won't be needed after that.
@@ -62,9 +63,7 @@ namespace Swarmops.Site.Pages.Ledgers
 
             if (!supportedHardcode)
             {
-                Response.AppendCookie (new HttpCookie ("DashboardMessage",
-                    HttpUtility.UrlEncode (
-                        "There are no asset accounts set up for automation, so no accounts support data upload at this time. Returning to Dashboard.")));
+                DashboardMessage.Set ("There are no asset accounts set up for automation, so no accounts support data upload at this time. Returning to Dashboard.");
                 Response.Redirect ("/", true);
             }
 

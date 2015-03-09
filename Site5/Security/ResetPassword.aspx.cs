@@ -9,6 +9,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NBitcoin.BouncyCastle.Asn1.Ocsp;
+using Swarmops.Interface.Support;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Structure;
@@ -135,7 +136,7 @@ namespace Swarmops.Pages.Security
             // Set cookies
 
             FormsAuthentication.SetAuthCookie(resetPerson.Identity.ToString(CultureInfo.InvariantCulture) + "," + lastOrgId.ToString(CultureInfo.InvariantCulture) + ",,AuthPlain", true);
-            HttpContext.Current.Response.SetCookie (new HttpCookie ("DashboardMessage", Resources.Pages.Security.ResetPassword_Success));
+            DashboardMessage.Set (Resources.Pages.Security.ResetPassword_Success);
 
             return true; // temp
 

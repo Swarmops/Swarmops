@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
+using Swarmops.Interface.Support;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Support;
@@ -212,7 +213,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 claim.Attest (CurrentUser);
             }
 
-            Response.AppendCookie (new HttpCookie ("DashboardMessage", HttpUtility.UrlEncode (successMessage)));
+            DashboardMessage.Set (successMessage);
 
             // Redirect to dashboard
 

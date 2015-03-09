@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Web;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Interface.Support;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
@@ -129,7 +130,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             string successMessage = String.Format (Resources.Pages.Admin.CreateOrganization_Success,
                 Participant.Localized (peopleLabel, TitleVariant.Ship));
 
-            Response.AppendCookie (new HttpCookie ("DashboardMessage", HttpUtility.UrlEncode (successMessage)));
+            DashboardMessage.Set (successMessage);
 
             // Log in to new organization, then redirect to Edit
 

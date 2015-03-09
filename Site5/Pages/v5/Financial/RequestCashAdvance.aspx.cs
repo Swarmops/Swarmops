@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Web;
+using Swarmops.Interface.Support;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
@@ -108,7 +109,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 cashAdvance.Attest (CurrentUser);
             }
 
-            Response.AppendCookie (new HttpCookie ("DashboardMessage", HttpUtility.UrlEncode (successMessage)));
+            DashboardMessage.Set (successMessage);
 
             // Redirect to dashboard
 
