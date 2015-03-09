@@ -200,5 +200,8 @@
   <data name="WesternEurope" xml:space="preserve">
     <value>Западная Европа</value>
   </data>
-  
+  <data name="World" xml:space="preserve">
+    <value>США и свет</value>
+    <comment>Root geography</comment>
+  </data>
 </root>

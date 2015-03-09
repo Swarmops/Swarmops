@@ -171,7 +171,9 @@
   <data name="Financial_ExpenseClaim" xml:space="preserve">
     <value>صرف</value>
   </data>
-  
+  <data name="Financial_ExpenseClaimSpecification" xml:space="preserve">
+    <value>صرف رقم #{0:N0}</value>
+  </data>
   <data name="Financial_ExpenseClaimsSpecification" xml:space="preserve">
     <value>النفقات {0}</value>
   </data>
@@ -334,16 +336,24 @@
     <value>ذات الصلة</value>
     <comment>List of shortcuts to related actions to current one</comment>
   </data>
-  
-  
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>صرف رقم #{0:N0} (ناقص مقدما رقم #{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>صرف رقم #{0:N0} (ناقص السلف)</value>
+  </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
     <value>النفقات {0} (ناقص السلفة رقم{1})</value>
   </data>
   <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
     <value>النفقات {0} (ناقص السلف)</value>
   </data>
-  
-  
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>مطالبة مالية رقم #{0:N0} من قبل {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>الفاتورة الواردة رقم #{0:N0} من قبل {1}</value>
+  </data>
   <data name="Financial_ReceiptSpecification" xml:space="preserve">
     <value>صورة إيصال {0} لـ{1}</value>
   </data>
@@ -499,8 +509,14 @@
     <value>غير معروف أو غير مصرح به</value>
     <comment>Used for gender et al</comment>
   </data>
-  
-  
+  <data name="Global_DateFormatShortReadable" xml:space="preserve">
+    <value>شهر/يوم/سنة (MM/DD/YYYY)</value>
+    <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
+  </data>
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>شهر يوم، سنة (MMM d, yyyy)</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
   <data name="Timespan_FiveYears" xml:space="preserve">
     <value>خمس سنوات</value>
   </data>
@@ -539,33 +555,85 @@
   <data name="Error_AjaxCallException" xml:space="preserve">
     <value>حدث خطأ عام وغير محدد أثناء الاتصال مع خادم نظام سوارموبس. هل ما زالت الشكبة متصلة والخادم متوافراً؟</value>
   </data>
-  
+  <data name="Global_Month" xml:space="preserve">
+    <value>شهر</value>
+  </data>
   <data name="Global_View" xml:space="preserve">
     <value>عرض</value>
     <comment>As in "inspect"</comment>
   </data>
-  
+  <data name="Global_Year" xml:space="preserve">
+    <value>سنة</value>
+  </data>
   <data name="Global_YearMonth" xml:space="preserve">
     <value>السنة/الشهر</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_YearX" xml:space="preserve">
+    <value>سنة {0}</value>
+    <comment>As in "the year X".</comment>
+  </data>
+  <data name="Swarm_Vacant" xml:space="preserve">
+    <value>(شاغرة)</value>
+    <comment>For unassigned positions</comment>
+  </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>يرجى التعريف لتمكين هذه الميزة</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>السلفة النقدية رقم #{0:N0} لـ {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>السلفة النقدية رقم #{0:N0} استرداد</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>السلف النقدية {0} الاسترداد</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>السلف النقدية {0} لـ {1}</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>المطالبة المالية رقم #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>المطالبات المالية {0} عن طريق {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>فاتورة واردة رقم #{0:N0}</value>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>النظام</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>سجل الرواتب {0} للفترة {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>ضرائب الرواتب للفترة {0:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>راتب رقم #{0:N0} للفترة {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>راتب رقم #{0:N0} للفترة {1:yyyy-MMM} لـ {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>راتب رقم #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>الضرائب على الراتب رقم #{0:N0} للفترة {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>الحساب</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>المبلغ</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>اضافة</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
 </root>

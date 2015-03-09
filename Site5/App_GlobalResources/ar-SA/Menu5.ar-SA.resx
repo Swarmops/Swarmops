@@ -126,14 +126,18 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>إنشاء منظمة جديدة</value>
   </data>
-  
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>إعدادات المنظمة</value>
+  </data>
   <data name="Menu5_Administration_GeographyTree" xml:space="preserve">
     <value>شجرة المناطق الجغرافية</value>
   </data>
   <data name="Menu5_Administration_OrganizationClusters" xml:space="preserve">
     <value>مجموعات المنظمة</value>
   </data>
-  
+  <data name="Menu5_Administration_SystemSettings" xml:space="preserve">
+    <value>إعدادات النظام</value>
+  </data>
   <data name="Menu5_Communications" xml:space="preserve">
     <value>الاتصالات</value>
   </data>
@@ -264,7 +268,9 @@
   <data name="Menu5_Ledgers_AccountPlan" xml:space="preserve">
     <value>شجرة الحسابات</value>
   </data>
-  
+  <data name="Menu5_Ledgers_AuditLedgers" xml:space="preserve">
+    <value>دفاتر الحسابات للتدقيق</value>
+  </data>
   <data name="Menu5_Ledgers_BalanceSheet" xml:space="preserve">
     <value>الميزانية العمومية</value>
   </data>
@@ -328,7 +334,9 @@
   <data name="Menu5_Organization_CommunicationTemplates_PressRelease" xml:space="preserve">
     <value>البيانات الصحفية</value>
   </data>
-  
+  <data name="Menu5_Organization_Feeds" xml:space="preserve">
+    <value>التغذيات</value>
+  </data>
   <data name="Menu5_Organization_Feeds_Newsletter" xml:space="preserve">
     <value>النشرات الإخبارية</value>
   </data>
