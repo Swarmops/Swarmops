@@ -636,4 +636,12 @@
     <value>Add</value>
     <comment>as in "add element", "add row", etc</comment>
   </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(several)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- Several - select --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
 </root>

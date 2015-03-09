@@ -673,4 +673,7 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(detailed description withheld)</value>
   </data>
+  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
+    <value>Unbalanced Transactions (Must Fix)</value>
+  </data>
 </root>

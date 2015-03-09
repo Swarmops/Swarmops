@@ -99,6 +99,10 @@
         var transactionId = 0;
         var transactionDirty = false;
 
+        function onAccountSelectorLoaded() {
+            $("#<%= DropBudgets.ClientID%>_SpanBudgets span.combo input.combo-text").val("<%=Resources.Global.Global_DropInits_SelectFinancialAccount%>");
+        }
+
         function onAccountSelected(newAccountId) {
             accountId = newAccountId;
             reloadData();
@@ -298,7 +302,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
-    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
+    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets ID="DropBudgets" OnClientLoaded=" onAccountSelectorLoaded " OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
     
         <table id="gridLedgers" class="easyui-datagrid" style="width: 680px; height: 500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerData.aspx'"
