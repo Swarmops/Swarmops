@@ -241,8 +241,8 @@ namespace Swarmops.Logic.Financial
 
             DateTime[] quarterBoundaries =
             {
-                new DateTime (this.Year, 1, 1), new DateTime (this.Year, 3, 1), new DateTime (this.Year, 6, 1),
-                new DateTime (this.Year, 9, 1), new DateTime (this.Year + 1, 1, 1)
+                new DateTime (this.Year, 1, 1), new DateTime (this.Year, 4, 1), new DateTime (this.Year, 7, 1),
+                new DateTime (this.Year, 10, 1), new DateTime (this.Year + 1, 1, 1)
             };
 
             // 1) Actually, the accounts are already sorted. Or are supposed to be, anyway,
