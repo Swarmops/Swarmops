@@ -123,7 +123,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             if (!zeroStart)
             {
-                runningBalance = account.GetDeltaCents (dawnOfMankind, periodStart);
+                runningBalance = account.GetDeltaCents (balanceStart, periodStart);
                 startString = Resources.Pages.Ledgers.InspectLedgers_InboundBalance;
             }
             if (!zeroEnd)
