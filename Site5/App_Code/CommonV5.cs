@@ -51,7 +51,11 @@ public class CommonV5
 
         try
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture (preferredCulture);
+            GregorianCalendar normalizedCalendar = new GregorianCalendar();
+            normalizedCalendar.CalendarType = GregorianCalendarTypes.USEnglish;  // avoids problems with Arabic, etc, calendars and bookkeeping in localization
+
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(preferredCulture);
+            Thread.CurrentThread.CurrentCulture.DateTimeFormat.Calendar = normalizedCalendar;
         }
         catch (Exception) // if we can't set the culture, what do we do? ("We send the Marines.")
         {
@@ -100,17 +104,6 @@ public class CommonV5
         }
 
         CulturePreInit (HttpContext.Current.Request);
-        // OnPreInit() isn't called in the static methods calling this fn
-
-        /*
-        string userCultureString = result.CurrentUser.PreferredCulture;
-
-        if (!string.IsNullOrEmpty(userCultureString))
-        {
-            CultureInfo userCulture = new CultureInfo(userCultureString); // may throw on invalid database data
-            Thread.CurrentThread.CurrentCulture = userCulture;
-            Thread.CurrentThread.CurrentUICulture = userCulture;
-        }*/
 
         return result;
     }

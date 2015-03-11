@@ -70,9 +70,7 @@ public partial class Pages_v5_Init_Default : Page
 
         // Localization
 
-        // Set default culture (English, United States, but that doesn't work so fake it to GB)
-
-        string preferredCulture = "en-GB";
+        string preferredCulture = "en-US";
 
         // -----------  SET CULTURE ------------
 
@@ -111,7 +109,11 @@ public partial class Pages_v5_Init_Default : Page
 
         try
         {
+            GregorianCalendar normalizedCalendar = new GregorianCalendar();
+            normalizedCalendar.CalendarType = GregorianCalendarTypes.USEnglish;
+            
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture (preferredCulture);
+            Thread.CurrentThread.CurrentCulture.DateTimeFormat.Calendar = normalizedCalendar;
         }
         catch (Exception exception)
         {
