@@ -3,6 +3,7 @@
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboPeople" Src="~/Controls/v5/Swarm/ComboPeople.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="TextCurrency" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="ModalDialog" Src="~/Controls/v5/Base/ModalDialog.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     <script src="/Scripts/jquery.switchButton.js" language="javascript" type="text/javascript"></script>
@@ -75,16 +76,7 @@
 
 	        $('div.datagrid').css('opacity', 0.4);
 	        
-	        $("#IconCloseEdit").click(function() {
-	            $('#divModalCover').fadeOut();
-
-	            if (accountDirty) {
-	                $('#tableAccountPlan').treegrid('reload');
-	                accountDirty = false;
-	            }
-	        });
-
-	        $('#TextAccountName').blur(function() {
+            $('#TextAccountName').blur(function() {
 
 	            var newAccountName = $('#TextAccountName').val().trim();
 	            if (modalAccountName == newAccountName) {
@@ -223,6 +215,14 @@
 	    });
 
 
+        function onDialogClose() {
+            if (accountDirty) {
+                $('#tableAccountPlan').treegrid('reload');
+                accountDirty = false;
+            }
+        }
+
+
 	    function addAccount() {
 	        $.ajax({
 	            type: "POST",
@@ -296,7 +296,7 @@
 
 	        window.scrollTo(0, 0);
 	        $('body').css('overflow-y', 'hidden');
-	        $('#divModalCover').fadeIn();
+	        $('#<%=this.DialogAccount.ClientID %>_divModalCover').fadeIn();
 
 	        setTimeout(function() {
 	            $('#divModalBox').animate({ "height": ($('#DivModalFields').outerHeight() + $('#HeaderModal').outerHeight()) + 40 + "px" }, 50);
@@ -443,7 +443,7 @@
 	    }
 
         function modalShow() {
-            $('#divModalCover').fadeIn();
+            $('#<%=this.DialogAccount.ClientID %>_divModalCover').fadeIn();
         }
 
         function onOwnerChange(personId) {
@@ -551,7 +551,7 @@
 	    var parentAccountName = '';
 
 	</script>
-    <style>
+    <style type="text/css">
 	    .IconEdit, .IconAdd {
 		    cursor: pointer;
 	    }
@@ -599,46 +599,43 @@
         </thead>  
     </table>
 
-
-    <div id="divModalCover" class="modalcover">
-        <div id="divModalBox" class="box modal">
-            <div class="content">
-                <div class="divIconCloseModal"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2 id="HeaderModal"><asp:Literal ID="LiteralHeaderEditingAccount" runat="server"/></h2>
-                <div id="DivModalFields" class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
-                    <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" OnClientSelect="onAccountTreeSelect" />&nbsp;<br/>
-                    <div id="DivEditProfitLossControls">&nbsp;<br/>
-                    <Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
-                    <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>
+    
+    <Swarmops5:ModalDialog ID="DialogAccount" OnClientClose="onDialogClose" runat="server">
+        <DialogCode>
+            <h2 id="HeaderModal"><asp:Literal ID="LiteralHeaderEditingAccount" runat="server"/></h2>
+            <div id="DivModalFields" class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
+                <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" OnClientSelect="onAccountTreeSelect" />&nbsp;<br/>
+                <div id="DivEditProfitLossControls">&nbsp;<br/>
+                <Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
+                <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>
+                &nbsp;<br/>
+                <label for="CheckAccountActive"><asp:Literal ID="LiteralLabelActiveShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckAccountActive"/></div><br/>
+                <label for="CheckAccountExpensable"><asp:Literal ID="LiteralLabelExpensableShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
+                <label for="CheckAccountAdministrative"><asp:Literal ID="LiteralLabelAdministrativeShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
+                &nbsp;<br/></div>
+                <div id="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" />&nbsp;<br/></div>
+                <div id="DivEditAssetControls">
                     &nbsp;<br/>
-                    <label for="CheckAccountActive"><asp:Literal ID="LiteralLabelActiveShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Active" class="EditCheck" id="CheckAccountActive"/></div><br/>
-                    <label for="CheckAccountExpensable"><asp:Literal ID="LiteralLabelExpensableShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Expensable" class="EditCheck" id="CheckAccountExpensable"/></div><br/>
-                    <label for="CheckAccountAdministrative"><asp:Literal ID="LiteralLabelAdministrativeShort" runat="server"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Administrative" class="EditCheck" id="CheckAccountAdministrative"/></div>
-                    &nbsp;<br/></div>
-                    <div id="DivEditInitControls"><Swarmops5:TextCurrency ID="CurrencyInitialBalance" runat="server" />&nbsp;<br/></div>
-                    <div id="DivEditAssetControls">
-                        &nbsp;<br/>
-                        <asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
-                        <input type="text" id="TextAutomationPaymentTag" readonly="readonly"/>&nbsp;<br/>
-                    </div>
-                </div>
-                <div class="entryLabels"><asp:Literal ID="LiteralLabelAccountName" runat="server"/><br/>
-                    <asp:Literal ID="LiteralLabelParent" runat="server"/><br/>
-                    <div id="DivEditProfitLossLabels"><h2><asp:Literal ID="LiteralLabelHeaderDailyOperations" runat="server"/></h2>
-                    <asp:Literal ID="LiteralLabelOwner" runat="server"/><br/>
-                    <asp:Literal ID="LiteralLabelBudgetBalance" runat="server"/><br/>
-                    <h2><asp:Literal ID="LiteralLabelHeaderConfiguration" runat="server"/></h2>
-                    <asp:Literal ID="LiteralLabelActiveLong" runat="server"/><br/>
-                    <asp:Literal ID="LiteralLabelExpensableLong" runat="server"/><br/>
-                    <asp:Literal ID="LiteralLabelAdministrativeLong" runat="server"/><br/></div>
-                    <div id="DivEditInitLabels"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/></div> 
-                    <div id="DivEditAssetLabels"><h2><asp:Literal ID="LiteralLabelHeaderAutomation" runat="server"/></h2>
-                    <asp:Literal ID="LiteralLabelFileUploadProfile" runat="server"/><br/>
-                    <span id="SpanUploadParameterName">Upload parameter, if any</span></div> 
+                    <asp:DropDownList runat="server" ID="DropAccountUploadFormats"/>
+                    <input type="text" id="TextAutomationPaymentTag" readonly="readonly"/>&nbsp;<br/>
                 </div>
             </div>
-        </div>
-    </div>
-
+            <div class="entryLabels"><asp:Literal ID="LiteralLabelAccountName" runat="server"/><br/>
+                <asp:Literal ID="LiteralLabelParent" runat="server"/><br/>
+                <div id="DivEditProfitLossLabels"><h2><asp:Literal ID="LiteralLabelHeaderDailyOperations" runat="server"/></h2>
+                <asp:Literal ID="LiteralLabelOwner" runat="server"/><br/>
+                <asp:Literal ID="LiteralLabelBudgetBalance" runat="server"/><br/>
+                <h2><asp:Literal ID="LiteralLabelHeaderConfiguration" runat="server"/></h2>
+                <asp:Literal ID="LiteralLabelActiveLong" runat="server"/><br/>
+                <asp:Literal ID="LiteralLabelExpensableLong" runat="server"/><br/>
+                <asp:Literal ID="LiteralLabelAdministrativeLong" runat="server"/><br/></div>
+                <div id="DivEditInitLabels"><asp:Literal ID="LiteralLabelInitialAmount" runat="server"/></div> 
+                <div id="DivEditAssetLabels"><h2><asp:Literal ID="LiteralLabelHeaderAutomation" runat="server"/></h2>
+                <asp:Literal ID="LiteralLabelFileUploadProfile" runat="server"/><br/>
+                <span id="SpanUploadParameterName">Upload parameter, if any</span></div> 
+            </div>
+       </DialogCode>
+    </Swarmops5:ModalDialog>
     
 </asp:Content>
 

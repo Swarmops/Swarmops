@@ -7,8 +7,10 @@
             <%=this.ClientID%>_close();
         });
 
-        $('#<%=this.ClientID %>_divModalCover').click(function () {  // click outside dialog
-            <%=this.ClientID%>_close();
+        $('#<%=this.ClientID %>_divModalCover').click (function (e) {  // click on cover
+            if (e.target === this) {                                   // but not inside dialog: trigger only on this element
+                <%=this.ClientID%>_close();
+            }
         });
 
     });
