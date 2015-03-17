@@ -674,6 +674,26 @@
     <value>(detailed description withheld)</value>
   </data>
   <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
-    <value>Unbalanced Transactions (Must Fix)</value>
+    <value>Unbalanced Transactions (Must Match Or Fix)</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>Account</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>Some auto-imported financial transactions can't be automatically matched to the ongoing accounting. This is where you manually match such transactions to "balance" them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be "unbalanced").</value>
+  </data>
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>Balance &amp; Match Transactions</value>
   </data>
 </root>

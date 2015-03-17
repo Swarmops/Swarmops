@@ -344,7 +344,7 @@ body.rtl .sidebar {
 
 
 
-.modalcover {
+.modalCover {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -353,22 +353,46 @@ body.rtl .sidebar {
 	z-index: 9001;
 	display: none;
 	background-color: rgba(0, 0, 0, 0.25);
-	
 }
 
-.modal 
-{
+.modalWrap {
 	position: absolute;
-	height: 80%;
-	width: 950px;
-	box-shadow: black 0px 0px 30px 2px;
+	height: 70%;
+	width: 980px;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
 	margin: auto auto;
+    background: transparent;
+}
+
+.modal 
+{
+	box-shadow: black 0px 0px 30px 2px;
 	overflow-y: auto;
 }
+
+.modal.box {
+    margin-top: inherit;
+}
+
+.modalIconClose {  /* copies the close button from Fancybox */
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background: url("/Scripts/fancybox/fancybox.png") repeat scroll -40px 0px transparent;
+    cursor: pointer;
+    z-index: 9103;
+}
+
+body.rtl .modalIconClose, body.rtl #fancybox-close {
+    right: inherit !important;
+    left: -15px !important;
+}
+
 
 
 .divIconCloseModal {

@@ -4,11 +4,16 @@
     $(document).ready(function () {
         $('#<%=this.ClientID %>_DropBudgets').combotree({
                 animate: true,
-                height: 30 <%
-                           if (!String.IsNullOrEmpty(this.OnClientLoaded))
-                           {
-                                Response.Write(", onLoadSuccess: function() { " + this.OnClientLoaded + "(); }");
-                           }
+                height: 30,
+                onLoadSuccess: function() {
+                    $("#<%= this.ClientID%>_SpanBudgets span.combo input.combo-text").val("<%=Resources.Global.Global_DropInits_SelectFinancialAccount%>");
+                    <%
+                    if (!String.IsNullOrEmpty(this.OnClientLoaded)) 
+                    {
+                        Response.Write(this.OnClientLoaded + "();");
+                    }%>
+                }
+                <%
                            if (!String.IsNullOrEmpty(this.OnClientSelect))
                            {
                                Response.Write(", onSelect: function(account) { " + this.OnClientSelect + "(account.id); }");

@@ -405,4 +405,7 @@
   <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
     <value>Payroll Tax Forms</value>
   </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>Balance &amp; Match Transactions</value>
+  </data>
 </root>

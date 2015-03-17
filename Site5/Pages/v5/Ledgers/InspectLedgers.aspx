@@ -2,6 +2,7 @@
 <%@ Import Namespace="Resources" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="CurrencyTextBox" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="ModalDialog" Src="~/Controls/v5/Base/ModalDialog.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
     
@@ -57,14 +58,14 @@
 
                     // Dynamic reloading screws up resizing for some reason, so we'll have to resize the tx grid manually.
 
-                    var heightBody = $('div#divModalCover table.datagrid-btable').height();
-                    $('div#divModalCover div.datagrid-body').height(heightBody);
+                    var heightBody = $('div#<%=this.DialogEditTx.ClientID%>_divModalCover table.datagrid-btable').height();
+                    $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-body').height(heightBody);
 
-                    var heightHeaders = $('div#divModalCover div.datagrid-header').height();
-                    $('div#divModalCover div.datagrid-view').height(heightBody + heightHeaders + 20); // +20 adds some margin on the bottom. It's an arbitrary number.
-                    $('div#divModalCover div.datagrid-wrap').height(heightBody + heightHeaders + 20);
+                    var heightHeaders = $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-header').height();
+                    $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-view').height(heightBody + heightHeaders + 20); // +20 adds some margin on the bottom. It's an arbitrary number.
+                    $('div#<%=this.DialogEditTx.ClientID%>_divModalCover div.datagrid-wrap').height(heightBody + heightHeaders + 20);
 
-                    $('div#divModalBox').height($('div#divModalBox div.content').height() + 20);
+                    $('div#<%=this.DialogEditTx.ClientID%>_divModalBox').height($('div#<%=this.DialogEditTx.ClientID%>_divModalBox div.content').height() + 20);
 
                 }
             });
@@ -75,15 +76,6 @@
 
             $('#<%= DropMonths.ClientID %>').change(function() {
                 reloadData();
-            });
-
-            $("#IconCloseEdit").click(function() {
-                $('#divModalCover').fadeOut();
-
-                if (transactionDirty) {
-                    $('#gridLedgers').datagrid('reload');
-                    transactionDirty = false;
-                }
             });
 
             $('#ButtonAddTransactionRow').click(function() {
@@ -99,8 +91,11 @@
         var transactionId = 0;
         var transactionDirty = false;
 
-        function onAccountSelectorLoaded() {
-            $("#<%= DropBudgets.ClientID%>_SpanBudgets span.combo input.combo-text").val("<%=Resources.Global.Global_DropInits_SelectFinancialAccount%>");
+        function onModalClose() {
+            if (transactionDirty) {
+                $('#gridLedgers').datagrid('reload');
+                transactionDirty = false;
+            }
         }
 
         function onAccountSelected(newAccountId) {
@@ -190,7 +185,7 @@
         function onInspectTransaction(transactionId) {
             window.scrollTo(0, 0);
             $('body').css('overflow-y', 'hidden');
-            $('#divModalCover').fadeIn();
+            $('#<%=this.DialogEditTx.ClientID%>_divModalCover').fadeIn();
             $('span#spanModalTransactionId').text(transactionId);
 
             $('#gridTransaction').datagrid({ url: 'Json-InspectLedgerTxData.aspx?TxId=' + transactionId });
@@ -302,7 +297,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     
-    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets ID="DropBudgets" OnClientLoaded=" onAccountSelectorLoaded " OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
+    <h2><asp:Label ID="LabelHeaderInspect" runat="server" /> <Swarmops5:ComboBudgets ID="DropBudgets" OnClientSelect=" onAccountSelected " ListType="All" runat="server" /> <asp:Label ID="LabelHeaderInspectFor" runat="server" /> <asp:DropDownList runat="server" ID="DropYears"/> <asp:DropDownList runat="server" ID="DropMonths"/></h2>
     
         <table id="gridLedgers" class="easyui-datagrid" style="width: 680px; height: 500px"
         data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:false,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerData.aspx'"
@@ -320,38 +315,36 @@
         </thead>
     </table>  
     
-    
-        <div id="divModalCover" class="modalcover">
-        <div id="divModalBox" class="box modal">
-            <div class="content" style="overflow: hidden">
-                <div class="divIconCloseModal"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2><asp:Literal ID="LiteralEditHeader" runat="server"/></h2>
-                <table id="gridTransaction" class="easyui-datagrid" style="width: 910px"
-                data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerTxData.aspx'"
-                idField="id">
-                    <thead>
-                        <tr>
-                            <th data-options="field:'accountName',width:270"><asp:Label ID="LabelGridHeaderAccountName" runat="server" Text="XYZ Description" /></th>  
-                            <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive2" runat="server" Text="XYZ Debit" /></th>
-                            <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative2" runat="server" Text="XYZ Credit" /></th>
-                            <th data-options="field:'dateTime',width:90"><asp:Label ID="LabelGridHeaderDateTimeEntered" runat="server" Text="XYZ DateTime" /></th>
-                            <th data-options="field:'initials',width:50"><asp:Label ID="LabelGridHeaderInitials" runat="server" Text="ID#"/></th>  
-                        </tr>
-                    </thead>
-                </table>
+
+    <Swarmops5:ModalDialog ID="DialogEditTx" OnClientClose="onModalClose" runat="server">
+        <DialogCode>
+            <h2><asp:Literal ID="LiteralEditHeader" runat="server"/></h2>
+
+            <table id="gridTransaction" class="easyui-datagrid" style="width: 910px"
+            data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerTxData.aspx'"
+            idField="id">
+                <thead>
+                    <tr>
+                        <th data-options="field:'accountName',width:270"><asp:Label ID="LabelGridHeaderAccountName" runat="server" Text="XYZ Debit" /></th>  
+                        <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive2" runat="server" Text="XYZ Debit" /></th>
+                        <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative2" runat="server" Text="XYZ Credit" /></th>
+                        <th data-options="field:'dateTime',width:90"><asp:Label ID="LabelGridHeaderDateTimeEntered" runat="server" Text="XYZ DateTime" /></th>
+                        <th data-options="field:'initials',width:50"><asp:Label ID="LabelGridHeaderInitials" runat="server" Text="ID#"/></th>  
+                    </tr>
+                </thead>
+            </table>
                 
-                <div id="divEditTransaction">
-                    <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
-                    <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value=' <asp:Literal ID="LiteralAddRowButton" runat="server" /> '/></span></h2></span>
+            <div id="divEditTransaction">
+                <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
+                <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value=' <asp:Literal ID="LiteralAddRowButton" runat="server" /> '/></span></h2></span>
                     
-                </div>
-                <div id="divTransactionTracking">
+            </div>
+            <div id="divTransactionTracking">
                 <h2><asp:Label ID="LabelTrackedTransactionHeader" runat="server" /></h2>
                 <div id="divTransactionTrackingDetails"></div>
-                </div>
-
             </div>
-        </div>
-    </div>
+        </DialogCode>
+    </Swarmops5:ModalDialog>
 
 
 

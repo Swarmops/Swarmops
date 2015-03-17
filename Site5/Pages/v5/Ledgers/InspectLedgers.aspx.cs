@@ -75,6 +75,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelGridHeaderDescription.Text = Global.Global_Description;
             this.LabelGridHeaderId.Text = Resources.Pages.Ledgers.InspectLedgers_TransactionId;
 
+            
             this.LabelGridHeaderAccountName.Text = Resources.Pages.Ledgers.InspectLedgers_AccountName;
             this.LabelGridHeaderDateTimeEntered.Text = Resources.Pages.Ledgers.InspectLedgers_LoggedDate;
             this.LabelGridHeaderDeltaNegative2.Text = Global.Ledgers_Credit;
@@ -83,6 +84,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             this.LabelFlagNotAvailable.Text = Resources.Pages.Ledgers.InspectLedgers_FlaggingNotAvailable;
 
+            
             this.LabelAddTransactionRowsHeader.Text = Resources.Pages.Ledgers.InspectLedgers_HeaderAddTransactionRow;
             this.LabelTrackedTransactionHeader.Text =
                 Resources.Pages.Ledgers.InspectLedgers_HeaderAutoTransactionTracking;
@@ -93,7 +95,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails,
                     AccessType.Write)))
             {
-                this.LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_EditingTransactionX;
+                LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_EditingTransactionX;
+
                 this.LabelAddRowAccount.Text = Global.Financial_Account;
                 this.LabelAddRowAmount.Text = Global.Financial_Amount;
                 this.LiteralErrorAddRowSelectAccount.Text =
@@ -102,7 +105,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             }
             else // read access, at a minimum of AccessAspect.Bookkeeping
             {
-                this.LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_InspectingTransactionX;
+                LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_InspectingTransactionX;
             }
 
             // Access helpers to JavaScript (these don't actually determine access, but help in UI prettiness)

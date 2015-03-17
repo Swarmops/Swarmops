@@ -345,30 +345,47 @@
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
-          
-            <MainMenuItem>
-                <UserLevel>3</UserLevel>
-                <Type>Separator</Type>
-                <Children />
-            </MainMenuItem>
 
           <MainMenuItem>
-            <ResourceKey>Ledgers_TaxForms</ResourceKey>
             <UserLevel>3</UserLevel>
-            <ImageUrl>iconshock-invoice</ImageUrl>
+            <Type>Separator</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
+            <ResourceKey>Ledgers_BalanceTransactions</ResourceKey>
+            <UserLevel>3</UserLevel>
             <Permissions />
-            <Type>Submenu</Type>
-            <Children>
-              <MainMenuItem>
-                <ResourceKey>Ledgers_TaxForms_Payroll</ResourceKey>
-                <UserLevel>3</UserLevel>
-                <Permissions />
-                <ImageUrl>iconshock-invoice</ImageUrl>
-                <NavigateUrl>/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx</NavigateUrl>
-                <Type>Link</Type>
-                <Children />
-              </MainMenuItem>
-            </Children>
+            <ImageUrl>iconshock-balance</ImageUrl>
+            <NavigateUrl>/Pages/v5/Ledgers/BalanceTransactions.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children />
+          </MainMenuItem>
+
+
+          <MainMenuItem>
+            <UserLevel>3</UserLevel>
+            <Type>Separator</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
+              <ResourceKey>Ledgers_TaxForms</ResourceKey>
+              <UserLevel>3</UserLevel>
+              <ImageUrl>iconshock-invoice</ImageUrl>
+              <Permissions />
+              <Type>Submenu</Type>
+              <Children>
+                <MainMenuItem>
+                  <ResourceKey>Ledgers_TaxForms_Payroll</ResourceKey>
+                  <UserLevel>3</UserLevel>
+                  <Permissions />
+                  <ImageUrl>iconshock-invoice</ImageUrl>
+                  <NavigateUrl>/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx</NavigateUrl>
+                  <Type>Link</Type>
+                  <Children />
+                </MainMenuItem>
+              </Children>
 
           </MainMenuItem>
 
