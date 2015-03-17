@@ -478,7 +478,7 @@
 	    function setAccountTreeText (text) {
 	        var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
 	        var currentText = accountTree.combotree('getText');
-	        if (currentText.length < 3) {
+	        if (currentText.length < 3 && parentAccountName.length > 2) {
 	            accountTree.combotree('setText', parentAccountName);
 	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
 	        } else if (!accountTreeLoaded) {
@@ -521,7 +521,7 @@
             });
         }
 
-
+        ac
 	    function onAccountTreeLoaded() {
 	        var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
 	        // accountTree.combotree('select', 0); // clear any previous selection
@@ -604,7 +604,7 @@
         <DialogCode>
             <h2 id="HeaderModal"><asp:Literal ID="LiteralHeaderEditingAccount" runat="server"/></h2>
             <div id="DivModalFields" class="entryFields"><input type="text" id="TextAccountName" />&nbsp;<br />
-                <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" OnClientSelect="onAccountTreeSelect" />&nbsp;<br/>
+                <Swarmops5:ComboBudgets ID="DropParents" runat="server" OnClientLoaded="onAccountTreeLoaded" SuppressPrompt="True" OnClientSelect="onAccountTreeSelect" />&nbsp;<br/>
                 <div id="DivEditProfitLossControls">&nbsp;<br/>
                 <Swarmops5:ComboPeople ID="DropOwner" OnClientSelect="onOwnerChange" runat="server" />&nbsp;<br/>
                 <input type="text" id="TextAccountBudget" style="text-align: right"/>&nbsp;<br/>

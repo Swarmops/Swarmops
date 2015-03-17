@@ -2,12 +2,15 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#<%=this.ClientID %>_DropBudgets').combotree({
+        $('#<%= this.ClientID %>_DropBudgets').combotree({
                 animate: true,
                 height: 30,
-                onLoadSuccess: function() {
-                    $("#<%= this.ClientID%>_SpanBudgets span.combo input.combo-text").val("<%=Resources.Global.Global_DropInits_SelectFinancialAccount%>");
-                    <%
+                onLoadSuccess: function () {
+                    <% 
+                    if (!SuppressPrompt)
+                    {
+                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.combo-text').val(\"" + Resources.Global.Global_DropInits_SelectFinancialAccount + "\");");
+                    }
                     if (!String.IsNullOrEmpty(this.OnClientLoaded)) 
                     {
                         Response.Write(this.OnClientLoaded + "();");

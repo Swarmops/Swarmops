@@ -18,6 +18,8 @@ namespace Swarmops.Controls.Financial
 
         public AccountListType ListType { get; set; }
 
+        public bool SuppressPrompt { get; set; }
+
         protected string DataUrl
         {
             get
