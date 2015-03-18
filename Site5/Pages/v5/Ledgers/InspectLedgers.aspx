@@ -207,7 +207,7 @@
                     success: function(msg) {
                         if (msg.d.length > 1) {
                             $('#divTransactionTrackingDetails').html(msg.d);
-                            $('#divTransactionTrackingDetails').show();
+                            $('#divTransactionTracking').show();
                             $('#divEditTransaction').hide();
 
                             $("a.FancyBox_Gallery").fancybox({
