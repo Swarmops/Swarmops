@@ -9,3 +9,8 @@ database.config*
 Database.config*
 Database.Config*
 database.Config*
+
+
+# Ignore Experimental scripts (used to evaluate/debug new versions of script packages)
+
+Scripts/Experimental/*

@@ -521,12 +521,12 @@
             });
         }
 
-        ac
+        
 	    function onAccountTreeLoaded() {
 	        var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
 	        // accountTree.combotree('select', 0); // clear any previous selection
 	        accountTreeLoaded = true;
-	        if (parentAccountName.length > 0) {
+	        if (parentAccountName != null && parentAccountName.length > 0) {
 	            accountTree.combotree('setText', parentAccountName);
 	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
             }

@@ -41,7 +41,7 @@
     
     <!-- external packages that are commonly used (on practically all pages) -->
     <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
-    <link href="/Style/v5-easyui-elements.css" rel="stylesheet" type="text/css" />
+    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
 
     <!-- additional scripts etc from individual pages -->
     <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />
@@ -118,7 +118,7 @@
     </script>
 
 </head>
-    <body class='<asp:Literal ID="LiteralBodyClass" runat="server" />'>
+    <body <asp:Literal ID="LiteralBodyAttributes" runat="server" />>
     <form id="form1" runat="server">
 	<script type="text/javascript">
 		//Put your JavaScript code here.

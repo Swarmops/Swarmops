@@ -1,10 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ComboPeople.ascx.cs" Inherits="Swarmops.Controls.Financial.ComboPeople" %>
+<%@ Import Namespace="System.Threading" %>
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('#<%=this.ClientID %>_DropPeople').combobox({
             animate: true,
-            height: 30,
+            height: 32,
+            panelWidth: 300,
+            panelAlign: '<%= Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft? "right": "left" %>',
             loader: <%=this.ClientID %>_autoCompleteLoader,
             mode: 'remote',
             valueField: 'id',
@@ -96,4 +99,4 @@
     }
 </script>
  
- <span id="<%=this.ClientID %>_SpanPeople" class="fakePlaceholderText"><select class="easyui-combobox comboperson" url="" name="DropPeople" id="<%=this.ClientID %>_DropPeople" animate="true" style="width:300px"></select></span>
+ <span id="<%=this.ClientID %>_SpanPeople" class="fakePlaceholderText"><select class="easyui-combobox comboperson" url="" name="DropPeople" id="<%=this.ClientID %>_DropPeople" animate="true" style="width:324px"></select></span>

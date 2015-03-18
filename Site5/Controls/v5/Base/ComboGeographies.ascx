@@ -1,25 +1,28 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ComboGeographies.ascx.cs" Inherits="Swarmops.Controls.Base.ComboGeographies" %>
+<%@ Import Namespace="System.Threading" %>
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('#<%=this.ClientID %>_DropGeographies').combotree({
-                animate: true,
-                height: 30,
-                onLoadSuccess: function() {
-                    $('#<%=this.ClientID %>_DropGeographies').combotree('setText', "<%=this.RootGeographyName%>");
-                    <%
-                           if (!String.IsNullOrEmpty(this.OnClientLoaded))
-                           {
-                                Response.Write(this.OnClientLoaded + "(); ");
-                           }%>
-                },
-                loader: function (param, success, error) {
-                    if (!param.id) {
-                        $.getJSON("/Automation/Json-GeographiesTree.aspx?ParentGeographyId=<%=this.ParentGeographyId%>", null, success);
-                    } else {
-                        $.getJSON("/Automation/Json-GeographiesTree.aspx?InitialExpand=false&ParentGeographyId=" + param.id, null, success);
-                    }
-                },
+            animate: true,
+            height: 32,
+            panelWidth: 300,
+            panelAlign: '<%= Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft? "right": "left" %>',
+            onLoadSuccess: function () {
+                $('#<%=this.ClientID %>_DropGeographies').combotree('setText', "<%=this.RootGeographyName%>");
+                <%
+                        if (!String.IsNullOrEmpty(this.OnClientLoaded))
+                        {
+                            Response.Write(this.OnClientLoaded + "(); ");
+                        }%>
+            },
+            loader: function (param, success, error) {
+                if (!param.id) {
+                    $.getJSON("/Automation/Json-GeographiesTree.aspx?ParentGeographyId=<%=this.ParentGeographyId%>", null, success);
+                } else {
+                    $.getJSON("/Automation/Json-GeographiesTree.aspx?InitialExpand=false&ParentGeographyId=" + param.id, null, success);
+                }
+            },
             onSelect: function (row) {
                     <% 
                            if (!String.IsNullOrEmpty(this.OnClientSelect))

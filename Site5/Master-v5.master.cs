@@ -168,7 +168,7 @@ namespace Swarmops
 
             if (Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft)
             {
-                this.LiteralBodyClass.Text = "rtl";
+                this.LiteralBodyAttributes.Text = @"dir='rtl' class='rtl'";
             }
 
             // If we're running as an open-something identity, remove the Preferences div

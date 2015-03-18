@@ -1,10 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DropDown.ascx.cs" Inherits="Swarmops.Frontend.Controls.v5.Base.DropDown" %>
+<%@ Import Namespace="System.Threading" %>
 
-    <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
         $(document).ready(function () {
             $('#<%=this.DropControl.ClientID %>').combobox({
                 editable: false,
-                height: 30,
+                height: 32,
+                panelWidth: 300,
+                panelAlign: '<%= Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft? "right": "left" %>',
                 width: 300<% 
                 if (!String.IsNullOrEmpty(this.OnClientChange))
                 {

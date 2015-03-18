@@ -389,7 +389,7 @@ body.rtl .sidebar {
 }
 
 body.rtl .modalIconClose, body.rtl #fancybox-close {
-    right: inherit !important;
+    right: initial !important;
     left: -15px !important;
 }
 
@@ -639,10 +639,12 @@ body.rtl .entryFields {
 
 .entryFields input, .entryFields textarea, .entryFields select 
 {
-	border-radius: 10px;
-	padding: 0px 10px 0px 10px;
-	font-size: 24px;
-	margin-bottom: 3px;
+    /* "important" here overrides the easyUI native styling */
+
+	border-radius: 10px !important;
+	padding: 0px 10px 0px 10px !important;
+	font-size: 24px !important;
+	margin-bottom: 3px !important;
 }
 
 .entryFields input:not(.buttonAccentColor), .entryFields textarea
@@ -824,7 +826,7 @@ input[type="radio"] {
     margin-left: 5px;
 }
 
-label {
+div.content > p > label {
     margin-left: 10px;
     font-size: 120%;
     font-weight: 500;

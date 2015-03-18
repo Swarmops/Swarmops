@@ -1,11 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ComboBudgets.ascx.cs" Inherits="Swarmops.Controls.Financial.ComboBudgets" %>
+<%@ Import Namespace="System.Threading" %>
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('#<%= this.ClientID %>_DropBudgets').combotree({
-                animate: true,
-                height: 30,
-                onLoadSuccess: function () {
+            animate: true,
+            editable: false,
+            height: 32,
+            panelWidth: 300,
+            panelAlign: '<%= Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft? "right": "left" %>',
+            onLoadSuccess: function () {
                     <% 
                     if (!SuppressPrompt)
                     {
@@ -107,4 +111,4 @@
 
  </script>
  
- <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:300px"></select></span>
+ <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:324px"></select></span>

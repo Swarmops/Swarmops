@@ -40,7 +40,7 @@ namespace Swarmops.Controls.Financial
 
         protected void Page_Init (object sender, EventArgs e)
         {
-            ((PageV5Base) this.Page).RegisterControl (EasyUIControl.Tree);
+            ((PageV5Base) this.Page).RegisterControl (EasyUIControl.Tree | EasyUIControl.Combo | EasyUIControl.ComboBox);
         }
 
         protected void Page_Load (object sender, EventArgs e)

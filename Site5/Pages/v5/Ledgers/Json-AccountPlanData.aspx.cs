@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Threading;
 using Resources;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
@@ -21,6 +22,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         private int _year = 2012;
         private int _resultAccountId;
 
+        private string _nearEdge;
+
         protected void Page_Load (object sender, EventArgs e)
         {
             this._authenticationData = GetAuthenticationDataAndCulture();
@@ -36,6 +39,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             // TODO: Get and cache account tree and account balances
 
             Response.ContentType = "application/json";
+
+            _nearEdge = "left";
+
+            if (Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft)
+            {
+                _nearEdge = "right";
+            }
 
             string response = string.Empty;
 
@@ -120,7 +130,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         // TODO: add zoom, write capability
 
                         ownerString =
-                            "<span style=\\\"padding-left:20px;background-repeat:no-repeat;background-image:url('" +
+                            "<span style=\\\"padding-" + _nearEdge + ":20px;background-repeat:no-repeat;background-position:center " + _nearEdge + ";background-image:url('" +
                             account.Owner.GetSecureAvatarLink (16) + "')\\\">" +
                             JsonSanitize (Server.HtmlEncode (account.Owner.Canonical)) + "</span>";
                     }
@@ -129,7 +139,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         // TODO: add write capability
 
                         ownerString =
-                            "<span style=\\\"padding-left:20px;background-repeat:no-repeat;background-position:center left;background-image:url('/Images/Icons/iconshock-warning-16x12px.png')\\\">" +
+                            "<span style=\\\"padding-" + _nearEdge + ":20px;background-repeat:no-repeat;background-position:center " + _nearEdge + ";background-image:url('/Images/Icons/iconshock-warning-16x12px.png')\\\">" +
                             JsonSanitize (Server.HtmlEncode (Global.Global_NoOwner)) + "</span>";
                     }
                 }
