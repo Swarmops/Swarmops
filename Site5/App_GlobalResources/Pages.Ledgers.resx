@@ -693,6 +693,10 @@
   <data name="BalanceTransactions_Info" xml:space="preserve">
     <value>Some auto-imported financial transactions can't be automatically matched to the ongoing accounting. This is where you manually match such transactions to "balance" them (if a transaction only has one part completed, like the money sent to the organization with no record of what the money is for, the transaction is said to be "unbalanced").</value>
   </data>
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>Balancing/Matching Transaction #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
   <data name="BalanceTransactions_PageTitle" xml:space="preserve">
     <value>Balance &amp; Match Transactions</value>
   </data>

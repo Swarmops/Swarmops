@@ -13,10 +13,15 @@
             }
         });
 
+        $('#<%=this.ClientID%>').showModalDialog = <%=this.ClientID%>_open;
     });
 
+    function <%=this.ClientID%>_open() {
+        $('#<%=this.ClientID%>_divModalCover').fadeIn();
+    }
+
     function <%=this.ClientID%>_close() {
-        $('#<%=this.ClientID %>_divModalCover').fadeOut(100); // fast - 1/4 of normal time
+            $('#<%=this.ClientID %>_divModalCover').fadeOut(100); // fast - 1/4 of normal time
 
             <%
                 if (!string.IsNullOrEmpty (this.OnClientClose))
@@ -25,6 +30,8 @@
                 }
             %>
     }
+
+
 
 </script>
 

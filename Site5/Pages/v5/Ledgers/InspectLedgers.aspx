@@ -186,7 +186,7 @@
             window.scrollTo(0, 0);
             $('body').css('overflow-y', 'hidden');
             $('#<%=this.DialogEditTx.ClientID%>_divModalCover').fadeIn();
-            $('span#spanModalTransactionId').text(transactionId);
+            SwarmopsJS.formatInteger(transactionId, function(result) { $('span#spanModalTransactionId').text(result); });
 
             $('#gridTransaction').datagrid({ url: 'Json-InspectLedgerTxData.aspx?TxId=' + transactionId });
 
@@ -304,9 +304,9 @@
         idField="id">
         <thead>  
             <tr>  
-                <th data-options="field:'id',width:50,align:'right'"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
+                <th data-options="field:'id',width:70,align:'right'"><asp:Label ID="LabelGridHeaderId" runat="server" Text="ID#"/></th>  
                 <th data-options="field:'datetime',width:90,sortable:true"><asp:Label ID="LabelGridHeaderDateTime" runat="server" Text="XYZ DateTime" /></th>
-                <th data-options="field:'description',width:270"><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /></th>  
+                <th data-options="field:'description',width:250"><asp:Label ID="LabelGridHeaderDescription" runat="server" Text="XYZ Description" /></th>  
                 <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive" runat="server" Text="XYZ Debit" /></th>
                 <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative" runat="server" Text="XYZ Credit" /></th>
                 <th data-options="field:'balance',width:80,align:'right'"><asp:Label ID="LabelGridHeaderBalance" runat="server" Text="XYZ Balance" /></th>

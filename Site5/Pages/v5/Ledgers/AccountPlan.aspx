@@ -296,7 +296,7 @@
 
 	        window.scrollTo(0, 0);
 	        $('body').css('overflow-y', 'hidden');
-	        $('#<%=this.DialogAccount.ClientID %>_divModalCover').fadeIn();
+	        <%=this.DialogAccount.ClientID %>_open();
 
 	        setTimeout(function() {
 	            $('#divModalBox').animate({ "height": ($('#DivModalFields').outerHeight() + $('#HeaderModal').outerHeight()) + 40 + "px" }, 50);
@@ -443,7 +443,7 @@
 	    }
 
         function modalShow() {
-            $('#<%=this.DialogAccount.ClientID %>_divModalCover').fadeIn();
+	        <%=this.DialogAccount.ClientID %>_open();
         }
 
         function onOwnerChange(personId) {

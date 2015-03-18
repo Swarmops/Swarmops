@@ -11,9 +11,10 @@
             $('#gridTransactions').datagrid({
                 onLoadSuccess: function() {
 
-                    $('img.LocalIconFix').click(function() {
+                    $('img.LocalIconFix').click(function(e) {
                         transactionId = $(this).attr("txId");
                         onFixTransaction(transactionId);
+                        e.stopPropagation(); // prevents checking of row
                     });
 
                 }
@@ -24,8 +25,17 @@
 
         function onFixTransaction(newTransactionId) {
             transactionId = newTransactionId;
+            SwarmopsJS.formatInteger(transactionId, function(result) { $('span#spanModalTransactionId').text(result); });
+            <%= this.DialogTx.ClientID %>_open();
         }
     </script>
+    
+    <style type="text/css">
+        .LocalIconFix {
+            cursor: pointer;
+        }
+
+    </style>
 
 </asp:Content>
 
@@ -53,32 +63,12 @@
     
     <Swarmops5:ModalDialog runat="server" ID="DialogTx">
         <DialogCode>
-                    <div class="divIconCloseModal"><img id="IconCloseEdit" src="/Images/Icons/iconshock-cross-16px.png" /></div><h2><asp:Literal ID="LiteralEditHeader" runat="server"/></h2>
-                    <table id="gridTransaction" class="easyui-datagrid" style="width: 910px"
-                    data-options="rownumbers:false,singleSelect:false,nowrap:false,fitColumns:true,fit:true,showFooter:false,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-InspectLedgerTxData.aspx'"
-                    idField="id">
-                        <thead>
-                            <tr>
-                                <th data-options="field:'accountName',width:270"><asp:Label ID="LabelGridHeaderAccountName2" runat="server" Text="XYZ Description" /></th>  
-                                <th data-options="field:'deltaPos',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaPositive2" runat="server" Text="XYZ Debit" /></th>
-                                <th data-options="field:'deltaNeg',width:70,align:'right'"><asp:Label ID="LabelGridHeaderDeltaNegative2" runat="server" Text="XYZ Credit" /></th>
-                                <th data-options="field:'dateTime',width:90"><asp:Label ID="LabelGridHeaderDateTimeEntered" runat="server" Text="XYZ DateTime" /></th>
-                                <th data-options="field:'initials',width:50"><asp:Label ID="LabelGridHeaderInitials" runat="server" Text="ID#"/></th>  
-                            </tr>
-                        </thead>
-                    </table>
-                
-                    <div id="divEditTransaction">
-                        <h2><asp:Label ID="LabelAddTransactionRowsHeader" runat="server" /></h2>
-                        <span class="content"><h2 style="border-bottom: none"><asp:Label ID="LabelAddRowAccount" runat="server" /><Swarmops5:ComboBudgets ID="BudgetAddRow" ListType="All" runat="server" />, <asp:Label ID="LabelAddRowAmount" runat="server" /> <Swarmops5:CurrencyTextBox ID="TextInsertAmount" runat="server" /> <span class="elementFloatFar"><input id="ButtonAddTransactionRow" type="button" value=' <asp:Literal ID="LiteralAddRowButton" runat="server" /> '/></span></h2></span>
-                    
-                    </div>
-                    <div id="divTransactionTracking">
-                    <h2><asp:Label ID="LabelTrackedTransactionHeader" runat="server" /></h2>
-                    <div id="divTransactionTrackingDetails"></div>
-                    </div>
-
-                        
+            <h2><asp:Literal runat="server" ID="LiteralModalHeader" Text="Matching/Balancing transaction #foobar XYZ" /></h2>
+            <p><asp:Literal ID="LabelDoYouWishTo" runat="server" Text="The balance is off by SEK +6,141.14. is Do you wish to... XYZ" /></p>
+            <p><asp:RadioButton runat="server" ID="RadioBalance" GroupName="TxOptions" Text="Balance the transaction manually? XYZ" /></p>
+            <p><asp:RadioButton runat="server" ID="RadioPayout" GroupName="TxOptions" Text="Match this balance to an open payout? XYZ" /></p>
+            <p><asp:RadioButton runat="server" ID="RadioExistingPayment" GroupName="TxOptions" Text="Match this balance to a recorded payment? XYZ" /></p>
+            <p><asp:RadioButton runat="server" ID="RadioExpectedPayment" GroupName="TxOptions" Text="Match this balance to an expected, unrecorded payment? XYZ" /></p>
         </DialogCode>
      </Swarmops5:ModalDialog>
 

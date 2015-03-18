@@ -819,6 +819,18 @@ select.comboperson+span>input:focus
 }
 
 
+input[type="radio"] {
+    vertical-align: text-bottom;
+    margin-left: 5px;
+}
+
+label {
+    margin-left: 10px;
+    font-size: 120%;
+    font-weight: 500;
+}
+
+
 /* IN-PAGE HEADERS */
 
 h1, h2, h3

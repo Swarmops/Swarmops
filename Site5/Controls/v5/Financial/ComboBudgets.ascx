@@ -45,7 +45,7 @@
         });
     });
 
-    // below code from http://doc.javake.cn/jeasyui/www.jeasyui.com/forum/index.php-topic=1972.0.htm, understood to be in public domain
+    // below code from http://doc.javake.cn/jeasyui/www.jeasyui.com/forum/index.php-topic=1972.0.htm, understood to be in public domain: enables keyboard navigation
 
     (function () {
         $.extend($.fn.combotree.methods, {
