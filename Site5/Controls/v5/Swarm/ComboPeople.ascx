@@ -1,13 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ComboPeople.ascx.cs" Inherits="Swarmops.Controls.Financial.ComboPeople" %>
 <%@ Import Namespace="System.Threading" %>
 
+<% string _nearEdge = Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft ? "right" : "left"; %>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#<%=this.ClientID %>_DropPeople').combobox({
             animate: true,
             height: 32,
             panelWidth: 300,
-            panelAlign: '<%= Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft? "right": "left" %>',
+            panelAlign: '<%= _nearEdge %>',
             loader: <%=this.ClientID %>_autoCompleteLoader,
             mode: 'remote',
             valueField: 'id',
@@ -94,7 +96,7 @@
     
     function <%=this.ClientID %>_formatItem(row)
     {
-        var s = '<span style="padding-left:20px;margin-left:4px;' + "background-image:url('" + row.avatar16Url + "');" + 'background-position:left center;background-repeat:no-repeat">' + row.name + '</span>';
+        var s = '<span style="padding-<%= _nearEdge %>:20px;margin-<%= _nearEdge %>:4px;' + "background-image:url('" + row.avatar16Url + "');" + 'background-position:<%= _nearEdge %> center;background-repeat:no-repeat">' + row.name + '</span>';
         return s;
     }
 </script>

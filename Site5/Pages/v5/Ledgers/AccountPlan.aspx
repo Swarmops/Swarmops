@@ -284,12 +284,12 @@
 
 	        // Clear out data in modal form, gray out to indicate being loaded
 
-	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#DDD');
-	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#DDD');
+	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#DDD');
+	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#DDD');
 	        $('#TextAccountBudget').val('...').css('background-color', '#DDD');
 	        $('#TextAccountName').val('...').css('background-color', '#DDD');
 	        $('#<%=CurrencyInitialBalance.ClientID%>_Input').val('...').css('background-color', '#DDD');
-	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', '...');
+	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').attr('placeholder', '...');
 
 	        accountTree.combotree('setText', '...');
 	        parentAccountName = '';
@@ -419,10 +419,10 @@
 	                parentAccountName = msg.d.ParentAccountName;
 	                setAccountTreeText(parentAccountName);
 
-	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFF');
-	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
-	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').attr('placeholder', msg.d.AccountOwnerName);
-	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').val('');
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFF');
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').attr('placeholder', msg.d.AccountOwnerName);
+	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').val('');
 	            }
 	        });
 
@@ -446,8 +446,9 @@
 	        <%=this.DialogAccount.ClientID %>_open();
         }
 
-        function onOwnerChange(personId) {
-            $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFFFE0');
+	    function onOwnerChange(personId) {
+	        alert('onOwnerChange');
+	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFFFE0');
             $.ajax({
                 type: "POST",
                 url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountOwner",
@@ -456,20 +457,20 @@
                 dataType: "json",
                 success: function(msg) {
                     if (msg.d) { // all went ok
-                        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#E0FFE0');
+                        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#E0FFE0');
                         accountDirty = true;
                     } else {  
-                        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFA0A0');
+                        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFA0A0');
                         // TODO: Reset combo box
                         alertify.error("There was an error setting the budget owner."); // TODO: Localize
                     }
-                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').animate({ backgroundColor: "#FFFFFF" }, 250);
+                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').animate({ backgroundColor: "#FFFFFF" }, 250);
                 },
                 error: function() {
                     alertify.error("There was an error making the call to set budget owner. Is the server available?");
-                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').css('background-color', '#FFA0A0');
+                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFA0A0');
                     // TODO: Reset combo box
-                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.combo-text').animate({ backgroundColor: "#FFFFFF" }, 250);
+                    $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').animate({ backgroundColor: "#FFFFFF" }, 250);
                 }
             });
         }
@@ -480,7 +481,7 @@
 	        var currentText = accountTree.combotree('getText');
 	        if (currentText.length < 3 && parentAccountName.length > 2) {
 	            accountTree.combotree('setText', parentAccountName);
-	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
+	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFF');
 	        } else if (!accountTreeLoaded) {
 	            setTimeout(function() {
 	                setAccountTreeText(text);
@@ -494,7 +495,7 @@
 	            return;
 	        }
 
-	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFFFE0');
+	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFFFE0');
 	        $.ajax({
 	            type: "POST",
 	            url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountParent",
@@ -503,20 +504,20 @@
 	            dataType: "json",
 	            success: function(msg) {
 	                if (msg.d) { // all went ok
-	                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#E0FFE0');
+	                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#E0FFE0');
                         accountDirty = true;
                     } else {  
-	                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFA0A0');
+	                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFA0A0');
 	                    $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', parentAccountName);
                         alertify.error("Cannot reparent accounts with transactions in closed ledgers - yet."); // TODO: Localize
                     }
-                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').animate({ backgroundColor: "#FFFFFF" }, 250);
+	                $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').animate({ backgroundColor: "#FFFFFF" }, 250);
                 },
                 error: function() {
                     alertify.error("There was an error making the call to set budget parent. Is the server available?");
-                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFA0A0');
+                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFA0A0');
                     $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', parentAccountName);
-                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').animate({ backgroundColor: "#FFFFFF" }, 250);
+                    $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').animate({ backgroundColor: "#FFFFFF" }, 250);
                 }
             });
         }
@@ -528,7 +529,7 @@
 	        accountTreeLoaded = true;
 	        if (parentAccountName != null && parentAccountName.length > 0) {
 	            accountTree.combotree('setText', parentAccountName);
-	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.combo-text').css('background-color', '#FFF');
+	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFF');
             }
 	    }
 
@@ -565,6 +566,11 @@
 	    .CheckboxContainer {
 		    float: right; padding-top: 4px;padding-right: 8px;
 	    }
+        body.rtl .CheckboxContainer {
+            float: left;
+            padding-right: inherit;
+            padding-left: 8px;
+        }
         .RowInactive
         {
             color: #C0C0C0;

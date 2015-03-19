@@ -13,7 +13,7 @@
                     <% 
                     if (!SuppressPrompt)
                     {
-                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.combo-text').val(\"" + Resources.Global.Global_DropInits_SelectFinancialAccount + "\");");
+                        Response.Write ("$('#" + this.ClientID + "_SpanBudgets span.combo input.textbox-text').val(\"" + Resources.Global.Global_DropInits_SelectFinancialAccount + "\");");
                     }
                     if (!String.IsNullOrEmpty(this.OnClientLoaded)) 
                     {
@@ -28,12 +28,12 @@
                            
                            %>
             });
-
-        $('#<%=this.ClientID %>_SpanBudgets span.combo input.combo-text').click(function () {
+        
+        $('#<%=this.ClientID %>_SpanBudgets span.combo input.textbox-text').click(function () {
             $('#<%=this.ClientID %>_SpanBudgets span.combo span span.combo-arrow').click();
         });
 
-        $('#<%=this.ClientID %>_SpanBudgets span.combo input.combo-text').keydown(function (e) {
+        $('#<%=this.ClientID %>_SpanBudgets span.combo input.textbox-text').keydown(function (e) {
             switch (e.which) {
                 case 40: // down
                     var panel = $('#<%=this.ClientID %>_DropBudgets').combotree('panel');

@@ -158,7 +158,7 @@ img
 }
 
 
-.searchbox
+.topSearchBox
 {
 	float:right;
 	position:relative;
@@ -166,12 +166,12 @@ img
 	left:-5px;
 }
 
-body.rtl .searchbox {
+body.rtl .topSearchBox {
     float: left;
     left: 5px;
 }
 
-.searchbox input
+.topSearchBox input
 {
 	width:150px;
 	-moz-border-radius: 2em;
@@ -188,7 +188,7 @@ body.rtl .searchbox {
 	font-family: Ubuntu, Liberation Sans, Arial, Helvetica, Sans-Serif;
 }
 
-body.rtl .searchbox input {
+body.rtl .topSearchBox input {
     padding-left: inherit;
     padding-right: 26px;
     background-position-x: right;
@@ -307,7 +307,7 @@ body.rtl .sidebar {
 	margin-bottom: 7px;
 }
 
-.content > h2 > select, .content > h2 > span > span.combo > input.combo-text, .content > h2 > input, .content > h2 > span.elementFloatFar > input {
+.content > h2 > select, .content > h2 > span > span.combo > input.textbox-text, .content > h2 > input, .content > h2 > span.elementFloatFar > input {
 	font-size: 16px;
     font-weight: bold;
     color: #1C397E;
@@ -320,7 +320,7 @@ body.rtl .sidebar {
     height: 20px !important;
 }
 
-.content > h2 > span > span.combo > input.combo-text {
+.content > h2 > span > span.combo > input.textbox-text {
     height: 20px !important;
     line-height: 20px !important;
 }
@@ -799,20 +799,6 @@ input.entryError, span.entryError, div.entryError {
 }
 
 
-select.comboperson+span>input {
-	width: 252px !important;
-	padding-left: 34px;
-	/* background: url('http://s.gravatar.com/avatar/15638826ee119289c902c4f85e77a2f0?s=24&r=g'); */
-	background-repeat: no-repeat;
-	background-color: white;
-	background-position: 6px 2px;
-}
-
-
-select.comboperson+span>input:focus
-{
-	background-image: none !important;
-}
 
 
 .button

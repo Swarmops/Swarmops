@@ -137,7 +137,7 @@
         <div class="logoimage"><a href="/"><asp:Image runat="server" ID="ImageLogo" AlternateText="Swarmops Logo"/></a></div>
         <div class="break"></div>
         <div class="topmenu">
-            <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>
+            <div class="topSearchBox"><asp:TextBox ID="SearchBox" runat="server" /></div>
             <Swarmops5:MainMenu ID="MainMenu" runat="server" />
         </div>
         

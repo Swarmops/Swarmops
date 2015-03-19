@@ -15,7 +15,7 @@
 
 /* combo inner, add some distance to dropdown arrow */
 
-span.textbox.combo > .textbox-text {
+select:not(.comboperson)+span.textbox.combo > .textbox-text {
     width: 278px !important;
 }
 
@@ -29,6 +29,26 @@ span.textbox.combo > .textbox-text {
 }
 
 
+select.comboperson+span.textbox.combo>input.textbox-text {
+	width: 264px !important;
+	padding-left: 34px !important;
+	/* background: url('http://s.gravatar.com/avatar/15638826ee119289c902c4f85e77a2f0?s=24&r=g'); */
+	background-repeat: no-repeat;
+	background-color: white;
+	background-position: 6px 2px;
+}
+
+body.rtl select.comboperson+span.textbox.combo>input.textbox-text {
+    padding-left: inherit !important;
+    padding-right: 34px !important;
+	background-position: 268px 2px;
+}
+
+
+select.comboperson+span>input:focus
+{
+	background-image: none !important;
+}
 
 /* RTL fixes for combo */
 
@@ -76,6 +96,68 @@ div.combo-p.panel {
     overflow: visible;
 }
 
+.combo-arrow-hover{
+	filter:alpha(opacity=70);
+	opacity:0.7;
+}
+
+
+/* H2 COMBO */
+
+
+.content h2 span span.combo {
+    padding-left: 4px !important;
+    padding-top: 0;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0 0 3px 0 #dddddd inset;
+    cursor: default;
+}
+
+.content h2 span span.combo:hover {
+    border: 1px solid #aaaaaa;
+    box-shadow: 0 0 3px 0 #bbbbbb inset;
+}
+
+.content > h2 > span > span.combo > input.textbox-text {
+    height: 20px !important;
+    line-height: 20px !important;
+    border: 0 !important;
+}
+
+.content h2 span span.combo span.textbox-addon-right a.combo-arrow{
+    top: 0px !important;
+    left: 0px !important;
+}
+
+body.rtl .content h2 span span.combo span.textbox-addon-left a.combo-arrow{
+    top: 0px !important;
+    right: 0px !important;
+}
+
+
+
+/* DATAGRID */
+
+div.panel.datagrid > div.datagrid-wrap.panel-body {
+    border: none;
+}
+
+/* TREE */
+
+.tree
+{
+}
+
+.tree-node-hover, .tree-node-selected{
+	background: #E4ECFF;
+	box-shadow: 0px 0px 4px 1px #C8D9FF inset;
+}
+
+
+.tree-icon.tree-folder.countryNode {
+    display: none;
+}
 
 
 /*,
@@ -140,7 +222,7 @@ body.rtl .combo-arrow {
     box-shadow: 0 0 3px 0 #bbbbbb inset;
 }
 
-.content > h2 > span > span.combo > input.combo-text {
+.content > h2 > span > span.combo > input.textbox-text {
     height: 20px !important;
     line-height: 20px !important;
     border: 0 !important;
@@ -151,9 +233,6 @@ body.rtl .combo-arrow {
     top: 0px !important;
     left: 0px !important;
 }
-
-
-
 
 .combo-arrow-hover{
 	opacity:0.7;
