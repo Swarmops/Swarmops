@@ -160,7 +160,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                                   String.Format (
                                       "\"id\":\"{0}\",\"accountName\":\"{1}\",\"owner\":\"{2}\",\"balance\":\"{3}\",\"budget\":\"{4}\",\"action\":\"{5}\",\"inactive\":\"{6}\"",
                                       account.Identity,
-                                      Server.HtmlEncode (JsonSanitize (account.Name)),
+                                      JsonSanitize (account.Name),
                                       ownerString,
                                       this._hashedAccounts[account.Identity].Count > 1
                                           ? JsonDualString (account.Identity, this._treeBalanceLookup[account.Identity],

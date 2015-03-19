@@ -129,7 +129,7 @@ namespace Swarmops.Frontend.Automation
                 childStrings.Add ('{' + String.Format (
                     "\"id\":\"{0}\",\"text\":\"{1}\"",
                     account.Identity,
-                    Server.HtmlEncode (JsonSanitize (account.Name))
+                    JsonSanitize (account.Name)
                     ) + grandChildren + '}');
             }
 
