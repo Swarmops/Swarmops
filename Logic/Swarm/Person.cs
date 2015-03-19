@@ -1128,6 +1128,16 @@ namespace Swarmops.Logic.Swarm
                 return true;
             }
 
+            if (access.Aspect == AccessAspect.Participant)
+            {
+                // Check that a membership (or whatever this org calls it) exists, for this org or a parentline org
+
+                if (this.MemberOfWithInherited (access.Organization))
+                {
+                    return true;
+                }
+            }
+
             // if Open Ledgers
 
             if ((access.Aspect == AccessAspect.Bookkeeping || access.Aspect == AccessAspect.Financials) &&
