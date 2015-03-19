@@ -90,11 +90,15 @@
 	                return;
 	            }
 
+	            var jsonData = {};
+                jsonData.accountId = accountId;
+                jsonData.name = newAccountName;
+
 	            $('#TextAccountName').css('background-color', '#FFFFE0');
 	            $.ajax({
 	                type: "POST",
 	                url: "/Pages/v5/Ledgers/AccountPlan.aspx/SetAccountName",
-	                data: "{'accountId': '" + escape(accountId) + "', 'name':'" + escape(newAccountName) + "'}",
+	                data: $.toJSON(jsonData),
 	                contentType: "application/json; charset=utf-8",
 	                dataType: "json",
 	                success: function(msg) { // TODO: This needs three return values - changed, broken and changed, or not changed
@@ -447,7 +451,6 @@
         }
 
 	    function onOwnerChange(personId) {
-	        alert('onOwnerChange');
 	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFFFE0');
             $.ajax({
                 type: "POST",

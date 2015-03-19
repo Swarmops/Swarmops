@@ -208,9 +208,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
-            string newName = HttpContext.Current.Server.UrlDecode (name);
-
-            if (account.Name == newName)
+            if (account.Name == name)
             {
                 // no change
                 return true;
@@ -221,7 +219,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return false;
             }
 
-            account.Name = newName;
+            account.Name = name;
             return true;
         }
 
