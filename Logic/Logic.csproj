@@ -72,6 +72,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\FinancialAccountNames.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinancialAccountNames.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -417,6 +422,10 @@
     <EmbeddedResource Include="App_GlobalResources\fi-FI\Logic.Communications.Transmission.NotificationPayload.fi-FI.resx" />
     <EmbeddedResource Include="App_GlobalResources\fi-FI\Logic.Financial.FinancialTransactionTagSetTypesStock.fi-FI.resx" />
     <EmbeddedResource Include="App_GlobalResources\fi-FI\Logic.Swarm.DashboardTodos.fi-FI.resx" />
+    <EmbeddedResource Include="App_GlobalResources\FinancialAccountNames.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FinancialAccountNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\fr-FR\LocalizedTitles.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Communications.Transmission.DefaultCommTemplates.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Communications.Transmission.MailPayload.fr-FR.resx" />

@@ -21,9 +21,6 @@
                     }%>
             },
             onSelect: function(account) {
-                console.log(account);
-
-
                 <%
                            if (!String.IsNullOrEmpty(this.OnClientSelect))
                            {

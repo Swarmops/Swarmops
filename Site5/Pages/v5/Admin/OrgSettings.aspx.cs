@@ -168,7 +168,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     FinancialAccount coldAccount = authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinCold;
                     if (coldAccount == null)
                     {
-                        coldAccount = FinancialAccount.Create (authData.CurrentOrganization, "Bitcoin Assets Cold",
+                        coldAccount = FinancialAccount.Create (authData.CurrentOrganization, "[LOC]Asset_BitcoinCold",
                             FinancialAccountType.Asset, null);
                         FinancialAccount.Create (authData.CurrentOrganization, "Cold Address 1",
                             FinancialAccountType.Asset, coldAccount);
@@ -197,7 +197,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     if (hotAccount == null)
                     {
                         authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot =
-                            FinancialAccount.Create (authData.CurrentOrganization, "Bitcoin Wallet Hot",
+                            FinancialAccount.Create (authData.CurrentOrganization, "[LOC]Asset_BitcoinHot",
                                 FinancialAccountType.Asset, null);
 
                         result.DisplayMessage =
@@ -222,10 +222,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         }
 
                         authData.CurrentOrganization.FinancialAccounts.IncomeCurrencyFluctuations =
-                            FinancialAccount.Create (authData.CurrentOrganization, "Forex holding gains",
+                            FinancialAccount.Create (authData.CurrentOrganization, "[LOC]Income_ForexGains",
                                 FinancialAccountType.Income, null);
                         authData.CurrentOrganization.FinancialAccounts.CostsCurrencyFluctuations =
-                            FinancialAccount.Create (authData.CurrentOrganization, "Forex holding losses",
+                            FinancialAccount.Create (authData.CurrentOrganization, "[LOC]Cost_ForexLosses",
                                 FinancialAccountType.Cost, null);
 
                         result.DisplayMessage =
@@ -270,10 +270,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         }
 
                         authData.CurrentOrganization.FinancialAccounts.AssetsVatInbound =
-                            FinancialAccount.Create (authData.CurrentOrganization, "Inbound VAT",
+                            FinancialAccount.Create (authData.CurrentOrganization, "[LOC]Asset_InboundVat",
                                 FinancialAccountType.Asset, null);
                         authData.CurrentOrganization.FinancialAccounts.DebtsVatOutbound =
-                            FinancialAccount.Create (authData.CurrentOrganization, "Outbound VAT",
+                            FinancialAccount.Create (authData.CurrentOrganization, "[LOC]Debt_OutboundVat",
                                 FinancialAccountType.Debt, null);
 
                         result.DisplayMessage = "Inbound and outbound VAT accounts were created.";
@@ -294,7 +294,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     if (assetsPaypal == null)
                     {
                         authData.CurrentOrganization.FinancialAccounts.AssetsPaypal =
-                            FinancialAccount.Create (authData.CurrentOrganization, "Paypal account",
+                            FinancialAccount.Create (authData.CurrentOrganization, "[LOC]Asset_Paypal",
                                 FinancialAccountType.Asset, null);
 
                         result.DisplayMessage = "An account was created for Paypal account tracking.";

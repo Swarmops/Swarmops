@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="BalanceTransactions.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Ledgers.BalanceTransactions" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ComboBudgets" Src="~/Controls/v5/Financial/ComboBudgets.ascx" %>
-<%@ Register TagPrefix="Swarmops5" TagName="CurrencyTextBox" Src="~/Controls/v5/Financial/CurrencyTextBox.ascx" %>
+<%@ Register TagPrefix="Swarmops5" TagName="DropDown" Src="~/Controls/v5/Base/DropDown.ascx" %>
 <%@ Register TagPrefix="Swarmops5" TagName="ModalDialog" Src="~/Controls/v5/Base/ModalDialog.ascx" %>
 
 
@@ -22,7 +22,6 @@
 
             $('input:radio[name="TxOptions"]').change(function() {
                 var pickedButtonName = $(this).val();
-                alert(pickedButtonName);
                 $('div.radioOption').slideUp();
                 $('div#radioOption' + pickedButtonName).slideDown();
             });
@@ -90,7 +89,7 @@
             <div id="radioOptionBalance" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value="Balance XYZ" class="buttonAccentColor" id="buttonExecuteBalance"/>
+                    <input type="button" value='<asp:Literal ID="LiteralButtonBalance" runat="server" Text="BalanceXYZ" />' class="buttonAccentColor" id="buttonExecuteBalance"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeBalance" Text="Balance the difference against XYZ" />
@@ -99,15 +98,35 @@
             </div>
             <p><input type="radio" id="RadioPayout" name="TxOptions" value="Payout" /><label for="RadioPayout"><asp:Label runat="server" ID="LabelRadioPayout" Text="Match this balance to an open payout? XYZ" /></label></p>
             <div id="radioOptionPayout" class="radioOption">
-                Barfoo!
+                <div class="entryFields">
+                    <Swarmops5:DropDown ID="DropOpenPayouts" runat="server" ListType="All" />&#8203;<br/>
+                    <input type="button" value='<asp:Literal ID="LiteralButtonPayout" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" id="button1"/>
+                </div>
+                <div class="entryLabels">
+                    <asp:Label runat="server" ID="LabelDescribePayout" Text="Match to payout XYZ" />
+                </div>
             </div>
-            <p><input type="radio" id="RadioExistingPayment" name="TxOptions" value="ExistingPayment" /><label for="RadioExistingPayment"><asp:Label runat="server" ID="LabelRadioExistingPayment" Text="Match this balance to a recorded payment, uploaded in a payments file? XYZ" /></label></p>
-            <div id="radioOptionExistingPayment" class="radioOption">
-                Barfoot!
-            </div>
-            <p><input type="radio" id="RadioExpectedPayment" name="TxOptions" value="ExpectedPayment" /><label for="RadioExpectedPayment"><asp:Label runat="server" ID="LabelRadioExpectedPayment" Text="Match this balance to an expected payment that has not been previously uploaded? XYZ" /></label></p>
-            <div id="radioOptionExpectedPayment" class="radioOption">
-                Barerfeet!
+            <div id="divHiddenTodoFutureSprint" style="display:none">
+                <p><input type="radio" id="RadioExistingPayment" name="TxOptions" value="ExistingPayment" /><label for="RadioExistingPayment"><asp:Label runat="server" ID="LabelRadioExistingPayment" Text="Match this balance to a recorded payment, uploaded in a payments file? XYZ" /></label></p>
+                <div id="radioOptionExistingPayment" class="radioOption">
+                    <div class="entryFields">
+                        <Swarmops5:DropDown ID="DropExistingPayments" runat="server" ListType="All" />&#8203;<br/>
+                        <input type="button" value='<asp:Literal ID="LiteralButtonExistingPayment" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" id="button2"/>
+                    </div>
+                    <div class="entryLabels">
+                        <asp:Label runat="server" ID="LabelDescribeExistingPayment" Text="Match existing payment XYZ" />
+                    </div>
+                </div>
+                <p><input type="radio" id="RadioExpectedPayment" name="TxOptions" value="ExpectedPayment" /><label for="RadioExpectedPayment"><asp:Label runat="server" ID="LabelRadioExpectedPayment" Text="Match this balance to an expected payment that has not been previously uploaded? XYZ" /></label></p>
+                <div id="radioOptionExpectedPayment" class="radioOption">
+                    <div class="entryFields">
+                        <Swarmops5:DropDown ID="DropExpectedPayments" runat="server" ListType="All" />&#8203;<br/>
+                        <input type="button" value='<asp:Literal ID="LiteralButtonExpectedPayment" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" id="button3"/>
+                    </div>
+                    <div class="entryLabels">
+                        <asp:Label runat="server" ID="LabelDescribeExpectedPayments" Text="Match expected payment XYZ" />
+                    </div>
+                </div>
             </div>
         </DialogCode>
      </Swarmops5:ModalDialog>

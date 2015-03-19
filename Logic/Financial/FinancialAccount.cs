@@ -90,6 +90,8 @@ namespace Swarmops.Logic.Financial
         }
 
 
+
+
         public bool IsConferenceParent
         {
             get
@@ -282,7 +284,20 @@ namespace Swarmops.Logic.Financial
 
         public new string Name
         {
-            get { return base.Name; }
+            get
+            {
+                if (base.Name.StartsWith ("[LOC]"))
+                {
+                    string localized = App_GlobalResources.FinancialAccountNames.ResourceManager.GetString (base.Name.Substring (5));
+
+                    if (!string.IsNullOrEmpty (localized))
+                    {
+                        return localized;  // We return the localized string only if the lookup succeeds. Otherwise, the raw "[LOC]whatever" will be returned.
+                    }
+                }
+                
+                return base.Name;
+            }
             set
             {
                 try

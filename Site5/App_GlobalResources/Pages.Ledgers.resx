@@ -700,4 +700,49 @@
   <data name="BalanceTransactions_PageTitle" xml:space="preserve">
     <value>Balance &amp; Match Transactions</value>
   </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>Exact matches for this amount</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>Matching amount, off in time</value>
+  </data>
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>Amount Within 5% Tolerance</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>Match</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
+    <value>Balance the difference against this account:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>The transaction matches this payout:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
+    <value>Transaction is unbalanced by &lt;span id="spanTransactionUnbalancedBy"&gt;+FOO,BAR.QX&lt;/span&gt;. Do you wish to...</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
+    <value>Balance this transaction manually against an account?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
+    <value>Match the transaction difference to an open, unmatched payout?</value>
+  </data>
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>(No open payouts)</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>(No suitable payouts to match)</value>
+  </data>
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>Amount Within 1% Tolerance</value>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>-- Select a Payout --</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>Amount Within 10% Tolerance</value>
+  </data>
 </root>
