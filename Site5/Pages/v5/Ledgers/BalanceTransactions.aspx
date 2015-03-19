@@ -19,6 +19,13 @@
 
                 }
             });
+
+            $('input:radio[name="TxOptions"]').change(function() {
+                var pickedButtonName = $(this).val();
+                alert(pickedButtonName);
+                $('div.radioOption').slideUp();
+                $('div#radioOption' + pickedButtonName).slideDown();
+            });
         });
 
         var transactionId = 0;
@@ -26,6 +33,8 @@
         function onFixTransaction(newTransactionId) {
             transactionId = newTransactionId;
             SwarmopsJS.formatInteger(transactionId, function(result) { $('span#spanModalTransactionId').text(result); });
+            $('input:radio[name="TxOptions"]').prop('checked', false);
+            $('div.radioOption').hide();
             <%= this.DialogTx.ClientID %>_open();
         }
     </script>
@@ -33,6 +42,18 @@
     <style type="text/css">
         .LocalIconFix {
             cursor: pointer;
+        }
+        div.radioOption {
+            margin-top: -20px;
+            padding-bottom: 10px;
+            padding-left: 12px;
+            margin-right: 10px;
+        }
+        body.ltr div.radioOption {
+            padding-left: initial;
+            margin-right: initial;
+            padding-right: 12px;
+            margin-left: 10px;
         }
 
     </style>
@@ -65,10 +86,29 @@
         <DialogCode>
             <h2><asp:Literal runat="server" ID="LiteralModalHeader" Text="Matching/Balancing transaction #foobar XYZ" /></h2>
             <p><asp:Literal ID="LabelDoYouWishTo" runat="server" Text="The balance is off by SEK +6,141.14. is Do you wish to... XYZ" /></p>
-            <p><asp:RadioButton runat="server" ID="RadioBalance" GroupName="TxOptions" Text="Balance the transaction manually? XYZ" /></p>
-            <p><asp:RadioButton runat="server" ID="RadioPayout" GroupName="TxOptions" Text="Match this balance to an open payout? XYZ" /></p>
-            <p><asp:RadioButton runat="server" ID="RadioExistingPayment" GroupName="TxOptions" Text="Match this balance to a recorded payment? XYZ" /></p>
-            <p><asp:RadioButton runat="server" ID="RadioExpectedPayment" GroupName="TxOptions" Text="Match this balance to an expected, unrecorded payment? XYZ" /></p>
+            <p><input type="radio" id="RadioBalance" name="TxOptions" value="Balance" /><label for="RadioBalance"><asp:Label runat="server" ID="LabelRadioBalance" Text="Balance the transaction manually? XYZ" /></label></p>
+            <div id="radioOptionBalance" class="radioOption">
+                <div class="entryFields">
+                    <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="All" />&#8203;<br/>
+                    <input type="button" value="Balance XYZ" class="buttonAccentColor" id="buttonExecuteBalance"/>
+                </div>
+                <div class="entryLabels">
+                    <asp:Label runat="server" ID="LabelDescribeBalance" Text="Balance the difference against XYZ" />
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <p><input type="radio" id="RadioPayout" name="TxOptions" value="Payout" /><label for="RadioPayout"><asp:Label runat="server" ID="LabelRadioPayout" Text="Match this balance to an open payout? XYZ" /></label></p>
+            <div id="radioOptionPayout" class="radioOption">
+                Barfoo!
+            </div>
+            <p><input type="radio" id="RadioExistingPayment" name="TxOptions" value="ExistingPayment" /><label for="RadioExistingPayment"><asp:Label runat="server" ID="LabelRadioExistingPayment" Text="Match this balance to a recorded payment, uploaded in a payments file? XYZ" /></label></p>
+            <div id="radioOptionExistingPayment" class="radioOption">
+                Barfoot!
+            </div>
+            <p><input type="radio" id="RadioExpectedPayment" name="TxOptions" value="ExpectedPayment" /><label for="RadioExpectedPayment"><asp:Label runat="server" ID="LabelRadioExpectedPayment" Text="Match this balance to an expected payment that has not been previously uploaded? XYZ" /></label></p>
+            <div id="radioOptionExpectedPayment" class="radioOption">
+                Barerfeet!
+            </div>
         </DialogCode>
      </Swarmops5:ModalDialog>
 

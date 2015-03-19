@@ -637,7 +637,7 @@ body.rtl .entryFields {
 }
 
 
-.entryFields input, .entryFields textarea, .entryFields select 
+.entryFields input:not(.buttonAccentColor), .entryFields textarea, .entryFields select 
 {
     /* "important" here overrides the easyUI native styling */
 

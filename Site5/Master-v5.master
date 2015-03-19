@@ -20,9 +20,6 @@
     <script language="javascript" type="text/javascript" src="/Scripts/superfish.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js" ></script>
 
-    <!-- Swarmops common JS functions -->
-    <script language="javascript" type="text/javascript" src="/Swarmops-v5.js?CacheId=<%= _cacheVersionMark %>" ></script>
-    
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:light,regular,500,bold' rel='stylesheet' type='text/css' />
@@ -46,6 +43,9 @@
     <asp:PlaceHolder ID="NeededForCacheMarkToParse2" runat="server">
         <link href="/Style/v5-easyui-overrides.css?CacheId=<%= _cacheVersionMark %>" rel="stylesheet" type="text/css" />
     </asp:PlaceHolder>
+    
+    <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
+    <script language="javascript" type="text/javascript" src="/Swarmops-v5.js?CacheId=<%= _cacheVersionMark %>" ></script>
 
     <!-- additional scripts etc from individual pages -->
     <Swarmops5:IncludedScripts ID="IncludedScripts" runat="server" />

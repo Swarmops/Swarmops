@@ -16,6 +16,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             RegisterControl (EasyUIControl.DataGrid);
             Localize();
+
         }
 
         private void Localize()
