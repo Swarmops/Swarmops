@@ -105,6 +105,13 @@ namespace Swarmops
 
             Localize();
 
+            _cacheVersionMark = Logic.Support.Formatting.SwarmopsVersion;
+            if (_cacheVersionMark.StartsWith ("Debug"))
+            {
+                _cacheVersionMark = DateTime.UtcNow.ToString ("yyyy-MM-dd HH:mm:ss.ffff");
+            }
+            _cacheVersionMark = SHA1.Hash (_cacheVersionMark).Replace(" ", "").Substring (0, 8);
+
             this.LabelCurrentUserName.Text = _currentUser.Name;
             this.LabelCurrentOrganizationName.Text = _currentOrganization.Name;
 
@@ -233,6 +240,8 @@ namespace Swarmops
             this.LabelPreferences.Text = Global.CurrentUserInfo_Preferences;
             // this.LiteralCurrentlyLoggedIntoSwitch.Text = string.Format(Resources.Global.Master_SwitchOrganizationDialog, _currentOrganization.Name);
         }
+
+        protected string _cacheVersionMark;  // this is just a cache buster for style sheets on new versions
 
         private void SetupMenuItems()
         {
