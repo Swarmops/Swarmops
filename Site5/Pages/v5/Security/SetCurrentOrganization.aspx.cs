@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web;
 using System.Web.Security;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Pages.v5.Security
@@ -14,6 +15,8 @@ namespace Swarmops.Frontend.Pages.v5.Security
             {
                 throw new UnauthorizedAccessException ("No"); // may cause problems on login screen?
             }
+
+            PageAccessRequired = new Access (AccessAspect.Null);
 
             string returnUrlString = Request.QueryString["ReturnUrl"];
             string organizationIdString = Request.QueryString["OrganizationId"];

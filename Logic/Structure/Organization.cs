@@ -457,7 +457,7 @@ namespace Swarmops.Logic.Structure
             FinancialAccounts[OrganizationFinancialAccountType.CostsInfrastructure] =
                 FinancialAccount.Create (this, "[LOC]Cost_IctInfrastructure", FinancialAccountType.Cost, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsYearlyResult] =
-                FinancialAccount.Create (this, "[LOC]Cost_YearlyResult", FinancialAccountType.Cost, null);
+                FinancialAccount.Create (this, "[LOC]Cost_AnnualResult", FinancialAccountType.Cost, null);
             FinancialAccounts[OrganizationFinancialAccountType.DebtsEquity] =
                 FinancialAccount.Create (this, "[LOC]Debt_Equity", FinancialAccountType.Debt, null);
             FinancialAccounts[OrganizationFinancialAccountType.DebtsExpenseClaims] =
