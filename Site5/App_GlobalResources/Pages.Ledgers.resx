@@ -714,9 +714,11 @@
   </data>
   <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
     <value>Balance</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
   </data>
   <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
     <value>Match</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
   </data>
   <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
     <value>Balance the difference against this account:</value>
