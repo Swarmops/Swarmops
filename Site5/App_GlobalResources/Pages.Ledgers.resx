@@ -701,13 +701,16 @@
     <value>Balance &amp; Match Transactions</value>
   </data>
   <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
-    <value>Exact matches for this amount</value>
+    <value>Exact Matches For This Amount</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
   <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
-    <value>Matching amount, off in time</value>
+    <value>Matching Amount, Off In Time</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
   <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
     <value>Amount Within 5% Tolerance</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
   <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
     <value>Balance</value>
@@ -738,11 +741,13 @@
   </data>
   <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
     <value>Amount Within 1% Tolerance</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
   <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
     <value>-- Select a Payout --</value>
   </data>
   <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
     <value>Amount Within 10% Tolerance</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
 </root>
