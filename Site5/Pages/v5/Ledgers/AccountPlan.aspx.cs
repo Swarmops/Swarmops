@@ -92,6 +92,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 FinancialAccounts organizationAccounts = FinancialAccounts.ForOrganization(this.CurrentOrganization);
                 int inactiveCount = organizationAccounts.Count(account => !account.Active);
 
+                this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
                 this.LabelOptionsShowInactive.Text = String.Format(Resources.Pages.Ledgers.AccountPlan_Options_ShowInactive, inactiveCount);
             }
             PageAccessRequired = new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write);

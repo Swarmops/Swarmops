@@ -644,4 +644,8 @@
     <value>-- Several - select --</value>
     <comment>Displayed when multiple choice</comment>
   </data>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Options</value>
+    <comment>For various page-specific checkboxes etc</comment>
+  </data>
 </root>

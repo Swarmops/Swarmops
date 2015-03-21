@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.ServiceModel.Security;
 using System.Web;
 using System.Web.Services;
@@ -43,6 +44,16 @@ namespace Swarmops.Frontend.Pages.Financial
             this.LabelGridHeaderPaid.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PaidOut;
             this.LabelGridHeaderRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
             this.LabelGridHeaderReference.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference;
+
+            this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
+
+            int previouslyOpenPayouts = GetOpenCount();
+            this.LabelOptionsShowPrevious.Text = String.Format(Resources.Pages.Financial.PayOutMoney_OptionShowOpen, previouslyOpenPayouts);
+        }
+
+        private int GetOpenCount()
+        {
+            return Payouts.ForOrganization (CurrentOrganization).Count;
         }
 
         [WebMethod]
@@ -72,7 +83,7 @@ namespace Swarmops.Frontend.Pages.Financial
             result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
                 payout.Recipient);
 
-            result.DisplayMessage = HttpUtility.UrlEncode (result.DisplayMessage).Replace ("+", "%20");
+            result.DisplayMessage = result.DisplayMessage;
 
             return result;
         }
@@ -81,8 +92,14 @@ namespace Swarmops.Frontend.Pages.Financial
         public static UndoPayoutResult UndoPayout (int databaseId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
-            UndoPayoutResult result = new UndoPayoutResult();
 
+            if (
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials)))
+            {
+                throw new SecurityAccessDeniedException("Insufficient privileges for operation");
+            }
+
+            UndoPayoutResult result = new UndoPayoutResult();
             Payout payout = Payout.FromIdentity (databaseId);
 
             if (!payout.Open)
@@ -98,9 +115,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
             payout.UndoPayout();
 
-            result.DisplayMessage =
-                HttpUtility.UrlEncode (String.Format (Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId))
-                    .Replace ("+", "%20");
+            result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutUndone, databaseId);
             result.Success = true;
             return result;
         }

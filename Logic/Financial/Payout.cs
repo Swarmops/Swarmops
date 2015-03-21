@@ -172,12 +172,6 @@ namespace Swarmops.Logic.Financial
         {
             get
             {
-                if (Identity != 0)
-                {
-                    throw new InvalidOperationException (
-                        "Should never use ProtoIdentity after Identity has been established");
-                }
-
                 string result = string.Empty;
 
                 // ReSharper disable LoopCanBeConvertedToQuery
