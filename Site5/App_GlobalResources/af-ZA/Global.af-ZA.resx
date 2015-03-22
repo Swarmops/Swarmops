@@ -636,4 +636,12 @@
     <value>crwdns6555791:0crwdne6555791:0</value>
     <comment>as in "add element", "add row", etc</comment>
   </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>crwdns6555822:0crwdne6555822:0</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>crwdns6555823:0crwdne6555823:0</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
 </root>

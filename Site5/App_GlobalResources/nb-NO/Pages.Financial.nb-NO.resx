@@ -206,6 +206,7 @@
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Dette er de forskjellige kostnadene som har blitt godkjent. De er klare for utbetaling til mottaker. Hak av her for å markere at betalingen er utført (gjerne samtidig som du har nettbankvinduet åpent). </value>
   </data>
+  
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>Utbetal</value>
   </data>

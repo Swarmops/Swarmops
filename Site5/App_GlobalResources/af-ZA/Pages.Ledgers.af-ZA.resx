@@ -672,4 +672,81 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>crwdns6555816:0crwdne6555816:0</value>
   </data>
+  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
+    <value>crwdns6555826:0crwdne6555826:0</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>crwdns6555827:0crwdne6555827:0</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>crwdns6555828:0crwdne6555828:0</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>crwdns6555829:0crwdne6555829:0</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>crwdns6555830:0crwdne6555830:0</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>crwdns6555831:0crwdne6555831:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>crwdns6555832:0crwdne6555832:0</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>crwdns6555833:0crwdne6555833:0</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>crwdns6555889:0crwdne6555889:0</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>crwdns6555890:0crwdne6555890:0</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>crwdns6555836:0crwdne6555836:0</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>crwdns6555837:0crwdne6555837:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>crwdns6555838:0crwdne6555838:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
+    <value>crwdns6555839:0crwdne6555839:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>crwdns6555840:0crwdne6555840:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
+    <value>crwdns6555841:0crwdne6555841:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
+    <value>crwdns6555842:0crwdne6555842:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
+    <value>crwdns6555843:0crwdne6555843:0</value>
+  </data>
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>crwdns6555844:0crwdne6555844:0</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>crwdns6555845:0crwdne6555845:0</value>
+  </data>
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>crwdns6555846:0crwdne6555846:0</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>crwdns6555847:0crwdne6555847:0</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>crwdns6555848:0crwdne6555848:0</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
 </root>

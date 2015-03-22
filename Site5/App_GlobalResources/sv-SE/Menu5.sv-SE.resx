@@ -401,4 +401,7 @@
   <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
     <value>Arbetsgivardeklarationer</value>
   </data>
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>Balansera &amp; matcha transaktioner</value>
+  </data>
 </root>

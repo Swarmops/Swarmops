@@ -661,4 +661,81 @@
   <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
     <value>(detaljerad beskrivning visas ej)</value>
   </data>
+  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
+    <value>Obalanserade transaktioner (måste matcha eller fixa)</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>Konto</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>Belopp</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>Beskrivning</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>Några automatimporterade finansiella transaktioner kunde inte matchas automatiskt mot den löpande redovisningen. Det är här som du manuellt matchar transaktionerna att "balansera" (om en transaktion bara har ena sidan redovisad, till exempel utbetalda pengar från organisationen utan motsvarande post vad pengarna gick till, så sägs transaktionen vara "obalanserad").</value>
+  </data>
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>Balanserar/matchar transaktionen #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>Balansera &amp; matcha transaktioner</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>Exakta matchningar för beloppet</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>Matchande belopp, tidsmässigt fel</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>Belopp inom 5% tolerans</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>Balansera</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>Matcha</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
+    <value>Balansera skillnaden mot detta konto:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>Transaktionen matchar denna utbetalning:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
+    <value>Transaktionen är obalanserad med &lt;span id="spanTransactionUnbalancedBy"&gt;+FOO, BAR.QX&lt;/span&gt;. Vill du...</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
+    <value>Balansera denna transaktion manuellt mot ett konto?</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
+    <value>Matcha transaktionsskillnaden mot en öppen, omatchad utbetalning?</value>
+  </data>
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>(Inga öppna utbetalningar)</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>(Ingen lämplig utbetalning att matcha)</value>
+  </data>
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>Belopp inom 1% tolerans</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>-- Välj en utbetalning --</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>Belopp inom 10% tolerans</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
 </root>
