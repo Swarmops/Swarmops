@@ -19,7 +19,7 @@ mkdir temp/Logic
 echo "Copying resources to temporary folder..."
 
 cp Swarmops/Site5/App_GlobalResources/*.resx temp/Site
-cp Swarmops/Logic/App_GlobalResources/*.resx temp/Logic
+cat Swarmops/Logic/Resources/SourceResourceFiles.txt | xargs -n 1 -I '{}' cp Swarmops/Logic/Resources/{} temp/Logic
 cp Swarmops/BuildFiles/Localization/crowdin.yaml temp
 
 echo "Uploading en-US source files..."
