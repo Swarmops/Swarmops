@@ -380,42 +380,49 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\af-ZA\FinancialAccountNames.af-ZA.resx" />
     <EmbeddedResource Include="App_GlobalResources\af-ZA\LocalizedTitles.af-ZA.resx" />
     <EmbeddedResource Include="App_GlobalResources\af-ZA\Logic.Communications.Transmission.DefaultCommTemplates.af-ZA.resx" />
     <EmbeddedResource Include="App_GlobalResources\af-ZA\Logic.Communications.Transmission.MailPayload.af-ZA.resx" />
     <EmbeddedResource Include="App_GlobalResources\af-ZA\Logic.Communications.Transmission.NotificationPayload.af-ZA.resx" />
     <EmbeddedResource Include="App_GlobalResources\af-ZA\Logic.Financial.FinancialTransactionTagSetTypesStock.af-ZA.resx" />
     <EmbeddedResource Include="App_GlobalResources\af-ZA\Logic.Swarm.DashboardTodos.af-ZA.resx" />
+    <EmbeddedResource Include="App_GlobalResources\ar-SA\FinancialAccountNames.ar-SA.resx" />
     <EmbeddedResource Include="App_GlobalResources\ar-SA\LocalizedTitles.ar-SA.resx" />
     <EmbeddedResource Include="App_GlobalResources\ar-SA\Logic.Communications.Transmission.DefaultCommTemplates.ar-SA.resx" />
     <EmbeddedResource Include="App_GlobalResources\ar-SA\Logic.Communications.Transmission.MailPayload.ar-SA.resx" />
     <EmbeddedResource Include="App_GlobalResources\ar-SA\Logic.Communications.Transmission.NotificationPayload.ar-SA.resx" />
     <EmbeddedResource Include="App_GlobalResources\ar-SA\Logic.Financial.FinancialTransactionTagSetTypesStock.ar-SA.resx" />
     <EmbeddedResource Include="App_GlobalResources\ar-SA\Logic.Swarm.DashboardTodos.ar-SA.resx" />
+    <EmbeddedResource Include="App_GlobalResources\da-DK\FinancialAccountNames.da-DK.resx" />
     <EmbeddedResource Include="App_GlobalResources\da-DK\LocalizedTitles.da-DK.resx" />
     <EmbeddedResource Include="App_GlobalResources\da-DK\Logic.Communications.Transmission.DefaultCommTemplates.da-DK.resx" />
     <EmbeddedResource Include="App_GlobalResources\da-DK\Logic.Communications.Transmission.MailPayload.da-DK.resx" />
     <EmbeddedResource Include="App_GlobalResources\da-DK\Logic.Communications.Transmission.NotificationPayload.da-DK.resx" />
     <EmbeddedResource Include="App_GlobalResources\da-DK\Logic.Financial.FinancialTransactionTagSetTypesStock.da-DK.resx" />
     <EmbeddedResource Include="App_GlobalResources\da-DK\Logic.Swarm.DashboardTodos.da-DK.resx" />
+    <EmbeddedResource Include="App_GlobalResources\de-DE\FinancialAccountNames.de-DE.resx" />
     <EmbeddedResource Include="App_GlobalResources\de-DE\LocalizedTitles.de-DE.resx" />
     <EmbeddedResource Include="App_GlobalResources\de-DE\Logic.Communications.Transmission.DefaultCommTemplates.de-DE.resx" />
     <EmbeddedResource Include="App_GlobalResources\de-DE\Logic.Communications.Transmission.MailPayload.de-DE.resx" />
     <EmbeddedResource Include="App_GlobalResources\de-DE\Logic.Communications.Transmission.NotificationPayload.de-DE.resx" />
     <EmbeddedResource Include="App_GlobalResources\de-DE\Logic.Financial.FinancialTransactionTagSetTypesStock.de-DE.resx" />
     <EmbeddedResource Include="App_GlobalResources\de-DE\Logic.Swarm.DashboardTodos.de-DE.resx" />
+    <EmbeddedResource Include="App_GlobalResources\el-GR\FinancialAccountNames.el-GR.resx" />
     <EmbeddedResource Include="App_GlobalResources\el-GR\LocalizedTitles.el-GR.resx" />
     <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Communications.Transmission.DefaultCommTemplates.el-GR.resx" />
     <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Communications.Transmission.MailPayload.el-GR.resx" />
     <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Communications.Transmission.NotificationPayload.el-GR.resx" />
     <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Financial.FinancialTransactionTagSetTypesStock.el-GR.resx" />
     <EmbeddedResource Include="App_GlobalResources\el-GR\Logic.Swarm.DashboardTodos.el-GR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\es-ES\FinancialAccountNames.es-ES.resx" />
     <EmbeddedResource Include="App_GlobalResources\es-ES\LocalizedTitles.es-ES.resx" />
     <EmbeddedResource Include="App_GlobalResources\es-ES\Logic.Communications.Transmission.DefaultCommTemplates.es-ES.resx" />
     <EmbeddedResource Include="App_GlobalResources\es-ES\Logic.Communications.Transmission.MailPayload.es-ES.resx" />
     <EmbeddedResource Include="App_GlobalResources\es-ES\Logic.Communications.Transmission.NotificationPayload.es-ES.resx" />
     <EmbeddedResource Include="App_GlobalResources\es-ES\Logic.Financial.FinancialTransactionTagSetTypesStock.es-ES.resx" />
     <EmbeddedResource Include="App_GlobalResources\es-ES\Logic.Swarm.DashboardTodos.es-ES.resx" />
+    <EmbeddedResource Include="App_GlobalResources\fi-FI\FinancialAccountNames.fi-FI.resx" />
     <EmbeddedResource Include="App_GlobalResources\fi-FI\LocalizedTitles.fi-FI.resx" />
     <EmbeddedResource Include="App_GlobalResources\fi-FI\Logic.Communications.Transmission.DefaultCommTemplates.fi-FI.resx" />
     <EmbeddedResource Include="App_GlobalResources\fi-FI\Logic.Communications.Transmission.MailPayload.fi-FI.resx" />
@@ -426,24 +433,28 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FinancialAccountNames.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\fr-FR\FinancialAccountNames.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\LocalizedTitles.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Communications.Transmission.DefaultCommTemplates.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Communications.Transmission.MailPayload.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Communications.Transmission.NotificationPayload.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Financial.FinancialTransactionTagSetTypesStock.fr-FR.resx" />
     <EmbeddedResource Include="App_GlobalResources\fr-FR\Logic.Swarm.DashboardTodos.fr-FR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\hi-IN\FinancialAccountNames.hi-IN.resx" />
     <EmbeddedResource Include="App_GlobalResources\hi-IN\LocalizedTitles.hi-IN.resx" />
     <EmbeddedResource Include="App_GlobalResources\hi-IN\Logic.Communications.Transmission.DefaultCommTemplates.hi-IN.resx" />
     <EmbeddedResource Include="App_GlobalResources\hi-IN\Logic.Communications.Transmission.MailPayload.hi-IN.resx" />
     <EmbeddedResource Include="App_GlobalResources\hi-IN\Logic.Communications.Transmission.NotificationPayload.hi-IN.resx" />
     <EmbeddedResource Include="App_GlobalResources\hi-IN\Logic.Financial.FinancialTransactionTagSetTypesStock.hi-IN.resx" />
     <EmbeddedResource Include="App_GlobalResources\hi-IN\Logic.Swarm.DashboardTodos.hi-IN.resx" />
+    <EmbeddedResource Include="App_GlobalResources\is-IS\FinancialAccountNames.is-IS.resx" />
     <EmbeddedResource Include="App_GlobalResources\is-IS\LocalizedTitles.is-IS.resx" />
     <EmbeddedResource Include="App_GlobalResources\is-IS\Logic.Communications.Transmission.DefaultCommTemplates.is-IS.resx" />
     <EmbeddedResource Include="App_GlobalResources\is-IS\Logic.Communications.Transmission.MailPayload.is-IS.resx" />
     <EmbeddedResource Include="App_GlobalResources\is-IS\Logic.Communications.Transmission.NotificationPayload.is-IS.resx" />
     <EmbeddedResource Include="App_GlobalResources\is-IS\Logic.Financial.FinancialTransactionTagSetTypesStock.is-IS.resx" />
     <EmbeddedResource Include="App_GlobalResources\is-IS\Logic.Swarm.DashboardTodos.is-IS.resx" />
+    <EmbeddedResource Include="App_GlobalResources\it-IT\FinancialAccountNames.it-IT.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\LocalizedTitles.it-IT.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Communications.Transmission.DefaultCommTemplates.it-IT.resx" />
     <EmbeddedResource Include="App_GlobalResources\it-IT\Logic.Communications.Transmission.MailPayload.it-IT.resx" />
@@ -467,12 +478,14 @@
       <LastGenOutput>Logic.Communications.Transmission.NotificationPayload.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\nb-NO\FinancialAccountNames.nb-NO.resx" />
     <EmbeddedResource Include="App_GlobalResources\nb-NO\LocalizedTitles.nb-NO.resx" />
     <EmbeddedResource Include="App_GlobalResources\nb-NO\Logic.Communications.Transmission.DefaultCommTemplates.nb-NO.resx" />
     <EmbeddedResource Include="App_GlobalResources\nb-NO\Logic.Communications.Transmission.MailPayload.nb-NO.resx" />
     <EmbeddedResource Include="App_GlobalResources\nb-NO\Logic.Communications.Transmission.NotificationPayload.nb-NO.resx" />
     <EmbeddedResource Include="App_GlobalResources\nb-NO\Logic.Financial.FinancialTransactionTagSetTypesStock.nb-NO.resx" />
     <EmbeddedResource Include="App_GlobalResources\nb-NO\Logic.Swarm.DashboardTodos.nb-NO.resx" />
+    <EmbeddedResource Include="App_GlobalResources\nl-NL\FinancialAccountNames.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\LocalizedTitles.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Communications.Transmission.DefaultCommTemplates.nl-NL.resx" />
     <EmbeddedResource Include="App_GlobalResources\nl-NL\Logic.Communications.Transmission.MailPayload.nl-NL.resx" />
@@ -483,12 +496,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedTitles.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\pl-PL\FinancialAccountNames.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\LocalizedTitles.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Communications.Transmission.DefaultCommTemplates.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Communications.Transmission.MailPayload.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Communications.Transmission.NotificationPayload.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Financial.FinancialTransactionTagSetTypesStock.pl-PL.resx" />
     <EmbeddedResource Include="App_GlobalResources\pl-PL\Logic.Swarm.DashboardTodos.pl-PL.resx" />
+    <EmbeddedResource Include="App_GlobalResources\pt-BR\FinancialAccountNames.pt-BR.resx" />
     <EmbeddedResource Include="App_GlobalResources\pt-BR\LocalizedTitles.pt-BR.resx" />
     <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Communications.Transmission.DefaultCommTemplates.pt-BR.resx" />
     <EmbeddedResource Include="App_GlobalResources\pt-BR\Logic.Communications.Transmission.MailPayload.pt-BR.resx" />
@@ -500,18 +515,21 @@
       <LastGenOutput>Logic.Communications.Transmission.MailPayload.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\ru-RU\FinancialAccountNames.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\LocalizedTitles.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Communications.Transmission.DefaultCommTemplates.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Communications.Transmission.MailPayload.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Communications.Transmission.NotificationPayload.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Financial.FinancialTransactionTagSetTypesStock.ru-RU.resx" />
     <EmbeddedResource Include="App_GlobalResources\ru-RU\Logic.Swarm.DashboardTodos.ru-RU.resx" />
+    <EmbeddedResource Include="App_GlobalResources\sv-SE\FinancialAccountNames.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\LocalizedTitles.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Communications.Transmission.DefaultCommTemplates.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Communications.Transmission.MailPayload.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Communications.Transmission.NotificationPayload.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Financial.FinancialTransactionTagSetTypesStock.sv-SE.resx" />
     <EmbeddedResource Include="App_GlobalResources\sv-SE\Logic.Swarm.DashboardTodos.sv-SE.resx" />
+    <EmbeddedResource Include="App_GlobalResources\zh-CN\FinancialAccountNames.zh-CN.resx" />
     <EmbeddedResource Include="App_GlobalResources\zh-CN\LocalizedTitles.zh-CN.resx" />
     <EmbeddedResource Include="App_GlobalResources\zh-CN\Logic.Communications.Transmission.DefaultCommTemplates.zh-CN.resx" />
     <EmbeddedResource Include="App_GlobalResources\zh-CN\Logic.Communications.Transmission.MailPayload.zh-CN.resx" />
