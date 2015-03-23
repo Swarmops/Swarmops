@@ -83,8 +83,6 @@ namespace Swarmops.Frontend.Pages.Financial
             result.DisplayMessage = String.Format (Resources.Pages.Financial.PayOutMoney_PayoutCreated, payout.Identity,
                 payout.Recipient);
 
-            result.DisplayMessage = result.DisplayMessage;
-
             return result;
         }
 
