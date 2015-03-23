@@ -49,19 +49,29 @@ public class CommonV5
             }*/
         }
 
+        GregorianCalendar normalizedCalendar = new GregorianCalendar();
+        normalizedCalendar.CalendarType = GregorianCalendarTypes.USEnglish;  // avoids problems with Arabic, etc, calendars and bookkeeping in localization
+
         try
         {
-            GregorianCalendar normalizedCalendar = new GregorianCalendar();
-            normalizedCalendar.CalendarType = GregorianCalendarTypes.USEnglish;  // avoids problems with Arabic, etc, calendars and bookkeeping in localization
-
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(preferredCulture);
-            Thread.CurrentThread.CurrentCulture.DateTimeFormat.Calendar = normalizedCalendar;
         }
         catch (Exception) // if we can't set the culture, what do we do? ("We send the Marines.")
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             // throw new Exception("Could not set culture \"" + preferredCulture + "\"", exception);
             // Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+        }
+
+        // Set the calendar to GregorianCalendar.USEnglish. This sometimes fails on Windows but works on Mono. If it fails on Windows, no biggie b/c
+        // this is supposed to be the default anyway.
+        try
+        {
+            Thread.CurrentThread.CurrentCulture.DateTimeFormat.Calendar = normalizedCalendar;
+        }
+        catch (Exception)
+        {
+            // meh
         }
 
         Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
