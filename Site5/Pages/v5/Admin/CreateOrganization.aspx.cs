@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using Resources;
 using Swarmops.Interface.Support;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
@@ -19,6 +20,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             PageIcon = "iconshock-organization-add";
             InfoBoxLiteral = Resources.Pages.Admin.CreateOrganization_Info;
             DbVersionRequired = 2; // for FinancialAccounts.Active field in Create function
+            PageAccessRequired = new Access(CurrentOrganization, AccessAspect.Administration, AccessType.Write);
 
             if (!Page.IsPostBack)
             {
