@@ -36,6 +36,27 @@
 
     }
 
+    publicSymbols.ajaxCall = ajaxCall;
+    function ajaxCall(url, params, successFunction, errorFunction) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $.toJSON(params),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+                successFunction(msg.d);
+            },
+            error: function () {
+                if (errorFunction !== undefined) {
+                    errorFunction();
+                } else {
+                    alertify.error("There was an unspecified error calling the Swarmops server. Is the server reachable?"); // TODO: Localize
+                }
+            }
+        });
+    }
+
     // Below copied from http://stackoverflow.com/questions/4578424/javascript-extend-a-function, assumed to be in public domain
 
     publicSymbols.init = init;
