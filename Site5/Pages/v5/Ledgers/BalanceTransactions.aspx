@@ -31,23 +31,67 @@
 
         function onFixTransaction(newTransactionId) {
             transactionId = newTransactionId;
-            SwarmopsJS.formatInteger(transactionId, function(result) { $('span#spanModalTransactionId').text(result); });
+            $('span#spanModalTransactionId').text("<%=Resources.Global.Global_LoadingPlaceholder%>");
+            SwarmopsJS.formatInteger(transactionId, function (result) { $('span#spanModalTransactionId').text(result); });
             $('input:radio[name="TxOptions"]').prop('checked', false);
             $('div.radioOption').hide();
             <%= this.DialogTx.ClientID %>_open();
 
             $('#spanTransactionUnbalancedBy').text('[...]');
-            $('#<%=this.DropOpenPayouts.ClientID%>')
+            $('span#spanModalTransactionDate').text('[...]');
+            <%=this.DropOpenPayouts.ClientControlID%>_loadData([{ id: 0, text: "<%=Resources.Global.Global_LoadingPlaceholder%>" }]);
+            <%=this.DropOpenPayouts.ClientControlID%>_val('0');
 
             SwarmopsJS.ajaxCall(
                 "/Pages/v5/Ledgers/BalanceTransactions.aspx/GetTransactionMatchability",
                 { transactionId: transactionId },
                 function(data) {
-                    console.log(data);
                     $('#spanTransactionUnbalancedBy').text(data.DifferingAmount);
+                    $('span#spanModalTransactionDate').text(data.TransactionDate);
+
+                    if (data.OpenPayoutData.length > 0) {
+                        <%=this.DropOpenPayouts.ClientControlID%>_loadData(data.OpenPayoutData);
+                        <%=this.DropOpenPayouts.ClientControlID%>_text("<%=Resources.Global.Global_SelectOne%>");
+                    } else {
+                        <%=this.DropOpenPayouts.ClientControlID%>_loadData({});
+                        <%=this.DropOpenPayouts.ClientControlID%>_text("<%=Resources.Global.Global_NoMatch%>");
+                    }
+
                 });
 
         }
+
+        function onBalanceTransaction() {
+            var accountId = <%=this.DropBudgetBalance.ClientID%>_val();
+
+            if (accountId > 0) {
+                <%= this.DialogTx.ClientID %>_close();
+
+                SwarmopsJS.ajaxCall(
+                    "/Pages/v5/Ledgers/BalanceTransactions.aspx/BalanceTransactionManually",
+                    { transactionId: transactionId, accountId: accountId },
+                    function () {
+                        $('#gridTransactions').datagrid('reload');
+                    });
+
+            }
+        }
+
+        function onMatchOpenPayout() {
+            var payoutId = <%=this.DropOpenPayouts.ClientControlID%>_val();
+
+            if (payoutId > 0) {
+                <%= this.DialogTx.ClientID %>_close();
+                SwarmopsJS.ajaxCall(
+                    "/Pages/v5/Ledgers/BalanceTransactions.aspx/MatchTransactionOpenPayout",
+                    { transactionId: transactionId, payoutId: payoutId },
+                    function () {
+                        $('#gridTransactions').datagrid('reload');
+                    });
+
+            }
+        }
+
     </script>
     
     <style type="text/css">
@@ -101,7 +145,7 @@
             <div id="radioOptionBalance" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value='<asp:Literal ID="LiteralButtonBalance" runat="server" Text="BalanceXYZ" />' class="buttonAccentColor" id="buttonExecuteBalance"/>
+                    <input type="button" value='<asp:Literal ID="LiteralButtonBalance" runat="server" Text="BalanceXYZ" />' class="buttonAccentColor" onclick="onBalanceTransaction(); return false;" id="buttonExecuteBalance"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribeBalance" Text="Balance the difference against XYZ" />
@@ -112,7 +156,7 @@
             <div id="radioOptionPayout" class="radioOption">
                 <div class="entryFields">
                     <Swarmops5:DropDown ID="DropOpenPayouts" runat="server" ListType="All" />&#8203;<br/>
-                    <input type="button" value='<asp:Literal ID="LiteralButtonPayout" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" id="button1"/>
+                    <input type="button" value='<asp:Literal ID="LiteralButtonPayout" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" onclick="onMatchOpenPayout(); return false;" id="buttonExecutePayout"/>
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribePayout" Text="Match to payout XYZ" />

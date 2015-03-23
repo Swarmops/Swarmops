@@ -8,6 +8,7 @@ using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Utility;
 using Swarmops.Utility.BotCode;
@@ -470,9 +471,9 @@ namespace Swarmops.Backend
 
                     if (SwarmDb.DbVersion < SwarmDb.DbVersionExpected)
                     {
-                        BotLog.Write (1, "MainCycle", "Entering DbUpgrade");
+                        BotLog.Write (1, "OneHour", "Entering DbUpgrade");
                         DatabaseMaintenance.UpgradeSchemata();
-                        BotLog.Write (1, "MainCycle", "Exited DbUpgrade");
+                        BotLog.Write (1, "OneHour", "Exited DbUpgrade");
                     }
                 }
                 catch (Exception e)
@@ -483,6 +484,18 @@ namespace Swarmops.Backend
 
                 try
                 {
+                    BotLog.Write(1, "OneHour", "Entering Automatch");
+                    Organizations organizations = Organizations.GetAll();
+                    foreach (Organization organization in organizations)
+                    {
+                        if (organization.IsEconomyEnabled)
+                        {
+                            BotLog.Write(1, "OneHour", "Automatching org #" + organization.Identity.ToString(CultureInfo.InvariantCulture));
+                            Payouts.AutomatchAgainstUnbalancedTransactions(organization);
+                        }
+                    }
+                    BotLog.Write(1, "OneHour", "Exited Automatch");
+
                     /*TestTrace("Running PaymentGroupMapper.Run()...");
                     PaymentGroupMapper.Run();
                     TestTrace(" done.\r\n");*/

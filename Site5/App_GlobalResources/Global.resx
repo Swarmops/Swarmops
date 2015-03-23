@@ -648,4 +648,16 @@
     <value>Options</value>
     <comment>For various page-specific checkboxes etc</comment>
   </data>
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(no match)</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>Working...</value>
+  </data>
 </root>

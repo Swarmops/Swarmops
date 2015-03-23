@@ -43,10 +43,10 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
     {
         Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
-        localizeMap["%ASSET_ACCOUNTGROUP%"] = Ledgers.BalanceSheet_Assets;
-        localizeMap["%DEBT_ACCOUNTGROUP%"] = Ledgers.BalanceSheet_Debt;
-        localizeMap["%INCOME_ACCOUNTGROUP%"] = Ledgers.ProfitLossStatement_Income;
-        localizeMap["%COST_ACCOUNTGROUP%"] = Ledgers.ProfitLossStatement_Costs;
+        localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Global.Financial_Asset;
+        localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Global.Financial_Debt;
+        localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Global.Financial_Income;
+        localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Global.Financial_Cost;
 
         foreach (YearlyReportLine line in lines)
         {

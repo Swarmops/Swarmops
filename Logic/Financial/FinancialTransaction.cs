@@ -85,6 +85,11 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public Organization Organization
+        {
+            get { return Organization.FromIdentity (base.OrganizationId); }
+        }
+
         public Documents Documents
         {
             get { return Documents.ForObject (this); }

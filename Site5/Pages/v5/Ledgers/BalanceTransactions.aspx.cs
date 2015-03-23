@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -48,11 +49,25 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         }
 
 
+        [Serializable]
         public class TransactionMatchabilityData
         {
+            public string TransactionDate { get; set; }
             public string DifferingAmount { get; set; }
-            public string OpenPayoutDropDownJsonData { get; set; }
+            public DropdownOption[] OpenPayoutData { get; set; }
         }
+
+        [Serializable]
+        public class DropdownOption
+        {
+            // Fields are lowercase for immediate usability in JavaScript without conversion.
+            // ReSharper disable InconsistentNaming
+            public string id;
+            public string text;
+            public string group;
+            // ReSharper restore InconsistentNaming
+        }
+
 
         [WebMethod]
         public static TransactionMatchabilityData GetTransactionMatchability (int transactionId)
@@ -74,11 +89,104 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             TransactionMatchabilityData result = new TransactionMatchabilityData();
 
+            result.TransactionDate = transaction.DateTime.ToString ("yyyy-MMM-dd HH:mm");
             result.DifferingAmount = String.Format ("{0} {1:+#,#.00;−#,#.00;0}",
                 // this is a UNICODE MINUS (U+2212), not the hyphen on the keyboard
                 authData.CurrentOrganization.Currency.DisplayCode, transaction.Rows.AmountCentsTotal/100.0);
 
+            result.OpenPayoutData = GetOpenPayoutData (transaction);
+
             return result;
+        }
+
+        private static DropdownOption[] GetOpenPayoutData(FinancialTransaction transaction)
+        {
+            DateTime transactionDateTime = transaction.DateTime;
+            Int64 matchAmount = transaction.Rows.AmountCentsTotal;
+
+            List<DropdownOption> result = new List<DropdownOption>();
+
+            Payouts openPayouts = Payouts.ForOrganization (transaction.Organization);
+
+            foreach (Payout payout in openPayouts)
+            {
+                if (payout.AmountCents == -matchAmount)
+                {
+                    string description = String.Format (Resources.Pages.Ledgers.BalanceTransaction_PayoutMatch, payout.Identity,
+                        payout.ExpectedTransactionDate, payout.Recipient, payout.Organization.Currency.DisplayCode, payout.AmountCents / 100.0);
+
+                    result.Add(new DropdownOption
+                    {
+                        id = payout.Identity.ToString(CultureInfo.InvariantCulture),
+                        @group = Resources.Pages.Ledgers.BalanceTransactions_ExactMatches,
+                        text = description
+                    });
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        [WebMethod]
+        public static void BalanceTransactionManually(int transactionId, int accountId)
+        {
+            if (transactionId == 0 || accountId == 0)
+            {
+                return;
+            }
+
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization,
+                    AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            FinancialTransaction transaction = FinancialTransaction.FromIdentity(transactionId);
+            FinancialAccount account = FinancialAccount.FromIdentity(accountId);
+            if (transaction.OrganizationId != authData.CurrentOrganization.Identity || account.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            transaction.AddRow (account, -transaction.Rows.AmountCentsTotal, authData.CurrentUser);
+        }
+
+
+
+        [WebMethod]
+        public static void MatchTransactionOpenPayout (int transactionId, int payoutId)
+        {
+            if (transactionId == 0 || payoutId == 0)
+            {
+                return;
+            }
+
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization,
+                    AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            FinancialTransaction transaction = FinancialTransaction.FromIdentity(transactionId);
+            Payout payout = Payout.FromIdentity (payoutId);
+            if (transaction.OrganizationId != authData.CurrentOrganization.Identity || payout.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            if (transaction.Rows.AmountCentsTotal != -payout.AmountCents)
+            {
+                throw new InvalidOperationException();
+            }
+
+            payout.BindToTransactionAndClose (transaction, authData.CurrentUser);
+
         }
     }
 }

@@ -45,10 +45,10 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
         {
             Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
-            localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Assets;
-            localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.BalanceSheet_Debt;
-            localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Income;
-            localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Pages.Ledgers.ProfitLossStatement_Costs;
+            localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Global.Financial_Asset;
+            localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Global.Financial_Debt;
+            localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Global.Financial_Income;
+            localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Global.Financial_Cost;
 
             foreach (YearlyReportLine line in lines)
             {

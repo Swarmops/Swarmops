@@ -73,6 +73,16 @@ select.comboperson+span>input:focus
     font-weight: lighter;
 }
 
+.combo-panel > .combobox-group {
+    font-size: 14px;
+    padding-left: 6px;
+}
+
+body.rtl .combo-panel > .combobox-group {
+    padding-left: 3px;
+    padding-right: 6px;
+}
+
 .combo-panel > .combobox-item-selected {
     font-weight: 400;
     border-top: 1px solid #c8d9ff;

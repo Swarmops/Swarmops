@@ -51,6 +51,18 @@
         });
     });
 
+    function <%=this.ClientID %>_val(newValue) {
+        if (newValue === undefined) {
+            // getter
+            return $('#<%=this.ClientID %>_DropBudgets').combotree('getValue');
+            } else {
+                // setter
+                $('#<%=this.ClientID %>_DropBudgets').combotree('setValue', newValue);
+            }
+        }
+
+
+
  </script>
  
  <span id="<%=this.ClientID %>_SpanBudgets"><select class="easyui-combotree" url="<%=this.DataUrl %>" name="DropBudgets" id="<%=this.ClientID %>_DropBudgets" animate="true" style="width:324px"></select></span>
