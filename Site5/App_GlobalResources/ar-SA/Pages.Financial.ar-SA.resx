@@ -218,7 +218,10 @@
     <value>التعرف الضوئي على الحروف/التلقائي</value>
     <comment>Some invoices come with OCR numbers printed on them for automatic processing.</comment>
   </data>
-  
+  <data name="CreateInboundInvoice_ReferenceManual" xml:space="preserve">
+    <value>دليل</value>
+    <comment>Other invoices come without automated processing and a manual </comment>
+  </data>
   <data name="CreateInboundInvoice_SuccessMessage" xml:space="preserve">
     <value>الفاتورة الواردة رقم {0:N0} تم حفظها في الملف.</value>
     <comment>The {0:N0} is just an identity number (formatted for culture). This message is displayed on success.</comment>
@@ -340,18 +343,33 @@
   <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
     <value>التعويض رقم {0:N0} تم التراجع عنه وعادت كل الأمور إلى حالها.</value>
   </data>
-  
-  
-  
+  <data name="PayrollTaxForms_AdditiveTax" xml:space="preserve">
+    <value>الضريبة المضافة</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>الضريبة المخصومة</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>الراتب الإجمالي</value>
+  </data>
   <data name="PayrollTaxForms_Info" xml:space="preserve">
     <value>هنا يمكنك استعراض النماذج المكتملة لضريبة الرواتب في المنظمة والتي يسهل عليك نسخها إلى النماذج الحقيقية للضريبة أو إن شئت طباعتها كما هي. أداء النظام والنماذج الحقيقية يتغيران بتغير الدولة وأحياناً يعتمدان على الشيفرات البرمجية والقوابس (plug-ins) التي توفرها أطراف أخرى.</value>
   </data>
   <data name="PayrollTaxForms_PageTitle" xml:space="preserve">
     <value>نماذج ضريبة الرواتب</value>
   </data>
-  
-  
-  
+  <data name="PayrollTaxForms_TaxFormsHeader" xml:space="preserve">
+    <value>نماذج الضرائب الشهرية لـ {0} عن</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>التكلفة الإجمالية</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>إجمالي الضريبة</value>
+  </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>مبلغ السلفة (بالـ {0})</value>
     <comment>{0} is the currency.</comment>

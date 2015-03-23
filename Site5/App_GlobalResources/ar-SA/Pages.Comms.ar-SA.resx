@@ -127,7 +127,10 @@
     <value>أرسل رسالة إلى مجموعة من الناس في المنظمة. يمكنك إرسال الرسالة عن طريق البريد (جيدة للنشرات الإخبارية والمعلومات العامة) أو إلى هواتفهم الخاصة (أسلوب متطفل جداً وتكلفته أعلى قليلاً).</value>
   </data>
   
-  
+  <data name="SendMassMessage_RecipientCount" xml:space="preserve">
+    <value>لا يوجد مستلمون | مستلم واحد | عدد {0:N0} مستلم</value>
+    <comment>Vertical bar divides none|one|many</comment>
+  </data>
   <data name="SendMassMessage_RecipientType" xml:space="preserve">
     <value>أرسل رسالة جماعية للكل</value>
   </data>
@@ -135,12 +138,16 @@
     <value>ارسال</value>
     <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
   </data>
-  
+  <data name="SendMassMessage_SendMessageResult" xml:space="preserve">
+    <value>يجري الآن نشر رسالتك على المستلمين. سيتم إبلاغك عندما يتم الانتهاء من الإرسال.</value>
+  </data>
   <data name="SendMassMessage_TestMessage" xml:space="preserve">
     <value>اختبار</value>
     <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
   </data>
-  
+  <data name="SendMassMessage_TestMessageResult" xml:space="preserve">
+    <value>تم إرسال الرسالة إليك لتتمكن من معاينتها قبل أن يتم إرسالها.</value>
+  </data>
   <data name="SendMassMessage_Title" xml:space="preserve">
     <value>إرسال رسالة جماعية</value>
   </data>

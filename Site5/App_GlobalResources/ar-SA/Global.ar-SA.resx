@@ -636,6 +636,10 @@
     <value>اضافة</value>
     <comment>as in "add element", "add row", etc</comment>
   </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(متعدد)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
   
   
 </root>

@@ -638,4 +638,8 @@
     <value>-- Flera - Välj --</value>
     <comment>Displayed when multiple choice</comment>
   </data>
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Alternativ</value>
+    <comment>For various page-specific checkboxes etc</comment>
+  </data>
 </root>

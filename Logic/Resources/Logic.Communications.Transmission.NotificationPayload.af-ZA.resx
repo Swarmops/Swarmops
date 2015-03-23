@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CashAdvance_Attested_Body" xml:space="preserve">
+    <value>crwdns6553646:0[OrganizationName]crwdnd6553646:0[CurrencyCode]crwdnd6553646:0[BudgetAmountFloat]crwdnd6553646:0[RequestPurpose]crwdne6553646:0</value>
+  </data>
+  <data name="CashAdvance_Attested_Subject" xml:space="preserve">
+    <value>crwdns6553647:0[OrganizationName]crwdnd6553647:0[CurrencyCode]crwdnd6553647:0[BudgetAmountFloat]crwdne6553647:0</value>
+  </data>
+  <data name="CashAdvance_Deattested_Body" xml:space="preserve">
+    <value>crwdns6553648:0[OrganizationName]crwdnd6553648:0[CurrencyCode]crwdnd6553648:0[BudgetAmountFloat]crwdnd6553648:0[RequestPurpose]crwdne6553648:0</value>
+  </data>
+  <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
+    <value>crwdns6553649:0[OrganizationName]crwdnd6553649:0[CurrencyCode]crwdnd6553649:0[BudgetAmountFloat]crwdne6553649:0</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
+    <value>crwdns6553814:0[OrganizationName]crwdnd6553814:0[CurrencyCode]crwdnd6553814:0[BudgetAmountFloat]crwdnd6553814:0[RequestPurpose]crwdne6553814:0</value>
+  </data>
+  <data name="CashAdvance_PaidOut_Subject" xml:space="preserve">
+    <value>crwdns6555541:0[OrganizationName]crwdnd6555541:0[CurrencyCode]crwdnd6555541:0[BudgetAmountFloat]crwdne6555541:0</value>
+  </data>
+  <data name="CashAdvance_Requested_Body" xml:space="preserve">
+    <value>crwdns6555620:0[ConcernedPersonName]crwdnd6555620:0[CurrencyCode]crwdnd6555620:0[BudgetAmountFloat]crwdnd6555620:0[RequestPurpose]crwdnd6555620:0[BudgetName]crwdnd6555620:0[InstallationName]crwdnd6555620:0[ExternalUrl]crwdne6555620:0</value>
+    <comment>This is sent to the budget owner(s) only.</comment>
+  </data>
+  <data name="CashAdvance_Requested_Subject" xml:space="preserve">
+    <value>crwdns6555542:0[OrganizationName]crwdnd6555542:0[CurrencyCode]crwdnd6555542:0[BudgetAmountFloat]crwdne6555542:0</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Body" xml:space="preserve">
+    <value>crwdns6553652:0[OrganizationName]crwdnd6553652:0[CurrencyCode]crwdnd6553652:0[BudgetAmountFloat]crwdnd6553652:0[RequestPurpose]crwdne6553652:0</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Attested_Subject" xml:space="preserve">
+    <value>crwdns6555543:0[OrganizationName]crwdnd6555543:0[CurrencyCode]crwdnd6555543:0[BudgetAmountFloat]crwdne6555543:0</value>
+  </data>
+  <data name="ExpenseClaim_Created_Body" xml:space="preserve">
+    <value>crwdns6555621:0[ConcernedPersonName]crwdnd6555621:0[BudgetName]crwdnd6555621:0[CurrencyCode]crwdnd6555621:0[BudgetAmountFloat]crwdnd6555621:0[RequestPurpose]crwdnd6555621:0[InstallationName]crwdnd6555621:0[ExternalUrl]crwdne6555621:0</value>
+    <comment>This is sent to the budget owner(s)only.</comment>
+  </data>
+  <data name="ExpenseClaim_Created_Subject" xml:space="preserve">
+    <value>crwdns6555544:0[OrganizationName]crwdnd6555544:0[CurrencyCode]crwdnd6555544:0[BudgetAmountFloat]crwdne6555544:0</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Body" xml:space="preserve">
+    <value>crwdns6553656:0[OrganizationName]crwdnd6553656:0[CurrencyCode]crwdnd6553656:0[BudgetAmountFloat]crwdnd6553656:0[RequestPurpose]crwdne6553656:0</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Deattested_Subject" xml:space="preserve">
+    <value>crwdns6555545:0[OrganizationName]crwdnd6555545:0[CurrencyCode]crwdnd6555545:0[BudgetAmountFloat]crwdne6555545:0</value>
+  </data>
+  <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
+    <value>crwdns6553658:0[OrganizationName]crwdnd6553658:0[CurrencyCode]crwdnd6553658:0[BudgetAmountFloat]crwdnd6553658:0[RequestPurpose]crwdne6553658:0</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
+    <value>crwdns6555546:0[OrganizationName]crwdnd6555546:0[CurrencyCode]crwdnd6555546:0[BudgetAmountFloat]crwdne6555546:0</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Body" xml:space="preserve">
+    <value>crwdns6553660:0[OrganizationName]crwdnd6553660:0[CurrencyCode]crwdnd6553660:0[BudgetAmountFloat]crwdnd6553660:0[RequestPurpose]crwdne6553660:0</value>
+  </data>
+  <data name="ExpenseClaim_Devalidated_Subject" xml:space="preserve">
+    <value>crwdns6555547:0[OrganizationName]crwdnd6555547:0[CurrencyCode]crwdnd6555547:0[BudgetAmountFloat]crwdne6555547:0</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Body" xml:space="preserve">
+    <value>crwdns6553818:0[OrganizationName]crwdnd6553818:0[CurrencyCode]crwdnd6553818:0[BudgetAmountFloat]crwdnd6553818:0[RequestPurpose]crwdne6553818:0</value>
+  </data>
+  <data name="ExpenseClaim_PaidOut_Subject" xml:space="preserve">
+    <value>crwdns6555548:0[OrganizationName]crwdnd6555548:0[CurrencyCode]crwdnd6555548:0[BudgetAmountFloat]crwdne6555548:0</value>
+  </data>
+  <data name="ExpenseClaim_Validated_Body" xml:space="preserve">
+    <value>crwdns6553662:0[OrganizationName]crwdnd6553662:0[CurrencyCode]crwdnd6553662:0[BudgetAmountFloat]crwdnd6553662:0[RequestPurpose]crwdne6553662:0</value>
+    <comment>This is sent to the claimer.</comment>
+  </data>
+  <data name="ExpenseClaim_Validated_Subject" xml:space="preserve">
+    <value>crwdns6555549:0[OrganizationName]crwdnd6555549:0[CurrencyCode]crwdnd6555549:0[BudgetAmountFloat]crwdne6555549:0</value>
+  </data>
+  <data name="InboundInvoice_Created_Body" xml:space="preserve">
+    <value>crwdns6555622:0[Supplier]crwdnd6555622:0[Description]crwdnd6555622:0[BudgetName]crwdnd6555622:0[CurrencyCode]crwdnd6555622:0[BudgetAmountFloat]crwdnd6555622:0[InstallationName]crwdnd6555622:0[ExternalUrl]crwdne6555622:0</value>
+  </data>
+  <data name="InboundInvoice_Created_Subject" xml:space="preserve">
+    <value>crwdns6555550:0[OrganizationName]crwdnd6555550:0[CurrencyCode]crwdnd6555550:0[BudgetAmountFloat]crwdne6555550:0</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="Membership_New_Added_Body" xml:space="preserve">
+    <value>crwdns6555551:0[Regular]crwdnd6555551:0[OrganizationName]crwdne6555551:0</value>
+  </data>
+  <data name="Membership_New_Added_Subject" xml:space="preserve">
+    <value>crwdns6555552:0[OrganizationName]crwdnd6555552:0[Regular]crwdnd6555552:0[PersonName]crwdnd6555552:0[PersonGeography]crwdnd6555552:0[CountryCode]crwdne6555552:0</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Body" xml:space="preserve">
+    <value>crwdns6555553:0[Regular]crwdnd6555553:0[OrganizationName]crwdne6555553:0</value>
+  </data>
+  <data name="Membership_New_Selfsignup_Subject" xml:space="preserve">
+    <value>crwdns6555554:0[OrganizationName]crwdnd6555554:0[Regular]crwdnd6555554:0[PersonName]crwdnd6555554:0[PersonGeography]crwdnd6555554:0[CountryCode]crwdne6555554:0</value>
+  </data>
+  <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
+    <value>crwdns6555555:0[OrganizationName]crwdnd6555555:0[Regularship]crwdnd6555555:0[PersonName]crwdnd6555555:0[PersonGeography]crwdnd6555555:0[CountryCode]crwdne6555555:0</value>
+  </data>
+  <data name="OutboundComm_Resolved_Body" xml:space="preserve">
+    <value>crwdns6555556:0[RecipientCount]crwdnd6555556:0[Geography]crwdnd6555556:0[OrganizationName]crwdne6555556:0</value>
+  </data>
+  <data name="OutboundComm_Resolved_Subject" xml:space="preserve">
+    <value>crwdns6555557:0[OrganizationName]crwdnd6555557:0[GeographyName]crwdnd6555557:0[RecipientCount]crwdne6555557:0</value>
+  </data>
+  <data name="OutboundComm_Sent_Body" xml:space="preserve">
+    <value>crwdns6555558:0[GeographyName]crwdnd6555558:0[RecipientCount]crwdnd6555558:0[RecipientsSuccess]crwdnd6555558:0[TransmissionTime]crwdne6555558:0</value>
+  </data>
+  <data name="OutboundComm_Sent_Subject" xml:space="preserve">
+    <value>crwdns6555559:0[OrganizationName]crwdnd6555559:0[GeographyName]crwdne6555559:0</value>
+  </data>
+  <data name="Password_CannotReset2FA_Body" xml:space="preserve">
+    <value>crwdns6555571:0[InstallationName]crwdnd6555571:0[InstallationName]crwdne6555571:0</value>
+  </data>
+  <data name="Password_CannotReset2FA_Subject" xml:space="preserve">
+    <value>crwdns6555572:0[InstallationName]crwdne6555572:0</value>
+  </data>
+  <data name="Password_Changed_Body" xml:space="preserve">
+    <value>crwdns6555573:0[InstallationName]crwdnd6555573:0[ExternalUrl]crwdnd6555573:0[ExternalUrl]crwdnd6555573:0[MailAddress]crwdnd6555573:0[TicketCode]crwdne6555573:0</value>
+  </data>
+  <data name="Password_Changed_Subject" xml:space="preserve">
+    <value>crwdns6555574:0[InstallationName]crwdne6555574:0</value>
+  </data>
+  <data name="Password_ResetByCrew_Body" xml:space="preserve">
+    <value>crwdns6555624:0[OrganizationName]crwdnd6555624:0[ExternalUrl]crwdnd6555624:0[TicketCode]crwdnd6555624:0[OrganizationName]crwdne6555624:0</value>
+  </data>
+  <data name="Password_ResetByCrew_Subject" xml:space="preserve">
+    <value>crwdns6555576:0[OrganizationName]crwdne6555576:0</value>
+  </data>
+  <data name="Password_ResetOnRequest_Body" xml:space="preserve">
+    <value>crwdns6555577:0[InstallationName]crwdnd6555577:0[ExternalUrl]crwdnd6555577:0[TicketCode]crwdne6555577:0</value>
+  </data>
+  <data name="Password_ResetOnRequest_Subject" xml:space="preserve">
+    <value>crwdns6555578:0[InstallationName]crwdne6555578:0</value>
+  </data>
+  <data name="Receipts_Filed_Body" xml:space="preserve">
+    <value>crwdns6555623:0[InstallationName]crwdnd6555623:0[ExternalUrl]crwdne6555623:0</value>
+  </data>
+  <data name="Receipts_Filed_Subject" xml:space="preserve">
+    <value>crwdns6555560:0[OrganizationName]crwdne6555560:0</value>
+    <comment>ACTION ITEM should be translated.</comment>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
+    <value>crwdns6553824:0[SwarmopsVersion]crwdnd6553824:0[HostName]crwdnd6553824:0[DbVersion]crwdne6553824:0</value>
+  </data>
+  <data name="System_DatabaseSchemaUpgraded_Subject" xml:space="preserve">
+    <value>crwdns6553825:0crwdne6553825:0</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Body" xml:space="preserve">
+    <value>crwdns6555653:0[SwarmopsVersion]crwdnd6555653:0[Hostname]crwdnd6555653:0[DbVersion]crwdnd6555653:0[DbVersionExpected]crwdne6555653:0</value>
+  </data>
+  <data name="System_DatabaseUpgradeFailed_Subject" xml:space="preserve">
+    <value>crwdns6555654:0crwdne6555654:0</value>
+  </data>
+  <data name="System_Exception_Body" xml:space="preserve">
+    <value>crwdns6553664:0[EmbeddedPreformattedText]crwdne6553664:0</value>
+  </data>
+  <data name="System_Exception_Subject" xml:space="preserve">
+    <value>crwdns6553665:0crwdne6553665:0</value>
+  </data>
+  <data name="System_MailServerTest_Body" xml:space="preserve">
+    <value>crwdns6555580:0[SwarmopsVersion]crwdnd6555580:0[HostName]crwdne6555580:0</value>
+  </data>
+  <data name="System_MailServerTest_Subject" xml:space="preserve">
+    <value>crwdns6555581:0crwdne6555581:0</value>
+  </data>
+  <data name="System_Startup_Body" xml:space="preserve">
+    <value>crwdns6553666:0[SwarmopsVersion]crwdnd6553666:0[HostName]crwdne6553666:0</value>
+  </data>
+  <data name="System_Startup_Subject" xml:space="preserve">
+    <value>crwdns6553667:0crwdne6553667:0</value>
+  </data>
+</root>

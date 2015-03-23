@@ -713,9 +713,11 @@
   </data>
   <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
     <value>crwdns6555837:0crwdne6555837:0</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
   </data>
   <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
     <value>crwdns6555838:0crwdne6555838:0</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
   </data>
   <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
     <value>crwdns6555839:0crwdne6555839:0</value>

@@ -1,4 +1,4 @@
-﻿Logic.Communications.Transmission.DefaultCommTemplates.resx
+Logic.Communications.Transmission.DefaultCommTemplates.resx
 Logic.Communications.Transmission.MailPayload.resx
 Logic.Communications.Transmission.NotificationPayload.resx
 Logic.Financial.FinancialAccount.resx

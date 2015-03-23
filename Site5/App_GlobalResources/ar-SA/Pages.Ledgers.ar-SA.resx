@@ -175,7 +175,10 @@
   <data name="ProfitLossStatement_AccountName" xml:space="preserve">
     <value>الحساب</value>
   </data>
-  
+  <data name="ProfitLossStatement_ContentHeader" xml:space="preserve">
+    <value>حساب الأرباح والخسائر لـ {0} عن</value>
+    <comment>The {0} is the organization name. The year number follows this string.</comment>
+  </data>
   <data name="ProfitLossStatement_Costs" xml:space="preserve">
     <value>النفقات</value>
   </data>
@@ -532,7 +535,10 @@
     <value>(يرجى اختيار حساب)</value>
     <comment>Displayed initially and when no valid account selected</comment>
   </data>
-  
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>حركة#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
   <data name="UploadBankFiles_ResultsPayments" xml:space="preserve">
     <value>&lt;br/&gt;&lt;p&gt; تم استيراد ملف المدفوعات بنجاح.  تم استيراد {1:N0} دفعة/دفعات في {0:N0} مجموعة/مجموعات، بما مجموعه {3} {2:N2}.</value>
     <comment>Arguments 0-3 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency</comment>
@@ -580,8 +586,12 @@
   <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
     <value>الراتب الإجمالي</value>
   </data>
-  
-  
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>هنا يمكنك استعراض النماذج المكتملة لضريبة الرواتب في المنظمة والتي يسهل عليك نسخها إلى النماذج الحقيقية للضريبة أو إن شئت طباعتها كما هي. أداء النظام والنماذج الحقيقية يتغيران بتغير الدولة وأحياناً يعتمدان على الشيفرات البرمجية والقوابس (plug-ins) التي توفرها أطراف أخرى.</value>
+  </data>
+  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
+    <value>نماذج ضريبة الرواتب</value>
+  </data>
   <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
     <value>نماذج الضرائب الشهرية لـ</value>
     <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
@@ -592,48 +602,155 @@
   <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
     <value>إجمالي الضريبة</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>عرض/تحرير حركة رقم # &lt;span id="spanModalTransactionId"&gt; 67890&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>فحص الحركة رقم # &lt;span id="spanModalTransactionId"&gt; 12345&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>اسم الحساب</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>الرصيد صحيح: </value>
+  </data>
+  <data name="InspectLedgers_EmptyTransaction" xml:space="preserve">
+    <value>(لا يوجد بيانات للحركة)</value>
+  </data>
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>الأحرف الأولى</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>مسجلة</value>
+  </data>
+  <data name="InspectLedgers_UnbalancedTransaction" xml:space="preserve">
+    <value>الحركة &lt;span class="spanAnnoyingBlink"&gt; لا متعادلة:&lt;/span&gt; المبلغ مفقود</value>
+  </data>
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>إضافة صفوف إلى الحركة</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
+  <data name="InspectLedgers_HeaderAutoTransactionTracking" xml:space="preserve">
+    <value>تفاصيل تتبع الحركة التلقائية</value>
+    <comment>(this means the transaction is locked from editing)</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>تمت المصادقة عليه من قبل {0} في {1:yyyy-MMM-dd}</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>جنبا إلى جنب مع</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_InvoiceX" xml:space="preserve">
+    <value>&lt;strong&gt;فاتورة واردة #{0:N0}&lt;/strong&gt; من {1}:</value>
+    <comment>the {1} is the supplier name</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>هذا &lt;strong&gt;أمر صرف #{0:N0}-&lt;/strong&gt; عن </value>
+  </data>
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>تم التحقق من صحة الوثيقة من قبل {0} في {1:yyyy-MMM-dd}</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>تم التنفيذ من قبل {0}.</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_SalaryDetail" xml:space="preserve">
+    <value>الراتب الأساسي {0} {1:N2}، التسويات الإجمالية {2:+N2;-N2;none}، الراتب الإجمالي {3:N2}، الضريبة المخصومة {4:N2}، صافي التسويات {5:+N2;-N2;none}، المدفوع {6:N2}.</value>
+    <comment>The "none"s in the format strings need to be translated.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>الرجاء تحديد الحساب لتتمكن من إضافة صف جديد إلى هذه الحركة.</value>
+  </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>خسارة سنوية</value>
+  </data>
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>الأرباح السنوية</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>(تم حجب الوصف المفصل)</value>
+  </data>
+  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
+    <value>حركات مختلة (يجب إتمام تطابقها أو إصلاحها)</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>الحساب</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>المبلغ</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>حركة#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>لا يمكن مطابقة بعض الحركات المالية التي تم استيرادها بشكل تلقائي مع السجلات المحاسبية الحالية. هذا ما يتطلب تدخلك لتقوم بمطابقة هذه الحركات بشكل يدوي لموازنتها (عند اكتمال جزء واحد من الحركة، كأن يتم تسجيل الأموال المرسلة إلى المنظمة ولكن دون تحديد الغرض من هذه الأموال، فعندها يقال بأن الحركة مختلة أو "غير موزونة").</value>
+  </data>
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>موازنة/مطابقة الحركة # &lt;span id="spanModalTransactionId"&gt; 67890&lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>موازنة و مطابقة الحركات</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>المطابقات التامة لهذا الحساب</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ExactMatchesFarAway" xml:space="preserve">
+    <value>مبلغ المطابقة</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>المبلغ خلال فترة التجاوز 5%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>الرصيد</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>مطابقة</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribeBalance" xml:space="preserve">
+    <value>تحقيق التوازن بين الفروق في هذا الحساب:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>الحركة تطابق هذا المدفوع:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_DoYouWishTo" xml:space="preserve">
+    <value>الحركة غير متوازنة من &lt;span id="spanTransactionUnbalancedBy"&gt; + فو، بار.QX&lt;/span&gt;. هل ترغب في...</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioBalance" xml:space="preserve">
+    <value>موازنة هذه الحركة بشكل يدوي لهذا الحساب؟</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayout" xml:space="preserve">
+    <value>مطابقة فروقات الحركة لمدفوعات مفتوحة وغير متوازنة؟</value>
+  </data>
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>(لا يوجد مدفوعات مفتوحة)</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>(لا يوجد مدفوعات مناسبة لمطابقتها)</value>
+  </data>
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>المبلغ خلال فترة التجاوز 1%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>--اختر مدفوعاً -</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>المبلغ خلال فترة التجاوز 10%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
 </root>
