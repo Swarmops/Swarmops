@@ -1,6 +1,6 @@
 ﻿using System;
 using Swarmops.Common.Enums;
-using Swarmops.Logic.App_GlobalResources;
+using Swarmops.Logic.Resources;
 
 namespace Swarmops.Logic.Swarm
 {
@@ -8,7 +8,7 @@ namespace Swarmops.Logic.Swarm
     {
         public static string Localized (ParticipantTitle title, TitleVariant variant = TitleVariant.Generic)
         {
-            return LocalizedTitles.ResourceManager.GetString ("Title_" + title + "_" + variant);
+            return Logic_Swarm_ParticipantTitle.ResourceManager.GetString ("Title_" + title + "_" + variant);
         }
 
         public static string Localized (ParticipantTitle title, PersonGender gender)

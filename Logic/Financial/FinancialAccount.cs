@@ -288,7 +288,7 @@ namespace Swarmops.Logic.Financial
             {
                 if (base.Name.StartsWith ("[LOC]"))
                 {
-                    string localized = App_GlobalResources.FinancialAccountNames.ResourceManager.GetString (base.Name.Substring (5));
+                    string localized = Resources.Logic_Financial_FinancialAccount.ResourceManager.GetString (base.Name.Substring (5));
 
                     if (!string.IsNullOrEmpty (localized))
                     {

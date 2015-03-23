@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Swarmops.Logic.App_GlobalResources;
+using Swarmops.Logic.Resources;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;

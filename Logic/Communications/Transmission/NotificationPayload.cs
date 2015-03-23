@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Net;
 using Swarmops.Database;
-using Swarmops.Logic.App_GlobalResources;
+using Swarmops.Logic.Resources;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 

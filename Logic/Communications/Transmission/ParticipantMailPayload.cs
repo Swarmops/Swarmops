@@ -39,11 +39,11 @@ namespace Swarmops.Logic.Communications.Transmission
                         Participant.Localized (membership.Organization.RegularLabel, TitleVariant.Ship);
 
                     BodyTemplate =
-                        App_GlobalResources.Logic_Communications_Transmission_DefaultCommTemplates
+                        Resources.Logic_Communications_Transmission_DefaultCommTemplates
                             .ParticipantManualAddWelcome_Body;
 
                     SubjectTemplate =
-                        App_GlobalResources.Logic_Communications_Transmission_DefaultCommTemplates
+                        Resources.Logic_Communications_Transmission_DefaultCommTemplates
                             .ParticipantManualAddWelcome_Subject;
 
                     break;

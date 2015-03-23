@@ -8,7 +8,7 @@ using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Generics;
 using Swarmops.Database;
-using Swarmops.Logic.App_GlobalResources;
+using Swarmops.Logic.Resources;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Swarm
@@ -157,7 +157,7 @@ namespace Swarmops.Logic.Swarm
                 titleString += "_Plural";
             }
 
-            return LocalizedTitles.ResourceManager.GetString("Position_" + titleString);
+            return Logic_Swarm_Position.ResourceManager.GetString("Position_" + titleString);
         }
 
         public static string Localized(PositionType type, PositionTitle title, bool plural = false)
@@ -168,7 +168,7 @@ namespace Swarmops.Logic.Swarm
                 titleString += "_Plural";
             }
 
-            return LocalizedTitles.ResourceManager.GetString("Position_" + titleString);
+            return Logic_Swarm_Position.ResourceManager.GetString("Position_" + titleString);
         }
     }
 }

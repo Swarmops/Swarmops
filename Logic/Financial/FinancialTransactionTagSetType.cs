@@ -1,5 +1,5 @@
 ﻿using System;
-using Swarmops.Logic.App_GlobalResources;
+using Swarmops.Logic.Resources;
 
 namespace Swarmops.Logic.Financial
 {
