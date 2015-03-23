@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Resources;
 using Resources.Pages;
 using Swarmops.Logic.Security;
 
@@ -51,10 +52,10 @@ public partial class Pages_v5_Ledgers_ProfitLossStatement : PageV5Base
         this.LabelContentHeader.Text = string.Format (Ledgers.ProfitLossStatement_ContentHeader,
             CurrentOrganization.Name);
         this.LiteralHeaderLastYear.Text = Ledgers.ProfitLossStatement_LastYear;
-        this.LiteralHeaderQ1.Text = Ledgers.ProfitLossStatement_Q1;
-        this.LiteralHeaderQ2.Text = Ledgers.ProfitLossStatement_Q2;
-        this.LiteralHeaderQ3.Text = Ledgers.ProfitLossStatement_Q3;
-        this.LiteralHeaderQ4.Text = Ledgers.ProfitLossStatement_Q4;
+        this.LiteralHeaderQ1.Text = Global.Global_Q1;
+        this.LiteralHeaderQ2.Text = Global.Global_Q2;
+        this.LiteralHeaderQ3.Text = Global.Global_Q3;
+        this.LiteralHeaderQ4.Text = Global.Global_Q4;
         this.LiteralHeaderYtd.Text = Ledgers.ProfitLossStatement_Ytd;
         this.LiteralHeaderAccountName.Text = Ledgers.ProfitLossStatement_AccountName;
     }
