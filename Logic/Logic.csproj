@@ -385,6 +385,75 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.pt-BR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.DefaultCommTemplates.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.pt-BR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.MailPayload.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.pt-BR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Communications.Transmission.NotificationPayload.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.pt-BR.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Financial.FinancialAccount.Designer.cs</LastGenOutput>
@@ -393,10 +462,46 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialAccount.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.pt-BR.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.pt-BR.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Swarm.DashboardTodos.Designer.cs</LastGenOutput>
@@ -406,6 +511,24 @@
       <LastGenOutput>Logic.Communications.Transmission.NotificationPayload.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.pt-BR.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Swarm.ParticipantTitle.Designer.cs</LastGenOutput>
@@ -415,10 +538,31 @@
       <LastGenOutput>Logic.Communications.Transmission.MailPayload.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.ParticipantTitle.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.pt-BR.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.Position.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Swarm.Position.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Swarm.Position.zh-CN.resx" />
     <EmbeddedResource Include="Security\App_LocalResources\Authentication.fi-FI.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
