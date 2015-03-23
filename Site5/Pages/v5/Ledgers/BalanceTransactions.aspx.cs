@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers
@@ -43,6 +45,40 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this.LabelDescribePayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_DescribePayout;
             this.LabelRadioPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_RadioPayout;
             this.LiteralButtonPayout.Text = Resources.Pages.Ledgers.BalanceTransactions_ModalDialog_ButtonPayout;
+        }
+
+
+        public class TransactionMatchabilityData
+        {
+            public string DifferingAmount { get; set; }
+            public string OpenPayoutDropDownJsonData { get; set; }
+        }
+
+        [WebMethod]
+        public static TransactionMatchabilityData GetTransactionMatchability (int transactionId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (
+                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                    AccessAspect.BookkeepingDetails)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            FinancialTransaction transaction = FinancialTransaction.FromIdentity (transactionId);
+            if (transaction.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            TransactionMatchabilityData result = new TransactionMatchabilityData();
+
+            result.DifferingAmount = String.Format ("{0} {1:+#,#.00;−#,#.00;0}",
+                // this is a UNICODE MINUS (U+2212), not the hyphen on the keyboard
+                authData.CurrentOrganization.Currency.DisplayCode, transaction.Rows.AmountCentsTotal/100.0);
+
+            return result;
         }
     }
 }
