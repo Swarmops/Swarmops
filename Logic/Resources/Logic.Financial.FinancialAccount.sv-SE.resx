@@ -147,7 +147,7 @@
     <comment>Used to compensate for all kinds of random mistakes</comment>
   </data>
   <data name="Cost_AllocatedFunds" xml:space="preserve">
-    <value>Tilldelade medel</value>
+    <value>Fördelade medel</value>
   </data>
   <data name="Cost_AnnualResult" xml:space="preserve">
     <value>Årligt resultat</value>

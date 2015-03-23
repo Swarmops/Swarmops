@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -268,6 +268,9 @@
   <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
     <value>Olika banker har olika sätt att få BGMAX-filen. På SEB går du till &lt;strong&gt;betalningar&lt;/strong&gt; och &lt;strong&gt;filkommunikation&lt;/strong&gt; för att se en lista över filer att hämta. Andra banker har andra metoder. I vilket fall, så ladda upp dem här.</value>
   </data>
+  
+  
+  
   <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
     <value>&lt;p&gt;Filen innehöll {0:N0} transaktioner. &lt;strong&gt;{1:N0} transaktioner&lt;/strong&gt; har importerats till kontot &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transaktioner var dubbletter.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Men bankens saldo stämmer inte med bokföringen i Swarmops.&lt;/strong&gt; Detta beror oftast på saknade transaktioner. Ladda upp ett kontoutdrag över med ett större tidsintervall så att Swarmops får alla transaktioner.&lt;/p&gt;&lt;p&gt;Swarmops bokföring konto är för närvarande &lt;strong&gt;inte i synk&lt;/strong&gt; med bankens.&lt;/p&gt;</value>
     <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
@@ -492,6 +495,7 @@
   <data name="InspectLedgers_PageTitle" xml:space="preserve">
     <value>Granska bokföring</value>
   </data>
+  
   <data name="InspectLedgers_InboundBalance" xml:space="preserve">
     <value>Ingående balans</value>
   </data>
@@ -501,6 +505,7 @@
   <data name="InspectLedgers_Info" xml:space="preserve">
     <value>Detta är den underliggande bokföringens huvudbok för organisationens finanser. Du kan studera bokföringen i detalj, t.ex. för revision. &lt;span id="SpanInfoProfitLossAccount" style="display:none"&gt; &lt;strong&gt;Du tittar just nu på ett resultat konto, så tecknen är omvända - inkomst är negativ och kostnad positivt&lt;/strong&gt; på grund av hur venetiansk dubbel bokföring fungerar.&lt;/span&gt;</value>
   </data>
+  
   <data name="InspectLedgers_NoTransactions" xml:space="preserve">
     <value>Det finns inga transaktioner i det här kontot för den valda tidsperioden.</value>
   </data>
@@ -677,7 +682,7 @@
     <value>Några automatimporterade finansiella transaktioner kunde inte matchas automatiskt mot den löpande redovisningen. Det är här som du manuellt matchar transaktionerna att "balansera" (om en transaktion bara har ena sidan redovisad, till exempel utbetalda pengar från organisationen utan motsvarande post vad pengarna gick till, så sägs transaktionen vara "obalanserad").</value>
   </data>
   <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
-    <value>Balanserar/matchar transaktionen #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt; från &lt;span id="spanModalTransactionDate"&gt;67890&lt;/span&gt;</value>
+    <value>Balanserar/matchar transaktionen #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
     <comment>The span text is replaced runtime.</comment>
   </data>
   <data name="BalanceTransactions_PageTitle" xml:space="preserve">
