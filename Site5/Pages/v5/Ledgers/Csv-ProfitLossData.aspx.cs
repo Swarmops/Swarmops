@@ -36,16 +36,14 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
             Response.Output.WriteLine ("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"",
                 Ledgers.ProfitLossStatement_AccountName,
                 Ledgers.ProfitLossStatement_LastYear,
-                Ledgers.ProfitLossStatement_Q1, Ledgers.ProfitLossStatement_Q2,
-                Ledgers.ProfitLossStatement_Q3, Ledgers.ProfitLossStatement_Q4,
+                Resources.Global.Global_Q1, Resources.Global.Global_Q2, Resources.Global.Global_Q3, Resources.Global.Global_Q4,
                 Ledgers.ProfitLossStatement_Ytd);
         }
         else
         {
             Response.Output.WriteLine ("\"{0}\",\"{1}\",\"{6}-{2}\",\"{6}-{3}\",\"{6}-{4}\",\"{6}-{5}\",\"{6}\"",
                 Ledgers.ProfitLossStatement_AccountName, this._year - 1,
-                Ledgers.ProfitLossStatement_Q1, Ledgers.ProfitLossStatement_Q2,
-                Ledgers.ProfitLossStatement_Q3, Ledgers.ProfitLossStatement_Q4,
+                Resources.Global.Global_Q1, Resources.Global.Global_Q2, Resources.Global.Global_Q3, Resources.Global.Global_Q4,
                 this._year);
         }
 
@@ -61,10 +59,10 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
     {
         Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
-        localizeMap["%ASSET_ACCOUNTGROUP%"] = Ledgers.BalanceSheet_Assets;
-        localizeMap["%DEBT_ACCOUNTGROUP%"] = Ledgers.BalanceSheet_Debt;
-        localizeMap["%INCOME_ACCOUNTGROUP%"] = Ledgers.ProfitLossStatement_Income;
-        localizeMap["%COST_ACCOUNTGROUP%"] = Ledgers.ProfitLossStatement_Costs;
+        localizeMap["%ASSET_ACCOUNTGROUP%"] = Resources.Global.Financial_Asset;
+        localizeMap["%DEBT_ACCOUNTGROUP%"] = Resources.Global.Financial_Debt;
+        localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Global.Financial_Income;
+        localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Global.Financial_Cost;
 
         foreach (YearlyReportLine line in lines)
         {
