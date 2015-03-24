@@ -39,6 +39,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             this.ButtonCreate.Text = Global.Global_Create;
 
+            
             this.DropPersonLabel.Items.Clear();
             this.DropActivistLabel.Items.Clear();
             this.DropCurrencies.Items.Clear();
@@ -65,14 +66,14 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             }
 
             localizedPersonLabels.Sort(); // Sorts _localized_
-
+            
             foreach (string localizedPersonLabel in localizedPersonLabels)
             {
                 string[] parts = localizedPersonLabel.Split ('|');
                 this.DropPersonLabel.Items.Add (new ListItem (parts[0], parts[1]));
                 this.DropActivistLabel.Items.Add (new ListItem (parts[0], parts[1]));
             }
-
+            
             Currencies currencies = Currencies.GetAll();
 
             List<string> currencyStrings = new List<string>();
