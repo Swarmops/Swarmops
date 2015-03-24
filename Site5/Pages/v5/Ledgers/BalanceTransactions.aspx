@@ -39,8 +39,8 @@
 
             $('#spanTransactionUnbalancedBy').text('[...]');
             $('span#spanModalTransactionDate').text('[...]');
-            <%=this.DropOpenPayouts.ClientControlID%>_loadData([{ id: 0, text: "<%=Resources.Global.Global_LoadingPlaceholder%>" }]);
-            <%=this.DropOpenPayouts.ClientControlID%>_val('0');
+            <%=this.DropOpenPayouts.ClientID%>_loadData([{ id: 0, text: "<%=Resources.Global.Global_LoadingPlaceholder%>" }]);
+            <%=this.DropOpenPayouts.ClientID%>_val('0');
 
             SwarmopsJS.ajaxCall(
                 "/Pages/v5/Ledgers/BalanceTransactions.aspx/GetTransactionMatchability",
@@ -50,11 +50,11 @@
                     $('span#spanModalTransactionDate').text(data.TransactionDate);
 
                     if (data.OpenPayoutData.length > 0) {
-                        <%=this.DropOpenPayouts.ClientControlID%>_loadData(data.OpenPayoutData);
-                        <%=this.DropOpenPayouts.ClientControlID%>_text("<%=Resources.Global.Global_SelectOne%>");
+                        <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData);
+                        <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
                     } else {
-                        <%=this.DropOpenPayouts.ClientControlID%>_loadData({});
-                        <%=this.DropOpenPayouts.ClientControlID%>_text("<%=Resources.Global.Global_NoMatch%>");
+                        <%=this.DropOpenPayouts.ClientID%>_loadData({});
+                        <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
                     }
 
                 });
@@ -78,7 +78,7 @@
         }
 
         function onMatchOpenPayout() {
-            var payoutId = <%=this.DropOpenPayouts.ClientControlID%>_val();
+            var payoutId = <%=this.DropOpenPayouts.ClientID%>_val();
 
             if (payoutId > 0) {
                 <%= this.DialogTx.ClientID %>_close();

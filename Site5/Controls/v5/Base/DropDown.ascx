@@ -3,9 +3,10 @@
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
-            $('#<%=this.ClientID %>_DropDown').combobox({
+            $('#<%=this.ClientID %>_DropControl').combobox({
                 editable: false,
                 height: 32,
+                width: 324,
                 panelAlign: '<%= Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft? "right": "left" %>',
                 panelWidth: 300<% 
                 if (!String.IsNullOrEmpty(this.OnClientChange))
@@ -16,16 +17,16 @@
                 %>
             });
 
-            $('#<%=this.ClientID %>_DropDown + span.combo > input.combo-text').click(function () {
-                $('#<%=this.ClientID %>_DropDown + span.combo > span > span.combo-arrow').click();
+            $('#<%=this.ClientID %>_DropControl + span.combo > input.combo-text').click(function () {
+                $('#<%=this.ClientID %>_DropControl + span.combo > span > span.combo-arrow').click();
             });
 
-            $('#<%=this.ClientID %>_DropDown + span.combo > input.combo-text').keydown(function (e) {
+            $('#<%=this.ClientID %>_DropControl + span.combo > input.combo-text').keydown(function (e) {
                 switch (e.which) {
                     case 40: // down
-                        var panel = $('#<%=this.ClientID %>_DropDown').combo('panel');
+                        var panel = $('#<%=this.ClientID %>_DropControl').combo('panel');
                         if (!panel.is(':visible')) {
-                            $('#<%=this.ClientID %>_DropDown + span.combo > span > span.combo-arrow').click();
+                            $('#<%=this.ClientID %>_DropControl + span.combo > span > span.combo-arrow').click();
                             panel.focus();
                         }
                         break;
@@ -36,32 +37,32 @@
             });
         });
 
-        function <%=this.ClientID %>_DropDown_val(newValue) {
+        function <%=this.ClientID %>_val(newValue) {
             if (newValue === undefined) {
                 // getter
-                return $('#<%=this.ClientID %>_DropDown').combobox('getValue');
+                return $('#<%=this.ClientID %>_DropControl').combobox('getValue');
             } else {
                 // setter
-                $('#<%=this.ClientID %>_DropDown').combobox('setValue', newValue);
+                $('#<%=this.ClientID %>_DropControl').combobox('setValue', newValue);
             }
         }
 
-        function <%=this.ClientID %>_DropDown_text(newText) {
+        function <%=this.ClientID %>_text(newText) {
             if (newText === undefined) {
                 // getter
-                return $('#<%=this.ClientID %>_DropDown').combobox('getText');
+                return $('#<%=this.ClientID %>_DropControl').combobox('getText');
             } else {
                 // setter
-                $('#<%=this.ClientID %>_DropDown').combobox('setText', newText);
+                $('#<%=this.ClientID %>_DropControl').combobox('setText', newText);
             }
         }
 
-        function <%=this.ClientID %>_DropDown_loadUrl(url) {
-            $('#<%=this.ClientID %>_DropDown').combobox('reload', url);
+        function <%=this.ClientID %>_loadUrl(url) {
+            $('#<%=this.ClientID %>_DropControl').combobox('reload', url);
         }
 
-        function <%=this.ClientID %>_DropDown_loadJson(jsonData) {
-            $('#<%=this.ClientID %>_DropDown').combobox({
+        function <%=this.ClientID %>_loadJson(jsonData) {
+            $('#<%=this.ClientID %>_DropControl').combobox({
                 data: $.parseJSON(jsonData),
                 valueField: 'id',
                 textField: 'text',
@@ -69,8 +70,8 @@
                 });
         }
 
-        function <%=this.ClientID %>_DropDown_loadData(jsData) {
-            $('#<%=this.ClientID %>_DropDown').combobox({
+        function <%=this.ClientID %>_loadData(jsData) {
+            $('#<%=this.ClientID %>_DropControl').combobox({
                 data: jsData,
                 valueField: 'id',
                 textField: 'text',
@@ -81,4 +82,4 @@
     </script>
 
 
-<span id="<%=this.ClientID %>_SpanDrop"><select class="easyui-combo" url="<%=this.DataUrl %>" name="DropDown" id="<%=this.ClientID %>_DropDown" valueField="value" textField="text" groupField="group" animate="true" style="width:324px"></select></span>
+<span id="<%=this.ClientID %>_SpanDrop"><asp:DropDownList ID="DropControl" runat="server" /></span>
