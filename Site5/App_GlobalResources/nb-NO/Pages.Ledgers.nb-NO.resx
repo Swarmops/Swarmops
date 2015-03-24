@@ -126,9 +126,6 @@
   
   
   
-  <data name="BalanceSheet_Debt" xml:space="preserve">
-    <value>Gjeld</value>
-  </data>
   
   
   
@@ -140,21 +137,10 @@
   
   
   
-  <data name="ProfitLossStatement_Costs" xml:space="preserve">
-    <value>Kostnader</value>
-  </data>
-  
-  <data name="ProfitLossStatement_Income" xml:space="preserve">
-    <value>Omsetning</value>
-  </data>
   
   <data name="ProfitLossStatement_LastYear" xml:space="preserve">
     <value>Forrige år</value>
   </data>
-  
-  
-  
-  
   
   <data name="ProfitLossStatement_Results" xml:space="preserve">
     <value>Resultater</value>
@@ -238,6 +224,7 @@
   <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
     <value>Mottaker</value>
   </data>
+  
   
   
   

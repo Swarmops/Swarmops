@@ -123,12 +123,6 @@
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Учетная запись</value>
   </data>
-  <data name="BalanceSheet_Assets" xml:space="preserve">
-    <value>Активы</value>
-  </data>
-  
-  
-  
   
   
   
@@ -147,10 +141,6 @@
   <data name="ProfitLossStatement_LastYear" xml:space="preserve">
     <value>В прошлом году</value>
   </data>
-  
-  
-  
-  
   
   
   
@@ -241,6 +231,7 @@
   <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
     <value>Получатель</value>
   </data>
+  
   
   
   

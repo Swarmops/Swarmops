@@ -121,15 +121,9 @@
   
   
   
-  <data name="BalanceSheet_Assets" xml:space="preserve">
-    <value>Middelen</value>
-  </data>
   
   <data name="BalanceSheet_Current" xml:space="preserve">
     <value>Huidige</value>
-  </data>
-  <data name="BalanceSheet_Debt" xml:space="preserve">
-    <value>Schuld</value>
   </data>
   <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
     <value>Balans</value>
@@ -166,15 +160,9 @@
     <value>Winst/Verlies voor {0} voor het jaar</value>
     <comment>The {0} is the organization name. The year number follows this string.</comment>
   </data>
-  <data name="ProfitLossStatement_Costs" xml:space="preserve">
-    <value>Kosten</value>
-  </data>
   <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
     <value>WinstVerlies</value>
     <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
-  </data>
-  <data name="ProfitLossStatement_Income" xml:space="preserve">
-    <value>Inkomsten</value>
   </data>
   
   <data name="ProfitLossStatement_LastYear" xml:space="preserve">
@@ -182,18 +170,6 @@
   </data>
   <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
     <value>Winst &amp; Verlies verklaring</value>
-  </data>
-  <data name="ProfitLossStatement_Q1" xml:space="preserve">
-    <value>Kwartaal 1</value>
-  </data>
-  <data name="ProfitLossStatement_Q2" xml:space="preserve">
-    <value>Kwartaal 2</value>
-  </data>
-  <data name="ProfitLossStatement_Q3" xml:space="preserve">
-    <value>Kwartaal 3</value>
-  </data>
-  <data name="ProfitLossStatement_Q4" xml:space="preserve">
-    <value>Kwartaal 4</value>
   </data>
   <data name="ProfitLossStatement_Results" xml:space="preserve">
     <value>Resultaten</value>
@@ -252,6 +228,7 @@
     <value>Upload Bank bestanden</value>
     <comment>Displayed above main content.</comment>
   </data>
+  
   
   
   

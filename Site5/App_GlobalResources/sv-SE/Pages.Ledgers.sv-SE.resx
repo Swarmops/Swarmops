@@ -129,18 +129,12 @@
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>Konto</value>
   </data>
-  <data name="BalanceSheet_Assets" xml:space="preserve">
-    <value>Tillgångar</value>
-  </data>
   <data name="BalanceSheet_ContentHeader" xml:space="preserve">
     <value>Balansräkning för {0},</value>
     <comment>{0} is the organization name. The year follows immediately, so keep ending comma.</comment>
   </data>
   <data name="BalanceSheet_Current" xml:space="preserve">
     <value>Just nu</value>
-  </data>
-  <data name="BalanceSheet_Debt" xml:space="preserve">
-    <value>Skulder</value>
   </data>
   <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
     <value>Balans</value>
@@ -179,15 +173,9 @@
     <value>Resultaträkning för {0} år</value>
     <comment>The {0} is the organization name. The year number follows this string.</comment>
   </data>
-  <data name="ProfitLossStatement_Costs" xml:space="preserve">
-    <value>Kostnader</value>
-  </data>
   <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
     <value>Resultat</value>
     <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
-  </data>
-  <data name="ProfitLossStatement_Income" xml:space="preserve">
-    <value>Inkomster</value>
   </data>
   <data name="ProfitLossStatement_Info" xml:space="preserve">
     <value>Resultaträkningen är en översikt av inkomster och utgifter, och grupperas per budget eller kostnadstyp. Summan av alla inkomster och utgifter är det årliga reulstatet. Du kan också titta på &lt;a href="BalanceSheet.aspx"&gt;balansräkningen&lt;/a&gt; som är översikten över tillgångar och skulder.</value>
@@ -197,18 +185,6 @@
   </data>
   <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
     <value>Resultaträkning</value>
-  </data>
-  <data name="ProfitLossStatement_Q1" xml:space="preserve">
-    <value>Q1</value>
-  </data>
-  <data name="ProfitLossStatement_Q2" xml:space="preserve">
-    <value>Q2</value>
-  </data>
-  <data name="ProfitLossStatement_Q3" xml:space="preserve">
-    <value>Q3</value>
-  </data>
-  <data name="ProfitLossStatement_Q4" xml:space="preserve">
-    <value>Q4</value>
   </data>
   <data name="ProfitLossStatement_Results" xml:space="preserve">
     <value>Resultat</value>
@@ -681,10 +657,7 @@
   <data name="BalanceTransactions_Info" xml:space="preserve">
     <value>Några automatimporterade finansiella transaktioner kunde inte matchas automatiskt mot den löpande redovisningen. Det är här som du manuellt matchar transaktionerna att "balansera" (om en transaktion bara har ena sidan redovisad, till exempel utbetalda pengar från organisationen utan motsvarande post vad pengarna gick till, så sägs transaktionen vara "obalanserad").</value>
   </data>
-  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
-    <value>Balanserar/matchar transaktionen #&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
-    <comment>The span text is replaced runtime.</comment>
-  </data>
+  
   <data name="BalanceTransactions_PageTitle" xml:space="preserve">
     <value>Balansera &amp; matcha transaktioner</value>
   </data>
@@ -740,4 +713,5 @@
     <value>Belopp inom 10% tolerans</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
+  
 </root>

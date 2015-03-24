@@ -648,4 +648,16 @@
     <value>crwdns6555891:0crwdne6555891:0</value>
     <comment>For various page-specific checkboxes etc</comment>
   </data>
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>crwdns6556046:0[...loading...]crwdne6556046:0</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>crwdns6556047:0[...]crwdne6556047:0</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>crwdns6556048:0crwdne6556048:0</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>crwdns6556049:0crwdne6556049:0</value>
+  </data>
 </root>

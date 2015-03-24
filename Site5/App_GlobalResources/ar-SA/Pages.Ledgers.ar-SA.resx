@@ -129,18 +129,12 @@
   <data name="BalanceSheet_AccountName" xml:space="preserve">
     <value>الحساب</value>
   </data>
-  <data name="BalanceSheet_Assets" xml:space="preserve">
-    <value>الأصول</value>
-  </data>
   <data name="BalanceSheet_ContentHeader" xml:space="preserve">
     <value>الميزانية العمومية ل {0}،</value>
     <comment>{0} is the organization name. The year follows immediately, so keep ending comma.</comment>
   </data>
   <data name="BalanceSheet_Current" xml:space="preserve">
     <value>الحالي</value>
-  </data>
-  <data name="BalanceSheet_Debt" xml:space="preserve">
-    <value>الخصوم</value>
   </data>
   <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
     <value>الميزانية العمومية</value>
@@ -179,15 +173,9 @@
     <value>حساب الأرباح والخسائر لـ {0} عن</value>
     <comment>The {0} is the organization name. The year number follows this string.</comment>
   </data>
-  <data name="ProfitLossStatement_Costs" xml:space="preserve">
-    <value>النفقات</value>
-  </data>
   <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
     <value>ارباح/خسائر</value>
     <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
-  </data>
-  <data name="ProfitLossStatement_Income" xml:space="preserve">
-    <value>الإيرادات</value>
   </data>
   <data name="ProfitLossStatement_Info" xml:space="preserve">
     <value>يقدم بيان الأرباح والخسائر لمحة عامة عن الإيرادات والنفقات والتي يتم تصنيفها حسب الميزانيات أو نوعية التكلفة/ الإيراد. ويعطي المجموع الكلي للإيرادات والنفقات النتائج السنوية. وقد ترغب في الاطلاع على  &lt;a href="BalanceSheet.aspx"&gt; الميزانية العمومة &lt;/a&gt; والتي تستعرض الأصول والمديونيات.</value>
@@ -197,18 +185,6 @@
   </data>
   <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
     <value>بيان الأرباح والخسائر</value>
-  </data>
-  <data name="ProfitLossStatement_Q1" xml:space="preserve">
-    <value>الربع 1</value>
-  </data>
-  <data name="ProfitLossStatement_Q2" xml:space="preserve">
-    <value>الربع 2</value>
-  </data>
-  <data name="ProfitLossStatement_Q3" xml:space="preserve">
-    <value>الربع 3</value>
-  </data>
-  <data name="ProfitLossStatement_Q4" xml:space="preserve">
-    <value>الربع 4</value>
   </data>
   <data name="ProfitLossStatement_Results" xml:space="preserve">
     <value>النتائج</value>
@@ -694,10 +670,7 @@
   <data name="BalanceTransactions_Info" xml:space="preserve">
     <value>لا يمكن مطابقة بعض الحركات المالية التي تم استيرادها بشكل تلقائي مع السجلات المحاسبية الحالية. هذا ما يتطلب تدخلك لتقوم بمطابقة هذه الحركات بشكل يدوي لموازنتها (عند اكتمال جزء واحد من الحركة، كأن يتم تسجيل الأموال المرسلة إلى المنظمة ولكن دون تحديد الغرض من هذه الأموال، فعندها يقال بأن الحركة مختلة أو "غير موزونة").</value>
   </data>
-  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
-    <value>موازنة/مطابقة الحركة # &lt;span id="spanModalTransactionId"&gt; 67890&lt;/span&gt;</value>
-    <comment>The span text is replaced runtime.</comment>
-  </data>
+  
   <data name="BalanceTransactions_PageTitle" xml:space="preserve">
     <value>موازنة و مطابقة الحركات</value>
   </data>
@@ -753,4 +726,5 @@
     <value>المبلغ خلال فترة التجاوز 10%</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
+  
 </root>
