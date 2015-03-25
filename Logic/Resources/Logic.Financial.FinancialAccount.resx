@@ -166,7 +166,7 @@
     <value>Conferences</value>
   </data>
   <data name="Cost_ForexLosses" xml:space="preserve">
-    <value>Forex Holding Losses</value>
+    <value>Forex Capital Losses</value>
     <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
   </data>
   <data name="Cost_IctInfrastructure" xml:space="preserve">
@@ -192,6 +192,9 @@
   </data>
   <data name="Cost_StaffSalaries" xml:space="preserve">
     <value>Staff Salaries</value>
+  </data>
+  <data name="Cost_Taxes" xml:space="preserve">
+    <value>Taxes</value>
   </data>
   <data name="Cost_Transportation" xml:space="preserve">
     <value>Transportation</value>
@@ -232,7 +235,7 @@
     <value>Donations</value>
   </data>
   <data name="Income_ForexGains" xml:space="preserve">
-    <value>Forex Holding Gains</value>
+    <value>Forex Capital Gains</value>
     <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
   </data>
   <data name="Income_InterestGains" xml:space="preserve">
@@ -243,5 +246,8 @@
   </data>
   <data name="Income_Sales" xml:space="preserve">
     <value>Sales</value>
+  </data>
+  <data name="Income_SubsidiesGrants" xml:space="preserve">
+    <value>Subsidies and Grants</value>
   </data>
 </root>

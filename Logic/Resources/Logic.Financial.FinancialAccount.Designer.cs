@@ -196,7 +196,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forex Holding Losses.
+        ///   Looks up a localized string similar to Forex Capital Losses.
         /// </summary>
         internal static string Cost_ForexLosses {
             get {
@@ -273,6 +273,15 @@ namespace Swarmops.Logic.Resources {
         internal static string Cost_StaffSalaries {
             get {
                 return ResourceManager.GetString("Cost_StaffSalaries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taxes.
+        /// </summary>
+        internal static string Cost_Taxes {
+            get {
+                return ResourceManager.GetString("Cost_Taxes", resourceCulture);
             }
         }
         
@@ -385,7 +394,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forex Holding Gains.
+        ///   Looks up a localized string similar to Forex Capital Gains.
         /// </summary>
         internal static string Income_ForexGains {
             get {
@@ -417,6 +426,15 @@ namespace Swarmops.Logic.Resources {
         internal static string Income_Sales {
             get {
                 return ResourceManager.GetString("Income_Sales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subsidies and Grants.
+        /// </summary>
+        internal static string Income_SubsidiesGrants {
+            get {
+                return ResourceManager.GetString("Income_SubsidiesGrants", resourceCulture);
             }
         }
     }
