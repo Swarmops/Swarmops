@@ -87,6 +87,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Logic.Financial.FinancialTransactionTagSetTypesStock.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Logic.Financial.Payout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Financial.Payout.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Logic.Swarm.DashboardTodos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -487,6 +492,10 @@
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.ru-RU.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.sv-SE.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Financial.Payout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.af-ZA.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.ar-SA.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.da-DK.resx" />

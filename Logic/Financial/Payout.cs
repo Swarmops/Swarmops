@@ -668,6 +668,100 @@ namespace Swarmops.Logic.Financial
             Open = false;
         }
 
+
+        /// <summary>
+        /// Gets a (localized) specification of what this payout is for. Will return a type and identity or identities. Does not include the recipient name.
+        /// </summary>
+        public string Specification
+        {
+            get
+            {
+                if (this.DependentCashAdvancesPayout.Count > 0)
+                {
+                    if (this.DependentCashAdvancesPayout.Count > 1)
+                    {
+                        return String.Format (Resources.Logic_Financial_Payout.Payout_CashAdvanceIdentities,
+                            Formatting.GenerateRangeString (this.DependentCashAdvancesPayout.Identities));
+                    }
+
+                    return String.Format(Resources.Logic_Financial_Payout.Payout_CashAdvanceIdentity,
+                        this.DependentCashAdvancesPayout [0].Identity);
+                }
+
+                if (this.DependentExpenseClaims.Count > 0)
+                {
+                    if (this.DependentExpenseClaims.Count > 1)
+                    {
+                        if (this.DependentCashAdvancesPayback.Count > 0)
+                        {
+                            if (this.DependentCashAdvancesPayback.Count > 1)
+                            {
+                                // multiple expenses, multiple paybacks
+
+                                return String.Format(Resources.Logic_Financial_Payout.Payout_ExpenseClaimIdentitiesLessAdvanceIdentities,
+                                     Formatting.GenerateRangeString(this.DependentExpenseClaims.Identities),
+                                     Formatting.GenerateRangeString(this.DependentCashAdvancesPayback.Identities));
+                            }
+
+                            // multiple expenses, single payback
+
+                            return String.Format(Resources.Logic_Financial_Payout.Payout_ExpenseClaimIdentitiesLessAdvanceIdentities,
+                                Formatting.GenerateRangeString(this.DependentExpenseClaims.Identities),
+                                this.DependentCashAdvancesPayback[0].Identity);
+                        }
+
+                        // multiple expenses, no payback
+
+                        return String.Format (Resources.Logic_Financial_Payout.Payout_ExpenseClaimIdentities,
+                            Formatting.GenerateRangeString (this.DependentExpenseClaims.Identities));
+                    }
+
+                    // single expense, no payback
+
+                    return String.Format (Resources.Logic_Financial_Payout.Payout_ExpenseClaimIdentity,
+                        this.DependentExpenseClaims[0].Identity);
+                }
+
+                if (this.DependentInvoices.Count > 0)
+                {
+                    if (this.DependentInvoices.Count > 1)
+                    {
+                        return @"NO SUPPORT FOR MULTIPLE INVOICES - FIX IN PAYOUT.SPECIFICATION";
+                    }
+
+                    return String.Format (Resources.Logic_Financial_Payout.Payout_InboundInvoiceIdentity,
+                        this.DependentInvoices[0].Identity);
+                }
+
+                if (this.DependentSalariesNet.Count > 0)
+                {
+                    if (this.DependentSalariesNet.Count > 1)
+                    {
+                        return @"NO SUPPORT FOR MULTIPLE NET SALARIES - FIX IN PAYOUT.SPECIFICATION";
+                    }
+
+                    return String.Format (Resources.Logic_Financial_Payout.Payout_SalaryIdentityMonth,
+                        this.DependentSalariesNet[0].Identity,
+                        this.DependentSalariesNet[0].PayoutDate);
+                }
+
+                if (this.DependentSalariesTax.Count > 0)
+                {
+                    if (this.DependentSalariesTax.Count > 1)
+                    {
+                        // tax for multiple salaries
+
+                        return String.Format (Resources.Logic_Financial_Payout.Payout_SalaryTaxIdentitiesMonth,
+                            Formatting.GenerateRangeString (this.DependentSalariesTax.Identities),
+                            this.DependentSalariesTax[0].PayoutDate); // assumes all salaries on same date
+                    }
+                }
+
+                return @"UNSUPPORTED CASE - FIX IN PAYOUT.SPECIFICATION";
+
+            }
+        }
+
         #region Implementation of ISummable
 
         public long SumCents

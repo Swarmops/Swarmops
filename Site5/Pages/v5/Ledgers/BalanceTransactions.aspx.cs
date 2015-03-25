@@ -112,8 +112,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             {
                 if (payout.AmountCents == -matchAmount)
                 {
-                    string description = String.Format (Resources.Pages.Ledgers.BalanceTransaction_PayoutMatch, payout.Identity,
-                        payout.ExpectedTransactionDate, payout.Recipient, payout.Organization.Currency.DisplayCode, payout.AmountCents / 100.0);
+                    string description = String.Format (Resources.Pages.Ledgers.BalanceTransactions_PayoutMatch, payout.Identity,
+                        payout.ExpectedTransactionDate, payout.Recipient, payout.Organization.Currency.DisplayCode, payout.AmountCents / 100.0,
+                        payout.Specification);
 
                     result.Add(new DropdownOption
                     {
