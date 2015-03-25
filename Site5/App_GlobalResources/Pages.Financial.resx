@@ -173,6 +173,9 @@
     <value>Invoice #{0:N0} from {1} was UN-attested.  It will not be paid unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
+    <value>There is not enough funds in the budget to attest this cost.</value>
+  </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>Attest Costs</value>
   </data>

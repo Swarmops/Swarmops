@@ -40,6 +40,8 @@
                 <Swarmops5:AjaxTextBox runat="server" ID="TextExternalUrl" Cookie="ExtUrl" OnChange="onUrlChange" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="https://swarmops.example.com/" />&#8203;<br/>
                 <Swarmops5:AjaxTextBox runat="server" ID="TextAdminSender" Cookie="AdminSender" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="Swarmops Admin" />&#8203;<br/>
                 <Swarmops5:AjaxTextBox runat="server" ID="TextAdminAddress" Cookie="AdminAddress" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="swarmops-admin@example.com" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextWebsocketPortServer" Cookie="WebsocketServer" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="12172" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextWebsocketPortClient" Cookie="WebsocketClient" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="12172" />&#8203;<br/>
             </div>
             <div class="entryLabels">
                 <asp:Label ID="LabelSmtpServer" runat="server" /><br/>
@@ -47,6 +49,8 @@
                 <asp:Label ID="LabelExternalUrl" runat="server" /><br />
                 <asp:Label ID="LabelAdminSender" runat="server" /><br />
                 <asp:Label ID="LabelAdminAddress" runat="server" /><br />
+                <asp:Label ID="LabelWebsocketPortServer" runat="server" /><br />
+                <asp:Label ID="LabelWebsocketPortClient" runat="server" /><br />
             </div>
         </div>
     </div>

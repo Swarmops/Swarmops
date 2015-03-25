@@ -36,6 +36,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 this.TextInstallationName.Text = SystemSettings.InstallationName;
                 this.TextAdminAddress.Text = SystemSettings.AdminNotificationAddress;
                 this.TextAdminSender.Text = SystemSettings.AdminNotificationSender;
+                this.TextWebsocketPortServer.Text = SystemSettings.WebsocketPortServer.ToString(CultureInfo.InvariantCulture);
+                this.TextWebsocketPortClient.Text = SystemSettings.WebsocketPortClient.ToString(CultureInfo.InvariantCulture);
 
                 Localize();
             }
@@ -132,6 +134,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelInstallationName.Text = Resources.Pages.Admin.SystemSettings_InstallationName;
             this.LabelAdminAddress.Text = Resources.Pages.Admin.SystemSettings_AdminAddress;
             this.LabelAdminSender.Text = Resources.Pages.Admin.SystemSettings_AdminSender;
+            this.LabelWebsocketPortServer.Text = Resources.Pages.Admin.SystemSettings_WebsocketPortServer;
+            this.LabelWebsocketPortClient.Text = Resources.Pages.Admin.SystemSettings_WebsocketPortClient;
         }
 
         [WebMethod]
@@ -222,6 +226,45 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     result.NewData = newValue.Trim();
                     result.ResultCode = AjaxTextBox.CodeSuccess;
                     SystemSettings.AdminNotificationAddress = result.NewData;
+                    break;
+
+                case "WebsocketServer":
+                    try
+                    {
+                        int newPort = Int32.Parse(newValue);
+                        if (newPort < 1 || newPort > 32767)
+                        {
+                            throw new ArgumentException();
+                        }
+                        result.ResultCode = AjaxTextBox.CodeSuccess;
+                        result.NewData = newValue.Trim();
+                        SystemSettings.WebsocketPortServer = newPort;
+                    }
+                    catch (Exception)
+                    {
+                        result.ResultCode = AjaxTextBox.CodeInvalid;
+                        result.NewData = SystemSettings.WebsocketPortServer.ToString(CultureInfo.InvariantCulture);
+                    }
+                    break;
+
+                case "WebsocketClient":
+                    try
+                    {
+                        int newPort = Int32.Parse(newValue);
+                        if (newPort < 1 || newPort > 32767)
+                        {
+                            throw new ArgumentException();
+                        }
+
+                        result.ResultCode = AjaxTextBox.CodeSuccess;
+                        result.NewData = newValue.Trim();
+                        SystemSettings.WebsocketPortClient = newPort;
+                    }
+                    catch (Exception)
+                    {
+                        result.ResultCode = AjaxTextBox.CodeInvalid;
+                        result.NewData = SystemSettings.WebsocketPortClient.ToString(CultureInfo.InvariantCulture);
+                    }
                     break;
 
                 default:

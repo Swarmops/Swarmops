@@ -660,4 +660,7 @@
   <data name="Global_Working" xml:space="preserve">
     <value>Working...</value>
   </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>Unable to connect WebSocket. Live updates will not be available.</value>
+  </data>
 </root>

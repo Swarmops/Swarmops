@@ -67,6 +67,18 @@ namespace Swarmops.Logic.Support
             }
         }
 
+        static public int WebsocketPortServer
+        {
+            get { return Int32.Parse(GetDefaultedPersistedKey("WebsocketPortServer", "12172")); }
+            set { Persistence.Key["WebsocketPortServer"] = value.ToString(CultureInfo.InvariantCulture); }
+        }
+
+        static public int WebsocketPortClient
+        {
+            get { return Int32.Parse(GetDefaultedPersistedKey("WebsocketPortClient", "12172")); }
+            set { Persistence.Key["WebsocketPortClient"] = value.ToString(CultureInfo.InvariantCulture); }
+        }
+
         static public string ExternalUrl
         {
             get
