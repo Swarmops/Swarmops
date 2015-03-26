@@ -66,10 +66,25 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.9.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Tpl.Dataflow.4.5.9\lib\net45\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
+    <Reference Include="vtortola.WebSockets, Version=2.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\vtortola.WebSocketListener.2.1.5.0\lib\net45\vtortola.WebSockets.dll</HintPath>
+    </Reference>
+    <Reference Include="vtortola.WebSockets.Deflate">
+      <HintPath>..\packages\vtortola.WebSocketListener.2.1.5.0\lib\net45\vtortola.WebSockets.Deflate.dll</HintPath>
+    </Reference>
+    <Reference Include="vtortola.WebSockets.Rfc6455, Version=2.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\vtortola.WebSocketListener.2.1.5.0\lib\net45\vtortola.WebSockets.Rfc6455.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Logic.Financial.FinancialAccount.Designer.cs">
@@ -588,6 +603,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\SourceResourceFiles.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>
