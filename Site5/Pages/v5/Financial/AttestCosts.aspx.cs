@@ -48,18 +48,20 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
-        private Dictionary<int, bool> GetAttestationRights()
+        static private Dictionary<int, bool> GetAttestationRights()
         {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
             // Right now, this function is quite primitive. At some point in the future, it needs to take into
             // account that a budget may have several attesters. Right now, it just loops over all accounts and
             // checks the owner.
 
             Dictionary<int, bool> result = new Dictionary<int, bool>();
-            FinancialAccounts accounts = FinancialAccounts.ForOrganization (CurrentOrganization);
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization (authData.CurrentOrganization);
 
             foreach (FinancialAccount account in accounts)
             {
-                if (account.OwnerPersonId == CurrentUser.Identity)
+                if (account.OwnerPersonId == authData.CurrentUser.Identity)
                 {
                     result[account.Identity] = true;
                 }
@@ -82,6 +84,29 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
         }
 
+        [WebMethod]
+        public static BudgetRemainder[] GetRemainingBudgets()
+        {
+            Dictionary<int, bool> accountLookup = GetAttestationRights();
+            List<BudgetRemainder> result = new List<BudgetRemainder>();
+            int currentYear = DateTime.UtcNow.Year;
+
+            foreach (int accountId in accountLookup.Keys)
+            {
+                result.Add (new BudgetRemainder { AccountId = accountId, Remaining = FinancialAccount.FromIdentity (accountId).GetBudgetCents (currentYear)/100.0 });
+            }
+
+            return result.ToArray();
+        }
+
+        public class BudgetRemainder
+        {
+            public int AccountId { get; set; }
+            public double Remaining { get; set; }
+        }
+        
+        
+        
         [WebMethod]
         public static string Attest (string identifier)
         {

@@ -17,6 +17,7 @@
         preload([
             '/Images/Abstract/ajaxloader-medium.gif',
             '/Images/Icons/iconshock-balloon-yes-16px-hot.png',
+            '/Images/Icons/iconshock-balloon-yes-16px-disabled.png',
             '/Images/Icons/iconshock-balloon-no-16px-hot.png',
             '/Images/Icons/iconshock-greentick-16px.png',
             '/Images/Icons/iconshock-redcross-16px.png',
@@ -139,7 +140,17 @@
                     }
                 }
             );
+
+            // we're still in document.ready
+
+            SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
+                data.forEach(function(accountData, dummy1, dummy2) {
+                    budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
+                });
+            });
         });
+
+        var budgetRemainingLookup = {};
 
     </script>
     
