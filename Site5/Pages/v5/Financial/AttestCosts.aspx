@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="AttestCosts.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Financial.AttestCosts" %>
-<%@ Register src="~/Controls/v5/UI/ExternalScripts.ascx" tagname="ExternalScripts" tagprefix="Swarmops5" %>
+<%@ Register src="~/Controls/v5/Base/ModalDialog.ascx" tagname="ModalDialog" tagprefix="Swarmops5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
@@ -18,6 +18,7 @@
             '/Images/Abstract/ajaxloader-medium.gif',
             '/Images/Icons/iconshock-balloon-yes-16px-hot.png',
             '/Images/Icons/iconshock-balloon-yes-16px-disabled.png',
+            '/Images/Icons/iconshock-balloon-yes-16px-disabled-hot.png',
             '/Images/Icons/iconshock-balloon-no-16px-hot.png',
             '/Images/Icons/iconshock-greentick-16px.png',
             '/Images/Icons/iconshock-redcross-16px.png',
@@ -27,80 +28,135 @@
         $(document).ready(function () {
             $('#TableAttestableCosts').datagrid(
                 {
+                    rowStyler: function (index, rowData) {
+                        if (rowData.itemId != null) {
+                            return { class: "row" + rowData.itemId.replace(/\|/g, '') };
+                        }
+
+                        return '';
+                    },
+
                     onLoadSuccess: function () {
-                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled.png"); // initialize as disabled until budgets known
                         $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-greentick-16px.png");
-                        $(".LocalIconApproved, .LocalIconDenied").css("display", "none");
+                        $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
+                        $(".LocalIconApproved, .LocalIconDenied, .LocalIconUndo").css("display", "none");
                         $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-16px.png");
-                        $(".LocalIconApproval, .LocalIconApproved, .LocalIconDenial").css("cursor", "pointer");
+                        $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
 
                         $(".LocalIconApproval").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-hot.png");
+                                if ($(this).hasClass("LocalFundsInsufficient")) {
+                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled-hot.png");
+                                } else {
+                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-hot.png");
+                                }
                             }
                         });
 
                         $(".LocalIconApproval").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                if ($(this).hasClass("LocalFundsInsufficient")) {
+                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled.png");
+                                } else {
+                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                }
                             }
                         });
 
-                        $(".LocalIconApproved").mouseover(function () {
+                        $(".LocalIconUndo").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/undo-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px-hot.png");
                             }
                         });
 
-                        $(".LocalIconApproved").mouseout(function () {
+                        $(".LocalIconUndo").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
                             }
                         });
 
                         $(".LocalIconApproval").click(function () {
+                            if ($(this).hasClass("LocalFundsInsufficient")) {
+                                alertify.error (decodeURIComponent('<asp:Literal id="LiteralErrorInsufficientBudget" runat="server" />'));
+                                return;
+                            }
+
                             if ($(this).attr("rel") != "loading") {
                                 $(this).attr("rel", "loading");
                                 $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
                                 $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
-                                var thisIcon = this;
                                 $.ajax({
                                     type: "POST",
                                     url: "/Pages/v5/Financial/AttestCosts.aspx/Attest",
                                     data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
-                                    success: function (msg) {
-                                        $(thisIcon).css("display", "none");
-                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
-                                        $(thisIcon).attr("rel", "active");
-                                        $("#IconApproved" + $(thisIcon).attr("baseid")).fadeIn(100);
-                                        alertify.success(unescape(msg.d));
-                                    }
+                                    success: $.proxy(function (msg) {
+                                        var baseid = $(this).attr("baseid");
+                                        if (msg.d.Success) {
+                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                            $(this).attr("rel", "active");
+                                            $(this).hide();
+                                            $("#IconApproved" + baseid).fadeIn(100);
+                                            $("#IconDenial" + baseid).css('opacity', 1.0).hide();
+                                            $("#IconUndo" + baseid).fadeIn(100);
+                                            $('.row' + baseid).animate({ color: "#888" }, 400);
+                                            alertify.success(msg.d.DisplayMessage);
+
+                                            var accountId = $(this).attr("accountid");
+                                            var funds = parseFloat($(this).attr("amount"));
+                                            budgetRemainingLookup[accountId] -= funds;
+                                            setAttestability();
+                                            recheckBudgets(); // will double-check budgets against server
+                                        } else {
+                                            // failure, likely from attesting too quickly and overrunning budget
+                                            $(this).attr("rel", "");
+                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled.png");
+                                            $("#IconDenial" + baseid).css('opacity', 1.0).css("cursor", "pointer");
+                                            alertify.error(msg.d.DisplayMessage);
+
+                                            recheckBudgets();
+                                        }
+                                    }, this)
                                 });
                             }
                         });
 
-                        $(".LocalIconApproved").click(function () {
+                        $(".LocalIconUndo").click(function () {
                             if ($(this).attr("rel") != "loading") {
                                 $(this).attr("rel", "loading");
                                 $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
-                                var thisIcon = this;
+                                $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
                                 $.ajax({
                                     type: "POST",
                                     url: "/Pages/v5/Financial/AttestCosts.aspx/Deattest",
                                     data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
-                                    success: function (msg) {
-                                        $(thisIcon).css("display", "none");
-                                        $(thisIcon).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
-                                        $(thisIcon).attr("rel", "");
-                                        $("#IconApproval" + $(thisIcon).attr("baseid")).fadeIn(100);
-                                        $("#" + $(thisIcon).attr("rel"), "");
-                                        alertify.log(unescape(msg.d).replace('+', ' '));
-                                        $("#IconDenial" + $(thisIcon).attr("baseid")).fadeTo(100, 1).css("cursor", "pointer");
-                                    }
+                                    success: $.proxy(function (msg) {
+                                        if (msg.d.Success) {
+                                            var baseid = $(this).attr("baseid");
+                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
+                                            $(this).attr("rel", "");
+                                            $(this).hide();
+                                            $("#IconApproved" + baseid).css('opacity', 1.0).hide();
+                                            $("#IconApproval" + baseid).fadeIn(100);
+                                            $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
+                                            $('.row' + baseid).animate({ color: "#000" }, 100);
+                                            alertify.log(msg.d.DisplayMessage);
+
+                                            var accountId = $("#IconApproval" + baseid).attr("accountid");
+                                            var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
+                                            budgetRemainingLookup[accountId] += funds;
+                                            setAttestability();
+                                            recheckBudgets(); // will double-check budgets against server
+                                        } else {
+                                            $(this).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
+                                            alertify.error(msg.d.DisplayMessage);
+                                            // TODO: Add alert box?
+                                        }
+                                    }, this)
                                 });
 
                             }
@@ -137,6 +193,15 @@
                             'type': 'image',
                             'opacity': true
                         });
+
+
+                        // Check if budgets have been fetched, and if so, initialize attestability
+
+                        if (budgetRemainingLookup.budgetsLoaded == true) {
+                            setAttestability();
+                        }
+
+                        budgetRemainingLookup.rowsLoaded = true;
                     }
                 }
             );
@@ -147,8 +212,51 @@
                 data.forEach(function(accountData, dummy1, dummy2) {
                     budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
                 });
+
+                if (budgetRemainingLookup.rowsLoaded == true) {
+                    setAttestability();
+                }
+
+                budgetRemainingLookup.budgetsLoaded = true;
             });
         });
+
+
+        function recheckBudgets() {
+            SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
+                data.forEach(function(accountData, dummy1, dummy2) {
+                    budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
+                });
+
+                setAttestability();
+            });
+        }
+
+
+        function setAttestability() {
+
+            $('.LocalIconApproval').each(function() {
+                var accountId = $(this).attr('accountid');
+                var amountRequested = $(this).attr('amount');
+
+                var fundsInBudget = budgetRemainingLookup[accountId];
+                if (fundsInBudget >= amountRequested) {
+                    $(this).removeClass("LocalFundsInsufficient");
+                    if ($(this).attr("rel") != "loading") {
+                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                    }
+                }
+                else if (!$(this).hasClass("LocalFundsInsufficient")) {
+                    $(this).addClass("LocalFundsInsufficient");
+                    if ($(this).attr("rel") != "loading") {
+                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled.png");
+                    }
+                }
+
+            });
+
+            budgetRemainingLookup.attestabilityInitialized = true;
+        }
 
         var budgetRemainingLookup = {};
 
@@ -178,6 +286,12 @@
         </thead>
     </table>
     
+    <Swarmops5:ModalDialog ID="DialogDeny" runat="server" >
+        <DialogCode>
+            
+        </DialogCode>
+    </Swarmops5:ModalDialog>
+
     <div style="display:none">
     <!-- a href links for FancyBox to trigger on -->
     

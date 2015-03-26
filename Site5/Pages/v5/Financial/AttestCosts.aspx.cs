@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.ServiceModel.Security;
 using System.Web;
 using System.Web.Services;
 using Resources;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
@@ -61,7 +63,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             foreach (FinancialAccount account in accounts)
             {
-                if (account.OwnerPersonId == authData.CurrentUser.Identity)
+                if (account.OwnerPersonId == authData.CurrentUser.Identity || 
+                    (account.OwnerPersonId == 0 && authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Administration))))
                 {
                     result[account.Identity] = true;
                 }
@@ -82,21 +85,122 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderDocs.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Docs;
             this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
+
+            this.LiteralErrorInsufficientBudget.Text =
+                System.Uri.EscapeDataString (Resources.Pages.Financial.AttestCosts_OutOfBudget);
         }
 
         [WebMethod]
         public static BudgetRemainder[] GetRemainingBudgets()
         {
             Dictionary<int, bool> accountLookup = GetAttestationRights();
+
+            if (accountLookup.Count == 0)
+            {
+                return new BudgetRemainder[0];
+            }
+
+            Organization organization = FinancialAccount.FromIdentity (accountLookup.Keys.First()).Organization;
+
             List<BudgetRemainder> result = new List<BudgetRemainder>();
             int currentYear = DateTime.UtcNow.Year;
+            Dictionary<int, Int64> budgetAdjustments = GetAccountingAdjustments (organization);
 
             foreach (int accountId in accountLookup.Keys)
             {
-                result.Add (new BudgetRemainder { AccountId = accountId, Remaining = FinancialAccount.FromIdentity (accountId).GetBudgetCents (currentYear)/100.0 });
+                FinancialAccount account = FinancialAccount.FromIdentity (accountId);
+                Int64 remaining = GetBudgetRemaining (account, currentYear);
+
+                if (budgetAdjustments.ContainsKey (accountId))
+                {
+                    remaining += budgetAdjustments[accountId];
+                }
+
+                result.Add (new BudgetRemainder { AccountId = accountId, Remaining = remaining/100.0 });
             }
 
             return result.ToArray();
+        }
+
+        private static Dictionary<int, Int64> GetAccountingAdjustments (Organization organization)
+        {
+            // This function returns a dictionary for the cents that are either accounted for but not attested,
+            // or attested but accounted for, to be used to understand how much is really left in budget
+
+            // Positive adjustment means more [cost] budget available, negative less [cost] budget available
+
+            Dictionary<int, Int64> result = new Dictionary<int, long>();
+
+            // Cash advances are accounted for when paid out. Make sure they count toward the budget when attested.
+
+            CashAdvances advances = CashAdvances.ForOrganization (organization);
+            foreach (CashAdvance advance in advances)
+            {
+                if (!result.ContainsKey (advance.BudgetId))
+                {
+                    result[advance.BudgetId] = 0;
+                }
+
+                if (advance.Attested)
+                {
+                    result[advance.BudgetId] -= advance.AmountCents;
+                }
+            }
+
+            // Expense claims, Inbound invoices, and Salaries are accounted for when filed. Make sure they DON'T
+            // count toward the budget while they are NOT attested.
+
+            ExpenseClaims claims = ExpenseClaims.ForOrganization (organization); // gets all open claims
+            foreach (ExpenseClaim claim in claims)
+            {
+                if (!result.ContainsKey(claim.BudgetId))
+                {
+                    result[claim.BudgetId] = 0;
+                }
+
+                if (!claim.Attested)
+                {
+                    result[claim.BudgetId] += claim.AmountCents;
+                }
+            }
+
+            InboundInvoices invoices = InboundInvoices.ForOrganization (organization);
+            foreach (InboundInvoice invoice in invoices)
+            {
+                if (!result.ContainsKey(invoice.BudgetId))
+                {
+                    result[invoice.BudgetId] = 0;
+                }
+
+                if (!invoice.Attested)
+                {
+                    result[invoice.BudgetId] += invoice.AmountCents;
+                }
+            }
+
+            Salaries salaries = Salaries.ForOrganization (organization);
+            foreach (Salary salary in salaries)
+            {
+                if (!result.ContainsKey(salary.PayrollItem.BudgetId))
+                {
+                    result[salary.PayrollItem.BudgetId] = 0;
+                }
+
+                if (!salary.Attested)
+                {
+                    result[salary.PayrollItem.BudgetId] += (salary.GrossSalaryCents + salary.AdditiveTaxCents);
+                }
+            }
+
+            return result;
+        }
+
+        private static Int64 GetBudgetRemaining (FinancialAccount account, int year)
+        {
+            Int64 deltaCentsYear = account.GetDeltaCents(new DateTime(year, 1, 1),
+                new DateTime(year + 1, 1, 1));
+            Int64 budgetYear = account.GetBudgetCents(year);
+            return -(budgetYear - deltaCentsYear);
         }
 
         public class BudgetRemainder
@@ -108,27 +212,23 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         
         
         [WebMethod]
-        public static string Attest (string identifier)
+        public static AttestOperationResult Attest (string identifier)
         {
             identifier = HttpUtility.UrlDecode (identifier);
 
-            string result = HandleAttestationDeattestation (identifier, AttestationMode.Attestation);
-
-            return HttpUtility.UrlEncode (result).Replace ("+", "%20");
+            return HandleAttestationDeattestation (identifier, AttestationMode.Attestation);
         }
 
         [WebMethod]
-        public static string Deattest (string identifier)
+        public static AttestOperationResult Deattest (string identifier)
         {
             identifier = HttpUtility.UrlDecode (identifier);
 
-            string result = HandleAttestationDeattestation (identifier, AttestationMode.Deattestation);
-
-            return HttpUtility.UrlEncode (result).Replace ("+", "%20");
+            return HandleAttestationDeattestation (identifier, AttestationMode.Deattestation);
         }
 
 
-        private static string HandleAttestationDeattestation (string identifier, AttestationMode mode)
+        private static AttestOperationResult HandleAttestationDeattestation (string identifier, AttestationMode mode)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
@@ -250,6 +350,23 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (mode == AttestationMode.Attestation)
             {
+                Int64 budgetRemaining = GetBudgetRemaining (attestableItem.Budget, DateTime.UtcNow.Year);
+                Dictionary<int, Int64> budgetAdjustments = GetAccountingAdjustments (authData.CurrentOrganization);
+
+                if (budgetAdjustments.ContainsKey (attestableItem.Budget.Identity))
+                {
+                    budgetRemaining += budgetAdjustments[attestableItem.Budget.Identity];
+                }
+
+                if (amountCents > budgetRemaining)
+                {
+                    return new AttestOperationResult
+                    {
+                        DisplayMessage = Resources.Pages.Financial.AttestCosts_OutOfBudget,
+                        Success = false
+                    };
+                }
+
                 attestableItem.Attest (authData.CurrentUser);
                 result = string.Format (attestedTemplate, itemId, beneficiary,
                     authData.CurrentOrganization.Currency.Code,
@@ -267,7 +384,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException ("Unknown Attestation Mode: " + mode);
             }
 
-            return result;
+            return new AttestOperationResult {DisplayMessage = result, Success = true};
         }
 
 
@@ -341,5 +458,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             public string BaseId { get; set; }
             public string Title { get; set; }
         }
+
+        public struct AttestOperationResult
+        {
+            public string DisplayMessage;
+            public bool Success;
+        }
+
     }
 }

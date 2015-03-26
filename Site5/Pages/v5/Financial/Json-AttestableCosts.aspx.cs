@@ -49,14 +49,15 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
                 "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
                 "\"dox\":\"" + (item.HasDox ? hasDoxString : "&nbsp;") + "\"," +
                 "\"actions\":\"<span style=\\\"position:relative;top:3px\\\">" +
-                "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
+                "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalFundsInsufficient\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
                 "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
                 "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
-                JsonSanitize (GetGlobalResourceObject ("Global", item.IdentityDisplay).ToString()),
+                "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
+                "<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
+                JsonSanitize(GetGlobalResourceObject("Global", item.IdentityDisplay).ToString()),
                 JsonSanitize (item.Beneficiary), JsonSanitize (TryLocalize (item.Description)),
                 JsonSanitize (item.BudgetName),
-                item.AmountRequestedCents/100.0, item.Identity);
+                item.AmountRequestedCents/100.0, item.Identity, item.Budget.Identity);
             result.Append ("},");
         }
 
