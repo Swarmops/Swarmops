@@ -7,7 +7,7 @@
     <ProjectGuid>{011D2EFB-77AB-4A13-A753-85C2E56C961D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tests</RootNamespace>
+    <RootNamespace>Swarmops.Tests</RootNamespace>
     <AssemblyName>Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DummyTest.cs" />
+    <Compile Include="FindConflictingReferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
