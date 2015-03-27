@@ -44,7 +44,7 @@
 
                     onLoadSuccess: function () {
                         $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png"); // initialize as disabled until budgets known
-                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png");
+                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
                         $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
                         $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                         $(".LocalIconApproved.LocalNew, .LocalIconUndo.LocalNew, .LocalIconDenied.LocalNew, .LocalIconApproval.LocalPreviouslyAttested, .LocalIconDenial.LocalPreviouslyAttested, .LocalIconDenied.LocalPreviouslyAttested").css("display", "none");
@@ -123,7 +123,7 @@
                                             $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                                             $(this).attr("rel", "active");
                                             $(this).hide();
-                                            $("#IconApproved" + baseid).fadeIn(100);
+                                            $("#IconApproved" + baseid).fadeTo(250, 0.5);
                                             $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
                                             $("#IconUndo" + baseid).fadeIn(100);
                                             $('.row' + baseid).animate({ color: "#AAA" }, 400);
@@ -165,7 +165,7 @@
                                             $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                                             $(this).attr("rel", "");
                                             $(this).hide();
-                                            $("#IconApproved" + baseid).finish().css("opacity", 1.0).css("display", "none");
+                                            $("#IconApproved" + baseid).finish().css("opacity", 0.5).css("display", "none");
                                             $("#IconApproval" + baseid).fadeIn(100);
                                             $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
                                             $('.row' + baseid).animate({ color: "#000" }, 100);
