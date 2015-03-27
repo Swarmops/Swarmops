@@ -259,11 +259,29 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Staff Benefits.
+        /// </summary>
+        internal static string Cost_StaffBenefits {
+            get {
+                return ResourceManager.GetString("Cost_StaffBenefits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Staff Expenses.
         /// </summary>
         internal static string Cost_StaffExpenses {
             get {
                 return ResourceManager.GetString("Cost_StaffExpenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staff Per-Diem.
+        /// </summary>
+        internal static string Cost_StaffPerDiem {
+            get {
+                return ResourceManager.GetString("Cost_StaffPerDiem", resourceCulture);
             }
         }
         

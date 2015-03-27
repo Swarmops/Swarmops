@@ -187,8 +187,16 @@
   <data name="Cost_Staff" xml:space="preserve">
     <value>Staff</value>
   </data>
+  <data name="Cost_StaffBenefits" xml:space="preserve">
+    <value>Staff Benefits</value>
+    <comment>Non-compensation benefits (car, phone, etc). Usually taxable.</comment>
+  </data>
   <data name="Cost_StaffExpenses" xml:space="preserve">
     <value>Staff Expenses</value>
+  </data>
+  <data name="Cost_StaffPerDiem" xml:space="preserve">
+    <value>Staff Per-Diem</value>
+    <comment>As in "extra travel compensation"</comment>
   </data>
   <data name="Cost_StaffSalaries" xml:space="preserve">
     <value>Staff Salaries</value>
