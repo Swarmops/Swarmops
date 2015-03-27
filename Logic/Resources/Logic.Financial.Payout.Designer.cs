@@ -79,7 +79,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cash Advance #{0}.
+        ///   Looks up a localized string similar to Cash Advance #{0:N0}.
         /// </summary>
         internal static string Payout_CashAdvanceIdentity {
             get {

@@ -202,11 +202,6 @@
                             }
                         });
 
-
-                        $(".LocalIconDenial").click(function () {
-                            alert('Denying attestation is not yet implemented, but you can just leave the unwanted cost here until it is.');
-                        });
-
                         $(".LocalViewDox").click(function () {
                             $("a.FancyBox_Gallery[rel='" + $(this).attr("baseid") + "']").first().click();
                         });

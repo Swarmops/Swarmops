@@ -124,7 +124,7 @@
     <value>Cash Advances {0} for {1}</value>
   </data>
   <data name="Payout_CashAdvanceIdentity" xml:space="preserve">
-    <value>Cash Advance #{0}</value>
+    <value>Cash Advance #{0:N0}</value>
   </data>
   <data name="Payout_CashAdvanceIdentityRecipient" xml:space="preserve">
     <value>Cash Advance #{0:N0} for {1}</value>
