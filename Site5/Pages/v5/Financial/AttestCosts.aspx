@@ -103,7 +103,7 @@
                                             $(this).attr("rel", "active");
                                             $(this).hide();
                                             $("#IconApproved" + baseid).fadeIn(100);
-                                            $("#IconDenial" + baseid).css('opacity', 1.0).hide();
+                                            $("#IconDenial" + baseid).css("display", "none").css("opacity", 1.0);
                                             $("#IconUndo" + baseid).fadeIn(100);
                                             $('.row' + baseid).animate({ color: "#AAA" }, 400);
                                             alertify.success(msg.d.DisplayMessage);
@@ -144,7 +144,7 @@
                                             $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
                                             $(this).attr("rel", "");
                                             $(this).hide();
-                                            $("#IconApproved" + baseid).css('opacity', 1.0).hide();
+                                            $("#IconApproved" + baseid).css("opacity", 1.0).css("display", "none");
                                             $("#IconApproval" + baseid).fadeIn(100);
                                             $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
                                             $('.row' + baseid).animate({ color: "#000" }, 100);
