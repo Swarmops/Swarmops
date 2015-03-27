@@ -11,6 +11,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 {
     private Dictionary<int, bool> _attestationRights;
     private AttestableItems _items;
+    private AttestableItems _attestedItems;
 
     protected void Page_Load (object sender, EventArgs e)
     {
@@ -18,6 +19,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
         this._attestationRights = GetAttestationRights();
         this._items = new AttestableItems();
+        this._attestedItems = new AttestableItems();
 
         PopulateCashAdvances();
         PopulateExpenses();
@@ -44,24 +46,43 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
         foreach (AttestableItem item in this._items)
         {
-            result.Append ("{");
-            result.AppendFormat (
+            result.Append("{");
+            result.AppendFormat(
                 "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
                 "\"dox\":\"" + (item.HasDox ? hasDoxString : "&nbsp;") + "\"," +
                 "\"actions\":\"<span style=\\\"position:relative;top:3px\\\">" +
-                "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalFundsInsufficient\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
-                "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
+                "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalNew LocalFundsInsufficient\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
+                "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
+                "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
+                "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
+                "<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
                 JsonSanitize(GetGlobalResourceObject("Global", item.IdentityDisplay).ToString()),
-                JsonSanitize (item.Beneficiary), JsonSanitize (TryLocalize (item.Description)),
-                JsonSanitize (item.BudgetName),
-                item.AmountRequestedCents/100.0, item.Identity, item.Budget.Identity);
-            result.Append ("},");
+                JsonSanitize(item.Beneficiary), JsonSanitize(TryLocalize(item.Description)),
+                JsonSanitize(item.BudgetName),
+                item.AmountRequestedCents / 100.0, item.Identity, item.Budget.Identity);
+            result.Append("},");
         }
 
-        result.Remove (result.Length - 1, 1); // remove last comma
+        foreach (AttestableItem item in this._attestedItems)
+        {
+            result.Append("{");
+            result.AppendFormat(
+                "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"previous\":\"yes\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
+                "\"dox\":\"" + (item.HasDox ? hasDoxString : "&nbsp;") + "\"," +
+                "\"actions\":\"<span style=\\\"position:relative;top:3px\\\">" +
+                "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalFundsInsufficient LocalPreviouslyAttested\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
+                "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
+                "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
+                "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
+                "<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
+                JsonSanitize(GetGlobalResourceObject("Global", item.IdentityDisplay).ToString()),
+                JsonSanitize(item.Beneficiary), JsonSanitize(TryLocalize(item.Description)),
+                JsonSanitize(item.BudgetName),
+                item.AmountRequestedCents / 100.0, item.Identity, item.Budget.Identity);
+            result.Append("},");
+        }
+
+        result.Remove(result.Length - 1, 1); // remove last comma
 
         result.Append ("]}");
 
@@ -92,16 +113,26 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     private void PopulateCashAdvances()
     {
-        CashAdvances advances = CashAdvances.ForOrganization (CurrentOrganization).WhereUnattested;
+        CashAdvances advances = CashAdvances.ForOrganization (CurrentOrganization);
 
         foreach (CashAdvance advance in advances)
         {
             if (this._attestationRights.ContainsKey (advance.BudgetId) ||
                 advance.Budget.OwnerPersonId == Person.NobodyId)
             {
-                this._items.Add (new AttestableItem ("A" + advance.Identity.ToString (CultureInfo.InvariantCulture),
+                AttestableItem item = new AttestableItem (
+                    "A" + advance.Identity.ToString (CultureInfo.InvariantCulture),
                     advance.Person.Name, advance.AmountCents, advance.Budget,
-                    advance.Description, "Financial_CashAdvance", false, advance));
+                    advance.Description, "Financial_CashAdvance", false, advance);
+
+                if (advance.Attested)
+                {
+                    this._attestedItems.Add (item);
+                }
+                else
+                {
+                    this._items.Add (item);
+                }
             }
         }
     }
@@ -109,7 +140,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     private void PopulateExpenses()
     {
-        ExpenseClaims expenses = ExpenseClaims.ForOrganization (CurrentOrganization).WhereUnattested;
+        ExpenseClaims expenses = ExpenseClaims.ForOrganization (CurrentOrganization);
 
         foreach (ExpenseClaim expenseClaim in expenses)
         {
@@ -119,10 +150,19 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
                 Documents dox = expenseClaim.Documents;
                 bool hasDox = (dox.Count > 0 ? true : false);
 
-                this._items.Add (new AttestableItem (
+                AttestableItem item = new AttestableItem (
                     "E" + expenseClaim.Identity.ToString (CultureInfo.InvariantCulture),
                     expenseClaim.ClaimerCanonical, expenseClaim.AmountCents, expenseClaim.Budget,
-                    expenseClaim.Description, "Financial_ExpenseClaim", hasDox, expenseClaim));
+                    expenseClaim.Description, "Financial_ExpenseClaim", hasDox, expenseClaim);
+
+                if (expenseClaim.Attested)
+                {
+                    this._attestedItems.Add (item);
+                }
+                else
+                {
+                    this._items.Add (item);
+                }
             }
         }
     }
@@ -130,7 +170,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 
     private void PopulateInboundInvoices()
     {
-        InboundInvoices invoices = InboundInvoices.ForOrganization (CurrentOrganization).WhereUnattested;
+        InboundInvoices invoices = InboundInvoices.ForOrganization (CurrentOrganization);
 
         foreach (InboundInvoice invoice in invoices)
         {
@@ -140,9 +180,18 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
             if (this._attestationRights.ContainsKey (invoice.BudgetId) ||
                 invoice.Budget.OwnerPersonId == Person.NobodyId)
             {
-                this._items.Add (new AttestableItem ("I" + invoice.Identity.ToString (CultureInfo.InvariantCulture),
+                AttestableItem item = new AttestableItem ("I" + invoice.Identity.ToString (CultureInfo.InvariantCulture),
                     invoice.Supplier, invoice.AmountCents, invoice.Budget, invoice.InvoiceReference,
-                    "Financial_InvoiceInbound", hasDox, invoice));
+                    "Financial_InvoiceInbound", hasDox, invoice);
+
+                if (invoice.Attested)
+                {
+                    this._attestedItems.Add (item);
+                }
+                else
+                {
+                    this._items.Add (item);
+                }
             }
         }
     }
@@ -151,6 +200,8 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
     private void PopulateSalaries()
     {
         Salaries salaries = Salaries.ForOrganization (CurrentOrganization).WhereUnattested;
+
+        // No unattestability for previously attested salaries because complex
 
         foreach (Salary salary in salaries)
         {
@@ -180,6 +231,7 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
             }
         }
     }
+
 
     protected class AttestableItem
     {

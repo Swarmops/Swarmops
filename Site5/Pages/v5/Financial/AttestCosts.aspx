@@ -29,6 +29,10 @@
             $('#TableAttestableCosts').datagrid(
                 {
                     rowStyler: function (index, rowData) {
+                        if (rowData.previous != null) {
+                            return { class: "rowPrevious row" + rowData.itemId };
+                        }
+
                         if (rowData.itemId != null) {
                             return { class: "row" + rowData.itemId.replace(/\|/g, '') };
                         }
@@ -40,7 +44,7 @@
                         $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled.png"); // initialize as disabled until budgets known
                         $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-greentick-16px.png");
                         $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
-                        $(".LocalIconApproved, .LocalIconDenied, .LocalIconUndo").css("display", "none");
+                        $(".LocalIconApproved.LocalNew, .LocalIconUndo.LocalNew, .LocalIconDenied.LocalNew, .LocalIconApproval.LocalPreviouslyAttested, .LocalIconDenial.LocalPreviouslyAttested, .LocalIconDenied.LocalPreviouslyAttested").css("display", "none");
                         $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-16px.png");
                         $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
 
@@ -101,7 +105,7 @@
                                             $("#IconApproved" + baseid).fadeIn(100);
                                             $("#IconDenial" + baseid).css('opacity', 1.0).hide();
                                             $("#IconUndo" + baseid).fadeIn(100);
-                                            $('.row' + baseid).animate({ color: "#888" }, 400);
+                                            $('.row' + baseid).animate({ color: "#AAA" }, 400);
                                             alertify.success(msg.d.DisplayMessage);
 
                                             var accountId = $(this).attr("accountid");
@@ -265,6 +269,9 @@
      <style type="text/css">
         .datagrid-row-selected,.datagrid-row-over{
             background:transparent;
+        }
+        .rowPrevious {
+            color: #AAA;
         }
     </style>
 </asp:Content>
