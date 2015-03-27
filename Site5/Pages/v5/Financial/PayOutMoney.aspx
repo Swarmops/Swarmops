@@ -104,7 +104,7 @@
                                         $("#IconApproved" + baseid).fadeIn(100);
                                         $("#IconDenial" + baseid).css('opacity', 1.0).hide();
                                         $("#IconUndo" + baseid).fadeIn(100);
-                                        $('.row' + baseid).animate({ color: "#888" }, 400);
+                                        $('.row' + baseid).animate({ color: "#AAA" }, 400);
                                         alertify.success(msg.d.DisplayMessage);
                                     }, this)
                                 });
@@ -167,7 +167,7 @@
             padding-right: initial;
         }
         .rowPrevious {
-            color: #888;
+            color: #AAA;
             display: none;
         }
     </style>
