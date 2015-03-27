@@ -23,8 +23,8 @@
             '/Images/Icons/iconshock-green-tick-128x96px.png',
             '/Images/Icons/iconshock-red-cross-128x96px.png',
             '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
-            '/Images/Icons/iconshock-undo-128x96px.png',
-            '/Images/Icons/iconshock-undo-128x96px-hot.png'
+            '/Images/Icons/iconshock-balloon-undo-128x96px.png',
+            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
         ]);
 
         $(document).ready(function () {
