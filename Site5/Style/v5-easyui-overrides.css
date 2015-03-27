@@ -30,7 +30,7 @@ select:not(.comboperson)+span.textbox.combo > .textbox-text {
 
 
 select.comboperson+span.textbox.combo>input.textbox-text {
-	width: 264px !important;
+	width: 254px !important;
 	padding-left: 34px !important;
 	/* background: url('http://s.gravatar.com/avatar/15638826ee119289c902c4f85e77a2f0?s=24&r=g'); */
 	background-repeat: no-repeat;
