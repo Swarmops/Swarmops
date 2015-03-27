@@ -16,13 +16,15 @@
 
         preload([
             '/Images/Abstract/ajaxloader-medium.gif',
-            '/Images/Icons/iconshock-balloon-yes-16px-hot.png',
-            '/Images/Icons/iconshock-balloon-yes-16px-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-16px-disabled-hot.png',
-            '/Images/Icons/iconshock-balloon-no-16px-hot.png',
-            '/Images/Icons/iconshock-greentick-16px.png',
-            '/Images/Icons/iconshock-redcross-16px.png',
-            '/Images/Icons/undo-16px.png'
+            '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled-hot.png',
+            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
+            '/Images/Icons/iconshock-green-tick-128x96px.png',
+            '/Images/Icons/iconshock-red-cross-128x96px.png',
+            '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
+            '/Images/Icons/iconshock-undo-128x96px.png',
+            '/Images/Icons/iconshock-undo-128x96px-hot.png'
         ]);
 
         $(document).ready(function () {
@@ -41,19 +43,20 @@
                     },
 
                     onLoadSuccess: function () {
-                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled.png"); // initialize as disabled until budgets known
-                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-greentick-16px.png");
-                        $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
+                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png"); // initialize as disabled until budgets known
+                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png");
+                        $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
+                        $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                         $(".LocalIconApproved.LocalNew, .LocalIconUndo.LocalNew, .LocalIconDenied.LocalNew, .LocalIconApproval.LocalPreviouslyAttested, .LocalIconDenial.LocalPreviouslyAttested, .LocalIconDenied.LocalPreviouslyAttested").css("display", "none");
-                        $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-16px.png");
+                        $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
                         $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
 
                         $(".LocalIconApproval").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
                                 if ($(this).hasClass("LocalFundsInsufficient")) {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled-hot.png");
+                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png");
                                 } else {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-hot.png");
+                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
                                 }
                             }
                         });
@@ -61,22 +64,40 @@
                         $(".LocalIconApproval").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
                                 if ($(this).hasClass("LocalFundsInsufficient")) {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled.png");
+                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png");
                                 } else {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                                 }
                             }
                         });
 
                         $(".LocalIconUndo").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px-hot.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px-hot.png");
                             }
                         });
 
                         $(".LocalIconUndo").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
+                            }
+                        });
+
+                        $(".LocalIconDenial").mouseover(function () {
+                            if ($(this).attr("rel") != "loading") {
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot.png");
+                            }
+                        });
+
+                        $(".LocalIconDenial").mouseout(function () {
+                            if ($(this).attr("rel") != "loading") {
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
+                            }
+                        });
+
+                        $(".LocalIconDenial").click(function() {
+                            if ($(this).attr("rel") != "loading" && $("#IconDenial" + $(this).attr("baseid")) != "loading") {
+                                <%=this.DialogDeny.ClientID%>_open();
                             }
                         });
 
@@ -86,9 +107,9 @@
                                 return;
                             }
 
-                            if ($(this).attr("rel") != "loading") {
+                            if ($(this).attr("rel") != "loading" && $("#IconDenial" + $(this).attr("baseid")) != "loading") {
                                 $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
+                                $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
                                 $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
                                 $.ajax({
                                     type: "POST",
@@ -99,11 +120,11 @@
                                     success: $.proxy(function (msg) {
                                         var baseid = $(this).attr("baseid");
                                         if (msg.d.Success) {
-                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                                             $(this).attr("rel", "active");
                                             $(this).hide();
                                             $("#IconApproved" + baseid).fadeIn(100);
-                                            $("#IconDenial" + baseid).stop(true,true).css("display", "none").css("opacity", 1.0);
+                                            $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
                                             $("#IconUndo" + baseid).fadeIn(100);
                                             $('.row' + baseid).animate({ color: "#AAA" }, 400);
                                             alertify.success(msg.d.DisplayMessage);
@@ -116,7 +137,7 @@
                                         } else {
                                             // failure, likely from attesting too quickly and overrunning budget
                                             $(this).attr("rel", "");
-                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled.png");
+                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png");
                                             $("#IconDenial" + baseid).css('opacity', 1.0).css("cursor", "pointer");
                                             alertify.error(msg.d.DisplayMessage);
 
@@ -130,7 +151,7 @@
                         $(".LocalIconUndo").click(function () {
                             if ($(this).attr("rel") != "loading") {
                                 $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
+                                $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
                                 $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
                                 $.ajax({
                                     type: "POST",
@@ -141,10 +162,10 @@
                                     success: $.proxy(function (msg) {
                                         if (msg.d.Success) {
                                             var baseid = $(this).attr("baseid");
-                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
+                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                                             $(this).attr("rel", "");
                                             $(this).hide();
-                                            $("#IconApproved" + baseid).stop(true, true).css("opacity", 1.0).css("display", "none");
+                                            $("#IconApproved" + baseid).finish().css("opacity", 1.0).css("display", "none");
                                             $("#IconApproval" + baseid).fadeIn(100);
                                             $("#IconDenial" + baseid).fadeIn(100).css("cursor", "pointer");
                                             $('.row' + baseid).animate({ color: "#000" }, 100);
@@ -156,7 +177,7 @@
                                             setAttestability();
                                             recheckBudgets(); // will double-check budgets against server
                                         } else {
-                                            $(this).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
+                                            $(this).attr("src", "/Images/Icons/iconshock-greentick-128x96px.png");
                                             alertify.error(msg.d.DisplayMessage);
                                             // TODO: Add alert box?
                                         }
@@ -171,13 +192,13 @@
 
                         $(".LocalIconDenial").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-16px-hot.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot.png");
                             }
                         });
 
                         $(".LocalIconDenial").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
                             }
                         });
 
@@ -247,13 +268,13 @@
                 if (fundsInBudget >= amountRequested) {
                     $(this).removeClass("LocalFundsInsufficient");
                     if ($(this).attr("rel") != "loading") {
-                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                     }
                 }
                 else if (!$(this).hasClass("LocalFundsInsufficient")) {
                     $(this).addClass("LocalFundsInsufficient");
                     if ($(this).attr("rel") != "loading") {
-                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-disabled.png");
+                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png");
                     }
                 }
 
@@ -295,7 +316,7 @@
     
     <Swarmops5:ModalDialog ID="DialogDeny" runat="server" >
         <DialogCode>
-            
+            <h2><asp:Label ID="ModalDenyHeader" runat="server" Text="Fix Problems Or Deny Attestation XYZ" /></h2>
         </DialogCode>
     </Swarmops5:ModalDialog>
 

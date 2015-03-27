@@ -50,12 +50,12 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
             result.AppendFormat(
                 "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
                 "\"dox\":\"" + (item.HasDox ? hasDoxString : "&nbsp;") + "\"," +
-                "\"actions\":\"<span style=\\\"position:relative;top:3px\\\">" +
-                "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalNew LocalFundsInsufficient\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
-                "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
+                "\"actions\":\"<span style=\\\"position:relative;left:-2px\\\">" +
+                "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalNew LocalFundsInsufficient\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo LocalNew\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" /></span>\"",
                 JsonSanitize(GetGlobalResourceObject("Global", item.IdentityDisplay).ToString()),
                 JsonSanitize(item.Beneficiary), JsonSanitize(TryLocalize(item.Description)),
                 JsonSanitize(item.BudgetName),
@@ -69,12 +69,12 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
             result.AppendFormat(
                 "\"item\":\"{0}\",\"beneficiary\":\"{1}\",\"description\":\"{2}\",\"budgetName\":\"{3}\",\"previous\":\"yes\",\"amountRequested\":\"{4:N2}\",\"itemId\":\"{5}\"," +
                 "\"dox\":\"" + (item.HasDox ? hasDoxString : "&nbsp;") + "\"," +
-                "\"actions\":\"<span style=\\\"position:relative;top:3px\\\">" +
-                "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalFundsInsufficient LocalPreviouslyAttested\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />&nbsp;&nbsp;" +
-                "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" />" +
-                "<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"16\\\" width=\\\"16\\\" /></span>\"",
+                "\"actions\":\"<span style=\\\"position:relative;left:-2px\\\">" +
+                "<img id=\\\"IconApproval{5}\\\" class=\\\"LocalIconApproval LocalFundsInsufficient LocalPreviouslyAttested\\\" accountid=\\\"{6}\\\" amount=\\\"{4}\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconApproved{5}\\\" class=\\\"LocalIconApproved LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconDenial{5}\\\" class=\\\"LocalIconDenial LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconDenied{5}\\\" class=\\\"LocalIconDenied LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                "<img id=\\\"IconUndo{5}\\\" class=\\\"LocalIconUndo LocalPreviouslyAttested\\\" baseid=\\\"{5}\\\" height=\\\"18\\\" width=\\\"24\\\" /></span>\"",
                 JsonSanitize(GetGlobalResourceObject("Global", item.IdentityDisplay).ToString()),
                 JsonSanitize(item.Beneficiary), JsonSanitize(TryLocalize(item.Description)),
                 JsonSanitize(item.BudgetName),
