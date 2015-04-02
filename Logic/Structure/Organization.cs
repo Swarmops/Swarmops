@@ -54,9 +54,9 @@ namespace Swarmops.Logic.Structure
             return new Organization (basic);
         }
 
-        public static Organization FromOpenLedgersDomain(string domain)
+        protected static Organization FromOptionalDataString (ObjectOptionalDataType dataType, string data)
         {
-            int[] organizationIds = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Organization, ObjectOptionalDataType.OrgOpenLedgersDomain, domain);
+            int[] organizationIds = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Organization, dataType, data.Trim());
 
             if (organizationIds.Length < 1)
             {
@@ -68,27 +68,26 @@ namespace Swarmops.Logic.Structure
             }
             else
             {
-                throw new InvalidOperationException("Invalid state: multiple organizations with same open-ledgers domain");
+                throw new InvalidOperationException("Invalid state: multiple organizations with same " + dataType.ToString());
             }
+        }
+
+        public static Organization FromOpenLedgersDomain(string domain)
+        {
+            return FromOptionalDataString (ObjectOptionalDataType.OrgOpenLedgersDomain, domain);
         }
 
         public static Organization FromVanityDomain(string domain)
         {
-            int[] organizationIds = SwarmDb.GetDatabaseForReading().GetObjectsByOptionalData(ObjectType.Organization, ObjectOptionalDataType.OrgVanityDomain, domain);
-
-            if (organizationIds.Length < 1)
-            {
-                return null;
-            }
-            else if (organizationIds.Length == 1)
-            {
-                return Organization.FromIdentity(organizationIds[0]);
-            }
-            else
-            {
-                throw new InvalidOperationException("Invalid state: multiple organizations with same vanity domain");
-            }
+            return FromOptionalDataString (ObjectOptionalDataType.OrgVanityDomain, domain);
         }
+
+
+        static public Organization FromPaypalAccountMailAddress(string address)
+        {
+            return FromOptionalDataString (ObjectOptionalDataType.OrgPaypalAccountMailAddress, address);
+        }
+
 
         #endregion
 
@@ -298,6 +297,21 @@ namespace Swarmops.Logic.Structure
             get { return OptionalData.GetOptionalDataBool (ObjectOptionalDataType.OrgEconomyEnabled); }
         }
 
+        public bool ParticipantFinancialsEnabled
+        {
+            get { return OptionalData.GetOptionalDataBool (ObjectOptionalDataType.OrgParticipantFinancialsEnabled); }
+            set { OptionalData.SetOptionalDataBool (ObjectOptionalDataType.OrgParticipantFinancialsEnabled, value); }
+        }
+
+        /// <summary>
+        /// This is a TEMPORARY property that will be deprecated once proper automation properties are in place.
+        /// </summary>
+        public string PaypalAccountMailAddress
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.OrgPaypalAccountMailAddress); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.OrgPaypalAccountMailAddress, value); }
+        }
+
         public int FirstFiscalYear
         {
             get
@@ -432,9 +446,6 @@ namespace Swarmops.Logic.Structure
             }
 
             // First, set hardwired accounts
-
-
-            // TODO: Set names according to org default culture
 
             FinancialAccounts[OrganizationFinancialAccountType.AssetsBankAccountMain] =
                 FinancialAccount.Create (this, "[LOC]Asset_BankAccount", FinancialAccountType.Asset, null);

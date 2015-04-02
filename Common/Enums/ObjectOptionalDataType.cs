@@ -309,7 +309,16 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// The datetime UTC when the account was set under lockdown (or empty/null if it is not).
         /// </summary>
-        AccountUnderLockdownSince
+        AccountUnderLockdownSince,
 
+        /// <summary>
+        /// True if all participants can access global financial reports (balance sheet, P&L).
+        /// </summary>
+        OrgParticipantFinancialsEnabled,
+
+        /// <summary>
+        /// Early Hack - the mail address used for a PayPal account (before properties like this one are rolled into up into automation classes)
+        /// </summary>
+        OrgPaypalAccountMailAddress
     }
 }
