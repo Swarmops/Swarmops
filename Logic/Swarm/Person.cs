@@ -1128,6 +1128,16 @@ namespace Swarmops.Logic.Swarm
                 return true;
             }
 
+            if (access.Aspect == AccessAspect.Financials && access.Type == AccessType.Read)
+            {
+                if (access.Organization.ParticipantFinancialsEnabled)
+                {
+                    // This organization has decided to open its financial reports to all participants. Reselect the access request to "participant" level.
+
+                    access = new Access (access.Organization, AccessAspect.Participant);
+                }
+            }
+
             if (access.Aspect == AccessAspect.Participant)
             {
                 // Check that a membership (or whatever this org calls it) exists, for this org or a parentline org

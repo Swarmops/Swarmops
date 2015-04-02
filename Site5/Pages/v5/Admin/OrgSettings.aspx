@@ -33,9 +33,18 @@
                     dataType: "json",
                     success: function(msg) {
                         if (msg.d.Success) {
-                            alertify.log(msg.d.DisplayMessage);
+                            if (msg.d.DisplayMessage.length > 2) {  // the 2 is rather arbitrary. Read as "if defined".
+                                alertify.log(msg.d.DisplayMessage);
+                            }
                             if (msg.d.RequireForex && !($('#CheckEnableForex').prop("checked"))) {
                                 $("#CheckEnableForex").prop("checked", true).change();
+                            }
+                            if (jsonData.switchName == "Paypal") {
+                                if (jsonData.switchValue) {
+                                    $('.paypalAccountField').fadeIn();
+                                } else {
+                                    $('.paypalAccountField').fadeOut();
+                                }
                             }
                         } else {
                             alertify.error(msg.d.DisplayMessage);
@@ -79,7 +88,13 @@
             $("#CheckEnablePaypal").prop("checked", orgSettings.AccountPaypal).change();
             $("#CheckEnableForex").prop("checked", orgSettings.AccountsForex).change();
             $("#CheckEnableVat").prop("checked", orgSettings.AccountsVat).change();
+            $("#CheckParticipantFinancials").prop("checked", orgSettings.ParticipantFinancials).change();
+            $("#<%=this.TextPaypalAccountAddress.ClientID%>_TextInput").val(orgSettings.PaypalAccountAddress);
             suppressSwitchResponse = false;
+
+            if (orgSettings.AccountPaypal) {
+                $('.paypalAccountField').show();
+            } 
         }
 
         var suppressSwitchResponse = false;
@@ -90,6 +105,8 @@
         .IconEdit { cursor: pointer; }
 
         #IconCloseEdit { cursor: pointer; }
+
+        .paypalAccountField { display: none; }
 
         .CheckboxContainer {
             float: right;
@@ -109,16 +126,20 @@
                 <label for="CheckEnableBitcoinHot"><asp:Literal ID="LiteralLabelBitcoinHotShort" runat="server" Text="Bitcoin Hot"/></label><div class="CheckboxContainer"><input type="checkbox" rel="BitcoinHot" class="EditCheck" id="CheckEnableBitcoinHot"/></div><br/>
                 <asp:TextBox runat="server" ID="TextDaysCashReserves" CssClass="alignRight" Text="60-90" />&#8203;<br/>
                 <label for="CheckEnablePaypal"><asp:Literal ID="Literal1" runat="server" Text="Paypal"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Paypal" class="EditCheck" id="CheckEnablePaypal"/></div><br/>
+                <Swarmops5:AjaxTextBox ID="TextPaypalAccountAddress" runat="server" Placeholder="paypal@example.org" CssClass="paypalAccountField" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="PaypalAccountAddress" />
                 <label for="CheckEnableForex"><asp:Literal ID="Literal2" runat="server" Text="Forex Profit/Loss"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Forex" class="EditCheck" id="CheckEnableForex"/></div><br/>
                 <label for="CheckEnableVat"><asp:Literal ID="Literal3" runat="server" Text="VAT In/Out"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Vat" class="EditCheck" id="CheckEnableVat"/></div><br/>
+                <label for="CheckOpenFinancials"><asp:Literal ID="Literal4" runat="server" Text="Participant Financials"/></label><div class="CheckboxContainer"><input type="checkbox" rel="ParticipantFinancials" class="EditCheck" id="CheckOpenFinancials"/></div><br/>
             </div>
             <div class="entryLabels">
                 Enable bitcoin coldwallet tracking?<br/>
                 Enable bitcoin hotwallet autopay?<br/>
                 Days of coin reserves to keep hot<br/>
                 Enable Paypal tracking and IPN?<br/>
+                <span class="paypalAccountField">Paypal account mail address<br/></span>
                 Enable foreign currency accounts?<br/>
                 Enable Value Added Tax (VAT)?<br/>
+                Enable Participant Financials?<br/>
             </div>
             <div id="divUseAccountPlan" style="display: none; width: 100%; text-align: center; margin-top: 20px; margin-bottom: 20px; border-top: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; border-bottom: 1px solid <%= CommonV5.GetColor (ColorType.Base, ColorVariant.Light) %>; background-color: <%= CommonV5.GetColor (ColorType.Base, ColorVariant.XLight) %>">
                 Use the <a href="/Pages/v5/Ledgers/AccountPlan.aspx">Account Plan</a> page to set detailed parameters for these accounts, once enabled.

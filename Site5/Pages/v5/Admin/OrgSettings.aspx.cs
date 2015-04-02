@@ -132,6 +132,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                                     org.FinancialAccounts.IncomeCurrencyFluctuations.Active);
             result.AccountsVat = (org.FinancialAccounts.AssetsVatInbound != null &&
                                   org.FinancialAccounts.AssetsVatInbound.Active);
+            result.ParticipantFinancials = org.ParticipantFinancialsEnabled;
+            result.PaypalAccountAddress = org.PaypalAccountMailAddress;
 
             // TODO: Add all the other fields
 
@@ -304,6 +306,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         workAccounts.Add (assetsPaypal);
                     }
                     break;
+                case "ParticipantFinancials":
+                    authData.CurrentOrganization.ParticipantFinancialsEnabled = switchValue;
+                    break;
                 default:
                     throw new NotImplementedException();
             }
@@ -406,6 +411,12 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     authenticationData.CurrentOrganization.OpenLedgersDomain = result.NewData;
                     break;
 
+                case "PaypalAccountAddress":
+                    result.NewData = newValue.Trim();
+                    result.ResultCode = AjaxTextBox.CodeSuccess;
+                    authenticationData.CurrentOrganization.PaypalAccountMailAddress = result.NewData;
+                    break;
+
                 default:
                     throw new NotImplementedException("Unknown cookie in StoreCallback");
             }
@@ -430,6 +441,8 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             public bool AccountPaypal;
             public bool AccountsForex;
             public bool AccountsVat;
+            public bool ParticipantFinancials;
+            public string PaypalAccountAddress;
         }
     }
 }
