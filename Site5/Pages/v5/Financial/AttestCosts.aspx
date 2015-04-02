@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master-v5.master" AutoEventWireup="true" CodeFile="AttestCosts.aspx.cs" Inherits="Swarmops.Frontend.Pages.v5.Financial.AttestCosts" %>
 <%@ Register src="~/Controls/v5/Base/ModalDialog.ascx" tagname="ModalDialog" tagprefix="Swarmops5" %>
+<%@ Register src="~/Controls/v5/Financial/ComboBudgets.ascx" tagname="ComboBudgets" tagprefix="Swarmops5" %>
+<%@ Register src="~/Controls/v5/Financial/CurrencyTextBox.ascx" tagname="CurrencyTextBox" tagprefix="Swarmops5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
 	<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
@@ -97,6 +99,7 @@
 
                         $(".LocalIconDenial").click(function() {
                             if ($(this).attr("rel") != "loading" && $("#IconDenial" + $(this).attr("baseid")) != "loading") {
+                                $('div.radioOption').hide();
                                 <%=this.DialogDeny.ClientID%>_open();
                             }
                         });
@@ -228,6 +231,13 @@
 
             // we're still in document.ready
 
+            $('input:radio[name="ModalOptions"]').change(function () {
+                var pickedButtonName = $(this).val();
+                $('div.radioOption').slideUp();
+                $('div#radioOption' + pickedButtonName).slideDown();
+            });
+
+
             SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
                 data.forEach(function(accountData, dummy1, dummy2) {
                     budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
@@ -289,6 +299,20 @@
         .rowPrevious {
             color: #AAA;
         }
+
+        div.radioOption {
+            margin-top: -20px;
+            padding-bottom: 10px;
+            padding-left: 12px;
+            margin-right: 10px;
+        }
+        body.ltr div.radioOption {
+            padding-left: initial;
+            margin-right: initial;
+            padding-right: 12px;
+            margin-left: 10px;
+        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
@@ -312,6 +336,40 @@
     <Swarmops5:ModalDialog ID="DialogDeny" runat="server" >
         <DialogCode>
             <h2><asp:Label ID="ModalDenyHeader" runat="server" Text="Fix Problems Or Deny Attestation XYZ" /></h2>
+            <p><asp:Literal ID="LabelWhatProblem" runat="server" Text="What seems to be the problem? XYZ" /></p>
+            <p><input type="radio" id="RadioDeny" name="ModalOptions" value="Deny" /><label for="RadioDeny"><asp:Label runat="server" ID="LabelRadioDeny" Text="I will not attest this record. It is scratched. XYZ" /></label></p>
+            <div id="radioOptionDeny" class="radioOption">
+                <div class="entryFields">
+                    <asp:TextBox ID="TextDenyReason" runat="server" TextMode="MultiLine" Rows="3" Placeholder="My hovercraft is full of eels" />&#8203;<br/>
+                    <input type="button" value='<asp:Literal ID="LiteralButtonDeny" runat="server" Text="RebudgetXYZ" />' class="buttonAccentColor" onclick="onDenyRecord(); return false;" id="buttonExecuteDeny"/>
+                </div>
+                <div class="entryLabels">
+                    <asp:Label runat="server" ID="Label2" Text="Optional explanation to submitter: XYZ" />
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <p><input type="radio" id="RadioAmount" name="ModalOptions" value="Amount" /><label for="RadioAmount"><asp:Label runat="server" ID="LabelRadioAmount" Text="I will attest, but for a different amount. XYZ" /></label></p>
+            <div id="radioOptionAmount" class="radioOption">
+                <div class="entryFields">
+                    <Swarmops5:CurrencyTextBox ID="TextDifferentAmount" runat="server" />&#8203;<br/>
+                    <input type="button" value='<asp:Literal ID="LiteralButtonAmount" runat="server" Text="AmountXYZ" />' class="buttonAccentColor" onclick="onAttestDifferentAmount(); return false;" id="buttonExecuteDifferentAmount"/>
+                </div>
+                <div class="entryLabels">
+                    <asp:Label runat="server" ID="LabelDescribeDifferentAmount" Text="What amount are you attesting instead (SEK)? XYZ" />
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <p><input type="radio" id="RadioRebudget" name="ModalOptions" value="Rebudget" /><label for="RadioRebudget"><asp:Label runat="server" ID="LabelRadioRebudget" Text="This record should be charging a different budget. XYZ" /></label></p>
+            <div id="radioOptionRebudget" class="radioOption">
+                <div class="entryFields">
+                    <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="Expensable" />&#8203;<br/>
+                    <input type="button" value='<asp:Literal ID="LiteralButtonRebudget" runat="server" Text="RebudgetXYZ" />' class="buttonAccentColor" onclick="onRebudgetRecord(); return false;" id="buttonExecuteRebudget"/>
+                </div>
+                <div class="entryLabels">
+                    <asp:Label runat="server" ID="LabelDescribeRebudget" Text="Move the record to this budget: XYZ" />
+                </div>
+                <div style="clear:both"></div>
+            </div>
         </DialogCode>
     </Swarmops5:ModalDialog>
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.ServiceModel.Security;
 using System.Web;
 using System.Web.Services;
+using System.Web.UI;
 using Resources;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -35,6 +36,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 Localize();
             }
+
+            this.TextDenyReason.Style [HtmlTextWriterStyle.FontSize] = "60% !important";
 
             this._attestationRights = GetAttestationRights();
             this._documentList = new List<RepeatedDocument>();
