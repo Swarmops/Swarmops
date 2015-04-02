@@ -30,6 +30,12 @@ namespace Swarmops.Frontend.Controls.v5.Base
         public string OnChange { get; set; }
         public string AjaxCallbackUrl { set; get; }
 
+        public string CssClass
+        {
+            get { return this.TextInput.CssClass; }
+            set { this.TextInput.CssClass = value; }
+        }
+
         public string Placeholder { get; set; }
 
         // Ajax result codes and classes
