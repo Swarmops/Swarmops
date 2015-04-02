@@ -13,6 +13,7 @@ namespace Swarmops.Tests
         [Test]
         public void FindConflictingReferences()
         {
+            /*
             var assemblies = GetAllAssemblies(@"C:\Lab\Swarmops\Logic\obj\Debug");
 
             var references = GetReferencesFromAllAssemblies(assemblies);
@@ -28,7 +29,7 @@ namespace Swarmops.Tests
                                           reference.Assembly.Name.PadRight(25),
                                           reference.ReferencedAssembly.FullName);
                 }
-            }
+            }*/
         }
 
         private IEnumerable<IGrouping<string, Reference>> FindReferencesWithTheSameShortNameButDiffererntFullNames(List<Reference> references)
