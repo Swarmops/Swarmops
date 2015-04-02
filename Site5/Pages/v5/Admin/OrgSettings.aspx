@@ -39,6 +39,13 @@
                             if (msg.d.RequireForex && !($('#CheckEnableForex').prop("checked"))) {
                                 $("#CheckEnableForex").prop("checked", true).change();
                             }
+                            if (jsonData.switchName == "BitcoinHot") {
+                                if (jsonData.switchValue) {
+                                    $('.bitcoinHotField').fadeIn();
+                                } else {
+                                    $('.bitcoinHotField').fadeOut();
+                                }
+                            }
                             if (jsonData.switchName == "Paypal") {
                                 if (jsonData.switchValue) {
                                     $('.paypalAccountField').fadeIn();
@@ -92,9 +99,13 @@
             $("#<%=this.TextPaypalAccountAddress.ClientID%>_TextInput").val(orgSettings.PaypalAccountAddress);
             suppressSwitchResponse = false;
 
+            if (orgSettings.AccountBitcoinHot) {
+                $('.bitcoinHotField').show();
+            }
+
             if (orgSettings.AccountPaypal) {
                 $('.paypalAccountField').show();
-            } 
+            }
         }
 
         var suppressSwitchResponse = false;
@@ -107,6 +118,8 @@
         #IconCloseEdit { cursor: pointer; }
 
         .paypalAccountField { display: none; }
+
+        .bitcoinHotField { display: none; }
 
         .CheckboxContainer {
             float: right;
@@ -124,7 +137,7 @@
             <div class="entryFields">
                 <label for="CheckEnableBitcoinCold"><asp:Literal ID="LiteralLabelBitcoinColdShort" runat="server" Text="Bitcoin Cold"/></label><div class="CheckboxContainer"><input type="checkbox" rel="BitcoinCold" class="EditCheck" id="CheckEnableBitcoinCold"/></div><br/>
                 <label for="CheckEnableBitcoinHot"><asp:Literal ID="LiteralLabelBitcoinHotShort" runat="server" Text="Bitcoin Hot"/></label><div class="CheckboxContainer"><input type="checkbox" rel="BitcoinHot" class="EditCheck" id="CheckEnableBitcoinHot"/></div><br/>
-                <asp:TextBox runat="server" ID="TextDaysCashReserves" CssClass="alignRight" Text="60-90" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox ID="TextDaysCashReserves" runat="server" CssClass="bitcoinHotField alignRight" ReadOnly="true" Placeholder="60-90" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="BitcoinReserves"  />
                 <label for="CheckEnablePaypal"><asp:Literal ID="Literal1" runat="server" Text="Paypal"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Paypal" class="EditCheck" id="CheckEnablePaypal"/></div><br/>
                 <Swarmops5:AjaxTextBox ID="TextPaypalAccountAddress" runat="server" Placeholder="paypal@example.org" CssClass="paypalAccountField" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback" Cookie="PaypalAccountAddress" />
                 <label for="CheckEnableForex"><asp:Literal ID="Literal2" runat="server" Text="Forex Profit/Loss"/></label><div class="CheckboxContainer"><input type="checkbox" rel="Forex" class="EditCheck" id="CheckEnableForex"/></div><br/>
@@ -134,7 +147,7 @@
             <div class="entryLabels">
                 Enable bitcoin coldwallet tracking?<br/>
                 Enable bitcoin hotwallet autopay?<br/>
-                Days of coin reserves to keep hot<br/>
+                <span class="bitcoinHotField">Days of coin reserves to keep hot<br/></span>
                 Enable Paypal tracking and IPN?<br/>
                 <span class="paypalAccountField">Paypal account mail address<br/></span>
                 Enable foreign currency accounts?<br/>

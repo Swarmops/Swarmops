@@ -36,6 +36,12 @@ namespace Swarmops.Frontend.Controls.v5.Base
             set { this.TextInput.CssClass = value; }
         }
 
+        public bool ReadOnly
+        {
+            get { return this.TextInput.ReadOnly; }
+            set { this.TextInput.ReadOnly = value;  }
+        }
+
         public string Placeholder { get; set; }
 
         // Ajax result codes and classes
