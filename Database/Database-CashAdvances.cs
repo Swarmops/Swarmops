@@ -124,24 +124,41 @@ namespace Swarmops.Database
         }
 
 
-        public void SetCashAdvanceOpen (int cashAdvanceId, bool open)
+        public void SetCashAdvanceBudget(int cashAdvanceId, int budgetId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("SetCashAdvanceOpen", connection);
+                DbCommand command = GetDbCommand("SetCashAdvanceBudget", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName (command, "cashAdvanceId", cashAdvanceId);
-                AddParameterWithName (command, "open", open);
+                AddParameterWithName(command, "cashAdvanceId", cashAdvanceId);
+                AddParameterWithName(command, "budgetId", budgetId);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void SetCashAdvanceAttested (int cashAdvanceId, bool attested, int attestedByPersonId)
+        public void SetCashAdvanceOpen(int cashAdvanceId, bool open)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetCashAdvanceOpen", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "cashAdvanceId", cashAdvanceId);
+                AddParameterWithName(command, "open", open);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+        public void SetCashAdvanceAttested(int cashAdvanceId, bool attested, int attestedByPersonId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {

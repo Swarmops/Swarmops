@@ -168,6 +168,11 @@ public class PageV5Base : Page
     {
         this.IncludedControlsUsed |= control;
     }
+
+    public string JavascriptEscape (string input)
+    {
+        return System.Uri.EscapeDataString (input).Replace ("'", "%27"); // makes it safe to embed in single quotes client-side
+    }
 }
 
 

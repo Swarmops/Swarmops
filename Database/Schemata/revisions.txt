@@ -13,3 +13,4 @@
 0013 - Added PositionTitles for organizational culture flexibility [RF]
 0014 - Forgot one storedproc in Db0012; renamed CreateAssignedRole [RF]
 0015 - Merged PositionsStandard and PositionsAdditional into one table [RF]
+0016 - Added SetCashAdvanceBudget procedure [RF]

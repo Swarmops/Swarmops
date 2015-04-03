@@ -20,7 +20,7 @@
             '/Images/Abstract/ajaxloader-medium.gif',
             '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
             '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
-            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled-hot.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
             '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
             '/Images/Icons/iconshock-green-tick-128x96px.png',
             '/Images/Icons/iconshock-red-cross-128x96px.png',
@@ -98,8 +98,14 @@
                         });
 
                         $(".LocalIconDenial").click(function() {
-                            if ($(this).attr("rel") != "loading" && $("#IconDenial" + $(this).attr("baseid")) != "loading") {
+                            if ($(this).attr("rel") != "loading" && $("#IconApproval" + $(this).attr("baseid")) != "loading") {
+                                recordId = $(this).attr("baseid");
+                                var amountRequested = $("#IconApproval" + recordId).attr('amount');
+                                accountId = $("#IconApproval" + recordId).attr('accountid');
                                 $('div.radioOption').hide();
+                                $('input:radio[name="ModalOptions"]').prop('checked', false);
+                                SwarmopsJS.formatCurrency(amountRequested, function (data) { $('#<%=this.TextDifferentAmount.ClientID%>_Input').val(data); });
+                                $('<%=this.TextDenyReason.ClientID%>').val(''); // empty reason
                                 <%=this.DialogDeny.ClientID%>_open();
                             }
                         });
@@ -288,6 +294,33 @@
             budgetRemainingLookup.attestabilityInitialized = true;
         }
 
+        function onRebudgetRecord() {
+            var newAccountId = <%=this.DropBudgetsRebudget.ClientID%>_val();
+            if (newAccountId == 0) {
+                alertify.error(decodeURIComponent('<asp:Literal ID="LiteralPleaseSelectBudget" runat="server" />'));
+                return;
+            }
+            if (recordId[0] == 'S') // Salary - cannot rebudget
+            {
+                alertify.error(decodeURIComponent('<asp:Literal ID="LiteralCannotRebudgetSalary" runat="server" />'));
+            }
+
+
+            // We have a valid budget, and there are no more fail conditions, so close the modal, issue the change, and when
+            // returned, reload the grid data
+
+            <%= this.DialogDeny.ClientID %>_close();
+            SwarmopsJS.ajaxCall(
+                "/Pages/v5/Financial/AttestCosts.aspx/RebudgetItem",
+                { recordId: recordId, newAccountId: newAccountId },
+                function(data) {
+                    // this is when the change is completed
+                    $('#TableAttestableCosts').datagrid('reload');
+                });
+        }
+
+        var recordId = '';
+        var accountId = 0;
         var budgetRemainingLookup = {};
 
     </script>
@@ -362,7 +395,7 @@
             <p><input type="radio" id="RadioRebudget" name="ModalOptions" value="Rebudget" /><label for="RadioRebudget"><asp:Label runat="server" ID="LabelRadioRebudget" Text="This record should be charging a different budget. XYZ" /></label></p>
             <div id="radioOptionRebudget" class="radioOption">
                 <div class="entryFields">
-                    <Swarmops5:ComboBudgets ID="DropBudgetBalance" runat="server" ListType="Expensable" />&#8203;<br/>
+                    <Swarmops5:ComboBudgets ID="DropBudgetsRebudget" runat="server" ListType="Expensable" />&#8203;<br/>
                     <input type="button" value='<asp:Literal ID="LiteralButtonRebudget" runat="server" Text="RebudgetXYZ" />' class="buttonAccentColor" onclick="onRebudgetRecord(); return false;" id="buttonExecuteRebudget"/>
                 </div>
                 <div class="entryLabels">

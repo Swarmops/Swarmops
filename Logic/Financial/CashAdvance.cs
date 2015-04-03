@@ -164,6 +164,18 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount Budget
         {
             get { return FinancialAccount.FromIdentity (BudgetId); }
+            set
+            {
+                if (BudgetId != value.Identity)
+                {
+                    if (this.Open) // requirement
+                    {
+                        SwarmDb.GetDatabaseForWriting().SetCashAdvanceBudget (this.Identity, value.Identity);
+                        base.BudgetId = value.Identity;
+                    }
+                }
+
+            }
         }
 
         public Organization Organization

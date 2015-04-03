@@ -125,6 +125,15 @@
     <value>Cash Advance #{0:N0} for {1} was UN-attested.  It will not be paid out unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>Sorry, you cannot rebudget a salary payout.</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>That doesn't seem to be a valid amount. Please retry?</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>Please select a budget to retarget the charge for.</value>
+  </data>
   <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
     <value>Expense Claim #{0:N0} from {1} for {2} {3:N2} has been attested.</value>
     <comment>{2} is the currency.</comment>
@@ -219,7 +228,7 @@
     <value>There are not enough funds remaining in the budget to attest this cost.</value>
   </data>
   <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>There are not enough funds to attest this. You can attest up to {0} {1:N2} more for {2} in this budget.</value>
+    <value>There are not enough funds to attest this. You can attest up to {0} {1:N2} more in this budget for the year {2}.</value>
     <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
   </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">

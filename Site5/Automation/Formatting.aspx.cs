@@ -21,10 +21,22 @@ namespace Swarmops.Frontend.Automation
         /// <param name="input">The integer to format.</param>
         /// <returns>The formatted integer for display.</returns>
         [WebMethod]
-        public static string FormatInteger (int input)
+        public static string FormatInteger(int input)
         {
             GetAuthenticationDataAndCulture();
-            return input.ToString ("N0");
+            return input.ToString("N0");
+        }
+
+        /// <summary>
+        /// Returns a culturally-formatted double with thousands separators and two decimals.
+        /// </summary>
+        /// <param name="input">The double to format.</param>
+        /// <returns>The formatted double for display.</returns>
+        [WebMethod]
+        public static string FormatCurrency(double input)
+        {
+            GetAuthenticationDataAndCulture();
+            return input.ToString("N2");
         }
 
     }

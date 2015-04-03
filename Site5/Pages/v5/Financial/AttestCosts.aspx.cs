@@ -89,23 +89,83 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderItem.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Item;
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
-            this.LiteralErrorInsufficientBudget.Text =
-                System.Uri.EscapeDataString (Resources.Pages.Financial.AttestCosts_OutOfBudget);
+            this.LiteralErrorInsufficientBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_OutOfBudget);
 
             this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
-            this.LabelDescribeDifferentAmount.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount;
+            this.LabelDescribeDifferentAmount.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency.DisplayCode);
             this.LabelDescribeRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionRebudget;
 
             this.LabelRadioAmount.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionAmount;
             this.LabelRadioDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionDeny;
             this.LabelRadioRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionRebudget;
 
-            this.LiteralButtonAmount.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount;
+            this.LiteralButtonAmount.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount; // these may be flagged red by Resharper. That's Resharper being wrong.
             this.LiteralButtonDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonDeny;
             this.LiteralButtonRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonRebudget;
 
             this.LabelModalDenyHeader.Text = Resources.Pages.Financial.AttestCosts_Modal_Header;
             this.LabelWhatProblem.Text = Resources.Pages.Financial.AttestCosts_Modal_WhatIsProblem;
+
+            this.LiteralPleaseSelectBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_Error_PleaseSelectBudget);
+            this.LiteralCannotRebudgetSalary.Text =
+                JavascriptEscape (Resources.Pages.Financial.AttestCosts_Error_CantRebudgetSalary);
+        }
+
+        [WebMethod]
+        public static void RebudgetItem (string recordId, int newAccountId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            char recordType = recordId[0];
+            int itemId = Int32.Parse (recordId.Substring (1));
+            FinancialAccount newAccount = FinancialAccount.FromIdentity(itemId);
+
+            switch (recordType)
+            {
+                case 'E': // Expense claim
+                    ExpenseClaim claim = ExpenseClaim.FromIdentity (itemId);
+                    if (claim.Budget.OrganizationId != authData.CurrentOrganization.Identity ||
+                        claim.Budget.OwnerPersonId != authData.CurrentUser.Identity ||
+                        newAccount.OrganizationId != authData.CurrentOrganization.Identity)
+                    {
+                        throw new UnauthorizedAccessException();
+                    }
+                    claim.SetBudget (newAccount, authData.CurrentUser);
+                    break;
+                case 'A': // Cash advance
+                    CashAdvance advance = CashAdvance.FromIdentity (itemId);
+                    if (advance.Budget.OrganizationId != authData.CurrentOrganization.Identity ||
+                        advance.Budget.OwnerPersonId != authData.CurrentUser.Identity ||
+                        newAccount.OrganizationId != authData.CurrentOrganization.Identity)
+                    {
+                        throw new UnauthorizedAccessException();
+                    }
+                    advance.Budget = newAccount;  // no accounting changes
+
+            }
+        }
+
+        [WebMethod]
+        public static string GetOverdraftMessage (int accountId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
+
+            if (account.OrganizationId != authData.CurrentOrganization.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            if (authData.CurrentUser.Identity != account.OwnerPersonId)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            int year = DateTime.UtcNow.Year;
+            Int64 budgetRemainingCents = GetBudgetRemaining (account, year);
+
+            return String.Format (Resources.Pages.Financial.AttestCosts_OutOfBudgetPrecise,
+                authData.CurrentOrganization.Currency.DisplayCode, budgetRemainingCents/100.0, year);
         }
 
         [WebMethod]
@@ -213,8 +273,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             return result;
         }
 
-        private static Int64 GetBudgetRemaining (FinancialAccount account, int year)
+        private static Int64 GetBudgetRemaining (FinancialAccount account, int year = -1)
         {
+            if (year == -1)
+            {
+                year = DateTime.UtcNow.Year;
+            }
+
             Int64 deltaCentsYear = account.GetDeltaCents(new DateTime(year, 1, 1),
                 new DateTime(year + 1, 1, 1));
             Int64 budgetYear = account.GetBudgetCents(year);

@@ -36,6 +36,40 @@
 
     }
 
+    publicSymbols.formatCurrency = formatCurrency;
+    function formatCurrency(number, callbackSuccess, callbackError) {
+        if (callbackSuccess === undefined) {
+            alert("FormatCurrency() called without callbackSuccess parameter. This is not allowed.");
+            return ("[Undefined]");
+        }
+
+        var jsonData = {};
+        jsonData.input = number;
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: '/Automation/Formatting.aspx/FormatCurrency',
+            dataType: 'json',
+            data: $.toJSON(jsonData),
+
+            success: function (data) {
+                callbackSuccess(data.d);
+            },
+
+            error: function () {
+                if (callbackError !== undefined) {
+                    callbackError();
+                } else {
+                    alertify.error("AJAX error calling SwarmopsJS.FormatCurrency. Are the server and network still available?");  // TODO: Loc - how?
+                    callbackSuccess("[Undefined]");
+                }
+            }
+        });
+
+    }
+
+
     publicSymbols.ajaxCall = ajaxCall;
     function ajaxCall(url, params, successFunction, errorFunction) {
         $.ajax({
