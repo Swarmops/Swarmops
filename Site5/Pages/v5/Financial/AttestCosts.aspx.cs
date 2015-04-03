@@ -118,7 +118,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             char recordType = recordId[0];
             int itemId = Int32.Parse (recordId.Substring (1));
-            FinancialAccount newAccount = FinancialAccount.FromIdentity(itemId);
+            FinancialAccount newAccount = FinancialAccount.FromIdentity(newAccountId);
 
             switch (recordType)
             {
@@ -133,14 +133,24 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     claim.SetBudget (newAccount, authData.CurrentUser);
                     break;
                 case 'A': // Cash advance
-                    CashAdvance advance = CashAdvance.FromIdentity (itemId);
+                    CashAdvance advance = CashAdvance.FromIdentity(itemId);
                     if (advance.Budget.OrganizationId != authData.CurrentOrganization.Identity ||
                         advance.Budget.OwnerPersonId != authData.CurrentUser.Identity ||
                         newAccount.OrganizationId != authData.CurrentOrganization.Identity)
                     {
                         throw new UnauthorizedAccessException();
                     }
-                    advance.Budget = newAccount;  // no accounting changes
+                    advance.Budget = newAccount;  // no accounting changes, so just change
+                    break;
+                case 'I': // Cash advance
+                    InboundInvoice invoice = InboundInvoice.FromIdentity (itemId);
+                    if (invoice.Budget.OrganizationId != authData.CurrentOrganization.Identity ||
+                        invoice.Budget.OwnerPersonId != authData.CurrentUser.Identity ||
+                        newAccount.OrganizationId != authData.CurrentOrganization.Identity)
+                    {
+                        throw new UnauthorizedAccessException();
+                    }
+                    invoice.SetBudget (newAccount, authData.CurrentUser);
                     break;
                 default:
                     throw new NotImplementedException("Unknown record type");

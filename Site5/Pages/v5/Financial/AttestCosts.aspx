@@ -296,6 +296,7 @@
 
         function onRebudgetRecord() {
             var newAccountId = <%=this.DropBudgetsRebudget.ClientID%>_val();
+            alert(newAccountId);
             if (newAccountId == 0) {
                 alertify.error(decodeURIComponent('<asp:Literal ID="LiteralPleaseSelectBudget" runat="server" />'));
                 return;
