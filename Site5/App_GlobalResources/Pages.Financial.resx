@@ -219,8 +219,8 @@
     <value>There are not enough funds remaining in the budget to attest this cost.</value>
   </data>
   <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
-    <value>There are not enough funds to attest this. You can attest up to {0} {1:N2} for this year and budget.</value>
-    <comment>The {0} is the currency and the {1} is the remaining budget.</comment>
+    <value>There are not enough funds to attest this. You can attest up to {0} {1:N2} more for {2} in this budget.</value>
+    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
   </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>Attest Costs</value>

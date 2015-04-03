@@ -91,6 +91,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             this.LiteralErrorInsufficientBudget.Text =
                 System.Uri.EscapeDataString (Resources.Pages.Financial.AttestCosts_OutOfBudget);
+
+            this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
+            this.LabelDescribeDifferentAmount.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount;
+            this.LabelDescribeRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionRebudget;
+
+            this.LabelRadioAmount.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionAmount;
+            this.LabelRadioDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionDeny;
+            this.LabelRadioRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionRebudget;
+
+            this.LiteralButtonAmount.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount;
+            this.LiteralButtonDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonDeny;
+            this.LiteralButtonRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonRebudget;
+
+            this.LabelModalDenyHeader.Text = Resources.Pages.Financial.AttestCosts_Modal_Header;
+            this.LabelWhatProblem.Text = Resources.Pages.Financial.AttestCosts_Modal_WhatIsProblem;
         }
 
         [WebMethod]

@@ -335,7 +335,7 @@
     
     <Swarmops5:ModalDialog ID="DialogDeny" runat="server" >
         <DialogCode>
-            <h2><asp:Label ID="ModalDenyHeader" runat="server" Text="Fix Problems Or Deny Attestation XYZ" /></h2>
+            <h2><asp:Label ID="LabelModalDenyHeader" runat="server" Text="Fix Problems Or Deny Attestation XYZ" /></h2>
             <p><asp:Literal ID="LabelWhatProblem" runat="server" Text="What seems to be the problem? XYZ" /></p>
             <p><input type="radio" id="RadioDeny" name="ModalOptions" value="Deny" /><label for="RadioDeny"><asp:Label runat="server" ID="LabelRadioDeny" Text="I will not attest this record. It is scratched. XYZ" /></label></p>
             <div id="radioOptionDeny" class="radioOption">
@@ -344,7 +344,7 @@
                     <input type="button" value='<asp:Literal ID="LiteralButtonDeny" runat="server" Text="RebudgetXYZ" />' class="buttonAccentColor" onclick="onDenyRecord(); return false;" id="buttonExecuteDeny"/>
                 </div>
                 <div class="entryLabels">
-                    <asp:Label runat="server" ID="Label2" Text="Optional explanation to submitter: XYZ" />
+                    <asp:Label runat="server" ID="LabelDescribeDeny" Text="Optional explanation to submitter: XYZ" />
                 </div>
                 <div style="clear:both"></div>
             </div>
