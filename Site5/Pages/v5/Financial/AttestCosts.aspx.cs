@@ -141,7 +141,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         throw new UnauthorizedAccessException();
                     }
                     advance.Budget = newAccount;  // no accounting changes
-
+                    break;
+                default:
+                    throw new NotImplementedException("Unknown record type");
             }
         }
 
