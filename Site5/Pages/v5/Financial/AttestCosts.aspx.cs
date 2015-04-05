@@ -133,7 +133,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
 
         [WebMethod]
-        public static void DenyItem (string recordId, string reason)
+        public static AjaxCallResult DenyItem (string recordId, string reason)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             IPayable payable = PayableFromRecordId (recordId);
@@ -145,7 +145,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new UnauthorizedAccessException();
             }
 
+            if (String.IsNullOrEmpty (reason.Trim()))
+            {
+                reason = Resources.Global.Global_NoReasonGiven;
+            }
+
             payable.DenyAttestation (authData.CurrentUser, reason);
+
+            return new AjaxCallResult { Success = true };
         }
 
 

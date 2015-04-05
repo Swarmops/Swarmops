@@ -70,7 +70,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string CashAdvance_Attested_Subject {
             get {
@@ -90,7 +90,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [OrganizationName] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat].
         /// </summary>
         internal static string CashAdvance_Deattested_Subject {
             get {

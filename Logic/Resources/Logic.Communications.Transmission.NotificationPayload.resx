@@ -121,7 +121,7 @@
     <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you.</value>
   </data>
   <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Cash Advance Attested: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Deattested_Body" xml:space="preserve">
     <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been DE-attested by the budget owner. This usually indicates some sort of problem with your request.
@@ -129,7 +129,7 @@
 Expect more communication from the budget owner to follow on the matter.</value>
   </data>
   <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Denied_Body" xml:space="preserve">
     <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:

@@ -303,6 +303,7 @@
             $('#IconApproval' + recordId).hide();
             $('#IconDenial' + recordId).hide();
             $('#IconDenied' + recordId).attr('src', '/Images/Abstract/ajaxloader-48x36px.gif');
+            $('#IconDenied' + recordId).show();
             <%= this.DialogDeny.ClientID %>_close();
 
             SwarmopsJS.ajaxCall(
@@ -312,6 +313,8 @@
                     if (result.Success) {
                         $(this).attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
                         $(this).fadeIn();  // was visible already, but this will create an effect as it changes image
+                        $('.row' + $(this).attr('baseid')).animate({ color: "#CCC" }, 500);
+                        $('.row' + $(this).attr('baseid')).css('text-decoration', 'line-through');
                     } else {
                         // Failure can happen for many reasons, all bad, so we're just reloading the
                         // entire grid to cover our bases
