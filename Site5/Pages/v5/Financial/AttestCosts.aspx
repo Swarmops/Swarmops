@@ -294,6 +294,35 @@
             budgetRemainingLookup.attestabilityInitialized = true;
         }
 
+
+        function onDenyRecord() {
+            var reason = $('#<%=this.TextDenyReason.ClientID%>').val();
+
+            // hide yes/no icons, show denied icon, but set it to "loading" icon until completed
+            
+            $('#IconApproval' + recordId).hide();
+            $('#IconDenial' + recordId).hide();
+            $('#IconDenied' + recordId).attr('src', '/Images/Abstract/ajaxloader-48x36px.gif');
+            <%= this.DialogDeny.ClientID %>_close();
+
+            SwarmopsJS.ajaxCall(
+                "/Pages/v5/Financial/AttestCosts.aspx/DenyItem",
+                { recordId: recordId, reason: reason },
+                $.proxy(function(result) {
+                    if (result.Success) {
+                        $(this).attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
+                        $(this).fadeIn();  // was visible already, but this will create an effect as it changes image
+                    } else {
+                        // Failure can happen for many reasons, all bad, so we're just reloading the
+                        // entire grid to cover our bases
+                        alertify.error(result.DisplayMessage);
+                        recheckBudgets();
+                        $('#TableAttestableCosts').datagrid('reload');
+                    }
+                }, $('#IconDenied' + recordId)));
+        }
+
+
         function onRebudgetRecord() {
             var newAccountId = <%=this.DropBudgetsRebudget.ClientID%>_val();
             if (newAccountId == 0) {
@@ -333,7 +362,8 @@
                     if (!result.Success) {
                         alertify.error(result.DisplayMessage);
                     } else {
-                        // Succeeded, attested for new amount. Since amount was changed, reload grid
+                        // Succeeded, attested for new amount. Since amount was changed, reload grid and budgets
+                        recheckBudgets();
                         $('#TableAttestableCosts').datagrid('reload');
                         <%= this.DialogDeny.ClientID %>_close();
                     }

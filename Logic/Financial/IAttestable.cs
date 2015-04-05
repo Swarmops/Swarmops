@@ -7,5 +7,7 @@ namespace Swarmops.Logic.Financial
         FinancialAccount Budget { get; }
         void Attest (Person attester);
         void Deattest (Person deattester);
+
+        void DenyAttestation(Person denyingPerson, string reason);
     }
 }

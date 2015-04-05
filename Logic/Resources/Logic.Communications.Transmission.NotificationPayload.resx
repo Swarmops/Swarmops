@@ -131,6 +131,15 @@ Expect more communication from the budget owner to follow on the matter.</value>
   <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
     <value>[OrganizationName] Cash Advance DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Cash Advance DENIED: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
   <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
     <value>Your request for a cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been marked as paid out by the organization's accountants.
 
@@ -176,7 +185,10 @@ Expect more communication from the budget owner to follow on the matter.</value>
     <value>[[OrganizationName]] Expense Claim DE-attested: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
-    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. Expect more communications to follow on what you need to do to file a proper expense claim.</value>
+    <value>Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:
+
+[EmbeddedPreformattedText]
+</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">

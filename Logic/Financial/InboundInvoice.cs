@@ -115,7 +115,7 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested (Identity, true);
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
                 FinancialDependencyType.InboundInvoice, Identity,
-                DateTime.Now, attester.Identity, (double) Amount);
+                DateTime.UtcNow, attester.Identity, (double) Amount);
             base.Attested = true;
         }
 
@@ -124,8 +124,17 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().SetInboundInvoiceAttested (Identity, false);
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
                 FinancialDependencyType.InboundInvoice, Identity,
-                DateTime.Now, deattester.Identity, (double) Amount);
+                DateTime.UtcNow, deattester.Identity, (double) Amount);
             base.Attested = false;
+        }
+
+        public void DenyAttestation (Person denyingPerson, string reason)
+        {
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Kill,
+                FinancialDependencyType.InboundInvoice, Identity,
+                DateTime.UtcNow, denyingPerson.Identity, (double)Amount);
+            Attested = false;
+            Open = false;
         }
 
         #endregion

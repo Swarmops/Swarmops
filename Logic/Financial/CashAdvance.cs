@@ -62,7 +62,7 @@ namespace Swarmops.Logic.Financial
         public void Attest (Person attester)
         {
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
-                FinancialDependencyType.CashAdvance, Identity, DateTime.Now, attester.Identity, AmountCents/100.0);
+                FinancialDependencyType.CashAdvance, Identity, DateTime.UtcNow, attester.Identity, AmountCents/100.0);
             SwarmDb.GetDatabaseForWriting().SetCashAdvanceAttested (Identity, true, attester.Identity);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Person, AmountCents/100.0, Description,
@@ -72,12 +72,24 @@ namespace Swarmops.Logic.Financial
         public void Deattest (Person deattester)
         {
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
-                FinancialDependencyType.CashAdvance, Identity, DateTime.Now, deattester.Identity, AmountCents/100.0);
+                FinancialDependencyType.CashAdvance, Identity, DateTime.UtcNow, deattester.Identity, AmountCents/100.0);
             SwarmDb.GetDatabaseForWriting().SetCashAdvanceAttested (Identity, false, Person.NobodyId);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Person, AmountCents/100.0, Description,
                 NotificationResource.CashAdvance_Deattested);
         }
+
+        public void DenyAttestation (Person denyingPerson, string reason)
+        {
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Kill,
+                FinancialDependencyType.CashAdvance, Identity, DateTime.UtcNow, denyingPerson.Identity, AmountCents / 100.0);
+
+            OutboundComm.CreateNotificationOfFinancialValidation(Budget, Person, AmountCents / 100.0, Description,
+                NotificationResource.CashAdvance_Denied, reason);
+            Attested = false;
+            Open = false;
+        }
+
 
         #endregion
 
@@ -198,6 +210,7 @@ namespace Swarmops.Logic.Financial
         public void SetAmountCents(Int64 newAmount, Person settingPerson)
         {
             SwarmDb.GetDatabaseForWriting().SetCashAdvanceAmountCents (this.Identity, newAmount);
+            base.AmountCents = newAmount;
         }
     }
 }

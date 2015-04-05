@@ -292,7 +292,7 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated (Identity, true);
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Validation,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.Now, validator.Identity, (double) Amount);
+                DateTime.UtcNow, validator.Identity, (double) Amount);
             base.Validated = true;
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
@@ -304,7 +304,7 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().SetExpenseClaimValidated (Identity, false);
             SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Devalidation,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.Now, devalidator.Identity, (double) Amount);
+                DateTime.UtcNow, devalidator.Identity, (double) Amount);
             base.Validated = false;
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
@@ -317,11 +317,10 @@ namespace Swarmops.Logic.Financial
 
         public void Attest (Person attester)
         {
-            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested (Identity, true);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Attestation,
+            Attested = true;
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Attestation,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.Now, attester.Identity, (double) Amount);
-            base.Attested = true;
+                DateTime.UtcNow, attester.Identity, (double) Amount);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
                 NotificationResource.ExpenseClaim_Attested);
@@ -329,14 +328,25 @@ namespace Swarmops.Logic.Financial
 
         public void Deattest (Person deattester)
         {
-            SwarmDb.GetDatabaseForWriting().SetExpenseClaimAttested (Identity, false);
-            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation (FinancialValidationType.Deattestation,
+            Attested = false;
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Deattestation,
                 FinancialDependencyType.ExpenseClaim, Identity,
-                DateTime.Now, deattester.Identity, (double) Amount);
-            base.Attested = false;
+                DateTime.UtcNow, deattester.Identity, (double) Amount);
 
             OutboundComm.CreateNotificationOfFinancialValidation (Budget, Claimer, AmountCents/100.0, Description,
                 NotificationResource.ExpenseClaim_Deattested);
+        }
+
+        public void DenyAttestation (Person denyingPerson, string reason)
+        {
+            Attested = false;
+            Open = false;
+            SwarmDb.GetDatabaseForWriting().CreateFinancialValidation(FinancialValidationType.Kill,
+                FinancialDependencyType.ExpenseClaim, Identity,
+                DateTime.UtcNow, denyingPerson.Identity, (double)Amount);
+
+            OutboundComm.CreateNotificationOfFinancialValidation(Budget, Claimer, AmountCents / 100.0, Description,
+                NotificationResource.ExpenseClaim_Denied, reason);
         }
 
         #endregion
@@ -378,6 +388,12 @@ namespace Swarmops.Logic.Financial
             base.AmountCents = amountCents;
             SwarmDb.GetDatabaseForWriting().SetExpenseClaimAmount (Identity, amountCents);
             UpdateFinancialTransaction (settingPerson);
+
+            if (Validated)
+            {
+                // Reset validation, since amount was changed
+                Devalidate (settingPerson);
+            }
         }
 
 
@@ -402,7 +418,7 @@ namespace Swarmops.Logic.Financial
 
             // Mark transaction as invalid in description
 
-            FinancialTransaction.Description = "Expense Claim #" + Identity + " (killed/zeroed)";
+            FinancialTransaction.Description = "[strikeout]Expense Claim #" + Identity;
         }
 
 

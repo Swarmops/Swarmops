@@ -667,4 +667,8 @@
     <value>Swarmops does not understand your currency amount. (One thousand money and zero cents are written like "{0:N2}".) Try again?</value>
     <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
   </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>No reason was specified.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
 </root>

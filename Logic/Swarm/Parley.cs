@@ -193,6 +193,13 @@ namespace Swarmops.Logic.Swarm
             // this.BudgetId = this.Budget.ParentIdentity;
         }
 
+        public void DenyAttestation (Person denyingPerson, string denyReason)
+        {
+            // Re-implement if and when parleys are resurrected
+
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         public FinancialAccount Budget

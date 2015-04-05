@@ -159,6 +159,9 @@ namespace Swarmops.Logic.Communications
         }
 
 
+
+
+
         public static OutboundComm CreateNotificationAttestationNeeded (FinancialAccount budget, Person concernedPerson,
             string supplier, double amountRequested, string purpose, NotificationResource notification)
         {
@@ -166,7 +169,7 @@ namespace Swarmops.Logic.Communications
             payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.DisplayCode;
             payload.Strings[NotificationString.OrganizationName] = budget.Organization.Name;
             payload.Strings[NotificationString.BudgetAmountFloat] =
-                amountRequested.ToString (CultureInfo.InvariantCulture);
+                amountRequested.ToString ("N2");
             payload.Strings[NotificationString.RequestPurpose] = purpose;
             payload.Strings[NotificationString.Description] = purpose;
             payload.Strings[NotificationString.Supplier] = supplier;
@@ -201,7 +204,7 @@ namespace Swarmops.Logic.Communications
             payload.Strings[NotificationString.CurrencyCode] = organization.Currency.DisplayCode;
             payload.Strings[NotificationString.OrganizationName] = organization.Name;
             payload.Strings[NotificationString.BudgetAmountFloat] =
-                amountRequested.ToString (CultureInfo.InvariantCulture);
+                amountRequested.ToString("N2");
 
             OutboundComm comm = OutboundComm.Create (null, null, organization, CommResolverClass.Unknown, null,
                 CommTransmitterClass.CommsTransmitterMail,
@@ -222,16 +225,17 @@ namespace Swarmops.Logic.Communications
 
 
         public static OutboundComm CreateNotificationOfFinancialValidation (FinancialAccount budget,
-            Person concernedPerson, double amountRequested, string purpose, NotificationResource notification)
+            Person concernedPerson, double amountRequested, string purpose, NotificationResource notification, string reasonGiven="")
         {
             NotificationPayload payload = new NotificationPayload (notification.ToString());
             payload.Strings[NotificationString.CurrencyCode] = budget.Organization.Currency.DisplayCode;
             payload.Strings[NotificationString.OrganizationName] = budget.Organization.Name;
             payload.Strings[NotificationString.BudgetAmountFloat] =
-                amountRequested.ToString (CultureInfo.InvariantCulture);
+                amountRequested.ToString("N2");
             payload.Strings[NotificationString.RequestPurpose] = purpose;
             payload.Strings[NotificationString.BudgetName] = budget.Name;
             payload.Strings[NotificationString.ConcernedPersonName] = concernedPerson.Canonical;
+            payload.Strings[NotificationString.EmbeddedPreformattedText] = reasonGiven;
 
             OutboundComm comm = OutboundComm.Create (null, null, budget.Organization, CommResolverClass.Unknown, null,
                 CommTransmitterClass.CommsTransmitterMail,

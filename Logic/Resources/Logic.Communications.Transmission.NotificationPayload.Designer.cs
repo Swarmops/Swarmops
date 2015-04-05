@@ -99,6 +99,27 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:
+        ///
+        ///[EmbeddedPreformattedText]
+        ///.
+        /// </summary>
+        internal static string CashAdvance_Denied_Body {
+            get {
+                return ResourceManager.GetString("CashAdvance_Denied_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Cash Advance DENIED: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string CashAdvance_Denied_Subject {
+            get {
+                return ResourceManager.GetString("CashAdvance_Denied_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your request for a cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been marked as paid out by the organization&apos;s accountants.
         ///
         ///This means you should see the amount on your account shortly..
@@ -197,7 +218,10 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. Expect more communications to follow on what you need to do to file a proper expense claim..
+        ///   Looks up a localized string similar to Your expense claim with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat] concerning [RequestPurpose] has been denied. The text below was given as reason for denying it:
+        ///
+        ///[EmbeddedPreformattedText]
+        ///.
         /// </summary>
         internal static string ExpenseClaim_Denied_Body {
             get {

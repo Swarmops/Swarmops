@@ -130,7 +130,24 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     throw new NotImplementedException("Unknown record type");
             }
         }
-        
+
+
+        [WebMethod]
+        public static void DenyItem (string recordId, string reason)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            IPayable payable = PayableFromRecordId (recordId);
+            FinancialAccount budget = payable.Budget;
+
+            if (budget.OrganizationId != authData.CurrentOrganization.Identity ||
+                budget.OwnerPersonId != authData.CurrentUser.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            payable.DenyAttestation (authData.CurrentUser, reason);
+        }
+
 
         [WebMethod]
         public static void RebudgetItem (string recordId, int newAccountId)
@@ -233,28 +250,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             };
         }
 
-        [WebMethod]
-        public static string GetOverdraftMessage (int accountId)
-        {
-            AuthenticationData authData = GetAuthenticationDataAndCulture();
-            FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
-            if (account.OrganizationId != authData.CurrentOrganization.Identity)
-            {
-                throw new UnauthorizedAccessException();
-            }
-
-            if (authData.CurrentUser.Identity != account.OwnerPersonId)
-            {
-                throw new UnauthorizedAccessException();
-            }
-
-            int year = DateTime.UtcNow.Year;
-            Int64 budgetRemainingCents = GetBudgetRemaining (account, year);
-
-            return String.Format (Resources.Pages.Financial.AttestCosts_OutOfBudgetPrecise,
-                authData.CurrentOrganization.Currency.DisplayCode, budgetRemainingCents/100.0, year);
-        }
 
         [WebMethod]
         public static BudgetRemainder[] GetRemainingBudgets()
@@ -371,7 +367,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             Int64 deltaCentsYear = account.GetDeltaCents(new DateTime(year, 1, 1),
                 new DateTime(year + 1, 1, 1));
             Int64 budgetYear = account.GetBudgetCents(year);
-            return -(budgetYear - deltaCentsYear);
+
+            Dictionary<int, Int64> adjustments = GetAccountingAdjustments (account.Organization);
+
+            return -(budgetYear - deltaCentsYear) + (adjustments.ContainsKey(account.Identity)? adjustments[account.Identity]: 0);
         }
 
         public class BudgetRemainder
@@ -403,15 +402,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            IAttestable attestableItem = null;
-            string attestedTemplate = string.Empty;
-            string deattestedTemplate = string.Empty;
+            IAttestable attestableItem;
+            string attestedTemplate;
+            string deattestedTemplate;
 
             char costType = identifier[0];
             int itemId = Int32.Parse (identifier.Substring (1));
             Int64 amountCents;
-            string beneficiary = string.Empty;
-            string result = string.Empty;
+            string beneficiary;
+            string result;
 
             // Find the item we are attesting or deattesting
 

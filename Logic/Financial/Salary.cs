@@ -138,6 +138,14 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().SetSalaryAttested (Identity, false);
         }
 
+        public void DenyAttestation (Person denyingPerson, string reason)
+        {
+            // Denying a salary payout is not to be taken lightly. This needs to be a larger feature. Until
+            // then, it's not implemented at all.
+
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         public FinancialAccount Budget // needed for IAttestable
