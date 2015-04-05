@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Financial\IPayable.cs" />
     <Compile Include="Resources\Logic.Financial.FinancialAccount.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.ServiceModel.Security;
+using System.Threading;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -92,14 +94,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralErrorInsufficientBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_OutOfBudget);
 
             this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
-            this.LabelDescribeDifferentAmount.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency.DisplayCode);
+            this.LabelDescribeCorrect.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency.DisplayCode);
             this.LabelDescribeRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionRebudget;
 
-            this.LabelRadioAmount.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionAmount;
+            this.LabelRadioCorrect.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionAmount;
             this.LabelRadioDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionDeny;
             this.LabelRadioRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_RadioOptionRebudget;
 
-            this.LiteralButtonAmount.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount; // these may be flagged red by Resharper. That's Resharper being wrong.
+            this.LiteralButtonCorrect.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonAmount; // these may be flagged red by Resharper. That's Resharper being wrong.
             this.LiteralButtonDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonDeny;
             this.LiteralButtonRebudget.Text = Resources.Pages.Financial.AttestCosts_Modal_ButtonRebudget;
 
@@ -111,50 +113,124 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 JavascriptEscape (Resources.Pages.Financial.AttestCosts_Error_CantRebudgetSalary);
         }
 
+        static protected IPayable PayableFromRecordId (string recordId)
+        {
+            char recordType = recordId[0];
+            int itemId = Int32.Parse(recordId.Substring(1));
+            
+            switch (recordType)
+            {
+                case 'E': // Expense claim
+                    return ExpenseClaim.FromIdentity (itemId);
+                case 'A': // Cash advance
+                    return CashAdvance.FromIdentity(itemId);
+                case 'I': // Inbound invoice
+                    return InboundInvoice.FromIdentity (itemId);
+                default:
+                    throw new NotImplementedException("Unknown record type");
+            }
+        }
+        
+
         [WebMethod]
         public static void RebudgetItem (string recordId, int newAccountId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            char recordType = recordId[0];
-            int itemId = Int32.Parse (recordId.Substring (1));
+            IPayable payable = PayableFromRecordId (recordId);
             FinancialAccount newAccount = FinancialAccount.FromIdentity(newAccountId);
 
-            switch (recordType)
+            if (payable.Budget.OrganizationId != authData.CurrentOrganization.Identity ||
+                payable.Budget.OwnerPersonId != authData.CurrentUser.Identity ||
+                newAccount.OrganizationId != authData.CurrentOrganization.Identity)
             {
-                case 'E': // Expense claim
-                    ExpenseClaim claim = ExpenseClaim.FromIdentity (itemId);
-                    if (claim.Budget.OrganizationId != authData.CurrentOrganization.Identity ||
-                        claim.Budget.OwnerPersonId != authData.CurrentUser.Identity ||
-                        newAccount.OrganizationId != authData.CurrentOrganization.Identity)
-                    {
-                        throw new UnauthorizedAccessException();
-                    }
-                    claim.SetBudget (newAccount, authData.CurrentUser);
-                    break;
-                case 'A': // Cash advance
-                    CashAdvance advance = CashAdvance.FromIdentity(itemId);
-                    if (advance.Budget.OrganizationId != authData.CurrentOrganization.Identity ||
-                        advance.Budget.OwnerPersonId != authData.CurrentUser.Identity ||
-                        newAccount.OrganizationId != authData.CurrentOrganization.Identity)
-                    {
-                        throw new UnauthorizedAccessException();
-                    }
-                    advance.Budget = newAccount;  // no accounting changes, so just change
-                    break;
-                case 'I': // Cash advance
-                    InboundInvoice invoice = InboundInvoice.FromIdentity (itemId);
-                    if (invoice.Budget.OrganizationId != authData.CurrentOrganization.Identity ||
-                        invoice.Budget.OwnerPersonId != authData.CurrentUser.Identity ||
-                        newAccount.OrganizationId != authData.CurrentOrganization.Identity)
-                    {
-                        throw new UnauthorizedAccessException();
-                    }
-                    invoice.SetBudget (newAccount, authData.CurrentUser);
-                    break;
-                default:
-                    throw new NotImplementedException("Unknown record type");
+                throw new UnauthorizedAccessException();
             }
+
+            payable.SetBudget (newAccount, authData.CurrentUser);
+        }
+
+        [WebMethod]
+        public static AjaxCallResult AttestCorrectedItem(string recordId, string amountString)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            double amount = 0.0;
+
+            try
+            {
+                amount = Double.Parse (amountString, NumberStyles.Currency, Thread.CurrentThread.CurrentCulture);
+            }
+            catch (Exception)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = String.Format(Resources.Global.Error_CurrencyParsing, 1000.00)
+                };
+            }
+
+            Int64 amountCents = (Int64) (amount*100);
+
+            if (amountCents < 0)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Pages.Financial.AttestCosts_CannotAttestNegative
+                };
+            }
+
+            if (amountCents == 0)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Pages.Financial.AttestCosts_CannotAttestZero
+                };
+            }
+
+            IPayable payable = PayableFromRecordId (recordId);
+            FinancialAccount budget = payable.Budget;
+
+            if (budget.OrganizationId != authData.CurrentOrganization.Identity ||
+                budget.OwnerPersonId != authData.CurrentUser.Identity)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            Int64 centsRemaining = GetBudgetRemaining (budget);
+
+            if (centsRemaining/100.0 < amount)
+            {
+                // TODO: Handle the special case where the IPayable is not on current year, so against another (last) year's budget
+
+                string notEnoughFunds;
+
+                if (centsRemaining > 0)
+                {
+                    notEnoughFunds = String.Format (Resources.Pages.Financial.AttestCosts_OutOfBudgetPrecise,
+                        authData.CurrentOrganization.Currency.DisplayCode, centsRemaining/100.0, DateTime.UtcNow.Year);
+                }
+                else
+                {
+                    notEnoughFunds = String.Format (Resources.Pages.Financial.AttestCosts_BudgetIsEmpty,
+                        DateTime.UtcNow.Year);
+                }
+
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = notEnoughFunds
+                };
+            }
+
+            payable.SetAmountCents (amountCents, authData.CurrentUser);
+            payable.Attest (authData.CurrentUser);
+
+            return new AjaxCallResult
+            {
+                Success = true
+            };
         }
 
         [WebMethod]
@@ -303,11 +379,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             public int AccountId { get; set; }
             public double Remaining { get; set; }
         }
-        
-        
+
+       
         
         [WebMethod]
-        public static AttestOperationResult Attest (string identifier)
+        public static AjaxCallResult Attest (string identifier)
         {
             identifier = HttpUtility.UrlDecode (identifier);
 
@@ -315,7 +391,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
         [WebMethod]
-        public static AttestOperationResult Deattest (string identifier)
+        public static AjaxCallResult Deattest (string identifier)
         {
             identifier = HttpUtility.UrlDecode (identifier);
 
@@ -323,7 +399,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         }
 
 
-        private static AttestOperationResult HandleAttestationDeattestation (string identifier, AttestationMode mode)
+        private static AjaxCallResult HandleAttestationDeattestation (string identifier, AttestationMode mode)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
@@ -455,7 +531,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 if (amountCents > budgetRemaining)
                 {
-                    return new AttestOperationResult
+                    return new AjaxCallResult
                     {
                         DisplayMessage = Resources.Pages.Financial.AttestCosts_OutOfBudget,
                         Success = false
@@ -479,7 +555,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException ("Unknown Attestation Mode: " + mode);
             }
 
-            return new AttestOperationResult {DisplayMessage = result, Success = true};
+            return new AjaxCallResult {DisplayMessage = result, Success = true};
         }
 
 
@@ -554,11 +630,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             public string Title { get; set; }
         }
 
-        public struct AttestOperationResult
-        {
-            public string DisplayMessage;
-            public bool Success;
-        }
 
     }
 }

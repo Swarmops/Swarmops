@@ -663,4 +663,8 @@
   <data name="Global_Error_WebsocketFailure" xml:space="preserve">
     <value>Unable to connect WebSocket. Live updates will not be available.</value>
   </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Swarmops does not understand your currency amount. (One thousand money and zero cents are written like "{0:N2}".) Try again?</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
 </root>

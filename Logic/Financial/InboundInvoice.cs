@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NBitcoin;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
@@ -13,7 +14,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class InboundInvoice : BasicInboundInvoice, IAttestable
+    public class InboundInvoice : BasicInboundInvoice, IAttestable, IPayable
     {
         private InboundInvoice (BasicInboundInvoice basicInstance) :
             base (basicInstance)
@@ -220,6 +221,21 @@ namespace Swarmops.Logic.Financial
             }
 
             FinancialTransaction.RecalculateTransaction (nominalTransaction, updatingPerson);
+        }
+
+        public bool PaidOut   // IPayable implementation
+        {
+            get { return (!Open && Attested); }
+            set
+            {
+                if (Attested)
+                {
+                    Open = false;
+                    return;
+                }
+
+                throw new InvalidOperationException("Can't set PaidOut if Attested is false");
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Financial
 {
-    public class ExpenseClaim : BasicExpenseClaim, IValidatable, IAttestable
+    public class ExpenseClaim : BasicExpenseClaim, IValidatable, IAttestable, IPayable
     {
         #region Construction and Creation
 
@@ -432,6 +432,12 @@ namespace Swarmops.Logic.Financial
             }
 
             FinancialTransaction.RecalculateTransaction (nominalTransaction, updatingPerson);
+        }
+
+        public bool PaidOut // IPayable naming convention
+        {
+            get { return this.Repaid; }
+            set { this.Repaid = value;  }
         }
     }
 }

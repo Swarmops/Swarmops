@@ -68,6 +68,8 @@
     <Compile Include="Enums\PositionTitle.cs" />
     <Compile Include="Enums\PositionType.cs" />
     <Compile Include="Enums\RoleTypeClass.cs" />
+    <Compile Include="Exceptions\ConcurrencyException.cs" />
+    <Compile Include="Exceptions\DatabaseConcurrencyException.cs" />
     <Compile Include="Generics\Tree.cs" />
     <Compile Include="Interfaces\IEmailPerson.cs" />
     <Compile Include="Interfaces\IHandleProvider.cs" />

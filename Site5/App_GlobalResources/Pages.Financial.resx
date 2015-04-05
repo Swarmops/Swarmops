@@ -125,6 +125,15 @@
     <value>Cash Advance #{0:N0} for {1} was UN-attested.  It will not be paid out unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
+    <value>You cannot attest this amount. The budget is empty for the year {0}.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
+    <value>You cannot attest a negative amount.</value>
+  </data>
+  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
+    <value>You cannot attest a zero amount.</value>
+  </data>
   <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
     <value>Sorry, you cannot rebudget a salary payout.</value>
   </data>
@@ -186,6 +195,9 @@
     <value>Attest</value>
     <comment>keep short</comment>
   </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>Attest</value>
+  </data>
   <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
     <value>Deny</value>
     <comment>keep short</comment>
@@ -202,6 +214,9 @@
     <value>What amount are you attesting instead (in {0})?</value>
     <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
   </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>Change this item to this amount (in {0}), then attest it like that:</value>
+  </data>
   <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
     <value>Optional reason for denial to the submitter:</value>
   </data>
@@ -213,6 +228,9 @@
   </data>
   <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
     <value>I will attest this, but for a different amount.</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
+    <value>The amount is wrong. I will attest it with the correct amount.</value>
   </data>
   <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
     <value>I will not attest this record. It is scratched.</value>

@@ -104,7 +104,7 @@
                                 accountId = $("#IconApproval" + recordId).attr('accountid');
                                 $('div.radioOption').hide();
                                 $('input:radio[name="ModalOptions"]').prop('checked', false);
-                                SwarmopsJS.formatCurrency(amountRequested, function (data) { $('#<%=this.TextDifferentAmount.ClientID%>_Input').val(data); });
+                                SwarmopsJS.formatCurrency(amountRequested, function (data) { $('#<%=this.TextCorrectAmount.ClientID%>_Input').val(data); });
                                 $('<%=this.TextDenyReason.ClientID%>').val(''); // empty reason
                                 <%=this.DialogDeny.ClientID%>_open();
                             }
@@ -296,7 +296,6 @@
 
         function onRebudgetRecord() {
             var newAccountId = <%=this.DropBudgetsRebudget.ClientID%>_val();
-            alert(newAccountId);
             if (newAccountId == 0) {
                 alertify.error(decodeURIComponent('<asp:Literal ID="LiteralPleaseSelectBudget" runat="server" />'));
                 return;
@@ -317,6 +316,27 @@
                 function(data) {
                     // this is when the change is completed
                     $('#TableAttestableCosts').datagrid('reload');
+                });
+        }
+
+        function onAttestCorrectedAmount() {
+            if (recordId[0] == 'S') // Salary - cannot change amount this way
+            {
+                alertify.error(decodeURIComponent('<asp:Literal ID="LiteralCannotCorrectSalary" runat="server" />'));
+            }
+
+            SwarmopsJS.ajaxCall(
+                "/Pages/v5/Financial/AttestCosts.aspx/AttestCorrectedItem",
+                { recordId: recordId, amountString: $('#<%=this.TextCorrectAmount.ClientID%>_Input').val() },
+                function(result) {
+                    console.log(result);
+                    if (!result.Success) {
+                        alertify.error(result.DisplayMessage);
+                    } else {
+                        // Succeeded, attested for new amount. Since amount was changed, reload grid
+                        $('#TableAttestableCosts').datagrid('reload');
+                        <%= this.DialogDeny.ClientID %>_close();
+                    }
                 });
         }
 
@@ -371,7 +391,7 @@
         <DialogCode>
             <h2><asp:Label ID="LabelModalDenyHeader" runat="server" Text="Fix Problems Or Deny Attestation XYZ" /></h2>
             <p><asp:Literal ID="LabelWhatProblem" runat="server" Text="What seems to be the problem? XYZ" /></p>
-            <p><input type="radio" id="RadioDeny" name="ModalOptions" value="Deny" /><label for="RadioDeny"><asp:Label runat="server" ID="LabelRadioDeny" Text="I will not attest this record. It is scratched. XYZ" /></label></p>
+            <p><input type="radio" id="RadioDeny" name="ModalOptions" value="Deny" onclick="$('#<%=this.TextDenyReason.ClientID%>').focus();" /><label for="RadioDeny"><asp:Label runat="server" ID="LabelRadioDeny" Text="I will not attest this record. It is scratched. XYZ" /></label></p>
             <div id="radioOptionDeny" class="radioOption">
                 <div class="entryFields">
                     <asp:TextBox ID="TextDenyReason" runat="server" TextMode="MultiLine" Rows="3" Placeholder="My hovercraft is full of eels" />&#8203;<br/>
@@ -382,14 +402,14 @@
                 </div>
                 <div style="clear:both"></div>
             </div>
-            <p><input type="radio" id="RadioAmount" name="ModalOptions" value="Amount" /><label for="RadioAmount"><asp:Label runat="server" ID="LabelRadioAmount" Text="I will attest, but for a different amount. XYZ" /></label></p>
-            <div id="radioOptionAmount" class="radioOption">
+            <p><input type="radio" id="RadioCorrect" name="ModalOptions" value="Correct" onclick="$('#<%=this.TextCorrectAmount.ClientID%>_Input').focus().select();" /><label for="RadioCorrect"><asp:Label runat="server" ID="LabelRadioCorrect" Text="I will attest, but for a different amount. XYZ" /></label></p>
+            <div id="radioOptionCorrect" class="radioOption">
                 <div class="entryFields">
-                    <Swarmops5:CurrencyTextBox ID="TextDifferentAmount" runat="server" />&#8203;<br/>
-                    <input type="button" value='<asp:Literal ID="LiteralButtonAmount" runat="server" Text="AmountXYZ" />' class="buttonAccentColor" onclick="onAttestDifferentAmount(); return false;" id="buttonExecuteDifferentAmount"/>
+                    <Swarmops5:CurrencyTextBox ID="TextCorrectAmount" runat="server" />&#8203;<br/>
+                    <input type="button" value='<asp:Literal ID="LiteralButtonCorrect" runat="server" Text="AmountXYZ" />' class="buttonAccentColor" onclick="onAttestCorrectedAmount(); return false;" id="buttonExecuteCorrectedAmount"/>
                 </div>
                 <div class="entryLabels">
-                    <asp:Label runat="server" ID="LabelDescribeDifferentAmount" Text="What amount are you attesting instead (SEK)? XYZ" />
+                    <asp:Label runat="server" ID="LabelDescribeCorrect" Text="What amount are you attesting instead (SEK)? XYZ" />
                 </div>
                 <div style="clear:both"></div>
             </div>

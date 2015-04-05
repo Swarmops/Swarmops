@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Common.Exceptions;
 
 namespace Swarmops.Database
 {
@@ -137,6 +138,29 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "budgetId", budgetId);
 
                 command.ExecuteNonQuery();
+            }
+        }
+
+
+        public void SetCashAdvanceAmountCents(int cashAdvanceId, Int64 amountCents)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetCashAdvanceAmountCents", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "cashAdvanceId", cashAdvanceId);
+                AddParameterWithName(command, "amountCents", amountCents);
+
+                if (Convert.ToInt32(command.ExecuteScalar()) != 1) // returns count of rows updated
+                {
+                    // This assumes that the cash advance ID existed, but that another sesssion modified it first,
+                    // so the selector failed on the Open=1 and PaidOut=0 criteria rather than the Id=X criterion.
+
+                    throw new DatabaseConcurrencyException();
+                }
             }
         }
 

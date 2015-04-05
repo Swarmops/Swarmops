@@ -12,7 +12,7 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Logic.Financial
 {
     [Serializable]
-    public class CashAdvance : BasicCashAdvance, IAttestable
+    public class CashAdvance : BasicCashAdvance, IPayable
     {
         #region Construction and creation
 
@@ -188,5 +188,16 @@ namespace Swarmops.Logic.Financial
             get { return FinancialValidations.ForObject(this); }
         }
 
+
+
+        public void SetBudget(FinancialAccount newBudget, Person settingPerson)
+        {
+            this.Budget = newBudget; // ignore settingPerson
+        }
+
+        public void SetAmountCents(Int64 newAmount, Person settingPerson)
+        {
+            SwarmDb.GetDatabaseForWriting().SetCashAdvanceAmountCents (this.Identity, newAmount);
+        }
     }
 }

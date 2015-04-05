@@ -181,3 +181,10 @@ public class AuthenticationData
     public Organization CurrentOrganization;
     public Person CurrentUser;
 }
+
+
+public class AjaxCallResult
+{
+    public bool Success { get; set; }
+    public string DisplayMessage { get; set; }
+}
