@@ -117,7 +117,7 @@ namespace Swarmops
 
             this.LabelActionPlaceholder1.Text = "Action shortcut 1 (TODO)";
             this.LabelActionPlaceholder2.Text = "Action shortcut 2 (TODO)";
-            this.LabelNoTodoItems.Text = "No Action Items (LOC)";
+            this.LabelNoTodoItems.Text = Resources.Global.Global_NoActionItems;
 
             // Set up todo items
 

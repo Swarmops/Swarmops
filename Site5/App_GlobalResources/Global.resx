@@ -671,4 +671,7 @@
     <value>No reason was specified.</value>
     <comment>As inter-activist communication when denying resources, et cetera</comment>
   </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>No urgent action items. Yay!</value>
+  </data>
 </root>

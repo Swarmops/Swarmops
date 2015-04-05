@@ -55,7 +55,7 @@ namespace Swarmops.Logic.Swarm
             }
 
             todo.Icon = "/Images/PageIcons/iconshock-invoice-greentick-16px.png";
-            todo.Url = "/Pages/v5/Financial/ValidateReceipts.aspx";
+            todo.Url = "/Financial/ValidateReceipts";
 
             Add (todo);
         }
@@ -116,7 +116,7 @@ namespace Swarmops.Logic.Swarm
                 }
 
                 todo.Icon = "/Images/PageIcons/iconshock-stamped-paper-16px.png";
-                todo.Url = "/Pages/v5/Financial/AttestCosts.aspx";
+                todo.Url = "/Financial/AttestCosts";
 
                 Add (todo);
             }
@@ -175,7 +175,7 @@ namespace Swarmops.Logic.Swarm
                 }
 
                 todo.Icon = "/Images/PageIcons/iconshock-stamped-paper-16px.png";
-                todo.Url = "/Pages/v5/Financial/AttestCosts.aspx";
+                todo.Url = "/Financial/AttestCosts";
 
                 Add (todo);
             }
@@ -194,7 +194,7 @@ namespace Swarmops.Logic.Swarm
 
             todoNormal.Url =
                 todoUrgent.Url =
-                    todoOverdue.Url = "/Pages/v5/Financial/PayOutMoney.aspx";
+                    todoOverdue.Url = "/Financial/PayOutMoney";
 
             todoNormal.Icon =
                 todoUrgent.Icon =
