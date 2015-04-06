@@ -233,4 +233,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>crwdns6555593:0crwdne6555593:0</value>
   </data>
+  <data name="SystemSettings_WebsocketPortClient" xml:space="preserve">
+    <value>crwdns6556057:0crwdne6556057:0</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortServer" xml:space="preserve">
+    <value>crwdns6556058:0crwdne6556058:0</value>
+  </data>
 </root>

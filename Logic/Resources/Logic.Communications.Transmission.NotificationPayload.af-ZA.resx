@@ -121,13 +121,19 @@
     <value>crwdns6553646:0[OrganizationName]crwdnd6553646:0[CurrencyCode]crwdnd6553646:0[BudgetAmountFloat]crwdnd6553646:0[RequestPurpose]crwdne6553646:0</value>
   </data>
   <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>crwdns6553647:0[OrganizationName]crwdnd6553647:0[CurrencyCode]crwdnd6553647:0[BudgetAmountFloat]crwdne6553647:0</value>
+    <value>crwdns6556105:0[OrganizationName]crwdnd6556105:0[CurrencyCode]crwdnd6556105:0[BudgetAmountFloat]crwdne6556105:0</value>
   </data>
   <data name="CashAdvance_Deattested_Body" xml:space="preserve">
     <value>crwdns6553648:0[OrganizationName]crwdnd6553648:0[CurrencyCode]crwdnd6553648:0[BudgetAmountFloat]crwdnd6553648:0[RequestPurpose]crwdne6553648:0</value>
   </data>
   <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>crwdns6553649:0[OrganizationName]crwdnd6553649:0[CurrencyCode]crwdnd6553649:0[BudgetAmountFloat]crwdne6553649:0</value>
+    <value>crwdns6556106:0[OrganizationName]crwdnd6556106:0[CurrencyCode]crwdnd6556106:0[BudgetAmountFloat]crwdne6556106:0</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>crwdns6556123:0[OrganizationName]crwdnd6556123:0[CurrencyCode]crwdnd6556123:0[BudgetAmountFloat]crwdnd6556123:0[RequestPurpose]crwdnd6556123:0[EmbeddedPreformattedText]crwdne6556123:0</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>crwdns6556108:0[OrganizationName]crwdnd6556108:0[CurrencyCode]crwdnd6556108:0[BudgetAmountFloat]crwdne6556108:0</value>
   </data>
   <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
     <value>crwdns6553814:0[OrganizationName]crwdnd6553814:0[CurrencyCode]crwdnd6553814:0[BudgetAmountFloat]crwdnd6553814:0[RequestPurpose]crwdne6553814:0</value>
@@ -166,7 +172,7 @@
     <value>crwdns6555545:0[OrganizationName]crwdnd6555545:0[CurrencyCode]crwdnd6555545:0[BudgetAmountFloat]crwdne6555545:0</value>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
-    <value>crwdns6553658:0[OrganizationName]crwdnd6553658:0[CurrencyCode]crwdnd6553658:0[BudgetAmountFloat]crwdnd6553658:0[RequestPurpose]crwdne6553658:0</value>
+    <value>crwdns6556109:0[OrganizationName]crwdnd6556109:0[CurrencyCode]crwdnd6556109:0[BudgetAmountFloat]crwdnd6556109:0[RequestPurpose]crwdnd6556109:0[EmbeddedPreformattedText]crwdne6556109:0</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">

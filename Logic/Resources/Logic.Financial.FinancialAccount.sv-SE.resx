@@ -187,11 +187,22 @@
   <data name="Cost_Staff" xml:space="preserve">
     <value>Personal</value>
   </data>
+  <data name="Cost_StaffBenefits" xml:space="preserve">
+    <value>Löneförmåner m.m.</value>
+    <comment>Non-compensation benefits (car, phone, etc). Usually taxable.</comment>
+  </data>
   <data name="Cost_StaffExpenses" xml:space="preserve">
     <value>Personalomkostnader</value>
   </data>
+  <data name="Cost_StaffPerDiem" xml:space="preserve">
+    <value>Traktamenten</value>
+    <comment>As in "extra travel compensation"</comment>
+  </data>
   <data name="Cost_StaffSalaries" xml:space="preserve">
     <value>Personalens löner</value>
+  </data>
+  <data name="Cost_Taxes" xml:space="preserve">
+    <value>Skatter</value>
   </data>
   <data name="Cost_Transportation" xml:space="preserve">
     <value>Transport</value>
@@ -243,5 +254,8 @@
   </data>
   <data name="Income_Sales" xml:space="preserve">
     <value>Försäljning</value>
+  </data>
+  <data name="Income_SubsidiesGrants" xml:space="preserve">
+    <value>Subventioner och bidrag</value>
   </data>
 </root>

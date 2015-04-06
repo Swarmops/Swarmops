@@ -145,7 +145,7 @@
     <comment>The XXXX is replaced with year number.</comment>
   </data>
   <data name="BalanceSheet_Info" xml:space="preserve">
-    <value>crwdns6555074:0crwdne6555074:0</value>
+    <value>crwdns6556060:0crwdne6556060:0</value>
   </data>
   <data name="BalanceSheet_PageTitle" xml:space="preserve">
     <value>crwdns6555075:0crwdne6555075:0</value>
@@ -178,7 +178,7 @@
     <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
   </data>
   <data name="ProfitLossStatement_Info" xml:space="preserve">
-    <value>crwdns6555086:0crwdne6555086:0</value>
+    <value>crwdns6556061:0crwdne6556061:0</value>
   </data>
   <data name="ProfitLossStatement_LastYear" xml:space="preserve">
     <value>crwdns6555087:0crwdne6555087:0</value>
@@ -727,8 +727,8 @@
     <value>crwdns6555848:0crwdne6555848:0</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
-  <data name="BalanceTransaction_PayoutMatch" xml:space="preserve">
-    <value>crwdns6556051:0{0:N0}crwdnd6556051:0{1:yyyy-MMM-dd}crwdnd6556051:0{2}crwdnd6556051:0{3}crwdnd6556051:0{4:N2}crwdne6556051:0</value>
-    <comment>0 is the payout Id, 1 is the date (do culturally edit format if called for), 2 is the recipient name, and 3 4 is the currency and amount</comment>
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>crwdns6556062:0{0:N0}crwdnd6556062:0{5}crwdnd6556062:0{1:yyyy-MMM-dd}crwdnd6556062:0{2}crwdnd6556062:0{3}crwdnd6556062:0{4:N2}crwdne6556062:0</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
   </data>
 </root>

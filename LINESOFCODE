@@ -167,7 +167,7 @@
     224 ./Database/Database-Newsletters.cs
     269 ./Database/Database-Ballots.cs
     142 ./Database/Database-InternalPollCandidates.cs
-    524 ./Database/Database-CashAdvances.cs
+    565 ./Database/Database-CashAdvances.cs
     133 ./Database/Database-MailTemplates.cs
     519 ./Database/Database-FinancialTransactionTagSetTypes.cs
     313 ./Database/Database-InternalPollVotes.cs
@@ -294,7 +294,7 @@
      24 ./Utility/Mail/Newsletter.cs
      10 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx
-    319 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
+    640 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
     214 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
      88 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
     118 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx.cs
@@ -305,8 +305,8 @@
     149 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx
     221 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
     206 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
-    217 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
-    183 ./Site5/Pages/v5/Financial/AttestCosts.aspx
+    270 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
+    476 ./Site5/Pages/v5/Financial/AttestCosts.aspx
     113 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx.cs
     183 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx
       1 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx
@@ -314,8 +314,8 @@
     229 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx.cs
     145 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
      43 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
-    236 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
-    211 ./Site5/Pages/v5/Admin/OrgSettings.aspx
+    279 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
+    245 ./Site5/Pages/v5/Admin/OrgSettings.aspx
     153 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry2.aspx.cs
     106 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry2.aspx
      16 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx
@@ -326,8 +326,8 @@
     102 ./Site5/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx.cs
      28 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx
      73 ./Site5/Pages/v5/Admin/Hacks/TemporaryHack.aspx.cs
-     58 ./Site5/Pages/v5/Admin/SystemSettings.aspx
-    434 ./Site5/Pages/v5/Admin/OrgSettings.aspx.cs
+     62 ./Site5/Pages/v5/Admin/SystemSettings.aspx
+    447 ./Site5/Pages/v5/Admin/OrgSettings.aspx.cs
     107 ./Site5/Pages/v5/Comms/SendMassMessage.aspx.cs
      63 ./Site5/Pages/v5/Comms/SendMassMessage.aspx
      13 ./Site5/Pages/v5/Security/DatabaseUpgradeRequired.aspx
@@ -379,10 +379,10 @@
      92 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx
      61 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx.cs
    1278 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx.cs
-     98 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.cs
+     96 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.cs
     117 ./Site5/Pages/v5/Ledgers/ProfitLossStatement.aspx
     267 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx
-    191 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx.cs
+    192 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx.cs
     664 ./Site5/Pages/v5/Ledgers/AccountPlan.aspx
     198 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx
     114 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx
@@ -436,7 +436,7 @@
     168 ./Site5/Automation/FieldValidation.aspx.cs
      86 ./Site5/Automation/Json-PositionsTree.aspx.cs
      33 ./Site5/Automation/Json-GetPersonAvatar.aspx.cs
-     30 ./Site5/Automation/Formatting.aspx.cs
+     42 ./Site5/Automation/Formatting.aspx.cs
       1 ./Site5/Automation/Formatting.aspx
     128 ./Site5/Automation/Json-BudgetsTree.aspx.cs
      33 ./Site5/Tests/TestBookkeepingIntegrity.aspx
@@ -452,7 +452,7 @@
       1 ./Site5/Controls/v5/Base/MainMenu.ascx
      83 ./Site5/Controls/v5/Base/AjaxTextBox.ascx
      34 ./Site5/Controls/v5/Base/ModalDialog.ascx.cs
-     49 ./Site5/Controls/v5/Base/AjaxTextBox.ascx.cs
+     61 ./Site5/Controls/v5/Base/AjaxTextBox.ascx.cs
      85 ./Site5/Controls/v5/Base/DropDown.ascx
      49 ./Site5/Controls/v5/Financial/CurrencyTextBox.ascx.cs
      67 ./Site5/Controls/v5/Financial/ComboBudgets.ascx
@@ -473,7 +473,7 @@
     109 ./Site5/Global.asax
     361 ./Site5/App_Code/CommonV5.cs
      63 ./Site5/App_Code/MasterV5Base.cs
-    177 ./Site5/App_Code/PageV5Base.cs
+    190 ./Site5/App_Code/PageV5Base.cs
     157 ./Site5/App_Code/DataV5Base.cs
      65 ./Site5/App_Code/ControlV5Base.cs
       6 ./Common/Interfaces/IHasIdentities.cs
@@ -490,7 +490,7 @@
      59 ./Common/Enums/FinancialDependencyType.cs
      28 ./Common/Enums/PersonOptionalDataKey.cs
     240 ./Common/Enums/RoleTypeClass.cs
-    314 ./Common/Enums/ObjectOptionalDataType.cs
+    323 ./Common/Enums/ObjectOptionalDataType.cs
      18 ./Common/Enums/PositionType.cs
      10 ./Common/Enums/ExpenseEventType.cs
      41 ./Common/Enums/OutboundCommPriority.cs
@@ -513,6 +513,8 @@
       8 ./Common/Enums/PersonGender.cs
      45 ./Common/Enums/MembershipPaymentStatus.cs
      93 ./Common/Generics/Tree.cs
+     16 ./Common/Exceptions/DatabaseConcurrencyException.cs
+     12 ./Common/Exceptions/ConcurrencyException.cs
     530 ./Logic/Special/Sweden/SupportDatabase.cs
      11 ./Logic/Special/Sweden/SupportEmail.cs
    1065 ./Logic/Special/Sweden/SwedishForumDatabase.cs
@@ -530,7 +532,7 @@
      49 ./Logic/Financial/Money.cs
     343 ./Logic/Financial/OutboundInvoice.cs
      57 ./Logic/Financial/FinancialValidations.cs
-    684 ./Logic/Financial/Payout.cs
+    778 ./Logic/Financial/Payout.cs
      12 ./Logic/Financial/IBankDataPaymentsReader.cs
     101 ./Logic/Financial/Currency.cs
     215 ./Logic/Financial/FinancialAccounts.cs
@@ -538,15 +540,16 @@
      17 ./Logic/Financial/StockBankDataReaders.cs
     465 ./Logic/Financial/Payouts.cs
     196 ./Logic/Financial/Payment.cs
-    179 ./Logic/Financial/CashAdvance.cs
+    215 ./Logic/Financial/CashAdvance.cs
      14 ./Logic/Financial/Payments.cs
      75 ./Logic/Financial/TaxLevels.cs
      65 ./Logic/Financial/PayrollAdjustment.cs
      14 ./Logic/Financial/OutboundInvoiceItems.cs
      71 ./Logic/Financial/Refund.cs
-    283 ./Logic/Financial/Salary.cs
+    291 ./Logic/Financial/Salary.cs
       9 ./Logic/Financial/IValidatable.cs
      27 ./Logic/Financial/FinancialTransactionTagType.cs
+     24 ./Logic/Financial/IPayable.cs
      21 ./Logic/Financial/PayrollAdjustments.cs
      26 ./Logic/Financial/OutboundInvoices.cs
     196 ./Logic/Financial/ExternalBankDataProfile.cs
@@ -562,8 +565,8 @@
      32 ./Logic/Financial/FinancialTransactionTagTypes.cs
      77 ./Logic/Financial/FinancialTransactionRow.cs
     109 ./Logic/Financial/ExchangeRateSnapshot.cs
-    224 ./Logic/Financial/InboundInvoice.cs
-    436 ./Logic/Financial/ExpenseClaim.cs
+    249 ./Logic/Financial/InboundInvoice.cs
+    458 ./Logic/Financial/ExpenseClaim.cs
      22 ./Logic/Financial/FinancialValidation.cs
     368 ./Logic/Financial/YearlyReport.cs
      62 ./Logic/Financial/PayrollItem.cs
@@ -572,7 +575,7 @@
       9 ./Logic/Financial/FinancialTransactionTagSetTypesStock.cs
      43 ./Logic/Financial/PaymentInformation.cs
      32 ./Logic/Financial/FinancialAccountRows.cs
-     10 ./Logic/Financial/IAttestable.cs
+     12 ./Logic/Financial/IAttestable.cs
      71 ./Logic/Financial/CashAdvances.cs
     430 ./Logic/Financial/FinancialTransaction.cs
      30 ./Logic/Financial/FinancialAccountRow.cs
@@ -602,11 +605,12 @@
     216 ./Logic/Resources/Logic.Swarm.Position.Designer.cs
      90 ./Logic/Resources/Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs
      81 ./Logic/Resources/Logic.Communications.Transmission.MailPayload.Designer.cs
-    590 ./Logic/Resources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
+    288 ./Logic/Resources/Logic.Financial.Payout.Designer.cs
+    614 ./Logic/Resources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
      90 ./Logic/Resources/Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs
     927 ./Logic/Resources/Logic.Swarm.ParticipantTitle.Designer.cs
     171 ./Logic/Resources/Logic.Swarm.DashboardTodos.Designer.cs
-    423 ./Logic/Resources/Logic.Financial.FinancialAccount.Designer.cs
+    459 ./Logic/Resources/Logic.Financial.FinancialAccount.Designer.cs
      39 ./Logic/Structure/Countries.cs
      36 ./Logic/Structure/GeographyStatisticsOverTime.cs
      53 ./Logic/Structure/City.cs
@@ -623,7 +627,7 @@
      23 ./Logic/Structure/GeographyWithPeople.cs
      24 ./Logic/Structure/GeographyUpdates.cs
     145 ./Logic/Structure/Geography.cs
-    963 ./Logic/Structure/Organization.cs
+    974 ./Logic/Structure/Organization.cs
      47 ./Logic/Structure/Cities.cs
     293 ./Logic/Structure/Geographies.cs
      60 ./Logic/Governance/MeetingElectionVote.cs
@@ -666,7 +670,7 @@
      15 ./Logic/Communications/ICommsTransmitter.cs
      72 ./Logic/Communications/AutoMail.cs
      46 ./Logic/Communications/PaperLetters.cs
-    308 ./Logic/Communications/OutboundComm.cs
+    312 ./Logic/Communications/OutboundComm.cs
      41 ./Logic/Communications/OutboundCommRecipient.cs
    1285 ./Logic/Communications/TypedMailTemplate.cs
      13 ./Logic/Communications/OutboundComms.cs
@@ -693,7 +697,7 @@
     276 ./Logic/Swarm/Membership.cs
     139 ./Logic/Swarm/Memberships.cs
      49 ./Logic/Swarm/Parleys.cs
-   1178 ./Logic/Swarm/Person.cs
+   1188 ./Logic/Swarm/Person.cs
     538 ./Logic/Swarm/People.cs
     144 ./Logic/Swarm/MembershipEvents.cs
      83 ./Logic/Swarm/PaymentCode.cs
@@ -702,7 +706,7 @@
     149 ./Logic/Swarm/ExternalIdentity.cs
      41 ./Logic/Swarm/ParleyOptions.cs
      29 ./Logic/Swarm/PositionAssignments.cs
-    267 ./Logic/Swarm/Parley.cs
+    274 ./Logic/Swarm/Parley.cs
     101 ./Logic/Swarm/PositionAssignment.cs
      13 ./Logic/Swarm/ParleyAttendees.cs
     225 ./Logic/Swarm/Volunteer.cs
@@ -730,7 +734,7 @@
      22 ./Logic/Support/PirateWebDebug.cs
     137 ./Logic/Support/ObjectOptionalData.cs
      74 ./Logic/Support/SingularFactory.cs
-    117 ./Logic/Support/SystemSettings.cs
+    129 ./Logic/Support/SystemSettings.cs
      40 ./Logic/Support/ActivistEvents.cs
      58 ./Logic/Support/General.cs
     181 ./Logic/Support/Document.cs
@@ -768,6 +772,7 @@
      78 ./Logic/Media/MediaEntries.cs
      21 ./Logic/Media/MediaCategory.cs
      37 ./Logic/Media/MediaCategories.cs
+     76 ./Tests/FindConflictingReferences.cs
      36 ./Tests/Properties/AssemblyInfo.cs
      22 ./Tests/DummyTest.cs
    1741 ./Console/Console.cs
@@ -787,4 +792,4 @@
     173 ./Interface/Objects/ExpensePayout.cs
      40 ./Interface/Support/DashboardMessage.cs
     213 ./Interface/PersonIcon.cs
- 108940 total
+ 110494 total

@@ -231,4 +231,6 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>أعتقد أنه عليك حقاً حقاً حقاً استخدام بروتوكول HTTPS الآمن في موقع مثل هذا الموقع. ولكنك تعرف هذا الأمر مسبقاً. اليس كذلك؟</value>
   </data>
+  
+  
 </root>

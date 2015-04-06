@@ -145,7 +145,7 @@
     <comment>The XXXX is replaced with year number.</comment>
   </data>
   <data name="BalanceSheet_Info" xml:space="preserve">
-    <value>Balansräkningen är en översikt över tillgångar och skulder vid ett ögonblick i tiden, och används för att se hur resultaten påverkar organisationens övergripande finansiella hälsa. Du kan också titta på &lt;a href="ProfitLossStatement.aspx"&gt; resultaträkningen&lt;/a&gt; som är en översikt över inkomster och utgifter.</value>
+    <value>Balansräkningen är en översikt över tillgångar och skulder vid ett ögonblick i tiden, och används för att se hur resultaten påverkar organisationens övergripande finansiella hälsa. Du kan också titta på &lt;a href="ProfitLossStatement"&gt; resultaträkningen&lt;/a&gt; som är en översikt över inkomster och utgifter.</value>
   </data>
   <data name="BalanceSheet_PageTitle" xml:space="preserve">
     <value>Balansräkning</value>
@@ -178,7 +178,7 @@
     <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
   </data>
   <data name="ProfitLossStatement_Info" xml:space="preserve">
-    <value>Resultaträkningen är en översikt av inkomster och utgifter, och grupperas per budget eller kostnadstyp. Summan av alla inkomster och utgifter är det årliga reulstatet. Du kan också titta på &lt;a href="BalanceSheet.aspx"&gt;balansräkningen&lt;/a&gt; som är översikten över tillgångar och skulder.</value>
+    <value>Resultaträkningen är en översikt av inkomster och utgifter, och grupperas per budget eller kostnadstyp. Summan av alla inkomster och utgifter är det årliga reulstatet. Du kan också titta på &lt;a href="BalanceSheet"&gt;balansräkningen&lt;/a&gt; som är översikten över tillgångar och skulder.</value>
   </data>
   <data name="ProfitLossStatement_LastYear" xml:space="preserve">
     <value>Föreg år</value>
@@ -657,7 +657,10 @@
   <data name="BalanceTransactions_Info" xml:space="preserve">
     <value>Några automatimporterade finansiella transaktioner kunde inte matchas automatiskt mot den löpande redovisningen. Det är här som du manuellt matchar transaktionerna att "balansera" (om en transaktion bara har ena sidan redovisad, till exempel utbetalda pengar från organisationen utan motsvarande post vad pengarna gick till, så sägs transaktionen vara "obalanserad").</value>
   </data>
-  
+  <data name="BalanceTransactions_ModalHeader" xml:space="preserve">
+    <value>Balanserar/matchar transaktionen # &lt;span id="spanModalTransactionId"&gt;[...]&lt;/span&gt; från &lt;span id="spanModalTransactionDate"&gt;[...laddar...]&lt;/span&gt;</value>
+    <comment>The span text is replaced runtime.</comment>
+  </data>
   <data name="BalanceTransactions_PageTitle" xml:space="preserve">
     <value>Balansera &amp; matcha transaktioner</value>
   </data>
@@ -713,5 +716,8 @@
     <value>Belopp inom 10% tolerans</value>
     <comment>Header in selection list. Capitalize as customary for culture.</comment>
   </data>
-  
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>Utbetalning #{0:N0}, {5} (förväntad {1:yyyy-MMM-dd}) för {2}: {3} {4:N2}</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
+  </data>
 </root>

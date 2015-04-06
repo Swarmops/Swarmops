@@ -125,6 +125,24 @@
     <value>crwdns6555274:0{0:N0}crwdnd6555274:0{1}crwdne6555274:0</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="AttestCosts_BudgetIsEmpty" xml:space="preserve">
+    <value>crwdns6556112:0{0}crwdne6556112:0</value>
+  </data>
+  <data name="AttestCosts_CannotAttestNegative" xml:space="preserve">
+    <value>crwdns6556113:0crwdne6556113:0</value>
+  </data>
+  <data name="AttestCosts_CannotAttestZero" xml:space="preserve">
+    <value>crwdns6556114:0crwdne6556114:0</value>
+  </data>
+  <data name="AttestCosts_Error_CantRebudgetSalary" xml:space="preserve">
+    <value>crwdns6556115:0crwdne6556115:0</value>
+  </data>
+  <data name="AttestCosts_Error_InvalidAmountRetry" xml:space="preserve">
+    <value>crwdns6556116:0crwdne6556116:0</value>
+  </data>
+  <data name="AttestCosts_Error_PleaseSelectBudget" xml:space="preserve">
+    <value>crwdns6556117:0crwdne6556117:0</value>
+  </data>
   <data name="AttestCosts_ExpenseAttested" xml:space="preserve">
     <value>crwdns6555275:0{0:N0}crwdnd6555275:0{1}crwdnd6555275:0{2}crwdnd6555275:0{3:N2}crwdne6555275:0</value>
     <comment>{2} is the currency.</comment>
@@ -172,6 +190,64 @@
   <data name="AttestCosts_InvoiceDeattested" xml:space="preserve">
     <value>crwdns6555287:0{0:N0}crwdnd6555287:0{1}crwdne6555287:0</value>
     <comment>When somebody undoes a previous attestation.</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonAmount" xml:space="preserve">
+    <value>crwdns6556091:0crwdne6556091:0</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonCorrect" xml:space="preserve">
+    <value>crwdns6556118:0crwdne6556118:0</value>
+  </data>
+  <data name="AttestCosts_Modal_ButtonDeny" xml:space="preserve">
+    <value>crwdns6556092:0crwdne6556092:0</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_ButtonRebudget" xml:space="preserve">
+    <value>crwdns6556093:0crwdne6556093:0</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="AttestCosts_Modal_DenyTextPlaceholder" xml:space="preserve">
+    <value>crwdns6556094:0crwdne6556094:0</value>
+    <comment>This is a Monty Python reference. When translating, translate to "I am denying your request for funds because..."</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionAmount" xml:space="preserve">
+    <value>crwdns6556095:0{0}crwdne6556095:0</value>
+    <comment>The {0} is the organization currency (SEK, USD, µBTC etc).</comment>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionCorrect" xml:space="preserve">
+    <value>crwdns6556119:0{0}crwdne6556119:0</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionDeny" xml:space="preserve">
+    <value>crwdns6556096:0crwdne6556096:0</value>
+  </data>
+  <data name="AttestCosts_Modal_DescribeOptionRebudget" xml:space="preserve">
+    <value>crwdns6556097:0crwdne6556097:0</value>
+  </data>
+  <data name="AttestCosts_Modal_Header" xml:space="preserve">
+    <value>crwdns6556098:0crwdne6556098:0</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionAmount" xml:space="preserve">
+    <value>crwdns6556099:0crwdne6556099:0</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionCorrect" xml:space="preserve">
+    <value>crwdns6556120:0crwdne6556120:0</value>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionDeny" xml:space="preserve">
+    <value>crwdns6556100:0crwdne6556100:0</value>
+    <comment>This is a Monty Python reference. When translating, translate to "Deny attestation of this record altogether."</comment>
+  </data>
+  <data name="AttestCosts_Modal_RadioOptionRebudget" xml:space="preserve">
+    <value>crwdns6556101:0crwdne6556101:0</value>
+  </data>
+  <data name="AttestCosts_Modal_WhatIsProblem" xml:space="preserve">
+    <value>crwdns6556102:0crwdne6556102:0</value>
+  </data>
+  <data name="AttestCosts_OutOfBudget" xml:space="preserve">
+    <value>crwdns6556059:0crwdne6556059:0</value>
+  </data>
+  <data name="AttestCosts_OutOfBudgetPrecise" xml:space="preserve">
+    <value>crwdns6556121:0{0}crwdnd6556121:0{1:N2}crwdnd6556121:0{2}crwdne6556121:0</value>
+    <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
   </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>crwdns6555288:0crwdne6555288:0</value>

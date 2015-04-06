@@ -231,4 +231,10 @@
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>Du borde verkligen, VERKLIGEN använda HTTPS för en sådan här webbsite. Men det visste du väl redan?</value>
   </data>
+  <data name="SystemSettings_WebsocketPortClient" xml:space="preserve">
+    <value>WebSocket-port (klient)</value>
+  </data>
+  <data name="SystemSettings_WebsocketPortServer" xml:space="preserve">
+    <value>WebSocket-port (Server)</value>
+  </data>
 </root>

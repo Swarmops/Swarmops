@@ -660,4 +660,18 @@
   <data name="Global_Working" xml:space="preserve">
     <value>crwdns6556049:0crwdne6556049:0</value>
   </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>crwdns6556056:0crwdne6556056:0</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>crwdns6556110:0{0:N2}crwdne6556110:0</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>crwdns6556111:0crwdne6556111:0</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>crwdns6556122:0crwdne6556122:0</value>
+  </data>
 </root>

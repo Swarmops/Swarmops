@@ -122,6 +122,12 @@
   
   
   
+  
+  
+  
+  
+  
+  
   <data name="AttestCosts_GridHeader_Beneficiary" xml:space="preserve">
     <value>Mottaker</value>
     <comment>The receiver of money.</comment>
@@ -137,6 +143,23 @@
     <value>Type</value>
     <comment>Could also be translated to "Type". Will list"cash advance", "invoice", etc.</comment>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

@@ -144,9 +144,7 @@
     <value>الانتهاء-XXXX</value>
     <comment>The XXXX is replaced with year number.</comment>
   </data>
-  <data name="BalanceSheet_Info" xml:space="preserve">
-    <value>تقدم الميزانية العمومية لمحة عامة عن الأصول والمديونيات عند نقطة محددة من الزمن, وتستخدم لمعرفة كيفية تأثير النتائج على الحالة المالية العامة للمنظمة. قد ترغب ايضاً في التعرف على  &lt;a href="ProfitLossStatement.aspx"&gt; بيان الأرباح والخسائر &lt;/a&gt; والذي يستعرض الإيرادات والنفقات.</value>
-  </data>
+  
   <data name="BalanceSheet_PageTitle" xml:space="preserve">
     <value>الميزانية العمومية</value>
   </data>
@@ -177,9 +175,7 @@
     <value>ارباح/خسائر</value>
     <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
   </data>
-  <data name="ProfitLossStatement_Info" xml:space="preserve">
-    <value>يقدم بيان الأرباح والخسائر لمحة عامة عن الإيرادات والنفقات والتي يتم تصنيفها حسب الميزانيات أو نوعية التكلفة/ الإيراد. ويعطي المجموع الكلي للإيرادات والنفقات النتائج السنوية. وقد ترغب في الاطلاع على  &lt;a href="BalanceSheet.aspx"&gt; الميزانية العمومة &lt;/a&gt; والتي تستعرض الأصول والمديونيات.</value>
-  </data>
+  
   <data name="ProfitLossStatement_LastYear" xml:space="preserve">
     <value>العام الماضي</value>
   </data>

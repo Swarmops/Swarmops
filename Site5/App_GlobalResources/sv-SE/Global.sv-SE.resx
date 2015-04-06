@@ -422,7 +422,7 @@
     <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
   </data>
   <data name="Global_Action" xml:space="preserve">
-    <value>Verktyg</value>
+    <value>Agera</value>
     <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
   </data>
   <data name="Global_Mail" xml:space="preserve">
@@ -642,8 +642,30 @@
     <value>Alternativ</value>
     <comment>For various page-specific checkboxes etc</comment>
   </data>
-  
-  
-  
-  
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...laddar...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(ingen match)</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>Arbetar...</value>
+  </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>Det gick inte att ansluta WebSocket. Liveuppdateringar kommer inte att vara tillgängliga.</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>Swarmops förstår inte ditt belopp. (Tusen pengar och noll cent skrivs som "{0:N2}".) Försök igen?</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>Ingen anledning har angetts.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>Inget som brådskar. Yay!</value>
+  </data>
 </root>

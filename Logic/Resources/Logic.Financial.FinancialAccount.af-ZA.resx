@@ -166,7 +166,7 @@
     <value>crwdns6555907:0crwdne6555907:0</value>
   </data>
   <data name="Cost_ForexLosses" xml:space="preserve">
-    <value>crwdns6555908:0crwdne6555908:0</value>
+    <value>crwdns6556052:0crwdne6556052:0</value>
     <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
   </data>
   <data name="Cost_IctInfrastructure" xml:space="preserve">
@@ -187,11 +187,22 @@
   <data name="Cost_Staff" xml:space="preserve">
     <value>crwdns6555914:0crwdne6555914:0</value>
   </data>
+  <data name="Cost_StaffBenefits" xml:space="preserve">
+    <value>crwdns6556088:0crwdne6556088:0</value>
+    <comment>Non-compensation benefits (car, phone, etc). Usually taxable.</comment>
+  </data>
   <data name="Cost_StaffExpenses" xml:space="preserve">
     <value>crwdns6555915:0crwdne6555915:0</value>
   </data>
+  <data name="Cost_StaffPerDiem" xml:space="preserve">
+    <value>crwdns6556089:0crwdne6556089:0</value>
+    <comment>As in "extra travel compensation"</comment>
+  </data>
   <data name="Cost_StaffSalaries" xml:space="preserve">
     <value>crwdns6555916:0crwdne6555916:0</value>
+  </data>
+  <data name="Cost_Taxes" xml:space="preserve">
+    <value>crwdns6556053:0crwdne6556053:0</value>
   </data>
   <data name="Cost_Transportation" xml:space="preserve">
     <value>crwdns6555917:0crwdne6555917:0</value>
@@ -232,7 +243,7 @@
     <value>crwdns6555928:0crwdne6555928:0</value>
   </data>
   <data name="Income_ForexGains" xml:space="preserve">
-    <value>crwdns6555929:0crwdne6555929:0</value>
+    <value>crwdns6556054:0crwdne6556054:0</value>
     <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
   </data>
   <data name="Income_InterestGains" xml:space="preserve">
@@ -243,5 +254,8 @@
   </data>
   <data name="Income_Sales" xml:space="preserve">
     <value>crwdns6555932:0crwdne6555932:0</value>
+  </data>
+  <data name="Income_SubsidiesGrants" xml:space="preserve">
+    <value>crwdns6556055:0crwdne6556055:0</value>
   </data>
 </root>

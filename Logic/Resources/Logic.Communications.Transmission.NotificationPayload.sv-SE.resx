@@ -121,7 +121,7 @@
     <value>Ditt önskade kontantförskott för [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har attesterats av budgetens ägare. Kontantförskottet går nu vidare till utbetalning till dig.</value>
   </data>
   <data name="CashAdvance_Attested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Kontantförskott attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Kontantförskott attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_Deattested_Body" xml:space="preserve">
     <value>Ditt önskade kontantförskott hos [Företagsnamn] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har AV-attesterats av budgetägaren. Detta tyder oftast på någon form av problem med din begäran.
@@ -129,7 +129,16 @@
 Räkna med att mer kommunikation från budgetägaren följer i ärendet.</value>
   </data>
   <data name="CashAdvance_Deattested_Subject" xml:space="preserve">
-    <value>[OrganizationName] Kontantförskott AV-attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Kontantförskott AV-attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
+  </data>
+  <data name="CashAdvance_Denied_Body" xml:space="preserve">
+    <value>Ditt kontantförskott hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], gällande [RequestPurpose], har nekats. Följande text gavs som orsak:
+
+[EmbeddedPreformattedText]
+</value>
+  </data>
+  <data name="CashAdvance_Denied_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Kontantförskott NEKAT: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="CashAdvance_PaidOut_Body" xml:space="preserve">
     <value>Din förfrågan om kontantförskott från [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], gällande [RequestPurpose], har markerats som utbetalt av organisationens ekonomiassistenter.
@@ -176,9 +185,10 @@ Räkna med att mer kommunikation från budgetägaren följer i ärendet.</value>
     <value>[[OrganizationName]] Utläggsanspråk AV-attesterat: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
   <data name="ExpenseClaim_Denied_Body" xml:space="preserve">
-    <value>Ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat] rörande [RequestPurpose] har avslagits.
+    <value>Ditt utläggsanspråk hos [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], gällande [RequestPurpose], har nekats. Följande text gavs som orsak:
 
-Räkna med att mer kommunikation följer från budgetägare eller finansansvariga om vad du behöver göra för att lägga ett giltigt utläggsanspråk.</value>
+[EmbeddedPreformattedText]
+</value>
     <comment>This is sent to the claimer.</comment>
   </data>
   <data name="ExpenseClaim_Denied_Subject" xml:space="preserve">
