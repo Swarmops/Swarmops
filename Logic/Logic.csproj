@@ -510,10 +510,28 @@
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.ru-RU.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.sv-SE.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.FinancialTransactionTagSetTypesStock.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.pt-BR.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Financial.Payout.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Financial.Payout.zh-CN.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.af-ZA.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.ar-SA.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.da-DK.resx" />
