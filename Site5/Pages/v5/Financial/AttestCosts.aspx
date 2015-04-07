@@ -21,6 +21,8 @@
             '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
             '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
             '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png',
             '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
             '/Images/Icons/iconshock-green-tick-128x96px.png',
             '/Images/Icons/iconshock-red-cross-128x96px.png',
@@ -45,7 +47,7 @@
                     },
 
                     onLoadSuccess: function () {
-                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png"); // initialize as disabled until budgets known
+                        $(".LocalIconApproval").attr("src", approvalOverdraftIcon); // initialize as disabled until budgets known
                         $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
                         $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
                         $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
@@ -56,7 +58,7 @@
                         $(".LocalIconApproval").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
                                 if ($(this).hasClass("LocalFundsInsufficient")) {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png");
+                                    $(this).attr("src", approvalOverdraftIconHover);
                                 } else {
                                     $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
                                 }
@@ -66,7 +68,7 @@
                         $(".LocalIconApproval").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
                                 if ($(this).hasClass("LocalFundsInsufficient")) {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png");
+                                    $(this).attr("src", approvalOverdraftIcon);
                                 } else {
                                     $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                                 }
@@ -110,50 +112,40 @@
                             }
                         });
 
-                        $(".LocalIconApproval").click(function () {
-                            if ($(this).hasClass("LocalFundsInsufficient")) {
-                                alertify.error (decodeURIComponent('<asp:Literal id="LiteralErrorInsufficientBudget" runat="server" />'));
-                                return;
-                            }
-
+                        $(".LocalIconApproval").click(function() {
                             if ($(this).attr("rel") != "loading" && $("#IconDenial" + $(this).attr("baseid")) != "loading") {
-                                $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
-                                $("#IconDenial" + $(this).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/Pages/v5/Financial/AttestCosts.aspx/Attest",
-                                    data: "{'identifier': '" + escape($(this).attr("baseid")) + "'}",
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: $.proxy(function (msg) {
-                                        var baseid = $(this).attr("baseid");
-                                        if (msg.d.Success) {
-                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                                            $(this).attr("rel", "active");
-                                            $(this).hide();
-                                            $("#IconApproved" + baseid).fadeTo(250, 0.5);
-                                            $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
-                                            $("#IconUndo" + baseid).fadeIn(100);
-                                            $('.row' + baseid).animate({ color: "#AAA" }, 400);
-                                            alertify.success(msg.d.DisplayMessage);
 
-                                            var accountId = $(this).attr("accountid");
-                                            var funds = parseFloat($(this).attr("amount"));
-                                            budgetRemainingLookup[accountId] -= funds;
-                                            setAttestability();
-                                            recheckBudgets(); // will double-check budgets against server
-                                        } else {
-                                            // failure, likely from attesting too quickly and overrunning budget
-                                            $(this).attr("rel", "");
-                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png");
-                                            $("#IconDenial" + baseid).css('opacity', 1.0).css("cursor", "pointer");
-                                            alertify.error(msg.d.DisplayMessage);
+                                if ($(this).hasClass("LocalFundsInsufficient")) {
+                                    if (!canOverdraftBudgets) {
+                                        alertify.error(decodeURIComponent('<asp:Literal id="LiteralErrorInsufficientBudget" runat="server" />'));
+                                        return;
+                                    }
 
-                                            recheckBudgets();
+                                    // Handle confirm-overdraft case
+
+                                    alertify.set({
+                                        labels: {
+                                            ok: decodeURIComponent('<asp:Literal ID="LiteralConfirmOverdraftNo" runat="server" />'),
+                                            cancel: decodeURIComponent('<asp:Literal ID="LiteralConfirmOverdraftYes" runat="server" />')
                                         }
-                                    }, this)
-                                });
+                                    });
+
+                                    alertify.confirm(decodeURIComponent('<asp:Literal ID="LiteralConfirmOverdraft" runat="server" />'),
+                                        $.proxy(function(response) {
+                                            if (!response) {
+                                                // user clicked the RED button, which is "confirm overdraft"
+
+                                                onExpenseApproval(this);
+                                            }
+                                        }, this));
+
+                                    return; // Do not process here - must wait for confirm dialog to return
+                                }
+
+                                // Handle normal case
+
+                                onExpenseApproval(this);
+
                             }
                         });
 
@@ -255,7 +247,60 @@
 
                 budgetRemainingLookup.budgetsLoaded = true;
             });
+
+            // If we're running with admin privileges, allow overdraft override
+
+            if (canOverdraftBudgets) {
+                approvalOverdraftIcon = '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png';
+                approvalOverdraftIconHover = '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png';
+            }
         });
+
+
+        function onExpenseApproval(approvalIcon) {
+            $(approvalIcon).attr("rel", "loading");
+            $(approvalIcon).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
+            $("#IconDenial" + $(approvalIcon).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
+            $.ajax({
+                type: "POST",
+                url: "/Pages/v5/Financial/AttestCosts.aspx/Attest",
+                data: "{'identifier': '" + escape($(approvalIcon).attr("baseid")) + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: $.proxy(function (msg) {
+                    var baseid = $(this).attr("baseid");
+                    if (msg.d.Success) {
+                        if ($(this).hasClass("LocalFundsInsufficient")) {
+                            $(this).attr("src", approvalOverdraftIcon);
+                        } else {
+                            $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
+                        }
+                        $(this).attr("rel", "active");
+                        $(this).hide();
+                        $("#IconApproved" + baseid).fadeTo(250, 0.5);
+                        $("#IconDenial" + baseid).finish().css("display", "none").css("opacity", 1.0);
+                        $("#IconUndo" + baseid).fadeIn(100);
+                        $('.row' + baseid).animate({ color: "#AAA" }, 400);
+                        alertify.success(msg.d.DisplayMessage);
+
+                        var accountId = $(this).attr("accountid");
+                        var funds = parseFloat($(this).attr("amount"));
+                        budgetRemainingLookup[accountId] -= funds;
+                        setAttestability();
+                        recheckBudgets(); // will double-check budgets against server
+                    } else {
+                        // failure, likely from attesting too quickly and overrunning budget
+                        $(this).attr("rel", "");
+                        $(this).attr("src", approvalOverdraftIcon);
+                        $("#IconDenial" + baseid).css('opacity', 1.0).css("cursor", "pointer");
+                        alertify.error(msg.d.DisplayMessage);
+
+                        recheckBudgets();
+                    }
+                }, approvalIcon)
+            });
+        }
+
 
 
         function recheckBudgets() {
@@ -285,7 +330,7 @@
                 else if (!$(this).hasClass("LocalFundsInsufficient")) {
                     $(this).addClass("LocalFundsInsufficient");
                     if ($(this).attr("rel") != "loading") {
-                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png");
+                        $(this).attr("src", approvalOverdraftIcon);
                     }
                 }
 
@@ -376,6 +421,12 @@
         var recordId = '';
         var accountId = 0;
         var budgetRemainingLookup = {};
+
+        // The variable below is advisory for the UI - actual access control is done server-side
+        var canOverdraftBudgets = <asp:Literal ID="LiteralCanOverdraftBudgets" runat="server" />;
+
+        var approvalOverdraftIcon = '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png';
+        var approvalOverdraftIconHover = approvalOverdraftIconHover;
 
     </script>
     

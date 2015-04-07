@@ -249,6 +249,19 @@
     <value>There are not enough funds to attest this. You can attest up to {0} {1:N2} more in this budget for the year {2}.</value>
     <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
   </data>
+  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
+    <value>&lt;strong&gt;OVERDRAFT BUDGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;There are not enough funds remaining in the budget to attest this expense. Normally, it would be blocked from attestation. However, you may override this limitation and attest anyway, thereby causing the account to overdraft its budget.&lt;br/&gt;&lt;br/&gt;Do you want to attest the expense, thereby forcing an overdraft, or do you want to cancel attestation, staying on budget instead?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Stay on Budget</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>Force Overdraft</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>BUDGET WAS OVERDRAFTED.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>Attest Costs</value>
   </data>

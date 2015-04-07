@@ -3,6 +3,7 @@ using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.ServiceModel.Security;
 using System.Threading;
 using System.Web;
@@ -43,6 +44,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             this._attestationRights = GetAttestationRights();
             this._documentList = new List<RepeatedDocument>();
+            this.LiteralCanOverdraftBudgets.Text =
+                CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Administration)).ToString(CultureInfo.InvariantCulture).ToLowerInvariant();
 
             PopulateInboundInvoices();
             PopulateExpenses();
@@ -111,6 +114,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralPleaseSelectBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_Error_PleaseSelectBudget);
             this.LiteralCannotRebudgetSalary.Text =
                 JavascriptEscape (Resources.Pages.Financial.AttestCosts_Error_CantRebudgetSalary);
+
+            this.LiteralConfirmOverdraftNo.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirmNo);
+            this.LiteralConfirmOverdraftYes.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirmYes);
+            this.LiteralConfirmOverdraft.Text = JavascriptEscape(Resources.Pages.Financial.AttestCosts_OverdraftConfirm);
         }
 
         static protected IPayable PayableFromRecordId (string recordId)
@@ -535,17 +542,32 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     budgetRemaining += budgetAdjustments[attestableItem.Budget.Identity];
                 }
 
+                result = string.Empty;
+
                 if (amountCents > budgetRemaining)
                 {
-                    return new AjaxCallResult
+                    if (
+                        authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                            AccessAspect.Administration)))
                     {
-                        DisplayMessage = Resources.Pages.Financial.AttestCosts_OutOfBudget,
-                        Success = false
-                    };
+                        // Admin rights, so allow (forced) overdraft
+
+                        result = Resources.Pages.Financial.AttestCosts_Overdrafted + " ";
+                    }
+                    else
+                    {
+                        // Do not allow overdraft
+
+                        return new AjaxCallResult
+                        {
+                            DisplayMessage = Resources.Pages.Financial.AttestCosts_OutOfBudget,
+                            Success = false
+                        };
+                    }
                 }
 
                 attestableItem.Attest (authData.CurrentUser);
-                result = string.Format (attestedTemplate, itemId, beneficiary,
+                result += string.Format (attestedTemplate, itemId, beneficiary,
                     authData.CurrentOrganization.Currency.Code,
                     amountCents/100.0);
             }
