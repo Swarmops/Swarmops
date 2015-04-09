@@ -96,8 +96,7 @@ namespace Swarmops
             {
                 if (!Request.Url.ToString().StartsWith ("http://dev.swarmops.com/") &&
                     !Request.Url.ToString().StartsWith("http://dev-opentest.swarmops.com") &&
-                    !Request.Url.ToString().StartsWith("http://localhost:") &&
-                    !Request.Url.ToString().StartsWith ("http://swarmops-"))
+                    !Request.Url.ToString().StartsWith("http://localhost:"))
                 {
                     Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
                 }
