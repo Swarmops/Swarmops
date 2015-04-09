@@ -18,6 +18,16 @@ namespace Swarmops.Frontend.Controls.v5.Swarm
 
         protected void Page_Load (object sender, EventArgs e)
         {
+            Localize();
+        }
+
+        private void Localize()
+        {
+            this.LiteralHeaderAction.Text = Resources.Global.Global_Action;
+            this.LiteralHeaderName.Text = Resources.Global.Swarm_AssignedPerson;
+            this.LiteralHeaderPosition.Text = Resources.Global.Swarm_Position;
+            this.LiteralHeaderExpires.Text = Resources.Global.Swarm_AssignmentExpires;
+            this.LiteralHeaderMinMax.Text = Resources.Global.Global_MinMax;
         }
 
         public RoleLevel Level { get; set; }

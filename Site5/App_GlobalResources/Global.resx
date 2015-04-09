@@ -674,4 +674,25 @@
   <data name="Global_NoActionItems" xml:space="preserve">
     <value>No urgent action items. Yay!</value>
   </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>Min / Max</value>
+    <comment>note the spaces</comment>
+  </data>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>Assigned Person</value>
+  </data>
+  <data name="Swarm_AssignmentExpires" xml:space="preserve">
+    <value>Expires</value>
+    <comment>The date a position assignment autoterminates</comment>
+  </data>
+  <data name="Swarm_AssignMorePerson" xml:space="preserve">
+    <value>Assign one more person...</value>
+    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
+  </data>
+  <data name="Swarm_AssignPerson" xml:space="preserve">
+    <value>Assign person...</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
 </root>

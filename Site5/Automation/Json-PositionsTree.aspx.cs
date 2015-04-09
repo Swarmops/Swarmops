@@ -43,14 +43,14 @@ namespace Swarmops.Frontend.Automation
 
                 string expires = string.Empty;
 
-                string assignedName = Resources.Global.Swarm_Vacant + "<br/>Testing line 2<br/>Testing line 3";
+                string assignedName = Resources.Global.Swarm_Vacant + " <a href='#' class='LocalAssignPerson'>" + Resources.Global.Swarm_AssignPerson + "</a>" ;
                 if (assignments.Count > 0)
                 {
                     assignedName = assignments[0].Person.Canonical;
                 }
 
-                string element = string.Format("\"id\":\"{0}\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\"", 
-                    position.Identity, JsonSanitize (localizedPositionName), JsonSanitize (assignedName), JsonSanitize (expires));
+                string element = string.Format("\"id\":\"{0}\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"minMax\":\"{4} / {5}\"", 
+                    position.Identity, JsonSanitize (localizedPositionName), JsonSanitize (assignedName), JsonSanitize (expires), position.MinCount, position.MaxCount == 0? @"&infin;" : position.MaxCount.ToString());
 
                 // TODO: Add all assignments after the first one right here
 

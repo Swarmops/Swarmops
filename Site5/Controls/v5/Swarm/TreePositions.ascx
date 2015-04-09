@@ -26,13 +26,11 @@
         idField="id" treeField="positionTitle">
         <thead>  
             <tr>  
-                <th field="positionTitle" width="160"><asp:Literal ID="LiteralHeaderPosition" Text="Position XYZ" runat="server"/></th>  
-                <th field="assignedName" width="160"><asp:Literal ID="LiteralHeaderQ1" Text="AssignedName XYZ" runat="server" /></th>  
-                <th field="dateExpires" width="80"><asp:Literal ID="LiteralHeaderExpires" Text="ExpiresDate XYZ" runat="server" /></th>
-                <th field="reportsTo" width="120"><asp:Literal ID="LiteralHeaderReportsTo" Text="ReportsTo XYZ" runat="server" /></th>
-                <th field="flags" width="50" align="center"><asp:Literal ID="Literal2" Text="FLAGS" runat="server" /></th>
-                <th field="vol" width="30" align="center"><asp:Literal ID="Literal3" Text="VOL" runat="server" /></th>
-                <th field="editIcon" width="30" align="center"><asp:Literal ID="Literal1" Text="EDIT" runat="server" /></th>
+                <th field="positionTitle" width="200"><asp:Literal ID="LiteralHeaderPosition" Text="Position XYZ" runat="server"/></th>  
+                <th field="assignedName" width="200"><asp:Literal ID="LiteralHeaderName" Text="AssignedName XYZ" runat="server" /></th>  
+                <th field="dateExpires" width="120"><asp:Literal ID="LiteralHeaderExpires" Text="ExpiresDate XYZ" runat="server" /></th>
+                <th field="minMax" width="80" align="center"><asp:Literal ID="LiteralHeaderMinMax" Text="Min/Max" runat="server" /></th>
+                <th field="actionIcon" width="50" align="center"><asp:Literal ID="LiteralHeaderAction" Text="XYZ" runat="server" /></th>
             </tr>  
         </thead>  
     </table> 
