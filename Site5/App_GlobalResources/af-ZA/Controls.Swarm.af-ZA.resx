@@ -117,148 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="AttestCosts_GridHeader_Docs" xml:space="preserve">
-    <value>Документация</value>
-    <comment>Button to see underlying documentation. Keep short!</comment>
+  <data name="Positions_AssignmentDuration" xml:space="preserve">
+    <value>crwdns6556139:0crwdne6556139:0</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
-    <value>Банк</value>
+  <data name="Positions_AssignmentExpires" xml:space="preserve">
+    <value>crwdns6556140:0crwdne6556140:0</value>
+    <comment>The date a position assignment autoterminates</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <data name="RequestCashAdvance_BankName" xml:space="preserve">
-    <value>Название банка</value>
+  <data name="Positions_AssignMorePerson" xml:space="preserve">
+    <value>crwdns6556141:0crwdne6556141:0</value>
+    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
   </data>
-  <data name="RequestCashAdvance_Budget" xml:space="preserve">
-    <value>Бюджет</value>
+  <data name="Positions_AssignPerson" xml:space="preserve">
+    <value>crwdns6556142:0crwdne6556142:0</value>
   </data>
-  <data name="RequestCashAdvance_HeaderBankDetails" xml:space="preserve">
-    <value>Ваши банковские реквизиты</value>
+  <data name="Positions_AssignPersonToPosition" xml:space="preserve">
+    <value>crwdns6556143:0crwdne6556143:0</value>
   </data>
-  
-  
-  <data name="RequestCashAdvance_Purpose" xml:space="preserve">
-    <value>Цель</value>
+  <data name="Positions_ModalHeader" xml:space="preserve">
+    <value>crwdns6556144:0{0}crwdne6556144:0</value>
+    <comment>Header for new assignment dialog</comment>
   </data>
-  
-  
-  
-  <data name="RequestCashAdvance_ValidationError_Amount" xml:space="preserve">
-    <value>Пожалуйста, введите сумму денег (в {0}).</value>
-    <comment>{0} is the currency.</comment>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>crwdns6556145:0crwdne6556145:0</value>
+    <comment>For unassigned positions</comment>
   </data>
-  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
-    <value>Пожалуйста, введите Ваш номер банковского счета.</value>
-  </data>
-  
-  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
-    <value>Пожалуйста, введите название Вашего банка.</value>
-  </data>
-  
-  
-  
-  
-  
-  
-  
 </root>

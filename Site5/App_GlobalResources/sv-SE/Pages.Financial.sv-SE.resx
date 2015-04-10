@@ -249,6 +249,10 @@
     <value>Det finns inte tillräckligt med pengar för att attestera detta. Du kan attestera upp till {0} {1:N2} mer i denna budget för år {2}.</value>
     <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
   </data>
+  
+  
+  
+  
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>Attestera kostnader</value>
   </data>

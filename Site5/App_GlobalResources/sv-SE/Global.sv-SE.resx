@@ -566,10 +566,6 @@
     <value>År {0}</value>
     <comment>As in "the year X".</comment>
   </data>
-  <data name="Swarm_Vacant" xml:space="preserve">
-    <value>(vakant)</value>
-    <comment>For unassigned positions</comment>
-  </data>
   <data name="Global_DefineToEnable" xml:space="preserve">
     <value>ange för att aktivera</value>
     <comment>shown as watermark on some edit boxes</comment>
@@ -668,4 +664,15 @@
   <data name="Global_NoActionItems" xml:space="preserve">
     <value>Inget som brådskar. Yay!</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>

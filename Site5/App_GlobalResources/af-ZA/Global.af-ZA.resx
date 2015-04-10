@@ -572,10 +572,6 @@
     <value>crwdns6555629:0{0}crwdne6555629:0</value>
     <comment>As in "the year X".</comment>
   </data>
-  <data name="Swarm_Vacant" xml:space="preserve">
-    <value>crwdns6555655:0crwdne6555655:0</value>
-    <comment>For unassigned positions</comment>
-  </data>
   <data name="Global_DefineToEnable" xml:space="preserve">
     <value>crwdns6555774:0crwdne6555774:0</value>
     <comment>shown as watermark on some edit boxes</comment>
@@ -673,5 +669,40 @@
   </data>
   <data name="Global_NoActionItems" xml:space="preserve">
     <value>crwdns6556122:0crwdne6556122:0</value>
+  </data>
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>crwdns6556124:0crwdne6556124:0</value>
+    <comment>note the spaces</comment>
+  </data>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>crwdns6556125:0crwdne6556125:0</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>crwdns6556126:0crwdne6556126:0</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>crwdns6556127:0crwdne6556127:0</value>
+  </data>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>crwdns6556128:0crwdne6556128:0</value>
+  </data>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>crwdns6556129:0crwdne6556129:0</value>
+  </data>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>crwdns6556130:0crwdne6556130:0</value>
+  </data>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>crwdns6556131:0crwdne6556131:0</value>
+  </data>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>crwdns6556132:0crwdne6556132:0</value>
+  </data>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>crwdns6556133:0crwdne6556133:0</value>
+  </data>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>crwdns6556134:0crwdne6556134:0</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
   </data>
 </root>

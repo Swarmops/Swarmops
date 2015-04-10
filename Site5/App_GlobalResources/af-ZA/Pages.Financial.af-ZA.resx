@@ -249,6 +249,19 @@
     <value>crwdns6556121:0{0}crwdnd6556121:0{1:N2}crwdnd6556121:0{2}crwdne6556121:0</value>
     <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
   </data>
+  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
+    <value>crwdns6556135:0crwdne6556135:0</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>crwdns6556136:0crwdne6556136:0</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>crwdns6556137:0crwdne6556137:0</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>crwdns6556138:0crwdne6556138:0</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>crwdns6555288:0crwdne6555288:0</value>
   </data>

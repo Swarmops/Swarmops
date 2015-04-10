@@ -572,10 +572,6 @@
     <value>سنة {0}</value>
     <comment>As in "the year X".</comment>
   </data>
-  <data name="Swarm_Vacant" xml:space="preserve">
-    <value>(شاغرة)</value>
-    <comment>For unassigned positions</comment>
-  </data>
   <data name="Global_DefineToEnable" xml:space="preserve">
     <value>يرجى التعريف لتمكين هذه الميزة</value>
     <comment>shown as watermark on some edit boxes</comment>
@@ -640,6 +636,17 @@
     <value>(متعدد)</value>
     <comment>Displayed when multiple items</comment>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
