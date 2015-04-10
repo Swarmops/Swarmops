@@ -19,6 +19,7 @@ namespace Swarmops.Frontend.Controls.v5.Swarm
         protected void Page_Load (object sender, EventArgs e)
         {
             Localize();
+            this.DropPerson.Placeholder = Resources.Global.Swarm_TypeName;
         }
 
         private void Localize()
@@ -28,6 +29,17 @@ namespace Swarmops.Frontend.Controls.v5.Swarm
             this.LiteralHeaderPosition.Text = Resources.Global.Swarm_Position;
             this.LiteralHeaderExpires.Text = Resources.Global.Swarm_AssignmentExpires;
             this.LiteralHeaderMinMax.Text = Resources.Global.Global_MinMax;
+
+            this.DropDuration.Items.Add (new ListItem(Resources.Global.Timespan_Selection_OneMonth, "1"));
+            this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_TwoMonths, "2"));
+            this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_ThreeMonths, "3"));
+            this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_SixMonths, "6"));
+            this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_OneYear, "12"));
+            this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_TwoYears, "24"));
+            this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_UntilTermination, "-1"));
+
+            this.DropDuration.SelectedValue = "12";
+
         }
 
         public RoleLevel Level { get; set; }

@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="TreePositions.ascx.cs" Inherits="Swarmops.Frontend.Controls.v5.Swarm.TreePositions" %>
+<%@ Register TagPrefix="Swarmops5Workaround" TagName="ComboPeople" src="~/Controls/v5/Swarm/ComboPeople.ascx" %>
 
     <script language="javascript" type="text/javascript">
 
@@ -8,7 +9,10 @@
 	        {
 
 	            onLoadSuccess: function () {
-                    // Anything here
+	                $('.LocalAssignPerson').click(function () {
+	                    <%= this.DropPerson.ClientID%>_val('');
+	                    <%= this.DialogAdd.ClientID %>_open();
+	                });
 	            }
 	        });
 
@@ -32,5 +36,20 @@
                 <th field="minMax" width="80" align="center"><asp:Literal ID="LiteralHeaderMinMax" Text="Min/Max" runat="server" /></th>
                 <th field="actionIcon" width="50" align="center"><asp:Literal ID="LiteralHeaderAction" Text="XYZ" runat="server" /></th>
             </tr>  
-        </thead>  
+        </thead>
     </table> 
+
+    <Swarmops5:ModalDialog id="DialogAdd" runat="server">
+        <DialogCode>
+            <h2>Assigning to ASDSADASDASDASD</h2>
+            <div class="entryFields">
+                <Swarmops5Workaround:ComboPeople ID="DropPerson" runat="server" />&#8203;<br/>
+                <asp:DropDownList ID="DropDuration" runat="server" />&#8203;<br/>
+                <input type="button" class="buttonAccentColor" value="Assign"/>
+            </div>
+            <div class="entryLabels">
+                Assign this person to the position:<br/>
+                Assignment duration:
+            </div>
+        </DialogCode>
+    </Swarmops5:ModalDialog>

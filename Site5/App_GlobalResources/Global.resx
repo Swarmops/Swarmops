@@ -695,4 +695,29 @@
   <data name="Swarm_Position" xml:space="preserve">
     <value>Position</value>
   </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>Type a name...</value>
+  </data>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>One month</value>
+  </data>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>One year</value>
+  </data>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>Six months</value>
+  </data>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>Three months</value>
+  </data>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>Two months</value>
+  </data>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>Two years</value>
+  </data>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>Until termination</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
+  </data>
 </root>

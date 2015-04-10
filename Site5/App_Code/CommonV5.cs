@@ -118,6 +118,11 @@ public class CommonV5
         return result;
     }
 
+    public static string JavascriptEscape (string input)
+    {
+        return System.Uri.EscapeDataString (input).Replace ("'", "%27").Replace ("\"", "%22"); // makes it safe to embed in single/double quotes client-side
+    }
+
 
 /* COLOR SCHEME
 

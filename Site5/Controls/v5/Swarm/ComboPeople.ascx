@@ -20,20 +20,14 @@
 
                 // update avatar when person selected
 
-                $.ajax({
-                    url: '/Automation/Json-GetPersonAvatar.aspx',
-                    dataType: 'json',
-                    data: {
-                        personId: person.id
-                    },
-                    success: function(data){
-                        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('" + data.avatar24Url + "')");
-                        
-                    },
-                    error: function(){
-                        error.apply(this, arguments);
-                    }
-                });
+                SwarmopsJS.ajaxCall(
+                    "/Automation/SwarmFunctions.aspx/GetPersonAvatar",
+                    { personId: person.id },
+                    function(data) {
+                        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('" + data.Avatar24Url + "')");
+                    });
+
+                <%=this.ClientID%>_selectedPersonIdPrivate = person.id;
 
                 // call owner, if we have a callback
 
@@ -44,33 +38,27 @@
             }
         });
 
+        <%=this.ClientID%>_placeholder(decodeURIComponent("<%=JavascriptEscape (this.Placeholder)%>"));
+
         <% if (this.Selected != null)
            { %>;
-        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('<%= this.Selected.GetSecureAvatarLink(24) %>')");
-        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').text('<%= this.Selected.Canonical %>');
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('<%= this.Selected.GetSecureAvatarLink(24) %>')");
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').text('<%= this.Selected.Canonical %>');
         
         <% }
            else if (this.NobodySelected)
            { %>;
-        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background-image', "url('/Images/Icons/iconshock-warning-24px.png')");
-        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').text('<%= Resources.Global.Global_NoOwner %>');
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('/Images/Icons/iconshock-warning-24px.png')");
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').text('<%= Resources.Global.Global_NoOwner %>');
         
         <% } else { %>;
-        $('span#<%= this.ClientID %>_SpanPeople span input.combo-text').css('background', '');
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').css('background', '');
 
-        <% } %>;
-        $('#<%=this.ClientID %>_SpanPeople span.combo input.combo-text').keydown(function (e) {
-            switch (e.which) {
-                case 40: // down
-                    $('#<%=this.ClientID %>_SpanPeople span.combo span span.combo-arrow').click();
-                    break;
-
-                default: return; // exit this handler for other keys
-            }
-            e.preventDefault(); // prevent the default action (scroll / move caret)
-        });
+        <% } %>
     });
-    
+
+    var <%=this.ClientID%>_selectedPersonIdPrivate = 0;
+
     var <%=this.ClientID %>_autoCompleteLoader = function(param,success,error){
         var q = param.q || '';
         if (q.length < 3) {
@@ -99,6 +87,36 @@
         var s = '<span style="padding-<%= _nearEdge %>:20px;margin-<%= _nearEdge %>:4px;' + "background-image:url('" + row.avatar16Url + "');" + 'background-position:<%= _nearEdge %> center;background-repeat:no-repeat">' + row.name + '</span>';
         return s;
     }
+
+    function <%=this.ClientID %>_placeholder(newValue) {
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').attr('placeholder', newValue);
+    }
+
+    function <%=this.ClientID %>_avatarUrl(avatarUrl) {
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('" + avatarUrl + "')");
+    }
+
+    function <%=this.ClientID %>_selectedPersonId() {
+        return <%=this.ClientID%>_selectedPersonIdPrivate;
+    }
+
+    function <%=this.ClientID %>_placeholder(newValue) {
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').attr('placeholder', newValue);
+    }
+
+    function <%=this.ClientID %>_val(newValue) {
+        return $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').val(newValue);
+    }
+
+    function <%=this.ClientID %>_backgroundColor(newColor) {
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').css('background-color', newColor);
+    }
+
+    function <%=this.ClientID %>_backgroundToWhite() {
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').animate({ backgroundColor: "#FFFFFF" }, 250);
+    }
+
+
 </script>
  
  <span id="<%=this.ClientID %>_SpanPeople" class="fakePlaceholderText"><select class="easyui-combobox comboperson" url="" name="DropPeople" id="<%=this.ClientID %>_DropPeople" animate="true" style="width:324px"></select></span>

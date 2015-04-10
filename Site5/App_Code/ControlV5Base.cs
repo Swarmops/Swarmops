@@ -63,4 +63,9 @@ public class ControlV5Base : UserControl
         base.OnLoad (e);
     }
 
+    protected string JavascriptEscape (string input)
+    {
+        return CommonV5.JavascriptEscape (input);
+    }
+
 }

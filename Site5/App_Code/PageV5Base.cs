@@ -171,7 +171,7 @@ public class PageV5Base : Page
 
     public string JavascriptEscape (string input)
     {
-        return System.Uri.EscapeDataString (input).Replace ("'", "%27"); // makes it safe to embed in single quotes client-side
+        return CommonV5.JavascriptEscape (input);
     }
 }
 
