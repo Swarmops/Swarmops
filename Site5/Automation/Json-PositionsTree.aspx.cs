@@ -18,6 +18,7 @@ namespace Swarmops.Frontend.Automation
             // If level if system-wide, execute this block. Also, move the data to the real place, please
 
             JsonPositions rootPositions = new JsonPositions();
+            _customCookieClass = Request["CustomCookie"]; // may be null and that's ok
 
             Tree<Position> systemPositions = Positions.ForSystem().Tree;
 
@@ -42,7 +43,7 @@ namespace Swarmops.Frontend.Automation
                 PositionAssignments assignments = position.Assignments;
 
                 string expires = string.Empty;
-                string assignedName = Resources.Global.Swarm_Vacant + " <a href='#' class='LocalAssignPerson'>" + Resources.Global.Swarm_AssignPerson + "</a>" ;
+                string assignedName = string.Format("{0} <a href='#' positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a>", Resources.Controls.Swarm.Positions_Vacant, _customCookieClass, Resources.Controls.Swarm.Positions_AssignPerson, position.Identity, JavascriptEscape(position.Localized()));
 
                 if (assignments.Count > 0)
                 {
@@ -86,8 +87,11 @@ namespace Swarmops.Frontend.Automation
                     // finally, if the assigned count is less than max count, add a "assign another person" link
 
                     elements.Add ("{" + element + "}");
-                    string addPerson = "<a href='#' class='LocalAssignPerson'>" +
-                                       Resources.Global.Swarm_AssignMorePerson + "</a>";
+                    string addPerson =
+                        string.Format (
+                            "<a href='#' positionId='{1}' positionName='{2}' class='{3} LocalAssignPerson'>{0}</a>",
+                            Resources.Controls.Swarm.Positions_AssignMorePerson, position.Identity,
+                            JavascriptEscape (position.Localized()), _customCookieClass);
 
                     element =
                         String.Format(
@@ -106,6 +110,8 @@ namespace Swarmops.Frontend.Automation
 
             return "[" + String.Join(",", elements.ToArray()) + "]";
         }
+
+        private string _customCookieClass;
 
         private class JsonPosition
         {

@@ -27,8 +27,12 @@ namespace Swarmops.Frontend.Controls.v5.Swarm
             this.LiteralHeaderAction.Text = Resources.Global.Global_Action;
             this.LiteralHeaderName.Text = Resources.Global.Swarm_AssignedPerson;
             this.LiteralHeaderPosition.Text = Resources.Global.Swarm_Position;
-            this.LiteralHeaderExpires.Text = Resources.Global.Swarm_AssignmentExpires;
+            this.LiteralHeaderExpires.Text = Resources.Controls.Swarm.Positions_AssignmentExpires;
             this.LiteralHeaderMinMax.Text = Resources.Global.Global_MinMax;
+
+            this.LabelAssignPersonTo.Text = Resources.Controls.Swarm.Positions_AssignPersonToPosition;
+            this.LabelAssignmentDuration.Text = Resources.Controls.Swarm.Positions_AssignmentDuration;
+            this.LabelModalHeader.Text = String.Format (Resources.Controls.Swarm.Positions_ModalHeader, this.ClientID);
 
             this.DropDuration.Items.Add (new ListItem(Resources.Global.Timespan_Selection_OneMonth, "1"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_TwoMonths, "2"));

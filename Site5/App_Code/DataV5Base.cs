@@ -155,4 +155,9 @@ public class DataV5Base : Page
     {
         return input.Replace ("\"", "\\\"").Replace ("  ", " ").Trim();
     }
+
+    public string JavascriptEscape(string input)
+    {
+        return CommonV5.JavascriptEscape(input);
+    }
 }

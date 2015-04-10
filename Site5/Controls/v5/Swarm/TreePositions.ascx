@@ -10,14 +10,23 @@
 
 	            onLoadSuccess: function () {
 	                $('.LocalAssignPerson').click(function () {
-	                    <%= this.DropPerson.ClientID%>_val('');
+	                    currentPosition = $(this).attr("positionId");
+	                    $('#<%= this.ClientID %>_modalPositionName').text(decodeURIComponent($(this).attr("positionName")));
+	                    <%= this.DropPerson.ClientID%>_clear();
 	                    <%= this.DialogAdd.ClientID %>_open();
 	                });
 	            }
+
+                // TODO: RowStyler
 	        });
+
+            $('#<%=this.ClientID%>_buttonAssign').click(function() {
+                alert("foo!");
+            });
 
         });
 
+        var currentPosition = '';
 
     </script>
 
@@ -41,15 +50,15 @@
 
     <Swarmops5:ModalDialog id="DialogAdd" runat="server">
         <DialogCode>
-            <h2>Assigning to ASDSADASDASDASD</h2>
+            <h2><asp:Label runat="server" ID="LabelModalHeader"/></h2>
             <div class="entryFields">
                 <Swarmops5Workaround:ComboPeople ID="DropPerson" runat="server" />&#8203;<br/>
                 <asp:DropDownList ID="DropDuration" runat="server" />&#8203;<br/>
-                <input type="button" class="buttonAccentColor" value="Assign"/>
+                <input type="button" id="<%=this.ClientID %>_buttonAssign" class="buttonAccentColor" value="Assign"/>
             </div>
             <div class="entryLabels">
-                Assign this person to the position:<br/>
-                Assignment duration:
+                <asp:Label ID="LabelAssignPersonTo" runat="server" /><br/>
+                <asp:Label ID="LabelAssignmentDuration" runat="server" />
             </div>
         </DialogCode>
     </Swarmops5:ModalDialog>

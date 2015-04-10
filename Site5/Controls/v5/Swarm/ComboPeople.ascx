@@ -116,6 +116,10 @@
         $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').animate({ backgroundColor: "#FFFFFF" }, 250);
     }
 
+    function <%=this.ClientID %>_clear() {
+        <%=this.ClientID%>_val('');
+        <%=this.ClientID%>_avatarUrl('');
+    }
 
 </script>
  
