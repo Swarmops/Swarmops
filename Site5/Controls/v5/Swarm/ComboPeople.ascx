@@ -27,7 +27,7 @@
                         $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('" + data.Avatar24Url + "')");
                     });
 
-                <%=this.ClientID%>_selectedPersonIdPrivate = person.id;
+                <%=this.ClientID%>_pvt_selectedPersonId = person.id;
 
                 // call owner, if we have a callback
 
@@ -57,7 +57,7 @@
         <% } %>
     });
 
-    var <%=this.ClientID%>_selectedPersonIdPrivate = 0;
+    var <%=this.ClientID%>_pvt_selectedPersonId = 0;
 
     var <%=this.ClientID %>_autoCompleteLoader = function(param,success,error){
         var q = param.q || '';
@@ -97,7 +97,7 @@
     }
 
     function <%=this.ClientID %>_selectedPersonId() {
-        return <%=this.ClientID%>_selectedPersonIdPrivate;
+        return <%=this.ClientID%>_pvt_selectedPersonId;
     }
 
     function <%=this.ClientID %>_placeholder(newValue) {
