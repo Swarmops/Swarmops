@@ -153,6 +153,18 @@ div.panel.datagrid > div.datagrid-wrap.panel-body {
     border: none;
 }
 
+.datagrid-row-selected {  /* don't show selection */
+    background:transparent;
+}
+
+.datagrid-row-selected {  /* don't show selection */
+    background:transparent;
+}
+
+.datagrid-row-over, .datagrid-row-selected:hover {
+    background-color: #f0f4ff; /* copy from easyui - may want to customize later */
+}
+
 /* TREE */
 
 .tree

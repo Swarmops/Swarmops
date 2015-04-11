@@ -49,6 +49,14 @@ strong
 }
 
 
+/* CURSOR POINTER ON ALL A ELEMENTS, EVEN THOSE THAT JS-TRIGGER ACTION */
+
+a 
+{
+    cursor: pointer;
+}
+
+
 /* RTL */
 body.rtl {
     direction: rtl;
