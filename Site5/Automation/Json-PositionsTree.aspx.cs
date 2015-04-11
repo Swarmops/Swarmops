@@ -18,7 +18,7 @@ namespace Swarmops.Frontend.Automation
             // If level if system-wide, execute this block. Also, move the data to the real place, please
 
             JsonPositions rootPositions = new JsonPositions();
-            _customCookieClass = Request["CustomCookie"]; // may be null and that's ok
+            _customCookieClass = "LocalPosition" + Request["Cookie"]; // may be null and that's ok
 
             Tree<Position> systemPositions = Positions.ForSystem().Tree;
 
@@ -43,14 +43,15 @@ namespace Swarmops.Frontend.Automation
                 PositionAssignments assignments = position.Assignments;
 
                 string expires = string.Empty;
-                string assignedName = string.Format("{0} <a href='#' positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a>", Resources.Controls.Swarm.Positions_Vacant, _customCookieClass, Resources.Controls.Swarm.Positions_AssignPerson, position.Identity, JavascriptEscape(position.Localized()));
+                string assignedName = string.Format("<a positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a> {0}", Resources.Controls.Swarm.Positions_Vacant, _customCookieClass, Resources.Controls.Swarm.Positions_AssignPerson, position.Identity, JavascriptEscape(position.Localized()));
 
                 if (assignments.Count > 0)
                 {
                     assignedName = assignments[0].Person.Canonical;
-                    if (assignments[0].ExpiresDateTimeUtc.Year > 2000) // as in, "is defined"
+                    int expireYear = assignments[0].ExpiresDateTimeUtc.Year;
+                    if (expireYear > 2000 && expireYear < 3000) // as in, "is defined"
                     {
-                        expires = assignments[0].ExpiresDateTimeUtc.ToString ("yyyy-MM-dd");
+                        expires = assignments[0].ExpiresDateTimeUtc.ToString("yyyy-MMM-dd");
                     }
                 }
 
@@ -70,9 +71,10 @@ namespace Swarmops.Frontend.Automation
                     elements.Add ("{" + element + "}");
 
                     expires = string.Empty;
-                    if (assignments[assignmentCount].ExpiresDateTimeUtc.Year > 2000) // as in, "is defined"
+                    int expireYear = assignments[assignmentCount].ExpiresDateTimeUtc.Year;
+                    if (expireYear > 2000 && expireYear < 3000) // as in, "is defined"
                     {
-                        expires = assignments[assignmentCount].ExpiresDateTimeUtc.ToString ("yyyy-MM-dd");
+                        expires = assignments[assignmentCount].ExpiresDateTimeUtc.ToString ("yyyy-MMM-dd");
                     }
                     element =
                         String.Format (
@@ -82,14 +84,14 @@ namespace Swarmops.Frontend.Automation
                     assignmentCount++;
                 }
 
-                if (assignmentCount < position.MaxCount)
+                if (assignmentCount < position.MaxCount || (position.MaxCount == 0 && position.Assignments.Count > 0))
                 {
                     // finally, if the assigned count is less than max count, add a "assign another person" link
 
                     elements.Add ("{" + element + "}");
                     string addPerson =
                         string.Format (
-                            "<a href='#' positionId='{1}' positionName='{2}' class='{3} LocalAssignPerson'>{0}</a>",
+                            "<a positionId='{1}' positionName='{2}' class='{3} LocalAssignPerson'>{0}</a>",
                             Resources.Controls.Swarm.Positions_AssignMorePerson, position.Identity,
                             JavascriptEscape (position.Localized()), _customCookieClass);
 

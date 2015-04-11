@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using NBitcoin;
@@ -1108,6 +1109,28 @@ namespace Swarmops.Logic.Swarm
             return GetAvatarLink (pixelSize).Replace ("http://www", "https://secure");
         }
 
+
+        public PositionAssignment PositionAssignment
+        {
+            get
+            {
+                PositionAssignments candidateSet = this.PositionAssignments;
+                // candidateSet = (PositionAssignments) candidateSet.Where (assignment => assignment.Active); THIS THROWS, FIX WHEN THIS LOGIC IS NEEDED
+
+                if (candidateSet.Count != 1)
+                {
+                    throw new ArgumentException ("No active position");
+                }
+
+                return candidateSet[0];
+            }
+        }
+
+        public PositionAssignments PositionAssignments
+        {
+            get { return PositionAssignments.ForPerson (this); }
+        }
+
         public bool HasAccess (Access access)
         {
             if (access == null)
@@ -1155,6 +1178,14 @@ namespace Swarmops.Logic.Swarm
             {
                 return true;
             }
+
+            // ENTERING TEMPORARY TERRITORY HERE, UNTIL REAL ACCESS COMPLETED
+
+            if (access.Organization == null)
+            {
+                access = new Access (Organization.FromIdentity (1), access.Aspect, access.Type);
+            }
+
 
             if (access.Type == AccessType.Write)
             {

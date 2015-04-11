@@ -25,5 +25,14 @@ namespace Swarmops.Logic.Swarm
 
             return FromArray (SwarmDb.GetDatabaseForReading().GetPositionAssignments (positions));
         }
+
+        public static PositionAssignments ForPerson (Person person, bool includeTerminated = false)
+        {
+            if (!includeTerminated)
+            {
+                return FromArray (SwarmDb.GetDatabaseForReading().GetPositionAssignments (person, DatabaseCondition.ActiveTrue));
+            }
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPositionAssignments(person));
+        }
     }
 }

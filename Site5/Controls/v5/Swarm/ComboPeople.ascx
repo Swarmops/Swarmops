@@ -119,6 +119,13 @@
     function <%=this.ClientID %>_clear() {
         <%=this.ClientID%>_val('');
         <%=this.ClientID%>_avatarUrl('');
+        $('#<%=this.ClientID%>_DropPeople').combobox('reload');
+        $('#<%=this.ClientID%>_DropPeople').combobox('clear');
+        <%=this.ClientID%>_pvt_selectedPersonId = 0;
+    }
+
+    function <%=this.ClientID %>_focus() {
+        $('span#<%= this.ClientID %>_SpanPeople span input.textbox-text').focus();
     }
 
 </script>

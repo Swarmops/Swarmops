@@ -134,9 +134,19 @@
   <data name="Positions_AssignPersonToPosition" xml:space="preserve">
     <value>Assign this person to position</value>
   </data>
+  <data name="Positions_ButtonAssign" xml:space="preserve">
+    <value>Assign</value>
+    <comment>Kind of "hire" but also for volunteers</comment>
+  </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
     <value>Assign person as &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt;</value>
     <comment>Header for new assignment dialog</comment>
+  </data>
+  <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
+    <value>Failed: Can't assign any more people to this position.</value>
+  </data>
+  <data name="Positions_PleaseSelectPerson" xml:space="preserve">
+    <value>Please select a person to assign.</value>
   </data>
   <data name="Positions_Vacant" xml:space="preserve">
     <value>(vacant)</value>

@@ -33,6 +33,7 @@ namespace Swarmops.Frontend.Controls.v5.Swarm
             this.LabelAssignPersonTo.Text = Resources.Controls.Swarm.Positions_AssignPersonToPosition;
             this.LabelAssignmentDuration.Text = Resources.Controls.Swarm.Positions_AssignmentDuration;
             this.LabelModalHeader.Text = String.Format (Resources.Controls.Swarm.Positions_ModalHeader, this.ClientID);
+            this.LiteralButtonAssign.Text = Resources.Controls.Swarm.Positions_ButtonAssign; // Wrongly flagged red-error by Resharper; this assignment is legit
 
             this.DropDuration.Items.Add (new ListItem(Resources.Global.Timespan_Selection_OneMonth, "1"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_TwoMonths, "2"));
@@ -49,6 +50,7 @@ namespace Swarmops.Frontend.Controls.v5.Swarm
         public RoleLevel Level { get; set; }
         public int OrganizationId { get; set; }
         public int GeographyId { get; set; }
+        public string Cookie { get; set; }
 
 
         public enum RoleLevel

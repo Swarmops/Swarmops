@@ -6,7 +6,9 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
+using Swarmops.Common.Exceptions;
 
 namespace Swarmops.Frontend.Automation
 {
@@ -18,13 +20,53 @@ namespace Swarmops.Frontend.Automation
         }
 
         [WebMethod]
-        public static AjaxCallResult AssignPosition (string cookie)
+        public static AjaxCallResult AssignPosition (int personId, int positionId, int durationMonths, int organizationId, int geographyId)
         {
-            string[] dataParts = cookie.Split ('-');
-            int positionId = Convert.ToInt32(dataParts[0]);
-            int personId = Convert.ToInt32 (dataParts[2]);
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            Position position = Position.FromIdentity (positionId);
+            Person person = Person.FromIdentity (personId);
+            Organization organization = (organizationId == 0 ? null : Organization.FromIdentity (organizationId));
+            Geography geography = (geographyId == 0 ? null : Geography.FromIdentity (geographyId));
 
-            return new AjaxCallResult();  // TODO
+            if ((position.OrganizationId > 0 && authData.CurrentOrganization.Identity != position.OrganizationId) || person.Identity < 0)
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (!authData.CurrentUser.HasAccess (new Access (AccessAspect.Administration)))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            if (position.MaxCount > 0 && position.Assignments.Count >= position.MaxCount)
+            {
+                return new AjaxCallResult
+                {
+                    Success = false,
+                    DisplayMessage = Resources.Controls.Swarm.Positions_NoMorePeopleOnPosition
+                };
+            }
+
+            // Deliberate: no requirement for membership (or equivalent) in order to be assigned to position.
+
+            Position currentUserPosition = authData.CurrentUser.PositionAssignment.Position; // excludes acting positions. May throw!
+            DateTime? expiresUtc = null;
+
+            if (durationMonths > 0)
+            {
+                expiresUtc = DateTime.UtcNow.AddMonths (durationMonths);
+            }
+
+            try
+            {
+                PositionAssignment.Create (organization, geography, position, person, authData.CurrentUser, currentUserPosition,
+                    expiresUtc, string.Empty);
+            }
+            catch (DatabaseConcurrencyException)
+            {
+                return new AjaxCallResult {Success = false, DisplayMessage = Resources.Global.Error_DatabaseConcurrency};
+            }
+
+            return new AjaxCallResult() {Success = true};
         }
 
         public class AvatarData : AjaxCallResult

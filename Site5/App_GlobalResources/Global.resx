@@ -680,6 +680,9 @@
   <data name="Swarm_Position" xml:space="preserve">
     <value>Position</value>
   </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>It seems another user beat you to this operation; the database changed while you were looking. Please examine the changed conditions and retry what you were trying to do.</value>
+  </data>
   <data name="Swarm_TypeName" xml:space="preserve">
     <value>Type a name...</value>
   </data>
