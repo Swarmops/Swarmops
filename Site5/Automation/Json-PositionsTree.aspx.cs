@@ -43,7 +43,7 @@ namespace Swarmops.Frontend.Automation
                 PositionAssignments assignments = position.Assignments;
 
                 string expires = string.Empty;
-                string assignedName = string.Format("<a positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a> {0}", Resources.Controls.Swarm.Positions_Vacant, _customCookieClass, Resources.Controls.Swarm.Positions_AssignPerson, position.Identity, JavascriptEscape(position.Localized()));
+                string assignedName = string.Format("<a positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a> {0}", Resources.Controls.Swarm.Positions_Vacant, _customCookieClass, Resources.Controls.Swarm.Positions_AssignFirstPerson, position.Identity, JavascriptEscape(position.Localized()));
 
                 if (assignments.Count > 0)
                 {
@@ -58,7 +58,7 @@ namespace Swarmops.Frontend.Automation
                 string element = string.Format("\"id\":\"{0}-1\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"minMax\":\"{4} / {5}\",\"iconType\":\"{6}\"", 
                     position.Identity, JsonSanitize (localizedPositionName), JsonSanitize (assignedName), JsonSanitize (expires), position.MinCount, 
                     position.MaxCount == 0? @"&infin;" : position.MaxCount.ToString(CultureInfo.InvariantCulture),
-                    position.MaxCount == 1? "singular" : "plural");
+                    position.MaxCount == 1? "Person" : "Group");
 
                 // TODO: Add all assignments after the first one right here
 
@@ -78,7 +78,7 @@ namespace Swarmops.Frontend.Automation
                     }
                     element =
                         String.Format (
-                            "\"id\":\"{0}-{1}\",\"iconType\":\"hidden\",\"positionTitle\":\"&nbsp;\",\"assignedName\":\"{2}\",\"expires\":\"{3}\"",
+                            "\"id\":\"{0}-{1}\",\"iconType\":\"Hidden\",\"positionTitle\":\"&nbsp;\",\"assignedName\":\"{2}\",\"expires\":\"{3}\"",
                             position.Identity, assignmentCount+1, assignments[assignmentCount].Person.Canonical, expires);
 
                     assignmentCount++;
@@ -88,16 +88,32 @@ namespace Swarmops.Frontend.Automation
                 {
                     // finally, if the assigned count is less than max count, add a "assign another person" link
 
+                    int count = position.Assignments.Count;
+                    if (count > 6)
+                    {
+                        count = 6;
+                    }
+                    string[] overEngineeredAssignmentPrompts =
+                    {
+                        Resources.Controls.Swarm.Positions_AssignFirstPerson,
+                        Resources.Controls.Swarm.Positions_AssignSecondPerson,
+                        Resources.Controls.Swarm.Positions_AssignThirdPerson,
+                        Resources.Controls.Swarm.Positions_AssignFourthPerson,
+                        Resources.Controls.Swarm.Positions_AssignFifthPerson,
+                        Resources.Controls.Swarm.Positions_AssignSixthPerson,
+                        Resources.Controls.Swarm.Positions_AssignAnotherPerson
+                    };
+
                     elements.Add ("{" + element + "}");
                     string addPerson =
                         string.Format (
                             "<a positionId='{1}' positionName='{2}' class='{3} LocalAssignPerson'>{0}</a>",
-                            Resources.Controls.Swarm.Positions_AssignMorePerson, position.Identity,
+                            overEngineeredAssignmentPrompts[count], position.Identity,
                             JavascriptEscape (position.Localized()), _customCookieClass);
 
                     element =
                         String.Format(
-                        "\"id\":\"{0}-0\",\"iconType\":\"hidden\",\"positionTitle\":\"&nbsp;\",\"assignedName\":\"{1}\"",
+                        "\"id\":\"{0}-0\",\"iconType\":\"Hidden\",\"positionTitle\":\"&nbsp;\",\"assignedName\":\"{1}\"",
                             position.Identity, addPerson);
 
                 }

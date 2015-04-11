@@ -7,6 +7,13 @@
 
             $('#<%=this.ClientID%>_tablePositions').treegrid(
 	        {
+	            rowStyler: function (rowData) {
+	                if (rowData.iconType != null) {
+	                    return { class: "iconType" + rowData.iconType };
+	                }
+
+	                return '';
+	            },
 
 	            onLoadSuccess: function () {
 	                $('.LocalAssignPerson.LocalPosition<%=this.Cookie%>').click(function () {
@@ -27,7 +34,7 @@
 
                 if (personId == 0) {
                     // abort
-                    alert("No person selected, not assigning anybody");
+                    alertify.error("Please select a person."); // LOC
                     return;
                 }
 
@@ -56,7 +63,6 @@
         var currentPositionId = '';
 
     </script>
-
 
     <table id="<%=this.ClientID %>_tablePositions" title="" class="easyui-treegrid" style="width:680px;height:600px"  
         url="/Automation/Json-PositionsTree.aspx?Cookie=<%=this.Cookie %>"
