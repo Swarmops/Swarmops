@@ -125,7 +125,7 @@
     <value>Assign a fifth person...</value>
   </data>
   <data name="Positions_AssignFirstPerson" xml:space="preserve">
-    <value>Assign somebody...</value>
+    <value>Assign...</value>
   </data>
   <data name="Positions_AssignFourthPerson" xml:space="preserve">
     <value>Assign a fourth person...</value>
@@ -167,5 +167,24 @@
   <data name="Positions_Vacant" xml:space="preserve">
     <value>(position is vacant)</value>
     <comment>For unassigned positions</comment>
+  </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;QUIT YOUR POSITION?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;This is &lt;strong&gt;your&lt;/strong&gt; assignment. Terminating your own assignment is the equivalent of saying "I QUIT". Doing so will take effect immediately. Is this what you wanted to do?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;TERMINATE ASSIGNMENT?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Do you want to terminate {0} from the assignment as {1}? This is the equivalent of firing somebody and usually needs to be in accordance with internal processes and local law.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_TerminateNo" xml:space="preserve">
+    <value>Do Not Terminate</value>
+  </data>
+  <data name="Positions_TerminateSelfNo" xml:space="preserve">
+    <value>Oops! No, go back!</value>
+  </data>
+  <data name="Positions_TerminateSelfYes" xml:space="preserve">
+    <value>Yes, I Resign</value>
+  </data>
+  <data name="Positions_TerminateYes" xml:space="preserve">
+    <value>Terminate Assignment</value>
   </data>
 </root>

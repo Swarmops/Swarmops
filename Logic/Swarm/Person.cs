@@ -1212,6 +1212,24 @@ namespace Swarmops.Logic.Swarm
             return false;
         }
 
+        public Position GetPrimaryPosition (Organization organization)
+        {
+            PositionAssignments personAssignments = PositionAssignments.ForPerson (this);
+
+            foreach (PositionAssignment assignment in personAssignments)
+            {
+                if (assignment.OrganizationId == 0 || assignment.OrganizationId == organization.Identity)
+                {
+                    // TODO: If "acting" is false, and no delegation, then...
+                    return assignment.Position;
+                }
+            }
+
+            // No hit. This is a totally valid case, so don't throw but return null.
+
+            return null;
+        }
+
         // A couple of special cases
 
         public const int OpenLedgersIdentity = -1;

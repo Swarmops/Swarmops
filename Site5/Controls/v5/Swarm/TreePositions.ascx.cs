@@ -43,6 +43,14 @@ namespace Swarmops.Frontend.Controls.v5.Swarm
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_TwoYears, "24"));
             this.DropDuration.Items.Add(new ListItem(Resources.Global.Timespan_Selection_UntilTermination, "-1"));
 
+            this.LiteralTerminateNo.Text = JavascriptEscape (Resources.Controls.Swarm.Positions_TerminateNo);
+            this.LiteralTerminateYes.Text = JavascriptEscape (Resources.Controls.Swarm.Positions_TerminateYes);
+            this.LiteralTerminateSelfNo.Text = JavascriptEscape (Resources.Controls.Swarm.Positions_TerminateSelfNo);
+            this.LiteralTerminateSelfYes.Text = JavascriptEscape (Resources.Controls.Swarm.Positions_TerminateSelfYes);
+            this.LiteralConfirmTermination.Text = JavascriptEscape (Resources.Controls.Swarm.Positions_ConfirmTerminate);
+            this.LiteralConfirmSelfTermination.Text =
+                JavascriptEscape (Resources.Controls.Swarm.Positions_ConfirmSelfTerminate);
+
             this.DropDuration.SelectedValue = "12";
 
         }

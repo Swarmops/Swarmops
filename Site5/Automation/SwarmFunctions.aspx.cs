@@ -66,7 +66,56 @@ namespace Swarmops.Frontend.Automation
                 return new AjaxCallResult {Success = false, DisplayMessage = Resources.Global.Error_DatabaseConcurrency};
             }
 
-            return new AjaxCallResult() {Success = true};
+            return new AjaxCallResult {Success = true};
+        }
+
+
+        [WebMethod]
+        public static AjaxCallResult TerminatePositionAssignment (int assignmentId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            PositionAssignment assignment = PositionAssignment.FromIdentity (assignmentId);
+
+            if (assignment.OrganizationId == 0)
+            {
+                if (!authData.CurrentUser.HasAccess (new Access (AccessAspect.Administration))) // System-wide admin
+                {
+                    throw new UnauthorizedAccessException();
+                }
+            }
+            else // Org-specific assignment
+            {
+                if (assignment.GeographyId == 0)
+                {
+                    if (!authData.CurrentUser.HasAccess (new Access(authData.CurrentOrganization, AccessAspect.Administration)))
+                    {
+                        throw new UnauthorizedAccessException();
+                    }
+                }
+                else // Org- and geo-specific assignment
+                {
+                    if (
+                        !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                            assignment.Position.Geography, AccessAspect.Administration)))
+                    {
+                        throw new UnauthorizedAccessException();
+                    }
+                }
+            }
+
+            // Ok, go ahead and terminate
+
+            try
+            {
+                assignment.Terminate(authData.CurrentUser, authData.CurrentUser.GetPrimaryPosition(authData.CurrentOrganization), string.Empty);
+            }
+            catch (DatabaseConcurrencyException)
+            {
+                return new AjaxCallResult {Success = false, DisplayMessage = Resources.Global.Error_DatabaseConcurrency};
+            }
+
+            return new AjaxCallResult {Success = true};
         }
 
         public class AvatarData : AjaxCallResult

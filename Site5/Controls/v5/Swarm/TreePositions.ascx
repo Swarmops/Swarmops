@@ -2,7 +2,16 @@
 <%@ Register TagPrefix="Swarmops5Workaround" TagName="ComboPeople" src="~/Controls/v5/Swarm/ComboPeople.ascx" %>
 
     <script language="javascript" type="text/javascript">
+        function preload(arrayOfImages) {
+            $(arrayOfImages).each(function () {
+                (new Image()).src = this;
+            });
+        }
 
+        preload([
+            '/Images/Abstract/ajaxloader-medium.gif',
+            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png'
+        ]);
         $(document).ready(function() {
 
             $('#<%=this.ClientID%>_tablePositions').treegrid(
@@ -24,9 +33,59 @@
 	                    <%= this.DialogAdd.ClientID %>_open();
 	                    <%= this.DropPerson.ClientID%>_focus();
 	                });
-	            }
 
-                // TODO: RowStyler
+	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').css("cursor", "pointer").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
+
+	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').mouseover(function() {
+	                    if ($(this).attr("rel") != "loading") {
+	                        $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot.png");
+	                    }
+	                });
+
+	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').mouseout(function () {
+	                    if ($(this).attr("rel") != "loading") {
+	                        $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
+	                    }
+	                });
+
+	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').click(function () {
+	                    if ($(this).attr("rel") != "loading") {
+	                        $(this).attr("rel", "loading");
+
+	                        var okLabel = decodeURIComponent('<asp:Literal ID="LiteralTerminateYes" runat="server" />');
+	                        var cancelLabel = decodeURIComponent('<asp:Literal ID="LiteralTerminateNo" runat="server" />');
+	                        var confirmQuestion = decodeURIComponent('<asp:Literal ID="LiteralConfirmTermination" runat="server" />');
+
+	                        if ($(this).attr("self") == "true") {
+	                            okLabel = decodeURIComponent('<asp:Literal ID="LiteralTerminateSelfYes" runat="server" />');
+	                            cancelLabel = decodeURIComponent('<asp:Literal ID="LiteralTerminateSelfNo" runat="server" />');
+	                            confirmQuestion = decodeURIComponent('<asp:Literal ID="LiteralConfirmSelfTermination" runat="server" />');
+	                        }
+
+	                        alertify.set({
+	                            labels: {
+	                                ok: okLabel,
+	                                cancel: cancelLabel
+	                            },
+                                buttonFocus: 'cancel'
+	                        });
+
+	                        alertify.confirm(confirmQuestion,
+                                $.proxy(function (response) {
+                                    if (response) {
+                                        // user clicked the GREEN button, which is "confirm termination"
+
+                                        onConfirmTermination($(this).attr("assignmentId"));
+                                    }
+                                    $(this).attr("rel", ""); // clear state
+                                }, this));
+
+	                        return; // Do not process here - must wait for confirm dialog to return
+
+	                    }
+	                });
+
+	            }
 	        });
 
             $('#<%=this.ClientID%>_buttonAssign').click(function() {
@@ -60,6 +119,18 @@
 
         });
 
+        function onConfirmTermination(assignmentId) {
+            SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/TerminatePositionAssignment",
+                { assignmentId: assignmentId },
+                function(result) {
+                    if (result.success) {
+                        $('#<%=this.ClientID%>_tablePositions').treegrid('reload');
+                    } else {
+                        alertify.error(result.DisplayMessage);
+                    }
+                });
+        }
+
         var currentPositionId = '';
 
     </script>
@@ -76,7 +147,7 @@
                 <th field="assignedName" width="200"><asp:Literal ID="LiteralHeaderName" Text="AssignedName XYZ" runat="server" /></th>  
                 <th field="expires" width="120"><asp:Literal ID="LiteralHeaderExpires" Text="ExpiresDate XYZ" runat="server" /></th>
                 <th field="minMax" width="80" align="center"><asp:Literal ID="LiteralHeaderMinMax" Text="Min/Max" runat="server" /></th>
-                <th field="actionIcon" width="50" align="center"><asp:Literal ID="LiteralHeaderAction" Text="XYZ" runat="server" /></th>
+                <th field="actions" width="50" align="center"><asp:Literal ID="LiteralHeaderAction" Text="XYZ" runat="server" /></th>
             </tr>  
         </thead>
     </table> 

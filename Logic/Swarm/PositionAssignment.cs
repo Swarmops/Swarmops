@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using NBitcoin;
@@ -97,5 +98,19 @@ namespace Swarmops.Logic.Swarm
             return FromIdentityAggressive (positionAssignmentId);
         }
 
+        public void Terminate (Person terminatingPerson, Position terminatingPosition, string terminationNotes)
+        {
+            // TODO: ADD ACCESS CONTROL AT LOGIC LAYER
+
+            SwarmDb.GetDatabaseForWriting()
+                .TerminatePositionAssignment (this.Identity, terminatingPerson.Identity, terminatingPosition.Identity,
+                    terminationNotes);
+
+            base.TerminatedByPersonId = terminatingPerson.Identity;
+            base.TerminatedByPositionId = terminatingPosition.Identity;
+            base.Active = false;
+            base.TerminationNotes = terminationNotes;
+            base.TerminatedDateTimeUtc = DateTime.UtcNow; // may differ by milliseconds from actual value set, but shouldn't matter for practical purposes
+        }
     }
 }

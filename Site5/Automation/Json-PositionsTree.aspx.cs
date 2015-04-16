@@ -43,6 +43,7 @@ namespace Swarmops.Frontend.Automation
                 PositionAssignments assignments = position.Assignments;
 
                 string expires = string.Empty;
+                string action = string.Empty;
                 string assignedName = string.Format("<a positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a> {0}", Resources.Controls.Swarm.Positions_Vacant, _customCookieClass, Resources.Controls.Swarm.Positions_AssignFirstPerson, position.Identity, JavascriptEscape(position.Localized()));
 
                 if (assignments.Count > 0)
@@ -53,12 +54,14 @@ namespace Swarmops.Frontend.Automation
                     {
                         expires = assignments[0].ExpiresDateTimeUtc.ToString("yyyy-MMM-dd");
                     }
+                    action = String.Format("<img class='LocalIconTerminate {1}' height='18' width='24' {2} assignmentId='{0}' />", assignments[0].Identity, _customCookieClass, assignments[0].PersonId == CurrentUser.Identity? "self='true'": string.Empty);
                 }
 
-                string element = string.Format("\"id\":\"{0}-1\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"minMax\":\"{4} / {5}\",\"iconType\":\"{6}\"", 
+                string element = string.Format("\"id\":\"{0}-1\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"minMax\":\"{4} / {5}\",\"iconType\":\"{6}\",\"actions\":\"{7}\"", 
                     position.Identity, JsonSanitize (localizedPositionName), JsonSanitize (assignedName), JsonSanitize (expires), position.MinCount, 
                     position.MaxCount == 0? @"&infin;" : position.MaxCount.ToString(CultureInfo.InvariantCulture),
-                    position.MaxCount == 1? "Person" : "Group");
+                    position.MaxCount == 1? "Person" : "Group",
+                    action);
 
                 // TODO: Add all assignments after the first one right here
 
@@ -71,6 +74,8 @@ namespace Swarmops.Frontend.Automation
                     elements.Add ("{" + element + "}");
 
                     expires = string.Empty;
+                    action = String.Format("<img class='LocalIconTerminate {1}' height='18' width='24' {2} assignmentId='{0}' />", assignments[assignmentCount].Identity, _customCookieClass, assignments[0].PersonId == CurrentUser.Identity ? "self='true'" : string.Empty);
+
                     int expireYear = assignments[assignmentCount].ExpiresDateTimeUtc.Year;
                     if (expireYear > 2000 && expireYear < 3000) // as in, "is defined"
                     {
@@ -78,8 +83,8 @@ namespace Swarmops.Frontend.Automation
                     }
                     element =
                         String.Format (
-                            "\"id\":\"{0}-{1}\",\"iconType\":\"Hidden\",\"positionTitle\":\"&nbsp;\",\"assignedName\":\"{2}\",\"expires\":\"{3}\"",
-                            position.Identity, assignmentCount+1, assignments[assignmentCount].Person.Canonical, expires);
+                            "\"id\":\"{0}-{1}\",\"iconType\":\"Hidden\",\"positionTitle\":\"&nbsp;\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"actions\":\"{4}\"",
+                            position.Identity, assignmentCount+1, assignments[assignmentCount].Person.Canonical, expires, action);
 
                     assignmentCount++;
                 }
@@ -127,6 +132,11 @@ namespace Swarmops.Frontend.Automation
             }
 
             return "[" + String.Join(",", elements.ToArray()) + "]";
+        }
+
+        private bool HasHiringFiringPrivileges (Position position)
+        {
+            return false;
         }
 
         private string _customCookieClass;
