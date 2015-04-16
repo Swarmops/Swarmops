@@ -69,6 +69,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Exceptions;
 
 namespace Swarmops.Database
 {
@@ -332,7 +333,7 @@ namespace Swarmops.Database
 
 
 
-        public int CreatePositionAssignment (int organizationId, int geographyId, int positionId, int personId, int createdByPersonId, int createdByPositionId, DateTime expiresDateTimeUtc, string assignmentNotes)
+        public int CreatePositionAssignment(int organizationId, int geographyId, int positionId, int personId, int createdByPersonId, int createdByPositionId, DateTime expiresDateTimeUtc, string assignmentNotes)
         {
             DateTime utcNow = DateTime.UtcNow;
 
@@ -353,7 +354,34 @@ namespace Swarmops.Database
                 AddParameterWithName(command, "expiresDateTimeUtc", expiresDateTimeUtc);
                 AddParameterWithName(command, "assignmentNotes", assignmentNotes);
 
-                return Convert.ToInt32 (command.ExecuteScalar());
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+
+        public void TerminatePositionAssignment(int positionAssignmentId, int terminatedByPersonId, int terminatedByPositionId, string terminationNotes)
+        {
+            DateTime utcNow = DateTime.UtcNow;
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("TerminatePositionAssignment", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "positionAssignmentId", positionAssignmentId);
+                AddParameterWithName(command, "terminatedDateTimeUtc", utcNow);
+                AddParameterWithName(command, "terminatedByPersonId", terminatedByPersonId);
+                AddParameterWithName(command, "terminatedByPositionId", terminatedByPositionId);
+                AddParameterWithName(command, "terminationNotes", terminationNotes);
+
+                int rowsUpdated = Convert.ToInt32(command.ExecuteScalar());
+
+                if (rowsUpdated != 1)
+                {
+                    throw new DatabaseConcurrencyException();
+                }
             }
         }
 

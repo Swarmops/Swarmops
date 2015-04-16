@@ -17,3 +17,4 @@
 0017 - Added SetCashAdvanceAmountCents procedure [RF]
 0018 - Added "IsContractor" field to Payroll [RF]
 0019 - Added "Acting" field to PositionAssignments [RF]
+0020 - Added concurrency check to TerminatePositionAssignment [RF]
