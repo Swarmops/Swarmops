@@ -123,7 +123,7 @@
             SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/TerminatePositionAssignment",
                 { assignmentId: assignmentId },
                 function(result) {
-                    if (result.success) {
+                    if (result.Success) {
                         $('#<%=this.ClientID%>_tablePositions').treegrid('reload');
                     } else {
                         alertify.error(result.DisplayMessage);
