@@ -14,17 +14,15 @@ using Swarmops.Logic.Swarm;
 public class ControlV5Base : UserControl
 {
     private Authority _authority;
-    private Organization _currentOrganization;
-    private Person _currentUser;
 
     protected Organization CurrentOrganization
     {
-        get { return this._currentOrganization; }
+        get { return _authority.Organization; }
     }
 
     protected Person CurrentUser
     {
-        get { return this._currentUser; }
+        get { return _authority.Person; }
     }
 
     protected Authority CurrentAuthority
@@ -32,37 +30,11 @@ public class ControlV5Base : UserControl
         get { return this._authority; }
     }
 
-    protected override void OnLoad (EventArgs e)
+    protected override void OnInit (EventArgs e)
     {
-        throw new NotImplementedException(); // this MUST be replaced with CommonV5 function
+        this._authority = CommonV5.GetAuthenticationDataAndCulture (HttpContext.Current).Authority;
 
-        int currentUserId = 0;
-        int currentOrganizationId = 0;
-
-        string identity = HttpContext.Current.User.Identity.Name;
-        string[] identityTokens = identity.Split (',');
-
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
-
-        currentUserId = Convert.ToInt32 (userIdentityString);
-        currentOrganizationId = Convert.ToInt32 (organizationIdentityString);
-        this._currentUser = Person.FromIdentity (currentUserId);
-        //this._authority = this._currentUser.GetAuthority();
-        try
-        {
-            this._currentOrganization = Organization.FromIdentity (currentOrganizationId);
-        }
-        catch (ArgumentException)
-        {
-            if (PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
-            {
-                // It's possible this organization was deleted. Log on to Sandbox instead.
-                this._currentOrganization = Organization.Sandbox;
-            }
-        }
-
-        base.OnLoad (e);
+        base.OnInit (e);
     }
 
     protected string JavascriptEscape (string input)

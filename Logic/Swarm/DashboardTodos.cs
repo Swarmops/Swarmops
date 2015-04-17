@@ -10,6 +10,11 @@ namespace Swarmops.Logic.Swarm
 {
     public class DashboardTodos : List<DashboardTodo>
     {
+        public static DashboardTodos ForAuthority (Authority authority)
+        {
+            return ForPerson (authority.Person, authority.Organization); // TODO: Add actual assigned-position check here
+        }
+
         public static DashboardTodos ForPerson (Person person, Organization organization)
         {
             DashboardTodos result = new DashboardTodos();

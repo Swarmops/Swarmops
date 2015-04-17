@@ -81,7 +81,7 @@ namespace Swarmops.Pages.Security
                 Request.QueryString["SuppressAutologin"] != "true")
             {
                 DashboardMessage.Set ("<p>You have been logged on as <strong>Sandbox Administrator</strong> to the Swarmops Development Sandbox.</p><br/><p>This machine runs the latest development build, so you may run into diagnostic code and half-finished features. All data here is bogus test data and is reset every night.</p><br/><p><strong>In other words, welcome, and play away!</strong></p>");
-                FormsAuthentication.SetAuthCookie ("1,1", true);
+                FormsAuthentication.SetAuthCookie (Authority.FromLogin (Person.FromIdentity (1), Organization.Sandbox).ToEncryptedXml(), true);
                 Response.Redirect ("/");
             }
 
@@ -92,7 +92,7 @@ namespace Swarmops.Pages.Security
             if (organizationOpenLedgers != null)
             {
                 DashboardMessage.Set (String.Format(Resources.Pages.Security.Login_AsOpenLedgers, organizationOpenLedgers.Name));
-                FormsAuthentication.SetAuthCookie(Person.OpenLedgersIdentity.ToString() + "," + organizationOpenLedgers.Identity.ToString(), true);
+                FormsAuthentication.SetAuthCookie(Authority.FromLogin (Person.FromIdentity (Person.OpenLedgersIdentity), organizationOpenLedgers).ToEncryptedXml(), true);
                 Response.Redirect (@"/Ledgers/BalanceSheet");
             }
 
@@ -275,11 +275,11 @@ namespace Swarmops.Pages.Security
                     {
                         // If the person doesn't have access to the last organization (anymore), log on to Sandbox
 
-                        lastOrgId = 1;
+                        lastOrgId = Organization.SandboxIdentity;
                     }
 
                     GuidCache.Set (logonUri + "-LoggedOn",
-                        authenticatedPerson.Identity.ToString (CultureInfo.InvariantCulture) + "," + lastOrgId.ToString(CultureInfo.InvariantCulture) + ",,AuthPlain");
+                        Authority.FromLogin (authenticatedPerson, Organization.FromIdentity (lastOrgId)).ToEncryptedXml());
 
                     return "Success";  // Prepare here for "2FARequired" return code
                 }

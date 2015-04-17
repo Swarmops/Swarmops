@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Threading;
 using System.Web;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
@@ -79,39 +80,15 @@ public class CommonV5
 
     public static AuthenticationData GetAuthenticationDataAndCulture (HttpContext suppliedContext)
     {
-        // This function is called from static page methods in AJAX calls to get
+        // This function is called from all the V5 base classes to have a common
+        // authentication point for every derived master, page, and control.
+
+        // This function is also called from static page methods in AJAX calls to get
         // the current set of authentication data. Static page methods cannot access
         // the instance data of PageV5Base.
 
-        AuthenticationData result = new AuthenticationData();
-
-        // Find various credentials
-
-        string identity = suppliedContext.User.Identity.Name;
-
-        // TODO: If identity is null or empty, set null user + org
-
-        string[] identityTokens = identity.Split (',');
-
-        string userIdentityString = identityTokens[0];
-        string organizationIdentityString = identityTokens[1];
-
-        int currentUserId = Convert.ToInt32 (userIdentityString);
-        int currentOrganizationId = Convert.ToInt32 (organizationIdentityString);
-
-        result.CurrentUser = Person.FromIdentity (currentUserId);
-        try
-        {
-            result.CurrentOrganization = Organization.FromIdentity (currentOrganizationId);
-        }
-        catch (ArgumentException)
-        {
-            if (PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
-            {
-                // It's possible this organization was deleted. Log on to Sandbox instead.
-                result.CurrentOrganization = Organization.Sandbox;
-            }
-        }
+        AuthenticationData result =
+            AuthenticationData.FromAuthority (Authority.FromEncryptedXml (suppliedContext.User.Identity.Name));
 
         CulturePreInit (HttpContext.Current.Request);
 
@@ -120,6 +97,11 @@ public class CommonV5
 
     public static string JavascriptEscape (string input)
     {
+        if (String.IsNullOrEmpty (input))
+        {
+            return String.Empty;
+        }
+
         return System.Uri.EscapeDataString (input).Replace ("'", "%27").Replace ("\"", "%22"); // makes it safe to embed in single/double quotes client-side
     }
 
@@ -293,6 +275,38 @@ public class CommonV5
         return p;
     }
 }
+
+
+
+public class AuthenticationData
+{
+    public static AuthenticationData FromAuthority(Authority authority)
+    {
+        return new AuthenticationData { Authority = authority };
+    }
+
+    public Authority Authority { get; private set; }
+
+    public Organization CurrentOrganization
+    {
+        get { return Authority.Organization; }
+    }
+
+    public Person CurrentUser
+    {
+        get { return Authority.Person; }
+    }
+}
+
+
+public class AjaxCallResult
+{
+    public bool Success { get; set; }
+    public string DisplayMessage { get; set; }
+}
+
+
+
 
 
 public enum ColorType

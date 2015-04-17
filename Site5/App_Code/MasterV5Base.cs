@@ -18,9 +18,7 @@ public class MasterV5Base : MasterPage
     public string CurrentPageTitle = string.Empty;
 
     // ReSharper disable InconsistentNaming
-    protected Authority _authority = null;
-    protected Organization _currentOrganization = null;
-    protected Person _currentUser = null; // These are set in Master-v5.master.cs
+    protected Authority _authority = null; // This is set in Master-v5.master.cs
 
     public EasyUIControl EasyUIControlsUsed { get; set; }
     // these are set by each page, and called by Master to render in ExternalScripts control
@@ -49,12 +47,12 @@ public class MasterV5Base : MasterPage
 
     public Person CurrentUser
     {
-        get { return this._currentUser; }
+        get { return this._authority.Person; }
     }
 
     public Organization CurrentOrganization
     {
-        get { return this._currentOrganization; }
+        get { return this._authority.Organization; }
     }
 
     public Authority CurrentAuthority

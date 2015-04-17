@@ -22,36 +22,9 @@ namespace Swarmops
     {
         protected void Page_Init (object sender, EventArgs e)
         {
-            // Security stuff
-            // Current authentication
-
-            // this MUST be replaced with CommonV5 function
-            throw new NotImplementedException();
-
-            string identity = HttpContext.Current.User.Identity.Name;
-            string[] identityTokens = identity.Split (',');
-
-            string userIdentityString = identityTokens[0];
-            string organizationIdentityString = identityTokens[1];
-
-            int currentUserId = Convert.ToInt32 (userIdentityString);
-            int currentOrganizationId = Convert.ToInt32 (organizationIdentityString);
-
-            _currentUser = Person.FromIdentity (currentUserId);
-            //_authority = _currentUser.GetAuthority();
-            try
-            {
-                _currentOrganization = Organization.FromIdentity (currentOrganizationId);
-            }
-            catch (ArgumentException)
-            {
-                if (PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
-                {
-                    // It's possible this organization was deleted. Log on to Sandbox instead.
-                    _currentOrganization = Organization.Sandbox;
-                }
-            }
-
+            this._authority =
+                AuthenticationData.FromAuthority (Authority.FromEncryptedXml (HttpContext.Current.User.Identity.Name))
+                    .Authority;
         }
 
         protected void Page_Load (object sender, EventArgs e)
@@ -114,8 +87,8 @@ namespace Swarmops
             }
             _cacheVersionMark = SHA1.Hash (_cacheVersionMark).Replace(" ", "").Substring (0, 8);
 
-            this.LabelCurrentUserName.Text = _currentUser.Name;
-            this.LabelCurrentOrganizationName.Text = _currentOrganization.Name;
+            this.LabelCurrentUserName.Text = CurrentAuthority.Person.Name;
+            this.LabelCurrentOrganizationName.Text = CurrentAuthority.Organization.Name;
 
             this.LabelActionPlaceholder1.Text = "Action shortcut 1 (TODO)";
             this.LabelActionPlaceholder2.Text = "Action shortcut 2 (TODO)";
@@ -123,7 +96,7 @@ namespace Swarmops
 
             // Set up todo items
 
-            DashboardTodos todos = DashboardTodos.ForPerson (_currentUser, _currentOrganization);
+            DashboardTodos todos = DashboardTodos.ForAuthority (CurrentAuthority);
 
             this.RepeaterTodoItems.DataSource = todos;
             this.RepeaterTodoItems.DataBind();

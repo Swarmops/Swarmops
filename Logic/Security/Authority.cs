@@ -76,24 +76,68 @@ namespace Swarmops.Logic.Security
             this._data = data;
         }
 
-        public static Authority FromLogin (Person person)
+        public Person Person
+        {
+            get { return Person.FromIdentity (_data.PersonId); }
+        }
+
+        public Organization Organization
+        {
+            get { return Organization.FromIdentity (_data.OrganizationId); }
+        }
+
+        public PositionAssignment Assignment
+        {
+            get
+            {
+                if (_data.PositionAssignmentId == 0)
+                {
+                    return null;
+                }
+
+                return PositionAssignment.FromIdentity (_data.PositionAssignmentId);
+            }
+        }
+
+        public Position Position
+        {
+            get { return Assignment != null? Assignment.Position: null; }
+        }
+
+        public static Authority FromLogin(Person person)
         {
             int lastOrgId = person.LastLogonOrganizationId;
             PositionAssignment assignment = null;
 
             if (lastOrgId != 0)
             {
-                Organization organization = Organization.FromIdentity (lastOrgId);
-                assignment = person.GetPrimaryAssignment (organization);
+                Organization organization = Organization.FromIdentity(lastOrgId);
+                assignment = person.GetPrimaryAssignment(organization);
             }
 
             // TODO: Verify membership OR position OR volunteer
 
-            return new Authority (new AuthorityData
+            return new Authority(new AuthorityData
             {
                 CustomData = new Basic.Types.Common.SerializableDictionary<string, string>(),
                 LoginDateTimeUtc = DateTime.UtcNow,
                 OrganizationId = lastOrgId,
+                PersonId = person.Identity,
+                PositionAssignmentId = (assignment != null ? assignment.Identity : 0)
+            });
+        }
+
+        public static Authority FromLogin(Person person, Organization organization)
+        {
+            PositionAssignment assignment = person.GetPrimaryAssignment(organization);
+
+            // TODO: Verify membership OR position OR volunteer
+
+            return new Authority(new AuthorityData
+            {
+                CustomData = new Basic.Types.Common.SerializableDictionary<string, string>(),
+                LoginDateTimeUtc = DateTime.UtcNow,
+                OrganizationId = organization.Identity,
                 PersonId = person.Identity,
                 PositionAssignmentId = (assignment != null ? assignment.Identity : 0)
             });

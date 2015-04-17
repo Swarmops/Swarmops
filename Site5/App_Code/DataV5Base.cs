@@ -15,10 +15,33 @@ using Swarmops.Logic.Swarm;
 public class DataV5Base : Page
 {
     public Access PageAccessRequired = null; // v5 mechanism
-    public PermissionSet pagePermissionDefault = new PermissionSet (Permission.CanSeeSelf); //Use from menu;
 
-    protected Person CurrentUser { get; private set; }
-    protected Organization CurrentOrganization { get; private set; }
+    protected Person CurrentUser {
+        get
+        {
+            if (CurrentAuthority != null)
+            {
+                return CurrentAuthority.Person;
+            }
+
+            return null;
+        }
+    }
+
+    protected Organization CurrentOrganization
+    {
+        get
+        {
+            if (CurrentAuthority != null)
+            {
+                return CurrentAuthority.Organization;
+            }
+
+            return null;
+        }
+    }
+
+    protected Authority CurrentAuthority { get; private set; }
 
     /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
     protected override void OnInitComplete (EventArgs e)
@@ -29,32 +52,20 @@ public class DataV5Base : Page
 
         if (!string.IsNullOrEmpty (identity))
         {
-            // this MUST be replaced with CommonV5 function
-            throw new NotImplementedException();
-
-            string[] identityTokens = identity.Split (',');
-
-            string userIdentityString = identityTokens[0];
-            string organizationIdentityString = identityTokens[1];
-
-            CurrentUser = Person.FromIdentity (Int32.Parse (userIdentityString));
             try
             {
-                CurrentOrganization = Organization.FromIdentity (Int32.Parse (organizationIdentityString));
+                CurrentAuthority = Authority.FromEncryptedXml(identity);
             }
-            catch (ArgumentException)
+            catch (Exception)
             {
-                if (PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
-                {
-                    // It's possible this organization was deleted. Log on to Sandbox instead.
-                    CurrentOrganization = Organization.Sandbox;
-                }
+                // if this fails FOR ANY REASON, we're unauthenticated
+
+                CurrentAuthority = null;
             }
         }
         else
         {
-            CurrentUser = null; // unauthenticated!
-            CurrentOrganization = null; // unauthenticated!
+            CurrentAuthority = null; // unauthenticated!
         }
     }
 

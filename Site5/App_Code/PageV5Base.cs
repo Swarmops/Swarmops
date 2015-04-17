@@ -8,7 +8,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
-using PermissionSet = Swarmops.Logic.Security.PermissionSet;
+
 
 /// <summary>
 ///     Base class to use for all data generators (JSON, etc). It supplies identification and localization.
@@ -17,7 +17,6 @@ public class PageV5Base : Page
 {
     public int DbVersionRequired = 0; // v5 mechanism
     public Access PageAccessRequired = null; // v5 mechanism
-    public PermissionSet pagePermissionDefault = new PermissionSet (Permission.CanSeeSelf); //Use from menu;
 
     protected new MasterV5Base Master
     {
@@ -71,12 +70,12 @@ public class PageV5Base : Page
     }
 
     /// <summary>
-    ///     This is used to identify special cases for pilot installations. Because of the privacy implications, it
-    ///     should not be used at all from general availability onwards, except for those pilot installations.
+    ///     This is used to identify special cases for pilot installations. It is also used as an installation-unique
+    ///     encryption key salt in addition to record-specific salting.
     /// </summary>
     protected string InstallationId
     {
-        get { return Persistence.Key["SwarmopsInstallationId"]; }
+        get { return SystemSettings.InstallationId; }
     }
 
     /// <param name="e">An <see cref="T:System.EventArgs"></see> that contains the event data.</param>
@@ -176,15 +175,3 @@ public class PageV5Base : Page
 }
 
 
-public class AuthenticationData
-{
-    public Organization CurrentOrganization;
-    public Person CurrentUser;
-}
-
-
-public class AjaxCallResult
-{
-    public bool Success { get; set; }
-    public string DisplayMessage { get; set; }
-}
