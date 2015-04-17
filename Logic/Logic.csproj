@@ -208,7 +208,6 @@
     <Compile Include="DataObjects\ExpensesDataObject.cs" />
     <Compile Include="DataObjects\MembershipsDataObject.cs" />
     <Compile Include="DataObjects\PeopleDataObject.cs" />
-    <Compile Include="DataObjects\RolesDataObject.cs" />
     <Compile Include="Financial\FinancialValidation.cs" />
     <Compile Include="Financial\FinancialValidations.cs" />
     <Compile Include="Financial\IAttestable.cs" />

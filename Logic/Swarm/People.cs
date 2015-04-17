@@ -413,16 +413,7 @@ namespace Swarmops.Logic.Swarm
             return People.FromArray (SwarmDb.GetDatabaseForReading().GetPeopleFromPhoneNumber (countryCode, phoneNumber));
         }
 
-        public People GetVisiblePeopleByAuthority (Authority authority)
-        {
-            return GetVisiblePeopleByAuthority (authority, 0);
-        }
-
-        public People GetVisiblePeopleByAuthority (Authority authority, int gracePeriod)
-        {
-            return Authorization.FilterPeopleToMatchAuthority (this, authority, gracePeriod);
-        }
-
+        /*
         public People GetVisiblePeople (Organization organization)
         {
             People result = new People();
@@ -467,7 +458,7 @@ namespace Swarmops.Logic.Swarm
             BasicPerson[] arrayToFilter = ToArray();
             BasicPerson[] filtered = Authorization.FilterUnlistedPeople (arrayToFilter);
             return FromArray (filtered);
-        }
+        }*/
 
 
         /*

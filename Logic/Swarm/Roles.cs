@@ -13,6 +13,10 @@ namespace Swarmops.Logic.Swarm
     {
         public static Roles FromArray (BasicPersonRole[] basicArray)
         {
+            // This should never run anymore, so throw.
+
+            throw new NotImplementedException();
+
             Roles result = new Roles();
 
             result.Capacity = basicArray.Length*11/10;
@@ -33,8 +37,11 @@ namespace Swarmops.Logic.Swarm
         /// <returns>A list of person Ids that hold roles above this point.</returns>
         public static int[] GetAllUpwardRoles (int organizationId, int geographyId)
         {
+            throw new NotImplementedException();
+
+            /*
             return GetAllUpwardRoles (organizationId, geographyId,
-                Authorization.RoleTypesWithPermission (Permission.CanSeePeople));
+                Authorization.RoleTypesWithPermission (Permission.CanSeePeople));*/
         }
 
         /// <summary>

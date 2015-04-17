@@ -217,22 +217,8 @@ namespace Swarmops.Utility.BotCode
 
                     Person person = membership.Person;
 
-                    // Remove all roles and responsibilities for this person in the org
+                    // TODO: Check for positions that expire with membership
 
-                    Authority authority = person.GetAuthority();
-
-                    foreach (BasicPersonRole basicRole in authority.LocalPersonRoles)
-                    {
-                        PersonRole personRole = PersonRole.FromBasic (basicRole);
-                        if (personRole.OrganizationId == membership.OrganizationId)
-                        {
-                            PWEvents.CreateEvent (EventSource.PirateBot, EventType.DeletedRole, person.Identity,
-                                personRole.OrganizationId, personRole.GeographyId, person.Identity,
-                                (int) personRole.Type,
-                                string.Empty);
-                            personRole.Delete();
-                        }
-                    }
 
                     // Mail
 

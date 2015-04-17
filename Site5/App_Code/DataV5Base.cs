@@ -29,6 +29,9 @@ public class DataV5Base : Page
 
         if (!string.IsNullOrEmpty (identity))
         {
+            // this MUST be replaced with CommonV5 function
+            throw new NotImplementedException();
+
             string[] identityTokens = identity.Split (',');
 
             string userIdentityString = identityTokens[0];

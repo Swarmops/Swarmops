@@ -132,7 +132,10 @@ namespace Swarmops.Frontend.Automation
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             People matches = People.FromSingle(Person.FromIdentity(personId));
-            matches = Authorization.FilterPeopleToMatchAuthority(matches, authData.CurrentUser.GetAuthority()); // TODO: Change to Access
+
+            // CHange to new functions
+            throw new NotImplementedException();
+            // matches = Authorization.FilterPeopleToMatchAuthority(matches, authData.CurrentUser.GetAuthority()); // TODO: Change to Access
 
             if (matches.Count != 1)
             {

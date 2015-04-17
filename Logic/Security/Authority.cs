@@ -1,312 +1,173 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Security.Cryptography;
+using System.Security.Permissions;
+using System.Text;
+using System.Xml.Serialization;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Security
 {
-    public class Authority : BasicAuthority
+    public class Authority
     {
-        #region Construction and Creation
-
-        private Authority()
-            : base (0, null, null, null)
+        public static Authority FromXml (string xml)
         {
+            return new Authority (AuthorityData.FromXml (xml));
         }
 
-        private Authority (BasicAuthority basic)
-            : base (basic.PersonId, basic.SystemPersonRoles, basic.OrganizationPersonRoles, basic.LocalPersonRoles)
+        public static Authority FromEncryptedXml (string cryptXml)
         {
-        }
+            byte[] keyBytes = Encoding.ASCII.GetBytes(SystemSettings.InstallationId.Replace("-", ""));  // unique for this install
+            byte[] cryptoBytes = Convert.FromBase64String(cryptXml);
 
-
-        public static Authority FromBasic (BasicAuthority basic)
-        {
-            return new Authority (basic);
-        }
-
-        #endregion
-
-        public Organizations GetOrganizations (RoleType[] forRoles)
-        {
-            if (HasRoleType (RoleType.SystemAdmin))
+            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
             {
-                return Organizations.GetAll();
+                aes.Key = keyBytes;
+                aes.IV = new ArraySegment<byte> (cryptoBytes, 0, 16).ToArray();
+                cryptoBytes = new ArraySegment<byte>(cryptoBytes, 16, cryptoBytes.Length - 16).ToArray();
+
+                using (ICryptoTransform crypto = aes.CreateDecryptor())
+                {
+                    byte[] clearBytes = crypto.TransformFinalBlock(cryptoBytes, 0, cryptoBytes.Length);
+                    return FromXml(Encoding.UTF8.GetString (clearBytes));
+                }
+            }
+        }
+
+        public string ToXml()
+        {
+            return _data.ToXml();
+        }
+
+        public string ToEncryptedXml()
+        {
+            byte[] keyBytes = Encoding.ASCII.GetBytes(SystemSettings.InstallationId.Replace ("-",""));  // unique for this install
+            byte[] dataBytes = Encoding.UTF8.GetBytes (ToXml());
+
+            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
+            {
+                aes.Key = keyBytes;
+                aes.GenerateIV(); // unique for every encryption
+
+                if (aes.IV.Length != 16)
+                {
+                    throw new InvalidDataException("IV is not 16 bytes long");
+                }
+
+                using (ICryptoTransform crypto = aes.CreateEncryptor())
+                {
+                    byte[] cryptoBytes = crypto.TransformFinalBlock (dataBytes, 0, dataBytes.Length);
+                    return Convert.ToBase64String (aes.IV.Concat (cryptoBytes).ToArray()); // joins two byte[] arrays
+                }
+            }
+        }
+
+        private Authority (AuthorityData data)
+        {
+            this._data = data;
+        }
+
+        public static Authority FromLogin (Person person)
+        {
+            int lastOrgId = person.LastLogonOrganizationId;
+            PositionAssignment assignment = null;
+
+            if (lastOrgId != 0)
+            {
+                Organization organization = Organization.FromIdentity (lastOrgId);
+                assignment = person.GetPrimaryAssignment (organization);
             }
 
-            List<int> orgIdentities = new List<int>();
+            // TODO: Verify membership OR position OR volunteer
 
-            foreach (BasicPersonRole role in OrganizationPersonRoles)
+            return new Authority (new AuthorityData
             {
-                if (Array.IndexOf (forRoles, role.Type) >= 0)
-                    orgIdentities.Add (role.OrganizationId);
-            }
-
-            foreach (BasicPersonRole role in LocalPersonRoles)
-            {
-                if (Array.IndexOf (forRoles, role.Type) >= 0)
-                    orgIdentities.Add (role.OrganizationId);
-            }
-
-            return Organizations.FromIdentities (orgIdentities.ToArray());
+                CustomData = new Basic.Types.Common.SerializableDictionary<string, string>(),
+                LoginDateTimeUtc = DateTime.UtcNow,
+                OrganizationId = lastOrgId,
+                PersonId = person.Identity,
+                PositionAssignmentId = (assignment != null ? assignment.Identity : 0)
+            });
         }
+
+        private readonly AuthorityData _data;
+
+
+
 
 
         public bool CanSeePerson (Person person)
         {
-            People initialList = People.FromArray (new[] {person});
+            People initialList = People.FromSingle (person);
 
-            People filteredList = Authorization.FilterPeopleToMatchAuthority (initialList, this);
+            throw new NotImplementedException();
+
+            /*People filteredList =  Authorization.FilterPeopleToMatchAuthority (initialList, this);
 
             if (filteredList.Count == 0)
             {
                 return false;
             }
 
-            return true;
+            return true;*/
         }
 
 
-        public Geographies GetGeographiesForOrganization (Organization organization)
+        
+    }
+
+    [Serializable]
+    public class AuthorityData
+    {
+        public int PersonId { get; set; }
+        public int OrganizationId { get; set; }
+        public int PositionAssignmentId { get; set; }
+        public DateTime LoginDateTimeUtc { get; set; }
+        public Basic.Types.Common.SerializableDictionary<string,string> CustomData { get; set; }
+
+        internal string ToXml()
         {
-            return
-                GetGeographiesForOrganization (organization, RoleTypes.AllRoleTypes);
+            XmlSerializer serializer = new XmlSerializer(GetType());
+
+            MemoryStream stream = new MemoryStream();
+            serializer.Serialize(stream, this);
+
+            byte[] xmlBytes = stream.GetBuffer();
+            return Encoding.UTF8.GetString(xmlBytes);
         }
 
-        public Geographies GetGeographiesForOrganization (Organization organization, RoleType[] roleTypes)
+        static internal AuthorityData FromXml (string xml)
         {
-            return
-                Geographies.FromArray (Authorization.GetNodesInAuthorityForOrganization (this, organization.Identity,
-                    roleTypes));
-        }
+            // Compensate for stupid Mono encoding bugs
 
-
-        public bool HasLocalRoleAtOrganizationGeography (Organization organization, Geography geography,
-            Authorization.Flag flags)
-        {
-            return HasLocalRoleAtOrganizationGeography (organization, geography, RoleTypes.AllLocalRoleTypes, flags);
-        }
-
-
-        public bool HasLocalRoleAtOrganizationGeography (Organization organization, Geography geography,
-            RoleType roleType, Authorization.Flag flags)
-        {
-            return HasLocalRoleAtOrganizationGeography (organization, geography,
-                new[] {roleType}, flags);
-        }
-
-
-        public bool HasLocalRoleAtOrganizationGeography (Organization organization, Geography geography,
-            RoleType[] roleTypes, Authorization.Flag flags)
-        {
-            if (organization != null && organization.Identity == Organization.SandboxIdentity)
+            if (xml.StartsWith("?"))
             {
-                return true; // UGLY UGLY HACK
+                xml = xml.Substring(1);
             }
 
-            if (organization == null && (flags & Authorization.Flag.AnyOrganization) == 0)
-                return false;
+            xml = xml.Replace("&#x0;", "");
+            xml = xml.Replace("\x00", "");
 
-            if (geography == null && (flags & Authorization.Flag.AnyGeography) == 0)
-                return false;
+            XmlSerializer serializer = new XmlSerializer(typeof(AuthorityData));
 
+            MemoryStream stream = new MemoryStream();
+            byte[] xmlBytes = Encoding.UTF8.GetBytes(xml);
+            stream.Write(xmlBytes, 0, xmlBytes.Length);
 
-            foreach (BasicPersonRole role in LocalPersonRoles)
-            {
-                foreach (RoleType type in roleTypes)
-                {
-                    if (type == role.Type)
-                    {
-                        // Expensive op. The org/geo lookups need a cache at the logic layer.
+            stream.Position = 0;
+            AuthorityData result = (AuthorityData)serializer.Deserialize(stream);
+            stream.Close();
 
-                        bool organizationClear = false;
-                        bool geographyClear = false;
-
-                        // First, check if the organization and geography match identically.
-
-                        if ((flags & Authorization.Flag.AnyOrganization) != 0)
-                        {
-                            // then it is used to check if they have a local role for any org
-                            organizationClear = true;
-                        }
-                        else if (organization != null && organization.Identity == role.OrganizationId)
-                        {
-                            organizationClear = true;
-                        }
-
-                        if ((flags & Authorization.Flag.AnyGeography) != 0)
-                        {
-                            // then it is used to check if they have a local role anywhere
-                            geographyClear = true;
-                        }
-                        else if (geography != null && geography.Identity == role.GeographyId)
-                        {
-                            geographyClear = true;
-                        }
-
-
-                        // If not clear, then check if there is inherited authority.
-
-                        if (!organizationClear
-                            && (flags & Authorization.Flag.ExactOrganization) == 0)
-                        {
-                            if (organization != null && organization.Inherits (role.OrganizationId))
-                            {
-                                organizationClear = true;
-                            }
-                        }
-
-                        if (!geographyClear && (flags & Authorization.Flag.ExactGeography) == 0)
-                        {
-                            if (geography != null && geography.Inherits (role.GeographyId))
-                            {
-                                geographyClear = true;
-                            }
-                        }
-
-                        // If both are ok, return that there is authority at this org & geo.
-
-                        if (organizationClear && geographyClear)
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        public bool HasRoleAtOrganization (Organization organization, Authorization.Flag flags)
-        {
-            return HasRoleAtOrganization (organization, RoleTypes.AllOrganizationalRoleTypes, flags);
-        }
-
-        public bool HasRoleAtOrganization (Organization organization, RoleType roleType, Authorization.Flag flags)
-        {
-            return HasRoleAtOrganization (organization, new[] {roleType}, flags);
-        }
-
-        public bool HasRoleAtOrganization (Organization organization, RoleType[] roleTypes, Authorization.Flag flags)
-        {
-            if (organization == null)
-            {
-                if ((flags & Authorization.Flag.AnyOrganization) != 0)
-                    return true;
-                return false;
-            }
-
-            if (organization != null && organization.Identity == Organization.SandboxIdentity)
-            {
-                return true; // UGLY UGLY HACK
-            }
-
-            foreach (BasicPersonRole role in OrganizationPersonRoles)
-            {
-                foreach (RoleType type in roleTypes)
-                {
-                    if (type == role.Type)
-                    {
-                        if ((flags & Authorization.Flag.AnyOrganization) != 0)
-                            return true;
-
-                        if (organization.Identity == role.OrganizationId)
-                        {
-                            return true;
-                        }
-
-                        if ((flags & Authorization.Flag.ExactOrganization) == 0)
-                        {
-                            if (organization.Inherits (role.OrganizationId))
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-
-            return false;
-        }
-
-
-        public bool HasRoleType (RoleType roleType)
-        {
-            return HasAnyRoleType (new[] {roleType});
-        }
-
-        public bool HasAnyRoleType (RoleType[] roleTypes)
-        {
-            foreach (RoleType r in roleTypes)
-            {
-                foreach (BasicPersonRole r2 in LocalPersonRoles)
-                    if (r2.Type == r) return true;
-                foreach (BasicPersonRole r2 in OrganizationPersonRoles)
-                    if (r2.Type == r) return true;
-                foreach (BasicPersonRole r2 in SystemPersonRoles)
-                    if (r2.Type == r) return true;
-            }
-
-            return false;
-        }
-
-        public bool CanEditSystemRoles()
-        {
-            return HasPermission (Permission.CanEditSystemRoles, -1, -1,
-                Authorization.Flag.ExactGeography | Authorization.Flag.ExactOrganization);
-        }
-
-        public bool CanEditOrgRolesForOrg (int orgId)
-        {
-            return HasPermission (Permission.CanEditOrganisationalRoles, orgId, -1, Authorization.Flag.Default);
-        }
-
-
-        public bool HasAnyPermission (Permission perm)
-        {
-            return Authorization.CheckAuthorization (new PermissionSet (perm), -1, -1, this,
-                Authorization.Flag.AnyGeographyAnyOrganization);
-        }
-
-        /* -- unused, apparently
-        private bool HasPermission (Permission perm, int organizationId, Authorization.Flag flags)
-        {
-            return Authorization.CheckAuthorization(new PermissionSet(perm), organizationId, Organization.RootIdentity, this, flags);
-        } */
-
-        public bool HasPermission (Permission perm, int organizationId, int geographyId, Authorization.Flag flags)
-        {
-            return Authorization.CheckAuthorization (new PermissionSet (perm, organizationId, geographyId),
-                organizationId,
-                geographyId, this, flags);
-        }
-
-        public bool HasPermission (PermissionSet perm, Authorization.Flag flags)
-        {
-            return Authorization.CheckAuthorization (perm, -1, -1, this, flags);
-        }
-
-        public bool HasPermission (PermissionSet perm, int organizationId, int geographyId, Authorization.Flag flags)
-        {
-            return Authorization.CheckAuthorization (perm, organizationId, geographyId, this, flags);
-        }
-
-
-        public Organizations OrganisationsWithPermission (Permission perm, RoleType[] roles)
-        {
-            Organizations orgList = GetOrganizations (roles);
-            Organizations retList = new Organizations();
-            foreach (Organization org in orgList)
-            {
-                if (HasPermission (perm, org.Identity, -1, Authorization.Flag.Default))
-                    if (!retList.Contains (org))
-                        retList.Add (org);
-            }
-            return retList;
+            return result;
         }
     }
 }

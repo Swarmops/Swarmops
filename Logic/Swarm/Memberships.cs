@@ -68,11 +68,11 @@ namespace Swarmops.Logic.Swarm
 
             return GetMemberCountForOrganizations (idArray.ToArray());
         }
-
+        /*
         public Memberships RemoveToMatchAuthority (Geography personGeography, Authority authority)
         {
             return Authorization.FilterMembershipsToMatchAuthority (this, personGeography, authority);
-        }
+        }*/
 
         public static Memberships ForOrganization (Organization organization, bool includeTerminated)
         {

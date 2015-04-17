@@ -8,6 +8,7 @@ using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using NBitcoin;
+using NBitcoin.BouncyCastle.Crypto.Generators;
 using Resources;
 using Swarmops.Database;
 using Swarmops.Interface.Support;

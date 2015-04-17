@@ -615,9 +615,9 @@ namespace Swarmops.Logic.Swarm
             // Note "for writing". Intentional. Queries master db and bypasses replication lag.
         }
 
-        public Authority GetAuthority()
+        public Authority GetDefaultAuthority()
         {
-            return Authorization.GetPersonAuthority (Identity);
+            throw new NotImplementedException();
         }
 
         public Memberships GetMemberships (bool includeTerminated)
@@ -1212,7 +1212,7 @@ namespace Swarmops.Logic.Swarm
             return false;
         }
 
-        public Position GetPrimaryPosition (Organization organization)
+        public PositionAssignment GetPrimaryAssignment (Organization organization)
         {
             PositionAssignments personAssignments = PositionAssignments.ForPerson (this);
 
@@ -1221,13 +1221,24 @@ namespace Swarmops.Logic.Swarm
                 if (assignment.OrganizationId == 0 || assignment.OrganizationId == organization.Identity)
                 {
                     // TODO: If "acting" is false, and no delegation, then...
-                    return assignment.Position;
+                    return assignment;
                 }
             }
 
             // No hit. This is a totally valid case, so don't throw but return null.
 
             return null;
+        }
+
+        public Position GetPrimaryPosition (Organization organization)
+        {
+            PositionAssignment assignment = GetPrimaryAssignment (organization);
+            if (assignment == null)
+            {
+                return null;
+            }
+
+            return assignment.Position;
         }
 
         // A couple of special cases

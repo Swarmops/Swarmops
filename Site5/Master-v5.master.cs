@@ -25,6 +25,9 @@ namespace Swarmops
             // Security stuff
             // Current authentication
 
+            // this MUST be replaced with CommonV5 function
+            throw new NotImplementedException();
+
             string identity = HttpContext.Current.User.Identity.Name;
             string[] identityTokens = identity.Split (',');
 
@@ -35,7 +38,7 @@ namespace Swarmops
             int currentOrganizationId = Convert.ToInt32 (organizationIdentityString);
 
             _currentUser = Person.FromIdentity (currentUserId);
-            _authority = _currentUser.GetAuthority();
+            //_authority = _currentUser.GetAuthority();
             try
             {
                 _currentOrganization = Organization.FromIdentity (currentOrganizationId);
@@ -128,26 +131,7 @@ namespace Swarmops
 
             // Set up main menu 
 
-            // RadMenu mainMenu = FindControl("MainMenu") as RadMenu;
-
-            Dictionary<string, bool> enableCache = new Dictionary<string, bool>();
-
-            if (Session["MainMenu-v4_Enabling"] != null
-                && PermissionCacheTimestamp.AddSeconds (10) > DateTime.Now
-                && Authorization.lastReload < PermissionCacheTimestamp)
-            {
-                enableCache = Session["MainMenu-v4_Enabling"] as Dictionary<string, bool>;
-            }
-            else
-            {
-                PermissionCacheTimestamp = DateTime.Now;
-            }
-
             SetupMenuItems();
-
-            Authorization.flagReload = false;
-            // SetupMenuItemsEnabling(authority, enableCache, menuItems);
-            Session["MainMenu-v4_Enabling"] = enableCache;
 
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";

@@ -15,7 +15,8 @@ namespace Swarmops.Frontend.Automation
 
             People matches = People.FromNamePattern (pattern);
 
-            matches = Authorization.FilterPeopleToMatchAuthority (matches, CurrentUser.GetAuthority());
+            throw new NotImplementedException(); // Needs security check here
+            // matches = Authorization.FilterPeopleToMatchAuthority (matches, CurrentUser.GetAuthority());
 
             if (matches == null)
             {

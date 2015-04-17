@@ -14,6 +14,7 @@ namespace Swarmops.Logic.Security
 {
     public class Authorization
     {
+        /*
         [Flags]
         public enum Flag
         {
@@ -207,9 +208,12 @@ namespace Swarmops.Logic.Security
             }
         }
 
-
+        [Obsolete("Do not use calls with Ids")]
         public static Authority GetPersonAuthority (int personId)
         {
+            throw new NotImplementedException();
+
+            
             return
                 Authority.FromBasic (SwarmDb.GetDatabaseForReading().GetPersonAuthority (Person.FromIdentity (personId)));
         }
@@ -262,7 +266,7 @@ namespace Swarmops.Logic.Security
             return result.ToArray();
         }
 
-        /*
+        
 		public static bool ViewerMayWatchPerson (int viewingPersonId, int watchedPersonId)
 		{
 			Authority authority = GetPersonAuthority(viewingPersonId);
@@ -277,7 +281,7 @@ namespace Swarmops.Logic.Security
 			}
 
 			return true;
-		}*/
+		}
 
 
         /// <summary>
@@ -564,11 +568,11 @@ namespace Swarmops.Logic.Security
                             }
                         }
                     }
-                    /* -- commented out. This means "does the current authority have Org Admin privileges over Person"?
+                     -- commented out. This means "does the current authority have Org Admin privileges over Person"?
                     else if (CanSeeNonMembers)
                     { //person isn't member anywhere
                         clearedPeople[person.Identity] = person;
-                    }*/
+                    }
                 }
             }
 
@@ -798,6 +802,6 @@ namespace Swarmops.Logic.Security
 
         internal class FoundItException : Exception
         {
-        }
+        }*/
     }
 }

@@ -39,6 +39,11 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 throw new UnauthorizedAccessException();
             }
 
+            // this MUST be replaced with CommonV5 function
+            throw new NotImplementedException();
+
+
+
             string logonFlags = string.Empty;
             string[] currentIdentityParts = HttpContext.Current.User.Identity.Name.Split (',');
 

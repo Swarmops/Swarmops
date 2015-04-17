@@ -183,64 +183,13 @@ namespace Swarmops.Logic.Swarm
         {
             if (base.Active)
             {
-                //Added removal of Roles here to make SURE they always are removed with the membership.
-                Authority authority = Person.GetAuthority();
 
-                int actingPersonId = actingPerson == null ? 0 : actingPerson.Identity;
-
-                BasicPersonRole[] roles = authority.AllPersonRoles;
-                List<PersonRole> theRoles = new List<PersonRole>();
-
-                foreach (BasicPersonRole basicRole in roles)
-                {
-                    PersonRole personRole = PersonRole.FromBasic (basicRole);
-                    theRoles.Add (personRole);
-                    if (personRole.OrganizationId == OrganizationId)
-                    {
-                        PWEvents.CreateEvent (eventSource, EventType.DeletedRole, actingPersonId,
-                            personRole.OrganizationId, personRole.GeographyId,
-                            Person.Identity, (int) personRole.Type,
-                            string.Empty);
-                        PWLog.Write (actingPersonId, PWLogItem.Person, Person.Identity, PWLogAction.RoleDeleted,
-                            "Role " + personRole.Type + " of " + personRole.Geography.Name +
-                            " was deleted with membership.", string.Empty);
-                        personRole.Delete();
-                    }
-                }
-
-                //now check if this means that you no longer are a member of some uplevel org, then remove those roles as well
-                foreach (PersonRole personRole in theRoles)
-                {
-                    if (!Person.MemberOfWithInherited (personRole.Organization))
-                    {
-                        PWEvents.CreateEvent (eventSource, EventType.DeletedRole, actingPersonId,
-                            personRole.OrganizationId, personRole.GeographyId,
-                            Person.Identity, (int) personRole.Type,
-                            string.Empty);
-                        PWLog.Write (actingPersonId, PWLogItem.Person, Person.Identity, PWLogAction.RoleDeleted,
-                            "Role " + personRole.Type + " of " + personRole.Geography.Name +
-                            " was deleted with membership of all suborgs.", string.Empty);
-                        personRole.Delete();
-                    }
-                }
-
-                EventSource src = EventSource.PirateWeb;
-                try
-                {
-                    if (HttpContext.Current == null)
-                    {
-                        src = EventSource.PirateBot;
-                    }
-                }
-                catch
-                {
-                    src = EventSource.PirateBot;
-                }
+                // REMOVED: everything Roles related; being phased out
 
 
-                PWLog.Write (actingPersonId, PWLogItem.Person, Person.Identity, PWLogAction.MemberLost,
+                PWLog.Write (actingPerson.Identity, PWLogItem.Person, Person.Identity, PWLogAction.MemberLost,
                     eventSource + ":" + description, string.Empty);
-                PWEvents.CreateEvent (src, EventType.LostMember, actingPersonId, OrganizationId, Person.GeographyId,
+                PWEvents.CreateEvent (EventSource.PirateWeb, EventType.LostMember, actingPerson.Identity, OrganizationId, Person.GeographyId,
                     Person.Identity, 0, OrganizationId.ToString());
 
 

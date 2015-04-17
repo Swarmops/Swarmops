@@ -34,6 +34,8 @@ public class ControlV5Base : UserControl
 
     protected override void OnLoad (EventArgs e)
     {
+        throw new NotImplementedException(); // this MUST be replaced with CommonV5 function
+
         int currentUserId = 0;
         int currentOrganizationId = 0;
 
@@ -46,7 +48,7 @@ public class ControlV5Base : UserControl
         currentUserId = Convert.ToInt32 (userIdentityString);
         currentOrganizationId = Convert.ToInt32 (organizationIdentityString);
         this._currentUser = Person.FromIdentity (currentUserId);
-        this._authority = this._currentUser.GetAuthority();
+        //this._authority = this._currentUser.GetAuthority();
         try
         {
             this._currentOrganization = Organization.FromIdentity (currentOrganizationId);

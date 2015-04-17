@@ -123,8 +123,10 @@ namespace Swarmops.Logic.DashboardTasks
         {
             TaskGroup group = new TaskGroup (TaskGroupType.ValidateExpenseClaims);
 
-            // TODO: Loop over roles, get all open claims for roles where person can attest
+            throw new NotImplementedException(); // not moved to v5 framework (undecided whether it will happen)
 
+            // TODO: Loop over roles, get all open claims for roles where person can attest
+            /*
             if (
                 !person.GetAuthority()
                     .HasPermission (Permission.CanDoEconomyTransactions, organization.Identity, Geography.RootIdentity,
@@ -147,7 +149,7 @@ namespace Swarmops.Logic.DashboardTasks
             if (group.Tasks.Count > 0)
             {
                 Add (group);
-            }
+            }*/
         }
 
 
@@ -183,6 +185,9 @@ namespace Swarmops.Logic.DashboardTasks
             TaskGroup groupUrgent = new TaskGroup (TaskGroupType.PayoutUrgently);
             TaskGroup groupOverdue = new TaskGroup (TaskGroupType.PayoutOverdue);
 
+            throw new NotImplementedException(); // not moved to v5 framework (undecided whether it will happen)
+
+            /*
             if (
                 !person.GetAuthority()
                     .HasPermission (Permission.CanPayOutMoney, organization.Identity, 1,
@@ -223,12 +228,15 @@ namespace Swarmops.Logic.DashboardTasks
             if (groupOverdue.Tasks.Count > 0)
             {
                 Add (groupOverdue);
-            }
+            }*/
         }
 
 
         private void AddAttestationWarnings (Person person, Organization organization)
         {
+            throw new NotImplementedException();
+
+            /*
             TaskGroup group = new TaskGroup (TaskGroupType.AttestationWarning);
 
             if (
@@ -254,7 +262,7 @@ namespace Swarmops.Logic.DashboardTasks
             if (group.Tasks.Count > 0)
             {
                 Add (group);
-            }
+            }*/
         }
     }
 }
