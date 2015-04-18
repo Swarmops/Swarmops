@@ -28,7 +28,7 @@ namespace Swarmops.Frontend.Pages.Swarm
 
             People matches = People.FromOrganizationAndGeographyWithPattern (CurrentOrganization, geography, pattern);
 
-            // matches = Authorization.FilterPeopleToMatchAuthority(matches, CurrentUser.GetAuthority());
+            matches = CurrentAuthority.FilterPeople (matches);
 
             if (matches == null)
             {

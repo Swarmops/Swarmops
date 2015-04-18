@@ -234,28 +234,9 @@ namespace Swarmops.Logic.Security
 
             // Check if the person is currently acting at sysadmin level
 
-            // TODO: CHECK POSITION ASSIGNMENT
-            // for now, check if position assignment exists
-
-            // This is not very efficient, but there shouldn't be many system-level positions or
-            // assignments, so it should scale reasonably even in an 1M organization
-
-            PositionAssignments assignments = Positions.ForSystem().Assignments;
-
-            foreach (PositionAssignment assignment in assignments)
+            if (HasSystemAccess (access.Type))
             {
-                if (assignment.Active && assignment.PersonId == this._data.PersonId)
-                {
-                    if ((assignment.Position.PositionType == PositionType.System_SysadminMain || 
-                        assignment.Position.PositionType == PositionType.System_SysadminReadWrite))
-                    return true;
-
-                    if (assignment.Position.PositionType == PositionType.System_SysadminAssistantReadOnly &&
-                        access.Type == AccessType.Read)
-                    {
-                        return true; // Read-only access
-                    }
-                }
+                return true;
             }
 
             // If system-level access was requested and has not been granted at this point, deny it
@@ -280,23 +261,217 @@ namespace Swarmops.Logic.Security
         }
 
 
-
-
-
-        public bool CanSeePerson (Person person)
+        public bool HasSystemAccess (AccessType accessType = AccessType.Write)
         {
-            People initialList = People.FromSingle (person);
+            // TODO: CHECK POSITION ASSIGNMENT
+            // for now, check if position assignment exists
 
-            throw new NotImplementedException();
+            // This is not very efficient, but there shouldn't be many system-level positions or
+            // assignments, so it should scale reasonably even in an 1M organization
 
-            /*People filteredList =  Authorization.FilterPeopleToMatchAuthority (initialList, this);
+            PositionAssignments assignments = Positions.ForSystem().Assignments;
 
-            if (filteredList.Count == 0)
+            foreach (PositionAssignment assignment in assignments)
+            {
+                if (assignment.Active && assignment.PersonId == this._data.PersonId)
+                {
+                    if ((assignment.Position.PositionType == PositionType.System_SysadminMain ||
+                        assignment.Position.PositionType == PositionType.System_SysadminReadWrite))
+                        return true;
+
+                    if (assignment.Position.PositionType == PositionType.System_SysadminAssistantReadOnly &&
+                        accessType == AccessType.Read)
+                    {
+                        return true; // Read-only access
+                    }
+                }
+            }
+
+            return false;
+        }
+
+
+        public People FilterPeople(People rawList, AccessAspect aspect = AccessAspect.Participation)
+        {
+            if (aspect != AccessAspect.Participation && aspect != AccessAspect.PersonalData)
+            {
+                throw new ArgumentException(@"AccessAspect needs to reflect visibility of people data", "aspect");
+            }
+
+            // Three cases:
+
+            // 1) the current Position has system-level access.
+            // 2) the current Position has org-level, but not system-level, access.
+            // 3) the current Position has org-and-geo-level access.
+
+            Dictionary<int, bool> orgLookup = new Dictionary<int, bool>();
+            Dictionary<int, bool> geoLookup = new Dictionary<int, bool>();
+
+            People result = new People();
+
+            // Org lookup will always be needed. Geo lookup may be needed for case 3.
+
+            Organizations orgStructure = this.Organization.GetTree();
+            int[] orgIds = orgStructure.Identities;
+            foreach (int orgId in orgIds)
+            {
+                orgLookup[orgId] = true;
+            }
+            orgLookup[Organization.Identity] = true;
+
+            Dictionary<int, List<BasicMembership>> membershipLookup = null;
+
+            if (HasSystemAccess(AccessType.Read) || HasAccess(new Access(Organization, aspect, AccessType.Read)))
+            {
+                // cases 1 and 2: systemwide access, return everybody at or under the current Organization,
+                // or org-wide read access (at least) to participant/personal data at current Organization
+
+                // Optimization: Get all memberships in advance, without instantiating logic objects
+                membershipLookup = Memberships.GetMembershipsForPeople (rawList.Identities, 0);
+
+                foreach (Person person in rawList)
+                {
+                    // For each person, we must test the list of active memberships to see if one of 
+                    // them is visible to this Authority - if it's a membership in an org at or below the
+                    // Authority object's organization
+
+                    List<BasicMembership> list = membershipLookup[person.Identity];
+
+                    foreach (BasicMembership basicMembership in list)
+                    {
+                        if (orgLookup.ContainsKey (basicMembership.OrganizationId))
+                        {
+                            // hit - this person has an active membership that makes them visible to this Authority
+                            result.Add (person);
+                        }
+                    }
+                }
+
+                return result;
+            }
+
+            // Case 3: Same as above but also check for Geography (in an AND pattern).
+
+            if (this.Position == null)
+            {
+                // No access at all. That was an easy case!
+
+                return new People(); // return empty list
+            }
+
+            if (this.Position.Geography == null)
+            {
+                // Org-level position, but one that doesn't have access to personal data, apparently.
+
+                return new People(); // empty list again
+            }
+
+            if (!HasAccess (new Access (this.Organization, Position.Geography, aspect, AccessType.Read)))
+            {
+                // No people access for active position. Also a reasonably easy case.
+
+                return new People(); // also return empty list
+            }
+
+            Geographies geoStructure = this.Position.Geography.GetTree();
+            int[] geoIds = geoStructure.Identities;
+            foreach (int geoId in geoIds)
+            {
+                geoLookup[geoId] = true;
+            }
+            geoLookup[Position.GeographyId] = true;
+
+            // Optimization: Get all memberships in advance, without instantiating logic objects
+            Dictionary<int, List<BasicMembership>> personLookup =
+                Memberships.GetMembershipsForPeople(rawList.Identities, 0);
+
+            foreach (Person person in rawList)
+            {
+                // For each person, we must test the list of active memberships to see if one of 
+                // them is visible to this Authority - if it's a membership in an org at or below the
+                // Authority object's organization - and also test the person's Geography against
+                // the list (lookup) of visible Geographies. We do Geographies first, because that test is 
+                // much cheaper.
+
+                if (geoLookup[person.GeographyId])
+                {
+                    // Geography hit. Test Membership / Organization.
+
+                    List<BasicMembership> list = personLookup[person.Identity];
+
+                    foreach (BasicMembership basicMembership in list)
+                    {
+                        if (orgLookup.ContainsKey (basicMembership.OrganizationId))
+                        {
+                            // Organization hit - this person has an active membership that makes them visible to this Authority
+
+                            result.Add (person);
+                        }
+                    }
+                }
+            }
+
+            return result;
+
+            
+        }
+
+
+        public bool CanSeePerson (Person person, AccessAspect aspect = AccessAspect.Participation)
+        {
+            if (aspect != AccessAspect.Participation && aspect != AccessAspect.PersonalData)
+            {
+                throw new ArgumentException(@"AccessAspect needs to reflect visibility of people data", "aspect");
+            }
+
+            // Three cases:
+
+            // 1) the current Position has system-level access.
+            // 2) the current Position has org-level, but not system-level, access.
+            // 3) the current Position has org-and-geo-level access.
+
+            if (HasSystemAccess (AccessType.Read))  // case 1
+            {
+                // Still filter to the current Organization, even though we have systemwide access
+
+                if (person.MemberOfWithInherited(Organization))
+                {
+                    return true;
+                }
+            }
+
+            // Is this Person a Participant of an org or sub-org where the current Authority
+            // has organizationwide access? Case 2.
+
+            if (
+                HasAccess (new Access (Organization, aspect, AccessType.Read)))
+            {
+                if (person.MemberOfWithInherited (Organization))
+                {
+                    return true;
+                }
+            }
+
+            // Finally, determine by geography AND organization.
+
+            if (Position == null || Position.Geography == null)
             {
                 return false;
             }
 
-            return true;*/
+            if (
+                HasAccess (new Access (Organization, Position.Geography, aspect, AccessType.Read)))
+            {
+                if (person.MemberOfWithInherited(Organization))
+                {
+                    if (person.GeographyId == Position.GeographyId || person.Geography.Inherits (Position.Geography))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
 

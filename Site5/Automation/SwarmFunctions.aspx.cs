@@ -131,24 +131,19 @@ namespace Swarmops.Frontend.Automation
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            People matches = People.FromSingle(Person.FromIdentity(personId));
-
-            // CHange to new functions
-            throw new NotImplementedException();
-            // matches = Authorization.FilterPeopleToMatchAuthority(matches, authData.CurrentUser.GetAuthority()); // TODO: Change to Access
-
-            if (matches.Count != 1)
+            Person person = Person.FromIdentity (personId);
+            if (!authData.Authority.CanSeePerson (person))
             {
-                throw new ArgumentException(); // no match, for whatever reason
+                throw new ArgumentException(); // can't see, for whatever reason
             }
 
             return new AvatarData
             {
                 PersonId = personId,
                 Success = true,
-                Canonical = matches[0].Canonical,
-                Avatar16Url = matches[0].GetSecureAvatarLink (16),
-                Avatar24Url = matches[0].GetSecureAvatarLink (24)
+                Canonical = person.Canonical,
+                Avatar16Url = person.GetSecureAvatarLink (16),
+                Avatar24Url = person.GetSecureAvatarLink (24)
             };
         }
     }

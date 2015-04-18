@@ -67,6 +67,11 @@ namespace Swarmops.Logic.Security
         PersonalData,
 
         /// <summary>
+        ///     Access to the mere existence (photo, name) about people in an organization
+        /// </summary>
+        Participation,
+
+        /// <summary>
         ///     Access to change organization's fundamental operating parameters
         /// </summary>
         Administration,

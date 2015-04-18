@@ -273,7 +273,7 @@ namespace Swarmops.Database
             // Optimization: If more than 128 personIds, build a hash table, get _all_ memberships, and return
             // the matching ones logic wise. We've had _queries_ that exceed 64k text in length...
 
-            if (personIds.Length > 64)
+            if (personIds.Length > 128)
             {
                 return GetMembershipsForPeopleOptimizedForLargeSets (personIds, gracePeriod);
             }
