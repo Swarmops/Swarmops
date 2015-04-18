@@ -13,10 +13,6 @@ namespace Swarmops.Logic.Swarm
     {
         public static Roles FromArray (BasicPersonRole[] basicArray)
         {
-            // This should never run anymore, so throw.
-
-            throw new NotImplementedException();
-
             Roles result = new Roles();
 
             result.Capacity = basicArray.Length*11/10;

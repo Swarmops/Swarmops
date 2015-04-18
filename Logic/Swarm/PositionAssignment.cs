@@ -57,8 +57,8 @@ namespace Swarmops.Logic.Swarm
         {
             int organizationId = 0;
 
-            if (position.PositionLevel != PositionLevel.OrganizationwideDefault &&
-                position.PositionLevel != PositionLevel.Systemwide)
+            if (position.PositionLevel != PositionLevel.OrganizationWideDefaultUnused &&
+                position.PositionLevel != PositionLevel.SystemWide)
             {
                 organizationId = organization.Identity; // can't be null in these cases
             }

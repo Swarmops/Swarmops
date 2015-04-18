@@ -48,7 +48,7 @@ namespace Swarmops.Logic.Swarm
             PositionTitle positionTitle, bool volunteerable, bool overridable, Position reportsTo, Position dotReportsTo,
             int minCount, int maxCount)
         {
-            if (level != PositionLevel.Systemwide)
+            if (level != PositionLevel.SystemWide)
             {
                 throw new ArgumentException (
                     "Can only create system-wide positions (e.g. sysadmin) with this organizationless Position.Create() version.");
@@ -56,7 +56,7 @@ namespace Swarmops.Logic.Swarm
 
             int positionId = SwarmDb.GetDatabaseForWriting()
                 .CreatePosition(
-                    PositionLevel.Systemwide, 0 /*organizationId*/, 0 /* geographyId */, 0 /*overridesHigherId */,
+                    PositionLevel.SystemWide, 0 /*organizationId*/, 0 /* geographyId */, 0 /*overridesHigherId */,
                     createdByPerson == null? 0: createdByPerson.Identity, createdByPosition == null? 0: createdByPosition.Identity,
                     positionType.ToString(), positionTitle.ToString(), 
                     false /*inheritsDownward*/, volunteerable, overridable, 

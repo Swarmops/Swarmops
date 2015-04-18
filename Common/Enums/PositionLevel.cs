@@ -14,13 +14,13 @@ namespace Swarmops.Common.Enums
     public enum PositionLevel
     {
         Unknown = 0,
-        Systemwide = 10,
-        OrganizationwideDefault = 20,
-        Organizationwide = 30,
-        OrganizationTop = 40,
+        SystemWide = 10,
+        OrganizationWideDefaultUnused = 20,
+        OrganizationStrategic = 30,
+        OrganizationExecutive = 40,
         GeographyDefault = 50,
-        SuborganizationwideDefault = 60,
-        SuborganizationTopDefault = 70,
+        SuborganizationStrategicDefault = 60,
+        SuborganizationExecutiveDefault = 70,
         SuborganizationGeographyDefault = 80,
         Geography = 90
     }

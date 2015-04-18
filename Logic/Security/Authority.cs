@@ -111,7 +111,7 @@ namespace Swarmops.Logic.Security
             _data.PositionAssignmentId = (assignment == null ? 0 : assignment.Identity);
             if (assignment != null)
             {
-                if (assignment.Position.PositionLevel != PositionLevel.Systemwide)
+                if (assignment.Position.PositionLevel != PositionLevel.SystemWide)
                 {
                     _data.OrganizationId = assignment.Position.OrganizationId;
                 }

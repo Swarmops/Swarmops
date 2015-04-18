@@ -16,7 +16,7 @@ namespace Swarmops.Logic.Swarm
     {
         public static Positions ForSystem()
         {
-            return FromArray(SwarmDb.GetDatabaseForReading().GetPositions (PositionLevel.Systemwide));
+            return FromArray(SwarmDb.GetDatabaseForReading().GetPositions (PositionLevel.SystemWide));
         }
 
         public PositionAssignments Assignments
@@ -40,13 +40,13 @@ namespace Swarmops.Logic.Swarm
 
             // Ok, so there are zero system-level positions. Create the Sysadmin positions.
 
-            Position sysadminPrincipal = Position.Create (PositionLevel.Systemwide, null /* createdByPerson*/, null /*createdByPosition*/, PositionType.System_SysadminMain,
+            Position sysadminPrincipal = Position.Create (PositionLevel.SystemWide, null /* createdByPerson*/, null /*createdByPosition*/, PositionType.System_SysadminMain,
                 PositionTitle.Default, false /*volunteerable*/, false /*overridable*/, null /*reportsTo*/, null /*dotReportsTo*/, 1 /*minCount*/, 1 /*maxCount*/);
 
-            Position.Create(PositionLevel.Systemwide, null /* createdByPerson*/, null /*createdByPosition*/, PositionType.System_SysadminReadWrite, PositionTitle.Default,
+            Position.Create(PositionLevel.SystemWide, null /* createdByPerson*/, null /*createdByPosition*/, PositionType.System_SysadminReadWrite, PositionTitle.Default,
                 false, false, sysadminPrincipal, null /*dotReportsTo*/, 0 /*minCount*/, 0 /*maxCount*/);
 
-            Position.Create(PositionLevel.Systemwide, null /* createdByPerson*/, null /*createdByPosition*/, PositionType.System_SysadminAssistantReadOnly, PositionTitle.Default,
+            Position.Create(PositionLevel.SystemWide, null /* createdByPerson*/, null /*createdByPosition*/, PositionType.System_SysadminAssistantReadOnly, PositionTitle.Default,
                 false, false, sysadminPrincipal, null /*dotReportsTo*/, 0 /*minCount*/, 0 /*maxCount*/);
 
             // If there's exactly one person in the system, we're undergoing Setup, so assign to Sysadmin Principal position.
