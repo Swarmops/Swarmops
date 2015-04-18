@@ -86,6 +86,38 @@ namespace Swarmops.Logic.Security
             get { return Organization.FromIdentity (_data.OrganizationId); }
         }
 
+        public void SetOrganization (Organization organization)
+        {
+            // This changes the active organization. There may be a Primary Position in this
+            // organization; if so, activate that too. Otherwise, just null out the Position.
+
+            // The reason this isn't an ordinary setter for the field is to minimize risk for
+            // miscoding in the security framework.
+
+            PositionAssignment primaryAssignment = Person.GetPrimaryAssignment (organization);
+
+            _data.OrganizationId = organization.Identity;
+            _data.PositionAssignmentId = (primaryAssignment == null ? 0 : primaryAssignment.Identity);
+        }
+
+        public void SetPosition (PositionAssignment assignment)
+        {
+            // This changes to a Position. The Organization will change along with it, but only
+            // if it's not a system-level Position.
+
+            // The reason this isn't an ordinary setter for the field is to minimize risk for
+            // miscoding in the security framework.
+
+            _data.PositionAssignmentId = (assignment == null ? 0 : assignment.Identity);
+            if (assignment != null)
+            {
+                if (assignment.Position.PositionLevel != PositionLevel.Systemwide)
+                {
+                    _data.OrganizationId = assignment.Position.OrganizationId;
+                }
+            }
+        }
+
         public PositionAssignment Assignment
         {
             get

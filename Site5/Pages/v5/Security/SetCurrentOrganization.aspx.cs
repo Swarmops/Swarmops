@@ -36,36 +36,29 @@ namespace Swarmops.Frontend.Pages.v5.Security
                 // Some work here on PPSE pilot - we want everybody to be able to switch to Sandbox, which is #1
                 // except for in PPSE installation, where it is... #3 or something
 
+                // TODO: Allow logon to organization if there is a Position active
+
                 throw new UnauthorizedAccessException();
             }
 
-            // this MUST be replaced with CommonV5 function
-            throw new NotImplementedException();
+            // when we get here, we are authorized to log on to the suggested organization.
 
+            // The reason we're modifying the existing Authority object instead of creating a new one
+            // is to minimize the risk for impersonation exploits: The only way to assign a Person identity
+            // to an Authority object is on login.
 
-
-            string logonFlags = string.Empty;
-            string[] currentIdentityParts = HttpContext.Current.User.Identity.Name.Split (',');
-
-            if (currentIdentityParts.Length > 2)
-            {
-                logonFlags = currentIdentityParts[3];
-            }
-
-            string userIdentityString = CurrentUser.Identity.ToString (CultureInfo.InvariantCulture) + "," +
-                                        suggestedOrganization.Identity.ToString (CultureInfo.InvariantCulture) + ",," +
-                                        logonFlags;
-
+            Authority newAuthority = CurrentAuthority;
+            newAuthority.SetOrganization (suggestedOrganization); // will/can also modify Position
             CurrentUser.LastLogonOrganizationId = suggestedOrganization.Identity;
 
             if (!string.IsNullOrEmpty (returnUrlString))
             {
-                FormsAuthentication.SetAuthCookie (userIdentityString, true);
+                FormsAuthentication.SetAuthCookie (newAuthority.ToEncryptedXml(), true);
                 Response.Redirect (returnUrlString);
             }
             else
             {
-                FormsAuthentication.RedirectFromLoginPage (userIdentityString, true);
+                FormsAuthentication.RedirectFromLoginPage (newAuthority.ToEncryptedXml(), true);
             }
         }
     }
