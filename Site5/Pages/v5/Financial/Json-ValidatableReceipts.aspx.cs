@@ -7,7 +7,7 @@ public partial class Pages_v5_Finance_Json_ValidatableReceipts : DataV5Base
 {
     protected void Page_Load (object sender, EventArgs e)
     {
-        if (!CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Financials, AccessType.Read)))
+        if (!CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Financials, AccessType.Read)))
         {
             throw new UnauthorizedAccessException();
         }

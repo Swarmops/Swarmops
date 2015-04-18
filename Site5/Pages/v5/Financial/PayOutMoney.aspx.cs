@@ -64,8 +64,7 @@ namespace Swarmops.Frontend.Pages.Financial
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Financials,
-                    AccessType.Write)))
+                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Financials, AccessType.Write)))
             {
                 throw new SecurityAccessDeniedException ("Insufficient privileges for operation");
             }
@@ -92,7 +91,7 @@ namespace Swarmops.Frontend.Pages.Financial
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials)))
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Financials)))
             {
                 throw new SecurityAccessDeniedException("Insufficient privileges for operation");
             }

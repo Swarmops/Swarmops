@@ -391,7 +391,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             AjaxTextBox.CallbackResult result = new AjaxTextBox.CallbackResult();
             AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
 
-            if (!authenticationData.CurrentUser.HasAccess (new Access (authenticationData.CurrentOrganization, AccessAspect.Administration, AccessType.Write)))
+            if (!authenticationData.Authority.HasAccess (new Access (authenticationData.CurrentOrganization, AccessAspect.Administration, AccessType.Write)))
             {
                 result.ResultCode = AjaxTextBox.CodeNoPermission;
                 return result;

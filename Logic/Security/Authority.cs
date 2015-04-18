@@ -147,6 +147,108 @@ namespace Swarmops.Logic.Security
 
 
 
+        /// <summary>
+        /// Determines if this Authority has a particular Access.
+        /// </summary>
+        /// <param name="access">The access desired.</param>
+        /// <returns>True if access can be granted.</returns>
+        public bool HasAccess(Access access)
+        {
+            if (access == null)
+            {
+                throw new ArgumentNullException("access", @"Access cannot be null, but must always be explicitly specified. Specify AccessAspect.Null if null access is desired.");
+            }
+
+            if (access.Aspect == AccessAspect.Null)
+            {
+                // Null security (like Dashboard), so return true
+
+                return true;
+            }
+
+            // Check for participant financials
+
+            if (access.Aspect == AccessAspect.Financials && access.Type == AccessType.Read)
+            {
+                if (access.Organization.ParticipantFinancialsEnabled)
+                {
+                    // This organization has decided to open its financial reports to all participants. Reselect the access request to "participant" level.
+
+                    access = new Access(access.Organization, AccessAspect.Participant);
+                }
+            }
+
+            // Check for Participant access level
+
+            if (access.Aspect == AccessAspect.Participant)
+            {
+                // Check that a membership (or whatever this org calls it) exists, for this org or a parentline org
+
+                if (Person.MemberOfWithInherited(access.Organization))
+                {
+                    return true;
+                }
+            }
+
+            // if Open Ledgers, return true
+
+            if ((access.Aspect == AccessAspect.Bookkeeping || access.Aspect == AccessAspect.Financials) &&
+                access.Type == AccessType.Read && this.Person.Identity == Swarm.Person.OpenLedgersIdentity)
+            {
+                return true;
+            }
+
+            // We're at the end of generic access control - now, check against position assignments
+
+            // Check if the person is currently acting at sysadmin level
+
+            // TODO: CHECK POSITION ASSIGNMENT
+            // for now, check if position assignment exists
+
+            // This is not very efficient, but there shouldn't be many system-level positions or
+            // assignments, so it should scale reasonably even in an 1M organization
+
+            PositionAssignments assignments = Positions.ForSystem().Assignments;
+
+            foreach (PositionAssignment assignment in assignments)
+            {
+                if (assignment.Active && assignment.PersonId == this._data.PersonId)
+                {
+                    if ((assignment.Position.PositionType == PositionType.System_SysadminMain || 
+                        assignment.Position.PositionType == PositionType.System_SysadminReadWrite))
+                    return true;
+
+                    if (assignment.Position.PositionType == PositionType.System_SysadminAssistantReadOnly &&
+                        access.Type == AccessType.Read)
+                    {
+                        return true; // Read-only access
+                    }
+                }
+            }
+
+            // If system-level access was requested and has not been granted at this point, deny it
+
+            if (access.Organization == null)
+            {
+                return false;
+            }
+
+            // Organization-level or geography-level access requested
+
+            if (Assignment == null)
+            {
+                // No assignment to ask, therefore, no access
+
+                return false;
+            }
+
+            // Ask the current position assignment if it has the requested access
+
+            return Assignment.Position.HasAccess(access);
+        }
+
+
+
 
 
         public bool CanSeePerson (Person person)

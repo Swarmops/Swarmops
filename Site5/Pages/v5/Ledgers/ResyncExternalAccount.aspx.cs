@@ -156,8 +156,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
             if (account.Organization.Identity != authData.CurrentOrganization.Identity ||
-                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Bookkeeping,
-                    AccessType.Write)))
+                !authData.CurrentUser.PositionAssignment.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Bookkeeping,
+                    AccessType.Write), authData.CurrentUser))
             {
                 throw new UnauthorizedAccessException();
             }
@@ -177,8 +177,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authenticationData = GetAuthenticationDataAndCulture();
 
             if (
-                !authenticationData.CurrentUser.HasAccess (new Access (authenticationData.CurrentOrganization,
-                    AccessAspect.Bookkeeping, AccessType.Write)))
+                !authenticationData.CurrentUser.PositionAssignment.HasAccess (new Access (authenticationData.CurrentOrganization,
+                    AccessAspect.Bookkeeping, AccessType.Write), authenticationData.CurrentUser))
             {
                 throw new UnauthorizedAccessException();
             }

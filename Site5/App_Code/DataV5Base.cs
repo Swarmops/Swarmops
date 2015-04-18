@@ -83,7 +83,7 @@ public class DataV5Base : Page
 
         if (this.PageAccessRequired != null)
         {
-            if (!CurrentUser.HasAccess (this.PageAccessRequired))
+            if (!this.CurrentAuthority.HasAccess (this.PageAccessRequired))
             {
                 Response.Redirect ("/Pages/v5/Security/AccessDenied.aspx");
             }

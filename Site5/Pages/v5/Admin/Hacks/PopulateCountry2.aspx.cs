@@ -59,9 +59,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
-            if (
-                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Unknown,
-                    AccessType.Write)))
+            if (!authData.Authority.HasAccess (new Access (AccessAspect.Administration)))
             {
                 throw new UnauthorizedAccessException();
             }

@@ -114,8 +114,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 (ExternalBankDataProfile) Session["LedgersResync" + guid + "Profile"];
 
             if (
-                !this._authenticationData.CurrentUser.HasAccess (new Access (
-                    this._authenticationData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
+                !this._authenticationData.CurrentUser.PositionAssignment.HasAccess (new Access (
+                    this._authenticationData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read), this._authenticationData.CurrentUser))
             {
                 throw new UnauthorizedAccessException();
             }

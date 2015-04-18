@@ -92,7 +92,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             // if write access
 
             if (
-                CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails,
+                CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails,
                     AccessType.Write)))
             {
                 LiteralEditHeader.Text = Resources.Pages.Ledgers.InspectLedgers_EditingTransactionX;
@@ -111,16 +111,15 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             // Access helpers to JavaScript (these don't actually determine access, but help in UI prettiness)
 
             this.LiteralAuditAccess.Text =
-                (CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Auditing, AccessType.Write)))
+                (CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Auditing, AccessType.Write)))
                     ? "true"
                     : "false";
             this.LiteralWriteAccess.Text =
-                (CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write)))
+                (CurrentAuthority.HasAccess(new Access(CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Write)))
                     ? "true"
                     : "false";
             this.LiteralDetailAccess.Text =
-                (CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails,
-                    AccessType.Read)))
+                (CurrentAuthority.HasAccess(new Access(CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read)))
                     ? "true"
                     : "false";
 
@@ -133,7 +132,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization,
                     AccessAspect.Bookkeeping, AccessType.Write)))
             {
                 return false; // fail
@@ -172,7 +171,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization,
                     AccessAspect.Bookkeeping, AccessType.Read)))
             {
                 return string.Empty; // leave no clue to an attacker why the call failed
@@ -189,7 +188,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization,
                     AccessAspect.BookkeepingDetails, AccessType.Read)))
             {
                 return string.Empty; // leave no clue to an attacker why the call failed

@@ -9,6 +9,7 @@ using Swarmops.Common.Enums;
 using Swarmops.Common.Generics;
 using Swarmops.Database;
 using Swarmops.Logic.Resources;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Swarm
@@ -169,6 +170,19 @@ namespace Swarmops.Logic.Swarm
             }
 
             return Logic_Swarm_Position.ResourceManager.GetString("Position_" + titleString);
+        }
+
+
+        public bool HasAccess(Access access)
+        {
+            // TODO TODO TODO
+
+            if (access == null)
+            {
+                throw new ArgumentNullException ("access", @"Access requested must always be specified. Use AccessAspect.Null if null access is desired (and access should always be true).");
+            }
+
+            return false;
         }
     }
 }

@@ -12,18 +12,13 @@ namespace Swarmops.Logic.Swarm
     {
         public static DashboardTodos ForAuthority (Authority authority)
         {
-            return ForPerson (authority.Person, authority.Organization); // TODO: Add actual assigned-position check here
-        }
-
-        public static DashboardTodos ForPerson (Person person, Organization organization)
-        {
             DashboardTodos result = new DashboardTodos();
 
-            result.AddExpenseClaimAttestations (person, organization);
-            result.AddCashAdvanceAttestations (person, organization);
+            result.AddExpenseClaimAttestations(authority);
+            result.AddCashAdvanceAttestations(authority);
             //result.AddSalaryAttestations(person, organization);   TODO!
-            result.AddReceiptValidations (person, organization);
-            result.AddPayouts (person, organization);
+            result.AddReceiptValidations(authority);
+            result.AddPayouts(authority);
 
             // TODO: Add any hooks
 
@@ -31,14 +26,14 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        private void AddReceiptValidations (Person person, Organization organization)
+        private void AddReceiptValidations (Authority authority)
         {
-            if (!person.HasAccess (new Access (organization, AccessAspect.Financials, AccessType.Write)))
+            if (!authority.HasAccess (new Access (authority.Organization, AccessAspect.Financials, AccessType.Write)))
             {
                 return;
             }
 
-            ExpenseClaims claims = ExpenseClaims.ForOrganization (organization);
+            ExpenseClaims claims = ExpenseClaims.ForOrganization (authority.Organization);
             claims = claims.WhereUnvalidated;
 
             if (claims.Count == 0)
@@ -69,14 +64,14 @@ namespace Swarmops.Logic.Swarm
         // TODO: Refactor the attest-X functions into one function with minimal differences
 
 
-        private void AddExpenseClaimAttestations (Person person, Organization organization)
+        private void AddExpenseClaimAttestations (Authority authority)
         {
-            ExpenseClaims claims = ExpenseClaims.ForOrganization (organization);
+            ExpenseClaims claims = ExpenseClaims.ForOrganization (authority.Organization);
             List<int> expenseClaimIds = new List<int>();
 
             bool isPersonOrgAdmin = false;
 
-            if (person.Identity == 1)
+            if (authority.Person.Identity == 1)
             {
                 isPersonOrgAdmin = true; // TODO: Make more advanced, obviously
             }
@@ -94,7 +89,7 @@ namespace Swarmops.Logic.Swarm
                 {
                     attestable = true;
                 }
-                else if (claim.Budget.OwnerPersonId == person.Identity)
+                else if (claim.Budget.OwnerPersonId == authority.Person.Identity)
                 {
                     attestable = true;
                 }
@@ -127,14 +122,14 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        private void AddCashAdvanceAttestations (Person person, Organization organization)
+        private void AddCashAdvanceAttestations (Authority authority)
         {
-            CashAdvances advances = CashAdvances.ForOrganization (organization);
+            CashAdvances advances = CashAdvances.ForOrganization (authority.Organization);
             List<int> cashAdvanceIds = new List<int>();
 
             bool isPersonOrgAdmin = false;
 
-            if (person.Identity == 1)
+            if (authority.Person.Identity == 1)
             {
                 isPersonOrgAdmin = true; // TODO: Make more advanced, obviously
             }
@@ -152,7 +147,7 @@ namespace Swarmops.Logic.Swarm
                 {
                     attestable = true;
                 }
-                else if (advance.Budget.OwnerPersonId == person.Identity)
+                else if (advance.Budget.OwnerPersonId == authority.Person.Identity)
                 {
                     attestable = true;
                 }
@@ -186,9 +181,9 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        private void AddPayouts (Person person, Organization organization)
+        private void AddPayouts (Authority authority)
         {
-            if (!person.HasAccess (new Access (organization, AccessAspect.Financials, AccessType.Write)))
+            if (!authority.HasAccess (new Access (authority.Organization, AccessAspect.Financials, AccessType.Write)))
             {
                 return; // do not add this if can't pay out
             }
@@ -209,7 +204,7 @@ namespace Swarmops.Logic.Swarm
             int urgentPayoutCount = 0;
             int overduePayoutCount = 0;
 
-            Payouts payouts = Payouts.Construct (organization);
+            Payouts payouts = Payouts.Construct (authority.Organization);
 
             foreach (Payout payout in payouts)
             {

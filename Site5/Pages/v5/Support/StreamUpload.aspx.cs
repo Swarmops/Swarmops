@@ -78,8 +78,8 @@ namespace Swarmops.Pages.v5.Support
                     // TODO: Security leak - check CurrentOrganization against Document's org
 
                     if (
-                        CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Financials,
-                            AccessType.Write)))
+                        CurrentUser.PositionAssignment.HasAccess (new Access (CurrentOrganization, AccessAspect.Financials,
+                            AccessType.Write), CurrentUser))
                     {
                         hasPermission = true;
                     }

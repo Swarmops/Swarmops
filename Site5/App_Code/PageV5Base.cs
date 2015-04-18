@@ -102,7 +102,7 @@ public class PageV5Base : Page
 
         // Check security of page against users's credentials
 
-        if (!CurrentUser.HasAccess (this.PageAccessRequired))
+        if (!this.CurrentAuthority.HasAccess (this.PageAccessRequired))
         {
             Response.Redirect ("/Pages/v5/Security/AccessDenied.aspx");
         }

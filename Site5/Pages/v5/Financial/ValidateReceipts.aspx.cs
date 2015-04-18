@@ -132,9 +132,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         throw new InvalidOperationException ("Called to attest out-of-org line item");
                     }
                     if (
-                        !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
-                            AccessAspect.Financials,
-                            AccessType.Write)))
+                        !authData.Authority.HasAccess (new Access (authData.CurrentOrganization,
+                            AccessAspect.Financials, AccessType.Write)))
                     {
                         throw new UnauthorizedAccessException();
                     }

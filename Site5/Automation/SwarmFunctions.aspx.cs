@@ -32,7 +32,7 @@ namespace Swarmops.Frontend.Automation
             {
                 throw new UnauthorizedAccessException();
             }
-            if (!authData.CurrentUser.HasAccess (new Access (AccessAspect.Administration)))
+            if (!authData.Authority.HasAccess (new Access (AccessAspect.Administration)))
             {
                 throw new UnauthorizedAccessException();
             }
@@ -79,7 +79,7 @@ namespace Swarmops.Frontend.Automation
 
             if (assignment.OrganizationId == 0)
             {
-                if (!authData.CurrentUser.HasAccess (new Access (AccessAspect.Administration))) // System-wide admin
+                if (!authData.Authority.HasAccess (new Access (AccessAspect.Administration))) // System-wide admin
                 {
                     throw new UnauthorizedAccessException();
                 }
@@ -88,7 +88,7 @@ namespace Swarmops.Frontend.Automation
             {
                 if (assignment.GeographyId == 0)
                 {
-                    if (!authData.CurrentUser.HasAccess (new Access(authData.CurrentOrganization, AccessAspect.Administration)))
+                    if (!authData.Authority.HasAccess (new Access(authData.CurrentOrganization, AccessAspect.Administration)))
                     {
                         throw new UnauthorizedAccessException();
                     }
@@ -96,7 +96,7 @@ namespace Swarmops.Frontend.Automation
                 else // Org- and geo-specific assignment
                 {
                     if (
-                        !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                        !authData.Authority.HasAccess (new Access (authData.CurrentOrganization,
                             assignment.Position.Geography, AccessAspect.Administration)))
                     {
                         throw new UnauthorizedAccessException();

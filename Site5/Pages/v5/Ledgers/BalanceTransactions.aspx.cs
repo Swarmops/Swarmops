@@ -75,7 +75,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization,
                     AccessAspect.BookkeepingDetails)))
             {
                 throw new UnauthorizedAccessException();
@@ -139,7 +139,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization,
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization,
                     AccessAspect.BookkeepingDetails)))
             {
                 throw new UnauthorizedAccessException();
@@ -168,7 +168,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.HasAccess(new Access(authData.CurrentOrganization,
+                !authData.Authority.HasAccess(new Access(authData.CurrentOrganization,
                     AccessAspect.BookkeepingDetails)))
             {
                 throw new UnauthorizedAccessException();

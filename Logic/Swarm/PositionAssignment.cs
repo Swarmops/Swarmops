@@ -8,6 +8,7 @@ using NBitcoin;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 
 namespace Swarmops.Logic.Swarm
@@ -112,5 +113,6 @@ namespace Swarmops.Logic.Swarm
             base.TerminationNotes = terminationNotes;
             base.TerminatedDateTimeUtc = DateTime.UtcNow; // may differ by milliseconds from actual value set, but shouldn't matter for practical purposes
         }
+
     }
 }

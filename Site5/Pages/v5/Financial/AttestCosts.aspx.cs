@@ -45,7 +45,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this._attestationRights = GetAttestationRights();
             this._documentList = new List<RepeatedDocument>();
             this.LiteralCanOverdraftBudgets.Text =
-                CurrentUser.HasAccess (new Access (CurrentOrganization, AccessAspect.Administration)).ToString(CultureInfo.InvariantCulture).ToLowerInvariant();
+                CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Administration)).ToString(CultureInfo.InvariantCulture).ToLowerInvariant();
 
             PopulateInboundInvoices();
             PopulateExpenses();
@@ -72,7 +72,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             foreach (FinancialAccount account in accounts)
             {
                 if (account.OwnerPersonId == authData.CurrentUser.Identity || 
-                    (account.OwnerPersonId == 0 && authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Administration))))
+                    (account.OwnerPersonId == 0 && authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Administration))))
                 {
                     result[account.Identity] = true;
                 }
@@ -547,7 +547,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 if (amountCents > budgetRemaining)
                 {
                     if (
-                        authData.CurrentUser.HasAccess (new Access (authData.CurrentOrganization,
+                        authData.Authority.HasAccess (new Access (authData.CurrentOrganization,
                             AccessAspect.Administration)))
                     {
                         // Admin rights, so allow (forced) overdraft
