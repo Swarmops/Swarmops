@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Security;
@@ -32,7 +33,17 @@ public class ControlV5Base : UserControl
 
     protected override void OnInit (EventArgs e)
     {
-        this._authority = CommonV5.GetAuthenticationDataAndCulture (HttpContext.Current).Authority;
+        try
+        {
+            this._authority = CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current).Authority;
+        }
+        catch (Exception)
+        {
+            // if this fails FOR WHATEVER REASON then we're not authenticated
+            this._authority = null;
+            FormsAuthentication.SignOut();
+            Response.Redirect ("/");
+        }
 
         base.OnInit (e);
     }
