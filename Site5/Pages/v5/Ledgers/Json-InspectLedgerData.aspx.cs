@@ -46,7 +46,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException ("All the nopes in the world");
             }
 
-            if (!CurrentUser.PositionAssignment.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read), CurrentUser))
+            if (!CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
             {
                 throw new UnauthorizedAccessException ("Access denied because security tokens say so");
             }
@@ -55,8 +55,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             DateTime balanceStart = dawnOfMankind;
             bool zeroStart = false;
             bool zeroEnd = false;
-            bool displayDescription = CurrentUser.PositionAssignment.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read), CurrentUser);
-            bool canSeeAudit = CurrentUser.PositionAssignment.HasAccess(new Access(CurrentOrganization, AccessAspect.Auditing, AccessType.Read), CurrentUser);
+            bool displayDescription = CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read));
+            bool canSeeAudit = CurrentAuthority.HasAccess(new Access(CurrentOrganization, AccessAspect.Auditing, AccessType.Read));
 
             if (month > 0 && month <= 12)
             {

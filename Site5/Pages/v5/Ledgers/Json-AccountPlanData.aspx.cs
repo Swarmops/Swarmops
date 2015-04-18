@@ -30,8 +30,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             this._year = DateTime.Today.Year;
 
             if (
-                !this._authenticationData.CurrentUser.PositionAssignment.HasAccess (new Access (
-                    this._authenticationData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read), this._authenticationData.CurrentUser))
+                !this._authenticationData.Authority.HasAccess (new Access (
+                    this._authenticationData.CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
             {
                 throw new UnauthorizedAccessException();
             }
