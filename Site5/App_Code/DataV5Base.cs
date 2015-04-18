@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Security;
@@ -54,13 +55,13 @@ public class DataV5Base : Page
         {
             try
             {
-                CurrentAuthority = Authority.FromEncryptedXml(identity);
+                CurrentAuthority = CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current).Authority;
             }
             catch (Exception)
             {
-                // if this fails FOR ANY REASON, we're unauthenticated
-
-                CurrentAuthority = null;
+                // if this fails FOR WHATEVER REASON then we're not authenticated
+                this.CurrentAuthority = null;
+                FormsAuthentication.SignOut();
             }
         }
         else

@@ -22,9 +22,18 @@ namespace Swarmops
     {
         protected void Page_Init (object sender, EventArgs e)
         {
-            this._authority =
-                AuthenticationData.FromAuthority (Authority.FromEncryptedXml (HttpContext.Current.User.Identity.Name))
-                    .Authority;
+            try
+            {
+                this._authority = CommonV5.GetAuthenticationDataAndCulture(HttpContext.Current).Authority;
+            }
+            catch (Exception)
+            {
+                // if this fails FOR WHATEVER REASON then we're not authenticated
+
+                this._authority = null;
+                FormsAuthentication.SignOut();
+                Response.Redirect("/");
+            }
         }
 
         protected void Page_Load (object sender, EventArgs e)
