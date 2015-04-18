@@ -20,8 +20,8 @@ namespace Swarmops.Frontend.Pages.Swarm
             Geography geography = Geography.FromIdentity (geographyId);
 
             if (
-                !CurrentUser.PositionAssignment.HasAccess (new Access (CurrentOrganization, geography, AccessAspect.PersonalData,
-                    AccessType.Read), CurrentUser))
+                !CurrentAuthority.HasAccess (new Access (CurrentOrganization, geography, AccessAspect.PersonalData,
+                    AccessType.Read)))
             {
                 throw new UnauthorizedAccessException ("nope");
             }

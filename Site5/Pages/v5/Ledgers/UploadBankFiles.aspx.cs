@@ -229,8 +229,8 @@ namespace Swarmops.Site.Pages.Ledgers
             FinancialAccount account = FinancialAccount.FromIdentity (accountId);
 
             if (account.Organization.Identity != authData.CurrentOrganization.Identity ||
-                !authData.CurrentUser.PositionAssignment.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Bookkeeping,
-                    AccessType.Write), authData.CurrentUser))
+                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Bookkeeping,
+                    AccessType.Write)))
             {
                 throw new UnauthorizedAccessException();
             }

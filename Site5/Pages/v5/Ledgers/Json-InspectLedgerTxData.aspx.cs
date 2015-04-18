@@ -41,7 +41,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException ("All the nopes in the world");
             }
 
-            if (!CurrentUser.PositionAssignment.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read), CurrentUser))
+            if (!CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Bookkeeping, AccessType.Read)))
             {
                 throw new UnauthorizedAccessException ("Access denied because security tokens say so");
             }

@@ -51,8 +51,8 @@ namespace Swarmops.Frontend.Pages.Swarm
             AuthenticationData authData = GetAuthenticationDataAndCulture();
 
             if (
-                !authData.CurrentUser.PositionAssignment.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Financials,
-                    AccessType.Write), authData.CurrentUser))
+                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Financials,
+                    AccessType.Write)))
             {
                 throw new SecurityAccessDeniedException ("Insufficient privileges for operation");
             }

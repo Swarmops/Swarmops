@@ -15,7 +15,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             List<string> rows = new List<string>();
 
             if (
-                CurrentUser.PositionAssignment.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read), CurrentUser))
+                CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.BookkeepingDetails, AccessType.Read)))
             {
                 foreach (FinancialTransaction transaction in unbalancedTransactions)
                 {
