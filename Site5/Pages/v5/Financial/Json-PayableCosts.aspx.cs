@@ -21,8 +21,15 @@ namespace Swarmops.Frontend.Pages.Financial
 
             // Format as JSON and return
 
+            string prototypes = FormatPrototypesAsJson (prototypePayouts);
+            string previous = FormatPreviousAsJson (previousPayouts);
+
+            string elements = (prototypes.Length > 0 && previous.Length > 0
+                ? prototypes + "," + previous  // if both have elements, add a comma between them
+                : prototypes + previous);  // one or both strings are empty, so no comma
+
             Response.ContentType = "application/json";
-            string json = "{\"rows\":[" + FormatPrototypesAsJson (prototypePayouts) + "," + FormatPreviousAsJson (previousPayouts) + "]}";
+            string json = "{\"rows\":[" + elements + "]}";
             Response.Output.WriteLine (json);
             Response.End();
         }
@@ -64,7 +71,10 @@ namespace Swarmops.Frontend.Pages.Financial
                 result.Append ("},");
             }
 
-            result.Remove (result.Length - 1, 1); // remove last comma
+            if (result.Length > 0)
+            {
+                result.Remove (result.Length - 1, 1); // remove last comma, if there are any elements
+            }
 
             return result.ToString();
         }
@@ -106,7 +116,10 @@ namespace Swarmops.Frontend.Pages.Financial
                 result.Append("},");
             }
 
-            result.Remove(result.Length - 1, 1); // remove last comma
+            if (result.Length > 0)
+            {
+                result.Remove(result.Length - 1, 1); // remove last comma, if there are any elements
+            }
 
             return result.ToString();
         }
