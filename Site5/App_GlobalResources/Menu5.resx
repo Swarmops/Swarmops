@@ -408,4 +408,7 @@
   <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
     <value>Balance &amp; Match Transactions</value>
   </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>Organization Staffing</value>
+  </data>
 </root>

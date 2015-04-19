@@ -445,6 +445,16 @@
           </MainMenuItem>
 
           <MainMenuItem>
+            <ResourceKey>Administration_OrganizationStaffing</ResourceKey>
+            <UserLevel>4</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-group-diversified</ImageUrl>
+            <NavigateUrl>/Pages/v5/Admin/OrgStaff.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
             <ResourceKey>Administration_CreateOrganization</ResourceKey>
             <UserLevel>4</UserLevel>
             <Permissions />
