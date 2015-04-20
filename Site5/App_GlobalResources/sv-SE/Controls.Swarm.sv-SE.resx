@@ -117,11 +117,74 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
-  
-  
-  
+  <data name="Positions_AssignAnotherPerson" xml:space="preserve">
+    <value>Tillsätt ännu en person...</value>
+    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
+  </data>
+  <data name="Positions_AssignFifthPerson" xml:space="preserve">
+    <value>Tillsätt en femte person...</value>
+  </data>
+  <data name="Positions_AssignFirstPerson" xml:space="preserve">
+    <value>Tillsätt...</value>
+  </data>
+  <data name="Positions_AssignFourthPerson" xml:space="preserve">
+    <value>Tillsätt en fjärde person...</value>
+  </data>
+  <data name="Positions_AssignmentDuration" xml:space="preserve">
+    <value>Uppdragets längd (kan förlängas)</value>
+  </data>
+  <data name="Positions_AssignmentExpires" xml:space="preserve">
+    <value>Går ut</value>
+    <comment>The date a position assignment autoterminates</comment>
+  </data>
+  <data name="Positions_AssignPersonToPosition" xml:space="preserve">
+    <value>Tillsätt den här personen till befattningen</value>
+  </data>
+  <data name="Positions_AssignSecondPerson" xml:space="preserve">
+    <value>Tillsätt en andra person...</value>
+  </data>
+  <data name="Positions_AssignSixthPerson" xml:space="preserve">
+    <value>Tillsätt en sjätte person...</value>
+    <comment>ok, this is not strictly necessary, just a bell &amp; whistle</comment>
+  </data>
+  <data name="Positions_AssignThirdPerson" xml:space="preserve">
+    <value>Tillsätt en tredje person...</value>
+  </data>
+  <data name="Positions_ButtonAssign" xml:space="preserve">
+    <value>Tillsätt</value>
+    <comment>Kind of "hire" but also for volunteers</comment>
+  </data>
+  <data name="Positions_ModalHeader" xml:space="preserve">
+    <value>Tillsätt person som &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt;</value>
+    <comment>Header for new assignment dialog</comment>
+  </data>
+  <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
+    <value>Misslyckades: Kan inte tillsätta fler människor till denna befattning.</value>
+  </data>
+  <data name="Positions_PleaseSelectPerson" xml:space="preserve">
+    <value>Välj en person att tillsätta.</value>
+  </data>
+  <data name="Positions_Vacant" xml:space="preserve">
+    <value>(befattningen är vakant)</value>
+    <comment>For unassigned positions</comment>
+  </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;AVSLUTA DITT UPPDRAG?&lt;/strong&gt; &lt;br/&gt;&lt;br/&gt;Detta är &lt;strong&gt;ditt&lt;/strong&gt; uppdrag. Att avsluta sitt eget uppdrag är motsvarigheten till att säga "Jag säger upp mig" eller "Jag avgår". Uppsägningen kommer att träda i kraft omedelbart. Är detta vad du ville göra?&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>&lt;strong&gt;AVSLUTA UPPDRAGET?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Vill du skilja &lt;span id="spanTerminatePersonName"&gt;[PERSONNAME]&lt;/span&gt; från uppdraget som &lt;span id="spanTerminatePositionName"&gt;[POSITIONNAME]&lt;/span&gt;? Detta motsvarar att säga upp eller avskeda någon och behöver ofta hanteras enligt interna processer och lokal lagstiftning.&lt;br/&gt;&lt;br/&gt;</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_TerminateNo" xml:space="preserve">
+    <value>Avsluta inte</value>
+  </data>
+  <data name="Positions_TerminateSelfNo" xml:space="preserve">
+    <value>Ojojoj! Nej, gå tillbaka!</value>
+  </data>
+  <data name="Positions_TerminateSelfYes" xml:space="preserve">
+    <value>Ja, jag säger upp mig</value>
+  </data>
+  <data name="Positions_TerminateYes" xml:space="preserve">
+    <value>Avsluta uppdraget</value>
+  </data>
 </root>

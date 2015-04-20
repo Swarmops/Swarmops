@@ -404,4 +404,7 @@
   <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
     <value>Balansera &amp; matcha transaktioner</value>
   </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>Organisationens bemanning</value>
+  </data>
 </root>

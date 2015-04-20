@@ -664,15 +664,42 @@
   <data name="Global_NoActionItems" xml:space="preserve">
     <value>Inget som brådskar. Yay!</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_MinMax" xml:space="preserve">
+    <value>Min / Max</value>
+    <comment>note the spaces</comment>
+  </data>
+  <data name="Swarm_AssignedPerson" xml:space="preserve">
+    <value>Tillsatt person</value>
+  </data>
+  <data name="Swarm_Position" xml:space="preserve">
+    <value>Befattning</value>
+  </data>
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>Det verkar som en annan användare hann före dig - databasen ändrades. Vänligen undersök de ändrade förhållandena och försök sedan igen.</value>
+  </data>
+  <data name="Swarm_TypeName" xml:space="preserve">
+    <value>Skriv ett namn...</value>
+  </data>
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>En månad</value>
+  </data>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>Ett år</value>
+  </data>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>Sex månader</value>
+  </data>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>Tre månader</value>
+  </data>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>Två månader</value>
+  </data>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>Två år</value>
+  </data>
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>Tills vidare</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
+  </data>
 </root>

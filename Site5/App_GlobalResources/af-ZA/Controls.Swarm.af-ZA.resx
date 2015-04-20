@@ -117,6 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Positions_AssignAnotherPerson" xml:space="preserve">
+    <value>crwdns6556146:0crwdne6556146:0</value>
+    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
+  </data>
+  <data name="Positions_AssignFifthPerson" xml:space="preserve">
+    <value>crwdns6556147:0crwdne6556147:0</value>
+  </data>
+  <data name="Positions_AssignFirstPerson" xml:space="preserve">
+    <value>crwdns6556148:0crwdne6556148:0</value>
+  </data>
+  <data name="Positions_AssignFourthPerson" xml:space="preserve">
+    <value>crwdns6556149:0crwdne6556149:0</value>
+  </data>
   <data name="Positions_AssignmentDuration" xml:space="preserve">
     <value>crwdns6556139:0crwdne6556139:0</value>
   </data>
@@ -124,22 +137,54 @@
     <value>crwdns6556140:0crwdne6556140:0</value>
     <comment>The date a position assignment autoterminates</comment>
   </data>
-  <data name="Positions_AssignMorePerson" xml:space="preserve">
-    <value>crwdns6556141:0crwdne6556141:0</value>
-    <comment>To an existing position that accepts multiple people (like "assistants")</comment>
-  </data>
-  <data name="Positions_AssignPerson" xml:space="preserve">
-    <value>crwdns6556142:0crwdne6556142:0</value>
-  </data>
   <data name="Positions_AssignPersonToPosition" xml:space="preserve">
     <value>crwdns6556143:0crwdne6556143:0</value>
+  </data>
+  <data name="Positions_AssignSecondPerson" xml:space="preserve">
+    <value>crwdns6556150:0crwdne6556150:0</value>
+  </data>
+  <data name="Positions_AssignSixthPerson" xml:space="preserve">
+    <value>crwdns6556151:0crwdne6556151:0</value>
+    <comment>ok, this is not strictly necessary, just a bell &amp; whistle</comment>
+  </data>
+  <data name="Positions_AssignThirdPerson" xml:space="preserve">
+    <value>crwdns6556152:0crwdne6556152:0</value>
+  </data>
+  <data name="Positions_ButtonAssign" xml:space="preserve">
+    <value>crwdns6556153:0crwdne6556153:0</value>
+    <comment>Kind of "hire" but also for volunteers</comment>
   </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
     <value>crwdns6556144:0{0}crwdne6556144:0</value>
     <comment>Header for new assignment dialog</comment>
   </data>
+  <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
+    <value>crwdns6556154:0crwdne6556154:0</value>
+  </data>
+  <data name="Positions_PleaseSelectPerson" xml:space="preserve">
+    <value>crwdns6556155:0crwdne6556155:0</value>
+  </data>
   <data name="Positions_Vacant" xml:space="preserve">
-    <value>crwdns6556145:0crwdne6556145:0</value>
+    <value>crwdns6556156:0crwdne6556156:0</value>
     <comment>For unassigned positions</comment>
+  </data>
+  <data name="Positions_ConfirmSelfTerminate" xml:space="preserve">
+    <value>crwdns6556157:0crwdne6556157:0</value>
+  </data>
+  <data name="Positions_ConfirmTerminate" xml:space="preserve">
+    <value>crwdns6556158:0[PERSONNAME]crwdnd6556158:0[POSITIONNAME]crwdne6556158:0</value>
+    <comment>{0} is the person name, {1} is the position title.</comment>
+  </data>
+  <data name="Positions_TerminateNo" xml:space="preserve">
+    <value>crwdns6556159:0crwdne6556159:0</value>
+  </data>
+  <data name="Positions_TerminateSelfNo" xml:space="preserve">
+    <value>crwdns6556160:0crwdne6556160:0</value>
+  </data>
+  <data name="Positions_TerminateSelfYes" xml:space="preserve">
+    <value>crwdns6556161:0crwdne6556161:0</value>
+  </data>
+  <data name="Positions_TerminateYes" xml:space="preserve">
+    <value>crwdns6556162:0crwdne6556162:0</value>
   </data>
 </root>

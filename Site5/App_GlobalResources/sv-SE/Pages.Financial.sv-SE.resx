@@ -249,10 +249,19 @@
     <value>Det finns inte tillräckligt med pengar för att attestera detta. Du kan attestera upp till {0} {1:N2} mer i denna budget för år {2}.</value>
     <comment>The {0} is the currency and the {1} is the remaining budget. The {2} is the current year.</comment>
   </data>
-  
-  
-  
-  
+  <data name="AttestCosts_OverdraftConfirm" xml:space="preserve">
+    <value>&lt;strong&gt;ÖVERTRASSERA BUDGETEN?&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;Det finns inte tillräckligt med pengar kvar i budgeten för att attestera denna kostnad. Normalt skulle den därför inte gå att attestera. Men du kan åsidosätta denna begränsning och attestera ändå, vilket kommer att övertrassera kontot.&lt;br/&gt;&lt;br/&gt;Vill du attestera kostnaden och övertrassera, eller vill du avbryta och hålla budgeten istället? &lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmNo" xml:space="preserve">
+    <value>Håll budgeten</value>
+  </data>
+  <data name="AttestCosts_OverdraftConfirmYes" xml:space="preserve">
+    <value>Övertrassera</value>
+  </data>
+  <data name="AttestCosts_Overdrafted" xml:space="preserve">
+    <value>BUDGETEN ÖVERTRASSERADES.</value>
+    <comment>The UPPERCASE is intentional.</comment>
+  </data>
   <data name="AttestCosts_PageTitle" xml:space="preserve">
     <value>Attestera kostnader</value>
   </data>

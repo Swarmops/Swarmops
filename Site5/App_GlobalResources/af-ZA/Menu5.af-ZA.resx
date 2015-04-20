@@ -408,4 +408,7 @@
   <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
     <value>crwdns6555824:0crwdne6555824:0</value>
   </data>
+  <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
+    <value>crwdns6556164:0crwdne6556164:0</value>
+  </data>
 </root>
