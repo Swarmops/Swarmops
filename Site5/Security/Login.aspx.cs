@@ -266,7 +266,12 @@ namespace Swarmops.Pages.Security
 
                     int lastOrgId = authenticatedPerson.LastLogonOrganizationId;
 
-                    if (lastOrgId == 0)
+                    if (PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE) && (lastOrgId == 3 || lastOrgId == 0))
+                    {
+                        lastOrgId = 1; // legacy: log on to Piratpartiet SE if indeterminate; prevent sandbox for this pilot
+                        authenticatedPerson.LastLogonOrganizationId = 1; // avoid future legacy problems
+                    }
+                    else if (lastOrgId == 0)
                     {
                         lastOrgId = Organization.SandboxIdentity;
                     }
@@ -274,6 +279,12 @@ namespace Swarmops.Pages.Security
                     if (!authenticatedPerson.MemberOfWithInherited (lastOrgId))
                     {
                         // If the person doesn't have access to the last organization (anymore), log on to Sandbox
+                        // unless first pilot, in which case throw (deny login)
+
+                        if (PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
+                        {
+                            throw new UnauthorizedAccessException();
+                        }
 
                         lastOrgId = Organization.SandboxIdentity;
                     }
