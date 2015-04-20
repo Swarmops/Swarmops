@@ -616,7 +616,7 @@
       0 ./Site5/Security/FinalizeLogin.aspx
      28 ./Site5/Default.aspx.cs
      19 ./Site5/Default.aspx
-    383 ./Site5/Master-v5.master.cs
+    393 ./Site5/Master-v5.master.cs
     314 ./Site5/Plugins-Stock/Taxes/SE/MonthlyTaxForm-SE.aspx.cs
       1 ./Site5/Plugins-Stock/Taxes/SE/MonthlyTaxForm-SE.aspx
     109 ./Site5/Global.asax
@@ -793,4 +793,4 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
- 111186 total
+ 111196 total
