@@ -32,7 +32,17 @@ namespace Swarmops
 
                 this._authority = null;
                 FormsAuthentication.SignOut();
-                Response.Redirect("/");
+                Response.Redirect("/", true);
+            }
+
+            // Ugly ugly UGLY legacy: Do not allow Sandbox logins on first pilot - it's broken
+
+            if (this._authority.Organization.Identity == 3 &&
+                PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
+            {
+                this._authority = null;
+                FormsAuthentication.SignOut();
+                Response.Redirect("/", true);
             }
         }
 
