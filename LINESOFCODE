@@ -608,7 +608,7 @@
     228 ./Site5/Security/Login.aspx
     106 ./Site5/Security/Login-Old.aspx.cs
      93 ./Site5/Security/RequestPasswordReset.aspx.cs
-    390 ./Site5/Security/Login.aspx.cs
+    401 ./Site5/Security/Login.aspx.cs
     136 ./Site5/Security/RequestPasswordReset.aspx
      26 ./Site5/Security/FinalizeLogin.aspx.cs
      53 ./Site5/Security/Login-Old.aspx
@@ -793,4 +793,4 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
- 111175 total
+ 111186 total
