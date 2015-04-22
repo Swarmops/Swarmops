@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -116,6 +117,40 @@ namespace Swarmops.Frontend.Automation
             }
 
             return new AjaxCallResult {Success = true};
+        }
+
+        [WebMethod]
+        static public AssignmentData GetAssignmentData (int assignmentId)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            PositionAssignment assignment = PositionAssignment.FromIdentity (assignmentId);
+
+            if (authData.Authority.CanAccess (assignment, AccessType.Read))
+            {
+                return new AssignmentData
+                {
+                    Success = true,
+                    AssignedPersonCanonical = assignment.Person.Canonical,
+                    AssignedPersonId = assignment.PersonId,
+                    PositionAssignmentId = assignment.Identity,
+                    PositionId = assignment.PositionId,
+                    PositionLocalized = assignment.Position.Localized()
+                };
+            }
+            else
+            {
+                return new AssignmentData {Success = false};
+            }
+
+        }
+
+        public class AssignmentData : AjaxCallResult
+        {
+            public int PositionAssignmentId { get; set; }
+            public int PositionId { get; set; }
+            public string PositionLocalized { get; set; }
+            public int AssignedPersonId { get; set; }
+            public string AssignedPersonCanonical { get; set; }
         }
 
         public class AvatarData : AjaxCallResult

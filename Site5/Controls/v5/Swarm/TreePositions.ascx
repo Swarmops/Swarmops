@@ -9,7 +9,7 @@
         }
 
         preload([
-            '/Images/Abstract/ajaxloader-medium.gif',
+            '/Images/Abstract/ajaxloader-48x36px.gif',
             '/Images/Icons/iconshock-balloon-no-128x96px-hot.png'
         ]);
         $(document).ready(function() {
@@ -48,9 +48,11 @@
 	                    }
 	                });
 
-	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').click(function () {
+	                $('.LocalIconTerminate.LocalPosition<%=this.Cookie%>').click(function() {
 	                    if ($(this).attr("rel") != "loading") {
 	                        $(this).attr("rel", "loading");
+
+	                        $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
 
 	                        var okLabel = decodeURIComponent('<asp:Literal ID="LiteralTerminateYes" runat="server" />');
 	                        var cancelLabel = decodeURIComponent('<asp:Literal ID="LiteralTerminateNo" runat="server" />');
@@ -67,18 +69,35 @@
 	                                ok: okLabel,
 	                                cancel: cancelLabel
 	                            },
-                                buttonFocus: 'cancel'
+	                            buttonFocus: 'cancel'
 	                        });
 
-	                        alertify.confirm(confirmQuestion,
-                                $.proxy(function (response) {
-                                    if (response) {
-                                        // user clicked the GREEN button, which is "confirm termination"
+	                        $('#spanTerminatePersonName').text('[...]');
 
-                                        onConfirmTermination($(this).attr("assignmentId"));
-                                    }
-                                    $(this).attr("rel", ""); // clear state
-                                }, this));
+	                        alertify.confirm(confirmQuestion,
+	                            $.proxy(function(response) {
+	                                if (response) {
+	                                    // user clicked the GREEN button, which is "confirm termination"
+	                                    onConfirmTermination($(this).attr("assignmentId"));
+	                                } else {
+                                        // if cancel termination, restore icon from loader to action icon again
+	                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
+	                                }
+	                                $(this).attr("rel", ""); // clear state
+	                            }, this));
+
+	                        // Fill in the name and position that are now on-screen in a question
+
+	                        SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/GetAssignmentData",
+                                {assignmentId: $(this).attr("assignmentId") },
+	                            function (result) {
+	                                if (result.Success) {
+	                                    $('#spanTerminatePersonName').text(result.AssignedPersonCanonical);
+	                                    $('#spanTerminatePositionName').text(result.PositionLocalized);
+	                                } else {
+	                                    $('#spanTerminatePersonName,#spanTerminatePositionName').text('[-ERROR-]');
+	                                }
+	                            });
 
 	                        return; // Do not process here - must wait for confirm dialog to return
 
@@ -97,7 +116,7 @@
                     return;
                 }
 
-                // TODO: Check existing position for person; can't have two positions
+                // TODO: Check existing position for person; can't have two positions, at least not within same org
 
                 SwarmopsJS.ajaxCall(
                     "/Automation/SwarmFunctions.aspx/AssignPosition",

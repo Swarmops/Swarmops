@@ -450,7 +450,7 @@
             <Permissions />
             <ImageUrl>iconshock-group-diversified</ImageUrl>
             <NavigateUrl>/Pages/v5/Admin/OrgStaff.aspx</NavigateUrl>
-            <Type>Disabled</Type>
+            <Type>Link</Type>
             <Children />
           </MainMenuItem>
 
