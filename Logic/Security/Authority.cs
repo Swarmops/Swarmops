@@ -11,6 +11,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Security;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
@@ -291,6 +292,23 @@ namespace Swarmops.Logic.Security
         }
 
 
+        public bool CanAccess (IHasIdentity identifiableObject, AccessType accessType = AccessType.Write)
+        {
+            // Tests if this Authority can access a certain object. Add new object types as needed by the logic.
+            // This is a very general case of the CanSeePerson() function.
+
+            PositionAssignment testAssignment = identifiableObject as PositionAssignment;
+            if (testAssignment != null)
+            {
+                // shortcut, for now
+
+                return HasSystemAccess (accessType);
+            }
+
+            throw new NotImplementedException("Authority.CanAccess is not implemented for type " + identifiableObject.GetType().FullName);
+        }
+
+
         public People FilterPeople(People rawList, AccessAspect aspect = AccessAspect.Participation)
         {
             if (aspect != AccessAspect.Participation && aspect != AccessAspect.PersonalData)
@@ -335,14 +353,17 @@ namespace Swarmops.Logic.Security
                     // them is visible to this Authority - if it's a membership in an org at or below the
                     // Authority object's organization
 
-                    List<BasicMembership> list = membershipLookup[person.Identity];
-
-                    foreach (BasicMembership basicMembership in list)
+                    if (membershipLookup.ContainsKey (person.Identity))
                     {
-                        if (orgLookup.ContainsKey (basicMembership.OrganizationId))
+                        List<BasicMembership> list = membershipLookup[person.Identity];
+
+                        foreach (BasicMembership basicMembership in list)
                         {
-                            // hit - this person has an active membership that makes them visible to this Authority
-                            result.Add (person);
+                            if (orgLookup.ContainsKey (basicMembership.OrganizationId))
+                            {
+                                // hit - this person has an active membership that makes them visible to this Authority
+                                result.Add (person);
+                            }
                         }
                     }
                 }
