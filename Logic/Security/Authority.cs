@@ -363,6 +363,7 @@ namespace Swarmops.Logic.Security
                             {
                                 // hit - this person has an active membership that makes them visible to this Authority
                                 result.Add (person);
+                                break;
                             }
                         }
                     }
