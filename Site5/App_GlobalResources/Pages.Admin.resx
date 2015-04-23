@@ -215,6 +215,12 @@
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>Externally Accessible URL</value>
   </data>
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>Correspondence Transmission Settings</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>System Administrators</value>
+  </data>
   <data name="SystemSettings_Info" xml:space="preserve">
     <value>Various technical settings for this Swarmops installation. Not specific to any organization or person, but installation-wide.</value>
   </data>

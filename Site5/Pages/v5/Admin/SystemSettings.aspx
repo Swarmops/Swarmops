@@ -29,11 +29,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <div id="divTabs" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
         <div title="<img src='/Images/Icons/iconshock-group-diversified-64px.png' />">
-            <h2>System Administrators</h2>
+            <h2><asp:Label ID="LabelHeaderSysops" runat="server" /></h2>
             <Swarmops5:TreePositions ID="TreePositions" runat="server" />
         </div>
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
-            <h2>Correspondence transmission settings</h2>
+            <h2><asp:Label ID="LabelHeaderCorrespondenceTransmission" runat="server" /></h2>
             <div class="entryFields">
                 <Swarmops5:AjaxTextBox runat="server" ID="TextSmtpServer" Cookie="Smtp" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="localhost:587" />&#8203;<br/>
                 <Swarmops5:AjaxTextBox runat="server" ID="TextInstallationName" Cookie="InstallationName" AjaxCallbackUrl="/Pages/v5/Admin/SystemSettings.aspx/StoreCallback" Placeholder="localhost:587" />&#8203;<br/>

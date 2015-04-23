@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -129,6 +130,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         private void Localize()
         {
+            this.LabelHeaderCorrespondenceTransmission.Text =
+                Resources.Pages.Admin.SystemSettings_Header_CorrespondenceTxSettings;
+            this.LabelHeaderSysops.Text = Resources.Pages.Admin.SystemSettings_Header_SystemAdministrators;
+
             this.LabelExternalUrl.Text = Resources.Pages.Admin.SystemSettings_ExternalUrl;
             this.LabelSmtpServer.Text = Resources.Pages.Admin.SystemSettings_SmtpServer;
             this.LabelInstallationName.Text = Resources.Pages.Admin.SystemSettings_InstallationName;
