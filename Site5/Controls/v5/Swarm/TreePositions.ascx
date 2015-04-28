@@ -155,7 +155,7 @@
     </script>
 
     <table id="<%=this.ClientID %>_tablePositions" title="" class="easyui-treegrid" style="width:680px;height:600px"  
-        url="/Automation/Json-PositionsTree.aspx?Cookie=<%=this.Cookie %>"
+        url="/Automation/Json-PositionsTree.aspx?Level=<%=this.Level%>&GeographyId=<%=this.GeographyId %>&Cookie=<%=this.Cookie %>"
         rownumbers="false"
         animate="true"
         fitColumns="true"

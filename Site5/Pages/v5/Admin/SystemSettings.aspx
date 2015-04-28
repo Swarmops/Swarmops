@@ -30,7 +30,7 @@
     <div id="divTabs" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
         <div title="<img src='/Images/Icons/iconshock-group-diversified-64px.png' />">
             <h2><asp:Label ID="LabelHeaderSysops" runat="server" /></h2>
-            <Swarmops5:TreePositions ID="TreePositions" runat="server" />
+            <Swarmops5:TreePositions ID="TreePositions" Level="SystemWide" runat="server" />
         </div>
         <div title="<img src='/Images/Icons/iconshock-mail-open-64px.png' />">
             <h2><asp:Label ID="LabelHeaderCorrespondenceTransmission" runat="server" /></h2>

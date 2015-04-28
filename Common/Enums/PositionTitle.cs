@@ -11,9 +11,24 @@ namespace Swarmops.Common.Enums
         Unknown = 0,
 
         /// <summary>
-        /// Use the default title for the position type.
+        /// Use the default title for the position type (commercial titles).
         /// </summary>
-        Default
+        Default,
+
+        /// <summary>
+        /// Use titles that are customized for nonprofit organizations ("secretary general" instead of "ceo", etc).
+        /// </summary>
+        Nonprofit,
+
+        /// <summary>
+        /// Use medieval titles (kind of humorous, not to be taken too seriously).
+        /// </summary>
+        Medieval,
+
+        /// <summary>
+        /// Totally customized and not stock localized - look up in PositionTitlesCustom table
+        /// </summary>
+        Custom
 
         // Expand with various title names
     }

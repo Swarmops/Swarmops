@@ -449,7 +449,7 @@
             <UserLevel>4</UserLevel>
             <Permissions />
             <ImageUrl>iconshock-group-diversified</ImageUrl>
-            <NavigateUrl>/Pages/v5/Admin/OrgStaff.aspx</NavigateUrl>
+            <NavigateUrl>/Pages/v5/Admin/OrgStaffing.aspx</NavigateUrl>
             <Type>Link</Type>
             <Children />
           </MainMenuItem>

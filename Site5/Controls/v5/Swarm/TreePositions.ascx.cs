@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Common.Enums;
 
 namespace Swarmops.Frontend.Controls.v5.Swarm
 {
@@ -55,22 +56,11 @@ namespace Swarmops.Frontend.Controls.v5.Swarm
 
         }
 
-        public RoleLevel Level { get; set; }
+        public PositionLevel Level { get; set; }
         public int OrganizationId { get; set; }
         public int GeographyId { get; set; }
         public string Cookie { get; set; }
 
 
-        public enum RoleLevel
-        {
-            Unknown = 0,
-            Systemwide,
-            Organizationwide,
-            SuborganizationwideDefault,
-            OrganizationTop,
-            SuborganizationTopDefault,
-            GeographicDefault,
-            Geographic
-        }
     }
 }

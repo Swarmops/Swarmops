@@ -36,6 +36,18 @@ namespace Swarmops.Logic.Support
             return result;
         }
 
+        public static TPlural FromArray (TSingular[] logicObjectArray)
+        {
+            TPlural result = new TPlural {Capacity = logicObjectArray.Length*11/10};
+
+            foreach (TSingular logicObject in logicObjectArray)
+            {
+                result.Add (logicObject);
+            }
+
+            return result;
+        }
+
 
         public static TPlural FromSingle (TSingular singular)
         {

@@ -20,11 +20,59 @@ namespace Swarmops.Frontend.Automation
             JsonPositions rootPositions = new JsonPositions();
             _customCookieClass = "LocalPosition" + Request["Cookie"]; // may be null and that's ok
 
-            Tree<Position> systemPositions = Positions.ForSystem().Tree;
+            PositionLevel level = (PositionLevel) Enum.Parse (typeof (PositionLevel), Request["Level"]); // may throw on invalid param but so what, that's what should happen anyway
 
-            Response.Output.WriteLine(RecursePositionTree (systemPositions.RootNodes));
+            if (level == PositionLevel.SystemWide)
+            {
+                Tree<Position> systemPositions = Positions.ForSystem().Tree;
+                Response.Output.WriteLine (RecursePositionTree (systemPositions.RootNodes));
+                Response.End();
+                return;
+            } 
 
-            Response.End();
+            else if (level == PositionLevel.OrganizationStrategic)
+            {
+                // If this level does not exist yet for this org, create a starting point
+
+                Positions orgStrategicPositions =
+                    Positions.ForOrganization (CurrentOrganization).AtLevel (PositionLevel.OrganizationStrategic);
+
+                if (orgStrategicPositions.Count == 0)
+                {
+                    throw new InvalidOperationException("Positions are not initialized or are missing.");
+                }
+
+                Response.Output.WriteLine(RecursePositionTree(orgStrategicPositions.Tree.RootNodes));
+            }
+
+            else if (level == PositionLevel.OrganizationExecutive)
+            {
+                Positions orgExecutivePositions =
+                    Positions.ForOrganization(CurrentOrganization).AtLevel(PositionLevel.OrganizationExecutive);
+
+                if (orgExecutivePositions.Count == 0)
+                {
+                    throw new InvalidOperationException("Positions are not initialized or are missing.");
+                }
+
+                Response.Output.WriteLine(RecursePositionTree(orgExecutivePositions.Tree.RootNodes));
+
+            }
+
+            else if (level == PositionLevel.GeographyDefault)
+            {
+                Positions positions =
+                    Positions.ForOrganization(CurrentOrganization).AtLevel(PositionLevel.GeographyDefault);
+
+                if (positions.Count == 0)
+                {
+                    throw new InvalidOperationException("Positions are not initialized or are missing.");
+                }
+
+                Response.Output.WriteLine(RecursePositionTree(positions.Tree.RootNodes));  // TODO: turn off assignability!
+
+            }
+
         }
 
         private string RecursePositionTree (List<TreeNode<Position>> positionNodes)
@@ -45,6 +93,11 @@ namespace Swarmops.Frontend.Automation
                 string expires = string.Empty;
                 string action = string.Empty;
                 string assignedName = string.Format("<a positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a> {0}", Resources.Controls.Swarm.Positions_Vacant, _customCookieClass, Resources.Controls.Swarm.Positions_AssignFirstPerson, position.Identity, JavascriptEscape(position.Localized()));
+
+                if (localizedPositionName == null)
+                {
+                    localizedPositionName = @"NULL (" + position.PositionType.ToString() + ")";
+                }
 
                 if (assignments.Count > 0)
                 {

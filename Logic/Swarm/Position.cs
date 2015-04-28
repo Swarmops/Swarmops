@@ -54,14 +54,35 @@ namespace Swarmops.Logic.Swarm
                     "Can only create system-wide positions (e.g. sysadmin) with this organizationless Position.Create() version.");
             }
 
+            // Use more general Create() do to the actual work
+
+            return Create (null, level, createdByPerson, createdByPosition, positionType, positionTitle, volunteerable,
+                overridable, reportsTo, dotReportsTo, minCount, maxCount);
+        }
+
+        public static Position Create(Organization organization, PositionLevel level, Person createdByPerson, Position createdByPosition, PositionType positionType,
+            PositionTitle positionTitle, bool volunteerable, bool overridable, Position reportsTo, Position dotReportsTo,
+            int minCount, int maxCount)
+        {
+            if (level == PositionLevel.Geography)
+            {
+                throw new ArgumentException(
+                    "Cannot use the geographyless creator to create geography-specific positions.");
+            }
+
+            if (organization == null && level != PositionLevel.SystemWide)
+            {
+                throw new ArgumentException("Cannot use null organization with any other level than PositionLevel.SystemWide");
+            }
+
             int positionId = SwarmDb.GetDatabaseForWriting()
                 .CreatePosition(
-                    PositionLevel.SystemWide, 0 /*organizationId*/, 0 /* geographyId */, 0 /*overridesHigherId */,
-                    createdByPerson == null? 0: createdByPerson.Identity, createdByPosition == null? 0: createdByPosition.Identity,
-                    positionType.ToString(), positionTitle.ToString(), 
-                    false /*inheritsDownward*/, volunteerable, overridable, 
-                    reportsTo == null? 0: reportsTo.Identity, 
-                    dotReportsTo == null? 0: dotReportsTo.Identity,
+                    level, organization == null? 0 : organization.Identity, 0 /* geographyId */, 0 /*overridesHigherId */,
+                    createdByPerson == null ? 0 : createdByPerson.Identity, createdByPosition == null ? 0 : createdByPosition.Identity,
+                    positionType.ToString(), positionTitle.ToString(),
+                    false /*inheritsDownward*/, volunteerable, overridable,
+                    reportsTo == null ? 0 : reportsTo.Identity,
+                    dotReportsTo == null ? 0 : dotReportsTo.Identity,
                     minCount, maxCount);
 
             return FromIdentityAggressive(positionId);
