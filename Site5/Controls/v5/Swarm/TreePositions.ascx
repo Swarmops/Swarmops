@@ -26,7 +26,7 @@
 
 	            onLoadSuccess: function () {
 	                $('.LocalAssignPerson.LocalPosition<%=this.Cookie%>').click(function () {
-	                    currentPositionId = $(this).attr("positionId");
+	                    current<%=this.Cookie%>PositionId = $(this).attr("positionId");
 	                    $('#<%= this.ClientID %>_modalPositionName').text(decodeURIComponent($(this).attr("positionName")));
 	                    <%= this.DropPerson.ClientID%>_clear();
 	                    $('#<%= this.DropDuration.ClientID%>').val("12"); // reset to 12-month default
@@ -78,7 +78,7 @@
 	                            $.proxy(function(response) {
 	                                if (response) {
 	                                    // user clicked the GREEN button, which is "confirm termination"
-	                                    onConfirmTermination($(this).attr("assignmentId"));
+	                                    onConfirmTermination<%=this.ClientID%>($(this).attr("assignmentId"));
 	                                } else {
                                         // if cancel termination, restore icon from loader to action icon again
 	                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px.png");
@@ -120,7 +120,7 @@
 
                 SwarmopsJS.ajaxCall(
                     "/Automation/SwarmFunctions.aspx/AssignPosition",
-                    { personId: personId, positionId: currentPositionId, durationMonths: $('#<%= this.DropDuration.ClientID%>').val(), organizationId: 0, geographyId: 0 },
+                    { personId: personId, positionId: current<%=this.Cookie%>PositionId, durationMonths: $('#<%= this.DropDuration.ClientID%>').val(), geographyId: 0 },
                     function (result) {
                         // Close modal and reload grid regardless of success or not
                         // (the only failure here should be a concurrency error, in which case
@@ -138,11 +138,12 @@
 
         });
 
-        function onConfirmTermination(assignmentId) {
+        function onConfirmTermination<%=this.ClientID%> (assignmentId) {
             SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/TerminatePositionAssignment",
                 { assignmentId: assignmentId },
-                function(result) {
+                function (result) {
                     if (result.Success) {
+                        <%= this.DialogAdd.ClientID %>_close();
                         $('#<%=this.ClientID%>_tablePositions').treegrid('reload');
                     } else {
                         alertify.error(result.DisplayMessage);
@@ -150,7 +151,7 @@
                 });
         }
 
-        var currentPositionId = '';
+        var current<%=this.Cookie%>PositionId = '';
 
     </script>
 

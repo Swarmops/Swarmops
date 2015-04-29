@@ -4,6 +4,7 @@ using System.Globalization;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Generics;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
 
@@ -25,6 +26,12 @@ namespace Swarmops.Frontend.Automation
             if (level == PositionLevel.SystemWide)
             {
                 Tree<Position> systemPositions = Positions.ForSystem().Tree;
+
+                if (CurrentAuthority.HasSystemAccess())
+                {
+                    _assignable = true;
+                }
+
                 Response.Output.WriteLine (RecursePositionTree (systemPositions.RootNodes));
                 Response.End();
                 return;
@@ -42,6 +49,11 @@ namespace Swarmops.Frontend.Automation
                     throw new InvalidOperationException("Positions are not initialized or are missing.");
                 }
 
+                if (CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Administration)))
+                {
+                    _assignable = true;
+                }
+
                 Response.Output.WriteLine(RecursePositionTree(orgStrategicPositions.Tree.RootNodes));
             }
 
@@ -53,6 +65,12 @@ namespace Swarmops.Frontend.Automation
                 if (orgExecutivePositions.Count == 0)
                 {
                     throw new InvalidOperationException("Positions are not initialized or are missing.");
+                }
+
+                if (CurrentAuthority.HasAccess(new Access(CurrentOrganization, AccessAspect.Administration)) ||
+                    CurrentAuthority.HasAccess (new Access (CurrentOrganization, Geography.Root, AccessAspect.Administration)))
+                {
+                    _assignable = true;
                 }
 
                 Response.Output.WriteLine(RecursePositionTree(orgExecutivePositions.Tree.RootNodes));
@@ -92,7 +110,17 @@ namespace Swarmops.Frontend.Automation
 
                 string expires = string.Empty;
                 string action = string.Empty;
-                string assignedName = string.Format("<a positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a> {0}", Resources.Controls.Swarm.Positions_Vacant, _customCookieClass, Resources.Controls.Swarm.Positions_AssignFirstPerson, position.Identity, JavascriptEscape(position.Localized()));
+                string assignedName = Resources.Controls.Swarm.Positions_Vacant;
+
+                if (_assignable)
+                {
+                    assignedName =
+                        string.Format (
+                            "<a positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a> {0}",
+                            Resources.Controls.Swarm.Positions_Vacant, _customCookieClass,
+                            Resources.Controls.Swarm.Positions_AssignFirstPerson, position.Identity,
+                            JavascriptEscape (position.Localized()));
+                }
 
                 if (localizedPositionName == null)
                 {
@@ -107,7 +135,14 @@ namespace Swarmops.Frontend.Automation
                     {
                         expires = assignments[0].ExpiresDateTimeUtc.ToString("yyyy-MMM-dd");
                     }
-                    action = String.Format("<img class='LocalIconTerminate {1}' height='18' width='24' {2} assignmentId='{0}' />", assignments[0].Identity, _customCookieClass, assignments[0].PersonId == CurrentUser.Identity? "self='true'": string.Empty);
+                    if (_assignable)
+                    {
+                        action =
+                            String.Format (
+                                "<img class='LocalIconTerminate {1}' height='18' width='24' {2} assignmentId='{0}' />",
+                                assignments[0].Identity, _customCookieClass,
+                                assignments[0].PersonId == CurrentUser.Identity ? "self='true'" : string.Empty);
+                    }
                 }
 
                 string element = string.Format("\"id\":\"{0}-1\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"minMax\":\"{4} / {5}\",\"iconType\":\"{6}\",\"actions\":\"{7}\"", 
@@ -127,7 +162,14 @@ namespace Swarmops.Frontend.Automation
                     elements.Add ("{" + element + "}");
 
                     expires = string.Empty;
-                    action = String.Format("<img class='LocalIconTerminate {1}' height='18' width='24' {2} assignmentId='{0}' />", assignments[assignmentCount].Identity, _customCookieClass, assignments[0].PersonId == CurrentUser.Identity ? "self='true'" : string.Empty);
+                    if (_assignable)
+                    {
+                        action =
+                            String.Format (
+                                "<img class='LocalIconTerminate {1}' height='18' width='24' {2} assignmentId='{0}' />",
+                                assignments[assignmentCount].Identity, _customCookieClass,
+                                assignments[0].PersonId == CurrentUser.Identity ? "self='true'" : string.Empty);
+                    }
 
                     int expireYear = assignments[assignmentCount].ExpiresDateTimeUtc.Year;
                     if (expireYear > 2000 && expireYear < 3000) // as in, "is defined"
@@ -142,9 +184,9 @@ namespace Swarmops.Frontend.Automation
                     assignmentCount++;
                 }
 
-                if (assignmentCount < position.MaxCount || (position.MaxCount == 0 && position.Assignments.Count > 0))
+                if (_assignable && (assignmentCount < position.MaxCount || (position.MaxCount == 0 && position.Assignments.Count > 0)))
                 {
-                    // finally, if the assigned count is less than max count, add a "assign another person" link
+                    // finally, if the assigned count is less than max count, add a "assign another person" link if _assignable is true
 
                     int count = position.Assignments.Count;
                     if (count > 6)
@@ -187,12 +229,9 @@ namespace Swarmops.Frontend.Automation
             return "[" + String.Join(",", elements.ToArray()) + "]";
         }
 
-        private bool HasHiringFiringPrivileges (Position position)
-        {
-            return false;
-        }
-
         private string _customCookieClass;
+        private bool _assignable = false; // TODO: Maybe make this more dynamic later
+
 
         private class JsonPosition
         {

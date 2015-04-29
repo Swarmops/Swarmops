@@ -77,7 +77,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         private void Localize()
         {
-            // TODO
+            this.LabelHeaderStrategic.Text = String.Format(Resources.Pages.Admin.OrgStaffing_Header_StrategicPositions, CurrentOrganization.Name);
+            this.LabelHeaderExecutive.Text = String.Format(Resources.Pages.Admin.OrgStaffing_Header_ExecutivePositions, CurrentOrganization.Name);
+            this.LabelHeaderGeographicDefault.Text = Resources.Pages.Admin.OrgStaffing_Header_LocalDefaultPositions;
+            this.LabelHeaderVolunteers.Text = Resources.Pages.Admin.OrgStaffing_Header_WaitingVolunteers;
+            this.LabelHeaderPayroll.Text = Resources.Pages.Admin.OrgStaffing_Header_Payroll;
         }
 
 

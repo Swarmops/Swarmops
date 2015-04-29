@@ -21,12 +21,11 @@ namespace Swarmops.Frontend.Automation
         }
 
         [WebMethod]
-        public static AjaxCallResult AssignPosition (int personId, int positionId, int durationMonths, int organizationId, int geographyId)
+        public static AjaxCallResult AssignPosition (int personId, int positionId, int durationMonths, int geographyId)
         {
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             Position position = Position.FromIdentity (positionId);
             Person person = Person.FromIdentity (personId);
-            Organization organization = (organizationId == 0 ? null : Organization.FromIdentity (organizationId));
             Geography geography = (geographyId == 0 ? null : Geography.FromIdentity (geographyId));
 
             if ((position.OrganizationId > 0 && authData.CurrentOrganization.Identity != position.OrganizationId) || person.Identity < 0)
@@ -59,7 +58,7 @@ namespace Swarmops.Frontend.Automation
 
             try
             {
-                PositionAssignment.Create (organization, geography, position, person, authData.CurrentUser, currentUserPosition,
+                PositionAssignment.Create (position, geography, person, authData.CurrentUser, currentUserPosition,
                     expiresUtc, string.Empty);
             }
             catch (DatabaseConcurrencyException)

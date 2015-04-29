@@ -187,4 +187,10 @@
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>Terminate Assignment</value>
   </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>(assign under My Organization)</value>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>Create new position...</value>
+  </data>
 </root>

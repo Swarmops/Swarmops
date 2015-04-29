@@ -158,7 +158,7 @@ namespace Swarmops.Logic.Swarm
                 PositionType.Geographic_Deputy, titleType, true, false, localLeader, null, 1, 0);
 
             /*Position localAssistants =*/ Position.Create(organization, PositionLevel.GeographyDefault, null, null,
-                PositionType.Geographic_Assistant, titleType, false, false, localLeader, null, 1, 0);
+                PositionType.Geographic_Assistant, titleType, false, false, localLeader, null, 0, 0);
 
             Position localOutreachLead = Position.Create(organization, PositionLevel.GeographyDefault, null, null,
                 PositionType.Geographic_OutreachLeader, titleType, true, true, localLeader, cmo, 0, 1);

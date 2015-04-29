@@ -89,25 +89,16 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-
-        public PositionAssignment Assign (Person person, Organization organization, Geography geography,
-            Person assignedByPerson, Position assignedByPosition, string assignmentNotes, DateTime? expiresUtc)
+        public PositionAssignment Assign(Person person, Geography geography, Person assignedByPerson, Position assignedByPosition, string assignmentNotes, DateTime? expiresUtc)
         {
-            return PositionAssignment.Create (organization, geography, this, person, assignedByPerson,
-                assignedByPosition, expiresUtc, assignmentNotes);
-        }
-
-        public PositionAssignment Assign(Person person, Geography geography, Person assignedByPerson, Position assignedByPosition,
-            string assignmentNotes, DateTime? expiresUtc)
-        {
-            return PositionAssignment.Create(this.Organization, geography, this, person, assignedByPerson,
+            return PositionAssignment.Create (this, geography, person, assignedByPerson,
                 assignedByPosition, expiresUtc, assignmentNotes);
         }
 
         public PositionAssignment Assign(Person person, Person assignedByPerson, Position assignedByPosition,
             string assignmentNotes, DateTime? expiresUtc)
         {
-            return PositionAssignment.Create(this.Organization, this.Geography, this, person, assignedByPerson,
+            return PositionAssignment.Create(this, null, person, assignedByPerson,
                 assignedByPosition, expiresUtc, assignmentNotes);
         }
 

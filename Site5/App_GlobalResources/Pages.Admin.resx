@@ -200,6 +200,23 @@
   <data name="EditOrganization_VanityDomain" xml:space="preserve">
     <value>Organization Vanity Domain</value>
   </data>
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>Executive Positions For {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Local Builder Positions (At Every Geography)</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>Staff Payroll</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>Strategic Positions For {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>Volunteers Awating Response</value>
+  </data>
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>Admin Notifications From Address</value>
   </data>

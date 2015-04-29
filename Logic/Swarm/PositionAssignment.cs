@@ -51,27 +51,10 @@ namespace Swarmops.Logic.Swarm
             get { return Position.FromIdentity (base.PositionId); }
         }
 
-        public static PositionAssignment Create (Organization organization, Geography geography, Position position,
+        public static PositionAssignment Create(Position position, Geography geography, 
             Person person, Person createdByPerson, Position createdByPosition, DateTime? expiresDateTimeUtc,
             string assignmentNotes)
         {
-            int organizationId = 0;
-
-            if (position.PositionLevel != PositionLevel.OrganizationWideDefaultUnused &&
-                position.PositionLevel != PositionLevel.SystemWide)
-            {
-                organizationId = organization.Identity; // can't be null in these cases
-            }
-            else
-            {
-                if (organization != null)
-                {
-                    // MUST be null in these cases
-
-                    throw new ArgumentException ("Organization cannot be defined when position is systemwide");
-                }
-            }
-
             int geographyId = 0;
 
             if (position.PositionLevel == PositionLevel.Geography)
@@ -92,7 +75,7 @@ namespace Swarmops.Logic.Swarm
             // TODO: Verify constraints of max/min counts for position
 
             int positionAssignmentId = SwarmDb.GetDatabaseForWriting()
-                .CreatePositionAssignment (organizationId, geographyId, position.Identity, person.Identity,
+                .CreatePositionAssignment (position.OrganizationId, geographyId, position.Identity, person.Identity,
                     createdByPersonId, createdByPositionId,
                     expiresDateTimeUtc == null ? DateTime.MaxValue : (DateTime) expiresDateTimeUtc, assignmentNotes);
 

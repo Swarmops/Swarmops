@@ -120,11 +120,23 @@
   <data name="Position_Executive_CeoAssistant" xml:space="preserve">
     <value>CEO Assistant</value>
   </data>
+  <data name="Position_Executive_CeoAssistant_Nonprofit" xml:space="preserve">
+    <value>Secretary General Assistant</value>
+  </data>
+  <data name="Position_Executive_CeoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Secretary General Assistants</value>
+  </data>
   <data name="Position_Executive_CeoAssistant_Plural" xml:space="preserve">
     <value>CEO Assistants</value>
   </data>
   <data name="Position_Executive_CfoAssistant" xml:space="preserve">
     <value>CFO Assistant</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Nonprofict" xml:space="preserve">
+    <value>Financial Assistant</value>
+  </data>
+  <data name="Position_Executive_CfoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Financial Assistants</value>
   </data>
   <data name="Position_Executive_CfoAssistant_Plural" xml:space="preserve">
     <value>CFO Assistants</value>
@@ -132,11 +144,20 @@
   <data name="Position_Executive_ChiefExecutiveOfficer" xml:space="preserve">
     <value>Chief Executive Officer</value>
   </data>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Nonprofit" xml:space="preserve">
+    <value>Secretary General</value>
+  </data>
   <data name="Position_Executive_ChiefFinancialOfficer" xml:space="preserve">
     <value>Chief Financial Officer</value>
   </data>
+  <data name="Position_Executive_ChiefFinancialOfficer_Nonprofit" xml:space="preserve">
+    <value>Treasurer</value>
+  </data>
   <data name="Position_Executive_ChiefHrOfficer" xml:space="preserve">
     <value>Chief Human Resources Officer</value>
+  </data>
+  <data name="Position_Executive_ChiefHrOfficer_Nonprofit" xml:space="preserve">
+    <value>Chief Community Officer</value>
   </data>
   <data name="Position_Executive_ChiefInformationOfficer" xml:space="preserve">
     <value>Chief Information Officer</value>
@@ -144,8 +165,14 @@
   <data name="Position_Executive_ChiefMarketingOfficer" xml:space="preserve">
     <value>Chief Marketing Officer</value>
   </data>
+  <data name="Position_Executive_ChiefMarketingOfficer_Nonprofit" xml:space="preserve">
+    <value>Chief Outreach Officer</value>
+  </data>
   <data name="Position_Executive_ChiefOperationsOfficer" xml:space="preserve">
     <value>Chief Operations Officer</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Nonprofit" xml:space="preserve">
+    <value>Chief Activism Officer</value>
   </data>
   <data name="Position_Executive_ChiefStaff" xml:space="preserve">
     <value>Chief of Staff</value>
@@ -156,11 +183,23 @@
   <data name="Position_Executive_HrAssistant" xml:space="preserve">
     <value>Human Resources Assistant</value>
   </data>
+  <data name="Position_Executive_HrAssistant_Nonprofit" xml:space="preserve">
+    <value>Community Assistant</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Community Assistants</value>
+  </data>
   <data name="Position_Executive_HrAssistant_Plural" xml:space="preserve">
     <value>Human Resources Assistants</value>
   </data>
   <data name="Position_Executive_MarketingAssistant" xml:space="preserve">
     <value>Marketing Assistant</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Nonprofit" xml:space="preserve">
+    <value>Outreach Assistant</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Outreach Assistants</value>
   </data>
   <data name="Position_Executive_MarketingAssistant_Plural" xml:space="preserve">
     <value>Marketing Assistants</value>
