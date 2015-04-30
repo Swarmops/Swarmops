@@ -262,8 +262,6 @@ namespace Swarmops.Pages.Security
                     Person authenticatedPerson = Authentication.Authenticate (credentialsLogin,
                         credentialsPass);
 
-                    // TODO: Determine last logged-on organization. Right now, log on to Sandbox.
-
                     int lastOrgId = authenticatedPerson.LastLogonOrganizationId;
 
                     if (PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE) && (lastOrgId == 3 || lastOrgId == 0))
@@ -276,7 +274,10 @@ namespace Swarmops.Pages.Security
                         lastOrgId = Organization.SandboxIdentity;
                     }
 
-                    if (!authenticatedPerson.MemberOfWithInherited (lastOrgId))
+                    Authority testAuthority = Authority.FromLogin (authenticatedPerson,
+                        Organization.FromIdentity (lastOrgId));
+
+                    if (!authenticatedPerson.MemberOfWithInherited (lastOrgId) && !testAuthority.HasSystemAccess (AccessType.Read))
                     {
                         // If the person doesn't have access to the last organization (anymore), log on to Sandbox
                         // unless first pilot, in which case throw (deny login)
