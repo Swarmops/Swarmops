@@ -65,6 +65,14 @@ namespace Swarmops.Logic.Structure
 
         public static readonly int IgnoreGeography = -1; // Used as parameter to methods where geography is optional
 
+        public Tree<Geography> Tree
+        {
+            get
+            {
+                Geographies geographies = this.ThisAndBelow();
+                return Tree<Geography>.FromCollection (geographies);
+            }
+        }
 
         public Geographies Children
         {
@@ -87,7 +95,7 @@ namespace Swarmops.Logic.Structure
             get { return FromIdentity (ParentIdentity); }
         }
 
-        public Geographies GetAllBelow()
+        public Geographies ThisAndBelow()
         {
             return Geographies.FromArray (GeographyCache.GetGeographyTree (Identity));
             // return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyTree(Identity));

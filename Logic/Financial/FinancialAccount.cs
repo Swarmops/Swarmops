@@ -418,9 +418,9 @@ namespace Swarmops.Logic.Financial
             return FromIdentityAggressive (accountId);
         }
 
-        public FinancialAccounts GetAllBelow()
+        public FinancialAccounts ThisAndBelow()
         {
-            return FinancialAccounts.GetAllBelow (this);
+            return FinancialAccounts.ThisAndBelow (this);
         }
     }
 }

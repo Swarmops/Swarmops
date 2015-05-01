@@ -15,10 +15,10 @@ namespace Swarmops.Logic.DataObjects
 #endif
         public static GeographyWithPeople[] SelectSortedStatic (int orgId)
         {
-            Organizations orgs = Organization.FromIdentity (orgId).GetAllBelow();
+            Organizations orgs = Organization.FromIdentity (orgId).ThisAndBelow();
 
             List<GeographyWithPeople> resList = new List<GeographyWithPeople>();
-            Geographies tree = Geography.Root.GetAllBelow();
+            Geographies tree = Geography.Root.ThisAndBelow();
             foreach (Geography geo in tree)
             {
                 GeographyWithPeople row = new GeographyWithPeople();
@@ -29,7 +29,7 @@ namespace Swarmops.Logic.DataObjects
                 row.LeadContent = "";
                 row.SecondsContent = "";
                 row.OrgId = orgId;
-                Geographies gTree = geo.GetAllBelow();
+                Geographies gTree = geo.ThisAndBelow();
                 int[] members = SwarmDb.GetDatabaseForReading()
                     .GetMembersForOrganizationsAndGeographies (orgs.Identities, gTree.Identities);
             }

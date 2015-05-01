@@ -92,10 +92,10 @@ namespace Swarmops.Logic.Swarm
             Organizations orgTree = null;
             Geographies nodeTree = null;
             int[] nodeIds;
-            orgTree = Organization.FromIdentity (organizationId).GetAllBelow();
+            orgTree = Organization.FromIdentity (organizationId).ThisAndBelow();
             if (geographyId > 0)
             {
-                nodeTree = Geography.FromIdentity (geographyId).GetAllBelow();
+                nodeTree = Geography.FromIdentity (geographyId).ThisAndBelow();
                 nodeIds = nodeTree.Identities;
             }
             else
@@ -137,12 +137,12 @@ namespace Swarmops.Logic.Swarm
             int[] nodeIds;
             int[] orgIds;
 
-            orgTree = Organization.FromIdentity (organizationId).GetAllBelow();
+            orgTree = Organization.FromIdentity (organizationId).ThisAndBelow();
             orgIds = orgTree.Identities;
 
             if (geographyId > 0)
             {
-                nodeTree = Geography.FromIdentity (geographyId).GetAllBelow();
+                nodeTree = Geography.FromIdentity (geographyId).ThisAndBelow();
                 nodeIds = nodeTree.Identities;
             }
             else
@@ -235,8 +235,8 @@ namespace Swarmops.Logic.Swarm
 
             // Expensive op:
             BasicPersonRole[] basicPersonRoles =
-                SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies (organization.GetAllBelow().Identities,
-                    geography.GetAllBelow().Identities);
+                SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies (organization.ThisAndBelow().Identities,
+                    geography.ThisAndBelow().Identities);
 
             Dictionary<int, bool> lookup = new Dictionary<int, bool>();
             foreach (BasicPersonRole basicRole in basicPersonRoles)

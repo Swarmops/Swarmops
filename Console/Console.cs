@@ -342,7 +342,7 @@ namespace Swarmops
 
             writer.WriteLine("Förening,Namn (medlemsnr),kön,födelsedatum,bidragsgrund,email,telefon");
 
-            Organizations orgTree = Organization.FromIdentity(2).GetAllBelow();
+            Organizations orgTree = Organization.FromIdentity(2).ThisAndBelow();
 
             foreach (Organization org in orgTree)
             {
@@ -905,11 +905,11 @@ namespace Swarmops
 		{
 			// For each suborg to UP,
 
-			Organizations orgs = Organization.FromIdentity (2).GetAllBelow();
+			Organizations orgs = Organization.FromIdentity (2).ThisAndBelow();
 
 			foreach (Organization org in orgs)
 			{
-				// For each membership in this suborg,
+				// For each membership in this suborg,§
 
 				Memberships memberships = org.GetMemberships();
 

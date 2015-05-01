@@ -329,7 +329,7 @@ namespace Swarmops.Logic.Security
 
             // Org lookup will always be needed. Geo lookup may be needed for case 3.
 
-            Organizations orgStructure = this.Organization.GetAllBelow();
+            Organizations orgStructure = this.Organization.ThisAndBelow();
             int[] orgIds = orgStructure.Identities;
             foreach (int orgId in orgIds)
             {
@@ -395,7 +395,7 @@ namespace Swarmops.Logic.Security
                 return new People(); // also return empty list
             }
 
-            Geographies geoStructure = this.Position.Geography.GetAllBelow();
+            Geographies geoStructure = this.Position.Geography.ThisAndBelow();
             int[] geoIds = geoStructure.Identities;
             foreach (int geoId in geoIds)
             {

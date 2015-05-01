@@ -143,7 +143,7 @@ namespace Swarmops.Logic.Structure
 
             foreach (Organization orgMajor in this)
             {
-                Organizations orgTree = orgMajor.GetAllBelow();
+                Organizations orgTree = orgMajor.ThisAndBelow();
 
                 foreach (Organization orgMinor in orgTree)
                 {

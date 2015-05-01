@@ -19,7 +19,7 @@ namespace Swarmops.Utility.BotCode
 
         public static string ExportMemberList (int organizationIdRoot, DateTime membersAfter, DateTime membersBefore)
         {
-            Organizations orgs = Organization.FromIdentity (organizationIdRoot).GetAllBelow();
+            Organizations orgs = Organization.FromIdentity (organizationIdRoot).ThisAndBelow();
             StringBuilder result = new StringBuilder();
 
             result.Append (

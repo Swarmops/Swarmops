@@ -8,6 +8,7 @@ using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Structure;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Generics;
 using Swarmops.Database;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Communications;
@@ -191,6 +192,14 @@ namespace Swarmops.Logic.Structure
             get { return Organizations.FromArray (OrganizationCache.GetOrganizationChildren (Identity)); }
         }
 
+        public Tree<Organization> Tree
+        {
+            get
+            {
+                Organizations orgs = this.ThisAndBelow();
+                return Tree<Organization>.FromCollection (orgs);
+            }
+        }
 
         public OrganizationFinancialAccounts FinancialAccounts
         {

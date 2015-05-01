@@ -129,7 +129,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
                         geoNameLookup[countryCode] = countryGeoId;
                     }
 
-                    Geographies countryGeographies = Geography.FromIdentity(countryGeoId).GetAllBelow();
+                    Geographies countryGeographies = Geography.FromIdentity(countryGeoId).ThisAndBelow();
 
                     foreach (Geography geography in countryGeographies)
                     {
