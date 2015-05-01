@@ -84,6 +84,15 @@ namespace Swarmops.Common.Generics
             Data = data;
         }
 
+        public void AddChild (TNode newChild)
+        {
+            TreeNode<TNode> newNode = new TreeNode<TNode>(newChild);
+            newNode.Parent = this;
+            newNode.Children = new List<TreeNode<TNode>>(); // should not be necessary
+
+            Children.Add (newNode);
+        }
+
         public TNode Data;
         public List<TreeNode<TNode>> Children;
         public TreeNode<TNode> Parent;

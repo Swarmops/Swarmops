@@ -47,16 +47,18 @@
             </MainMenuItem>
 
             <MainMenuItem>
-                <UserLevel>3</UserLevel>
+                <UserLevel>2</UserLevel>
                 <Type>Separator</Type>
                 <Children />
             </MainMenuItem>
 
             <MainMenuItem>
-                <ResourceKey>People_RolesResponsibilities</ResourceKey>
-                <UserLevel>3</UserLevel>
+                <ResourceKey>People_MyLocalOrganization</ResourceKey>
+                <UserLevel>1</UserLevel>
                 <Permissions />
-                <Type>Disabled</Type>
+                <Type>Link</Type>
+                <ImageUrl>iconshock-three-buildings</ImageUrl>
+                <NavigateUrl>/Pages/v5/Swarm/LocalOrganization.aspx</NavigateUrl>
                 <Children />
             </MainMenuItem>
         

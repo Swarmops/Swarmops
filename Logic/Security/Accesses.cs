@@ -87,7 +87,7 @@ namespace Swarmops.Logic.Security
         Null,
 
         /// <summary>
-        ///     Uniquely identified person (logged on) in a specific org. Write access means they can submit expense reports on their own behalf &c.
+        ///     Uniquely identified person (logged on) in a specific org. Write access means they can submit expense reports on their own behalf etc.
         /// </summary>
         Participant,
 

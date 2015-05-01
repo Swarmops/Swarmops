@@ -55,7 +55,7 @@ namespace Swarmops.Basic.Types.Swarm
         public int PositionId { get; private set; }
         public PositionLevel PositionLevel { get; private set; }
         public int OrganizationId { get; private set; }
-        public int GeographyId { get; private set; }
+        public int GeographyId { get; protected set; }
         public int OverridesHigherPositionId { get; protected set; }
 
         public int CreatedByPersonId { get; private set; }

@@ -25,6 +25,55 @@ namespace Swarmops.Logic.Swarm
             return FromArray (SwarmDb.GetDatabaseForReading().GetPositions (organization));
         }
 
+        public static Tree<Position> ForOrganizationGeography (Organization organization, Geography geography)
+        {
+            Positions result = new Positions();
+            string localizedLeaderTitle = null;
+            Position geographyLeaderTemplate = null;
+
+            if (geography.Identity == Geography.RootIdentity)
+            {
+                result = ForOrganization (organization).AtLevel (PositionLevel.OrganizationExecutive);
+            }
+            else
+            {
+                result = ForOrganization (organization).AtLevel (PositionLevel.GeographyDefault);
+                localizedLeaderTitle = result.Tree.RootNodes[0].Data.Localized(); // indexer will throw if no root nodes exist
+                geographyLeaderTemplate = result.Tree.RootNodes[0].Data;
+
+                // TODO: Apply custom geographic positions from executive level downward
+            }
+            foreach (Position geoPosition in result)
+            {
+                geoPosition.AssignGeography (geography); // used for template geographies
+            }
+
+            if (localizedLeaderTitle == null)
+            {
+                geographyLeaderTemplate =
+                    ForOrganization (organization).AtLevel (PositionLevel.GeographyDefault).Tree.RootNodes[0].Data;
+                localizedLeaderTitle = geographyLeaderTemplate.Localized();
+            }
+
+            // Add leader positions of the geographies immediately below (in X generations?).
+
+            Tree<Position> treeResult = result.Tree;
+
+            Geographies children = geography.Children;
+
+            foreach (Geography childGeo in children)
+            {
+                // Create copies of the leader position and use as templates for the children
+
+                Position childPosition = Position.FromBasic (geographyLeaderTemplate);
+                childPosition.AssignGeography (childGeo);
+
+                treeResult.RootNodes[0].AddChild (childPosition);
+            }
+
+            return treeResult;
+        }
+
         public Positions AtLevel (PositionLevel level)
         {
             return FromArray (this.Where (position => position.PositionLevel == level).ToArray());

@@ -24,10 +24,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // HACK: The organization part must be removed once proper access control is in place
-            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.System, AccessType.Write);
-            this.PageTitle = Resources.Pages.Admin.SystemSettings_PageTitle;
-            this.InfoBoxLiteral = Resources.Pages.Admin.SystemSettings_Info;
+            this.PageAccessRequired = new Access(this.CurrentOrganization, AccessAspect.Administration, AccessType.Read);
+            this.PageTitle = Resources.Pages.Admin.OrgStaffing_PageTitle;
+            this.InfoBoxLiteral = Resources.Pages.Admin.OrgStaffing_Info;
 
             if (!Page.IsPostBack)
             {

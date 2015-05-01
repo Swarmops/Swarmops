@@ -217,6 +217,12 @@
   <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
     <value>Volunteers Awating Response</value>
   </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>Set the staffing structure for this organization, as well as its staffing at the strategic (board) and executive (C-level or equivalent) levels. You can also manage waiting volunteers and the payroll from here.</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>Organization Staffing</value>
+  </data>
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>Admin Notifications From Address</value>
   </data>

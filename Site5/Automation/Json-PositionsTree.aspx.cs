@@ -91,6 +91,20 @@ namespace Swarmops.Frontend.Automation
 
             }
 
+            else if (level == PositionLevel.Geography)
+            {
+                _geographyId = Convert.ToInt32 (Request["GeographyId"]);
+                Geography geography = Geography.FromIdentity (_geographyId);
+
+                if (CurrentAuthority.HasAccess (new Access (CurrentOrganization, AccessAspect.Administration)))
+                {
+                    _assignable = true;
+                }
+
+                Tree<Position> positions = Positions.ForOrganizationGeography (CurrentOrganization, geography);
+                Response.Output.WriteLine (RecursePositionTree (positions.RootNodes));
+
+            }
         }
 
         private string RecursePositionTree (List<TreeNode<Position>> positionNodes)
@@ -107,6 +121,11 @@ namespace Swarmops.Frontend.Automation
                 Position position = positionNode.Data;
                 string localizedPositionName = position.Localized (positionNode.Data.MaxCount != 1);
                 PositionAssignments assignments = position.Assignments;
+
+                if (position.GeographyId != _geographyId)
+                {
+                    localizedPositionName += " (" + position.Geography.Name + ")";
+                }
 
                 string expires = string.Empty;
                 string action = string.Empty;
@@ -231,6 +250,7 @@ namespace Swarmops.Frontend.Automation
 
         private string _customCookieClass;
         private bool _assignable = false; // TODO: Maybe make this more dynamic later
+        private int _geographyId;
 
 
         private class JsonPosition
