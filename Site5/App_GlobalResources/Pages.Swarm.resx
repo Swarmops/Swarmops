@@ -176,11 +176,17 @@
   <data name="ListFindPeople_TooManyHits" xml:space="preserve">
     <value>The result set contains over a thousand people (display limited to a thousand). Please refine your search?</value>
   </data>
+  <data name="LocalOrganization_Header" xml:space="preserve">
+    <value>Local Organization ({0})</value>
+  </data>
+  <data name="LocalOrganization_HeaderGlobal" xml:space="preserve">
+    <value>The Global Organization</value>
+  </data>
   <data name="LocalOrganization_Info" xml:space="preserve">
     <value>These are your local contacts. (If you have administrative privileges, you may also assign people to these positions.)</value>
   </data>
   <data name="LocalOrganization_PageTitle" xml:space="preserve">
-    <value>My Local Organization ({0})</value>
+    <value>My Local Organization</value>
     <comment>The {0} is the geography name.</comment>
   </data>
   <data name="Positions_AssignPerson" xml:space="preserve">

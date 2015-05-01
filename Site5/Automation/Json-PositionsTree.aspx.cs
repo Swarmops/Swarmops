@@ -121,10 +121,12 @@ namespace Swarmops.Frontend.Automation
                 Position position = positionNode.Data;
                 string localizedPositionName = position.Localized (positionNode.Data.MaxCount != 1);
                 PositionAssignments assignments = position.Assignments;
+                string nodeState = "open";
 
                 if (position.GeographyId != _geographyId)
                 {
-                    localizedPositionName += " (" + position.Geography.Name + ")";
+                    localizedPositionName += " " + position.Geography.Name;
+                    nodeState = "closed";
                 }
 
                 string expires = string.Empty;
@@ -135,10 +137,10 @@ namespace Swarmops.Frontend.Automation
                 {
                     assignedName =
                         string.Format (
-                            "<a positionId='{3}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a> {0}",
+                            "<a positionId='{3}' geographyId='{5}' positionName='{4}' class='{1} LocalAssignPerson'>{2}</a> {0}",
                             Resources.Controls.Swarm.Positions_Vacant, _customCookieClass,
                             Resources.Controls.Swarm.Positions_AssignFirstPerson, position.Identity,
-                            JavascriptEscape (position.Localized()));
+                            JavascriptEscape(position.Localized()), position.GeographyId);
                 }
 
                 if (localizedPositionName == null)
@@ -164,11 +166,11 @@ namespace Swarmops.Frontend.Automation
                     }
                 }
 
-                string element = string.Format("\"id\":\"{0}-1\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"minMax\":\"{4} / {5}\",\"iconType\":\"{6}\",\"actions\":\"{7}\"", 
+                string element = string.Format("\"id\":\"{0}-1-{8}\",\"positionTitle\":\"{1}\",\"assignedName\":\"{2}\",\"expires\":\"{3}\",\"minMax\":\"{4} / {5}\",\"iconType\":\"{6}\",\"actions\":\"{7}\"", 
                     position.Identity, JsonSanitize (localizedPositionName), JsonSanitize (assignedName), JsonSanitize (expires), position.MinCount, 
                     position.MaxCount == 0? @"&infin;" : position.MaxCount.ToString(CultureInfo.InvariantCulture),
                     position.MaxCount == 1? "Person" : "Group",
-                    action);
+                    action, position.GeographyId);
 
                 // TODO: Add all assignments after the first one right here
 
@@ -226,9 +228,9 @@ namespace Swarmops.Frontend.Automation
                     elements.Add ("{" + element + "}");
                     string addPerson =
                         string.Format (
-                            "<a positionId='{1}' positionName='{2}' class='{3} LocalAssignPerson'>{0}</a>",
+                            "<a positionId='{1}' geographyId='{4}' positionName='{2}' class='{3} LocalAssignPerson'>{0}</a>",
                             overEngineeredAssignmentPrompts[count], position.Identity,
-                            JavascriptEscape (position.Localized()), _customCookieClass);
+                            JavascriptEscape (position.Localized()), _customCookieClass, position.GeographyId);
 
                     element =
                         String.Format(
@@ -237,9 +239,9 @@ namespace Swarmops.Frontend.Automation
 
                 }
 
-                if (position.Children.Count > 0)  // This should only trigger when position.MaxCount is also 1, or a very weird UI will result
+                if (positionNode.Children.Count > 0)  // This should only trigger when position.MaxCount is also 1, or a very weird UI will result
                 {
-                    element += ",\"state\":\"open\",\"children\":" + RecursePositionTree(positionNode.Children);
+                    element += ",\"state\":\"" + nodeState + "\",\"children\":" + RecursePositionTree(positionNode.Children);
                 }
 
                 elements.Add("{" + element + "}");

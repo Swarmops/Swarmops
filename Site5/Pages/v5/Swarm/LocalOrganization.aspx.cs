@@ -50,6 +50,15 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
                 }
             }
 
+            if (displayGeography.Identity == Geography.RootIdentity)
+            {
+                this.LabelHeaderLocal.Text = Resources.Pages.Swarm.LocalOrganization_HeaderGlobal;
+            }
+            else
+            {
+                this.LabelHeaderLocal.Text = String.Format(Resources.Pages.Swarm.LocalOrganization_Header, displayGeography.Name);
+            }
+
             this.TreePositions.GeographyId = displayGeography.Identity;
 
         }
@@ -59,7 +68,6 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
         private void Localize()
         {
-            this.LabelHeaderLocal.Text = Resources.Pages.Swarm.LocalOrganization_PageTitle;
         }
 
 

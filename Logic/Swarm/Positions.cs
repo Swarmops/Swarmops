@@ -55,23 +55,30 @@ namespace Swarmops.Logic.Swarm
                 localizedLeaderTitle = geographyLeaderTemplate.Localized();
             }
 
-            // Add leader positions of the geographies immediately below (in X generations?).
+            // Add leader positions of the geographies immediately below (in two generations).
 
             Tree<Position> treeResult = result.Tree;
 
-            Geographies children = geography.Children;
+            Tree<Geography> geoTree = geography.Tree;
 
-            foreach (Geography childGeo in children)
-            {
-                // Create copies of the leader position and use as templates for the children
-
-                Position childPosition = Position.FromBasic (geographyLeaderTemplate);
-                childPosition.AssignGeography (childGeo);
-
-                treeResult.RootNodes[0].AddChild (childPosition);
-            }
+            ForOrganizationGeographyRecurse (geoTree.RootNodes[0], treeResult.RootNodes[0], geographyLeaderTemplate, 2);
 
             return treeResult;
+        }
+
+        private static void ForOrganizationGeographyRecurse (TreeNode<Geography> geoNode, TreeNode<Position> positionNode, Position positionTemplate, int generation)
+        {
+            if (generation <= 0)
+            {
+                return;
+            }
+
+            foreach (TreeNode<Geography> geographyChildNode in geoNode.Children)
+            {
+                positionTemplate.AssignGeography (geographyChildNode.Data);
+                TreeNode<Position> newPositionNode = positionNode.AddChild (Position.FromBasic(positionTemplate)); // "FromBasic" creates a deep copy
+                ForOrganizationGeographyRecurse (geographyChildNode, newPositionNode, positionTemplate, generation - 1);
+            }
         }
 
         public Positions AtLevel (PositionLevel level)

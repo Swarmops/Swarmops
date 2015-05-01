@@ -1,6 +1,7 @@
 using System;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
+using Swarmops.Common.Generics;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -89,6 +90,14 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public Tree<FinancialAccount> Tree
+        {
+            get
+            {
+                FinancialAccounts accounts = this.ThisAndBelow();
+                return Tree<FinancialAccount>.FromCollection (accounts);
+            }
+        }
 
 
 
