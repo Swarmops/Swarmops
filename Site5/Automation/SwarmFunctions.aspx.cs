@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
@@ -27,6 +28,12 @@ namespace Swarmops.Frontend.Automation
             Position position = Position.FromIdentity (positionId);
             Person person = Person.FromIdentity (personId);
             Geography geography = (geographyId == 0 ? null : Geography.FromIdentity (geographyId));
+
+            if (position.PositionLevel == PositionLevel.Geography ||
+                position.PositionLevel == PositionLevel.GeographyDefault)
+            {
+                position.AssignGeography (geography);
+            }
 
             if ((position.OrganizationId > 0 && authData.CurrentOrganization.Identity != position.OrganizationId) || person.Identity < 0)
             {
@@ -179,6 +186,15 @@ namespace Swarmops.Frontend.Automation
                 Avatar16Url = person.GetSecureAvatarLink (16),
                 Avatar24Url = person.GetSecureAvatarLink (24)
             };
+        }
+
+        [WebMethod]
+        public static AjaxCallResult GetGeographyName (int geographyId)
+        {
+            // This is not sensitive, so no access control, just culture setting
+
+            GetAuthenticationDataAndCulture();
+            return new AjaxCallResult {Success = true, DisplayMessage = Geography.FromIdentity (geographyId).Name};
         }
     }
 }

@@ -86,6 +86,7 @@ namespace Swarmops.Frontend.Automation
                 {
                     throw new InvalidOperationException("Positions are not initialized or are missing.");
                 }
+                _displayAssignments = false; // Suppresses assignment lookup, which would fail for default positions
 
                 Response.Output.WriteLine(RecursePositionTree(positions.Tree.RootNodes));  // TODO: turn off assignability!
 
@@ -120,7 +121,7 @@ namespace Swarmops.Frontend.Automation
             {
                 Position position = positionNode.Data;
                 string localizedPositionName = position.Localized (positionNode.Data.MaxCount != 1);
-                PositionAssignments assignments = position.Assignments;
+                PositionAssignments assignments = new PositionAssignments();
                 string nodeState = "open";
 
                 if (position.GeographyId != _geographyId)
@@ -131,7 +132,13 @@ namespace Swarmops.Frontend.Automation
 
                 string expires = string.Empty;
                 string action = string.Empty;
-                string assignedName = Resources.Controls.Swarm.Positions_Vacant;
+                string assignedName = string.Empty;
+
+                if (_displayAssignments)
+                {
+                    assignments = position.Assignments;
+                    assignedName = Resources.Controls.Swarm.Positions_Vacant;
+                }
 
                 if (_assignable)
                 {
@@ -252,6 +259,7 @@ namespace Swarmops.Frontend.Automation
 
         private string _customCookieClass;
         private bool _assignable = false; // TODO: Maybe make this more dynamic later
+        private bool _displayAssignments = true;
         private int _geographyId;
 
 

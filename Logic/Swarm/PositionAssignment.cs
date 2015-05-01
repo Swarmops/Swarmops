@@ -57,7 +57,7 @@ namespace Swarmops.Logic.Swarm
         {
             int geographyId = 0;
 
-            if (position.PositionLevel == PositionLevel.Geography)
+            if (position.PositionLevel == PositionLevel.Geography || position.PositionLevel == PositionLevel.GeographyDefault)
             {
                 geographyId = geography.Identity;
             }

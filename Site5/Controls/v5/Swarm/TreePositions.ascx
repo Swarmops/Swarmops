@@ -26,8 +26,21 @@
 
 	            onLoadSuccess: function () {
 	                $('.LocalAssignPerson.LocalPosition<%=this.Cookie%>').click(function () {
-	                    current<%=this.Cookie%>PositionId = $(this).attr("positionId");
+	                    current<%=this.ClientID%>PositionId = $(this).attr("positionId");
 	                    $('#<%= this.ClientID %>_modalPositionName').text(decodeURIComponent($(this).attr("positionName")));
+	                    $('#<%= this.ClientID %>_modalGeographyName').text('');
+	                    var thisGeographyId = $(this).attr("geographyId");
+	                    current<%=this.ClientID%>GeographyId = '0';
+	                    if (thisGeographyId != '0' && thisGeographyId != '1') {
+	                        current<%=this.ClientID%>GeographyId = thisGeographyId;
+	                        SwarmopsJS.ajaxCall("/Automation/SwarmFunctions.aspx/GetGeographyName",
+	                            { geographyId: thisGeographyId },
+	                            function(result) {
+	                                if (result.Success) {
+	                                    $('#<%= this.ClientID %>_modalGeographyName').text(result.DisplayMessage);
+	                                }
+	                            });
+	                    }
 	                    <%= this.DropPerson.ClientID%>_clear();
 	                    $('#<%= this.DropDuration.ClientID%>').val("12"); // reset to 12-month default
 	                    <%= this.DialogAdd.ClientID %>_open();
@@ -120,7 +133,7 @@
 
                 SwarmopsJS.ajaxCall(
                     "/Automation/SwarmFunctions.aspx/AssignPosition",
-                    { personId: personId, positionId: current<%=this.Cookie%>PositionId, durationMonths: $('#<%= this.DropDuration.ClientID%>').val(), geographyId: 0 },
+                    { personId: personId, positionId: current<%=this.ClientID%>PositionId, durationMonths: $('#<%= this.DropDuration.ClientID%>').val(), geographyId: current<%=this.ClientID%>GeographyId },
                     function (result) {
                         // Close modal and reload grid regardless of success or not
                         // (the only failure here should be a concurrency error, in which case
@@ -151,7 +164,9 @@
                 });
         }
 
-        var current<%=this.Cookie%>PositionId = '';
+        var current<%=this.ClientID%>PositionId = '';
+        var current<%=this.ClientID%>GeographyId = '';
+        var displayed<%=this.ClientID%>GeographyId = '<%=this.GeographyId%>';
 
     </script>
 
