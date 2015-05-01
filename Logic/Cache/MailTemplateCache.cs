@@ -51,7 +51,7 @@ namespace Swarmops.Logic.Cache
         {
             List<BasicMailTemplate> tmplList = GetCachedTemplates (templateName);
 
-            Organizations orgLine = (org != null) ? org.GetLine() : new Organizations();
+            Organizations orgLine = (org != null) ? org.GetRootLineage() : new Organizations();
 
             int[] lineIDs = orgLine.Identities;
             List<int> idlist = new List<int> (lineIDs);

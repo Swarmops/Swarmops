@@ -92,7 +92,7 @@ namespace Swarmops.Logic.Structure
 
             // Build lookup
 
-            Geographies filterLine = topGeography.GetLine();
+            Geographies filterLine = topGeography.GetRootLineage();
             Dictionary<int, bool> lineLookup = new Dictionary<int, bool>();
             foreach (Geography node in filterLine)
             {
@@ -135,7 +135,7 @@ namespace Swarmops.Logic.Structure
 
             foreach (Geography currentNode in this)
             {
-                Geographies currentLine = Geography.FromIdentity (currentNode.GeographyId).GetLine();
+                Geographies currentLine = Geography.FromIdentity (currentNode.GeographyId).GetRootLineage();
 
                 foreach (Geography comparedNode in this)
                 {
@@ -278,7 +278,7 @@ namespace Swarmops.Logic.Structure
                 object testObject = GuidCache.Get(cacheKey);
                 if (testObject == null)
                 {
-                    Geographies geographies = Geography.Root.GetTree();
+                    Geographies geographies = Geography.Root.GetAllBelow();
                     Tree<Geography> geoTree = Tree<Geography>.FromCollection(geographies);
 
                     GuidCache.Set(cacheKey, geoTree);

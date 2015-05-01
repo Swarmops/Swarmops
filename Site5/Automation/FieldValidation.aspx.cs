@@ -105,7 +105,7 @@ namespace Swarmops.Frontend.Automation
                 cityArray.Add (dataPoint);
             }
 
-            Geographies geographies = Country.FromCode (countryCode).Geography.GetTree();
+            Geographies geographies = Country.FromCode (countryCode).Geography.GetAllBelow();
             foreach (Geography geography in geographies)
             {
                 GeographyData dataPoint = new GeographyData

@@ -52,7 +52,7 @@ namespace Swarmops.Utility.BotCode
 
                             // Populate voters, then open for voting
 
-                            Organizations orgTree = poll.Organization.GetTree();
+                            Organizations orgTree = poll.Organization.GetAllBelow();
 
                             Memberships memberships = Memberships.ForOrganizations (orgTree);
 

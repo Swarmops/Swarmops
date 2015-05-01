@@ -87,13 +87,13 @@ namespace Swarmops.Logic.Structure
             get { return FromIdentity (ParentIdentity); }
         }
 
-        public Geographies GetTree()
+        public Geographies GetAllBelow()
         {
             return Geographies.FromArray (GeographyCache.GetGeographyTree (Identity));
             // return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyTree(Identity));
         }
 
-        public Geographies GetLine()
+        public Geographies GetRootLineage()
         {
             return Geographies.FromArray (GeographyCache.GetGeographyLine (Identity));
             //return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyLine(Identity));
@@ -108,7 +108,7 @@ namespace Swarmops.Logic.Structure
         {
             // Returns true if prospectiveParent is a parent of ours.
 
-            Geographies line = GetLine();
+            Geographies line = GetRootLineage();
 
             for (int index = 0; index < line.Count - 1; index++)
             {

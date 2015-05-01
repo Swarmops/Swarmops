@@ -45,7 +45,7 @@ namespace Swarmops.Logic.Structure
             {
                 People members =
                     People.FromMemberships (
-                        Memberships.ForOrganizations (Organization.FromIdentity (orgId).GetTree()));
+                        Memberships.ForOrganizations (Organization.FromIdentity (orgId).GetAllBelow()));
 
                 foreach (Person person in members)
                 {
@@ -88,11 +88,11 @@ namespace Swarmops.Logic.Structure
 
             // Step 3 - add up the totals for every intermediate node (expensive!)
 
-            Geographies allGeographies = Geography.Root.GetTree();
+            Geographies allGeographies = Geography.Root.GetAllBelow();
 
             foreach (Geography geography in allGeographies)
             {
-                Geographies localTree = geography.GetTree();
+                Geographies localTree = geography.GetAllBelow();
                 int voterCount = 0;
                 GeographyOrganizationDataPoint[] tempOrgData = new GeographyOrganizationDataPoint[2]; // HACK
                 tempOrgData[0] = new GeographyOrganizationDataPoint();

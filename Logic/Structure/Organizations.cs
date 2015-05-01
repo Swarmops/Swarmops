@@ -95,7 +95,7 @@ namespace Swarmops.Logic.Structure
 
             foreach (Organization currentOrg in this)
             {
-                Organizations currentLine = currentOrg.GetLine();
+                Organizations currentLine = currentOrg.GetRootLineage();
 
                 foreach (Organization comparedOrg in this)
                 {
@@ -143,7 +143,7 @@ namespace Swarmops.Logic.Structure
 
             foreach (Organization orgMajor in this)
             {
-                Organizations orgTree = orgMajor.GetTree();
+                Organizations orgTree = orgMajor.GetAllBelow();
 
                 foreach (Organization orgMinor in orgTree)
                 {
@@ -372,7 +372,7 @@ namespace Swarmops.Logic.Structure
             }
 
             // For each remaining organization, find the one with the longest organization line.
-            // This is slightly inefficient as the queries for Geography.GetLine() are repeated.
+            // This is slightly inefficient as the queries for Geography.GetRootLineage() are repeated.
 
             if (table.Count == 0)
             {
@@ -391,7 +391,7 @@ namespace Swarmops.Logic.Structure
             {
                 foreach (Geography uptakeGeo in org.UptakeGeographies)
                 {
-                    Geographies geoLine = Geography.FromIdentity (org.AnchorGeographyId).GetLine();
+                    Geographies geoLine = Geography.FromIdentity (org.AnchorGeographyId).GetRootLineage();
                     if (geoLine.Count > maxLength && org.AutoAssignNewMembers)
                     {
                         bestFit = org;
@@ -399,7 +399,7 @@ namespace Swarmops.Logic.Structure
                     }
                     if (geoLine.Count == maxLength && org.AutoAssignNewMembers && bestFit != null)
                     {
-                        if (bestFit.GetLine().Count < org.GetLine().Count)
+                        if (bestFit.GetRootLineage().Count < org.GetRootLineage().Count)
                         {
                             bestFit = org;
                             maxLength = geoLine.Count;

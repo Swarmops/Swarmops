@@ -115,7 +115,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 throw new UnauthorizedAccessException ("A million nopes");
             }
 
-            FinancialAccounts accountTree = account.GetTree();
+            FinancialAccounts accountTree = account.GetAllBelow();
             int year = DateTime.Today.Year;
 
             JsonAccountData result = new JsonAccountData();
@@ -380,7 +380,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     newTreeBudget *= 100; // convert to cents
 
                     int year = DateTime.Today.Year;
-                    FinancialAccounts accountTree = account.GetTree();
+                    FinancialAccounts accountTree = account.GetAllBelow();
                     Int64 currentTreeBudget = accountTree.GetBudgetSumCents (year);
                     Int64 currentSingleBudget = account.GetBudgetCents (year);
                     Int64 suballocatedBudget = currentTreeBudget - currentSingleBudget;

@@ -185,8 +185,8 @@ namespace Swarmops.Utility.BotCode
         {
             // for this person, iterate over all applicable geographies and organizations
 
-            Organizations orgLine = organization.GetLine();
-            Geographies geoLine = person.Geography.GetLine();
+            Organizations orgLine = organization.GetRootLineage();
+            Geographies geoLine = person.Geography.GetRootLineage();
 
             orgLine.Reverse(); // Start at the most local org
 

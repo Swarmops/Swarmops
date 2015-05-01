@@ -49,8 +49,8 @@ namespace Swarmops.Logic.Swarm
         /// <returns>A list of person Ids that hold roles above this point.</returns>
         public static int[] GetAllUpwardRoles (int organizationId, int geographyId, RoleType[] roleTypes)
         {
-            Organizations orgLine = Organization.FromIdentity (organizationId).GetLine();
-            Geographies nodeLine = Geography.FromIdentity (geographyId).GetLine();
+            Organizations orgLine = Organization.FromIdentity (organizationId).GetRootLineage();
+            Geographies nodeLine = Geography.FromIdentity (geographyId).GetRootLineage();
 
             int[] nodeIds = nodeLine.Identities;
 
@@ -92,10 +92,10 @@ namespace Swarmops.Logic.Swarm
             Organizations orgTree = null;
             Geographies nodeTree = null;
             int[] nodeIds;
-            orgTree = Organization.FromIdentity (organizationId).GetTree();
+            orgTree = Organization.FromIdentity (organizationId).GetAllBelow();
             if (geographyId > 0)
             {
-                nodeTree = Geography.FromIdentity (geographyId).GetTree();
+                nodeTree = Geography.FromIdentity (geographyId).GetAllBelow();
                 nodeIds = nodeTree.Identities;
             }
             else
@@ -137,12 +137,12 @@ namespace Swarmops.Logic.Swarm
             int[] nodeIds;
             int[] orgIds;
 
-            orgTree = Organization.FromIdentity (organizationId).GetTree();
+            orgTree = Organization.FromIdentity (organizationId).GetAllBelow();
             orgIds = orgTree.Identities;
 
             if (geographyId > 0)
             {
-                nodeTree = Geography.FromIdentity (geographyId).GetTree();
+                nodeTree = Geography.FromIdentity (geographyId).GetAllBelow();
                 nodeIds = nodeTree.Identities;
             }
             else
@@ -235,8 +235,8 @@ namespace Swarmops.Logic.Swarm
 
             // Expensive op:
             BasicPersonRole[] basicPersonRoles =
-                SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies (organization.GetTree().Identities,
-                    geography.GetTree().Identities);
+                SwarmDb.GetDatabaseForReading().GetRolesForOrganizationsGeographies (organization.GetAllBelow().Identities,
+                    geography.GetAllBelow().Identities);
 
             Dictionary<int, bool> lookup = new Dictionary<int, bool>();
             foreach (BasicPersonRole basicRole in basicPersonRoles)

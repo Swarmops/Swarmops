@@ -312,7 +312,7 @@ namespace Swarmops.Logic.DataObjects
         private static int FindDefaultCountry (Org org)
         {
             //Find default country = Country of anchor.
-            Geographies line = Geography.FromIdentity (org.AnchorGeographyId).GetLine();
+            Geographies line = Geography.FromIdentity (org.AnchorGeographyId).GetRootLineage();
             Geography[] arrLine = line.ToArray();
             Array.Reverse (arrLine);
             Countries countries = Countries.All;

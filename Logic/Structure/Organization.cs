@@ -400,7 +400,7 @@ namespace Swarmops.Logic.Structure
         {
             // Returns true if prospectiveParent is a parent of ours.
 
-            Organizations line = GetLine();
+            Organizations line = GetRootLineage();
 
             for (int index = 0; index < line.Count - 1; index++)
             {
@@ -413,14 +413,14 @@ namespace Swarmops.Logic.Structure
             return false;
         }
 
-        public Organizations GetLine()
+        public Organizations GetRootLineage()
         {
             return Organizations.FromArray (OrganizationCache.GetOrganizationLine (Identity));
 
             //return Organizations.FromArray(SwarmDb.GetDatabaseForReading().GetOrganizationLine(Identity));
         }
 
-        public Organizations GetTree()
+        public Organizations GetAllBelow()
         {
             return Organizations.FromArray (OrganizationCache.GetOrganizationTree (Identity));
             //return Organizations.FromArray(SwarmDb.GetDatabaseForReading().GetOrganizationTree(Identity));
@@ -578,7 +578,7 @@ namespace Swarmops.Logic.Structure
 
                 if (string.IsNullOrEmpty (this.mailPrefixInherited))
                 {
-                    Organizations orgLine = GetLine();
+                    Organizations orgLine = GetRootLineage();
 
                     orgLine.Reverse();
 
@@ -858,7 +858,7 @@ namespace Swarmops.Logic.Structure
 
         public Person GetTreasurer()
         {
-            Organizations line = GetLine();
+            Organizations line = GetRootLineage();
             BasicPersonRole[] treasurers
                 = SwarmDb.GetDatabaseForReading()
                     .GetPeopleWithRoleType (RoleType.OrganizationTreasurer, line.Identities, new int[] {});

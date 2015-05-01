@@ -116,11 +116,11 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public static FinancialAccounts GetTree (FinancialAccount rootAccount)
+        public static FinancialAccounts GetAllBelow (FinancialAccount rootAccount)
         {
             Dictionary<int, FinancialAccounts> nodes = GetHashedAccounts (rootAccount.Organization);
 
-            return GetTree (nodes, rootAccount.Identity, 0);
+            return GetAllBelow (nodes, rootAccount.Identity, 0);
         }
 
 
@@ -140,7 +140,7 @@ namespace Swarmops.Logic.Financial
         }*/
 
 
-        private static FinancialAccounts GetTree (Dictionary<int, FinancialAccounts> accounts, int startNodeId,
+        private static FinancialAccounts GetAllBelow (Dictionary<int, FinancialAccounts> accounts, int startNodeId,
             int generation)
         {
             FinancialAccounts result = new FinancialAccounts();
@@ -155,7 +155,7 @@ namespace Swarmops.Logic.Financial
 
                     // Add recursively
 
-                    FinancialAccounts children = GetTree (accounts, account.Identity, generation + 1);
+                    FinancialAccounts children = GetAllBelow (accounts, account.Identity, generation + 1);
 
                     if (children.Count > 0)
                     {
