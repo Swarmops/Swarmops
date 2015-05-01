@@ -278,7 +278,7 @@ namespace Swarmops.Logic.Structure
                 object testObject = GuidCache.Get(cacheKey);
                 if (testObject == null)
                 {
-                    Geographies geographies = Geography.Root.GetAllBelow();
+                    Geographies geographies = Geography.Root.ThisAndBelow();
                     Tree<Geography> geoTree = Tree<Geography>.FromCollection(geographies);
 
                     GuidCache.Set(cacheKey, geoTree);

@@ -420,7 +420,7 @@ namespace Swarmops.Logic.Structure
             //return Organizations.FromArray(SwarmDb.GetDatabaseForReading().GetOrganizationLine(Identity));
         }
 
-        public Organizations GetAllBelow()
+        public Organizations ThisAndBelow()
         {
             return Organizations.FromArray (OrganizationCache.GetOrganizationTree (Identity));
             //return Organizations.FromArray(SwarmDb.GetDatabaseForReading().GetOrganizationTree(Identity));

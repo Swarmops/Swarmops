@@ -41,14 +41,14 @@ namespace Swarmops.Logic.Swarm
 
         public static int GetCountForGeography (Geography geography)
         {
-            Geographies geographies = geography.GetAllBelow();
+            Geographies geographies = geography.ThisAndBelow();
 
             return SwarmDb.GetDatabaseForReading().GetActivistCountForGeographies (geographies.Identities);
         }
 
         public static Activists FromGeography (Geography geography)
         {
-            Geographies geographies = geography.GetAllBelow();
+            Geographies geographies = geography.ThisAndBelow();
             return new Activists (SwarmDb.GetDatabaseForReading().GetActivistPersonIds (geographies.Identities));
         }
 

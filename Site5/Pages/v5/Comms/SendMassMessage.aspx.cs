@@ -53,8 +53,8 @@ namespace Swarmops.Frontend.Pages.Comms
 
             AuthenticationData authData = GetAuthenticationDataAndCulture();
             Geography geography = Geography.FromIdentity (geographyId);
-            Geographies geoTree = geography.GetAllBelow();
-            Organizations orgTree = authData.CurrentOrganization.GetAllBelow();
+            Geographies geoTree = geography.ThisAndBelow();
+            Organizations orgTree = authData.CurrentOrganization.ThisAndBelow();
 
             switch (recipientTypeId)
             {

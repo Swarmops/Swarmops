@@ -257,7 +257,7 @@ namespace Swarmops.Logic.Swarm
         public static People FromOrganizationAndGeographyWithPattern (Organization organization, Geography geography,
             string pattern)
         {
-            Geographies geoTree = geography.GetAllBelow();
+            Geographies geoTree = geography.ThisAndBelow();
 
             pattern = pattern.Trim();
             if (pattern.Length == 0)
@@ -281,7 +281,7 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromOrganizationAndGeography (Organization organization, Geography geography)
         {
-            Geographies geoTree = geography.GetAllBelow();
+            Geographies geoTree = geography.ThisAndBelow();
 
             // First, get list of people in the geography, then filter on memberships
 
@@ -297,7 +297,7 @@ namespace Swarmops.Logic.Swarm
         {
             // Get the organization tree
 
-            Organizations orgTree = organization.GetAllBelow();
+            Organizations orgTree = organization.ThisAndBelow();
 
             // Build a lookup table of this organization tree. For each person in 'people' 
             // that has at least one membership in an organization in the lookup table,
@@ -344,7 +344,7 @@ namespace Swarmops.Logic.Swarm
 
         public static People FromGeography (int geographyId)
         {
-            Geographies geoTree = Geography.FromIdentity (geographyId).GetAllBelow();
+            Geographies geoTree = Geography.FromIdentity (geographyId).ThisAndBelow();
 
             // First, get list of people in the geography, then filter on memberships
 
