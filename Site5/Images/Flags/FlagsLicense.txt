@@ -1,4 +1,4 @@
-﻿These flags are from GoSquared. MIT License. Files are renamed to [iso2code-pixelsize]px.png. To avoid bloat in the repo, files are only added as required. We're using the "shiny" flavor from the package with 16- and 64-bit versions.
+﻿These flags are from GoSquared. MIT License. Files are renamed to [iso2code-pixelsize]px.png. To avoid bloat in the repo, files are only added as required. We're using the "shiny" flavor from the package with 64px and 24px versions.
 
 URL: https://www.gosquared.com/resources/flag-icons/
 
