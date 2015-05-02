@@ -176,6 +176,19 @@
   <data name="ListFindPeople_TooManyHits" xml:space="preserve">
     <value>crwdns6555534:0crwdne6555534:0</value>
   </data>
+  <data name="LocalOrganization_Header" xml:space="preserve">
+    <value>crwdns6556249:0{0}crwdne6556249:0</value>
+  </data>
+  <data name="LocalOrganization_HeaderGlobal" xml:space="preserve">
+    <value>crwdns6556250:0crwdne6556250:0</value>
+  </data>
+  <data name="LocalOrganization_Info" xml:space="preserve">
+    <value>crwdns6556251:0crwdne6556251:0</value>
+  </data>
+  <data name="LocalOrganization_PageTitle" xml:space="preserve">
+    <value>crwdns6556252:0crwdne6556252:0</value>
+    <comment>The {0} is the geography name.</comment>
+  </data>
   <data name="Positions_AssignPerson" xml:space="preserve">
     <value>crwdns6555818:0crwdne6555818:0</value>
   </data>

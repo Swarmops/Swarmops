@@ -151,6 +151,9 @@
     <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
   </data>
   
+  
+  
+  
   <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
     <value>ترقيم {0}</value>
     <comment>The {0} is the membership, ambassadorship, etc.</comment>
@@ -198,6 +201,13 @@
   <data name="EditOrganization_VanityDomain" xml:space="preserve">
     <value>اسم النطاق الخاص بالمنظمة</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>العنوان المستخدم لمدير النظام في حقل المرسل</value>
   </data>
@@ -213,6 +223,8 @@
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>عنوان الإنترنت الذي يمكن الوصول إليه من الخارج</value>
   </data>
+  
+  
   <data name="SystemSettings_Info" xml:space="preserve">
     <value>الإعدادات التقنية المختلفة لهذا التنصيب من نظام سوارموبس. غير مخصص لأي منظمة أو شخص وهي على مستوى التنصيب ككل.</value>
   </data>

@@ -150,6 +150,15 @@
     <value>crwdns6555029:0{0}crwdne6555029:0</value>
     <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
   </data>
+  <data name="CreateOrganization_Titles" xml:space="preserve">
+    <value>crwdns6556255:0crwdne6556255:0</value>
+  </data>
+  <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
+    <value>crwdns6556256:0crwdne6556256:0</value>
+  </data>
+  <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
+    <value>crwdns6556257:0crwdne6556257:0</value>
+  </data>
   <data name="EditOrganization_Info" xml:space="preserve">
     <value>crwdns6555030:0crwdne6555030:0</value>
   </data>
@@ -200,6 +209,29 @@
   <data name="EditOrganization_VanityDomain" xml:space="preserve">
     <value>crwdns6555795:0crwdne6555795:0</value>
   </data>
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>crwdns6556240:0{0}crwdne6556240:0</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>crwdns6556241:0crwdne6556241:0</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>crwdns6556242:0crwdne6556242:0</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>crwdns6556243:0{0}crwdne6556243:0</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>crwdns6556244:0crwdne6556244:0</value>
+  </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>crwdns6556245:0crwdne6556245:0</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>crwdns6556246:0crwdne6556246:0</value>
+  </data>
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>crwdns6555632:0crwdne6555632:0</value>
   </data>
@@ -214,6 +246,12 @@
   </data>
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>crwdns6555587:0crwdne6555587:0</value>
+  </data>
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>crwdns6556247:0crwdne6556247:0</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>crwdns6556248:0crwdne6556248:0</value>
   </data>
   <data name="SystemSettings_Info" xml:space="preserve">
     <value>crwdns6555588:0crwdne6555588:0</value>

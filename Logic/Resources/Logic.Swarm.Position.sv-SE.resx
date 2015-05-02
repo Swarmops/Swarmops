@@ -117,42 +117,139 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Position_Organization_Auditor" xml:space="preserve">
-    <value>Revisor</value>
+  <data name="Position_Executive_CeoAssistant" xml:space="preserve">
+    <value>VD-assistent</value>
   </data>
-  <data name="Position_Organization_AuditorAssistant" xml:space="preserve">
-    <value>Revisorsassistent</value>
+  <data name="Position_Executive_CeoAssistant_Nonprofit" xml:space="preserve">
+    <value>Generalsekreterarassistent</value>
   </data>
-  <data name="Position_Organization_AuditorAssistant_Plural" xml:space="preserve">
-    <value>Revisorsassistenter</value>
+  <data name="Position_Executive_CeoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Generalsekreterarassistenter</value>
   </data>
-  <data name="Position_Organization_Auditor_Plural" xml:space="preserve">
-    <value>Revisorer</value>
+  <data name="Position_Executive_CeoAssistant_Plural" xml:space="preserve">
+    <value>VD-assistenter</value>
   </data>
-  <data name="Position_Organization_BoardDeputy" xml:space="preserve">
-    <value>Styrelsesuppleant</value>
+  <data name="Position_Executive_CfoAssistant" xml:space="preserve">
+    <value>Ekonomichefsassistent</value>
   </data>
-  <data name="Position_Organization_BoardDeputy_Plural" xml:space="preserve">
-    <value>Styrelsesuppleanter</value>
+  <data name="Position_Executive_CfoAssistant_Nonprofict" xml:space="preserve">
+    <value>Ekonomiassistent</value>
   </data>
-  <data name="Position_Organization_BoardMember" xml:space="preserve">
-    <value>Styrelseledamot</value>
+  <data name="Position_Executive_CfoAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Ekonomiassistenter</value>
   </data>
-  <data name="Position_Organization_BoardMember_Plural" xml:space="preserve">
-    <value>Styrelseledamöter</value>
+  <data name="Position_Executive_CfoAssistant_Plural" xml:space="preserve">
+    <value>Ekonomichefsassistenter</value>
   </data>
-  <data name="Position_Organization_Chairperson" xml:space="preserve">
-    <value>Styrelseordförande</value>
+  <data name="Position_Executive_ChiefExecutiveOfficer" xml:space="preserve">
+    <value>Verkställande Direktör</value>
   </data>
-  <data name="Position_Organization_ChairpersonDeputy" xml:space="preserve">
-    <value>Styrelsens vice ordförande</value>
+  <data name="Position_Executive_ChiefExecutiveOfficer_Nonprofit" xml:space="preserve">
+    <value>Generalsekreterare</value>
   </data>
-  <data name="Position_Organization_ChairpersonDeputy_Plural" xml:space="preserve">
-    <value>Styrelsens vice ordförande</value>
+  <data name="Position_Executive_ChiefFinancialOfficer" xml:space="preserve">
+    <value>Ekonomichef</value>
   </data>
-  <data name="Position_Organization_Chairperson_Plural" xml:space="preserve">
-    <value>Styrelseordförande</value>
+  <data name="Position_Executive_ChiefFinancialOfficer_Nonprofit" xml:space="preserve">
+    <value>Kassör</value>
   </data>
+  <data name="Position_Executive_ChiefHrOfficer" xml:space="preserve">
+    <value>Personalchef</value>
+  </data>
+  
+  <data name="Position_Executive_ChiefInformationOfficer" xml:space="preserve">
+    <value>Informationschef</value>
+  </data>
+  <data name="Position_Executive_ChiefMarketingOfficer" xml:space="preserve">
+    <value>Marknadschef</value>
+  </data>
+  
+  <data name="Position_Executive_ChiefOperationsOfficer" xml:space="preserve">
+    <value>Verksamhetschef</value>
+  </data>
+  <data name="Position_Executive_ChiefOperationsOfficer_Nonprofit" xml:space="preserve">
+    <value>Aktivismchef</value>
+  </data>
+  <data name="Position_Executive_ChiefStaff" xml:space="preserve">
+    <value>Stabschef</value>
+  </data>
+  <data name="Position_Executive_ChiefTechnologyOfficer" xml:space="preserve">
+    <value>Teknikchef</value>
+  </data>
+  <data name="Position_Executive_HrAssistant" xml:space="preserve">
+    <value>Personalassistent</value>
+  </data>
+  
+  
+  
+  <data name="Position_Executive_MarketingAssistant" xml:space="preserve">
+    <value>Marknadsassistent</value>
+  </data>
+  
+  
+  <data name="Position_Executive_MarketingAssistant_Plural" xml:space="preserve">
+    <value>Marknadsassistenter</value>
+  </data>
+  <data name="Position_Executive_President" xml:space="preserve">
+    <value>President</value>
+  </data>
+  <data name="Position_Executive_VicePresident" xml:space="preserve">
+    <value>Vice VD</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Nonprofit" xml:space="preserve">
+    <value>Biträdande generalsekreterare</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Nonprofit_Plural" xml:space="preserve">
+    <value>Biträdande generalsekreterare</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Plural" xml:space="preserve">
+    <value>Vice VD</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Position_Geographic_Deputy" xml:space="preserve">
+    <value>Andreledare</value>
+  </data>
+  <data name="Position_Geographic_Deputy_Plural" xml:space="preserve">
+    <value>Andreledare</value>
+  </data>
+  
+  
+  
+  <data name="Position_Geographic_Leader" xml:space="preserve">
+    <value>Ledare</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
     <value>Systemadministratörsassistent (endast läsrättighet)</value>
   </data>

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CentralEurope" xml:space="preserve">
-    <value>Centraleuropa</value>
-  </data>
   <data name="Country_DK" xml:space="preserve">
     <value>Danmark</value>
   </data>
@@ -137,71 +134,5 @@
   </data>
   <data name="Country_SE" xml:space="preserve">
     <value>Sverige</value>
-  </data>
-  <data name="EasternEurope" xml:space="preserve">
-    <value>Östeuropa</value>
-  </data>
-  <data name="Europe" xml:space="preserve">
-    <value>Europa</value>
-  </data>
-  <data name="Microstates" xml:space="preserve">
-    <value>Mikrostater</value>
-    <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
-  </data>
-  <data name="Nordics" xml:space="preserve">
-    <value>Norden</value>
-    <comment>(Finland Denmark Norway Sweden Iceland)</comment>
-  </data>
-  <data name="NorthernEurope" xml:space="preserve">
-    <value>Nordeuropa</value>
-  </data>
-  <data name="SouthernEurope" xml:space="preserve">
-    <value>Sydeuropa</value>
-  </data>
-  <data name="USA_EastNorthCentral" xml:space="preserve">
-    <value>Östra norra centralregionen</value>
-  </data>
-  <data name="USA_EastSouthCentral" xml:space="preserve">
-    <value>Östra södra centralregionen</value>
-  </data>
-  <data name="USA_MidAtlantic" xml:space="preserve">
-    <value>Mellersta Atlantkusten</value>
-  </data>
-  <data name="USA_Midwest" xml:space="preserve">
-    <value>Mellanvästern</value>
-  </data>
-  <data name="USA_Mountain" xml:space="preserve">
-    <value>Bergsregionen</value>
-  </data>
-  <data name="USA_NewEngland" xml:space="preserve">
-    <value>Nya England</value>
-  </data>
-  <data name="USA_Northeast" xml:space="preserve">
-    <value>Nordöst</value>
-  </data>
-  <data name="USA_Pacific" xml:space="preserve">
-    <value>Stillahavskusten</value>
-  </data>
-  <data name="USA_South" xml:space="preserve">
-    <value>Södern</value>
-  </data>
-  <data name="USA_SouthAtlantic" xml:space="preserve">
-    <value>Södra Atlantkusten</value>
-  </data>
-  <data name="USA_West" xml:space="preserve">
-    <value>Västern</value>
-  </data>
-  <data name="USA_WestNorthCentral" xml:space="preserve">
-    <value>Västra norra centralregionen</value>
-  </data>
-  <data name="USA_WestSouthCentral" xml:space="preserve">
-    <value>Västra södra centralregionen</value>
-  </data>
-  <data name="WesternEurope" xml:space="preserve">
-    <value>Västeuropa</value>
-  </data>
-  <data name="World" xml:space="preserve">
-    <value>Globalt</value>
-    <comment>Root geography</comment>
   </data>
 </root>

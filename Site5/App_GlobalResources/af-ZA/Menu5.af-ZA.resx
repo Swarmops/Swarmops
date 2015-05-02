@@ -411,4 +411,7 @@
   <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
     <value>crwdns6556164:0crwdne6556164:0</value>
   </data>
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>crwdns6556239:0crwdne6556239:0</value>
+  </data>
 </root>

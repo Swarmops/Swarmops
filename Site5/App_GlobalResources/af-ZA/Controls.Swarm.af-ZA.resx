@@ -155,7 +155,7 @@
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
   <data name="Positions_ModalHeader" xml:space="preserve">
-    <value>crwdns6556144:0{0}crwdne6556144:0</value>
+    <value>crwdns6556236:0{0}crwdnd6556236:0{0}crwdne6556236:0</value>
     <comment>Header for new assignment dialog</comment>
   </data>
   <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
@@ -186,5 +186,11 @@
   </data>
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>crwdns6556162:0crwdne6556162:0</value>
+  </data>
+  <data name="Positions_AssignElsewhere" xml:space="preserve">
+    <value>crwdns6556237:0crwdne6556237:0</value>
+  </data>
+  <data name="Positions_CreatePosition" xml:space="preserve">
+    <value>crwdns6556238:0crwdne6556238:0</value>
   </data>
 </root>

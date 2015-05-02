@@ -118,90 +118,72 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CentralEurope" xml:space="preserve">
-    <value>crwdns6555561:0crwdne6555561:0</value>
-  </data>
-  <data name="Country_DK" xml:space="preserve">
-    <value>crwdns6555372:0crwdne6555372:0</value>
-  </data>
-  <data name="Country_FI" xml:space="preserve">
-    <value>crwdns6555373:0crwdne6555373:0</value>
-  </data>
-  <data name="Country_GH" xml:space="preserve">
-    <value>crwdns6555374:0crwdne6555374:0</value>
-  </data>
-  <data name="Country_NL" xml:space="preserve">
-    <value>crwdns6555562:0crwdne6555562:0</value>
-  </data>
-  <data name="Country_NO" xml:space="preserve">
-    <value>crwdns6555375:0crwdne6555375:0</value>
-  </data>
-  <data name="Country_SE" xml:space="preserve">
-    <value>crwdns6555376:0crwdne6555376:0</value>
+    <value>Centraleuropa</value>
   </data>
   <data name="EasternEurope" xml:space="preserve">
-    <value>crwdns6553986:0crwdne6553986:0</value>
+    <value>Östeuropa</value>
   </data>
   <data name="Europe" xml:space="preserve">
-    <value>crwdns6553987:0crwdne6553987:0</value>
+    <value>Europa</value>
   </data>
   <data name="Microstates" xml:space="preserve">
-    <value>crwdns6554001:0crwdne6554001:0</value>
+    <value>Mikrostater</value>
     <comment>Like Monaco, San Marino, Andorra, Vatican City, etc.</comment>
   </data>
   <data name="Nordics" xml:space="preserve">
-    <value>crwdns6553988:0crwdne6553988:0</value>
+    <value>Norden</value>
     <comment>(Finland Denmark Norway Sweden Iceland)</comment>
   </data>
   <data name="NorthernEurope" xml:space="preserve">
-    <value>crwdns6555563:0crwdne6555563:0</value>
+    <value>Nordeuropa</value>
   </data>
   <data name="SouthernEurope" xml:space="preserve">
-    <value>crwdns6555564:0crwdne6555564:0</value>
+    <value>Sydeuropa</value>
   </data>
   <data name="USA_EastNorthCentral" xml:space="preserve">
-    <value>crwdns6555377:0crwdne6555377:0</value>
+    <value>Östra norra centralregionen</value>
   </data>
   <data name="USA_EastSouthCentral" xml:space="preserve">
-    <value>crwdns6555378:0crwdne6555378:0</value>
+    <value>Östra södra centralregionen</value>
   </data>
   <data name="USA_MidAtlantic" xml:space="preserve">
-    <value>crwdns6555379:0crwdne6555379:0</value>
+    <value>Mellersta Atlantkusten</value>
   </data>
   <data name="USA_Midwest" xml:space="preserve">
-    <value>crwdns6555380:0crwdne6555380:0</value>
+    <value>Mellanvästern</value>
   </data>
   <data name="USA_Mountain" xml:space="preserve">
-    <value>crwdns6555381:0crwdne6555381:0</value>
+    <value>Bergsregionen</value>
   </data>
   <data name="USA_NewEngland" xml:space="preserve">
-    <value>crwdns6555382:0crwdne6555382:0</value>
+    <value>Nya England</value>
   </data>
   <data name="USA_Northeast" xml:space="preserve">
-    <value>crwdns6555383:0crwdne6555383:0</value>
+    <value>Nordöst</value>
   </data>
   <data name="USA_Pacific" xml:space="preserve">
-    <value>crwdns6555384:0crwdne6555384:0</value>
+    <value>Stillahavskusten</value>
   </data>
   <data name="USA_South" xml:space="preserve">
-    <value>crwdns6555385:0crwdne6555385:0</value>
+    <value>Södern</value>
   </data>
   <data name="USA_SouthAtlantic" xml:space="preserve">
-    <value>crwdns6555386:0crwdne6555386:0</value>
+    <value>Södra Atlantkusten</value>
   </data>
   <data name="USA_West" xml:space="preserve">
-    <value>crwdns6555387:0crwdne6555387:0</value>
+    <value>Västern</value>
   </data>
   <data name="USA_WestNorthCentral" xml:space="preserve">
-    <value>crwdns6555388:0crwdne6555388:0</value>
+    <value>Västra norra centralregionen</value>
   </data>
   <data name="USA_WestSouthCentral" xml:space="preserve">
-    <value>crwdns6555389:0crwdne6555389:0</value>
+    <value>Västra södra centralregionen</value>
   </data>
   <data name="WesternEurope" xml:space="preserve">
-    <value>crwdns6553989:0crwdne6553989:0</value>
+    <value>Västeuropa</value>
   </data>
   <data name="World" xml:space="preserve">
-    <value>crwdns6555582:0crwdne6555582:0</value>
+    <value>Globalt</value>
     <comment>Root geography</comment>
   </data>
 </root>

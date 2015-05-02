@@ -151,6 +151,9 @@
     <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
   </data>
   
+  
+  
+  
   <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
     <value>Numrering av {0}</value>
     <comment>The {0} is the membership, ambassadorship, etc.</comment>
@@ -198,6 +201,13 @@
   <data name="EditOrganization_VanityDomain" xml:space="preserve">
     <value>Egendomän för organisationen</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>Adminnotiser från adress</value>
   </data>
@@ -213,6 +223,8 @@
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>Externt åtkomlig URL</value>
   </data>
+  
+  
   <data name="SystemSettings_Info" xml:space="preserve">
     <value>Olika tekniska inställningar för den här Swarmopsinstallationen. Inte specifika för någon organisation eller person, utan systemtäckande.</value>
   </data>

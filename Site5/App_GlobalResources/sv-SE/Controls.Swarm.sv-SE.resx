@@ -154,10 +154,7 @@
     <value>Tillsätt</value>
     <comment>Kind of "hire" but also for volunteers</comment>
   </data>
-  <data name="Positions_ModalHeader" xml:space="preserve">
-    <value>Tillsätt person som &lt;span id='{0}_modalPositionName'&gt;...&lt;/span&gt;</value>
-    <comment>Header for new assignment dialog</comment>
-  </data>
+  
   <data name="Positions_NoMorePeopleOnPosition" xml:space="preserve">
     <value>Misslyckades: Kan inte tillsätta fler människor till denna befattning.</value>
   </data>
@@ -187,4 +184,6 @@
   <data name="Positions_TerminateYes" xml:space="preserve">
     <value>Avsluta uppdraget</value>
   </data>
+  
+  
 </root>
