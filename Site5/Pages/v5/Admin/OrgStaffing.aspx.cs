@@ -45,9 +45,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             if (orgPositions.Count == 0)
             {
-                // not initalized. Initialize.
+                // not initalized. Initialize. Assume nonprofit.
 
-                Positions.CreateOrganizationDefaultPositions (CurrentOrganization);
+                Positions.CreateOrganizationDefaultPositions (CurrentOrganization, PositionTitle.Nonprofit);
             }
 
 

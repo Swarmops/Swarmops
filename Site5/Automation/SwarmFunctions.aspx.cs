@@ -39,8 +39,22 @@ namespace Swarmops.Frontend.Automation
             {
                 throw new UnauthorizedAccessException();
             }
-            if (!authData.Authority.HasAccess (new Access (AccessAspect.Administration)))
+            if (position.PositionLevel == PositionLevel.SystemWide && !authData.Authority.HasAccess (new Access (AccessAspect.Administration)))
             {
+                // Authority check for systemwide
+                throw new UnauthorizedAccessException();
+            }
+            if ((position.GeographyId == Geography.RootIdentity || position.GeographyId == 0) &&
+                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Administration)))
+            {
+                // Authority check for org-global
+                throw new UnauthorizedAccessException();
+            }
+            if (
+                !authData.Authority.HasAccess (new Access (authData.CurrentOrganization, geography,
+                    AccessAspect.Administration)))
+            {
+                // Authority check for org/geo combo
                 throw new UnauthorizedAccessException();
             }
 
