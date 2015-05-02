@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Web;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Common.Enums;
 using Swarmops.Interface.Support;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -36,19 +37,22 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelCreateAs.Text = Resources.Pages.Admin.CreateOrganization_CreateNewOrgAs;
             this.LabelNativeCurrency.Text = Resources.Pages.Admin.CreateOrganization_NewOrgCurrency;
             this.LabelPersonLabel.Text = Resources.Pages.Admin.CreateOrganization_RegularTitle;
+            this.LabelPositionLabel.Text = Resources.Pages.Admin.CreateOrganization_Titles;
 
             this.ButtonCreate.Text = Global.Global_Create;
-
             
             this.DropPersonLabel.Items.Clear();
             this.DropActivistLabel.Items.Clear();
             this.DropCurrencies.Items.Clear();
             this.DropCreateChild.Items.Clear();
+            this.DropPositionLabel.Items.Clear();
             this.DropPersonLabel.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
             this.DropActivistLabel.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
             this.DropCurrencies.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
             this.DropCreateChild.Items.Add (new ListItem (Global.Global_SelectOne, "0"));
 
+            this.DropPositionLabel.Items.Add (new ListItem(Resources.Pages.Admin.CreateOrganization_Titles_Nonprofit, "Nonprofit"));
+            this.DropPositionLabel.Items.Add (new ListItem(Resources.Pages.Admin.CreateOrganization_Titles_Commercial, "Commercial"));
 
             this.DropCreateChild.Items.Add (new ListItem (Resources.Pages.Admin.CreateOrganization_AsRoot, "Root"));
             this.DropCreateChild.Items.Add (
@@ -128,6 +132,11 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             newOrganization.RegularLabel = peopleLabel;
             newOrganization.ActivistLabel = activistLabel;
 
+            PositionTitle titleType =
+                (PositionTitle) (Enum.Parse (typeof (PositionTitle), this.DropPositionLabel.SelectedValue));
+
+            Positions.CreateOrganizationDefaultPositions (newOrganization, titleType);
+
             Membership.Create (CurrentUser, newOrganization, DateTime.UtcNow.AddYears (2));
 
             string successMessage = String.Format (Resources.Pages.Admin.CreateOrganization_Success,
@@ -140,7 +149,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             Response.Redirect (
                 "/Pages/v5/Security/SetCurrentOrganization.aspx?OrganizationId=" +
                 newOrganization.Identity.ToString (CultureInfo.InvariantCulture) +
-                "&ReturnUrl=/Pages/v5/Admin/EditOrganization.aspx", true);
+                "&ReturnUrl=/Admin/OrgSettings", true);
         }
     }
 }

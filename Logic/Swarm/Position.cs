@@ -184,13 +184,23 @@ namespace Swarmops.Logic.Swarm
 
         public static string Localized(PositionType type, PositionTitle title, bool plural = false)
         {
-            string titleString = type.ToString();
+            string titleStringUntyped = type.ToString();
+            string titleStringTyped = titleStringUntyped + "_" + title.ToString();
+
             if (plural)
             {
-                titleString += "_Plural";
+                titleStringUntyped += "_Plural";
+                titleStringTyped += "_Plural";
             }
 
-            return Logic_Swarm_Position.ResourceManager.GetString("Position_" + titleString);
+            string testResult = Logic_Swarm_Position.ResourceManager.GetString("Position_" + titleStringTyped);
+
+            if (!String.IsNullOrEmpty (testResult))
+            {
+                return testResult;
+            }
+
+            return Logic_Swarm_Position.ResourceManager.GetString("Position_" + titleStringUntyped);
         }
 
 
@@ -202,6 +212,8 @@ namespace Swarmops.Logic.Swarm
             {
                 throw new ArgumentNullException ("access", @"Access requested must always be specified. Use AccessAspect.Null if null access is desired (and access should always be true).");
             }
+
+
 
             return false;
         }

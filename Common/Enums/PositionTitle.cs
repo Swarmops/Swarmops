@@ -11,9 +11,14 @@ namespace Swarmops.Common.Enums
         Unknown = 0,
 
         /// <summary>
-        /// Use the default title for the position type (commercial titles).
+        /// Use the default title for the position type (kind-of-commercial titles).
         /// </summary>
         Default,
+
+        /// <summary>
+        /// Use titles that are typical of a commercial corporation.
+        /// </summary>
+        Commercial,
 
         /// <summary>
         /// Use titles that are customized for nonprofit organizations ("secretary general" instead of "ceo", etc).

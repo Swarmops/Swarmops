@@ -340,6 +340,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deputy Secretary General.
+        /// </summary>
+        internal static string Position_Executive_VicePresident_Nonprofit {
+            get {
+                return ResourceManager.GetString("Position_Executive_VicePresident_Nonprofit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deputies Secretary General.
+        /// </summary>
+        internal static string Position_Executive_VicePresident_Nonprofit_Plural {
+            get {
+                return ResourceManager.GetString("Position_Executive_VicePresident_Nonprofit_Plural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vice Presidents.
         /// </summary>
         internal static string Position_Executive_VicePresident_Plural {

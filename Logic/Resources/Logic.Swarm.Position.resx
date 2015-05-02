@@ -210,6 +210,12 @@
   <data name="Position_Executive_VicePresident" xml:space="preserve">
     <value>Vice President</value>
   </data>
+  <data name="Position_Executive_VicePresident_Nonprofit" xml:space="preserve">
+    <value>Deputy Secretary General</value>
+  </data>
+  <data name="Position_Executive_VicePresident_Nonprofit_Plural" xml:space="preserve">
+    <value>Deputies Secretary General</value>
+  </data>
   <data name="Position_Executive_VicePresident_Plural" xml:space="preserve">
     <value>Vice Presidents</value>
   </data>

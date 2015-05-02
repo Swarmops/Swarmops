@@ -430,7 +430,7 @@ namespace Swarmops.Logic.Swarm
                     return null;
                 }
 
-                return Image.FromFile (@"C:\Data\Uploads\PirateWeb\" + docs[0].ServerFileName);
+                return Image.FromFile (@"/usr/share/swarmops/upload/" + docs[0].ServerFileName);
             }
         }
 
@@ -615,10 +615,6 @@ namespace Swarmops.Logic.Swarm
             // Note "for writing". Intentional. Queries master db and bypasses replication lag.
         }
 
-        public Authority GetDefaultAuthority()
-        {
-            throw new NotImplementedException();
-        }
 
         public Memberships GetMemberships (bool includeTerminated)
         {
