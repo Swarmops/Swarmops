@@ -541,14 +541,50 @@
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.ru-RU.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.sv-SE.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.pt-BR.resx" />
     <EmbeddedResource Include="Resources\Logic.Structure.Country.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Structure.Country.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.af-ZA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.da-DK.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.de-DE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.el-GR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.es-ES.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.fi-FI.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.is-IS.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.it-IT.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.pl-PL.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.pt-BR.resx" />
     <EmbeddedResource Include="Resources\Logic.Structure.Geography.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logic.Structure.Geography.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.ru-RU.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.sv-SE.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.zh-CN.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.af-ZA.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.ar-SA.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.da-DK.resx" />
