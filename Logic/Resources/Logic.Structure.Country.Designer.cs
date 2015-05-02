@@ -61,11 +61,92 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Austria.
+        /// </summary>
+        internal static string Country_AT {
+            get {
+                return ResourceManager.GetString("Country_AT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Belgium.
+        /// </summary>
+        internal static string Country_BE {
+            get {
+                return ResourceManager.GetString("Country_BE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bulgaria.
+        /// </summary>
+        internal static string Country_BG {
+            get {
+                return ResourceManager.GetString("Country_BG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switzerland.
+        /// </summary>
+        internal static string Country_CH {
+            get {
+                return ResourceManager.GetString("Country_CH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cyprus.
+        /// </summary>
+        internal static string Country_CY {
+            get {
+                return ResourceManager.GetString("Country_CY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Czech Republic.
+        /// </summary>
+        internal static string Country_CZ {
+            get {
+                return ResourceManager.GetString("Country_CZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Germany.
+        /// </summary>
+        internal static string Country_DE {
+            get {
+                return ResourceManager.GetString("Country_DE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Denmark.
         /// </summary>
         internal static string Country_DK {
             get {
                 return ResourceManager.GetString("Country_DK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estonia.
+        /// </summary>
+        internal static string Country_EE {
+            get {
+                return ResourceManager.GetString("Country_EE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spain.
+        /// </summary>
+        internal static string Country_ES {
+            get {
+                return ResourceManager.GetString("Country_ES", resourceCulture);
             }
         }
         
@@ -79,11 +160,110 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to France.
+        /// </summary>
+        internal static string Country_FR {
+            get {
+                return ResourceManager.GetString("Country_FR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ghana.
         /// </summary>
         internal static string Country_GH {
             get {
                 return ResourceManager.GetString("Country_GH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greece.
+        /// </summary>
+        internal static string Country_GR {
+            get {
+                return ResourceManager.GetString("Country_GR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Croatia.
+        /// </summary>
+        internal static string Country_HR {
+            get {
+                return ResourceManager.GetString("Country_HR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hungary.
+        /// </summary>
+        internal static string Country_HU {
+            get {
+                return ResourceManager.GetString("Country_HU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ireland.
+        /// </summary>
+        internal static string Country_IE {
+            get {
+                return ResourceManager.GetString("Country_IE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iceland.
+        /// </summary>
+        internal static string Country_IS {
+            get {
+                return ResourceManager.GetString("Country_IS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Italy.
+        /// </summary>
+        internal static string Country_IT {
+            get {
+                return ResourceManager.GetString("Country_IT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lithuania.
+        /// </summary>
+        internal static string Country_LT {
+            get {
+                return ResourceManager.GetString("Country_LT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Luxembourg.
+        /// </summary>
+        internal static string Country_LU {
+            get {
+                return ResourceManager.GetString("Country_LU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latvia.
+        /// </summary>
+        internal static string Country_LV {
+            get {
+                return ResourceManager.GetString("Country_LV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Malta.
+        /// </summary>
+        internal static string Country_MT {
+            get {
+                return ResourceManager.GetString("Country_MT", resourceCulture);
             }
         }
         
@@ -106,11 +286,65 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Poland.
+        /// </summary>
+        internal static string Country_PL {
+            get {
+                return ResourceManager.GetString("Country_PL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portugal.
+        /// </summary>
+        internal static string Country_PT {
+            get {
+                return ResourceManager.GetString("Country_PT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Romania.
+        /// </summary>
+        internal static string Country_RO {
+            get {
+                return ResourceManager.GetString("Country_RO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sweden.
         /// </summary>
         internal static string Country_SE {
             get {
                 return ResourceManager.GetString("Country_SE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slovenia.
+        /// </summary>
+        internal static string Country_SI {
+            get {
+                return ResourceManager.GetString("Country_SI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slovakia.
+        /// </summary>
+        internal static string Country_SK {
+            get {
+                return ResourceManager.GetString("Country_SK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to United Kingdom.
+        /// </summary>
+        internal static string Country_UK {
+            get {
+                return ResourceManager.GetString("Country_UK", resourceCulture);
             }
         }
     }
