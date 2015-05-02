@@ -18,12 +18,7 @@ namespace Swarmops.Controls.Base
             {
                 ParentGeographyId = value.ParentIdentity;
                 RootGeographyId = value.Identity;
-                RootGeographyName = value.Name;
-
-                if (value.Name.StartsWith ("[LOC]"))
-                {
-                    RootGeographyName = GeographyNames.ResourceManager.GetString (value.Name.Substring (5));
-                }
+                RootGeographyName = value.Localized;
             }
         }
 

@@ -110,6 +110,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Logic.Financial.Payout.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Logic.Structure.Country.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Structure.Country.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Logic.Structure.Geography.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logic.Structure.Geography.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Logic.Swarm.DashboardTodos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -531,6 +541,14 @@
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.ru-RU.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.sv-SE.resx" />
     <EmbeddedResource Include="Resources\Logic.Financial.Payout.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\Logic.Structure.Country.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Structure.Country.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logic.Structure.Geography.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logic.Structure.Geography.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.af-ZA.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.ar-SA.resx" />
     <EmbeddedResource Include="Resources\Logic.Swarm.DashboardTodos.da-DK.resx" />

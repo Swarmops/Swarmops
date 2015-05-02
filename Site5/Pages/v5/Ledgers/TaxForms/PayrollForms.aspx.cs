@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
 
 namespace Swarmops.Frontend.Pages.v5.Ledgers.TaxForms
 {
@@ -25,7 +26,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers.TaxForms
             {
                 // TODO: DETERMINE COUNTRIES ON PAYROLL
 
-                this.DropCountries.Items.Add (new ListItem(Resources.GeographyNames.Country_SE, "SE"));
+                this.DropCountries.Items.Add (new ListItem(Country.FromCode ("SE").Localized, "SE"));
 
                 Localize();
             }

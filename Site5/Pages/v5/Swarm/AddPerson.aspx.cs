@@ -49,11 +49,7 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
             foreach (Country country in allCountries)
             {
-                string countryLocalName = GeographyNames.ResourceManager.GetString ("Country_" + country.Code);
-                if (string.IsNullOrEmpty (countryLocalName))
-                {
-                    countryLocalName = country.Name + "*"; // In English. Asterisk indicates resource missing.
-                }
+                string countryLocalName = country.Localized;
                 string countryDisplay = country.Code + " " + countryLocalName;
                 this.DropCountries.Items.Add (new ListItem (countryDisplay, country.Code));
             }

@@ -89,14 +89,14 @@ namespace Swarmops.Frontend.Automation
                 Geography geography = geographyNode.Data;
                 Country country = null;
 
-                string geoName = TestLocalization (geography.Name);
+                string geoName = geography.Localized;
 
                 if (_countryLookup.ContainsKey (geography.Identity))
                 {
                     // Special case for country nodes: "[NativeName] ([LocalizedName])", e.g. "Deutschland (Tyskland)" for Germany when in Swedish
 
                     country = _countryLookup[geography.Identity];
-                    string localizedCountryName = GeographyNames.ResourceManager.GetString("Country_" + country.Code);
+                    string localizedCountryName = country.Localized;
                     string nativeCountryName = geography.Name.Split ('(')[0].Trim();
 
                     if (localizedCountryName != nativeCountryName)
@@ -110,7 +110,7 @@ namespace Swarmops.Frontend.Automation
                 }
 
                 string element = string.Format ("\"id\":{0},\"text\":\"{1}\"", geography.Identity,
-                    JsonSanitize (TestLocalization (geoName)));
+                    JsonSanitize (geoName));
 
                 if (country != null)
                 {
@@ -132,15 +132,6 @@ namespace Swarmops.Frontend.Automation
             }
 
             return "[" + String.Join (",", elements.ToArray()) + "]";
-        }
-
-        private string TestLocalization (string name)
-        {
-            if (name.StartsWith ("[LOC]"))
-            {
-                return GeographyNames.ResourceManager.GetString (name.Substring (5));
-            }
-            return name;
         }
     }
 }

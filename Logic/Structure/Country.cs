@@ -35,6 +35,21 @@ namespace Swarmops.Logic.Structure
             return new Country (basic);
         }
 
+        public string Localized
+        {
+            get
+            {
+                string tryLocalize = Resources.Logic_Structure_Country.ResourceManager.GetString("Country_" + this.Code);
+
+                if (string.IsNullOrEmpty (tryLocalize))
+                {
+                    return Name + "*"; // a little flag to localize
+                }
+
+                return tryLocalize;
+            }
+        }
+
         // TODO: Cache these two functions, country info doesn't change
 
         public static Country FromIdentity (int identity)

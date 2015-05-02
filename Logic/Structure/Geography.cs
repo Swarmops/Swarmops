@@ -145,6 +145,18 @@ namespace Swarmops.Logic.Structure
             return false;
         }
 
+        public string Localized
+        {
+            get
+            {
+                if (Name.StartsWith("[LOC]"))
+                {
+                    return Resources.Logic_Structure_Geography.ResourceManager.GetString(Name.Substring(5));
+                }
+                return Name;
+            }
+        }
+
         public BasicGeographyDesignation[] GetGeographyDesignations()
         {
             return SwarmDb.GetDatabaseForReading().GetGeographyDesignationsForGeographyId (Identity);
