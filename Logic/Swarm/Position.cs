@@ -166,8 +166,12 @@ namespace Swarmops.Logic.Swarm
 
         public string Localized(bool plural = false)
         {
-            return Position.Localized ((PositionType) Enum.Parse (typeof (PositionType), this.PositionTypeName),
-                (PositionTitle) Enum.Parse (typeof (PositionTitle), this.PositionTitleName), plural);
+            if (this.PositionTitle == PositionTitle.Custom)
+            {
+                return SwarmDb.GetDatabaseForReading().GetPositionCustomTitle(this.Identity);
+            }
+
+            return Position.Localized (this.PositionType, this.PositionTitle, plural);
         }
 
 
@@ -184,6 +188,11 @@ namespace Swarmops.Logic.Swarm
 
         public static string Localized(PositionType type, PositionTitle title, bool plural = false)
         {
+            if (title == PositionTitle.Custom)
+            {
+                throw new InvalidOperationException ("Can't fetch generic name for customized title");
+            }
+
             string titleStringUntyped = type.ToString();
             string titleStringTyped = titleStringUntyped + "_" + title.ToString();
 

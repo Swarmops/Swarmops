@@ -1,7 +1,7 @@
 ﻿/*
 
  * 
- * Created in DbUpdate 0012. Updated in Db0013-Db0015.
+ * Created in DbUpdate 0012. Updated in Db0013-Db0015. CustomPositionTitles added in Db0021.
  *
  
 CREATE TABLE `Positions` (
@@ -57,6 +57,16 @@ CREATE TABLE `Positions` (
   KEY `Index_Pos` (`PositionId`)
 );
 
+ 
+CREATE TABLE `PositionCustomTitles` (
+  `PositionId` int(11) unsigned NOT NULL,
+  `CustomTitle` varchar(128) NOT NULL,
+  PRIMARY KEY (`PositionId`),
+  KEY `Index_Title` (`CustomTitle`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+  
+  
 */
 
 
@@ -381,6 +391,42 @@ namespace Swarmops.Database
                 if (rowsUpdated != 1)
                 {
                     throw new DatabaseConcurrencyException();
+                }
+            }
+        }
+
+        public void SetPositionCustomTitle (int positionId, string customTitle)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetPositionCustomTitle", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "positionId", positionId);
+                AddParameterWithName(command, "customTitle", customTitle);
+            }
+        }
+
+
+        public string GetPositionCustomTitle (int positionId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand("SELECT CustomTitle FROM CustomPositionTitles WHERE PositionId=" + positionId, connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetString (0);
+                    }
+
+                    throw new ArgumentException("No such CustomPositionTitle: PositionId" + positionId);
                 }
             }
         }
