@@ -95,24 +95,26 @@ namespace Swarmops.Logic.Structure
             get { return FromIdentity (ParentIdentity); }
         }
 
-        public Geographies ThisAndBelow()
+        public bool IsOrInherits(Geography prospectiveParent)
         {
-            return Geographies.FromArray (GeographyCache.GetGeographyTree (Identity));
-            // return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyTree(Identity));
+            if (Identity == prospectiveParent.Identity)
+                return true;
+            return Inherits(prospectiveParent.Identity);
         }
 
-        public Geographies GetRootLineage()
+        public bool Inherits(Geography prospectiveParent)
         {
-            return Geographies.FromArray (GeographyCache.GetGeographyLine (Identity));
-            //return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyLine(Identity));
+            return Inherits(prospectiveParent.Identity);
         }
 
-        public bool Inherits (Geography prospectiveParent)
+        private bool IsOrInherits(int prospectiveParentGeographyId)
         {
-            return Inherits (prospectiveParent.Identity);
+            if (Identity == prospectiveParentGeographyId)
+                return true;
+            return Inherits(prospectiveParentGeographyId);
         }
 
-        public bool Inherits (int prospectiveParentGeographyId)
+        private bool Inherits(int prospectiveParentGeographyId)
         {
             // Returns true if prospectiveParent is a parent of ours.
 
@@ -128,6 +130,19 @@ namespace Swarmops.Logic.Structure
 
             return false;
         }
+
+        public Geographies ThisAndBelow()
+        {
+            return Geographies.FromArray (GeographyCache.GetGeographyTree (Identity));
+            // return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyTree(Identity));
+        }
+
+        public Geographies GetRootLineage()
+        {
+            return Geographies.FromArray (GeographyCache.GetGeographyLine (Identity));
+            //return Geographies.FromArray(SwarmDb.GetDatabaseForReading().GetGeographyLine(Identity));
+        }
+
 
 
         public bool AtLevel (GeographyLevel level)

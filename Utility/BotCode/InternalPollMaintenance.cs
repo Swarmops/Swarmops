@@ -87,7 +87,7 @@ namespace Swarmops.Utility.BotCode
                                     {
                                         Geography geo = membership.Person.Geography;
 
-                                        if (geo.Inherits (poll.GeographyId) || geo.Identity == poll.GeographyId)
+                                        if (geo.Inherits (Geography.FromIdentity(poll.GeographyId)) || geo.Identity == poll.GeographyId)
                                         {
                                             poll.AddVoter (membership.Person);
                                             dupeCheck[membership.PersonId] = true;

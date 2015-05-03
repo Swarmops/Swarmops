@@ -51,6 +51,12 @@ namespace Swarmops.Logic.Swarm
             get { return Position.FromIdentity (base.PositionId); }
         }
 
+        public Geography Geography
+        {
+            get { return base.GeographyId == 0 ? null : Geography.FromIdentity (base.GeographyId); }
+        }
+
+
         public static PositionAssignment Create(Position position, Geography geography, 
             Person person, Person createdByPerson, Position createdByPosition, DateTime? expiresDateTimeUtc,
             string assignmentNotes)

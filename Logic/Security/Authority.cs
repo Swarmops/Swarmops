@@ -258,7 +258,10 @@ namespace Swarmops.Logic.Security
 
             // Ask the current position assignment if it has the requested access
 
-            return Assignment.Position.HasAccess(access);
+            Position currentPosition = Assignment.Position;
+            currentPosition.AssignGeography (Assignment.Geography);
+
+            return currentPosition.HasAccess(access);
         }
 
 

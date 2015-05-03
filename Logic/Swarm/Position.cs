@@ -213,7 +213,50 @@ namespace Swarmops.Logic.Swarm
                 throw new ArgumentNullException ("access", @"Access requested must always be specified. Use AccessAspect.Null if null access is desired (and access should always be true).");
             }
 
+            if (this.PositionLevel == PositionLevel.SystemWide)
+            {
+                if (access.Type == AccessType.Write &&
+                    this.PositionType == PositionType.System_SysadminAssistantReadOnly)
+                {
+                    return false;
+                }
 
+                return true;
+            }
+
+            if (this.PositionLevel == PositionLevel.GeographyDefault || this.PositionLevel == PositionLevel.Geography)
+            {
+                // This Position.GeographyId has been set to the Assignments's GeographyId for this purpose
+                // (bad architecture, fix)
+
+                if (access.Organization.IsOrInherits (this.Organization) &&
+                    access.Geography.IsOrInherits (this.Geography))
+                {
+                    // we have an Access with applicable Org and Geo, but is the Access good enough? Cheat for now.
+
+                    if (this.PositionType == PositionType.Geographic_Leader ||
+                        this.PositionType == PositionType.Geographic_Deputy ||
+                        this.PositionType == PositionType.Geographic_Assistant)
+                    {
+                        // yes, we have admin privileges and all other privileges too
+
+                        return true;
+                    }
+                }
+
+                // otherwise FO
+                return false;
+            }
+
+            // the positions left are at org level
+
+            if (access.Organization.IsOrInherits (this.OrganizationId))
+            {
+                // is the Position privilege sufficient to meet the Access required?
+                // for now, cheat and assume all positions at the Org level have Admin access
+
+                return true;
+            }
 
             return false;
         }
