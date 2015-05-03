@@ -120,7 +120,7 @@ namespace Swarmops.Database
             public static string GetConfigurationFileName()
             {
                 // Four possibilities here. Debug environment on Windows (dev), Console environment on Windows (dev),
-                // Console/daemon production environment and web production environment.
+                // Console/daemon production environment, and web production environment.
 
                 // In both production environments, we should use /etc/swarmops/database.config.
                 // In dev Web, we should use ~/database.config.

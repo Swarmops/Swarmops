@@ -1,3 +1,9 @@
+DROP procedure IF EXISTS `SetCashAdvanceBudget`
+
+
+#
+
+
 CREATE PROCEDURE `SetCashAdvanceBudget`(
   IN cashAdvanceId INTEGER,
   IN budgetId INTEGER
