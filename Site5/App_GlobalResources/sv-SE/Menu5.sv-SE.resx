@@ -407,5 +407,7 @@
   <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
     <value>Organisationens bemanning</value>
   </data>
-  
+  <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
+    <value>Min lokala organisation</value>
+  </data>
 </root>

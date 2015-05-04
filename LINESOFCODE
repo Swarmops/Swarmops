@@ -37,7 +37,7 @@
     368 ./Logic/Financial/YearlyReport.cs
      65 ./Logic/Financial/PayrollAdjustment.cs
      14 ./Logic/Financial/Currencies.cs
-    425 ./Logic/Financial/FinancialAccount.cs
+    434 ./Logic/Financial/FinancialAccount.cs
     465 ./Logic/Financial/Payouts.cs
      47 ./Logic/Financial/FinancialTransactionTagSet.cs
     249 ./Logic/Financial/InboundInvoice.cs
@@ -69,9 +69,11 @@
     378 ./Logic/Cache/OrganizationCache.cs
      82 ./Logic/Cache/GuidCache.cs
     889 ./Logic/Automation/GetGeographyData.cs
-    216 ./Logic/Resources/Logic.Swarm.Position.Designer.cs
+    765 ./Logic/Resources/Logic.Swarm.Position.Designer.cs
      90 ./Logic/Resources/Logic.Financial.FinancialTransactionTagSetTypesStock.Designer.cs
+    351 ./Logic/Resources/Logic.Structure.Country.Designer.cs
     288 ./Logic/Resources/Logic.Financial.Payout.Designer.cs
+    261 ./Logic/Resources/Logic.Structure.Geography.Designer.cs
     614 ./Logic/Resources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
     459 ./Logic/Resources/Logic.Financial.FinancialAccount.Designer.cs
     171 ./Logic/Resources/Logic.Swarm.DashboardTodos.Designer.cs
@@ -109,10 +111,10 @@
      41 ./Logic/Structure/PostalCode.cs
      23 ./Logic/Structure/GeographyWithPeople.cs
      24 ./Logic/Structure/GeographyUpdates.cs
-    145 ./Logic/Structure/Geography.cs
+    180 ./Logic/Structure/Geography.cs
      47 ./Logic/Structure/Cities.cs
     259 ./Logic/Structure/GeographyUpdate.cs
-    974 ./Logic/Structure/Organization.cs
+    983 ./Logic/Structure/Organization.cs
      33 ./Logic/Structure/PostalCodes.cs
      36 ./Logic/Structure/GeographyStatisticsOverTime.cs
      53 ./Logic/Structure/City.cs
@@ -121,7 +123,7 @@
     293 ./Logic/Structure/Geographies.cs
     228 ./Logic/Structure/GeographyStatistics.cs
      51 ./Logic/Structure/GeographyDataPoint.cs
-     49 ./Logic/Structure/Country.cs
+     64 ./Logic/Structure/Country.cs
     413 ./Logic/Structure/Organizations.cs
      39 ./Logic/Structure/Countries.cs
      93 ./Logic/Structure/UptakeGeography.cs
@@ -137,7 +139,7 @@
      12 ./Logic/DashboardTasks/TaskPayout.cs
      14 ./Logic/DashboardTasks/TaskVolunteer.cs
     836 ./Logic/Security/BCrypt.cs
-    525 ./Logic/Security/Authority.cs
+    550 ./Logic/Security/Authority.cs
     570 ./Logic/Security/Authentication.cs
      29 ./Logic/Security/SHA1.cs
     204 ./Logic/Security/PermissionSet.cs
@@ -156,9 +158,9 @@
      21 ./Logic/Media/MediaCategory.cs
      78 ./Logic/Media/MediaEntries.cs
      71 ./Logic/Swarm/PersonRole.cs
-    118 ./Logic/Swarm/PositionAssignment.cs
+    107 ./Logic/Swarm/PositionAssignment.cs
      59 ./Logic/Swarm/ParticipantTitle.cs
-   1167 ./Logic/Swarm/Person.cs
+   1163 ./Logic/Swarm/Person.cs
     255 ./Logic/Swarm/DashboardTodos.cs
      52 ./Logic/Swarm/ExternalActivity.cs
     149 ./Logic/Swarm/ExternalIdentity.cs
@@ -167,9 +169,9 @@
      20 ./Logic/Swarm/ChurnDataPoint.cs
      66 ./Logic/Swarm/RoleLookup.cs
     125 ./Logic/Swarm/ChurnData.cs
-     66 ./Logic/Swarm/Positions.cs
+    248 ./Logic/Swarm/Positions.cs
     225 ./Logic/Swarm/Membership.cs
-    188 ./Logic/Swarm/Position.cs
+    273 ./Logic/Swarm/Position.cs
     264 ./Logic/Swarm/Roles.cs
     124 ./Logic/Swarm/ParleyAttendee.cs
      18 ./Logic/Swarm/DashboardTodo.cs
@@ -185,7 +187,7 @@
      13 ./Logic/Swarm/ParleyAttendees.cs
      21 ./Logic/Swarm/VolunteerRoles.cs
      99 ./Logic/Swarm/Activists.cs
-     38 ./Logic/Swarm/PositionAssignments.cs
+     65 ./Logic/Swarm/PositionAssignments.cs
      34 ./Logic/Swarm/VolunteerRole.cs
     144 ./Logic/Swarm/MembershipEvents.cs
       6 ./Logic/Swarm/Interfaces.cs
@@ -229,7 +231,7 @@
     129 ./Logic/Support/SystemSettings.cs
     177 ./Logic/Support/QuotedPrintable.cs
       6 ./Logic/Support/IXmlPayload.cs
-    152 ./Logic/Support/PluralBase.cs
+    164 ./Logic/Support/PluralBase.cs
      30 ./Logic/Support/LogEntries/ExpenseClaimFiledLogEntry.cs
      28 ./Logic/Support/LogEntries/SalaryCreatedLogEntry.cs
      46 ./Logic/Support/LogEntries/LogEntryBase.cs
@@ -276,7 +278,7 @@
      25 ./Common/Attributes/DbRecordType.cs
      12 ./Common/Exceptions/ConcurrencyException.cs
      16 ./Common/Exceptions/DatabaseConcurrencyException.cs
-     93 ./Common/Generics/Tree.cs
+    103 ./Common/Generics/Tree.cs
      43 ./Common/Interfaces/IHandleProvider.cs
       6 ./Common/Interfaces/IHasIdentities.cs
       6 ./Common/Interfaces/IHasIdentity.cs
@@ -285,7 +287,7 @@
      13 ./Common/Interfaces/IHasParentIdentity.cs
      34 ./Common/Enums/GeographyLevel.cs
      59 ./Common/Enums/FinancialDependencyType.cs
-     18 ./Common/Enums/PositionType.cs
+     52 ./Common/Enums/PositionType.cs
      19 ./Common/Enums/InvalidMembershipType.cs
      45 ./Common/Enums/MembershipPaymentStatus.cs
     323 ./Common/Enums/ObjectOptionalDataType.cs
@@ -294,7 +296,7 @@
      19 ./Common/Enums/ExternalIdentityType.cs
       8 ./Common/Enums/PaymentCodeIssueType.cs
     149 ./Common/Enums/OrganizationFinancialAccountType.cs
-     20 ./Common/Enums/PositionTitle.cs
+     40 ./Common/Enums/PositionTitle.cs
      14 ./Common/Enums/ExternalActivityType.cs
      10 ./Common/Enums/ExpenseEventType.cs
     240 ./Common/Enums/RoleTypeClass.cs
@@ -442,14 +444,14 @@
      42 ./Site5/Automation/Formatting.aspx.cs
     168 ./Site5/Automation/FieldValidation.aspx.cs
       1 ./Site5/Automation/SwarmFunctions.aspx
-    162 ./Site5/Automation/Json-PositionsTree.aspx.cs
+    284 ./Site5/Automation/Json-PositionsTree.aspx.cs
       0 ./Site5/Automation/Json-FinancialAccountsTree.aspx
      28 ./Site5/Automation/Json-ByGuid.aspx.cs
      57 ./Site5/Automation/Json-AvailableCurrencies.aspx.cs
       0 ./Site5/Automation/Json-BudgetsTree.aspx
-    149 ./Site5/Automation/SwarmFunctions.aspx.cs
+    213 ./Site5/Automation/SwarmFunctions.aspx.cs
      96 ./Site5/Automation/Json-TransactionTagsTree.aspx.cs
-    145 ./Site5/Automation/Json-GeographiesTree.aspx.cs
+    136 ./Site5/Automation/Json-GeographiesTree.aspx.cs
      59 ./Site5/Automation/GetGeographyData.asmx
       1 ./Site5/Automation/Json-SearchPeoplePattern.aspx
      49 ./Site5/Automation/Json-SearchPeoplePattern.aspx.cs
@@ -470,9 +472,9 @@
      18 ./Site5/Controls/v5/Swarm/ComboPeople.ascx.cs
      28 ./Site5/Controls/v5/Swarm/AjaxComboPeople.ascx.cs
      26 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx
-     75 ./Site5/Controls/v5/Swarm/TreePositions.ascx.cs
+     65 ./Site5/Controls/v5/Swarm/TreePositions.ascx.cs
     148 ./Site5/Controls/v5/Swarm/PersonDetailPopup.ascx.cs
-    167 ./Site5/Controls/v5/Swarm/TreePositions.ascx
+    202 ./Site5/Controls/v5/Swarm/TreePositions.ascx
     132 ./Site5/Controls/v5/Swarm/ComboPeople.ascx
      50 ./Site5/Controls/v5/Swarm/AjaxComboPeople.ascx
       5 ./Site5/Controls/v5/UI/ExternalScripts.ascx
@@ -482,7 +484,7 @@
      34 ./Site5/Controls/v5/Base/ModalDialog.ascx.cs
      83 ./Site5/Controls/v5/Base/AjaxTextBox.ascx
      61 ./Site5/Controls/v5/Base/AjaxTextBox.ascx.cs
-     39 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
+     34 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
      30 ./Site5/Controls/v5/Base/DropDown.ascx.cs
     155 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
      46 ./Site5/Controls/v5/Base/ModalDialog.ascx
@@ -527,11 +529,13 @@
     163 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry1.aspx.cs
     106 ./Site5/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx
      59 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx.cs
+     89 ./Site5/Pages/v5/Admin/OrgStaffing.aspx.cs
+     47 ./Site5/Pages/v5/Admin/OrgStaffing.aspx
      62 ./Site5/Pages/v5/Admin/SystemSettings.aspx
-    145 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
-    279 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
+    154 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
+    284 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
     447 ./Site5/Pages/v5/Admin/OrgSettings.aspx.cs
-     43 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
+     44 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
       1 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx
      31 ./Site5/Pages/v5/Security/ChangeOrganizationsAdvanced.aspx
      15 ./Site5/Pages/v5/Security/AccessDenied.aspx.cs
@@ -552,10 +556,12 @@
     753 ./Site5/Pages/v5/Init/Default.aspx
      63 ./Site5/Pages/v5/Comms/SendMassMessage.aspx
     107 ./Site5/Pages/v5/Comms/SendMassMessage.aspx.cs
-    146 ./Site5/Pages/v5/Swarm/AddPerson.aspx.cs
+    142 ./Site5/Pages/v5/Swarm/AddPerson.aspx.cs
       1 ./Site5/Pages/v5/Swarm/Json-ListFindPeople.aspx
+     27 ./Site5/Pages/v5/Swarm/LocalOrganization.aspx
      65 ./Site5/Pages/v5/Swarm/Json-ListFindPeople.aspx.cs
     204 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx
+     76 ./Site5/Pages/v5/Swarm/LocalOrganization.aspx.cs
     226 ./Site5/Pages/v5/Swarm/AddPerson.aspx
     117 ./Site5/Pages/v5/Swarm/ListFindPeople.aspx.cs
       2 ./Site5/Pages/v5/Support/StreamUpload.aspx
@@ -587,7 +593,7 @@
      30 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx.cs
     144 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx.cs
     738 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
-     48 ./Site5/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx.cs
+     49 ./Site5/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx.cs
     106 ./Site5/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx
     215 ./Site5/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx
@@ -608,7 +614,7 @@
     228 ./Site5/Security/Login.aspx
     106 ./Site5/Security/Login-Old.aspx.cs
      93 ./Site5/Security/RequestPasswordReset.aspx.cs
-    401 ./Site5/Security/Login.aspx.cs
+    402 ./Site5/Security/Login.aspx.cs
     136 ./Site5/Security/RequestPasswordReset.aspx
      26 ./Site5/Security/FinalizeLogin.aspx.cs
      53 ./Site5/Security/Login-Old.aspx
@@ -776,7 +782,7 @@
     528 ./Database/Database-FinancialTransactionTagSets.cs
     926 ./Database/Database-Payroll.cs
     224 ./Database/Database-Roles.cs
-    781 ./Database/Database-Positions.cs
+    827 ./Database/Database-Positions.cs
     375 ./Database/Database-OutboundMails.cs
     137 ./Database/Database-Optimizations.cs
     160 ./Database/Database-CommunicationTurnarounds.cs
@@ -793,4 +799,4 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
- 111196 total
+ 113300 total

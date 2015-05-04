@@ -156,14 +156,18 @@
   <data name="Position_Executive_ChiefHrOfficer" xml:space="preserve">
     <value>Personalchef</value>
   </data>
-  
+  <data name="Position_Executive_ChiefHrOfficer_Nonprofit" xml:space="preserve">
+    <value>Volontärvårdschef</value>
+  </data>
   <data name="Position_Executive_ChiefInformationOfficer" xml:space="preserve">
     <value>Informationschef</value>
   </data>
   <data name="Position_Executive_ChiefMarketingOfficer" xml:space="preserve">
     <value>Marknadschef</value>
   </data>
-  
+  <data name="Position_Executive_ChiefMarketingOfficer_Nonprofit" xml:space="preserve">
+    <value>PR-chef</value>
+  </data>
   <data name="Position_Executive_ChiefOperationsOfficer" xml:space="preserve">
     <value>Verksamhetschef</value>
   </data>
@@ -179,14 +183,24 @@
   <data name="Position_Executive_HrAssistant" xml:space="preserve">
     <value>Personalassistent</value>
   </data>
-  
-  
-  
+  <data name="Position_Executive_HrAssistant_Nonprofit" xml:space="preserve">
+    <value>Volontärvårdsassistent</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>Volontärvårdsassistenter</value>
+  </data>
+  <data name="Position_Executive_HrAssistant_Plural" xml:space="preserve">
+    <value>Personalassistenter</value>
+  </data>
   <data name="Position_Executive_MarketingAssistant" xml:space="preserve">
     <value>Marknadsassistent</value>
   </data>
-  
-  
+  <data name="Position_Executive_MarketingAssistant_Nonprofit" xml:space="preserve">
+    <value>PR-assistent</value>
+  </data>
+  <data name="Position_Executive_MarketingAssistant_Nonprofit_Plural" xml:space="preserve">
+    <value>PR-assistenter</value>
+  </data>
   <data name="Position_Executive_MarketingAssistant_Plural" xml:space="preserve">
     <value>Marknadsassistenter</value>
   </data>
@@ -205,51 +219,123 @@
   <data name="Position_Executive_VicePresident_Plural" xml:space="preserve">
     <value>Vice VD</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Position_Geographic_ActivismLeader" xml:space="preserve">
+    <value>Aktivistledare</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant" xml:space="preserve">
+    <value>Aktivistassistent</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Commercial" xml:space="preserve">
+    <value>Verksamhetsassistent</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Commercial_Plural" xml:space="preserve">
+    <value>Verksamhetsassistenter</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeaderAssistant_Plural" xml:space="preserve">
+    <value>Aktivistassistenter</value>
+  </data>
+  <data name="Position_Geographic_ActivismLeader_Commercial" xml:space="preserve">
+    <value>Verksamhetsledare</value>
+  </data>
+  <data name="Position_Geographic_Assistant" xml:space="preserve">
+    <value>Assistent</value>
+  </data>
+  <data name="Position_Geographic_Assistant_Plural" xml:space="preserve">
+    <value>Assistenter</value>
+  </data>
   <data name="Position_Geographic_Deputy" xml:space="preserve">
     <value>Andreledare</value>
   </data>
   <data name="Position_Geographic_Deputy_Plural" xml:space="preserve">
     <value>Andreledare</value>
   </data>
-  
-  
-  
+  <data name="Position_Geographic_InfoLeader" xml:space="preserve">
+    <value>Informationsledare</value>
+  </data>
+  <data name="Position_Geographic_InfoLeaderAssistant" xml:space="preserve">
+    <value>Informationsassistent</value>
+  </data>
+  <data name="Position_Geographic_InfoLeaderAssistant_Plural" xml:space="preserve">
+    <value>Informationsassistenter</value>
+  </data>
   <data name="Position_Geographic_Leader" xml:space="preserve">
     <value>Ledare</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Position_Geographic_OutreachLeader" xml:space="preserve">
+    <value>PR- och medieledare</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeaderAssistant" xml:space="preserve">
+    <value>PR- och medieassistent</value>
+  </data>
+  <data name="Position_Geographic_OutreachLeaderAssistant_Plural" xml:space="preserve">
+    <value>PR- och medieassistenter</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeader" xml:space="preserve">
+    <value>Svärmvårdsledare</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant" xml:space="preserve">
+    <value>Svärmvårdsassistent</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial" xml:space="preserve">
+    <value>Volontärvårdassistent</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Commercial_Plural" xml:space="preserve">
+    <value>Volontärvårdassistenter</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeaderAssistant_Plural" xml:space="preserve">
+    <value>Svärmvårdsassistenter</value>
+  </data>
+  <data name="Position_Geographic_SwarmLeader_Commercial" xml:space="preserve">
+    <value>Volontärvårdledare</value>
+  </data>
+  <data name="Position_Strategic_Auditor" xml:space="preserve">
+    <value>Revisor</value>
+  </data>
+  <data name="Position_Strategic_AuditorAssistant" xml:space="preserve">
+    <value>Revisorsassistent</value>
+  </data>
+  <data name="Position_Strategic_AuditorAssistant_Plural" xml:space="preserve">
+    <value>Revisorsassistenter</value>
+  </data>
+  <data name="Position_Strategic_AuditorDeputy" xml:space="preserve">
+    <value>Revisorsersättare</value>
+  </data>
+  <data name="Position_Strategic_AuditorDeputy_Plural" xml:space="preserve">
+    <value>Revisorsersättare</value>
+  </data>
+  <data name="Position_Strategic_Auditor_Plural" xml:space="preserve">
+    <value>Revisorer</value>
+  </data>
+  <data name="Position_Strategic_BoardChairperson" xml:space="preserve">
+    <value>Styrelseordförande</value>
+  </data>
+  <data name="Position_Strategic_BoardChairpersonDeputy" xml:space="preserve">
+    <value>Styrelsens vice ordförande</value>
+  </data>
+  <data name="Position_Strategic_BoardChairpersonDeputy_Plural" xml:space="preserve">
+    <value>Styrelsens vice ordförande</value>
+  </data>
+  <data name="Position_Strategic_BoardChairperson_Plural" xml:space="preserve">
+    <value>Styrelseordförande</value>
+  </data>
+  <data name="Position_Strategic_BoardDeputy" xml:space="preserve">
+    <value>Styrelsesuppleant</value>
+  </data>
+  <data name="Position_Strategic_BoardDeputy_Plural" xml:space="preserve">
+    <value>Styrelsesuppleanter</value>
+  </data>
+  <data name="Position_Strategic_BoardMember" xml:space="preserve">
+    <value>Styrelseledamot</value>
+  </data>
+  <data name="Position_Strategic_BoardMember_Plural" xml:space="preserve">
+    <value>Styrelseledamöter</value>
+  </data>
+  <data name="Position_Strategic_Observer" xml:space="preserve">
+    <value>Observatör</value>
+  </data>
+  <data name="Position_Strategic_Observer_Plural" xml:space="preserve">
+    <value>Observatörer</value>
+  </data>
   <data name="Position_System_SysadminAssistantReadOnly" xml:space="preserve">
     <value>Systemadministratörsassistent (endast läsrättighet)</value>
   </data>

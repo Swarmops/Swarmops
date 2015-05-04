@@ -150,9 +150,15 @@
     <value>Den nya organisationen har skapats. Du har tilldelats två års {0} i organisationen, så att du kan arbeta med den och sätta upp den ordentligt. Om du vill byta till att arbeta med din nya organisation, använd kontrollpanelen uppe till höger.</value>
     <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
   </data>
-  
-  
-  
+  <data name="CreateOrganization_Titles" xml:space="preserve">
+    <value>Befattningstitlar från början</value>
+  </data>
+  <data name="CreateOrganization_Titles_Commercial" xml:space="preserve">
+    <value>Kommersiella</value>
+  </data>
+  <data name="CreateOrganization_Titles_Nonprofit" xml:space="preserve">
+    <value>Ideella</value>
+  </data>
   
   <data name="EditOrganization_MemberNumberStyle" xml:space="preserve">
     <value>Numrering av {0}</value>
@@ -201,13 +207,29 @@
   <data name="EditOrganization_VanityDomain" xml:space="preserve">
     <value>Egendomän för organisationen</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
+  <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
+    <value>Ledande befattningar för {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Lokala uppbyggarbefattningar (vid varje geografi)</value>
+  </data>
+  <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
+    <value>Lönelista</value>
+  </data>
+  <data name="OrgStaffing_Header_StrategicPositions" xml:space="preserve">
+    <value>Strategiska befattningar för {0}</value>
+    <comment>The {0} is the org name.</comment>
+  </data>
+  <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
+    <value>Volontärer som väntar på svar</value>
+  </data>
+  <data name="OrgStaffing_Info" xml:space="preserve">
+    <value>Ställ in befattningsstrukturen för denna organisation, liksom dess bemanning på strategiska nivån (styrelsen) och ledande nivån (VD-nivå eller motsvarande) nivå. Du kan också hantera väntande volontärer och lönelistan här.</value>
+  </data>
+  <data name="OrgStaffing_PageTitle" xml:space="preserve">
+    <value>Organisationens bemanning</value>
+  </data>
   <data name="SystemSettings_AdminAddress" xml:space="preserve">
     <value>Adminnotiser från adress</value>
   </data>
@@ -223,8 +245,12 @@
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>Externt åtkomlig URL</value>
   </data>
-  
-  
+  <data name="SystemSettings_Header_CorrespondenceTxSettings" xml:space="preserve">
+    <value>Transmissionsinställningar för korrespondens</value>
+  </data>
+  <data name="SystemSettings_Header_SystemAdministrators" xml:space="preserve">
+    <value>Systemadministratörer</value>
+  </data>
   <data name="SystemSettings_Info" xml:space="preserve">
     <value>Olika tekniska inställningar för den här Swarmopsinstallationen. Inte specifika för någon organisation eller person, utan systemtäckande.</value>
   </data>
