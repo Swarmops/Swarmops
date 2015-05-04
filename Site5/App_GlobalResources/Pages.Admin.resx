@@ -224,7 +224,7 @@
     <comment>The {0} is the org name.</comment>
   </data>
   <data name="OrgStaffing_Header_WaitingVolunteers" xml:space="preserve">
-    <value>Volunteers Awating Response</value>
+    <value>Volunteers Awaiting Response</value>
   </data>
   <data name="OrgStaffing_Info" xml:space="preserve">
     <value>Set the staffing structure for this organization, as well as its staffing at the strategic (board) and executive (C-level or equivalent) levels. You can also manage waiting volunteers and the payroll from here.</value>
