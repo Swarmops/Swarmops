@@ -30,6 +30,7 @@ namespace Swarmops.Pages.Security
 
             if (!SwarmDb.Configuration.IsConfigured())
             {
+                // ReSharper disable once Html.PathError   <-- this line is required for Resharper to not flag the next line as invalid
                 Response.Redirect ("/Initialize", true);
                 return;
             }
