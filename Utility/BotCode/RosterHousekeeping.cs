@@ -34,14 +34,14 @@ namespace Swarmops.Utility.BotCode
             {
                 if (org.AcceptsMembers)
                 {
-                    Memberships memberships = org.GetMemberships();
+                    Participations participations = org.GetMemberships();
 
                     string orgSummary = org.Name + "\r\n";
 
                     // Iterate over membership roster and filter by date
 
                     List<int> relevantPersonIds = new List<int>();
-                    foreach (Membership membership in memberships)
+                    foreach (Participation membership in participations)
                     {
                         if (membership.MemberSince > membersAfter && membership.MemberSince < membersBefore)
                         {
@@ -112,9 +112,9 @@ namespace Swarmops.Utility.BotCode
 
             foreach (Organization org in orgs)
             {
-                Memberships memberships = Memberships.GetExpiring (org, lowerBound, upperBound);
+                Participations participations = Participations.GetExpiring (org, lowerBound, upperBound);
 
-                foreach (Membership membership in memberships)
+                foreach (Participation membership in participations)
                 {
                     if (membership.OrganizationId%7 != weekDayInteger)
                     {
@@ -206,10 +206,10 @@ namespace Swarmops.Utility.BotCode
 
             foreach (Organization organization in organizations)
             {
-                Memberships memberships = Memberships.GetExpired (organization);
+                Participations participations = Participations.GetExpired (organization);
                 // Mail each expiring member
 
-                foreach (Membership membership in memberships)
+                foreach (Participation membership in participations)
                 {
                     //only remove expired memberships
                     if (membership.Expires > DateTime.Now.Date)
@@ -222,13 +222,13 @@ namespace Swarmops.Utility.BotCode
 
                     // Mail
 
-                    Memberships personMemberships = person.GetMemberships();
-                    Memberships membershipsToDelete = new Memberships();
-                    foreach (Membership personMembership in personMemberships)
+                    Participations personParticipations = person.GetMemberships();
+                    Participations participationsToDelete = new Participations();
+                    foreach (Participation personMembership in personParticipations)
                     {
                         if (personMembership.Expires <= DateTime.Now.Date)
                         {
-                            membershipsToDelete.Add (personMembership);
+                            participationsToDelete.Add (personMembership);
                         }
                     }
 
@@ -236,15 +236,15 @@ namespace Swarmops.Utility.BotCode
                     ExpiredMail expiredmail = new ExpiredMail();
                     string membershipsIds = "";
 
-                    if (membershipsToDelete.Count > 1)
+                    if (participationsToDelete.Count > 1)
                     {
-                        foreach (Membership personMembership in membershipsToDelete)
+                        foreach (Participation personMembership in participationsToDelete)
                         {
                             membershipsIds += "," + personMembership.MembershipId;
                         }
                         membershipsIds = membershipsIds.Substring (1);
                         string expiredMemberships = "";
-                        foreach (Membership personMembership in membershipsToDelete)
+                        foreach (Participation personMembership in participationsToDelete)
                         {
                             if (personMembership.OrganizationId != organization.Identity)
                             {
@@ -272,7 +272,7 @@ namespace Swarmops.Utility.BotCode
 
                     string orgIdString = string.Empty;
 
-                    foreach (Membership personMembership in membershipsToDelete)
+                    foreach (Participation personMembership in participationsToDelete)
                     {
                         if (personMembership.Active)
                         {
@@ -292,11 +292,11 @@ namespace Swarmops.Utility.BotCode
 
             foreach (Organization org in orgs)
             {
-                Memberships memberships = Memberships.GetExpiring (org, dateExpiry);
+                Participations participations = Participations.GetExpiring (org, dateExpiry);
 
                 // Mail each expiring member
 
-                foreach (Membership membership in memberships)
+                foreach (Participation membership in participations)
                 {
                     try
                     {
@@ -376,7 +376,7 @@ namespace Swarmops.Utility.BotCode
         }
 
         [Obsolete ("Generalize and localize this function.", true)]
-        public static void SendReminderMail (Membership membership)
+        public static void SendReminderMail (Participation participation)
         {
             /*
             // First, determine the organization template to use. Prioritize a long ancestry.

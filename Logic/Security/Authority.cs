@@ -340,7 +340,7 @@ namespace Swarmops.Logic.Security
             }
             orgLookup[Organization.Identity] = true;
 
-            Dictionary<int, List<BasicMembership>> membershipLookup = null;
+            Dictionary<int, List<BasicParticipation>> membershipLookup = null;
 
             if (HasSystemAccess(AccessType.Read) || HasAccess(new Access(Organization, aspect, AccessType.Read)))
             {
@@ -348,7 +348,7 @@ namespace Swarmops.Logic.Security
                 // or org-wide read access (at least) to participant/personal data at current Organization
 
                 // Optimization: Get all memberships in advance, without instantiating logic objects
-                membershipLookup = Memberships.GetMembershipsForPeople (rawList.Identities, 0);
+                membershipLookup = Participations.GetParticipationsForPeople (rawList.Identities, 0);
 
                 foreach (Person person in rawList)
                 {
@@ -358,9 +358,9 @@ namespace Swarmops.Logic.Security
 
                     if (membershipLookup.ContainsKey (person.Identity))
                     {
-                        List<BasicMembership> list = membershipLookup[person.Identity];
+                        List<BasicParticipation> list = membershipLookup[person.Identity];
 
-                        foreach (BasicMembership basicMembership in list)
+                        foreach (BasicParticipation basicMembership in list)
                         {
                             if (orgLookup.ContainsKey (basicMembership.OrganizationId))
                             {
@@ -407,8 +407,8 @@ namespace Swarmops.Logic.Security
             geoLookup[Position.GeographyId] = true;
 
             // Optimization: Get all memberships in advance, without instantiating logic objects
-            Dictionary<int, List<BasicMembership>> personLookup =
-                Memberships.GetMembershipsForPeople(rawList.Identities, 0);
+            Dictionary<int, List<BasicParticipation>> personLookup =
+                Participations.GetParticipationsForPeople(rawList.Identities, 0);
 
             foreach (Person person in rawList)
             {
@@ -422,9 +422,9 @@ namespace Swarmops.Logic.Security
                 {
                     // Geography hit. Test Membership / Organization.
 
-                    List<BasicMembership> list = personLookup[person.Identity];
+                    List<BasicParticipation> list = personLookup[person.Identity];
 
-                    foreach (BasicMembership basicMembership in list)
+                    foreach (BasicParticipation basicMembership in list)
                     {
                         if (orgLookup.ContainsKey (basicMembership.OrganizationId))
                         {

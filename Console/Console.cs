@@ -288,9 +288,9 @@ namespace Swarmops
                     bool upMember = false;
                     bool ppMember = false;
 
-                    Memberships memberships = person.GetMemberships();
+                    Participations participations = person.GetMemberships();
 
-                    foreach (Membership membership in memberships)
+                    foreach (Participation membership in participations)
                     {
                         if (membership.Organization.Inherits(2))
                         {
@@ -346,9 +346,9 @@ namespace Swarmops
 
             foreach (Organization org in orgTree)
             {
-                Memberships memberships = Memberships.ForOrganization (org, true);
+                Participations participations = Participations.ForOrganization (org, true);
 
-                foreach (Membership membership in memberships)
+                foreach (Participation membership in participations)
                 {
                     if (membership.MemberSince < date && (membership.Active || membership.DateTerminated > date))
                     {
@@ -389,9 +389,9 @@ namespace Swarmops
                     System.Diagnostics.Debugger.Break();
                 }
 
-                Memberships memberships = person.GetMemberships();
+                Participations participations = person.GetMemberships();
 
-                foreach (Membership membership in memberships)
+                foreach (Participation membership in participations)
                 {
                     if (membership.OrganizationId == 1 && membership.Active)
                     {
@@ -588,8 +588,8 @@ namespace Swarmops
                     {
                         bool activeMemberships = false;
 
-                        Memberships memberships = person.GetMemberships();
-                        foreach (Membership membership in memberships)
+                        Participations participations = person.GetMemberships();
+                        foreach (Participation membership in participations)
                         {
                             if (membership.Active)
                             {
@@ -709,9 +709,9 @@ namespace Swarmops
 				bool foundMismatch = false;
 				DateTime expiry = DateTime.MinValue;
 
-				Memberships memberships = person.GetMemberships();
+				Participations participations = person.GetMemberships();
 
-				foreach (Membership membership in memberships)
+				foreach (Participation membership in participations)
 				{
 					if (membership.Active)
 					{
@@ -739,7 +739,7 @@ namespace Swarmops
 					Console.WriteLine ("");
 					Console.WriteLine ("Found mismatch for " + person.Name + ":");
 
-					foreach (Membership membership in memberships)
+					foreach (Participation membership in participations)
 					{
 						Console.WriteLine (" - " + membership.Organization.Name + ": expires " + membership.Expires.ToShortDateString());
 						if (expiry != membership.Expires)
@@ -911,23 +911,23 @@ namespace Swarmops
 			{
 				// For each membership in this suborg,§
 
-				Memberships memberships = org.GetMemberships();
+				Participations participations = org.GetMemberships();
 
 				Console.WriteLine();
-				Console.WriteLine(org.Name + ": " + memberships.Count + " members");
+				Console.WriteLine(org.Name + ": " + participations.Count + " members");
 				Console.WriteLine ("----------------------------------------------------------");
 
-				foreach (Membership membership in memberships)
+				foreach (Participation membership in participations)
 				{
 					// Get the person for this membership and verify that he/she is also a member of PP
 
 					Person member = membership.Person;
 
-					Memberships personMemberships = member.GetMemberships();
+					Participations personParticipations = member.GetMemberships();
 
 					bool ppMember = false;
 
-					foreach (Membership testMembership in personMemberships)
+					foreach (Participation testMembership in personParticipations)
 					{
 						if (testMembership.OrganizationId == 1)
 						{
@@ -1397,9 +1397,9 @@ namespace Swarmops
                     Person person = Person.FromIdentity(personId);
                     writer.WriteLine(person.Name + " (#" + person.Identity.ToString() + ")");
 
-                    Memberships memberships = person.GetMemberships();
+                    Participations participations = person.GetMemberships();
 
-                    foreach (Membership membership in memberships)
+                    foreach (Participation membership in participations)
                     {
                         if (membership.OrganizationId == 1)
                         {
@@ -1562,9 +1562,9 @@ namespace Swarmops
             {
                 Console.WriteLine(person.Name + " (#" + person.Identity.ToString() + ")");
 
-                Memberships memberships = person.GetMemberships();
+                Participations participations = person.GetMemberships();
 
-                foreach (Membership membership in memberships)
+                foreach (Participation membership in participations)
                 {
                     if (membership.OrganizationId == 1)
                     {

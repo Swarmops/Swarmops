@@ -16,10 +16,10 @@ namespace Swarmops.Logic.Support.LogEntries
             // Do not call empty ctor directly. Intended for serialization only.
         }
 
-        public PersonAddedLogEntry (Membership membership, Person actingPerson)
+        public PersonAddedLogEntry (Participation participation, Person actingPerson)
         {
             DateTime = System.DateTime.UtcNow;
-            MembershipId = membership.Identity;
+            MembershipId = participation.Identity;
             ActingPersonId = actingPerson.Identity;
         }
     }

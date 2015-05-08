@@ -31,10 +31,10 @@ namespace Swarmops.Frontend.Pages.v5.Security
 
         private void PopulateRepeater()
         {
-            Memberships memberships = CurrentUser.GetMemberships();
+            Participations participations = CurrentUser.GetMemberships();
 
             List<OrganizationParameters> availableOrganizations = new List<OrganizationParameters>();
-            foreach (Membership membership in memberships)
+            foreach (Participation membership in participations)
             {
                 if (membership.OrganizationId == 1 && !PilotInstallationIds.IsPilot (PilotInstallationIds.PiratePartySE))
                 {

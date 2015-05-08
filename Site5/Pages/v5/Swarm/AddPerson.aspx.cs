@@ -114,14 +114,14 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
                 street, this.TextPostal.Text, this.TextCity.Text, this.DropCountries.SelectedValue, dateOfBirth,
                 (PersonGender)Enum.Parse(typeof(PersonGender), this.DropGenders.SelectedValue));
 
-            Membership newMembership = Membership.Create (newPerson, CurrentOrganization, DateTime.Today.AddYears (1));
+            Participation newParticipation = Participation.Create (newPerson, CurrentOrganization, DateTime.Today.AddYears (1));
 
-            OutboundComm.CreateMembershipLetter (ParticipantMailType.MemberAddedWelcome, newMembership, CurrentUser);
+            OutboundComm.CreateMembershipLetter (ParticipantMailType.MemberAddedWelcome, newParticipation, CurrentUser);
 
             SwarmopsLogEntry logEntry = SwarmopsLog.CreateEntry (newPerson,
-                new Swarmops.Logic.Support.LogEntries.PersonAddedLogEntry (newMembership, CurrentUser));
+                new Swarmops.Logic.Support.LogEntries.PersonAddedLogEntry (newParticipation, CurrentUser));
 
-            logEntry.CreateAffectedObject (newMembership);
+            logEntry.CreateAffectedObject (newParticipation);
             logEntry.CreateAffectedObject (CurrentUser);
 
             // Clear form and make way for next person

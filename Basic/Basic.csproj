@@ -131,7 +131,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Types\Swarm\BasicMembership.cs" />
+    <Compile Include="Types\Swarm\BasicParticipation.cs" />
     <Compile Include="Types\Structure\BasicOrganization.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

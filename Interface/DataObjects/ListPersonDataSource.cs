@@ -67,27 +67,27 @@ public class ListPersonDataSource
         if (this.listedPersons != null)
         {
             People ppl = People.FromIdentities(this.listedPersons);
-            Dictionary<int, List<BasicMembership>> membershipTable =
-                Memberships.GetMembershipsForPeople(this.listedPersons, Membership.GracePeriod);
-            Memberships membershipsToLoad = new Memberships();
+            Dictionary<int, List<BasicParticipation>> membershipTable =
+                Participations.GetParticipationsForPeople(this.listedPersons, Participation.GracePeriod);
+            Participations participationsToLoad = new Participations();
             foreach (Person p in ppl)
             {
                 if (membershipTable.ContainsKey(p.Identity))
                 {
-                    foreach (BasicMembership bm in membershipTable[p.Identity])
+                    foreach (BasicParticipation bm in membershipTable[p.Identity])
                     {
                         if (bm.OrganizationId == this.selectedOrgId)
                         {
-                            Membership ms = Membership.FromBasic(bm);
-                            membershipsToLoad.Add(ms);
+                            Participation ms = Participation.FromBasic(bm);
+                            participationsToLoad.Add(ms);
                         }
                     }
                 }
             }
-            Membership.LoadPaymentStatuses(membershipsToLoad);
+            Participation.LoadPaymentStatuses(participationsToLoad);
 
-            Dictionary<int, Membership> memberships = new Dictionary<int, Membership>();
-            foreach (Membership ms in membershipsToLoad)
+            Dictionary<int, Participation> memberships = new Dictionary<int, Participation>();
+            foreach (Participation ms in participationsToLoad)
             {
                 memberships[ms.Identity] = ms;
             }
@@ -97,11 +97,11 @@ public class ListPersonDataSource
                 ListPerson lp = new ListPerson(p);
                 if (membershipTable.ContainsKey(p.Identity))
                 {
-                    foreach (BasicMembership bm in membershipTable[p.Identity])
+                    foreach (BasicParticipation bm in membershipTable[p.Identity])
                     {
                         if (bm.OrganizationId == this.selectedOrgId)
                         {
-                            Membership ms = memberships[bm.MembershipId];
+                            Participation ms = memberships[bm.MembershipId];
                             lp.JoinedDate = ms.MemberSince;
                             lp.ExpiresDate = ms.Expires;
                             lp.MembershipId = ms.Identity;

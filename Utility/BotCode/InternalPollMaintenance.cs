@@ -54,16 +54,16 @@ namespace Swarmops.Utility.BotCode
 
                             Organizations orgTree = poll.Organization.ThisAndBelow();
 
-                            Memberships memberships = Memberships.ForOrganizations (orgTree);
+                            Participations participations = Participations.ForOrganizations (orgTree);
 
                             Dictionary<int, bool> dupeCheck = new Dictionary<int, bool>();
 
                             int count = 0;
 
-                            foreach (Membership membership in memberships)
+                            foreach (Participation membership in participations)
                             {
                                 Console.Write ("\r - voters: {0:D6}/{1:D6} (person #{2:D6})...", ++count,
-                                    memberships.Count, membership.PersonId);
+                                    participations.Count, membership.PersonId);
 
                                 if (!membership.Active)
                                 {

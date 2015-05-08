@@ -364,10 +364,10 @@
     <Compile Include="Swarm\ExternalActivity.cs" />
     <Compile Include="Swarm\ExternalIdentity.cs" />
     <Compile Include="Swarm\Interfaces.cs" />
-    <Compile Include="Swarm\Membership.cs" />
+    <Compile Include="Swarm\Participation.cs" />
     <Compile Include="Swarm\MembershipEvent.cs" />
     <Compile Include="Swarm\MembershipEvents.cs" />
-    <Compile Include="Swarm\Memberships.cs" />
+    <Compile Include="Swarm\Participations.cs" />
     <Compile Include="Swarm\OfficerChain.cs" />
     <Compile Include="Swarm\Parley.cs" />
     <Compile Include="Swarm\ParleyAttendee.cs" />

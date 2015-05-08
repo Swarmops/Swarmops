@@ -90,7 +90,7 @@
     <Compile Include="Database-InternalPolls.cs" />
     <Compile Include="Database-MailTemplates.cs" />
     <Compile Include="Database-Media.cs" />
-    <Compile Include="Database-Memberships.cs" />
+    <Compile Include="Database-Participation.cs" />
     <Compile Include="Database-Geographies.cs" />
     <Compile Include="Database-MotionAmendments.cs" />
     <Compile Include="Database-Motions.cs" />

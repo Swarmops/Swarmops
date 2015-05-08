@@ -449,9 +449,9 @@ namespace Swarmops.Logic.Special.Sweden
 
                                 bool hasActiveMemberships = false;
 
-                                Memberships memberships = person.GetMemberships();
+                                Participations participations = person.GetMemberships();
 
-                                foreach (Membership membership in memberships)
+                                foreach (Participation membership in participations)
                                 {
                                     if (membership.Active)
                                     {

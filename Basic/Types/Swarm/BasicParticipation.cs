@@ -3,9 +3,9 @@ using Swarmops.Common.Interfaces;
 
 namespace Swarmops.Basic.Types.Swarm
 {
-    public class BasicMembership : IHasIdentity
+    public class BasicParticipation : IHasIdentity
     {
-        public BasicMembership (int personId, int organizationId)
+        public BasicParticipation (int personId, int organizationId)
         {
             this.PersonId = personId;
             this.OrganizationId = organizationId;
@@ -13,14 +13,14 @@ namespace Swarmops.Basic.Types.Swarm
             this.DateTerminated = DateTime.MinValue;
         }
 
-        public BasicMembership (int personId, int organizationId, DateTime memberSince, DateTime expires)
+        public BasicParticipation (int personId, int organizationId, DateTime memberSince, DateTime expires)
             : this (personId, organizationId)
         {
             this.MemberSince = memberSince;
             this.Expires = expires;
         }
 
-        public BasicMembership (int membershipId, int personId, int organizationId, DateTime memberSince,
+        public BasicParticipation (int membershipId, int personId, int organizationId, DateTime memberSince,
             DateTime expires, bool active, DateTime dateTerminated)
         {
             this.MembershipId = membershipId;
@@ -32,7 +32,7 @@ namespace Swarmops.Basic.Types.Swarm
             this.DateTerminated = dateTerminated;
         }
 
-        public BasicMembership (BasicMembership original)
+        public BasicParticipation (BasicParticipation original)
             : this (
                 original.MembershipId, original.PersonId, original.OrganizationId, original.MemberSince,
                 original.Expires, original.Active, original.DateTerminated)

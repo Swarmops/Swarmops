@@ -31,7 +31,7 @@ namespace Swarmops.Logic.DataObjects
                 row.OrgId = orgId;
                 Geographies gTree = geo.ThisAndBelow();
                 int[] members = SwarmDb.GetDatabaseForReading()
-                    .GetMembersForOrganizationsAndGeographies (orgs.Identities, gTree.Identities);
+                    .GetParticipantsForOrganizationsAndGeographies (orgs.Identities, gTree.Identities);
             }
 
 

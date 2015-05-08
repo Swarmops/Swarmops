@@ -290,17 +290,17 @@ namespace Swarmops.Logic.Structure
 
         public int GetMembershipCount()
         {
-            return Memberships.GetMemberCountForOrganizations (this);
+            return Participations.GetParticipantCountForOrganizations (this);
         }
 
         public int GetMemberCount()
         {
-            return SwarmDb.GetDatabaseForReading().GetMemberCountForOrganizations (Identities);
+            return SwarmDb.GetDatabaseForReading().GetParticipantCountForOrganizations (Identities);
         }
 
         public int GetMemberCountForGeographies (Geographies geographies)
         {
-            return SwarmDb.GetDatabaseForReading().GetMemberCountForOrganizationsAndGeographies (Identities,
+            return SwarmDb.GetDatabaseForReading().GetParticipantCountForOrganizationsAndGeographies (Identities,
                 geographies.Identities);
         }
 

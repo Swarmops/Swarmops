@@ -12,17 +12,17 @@ namespace Swarmops.Logic.DataObjects
 #if !__MonoCS__
         [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Membership[] Select (int personId)
+        public static Participation[] Select (int personId)
         {
             return
-                Memberships.FromArray (SwarmDb.GetDatabaseForReading().GetMemberships (Person.FromIdentity (personId)))
+                Participations.FromArray (SwarmDb.GetDatabaseForReading().GetParticipations (Person.FromIdentity (personId)))
                     .ToArray();
         }
 
 #if !__MonoCS__
         [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Membership[] Select (Person person)
+        public static Participation[] Select (Person person)
         {
             return Select (person.Identity);
         }
@@ -30,9 +30,9 @@ namespace Swarmops.Logic.DataObjects
 #if !__MonoCS__
         [DataObjectMethod (DataObjectMethodType.Select)]
 #endif
-        public static Membership[] SelectStatic (Memberships memberships)
+        public static Participation[] SelectStatic (Participations participations)
         {
-            return memberships.ToArray();
+            return participations.ToArray();
         }
     }
 }

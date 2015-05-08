@@ -19,11 +19,11 @@ namespace Swarmops.Logic.Swarm
             get { return LogicServices.ObjectsToIdentifiers (ToArray()); }
         }
 
-        public static People FromMemberships (Memberships memberships)
+        public static People FromMemberships (Participations participations)
         {
             List<int> personIds = new List<int>();
 
-            foreach (Membership membership in memberships)
+            foreach (Participation membership in participations)
             {
                 personIds.Add (membership.PersonId);
             }
@@ -312,9 +312,9 @@ namespace Swarmops.Logic.Swarm
 
             // Get the list of all memberships
 
-            Dictionary<int, List<BasicMembership>> memberships =
+            Dictionary<int, List<BasicParticipation>> memberships =
                 SwarmDb.GetDatabaseForReading()
-                    .GetMembershipsForPeople (LogicServices.ObjectsToIdentifiers (candidates));
+                    .GetParticipationsForPeople (LogicServices.ObjectsToIdentifiers (candidates));
 
             People result = new People();
 
@@ -324,7 +324,7 @@ namespace Swarmops.Logic.Swarm
 
                 if (memberships.ContainsKey (basicPerson.Identity))
                 {
-                    foreach (BasicMembership membership in memberships[basicPerson.Identity])
+                    foreach (BasicParticipation membership in memberships[basicPerson.Identity])
                     {
                         if (lookup.ContainsKey (membership.OrganizationId))
                         {

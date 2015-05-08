@@ -40,13 +40,13 @@ namespace Swarmops.Logic.Swarm
 
             // Second phase, load all memberships
 
-            BasicMembership[] allMemberships = SwarmDb.GetDatabaseForReading().GetMemberships();
+            BasicParticipation[] allParticipations = SwarmDb.GetDatabaseForReading().GetParticipations();
 
             // Third phase - for every membership, generate one or two membership events
 
             MembershipEvents result = new MembershipEvents();
 
-            foreach (BasicMembership membership in allMemberships)
+            foreach (BasicParticipation membership in allParticipations)
             {
                 int geographyId = 1;
                 int birthYear = 0;

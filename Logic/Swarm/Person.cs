@@ -397,7 +397,7 @@ namespace Swarmops.Logic.Swarm
 
                 //not set, make a guess...
 
-                foreach (Membership ms in GetMemberships (false))
+                foreach (Participation ms in GetMemberships (false))
                 {
                     try
                     {
@@ -616,21 +616,21 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        public Memberships GetMemberships (bool includeTerminated)
+        public Participations GetMemberships (bool includeTerminated)
         {
             if (!includeTerminated)
             {
                 return GetMemberships();
             }
 
-            return Memberships.FromArray (SwarmDb.GetDatabaseForReading().GetMemberships (this));
+            return Participations.FromArray (SwarmDb.GetDatabaseForReading().GetParticipations (this));
         }
 
-        public Memberships GetMemberships()
+        public Participations GetMemberships()
         {
             return
-                Memberships.FromArray (SwarmDb.GetDatabaseForReading()
-                    .GetMemberships (this, DatabaseCondition.ActiveTrue));
+                Participations.FromArray (SwarmDb.GetDatabaseForReading()
+                    .GetParticipations (this, DatabaseCondition.ActiveTrue));
         }
 
 
@@ -640,12 +640,12 @@ namespace Swarmops.Logic.Swarm
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <param name="orgId"></param>
         /// <returns></returns>
-        public Membership GetRecentMembership (int gracePeriod, int orgId)
+        public Participation GetRecentMembership (int gracePeriod, int orgId)
         {
             List<int> orgIdList = new List<int>();
             orgIdList.Add (orgId);
-            Memberships mss = GetRecentMemberships (orgIdList, gracePeriod);
-            foreach (Membership ms in mss)
+            Participations mss = GetRecentMemberships (orgIdList, gracePeriod);
+            foreach (Participation ms in mss)
             {
                 if (ms.OrganizationId == orgId)
                     return ms;
@@ -658,7 +658,7 @@ namespace Swarmops.Logic.Swarm
         /// </summary>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <returns></returns>
-        public Memberships GetRecentMemberships (int gracePeriod)
+        public Participations GetRecentMemberships (int gracePeriod)
         {
             List<int> orgIdList = new List<int>();
             return GetRecentMemberships (orgIdList, gracePeriod);
@@ -670,7 +670,7 @@ namespace Swarmops.Logic.Swarm
         /// <param name="orgs">List of ids. If empty, all orgs</param>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <returns></returns>
-        public Memberships GetRecentMemberships (Organizations orgs, int gracePeriod)
+        public Participations GetRecentMemberships (Organizations orgs, int gracePeriod)
         {
             List<int> orgIdList = new List<int> (orgs.Identities);
             return GetRecentMemberships (orgIdList, gracePeriod);
@@ -682,16 +682,16 @@ namespace Swarmops.Logic.Swarm
         /// <param name="orgs">List of ids. If empty, all orgs</param>
         /// <param name="gracePeriod">For exired, number of days to add to allow it to be returned</param>
         /// <returns></returns>
-        public Memberships GetRecentMemberships (List<int> orgs, int gracePeriod)
+        public Participations GetRecentMemberships (List<int> orgs, int gracePeriod)
         {
-            Memberships memberships = GetMemberships (true);
-            Dictionary<int, Membership> collectMembers = new Dictionary<int, Membership>();
+            Participations participations = GetMemberships (true);
+            Dictionary<int, Participation> collectMembers = new Dictionary<int, Participation>();
 
-            memberships.Sort (
-                delegate (Membership ms1, Membership ms2) { return ms2.DateTerminated.CompareTo (ms1.DateTerminated); });
+            participations.Sort (
+                delegate (Participation ms1, Participation ms2) { return ms2.DateTerminated.CompareTo (ms1.DateTerminated); });
 
             //Keep one for each org, the active one or the one with the highest Terminationdate
-            foreach (Membership membership in memberships)
+            foreach (Participation membership in participations)
             {
                 if (orgs.Count == 0 || orgs.Contains (membership.OrganizationId))
                 {
@@ -710,13 +710,13 @@ namespace Swarmops.Logic.Swarm
                 }
             }
 
-            Memberships collectedMS = new Memberships();
+            Participations collectedMS = new Participations();
             collectedMS.AddRange (collectMembers.Values);
 
             if (collectedMS.Count > 0)
             {
                 //sort to get most recent first
-                collectedMS.Sort (delegate (Membership ms1, Membership ms2)
+                collectedMS.Sort (delegate (Participation ms1, Participation ms2)
                 {
                     if (ms1.Active && ms1.Active != ms2.Active)
                         return -1; // active before terminated
@@ -785,14 +785,14 @@ namespace Swarmops.Logic.Swarm
             return newPerson;
         }
 
-        public Membership AddMembership (Organization organization, DateTime expires)
+        public Participation AddMembership (Organization organization, DateTime expires)
         {
             return AddMembership (organization.Identity, expires);
         }
 
-        public Membership AddMembership (int organizationId, DateTime expires)
+        public Participation AddMembership (int organizationId, DateTime expires)
         {
-            return Membership.Create (Identity, organizationId, expires);
+            return Participation.Create (Identity, organizationId, expires);
         }
 
         private bool? HasExplicitSubscription (int newsletterFeedId)
@@ -1023,9 +1023,9 @@ namespace Swarmops.Logic.Swarm
 
         public bool MemberOf (int orgId)
         {
-            Memberships memberships = GetMemberships();
+            Participations participations = GetMemberships();
 
-            foreach (Membership membership in memberships)
+            foreach (Participation membership in participations)
             {
                 if (membership.OrganizationId == orgId)
                 {
@@ -1038,8 +1038,8 @@ namespace Swarmops.Logic.Swarm
 
         public bool MemberOfWithInherited (int orgId)
         {
-            Memberships memberships = GetMemberships();
-            foreach (Membership membership in memberships)
+            Participations participations = GetMemberships();
+            foreach (Participation membership in participations)
             {
                 if (membership.Organization.IsOrInherits (orgId))
                 {

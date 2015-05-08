@@ -45,7 +45,7 @@ namespace Swarmops.Logic.Structure
             {
                 People members =
                     People.FromMemberships (
-                        Memberships.ForOrganizations (Organization.FromIdentity (orgId).ThisAndBelow()));
+                        Participations.ForOrganizations (Organization.FromIdentity (orgId).ThisAndBelow()));
 
                 foreach (Person person in members)
                 {

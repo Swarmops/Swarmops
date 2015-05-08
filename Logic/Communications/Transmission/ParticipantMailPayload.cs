@@ -25,7 +25,7 @@ namespace Swarmops.Logic.Communications.Transmission
         public string BodyTemplate { get; set; }
 
 
-        public ParticipantMailPayload (ParticipantMailType mailType, Membership membership, Person actingPerson)
+        public ParticipantMailPayload (ParticipantMailType mailType, Participation participation, Person actingPerson)
         {
             Strings = new SerializableDictionary<MailPayloadString, string>();
 
@@ -33,10 +33,10 @@ namespace Swarmops.Logic.Communications.Transmission
             {
                 case ParticipantMailType.MemberAddedWelcome:
                     Strings[MailPayloadString.ActingPerson] = actingPerson.Name;
-                    Strings[MailPayloadString.MembershipExpiry] = membership.Expires.ToLongDateString();
-                    Strings[MailPayloadString.OrganizationName] = membership.Organization.Name;
+                    Strings[MailPayloadString.MembershipExpiry] = participation.Expires.ToLongDateString();
+                    Strings[MailPayloadString.OrganizationName] = participation.Organization.Name;
                     Strings[MailPayloadString.Regularship] =
-                        Participant.Localized (membership.Organization.RegularLabel, TitleVariant.Ship);
+                        Participant.Localized (participation.Organization.RegularLabel, TitleVariant.Ship);
 
                     BodyTemplate =
                         Resources.Logic_Communications_Transmission_DefaultCommTemplates

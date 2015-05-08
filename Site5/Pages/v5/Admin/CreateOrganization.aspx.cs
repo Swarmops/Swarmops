@@ -137,7 +137,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
             Positions.CreateOrganizationDefaultPositions (newOrganization, titleType);
 
-            Membership.Create (CurrentUser, newOrganization, DateTime.UtcNow.AddYears (2));
+            Participation.Create (CurrentUser, newOrganization, DateTime.UtcNow.AddYears (2));
 
             string successMessage = String.Format (Resources.Pages.Admin.CreateOrganization_Success,
                 Participant.Localized (peopleLabel, TitleVariant.Ship));

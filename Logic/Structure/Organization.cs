@@ -437,7 +437,7 @@ namespace Swarmops.Logic.Structure
 
         public int GetMemberCount()
         {
-            return Memberships.GetMemberCountForOrganization (this);
+            return Participations.GetParticipantCountForOrganization (this);
         }
 
         public NewsletterFeeds GetNewsletterFeeds()
@@ -893,12 +893,12 @@ namespace Swarmops.Logic.Structure
         }
 
 
-        public Memberships GetMemberships (bool includeTerminated)
+        public Participations GetMemberships (bool includeTerminated)
         {
-            return Memberships.ForOrganization (this, includeTerminated);
+            return Participations.ForOrganization (this, includeTerminated);
         }
 
-        public Memberships GetMemberships()
+        public Participations GetMemberships()
         {
             return GetMemberships (false);
         }
