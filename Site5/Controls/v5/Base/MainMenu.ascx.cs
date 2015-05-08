@@ -61,6 +61,19 @@ namespace Swarmops.Controls.Base
             string localizedText = "RESOURCE NOT FOUND";
             string prettyNavUrl = menuItem.NavigateUrl ?? string.Empty;
 
+            if (menuItem.Type == MenuItemType.SpecialSelfSignup)
+            {
+                if (string.IsNullOrEmpty (CurrentOrganization.VanityDomain))
+                {
+                    prettyNavUrl = "/Signup?OrganizationId=" + CurrentOrganization.Identity;
+                }
+                else
+                {
+                    prettyNavUrl = "//" + CurrentOrganization.VanityDomain + "/Signup";
+                }
+                menuItem.Type = MenuItemType.Link;  // once the link is set, change to type Link to go into normal logic
+            }
+
             if (!Debugger.IsAttached)
             {
                 prettyNavUrl = prettyNavUrl.Replace ("/Pages/v5/", "/").Replace (".aspx", "");

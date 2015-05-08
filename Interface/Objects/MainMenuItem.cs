@@ -152,6 +152,11 @@ namespace Swarmops.Interface.Objects
         /// <summary>
         ///     SPECIAL CASE: Close Books menu item
         /// </summary>
-        SpecialCloseBooks
+        SpecialCloseBooks,
+
+        /// <summary>
+        ///     SPECIAL CASE: Self-signup menu item
+        /// </summary>
+        SpecialSelfSignup
     }
 }

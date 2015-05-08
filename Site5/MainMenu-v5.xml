@@ -42,7 +42,7 @@
                 <ResourceKey>People_SelfSignup</ResourceKey>
                 <UserLevel>2</UserLevel>
                 <Permissions />
-                <Type>Disabled</Type>
+                <Type>SelfSignup</Type>
                 <Children />
             </MainMenuItem>
 
