@@ -1,0 +1,406 @@
+﻿/*   
+  SmartWizard 2.0 plugin 
+  jQuery Wizard control Plugin
+  by Dipu
+  
+  http://www.techlaboratory.net
+  http://tech-laboratory.blogspot.com
+*/
+.swMain {
+  position:relative;
+  display:block;
+  margin:0;
+  padding:0;
+  border: 0px solid #CCC;
+  overflow:visible;
+  /* float:left;
+  width:980px; */
+}
+.swMain .stepContainer {
+  display:block;
+  position: relative;
+  margin: 0;
+  padding:0;    
+  border: 0px solid #CCC;    
+  overflow:hidden;
+  clear:right;
+  height:300px;
+}
+
+.swMain .stepContainer div.content {
+  float:left;
+  margin: 0;
+  padding:5px;
+	padding-left: 15px;
+  text-align:left;
+  overflow:auto;    
+  z-index:88; 
+  clear:both;
+  display:block;
+	height: 300px;
+  /*position: absolute;  
+  border-radius: 5px;
+  width:470px;
+  border: 1px solid #CCC; 
+  font: normal 12px Ubuntu, sans-serif; 
+  color:#5A5655;   
+  background-color:#F8F8F8;  
+  height:300px;*/
+}
+
+.swMain div.actionBar {
+  display:block;
+  position: relative; 
+  clear:right;
+  margin:             3px 0 0 0;   
+  /*border:             1px solid #CCC;*/
+  padding:            0;    
+  color:              #5A5655;   
+  /*background-color:   #F8F8F8;*/
+  height:40px;
+/*  width:730px; 
+  float:right; */  
+  text-align:left;
+  overflow:auto;    
+  z-index:88; 
+  /*border-radius: 5px;*/
+}
+
+.swMain .stepContainer .StepTitle {
+  display:block;
+  position: relative;
+  margin:0;   
+  border:1px solid #E0E0E0;
+  padding:5px;   
+  font: bold 16px Ubuntu, sans-serif; 
+  color:#5A5655;   
+  background-color:#E0E0E0;
+  clear:both;
+  text-align:left; 
+  z-index:88;
+  border-radius: 5px;
+}
+.swMain ul.anchor {
+  position: relative;
+  display:block;
+  float:left;
+  list-style: none;
+  padding: 0px;  
+  margin: 5px 10px 0 0;
+  border: 0px solid #CCCCCC;    
+  background: transparent; /*#EEEEEE */
+}
+.swMain ul.anchor li{ 
+  position: relative; 
+  display:block;
+  margin: 0;
+  padding: 0; 
+  padding-top:3px;
+  padding-bottom: 3px;
+  border: 0px solid #E0E0E0;
+	float: left;
+	clear: both;
+}
+
+/* Anchor Element Style */
+.swMain ul.anchor li a {
+  display:block;
+  position:relative;
+  float:left;
+  margin:0;
+  padding:3px;
+  height:55px;
+  width:180px;
+  text-decoration: none;
+  outline-style:none;
+  border-radius: 5px;
+  z-index:99;
+}
+.swMain ul.anchor li a .stepNumber{
+  position:relative;
+  float:left;
+  width:30px;
+  text-align: center;
+  padding:5px;
+  padding-top:0;
+  font: 300 45px Ubuntu, sans-serif;
+}
+.swMain ul.anchor li a .stepDesc{
+  position:relative;
+  display:block;
+  float:left;
+  text-align: left;
+  padding:5px;
+  width:70%;
+  font: bold 15px Ubuntu, sans-serif;
+}
+.swMain ul.anchor li a .stepDesc small{
+  font: normal 11px Ubuntu, sans-serif;
+	line-height: 12px;
+}
+.swMain ul.anchor li a.selected{
+  color:#7F5500;
+  background: #EA8511;  /* EA8511 */
+  border: 1px solid #EA8511;
+  cursor:text;
+	box-shadow: 2px 2px 4px #7F5500;
+  
+	background-color: #FFBC37;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC145', endColorstr='#F0AB22');  /* MSIE */
+	background: -moz-linear-gradient(top, #FFC145, #F0AB22);  /* Mozilla */
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22)); /* Chrome, Safari */
+	text-shadow: #FFEDC8 0px 0px 3px, #FFEDC8 0px 0px 3px;
+	
+	border-color: #C78B15;
+	position: relative;
+	top: -1px;
+	left: -1px;
+}
+.swMain ul.anchor li a.selected:hover {
+  /* color:#F8F8F8;  */
+  /* background: #EA8511;  */
+}
+
+.swMain ul.anchor li a.done { 
+  position:relative;
+  color:#FFF;  
+  background: #8CC63F;  
+  border: 1px solid #8CC63F;   
+  z-index:99;
+	background-color: #A2BEFF;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B0C8FF', endColorstr='#86A6F0');  /* MSIE */
+	background: -moz-linear-gradient(top, #B0C8FF, #86A6F0);  /* Mozilla */
+	background: -webkit-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0)); /* Chrome, Safari */
+	text-shadow: #476EC7 0px 0px 3px, #476EC7 0px 0px 3px;
+	
+	border-color: #476EC7;
+}
+.swMain ul.anchor li a.done:hover {
+  /* background: #8CC63F; */
+	text-shadow: #1C397E 0px 0px 3px, #1C397E 0px 0px 3px;
+  border: 1px solid #1C397E;   
+}
+.swMain ul.anchor li a.disabled {
+  color:#CCCCCC;  
+  background: #F8F8F8;
+  border: 1px solid #CCC;  
+  cursor:text;   
+}
+.swMain ul.anchor li a.disabled:hover {
+  color:#CCCCCC;  
+  background: #F8F8F8;     
+}
+
+.swMain ul.anchor li a.error {
+  color:#6c6c6c !important;  
+  background: #f08f75 !important;
+  border: 1px solid #fb3500 !important;      
+}
+.swMain ul.anchor li a.error:hover {
+  color:#000 !important;       
+}
+
+.swMain .buttonNext {
+  display:block;
+  float:right;
+  margin:5px 3px 0 3px;
+  padding:5px;
+  text-decoration: none;
+  text-align: center;
+  font: bold 13px Ubuntu, sans-serif;
+  width:100px;
+  color:#FFF;
+  outline-style:none;
+  background-color:   #5A5655;
+  border: 1px solid #5A5655;
+  border-radius: 5px;    
+}
+
+.swMain .buttonPrevious {
+  display:block;
+  float:right;
+  margin:5px 3px 0 3px;
+  padding:5px;
+  text-decoration: none;
+  text-align: center;
+  font: bold 13px Ubuntu, sans-serif;
+  width:100px;
+  color:#FFF;
+  outline-style:none;
+  background-color:   #5A5655;
+  border: 1px solid #5A5655;
+  border-radius: 5px;    
+}
+.swMain .buttonFinish {
+  display:block;
+  float:right;
+  margin:5px 10px 0 3px;
+  padding:5px;
+  text-decoration: none;
+  text-align: center;
+  font: bold 13px Ubuntu, sans-serif;
+  width:100px;
+  color:#FFF;
+  outline-style:none;
+  background-color:   #5A5655;
+  border: 1px solid #5A5655;
+  border-radius: 5px;    
+}
+
+.swMain .buttonPrevious {
+	position: relative;
+	color: white;
+	background: #8CC63F;
+	border: 1px solid #8CC63F;
+	z-index: 99;
+	box-shadow: 1px 1px 4px #476EC7;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B0C8FF', endColorstr='#86A6F0');
+	background: -moz-linear-gradient(top, #B0C8FF, #86A6F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#B0C8FF), to(#86A6F0));
+	text-shadow: #476EC7 0px 0px 3px, #476EC7 0px 0px 3px;
+	border-color: #476EC7;
+	position: relative;
+	top: -1px;
+	left: -1px;
+}
+
+.swMain .buttonNext, .swMain .buttonFinish {
+	color: #7F5500;
+	background: #EA8511;
+	border: 1px solid #EA8511;
+	box-shadow: 1px 1px 4px #7F5500;
+	background: -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC145', endColorstr='#F0AB22');
+	background: -moz-linear-gradient(top, #FFC145, #F0AB22);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFC145), to(#F0AB22));
+	text-shadow: #FFEDC8 0px 0px 3px, #FFEDC8 0px 0px 3px;
+	border-color: #C78B15;
+	position: relative;
+	top: -1px;
+	left: -1px;
+}
+
+
+.swMain .buttonPrevious:hover
+{
+	top: -2px;
+	left: -2px;
+	box-shadow: 2px 2px 4px #476EC7;
+}
+
+.swMain .buttonPrevious:active
+{
+	top: 0px;
+	left: 0px;
+	box-shadow: 0px 0px 4px #476EC7;
+}
+
+.swMain .buttonNext:hover, .swMain .buttonFinish:hover 
+{
+	top: -2px;
+	left: -2px;
+	box-shadow: 2px 2px 4px #7F5500;
+}
+
+.swMain .buttonNext:active, .swMain .buttonFinish:active 
+{
+	top: 0px;
+	left: 0px;
+	box-shadow: 0px 0px 4px #7F5500;
+}
+
+
+.swMain .buttonDisabled {
+  color:#F8F8F8  !important;
+  background-color: #CCCCCC !important;
+  border: 1px solid #CCCCCC  !important;
+  background: -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#CCCCCC', endColorstr='#BBBBBB') !important;
+  background: -moz-linear-gradient(top, #CCCCCC, #BBBBBB) !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#BBBBBB)) !important;
+  cursor:text;
+  top: 0px !important;
+  left: 0px !important;
+  box-shadow: none !important;
+	text-shadow: none !important;
+}
+
+
+/* Form Styles */
+
+.txtBox {
+  border:1px solid #CCCCCC;
+  color:#5A5655;
+  font:13px Ubuntu,sans-serif;
+  padding:2px;
+  width:430px;
+}
+.txtBox:focus {
+  border:1px solid #EA8511;
+}
+
+.swMain .loader {
+  position:relative;  
+  display:none;
+  float:left;  
+  margin: 2px 0 0 2px;
+  padding:8px 10px 8px 40px;
+  border: 1px solid #FFD700; 
+  font: bold 13px Ubuntu, sans-serif; 
+  color:#5A5655;       
+  background: #FFF url(../images/loader.gif) no-repeat 5px;  
+  border-radius: 5px;
+  z-index:998;
+}
+.swMain .msgBox {
+  position:relative;  
+  display:none;
+  float:left;
+  margin: 4px 0 0 5px;
+  padding:5px;
+  border: 1px solid #FFD700; 
+  background-color: #FFFFDD;  
+  font: normal 12px Ubuntu, sans-serif; 
+  color:#5A5655;         
+  -moz-border-radius  : 5px;
+  -webkit-border-radius: 5px;
+  z-index:999;
+  min-width:200px;  
+}
+.swMain .msgBox .content {
+  font: normal 12px Ubuntu,sans-serif;
+  padding: 0px;
+  float:left;
+}
+.swMain .msgBox .close {
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  color: #CCC;
+  display: block;
+  float: right;
+  margin: 0 0 0 5px;
+  outline-style: none;
+  padding: 0 2px 0 2px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+}
+.swMain .msgBox .close:hover{
+  color: #EA8511;
+  border: 1px solid #EA8511;  
+}
+
+.ui-progressbar-value {
+	background-image: url('/Images/Abstract/swarmops-progressbar-animation.gif');
+	height: 13px;
+	border-radius: 3px;
+	box-shadow: 1px 0px 5px 0px #7F5500;
+}
+
+
+.ui-progressbar {
+	height: 13px;
+	width: 100%;
+	border: solid 1px #C78B15;
+	border-radius: 3px;
+	box-shadow: inset 0px 1px 10px 0px #C78B15;
+	margin-bottom: 8px;
+}
