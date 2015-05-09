@@ -716,6 +716,10 @@ body.rtl .entryLabels {
 	overflow-x: hidden;
 }
 
+body.rtl .entryLabelsAdmin {
+    float: right;
+}
+
 .entryFieldsAdmin
 {
 	background: #A2BEFF;
@@ -734,6 +738,10 @@ body.rtl .entryLabels {
 	-webkit-box-shadow: 0 1px 3px 1px #1C397E;
 	-moz-box-shadow: 0 1px 3px 1px #1C397E;
 	box-shadow: 0 1px 3px 1px #1C397E;
+}
+
+body.rtl .entryFieldsAdmin {
+    float: right;
 }
 
 .entryValidationAdmin
