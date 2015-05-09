@@ -170,6 +170,12 @@
     <value>Welcome to {0}</value>
     <comment>The {0} is the organization name</comment>
   </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>Your Logon</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Please select a password to log on to Swarmops (this system). You will be able to replace this with a Twitter, Facebook, or BitID login for convenience later.</value>
+  </data>
   <data name="Signup_YourName" xml:space="preserve">
     <value>Your name</value>
   </data>

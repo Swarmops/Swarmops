@@ -84,6 +84,8 @@ namespace Swarmops.Frontend.Pages.Public
 
             this.LabelWelcomeHeader.Text = String.Format (Resources.Pages.Public.Signup_Welcome, Organization.Name);
             this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
+            this.LabelYourLogon.Text = Resources.Pages.Public.Signup_YourLogon;
+            this.LabelYourLogonText.Text = Resources.Pages.Public.Signup_YourLogonText;
 
             this.LabelStep1Header.Text = Resources.Pages.Public.Signup_Step1Header;
             this.LabelStep1Text.Text = Resources.Pages.Public.Signup_Step1Text;

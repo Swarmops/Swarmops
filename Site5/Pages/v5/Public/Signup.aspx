@@ -448,8 +448,8 @@
                         </div>
                     </div>                      
   			        <div id="step-3">
-  			            <h2>Your logon</h2>
-                        <p>Please select a password to log on to Swarmops (this system). You will be able to replace this with a Twitter, Facebook, or BitID login for convenience later.</p>
+  			            <h2><asp:Label runat="server" ID="LabelYourLogon" /></h2>
+                        <p><asp:Label ID="LabelYourLogonText" runat="server" /></p>
                         <div class="entryLabelsAdmin">
                             <asp:Label ID="LabelLoginKey" runat="server" /><br />
                             <asp:Label ID="LabelPassword1" runat="server" /><br />
