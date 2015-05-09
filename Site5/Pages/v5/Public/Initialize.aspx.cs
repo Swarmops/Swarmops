@@ -145,15 +145,15 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
         private void Localize()
         {
-            this.LabelCurrentUserName.Text = Resources.Pages.Init.Init_UserInfo_InstallingAdmin;
-            this.LabelCurrentOrganizationName.Text = Resources.Pages.Init.Init_UserInfo_NoOrgsYet;
+            this.LabelCurrentUserName.Text = @"Systems Administrator";
+            this.LabelCurrentOrganizationName.Text = @"No organizations yet";
             this.LabelPreferences.Text = Global.CurrentUserInfo_Preferences;
             this.LabelSidebarInfoHeader.Text = Global.Sidebar_Information;
-            this.LabelSidebarInfoContent.Text = Resources.Pages.Init.Init_SidebarInfo_Welcome;
+            this.LabelSidebarInfoContent.Text = @"Welcome to the Swarmops installation pages. This will guide you to an operational Swarmops.";
             this.LabelSidebarActionsHeader.Text = Global.Sidebar_Actions;
-            this.LabelSidebarActionsContent.Text = Resources.Pages.Init.Init_SidebarActions_None;
+            this.LabelSidebarActionsContent.Text = @"No action items.";
             this.LabelSidebarTodoHeader.Text = Global.Sidebar_Todo;
-            this.LabelSidebarTodoConnectDatabase.Text = Resources.Pages.Init.Init_SidebarTodo_CompleteSetup;
+            this.LabelSidebarTodoConnectDatabase.Text = @"Complete setup.";
 
             this.DropFavoriteColor.Items.Clear();
             this.DropFavoriteColor.Items.Add (" -- Select one --");
