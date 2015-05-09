@@ -63,13 +63,20 @@
             overflow: initial !important;
         }
 
-        input {
+        input, select {
             width: 200px;
+            font-size: 16px;
+        }
+
+
+        .entryFieldsAdmin, .entryLabelsAdmin {
+            font-size: 16px;
         }
 
 
         .entryLabelsAdmin {
             width: 236px;
+            font-weight: 300;
         }
 
     </style>
@@ -130,8 +137,8 @@
 
     	    function AnimatePostalCodeLength() {
     	        if (postalCodeLength > 0) {
-    	            var postalTargetLength = postalCodeLength * 8 - 5;
-    	            var cityTargetLength = 175 - 8 * postalCodeLength;
+    	            var postalTargetLength = postalCodeLength * 10 - 2;
+    	            var cityTargetLength = 160 - 10 * postalCodeLength;
 
     	            $('#<%= TextPostal.ClientID %>').animate({ width: postalTargetLength + "px" });
     	            $('#<%= TextCity.ClientID %>').animate({ width: cityTargetLength + "px" });
@@ -300,10 +307,14 @@
     	                isValid = true;
     	                // Blah
 
-	                    $('#<%= TextName.ClientID %>').focus();
+	                    setTimeout(function() { $('#<%= TextName.ClientID %>').focus(); }, 250); // after 250ms, set focus to name field
 
 	                } else if (stepNumber == 2) {
 	                    isValid = ValidatePersonFields();
+	                    if (isValid) {
+	                        $('#spanMailLoginKey').text($('#<%=this.TextMail.ClientID%>').val());
+	                        setTimeout(function() { $('#<%= TextPassword1.ClientID %>').focus(); }, 250); // after 250ms, set focus to pwd1 field
+	                    }
 
 	                } else if (stepNumber == 3) {
     	                isValid = true;
@@ -352,7 +363,7 @@
 
 	<div class="center980px">
         <div class="topmenu" style="margin-top: -4px; padding-left: 30px; padding-top: 12px; color: white; font-family: Ubuntu; font-weight: 300; font-size: 24px; letter-spacing: 1px">
-            SIGNING UP FOR <%= Organization.Name.ToUpperInvariant() %>
+            <asp:Label ID="LabelHeader" runat="server" />
         </div>
         
         <div class="mainbar">
@@ -366,48 +377,48 @@
   				        <li><a href="#step-1">
                         <label class="stepNumber">1</label>
                         <span class="stepDesc">
-                           Welcome!<br />
-                           <small>A short introduction</small>
+                            <asp:Label runat="server" ID="LabelStep1Header" /><br />
+                            <small><asp:Label runat="server" ID="LabelStep1Text" /></small>
                         </span>                   
                     </a></li>
   				        <li><a href="#step-2">
                         <label class="stepNumber">2</label>
                         <span class="stepDesc">
-                           About you<br />
-                           <small>Tell us a little about yourself</small>
+                            <asp:Label runat="server" ID="LabelStep2Header" /><br />
+                            <small><asp:Label runat="server" ID="LabelStep2Text" /></small>
                         </span>
                     </a></li>
   				        <li><a href="#step-3">
                         <label class="stepNumber">3</label>
                         <span class="stepDesc">
-                           Create logon<br />
-                           <small>Pick a password</small>
+                            <asp:Label runat="server" ID="LabelStep3Header" /><br />
+                            <small><asp:Label runat="server" ID="LabelStep3Text" /></small>
                         </span>                   
                      </a></li>
   				        <li><a href="#step-4">
                         <label class="stepNumber">4</label>
                         <span class="stepDesc">
-                           Activity 1<br />
-                           <small>How much do you wish to engage?</small>
+                            <asp:Label runat="server" ID="LabelStep4Header" /><br />
+                            <small><asp:Label runat="server" ID="LabelStep4Text" /></small>
                         </span>                   
                      </a></li>
   				        <li><a href="#step-5">
                         <label class="stepNumber">5</label>
                         <span class="stepDesc">
-                           Activity 2<br />
-                           <small>What would you like to engage in?</small>
+                            <asp:Label runat="server" ID="LabelStep5Header" /><br />
+                            <small><asp:Label runat="server" ID="LabelStep5Text" /></small>
                         </span>                   
                      </a></li>
   				        <li><a href="#step-6">
                         <label class="stepNumber">6</label>
                         <span class="stepDesc">
-                           Complete<br />
-                           <small>All done. Let's login!</small>
+                            <asp:Label runat="server" ID="LabelStep6Header" /><br />
+                            <small><asp:Label runat="server" ID="LabelStep6Text" /></small>
                         </span>                   
                     </a></li>
   			        </ul>
   			        <div id="step-1">	
-                        <h2>Welcome to <%= Organization.Name %></h2>
+                        <h2><asp:Label ID="LabelWelcomeHeader" runat="server" /></h2>
                         <p>This is the organization's custom welcome text. It has not yet been written; it is set in Admin / Org Settings.</p>
                     </div>
   			        <div id="step-2">
@@ -430,15 +441,25 @@
                             <asp:TextBox runat="server" ID="TextPhone" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextStreet1" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextStreet2" />&#8203;<br/>
-                            <div style="float: right; margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 22px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+                            <div style="float: right; margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 35px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
                             <span id="spanDetectedGeo">...</span>&nbsp;<br/>
                             <asp:TextBox runat="server" ID="TextDateOfBirth" />&#8203;<br/>
                             <asp:DropDownList runat="server" ID="DropGenders" />&#8203;<br/>
                         </div>
-
                     </div>                      
   			        <div id="step-3">
-  			            <h2>Your Logon</h2>
+  			            <h2>Your logon</h2>
+                        <p>Please select a password to log on to Swarmops (this system). You will be able to replace this with a Twitter, Facebook, or BitID login for convenience later.</p>
+                        <div class="entryLabelsAdmin">
+                            <asp:Label ID="LabelLoginKey" runat="server" /><br />
+                            <asp:Label ID="LabelPassword1" runat="server" /><br />
+                            <asp:Label ID="LabelPassword2" runat="server" /><br />
+                        </div>
+  			            <div class="entryFieldsAdmin">
+  			                <span id="spanMailLoginKey">...</span>&#8203;<br/>
+                            <asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" />&#8203;<br/>
+                            <asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" />&#8203;<br/>
+                        </div>
                     </div>
                     <div id="step-4">
                         <h2>Creating the first user</h2>	

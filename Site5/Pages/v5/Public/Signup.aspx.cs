@@ -82,6 +82,22 @@ namespace Swarmops.Frontend.Pages.Public
             this.LiteralErrorStreet.Text = Resources.Pages.Swarm.AddPerson_ErrorStreet;
             this.LiteralErrorDate.Text = Resources.Pages.Swarm.AddPerson_ErrorDate;
 
+            this.LabelWelcomeHeader.Text = String.Format (Resources.Pages.Public.Signup_Welcome, Organization.Name);
+            this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
+
+            this.LabelStep1Header.Text = Resources.Pages.Public.Signup_Step1Header;
+            this.LabelStep1Text.Text = Resources.Pages.Public.Signup_Step1Text;
+            this.LabelStep2Header.Text = Resources.Pages.Public.Signup_Step2Header;
+            this.LabelStep2Text.Text = Resources.Pages.Public.Signup_Step2Text;
+            this.LabelStep3Header.Text = Resources.Pages.Public.Signup_Step3Header;
+            this.LabelStep3Text.Text = Resources.Pages.Public.Signup_Step3Text;
+            this.LabelStep4Header.Text = Resources.Pages.Public.Signup_Step4Header;
+            this.LabelStep4Text.Text = Resources.Pages.Public.Signup_Step4Text;
+            this.LabelStep5Header.Text = Resources.Pages.Public.Signup_Step5Header;
+            this.LabelStep5Text.Text = Resources.Pages.Public.Signup_Step5Text;
+            this.LabelStep6Header.Text = Resources.Pages.Public.Signup_Step6Header;
+            this.LabelStep6Text.Text = Resources.Pages.Public.Signup_Step6Text;
+
             this.LabelName.Text = Resources.Global.Global_Name;
             this.LabelCountry.Text = Resources.Global.Global_Country;
             this.LabelMail.Text = Resources.Global.Global_Mail;
@@ -93,6 +109,12 @@ namespace Swarmops.Frontend.Pages.Public
             this.LabelGeographyDetected.Text = Resources.Pages.Swarm.AddPerson_GeographyDetected;
             this.LabelDateOfBirth.Text = Resources.Global.Global_DateOfBirth;
             this.LabelLegalGender.Text = Resources.Pages.Swarm.AddPerson_LegalGender;
+
+
+
+            this.LabelLoginKey.Text = Resources.Pages.Public.Signup_MailLoginKey;
+            this.LabelPassword1.Text = Resources.Pages.Public.Signup_Password1;
+            this.LabelPassword2.Text = Resources.Pages.Public.Signup_Password2;
 
             this.TextDateOfBirth.Attributes["placeholder"] = Global.Global_DateFormatShortReadable;
             this.TextName.Attributes["placeholder"] = "Joe Smith";

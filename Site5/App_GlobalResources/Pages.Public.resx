@@ -112,27 +112,65 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Init_SidebarActions_None" xml:space="preserve">
-    <value>No other actions are available until setup is completed.</value>
+  <data name="Signup_MailLoginKey" xml:space="preserve">
+    <value>Your login (your mail)</value>
   </data>
-  <data name="Init_SidebarInfo_Welcome" xml:space="preserve">
-    <value>Welcome to Swarmops! This is what the interface looks like, but it's not active yet - first, we'll go through some steps to set up your installation. You'll be up and running shortly.</value>
-    <comment>Info box on database setup screen</comment>
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Choose a password</value>
   </data>
-  <data name="Init_SidebarTodo_CompleteSetup" xml:space="preserve">
-    <value>Complete setup.</value>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Repeat that password</value>
   </data>
-  <data name="Init_UserInfo_InstallingAdmin" xml:space="preserve">
-    <value>Systems Administrator</value>
-    <comment>Displayed in lieu of logged-in-username</comment>
+  <data name="Signup_SigningUp" xml:space="preserve">
+    <value>Signing up for {0}</value>
+    <comment>The {0} is the organization name</comment>
   </data>
-  <data name="Init_UserInfo_NoOrgsYet" xml:space="preserve">
-    <value>No organizations yet</value>
-    <comment>Displayed in lieu of organization name</comment>
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Welcome!</value>
+  </data>
+  <data name="Signup_Step1Text" xml:space="preserve">
+    <value>A short introduction</value>
+  </data>
+  <data name="Signup_Step2Header" xml:space="preserve">
+    <value>About you</value>
+  </data>
+  <data name="Signup_Step2Text" xml:space="preserve">
+    <value>Tell us a little about yourself?</value>
+  </data>
+  <data name="Signup_Step3Header" xml:space="preserve">
+    <value>Create logon</value>
+  </data>
+  <data name="Signup_Step3Text" xml:space="preserve">
+    <value>Pick a password</value>
+  </data>
+  <data name="Signup_Step4Header" xml:space="preserve">
+    <value>Activity 1</value>
+  </data>
+  <data name="Signup_Step4Text" xml:space="preserve">
+    <value>How much to you wish to engage?</value>
+  </data>
+  <data name="Signup_Step5Header" xml:space="preserve">
+    <value>Activity 2</value>
+  </data>
+  <data name="Signup_Step5Text" xml:space="preserve">
+    <value>What would you like to engage in?</value>
+  </data>
+  <data name="Signup_Step6Header" xml:space="preserve">
+    <value>Complete</value>
+  </data>
+  <data name="Signup_Step6Text" xml:space="preserve">
+    <value>All done. Let's login!</value>
+  </data>
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>Welcome to {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Your name</value>
   </data>
 </root>
