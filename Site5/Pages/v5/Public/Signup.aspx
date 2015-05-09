@@ -63,10 +63,13 @@
             overflow: initial !important;
         }
 
+        input {
+            width: 200px;
+        }
 
 
         .entryLabelsAdmin {
-            width: 280px;
+            width: 236px;
         }
 
     </style>
@@ -128,7 +131,7 @@
     	    function AnimatePostalCodeLength() {
     	        if (postalCodeLength > 0) {
     	            var postalTargetLength = postalCodeLength * 8 - 5;
-    	            var cityTargetLength = 135 - 8 * postalCodeLength;
+    	            var cityTargetLength = 175 - 8 * postalCodeLength;
 
     	            $('#<%= TextPostal.ClientID %>').animate({ width: postalTargetLength + "px" });
     	            $('#<%= TextCity.ClientID %>').animate({ width: cityTargetLength + "px" });
