@@ -181,6 +181,8 @@ namespace Swarmops.Logic.Swarm
 
         public void Terminate (EventSource eventSource, Person actingPerson, string description)
         {
+            // TODO: This needs a new overload for v5, which adds the Position and possibly removes the EventSource
+
             if (base.Active)
             {
 

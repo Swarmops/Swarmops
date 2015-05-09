@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json.Converters;
 
 namespace Swarmops.Frontend.Controls.v5.Base
 {
@@ -22,6 +24,11 @@ namespace Swarmops.Frontend.Controls.v5.Base
         public string ClientControlID
         {
             get { return this.ClientID + "_DropControl"; }
+        }
+
+        public DropDownList ClientControl
+        {
+            get { return this.DropControl; }
         }
 
         protected void Page_Load (object sender, EventArgs e)

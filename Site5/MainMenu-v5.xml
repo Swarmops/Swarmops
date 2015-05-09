@@ -42,7 +42,8 @@
                 <ResourceKey>People_SelfSignup</ResourceKey>
                 <UserLevel>2</UserLevel>
                 <Permissions />
-                <Type>SpecialSelfSignup</Type>
+              <ImageUrl>iconshock-database-star</ImageUrl>
+              <Type>SpecialSelfSignup</Type>
                 <Children />
             </MainMenuItem>
 
