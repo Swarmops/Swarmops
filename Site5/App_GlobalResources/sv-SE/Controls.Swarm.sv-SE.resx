@@ -134,7 +134,7 @@
     <value>Uppdragets längd (kan förlängas)</value>
   </data>
   <data name="Positions_AssignmentExpires" xml:space="preserve">
-    <value>Går ut</value>
+    <value>Löper ut</value>
     <comment>The date a position assignment autoterminates</comment>
   </data>
   <data name="Positions_AssignPersonToPosition" xml:space="preserve">

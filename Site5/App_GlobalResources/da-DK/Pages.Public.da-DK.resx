@@ -112,27 +112,27 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Init_SidebarActions_None" xml:space="preserve">
-    <value>crwdns6555191:0crwdne6555191:0</value>
-  </data>
-  <data name="Init_SidebarInfo_Welcome" xml:space="preserve">
-    <value>crwdns6555192:0crwdne6555192:0</value>
-    <comment>Info box on database setup screen</comment>
-  </data>
-  <data name="Init_SidebarTodo_CompleteSetup" xml:space="preserve">
-    <value>crwdns6555193:0crwdne6555193:0</value>
-  </data>
-  <data name="Init_UserInfo_InstallingAdmin" xml:space="preserve">
-    <value>crwdns6555194:0crwdne6555194:0</value>
-    <comment>Displayed in lieu of logged-in-username</comment>
-  </data>
-  <data name="Init_UserInfo_NoOrgsYet" xml:space="preserve">
-    <value>crwdns6555195:0crwdne6555195:0</value>
-    <comment>Displayed in lieu of organization name</comment>
-  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </root>
