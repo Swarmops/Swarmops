@@ -82,7 +82,7 @@
     </style>
 
 </head>
-<body>
+<body <asp:Literal ID="LiteralBodyAttributes" runat="server" />>
     <form id="form2" runat="server">
         <asp:ScriptManager runat="server" ID="ScriptManagerBlahblah" />
 	    <script type="text/javascript">
@@ -307,6 +307,7 @@
     	                isValid = true;
     	                // Blah
 
+	                    $('div#divLanguageSelector').slideUp().fadeOut();
 	                    setTimeout(function() { $('#<%= TextName.ClientID %>').focus(); }, 250); // after 250ms, set focus to name field
 
 	                } else if (stepNumber == 2) {
@@ -317,7 +318,17 @@
 	                    }
 
 	                } else if (stepNumber == 3) {
-    	                isValid = true;
+	                    isValid = ValidateTextField('#<%= TextPassword1.ClientID %>', "<asp:Literal runat='server' ID='LiteralErrorNeedPassword' />");
+
+	                    if (isValid) {
+	                        if ($('#<%=TextPassword1.ClientID%>').val() != $('#<%=TextPassword2.ClientID%>').val()) {
+	                            isValid = false;
+	                            alertify.error("<asp:Literal runat='server' ID='LiteralErrorPasswordMismatch' />");
+	                            $('#<%=TextPassword1.ClientID%>,#<%=TextPassword2.ClientID%>').addClass("entryError");
+	                            $('#<%=TextPassword1.ClientID%>').focus();
+	                        }
+	                    }
+
 
     	            } else if (stepNumber == 4) {
     	                isValid = true; // assume true, make false as we go
@@ -357,12 +368,16 @@
     	    }
 
 
+    	    function setLanguage(cultureCode) {
+	            document.location = document.location + "&Culture=" + cultureCode;
+	        }
+
     	</script>
 	
     <!-- Main menu, dynamically constructed -->
 
 	<div class="center980px">
-        <div class="topmenu" style="margin-top: -4px; padding-left: 30px; padding-top: 12px; color: white; font-family: Ubuntu; font-weight: 300; font-size: 24px; letter-spacing: 1px">
+        <div class="topmenu" style="margin-top: -4px; padding-left: 30px; padding-right: 30px; padding-top: 12px; color: white; font-family: Ubuntu; font-weight: 300; font-size: 24px; letter-spacing: 1px">
             <asp:Label ID="LabelHeader" runat="server" />
         </div>
         
@@ -419,7 +434,7 @@
   			        </ul>
   			        <div id="step-1">	
                         <h2><asp:Label ID="LabelWelcomeHeader" runat="server" /></h2>
-                        <p>This is the organization's custom welcome text. It has not yet been written; it is set in Admin / Org Settings.</p>
+                        <p>This is the organization's custom welcome text. It has not yet been written; it is set in Admin / Org Settings.</p><br/><br/>
                     </div>
   			        <div id="step-2">
                         <div class="entryLabelsAdmin">
@@ -441,7 +456,7 @@
                             <asp:TextBox runat="server" ID="TextPhone" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextStreet1" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextStreet2" />&#8203;<br/>
-                            <div style="float: right; margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 35px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+                            <div class="elementFloatFar" style="margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 35px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
                             <span id="spanDetectedGeo">...</span>&nbsp;<br/>
                             <asp:TextBox runat="server" ID="TextDateOfBirth" />&#8203;<br/>
                             <asp:DropDownList runat="server" ID="DropGenders" />&#8203;<br/>
@@ -473,6 +488,33 @@
         
         </div>
         <div class="sidebar">
+            
+    <div id="divLanguageSelector">
+
+    <h2 class="blue">Language<span class="arrow"></span></h2>
+    <div class="box">
+        <div class="content">
+            &nbsp;<a href="javascript:setLanguage('ar-SA')"><img src="/Images/Flags/Arabic-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('pt-BR')"><img src="/Images/Flags/br-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('zh-CHS')"><img src="/Images/Flags/cn-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('de-DE')"><img src="/Images/Flags/de-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('da-DK')"><img src="/Images/Flags/dk-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('es-ES')"><img src="/Images/Flags/es-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('fi-FI')"><img src="/Images/Flags/fi-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('fr-FR')"><img src="/Images/Flags/fr-24px.png"/></a><br/>
+            &nbsp;<a href="javascript:setLanguage('el-GR')"><img src="/Images/Flags/gr-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('hi-IN')"><img src="/Images/Flags/in-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('is-IS')"><img src="/Images/Flags/is-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('nl-NL')"><img src="/Images/Flags/nl-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('nb-NO')"><img src="/Images/Flags/no-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('ru-RU')"><img src="/Images/Flags/ru-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('sv-SE')"><img src="/Images/Flags/se-24px.png"/></a>&#8203;
+            <a href="javascript:setLanguage('en-US')"><img src="/Images/Flags/us-24px.png"/></a>&#8203;
+        </div>
+    </div>
+
+    </div>
+
     <h2 class="blue"><asp:Label ID="LabelSidebarInfoHeader" runat="server" /><span class="arrow"></span></h2>
     
     <div class="box">
@@ -505,6 +547,9 @@
 
 	</form>
 </body>
+    
+    <!-- active culture: <%=System.Threading.Thread.CurrentThread.CurrentUICulture.EnglishName %> -->
+
 </html>
 
 

@@ -117,8 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>If you wish to engage further, you can make yourself available for calls-to-action, at no obligation whatsoever to show up, attend, or take part in any particular one of them.</value>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>How much do you wish to engage?</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>There are many different levels you can engage at in {0}. Select your intended level below (which you can change at will later, of course):</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>This is the default level, and means you'll take normal part in the organization as a grassroots {0}.</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>If you wish to volunteer to take formal responsibility for some part of the organization, helping out where it's needed most, it's obviously most welcome. (You'll get a selection of positions to volunteer for on the next page.)</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>Officer Volunteer</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>Please select and retype a password.</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>The two password copies do not match.</value>
+  </data>
   <data name="Signup_MailLoginKey" xml:space="preserve">
-    <value>Your login (your mail)</value>
+    <value>Your logon (your mail)</value>
   </data>
   <data name="Signup_Password1" xml:space="preserve">
     <value>Choose a password</value>
@@ -152,7 +178,7 @@
     <value>Activity 1</value>
   </data>
   <data name="Signup_Step4Text" xml:space="preserve">
-    <value>How much to you wish to engage?</value>
+    <value>How much do you wish to engage?</value>
   </data>
   <data name="Signup_Step5Header" xml:space="preserve">
     <value>Activity 2</value>

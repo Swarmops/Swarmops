@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,8 +14,25 @@ namespace Swarmops.Frontend.Pages.Public
 {
     public partial class Signup : System.Web.UI.Page
     {
+        protected override void OnPreInit(EventArgs e)
+        {
+            CommonV5.CulturePreInit (Request);
+
+ 	        base.OnPreInit(e);
+        }
+
         protected void Page_Load (object sender, EventArgs e)
         {
+            // Was this a quick callback to set the culture?
+
+            if (Request["Culture"] != null)
+            {
+                Response.SetCookie(new HttpCookie("PreferredCulture", Request["Culture"]));
+                Response.Redirect(Request.RawUrl.Substring (0, Request.RawUrl.IndexOf ("&Culture=")), true);
+            }
+
+            // Find what organization we're supposed to sign up to
+
             this.Organization = Organization.FromVanityDomain (Request.Url.Host);
 
             if (this.Organization == null)
@@ -82,6 +100,9 @@ namespace Swarmops.Frontend.Pages.Public
             this.LiteralErrorStreet.Text = Resources.Pages.Swarm.AddPerson_ErrorStreet;
             this.LiteralErrorDate.Text = Resources.Pages.Swarm.AddPerson_ErrorDate;
 
+            this.LiteralErrorNeedPassword.Text = Resources.Pages.Public.Signup_Error_NeedPassword;
+            this.LiteralErrorPasswordMismatch.Text = Resources.Pages.Public.Signup_Error_PasswordMismatch;
+
             this.LabelWelcomeHeader.Text = String.Format (Resources.Pages.Public.Signup_Welcome, Organization.Name);
             this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
             this.LabelYourLogon.Text = Resources.Pages.Public.Signup_YourLogon;
@@ -100,7 +121,7 @@ namespace Swarmops.Frontend.Pages.Public
             this.LabelStep6Header.Text = Resources.Pages.Public.Signup_Step6Header;
             this.LabelStep6Text.Text = Resources.Pages.Public.Signup_Step6Text;
 
-            this.LabelName.Text = Resources.Global.Global_Name;
+            this.LabelName.Text = Resources.Pages.Public.Signup_YourName;
             this.LabelCountry.Text = Resources.Global.Global_Country;
             this.LabelMail.Text = Resources.Global.Global_Mail;
             this.LabelPhone.Text = Resources.Global.Global_Phone;
@@ -112,8 +133,6 @@ namespace Swarmops.Frontend.Pages.Public
             this.LabelDateOfBirth.Text = Resources.Global.Global_DateOfBirth;
             this.LabelLegalGender.Text = Resources.Pages.Swarm.AddPerson_LegalGender;
 
-
-
             this.LabelLoginKey.Text = Resources.Pages.Public.Signup_MailLoginKey;
             this.LabelPassword1.Text = Resources.Pages.Public.Signup_Password1;
             this.LabelPassword2.Text = Resources.Pages.Public.Signup_Password2;
@@ -124,6 +143,14 @@ namespace Swarmops.Frontend.Pages.Public
             this.TextPhone.Attributes["placeholder"] = "+1 263 151 1341";
             this.TextStreet1.Attributes["placeholder"] = "78 West Avenue";
             this.TextPostal.Attributes["placeholder"] = "12345";
+
+            // Enable support for RTL languages
+
+            if (Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft)
+            {
+                this.LiteralBodyAttributes.Text = @"dir='rtl' class='rtl'";
+            }
+
         }
 
 
