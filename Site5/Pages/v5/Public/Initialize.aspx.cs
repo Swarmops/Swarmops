@@ -40,6 +40,13 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
         protected void Page_Load (object sender, EventArgs e)
         {
+            // Security check: If already initialized, throw
+
+            if (SwarmDb.Configuration.IsConfigured())
+            {
+                throw new InvalidOperationException("This installation has already been initialized. Cannot re-initalize on top of existing installation.");
+            }
+
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
@@ -68,78 +75,9 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
         protected override void OnPreInit (EventArgs e)
         {
-            // This OnPreInit is copied from master page base
-
-            // Localization
-
-            string preferredCulture = "en-US";
-
-            // -----------  SET CULTURE ------------
-
-            // Does the user have a culture preference?
-
-            if (Request.Cookies["PreferredCulture"] != null)
-            {
-                // Yes, set it
-                preferredCulture = Request.Cookies["PreferredCulture"].Value;
-            }
-            else
-            {
-                // No, determine from browser
-                string browserPreference = "en-GB";
-                if (Request.UserLanguages != null && Request.UserLanguages.Length > 0)
-                {
-                    browserPreference = Request.UserLanguages[0];
-                    preferredCulture = browserPreference;
-                }
-
-                if (preferredCulture == "en-US")
-                {
-                    preferredCulture = "en-GB"; // Hack because of malfunctioning Telerik popup
-                }
-
-                /*
-            string[] languages = (string[])Application["Cultures"];
-            for (int index = 0; index < languages.Length; index++)
-            {
-                if (languages[index].StartsWith(browserPreference))
-                {
-                    preferredCulture = languages[index];
-                }
-            }*/
-            }
-
-            try
-            {
-                GregorianCalendar normalizedCalendar = new GregorianCalendar();
-                normalizedCalendar.CalendarType = GregorianCalendarTypes.USEnglish;
-
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture (preferredCulture);
-                Thread.CurrentThread.CurrentCulture.DateTimeFormat.Calendar = normalizedCalendar;
-            }
-            catch (Exception exception)
-            {
-                throw new Exception ("Could not set culture \"" + preferredCulture + "\"", exception);
-                // Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            }
-
-            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+            CommonV5.CulturePreInit (Request);
 
             base.OnPreInit (e);
-        }
-
-        public event EventHandler LanguageChanged;
-
-        private void LanguageSelector_LanguageChanged (object sender, EventArgs e)
-        {
-            // Received event from control - refire
-
-            if (LanguageChanged != null)
-            {
-                LanguageChanged (this, new EventArgs());
-            }
-
-            Localize();
         }
 
 
