@@ -283,20 +283,20 @@ namespace Swarmops.Logic.Structure
             set { OptionalData[ObjectOptionalDataType.OrgRegularLabel] = value.ToString(); }
         }
 
-        public string ActivistLabel
+        public ParticipantTitle ActivistLabel
         {
             get
             {
                 string optionalData = OptionalData[ObjectOptionalDataType.OrgActivistLabel];
                 if (string.IsNullOrEmpty (optionalData))
                 {
-                    ActivistLabel = "Activist";
-                    return "Activist";
+                    ActivistLabel = ParticipantTitle.Activist;
+                    return ParticipantTitle.Activist; // Legacy
                 }
 
-                return optionalData;
+                return (ParticipantTitle)(Enum.Parse(typeof(ParticipantTitle), optionalData));
             }
-            set { OptionalData[ObjectOptionalDataType.OrgActivistLabel] = value; }
+            set { OptionalData[ObjectOptionalDataType.OrgActivistLabel] = value.ToString(); }
         }
 
         #region Public methods

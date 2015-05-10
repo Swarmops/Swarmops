@@ -10,7 +10,7 @@
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
-    <script language="javascript" type="text/javascript" src="/Scripts/jquery.smartWizard-2.0.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/jquery.smartWizard-3.3.1.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/alertify.min.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js"></script>
 
@@ -63,9 +63,30 @@
             overflow: initial !important;
         }
 
-        input, select {
+        input:not([type="radio"]), select {
             width: 200px;
             font-size: 16px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;  /* complements margin-left 5px in stylesheet */
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+
+        input[type="radio"]+label {
+            font-size: 16px;
+            position:relative; /* ugly ugly way to circumvent a nonfunctional margin-bottom */
+            top: -4px;
+        }
+
+        input[type="radio"]+label+p {
+            padding-left: 24px;
+        }
+
+        body.rtl input[type="radio"]+label+p {
+            padding-right: 24px;
+            padding-left: inherit;
         }
 
 
@@ -336,7 +357,27 @@
     	            } else if (stepNumber == 4) {
     	                isValid = true; // assume true, make false as we go
 
-    	            } else if (stepNumber == 5) {
+    	                if (suppressChecks) {
+	                        return true;
+	                    }
+
+    	                var selectedOption = $('input:radio[name="ActivationLevel"]:checked').val();
+    	                if (selectedOption === undefined) {
+    	                    isValid = false;
+    	                    alertify.error("<asp:Literal runat='server' ID='LiteralErrorSelectActivationLevel' />");
+    	                }
+
+	                    if (selectedOption != "RadioActivationVolunteer" && isValid) {
+	                        suppressChecks = true; // prevents foreverlooping into this check
+	                        $('#wizard').smartWizard('goToStep', 6);
+	                        setTimeout(function() {
+	                            $('a[rel="5"]').addClass("done").removeClass("selected");
+	                            $('a.buttonNext').addClass("buttonDisabled");  // hacks because SmartWizard doesn't handle skipping steps
+	                        }, 250);
+	                        suppressChecks = false;
+	                    }
+
+	                } else if (stepNumber == 5) {
     	                isValid = true; // assume true, make false as we go
 
     	            } else if (stepNumber == 6) {
@@ -374,6 +415,8 @@
     	    function setLanguage(cultureCode) {
 	            document.location = document.location + "&Culture=" + cultureCode;
 	        }
+
+    	    var suppressChecks = false;
 
     	</script>
 	
@@ -480,9 +523,18 @@
                         </div>
                     </div>
                     <div id="step-4">
-                        <h2>Creating the first user</h2>	
+                        <h2><asp:Label ID="LabelActivationLevelHeader" runat="server" /></h2>
+                        <p><asp:Label ID="LabelActivationLevelIntro" runat="server" /></p>
+                        <asp:RadioButton runat="server" ID="RadioActivationPassive" GroupName="ActivationLevel" />
+                        <p><asp:Label runat="server" ID="LabelActivationPassiveText" /></p>
+                        <asp:RadioButton runat="server" ID="RadioActivationActive" GroupName="ActivationLevel" />
+                        <p><asp:Label runat="server" ID="LabelActivationActiveText" /></p>
+                        <asp:RadioButton runat="server" ID="RadioActivationVolunteer" GroupName="ActivationLevel" />
+                        <p><asp:Label runat="server" ID="LabelActivationVolunteerText" /></p>
                     </div>
-  			        <div id="step-5" style="display:none">
+  			        <div id="step-5">
+                    </div>
+  			        <div id="step-6">
                     </div>
       		    </div>
 

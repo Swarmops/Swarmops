@@ -104,6 +104,7 @@ namespace Swarmops.Frontend.Pages.Public
 
             this.LiteralErrorNeedPassword.Text = Resources.Pages.Public.Signup_Error_NeedPassword;
             this.LiteralErrorPasswordMismatch.Text = Resources.Pages.Public.Signup_Error_PasswordMismatch;
+            this.LiteralErrorSelectActivationLevel.Text = Resources.Pages.Public.Signup_Error_SelectActivationLevel;
 
             this.LabelWelcomeHeader.Text = String.Format (Resources.Pages.Public.Signup_Welcome, Organization.Name);
             this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
@@ -146,6 +147,15 @@ namespace Swarmops.Frontend.Pages.Public
             this.TextStreet1.Attributes["placeholder"] = "78 West Avenue";
             this.TextPostal.Attributes["placeholder"] = "12345";
 
+            this.LabelActivationLevelHeader.Text = Resources.Pages.Public.Signup_ActivationLevel;
+            this.LabelActivationLevelIntro.Text = String.Format(Resources.Pages.Public.Signup_ActivationLevelText, this.Organization.Name);
+            this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized (this.Organization.RegularLabel));
+            this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassive, this.Organization.Name);
+            this.RadioActivationActive.Text = String.Format(Resources.Pages.Public.Signup_ActivationActiveHeader, Participant.Localized (this.Organization.ActivistLabel));
+            this.LabelActivationActiveText.Text = Resources.Pages.Public.Signup_ActivationActive;
+            this.RadioActivationVolunteer.Text = Resources.Pages.Public.Signup_ActivationVolunteerHeader;
+            this.LabelActivationVolunteerText.Text = Resources.Pages.Public.Signup_ActivationVolunteer;
+
             // Enable support for RTL languages
 
             if (Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft)
@@ -159,7 +169,7 @@ namespace Swarmops.Frontend.Pages.Public
             this.LabelSidebarActionsHeader.Text = Resources.Pages.Public.Signup_FeeHeader;
             // if (this.Organization.MembershipFee == 0 && this.Organization.MembershipRenewalFee == 0)
             this.LabelSidebarActionsContent.Text = String.Format (Resources.Pages.Public.Signup_NoFeeText,
-                Participant.Localized (this.Organization.RegularLabel, TitleVariant.Ship), DateTime.Today.AddYears (1).ToShortDateString());
+                Participant.Localized (this.Organization.RegularLabel, TitleVariant.Ship), DateTime.Today.AddYears (1).ToShortDateString(), this.Organization.Name);
 
             this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
             this.LabelSidebarTodoHeader.Text = Resources.Global.Sidebar_Todo;

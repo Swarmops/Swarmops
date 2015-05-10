@@ -120,6 +120,10 @@
   <data name="Signup_ActivationActive" xml:space="preserve">
     <value>If you wish to engage further, you can make yourself available for calls-to-action, at no obligation whatsoever to show up, attend, or take part in any particular one of them.</value>
   </data>
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>{0} At Opportunity</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
   <data name="Signup_ActivationLevel" xml:space="preserve">
     <value>How much do you wish to engage?</value>
   </data>
@@ -131,8 +135,12 @@
     <value>This is the default level, and means you'll take normal part in the organization as a grassroots {0}.</value>
     <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
   </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>Regular {0}</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
   <data name="Signup_ActivationVolunteer" xml:space="preserve">
-    <value>If you wish to volunteer to take formal responsibility for some part of the organization, helping out where it's needed most, it's obviously most welcome. (You'll get a selection of positions to volunteer for on the next page.)</value>
+    <value>If you wish to volunteer for taking formal responsibility for some part of the organization, helping out where it's needed most, it's obviously most welcome. (You'll get a selection of positions to volunteer for on the next page.)</value>
   </data>
   <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
     <value>Officer Volunteer</value>
@@ -142,6 +150,9 @@
   </data>
   <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
     <value>The two password copies do not match.</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>Please select your desired activity level.</value>
   </data>
   <data name="Signup_FeeHeader" xml:space="preserve">
     <value>Fees and Costs</value>
@@ -158,8 +169,8 @@
     <value>Your logon (your mail)</value>
   </data>
   <data name="Signup_NoFeeText" xml:space="preserve">
-    <value>There is no cost whatsoever in signing up for a {0}, nor any cost to renew when it expires on {1}. In addition, you may terminate your {0} at any time.</value>
-    <comment>{0} is the Participantship title. {1} is the expiry date.</comment>
+    <value>There is no cost whatsoever in signing up for a {0} with {2}, nor any cost to renew when it expires on {1}. In addition, you may terminate your {0} at any time.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
   </data>
   <data name="Signup_Password1" xml:space="preserve">
     <value>Choose a password</value>
@@ -168,7 +179,7 @@
     <value>Repeat that password</value>
   </data>
   <data name="Signup_SigningUp" xml:space="preserve">
-    <value>Signing up for &lt;bdo&gt;{0}&lt;/bdo&gt;</value>
+    <value>Signing up for {0}</value>
     <comment>The {0} is the organization name</comment>
   </data>
   <data name="Signup_Step1Header" xml:space="preserve">

@@ -100,7 +100,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
 
         protected void ButtonCreate_Click (object sender, EventArgs e)
         {
-            string activistLabel = this.DropActivistLabel.SelectedValue;
+            ParticipantTitle activistLabel = (ParticipantTitle) (Enum.Parse(typeof(ParticipantTitle), this.DropActivistLabel.SelectedValue));
             ParticipantTitle peopleLabel =
                 (ParticipantTitle) (Enum.Parse (typeof (ParticipantTitle), this.DropPersonLabel.SelectedValue));
             string asRoot = this.DropCreateChild.SelectedValue;
@@ -112,7 +112,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 throw new ArgumentException ("Organization name can't be empty");
             }
 
-            if (activistLabel == "0" || peopleLabel == ParticipantTitle.Unknown || asRoot == "0" || currencyCode == "0")
+            if (activistLabel == ParticipantTitle.Unknown || peopleLabel == ParticipantTitle.Unknown || asRoot == "0" || currencyCode == "0")
             {
                 throw new ArgumentException ("Necessary argument was not supplied (did client-side validation run?)");
             }
