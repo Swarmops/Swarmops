@@ -94,6 +94,8 @@ namespace Swarmops.Frontend.Pages.Public
 
         private void Localize()
         {
+            this.LabelSidebarActionsHeader.Text = 
+
             this.LiteralErrorCity.Text = Resources.Pages.Swarm.AddPerson_ErrorCity;
             this.LiteralErrorMail.Text = Resources.Pages.Swarm.AddPerson_ErrorMail;
             this.LiteralErrorName.Text = Resources.Pages.Swarm.AddPerson_ErrorName;
@@ -151,6 +153,20 @@ namespace Swarmops.Frontend.Pages.Public
                 this.LiteralBodyAttributes.Text = @"dir='rtl' class='rtl'";
             }
 
+            this.LiteralWizardNextButton.Text = Resources.Global.Global_WizardNext;
+            this.LiteralWizardFinishButton.Text = Resources.Global.Global_WizardFinish;
+
+            this.LabelSidebarActionsHeader.Text = Resources.Pages.Public.Signup_FeeHeader;
+            // if (this.Organization.MembershipFee == 0 && this.Organization.MembershipRenewalFee == 0)
+            this.LabelSidebarActionsContent.Text = String.Format (Resources.Pages.Public.Signup_NoFeeText,
+                Participant.Localized (this.Organization.RegularLabel, TitleVariant.Ship), DateTime.Today.AddYears (1).ToShortDateString());
+
+            this.LabelSidebarInfoHeader.Text = Resources.Global.Sidebar_Information;
+            this.LabelSidebarTodoHeader.Text = Resources.Global.Sidebar_Todo;
+
+            this.LabelSidebarTodo.Text = Resources.Pages.Public.Signup_Todo_Complete;
+            this.LabelSidebarInfoContent.Text =
+                @"This is the organization's Short About text. It is set in Admin / Org Settings.";
         }
 
 

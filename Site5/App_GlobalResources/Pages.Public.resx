@@ -143,8 +143,23 @@
   <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
     <value>The two password copies do not match.</value>
   </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Fees and Costs</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>There is no cost whatsoever to sign up for a {0} {1}. However, there will be a fee to renew your {1} when it expires on {2}. That fee is currently {3} {4:N2}, and you're under no obligation to renew.</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>The {0} fee is {1} {2:N2} for {3}. You will get an invoice at the end of this process. (You can terminate your {0} at any time.) </value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
   <data name="Signup_MailLoginKey" xml:space="preserve">
     <value>Your logon (your mail)</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>There is no cost whatsoever in signing up for a {0}, nor any cost to renew when it expires on {1}. In addition, you may terminate your {0} at any time.</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date.</comment>
   </data>
   <data name="Signup_Password1" xml:space="preserve">
     <value>Choose a password</value>
@@ -153,7 +168,7 @@
     <value>Repeat that password</value>
   </data>
   <data name="Signup_SigningUp" xml:space="preserve">
-    <value>Signing up for {0}</value>
+    <value>Signing up for &lt;bdo&gt;{0}&lt;/bdo&gt;</value>
     <comment>The {0} is the organization name</comment>
   </data>
   <data name="Signup_Step1Header" xml:space="preserve">
@@ -191,6 +206,9 @@
   </data>
   <data name="Signup_Step6Text" xml:space="preserve">
     <value>All done. Let's login!</value>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Complete signup.</value>
   </data>
   <data name="Signup_Welcome" xml:space="preserve">
     <value>Welcome to {0}</value>

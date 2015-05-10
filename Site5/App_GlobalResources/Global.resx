@@ -708,4 +708,13 @@
     <value>Until termination</value>
     <comment>Implicitly, until _manual_ (not automatic) termination</comment>
   </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Previous</value>
+  </data>
 </root>

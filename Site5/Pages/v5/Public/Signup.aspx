@@ -282,6 +282,8 @@
 
     	        $('#wizard').smartWizard({
     	            transitionEffect: 'fade',
+    	            labelNext: "<asp:Literal ID='LiteralWizardNextButton' runat='server' />",
+    	            labelFinish: "<asp:Literal ID='LiteralWizardFinishButton' runat='server' />",
     	            keyNavigation: false,
     	            onLeaveStep: leaveAStepCallback,
     	            onFinish: onFinishCallback
@@ -307,8 +309,9 @@
     	                isValid = true;
     	                // Blah
 
-	                    $('div#divLanguageSelector').slideUp().fadeOut();
-	                    setTimeout(function() { $('#<%= TextName.ClientID %>').focus(); }, 250); // after 250ms, set focus to name field
+    	                $('div#divLanguageSelector').slideUp().fadeOut();
+    	                $('div#divTodoDerpage').slideDown().fadeIn();
+    	                setTimeout(function() { $('#<%= TextName.ClientID %>').focus(); }, 250); // after 250ms, set focus to name field
 
 	                } else if (stepNumber == 2) {
 	                    isValid = ValidatePersonFields();
@@ -531,18 +534,22 @@
         </div>
     </div>
     
-    <h2 class="orange"><asp:Label ID="LabelSidebarTodoHeader" runat="server" /><span class="arrow"></span></h2>
+    <div id="divTodoDerpage" style="display:none">
+
+        <h2 class="orange"><asp:Label ID="LabelSidebarTodoHeader" runat="server" /><span class="arrow"></span></h2>
     
-    <div class="box">
-        <div class="content">
-            <div class="link-row-encaps" onclick="return false;" >
-                <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-databaseconnect-16px.png')"></div>
-                <asp:Label ID="LabelSidebarTodoConnectDatabase" runat="server" />
+        <div class="box">
+            <div class="content">
+                <div class="link-row-encaps" onclick="return false;" >
+                    <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-databaseconnect-16px.png')"></div>
+                    <asp:Label ID="LabelSidebarTodo" runat="server" />
+                </div>
             </div>
         </div>
     </div>
-        </div>
         
+    </div>
+
 	</div>
 
 	</form>
