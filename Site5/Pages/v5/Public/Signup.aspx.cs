@@ -150,7 +150,7 @@ namespace Swarmops.Frontend.Pages.Public
             this.LabelActivationLevelHeader.Text = Resources.Pages.Public.Signup_ActivationLevel;
             this.LabelActivationLevelIntro.Text = String.Format(Resources.Pages.Public.Signup_ActivationLevelText, this.Organization.Name);
             this.RadioActivationPassive.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassiveHeader, Participant.Localized (this.Organization.RegularLabel));
-            this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassive, this.Organization.Name);
+            this.LabelActivationPassiveText.Text = String.Format(Resources.Pages.Public.Signup_ActivationPassive, Participant.Localized(this.Organization.RegularLabel));
             this.RadioActivationActive.Text = String.Format(Resources.Pages.Public.Signup_ActivationActiveHeader, Participant.Localized (this.Organization.ActivistLabel));
             this.LabelActivationActiveText.Text = Resources.Pages.Public.Signup_ActivationActive;
             this.RadioActivationVolunteer.Text = Resources.Pages.Public.Signup_ActivationVolunteerHeader;

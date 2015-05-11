@@ -80,6 +80,10 @@
             top: -4px;
         }
 
+        input[type="radio"]:checked+label {
+            font-weight: 500; /* increase font-weight for selected radio button labels to Medium */
+        }
+
         input[type="radio"]+label+p {
             padding-left: 24px;
         }
@@ -130,8 +134,8 @@
     	    function CheckPostalCity() {
     	        var currentCity = $('#<%= TextCity.ClientID %>').val().toLowerCase();
     	        if (currentCity in cityNameLookup) {
-    	            var geoId = cityNameLookup[currentCity];
-    	            $('#spanDetectedGeo').text(geographyIdLookup[geoId]);
+    	            currentGeographyId = cityNameLookup[currentCity];
+    	            $('#spanDetectedGeo').text(geographyIdLookup[currentGeographyId]);
     	        } else {
     	            $('#spanDetectedGeo').text('');
     	        }
@@ -145,7 +149,8 @@
     	        if (currentPostalCode in postalCodeLookup) {
     	            var cityId = postalCodeLookup[currentPostalCode];
     	            $('#<%= TextCity.ClientID %>').attr("disabled", "disabled").val(cityIdLookup[cityId].Name);
-    	            $('#spanDetectedGeo').text(geographyIdLookup[cityIdLookup[cityId].GeoId]);
+	                currentGeographyId = cityIdLookup[cityId].GeoId;
+    	            $('#spanDetectedGeo').text(geographyIdLookup[currentGeographyId]);
     	            postalCodeIdentified = true;
     	            return true;
     	        } else if (postalCodeIdentified) {
@@ -291,6 +296,7 @@
     	    var postalCodeIdentified = false;
 
 
+    	    var currentGeographyId = 0;
 
 
     	    $(document).ready(function () {
@@ -371,7 +377,7 @@
 	                        suppressChecks = true; // prevents foreverlooping into this check
 	                        $('#wizard').smartWizard('goToStep', 6);
 	                        setTimeout(function() {
-	                            $('a[rel="5"]').addClass("done").removeClass("selected");
+	                            $('a[rel="5"]').addClass("disabled").removeClass("selected");
 	                            $('a.buttonNext').addClass("buttonDisabled");  // hacks because SmartWizard doesn't handle skipping steps
 	                        }, 250);
 	                        suppressChecks = false;
@@ -423,8 +429,8 @@
     <!-- Main menu, dynamically constructed -->
 
 	<div class="center980px">
-        <div class="topmenu" style="margin-top: -4px; padding-left: 30px; padding-right: 30px; padding-top: 12px; color: white; font-family: Ubuntu; font-weight: 300; font-size: 24px; letter-spacing: 1px">
-            <asp:Label ID="LabelHeader" runat="server" />
+        <div class="topmenu" style="margin-top: -4px; padding-top: 12px; color: white; font-family: Ubuntu; font-weight: 300; font-size: 24px; letter-spacing: 1px">
+            <span style="padding-left: 30px; padding-right: 30px"><asp:Label ID="LabelHeader" runat="server" /></span>
         </div>
         
         <div class="mainbar">
