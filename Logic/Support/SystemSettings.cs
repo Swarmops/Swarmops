@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 // This class is just for readability of other code. Doesn't add any logic at all, really - just readability, like SystemSettings.SmtpHost instead of Persistence.blahblah.
+using NBitcoin;
+using Swarmops.Logic.Security;
 
 namespace Swarmops.Logic.Support
 {
@@ -114,6 +118,80 @@ namespace Swarmops.Logic.Support
         {
             get { return GetDefaultedPersistedKey ("InstallationName", "Swarmops"); }
             set { Persistence.Key["InstallationName"] = value;  }
+        }
+
+
+        public static byte[] SymmetricEncryptionKeyCombined
+        {
+            get
+            {
+                byte[] dbKey = SymmetricEncryptionKeyDatabase;
+                byte[] fsKey = SymmetricEncryptionKeyFileSystem;
+
+                byte[] result = new byte[dbKey.Length];
+
+                for (int index = 0; index < dbKey.Length; index++)
+                {
+                    result[index] = (byte) (dbKey[index] ^ fsKey[index]); // combine the two keys through xor
+                }
+
+                return result;
+            }
+        }
+
+
+        static public byte[] SymmetricEncryptionKeyDatabase
+        {
+            get
+            {
+                if (_cacheDatabaseSymmetricKey != null)
+                {
+                    return _cacheDatabaseSymmetricKey;
+                }
+
+                string keyString = Persistence.Key["SymmetricEncryptionKey"];
+                if (string.IsNullOrEmpty (keyString))
+                {
+                    _cacheDatabaseSymmetricKey = Authentication.InitializeSymmetricDatabaseKey(); // Creates a new key - remove this by Alpha-12; should be in Init // TODO
+                }
+                else
+                {
+                    _cacheDatabaseSymmetricKey = Convert.FromBase64String (keyString);
+                }
+
+                return _cacheDatabaseSymmetricKey;
+            }
+        }
+
+        private static byte[] _cacheDatabaseSymmetricKey = null;
+        private static byte[] _cacheFileSystemSymmetricKey = null;
+
+        static public byte[] SymmetricEncryptionKeyFileSystem
+        {
+            get {
+                if (_cacheFileSystemSymmetricKey != null)
+                {
+                    return _cacheFileSystemSymmetricKey;
+                }
+
+                if (Debugger.IsAttached && Path.DirectorySeparatorChar != '/')
+                {
+                    // If we're debugging, return a zero key - can't read from /etc/swarmops in debug code
+
+                    _cacheFileSystemSymmetricKey = new byte[32];  // return 256 bits all zero
+                }
+                else if (!File.Exists ("/etc/swarmops/symmetricKey.config"))
+                {
+                    _cacheFileSystemSymmetricKey = Authentication.InitializeSymmetricFileSystemKey();
+                }
+                else
+                {
+                    string keyString = File.ReadAllText ("/etc/swarmops/symmetricKey.config", Encoding.ASCII);
+                    _cacheFileSystemSymmetricKey = Convert.FromBase64String (keyString);
+                }
+
+                return _cacheFileSystemSymmetricKey;
+            }
         }
 
         static private string GetDefaultedPersistedKey (string key, string defaultValue)

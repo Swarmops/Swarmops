@@ -1,5 +1,9 @@
 using System;
+using System.Diagnostics;
 using System.Globalization;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Common.Enums;
@@ -565,6 +569,52 @@ namespace Swarmops.Logic.Security
         {
             internal VerificationTicketWrongException (string msg) : base (msg)
             {
+            }
+        }
+
+
+        public static byte[] InitializeSymmetricDatabaseKey()
+        {
+            if (!String.IsNullOrEmpty (Persistence.Key["SymmetricEncryptionKey"]))
+            {
+                throw new InvalidOperationException("Cannot overwrite encryption key! BAD BAD BAD code!");
+            }
+
+            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
+            {
+                aes.KeySize = 256;
+                aes.GenerateKey();
+                byte[] key = aes.Key;
+
+                string keyString = Convert.ToBase64String (key);
+                Persistence.Key["SymmetricEncryptionKey"] = keyString;
+
+                return key;
+            }
+        }
+
+        public static byte[] InitializeSymmetricFileSystemKey()
+        {
+            if (Debugger.IsAttached && Path.DirectorySeparatorChar == '/') // check if we're debugging - double check to overdo security
+            {
+                return new byte[32]; // can't write to /etc/swarmops in the debugger; return an all-zero key while debugging
+            }
+
+            if (File.Exists ("/etc/swarmops/symmetricKey.config"))
+            {
+                throw new InvalidOperationException("Can't overwrite encryption key - BAD BAD BAD code!");
+            }
+
+            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
+            {
+                aes.KeySize = 256;
+                aes.GenerateKey();
+                byte[] key = aes.Key;
+
+                string keyString = Convert.ToBase64String(key);
+                File.WriteAllText("/etc/swarmops/symmetricKey.config", keyString, Encoding.ASCII);
+
+                return key;
             }
         }
     }

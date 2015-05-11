@@ -372,6 +372,11 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 File.WriteAllText ("/etc/swarmops/machineKey.config", machineKeyXml, Encoding.GetEncoding (1252));
             }
 
+            // SECURITY: Initialize encryption keys
+
+            Authentication.InitializeSymmetricDatabaseKey();
+            Authentication.InitializeSymmetricFileSystemKey();
+
             // Start an async thread that does all the initialization work, then return
 
             Thread initThread = new Thread (InitDatabaseThread);

@@ -27,7 +27,7 @@ namespace Swarmops.Logic.Security
 
         public static Authority FromEncryptedXml (string cryptXml)
         {
-            byte[] keyBytes = Encoding.ASCII.GetBytes(SystemSettings.InstallationId.Replace("-", ""));  // unique for this install
+            byte[] keyBytes = SystemSettings.SymmetricEncryptionKeyDatabase;
             byte[] cryptoBytes = Convert.FromBase64String(cryptXml);
 
             using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
@@ -51,7 +51,7 @@ namespace Swarmops.Logic.Security
 
         public string ToEncryptedXml()
         {
-            byte[] keyBytes = Encoding.ASCII.GetBytes(SystemSettings.InstallationId.Replace ("-",""));  // unique for this install
+            byte[] keyBytes = SystemSettings.SymmetricEncryptionKeyDatabase;
             byte[] dataBytes = Encoding.UTF8.GetBytes (ToXml());
 
             using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
