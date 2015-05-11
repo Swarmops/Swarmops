@@ -2,6 +2,7 @@
 using Resources;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 
 public partial class Default : PageV5Base
@@ -11,6 +12,8 @@ public partial class Default : PageV5Base
         PageTitle = Global.Dashboard_PageTitle;
         PageIcon = "iconshock-steering-wheel";
         this.PageAccessRequired = new Access(AccessAspect.Null, AccessType.Read); // dummy security until there's something to show on Dashboard
+
+        byte[] symmetricKey = SystemSettings.SymmetricEncryptionKeyFileSystem; // Access forces initialization if it's not there: remove by Alpha-12 // TODO
 
         /*
         this.LabelActionListMotions.Text = Resources.Pages.Governance.ListMotions_PageTitle;
