@@ -375,7 +375,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
             // SECURITY: Initialize encryption keys
 
             Authentication.InitializeSymmetricDatabaseKey();
-            Authentication.InitializeSymmetricFileSystemKey();
+            // Authentication.InitializeSymmetricFileSystemKey();
 
             // Start an async thread that does all the initialization work, then return
 
