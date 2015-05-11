@@ -1,2 +1,3 @@
 /etc/swarmops/machineKey.config
+/etc/swarmops/symmetricKey.config
 /usr/share/swarmops/frontend/favicon.ico

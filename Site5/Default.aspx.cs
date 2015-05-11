@@ -13,7 +13,7 @@ public partial class Default : PageV5Base
         PageIcon = "iconshock-steering-wheel";
         this.PageAccessRequired = new Access(AccessAspect.Null, AccessType.Read); // dummy security until there's something to show on Dashboard
 
-        // byte[] symmetricKey = SystemSettings.SymmetricEncryptionKeyFileSystem; // Access forces initialization if it's not there: remove by Alpha-12 // TODO
+        byte[] symmetricKey = SystemSettings.SymmetricEncryptionKeyFileSystem; // Access forces initialization if it's not there: remove by Alpha-12 // TODO
 
         /*
         this.LabelActionListMotions.Text = Resources.Pages.Governance.ListMotions_PageTitle;

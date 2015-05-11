@@ -18,6 +18,10 @@ chown www-data:www-data /etc/swarmops/machineKey.config
 
 chown www-data:www-data /etc/swarmops/database.config
 
+# make sure the web frontend (and its init) can write to symmetricKey.config
+
+chown www-data:www-data /etc/swarmops/symmetricKey.config
+
 # if we stopped Apache in preinst (1st install), restart it
 
 if [ -e /tmp/swarmops-restart-apache.flag ]; then

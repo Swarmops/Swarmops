@@ -180,14 +180,17 @@ namespace Swarmops.Logic.Support
 
                     _cacheFileSystemSymmetricKey = new byte[32];  // return 256 bits all zero
                 }
-                else if (!File.Exists ("/etc/swarmops/symmetricKey.config"))
-                {
-                    _cacheFileSystemSymmetricKey = Authentication.InitializeSymmetricFileSystemKey();
-                }
                 else
                 {
                     string keyString = File.ReadAllText ("/etc/swarmops/symmetricKey.config", Encoding.ASCII);
-                    _cacheFileSystemSymmetricKey = Convert.FromBase64String (keyString);
+                    if (keyString.StartsWith ("UNINIT"))
+                    {
+                        _cacheFileSystemSymmetricKey = Authentication.InitializeSymmetricFileSystemKey();
+                    }
+                    else
+                    {
+                        _cacheFileSystemSymmetricKey = Convert.FromBase64String(keyString);
+                    }
                 }
 
                 return _cacheFileSystemSymmetricKey;

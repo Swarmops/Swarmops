@@ -602,7 +602,10 @@ namespace Swarmops.Logic.Security
 
             if (File.Exists ("/etc/swarmops/symmetricKey.config"))
             {
-                throw new InvalidOperationException("Can't overwrite encryption key - BAD BAD BAD code!");
+                if (!File.ReadAllText ("/etc/swarmops/symmetricKey.config").StartsWith ("UNINIT"))
+                {
+                    throw new InvalidOperationException ("Can't overwrite encryption key - BAD BAD BAD code!");
+                }
             }
 
             using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
