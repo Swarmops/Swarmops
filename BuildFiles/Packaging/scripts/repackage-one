@@ -104,7 +104,7 @@ if [ "$COPYFILES" == "yes" ]; then
     mkdir -p etc/swarmops
     mv $DEPLOYDIR/$TARGETDIR/machineKey.config etc/swarmops/.
     sed -i 's/\"machineKey.config\"/\"..\/..\/..\/..\/etc\/swarmops\/machineKey.config\"/g' $DEPLOYDIR/$TARGETDIR/web.config
-    cat "UNINITIALIZED" > etc/swarmops/symmetricKey.config
+    echo "UNINITIALIZED" > etc/swarmops/symmetricKey.config
   fi
 fi
 
