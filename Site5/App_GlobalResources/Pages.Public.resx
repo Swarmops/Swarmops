@@ -215,8 +215,15 @@
   <data name="Signup_Step6Header" xml:space="preserve">
     <value>Complete</value>
   </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
   <data name="Signup_Step6Text" xml:space="preserve">
     <value>All done. Let's login!</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>Let's pay the {0} fee and complete!</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
   </data>
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Complete signup.</value>

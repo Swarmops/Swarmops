@@ -539,6 +539,10 @@
                         <p><asp:Label runat="server" ID="LabelActivationVolunteerText" /></p>
                     </div>
   			        <div id="step-5">
+                          <h2><asp:Label ID="LabelVolunteerPositionHeader" runat="server" /></h2>
+                          <p><asp:Label ID="LabelVolunteerPositionText" runat="server" /></p>
+                          <!-- add datagrid with checkboxes here -->
+                          <p><asp:Label ID="LabelVolunteerLevelIntro" runat="server" /></p>
                     </div>
   			        <div id="step-6">
                     </div>
