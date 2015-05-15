@@ -94,6 +94,23 @@
         }
 
 
+        .swMain ul.anchor li a.disabled, .swMain ul.anchor li a.disabled:hover {  /* cross out step 5 if it is skipped - if so, it gets marked disabled */
+            background: 
+                   linear-gradient(to top left,
+                       rgba(0,0,0,0) 0%,
+                       rgba(0,0,0,0) calc(50% - 2px),
+                       rgba(0,0,0,.2) 50%,
+                       rgba(0,0,0,0) calc(50% + 2px),
+                       rgba(0,0,0,0) 100%),
+                   linear-gradient(to top right,
+                       rgba(0,0,0,0) 0%,
+                       rgba(0,0,0,0) calc(50% - 2px),
+                       rgba(0,0,0,.2) 50%,
+                       rgba(0,0,0,0) calc(50% + 2px),
+                       rgba(0,0,0,0) 100%);
+        }
+
+
         .entryFieldsAdmin, .entryLabelsAdmin {
             font-size: 16px;
         }
