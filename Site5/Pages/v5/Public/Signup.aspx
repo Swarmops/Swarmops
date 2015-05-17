@@ -94,7 +94,7 @@
         }
 
 
-        .swMain ul.anchor li a.disabled, .swMain ul.anchor li a.disabled:hover {  /* cross out step 5 if it is skipped - if so, it gets marked disabled */
+        .swMain ul.anchor li a.strikeout, .swMain ul.anchor li a.strikeout:hover {  /* cross out step 5 if it is skipped - if so, it gets marked disabled */
             background: 
                    linear-gradient(to top left,
                        rgba(0,0,0,0) 0%,
@@ -394,7 +394,7 @@
 	                        suppressChecks = true; // prevents foreverlooping into this check
 	                        $('#wizard').smartWizard('goToStep', 6);
 	                        setTimeout(function() {
-	                            $('a[rel="5"]').addClass("disabled").removeClass("selected");
+	                            $('a[rel="5"]').addClass("disabled").addClass("strikeout").removeClass("selected");
 	                            $('a.buttonNext').addClass("buttonDisabled");  // hacks because SmartWizard doesn't handle skipping steps
 	                        }, 250);
 	                        suppressChecks = false;
