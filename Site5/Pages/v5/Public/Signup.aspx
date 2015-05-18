@@ -28,8 +28,11 @@
     <link href="WizardStyle.css" rel="stylesheet" type="text/css" />
     
     <!-- external packages that are commonly used (on practically all pages) -->
-    <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
-    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
+    
+    <!-- UGLY HACK: Control ExternalScripts requires authentication for some reason. This is a bug. But to get alpha-09 out on time, we're
+        circumventing the bug by hardcoding the hosted scripts - this needs fixing. -->
+
+    <script src="//hostedscripts.falkvinge.net/staging/easyui/jquery.easyui.min.js" type="text/javascript"></script>    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/icon.css" />    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/default/easyui.css" />    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
     
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
     <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js" ></script>
@@ -153,6 +156,8 @@
     	        $('#<%= TextCity.ClientID %>').on('input', function () {
     	            CheckPostalCity();
     	        });
+
+    	        $('#tableVolunteerPositions').datagrid();
     	    });
 
     	    function CheckPostalCity() {
@@ -414,8 +419,8 @@
 
     	                    $('a[rel="5"]').removeClass("crossout"); // if user navigating back and forth, need to remove the crossout here
 
-
-    	                }
+	                        $('#tableVolunteerPositions').datagrid('reload', '/Pages/v5/Public/Json-SignupVolunteerPositions.aspx?OrganizationId=<%=Organization.Identity%>&GeographyId=' + currentGeographyId);
+	                    }
 
 	                } else if (stepNumber == 5) {
     	                isValid = true; // assume true, make false as we go
@@ -575,15 +580,14 @@
   			        <div id="step-5">
                           <h2><asp:Label ID="LabelVolunteerPositionHeader" runat="server" /></h2>
                           <p><asp:Label ID="LabelVolunteerPositionText" runat="server" /></p>
-                          <table id="tableVolunteerPositions" title="Checkbox Select" class="easyui-datagrid" style="width:100%;height:250px"
-                                    url=""
-                                    idField="positionId" fitColumns="true"
+                          <table id="tableVolunteerPositions" class="easyui-datagrid" style="width:100%;height:270px"
+                                    data-options="idField:'positionId',fitColumns:true,singleSelect:false"
                                     >
                               <thead>
                                   <tr>
-                                      <th field="checkBox" checkbox="true"></th>
-                                      <th field="positionTitle" width="220"><asp:Label ID="LabelVolunteerHeaderPositionTitle" runat="server" /></th>
-                                      <th field="highestGeography" width="220"><asp:Label runat="server" ID="LabelVolunteerHeaderHighestGeography" /></th>
+                                      <th data-options="field:'ck',checkbox:true"></th>
+                                      <th data-options="field:'positionTitle',width:120"><asp:Label ID="LabelVolunteerHeaderPositionTitle" runat="server" /></th>
+                                      <th data-options="field:'highestGeography',width:220"><asp:Label runat="server" ID="LabelVolunteerHeaderHighestGeography" /></th>
                                   </tr>
                               </thead>
                           </table>

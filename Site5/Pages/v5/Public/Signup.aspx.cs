@@ -156,6 +156,11 @@ namespace Swarmops.Frontend.Pages.Public
             this.RadioActivationVolunteer.Text = Resources.Pages.Public.Signup_ActivationVolunteerHeader;
             this.LabelActivationVolunteerText.Text = Resources.Pages.Public.Signup_ActivationVolunteer;
 
+            this.LabelVolunteerHeaderHighestGeography.Text = Resources.Pages.Public.Signup_VolunteerTableHeaderGeography;
+            this.LabelVolunteerHeaderPositionTitle.Text = Resources.Pages.Public.Signup_VolunteerTableHeaderPosition;
+            this.LabelVolunteerPositionHeader.Text = Resources.Pages.Public.Signup_VolunteerHeader;
+            this.LabelVolunteerPositionText.Text = Resources.Pages.Public.Signup_VolunteerText;
+
             // Enable support for RTL languages
 
             if (Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft)

@@ -228,6 +228,18 @@
   <data name="Signup_Todo_Complete" xml:space="preserve">
     <value>Complete signup.</value>
   </data>
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>What position are you interested in?</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>Highest Geography</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>Check the position you'd like to volunteer/apply for. You can check several.</value>
+  </data>
   <data name="Signup_Welcome" xml:space="preserve">
     <value>Welcome to {0}</value>
     <comment>The {0} is the organization name</comment>
