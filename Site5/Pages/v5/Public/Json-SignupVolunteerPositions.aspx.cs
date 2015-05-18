@@ -45,7 +45,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
         {
             StringBuilder result = new StringBuilder (16384);
 
-            result.Append ("[");
+            result.Append ("{\"rows\":[");
 
             foreach (Position position in positions)
             {
@@ -66,7 +66,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 result.Remove (result.Length - 1, 1); // remove last comma
             }
 
-            result.Append ("]");
+            result.Append ("]}");
 
             return result.ToString();
         }

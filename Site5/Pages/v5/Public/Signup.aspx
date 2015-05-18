@@ -580,12 +580,12 @@
   			        <div id="step-5">
                           <h2><asp:Label ID="LabelVolunteerPositionHeader" runat="server" /></h2>
                           <p><asp:Label ID="LabelVolunteerPositionText" runat="server" /></p>
-                          <table id="tableVolunteerPositions" class="easyui-datagrid" style="width:100%;height:270px"
-                                    data-options="idField:'positionId',fitColumns:true,singleSelect:false"
+                          <table id="tableVolunteerPositions" class="easyui-datagrid" style="width:460px;height:275px"
+                                    data-options="idField:'positionId',fitColumns:true,singleSelect:false,checkOnSelect:true,selectOnCheck:true"
                                     >
                               <thead>
                                   <tr>
-                                      <th data-options="field:'ck',checkbox:true"></th>
+                                      <th data-options="field:'checkBox',checkbox:true"></th>
                                       <th data-options="field:'positionTitle',width:120"><asp:Label ID="LabelVolunteerHeaderPositionTitle" runat="server" /></th>
                                       <th data-options="field:'highestGeography',width:220"><asp:Label runat="server" ID="LabelVolunteerHeaderHighestGeography" /></th>
                                   </tr>

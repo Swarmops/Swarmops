@@ -232,7 +232,7 @@
     <value>What position are you interested in?</value>
   </data>
   <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
-    <value>Highest Geography</value>
+    <value>Highest Geography Available</value>
   </data>
   <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
     <value>Position</value>
