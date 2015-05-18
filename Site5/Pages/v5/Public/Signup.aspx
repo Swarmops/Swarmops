@@ -26,6 +26,13 @@
     <link href="/Style/alertify.core.css" rel="stylesheet" type="text/css" />
     <link href="/Style/alertify.default.css" rel="stylesheet" type="text/css" />
     <link href="WizardStyle.css" rel="stylesheet" type="text/css" />
+    
+    <!-- external packages that are commonly used (on practically all pages) -->
+    <Swarmops5:ExternalScripts ID="ExternalScriptEasyUI" Package="easyui" runat="server" />
+    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
+    <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js" ></script>
 
     <!-- initialize all modal popups -->
     <script language="javascript" type="text/javascript">
@@ -94,7 +101,7 @@
         }
 
 
-        .swMain ul.anchor li a.strikeout, .swMain ul.anchor li a.strikeout:hover {  /* cross out step 5 if it is skipped - if so, it gets marked disabled */
+        .swMain ul.anchor li a.crossout, .swMain ul.anchor li a.crossout:hover {  /* cross out step 5 if it is skipped - if so, it gets marked disabled */
             background: 
                    linear-gradient(to top left,
                        rgba(0,0,0,0) 0%,
@@ -390,15 +397,25 @@
     	                    alertify.error("<asp:Literal runat='server' ID='LiteralErrorSelectActivationLevel' />");
     	                }
 
-	                    if (selectedOption != "RadioActivationVolunteer" && isValid) {
+    	                if (selectedOption != "RadioActivationVolunteer" && isValid) {
+
+                            // If we're NOT an officer volunteer...
+
 	                        suppressChecks = true; // prevents foreverlooping into this check
 	                        $('#wizard').smartWizard('goToStep', 6);
 	                        setTimeout(function() {
-	                            $('a[rel="5"]').addClass("disabled").addClass("strikeout").removeClass("selected");
-	                            $('a.buttonNext').addClass("buttonDisabled");  // hacks because SmartWizard doesn't handle skipping steps
+	                            $('a[rel="5"]').addClass("disabled").addClass("crossout").removeClass("selected");
+	                            $('a.buttonNext').addClass("buttonDisabled"); // hacks because SmartWizard doesn't handle skipping steps
 	                        }, 250);
 	                        suppressChecks = false;
-	                    }
+    	                } else if (isValid) {
+
+                            // If we ARE an officer volunteer...
+
+    	                    $('a[rel="5"]').removeClass("crossout"); // if user navigating back and forth, need to remove the crossout here
+
+
+    	                }
 
 	                } else if (stepNumber == 5) {
     	                isValid = true; // assume true, make false as we go
@@ -525,7 +542,7 @@
                             <asp:TextBox runat="server" ID="TextPhone" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextStreet1" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextStreet2" />&#8203;<br/>
-                            <div class="elementFloatFar" style="margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 35px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
+                            <div class="elementFloatFar" style="margin-right: -1px"><asp:TextBox runat="server" ID="TextPostal" />&nbsp;<asp:TextBox runat="server" ID="TextCity" /></div><div style="width: 30px; overflow: hidden"><span id="spanCountryPrefix">XX</span>&ndash;</div>
                             <span id="spanDetectedGeo">...</span>&nbsp;<br/>
                             <asp:TextBox runat="server" ID="TextDateOfBirth" />&#8203;<br/>
                             <asp:DropDownList runat="server" ID="DropGenders" />&#8203;<br/>
@@ -558,7 +575,18 @@
   			        <div id="step-5">
                           <h2><asp:Label ID="LabelVolunteerPositionHeader" runat="server" /></h2>
                           <p><asp:Label ID="LabelVolunteerPositionText" runat="server" /></p>
-                          <!-- add datagrid with checkboxes here -->
+                          <table id="tableVolunteerPositions" title="Checkbox Select" class="easyui-datagrid" style="width:100%;height:250px"
+                                    url=""
+                                    idField="positionId" fitColumns="true"
+                                    >
+                              <thead>
+                                  <tr>
+                                      <th field="checkBox" checkbox="true"></th>
+                                      <th field="positionTitle" width="220"><asp:Label ID="LabelVolunteerHeaderPositionTitle" runat="server" /></th>
+                                      <th field="highestGeography" width="220"><asp:Label runat="server" ID="LabelVolunteerHeaderHighestGeography" /></th>
+                                  </tr>
+                              </thead>
+                          </table>
                           <p><asp:Label ID="LabelVolunteerLevelIntro" runat="server" /></p>
                     </div>
   			        <div id="step-6">
