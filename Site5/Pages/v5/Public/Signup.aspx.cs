@@ -105,6 +105,7 @@ namespace Swarmops.Frontend.Pages.Public
             this.LiteralErrorNeedPassword.Text = Resources.Pages.Public.Signup_Error_NeedPassword;
             this.LiteralErrorPasswordMismatch.Text = Resources.Pages.Public.Signup_Error_PasswordMismatch;
             this.LiteralErrorSelectActivationLevel.Text = Resources.Pages.Public.Signup_Error_SelectActivationLevel;
+            this.LiteralErrorSelectVolunteerPosition.Text = Resources.Pages.Public.Signup_Error_SelectPosition;
 
             this.LabelWelcomeHeader.Text = String.Format (Resources.Pages.Public.Signup_Welcome, Organization.Name);
             this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
@@ -160,6 +161,8 @@ namespace Swarmops.Frontend.Pages.Public
             this.LabelVolunteerHeaderPositionTitle.Text = Resources.Pages.Public.Signup_VolunteerTableHeaderPosition;
             this.LabelVolunteerPositionHeader.Text = Resources.Pages.Public.Signup_VolunteerHeader;
             this.LabelVolunteerPositionText.Text = Resources.Pages.Public.Signup_VolunteerText;
+
+            this.LabelFinalizeSignupHeader.Text = Resources.Pages.Public.Signup_FinalizeSignup;
 
             // Enable support for RTL languages
 

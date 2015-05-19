@@ -154,6 +154,9 @@
   <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
     <value>Please select your desired activity level.</value>
   </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Please select at least one position.</value>
+  </data>
   <data name="Signup_FeeHeader" xml:space="preserve">
     <value>Fees and Costs</value>
   </data>
@@ -164,6 +167,9 @@
   <data name="Signup_FeeText" xml:space="preserve">
     <value>The {0} fee is {1} {2:N2} for {3}. You will get an invoice at the end of this process. (You can terminate your {0} at any time.) </value>
     <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Finalize Signup</value>
   </data>
   <data name="Signup_MailLoginKey" xml:space="preserve">
     <value>Your logon (your mail)</value>

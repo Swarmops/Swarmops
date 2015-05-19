@@ -73,7 +73,7 @@
             overflow: initial !important;
         }
 
-        input:not([type="radio"]), select {
+        input:not([type="radio"]):not([type="checkbox"]), select {
             width: 200px;
             font-size: 16px;
         }
@@ -156,8 +156,6 @@
     	        $('#<%= TextCity.ClientID %>').on('input', function () {
     	            CheckPostalCity();
     	        });
-
-    	        $('#tableVolunteerPositions').datagrid();
     	    });
 
     	    function CheckPostalCity() {
@@ -330,6 +328,8 @@
 
     	    $(document).ready(function () {
 
+    	        $('#tableVolunteerPositions').datagrid({ url:'/Pages/v5/Public/Json-SignupVolunteerPositions.aspx?OrganizationId=<%=Organization.Identity%>&GeographyId=0'});
+
     	        // Doc.Ready instance 2. Smart Wizard initialization.
     	        // This is a separate Doc.Ready as I hope to break out the
     	        // above code some day to a common file between this file
@@ -355,8 +355,9 @@
     	        }
 
     	        function onFinishCallback(obj) {
-    	            // $('#LOGINBUTTONID').click();
-    	        }
+	                alert("On Finish Callback");
+	                // $('#LOGINBUTTONID').click();
+	            }
 
     	        function validateStep(stepNumber) {
     	            var isValid = true; // assume true and set false underway
@@ -419,17 +420,24 @@
 
     	                    $('a[rel="5"]').removeClass("crossout"); // if user navigating back and forth, need to remove the crossout here
 
-	                        $('#tableVolunteerPositions').datagrid('reload', '/Pages/v5/Public/Json-SignupVolunteerPositions.aspx?OrganizationId=<%=Organization.Identity%>&GeographyId=' + currentGeographyId);
+    	                    setTimeout(function() {
+	                            $('#tableVolunteerPositions').datagrid({ url: '/Pages/v5/Public/Json-SignupVolunteerPositions.aspx?OrganizationId=<%=Organization.Identity%>&GeographyId=' + currentGeographyId });
+    	                        //$('#tableVolunteerPositions').datagrid('reload');
+	                        }, 250);
 	                    }
 
 	                } else if (stepNumber == 5) {
     	                isValid = true; // assume true, make false as we go
 
-    	            } else if (stepNumber == 6) {
-    	                // If we get here, we're always good
+    	                selectedPositions = $('#tableVolunteerPositions').datagrid('getChecked');
+    	                if (selectedPositions.length == 0) {
+    	                    isValid = false;
+    	                    alertify.error("<asp:Literal runat='server' ID='LiteralErrorSelectVolunteerPosition' />");
+	                    }
 
-    	                isValid = true;
-    	            }
+	                } else if (stepNumber == 6) {
+    	                // This will never trigger in the stock signup - Finish doesn't trigger Validate
+	                }
 
     	            return isValid;
     	        }
@@ -462,6 +470,7 @@
 	        }
 
     	    var suppressChecks = false;
+    	    var selectedPositions = {};
 
     	</script>
 	
@@ -581,11 +590,11 @@
                           <h2><asp:Label ID="LabelVolunteerPositionHeader" runat="server" /></h2>
                           <p><asp:Label ID="LabelVolunteerPositionText" runat="server" /></p>
                           <table id="tableVolunteerPositions" class="easyui-datagrid" style="width:460px;height:275px"
-                                    data-options="idField:'positionId',fitColumns:true,singleSelect:false,checkOnSelect:true,selectOnCheck:true"
+                                    data-options="idField:'positionId',singleSelect:false,fitColumns:true,checkOnSelect:true,selectOnCheck:true"
                                     >
                               <thead>
                                   <tr>
-                                      <th data-options="field:'checkBox',checkbox:true"></th>
+                                      <th data-options="field:'ck',checkbox:true"></th>
                                       <th data-options="field:'positionTitle',width:120"><asp:Label ID="LabelVolunteerHeaderPositionTitle" runat="server" /></th>
                                       <th data-options="field:'highestGeography',width:220"><asp:Label runat="server" ID="LabelVolunteerHeaderHighestGeography" /></th>
                                   </tr>
@@ -594,6 +603,11 @@
                           <p><asp:Label ID="LabelVolunteerLevelIntro" runat="server" /></p>
                     </div>
   			        <div id="step-6">
+  			            <div id="divStep6NoPayment">
+                          <h2><asp:Label ID="LabelFinalizeSignupHeader" runat="server" /></h2>
+                          <p>This is the organization-specific text shown for Signup Finalization. It is set in Admin / Org Settings. When the new person presses Finish, they will be entered into the organization, logged on, and sent to the Dashboard as a Beginner user.</p>
+  			            </div>
+                          <div id="divStep6Payment" style="display:none"><!-- todo --></div>
                     </div>
       		    </div>
 
