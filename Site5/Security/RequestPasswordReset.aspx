@@ -81,7 +81,6 @@
         <div class="logoimage"><a href="/"><img style="border: none" src="/Security/Images/Swarmops-Logo.png" alt="Swarmops Logo" /></a></div>
         <div class="break"></div>
         <div class="topmenu">
-            <div class="searchbox"><asp:TextBox ID="SearchBox" ReadOnly="true" runat="server" /></div>
         </div>
         
         <div class="mainbar">
