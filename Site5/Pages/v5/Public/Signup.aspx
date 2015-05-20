@@ -631,8 +631,8 @@
                             <asp:Label ID="LabelPassword1" runat="server" /><br />
                             <asp:Label ID="LabelPassword2" runat="server" /><br />
                         </div>
-  			            <div class="entryFieldsAdmin">
-  			                <span id="spanMailLoginKey">...</span>&#8203;<br/>
+  			            <div class="entryFieldsAdmin" style="width:204px;overflow:hidden">
+  			                <span id="spanMailLoginKey" style="white-space:nowrap">...</span>&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextPassword1" TextMode="Password" />&#8203;<br/>
                             <asp:TextBox runat="server" ID="TextPassword2" TextMode="Password" />&#8203;<br/>
                         </div>
