@@ -263,6 +263,22 @@ namespace Swarmops.Logic.Communications
         }
 
 
+        public static OutboundComm CreateParticipantNotification (Person concernedPerson, Person actingPerson,
+            Organization organization, NotificationResource notification)
+        {
+            NotificationPayload payload = new NotificationPayload(notification.ToString());
+            payload.Strings[NotificationString.ActingPersonName] = actingPerson.Name;
+            payload.Strings[NotificationString.ConcernedPersonName] = concernedPerson.Name;
+            payload.Strings[NotificationString.OrganizationName] = organization.Name;
+            payload.Strings[NotificationString.GeographyName] = concernedPerson.Geography.Name;
+            payload.Strings[NotificationString.RegularTitle] = organization.RegularLabel.ToString();  // may need fudging later because localization
+            payload.Strings[NotificationString.ActivistTitle] = organization.ActivistLabel.ToString(); // as above
+
+            return CreateSingleRecipientNotification (payload, organization, Person.FromIdentity (1));
+        }
+
+
+
         public static OutboundComm CreateSecurityNotification (Person concernedPerson, Person actingPerson, Organization organization, string ticket,
             NotificationResource notification)
         {

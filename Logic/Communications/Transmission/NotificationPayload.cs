@@ -127,7 +127,12 @@ namespace Swarmops.Logic.Communications.Transmission
         Password_ResetOnRequest,
         Password_ResetByCrew,
         Password_CannotReset2FA,
-        Password_Changed
+        Password_Changed,
+        Participant_Signup,
+        Participant_Volunteer,
+        Participant_Renewed,
+        Participant_Terminated,
+        Participant_Churned
     }
 
 // ReSharper restore InconsistentNaming
@@ -149,7 +154,10 @@ namespace Swarmops.Logic.Communications.Transmission
         RequestPurpose,
         TertiaryPersonName,
         TicketCode,
-        Supplier
+        Supplier,
+        GeographyName,
+        RegularTitle,
+        ActivistTitle
     }
 
     [Serializable]

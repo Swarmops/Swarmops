@@ -257,6 +257,12 @@ Time spent transmitting: [TransmissionTime].</value>
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Comms transmitted: [GeographyName]</value>
   </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>A new person has signed up as [RegularTitle] in [OrganizationName]! They are based in [GeographyName].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] New [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>
+  </data>
   <data name="Password_CannotReset2FA_Body" xml:space="preserve">
     <value>Somebody, most likely you, requested a reset of the password associated with this mail address at [InstallationName]. However, two-factor authentication has been enabled for this account for heightened security. Therefore, the password CANNOT be reset by simple means.
 

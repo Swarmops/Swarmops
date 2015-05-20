@@ -8,7 +8,7 @@ using Swarmops.Logic.Swarm;
 namespace Swarmops.Logic.Support.LogEntries
 {
     [Serializable]
-    public class PersonAddedLogEntry: MembershipActionBase
+    public class PersonAddedLogEntry: ParticipationActionBase
     {
         [Obsolete("Do not call empty ctor directly. Intended for serialization only.", true)]
         public PersonAddedLogEntry()
@@ -19,7 +19,7 @@ namespace Swarmops.Logic.Support.LogEntries
         public PersonAddedLogEntry (Participation participation, Person actingPerson)
         {
             DateTime = System.DateTime.UtcNow;
-            MembershipId = participation.Identity;
+            ParticipationId = participation.Identity;
             ActingPersonId = actingPerson.Identity;
         }
     }

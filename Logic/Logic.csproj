@@ -298,10 +298,11 @@
     <Compile Include="Support\Imagery.cs" />
     <Compile Include="Support\IXmlPayload.cs" />
     <Compile Include="Support\LogEntries\CashAdvanceRequestedLogEntry.cs" />
-    <Compile Include="Support\LogEntries\MembershipActionBase.cs" />
+    <Compile Include="Support\LogEntries\ParticipationActionBase.cs" />
     <Compile Include="Support\LogEntries\PasswordResetLogEntry.cs" />
     <Compile Include="Support\LogEntries\PasswordResetRequestLogEntry.cs" />
     <Compile Include="Support\LogEntries\PersonAddedLogEntry.cs" />
+    <Compile Include="Support\LogEntries\PositionActionBase.cs" />
     <Compile Include="Support\LogEntries\SalaryCreatedLogEntry.cs" />
     <Compile Include="Support\LogEntries\InboundInvoiceCreatedLogEntry.cs" />
     <Compile Include="Support\LogEntries\ExpenseClaimFiledLogEntry.cs" />
@@ -309,6 +310,7 @@
     <Compile Include="Support\LogEntries\LogEntryBase.cs" />
     <Compile Include="Support\LogEntries\PayoutCreatedLogEntry.cs" />
     <Compile Include="Support\LogEntries\SecurityActionBase.cs" />
+    <Compile Include="Support\LogEntries\VolunteerForPositionLogEntry.cs" />
     <Compile Include="Support\ObjectOptionalData.cs" />
     <Compile Include="Support\PilotInstallationIds.cs" />
     <Compile Include="Support\PluralBase.cs" />

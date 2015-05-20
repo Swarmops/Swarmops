@@ -9,8 +9,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Resources;
 using Swarmops.Common.Enums;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
+using Swarmops.Logic.Support;
+using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Pages.Public
@@ -216,9 +220,20 @@ namespace Swarmops.Frontend.Pages.Public
 
             Person newPerson = Person.Create (name, mail, password, phone, street1 + "\n" + street2.Trim(), postalCode,
                 city, countryCode, parsedDateOfBirth, gender);
-            newPerson.AddParticipation (organization, DateTime.UtcNow.AddYears (1));  // TODO: set duration from organization settings of Participantship
+            Participation participation = newPerson.AddParticipation (organization, DateTime.UtcNow.AddYears (1));  // TODO: set duration from organization settings of Participantship
 
             // TODO: SEND NOTIFICATIONS
+
+            // Log the signup
+
+            SwarmopsLog.CreateEntry (newPerson, new PersonAddedLogEntry (participation, newPerson));
+
+            // Create notification
+
+            OutboundComm.CreateParticipantNotification (newPerson, newPerson, organization,
+                NotificationResource.Participant_Signup);
+
+            // Add the bells and whistles
 
             if (activist)
             {
@@ -230,7 +245,9 @@ namespace Swarmops.Frontend.Pages.Public
                 Volunteer volunteer = newPerson.CreateVolunteer();
                 foreach (int positionId in positionIdsVolunteer)
                 {
-                    volunteer.AddPosition (Position.FromIdentity (positionId));
+                    Position position = Position.FromIdentity (positionId);
+                    volunteer.AddPosition (position);
+                    SwarmopsLog.CreateEntry (newPerson, new VolunteerForPositionLogEntry (newPerson, position));
                 }
             }
 

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace Swarmops.Logic.Support.LogEntries
 {
     [Serializable]
-    public class MembershipActionBase: LogEntryBase<MembershipActionBase>
+    public class ParticipationActionBase: LogEntryBase<ParticipationActionBase>
     {
-        public MembershipActionBase()
+        public ParticipationActionBase()
         {
             // do not call public ctor directly. Intended for serialization only.
         }
 
-        public int MembershipId { get; set; }
+        public int ParticipationId { get; set; }
         /// <summary>
         /// Always in UTC
         /// </summary>
