@@ -682,7 +682,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 HttpUtility.UrlDecode (password), string.Empty, string.Empty, string.Empty,
                 string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
-            newPerson.AddMembership (1, DateTime.MaxValue); // Add membership in Sandbox
+            newPerson.AddParticipation (Organization.Sandbox, DateTime.MaxValue); // Add membership in Sandbox
             newPerson.AddRole (RoleType.SystemAdmin, 0, 0); // Add role System Admin
         }
 

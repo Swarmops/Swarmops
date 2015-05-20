@@ -58,54 +58,6 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicVolunteerRole GetVolunteerRole (int volunteerRoleId)
-        {
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
-
-                DbCommand command =
-                    GetDbCommand (
-                        "SELECT VolunteerRoleId,VolunteerId,OrganizationId,GeographyId,RoleTypeId,Open,Assigned FROM VolunteerRoles WHERE VolunteerRoleId=" +
-                        volunteerRoleId + ";", connection);
-
-                using (DbDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        return ReadVolunteerRoleFromDataReader (reader);
-                    }
-
-                    throw new ArgumentException ("Unknown VolunteerId");
-                }
-            }
-        }
-
-
-        public BasicVolunteerRole[] GetVolunteerRolesByVolunteer (int volunteerId)
-        {
-            List<BasicVolunteerRole> result = new List<BasicVolunteerRole>();
-
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
-
-                DbCommand command =
-                    GetDbCommand (
-                        "SELECT VolunteerRoleId,VolunteerId,OrganizationId,GeographyId,RoleTypeId,Open,Assigned FROM VolunteerRoles WHERE VolunteerId=" +
-                        volunteerId + ";", connection);
-
-                using (DbDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        result.Add (ReadVolunteerRoleFromDataReader (reader));
-                    }
-                }
-            }
-
-            return result.ToArray();
-        }
 
 
         private BasicVolunteer ReadVolunteerFromDataReader (DbDataReader reader)
@@ -123,18 +75,9 @@ namespace Swarmops.Database
         }
 
 
-        private BasicVolunteerRole ReadVolunteerRoleFromDataReader (DbDataReader reader)
+        private BasicVolunteerPosition ReadVolunteerPositionFromDataReader (DbDataReader reader)
         {
-            int volunteerRoleId = reader.GetInt32 (0);
-            int volunteerId = reader.GetInt32 (1);
-            int organizationId = reader.GetInt32 (2);
-            int geographyId = reader.GetInt32 (3);
-            int roleTypeId = reader.GetInt32 (4);
-            bool open = reader.GetBoolean (5);
-            bool assigned = reader.GetBoolean (6);
-
-            return new BasicVolunteerRole (volunteerRoleId, volunteerId, organizationId, geographyId,
-                (RoleType) roleTypeId, open, assigned);
+            throw new NotImplementedException();
         }
 
 
@@ -149,25 +92,24 @@ namespace Swarmops.Database
 
                 AddParameterWithName (command, "personId", personId);
                 AddParameterWithName (command, "ownerPersonId", ownerPersonId);
-                AddParameterWithName (command, "openedDateTime", DateTime.Now);
+                AddParameterWithName (command, "openedDateTime", DateTime.UtcNow);
 
                 return Convert.ToInt32 (command.ExecuteScalar());
             }
         }
 
-        public int CreateVolunteerRole (int volunteerId, int organizationId, int geographyId, RoleType roleType)
+        public int CreateVolunteerPosition (int volunteerId, int positionId, int geographyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("CreateVolunteerRole", connection);
+                DbCommand command = GetDbCommand ("CreateVolunteerPosition", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName (command, "volunteerId", volunteerId);
-                AddParameterWithName (command, "organizationId", organizationId);
+                AddParameterWithName (command, "positionId", positionId);
                 AddParameterWithName (command, "geographyId", geographyId);
-                AddParameterWithName (command, "roleTypeId", (int) roleType);
 
                 return Convert.ToInt32 (command.ExecuteScalar());
             }

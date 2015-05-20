@@ -387,6 +387,7 @@
     <Compile Include="Swarm\RoleLookup.cs" />
     <Compile Include="Swarm\Roles.cs" />
     <Compile Include="Swarm\Volunteer.cs" />
+    <Compile Include="Swarm\VolunteerPosition.cs" />
     <Compile Include="Swarm\VolunteerRole.cs" />
     <Compile Include="Swarm\VolunteerRoles.cs" />
     <Compile Include="Swarm\Volunteers.cs" />

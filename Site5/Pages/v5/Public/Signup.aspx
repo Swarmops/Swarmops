@@ -32,7 +32,10 @@
     <!-- UGLY HACK: Control ExternalScripts requires authentication for some reason. This is a bug. But to get alpha-09 out on time, we're
         circumventing the bug by hardcoding the hosted scripts - this needs fixing. -->
 
-    <script src="//hostedscripts.falkvinge.net/staging/easyui/jquery.easyui.min.js" type="text/javascript"></script>    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/icon.css" />    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/default/easyui.css" />    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
+    <script src="//hostedscripts.falkvinge.net/staging/easyui/jquery.easyui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="//hostedscripts.falkvinge.net/staging/easyui/themes/default/easyui.css" />
+    <link href="/Style/v5-easyui-overrides.css" rel="stylesheet" type="text/css" />
     
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
     <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js" ></script>
@@ -101,23 +104,6 @@
         body.rtl input[type="radio"]+label+p {
             padding-right: 24px;
             padding-left: inherit;
-        }
-
-
-        .swMain ul.anchor li a.crossout, .swMain ul.anchor li a.crossout:hover {  /* cross out step 5 if it is skipped - if so, it gets marked disabled */
-            background: 
-                   linear-gradient(to top left,
-                       rgba(0,0,0,0) 0%,
-                       rgba(0,0,0,0) calc(50% - 2px),
-                       rgba(0,0,0,.2) 50%,
-                       rgba(0,0,0,0) calc(50% + 2px),
-                       rgba(0,0,0,0) 100%),
-                   linear-gradient(to top right,
-                       rgba(0,0,0,0) 0%,
-                       rgba(0,0,0,0) calc(50% - 2px),
-                       rgba(0,0,0,.2) 50%,
-                       rgba(0,0,0,0) calc(50% + 2px),
-                       rgba(0,0,0,0) 100%);
         }
 
 
@@ -298,7 +284,30 @@
     	        isValid = ValidateTextField('#<%= TextMail.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorMail" />") && isValid;
     	        isValid = ValidateTextField('#<%= TextName.ClientID %>', "<asp:Literal runat="server" ID="LiteralErrorName" />") && isValid; // TODO: Actually validate geography?
 
-    	        return isValid;
+    	        if (isValid) {
+
+    	            var jsonData = {};
+    	            jsonData.mail = $('#<%= TextMail.ClientID %>').val();
+
+	                $.ajax({
+	                    type: "POST",
+	                    url: "/Pages/v5/Public/Signup.aspx/CheckMailFree",
+	                    data: $.toJSON(jsonData),
+	                    contentType: "application/json; charset=utf-8",
+	                    dataType: "json",
+	                    async: false, // blocks until function returns - race conditions otherwise
+	                    success: function(msg) {
+	                        if (msg.d != true) {
+	                            isValid = false;
+	                            $('#<%= this.TextMail.ClientID %>').addClass("entryError");
+	                            alertify.error("<asp:Literal runat="server" ID="LiteralErrorMailExists" />");
+	                            $('#<%=this.TextMail.ClientID %>').focus();
+	                        }
+	                    }
+	                });
+	            }
+
+	            return isValid;
     	    }
 
     	    function ValidateTextField(fieldId, message) {
@@ -355,8 +364,39 @@
     	        }
 
     	        function onFinishCallback(obj) {
-	                alert("On Finish Callback");
-	                // $('#LOGINBUTTONID').click();
+    	            var positionIdArray = [];
+
+	                $('a.buttonFinish').addClass('buttonDisabled').css('cursor', 'wait');
+
+	                if (selectedPositions.length > 0) {
+	                    selectedPositions.forEach(function(currentValue, index, array) {
+	                        positionIdArray.push(parseInt(currentValue.positionId));
+	                    });
+	                }
+
+	                SwarmopsJS.ajaxCall("/Pages/v5/Public/Signup.aspx/SignupParticipant",
+	                    {
+	                        name: $('#<%=this.TextName.ClientID%>').val(),
+	                        organizationId: <%= this.Organization.Identity %>,
+	                        mail: $('#<%=this.TextMail.ClientID%>').val(),
+	                        phone: $('#<%=this.TextPhone.ClientID%>').val(),
+	                        password: $('#<%=this.TextPassword1.ClientID%>').val(),
+	                        street1: $('#<%=this.TextStreet1.ClientID%>').val(),
+	                        street2: $('#<%=this.TextStreet2.ClientID%>').val(),
+	                        postalCode: $('#<%=this.TextPostal.ClientID%>').val(),
+	                        city: $('#<%=this.TextCity.ClientID%>').val(),
+	                        countryCode: $('#<%=this.DropCountries.ClientID%>').val(),
+    	                    dateOfBirth: $('#<%=this.TextDateOfBirth.ClientID%>').val(),
+    	                    geographyId: currentGeographyId,
+    	                    activist: $('input:radio[name="ActivationLevel"]:checked').val() != "RadioActivationPassive",
+    	                    gender: $('#<%=this.DropGenders.ClientID%>').val(),
+                            positionIdsVolunteer: positionIdArray
+
+	                    },
+	                    function() {
+	                        // On success, the participant is created and an authentication cookie has been set. Redirect to Dashboard.
+	                        document.location = "/";
+	                    });
 	            }
 
     	        function validateStep(stepNumber) {
@@ -403,36 +443,46 @@
     	                    alertify.error("<asp:Literal runat='server' ID='LiteralErrorSelectActivationLevel' />");
     	                }
 
-    	                if (selectedOption != "RadioActivationVolunteer" && isValid) {
-
-                            // If we're NOT an officer volunteer...
-
-	                        suppressChecks = true; // prevents foreverlooping into this check
-	                        $('#wizard').smartWizard('goToStep', 6);
-	                        setTimeout(function() {
-	                            $('a[rel="5"]').addClass("disabled").addClass("crossout").removeClass("selected");
-	                            $('a.buttonNext').addClass("buttonDisabled"); // hacks because SmartWizard doesn't handle skipping steps
-	                        }, 250);
-	                        suppressChecks = false;
-    	                } else if (isValid) {
+    	                if (selectedOption == "RadioActivationVolunteer" && isValid) {
 
                             // If we ARE an officer volunteer...
 
-    	                    $('a[rel="5"]').removeClass("crossout"); // if user navigating back and forth, need to remove the crossout here
-
     	                    setTimeout(function() {
 	                            $('#tableVolunteerPositions').datagrid({ url: '/Pages/v5/Public/Json-SignupVolunteerPositions.aspx?OrganizationId=<%=Organization.Identity%>&GeographyId=' + currentGeographyId });
-    	                        //$('#tableVolunteerPositions').datagrid('reload');
 	                        }, 250);
+    	                } else {
+    	                    // Otherwise, jump to step 6
+
+    	                    // This is NOT how you do it. The SmartWizard doesn't want to do DisableStep (so that a step is skipped), and doesn't do GoToStep either.
+                            // These hacks mean that backstepping becomes shit ugly if you go to step 6 and backstep to 4. Need to fix. BUGBUG TODO
+
+    	                    if (!suppressChecks) {
+    	                        suppressChecks = true;
+    	                        $('#wizard').smartWizard('goToStep', '6');
+	                            setTimeout(function() {
+	                                $('#step-5').hide();
+	                                $('a.buttonNext').addClass('buttonDisabled');
+	                                $('a[rel="5"]').removeClass('selected').removeClass('done').addClass('disabled');
+	                            }, 250); // needs to be at least 250ms to happen after... what? BUG here, there has to be a better way to do this
+	                            suppressChecks = false;
+	                        }
 	                    }
 
 	                } else if (stepNumber == 5) {
     	                isValid = true; // assume true, make false as we go
 
-    	                selectedPositions = $('#tableVolunteerPositions').datagrid('getChecked');
-    	                if (selectedPositions.length == 0) {
-    	                    isValid = false;
-    	                    alertify.error("<asp:Literal runat='server' ID='LiteralErrorSelectVolunteerPosition' />");
+    	                if ($('input:radio[name="ActivationLevel"]:checked').val() == "RadioActivationVolunteer") {
+	                        // if step 5 active...
+
+	                        selectedPositions = $('#tableVolunteerPositions').datagrid('getChecked');
+	                        if (selectedPositions.length == 0) {
+	                            isValid = false;
+	                            alertify.error("<asp:Literal runat='server' ID='LiteralErrorSelectVolunteerPosition' />");
+	                        }
+	                    } else {
+	                        // If we should just skip step 5
+	                        $('a[rel="5"]').addClass("disabled").addClass("crossout");
+	                        selectedPositions = {};
 	                    }
 
 	                } else if (stepNumber == 6) {
@@ -444,6 +494,17 @@
 
 	            $('#<%=this.DropCountries.ClientID%>').change(function() {
 	                UpdatePostalPrefix('oldValueDummy', $('#<%=this.DropCountries.ClientID%>').val());
+	            });
+
+    	        $('input:radio[name="ActivationLevel"]').click(function() {
+	                if ($('input:radio[name="ActivationLevel"]:checked').val() == "RadioActivationVolunteer") {
+	                    $('#wizard').smartWizard('enableStep', '5');
+	                    $('a[rel="5"]').removeClass("crossout");
+	                } else {
+	                    $('#wizard').smartWizard('disableStep', '5');
+	                    $('a[rel="5"]').addClass("crossout");
+	                    selectedPositions = {};
+                    }
 	            });
 
 	        });  // end of document.ready

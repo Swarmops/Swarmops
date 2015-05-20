@@ -1,3 +1,4 @@
+using System;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Database;
@@ -24,7 +25,7 @@ namespace Swarmops.Logic.Swarm
 
         public static VolunteerRole FromIdentity (int identity)
         {
-            return FromBasic (SwarmDb.GetDatabaseForReading().GetVolunteerRole (identity));
+            throw new NotImplementedException(); // This entire class is legacy
         }
 
         public void Close (bool wasAssigned)

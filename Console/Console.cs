@@ -939,7 +939,7 @@ namespace Swarmops
 					{
 						Console.WriteLine ("[!!] " + member.Name);
 
-						member.AddMembership (1, membership.Expires);
+						member.AddParticipation (1, membership.Expires);
 						Console.WriteLine ("      - added membership in PP");
 
 						PWEvents.CreateEvent(EventSource.PirateBot, EventType.AddedMembership,

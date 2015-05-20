@@ -33,19 +33,24 @@ namespace Swarmops.Logic.Swarm
             return new Volunteer (basic);
         }
 
-        public static Volunteer Create (Person person, Person owner)
+        public static Volunteer Create (Person person)
         {
-            return Create (person.Identity, owner.Identity);
+            return Create (person, null);
         }
 
-        public static Volunteer Create (int personId, int ownerPersonId)
+        public static Volunteer Create (Person person, Person owner)
+        {
+            return Create (person.Identity, owner != null? owner.Identity: 0);
+        }
+
+        private static Volunteer Create (int personId, int ownerPersonId)
         {
             return FromIdentity (SwarmDb.GetDatabaseForWriting().CreateVolunteer (personId, ownerPersonId));
         }
 
         #endregion
 
-        private Geography geography;
+        private Geography _geography;
         private Person ownerPerson;
         private Person person;
 
@@ -78,7 +83,7 @@ namespace Swarmops.Logic.Swarm
             get
             {
                 PopulateCache();
-                return this.geography;
+                return this._geography;
             }
         }
 
@@ -97,7 +102,7 @@ namespace Swarmops.Logic.Swarm
             get
             {
                 PopulateCache();
-                return this.geography.Name;
+                return this._geography.Name;
             }
         }
 
@@ -119,23 +124,6 @@ namespace Swarmops.Logic.Swarm
             }
         }
 
-        public VolunteerRoles Roles
-        {
-            get
-            {
-                return VolunteerRoles.FromArray (SwarmDb.GetDatabaseForReading().GetVolunteerRolesByVolunteer (Identity));
-            }
-        }
-
-        public void AddRole (Organization organization, Geography geography, RoleType roleType)
-        {
-            AddRole (organization.Identity, geography.Identity, roleType);
-        }
-
-        public void AddRole (int organizationId, int geographyId, RoleType roleType)
-        {
-            SwarmDb.GetDatabaseForWriting().CreateVolunteerRole (Identity, organizationId, geographyId, roleType);
-        }
 
         public void Close (string comments)
         {
@@ -154,17 +142,24 @@ namespace Swarmops.Logic.Swarm
                 this.ownerPerson = Person.FromIdentity (OwnerPersonId);
             }
 
-            if (this.geography == null)
+            if (this._geography == null)
             {
                 if (this.person.GeographyId != 0)
                 {
-                    this.geography = this.person.Geography;
+                    this._geography = this.person.Geography;
                 }
                 else
                 {
-                    this.geography = Geography.Root;
+                    this._geography = Geography.Root;
                 }
             }
+        }
+
+        public void AddPosition (Position position, Geography geography = null)
+        {
+            int geographyId = (geography == null ? 0 : geography.Identity);
+
+            SwarmDb.GetDatabaseForWriting().CreateVolunteerPosition (this.Identity, position.Identity, geographyId);
         }
 
 

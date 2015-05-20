@@ -145,6 +145,14 @@
   <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
     <value>Officer Volunteer</value>
   </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>Welcome! This is the &lt;em&gt;Dashboard,&lt;/em&gt; where you can access internal functionality of {0}. You will get more information in mail shortly.&lt;br/&gt;&lt;br/&gt;
+
+If you volunteered for taking formal responsibility, somebody (probably also a volunteer, like yourself) will contact you to discuss more about the opportunities.</value>
+  </data>
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>You have already signed up to this Swarmops server. Please use the Reset Password function from the login screen instead of creating a new account.</value>
+  </data>
   <data name="Signup_Error_NeedPassword" xml:space="preserve">
     <value>Please select and retype a password.</value>
   </data>

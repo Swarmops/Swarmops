@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Web;
+using System.Web.Security;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Resources;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
@@ -106,6 +109,7 @@ namespace Swarmops.Frontend.Pages.Public
             this.LiteralErrorPasswordMismatch.Text = Resources.Pages.Public.Signup_Error_PasswordMismatch;
             this.LiteralErrorSelectActivationLevel.Text = Resources.Pages.Public.Signup_Error_SelectActivationLevel;
             this.LiteralErrorSelectVolunteerPosition.Text = Resources.Pages.Public.Signup_Error_SelectPosition;
+            this.LiteralErrorMailExists.Text = Resources.Pages.Public.Signup_Error_MailExists;
 
             this.LabelWelcomeHeader.Text = String.Format (Resources.Pages.Public.Signup_Welcome, Organization.Name);
             this.LabelHeader.Text = String.Format(Resources.Pages.Public.Signup_SigningUp, Organization.Name).ToUpperInvariant();
@@ -189,5 +193,73 @@ namespace Swarmops.Frontend.Pages.Public
 
 
         protected Organization Organization;
+
+        [WebMethod]
+        public static AjaxCallResult SignupParticipant (string name, int organizationId, string mail, string password, string phone,
+            string street1, string street2, string postalCode, string city, string countryCode, string dateOfBirth,
+            int geographyId, bool activist, PersonGender gender, int[] positionIdsVolunteer)
+        {
+            CommonV5.CulturePreInit (HttpContext.Current.Request); // Set culture, for date parsing
+
+            if (geographyId == 0)
+            {
+                geographyId = Geography.RootIdentity; // if geo was undetermined, set it to "Global"
+            }
+
+            Organization organization = Organization.FromIdentity (organizationId);
+            DateTime parsedDateOfBirth = new DateTime (1800, 1, 1); // Default if unspecified
+
+            if (dateOfBirth.Length > 0)
+            {
+                parsedDateOfBirth = DateTime.Parse (dateOfBirth);
+            }
+
+            Person newPerson = Person.Create (name, mail, password, phone, street1 + "\n" + street2.Trim(), postalCode,
+                city, countryCode, parsedDateOfBirth, gender);
+            newPerson.AddParticipation (organization, DateTime.UtcNow.AddYears (1));  // TODO: set duration from organization settings of Participantship
+
+            // TODO: SEND NOTIFICATIONS
+
+            if (activist)
+            {
+                newPerson.CreateActivist (false, false);
+            }
+
+            if (positionIdsVolunteer.Length > 0)
+            {
+                Volunteer volunteer = newPerson.CreateVolunteer();
+                foreach (int positionId in positionIdsVolunteer)
+                {
+                    volunteer.AddPosition (Position.FromIdentity (positionId));
+                }
+            }
+
+            newPerson.LastLogonOrganizationId = organizationId;
+
+            // Create a welcome message to the Dashboard
+
+            HttpContext.Current.Response.AppendCookie (new HttpCookie ("DashboardMessage", CommonV5.JavascriptEscape(String.Format(Resources.Pages.Public.Signup_DashboardMessage, organization.Name))));
+
+            // Set authentication cookie, which will log the new person in using the credentials just given
+
+            FormsAuthentication.SetAuthCookie (Authority.FromLogin (newPerson).ToEncryptedXml(), true);
+
+            AjaxCallResult result = new AjaxCallResult {Success = true};
+            return result;
+        }
+
+        [WebMethod]
+        public static AjaxCallResult CheckMailFree (string mail)
+        {
+            People people = People.FromMail (mail);
+            // This should be zero
+
+            if (people.Count == 0)
+            {
+                return new AjaxCallResult {Success = true};
+            }
+
+            return new AjaxCallResult {Success = false};
+        }
     }
 }

@@ -93,7 +93,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin.Hacks
                 newPerson.Longitude = lineParts[10];
                 newPerson.Latitude = lineParts[11];
 
-                newPerson.AddMembership (1, DateTime.Today.AddDays (random.Next (365)));
+                newPerson.AddParticipation (Organization.Sandbox, DateTime.Today.AddDays (random.Next (365)));
             }
 
             GuidCache.Set (guid + "-Progress", 100);

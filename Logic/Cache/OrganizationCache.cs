@@ -142,7 +142,6 @@ namespace Swarmops.Logic.Cache
                         throw new ArgumentException ("No such OrganizationId: " + OrganizationId.ToString());
                     }
                 }
-                ;
             }
         }
 

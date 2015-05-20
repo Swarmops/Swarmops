@@ -198,7 +198,7 @@ body.rtl .swMain ul.anchor li a .stepDesc {
   /* background: #EA8511;  */
 }
 
-.swMain ul.anchor li a.done { 
+.swMain ul.anchor li a.done:not(.crossout) { 
   position:relative;
   color:#FFF;  
   background: #8CC63F;  
@@ -227,6 +227,24 @@ body.rtl .swMain ul.anchor li a .stepDesc {
   color:#CCCCCC;  
   background: #F8F8F8;     
 }
+
+
+.swMain ul.anchor li a.crossout, .swMain ul.anchor li a.crossout:hover { 
+    background: 
+            linear-gradient(to top left,
+                rgba(0,0,0,0) 0%,
+                rgba(0,0,0,0) calc(50% - 2px),
+                rgba(0,0,0,.2) 50%,
+                rgba(0,0,0,0) calc(50% + 2px),
+                rgba(0,0,0,0) 100%),
+            linear-gradient(to top right,
+                rgba(0,0,0,0) 0%,
+                rgba(0,0,0,0) calc(50% - 2px),
+                rgba(0,0,0,.2) 50%,
+                rgba(0,0,0,0) calc(50% + 2px),
+                rgba(0,0,0,0) 100%);
+}
+
 
 .swMain ul.anchor li a.error {
   color:#6c6c6c !important;  

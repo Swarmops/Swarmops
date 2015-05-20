@@ -785,14 +785,14 @@ namespace Swarmops.Logic.Swarm
             return newPerson;
         }
 
-        public Participation AddMembership (Organization organization, DateTime expires)
+        public Participation AddParticipation (Organization organization, DateTime expires)
         {
-            return AddMembership (organization.Identity, expires);
+            return AddParticipation (organization.Identity, expires);
         }
 
-        public Participation AddMembership (int organizationId, DateTime expires)
+        private Participation AddParticipation (int organizationId, DateTime expires)
         {
-            return Participation.Create (Identity, organizationId, expires);
+            return Participation.Create (this.Identity, organizationId, expires);
         }
 
         private bool? HasExplicitSubscription (int newsletterFeedId)
@@ -1154,6 +1154,11 @@ namespace Swarmops.Logic.Swarm
             }
 
             return assignment.Position;
+        }
+
+        public Volunteer CreateVolunteer()
+        {
+            return Volunteer.Create (this);
         }
 
         // A couple of special cases
