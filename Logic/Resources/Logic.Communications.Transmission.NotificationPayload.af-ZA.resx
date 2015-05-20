@@ -231,6 +231,12 @@
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>crwdns6555559:0[OrganizationName]crwdnd6555559:0[GeographyName]crwdne6555559:0</value>
   </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>crwdns6556366:0[RegularTitle]crwdnd6556366:0[OrganizationName]crwdnd6556366:0[ConcernedPersonName]crwdnd6556366:0[GeographyName]crwdnd6556366:0[CountryCode]crwdne6556366:0</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>crwdns6556332:0[OrganizationName]crwdnd6556332:0[RegularTitle]crwdnd6556332:0[ConcernedPersonName]crwdnd6556332:0[GeographyName]crwdne6556332:0</value>
+  </data>
   <data name="Password_CannotReset2FA_Body" xml:space="preserve">
     <value>crwdns6555571:0[InstallationName]crwdnd6555571:0[InstallationName]crwdne6555571:0</value>
   </data>

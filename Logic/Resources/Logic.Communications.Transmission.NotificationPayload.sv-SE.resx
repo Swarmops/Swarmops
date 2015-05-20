@@ -257,6 +257,12 @@ Tid från order till sändningen var klar: [TransmissionTime].</value>
   <data name="OutboundComm_Sent_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Meddelande sänt: [GeographyName]</value>
   </data>
+  <data name="Participant_Signup_Body" xml:space="preserve">
+    <value>En ny person har gått med som [RegularTitle] i [OrganizationName]! [ConcernedPersonName] håller till i [GeographyName], [CountryCode].</value>
+  </data>
+  <data name="Participant_Signup_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Ny [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>
+  </data>
   <data name="Password_CannotReset2FA_Body" xml:space="preserve">
     <value>Någon, troligtvis du, har begärt en lösenordsåterställning till [InstallationName] för kontot som är kopplat till den här mailadressen. Dock har tvåfaktorsautentisering aktiverats på det här kontot för att höja säkerheten. Därför går det inte heller att återställa lösenordet lika enkelt.
 

@@ -702,4 +702,13 @@
     <value>Tills vidare</value>
     <comment>Implicitly, until _manual_ (not automatic) termination</comment>
   </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Slutför</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>Fortsätt</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Bakåt</value>
+  </data>
 </root>

@@ -117,8 +117,72 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Signup_ActivationActive" xml:space="preserve">
+    <value>crwdns6556336:0crwdne6556336:0</value>
+  </data>
+  <data name="Signup_ActivationActiveHeader" xml:space="preserve">
+    <value>crwdns6556337:0{0}crwdne6556337:0</value>
+    <comment>{0} is the Activist label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationLevel" xml:space="preserve">
+    <value>crwdns6556338:0crwdne6556338:0</value>
+  </data>
+  <data name="Signup_ActivationLevelText" xml:space="preserve">
+    <value>crwdns6556339:0{0}crwdne6556339:0</value>
+    <comment>{0} is the org name.</comment>
+  </data>
+  <data name="Signup_ActivationPassive" xml:space="preserve">
+    <value>crwdns6556340:0{0}crwdne6556340:0</value>
+    <comment>{0} is the Participantship name (membership, ambassadorship etc).</comment>
+  </data>
+  <data name="Signup_ActivationPassiveHeader" xml:space="preserve">
+    <value>crwdns6556341:0{0}crwdne6556341:0</value>
+    <comment>{0} is the Regular Participant label for the org.</comment>
+  </data>
+  <data name="Signup_ActivationVolunteer" xml:space="preserve">
+    <value>crwdns6556342:0crwdne6556342:0</value>
+  </data>
+  <data name="Signup_ActivationVolunteerHeader" xml:space="preserve">
+    <value>crwdns6556343:0crwdne6556343:0</value>
+  </data>
+  <data name="Signup_DashboardMessage" xml:space="preserve">
+    <value>crwdns6556367:0{0}crwdne6556367:0</value>
+  </data>
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>crwdns6556345:0crwdne6556345:0</value>
+  </data>
+  <data name="Signup_Error_NeedPassword" xml:space="preserve">
+    <value>crwdns6556346:0crwdne6556346:0</value>
+  </data>
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>crwdns6556347:0crwdne6556347:0</value>
+  </data>
+  <data name="Signup_Error_SelectActivationLevel" xml:space="preserve">
+    <value>crwdns6556348:0crwdne6556348:0</value>
+  </data>
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>crwdns6556349:0crwdne6556349:0</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>crwdns6556350:0crwdne6556350:0</value>
+  </data>
+  <data name="Signup_FeeRenewalText" xml:space="preserve">
+    <value>crwdns6556351:0{0}crwdnd6556351:0{1}crwdnd6556351:0{1}crwdnd6556351:0{2}crwdnd6556351:0{3}crwdnd6556351:0{4:N2}crwdne6556351:0</value>
+    <comment>{0} {1} is duration and Participantship, like "one-year Membership". {2} is the projected expiration date. {3} {4} is the renewal fee as it's currently set (NB: it may be different when the date is reached).</comment>
+  </data>
+  <data name="Signup_FeeText" xml:space="preserve">
+    <value>crwdns6556352:0{0}crwdnd6556352:0{1}crwdnd6556352:0{2:N2}crwdnd6556352:0{3}crwdnd6556352:0{0}crwdne6556352:0</value>
+    <comment>{0} is the Participantship title. {1} and {2} are the currency and amount. {3} is the duration, like "one year" or "two years" (set in Organization Settings).</comment>
+  </data>
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>crwdns6556353:0crwdne6556353:0</value>
+  </data>
   <data name="Signup_MailLoginKey" xml:space="preserve">
-    <value>crwdns6556313:0crwdne6556313:0</value>
+    <value>crwdns6556354:0crwdne6556354:0</value>
+  </data>
+  <data name="Signup_NoFeeText" xml:space="preserve">
+    <value>crwdns6556355:0{0}crwdnd6556355:0{2}crwdnd6556355:0{1}crwdnd6556355:0{0}crwdne6556355:0</value>
+    <comment>{0} is the Participantship title. {1} is the expiry date. {2} is the organization name.</comment>
   </data>
   <data name="Signup_Password1" xml:space="preserve">
     <value>crwdns6556314:0crwdne6556314:0</value>
@@ -152,7 +216,7 @@
     <value>crwdns6556323:0crwdne6556323:0</value>
   </data>
   <data name="Signup_Step4Text" xml:space="preserve">
-    <value>crwdns6556324:0crwdne6556324:0</value>
+    <value>crwdns6556356:0crwdne6556356:0</value>
   </data>
   <data name="Signup_Step5Header" xml:space="preserve">
     <value>crwdns6556325:0crwdne6556325:0</value>
@@ -163,12 +227,40 @@
   <data name="Signup_Step6Header" xml:space="preserve">
     <value>crwdns6556327:0crwdne6556327:0</value>
   </data>
+  <data name="Signup_Step6Header_Payment" xml:space="preserve">
+    <value>crwdns6556357:0crwdne6556357:0</value>
+  </data>
   <data name="Signup_Step6Text" xml:space="preserve">
     <value>crwdns6556328:0crwdne6556328:0</value>
+  </data>
+  <data name="Signup_Step6Text_Payment" xml:space="preserve">
+    <value>crwdns6556358:0{0}crwdne6556358:0</value>
+    <comment>The {0} is Membership, Ambassadorship, etc. The Regularship label for this organization.</comment>
+  </data>
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>crwdns6556359:0crwdne6556359:0</value>
+  </data>
+  <data name="Signup_VolunteerHeader" xml:space="preserve">
+    <value>crwdns6556360:0crwdne6556360:0</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderGeography" xml:space="preserve">
+    <value>crwdns6556361:0crwdne6556361:0</value>
+  </data>
+  <data name="Signup_VolunteerTableHeaderPosition" xml:space="preserve">
+    <value>crwdns6556362:0crwdne6556362:0</value>
+  </data>
+  <data name="Signup_VolunteerText" xml:space="preserve">
+    <value>crwdns6556363:0crwdne6556363:0</value>
   </data>
   <data name="Signup_Welcome" xml:space="preserve">
     <value>crwdns6556329:0{0}crwdne6556329:0</value>
     <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Signup_YourLogon" xml:space="preserve">
+    <value>crwdns6556364:0crwdne6556364:0</value>
+  </data>
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>crwdns6556365:0crwdne6556365:0</value>
   </data>
   <data name="Signup_YourName" xml:space="preserve">
     <value>crwdns6556330:0crwdne6556330:0</value>

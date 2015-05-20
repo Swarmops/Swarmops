@@ -708,4 +708,13 @@
     <value>crwdns6556134:0crwdne6556134:0</value>
     <comment>Implicitly, until _manual_ (not automatic) termination</comment>
   </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>crwdns6556333:0crwdne6556333:0</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>crwdns6556334:0crwdne6556334:0</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>crwdns6556335:0crwdne6556335:0</value>
+  </data>
 </root>
