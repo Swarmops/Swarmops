@@ -297,7 +297,7 @@
 	                    dataType: "json",
 	                    async: false, // blocks until function returns - race conditions otherwise
 	                    success: function(msg) {
-	                        if (msg.d != true) {
+	                        if (msg.d.Success != true) {
 	                            isValid = false;
 	                            $('#<%= this.TextMail.ClientID %>').addClass("entryError");
 	                            alertify.error("<asp:Literal runat="server" ID="LiteralErrorMailExists" />");

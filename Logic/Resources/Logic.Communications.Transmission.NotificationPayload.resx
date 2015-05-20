@@ -258,7 +258,7 @@ Time spent transmitting: [TransmissionTime].</value>
     <value>[[OrganizationName]] Comms transmitted: [GeographyName]</value>
   </data>
   <data name="Participant_Signup_Body" xml:space="preserve">
-    <value>A new person has signed up as [RegularTitle] in [OrganizationName]! They are based in [GeographyName].</value>
+    <value>A new person has signed up as [RegularTitle] in [OrganizationName]! [ConcernedPersonName] is based in [GeographyName], [CountryCode].</value>
   </data>
   <data name="Participant_Signup_Subject" xml:space="preserve">
     <value>[[OrganizationName]] New [RegularTitle]: [ConcernedPersonName], [GeographyName]</value>

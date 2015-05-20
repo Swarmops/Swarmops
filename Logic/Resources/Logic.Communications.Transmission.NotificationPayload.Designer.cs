@@ -402,7 +402,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A new person has signed up as [RegularTitle] in [OrganizationName]! They are based in [GeographyName]..
+        ///   Looks up a localized string similar to A new person has signed up as [RegularTitle] in [OrganizationName]! [ConcernedPersonName] is based in [GeographyName], [CountryCode]..
         /// </summary>
         internal static string Participant_Signup_Body {
             get {
