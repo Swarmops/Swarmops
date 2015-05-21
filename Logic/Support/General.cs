@@ -62,10 +62,10 @@ namespace Swarmops.Logic.Support
             // All of this can be faked trivially by the client, so you can't rely on it for any kind of security.
 
             string forwardedIps =
-                HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                HttpContext.Current.Request.Headers["X-Forwarded-For"];
 
             string directIp =
-                HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                HttpContext.Current.Request.UserHostAddress;
 
             if (!string.IsNullOrEmpty (forwardedIps))
             {
