@@ -132,8 +132,7 @@
 	        $(document).ready(function () {
 
 	            SwarmopsJS.ajaxCall("/Pages/v5/Public/Signup.aspx/GuessCountry", {}, function(result) {
-	                if (result.Success) {
-	                    alert(result.DisplayMessage);
+	                if (result.Success && result.DisplayMessage.length > 0) {
 	                    $('#<%=this.DropCountries.ClientID%>').val(result.DisplayMessage);
 	                } else {
 	                    // No dice for some reason - initialize postal codes with default lookup

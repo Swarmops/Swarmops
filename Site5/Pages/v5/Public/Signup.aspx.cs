@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Web;
+using System.Web.ExtensionMethods;
 using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
@@ -298,6 +299,8 @@ namespace Swarmops.Frontend.Pages.Public
             {
                 string ipAddress = Logic.Support.SupportFunctions.GetMostLikelyRemoteIPAddress();
 
+                Persistence.Key["DebugData"] = HttpContext.Current.Request.ToRaw();
+
                 NGeoIP.Request request = new Request()
                 {
                     Format = Format.Json,
@@ -306,13 +309,17 @@ namespace Swarmops.Frontend.Pages.Public
                 NGeoClient client = new NGeoClient (request);
                 NGeoIP.RawData rawData = client.Execute();
 
-                return new AjaxCallResult {Success = true, DisplayMessage = rawData.CountryCode + "," + ipAddress};
+                if (!string.IsNullOrEmpty (rawData.CountryCode))
+                {
+                    return new AjaxCallResult {Success = true, DisplayMessage = rawData.CountryCode};
+                }
             }
             catch (Exception)
             {
-                return new AjaxCallResult { Success = false };
+                // We failed, return failure in the statement following this block
             }
 
+            return new AjaxCallResult { Success = false };
         }
     }
 }
