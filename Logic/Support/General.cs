@@ -36,6 +36,7 @@ namespace Swarmops.Logic.Support
             return result.ToString();
         }
 
+        // ReSharper disable once InconsistentNaming  -- IPAddress is the canonical writing
         public static string GetRemoteIPAddressChain()
         {
             string forwardedIps =
@@ -53,6 +54,25 @@ namespace Swarmops.Logic.Support
             }
 
             return result;
+        }
+
+        // ReSharper disable once InconsistentNaming  -- IPAddress is the canonical writing
+        public static string GetMostLikelyRemoteIPAddress()
+        {
+            // All of this can be faked trivially by the client, so you can't rely on it for any kind of security.
+
+            string forwardedIps =
+                HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            string directIp =
+                HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+
+            if (!string.IsNullOrEmpty (forwardedIps))
+            {
+                return forwardedIps.Split (',').Last();
+            }
+
+            return directIp;
         }
     }
 }

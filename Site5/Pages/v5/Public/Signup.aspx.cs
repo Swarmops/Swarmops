@@ -296,7 +296,7 @@ namespace Swarmops.Frontend.Pages.Public
 
             try
             {
-                string ipAddress = HttpContext.Current.Request.UserHostAddress;
+                string ipAddress = Logic.Support.SupportFunctions.GetMostLikelyRemoteIPAddress();
 
                 NGeoIP.Request request = new Request()
                 {
