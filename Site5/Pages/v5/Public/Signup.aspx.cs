@@ -7,6 +7,8 @@ using System.Web.Security;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NGeoIP;
+using NGeoIP.Client;
 using Resources;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Communications;
@@ -277,6 +279,37 @@ namespace Swarmops.Frontend.Pages.Public
             }
 
             return new AjaxCallResult {Success = false};
+        }
+
+        [WebMethod]
+        public static AjaxCallResult GuessCountry()
+        {
+            // IMPORTANT: If you're implementing a sensitive organization, this should use YOUR OWN geoip server and not freegeoip.com, which
+            // may potentially be eavesdroppable. Look at the freegeoip.com for how to download their database.
+
+            if (HttpContext.Current.Request.UserHostAddress == "::1")
+            {
+                // yeah, we're running from localhost, no big point trying to geoip this
+                return new AjaxCallResult {Success = false};
+            }
+
+            try
+            {
+                NGeoIP.Request request = new Request()
+                {
+                    Format = Format.Json,
+                    IP = HttpContext.Current.Request.UserHostAddress
+                };
+                NGeoClient client = new NGeoClient (request);
+                NGeoIP.RawData rawData = client.Execute();
+
+                return new AjaxCallResult {Success = true, DisplayMessage = rawData.CountryCode};
+            }
+            catch (Exception)
+            {
+                return new AjaxCallResult { Success = false };
+            }
+
         }
     }
 }
