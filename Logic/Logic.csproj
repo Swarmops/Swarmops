@@ -68,8 +68,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External Dependencies\bin\NBitcoin.dll</HintPath>
     </Reference>
+    <Reference Include="NGeoIP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NGeoIP.1.0.1\lib\net45\NGeoIP.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RestSharp, Version=104.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.104.2.0\lib\net4\RestSharp.dll</HintPath>
+      <HintPath>..\packages\NGeoIP.1.0.1\lib\net45\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Starksoft.Cryptography.OpenPGP, Version=1.0.140.0, Culture=neutral, processorArchitecture=MSIL">
@@ -288,6 +292,7 @@
     <Compile Include="Security\BCrypt.cs" />
     <Compile Include="Security\PgpKey.cs" />
     <Compile Include="Special\DummyBitcoin.cs" />
+    <Compile Include="Special\DummyGeoLookup.cs" />
     <Compile Include="Special\Sweden\SupportCase.cs" />
     <Compile Include="Special\Sweden\SupportCaseDelta.cs" />
     <Compile Include="Special\Sweden\SupportDatabase.cs" />
