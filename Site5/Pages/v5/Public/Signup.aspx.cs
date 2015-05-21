@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Web;
@@ -287,7 +288,7 @@ namespace Swarmops.Frontend.Pages.Public
             // IMPORTANT: If you're implementing a sensitive organization, this should use YOUR OWN geoip server and not freegeoip.com, which
             // may potentially be eavesdroppable. Look at the freegeoip.com for how to download their database.
 
-            if (HttpContext.Current.Request.UserHostAddress == "::1")
+            if (HttpContext.Current.Request.UserHostAddress == "::1" && !Debugger.IsAttached)
             {
                 // yeah, we're running from localhost, no big point trying to geoip this
                 return new AjaxCallResult {Success = false};
@@ -295,15 +296,17 @@ namespace Swarmops.Frontend.Pages.Public
 
             try
             {
+                string ipAddress = HttpContext.Current.Request.UserHostAddress;
+
                 NGeoIP.Request request = new Request()
                 {
                     Format = Format.Json,
-                    IP = HttpContext.Current.Request.UserHostAddress
+                    IP = ipAddress
                 };
                 NGeoClient client = new NGeoClient (request);
                 NGeoIP.RawData rawData = client.Execute();
 
-                return new AjaxCallResult {Success = true, DisplayMessage = rawData.CountryCode};
+                return new AjaxCallResult {Success = true, DisplayMessage = rawData.CountryCode + "," + ipAddress};
             }
             catch (Exception)
             {
