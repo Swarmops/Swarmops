@@ -129,8 +129,21 @@
 	        // but ASP.Net server-side includes don't work well, and a JavaScript include isn't compatible with the
             // ASP.Net inline evaluations.
 
-    	    $(document).ready(function () {
-    	        UpdatePostalPrefix('XX', $('#<%= DropCountries.ClientID %>').val());
+	        $(document).ready(function () {
+
+	            SwarmopsJS.ajaxCall("/Pages/v5/Public/Signup.aspx/GuessCountry", {}, function(result) {
+	                if (result.Success) {
+	                    alert(result.DisplayMessage);
+	                    $('#<%=this.DropCountries.ClientID%>').val(result.DisplayMessage);
+	                } else {
+	                    // No dice for some reason - initialize postal codes with default lookup
+                        // (the change-of-field in the success scenario triggers this in that case)
+	                    UpdatePostalPrefix('XX', $('#<%= DropCountries.ClientID %>').val());
+	                }
+	            });
+
+
+
 
     	        $('#<%= TextPostal.ClientID %>').on('input', function () {
     	            if (CheckPostalCode()) {
