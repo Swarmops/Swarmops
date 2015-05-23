@@ -36,6 +36,8 @@
 
         string[] rewriteCandidates =
         {
+            "{0}/Dashboard.aspx",        // for dev.swarmops.com   -- Dashboard overrides Default in root, if it exists
+            "{0}Dashboard.aspx",         // for dev.swarmops.com/  -- Dashboard overrides Default in root, if it exists
             "{0}/Default.aspx",          // for dev.swarmops.com
             "{0}Default.aspx",           // for dev.swarmops.com/
             "{0}.aspx",                  // for dev.swarmops.com/Security/Login
@@ -59,8 +61,6 @@
     protected void Application_AuthenticateRequest(object sender, EventArgs e)
     {
         // Set default roles (none)
-
-        string[] userRoles = new string[0];
 
         // -----------  SET ROLES  -----------
 

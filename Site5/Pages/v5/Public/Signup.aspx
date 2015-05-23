@@ -134,14 +134,12 @@
 	            SwarmopsJS.ajaxCall("/Pages/v5/Public/Signup.aspx/GuessCountry", {}, function(result) {
 	                if (result.Success && result.DisplayMessage.length > 0) {
 	                    $('#<%=this.DropCountries.ClientID%>').val(result.DisplayMessage);
+	                    UpdatePostalPrefix('XX', result.DisplayMessage);
 	                } else {
 	                    // No dice for some reason - initialize postal codes with default lookup
-                        // (the change-of-field in the success scenario triggers this in that case)
 	                    UpdatePostalPrefix('XX', $('#<%= DropCountries.ClientID %>').val());
 	                }
 	            });
-
-
 
 
     	        $('#<%= TextPostal.ClientID %>').on('input', function () {
@@ -622,7 +620,7 @@
                             <asp:Label ID="LabelDateOfBirth" runat="server" /><br />
                             <asp:Label ID="LabelLegalGender" runat="server" /><br />
                         </div>
-  			            <div class="entryFieldsAdmin">
+  			            <div class="entryFieldsAdmin" style="width:204px">
                             <asp:TextBox runat="server" ID="TextName" />&#8203;<br/>
                             <asp:DropDownList runat="server" ID="DropCountries"/>&#8203;<br/>        
                             <asp:TextBox runat="server" ID="TextMail" />&#8203;<br/>

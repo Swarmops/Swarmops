@@ -24,6 +24,7 @@ namespace Swarmops.Logic.Support
             }
         }
 
+
         public static Persistence Key
         {
             get { return new Persistence(); }

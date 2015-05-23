@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Swarmops.Logic.Swarm;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Support.LogEntries
 {
@@ -21,6 +23,10 @@ namespace Swarmops.Logic.Support.LogEntries
             DateTime = System.DateTime.UtcNow;
             ParticipationId = participation.Identity;
             ActingPersonId = actingPerson.Identity;
+            if (HttpContext.Current != null)
+            {
+                ActingIPAddress = SupportFunctions.GetRemoteIPAddressChain();
+            }
         }
     }
 }

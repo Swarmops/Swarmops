@@ -20,5 +20,6 @@ namespace Swarmops.Logic.Support.LogEntries
         /// </summary>
         public DateTime DateTime { get; set; }
         public int ActingPersonId { get; set; }
+        public string ActingIPAddress { get; set; }
     }
 }

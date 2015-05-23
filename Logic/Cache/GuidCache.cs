@@ -47,6 +47,7 @@ namespace Swarmops.Logic.Cache
                 _cache.Remove (guidString);
             }
         }
+        
 
         private static void ConditionalGarbageCollect()
         {

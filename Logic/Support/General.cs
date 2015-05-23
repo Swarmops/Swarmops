@@ -40,10 +40,10 @@ namespace Swarmops.Logic.Support
         public static string GetRemoteIPAddressChain()
         {
             string forwardedIps =
-                HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                HttpContext.Current.Request.Headers ["X-Forwarded-For"];
 
-            string directIp = 
-                HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+            string directIp =
+                HttpContext.Current.Request.UserHostAddress; // may be IPv4 or IPv6
 
             string result = directIp;
 
@@ -59,7 +59,9 @@ namespace Swarmops.Logic.Support
         // ReSharper disable once InconsistentNaming  -- IPAddress is the canonical writing
         public static string GetMostLikelyRemoteIPAddress()
         {
-            // All of this can be faked trivially by the client, so you can't rely on it for any kind of security.
+            // All of this can be faked trivially by the client, so we can't rely on it for any kind of security.
+            // While it is possible to set up a server environment that strips out such fakes, doing so should not
+            // be a requirement for running Swarmops.
 
             string forwardedIps =
                 HttpContext.Current.Request.Headers["X-Forwarded-For"];

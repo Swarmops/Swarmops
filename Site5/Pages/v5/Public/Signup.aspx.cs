@@ -20,6 +20,7 @@ using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;
+using Swarmops.Logic.Cache;
 
 namespace Swarmops.Frontend.Pages.Public
 {
@@ -299,18 +300,27 @@ namespace Swarmops.Frontend.Pages.Public
             {
                 string ipAddress = Logic.Support.SupportFunctions.GetMostLikelyRemoteIPAddress();
 
+                NGeoIP.RawData rawData = (NGeoIP.RawData) GuidCache.Get(ipAddress);
+
                 Persistence.Key["DebugData"] = HttpContext.Current.Request.ToRaw();
 
-                NGeoIP.Request request = new Request()
+                if (rawData == null)
                 {
-                    Format = Format.Json,
-                    IP = ipAddress
-                };
-                NGeoClient client = new NGeoClient (request);
-                NGeoIP.RawData rawData = client.Execute();
+                    NGeoIP.Request request = new Request()
+                    {
+                        Format = Format.Json,
+                        IP = ipAddress
+                    };
+                    NGeoClient client = new NGeoClient(request);
+                    rawData = client.Execute();
+                }
 
                 if (!string.IsNullOrEmpty (rawData.CountryCode))
                 {
+                    // Successful lookup
+
+                    GuidCache.Set(ipAddress, rawData);  // store lookup results in cache for later
+
                     return new AjaxCallResult {Success = true, DisplayMessage = rawData.CountryCode};
                 }
             }
