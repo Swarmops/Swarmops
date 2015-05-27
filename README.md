@@ -33,10 +33,9 @@ Then, add the Swarmops repository to your list of software sources:
 > `echo deb http://packages.swarmops.com/ squeeze contrib > /etc/apt/sources.list.d/swarmops.list`
 
 Then, run this to install the Swarmops frontend:
-> `apt-get update`
-> `apt-get install swarmops-frontend`
+> `apt-get update; apt-get install swarmops-frontend`
 
-(the install sometimes hangs on installing a dependent package, apache2-mod-mono. That's not an issue with Swarmops, but still irritating. It manifests as Apache trying to restart and freezing there. This irritating bug in the apache2-mod-mono install can be released by opening a second shell and restarting Apache using `/etc/init.d/apache2 restart` in the second shell, at which point the install in the first shell will continue.)
+(the install sometimes hangs on installing a dependent package, apache2-mod-mono, right after the message _apache2_invoke: Enable module_mod_mono_. That's not an issue with Swarmops, but still irritating. It manifests as Apache trying to restart ("Restarting web server apache2...") and freezing there. This irritating bug in the apache2-mod-mono install can be released by opening a second shell and restarting Apache using `/etc/init.d/apache2 restart` in the second shell, at which point the install in the first shell will continue.)
 
 Install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there.
 
