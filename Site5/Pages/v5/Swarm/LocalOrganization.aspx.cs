@@ -37,8 +37,8 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
             RegisterControl (IncludedControl.JsonParameters | IncludedControl.SwitchButton);
 
             Geography displayGeography = CurrentUser.Geography;
-
-            if (CurrentAuthority.Position.Geography != CurrentUser.Geography)
+            
+            if (CurrentAuthority.Position != null && CurrentAuthority.Position.Geography != CurrentUser.Geography)
             {
                 if (CurrentAuthority.Position.Geography == null)
                 {
