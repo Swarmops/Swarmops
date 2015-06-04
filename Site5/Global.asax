@@ -34,6 +34,14 @@
         
         // Testing for page rewrite. Tests IN ORDER.
 
+        string requestPath = Request.Path;
+
+        if (requestPath == "/Default.aspx")
+        {
+            // Mono sends this path instead of the user-submitted "/" received on Windows; compensate for Mono
+            requestPath = "/";
+        }
+        
         string[] rewriteCandidates =
         {
             "{0}/Dashboard.aspx",        // for dev.swarmops.com   -- Dashboard overrides Default in root, if it exists
@@ -47,11 +55,11 @@
             "/Pages/v5{0}"               // for dev.swarmops.com/Ledgers/Json-SomethingData.aspx
         };
 
-        File.AppendAllText ("/etc/swarmops/debug.txt", "\n---Debugging: PATH is " + Request.Path +"\n");
+        File.AppendAllText ("/etc/swarmops/debug.txt", "\n---Debugging: PATH is " + requestPath +"\n");
         
         foreach (string stringCandidate in rewriteCandidates)
         {
-            string rewrittenCandidate = String.Format (stringCandidate, Request.Path);
+            string rewrittenCandidate = String.Format (stringCandidate, requestPath);
             
             File.AppendAllText ("/etc/swarmops/debug.txt", "Testing for " + rewrittenCandidate);
             
