@@ -105,7 +105,7 @@
 	                if (hostName && hostName.length > 0 && hostAddress && hostAddress.length > 0) {
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "/Pages/v5/Init/Default.aspx/VerifyHostNameAndAddress",
+	                        url: "/Pages/v5/Public/Initialize.aspx/VerifyHostNameAndAddress",
 	                        data: "{'name': '" + escape(hostName) + "', 'address': '" + escape(hostAddress) + "'}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
@@ -130,7 +130,7 @@
 	                if (isValid) { // Validate writability of config file
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "/Pages/v5/Init/Default.aspx/IsConfigurationFileWritable",
+	                        url: "/Pages/v5/Public/Initialize.aspx/IsConfigurationFileWritable",
 	                        data: "{}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
@@ -196,7 +196,7 @@
 
 	                        $.ajax({
 	                            type: "POST",
-	                            url: "/Pages/v5/Init/Default.aspx/CreateDatabaseFromRoot",
+	                            url: "/Pages/v5/Public/Initialize.aspx/CreateDatabaseFromRoot",
 	                            data: $.toJSON(jsonData),
 	                            contentType: "application/json; charset=utf-8",
 	                            dataType: "json",
@@ -231,7 +231,7 @@
 
 	                        $.ajax({
 	                            type: "POST",
-	                            url: "/Pages/v5/Init/Default.aspx/FirstCredentialsTest",
+	                            url: "/Pages/v5/Public/Initialize.aspx/FirstCredentialsTest",
 	                            data: $.toJSON(jsonData),
 	                            contentType: "application/json; charset=utf-8",
 	                            dataType: "json",
@@ -302,7 +302,7 @@
 	                if (isValid) {
 	                    $.ajax({
 	                        type: "POST",
-	                        url: "/Pages/v5/Init/Default.aspx/CreateFirstUser",
+	                        url: "/Pages/v5/Public/Initialize.aspx/CreateFirstUser",
 	                        data: "{'name': '" + escape($('#<%=this.TextFirstUserName.ClientID %>').val()) + "', 'mail': '" + escape($('#<%=this.TextFirstUserMail.ClientID %>').val()) + "', 'password': '" + escape($('#<%=this.TextFirstUserPassword1.ClientID %>').val()) + "'}",
 	                        contentType: "application/json; charset=utf-8",
 	                        dataType: "json",
@@ -347,7 +347,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "/Pages/v5/Init/Default.aspx/ResetTestCredentials",
+	            url: "/Pages/v5/Public/Initialize.aspx/ResetTestCredentials",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -362,7 +362,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "/Pages/v5/Init/Default.aspx/IsConfigurationFileWritable",
+	            url: "/Pages/v5/Public/Initialize.aspx/IsConfigurationFileWritable",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -387,7 +387,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "/Pages/v5/Init/Default.aspx/GetInitProgress",
+	            url: "/Pages/v5/Public/Initialize.aspx/GetInitProgress",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -422,7 +422,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "/Pages/v5/Init/Default.aspx/GetInitProgressMessage",
+	            url: "/Pages/v5/Public/Initialize.aspx/GetInitProgressMessage",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -452,7 +452,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "/Pages/v5/Init/Default.aspx/RecheckDatabasePermissions",
+	            url: "/Pages/v5/Public/Initialize.aspx/RecheckDatabasePermissions",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -503,7 +503,7 @@
 	    function beginInitDatabase() {
             $.ajax({
                 type: "POST",
-                url: "/Pages/v5/Init/Default.aspx/InitDatabase",
+                url: "/Pages/v5/Public/Initialize.aspx/InitDatabase",
                 data: "{}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -527,11 +527,8 @@
     <!-- Main menu, dynamically constructed -->
 
 	<div class="center980px">
-	    <div class="currentuserinfo"><div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div><div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /> |&nbsp;</div><div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left"><asp:Label ID="LabelPreferences" runat="server" /> |&nbsp;</div><asp:Image ID="ImageCultureIndicator" runat="server" ImageUrl="~/Images/Flags/uk-24px.png" /></div>
-        <div class="logoimage"><a href="/"><img style="border:none" src="/Images/Logo-Stock.png" alt="Swarmops Logo" /></a></div>
-        <div class="break"></div>
-        <div class="topmenu">
-            <div class="searchbox"><asp:TextBox ID="SearchBox" runat="server" /></div>
+        <div class="topmenu" style="margin-top: -4px; padding-top: 12px; color: white; font-family: Ubuntu; font-weight: 300; font-size: 24px; letter-spacing: 1px">
+            <span style="padding-left: 30px; padding-right: 30px">INITIALIZING SWARMOPS</span>
         </div>
         
         <div class="mainbar">

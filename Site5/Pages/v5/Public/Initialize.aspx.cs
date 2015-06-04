@@ -47,10 +47,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 throw new InvalidOperationException("This installation has already been initialized. Cannot re-initalize on top of existing installation.");
             }
 
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
-            this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
-
             this.TextCredentialsReadDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
             this.TextCredentialsReadServer.Style[HtmlTextWriterStyle.Width] = "70px";
             this.TextCredentialsReadUser.Style[HtmlTextWriterStyle.Width] = "70px";
@@ -83,9 +79,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
         private void Localize()
         {
-            this.LabelCurrentUserName.Text = @"Systems Administrator";
-            this.LabelCurrentOrganizationName.Text = @"No organizations yet";
-            this.LabelPreferences.Text = Global.CurrentUserInfo_Preferences;
             this.LabelSidebarInfoHeader.Text = Global.Sidebar_Information;
             this.LabelSidebarInfoContent.Text = @"Welcome to the Swarmops installation pages. This will guide you to an operational Swarmops.";
             this.LabelSidebarActionsHeader.Text = Global.Sidebar_Actions;
@@ -97,19 +90,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
             this.DropFavoriteColor.Items.Add (" -- Select one --");
             this.DropFavoriteColor.Items.Add ("Blue!");
             this.DropFavoriteColor.Items.Add ("No, wait, yellow!");
-
-            // SetupMenuItems();
-
-            string flagName = "uk";
-
-            string cultureString = Thread.CurrentThread.CurrentCulture.ToString();
-            string cultureStringLower = cultureString.ToLowerInvariant();
-
-            if (cultureStringLower != "en-gb" && cultureString.Length > 3)
-            {
-                flagName = cultureStringLower.Substring (3);
-            }
-            this.ImageCultureIndicator.ImageUrl = "~/Images/Flags/" + flagName + "-24px.png";
         }
 
 
