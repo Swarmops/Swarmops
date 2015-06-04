@@ -100,7 +100,7 @@ CREATE TABLE `FinancialAccountAutomationProfileHistory` (
 #
 
 
-CREATE TABLE `activizr-dev`.`FinancialAccountAutomationProfileVotes` (
+CREATE TABLE `FinancialAccountAutomationProfileVotes` (
   `FinancialAccountAutomationProfileId` INT NOT NULL,
   `CountryId` INT NOT NULL,
   `Culture` VARCHAR(16) NOT NULL,
