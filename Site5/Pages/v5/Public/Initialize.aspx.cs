@@ -697,7 +697,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
             if (expectedPersonOne != null)
             {
-                FormsAuthentication.RedirectFromLoginPage ("1,1", true);
+                Authority firstAuthority = Authority.FromLogin(expectedPersonOne);
+                FormsAuthentication.RedirectFromLoginPage(firstAuthority.ToEncryptedXml(), true);
                 Response.Redirect ("/", true);
             }
 
