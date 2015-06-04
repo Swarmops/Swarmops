@@ -702,7 +702,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
             if (expectedPersonOne != null)
             {
-                Authority firstAuthority = Authority.FromLogin(expectedPersonOne);
+                Authority firstAuthority = Authority.FromLogin(expectedPersonOne, Organization.Sandbox);
                 FormsAuthentication.RedirectFromLoginPage(firstAuthority.ToEncryptedXml(), true);
                 Response.Redirect ("/", true);
             }
