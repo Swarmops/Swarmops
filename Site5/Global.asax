@@ -55,23 +55,15 @@
             "/Pages/v5{0}"               // for dev.swarmops.com/Ledgers/Json-SomethingData.aspx
         };
 
-        File.AppendAllText ("/etc/swarmops/debug.txt", "\n---Debugging: PATH is " + requestPath +"\n");
-        
         foreach (string stringCandidate in rewriteCandidates)
         {
             string rewrittenCandidate = String.Format (stringCandidate, requestPath);
             
-            File.AppendAllText ("/etc/swarmops/debug.txt", "Testing for " + rewrittenCandidate);
-            
             if (File.Exists (Server.MapPath (rewrittenCandidate)))
             {
-                File.AppendAllText ("/etc/swarmops/debug.txt", " - HIT! Recontexting\n");
-                
                 Context.RewritePath (rewrittenCandidate);
                 break;
             }
-            
-            File.AppendAllText ("/etc/swarmops/debug.txt", "\n");
         }
     }
 
