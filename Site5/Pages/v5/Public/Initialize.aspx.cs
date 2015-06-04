@@ -676,7 +676,12 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
             newPerson.AddParticipation (Organization.Sandbox, DateTime.MaxValue); // Add membership in Sandbox
-            newPerson.AddRole (RoleType.SystemAdmin, 0, 0); // Add role System Admin
+            
+            // Initialize staffing to System and Sandbox with the new user
+
+            Positions.CreateSysadminPositions();
+            Positions.CreateOrganizationDefaultPositions(Organization.Sandbox, PositionTitle.Default);
+
         }
 
 
