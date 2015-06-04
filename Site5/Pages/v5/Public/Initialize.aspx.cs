@@ -66,6 +66,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
             // this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
 
+            this.TextRandomDbLabel.Text = Authentication.CreateRandomPassword(5);
+
             Localize();
         }
 
@@ -95,7 +97,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
         [WebMethod]
         public static bool CreateDatabaseFromRoot (string mysqlHostName, string rootPassword, string serverName,
-            string ipAddress)
+            string ipAddress, string random)
         {
             if (!(VerifyHostName (serverName) && VerifyHostAddress (ipAddress)))
             {
@@ -107,7 +109,12 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
             try
             {
-                string random = Authentication.CreateRandomPassword (5);
+                random = random.Trim();
+
+                if (string.IsNullOrEmpty (random))
+                {
+                    random = Authentication.CreateRandomPassword (5);
+                }
 
                 SwarmDb.Credentials rootCredentials = new SwarmDb.Credentials ("mysql",
                     new SwarmDb.ServerSet (mysqlHostName), "root", rootPassword);

@@ -193,6 +193,7 @@
 	                    if (autoConfigMode) {
 	                        jsonData.mysqlHostName = $('#TextMysqlServerHost').val();
 	                        jsonData.rootPassword = $('#TextMysqlRootPassword').val();
+	                        jsonData.random = $('#<%= this.TextRandomDbLabel.ClientID%>').val();
 
 	                        $.ajax({
 	                            type: "POST",
@@ -632,8 +633,8 @@
                             <h2>Create the database and users</h2>
                             <p>The Swarmops install sequence can set up the database and users for you, if you provide a root password to the MySQL database server.</p>
                             <p>(If you don't trust the Swarmops install to do that, that's fine, go to <a href="javascript:goManualCredentials();">manual account credentials</a>.)</p>
-                            <div class="entryLabelsAdmin" style="width:250px">Hostname of MySQL database server<br/>Root password for that MySQL server<br/>&nbsp;</div>
-                            <div class="entryFieldsAdmin"><input type="text" id="TextMysqlServerHost" value="localhost"/>&nbsp;<br/><input type="password" id="TextMysqlRootPassword"/>&nbsp;</div>
+                            <div class="entryLabelsAdmin" style="width:250px">Hostname of MySQL database server<br/>Root password for that MySQL server<br/>Random label (suffixed to db, user names)<br/>&nbsp;</div>
+                            <div class="entryFieldsAdmin"><input type="text" id="TextMysqlServerHost" value="localhost"/>&nbsp;<br/><input type="password" id="TextMysqlRootPassword"/>&nbsp;<br/><asp:TextBox runat="server" ID="TextRandomDbLabel" />&nbsp;</div>
                         </div>
                         <div id="DivDatabaseManualConfig" style="display:none">
                             <h2>Connect to existing database</h2>
