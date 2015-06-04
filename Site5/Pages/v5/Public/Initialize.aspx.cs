@@ -40,35 +40,39 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
         protected void Page_Load (object sender, EventArgs e)
         {
-            // Security check: If already initialized, throw
-
-            if (SwarmDb.Configuration.IsConfigured())
+            if (!Page.IsPostBack)
             {
-                throw new InvalidOperationException("This installation has already been initialized. Cannot re-initalize on top of existing installation.");
+                // Safety check: If already initialized, throw
+
+                if (SwarmDb.Configuration.IsConfigured())
+                {
+                    throw new InvalidOperationException (
+                        "This installation has already been initialized. Cannot re-initalize on top of existing installation.");
+                }
+
+                this.TextCredentialsReadDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
+                this.TextCredentialsReadServer.Style[HtmlTextWriterStyle.Width] = "70px";
+                this.TextCredentialsReadUser.Style[HtmlTextWriterStyle.Width] = "70px";
+                this.TextCredentialsReadPassword.Style[HtmlTextWriterStyle.Width] = "70px";
+
+                this.TextCredentialsWriteDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
+                this.TextCredentialsWriteServer.Style[HtmlTextWriterStyle.Width] = "70px";
+                this.TextCredentialsWriteUser.Style[HtmlTextWriterStyle.Width] = "70px";
+                this.TextCredentialsWritePassword.Style[HtmlTextWriterStyle.Width] = "70px";
+
+                this.TextCredentialsAdminDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
+                this.TextCredentialsAdminServer.Style[HtmlTextWriterStyle.Width] = "70px";
+                this.TextCredentialsAdminUser.Style[HtmlTextWriterStyle.Width] = "70px";
+                this.TextCredentialsAdminPassword.Style[HtmlTextWriterStyle.Width] = "70px";
+
+                this.DropFavoriteColor.Style[HtmlTextWriterStyle.Width] = "155px";
+
+                // this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
+
+                this.TextRandomDbLabel.Text = Authentication.CreateRandomPassword (5);
+
+                Localize();
             }
-
-            this.TextCredentialsReadDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
-            this.TextCredentialsReadServer.Style[HtmlTextWriterStyle.Width] = "70px";
-            this.TextCredentialsReadUser.Style[HtmlTextWriterStyle.Width] = "70px";
-            this.TextCredentialsReadPassword.Style[HtmlTextWriterStyle.Width] = "70px";
-
-            this.TextCredentialsWriteDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
-            this.TextCredentialsWriteServer.Style[HtmlTextWriterStyle.Width] = "70px";
-            this.TextCredentialsWriteUser.Style[HtmlTextWriterStyle.Width] = "70px";
-            this.TextCredentialsWritePassword.Style[HtmlTextWriterStyle.Width] = "70px";
-
-            this.TextCredentialsAdminDatabase.Style[HtmlTextWriterStyle.Width] = "70px";
-            this.TextCredentialsAdminServer.Style[HtmlTextWriterStyle.Width] = "70px";
-            this.TextCredentialsAdminUser.Style[HtmlTextWriterStyle.Width] = "70px";
-            this.TextCredentialsAdminPassword.Style[HtmlTextWriterStyle.Width] = "70px";
-
-            this.DropFavoriteColor.Style[HtmlTextWriterStyle.Width] = "155px";
-
-            // this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
-
-            this.TextRandomDbLabel.Text = Authentication.CreateRandomPassword(5);
-
-            Localize();
         }
 
         protected override void OnPreInit (EventArgs e)
