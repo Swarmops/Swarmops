@@ -30,7 +30,7 @@
         // The culture was once set here for localization, but Mono resets CultureInfo before entering the page cycle.
         // Setting the CultureInfo has been moved to PageV5Base.OnPreInit().
 
-        // TODO: PLUGIN REWRITES
+        // TODO: PROPER PLUGIN HANDLING
         
         // Testing for page rewrite. Tests IN ORDER.
 
@@ -38,9 +38,19 @@
 
         if (requestPath == "/Default.aspx")
         {
-            // Mono sends this path instead of the user-submitted "/" received on Windows; compensate for Mono
+            // Mono sends us the default path instead of the directly-submitted "/" received on Windows; compensate for Mono
             requestPath = "/";
         }
+
+        // Test code with one plugin to see how plugin-override works; intend to replace with generic function later
+        
+        if (requestPath == "/Signup" && File.Exists (Server.MapPath("/Plugins/FalconwingMedia/Public/Signup.aspx")))
+        {
+            Context.RewritePath ("/Plugins/FalconwingMedia/Public/Signup.aspx");
+            return; // prevent further matching
+        }
+                
+        // Rewrite of general URLs
         
         string[] rewriteCandidates =
         {
