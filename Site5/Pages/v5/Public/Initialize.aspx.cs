@@ -363,11 +363,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 File.WriteAllText ("/etc/swarmops/machineKey.config", machineKeyXml, Encoding.GetEncoding (1252));
             }
 
-            // SECURITY: Initialize encryption keys
-
-            Authentication.InitializeSymmetricDatabaseKey();
-            Authentication.InitializeSymmetricFileSystemKey();
-
             // Start an async thread that does all the initialization work, then return
 
             Thread initThread = new Thread (InitDatabaseThread);
@@ -408,6 +403,13 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 _initMessage = "Applying all post-baseline database schema upgrades...";
                 DatabaseMaintenance.UpgradeSchemata();
                 Thread.Sleep (100);
+
+
+                // SECURITY: With schemata to hold them in place, initialize the encryption keys
+
+                Authentication.InitializeSymmetricDatabaseKey();
+                Authentication.InitializeSymmetricFileSystemKey();
+
 
                 _initProgress = 5;
                 _initMessage = "Getting list of countries from Swarmops servers...";
