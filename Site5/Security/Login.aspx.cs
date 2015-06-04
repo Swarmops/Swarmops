@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Web;
@@ -126,6 +127,21 @@ namespace Swarmops.Pages.Security
                 }
             }
 
+
+            // If we're debugging, enable the auto- / impersonation login. This MUST NEVER fire outside of development environment.
+
+            if (Debugger.IsAttached && Path.DirectorySeparatorChar == '\\')
+            // on Windows, with a debugger attached, so this is not a production environment
+            {
+                // but check that we're running against Localhost as well
+
+                if (Request.Url.ToString().StartsWith("http://localhost:"))
+                {
+                    this.PanelCheat.Visible = true;
+                }
+            }
+            
+            
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginTop] = "-3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.MarginRight] = "3px";
             this.ImageCultureIndicator.Style[HtmlTextWriterStyle.Cursor] = "pointer";
@@ -377,7 +393,19 @@ namespace Swarmops.Pages.Security
 
         protected void ButtonCheat_Click (object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // If we're debugging, enable the auto- / impersonation login. This MUST NEVER fire outside of development environment.
+
+            if (Debugger.IsAttached && Path.DirectorySeparatorChar == '\\')
+            // on Windows, with a debugger attached, so this is not a production environment
+            {
+                // but check that we're running against Localhost on non-SSL on a nonstandard port as well
+
+                if (Request.Url.ToString().StartsWith("http://localhost:"))
+                {
+                    Authority cheatLogon = Authority.FromLogin (Person.FromIdentity (1));
+                    FormsAuthentication.RedirectFromLoginPage (cheatLogon.ToEncryptedXml(), true);
+                }
+            }
         }
 
 
