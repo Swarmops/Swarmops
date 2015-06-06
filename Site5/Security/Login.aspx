@@ -217,7 +217,7 @@
         <div class="box">
             <div class="content">
                 <div class="link-row-encaps" onclick=" document.location=linkSelfSignup; return false; " >
-                    <div class="link-row-icon" style="background-image: url('/Images/Icons/iconshock-add-16px.png')"></div>
+                    <div class="link-row-icon" style="background-image: url('/Images/Icons/iconshock-add-16px.png'); position:relative; top:-2px; left: -1px"></div>
                     <asp:Label ID="LabelSelfSignup" runat="server" />
                 </div>
             </div>

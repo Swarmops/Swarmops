@@ -122,7 +122,7 @@ namespace Swarmops.Pages.Security
                 // only check client-side as many server sites de-SSL the connection before reaching the web server
             {
                 if (!Request.Url.ToString().StartsWith ("http://dev.swarmops.com/") &&
-                    !Request.Url.ToString().StartsWith ("http://localhost:"))
+                    !(Request.Url.ToString().StartsWith ("http://localhost:") && Debugger.IsAttached))  // Debugger.IsAttached is necessary, as link can be faked
                 {
                     Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
                 }
