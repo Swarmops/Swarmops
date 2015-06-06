@@ -139,6 +139,9 @@
 
     	    var bitIdUri = '<asp:Literal ID="LiteralUri" runat="server" />';
     	    var bitIdNonce = '<asp:Literal ID="LiteralNonce" runat="server" />';
+
+    	    var linkSelfSignup = '<asp:Literal ID="LiteralSelfSignupLink" runat="server" />';
+
     	</script>
 	
 
@@ -206,6 +209,23 @@
             </div>
         </div>
     </div>
+            
+    <asp:Panel runat="server" ID="PanelJoin" Visible="false">
+        
+        <h2 class="orange"><asp:Label ID="LabelSelfSignupHeader" runat="server" /><span class="arrow"></span></h2>
+    
+        <div class="box">
+            <div class="content">
+                <div class="link-row-encaps" onclick=" document.location=linkSelfSignup; return false; " >
+                    <div class="link-row-icon" style="background-image: url('/Images/Icons/iconshock-add-16px.png')"></div>
+                    <asp:Label ID="LabelSelfSignup" runat="server" />
+                </div>
+            </div>
+        </div>
+            
+    </asp:Panel>
+            
+
         </div>
         
 	</div>

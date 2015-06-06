@@ -72,7 +72,7 @@
             if (File.Exists (Server.MapPath (rewrittenCandidate)))
             {
                 Context.RewritePath (rewrittenCandidate);
-                break;
+                break;  // exits if match found - prevents, say, Default from replacing Dashboard (which happened as a Mono-only bug)
             }
         }
     }

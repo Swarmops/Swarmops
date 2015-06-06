@@ -212,6 +212,13 @@
   <data name="Login_ResetPassword" xml:space="preserve">
     <value>Reset Password</value>
   </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>Sign me up for {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>Seeking to Join?</value>
+  </data>
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>Swarmops doesn't recognize this address. Please log in manually and activate your address before using it to login.</value>
   </data>

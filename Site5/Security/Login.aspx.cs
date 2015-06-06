@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Runtime.Versioning;
 using System.Web;
 using System.Web.ExtensionMethods;
 using System.Web.Script.Serialization;
@@ -125,6 +126,19 @@ namespace Swarmops.Pages.Security
                 {
                     Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
                 }
+            }
+
+
+            // If we're on a vanity domain, enable the self-signup link
+
+            Organization vanityOrganization = Organization.FromVanityDomain (Request.Url.Host);
+
+            if (vanityOrganization != null)
+            {
+                this.LiteralSelfSignupLink.Text = @"//" + vanityOrganization.VanityDomain + @"/Signup";
+                this.LabelSelfSignup.Text = String.Format (Resources.Pages.Security.Login_SelfSignup, vanityOrganization.Name);
+                this.LabelSelfSignupHeader.Text = Resources.Pages.Security.Login_SelfSignupHeader;
+                this.PanelJoin.Visible = true;
             }
 
 
