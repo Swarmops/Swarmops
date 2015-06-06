@@ -212,7 +212,7 @@
             
     <asp:Panel runat="server" ID="PanelJoin" Visible="false">
         
-        <h2 class="orange"><asp:Label ID="LabelSelfSignupHeader" runat="server" /><span class="arrow"></span></h2>
+        <h2 class="blue"><asp:Label ID="LabelSelfSignupHeader" runat="server" /><span class="arrow"></span></h2>
     
         <div class="box">
             <div class="content">
