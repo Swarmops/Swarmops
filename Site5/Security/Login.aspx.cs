@@ -416,7 +416,7 @@ namespace Swarmops.Pages.Security
 
                 if (Request.Url.ToString().StartsWith("http://localhost:"))
                 {
-                    Authority cheatLogon = Authority.FromLogin (Person.FromIdentity (1));
+                    Authority cheatLogon = Authority.FromLogin (Person.FromIdentity (1), Organization.Sandbox);
                     FormsAuthentication.RedirectFromLoginPage (cheatLogon.ToEncryptedXml(), true);
                 }
             }

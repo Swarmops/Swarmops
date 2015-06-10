@@ -30,7 +30,7 @@ namespace Swarmops.Database
                         return ReadDocumentFromDataReader (reader);
                     }
 
-                    throw new ArgumentException ("Unknown Document Id");
+                    throw new ArgumentException ("Unknown Document Id:" + documentId);
                 }
             }
         }
