@@ -131,6 +131,33 @@ namespace Swarmops.Logic.Structure
             return false;
         }
 
+        public Country Country
+        {
+            get
+            {
+                Countries countries = Countries.All;
+                Dictionary<int, Country> geoLookup = new Dictionary<int, Country>();
+
+                foreach (Country country in countries)
+                {
+                    geoLookup[country.GeographyId] = country;
+                }
+
+                Geography iterator = this;
+                while (!geoLookup.ContainsKey (iterator.Identity) && iterator.ParentGeographyId != 0)
+                {
+                    iterator = iterator.Parent;
+                }
+
+                if (geoLookup.ContainsKey (iterator.Identity))
+                {
+                    return geoLookup[iterator.Identity];
+                }
+
+                return null; // no country - we're probably a geography above the country line
+            }
+        }
+
         public Geographies ThisAndBelow()
         {
             return Geographies.FromArray (GeographyCache.GetGeographyTree (Identity));
