@@ -25,7 +25,7 @@ namespace Swarmops.Logic.Support.LogEntries
             ActingPersonId = actingPerson.Identity;
             if (HttpContext.Current != null)
             {
-                ActingIPAddress = SupportFunctions.GetRemoteIPAddressChain();
+                ActingIPAddress = SupportFunctions.GetMostLikelyRemoteIPAddress();
             }
         }
     }
