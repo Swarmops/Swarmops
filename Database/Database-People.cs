@@ -17,7 +17,7 @@ namespace Swarmops.Database
         private const string personFieldSequence =
             " PersonId, PasswordHash, Name, Email, Street, " + // 0-4
             " PostalCode, City, CountryId, PhoneNumber, GeographyId, " + // 5-9
-            " Birthdate, GenderId " + // 10-11
+            " Birthdate, GenderId, TwitterId " + // 10-12
             " FROM People ";
 
         private static BasicPerson ReadPersonFromDataReader (DbDataReader reader)
@@ -34,6 +34,7 @@ namespace Swarmops.Database
             int geographyId = reader.GetInt32 (9);
             DateTime birthdate = reader.GetDateTime (10);
             int genderId = reader.GetInt32 (11);
+            string twitterId = reader.GetString (12);
 
 
             // Fix broken names, emails
@@ -48,7 +49,7 @@ namespace Swarmops.Database
 
 
             return new BasicPerson (personId, passwordHash, name, email, street, postalCode, cityName, countryId, phone,
-                geographyId, birthdate, (PersonGender) genderId);
+                geographyId, birthdate, (PersonGender) genderId, twitterId);
         }
 
         #endregion
@@ -395,7 +396,7 @@ namespace Swarmops.Database
                         {
                             return new BasicPerson (personId, string.Empty,
                                 "PERSON #" + personId.ToString() + " NOT IN DEV DB", "noreply@example.com", "Foobar 12",
-                                "12345", "Duckville", 1, "", 1, new DateTime (1972, 1, 21), PersonGender.Unknown);
+                                "12345", "Duckville", 1, "", 1, new DateTime (1972, 1, 21), PersonGender.Unknown, "Dumbguy");
                         }
                         throw new ArgumentException ("No such PersonId: " + personId.ToString());
                     }
@@ -536,12 +537,17 @@ namespace Swarmops.Database
             SetPersonBasicStringValue (personId, "PhoneNumber", phone);
         }
 
-        public void SetPersonEmail (int personId, string email)
+        public void SetPersonEmail(int personId, string email)
         {
-            SetPersonBasicStringValue (personId, "Email", email);
+            SetPersonBasicStringValue(personId, "Email", email);
         }
 
-        public int CreatePerson (string name, string email)
+        public void SetPersonTwitterId(int personId, string twitterId)
+        {
+            SetPersonBasicStringValue(personId, "TwitterId", twitterId);
+        }
+
+        public int CreatePerson(string name, string email)
         {
             return CreatePerson (name, email, string.Empty, string.Empty, string.Empty, string.Empty, 0,
                 DateTime.MinValue, PersonGender.Unknown);

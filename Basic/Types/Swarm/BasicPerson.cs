@@ -15,7 +15,7 @@ namespace Swarmops.Basic.Types.Swarm
 
         public BasicPerson (int personId, string passwordHash, string name, string email, string street,
             string postalCode, string cityName, int countryId, string phone, int geographyId,
-            DateTime birthdate, PersonGender gender)
+            DateTime birthdate, PersonGender gender, string twitterId)
         {
             this.PersonId = personId;
             this.PasswordHash = passwordHash;
@@ -29,12 +29,13 @@ namespace Swarmops.Basic.Types.Swarm
             this.GeographyId = geographyId;
             this.Birthdate = birthdate;
             this.Gender = gender;
+            this.TwitterId = twitterId;
         }
 
         public BasicPerson (BasicPerson original)
             : this (original.PersonId, original.PasswordHash, original.Name, original.Email, original.Street,
                 original.PostalCode, original.CityName, original.CountryId, original.Phone,
-                original.GeographyId, original.Birthdate, original.Gender)
+                original.GeographyId, original.Birthdate, original.Gender, original.TwitterId)
         {
         }
 
@@ -62,6 +63,7 @@ namespace Swarmops.Basic.Types.Swarm
         public PersonGender Gender { get; protected set; }
         public string Name { get; protected set; }
         public string Email { get; protected set; }
+        public string TwitterId { get; protected set; }
 
 
         public int Identity

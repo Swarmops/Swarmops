@@ -20,3 +20,4 @@
 0020 - Added concurrency check to TerminatePositionAssignment [RF]
 0021 - Added PositionCustomTitles and its stored procedures [RF]
 0022 - Added VolunteerPositions and its stored procedures [RF]
+0023 - Added procs to change Facebook, Twitter, GPlus IDs [RF]

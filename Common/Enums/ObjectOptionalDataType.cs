@@ -319,6 +319,11 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// Early Hack - the mail address used for a PayPal account (before properties like this one are rolled into up into automation classes)
         /// </summary>
-        OrgPaypalAccountMailAddress
+        OrgPaypalAccountMailAddress,
+
+        /// <summary>
+        /// If bitcoin is preferred instead of banking details
+        /// </summary>
+        BitcoinPayoutAddress
     }
 }

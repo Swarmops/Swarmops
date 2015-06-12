@@ -171,6 +171,12 @@ namespace Swarmops.Logic.Swarm
             set { SwarmDb.GetDatabaseForWriting().SetPersonGender (Identity, value); }
         }
 
+        public new virtual string TwitterId
+        {
+            get { return base.TwitterId; }
+            set { SwarmDb.GetDatabaseForWriting().SetPersonTwitterId (Identity, value); }
+        }
+
 
         // Optional data properties
 
@@ -603,7 +609,7 @@ namespace Swarmops.Logic.Swarm
             {
                 return
                     FromBasic (new BasicPerson (personId, string.Empty, "Open Ledgers", string.Empty, string.Empty,
-                        string.Empty, string.Empty, 0, string.Empty, 0, DateTime.MinValue, PersonGender.Unknown));
+                        string.Empty, string.Empty, 0, string.Empty, 0, DateTime.MinValue, PersonGender.Unknown, ""));
             }
 
             throw new ArgumentException("No such PersonId: " + personId);
@@ -879,6 +885,12 @@ namespace Swarmops.Logic.Swarm
             set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.AccountLockdownTicket, value); }
         }
 
+
+        public string BitcoinPayoutAddress
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.BitcoinPayoutAddress); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BitcoinPayoutAddress, value ); } 
+        }
 
 
         public virtual void SetPassword (string newPassword)
