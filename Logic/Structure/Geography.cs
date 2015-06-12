@@ -140,7 +140,10 @@ namespace Swarmops.Logic.Structure
 
                 foreach (Country country in countries)
                 {
-                    geoLookup[country.GeographyId] = country;
+                    if (country.GeographyId != Geography.RootIdentity && country.GeographyId != 0)
+                    {
+                        geoLookup[country.GeographyId] = country;
+                    }
                 }
 
                 Geography iterator = this;
