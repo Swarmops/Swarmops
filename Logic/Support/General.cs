@@ -63,6 +63,13 @@ namespace Swarmops.Logic.Support
             // While it is possible to set up a server environment that strips out such fakes, doing so should not
             // be a requirement for running Swarmops.
 
+            string cloudFlareClient = HttpContext.Current.Request.Headers["CF-Connecting-IP"];
+
+            if (!string.IsNullOrEmpty (cloudFlareClient))
+            {
+                return cloudFlareClient;
+            }
+
             string forwardedIps =
                 HttpContext.Current.Request.Headers["X-Forwarded-For"];
 
@@ -71,7 +78,7 @@ namespace Swarmops.Logic.Support
 
             if (!string.IsNullOrEmpty (forwardedIps))
             {
-                return forwardedIps.Split (',').Last();
+                return forwardedIps.Split (',').First();
             }
 
             return directIp;
