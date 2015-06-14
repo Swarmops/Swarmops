@@ -14,7 +14,31 @@ namespace Swarmops.Frontend.Controls.v5.Financial
         {
         }
 
+        public Int64 Cents
+        {
+            get 
+            { 
+                return (Int64) (InternalValue * 100.0 + 0.5); // the +0.5 is to compensate for floating point errors. And yes, THEY HAPPEN. 
+            }
+            set { this.Input.Text = (value / 100.0).ToString("N2", CultureInfo.CurrentCulture); }
+        }
+
+        public Int64 Metacents  // Metacents are cents of cents, so four decimals to the currency unit.
+        {
+            get
+            {
+                return (Int64)(InternalValue * 10000.0 + 0.5); // the +0.5 is to compensate for floating point errors. And yes, THEY HAPPEN. 
+            }
+            set { this.Input.Text = (value / 10000.0).ToString("N4", CultureInfo.CurrentCulture); }
+        }
+
+        [Obsolete ("Use Cents or Metacents", true)]
         public double Value
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        internal double InternalValue
         {
             get
             {
@@ -37,7 +61,6 @@ namespace Swarmops.Frontend.Controls.v5.Financial
                 throw new InvalidCastException("The text field cannot be parsed to a Double: \"" + contents + "\"");
 
             }
-            set { this.Input.Text = value.ToString ("N2", CultureInfo.CurrentCulture); }
         }
 
         // TODO: Add other-currency parsing
