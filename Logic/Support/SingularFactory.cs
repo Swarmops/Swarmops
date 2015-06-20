@@ -47,8 +47,22 @@ namespace Swarmops.Logic.Support
                 }
                 if (logicTypes.Length == 0)
                 {
-                    throw new InvalidOperationException (
-                        "Unable to find higher-order class in Swarmops.Logic for base type " + basicType.ToString());
+                    // There are no matching types in Swarmops.Logic; look through ALL loaded assemblies, as it may be in a plugin.
+
+                    foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+                    {
+                        logicTypes = assembly.GetTypes().Where(type => type.IsSubclassOf(basicType)).ToArray();
+                        if (logicTypes.Length == 1)
+                        {
+                            break;
+                        }
+                    }
+
+                    if (logicTypes.Length == 0)
+                    {
+                        throw new InvalidOperationException (
+                            "Unable to find higher-order class in Swarmops.Logic for base type " + basicType.ToString());
+                    }
                 }
 
                 Type logicType = logicTypes[0];
@@ -58,7 +72,7 @@ namespace Swarmops.Logic.Support
                 if (basicConverterMethod == null)
                 {
                     throw new InvalidOperationException(
-                        "Unable to find a public static method named \"" + logicType.ToString() + ".FromBasic (" +basicType.ToString()+ ")\" in the Swarmops.Logic assembly");
+                        "Unable to find a public static method named \"" + logicType.ToString() + ".FromBasic (" +basicType.ToString()+ ")\" in a loaded assembly");
                 }
 
                 _converterLookup[basicType] = basicConverterMethod;
