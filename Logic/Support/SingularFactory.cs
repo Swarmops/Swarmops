@@ -18,12 +18,20 @@ namespace Swarmops.Logic.Support
     /// <summary>
     ///     This class supports the PluralBase foundation.
     /// </summary>
-    internal class SingularFactory
+    public class SingularFactory
     {
-        public static object FromBasic (IHasIdentity basic)
+        public static void RegisterAssembly (Type type)
         {
-            // ASSUMPTION: We're assuming that the type to be created exists in the "Logic" assembly, and that we can bind permanently in a lookup
+            string assemblyName = type.Assembly.FullName;
 
+            if (!_assemblyLookup.ContainsKey (assemblyName))
+            {
+                _assemblyLookup[assemblyName] = type.Assembly;
+            }
+        }
+
+        internal static object FromBasic (IHasIdentity basic)
+        {
             MethodInfo basicConverterMethod = null;
             Type basicType = basic.GetType();
 
@@ -47,11 +55,11 @@ namespace Swarmops.Logic.Support
                 }
                 if (logicTypes.Length == 0)
                 {
-                    // There are no matching types in Swarmops.Logic; look through ALL loaded assemblies, as it may be in a plugin.
+                    // There are no matching types in Swarmops.Logic; look through registered assemblies
 
-                    foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+                    foreach (Assembly foreignAssembly in _assemblyLookup.Values)
                     {
-                        logicTypes = assembly.GetTypes().Where(type => type.IsSubclassOf(basicType)).ToArray();
+                        logicTypes = foreignAssembly.GetTypes().Where(type => type.IsSubclassOf(basicType)).ToArray();
                         if (logicTypes.Length == 1)
                         {
                             break;
@@ -61,7 +69,7 @@ namespace Swarmops.Logic.Support
                     if (logicTypes.Length == 0)
                     {
                         throw new InvalidOperationException (
-                            "Unable to find higher-order class in Swarmops.Logic for base type " + basicType.ToString());
+                            "Unable to find higher-order class for base type " + basicType.ToString() + "; if it's in a plugin, was the higher-order assembly registered with SingularFactory?");
                     }
                 }
 
@@ -85,5 +93,7 @@ namespace Swarmops.Logic.Support
         }
 
         static private Dictionary<Type, MethodInfo> _converterLookup = new Dictionary<Type, MethodInfo>();
+
+        static private Dictionary<string, Assembly> _assemblyLookup = new Dictionary<string, Assembly>(); 
     }
 }
