@@ -37,6 +37,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                 this.TextInstallationName.Text = SystemSettings.InstallationName;
                 this.TextAdminAddress.Text = SystemSettings.AdminNotificationAddress;
                 this.TextAdminSender.Text = SystemSettings.AdminNotificationSender;
+                this.TextWebsocketHostname.Text = SystemSettings.WebsocketHostname;
                 this.TextWebsocketPortServer.Text = SystemSettings.WebsocketPortServer.ToString(CultureInfo.InvariantCulture);
                 this.TextWebsocketPortClient.Text = SystemSettings.WebsocketPortClient.ToString(CultureInfo.InvariantCulture);
 
@@ -139,6 +140,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelInstallationName.Text = Resources.Pages.Admin.SystemSettings_InstallationName;
             this.LabelAdminAddress.Text = Resources.Pages.Admin.SystemSettings_AdminAddress;
             this.LabelAdminSender.Text = Resources.Pages.Admin.SystemSettings_AdminSender;
+            this.LabelWebsocketHostname.Text = Resources.Pages.Admin.SystemSettings_WebsocketHostname;
             this.LabelWebsocketPortServer.Text = Resources.Pages.Admin.SystemSettings_WebsocketPortServer;
             this.LabelWebsocketPortClient.Text = Resources.Pages.Admin.SystemSettings_WebsocketPortClient;
         }

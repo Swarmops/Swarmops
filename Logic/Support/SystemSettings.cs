@@ -71,6 +71,12 @@ namespace Swarmops.Logic.Support
             }
         }
 
+        static public string WebsocketHostname
+        {
+            get { return Persistence.Key["WebsocketHostname"]; }
+            set { Persistence.Key["WebsocketHostname"] = value; }
+        }
+
         static public int WebsocketPortServer
         {
             get { return Int32.Parse(GetDefaultedPersistedKey("WebsocketPortServer", "12172")); }
