@@ -24,14 +24,13 @@ namespace Swarmops.Logic.Communications.Transmission
         public string SubjectTemplate { get; set; }
         public string BodyTemplate { get; set; }
 
-
         public ParticipantMailPayload (ParticipantMailType mailType, Participation participation, Person actingPerson)
         {
             Strings = new SerializableDictionary<MailPayloadString, string>();
 
             switch (mailType)
             {
-                case ParticipantMailType.MemberAddedWelcome:
+                case ParticipantMailType.ParticipantAddedWelcome:
                     Strings[MailPayloadString.ActingPerson] = actingPerson.Name;
                     Strings[MailPayloadString.MembershipExpiry] = participation.Expires.ToLongDateString();
                     Strings[MailPayloadString.OrganizationName] = participation.Organization.Name;
@@ -51,6 +50,19 @@ namespace Swarmops.Logic.Communications.Transmission
                     throw new NotImplementedException("Unknown mailType: " + mailType.ToString());
             }
         }
+
+
+        public ParticipantMailPayload (string customSubject, string customBody, Participation participation,
+            Person actingPerson)
+        {
+            Strings = new SerializableDictionary<MailPayloadString, string>();
+
+            SubjectTemplate = customSubject;
+            BodyTemplate = customBody;
+            Strings[MailPayloadString.ActingPerson] = actingPerson.Name;
+            Strings[MailPayloadString.OrganizationName] = participation.Organization.Name;
+        }
+
 
         public RenderedComm RenderComm (Person person)
         {
@@ -105,7 +117,7 @@ namespace Swarmops.Logic.Communications.Transmission
     public enum ParticipantMailType
     {
         Unknown = 0,
-        MemberAddedWelcome
+        ParticipantAddedWelcome
     }
 
     [Serializable]

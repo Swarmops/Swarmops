@@ -116,7 +116,7 @@ namespace Swarmops.Frontend.Pages.v5.Swarm
 
             Participation newParticipation = Participation.Create (newPerson, CurrentOrganization, DateTime.Today.AddYears (1));
 
-            OutboundComm.CreateMembershipLetter (ParticipantMailType.MemberAddedWelcome, newParticipation, CurrentUser);
+            OutboundComm.CreateParticipantMail (ParticipantMailType.ParticipantAddedWelcome, newParticipation, CurrentUser);
 
             SwarmopsLogEntry logEntry = SwarmopsLog.CreateEntry (newPerson,
                 new Swarmops.Logic.Support.LogEntries.PersonAddedLogEntry (newParticipation, CurrentUser));

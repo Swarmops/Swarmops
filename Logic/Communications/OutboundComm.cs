@@ -112,7 +112,7 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public static OutboundComm CreateMembershipLetter (ParticipantMailType mailType, Participation participation,
+        public static OutboundComm CreateParticipantMail (ParticipantMailType mailType, Participation participation,
             Person actingPerson)
         {
             List<Person> recipients = People.FromSingle (participation.Person);
@@ -121,6 +121,28 @@ namespace Swarmops.Logic.Communications
                 CommResolverClass.Unknown, null,
                 CommTransmitterClass.CommsTransmitterMail,
                 new PayloadEnvelope (new ParticipantMailPayload (mailType, participation, actingPerson)).ToXml(),
+                OutboundCommPriority.Low);
+
+            foreach (Person person in recipients)
+            {
+                comm.AddRecipient(person);
+            }
+
+            comm.Resolved = true;
+
+            return comm;
+        }
+
+
+        public static OutboundComm CreateParticipantMail (string customSubject, string customBody, Participation participation,
+            Person actingPerson)
+        {
+            List<Person> recipients = People.FromSingle(participation.Person);
+
+            OutboundComm comm = OutboundComm.Create(null, null, participation.Organization,
+                CommResolverClass.Unknown, null,
+                CommTransmitterClass.CommsTransmitterMail,
+                new PayloadEnvelope(new ParticipantMailPayload(customSubject, customBody, participation, actingPerson)).ToXml(),
                 OutboundCommPriority.Low);
 
             foreach (Person person in recipients)
