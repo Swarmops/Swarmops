@@ -17,7 +17,12 @@ namespace Swarmops.Logic.Communications.Transmission
             serializer.Serialize (stream, this);
 
             byte[] xmlBytes = stream.GetBuffer();
-            return Encoding.UTF8.GetString (xmlBytes);
+            string xml = Encoding.UTF8.GetString (xmlBytes);
+
+            xml = xml.Replace("&#x0;", "");
+            xml = xml.Replace("\x00", "");
+
+            return xml;
         }
 
         public static T FromXml (string xml)
