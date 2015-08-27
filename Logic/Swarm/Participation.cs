@@ -25,23 +25,6 @@ namespace Swarmops.Logic.Swarm
         }
 
 
-        public Participation FromPersonAndOrganization(Person person, Organization organization)
-        {
-            Participations participations = Participations.FromArray(SwarmDb.GetDatabaseForReading().GetParticipations(person, organization));
-
-            if (participations.Count > 1)
-            {
-                throw new InvalidDataException("More than one participation record item for a person/organization combination is not allowed");
-            }
-            if (participations.Count == 0)
-            {
-                return null; // no combo. Throw instead? This has not been consistently coded
-            }
-
-            return participations[0];
-        }
-
-
         public Person Person
         {
             get
@@ -165,9 +148,14 @@ namespace Swarmops.Logic.Swarm
             return FromBasic (SwarmDb.GetDatabaseForWriting().GetParticipation (membershipId));
         }
 
-        public static Participation FromPersonAndOrganization (int personId, int organizationId)
+        internal static Participation FromPersonAndOrganization (int personId, int organizationId)
         {
             return FromBasic (SwarmDb.GetDatabaseForReading().GetActiveParticipation (personId, organizationId));
+        }
+
+        public Participation FromPersonAndOrganization(Person person, Organization organization)
+        {
+            return FromPersonAndOrganization(person.Identity, organization.Identity);
         }
 
         public static Participation Create (int personId, int organizationId, DateTime expires)
