@@ -14,7 +14,7 @@ namespace Swarmops.Database
         private const string payrollFieldSequence =
             " PayrollItemId,PersonId,OrganizationId,CountryId,EmployedDate," + // 0-4
             "ReportsToPersonId,BaseSalaryCents,BudgetId,Open,TerminatedDate," + // 5-9
-            "SubtractiveTaxLevelId,AdditiveTaxLevel " + // 10-11
+            "SubtractiveTaxLevelId,AdditiveTaxLevel,IsContractor " + // 10-12
             "FROM Payroll ";
 
         private BasicPayrollItem ReadPayrollItemFromDataReader (DbDataReader reader)
@@ -31,10 +31,11 @@ namespace Swarmops.Database
             DateTime terminatedDate = reader.GetDateTime (9);
             int subtractiveTaxLevelId = reader.GetInt32 (10);
             double additiveTaxLevel = reader.GetDouble (11);
+            bool isContractor = reader.GetBoolean (12);
 
             return new BasicPayrollItem (payrollItemId, personId, organizationId, countryId, employedDate,
                 reportsToPersonId, baseSalaryCents, budgetId, open, terminatedDate, subtractiveTaxLevelId,
-                additiveTaxLevel);
+                additiveTaxLevel, isContractor);
         }
 
         #endregion

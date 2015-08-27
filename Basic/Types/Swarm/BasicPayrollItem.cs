@@ -8,7 +8,7 @@ namespace Swarmops.Basic.Types.Swarm
         public BasicPayrollItem (int payrollItemId, int personId, int organizationId, int countryId,
             DateTime employedDate,
             int reportsToPersonId, Int64 baseSalaryCents, int budgetId, bool open, DateTime terminatedDate,
-            int subtractiveTaxLevelId, double additiveTaxLevel)
+            int subtractiveTaxLevelId, double additiveTaxLevel, bool isContractor)
         {
             this.PayrollItemId = payrollItemId;
             this.PersonId = personId;
@@ -22,12 +22,14 @@ namespace Swarmops.Basic.Types.Swarm
             this.TerminatedDate = terminatedDate;
             this.SubtractiveTaxLevelId = subtractiveTaxLevelId;
             this.AdditiveTaxLevel = additiveTaxLevel;
+            this.IsContractor = isContractor;
         }
 
         public BasicPayrollItem (BasicPayrollItem original)
             : this (original.PayrollItemId, original.PersonId, original.OrganizationId, original.CountryId,
                 original.EmployedDate, original.ReportsToPersonId, original.BaseSalaryCents, original.BudgetId,
-                original.Open, original.TerminatedDate, original.SubtractiveTaxLevelId, original.AdditiveTaxLevel)
+                original.Open, original.TerminatedDate, original.SubtractiveTaxLevelId, original.AdditiveTaxLevel, 
+                original.IsContractor)
         {
             // empty copy constructor
         }
@@ -92,6 +94,11 @@ namespace Swarmops.Basic.Types.Swarm
         ///     The tax level, as a fraction, paid by the organization on top of the gross salary.
         /// </summary>
         public double AdditiveTaxLevel { get; protected set; }
+
+        /// <summary>
+        /// If this flag is true, taxes will not be deducted from the paycheck.
+        /// </summary>
+        public bool IsContractor { get; protected set; }
 
         #region IHasIdentity Members
 
