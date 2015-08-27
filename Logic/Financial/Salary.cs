@@ -186,27 +186,34 @@ namespace Swarmops.Logic.Financial
                 }
             }
 
-            // calculate tax
+            Int64 subtractiveTaxCents = 0;
+            Int64 additiveTaxCents = 0;
 
-            Money grossInOrgCurrency = new Money
+            if (!payrollItem.IsContractor)
             {
-                Cents = payCents,
-                Currency = payrollItem.Organization.Currency,
-                ValuationDateTime = DateTime.UtcNow
-            };
 
-            Money grossInTaxCurrency = grossInOrgCurrency.ToCurrency (payrollItem.Country.Currency);
+                // calculate tax
 
-            Money subtractiveTax = TaxLevels.GetTax (payrollItem.Country, payrollItem.SubtractiveTaxLevelId,
-                grossInTaxCurrency);
+                Money grossInOrgCurrency = new Money
+                {
+                    Cents = payCents,
+                    Currency = payrollItem.Organization.Currency,
+                    ValuationDateTime = DateTime.UtcNow
+                };
 
-            Money subtractiveTaxInOrgCurrency = subtractiveTax.ToCurrency (payrollItem.Organization.Currency);
+                Money grossInTaxCurrency = grossInOrgCurrency.ToCurrency (payrollItem.Country.Currency);
 
-            Int64 subtractiveTaxCents = (Int64) (subtractiveTaxInOrgCurrency.Cents);
+                Money subtractiveTax = TaxLevels.GetTax (payrollItem.Country, payrollItem.SubtractiveTaxLevelId,
+                    grossInTaxCurrency);
 
-            Int64 additiveTaxCents = (Int64) (payCents*payrollItem.AdditiveTaxLevel);
+                Money subtractiveTaxInOrgCurrency = subtractiveTax.ToCurrency (payrollItem.Organization.Currency);
 
-            payCents -= subtractiveTaxCents;
+                subtractiveTaxCents = (Int64) (subtractiveTaxInOrgCurrency.Cents);
+
+                additiveTaxCents = (Int64) (payCents*payrollItem.AdditiveTaxLevel);
+
+                payCents -= subtractiveTaxCents;
+            }
 
             // Apply all after-tax adjustments
 

@@ -102,13 +102,13 @@ namespace Swarmops.Database
 
         public int CreatePayrollItem (int personId, int organizationId, DateTime employedDate, int reportsToPersonId,
             int countryId,
-            Int64 baseSalaryCents, int subtractiveTaxLevelId, double additiveTaxLevel, int budgetId)
+            Int64 baseSalaryCents, int subtractiveTaxLevelId, double additiveTaxLevel, int budgetId, bool isContractor)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand ("CreatePayrollItemPrecise", connection);
+                DbCommand command = GetDbCommand ("CreatePayrollItem", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 AddParameterWithName (command, "personId", personId);
@@ -116,10 +116,12 @@ namespace Swarmops.Database
                 AddParameterWithName (command, "employedDate", DateTime.Now);
                 AddParameterWithName (command, "reportsToPersonId", reportsToPersonId);
                 AddParameterWithName (command, "countryId", countryId);
-                AddParameterWithName (command, "baseSalaryCents", baseSalaryCents);
-                AddParameterWithName (command, "subtractiveTaxLevelId", subtractiveTaxLevelId);
-                AddParameterWithName (command, "additiveTaxLevel", additiveTaxLevel);
-                AddParameterWithName (command, "budgetId", budgetId);
+                AddParameterWithName(command, "baseSalaryCents", baseSalaryCents);
+                AddParameterWithName(command, "budgetId", budgetId);
+                AddParameterWithName (command, "open", true);
+                AddParameterWithName(command, "additiveTaxLevel", additiveTaxLevel);
+                AddParameterWithName(command, "subtractiveTaxLevelId", subtractiveTaxLevelId);
+                AddParameterWithName(command, "isContractor", isContractor);
 
                 return Convert.ToInt32 (command.ExecuteScalar());
             }

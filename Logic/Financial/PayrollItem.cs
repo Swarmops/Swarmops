@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Swarm;
 using Swarmops.Database;
@@ -13,6 +15,33 @@ namespace Swarmops.Logic.Financial
             // private constructor
         }
 
+        public PayrollItem FromPersonAndOrganization (Person person, Organization organization)
+        {
+            Payroll payrollItems = Payroll.FromArray(SwarmDb.GetDatabaseForReading().GetPayroll (person, organization));
+
+            if (payrollItems.Count > 1)
+            {
+                throw new InvalidDataException("More than one payroll item for a person/organization combination is not allowed");
+            }
+            if (payrollItems.Count == 0)
+            {
+                return null; // no combo. Throw instead? This has not been consistently coded
+            }
+
+            return payrollItems[0];
+        }
+
+        public PayrollItem Create (Person person, Organization organization, DateTime employedDate,
+            Person reportsToPerson, Country country, Int64 baseSalaryCents, FinancialAccount budget,
+            double additiveTaxLevel, int subtractiveTaxLevelId, bool isContractor)
+        {
+            int payrollItemId = SwarmDb.GetDatabaseForWriting()
+                .CreatePayrollItem (person.Identity, organization.Identity, employedDate, reportsToPerson.Identity,
+                    country.Identity, baseSalaryCents, budget.Identity, additiveTaxLevel, subtractiveTaxLevelId,
+                    isContractor);
+
+            return FromIdentityAggressive (payrollItemId);
+        }
 
         private new int PersonId
         {
@@ -55,9 +84,14 @@ namespace Swarmops.Logic.Financial
             return new PayrollItem (basic); // invoke private ctor
         }
 
-        public static PayrollItem FromIdentity (int payrollItemId)
+        public static PayrollItem FromIdentity(int payrollItemId)
         {
-            return FromBasic (SwarmDb.GetDatabaseForReading().GetPayrollItem (payrollItemId));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetPayrollItem(payrollItemId));
+        }
+
+        private static PayrollItem FromIdentityAggressive(int payrollItemId)
+        {
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetPayrollItem(payrollItemId));
         }
     }
 }
