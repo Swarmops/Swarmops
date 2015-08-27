@@ -153,7 +153,7 @@ namespace Swarmops.Logic.Swarm
             return FromBasic (SwarmDb.GetDatabaseForReading().GetActiveParticipation (personId, organizationId));
         }
 
-        public Participation FromPersonAndOrganization(Person person, Organization organization)
+        public static Participation FromPersonAndOrganization(Person person, Organization organization)
         {
             return FromPersonAndOrganization(person.Identity, organization.Identity);
         }
