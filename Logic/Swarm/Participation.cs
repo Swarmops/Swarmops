@@ -8,31 +8,50 @@ using Swarmops.Database;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using System.IO;
 
 namespace Swarmops.Logic.Swarm
 {
     public class Participation : BasicParticipation
     {
         public static readonly int GracePeriod = 28;
-        private Organization organization;
-        private BasicMembershipPaymentStatus paymentStatus;
-        private Person person;
+        private Organization _organization;
+        private BasicMembershipPaymentStatus _paymentStatus;
+        private Person _person;
 
         private Participation (BasicParticipation basic)
             : base (basic)
         {
         }
 
+
+        public Participation FromPersonAndOrganization(Person person, Organization organization)
+        {
+            Participations participations = Participations.FromArray(SwarmDb.GetDatabaseForReading().GetParticipations(person, organization));
+
+            if (participations.Count > 1)
+            {
+                throw new InvalidDataException("More than one participation record item for a person/organization combination is not allowed");
+            }
+            if (participations.Count == 0)
+            {
+                return null; // no combo. Throw instead? This has not been consistently coded
+            }
+
+            return participations[0];
+        }
+
+
         public Person Person
         {
             get
             {
-                if (this.person == null)
+                if (this._person == null)
                 {
-                    this.person = Person.FromIdentity (base.PersonId);
+                    this._person = Person.FromIdentity (base.PersonId);
                 }
 
-                return this.person;
+                return this._person;
             }
         }
 
@@ -40,12 +59,12 @@ namespace Swarmops.Logic.Swarm
         {
             get
             {
-                if (this.organization == null)
+                if (this._organization == null)
                 {
-                    this.organization = Organization.FromIdentity (base.OrganizationId);
+                    this._organization = Organization.FromIdentity (base.OrganizationId);
                 }
 
-                return this.organization;
+                return this._organization;
             }
         }
 
@@ -71,7 +90,7 @@ namespace Swarmops.Logic.Swarm
             get
             {
                 LoadPaymentStatus();
-                return this.paymentStatus.Status;
+                return this._paymentStatus.Status;
             }
             private set
             {
@@ -88,7 +107,7 @@ namespace Swarmops.Logic.Swarm
             get
             {
                 LoadPaymentStatus();
-                return this.paymentStatus.StatusDateTime;
+                return this._paymentStatus.StatusDateTime;
             }
             private set
             {
@@ -103,15 +122,15 @@ namespace Swarmops.Logic.Swarm
         {
             SwarmDb.GetDatabaseForWriting().SetMembershipPaymentStatus (Identity, status, dateTime);
             LoadPaymentStatus();
-            this.paymentStatus.Status = status;
-            this.paymentStatus.StatusDateTime = dateTime;
+            this._paymentStatus.Status = status;
+            this._paymentStatus.StatusDateTime = dateTime;
         }
 
         private void LoadPaymentStatus()
         {
-            if (this.paymentStatus == null)
+            if (this._paymentStatus == null)
             {
-                this.paymentStatus = SwarmDb.GetDatabaseForReading().GetMembershipPaymentStatus (Identity);
+                this._paymentStatus = SwarmDb.GetDatabaseForReading().GetMembershipPaymentStatus (Identity);
             }
         }
 
@@ -123,9 +142,9 @@ namespace Swarmops.Logic.Swarm
                 SwarmDb.GetDatabaseForReading().GetMembershipPaymentStatuses (mss.Identities);
             foreach (Participation ms in mss)
             {
-                if (ms.paymentStatus == null && statuses.ContainsKey (ms.Identity))
+                if (ms._paymentStatus == null && statuses.ContainsKey (ms.Identity))
                 {
-                    ms.paymentStatus = statuses[ms.Identity];
+                    ms._paymentStatus = statuses[ms.Identity];
                 }
             }
         }
@@ -212,9 +231,9 @@ namespace Swarmops.Logic.Swarm
                 {
                     try
                     {
-                        if (this.person.IsSubscribing (newsletterFeedId))
+                        if (this._person.IsSubscribing (newsletterFeedId))
                         {
-                            this.person.SetSubscription (newsletterFeedId, false);
+                            this._person.SetSubscription (newsletterFeedId, false);
                         }
                     }
                     catch (Exception)
