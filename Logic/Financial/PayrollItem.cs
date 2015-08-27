@@ -15,7 +15,7 @@ namespace Swarmops.Logic.Financial
             // private constructor
         }
 
-        public PayrollItem FromPersonAndOrganization (Person person, Organization organization)
+        public static PayrollItem FromPersonAndOrganization (Person person, Organization organization)
         {
             Payroll payrollItems = Payroll.FromArray(SwarmDb.GetDatabaseForReading().GetPayroll (person, organization));
 
@@ -31,7 +31,7 @@ namespace Swarmops.Logic.Financial
             return payrollItems[0];
         }
 
-        public PayrollItem Create (Person person, Organization organization, DateTime employedDate,
+        public static PayrollItem Create (Person person, Organization organization, DateTime employedDate,
             Person reportsToPerson, Country country, Int64 baseSalaryCents, FinancialAccount budget,
             double additiveTaxLevel, int subtractiveTaxLevelId, bool isContractor)
         {
