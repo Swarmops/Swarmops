@@ -43,6 +43,13 @@ namespace Swarmops.Logic.Financial
             return FromIdentityAggressive (payrollItemId);
         }
 
+
+        public void CreateAdjustment (PayrollAdjustmentType type, double amount, string description)
+        {
+            PayrollAdjustment.Create (this, type, amount, description);
+        }
+
+
         private new int PersonId
         {
             get { return base.PersonId; // hides base's personId
