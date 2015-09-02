@@ -23,7 +23,7 @@ namespace Swarmops.Logic.Support.LogEntries
             FinancialAccountName = salary.Budget.Name;
             OrganizationId = salary.PayrollItem.OrganizationId;
             OwnerPersonId = salary.PayrollItem.ReportsToPersonId;
-            OwnerPersonName = salary.PayrollItem.ReportsToPerson.Canonical;
+            OwnerPersonName = salary.PayrollItem.ReportsToPersonId != 0? salary.PayrollItem.ReportsToPerson.Canonical: "Nobody";
         }
     }
 }

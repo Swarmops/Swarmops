@@ -52,7 +52,9 @@ namespace Swarmops.Logic.Financial
 
         private new int PersonId
         {
-            get { return base.PersonId; // hides base's personId
+            get 
+            { 
+                return base.PersonId; // hides base's personId
             }
         }
 
