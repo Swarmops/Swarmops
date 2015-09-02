@@ -61,6 +61,66 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 24 hours.
+        ///
+        ///If you did NOT change the payout address and there has been a security breach, please click this link immediately to lock down your account: [LockdownLink]
+        ///
+        ///If you click that link, your account will be locked down immediately without confirmation requests. However, if you did request the payout address change, all is fine and no further a [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BitcoinPayoutAddress_Changed_Body {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_Changed_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin payout address changed.
+        /// </summary>
+        internal static string BitcoinPayoutAddress_Changed_Subject {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_Changed_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have funds waiting for payout at [OrganizationName], but you have not set a bitcoin payout address.
+        ///
+        ///Please log on to [InstallationName] at [InstallationUrl] and follow the link to set your payout address - you will find it in the list of to-do items..
+        /// </summary>
+        internal static string BitcoinPayoutAddress_PleaseSet_Body {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_PleaseSet_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Please set your bitcoin payout address.
+        /// </summary>
+        internal static string BitcoinPayoutAddress_PleaseSet_Subject {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_PleaseSet_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have set a bitcoin payout address: [BitcoinAddress]..
+        /// </summary>
+        internal static string BitcoinPayoutAddress_Set_Body {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_Set_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Bitcoin payout address set.
+        /// </summary>
+        internal static string BitcoinPayoutAddress_Set_Subject {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_Set_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you..
         /// </summary>
         internal static string CashAdvance_Attested_Body {
