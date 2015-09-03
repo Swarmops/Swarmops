@@ -324,6 +324,21 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// If bitcoin is preferred instead of banking details
         /// </summary>
-        BitcoinPayoutAddress
+        BitcoinPayoutAddress,
+
+        /// <summary>
+        /// If there's a hotwallet, its private root key (encrypted with file and db keys)
+        /// </summary>
+        BudgetBitcoinPrivateRoot,
+
+        /// <summary>
+        /// If there's another wallet, its public root key (encrypted with db key)
+        /// </summary>
+        BudgetBitcoinPublicRoot,
+
+        /// <summary>
+        /// For cold wallets, we may prefer listing the public addresses directly
+        /// </summary>
+        BudgetBitcoinPublicAddress
     }
 }

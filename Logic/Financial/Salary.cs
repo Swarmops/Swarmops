@@ -269,7 +269,10 @@ namespace Swarmops.Logic.Financial
                     salary.PayoutDate.ToString ("yyyy-MMM", CultureInfo.InvariantCulture));
             transaction.AddRow (payrollItem.Budget, salary.CostTotalCents, null);
             transaction.AddRow (payrollItem.Organization.FinancialAccounts.DebtsSalary, -salary.NetSalaryCents, null);
-            transaction.AddRow (payrollItem.Organization.FinancialAccounts.DebtsTax, -salary.TaxTotalCents, null);
+            if (salary.TaxTotalCents != 0)
+            {
+                transaction.AddRow (payrollItem.Organization.FinancialAccounts.DebtsTax, -salary.TaxTotalCents, null);
+            }
             transaction.Dependency = salary;
 
             // Finally, check if net and/or tax are zero, and if so, mark them as already-paid (i.e. not due for payment)
