@@ -48,7 +48,7 @@ namespace Swarmops.Logic.Swarm
                                       "' + '<br/><br/>'), function(okPressed, enteredData) { " +
                                       " if (okPressed) { " +
                                         "SwarmopsJS.ajaxCall('/Automation/FinancialFunctions.aspx/SetBitcoinPayoutAddress', { bitcoinAddress: enteredData }, function (result) { " +
-                                          "if (result.Success) { alert ('for great justice!'); $('div#divDashboardTodo').fadeOut(); } else { alertify.alert('Could not set payout address: ' + result.DisplayMessage); } " +
+                                          "if (result.Success) { alertify.log('Payout address set.'); $('div#divDashboardTodo').fadeOut(); } else { alertify.alert('Could not set payout address: ' + result.DisplayMessage); } " +
                                           "} ); " +
                                       " }}); return false;";
 

@@ -194,7 +194,7 @@
 
             <asp:ContentPlaceHolder ID="PlaceHolderSide" runat="server" />
     
-            <div id="DivDashboardTodo">
+            <div id="divDashboardTodo">
 
                 <h2 class="orange"><asp:Label ID="LabelSidebarTodo" runat="server" /><span class="arrow"></span></h2>
     
