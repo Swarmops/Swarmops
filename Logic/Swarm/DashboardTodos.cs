@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NBitcoin.BouncyCastle.Crypto.Digests;
 using Swarmops.Logic.Resources;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
@@ -14,6 +15,8 @@ namespace Swarmops.Logic.Swarm
         {
             DashboardTodos result = new DashboardTodos();
 
+            result.AddBitcoinChecks (authority);
+
             result.AddExpenseClaimAttestations(authority);
             result.AddCashAdvanceAttestations(authority);
             //result.AddSalaryAttestations(person, organization);   TODO!
@@ -23,6 +26,35 @@ namespace Swarmops.Logic.Swarm
             // TODO: Add any hooks
 
             return result;
+        }
+
+
+        private void AddBitcoinChecks (Authority authority)
+        {
+            // Does this person have a bitcoin address set in an org with bitcoin hotwallets?
+
+            if (string.IsNullOrEmpty (authority.Person.BitcoinPayoutAddress))
+            {
+                if (authority.Organization.FinancialAccounts.AssetsBitcoinHot != null)
+                {
+                    DashboardTodo todo = new DashboardTodo();
+                    todo.Description = Logic_Swarm_DashboardTodos.Bitcoin_SetPayoutAddress;
+
+                    todo.Icon = "/Images/Icons/bitcoin-icon-16px.png";
+                    todo.JavaScript = "alertify.prompt(decodeURIComponent('" +
+                                      Uri.EscapeDataString (
+                                          Logic_Swarm_DashboardTodos.Bitcoin_SetPayoutAddress_Prompt.Replace (
+                                              "[SwarmopsInstallationName]", SystemSettings.InstallationName)) +
+                                      "' + '<br/><br/>'), function(okPressed, enteredData) { " +
+                                      " if (okPressed) { " +
+                                        "SwarmopsJS.ajaxCall('/Automation/FinancialFunctions.aspx/SetBitcoinPayoutAddress', { bitcoinAddress: 'test' }, function (result) { " +
+                                          "if (result.Success) { alert ('for great justice!'); $('div#divDashboardTodo').fadeOut(); } else { alertify.alert('Could not set payout address: ' + result.DisplayMessage); } " +
+                                          "} ); " +
+                                      " }}); return false;";
+
+                    Add (todo);
+                }
+            }
         }
 
 

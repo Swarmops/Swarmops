@@ -25,16 +25,30 @@ namespace Swarmops.Logic.Communications.Transmission
             // redirect to main ctor
         }
 
-        public NotificationPayload (string notificationResource, NotificationStrings strings)
+        public NotificationPayload(string notificationResource, NotificationStrings strings) :
+            this(notificationResource, strings, new NotificationCustomStrings())
+        {
+            // also redirect to main ctor
+        }
+
+        public NotificationPayload(string notificationResource, NotificationCustomStrings customStrings) :
+            this(notificationResource, new NotificationStrings(), customStrings)
+        {
+            // also redirect to main ctor
+        }
+
+        public NotificationPayload(string notificationResource, NotificationStrings strings, NotificationCustomStrings customStrings)
         {
             SubjectResource = notificationResource + "_Subject";
             BodyResource = notificationResource + "_Body";
             Strings = strings;
+            CustomStrings = customStrings;
         }
 
         public string SubjectResource { get; set; }
         public string BodyResource { get; set; }
         public NotificationStrings Strings { get; set; }
+        public NotificationCustomStrings CustomStrings { get; set; }
 
         public string GetSubject(string cultureId)
         {
@@ -66,7 +80,12 @@ namespace Swarmops.Logic.Communications.Transmission
             {
                 // TODO: Check if string ends in Float, and if so, parse and culturize it
 
-                input = input.Replace ("[" + notificationString + "]", Strings[notificationString]);
+                input = input.Replace ("[" + notificationString /* this is an enum converted to string */ + "]", Strings[notificationString]);
+            }
+
+            foreach (string notificationCustomString in CustomStrings.Keys)
+            {
+                input = input.Replace ("[" + notificationCustomString /* this is a System.String as opposed to above */ + "]", CustomStrings[notificationCustomString]);
             }
 
             return input;
@@ -162,6 +181,12 @@ namespace Swarmops.Logic.Communications.Transmission
 
     [Serializable]
     public class NotificationStrings : Basic.Types.Common.SerializableDictionary<NotificationString, string>
+    {
+        // typeset
+    }
+
+    [Serializable]
+    public class NotificationCustomStrings : SerializableDictionary<string, string>
     {
         // typeset
     }

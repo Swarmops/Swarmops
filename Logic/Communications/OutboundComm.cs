@@ -106,13 +106,36 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public static OutboundComm CreateNotification (Organization organization, NotificationResource notification)
+        public static OutboundComm CreateNotification (NotificationResource notification)
         {
-            return CreateNotification (organization, notification.ToString());
+            return CreateNotification (null, notification, new NotificationStrings(), new NotificationCustomStrings());
+        }
+
+        public static OutboundComm CreateNotification(Organization organization, NotificationResource notification, People recipients = null)
+        {
+            return CreateNotification(organization, notification, new NotificationStrings(), new NotificationCustomStrings(), recipients);
         }
 
 
-        public static OutboundComm CreateParticipantMail (ParticipantMailType mailType, Participation participation,
+        public static OutboundComm CreateNotification(Organization organization, NotificationResource notification, NotificationStrings strings, People recipients = null)
+        {
+            return CreateNotification(organization, notification, strings, new NotificationCustomStrings(), recipients);
+        }
+
+
+        public static OutboundComm CreateNotification(Organization organization, NotificationResource notification, NotificationCustomStrings customStrings, People recipients = null)
+        {
+            return CreateNotification(organization, notification, new NotificationStrings(), customStrings, recipients);
+        }
+
+
+        public static OutboundComm CreateNotification(Organization organization, NotificationResource notification, NotificationStrings strings, NotificationCustomStrings customStrings, People recipients = null)
+        {
+            return CreateNotification(organization, notification.ToString(), strings, customStrings);
+        }
+
+
+        public static OutboundComm CreateParticipantMail(ParticipantMailType mailType, Participation participation,
             Person actingPerson)
         {
             List<Person> recipients = People.FromSingle (participation.Person);
@@ -156,18 +179,45 @@ namespace Swarmops.Logic.Communications
         }
 
 
-        public static OutboundComm CreateNotification (Organization organization, string notificationResourceString)
+        public static OutboundComm CreateNotification (Organization organization, string notificationResourceString, People recipients = null)
         {
-            List<Person> recipients = People.FromSingle (Person.FromIdentity (1)); // Initial Admin recipient
+            return CreateNotification (organization, notificationResourceString, new NotificationStrings(),
+                new NotificationCustomStrings(), recipients);
+        }
+
+        public static OutboundComm CreateNotification (Organization organization, string notificationResourceString,
+            NotificationStrings strings, People recipients = null)
+        {
+            return CreateNotification (organization, notificationResourceString, strings,
+                new NotificationCustomStrings(), recipients);
+        }
+
+
+        public static OutboundComm CreateNotification (Organization organization, string notificationResourceString,
+            NotificationCustomStrings customStrings, People recipients = null)
+        {
+            return CreateNotification (organization, notificationResourceString, new NotificationStrings(),
+                customStrings, recipients);
+        }
+
+
+        public static OutboundComm CreateNotification (Organization organization, string notificationResourceString, NotificationStrings strings, NotificationCustomStrings customStrings, People recipients = null)
+        {
+            if (recipients == null)
+            {
+                recipients = People.FromSingle (Person.FromIdentity (1)); // Initial Admin recipient
+            }
 
             if (organization != null)
             {
+                strings[NotificationString.OrganizationName] = organization.Name; // since we're sending the org anyway, kind of pointless to require callers to set this
+
                 // TODO: Change to org admins
             }
-
+            
             OutboundComm comm = OutboundComm.Create (null, null, organization, CommResolverClass.Unknown, null,
                 CommTransmitterClass.CommsTransmitterMail,
-                new PayloadEnvelope (new NotificationPayload (notificationResourceString)).ToXml(),
+                new PayloadEnvelope (new NotificationPayload (notificationResourceString, strings, customStrings)).ToXml(),
                 OutboundCommPriority.Low);
 
             foreach (Person person in recipients)

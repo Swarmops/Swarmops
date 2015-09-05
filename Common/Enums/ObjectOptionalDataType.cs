@@ -327,6 +327,11 @@ namespace Swarmops.Common.Enums
         BitcoinPayoutAddress,
 
         /// <summary>
+        /// When the bitcoin address was set (to enable quarantine)
+        /// </summary>
+        BitcoinPayoutAddressTimeSet,
+
+        /// <summary>
         /// If there's a hotwallet, its private root key (encrypted with file and db keys)
         /// </summary>
         BudgetBitcoinPrivateRoot,

@@ -888,12 +888,19 @@ namespace Swarmops.Logic.Swarm
 
         public string BitcoinPayoutAddress
         {
-            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.BitcoinPayoutAddress); }
-            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.BitcoinPayoutAddress, value ); } 
+            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.BitcoinPayoutAddress); }
+            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BitcoinPayoutAddress, value); }
         }
 
 
-        public virtual void SetPassword (string newPassword)
+        public string BitcoinPayoutAddressTimeSet
+        {
+            get { return OptionalData.GetOptionalDataString(ObjectOptionalDataType.BitcoinPayoutAddressTimeSet); }
+            set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.BitcoinPayoutAddressTimeSet, value); }
+        }
+
+
+        public virtual void SetPassword(string newPassword)
         {
             string hash = Authentication.GenerateNewPasswordHash (this, newPassword);
             SwarmDb.GetDatabaseForWriting().SetPersonPasswordHash (Identity, hash);

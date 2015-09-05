@@ -61,7 +61,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 24 hours.
+        ///   Looks up a localized string similar to You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 48 hours.
         ///
         ///If you did NOT change the payout address and there has been a security breach, please click this link immediately to lock down your account: [LockdownLink]
         ///
@@ -103,11 +103,31 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have set a bitcoin payout address: [BitcoinAddress]..
+        ///   Looks up a localized string similar to You have set a bitcoin payout address: [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours, and will proceed to be paid out to the new address after that.
+        ///
+        ///If you did not set your payout address, contact [OrganizationName] immediately..
         /// </summary>
         internal static string BitcoinPayoutAddress_Set_Body {
             get {
                 return ResourceManager.GetString("BitcoinPayoutAddress_Set_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A bitcoin payout address was set by [ConcernedPersonName]. Payouts will begin after 48 hours when the quarantine period has elapsed..
+        /// </summary>
+        internal static string BitcoinPayoutAddress_Set_OfficerNotify_Body {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_Set_OfficerNotify_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] [ConcernedPersonName] has set a bitcoin payout address.
+        /// </summary>
+        internal static string BitcoinPayoutAddress_Set_OfficerNotify_Subject {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_Set_OfficerNotify_Subject", resourceCulture);
             }
         }
         

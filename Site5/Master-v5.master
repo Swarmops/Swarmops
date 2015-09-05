@@ -192,22 +192,22 @@
             </div>
             
 
-            
-            
-
             <asp:ContentPlaceHolder ID="PlaceHolderSide" runat="server" />
     
-            <h2 class="orange"><asp:Label ID="LabelSidebarTodo" runat="server" /><span class="arrow"></span></h2>
+            <div id="DivDashboardTodo">
+
+                <h2 class="orange"><asp:Label ID="LabelSidebarTodo" runat="server" /><span class="arrow"></span></h2>
     
-            <div class="box">
-                <div class="content">
-                    <asp:Repeater runat="server" ID="RepeaterTodoItems"><ItemTemplate>
-                    <div class="link-row-encaps" onclick="document.location='<%# DataBinder.Eval(Container.DataItem, "Url") %>';" >
-                        <div class="link-row-icon" style="background-image:url('<%# DataBinder.Eval(Container.DataItem, "Icon") %>')"></div>
-                        <asp:Label ID="Label1" Text='<%# DataBinder.Eval(Container.DataItem, "Description") %>' runat="server" />
+                <div class="box">
+                    <div class="content">
+                        <asp:Repeater runat="server" ID="RepeaterTodoItems"><ItemTemplate>
+                        <div class="link-row-encaps" onclick="<%# DataBinder.Eval(Container.DataItem, "OnClick") %>" >
+                            <div class="link-row-icon" style="background-image:url('<%# DataBinder.Eval(Container.DataItem, "Icon") %>')"></div>
+                            <asp:Label ID="Label1" Text='<%# DataBinder.Eval(Container.DataItem, "Description") %>' runat="server" />
+                        </div>
+                        </ItemTemplate></asp:Repeater>
+                        <asp:Label ID="LabelNoTodoItems" runat="server" Visible="False" />
                     </div>
-                    </ItemTemplate></asp:Repeater>
-                    <asp:Label ID="LabelNoTodoItems" runat="server" Visible="False" />
                 </div>
             </div>
         </div>

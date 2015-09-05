@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
-    <value>You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 24 hours.
+    <value>You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 48 hours.
 
 If you did NOT change the payout address and there has been a security breach, please click this link immediately to lock down your account: [LockdownLink]
 
@@ -136,7 +136,15 @@ Please log on to [InstallationName] at [InstallationUrl] and follow the link to 
     <value>[[OrganizationName]] Please set your bitcoin payout address</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
-    <value>You have set a bitcoin payout address: [BitcoinAddress].</value>
+    <value>You have set a bitcoin payout address: [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours, and will proceed to be paid out to the new address after that.
+
+If you did not set your payout address, contact [OrganizationName] immediately.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>A bitcoin payout address was set by [ConcernedPersonName]. Payouts will begin after 48 hours when the quarantine period has elapsed.</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] [ConcernedPersonName] has set a bitcoin payout address</value>
   </data>
   <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Bitcoin payout address set</value>
