@@ -44,10 +44,10 @@ namespace Swarmops.Logic.Swarm
                     todo.JavaScript = "alertify.prompt(decodeURIComponent('" +
                                       Uri.EscapeDataString (
                                           Logic_Swarm_DashboardTodos.Bitcoin_SetPayoutAddress_Prompt.Replace (
-                                              "[SwarmopsInstallationName]", SystemSettings.InstallationName)) +
+                                              "[InstallationName]", SystemSettings.InstallationName)) +
                                       "' + '<br/><br/>'), function(okPressed, enteredData) { " +
                                       " if (okPressed) { " +
-                                        "SwarmopsJS.ajaxCall('/Automation/FinancialFunctions.aspx/SetBitcoinPayoutAddress', { bitcoinAddress: 'test' }, function (result) { " +
+                                        "SwarmopsJS.ajaxCall('/Automation/FinancialFunctions.aspx/SetBitcoinPayoutAddress', { bitcoinAddress: enteredData }, function (result) { " +
                                           "if (result.Success) { alert ('for great justice!'); $('div#divDashboardTodo').fadeOut(); } else { alertify.alert('Could not set payout address: ' + result.DisplayMessage); } " +
                                           "} ); " +
                                       " }}); return false;";

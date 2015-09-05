@@ -8,6 +8,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using NBitcoin;
 using Resources;
 using Swarmops.Interface.Support;
 using Swarmops.Logic.Financial;
@@ -119,7 +120,12 @@ namespace Swarmops
 
             this.RepeaterTodoItems.DataSource = todos;
             this.RepeaterTodoItems.DataBind();
-            this.LabelNoTodoItems.Visible = (todos.Count == 0);
+
+            if (todos.Count == 0)
+            {
+                // If no todos, hide the entire Todos box
+                this.LiteralDocumentReadyHook.Text += @"$('div#divDashboardTodo').hide();";
+            }
 
             // Set up main menu 
 
@@ -137,7 +143,7 @@ namespace Swarmops
 
             if (dashMessage != null && dashMessage.Value.Length > 0)
             {
-                this.LiteralDocumentReadyHook.Text =
+                this.LiteralDocumentReadyHook.Text +=
                     string.Format ("alertify.alert(decodeURIComponent('{0}'));", dashMessage.Value);
                 DashboardMessage.Reset();
             }
