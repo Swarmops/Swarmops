@@ -325,6 +325,16 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>Please enter the supplier's bank account or equivalent.</value>
   </data>
+  <data name="Donate_Explain" xml:space="preserve">
+    <value>This is a QR code for donations to {0}. Read it from your phone's bitcoin wallet to make a donation, or donate from your computer directly to [{1}] (that's a bitcoin address).</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>If you want to donate to the organization, your can do so here.</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>Donate</value>
+  </data>
   <data name="FileExpenseClaim_Amount" xml:space="preserve">
     <value>Expense claim amount (in {0})</value>
     <comment>{0} is the currency.</comment>

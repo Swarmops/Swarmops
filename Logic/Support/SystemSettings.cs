@@ -4,10 +4,12 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
 // This class is just for readability of other code. Doesn't add any logic at all, really - just readability, like SystemSettings.SmtpHost instead of Persistence.blahblah.
+using System.Web;
 using NBitcoin;
 using Swarmops.Logic.Security;
 
@@ -211,6 +213,33 @@ namespace Swarmops.Logic.Support
                 return defaultValue;
             }
             return result;
+        }
+
+
+        public static string EtcFolder
+        {
+            get
+            {
+                if (Debugger.IsAttached && Path.DirectorySeparatorChar == '\\')
+                {
+                    // Windows environment - dev environment
+
+                    if (HttpContext.Current != null)
+                    {
+                        // If in HTTP context, return the root frontend folder
+
+                        return HttpContext.Current.Server.MapPath ("~");
+                    }
+                    else
+                    {
+                        // Not in HTTP context - debugging backend or something not considered at time of writing this
+
+                        return "."; // current directory (execution directory)
+                    }
+                }
+
+                return "/etc/swarmops"; // live etc folder
+            }
         }
     }
 }

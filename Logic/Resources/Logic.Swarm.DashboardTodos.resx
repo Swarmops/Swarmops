@@ -133,7 +133,7 @@
     <value>Set bitcoin payout address</value>
   </data>
   <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
-    <value>Please set your bitcoin address for payouts from [InstallationName]:</value>
+    <value>Please set your bitcoin address for payouts from [InstallationName] (spaces in the address are ok but not required):</value>
   </data>
   <data name="Payout_Many" xml:space="preserve">
     <value>Settle {0} payouts</value>

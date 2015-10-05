@@ -191,3 +191,5 @@ External Dependencies/*
 #Except the batch file to rebuild them
 !External Dependencies/rebuild-all.cmd
 
+#The hotwallet keyfiles should obviously never be checked in
+Site5/hotwallet*

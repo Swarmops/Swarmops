@@ -105,7 +105,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to You have set a bitcoin payout address: [BitcoinAddress]. As a security precaution, all payouts are quarantined for the next 48 hours, and will proceed to be paid out to the new address after that.
         ///
-        ///If you did not set your payout address, contact [OrganizationName] immediately..
+        ///If you did not set this payout address (it may be worth double checking the address above for added security), contact [OrganizationName] immediately..
         /// </summary>
         internal static string BitcoinPayoutAddress_Set_Body {
             get {

@@ -168,6 +168,12 @@ namespace Swarmops.Backend
                 Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
             }
 
+            // Check for existence of bitcoin hotwallet root
+
+            FinancialAccounts.VerifyBitcoinHotWallet();
+
+            // Begin maintenance loop
+
             DateTime cycleStartTime = DateTime.UtcNow;
             DateTime cycleEndTime;
 

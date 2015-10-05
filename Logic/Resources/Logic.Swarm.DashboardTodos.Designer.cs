@@ -106,7 +106,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please set your bitcoin address for payouts from [InstallationName]:.
+        ///   Looks up a localized string similar to Please set your bitcoin address for payouts from [InstallationName] (spaces in the address are ok but not required):.
         /// </summary>
         internal static string Bitcoin_SetPayoutAddress_Prompt {
             get {
