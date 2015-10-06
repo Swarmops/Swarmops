@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using NBitcoin;
+using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Newtonsoft.Json.Linq;
 
 namespace Swarmops.Logic.Financial
@@ -34,11 +37,31 @@ namespace Swarmops.Logic.Financial
                     TransactionOutputIndex = (UInt32) unspentJson["tx_output_n"]
                 };
 
-                coinList.Add (txUnspent);
+                coinList.Add (txUnspent); // invokes implicit conversion to NBitcoin.Coin
             }
 
             return coinList.ToArray();
         }
+
+        static public void BroadcastTransaction (Transaction transaction)
+        {
+            using (WebClient client = new WebClient())
+            {
+                byte[] response = client.UploadValues("https://blockchain.info/pushtx?cors=true", new NameValueCollection()
+                {
+                    { "tx", transaction.ToHex() }
+                });
+
+                // TODO: Exception handling
+            }
+        }
+
+        public const int BitcoinWalletIndex = 1;
+        public const int BitcoinDonationsIndex = 2;
+        public const int BitcoinLoansIndex = 3;
+        public const int BitcoinAccountsReceivableIndex = 4;
+
+        public const string BitcoinTestAddress = "1JMpU3D6c5sruunMwzkt6p6PQzLcUYcL26";
     }
 
     internal class BitcoinUnspentTransactionOutput

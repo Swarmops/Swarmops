@@ -22,7 +22,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             string bitcoinAddress =
                 FinancialAccounts.BitcoinHotPublicRoot
                     .Derive ((uint) this.CurrentOrganization.Identity)
-                    .Derive (FinancialAccounts.BitcoinDonationsIndex)
+                    .Derive (BitcoinUtility.BitcoinDonationsIndex)
                     .Derive ((uint) this.CurrentUser.Identity)
                     .PubKey.GetAddress (Network.Main)
                     .ToString();
@@ -31,7 +31,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             /*
             BitcoinSecret secretKey =
                 FinancialAccounts.BitcoinHotPrivateRoot.Derive ((uint) this.CurrentOrganization.Identity)
-                    .Derive (FinancialAccounts.BitcoinDonationsIndex)
+                    .Derive (BitcoinUtility.BitcoinDonationsIndex)
+                    .Derive ((uint) this.CurrentUser.Identity)
                     .PrivateKey
                     .GetBitcoinSecret (Network.Main);
 
@@ -40,7 +41,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             TransactionBuilder txBuild = new TransactionBuilder();
             Transaction tx = txBuild.AddCoins (spendableCoin)
                 .AddKeys (secretKey)
-                .Send (new BitcoinAddress (FinancialAccounts.BitcoinTestAddress), "0.001")
+                .Send (new BitcoinAddress (BitcoinUtility.BitcoinTestAddress), "0.001")
                 .SendFees ("0.0001")
                 .SetChange (secretKey.GetAddress())
                 .BuildTransaction (true);
@@ -51,13 +52,13 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new InvalidOperationException("Tx is not properly signed");
             }
 
-            string txHex = tx.ToHex();*/
+            BitcoinUtility.BroadcastTransaction (tx);*/
 
             this.BoxTitle.Text = Resources.Pages.Financial.Donate_PageTitle;
             this.LabelExplainBitcoinDonation.Text = String.Format(Resources.Pages.Financial.Donate_Explain, CurrentOrganization.Name, bitcoinAddress);
 
             this.ImageBitcoinQr.ImageUrl =
-                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoin:" + HttpUtility.UrlEncode(bitcoinAddress + "?label=" + CurrentOrganization.Name.Replace ("&","et").Replace ("=", string.Empty)); // URI scheme doesn't like &, =
+                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=bitcoin:" + HttpUtility.UrlEncode(bitcoinAddress + "?label=" + Uri.EscapeDataString(String.Format(Resources.Pages.Financial.Donate_TxLabel, CurrentOrganization.Name))); // URI scheme doesn't like &, =
         }
     }
 }

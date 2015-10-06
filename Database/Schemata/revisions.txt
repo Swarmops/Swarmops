@@ -21,3 +21,6 @@
 0021 - Added PositionCustomTitles and its stored procedures [RF]
 0022 - Added VolunteerPositions and its stored procedures [RF]
 0023 - Added procs to change Facebook, Twitter, GPlus IDs [RF]
+0024 - Maint on CreatePayrollItem [RF]
+0025 - Bugfix for 0024 [RF]
+0026 - Added first tables, procs for hot bitcoin wallets [RF]

@@ -249,9 +249,5 @@ namespace Swarmops.Logic.Financial
             }    
         }
 
-        public const int BitcoinWalletIndex = 1;
-        public const int BitcoinDonationsIndex = 2;
-
-        public const string BitcoinTestAddress = "1JMpU3D6c5sruunMwzkt6p6PQzLcUYcL26";
     }
 }

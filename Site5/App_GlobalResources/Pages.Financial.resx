@@ -335,6 +335,14 @@
   <data name="Donate_PageTitle" xml:space="preserve">
     <value>Donate</value>
   </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>Donation to {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>Loan to {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
   <data name="FileExpenseClaim_Amount" xml:space="preserve">
     <value>Expense claim amount (in {0})</value>
     <comment>{0} is the currency.</comment>

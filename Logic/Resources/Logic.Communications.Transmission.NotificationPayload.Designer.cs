@@ -61,6 +61,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [BitcoinAmount] millicoin was just transferred to your address by [OrganizationName]..
+        /// </summary>
+        internal static string Bitcoin_PaidOut_Body {
+            get {
+                return ResourceManager.GetString("Bitcoin_PaidOut_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Funds paid using bitcoin: [CurrencyCode] [BudgetAmountFloat].
+        /// </summary>
+        internal static string Bitcoin_PaidOut_Subject {
+            get {
+                return ResourceManager.GetString("Bitcoin_PaidOut_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 48 hours.
         ///
         ///If you did NOT change the payout address and there has been a security breach, please click this link immediately to lock down your account: [LockdownLink]
