@@ -119,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Financial\BitcoinUtility.cs" />
+    <Compile Include="Financial\HotBitcoinAddress.cs" />
+    <Compile Include="Financial\HotBitcoinAddressUnspent.cs" />
+    <Compile Include="Financial\HotBitcoinAddressUnspents.cs" />
     <Compile Include="Financial\IPayable.cs" />
     <Compile Include="Resources\Logic.Financial.FinancialAccount.Designer.cs">
       <AutoGen>True</AutoGen>
