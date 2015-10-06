@@ -71,6 +71,9 @@ BEGIN
 
   SELECT ROW_COUNT() AS RowsUpdated;
 
+END
+
+
 #
 
 
@@ -90,6 +93,8 @@ BEGIN
   WHERE HotBitcoinAddresses.HotBitcoinAddressId=hotBitcoinAddressId;
 
   SELECT ROW_COUNT() AS RowsUpdated;
+
+END
 
 #
 
@@ -137,6 +142,9 @@ BEGIN
 
   SELECT ROW_COUNT() AS RowsUpdated;
 
+END
+
+
 #
 
 
@@ -154,4 +162,7 @@ BEGIN
   WHERE HotBitcoinAddressUnspents.HotBitcoinAddressUnspentId=hotBitcoinAddressUnspentId;
 
   SELECT ROW_COUNT() AS RowsDeleted;
+
+END
+
 
