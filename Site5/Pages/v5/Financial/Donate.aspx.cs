@@ -21,6 +21,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             this.PageAccessRequired = new Access (this.CurrentOrganization, AccessAspect.Participant);
 
+            // TODO: This page needs a check on whether currentorganization.financialaccounts.assetbitcoinhot is null
+
+
             this.PageTitle = Resources.Pages.Financial.Donate_PageTitle;
             this.InfoBoxLiteral = Resources.Pages.Financial.Donate_Info;
             this.LabelStatus.Text = Resources.Pages.Financial.Donate_StatusInitial;
@@ -126,6 +129,9 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.IncomeDonations, -nativeCents, authData.CurrentUser);
                     ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, nativeCents, authData.CurrentUser);
                     ledgerTx.BlockchainHash = txHash;
+
+                    successMessage = string.Format (Resources.Pages.Financial.Donate_FundsReceived,
+                        authData.CurrentOrganization.Currency.DisplayCode, nativeCents/100.0, satoshisReceived/100.0);
                 }
 
                 return new AjaxCallResult() {DisplayMessage = successMessage, Success = true};

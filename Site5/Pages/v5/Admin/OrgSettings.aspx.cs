@@ -203,7 +203,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                                 FinancialAccountType.Asset, null);
 
                         result.DisplayMessage =
-                            "Bitcoin hotwallet account was created. Upload its wallet file in Account Plan.";
+                            "Bitcoin HD hotwallet was created along with an account for the hotwallet.";
                     }
                     else
                     {

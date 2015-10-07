@@ -330,7 +330,7 @@
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
   </data>
   <data name="Donate_FundsReceived" xml:space="preserve">
-    <value>Received {0} {1} ({2} microcoins or "bits"). Thank you!</value>
+    <value>Received {0} {1:N2} ({2:N0} microcoins or "bits"). Thank you!</value>
     <comment>{0} is native currency, {1} is amount in native currency</comment>
   </data>
   <data name="Donate_FundsReceivedNative" xml:space="preserve">

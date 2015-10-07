@@ -7,7 +7,8 @@ namespace Swarmops.Common.Enums
         FinancialAccount,
         Organization,
         OutboundInvoice,
-        InboundInvoice
+        InboundInvoice,
+        FinancialTransaction
     }
 
     public enum ObjectOptionalDataType

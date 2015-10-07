@@ -9,9 +9,6 @@
             initializeSocket();
             
             // TODO: Also poll regularly in case socket fails
-
-            checkTransactionReceived(); // test ajax call
-
         });
 
         function initializeSocket() {
@@ -26,9 +23,11 @@
                 console.log("socket opened");
                 socket.send('{"op":"addr_sub","addr":"' + addressUsed + '"}');
             };
-            socket.onclose = function(data) {
-                console.log("socket lost");
-                initializeSocket();
+            socket.onclose = function (data) {
+                if (!completed) {
+                    console.log("socket lost");
+                    initializeSocket();
+                }
             };
             socket.onerror = function(data) { console.log("socket error"); };
             socket.onmessage = function(data) {
@@ -58,7 +57,9 @@
                 function (data) {
                     if (data.Success) {
                         $('#paraStatus').text(data.DisplayMessage);
+                        $('#paraIntro').fadeOut().slideUp();
                         $('#divQr').fadeOut().slideUp();
+                        completed = true;
                         socket.close();
                         socket = null;
                     }
@@ -68,13 +69,14 @@
         var addressUsed = '<asp:Literal runat="server" ID="LiteralBitcoinAddress" />';
         var guid = '<asp:Literal runat="server" ID="LiteralGuid" />';
         var socket = null;
+        var completed = false;
 
     </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
-    <p><asp:Label runat="server" ID="LabelExplainBitcoinDonation" /></p>
+    <p id="paraIntro"><asp:Label runat="server" ID="LabelExplainBitcoinDonation" /></p>
     <p style="font-size:200%" id="paraStatus"><asp:Label runat="server" ID="LabelStatus" /></p>
     <div align="center" id="divQr"><asp:Image ID="ImageBitcoinQr" runat="server"/></div>
 
