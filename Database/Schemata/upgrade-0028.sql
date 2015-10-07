@@ -24,7 +24,8 @@ BEGIN
   ELSE
 
     SELECT HotBitcoinAddresses.HotBitcoinAddressId AS Identity
-    WHERE HotBitcoinAddresses.AddressString=addressString;
+      FROM HotBitcoinAddresses
+      WHERE HotBitcoinAddresses.AddressString=addressString;
 
   END IF;
 
