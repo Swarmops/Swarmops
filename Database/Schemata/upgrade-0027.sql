@@ -1,12 +1,15 @@
 ALTER TABLE `HotBitcoinAddresses` 
-ADD UNIQUE INDEX `Ix_Address` (`AddressString` ASC);
+ADD UNIQUE INDEX `Ix_Address` (`AddressString` ASC)
 
 
 #
 
 
-ALTER TABLE `activizr-dev`.`HotBitcoinAddressUnspents` 
-ADD UNIQUE INDEX `Ix_HashIndex` (`TransactionHash` ASC, `TransactionOutputIndex` ASC);
+ALTER TABLE `HotBitcoinAddressUnspents` 
+CHANGE COLUMN `AmountSatoshis` `AmountSatoshis` BIGINT(20) NOT NULL AFTER `TransactionOutputIndex`,
+ADD COLUMN `HotBitcoinAddressId` INT NOT NULL AFTER `HotBitcoinAddressUnspentId`,
+ADD INDEX `Ix_Address` (`HotBitcoinAddressId` ASC),
+ADD UNIQUE INDEX `Ix_HashIndex` (`TransactionHash` ASC, `TransactionOutputIndex` ASC)
 
 
 #
@@ -56,6 +59,7 @@ DROP procedure IF EXISTS `CreateHotBitcoinAddressUnspent`
 
 
 CREATE PROCEDURE `CreateHotBitcoinAddressUnspent` (
+  IN hotBitcoinAddressId INT,
   IN amountSatoshis BIGINT,
   IN transactionHash VARCHAR(128),
   IN transactionOutputIndex INT,
@@ -63,9 +67,9 @@ CREATE PROCEDURE `CreateHotBitcoinAddressUnspent` (
 )
 BEGIN
   INSERT INTO HotBitcoinAddressUnspents
-    (AmountSatoshis,TransactionHash,TransactionOutputIndex,ConfirmationCount)
+    (HotBitcoinAddressId,AmountSatoshis,TransactionHash,TransactionOutputIndex,ConfirmationCount)
   VALUES 
-    (amountSatoshis,transactionHash,transactionOutputIndex,confirmationCount);
+    (hotBitcoinAddressId,amountSatoshis,transactionHash,transactionOutputIndex,confirmationCount);
 
   SELECT LAST_INSERT_ID() AS Identity;
 
@@ -82,6 +86,7 @@ DROP procedure IF EXISTS `CreateHotBitcoinAddressUnspentConditional`
 
 
 CREATE PROCEDURE `CreateHotBitcoinAddressUnspentConditional` (
+  IN hotBitcoinAddressId INT,
   IN amountSatoshis BIGINT,
   IN transactionHash VARCHAR(128),
   IN transactionOutputIndex INT,
@@ -97,9 +102,9 @@ BEGIN
   THEN
 
     INSERT INTO HotBitcoinAddressUnspents
-      (AmountSatoshis,TransactionHash,TransactionOutputIndex,ConfirmationCount)
+      (HotBitcoinAddressId,AmountSatoshis,TransactionHash,TransactionOutputIndex,ConfirmationCount)
     VALUES 
-      (amountSatoshis,transactionHash,transactionOutputIndex,confirmationCount);
+      (hotBitcoinAddressId,amountSatoshis,transactionHash,transactionOutputIndex,confirmationCount);
 
     SELECT LAST_INSERT_ID() AS Identity;
 
