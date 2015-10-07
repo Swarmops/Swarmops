@@ -25,3 +25,4 @@
 0025 - Bugfix for 0024 [RF]
 0026 - Added first tables, procs for hot bitcoin wallets [RF]
 0027 - Fixes and additions to HotBitcoinAddresses, -Unspents [RF]
+0028 - Bugfix for 0027 [RF]

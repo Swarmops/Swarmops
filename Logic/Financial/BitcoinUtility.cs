@@ -11,6 +11,7 @@ using System.Web;
 using NBitcoin;
 using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Newtonsoft.Json.Linq;
+using Swarmops.Database;
 
 namespace Swarmops.Logic.Financial
 {
@@ -42,6 +43,48 @@ namespace Swarmops.Logic.Financial
 
             return coinList.ToArray();
         }
+
+        static public bool TestUnspents (string address)
+        {
+            // This function queries the Blockchain API for the unspent coin.
+            bool result = false;
+            HotBitcoinAddress hotAddress = null;
+
+            var unspentJsonResult =
+                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/unspent?active=" + address));
+
+            foreach (var unspentJson in unspentJsonResult["unspent_outputs"])
+            {
+                BitcoinUnspentTransactionOutput txUnspent = new BitcoinUnspentTransactionOutput()
+                {
+                    BitcoinAddress = address,
+                    ConfirmationCount = (UInt32)unspentJson["confirmations"],
+                    Satoshis = (UInt64)unspentJson["value"],
+                    TransactionHash = (string)unspentJson["tx_hash_big_endian"],
+                    TransactionOutputIndex = (UInt32)unspentJson["tx_output_n"]
+                };
+
+                if (txUnspent.ConfirmationCount < 2)
+                {
+                    // Fresh transactions, return true
+                    result = true;
+                }
+
+                // Add unspent to database
+
+                if (hotAddress == null)
+                {
+                    hotAddress = HotBitcoinAddress.FromAddress (address);
+                }
+
+                SwarmDb.GetDatabaseForWriting()
+                    .CreateHotBitcoinAddressUnspentConditional (hotAddress.Identity, txUnspent.TransactionHash,
+                        (int) txUnspent.TransactionOutputIndex, (Int64) txUnspent.Satoshis, (int) txUnspent.ConfirmationCount);
+            }
+
+            return result;
+        }
+
 
         static public void BroadcastTransaction (Transaction transaction)
         {

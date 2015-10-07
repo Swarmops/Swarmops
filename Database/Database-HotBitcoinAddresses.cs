@@ -50,7 +50,7 @@ namespace Swarmops.Database
 
         #region Record reading code
 
-        public BasicHotBitcoinAddress GetHotBitcoinAddress (int hotBitcoinAddressId)
+        public BasicHotBitcoinAddress GetHotBitcoinAddress(int hotBitcoinAddressId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -68,6 +68,28 @@ namespace Swarmops.Database
                     }
 
                     throw new ArgumentException("Unknown HotBitcoinAddress Id: " + hotBitcoinAddressId);
+                }
+            }
+        }
+
+        public BasicHotBitcoinAddress GetHotBitcoinAddress(string address)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT" + hotBitcoinAddressFieldSequence + "WHERE AddressString='" + SqlSanitize (address) + "';", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return ReadHotBitcoinAddressFromDataReader(reader);
+                    }
+
+                    throw new ArgumentException("Unknown HotBitcoinAddress: " + address);
                 }
             }
         }
@@ -107,7 +129,7 @@ namespace Swarmops.Database
 
                 DbCommand command =
                     GetDbCommand(
-                        "SELECT" + hotBitcoinAddressUnspentFieldSequence + ConstructWhereClause("HotBitcoinAddressUnspents", conditions), connection);
+                        "SELECT" + hotBitcoinAddressUnspentFieldSequence + ConstructWhereClause("HotBitcoinAddressUnspents", conditions) + " ORDER BY HotBitcoinAddressUnspentId ASC", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {

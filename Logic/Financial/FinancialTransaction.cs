@@ -73,6 +73,11 @@ namespace Swarmops.Logic.Financial
             return FromIdentityAggressive (transactionId);
         }
 
+        public static FinancialTransaction Create (Organization organization, DateTime dateTime, string description)
+        {
+            return FinancialTransaction.Create (organization.Identity, dateTime, description);
+        }
+
         #endregion
 
         public FinancialTransactionRows Rows
