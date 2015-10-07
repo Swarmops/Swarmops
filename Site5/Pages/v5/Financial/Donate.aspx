@@ -47,7 +47,12 @@
             };
         }
 
-        function checkTransactionReceived (hash) {
+        function checkTransactionReceived(hash) {
+
+            if (hash == null) {
+                hash = "";
+            }
+
             SwarmopsJS.ajaxCall('/Pages/v5/Financial/Donate.aspx/CheckTransactionReceived',
                 { guid: guid, txHash: hash },
                 function (data) {

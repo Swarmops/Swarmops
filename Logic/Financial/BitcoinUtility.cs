@@ -50,8 +50,18 @@ namespace Swarmops.Logic.Financial
             bool result = false;
             HotBitcoinAddress hotAddress = null;
 
+            var addressInfoResult =
+                JObject.Parse (
+                    new WebClient().DownloadString (
+                        "https://blockchain.info/address/" + address + "?format=json"));
+
+            if ((int) addressInfoResult["final_balance"] == 0)
+            {
+                return false; // no funds on address at all at this time
+            }
+
             var unspentJsonResult =
-                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/unspent?active=" + address));
+                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/unspent?active=" + address));   // warn: will 500 if no unspent outpoints
 
             foreach (var unspentJson in unspentJsonResult["unspent_outputs"])
             {

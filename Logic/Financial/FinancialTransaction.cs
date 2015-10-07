@@ -145,6 +145,20 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public string BlockchainHash
+        {
+            get
+            {
+                return
+                    ObjectOptionalData.ForObject (this)
+                        .GetOptionalDataString (ObjectOptionalDataType.FinancialTransactionBlockchainHash);
+            }
+            set
+            {
+                ObjectOptionalData.ForObject (this).SetOptionalDataString (ObjectOptionalDataType.FinancialTransactionBlockchainHash, value);
+            }
+        }
+
         public IHasIdentity Dependency
         {
             set

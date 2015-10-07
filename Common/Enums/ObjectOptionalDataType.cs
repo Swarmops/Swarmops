@@ -344,6 +344,11 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// For cold wallets, we may prefer listing the public addresses directly
         /// </summary>
-        BudgetBitcoinPublicAddress
+        BudgetBitcoinPublicAddress,
+
+        /// <summary>
+        /// For a bitcoin transaction, its hash on the blockchain
+        /// </summary>
+        FinancialTransactionBlockchainHash
     }
 }

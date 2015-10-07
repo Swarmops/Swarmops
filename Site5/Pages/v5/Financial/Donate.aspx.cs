@@ -31,6 +31,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LiteralBitcoinAddress.Text = address.Address;
             string guid = Guid.NewGuid().ToString ("N");
             GuidCache.Set (guid, address.Address);
+            this.LiteralGuid.Text = guid;
 
             // TEST TEST TEST
             /*
@@ -102,6 +103,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         DateTime.UtcNow, "Donation (bitcoin to hotwallet)");
                     ledgerTx.AddRow (authData.CurrentOrganization.FinancialAccounts.IncomeDonations, -satoshisReceived, authData.CurrentUser);
                     ledgerTx.AddRow (authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, satoshisReceived, authData.CurrentUser);
+                    ledgerTx.BlockchainHash = txHash;
 
                     if (satoshisReceived % 100 == 0)
                     {
@@ -123,6 +125,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                         DateTime.UtcNow, "Donation (bitcoin to hotwallet)");
                     ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.IncomeDonations, -nativeCents, authData.CurrentUser);
                     ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, nativeCents, authData.CurrentUser);
+                    ledgerTx.BlockchainHash = txHash;
                 }
 
                 return new AjaxCallResult() {DisplayMessage = successMessage, Success = true};
