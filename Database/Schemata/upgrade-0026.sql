@@ -8,6 +8,7 @@ CREATE TABLE `HotBitcoinAddresses` (
   PRIMARY KEY (`HotBitcoinAddressId`),
   INDEX `Ix_Organization` (`OrganizationId` ASC),
   INDEX `Ix_Balance` (`BalanceSatoshis` ASC),
+  INDEX `Ix_Address` (`AddressString` ASC),
   INDEX `Ix_Used` (`ThroughputSatoshis` ASC))
 
 

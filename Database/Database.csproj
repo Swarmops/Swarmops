@@ -65,6 +65,7 @@
     <Compile Include="Database-FinancialTransactionTags.cs" />
     <Compile Include="Database-FinancialTransactionTagSetTypes.cs" />
     <Compile Include="Database-FinancialTransactionTagTypes.cs" />
+    <Compile Include="Database-HotBitcoinAddresses.cs" />
     <Compile Include="Database-Initialization.cs" />
     <Compile Include="Database-Meetings.cs" />
     <Compile Include="Database-CommunicationTurnarounds.cs" />

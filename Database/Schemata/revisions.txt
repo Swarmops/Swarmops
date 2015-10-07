@@ -24,3 +24,4 @@
 0024 - Maint on CreatePayrollItem [RF]
 0025 - Bugfix for 0024 [RF]
 0026 - Added first tables, procs for hot bitcoin wallets [RF]
+0027 - Fixes and additions to HotBitcoinAddresses, -Unspents [RF]
