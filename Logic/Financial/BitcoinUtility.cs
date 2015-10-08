@@ -21,6 +21,13 @@ namespace Swarmops.Logic.Financial
     {
         public static void VerifyBitcoinHotWallet()
         {
+            // This must only be run from the backend
+
+            if (HttpContext.Current != null)
+            {
+                throw new InvalidOperationException("Checking root keys cannot be done from the frontend");
+            }
+
             // Make sure there's always a private hotwallet root, regardless of whether it's used or not
 
             if (!File.Exists(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet"))
@@ -30,6 +37,23 @@ namespace Swarmops.Logic.Financial
                 File.WriteAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet-created-" + DateTime.UtcNow.ToString("yyyy-MM-dd--HH-mm-ss--fff.backup"), privateRoot.GetWif(Network.Main).ToWif(), Encoding.ASCII); // an extra backup
                 Persistence.Key["BitcoinHotPublicRoot"] = privateRoot.Neuter().GetWif(Network.Main).ToWif();
             }
+            else
+            {
+                // The file exists. Does the database have the hotwallet public root?
+
+                if (Persistence.Key["BitcoinHotPublicRoot"].Length < 3)
+                {
+                    // No, it has disappeared, which can happen for a few bad reasons
+
+                    Persistence.Key["BitcoinHotPublicRoot"] = BitcoinHotPrivateRoot.Neuter().GetWif(Network.Main).ToWif();
+                    if (!PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
+                    {
+                        // TODO: Log some sort of exception (the sandbox db is reset every night, so it's ok to lose the public key from there)
+                    }
+                }
+            }
+
+            
         }
 
         public static ExtKey BitcoinHotPrivateRoot
