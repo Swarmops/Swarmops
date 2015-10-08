@@ -45,7 +45,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
             foreach (Payout payout in payouts)
             {
-                if (bitcoinHotWalletActive && payout.RecipientPerson != null && payout.RecipientPerson.BitcoinPayoutAddress.Length > 0 && payout.Account.Length < 2)
+                if (bitcoinHotWalletActive && payout.RecipientPerson != null && payout.RecipientPerson.BitcoinPayoutAddress.Length > 0 && payout.Account.Length < 4)  // 4 because an empty account will be " / ", length 3
                 {
                     continue;
                 }
