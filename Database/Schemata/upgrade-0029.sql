@@ -45,7 +45,7 @@ BEGIN
     (
       SELECT HotBitcoinAddressId, SUM(AmountSatoshis) AS UnspentAmountSum
       FROM HotBitcoinAddressUnspents
-      WHERE HotBitcoinAddressUnspents.HotBitcoinAddressId=hotBitcoinAddressId
+      GROUP BY HotBitcoinAddressId
     ) innerSelection ON HotBitcoinAddresses.HotBitcoinAddressId =
         innerSelection.HotBitcoinAddressId
     SET HotBitcoinAddresses.BalanceSatoshis = innerSelection.UnspentAmountSum
