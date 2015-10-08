@@ -12,6 +12,8 @@ using NBitcoin;
 using Swarmops.Logic.Cache;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Structure;
+using Satoshis = NBitcoin.Money; // Sets it apart from Swarmops' Money class
 
 namespace Swarmops.Frontend.Pages.v5.Financial
 {
@@ -21,12 +23,31 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             this.PageAccessRequired = new Access (this.CurrentOrganization, AccessAspect.Participant);
 
-            // TODO: This page needs a check on whether currentorganization.financialaccounts.assetbitcoinhot is null
+            /* TEMP TEMP TEMP - REMOVE THIS CODE */
+            /*
+            Organization fwn = Organization.FromIdentity (2);
 
+            Salaries salaries = Salaries.ForOrganization (fwn);
+            foreach (Salary salary in salaries)
+            {
+                if (salary.PayrollItem.Person.BitcoinPayoutAddress.Length > 0 && salary.Attested == false)
+                {
+                    salary.Attest (salary.PayrollItem.Person); // null for system apparently isn't allowed here
+                }
+            }*/
+            
+            // TODO: This page needs a check on whether currentorganization.financialaccounts.assetbitcoinhot is null
 
             this.PageTitle = Resources.Pages.Financial.Donate_PageTitle;
             this.InfoBoxLiteral = Resources.Pages.Financial.Donate_Info;
             this.LabelStatus.Text = Resources.Pages.Financial.Donate_StatusInitial;
+
+            if (this.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot == null)
+            {
+                this.PanelDisabled.Visible = true;
+                this.PanelEnabled.Visible = false;
+                this.LiteralEnable.Text = @"false";
+            }
 
             HotBitcoinAddress address = HotBitcoinAddress.Create (this.CurrentOrganization,
                 BitcoinUtility.BitcoinDonationsIndex, this.CurrentUser.Identity);
@@ -38,20 +59,14 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             // TEST TEST TEST
             /*
-            BitcoinSecret secretKey =
-                FinancialAccounts.BitcoinHotPrivateRoot.Derive ((uint) this.CurrentOrganization.Identity)
-                    .Derive (BitcoinUtility.BitcoinDonationsIndex)
-                    .Derive ((uint) this.CurrentUser.Identity)
-                    .PrivateKey
-                    .GetBitcoinSecret (Network.Main);
-
+            BitcoinSecret secretKey = address.PrivateKey;
             Coin[] spendableCoin = BitcoinUtility.GetSpendableCoin (secretKey);
 
             TransactionBuilder txBuild = new TransactionBuilder();
             Transaction tx = txBuild.AddCoins (spendableCoin)
                 .AddKeys (secretKey)
-                .Send (new BitcoinAddress (BitcoinUtility.BitcoinTestAddress), "0.001")
-                .SendFees ("0.0001")
+                .Send (new BitcoinAddress (BitcoinUtility.BitcoinTestAddress), new Satoshis (address.UnspentSatoshis - BitcoinUtility.FeeSatoshisPerThousandBytes))
+                .SendFees (new Satoshis(BitcoinUtility.FeeSatoshisPerThousandBytes))
                 .SetChange (secretKey.GetAddress())
                 .BuildTransaction (true);
 

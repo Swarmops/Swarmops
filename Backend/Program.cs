@@ -170,7 +170,7 @@ namespace Swarmops.Backend
 
             // Check for existence of bitcoin hotwallet root
 
-            FinancialAccounts.VerifyBitcoinHotWallet();
+            BitcoinUtility.VerifyBitcoinHotWallet();
 
             // Begin maintenance loop
 

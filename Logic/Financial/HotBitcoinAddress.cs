@@ -51,7 +51,7 @@ namespace Swarmops.Logic.Financial
 
         public static HotBitcoinAddress Create (Organization organization, params int[] derivationPath)
         {
-            ExtPubKey extPubKey = FinancialAccounts.BitcoinHotPublicRoot;
+            ExtPubKey extPubKey = BitcoinUtility.BitcoinHotPublicRoot;
             extPubKey = extPubKey.Derive ((uint) organization.Identity);
             string derivationPathString = string.Empty;
 
@@ -76,9 +76,41 @@ namespace Swarmops.Logic.Financial
             return FromBasic(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddress(bitcoinAddress));
         }
 
+        public BitcoinSecret PrivateKey
+        {
+            get
+            {
+                // This will throw if the private root key is not available to the running code, and that's as designed
+
+                ExtKey secretExtKey = BitcoinUtility.BitcoinHotPrivateRoot.Derive ((uint) base.OrganizationId);
+
+                foreach (string derivationString in DerivationPath.Split (' '))
+                {
+                    secretExtKey = secretExtKey.Derive (UInt32.Parse (derivationString));
+                }
+
+                return secretExtKey.PrivateKey.GetBitcoinSecret (Network.Main);
+            }
+        }
+
+        public Organization Organization
+        {
+            get { return Organization.FromIdentity (base.OrganizationId); }
+        }
+
         public HotBitcoinAddressUnspents Unspents
         {
             get { return HotBitcoinAddressUnspents.ForAddress (this); }
+        }
+
+        public Int64 UnspentSatoshis
+        {
+            get
+            {
+                HotBitcoinAddressUnspents unspents = Unspents;
+
+                return unspents.Sum (unspent => unspent.AmountSatoshis);
+            }
         }
     }
 }

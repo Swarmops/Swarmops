@@ -414,4 +414,7 @@
   <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
     <value>My Local Organization</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Donate Funds</value>
+  </data>
 </root>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -12,11 +13,42 @@ using NBitcoin;
 using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Newtonsoft.Json.Linq;
 using Swarmops.Database;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
 {
     public class BitcoinUtility
     {
+        public static void VerifyBitcoinHotWallet()
+        {
+            // Make sure there's always a private hotwallet root, regardless of whether it's used or not
+
+            if (!File.Exists(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet"))
+            {
+                ExtKey privateRoot = new ExtKey();
+                File.WriteAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet", privateRoot.GetWif(Network.Main).ToWif(), Encoding.ASCII);
+                File.WriteAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet-created-" + DateTime.UtcNow.ToString("yyyy-MM-dd--HH-mm-ss--fff.backup"), privateRoot.GetWif(Network.Main).ToWif(), Encoding.ASCII); // an extra backup
+                Persistence.Key["BitcoinHotPublicRoot"] = privateRoot.Neuter().GetWif(Network.Main).ToWif();
+            }
+        }
+
+        public static ExtKey BitcoinHotPrivateRoot
+        {
+            get
+            {
+                return
+                    ExtKey.Parse(File.ReadAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet")); // will throw if hotwallet file does not exist - intentional
+            }
+        }
+
+        public static ExtPubKey BitcoinHotPublicRoot
+        {
+            get
+            {
+                return ExtPubKey.Parse((string)Persistence.Key["BitcoinHotPublicRoot"]);
+            }
+        }
+
         static public Coin[] GetSpendableCoin (BitcoinSecret secretKey) // we're using BitcoinSecret as arg just to reinforce caller must have privkey to spend funds
         {
             // This function queries the Blockchain API for the unspent coin.
@@ -115,6 +147,8 @@ namespace Swarmops.Logic.Financial
         public const int BitcoinAccountsReceivableIndex = 4;
 
         public const string BitcoinTestAddress = "1JMpU3D6c5sruunMwzkt6p6PQzLcUYcL26";
+
+        public const long FeeSatoshisPerThousandBytes = 10000;
     }
 
     internal class BitcoinUnspentTransactionOutput

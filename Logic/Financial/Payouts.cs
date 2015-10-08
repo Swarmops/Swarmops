@@ -102,6 +102,7 @@ namespace Swarmops.Logic.Financial
                                 claim.Claimer.BankClearing + " / " + claim.Claimer.BankAccount, string.Empty, 0,
                                 DateTime.MinValue, false, DateTime.Now, 0);
                             Payout payout = Payout.FromBasic (basicPayout);
+                            payout.RecipientPerson = claim.Claimer;
 
                             payout.DependentExpenseClaims.Add (claim);
 
@@ -206,6 +207,7 @@ namespace Swarmops.Logic.Financial
                         advance.Person.BankClearing + " / " + advance.Person.BankAccount, string.Empty, 0,
                         DateTime.MinValue, false, DateTime.Now, 0);
                     Payout payout = Payout.FromBasic (basicPayout);
+                    payout.RecipientPerson = advance.Person;
 
                     payout.DependentCashAdvancesPayout.Add (advance);
 
@@ -297,6 +299,7 @@ namespace Swarmops.Logic.Financial
                         salary.PayoutDate.ToString (CultureInfo.InvariantCulture),
                         salary.NetSalaryCents, salary.PayoutDate, false, DateTime.Now, 0);
                     Payout payout = Payout.FromBasic (basicPayout);
+                    payout.RecipientPerson = employee;
 
                     payout.DependentSalariesNet.Add (salary);
 

@@ -154,21 +154,37 @@
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
-          
+
             <MainMenuItem>
-                <ResourceKey>Financial_RequestCashAdvance</ResourceKey>
-                <UserLevel>1</UserLevel>
-                <Permissions />
-                <ImageUrl>iconshock-walletmoney</ImageUrl>
-                <NavigateUrl>/Pages/v5/Financial/RequestCashAdvance.aspx</NavigateUrl>
-                <Type>Link</Type>
-                <Children />
+              <ResourceKey>Financial_RequestCashAdvance</ResourceKey>
+              <UserLevel>1</UserLevel>
+              <Permissions />
+              <ImageUrl>iconshock-walletmoney</ImageUrl>
+              <NavigateUrl>/Pages/v5/Financial/RequestCashAdvance.aspx</NavigateUrl>
+              <Type>Link</Type>
+              <Children />
             </MainMenuItem>
-          
+
             <MainMenuItem>
-                <UserLevel>2</UserLevel>
-                <Type>Separator</Type>
-                <Children />
+              <UserLevel>1</UserLevel>
+              <Type>Separator</Type>
+              <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+              <ResourceKey>Financial_DonateFunds</ResourceKey>
+              <UserLevel>1</UserLevel>
+              <Permissions />
+              <ImageUrl>iconshock-gift</ImageUrl>
+              <NavigateUrl>/Pages/v5/Financial/Donate.aspx</NavigateUrl>
+              <Type>Link</Type>
+              <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+              <UserLevel>2</UserLevel>
+              <Type>Separator</Type>
+              <Children />
             </MainMenuItem>
 
             <MainMenuItem>

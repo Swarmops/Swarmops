@@ -217,37 +217,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public static void VerifyBitcoinHotWallet()
-        {
-            // Make sure there's always a private hotwallet root, regardless of whether it's used or not
 
-            if (!File.Exists (SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet"))
-            {
-                ExtKey privateRoot = new ExtKey();
-                File.WriteAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet", privateRoot.GetWif(Network.Main).ToWif(), Encoding.ASCII);
-                File.WriteAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet-created-" + DateTime.UtcNow.ToString("yyyy-MM-dd--HH-mm-ss--fff.backup"), privateRoot.GetWif(Network.Main).ToWif(), Encoding.ASCII); // an extra backup
-                Persistence.Key["BitcoinHotPublicRoot"] = privateRoot.Neuter().GetWif(Network.Main).ToWif();
-            }
-        }
-
-        public static ExtKey BitcoinHotPrivateRoot
-        {
-            get
-            {
-                VerifyBitcoinHotWallet();
-
-                return
-                    ExtKey.Parse (File.ReadAllText (SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet"));
-            }
-        }
-
-        public static ExtPubKey BitcoinHotPublicRoot
-        {
-            get
-            {
-                return ExtPubKey.Parse ((string) Persistence.Key["BitcoinHotPublicRoot"]);
-            }    
-        }
 
     }
 }

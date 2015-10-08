@@ -117,6 +117,8 @@ namespace Swarmops.Logic.Financial
         public Salaries DependentSalariesNet;
         public Salaries DependentSalariesTax;
 
+        public Person RecipientPerson { get; set; }
+
         public decimal Amount
         {
             set

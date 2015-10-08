@@ -39,9 +39,17 @@ namespace Swarmops.Frontend.Pages.Financial
             StringBuilder result = new StringBuilder (16384);
 
             DateTime today = DateTime.Today;
+            bool bitcoinHotWalletActive = (this.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot != null
+                ? true
+                : false);
 
             foreach (Payout payout in payouts)
             {
+                if (bitcoinHotWalletActive && payout.RecipientPerson != null && payout.RecipientPerson.BitcoinPayoutAddress.Length > 0 && payout.Account.Length < 2)
+                {
+                    continue;
+                }
+
                 result.Append ("{");
                 result.AppendFormat (
                     "\"itemId\":\"{0}\"," +

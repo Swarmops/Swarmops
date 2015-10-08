@@ -6,8 +6,10 @@
 
             // Initialize socket to wait for transaction
 
-            initializeSocket();
-            
+            if (enable) {
+                initializeSocket();
+            }
+
             // TODO: Also poll regularly in case socket fails
         });
 
@@ -40,7 +42,7 @@
                     // transaction received at address
                     // call page to check if funds received server side
 
-                    alertify.log("Tx received on socket, checking...");
+                    alertify.log("Detected transaction, verifying...");
                     checkTransactionReceived(message.x.hash);
                 }
             };
@@ -70,15 +72,25 @@
         var guid = '<asp:Literal runat="server" ID="LiteralGuid" />';
         var socket = null;
         var completed = false;
+        var enable = <asp:Literal ID="LiteralEnable" runat="server">true</asp:Literal>;
 
     </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
-    <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
-    <p id="paraIntro"><asp:Label runat="server" ID="LabelExplainBitcoinDonation" /></p>
-    <p style="font-size:200%" id="paraStatus"><asp:Label runat="server" ID="LabelStatus" /></p>
-    <div align="center" id="divQr"><asp:Image ID="ImageBitcoinQr" runat="server"/></div>
+    <asp:Panel runat="server" ID="PanelEnabled">
+        <h2><asp:Label runat="server" ID="BoxTitle" /></h2>
+        <p id="paraIntro"><asp:Label runat="server" ID="LabelExplainBitcoinDonation" /></p>
+        <p style="font-size:200%" id="paraStatus"><asp:Label runat="server" ID="LabelStatus" /></p>
+        <div align="center" id="divQr"><asp:Image ID="ImageBitcoinQr" runat="server"/></div>
+    </asp:Panel>
+    <asp:Panel runat="server" ID="PanelDisabled" Visible="false">
+        <h2>Bitcoin hotwallet is not enabled</h2>
+        <img alt="Fail symbol" src="/Images/Icons/iconshock-cross-96px.png" align="left" /><br/>
+        <p>This organization has not enabled its bitcoin hotwallet in Swarmops. Therefore, direct donations are not available.</p>
+        <p>Contact the administrator for <%=this.CurrentOrganization.Name %> and ask them to enable the bitcoin hotwallet.</p>
+        <div style="clear:both"></div>
+    </asp:Panel>
 
 </asp:Content>
 
