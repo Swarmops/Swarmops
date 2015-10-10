@@ -20,7 +20,8 @@ namespace Swarmops.Database
             " FROM HotBitcoinAddresses ";
 
         private const string hotBitcoinAddressUnspentFieldSequence =
-            " HotBitcoinAddressUnspentId,TransactionHash,TransactionOutputIndex,AmountSatoshis,ConfirmationCount" + // 0-4
+            " HotBitcoinAddressUnspentId,HotBitcoinAddressId,TransactionHash,TransactionOutputIndex,AmountSatoshis," + // 0-4
+            " ConfirmationCount" + // 5
             " FROM HotBitcoinAddressUnspents ";
 
         private BasicHotBitcoinAddress ReadHotBitcoinAddressFromDataReader(IDataRecord reader)
@@ -38,12 +39,13 @@ namespace Swarmops.Database
         private BasicHotBitcoinAddressUnspent ReadHotBitcoinAddressUnspentFromDataReader(IDataRecord reader)
         {
             int hotBitcoinAddressUnspentId = reader.GetInt32 (0);
-            string transactionHash = reader.GetString (1);
-            int transactionOutputIndex = reader.GetInt32 (2);
-            Int64 amountSatoshis = reader.GetInt64 (3);
-            int confirmationCount = reader.GetInt32 (4);
+            int hotBitcoinAddressId = reader.GetInt32 (1);
+            string transactionHash = reader.GetString (2);
+            int transactionOutputIndex = reader.GetInt32 (3);
+            Int64 amountSatoshis = reader.GetInt64 (4);
+            int confirmationCount = reader.GetInt32 (5);
 
-            return new BasicHotBitcoinAddressUnspent (hotBitcoinAddressUnspentId, transactionHash, transactionOutputIndex, amountSatoshis, confirmationCount);
+            return new BasicHotBitcoinAddressUnspent (hotBitcoinAddressUnspentId, hotBitcoinAddressId, transactionHash, transactionOutputIndex, amountSatoshis, confirmationCount);
         }
 
         #endregion

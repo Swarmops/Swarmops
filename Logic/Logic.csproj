@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Financial\BitcoinTransactionInput.cs" />
     <Compile Include="Financial\BitcoinUtility.cs" />
     <Compile Include="Financial\HotBitcoinAddress.cs" />
     <Compile Include="Financial\HotBitcoinAddresses.cs" />

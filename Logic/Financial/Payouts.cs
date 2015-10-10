@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using NBitcoin;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
@@ -463,6 +464,51 @@ namespace Swarmops.Logic.Financial
                     Payout payout = Payout.FromIdentity (payoutIdFound);
                     payout.BindToTransactionAndClose (transaction, null);
                 }
+            }
+        }
+
+        public void PerformAutomated()
+        {
+            // Perform all waiting hot payouts for all orgs in the installation
+
+            foreach (Organization organization in Organizations.GetAll())
+            {
+                Payouts orgPayouts = Payouts.Construct (organization);
+                Payouts bitcoinPayouts = new Payouts();
+                Dictionary <string, Int64> satoshiLookup = new Dictionary<string, long>();
+                Int64 satoshisTotal = 0;
+
+                // For each ready payout that can automate, add an output to a constructed transaction
+
+                TransactionBuilder txBuilder = new TransactionBuilder();
+                foreach (Payout payout in orgPayouts)
+                {
+                    if (payout.RecipientPerson != null && payout.RecipientPerson.BitcoinPayoutAddress.Length > 2 &&
+                        payout.Account.Length < 4)
+                    {
+                        bitcoinPayouts.Add (payout);
+
+                        // Find the amount of satoshis for this payout
+
+                        if (organization.Currency.IsBitcoin)
+                        {
+                            satoshiLookup[payout.ProtoIdentity] = payout.AmountCents;
+                            satoshisTotal += payout.AmountCents;
+                        }
+                        else
+                        {
+                            // Convert currency
+                            Money payoutAmount = new Money(payout.AmountCents, organization.Currency);
+                            Int64 satoshis = payoutAmount.ToCurrency(Currency.Bitcoin).Cents;
+                            satoshiLookup[payout.ProtoIdentity] = satoshis;
+                            satoshisTotal += satoshis;
+                        }
+                    }
+                }
+
+                // We now have our desired payments. The next step is to find enough inputs to reach the required amount (plus fees; we're working a little blind here still).
+
+                BitcoinTransactionInputs inputs = BitcoinUtility.GetInputsForAmount (organization, satoshisTotal + BitcoinUtility.FeeSatoshisPerThousandBytes * 20); // assume max 20k transaction size
             }
         }
     }

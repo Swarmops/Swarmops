@@ -9,10 +9,11 @@ namespace Swarmops.Basic.Types.Financial
 {
     public class BasicHotBitcoinAddressUnspent: IHasIdentity
     {
-        public BasicHotBitcoinAddressUnspent (int hotBitcoinAddressUnspentId, string transactionHash,
+        public BasicHotBitcoinAddressUnspent (int hotBitcoinAddressUnspentId, int hotBitcoinAddressId, string transactionHash,
             int transactionOutputIndex, Int64 amountSatoshis, int confirmationCount)
         {
             this.HotBitcoinAddressUnspentId = hotBitcoinAddressUnspentId;
+            this.HotBitcoinAddressId = hotBitcoinAddressId;
             this.TransactionHash = transactionHash;
             this.TransactionOutputIndex = transactionOutputIndex;
             this.AmountSatoshis = amountSatoshis;
@@ -21,13 +22,14 @@ namespace Swarmops.Basic.Types.Financial
 
         public BasicHotBitcoinAddressUnspent (BasicHotBitcoinAddressUnspent original)
             : this (
-                original.HotBitcoinAddressUnspentId, original.TransactionHash, original.TransactionOutputIndex,
+                original.HotBitcoinAddressUnspentId, original.HotBitcoinAddressId, original.TransactionHash, original.TransactionOutputIndex,
                 original.AmountSatoshis, original.ConfirmationCount)
         {
             // copy ctor
         }
 
         public int HotBitcoinAddressUnspentId { get; private set; }
+        public int HotBitcoinAddressId { get; private set; }
         public string TransactionHash { get; private set; }
         public int TransactionOutputIndex { get; private set; }
         public Int64 AmountSatoshis { get; private set; }

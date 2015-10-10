@@ -346,6 +346,9 @@
   <data name="Donate_StatusInitial" xml:space="preserve">
     <value>Waiting for transaction...</value>
   </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>Transaction detected, verifying...</value>
+  </data>
   <data name="Donate_TxLabel" xml:space="preserve">
     <value>Donation to {0}</value>
     <comment>The {0} is the organization name</comment>

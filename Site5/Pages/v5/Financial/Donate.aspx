@@ -42,7 +42,7 @@
                     // transaction received at address
                     // call page to check if funds received server side
 
-                    alertify.log("Detected transaction, verifying...");
+                    alertify.log(decodeURIComponent('<asp:Literal ID="LiteralTxDetected" runat="server" />'));
                     checkTransactionReceived(message.x.hash);
                 }
             };

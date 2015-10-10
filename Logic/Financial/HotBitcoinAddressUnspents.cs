@@ -15,5 +15,30 @@ namespace Swarmops.Logic.Financial
         {
             return FromArray (SwarmDb.GetDatabaseForReading().GetHotBitcoinAddressUnspents (address));
         }
+
+        public BitcoinTransactionInputs AsInputs
+        {
+            get
+            {
+                BitcoinTransactionInputs result = new BitcoinTransactionInputs();
+                foreach (HotBitcoinAddressUnspent unspent in this)
+                {
+                    HotBitcoinAddress address = unspent.Address;
+
+                    BitcoinTransactionInput input = new BitcoinTransactionInput()
+                    {
+                        AmountSatoshis = unspent.AmountSatoshis,
+                        BitcoinAddress = address.Address,
+                        PrivateKey = address.PrivateKey,
+                        TransactionHash = unspent.TransactionHash,
+                        TransactionOutputIndex = unspent.TransactionOutputIndex
+                    };
+
+                    result.Add (input);
+                }
+
+                return result;
+            }
+        }
     }
 }

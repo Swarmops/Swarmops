@@ -13,6 +13,7 @@ using NBitcoin;
 using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Newtonsoft.Json.Linq;
 using Swarmops.Database;
+using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
 namespace Swarmops.Logic.Financial
@@ -163,6 +164,17 @@ namespace Swarmops.Logic.Financial
 
                 // TODO: Exception handling
             }
+        }
+
+        static public BitcoinTransactionInputs GetInputsForAmount (Organization organization, Int64 satoshis)
+        {
+            // TODO: Verify inputs up to date?
+
+            // TODO: What's the most efficient way to do this?
+
+            HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization (organization);
+
+            return addresses.FindAmount (satoshis); // Will throw on a number of circumstances
         }
 
         public const int BitcoinWalletIndex = 1;
