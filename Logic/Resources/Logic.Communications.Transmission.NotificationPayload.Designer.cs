@@ -81,9 +81,9 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the bitcoin hotwallet. Swarmops is unable to make further payments at this time.
         ///
-        ///Please top up the hotwallet immediately to at least the needed amount.
+        ///Please top up the hotwallet IMMEDIATELY to at least the needed amount - an additional [AmountMissingMicrocoinsFloat] microbitcoin (&quot;bits&quot;) is required to resume financial hotwallet operations.
         ///
-        ///Swarmops will keep trying and will keep sending these notifications as long as it has not succeeded..
+        ///Swarmops will keep trying and will keep sending these notifications as long as it has not succeed [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Bitcoin_Shortage_Critical_Body {
             get {

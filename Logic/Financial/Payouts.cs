@@ -533,17 +533,22 @@ namespace Swarmops.Logic.Financial
                     primaryStrings[NotificationString.CurrencyCode] = organization.Currency.Code;
                     primaryStrings[NotificationString.OrganizationName] = organization.Name;
                     NotificationCustomStrings secondaryStrings = new NotificationCustomStrings();
+                    Int64 satoshisAvailable = HotBitcoinAddresses.ForOrganization (organization).BalanceSatoshisTotal;
+
+                    secondaryStrings["AmountMissingMicrocoinsFloat"] =
+                        ((satoshisAvailable - satoshisTotal)/100.0).ToString ("N2");
+
                     if (organization.Currency.IsBitcoin)
                     {
                         secondaryStrings["AmountNeededFloat"] = (satoshisTotal/100.0).ToString ("N2");
-                        secondaryStrings["AmountWalletFloat"] = (HotBitcoinAddresses.ForOrganization(organization).BalanceSatoshisTotal/100.0).ToString ("N2");
+                        secondaryStrings["AmountWalletFloat"] = (satoshisAvailable/100.0).ToString ("N2");
                     }
                     else
                     {
                         secondaryStrings["AmountNeededFloat"] =
                             (new Money (satoshisTotal, Currency.Bitcoin).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
                         secondaryStrings["AmountWalletFloat"] =
-                            (new Money (HotBitcoinAddresses.ForOrganization (organization).BalanceSatoshisTotal, Currency.Bitcoin).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
+                            (new Money (satoshisAvailable, Currency.Bitcoin).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
 
                         // convert to org native currency
                     }
