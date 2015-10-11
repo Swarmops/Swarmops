@@ -170,6 +170,24 @@ namespace Swarmops.Database
             }
         }
 
+        public int SetHotBitcoinAddressBalance (int hotBitcoinAddressId, Int64 balanceSatoshis)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command = GetDbCommand("SetHotBitcoinAddressBalance", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    AddParameterWithName(command, "hotBitcoinAddressId", hotBitcoinAddressId);
+                    AddParameterWithName(command, "balanceSatoshis", balanceSatoshis);
+
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
         public int CreateHotBitcoinAddressUnspentConditional(int hotBitcoinAddressId, string transactionHash, int transactionOutputIndex, Int64 amountSatoshis, int confirmationCount)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -185,6 +203,23 @@ namespace Swarmops.Database
                     AddParameterWithName(command, "transactionOutputIndex", transactionOutputIndex);
                     AddParameterWithName(command, "amountSatoshis", amountSatoshis);
                     AddParameterWithName(command, "confirmationCount", confirmationCount);
+
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
+        public int DeleteHotBitcoinAddressUnspent(int hotBitcoinAddressUnspentId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command = GetDbCommand("DeleteHotBitcoinAddressUnspent", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    AddParameterWithName(command, "hotBitcoinAddressUnspentId", hotBitcoinAddressUnspentId);
 
                     return Convert.ToInt32(command.ExecuteScalar());
                 }

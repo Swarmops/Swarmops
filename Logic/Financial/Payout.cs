@@ -43,14 +43,29 @@ namespace Swarmops.Logic.Financial
             // return payout;
         }
 
+        public static Payout Empty
+        {
+            get { return new Payout (new BasicPayout (0, 0, string.Empty, string.Empty, string.Empty, 0, DateTime.UtcNow, true, DateTime.UtcNow, 0)); }
+        }
+
         private void LoadDependencies()
         {
+            if (this.DependentCashAdvancesPayback != null && Identity == 0)
+            {
+                return; // if inited and identity zero, return
+            }
+
             this.DependentExpenseClaims = new ExpenseClaims();
             this.DependentInvoices = new InboundInvoices();
             this.DependentSalariesNet = new Salaries();
             this.DependentSalariesTax = new Salaries();
             this.DependentCashAdvancesPayout = new CashAdvances();
             this.DependentCashAdvancesPayback = new CashAdvances();
+
+            if (Identity == 0)
+            {
+                return; // never progress past here if identity zero
+            }
 
             BasicFinancialDependency[] dependencies = SwarmDb.GetDatabaseForReading().GetPayoutDependencies (Identity);
 
@@ -608,7 +623,30 @@ namespace Swarmops.Logic.Financial
 
         public void MigrateDependenciesTo (Payout migrationTarget)
         {
-            SwarmDb.GetDatabaseForWriting().MovePayoutDependencies (Identity, migrationTarget.Identity);
+            if (Identity > 0 && migrationTarget.Identity > 0)
+            {
+                // Persisted payout migration
+
+                SwarmDb.GetDatabaseForWriting().MovePayoutDependencies (Identity, migrationTarget.Identity);
+            }
+            else
+            {
+                // In-memory migration: this payout isn't in database yet
+
+                this.DependentCashAdvancesPayback.ForEach(item => migrationTarget.DependentCashAdvancesPayback.Add (item));
+                this.DependentCashAdvancesPayout.ForEach (item => migrationTarget.DependentCashAdvancesPayout.Add (item));
+                this.DependentExpenseClaims.ForEach(item => migrationTarget.DependentExpenseClaims.Add(item));
+                this.DependentInvoices.ForEach(item => migrationTarget.DependentInvoices.Add(item));
+                this.DependentSalariesNet.ForEach(item => migrationTarget.DependentSalariesNet.Add(item));
+                this.DependentSalariesTax.ForEach(item => migrationTarget.DependentSalariesTax.Add(item));
+
+                this.DependentCashAdvancesPayback = new CashAdvances();
+                this.DependentCashAdvancesPayout = new CashAdvances();
+                this.DependentExpenseClaims = new ExpenseClaims();
+                this.DependentInvoices = new InboundInvoices();
+                this.DependentSalariesNet = new Salaries();
+                this.DependentSalariesTax = new Salaries();
+            }
             migrationTarget.RecalculateAmount();
             RecalculateAmount();
         }

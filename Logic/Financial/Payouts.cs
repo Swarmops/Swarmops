@@ -11,6 +11,7 @@ using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
+using Satoshis = NBitcoin.Money;
 
 namespace Swarmops.Logic.Financial
 {
@@ -495,6 +496,19 @@ namespace Swarmops.Logic.Financial
                     if (payout.RecipientPerson != null && payout.RecipientPerson.BitcoinPayoutAddress.Length > 2 &&
                         payout.Account.Length < 4)
                     {
+                        // Test the payout address - is it valid and can we handle it?
+
+                        try
+                        {
+                            new BitcoinAddress (payout.RecipientPerson.BitcoinPayoutAddress);
+                        }
+                        catch (Exception)
+                        {
+                            // TODO: Send notification of invalid address, if we're on the whole hour AND the whole day
+                            continue; // do not add this payout
+                        }
+
+
                         bitcoinPayouts.Add (payout);
 
                         // Find the amount of satoshis for this payout
@@ -557,6 +571,8 @@ namespace Swarmops.Logic.Financial
 
                     OutboundComm.CreateNotification (organization,
                         NotificationResource.Bitcoin_Shortage_Critical, primaryStrings, secondaryStrings, People.FromSingle (Person.FromIdentity (1)));
+
+                    continue; // with next organization
                 }
 
                 // If we arrive at this point, the previous function didn't throw, and we have enough money. Add the inputs to the transaction.
@@ -568,17 +584,40 @@ namespace Swarmops.Logic.Financial
                 // Add outputs and prepare notifications
 
                 Int64 satoshisUsed = 0;
-                Dictionary<int, string> notificationLookup = new Dictionary<int, string>();
+                Dictionary<int, List<string>> notificationLookup = new Dictionary<int, List<string>>();
+                Payout masterPayout = Payout.Empty;
 
+                foreach (Payout payout in bitcoinPayouts)
+                {
+                    int recipientPersonId = payout.RecipientPerson.Identity;
+                    if (!notificationLookup.ContainsKey (recipientPersonId))
+                    {
+                        notificationLookup[recipientPersonId] = new List<string>();
+                    }
+                    notificationLookup[recipientPersonId].Add (payout.Specification);
 
+                    txBuilder = txBuilder.Send(new BitcoinAddress(payout.RecipientPerson.BitcoinPayoutAddress),
+                        new Satoshis(satoshiLookup[payout.ProtoIdentity]));
+                    satoshisUsed += satoshiLookup[payout.ProtoIdentity];
+
+                    payout.MigrateDependenciesTo (masterPayout);
+                }
+
+                // Set change address to wallet slush
+
+                txBuilder.SetChange (new BitcoinAddress (HotBitcoinAddress.OrganizationWalletZero (organization).Address));
 
                 // Add fee
 
-                // Add change to main wallet zero-slush address
+                int transactionSizeBytes = txBuilder.EstimateSize (txBuilder.BuildTransaction (false)) + inputs.Count; 
+                // +inputs.Count for size variability
+
+                Int64 feeSatoshis = (transactionSizeBytes/1000 + 1)*BitcoinUtility.FeeSatoshisPerThousandBytes;
+                
+                txBuilder = txBuilder.SendFees (new Satoshis (feeSatoshis));
+                satoshisUsed += feeSatoshis;
 
                 // Sign transaction - ready to execute
-
-                // Prepare notifications after execution
 
                 // Broadcast transaction
 

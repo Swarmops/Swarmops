@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Swarmops.Basic.Types.Financial;
+using Swarmops.Database;
 
 namespace Swarmops.Logic.Financial
 {
@@ -22,6 +23,12 @@ namespace Swarmops.Logic.Financial
         public HotBitcoinAddress Address
         {
             get { return HotBitcoinAddress.FromIdentity (base.HotBitcoinAddressId); }
+        }
+
+        public void Delete()
+        {
+            SwarmDb.GetDatabaseForWriting().DeleteHotBitcoinAddressUnspent (this.Identity);
+            SwarmDb.GetDatabaseForWriting().SetHotBitcoinAddressBalance (base.HotBitcoinAddressId, this.Address.Unspents.AmountSatoshisTotal); // re-fetches from db
         }
     }
 }
