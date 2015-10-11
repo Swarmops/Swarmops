@@ -79,6 +79,28 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the bitcoin hotwallet. Swarmops is unable to make further payments at this time.
+        ///
+        ///Please top up the hotwallet immediately to at least the needed amount.
+        ///
+        ///Swarmops will keep trying and will keep sending these notifications as long as it has not succeeded..
+        /// </summary>
+        internal static string Bitcoin_Shortage_Critical_Body {
+            get {
+                return ResourceManager.GetString("Bitcoin_Shortage_Critical_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Bitcoin hotwallet insufficient for payments - top up immediately.
+        /// </summary>
+        internal static string Bitcoin_Shortage_Critical_Subject {
+            get {
+                return ResourceManager.GetString("Bitcoin_Shortage_Critical_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have changed your bitcoin payout address from [BitcoinOldAddress] to [BitcoinAddress]. As a security precaution, all payouts are quarantied for the next 48 hours.
         ///
         ///If you did NOT change the payout address and there has been a security breach, please click this link immediately to lock down your account: [LockdownLink]

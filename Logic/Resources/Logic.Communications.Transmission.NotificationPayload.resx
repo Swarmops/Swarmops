@@ -155,6 +155,16 @@ If you did not set this payout address (it may be worth double checking the addr
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Funds paid using bitcoin: [CurrencyCode] [BudgetAmountFloat]</value>
   </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the bitcoin hotwallet. Swarmops is unable to make further payments at this time.
+
+Please top up the hotwallet immediately to at least the needed amount.
+
+Swarmops will keep trying and will keep sending these notifications as long as it has not succeeded.</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - ACTION ITEM] Bitcoin hotwallet insufficient for payments - top up immediately</value>
+  </data>
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>Your requested cash advance with [OrganizationName] for [CurrencyCode] [BudgetAmountFloat], concerning [RequestPurpose], has been attested by the budget owner. It will now proceed to payout to you.</value>
   </data>

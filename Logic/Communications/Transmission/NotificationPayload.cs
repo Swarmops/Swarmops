@@ -76,16 +76,26 @@ namespace Swarmops.Logic.Communications.Transmission
 
             // Loop through supplied strings and replace them in the resource. Not very efficient but who cares
 
-            foreach (NotificationString notificationString in Strings.Keys)
+            if (Strings != null)
             {
-                // TODO: Check if string ends in Float, and if so, parse and culturize it
+                foreach (NotificationString notificationString in Strings.Keys)
+                {
+                    // TODO: Check if string ends in Float, and if so, parse and culturize it
 
-                input = input.Replace ("[" + notificationString /* this is an enum converted to string */ + "]", Strings[notificationString]);
+                    input = input.Replace ("[" + notificationString /* this is an enum converted to string */+ "]",
+                        Strings[notificationString]);
+                }
             }
 
-            foreach (string notificationCustomString in CustomStrings.Keys)
+            if (CustomStrings != null)
             {
-                input = input.Replace ("[" + notificationCustomString /* this is a System.String as opposed to above */ + "]", CustomStrings[notificationCustomString]);
+                foreach (string notificationCustomString in CustomStrings.Keys)
+                {
+                    input =
+                        input.Replace (
+                            "[" + notificationCustomString /* this is a System.String as opposed to above */+ "]",
+                            CustomStrings[notificationCustomString]);
+                }
             }
 
             return input;
@@ -151,7 +161,10 @@ namespace Swarmops.Logic.Communications.Transmission
         Participant_Volunteer,
         Participant_Renewed,
         Participant_Terminated,
-        Participant_Churned
+        Participant_Churned,
+        Bitcoin_Shortage,
+        Bitcoin_Shortage_Urgent,
+        Bitcoin_Shortage_Critical
     }
 
 // ReSharper restore InconsistentNaming

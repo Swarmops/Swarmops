@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NBitcoin;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
@@ -63,9 +64,14 @@ namespace Swarmops.Logic.Financial
                 return workCopy[lastSufficientIndex].Unspents.AsInputs;
             }
 
+            throw new NotEnoughFundsException(); // Serving as a placeholder for now, also testing the notification
+
             throw new NotImplementedException("This fundfinding path is not completed"); // TODO
         }
 
-
+        public Int64 BalanceSatoshisTotal
+        {
+            get { return this.Sum (item => item.BalanceSatoshis); }
+        }
     }
 }

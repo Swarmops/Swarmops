@@ -53,7 +53,7 @@ namespace Swarmops.Logic.Financial
             else if (otherCurrency.IsBitcoin)
             {
                 return 1.0 / SwarmDb.GetDatabaseForReading()
-                    .GetCurrencyExchangeRate (otherCurrency.Identity, this.Identity, valuationDateTime);
+                    .GetCurrencyExchangeRate (this.Identity, otherCurrency.Identity, valuationDateTime);
             }
             else
             {

@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq.Expressions;
 using NBitcoin;
 using Swarmops.Basic.Types;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Transmission;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
@@ -467,12 +470,18 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public void PerformAutomated()
+        public static void PerformAutomated()
         {
             // Perform all waiting hot payouts for all orgs in the installation
 
             foreach (Organization organization in Organizations.GetAll())
             {
+                // If this org doesn't do hotwallet, continue
+                if (organization.FinancialAccounts.AssetsBitcoinHot == null)
+                {
+                    continue;
+                }
+
                 Payouts orgPayouts = Payouts.Construct (organization);
                 Payouts bitcoinPayouts = new Payouts();
                 Dictionary <string, Int64> satoshiLookup = new Dictionary<string, long>();
@@ -506,9 +515,44 @@ namespace Swarmops.Logic.Financial
                     }
                 }
 
+                if (bitcoinPayouts.Count == 0)
+                {
+                    // no automated payments pending for this organization, nothing more to do
+                    continue;
+                }
+
                 // We now have our desired payments. The next step is to find enough inputs to reach the required amount (plus fees; we're working a little blind here still).
 
-                BitcoinTransactionInputs inputs = BitcoinUtility.GetInputsForAmount (organization, satoshisTotal + BitcoinUtility.FeeSatoshisPerThousandBytes * 20); // assume max 20k transaction size
+                try
+                {
+                    BitcoinTransactionInputs inputs = BitcoinUtility.GetInputsForAmount(organization, satoshisTotal + BitcoinUtility.FeeSatoshisPerThousandBytes * 20); // assume max 20k transaction size
+                }
+                catch (NotEnoughFundsException)
+                {
+                    NotificationStrings primaryStrings = new NotificationStrings();
+                    primaryStrings[NotificationString.CurrencyCode] = organization.Currency.Code;
+                    primaryStrings[NotificationString.OrganizationName] = organization.Name;
+                    NotificationCustomStrings secondaryStrings = new NotificationCustomStrings();
+                    if (organization.Currency.IsBitcoin)
+                    {
+                        secondaryStrings["AmountNeededFloat"] = (satoshisTotal/100.0).ToString ("N2");
+                        secondaryStrings["AmountWalletFloat"] = (HotBitcoinAddresses.ForOrganization(organization).BalanceSatoshisTotal/100.0).ToString ("N2");
+                    }
+                    else
+                    {
+                        secondaryStrings["AmountNeededFloat"] =
+                            (new Money (satoshisTotal, Currency.Bitcoin).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
+                        secondaryStrings["AmountWalletFloat"] =
+                            (new Money (HotBitcoinAddresses.ForOrganization (organization).BalanceSatoshisTotal, Currency.Bitcoin).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
+
+                        // convert to org native currency
+                    }
+
+                    OutboundComm.CreateNotification (organization,
+                        NotificationResource.Bitcoin_Shortage_Critical, primaryStrings, secondaryStrings, People.FromSingle (Person.FromIdentity (1)));
+                }
+
+                // If we arrive at this point, the previous function didn't throw, and we have enough money.
             }
         }
     }
