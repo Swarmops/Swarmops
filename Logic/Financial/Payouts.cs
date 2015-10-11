@@ -523,9 +523,11 @@ namespace Swarmops.Logic.Financial
 
                 // We now have our desired payments. The next step is to find enough inputs to reach the required amount (plus fees; we're working a little blind here still).
 
+                BitcoinTransactionInputs inputs = null;
+
                 try
                 {
-                    BitcoinTransactionInputs inputs = BitcoinUtility.GetInputsForAmount(organization, satoshisTotal + BitcoinUtility.FeeSatoshisPerThousandBytes * 20); // assume max 20k transaction size
+                    inputs = BitcoinUtility.GetInputsForAmount(organization, satoshisTotal + BitcoinUtility.FeeSatoshisPerThousandBytes * 20); // assume max 20k transaction size
                 }
                 catch (NotEnoughFundsException)
                 {
@@ -536,7 +538,7 @@ namespace Swarmops.Logic.Financial
                     Int64 satoshisAvailable = HotBitcoinAddresses.ForOrganization (organization).BalanceSatoshisTotal;
 
                     secondaryStrings["AmountMissingMicrocoinsFloat"] =
-                        ((satoshisAvailable - satoshisTotal)/100.0).ToString ("N2");
+                        ((satoshisTotal - satoshisAvailable)/100.0).ToString ("N2");
 
                     if (organization.Currency.IsBitcoin)
                     {
@@ -545,19 +547,47 @@ namespace Swarmops.Logic.Financial
                     }
                     else
                     {
+                        // convert to org native currency
+
                         secondaryStrings["AmountNeededFloat"] =
                             (new Money (satoshisTotal, Currency.Bitcoin).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
                         secondaryStrings["AmountWalletFloat"] =
                             (new Money (satoshisAvailable, Currency.Bitcoin).ToCurrency (organization.Currency).Cents/100.0).ToString ("N2");
-
-                        // convert to org native currency
                     }
 
                     OutboundComm.CreateNotification (organization,
                         NotificationResource.Bitcoin_Shortage_Critical, primaryStrings, secondaryStrings, People.FromSingle (Person.FromIdentity (1)));
                 }
 
-                // If we arrive at this point, the previous function didn't throw, and we have enough money.
+                // If we arrive at this point, the previous function didn't throw, and we have enough money. Add the inputs to the transaction.
+
+                txBuilder = txBuilder.AddCoins (inputs.Coins);
+                txBuilder = txBuilder.AddKeys (inputs.PrivateKeys);
+                Int64 satoshisInput = inputs.AmountSatoshisTotal;
+
+                // Add outputs and prepare notifications
+
+                Int64 satoshisUsed = 0;
+                Dictionary<int, string> notificationLookup = new Dictionary<int, string>();
+
+
+
+                // Add fee
+
+                // Add change to main wallet zero-slush address
+
+                // Sign transaction - ready to execute
+
+                // Prepare notifications after execution
+
+                // Broadcast transaction
+
+                // Delete inputs, adjust balance for addresses
+
+                // Send notifications
+
+                // Ledger entries
+
             }
         }
     }

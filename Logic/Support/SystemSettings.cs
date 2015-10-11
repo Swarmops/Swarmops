@@ -216,6 +216,12 @@ namespace Swarmops.Logic.Support
         }
 
 
+        public static string BlockchainSwarmopsApiKey
+        {
+            get { return "77e11665-14a9-4d72-9111-7dce7a6748f6"; }
+        }
+
+
         public static string EtcFolder
         {
             get

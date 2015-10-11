@@ -24,7 +24,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.PageAccessRequired = new Access (this.CurrentOrganization, AccessAspect.Participant);
 
             // TEMP
-            Payouts.PerformAutomated();
+            // Payouts.PerformAutomated();
 
             /* TEMP TEMP TEMP - REMOVE THIS CODE */
             /*
@@ -39,8 +39,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 }
             }*/
             
-            // TODO: This page needs a check on whether currentorganization.financialaccounts.assetbitcoinhot is null
-
             this.PageTitle = Resources.Pages.Financial.Donate_PageTitle;
             this.InfoBoxLiteral = Resources.Pages.Financial.Donate_Info;
             this.LabelStatus.Text = Resources.Pages.Financial.Donate_StatusInitial;

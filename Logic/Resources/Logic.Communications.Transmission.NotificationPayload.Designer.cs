@@ -61,7 +61,11 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [BitcoinAmount] millicoin was just transferred to your address by [OrganizationName]..
+        ///   Looks up a localized string similar to [BitcoinAmount] microcoin (&quot;bits&quot;) was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
+        ///
+        ///[PreformattedText]
+        ///
+        ///You should already see the transaction pending confirmations and it should achieve spendability within about an hour (six normal confirmations)..
         /// </summary>
         internal static string Bitcoin_PaidOut_Body {
             get {
@@ -70,7 +74,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Funds paid using bitcoin: [CurrencyCode] [BudgetAmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Funds paid using bitcoin: [CurrencyCode] [AmountFloat].
         /// </summary>
         internal static string Bitcoin_PaidOut_Subject {
             get {

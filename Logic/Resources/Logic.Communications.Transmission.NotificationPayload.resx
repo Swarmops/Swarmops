@@ -150,10 +150,14 @@ If you did not set this payout address (it may be worth double checking the addr
     <value>[[OrganizationName]] Bitcoin payout address set</value>
   </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[BitcoinAmount] millicoin was just transferred to your address by [OrganizationName].</value>
+    <value>[BitcoinAmount] microcoin ("bits") was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
+
+[PreformattedText]
+
+You should already see the transaction pending confirmations and it should achieve spendability within about an hour (six normal confirmations).</value>
   </data>
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
-    <value>[[OrganizationName]] Funds paid using bitcoin: [CurrencyCode] [BudgetAmountFloat]</value>
+    <value>[[OrganizationName]] Funds paid using bitcoin: [CurrencyCode] [AmountFloat]</value>
   </data>
   <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
     <value>Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the bitcoin hotwallet. Swarmops is unable to make further payments at this time.

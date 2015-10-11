@@ -76,6 +76,11 @@ namespace Swarmops.Logic.Financial
             return FromBasic(SwarmDb.GetDatabaseForReading().GetHotBitcoinAddress(bitcoinAddress));
         }
 
+        public static HotBitcoinAddress OrganizationWalletZero (Organization organization)
+        {
+            return Create (organization, BitcoinUtility.BitcoinWalletIndex, 0);
+        }
+
         public BitcoinSecret PrivateKey
         {
             get

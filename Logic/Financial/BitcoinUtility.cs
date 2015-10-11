@@ -80,7 +80,7 @@ namespace Swarmops.Logic.Financial
 
             string addressString = secretKey.PubKey.GetAddress (Network.Main).ToString();
             var unspentJsonResult =
-                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/unspent?active=" + addressString + "&api_key=I_am_testing_the_format_please_ignore"));
+                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/unspent?active=" + addressString + "&api_key=" + SystemSettings.BlockchainSwarmopsApiKey));
 
             List<Coin> coinList = new List<Coin>();
 
@@ -110,7 +110,7 @@ namespace Swarmops.Logic.Financial
             var addressInfoResult =
                 JObject.Parse (
                     new WebClient().DownloadString (
-                        "https://blockchain.info/address/" + address + "?format=json&api_key=I_am_testing_the_format_please_ignore"));
+                        "https://blockchain.info/address/" + address + "?format=json&api_key=" + SystemSettings.BlockchainSwarmopsApiKey));
 
             if ((int) addressInfoResult["final_balance"] == 0)
             {
@@ -118,7 +118,9 @@ namespace Swarmops.Logic.Financial
             }
 
             var unspentJsonResult =
-                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/unspent?active=" + address + "&api_key=I_am_testing_the_format_please_ignore"));   // warn: will 500 if no unspent outpoints
+                JObject.Parse (
+                    new WebClient().DownloadString ("https://blockchain.info/unspent?active=" + address + "&api_key=" +
+                                                    SystemSettings.BlockchainSwarmopsApiKey));   // warn: will 500 if no unspent outpoints
 
             foreach (var unspentJson in unspentJsonResult["unspent_outputs"])
             {
