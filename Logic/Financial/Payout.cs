@@ -80,12 +80,12 @@ namespace Swarmops.Logic.Financial
                         this.DependentInvoices.Add (InboundInvoice.FromIdentity (dependency.ForeignId));
                         break;
                     case FinancialDependencyType.Salary:
-                        Salary salary = Salary.FromIdentity (dependency.ForeignId);
-                        if (salary.NetSalaryCents == AmountCents) // HACK/LEGACY: Assumes that tax total is not identical
+                        Salary salary = Salary.FromIdentity(dependency.ForeignId);
+                        if (salary.NetSalaryCents == AmountCents || this.CreatedDateTime > new DateTime(2015,10,1))
                         {
                             this.DependentSalariesNet.Add (salary);
                         }
-                        else
+                        else // LEGACY
                         {
                             this.DependentSalariesTax.Add (salary);
                         }
