@@ -475,6 +475,8 @@ namespace Swarmops.Logic.Financial
         {
             // Perform all waiting hot payouts for all orgs in the installation
 
+            DateTime utcNow = DateTime.UtcNow;
+
             foreach (Organization organization in Organizations.GetAll())
             {
                 // If this org doesn't do hotwallet, continue
@@ -485,19 +487,35 @@ namespace Swarmops.Logic.Financial
 
                 Payouts orgPayouts = Payouts.Construct (organization);
                 Payouts bitcoinPayouts = new Payouts();
-                Dictionary <string, Int64> satoshiPayoutLookup = new Dictionary<string, long>();
-                Dictionary <int, Int64> satoshiPersonLookup = new Dictionary<int, long>();
+                Dictionary<string, Int64> satoshiPayoutLookup = new Dictionary<string, long>();
+                Dictionary<string, Int64> nativeCentsPayoutLookup = new Dictionary<string, long>();
+                Dictionary<int, Int64> satoshiPersonLookup = new Dictionary<int, long>();
                 Dictionary <int, Int64> nativeCentsPersonLookup = new Dictionary<int, long>();
                 Int64 satoshisTotal = 0;
+
+                string currencyCode = organization.Currency.Code;
 
                 // For each ready payout that can automate, add an output to a constructed transaction
 
                 TransactionBuilder txBuilder = new TransactionBuilder();
                 foreach (Payout payout in orgPayouts)
                 {
+                    if (payout.ExpectedTransactionDate < utcNow)
+                    {
+                        continue; // payout is not due yet
+                    }
+
                     if (payout.RecipientPerson != null && payout.RecipientPerson.BitcoinPayoutAddress.Length > 2 &&
                         payout.Account.Length < 4)
                     {
+                        // If the payout address is still in quarantine, don't pay out yet
+
+                        string addressSetTime = payout.RecipientPerson.BitcoinPayoutAddressTimeSet;
+                        if (addressSetTime.Length > 4 && DateTime.Parse (addressSetTime, CultureInfo.InvariantCulture).AddHours (48) < utcNow)
+                        {
+                            continue; // still in quarantine
+                        }
+
                         // Test the payout address - is it valid and can we handle it?
 
                         try
@@ -506,14 +524,30 @@ namespace Swarmops.Logic.Financial
                         }
                         catch (Exception)
                         {
-                            // TODO: Send notification of invalid address, if we're on the whole hour AND the whole day
+                            // Notify person that address is invalid, then clear it
+
+                            NotificationStrings primaryStrings = new NotificationStrings();
+                            NotificationCustomStrings secondaryStrings = new NotificationCustomStrings();
+                            primaryStrings[NotificationString.OrganizationName] = organization.Name;
+                            secondaryStrings["BitcoinAddress"] = payout.RecipientPerson.BitcoinPayoutAddress;
+
+                            OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_Bad,
+                                primaryStrings, secondaryStrings,
+                                People.FromSingle(payout.RecipientPerson));
+                            OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_Bad,
+                                primaryStrings, secondaryStrings,
+                                People.FromSingle(Person.FromIdentity (1))); // temporary copy to 1 to see what the notification looks like
+
+                            payout.RecipientPerson.BitcoinPayoutAddress = string.Empty;
+
                             continue; // do not add this payout
                         }
 
-                        int recipientPersonId = payout.RecipientPerson.Identity;
-
+                        // Ok, so it seems we're making this payout at this time.
 
                         bitcoinPayouts.Add (payout);
+
+                        int recipientPersonId = payout.RecipientPerson.Identity;
 
                         if (!satoshiPersonLookup.ContainsKey (recipientPersonId))
                         {
@@ -528,6 +562,7 @@ namespace Swarmops.Logic.Financial
                         if (organization.Currency.IsBitcoin)
                         {
                             satoshiPayoutLookup[payout.ProtoIdentity] = payout.AmountCents;
+                            nativeCentsPayoutLookup[payout.ProtoIdentity] = payout.AmountCents;
                             satoshisTotal += payout.AmountCents;
                             satoshiPersonLookup[recipientPersonId] += payout.AmountCents;
                         }
@@ -537,6 +572,7 @@ namespace Swarmops.Logic.Financial
                             Money payoutAmount = new Money(payout.AmountCents, organization.Currency);
                             Int64 satoshis = payoutAmount.ToCurrency(Currency.Bitcoin).Cents;
                             satoshiPayoutLookup[payout.ProtoIdentity] = satoshis;
+                            nativeCentsPayoutLookup[payout.ProtoIdentity] = payout.AmountCents;
                             satoshisTotal += satoshis;
                             satoshiPersonLookup[recipientPersonId] += satoshis;
                         }
@@ -598,17 +634,20 @@ namespace Swarmops.Logic.Financial
                 // Add outputs and prepare notifications
 
                 Int64 satoshisUsed = 0;
-                Dictionary<int, List<string>> notificationLookup = new Dictionary<int, List<string>>();
+                Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
+                Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
                 Payout masterPayout = Payout.Empty;
 
                 foreach (Payout payout in bitcoinPayouts)
                 {
                     int recipientPersonId = payout.RecipientPerson.Identity;
-                    if (!notificationLookup.ContainsKey (recipientPersonId))
+                    if (!notificationSpecLookup.ContainsKey (recipientPersonId))
                     {
-                        notificationLookup[recipientPersonId] = new List<string>();
+                        notificationSpecLookup[recipientPersonId] = new List<string>();
+                        notificationAmountLookup[recipientPersonId] = new List<Int64>();
                     }
-                    notificationLookup[recipientPersonId].Add (payout.Specification);
+                    notificationSpecLookup[recipientPersonId].Add (payout.Specification);
+                    notificationAmountLookup[recipientPersonId].Add (payout.AmountCents);
 
                     txBuilder = txBuilder.Send(new BitcoinAddress(payout.RecipientPerson.BitcoinPayoutAddress),
                         new Satoshis(satoshiPayoutLookup[payout.ProtoIdentity]));
@@ -658,15 +697,17 @@ namespace Swarmops.Logic.Financial
 
                 // Send notifications
 
-                foreach (int personId in notificationLookup.Keys)
+                foreach (int personId in notificationSpecLookup.Keys)
                 {
                     Person person = Person.FromIdentity (personId);
 
                     string spec = string.Empty;
-                    foreach (string specPart in notificationLookup[personId])
+                    for (int index = 0; index < notificationSpecLookup[personId].Count; index++)
                     {
-                        spec += " * " + specPart + "\r\n";
+                        spec += String.Format(" * {0,-30} {1,14:N2} {2:-4}\r\n", notificationSpecLookup[personId][index], (notificationAmountLookup[personId][index]/100.0).ToString("N2"), currencyCode);
                     }
+
+                    spec = spec.TrimEnd();
 
                     NotificationStrings primaryStrings = new NotificationStrings();
                     NotificationCustomStrings secondaryStrings = new NotificationCustomStrings();
@@ -681,6 +722,8 @@ namespace Swarmops.Logic.Financial
                     OutboundComm.CreateNotification (organization, NotificationResource.Bitcoin_PaidOut, primaryStrings,
                         secondaryStrings, People.FromSingle (Person.FromIdentity (1)));
                 }
+
+                // Create the master payout from its prototype
 
                 // Ledger entries
 

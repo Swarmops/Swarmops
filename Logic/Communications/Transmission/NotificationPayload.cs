@@ -165,7 +165,12 @@ namespace Swarmops.Logic.Communications.Transmission
         Bitcoin_PaidOut,
         Bitcoin_Shortage,
         Bitcoin_Shortage_Urgent,
-        Bitcoin_Shortage_Critical
+        Bitcoin_Shortage_Critical,
+        BitcoinPayoutAddress_Set,
+        BitcoinPayoutAddress_Bad,
+        BitcoinPayoutAddress_PleaseSet,
+        BitcoinPayoutAddress_OfficerNotify,
+        BitcoinPayoutAddress_Changed
     }
 
 // ReSharper restore InconsistentNaming

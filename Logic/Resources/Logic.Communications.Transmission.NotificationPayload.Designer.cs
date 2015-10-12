@@ -61,11 +61,11 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [BitcoinAmountFloat] microcoin (&quot;bits&quot;) was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
+        ///   Looks up a localized string similar to [BitcoinAmountFloat] microbitcoin (&quot;bits&quot;) was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
         ///
         ///[EmbeddedPreformattedText]
         ///
-        ///You should already see the transaction pending confirmations and it should achieve spendability within about an hour (six normal confirmations)..
+        ///You should already see the transaction in your wallet and it should achieve spendability within about an hour (six normal confirmations)..
         /// </summary>
         internal static string Bitcoin_PaidOut_Body {
             get {
@@ -74,7 +74,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [[OrganizationName]] Funds paid using bitcoin: [CurrencyCode] [AmountFloat].
+        ///   Looks up a localized string similar to [[OrganizationName]] Funds paid to you: [CurrencyCode] [AmountFloat].
         /// </summary>
         internal static string Bitcoin_PaidOut_Subject {
             get {
@@ -101,6 +101,26 @@ namespace Swarmops.Logic.Resources {
         internal static string Bitcoin_Shortage_Critical_Subject {
             get {
                 return ResourceManager.GetString("Bitcoin_Shortage_Critical_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On attempting a payout to your bitcoin payout address, the address ([BitcoinAddress]) was rejected by the underlying payout engine as invalid. It has therefore been cleared from your profile.
+        ///
+        ///Please log on to [InstallationName] at [ExternalUrl] and set a new bitcoin payout address..
+        /// </summary>
+        internal static string BitcoinPayoutAddress_Bad_Body {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_Bad_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName] - ACTION ITEM] Bad bitcoin payout address.
+        /// </summary>
+        internal static string BitcoinPayoutAddress_Bad_Subject {
+            get {
+                return ResourceManager.GetString("BitcoinPayoutAddress_Bad_Subject", resourceCulture);
             }
         }
         
