@@ -16,6 +16,12 @@ namespace Swarmops.Logic.Financial
         public string TransactionHash { get; set; }
         public Int32 TransactionOutputIndex { get; set; }
         public string BitcoinAddress { get; set; }
+        public int HotBitcoinAddressUnspentId { get; set; }
+
+        public HotBitcoinAddressUnspent AsUnspent
+        {
+            get { return HotBitcoinAddressUnspent.FromIdentity (this.HotBitcoinAddressUnspentId); }
+        }
     }
 
     public class BitcoinTransactionInputs: List<BitcoinTransactionInput>
@@ -60,6 +66,16 @@ namespace Swarmops.Logic.Financial
         public Int64 AmountSatoshisTotal
         {
             get { return this.Sum (input => input.AmountSatoshis); }
+        }
+
+        public HotBitcoinAddressUnspents AsUnspents
+        {
+            get
+            {
+                HotBitcoinAddressUnspents unspents = new HotBitcoinAddressUnspents();
+                this.ForEach (item => unspents.Add (item.AsUnspent));
+                return unspents;
+            }
         }
     }
 }

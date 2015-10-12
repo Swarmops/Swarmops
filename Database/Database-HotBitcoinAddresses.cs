@@ -120,6 +120,29 @@ namespace Swarmops.Database
             }
         }
 
+        public BasicHotBitcoinAddressUnspent GetHotBitcoinAddressUnspent(int hotBitcoinAddressUnspentId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT" + hotBitcoinAddressUnspentFieldSequence + "WHERE HotBitcoinAddressUnspentId=" + hotBitcoinAddressUnspentId + ";", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return ReadHotBitcoinAddressUnspentFromDataReader(reader);
+                    }
+
+                    throw new ArgumentException("Unknown HotBitcoinAddressUnspent Id: " + hotBitcoinAddressUnspentId);
+                }
+            }
+        }
+
+
 
         public BasicHotBitcoinAddressUnspent[] GetHotBitcoinAddressUnspents(params object[] conditions) // the typical condition would be a HotBitcoinAddress, here
         {

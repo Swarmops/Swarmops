@@ -36,7 +36,8 @@ namespace Swarmops.Logic.Financial
                         BitcoinAddress = address.Address,
                         PrivateKey = address.PrivateKey,
                         TransactionHash = unspent.TransactionHash,
-                        TransactionOutputIndex = unspent.TransactionOutputIndex
+                        TransactionOutputIndex = unspent.TransactionOutputIndex,
+                        HotBitcoinAddressUnspentId = unspent.Identity
                     };
 
                     result.Add (input);

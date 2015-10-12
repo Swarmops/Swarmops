@@ -20,6 +20,11 @@ namespace Swarmops.Logic.Financial
             return new HotBitcoinAddressUnspent (basic);
         }
 
+        public static HotBitcoinAddressUnspent FromIdentity (int hotBitcoinAddressUnspentId)
+        {
+            return FromBasic (SwarmDb.GetDatabaseForReading().GetHotBitcoinAddressUnspent (hotBitcoinAddressUnspentId));
+        }
+
         public HotBitcoinAddress Address
         {
             get { return HotBitcoinAddress.FromIdentity (base.HotBitcoinAddressId); }

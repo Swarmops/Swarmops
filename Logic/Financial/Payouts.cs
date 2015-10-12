@@ -500,7 +500,7 @@ namespace Swarmops.Logic.Financial
                 TransactionBuilder txBuilder = new TransactionBuilder();
                 foreach (Payout payout in orgPayouts)
                 {
-                    if (payout.ExpectedTransactionDate < utcNow)
+                    if (payout.ExpectedTransactionDate > utcNow)
                     {
                         continue; // payout is not due yet
                     }
@@ -511,7 +511,7 @@ namespace Swarmops.Logic.Financial
                         // If the payout address is still in quarantine, don't pay out yet
 
                         string addressSetTime = payout.RecipientPerson.BitcoinPayoutAddressTimeSet;
-                        if (addressSetTime.Length > 4 && DateTime.Parse (addressSetTime, CultureInfo.InvariantCulture).AddHours (48) < utcNow)
+                        if (addressSetTime.Length > 4 && DateTime.Parse (addressSetTime, CultureInfo.InvariantCulture).AddHours (48) > utcNow)
                         {
                             continue; // still in quarantine
                         }
@@ -688,7 +688,7 @@ namespace Swarmops.Logic.Financial
                 // Delete inputs, adjust balance for addresses
 
                 // TODO
-                // inputs.DeleteAll();
+                // inputs.AsUnspents.DeleteAll();
 
                 // Register new balance of change address, should have increased by satoshisInput-satoshisUsed
 
@@ -704,7 +704,7 @@ namespace Swarmops.Logic.Financial
                     string spec = string.Empty;
                     for (int index = 0; index < notificationSpecLookup[personId].Count; index++)
                     {
-                        spec += String.Format(" * {0,-30} {1,14:N2} {2:-4}\r\n", notificationSpecLookup[personId][index], (notificationAmountLookup[personId][index]/100.0).ToString("N2"), currencyCode);
+                        spec += String.Format(" * {0,-40} {1,14:N2} {2,-4}\r\n", notificationSpecLookup[personId][index], notificationAmountLookup[personId][index]/100.0, currencyCode);
                     }
 
                     spec = spec.TrimEnd();
@@ -724,6 +724,8 @@ namespace Swarmops.Logic.Financial
                 }
 
                 // Create the master payout from its prototype
+
+                // TODO
 
                 // Ledger entries
 
