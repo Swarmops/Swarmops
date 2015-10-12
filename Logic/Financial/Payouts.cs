@@ -727,7 +727,7 @@ namespace Swarmops.Logic.Financial
                     secondaryStrings["BitcoinAddress"] = person.BitcoinPayoutAddress; // potential rare race condition
 
                     OutboundComm.CreateNotification (organization, NotificationResource.Bitcoin_PaidOut, primaryStrings,
-                        secondaryStrings, People.FromSingle (Person.FromIdentity (1)));
+                        secondaryStrings, People.FromSingle(person));
                 }
 
                 // Create the master payout from its prototype

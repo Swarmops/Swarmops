@@ -368,10 +368,8 @@ namespace Swarmops.Backend
 
                 try
                 {
-                    /*BotLog.Write(1, "FiveMinute", "Starting press release checker");
-                    TestTrace("Running PressReleaseChecker.Run()...");
-                    PressReleaseChecker.Run();
-                    TestTrace(" done.\r\n");*/
+                    BotLog.Write(1, "FiveMinute", "Starting automated payout processing");
+                    Payouts.PerformAutomated();
                 }
                 catch (Exception e)
                 {

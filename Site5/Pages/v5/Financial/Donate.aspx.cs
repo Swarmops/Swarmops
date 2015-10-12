@@ -23,9 +23,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
         {
             this.PageAccessRequired = new Access (this.CurrentOrganization, AccessAspect.Participant);
 
-            // TEMP
-            //Payouts.PerformAutomated();
-
             /* TEMP TEMP TEMP - REMOVE THIS CODE */
             /*
             Organization fwn = Organization.FromIdentity (2);
