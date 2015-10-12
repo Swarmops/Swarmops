@@ -150,9 +150,9 @@ If you did not set this payout address (it may be worth double checking the addr
     <value>[[OrganizationName]] Bitcoin payout address set</value>
   </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
-    <value>[BitcoinAmount] microcoin ("bits") was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
+    <value>[BitcoinAmountFloat] microcoin ("bits") was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
 
-[PreformattedText]
+[EmbeddedPreformattedText]
 
 You should already see the transaction pending confirmations and it should achieve spendability within about an hour (six normal confirmations).</value>
   </data>

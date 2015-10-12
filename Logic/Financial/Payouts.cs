@@ -485,7 +485,9 @@ namespace Swarmops.Logic.Financial
 
                 Payouts orgPayouts = Payouts.Construct (organization);
                 Payouts bitcoinPayouts = new Payouts();
-                Dictionary <string, Int64> satoshiLookup = new Dictionary<string, long>();
+                Dictionary <string, Int64> satoshiPayoutLookup = new Dictionary<string, long>();
+                Dictionary <int, Int64> satoshiPersonLookup = new Dictionary<int, long>();
+                Dictionary <int, Int64> nativeCentsPersonLookup = new Dictionary<int, long>();
                 Int64 satoshisTotal = 0;
 
                 // For each ready payout that can automate, add an output to a constructed transaction
@@ -508,23 +510,35 @@ namespace Swarmops.Logic.Financial
                             continue; // do not add this payout
                         }
 
+                        int recipientPersonId = payout.RecipientPerson.Identity;
+
 
                         bitcoinPayouts.Add (payout);
+
+                        if (!satoshiPersonLookup.ContainsKey (recipientPersonId))
+                        {
+                            satoshiPersonLookup[recipientPersonId] = 0;
+                            nativeCentsPersonLookup[recipientPersonId] = 0;
+                        }
+
+                        nativeCentsPersonLookup[recipientPersonId] += payout.AmountCents;
 
                         // Find the amount of satoshis for this payout
 
                         if (organization.Currency.IsBitcoin)
                         {
-                            satoshiLookup[payout.ProtoIdentity] = payout.AmountCents;
+                            satoshiPayoutLookup[payout.ProtoIdentity] = payout.AmountCents;
                             satoshisTotal += payout.AmountCents;
+                            satoshiPersonLookup[recipientPersonId] += payout.AmountCents;
                         }
                         else
                         {
                             // Convert currency
                             Money payoutAmount = new Money(payout.AmountCents, organization.Currency);
                             Int64 satoshis = payoutAmount.ToCurrency(Currency.Bitcoin).Cents;
-                            satoshiLookup[payout.ProtoIdentity] = satoshis;
+                            satoshiPayoutLookup[payout.ProtoIdentity] = satoshis;
                             satoshisTotal += satoshis;
+                            satoshiPersonLookup[recipientPersonId] += satoshis;
                         }
                     }
                 }
@@ -597,8 +611,8 @@ namespace Swarmops.Logic.Financial
                     notificationLookup[recipientPersonId].Add (payout.Specification);
 
                     txBuilder = txBuilder.Send(new BitcoinAddress(payout.RecipientPerson.BitcoinPayoutAddress),
-                        new Satoshis(satoshiLookup[payout.ProtoIdentity]));
-                    satoshisUsed += satoshiLookup[payout.ProtoIdentity];
+                        new Satoshis(satoshiPayoutLookup[payout.ProtoIdentity]));
+                    satoshisUsed += satoshiPayoutLookup[payout.ProtoIdentity];
 
                     payout.MigrateDependenciesTo (masterPayout);
                 }
@@ -619,14 +633,58 @@ namespace Swarmops.Logic.Financial
 
                 // Sign transaction - ready to execute
 
+                Transaction txReady = txBuilder.BuildTransaction (true);
+
+                // Verify that transaction is ready
+
+                if (!txBuilder.Verify (txReady))
+                {
+                    throw new InvalidOperationException("Transaction is not signed enough");
+                }
+
                 // Broadcast transaction
+
+                // TODO
 
                 // Delete inputs, adjust balance for addresses
 
+                // TODO
+                // inputs.DeleteAll();
+
+                // Register new balance of change address, should have increased by satoshisInput-satoshisUsed
+
+                // TODO
+                // BitcoinUtility.CheckSomething (HotAddress.OrganizationWallet(organization)...
+
                 // Send notifications
+
+                foreach (int personId in notificationLookup.Keys)
+                {
+                    Person person = Person.FromIdentity (personId);
+
+                    string spec = string.Empty;
+                    foreach (string specPart in notificationLookup[personId])
+                    {
+                        spec += " * " + specPart + "\r\n";
+                    }
+
+                    NotificationStrings primaryStrings = new NotificationStrings();
+                    NotificationCustomStrings secondaryStrings = new NotificationCustomStrings();
+
+                    primaryStrings[NotificationString.OrganizationName] = organization.Name;
+                    primaryStrings[NotificationString.CurrencyCode] = organization.Currency.DisplayCode;
+                    primaryStrings[NotificationString.EmbeddedPreformattedText] = spec;
+                    secondaryStrings["AmountFloat"] = (nativeCentsPersonLookup[personId]/100.0).ToString ("N2");
+                    secondaryStrings["BitcoinAmountFloat"] = (satoshiPersonLookup[personId]/100.0).ToString ("N2");
+                    secondaryStrings["BitcoinAddress"] = person.BitcoinPayoutAddress; // potential rare race condition
+
+                    OutboundComm.CreateNotification (organization, NotificationResource.Bitcoin_PaidOut, primaryStrings,
+                        secondaryStrings, People.FromSingle (Person.FromIdentity (1)));
+                }
 
                 // Ledger entries
 
+                // TODO
             }
         }
     }

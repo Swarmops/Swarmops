@@ -162,6 +162,7 @@ namespace Swarmops.Logic.Communications.Transmission
         Participant_Renewed,
         Participant_Terminated,
         Participant_Churned,
+        Bitcoin_PaidOut,
         Bitcoin_Shortage,
         Bitcoin_Shortage_Urgent,
         Bitcoin_Shortage_Critical

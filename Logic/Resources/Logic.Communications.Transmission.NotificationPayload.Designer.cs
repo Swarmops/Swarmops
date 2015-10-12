@@ -61,9 +61,9 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [BitcoinAmount] microcoin (&quot;bits&quot;) was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
+        ///   Looks up a localized string similar to [BitcoinAmountFloat] microcoin (&quot;bits&quot;) was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
         ///
-        ///[PreformattedText]
+        ///[EmbeddedPreformattedText]
         ///
         ///You should already see the transaction pending confirmations and it should achieve spendability within about an hour (six normal confirmations)..
         /// </summary>
