@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Financial
                         break;
                     case FinancialDependencyType.Salary:
                         Salary salary = Salary.FromIdentity (dependency.ForeignId);
-                        if (salary.NetSalaryCents == AmountCents) // HACK: Assumes that tax total is not identical
+                        if (salary.NetSalaryCents == AmountCents) // HACK/LEGACY: Assumes that tax total is not identical
                         {
                             this.DependentSalariesNet.Add (salary);
                         }
@@ -89,6 +89,11 @@ namespace Swarmops.Logic.Financial
                         {
                             this.DependentSalariesTax.Add (salary);
                         }
+                        break;
+
+                    case FinancialDependencyType.SalaryTax:
+                        Salary salaryTax = Salary.FromIdentity (dependency.ForeignId);
+                        this.DependentSalariesTax.Add (salaryTax);
                         break;
 
                     case FinancialDependencyType.CashAdvance:
@@ -294,6 +299,120 @@ namespace Swarmops.Logic.Financial
             get { return FinancialTransaction.FromDependency (this); }
         }
 
+        public static Payout CreateBitcoinPayoutFromPrototype (Organization organization, Payout prototype, string transactionHash)
+        {
+            string[] components = prototype.ProtoIdentity.Split('|');
+            int payoutId = 0;
+
+            // This function is made for complex bitcoin payouts and will typically take many different types of payouts to many people at once.
+
+            if (components.Length == 0)
+            {
+                // nothing to construct. Exception or return null?
+
+                return null;
+            }
+
+            payoutId = SwarmDb.GetDatabaseForWriting().CreatePayout(organization.Identity, "Bitcoin network", "Multiple",
+                transactionHash, prototype.AmountCents, DateTime.UtcNow, 0);
+
+            foreach (string component in components)
+            {
+                int foreignId = Int32.Parse(component.Substring(1));
+
+                switch (component[0])
+                {
+                    case 'A':
+                        // Cash advance
+                        CashAdvance advance = CashAdvance.FromIdentity (foreignId);
+                        advance.PaidOut = true;
+
+                        SwarmopsLogEntry.Create (null,
+                            new PayoutCreatedLogEntry (null, advance.Person, organization,
+                                organization.Currency, advance.AmountCents/100.0,
+                                "Cash Advance Paid Out"),
+                            advance.Person, advance);
+
+                        OutboundComm.CreateNotificationOfFinancialValidation (advance.Budget, advance.Person,
+                            advance.AmountCents/100.0, advance.Description, NotificationResource.CashAdvance_PaidOut);
+                        SwarmDb.GetDatabaseForWriting()
+                            .CreatePayoutDependency (payoutId, FinancialDependencyType.CashAdvance,
+                                foreignId);
+                        break;
+
+                    case 'a':
+                        // This is a negative record - payback of cash advance
+                        CashAdvance advancePayback = CashAdvance.FromIdentity (foreignId);
+                        advancePayback.Open = false;
+
+                        SwarmDb.GetDatabaseForWriting()
+                            .CreatePayoutDependency(payoutId, FinancialDependencyType.CashAdvancePayback,
+                                foreignId);
+
+                        break;
+
+                    case 'C':
+                        // Expense claim
+                        ExpenseClaim claim = ExpenseClaim.FromIdentity (foreignId);
+                        claim.Repaid = true;
+                        claim.Close();
+
+                        OutboundComm.CreateNotificationOfFinancialValidation (claim.Budget, claim.Claimer,
+                            claim.AmountCents/100.0, claim.Description, NotificationResource.ExpenseClaim_PaidOut);
+                        SwarmDb.GetDatabaseForWriting()
+                            .CreatePayoutDependency(payoutId, FinancialDependencyType.ExpenseClaim,
+                                foreignId);
+
+                        break;
+
+                    case 'I':
+                        // Invoice
+                        InboundInvoice invoice = InboundInvoice.FromIdentity (foreignId);
+                        DateTime expectedPayment = invoice.DueDate;
+
+                        if (expectedPayment < DateTime.Today)
+                        {
+                            expectedPayment = DateTime.Today;
+                        }
+
+                        SwarmDb.GetDatabaseForWriting()
+                            .CreatePayoutDependency (payoutId, FinancialDependencyType.InboundInvoice,
+                                invoice.Identity);
+
+                        // TODO: NOTIFY PAID?
+
+                        invoice.Open = false;
+                        break;
+
+                    case 'S':
+                        // Salary net
+
+                        Salary salaryNet = Salary.FromIdentity (foreignId);
+                        SwarmDb.GetDatabaseForWriting().CreatePayoutDependency (payoutId, FinancialDependencyType.Salary,
+                            salaryNet.Identity);
+                        salaryNet.NetPaid = true;
+                        break;
+
+                    case 'T':
+                        // Tax payout, typically for multiple salaries
+
+                        Salary salaryTax = Salary.FromIdentity (foreignId);
+                        SwarmDb.GetDatabaseForWriting().CreatePayoutDependency (payoutId, FinancialDependencyType.SalaryTax,
+                            salaryTax.Identity);
+                        salaryTax.TaxPaid = true;
+
+                        break;
+                    default:
+                        throw new NotImplementedException();
+
+                }
+            }
+
+            // Return the new object by reloading it from database
+
+            return Payout.FromIdentity (payoutId);
+        }
+
         public static Payout CreateFromProtoIdentity (Person creator, string protoIdentity)
         {
             string[] components = protoIdentity.Split ('|');
@@ -335,7 +454,7 @@ namespace Swarmops.Logic.Financial
                     amountCents += advance.AmountCents;
 
                     advance.PaidOut = true;
-                    //advance.Open = false;   // isn't this closed only when settling the debt? Serious bug here?
+                    // advance.Open remains true until the advance is repaid
 
                     SwarmopsLogEntry.Create (creator,
                         new PayoutCreatedLogEntry (creator, advance.Person, organization,
@@ -546,7 +665,7 @@ namespace Swarmops.Logic.Financial
 
                 foreach (int salaryId in identityList)
                 {
-                    SwarmDb.GetDatabaseForWriting().CreatePayoutDependency (payoutId, FinancialDependencyType.Salary,
+                    SwarmDb.GetDatabaseForWriting().CreatePayoutDependency (payoutId, FinancialDependencyType.SalaryTax,
                         salaryId);
                 }
             }

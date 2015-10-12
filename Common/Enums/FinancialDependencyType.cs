@@ -28,6 +28,11 @@ namespace Swarmops.Common.Enums
         Salary,
 
         /// <summary>
+        ///     Salary partially paid to the tax agency because people dressed in uniforms will beat you otherwise
+        /// </summary>
+        SalaryTax,
+
+        /// <summary>
         ///     An outbound invoice, requesting money from another organization
         /// </summary>
         OutboundInvoice,

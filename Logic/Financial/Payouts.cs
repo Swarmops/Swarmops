@@ -595,6 +595,15 @@ namespace Swarmops.Logic.Financial
                 }
                 catch (NotEnoughFundsException)
                 {
+                    // If we're at the whole hour, send a notification to people responsible for refilling the hotwallet
+
+                    if (utcNow.Minute != 0)
+                    {
+                        continue; // we're not at the whole hour, so continue with next org instead
+                    }
+
+                    // Send urgent notification to top up the damn wallet so we can make payments
+
                     NotificationStrings primaryStrings = new NotificationStrings();
                     primaryStrings[NotificationString.CurrencyCode] = organization.Currency.Code;
                     primaryStrings[NotificationString.OrganizationName] = organization.Name;
@@ -636,7 +645,7 @@ namespace Swarmops.Logic.Financial
                 Int64 satoshisUsed = 0;
                 Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
                 Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
-                Payout masterPayout = Payout.Empty;
+                Payout masterPayoutPrototype = Payout.Empty;
 
                 foreach (Payout payout in bitcoinPayouts)
                 {
@@ -653,7 +662,7 @@ namespace Swarmops.Logic.Financial
                         new Satoshis(satoshiPayoutLookup[payout.ProtoIdentity]));
                     satoshisUsed += satoshiPayoutLookup[payout.ProtoIdentity];
 
-                    payout.MigrateDependenciesTo (masterPayout);
+                    payout.MigrateDependenciesTo (masterPayoutPrototype);
                 }
 
                 // Set change address to wallet slush
@@ -683,17 +692,15 @@ namespace Swarmops.Logic.Financial
 
                 // Broadcast transaction
 
-                // TODO
+                BitcoinUtility.BroadcastTransaction (txReady);
 
                 // Delete inputs, adjust balance for addresses
 
-                // TODO
-                // inputs.AsUnspents.DeleteAll();
+                inputs.AsUnspents.DeleteAll();
 
-                // Register new balance of change address, should have increased by satoshisInput-satoshisUsed
+                // Register new balance of change address, should have increased by (satoshisInput-satoshisUsed)
 
-                // TODO
-                // BitcoinUtility.CheckSomething (HotAddress.OrganizationWallet(organization)...
+                BitcoinUtility.TestUnspents (HotBitcoinAddress.OrganizationWalletZero (organization).Address);
 
                 // Send notifications
 
@@ -725,11 +732,15 @@ namespace Swarmops.Logic.Financial
 
                 // Create the master payout from its prototype
 
-                // TODO
+                Payout masterPayout = Payout.CreateBitcoinPayoutFromPrototype (organization, masterPayoutPrototype, txReady.GetHash().ToString());
 
-                // Ledger entries
+                // Finally, create ledger entries
 
-                // TODO
+                FinancialTransaction ledgerTransaction = FinancialTransaction.Create (organization, utcNow,
+                    "Bitcoin automated payout");
+                ledgerTransaction.AddRow (organization.FinancialAccounts.AssetsBitcoinHot, -masterPayoutPrototype.AmountCents, null);
+
+                masterPayout.BindToTransactionAndClose (ledgerTransaction, null);
             }
         }
     }
