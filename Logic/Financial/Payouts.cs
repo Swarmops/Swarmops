@@ -577,6 +577,23 @@ namespace Swarmops.Logic.Financial
                             satoshiPersonLookup[recipientPersonId] += satoshis;
                         }
                     }
+                    else if (payout.RecipientPerson != null && payout.RecipientPerson.BitcoinPayoutAddress.Length < 3 && payout.Account.Length < 4)
+                    {
+                        // There is a payout for this person, but they don't have a bitcoin payout address set. Send notification to this effect twice a day.
+
+                        if (utcNow.Minute != 0)
+                        {
+                            continue;
+                        }
+                        if (utcNow.Hour % 12 != 0)
+                        {
+                            continue;
+                        }
+
+                        NotificationStrings primaryStrings = new NotificationStrings();
+                        primaryStrings[NotificationString.OrganizationName] = organization.Name;
+                        OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_PleaseSet, primaryStrings, People.FromSingle(payout.RecipientPerson));
+                    }
                 }
 
                 if (bitcoinPayouts.Count == 0)
