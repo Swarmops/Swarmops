@@ -138,7 +138,7 @@ If you click that link, your account will be locked down immediately without con
   <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
     <value>You have funds waiting for payout at [OrganizationName], but you have not set a bitcoin payout address.
 
-Please log on to [InstallationName] at [InstallationUrl] and follow the link to set your payout address - you will find it in the list of to-do items.</value>
+Please log on to [InstallationName] at [ExternalUrl] and follow the link to set your payout address - you will find it in the list of to-do items.</value>
   </data>
   <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Please set your bitcoin payout address</value>

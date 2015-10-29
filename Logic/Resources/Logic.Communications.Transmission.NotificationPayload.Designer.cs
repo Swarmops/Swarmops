@@ -149,7 +149,7 @@ namespace Swarmops.Logic.Resources {
         /// <summary>
         ///   Looks up a localized string similar to You have funds waiting for payout at [OrganizationName], but you have not set a bitcoin payout address.
         ///
-        ///Please log on to [InstallationName] at [InstallationUrl] and follow the link to set your payout address - you will find it in the list of to-do items..
+        ///Please log on to [InstallationName] at [ExternalUrl] and follow the link to set your payout address - you will find it in the list of to-do items..
         /// </summary>
         internal static string BitcoinPayoutAddress_PleaseSet_Body {
             get {
