@@ -154,13 +154,13 @@ namespace Swarmops.Backend
 
             Console.WriteLine (" * Swarmops Backend starting");
 
-            BotLog.Write (0, "MainCycle", "Backend STARTING");
-
-            OutboundComm.CreateNotification (null, NotificationResource.System_Startup);
-
-            // Checking for schemata upgrade
+            // Checking for schemata upgrade first of all
 
             DatabaseMaintenance.UpgradeSchemata();
+
+            BotLog.Write(0, "MainCycle", "Backend STARTING");
+
+            OutboundComm.CreateNotification (null, NotificationResource.System_Startup);
 
             // Check for existence of installation ID. If not, create one. Warning: has privacy implications when communicated.
 
