@@ -13,7 +13,7 @@ namespace Swarmops.Database
 
         private const string outboundCommFieldSequence =
             " OutboundCommId,SenderPersonId,FromPersonId,OrganizationId,CreatedDateTime," + // 0-4
-            "ResolverClassId,RecipientDataXml,Resolved,ResolvedDateTime,Priority," + // 5-9
+            "ResolverDataXml,RecipientDataXml,Resolved,ResolvedDateTime,Priority," + // 5-9
             "TransmitterClassId,PayloadXml,Open,StartTransmitDateTime,ClosedDateTime," + // 10-14
             "RecipientCount,RecipientsSuccess,RecipientsFail " + // 15-17
             "FROM OutboundComms ";
@@ -27,8 +27,7 @@ namespace Swarmops.Database
             int organizationId = reader.GetInt32 (3);
             DateTime createdDateTime = reader.GetDateTime (4);
 
-            int resolverClassId = reader.GetInt32 (5);
-            // Resolve to class name -- cached call more efficient than Join in Select
+            string resolverDataXml = reader.GetString (5);
             string recipientDataXml = reader.GetString (6); // Interpreted by ResolverClass
             bool resolved = reader.GetBoolean (7);
             DateTime resolvedDateTime = reader.GetDateTime (8);
@@ -47,12 +46,11 @@ namespace Swarmops.Database
 
             // TODO: resolve resolverClass, transmitterClass
 
-            string resolverClass = GetCachedResolverClassName (resolverClassId);
             string transmitterClass = GetCachedTransmitterClassName (transmitterClassId);
 
             return new BasicOutboundComm
                 (outboundCommId, senderPersonId, fromPersonId, organizationId, createdDateTime,
-                    resolverClass, recipientDataXml, resolved, resolvedDateTime, priority,
+                    resolverDataXml, recipientDataXml, resolved, resolvedDateTime, priority,
                     transmitterClass, payloadXml, open, startTransmitDateTime, closedDateTime,
                     recipientCount, recipientSuccessCount, recipientFailCount);
         }
@@ -188,7 +186,7 @@ namespace Swarmops.Database
 
         #region Creation and manipulation -- stored procedures
 
-        public int CreateOutboundComm (int senderPersonId, int fromPersonId, int organizationId, string resolverClass,
+        public int CreateOutboundComm (int senderPersonId, int fromPersonId, int organizationId, string resolverDataXml,
             string recipientDataXml, string transmitterClass, string payloadXml, OutboundCommPriority priority)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -201,9 +199,8 @@ namespace Swarmops.Database
                 AddParameterWithName (command, "senderPersonId", senderPersonId);
                 AddParameterWithName (command, "fromPersonId", fromPersonId);
                 AddParameterWithName (command, "organizationId", organizationId);
-                AddParameterWithName (command, "resolverClass",
-                    String.IsNullOrEmpty (resolverClass) ? "0" : resolverClass);
-                // Will be turned into ID by stored procedure
+                AddParameterWithName (command, "resolverDataXml",
+                    String.IsNullOrEmpty (resolverDataXml) ? "" : resolverDataXml);
                 AddParameterWithName (command, "recipientDataXml",
                     String.IsNullOrEmpty (recipientDataXml) ? string.Empty : recipientDataXml);
                 AddParameterWithName (command, "transmitterClass", transmitterClass);

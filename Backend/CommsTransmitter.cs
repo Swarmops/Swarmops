@@ -30,6 +30,7 @@ namespace Swarmops.Backend
 
                     ICommsResolver resolver = (ICommsResolver)(methodInfo.Invoke(null, new object[] { resolverEnvelope.ResolverDataXml }));
                     resolver.Resolve(comm);
+                    comm.Resolved = true;
 
                     continue; // continue is not strictly necessary; could continue processing the same OutboundComm after resolution
                 }

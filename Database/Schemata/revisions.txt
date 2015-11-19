@@ -27,3 +27,4 @@
 0027 - Fixes and additions to HotBitcoinAddresses, -Unspents [RF]
 0028 - Bugfix for 0027 [RF]
 0029 - Added unspent satoshis to hotaddress on create unspent [RF]
+0030 - Added flexibility for Resolver classes for OutboundComms [RF]
