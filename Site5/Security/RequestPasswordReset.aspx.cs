@@ -8,7 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Support.LogEntries;
 using Swarmops.Logic.Swarm;

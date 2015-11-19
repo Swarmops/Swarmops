@@ -4,7 +4,7 @@ using System.Globalization;
 using Swarmops.Basic.Types.Communications;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
-using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Communications.Resolution;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;

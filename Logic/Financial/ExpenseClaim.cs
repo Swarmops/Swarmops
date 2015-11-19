@@ -5,7 +5,7 @@ using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Support.LogEntries;

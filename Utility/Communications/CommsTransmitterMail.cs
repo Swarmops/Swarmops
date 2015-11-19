@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Support;
 using Swarmops.Logic.Swarm;
 

@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using Resources;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;

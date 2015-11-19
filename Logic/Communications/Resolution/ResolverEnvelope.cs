@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Swarmops.Logic.Support;
-using Swarmops.Logic.Communications.Transmission;
+
 
 namespace Swarmops.Logic.Communications.Resolution
 {
@@ -18,11 +18,11 @@ namespace Swarmops.Logic.Communications.Resolution
 
         public ResolverEnvelope (ICommsResolver resolver)
         {
-            PayloadClass = resolver.GetType().ToString();
-            PayloadXml = resolver.ToXml();
+            ResolverClass = resolver.GetType().ToString();
+            ResolverDataXml = resolver.ToXml();
         }
 
-        public string PayloadClass { get; set; }
-        public string PayloadXml { get; set; }
+        public string ResolverClass { get; set; }
+        public string ResolverDataXml { get; set; }
     }
 }

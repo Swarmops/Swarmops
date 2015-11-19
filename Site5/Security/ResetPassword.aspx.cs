@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Swarmops.Interface.Support;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
@@ -141,7 +141,7 @@ namespace Swarmops.Pages.Security
 
             return true; // temp
 
-            // do NOT NOT NOT trim password - this is deliberate. Starting/ending pwds in whitespace must be possible
+            // do NOT NOT NOT trim password - this is deliberate. Passwords starting/ending in whitespace must be possible
 
 
         }

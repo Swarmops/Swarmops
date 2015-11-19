@@ -1,4 +1,4 @@
-﻿using Swarmops.Logic.Communications.Transmission;
+﻿using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Communications

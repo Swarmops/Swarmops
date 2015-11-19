@@ -188,7 +188,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                         SystemSettings.SmtpHost = host;
                         SystemSettings.SmtpPort = port;
 
-                        OutboundComm.CreateNotification(Organization.Sandbox, Logic.Communications.Transmission.NotificationResource.System_MailServerTest);
+                        OutboundComm.CreateNotification(Organization.Sandbox, Logic.Communications.Payload.NotificationResource.System_MailServerTest);
 
                         result.ResultCode = AjaxTextBox.CodeChanged;
                         result.NewData = FormatSmtpAccessString (user, pass, host, port);

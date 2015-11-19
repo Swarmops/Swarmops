@@ -10,7 +10,7 @@ using Swarmops.Logic.Security;
 using Swarmops.Logic.Swarm;
 using Swarmops.Logic.Support;
 
-namespace Swarmops.Logic.Communications.Transmission
+namespace Swarmops.Logic.Communications.Payload
 {
     [Serializable]
     public class ParticipantMailPayload: PayloadBase<ParticipantMailPayload>, ICommsRenderer

@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NBitcoin;
 using Swarmops.Logic.Communications;
-using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Automation
