@@ -5,6 +5,7 @@ using Swarmops.Basic.Types.Communications;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Communications.Transmission;
+using Swarmops.Logic.Communications.Resolution;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Swarm;
@@ -73,13 +74,13 @@ namespace Swarmops.Logic.Communications
         }
 
         public static OutboundComm Create (Person sender, Person from, Organization organization,
-            CommResolverClass resolverClass, string recipientDataXml, CommTransmitterClass transmitterClass,
+            ICommsResolver resolver, string recipientDataXml, CommTransmitterClass transmitterClass,
             string payloadXml, OutboundCommPriority priority)
         {
-            string resolverClassString = string.Empty;
-            if (resolverClass != CommResolverClass.Unknown)
+            string resolverDataXml = string.Empty;
+            if (resolver != null)
             {
-                resolverClassString = resolverClass.ToString();
+                resolverDataXml = new ResolverEnvelope(resolver).ToXml();
             }
 
             string transmitterClassString = string.Empty;
@@ -88,17 +89,17 @@ namespace Swarmops.Logic.Communications
                 transmitterClassString = "Swarmops.Utility.Communications." + transmitterClass;
             }
 
-            return Create (sender, from, organization, resolverClassString, recipientDataXml, transmitterClassString,
+            return Create (sender, from, organization, resolverDataXml, recipientDataXml, transmitterClassString,
                 payloadXml, priority);
         }
 
-        public static OutboundComm Create (Person sender, Person from, Organization organization,
-            string resolverClassString, string recipientDataXml, string transmitterClassString, string payloadXml,
+        private static OutboundComm Create (Person sender, Person from, Organization organization,
+            string resolverDataXml, string recipientDataXml, string transmitterClassString, string payloadXml,
             OutboundCommPriority priority)
         {
             int newId = SwarmDb.GetDatabaseForWriting()
                 .CreateOutboundComm (sender != null ? sender.Identity : 0, from != null ? from.Identity : 0,
-                    organization != null ? organization.Identity : 0, resolverClassString,
+                    organization != null ? organization.Identity : 0, resolverDataXml,
                     recipientDataXml ?? string.Empty, transmitterClassString,
                     payloadXml, priority);
 
@@ -141,7 +142,7 @@ namespace Swarmops.Logic.Communications
             List<Person> recipients = People.FromSingle (participation.Person);
 
             OutboundComm comm = OutboundComm.Create (null, null, participation.Organization, 
-                CommResolverClass.Unknown, null,
+                null, null,
                 CommTransmitterClass.CommsTransmitterMail,
                 new PayloadEnvelope (new ParticipantMailPayload (mailType, participation, actingPerson)).ToXml(),
                 OutboundCommPriority.Low);
@@ -163,7 +164,7 @@ namespace Swarmops.Logic.Communications
             List<Person> recipients = People.FromSingle(participation.Person);
 
             OutboundComm comm = OutboundComm.Create(null, null, participation.Organization,
-                CommResolverClass.Unknown, null,
+                null /* resolver */, null,
                 CommTransmitterClass.CommsTransmitterMail,
                 new PayloadEnvelope(new ParticipantMailPayload(customSubject, customBody, participation, actingPerson)).ToXml(),
                 OutboundCommPriority.Low);
@@ -215,7 +216,7 @@ namespace Swarmops.Logic.Communications
                 // TODO: Change to org admins
             }
             
-            OutboundComm comm = OutboundComm.Create (null, null, organization, CommResolverClass.Unknown, null,
+            OutboundComm comm = OutboundComm.Create (null, null, organization, null, null,
                 CommTransmitterClass.CommsTransmitterMail,
                 new PayloadEnvelope (new NotificationPayload (notificationResourceString, strings, customStrings)).ToXml(),
                 OutboundCommPriority.Low);
@@ -248,7 +249,7 @@ namespace Swarmops.Logic.Communications
             payload.Strings[NotificationString.BudgetName] = budget.Name;
             payload.Strings[NotificationString.ConcernedPersonName] = concernedPerson.Canonical;
 
-            OutboundComm comm = OutboundComm.Create (null, null, budget.Organization, CommResolverClass.Unknown, null,
+            OutboundComm comm = OutboundComm.Create (null, null, budget.Organization, null, null,
                 CommTransmitterClass.CommsTransmitterMail,
                 new PayloadEnvelope (payload).ToXml(),
                 OutboundCommPriority.Low);
@@ -278,7 +279,7 @@ namespace Swarmops.Logic.Communications
             payload.Strings[NotificationString.BudgetAmountFloat] =
                 amountRequested.ToString("N2");
 
-            OutboundComm comm = OutboundComm.Create (null, null, organization, CommResolverClass.Unknown, null,
+            OutboundComm comm = OutboundComm.Create (null, null, organization, null, null,
                 CommTransmitterClass.CommsTransmitterMail,
                 new PayloadEnvelope (payload).ToXml(),
                 OutboundCommPriority.Low);
@@ -309,7 +310,7 @@ namespace Swarmops.Logic.Communications
             payload.Strings[NotificationString.ConcernedPersonName] = concernedPerson.Canonical;
             payload.Strings[NotificationString.EmbeddedPreformattedText] = reasonGiven;
 
-            OutboundComm comm = OutboundComm.Create (null, null, budget.Organization, CommResolverClass.Unknown, null,
+            OutboundComm comm = OutboundComm.Create (null, null, budget.Organization, null, null,
                 CommTransmitterClass.CommsTransmitterMail,
                 new PayloadEnvelope (payload).ToXml(),
                 OutboundCommPriority.Low);
@@ -325,7 +326,7 @@ namespace Swarmops.Logic.Communications
         private static OutboundComm CreateSingleRecipientNotification (NotificationPayload payload,
             Organization organization, Person addressee)
         {
-            OutboundComm comm = OutboundComm.Create(null, null, organization, CommResolverClass.Unknown, null,
+            OutboundComm comm = OutboundComm.Create(null, null, organization, null, null,
                 CommTransmitterClass.CommsTransmitterMail, new PayloadEnvelope(payload).ToXml(),
                 OutboundCommPriority.Low);
 

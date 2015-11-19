@@ -2,5 +2,6 @@
 {
     public interface ICommsResolver
     {
+        string ToXml(); // implemented by PayloadBase
     }
 }

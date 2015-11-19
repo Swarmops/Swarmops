@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communications\Resolution\ResolverEnvelope.cs" />
     <Compile Include="Financial\BitcoinTransactionInput.cs" />
     <Compile Include="Financial\BitcoinUtility.cs" />
     <Compile Include="Financial\HotBitcoinAddress.cs" />
@@ -190,7 +191,7 @@
     <Compile Include="Communications\Transmission\ParticipantMailPayload.cs" />
     <Compile Include="Communications\Transmission\PayloadEnvelope.cs" />
     <Compile Include="Communications\Transmission\NotificationPayload.cs" />
-    <Compile Include="Communications\Transmission\PayloadBase.cs" />
+    <Compile Include="Support\PayloadBase.cs" />
     <Compile Include="Financial\BankDataReaders\SEPaymentsBankgiroReader.cs" />
     <Compile Include="Financial\Currencies.cs" />
     <Compile Include="Financial\ExchangeRateSnapshot.cs" />
@@ -725,6 +726,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

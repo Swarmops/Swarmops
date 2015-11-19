@@ -7,7 +7,7 @@ namespace Swarmops.Basic.Types.Communications
     public class BasicOutboundComm : IHasIdentity
     {
         public BasicOutboundComm (int outboundCommId, int senderPersonId, int fromPersonId, int organizationId,
-            DateTime createdDateTime, string resolverClass, string recipientDataXml, bool resolved,
+            DateTime createdDateTime, string resolverDataXml, string recipientDataXml, bool resolved,
             DateTime resolvedDateTime, OutboundCommPriority priority, string transmitterClass, string payloadXml,
             bool open, DateTime startTransmitDateTime, DateTime closedDateTime, int recipientCount,
             int recipientsSuccess, int recipientsFail)
@@ -17,7 +17,7 @@ namespace Swarmops.Basic.Types.Communications
             FromPersonId = fromPersonId;
             OrganizationId = organizationId;
             CreatedDateTime = createdDateTime;
-            ResolverClass = resolverClass;
+            ResolverDataXml = resolverDataXml;
             RecipientDataXml = recipientDataXml;
             Resolved = resolved;
             ResolvedDateTime = resolvedDateTime;
@@ -36,7 +36,7 @@ namespace Swarmops.Basic.Types.Communications
         public BasicOutboundComm (BasicOutboundComm original) :
             this (
             original.OutboundCommId, original.SenderPersonId, original.FromPersonId, original.OrganizationId,
-            original.CreatedDateTime, original.ResolverClass, original.RecipientDataXml, original.Resolved,
+            original.CreatedDateTime, original.ResolverDataXml, original.RecipientDataXml, original.Resolved,
             original.ResolvedDateTime, original.Priority, original.TransmitterClass, original.PayloadXml,
             original.Open, original.StartTransmitDateTime, original.ClosedDateTime, original.RecipientCount,
             original.RecipientsSuccess, original.RecipeintsFail)
@@ -50,7 +50,7 @@ namespace Swarmops.Basic.Types.Communications
         public int FromPersonId { get; private set; }
         public int OrganizationId { get; private set; }
         public DateTime CreatedDateTime { get; private set; }
-        public string ResolverClass { get; private set; }
+        public string ResolverDataXml { get; private set; }
         public string RecipientDataXml { get; private set; }
         public bool Resolved { get; protected set; }
         public DateTime ResolvedDateTime { get; protected set; }
