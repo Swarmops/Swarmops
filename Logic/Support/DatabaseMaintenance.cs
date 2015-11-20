@@ -64,9 +64,16 @@ namespace Swarmops.Logic.Support
             string sql;
             bool upgraded = false;
 
+            if (currentDbVersion < expectedDbVersion)
+            {
+                Console.WriteLine("Swarmops: Current DB version is {0}, but expected is {1}. A schema upgrade will take place.", currentDbVersion, expectedDbVersion);
+            }
+
             while (currentDbVersion < expectedDbVersion)
             {
                 currentDbVersion++;
+
+                Console.Write("Schema {0} diff: Fetching...", currentDbVersion);
 
                 string fileName = String.Format ("http://packages.swarmops.com/schemata/upgrade-{0:D4}.sql",
                     currentDbVersion);
@@ -81,12 +88,15 @@ namespace Swarmops.Logic.Support
                 catch (Exception)
                 {
                     OutboundComm.CreateNotification (null, NotificationResource.System_DatabaseUpgradeFailed);
+                    Console.WriteLine(" FAILED! Aborting.");
 
                     return;
                 }
 
                 string[] sqlCommands = sql.Split ('#');
                 // in the file, the commands are split by a single # sign. (Semicolons are an integral part of storedprocs, so they can't be used.)
+
+                Console.Write(" applying...");
 
                 foreach (string sqlCommand in sqlCommands)
                 {
@@ -101,6 +111,7 @@ namespace Swarmops.Logic.Support
                                 new Exception (string.Format ("Exception upgrading to Db{0:D4}", currentDbVersion),
                                     exception));
 
+                        Console.Write(" EXCEPTION (see log)!");
                         // Continue processing after logging error.
                         // TODO: Throw and abort? Tricky decision
                     }
@@ -110,10 +121,13 @@ namespace Swarmops.Logic.Support
                 SwarmDb.GetDatabaseForWriting()
                     .SetKeyValue ("DbVersion", currentDbVersion.ToString (CultureInfo.InvariantCulture));
                 // Increment after each successful run
+
+                Console.WriteLine(" done.");
             }
 
             if (upgraded)
             {
+                Console.WriteLine("Swarmops database schema upgrade completed.\r\n");
                 try
                 {
                     OutboundComm.CreateNotification (null, NotificationResource.System_DatabaseSchemaUpgraded);

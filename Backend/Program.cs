@@ -25,6 +25,10 @@ namespace Swarmops.Backend
 
         private static void Main (string[] args)
         {
+            // Checking for schemata upgrade first of all
+
+            DatabaseMaintenance.UpgradeSchemata();
+
             testMode = false;
 
             UnixSignal[] killSignals = null;
@@ -153,10 +157,6 @@ namespace Swarmops.Backend
             smtpClient.Send (message);*/
 
             Console.WriteLine (" * Swarmops Backend starting");
-
-            // Checking for schemata upgrade first of all
-
-            DatabaseMaintenance.UpgradeSchemata();
 
             BotLog.Write(0, "MainCycle", "Backend STARTING");
 
