@@ -87,10 +87,25 @@ namespace Swarmops.Logic.Support
                 }
                 catch (Exception)
                 {
-                    OutboundComm.CreateNotification (null, NotificationResource.System_DatabaseUpgradeFailed);
-                    Console.WriteLine(" FAILED! Aborting.");
+                    Console.WriteLine(" trying fallback...");
 
-                    return;
+                    fileName = String.Format("https://raw.githubusercontent.com/Swarmops/Swarmops/master/Database/Schemata/upgrade-{0:D4}.sql",
+                        currentDbVersion);
+
+                    try
+                    {
+                        using (WebClient client = new WebClient())
+                        {
+                            sql = client.DownloadString(fileName);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        OutboundComm.CreateNotification(null, NotificationResource.System_DatabaseUpgradeFailed);
+                        Console.WriteLine(" FAILED! Aborting.");
+
+                        return;
+                    }
                 }
 
                 string[] sqlCommands = sql.Split ('#');
