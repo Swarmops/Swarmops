@@ -132,7 +132,7 @@ namespace Swarmops.Logic.Communications
 
         public static OutboundComm CreateNotification(Organization organization, NotificationResource notification, NotificationStrings strings, NotificationCustomStrings customStrings, People recipients = null)
         {
-            return CreateNotification(organization, notification.ToString(), strings, customStrings);
+            return CreateNotification(organization, notification.ToString(), strings, customStrings, recipients);
         }
 
 
