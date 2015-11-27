@@ -508,6 +508,16 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to --
+        ///This mail was sent to [Addressee] from [OrganizationName]. If you do not desire to receive these notifications in the future, please log on to [InstallationName] at [ExternalUrl] and modify your notification settings..
+        /// </summary>
+        internal static string NotificationFooter_Generic {
+            get {
+                return ResourceManager.GetString("NotificationFooter_Generic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your message has been queued for delivery and the recipients have been resolved. Your mail will be sent to, or be attempted to sent to, [RecipientCount] people in [Geography] in [OrganizationName]..
         /// </summary>
         internal static string OutboundComm_Resolved_Body {

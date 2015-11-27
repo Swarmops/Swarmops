@@ -61,7 +61,11 @@ namespace Swarmops.Logic.Communications.Payload
         {
             return
                 ExpandMacros (
-                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString (BodyResource, CultureInfo.CreateSpecificCulture (cultureId)));
+                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString (BodyResource,
+                        CultureInfo.CreateSpecificCulture (cultureId))) + "\r\n\r\n" +
+                ExpandMacros (
+                    Logic_Communications_Transmission_NotificationPayload.ResourceManager.GetString (
+                        "NotificationFooter_Generic", CultureInfo.CreateSpecificCulture (cultureId)));
         }
 
         public string ExpandMacros (string input)

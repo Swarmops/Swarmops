@@ -303,6 +303,10 @@ Please log on to [InstallationName] at [ExternalUrl]Financial/AttestCosts to att
   <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
     <value>[[OrganizationName]] [Regularship] renewed: [PersonName], [PersonGeography] [CountryCode] (manual)</value>
   </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>--
+This mail was sent to [Addressee] from [OrganizationName]. If you do not desire to receive these notifications in the future, please log on to [InstallationName] at [ExternalUrl] and modify your notification settings.</value>
+  </data>
   <data name="OutboundComm_Resolved_Body" xml:space="preserve">
     <value>Your message has been queued for delivery and the recipients have been resolved. Your mail will be sent to, or be attempted to sent to, [RecipientCount] people in [Geography] in [OrganizationName].</value>
   </data>

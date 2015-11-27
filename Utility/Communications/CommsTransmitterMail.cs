@@ -51,8 +51,14 @@ namespace Swarmops.Utility.Communications
                 throw new OutboundCommTransmitException ("Cannot send mail to " + person.Mail, e);
             }
 
-            mail.Subject = (string) comm[CommRenderPart.Subject];
-            mail.Body = (string) comm[CommRenderPart.BodyText];
+            string mailBodyText = (string)comm[CommRenderPart.BodyText];
+            mailBodyText = mailBodyText.Replace("[Addressee]", person.Canonical);
+
+            string mailBodyHtml = (string)comm[CommRenderPart.BodyHtml];
+            mailBodyHtml = mailBodyHtml.Replace("[Addressee]", person.Canonical);
+
+            mail.Subject = (string)comm[CommRenderPart.Subject];
+            mail.Body = mailBodyText;
             mail.SubjectEncoding = Encoding.UTF8;
             mail.BodyEncoding = Encoding.UTF8;
 
