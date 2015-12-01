@@ -43,7 +43,7 @@ namespace Swarmops.Utility.Communications
                     Encoding.UTF8);
                 mail.To.Add (new MailAddress (person.Mail, person.Name));
             }
-            catch (ArgumentException e)
+            catch (FormatException e)
             {
                 // Address failure -- either sender or recipient
 
