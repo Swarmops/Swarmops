@@ -110,7 +110,7 @@ namespace Swarmops.Logic.Communications.Payload
         public RenderedComm RenderComm (Person person)
         {
             string culture = person.PreferredCulture;
-            if (string.IsNullOrEmpty (culture))
+            if (string.IsNullOrEmpty (culture) || culture == "af-ZA") // the af-ZA is the virtual in-place translator code, which is gibberish
             {
                 culture = "en-US";
             }
