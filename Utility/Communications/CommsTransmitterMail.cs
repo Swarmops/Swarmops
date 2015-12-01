@@ -54,7 +54,7 @@ namespace Swarmops.Utility.Communications
             string mailBodyText = (string)comm[CommRenderPart.BodyText];
             mailBodyText = mailBodyText.Replace("[Addressee]", person.Canonical);
 
-            string mailBodyHtml = (string)comm[CommRenderPart.BodyHtml];
+            string mailBodyHtml = comm.ContainsKey(CommRenderPart.BodyHtml)? (string)comm[CommRenderPart.BodyHtml]: string.Empty;
             mailBodyHtml = mailBodyHtml.Replace("[Addressee]", person.Canonical);
 
             mail.Subject = (string)comm[CommRenderPart.Subject];
