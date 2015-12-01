@@ -37,6 +37,11 @@ namespace Swarmops.Utility.Communications
 
             // This is a rather simple mail (no images or stuff like that)
 
+            if (string.IsNullOrWhiteSpace (person.Mail))
+            {
+                throw new OutboundCommTransmitException("No valid mail address for " + person.Canonical);
+            }
+
             try
             {
                 mail.From = new MailAddress ((string) comm[CommRenderPart.SenderMail], (string) comm[CommRenderPart.SenderName],
