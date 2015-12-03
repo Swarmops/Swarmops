@@ -51,6 +51,7 @@
     <Compile Include="Enums\ExternalIdentityType.cs" />
     <Compile Include="Enums\FinancialAccountType.cs" />
     <Compile Include="Enums\FinancialDependencyType.cs" />
+    <Compile Include="Enums\FinancialForeignIdType.cs" />
     <Compile Include="Enums\FinancialValidationType.cs" />
     <Compile Include="Enums\GeographyLevel.cs" />
     <Compile Include="Enums\InvalidMembershipType.cs" />

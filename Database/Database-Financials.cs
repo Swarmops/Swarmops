@@ -614,10 +614,10 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command =
+                using (DbCommand command =
                     GetDbCommand (
                         "select AmountCents from FinancialAccountBudgetsMonthly where Year=" + year +
-                        " AND FinancialAccountId=" + financialAccountId + " ORDER BY Month;", connection);
+                        " AND FinancialAccountId=" + financialAccountId + " ORDER BY Month;", connection))
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
@@ -1040,6 +1040,50 @@ namespace Swarmops.Database
                 command.ExecuteNonQuery();
             }
         }
+
+
+        public void SetFinancialTransactionForeignId(int financialTransactionId, FinancialForeignIdType foreignIdType, string foreignId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command = GetDbCommand("SetFinancialTransactionForeignId", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddParameterWithName(command, "financialTransactionId", financialTransactionId);
+                AddParameterWithName(command, "financialTransactionForeignIdType", (int) foreignIdType);
+                AddParameterWithName(command, "foreignId", foreignId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+
+        public Int64 GetFinancialTransactionFromForeignId(FinancialForeignIdType foreignIdType, string foreignId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "Select FinancialTransactionId from FinancialTransactionForeignIds WHERE FinancialTransactionForeignIdType=" + (int) foreignIdType +
+                        " AND ForeignId='" + SqlSanitize (foreignId) + "';", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt32 (0);
+                    }
+
+                    return 0; // none found. Todo: throw exception instead? This behavior is inconsistent
+                }
+            }
+        }
+
 
 
         public DateTime GetFinancialAccountFirstTransactionDate (int financialAccountId)

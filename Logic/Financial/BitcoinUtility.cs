@@ -53,8 +53,6 @@ namespace Swarmops.Logic.Financial
                     }
                 }
             }
-
-            
         }
 
         public static ExtKey BitcoinHotPrivateRoot
@@ -178,6 +176,57 @@ namespace Swarmops.Logic.Financial
 
             return addresses.FindAmount (satoshis); // Will throw on a number of circumstances
         }
+
+
+        static public FinancialTransaction GetSwarmopsTransactionFromBlockchainId (string transactionId)
+        {
+            return null;
+        }
+
+
+        static public void CheckColdStorageForOrganization (Organization organization)
+        {
+            FinancialAccount coldRoot = organization.FinancialAccounts.AssetsBitcoinCold;
+
+            if (coldRoot == null)
+            {
+                return; // no cold assets to check
+            }
+        }
+
+        // https://blockchain.info/address/1Axd4QQhRSCMAuHe93uVKRjNSFj6WypcZa?format=json&api_key=I_am_testing_the_format_please_ignore
+
+        static private void CheckColdStorageRecurse (FinancialAccount parent)
+        {
+            foreach (FinancialAccount child in parent.Children)
+            {
+                CheckColdStorageRecurse (child);
+            }
+
+            // After recursing, get all transactions for this account and verify against our records
+
+            // is the account name a valid bitcoin address on the main network?
+
+            string address = parent.Name.Trim();
+
+            try
+            {
+                BitcoinAddress addressTest = new BitcoinAddress (BitcoinTestAddress, Network.Main);
+            }
+            catch (Exception e)
+            {
+                // the name wasn't an address, so return
+            }
+
+            var addressData =
+                JObject.Parse(
+                    new WebClient().DownloadString("https://blockchain.info/address/" + address + "?format=json&api_key=" +
+                                                    SystemSettings.BlockchainSwarmopsApiKey));   // warn: will 500 if no unspent outpoints
+
+            // TODO: PARSE (awaiting functions for native currency to be added to FinancialTransactionRows)
+
+        }
+
 
         public const int BitcoinWalletIndex = 1;
         public const int BitcoinDonationsIndex = 2;

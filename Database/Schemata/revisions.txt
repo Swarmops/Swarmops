@@ -29,3 +29,4 @@
 0029 - Added unspent satoshis to hotaddress on create unspent [RF]
 0030 - Added flexibility for Resolver classes for OutboundComms [RF]
 0031 - Added foreign ID tables, procs for transactions, to track blockchain [RF]
+0032 - Added native currency to transaction rows, for multi-currency accounting [RF]
