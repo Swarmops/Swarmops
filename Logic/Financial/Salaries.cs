@@ -148,9 +148,9 @@ namespace Swarmops.Logic.Financial
                     notificationStrings[NotificationString.CurrencyCode] = organization.Currency.DisplayCode;
                     notificationStrings[NotificationString.EmbeddedPreformattedText] = preFormattedStatement;
                     customStrings["LastYear"] = year.ToString(CultureInfo.InvariantCulture);
-                    customStrings["GrossSalaryTotal"] = String.Format("{0:10,N2}", grossTotal / 100.0);
-                    customStrings["TaxDeductedTotal"] = String.Format("{0:11,N2}", -subTaxTotal / 100.0);
-                    customStrings["NetSalaryTotal"] = String.Format("{0:10,N2}", netTotal / 100.0);
+                    customStrings["GrossSalaryTotal"] = String.Format("{0,10:N2}", grossTotal / 100.0);
+                    customStrings["TaxDeductedTotal"] = String.Format("{0,11:N2}", -subTaxTotal / 100.0);
+                    customStrings["NetSalaryTotal"] = String.Format("{0,10:N2}", netTotal / 100.0);
                     customStrings["TaxAdditiveTotalUnpadded"] = String.Format("{0:N2}", addTaxTotal / 100.0);
 
                     // Send notification if gross is nonzero
@@ -158,7 +158,7 @@ namespace Swarmops.Logic.Financial
                     if (grossTotal > 0)
                     {
                         OutboundComm.CreateNotification (organization, NotificationResource.Salary_LastYearSummary,
-                            notificationStrings, customStrings, People.FromSingle (Person.FromIdentity (1)));
+                            notificationStrings, customStrings, People.FromSingle (person));
                     }
                 }
             }

@@ -581,6 +581,9 @@ namespace Swarmops.Logic.Financial
                     {
                         // There is a payout for this person, but they don't have a bitcoin payout address set. Send notification to this effect twice a day.
 
+                        // DISABLE THIS FOR TIME BEING
+
+                        /*
                         if (utcNow.Minute != 0)
                         {
                             continue;
@@ -592,7 +595,7 @@ namespace Swarmops.Logic.Financial
 
                         NotificationStrings primaryStrings = new NotificationStrings();
                         primaryStrings[NotificationString.OrganizationName] = organization.Name;
-                        OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_PleaseSet, primaryStrings, People.FromSingle(payout.RecipientPerson));
+                        OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_PleaseSet, primaryStrings, People.FromSingle(payout.RecipientPerson));*/
                     }
                 }
 
