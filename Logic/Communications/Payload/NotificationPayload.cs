@@ -86,8 +86,11 @@ namespace Swarmops.Logic.Communications.Payload
                 {
                     // TODO: Check if string ends in Float, and if so, parse and culturize it
 
-                    input = input.Replace ("[" + notificationString /* this is an enum converted to string */+ "]",
-                        Strings[notificationString]);
+                    if (!String.IsNullOrEmpty (Strings[notificationString]))
+                    {
+                        input = input.Replace ("[" + notificationString /* this is an enum converted to string */+ "]",
+                            Strings[notificationString]);
+                    }
                 }
             }
 
@@ -95,10 +98,13 @@ namespace Swarmops.Logic.Communications.Payload
             {
                 foreach (string notificationCustomString in CustomStrings.Keys)
                 {
-                    input =
-                        input.Replace (
-                            "[" + notificationCustomString /* this is a System.String as opposed to above */+ "]",
-                            CustomStrings[notificationCustomString]);
+                    if (!String.IsNullOrEmpty (CustomStrings[notificationCustomString]))
+                    {
+                        input =
+                            input.Replace (
+                                "[" + notificationCustomString /* this is a System.String as opposed to above */+ "]",
+                                CustomStrings[notificationCustomString]);
+                    }
                 }
             }
 
@@ -174,7 +180,10 @@ namespace Swarmops.Logic.Communications.Payload
         BitcoinPayoutAddress_Bad,
         BitcoinPayoutAddress_PleaseSet,
         BitcoinPayoutAddress_OfficerNotify,
-        BitcoinPayoutAddress_Changed
+        BitcoinPayoutAddress_Changed,
+        Salary_MonthlyStatement,
+        Salary_Paid,
+        Salary_LastYearSummary
     }
 
 // ReSharper restore InconsistentNaming

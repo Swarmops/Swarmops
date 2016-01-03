@@ -949,27 +949,8 @@ namespace Swarmops.Database
             }
         }
 
-        public void CreateFinancialTransactionRow (int financialTransactionId, int financialAccountId, double amount,
-            int personId)
-        {
-            using (DbConnection connection = GetMySqlDbConnection())
-            {
-                connection.Open();
 
-                DbCommand command = GetDbCommand ("CreateFinancialTransactionRow", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                AddParameterWithName (command, "financialTransactionId", financialTransactionId);
-                AddParameterWithName (command, "financialAccountId", financialAccountId);
-                AddParameterWithName (command, "amount", amount);
-                AddParameterWithName (command, "dateTime", DateTime.Now);
-                AddParameterWithName (command, "personId", personId);
-
-                command.ExecuteNonQuery();
-            }
-        }
-
-        public void CreateFinancialTransactionRow (int financialTransactionId, int financialAccountId, Int64 amountCents,
+        public int CreateFinancialTransactionRow (int financialTransactionId, int financialAccountId, Int64 amountCents,
             int personId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
@@ -985,7 +966,7 @@ namespace Swarmops.Database
                 AddParameterWithName (command, "dateTime", DateTime.Now);
                 AddParameterWithName (command, "personId", personId);
 
-                command.ExecuteNonQuery();
+                return Convert.ToInt32(command.ExecuteScalar());
             }
         }
 
@@ -1048,35 +1029,37 @@ namespace Swarmops.Database
             {
                 connection.Open();
 
-                DbCommand command = GetDbCommand("SetFinancialTransactionForeignId", connection);
-                command.CommandType = CommandType.StoredProcedure;
+                using (DbCommand command = GetDbCommand ("SetFinancialTransactionForeignId", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
-                AddParameterWithName(command, "financialTransactionId", financialTransactionId);
-                AddParameterWithName(command, "financialTransactionForeignIdType", (int) foreignIdType);
-                AddParameterWithName(command, "foreignId", foreignId);
+                    AddParameterWithName (command, "financialTransactionId", financialTransactionId);
+                    AddParameterWithName (command, "financialTransactionForeignIdType", (int) foreignIdType);
+                    AddParameterWithName (command, "foreignId", foreignId);
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
 
 
-        public Int64 GetFinancialTransactionFromForeignId(FinancialForeignIdType foreignIdType, string foreignId)
+        public int GetFinancialTransactionFromForeignId(FinancialForeignIdType foreignIdType, string foreignId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
                 connection.Open();
 
-                DbCommand command =
+                using (DbCommand command =
                     GetDbCommand(
-                        "Select FinancialTransactionId from FinancialTransactionForeignIds WHERE FinancialTransactionForeignIdType=" + (int) foreignIdType +
-                        " AND ForeignId='" + SqlSanitize (foreignId) + "';", connection);
+                        "Select FinancialTransactionId from FinancialTransactionForeignIds WHERE FinancialTransactionForeignIdType=" + (int)foreignIdType +
+                        " AND ForeignId='" + SqlSanitize(foreignId) + "';", connection))
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetInt32 (0);
+                        return reader.GetInt32(0);
                     }
 
                     return 0; // none found. Todo: throw exception instead? This behavior is inconsistent
@@ -1086,7 +1069,53 @@ namespace Swarmops.Database
 
 
 
-        public DateTime GetFinancialAccountFirstTransactionDate (int financialAccountId)
+        public Int64 GetFinancialTransactionRowNativeAmountCents(int financialTransactionRowId, int currencyId)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command =
+                    GetDbCommand(
+                        "Select NativeAmountCents from FinancialTransactionRows WHERE FinancialTransactionRowId=" + financialTransactionRowId +
+                        " AND CurrencyId =" + currencyId + ";", connection))
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt64(0);
+                    }
+
+                    return 0; // none found. Todo: throw exception instead? This behavior is inconsistent
+                }
+            }
+        }
+
+
+
+        public void SetFinancialTransactionRowNativeAmountCents(int financialTransactionRowId, int currencyId, Int64 nativeAmountCents)
+        {
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command = GetDbCommand("SetFinancialTransactionRowNativeCurrency", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    AddParameterWithName(command, "financialTransactionRowId", financialTransactionRowId);
+                    AddParameterWithName(command, "currencyId", currencyId);
+                    AddParameterWithName(command, "nativeAmountCents", nativeAmountCents);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+        public DateTime GetFinancialAccountFirstTransactionDate(int financialAccountId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {

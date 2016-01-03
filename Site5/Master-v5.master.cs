@@ -36,6 +36,10 @@ namespace Swarmops
                 Response.Redirect("/", true);
             }
 
+            // Test code
+
+            // Salaries.CreateAnnualStatements (2015);
+
             // Ugly ugly UGLY legacy: Do not allow Sandbox logins on first pilot - it's broken
 
             if (this._authority.Organization.Identity == 3 &&

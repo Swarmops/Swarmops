@@ -92,6 +92,10 @@ namespace Swarmops.Logic.Financial
 
                 // TODO: CREATE SALARY SPECIFICATION, SEND TO PERSON
             }
+
+            // If this is January, also send the annual statements for last year
+
+            Salaries.CreateAnnualStatements (today.Year-1);
         }
     }
 }

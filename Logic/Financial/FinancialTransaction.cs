@@ -159,6 +159,28 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public static FinancialTransaction FromBlockchainHash (Organization organization, string blockchainTransactionHash)
+        {
+            int[] transactionIds =
+                SwarmDb.GetDatabaseForReading()
+                    .GetObjectsByOptionalData (ObjectType.FinancialTransaction,
+                        ObjectOptionalDataType.FinancialTransactionBlockchainHash, blockchainTransactionHash);
+
+            // There may be multiple transactions in this Swarmops installation referring to this transaction on the blockchain, but only
+            // one per organization. So find the transaction that matches the org we want.
+
+            foreach (int transactionId in transactionIds)
+            {
+                FinancialTransaction potentialResult = FinancialTransaction.FromIdentity (transactionId);
+                if (potentialResult.OrganizationId == organization.Identity)
+                {
+                    return potentialResult;
+                }
+            }
+
+            throw new ArgumentException("No match for supplied blockchain tx hash and organization");
+        }
+
         public IHasIdentity Dependency
         {
             set
@@ -229,17 +251,19 @@ namespace Swarmops.Logic.Financial
             AddRow (account, (Int64) (amount*100), person);
         }
 
-        public void AddRow (FinancialAccount account, Int64 amountCents, Person person)
+        public FinancialTransactionRow AddRow (FinancialAccount account, Int64 amountCents, Person person)
         {
-            AddRow (account.Identity, amountCents, person != null ? person.Identity : 0);
+            return AddRow (account.Identity, amountCents, person != null ? person.Identity : 0);
         }
 
-        private void AddRow (int financialAccountId, Int64 amountCents, int personId)
+        private FinancialTransactionRow AddRow (int financialAccountId, Int64 amountCents, int personId)
         {
             if (DateTime.Year <=
                 FinancialAccount.FromIdentity (financialAccountId).Organization.Parameters.FiscalBooksClosedUntilYear)
             {
                 // Recurse down into continuation transactions to write row in first nonclosed year
+
+                FinancialTransactionRow newRow = null;
 
                 FinancialTransaction transactionContinued = ContinuedTransaction;
 
@@ -249,21 +273,21 @@ namespace Swarmops.Logic.Financial
 
                     transactionContinued = Create (OrganizationId, DateTime.Now,
                         "Continued Tx #" + Identity);
-                    transactionContinued.AddRow (financialAccountId, amountCents, personId);
+                    newRow = transactionContinued.AddRow (financialAccountId, amountCents, personId);
                     transactionContinued.Dependency = this;
                 }
                 else
                 {
                     // Recurse
 
-                    transactionContinued.AddRow (financialAccountId, amountCents, personId);
+                    newRow = transactionContinued.AddRow (financialAccountId, amountCents, personId);
                 }
 
-                return;
+                return newRow;
             }
 
-            SwarmDb.GetDatabaseForWriting()
-                .CreateFinancialTransactionRow (Identity, financialAccountId, amountCents, personId);
+            return FinancialTransactionRow.FromIdentityAggressive (SwarmDb.GetDatabaseForWriting()
+                .CreateFinancialTransactionRow (Identity, financialAccountId, amountCents, personId));
         }
 
         public void AddDocument (string serverFileName, string originalFileName, Int64 fileSize, string description,

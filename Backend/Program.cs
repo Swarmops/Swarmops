@@ -465,7 +465,6 @@ namespace Swarmops.Backend
 
         private static void OnEveryHour()
         {
-            DateTime startTime = DateTime.Now;
             try
             {
                 BotLog.Write (0, "MainCycle", "One-hour entry");

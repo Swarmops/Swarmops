@@ -194,8 +194,6 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        // https://blockchain.info/address/1Axd4QQhRSCMAuHe93uVKRjNSFj6WypcZa?format=json&api_key=I_am_testing_the_format_please_ignore
-
         static private void CheckColdStorageRecurse (FinancialAccount parent)
         {
             foreach (FinancialAccount child in parent.Children)
@@ -216,6 +214,8 @@ namespace Swarmops.Logic.Financial
             catch (Exception e)
             {
                 // the name wasn't an address, so return
+
+                return;
             }
 
             var addressData =
@@ -224,6 +224,17 @@ namespace Swarmops.Logic.Financial
                                                     SystemSettings.BlockchainSwarmopsApiKey));   // warn: will 500 if no unspent outpoints
 
             // TODO: PARSE (awaiting functions for native currency to be added to FinancialTransactionRows)
+
+            int transactionCount = (int)(addressData["n_tx"]);
+
+            foreach (var tx in addressData["txs"])
+            {
+                string blockchainTransactionId = (string) tx["hash"];
+
+                FinancialTransaction ourTx = FinancialTransaction.FromBlockchainHash (parent.Organization, blockchainTransactionId);
+            }
+
+            // TODO: CONTINUE HERE
 
         }
 

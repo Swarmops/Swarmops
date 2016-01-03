@@ -686,6 +686,28 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is your summary salary statement for [LastYear]. It is not a statement of a new salary, but a statement of the monthly salaries paid to you over the course of the last year as well as any taxes deducted. The purpose of this statement is to serve as data for your records and/or for tax declaration purposes for last year.
+        ///
+        ///Gross salary for [LastYear]:   [CurrencyCode] [GrossSalaryTotal]
+        ///Tax deducted therefrom: [CurrencyCode] [TaxDeductedTotal]	
+        ///Net salary paid out:     [CurrencyCode] [NetSalaryTotal] [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Salary_LastYearSummary_Body {
+            get {
+                return ResourceManager.GetString("Salary_LastYearSummary_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Salary summary statement for [LastYear].
+        /// </summary>
+        internal static string Salary_LastYearSummary_Subject {
+            get {
+                return ResourceManager.GetString("Salary_LastYearSummary_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Swarmops Backend [SwarmopsVersion] on host [HostName] has successfully upgraded the Swarmops database schema to revision [DbVersion].
         ///
         ///This is for information only. You do not need to take action..

@@ -382,6 +382,27 @@ Please log on to [InstallationName] at [ExternalUrl]Financial/ValidateReceipts t
     <value>[[OrganizationName] - ACTION ITEM] Receipts Filed - Validation Needed</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>This is your summary salary statement for [LastYear]. It is not a statement of a new salary, but a statement of the monthly salaries paid to you over the course of the last year as well as any taxes deducted. The purpose of this statement is to serve as data for your records and/or for tax declaration purposes for last year.
+
+Gross salary for [LastYear]:   [CurrencyCode] [GrossSalaryTotal]
+Tax deducted therefrom: [CurrencyCode] [TaxDeductedTotal]	
+Net salary paid out:     [CurrencyCode] [NetSalaryTotal]
+
+
+Month       Gross    Deducted          Net  Paid using
+-----  ----------  -----------  ----------  -----------
+[EmbeddedPreformattedText]
+
+TOTAL  [GrossSalaryTotal]  [TaxDeductedTotal]  [NetSalaryTotal]
+
+
+In addition, [CurrencyCode] [TaxAdditiveTotalUnpadded] have been paid in taxes by the organization for your employment. This is also a tax on your salary, even if its nature as such has been bureaucratically concealed.</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Salary summary statement for [LastYear]</value>
+  </data>
   <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
     <value>Swarmops Backend [SwarmopsVersion] on host [HostName] has successfully upgraded the Swarmops database schema to revision [DbVersion].
 

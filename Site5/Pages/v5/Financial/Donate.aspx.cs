@@ -98,6 +98,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 HotBitcoinAddressUnspents unspents = HotBitcoinAddress.FromAddress (bitcoinAddress).Unspents;
 
+                // TODO: Update the HotBitcoinAddress with the new amount?
+
                 Int64 satoshisReceived = unspents.Last().AmountSatoshis;
 
                 if (unspents.Last().TransactionHash != txHash && txHash.Length > 0)
@@ -106,8 +108,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                     Debugger.Break();
                 }
 
-                Swarmops.Logic.Financial.Money moneyReceived = new Swarmops.Logic.Financial.Money (satoshisReceived,
+                Swarmops.Logic.Financial.Money moneyReceived = new Swarmops.Logic.Financial.Money(satoshisReceived,
                     Currency.Bitcoin);
+
+                // Make sure that the hotwallet native currency is bitcoin
+                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.NativeCurrency = Currency.Bitcoin;
 
                 // Create success message and ledger transaction
                 string successMessage = string.Empty;
@@ -137,15 +142,15 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 {
                     // The ledger is NOT native bitcoin, so we'll need to convert currencies
 
-                    long nativeCents = moneyReceived.ToCurrency (authData.CurrentOrganization.Currency).Cents;
+                    long orgNativeCents = moneyReceived.ToCurrency (authData.CurrentOrganization.Currency).Cents;
                     FinancialTransaction ledgerTx = FinancialTransaction.Create(authData.CurrentOrganization,
                         DateTime.UtcNow, "Donation (bitcoin to hotwallet)");
-                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.IncomeDonations, -nativeCents, authData.CurrentUser);
-                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, nativeCents, authData.CurrentUser);
+                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.IncomeDonations, -orgNativeCents, authData.CurrentUser);
+                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).NativeAmountCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.Bitcoin);
                     ledgerTx.BlockchainHash = txHash;
 
                     successMessage = string.Format (Resources.Pages.Financial.Donate_FundsReceived,
-                        authData.CurrentOrganization.Currency.DisplayCode, nativeCents/100.0, satoshisReceived/100.0);
+                        authData.CurrentOrganization.Currency.DisplayCode, orgNativeCents/100.0, satoshisReceived/100.0);
                 }
 
                 return new AjaxCallResult() {DisplayMessage = successMessage, Success = true};

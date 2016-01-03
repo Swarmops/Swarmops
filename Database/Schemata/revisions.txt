@@ -30,3 +30,4 @@
 0030 - Added flexibility for Resolver classes for OutboundComms [RF]
 0031 - Added foreign ID tables, procs for transactions, to track blockchain [RF]
 0032 - Added native currency to transaction rows, for multi-currency accounting [RF]
+0033 - Added transaction row identity return, necessary for 0032 [RF]

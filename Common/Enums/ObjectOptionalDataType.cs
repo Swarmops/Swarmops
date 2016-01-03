@@ -8,7 +8,8 @@ namespace Swarmops.Common.Enums
         Organization,
         OutboundInvoice,
         InboundInvoice,
-        FinancialTransaction
+        FinancialTransaction,
+        FinancialTransactionRow
     }
 
     public enum ObjectOptionalDataType
@@ -335,21 +336,31 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// If there's a hotwallet, its private root key (encrypted with file and db keys)
         /// </summary>
-        BudgetBitcoinPrivateRoot,
+        FinancialAccountBitcoinPrivateRoot,
 
         /// <summary>
         /// If there's another wallet, its public root key (encrypted with db key)
         /// </summary>
-        BudgetBitcoinPublicRoot,
+        FinancialAccountBitcoinPublicRoot,
 
         /// <summary>
         /// For cold wallets, we may prefer listing the public addresses directly
         /// </summary>
-        BudgetBitcoinPublicAddress,
+        FinancialAccountBitcoinPublicAddress,
 
         /// <summary>
         /// For a bitcoin transaction, its hash on the blockchain
         /// </summary>
-        FinancialTransactionBlockchainHash
+        FinancialTransactionBlockchainHash,
+
+        /// <summary>
+        /// For a financial account, the native currency (typically bitcoin). Used for multi-currency accounting.
+        /// </summary>
+        FinancialAccountNativeCurrency,
+
+        /// <summary>
+        /// For a hotwallet transaction, the complete derivation path used for this address
+        /// </summary>
+        FinancialTransactionRowBitcoinDerivationPath
     }
 }

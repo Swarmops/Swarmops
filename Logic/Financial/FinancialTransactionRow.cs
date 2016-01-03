@@ -59,6 +59,21 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public Money NativeAmountCents
+        {
+            get
+            {
+                Currency currency = this.Account.NativeCurrency;
+                int currencyId = currency.Identity;
+                Int64 nativeCents = SwarmDb.GetDatabaseForReading().GetFinancialTransactionRowNativeAmountCents (this.Identity, currencyId);
+                return new Money(nativeCents, currency, this.CreatedDateTime); // includes the valuation datetime, as it's a non-org currency
+            }
+            set
+            {
+                SwarmDb.GetDatabaseForWriting().SetFinancialTransactionRowNativeAmountCents (this.Identity, value.Currency.Identity, value.Cents);
+            }
+        }
+
         [Obsolete ("Do not use. Use Int64 AmountCents.", true)]
         public decimal Amount
         {
@@ -70,9 +85,14 @@ namespace Swarmops.Logic.Financial
             return new FinancialTransactionRow (basic);
         }
 
-        public static FinancialTransactionRow FromIdentity (int identity)
+        public static FinancialTransactionRow FromIdentity(int identity)
         {
-            return FromBasic (SwarmDb.GetDatabaseForReading().GetFinancialTransactionRow (identity));
+            return FromBasic(SwarmDb.GetDatabaseForReading().GetFinancialTransactionRow(identity));
+        }
+
+        public static FinancialTransactionRow FromIdentityAggressive(int identity)
+        {
+            return FromBasic(SwarmDb.GetDatabaseForWriting().GetFinancialTransactionRow(identity)); // "For writing" is intentional
         }
     }
 }

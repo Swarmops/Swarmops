@@ -114,6 +114,21 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+
+        public Currency NativeCurrency
+        {
+            get
+            {
+                int currencyId = OptionalData.GetOptionalDataInt (ObjectOptionalDataType.FinancialAccountNativeCurrency);
+                return (currencyId != 0 ? Currency.FromIdentity (currencyId) : null);
+            }
+            set
+            {
+                OptionalData.SetOptionalDataInt (ObjectOptionalDataType.FinancialAccountNativeCurrency, value.Identity);
+            }
+        }
+
+
         public ExternalBankDataProfile ExternalBankDataProfile
         {
             get
