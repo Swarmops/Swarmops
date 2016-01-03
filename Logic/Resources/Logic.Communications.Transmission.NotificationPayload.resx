@@ -397,7 +397,7 @@ Month       Gross    Deducted          Net  Paid using
 TOTAL  [GrossSalaryTotal]  [TaxDeductedTotal]  [NetSalaryTotal]
 
 
-In addition, [CurrencyCode] [TaxAdditiveTotalUnpadded] have been paid in taxes by the organization for your employment. This is also a tax on your salary, even if its nature as such has been bureaucratically concealed.</value>
+In addition, [CurrencyCode] [TaxAdditiveTotalUnpadded] have been paid in taxes by the organization for your employment, in addition to the amount deducted above. This is also a tax on your salary, even if its nature as such has been bureaucratically concealed.</value>
     <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
   </data>
   <data name="Salary_LastYearSummary_Subject" xml:space="preserve">

@@ -120,6 +120,7 @@ namespace Swarmops.Logic.Financial
                     {
                         string monthName = new DateTime (year, monthNumber, 1).ToString ("MMM",
                             new CultureInfo (person.PreferredCulture));
+                        monthName = monthName.Substring (0, 3); // believe it or not some .Net localizations don't respect the three letter limit
                         string lineItem = "  " + monthName;
 
                         if (personSalaryLookup[personId].ContainsKey (monthNumber) && personSalaryLookup[personId][monthNumber].GrossSalaryCents > 0)
@@ -152,10 +153,13 @@ namespace Swarmops.Logic.Financial
                     customStrings["NetSalaryTotal"] = String.Format("{0:10,N2}", netTotal / 100.0);
                     customStrings["TaxAdditiveTotalUnpadded"] = String.Format("{0:N2}", addTaxTotal / 100.0);
 
-                    // Send notification
+                    // Send notification if gross is nonzero
 
-                    OutboundComm.CreateNotification (organization, NotificationResource.Salary_LastYearSummary,
-                        notificationStrings, customStrings, People.FromSingle (Person.FromIdentity (1)));
+                    if (grossTotal > 0)
+                    {
+                        OutboundComm.CreateNotification (organization, NotificationResource.Salary_LastYearSummary,
+                            notificationStrings, customStrings, People.FromSingle (Person.FromIdentity (1)));
+                    }
                 }
             }
         }
