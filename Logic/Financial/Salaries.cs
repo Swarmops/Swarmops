@@ -128,7 +128,7 @@ namespace Swarmops.Logic.Financial
 
                             // TODO: replace "bitcoin" with actual payout method - this is just for show at the moment
 
-                            lineItem += String.Format ("  {0,8:N2}  {1,9:N2}  {2,8:N2}  bitcoin",
+                            lineItem += String.Format ("  {0,10:N2}  {1,11:N2}  {2,10:N2}  bitcoin",
                                 monthSalary.GrossSalaryCents/100.0, -monthSalary.SubtractiveTaxCents/100.0,
                                 monthSalary.NetSalaryCents/100.0);
 
@@ -147,9 +147,9 @@ namespace Swarmops.Logic.Financial
                     notificationStrings[NotificationString.CurrencyCode] = organization.Currency.DisplayCode;
                     notificationStrings[NotificationString.EmbeddedPreformattedText] = preFormattedStatement;
                     customStrings["LastYear"] = year.ToString(CultureInfo.InvariantCulture);
-                    customStrings["GrossSalaryTotal"] = String.Format("{0:N2,8}", grossTotal / 100.0);
-                    customStrings["TaxDeductedTotal"] = String.Format("{0:N2,9}", -subTaxTotal / 100.0);
-                    customStrings["NetSalaryTotal"] = String.Format("{0:N2,8}", netTotal / 100.0);
+                    customStrings["GrossSalaryTotal"] = String.Format("{0:10,N2}", grossTotal / 100.0);
+                    customStrings["TaxDeductedTotal"] = String.Format("{0:11,N2}", -subTaxTotal / 100.0);
+                    customStrings["NetSalaryTotal"] = String.Format("{0:10,N2}", netTotal / 100.0);
                     customStrings["TaxAdditiveTotalUnpadded"] = String.Format("{0:N2}", addTaxTotal / 100.0);
 
                     // Send notification
