@@ -211,7 +211,7 @@ namespace Swarmops.Logic.Financial
             {
                 BitcoinAddress addressTest = new BitcoinAddress (BitcoinTestAddress, Network.Main);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // the name wasn't an address, so return
 
