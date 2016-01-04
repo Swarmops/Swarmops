@@ -223,17 +223,27 @@ namespace Swarmops.Logic.Financial
                     new WebClient().DownloadString("https://blockchain.info/address/" + address + "?format=json&api_key=" +
                                                     SystemSettings.BlockchainSwarmopsApiKey));   // warn: will 500 if no unspent outpoints
 
-            // TODO: PARSE (awaiting functions for native currency to be added to FinancialTransactionRows)
-
             int transactionCount = (int)(addressData["n_tx"]);
 
             foreach (var tx in addressData["txs"])
             {
                 string blockchainTransactionId = (string) tx["hash"];
 
-                FinancialTransaction ourTx = FinancialTransaction.FromBlockchainHash (parent.Organization, blockchainTransactionId);
+                try
+                {
+                    FinancialTransaction ourTx = FinancialTransaction.FromBlockchainHash(parent.Organization, blockchainTransactionId);
+                    // If the transaction was fetched fine, we have already seen this transaction, and all is fine
+                }
+                catch (ArgumentException)
+                {
+                    // We didn't have this transaction, so we need to create it
+                    // Did we lose or gain money?
+
+                    // Find all in- and outpoints, determine which are ours (hot and cold wallet) and which aren't
+                }
             }
 
+            // TODO: PARSE (awaiting functions for native currency to be added to FinancialTransactionRows)
             // TODO: CONTINUE HERE
 
         }

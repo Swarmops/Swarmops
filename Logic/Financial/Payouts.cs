@@ -579,23 +579,20 @@ namespace Swarmops.Logic.Financial
                     }
                     else if (payout.RecipientPerson != null && payout.RecipientPerson.BitcoinPayoutAddress.Length < 3 && payout.Account.Length < 4)
                     {
-                        // There is a payout for this person, but they don't have a bitcoin payout address set. Send notification to this effect twice a day.
+                        // There is a payout for this person, but they don't have a bitcoin payout address set. Send notification to this effect once a day.
 
-                        // DISABLE THIS FOR TIME BEING
-
-                        /*
                         if (utcNow.Minute != 0)
                         {
                             continue;
                         }
-                        if (utcNow.Hour % 12 != 0)
+                        if (utcNow.Hour != 12)
                         {
                             continue;
                         }
 
                         NotificationStrings primaryStrings = new NotificationStrings();
                         primaryStrings[NotificationString.OrganizationName] = organization.Name;
-                        OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_PleaseSet, primaryStrings, People.FromSingle(payout.RecipientPerson));*/
+                        OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_PleaseSet, primaryStrings, People.FromSingle(payout.RecipientPerson));
                     }
                 }
 
