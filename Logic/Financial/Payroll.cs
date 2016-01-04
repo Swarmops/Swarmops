@@ -95,7 +95,10 @@ namespace Swarmops.Logic.Financial
 
             // If this is January, also send the annual statements for last year
 
-            Salaries.CreateAnnualStatements (today.Year-1);
+            if (today.Month == 1)
+            {
+                Salaries.CreateAnnualStatements (today.Year - 1);
+            }
         }
     }
 }
