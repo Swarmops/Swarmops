@@ -13,6 +13,8 @@ using NBitcoin;
 using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Newtonsoft.Json.Linq;
 using Swarmops.Database;
+using Swarmops.Logic.Communications;
+using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 
@@ -36,7 +38,11 @@ namespace Swarmops.Logic.Financial
                 ExtKey privateRoot = new ExtKey();
                 File.WriteAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet", privateRoot.GetWif(Network.Main).ToWif(), Encoding.ASCII);
                 File.WriteAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet-created-" + DateTime.UtcNow.ToString("yyyy-MM-dd--HH-mm-ss--fff.backup"), privateRoot.GetWif(Network.Main).ToWif(), Encoding.ASCII); // an extra backup
-                Persistence.Key["BitcoinHotPublicRoot"] = privateRoot.Neuter().GetWif(Network.Main).ToWif();
+
+                if (String.IsNullOrEmpty (Persistence.Key["BitcoinHotPublicRoot"]))
+                {
+                    Persistence.Key["BitcoinHotPublicRoot"] = privateRoot.Neuter().GetWif (Network.Main).ToWif();
+                }
             }
             else
             {
@@ -51,6 +57,19 @@ namespace Swarmops.Logic.Financial
                     {
                         // TODO: Log some sort of exception (the sandbox db is reset every night, so it's ok to lose the public key from there)
                     }
+                }
+
+                // Is the hotwallet public root equal to the private root, while in production environment?
+
+                // ReSharper disable once RedundantCheckBeforeAssignment
+                if (Persistence.Key["BitcoinHotPublicRoot"] !=
+                    BitcoinHotPrivateRoot.Neuter().GetWif (Network.Main).ToWif() && !Debugger.IsAttached)
+                {
+                    // SERIOUS CONDITION - the public root key did not match the private root key. This needs to be logged somewhere.
+                    OutboundComm.CreateNotification (NotificationResource.System_PublicRootReset);
+
+                    // Reset it
+                    Persistence.Key["BitcoinHotPublicRoot"] = BitcoinHotPrivateRoot.Neuter().GetWif(Network.Main).ToWif();
                 }
             }
         }
@@ -228,15 +247,18 @@ namespace Swarmops.Logic.Financial
             foreach (var tx in addressData["txs"])
             {
                 string blockchainTransactionId = (string) tx["hash"];
+                FinancialTransaction ourTx = null;
 
                 try
                 {
-                    FinancialTransaction ourTx = FinancialTransaction.FromBlockchainHash(parent.Organization, blockchainTransactionId);
-                    // If the transaction was fetched fine, we have already seen this transaction, and all is fine
+                    ourTx = FinancialTransaction.FromBlockchainHash(parent.Organization, blockchainTransactionId);
+                    // If the transaction was fetched fine, we have already seen this transaction, but need to re-check it
                 }
                 catch (ArgumentException)
                 {
                     // We didn't have this transaction, so we need to create it
+
+                    // ourTx = FinancialTransaction.Create (parent.Organization, DateTime, Description)
                     // Did we lose or gain money?
 
                     // Find all in- and outpoints, determine which are ours (hot and cold wallet) and which aren't

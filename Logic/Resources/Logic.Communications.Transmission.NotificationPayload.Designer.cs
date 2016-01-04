@@ -788,6 +788,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The bitcoin public root key in the MySql database was not a match for the bitcoin private root key stored in /etc/swarmops on [HostName]. This is a potentially serious condition, and should never ever happen, so the public root key was rederived from the private key and re-written to the database over what was there before..
+        /// </summary>
+        internal static string System_PublicRootReset_Body {
+            get {
+                return ResourceManager.GetString("System_PublicRootReset_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops: Hotwallet public root key reset.
+        /// </summary>
+        internal static string System_PublicRootReset_Subject {
+            get {
+                return ResourceManager.GetString("System_PublicRootReset_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Swarmops Backend version [SwarmopsVersion] on host [HostName] has successfully started and connected to database and notification frameworks..
         /// </summary>
         internal static string System_Startup_Body {
@@ -802,6 +820,26 @@ namespace Swarmops.Logic.Resources {
         internal static string System_Startup_Subject {
             get {
                 return ResourceManager.GetString("System_Startup_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Swarmops transmission engine on [HostName] has encountered an unknown payload type ([UnrecognizedPayloadType]). This should only happen at very rare occasions in conjunction with upgrades where an upgraded version has to take care of something that changed names in the process, itself a rare phenomenon.
+        ///
+        ///If this error is recurring, you may have a badly installed plugin or something similar. In any case, the unrecognized message has been discarded and won&apos;t be transmitted, since Swarmops doesn&apos;t know h [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string System_UnrecognizedPayload_Body {
+            get {
+                return ResourceManager.GetString("System_UnrecognizedPayload_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Swarmops: Unrecognized comms payload.
+        /// </summary>
+        internal static string System_UnrecognizedPayload_Subject {
+            get {
+                return ResourceManager.GetString("System_UnrecognizedPayload_Subject", resourceCulture);
             }
         }
     }

@@ -28,6 +28,15 @@ namespace Swarmops.Utility.Communications
             Assembly assembly = typeof(PayloadEnvelope).Assembly;
 
             Type payloadType = assembly.GetType(envelope.PayloadClass);
+            if (payloadType == null)
+            {
+                NotificationCustomStrings customStrings = new NotificationCustomStrings();
+                customStrings["UnrecognizedPayloadType"] = envelope.PayloadClass;
+                OutboundComm.CreateNotification (null, NotificationResource.System_UnrecognizedPayload, customStrings);
+
+                throw new OutboundCommTransmitException("Unrecognized or uninstantiable payload type: " + envelope.PayloadClass);
+            }
+
             var methodInfo = payloadType.GetMethod("FromXml", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 
             ICommsRenderer renderer = (ICommsRenderer)(methodInfo.Invoke(null, new object[] { envelope.PayloadXml }));

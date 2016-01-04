@@ -144,6 +144,8 @@ namespace Swarmops.Logic.Communications.Payload
         System_DatabaseSchemaUpgraded,
         System_DatabaseUpgradeFailed,
         System_MailServerTest,
+        System_PublicRootReset,
+        System_UnrecognizedPayload,
         CashAdvance_Requested,
         CashAdvance_Attested,
         CashAdvance_Deattested,
