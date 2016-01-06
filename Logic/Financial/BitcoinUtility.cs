@@ -95,7 +95,7 @@ namespace Swarmops.Logic.Financial
         {
             List<string> inputAddresses = new List<string>();
             var jsonResult =
-                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/rawTx/" + txHash + "?format=json&api_key=" + SystemSettings.BlockchainSwarmopsApiKey));
+                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/rawtx/" + txHash + "?format=json&api_key=" + SystemSettings.BlockchainSwarmopsApiKey));
 
             foreach (var input in jsonResult["inputs"])
             {
