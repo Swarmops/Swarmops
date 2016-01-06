@@ -100,11 +100,20 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 // TODO: Update the HotBitcoinAddress with the new amount?
 
-                Int64 satoshisReceived = unspents.Last().AmountSatoshis;
+                HotBitcoinAddressUnspent unspent = null;
+                Int64 satoshisReceived = 0;
 
-                if (unspents.Last().TransactionHash != txHash && txHash.Length > 0)
+                foreach (HotBitcoinAddressUnspent potentialUnspent in unspents)
                 {
-                    // Race condition.
+                    if (potentialUnspent.TransactionHash == txHash)
+                    {
+                        satoshisReceived = potentialUnspent.AmountSatoshis;
+                        unspent = potentialUnspent;
+                    }
+                }
+
+                if (unspent == null)  // Supplied transaction hash was not found in collection
+                {
                     Debugger.Break();
                 }
 
@@ -116,6 +125,20 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
                 // Create success message and ledger transaction
                 string successMessage = string.Empty;
+
+                FinancialTransaction testTransaction = null;
+                try
+                {
+                    testTransaction = FinancialTransaction.FromBlockchainHash (authData.CurrentOrganization, txHash);
+
+                    // We've already seen this donation! Something is seriously bogus here
+                    Debugger.Break();
+                    return new AjaxCallResult() { DisplayMessage = successMessage, Success = true };
+                }
+                catch (ArgumentException)
+                {
+                    // This exception is expected - the transaction should not yet exist
+                }
 
                 if (authData.CurrentOrganization.Currency.IsBitcoin)
                 {
