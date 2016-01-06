@@ -38,7 +38,9 @@ namespace Swarmops
 
             // BEGIN TEST CODE
 
-            // Salaries.CreateAnnualStatements (2015);
+            /* string[] testStrings =
+                BitcoinUtility.GetInputAddressesForTransaction (
+                    "206a3a272d96e9cef929f88ae690c5556cee0a1e8eaca2858f8d858ee2e2cc66");*/
 
             // END TEST CODE
 

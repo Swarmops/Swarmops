@@ -157,6 +157,12 @@ If you did not set this payout address (it may be worth double checking the addr
   <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Bitcoin payout address set</value>
   </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payments totalling [CurrencyCode] [AmountFloat], or expressed in bitcoin, [BitcoinAmountFloat] microbitcoins.</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Hotwallet Payout: [CurrencyCode] [AmountFloat]</value>
+  </data>
   <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
     <value>[BitcoinAmountFloat] microbitcoin ("bits") was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
 

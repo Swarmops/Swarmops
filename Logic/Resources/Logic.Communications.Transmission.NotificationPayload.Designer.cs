@@ -61,6 +61,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payments totalling [CurrencyCode] [AmountFloat], or expressed in bitcoin, [BitcoinAmountFloat] microbitcoins..
+        /// </summary>
+        internal static string Bitcoin_Hotwallet_Outflow_Body {
+            get {
+                return ResourceManager.GetString("Bitcoin_Hotwallet_Outflow_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName]] Hotwallet Payout: [CurrencyCode] [AmountFloat].
+        /// </summary>
+        internal static string Bitcoin_Hotwallet_Outflow_Subject {
+            get {
+                return ResourceManager.GetString("Bitcoin_Hotwallet_Outflow_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [BitcoinAmountFloat] microbitcoin (&quot;bits&quot;) was just transferred to your bitcoin address ([BitcoinAddress]) by [OrganizationName] for the following:
         ///
         ///[EmbeddedPreformattedText]

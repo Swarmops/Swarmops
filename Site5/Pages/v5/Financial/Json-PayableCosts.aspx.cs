@@ -47,6 +47,15 @@ namespace Swarmops.Frontend.Pages.Financial
             {
                 if (bitcoinHotWalletActive && payout.RecipientPerson != null && payout.RecipientPerson.BitcoinPayoutAddress.Length > 0 && payout.Account.Length < 4)  // 4 because an empty account will be " / ", length 3
                 {
+                    // This is a person who will be paid in bitcoin per personal preferences, so don't show for manual payout
+
+                    continue;
+                }
+
+                if (bitcoinHotWalletActive && payout.Account.StartsWith ("bitcoin:"))
+                {
+                    // This is a payout registered to be paid in bitcoin, so don't show for manual payout
+
                     continue;
                 }
 

@@ -594,6 +594,10 @@ namespace Swarmops.Logic.Financial
                         primaryStrings[NotificationString.OrganizationName] = organization.Name;
                         OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_PleaseSet, primaryStrings, People.FromSingle(payout.RecipientPerson));
                     }
+                    else if (payout.Account.StartsWith ("bitcoin:"))
+                    {
+                        
+                    }
                 }
 
                 if (bitcoinPayouts.Count == 0)
@@ -751,11 +755,25 @@ namespace Swarmops.Logic.Financial
 
                 Payout masterPayout = Payout.CreateBitcoinPayoutFromPrototype (organization, masterPayoutPrototype, txReady.GetHash().ToString());
 
-                // Finally, create ledger entries
+                // Finally, create ledger entries and notify
+
+                NotificationStrings masterPrimaryStrings = new NotificationStrings();
+                NotificationCustomStrings masterSecondaryStrings = new NotificationCustomStrings();
+
+                masterPrimaryStrings[NotificationString.OrganizationName] = organization.Name;
+                masterPrimaryStrings[NotificationString.CurrencyCode] = organization.Currency.DisplayCode;
+                masterSecondaryStrings["AmountFloat"] =
+                    (new Swarmops.Logic.Financial.Money (satoshisUsed, Currency.Bitcoin).ToCurrency (
+                        organization.Currency).Cents/100.0).ToString ("N2", CultureInfo.InvariantCulture);
+                masterSecondaryStrings["BitcoinAmountFloat"] = (satoshisUsed/100.0).ToString ("N2", CultureInfo.InvariantCulture);
+                masterSecondaryStrings["PayoutCount"] = bitcoinPayouts.Count.ToString("N0", CultureInfo.InvariantCulture);
+
+                OutboundComm.CreateNotification (organization, NotificationResource.Bitcoin_Hotwallet_Outflow,
+                    masterPrimaryStrings, masterSecondaryStrings);
 
                 FinancialTransaction ledgerTransaction = FinancialTransaction.Create (organization, utcNow,
                     "Bitcoin automated payout");
-                ledgerTransaction.AddRow (organization.FinancialAccounts.AssetsBitcoinHot, -masterPayoutPrototype.AmountCents, null);
+                ledgerTransaction.AddRow (organization.FinancialAccounts.AssetsBitcoinHot, -masterPayoutPrototype.AmountCents, null).NativeAmountCents = new Swarmops.Logic.Financial.Money(satoshisUsed, Currency.Bitcoin);
 
                 masterPayout.BindToTransactionAndClose (ledgerTransaction, null);
             }

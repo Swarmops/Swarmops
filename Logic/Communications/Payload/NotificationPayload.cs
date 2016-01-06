@@ -178,6 +178,7 @@ namespace Swarmops.Logic.Communications.Payload
         Bitcoin_Shortage,
         Bitcoin_Shortage_Urgent,
         Bitcoin_Shortage_Critical,
+        Bitcoin_Hotwallet_Outflow,
         BitcoinPayoutAddress_Set,
         BitcoinPayoutAddress_Bad,
         BitcoinPayoutAddress_PleaseSet,

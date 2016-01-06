@@ -361,6 +361,11 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// For a hotwallet transaction, the complete derivation path used for this address
         /// </summary>
-        FinancialTransactionRowBitcoinDerivationPath
+        FinancialTransactionRowBitcoinDerivationPath,
+
+        /// <summary>
+        /// For invoices or other claims, an exact bitcoin amount that overrides native currency
+        /// </summary>
+        ExactBitcoinAmountSatoshis
     }
 }

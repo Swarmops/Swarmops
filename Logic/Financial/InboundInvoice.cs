@@ -108,6 +108,22 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        public Int64 ExactBitcoinAmountSatoshis
+        {
+            get
+            {
+                return
+                    ObjectOptionalData.ForObject(this).GetOptionalDataInt64(
+                        ObjectOptionalDataType.ExactBitcoinAmountSatoshis);
+            }
+            set
+            {
+                ObjectOptionalData.ForObject(this)
+                    .SetOptionalDataInt64(ObjectOptionalDataType.ExactBitcoinAmountSatoshis, value);
+            }
+
+        }
+
         #region IAttestable Members
 
         public void Attest (Person attester)

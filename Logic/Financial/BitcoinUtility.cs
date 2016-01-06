@@ -91,6 +91,21 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        static public string[] GetInputAddressesForTransaction (string txHash)
+        {
+            List<string> inputAddresses = new List<string>();
+            var jsonResult =
+                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/rawTx/" + txHash + "?format=json&api_key=" + SystemSettings.BlockchainSwarmopsApiKey));
+
+            foreach (var input in jsonResult["inputs"])
+            {
+                inputAddresses.Add ((string) (input["prev_out"]["addr"]));
+            }
+
+            return inputAddresses.ToArray();
+        }
+
+
         static public Coin[] GetSpendableCoin (BitcoinSecret secretKey) // we're using BitcoinSecret as arg just to reinforce caller must have privkey to spend funds
         {
             // This function queries the Blockchain API for the unspent coin.

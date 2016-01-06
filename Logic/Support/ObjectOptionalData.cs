@@ -92,19 +92,34 @@ namespace Swarmops.Logic.Support
 
 
         // All ints default to 0
-        public int GetOptionalDataInt (ObjectOptionalDataType key)
+        public int GetOptionalDataInt(ObjectOptionalDataType key)
         {
-            if (HasData (key))
+            if (HasData(key))
             {
-                return Int32.Parse (this[key]);
+                return Int32.Parse(this[key]);
             }
 
             return 0;
         }
 
-        public void SetOptionalDataInt (ObjectOptionalDataType key, int value)
+        public Int64 GetOptionalDataInt64(ObjectOptionalDataType key)
         {
-            SetOptionalData (key, value.ToString());
+            if (HasData(key))
+            {
+                return Int64.Parse(this[key]);
+            }
+
+            return 0;
+        }
+
+        public void SetOptionalDataInt(ObjectOptionalDataType key, int value)
+        {
+            SetOptionalData(key, value.ToString());
+        }
+
+        public void SetOptionalDataInt64(ObjectOptionalDataType key, Int64 value)
+        {
+            SetOptionalData(key, value.ToString());
         }
 
 
