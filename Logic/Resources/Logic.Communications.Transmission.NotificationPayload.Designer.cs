@@ -101,6 +101,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When attempting an automated payment from the hotwallet, the private key used to sign does not match the public keys used to gather the funds necessary. This is a serious condition..
+        /// </summary>
+        internal static string Bitcoin_PrivateKeyError_Body {
+            get {
+                return ResourceManager.GetString("Bitcoin_PrivateKeyError_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [[OrganizationName] - URGENT] Bitcoin private key error; can&apos;t pay.
+        /// </summary>
+        internal static string Bitcoin_PrivateKeyError_Subject {
+            get {
+                return ResourceManager.GetString("Bitcoin_PrivateKeyError_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the bitcoin hotwallet. Swarmops is unable to make further payments at this time.
         ///
         ///Please top up the hotwallet IMMEDIATELY to at least the needed amount - an additional [AmountMissingMicrocoinsFloat] microbitcoin (&quot;bits&quot;) is required to resume financial hotwallet operations.

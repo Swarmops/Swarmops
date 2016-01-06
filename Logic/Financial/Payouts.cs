@@ -708,6 +708,14 @@ namespace Swarmops.Logic.Financial
 
                 if (!txBuilder.Verify (txReady))
                 {
+                    // Transaction was not signed with the correct keys. This is a serious condition.
+
+                    NotificationStrings primaryStrings = new NotificationStrings();
+                    primaryStrings[NotificationString.OrganizationName] = organization.Name;
+
+                    OutboundComm.CreateNotification (organization, NotificationResource.Bitcoin_PrivateKeyError,
+                        primaryStrings);
+
                     throw new InvalidOperationException("Transaction is not signed enough");
                 }
 
@@ -715,9 +723,14 @@ namespace Swarmops.Logic.Financial
 
                 BitcoinUtility.BroadcastTransaction (txReady);
 
-                // Delete inputs, adjust balance for addresses
+                // Delete all old inputs, adjust balance for addresses (re-register unused inputs)
 
                 inputs.AsUnspents.DeleteAll();
+
+                foreach (BitcoinTransactionInput input in inputs)
+                {
+                    BitcoinUtility.TestUnspents (input.BitcoinAddress);
+                }
 
                 // Register new balance of change address, should have increased by (satoshisInput-satoshisUsed)
 
@@ -745,7 +758,7 @@ namespace Swarmops.Logic.Financial
                     primaryStrings[NotificationString.EmbeddedPreformattedText] = spec;
                     secondaryStrings["AmountFloat"] = (nativeCentsPersonLookup[personId]/100.0).ToString ("N2");
                     secondaryStrings["BitcoinAmountFloat"] = (satoshiPersonLookup[personId]/100.0).ToString ("N2");
-                    secondaryStrings["BitcoinAddress"] = person.BitcoinPayoutAddress; // potential rare race condition
+                    secondaryStrings["BitcoinAddress"] = person.BitcoinPayoutAddress; // warn: potential rare race condition here
 
                     OutboundComm.CreateNotification (organization, NotificationResource.Bitcoin_PaidOut, primaryStrings,
                         secondaryStrings, People.FromSingle(person));
@@ -766,7 +779,7 @@ namespace Swarmops.Logic.Financial
                     (new Swarmops.Logic.Financial.Money (satoshisUsed, Currency.Bitcoin).ToCurrency (
                         organization.Currency).Cents/100.0).ToString ("N2", CultureInfo.InvariantCulture);
                 masterSecondaryStrings["BitcoinAmountFloat"] = (satoshisUsed/100.0).ToString ("N2", CultureInfo.InvariantCulture);
-                masterSecondaryStrings["PayoutCount"] = bitcoinPayouts.Count.ToString("N0", CultureInfo.InvariantCulture);
+                masterSecondaryStrings["PaymentCount"] = bitcoinPayouts.Count.ToString("N0", CultureInfo.InvariantCulture);
 
                 OutboundComm.CreateNotification (organization, NotificationResource.Bitcoin_Hotwallet_Outflow,
                     masterPrimaryStrings, masterSecondaryStrings);
@@ -774,6 +787,7 @@ namespace Swarmops.Logic.Financial
                 FinancialTransaction ledgerTransaction = FinancialTransaction.Create (organization, utcNow,
                     "Bitcoin automated payout");
                 ledgerTransaction.AddRow (organization.FinancialAccounts.AssetsBitcoinHot, -masterPayoutPrototype.AmountCents, null).NativeAmountCents = new Swarmops.Logic.Financial.Money(satoshisUsed, Currency.Bitcoin);
+                ledgerTransaction.BlockchainHash = txReady.GetHash().ToString();   // TODO: VERIFY THIS
 
                 masterPayout.BindToTransactionAndClose (ledgerTransaction, null);
             }

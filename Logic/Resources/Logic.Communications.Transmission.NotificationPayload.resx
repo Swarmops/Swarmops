@@ -173,6 +173,12 @@ You should already see the transaction in your wallet and it should achieve spen
   <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Funds paid to you: [CurrencyCode] [AmountFloat]</value>
   </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>When attempting an automated payment from the hotwallet, the private key used to sign does not match the public keys used to gather the funds necessary. This is a serious condition.</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>[[OrganizationName] - URGENT] Bitcoin private key error; can't pay</value>
+  </data>
   <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
     <value>Swarmops is trying to make payments of [CurrencyCode] [AmountNeededFloat], but only [CurrencyCode] [AmountWalletFloat] is available in the bitcoin hotwallet. Swarmops is unable to make further payments at this time.
 
