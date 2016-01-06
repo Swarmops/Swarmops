@@ -293,7 +293,7 @@ namespace Swarmops.Logic.Financial
 
         public const string BitcoinTestAddress = "1JMpU3D6c5sruunMwzkt6p6PQzLcUYcL26";
 
-        public const long FeeSatoshisPerThousandBytes = 10000;
+        public const long FeeSatoshisPerThousandBytes = 20000;  // This is twice the standardized amount - needed until blocksize debacle sorts out
     }
 
     internal class BitcoinUnspentTransactionOutput
