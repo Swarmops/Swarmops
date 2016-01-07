@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using NBitcoin;
 using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Newtonsoft.Json.Linq;
@@ -133,6 +134,8 @@ namespace Swarmops.Logic.Financial
             return coinList.ToArray();
         }
 
+        // TODO: Condense TestUnspents into ONE call for MULTIPLE addresses (separated by | for Unspents according to API docs)
+
         static public bool TestUnspents (string address)
         {
             // This function queries the Blockchain API for the unspent coin.
@@ -207,8 +210,36 @@ namespace Swarmops.Logic.Financial
             // TODO: What's the most efficient way to do this?
 
             HotBitcoinAddresses addresses = HotBitcoinAddresses.ForOrganization (organization);
+            HotBitcoinAddressUnspents unspents = addresses.Unspents;
 
-            return addresses.FindAmount (satoshis); // Will throw on a number of circumstances
+            BitcoinTransactionInputs result = new BitcoinTransactionInputs();
+
+            // Lazy checking: if there's one single input that covers the entire amount, use it
+
+            BitcoinTransactionInput lowestSingleSufficientInput = null;
+
+            foreach (HotBitcoinAddressUnspent unspent in unspents)
+            {
+                if (unspent.AmountSatoshis >= satoshis)
+                {
+                    if (lowestSingleSufficientInput == null ||
+                        lowestSingleSufficientInput.AmountSatoshis > unspent.AmountSatoshis)
+                    {
+                        lowestSingleSufficientInput = unspent.AsInput;
+                    }
+                }
+            }
+
+            if (lowestSingleSufficientInput != null)
+            {
+                // There is a single input that will cover the entire amount, so return it
+
+                return BitcoinTransactionInputs.FromSingle (lowestSingleSufficientInput);
+            }
+
+            throw new NotEnoughFundsException();
+
+            // Slightly more complex checking (TODO)
         }
 
 

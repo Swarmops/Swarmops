@@ -28,19 +28,7 @@ namespace Swarmops.Logic.Financial
                 BitcoinTransactionInputs result = new BitcoinTransactionInputs();
                 foreach (HotBitcoinAddressUnspent unspent in this)
                 {
-                    HotBitcoinAddress address = unspent.Address;
-
-                    BitcoinTransactionInput input = new BitcoinTransactionInput()
-                    {
-                        AmountSatoshis = unspent.AmountSatoshis,
-                        BitcoinAddress = address.Address,
-                        PrivateKey = address.PrivateKey,
-                        TransactionHash = unspent.TransactionHash,
-                        TransactionOutputIndex = unspent.TransactionOutputIndex,
-                        HotBitcoinAddressUnspentId = unspent.Identity
-                    };
-
-                    result.Add (input);
+                    result.Add (unspent.AsInput);
                 }
 
                 return result;

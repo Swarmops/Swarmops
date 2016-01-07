@@ -25,6 +25,24 @@ namespace Swarmops.Logic.Financial
             return FromBasic (SwarmDb.GetDatabaseForReading().GetHotBitcoinAddressUnspent (hotBitcoinAddressUnspentId));
         }
 
+        public BitcoinTransactionInput AsInput
+        {
+            get
+            {
+                HotBitcoinAddress address = this.Address;
+
+                return new BitcoinTransactionInput()
+                {
+                    AmountSatoshis = this.AmountSatoshis,
+                    BitcoinAddress = address.Address,
+                    PrivateKey = address.PrivateKey,
+                    TransactionHash = this.TransactionHash,
+                    TransactionOutputIndex = this.TransactionOutputIndex,
+                    HotBitcoinAddressUnspentId = this.Identity
+                };
+            }
+        }            
+
         public HotBitcoinAddress Address
         {
             get { return HotBitcoinAddress.FromIdentity (base.HotBitcoinAddressId); }

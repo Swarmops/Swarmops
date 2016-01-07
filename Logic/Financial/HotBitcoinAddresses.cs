@@ -73,5 +73,19 @@ namespace Swarmops.Logic.Financial
         {
             get { return this.Sum (item => item.BalanceSatoshis); }
         }
+
+        public HotBitcoinAddressUnspents Unspents
+        {
+            get
+            {
+                HotBitcoinAddressUnspents unspents = new HotBitcoinAddressUnspents();
+                foreach (HotBitcoinAddress address in this)
+                {
+                    unspents.AddRange (address.Unspents);
+                }
+
+                return unspents;
+            }
+        }
     }
 }

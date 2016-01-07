@@ -26,6 +26,13 @@ namespace Swarmops.Logic.Financial
 
     public class BitcoinTransactionInputs: List<BitcoinTransactionInput>
     {
+        public static BitcoinTransactionInputs FromSingle (BitcoinTransactionInput single)
+        {
+            BitcoinTransactionInputs result = new BitcoinTransactionInputs();
+            result.Add (single);
+            return result;
+        }
+
         public BitcoinSecret[] PrivateKeys
         {
             get

@@ -38,6 +38,10 @@ namespace Swarmops
 
             // BEGIN TEST CODE
 
+            // HotBitcoinAddresses testAddresses = HotBitcoinAddresses.ForOrganization (Organization.FromIdentity (2));
+            // testAddresses.UpdateBalances();
+
+
             // Payouts.PerformAutomated();
 
             // END TEST CODE

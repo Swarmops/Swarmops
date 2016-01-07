@@ -609,10 +609,11 @@ namespace Swarmops.Logic.Financial
                 // We now have our desired payments. The next step is to find enough inputs to reach the required amount (plus fees; we're working a little blind here still).
 
                 BitcoinTransactionInputs inputs = null;
+                Int64 satoshisMaximumAnticipatedFees = BitcoinUtility.FeeSatoshisPerThousandBytes * 20; // assume max 20k transaction size
 
                 try
                 {
-                    inputs = BitcoinUtility.GetInputsForAmount(organization, satoshisTotal + BitcoinUtility.FeeSatoshisPerThousandBytes * 20); // assume max 20k transaction size
+                    inputs = BitcoinUtility.GetInputsForAmount(organization, satoshisTotal + satoshisMaximumAnticipatedFees); 
                 }
                 catch (NotEnoughFundsException)
                 {
@@ -632,11 +633,11 @@ namespace Swarmops.Logic.Financial
                     Int64 satoshisAvailable = HotBitcoinAddresses.ForOrganization (organization).BalanceSatoshisTotal;
 
                     secondaryStrings["AmountMissingMicrocoinsFloat"] =
-                        ((satoshisTotal - satoshisAvailable)/100.0).ToString ("N2");
+                        ((satoshisTotal - satoshisAvailable + satoshisMaximumAnticipatedFees) / 100.0).ToString("N2");
 
                     if (organization.Currency.IsBitcoin)
                     {
-                        secondaryStrings["AmountNeededFloat"] = (satoshisTotal/100.0).ToString ("N2");
+                        secondaryStrings["AmountNeededFloat"] = ((satoshisTotal + satoshisMaximumAnticipatedFees) / 100.0).ToString("N2");
                         secondaryStrings["AmountWalletFloat"] = (satoshisAvailable/100.0).ToString ("N2");
                     }
                     else
