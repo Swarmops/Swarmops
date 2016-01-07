@@ -158,7 +158,7 @@ If you did not set this payout address (it may be worth double checking the addr
     <value>[[OrganizationName]] Bitcoin payout address set</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
-    <value>The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payments totalling [CurrencyCode] [AmountFloat], or expressed in bitcoin, [BitcoinAmountFloat] microbitcoins.</value>
+    <value>The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payment(s) totalling [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin or "bits").</value>
   </data>
   <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
     <value>[[OrganizationName]] Hotwallet Payout: [CurrencyCode] [AmountFloat]</value>

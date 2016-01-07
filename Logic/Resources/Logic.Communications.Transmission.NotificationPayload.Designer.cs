@@ -61,7 +61,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payments totalling [CurrencyCode] [AmountFloat], or expressed in bitcoin, [BitcoinAmountFloat] microbitcoins..
+        ///   Looks up a localized string similar to The bitcoin hotwallet for [OrganizationName] just made [PaymentCount] automatic payment(s) totalling [CurrencyCode] [AmountFloat] ([BitcoinAmountFloat] microbitcoin or &quot;bits&quot;)..
         /// </summary>
         internal static string Bitcoin_Hotwallet_Outflow_Body {
             get {

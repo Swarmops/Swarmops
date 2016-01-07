@@ -668,6 +668,7 @@ namespace Swarmops.Logic.Financial
                 Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
                 Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
                 Payout masterPayoutPrototype = Payout.Empty;
+                HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero (organization);
 
                 foreach (Payout payout in bitcoinPayouts)
                 {
@@ -689,7 +690,7 @@ namespace Swarmops.Logic.Financial
 
                 // Set change address to wallet slush
 
-                txBuilder.SetChange (new BitcoinAddress (HotBitcoinAddress.OrganizationWalletZero (organization).Address));
+                txBuilder.SetChange (new BitcoinAddress (changeAddress.Address));
 
                 // Add fee
 
@@ -724,18 +725,26 @@ namespace Swarmops.Logic.Financial
 
                 BitcoinUtility.BroadcastTransaction (txReady);
 
+                // Note the transaction hash
+
+                string transactionHash = txReady.GetHash().ToString();
+
                 // Delete all old inputs, adjust balance for addresses (re-register unused inputs)
 
                 inputs.AsUnspents.DeleteAll();
 
-                foreach (BitcoinTransactionInput input in inputs)
+                // Log the new unspent created by change (if there is any)
+
+                if (satoshisInput - satoshisUsed > 0)
                 {
-                    BitcoinUtility.TestUnspents (input.BitcoinAddress);
+                    SwarmDb.GetDatabaseForWriting()
+                        .CreateHotBitcoinAddressUnspentConditional(changeAddress.Identity, transactionHash,
+                            + /* the change address seems to always get index 0? is this a safe assumption? */ 0, satoshisInput - satoshisUsed, /* confirmation count*/ 0);
                 }
 
                 // Register new balance of change address, should have increased by (satoshisInput-satoshisUsed)
 
-                BitcoinUtility.TestUnspents (HotBitcoinAddress.OrganizationWalletZero (organization).Address);
+                // TODO
 
                 // Send notifications
 
@@ -788,7 +797,7 @@ namespace Swarmops.Logic.Financial
                 FinancialTransaction ledgerTransaction = FinancialTransaction.Create (organization, utcNow,
                     "Bitcoin automated payout");
                 ledgerTransaction.AddRow (organization.FinancialAccounts.AssetsBitcoinHot, -masterPayoutPrototype.AmountCents, null).NativeAmountCents = new Swarmops.Logic.Financial.Money(satoshisUsed, Currency.Bitcoin);
-                ledgerTransaction.BlockchainHash = txReady.GetHash().ToString();   // TODO: VERIFY THIS
+                ledgerTransaction.BlockchainHash = transactionHash;
 
                 masterPayout.BindToTransactionAndClose (ledgerTransaction, null);
             }
