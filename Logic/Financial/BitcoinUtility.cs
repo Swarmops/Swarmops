@@ -20,6 +20,8 @@ using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
 using NUnit.Framework;
+using Satoshis = NBitcoin.Money;
+
 
 namespace Swarmops.Logic.Financial
 {
@@ -371,6 +373,125 @@ namespace Swarmops.Logic.Financial
         }
 
 
+
+        public static void TestMultisigPayout()
+        {
+            throw new InvalidOperationException("This function is only for testing purposes. It pays real money. Don't use except for dev/test.");
+
+            // disable "code unreachable" warning for this code
+            // ReSharper disable once CSharpWarnings::CS0162
+            #pragma warning disable 162
+            Organization organization = Organization.Sandbox; // a few testing cents here in test environment
+
+            string bitcoinTestAddress = "3KS6AuQbZARSvqnaHoHfL1Xhm3bTLFAzoK";
+
+            // Make a small test payment to a multisig address
+
+            TransactionBuilder txBuilder = new TransactionBuilder();
+            Int64 satoshis = new Money(100, Currency.FromCode ("SEK")).ToCurrency (Currency.Bitcoin).Cents;
+            BitcoinTransactionInputs inputs = null;
+            Int64 satoshisMaximumAnticipatedFees = BitcoinUtility.FeeSatoshisPerThousandBytes * 20; // assume max 20k transaction size
+
+            try
+            {
+                inputs = BitcoinUtility.GetInputsForAmount(organization, satoshis + satoshisMaximumAnticipatedFees);
+            }
+            catch (NotEnoughFundsException)
+            {
+                Debugger.Break();
+            }
+
+            // If we arrive at this point, the previous function didn't throw, and we have enough money. Add the inputs to the transaction.
+
+            txBuilder = txBuilder.AddCoins(inputs.Coins);
+            txBuilder = txBuilder.AddKeys(inputs.PrivateKeys);
+            Int64 satoshisInput = inputs.AmountSatoshisTotal;
+
+            // Add outputs and prepare notifications
+
+            Int64 satoshisUsed = 0;
+            Dictionary<int, List<string>> notificationSpecLookup = new Dictionary<int, List<string>>();
+            Dictionary<int, List<Int64>> notificationAmountLookup = new Dictionary<int, List<Int64>>();
+            Payout masterPayoutPrototype = Payout.Empty;
+            HotBitcoinAddress changeAddress = HotBitcoinAddress.OrganizationWalletZero(organization);
+
+            // Add the test payment
+
+            if (bitcoinTestAddress.StartsWith("1")) // regular address
+            {
+                txBuilder = txBuilder.Send(new BitcoinAddress(bitcoinTestAddress),
+                    new Satoshis(satoshis));
+            }
+            else if (bitcoinTestAddress.StartsWith("3")) // multisig
+            {
+                txBuilder = txBuilder.Send(new BitcoinScriptAddress(bitcoinTestAddress, Network.Main),
+                    new Satoshis(satoshis));
+            }
+            else
+            {
+                throw new InvalidOperationException("Unhandled address case");
+            }
+            satoshisUsed += satoshis;
+
+            // Set change address to wallet slush
+
+            txBuilder.SetChange(new BitcoinAddress(changeAddress.Address));
+
+            // Add fee
+
+            int transactionSizeBytes = txBuilder.EstimateSize(txBuilder.BuildTransaction(false)) + inputs.Count;
+            // +inputs.Count for size variability
+
+            Int64 feeSatoshis = (transactionSizeBytes / 1000 + 1) * BitcoinUtility.FeeSatoshisPerThousandBytes;
+
+            txBuilder = txBuilder.SendFees(new Satoshis(feeSatoshis));
+            satoshisUsed += feeSatoshis;
+
+            // Sign transaction - ready to execute
+
+            Transaction txReady = txBuilder.BuildTransaction(true);
+
+            // Verify that transaction is ready
+
+            if (!txBuilder.Verify(txReady))
+            {
+                // Transaction was not signed with the correct keys. This is a serious condition.
+
+                NotificationStrings primaryStrings = new NotificationStrings();
+                primaryStrings[NotificationString.OrganizationName] = organization.Name;
+
+                OutboundComm.CreateNotification(organization, NotificationResource.Bitcoin_PrivateKeyError,
+                    primaryStrings);
+
+                throw new InvalidOperationException("Transaction is not signed enough");
+            }
+
+            // Broadcast transaction
+
+            BitcoinUtility.BroadcastTransaction(txReady);
+
+            // Note the transaction hash
+
+            string transactionHash = txReady.GetHash().ToString();
+
+            // Delete all old inputs, adjust balance for addresses (re-register unused inputs)
+
+            inputs.AsUnspents.DeleteAll();
+
+            // Log the new unspent created by change (if there is any)
+
+            if (satoshisInput - satoshisUsed > 0)
+            {
+                SwarmDb.GetDatabaseForWriting()
+                    .CreateHotBitcoinAddressUnspentConditional(changeAddress.Identity, transactionHash,
+                        + /* the change address seems to always get index 0? is this a safe assumption? */ 0, satoshisInput - satoshisUsed, /* confirmation count*/ 0);
+            }
+
+            // Restore "code unreachable" warnings
+            #pragma warning restore 162
+
+            // This puts the ledger out of sync, so only do this on Sandbox for various small-change (cents) testing
+        }
 
 
         internal class BitcoinUnspentTransactionOutput

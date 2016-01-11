@@ -684,6 +684,11 @@ namespace Swarmops.Logic.Financial
                         txBuilder = txBuilder.Send(new BitcoinScriptAddress(payout.RecipientPerson.BitcoinPayoutAddress, Network.Main),
                             new Satoshis(satoshiPayoutLookup[payout.ProtoIdentity]));
                     }
+                    else
+                    {
+                        throw new InvalidOperationException("Unhandled bitcoin address type in Payouts.PerformAutomated(): " + payout.RecipientPerson.BitcoinPayoutAddress);
+                    }
+
                     satoshisUsed += satoshiPayoutLookup[payout.ProtoIdentity];
 
                     payout.MigrateDependenciesTo (masterPayoutPrototype);
