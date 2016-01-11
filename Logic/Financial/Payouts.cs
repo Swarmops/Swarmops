@@ -518,11 +518,7 @@ namespace Swarmops.Logic.Financial
 
                         // Test the payout address - is it valid and can we handle it?
 
-                        try
-                        {
-                            new BitcoinAddress (payout.RecipientPerson.BitcoinPayoutAddress);
-                        }
-                        catch (Exception)
+                        if (!BitcoinUtility.IsValidBitcoinAddress(payout.RecipientPerson.BitcoinPayoutAddress))
                         {
                             // Notify person that address is invalid, then clear it
 
@@ -534,9 +530,6 @@ namespace Swarmops.Logic.Financial
                             OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_Bad,
                                 primaryStrings, secondaryStrings,
                                 People.FromSingle(payout.RecipientPerson));
-                            OutboundComm.CreateNotification(organization, NotificationResource.BitcoinPayoutAddress_Bad,
-                                primaryStrings, secondaryStrings,
-                                People.FromSingle(Person.FromIdentity (1))); // temporary copy to 1 to see what the notification looks like
 
                             payout.RecipientPerson.BitcoinPayoutAddress = string.Empty;
 
