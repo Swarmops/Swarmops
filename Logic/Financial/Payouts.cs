@@ -681,8 +681,16 @@ namespace Swarmops.Logic.Financial
                     notificationSpecLookup[recipientPersonId].Add (payout.Specification);
                     notificationAmountLookup[recipientPersonId].Add (payout.AmountCents);
 
-                    txBuilder = txBuilder.Send(new BitcoinAddress(payout.RecipientPerson.BitcoinPayoutAddress),
-                        new Satoshis(satoshiPayoutLookup[payout.ProtoIdentity]));
+                    if (payout.RecipientPerson.BitcoinPayoutAddress.StartsWith ("1")) // regular address
+                    {
+                        txBuilder = txBuilder.Send (new BitcoinAddress (payout.RecipientPerson.BitcoinPayoutAddress),
+                            new Satoshis (satoshiPayoutLookup[payout.ProtoIdentity]));
+                    }
+                    else if (payout.RecipientPerson.BitcoinPayoutAddress.StartsWith ("3")) // multisig
+                    {
+                        txBuilder = txBuilder.Send(new BitcoinScriptAddress(payout.RecipientPerson.BitcoinPayoutAddress, Network.Main),
+                            new Satoshis(satoshiPayoutLookup[payout.ProtoIdentity]));
+                    }
                     satoshisUsed += satoshiPayoutLookup[payout.ProtoIdentity];
 
                     payout.MigrateDependenciesTo (masterPayoutPrototype);

@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using NBitcoin;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
+using Swarmops.Logic.Financial;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Frontend.Automation
@@ -36,11 +37,7 @@ namespace Swarmops.Frontend.Automation
 
             if (string.IsNullOrEmpty (authData.CurrentUser.BitcoinPayoutAddress))
             {
-                try
-                {
-                    BitcoinAddress testBitcoinAddress = new BitcoinAddress (bitcoinAddress); // if this throws, the address wasn't valid
-                }
-                catch (Exception)
+                if (!BitcoinUtility.IsValidBitcoinAddress (bitcoinAddress))
                 {
                     return new AjaxCallResult {Success = false, DisplayMessage = "Invalid address"};
                 }

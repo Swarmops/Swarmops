@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,6 +19,7 @@ using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
+using NUnit.Framework;
 
 namespace Swarmops.Logic.Financial
 {
@@ -29,16 +31,20 @@ namespace Swarmops.Logic.Financial
 
             if (HttpContext.Current != null)
             {
-                throw new InvalidOperationException("Checking root keys cannot be done from the frontend");
+                throw new InvalidOperationException ("Checking root keys cannot be done from the frontend");
             }
 
             // Make sure there's always a private hotwallet root, regardless of whether it's used or not
 
-            if (!File.Exists(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet"))
+            if (!File.Exists (SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet"))
             {
                 ExtKey privateRoot = new ExtKey();
-                File.WriteAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet", privateRoot.GetWif(Network.Main).ToWif(), Encoding.ASCII);
-                File.WriteAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet-created-" + DateTime.UtcNow.ToString("yyyy-MM-dd--HH-mm-ss--fff.backup"), privateRoot.GetWif(Network.Main).ToWif(), Encoding.ASCII); // an extra backup
+                File.WriteAllText (SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet",
+                    privateRoot.GetWif (Network.Main).ToWif(), Encoding.ASCII);
+                File.WriteAllText (
+                    SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet-created-" +
+                    DateTime.UtcNow.ToString ("yyyy-MM-dd--HH-mm-ss--fff.backup"),
+                    privateRoot.GetWif (Network.Main).ToWif(), Encoding.ASCII); // an extra backup
 
                 if (String.IsNullOrEmpty (Persistence.Key["BitcoinHotPublicRoot"]))
                 {
@@ -53,7 +59,8 @@ namespace Swarmops.Logic.Financial
                 {
                     // No, it has disappeared, which can happen for a few bad reasons
 
-                    Persistence.Key["BitcoinHotPublicRoot"] = BitcoinHotPrivateRoot.Neuter().GetWif(Network.Main).ToWif();
+                    Persistence.Key["BitcoinHotPublicRoot"] =
+                        BitcoinHotPrivateRoot.Neuter().GetWif (Network.Main).ToWif();
                     if (!PilotInstallationIds.IsPilot (PilotInstallationIds.DevelopmentSandbox))
                     {
                         // TODO: Log some sort of exception (the sandbox db is reset every night, so it's ok to lose the public key from there)
@@ -70,7 +77,8 @@ namespace Swarmops.Logic.Financial
                     OutboundComm.CreateNotification (NotificationResource.System_PublicRootReset);
 
                     // Reset it
-                    Persistence.Key["BitcoinHotPublicRoot"] = BitcoinHotPrivateRoot.Neuter().GetWif(Network.Main).ToWif();
+                    Persistence.Key["BitcoinHotPublicRoot"] =
+                        BitcoinHotPrivateRoot.Neuter().GetWif (Network.Main).ToWif();
                 }
             }
         }
@@ -80,23 +88,23 @@ namespace Swarmops.Logic.Financial
             get
             {
                 return
-                    ExtKey.Parse(File.ReadAllText(SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet")); // will throw if hotwallet file does not exist - intentional
+                    ExtKey.Parse (File.ReadAllText (SystemSettings.EtcFolder + Path.DirectorySeparatorChar + "hotwallet"));
+                    // will throw if hotwallet file does not exist - intentional
             }
         }
 
         public static ExtPubKey BitcoinHotPublicRoot
         {
-            get
-            {
-                return ExtPubKey.Parse((string)Persistence.Key["BitcoinHotPublicRoot"]);
-            }
+            get { return ExtPubKey.Parse ((string) Persistence.Key["BitcoinHotPublicRoot"]); }
         }
 
-        static public string[] GetInputAddressesForTransaction (string txHash)
+        public static string[] GetInputAddressesForTransaction (string txHash)
         {
             List<string> inputAddresses = new List<string>();
             var jsonResult =
-                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/rawtx/" + txHash + "?format=json&api_key=" + SystemSettings.BlockchainSwarmopsApiKey));
+                JObject.Parse (
+                    new WebClient().DownloadString ("https://blockchain.info/rawtx/" + txHash + "?format=json&api_key=" +
+                                                    SystemSettings.BlockchainSwarmopsApiKey));
 
             foreach (var input in jsonResult["inputs"])
             {
@@ -107,13 +115,16 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        static public Coin[] GetSpendableCoin (BitcoinSecret secretKey) // we're using BitcoinSecret as arg just to reinforce caller must have privkey to spend funds
+        public static Coin[] GetSpendableCoin (BitcoinSecret secretKey)
+            // we're using BitcoinSecret as arg just to reinforce caller must have privkey to spend funds
         {
             // This function queries the Blockchain API for the unspent coin.
 
             string addressString = secretKey.PubKey.GetAddress (Network.Main).ToString();
             var unspentJsonResult =
-                JObject.Parse(new WebClient().DownloadString("https://blockchain.info/unspent?active=" + addressString + "&api_key=" + SystemSettings.BlockchainSwarmopsApiKey));
+                JObject.Parse (
+                    new WebClient().DownloadString ("https://blockchain.info/unspent?active=" + addressString +
+                                                    "&api_key=" + SystemSettings.BlockchainSwarmopsApiKey));
 
             List<Coin> coinList = new List<Coin>();
 
@@ -123,7 +134,7 @@ namespace Swarmops.Logic.Financial
                 {
                     BitcoinAddress = addressString,
                     ConfirmationCount = (UInt32) unspentJson["confirmations"],
-                    Satoshis = (UInt64) unspentJson["value"], 
+                    Satoshis = (UInt64) unspentJson["value"],
                     TransactionHash = (string) unspentJson["tx_hash_big_endian"],
                     TransactionOutputIndex = (UInt32) unspentJson["tx_output_n"]
                 };
@@ -136,7 +147,7 @@ namespace Swarmops.Logic.Financial
 
         // TODO: Condense TestUnspents into ONE call for MULTIPLE addresses (separated by | for Unspents according to API docs)
 
-        static public bool TestUnspents (string address)
+        public static bool TestUnspents (string address)
         {
             // This function queries the Blockchain API for the unspent coin.
             bool result = false;
@@ -145,7 +156,8 @@ namespace Swarmops.Logic.Financial
             var addressInfoResult =
                 JObject.Parse (
                     new WebClient().DownloadString (
-                        "https://blockchain.info/address/" + address + "?format=json&api_key=" + SystemSettings.BlockchainSwarmopsApiKey));
+                        "https://blockchain.info/address/" + address + "?format=json&api_key=" +
+                        SystemSettings.BlockchainSwarmopsApiKey));
 
             if ((int) addressInfoResult["final_balance"] == 0)
             {
@@ -155,17 +167,18 @@ namespace Swarmops.Logic.Financial
             var unspentJsonResult =
                 JObject.Parse (
                     new WebClient().DownloadString ("https://blockchain.info/unspent?active=" + address + "&api_key=" +
-                                                    SystemSettings.BlockchainSwarmopsApiKey));   // warn: will 500 if no unspent outpoints
+                                                    SystemSettings.BlockchainSwarmopsApiKey));
+                // warn: will 500 if no unspent outpoints
 
             foreach (var unspentJson in unspentJsonResult["unspent_outputs"])
             {
                 BitcoinUnspentTransactionOutput txUnspent = new BitcoinUnspentTransactionOutput()
                 {
                     BitcoinAddress = address,
-                    ConfirmationCount = (UInt32)unspentJson["confirmations"],
-                    Satoshis = (UInt64)unspentJson["value"],
-                    TransactionHash = (string)unspentJson["tx_hash_big_endian"],
-                    TransactionOutputIndex = (UInt32)unspentJson["tx_output_n"]
+                    ConfirmationCount = (UInt32) unspentJson["confirmations"],
+                    Satoshis = (UInt64) unspentJson["value"],
+                    TransactionHash = (string) unspentJson["tx_hash_big_endian"],
+                    TransactionOutputIndex = (UInt32) unspentJson["tx_output_n"]
                 };
 
                 if (txUnspent.ConfirmationCount < 2)
@@ -183,27 +196,29 @@ namespace Swarmops.Logic.Financial
 
                 SwarmDb.GetDatabaseForWriting()
                     .CreateHotBitcoinAddressUnspentConditional (hotAddress.Identity, txUnspent.TransactionHash,
-                        (int) txUnspent.TransactionOutputIndex, (Int64) txUnspent.Satoshis, (int) txUnspent.ConfirmationCount);
+                        (int) txUnspent.TransactionOutputIndex, (Int64) txUnspent.Satoshis,
+                        (int) txUnspent.ConfirmationCount);
             }
 
             return result;
         }
 
 
-        static public void BroadcastTransaction (Transaction transaction)
+        public static void BroadcastTransaction (Transaction transaction)
         {
             using (WebClient client = new WebClient())
             {
-                byte[] response = client.UploadValues("https://blockchain.info/pushtx?cors=true", new NameValueCollection()
-                {
-                    { "tx", transaction.ToHex() }
-                });
+                byte[] response = client.UploadValues ("https://blockchain.info/pushtx?cors=true",
+                    new NameValueCollection()
+                    {
+                        {"tx", transaction.ToHex()}
+                    });
 
                 // TODO: Exception handling
             }
         }
 
-        static public BitcoinTransactionInputs GetInputsForAmount (Organization organization, Int64 satoshis)
+        public static BitcoinTransactionInputs GetInputsForAmount (Organization organization, Int64 satoshis)
         {
             // TODO: Verify inputs up to date?
 
@@ -243,13 +258,13 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        static public FinancialTransaction GetSwarmopsTransactionFromBlockchainId (string transactionId)
+        public static FinancialTransaction GetSwarmopsTransactionFromBlockchainId (string transactionId)
         {
             return null;
         }
 
 
-        static public void CheckColdStorageForOrganization (Organization organization)
+        public static void CheckColdStorageForOrganization (Organization organization)
         {
             FinancialAccount coldRoot = organization.FinancialAccounts.AssetsBitcoinCold;
 
@@ -259,7 +274,7 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        static private void CheckColdStorageRecurse (FinancialAccount parent)
+        private static void CheckColdStorageRecurse (FinancialAccount parent)
         {
             foreach (FinancialAccount child in parent.Children)
             {
@@ -284,11 +299,13 @@ namespace Swarmops.Logic.Financial
             }
 
             var addressData =
-                JObject.Parse(
-                    new WebClient().DownloadString("https://blockchain.info/address/" + address + "?format=json&api_key=" +
-                                                    SystemSettings.BlockchainSwarmopsApiKey));   // warn: will 500 if no unspent outpoints
+                JObject.Parse (
+                    new WebClient().DownloadString ("https://blockchain.info/address/" + address +
+                                                    "?format=json&api_key=" +
+                                                    SystemSettings.BlockchainSwarmopsApiKey));
+            // warn: will 500 if no unspent outpoints
 
-            int transactionCount = (int)(addressData["n_tx"]);
+            int transactionCount = (int) (addressData["n_tx"]);
 
             foreach (var tx in addressData["txs"])
             {
@@ -297,7 +314,7 @@ namespace Swarmops.Logic.Financial
 
                 try
                 {
-                    ourTx = FinancialTransaction.FromBlockchainHash(parent.Organization, blockchainTransactionId);
+                    ourTx = FinancialTransaction.FromBlockchainHash (parent.Organization, blockchainTransactionId);
                     // If the transaction was fetched fine, we have already seen this transaction, but need to re-check it
                 }
                 catch (ArgumentException)
@@ -313,9 +330,7 @@ namespace Swarmops.Logic.Financial
 
             // TODO: PARSE (awaiting functions for native currency to be added to FinancialTransactionRows)
             // TODO: CONTINUE HERE
-
         }
-
 
         public const int BitcoinWalletIndex = 1;
         public const int BitcoinDonationsIndex = 2;
@@ -324,20 +339,60 @@ namespace Swarmops.Logic.Financial
 
         public const string BitcoinTestAddress = "1JMpU3D6c5sruunMwzkt6p6PQzLcUYcL26";
 
-        public const long FeeSatoshisPerThousandBytes = 20000;  // This is twice the standardized amount - needed until blocksize debacle sorts out
-    }
+        public const long FeeSatoshisPerThousandBytes = 20000;
+            // This is twice the standardized amount - needed until blocksize debacle sorts out
 
-    internal class BitcoinUnspentTransactionOutput
-    {
-        public UInt64 Satoshis { get; set; }
-        public string TransactionHash { get; set; }
-        public UInt32 TransactionOutputIndex { get; set; }
-        public string BitcoinAddress { get; set; }
-        public UInt32 ConfirmationCount { get; set; }
 
-        public static implicit operator NBitcoin.Coin (BitcoinUnspentTransactionOutput source)
+
+        public static bool IsValidBitcoinAddress (string address)
         {
-            return new Coin(new OutPoint() { Hash= uint256.Parse (source.TransactionHash), N=source.TransactionOutputIndex }, new TxOut(new NBitcoin.Money (source.Satoshis), new BitcoinAddress (source.BitcoinAddress, Network.Main) ));
+            try
+            {
+                BitcoinAddress singleAddress = new BitcoinAddress (address, Network.Main);
+                return true;
+            }
+                // ReSharper disable once EmptyGeneralCatchClause
+            catch (Exception)
+            {
+                // ignore for now; move on to next possible case
+            }
+
+            try
+            {
+                BitcoinScriptAddress multiSigAddress = new BitcoinScriptAddress (address, Network.Main);
+                return true;
+            }
+                // ReSharper disable once EmptyGeneralCatchClause
+            catch (Exception)
+            {
+            }
+
+            return false; // not a valid address, neither single nor multisig
+        }
+
+
+
+
+        internal class BitcoinUnspentTransactionOutput
+        {
+            public UInt64 Satoshis { get; set; }
+            public string TransactionHash { get; set; }
+            public UInt32 TransactionOutputIndex { get; set; }
+            public string BitcoinAddress { get; set; }
+            public UInt32 ConfirmationCount { get; set; }
+
+            public static implicit operator NBitcoin.Coin (BitcoinUnspentTransactionOutput source)
+            {
+                return
+                    new Coin (
+                        new OutPoint()
+                        {
+                            Hash = uint256.Parse (source.TransactionHash),
+                            N = source.TransactionOutputIndex
+                        },
+                        new TxOut (new NBitcoin.Money (source.Satoshis),
+                            new BitcoinAddress (source.BitcoinAddress, Network.Main)));
+            }
         }
     }
 }
