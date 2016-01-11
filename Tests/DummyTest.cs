@@ -14,7 +14,7 @@ namespace Tests
         [TestCase]
         public void ThisTestShouldFail()
         {
-            Assert.Fail();
+            Assert.True(false);
         }
 
 
