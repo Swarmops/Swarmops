@@ -118,6 +118,11 @@
         CostsBankFees,
 
         /// <summary>
+        /// Miner's fees on the bitcoin network
+        /// </summary>
+        CostsBitcoinFees,
+
+        /// <summary>
         ///     IT and such - default SMS charges, etc, here
         /// </summary>
         CostsInfrastructure,

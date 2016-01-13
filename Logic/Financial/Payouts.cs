@@ -649,7 +649,12 @@ namespace Swarmops.Logic.Financial
                     continue; // with next organization
                 }
 
-                // If we arrive at this point, the previous function didn't throw, and we have enough money. Add the inputs to the transaction.
+                // If we arrive at this point, the previous function didn't throw, and we have enough money. 
+                // Ensure the existence of a cost account for bitcoin miner fees.
+
+                organization.EnsureMinerFeeAccountExists();
+
+                // Add the inputs to the transaction.
 
                 txBuilder = txBuilder.AddCoins (inputs.Coins);
                 txBuilder = txBuilder.AddKeys (inputs.PrivateKeys);
@@ -804,11 +809,20 @@ namespace Swarmops.Logic.Financial
 
                 FinancialTransaction ledgerTransaction = FinancialTransaction.Create (organization, utcNow,
                     "Bitcoin automated payout");
-                ledgerTransaction.AddRow(organization.FinancialAccounts.AssetsBitcoinHot, -masterPayoutPrototype.AmountCents, null).NativeAmountCents = new Swarmops.Logic.Financial.Money(satoshisUsed, Currency.Bitcoin);
 
-                // Right now, exchange rate becomes slightly fudged to include fees in fiat amount paid
+                if (organization.Currency.IsBitcoin)
+                {
+                    ledgerTransaction.AddRow(organization.FinancialAccounts.AssetsBitcoinHot, -(masterPayoutPrototype.AmountCents + feeSatoshis), null);
+                    ledgerTransaction.AddRow (organization.FinancialAccounts.CostsBitcoinFees, feeSatoshis, null);
+                }
+                else
+                {
+                    // If the ledger isn't using bitcoin natively, we need to translate the fee paid to ledger cents before entering it into ledger
 
-                // TODO: ADD FEES, MAKE SURE CENTS ADD UP
+                    Int64 feeCentsLedger = new Money (feeSatoshis, Currency.Bitcoin).ToCurrency (organization.Currency).Cents;
+                    ledgerTransaction.AddRow(organization.FinancialAccounts.AssetsBitcoinHot, -(masterPayoutPrototype.AmountCents + feeCentsLedger), null).NativeAmountCents = new Money(satoshisUsed, Currency.Bitcoin);
+                    ledgerTransaction.AddRow (organization.FinancialAccounts.CostsBitcoinFees, feeCentsLedger, null);
+                }
 
                 ledgerTransaction.BlockchainHash = transactionHash;
 

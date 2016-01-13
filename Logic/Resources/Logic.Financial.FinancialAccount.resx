@@ -156,7 +156,10 @@
     <value>Asset Depreciation</value>
   </data>
   <data name="Cost_BankFees" xml:space="preserve">
-    <value>Bank Fees</value>
+    <value>Financial Fees</value>
+  </data>
+  <data name="Cost_BitcoinFees" xml:space="preserve">
+    <value>Bitcoin Miner Fees</value>
   </data>
   <data name="Cost_CentRounding" xml:space="preserve">
     <value>Cent Rounding</value>

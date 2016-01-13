@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
@@ -14,6 +15,7 @@ using System.Web.Configuration;
 using NBitcoin;
 using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Newtonsoft.Json.Linq;
+using NUnit.Framework.Constraints;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
@@ -166,11 +168,47 @@ namespace Swarmops.Logic.Financial
                 return false; // no funds on address at all at this time
             }
 
-            var unspentJsonResult =
-                JObject.Parse (
-                    new WebClient().DownloadString ("https://blockchain.info/unspent?active=" + address + "&api_key=" +
+            JObject unspentJsonResult;
+
+            try
+            {
+                unspentJsonResult = JObject.Parse(
+                    new WebClient().DownloadString("https://blockchain.info/unspent?active=" + address + "&api_key=" +
                                                     SystemSettings.BlockchainSwarmopsApiKey));
-                // warn: will 500 if no unspent outpoints
+
+            }
+            catch (WebException webException)
+            {
+                // A 500 on the above _may_ mean that there's no unspent outpoints. It can also mean a data
+                // retrieval or network error, in which case the exception must absolutely not be interpreted
+                // as valid data of zero unspent outpoints.
+
+                try
+                {
+                    if (webException.Response == null)
+                    {
+                        throw; // if there's no response at all, we can't do shit
+                    }
+
+                    string errorResponseContent =
+                        new StreamReader (webException.Response.GetResponseStream()).ReadToEnd();
+
+                    if (errorResponseContent.Trim().StartsWith ("No free outputs to spend"))
+                    {
+                        // all is okay network-wise, there just aren't any UTXOs so we're getting an error code for that
+
+                        return false; // no further processing and there are no fresh transactions
+                    }
+
+                    throw; // otherwise throw upward
+                }
+                catch (WebException webExceptionInner)
+                {
+                    // Ok, we tried, but there's apparently a network error so we need to abort this whole thing
+                    throw;
+                }
+                
+            }
 
             foreach (var unspentJson in unspentJsonResult["unspent_outputs"])
             {
@@ -276,6 +314,15 @@ namespace Swarmops.Logic.Financial
             }
         }
 
+        private static Dictionary<string, int> GetAddressToAccountMap (Organization organization)
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+
+            // Create a map of address-to-account for an org, use it to parse cold storage txs
+
+            return result;
+        }
+
         private static void CheckColdStorageRecurse (FinancialAccount parent)
         {
             foreach (FinancialAccount child in parent.Children)
@@ -289,24 +336,15 @@ namespace Swarmops.Logic.Financial
 
             string address = parent.Name.Trim();
 
-            try
+            if (!BitcoinUtility.IsValidBitcoinAddress (address))
             {
-                BitcoinAddress addressTest = new BitcoinAddress (BitcoinTestAddress, Network.Main);
-            }
-            catch (Exception)
-            {
-                // the name wasn't an address, so return
-
-                return;
+                return; // not a bitcoin address but something else
             }
 
-            var addressData =
-                JObject.Parse (
-                    new WebClient().DownloadString ("https://blockchain.info/address/" + address +
-                                                    "?format=json&api_key=" +
-                                                    SystemSettings.BlockchainSwarmopsApiKey));
-            // warn: will 500 if no unspent outpoints
-
+            JObject addressData = JObject.Parse(
+                        new WebClient().DownloadString("https://blockchain.info/address/" + address +
+                                                        "?format=json&api_key=" +
+                                                        SystemSettings.BlockchainSwarmopsApiKey));
             int transactionCount = (int) (addressData["n_tx"]);
 
             foreach (var tx in addressData["txs"])

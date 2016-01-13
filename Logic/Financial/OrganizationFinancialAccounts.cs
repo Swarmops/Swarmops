@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Swarmops.Common.Enums;
 using Swarmops.Database;
 using Swarmops.Logic.Structure;
@@ -88,6 +89,11 @@ namespace Swarmops.Logic.Financial
         public FinancialAccount CostsBankFees
         {
             get { return this[OrganizationFinancialAccountType.CostsBankFees]; }
+        }
+
+        public FinancialAccount CostsBitcoinFees
+        {
+            get { return this[OrganizationFinancialAccountType.CostsBitcoinFees]; }
         }
 
         public FinancialAccount CostsAllocatedFunds

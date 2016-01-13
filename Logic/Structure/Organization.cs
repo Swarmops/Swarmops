@@ -526,6 +526,15 @@ namespace Swarmops.Logic.Structure
             OptionalData.SetOptionalDataBool (ObjectOptionalDataType.OrgEconomyEnabled, true);
         }
 
+        public void EnsureMinerFeeAccountExists()
+        {
+            if (FinancialAccounts[OrganizationFinancialAccountType.CostsBitcoinFees] == null)
+            {
+                FinancialAccounts[OrganizationFinancialAccountType.CostsBitcoinFees] =
+                    FinancialAccount.Create(this, "[LOC]Cost_BitcoinFees", FinancialAccountType.Cost, FinancialAccounts.CostsBankFees);
+            }
+        }
+
         #endregion
 
         #region Public properties
