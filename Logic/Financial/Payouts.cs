@@ -800,9 +800,16 @@ namespace Swarmops.Logic.Financial
                 OutboundComm.CreateNotification (organization, NotificationResource.Bitcoin_Hotwallet_Outflow,
                     masterPrimaryStrings, masterSecondaryStrings);
 
+                // TODO: special case for native-bitcoin organizations vs. fiat-currency organizations
+
                 FinancialTransaction ledgerTransaction = FinancialTransaction.Create (organization, utcNow,
                     "Bitcoin automated payout");
-                ledgerTransaction.AddRow (organization.FinancialAccounts.AssetsBitcoinHot, -masterPayoutPrototype.AmountCents, null).NativeAmountCents = new Swarmops.Logic.Financial.Money(satoshisUsed, Currency.Bitcoin);
+                ledgerTransaction.AddRow(organization.FinancialAccounts.AssetsBitcoinHot, -masterPayoutPrototype.AmountCents, null).NativeAmountCents = new Swarmops.Logic.Financial.Money(satoshisUsed, Currency.Bitcoin);
+
+                // Right now, exchange rate becomes slightly fudged to include fees in fiat amount paid
+
+                // TODO: ADD FEES, MAKE SURE CENTS ADD UP
+
                 ledgerTransaction.BlockchainHash = transactionHash;
 
                 masterPayout.BindToTransactionAndClose (ledgerTransaction, null);
