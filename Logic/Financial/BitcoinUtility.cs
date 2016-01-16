@@ -312,22 +312,21 @@ namespace Swarmops.Logic.Financial
             {
                 return; // no cold assets to check
             }
+
+            // Construct the address-to-account map only once for the entire recursion chain
+
+            Dictionary<string,int> addressAccountLookup = GetAddressAccountLookup (organization);
+
+            // Recurse
+
+            CheckColdStorageRecurse (coldRoot, addressAccountLookup);
         }
 
-        private static Dictionary<string, int> GetAddressToAccountMap (Organization organization)
-        {
-            Dictionary<string, int> result = new Dictionary<string, int>();
-
-            // Create a map of address-to-account for an org, use it to parse cold storage txs
-
-            return result;
-        }
-
-        private static void CheckColdStorageRecurse (FinancialAccount parent)
+        private static void CheckColdStorageRecurse (FinancialAccount parent, Dictionary<string, int> addressAccountLookup)
         {
             foreach (FinancialAccount child in parent.Children)
             {
-                CheckColdStorageRecurse (child);
+                CheckColdStorageRecurse (child, addressAccountLookup);
             }
 
             // After recursing, get all transactions for this account and verify against our records
@@ -356,20 +355,65 @@ namespace Swarmops.Logic.Financial
                 {
                     ourTx = FinancialTransaction.FromBlockchainHash (parent.Organization, blockchainTransactionId);
                     // If the transaction was fetched fine, we have already seen this transaction, but need to re-check it
+
                 }
                 catch (ArgumentException)
                 {
                     // We didn't have this transaction, so we need to create it
 
-                    // ourTx = FinancialTransaction.Create (parent.Organization, DateTime, Description)
-                    // Did we lose or gain money?
+                    System.DateTime transactionDateTimeUtc = new DateTime(1970,1,1,0,0,0,0,System.DateTimeKind.Utc);
+                    transactionDateTimeUtc = transactionDateTimeUtc.AddSeconds (Int64.Parse ((string) tx["time"]));
 
+                    ourTx = FinancialTransaction.Create (parent.Organization, transactionDateTimeUtc, "Blockchain tx");
+
+                    // Did we lose or gain money?
                     // Find all in- and outpoints, determine which are ours (hot and cold wallet) and which aren't
                 }
             }
 
-            // TODO: PARSE (awaiting functions for native currency to be added to FinancialTransactionRows)
+            // TODO: Note the non-blockchain rows in this tx, keep them
+            // TODO: Reconstruct the blockchain rows
+            // TODO: Rewrite the tx
+
             // TODO: CONTINUE HERE
+        }
+
+
+        private static Dictionary<string, int> GetAddressAccountLookup (Organization organization)
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+
+            // Add all cold addresses
+
+            GetAddressAccountLookupRecurse (organization.FinancialAccounts.AssetsBitcoinCold, result);
+
+            // Add all hot addresses
+
+            HotBitcoinAddresses hotAddresses = HotBitcoinAddresses.ForOrganization (organization);
+            foreach (HotBitcoinAddress hotAddress in hotAddresses)
+            {
+                result[hotAddress.Address] = organization.FinancialAccounts.AssetsBitcoinHot.Identity;
+            }
+
+            return result;
+        }
+
+        private static void GetAddressAccountLookupRecurse (FinancialAccount account, Dictionary<string, int> result)
+        {
+            if (account == null)
+            {
+                return;
+            }
+
+            foreach (FinancialAccount child in account.Children)
+            {
+                GetAddressAccountLookupRecurse (child, result);
+            }
+
+            if (IsValidBitcoinAddress (account.Name)) // TODO: Add a special property for the address instead of using name
+            {
+                result [account.Name] = account.Identity;
+            }
         }
 
         public const int BitcoinWalletIndex = 1;
