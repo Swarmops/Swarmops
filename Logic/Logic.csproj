@@ -196,6 +196,7 @@
     <Compile Include="Communications\Payload\ParticipantMailPayload.cs" />
     <Compile Include="Communications\Payload\PayloadEnvelope.cs" />
     <Compile Include="Communications\Payload\NotificationPayload.cs" />
+    <Compile Include="Support\BlockchainTransaction.cs" />
     <Compile Include="Support\PayloadBase.cs" />
     <Compile Include="Financial\BankDataReaders\SEPaymentsBankgiroReader.cs" />
     <Compile Include="Financial\Currencies.cs" />

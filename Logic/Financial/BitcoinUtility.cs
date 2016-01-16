@@ -340,20 +340,24 @@ namespace Swarmops.Logic.Financial
                 return; // not a bitcoin address but something else
             }
 
+            Organization organization = parent.Organization;
+            bool organizationLedgerUsesBitcoin = organization.Currency.IsBitcoin;
+
             JObject addressData = JObject.Parse(
                         new WebClient().DownloadString("https://blockchain.info/address/" + address +
                                                         "?format=json&api_key=" +
                                                         SystemSettings.BlockchainSwarmopsApiKey));
             int transactionCount = (int) (addressData["n_tx"]);
 
-            foreach (var tx in addressData["txs"])
+            foreach (JObject txJson in addressData["txs"])
             {
-                string blockchainTransactionId = (string) tx["hash"];
                 FinancialTransaction ourTx = null;
+                Dictionary<Int64, Int64> satoshisLookup = new Dictionary<long, long>(); // map from ledgercents to satoshis
+                BlockchainTransaction blockchainTx = BlockchainTransaction.FromBlockchainInfoJson (txJson);
 
                 try
                 {
-                    ourTx = FinancialTransaction.FromBlockchainHash (parent.Organization, blockchainTransactionId);
+                    ourTx = FinancialTransaction.FromBlockchainHash (parent.Organization, blockchainTx.TransactionHash);
                     // If the transaction was fetched fine, we have already seen this transaction, but need to re-check it
 
                 }
@@ -361,21 +365,131 @@ namespace Swarmops.Logic.Financial
                 {
                     // We didn't have this transaction, so we need to create it
 
-                    System.DateTime transactionDateTimeUtc = new DateTime(1970,1,1,0,0,0,0,System.DateTimeKind.Utc);
-                    transactionDateTimeUtc = transactionDateTimeUtc.AddSeconds (Int64.Parse ((string) tx["time"]));
-
-                    ourTx = FinancialTransaction.Create (parent.Organization, transactionDateTimeUtc, "Blockchain tx");
+                    ourTx = FinancialTransaction.Create (parent.Organization, blockchainTx.TransactionDateTimeUtc, "Blockchain tx");
 
                     // Did we lose or gain money?
                     // Find all in- and outpoints, determine which are ours (hot and cold wallet) and which aren't
                 }
+
+                Dictionary<int,long> transactionReconstructedRows = new Dictionary<int, long>();
+
+                // Note the non-blockchain rows in this tx, keep them for reconstruction
+
+                foreach (FinancialTransactionRow row in ourTx.Rows)
+                {
+                    if (!addressAccountLookup.ContainsValue (row.FinancialAccountId)) // not optimal but n is small
+                    {
+                        // This is not a bitcoin address account, so note it for reconstruction
+                        transactionReconstructedRows[row.FinancialAccountId] += row.AmountCents;
+                    }
+                    else
+                    {
+                        // this is a known blockchain row, note its ledgered value in satoshis
+                        if (!organizationLedgerUsesBitcoin)
+                        {
+                            Money nativeMoney = row.NativeAmountCents;
+                            if (nativeMoney.Currency.IsBitcoin) // it damn well should be, but just checking
+                            {
+                                satoshisLookup[row.AmountCents] = row.NativeAmountCents.Cents;
+                            }
+                        }
+                    }
+                }
+
+                // Reconstruct the blockchain rows: input, output, fees, in that order
+
+                // -- inputs
+
+                foreach (BlockchainTransactionRow inputRow in blockchainTx.Inputs)
+                {
+                    if (addressAccountLookup.ContainsKey (inputRow.Address))
+                    {
+                        // this input is ours
+
+                        if (organizationLedgerUsesBitcoin)
+                        {
+                            transactionReconstructedRows[addressAccountLookup[inputRow.Address]] +=
+                                -inputRow.ValueSatoshis; // note the negation!
+                        }
+                        else
+                        {
+                            Int64 ledgerCents =
+                                new Money (inputRow.ValueSatoshis, Currency.Bitcoin, ourTx.DateTime).ToCurrency (
+                                    organization.Currency).Cents;
+                            transactionReconstructedRows[addressAccountLookup[inputRow.Address]] +=
+                                -ledgerCents; // note the negation!
+                            satoshisLookup[ledgerCents] = inputRow.ValueSatoshis;
+                        }
+                    }
+                }
+
+                // -- outputs
+
+                foreach (BlockchainTransactionRow outputRow in blockchainTx.Outputs)
+                {
+                    if (addressAccountLookup.ContainsKey(outputRow.Address))
+                    {
+                        // this input is ours
+
+                        if (organizationLedgerUsesBitcoin)
+                        {
+                            transactionReconstructedRows[addressAccountLookup[outputRow.Address]] +=
+                                outputRow.ValueSatoshis;
+                        }
+                        else
+                        {
+                            Int64 ledgerCents =
+                                new Money(outputRow.ValueSatoshis, Currency.Bitcoin, ourTx.DateTime).ToCurrency(
+                                    organization.Currency).Cents;
+                            transactionReconstructedRows[addressAccountLookup[outputRow.Address]] +=
+                                ledgerCents;
+                            satoshisLookup[ledgerCents] = outputRow.ValueSatoshis;
+                        }
+                    }
+                }
+
+                // -- fees
+
+                if (addressAccountLookup.ContainsKey (blockchainTx.Inputs[0].Address))
+                {
+                    // if the first input is ours, we're paying the fee (is there any case where this is not true?)
+
+                    if (organizationLedgerUsesBitcoin)
+                    {
+                        transactionReconstructedRows[organization.FinancialAccounts.CostsBitcoinFees.Identity] =
+                            blockchainTx.FeeSatoshis;
+                    }
+                    else
+                    {
+                        Int64 feeLedgerCents =
+                            new Money (blockchainTx.FeeSatoshis, Currency.Bitcoin,
+                                blockchainTx.TransactionDateTimeUtc).ToCurrency (organization.Currency).Cents;
+                        transactionReconstructedRows[organization.FinancialAccounts.CostsBitcoinFees.Identity] =
+                            feeLedgerCents;
+                    }
+                }
+
+
+                // Rewrite the transaction (called always, but the function won't do anything if everything matches)
+
+                ourTx.RecalculateTransaction (transactionReconstructedRows, /* loggingPerson*/ null);
+
+                if (!organizationLedgerUsesBitcoin)
+                {
+                    // Add native cents, if any
+
+                    foreach (FinancialTransactionRow row in ourTx.Rows)
+                    {
+                        if (addressAccountLookup.ContainsValue (row.Identity)) // "ContainsValue" is bad, but n is low
+                        {
+                            // Do we have a foreign amount for this row already?
+
+
+                        }
+                    }
+                }
             }
 
-            // TODO: Note the non-blockchain rows in this tx, keep them
-            // TODO: Reconstruct the blockchain rows
-            // TODO: Rewrite the tx
-
-            // TODO: CONTINUE HERE
         }
 
 
