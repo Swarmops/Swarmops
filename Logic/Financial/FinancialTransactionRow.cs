@@ -76,6 +76,8 @@ namespace Swarmops.Logic.Financial
                 }
                 else if (this.Account.ForeignCurrency.Identity != value.Currency.Identity)
                 {
+                    // This is not a database limitation, there can be multiple foreign-currency cents per row, but for now, let's limit to one.
+
                     throw new InvalidOperationException("Trying to assign foreign-currency value to account with a different foreign currency set");
                 }
 
