@@ -115,7 +115,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     Currency.Bitcoin);
 
                 // Make sure that the hotwallet native currency is bitcoin
-                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.NativeCurrency = Currency.Bitcoin;
+                authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot.ForeignCurrency = Currency.Bitcoin;
 
                 // Create success message and ledger transaction
                 string successMessage = string.Empty;
@@ -156,7 +156,7 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     FinancialTransaction ledgerTx = FinancialTransaction.Create(authData.CurrentOrganization,
                         DateTime.UtcNow, "Bitcoin echo test (will be repaid immediately)");
                     ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.DebtsOther, -orgNativeCents, authData.CurrentUser);
-                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).NativeAmountCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.Bitcoin);
+                    ledgerTx.AddRow(authData.CurrentOrganization.FinancialAccounts.AssetsBitcoinHot, orgNativeCents, authData.CurrentUser).AmountForeignCents = new Swarmops.Logic.Financial.Money(satoshisReceived, Currency.Bitcoin);
                     ledgerTx.BlockchainHash = txHash;
 
                     successMessage = string.Format(Resources.Pages.Admin.BitcoinEchoTest_FundsReceived,

@@ -59,18 +59,27 @@ namespace Swarmops.Logic.Financial
             }
         }
 
-        public Money NativeAmountCents
+        public Money AmountForeignCents
         {
             get
             {
-                Currency currency = this.Account.NativeCurrency;
+                Currency currency = this.Account.ForeignCurrency;
                 int currencyId = currency.Identity;
-                Int64 nativeCents = SwarmDb.GetDatabaseForReading().GetFinancialTransactionRowNativeAmountCents (this.Identity, currencyId);
-                return new Money(nativeCents, currency, this.CreatedDateTime); // includes the valuation datetime, as it's a non-org currency
+                Int64 foreignCents = SwarmDb.GetDatabaseForReading().GetFinancialTransactionRowAmountForeignCents (this.Identity, currencyId);
+                return new Money(foreignCents, currency, this.CreatedDateTime); // includes the valuation datetime, as it's a non-org currency
             }
             set
             {
-                SwarmDb.GetDatabaseForWriting().SetFinancialTransactionRowNativeAmountCents (this.Identity, value.Currency.Identity, value.Cents);
+                if (this.Account.ForeignCurrency == null)
+                {
+                    this.Account.ForeignCurrency = value.Currency;
+                }
+                else if (this.Account.ForeignCurrency.Identity != value.Currency.Identity)
+                {
+                    throw new InvalidOperationException("Trying to assign foreign-currency value to account with a different foreign currency set");
+                }
+
+                SwarmDb.GetDatabaseForWriting().SetFinancialTransactionRowAmountForeignCents (this.Identity, value.Currency.Identity, value.Cents);
             }
         }
 

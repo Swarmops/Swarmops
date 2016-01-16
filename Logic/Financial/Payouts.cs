@@ -820,7 +820,7 @@ namespace Swarmops.Logic.Financial
                     // If the ledger isn't using bitcoin natively, we need to translate the miner fee paid to ledger cents before entering it into ledger
 
                     Int64 feeCentsLedger = new Money (feeSatoshis, Currency.Bitcoin).ToCurrency (organization.Currency).Cents;
-                    ledgerTransaction.AddRow(organization.FinancialAccounts.AssetsBitcoinHot, -(masterPayoutPrototype.AmountCents + feeCentsLedger), null).NativeAmountCents = new Money(satoshisUsed, Currency.Bitcoin);
+                    ledgerTransaction.AddRow(organization.FinancialAccounts.AssetsBitcoinHot, -(masterPayoutPrototype.AmountCents + feeCentsLedger), null).AmountForeignCents = new Money(satoshisUsed, Currency.Bitcoin);
                     ledgerTransaction.AddRow (organization.FinancialAccounts.CostsBitcoinFees, feeCentsLedger, null);
                 }
 

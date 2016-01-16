@@ -115,11 +115,11 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public Currency NativeCurrency
+        public Currency ForeignCurrency
         {
             get
             {
-                int currencyId = OptionalData.GetOptionalDataInt (ObjectOptionalDataType.FinancialAccountNativeCurrency);
+                int currencyId = OptionalData.GetOptionalDataInt (ObjectOptionalDataType.FinancialAccountNativeCurrency); // "Native" word is legacy
                 return (currencyId != 0 ? Currency.FromIdentity (currencyId) : null);
             }
             set

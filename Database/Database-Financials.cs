@@ -1069,7 +1069,7 @@ namespace Swarmops.Database
 
 
 
-        public Int64 GetFinancialTransactionRowNativeAmountCents(int financialTransactionRowId, int currencyId)
+        public Int64 GetFinancialTransactionRowAmountForeignCents(int financialTransactionRowId, int currencyId)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {
@@ -1094,7 +1094,7 @@ namespace Swarmops.Database
 
 
 
-        public void SetFinancialTransactionRowNativeAmountCents(int financialTransactionRowId, int currencyId, Int64 nativeAmountCents)
+        public void SetFinancialTransactionRowAmountForeignCents(int financialTransactionRowId, int currencyId, Int64 nativeAmountCents)
         {
             using (DbConnection connection = GetMySqlDbConnection())
             {

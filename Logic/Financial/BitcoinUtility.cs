@@ -387,10 +387,10 @@ namespace Swarmops.Logic.Financial
                         // this is a known blockchain row, note its ledgered value in satoshis
                         if (!organizationLedgerUsesBitcoin)
                         {
-                            Money nativeMoney = row.NativeAmountCents;
+                            Money nativeMoney = row.AmountForeignCents;
                             if (nativeMoney.Currency.IsBitcoin) // it damn well should be, but just checking
                             {
-                                satoshisLookup[row.AmountCents] = row.NativeAmountCents.Cents;
+                                satoshisLookup[row.AmountCents] = row.AmountForeignCents.Cents;
                             }
                         }
                     }
