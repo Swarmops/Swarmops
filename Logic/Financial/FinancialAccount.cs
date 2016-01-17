@@ -311,12 +311,9 @@ namespace Swarmops.Logic.Financial
 
                 return null;
             }
-            set
-            {
-                if (value != null)
-                    OptionalData.SetOptionalDataInt (ObjectOptionalDataType.GeographyId, value.Identity);
-                else
-                    OptionalData.SetOptionalDataInt (ObjectOptionalDataType.GeographyId, 0);
+            set {
+                this.OptionalData.SetOptionalDataInt (ObjectOptionalDataType.GeographyId,
+                    value != null ? value.Identity : 0);
             }
         }
 
