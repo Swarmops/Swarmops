@@ -41,7 +41,7 @@ namespace Swarmops
             // HotBitcoinAddresses testAddresses = HotBitcoinAddresses.ForOrganization (Organization.FromIdentity (2));
             // testAddresses.UpdateBalances();
 
-            BitcoinUtility.TestUnspents("18GkxU6Y6cFMfT5wxZiQi15DAMZMX2PWSB");
+            // BitcoinUtility.CheckColdStorageForOrganization (Organization.FromIdentity (7));
 
             // BitcoinUtility.TestMultisigPayout();
 

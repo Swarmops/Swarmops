@@ -129,6 +129,19 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public string BitcoinAddress
+        {
+            get
+            {
+                return OptionalData.GetOptionalDataString (ObjectOptionalDataType.FinancialAccountBitcoinPublicAddress);
+            }
+            set
+            {
+                OptionalData.SetOptionalDataString (ObjectOptionalDataType.FinancialAccountBitcoinPublicAddress, value);
+            }
+        }
+
+
         public ExternalBankDataProfile ExternalBankDataProfile
         {
             get

@@ -333,11 +333,17 @@ namespace Swarmops.Logic.Financial
 
             // is the account name a valid bitcoin address on the main network?
 
-            string address = parent.Name.Trim();
-
-            if (!BitcoinUtility.IsValidBitcoinAddress (address))
+            string address = parent.BitcoinAddress;
+            if (string.IsNullOrEmpty (address))
             {
-                return; // not a bitcoin address but something else
+                if (BitcoinUtility.IsValidBitcoinAddress (parent.Name.Trim()))
+                {
+                    parent.BitcoinAddress = address = parent.Name.Trim();
+                }
+                else
+                {
+                    return; // not a bitcoin address but something else; do not process
+                }
             }
 
             Organization organization = parent.Organization;
@@ -366,6 +372,7 @@ namespace Swarmops.Logic.Financial
                     // We didn't have this transaction, so we need to create it
 
                     ourTx = FinancialTransaction.Create (parent.Organization, blockchainTx.TransactionDateTimeUtc, "Blockchain tx");
+                    ourTx.BlockchainHash = blockchainTx.TransactionHash;
 
                     // Did we lose or gain money?
                     // Find all in- and outpoints, determine which are ours (hot and cold wallet) and which aren't
@@ -388,7 +395,7 @@ namespace Swarmops.Logic.Financial
                         if (!organizationLedgerUsesBitcoin)
                         {
                             Money nativeMoney = row.AmountForeignCents;
-                            if (nativeMoney.Currency.IsBitcoin) // it damn well should be, but just checking
+                            if (nativeMoney != null && nativeMoney.Currency.IsBitcoin) // it damn well should be, but just checking
                             {
                                 satoshisLookup[row.AmountCents] = row.AmountForeignCents.Cents;
                             }
@@ -406,9 +413,16 @@ namespace Swarmops.Logic.Financial
                     {
                         // this input is ours
 
+                        int financialAccountId = addressAccountLookup[inputRow.Address];
+
+                        if (!transactionReconstructedRows.ContainsKey (financialAccountId))
+                        {
+                            transactionReconstructedRows[financialAccountId] = 0; // initialize
+                        }
+
                         if (organizationLedgerUsesBitcoin)
                         {
-                            transactionReconstructedRows[addressAccountLookup[inputRow.Address]] +=
+                            transactionReconstructedRows[financialAccountId] +=
                                 -inputRow.ValueSatoshis; // note the negation!
                         }
                         else
@@ -416,7 +430,7 @@ namespace Swarmops.Logic.Financial
                             Int64 ledgerCents =
                                 new Money (inputRow.ValueSatoshis, Currency.Bitcoin, ourTx.DateTime).ToCurrency (
                                     organization.Currency).Cents;
-                            transactionReconstructedRows[addressAccountLookup[inputRow.Address]] +=
+                            transactionReconstructedRows[financialAccountId] +=
                                 -ledgerCents; // note the negation!
                             satoshisLookup[ledgerCents] = inputRow.ValueSatoshis;
                         }
@@ -429,11 +443,18 @@ namespace Swarmops.Logic.Financial
                 {
                     if (addressAccountLookup.ContainsKey(outputRow.Address))
                     {
-                        // this input is ours
+                        // this output is ours
+
+                        int financialAccountId = addressAccountLookup[outputRow.Address];
+
+                        if (!transactionReconstructedRows.ContainsKey (financialAccountId))
+                        {
+                            transactionReconstructedRows[financialAccountId] = 0; // initialize
+                        }
 
                         if (organizationLedgerUsesBitcoin)
                         {
-                            transactionReconstructedRows[addressAccountLookup[outputRow.Address]] +=
+                            transactionReconstructedRows[financialAccountId] +=
                                 outputRow.ValueSatoshis;
                         }
                         else
@@ -441,7 +462,7 @@ namespace Swarmops.Logic.Financial
                             Int64 ledgerCents =
                                 new Money(outputRow.ValueSatoshis, Currency.Bitcoin, ourTx.DateTime).ToCurrency(
                                     organization.Currency).Cents;
-                            transactionReconstructedRows[addressAccountLookup[outputRow.Address]] +=
+                            transactionReconstructedRows[financialAccountId] +=
                                 ledgerCents;
                             satoshisLookup[ledgerCents] = outputRow.ValueSatoshis;
                         }
@@ -474,17 +495,35 @@ namespace Swarmops.Logic.Financial
 
                 ourTx.RecalculateTransaction (transactionReconstructedRows, /* loggingPerson*/ null);
 
+                // Finally, add foreign cents, if any
+
                 if (!organizationLedgerUsesBitcoin)
                 {
-                    // Add native cents, if any
-
                     foreach (FinancialTransactionRow row in ourTx.Rows)
                     {
-                        if (addressAccountLookup.ContainsValue (row.Identity)) // "ContainsValue" is bad, but n is low
+                        if (addressAccountLookup.ContainsValue (row.Account.Identity)) // "ContainsValue" is bad, but n is low
                         {
                             // Do we have a foreign amount for this row already?
 
+                            Money foreignMoney = row.AmountForeignCents;
+                            if (foreignMoney == null || foreignMoney.Cents == 0)
+                            {
+                                // no we didn't; create one
 
+                                if (satoshisLookup.ContainsKey (row.AmountCents))
+                                {
+                                    row.AmountForeignCents = new Money(satoshisLookup[row.AmountCents], Currency.Bitcoin, ourTx.DateTime);
+                                }
+                                else if (satoshisLookup.ContainsKey (-row.AmountCents)) // the negative counterpart
+                                {
+                                    row.AmountForeignCents = new Money(-satoshisLookup[-row.AmountCents], Currency.Bitcoin, ourTx.DateTime);
+                                }
+                                else
+                                {
+                                    // There's a last case which may happen if the row is an addition to a previous row; if so, calculate
+                                    row.AmountForeignCents = new Money(row.AmountCents, organization.Currency, ourTx.DateTime).ToCurrency (Currency.Bitcoin);
+                                }
+                            }
                         }
                     }
                 }

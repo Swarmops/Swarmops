@@ -64,6 +64,10 @@ namespace Swarmops.Logic.Financial
             get
             {
                 Currency currency = this.Account.ForeignCurrency;
+                if (currency == null)
+                {
+                    return null;
+                }
                 int currencyId = currency.Identity;
                 Int64 foreignCents = SwarmDb.GetDatabaseForReading().GetFinancialTransactionRowAmountForeignCents (this.Identity, currencyId);
                 return new Money(foreignCents, currency, this.CreatedDateTime); // includes the valuation datetime, as it's a non-org currency

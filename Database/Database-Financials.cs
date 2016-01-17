@@ -1077,7 +1077,7 @@ namespace Swarmops.Database
 
                 using (DbCommand command =
                     GetDbCommand(
-                        "Select NativeAmountCents from FinancialTransactionRows WHERE FinancialTransactionRowId=" + financialTransactionRowId +
+                        "SELECT NativeAmountCents from FinancialTransactionRowsNativeCurrency WHERE FinancialTransactionRowId=" + financialTransactionRowId +
                         " AND CurrencyId =" + currencyId + ";", connection))
 
                 using (DbDataReader reader = command.ExecuteReader())

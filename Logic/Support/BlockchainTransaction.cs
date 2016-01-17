@@ -19,6 +19,7 @@ namespace Swarmops.Logic.Support
 
             Int64 satoshiCount = 0;
             thisTx.Inputs = new List<BlockchainTransactionRow>();
+            thisTx.Outputs = new List<BlockchainTransactionRow>();
             foreach (JObject inputRow in json["inputs"])
             {
                 BlockchainTransactionRow newRow =
