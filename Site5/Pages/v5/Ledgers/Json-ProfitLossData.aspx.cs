@@ -27,7 +27,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
             this._year = Int32.Parse (yearParameter); // will throw if non-numeric - don't matter for app
         }
 
-        YearlyReport report = YearlyReport.Create (CurrentOrganization, this._year, FinancialAccountType.Result);
+        AnnualReport report = AnnualReport.Create (CurrentOrganization, this._year, FinancialAccountType.Result);
         LocalizeRoot (report.ReportLines);
 
         Response.ContentType = "application/json";
@@ -39,7 +39,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
     }
 
 
-    private void LocalizeRoot (List<YearlyReportLine> lines)
+    private void LocalizeRoot (List<AnnualReportLine> lines)
     {
         Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
@@ -48,7 +48,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
         localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Global.Financial_Income;
         localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Global.Financial_Cost;
 
-        foreach (YearlyReportLine line in lines)
+        foreach (AnnualReportLine line in lines)
         {
             if (localizeMap.ContainsKey (line.AccountName))
             {
@@ -58,7 +58,7 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
     }
 
 
-    private string WriteFooter (YearlyReportNode totals)
+    private string WriteFooter (AnnualReportNode totals)
     {
         string result = string.Format ("\"name\":\"{0}\"", Ledgers.ProfitLossStatement_Results);
 
@@ -77,11 +77,11 @@ public partial class Pages_v5_Ledgers_Json_ProfitLossData : DataV5Base
     }
 
 
-    private string RecurseReport (List<YearlyReportLine> reportLines)
+    private string RecurseReport (List<AnnualReportLine> reportLines)
     {
         List<string> elements = new List<string>();
 
-        foreach (YearlyReportLine line in reportLines)
+        foreach (AnnualReportLine line in reportLines)
         {
             string element = string.Format ("\"id\":\"{0}\",\"name\":\"{1}\"", line.AccountId,
                 JsonSanitize (line.AccountName));

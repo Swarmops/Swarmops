@@ -220,7 +220,7 @@
     <Compile Include="Financial\ISummable.cs" />
     <Compile Include="Financial\Money.cs" />
     <Compile Include="Financial\StockBankDataReaders.cs" />
-    <Compile Include="Financial\YearlyReport.cs" />
+    <Compile Include="Financial\AnnualReport.cs" />
     <Compile Include="Resources\Logic.Swarm.Position.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

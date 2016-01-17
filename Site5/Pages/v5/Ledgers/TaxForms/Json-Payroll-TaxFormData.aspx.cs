@@ -121,7 +121,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers.TaxForms
 
 
 
-        private void LocalizeRoot (List<YearlyReportLine> lines)
+        private void LocalizeRoot (List<AnnualReportLine> lines)
         {
             Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
@@ -130,7 +130,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers.TaxForms
             localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Global.Financial_Income;
             localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Global.Financial_Cost;
 
-            foreach (YearlyReportLine line in lines)
+            foreach (AnnualReportLine line in lines)
             {
                 if (localizeMap.ContainsKey (line.AccountName))
                 {
@@ -140,11 +140,11 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers.TaxForms
         }
 
 
-        private string RecurseReport (List<YearlyReportLine> reportLines)
+        private string RecurseReport (List<AnnualReportLine> reportLines)
         {
             List<string> elements = new List<string>();
 
-            foreach (YearlyReportLine line in reportLines)
+            foreach (AnnualReportLine line in reportLines)
             {
                 string element = string.Format ("\"id\":\"{0}\",\"monthYear\":\"{1}\"", line.AccountId,
                     JsonSanitize (line.AccountName));

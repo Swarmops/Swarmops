@@ -22,7 +22,7 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
             this._year = Int32.Parse (yearParameter); // will throw if non-numeric - don't matter for app
         }
 
-        YearlyReport report = YearlyReport.Create (CurrentOrganization, this._year, FinancialAccountType.Result);
+        AnnualReport report = AnnualReport.Create (CurrentOrganization, this._year, FinancialAccountType.Result);
 
         Response.ClearContent();
         Response.ClearHeaders();
@@ -55,7 +55,7 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
     }
 
 
-    private void LocalizeRoot (List<YearlyReportLine> lines)
+    private void LocalizeRoot (List<AnnualReportLine> lines)
     {
         Dictionary<string, string> localizeMap = new Dictionary<string, string>();
 
@@ -64,7 +64,7 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
         localizeMap["%INCOME_ACCOUNTGROUP%"] = Resources.Global.Financial_Income;
         localizeMap["%COST_ACCOUNTGROUP%"] = Resources.Global.Financial_Cost;
 
-        foreach (YearlyReportLine line in lines)
+        foreach (AnnualReportLine line in lines)
         {
             if (localizeMap.ContainsKey (line.AccountName))
             {
@@ -74,9 +74,9 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
     }
 
 
-    private void RecurseCsvReport (List<YearlyReportLine> reportLines, string accountPrefix)
+    private void RecurseCsvReport (List<AnnualReportLine> reportLines, string accountPrefix)
     {
-        foreach (YearlyReportLine line in reportLines)
+        foreach (AnnualReportLine line in reportLines)
         {
             Response.Output.WriteLine ("\"{0}{1}\",{2},{3},{4},{5},{6},{7}",
                 accountPrefix, line.AccountName,
