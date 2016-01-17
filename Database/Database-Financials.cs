@@ -68,7 +68,7 @@ namespace Swarmops.Database
         // this structure, call them GetDatabaseObject and GetDatabaseCollection, and pass the query,
         // the reader delegate, and the expected type?
 
-        public BasicFinancialAccount[] GetFinancialAccountsForOrganization (int organizationId)
+        public BasicFinancialAccount[] GetFinancialAccountsAll()
         {
             List<BasicFinancialAccount> result = new List<BasicFinancialAccount>();
 
@@ -77,15 +77,15 @@ namespace Swarmops.Database
                 connection.Open();
 
                 DbCommand command =
-                    GetDbCommand (
-                        "SELECT " + financialAccountFieldSequence + " WHERE OrganizationId=" +
-                        organizationId + " ORDER BY AccountType, Name;", connection);
+                    GetDbCommand(
+                        "SELECT " + financialAccountFieldSequence + 
+                        " ORDER BY AccountType, Name;", connection);
 
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add (ReadFinancialAccountFromDataReader (reader));
+                        result.Add(ReadFinancialAccountFromDataReader(reader));
                     }
 
                     return result.ToArray();
@@ -93,7 +93,32 @@ namespace Swarmops.Database
             }
         }
 
-        public BasicFinancialAccount[] GetFinancialAccountsOwnedByPerson (int ownerPersonId)
+        public BasicFinancialAccount[] GetFinancialAccountsForOrganization(int organizationId)
+        {
+            List<BasicFinancialAccount> result = new List<BasicFinancialAccount>();
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                DbCommand command =
+                    GetDbCommand(
+                        "SELECT " + financialAccountFieldSequence + " WHERE OrganizationId=" +
+                        organizationId + " ORDER BY AccountType, Name;", connection);
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadFinancialAccountFromDataReader(reader));
+                    }
+
+                    return result.ToArray();
+                }
+            }
+        }
+
+        public BasicFinancialAccount[] GetFinancialAccountsOwnedByPerson(int ownerPersonId)
         {
             List<BasicFinancialAccount> result = new List<BasicFinancialAccount>();
 
@@ -1111,6 +1136,37 @@ namespace Swarmops.Database
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+
+
+        public Int64 GetFinancialAccountForeignCentsBalance (int financialAccountId)
+        {
+            // This gets the balance across the entire ledger history, so it's only for asset or liability accounts
+            // (not for P&L).
+
+            using (DbConnection connection = GetMySqlDbConnection())
+            {
+                connection.Open();
+
+                using (DbCommand command =
+                    GetDbCommand(
+                        "SELECT SUM(NativeAmountCents) FROM FinancialTransactionRowsNativeCurrency " +
+                        "  JOIN FinancialTransactionRows USING (FinancialTransactionRowId) " +
+                        "  WHERE FinancialAccountId =" + financialAccountId + ";", connection))
+
+                using (DbDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt64(0);
+                    }
+
+                    return 0; // zero balance, apparently.
+                }
+            }
+
+
         }
 
 

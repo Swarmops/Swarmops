@@ -129,6 +129,17 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public Money ForeignBalanceTotalCents
+        {
+            get
+            {
+                Int64 foreignCents =
+                    SwarmDb.GetDatabaseForReading().GetFinancialAccountForeignCentsBalance (this.Identity);
+                return new Money (foreignCents, ForeignCurrency); // default to now
+            }
+        }
+
+
         public string BitcoinAddress
         {
             get
@@ -138,6 +149,39 @@ namespace Swarmops.Logic.Financial
             set
             {
                 OptionalData.SetOptionalDataString (ObjectOptionalDataType.FinancialAccountBitcoinPublicAddress, value);
+            }
+        }
+
+
+        public void CheckForexProfitLoss()
+        {
+            // Compare current balance in native currency with the current balance in foreign currency. If off by more than 100 cents,
+            // log a corrective transaction to account for exchange rate fluctuations.
+
+            DateTime compareDateTime = DateTime.UtcNow;
+
+            Int64 nativeCents = BalanceTotalCents;
+            Money foreignCents = new Money(ForeignBalanceTotalCents.Cents, ForeignCurrency, compareDateTime);
+
+            Int64 currentNativeValueOfForeignCents = foreignCents.ToCurrency (Organization.Currency).Cents;
+
+            if (nativeCents - 100 > currentNativeValueOfForeignCents)
+            {
+                // log a loss
+
+                Int64 lossCents = nativeCents - currentNativeValueOfForeignCents;
+                FinancialTransaction lossTx = FinancialTransaction.Create (Organization, DateTime.UtcNow, "Forex Loss");
+                lossTx.AddRow (this, -lossCents, null);
+                lossTx.AddRow (Organization.FinancialAccounts.CostsCurrencyFluctuations, lossCents, null);
+            }
+            else if (nativeCents + 100 < currentNativeValueOfForeignCents)
+            {
+                // log a profit
+
+                Int64 profitCents = currentNativeValueOfForeignCents - nativeCents;
+                FinancialTransaction profitTx = FinancialTransaction.Create(Organization, DateTime.UtcNow, "Forex Gains");
+                profitTx.AddRow(this, profitCents, null);
+                profitTx.AddRow(Organization.FinancialAccounts.IncomeCurrencyFluctuations, -profitCents, null);
             }
         }
 

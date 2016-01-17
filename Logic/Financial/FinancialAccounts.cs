@@ -14,6 +14,11 @@ namespace Swarmops.Logic.Financial
 {
     public class FinancialAccounts : PluralBase<FinancialAccounts, FinancialAccount, BasicFinancialAccount>
     {
+        public static FinancialAccounts GetAll()
+        {
+            return FromArray (SwarmDb.GetDatabaseForReading().GetFinancialAccountsAll());
+        }
+
         public static FinancialAccounts ForOrganization (Organization organization)
         {
             return

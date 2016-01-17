@@ -387,6 +387,12 @@ namespace Swarmops.Logic.Financial
                     if (!addressAccountLookup.ContainsValue (row.FinancialAccountId)) // not optimal but n is small
                     {
                         // This is not a bitcoin address account, so note it for reconstruction
+
+                        if (!transactionReconstructedRows.ContainsKey (row.FinancialAccountId))
+                        {
+                            transactionReconstructedRows[row.FinancialAccountId] = 0; // init
+                        }
+
                         transactionReconstructedRows[row.FinancialAccountId] += row.AmountCents;
                     }
                     else
@@ -563,7 +569,7 @@ namespace Swarmops.Logic.Financial
                 GetAddressAccountLookupRecurse (child, result);
             }
 
-            if (IsValidBitcoinAddress (account.Name)) // TODO: Add a special property for the address instead of using name
+            if (!string.IsNullOrEmpty(account.BitcoinAddress) || IsValidBitcoinAddress (account.Name)) // TODO: Add a special property for the address instead of using name
             {
                 result [account.Name] = account.Identity;
             }

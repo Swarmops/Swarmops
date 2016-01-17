@@ -219,6 +219,11 @@ namespace Swarmops.Backend
                         {
                             OnTuesdayMorning();
                         }
+
+                        if (DateTime.Now.Hour == 7 && DateTime.Today.DayOfWeek == DayOfWeek.Monday)
+                        {
+                            OnMondayMorning();
+                        }
                     }
 
                     if (cycleStartTime.Hour >= 12 && lastHour < 12)
@@ -664,6 +669,15 @@ namespace Swarmops.Backend
                     Payroll.ProcessMonthly(); // will only actually run on the 1st, but no harm in testing every noon
                 }
 
+                // Check all bitcoin accounts for previously-unseen transactions once a day
+
+                Organizations allOrganizations = Organizations.GetAll();
+                foreach (Organization organization in allOrganizations)
+                {
+                    // this actually checks hot storage too, but that's supposed
+                    // to be up to date since we're the ones handling it
+                    BitcoinUtility.CheckColdStorageForOrganization (organization);
+                }
 
                 if (!testMode)
                 {
@@ -715,6 +729,34 @@ namespace Swarmops.Backend
 
 
             BotLog.Write (0, "MainCycle", "Noon exit");
+        }
+
+        private static void OnMondayMorning()
+        {
+            try
+            {
+                // Detect and log any forex difference exceeding 100 cents.
+
+                FinancialAccounts allAccounts = FinancialAccounts.GetAll(); // across ALL ORGS!
+
+                foreach (FinancialAccount account in allAccounts)
+                {
+                    // For every account, if it's based on foreign currency, check for forex gains/losses
+
+                    if (account.ForeignCurrency != null)
+                    {
+                        account.CheckForexProfitLoss();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                ExceptionMail.Send(e, true);
+                if (testMode)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
         }
 
         private static void OnTuesdayMorning()
