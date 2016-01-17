@@ -395,8 +395,11 @@ namespace Swarmops.Logic.Financial
                     // This is ok and can be thrown if OpenedYear throws because there are no transactions yet.
                 }
 
-                SwarmDb.GetDatabaseForWriting().SetFinancialAccountName (Identity, value);
-                base.Name = value;
+                if (value != Name) // check that we're not setting value to the localized version, thereby destroying loc for other users
+                {
+                    SwarmDb.GetDatabaseForWriting().SetFinancialAccountName (Identity, value);
+                    base.Name = value;
+                }
             }
         }
 
