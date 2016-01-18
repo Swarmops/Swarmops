@@ -211,6 +211,13 @@
   <data name="Login_ResetPassword" xml:space="preserve">
     <value>crwdns6555056:0crwdne6555056:0</value>
   </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>crwdns6556415:0{0}crwdne6556415:0</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>crwdns6556416:0crwdne6556416:0</value>
+  </data>
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>crwdns6555057:0crwdne6555057:0</value>
   </data>

@@ -194,6 +194,8 @@
   <data name="Login_ResetPassword" xml:space="preserve">
     <value>إعادة ضبط كلمة المرور</value>
   </data>
+  
+  
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>لا يتعرف نظام سوارموبس على هذا العنوان. الرجاء تسجيل الدخول يدوياً وتفعيل عنوانك قبل استخدامه لتسجيل الدخول.</value>
   </data>

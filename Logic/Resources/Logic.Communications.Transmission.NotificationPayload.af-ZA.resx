@@ -117,6 +117,60 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinPayoutAddress_Bad_Body" xml:space="preserve">
+    <value>crwdns6556368:0[BitcoinAddress]crwdnd6556368:0[InstallationName]crwdnd6556368:0[ExternalUrl]crwdne6556368:0</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Bad_Subject" xml:space="preserve">
+    <value>crwdns6556369:0[OrganizationName]crwdne6556369:0</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Body" xml:space="preserve">
+    <value>crwdns6556370:0[BitcoinOldAddress]crwdnd6556370:0[BitcoinAddress]crwdnd6556370:0[LockdownLink]crwdne6556370:0</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Changed_Subject" xml:space="preserve">
+    <value>crwdns6556371:0[OrganizationName]crwdne6556371:0</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Body" xml:space="preserve">
+    <value>crwdns6556372:0[OrganizationName]crwdnd6556372:0[InstallationName]crwdnd6556372:0[ExternalUrl]crwdne6556372:0</value>
+  </data>
+  <data name="BitcoinPayoutAddress_PleaseSet_Subject" xml:space="preserve">
+    <value>crwdns6556373:0[OrganizationName]crwdne6556373:0</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Body" xml:space="preserve">
+    <value>crwdns6556374:0[BitcoinAddress]crwdnd6556374:0[OrganizationName]crwdne6556374:0</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Body" xml:space="preserve">
+    <value>crwdns6556375:0[ConcernedPersonName]crwdne6556375:0</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_OfficerNotify_Subject" xml:space="preserve">
+    <value>crwdns6556376:0[OrganizationName]crwdnd6556376:0[ConcernedPersonName]crwdne6556376:0</value>
+  </data>
+  <data name="BitcoinPayoutAddress_Set_Subject" xml:space="preserve">
+    <value>crwdns6556377:0[OrganizationName]crwdne6556377:0</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Body" xml:space="preserve">
+    <value>crwdns6556378:0[OrganizationName]crwdnd6556378:0[PaymentCount]crwdnd6556378:0[CurrencyCode]crwdnd6556378:0[AmountFloat]crwdnd6556378:0[BitcoinAmountFloat]crwdne6556378:0</value>
+  </data>
+  <data name="Bitcoin_Hotwallet_Outflow_Subject" xml:space="preserve">
+    <value>crwdns6556379:0[OrganizationName]crwdnd6556379:0[CurrencyCode]crwdnd6556379:0[AmountFloat]crwdne6556379:0</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Body" xml:space="preserve">
+    <value>crwdns6556380:0[BitcoinAmountFloat]crwdnd6556380:0[BitcoinAddress]crwdnd6556380:0[OrganizationName]crwdnd6556380:0[EmbeddedPreformattedText]crwdne6556380:0</value>
+  </data>
+  <data name="Bitcoin_PaidOut_Subject" xml:space="preserve">
+    <value>crwdns6556381:0[OrganizationName]crwdnd6556381:0[CurrencyCode]crwdnd6556381:0[AmountFloat]crwdne6556381:0</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Body" xml:space="preserve">
+    <value>crwdns6556382:0crwdne6556382:0</value>
+  </data>
+  <data name="Bitcoin_PrivateKeyError_Subject" xml:space="preserve">
+    <value>crwdns6556383:0[OrganizationName]crwdne6556383:0</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Body" xml:space="preserve">
+    <value>crwdns6556384:0[CurrencyCode]crwdnd6556384:0[AmountNeededFloat]crwdnd6556384:0[CurrencyCode]crwdnd6556384:0[AmountWalletFloat]crwdnd6556384:0[AmountMissingMicrocoinsFloat]crwdne6556384:0</value>
+  </data>
+  <data name="Bitcoin_Shortage_Critical_Subject" xml:space="preserve">
+    <value>crwdns6556385:0[OrganizationName]crwdne6556385:0</value>
+  </data>
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>crwdns6553646:0[OrganizationName]crwdnd6553646:0[CurrencyCode]crwdnd6553646:0[BudgetAmountFloat]crwdnd6553646:0[RequestPurpose]crwdne6553646:0</value>
   </data>
@@ -219,6 +273,9 @@
   <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
     <value>crwdns6555555:0[OrganizationName]crwdnd6555555:0[Regularship]crwdnd6555555:0[PersonName]crwdnd6555555:0[PersonGeography]crwdnd6555555:0[CountryCode]crwdne6555555:0</value>
   </data>
+  <data name="NotificationFooter_Generic" xml:space="preserve">
+    <value>crwdns6556386:0[Addressee]crwdnd6556386:0[OrganizationName]crwdnd6556386:0[InstallationName]crwdnd6556386:0[ExternalUrl]crwdne6556386:0</value>
+  </data>
   <data name="OutboundComm_Resolved_Body" xml:space="preserve">
     <value>crwdns6555556:0[RecipientCount]crwdnd6555556:0[Geography]crwdnd6555556:0[OrganizationName]crwdne6555556:0</value>
   </data>
@@ -268,6 +325,13 @@
     <value>crwdns6555560:0[OrganizationName]crwdne6555560:0</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
+  <data name="Salary_LastYearSummary_Body" xml:space="preserve">
+    <value>crwdns6556387:0[LastYear]crwdnd6556387:0[LastYear]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[GrossSalaryTotal]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[TaxDeductedTotal]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[NetSalaryTotal]crwdnd6556387:0[EmbeddedPreformattedText]crwdnd6556387:0[GrossSalaryTotal]crwdnd6556387:0[TaxDeductedTotal]crwdnd6556387:0[NetSalaryTotal]crwdnd6556387:0[CurrencyCode]crwdnd6556387:0[TaxAdditiveTotalUnpadded]crwdne6556387:0</value>
+    <comment>Note the hard spacing - maintain character count to align columns and elements in a monospace font rendering.</comment>
+  </data>
+  <data name="Salary_LastYearSummary_Subject" xml:space="preserve">
+    <value>crwdns6556388:0[OrganizationName]crwdnd6556388:0[LastYear]crwdne6556388:0</value>
+  </data>
   <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
     <value>crwdns6553824:0[SwarmopsVersion]crwdnd6553824:0[HostName]crwdnd6553824:0[DbVersion]crwdne6553824:0</value>
   </data>
@@ -292,10 +356,22 @@
   <data name="System_MailServerTest_Subject" xml:space="preserve">
     <value>crwdns6555581:0crwdne6555581:0</value>
   </data>
+  <data name="System_PublicRootReset_Body" xml:space="preserve">
+    <value>crwdns6556389:0[HostName]crwdne6556389:0</value>
+  </data>
+  <data name="System_PublicRootReset_Subject" xml:space="preserve">
+    <value>crwdns6556390:0crwdne6556390:0</value>
+  </data>
   <data name="System_Startup_Body" xml:space="preserve">
     <value>crwdns6553666:0[SwarmopsVersion]crwdnd6553666:0[HostName]crwdne6553666:0</value>
   </data>
   <data name="System_Startup_Subject" xml:space="preserve">
     <value>crwdns6553667:0crwdne6553667:0</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Body" xml:space="preserve">
+    <value>crwdns6556391:0[HostName]crwdnd6556391:0[UnrecognizedPayloadType]crwdne6556391:0</value>
+  </data>
+  <data name="System_UnrecognizedPayload_Subject" xml:space="preserve">
+    <value>crwdns6556392:0crwdne6556392:0</value>
   </data>
 </root>

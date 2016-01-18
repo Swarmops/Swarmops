@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="CashAdvance_Attested_Body" xml:space="preserve">
     <value>Ditt önskade kontantförskott för [OrganizationName] på [CurrencyCode] [BudgetAmountFloat], rörande [RequestPurpose], har attesterats av budgetens ägare. Kontantförskottet går nu vidare till utbetalning till dig.</value>
   </data>
@@ -243,6 +261,7 @@ Logga in på [InstallationName] på [ExternalUrl]Financial/AttestCosts för att 
   <data name="Membership_Renewed_Manual_Subject" xml:space="preserve">
     <value>[[OrganizationName]] [Regularship] förnyat: [PersonName], [PersonGeography] [CountryCode] (manuell)</value>
   </data>
+  
   <data name="OutboundComm_Resolved_Body" xml:space="preserve">
     <value>Ditt meddelande har lagts i kö för leverans och mottagarlistan är upprättad. Ditt mail kommer att skickas till eller försökas skickas till [RecipientCount] personer i [Geography] i [OrganizationName].</value>
   </data>
@@ -318,6 +337,8 @@ Logga in på [InstallationName] på [ExternalUrl]Financial/ValidateReceipts att 
     <value>[[OrganizationName] - ÅTGÄRD KRÄVS] Kvitton inlagda - granskning behövs</value>
     <comment>ACTION ITEM should be translated.</comment>
   </data>
+  
+  
   <data name="System_DatabaseSchemaUpgraded_Body" xml:space="preserve">
     <value>Swarmops Backend [SwarmopsVersion] på servern [HostName] har uppgraderat Swarmops' databasschema till version [DbVersion].  Detta är endast för information. Du behöver inte vidta någon åtgärd.</value>
   </data>
@@ -346,10 +367,14 @@ Uppgraderingen kommer att försökas på nytt varje timme. Vissa funktioner kan 
   <data name="System_MailServerTest_Subject" xml:space="preserve">
     <value>Swarmops Test av Mailserver</value>
   </data>
+  
+  
   <data name="System_Startup_Body" xml:space="preserve">
     <value>Swarmops Backend version [SwarmopsVersion], som körs på maskinen [HostName], har startat och har anslutit till databasen och notifieringsmekanismer.</value>
   </data>
   <data name="System_Startup_Subject" xml:space="preserve">
     <value>Swarmops Backend i drift</value>
   </data>
+  
+  
 </root>

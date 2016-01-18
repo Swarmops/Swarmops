@@ -120,6 +120,14 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>Создать новую организацию как...</value>
   </data>
@@ -144,6 +152,7 @@
   <data name="EditOrganization_PageTitle" xml:space="preserve">
     <value>Редактировать Организацию</value>
   </data>
+  
   
   
   

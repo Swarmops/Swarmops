@@ -117,6 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>crwdns6556397:0{0}crwdnd6556397:0{1}crwdne6556397:0</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>crwdns6556398:0{0}crwdnd6556398:0{1:N2}crwdnd6556398:0{2:N0}crwdne6556398:0</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>crwdns6556399:0{0}crwdne6556399:0</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>crwdns6556400:0crwdne6556400:0</value>
+  </data>
+  <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
+    <value>crwdns6556401:0crwdne6556401:0</value>
+  </data>
+  <data name="BitcoinEchoTest_StatusInitial" xml:space="preserve">
+    <value>crwdns6556402:0crwdne6556402:0</value>
+  </data>
+  <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
+    <value>crwdns6556403:0crwdne6556403:0</value>
+  </data>
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>crwdns6556404:0{0}crwdne6556404:0</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>crwdns6555020:0crwdne6555020:0</value>
   </data>
@@ -270,6 +298,9 @@
   </data>
   <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
     <value>crwdns6555593:0crwdne6555593:0</value>
+  </data>
+  <data name="SystemSettings_WebsocketHostname" xml:space="preserve">
+    <value>crwdns6556405:0crwdne6556405:0</value>
   </data>
   <data name="SystemSettings_WebsocketPortClient" xml:space="preserve">
     <value>crwdns6556057:0crwdne6556057:0</value>
