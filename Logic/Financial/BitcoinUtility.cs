@@ -15,13 +15,11 @@ using System.Web.Configuration;
 using NBitcoin;
 using NBitcoin.BouncyCastle.Asn1.Ocsp;
 using Newtonsoft.Json.Linq;
-using NUnit.Framework.Constraints;
 using Swarmops.Database;
 using Swarmops.Logic.Communications;
 using Swarmops.Logic.Communications.Payload;
 using Swarmops.Logic.Structure;
 using Swarmops.Logic.Support;
-using NUnit.Framework;
 using Satoshis = NBitcoin.Money;
 
 

@@ -81,7 +81,7 @@ namespace Swarmops.Logic.Financial
                         break;
                     case FinancialDependencyType.Salary:
                         Salary salary = Salary.FromIdentity(dependency.ForeignId);
-                        if (salary.NetSalaryCents == AmountCents || this.CreatedDateTime > new DateTime(2015,10,1))
+                        if (salary.NetSalaryCents == AmountCents || this.CreatedDateTime > new DateTime(2015,11,1))
                         {
                             this.DependentSalariesNet.Add (salary);
                         }
