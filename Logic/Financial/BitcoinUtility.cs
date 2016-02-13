@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -612,6 +613,34 @@ namespace Swarmops.Logic.Financial
         }
 
 
+        public static Int64 GetRecommendedFeePerKilobyteSatoshis (int blocksWait = 2)
+        {
+            if (DateTime.UtcNow < _lastFeeRefresh.AddHours (1))
+            {
+                return _lastFeeSatoshis; // cache fee estimate for an hour
+            }
+
+            try
+            {
+                JObject feeData = JObject.Parse(
+                            new WebClient().DownloadString("https://blockexplorer.com/api/utils/estimatefee?nbBlocks=" + blocksWait.ToString(CultureInfo.InvariantCulture)));
+                double feeWholeCoins = Double.Parse((string)feeData[blocksWait.ToString(CultureInfo.InvariantCulture)], NumberStyles.AllowDecimalPoint);
+                Int64 feeSatoshis = (Int64) (feeWholeCoins*_satoshisPerBitcoin);
+
+                return feeSatoshis;
+            }
+            catch (Exception)
+            {
+                // TODO: Check if _lastFeeRefresh is older than a day
+
+                return _lastFeeSatoshis; // in the case of lookup failure, return last known good
+            }
+        }
+
+        private static DateTime _lastFeeRefresh = DateTime.MinValue;
+        private static Int64 _lastFeeSatoshis = 200 * 100; // 0.2 millibitcoins as default fee
+
+        private const Int64 _satoshisPerBitcoin = 100 * 1000 * 1000; // written this way to improve readability - important constants
 
         public static void TestMultisigPayout()
         {
