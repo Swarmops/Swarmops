@@ -325,6 +325,38 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>crwdns6555305:0crwdne6555305:0</value>
   </data>
+  <data name="Donate_Explain" xml:space="preserve">
+    <value>crwdns6556406:0{0}crwdnd6556406:0{1}crwdne6556406:0</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>crwdns6556407:0{0}crwdnd6556407:0{1:N2}crwdnd6556407:0{2:N0}crwdne6556407:0</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>crwdns6556408:0{0}crwdne6556408:0</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="Donate_Info" xml:space="preserve">
+    <value>crwdns6556409:0crwdne6556409:0</value>
+  </data>
+  <data name="Donate_PageTitle" xml:space="preserve">
+    <value>crwdns6556410:0crwdne6556410:0</value>
+  </data>
+  <data name="Donate_StatusInitial" xml:space="preserve">
+    <value>crwdns6556411:0crwdne6556411:0</value>
+  </data>
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>crwdns6556412:0crwdne6556412:0</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>crwdns6556413:0{0}crwdne6556413:0</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>crwdns6556414:0{0}crwdne6556414:0</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
   <data name="FileExpenseClaim_Amount" xml:space="preserve">
     <value>crwdns6555306:0{0}crwdne6555306:0</value>
     <comment>{0} is the currency.</comment>

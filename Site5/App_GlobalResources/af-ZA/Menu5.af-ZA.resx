@@ -414,4 +414,7 @@
   <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
     <value>crwdns6556239:0crwdne6556239:0</value>
   </data>
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>crwdns6556396:0crwdne6556396:0</value>
+  </data>
 </root>

@@ -325,6 +325,15 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>Ange leverantörens bankkonto eller motsvarande.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="FileExpenseClaim_Amount" xml:space="preserve">
     <value>Belopp för utläggsanspråk (i {0})</value>
     <comment>{0} is the currency.</comment>

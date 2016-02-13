@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Attest_CashAdvance_Many" xml:space="preserve">
     <value>crwdns6553634:0{0}crwdne6553634:0</value>
@@ -128,6 +128,12 @@
   </data>
   <data name="Attest_ExpenseClaim_One" xml:space="preserve">
     <value>crwdns6553637:0{0}crwdne6553637:0</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress" xml:space="preserve">
+    <value>crwdns6556393:0crwdne6556393:0</value>
+  </data>
+  <data name="Bitcoin_SetPayoutAddress_Prompt" xml:space="preserve">
+    <value>crwdns6556394:0[InstallationName]crwdne6556394:0</value>
   </data>
   <data name="Payout_Many" xml:space="preserve">
     <value>crwdns6553638:0{0}crwdne6553638:0</value>
@@ -147,6 +153,9 @@
   </data>
   <data name="Payout_Urgent_One" xml:space="preserve">
     <value>crwdns6553643:0crwdne6553643:0</value>
+  </data>
+  <data name="Security_Set2FA" xml:space="preserve">
+    <value>crwdns6556395:0crwdne6556395:0</value>
   </data>
   <data name="Validate_Receipts_Many" xml:space="preserve">
     <value>crwdns6553644:0{0}crwdne6553644:0</value>

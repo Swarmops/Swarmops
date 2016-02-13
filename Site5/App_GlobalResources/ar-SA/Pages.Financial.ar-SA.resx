@@ -263,6 +263,15 @@
   <data name="CreateInboundInvoice_ValidationError_Account" xml:space="preserve">
     <value>الرجاء إدخال الحساب البنكي للمورد أو ما يكافؤه.</value>
   </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <data name="FileExpenseClaim_Amount" xml:space="preserve">
     <value>مبلغ المطالبة المالية (بالـ{0})</value>
     <comment>{0} is the currency.</comment>

@@ -211,6 +211,8 @@
   <data name="Login_ResetPassword" xml:space="preserve">
     <value>Återställ lösenord</value>
   </data>
+  
+  
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>Swarmops känner inte igen den här bitcoinadressen. Logga in manuellt och aktivera din bitcoinplånbok innan du använder den för att logga in.</value>
   </data>
