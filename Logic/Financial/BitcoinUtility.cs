@@ -581,11 +581,7 @@ namespace Swarmops.Logic.Financial
 
         public const string BitcoinTestAddress = "1JMpU3D6c5sruunMwzkt6p6PQzLcUYcL26";
 
-        public const long FeeSatoshisPerThousandBytes = 20000;
-            // This is twice the standardized amount - needed until blocksize debacle sorts out
-
-
-
+        
         public static bool IsValidBitcoinAddress (string address)
         {
             try
@@ -613,11 +609,12 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        public static Int64 GetRecommendedFeePerKilobyteSatoshis (int blocksWait = 2)
+        public static Int64 GetRecommendedFeePerThousandBytesSatoshis (int blocksWait = 2)
         {
-            if (DateTime.UtcNow < _lastFeeRefresh.AddHours (1))
+            DateTime utcNow = DateTime.UtcNow;
+            if (utcNow < _lastFeeRefresh.AddHours (3))
             {
-                return _lastFeeSatoshis; // cache fee estimate for an hour
+                return _lastFeeSatoshis; // cache fee estimate for three hours
             }
 
             try
@@ -627,6 +624,8 @@ namespace Swarmops.Logic.Financial
                 double feeWholeCoins = Double.Parse((string)feeData[blocksWait.ToString(CultureInfo.InvariantCulture)], NumberStyles.AllowDecimalPoint);
                 Int64 feeSatoshis = (Int64) (feeWholeCoins*_satoshisPerBitcoin);
 
+                _lastFeeSatoshis = feeSatoshis;
+                _lastFeeRefresh = utcNow;
                 return feeSatoshis;
             }
             catch (Exception)
@@ -638,7 +637,7 @@ namespace Swarmops.Logic.Financial
         }
 
         private static DateTime _lastFeeRefresh = DateTime.MinValue;
-        private static Int64 _lastFeeSatoshis = 200 * 100; // 0.2 millibitcoins as default fee
+        private static Int64 _lastFeeSatoshis = 200 * 100; // 0.2 millibitcoins as default fee per 1000 bytes
 
         private const Int64 _satoshisPerBitcoin = 100 * 1000 * 1000; // written this way to improve readability - important constants
 
@@ -658,7 +657,7 @@ namespace Swarmops.Logic.Financial
             TransactionBuilder txBuilder = new TransactionBuilder();
             Int64 satoshis = new Money(100, Currency.FromCode ("SEK")).ToCurrency (Currency.Bitcoin).Cents;
             BitcoinTransactionInputs inputs = null;
-            Int64 satoshisMaximumAnticipatedFees = BitcoinUtility.FeeSatoshisPerThousandBytes * 20; // assume max 20k transaction size
+            Int64 satoshisMaximumAnticipatedFees = BitcoinUtility.GetRecommendedFeePerThousandBytesSatoshis() * 20; // assume max 20k transaction size
 
             try
             {
@@ -710,7 +709,8 @@ namespace Swarmops.Logic.Financial
             int transactionSizeBytes = txBuilder.EstimateSize(txBuilder.BuildTransaction(false)) + inputs.Count;
             // +inputs.Count for size variability
 
-            Int64 feeSatoshis = (transactionSizeBytes / 1000 + 1) * BitcoinUtility.FeeSatoshisPerThousandBytes;
+            Int64 feeSatoshis = (transactionSizeBytes/1000 + 1)*
+                                BitcoinUtility.GetRecommendedFeePerThousandBytesSatoshis();
 
             txBuilder = txBuilder.SendFees(new Satoshis(feeSatoshis));
             satoshisUsed += feeSatoshis;
