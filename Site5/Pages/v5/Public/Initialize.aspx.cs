@@ -700,6 +700,23 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 }
             }
 
+            // Protect against race condition on a really really slow server: wait until there is a first person or 15 seconds have expired
+
+            DateTime utcTimeout = DateTime.UtcNow.AddSeconds (15);
+            People people = People.GetAll();
+            while (people.Count < 1 && DateTime.UtcNow < utcTimeout)
+            {
+                Thread.Sleep (500);
+                people = People.GetAll();
+            }
+
+            if (people.Count < 1)
+            {
+                throw new InvalidOperationException("First person has not been created despite 15-second timeout; cannot login");
+            }
+
+            // Get authenticated person
+
             Person expectedPersonOne = Authentication.Authenticate ("1",
                 this.TextFirstUserPassword1.Text);
 
