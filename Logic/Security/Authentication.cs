@@ -595,7 +595,7 @@ namespace Swarmops.Logic.Security
 
         public static byte[] InitializeSymmetricFileSystemKey()
         {
-            if (Debugger.IsAttached && Path.DirectorySeparatorChar == '/') // check if we're debugging - double check to overdo security
+            if (Debugger.IsAttached && Path.DirectorySeparatorChar == '\\') // check if we're debugging - double check to overdo security
             {
                 return new byte[32]; // can't write to /etc/swarmops in the debugger; return an all-zero key while debugging
             }

@@ -11,6 +11,7 @@
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.leanModal.min.js" ></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.smartWizard-2.0.min.js"></script>
     <script language="javascript" type="text/javascript" src="/Scripts/jquery.json.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js"></script>
 
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
@@ -301,16 +302,19 @@
 	                // If all is valid, create the first user.
 
 	                if (isValid) {
-	                    $.ajax({
-	                        type: "POST",
-	                        url: "/Pages/v5/Public/Initialize.aspx/CreateFirstUser",
-	                        data: "{'name': '" + escape($('#<%=this.TextFirstUserName.ClientID %>').val()) + "', 'mail': '" + escape($('#<%=this.TextFirstUserMail.ClientID %>').val()) + "', 'password': '" + escape($('#<%=this.TextFirstUserPassword1.ClientID %>').val()) + "'}",
-	                        contentType: "application/json; charset=utf-8",
-	                        dataType: "json",
-	                        success: function (msg) {
-	                            // Don't care
-	                        }
-	                    });
+
+                        var jsonDataFirstUser = {
+                            name: $('#<%=this.TextFirstUserName.ClientID %>').val(),
+                            mail: $('#<%=this.TextFirstUserMail.ClientID %>').val(),
+                            password: $('#<%=this.TextFirstUserPassword1.ClientID %>').val()
+                        }
+
+	                    SwarmopsJS.ajaxCall("/Pages/v5/Public/Initialize.aspx/CreateFirstUser",
+	                        jsonDataFirstUser,
+	                        function () {
+                                // To avoid a race condition, enable login/finish only when first user actually created
+	                            $('a.buttonFinish').removeClass("buttonDisabled");
+	                        });
 	                }
 	            }
 	            else if (stepNumber == 5) {
@@ -321,6 +325,10 @@
 
 	            return isValid;
 	        }
+
+	        // Start by disabling Finish
+
+	        $('a.buttonFinish').addClass("buttonDisabled");
 
 	    });  // end of document.ready
 
@@ -634,7 +642,7 @@
                             <p>The Swarmops install sequence can set up the database and users for you, if you provide a root password to the MySQL database server.</p>
                             <p>(If you don't trust the Swarmops install to do that, that's fine, go to <a href="javascript:goManualCredentials();">manual account credentials</a>.)</p>
                             <div class="entryLabelsAdmin" style="width:250px">Hostname of MySQL database server<br/>Root password for that MySQL server<br/>Random label (suffixed to db, user names)<br/>&nbsp;</div>
-                            <div class="entryFieldsAdmin"><input type="text" id="TextMysqlServerHost" value="localhost"/>&nbsp;<br/><input type="password" id="TextMysqlRootPassword"/>&nbsp;<br/><asp:TextBox runat="server" ID="TextRandomDbLabel" />&nbsp;</div>
+                            <div class="entryFieldsAdmin"><input type="text" id="TextMysqlServerHost" value="localhost"/>&nbsp;<br/><input type="password" id="TextMysqlRootPassword"/>&nbsp;<br/><asp:TextBox runat="server" MaxLength="5" ID="TextRandomDbLabel" />&nbsp;</div>
                         </div>
                         <div id="DivDatabaseManualConfig" style="display:none">
                             <h2>Connect to existing database</h2>

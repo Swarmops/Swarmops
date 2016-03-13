@@ -115,6 +115,11 @@ namespace Swarmops.Frontend.Pages.v5.Public
             {
                 random = random.Trim();
 
+                if (random.Length > 5) // if UI-enforced maxlength beaten somehow, limit here
+                {
+                    random = random.Substring (0, 5); // MySQL will hit a maxlength otherwise
+                }
+
                 if (string.IsNullOrEmpty (random))
                 {
                     random = Authentication.CreateRandomPassword (5);
@@ -670,9 +675,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 throw new InvalidOperationException ("Cannot run initialization processes again when initialized.");
             }
 
-            Person newPerson = Person.Create (HttpUtility.UrlDecode (name),
-                HttpUtility.UrlDecode (mail),
-                HttpUtility.UrlDecode (password), string.Empty, string.Empty, string.Empty,
+            Person newPerson = Person.Create (name, mail, password, string.Empty, string.Empty, string.Empty,
                 string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
             newPerson.AddParticipation (Organization.Sandbox, DateTime.MaxValue); // Add membership in Sandbox
