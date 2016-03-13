@@ -116,7 +116,7 @@ namespace Swarmops.Logic.Security
         }
 
 
-        public static string CreateRandomPassword (int length)
+        public static string CreateWeakSecret (int length)
         {
             string allowedChars = "ABCDEFHJKMNPQRTUVWXYZ23456789";
             char[] chars = new char[length];
@@ -295,7 +295,7 @@ namespace Swarmops.Logic.Security
                 return null;
             }
 
-            string passwordTicket = CreateRandomPassword (EmailVerificationTicketLength);
+            string passwordTicket = CreateWeakSecret (EmailVerificationTicketLength);
 
             foreach (Person p in candidatePeople)
             {
@@ -359,7 +359,7 @@ namespace Swarmops.Logic.Security
 
         public static void RequestMembershipConfirmation (Person p, string URL)
         {
-            string passwordTicket = CreateRandomPassword (EmailVerificationTicketLength);
+            string passwordTicket = CreateWeakSecret (EmailVerificationTicketLength);
 
             string encodedPasswordTicket = SHA1.Hash (passwordTicket);
             p.ResetPasswordTicket = encodedPasswordTicket + ";" + DateTime.Now.ToString ("yyyy-MM-dd HH:mm:ss");

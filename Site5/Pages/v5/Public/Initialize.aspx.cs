@@ -69,7 +69,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 // this.LanguageSelector.LanguageChanged += new EventHandler(LanguageSelector_LanguageChanged);
 
-                this.TextRandomDbLabel.Text = Authentication.CreateRandomPassword (5);
+                this.TextRandomDbLabel.Text = Authentication.CreateWeakSecret (5);
 
                 Localize();
             }
@@ -122,7 +122,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 if (string.IsNullOrEmpty (random))
                 {
-                    random = Authentication.CreateRandomPassword (5);
+                    random = Authentication.CreateWeakSecret (5);
                 }
 
                 SwarmDb.Credentials rootCredentials = new SwarmDb.Credentials ("mysql",

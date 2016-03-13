@@ -74,7 +74,7 @@ namespace Swarmops.Logic.Communications.Payload
 
             if (body.Contains ("[RandomPassword]"))
             {
-                string randomPassword = Authentication.CreateRandomPassword (24);
+                string randomPassword = Authentication.CreateWeakSecret (24);
                 person.SetPassword (randomPassword);
                 body = body.Replace ("[RandomPassword]", randomPassword);
             }

@@ -80,7 +80,7 @@ namespace Swarmops.Logic.Support
 
         public static string GeneratePassword (int length)
         {
-            return Authentication.CreateRandomPassword (length);
+            return Authentication.CreateWeakSecret (length);
         }
 
 

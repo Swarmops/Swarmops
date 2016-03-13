@@ -239,7 +239,7 @@ namespace Swarmops.Logic.Financial
                         dueDate,
                         budget.Identity, customerName, invoiceAddressPaper,
                         invoiceAddressMail, currency.Identity, string.Empty, domestic,
-                        Authentication.CreateRandomPassword (6), theirReference));
+                        Authentication.CreateWeakSecret (6), theirReference));
 
             // Set reference
 

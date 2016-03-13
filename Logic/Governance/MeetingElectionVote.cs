@@ -39,7 +39,7 @@ namespace Swarmops.Logic.Governance
                 FromIdentity (SwarmDb.GetDatabaseForWriting()
                     .CreateInternalPollVote (poll.Identity, voteGeography.Identity,
                         Authentication.
-                            CreateRandomPassword (12)));
+                            CreateWeakSecret (12)));
         }
 
         public void AddDetail (int position, MeetingElectionCandidate candidate)

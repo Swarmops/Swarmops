@@ -78,7 +78,7 @@ namespace Swarmops.Logic.Swarm
 
         private static string CreateRandomCode (int length)
         {
-            return Authentication.CreateRandomPassword (length);
+            return Authentication.CreateWeakSecret (length);
         }
     }
 }
