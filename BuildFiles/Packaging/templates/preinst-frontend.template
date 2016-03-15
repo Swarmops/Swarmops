@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # To circumvent lib-mod-mono bug on first install, stop Apache if it is currently running, before we try to install.
 # (It's very rude to shut down services without asking first like this, but even more rude of the lib-mod-mono
