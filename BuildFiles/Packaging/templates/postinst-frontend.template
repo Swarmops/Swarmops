@@ -19,6 +19,7 @@ if [ ! -e /var/lib/swarmops/upload ]; then
     case "$dialog_selection" in
       1 ) echo "Neither reconfiguring Apache nor creating configuration file."
           ;;
+
       2 ) echo "Disabling site 000-default; creating/enabling site 000-swarmops."
           a2dissite 000-default
           cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops.conf
@@ -28,10 +29,18 @@ if [ ! -e /var/lib/swarmops/upload ]; then
 
           /etc/init.d/apache2 stop
           /etc/init.d/apache2 start
+
+#         # If asked to start Apache2, we've already done so, so remove flag
+
+          if [ -e /tmp/swarmops-restart-apache.flag ]; then
+            rm /tmp/swarmops-restart-apache.flag
+          fi
           ;;
-      3 ) echo "Creating but not enabling 000-swarmops."
-          cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops.conf
+
+      3 ) echo "Creating but not enabling the site 'swarmops'. Use a2ensite to enable."
+          cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/swarmops.conf
           ;;
+
       * ) echo "Unknown return code - $dialog_selection"
           ;;
         
