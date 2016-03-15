@@ -10,7 +10,7 @@ if [ ! -e /var/lib/swarmops/upload ]; then
 
 # # If there's only 000-default in apache sites, assume new install
 
-  if "$(ls -l /etc/apache2/sites-enabled/ | wc -l)" = "2" ; then
+  if [ "$(ls -l /etc/apache2/sites-enabled/ | wc -l)" = "2" ]; then
 
     exec 3>&1;
     dialog_selection=$(dialog --title "Autoconfigure Apache?" --menu "This seems to be a new installation of Swarmops Frontend on a newly installed Apache. Would you like to create the necessary site directives and make it the default Apache site?" 0 0 3 1 "No thanks, don't touch my Apache, that's for me alone" 2 "Yes please, make Swarmops the default site for port 80" 3 "Create a Swarmops config, please, but don't enable it" 2>&1 1>&3);
