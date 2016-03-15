@@ -1,4 +1,4 @@
-﻿ServerName swarmops-frontend
+ServerName swarmops-frontend
 ServerAdmin swarmops-frontend@swarmops.com
 DocumentRoot /usr/share/swarmops/frontend/
 
@@ -13,6 +13,7 @@ MonoApplications swarmops-frontend "/:/usr/share/swarmops/frontend/"
   Allow from all
   Order allow,deny
   SetHandler mono
+  MonoSetServerAlias swarmops-frontend
   SetOutputFilter DEFLATE
   SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip dont-vary
 </Location>
