@@ -16,18 +16,21 @@ if [ ! -e /var/lib/swarmops/upload ]; then
     dialog --menu "This seems to be a new installation of Swarmops Frontend on a newly installed Apache. Would you like to create the necessary site directives and make it the default Apache site?" 12 70 3 1 "No thanks, don't touch my Apache, that's for me alone" 2 "Yes please, make Swarmops the default site for port 80" 3 "Create a Swarmops config, please, but don't enable it"
     dialog_return_value = $?
 
-    case $dialog_return_value in
-      1)
-        echo "Neither reconfiguring Apache nor creating configuration file."
-      2)
-        echo "Disabling site 000-default; creating/enabling site 000-swarmops."
-        a2dissite 000-default
-        cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops.conf
-        a2ensite 000-swarmops
-        /etc/init.d/apache2 force-reload
-      3)
-        echo "Creating but not enabling 000-swarmops."
-        cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops.conf
+    case "$dialog_return_value" in
+      1) echo "Neither reconfiguring Apache nor creating configuration file."
+         ;;
+      2) echo "Disabling site 000-default; creating/enabling site 000-swarmops."
+         a2dissite 000-default
+         cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops.conf
+         a2ensite 000-swarmops
+         /etc/init.d/apache2 force-reload
+         ;;
+      3) echo "Creating but not enabling 000-swarmops."
+         cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops.conf
+         ;;
+      *) echo "Unknown return code - $dialog_return_value"
+         ;;
+        
     esac
 
   fi
