@@ -9,7 +9,7 @@ if [ ! -e /var/lib/swarmops/upload ]; then
   chmod 777 /var/lib/swarmops/upload
 
 #If there's only 000-default in apache sites, assume new install
-  if [ "$(ls -l /var/apache/sites-enabled/ | wc-l)" = "2" ]; then
+  if [ "$(ls -l /var/apache/sites-enabled/ | wc -l)" = "2" ]; then
 
     echo "Dialog branch was triggered (this is for debug purposes)"
 
