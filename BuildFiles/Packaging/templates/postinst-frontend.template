@@ -27,7 +27,7 @@ if [ ! -e /var/lib/swarmops/upload ]; then
         /etc/init.d/apache2 force-reload
       3)
         echo "Creating but not enabling 000-swarmops."
-        cp SOMETHING /etc/apache2/sites-available
+        cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops
     esac
 
   fi
