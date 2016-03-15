@@ -22,7 +22,7 @@ if [ ! -e /var/lib/swarmops/upload ]; then
       2)
         echo "Disabling site 000-default; creating/enabling site 000-swarmops."
         a2dissite 000-default
-        cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available
+        cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops
         a2ensite 000-swarmops
         /etc/init.d/apache2 force-reload
       3)
