@@ -7,6 +7,31 @@ if [ ! -e /var/lib/swarmops/upload ]; then
   mkdir -p /var/lib/swarmops/upload
   chown www-data:www-data /var/lib/swarmops/upload
   chmod 777 /var/lib/swarmops/upload
+
+#If there's only 000-default in apache sites, assume new install
+  if [ "$(ls -l /var/apache/sites-enabled/ | wc-l)" = "2" ]; then
+
+    echo "Dialog branch was triggered (this is for debug purposes)"
+
+    dialog --menu "This seems to be a new installation of Swarmops Frontend on a newly installed Apache. Would you like to create the necessary site directives and make it the default Apache site?" 12 70 3 1 "No thanks, don't touch my Apache, that's for me alone" 2 "Yes please, make Swarmops the default site for port 80" 3 "Create a Swarmops config, please, but don't enable it"
+    dialog_return_value = $?
+
+    case $dialog_return_value in
+      1)
+        echo "Neither reconfiguring Apache nor creating configuration file."
+      2)
+        echo "Disabling site 000-default; creating/enabling site 000-swarmops."
+        a2dissite 000-default
+        cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available
+        a2ensite 000-swarmops
+        /etc/init.d/apache2 force-reload
+      3)
+        echo "Creating but not enabling 000-swarmops."
+        cp SOMETHING /etc/apache2/sites-available
+    esac
+
+  fi
+
 fi
 
 # make sure the web frontend (and its init routine) can write to machineKey.config

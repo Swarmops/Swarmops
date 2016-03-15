@@ -2,10 +2,10 @@ Package: swarmops-common
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
-Depends: libmono-system-componentmodel-composition4.0-cil (>= 3.2.8),libmono-system-web-services4.0-cil (>= 3.2.8),libmono-system-web-extensions4.0-cil (>= 3.2.8),libmono-system-componentmodel-composition4.0-cil (>= 3.2.8),fonts-liberation,libmono-system-numerics4.0-cil
+Depends: dialog (>= 1.1), libmono-system-componentmodel-composition4.0-cil (>= 3.2.8),libmono-system-web-services4.0-cil (>= 3.2.8),libmono-system-web-extensions4.0-cil (>= 3.2.8),libmono-system-componentmodel-composition4.0-cil (>= 3.2.8),fonts-liberation,libmono-system-numerics4.0-cil
 Conflicts: swarmops-common-internal,swarmops-common-stable
 Homepage: http://swarmops.com/
 Description: Swarmops Common
  Swarmops is a swarm activist administration system.
  This package contains the common components between
- front-end and back-end.
+ frontend and backend.

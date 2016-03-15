@@ -73,11 +73,17 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 // If we're running on Localhost, disable the "is this your server?" question
 
-                string localAddress = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
-                if (localAddress == "127.0.0.1" || localAddress == "::1")
+                if (IsLocalhost())
                 {
-                    this.TextServerName.Text = "(localhost)";
-                    this.TextServerAddress.Text = localAddress;
+                    this.TextServerName.Text = @"(localhost)";
+                    if (HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"] == "::1")
+                    {
+                        this.TextServerAddress.Text = @"IPv6 Loopback";
+                    }
+                    else
+                    {
+                        this.TextServerAddress.Text = @"IPv4 Loopback";
+                    }
                     this.TextServerName.Enabled = false;
                     this.TextServerAddress.Enabled = false;
                 }
