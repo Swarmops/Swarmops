@@ -2,6 +2,7 @@ Package: swarmops-common-internal
 Version: --BuildNumber--
 Architecture: all
 Maintainer: Rick Falkvinge (swarmops-maintain@falkvinge.net)
+Depends: dialog (>= 1.1), libmono-system-componentmodel-composition4.0-cil (>= 3.2.8),libmono-system-web-services4.0-cil (>= 3.2.8),libmono-system-web-extensions4.0-cil (>= 3.2.8),libmono-system-componentmodel-composition4.0-cil (>= 3.2.8),fonts-liberation,libmono-system-numerics4.0-cil
 Conflicts: swarmops-common,swarmops-common-stable
 Homepage: http://swarmops.com/
 Description: Swarmops Common (Internal)
