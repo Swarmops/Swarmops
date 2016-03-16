@@ -250,7 +250,7 @@ namespace Swarmops.Logic.Support
 
         public static bool RequireSsl
         {
-            get { return Boolean.Parse(GetDefaultedPersistedKey("SslRequired", "false")); }  // start out as false, to enable configuration
+            get { return Boolean.Parse(GetDefaultedPersistedKey("SslRequired", "true")); }  // default to true for legacy installs
             set { Persistence.Key["SslRequired"] = value.ToString(); }
         }
     }

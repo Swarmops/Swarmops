@@ -434,6 +434,41 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 Authentication.InitializeSymmetricDatabaseKey();
                 Authentication.InitializeSymmetricFileSystemKey();
 
+                // Set Geography at baseline (TODO: Ask for what baseline we got)
+
+                Persistence.Key["LastGeographyUpdateId"] = "0";
+                Persistence.Key["LastGeographyUpdate"] = "1900-01-01";
+
+                // Set an installation ID
+
+                Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
+
+                SwarmopsLog.DebugLog(" - creating currencies");
+
+                _initProgress = 4;
+                _initMessage = "Initializing currencies...";
+
+                // Create initial currencies (European et al)
+
+                Currency.Create("EUR", "Euros", "€");
+                Currency.Create("USD", "US Dollars", "$");
+                Currency.Create("CAD", "Canadian Dollars", "CA$");
+                Currency.Create("SEK", "Swedish Krona", string.Empty);
+                Currency.Create("NOK", "Norwegian Krona", string.Empty);
+                Currency.Create("DKK", "Danish Krona", string.Empty);
+                Currency.Create("ISK", "Icelandic Krona", string.Empty);
+                Currency.Create("CHF", "Swiss Franc", string.Empty);
+                Currency.Create("GBP", "Pounds Sterling", "£");
+                Currency.Create("BTC", "Bitcoin", "฿");
+
+                // Fetch the first set of exchange rates, completing the currency collection
+
+                SupportFunctions.DisableSslCertificateChecks(); // needed bc SSL root store on Mono hosed
+                ExchangeRateSnapshot.Create();
+
+                // Disable SSL required - turn this on manually
+
+                SystemSettings.RequireSsl = false;
 
                 _initProgress = 5;
                 _initMessage = "Getting list of countries from Swarmops servers...";
@@ -446,6 +481,12 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 // Initialize the root geography (which becomes #1 if everything works)
 
                 int rootGeographyId = SwarmDb.GetDatabaseForWriting().CreateGeography ("[LOC]World", 0);
+
+                // Create the sandbox
+
+                Organization.Create(0, "Sandbox", "Sandbox", "Sandbox", "swarmops.com", "Ops",
+                    rootGeographyId, true,
+                    true, 0).EnableEconomy(Currency.FromCode("EUR"));
 
                 // Get the list of countries
 
@@ -506,46 +547,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                     _initProgress = 10 + (int) (countryCount*initStepPerCountry);
                 }
-
-                // Set Geography at baseline (TODO: Ask for what baseline we got)
-
-                Persistence.Key["LastGeographyUpdateId"] = "0";
-                Persistence.Key["LastGeographyUpdate"] = "1900-01-01";
-
-                // Set an installation ID
-
-                Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
-
-                SwarmopsLog.DebugLog(" - creating currencies");
-
-                _initMessage = "Initializing currencies...";
-
-                // Create initial currencies (European et al)
-
-                Currency.Create ("EUR", "Euros", "€");
-                Currency.Create ("USD", "US Dollars", "$");
-                Currency.Create ("CAD", "Canadian Dollars", "CA$");
-                Currency.Create ("SEK", "Swedish Krona", string.Empty);
-                Currency.Create ("NOK", "Norwegian Krona", string.Empty);
-                Currency.Create ("DKK", "Danish Krona", string.Empty);
-                Currency.Create ("ISK", "Icelandic Krona", string.Empty);
-                Currency.Create ("CHF", "Swiss Franc", string.Empty);
-                Currency.Create ("GBP", "Pounds Sterling", "£");
-                Currency.Create ("BTC", "Bitcoin", "฿");
-
-                // Fetch the first set of exchange rates, completing the currency collection
-
-                ExchangeRateSnapshot.Create();
-
-                // Create the sandbox
-
-                SwarmopsLog.DebugLog (" - creating Sandbox");
-
-                Organization.Create (0, "Sandbox", "Sandbox", "Sandbox", "swarmops.com", "Ops",
-                    rootGeographyId, true,
-                    true, 0).EnableEconomy (Currency.FromCode ("EUR"));
-
-                SwarmopsLog.DebugLog(" - complete");
 
                 _initProgress = 100;
                 _initMessage = "Complete.";
@@ -735,7 +736,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 SwarmopsLog.DebugLog ("- adding participation in Sandbox");
 
-                newPerson.AddParticipation (Organization.Sandbox, DateTime.UtcNow.AddYears (25));
+                newPerson.AddParticipation (Organization.Sandbox, DateTime.MaxValue);
                     // Add membership in Sandbox
 
                 SwarmopsLog.DebugLog ("- creating positions");
