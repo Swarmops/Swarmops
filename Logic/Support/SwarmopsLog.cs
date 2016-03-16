@@ -32,7 +32,7 @@ namespace Swarmops.Logic.Support
             {
                 // Linux - the reason we made this function to begin with
 
-                File.AppendAllText ("/tmp/swarmops-debug.log", DateTime.UtcNow.ToString("yyyy-MM-dd/HH:mm:ss.fff | ") + logEntry + @"\r\n");
+                File.AppendAllLines("/tmp/swarmops-debug.log", new string[] { DateTime.UtcNow.ToString("yyyy-MM-dd/HH:mm:ss.fff | ") + logEntry });
             }
         }
     }

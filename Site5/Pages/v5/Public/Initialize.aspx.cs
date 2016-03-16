@@ -409,6 +409,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
         /// </summary>
         public static void InitDatabaseThread()
         {
+            SwarmopsLog.DebugLog("Initializing Database");
+
             // Ignore the session object, that method of sharing data didn't work, but a static variable did.
 
             _initProgress = 1;
@@ -514,6 +516,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
 
+                SwarmopsLog.DebugLog(" - creating currencies");
+
                 _initMessage = "Initializing currencies...";
 
                 // Create initial currencies (European et al)
@@ -535,9 +539,13 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
                 // Create the sandbox
 
+                SwarmopsLog.DebugLog (" - creating Sandbox");
+
                 Organization.Create (0, "Sandbox", "Sandbox", "Sandbox", "swarmops.com", "Ops",
                     rootGeographyId, true,
                     true, 0).EnableEconomy (Currency.FromCode ("EUR"));
+
+                SwarmopsLog.DebugLog(" - complete");
 
                 _initProgress = 100;
                 _initMessage = "Complete.";
@@ -546,6 +554,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
             {
                 // Use initMessage to push info about what went wrong to the user
 
+                SwarmopsLog.DebugLog (failedException.ToString());
                 _initMessage = failedException.ToString();
             }
 
@@ -682,56 +691,65 @@ namespace Swarmops.Frontend.Pages.v5.Public
         {
             // Make sure that no first person exists already, as a security measure
 
-            SwarmopsLog.DebugLog (String.Format("Creating first user: '{0}', '{1}', '{2}'", name, mail, password));
-
-            Person personOne = null;
-            bool personOneExists = false;
-
             try
             {
-                personOne = Person.FromIdentity (1);
-                if (Debugger.IsAttached)
+                SwarmopsLog.DebugLog (String.Format ("Creating first user: '{0}', '{1}', '{2}'", name, mail, password));
+
+                Person personOne = null;
+                bool personOneExists = false;
+
+                try
                 {
-                    if (personOne.CityName != "Duckville" || personOne.Mail != "noreply@example.com")
-                        // these values are returned in debug environments when no person is found
+                    personOne = Person.FromIdentity (1);
+                    if (Debugger.IsAttached)
                     {
-                        personOneExists = true;
+                        if (personOne.CityName != "Duckville" || personOne.Mail != "noreply@example.com")
+                            // these values are returned in debug environments when no person is found
+                        {
+                            personOneExists = true;
+                        }
+                        else
+                        {
+                            personOne = null;
+                        }
                     }
                     else
                     {
-                        personOne = null;
+                        personOneExists = true;
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    personOneExists = true;
+                    // We expect this to throw.
                 }
+
+                if (personOneExists || personOne != null)
+                {
+                    throw new InvalidOperationException ("Cannot run initialization processes again when initialized.");
+                }
+
+                SwarmopsLog.DebugLog ("- person one did not exist, creating");
+
+                Person newPerson = Person.Create (name, mail, password, string.Empty, string.Empty, string.Empty,
+                    string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
+
+                SwarmopsLog.DebugLog ("- adding participation in Sandbox");
+
+                newPerson.AddParticipation (Organization.Sandbox, DateTime.UtcNow.AddYears (25));
+                    // Add membership in Sandbox
+
+                SwarmopsLog.DebugLog ("- creating positions");
+
+                // Initialize staffing to System and Sandbox with the new user
+
+                Positions.CreateSysadminPositions();
+                Positions.CreateOrganizationDefaultPositions (Organization.Sandbox, PositionTitle.Default);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // We expect this to throw.
+                SwarmopsLog.DebugLog (e.ToString());
+                throw;
             }
-
-            if (personOneExists || personOne != null)
-            {
-                throw new InvalidOperationException ("Cannot run initialization processes again when initialized.");
-            }
-
-            SwarmopsLog.DebugLog("- person one did not exist, creating");
-
-            Person newPerson = Person.Create (name, mail, password, string.Empty, string.Empty, string.Empty,
-                string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
-
-            SwarmopsLog.DebugLog("- adding participation in Sandbox");
-
-            newPerson.AddParticipation (Organization.Sandbox, DateTime.UtcNow.AddYears (25)); // Add membership in Sandbox
-            
-            SwarmopsLog.DebugLog ("- creating positions");
-
-            // Initialize staffing to System and Sandbox with the new user
-
-            Positions.CreateSysadminPositions();
-            Positions.CreateOrganizationDefaultPositions(Organization.Sandbox, PositionTitle.Default);
 
         }
 

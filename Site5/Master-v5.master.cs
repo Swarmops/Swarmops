@@ -99,7 +99,10 @@ namespace Swarmops
                     !Request.Url.ToString().StartsWith("http://dev-opentest.swarmops.com") &&
                     !Request.Url.ToString().StartsWith("http://localhost:"))
                 {
-                    Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
+                    if (SystemSettings.RequireSsl)
+                    {
+                        Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
+                    }
                 }
             }
 

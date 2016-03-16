@@ -124,7 +124,10 @@ namespace Swarmops.Pages.Security
                 if (!Request.Url.ToString().StartsWith ("http://dev.swarmops.com/") &&
                     !(Request.Url.ToString().StartsWith ("http://localhost:") && Debugger.IsAttached))  // Debugger.IsAttached is necessary, as link can be faked
                 {
-                    Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
+                    if (SystemSettings.RequireSsl)
+                    {
+                        Response.Redirect (Request.Url.ToString().Replace ("http:", "https:"));
+                    }
                 }
             }
 

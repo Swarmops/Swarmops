@@ -13,14 +13,11 @@ if [ ! -e /var/lib/swarmops/upload ]; then
   if [ "$(ls -l /etc/apache2/sites-enabled/ | wc -l)" = "2" ]; then
 
     exec 3>&1;
-    dialog_selection=$(dialog --title "Swarmops: Autoconfigure Apache?" --menu "This seems to be a new installation of Swarmops Frontend on a newly installed Apache. Would you like to create the necessary site directives and make Swarmops the default Apache site?" 0 0 3 1 "No thanks, don't touch my Apache, that's for me alone" 2 "Yes please, make Swarmops the default site for port 80" 3 "Create a Swarmops config, please, but don't enable it" 2>&1 1>&3);
+    dialog_selection=$(dialog --title "Swarmops: Autoconfigure Apache?" --menu "This seems to be a new installation of Swarmops Frontend on a newly installed Apache. Would you like to create the necessary site directives and make Swarmops the default Apache site?" 0 0 3 1 "Yes please, make Swarmops the default site for port 80" 2 "Create a Swarmops config, please, but don't enable it" 3 "No thanks, don't touch my Apache, that's for me alone" 2>&1 1>&3);
     exec 3>&-;
 
     case "$dialog_selection" in
-      1 ) echo "Neither reconfiguring Apache nor creating configuration file."
-          ;;
-
-      2 ) echo "Disabling site 000-default; creating/enabling site 000-swarmops."
+      1 ) echo "Disabling site 000-default; creating/enabling site 000-swarmops."
           a2dissite 000-default
           cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/000-swarmops.conf
           a2ensite 000-swarmops
@@ -37,8 +34,11 @@ if [ ! -e /var/lib/swarmops/upload ]; then
           fi
           ;;
 
-      3 ) echo "Creating but not enabling the site 'swarmops'. Use a2ensite to enable."
+      2 ) echo "Creating but not enabling the site 'swarmops'. Use a2ensite to enable."
           cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/swarmops.conf
+          ;;
+
+      3 ) echo "Neither reconfiguring Apache nor creating configuration file."
           ;;
 
       * ) echo "Unknown return code - $dialog_selection"
