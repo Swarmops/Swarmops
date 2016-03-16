@@ -6,7 +6,7 @@
 
 if [ ! -e /etc/swarmops/database.config ]; then
   if [ -e /etc/init.d/apache2 ]; then
-    if /etc/init.d/apache2 status > /dev/null; then
+    if [ /etc/init.d/apache2 status > /dev/null ]; then
       # Set a flag to postinst to restart Apache
       echo foo > /tmp/swarmops-restart-apache.flag
       /etc/init.d/apache2 stop
