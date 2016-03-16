@@ -29,14 +29,10 @@ namespace Swarmops.Logic.Security
         /// </exception>
         public static Person Authenticate (string loginToken, string password)
         {
-            SwarmopsLog.DebugLog(string.Format("Authenticating '{0}'", loginToken, password));
-
             // Get the list of people that match the login token.
 
             People candidatePeople = GetPeopleByLoginToken (loginToken);
             Person authenticatedUser = null;
-
-            SwarmopsLog.DebugLog ("- candidate count: " + candidatePeople.Count);
 
             // For every person in the list, test the supplied password against the current and legacy hash schemes.
 
@@ -52,8 +48,6 @@ namespace Swarmops.Logic.Security
                 {
                     if (membership.Active)
                     {
-                        SwarmopsLog.DebugLog ("- candidate #" + candidate.Identity + " has a valid participation");
-
                         hasActiveMemberships = true;
                         break;
                     }
@@ -63,7 +57,6 @@ namespace Swarmops.Logic.Security
 
                 if (!hasActiveMemberships)
                 {
-                    SwarmopsLog.DebugLog("- candidate #" + candidate.Identity + " has NO valid participations");
                     continue;
                 }
 
