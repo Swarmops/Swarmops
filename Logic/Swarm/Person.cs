@@ -793,11 +793,11 @@ namespace Swarmops.Logic.Swarm
 
         public Participation AddParticipation (Organization organization, DateTime expires)
         {
-            SwarmopsLog.DebugLog (string.Format("Adding participation in {0} until {1:yyyy-MM-dd HH:mm:ss}", organization.Name, expires));
+            SwarmopsLog.DebugLog (string.Format("- adding participation in {0} until {1:yyyy-MM-dd HH:mm:ss}", organization.Name, expires));
 
             Participation participation = AddParticipation (organization.Identity, expires);
 
-            SwarmopsLog.DebugLog ("Created participation #" + (participation != null? participation.Identity.ToString() : "null"));
+            SwarmopsLog.DebugLog ("- created participation #" + (participation != null? participation.Identity.ToString() : "null"));
             return participation;
         }
 

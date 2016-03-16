@@ -717,16 +717,16 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 throw new InvalidOperationException ("Cannot run initialization processes again when initialized.");
             }
 
-            SwarmopsLog.DebugLog("Person one did not exist, creating");
+            SwarmopsLog.DebugLog("- person one did not exist, creating");
 
             Person newPerson = Person.Create (name, mail, password, string.Empty, string.Empty, string.Empty,
                 string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
-            SwarmopsLog.DebugLog("Adding participation in Sandbox");
+            SwarmopsLog.DebugLog("- adding participation in Sandbox");
 
-            newPerson.AddParticipation (Organization.Sandbox, DateTime.MaxValue); // Add membership in Sandbox
+            newPerson.AddParticipation (Organization.Sandbox, DateTime.UtcNow.AddYears (25)); // Add membership in Sandbox
             
-            SwarmopsLog.DebugLog ("Creating positions");
+            SwarmopsLog.DebugLog ("- creating positions");
 
             // Initialize staffing to System and Sandbox with the new user
 
@@ -738,6 +738,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
         protected void ButtonLogin_Click (object sender, EventArgs args)
         {
+            SwarmopsLog.DebugLog("ButtonLogin_Click");
+
             // Check the host names and addresses again as a security measure - after all, we can be called from outside our intended script
 
             if (!(VerifyHostName (this.TextServerName.Text) && VerifyHostAddress (this.TextServerAddress.Text)))
