@@ -46,6 +46,11 @@ if [ ! -e /var/lib/swarmops/upload ]; then
         
     esac
 
+  else
+
+#   # Copying the unactivated Swarmops config to sites-available (option 3 above)
+    cp /usr/share/swarmops/frontend/apache-default-config.txt /etc/apache2/sites-available/swarmops.conf
+
   fi
 
 fi
