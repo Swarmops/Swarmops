@@ -682,6 +682,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
         {
             // Make sure that no first person exists already, as a security measure
 
+            SwarmopsLog.DebugLog (String.Format("Creating first user: '{0}', '{1}', '{2}'", name, mail, password));
+
             Person personOne = null;
             bool personOneExists = false;
 
@@ -715,11 +717,17 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 throw new InvalidOperationException ("Cannot run initialization processes again when initialized.");
             }
 
+            SwarmopsLog.DebugLog("Person one did not exist, creating");
+
             Person newPerson = Person.Create (name, mail, password, string.Empty, string.Empty, string.Empty,
                 string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
+            SwarmopsLog.DebugLog("Adding participation in Sandbox");
+
             newPerson.AddParticipation (Organization.Sandbox, DateTime.MaxValue); // Add membership in Sandbox
             
+            SwarmopsLog.DebugLog ("Creating positions");
+
             // Initialize staffing to System and Sandbox with the new user
 
             Positions.CreateSysadminPositions();
@@ -757,8 +765,12 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
             // Get authenticated person
 
+            SwarmopsLog.DebugLog (" - before calling Authenticate");
+
             Person expectedPersonOne = Authentication.Authenticate ("1",
                 this.TextFirstUserPassword1.Text);
+
+            SwarmopsLog.DebugLog(" - after calling Authenticate");
 
             if (expectedPersonOne != null)
             {

@@ -29,10 +29,14 @@ namespace Swarmops.Logic.Security
         /// </exception>
         public static Person Authenticate (string loginToken, string password)
         {
+            SwarmopsLog.DebugLog(string.Format("Authenticating '{0}' against '{1}'", loginToken, password));
+
             // Get the list of people that match the login token.
 
             People candidatePeople = GetPeopleByLoginToken (loginToken);
             Person authenticatedUser = null;
+
+            SwarmopsLog.DebugLog ("- candidate count: " + candidatePeople.Count);
 
             // For every person in the list, test the supplied password against the current and legacy hash schemes.
 
@@ -48,6 +52,8 @@ namespace Swarmops.Logic.Security
                 {
                     if (membership.Active)
                     {
+                        SwarmopsLog.DebugLog ("- candidate #" + candidate.Identity + " has a valid participation");
+
                         hasActiveMemberships = true;
                         break;
                     }
@@ -57,6 +63,7 @@ namespace Swarmops.Logic.Security
 
                 if (!hasActiveMemberships)
                 {
+                    SwarmopsLog.DebugLog("- candidate #" + candidate.Identity + " has NO valid participations");
                     continue;
                 }
 
@@ -157,6 +164,8 @@ namespace Swarmops.Logic.Security
             // Longer than standard (10) on purpose. Should be good through 2020 or so.
             string passwordHash = BCrypt.HashPassword (personId.ToString (CultureInfo.InvariantCulture) + password, salt);
 
+            SwarmopsLog.DebugLog ("- storing salted pwd " + passwordHash);
+
             return passwordHash;
         }
 
@@ -167,6 +176,8 @@ namespace Swarmops.Logic.Security
             {
                 return false; // not a BCrypt hash with work factor 12; fall back to legacy or fail. Caller's problem
             }
+
+            SwarmopsLog.DebugLog ("- password hash is " + person.PasswordHash);
 
             return BCrypt.CheckPassword (person.Identity.ToString (CultureInfo.InvariantCulture) + password,
                 person.PasswordHash);

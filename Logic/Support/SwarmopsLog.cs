@@ -1,4 +1,6 @@
-﻿using Swarmops.Database;
+﻿using System;
+using System.IO;
+using Swarmops.Database;
 using Swarmops.Logic.Swarm;
 
 namespace Swarmops.Logic.Support
@@ -18,6 +20,20 @@ namespace Swarmops.Logic.Support
                 person != null ? person.Identity : 0, logEntryClass, logEntry.ToXml());
 
             return SwarmopsLogEntry.FromIdentityAggressive (logEntryId);
+        }
+
+        public static void DebugLog (string logEntry)
+        {
+            if (Path.DirectorySeparatorChar == '\\')
+            {
+                System.Diagnostics.Trace.WriteLine (logEntry);
+            }
+            else
+            {
+                // Linux - the reason we made this function to begin with
+
+                File.AppendAllText ("/tmp/swarmops-debug.log", DateTime.UtcNow.ToString("yyyy-MM-dd/HH:mm:ss.fff ") + logEntry + @"\n");
+            }
         }
     }
 }
