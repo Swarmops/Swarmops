@@ -111,7 +111,7 @@
         <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
             <h2>System Behavior</h2>
             <div class="entryFields">
-                <label for="CheckRequireSsl">SDAD</label><div class="CheckboxContainer"><input type="checkbox" rel="RequireSsl" class="EditCheck" id="CheckRequireSsl"/></div><br/>
+                <label for="CheckRequireSsl">Force SSL</label><div class="CheckboxContainer"><input type="checkbox" rel="RequireSsl" class="EditCheck" id="CheckRequireSsl"/></div><br/>
             </div>
             <div class="entryLabels">
                 Require SSL connection?<br/>
