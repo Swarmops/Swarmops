@@ -46,7 +46,7 @@
     265 ./Logic/Financial/InboundInvoice.cs
      15 ./Logic/Financial/FinancialTransactionTagSets.cs
       9 ./Logic/Financial/FinancialTransactionTagSetTypesStock.cs
-    760 ./Logic/Financial/BitcoinUtility.cs
+    787 ./Logic/Financial/BitcoinUtility.cs
      22 ./Logic/Financial/FinancialValidation.cs
     107 ./Logic/Financial/ExchangeRateSnapshot.cs
      43 ./Logic/Financial/PaymentInformation.cs
@@ -167,7 +167,7 @@
      71 ./Logic/Swarm/PersonRole.cs
     107 ./Logic/Swarm/PositionAssignment.cs
      59 ./Logic/Swarm/ParticipantTitle.cs
-   1187 ./Logic/Swarm/Person.cs
+   1188 ./Logic/Swarm/Person.cs
     287 ./Logic/Swarm/DashboardTodos.cs
      52 ./Logic/Swarm/ExternalActivity.cs
     149 ./Logic/Swarm/ExternalIdentity.cs
@@ -238,7 +238,7 @@
      25 ./Logic/Support/TemporaryIdentity.cs
     181 ./Logic/Support/Document.cs
      93 ./Logic/Support/ExtensionMethods.cs
-    251 ./Logic/Support/SystemSettings.cs
+    257 ./Logic/Support/SystemSettings.cs
     177 ./Logic/Support/QuotedPrintable.cs
       6 ./Logic/Support/IXmlPayload.cs
     164 ./Logic/Support/PluralBase.cs
@@ -259,7 +259,7 @@
      27 ./Logic/Support/UrlTranslations.cs
      22 ./Logic/Support/PirateWebDebug.cs
     152 ./Logic/Support/ObjectOptionalData.cs
-     22 ./Logic/Support/SwarmopsLog.cs
+     38 ./Logic/Support/SwarmopsLog.cs
      38 ./Logic/Support/Persistence.cs
      30 ./Logic/Support/PilotInstallationIds.cs
     245 ./Logic/Support/PWLog.cs
@@ -518,9 +518,9 @@
     334 ./Site5/Pages/v5/Public/Signup.aspx.cs
     764 ./Site5/Pages/v5/Public/Signup.aspx
       1 ./Site5/Pages/v5/Public/Json-SignupVolunteerPositions.aspx
-    751 ./Site5/Pages/v5/Public/Initialize.aspx
+    759 ./Site5/Pages/v5/Public/Initialize.aspx
      73 ./Site5/Pages/v5/Public/Json-SignupVolunteerPositions.aspx.cs
-    730 ./Site5/Pages/v5/Public/Initialize.aspx.cs
+    803 ./Site5/Pages/v5/Public/Initialize.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx
     229 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx.cs
     183 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx
@@ -556,10 +556,10 @@
      59 ./Site5/Pages/v5/Admin/Hacks/Temp-SetOrganizationAdminAccess.aspx.cs
      89 ./Site5/Pages/v5/Admin/OrgStaffing.aspx.cs
      47 ./Site5/Pages/v5/Admin/OrgStaffing.aspx
-     64 ./Site5/Pages/v5/Admin/SystemSettings.aspx
+    153 ./Site5/Pages/v5/Admin/SystemSettings.aspx
     154 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
     176 ./Site5/Pages/v5/Admin/BitcoinEchoTest.aspx.cs
-    286 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
+    347 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
     447 ./Site5/Pages/v5/Admin/OrgSettings.aspx.cs
     100 ./Site5/Pages/v5/Admin/BitcoinEchoTest.aspx
      44 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
@@ -639,7 +639,7 @@
     248 ./Site5/Security/Login.aspx
     106 ./Site5/Security/Login-Old.aspx.cs
      93 ./Site5/Security/RequestPasswordReset.aspx.cs
-    445 ./Site5/Security/Login.aspx.cs
+    448 ./Site5/Security/Login.aspx.cs
     135 ./Site5/Security/RequestPasswordReset.aspx
      26 ./Site5/Security/FinalizeLogin.aspx.cs
      53 ./Site5/Security/Login-Old.aspx
@@ -647,7 +647,7 @@
       0 ./Site5/Security/FinalizeLogin.aspx
      31 ./Site5/Default.aspx.cs
      19 ./Site5/Default.aspx
-    404 ./Site5/Master-v5.master.cs
+    407 ./Site5/Master-v5.master.cs
     314 ./Site5/Plugins-Stock/Taxes/SE/MonthlyTaxForm-SE.aspx.cs
       1 ./Site5/Plugins-Stock/Taxes/SE/MonthlyTaxForm-SE.aspx
     122 ./Site5/Global.asax
@@ -828,4 +828,4 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
- 118957 total
+ 119244 total

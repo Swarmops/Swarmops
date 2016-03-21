@@ -148,6 +148,9 @@
   
   
   
+  <data name="UploadBankFiles_BankAccount" xml:space="preserve">
+    <value>Bankkonto</value>
+  </data>
   
   
   
@@ -216,6 +219,9 @@
   
   
   
+  <data name="AccountPlan_Header_Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
   
   
   
@@ -272,9 +278,9 @@
   
   
   
-  
-  
-  
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
   
   
   

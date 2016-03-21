@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccessDenied_Header" xml:space="preserve">
+    <value>Der Zugang zu dieser Seite wurde verweigert</value>
+  </data>
+  <data name="AccessDenied_Info" xml:space="preserve">
+    <value>Sie haben versucht eine Seite zu öffnen, zu der Sie keine Zugangsberechtigung haben. In der Haupt-Schaltfläche finden Sie Gründe, warum dies passiert sein kann.</value>
+  </data>
+  <data name="AccessDenied_PageTitle" xml:space="preserve">
+    <value>Zugriff verweigert</value>
+  </data>
   
   
   
@@ -138,33 +147,69 @@
   
   
   
+  <data name="Login_Help" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  
+  <data name="Login_LoggingIn" xml:space="preserve">
+    <value>Anmelden, bitte warten...</value>
+  </data>
+  <data name="Login_ManualLogin" xml:space="preserve">
+    <value>Manuelle Anmeldung</value>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
+  
+  <data name="Login_ResetPassword" xml:space="preserve">
+    <value>Passwort zurücksetzen</value>
+  </data>
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>Registrieren Sie mich für {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
   
   
+  <data name="Login_Username" xml:space="preserve">
+    <value>Benutzername</value>
+  </data>
   
   
+  <data name="ResetPassword_InfoRequest" xml:space="preserve">
+    <value>Geben Sie Ihre E-Mail-Adresse ein, um Anweisungen zu erhalten, wie Sie Ihr Passwort zurücksetzen können. Die Anweisungen werden einen einzigartigen und in seiner Gültigkeit zeitlich begrenzten Code enthalten, den Sie benötigen, um fortzufahren.</value>
+  </data>
+  <data name="ResetPassword_Mail1" xml:space="preserve">
+    <value>Geben Sie Ihre E-Mail-Adresse ein</value>
+  </data>
+  <data name="ResetPassword_Mail2" xml:space="preserve">
+    <value>Wiederholen Sie Ihre E-Mail-Adresse</value>
+  </data>
+  <data name="ResetPassword_NewPasswordsDontMatch" xml:space="preserve">
+    <value>Die beiden Passwörter stimmen nicht überein. Versuchen Sie es bitte erneut.</value>
+  </data>
+  <data name="ResetPassword_NoEmpty" xml:space="preserve">
+    <value>Das neue Passwort darf nicht leer sein.</value>
+  </data>
+  <data name="ResetPassword_PageTitle" xml:space="preserve">
+    <value>Passwort zurücksetzen</value>
+  </data>
+  <data name="ResetPassword_Password" xml:space="preserve">
+    <value>Neues Passwort</value>
+  </data>
+  <data name="ResetPassword_PasswordRepeat" xml:space="preserve">
+    <value>Neues Passwort wiederholen</value>
+  </data>
+  <data name="ResetPassword_RequestInfo" xml:space="preserve">
+    <value>Sie können das zu Ihrer E-Mail-Adresse gehörige Passwort zurücksetzen. An Ihre E-Mail-Adresse wird ein Link zu einem Sicherheits-Code gesendet, dem Sie öffnen müssen, um Ihr Passwort zurückzusetzen.</value>
+  </data>
+  <data name="ResetPassword_Reset" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+  <data name="ResetPassword_Success" xml:space="preserve">
+    <value>Ihr Passwort wurde geändert und Sie wurden in Swarmops mit Ihrem neuen Passwort angemeldet.</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ResetPassword_TicketSentMaybe" xml:space="preserve">
+    <value>Wenn die E-Mail-Adresse einem Konto auf dieser Installation von Swarmops zugeordnet werden konnte, wurde ein &lt;strong&gt;Zurücksetzen-Ticket gesendet.&lt;/strong&gt; Öffnen Sie diese E-Mail, und klicken Sie auf den Link, um Ihr Passwort zurückzusetzen. (Wenn die E-Mail-Adresse nicht existiert, wurde nichts gesendet.)&lt;br/&gt;&lt;br/&gt;Sie können diesen Browser-Tab nun schließen. Er wird nicht mehr benötigt.</value>
+  </data>
 </root>

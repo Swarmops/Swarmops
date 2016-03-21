@@ -117,24 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddPerson_ErrorCity" xml:space="preserve">
+    <value>Eine gültige Stadt ist erforderlich.</value>
+  </data>
+  <data name="AddPerson_ErrorDate" xml:space="preserve">
+    <value>Geben Sie ein gültiges Datum ein oder lassen Sie dieses Feld leer.</value>
+  </data>
+  <data name="AddPerson_ErrorMail" xml:space="preserve">
+    <value>Eine gültige E-Mail-Adresse ist erforderlich.</value>
+  </data>
+  <data name="AddPerson_ErrorName" xml:space="preserve">
+    <value>Ein Name ist erforderlich.</value>
+  </data>
+  <data name="AddPerson_ErrorStreet" xml:space="preserve">
+    <value>Eine gültige Straße oder ein gültiges Postfach ist erforderlich.</value>
+  </data>
   
   
   
   
   
+  <data name="AddPerson_Street1PO" xml:space="preserve">
+    <value>Straße 1 (oder Postfach)</value>
+  </data>
+  <data name="AddPerson_Street2" xml:space="preserve">
+    <value>Straße 2 - falls zutreffend</value>
+  </data>
   
   
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="ListFindPeople_TooManyHits" xml:space="preserve">
+    <value>Es gibt mehr als tausend Resultate (die Anzeige ist beschränkt auf tausend). Bitte verfeinern Sie Ihre Suche?</value>
+  </data>
   
   
   

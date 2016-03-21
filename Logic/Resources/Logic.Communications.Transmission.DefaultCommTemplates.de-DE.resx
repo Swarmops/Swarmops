@@ -117,6 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
+  <data name="ParticipantManualAddWelcome_Body" xml:space="preserve">
+    <value>Willkommen bei [OrganizationName]!
+
+Sie haben eine [Regularship] von [ActingPerson] erteilt bekommen. Sie läuft am [MembershipExpiry] aus, somit haben Sie genug Zeit, die Organisation kennen zu lernen.
+
+Sie sollten schon von den Leuten von [OrganizationName] weitere Informationen darüber erhalten haben, wie Sie aktiv werden können. Wenn dies nicht der Fall ist, rechnen Sie bald damit.
+
+Ihr zufällig generiertes Startpasswort für Swarmops, die Software, welche als Backend-System genutzt wird, lautet wie folgt: [RandomPassword]
+
+(Leider können Sie es noch nicht ändern. Diese Funktion wird Anfang 2015 erwartet. Swarmops befindet sich noch in einer frühen Alpha-Phase; einer der Nachteile bahnbrechender neuer Software ist: Dinge können noch nicht vollkommen ausgereift sein, sobald sie online sind.)
+
+Willkommen an Bord!</value>
+  </data>
+  <data name="ParticipantManualAddWelcome_Subject" xml:space="preserve">
+    <value>[[OrganizationName]] Willkommen bei [OrganizationName]!</value>
+  </data>
 </root>

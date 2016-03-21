@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Menu5_Administration" xml:space="preserve">
-    <value>Verwaltung</value>
+    <value>Administration</value>
   </data>
   
   
@@ -212,14 +212,18 @@
   
   
   
-  
-  
+  <data name="Menu5_Organization_Feeds_PressReleases" xml:space="preserve">
+    <value>Pressemitteilungen</value>
+  </data>
+  <data name="Menu5_Organization_MemberStatistics" xml:space="preserve">
+    <value>Mitglieder-Statistiken</value>
+  </data>
   
   
   
   
   <data name="Menu5_People" xml:space="preserve">
-    <value>Menschen</value>
+    <value>Kontakte</value>
   </data>
   
   

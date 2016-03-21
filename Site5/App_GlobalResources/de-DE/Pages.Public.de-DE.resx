@@ -126,6 +126,37 @@
   
   
   
+  <data name="Signup_Error_MailExists" xml:space="preserve">
+    <value>Sie haben sich bereits auf diesem Swarmops-Server registriert. Benutzen Sie bitte die "Passwort zurücksetzen"-Funktion im Anmeldebildschirm, statt ein neues Konto zu erstellen.</value>
+  </data>
+  
+  <data name="Signup_Error_PasswordMismatch" xml:space="preserve">
+    <value>Die beiden Passwörter stimmen nicht überein.</value>
+  </data>
+  
+  <data name="Signup_Error_SelectPosition" xml:space="preserve">
+    <value>Bitte wählen Sie mindestens eine der Optionen aus.</value>
+  </data>
+  <data name="Signup_FeeHeader" xml:space="preserve">
+    <value>Gebühren und Kosten</value>
+  </data>
+  
+  
+  <data name="Signup_FinalizeSignup" xml:space="preserve">
+    <value>Registrierung abschließen</value>
+  </data>
+  
+  
+  <data name="Signup_Password1" xml:space="preserve">
+    <value>Erstellen Sie ein Passwort</value>
+  </data>
+  <data name="Signup_Password2" xml:space="preserve">
+    <value>Wiederholen Sie Ihr Passwort</value>
+  </data>
+  
+  <data name="Signup_Step1Header" xml:space="preserve">
+    <value>Willkommen!</value>
+  </data>
   
   
   
@@ -139,28 +170,22 @@
   
   
   
+  <data name="Signup_Todo_Complete" xml:space="preserve">
+    <value>Vervollständigen Sie Ihre Registrierung.</value>
+  </data>
   
   
   
   
+  <data name="Signup_Welcome" xml:space="preserve">
+    <value>Willkommen bei {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Signup_YourLogonText" xml:space="preserve">
+    <value>Bitte wählen Sie ein Passwort, um sich bei Swarmops (diesem System) anzumelden. Sie werden dies später mit einer Twitter-, Facebook- oder BitID-Anmeldung ersetzen können.</value>
+  </data>
+  <data name="Signup_YourName" xml:space="preserve">
+    <value>Ihr Name</value>
+  </data>
 </root>

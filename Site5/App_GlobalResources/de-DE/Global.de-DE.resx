@@ -117,12 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CurrentUserInfo_Logout" xml:space="preserve">
+    <value>Abmelden</value>
+    <comment>Causes signoff and de-authentication</comment>
+  </data>
+  <data name="CurrentUserInfo_Preferences" xml:space="preserve">
+    <value>Einstellungen</value>
+    <comment>Tooltip on hover over wrench icon</comment>
+  </data>
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
+    <value>Sprache auswählen</value>
+    <comment>Shown as header of language list pop-up</comment>
+  </data>
   
   
+  <data name="Dashboard_PageTitle" xml:space="preserve">
+    <value>Dashboard</value>
+    <comment>Title of default page</comment>
+  </data>
   
   
   
   
+  <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
+    <value>Benutzerkonto</value>
+  </data>
   
   
   
@@ -139,14 +158,53 @@
   
   
   
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>ASAP</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
+  </data>
+  <data name="Global_Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+    <comment>Displayed as cancellation link on changing something</comment>
+  </data>
   
   
+  <data name="Global_Confirm" xml:space="preserve">
+    <value>Bestätigen</value>
+    <comment>Displayed as confirmation link on changing something</comment>
+  </data>
   
   
   
+  <data name="Global_NoOwner" xml:space="preserve">
+    <value>Niemand</value>
+    <comment>Displayed when an account/position etc is vacant</comment>
+  </data>
+  <data name="Global_Owner" xml:space="preserve">
+    <value>Eigentümer</value>
+  </data>
+  <data name="Global_ProcessingFile" xml:space="preserve">
+    <value>Verarbeite die Datei...</value>
+    <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
+  </data>
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Datei hochladen</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
+  </data>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Eine Datei auf Swarmops hochladen</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Bitte wählen Sie eine Datei zum Hochladen aus.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  </data>
   
   
   
+  <data name="Sidebar_Information" xml:space="preserve">
+    <value>Info</value>
+    <comment>Information about current page</comment>
+  </data>
   
   
   
@@ -160,8 +218,18 @@
   
   
   
+  <data name="Global_AsOfNow" xml:space="preserve">
+    <value>Ab sofort</value>
+  </data>
+  <data name="Global_Today" xml:space="preserve">
+    <value>Heute</value>
+  </data>
   
   
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Zugehörig</value>
+    <comment>List of shortcuts to related actions to current one</comment>
+  </data>
   
   
   
@@ -172,27 +240,18 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>Deutsch</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>Nein</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Ja</value>
+    <comment>For yes/no options</comment>
+  </data>
   
   
   
@@ -214,7 +273,10 @@
     <value>eMail</value>
     <comment>Somebody's email address.</comment>
   </data>
-  
+  <data name="Global_Name" xml:space="preserve">
+    <value>Name</value>
+    <comment>A plain person's first and last name</comment>
+  </data>
   <data name="Global_Notes" xml:space="preserve">
     <value>Notizen</value>
     <comment>Small notes in a grid, maybe in icon form</comment>
@@ -226,6 +288,10 @@
   
   
   
+  <data name="Global_Description" xml:space="preserve">
+    <value>Beschreibung</value>
+    <comment>As a general header of any description field</comment>
+  </data>
   
   
   
@@ -235,6 +301,17 @@
   
   
   
+  <data name="Sidebar_Help" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="Global_Female" xml:space="preserve">
+    <value>Weiblich</value>
+    <comment>Legal gender</comment>
+  </data>
+  <data name="Global_Male" xml:space="preserve">
+    <value>Männlich</value>
+    <comment>Legal gender</comment>
+  </data>
   
   
   
@@ -243,8 +320,39 @@
   
   
   
+  <data name="Global_Address" xml:space="preserve">
+    <value>Adresse</value>
+    <comment>As in physical location</comment>
+  </data>
+  <data name="Global_City" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="Global_Country" xml:space="preserve">
+    <value>Land</value>
+    <comment>As in the nation-state geographic boundary, not as in the music style</comment>
+  </data>
+  <data name="Global_DateOfBirth" xml:space="preserve">
+    <value>Geburtsdatum</value>
+    <comment>Population data record entry, rather than celebration day ("birthday")</comment>
+  </data>
+  <data name="Global_PostalCode" xml:space="preserve">
+    <value>Postleitzahl</value>
+  </data>
   
+  <data name="Global_Month" xml:space="preserve">
+    <value>Monat</value>
+  </data>
   
+  <data name="Global_Year" xml:space="preserve">
+    <value>Jahr</value>
+  </data>
+  <data name="Global_YearMonth" xml:space="preserve">
+    <value>Jahr/Monat</value>
+  </data>
+  <data name="Global_YearX" xml:space="preserve">
+    <value>Jahr {0}</value>
+    <comment>As in "the year X".</comment>
+  </data>
   
   
   
@@ -261,9 +369,27 @@
   
   
   
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Betrag</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>hinzufügen</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
   
   
+  <data name="Sidebar_Options" xml:space="preserve">
+    <value>Optionen</value>
+    <comment>For various page-specific checkboxes etc</comment>
+  </data>
   
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(keine Übereinstimmung)</value>
+  </data>
   
   
   
@@ -274,32 +400,32 @@
   
   
   
+  <data name="Timespan_Selection_OneMonth" xml:space="preserve">
+    <value>Einen Monat</value>
+  </data>
+  <data name="Timespan_Selection_OneYear" xml:space="preserve">
+    <value>Ein Jahr</value>
+  </data>
+  <data name="Timespan_Selection_SixMonths" xml:space="preserve">
+    <value>Sechs Monate</value>
+  </data>
+  <data name="Timespan_Selection_ThreeMonths" xml:space="preserve">
+    <value>Drei Monate</value>
+  </data>
+  <data name="Timespan_Selection_TwoMonths" xml:space="preserve">
+    <value>Zwei Monate</value>
+  </data>
+  <data name="Timespan_Selection_TwoYears" xml:space="preserve">
+    <value>Zwei Jahre</value>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
 </root>

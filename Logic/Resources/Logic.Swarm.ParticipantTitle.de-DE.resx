@@ -118,6 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   
+  <data name="Title_Activist_Female" xml:space="preserve">
+    <value>Aktivistin</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Activist_Generic" xml:space="preserve">
+    <value>Aktivist(in)</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Activist_Male" xml:space="preserve">
+    <value>Aktivist</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Activist_Plural" xml:space="preserve">
+    <value>Aktivisten</value>
+    <comment>Gender neutral plural</comment>
+  </data>
   
   
   
@@ -144,33 +160,69 @@
   
   
   
+  <data name="Title_Contributor_Female" xml:space="preserve">
+    <value>Mitwirkende</value>
+  </data>
+  <data name="Title_Contributor_Generic" xml:space="preserve">
+    <value>Mitwirkende(r)</value>
+  </data>
+  <data name="Title_Contributor_Male" xml:space="preserve">
+    <value>Mitwirkender</value>
+  </data>
+  <data name="Title_Contributor_Plural" xml:space="preserve">
+    <value>Mitwirkende</value>
+  </data>
+  
+  <data name="Title_Customer_Corps" xml:space="preserve">
+    <value>Kunden</value>
+  </data>
+  <data name="Title_Customer_Female" xml:space="preserve">
+    <value>Kundin</value>
+    <comment>Female singular</comment>
+  </data>
+  <data name="Title_Customer_Generic" xml:space="preserve">
+    <value>Kunde</value>
+    <comment>Gender neutral</comment>
+  </data>
+  <data name="Title_Customer_Male" xml:space="preserve">
+    <value>Kunde</value>
+    <comment>Male singular</comment>
+  </data>
+  <data name="Title_Customer_Plural" xml:space="preserve">
+    <value>Kunden</value>
+    <comment>Gender neutral plural</comment>
+  </data>
   
   
+  <data name="Title_Employee_Female" xml:space="preserve">
+    <value>Mitarbeiterin</value>
+  </data>
+  <data name="Title_Employee_Generic" xml:space="preserve">
+    <value>Mitarbeiter(in)</value>
+  </data>
+  <data name="Title_Employee_Male" xml:space="preserve">
+    <value>Mitarbeiter</value>
+  </data>
+  <data name="Title_Employee_Plural" xml:space="preserve">
+    <value>Mitarbeiter</value>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Title_Member_Female" xml:space="preserve">
+    <value>Mitglied</value>
+  </data>
+  <data name="Title_Member_Generic" xml:space="preserve">
+    <value>Mitglied</value>
+  </data>
+  <data name="Title_Member_Male" xml:space="preserve">
+    <value>Mitglied</value>
+  </data>
+  <data name="Title_Member_Plural" xml:space="preserve">
+    <value>Mitglieder</value>
+  </data>
+  <data name="Title_Member_Ship" xml:space="preserve">
+    <value>Mitgliedschaft</value>
+  </data>
   
   
   

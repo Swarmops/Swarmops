@@ -126,7 +126,9 @@
   <data name="Menu5_Administration_CreateOrganization" xml:space="preserve">
     <value>Создать Новую Организацию</value>
   </data>
-  
+  <data name="Menu5_Administration_OrganizationSettings" xml:space="preserve">
+    <value>Параметры Организации</value>
+  </data>
   
   
   
@@ -264,7 +266,9 @@
   <data name="Menu5_People_AddMember" xml:space="preserve">
     <value>Добавить участников</value>
   </data>
-  
+  <data name="Menu5_People_AddPerson" xml:space="preserve">
+    <value>Добавить [Regular]</value>
+  </data>
   <data name="Menu5_People_ListFind" xml:space="preserve">
     <value>Список/Поиск Людей</value>
   </data>
@@ -289,8 +293,12 @@
   
   
   
-  
-  
+  <data name="Menu5_Ledgers_TaxForms" xml:space="preserve">
+    <value>Налоговые Формы</value>
+  </data>
+  <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
+    <value>Налоговые формы заработной платы</value>
+  </data>
   
   
   

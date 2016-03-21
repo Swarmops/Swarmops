@@ -118,14 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   
+  <data name="SendMassMessage_HeaderMessage" xml:space="preserve">
+    <value>Ihre Nachricht</value>
+  </data>
   
   
   
   
+  <data name="SendMassMessage_SendMessage" xml:space="preserve">
+    <value>Senden</value>
+    <comment>Keep SHORT - it's a small button. 6-7 letters max</comment>
+  </data>
   
-  
-  
-  
+  <data name="SendMassMessage_TestMessage" xml:space="preserve">
+    <value>Test</value>
+    <comment>Keep SHORT- it's a small button. 6-7 letters max</comment>
+  </data>
   
   
 </root>
