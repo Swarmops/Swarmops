@@ -41,12 +41,6 @@ If you installed onto a clean server, Swarmops will offer to configure Apache to
 
 Navigate to the new site and continue installation from the running site.
 
-Once configured and logged in, you may also want to install
-
-> `apt-get install swarmops-frontend-external-scripts`
-
-These are GPLed scripts that cannot be conveyed as part of Swarmops for license reasons, but Swarmops runs better with them installed on the frontend host.
-
 The packages named as listed above (swarmops-frontend) are the sprint packages, released every two weeks. If you prefer, you can opt for the development builds (swarmops-frontend-internal) or the stable six-month releases (swarmops-frontend-stable) instead. The development builds aren't really recommended unless you're actively contributing to development and want to see new changes running on the development sandbox.
 
 Contributing
