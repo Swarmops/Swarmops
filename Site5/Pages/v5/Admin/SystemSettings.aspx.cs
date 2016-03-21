@@ -145,6 +145,54 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.LabelWebsocketPortClient.Text = Resources.Pages.Admin.SystemSettings_WebsocketPortClient;
         }
 
+
+
+        [WebMethod]
+        public static InitialSystemData GetInitialData()
+        {
+            InitialSystemData result = new InitialSystemData();
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+            Organization org = authData.CurrentOrganization;
+
+            if (org == null || authData.CurrentUser == null)
+            {
+                return result; // just... don't
+            }
+
+            result.RequireSsl = SystemSettings.RequireSsl;
+
+            return result;
+        }
+
+
+        [WebMethod]
+        public static CallResult SwitchToggled(string switchName, bool switchValue)
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            if (authData.CurrentOrganization == null || authData.CurrentUser == null)
+            {
+                return null; // just don't... don't anything, actually
+            }
+
+            CallResult result = new CallResult();
+            result.Success = true;
+            result.DisplayMessage = string.Empty;
+
+            switch (switchName)
+            {
+                case "RequireSsl":
+
+                    SystemSettings.RequireSsl = switchValue;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            return result;
+        }
+
+
         [WebMethod]
         static public AjaxTextBox.CallbackResult StoreCallback(string newValue, string cookie)
         {
@@ -282,6 +330,19 @@ namespace Swarmops.Frontend.Pages.v5.Admin
         }
 
 
+
+        public class CallResult
+        {
+            public bool Success { get; set; }
+            public string OpResult { get; set; }
+            public string DisplayMessage { get; set; }
+        }
+
+
+        public class InitialSystemData
+        {
+            public bool RequireSsl;
+        }
     }
 
 }

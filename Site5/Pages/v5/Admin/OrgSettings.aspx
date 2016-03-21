@@ -5,11 +5,11 @@
 <%@ Register tagPrefix="Swarmops5" tagName="AjaxTextBox" src="~/Controls/v5/Base/AjaxTextBox.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolderHead" Runat="Server">
-    
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function() {
             $('#divTabs').tabs();
+
             $('.EditCheck').switchbutton({
                 checkedLabel: '<%= Global.Global_On.ToUpperInvariant() %>',
                 uncheckedLabel: '<%= Global.Global_Off.ToUpperInvariant() %>',

@@ -409,8 +409,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
         /// </summary>
         public static void InitDatabaseThread()
         {
-            SwarmopsLog.DebugLog("Initializing Database");
-
             // Ignore the session object, that method of sharing data didn't work, but a static variable did.
 
             _initProgress = 1;
@@ -442,8 +440,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 // Set an installation ID
 
                 Persistence.Key["SwarmopsInstallationId"] = Guid.NewGuid().ToString();
-
-                SwarmopsLog.DebugLog(" - creating currencies");
 
                 _initProgress = 4;
                 _initMessage = "Initializing currencies...";
@@ -555,7 +551,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
             {
                 // Use initMessage to push info about what went wrong to the user
 
-                SwarmopsLog.DebugLog (failedException.ToString());
                 _initMessage = failedException.ToString();
             }
 
@@ -694,8 +689,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
             try
             {
-                SwarmopsLog.DebugLog (String.Format ("Creating first user: '{0}', '{1}', '{2}'", name, mail, password));
-
                 Person personOne = null;
                 bool personOneExists = false;
 
@@ -729,17 +722,11 @@ namespace Swarmops.Frontend.Pages.v5.Public
                     throw new InvalidOperationException ("Cannot run initialization processes again when initialized.");
                 }
 
-                SwarmopsLog.DebugLog ("- person one did not exist, creating");
-
                 Person newPerson = Person.Create (name, mail, password, string.Empty, string.Empty, string.Empty,
                     string.Empty, string.Empty, DateTime.MinValue, PersonGender.Unknown);
 
-                SwarmopsLog.DebugLog ("- adding participation in Sandbox");
-
                 newPerson.AddParticipation (Organization.Sandbox, DateTime.MaxValue);
                     // Add membership in Sandbox
-
-                SwarmopsLog.DebugLog ("- creating positions");
 
                 // Initialize staffing to System and Sandbox with the new user
 
@@ -748,7 +735,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
             }
             catch (Exception e)
             {
-                SwarmopsLog.DebugLog (e.ToString());
                 throw;
             }
 
@@ -757,8 +743,6 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
         protected void ButtonLogin_Click (object sender, EventArgs args)
         {
-            SwarmopsLog.DebugLog("ButtonLogin_Click");
-
             // Check the host names and addresses again as a security measure - after all, we can be called from outside our intended script
 
             if (!(VerifyHostName (this.TextServerName.Text) && VerifyHostAddress (this.TextServerAddress.Text)))
@@ -786,12 +770,8 @@ namespace Swarmops.Frontend.Pages.v5.Public
 
             // Get authenticated person
 
-            SwarmopsLog.DebugLog (" - before calling Authenticate");
-
             Person expectedPersonOne = Authentication.Authenticate ("1",
                 this.TextFirstUserPassword1.Text);
-
-            SwarmopsLog.DebugLog(" - after calling Authenticate");
 
             if (expectedPersonOne != null)
             {
