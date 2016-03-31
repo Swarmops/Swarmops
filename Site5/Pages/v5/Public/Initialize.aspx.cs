@@ -733,7 +733,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
                 Positions.CreateSysadminPositions();
                 Positions.CreateOrganizationDefaultPositions (Organization.Sandbox, PositionTitle.Default);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }

@@ -18,6 +18,7 @@
 
         preload([
             '/Images/Abstract/ajaxloader-medium.gif',
+            '/Images/Abstract/ajaxloader-48x36px.gif',
             '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
             '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
             '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
@@ -47,7 +48,9 @@
                     },
 
                     onLoadSuccess: function () {
-                        $(".LocalIconApproval").attr("src", approvalOverdraftIcon); // initialize as disabled until budgets known
+                        budgetRemainingLookup.attestabilityInitialized = false;
+
+                        $(".LocalIconApproval").attr("src", '/Images/Abstract/ajaxloader-48x36px.gif'); // initialize as rotating loader until budgets known
                         $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
                         $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
                         $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
@@ -56,21 +59,25 @@
                         $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
 
                         $(".LocalIconApproval").mouseover(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                if ($(this).hasClass("LocalFundsInsufficient")) {
-                                    $(this).attr("src", approvalOverdraftIconHover);
-                                } else {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
+                            if (budgetRemainingLookup.attestabilityInitialized) {
+                                if ($(this).attr("rel") != "loading") {
+                                    if ($(this).hasClass("LocalFundsInsufficient")) {
+                                        $(this).attr("src", approvalOverdraftIconHover);
+                                    } else {
+                                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
+                                    }
                                 }
                             }
                         });
 
                         $(".LocalIconApproval").mouseout(function () {
-                            if ($(this).attr("rel") != "loading") {
-                                if ($(this).hasClass("LocalFundsInsufficient")) {
-                                    $(this).attr("src", approvalOverdraftIcon);
-                                } else {
-                                    $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
+                            if (budgetRemainingLookup.attestabilityInitialized) {
+                                if ($(this).attr("rel") != "loading") {
+                                    if ($(this).hasClass("LocalFundsInsufficient")) {
+                                        $(this).attr("src", approvalOverdraftIcon);
+                                    } else {
+                                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
+                                    }
                                 }
                             }
                         });
@@ -174,7 +181,7 @@
 
                                             var accountId = $("#IconApproval" + baseid).attr("accountid");
                                             var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
-                                            budgetRemainingLookup[accountId] += funds;
+                                            budgetRemainingLookup[accountId] -= funds;
                                             setAttestability();
                                             recheckBudgets(); // will double-check budgets against server
                                         } else {
@@ -219,11 +226,11 @@
                         // Check if budgets have been fetched, and if so, initialize attestability
 
                         if (budgetRemainingLookup.budgetsLoaded == true) {
-                            setAttestability();
-                        }
+                                setAttestability();
+                            }
 
-                        budgetRemainingLookup.rowsLoaded = true;
-                    }
+                            budgetRemainingLookup.rowsLoaded = true;
+                        }
                 }
             );
 
@@ -285,8 +292,9 @@
 
                         var accountId = $(this).attr("accountid");
                         var funds = parseFloat($(this).attr("amount"));
-                        budgetRemainingLookup[accountId] -= funds;
+                        budgetRemainingLookup[accountId] += funds;  // plus because the budget is negative
                         setAttestability();
+
                         recheckBudgets(); // will double-check budgets against server
                     } else {
                         // failure, likely from attesting too quickly and overrunning budget
@@ -307,6 +315,7 @@
             SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
                 data.forEach(function(accountData, dummy1, dummy2) {
                     budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
+                    console.log("Rechecking budget " + accountData.AccountId + ": remaining is " + accountData.Remaining);
                 });
 
                 setAttestability();
@@ -319,18 +328,30 @@
             $('.LocalIconApproval').each(function() {
                 var accountId = $(this).attr('accountid');
                 var amountRequested = $(this).attr('amount');
+                var fundsInBudget = -budgetRemainingLookup[accountId];
 
-                var fundsInBudget = budgetRemainingLookup[accountId];
+                console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
+
                 if (fundsInBudget >= amountRequested) {
+                    console.log("- removing insufficience marker");
                     $(this).removeClass("LocalFundsInsufficient");
                     if ($(this).attr("rel") != "loading") {
                         $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
+                    } else {
+                        $(this).attr("src", approvalOverdraftIcon);
                     }
                 }
-                else if (!$(this).hasClass("LocalFundsInsufficient")) {
-                    $(this).addClass("LocalFundsInsufficient");
+                else {
                     if ($(this).attr("rel") != "loading") {
                         $(this).attr("src", approvalOverdraftIcon);
+                    }
+
+                    if (!$(this).hasClass("LocalFundsInsufficient")) {
+                        console.log("- adding insufficience marker");
+                        $(this).addClass("LocalFundsInsufficient");
+                        if ($(this).attr("rel") != "loading") {
+                            $(this).attr("src", approvalOverdraftIcon);
+                        }
                     }
                 }
 

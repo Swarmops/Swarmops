@@ -52,6 +52,9 @@ namespace Swarmops.Logic.Financial
                 new CashAdvanceRequestedLogEntry (createdByPerson, forPerson, amountCents/100.0, budget, description),
                 newAdvance);
 
+            // Clear a cache
+            FinancialAccount.ClearAttestationAdjustmentsCache (organization);
+
             return newAdvance;
         }
 

@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using Resources;
+using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
 using Swarmops.Logic.Structure;
@@ -74,7 +75,10 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 if (account.OwnerPersonId == authData.CurrentUser.Identity || 
                     (account.OwnerPersonId == 0 && authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Administration))))
                 {
-                    result[account.Identity] = true;
+                    if (account.AccountType == FinancialAccountType.Cost)
+                    {
+                        result[account.Identity] = true;
+                    }
                 }
             }
 
@@ -229,7 +233,7 @@ namespace Swarmops.Frontend.Pages.v5.Financial
                 throw new UnauthorizedAccessException();
             }
 
-            Int64 centsRemaining = GetBudgetRemaining (budget);
+            Int64 centsRemaining = budget.GetBudgetCentsRemaining();
 
             if (centsRemaining/100.0 < amount)
             {
@@ -280,17 +284,11 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             List<BudgetRemainder> result = new List<BudgetRemainder>();
             int currentYear = DateTime.UtcNow.Year;
-            Dictionary<int, Int64> budgetAdjustments = GetAccountingAdjustments (organization);
 
             foreach (int accountId in accountLookup.Keys)
             {
                 FinancialAccount account = FinancialAccount.FromIdentity (accountId);
-                Int64 remaining = GetBudgetRemaining (account, currentYear);
-
-                if (budgetAdjustments.ContainsKey (accountId))
-                {
-                    remaining += budgetAdjustments[accountId];
-                }
+                Int64 remaining = account.GetBudgetCentsRemaining (currentYear);
 
                 result.Add (new BudgetRemainder { AccountId = accountId, Remaining = remaining/100.0 });
             }
@@ -298,94 +296,6 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             return result.ToArray();
         }
 
-        private static Dictionary<int, Int64> GetAccountingAdjustments (Organization organization)
-        {
-            // This function returns a dictionary for the cents that are either accounted for but not attested,
-            // or attested but accounted for, to be used to understand how much is really left in budget
-
-            // Positive adjustment means more [cost] budget available, negative less [cost] budget available
-
-            Dictionary<int, Int64> result = new Dictionary<int, long>();
-
-            // Cash advances are accounted for when paid out. Make sure they count toward the budget when attested.
-
-            CashAdvances advances = CashAdvances.ForOrganization (organization);
-            foreach (CashAdvance advance in advances)
-            {
-                if (!result.ContainsKey (advance.BudgetId))
-                {
-                    result[advance.BudgetId] = 0;
-                }
-
-                if (advance.Attested)
-                {
-                    result[advance.BudgetId] -= advance.AmountCents;
-                }
-            }
-
-            // Expense claims, Inbound invoices, and Salaries are accounted for when filed. Make sure they DON'T
-            // count toward the budget while they are NOT attested.
-
-            ExpenseClaims claims = ExpenseClaims.ForOrganization (organization); // gets all open claims
-            foreach (ExpenseClaim claim in claims)
-            {
-                if (!result.ContainsKey(claim.BudgetId))
-                {
-                    result[claim.BudgetId] = 0;
-                }
-
-                if (!claim.Attested)
-                {
-                    result[claim.BudgetId] += claim.AmountCents;
-                }
-            }
-
-            InboundInvoices invoices = InboundInvoices.ForOrganization (organization);
-            foreach (InboundInvoice invoice in invoices)
-            {
-                if (!result.ContainsKey(invoice.BudgetId))
-                {
-                    result[invoice.BudgetId] = 0;
-                }
-
-                if (!invoice.Attested)
-                {
-                    result[invoice.BudgetId] += invoice.AmountCents;
-                }
-            }
-
-            Salaries salaries = Salaries.ForOrganization (organization);
-            foreach (Salary salary in salaries)
-            {
-                if (!result.ContainsKey(salary.PayrollItem.BudgetId))
-                {
-                    result[salary.PayrollItem.BudgetId] = 0;
-                }
-
-                if (!salary.Attested)
-                {
-                    result[salary.PayrollItem.BudgetId] += (salary.GrossSalaryCents + salary.AdditiveTaxCents);
-                }
-            }
-
-            return result;
-        }
-
-        private static Int64 GetBudgetRemaining (FinancialAccount account, int year = -1)
-        {
-            if (year == -1)
-            {
-                year = DateTime.UtcNow.Year;
-            }
-
-            Int64 deltaCentsYear = account.GetDeltaCents(new DateTime(year, 1, 1),
-                new DateTime(year + 1, 1, 1));
-            Int64 budgetYear = account.GetBudgetCents(year);
-
-            Dictionary<int, Int64> adjustments = GetAccountingAdjustments (account.Organization);
-
-            return -(budgetYear - deltaCentsYear) + (adjustments.ContainsKey(account.Identity)? adjustments[account.Identity]: 0);
-        }
 
         public class BudgetRemainder
         {
@@ -534,23 +444,21 @@ namespace Swarmops.Frontend.Pages.v5.Financial
 
             if (mode == AttestationMode.Attestation)
             {
-                Int64 budgetRemaining = GetBudgetRemaining (attestableItem.Budget, DateTime.UtcNow.Year);
-                Dictionary<int, Int64> budgetAdjustments = GetAccountingAdjustments (authData.CurrentOrganization);
-
-                if (budgetAdjustments.ContainsKey (attestableItem.Budget.Identity))
-                {
-                    budgetRemaining += budgetAdjustments[attestableItem.Budget.Identity];
-                }
+                Int64 budgetRemaining = attestableItem.Budget.GetBudgetCentsRemaining();
 
                 result = string.Empty;
 
-                if (amountCents > budgetRemaining)
+                if (amountCents > -budgetRemaining)
                 {
                     if (
                         authData.Authority.HasAccess (new Access (authData.CurrentOrganization,
                             AccessAspect.Administration)))
                     {
                         // Admin rights, so allow (forced) overdraft
+
+                        // Unless budget was nonzero and allocated, set protest message
+
+                        if (attestableItem.Budget.Owner != null || attestableItem.Budget.GetBudgetCents() != 0)
 
                         result = Resources.Pages.Financial.AttestCosts_Overdrafted + " ";
                     }
@@ -582,6 +490,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             {
                 throw new InvalidOperationException ("Unknown Attestation Mode: " + mode);
             }
+
+            FinancialAccount.ClearAttestationAdjustmentsCache (authData.CurrentOrganization);
 
             return new AjaxCallResult {DisplayMessage = result, Success = true};
         }

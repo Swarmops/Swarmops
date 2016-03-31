@@ -9,7 +9,7 @@ using Swarmops.Logic.Swarm;
 
 public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
 {
-    private Dictionary<int, bool> _attestationRights;
+    private Dictionary<int, Int64> _attestationRights;
     private AttestableItems _items;
     private AttestableItems _attestedItems;
 
@@ -90,20 +90,20 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
     }
 
 
-    private Dictionary<int, bool> GetAttestationRights()
+    private Dictionary<int, Int64> GetAttestationRights()
     {
         // Right now, this function is quite primitive. At some point in the future, it needs to take into
         // account that a budget may have several attesters. Right now, it just loops over all accounts and
         // checks the owner.
 
-        Dictionary<int, bool> result = new Dictionary<int, bool>();
+        Dictionary<int, Int64> result = new Dictionary<int, Int64>();
         FinancialAccounts accounts = FinancialAccounts.ForOrganization (CurrentOrganization);
 
         foreach (FinancialAccount account in accounts)
         {
             if (account.OwnerPersonId == CurrentUser.Identity)
             {
-                result[account.Identity] = true;
+                result[account.Identity] = account.GetBudgetCentsRemaining();
             }
         }
 
