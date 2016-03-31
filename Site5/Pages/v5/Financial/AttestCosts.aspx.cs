@@ -68,12 +68,12 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             // checks the owner.
 
             Dictionary<int, bool> result = new Dictionary<int, bool>();
-            FinancialAccounts accounts = FinancialAccounts.ForOrganization (authData.CurrentOrganization);
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization(authData.CurrentOrganization);
 
             foreach (FinancialAccount account in accounts)
             {
-                if (account.OwnerPersonId == authData.CurrentUser.Identity || 
-                    (account.OwnerPersonId == 0 && authData.Authority.HasAccess (new Access (authData.CurrentOrganization, AccessAspect.Administration))))
+                if (account.OwnerPersonId == authData.CurrentUser.Identity ||
+                    (account.OwnerPersonId == 0 && authData.Authority.HasAccess(new Access(authData.CurrentOrganization, AccessAspect.Administration))))
                 {
                     if (account.AccountType == FinancialAccountType.Cost)
                     {
@@ -83,6 +83,32 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             }
 
             return result;
+        }
+
+        [WebMethod]
+        public static int[] GetUninitializedBudgets()
+        {
+            AuthenticationData authData = GetAuthenticationDataAndCulture();
+
+            // This function finds the exceptional accounts that aren't initialized, to let a sysadmin approve expenses to them.
+
+            List<int> result = new List<int>();
+            FinancialAccounts accounts = FinancialAccounts.ForOrganization(authData.CurrentOrganization);
+
+            foreach (FinancialAccount account in accounts)
+            {
+                if (account.AccountType == FinancialAccountType.Cost)
+                {
+                    if (account.OwnerPersonId == 0 &&
+                        authData.Authority.HasAccess (new Access (authData.CurrentOrganization,
+                            AccessAspect.Administration)))
+                    {
+                        result.Add (account.Identity);
+                    }
+                }
+            }
+
+            return result.ToArray();
         }
 
         private void Localize()
@@ -99,6 +125,8 @@ namespace Swarmops.Frontend.Pages.v5.Financial
             this.LabelGridHeaderRequested.Text = Resources.Pages.Financial.AttestCosts_GridHeader_Requested;
 
             this.LiteralErrorInsufficientBudget.Text = JavascriptEscape (Resources.Pages.Financial.AttestCosts_OutOfBudget);
+            this.LiteralWarnUnintializedBudget.Text =
+                JavascriptEscape (Resources.Pages.Financial.AttestCosts_Warn_UninitializedBudget);
 
             this.LabelDescribeDeny.Text = Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionDeny;
             this.LabelDescribeCorrect.Text = String.Format (Resources.Pages.Financial.AttestCosts_Modal_DescribeOptionAmount, CurrentOrganization.Currency.DisplayCode);

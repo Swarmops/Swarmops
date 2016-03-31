@@ -32,6 +32,8 @@
             '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
         ]);
 
+        loadUninitializedBudgets(); // no need to wait for doc.ready
+
         $(document).ready(function () {
             $('#TableAttestableCosts').datagrid(
                 {
@@ -278,6 +280,12 @@
             budgetRemainingLookup[accountId] += funds;
             setAttestability();
 
+            if (budgetUninitializedLookup[accountId] == true && uninitializedPopupDisplayed == false) {
+                alertify.alert(decodeURIComponent('<asp:Literal id="LiteralWarnUnintializedBudget" runat="server" />'));
+                uninitializedPopupDisplayed = true;
+            }
+
+
             $.ajax({
                 type: "POST",
                 url: "/Pages/v5/Financial/AttestCosts.aspx/Attest",
@@ -327,6 +335,16 @@
             });
         }
 
+        function loadUninitializedBudgets() {
+            SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetUninitializedBudgets", {}, function(data) {
+                console.log(data);
+                data.forEach(function(accountData, dummy1, dummy2) {
+                    budgetUninitializedLookup[accountData] = true;
+                    // console.log("Rechecking budget " + accountData.AccountId + ": remaining is " + accountData.Remaining);
+                });
+            });
+        }
+
 
         function setAttestability() {
 
@@ -337,7 +355,7 @@
 
                 // console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
 
-                if (fundsInBudget >= amountRequested) {
+                if (fundsInBudget >= amountRequested || budgetUninitializedLookup[accountId] == true) {
                     // console.log("- removing insufficience marker");
                     $(this).removeClass("LocalFundsInsufficient");
                     if ($(this).attr("rel") != "loading") {
@@ -445,6 +463,8 @@
         var recordId = '';
         var accountId = 0;
         var budgetRemainingLookup = {};
+        var budgetUninitializedLookup = {};
+        var uninitializedPopupDisplayed = false;
 
         // The variable below is advisory for the UI - actual access control is done server-side
         var canOverdraftBudgets = <asp:Literal ID="LiteralCanOverdraftBudgets" runat="server" />;
