@@ -135,6 +135,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             result.ParticipantFinancials = org.ParticipantFinancialsEnabled;
             result.PaypalAccountAddress = org.PaypalAccountMailAddress;
 
+            result.OpenLedgersDomain = org.OpenLedgersDomain;
+            result.VanityDomain = org.VanityDomain;
+
             // TODO: Add all the other fields
 
             return result;
@@ -443,6 +446,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             public bool AccountsVat;
             public bool ParticipantFinancials;
             public string PaypalAccountAddress;
+
+            public string OpenLedgersDomain;
+            public string VanityDomain;
         }
     }
 }

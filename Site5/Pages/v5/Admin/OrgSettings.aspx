@@ -106,6 +106,9 @@
             if (orgSettings.AccountPaypal) {
                 $('.paypalAccountField').show();
             }
+
+            $('#<%=this.TextOpenLedgersDomain.ClientID%>_TextInput').val(orgSettings.OpenLedgersDomain);
+            $('#<%=this.TextVanityDomain.ClientID%>_TextInput').val(orgSettings.VanityDomain);
         }
 
         var suppressSwitchResponse = false;

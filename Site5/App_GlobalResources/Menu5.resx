@@ -417,4 +417,7 @@
   <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
     <value>Donate Funds</value>
   </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Budget vs Actual</value>
+  </data>
 </root>

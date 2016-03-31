@@ -32,7 +32,21 @@
             '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
         ]);
 
-        loadUninitializedBudgets(); // no need to wait for doc.ready
+        loadUninitializedBudgets(); // no need to wait for doc.ready to load operating params
+
+        SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
+            data.forEach(function(accountData, dummy1, dummy2) {
+                budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
+            });
+
+            if (budgetRemainingLookup.rowsLoaded == true) {
+                setAttestability();
+            }
+
+            budgetRemainingLookup.budgetsLoaded = true;
+        });
+
+        // Doc.ready:
 
         $(document).ready(function () {
             $('#TableAttestableCosts').datagrid(
@@ -247,18 +261,6 @@
                 $('div#radioOption' + pickedButtonName).slideDown();
             });
 
-
-            SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
-                data.forEach(function(accountData, dummy1, dummy2) {
-                    budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
-                });
-
-                if (budgetRemainingLookup.rowsLoaded == true) {
-                    setAttestability();
-                }
-
-                budgetRemainingLookup.budgetsLoaded = true;
-            });
 
             // If we're running with admin privileges, allow overdraft override
 
