@@ -15,15 +15,19 @@ namespace Swarmops.Logic.Swarm
         {
             DashboardTodos result = new DashboardTodos();
 
-            result.AddBitcoinChecks (authority);
+            if (authority.IsIdentified) // exclude OpenLedgers and other anon identities
+            {
 
-            result.AddExpenseClaimAttestations(authority);
-            result.AddCashAdvanceAttestations(authority);
-            //result.AddSalaryAttestations(person, organization);   TODO!
-            result.AddReceiptValidations(authority);
-            result.AddPayouts(authority);
+                result.AddBitcoinChecks (authority);
 
-            // TODO: Add any hooks
+                result.AddExpenseClaimAttestations (authority);
+                result.AddCashAdvanceAttestations (authority);
+                //result.AddSalaryAttestations(person, organization);   TODO!
+                result.AddReceiptValidations (authority);
+                result.AddPayouts (authority);
+
+                // TODO: Add any hooks
+            }
 
             return result;
         }
