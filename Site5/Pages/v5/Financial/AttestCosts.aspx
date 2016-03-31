@@ -161,6 +161,13 @@
                                 $(this).attr("rel", "loading");
                                 $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
                                 $("#IconApproved" + $(this).attr("baseid")).fadeTo(1000, 0.01);
+
+                                var baseid = $(this).attr("baseid");
+                                var accountId = $("#IconApproval" + baseid).attr("accountid");
+                                var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
+                                budgetRemainingLookup[accountId] -= funds;
+                                setAttestability();
+
                                 $.ajax({
                                     type: "POST",
                                     url: "/Pages/v5/Financial/AttestCosts.aspx/Deattest",
@@ -179,10 +186,6 @@
                                             $('.row' + baseid).animate({ color: "#000" }, 100);
                                             alertify.log(msg.d.DisplayMessage);
 
-                                            var accountId = $("#IconApproval" + baseid).attr("accountid");
-                                            var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
-                                            budgetRemainingLookup[accountId] -= funds;
-                                            setAttestability();
                                             recheckBudgets(); // will double-check budgets against server
                                         } else {
                                             $(this).attr("src", "/Images/Icons/iconshock-greentick-128x96px.png");
@@ -268,6 +271,13 @@
             $(approvalIcon).attr("rel", "loading");
             $(approvalIcon).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
             $("#IconDenial" + $(approvalIcon).attr("baseid")).fadeTo(1000, 0.01).css("cursor", "default");
+
+            var baseid = $(approvalIcon).attr("baseid");
+            var accountId = $("#IconApproval" + baseid).attr("accountid");
+            var funds = parseFloat($("#IconApproval" + baseid).attr("amount"));
+            budgetRemainingLookup[accountId] += funds;
+            setAttestability();
+
             $.ajax({
                 type: "POST",
                 url: "/Pages/v5/Financial/AttestCosts.aspx/Attest",
@@ -290,11 +300,6 @@
                         $('.row' + baseid).animate({ color: "#AAA" }, 400);
                         alertify.success(msg.d.DisplayMessage);
 
-                        var accountId = $(this).attr("accountid");
-                        var funds = parseFloat($(this).attr("amount"));
-                        budgetRemainingLookup[accountId] += funds;  // plus because the budget is negative
-                        setAttestability();
-
                         recheckBudgets(); // will double-check budgets against server
                     } else {
                         // failure, likely from attesting too quickly and overrunning budget
@@ -315,7 +320,7 @@
             SwarmopsJS.ajaxCall("/Pages/v5/Financial/AttestCosts.aspx/GetRemainingBudgets", {}, function(data) {
                 data.forEach(function(accountData, dummy1, dummy2) {
                     budgetRemainingLookup[accountData.AccountId] = accountData.Remaining;
-                    console.log("Rechecking budget " + accountData.AccountId + ": remaining is " + accountData.Remaining);
+                    // console.log("Rechecking budget " + accountData.AccountId + ": remaining is " + accountData.Remaining);
                 });
 
                 setAttestability();
@@ -330,15 +335,13 @@
                 var amountRequested = $(this).attr('amount');
                 var fundsInBudget = -budgetRemainingLookup[accountId];
 
-                console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
+                // console.log("attestability checking accountid " + accountId + ", amount requested is " + amountRequested + ", funds in budget is " + fundsInBudget);
 
                 if (fundsInBudget >= amountRequested) {
-                    console.log("- removing insufficience marker");
+                    // console.log("- removing insufficience marker");
                     $(this).removeClass("LocalFundsInsufficient");
                     if ($(this).attr("rel") != "loading") {
                         $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
-                    } else {
-                        $(this).attr("src", approvalOverdraftIcon);
                     }
                 }
                 else {
@@ -347,7 +350,7 @@
                     }
 
                     if (!$(this).hasClass("LocalFundsInsufficient")) {
-                        console.log("- adding insufficience marker");
+                        // console.log("- adding insufficience marker");
                         $(this).addClass("LocalFundsInsufficient");
                         if ($(this).attr("rel") != "loading") {
                             $(this).attr("src", approvalOverdraftIcon);
