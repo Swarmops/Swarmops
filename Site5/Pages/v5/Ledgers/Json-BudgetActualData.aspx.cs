@@ -9,6 +9,7 @@ public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base
 {
     private AuthenticationData _authenticationData;
     private int _year = 2012;
+    private int _yearProgressionMilli = 0;
 
     protected void Page_Load (object sender, EventArgs e)
     {
@@ -16,9 +17,11 @@ public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base
 
         this._authenticationData = GetAuthenticationDataAndCulture();
 
-        // Get current year
+        // Get current year and part of year
 
-        this._year = DateTime.Today.Year;
+        DateTime utcNow = DateTime.UtcNow;
+        this._year = utcNow.Year;
+        this._yearProgressionMilli = utcNow.DayOfYear*1000/365; // Ignore leap years
 
         string yearParameter = Request.QueryString["Year"];
 
@@ -69,6 +72,8 @@ public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base
 
         result += string.Format(CultureInfo.CurrentCulture, ",\"yearActual\":\"{0:N0}\"", (double)totals.ThisYear / -100.0);
 
+        result += string.Format(CultureInfo.CurrentCulture, ",\"yearExpected\":\"{0:N0}\"", (double)totals.ThisYearBudget / 100.0 * _yearProgressionMilli / 1000);
+
         return "{" + result + "}";
     }
 
@@ -94,6 +99,10 @@ public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base
                 element += ",\"yearActual\":" +
                            JsonDualString (line.AccountId, line.AccountTreeValues.ThisYear, line.AccountValues.ThisYear);
 
+                element += ",\"yearExpected\":" +
+                    JsonDualString(line.AccountId, -line.AccountTreeValues.ThisYearBudget * _yearProgressionMilli / 1000, -line.AccountValues.ThisYearBudget * _yearProgressionMilli / 1000);
+
+
 
                 element += ",\"state\":\"closed\",\"children\":" + RecurseReport (line.Children);
             }
@@ -107,6 +116,10 @@ public partial class Pages_v5_Ledgers_Json_BudgetActualData : DataV5Base
 
                 element += string.Format (CultureInfo.CurrentCulture, ",\"yearActual\":\"{0:N0}\"",
                     (double) line.AccountValues.ThisYear/-100.0);
+
+                element += string.Format(CultureInfo.CurrentCulture, ",\"yearExpected\":\"{0:N0}\"",
+                    (double)line.AccountValues.ThisYearBudget / 100.0 * _yearProgressionMilli / 1000);
+
             }
 
             elements.Add ("{" + element + "}");

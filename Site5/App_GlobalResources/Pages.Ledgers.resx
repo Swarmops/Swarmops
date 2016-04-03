@@ -735,6 +735,10 @@
   <data name="BudgetActual_ContentHeader" xml:space="preserve">
     <value>Budget vs Actual</value>
   </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>Expected YTD</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
   <data name="BudgetActual_Info" xml:space="preserve">
     <value>This page displays the budgeted breakdown compared to a breakdown of the actual outcome so far.</value>
   </data>
