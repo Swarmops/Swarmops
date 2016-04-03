@@ -32,15 +32,17 @@
                     {
                         $('span.previousYearsHeader').hide();
                         $('span.currentYearHeader').show();
+                        $('#tableBudgetActual').treegrid('showColumn', 'yearExpected');
                     }
                     else
                     {
                         $('#previousLastActual').text(actualLoc + ' ' + (selectedYear - 1));
                         $('#previousBudget').text(budgetLoc + ' ' + selectedYear);
-                        $('#previousYtd').text(actualLoc + ' ' + selectedYear);
+                        $('#previousActual').text(actualLoc + ' ' + selectedYear);
 
                         $('span.currentYearHeader').hide();
                         $('span.previousYearsHeader').show();
+                        $('#tableBudgetActual').treegrid('hideColumn', 'yearExpected');
                     }
 	            }
 	        });
@@ -88,9 +90,10 @@
         <tr>  
             <th field="name" width="178"><asp:Literal ID="LiteralHeaderAccountName" runat="server"/></th>  
             <th field="lastYearActual" width="80" align="right"><span class="previousYearsHeader" id="previousLastActual" style="display:none"></span><span class="currentYearHeader" style="display:none"><asp:Literal ID="LiteralHeaderLastYearActual" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
-            <th field="yearBudget" width="80" align="right"><span class="previousYearsHeader" id="previousBudget" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentQ1"><asp:Literal ID="LiteralHeaderBudget" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-            <th field="yearActual" width="80" align="right"><span class="previousYearsHeader" id="previousYtd" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentQ2"><asp:Literal ID="LiteralHeaderActual" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-            <th field="flags" width="40" align="right"><span class="allYearsHeader" style="display:none" id="currentFlags"><asp:Literal ID="LiteralHeaderFlags" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+            <th field="yearBudget" width="80" align="right"><span class="previousYearsHeader" id="previousBudget" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentBudget"><asp:Literal ID="LiteralHeaderBudget" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+            <th field="yearActual" width="80" align="right"><span class="previousYearsHeader" id="previousActual" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentActual"><asp:Literal ID="LiteralHeaderActual" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+            <th field="yearExpected" width="80" align="right"><span class="previousYearsHeader" id="previousNeverShowing" style="display:none"></span><span class="currentYearHeader" style="display:none" id="currentExpected"><asp:Literal ID="LiteralHeaderExpected" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+            <th field="flags" width="40" align="center"><span class="allYearsHeader" style="display:none" id="currentFlags"><asp:Literal ID="LiteralHeaderFlags" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
         </tr>  
     </thead>  
 </table> 
@@ -98,16 +101,7 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolderSide" Runat="Server">
-    <h2 class="blue"><asp:Label ID="LabelSidebarDownload" Text="Download This" runat="server" /><span class="arrow"></span></h2>
-    
-    <div class="box">
-        <div class="content">
-            <div class="link-row-encaps" id="linkDownloadReport" onclick="document.location='placeholder';" >
-                <div class="link-row-icon" style="background-image:url('/Images/Icons/iconshock-downarrow-16px.png');background-position:-1px -1px"></div>
-                <span id="spanDownloadText">ProfitLossxxxx-yyyymmdd.csv</span>
-            </div>
-        </div>
-    </div>
+
 
 </asp:Content>
 

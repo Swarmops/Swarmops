@@ -56,6 +56,7 @@ public partial class Pages_v5_Ledgers_BudgetActual : PageV5Base
         this.LiteralHeaderLastYearActual.Text = Global.Financial_Actuals + @" " + (year - 1).ToString(CultureInfo.InvariantCulture);
         this.LiteralHeaderBudget.Text = Global.Financial_Budget + @" " + year.ToString(CultureInfo.InvariantCulture); ;
         this.LiteralHeaderActual.Text = Global.Financial_Actuals + @" " + Global.Financial_YTD;
+        this.LiteralHeaderExpected.Text = Ledgers.BudgetActual_ExpectedYtd;
         this.LiteralActual.Text = Global.Financial_Actuals;
         this.LiteralBudget.Text = Global.Financial_Budget;
         this.LiteralHeaderAccountName.Text = Ledgers.ProfitLossStatement_AccountName;
