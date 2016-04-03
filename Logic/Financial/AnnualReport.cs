@@ -150,6 +150,7 @@ namespace Swarmops.Logic.Financial
                     }
 
                     aggregateLine.AccountTreeValues.ThisYear += reportLine.AccountTreeValues.ThisYear;
+                    aggregateLine.AccountTreeValues.ThisYearBudget += reportLine.AccountTreeValues.ThisYearBudget;
                 }
             }
 
@@ -162,7 +163,8 @@ namespace Swarmops.Logic.Financial
             this.Totals = new AnnualReportNode();
 
             this.Totals.PreviousYear = PopulateOneTotal (this._singleLookups[0]);
-            this.Totals.ThisYear = PopulateOneTotal (this._singleLookups[5]);
+            this.Totals.ThisYear = PopulateOneTotal(this._singleLookups[5]);
+            this.Totals.ThisYearBudget = PopulateOneTotal(this._singleLookups[6]);
 
             for (int quarter = 0; quarter < 4; quarter++)
             {
@@ -186,8 +188,8 @@ namespace Swarmops.Logic.Financial
                 newLine.AccountId = account.Identity;
                 newLine.AccountName = account.Name;
                 newLine.AccountType = account.AccountType;
-                newLine.AccountValues = CreateYearlyReportNode (account.Identity, this._singleLookups);
-                newLine.AccountTreeValues = CreateYearlyReportNode (account.Identity, this._treeLookups);
+                newLine.AccountValues = CreateAnnualReportNode (account.Identity, this._singleLookups);
+                newLine.AccountTreeValues = CreateAnnualReportNode (account.Identity, this._treeLookups);
 
                 if (this._treeMap.ContainsKey (account.Identity))
                 {
@@ -199,7 +201,7 @@ namespace Swarmops.Logic.Financial
         }
 
 
-        private AnnualReportNode CreateYearlyReportNode (int accountId, Dictionary<int, Int64>[] lookup)
+        private AnnualReportNode CreateAnnualReportNode (int accountId, Dictionary<int, Int64>[] lookup)
         {
             AnnualReportNode node = new AnnualReportNode();
             node.PreviousYear = lookup[0][accountId];
@@ -210,6 +212,7 @@ namespace Swarmops.Logic.Financial
             }
 
             node.ThisYear = lookup[5][accountId];
+            node.ThisYearBudget = lookup[6][accountId];
             return node;
         }
 
@@ -230,10 +233,12 @@ namespace Swarmops.Logic.Financial
 
         private void PopulateLookups (FinancialAccounts accounts)
         {
-            this._singleLookups = new Dictionary<int, Int64>[6];
-            this._treeLookups = new Dictionary<int, Int64>[6];
+            // Seven elements in each array: lastyear, q1, q2, q3, q4, thisyear, thisyearbudget
 
-            for (int index = 0; index < 6; index++)
+            this._singleLookups = new Dictionary<int, Int64>[7];
+            this._treeLookups = new Dictionary<int, Int64>[7];
+
+            for (int index = 0; index < 7; index++)
             {
                 this._treeLookups[index] = new Dictionary<int, Int64>();
                 this._singleLookups[index] = new Dictionary<int, Int64>();
@@ -252,6 +257,17 @@ namespace Swarmops.Logic.Financial
 
             foreach (FinancialAccount account in accounts)
             {
+                // If result account, find budget
+
+                if (this._accountType == FinancialAccountType.Result)
+                {
+                    this._singleLookups[6][account.Identity] = account.GetBudgetCents (this.Year);
+                }
+                else
+                {
+                    this._singleLookups[6][account.Identity] = 0; // if balance account, this is zero
+                }
+
                 // Find this year's inbound
 
                 if (this._accountType == FinancialAccountType.Result)
@@ -300,7 +316,7 @@ namespace Swarmops.Logic.Financial
 
                 // copy to treeLookups
 
-                for (int index = 0; index < 6; index++)
+                for (int index = 0; index < 7; index++)
                 {
                     this._treeLookups[index][account.Identity] = this._singleLookups[index][account.Identity];
                 }
@@ -308,7 +324,7 @@ namespace Swarmops.Logic.Financial
 
             // 3) Add all children's values to parents
 
-            for (int index = 0; index < 6; index++)
+            for (int index = 0; index < 7; index++)
             {
                 AddChildrenValuesToParents (this._treeLookups[index], accounts);
             }
@@ -360,6 +376,7 @@ namespace Swarmops.Logic.Financial
         public Int64 PreviousYear;
         public Int64[] Quarters;
         public Int64 ThisYear;
+        public Int64 ThisYearBudget;
 
         public AnnualReportNode()
         {

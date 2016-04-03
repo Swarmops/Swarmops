@@ -28,7 +28,7 @@
               <UserLevel>0</UserLevel>
               <Permissions />
               <ImageUrl />
-              <NavigateUrl>/Pages/v5/Ledgers/BudgetVsActual.aspx</NavigateUrl>
+              <NavigateUrl>/Pages/v5/Ledgers/BudgetActual.aspx</NavigateUrl>
               <Type>Link</Type>
               <Children />
             </MainMenuItem>
