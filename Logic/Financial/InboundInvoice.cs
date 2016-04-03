@@ -201,6 +201,11 @@ namespace Swarmops.Logic.Financial
                 new InboundInvoiceCreatedLogEntry (creatingPerson, supplier, description, amountCents/100.0, budget),
                 newInvoice);
 
+            // Clear a cache
+            FinancialAccount.ClearAttestationAdjustmentsCache(organization);
+
+
+
             return newInvoice;
         }
 

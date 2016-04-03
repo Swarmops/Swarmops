@@ -279,6 +279,9 @@
     <value>Salary #{0:N0} for {1} was DE-attested. It will not be paid out unless attested again.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
+    <value>&lt;strong&gt;WARNING: UNINITIALIZED BUDGET&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;The cost you're approving belongs to an uninitialized budget -- an account in the ledger that lacks owner and doesn't have a set budget allowance for the year. Consider visiting the Account Plan and allocating budgets for the expected revenue and expenses.&lt;br/&gt;&lt;br/&gt;This message will only display once per visit to Attestations.&lt;br/&gt;</value>
+  </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Invoice amount (in {0})</value>
     <comment>{0} is the organization's main currency.</comment>

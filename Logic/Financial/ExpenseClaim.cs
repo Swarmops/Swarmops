@@ -78,6 +78,9 @@ namespace Swarmops.Logic.Financial
                 new ExpenseClaimFiledLogEntry (claimer /*filing person*/, claimer /*beneficiary*/, amountCents/100.0,
                     budget, description), newClaim);
 
+            // Clear a cache
+            FinancialAccount.ClearAttestationAdjustmentsCache(organization);
+
             return newClaim;
         }
 

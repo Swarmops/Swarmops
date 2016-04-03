@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Swarmops.Basic.Types.Financial;
 using Swarmops.Common.Enums;
 using Swarmops.Common.Generics;
@@ -457,8 +458,13 @@ namespace Swarmops.Logic.Financial
             return SwarmDb.GetDatabaseForReading().GetFinancialAccountBudget (Identity, year);
         }
 
-        public Int64 GetBudgetCents (int year)
+        public Int64 GetBudgetCents (int year = -1)
         {
+            if (year == -1)
+            {
+                year = DateTime.UtcNow.Year;
+            }
+
             return (Int64) (SwarmDb.GetDatabaseForReading().GetFinancialAccountBudget (Identity, year)*100);
         }
 
@@ -484,6 +490,7 @@ namespace Swarmops.Logic.Financial
             SwarmDb.GetDatabaseForWriting().SetFinancialAccountBudgetMonthly (Identity, year, month, amountCents);
         }
 
+
         public static FinancialAccount Create (Organization organization, string newAccountName,
             FinancialAccountType accountType, FinancialAccount parentAccount)
         {
@@ -502,6 +509,135 @@ namespace Swarmops.Logic.Financial
         public FinancialAccounts ThisAndBelow()
         {
             return FinancialAccounts.ThisAndBelow (this);
+        }
+
+
+        static private Dictionary<int, Dictionary<int, Int64>> _organizationBudgetAttestationSpaceLookup =
+            new Dictionary<int, Dictionary<int, long>>();
+
+        public static Dictionary<int, Int64> GetBudgetAttestationSpaceAdjustments(Organization organization)
+        {
+            // This function returns a dictionary for the cents that are either accounted for but not attested,
+            // or attested but accounted for, to be used to understand how much is really left in budget
+
+            // Positive adjustment means more [cost] budget available, negative less [cost] budget available
+
+            if (_organizationBudgetAttestationSpaceLookup.ContainsKey (organization.Identity))
+            {
+                return _organizationBudgetAttestationSpaceLookup [organization.Identity];
+            }
+
+            // TODO: This is expensive research, we should cache this result and clear cache on any attestation or create op
+
+            Dictionary<int, Int64> result = new Dictionary<int, long>();
+
+            // Cash advances are accounted for when paid out. Make sure they count toward the budget when attested.
+
+            CashAdvances advances = CashAdvances.ForOrganization(organization);
+            foreach (CashAdvance advance in advances)
+            {
+                if (!result.ContainsKey(advance.BudgetId))
+                {
+                    result[advance.BudgetId] = 0;
+                }
+
+                if (advance.Attested)
+                {
+                    result[advance.BudgetId] -= advance.AmountCents;
+                }
+            }
+
+            // Expense claims, Inbound invoices, and Salaries are accounted for when filed. Make sure they DON'T
+            // count toward the budget while they are NOT attested.
+
+            ExpenseClaims claims = ExpenseClaims.ForOrganization(organization); // gets all open claims
+            foreach (ExpenseClaim claim in claims)
+            {
+                if (!result.ContainsKey(claim.BudgetId))
+                {
+                    result[claim.BudgetId] = 0;
+                }
+
+                if (!claim.Attested)
+                {
+                    result[claim.BudgetId] += claim.AmountCents;
+                }
+            }
+
+            InboundInvoices invoices = InboundInvoices.ForOrganization(organization);
+            foreach (InboundInvoice invoice in invoices)
+            {
+                if (!result.ContainsKey(invoice.BudgetId))
+                {
+                    result[invoice.BudgetId] = 0;
+                }
+
+                if (!invoice.Attested)
+                {
+                    result[invoice.BudgetId] += invoice.AmountCents;
+                }
+            }
+
+            Salaries salaries = Salaries.ForOrganization(organization);
+            foreach (Salary salary in salaries)
+            {
+                if (!result.ContainsKey(salary.PayrollItem.BudgetId))
+                {
+                    result[salary.PayrollItem.BudgetId] = 0;
+                }
+
+                if (!salary.Attested)
+                {
+                    result[salary.PayrollItem.BudgetId] += (salary.GrossSalaryCents + salary.AdditiveTaxCents);
+                }
+            }
+
+            _organizationBudgetAttestationSpaceLookup[organization.Identity] = result;
+
+            return result;
+        }
+
+        public static void ClearAttestationAdjustmentsCache (Organization organization)
+        {
+            if (_organizationBudgetAttestationSpaceLookup.ContainsKey (organization.Identity))
+            {
+                _organizationBudgetAttestationSpaceLookup.Remove (organization.Identity);
+            }
+        }
+
+
+
+        public Int64 GetBudgetCentsRemaining(int year = -1)
+        {
+            if (year == -1)
+            {
+                year = DateTime.UtcNow.Year;
+            }
+
+            if (this.AccountType != FinancialAccountType.Cost)
+            {
+                throw new NotImplementedException("The behavior of this function is undefined for revenue accounts");
+            }
+
+            Int64 deltaCentsYear = this.GetDeltaCents(new DateTime(year, 1, 1),
+                new DateTime(year + 1, 1, 1));
+            Int64 budgetYear = this.GetBudgetCents(year);
+
+            Dictionary<int, Int64> adjustments = GetBudgetAttestationSpaceAdjustments (this.Organization);
+
+            Int64 result = budgetYear; // start with the initial (negative) budget for a cost account
+            result += deltaCentsYear; // if money spent, that's a positive number in bookkeeping, and so should reduce neg number
+                                      // (bring it closer to zero). If result goes positive here, budget is overdrafted.
+
+            if (adjustments.ContainsKey (this.Identity))
+            {
+                // A positive adjustment means more available in the budget. As the (cost) budget is negative, we should reduce
+                // by this number.
+
+                result -= adjustments[this.Identity];
+            }
+
+            return result;
         }
     }
 }

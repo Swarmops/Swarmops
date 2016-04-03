@@ -732,4 +732,14 @@
     <value>Payout #{0:N0}, {5} (expected {1:yyyy-MMM-dd}) for {2}: {3} {4:N2}</value>
     <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
   </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>Budget vs Actual</value>
+  </data>
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>This page displays the budgeted breakdown compared to a breakdown of the actual outcome so far.</value>
+  </data>
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>Budget vs Actual</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
 </root>

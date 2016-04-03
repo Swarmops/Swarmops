@@ -302,6 +302,17 @@
         <Children>
 
             <MainMenuItem>
+                <ResourceKey>Ledgers_BudgetVsActual</ResourceKey>
+                <UserLevel>0</UserLevel>
+                <Permissions />
+                <ImageUrl>iconshock-abacus</ImageUrl>
+                <NavigateUrl>/Pages/v5/Ledgers/BudgetActual.aspx</NavigateUrl>
+                <Type>Link</Type>
+                <Children />
+            </MainMenuItem>
+
+          
+            <MainMenuItem>
                 <ResourceKey>Ledgers_LiquidityForecast</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />

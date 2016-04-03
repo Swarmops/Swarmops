@@ -5,22 +5,32 @@
   
             <MainMenuItem>
                 <ResourceKey>Ledgers_BalanceSheet</ResourceKey>
-                <UserLevel>3</UserLevel>
+                <UserLevel>0</UserLevel>
                 <Permissions />
                 <ImageUrl />
                 <NavigateUrl>/Pages/v5/Ledgers/BalanceSheet.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
-          
+
             <MainMenuItem>
-                <ResourceKey>Ledgers_ProfitLossStatement</ResourceKey>
-                <UserLevel>3</UserLevel>
-                <Permissions />
-                <ImageUrl />
-                <NavigateUrl>/Pages/v5/Ledgers/ProfitLossStatement.aspx</NavigateUrl>
-                <Type>Link</Type>
-                <Children />
+              <ResourceKey>Ledgers_ProfitLossStatement</ResourceKey>
+              <UserLevel>0</UserLevel>
+              <Permissions />
+              <ImageUrl />
+              <NavigateUrl>/Pages/v5/Ledgers/ProfitLossStatement.aspx</NavigateUrl>
+              <Type>Link</Type>
+              <Children />
+            </MainMenuItem>
+
+            <MainMenuItem>
+              <ResourceKey>Ledgers_BudgetVsActual</ResourceKey>
+              <UserLevel>0</UserLevel>
+              <Permissions />
+              <ImageUrl />
+              <NavigateUrl>/Pages/v5/Ledgers/BudgetActual.aspx</NavigateUrl>
+              <Type>Link</Type>
+              <Children />
             </MainMenuItem>
 
             <MainMenuItem>

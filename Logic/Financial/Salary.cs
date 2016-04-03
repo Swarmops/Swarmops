@@ -287,6 +287,11 @@ namespace Swarmops.Logic.Financial
                 salary.TaxPaid = true;
             }
 
+            // Clear a cache
+            FinancialAccount.ClearAttestationAdjustmentsCache(payrollItem.Organization);
+
+
+
             return salary;
         }
 

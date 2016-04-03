@@ -178,7 +178,10 @@ namespace Swarmops.Logic.Security
 
         private readonly AuthorityData _data;
 
-
+        public bool IsIdentified
+        {
+            get { return (_data.PersonId > 0); }
+        }
 
         /// <summary>
         /// Determines if this Authority has a particular Access.
