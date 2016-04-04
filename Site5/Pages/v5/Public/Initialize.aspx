@@ -335,7 +335,7 @@
 
 	        $.ajax({
 	            type: "POST",
-	            url: "/Pages/v5/Public/Initialize.aspx/BeginTestThreads1",  // TODO: Remove the 1
+	            url: "/Pages/v5/Public/Initialize.aspx/BeginTestThreads",
 	            data: "{}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
