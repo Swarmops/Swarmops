@@ -758,7 +758,7 @@
   			        <div id="step-5" style="display:none">
                         <h2>All done - ready to login</h2>	
                         <p>Your Swarmops installation is ready! Press Finish to log in as your new user and start using it.</p>
-                        <div style="display:none"><asp:Button runat="server" ID="ButtonLogin" OnClick="ButtonLogin_Click" Text="This button is invisible."/></div>
+                        <div style="display:none"><asp:Button UseSubmitBehavior="false" runat="server" ID="ButtonLogin" OnClick="ButtonLogin_Click" Text="This button is invisible."/></div>
                     </div>
       		    </div>
 
