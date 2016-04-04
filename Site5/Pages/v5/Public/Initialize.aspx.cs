@@ -127,7 +127,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
         public static void TestServerThreading()
         {
             Thread.Sleep (500); // sleep for half a second
-            // _testThreadsWork = true; // if we get here, we can spawn background threads on server
+            _testThreadsWork = true; // if we get here, we can spawn background threads on server
         }
 
 
