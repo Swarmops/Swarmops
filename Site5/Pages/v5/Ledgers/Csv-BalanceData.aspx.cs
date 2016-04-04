@@ -4,6 +4,7 @@ using System.Globalization;
 using Resources.Pages;
 using Swarmops.Common.Enums;
 using Swarmops.Logic.Financial;
+using Swarmops.Logic.Structure;
 
 public partial class Pages_v5_Ledgers_Csv_BalanceData : DataV5Base
 {
@@ -28,7 +29,7 @@ public partial class Pages_v5_Ledgers_Csv_BalanceData : DataV5Base
         Response.ClearHeaders();
         Response.ContentType = "text/plain";
         Response.AppendHeader ("Content-Disposition",
-            "attachment;filename=" + Ledgers.BalanceSheet_DownloadFileName +
+            "attachment;filename=" + CurrentOrganization.Name.Replace (" ","") + "-" + Ledgers.BalanceSheet_DownloadFileName +
             this._year.ToString (CultureInfo.InvariantCulture) + "-" + DateTime.Today.ToString ("yyyyMMdd") + ".csv");
 
         Response.Output.WriteLine ("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"",

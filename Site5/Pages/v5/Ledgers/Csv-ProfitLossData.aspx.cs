@@ -28,7 +28,7 @@ public partial class Pages_v5_Ledgers_Csv_ProfitLossData : DataV5Base
         Response.ClearHeaders();
         Response.ContentType = "text/plain";
         Response.AppendHeader ("Content-Disposition",
-            "attachment;filename=" + Ledgers.ProfitLossStatement_DownloadFileName +
+            "attachment;filename=" + CurrentOrganization.Name.Replace(" ", "") + "-" + Ledgers.ProfitLossStatement_DownloadFileName +
             this._year.ToString (CultureInfo.InvariantCulture) + "-" + DateTime.Today.ToString ("yyyyMMdd") + ".csv");
 
         if (this._year == DateTime.Today.Year)
