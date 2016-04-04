@@ -326,10 +326,47 @@
 	            return isValid;
 	        }
 
-	        // Start by disabling Finish
+	        // Disable Finish and Next
 
 	        $('a.buttonFinish').addClass("buttonDisabled");
+	        DisableNext();
 
+	        // Run threading tests
+
+	        $.ajax({
+	            type: "POST",
+	            url: "/Pages/v5/Public/Initialize.aspx/BeginTestThreads1",  // TODO: Remove the 1
+	            data: "{}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function () {
+	                setTimeout(function() {
+	                    $.ajax({
+	                        type: "POST",
+	                        url: "/Pages/v5/Public/Initialize.aspx/CheckThreadsWork",
+	                        data: "{}",
+	                        contentType: "application/json; charset=utf-8",
+	                        dataType: "json",
+	                        success: function(msg) {
+	                            if (msg.d) {
+	                                $('#DivStep1Diagnostics').fadeOut(200, 'swing', function() {
+	                                    $('#DivStep1TestSuccess').fadeIn(200);
+	                                    EnableNext();
+	                                });
+	                            } else {
+	                                $('#DivStep1Diagnostics').fadeOut(200, 'swing', function() {
+	                                    $('#DivStep1FaultThreading').fadeIn(200);
+	                                });
+	                            }
+	                        }
+	                    });
+
+	                }, 2000);
+	            },
+	            error: function() {
+	                $('#DivStep1Diagnostics').fadeOut(200, 'swing', function () { $('#DivStep1FaultAjax').fadeIn(200); });
+	            }
+	        });
 	    });  // end of document.ready
 
 	    var disableNext = false;
@@ -584,21 +621,36 @@
                         </span>                   
                     </a></li>
   			        </ul>
-  			        <div id="step-1">	
-                        <h2>Welcome to Swarmops</h2>
-                        <p>Congratulations! Since you're reading this, you have successfully installed the Swarmops packages and set up an Apache virtual server using mod_mono.</p>
-
-  			            <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Swarmops installation. To cross that bridge, answer these three simple questions:</p> <asp:Label runat="server" ID="LabelTest" />
-                        
-                        <div class="entryLabelsAdmin" style="width:250px">
-                            What is this server's /etc/hostname?<br />
-  			                What is this server's internal IP?<br />
-                            What is your favorite color?
+  			        <div id="step-1">
+  			            <div id="DivStep1Diagnostics"><h2>Testing configuration...</h2>
+  			                <p>Swarmops is making a few test calls to your server to check its configuration. Please wait a few seconds.</p>
+  			            </div>
+                        <div id="DivStep1FaultAjax" style="display:none"><h2>Ajax Malfunction</h2>
+                            <p><strong>We can't call our pages using Ajax.</strong> Swarmops depends completely on continuous asynchronous communication with the web server, using JavaScript asynchronous calls and C# WebMethods, and you have some sort of special configuration that aren't letting these through.</p>
+                            <p>Swarmops is built and tested for a stock Apache on a stock Debian/Ubuntu. While many other configurations work, we're sorry to say we cannot possibly support all conceivable alternate server-side configurations but need to focus on the mainline user experience and functionality.</p>
+                            <p>Please retry the installation with a stock Apache.</p>
                         </div>
-                        <div class="entryFieldsAdmin">
-                            <asp:TextBox CssClass="textinput" ID="TextServerName" runat="server" />&nbsp;<br />
-                            <asp:TextBox CssClass="textinput"  ID="TextServerAddress" runat="server" />&nbsp;<br />
-                            <asp:DropDownList ID="DropFavoriteColor" runat="server" />&nbsp;<br />
+                        <div id="DivStep1FaultThreading" style="display:none"><h2>Threading Malfunction</h2>
+                            <p><strong>We can't run background threads on the server.</strong> Swarmops depends completely on continuous asynchronous communication with the web server, using JavaScript asynchronous calls and C# WebMethods. Sometimes, these calls start server-side asynchronous threads 
+                                to continue processing while the call is technically returned to the client. Your configuration does not allow such server-side threads to be spawned.</p>
+                            <p>Swarmops is built and tested for a stock Apache on a stock Debian/Ubuntu. While many other configurations work, we're sorry to say we cannot possibly support all conceivable alternate server-side configurations but need to focus on the mainline user experience and functionality.</p>
+                            <p>Please retry the installation with a stock Apache.</p>
+                        </div>
+                        <div id="DivStep1TestSuccess" style="display:none"><h2>Welcome to Swarmops</h2>
+                            <p>Congratulations! Since you're reading this, you have successfully installed the Swarmops packages and set up an Apache virtual server using mod_mono.</p>
+
+  			                <p>However, before we proceed, we need to make sure that you are indeed the sysadmin of this server, and not a remote bot who just discovered an unfinished Swarmops installation. To cross that bridge, answer these three simple questions:</p> <asp:Label runat="server" ID="Label1" />
+                        
+                            <div class="entryLabelsAdmin" style="width:250px">
+                                What is this server's /etc/hostname?<br />
+  			                    What is this server's internal IP?<br />
+                                What is your favorite color?
+                            </div>
+                            <div class="entryFieldsAdmin">
+                                <asp:TextBox CssClass="textinput" ID="TextServerName" runat="server" />&nbsp;<br />
+                                <asp:TextBox CssClass="textinput"  ID="TextServerAddress" runat="server" />&nbsp;<br />
+                                <asp:DropDownList ID="DropFavoriteColor" runat="server" />&nbsp;<br />
+                            </div>
                         </div>
                     </div>
   			        <div id="step-2">
