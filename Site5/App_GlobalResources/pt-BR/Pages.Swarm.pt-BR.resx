@@ -126,6 +126,10 @@
   
   
   
+  <data name="AddPerson_StatisticalData" xml:space="preserve">
+    <value>Dados Estatísticos</value>
+    <comment>Header for gender, date of birth</comment>
+  </data>
   
   
   
@@ -137,8 +141,10 @@
   
   
   
-  
-  
+  <data name="LocalOrganization_PageTitle" xml:space="preserve">
+    <value>Minha Organização Local</value>
+    <comment>The {0} is the geography name.</comment>
+  </data>
   
   
 </root>

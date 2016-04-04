@@ -129,6 +129,10 @@
   
   
   
+  <data name="AddMotion_Submitter" xml:space="preserve">
+    <value>Autor</value>
+    <comment>Original submitter (not person at keyboard)</comment>
+  </data>
   
   
   
@@ -137,6 +141,9 @@
   
   
   
+  <data name="ListMotions_Grid_Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
   
   
   
@@ -160,19 +167,40 @@
   
   
   
+  <data name="VoteAmendments_Grid_No" xml:space="preserve">
+    <value>Não</value>
+    <comment>Column header</comment>
+  </data>
   
   
+  <data name="VoteAmendments_Grid_Text" xml:space="preserve">
+    <value>Texto</value>
+    <comment>Row header</comment>
+  </data>
+  <data name="VoteAmendments_Grid_TitleText" xml:space="preserve">
+    <value>Texto / Título</value>
+    <comment>Column header</comment>
+  </data>
   
   
   
   
   
+  <data name="VoteAmendments_Recommend_No" xml:space="preserve">
+    <value>NÃO</value>
+  </data>
+  <data name="VoteAmendments_Recommend_Yes" xml:space="preserve">
+    <value>SIM</value>
+  </data>
   
   
   
   
   
   
+  <data name="Vote_MeetingElections" xml:space="preserve">
+    <value>Eleições</value>
+  </data>
   
   
   
@@ -184,14 +212,9 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="VoteAmendments_SaveVote" xml:space="preserve">
+    <value>Terminei, Apresentar Meu Voto</value>
+    <comment>Button at end of page</comment>
+  </data>
   
 </root>

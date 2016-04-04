@@ -711,4 +711,12 @@
   <data name="Global_WizardPrevious" xml:space="preserve">
     <value>Bakåt</value>
   </data>
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>Hittills</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>Flaggor</value>
+    <comment>As in a table column header</comment>
+  </data>
 </root>

@@ -215,6 +215,7 @@
   
   
   
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Beløp</value>
     <comment>Amount to be paid out</comment>

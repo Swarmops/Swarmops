@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <data name="AccountPlan_Info" xml:space="preserve">
+    <value>Esta é a vista geral das contas financeiras no seu livro de contabilidade. Pode fazer alguma manutenção através desta página, mesmo que a maioria das operações diárias devam estar delegadas aos responsáveis dos orçamentos.</value>
+  </data>
+  <data name="AccountPlan_PageTitle" xml:space="preserve">
+    <value>Plano de Contas</value>
+  </data>
+  <data name="BalanceSheet_AccountName" xml:space="preserve">
+    <value>Conta</value>
+  </data>
+  <data name="BalanceSheet_ContentHeader" xml:space="preserve">
+    <value>Balanço Financeiro de {0},</value>
+    <comment>{0} is the organization name. The year follows immediately, so keep ending comma.</comment>
+  </data>
+  <data name="BalanceSheet_Current" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="BalanceSheet_DownloadFileName" xml:space="preserve">
+    <value>Balanço Financeiro</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  
+  <data name="BalanceSheet_Info" xml:space="preserve">
+    <value>O Balanço Financeiro é uma visão geral dos activos e passivos num determinado instante, e é utilizado para ver como os resultados afetam a saúde financeira global da organização. Pode também querer dar uma olhada à &lt;a href="ProfitLossStatement"&gt;declaração de lucros e perdas&lt;/a&gt;, que é a vista geral de receitas e despesas.</value>
+  </data>
+  <data name="BalanceSheet_PageTitle" xml:space="preserve">
+    <value>Balanço Financeiro</value>
+  </data>
+  <data name="BalanceSheet_Q1" xml:space="preserve">
+    <value>Diferença 1ºT</value>
+  </data>
+  <data name="BalanceSheet_Q2" xml:space="preserve">
+    <value>Diferença 2ºT</value>
+  </data>
+  <data name="BalanceSheet_Q3" xml:space="preserve">
+    <value>Diferença 3ºT</value>
+  </data>
+  <data name="BalanceSheet_Q4" xml:space="preserve">
+    <value>Diferença 4ºT</value>
+  </data>
+  <data name="BalanceSheet_StartYear" xml:space="preserve">
+    <value>Início-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
+  <data name="ProfitLossStatement_AccountName" xml:space="preserve">
+    <value>Conta</value>
+  </data>
+  <data name="ProfitLossStatement_ContentHeader" xml:space="preserve">
+    <value>Lucros &amp; Perdas de {0} em</value>
+    <comment>The {0} is the organization name. The year number follows this string.</comment>
+  </data>
+  <data name="ProfitLossStatement_DownloadFileName" xml:space="preserve">
+    <value>LucrosPerdas</value>
+    <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
+  </data>
+  <data name="ProfitLossStatement_Info" xml:space="preserve">
+    <value>Os L&amp;P oferecem uma visão geral das receitas e despesas, as quais são agrupadas por orçamentos ou tipo de receita/despesa. A soma de todas as receitas e despesas é o resultado anual. Pode também querer visualizar o &lt;a href="BalanceSheet"&gt;balanço financeiro&lt;/a&gt;, o qual oferece uma vista geral dos activos e passivos.</value>
+  </data>
+  <data name="ProfitLossStatement_LastYear" xml:space="preserve">
+    <value>Ano Anterior</value>
+  </data>
+  <data name="ProfitLossStatement_PageTitle" xml:space="preserve">
+    <value>Declaração de Lucros &amp; Perdas</value>
+  </data>
+  <data name="ProfitLossStatement_Results" xml:space="preserve">
+    <value>Resultados</value>
+    <comment>Footer on P&amp;L statement</comment>
+  </data>
+  <data name="ProfitLossStatement_Ytd" xml:space="preserve">
+    <value>YTD</value>
+    <comment>Year To Date</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="SetRootBudgets_SetNewBudgets" xml:space="preserve">
+    <value>Definir Novos Orçamentos</value>
+    <comment>Text on submit button</comment>
+  </data>
+  <data name="UploadBankFiles_AccountStatement" xml:space="preserve">
+    <value>Extracto de Conta</value>
+  </data>
+  <data name="UploadBankFiles_BankAccount" xml:space="preserve">
+    <value>Conta Bancária</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
+    <value>Ficheiro Esperado</value>
+    <comment>The name of the expected file for uploading.</comment>
+  </data>
+  <data name="UploadBankFiles_FileImportedHeader" xml:space="preserve">
+    <value>Ficheiro Importado com Sucesso</value>
+    <comment>Displayed as header after successful processing</comment>
+  </data>
+  
+  <data name="UploadBankFiles_FileType" xml:space="preserve">
+    <value>Tipo de Ficheiro</value>
+    <comment>can be Account Statement or Payments File</comment>
+  </data>
+  <data name="UploadBankFiles_ImportError" xml:space="preserve">
+    <value>Erro ao importar ficheiro</value>
+    <comment>Displayed as header on import failure</comment>
+  </data>
+  
+  
+  <data name="UploadBankFiles_Instructions" xml:space="preserve">
+    <value>Instruções</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="ViewOutstandingAccounts_FooterDifference" xml:space="preserve">
+    <value>Diferença</value>
+  </data>
+  
+  <data name="ViewOutstandingAccounts_FooterTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAction" xml:space="preserve">
+    <value>Ação</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderAmount" xml:space="preserve">
+    <value>Montante</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderDescription" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  
+  <data name="ViewOutstandingAccounts_GridHeaderId" xml:space="preserve">
+    <value>ID#</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderOpenedDate" xml:space="preserve">
+    <value>Data Abertura</value>
+    <comment>keep short</comment>
+  </data>
+  <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
+    <value>Destinatário</value>
+  </data>
+  
+  
+  
+  <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
+    <value>Nome da Conta</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="AccountPlan_Edit_Header" xml:space="preserve">
+    <value>Edição de Conta</value>
+  </data>
+  <data name="AccountPlan_Edit_HeaderAutomation" xml:space="preserve">
+    <value>Automação</value>
+    <comment>Automatic connections to bank, blockchain etc.</comment>
+  </data>
+  <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
+    <value>Configuração</value>
+  </data>
+  
+  <data name="AccountPlan_Edit_Parent" xml:space="preserve">
+    <value>Conta principal ou grupo</value>
+  </data>
+  
+  <data name="AccountPlan_Header_AccountName" xml:space="preserve">
+    <value>Conta</value>
+  </data>
+  <data name="AccountPlan_Header_Balance" xml:space="preserve">
+    <value>Saldo</value>
+  </data>
+  <data name="AccountPlan_Header_Budget" xml:space="preserve">
+    <value>Orçamento</value>
+  </data>
+  <data name="AccountPlan_Header_Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  
+  <data name="InspectLedgers_Header_For" xml:space="preserve">
+    <value>em</value>
+    <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
+  </data>
+  <data name="InspectLedgers_Header_Inspect" xml:space="preserve">
+    <value>Inspecção de</value>
+    <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="InspectLedgers_NoTransactions" xml:space="preserve">
+    <value>Não existem transações nesta conta no período de tempo seleccionado.</value>
+  </data>
+  
+  <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
+    <value>Saldo Final</value>
+  </data>
+  
+  <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
+    <value>(Por favor seleccione uma conta.)</value>
+    <comment>Displayed initially and when no valid account selected</comment>
+  </data>
+  <data name="InspectLedgers_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  
+  
+  <data name="AccountPlan_AddAccount" xml:space="preserve">
+    <value>adicionar conta</value>
+    <comment>Displayed as link in parens after account group name</comment>
+  </data>
+  <data name="AccountPlan_NewAccount" xml:space="preserve">
+    <value>Nova Conta</value>
+    <comment>the name of newly-created accounts, before rename</comment>
+  </data>
+  
+  
+  <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
+    <value>Mostrar Contas Inativas (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
+    <comment>The {0} is the number of inactive accounts.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedLoss" xml:space="preserve">
+    <value>Perda Projetada {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  <data name="AccountPlan_ProjectedProfit" xml:space="preserve">
+    <value>Lucro Projetado {0}</value>
+    <comment>"Projected" as in "Budgeted". {0} is year.</comment>
+  </data>
+  
+  
+  <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
+    <value>Salário Bruto</value>
+  </data>
+  
+  
+  <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
+    <value>Formulários Mensais de Imposto para</value>
+    <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
+  </data>
+  <data name="TaxForms_Payroll_TotalCost" xml:space="preserve">
+    <value>Custo Total</value>
+  </data>
+  <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
+    <value>Imposto Total</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
+    <value>Atestada por {0} em {1:yyyy-MMM-dd}</value>
+  </data>
+  <data name="InspectLedgers_TxDetail_CombinedWith" xml:space="preserve">
+    <value>combinado com</value>
+    <comment>Inserted between transaction causes.</comment>
+  </data>
+  
+  
+  <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
+    <value>Validação do documento por {0} em {1:yyyy-MMM-dd}</value>
+    <comment>"Document" refers to receipts, invoices, etc.</comment>
+  </data>
+  <data name="InspectLedgers_TxDetail_PaidOutBy" xml:space="preserve">
+    <value>Executado por {0}.</value>
+    <comment>As in "payout executed by": who actually paid the money?</comment>
+  </data>
+  
+  
+  
+  <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
+    <value>Lucro Anual</value>
+  </data>
+  
+  
+  <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
+    <value>Conta</value>
+    <comment>Usually the account name. Can also be "several".</comment>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Amount" xml:space="preserve">
+    <value>Montante</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="BalanceTransactions_GridHeader_TransactionId" xml:space="preserve">
+    <value>Tx#</value>
+    <comment>Keep VERY short.</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
+    <value>Saldo</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</root>

@@ -410,5 +410,10 @@
   <data name="Menu5_People_MyLocalOrganization" xml:space="preserve">
     <value>Min lokala organisation</value>
   </data>
-  
+  <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
+    <value>Donera pengar</value>
+  </data>
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Budget / Utfall</value>
+  </data>
 </root>

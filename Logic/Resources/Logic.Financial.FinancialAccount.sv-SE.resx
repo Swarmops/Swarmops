@@ -156,7 +156,10 @@
     <value>Avskrivning av anläggningstillgångar</value>
   </data>
   <data name="Cost_BankFees" xml:space="preserve">
-    <value>Bankavgifter</value>
+    <value>Finansiella avgifter</value>
+  </data>
+  <data name="Cost_BitcoinFees" xml:space="preserve">
+    <value>Bitcoinmineravgifter</value>
   </data>
   <data name="Cost_CentRounding" xml:space="preserve">
     <value>Öres-/centavrundning</value>

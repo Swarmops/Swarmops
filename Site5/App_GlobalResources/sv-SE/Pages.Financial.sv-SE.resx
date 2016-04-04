@@ -279,6 +279,9 @@
     <value>Löneutbetalning #{0:N0} till {1} har AV-attesterats. Lönen kommer inte att betalas ut om den inte attesteras igen.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
+    <value>&lt;strong&gt;Varning: ODEFINIERAD BUDGET&lt;/strong&gt; &lt;br/&gt; &lt;br/&gt; Kostnaden du godkänner tillhör en odefinierad budget -- ett konto i redovisningen som saknar ägare och inte har en budget definierad för året. Överväga att gå till Kontoplanen och sätt budgetar för förväntade inkomster och utgifter. &lt;br/&gt; &lt;br/&gt; Detta meddelande visas endast en gång per besök till Attesteringar. &lt;br/&gt;</value>
+  </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>Fakturabelopp (i {0})</value>
     <comment>{0} is the organization's main currency.</comment>

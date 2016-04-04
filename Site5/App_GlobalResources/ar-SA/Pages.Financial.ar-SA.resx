@@ -217,6 +217,7 @@
     <value>المرتب رقم{0:N0} لـ {1} لم تتم المصادقة عليه. ولن يتم دفعه حتى تعاد المصادقة عليه مرة أخرى.</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>مبلغ الفاتورة (بالـ {0})</value>
     <comment>{0} is the organization's main currency.</comment>

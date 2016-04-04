@@ -717,4 +717,12 @@
   <data name="Global_WizardPrevious" xml:space="preserve">
     <value>crwdns6556335:0crwdne6556335:0</value>
   </data>
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>crwdns6556419:0crwdne6556419:0</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>crwdns6556420:0crwdne6556420:0</value>
+    <comment>As in a table column header</comment>
+  </data>
 </root>

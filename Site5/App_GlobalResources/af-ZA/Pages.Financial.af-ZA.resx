@@ -279,6 +279,9 @@
     <value>crwdns6555292:0{0:N0}crwdnd6555292:0{1}crwdne6555292:0</value>
     <comment>When somebody undoes a previous attestation.</comment>
   </data>
+  <data name="AttestCosts_Warn_UninitializedBudget" xml:space="preserve">
+    <value>crwdns6556422:0crwdne6556422:0</value>
+  </data>
   <data name="CreateInboundInvoice_Amount" xml:space="preserve">
     <value>crwdns6555293:0{0}crwdne6555293:0</value>
     <comment>{0} is the organization's main currency.</comment>

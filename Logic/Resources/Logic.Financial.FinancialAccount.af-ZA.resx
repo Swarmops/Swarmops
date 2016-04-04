@@ -156,7 +156,10 @@
     <value>crwdns6555904:0crwdne6555904:0</value>
   </data>
   <data name="Cost_BankFees" xml:space="preserve">
-    <value>crwdns6555905:0crwdne6555905:0</value>
+    <value>crwdns6556417:0crwdne6556417:0</value>
+  </data>
+  <data name="Cost_BitcoinFees" xml:space="preserve">
+    <value>crwdns6556418:0crwdne6556418:0</value>
   </data>
   <data name="Cost_CentRounding" xml:space="preserve">
     <value>crwdns6555906:0crwdne6555906:0</value>

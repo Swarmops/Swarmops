@@ -731,4 +731,18 @@
     <value>crwdns6556062:0{0:N0}crwdnd6556062:0{5}crwdnd6556062:0{1:yyyy-MMM-dd}crwdnd6556062:0{2}crwdnd6556062:0{3}crwdnd6556062:0{4:N2}crwdne6556062:0</value>
     <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
   </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>crwdns6556423:0crwdne6556423:0</value>
+  </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>crwdns6556426:0crwdne6556426:0</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>crwdns6556424:0crwdne6556424:0</value>
+  </data>
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>crwdns6556425:0crwdne6556425:0</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
 </root>

@@ -720,4 +720,18 @@
     <value>Utbetalning #{0:N0}, {5} (förväntad {1:yyyy-MMM-dd}) för {2}: {3} {4:N2}</value>
     <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
   </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>Budget / Utfall</value>
+  </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>Förväntat</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
+  <data name="BudgetActual_Info" xml:space="preserve">
+    <value>Denna sida visar den detaljerade budgeten, jämfört med det faktiska och förväntade utfallet.</value>
+  </data>
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>Budget / Utfall</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
 </root>
