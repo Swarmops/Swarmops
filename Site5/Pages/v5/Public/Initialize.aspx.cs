@@ -34,6 +34,7 @@ namespace Swarmops.Frontend.Pages.v5.Public
         private static SwarmDb.Credentials _testWriteCredentials;
         private static SwarmDb.Credentials _testAdminCredentials;
         private static int _initProgress;
+        private static bool _testThreadsWork = false;
         private static string _initMessage = "Initializing...";
         private static readonly Random GetRandom = new Random();
         private static readonly object syncLock = new object();
@@ -113,6 +114,27 @@ namespace Swarmops.Frontend.Pages.v5.Public
             this.DropFavoriteColor.Items.Add (" -- Select one --");
             this.DropFavoriteColor.Items.Add ("Blue!");
             this.DropFavoriteColor.Items.Add ("No, wait, yellow!");
+        }
+
+
+        [WebMethod]
+        public static void BeginTestThreads()
+        {
+            Thread checkThread = new Thread(TestServerThreading);
+            checkThread.Start();
+        }
+
+        public static void TestServerThreading()
+        {
+            Thread.Sleep (500); // sleep for half a second
+            // _testThreadsWork = true; // if we get here, we can spawn background threads on server
+        }
+
+
+        [WebMethod]
+        public static bool CheckThreadsWork()
+        {
+            return _testThreadsWork;
         }
 
 
