@@ -41,6 +41,8 @@
             $('span#spanModalTransactionDate').text('[...]');
             <%=this.DropOpenPayouts.ClientID%>_loadData([{ id: 0, text: "<%=Resources.Global.Global_LoadingPlaceholder%>" }]);
             <%=this.DropOpenPayouts.ClientID%>_val('0');
+            <%=this.DropOpenPayoutsForeign.ClientID%>_loadData([{ id: 0, text: "<%=Resources.Global.Global_LoadingPlaceholder%>" }]);
+            <%=this.DropOpenPayoutsForeign.ClientID%>_val('0');
 
             SwarmopsJS.ajaxCall(
                 "/Pages/v5/Ledgers/BalanceTransactions.aspx/GetTransactionMatchability",
@@ -49,12 +51,20 @@
                     $('#spanTransactionUnbalancedBy').text(data.DifferingAmount);
                     $('span#spanModalTransactionDate').text(data.TransactionDate);
 
-                    if (data.OpenPayoutData.length > 0) {
-                        <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData);
+                    if (data.OpenPayoutData.ExactMatches.length > 0) {
+                        <%=this.DropOpenPayouts.ClientID%>_loadData(data.OpenPayoutData.ExactMatches);
                         <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
                     } else {
                         <%=this.DropOpenPayouts.ClientID%>_loadData({});
                         <%=this.DropOpenPayouts.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
+                    }
+
+                    if (data.OpenPayoutData.TolerantMatches.length > 0) {
+                        <%=this.DropOpenPayoutsForeign.ClientID%>_loadData(data.OpenPayoutData.TolerantMatches);
+                        <%=this.DropOpenPayoutsForeign.ClientID%>_text("<%=Resources.Global.Global_SelectOne%>");
+                    } else {
+                        <%=this.DropOpenPayoutsForeign.ClientID%>_loadData({});
+                        <%=this.DropOpenPayoutsForeign.ClientID%>_text("<%=Resources.Global.Global_NoMatch%>");
                     }
 
                 });
@@ -84,6 +94,21 @@
                 <%= this.DialogTx.ClientID %>_close();
                 SwarmopsJS.ajaxCall(
                     "/Pages/v5/Ledgers/BalanceTransactions.aspx/MatchTransactionOpenPayout",
+                    { transactionId: transactionId, payoutId: payoutId },
+                    function () {
+                        $('#gridTransactions').datagrid('reload');
+                    });
+
+            }
+        }
+
+        function onMatchOpenPayoutForeign() {
+            var payoutId = <%=this.DropOpenPayoutsForeign.ClientID%>_val();
+
+            if (payoutId > 0) {
+                <%= this.DialogTx.ClientID %>_close();
+                SwarmopsJS.ajaxCall(
+                    "/Pages/v5/Ledgers/BalanceTransactions.aspx/MatchTransactionOpenPayoutForeign",
                     { transactionId: transactionId, payoutId: payoutId },
                     function () {
                         $('#gridTransactions').datagrid('reload');
@@ -160,6 +185,16 @@
                 </div>
                 <div class="entryLabels">
                     <asp:Label runat="server" ID="LabelDescribePayout" Text="Match to payout XYZ" />
+                </div>
+            </div>
+            <p><input type="radio" id="RadioPayoutForeign" name="TxOptions" value="PayoutForeign" /><label for="RadioPayoutForeign"><asp:Label runat="server" ID="LabelRadioPayoutForeign" Text="Match to an open foreign-currency payout? XYZ" /></label></p>
+            <div id="radioOptionPayoutForeign" class="radioOption">
+                <div class="entryFields">
+                    <Swarmops5:DropDown ID="DropOpenPayoutsForeign" runat="server" ListType="All" />&#8203;<br/>
+                    <input type="button" value='<asp:Literal ID="LiteralButtonPayoutForeign" runat="server" Text="MatchXYZ" />' class="buttonAccentColor" onclick="onMatchOpenPayoutForeign(); return false;" id="buttonExecutePayoutForeign"/>
+                </div>
+                <div class="entryLabels">
+                    <asp:Label runat="server" ID="LabelDescribePayoutForeign" Text="Match to payout XYZ" />
                 </div>
             </div>
             <div id="divHiddenTodoFutureSprint" style="display:none">

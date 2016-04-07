@@ -732,6 +732,12 @@
     <value>Payout #{0:N0}, {5} (expected {1:yyyy-MMM-dd}) for {2}: {3} {4:N2}</value>
     <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
   </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
+    <value>The transaction matches this foreign-currency payout:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>Map the transaction to a foreign-currency payout ({0}% amount tolerance)?</value>
+  </data>
   <data name="BudgetActual_ContentHeader" xml:space="preserve">
     <value>Budget vs Actual</value>
   </data>

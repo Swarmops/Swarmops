@@ -189,7 +189,7 @@
     <value>Enter your code from Google Authenticator.</value>
   </data>
   <data name="Login_Header" xml:space="preserve">
-    <value>Login with Blockchain Technology (BitId)</value>
+    <value>Login with Bitcoin Signature (BitId)</value>
   </data>
   <data name="Login_Help" xml:space="preserve">
     <value>Help</value>
