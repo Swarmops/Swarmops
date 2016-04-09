@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using Swarmops.Common.Enums;
 using Swarmops.Common.Interfaces;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Support;
@@ -103,7 +104,14 @@ public partial class Pages_v5_Finance_Json_AttestableCosts : DataV5Base
         {
             if (account.OwnerPersonId == CurrentUser.Identity)
             {
-                result[account.Identity] = account.GetBudgetCentsRemaining();
+                if (account.AccountType == FinancialAccountType.Cost)
+                {
+                    result[account.Identity] = account.GetBudgetCentsRemaining();
+                }
+                else
+                {
+                    result[account.Identity] = 1; // any value
+                }
             }
         }
 
