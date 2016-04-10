@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Web.UI;
@@ -18,6 +19,8 @@ namespace Swarmops.Controls.Base
         private string _regularLocalized;
         private string _regularsLocalized;
         private string _regularshipLocalized;
+
+        private static Dictionary<string, string> _imageSizeLookup = new Dictionary<string, string>();
 
         protected void Page_Load (object sender, EventArgs e)
         {
@@ -98,11 +101,29 @@ namespace Swarmops.Controls.Base
                 cssClass = " dir=\"ltr\"";
             }
 
-            string iconSize = "40px";
+            string iconSize = string.Empty;
 
-            if (File.Exists (Server.MapPath ("~/Images/PageIcons/" + menuItem.ImageUrl + "-20px.png")))
+            if (menuItem.ImageUrl != null && _imageSizeLookup.ContainsKey (menuItem.ImageUrl))
             {
-                iconSize = "20px";
+                iconSize = _imageSizeLookup[menuItem.ImageUrl]; // from cache
+            }
+            else if (menuItem.ImageUrl != null)
+            {
+                string[] iconSizePreferences = { "40", "96", "128", "20", "16" };
+
+                foreach (string testSize in iconSizePreferences)
+                {
+                    if (
+                        File.Exists (
+                            Server.MapPath ("~/Images/PageIcons/" + menuItem.ImageUrl + "-" + testSize + "px.png")))
+                    {
+                        iconSize = testSize + "px";
+                        _imageSizeLookup[menuItem.ImageUrl] = iconSize;
+                        break; // break at first located preference
+                    }
+                }
+
+                // Let it break if none is found, that'll generate a broken image and be visible immediately
             }
 
             switch (menuItem.Type)
