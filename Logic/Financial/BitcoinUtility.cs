@@ -201,7 +201,7 @@ namespace Swarmops.Logic.Financial
 
                     throw; // otherwise throw upward
                 }
-                catch (WebException webExceptionInner)
+                catch (WebException)
                 {
                     // Ok, we tried, but there's apparently a network error so we need to abort this whole thing
                     throw;
