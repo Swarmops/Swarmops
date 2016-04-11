@@ -305,7 +305,7 @@
                 <ResourceKey>Ledgers_BudgetVsActual</ResourceKey>
                 <UserLevel>0</UserLevel>
                 <Permissions />
-                <ImageUrl>iconshock-abacus</ImageUrl>
+                <ImageUrl>iconshock-balance</ImageUrl>
                 <NavigateUrl>/Pages/v5/Ledgers/BudgetActual.aspx</NavigateUrl>
                 <Type>Link</Type>
                 <Children />
@@ -316,7 +316,7 @@
                 <ResourceKey>Ledgers_LiquidityForecast</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
-                <ImageUrl />
+                <ImageUrl>iconshock-bargraph</ImageUrl>
                 <Type>Disabled</Type>
                 <Children />
             </MainMenuItem>
@@ -325,7 +325,7 @@
                 <ResourceKey>Ledgers_CashflowAnalysis</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
-                <ImageUrl />
+                <ImageUrl>iconshock-cashflow</ImageUrl>
                 <Type>Disabled</Type>
                 <Children />
             </MainMenuItem>
@@ -386,7 +386,7 @@
             <ResourceKey>Ledgers_BalanceTransactions</ResourceKey>
             <UserLevel>3</UserLevel>
             <Permissions />
-            <ImageUrl>iconshock-balance</ImageUrl>
+            <ImageUrl>iconshock-money-calculator</ImageUrl>
             <NavigateUrl>/Pages/v5/Ledgers/BalanceTransactions.aspx</NavigateUrl>
             <Type>Link</Type>
             <Children />
