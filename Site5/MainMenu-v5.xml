@@ -400,6 +400,23 @@
           </MainMenuItem>
 
           <MainMenuItem>
+            <ResourceKey>Ledgers_BitcoinHotwallet</ResourceKey>
+            <UserLevel>3</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-wallet-money</ImageUrl>
+            <NavigateUrl>/Pages/v5/Ledgers/BitcoinHotwallet.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children />
+          </MainMenuItem>
+
+
+          <MainMenuItem>
+            <UserLevel>3</UserLevel>
+            <Type>Separator</Type>
+            <Children />
+          </MainMenuItem>
+
+          <MainMenuItem>
               <ResourceKey>Ledgers_TaxForms</ResourceKey>
               <UserLevel>3</UserLevel>
               <ImageUrl>iconshock-invoice</ImageUrl>

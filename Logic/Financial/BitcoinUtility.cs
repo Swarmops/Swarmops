@@ -150,6 +150,8 @@ namespace Swarmops.Logic.Financial
 
         // TODO: Condense TestUnspents into ONE call for MULTIPLE addresses (separated by | for Unspents according to API docs)
 
+        // TODO: Enable backend to call a running bitcoin node for all this instead of callign third party services
+
         public static bool TestUnspents (string address)
         {
             // This function queries the Blockchain API for the unspent coin.

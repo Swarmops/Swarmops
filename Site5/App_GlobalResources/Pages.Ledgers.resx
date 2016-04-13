@@ -752,4 +752,27 @@
     <value>Budget vs Actual</value>
     <comment>Financial budget vs. Actual financial outcome</comment>
   </data>
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>Bitcoin Address</value>
+  </data>
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>Balance microcoins</value>
+  </data>
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>Derivation Path</value>
+  </data>
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>Value {0}</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  <data name="BitcoinHotwallet_Header" xml:space="preserve">
+    <value>Hotwallet Breakdown</value>
+    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
+  </data>
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>This shows a breakdown of the organization's bitcoin hotwallet addresses and balance. (Empty and previously-used addresses are not displayed.)</value>
+  </data>
+  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
+    <value>Bitcoin Hotwallet</value>
+  </data>
 </root>
