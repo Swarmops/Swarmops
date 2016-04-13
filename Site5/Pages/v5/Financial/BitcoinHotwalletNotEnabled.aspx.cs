@@ -1,6 +1,6 @@
 ﻿using System;
 
-public partial class Pages_v5_Finance_BitcoinHotwallet : PageV5Base
+public partial class Pages_v5_Finance_BitcoinHotwalletNotEnabled : PageV5Base
 {
     protected void Page_Load (object sender, EventArgs e)
     {
