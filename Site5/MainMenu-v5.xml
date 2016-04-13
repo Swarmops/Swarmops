@@ -159,7 +159,7 @@
               <ResourceKey>Financial_RequestCashAdvance</ResourceKey>
               <UserLevel>1</UserLevel>
               <Permissions />
-              <ImageUrl>iconshock-walletmoney</ImageUrl>
+              <ImageUrl>iconshock-cashinhand</ImageUrl>
               <NavigateUrl>/Pages/v5/Financial/RequestCashAdvance.aspx</NavigateUrl>
               <Type>Link</Type>
               <Children />
@@ -403,7 +403,7 @@
             <ResourceKey>Ledgers_BitcoinHotwallet</ResourceKey>
             <UserLevel>3</UserLevel>
             <Permissions />
-            <ImageUrl>iconshock-wallet-money</ImageUrl>
+            <ImageUrl>iconshock-walletmoney</ImageUrl>
             <NavigateUrl>/Pages/v5/Ledgers/BitcoinHotwallet.aspx</NavigateUrl>
             <Type>Link</Type>
             <Children />

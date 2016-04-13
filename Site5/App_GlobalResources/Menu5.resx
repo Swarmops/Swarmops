@@ -420,4 +420,7 @@
   <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
     <value>Budget vs Actual</value>
   </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Bitcoin Hotwallet</value>
+  </data>
 </root>
