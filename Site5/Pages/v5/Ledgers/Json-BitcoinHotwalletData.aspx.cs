@@ -117,7 +117,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             result.Append("{");
 
-            result.AppendFormat("\"derivePath\":\"" + Resources.Global.Global_Total +  "\",\"balanceMicrocoins\":\"{0}\",\"balanceFiat\":\"{1}\"",
+            result.AppendFormat("\"derivePath\":\"" + Resources.Global.Global_Total.ToUpperInvariant() +  "\",\"balanceMicrocoins\":\"{0}\",\"balanceFiat\":\"{1}\"",
                 (satoshisTotal / 100.0).ToString("N2"), (satoshisTotal / 100.0 * conversionRate).ToString("N2"));
 
             result.Append("}]}"); // on separate line to suppress warning
