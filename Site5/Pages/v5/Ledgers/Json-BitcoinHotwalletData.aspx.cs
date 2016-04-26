@@ -43,21 +43,49 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             foreach (HotBitcoinAddress address in addresses)
             {
+                HotBitcoinAddressUnspents unspents = HotBitcoinAddressUnspents.ForAddress (address);
+                Int64 satoshisUnspentAddress = 0;
+
+                StringBuilder childResult = new StringBuilder(16384);
+                foreach (HotBitcoinAddressUnspent unspent in unspents)
+                {
+                    childResult.Append ("{");
+                    childResult.AppendFormat(
+                        "\"id\":\"UTXO{0}\"," +
+                        "\"derivePath\":\"{1}\"," +
+                        "\"address\":\"{2}\"," +
+                        "\"balanceMicrocoins\":\"{3}\"," +
+                        "\"balanceFiat\":\"{4}\"",
+                        unspent.Identity,
+                        Resources.Pages.Ledgers.BitcoinHotWallet_UnspentTransaction,
+                        unspent.TransactionHash,
+                        (unspent.AmountSatoshis / 100.0).ToString("N2"),
+                        (unspent.AmountSatoshis / 100.0 * conversionRate).ToString("N2")
+                    );
+                    satoshisUnspentAddress += unspent.AmountSatoshis;
+                    childResult.Append("},");
+                }
+                if (unspents.Count > 0)
+                {
+                    childResult.Remove (childResult.Length - 1, 1); // remove last comma
+                }
+
                 result.Append("{");
                 result.AppendFormat (
                     "\"id\":\"{0}\"," +
                     "\"derivePath\":\"{1}\"," +
                     "\"address\":\"{2}\"," +
                     "\"balanceMicrocoins\":\"{3}\"," +
-                    "\"balanceFiat\":\"{4}\"",
+                    "\"balanceFiat\":\"{4}\",",
                     address.Identity,
                     address.DerivationPath,
                     address.Address,
-                    (address.BalanceSatoshis/100.0).ToString ("N2"),
-                    (address.BalanceSatoshis/100.0*conversionRate).ToString ("N2")
+                    (satoshisUnspentAddress/100.0).ToString ("N2"),
+                    (satoshisUnspentAddress/100.0*conversionRate).ToString ("N2")
                 );
+                result.Append ("\"state\":\"closed\",\"children\":[" + childResult.ToString() + "]");
                 result.Append("},");
-                satoshisTotal += address.BalanceSatoshis;
+                satoshisTotal += satoshisUnspentAddress;
             }
 
             if (addresses.Count > 0)
