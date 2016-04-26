@@ -725,4 +725,8 @@
     <value>Flags</value>
     <comment>As in a table column header</comment>
   </data>
+  <data name="Global_Total" xml:space="preserve">
+    <value>Total</value>
+    <comment>Used as footer in tables, summarizing something</comment>
+  </data>
 </root>

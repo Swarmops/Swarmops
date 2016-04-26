@@ -8,14 +8,14 @@
 	        $('#tableHotwallet').treegrid(
 	        {
 	            onBeforeExpand: function (foo) {
-	                $('span.profitlossdata-collapsed-' + foo.id).fadeOut('fast', function () {
-	                    $('span.profitlossdata-expanded-' + foo.id).fadeIn('slow');
+	                $('span.bitcoinhotwalletdata-collapsed-' + foo.id).fadeOut('fast', function () {
+	                    $('span.bitcoinhotwalletdata-expanded-' + foo.id).fadeIn('slow');
 	                });
 	            },
 
 	            onBeforeCollapse: function (foo) {
-	                $('span.profitlossdata-expanded-' + foo.id).fadeOut('fast', function () {
-	                    $('span.profitlossdata-collapsed-' + foo.id).fadeIn('slow');
+	                $('span.bitcoinhotwalletdata-expanded-' + foo.id).fadeOut('fast', function () {
+	                    $('span.bitcoinhotwalletdata-collapsed-' + foo.id).fadeIn('slow');
 	                });
 	            },
 
@@ -51,7 +51,7 @@
         animate="true"
         fitColumns="true"
         showFooter="true"
-        idField="id" treeField="name">
+        idField="id" treeField="derivePath">
         <thead>  
             <tr>  
                 <th field="derivePath" width="108"><asp:Literal ID="LiteralHeaderDerivationPath" runat="server"/></th>  
