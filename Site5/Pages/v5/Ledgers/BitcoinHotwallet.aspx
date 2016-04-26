@@ -5,7 +5,7 @@
 
 	    $(document).ready(function () {
 
-	        $('#tableProfitLoss').treegrid(
+	        $('#tableHotwallet').treegrid(
 	        {
 	            onBeforeExpand: function (foo) {
 	                $('span.profitlossdata-collapsed-' + foo.id).fadeOut('fast', function () {
@@ -31,8 +31,6 @@
 	        $('div.datagrid').css('opacity', 0.4);
 	    });
 
-	    var currentYear = <%=DateTime.Today.Year %>;
-
 	</script>
     <style>
 	    .content h2 select {
@@ -48,17 +46,18 @@
     
     <h2><asp:Label ID="LabelContentHeader" runat="server" />&nbsp;<img alt="Loading" src="/Images/Abstract/ajaxloader-blackcircle.gif" ID="imageLoadIndicator" /></h2>
     <table id="tableHotwallet" title="" class="easyui-treegrid" style="width:680px;height:600px"  
-        url="Json-HotwalletData.aspx"
+        url="Json-BitcoinHotwalletData.aspx"
         rownumbers="false"
         animate="true"
         fitColumns="true"
+        showFooter="true"
         idField="id" treeField="name">
         <thead>  
             <tr>  
-                <th field="derivePath" width="178"><asp:Literal ID="LiteralHeaderDerivationPath" runat="server"/></th>  
-                <th field="address" width="80" align="right"><span class="commonHeader" id="headerAddress" style="display:none"><asp:Literal ID="LiteralHeaderAddress" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
+                <th field="derivePath" width="108"><asp:Literal ID="LiteralHeaderDerivationPath" runat="server"/></th>  
+                <th field="address" width="170" align="left"><span class="commonHeader" id="headerAddress" style="display:none"><asp:Literal ID="LiteralHeaderAddress" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>  
                 <th field="balanceMicrocoins" width="80" align="right"><span class="commonHeader" id="headerQ1" style="display:none"><asp:Literal ID="LiteralHeaderMicrocoins" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
-                <th field="balanceFiat" width="80" align="right"><span class="commonHeader" id="headerQ2" style="display:none"><asp:Literal ID="LiteralHeaderFiatValue" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
+                <th field="balanceFiat" width="60" align="right"><span class="commonHeader" id="headerQ2" style="display:none"><asp:Literal ID="LiteralHeaderFiatValue" runat="server" /></span><span class="loadingHeader">&mdash;</span></th>
             </tr>  
         </thead>  
     </table> 
