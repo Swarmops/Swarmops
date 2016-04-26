@@ -12,12 +12,19 @@
 
         preload([
             '/Images/Abstract/ajaxloader-medium.gif',
-            '/Images/Icons/iconshock-balloon-yes-16px-hot.png',
-            '/Images/Icons/iconshock-balloon-no-16px-hot.png',
-            '/Images/Icons/iconshock-balloon-undo-16px-hot.png',
-            '/Images/Icons/iconshock-greentick-16px.png',
-            '/Images/Icons/iconshock-redcross-16px.png',
-            '/Images/Icons/iconshock-balloon-undo-16px.png'
+            '/Images/Abstract/ajaxloader-48x36px.gif',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-hot.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-disabled.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-disabled.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-gold.png',
+            '/Images/Icons/iconshock-balloon-yes-128x96px-hot-gold.png',
+            '/Images/Icons/iconshock-balloon-no-128x96px-hot.png',
+            '/Images/Icons/iconshock-balloon-no-128x96px-disabled.png',
+            '/Images/Icons/iconshock-green-tick-128x96px.png',
+            '/Images/Icons/iconshock-red-cross-128x96px.png',
+            '/Images/Icons/iconshock-red-cross-circled-128x96px.png',
+            '/Images/Icons/iconshock-balloon-undo-128x96px.png',
+            '/Images/Icons/iconshock-balloon-undo-128x96px-hot.png'
         ]);
 
         $(document).ready(function () {
@@ -47,35 +54,48 @@
                     },
 
                     onLoadSuccess: function () {
-                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
-                        $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-16px-disabled.png");
-                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-greentick-16px.png");
-                        $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-cross-16px.png");
-                        $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
+
+                        $(".LocalIconApproval").attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
+                        $(".LocalIconApproved").attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png").css("opacity", 0.5);
+                        $(".LocalIconDenied").attr("src", "/Images/Icons/iconshock-red-cross-circled-128x96px.png");
+                        $(".LocalIconUndo").attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                         $(".LocalIconApproved.LocalPrototype, .LocalIconUndo.LocalPrototype, .LocalIconDenied.LocalPrototype, .LocalIconApproval.LocalPrevious, .LocalIconDenial.LocalPrevious, .LocalIconDenied.LocalPrevious").css("display", "none");
-                        $(".LocalIconApproval, .LocalIconUndo").css("cursor", "pointer");
+                        $(".LocalIconDenial").attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-disabled.png");
+                        $(".LocalIconApproval, .LocalIconUndo, .LocalIconDenial").css("cursor", "pointer");
 
                         $(".LocalIconApproval").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px-hot.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px-hot.png");
                             }
                         });
 
                         $(".LocalIconApproval").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                             }
                         });
 
                         $(".LocalIconUndo").mouseover(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px-hot.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px-hot.png");
                             }
                         });
 
                         $(".LocalIconUndo").mouseout(function () {
                             if ($(this).attr("rel") != "loading") {
-                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
+                            }
+                        });
+
+                        $(".LocalIconDenial").mouseover(function () {
+                            if ($(this).attr("rel") != "loading") {
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-hot-disabled.png");
+                            }
+                        });
+
+                        $(".LocalIconDenial").mouseout(function () {
+                            if ($(this).attr("rel") != "loading") {
+                                $(this).attr("src", "/Images/Icons/iconshock-balloon-no-128x96px-disabled.png");
                             }
                         });
 
@@ -86,7 +106,7 @@
                                 jsonData.protoIdentity = $(this).attr("baseid");
 
                                 $(this).attr("rel", "loading");
-                                $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
+                                $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
                                 $("#IconDenial" + $(this).attr("baseid").replace(/\|/g,'')).fadeTo(1000, 0.01);
                                 
                                 $.ajax({
@@ -98,10 +118,10 @@
                                     success: $.proxy(function (msg) {
                                         var baseid = $(this).attr("baseid").replace(/\|/g, '');
                                         $(this).attr("databaseid", msg.d.AssignedId);
-                                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-16px.png");
+                                        $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                                         $(this).attr("rel", "active");
                                         $(this).hide();
-                                        $("#IconApproved" + baseid).fadeIn(100);
+                                        $("#IconApproved" + baseid).fadeTo(250, 0.5);
                                         $("#IconDenial" + baseid).css('opacity', 1.0).hide();
                                         $("#IconUndo" + baseid).fadeIn(100);
                                         $('.row' + baseid).animate({ color: "#AAA" }, 400);
@@ -129,7 +149,7 @@
                                     success: $.proxy(function (msg) {
                                         if (msg.d.Success) {
                                             var baseid = $(this).attr("baseid").replace(/\|/g, '');
-                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-16px.png");
+                                            $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                                             $(this).attr("rel", "");
                                             $(this).hide();
                                             $("#IconApproved" + baseid).css('opacity', 1.0).hide();
@@ -138,7 +158,7 @@
                                             $('.row' + baseid).animate({ color: "#000" }, 100);
                                             alertify.log(msg.d.DisplayMessage);
                                         } else {
-                                            $(this).attr("src", "/Images/Icons/iconshock-greentick-16px.png");
+                                            $(this).attr("src", "/Images/Icons/iconshock-green-tick-128x96px.png");
                                             alertify.error(msg.d.DisplayMessage);
                                             // TODO: Add alert box?
                                         }
@@ -175,15 +195,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolderMain" Runat="Server">
     <h2><asp:Label runat="server" ID="LabelPayOutMoneyHeader" Text="XYZ Costs Awaiting Payment" /></h2>
     <table id="TablePayableCosts" class="easyui-datagrid" style="width:680px;height:500px"
-        data-options="rownumbers:false,singleSelect:false,nowrap:false,fit:false,fitColumns:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-PayableCosts.aspx'"
+        data-options="rownumbers:false,singleSelect:false,fit:false,fitColumns:true,loading:false,selectOnCheck:true,checkOnSelect:true,url:'Json-PayableCosts.aspx'"
         idField="itemId">
         <thead>  
             <tr>  
                 <th data-options="field:'due',width:70"><asp:Label ID="LabelGridHeaderDue" runat="server" Text="XYZ Due"/></th>  
-                <th data-options="field:'recipient',width:150,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
-                <th data-options="field:'bank',width:70"><asp:Label ID="LabelGridHeaderBank" runat="server" Text="XYZ Bank" /></th>  
-                <th data-options="field:'account',width:120,sortable:true"><asp:Label ID="LabelGridHeaderAccount" runat="server" Text="XYZ Account" /></th>
-                <th data-options="field:'reference',width:130,sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderReference" runat="server" Text="XYZ Reference" /></th>
+                <th data-options="field:'recipient',width:100,sortable:true"><asp:Label ID="LabelGridHeaderRecipient" runat="server" Text="XYZ Beneficiary" /></th>
+                <th data-options="field:'bank',width:80"><asp:Label ID="LabelGridHeaderBank" runat="server" Text="XYZ Bank" /></th>  
+                <th data-options="field:'account',width:90,sortable:true"><asp:Label ID="LabelGridHeaderAccount" runat="server" Text="XYZ Account" /></th>
+                <th data-options="field:'reference',width:160,sortable:true,order:'asc'"><asp:Label ID="LabelGridHeaderReference" runat="server" Text="XYZ Reference" /></th>
                 <th data-options="field:'amount',width:80,align:'right'"><asp:Label ID="LabelGridHeaderAmount" runat="server" Text="XYZ Amount" /></th>
                 <th data-options="field:'action',width:53,align:'center'"><asp:Label ID="LabelGridHeaderPaid" runat="server" Text="XYZPaid" /></th>
             </tr>  
