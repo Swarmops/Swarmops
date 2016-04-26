@@ -189,7 +189,9 @@
   <data name="Menu5_Financial_CreatePurchaseOrder" xml:space="preserve">
     <value>Criar Ordem de Compra</value>
   </data>
-  
+  <data name="Menu5_Financial_GigsAssistant" xml:space="preserve">
+    <value>Assistente de Apresentações</value>
+  </data>
   <data name="Menu5_Financial_List" xml:space="preserve">
     <value>Lista</value>
   </data>
@@ -238,7 +240,9 @@
   <data name="Menu5_Financial_ViewLiquidityForecast" xml:space="preserve">
     <value>Ver Previsão de Liquidez</value>
   </data>
-  
+  <data name="Menu5_Governance" xml:space="preserve">
+    <value>Governança</value>
+  </data>
   <data name="Menu5_Governance_Candidates" xml:space="preserve">
     <value>Candidatos</value>
   </data>
@@ -248,7 +252,9 @@
   <data name="Menu5_Governance_MeetingAdmin" xml:space="preserve">
     <value>Administração de Reuniões</value>
   </data>
-  
+  <data name="Menu5_Governance_MeetingBoardAdmin" xml:space="preserve">
+    <value>Admin de Reunião de Conselho</value>
+  </data>
   <data name="Menu5_Governance_Motions" xml:space="preserve">
     <value>Propostas</value>
   </data>
@@ -277,7 +283,7 @@
     <value>Análise de Fluxo de Caixa</value>
   </data>
   <data name="Menu5_Ledgers_CloseBooks" xml:space="preserve">
-    <value>Fechar Contabilidade de {0}</value>
+    <value>Fechar Livros de Contabilidade de {0}</value>
   </data>
   <data name="Menu5_Ledgers_DebugLedgers" xml:space="preserve">
     <value>Depurar Contabilidade, Contas</value>
@@ -395,7 +401,9 @@
   <data name="Menu5_Ledgers_TaxForms_Payroll" xml:space="preserve">
     <value>Declarações Imposto Salarial</value>
   </data>
-  
+  <data name="Menu5_Ledgers_BalanceTransactions" xml:space="preserve">
+    <value>Saldo e Correspondência de Transações</value>
+  </data>
   <data name="Menu5_Administration_OrganizationStaffing" xml:space="preserve">
     <value>Pessoal da Organização</value>
   </data>
@@ -405,5 +413,7 @@
   <data name="Menu5_Financial_DonateFunds" xml:space="preserve">
     <value>Doar fundos</value>
   </data>
-  
+  <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
+    <value>Orçamento vs Real</value>
+  </data>
 </root>

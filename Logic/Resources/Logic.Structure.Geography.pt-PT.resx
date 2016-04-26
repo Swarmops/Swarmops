@@ -140,13 +140,21 @@
   <data name="SouthernEurope" xml:space="preserve">
     <value>Europa do Sul</value>
   </data>
-  
-  
+  <data name="USA_EastNorthCentral" xml:space="preserve">
+    <value>Nordeste Central</value>
+  </data>
+  <data name="USA_EastSouthCentral" xml:space="preserve">
+    <value>Sudeste Central</value>
+  </data>
   <data name="USA_MidAtlantic" xml:space="preserve">
     <value>Atlântico Intermédio</value>
   </data>
-  
-  
+  <data name="USA_Midwest" xml:space="preserve">
+    <value>Centro-Oeste</value>
+  </data>
+  <data name="USA_Mountain" xml:space="preserve">
+    <value>Montanhas</value>
+  </data>
   <data name="USA_NewEngland" xml:space="preserve">
     <value>Nova Inglaterra</value>
   </data>
@@ -165,8 +173,12 @@
   <data name="USA_West" xml:space="preserve">
     <value>Oeste</value>
   </data>
-  
-  
+  <data name="USA_WestNorthCentral" xml:space="preserve">
+    <value>Nordoeste Central</value>
+  </data>
+  <data name="USA_WestSouthCentral" xml:space="preserve">
+    <value>Sudoeste Central</value>
+  </data>
   <data name="WesternEurope" xml:space="preserve">
     <value>Europa Ocidental</value>
   </data>

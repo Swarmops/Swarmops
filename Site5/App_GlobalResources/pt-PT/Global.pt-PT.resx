@@ -125,14 +125,28 @@
     <value>Preferências</value>
     <comment>Tooltip on hover over wrench icon</comment>
   </data>
+  <data name="CurrentUserInfo_SelectLanguage" xml:space="preserve">
+    <value>Selecione o Idioma</value>
+    <comment>Shown as header of language list pop-up</comment>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
+  <data name="Dashboard_PageTitle" xml:space="preserve">
+    <value>Painel de Controlo</value>
+    <comment>Title of default page</comment>
+  </data>
+  <data name="Financial_Actuals" xml:space="preserve">
+    <value>Real</value>
+  </data>
+  <data name="Financial_ActualsPreliminary" xml:space="preserve">
+    <value>Reais (prel)</value>
+  </data>
+  <data name="Financial_ActualsToDate" xml:space="preserve">
+    <value>YTD Reais</value>
+  </data>
+  <data name="Financial_BookkeepingAccountLong" xml:space="preserve">
+    <value>Conta de Contabilidade</value>
+  </data>
   <data name="Financial_BookkeepingAccountShort" xml:space="preserve">
     <value>Conta</value>
   </data>
@@ -173,11 +187,23 @@
     <value>Salário para {0:yyyy-MMM}</value>
     <comment>The payout date is inserted for date, like "Salary for 2012-Aug".</comment>
   </data>
-  
-  
-  
-  
-  
+  <data name="Financial_TaxesSpecification" xml:space="preserve">
+    <value>Imposto para salários {0}</value>
+  </data>
+  <data name="Financial_TaxSpecification" xml:space="preserve">
+    <value>Imposto de salário #{0}</value>
+  </data>
+  <data name="Financial_TheTaxMan" xml:space="preserve">
+    <value>O Homem dos Impostos</value>
+    <comment>Used as recipient for taxes.</comment>
+  </data>
+  <data name="Financial_YearlyResult" xml:space="preserve">
+    <value>Resultado anual</value>
+  </data>
+  <data name="Global_ASAP" xml:space="preserve">
+    <value>ASAP</value>
+    <comment>Used as time indicator for "right away" (as soon as possible) in place of dates where in a hurry</comment>
+  </data>
   <data name="Global_Cancel" xml:space="preserve">
     <value>Cancelar</value>
     <comment>Displayed as cancellation link on changing something</comment>
@@ -186,7 +212,10 @@
     <value>Modificar?</value>
     <comment>Link after describing what the user is looking at, allowing a change.</comment>
   </data>
-  
+  <data name="Global_ClickImageToEnlarge" xml:space="preserve">
+    <value>Clique na imagem para ampliá-la.</value>
+    <comment>Displayed where thumbnails can be enlarged modally.</comment>
+  </data>
   <data name="Global_Confirm" xml:space="preserve">
     <value>Confirmar</value>
     <comment>Displayed as confirmation link on changing something</comment>
@@ -199,7 +228,10 @@
     <value>-- Seleccione a Organização --</value>
     <comment>Initializer in dropdown box.</comment>
   </data>
-  
+  <data name="Global_GoThere" xml:space="preserve">
+    <value>Ir para lá...</value>
+    <comment>Link after describing something.</comment>
+  </data>
   <data name="Global_NoOwner" xml:space="preserve">
     <value>Ninguém</value>
     <comment>Displayed when an account/position etc is vacant</comment>
@@ -211,15 +243,29 @@
     <value>A Processar Ficheiro...</value>
     <comment>Displayed while processing an uploaded file (along with a progress bar).</comment>
   </data>
-  
-  
-  
-  
+  <data name="Global_UploadFile" xml:space="preserve">
+    <value>Enviar Ficheiro</value>
+    <comment>Displayed on "Submit" button next to file upload controls.</comment>
+  </data>
+  <data name="Global_UploadFileToSwarmops" xml:space="preserve">
+    <value>Envio de Ficheiro para o Swarmops</value>
+    <comment>Used as header above upload sections.</comment>
+  </data>
+  <data name="Global_Upload_ErrorSelectFile" xml:space="preserve">
+    <value>Por favor seleccione o ficheiro a enviar.</value>
+    <comment>Error message. Displayed when the used has clicked "Upload" without selecting a file to upload.</comment>
+  </data>
+  <data name="Master_SwitchOrganizationDialog" xml:space="preserve">
+    <value>Está atualmente conectado a &lt;strong&gt;{0}&lt;/strong&gt;. Gostaria de trocar para outra organização?</value>
+  </data>
   <data name="Sidebar_Actions" xml:space="preserve">
     <value>Ações</value>
     <comment>List of shortcuts to likely actions</comment>
   </data>
-  
+  <data name="Sidebar_Actions_None" xml:space="preserve">
+    <value>Sem ações sugeridas nesta altura.</value>
+    <comment>No shortcuts from this page right now.</comment>
+  </data>
   <data name="Sidebar_Information" xml:space="preserve">
     <value>Informação</value>
     <comment>Information about current page</comment>
@@ -228,9 +274,17 @@
     <value>Por fazer</value>
     <comment>List of todo items</comment>
   </data>
-  
-  
-  
+  <data name="Sidebar_Todo_None" xml:space="preserve">
+    <value>Sem ítens de ação urgente neste momento.</value>
+    <comment>Indicator that nothing needs immediate attention</comment>
+  </data>
+  <data name="Sidebar_Todo_Placeholder" xml:space="preserve">
+    <value>Ítens de ação aparecerão aqui.</value>
+    <comment>Placeholder for future action items. Temporary.</comment>
+  </data>
+  <data name="Financial_CashAdvances" xml:space="preserve">
+    <value>Adiantamentos</value>
+  </data>
   <data name="Financial_CashAdvancesLong" xml:space="preserve">
     <value>Adiantamentos de Dinheiro</value>
   </data>
@@ -243,11 +297,15 @@
   <data name="Financial_InboundInvoices" xml:space="preserve">
     <value>Faturas</value>
   </data>
-  
+  <data name="Financial_InboundInvoicesLong" xml:space="preserve">
+    <value>Faturas de Entrada</value>
+  </data>
   <data name="Financial_OutboundInvoices" xml:space="preserve">
     <value>Faturas</value>
   </data>
-  
+  <data name="Financial_OutboundInvoicesLong" xml:space="preserve">
+    <value>Faturas de Saída</value>
+  </data>
   <data name="Global_NA" xml:space="preserve">
     <value>N/A</value>
   </data>
@@ -257,21 +315,45 @@
   <data name="Global_AsOfNow" xml:space="preserve">
     <value>Neste Momento</value>
   </data>
-  
-  
+  <data name="Global_Today" xml:space="preserve">
+    <value>Hoje</value>
+  </data>
+  <data name="Financial_TransactionTagSetTypeName_CostType" xml:space="preserve">
+    <value>Tipo de Despesa</value>
+    <comment>Second-dimension bookkeeping</comment>
+  </data>
   <data name="Financial_TransactionTagSetTypeName_ProjectName" xml:space="preserve">
     <value>Projeto</value>
     <comment>Tagging costs/income to projects</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Sidebar_Related" xml:space="preserve">
+    <value>Relacionados</value>
+    <comment>List of shortcuts to related actions to current one</comment>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvance" xml:space="preserve">
+    <value>Despesa nº{0:N0} (menos adiantamento nº{1:N0})</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationLessAdvances" xml:space="preserve">
+    <value>Despesa nº{0:N0} (menos adiantamentos)</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvance" xml:space="preserve">
+    <value>Despesas {0} (menos adiantamento nº{1})</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationLessAdvances" xml:space="preserve">
+    <value>Despesas {0} (menos adiantamentos)</value>
+  </data>
+  <data name="Financial_ExpenseClaimSpecificationWithClaimer" xml:space="preserve">
+    <value>Reivindicação de Despesa #{0:N0} por {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecificationWithSender" xml:space="preserve">
+    <value>Fatura de Entrada #{0:N0} de {1}</value>
+  </data>
+  <data name="Financial_ReceiptSpecification" xml:space="preserve">
+    <value>Imagem de Recibo {0} de {1}</value>
+  </data>
+  <data name="Global_ImageSpecification" xml:space="preserve">
+    <value>Imagem {0} de {1}</value>
+  </data>
   <data name="Financial_DueDate" xml:space="preserve">
     <value>Data de Vencimento</value>
     <comment>For invoices and similar</comment>
@@ -279,9 +361,18 @@
   <data name="Financial_Supplier" xml:space="preserve">
     <value>Fornecedor</value>
   </data>
-  
-  
-  
+  <data name="Global_CurrentLanguageName_Native" xml:space="preserve">
+    <value>Inglês (EUA)</value>
+    <comment>Replace with THIS language, EXPRESSED IN this language. Examples: "Español", "Français", "Svenska", etc.</comment>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>Não</value>
+    <comment>For yes/no options</comment>
+  </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Sim</value>
+    <comment>For yes/no options</comment>
+  </data>
   <data name="Financial_Asset" xml:space="preserve">
     <value>Ativos</value>
   </data>
@@ -298,8 +389,14 @@
     <value>-- Seleccionar um --</value>
     <comment>Shown in dropdowns when selection required</comment>
   </data>
-  
-  
+  <data name="Global_Missing" xml:space="preserve">
+    <value>- em falta -</value>
+    <comment>When a record or similar is missing. Used in grids.</comment>
+  </data>
+  <data name="Global_Multiple" xml:space="preserve">
+    <value>- múltiplos -</value>
+    <comment>When there are multiple candidates for something. Synonym: "several". Used in grids.</comment>
+  </data>
   <data name="Global_Off" xml:space="preserve">
     <value>Desactivar</value>
     <comment>Off (as opposed to On)</comment>
@@ -308,10 +405,22 @@
     <value>Ativar</value>
     <comment>On (as opposed to Off)</comment>
   </data>
-  
-  
-  
-  
+  <data name="Global_Organization_Commercial" xml:space="preserve">
+    <value>Comercial</value>
+    <comment>A commercial organization (for-profit enterprise)</comment>
+  </data>
+  <data name="Global_Organization_Governmental" xml:space="preserve">
+    <value>Pública</value>
+    <comment>Organization that's part of government somehow</comment>
+  </data>
+  <data name="Global_Organization_Nonprofit" xml:space="preserve">
+    <value>Sem fins lucrativos</value>
+    <comment>Non-profit (activist, political parties)</comment>
+  </data>
+  <data name="Global_Geography" xml:space="preserve">
+    <value>Área Geográfica</value>
+    <comment>As in "location" - on any scale and anywhere from "World" to a named city</comment>
+  </data>
   <data name="Global_Action" xml:space="preserve">
     <value>Ação</value>
     <comment>Header over a column of possible actions (signified by icons) in a datagrid.</comment>
@@ -332,12 +441,17 @@
     <value>Telefone</value>
     <comment>Somebody's telephone number. Mobile assumed.</comment>
   </data>
-  
+  <data name="Global_Custom" xml:space="preserve">
+    <value>Personalizar</value>
+    <comment>As in "show me the advanced options"</comment>
+  </data>
   <data name="Global_Create" xml:space="preserve">
     <value>Criar</value>
     <comment>Like "Create Organization"</comment>
   </data>
-  
+  <data name="Global_AllYear" xml:space="preserve">
+    <value>Todos</value>
+  </data>
   <data name="Global_Description" xml:space="preserve">
     <value>Descrição</value>
     <comment>As a general header of any description field</comment>
@@ -371,7 +485,9 @@
   <data name="Ledgers_Debit" xml:space="preserve">
     <value>Débito</value>
   </data>
-  
+  <data name="Global_Organization" xml:space="preserve">
+    <value>Organização</value>
+  </data>
   <data name="Sidebar_Help" xml:space="preserve">
     <value>Ajuda</value>
   </data>
@@ -388,17 +504,30 @@
     <comment>Used for gender et al</comment>
   </data>
   <data name="Global_DateFormatShortReadable" xml:space="preserve">
-    <value>MM/DD/AAAA</value>
+    <value>DD/MM/AAAA</value>
     <comment>Adapt format for culture, then translate to human-readability, not machine-readability. E.g. ÅÅÅÅ-MM-DD for Swedish.</comment>
   </data>
-  
-  
-  
-  
+  <data name="Global_DateFormatLongSansWeekday" xml:space="preserve">
+    <value>d MMM yyyy</value>
+    <comment>Convert the formatting only - this is machine interpreted. Example: "December 23, 1921".</comment>
+  </data>
+  <data name="Timespan_FiveYears" xml:space="preserve">
+    <value>cinco anos</value>
+  </data>
+  <data name="Timespan_Forever" xml:space="preserve">
+    <value>vitalício</value>
+    <comment>Like "a lifetime membership"</comment>
+  </data>
+  <data name="Timespan_OneMonth" xml:space="preserve">
+    <value>um mês</value>
+  </data>
   <data name="Timespan_OneYear" xml:space="preserve">
     <value>de um ano</value>
   </data>
-  
+  <data name="Timespan_TwoYears" xml:space="preserve">
+    <value>dois anos</value>
+    <comment>Like "a two-year membership"</comment>
+  </data>
   <data name="Global_Address" xml:space="preserve">
     <value>Endereço</value>
     <comment>As in physical location</comment>
@@ -417,7 +546,9 @@
   <data name="Global_PostalCode" xml:space="preserve">
     <value>Código Postal</value>
   </data>
-  
+  <data name="Error_AjaxCallException" xml:space="preserve">
+    <value>Houve um erro geral, não especificado, ao contatar o servidor do Swarmops. A rede ainda está operacional, e o servidor disponível?</value>
+  </data>
   <data name="Global_Month" xml:space="preserve">
     <value>Mês</value>
   </data>
@@ -425,43 +556,114 @@
     <value>Ver</value>
     <comment>As in "inspect"</comment>
   </data>
-  
+  <data name="Global_Year" xml:space="preserve">
+    <value>Ano</value>
+  </data>
   <data name="Global_YearMonth" xml:space="preserve">
     <value>Ano/Mês</value>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_YearX" xml:space="preserve">
+    <value>Ano {0}</value>
+    <comment>As in "the year X".</comment>
+  </data>
+  <data name="Global_DefineToEnable" xml:space="preserve">
+    <value>defina para ativar</value>
+    <comment>shown as watermark on some edit boxes</comment>
+  </data>
+  <data name="Financial_CashAdvanceLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Adiantamento de Dinheiro #{0:N0} para {1}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybackSpecification" xml:space="preserve">
+    <value>Restituição de Adiantamento de Dinheiro #{0:N0}</value>
+  </data>
+  <data name="Financial_CashAdvancePaybacksSpecification" xml:space="preserve">
+    <value>Restituição de Adiantamentos de Dinheiro {0}</value>
+  </data>
+  <data name="Financial_CashAdvancesLongSpecificationWithRecipient" xml:space="preserve">
+    <value>Adiantamentos de Dinheiro {0} para {1}</value>
+  </data>
+  <data name="Financial_ExpenseClaimLongSpecification" xml:space="preserve">
+    <value>Reivindicação de Despesa #{0:N0}</value>
+  </data>
+  <data name="Financial_ExpenseClaimsSpecificationWithClaimer" xml:space="preserve">
+    <value>Declarações de Despesa {0} por {1}</value>
+  </data>
+  <data name="Financial_InboundInvoiceSpecification" xml:space="preserve">
+    <value>Fatura de Entrada #{0:N0}</value>
+  </data>
+  <data name="Global_System" xml:space="preserve">
+    <value>Sistema</value>
+    <comment>as in "Created by: System" for roles, transactions etc.</comment>
+  </data>
+  <data name="Financial_SalariesDualSpecification" xml:space="preserve">
+    <value>Salários {0} para {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalariesTaxSpecification" xml:space="preserve">
+    <value>Impostos sobre Salários em {0:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecification" xml:space="preserve">
+    <value>Salário #{0:N0} para {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_SalaryDualSpecificationWithRecipient" xml:space="preserve">
+    <value>Salário #{0:N0} para {1:yyyy-MMM} para {2}</value>
+    <comment>0 is identity, 1 is month, 2 is name</comment>
+  </data>
+  <data name="Financial_SalaryIdentity" xml:space="preserve">
+    <value>Salário #{0:N0}</value>
+  </data>
+  <data name="Financial_SalaryTaxDualSpecification" xml:space="preserve">
+    <value>Impostos sobre Salário #{0:N0} em {1:yyyy-MMM}</value>
+  </data>
+  <data name="Financial_Account" xml:space="preserve">
+    <value>Conta</value>
+    <comment>as in bookkeeping or ledger account</comment>
+  </data>
+  <data name="Financial_Amount" xml:space="preserve">
+    <value>Montante</value>
+    <comment>as in amount of money</comment>
+  </data>
+  <data name="Global_Add" xml:space="preserve">
+    <value>Adicionar</value>
+    <comment>as in "add element", "add row", etc</comment>
+  </data>
+  <data name="Global_Several_Display" xml:space="preserve">
+    <value>(vários)</value>
+    <comment>Displayed when multiple items</comment>
+  </data>
+  <data name="Global_Several_SelectOne" xml:space="preserve">
+    <value>-- Seleccionar - vários --</value>
+    <comment>Displayed when multiple choice</comment>
+  </data>
   <data name="Sidebar_Options" xml:space="preserve">
     <value>Opções</value>
     <comment>For various page-specific checkboxes etc</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="Global_LoadingPlaceholder" xml:space="preserve">
+    <value>[...loading...]</value>
+  </data>
+  <data name="Global_LoadingPlaceholderShort" xml:space="preserve">
+    <value>[...]</value>
+  </data>
+  <data name="Global_NoMatch" xml:space="preserve">
+    <value>(sem correspondência)</value>
+  </data>
+  <data name="Global_Working" xml:space="preserve">
+    <value>A processar...</value>
+  </data>
+  <data name="Global_Error_WebsocketFailure" xml:space="preserve">
+    <value>Não foi possível conectar o WebSocket. Atualizações ao vivo não estarão disponíveis.</value>
+  </data>
+  <data name="Error_CurrencyParsing" xml:space="preserve">
+    <value>O Swarmops não entende a quantia de dinheiro. (Mil de dinheiro e zero cêntimos são escritos como "{0:N2}".) Tente novamente?</value>
+    <comment>The {0:N2} is just fed with the number 1000.00 in culture-specific format.</comment>
+  </data>
+  <data name="Global_NoReasonGiven" xml:space="preserve">
+    <value>Nenhuma razão foi especificada.</value>
+    <comment>As inter-activist communication when denying resources, et cetera</comment>
+  </data>
+  <data name="Global_NoActionItems" xml:space="preserve">
+    <value>Sem ítens de ação urgente. Yay!</value>
+  </data>
   <data name="Global_MinMax" xml:space="preserve">
     <value>Mín / Máx</value>
     <comment>note the spaces</comment>
@@ -472,7 +674,9 @@
   <data name="Swarm_Position" xml:space="preserve">
     <value>Posição</value>
   </data>
-  
+  <data name="Error_DatabaseConcurrency" xml:space="preserve">
+    <value>Parece que outro utilizador superou-o na realização desta operação; a base de dados mudou entretanto. Por favore examine as alterações e tente repetir o que estava a tentar fazer.</value>
+  </data>
   <data name="Swarm_TypeName" xml:space="preserve">
     <value>Insira um nome...</value>
   </data>
@@ -494,10 +698,25 @@
   <data name="Timespan_Selection_TwoYears" xml:space="preserve">
     <value>Dois anos</value>
   </data>
-  
-  
-  
-  
-  
-  
+  <data name="Timespan_Selection_UntilTermination" xml:space="preserve">
+    <value>Até ao término</value>
+    <comment>Implicitly, until _manual_ (not automatic) termination</comment>
+  </data>
+  <data name="Global_WizardFinish" xml:space="preserve">
+    <value>Finalizar</value>
+  </data>
+  <data name="Global_WizardNext" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="Global_WizardPrevious" xml:space="preserve">
+    <value>Retroceder</value>
+  </data>
+  <data name="Financial_YTD" xml:space="preserve">
+    <value>YTD</value>
+    <comment>Try to keep short if there isn't an established shortform  for "Year To Date", like "So far" or similar</comment>
+  </data>
+  <data name="Global_Flags" xml:space="preserve">
+    <value>Flags</value>
+    <comment>As in a table column header</comment>
+  </data>
 </root>

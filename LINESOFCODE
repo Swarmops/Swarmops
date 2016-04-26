@@ -46,7 +46,7 @@
     270 ./Logic/Financial/InboundInvoice.cs
      15 ./Logic/Financial/FinancialTransactionTagSets.cs
       9 ./Logic/Financial/FinancialTransactionTagSetTypesStock.cs
-    787 ./Logic/Financial/BitcoinUtility.cs
+    789 ./Logic/Financial/BitcoinUtility.cs
      22 ./Logic/Financial/FinancialValidation.cs
     107 ./Logic/Financial/ExchangeRateSnapshot.cs
      43 ./Logic/Financial/PaymentInformation.cs
@@ -503,7 +503,7 @@
      61 ./Site5/Controls/v5/Base/AjaxTextBox.ascx.cs
      34 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
      37 ./Site5/Controls/v5/Base/DropDown.ascx.cs
-    168 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
+    189 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
      46 ./Site5/Controls/v5/Base/ModalDialog.ascx
      62 ./Site5/Controls/v5/Base/ComboGeographies.ascx
      85 ./Site5/Controls/v5/Base/DropDown.ascx
@@ -527,9 +527,11 @@
      10 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx.cs
     220 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
     187 ./Site5/Pages/v5/Financial/Donate.aspx.cs
+     13 ./Site5/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx.cs
      88 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
     214 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
-    206 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
+     13 ./Site5/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx
+    226 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
       1 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx
     600 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx
@@ -537,7 +539,7 @@
     117 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx.cs
      73 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx.cs
     131 ./Site5/Pages/v5/Financial/PayOutMoney.aspx.cs
-    270 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
+    278 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
     573 ./Site5/Pages/v5/Financial/AttestCosts.aspx
     143 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx.cs
     100 ./Site5/Pages/v5/Financial/Donate.aspx
@@ -597,15 +599,17 @@
       1 ./Site5/Pages/v5/Ledgers/Json-OutstandingAccounts.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-UnbalancedTransactions.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-BalanceSheetData.aspx
+     43 ./Site5/Pages/v5/Ledgers/BitcoinHotwallet.aspx.cs
       0 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx
-    198 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx
+      1 ./Site5/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx
+    233 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx
      65 ./Site5/Pages/v5/Ledgers/ViewOutstandingAccounts.aspx.cs
     451 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx.cs
     114 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx
    1278 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx.cs
     104 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx.cs
-    192 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx.cs
+    278 ./Site5/Pages/v5/Ledgers/BalanceTransactions.aspx.cs
       0 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerTxData.aspx
      64 ./Site5/Pages/v5/Ledgers/BudgetActual.aspx.cs
     267 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx
@@ -619,6 +623,7 @@
      30 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx.cs
     144 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx.cs
     738 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
+     82 ./Site5/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx.cs
     143 ./Site5/Pages/v5/Ledgers/Json-BudgetActualData.aspx.cs
      49 ./Site5/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx.cs
     106 ./Site5/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx
@@ -628,6 +633,7 @@
     272 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
      62 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Csv-BalanceData.aspx
+     70 ./Site5/Pages/v5/Ledgers/BitcoinHotwallet.aspx
     355 ./Site5/Pages/v5/Ledgers/InspectLedgers.aspx
     205 ./Site5/Pages/v5/Ledgers/UploadBankFiles.aspx
     203 ./Site5/Pages/v5/Ledgers/Json-InspectLedgerData.aspx.cs
@@ -635,7 +641,7 @@
     308 ./Site5/Pages/v5/Ledgers/Json-ResyncPreview.aspx.cs
      22 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx
      11 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx
-     91 ./Site5/Pages/v5/Ledgers/Csv-BalanceData.aspx.cs
+     92 ./Site5/Pages/v5/Ledgers/Csv-BalanceData.aspx.cs
      96 ./Site5/Pages/v5/Ledgers/Csv-ProfitLossData.aspx.cs
     107 ./Site5/Pages/v5/Ledgers/BudgetActual.aspx
     141 ./Site5/Pages/v5/Ledgers/Json-ProfitLossData.aspx.cs
@@ -832,4 +838,4 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
- 119802 total
+ 120197 total

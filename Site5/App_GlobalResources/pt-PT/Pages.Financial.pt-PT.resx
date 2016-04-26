@@ -227,8 +227,14 @@
     <value>Este é um código QR para fazer doações a {0}. Leia-o através da sua carteira bitcoin no seu telemóvel para fazer uma doação, ou doe directamente do seu computador para [{1}] (é um endereço bitcoin).</value>
     <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
   </data>
-  
-  
+  <data name="Donate_FundsReceived" xml:space="preserve">
+    <value>Recebidos {0} {1:N2} ({2:N0} microcoins ou "bits"). Obrigado!</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="Donate_FundsReceivedNative" xml:space="preserve">
+    <value>Recebidas {0} microcoins ("bits"). Obrigado!</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
   <data name="Donate_Info" xml:space="preserve">
     <value>Se quiser fazer doações à organização, pode fazê-lo aqui.</value>
   </data>
@@ -238,9 +244,17 @@
   <data name="Donate_StatusInitial" xml:space="preserve">
     <value>Esperando pela transação...</value>
   </data>
-  
-  
-  
+  <data name="Donate_TransactionDetected" xml:space="preserve">
+    <value>Transação detectada, a verificar...</value>
+  </data>
+  <data name="Donate_TxLabel" xml:space="preserve">
+    <value>Doação a {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
+  <data name="Donate_TxLabel_Loan" xml:space="preserve">
+    <value>Empréstimo a {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
   <data name="FileExpenseClaim_Amount" xml:space="preserve">
     <value>Valor da despesa (em {0})</value>
     <comment>{0} is the currency.</comment>
@@ -255,7 +269,10 @@
   <data name="FileExpenseClaim_Budget" xml:space="preserve">
     <value>Orçamento</value>
   </data>
-  
+  <data name="FileExpenseClaim_CostType" xml:space="preserve">
+    <value>Tipo de Despesa</value>
+    <comment>This is the 2nd bookkeeping dimension.</comment>
+  </data>
   <data name="FileExpenseClaim_Description" xml:space="preserve">
     <value>Descrição</value>
   </data>
@@ -277,10 +294,17 @@
   <data name="FileExpenseClaim_UploadRecieptImages" xml:space="preserve">
     <value>Upload de Imagens do Recibo</value>
   </data>
+  <data name="FileExpenseClaim_ValidationError_Amount" xml:space="preserve">
+    <value>Por favor, indique o montante (em {0}) que está reivindicando.</value>
+  </data>
   
-  
-  
-  
+  <data name="FileExpenseClaim_ValidationError_MissingTag" xml:space="preserve">
+    <value>Por favor selecione uma opção como indicado.</value>
+    <comment>Very general as tags may be many things.</comment>
+  </data>
+  <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
+    <value>Por favor descreva o que foi esta compra.</value>
+  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Quantia</value>
     <comment>Amount to be paid out</comment>
@@ -318,16 +342,30 @@
     <value>Pagamento de Dinheiro</value>
   </data>
   
+  <data name="PayOutMoney_PayoutCreated" xml:space="preserve">
+    <value>Pagamento #{0:N0} para {1} criado.</value>
+    <comment>Written as log message when the user confirms a payout has been made.</comment>
+  </data>
+  <data name="PayOutMoney_PayoutUndone" xml:space="preserve">
+    <value>Pagamento #{0:N0} foi anulado e tudo revertido.</value>
+  </data>
+  
+  <data name="PayrollTaxForms_DeductedTax" xml:space="preserve">
+    <value>Imposto Deduzido</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
+  <data name="PayrollTaxForms_GrossPay" xml:space="preserve">
+    <value>Salário Bruto</value>
+  </data>
   
   
   
-  
-  
-  
-  
-  
-  
-  
+  <data name="PayrollTaxForms_TotalCost" xml:space="preserve">
+    <value>Custo Total</value>
+  </data>
+  <data name="PayrollTaxForms_TotalTax" xml:space="preserve">
+    <value>Imposto Total</value>
+  </data>
   <data name="RequestCashAdvance_Amount" xml:space="preserve">
     <value>Valor do adiantamento (em {0})</value>
     <comment>{0} is the currency.</comment>
@@ -358,18 +396,32 @@
   
   
   
+  <data name="RequestCashAdvance_ValidationError_BankAccount" xml:space="preserve">
+    <value>Por favor insira o seu número de conta bancária.</value>
+  </data>
   
-  
-  
-  
-  
+  <data name="RequestCashAdvance_ValidationError_BankName" xml:space="preserve">
+    <value>Por favor insira o nome do seu banco.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Budget" xml:space="preserve">
+    <value>Por favor selecione o orçamento onde cobrar.</value>
+  </data>
+  <data name="RequestCashAdvance_ValidationError_Purpose" xml:space="preserve">
+    <value>Por favor indique a finalidade do adiantamento de dinheiro.</value>
+  </data>
   <data name="ValidateReceipts_Header_ReceiptsAwaitingValidation" xml:space="preserve">
     <value>Recibos aguardando a sua validação</value>
   </data>
   <data name="ValidateReceipts_Info" xml:space="preserve">
     <value>Aqui é onde inspeciona e confirma a validade dos recibos que acompanham as declarações de despesas. Verifique que o valor está correto e que o recibo aparenta ser do que é realmente reivindicado.</value>
   </data>
-  
-  
-  
+  <data name="ValidateReceipts_PageTitle" xml:space="preserve">
+    <value>Validar Recibos</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsDevalidated" xml:space="preserve">
+    <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram INVALIDADOS. A reivindicação não irá prosseguir a menos que seja re-validada.</value>
+  </data>
+  <data name="ValidateReceipts_ReceiptsValidated" xml:space="preserve">
+    <value>Os recibos da Reivindicação de Despesa #{0:N0} para {1} {2:N2} foram validados.</value>
+  </data>
 </root>

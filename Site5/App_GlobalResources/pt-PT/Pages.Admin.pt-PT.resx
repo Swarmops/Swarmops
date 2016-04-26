@@ -117,10 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  
-  
-  
-  
+  <data name="BitcoinEchoTest_Explain" xml:space="preserve">
+    <value>Este é um código QR para teste de eco bitcoin para {0}. Leia-o a partir da sua carteira de bitcoin no seu telemóvel para realize o teste, ou faça uma doação diretamente do seu computador para [{1}] (esse é um endereço bitcoin). A quantia ser-lhe-á devolvida (exceto despesas de minagem) no próximo ciclo de pagamento automático, o qual é executado a cada cinco minutos.</value>
+    <comment>The {0} is the organization name. {1} is the bitcoin address for donations.</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceived" xml:space="preserve">
+    <value>Recebidos {0} {1:N2} ({2:N0} microcoins ou "bits"). Irão ser devolvidos brevemente (menos taxa de minagem).</value>
+    <comment>{0} is native currency, {1} is amount in native currency</comment>
+  </data>
+  <data name="BitcoinEchoTest_FundsReceivedNative" xml:space="preserve">
+    <value>Recebidos {0} microcoins ("bits"). Irão ser devolvidas brevemente (menos taxa de minagem).</value>
+    <comment>Used if BTC is the org native currency.</comment>
+  </data>
+  <data name="BitcoinEchoTest_Info" xml:space="preserve">
+    <value>Este é um teste de eco bitcoin, para testar a conta corrente bitcoin. Se enviar uma pequena quantia para aqui, ela ser-lhe-á enviada de volta a si.</value>
+  </data>
   <data name="BitcoinEchoTest_PageTitle" xml:space="preserve">
     <value>Doar</value>
   </data>
@@ -130,12 +141,20 @@
   <data name="BitcoinEchoTest_TransactionDetected" xml:space="preserve">
     <value>Transação detectada, a verificar...</value>
   </data>
-  
+  <data name="BitcoinEchoTest_TxLabel" xml:space="preserve">
+    <value>Teste de Eco Bitcoin para {0}</value>
+    <comment>The {0} is the organization name</comment>
+  </data>
   <data name="CreateOrganization_ActivistTitle" xml:space="preserve">
     <value>Ativistas serão chamados de</value>
   </data>
-  
-  
+  <data name="CreateOrganization_AsRoot" xml:space="preserve">
+    <value>Organização base</value>
+  </data>
+  <data name="CreateOrganization_ChildOfX" xml:space="preserve">
+    <value>Sub-organização de {0}</value>
+    <comment>"Create org as..."</comment>
+  </data>
   <data name="CreateOrganization_CreateNewOrgAs" xml:space="preserve">
     <value>Criar nova organização como...</value>
   </data>
@@ -155,7 +174,10 @@
     <value>Pessoas regulares serão chamadas de</value>
     <comment>This can be "members", etc.</comment>
   </data>
-  
+  <data name="CreateOrganization_Success" xml:space="preserve">
+    <value>A nova organização foi criada. Foi-lhe concedido um {0} de dois anos na organização, para que possa trabalhar nela e configurá-la corretamente. Para mudar para a sua nova organização, utilize o painel de controlo no canto superior direito.</value>
+    <comment>The {0} is membership, employment, citizenship, residence, etc.</comment>
+  </data>
   <data name="CreateOrganization_Titles" xml:space="preserve">
     <value>Títulos iniciais da posição, por omissão</value>
   </data>
@@ -170,7 +192,9 @@
     <value>Numeração de {0}</value>
     <comment>The {0} is the membership, ambassadorship, etc.</comment>
   </data>
-  
+  <data name="EditOrganization_OpenLedgersDomain" xml:space="preserve">
+    <value>Domínio de Livros Abertos</value>
+  </data>
   <data name="EditOrganization_PageTitle" xml:space="preserve">
     <value>Editar Organização</value>
   </data>
@@ -208,12 +232,16 @@
     <value>Custo de renovação (em {0})</value>
     <comment>The {0} is the operating currency (USD etc).</comment>
   </data>
-  
+  <data name="EditOrganization_VanityDomain" xml:space="preserve">
+    <value>Domínio Personalizado da Organização</value>
+  </data>
   <data name="OrgStaffing_Header_ExecutivePositions" xml:space="preserve">
     <value>Posições Executivas Para {0}</value>
     <comment>The {0} is the org name.</comment>
   </data>
-  
+  <data name="OrgStaffing_Header_LocalDefaultPositions" xml:space="preserve">
+    <value>Posições Locais de Construtor (Em Todas As Área Geográfica)</value>
+  </data>
   <data name="OrgStaffing_Header_Payroll" xml:space="preserve">
     <value>Folha de Pagamento de Pessoal</value>
   </data>
@@ -239,7 +267,9 @@
   <data name="SystemSettings_Error_SmtpHostPort" xml:space="preserve">
     <value>O porto SMTP deve ser numérico. Não foi possível compreender o host:port.</value>
   </data>
-  
+  <data name="SystemSettings_Error_SmtpSyntax" xml:space="preserve">
+    <value>Impossível processar user, pass, host e/ou port. (Apenas é necessário host.)</value>
+  </data>
   <data name="SystemSettings_ExternalUrl" xml:space="preserve">
     <value>URL Acessível Externamente</value>
   </data>
@@ -261,8 +291,12 @@
   <data name="SystemSettings_SmtpServer" xml:space="preserve">
     <value>Servidor SMTP (user:pass@host:port)</value>
   </data>
-  
-  
+  <data name="SystemSettings_TestMailSent" xml:space="preserve">
+    <value>O Swarmops enviou-lhe um email de teste para verificar as suas novas definições do servidor SMTP.</value>
+  </data>
+  <data name="SystemSettings_Warning_Insecure" xml:space="preserve">
+    <value>Deveria realmente, realmente, REALMENTE utilizar HTTPS para um website como este. Mas já sabia disso, não é verdade?</value>
+  </data>
   <data name="SystemSettings_WebsocketHostname" xml:space="preserve">
     <value>Hostname do Websocket</value>
   </data>

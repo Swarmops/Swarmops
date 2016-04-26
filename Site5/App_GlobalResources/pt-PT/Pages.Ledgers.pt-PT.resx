@@ -138,7 +138,10 @@
     <value>Balanço Financeiro</value>
     <comment>Must ONLY contain A-Z, a-z characters - nothing accented!</comment>
   </data>
-  
+  <data name="BalanceSheet_EndYear" xml:space="preserve">
+    <value>Fim-XXXX</value>
+    <comment>The XXXX is replaced with year number.</comment>
+  </data>
   <data name="BalanceSheet_Info" xml:space="preserve">
     <value>O Balanço Financeiro é uma visão geral dos activos e passivos num determinado instante, e é utilizado para ver como os resultados afetam a saúde financeira global da organização. Pode também querer dar uma olhada à &lt;a href="ProfitLossStatement"&gt;declaração de lucros e perdas&lt;/a&gt;, que é a vista geral de receitas e despesas.</value>
   </data>
@@ -189,9 +192,16 @@
     <value>YTD</value>
     <comment>Year To Date</comment>
   </data>
-  
-  
-  
+  <data name="ResyncExternalAccount_Info" xml:space="preserve">
+    <value>Se a sua contabilidade no Swarmops ficou dessincronizada com os registos do seu banco por qualquer motivo técnico ou humano, pode sincronizá-los novamente aqui enviando um ficheiro que cubra o período de tempo que necessita sincronizar.&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Aviso:&lt;/strong&gt; este é um processo demorado que pode fazer &lt;em&gt;muitas&lt;/em&gt; alterações à contabilidade. Não use, a não ser que tenha descoberto uma incompatibilidade nos registos relativamente ao seu banco.&lt;br/&gt;&lt;br/&gt;(Terá oportunidade de rever as alterações propostas antes que sejam efetuadas aos seus registos financeiros.)</value>
+  </data>
+  <data name="ResyncExternalAccount_PageTitle" xml:space="preserve">
+    <value>Ressincronizar Conta Bancária</value>
+  </data>
+  <data name="SetRootBudgets_BudgetOwnerHeader" xml:space="preserve">
+    <value>Orçamento, Proprietário</value>
+    <comment>Displayed above editables</comment>
+  </data>
   
   
   
@@ -205,16 +215,29 @@
   <data name="UploadBankFiles_BankAccount" xml:space="preserve">
     <value>Conta Bancária</value>
   </data>
+  <data name="UploadBankFiles_BankScreenshot" xml:space="preserve">
+    <value>Screenshot do Banco</value>
+    <comment>Displayed as header above modally zoomed screenshot</comment>
+  </data>
+  <data name="UploadBankFiles_DownloadDataSince" xml:space="preserve">
+    <value>&lt;/p&gt; &lt;p&gt;(Os dados mais recentes em Swarmops em &lt;em&gt;{0}&lt;/em&gt; são de {1:yyyy-MMM-dd}. Deve carregar os dados do banco pelo menos de &lt;strong&gt;{2:yyyy-MMM-dd}.&lt;/strong&gt;)</value>
+    <comment>Displayed to help user determine scope of bank download</comment>
+  </data>
+  
+  
+  <data name="UploadBankFiles_DownloadInstructions_BankgiroSEFile" xml:space="preserve">
+    <value>Cada banco tem meios diferentes de obter o ficheiro de formato BGMAX. No SEB, vai a &lt;strong&gt;Pagamentos&lt;/strong&gt; e &lt;strong&gt;Ficheiro de Comunicações&lt;/strong&gt; para ver a lista de ficheiros disponíveis. Outros bancos variarão. Em qualquer dos casos, envie-os por aqui.</value>
+  </data>
   
   
   
-  
-  
-  
-  
-  
-  
-  
+  <data name="UploadBankFiles_ErrorBalance" xml:space="preserve">
+    <value>&lt;p&gt;O ficheiro contém {0:N0} transações. Foram importadas com sucesso &lt;strong&gt;{1:N0} transações&lt;/strong&gt; na conta de contabilidade &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transações eram duplicadas.)&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contudo, o saldo bancário não coincide com os registos no Swarmops.&lt;/strong&gt; Isto deve-se geralmente a transações em falta. Por favor faça o upload de uma lista de transações de um período de tempo mais alargado para certificar que o Swarmops vê todas as transações.&lt;/p&gt;&lt;p&gt;A conta de contabilidade do Swarmops está atualmente &lt;strong&gt;não sincronizada&lt;/strong&gt; com a do banco.&lt;/p&gt;</value>
+    <comment>Displayed when import successful, but end balance out of sync. Assumes plural along all pasted numbers.</comment>
+  </data>
+  <data name="UploadBankFiles_ErrorInterpretation" xml:space="preserve">
+    <value>&lt;h3&gt;O ficheiro bancário não pôde ser importado.&lt;/h3&gt;&lt;p&gt;Isto deve-se a uma de três razões: houve um lapso nas instruções de download, o banco alterou o seu formato, ou enviou o ficheiro errado (por exemplo, uma foto da sua última festa em vez da lista de transações). Não foi importada nenhuma transação. &lt;strong&gt;Por favor tente novamente.&lt;/strong&gt;</value>
+  </data>
   <data name="UploadBankFiles_ExpectedFile" xml:space="preserve">
     <value>Ficheiro Esperado</value>
     <comment>The name of the expected file for uploading.</comment>
@@ -223,7 +246,10 @@
     <value>Ficheiro Importado com Sucesso</value>
     <comment>Displayed as header after successful processing</comment>
   </data>
-  
+  <data name="UploadBankFiles_FileImportedHeader_ErrorBalance" xml:space="preserve">
+    <value>Ficheiro Importado, Mas Dados Fora de Sincronia</value>
+    <comment>Displayed as header after a good processing that ended in sync failure</comment>
+  </data>
   <data name="UploadBankFiles_FileType" xml:space="preserve">
     <value>Tipo de Ficheiro</value>
     <comment>can be Account Statement or Payments File</comment>
@@ -232,30 +258,66 @@
     <value>Erro ao importar ficheiro</value>
     <comment>Displayed as header on import failure</comment>
   </data>
-  
+  <data name="UploadBankFiles_ImportResults" xml:space="preserve">
+    <value>&lt;p&gt;O ficheiro continha {0:N0} transações. &lt;strong&gt;{1:N0} transações&lt;/strong&gt; foram importadas com sucesso na conta de contabilidade &lt;em&gt;{2}&lt;/em&gt;. ({3:N0} transações eram duplicadas.)&lt;/p&gt;&lt;p&gt;Depois de importar, o saldo bancário no Swarmops coincide com o do banco.&lt;/p&gt;</value>
+    <comment>Displayed on successful import. Assumes plural among all pasted numbers.</comment>
+  </data>
   
   <data name="UploadBankFiles_Instructions" xml:space="preserve">
     <value>Instruções</value>
   </data>
+  <data name="UploadBankFiles_PageTitle" xml:space="preserve">
+    <value>Enviar Ficheiros Bancários</value>
+    <comment>Displayed above main content.</comment>
+  </data>
+  
+  <data name="UploadBankFiles_PaymentCount" xml:space="preserve">
+    <value>sem pagamentos|um pagamento|{0} pagamentos</value>
+    <comment>none|one|many</comment>
+  </data>
   
   
+  <data name="UploadBankFiles_PaymentsFile" xml:space="preserve">
+    <value>Ficheiro de Pagamentos</value>
+  </data>
+  <data name="UploadBankFiles_PaymentSummary1" xml:space="preserve">
+    <value>O ficheiro de pagamento continha {0}.</value>
+  </data>
   
   
+  <data name="UploadBankFiles_Processing" xml:space="preserve">
+    <value>Processando Ficheiro...</value>
+  </data>
+  <data name="UploadBankFiles_ProcessingComplete" xml:space="preserve">
+    <value>Processamento Completo</value>
+  </data>
+  <data name="UploadBankFiles_ResultsBad" xml:space="preserve">
+    <value>&lt;p&gt;&lt;br/&gt;&lt;strong&gt;O ficheiro não pôde ser lido como um ficheiro de entrada para este banco.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Existem várias razões para que isto possa acontecer: o ficheiro pode estar corrupto, o banco pode ter silenciosamente alterado ligeiramente o formato do ficheiro, ou enviou o ficheiro errado. Por favor tente novamente.&lt;/p&gt;</value>
+    <comment>Displayed when the input file can't be parsed, before import attempt.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsGood" xml:space="preserve">
+    <value>&lt;p&gt;O ficheiro foi &lt;strong&gt;importado com sucesso.&lt;/strong&gt; Importadas {0:N0} novas transações; descartadas {1:N0} como duplicados do que já estava no Swarmops. O saldo da conta no Swarmops coincide com o do banco.&lt;/p&gt;&lt;p&gt;O ficheiro continha transações de {2:yyyy-MMM-dd} a {3:yyyy-MMM-dd}.&lt;/p&gt;</value>
+    <comment>Zero is new transaction count, one is duplicate transaction count, two and three are lowest and highest dates found in file. Pay attention to date format and adjust to culture.</comment>
+  </data>
+  <data name="UploadBankFiles_ResultsQuestionable" xml:space="preserve">
+    <value>&lt;p&gt;O ficheiro foi importado, mas o &lt;strong&gt;saldo bancário resultante não corresponde.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Após importar {0:N0} transações (e descartando {1:N0} duplicados), todo o ficheiro foi processado. Contudo, o saldo bancário resultante no Swarmops não é o mesmo que o indicado no extrato bancário; existe uma diferença de {3} {2:N2}.&lt;/p&gt;
+&lt;p&gt;Por favor tente carregar um extrato bancário recente. Caso ainda produza uma incompatibilidade, pode ser necessário tentar &lt;a href="/Pages/v5/Ledgers/ResyncExternalAccount.aspx"&gt;sincronizar novamente&lt;/a&gt; a conta bancária com um ficheiro com o extrato completo da conta.&lt;/p&gt;</value>
+    <comment>Displayed on successful import, but the resulting balance is off compared to the account statement file that was just uploaded. 2 is the diff, 3 is the currency.</comment>
+  </data>
+  <data name="UploadBankFiles_SelectAccount" xml:space="preserve">
+    <value>Seleccionar Conta de Contabilidade</value>
+    <comment>Select prompt for the financial account in the organization's bookkeeping.</comment>
+  </data>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="UploadBankFiles_UploadAnother" xml:space="preserve">
+    <value>Enviar outro ficheiro do banco?</value>
+    <comment>Displayed as header after uploading one file</comment>
+  </data>
+  <data name="UploadBankFiles_UploadBankFile" xml:space="preserve">
+    <value>Enviar Ficheiro Bancário</value>
+    <comment>Displayed as header above download instructions / upload form</comment>
+  </data>
   <data name="ViewOutstandingAccounts_FooterDifference" xml:space="preserve">
     <value>Diferença</value>
   </data>
@@ -286,16 +348,26 @@
   <data name="ViewOutstandingAccounts_GridHeaderRecipient" xml:space="preserve">
     <value>Destinatário</value>
   </data>
+  <data name="ViewOutstandingAccounts_Header" xml:space="preserve">
+    <value>Lista Por Liquidar</value>
+  </data>
   
-  
-  
+  <data name="ViewOutstandingAccounts_PageTitle" xml:space="preserve">
+    <value>Lista de Contas por Liquidar</value>
+  </data>
   <data name="AccountPlan_Edit_AccountName" xml:space="preserve">
     <value>Nome da Conta</value>
   </data>
+  <data name="AccountPlan_Edit_ActiveLong" xml:space="preserve">
+    <value>Esta conta está aberta para transações?</value>
+  </data>
+  <data name="AccountPlan_Edit_ActiveShort" xml:space="preserve">
+    <value>Ativo</value>
+  </data>
   
-  
-  
-  
+  <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
+    <value>Admin</value>
+  </data>
   
   
   
@@ -310,11 +382,16 @@
   <data name="AccountPlan_Edit_HeaderConfiguration" xml:space="preserve">
     <value>Configuração</value>
   </data>
-  
+  <data name="AccountPlan_Edit_HeaderDailyOperations" xml:space="preserve">
+    <value>Operações Diárias</value>
+  </data>
   <data name="AccountPlan_Edit_Parent" xml:space="preserve">
     <value>Conta principal ou grupo</value>
   </data>
-  
+  <data name="AccountPlan_ExpensesBudgetsAreNegative" xml:space="preserve">
+    <value>Esta é uma conta de Despesas. Tais contas normalmente têm um orçamento negativo, pois consomem recursos da organização. O seu orçamento proposto foi alterado para negativo.</value>
+    <comment>Displayed as a message box</comment>
+  </data>
   <data name="AccountPlan_Header_AccountName" xml:space="preserve">
     <value>Conta</value>
   </data>
@@ -327,7 +404,9 @@
   <data name="AccountPlan_Header_Edit" xml:space="preserve">
     <value>Editar</value>
   </data>
-  
+  <data name="AccountPlan_Header_Flags" xml:space="preserve">
+    <value>Flags</value>
+  </data>
   <data name="InspectLedgers_Header_For" xml:space="preserve">
     <value>em</value>
     <comment>"inspect [accountdropdown] FOR [year] [month]"</comment>
@@ -336,10 +415,14 @@
     <value>Inspecção de</value>
     <comment>"INSPECT [accountdropdown] for [year] [month]"</comment>
   </data>
+  <data name="InspectLedgers_PageTitle" xml:space="preserve">
+    <value>Inspeccionar Livros de Contabilidade</value>
+  </data>
   
   
-  
-  
+  <data name="InspectLedgers_InboundBalanceZero" xml:space="preserve">
+    <value>Sem Saldo Anterior</value>
+  </data>
   
   
   <data name="InspectLedgers_NoTransactions" xml:space="preserve">
@@ -349,7 +432,10 @@
   <data name="InspectLedgers_OutboundBalanceZero" xml:space="preserve">
     <value>Saldo Final</value>
   </data>
-  
+  <data name="InspectLedgers_OutboundBalanceZeroToDate" xml:space="preserve">
+    <value>Saldo Final (até à data)</value>
+    <comment>Displayed if the end-balance date isn't reached yet</comment>
+  </data>
   <data name="InspectLedgers_PleaseSelectAccount" xml:space="preserve">
     <value>(Por favor seleccione uma conta.)</value>
     <comment>Displayed initially and when no valid account selected</comment>
@@ -359,7 +445,10 @@
     <comment>Keep VERY short.</comment>
   </data>
   
-  
+  <data name="UploadBankFiles_ResultsPaymentsWithDupes" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;p&gt;O ficheiro de pagamentos foi &lt;strong&gt;importado com sucesso.&lt;/strong&gt; {1:N0} pagamento(s) em {0:N0} grupo(s), totalizando {3} {2:N2}, foram importados.&lt;/p&gt;&lt;p&gt;(Tanbém existiam {5:N0} pagamento(s) em duplicado em {4:N0} grupo(s).)&lt;/p&gt;</value>
+    <comment>Arguments 0-5 in order: 0 PaymentGroupCount, 1 PaymentCount, 2 PaymentAmountTotal, 3 Currency, 4 DuplicatePaymentGroupCount, 5 DuplicatePaymentCount</comment>
+  </data>
   <data name="AccountPlan_AddAccount" xml:space="preserve">
     <value>adicionar conta</value>
     <comment>Displayed as link in parens after account group name</comment>
@@ -368,8 +457,13 @@
     <value>Nova Conta</value>
     <comment>the name of newly-created accounts, before rename</comment>
   </data>
-  
-  
+  <data name="AccountPlan_DebtBalancesAreNegative" xml:space="preserve">
+    <value>Esta é uma conta de Passivos. Tais contas normalmente têm um saldo negativo, uma vez que representam responsabilidades na organização. O saldo inicial que inseriu foi alterado para negativo.</value>
+  </data>
+  <data name="AccountPlan_Edit_InitialBalance" xml:space="preserve">
+    <value>Saldo Inicial (de entrada em {0}), {1}</value>
+    <comment>{0} is the first ledger year in Swarmops. {1} is the currency code.</comment>
+  </data>
   <data name="AccountPlan_Options_ShowInactive" xml:space="preserve">
     <value>Mostrar Contas Inativas (&lt;span id="SpanInactiveCount"&gt;{0:N0}&lt;/span&gt;)</value>
     <comment>The {0} is the number of inactive accounts.</comment>
@@ -383,12 +477,19 @@
     <comment>"Projected" as in "Budgeted". {0} is year.</comment>
   </data>
   
-  
+  <data name="TaxForms_Payroll_DeductedTax" xml:space="preserve">
+    <value>Imposto Deduzido</value>
+    <comment>If applicable, translate to local legal tax term</comment>
+  </data>
   <data name="TaxForms_Payroll_GrossPay" xml:space="preserve">
     <value>Salário Bruto</value>
   </data>
-  
-  
+  <data name="TaxForms_Payroll_Info" xml:space="preserve">
+    <value>Ver cábulas (declarações fiscais preenchidas) para a folha de pagamento da organização, as quais são fáceis de copiar para formulários de declaração de impostos reais, ou até imprimi-las tais como estão. O desempenho e as declarações atuais variam de acordo com o país e por vezes dependem de código e plugins de terceiros.</value>
+  </data>
+  <data name="TaxForms_Payroll_PageTitle" xml:space="preserve">
+    <value>Declarações Imposto Salarial</value>
+  </data>
   <data name="TaxForms_Payroll_TaxFormsMonthlyHeader" xml:space="preserve">
     <value>Formulários Mensais de Imposto para</value>
     <comment>The {0} is the organization name. A country selector follows (imagine a "France" tacked on to the end).</comment>
@@ -401,13 +502,24 @@
   </data>
   
   
+  <data name="InspectLedgers_AccountName" xml:space="preserve">
+    <value>Nome da conta</value>
+  </data>
+  <data name="InspectLedgers_BalancedTransaction" xml:space="preserve">
+    <value>Saldo está correto:</value>
+  </data>
   
+  <data name="InspectLedgers_LoggedByInitials" xml:space="preserve">
+    <value>Iniciais</value>
+  </data>
+  <data name="InspectLedgers_LoggedDate" xml:space="preserve">
+    <value>Registado</value>
+  </data>
   
-  
-  
-  
-  
-  
+  <data name="InspectLedgers_HeaderAddTransactionRow" xml:space="preserve">
+    <value>Adicionar linhas à transação</value>
+    <comment>(you can't really edit a transaction, just add more rows to it)</comment>
+  </data>
   
   <data name="InspectLedgers_TxDetail_AttestedByX" xml:space="preserve">
     <value>Atestada por {0} em {1:yyyy-MMM-dd}</value>
@@ -427,13 +539,21 @@
     <comment>As in "payout executed by": who actually paid the money?</comment>
   </data>
   
-  
-  
+  <data name="InspectLedgers_TxDetail_ErrorAddRowNoAccount" xml:space="preserve">
+    <value>Por favor selecione uma conta para que possa adicionar uma linha a esta transação.</value>
+  </data>
+  <data name="CloseLedgers_AnnualLoss" xml:space="preserve">
+    <value>Perda Anual</value>
+  </data>
   <data name="CloseLedgers_AnnualProfit" xml:space="preserve">
     <value>Lucro Anual</value>
   </data>
-  
-  
+  <data name="InspectLedgers_TxDetail_DescriptionWithheld" xml:space="preserve">
+    <value>(descrição detalhada omitida)</value>
+  </data>
+  <data name="BalanceTransactions_HeaderUnbalancedTransactions" xml:space="preserve">
+    <value>Transações sem Correspondência (Necessário Corresponder ou Corrigir)</value>
+  </data>
   <data name="BalanceTransactions_GridHeader_AccountName" xml:space="preserve">
     <value>Conta</value>
     <comment>Usually the account name. Can also be "several".</comment>
@@ -448,30 +568,68 @@
     <value>Tx#</value>
     <comment>Keep VERY short.</comment>
   </data>
+  <data name="BalanceTransactions_Info" xml:space="preserve">
+    <value>Não foi possível fazer uma correspondência automática de algumas das transações financeiras importadas automaticamente. Aqui é onde pode fazer a "correspondência" manual (se uma transação apenas tem uma parte completa, tal como o dinheiro enviado à organização sem registo sobre o propósito do dinheiro, a transação diz-se "sem correspondência").</value>
+  </data>
   
+  <data name="BalanceTransactions_PageTitle" xml:space="preserve">
+    <value>Saldo e Correspondência de Transações</value>
+  </data>
+  <data name="BalanceTransactions_ExactMatches" xml:space="preserve">
+    <value>Correspondências Exatas Do Montante</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
   
-  
-  
-  
-  
+  <data name="BalanceTransactions_FivePercentMatches" xml:space="preserve">
+    <value>Quantia Dentro da Tolerância de 5%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
   <data name="BalanceTransactions_ModalDialog_ButtonBalance" xml:space="preserve">
     <value>Saldo</value>
     <comment>This is a verb in the imperative form - it's on a button.</comment>
   </data>
+  <data name="BalanceTransactions_ModalDialog_ButtonPayout" xml:space="preserve">
+    <value>Corresponde</value>
+    <comment>This is a verb in the imperative form - it's on a button.</comment>
+  </data>
+  
+  <data name="BalanceTransactions_ModalDialog_DescribePayout" xml:space="preserve">
+    <value>A transação coincide com este pagamento:</value>
+  </data>
   
   
   
+  <data name="BalanceTransactions_NoOpenPayouts" xml:space="preserve">
+    <value>(Não há pagamentos abertos)</value>
+  </data>
+  <data name="BalanceTransactions_NoSuitablePayouts" xml:space="preserve">
+    <value>(Não há pagamentos apropriados para corresponder)</value>
+  </data>
+  <data name="BalanceTransactions_OnePercentMatches" xml:space="preserve">
+    <value>Quantia Dentro da Tolerância de 1%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_SelectPayout" xml:space="preserve">
+    <value>-- Selecione um Pagamento --</value>
+  </data>
+  <data name="BalanceTransactions_TenPercentMatches" xml:space="preserve">
+    <value>Quantia Dentro da Tolerância de 10%</value>
+    <comment>Header in selection list. Capitalize as customary for culture.</comment>
+  </data>
+  <data name="BalanceTransactions_PayoutMatch" xml:space="preserve">
+    <value>Pagamento nº{0:N0}, {5} ({1:yyyy-MMM-dd} esperado) a {2}: {3} {4:N2}</value>
+    <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
+  </data>
+  <data name="BudgetActual_ContentHeader" xml:space="preserve">
+    <value>Orçamento vs Real</value>
+  </data>
+  <data name="BudgetActual_ExpectedYtd" xml:space="preserve">
+    <value>YTD Esperado</value>
+    <comment>As in "expected actuals", as in when compared to budget. From the context, just "Expected" will also work.</comment>
+  </data>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <data name="BudgetActual_PageTitle" xml:space="preserve">
+    <value>Orçamento vs Real</value>
+    <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
 </root>
