@@ -188,9 +188,7 @@
   <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
     <value>Insira o seu código do Google Authenticator.</value>
   </data>
-  <data name="Login_Header" xml:space="preserve">
-    <value>Entrar com tecnologia Blockchain (BitId)</value>
-  </data>
+  
   <data name="Login_Help" xml:space="preserve">
     <value>Ajuda</value>
   </data>

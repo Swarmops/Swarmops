@@ -172,9 +172,7 @@
   <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
     <value>أدخل الرمز الخاص بك من Google Authenticator</value>
   </data>
-  <data name="Login_Header" xml:space="preserve">
-    <value>تسجيل الدخول من خلال تقنية البلوكتشين (BitId)</value>
-  </data>
+  
   <data name="Login_Help" xml:space="preserve">
     <value>المساعده</value>
   </data>

@@ -420,4 +420,7 @@
   <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
     <value>crwdns6556421:0crwdne6556421:0</value>
   </data>
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>crwdns6556427:0crwdne6556427:0</value>
+  </data>
 </root>

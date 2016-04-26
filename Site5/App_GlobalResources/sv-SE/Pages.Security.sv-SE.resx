@@ -187,9 +187,7 @@
   <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
     <value>Ange din kod från Google Authenticator.</value>
   </data>
-  <data name="Login_Header" xml:space="preserve">
-    <value>Logga in med Blockchain-teknik (BitId)</value>
-  </data>
+  
   <data name="Login_Help" xml:space="preserve">
     <value>Hjälp</value>
   </data>

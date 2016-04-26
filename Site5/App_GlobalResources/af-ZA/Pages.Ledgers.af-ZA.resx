@@ -731,6 +731,12 @@
     <value>crwdns6556062:0{0:N0}crwdnd6556062:0{5}crwdnd6556062:0{1:yyyy-MMM-dd}crwdnd6556062:0{2}crwdnd6556062:0{3}crwdnd6556062:0{4:N2}crwdne6556062:0</value>
     <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
   </data>
+  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
+    <value>crwdns6556428:0crwdne6556428:0</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>crwdns6556429:0{0}crwdne6556429:0</value>
+  </data>
   <data name="BudgetActual_ContentHeader" xml:space="preserve">
     <value>crwdns6556423:0crwdne6556423:0</value>
   </data>
@@ -744,5 +750,28 @@
   <data name="BudgetActual_PageTitle" xml:space="preserve">
     <value>crwdns6556425:0crwdne6556425:0</value>
     <comment>Financial budget vs. Actual financial outcome</comment>
+  </data>
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>crwdns6556430:0crwdne6556430:0</value>
+  </data>
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>crwdns6556431:0crwdne6556431:0</value>
+  </data>
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>crwdns6556432:0crwdne6556432:0</value>
+  </data>
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>crwdns6556433:0{0}crwdne6556433:0</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  <data name="BitcoinHotwallet_Header" xml:space="preserve">
+    <value>crwdns6556434:0crwdne6556434:0</value>
+    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
+  </data>
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>crwdns6556435:0crwdne6556435:0</value>
+  </data>
+  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
+    <value>crwdns6556436:0crwdne6556436:0</value>
   </data>
 </root>
