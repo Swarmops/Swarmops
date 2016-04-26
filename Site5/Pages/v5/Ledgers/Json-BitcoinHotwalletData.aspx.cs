@@ -40,17 +40,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             result.Append("{\"rows\":[");
 
             Int64 satoshisTotal = 0;
+            int addressesWithFunds = 0;
 
             foreach (HotBitcoinAddress address in addresses)
             {
                 HotBitcoinAddressUnspents unspents = HotBitcoinAddressUnspents.ForAddress (address);
                 Int64 satoshisUnspentAddress = 0;
 
-                StringBuilder childResult = new StringBuilder(16384);
+                StringBuilder childResult = new StringBuilder (16384);
                 foreach (HotBitcoinAddressUnspent unspent in unspents)
                 {
                     childResult.Append ("{");
-                    childResult.AppendFormat(
+                    childResult.AppendFormat (
                         "\"id\":\"UTXO{0}\"," +
                         "\"derivePath\":\"{1}\"," +
                         "\"address\":\"{2}\"," +
@@ -59,38 +60,57 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                         unspent.Identity,
                         Resources.Pages.Ledgers.BitcoinHotWallet_UnspentTransaction,
                         unspent.TransactionHash,
-                        (unspent.AmountSatoshis / 100.0).ToString("N2"),
-                        (unspent.AmountSatoshis / 100.0 * conversionRate).ToString("N2")
-                    );
+                        (unspent.AmountSatoshis/100.0).ToString ("N2"),
+                        (unspent.AmountSatoshis/100.0*conversionRate).ToString ("N2")
+                        );
                     satoshisUnspentAddress += unspent.AmountSatoshis;
-                    childResult.Append("},");
+                    childResult.Append ("},");
                 }
                 if (unspents.Count > 0)
                 {
                     childResult.Remove (childResult.Length - 1, 1); // remove last comma
                 }
 
-                result.Append("{");
-                result.AppendFormat (
-                    "\"id\":\"{0}\"," +
-                    "\"derivePath\":\"{1}\"," +
-                    "\"address\":\"{2}\"," +
-                    "\"balanceMicrocoins\":\"{3}\"," +
-                    "\"balanceFiat\":\"{4}\",",
-                    address.Identity,
-                    address.DerivationPath,
-                    address.Address,
-                    JsonExpandingString (address.Identity, satoshisUnspentAddress),
-                    JsonExpandingString (address.Identity, (Int64) (satoshisUnspentAddress * conversionRate))
-                );
-                result.Append ("\"state\":\"closed\",\"children\":[" + childResult.ToString() + "]");
-                result.Append("},");
-                satoshisTotal += satoshisUnspentAddress;
+                if (satoshisUnspentAddress > 0)
+                {
+                    result.Append ("{");
+                    result.AppendFormat (
+                        "\"id\":\"{0}\"," +
+                        "\"derivePath\":\"{1}\"," +
+                        "\"address\":\"{2}\"," +
+                        "\"balanceMicrocoins\":\"{3}\"," +
+                        "\"balanceFiat\":\"{4}\",",
+                        address.Identity,
+                        address.DerivationPath,
+                        address.Address,
+                        JsonExpandingString (address.Identity, satoshisUnspentAddress),
+                        JsonExpandingString (address.Identity, (Int64) (satoshisUnspentAddress*conversionRate))
+                        );
+                    result.Append ("\"state\":\"closed\",\"children\":[" + childResult.ToString() + "]");
+                    result.Append ("},");
+                    satoshisTotal += satoshisUnspentAddress;
+                    addressesWithFunds++;
+                }
             }
 
-            if (addresses.Count > 0)
+            if (addressesWithFunds > 0)
             {
                 result.Remove(result.Length - 1, 1); // remove last comma
+            }
+            else // no funds at all in hotwallet
+            {
+                result.Append("{");
+                result.AppendFormat(
+                    "\"id\":\"0\"," +
+                    "\"derivePath\":\"0\"," +
+                    "\"address\":\"{0}\"," +
+                    "\"balanceMicrocoins\":\"{1}\"," +
+                    "\"balanceFiat\":\"{2}\",",
+                    Resources.Pages.Ledgers.BitcoinHotWallet_Empty,
+                    0.0.ToString("N2"),
+                    0.0.ToString("N2")
+                    );
+                result.Append("}");
             }
 
             result.Append("],\"footer\":[");

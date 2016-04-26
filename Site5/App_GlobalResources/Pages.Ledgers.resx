@@ -775,6 +775,9 @@
   <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
     <value>Bitcoin Hotwallet</value>
   </data>
+  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
+    <value>There are no funds in the hotwallet.</value>
+  </data>
   <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
     <value>Transaction Hash</value>
   </data>
