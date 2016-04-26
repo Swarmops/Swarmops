@@ -80,8 +80,8 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     address.Identity,
                     address.DerivationPath,
                     address.Address,
-                    (satoshisUnspentAddress/100.0).ToString ("N2"),
-                    (satoshisUnspentAddress/100.0*conversionRate).ToString ("N2")
+                    JsonExpandingString (address.Identity, satoshisUnspentAddress),
+                    JsonExpandingString (address.Identity, (Int64) (satoshisUnspentAddress * conversionRate))
                 );
                 result.Append ("\"state\":\"closed\",\"children\":[" + childResult.ToString() + "]");
                 result.Append("},");
@@ -97,7 +97,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             result.Append("{");
 
-            result.AppendFormat("\"derivePath\":\"TOTAL\",\"balanceMicrocoins\":\"{0}\",\"balanceFiat\":\"{1:N2}\"",
+            result.AppendFormat("\"derivePath\":\"" + Resources.Global.Global_Total +  "\",\"balanceMicrocoins\":\"{0}\",\"balanceFiat\":\"{1}\"",
                 (satoshisTotal / 100.0).ToString("N2"), (satoshisTotal / 100.0 * conversionRate).ToString("N2"));
 
             result.Append("}]}"); // on separate line to suppress warning
@@ -105,6 +105,13 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
             return result.ToString();
         }
 
+
+        private string JsonExpandingString(int addressId, Int64 currencyValue)
+        {
+            return string.Format(CultureInfo.CurrentCulture,
+                "<span class=\\\"bitcoinhotwalletdata-collapsed-{0}\\\"><strong>&Sigma;</strong> {1:N2}</span><span class=\\\"bitcoinhotwalletdata-expanded-{0}\\\" style=\\\"display:none\\\">&nbsp;</span>",
+                addressId, currencyValue / 100.00);
+        }
 
 
     }

@@ -775,6 +775,9 @@
   <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
     <value>Bitcoin Hotwallet</value>
   </data>
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>Transaction Hash</value>
+  </data>
   <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
     <value>Unspent TxOut</value>
     <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
