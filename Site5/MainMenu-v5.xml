@@ -188,15 +188,6 @@
             </MainMenuItem>
 
             <MainMenuItem>
-                <ResourceKey>Financial_ViewBudgetActuals</ResourceKey>
-                <UserLevel>2</UserLevel>
-                <Permissions />
-                <ImageUrl />
-                <Type>Disabled</Type>
-                <Children />
-            </MainMenuItem>
-
-            <MainMenuItem>
                 <ResourceKey>Financial_ManageBudgets</ResourceKey>
                 <UserLevel>2</UserLevel>
                 <Permissions />
