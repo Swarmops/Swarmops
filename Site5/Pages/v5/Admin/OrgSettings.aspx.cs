@@ -108,6 +108,9 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             this.DropMemberNumber.Items.Clear();
             this.DropMemberNumber.Items.Add (new ListItem ("Global for installation", "Global"));
             this.DropMemberNumber.Items.Add (new ListItem ("Local for each organzation", "Local"));
+
+            this.DropTaxAuthority.Items.Clear();
+            this.DropTaxAuthority.Items.Add (new ListItem ("[SE] Sweden", "SE"));
         }
 
         [WebMethod]
@@ -134,6 +137,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                                   org.FinancialAccounts.AssetsVatInbound.Active);
             result.ParticipantFinancials = org.ParticipantFinancialsEnabled;
             result.PaypalAccountAddress = org.PaypalAccountMailAddress;
+
+            result.GovernmentRegistrationId = org.GovernmentRegistrationId;
+            result.TaxAuthority = org.TaxAuthority;
+            result.TaxPaymentOcr = org.TaxPaymentOcr;
 
             result.OpenLedgersDomain = org.OpenLedgersDomain;
             result.VanityDomain = org.VanityDomain;
@@ -446,6 +453,10 @@ namespace Swarmops.Frontend.Pages.v5.Admin
             public bool AccountsVat;
             public bool ParticipantFinancials;
             public string PaypalAccountAddress;
+
+            public string GovernmentRegistrationId;
+            public string TaxAuthority;
+            public string TaxPaymentOcr;
 
             public string OpenLedgersDomain;
             public string VanityDomain;

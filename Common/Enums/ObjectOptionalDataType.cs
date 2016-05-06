@@ -366,6 +366,21 @@ namespace Swarmops.Common.Enums
         /// <summary>
         /// For invoices or other claims, an exact bitcoin amount that overrides native currency
         /// </summary>
-        ExactBitcoinAmountSatoshis
+        ExactBitcoinAmountSatoshis,
+
+        /// <summary>
+        /// If the org is a legal entity, its registration number
+        /// </summary>
+        OrgGovtRegistrationId,
+
+        /// <summary>
+        /// If the org is a legal entity, its tax authority
+        /// </summary>
+        OrgTaxAuthority,
+
+        /// <summary>
+        /// When (if) the org pays taxes, what number to put on the payment to identify the sender
+        /// </summary>
+        OrgTaxPaymentOcr
     }
 }

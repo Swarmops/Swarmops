@@ -989,5 +989,22 @@ namespace Swarmops.Logic.Structure
             set { OptionalData.SetOptionalDataString(ObjectOptionalDataType.OrgOpenLedgersDomain, value); }
         }
 
+        public string GovernmentRegistrationId
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.OrgGovtRegistrationId); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.OrgGovtRegistrationId, value); }
+        }
+
+        public string TaxAuthority
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.OrgTaxAuthority); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.OrgTaxAuthority, value); }
+        }
+
+        public string TaxPaymentOcr
+        {
+            get { return OptionalData.GetOptionalDataString (ObjectOptionalDataType.OrgTaxPaymentOcr); }
+            set { OptionalData.SetOptionalDataString (ObjectOptionalDataType.OrgTaxPaymentOcr, value); }
+        }
     }
 }

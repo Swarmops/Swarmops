@@ -107,6 +107,10 @@
                 $('.paypalAccountField').show();
             }
 
+            $('#<%=this.TextGovtRegistrationId.ClientID%>_TextInput').val(orgSettings.GovernmentRegistrationId);
+            $('#<%=this.DropTaxAuthority.ClientID%>').val(orgSettings.TaxAuthority);
+            $('#<%=this.TextTaxPaymentOcr.ClientID%>_TextInput').val(orgSettings.TaxPaymentOcr);
+
             $('#<%=this.TextOpenLedgersDomain.ClientID%>_TextInput').val(orgSettings.OpenLedgersDomain);
             $('#<%=this.TextVanityDomain.ClientID%>_TextInput').val(orgSettings.VanityDomain);
         }
@@ -201,7 +205,7 @@
                 <Swarmops5:FileUpload ID="UploadRenewalMailTemplate" DisplayCount="1" runat="server" />
             </div>
             <div class="entryLabels">
-                Logo, landscape version [PNG]<br/>
+                Logo, landscape 16x9 version [PNG]<br/>
                 Logo, square version [PNG]<br/>
                 <h2>MAIL TEMPLATES</h2>
                 Outbound invoice [SVG]<br/>
@@ -226,6 +230,19 @@
                 Human Resources sender<br/>
                 User Notification sender<br/>
                 SMTP server (default if blank)
+            </div>
+        </div>
+        <div title="<img src='/Images/Icons/iconshock-buildings-256px.png' height='64' width='64' />">
+            <h2>Regulatory stuff (optional)</h2>
+            <div class="entryFields">
+                <Swarmops5:AjaxTextBox runat="server" ID="TextGovtRegistrationId" Text="SE1234567890" />&#8203;<br/>
+                <Swarmops5:DropDown ID="DropTaxAuthority" CssClass="DropTemp" runat="server"/>&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextTaxPaymentOcr" Text="1612345678900" />&#8203;<br/>
+            </div>
+            <div class="entryLabels">
+                Org registration #<br/>
+                Tax authority<br/>
+                Tax payment ID/OCR
             </div>
         </div>
         <div title="<img src='/Images/Icons/iconshock-star-gold-64px.png' />">
