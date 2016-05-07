@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -168,15 +169,37 @@ namespace Swarmops.Logic.Support
 
         public static string AddLuhnChecksum (string number)
         {
+            return number + GetLuhnChecksum (number);
+        }
+
+        public static string GetLuhnChecksum (string number)
+        {
             int sum = 0;
             for (int i = 0; i < number.Length; i++)
             {
-                int temp = (number[i] - '0')*(((number.Length - i)%2) == 1 ? 2 : 1);
+                int temp = (number[i] - '0') * (((number.Length - i) % 2) == 1 ? 2 : 1);
                 if (temp > 9) temp -= 9;
                 sum += temp;
             }
 
-            return number + ((10 - (sum%10))%10);
+            return ((10 - (sum % 10)) % 10).ToString(CultureInfo.InvariantCulture);
+        }
+
+        public static bool CheckLuhnChecksum (string number)
+        {
+            number = CleanNumber (number);
+
+            if (number.Length < 2)
+            {
+                return false; // requires at least data and checksum
+            }
+
+            if (!number.EndsWith (GetLuhnChecksum (number.Substring (0, number.Length - 1))))
+            {
+                return false;
+            }
+
+            return true;
         }
 
 

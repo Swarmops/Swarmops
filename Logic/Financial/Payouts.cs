@@ -332,23 +332,8 @@ namespace Swarmops.Logic.Financial
             {
                 // Add the summarized tax line, too
 
-                string referenceString = string.Empty;
-
-                if (identityList.Count == 1)
-                {
-                    referenceString = "[Loc]Financial_TaxSpecification|" + identityList[0];
-                }
-                else
-                {
-                    identityList.Sort();
-                    referenceString = "[Loc]Financial_TaxesSpecification|" +
-                                      Formatting.GenerateRangeString (identityList);
-                }
-
-
-                BasicPayout basicPayout = new BasicPayout (0, organization.Identity, "[Loc]Financial_TheTaxMan",
-                    string.Empty, referenceString,
-                    taxTotalCents, payDay, false, DateTime.Now, 0);
+                BasicPayout basicPayout = new BasicPayout (0, organization.Identity, "[Loc]Financial_TheTaxMan", "SEBG 5050-1055", // HACK: Get tax account from something
+                    organization.TaxPaymentOcr, taxTotalCents, payDay, false, DateTime.Now, 0);
                 Payout payout = Payout.FromBasic (basicPayout);
 
                 foreach (int salaryId in identityList)

@@ -427,6 +427,18 @@ namespace Swarmops.Frontend.Pages.v5.Admin
                     authenticationData.CurrentOrganization.PaypalAccountMailAddress = result.NewData;
                     break;
 
+                case "GovernmentRegistrationId":
+                    result.NewData = newValue.Trim();
+                    result.ResultCode = AjaxTextBox.CodeSuccess;
+                    authenticationData.CurrentOrganization.GovernmentRegistrationId = result.NewData;
+                    break;
+
+                case "TaxPaymentOcr":
+                    result.NewData = newValue.Trim();
+                    result.ResultCode = AjaxTextBox.CodeSuccess;
+                    authenticationData.CurrentOrganization.TaxPaymentOcr = result.NewData;
+                    break;
+
                 default:
                     throw new NotImplementedException("Unknown cookie in StoreCallback");
             }

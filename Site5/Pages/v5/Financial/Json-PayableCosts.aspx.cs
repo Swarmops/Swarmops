@@ -69,11 +69,11 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"reference\":\"{5}\"," +
                     "\"amount\":\"{6:N2}\"," +
                     "\"action\":\"" +
-                    "<img id=\\\"IconApproval{7}\\\" class=\\\"LocalIconApproval LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img id=\\\"IconApproved{7}\\\" class=\\\"LocalIconApproved LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img id=\\\"IconDenial{7}\\\" class=\\\"LocalIconDenial LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img id=\\\"IconDenied{7}\\\" class=\\\"LocalIconDenied LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img id=\\\"IconUndo{7}\\\" class=\\\"LocalIconUndo LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconApproval{7} LocalIconApproval LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconApproved{7} LocalIconApproved LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconDenial{7} LocalIconDenial LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconDenied{7} LocalIconDenied LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconUndo{7} LocalIconUndo LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                     "\"",
                     payout.ProtoIdentity,
                     (payout.ExpectedTransactionDate <= today
@@ -115,11 +115,11 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"reference\":\"{5}\"," +
                     "\"amount\":\"{6:N2}\"," +
                     "\"action\":\"" +
-                    "<img id=\\\"IconApproval{7}\\\" class=\\\"LocalIconApproval LocalPrevious\\\" databaseid=\\\"{8}\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img id=\\\"IconApproved{7}\\\" class=\\\"LocalIconApproved LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img id=\\\"IconDenial{7}\\\" class=\\\"LocalIconDenial LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img id=\\\"IconDenied{7}\\\" class=\\\"LocalIconDenied LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
-                    "<img id=\\\"IconUndo{7}\\\" class=\\\"LocalIconUndo LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconApproval{7} LocalIconApproval LocalPrevious\\\" databaseid=\\\"{8}\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconApproved{7} LocalIconApproved LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconDenial{7} LocalIconDenial LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconDenied{7} LocalIconDenied LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img class=\\\"IconUndo{7} LocalIconUndo LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                     "\"",
                     payout.ProtoIdentity,
                     payout.ExpectedTransactionDate.ToShortDateString(),

@@ -235,9 +235,9 @@
         <div title="<img src='/Images/Icons/iconshock-buildings-256px.png' height='64' width='64' />">
             <h2>Regulatory stuff (optional)</h2>
             <div class="entryFields">
-                <Swarmops5:AjaxTextBox runat="server" ID="TextGovtRegistrationId" Text="SE1234567890" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextGovtRegistrationId" Text="SE1234567890"  Cookie="GovernmentRegistrationId" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />&#8203;<br/>
                 <Swarmops5:DropDown ID="DropTaxAuthority" CssClass="DropTemp" runat="server"/>&#8203;<br/>
-                <Swarmops5:AjaxTextBox runat="server" ID="TextTaxPaymentOcr" Text="1612345678900" />&#8203;<br/>
+                <Swarmops5:AjaxTextBox runat="server" ID="TextTaxPaymentOcr" Text="1612345678900"  Cookie="TaxPaymentOcr" AjaxCallbackUrl="/Pages/v5/Admin/OrgSettings.aspx/StoreCallback"  />&#8203;<br/>
             </div>
             <div class="entryLabels">
                 Org registration #<br/>
