@@ -4,6 +4,7 @@ using System.Text;
 using Resources;
 using Swarmops.Logic.Financial;
 using Swarmops.Logic.Security;
+using Swarmops.Logic.Support;
 
 namespace Swarmops.Frontend.Pages.Financial
 {
@@ -60,14 +61,14 @@ namespace Swarmops.Frontend.Pages.Financial
                     continue; // must have at least a reference and a checksum - two digits minimum
                 }
 
-                if (!Swarmops.Logic.Support.Formatting.CheckLuhnChecksum (payout.Reference))
+                if (!Formatting.CheckLuhnChecksum (payout.Reference))
                 {
                     // invalid checksum
 
                     continue;
                 }
 
-                if (!Swarmops.Logic.Support.Formatting.CheckLuhnChecksum (payout.Account))
+                if (!Formatting.CheckLuhnChecksum (payout.Account))
                 {
                     continue;
                 }
@@ -114,13 +115,12 @@ namespace Swarmops.Frontend.Pages.Financial
         {
             return string.Format ("{0} {1:00} &nbsp; {2} &gt;",
                 payout.AmountCents/100, payout.AmountCents %100,
-                Swarmops.Logic.Support.Formatting.GetLuhnChecksum (
-                    payout.AmountCents.ToString (CultureInfo.InvariantCulture)));
+                Formatting.GetLuhnChecksum (payout.AmountCents.ToString (CultureInfo.InvariantCulture)));
         }
 
         private string GetAccountOcr (Payout payout)
         {
-            return Swarmops.Logic.Support.Formatting.CleanNumber (payout.Account) + "#41#";
+            return Formatting.CleanNumber (payout.Account) + "#41#";
         }
     }
 }

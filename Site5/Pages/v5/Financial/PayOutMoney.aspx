@@ -141,12 +141,12 @@
                                         dataType: "json",
                                         success: $.proxy(function(msg) {
                                             var baseid = $(this).attr("baseid").replace(/\|/g, '');
-                                            $(this).attr("databaseid", msg.d.AssignedId);
+                                            $("#IconApproval" + baseid).attr("databaseid", msg.d.AssignedId);
                                             $(this).attr("src", "/Images/Icons/iconshock-balloon-yes-128x96px.png");
                                             $(this).attr("rel", "active");
-                                            $(this).hide();
+                                            $(".IconApproval" + baseid).css('display', 'none');
                                             $(".IconApproved" + baseid).fadeTo(250, 0.5);
-                                            $(".IconDenial" + baseid).css('opacity', 1.0).hide();
+                                            $(".IconDenial" + baseid).css('opacity', 1.0).css('display', 'none');
                                             $(".IconUndo" + baseid).fadeIn(100);
                                             $('.row' + baseid).animate({ color: "#AAA" }, 400);
                                             alertify.success(msg.d.DisplayMessage);
@@ -158,11 +158,11 @@
                             $(".LocalIconUndo").click(function() {
                                 if ($(this).attr("rel") != "loading") {
                                     var jsonData = {};
-                                    jsonData.databaseId = $(".IconApproval" + $(this).attr("baseid").replace(/\|/g, '')).attr("databaseid");
+                                    jsonData.databaseId = $("#IconApproval" + $(this).attr("baseid").replace(/\|/g, '')).attr("databaseid");
 
                                     $(this).attr("rel", "loading");
-                                    $(this).attr("src", "/Images/Abstract/ajaxloader-medium.gif");
-                                    $("#IconApproved" + $(this).attr("baseid").replace(/\|/g, '')).fadeTo(1000, 0.01);
+                                    $(this).attr("src", "/Images/Abstract/ajaxloader-48x36px.gif");
+                                    $(".IconApproved" + $(this).attr("baseid").replace(/\|/g, '')).fadeTo(1000, 0.01);
 
                                     $.ajax({
                                         type: "POST",
@@ -175,10 +175,10 @@
                                                 var baseid = $(this).attr("baseid").replace(/\|/g, '');
                                                 $(this).attr("src", "/Images/Icons/iconshock-balloon-undo-128x96px.png");
                                                 $(this).attr("rel", "");
-                                                $(this).hide();
-                                                $(".IconApproved" + baseid).css('opacity', 1.0).hide();
+                                                $(".IconUndo" + baseid).css('display', 'none');
+                                                $(".IconApproved" + baseid).css('opacity', 1.0).css('display', 'none');
                                                 $(".IconApproval" + baseid).fadeIn(100);
-                                                $(".IconDenial" + baseid).fadeIn(100);
+                                                $(".IconDenial" + baseid).fadeTo(100, 1);
                                                 $('.row' + baseid).animate({ color: "#000" }, 100);
                                                 alertify.log(msg.d.DisplayMessage);
                                             } else {

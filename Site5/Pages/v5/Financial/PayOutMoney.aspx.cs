@@ -45,10 +45,18 @@ namespace Swarmops.Frontend.Pages.Financial
             this.LabelGridHeaderRecipient.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Recipient;
             this.LabelGridHeaderReference.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference;
 
+            this.LabelPayOutMoneyOcrHeader.Text = Resources.Pages.Financial.PayoutMoney_Header_Ocr;
+            this.LabelGridHeaderAccountOcr.Text = Resources.Pages.Financial.PayoutMoney_GridHeader_Account_Ocr;
+            this.LabelGridHeaderDue2.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_DueDate; // same as above
+            this.LabelGridHeaderReferenceOcr.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Reference_Ocr;
+            this.LabelGridHeaderAmountOcr.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_Amount_Ocr;
+            this.LabelGridHeaderPaid2.Text = Resources.Pages.Financial.PayOutMoney_GridHeader_PaidOut;
+
             this.LabelSidebarOptions.Text = Resources.Global.Sidebar_Options;
 
             int previouslyOpenPayouts = GetOpenCount();
             this.LabelOptionsShowPrevious.Text = String.Format(Resources.Pages.Financial.PayOutMoney_OptionShowOpen, previouslyOpenPayouts);
+            this.LabelOptionsShowOcr.Text = Resources.Pages.Financial.PayoutMoney_OptionShowOcr;
         }
 
         private int GetOpenCount()

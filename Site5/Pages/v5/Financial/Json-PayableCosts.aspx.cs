@@ -69,7 +69,7 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"reference\":\"{5}\"," +
                     "\"amount\":\"{6:N2}\"," +
                     "\"action\":\"" +
-                    "<img class=\\\"IconApproval{7} LocalIconApproval LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img id=\\\"IconApproval{7}\\\" class=\\\"IconApproval{7} LocalIconApproval LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                     "<img class=\\\"IconApproved{7} LocalIconApproved LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                     "<img class=\\\"IconDenial{7} LocalIconDenial LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                     "<img class=\\\"IconDenied{7} LocalIconDenied LocalPrototype\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
@@ -80,7 +80,7 @@ namespace Swarmops.Frontend.Pages.Financial
                         ? Global.Global_ASAP
                         : payout.ExpectedTransactionDate.ToShortDateString()),
                     JsonSanitize (TryLocalize (payout.Recipient)),
-                    JsonSanitize (payout.Bank),
+                    JsonSanitize (TryLocalize (payout.Bank)),
                     JsonSanitize (payout.Account),
                     JsonSanitize (TryLocalize (payout.Reference)),
                     payout.AmountCents/100.0,
@@ -115,7 +115,7 @@ namespace Swarmops.Frontend.Pages.Financial
                     "\"reference\":\"{5}\"," +
                     "\"amount\":\"{6:N2}\"," +
                     "\"action\":\"" +
-                    "<img class=\\\"IconApproval{7} LocalIconApproval LocalPrevious\\\" databaseid=\\\"{8}\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
+                    "<img id=\\\"IconApproval{7}\\\" class=\\\"IconApproval{7} LocalIconApproval LocalPrevious\\\" databaseid=\\\"{8}\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                     "<img class=\\\"IconApproved{7} LocalIconApproved LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                     "<img class=\\\"IconDenial{7} LocalIconDenial LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
                     "<img class=\\\"IconDenied{7} LocalIconDenied LocalPrevious\\\" baseid=\\\"{0}\\\" height=\\\"18\\\" width=\\\"24\\\" />" +
