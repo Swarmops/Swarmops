@@ -113,7 +113,7 @@ namespace Swarmops.Frontend.Pages.Financial
 
         private string GetAmountOcr (Payout payout)
         {
-            return string.Format ("{0} {1:00} &nbsp; {2} &gt;",
+            return string.Format ("{0} {1:00} &nbsp; {2} &gt;", // three spaces between the cents and the checksum
                 payout.AmountCents/100, payout.AmountCents %100,
                 Formatting.GetLuhnChecksum (payout.AmountCents.ToString (CultureInfo.InvariantCulture)));
         }
