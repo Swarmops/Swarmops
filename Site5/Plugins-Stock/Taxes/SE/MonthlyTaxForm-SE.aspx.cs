@@ -82,7 +82,7 @@ namespace Swarmops.Plugins.Stock.TaxForms
             CultureInfo swedishCulture = CultureInfo.CreateSpecificCulture ("sv-SE");
             monthString = new DateTime(year, month, 1).ToString("MMMM yyyy", swedishCulture);
 
-            string orgNumber = "xxxxxx-xxxx";
+            string orgNumber = authData.CurrentOrganization.GovernmentRegistrationId;
             string sansFontName = "Liberation Sans";
             string courierFontName = "Liberation Mono";
             int smallSize = 18;
