@@ -462,18 +462,8 @@ namespace Swarmops.Logic.Structure
                 FinancialAccount.Create (this, "[LOC]Asset_OutboundInvoices", FinancialAccountType.Asset, null);
             FinancialAccounts[OrganizationFinancialAccountType.AssetsOutstandingCashAdvances] =
                 FinancialAccount.Create (this, "[LOC]Asset_CashAdvances", FinancialAccountType.Asset, null);
-            //FinancialAccounts[OrganizationFinancialAccountType.AssetsPaypal] =
-            //    FinancialAccount.Create(this, "Paypal Account", FinancialAccountType.Asset, null);
-            //FinancialAccounts[OrganizationFinancialAccountType.AssetsBitcoinHot] =
-            //    FinancialAccount.Create(this, "Bitcoin Holdings (Hot)", FinancialAccountType.Asset, null);
-            //FinancialAccounts[OrganizationFinancialAccountType.AssetsBitcoinCold] =
-            //    FinancialAccount.Create(this, "Bitcoin Cold Storage", FinancialAccountType.Asset, null);
-            //FinancialAccounts[OrganizationFinancialAccountType.AssetsVatInbound] =
-            //    FinancialAccount.Create(this, "Inbound Value Added Tax", FinancialAccountType.Asset, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsAllocatedFunds] =
                 FinancialAccount.Create (this, "[LOC]Cost_AllocatedFunds", FinancialAccountType.Cost, null);
-            FinancialAccounts[OrganizationFinancialAccountType.CostsBankFees] =
-                FinancialAccount.Create (this, "[LOC]Cost_BankFees", FinancialAccountType.Cost, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsInfrastructure] =
                 FinancialAccount.Create (this, "[LOC]Cost_IctInfrastructure", FinancialAccountType.Cost, null);
             FinancialAccounts[OrganizationFinancialAccountType.CostsYearlyResult] =
@@ -490,22 +480,38 @@ namespace Swarmops.Logic.Structure
                 FinancialAccount.Create (this, "[LOC]Debt_SalariesDue", FinancialAccountType.Debt, null);
             FinancialAccounts[OrganizationFinancialAccountType.DebtsTax] =
                 FinancialAccount.Create (this, "[LOC]Debt_Taxes", FinancialAccountType.Debt, null);
-            //FinancialAccounts[OrganizationFinancialAccountType.DebtsVatOutbound] =
-            //    FinancialAccount.Create(this, "Outbound Value Added Tax", FinancialAccountType.Debt, null);
+
+            FinancialAccount financialFeesMaster = FinancialAccount.Create(this, "[LOC]Cost_FinancialFees",
+                FinancialAccountType.Cost, null);
+            FinancialAccounts[OrganizationFinancialAccountType.CostsBankFees] =
+                FinancialAccount.Create(this, "[LOC]Cost_BankFees", FinancialAccountType.Cost, financialFeesMaster);
+            FinancialAccounts[OrganizationFinancialAccountType.CostsBitcoinFees] =
+                FinancialAccount.Create(this, "[LOC]Cost_BitcoinFees", FinancialAccountType.Cost, financialFeesMaster);
 
             FinancialAccounts[OrganizationFinancialAccountType.IncomeDonations] =
                 FinancialAccount.Create (this, "[LOC]Income_Donations", FinancialAccountType.Income, null);
             FinancialAccounts[OrganizationFinancialAccountType.IncomeSales] =
                 FinancialAccount.Create (this, "[LOC]Income_Sales", FinancialAccountType.Income, null);
 
-
             // Then, create various cost accounts that are probably needed, or that could be used as a starting point
 
-            FinancialAccount.Create (this, "[LOC]Cost_Offices", FinancialAccountType.Cost, null);
+            FinancialAccount officeMaster = FinancialAccount.Create (this, "[LOC]Cost_Offices", FinancialAccountType.Cost, null);
+            FinancialAccount.Create (this, "[LOC]Cost_OfficeSpace", FinancialAccountType.Cost, officeMaster);
+            FinancialAccount.Create (this, "[LOC]Cost_OfficeEquipment", FinancialAccountType.Cost, officeMaster);
+
             FinancialAccount.Create (this, "[LOC]Cost_Unforeseen", FinancialAccountType.Cost, null);
             FinancialAccount.Create (this, "[LOC]Cost_Staff", FinancialAccountType.Cost, null);
             FinancialAccount.Create (this, "[LOC]Cost_MarketingCampaigns", FinancialAccountType.Cost, null);
             FinancialAccount.Create (this, "[LOC]Cost_ResearchDevelopment", FinancialAccountType.Cost, null);
+
+            FinancialAccount travelMaster = FinancialAccount.Create (this, "[LOC]Cost_Travel", FinancialAccountType.Cost,
+                null);
+            FinancialAccount.Create(this, "[LOC]Cost_Airfare", FinancialAccountType.Cost, travelMaster);
+            FinancialAccount.Create(this, "[LOC]Cost_TaxiTransport", FinancialAccountType.Cost, travelMaster);
+            FinancialAccount.Create(this, "[LOC]Cost_PublicTransit", FinancialAccountType.Cost, travelMaster);
+            FinancialAccount.Create(this, "[LOC]Cost_TravelLodging", FinancialAccountType.Cost, travelMaster);
+            FinancialAccount.Create(this, "[LOC]Cost_TrainsFerries", FinancialAccountType.Cost, travelMaster);
+            FinancialAccount.Create(this, "[LOC]Cost_TravelPerDiem", FinancialAccountType.Cost, travelMaster);
 
             // Finally, create the first conference parent
 

@@ -146,6 +146,9 @@
     <value>Accounting Errors</value>
     <comment>Used to compensate for all kinds of random mistakes</comment>
   </data>
+  <data name="Cost_Airfare" xml:space="preserve">
+    <value>Airfare, Airports, and Transit</value>
+  </data>
   <data name="Cost_AllocatedFunds" xml:space="preserve">
     <value>Allocated Funds</value>
   </data>
@@ -156,7 +159,7 @@
     <value>Asset Depreciation</value>
   </data>
   <data name="Cost_BankFees" xml:space="preserve">
-    <value>Financial Fees</value>
+    <value>Bank Fees</value>
   </data>
   <data name="Cost_BitcoinFees" xml:space="preserve">
     <value>Bitcoin Miner Fees</value>
@@ -168,9 +171,16 @@
   <data name="Cost_Conferences" xml:space="preserve">
     <value>Conferences</value>
   </data>
+  <data name="Cost_FinancialFees" xml:space="preserve">
+    <value>Financial fees</value>
+    <comment>Master account to bitcoin mining and bank fees</comment>
+  </data>
   <data name="Cost_ForexLosses" xml:space="preserve">
     <value>Forex Capital Losses</value>
     <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
+  </data>
+  <data name="Cost_Hospitality" xml:space="preserve">
+    <value>Hospitality</value>
   </data>
   <data name="Cost_IctInfrastructure" xml:space="preserve">
     <value>ICT and Infrastructure</value>
@@ -178,11 +188,23 @@
   <data name="Cost_InterestLosses" xml:space="preserve">
     <value>Interest Losses</value>
   </data>
+  <data name="Cost_LegalFees" xml:space="preserve">
+    <value>Legal fees</value>
+  </data>
   <data name="Cost_MarketingCampaigns" xml:space="preserve">
     <value>Marketing and Campaigns</value>
   </data>
+  <data name="Cost_OfficeEquipment" xml:space="preserve">
+    <value>Office Equipment</value>
+  </data>
   <data name="Cost_Offices" xml:space="preserve">
     <value>Offices</value>
+  </data>
+  <data name="Cost_OfficeSpace" xml:space="preserve">
+    <value>Office Space &amp; Maintenance</value>
+  </data>
+  <data name="Cost_PublicTransit" xml:space="preserve">
+    <value>Public Transit</value>
   </data>
   <data name="Cost_ResearchDevelopment" xml:space="preserve">
     <value>Research and Development</value>
@@ -207,8 +229,24 @@
   <data name="Cost_Taxes" xml:space="preserve">
     <value>Taxes</value>
   </data>
+  <data name="Cost_TaxiTransport" xml:space="preserve">
+    <value>Taxi, Limo, etc</value>
+  </data>
+  <data name="Cost_TrainsFerries" xml:space="preserve">
+    <value>Trains and Ferries</value>
+  </data>
   <data name="Cost_Transportation" xml:space="preserve">
     <value>Transportation</value>
+  </data>
+  <data name="Cost_Travel" xml:space="preserve">
+    <value>Travel</value>
+    <comment>Root account for travel related accounts</comment>
+  </data>
+  <data name="Cost_TravelLodging" xml:space="preserve">
+    <value>Lodging</value>
+  </data>
+  <data name="Cost_TravelPerDiem" xml:space="preserve">
+    <value>Per Diems</value>
   </data>
   <data name="Cost_Unforeseen" xml:space="preserve">
     <value>Unforeseen</value>
