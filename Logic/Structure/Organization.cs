@@ -500,9 +500,14 @@ namespace Swarmops.Logic.Structure
             FinancialAccount.Create (this, "[LOC]Cost_OfficeEquipment", FinancialAccountType.Cost, officeMaster);
 
             FinancialAccount.Create (this, "[LOC]Cost_Unforeseen", FinancialAccountType.Cost, null);
-            FinancialAccount.Create (this, "[LOC]Cost_Staff", FinancialAccountType.Cost, null);
             FinancialAccount.Create (this, "[LOC]Cost_MarketingCampaigns", FinancialAccountType.Cost, null);
             FinancialAccount.Create (this, "[LOC]Cost_ResearchDevelopment", FinancialAccountType.Cost, null);
+
+            FinancialAccount staffMaster = FinancialAccount.Create(this, "[LOC]Cost_Staff", FinancialAccountType.Cost, null);
+            FinancialAccount.Create(this, "[LOC]Cost_StaffSalaries", FinancialAccountType.Cost, staffMaster);
+            FinancialAccount.Create(this, "[LOC]Cost_StaffExpenses", FinancialAccountType.Cost, staffMaster);
+            FinancialAccount.Create(this, "[LOC]Cost_StaffBenefits", FinancialAccountType.Cost, staffMaster);
+
 
             FinancialAccount travelMaster = FinancialAccount.Create (this, "[LOC]Cost_Travel", FinancialAccountType.Cost,
                 null);
