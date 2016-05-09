@@ -103,16 +103,18 @@
     
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
+            $('#divTabsEditPerson').tabs();
+
             $('.hasTooltip').qtip({
                 content: {
                     attr: 'title',
                     title: function(api) {
-			            // Retrieve content from custom attribute of the elements.
-			            return $(this).attr('rel');
-		            },
-			        style: {
-			            classes: 'ui-tooltip-blue ui-tooltip-shadow'
-			        }
+                        // Retrieve content from custom attribute of the elements.
+                        return $(this).attr('rel');
+                    },
+                    style: {
+                        classes: 'ui-tooltip-blue ui-tooltip-shadow'
+                    }
                 }
             });
         });
@@ -122,8 +124,8 @@
     <body <asp:Literal ID="LiteralBodyAttributes" runat="server" />>
     <form id="form1" runat="server">
 	<script type="text/javascript">
-		//Put your JavaScript code here.
-    </script>
+	    //Put your JavaScript code here.
+	</script>
 	
     <!-- Main menu, dynamically constructed -->
 
@@ -216,8 +218,43 @@
    
     <!-- assorted popups, for use by all pages -->
         
-    
+    <Swarmops5:ModalDialog ID="ModalMasterEditPerson" runat="server">
+        <DialogCode>
+            <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account Data (WIP)</h2>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment Preferences</h2>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Role and Responsibility</h2>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: System Log</h2>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Officer Notes</h2>
+                </div>
+            </div>
+        </DialogCode>
+    </Swarmops5:ModalDialog>
+        
+    <script type="text/javascript" language="javascript">
+        function masterBeginEditPerson(personId) {
+            // Disable saving on change
+            // Clear fields
+            <%=this.ModalMasterEditPerson.ClientID%>_open();
+            // Begin ajax query for data
 
+            // If success, populate; enable saving on change
+            // If secvio, notify
+        }
+
+    </script>
 	
 	</form>
 
