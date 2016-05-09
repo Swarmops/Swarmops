@@ -148,6 +148,7 @@
   </data>
   <data name="Cost_Airfare" xml:space="preserve">
     <value>Airfare, Airports, and Transit</value>
+    <comment>"Transit" refers to transit to/from airport.</comment>
   </data>
   <data name="Cost_AllocatedFunds" xml:space="preserve">
     <value>Allocated Funds</value>
@@ -173,6 +174,7 @@
   </data>
   <data name="Cost_EventTickets" xml:space="preserve">
     <value>Event Tickets</value>
+    <comment>Typically _remote_ event tickets, as this accounts sorts under travel.</comment>
   </data>
   <data name="Cost_FinancialFees" xml:space="preserve">
     <value>Financial fees</value>
@@ -208,6 +210,7 @@
   </data>
   <data name="Cost_PublicTransit" xml:space="preserve">
     <value>Public Transit</value>
+    <comment>The local kind within a city or limited area.</comment>
   </data>
   <data name="Cost_ResearchDevelopment" xml:space="preserve">
     <value>Research and Development</value>
@@ -250,6 +253,7 @@
   </data>
   <data name="Cost_TravelPerDiem" xml:space="preserve">
     <value>Per Diems</value>
+    <comment>This is compensation to people traveling for added everyday costs. Usually follows an official guide.</comment>
   </data>
   <data name="Cost_Unforeseen" xml:space="preserve">
     <value>Unforeseen</value>
