@@ -348,16 +348,6 @@
             </MainMenuItem>
           
             <MainMenuItem>
-                <ResourceKey>Ledgers_InspectLedgers</ResourceKey>
-                <UserLevel>3</UserLevel>
-                <Permissions />
-                <ImageUrl>iconshock-ledger-inspect</ImageUrl>
-                <NavigateUrl>/Pages/v5/Ledgers/InspectLedgers.aspx</NavigateUrl>
-                <Type>Link</Type>
-                <Children />
-            </MainMenuItem>
-          
-            <MainMenuItem>
                 <ResourceKey>Ledgers_AccountPlan</ResourceKey>
                 <UserLevel>3</UserLevel>
                 <Permissions />
@@ -366,6 +356,16 @@
                 <Type>Link</Type>
                 <Children />
             </MainMenuItem>
+
+          <MainMenuItem>
+            <ResourceKey>Ledgers_InspectLedgers</ResourceKey>
+            <UserLevel>3</UserLevel>
+            <Permissions />
+            <ImageUrl>iconshock-ledger-inspect</ImageUrl>
+            <NavigateUrl>/Pages/v5/Ledgers/InspectLedgers.aspx</NavigateUrl>
+            <Type>Link</Type>
+            <Children />
+          </MainMenuItem>
 
           <MainMenuItem>
             <UserLevel>3</UserLevel>
