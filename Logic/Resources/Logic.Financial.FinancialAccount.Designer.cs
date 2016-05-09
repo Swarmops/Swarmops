@@ -151,6 +151,24 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Business or First Class.
+        /// </summary>
+        internal static string Cost_AirfareBusiness {
+            get {
+                return ResourceManager.GetString("Cost_AirfareBusiness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coach.
+        /// </summary>
+        internal static string Cost_AirfareCoach {
+            get {
+                return ResourceManager.GetString("Cost_AirfareCoach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Allocated Funds.
         /// </summary>
         internal static string Cost_AllocatedFunds {
@@ -205,7 +223,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conferences.
+        ///   Looks up a localized string similar to Conferences (our own).
         /// </summary>
         internal static string Cost_Conferences {
             get {
@@ -277,6 +295,51 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 5 Star.
+        /// </summary>
+        internal static string Cost_LodgingFiveStar {
+            get {
+                return ResourceManager.GetString("Cost_LodgingFiveStar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4 Star.
+        /// </summary>
+        internal static string Cost_LodgingFourStar {
+            get {
+                return ResourceManager.GetString("Cost_LodgingFourStar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hostel or budget equivalent.
+        /// </summary>
+        internal static string Cost_LodgingHostel {
+            get {
+                return ResourceManager.GetString("Cost_LodgingHostel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shared lodging (AirBnB etc).
+        /// </summary>
+        internal static string Cost_LodgingShared {
+            get {
+                return ResourceManager.GetString("Cost_LodgingShared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3 Star.
+        /// </summary>
+        internal static string Cost_LodgingThreeStar {
+            get {
+                return ResourceManager.GetString("Cost_LodgingThreeStar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Marketing and Campaigns.
         /// </summary>
         internal static string Cost_MarketingCampaigns {
@@ -304,7 +367,7 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Office Space &amp; Maintenance.
+        ///   Looks up a localized string similar to Office Space, Maintenance.
         /// </summary>
         internal static string Cost_OfficeSpace {
             get {

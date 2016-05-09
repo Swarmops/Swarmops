@@ -150,6 +150,12 @@
     <value>Airfare, Airports, and Transit</value>
     <comment>"Transit" refers to transit to/from airport.</comment>
   </data>
+  <data name="Cost_AirfareBusiness" xml:space="preserve">
+    <value>Business or First Class</value>
+  </data>
+  <data name="Cost_AirfareCoach" xml:space="preserve">
+    <value>Coach</value>
+  </data>
   <data name="Cost_AllocatedFunds" xml:space="preserve">
     <value>Allocated Funds</value>
   </data>
@@ -170,7 +176,8 @@
     <comment>As in rounding to nearest small unit of currency</comment>
   </data>
   <data name="Cost_Conferences" xml:space="preserve">
-    <value>Conferences</value>
+    <value>Conferences (our own)</value>
+    <comment>This is for confs that the organization is _hosting_.</comment>
   </data>
   <data name="Cost_EventTickets" xml:space="preserve">
     <value>Event Tickets</value>
@@ -196,6 +203,24 @@
   <data name="Cost_LegalFees" xml:space="preserve">
     <value>Legal fees</value>
   </data>
+  <data name="Cost_LodgingFiveStar" xml:space="preserve">
+    <value>5 Star</value>
+    <comment>Five-star rating</comment>
+  </data>
+  <data name="Cost_LodgingFourStar" xml:space="preserve">
+    <value>4 Star</value>
+    <comment>Four-star rating</comment>
+  </data>
+  <data name="Cost_LodgingHostel" xml:space="preserve">
+    <value>Hostel or budget equivalent</value>
+  </data>
+  <data name="Cost_LodgingShared" xml:space="preserve">
+    <value>Shared lodging (AirBnB etc)</value>
+  </data>
+  <data name="Cost_LodgingThreeStar" xml:space="preserve">
+    <value>3 Star</value>
+    <comment>Three-star rating</comment>
+  </data>
   <data name="Cost_MarketingCampaigns" xml:space="preserve">
     <value>Marketing and Campaigns</value>
   </data>
@@ -206,7 +231,7 @@
     <value>Offices</value>
   </data>
   <data name="Cost_OfficeSpace" xml:space="preserve">
-    <value>Office Space &amp; Maintenance</value>
+    <value>Office Space, Maintenance</value>
   </data>
   <data name="Cost_PublicTransit" xml:space="preserve">
     <value>Public Transit</value>

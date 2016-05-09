@@ -506,10 +506,17 @@ namespace Swarmops.Logic.Structure
 
             FinancialAccount travelMaster = FinancialAccount.Create (this, "[LOC]Cost_Travel", FinancialAccountType.Cost,
                 null);
-            FinancialAccount.Create(this, "[LOC]Cost_Airfare", FinancialAccountType.Cost, travelMaster);
+            FinancialAccount airfare = FinancialAccount.Create(this, "[LOC]Cost_Airfare", FinancialAccountType.Cost, travelMaster);
+            FinancialAccount.Create(this, "[LOC]Cost_AirfareBusiness", FinancialAccountType.Cost, airfare);
+            FinancialAccount.Create(this, "[LOC]Cost_AirfareCoach", FinancialAccountType.Cost, airfare);
             FinancialAccount.Create(this, "[LOC]Cost_TaxiTransport", FinancialAccountType.Cost, travelMaster);
             FinancialAccount.Create(this, "[LOC]Cost_PublicTransit", FinancialAccountType.Cost, travelMaster);
-            FinancialAccount.Create(this, "[LOC]Cost_TravelLodging", FinancialAccountType.Cost, travelMaster);
+            FinancialAccount lodging = FinancialAccount.Create(this, "[LOC]Cost_TravelLodging", FinancialAccountType.Cost, travelMaster);
+            FinancialAccount.Create(this, "[LOC]Cost_LodgingHostel", FinancialAccountType.Cost, lodging);
+            FinancialAccount.Create(this, "[LOC]Cost_LodgingShared", FinancialAccountType.Cost, lodging);
+            FinancialAccount.Create(this, "[LOC]Cost_LodgingThreeStar", FinancialAccountType.Cost, lodging);
+            FinancialAccount.Create(this, "[LOC]Cost_LodgingFourStar", FinancialAccountType.Cost, lodging);
+            FinancialAccount.Create(this, "[LOC]Cost_LodgingFiveStar", FinancialAccountType.Cost, lodging);
             FinancialAccount.Create(this, "[LOC]Cost_TrainsFerries", FinancialAccountType.Cost, travelMaster);
             FinancialAccount.Create(this, "[LOC]Cost_TravelPerDiem", FinancialAccountType.Cost, travelMaster);
             FinancialAccount.Create(this, "[LOC]Cost_EventTickets", FinancialAccountType.Cost, travelMaster);
