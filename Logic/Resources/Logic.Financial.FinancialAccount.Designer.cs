@@ -214,6 +214,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Event Tickets.
+        /// </summary>
+        internal static string Cost_EventTickets {
+            get {
+                return ResourceManager.GetString("Cost_EventTickets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Financial fees.
         /// </summary>
         internal static string Cost_FinancialFees {

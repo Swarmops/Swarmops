@@ -171,6 +171,9 @@
   <data name="Cost_Conferences" xml:space="preserve">
     <value>Conferences</value>
   </data>
+  <data name="Cost_EventTickets" xml:space="preserve">
+    <value>Event Tickets</value>
+  </data>
   <data name="Cost_FinancialFees" xml:space="preserve">
     <value>Financial fees</value>
     <comment>Master account to bitcoin mining and bank fees</comment>
