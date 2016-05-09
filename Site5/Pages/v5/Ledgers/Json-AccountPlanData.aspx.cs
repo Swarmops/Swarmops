@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using Resources;
 using Swarmops.Common.Enums;
@@ -114,7 +115,9 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                 return string.Empty;
             }
 
-            foreach (FinancialAccount account in this._hashedAccounts[rootNodeId])
+            IOrderedEnumerable<FinancialAccount> childAccountsSorted = this._hashedAccounts[rootNodeId].OrderBy(account => account.Name);;
+
+            foreach (FinancialAccount account in childAccountsSorted)
             {
                 if (account.Identity == rootNodeId || account.AccountType != accountType || account.Identity == _resultAccountId)
                 {
