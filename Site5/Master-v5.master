@@ -131,7 +131,7 @@
 
 	<div class="center980px">
 	    <div class="currentuserinfo">
-	        <div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:Label ID="LabelCurrentUserName" runat="server" /> | </div>
+	        <div style="background-image:url('/Images/Icons/iconshock-user-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><a href="javascript:masterBeginEditPerson(0);"><asp:Label ID="LabelCurrentUserName" runat="server" /></a> | </div>
 	        <div style="background-image:url('/Images/Icons/iconshock-workchair-16px.png');background-repeat:no-repeat;padding-left:17px;float:left"><span class="hasTooltip" rel="Logged into <%=this.CurrentOrganization.Name %>" title="Click here to switch to another organization."><a href="/Security/ChangeOrganizations" id="LinkChangeOrganizations"><asp:Label ID="LabelCurrentOrganizationName" runat="server" /></a></span> |&nbsp;</div>
             <div style="background-image:url('/Images/Icons/iconshock-gamepad-16px.png');background-repeat:no-repeat;padding-left:20px;float:left" id="divUserPreferences"><asp:Label ID="LabelPreferences" runat="server" /> | </div>
             <div style="background-image:url('/Images/Icons/iconshock-lock-16px.png');background-repeat:no-repeat;padding-left:16px;float:left"><asp:LinkButton ID="LinkLogout" runat="server" OnClick="LinkLogout_Click" /> |&nbsp;</div>
@@ -220,12 +220,16 @@
         
     <Swarmops5:ModalDialog ID="ModalMasterEditPerson" runat="server">
         <DialogCode>
+            <h2>Work in progress...</h2>
             <div id="divTabsEditPerson" class="easyui-tabs" data-options="tabWidth:70,tabHeight:70">
                 <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Account Data (WIP)</h2>
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: WORK IN PROGRESS</h2>
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
-                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment Preferences</h2>
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Preferences</h2>
+                </div>
+                <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
+                    <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment Channels</h2>
                 </div>
                 <div title="<img src='/Images/Icons/iconshock-switch-red-64px.png' />">
                     <h2><span class="spanModalEditingPersonName">PERSONNAME</span>: Payment History</h2>

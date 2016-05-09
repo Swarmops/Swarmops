@@ -38,7 +38,7 @@
 <div id="<%=this.ClientID %>_divModalCover" class="modalCover">
     <div id="<%=this.ClientID %>_divModalWrap" class="modalWrap">
         <div id="<%=this.ClientID %>_divModalBox" class="box modal">
-            <div class="content" style="overflow: hidden">
+            <div class="content">
                 <asp:PlaceHolder runat="server" ID="PlaceHolderDialog" />
             </div>
         </div>

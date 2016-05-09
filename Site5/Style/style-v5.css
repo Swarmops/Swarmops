@@ -365,13 +365,13 @@ body.rtl .sidebar {
 
 .modalWrap {
 	position: absolute;
-	height: 70%;
+	/*height: 70%;*/
 	width: 980px;
 	left: 0;
 	right: 0;
-	top: 0;
+	top: 150px;
 	bottom: 0;
-	margin: auto auto;
+    margin: auto auto;
     background: transparent;
 }
 
