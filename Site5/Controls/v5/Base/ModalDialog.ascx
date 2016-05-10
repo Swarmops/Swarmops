@@ -17,6 +17,12 @@
     });
 
     function <%=this.ClientID%>_open() {
+
+        if (!<%=this.ClientID%>_initialized) {
+            $('#<%=this.ClientID%>_hiddenInitArea div.divInitializedContent').appendTo('#<%=this.ClientID%>_divModalBox div.content');
+            <%=this.ClientID%>_initialized = true;
+        }
+
         $('#<%=this.ClientID%>_divModalCover').fadeIn();
     }
 
@@ -31,6 +37,7 @@
             %>
     }
 
+    var <%=this.ClientID%>_initialized = false;
 
 
 </script>
@@ -39,9 +46,15 @@
     <div id="<%=this.ClientID %>_divModalWrap" class="modalWrap">
         <div id="<%=this.ClientID %>_divModalBox" class="box modal">
             <div class="content">
-                <asp:PlaceHolder runat="server" ID="PlaceHolderDialog" />
             </div>
         </div>
         <div id="<%=this.ClientID %>_iconClose" class="modalIconClose"></div>
+    </div>
+</div>
+
+
+<div id="<%=this.ClientID %>_hiddenInitArea" style="visibility:hidden">
+    <div class="divInitializedContent">
+        <asp:PlaceHolder runat="server" ID="PlaceHolderDialog" />
     </div>
 </div>
