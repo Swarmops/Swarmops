@@ -69,9 +69,12 @@ chown www-data:www-data /etc/swarmops/database.config
 chown www-data:www-data /etc/swarmops/symmetricKey.config
 
 # if we stopped Apache in preinst (1st install), restart it
+# otherwise reload Apache config to force flush of Mono caches
 
 if [ -e /tmp/swarmops-restart-apache.flag ]; then
   /etc/init.d/apache2 start
   rm /tmp/swarmops-restart-apache.flag
+else
+  /etc/init.d/apache2 reload
 fi
 
