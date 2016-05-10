@@ -774,4 +774,14 @@
   <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
     <value>crwdns6556436:0crwdne6556436:0</value>
   </data>
+  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
+    <value>crwdns6556444:0crwdne6556444:0</value>
+  </data>
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>crwdns6556445:0crwdne6556445:0</value>
+  </data>
+  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
+    <value>crwdns6556446:0crwdne6556446:0</value>
+    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
+  </data>
 </root>

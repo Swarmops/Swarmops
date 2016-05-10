@@ -187,7 +187,9 @@
   <data name="Login_GoogleAuthenticatorCodeHelp" xml:space="preserve">
     <value>Ange din kod från Google Authenticator.</value>
   </data>
-  
+  <data name="Login_Header" xml:space="preserve">
+    <value>Logga in med Bitcoin-signatur (BitId)</value>
+  </data>
   <data name="Login_Help" xml:space="preserve">
     <value>Hjälp</value>
   </data>
@@ -209,8 +211,13 @@
   <data name="Login_ResetPassword" xml:space="preserve">
     <value>Återställ lösenord</value>
   </data>
-  
-  
+  <data name="Login_SelfSignup" xml:space="preserve">
+    <value>Jag vill med i {0}!</value>
+    <comment>{0} is the organization name.</comment>
+  </data>
+  <data name="Login_SelfSignupHeader" xml:space="preserve">
+    <value>Vill du vara med?</value>
+  </data>
   <data name="Login_UnknownBitIdAddress" xml:space="preserve">
     <value>Swarmops känner inte igen den här bitcoinadressen. Logga in manuellt och aktivera din bitcoinplånbok innan du använder den för att logga in.</value>
   </data>

@@ -41,7 +41,7 @@
      65 ./Logic/Financial/PayrollAdjustment.cs
      14 ./Logic/Financial/Currencies.cs
     642 ./Logic/Financial/FinancialAccount.cs
-    832 ./Logic/Financial/Payouts.cs
+    817 ./Logic/Financial/Payouts.cs
      47 ./Logic/Financial/FinancialTransactionTagSet.cs
     270 ./Logic/Financial/InboundInvoice.cs
      15 ./Logic/Financial/FinancialTransactionTagSets.cs
@@ -81,7 +81,7 @@
     288 ./Logic/Resources/Logic.Financial.Payout.Designer.cs
     261 ./Logic/Resources/Logic.Structure.Geography.Designer.cs
     882 ./Logic/Resources/Logic.Communications.Transmission.NotificationPayload.Designer.cs
-    468 ./Logic/Resources/Logic.Financial.FinancialAccount.Designer.cs
+    648 ./Logic/Resources/Logic.Financial.FinancialAccount.Designer.cs
     198 ./Logic/Resources/Logic.Swarm.DashboardTodos.Designer.cs
      81 ./Logic/Resources/Logic.Communications.Transmission.MailPayload.Designer.cs
      90 ./Logic/Resources/Logic.Communications.Transmission.DefaultCommTemplates.Designer.cs
@@ -121,7 +121,7 @@
     210 ./Logic/Structure/Geography.cs
      47 ./Logic/Structure/Cities.cs
     259 ./Logic/Structure/GeographyUpdate.cs
-    992 ./Logic/Structure/Organization.cs
+   1028 ./Logic/Structure/Organization.cs
      33 ./Logic/Structure/PostalCodes.cs
      36 ./Logic/Structure/GeographyStatisticsOverTime.cs
      53 ./Logic/Structure/City.cs
@@ -229,7 +229,7 @@
      40 ./Logic/Support/ActivistEvents.cs
     434 ./Logic/Support/CheckDigit.cs
      51 ./Logic/Support/PWEvents.cs
-    215 ./Logic/Support/Formatting.cs
+    238 ./Logic/Support/Formatting.cs
      88 ./Logic/Support/General.cs
      66 ./Logic/Support/LogicServices.cs
      25 ./Logic/Support/Optimizations.cs
@@ -304,7 +304,7 @@
      52 ./Common/Enums/PositionType.cs
      19 ./Common/Enums/InvalidMembershipType.cs
      45 ./Common/Enums/MembershipPaymentStatus.cs
-    370 ./Common/Enums/ObjectOptionalDataType.cs
+    385 ./Common/Enums/ObjectOptionalDataType.cs
      46 ./Common/Enums/DocumentType.cs
      16 ./Common/Enums/PoliticalAffiliation.cs
      19 ./Common/Enums/ExternalIdentityType.cs
@@ -504,7 +504,7 @@
      34 ./Site5/Controls/v5/Base/ComboGeographies.ascx.cs
      37 ./Site5/Controls/v5/Base/DropDown.ascx.cs
     189 ./Site5/Controls/v5/Base/MainMenu.ascx.cs
-     46 ./Site5/Controls/v5/Base/ModalDialog.ascx
+     65 ./Site5/Controls/v5/Base/ModalDialog.ascx
      62 ./Site5/Controls/v5/Base/ComboGeographies.ascx
      85 ./Site5/Controls/v5/Base/DropDown.ascx
       1 ./Site5/Controls/v5/Base/MainMenu.ascx
@@ -527,25 +527,27 @@
      10 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx.cs
     220 ./Site5/Pages/v5/Financial/ValidateReceipts.aspx.cs
     187 ./Site5/Pages/v5/Financial/Donate.aspx.cs
+    125 ./Site5/Pages/v5/Financial/Json-PayableCostsOcr.aspx.cs
      13 ./Site5/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx.cs
      88 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx
     214 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx.cs
      13 ./Site5/Pages/v5/Financial/BitcoinHotwalletNotEnabled.aspx
-    226 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
+    280 ./Site5/Pages/v5/Financial/PayOutMoney.aspx
       1 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx
     600 ./Site5/Pages/v5/Financial/AttestCosts.aspx.cs
       1 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx
     149 ./Site5/Pages/v5/Financial/FileExpenseClaim.aspx
     117 ./Site5/Pages/v5/Financial/RequestCashAdvance.aspx.cs
      73 ./Site5/Pages/v5/Financial/Json-ValidatableReceipts.aspx.cs
-    131 ./Site5/Pages/v5/Financial/PayOutMoney.aspx.cs
+    139 ./Site5/Pages/v5/Financial/PayOutMoney.aspx.cs
+      1 ./Site5/Pages/v5/Financial/Json-PayableCostsOcr.aspx
     278 ./Site5/Pages/v5/Financial/Json-AttestableCosts.aspx.cs
     573 ./Site5/Pages/v5/Financial/AttestCosts.aspx
     143 ./Site5/Pages/v5/Financial/Json-PayableCosts.aspx.cs
     100 ./Site5/Pages/v5/Financial/Donate.aspx
      13 ./Site5/Pages/v5/Financial/EconomyNotEnabled.aspx
     157 ./Site5/Pages/v5/Financial/CreateInboundInvoice.aspx
-    248 ./Site5/Pages/v5/Admin/OrgSettings.aspx
+    265 ./Site5/Pages/v5/Admin/OrgSettings.aspx
     101 ./Site5/Pages/v5/Admin/Hacks/PopulateFakePeople.aspx.cs
     106 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry2.aspx
     151 ./Site5/Pages/v5/Admin/Hacks/PopulateCountry2.aspx.cs
@@ -562,7 +564,7 @@
     154 ./Site5/Pages/v5/Admin/CreateOrganization.aspx.cs
     176 ./Site5/Pages/v5/Admin/BitcoinEchoTest.aspx.cs
     347 ./Site5/Pages/v5/Admin/SystemSettings.aspx.cs
-    453 ./Site5/Pages/v5/Admin/OrgSettings.aspx.cs
+    476 ./Site5/Pages/v5/Admin/OrgSettings.aspx.cs
     100 ./Site5/Pages/v5/Admin/BitcoinEchoTest.aspx
      44 ./Site5/Pages/v5/Admin/CreateOrganization.aspx
       1 ./Site5/Pages/v5/Security/SetCurrentOrganization.aspx
@@ -623,14 +625,14 @@
      30 ./Site5/Pages/v5/Ledgers/DebugLedgers.aspx.cs
     144 ./Site5/Pages/v5/Ledgers/CloseLedgers.aspx.cs
     738 ./Site5/Pages/v5/Ledgers/ResyncExternalAccount.aspx.cs
-     82 ./Site5/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx.cs
+    137 ./Site5/Pages/v5/Ledgers/Json-BitcoinHotwalletData.aspx.cs
     143 ./Site5/Pages/v5/Ledgers/Json-BudgetActualData.aspx.cs
      49 ./Site5/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx.cs
     106 ./Site5/Pages/v5/Ledgers/TaxForms/PayrollForms.aspx
     215 ./Site5/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/TaxForms/Json-Payroll-TaxFormData.aspx
       1 ./Site5/Pages/v5/Ledgers/Json-BudgetActualData.aspx
-    272 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
+    275 ./Site5/Pages/v5/Ledgers/Json-AccountPlanData.aspx.cs
      62 ./Site5/Pages/v5/Ledgers/BalanceSheet.aspx.cs
       1 ./Site5/Pages/v5/Ledgers/Csv-BalanceData.aspx
      70 ./Site5/Pages/v5/Ledgers/BitcoinHotwallet.aspx
@@ -838,4 +840,4 @@
     131 ./Database/Database-OrganizationFinancialAccounts.cs
      87 ./Database/Database-OutboundMailRecipients.cs
     105 ./Database/Database-Activists.cs
- 120197 total
+ 120741 total

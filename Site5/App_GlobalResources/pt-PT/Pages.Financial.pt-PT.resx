@@ -305,10 +305,12 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Por favor descreva o que foi esta compra.</value>
   </data>
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Quantia</value>
     <comment>Amount to be paid out</comment>
   </data>
+  
   
   <data name="PayOutMoney_GridHeader_BankName" xml:space="preserve">
     <value>Banco</value>
@@ -328,12 +330,15 @@
     <value>Referência</value>
     <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
+  
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Custos Prontos Para Pagamento</value>
   </data>
+  
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Estes são os diversos custos para a organização que passaram todos os obstáculos para pagamento. Estão prontos a serem pagos ao destinatário. Aqui é onde pode verificá-los manualmente à medida que são pagos (provavelmente enquanto tem a página do banco aberta numa outra janela).</value>
   </data>
+  
   <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
     <value>Mostrar pagamentos em aberto ({0:N0})</value>
     <comment>These are payouts that have been ordered, but aren't yet mapped to actual transactions. Can be shown for the purpose of undoing them if they were wrong.</comment>

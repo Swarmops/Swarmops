@@ -725,4 +725,8 @@
     <value>crwdns6556420:0crwdne6556420:0</value>
     <comment>As in a table column header</comment>
   </data>
+  <data name="Global_Total" xml:space="preserve">
+    <value>crwdns6556438:0crwdne6556438:0</value>
+    <comment>Used as footer in tables, summarizing something</comment>
+  </data>
 </root>

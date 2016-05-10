@@ -146,6 +146,16 @@
     <value>crwdns6555901:0crwdne6555901:0</value>
     <comment>Used to compensate for all kinds of random mistakes</comment>
   </data>
+  <data name="Cost_Airfare" xml:space="preserve">
+    <value>crwdns6556447:0crwdne6556447:0</value>
+    <comment>"Transit" refers to transit to/from airport.</comment>
+  </data>
+  <data name="Cost_AirfareBusiness" xml:space="preserve">
+    <value>crwdns6556448:0crwdne6556448:0</value>
+  </data>
+  <data name="Cost_AirfareCoach" xml:space="preserve">
+    <value>crwdns6556449:0crwdne6556449:0</value>
+  </data>
   <data name="Cost_AllocatedFunds" xml:space="preserve">
     <value>crwdns6555902:0crwdne6555902:0</value>
   </data>
@@ -156,7 +166,7 @@
     <value>crwdns6555904:0crwdne6555904:0</value>
   </data>
   <data name="Cost_BankFees" xml:space="preserve">
-    <value>crwdns6556417:0crwdne6556417:0</value>
+    <value>crwdns6556450:0crwdne6556450:0</value>
   </data>
   <data name="Cost_BitcoinFees" xml:space="preserve">
     <value>crwdns6556418:0crwdne6556418:0</value>
@@ -166,11 +176,23 @@
     <comment>As in rounding to nearest small unit of currency</comment>
   </data>
   <data name="Cost_Conferences" xml:space="preserve">
-    <value>crwdns6555907:0crwdne6555907:0</value>
+    <value>crwdns6556451:0crwdne6556451:0</value>
+    <comment>This is for confs that the organization is _hosting_.</comment>
+  </data>
+  <data name="Cost_EventTickets" xml:space="preserve">
+    <value>crwdns6556452:0crwdne6556452:0</value>
+    <comment>Typically _remote_ event tickets, as this accounts sorts under travel.</comment>
+  </data>
+  <data name="Cost_FinancialFees" xml:space="preserve">
+    <value>crwdns6556453:0crwdne6556453:0</value>
+    <comment>Master account to bitcoin mining and bank fees</comment>
   </data>
   <data name="Cost_ForexLosses" xml:space="preserve">
     <value>crwdns6556052:0crwdne6556052:0</value>
     <comment>"Forex" here is short for "Foreign Currency Exchange Rate". May include bitcoin.</comment>
+  </data>
+  <data name="Cost_Hospitality" xml:space="preserve">
+    <value>crwdns6556454:0crwdne6556454:0</value>
   </data>
   <data name="Cost_IctInfrastructure" xml:space="preserve">
     <value>crwdns6555909:0crwdne6555909:0</value>
@@ -178,11 +200,42 @@
   <data name="Cost_InterestLosses" xml:space="preserve">
     <value>crwdns6555910:0crwdne6555910:0</value>
   </data>
+  <data name="Cost_LegalFees" xml:space="preserve">
+    <value>crwdns6556455:0crwdne6556455:0</value>
+  </data>
+  <data name="Cost_LodgingFiveStar" xml:space="preserve">
+    <value>crwdns6556456:0crwdne6556456:0</value>
+    <comment>Five-star rating</comment>
+  </data>
+  <data name="Cost_LodgingFourStar" xml:space="preserve">
+    <value>crwdns6556457:0crwdne6556457:0</value>
+    <comment>Four-star rating</comment>
+  </data>
+  <data name="Cost_LodgingHostel" xml:space="preserve">
+    <value>crwdns6556458:0crwdne6556458:0</value>
+  </data>
+  <data name="Cost_LodgingShared" xml:space="preserve">
+    <value>crwdns6556459:0crwdne6556459:0</value>
+  </data>
+  <data name="Cost_LodgingThreeStar" xml:space="preserve">
+    <value>crwdns6556460:0crwdne6556460:0</value>
+    <comment>Three-star rating</comment>
+  </data>
   <data name="Cost_MarketingCampaigns" xml:space="preserve">
     <value>crwdns6555911:0crwdne6555911:0</value>
   </data>
+  <data name="Cost_OfficeEquipment" xml:space="preserve">
+    <value>crwdns6556461:0crwdne6556461:0</value>
+  </data>
   <data name="Cost_Offices" xml:space="preserve">
     <value>crwdns6555912:0crwdne6555912:0</value>
+  </data>
+  <data name="Cost_OfficeSpace" xml:space="preserve">
+    <value>crwdns6556462:0crwdne6556462:0</value>
+  </data>
+  <data name="Cost_PublicTransit" xml:space="preserve">
+    <value>crwdns6556463:0crwdne6556463:0</value>
+    <comment>The local kind within a city or limited area.</comment>
   </data>
   <data name="Cost_ResearchDevelopment" xml:space="preserve">
     <value>crwdns6555913:0crwdne6555913:0</value>
@@ -207,8 +260,25 @@
   <data name="Cost_Taxes" xml:space="preserve">
     <value>crwdns6556053:0crwdne6556053:0</value>
   </data>
+  <data name="Cost_TaxiTransport" xml:space="preserve">
+    <value>crwdns6556464:0crwdne6556464:0</value>
+  </data>
+  <data name="Cost_TrainsFerries" xml:space="preserve">
+    <value>crwdns6556465:0crwdne6556465:0</value>
+  </data>
   <data name="Cost_Transportation" xml:space="preserve">
     <value>crwdns6555917:0crwdne6555917:0</value>
+  </data>
+  <data name="Cost_Travel" xml:space="preserve">
+    <value>crwdns6556466:0crwdne6556466:0</value>
+    <comment>Root account for travel related accounts</comment>
+  </data>
+  <data name="Cost_TravelLodging" xml:space="preserve">
+    <value>crwdns6556467:0crwdne6556467:0</value>
+  </data>
+  <data name="Cost_TravelPerDiem" xml:space="preserve">
+    <value>crwdns6556468:0crwdne6556468:0</value>
+    <comment>This is compensation to people traveling for added everyday costs. Usually follows an official guide.</comment>
   </data>
   <data name="Cost_Unforeseen" xml:space="preserve">
     <value>crwdns6555918:0crwdne6555918:0</value>

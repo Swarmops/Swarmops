@@ -398,9 +398,15 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>Beskriv vad detta inköp var.</value>
   </data>
+  <data name="PayoutMoney_GridHeader_Account_Ocr" xml:space="preserve">
+    <value>Konto (OCR)</value>
+  </data>
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>Belopp</value>
     <comment>Amount to be paid out</comment>
+  </data>
+  <data name="PayOutMoney_GridHeader_Amount_Ocr" xml:space="preserve">
+    <value>Belopp (OCR)</value>
   </data>
   <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
     <value>Clearing / Konto</value>
@@ -424,11 +430,20 @@
     <value>Referens</value>
     <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
+  <data name="PayOutMoney_GridHeader_Reference_Ocr" xml:space="preserve">
+    <value>Referens (OCR)</value>
+  </data>
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>Kostnader redo för utbetalning</value>
   </data>
+  <data name="PayoutMoney_Header_Ocr" xml:space="preserve">
+    <value>Kostnader för utbetalning (OCR för mobilappar)</value>
+  </data>
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>Dessa är de kostnader organisationen har och som har godkänts i alla steg för utbetalning. Här bockar du av dem som utbetalda (förmodligen medan du har din bank öppen i ett fönster bredvid och betalar dem).</value>
+  </data>
+  <data name="PayoutMoney_OptionShowOcr" xml:space="preserve">
+    <value>Visa OCR-kod för bankappar</value>
   </data>
   <data name="PayOutMoney_OptionShowOpen" xml:space="preserve">
     <value>Visa öppna utbetalningar ({0:N0})</value>

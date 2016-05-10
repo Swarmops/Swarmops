@@ -416,5 +416,7 @@
   <data name="Menu5_Ledgers_BudgetVsActual" xml:space="preserve">
     <value>Budget / Utfall</value>
   </data>
-  
+  <data name="Menu5_Ledgers_BitcoinHotwallet" xml:space="preserve">
+    <value>Bitcoin arbetsplånbok</value>
+  </data>
 </root>

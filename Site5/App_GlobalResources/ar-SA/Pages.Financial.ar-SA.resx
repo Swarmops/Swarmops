@@ -334,10 +334,12 @@
   <data name="FileExpenseClaim_ValidationError_Purpose" xml:space="preserve">
     <value>الرجاء وصف هذه العملية الشرائية.</value>
   </data>
+  
   <data name="PayOutMoney_GridHeader_Amount" xml:space="preserve">
     <value>المبلغ</value>
     <comment>Amount to be paid out</comment>
   </data>
+  
   <data name="PayOutMoney_GridHeader_BankAccount" xml:space="preserve">
     <value>المقاصة/حساب</value>
     <comment>Will display as "XXXX / YYYYYYYY" where XXXX is the clearing number</comment>
@@ -360,12 +362,15 @@
     <value>المرجع</value>
     <comment>Depends on cost type - can be an OCR number for an invoice, a cash advance number, a salary spec, etc.</comment>
   </data>
+  
   <data name="PayOutMoney_Header" xml:space="preserve">
     <value>النفقات الجاهزة للتعويض</value>
   </data>
+  
   <data name="PayOutMoney_Info" xml:space="preserve">
     <value>هذه هي الأشكال المتنوعة للنفقات التي سيتم دفعها للمنظمة والتي اجتازت كل العقبات لدفع التعويضات. إنها جاهزة الآن لتدفع للمستلم. هنا يتم التحقق منها أثناء إجراء عملية الدفع (ربما أثناء فتحك لنافذة المصرف الخاص بك في إطار آخر).</value>
   </data>
+  
   
   <data name="PayOutMoney_PageTitle" xml:space="preserve">
     <value>المطالبات الجاهزة لدفع التعويض</value>

@@ -720,8 +720,12 @@
     <value>Utbetalning #{0:N0}, {5} (förväntad {1:yyyy-MMM-dd}) för {2}: {3} {4:N2}</value>
     <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
   </data>
-  
-  
+  <data name="BalanceTransactions_ModalDialog_DescribePayoutForeign" xml:space="preserve">
+    <value>Transaktionen matchar denna utbetalning i annan valuta:</value>
+  </data>
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>Mappa transaktionen till en betalning i annan valuta ({0}% beloppstolerans)?</value>
+  </data>
   <data name="BudgetActual_ContentHeader" xml:space="preserve">
     <value>Budget / Utfall</value>
   </data>
@@ -736,11 +740,37 @@
     <value>Budget / Utfall</value>
     <comment>Financial budget vs. Actual financial outcome</comment>
   </data>
-  
-  
-  
-  
-  
-  
-  
+  <data name="BitcoinHotwallet_Address" xml:space="preserve">
+    <value>Bitcoinadress</value>
+  </data>
+  <data name="BitcoinHotwallet_BalanceMicrocoins" xml:space="preserve">
+    <value>Saldo mikrocoins</value>
+  </data>
+  <data name="BitcoinHotwallet_DerivationPath" xml:space="preserve">
+    <value>Härledningskedja</value>
+  </data>
+  <data name="BitcoinHotwallet_ValueFiat" xml:space="preserve">
+    <value>Värde {0}</value>
+    <comment>The {0} is the organization currency.</comment>
+  </data>
+  <data name="BitcoinHotwallet_Header" xml:space="preserve">
+    <value>Arbetsplånbok i detalj</value>
+    <comment>"Breakdown" as in "zooming in to more details", not as in "ceasing to function".</comment>
+  </data>
+  <data name="BitcoinHotwallet_Info" xml:space="preserve">
+    <value>Detta är en detaljgranskning av organisationens arbetsplånbok för bitcoin - dess adresser och saldon. (Tomma och tidigare använda adresser visas inte.)</value>
+  </data>
+  <data name="BitcoinHotwallet_PageTitle" xml:space="preserve">
+    <value>Bitcoin arbetsplånbok</value>
+  </data>
+  <data name="BitcoinHotWallet_Empty" xml:space="preserve">
+    <value>Det finns inga pengar i arbetsplånboken.</value>
+  </data>
+  <data name="BitcoinHotWallet_TransactionHash" xml:space="preserve">
+    <value>Transaktionshashkod</value>
+  </data>
+  <data name="BitcoinHotWallet_UnspentTransaction" xml:space="preserve">
+    <value>Ospenderade TxOut</value>
+    <comment>The local translation of a bitcoin UTXO (Unspent Transaction Output).</comment>
+  </data>
 </root>

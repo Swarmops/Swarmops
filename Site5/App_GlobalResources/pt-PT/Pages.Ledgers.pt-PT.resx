@@ -368,7 +368,10 @@
   <data name="AccountPlan_Edit_AdministrativeShort" xml:space="preserve">
     <value>Admin</value>
   </data>
-  
+  <data name="AccountPlan_Edit_BudgetBalance" xml:space="preserve">
+    <value>Orçamento (o saldo é &lt;span id="SpanTextCurrency"&gt;foo&lt;/span&gt; &lt;span id="SpanEditBalance"&gt;bar&lt;/span&gt;)</value>
+    <comment>foo, bar replaced on load with actual values</comment>
+  </data>
   
   
   
@@ -500,8 +503,14 @@
   <data name="TaxForms_Payroll_TotalTax" xml:space="preserve">
     <value>Imposto Total</value>
   </data>
-  
-  
+  <data name="InspectLedgers_EditingTransactionX" xml:space="preserve">
+    <value>A Mostrar/Editar Transação nº&lt;span id="spanModalTransactionId"&gt;67890&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
+  <data name="InspectLedgers_InspectingTransactionX" xml:space="preserve">
+    <value>A Inspecionar Transação nº&lt;span id="spanModalTransactionId"&gt;12345&lt;/span&gt;</value>
+    <comment>The transaction id is replaced client-side on display</comment>
+  </data>
   <data name="InspectLedgers_AccountName" xml:space="preserve">
     <value>Nome da conta</value>
   </data>
@@ -529,7 +538,9 @@
     <comment>Inserted between transaction causes.</comment>
   </data>
   
-  
+  <data name="InspectLedgers_TxDetail_ThisIsPayoutX" xml:space="preserve">
+    <value>Este é o &lt;strong&gt;Pagamento nº{0:N0}.&lt;/strong&gt; É um pagamento por</value>
+  </data>
   <data name="InspectLedgers_TxDetail_ValidatedByX" xml:space="preserve">
     <value>Validação do documento por {0} em {1:yyyy-MMM-dd}</value>
     <comment>"Document" refers to receipts, invoices, etc.</comment>
@@ -621,7 +632,9 @@
     <comment>0 is the payout Id, 1 is the date (do edit format if called for in culture), 2 is the recipient name, and 3 4 is the currency and amount, 5 is the specification (like "Expense Claim #4711")</comment>
   </data>
   
-  
+  <data name="BalanceTransactions_ModalDialog_RadioPayoutForeign" xml:space="preserve">
+    <value>Mapear a transação para um pagamento em moeda estrangeira (tolerância de {0}% do valor)?</value>
+  </data>
   <data name="BudgetActual_ContentHeader" xml:space="preserve">
     <value>Orçamento vs Real</value>
   </data>
@@ -634,6 +647,9 @@
     <value>Orçamento vs Real</value>
     <comment>Financial budget vs. Actual financial outcome</comment>
   </data>
+  
+  
+  
   
   
   
