@@ -105,7 +105,7 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
                     "\"derivePath\":\"0\"," +
                     "\"address\":\"{0}\"," +
                     "\"balanceMicrocoins\":\"{1}\"," +
-                    "\"balanceFiat\":\"{2}\",",
+                    "\"balanceFiat\":\"{2}\"",
                     Resources.Pages.Ledgers.BitcoinHotWallet_Empty,
                     0.0.ToString("N2"),
                     0.0.ToString("N2")
