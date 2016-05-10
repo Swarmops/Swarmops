@@ -37,6 +37,12 @@
             %>
     }
 
+    $(document).ready(function() {
+        // assuming this runs AFTER the page doc.ready, when easyUI layout happens
+
+        $('#<%=this.ClientID %>_hiddenInitArea').css('display', 'none'); // remove from layout
+    });
+
     var <%=this.ClientID%>_initialized = false;
 
 
@@ -53,7 +59,7 @@
 </div>
 
 
-<div id="<%=this.ClientID %>_hiddenInitArea" style="visibility:hidden">
+<div id="<%=this.ClientID %>_hiddenInitArea" class="box modal" style="visibility:hidden">
     <div class="divInitializedContent">
         <asp:PlaceHolder runat="server" ID="PlaceHolderDialog" />
     </div>
