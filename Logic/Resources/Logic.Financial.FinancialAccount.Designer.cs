@@ -376,6 +376,15 @@ namespace Swarmops.Logic.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Office Supplies (consumables).
+        /// </summary>
+        internal static string Cost_OfficeSupplies {
+            get {
+                return ResourceManager.GetString("Cost_OfficeSupplies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Public Transit.
         /// </summary>
         internal static string Cost_PublicTransit {
