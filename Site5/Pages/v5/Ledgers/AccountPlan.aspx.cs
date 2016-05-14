@@ -120,8 +120,18 @@ namespace Swarmops.Frontend.Pages.v5.Ledgers
 
             JsonAccountData result = new JsonAccountData();
 
+            if (account.ParentIdentity == 0)
+            {
+                // if this is a root account, put it under the category root node, which has negative the type id
+                result.ParentAccountId = -(int) account.AccountType;
+            }
+            else
+            {
+                result.ParentAccountId = account.ParentIdentity;
+            }
+
             result.AccountName = account.Name;
-            result.ParentAccountId = account.ParentIdentity;
+
             result.ParentAccountName = account.ParentFinancialAccountId == 0
                 ? Global.ResourceManager.GetString ("Financial_" +
                                                     account.AccountType)

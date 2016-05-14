@@ -295,12 +295,14 @@
 	        $('#<%=CurrencyInitialBalance.ClientID%>_Input').val('...').css('background-color', '#DDD');
 	        $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').attr('placeholder', '...');
 
-	        accountTree.combotree('setText', '...');
+	        $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFF');
 	        parentAccountName = '';
 
 	        window.scrollTo(0, 0);
 	        $('body').css('overflow-y', 'hidden');
 	        <%=this.DialogAccount.ClientID %>_open();
+
+	        $('#<%=DropParents.ClientID %>_DropBudgets').combotree('setText', "...");
 
 	        setTimeout(function() {
 	            $('#divModalBox').animate({ "height": ($('#DivModalFields').outerHeight() + $('#HeaderModal').outerHeight()) + 40 + "px" }, 50);
@@ -421,7 +423,7 @@
 	                $('#SpanTextCurrency').text(msg.d.CurrencyCode);
 	                $('#SpanEditBalance').text(msg.d.Balance);
 	                parentAccountName = msg.d.ParentAccountName;
-	                setAccountTreeText(parentAccountName);
+	                setAccountTreeId(msg.d.ParentAccountId);
 
 	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-color', '#FFF');
 	                $('span#<%= DropOwner.ClientID %>_SpanPeople span input.textbox-text').css('background-image', "url('" + msg.d.AccountOwnerAvatarUrl + "')");
@@ -479,17 +481,16 @@
         }
 
 
-	    function setAccountTreeText (text) {
-	        var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
-	        var currentText = accountTree.combotree('getText');
-	        if (currentText.length < 3 && parentAccountName.length > 2) {
-	            accountTree.combotree('setText', parentAccountName);
-	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFF');
-	        } else if (!accountTreeLoaded) {
+        function setAccountTreeId(id) {
+	        if (!accountTreeLoaded) {
 	            setTimeout(function() {
-	                setAccountTreeText(text);
+    	            setAccountTreeId(id);
 	            }, 250);
-	        }
+	        } else {
+	            var accountTree = $('#<%=DropParents.ClientID %>_DropBudgets');
+	            accountTree.combotree('setValue', id);
+	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFF');
+            }
         }
 
 
@@ -531,6 +532,7 @@
 	        // accountTree.combotree('select', 0); // clear any previous selection
 	        accountTreeLoaded = true;
 	        if (parentAccountName != null && parentAccountName.length > 0) {
+	            console.log("Setting textbox to parentAccountName " + parentAccountName);
 	            accountTree.combotree('setText', parentAccountName);
 	            $('span#<%= DropParents.ClientID %>_SpanBudgets span input.textbox-text').css('background-color', '#FFF');
             }
